@@ -4,17 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/distance.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/box/output.hpp>
+#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	box_distance
+TEST_CASE(
+	"math::box::distance",
+	"[math],[box]"
 )
 {
 	typedef
@@ -24,7 +25,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	box_type;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::box::distance(
 			box_type(
 				box_type::vector(
@@ -46,7 +47,8 @@ BOOST_AUTO_TEST_CASE(
 					2
 				)
 			)
-		),
+		)
+		==
 		box_type::vector(
 			2,
 			-1

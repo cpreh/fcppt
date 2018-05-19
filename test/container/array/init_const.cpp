@@ -7,13 +7,14 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/array/init_const.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	array_init_const
+TEST_CASE(
+	"array::init_const",
+	"[container],[array]"
 )
 {
 	typedef
@@ -21,31 +22,18 @@ BOOST_AUTO_TEST_CASE(
 		int,
 		2
 	>
-	array;
+	int_2_array;
 
-	array const inited(
+	CHECK(
 		fcppt::container::array::init_const<
-			array
+			int_2_array
 		>(
 			42
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			inited
-		),
-		42
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			inited
-		),
-		42
+		==
+		int_2_array{{
+			42,
+			42
+		}}
 	);
 }

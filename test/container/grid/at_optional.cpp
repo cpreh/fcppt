@@ -7,12 +7,13 @@
 #include <fcppt/container/grid/at_optional.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_at_optional
+TEST_CASE(
+	"container::grid::at_optional",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -30,7 +31,7 @@ BOOST_AUTO_TEST_CASE(
 		0
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::container::grid::at_optional(
 			grid,
 			int2_grid::pos(
@@ -40,8 +41,8 @@ BOOST_AUTO_TEST_CASE(
 		).has_value()
 	);
 
-	BOOST_CHECK(
-		!fcppt::container::grid::at_optional(
+	CHECK_FALSE(
+		fcppt::container::grid::at_optional(
 			grid,
 			int2_grid::pos(
 				2u,
@@ -54,7 +55,7 @@ BOOST_AUTO_TEST_CASE(
 		grid
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::container::grid::at_optional(
 			const_grid,
 			int2_grid::pos(

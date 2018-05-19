@@ -4,73 +4,97 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/throw_message.hpp>
-#include <fcppt/preprocessor/disable_vc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
 
+// TODO: Put this in algorithm?
 bool
-contains_false(
-	fcppt::assert_::exception const &_e
+contains_string(
+	fcppt::string const &_string,
+	fcppt::string const &_sub_string
 )
 {
 	return
-		_e.string().find(
-			FCPPT_TEXT("false")
-		) != fcppt::string::npos;
+		_string.find(
+			_sub_string
+		)
+		!=
+		fcppt::string::npos;
 }
 
-bool
-contains_false_and_contains_1337(
-	fcppt::assert_::exception const &_e
+}
+
+TEST_CASE(
+	"assert_throw_message",
+	"[assert]"
 )
 {
-	return
-		contains_false(
-			_e
-		) &&
-		_e.string().find(
-			FCPPT_TEXT("1337")
-		) != fcppt::string::npos;
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	assert
-)
-{
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_VC_WARNING(4127)
-
-	BOOST_REQUIRE_EXCEPTION(
-		FCPPT_ASSERT_THROW_MESSAGE(
-			false,
-			fcppt::assert_::exception,
-			FCPPT_TEXT("test")
-		),
-		fcppt::assert_::exception,
-		contains_false
+	auto const contains_false(
+		[](
+			fcppt::assert_::exception const &_error
+		)
+		{
+			return
+				contains_string(
+					_error.string(),
+					FCPPT_TEXT("false")
+				);
+		}
 	);
 
-	BOOST_REQUIRE_EXCEPTION(
-		FCPPT_ASSERT_THROW_MESSAGE(
-			false,
-			fcppt::assert_::exception,
-			FCPPT_TEXT("1337")
-		),
+	CHECK_THROWS_MATCHES(
+		[]{
+			FCPPT_ASSERT_THROW_MESSAGE(
+				false,
+				fcppt::assert_::exception,
+				FCPPT_TEXT("test")
+			);
+		}(),
 		fcppt::assert_::exception,
-		contains_false_and_contains_1337
+		Catch::Matchers::Predicate<
+			fcppt::assert_::exception
+		>(
+			contains_false
+		)
 	);
-FCPPT_PP_POP_WARNING
+
+	CHECK_THROWS_MATCHES(
+		[]{
+			FCPPT_ASSERT_THROW_MESSAGE(
+				false,
+				fcppt::assert_::exception,
+				FCPPT_TEXT("1337")
+			);
+		}(),
+		fcppt::assert_::exception,
+		Catch::Matchers::Predicate<
+			fcppt::assert_::exception
+		>(
+			[
+				contains_false
+			](
+				fcppt::assert_::exception const &_error
+			)
+			{
+				return
+					contains_false(
+						_error
+					)
+					&&
+					contains_string(
+						_error.string(),
+						FCPPT_TEXT("1337")
+					);
+			}
+		)
+	);
 }

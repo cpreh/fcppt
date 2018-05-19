@@ -6,14 +6,16 @@
 
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/to_raw_vector.hpp>
+#include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_buffer_to_raw_vector
+TEST_CASE(
+	"container::buffer::to_raw_vector",
+	"[container],[buffer]"
 )
 {
 	typedef
@@ -49,30 +51,29 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_REQUIRE_EQUAL(
-		buffer.read_size(),
+	CHECK(
+		buffer.read_size()
+		==
 		0u
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		buffer.write_size(),
+	CHECK(
+		buffer.write_size()
+		==
 		0u
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		raw_vector.size(),
-		1u
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		raw_vector.capacity(),
+	CHECK(
+		raw_vector.capacity()
+		==
 		2u
 	);
 
-	BOOST_CHECK_EQUAL(
-		raw_vector[
-			0
-		],
-		10
+	CHECK(
+		raw_vector
+		==
+		raw_vector_type{
+			10
+		}
 	);
 }

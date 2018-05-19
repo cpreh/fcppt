@@ -11,12 +11,13 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_clamped_min
+TEST_CASE(
+	"container::grid::clamped_min",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -26,13 +27,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	pos;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::grid::clamped_min(
 			pos(
 				-1,
 				5
 			)
-		).get(),
+		).get()
+		==
 		fcppt::math::vector::to_unsigned(
 			pos(
 				0,

@@ -7,18 +7,19 @@
 #include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/truncation_check.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <climits>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	truncation_check_cast
+TEST_CASE(
+	"cast::truncation_check",
+	"[cast]"
 )
 {
 #if SHRT_MAX < LONG_MAX
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::truncation_check<
 			short
 		>(
@@ -29,7 +30,7 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::cast::bad_truncation_check
 	);
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::truncation_check<
 			short
 		>(
@@ -40,7 +41,7 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::cast::bad_truncation_check
 	);
 #endif
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::truncation_check<
 			long
 		>(
@@ -51,7 +52,7 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::cast::bad_truncation_check
 	);
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::truncation_check<
 			unsigned long
 		>(
@@ -61,7 +62,7 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 #if USHRT_MAX < ULONG_MAX
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::truncation_check<
 			unsigned short
 		>(
@@ -72,30 +73,33 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::cast::bad_truncation_check
 	);
 #endif
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::cast::truncation_check<
 			unsigned
 		>(
 			10u
-		),
+		)
+		==
 		10u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::cast::truncation_check<
 			unsigned long
 		>(
 			42u
-		),
+		)
+		==
 		42ul
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::cast::truncation_check<
 			long
 		>(
 			-1
-		),
+		)
+		==
 		-1l
 	);
 }

@@ -7,13 +7,14 @@
 #include <fcppt/container/bitfield/comparison.hpp>
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_comparison
+TEST_CASE(
+	"container::bitfield comparison",
+	"[container],[bitfield]"
 )
 {
 	enum class test_enum
@@ -38,7 +39,7 @@ BOOST_AUTO_TEST_CASE(
 		bitfield::null()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		field1
 		==
 		field2
@@ -48,13 +49,13 @@ BOOST_AUTO_TEST_CASE(
 		test_enum::test2
 	] = true;
 
-	BOOST_CHECK(
+	CHECK(
 		field1
 		!=
 		field2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		field1
 		<
 		field2
@@ -65,7 +66,7 @@ BOOST_AUTO_TEST_CASE(
 		field2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		field2
 		<
 		field1

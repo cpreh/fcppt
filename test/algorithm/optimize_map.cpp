@@ -80,7 +80,8 @@ main()
 	);
 
 	static_assert(
-		!fcppt::algorithm::detail::has_reserve<
+		not
+		fcppt::algorithm::detail::has_reserve<
 			int_int_map
 		>::value,
 		"map does not have reserve"
@@ -102,7 +103,8 @@ main()
 	);
 
 	static_assert(
-		!fcppt::algorithm::detail::optimize_map<
+		not
+		fcppt::algorithm::detail::optimize_map<
 			int_int_map,
 			int_vector
 		>::value,
@@ -152,7 +154,8 @@ main()
 	};
 
 	static_assert(
-		!source_optimized<
+		not
+		source_optimized<
 			bi_range
 		>::value,
 		"random access iterator not detected"

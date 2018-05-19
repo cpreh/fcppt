@@ -10,12 +10,13 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_clamped_sup
+TEST_CASE(
+	"container::grid::clamped_sup",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -32,7 +33,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	pos;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::grid::clamped_sup(
 			pos(
 				4u,
@@ -42,7 +43,8 @@ BOOST_AUTO_TEST_CASE(
 				3u,
 				3u
 			)
-		).get(),
+		).get()
+		==
 		pos(
 			3u,
 			3u

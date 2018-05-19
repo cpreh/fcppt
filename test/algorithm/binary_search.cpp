@@ -17,7 +17,7 @@
 
 TEST_CASE(
 	"algorithm binary search"
-	"[algorithm_binary_search]"
+	"[algorithm]"
 )
 {
 	typedef
@@ -32,8 +32,8 @@ TEST_CASE(
 		7
 	};
 
-	CHECK(
-		!fcppt::algorithm::binary_search(
+	CHECK_FALSE(
+		fcppt::algorithm::binary_search(
 			vec,
 			3
 		).has_value()

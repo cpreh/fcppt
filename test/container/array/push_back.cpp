@@ -9,81 +9,44 @@
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/container/array/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	array_push_back
+TEST_CASE(
+	"array::push_back",
+	"[container],[array]"
 )
 {
-	typedef
-	std::array<
-		int,
-		3
-	>
-	int3_array;
-
-	typedef
-	std::array<
-		int,
-		4
-	>
-	int4_array;
-
-	int3_array const test{{
-		1,
-		2,
-		3
-	}};
-
-	int4_array const result(
+	CHECK(
 		fcppt::container::array::push_back(
-			test,
+			std::array<
+				int,
+				3
+			>{{
+				1,
+				2,
+				3
+			}},
 			4
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		),
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		),
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			2
-		>(
-			result
-		),
-		3
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			3
-		>(
-			result
-		),
-		4
+		==
+		std::array<
+			int,
+			4
+		>{{
+			1,
+			2,
+			3,
+			4
+		}}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	array_push_back_move
+TEST_CASE(
+	"array::push_back move",
+	"[container],[array]"
 )
 {
 	typedef
@@ -112,21 +75,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			1
 		>(
 			result
-		),
+		)
+		==
 		2
 	);
 }

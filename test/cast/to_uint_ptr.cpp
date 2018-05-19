@@ -6,13 +6,14 @@
 
 #include <fcppt/cast/to_uint_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	cast_to_uint_ptr
+TEST_CASE(
+	"cast::to_uint_ptr"
+	"[cast]"
 )
 {
 	int const value1{
@@ -35,7 +36,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		ptr1
 		!=
 		ptr2

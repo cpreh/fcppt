@@ -11,12 +11,13 @@
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_box_init_dim
+TEST_CASE(
+	"math::box::init_dim",
+	"[math],[box]"
 )
 {
 	typedef
@@ -25,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	box2;
 
-	box2 const result(
+	CHECK(
 		fcppt::math::box::init_dim<
 			box2
 		>(
@@ -40,10 +41,7 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result,
+		==
 		box2(
 			box2::vector(
 				0u,

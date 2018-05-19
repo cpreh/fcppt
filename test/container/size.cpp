@@ -6,43 +6,42 @@
 
 #include <fcppt/container/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <list>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_size
+TEST_CASE(
+	"container::size",
+	"[container]"
 )
 {
-	std::list<
-		int
-	> const test{
-		1,
-		2,
-		3,
-		4
-	};
-
-	std::vector<
-		int
-	> test2{
-		1,
-		2
-	};
-
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::size(
-			test
-		),
+			std::list<
+				int
+			>{
+				1,
+				2,
+				3,
+				4
+			}
+		)
+		==
 		4u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::size(
-			test2
-		),
+			std::vector<
+				int
+			>{
+				1,
+				2
+			}
+		)
+		==
 		2u
 	);
 

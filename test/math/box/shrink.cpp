@@ -9,12 +9,13 @@
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/shrink.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_box_shrink
+TEST_CASE(
+	"math::box::shrink",
+	"[math],[box]"
 )
 {
 	typedef
@@ -24,25 +25,24 @@ BOOST_AUTO_TEST_CASE(
 	>
 	signed_box_type;
 
-	signed_box_type const b(
-		signed_box_type::vector(
-			10,
-			12
-		),
-		signed_box_type::dim(
-			24,
-			26
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::box::shrink(
-			b,
+			signed_box_type{
+				signed_box_type::vector(
+					10,
+					12
+				),
+				signed_box_type::dim(
+					24,
+					26
+				)
+			},
 			signed_box_type::vector(
 				2,
 				5
 			)
-		),
+		)
+		==
 		signed_box_type(
 			signed_box_type::vector(
 				12,

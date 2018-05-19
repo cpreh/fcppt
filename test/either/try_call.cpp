@@ -8,15 +8,16 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/either/try_call.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <exception>
 #include <stdexcept>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_try_call
+TEST_CASE(
+	"either::try_call",
+	"[either]"
 )
 {
 	typedef
@@ -39,7 +40,7 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::try_call<
 			std::exception
 		>(
@@ -48,13 +49,14 @@ BOOST_AUTO_TEST_CASE(
 					42;
 			},
 			translate_exception
-		),
+		)
+		==
 		either_int{
 			42
 		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::either::try_call<
 			std::exception
 		>(

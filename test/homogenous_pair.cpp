@@ -5,20 +5,24 @@
 
 
 #include <fcppt/homogenous_pair.hpp>
+#include <fcppt/homogenous_pair_output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	homogenous_pair
+TEST_CASE(
+	"homogenous_pair",
+	"[various]"
 )
 {
-	typedef fcppt::homogenous_pair<
+	typedef
+	fcppt::homogenous_pair<
 		int
-	> int_homogenous_pair;
+	>
+	int_homogenous_pair;
 
-	BOOST_CHECK(
+	CHECK(
 		int_homogenous_pair(
 			5,
 			6
@@ -30,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		int_homogenous_pair(
 			3,
 			6
@@ -42,7 +46,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		int_homogenous_pair(
 			3,
 			6
@@ -54,7 +58,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		int_homogenous_pair(
 			2,
 			3

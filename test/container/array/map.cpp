@@ -11,34 +11,24 @@
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/array/map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	array_map
+TEST_CASE(
+	"array::map",
+	"[container],[array]"
 )
 {
-	typedef
-	std::array<
-		int,
-		2
-	>
-	int_2_array;
-
-	typedef
-	std::array<
-		std::string,
-		2
-	>
-	string_2_array;
-
-	string_2_array const result(
+	CHECK(
 		fcppt::container::array::map(
-			int_2_array{{
+			std::array<
+				int,
+				2
+			>{{
 				1,
 				2
 			}},
@@ -54,29 +44,24 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		),
-		"1"
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		),
-		"2"
+		==
+		std::array<
+			std::string,
+			2
+		>{{
+			std::string{
+				"1"
+			},
+			std::string{
+				"2"
+			}
+		}}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	array_map_move
+TEST_CASE(
+	"array::map move",
+	"[container],[array]"
 )
 {
 	typedef
@@ -132,21 +117,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		).get(),
+		).get()
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			1
 		>(
 			result
-		).get(),
+		).get()
+		==
 		2
 	);
 }

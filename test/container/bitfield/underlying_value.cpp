@@ -11,12 +11,13 @@
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_underlying_value
+TEST_CASE(
+	"container::bitfield::underlying_value",
+	"[container],[bitfield]"
 )
 {
 	enum class test_enum
@@ -73,23 +74,23 @@ BOOST_AUTO_TEST_CASE(
 			field1
 		)
 	);
-#
-	BOOST_CHECK(
-		!check_bit(
+
+	CHECK_FALSE(
+		check_bit(
 			value,
 			test_enum::test1
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		check_bit(
 			value,
 			test_enum::test2
 		)
 	);
 
-	BOOST_CHECK(
-		!check_bit(
+	CHECK_FALSE(
+		check_bit(
 			value,
 			test_enum::test3
 		)

@@ -11,15 +11,16 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_move
+TEST_CASE(
+	"container::tree move",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -42,23 +43,24 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		tree1.empty()
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree2.value(),
+	CHECK(
+		tree2.value()
+		==
 		std::string("root")
 	);
 
-	BOOST_CHECK(
-		!tree2.empty()
+	CHECK_FALSE(
+		tree2.empty()
 	);
 
 	fcppt::optional::maybe(
 		tree2.front(),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -70,15 +72,16 @@ BOOST_AUTO_TEST_CASE(
 			> const _front
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				_front.get().value(),
+			CHECK(
+				_front.get().value()
+				==
 				std::string("child1")
 			);
 
 			fcppt::optional::maybe(
 				_front.get().parent(),
 				[]{
-					BOOST_CHECK(
+					CHECK(
 						false
 					);
 				},
@@ -90,8 +93,9 @@ BOOST_AUTO_TEST_CASE(
 					> const _parent
 				)
 				{
-					BOOST_CHECK_EQUAL(
-						&_parent.get(),
+					CHECK(
+						&_parent.get()
+						==
 						&tree2
 					);
 				}
@@ -108,23 +112,24 @@ BOOST_AUTO_TEST_CASE(
 			tree2
 		);
 
-	BOOST_CHECK(
+	CHECK(
 		tree2.empty()
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree3.value(),
+	CHECK(
+		tree3.value()
+		==
 		std::string("root")
 	);
 
-	BOOST_CHECK(
-		!tree3.empty()
+	CHECK_FALSE(
+		tree3.empty()
 	);
 
 	fcppt::optional::maybe(
 		tree3.front(),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -136,15 +141,16 @@ BOOST_AUTO_TEST_CASE(
 			> const _front
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				_front.get().value(),
+			CHECK(
+				_front.get().value()
+				==
 				std::string("child1")
 			);
 
 			fcppt::optional::maybe(
 				_front.get().parent(),
 				[]{
-					BOOST_CHECK(
+					CHECK(
 						false
 					);
 				},
@@ -156,8 +162,9 @@ BOOST_AUTO_TEST_CASE(
 					> const _parent
 				)
 				{
-					BOOST_CHECK_EQUAL(
-						&_parent.get(),
+					CHECK(
+						&_parent.get()
+						==
 						&tree3
 					);
 				}
@@ -166,8 +173,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_move_map
+TEST_CASE(
+	"container::tree move map",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -220,22 +228,25 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		strings.size(),
+	REQUIRE(
+		strings.size()
+		==
 		result.size()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*result.at(
 			0
-		).value(),
+		).value()
+		==
 		std::string("foo")
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*result.at(
 			1
-		).value(),
+		).value()
+		==
 		std::string("bar")
 	);
 }

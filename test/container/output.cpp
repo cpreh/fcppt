@@ -6,15 +6,16 @@
 
 #include <fcppt/container/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_output
+TEST_CASE(
+	"container::output",
+	"[container]"
 )
 {
 	typedef
@@ -37,8 +38,9 @@ BOOST_AUTO_TEST_CASE(
 				input
 			);
 
-		BOOST_CHECK_EQUAL(
-			stream.str(),
+		CHECK(
+			stream.str()
+			==
 			std::string(
 				"[1,2]"
 			)
@@ -54,7 +56,7 @@ BOOST_AUTO_TEST_CASE(
 				input
 			);
 
-		BOOST_CHECK(
+		CHECK(
 			stream.str()
 			==
 			std::wstring(

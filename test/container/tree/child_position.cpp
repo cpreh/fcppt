@@ -10,12 +10,13 @@
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_child_position
+TEST_CASE(
+	"container::tree::child_position",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -54,7 +55,7 @@ BOOST_AUTO_TEST_CASE(
 			}
 		),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -64,7 +65,7 @@ BOOST_AUTO_TEST_CASE(
 			int_tree::iterator const _pos
 		)
 		{
-			BOOST_CHECK(
+			CHECK(
 				_pos
 				==
 				test.begin()

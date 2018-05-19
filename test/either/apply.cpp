@@ -8,13 +8,14 @@
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_apply
+TEST_CASE(
+	"either::apply",
+	"[either]"
 )
 {
 	typedef
@@ -55,7 +56,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
@@ -68,7 +69,8 @@ BOOST_AUTO_TEST_CASE(
 					"test2"
 				)
 			)
-		),
+		)
+		==
 		either_bool(
 			std::string(
 				"test"
@@ -76,7 +78,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
@@ -87,7 +89,8 @@ BOOST_AUTO_TEST_CASE(
 					"test2"
 				)
 			)
-		),
+		)
+		==
 		either_bool(
 			std::string(
 				"test2"
@@ -95,7 +98,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
@@ -104,7 +107,8 @@ BOOST_AUTO_TEST_CASE(
 			either_uint(
 				100u
 			)
-		),
+		)
+		==
 		either_bool(
 			false
 		)

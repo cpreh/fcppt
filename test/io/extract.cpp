@@ -9,26 +9,28 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	io_extract
+TEST_CASE(
+	"io::extract",
+	"[io]"
 )
 {
 	{
-		std::istringstream stream(
+		std::istringstream stream{
 			"xy"
-		);
+		};
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::io::extract<
 				int
 			>(
 				stream
-			),
+			)
+			==
 			fcppt::optional::object<
 				int
 			>{}
@@ -36,16 +38,17 @@ BOOST_AUTO_TEST_CASE(
 	}
 
 	{
-		std::istringstream stream(
+		std::istringstream stream{
 			"42"
-		);
+		};
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::io::extract<
 				int
 			>(
 				stream
-			),
+			)
+			==
 			fcppt::optional::make(
 				42
 			)

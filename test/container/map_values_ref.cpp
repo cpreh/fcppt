@@ -10,7 +10,7 @@
 #include <fcppt/reference_output.hpp>
 #include <fcppt/container/map_values_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
 #include <string>
 #include <utility>
@@ -18,8 +18,9 @@
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_map_values_ref
+TEST_CASE(
+	"container::map_values_ref",
+	"[container]"
 )
 {
 	typedef
@@ -56,61 +57,37 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	{
-		string_vector_ref const strings_ref(
-			fcppt::container::map_values_ref<
-				string_vector_ref
-			>(
-				map
-			)
-		);
-
-		BOOST_REQUIRE_EQUAL(
-			strings_ref.size(),
-			2u
-		);
-
-		BOOST_CHECK_EQUAL(
-			strings_ref[0],
+	CHECK(
+		fcppt::container::map_values_ref<
+			string_vector_ref
+		>(
+			map
+		)
+		==
+		string_vector_ref{
 			fcppt::make_ref(
 				map[1]
-			)
-		);
-
-		BOOST_CHECK_EQUAL(
-			strings_ref[1],
+			),
 			fcppt::make_ref(
 				map[2]
 			)
-		);
-	}
+		}
+	);
 
-	{
-		string_vector_cref const strings_cref(
-			fcppt::container::map_values_ref<
-				string_vector_cref
-			>(
-				map
-			)
-		);
-
-		BOOST_REQUIRE_EQUAL(
-			strings_cref.size(),
-			2u
-		);
-
-		BOOST_CHECK_EQUAL(
-			strings_cref[0],
+	CHECK(
+		fcppt::container::map_values_ref<
+			string_vector_cref
+		>(
+			map
+		)
+		==
+		string_vector_cref{
 			fcppt::make_cref(
 				map[1]
-			)
-		);
-
-		BOOST_CHECK_EQUAL(
-			strings_cref[1],
+			),
 			fcppt::make_cref(
 				map[2]
 			)
-		);
-	}
+		}
+	);
 }

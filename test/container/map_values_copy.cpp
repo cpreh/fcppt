@@ -6,7 +6,7 @@
 
 #include <fcppt/container/map_values_copy.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
 #include <string>
 #include <utility>
@@ -14,8 +14,9 @@
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_map_values_copy
+TEST_CASE(
+	"container::map_values_copy",
+	"[container]"
 )
 {
 	typedef
@@ -31,7 +32,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_string_map;
 
-	string_vector const strings(
+	CHECK(
 		fcppt::container::map_values_copy<
 			string_vector
 		>(
@@ -46,20 +47,14 @@ BOOST_AUTO_TEST_CASE(
 				)
 			}
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		strings.size(),
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		strings[0],
-		"test1"
-	);
-
-	BOOST_CHECK_EQUAL(
-		strings[1],
-		"test2"
+		==
+		string_vector{
+			std::string{
+				"test1"
+			},
+			std::string{
+				"test2"
+			}
+		}
 	);
 }

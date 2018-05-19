@@ -12,20 +12,19 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#include <ostream>
 #include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	tuple_vararg_map
+TEST_CASE(
+	"container::tuple::vararg_map",
+	"[container],[tuple]"
 )
 {
-	std::tuple<
-		unsigned,
-		unsigned long
-	> const result(
+	CHECK(
 		fcppt::container::tuple::vararg_map(
 			std::tuple<
 				fcppt::tag<
@@ -65,24 +64,14 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0u
-		>(
-			result
-		),
-		42u
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0u
-		>(
-			result
-		),
-		42uL
+		==
+		std::tuple<
+			unsigned,
+			unsigned long
+		>{
+			42u,
+			42uL
+		}
 	);
 }
 
@@ -124,13 +113,38 @@ private:
 	int value_;
 };
 
-}
-
-BOOST_AUTO_TEST_CASE(
-	tuple_vararg_map_move
+bool
+operator==(
+	movable const &_left,
+	movable const &_right
 )
 {
-	movable const result{
+	return
+		_left.value()
+		==
+		_right.value();
+}
+
+std::ostream &
+operator<<(
+	std::ostream &_stream,
+	movable const &_obj
+)
+{
+	return
+		_stream
+		<<
+		_obj.value();
+}
+
+}
+
+TEST_CASE(
+	"container::tuple::vararg_map move",
+	"[container],[tuple]"
+)
+{
+	CHECK(
 		fcppt::container::tuple::vararg_map(
 			std::make_tuple(
 				movable{
@@ -163,10 +177,9 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	};
-
-	BOOST_CHECK_EQUAL(
-		result.value(),
-		42
+		==
+		movable{
+			42
+		}
 	);
 }

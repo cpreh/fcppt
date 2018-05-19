@@ -8,14 +8,15 @@
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/container/tuple/to_varargs.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	tuple_to_varargs
+TEST_CASE(
+	"container::tuple::to_varargs",
+	"[container],[tuple]"
 )
 {
 	std::tuple<
@@ -33,14 +34,18 @@ BOOST_AUTO_TEST_CASE(
 			std::string const &_string
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				_val,
+			CHECK(
+				_val
+				==
 				42
 			);
 
-			BOOST_CHECK_EQUAL(
-				_string,
-				"42"
+			CHECK(
+				_string
+				==
+				std::string{
+					"42"
+				}
 			);
 		}
 	);
@@ -59,8 +64,9 @@ BOOST_AUTO_TEST_CASE(
 			> &&_ptr
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				*_ptr,
+			CHECK(
+				*_ptr
+				==
 				100
 			);
 		}

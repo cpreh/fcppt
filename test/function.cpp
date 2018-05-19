@@ -8,7 +8,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,8 +20,9 @@ fcppt::function<
 	)
 >;
 
-BOOST_AUTO_TEST_CASE(
-	function
+TEST_CASE(
+	"function",
+	"[various]"
 )
 {
 	typedef
@@ -44,17 +45,19 @@ BOOST_AUTO_TEST_CASE(
 		}
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fun(
 			10
-		),
+		)
+		==
 		20
 	);
 }
 
 
-BOOST_AUTO_TEST_CASE(
-	function_move
+TEST_CASE(
+	"function move",
+	"[various]"
 )
 {
 	typedef
@@ -83,14 +86,15 @@ BOOST_AUTO_TEST_CASE(
 		}
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fun(
 			fcppt::make_unique_ptr<
 				int
 			>(
 				10
 			)
-		),
+		)
+		==
 		20
 	);
 }

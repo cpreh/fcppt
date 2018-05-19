@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <iterator>
 #include <sstream>
@@ -21,7 +22,7 @@ typedef
 fcppt::container::raw_vector::object<
 	int
 >
-container_type;
+int_vector;
 
 }
 
@@ -31,11 +32,12 @@ fcppt::container::raw_vector::object<
 	int
 >;
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_shrink_to_fit
+TEST_CASE(
+	"container::raw_vector::shrink_to_fit",
+	"[container],[raw_vector]"
 )
 {
-	container_type test;
+	int_vector test{};
 
 	test.resize(
 		100u,
@@ -46,34 +48,40 @@ BOOST_AUTO_TEST_CASE(
 		1000u
 	);
 
-	BOOST_CHECK(
-		test.capacity() >= 1000u
+	CHECK(
+		test.capacity()
+		>=
+		1000u
 	);
 
 	test.shrink_to_fit();
 
-	BOOST_CHECK_EQUAL(
-		test.capacity(),
+	CHECK(
+		test.capacity()
+		==
 		100u
 	);
 
-	BOOST_CHECK_EQUAL(
-		test.size(),
+	CHECK(
+		test.size()
+		==
 		100u
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_shrink
+TEST_CASE(
+	"container::raw_vector shrink"
+	"[container],[raw_vector]"
 )
 {
-	container_type test(
+	int_vector test(
 		10u,
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
-		test.size(),
+	CHECK(
+		test.size()
+		==
 		10u
 	);
 
@@ -82,23 +90,31 @@ BOOST_AUTO_TEST_CASE(
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
-		test.size(),
+	CHECK(
+		test.size()
+		==
 		5u
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_insert
+TEST_CASE(
+	"container::raw_vector::insert",
+	"[container],[raw_vector]"
 )
 {
-	container_type test;
+	int_vector test{};
 
-	test.push_back(10);
-	test.push_back(20);
+	test.push_back(
+		10
+	);
 
-	BOOST_CHECK_EQUAL(
-		test.size(),
+	test.push_back(
+		20
+	);
+
+	REQUIRE(
+		test.size()
+		==
 		2u
 	);
 
@@ -107,24 +123,14 @@ BOOST_AUTO_TEST_CASE(
 		30
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test.size(),
-		3u
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[0],
-		10
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[1],
-		30
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[2],
-		20
+	REQUIRE(
+		test
+		==
+		int_vector{
+			10,
+			30,
+			20
+		}
 	);
 
 	test.insert(
@@ -133,47 +139,32 @@ BOOST_AUTO_TEST_CASE(
 		40
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test.size(),
-		5u
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[0],
-		10
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[1],
-		30
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[2],
-		40
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[3],
-		40
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[4],
-		20
+	CHECK(
+		test
+		==
+		int_vector{
+			10,
+			30,
+			40,
+			40,
+			20
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_insert_iterator
+TEST_CASE(
+	"container::raw_vector insert iterator",
+	"[container],[raw_vector]"
 )
 {
-	container_type test;
+	int_vector test{};
 
-	typedef std::array<
+	typedef
+	std::array<
 		int,
 		5
-	> int_array;
+	>
+	int_array;
 
 	int_array const array{{
 		0, 1, 2, 3, 4
@@ -185,37 +176,19 @@ BOOST_AUTO_TEST_CASE(
 		array.end()
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test.size(),
-		5u
+	CHECK(
+		test
+		==
+		int_vector{
+			0,
+			1,
+			2,
+			3,
+			4
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		test[0],
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[1],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[2],
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[3],
-		3
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[4],
-		4
-	);
-
-	std::stringstream stream;
+	std::stringstream stream{};
 
 	stream
 		<< 10 << ' '
@@ -236,115 +209,105 @@ BOOST_AUTO_TEST_CASE(
 		>()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		stream.eof()
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test.size(),
-		10u
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[5],
-		10
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[6],
-		20
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[7],
-		30
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[8],
-		40
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[9],
-		50
+	CHECK(
+		test
+		==
+		int_vector{
+			0,
+			1,
+			2,
+			3,
+			4,
+			10,
+			20,
+			30,
+			40,
+			50
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_push_back
+TEST_CASE(
+	"container::raw_vector::push_back",
+	"[container],[raw_vector]"
 )
 {
-	container_type test;
+	int_vector test{};
 
 	for(
-		container_type::size_type i(0);
-		i < 50u;
+		int_vector::value_type i{
+			0
+		};
+		i < 50;
 		++i
 	)
 		test.push_back(
-			static_cast<
-				container_type::value_type
-			>(i)
+			i
 		);
 
 	for(
-		container_type::size_type i(0);
+		int_vector::size_type i{
+			0
+		};
 		i < test.size();
 		++i
 	)
-		BOOST_CHECK_EQUAL(
-			test[i],
+		CHECK(
+			test[
+				i
+			]
+			==
 			static_cast<
-				container_type::value_type
-			>(i)
+				int_vector::value_type
+			>(
+				i
+			)
 		);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_erase
+TEST_CASE(
+	"container::raw_vector::erase",
+	"[container],[raw_vector]"
 )
 {
-	container_type test;
+	int_vector test{};
 
 	for(
-		container_type::size_type i(0);
-		i < 5u;
+		int_vector::value_type i{
+			0
+		};
+		i < 5;
 		++i
 	)
 		test.push_back(
-			static_cast<
-				container_type::value_type
-			>(i)
+			i
 		);
 
+	REQUIRE(
+		test.size()
+		==
+		5u
+	);
+
 	test.erase(
-		test.begin() + 3
+		test.begin()
+		+
+		3
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test.size(),
-		4u
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[0],
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[1],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[2],
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[3],
-		4
+	CHECK(
+		test
+		==
+		int_vector{
+			0,
+			1,
+			2,
+			4
+		}
 	);
 
 	test.erase(
@@ -352,108 +315,112 @@ BOOST_AUTO_TEST_CASE(
 		test.begin() + 3
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test.size(),
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[0],
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		test[1],
-		4
+	CHECK(
+		test
+		==
+		int_vector{
+			0,
+			4
+		}
 	);
 
 	test.clear();
 
-	BOOST_REQUIRE(
+	CHECK(
 		test.empty()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_move
+TEST_CASE(
+	"container::raw_vector move",
+	"[container],[raw_vector]"
 )
 {
-	container_type test1(
+	int_vector test1(
 		100u,
 		0
 	);
 
 	test1[0] = 500;
 
-	container_type test2(
+	int_vector test2(
 		std::move(
 			test1
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test2.size(),
+	REQUIRE(
+		test2.size()
+		==
 		100u
 	);
 
-	BOOST_CHECK_EQUAL(
-		test2[0],
+	CHECK(
+		test2[0]
+		==
 		500
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test1.empty()
 	);
 
-	container_type test3;
+	int_vector test3{};
 
 	test3 =
 		std::move(
 			test2
 		);
 
-	BOOST_REQUIRE_EQUAL(
-		test3.size(),
+	REQUIRE(
+		test3.size()
+		==
 		100u
 	);
 
-	BOOST_CHECK_EQUAL(
-		test3[0],
+	CHECK(
+		test3[0]
+		==
 		500
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test2.empty()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_initializer_list
+TEST_CASE(
+	"container::raw_vector initializer_list",
+	"[container],[raw_vector]"
 )
 {
-	container_type const test1{
+	int_vector const test1{
 		1,
 		2,
 		3
 	};
 
-	BOOST_REQUIRE_EQUAL(
-		test1.size(),
+	REQUIRE(
+		test1.size()
+		==
 		3u
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1[0],
+	CHECK(
+		test1[0]
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1[1],
+	CHECK(
+		test1[1]
+		==
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1[2],
+	CHECK(
+		test1[2]
+		==
 		3
 	);
 }

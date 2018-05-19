@@ -11,7 +11,7 @@
 #include <fcppt/cast/dynamic_exn.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -72,8 +72,9 @@ struct derived2
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	cast_dynamic
+TEST_CASE(
+	"cast::dynamic"
+	"[cast]"
 )
 {
 	derived1 d1{};
@@ -88,7 +89,7 @@ BOOST_AUTO_TEST_CASE(
 		d2
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::cast::dynamic<
 			derived1
 		>(
@@ -96,33 +97,34 @@ BOOST_AUTO_TEST_CASE(
 		).has_value()
 	);
 
-	BOOST_CHECK((
+	CHECK(
 		fcppt::cast::apply<
 			fcppt::cast::dynamic_fun,
 			derived1
 		>(
 			b1
 		).has_value()
-	));
+	);
 
-	BOOST_CHECK(
-		!fcppt::cast::dynamic<
+	CHECK_FALSE(
+		fcppt::cast::dynamic<
 			derived1
 		>(
 			b2
 		).has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		&fcppt::cast::dynamic_exn<
 			derived1 &
 		>(
 			b1
-		),
+		)
+		==
 		&d1
 	);
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::dynamic_exn<
 			derived1 &
 		>(

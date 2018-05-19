@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/identity.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/enum/make_range.hpp>
 #include <fcppt/enum/make_range_start.hpp>
 #include <fcppt/enum/make_range_start_end.hpp>
 #include <fcppt/enum/range_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,42 +33,36 @@ std::vector<
 >
 enum_vector;
 
-void
-test(
+enum_vector
+copy_range(
 	fcppt::enum_::range<
 		test_enum
-	> const _range,
-	enum_vector const &_result
+	> const _range
 )
 {
-	enum_vector values;
-
-	for(
-		test_enum const value
-		:
-		_range
-	)
-		values.push_back(
-			value
+	return
+		fcppt::algorithm::map<
+			enum_vector
+		>(
+			_range,
+			fcppt::identity{}
 		);
-
-	BOOST_CHECK((
-		values
-		==
-		_result
-	));
 }
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	enum_range
+TEST_CASE(
+	"enum::make_range",
+	"[enum]"
 )
 {
-	test(
-		fcppt::enum_::make_range<
-			test_enum
-		>(),
+	CHECK(
+		copy_range(
+			fcppt::enum_::make_range<
+				test_enum
+			>()
+		)
+		==
 		enum_vector{
 			test_enum::test1,
 			test_enum::test2,
@@ -75,14 +71,18 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	enum_range_start
+TEST_CASE(
+	"enum::make_range_start",
+	"[enum]"
 )
 {
-	test(
-		fcppt::enum_::make_range_start(
-			test_enum::test2
-		),
+	CHECK(
+		copy_range(
+			fcppt::enum_::make_range_start(
+				test_enum::test2
+			)
+		)
+		==
 		enum_vector{
 			test_enum::test2,
 			test_enum::test3
@@ -90,15 +90,19 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	enum_range_start_end
+TEST_CASE(
+	"enum::make_range_start_end",
+	"[enum]"
 )
 {
-	test(
-		fcppt::enum_::make_range_start_end(
-			test_enum::test2,
-			test_enum::test2
-		),
+	CHECK(
+		copy_range(
+			fcppt::enum_::make_range_start_end(
+				test_enum::test2,
+				test_enum::test2
+			)
+		)
+		==
 		enum_vector{
 			test_enum::test2
 		}

@@ -7,43 +7,50 @@
 #include <fcppt/container/tree/comparison.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_equal
+TEST_CASE(
+	"container::tree equal",
+	"[container],[tree]"
 )
 {
-	typedef fcppt::container::tree::object<
+	typedef
+	fcppt::container::tree::object<
 		unsigned
-	> ui_tree;
+	>
+	ui_tree;
 
-	ui_tree tree1(
+	ui_tree tree1{
 		42
-	);
+	};
 
 	tree1.push_back(
 		100
 	);
 
-	ui_tree tree2(
+	ui_tree tree2{
 		42
-	);
+	};
 
 	tree2.push_back(
 		100
 	);
 
-	BOOST_CHECK(
-		tree1 == tree2
+	CHECK(
+		tree1
+		==
+		tree2
 	);
 
 	tree2.push_back(
 		200
 	);
 
-	BOOST_CHECK(
-		tree1 != tree2
+	CHECK(
+		tree1
+		!=
+		tree2
 	);
 }

@@ -8,12 +8,20 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_pre_order
+template
+class
+fcppt::container::tree::object<
+	int
+>;
+
+TEST_CASE(
+	"container::tree::pre_order",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -60,61 +68,70 @@ BOOST_AUTO_TEST_CASE(
 		tree
 	);
 
+	REQUIRE(
+		std::distance(
+			trav.begin(),
+			trav.end()
+		)
+		==
+		6
+	);
+
 	traversal_type::iterator it(
 		trav.begin()
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		1
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		2
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		3
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		4
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		5
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		6
 	);
 
 	++it;
 
-	BOOST_REQUIRE(
+	CHECK(
 		it
 		==
 		trav.end()
 	);
 }
-
-template
-class
-fcppt::container::tree::object<
-	int
->;

@@ -8,13 +8,14 @@
 #include <fcppt/container/grid/in_range_dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_in_range_dim
+TEST_CASE(
+	"container::grid::in_range_dim",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -36,7 +37,7 @@ BOOST_AUTO_TEST_CASE(
 		4u
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::container::grid::in_range_dim(
 			test,
 			int2_pos(
@@ -46,8 +47,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::container::grid::in_range_dim(
+	CHECK_FALSE(
+		fcppt::container::grid::in_range_dim(
 			test,
 			int2_pos(
 				3u,
@@ -56,8 +57,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::container::grid::in_range_dim(
+	CHECK_FALSE(
+		fcppt::container::grid::in_range_dim(
 			test,
 			int2_pos(
 				2u,

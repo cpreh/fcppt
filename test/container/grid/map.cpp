@@ -15,14 +15,15 @@
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_map
+TEST_CASE(
+	"container::grid::map",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -82,38 +83,42 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		grid.size(),
+	REQUIRE(
+		grid.size()
+		==
 		result.size()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		result.get_unsafe(
 			string_grid::pos(
 				0u,
 				0u
 			)
-		),
+		)
+		==
 		std::string(
 			"0"
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		result.get_unsafe(
 			string_grid::pos(
 				1u,
 				2u
 			)
-		),
+		)
+		==
 		std::string(
 			"3"
 		)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_map_move
+TEST_CASE(
+	"container::grid::map move",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -140,7 +145,6 @@ BOOST_AUTO_TEST_CASE(
 		2
 	>
 	strong_grid;
-
 
 	strong_grid const result(
 		fcppt::container::grid::map(
@@ -189,31 +193,34 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
+	REQUIRE(
 		strong_grid::dim(
 			3u,
 			2u
-		),
+		)
+		==
 		result.size()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*result.get_unsafe(
 			strong_grid::pos(
 				0u,
 				0u
 			)
-		).get(),
+		).get()
+		==
 		0u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*result.get_unsafe(
 			strong_grid::pos(
 				2u,
 				1u
 			)
-		).get(),
+		).get()
+		==
 		3u
 	);
 }

@@ -15,6 +15,8 @@
 int
 main()
 {
+	// TODO: Make a proper testcase
+
 	typedef
 	fcppt::container::tree::object<
 		int

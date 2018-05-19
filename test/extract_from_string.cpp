@@ -5,18 +5,17 @@
 
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	extract_from_string
+TEST_CASE(
+	"extract_from_string",
+	"[string]"
 )
 {
 	typedef
@@ -25,31 +24,29 @@ BOOST_AUTO_TEST_CASE(
 	>
 	opt_int;
 
-	opt_int const int_val(
+	CHECK(
 		fcppt::extract_from_string<
 			int
 		>(
-			fcppt::string(
-				FCPPT_TEXT("42")
+			std::string(
+				"42"
 			)
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		int_val,
-		opt_int(
+		==
+		opt_int{
 			42
-		)
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::extract_from_string<
 			int
 		>(
-			fcppt::string(
-				FCPPT_TEXT("abc")
+			std::string(
+				"abc"
 			)
-		),
+		)
+		==
 		opt_int{}
 	);
 }

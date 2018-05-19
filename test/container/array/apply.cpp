@@ -7,30 +7,23 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/unit.hpp>
+#include <fcppt/unit_comparison.hpp>
+#include <fcppt/unit_output.hpp>
 #include <fcppt/container/array/apply.hpp>
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	array_apply
+TEST_CASE(
+	"array::apply",
+	"[container],[array]"
 )
 {
-	typedef
-	std::array<
-		std::pair<
-			int,
-			bool
-		>,
-		2
-	>
-	result_array;
-
-	result_array const result(
+	CHECK(
 		fcppt::container::array::apply(
 			[](
 				int const _value1,
@@ -52,47 +45,29 @@ BOOST_AUTO_TEST_CASE(
 				false
 			)
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		).first,
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		).second,
-		true
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		).first,
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		).second,
-		false
+		==
+		std::array<
+			std::pair<
+				int,
+				bool
+			>,
+			2
+		>{{
+			std::make_pair(
+				1,
+				true
+			),
+			std::make_pair(
+				2,
+				false
+			)
+		}}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	array_apply_move
+TEST_CASE(
+	"array::apply move",
+	"[container],[array]"
 )
 {
 	typedef
@@ -147,33 +122,33 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		).first,
+		).first
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		).second,
+		).second
+		==
 		2
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	array_apply_empty
+TEST_CASE(
+	"array::apply empty",
+	"[container],[array]"
 )
 {
-	std::array<
-		fcppt::unit,
-		0
-	> const result(
+	CHECK(
 		fcppt::container::array::apply(
 			[](
 				bool,
@@ -192,9 +167,10 @@ BOOST_AUTO_TEST_CASE(
 				0
 			>{}
 		)
-	);
-
-	BOOST_CHECK(
-		result.empty()
+		==
+		std::array<
+			fcppt::unit,
+			0
+		>{}
 	);
 }

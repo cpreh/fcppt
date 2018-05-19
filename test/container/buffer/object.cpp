@@ -6,7 +6,7 @@
 
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,21 +28,24 @@ fcppt::container::buffer::object<
 	int
 >;
 
-BOOST_AUTO_TEST_CASE(
-	container_buffer_object
+TEST_CASE(
+	"container::buffer::object",
+	"[container],[buffer]"
 )
 {
 	container_type test1{
 		5u
 	};
 
-	BOOST_REQUIRE_EQUAL(
-		test1.read_size(),
+	REQUIRE(
+		test1.read_size()
+		==
 		0u
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test1.write_size(),
+	REQUIRE(
+		test1.write_size()
+		==
 		5u
 	);
 
@@ -53,26 +56,30 @@ BOOST_AUTO_TEST_CASE(
 		1u
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test1.read_size(),
+	REQUIRE(
+		test1.read_size()
+		==
 		1u
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test1.write_size(),
+	REQUIRE(
+		test1.write_size()
+		==
 		4u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test1[
 			0
-		],
+		]
+		==
 		10
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_buffer_move
+TEST_CASE(
+	"container::buffer move",
+	"[container],[buffer]"
 )
 {
 	container_type test1{
@@ -92,25 +99,27 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		test2.write_size(),
+	REQUIRE(
+		test2.write_size()
+		==
 		99u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test2[
 			0
-		],
+		]
+		==
 		42
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test1.write_data()
 		==
 		test1.write_data_end()
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test1.read_data()
 		==
 		test1.read_data_end()
@@ -125,33 +134,36 @@ BOOST_AUTO_TEST_CASE(
 			test2
 		);
 
-	BOOST_REQUIRE_EQUAL(
-		test3.write_size(),
+	REQUIRE(
+		test3.write_size()
+		==
 		99u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test3[
 			0
-		],
+		]
+		==
 		42
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test2.write_data()
 		==
 		test2.write_data_end()
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test2.read_data()
 		==
 		test2.read_data_end()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_buffer_resize_write_area
+TEST_CASE(
+	"container::buffer resize_write_area",
+	"[container],[buffer]"
 )
 {
 	container_type container{
@@ -164,13 +176,15 @@ BOOST_AUTO_TEST_CASE(
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		container.read_size(),
+	CHECK(
+		container.read_size()
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		container.write_size(),
+	CHECK(
+		container.write_size()
+		==
 		1u
 	);
 
@@ -178,18 +192,21 @@ BOOST_AUTO_TEST_CASE(
 		3u
 	);
 
-	BOOST_CHECK_EQUAL(
-		container.read_size(),
-		1u
-	);
-
-	BOOST_CHECK_EQUAL(
-		container.write_size(),
+	CHECK(
+		container.write_size()
+		==
 		3u
 	);
 
-	BOOST_CHECK_EQUAL(
-		container[0],
+	REQUIRE(
+		container.read_size()
+		==
+		1u
+	);
+
+	CHECK(
+		container[0]
+		==
 		10
 	);
 }

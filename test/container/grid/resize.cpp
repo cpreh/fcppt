@@ -14,13 +14,14 @@
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_resize
+TEST_CASE(
+	"container::grid::resize",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -76,8 +77,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
-		test.size(),
+	REQUIRE(
+		test.size()
+		==
 		sz_pair_grid::dim(
 			10u,
 			15u
@@ -102,7 +104,7 @@ BOOST_AUTO_TEST_CASE(
 			if(
 				x < 5 && y < 10
 			)
-				BOOST_CHECK(
+				CHECK(
 					test.get_unsafe(
 						sz_pair_grid::pos(
 							x,
@@ -124,7 +126,7 @@ BOOST_AUTO_TEST_CASE(
 					)
 				);
 			else
-				BOOST_CHECK(
+				CHECK(
 					test.get_unsafe(
 						sz_pair_grid::pos(
 							x,
@@ -140,8 +142,9 @@ BOOST_AUTO_TEST_CASE(
 		}
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_resize_move
+TEST_CASE(
+	"container::grid::resize move",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -214,7 +217,7 @@ BOOST_AUTO_TEST_CASE(
 			if(
 				x < 5 && y < 10
 			)
-				BOOST_CHECK(
+				CHECK(
 					*test.get_unsafe(
 						unique_ptr_grid::pos(
 							x,
@@ -225,7 +228,7 @@ BOOST_AUTO_TEST_CASE(
 					x + y
 				);
 			else
-				BOOST_CHECK(
+				CHECK(
 					*test.get_unsafe(
 						unique_ptr_grid::pos(
 							x,

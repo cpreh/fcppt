@@ -68,8 +68,8 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
-		!fcppt::algorithm::find_by_opt(
+	CHECK_FALSE(
+		fcppt::algorithm::find_by_opt(
 			vec,
 			[](
 				int const _i

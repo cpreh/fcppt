@@ -6,49 +6,37 @@
 
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	array_make
+TEST_CASE(
+	"array::make",
+	"[container],[array]"
 )
 {
 	std::string const string_ref{
 		"100"
 	};
 
-	std::array<
-		std::string,
-		2
-	> const result(
+	CHECK(
 		fcppt::container::array::make(
 			std::string{"42"},
 			string_ref
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		),
-		std::string{
-			"42"
-		}
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		),
-		std::string{
-			"100"
-		}
+		==
+		std::array<
+			std::string,
+			2
+		>{{
+			std::string{
+				"42"
+			},
+			std::string{
+				"100"
+			}
+		}}
 	);
 }

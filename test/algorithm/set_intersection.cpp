@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm set_intersection",
-	"[algorithm_set_intersection]"
+	"algorithm::set_intersection",
+	"[algorithm]"
 )
 {
 	typedef

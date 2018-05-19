@@ -11,19 +11,20 @@
 #include <fcppt/endianness/is_little_endian.hpp>
 #include <fcppt/endianness/swap.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	endianness
+TEST_CASE(
+	"endianness",
+	"[endianness]"
 )
 {
-	int foo{
+	int const foo{
 		108
 	};
 
-	BOOST_CHECK((
+	CHECK((
 		(
 			fcppt::endianness::is_little_endian()
 			&&
@@ -47,34 +48,37 @@ BOOST_AUTO_TEST_CASE(
 		)
 	));
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::endianness::swap(
 			fcppt::endianness::swap(
 				foo
 			)
-		),
+		)
+		==
 		foo
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::endianness::convert(
 			fcppt::endianness::convert(
 				foo,
 				fcppt::endianness::format::big
 			),
 			fcppt::endianness::format::big
-		),
+		)
+		==
 		108
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::endianness::convert(
 			fcppt::endianness::convert(
 				foo,
 				fcppt::endianness::format::little
 			),
 			fcppt::endianness::format::little
-		),
+		)
+		==
 		108
 	);
 }

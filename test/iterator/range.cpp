@@ -6,7 +6,7 @@
 
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -25,34 +25,39 @@ test_iterator(
 	> const _range
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		std::distance(
 			_range.begin(),
 			_range.end()
-		),
+		)
+		==
 		3
 	);
 
-	BOOST_CHECK_EQUAL(
-		*_range.begin(),
+	CHECK(
+		*_range.begin()
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
-		*(_range.begin() + 1),
+	CHECK(
+		*(_range.begin() + 1)
+		==
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
-		*(_range.begin() + 2),
+	CHECK(
+		*(_range.begin() + 2)
+		==
 		3
 	);
 }
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	make_range
+TEST_CASE(
+	"iterator::make_range",
+	"[iterator]"
 )
 {
 	typedef

@@ -6,13 +6,15 @@
 
 #include <fcppt/container/grid/comparison.hpp>
 #include <fcppt/container/grid/object.hpp>
+#include <fcppt/container/grid/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_compare
+TEST_CASE(
+	"container::grid comparison"
+	"[container],[grid]"
 )
 {
 	typedef
@@ -38,29 +40,41 @@ BOOST_AUTO_TEST_CASE(
 		0
 	);
 
-	BOOST_CHECK(
-		test1 != test2
+	CHECK(
+		test1
+		!=
+		test2
 	);
 
-	BOOST_CHECK(
-		test1 < test2
+	CHECK(
+		test1
+		<
+		test2
 	);
 
-	BOOST_CHECK(
-		test1 <= test2
+	CHECK(
+		test1
+		<=
+		test2
 	);
 
-	BOOST_CHECK(
-		!(test1 > test2)
+	CHECK_FALSE(
+		test1
+		>
+		test2
 	);
 
-	BOOST_CHECK(
-		!(test1 >= test2)
+	CHECK_FALSE(
+		test1
+		>=
+		test2
 	);
 
 	test2 = test1;
 
-	BOOST_CHECK(
-		test1 == test2
+	CHECK(
+		test1
+		==
+		test2
 	);
 }

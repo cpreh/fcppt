@@ -8,12 +8,13 @@
 #include <fcppt/container/tree/level.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_level
+TEST_CASE(
+	"container::tree::level",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -26,10 +27,11 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::tree::level(
 			tree
-		),
+		)
+		==
 		0u
 	);
 
@@ -41,17 +43,19 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::tree::level(
 			tree
-		),
+		)
+		==
 		0u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::tree::level(
 			back.get()
-		),
+		)
+		==
 		1u
 	);
 }

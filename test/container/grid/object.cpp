@@ -13,7 +13,7 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <algorithm>
 #include <iterator>
 #include <utility>
@@ -32,8 +32,9 @@ int2_grid;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_init_reference
+TEST_CASE(
+	"container::grid init reference",
+	"[container],[grid]"
 )
 {
 	int2_grid const test(
@@ -44,18 +45,20 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		std::count(
 			test.begin(),
 			test.end(),
 			42
-		),
+		)
+		==
 		200
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_index_2d
+TEST_CASE(
+	"container::grid index 2d",
+	"[container],[grid]"
 )
 {
 	int2_grid const test(
@@ -91,13 +94,14 @@ BOOST_AUTO_TEST_CASE(
 			)
 		)
 		{
-			BOOST_REQUIRE_EQUAL(
+			CHECK(
 				test.get_unsafe(
 					int2_grid::pos(
 						x,
 						y
 					)
-				),
+				)
+				==
 				fcppt::cast::size<
 					int2_grid::value_type
 				>(
@@ -109,8 +113,9 @@ BOOST_AUTO_TEST_CASE(
 		}
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_index_3d
+TEST_CASE(
+	"container::grid index 3d",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -161,14 +166,15 @@ BOOST_AUTO_TEST_CASE(
 				)
 			)
 			{
-				BOOST_CHECK_EQUAL(
+				CHECK(
 					test.get_unsafe(
 						int3_grid::pos(
 							x,
 							y,
 							z
 						)
-					),
+					)
+					==
 					fcppt::cast::size<
 						int3_grid::value_type
 					>(
@@ -180,8 +186,9 @@ BOOST_AUTO_TEST_CASE(
 			}
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_const_data
+TEST_CASE(
+	"container::grid const data",
+	"[container],[grid]"
 )
 {
 	int2_grid const test(
@@ -192,18 +199,20 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		std::count(
 			test.begin(),
 			test.end(),
 			42
-		),
+		)
+		==
 		10
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_size
+TEST_CASE(
+	"container::grid::contents",
+	"[container],[grid]"
 )
 {
 	int2_grid const test(
@@ -214,14 +223,16 @@ BOOST_AUTO_TEST_CASE(
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
-		test.content(),
+	CHECK(
+		test.content()
+		==
 		6u
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_move
+TEST_CASE(
+	"container::grid move",
+	"[container],[grid]"
 )
 {
 	int2_grid grid1(
@@ -254,35 +265,38 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		grid2.size(),
+	REQUIRE(
+		grid2.size()
+		==
 		int2_grid::dim(
 			2u,
 			3u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		grid2.get_unsafe(
 			int2_grid::pos(
 				0u,
 				0u
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		grid2.get_unsafe(
 			int2_grid::pos(
 				1u,
 				1u
 			)
-		),
+		)
+		==
 		2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		grid1.begin()
 		==
 		grid1.end()
@@ -295,43 +309,47 @@ BOOST_AUTO_TEST_CASE(
 			grid2
 		);
 
-	BOOST_CHECK_EQUAL(
-		grid3.size(),
+	REQUIRE(
+		grid3.size()
+		==
 		int2_grid::dim(
 			2u,
 			3u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		grid3.get_unsafe(
 			int2_grid::pos(
 				0u,
 				0u
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		grid3.get_unsafe(
 			int2_grid::pos(
 				1u,
 				1u
 			)
-		),
+		)
+		==
 		2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		grid2.begin()
 		==
 		grid2.end()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_init_function
+TEST_CASE(
+	"container::grid init",
+	"[container],[grid]"
 )
 {
 	int2_grid const grid(
@@ -360,33 +378,36 @@ BOOST_AUTO_TEST_CASE(
 	int2_grid::pos
 	pos;
 
-	BOOST_CHECK_EQUAL(
+	REQUIRE(
 		fcppt::cast::to_signed(
 			grid.content()
-		),
+		)
+		==
 		std::distance(
 			grid.begin(),
 			grid.end()
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		grid.get_unsafe(
 			pos(
 				0u,
 				0u
 			)
-		),
+		)
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		grid.get_unsafe(
 			pos(
 				1u,
 				2u
 			)
-		),
+		)
+		==
 		2
 	);
 }

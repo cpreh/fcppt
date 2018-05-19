@@ -10,18 +10,21 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_box_intersection
+TEST_CASE(
+	"math::box::intersection",
+	"[math],[box]"
 )
 {
-	typedef fcppt::math::box::object<
+	typedef
+	fcppt::math::box::object<
 		int,
 		2
-	> box_i2;
+	>
+	box_i2;
 
 	box_i2 const
 		box1(
@@ -83,8 +86,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-	BOOST_CHECK_EQUAL(
-		intersection1,
+	CHECK(
+		intersection1
+		==
 		box1
 	);
 
@@ -99,13 +103,15 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		intersection2,
+	CHECK(
+		intersection2
+		==
 		result2
 	);
 
-	BOOST_CHECK_EQUAL(
-		intersection3,
+	CHECK(
+		intersection3
+		==
 		fcppt::math::box::null<
 			box_i2
 		>()

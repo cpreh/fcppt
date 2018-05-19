@@ -11,13 +11,14 @@
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_map_failure
+TEST_CASE(
+	"either::map_failure",
+	"[either]"
 )
 {
 	FCPPT_MAKE_STRONG_TYPEDEF(
@@ -51,7 +52,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::either::map_failure(
 			either_char(
 				'0'
@@ -60,13 +61,14 @@ BOOST_AUTO_TEST_CASE(
 		).has_failure()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::map_failure(
 			either_char(
 				'0'
 			),
 			map_function
-		),
+		)
+		==
 		either_string(
 			std::string(
 				"0"
@@ -74,7 +76,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::map_failure(
 			either_char(
 				int_strong{
@@ -82,7 +84,8 @@ BOOST_AUTO_TEST_CASE(
 				}
 			),
 			map_function
-		),
+		)
+		==
 		either_string(
 			int_strong{
 				10

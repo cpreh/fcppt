@@ -7,13 +7,14 @@
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_match
+TEST_CASE(
+	"either::match",
+	"[either]"
 )
 {
 	typedef
@@ -53,7 +54,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::match(
 			either_int(
 				std::string(
@@ -62,20 +63,22 @@ BOOST_AUTO_TEST_CASE(
 			),
 			failure_function,
 			success_function
-		),
+		)
+		==
 		std::string(
 			"failure: test"
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::match(
 			either_int(
 				42
 			),
 			failure_function,
 			success_function
-		),
+		)
+		==
 		std::string(
 			"success: 42"
 		)

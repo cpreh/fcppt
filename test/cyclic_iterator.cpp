@@ -6,22 +6,24 @@
 
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	cyclic_iterator_array
+TEST_CASE(
+	"cyclic_iterator array",
+	"[cyclic_iterator]"
 )
 {
-	typedef std::array<
+	typedef
+	std::array<
 		int,
 		3
-	> int3_array;
-
+	>
+	int3_array;
 
 	int3_array const array{{
 		1,
@@ -29,9 +31,11 @@ BOOST_AUTO_TEST_CASE(
 		3
 	}};
 
-	typedef fcppt::cyclic_iterator<
+	typedef
+	fcppt::cyclic_iterator<
 		int3_array::const_iterator
-	> iterator;
+	>
+	iterator;
 
 	iterator const start(
 		array.begin(),
@@ -45,33 +49,37 @@ BOOST_AUTO_TEST_CASE(
 		start
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		1
 	);
 
 	++test;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		2
 	);
 
 	++test;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		3
 	);
 
 	++test;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		1
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test.get()
 		==
 		array.begin()
@@ -79,12 +87,13 @@ BOOST_AUTO_TEST_CASE(
 
 	--test;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		3
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test.get()
 		==
 		std::prev(
@@ -94,35 +103,39 @@ BOOST_AUTO_TEST_CASE(
 
 	--test;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		2
 	);
 
 	test += 2;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		1
 	);
 
 	test -= 1;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		3
 	);
 
 	test -= 300;
 
-	BOOST_REQUIRE_EQUAL(
-		*test,
+	REQUIRE(
+		*test
+		==
 		3
 	);
 
 	++test;
 
-	BOOST_CHECK(
+	REQUIRE(
 		test
 		==
 		start

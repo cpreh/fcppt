@@ -7,8 +7,9 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/array/init_move.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -50,10 +51,35 @@ private:
 	int value_;
 };
 
+bool
+operator==(
+	movable const &_left,
+	movable const &_right
+)
+{
+	return
+		_left.value()
+		==
+		_right.value();
 }
 
-BOOST_AUTO_TEST_CASE(
-	array_init_move
+std::ostream &
+operator<<(
+	std::ostream &_stream,
+	movable const &_obj
+)
+{
+	return
+		_stream
+		<<
+		_obj.value();
+}
+
+}
+
+TEST_CASE(
+	"array::init_move",
+	"[container],[array]"
 )
 {
 	typedef
@@ -61,11 +87,11 @@ BOOST_AUTO_TEST_CASE(
 		movable,
 		2
 	>
-	array;
+	movable_2_array;
 
-	array const inited(
+	CHECK(
 		fcppt::container::array::init_move<
-			array
+			movable_2_array
 		>(
 			[]{
 				return
@@ -74,23 +100,15 @@ BOOST_AUTO_TEST_CASE(
 					};
 			}
 		)
-	);
+		==
+		movable_2_array{{
+			movable{
+				42
+			},
+			movable{
+				42
+			}
+		}}
 
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			inited
-		).value(),
-		42
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			inited
-		).value(),
-		42
 	);
 }

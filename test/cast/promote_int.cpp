@@ -6,19 +6,21 @@
 
 #include <fcppt/cast/promote_int.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	cast_promote_int
+TEST_CASE(
+	"cast::promote_int",
+	"[cast]"
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::cast::promote_int(
 			'c'
-		),
+		)
+		==
 		'c'
 	);
 

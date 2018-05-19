@@ -8,13 +8,14 @@
 #include <fcppt/container/tree/depth.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_depth
+TEST_CASE(
+	"container::tree::depth",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -49,24 +50,27 @@ BOOST_AUTO_TEST_CASE(
 		std::string("e")
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::tree::depth(
 			leaf.get()
-		),
+		)
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::tree::depth(
 			child_1.get()
-		),
+		)
+		==
 		2u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::tree::depth(
 			tree
-		),
+		)
+		==
 		3u
 	);
 }

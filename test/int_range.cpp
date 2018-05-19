@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/identity.hpp>
 #include <fcppt/int_iterator_impl.hpp>
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/make_int_range.hpp>
@@ -11,9 +12,11 @@
 #include <fcppt/make_literal_strong_typedef.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <type_traits>
 #include <vector>
@@ -27,9 +30,7 @@ template<
 	typename Iterator
 >
 void
-check_category(
-	Iterator
-)
+check_category()
 {
 	static_assert(
 		std::is_same<
@@ -54,52 +55,30 @@ static_assert(
 template<
 	typename Int
 >
-void
-test(
+std::vector<
+	Int
+>
+copy_range(
 	fcppt::int_range<
 		Int
-	> const _range,
-	std::vector<
-		Int
-	> const &_result
+	> const _range
 )
 {
-	check_category(
-		_range.begin()
-	);
+	check_category<
+		decltype(
+			_range.begin()
+		)
+	>();
 
-	typedef
-	std::vector<
-		Int
-	>
-	int_vector;
-
-	int_vector values;
-
-	for(
-		Int const value
-		:
-		_range
-	)
-		values.push_back(
-			value
-		);
-
-	BOOST_CHECK_EQUAL(
-		static_cast<
-			typename
-			int_vector::size_type
+	return
+		fcppt::algorithm::map<
+			std::vector<
+				Int
+			>
 		>(
-			_range.size()
-		),
-		values.size()
-	);
-
-	BOOST_CHECK((
-		values
-		==
-		_result
-	));
+			_range,
+			fcppt::identity{}
+		);
 }
 
 FCPPT_MAKE_STRONG_TYPEDEF(
@@ -109,15 +88,19 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	int_range
+TEST_CASE(
+	"make_int_range",
+	"[various]"
 )
 {
-	test(
-		fcppt::make_int_range(
-			0,
-			3
-		),
+	CHECK(
+		copy_range(
+			fcppt::make_int_range(
+				0,
+				3
+			)
+		)
+		==
 		std::vector<
 			int
 		>{
@@ -128,14 +111,18 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	int_range_count
+TEST_CASE(
+	"make_int_range_count",
+	"[various]"
 )
 {
-	test(
-		fcppt::make_int_range_count(
-			2
-		),
+	CHECK(
+		copy_range(
+			fcppt::make_int_range_count(
+				2
+			)
+		)
+		==
 		std::vector<
 			int
 		>{
@@ -145,16 +132,20 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	int_range_count_strong_typedef
+TEST_CASE(
+	"make_int_range_count strong_typedef",
+	"[various]"
 )
 {
-	test(
-		fcppt::make_int_range_count(
-			strong_int(
-				2
+	CHECK(
+		copy_range(
+			fcppt::make_int_range_count(
+				strong_int(
+					2
+				)
 			)
-		),
+		)
+		==
 		std::vector<
 			strong_int
 		>{
@@ -168,15 +159,19 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	int_range_empty
+TEST_CASE(
+	"int_range empty",
+	"[various]"
 )
 {
-	test(
-		fcppt::make_int_range(
-			3,
-			2
-		),
+	CHECK(
+		copy_range(
+			fcppt::make_int_range(
+				3,
+				2
+			)
+		)
+		==
 		std::vector<
 			int
 		>{}

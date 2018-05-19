@@ -8,12 +8,13 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_spiral_range
+TEST_CASE(
+	"container::grid spiral_range",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -33,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	pos_vector;
 
-	pos_vector positions;
+	pos_vector positions{};
 
 	positions.reserve(
 		100
@@ -69,7 +70,7 @@ BOOST_AUTO_TEST_CASE(
 		++distance
 	)
 	{
-		pos_vector result;
+		pos_vector result{};
 
 		for(
 			auto const cur
@@ -86,19 +87,20 @@ BOOST_AUTO_TEST_CASE(
 				cur
 			);
 
-		BOOST_REQUIRE(
-			!result.empty()
+		REQUIRE_FALSE(
+			result.empty()
 		);
 
 		pos_vector::const_iterator it(
 			result.begin()
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			manhattan_distance(
 				*it,
 				start
-			),
+			)
+			==
 			0
 		);
 
@@ -119,11 +121,12 @@ BOOST_AUTO_TEST_CASE(
 				i < count;
 				++i
 			)
-				BOOST_CHECK_EQUAL(
+				CHECK(
 					manhattan_distance(
 						*it++,
 						start
-					),
+					)
+					==
 					cur
 				);
 		}

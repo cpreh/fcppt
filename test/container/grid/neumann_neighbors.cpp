@@ -10,8 +10,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
-#include <algorithm>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -46,8 +45,9 @@ contains_element(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_neumann_neighbors
+TEST_CASE(
+	"container::grid::neumann_neighbors",
+	"[container],[grid]"
 )
 {
 	array const result(
@@ -59,7 +59,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		contains_element(
 			result,
 			pos(
@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		contains_element(
 			result,
 			pos(
@@ -79,7 +79,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		contains_element(
 			result,
 			pos(
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		contains_element(
 			result,
 			pos(

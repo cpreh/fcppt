@@ -6,25 +6,26 @@
 
 #include <fcppt/io/expect.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	io_expect
+TEST_CASE(
+	"io::expect",
+	"[io]"
 )
 {
-	std::istringstream stream(
+	std::istringstream stream{
 		"xy"
-	);
+	};
 
 	fcppt::io::expect(
 		stream,
 		'x'
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		stream
 	);
 
@@ -33,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 		'x'
 	);
 
-	BOOST_CHECK(
-		!stream
+	CHECK_FALSE(
+		stream
 	);
 }

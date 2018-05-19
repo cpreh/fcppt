@@ -7,13 +7,14 @@
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_make_failure
+TEST_CASE(
+	"either::make_failure",
+	"[either]"
 )
 {
 	fcppt::either::object<
@@ -29,7 +30,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK(
-		!result.has_success()
+	CHECK_FALSE(
+		result.has_success()
 	);
 }

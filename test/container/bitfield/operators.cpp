@@ -8,12 +8,13 @@
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_arithmetic
+TEST_CASE(
+	"container::bitfield operators",
+	"[container],[bitfield]"
 )
 {
 	enum class test_enum
@@ -42,9 +43,10 @@ BOOST_AUTO_TEST_CASE(
 		bitfield::null()
 	);
 
-	BOOST_CHECK(
-		(field2 | test_enum::test2)
-		& test_enum::test2
+	CHECK(
+		(field2 | test_enum::test2)[
+			test_enum::test2
+		]
 	);
 
 	field2[
@@ -56,50 +58,50 @@ BOOST_AUTO_TEST_CASE(
 			field1 | field2
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			bf_or[
 				test_enum::test1
 			]
 		);
 
-		BOOST_CHECK(
-			!bf_or[
+		CHECK_FALSE(
+			bf_or[
 				test_enum::test2
 			]
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			bf_or[
 				test_enum::test3
 			]
 		);
 	}
 
-	BOOST_CHECK(
+	// TODO: Add operator<< to bitfield
+	CHECK(
 		(field1 & field2)
 		==
 		bitfield::null()
 	);
 
 	{
-
 		bitfield const bf_xor(
 			field1 ^ field2
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			bf_xor[
 				test_enum::test1
 			]
 		);
 
-		BOOST_CHECK(
-			!bf_xor[
+		CHECK_FALSE(
+			bf_xor[
 				test_enum::test2
 			]
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			bf_xor[
 				test_enum::test3
 			]

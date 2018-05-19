@@ -8,12 +8,13 @@
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	io_widen_string
+TEST_CASE(
+	"io::widen_string",
+	"[io]"
 )
 {
 	fcppt::io::ostringstream stream;
@@ -24,7 +25,7 @@ BOOST_AUTO_TEST_CASE(
 			"test"
 		);
 
-	BOOST_CHECK(
+	CHECK(
 		stream.str()
 		==
 		FCPPT_TEXT("test")

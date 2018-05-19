@@ -13,13 +13,14 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <deque>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_pop_front
+TEST_CASE(
+	"container::pop_front",
+	"[container]"
 )
 {
 	typedef
@@ -30,8 +31,8 @@ BOOST_AUTO_TEST_CASE(
 
 	int_queue empty{};
 
-	BOOST_CHECK(
-		!fcppt::container::pop_front(
+	CHECK_FALSE(
+		fcppt::container::pop_front(
 			empty
 		).has_value()
 	);
@@ -41,10 +42,11 @@ BOOST_AUTO_TEST_CASE(
 		2
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::pop_front(
 			vec12
-		),
+		)
+		==
 		fcppt::optional::make(
 			1
 		)
@@ -54,15 +56,16 @@ BOOST_AUTO_TEST_CASE(
 		2
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		vec12
 		==
 		expected
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_pop_front_move
+TEST_CASE(
+	"container::pop_front move"
+	"[container]"
 )
 {
 	typedef
@@ -94,7 +97,7 @@ BOOST_AUTO_TEST_CASE(
 			queue
 		),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -102,14 +105,15 @@ BOOST_AUTO_TEST_CASE(
 			int_ptr &&_ptr
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				*_ptr,
+			CHECK(
+				*_ptr
+				==
 				42
 			);
 		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		queue.empty()
 	);
 }

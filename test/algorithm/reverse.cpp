@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm reverse",
-	"[algorithm_reverse]"
+	"algorithm::reverse",
+	"[algorithm]"
 )
 {
 	typedef

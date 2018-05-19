@@ -14,7 +14,7 @@
 
 TEST_CASE(
 	"algorithm equal"
-	"[algorithm_equal]"
+	"[algorithm]"
 )
 {
 	CHECK(
@@ -34,8 +34,8 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
-		!fcppt::algorithm::equal(
+	CHECK_FALSE(
+		fcppt::algorithm::equal(
 			std::vector<
 				int
 			>{
@@ -50,8 +50,8 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
-		!fcppt::algorithm::equal(
+	CHECK_FALSE(
+		fcppt::algorithm::equal(
 			std::vector<
 				int
 			>{

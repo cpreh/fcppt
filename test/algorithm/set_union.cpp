@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm set_union",
-	"[algorithm_set_union]"
+	"algorithm::set_union",
+	"[algorithm]"
 )
 {
 	typedef

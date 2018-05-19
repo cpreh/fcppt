@@ -11,12 +11,13 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_clamped_sup_signed
+TEST_CASE(
+	"container::grid::clamped_sup_signed",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -33,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	pos;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::grid::clamped_sup_signed(
 			pos(
 				-1,
@@ -43,7 +44,8 @@ BOOST_AUTO_TEST_CASE(
 				3u,
 				3u
 			)
-		).get(),
+		).get()
+		==
 		fcppt::math::vector::to_unsigned(
 			pos(
 				0,

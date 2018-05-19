@@ -14,8 +14,8 @@
 
 
 TEST_CASE(
-	"assert optional_error",
-	"[assert_optional_error]"
+	"assert_optional_error",
+	"[assert]"
 )
 {
 	typedef

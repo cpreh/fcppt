@@ -6,12 +6,13 @@
 
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_swap
+TEST_CASE(
+	"container::tree swap",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -37,22 +38,25 @@ BOOST_AUTO_TEST_CASE(
 		tree2
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree1.value(),
+	CHECK(
+		tree1.value()
+		==
 		30
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree2.value(),
+	CHECK(
+		tree2.value()
+		==
 		10
 	);
 
-	BOOST_REQUIRE(
-		!tree2.empty()
+	CHECK_FALSE(
+		tree2.empty()
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree2.front().get_unsafe().get().value(),
+	CHECK(
+		tree2.front().get_unsafe().get().value()
+		==
 		20
 	);
 }

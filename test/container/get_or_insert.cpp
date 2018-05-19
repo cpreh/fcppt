@@ -6,14 +6,15 @@
 
 #include <fcppt/container/get_or_insert.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_get_or_insert
+TEST_CASE(
+	"container::get_or_insert",
+	"[container]"
 )
 {
 	typedef
@@ -45,36 +46,39 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE(
+	int_string_map::iterator const it{
 		map.find(
 			42
 		)
+	};
+
+	REQUIRE(
+		it
 		!=
 		map.end()
 	);
 
-	BOOST_CHECK_EQUAL(
-		&inserted,
-		&map.find(
-			42
-		)->second
+	CHECK(
+		&inserted
+		==
+		&it->second
 	);
 
-	BOOST_CHECK_EQUAL(
-		map.find(
-			42
-		)->second,
-		"42"
+	CHECK(
+		it->second
+		==
+		std::string{
+			"42"
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::container::get_or_insert(
+	CHECK(
+		&fcppt::container::get_or_insert(
 			map,
 			42,
 			inserter
-		),
-		map.find(
-			42
-		)->second
+		)
+		==
+		&it->second
 	);
 }

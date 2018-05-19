@@ -14,13 +14,15 @@
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/null.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_pos_ref_range
+TEST_CASE(
+	"container::grid: pos refrange",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -81,7 +83,7 @@ BOOST_AUTO_TEST_CASE(
 			grid
 		)
 	)
-		BOOST_CHECK(
+		CHECK(
 			element.value()
 			==
 			element.pos()
@@ -140,7 +142,7 @@ BOOST_AUTO_TEST_CASE(
 			}
 		)
 	)
-		BOOST_CHECK(
+		CHECK(
 			element.value()
 			==
 			element.pos()
@@ -168,9 +170,10 @@ BOOST_AUTO_TEST_CASE(
 			}
 		)
 	)
-		loop_empty = false;
+		loop_empty =
+			false;
 
-	BOOST_CHECK(
+	CHECK(
 		loop_empty
 	);
 
@@ -192,9 +195,10 @@ BOOST_AUTO_TEST_CASE(
 			}
 		)
 	)
-		loop_empty = false;
+		loop_empty =
+			false;
 
-	BOOST_CHECK(
+	CHECK(
 		loop_empty
 	);
 
@@ -216,9 +220,10 @@ BOOST_AUTO_TEST_CASE(
 			}
 		)
 	)
-		loop_empty = false;
+		loop_empty =
+			false;
 
-	BOOST_CHECK(
+	CHECK(
 		loop_empty
 	);
 }

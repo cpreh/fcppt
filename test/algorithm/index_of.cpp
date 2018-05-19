@@ -57,8 +57,8 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
-		!fcppt::algorithm::index_of(
+	CHECK_FALSE(
+		fcppt::algorithm::index_of(
 			vec,
 			4
 		).has_value()

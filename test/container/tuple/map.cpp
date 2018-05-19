@@ -11,14 +11,15 @@
 #include <fcppt/use.hpp>
 #include <fcppt/container/tuple/map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	tuple_map
+TEST_CASE(
+	"container::tuple::map",
+	"[container],[tuple]"
 )
 {
 	std::tuple<
@@ -66,8 +67,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	tuple_map_move
+TEST_CASE(
+	"container::tuple::map move",
+	"[container],[tuple]"
 )
 {
 	FCPPT_MAKE_STRONG_TYPEDEF(
@@ -104,12 +106,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		).get(),
+		).get()
+		==
 		1
 	);
 }

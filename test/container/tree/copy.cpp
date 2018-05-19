@@ -8,12 +8,13 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_copy
+TEST_CASE(
+	"container::tree copy",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -38,20 +39,22 @@ BOOST_AUTO_TEST_CASE(
 		head
 	);
 
-	BOOST_CHECK_EQUAL(
-		head2.value(),
+	CHECK(
+		head2.value()
+		==
 		10
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		head2.children().size(),
+	REQUIRE(
+		head2.children().size()
+		==
 		2u
 	);
 
 	fcppt::optional::maybe(
 		head2.front(),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -63,15 +66,16 @@ BOOST_AUTO_TEST_CASE(
 			> const _front
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				_front.get().value(),
+			CHECK(
+				_front.get().value()
+				==
 				20
 			);
 
 			fcppt::optional::maybe(
 				_front.get().parent(),
 				[]{
-					BOOST_CHECK(
+					CHECK(
 						false
 					);
 				},
@@ -83,8 +87,9 @@ BOOST_AUTO_TEST_CASE(
 					> const _parent
 				)
 				{
-					BOOST_CHECK_EQUAL(
-						&_parent.get(),
+					CHECK(
+						&_parent.get()
+						==
 						&head2
 					);
 				}
@@ -95,7 +100,7 @@ BOOST_AUTO_TEST_CASE(
 	fcppt::optional::maybe(
 		head2.back(),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -107,15 +112,16 @@ BOOST_AUTO_TEST_CASE(
 			> const _back
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				_back.get().value(),
+			CHECK(
+				_back.get().value()
+				==
 				30
 			);
 
 			fcppt::optional::maybe(
 				_back.get().parent(),
 				[]{
-					BOOST_CHECK(
+					CHECK(
 						false
 					);
 				},
@@ -127,8 +133,9 @@ BOOST_AUTO_TEST_CASE(
 					> const _parent
 				)
 				{
-					BOOST_CHECK_EQUAL(
-						&_parent.get(),
+					CHECK(
+						&_parent.get()
+						==
 						&head2
 					);
 				}

@@ -31,8 +31,8 @@ static_assert(
 }
 
 TEST_CASE(
-	"Bit test",
-	"[bit_test]"
+	"bit",
+	"[bit]"
 )
 {
 	CHECK(

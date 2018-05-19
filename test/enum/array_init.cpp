@@ -8,7 +8,7 @@
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_init.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,8 +26,9 @@ enum class my_enum
 }
 
 
-BOOST_AUTO_TEST_CASE(
-	enum_array_init
+TEST_CASE(
+	"enum::array_init",
+	"[enum]"
 )
 {
 	typedef
@@ -55,17 +56,27 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		array[
 			my_enum::test1
-		],
+		]
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
+		array[
+			my_enum::test2
+		]
+		==
+		1
+	);
+
+	CHECK(
 		array[
 			my_enum::test3
-		],
+		]
+		==
 		2
 	);
 }

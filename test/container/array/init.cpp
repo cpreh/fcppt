@@ -7,9 +7,10 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/array/init.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <cstddef>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -51,10 +52,35 @@ private:
 	std::size_t value_;
 };
 
+bool
+operator==(
+	movable const &_left,
+	movable const &_right
+)
+{
+	return
+		_left.value()
+		==
+		_right.value();
 }
 
-BOOST_AUTO_TEST_CASE(
-	array_init
+std::ostream &
+operator<<(
+	std::ostream &_stream,
+	movable const &_obj
+)
+{
+	return
+		_stream
+		<<
+		_obj.value();
+}
+
+}
+
+TEST_CASE(
+	"array::init",
+	"[container],[array]"
 )
 {
 	typedef
@@ -62,11 +88,11 @@ BOOST_AUTO_TEST_CASE(
 		movable,
 		2
 	>
-	array;
+	movable_2_array;
 
-	array const inited(
+	CHECK(
 		fcppt::container::array::init<
-			array
+			movable_2_array
 		>(
 			[](
 				auto const _index
@@ -77,23 +103,14 @@ BOOST_AUTO_TEST_CASE(
 					};
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			inited
-		).value(),
-		0u
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			inited
-		).value(),
-		1u
+		==
+		movable_2_array{{
+			movable{
+				0u
+			},
+			movable{
+				1u
+			}
+		}}
 	);
 }

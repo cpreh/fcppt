@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm unique",
-	"[algorithm_unique]"
+	"algorithm::unique",
+	"[algorithm]"
 )
 {
 	typedef

@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm remove",
-	"[algorithm_remove]"
+	"algorithm::remove",
+	"[algorithm]"
 )
 {
 	typedef

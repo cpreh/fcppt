@@ -160,12 +160,6 @@ add_subdirectory(
 )
 
 add_fcppt_test(
-	codecvt
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
-)
-
-add_fcppt_test(
 	const
 )
 
@@ -323,6 +317,12 @@ add_fcppt_test(
 
 add_fcppt_test(
 	unit
+)
+
+add_fcppt_test(
+	widen
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
 )
 
 add_subdirectory(

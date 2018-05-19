@@ -13,14 +13,15 @@
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_map
+TEST_CASE(
+	"either::map",
+	"[either]"
 )
 {
 	typedef
@@ -49,7 +50,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::map(
 			either_int(
 				std::string(
@@ -57,7 +58,8 @@ BOOST_AUTO_TEST_CASE(
 				)
 			),
 			map_function
-		),
+		)
+		==
 		either_bool(
 			std::string(
 				"test"
@@ -65,21 +67,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::map(
 			either_int(
 				20
 			),
 			map_function
-		),
+		)
+		==
 		either_bool(
 			true
 		)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	either_map_move
+TEST_CASE(
+	"either::map move",
+	"[either]"
 )
 {
 	typedef
@@ -114,34 +118,34 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK(
-		fcppt::either::match(
-			fcppt::either::map(
-				either_int(
-					fcppt::make_unique_ptr<
-						int
-					>(
-						20
-					)
-				),
-				map_function
+	fcppt::either::match(
+		fcppt::either::map(
+			either_int(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					20
+				)
 			),
-			[](
-				std::string const &
-			)
-			{
-				return
-					false;
-			},
-			[](
-				strong_int const &_value
-			)
-			{
-				return
-					*_value.get()
-					==
-					20;
-			}
+			map_function
+		),
+		[](
+			std::string const &
 		)
+		{
+			CHECK(
+				false
+			);
+		},
+		[](
+			strong_int const &_value
+		)
+		{
+			CHECK(
+				*_value.get()
+				==
+				20
+			);
+		}
 	);
 }

@@ -11,8 +11,8 @@
 
 
 TEST_CASE(
-	"algorithm repeat",
-	"[algorithm_repeat]"
+	"algorithm::repeat",
+	"[algorithm]"
 )
 {
 	int value(

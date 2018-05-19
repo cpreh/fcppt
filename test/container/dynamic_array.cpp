@@ -6,7 +6,7 @@
 
 #include <fcppt/container/dynamic_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,9 +17,9 @@ fcppt::container::dynamic_array<
 	int
 >;
 
-
-BOOST_AUTO_TEST_CASE(
-	container_dynamic_array
+TEST_CASE(
+	"container::dynamic_array",
+	"[container]"
 )
 {
 	typedef
@@ -32,16 +32,18 @@ BOOST_AUTO_TEST_CASE(
 		10
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		std::distance(
 			array1.data(),
 			array1.data_end()
-		),
+		)
+		==
 		10
 	);
 
-	BOOST_CHECK_EQUAL(
-		array1.size(),
+	CHECK(
+		array1.size()
+		==
 		10u
 	);
 
@@ -49,8 +51,9 @@ BOOST_AUTO_TEST_CASE(
 		0
 	};
 
-	BOOST_CHECK_EQUAL(
-		array2.size(),
+	CHECK(
+		array2.size()
+		==
 		0u
 	);
 }

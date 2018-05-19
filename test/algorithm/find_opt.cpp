@@ -48,8 +48,8 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
-		!fcppt::algorithm::find_opt(
+	CHECK_FALSE(
+		fcppt::algorithm::find_opt(
 			vec,
 			4
 		).has_value()

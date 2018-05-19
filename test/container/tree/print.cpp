@@ -8,16 +8,15 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/print.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
-#include <iostream>
-#include <ostream>
+#include <catch.hpp>
 #include <sstream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_print
+TEST_CASE(
+	"container::tree::print",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -55,12 +54,9 @@ BOOST_AUTO_TEST_CASE(
 		tree
 	);
 
-	std::cout
-		<< oss.str()
-		<< '\n';
-
-	BOOST_CHECK_EQUAL(
-		oss.str(),
+	CHECK(
+		oss.str()
+		==
 		"a\n"
 			"\tb\n"
 				"\t\tc\n"

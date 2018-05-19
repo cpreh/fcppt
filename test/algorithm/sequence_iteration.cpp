@@ -13,8 +13,8 @@
 
 
 TEST_CASE(
-	"algorithm sequence_iteration",
-	"[algorithm_sequence_iteration]"
+	"algorithm::sequence_iteration",
+	"[algorithm]"
 )
 {
 	typedef

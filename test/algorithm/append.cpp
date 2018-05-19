@@ -15,7 +15,7 @@
 
 TEST_CASE(
 	"append with copy",
-	"[algorithm_append]"
+	"[algorithm]"
 )
 {
 	typedef
@@ -48,7 +48,7 @@ TEST_CASE(
 
 TEST_CASE(
 	"append with move",
-	"[algorithm_append]"
+	"[algorithm]"
 )
 {
 	typedef

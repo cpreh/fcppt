@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm set_difference",
-	"[algorithm_set_difference]"
+	"algorithm::set_difference",
+	"[algorithm]"
 )
 {
 	typedef

@@ -8,13 +8,14 @@
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_hash
+TEST_CASE(
+	"container::bitfield hash",
+	"[container],[bitfield]"
 )
 {
 	enum class test_enum
@@ -46,31 +47,34 @@ BOOST_AUTO_TEST_CASE(
 		}
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		values.count(
 			bitfield{
 				test_enum::test1,
 				test_enum::test2
 			}
-		),
+		)
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		values.count(
 			bitfield{
 				test_enum::test1
 			}
-		),
+		)
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		values.count(
 			bitfield{
 				test_enum::test2
 			}
-		),
+		)
+		==
 		0u
 	);
 }

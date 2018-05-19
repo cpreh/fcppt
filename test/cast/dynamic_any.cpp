@@ -69,8 +69,8 @@ struct other
 }
 
 TEST_CASE(
-	"cast dynamic_any",
-	"[cast_dynamic_any]"
+	"cast::dynamic_any",
+	"[cast]"
 )
 {
 	derived1 d1{};
@@ -98,8 +98,8 @@ TEST_CASE(
 		).has_value()
 	);
 
-	CHECK(
-		!fcppt::cast::dynamic_any<
+	CHECK_FALSE(
+		fcppt::cast::dynamic_any<
 			other
 		>(
 			b1

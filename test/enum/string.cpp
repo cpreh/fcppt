@@ -9,9 +9,11 @@
 #include <fcppt/enum/names_array.hpp>
 #include <fcppt/enum/names_impl_fwd.hpp>
 #include <fcppt/enum/to_string.hpp>
-#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -60,11 +62,12 @@ struct names_impl<
 }
 }
 
-BOOST_AUTO_TEST_CASE(
-	enum_string
+TEST_CASE(
+	"enum::to_string",
+	"[enum]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		fcppt::enum_::to_string(
 			test_enum::test1
 		)
@@ -72,37 +75,39 @@ BOOST_AUTO_TEST_CASE(
 		FCPPT_TEXT("test1")
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::enum_::to_string(
 			test_enum::test2
 		)
 		==
 		FCPPT_TEXT("test2")
 	);
+}
 
-	BOOST_CHECK(
+TEST_CASE(
+	"enum::from_string",
+	"[enum]"
+)
+{
+	CHECK_FALSE(
 		fcppt::enum_::from_string<
 			test_enum
 		>(
 			FCPPT_TEXT("xy")
-		)
-		==
-		fcppt::optional::object<
-			test_enum
-		>()
+		).has_value()
 	);
 
-	BOOST_CHECK(
-		fcppt::enum_::from_string<
-			test_enum
-		>(
-			FCPPT_TEXT("test2")
-		)
-		==
-		fcppt::optional::object<
-			test_enum
-		>(
-			test_enum::test2
+	CHECK(
+		fcppt::test::defer(
+			fcppt::enum_::from_string<
+				test_enum
+			>(
+				FCPPT_TEXT("test2")
+			)
+			==
+			fcppt::optional::make(
+				test_enum::test2
+			)
 		)
 	);
 }

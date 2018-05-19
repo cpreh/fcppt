@@ -8,12 +8,14 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/to_root.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_to_root
+TEST_CASE(
+	"container::tree::to_root",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -52,32 +54,44 @@ BOOST_AUTO_TEST_CASE(
 		child_2.get()
 	);
 
+	REQUIRE(
+		std::distance(
+			trav.begin(),
+			trav.end()
+		)
+		==
+		3
+	);
+
 	traversal_type::iterator it(
 		trav.begin()
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		3
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		2
 	);
 
 	++it;
 
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
+	CHECK(
+		it->value()
+		==
 		1
 	);
 
 	++it;
 
-	BOOST_REQUIRE(
+	CHECK(
 		it
 		==
 		trav.end()

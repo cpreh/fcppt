@@ -32,7 +32,7 @@ operator==(
 	return
 		_left.begin()
 		==
-		_right.end()
+		_right.begin()
 		&&
 		_left.end()
 		==

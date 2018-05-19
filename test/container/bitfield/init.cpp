@@ -9,12 +9,13 @@
 #include <fcppt/container/bitfield/init.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_init
+TEST_CASE(
+	"container::bitfield::init",
+	"[container],[bitfield]"
 )
 {
 	enum class my_enum
@@ -57,23 +58,21 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		test
-		&
-		my_enum::test1
+	CHECK(
+		test[
+			my_enum::test1
+		]
 	);
 
-	BOOST_CHECK(
-		!(
-			test
-			&
+	CHECK_FALSE(
+		test[
 			my_enum::test2
-		)
+		]
 	);
 
-	BOOST_CHECK(
-		test
-		&
-		my_enum::test3
+	CHECK(
+		test[
+			my_enum::test3
+		]
 	);
 }

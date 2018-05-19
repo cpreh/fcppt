@@ -10,12 +10,13 @@
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/vector/null.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_pos_range
+TEST_CASE(
+	"container::grid pos range",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -37,7 +38,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	sup;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::grid::make_pos_range_start_end(
 			min{
 				fcppt::math::vector::null<
@@ -50,11 +51,12 @@ BOOST_AUTO_TEST_CASE(
 					2u
 				)
 			}
-		).size(),
+		).size()
+		==
 		6u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::grid::make_pos_range_start_end(
 			min{
 				pos(
@@ -68,8 +70,8 @@ BOOST_AUTO_TEST_CASE(
 					1u
 				)
 			}
-		).size(),
+		).size()
+		==
 		0u
 	);
-
 }

@@ -8,44 +8,56 @@
 #include <fcppt/insert_to_std_string.hpp>
 #include <fcppt/insert_to_std_string_convert.hpp>
 #include <fcppt/insert_to_std_wstring.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <string>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	insert_to_string
+TEST_CASE(
+	"insert_to_string",
+	"[string]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		fcppt::insert_to_fcppt_string(
 			42
 		)
 		==
-		FCPPT_TEXT("42")
+		fcppt::string{
+			FCPPT_TEXT("42")
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::insert_to_std_string(
 			42
-		),
-		"42"
+		)
+		==
+		std::string{
+			"42"
+		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::insert_to_std_wstring(
 			42
 		)
 		==
-		L"42"
+		std::wstring{
+			L"42"
+		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::insert_to_std_string_convert(
 			42
 		)
 		==
-		"42"
+		std::string{
+			"42"
+		}
 	);
 }

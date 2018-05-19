@@ -7,12 +7,13 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	make_unique_ptr
+TEST_CASE(
+	"make_unique_ptr",
+	"[smartptr]"
 )
 {
 	typedef
@@ -21,7 +22,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_ptr;
 
-	int_ptr test1(
+	int_ptr const test1(
 		fcppt::make_unique_ptr<
 			int
 		>(
@@ -29,8 +30,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		*test1,
+	CHECK(
+		*test1
+		==
 		42
 	);
 }

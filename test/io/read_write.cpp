@@ -7,17 +7,23 @@
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/write.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
+
+typedef
+fcppt::optional::object<
+	int
+>
+optional_int;
+
 
 void
 test_read_write(
@@ -36,12 +42,6 @@ test_read_write(
 		_endianness
 	);
 
-	typedef
-	fcppt::optional::object<
-		int
-	>
-	optional_int;
-
 	optional_int const result(
 		fcppt::io::read<
 			int
@@ -51,19 +51,21 @@ test_read_write(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
-		optional_int(
+	CHECK(
+		result
+		==
+		optional_int{
 			42
-		)
+		}
 	);
 }
 
 }
 
 
-BOOST_AUTO_TEST_CASE(
-	io_read_write
+TEST_CASE(
+	"io read_write",
+	"[io]"
 )
 {
 	test_read_write(
@@ -77,13 +79,15 @@ BOOST_AUTO_TEST_CASE(
 	{
 		std::stringstream stream;
 
-		BOOST_CHECK(
-			!fcppt::io::read<
+		CHECK(
+			fcppt::io::read<
 				int
 			>(
 				stream,
 				fcppt::endianness::format::little
-			).has_value()
+			)
+			==
+			optional_int{}
 		);
 	}
 }

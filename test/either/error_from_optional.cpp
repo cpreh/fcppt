@@ -13,12 +13,13 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_error_from_optional
+TEST_CASE(
+	"either::error_from_optional",
+	"[either]"
 )
 {
 	typedef
@@ -33,21 +34,23 @@ BOOST_AUTO_TEST_CASE(
 	>
 	either_int;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::error_from_optional(
 			optional_int{
 				42
 			}
-		),
+		)
+		==
 		either_int{
 			42
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::error_from_optional(
 			optional_int()
-		),
+		)
+		==
 		either_int{
 			fcppt::either::no_error{}
 		}

@@ -7,7 +7,7 @@
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/types_from.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -179,21 +179,23 @@ string_vector const vec_c{
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	def_ctor
+TEST_CASE(
+	"iterator random access def_ctor",
+	"[iterator]"
 )
 {
 	iterator it1{}, it2{};
 
-	BOOST_CHECK(
+	CHECK(
 		it1
 		==
 		it2
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	increment_decrement
+TEST_CASE(
+	"iterator random access increment_decrement"
+	"[iterator]"
 )
 {
 	const_iterator it{
@@ -202,12 +204,13 @@ BOOST_AUTO_TEST_CASE(
 
 	++it;
 
-	BOOST_CHECK_EQUAL(
-		*it,
+	CHECK(
+		*it
+		==
 		"2"
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&*it
 		==
 		&vec_c[1]
@@ -215,44 +218,46 @@ BOOST_AUTO_TEST_CASE(
 
 	--it;
 
-	BOOST_CHECK_EQUAL(
-		*it,
+	CHECK(
+		*it
+		==
 		"1"
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&*it
 		==
 		&vec_c[0]
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&*it++
 		==
 		&vec_c[0]
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&*it
 		==
 		&vec_c[1]
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&*it--
 		==
 		&vec_c[1]
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&*it
 		==
 		&vec_c[0]
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	test_swap
+TEST_CASE(
+	"iterator_range swap",
+	"[iterator]"
 )
 {
 	const_iterator it1{
@@ -268,32 +273,35 @@ BOOST_AUTO_TEST_CASE(
 		it2
 	);
 
-	BOOST_CHECK_EQUAL(
-		*it1,
+	CHECK(
+		*it1
+		==
 		"2"
 	);
 
-	BOOST_CHECK_EQUAL(
-		*it2,
+	CHECK(
+		*it2
+		==
 		"1"
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	test_advance
+TEST_CASE(
+	"iterator random access advance",
+	"[iterator]"
 )
 {
 	const_iterator it{
 		vec_c.begin()
 	};
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		&*(it += 2)
 		==
 		&vec_c[2]
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		&*it
 		==
 		&vec_c[2]
@@ -308,19 +316,20 @@ BOOST_AUTO_TEST_CASE(
 			2
 		};
 
-		BOOST_CHECK_EQUAL(
-			&*temp,
+		CHECK(
+			&*temp
+			==
 			&vec_c[2]
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			temp
 			==
 			it
 		);
 	}
 
-	BOOST_CHECK(
+	CHECK(
 		2
 		+
 		const_iterator{
@@ -330,7 +339,7 @@ BOOST_AUTO_TEST_CASE(
 		it
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		it
 		-
 		2
@@ -342,13 +351,13 @@ BOOST_AUTO_TEST_CASE(
 
 	it -= 1;
 
-	BOOST_CHECK(
+	CHECK(
 		&*it
 		==
 		&vec_c[1]
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		&vec_c.begin()[
 			1
 		]
@@ -357,8 +366,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	test_write
+TEST_CASE(
+	"iterator random access write",
+	"[iterator]"
 )
 {
 	string_vector vec{
@@ -375,14 +385,16 @@ BOOST_AUTO_TEST_CASE(
 		'1'
 	);
 
-	BOOST_CHECK_EQUAL(
-		*it,
+	CHECK(
+		*it
+		==
 		"11"
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	comparison
+TEST_CASE(
+	"iterator random access comparison",
+	"[iterator]"
 )
 {
 	const_iterator it1{
@@ -395,46 +407,47 @@ BOOST_AUTO_TEST_CASE(
 		1
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		it1
 		-
-		it2,
+		it2
+		==
 		-1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		it2
 		-
-		it1,
+		it1
+		==
 		1
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		it1
 		<
 		it2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		it1
 		<=
 		it2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		it2
 		>
 		it1
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		it2
 		>=
 		it1
 	);
 
-
-	BOOST_CHECK(
+	CHECK(
 		it1
 		!=
 		it2

@@ -5,16 +5,20 @@
 
 
 #include <fcppt/exception.hpp>
+#include <fcppt/enum/from_int.hpp>
 #include <fcppt/enum/from_int_exn.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
 
-enum class testenum
+enum class test_enum
 {
 	enum1,
 	enum2,
@@ -23,23 +27,52 @@ enum class testenum
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	enum_from_int
+TEST_CASE(
+	"enum::from_int",
+	"[enum]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
+		fcppt::test::defer(
+			fcppt::enum_::from_int<
+				test_enum
+			>(
+				1u
+			)
+			==
+			fcppt::optional::make(
+				test_enum::enum2
+			)
+		)
+	);
+
+	CHECK_FALSE(
+		fcppt::enum_::from_int<
+			test_enum
+		>(
+			2u
+		).has_value()
+	);
+}
+
+TEST_CASE(
+	"enum::from_int_exn",
+	"[enum]"
+)
+{
+	CHECK(
 		fcppt::enum_::from_int_exn<
-			testenum
+			test_enum
 		>(
 			1u
 		)
 		==
-		testenum::enum2
+		test_enum::enum2
 	);
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::enum_::from_int_exn<
-			testenum
+			test_enum
 		>(
 			2u
 		),

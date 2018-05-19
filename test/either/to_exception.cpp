@@ -10,28 +10,13 @@
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-bool
-check_exception(
-	fcppt::exception const &_exn
-)
-{
-	return
-		_exn.string()
-		==
-		FCPPT_TEXT("Invalid");
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	either_to_exception
+TEST_CASE(
+	"either::to_exception",
+	"[either]"
 )
 {
 	typedef
@@ -52,17 +37,18 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::to_exception(
 			either_int{
 				3
 			},
 			make_exception
-		),
+		)
+		==
 		3
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	CHECK_THROWS_MATCHES(
 		fcppt::either::to_exception(
 			either_int{
 				fcppt::string(
@@ -72,6 +58,18 @@ BOOST_AUTO_TEST_CASE(
 			make_exception
 		),
 		fcppt::exception,
-		check_exception
+		Catch::Matchers::Predicate<
+			fcppt::exception
+		>(
+			[](
+				fcppt::exception const &_exn
+			)
+			{
+				return
+					_exn.string()
+					==
+					FCPPT_TEXT("Invalid");
+			}
+		)
 	);
 }

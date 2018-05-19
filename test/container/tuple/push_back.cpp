@@ -8,34 +8,23 @@
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/tuple/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	tuple_push_back
+TEST_CASE(
+	"container::tuple::push_back",
+	"[container],[tuple]"
 )
 {
-	typedef
-	std::tuple<
-		int,
-		bool
-	>
-	source_tuple;
-
-	typedef
-	std::tuple<
-		int,
-		bool,
-		std::string
-	>
-	result_tuple;
-
-	result_tuple const result{
+	CHECK(
 		fcppt::container::tuple::push_back(
-			source_tuple{
+			std::tuple<
+				int,
+				bool
+			>{
 				1,
 				false
 			},
@@ -43,40 +32,24 @@ BOOST_AUTO_TEST_CASE(
 				"test"
 			}
 		)
-	};
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		),
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		),
-		false
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			2
-		>(
-			result
-		),
-		std::string{
-			"test"
+		==
+		std::tuple<
+			int,
+			bool,
+			std::string
+		>{
+			1,
+			false,
+			std::string{
+				"test"
+			}
 		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	tuple_push_back_move
+TEST_CASE(
+	"container::tuple::push_back move",
+	"[container],[tuple]"
 )
 {
 	typedef
@@ -107,21 +80,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			1
 		>(
 			result
-		),
+		)
+		==
 		2
 	);
 }

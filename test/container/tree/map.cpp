@@ -11,12 +11,13 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_tree_map
+TEST_CASE(
+	"container::tree::map",
+	"[container],[tree]"
 )
 {
 	typedef
@@ -64,15 +65,16 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result.value(),
+	CHECK(
+		*result.value()
+		==
 		42
 	);
 
 	fcppt::optional::maybe(
 		result.back(),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -82,8 +84,9 @@ BOOST_AUTO_TEST_CASE(
 			> const _ref
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				13,
+			CHECK(
+				13
+				==
 				*_ref.get().value()
 			);
 		}

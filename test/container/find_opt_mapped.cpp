@@ -13,15 +13,16 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_find_exn
+TEST_CASE(
+	"container::find_opt_mapped",
+	"[container]"
 )
 {
 	typedef
@@ -54,13 +55,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_string;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		optional_string(
 			fcppt::container::find_opt_mapped(
 				values,
 				42
 			)
-		),
+		)
+		==
 		optional_string(
 			fcppt::make_cref(
 				values.at(
@@ -70,8 +72,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::container::find_opt_mapped(
+	CHECK_FALSE(
+		fcppt::container::find_opt_mapped(
 			values,
 			50
 		).has_value()

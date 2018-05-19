@@ -13,13 +13,14 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_pop_back
+TEST_CASE(
+	"container::pop_back",
+	"[container]"
 )
 {
 	typedef
@@ -30,8 +31,8 @@ BOOST_AUTO_TEST_CASE(
 
 	int_vector empty{};
 
-	BOOST_CHECK(
-		!fcppt::container::pop_back(
+	CHECK_FALSE(
+		fcppt::container::pop_back(
 			empty
 		).has_value()
 	);
@@ -41,10 +42,11 @@ BOOST_AUTO_TEST_CASE(
 		2
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::pop_back(
 			vec12
-		),
+		)
+		==
 		fcppt::optional::make(
 			2
 		)
@@ -54,15 +56,16 @@ BOOST_AUTO_TEST_CASE(
 		1
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		vec12
 		==
 		expected
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_pop_back_move
+TEST_CASE(
+	"container::pop_back move",
+	"[container]"
 )
 {
 	typedef
@@ -94,7 +97,7 @@ BOOST_AUTO_TEST_CASE(
 			vector
 		),
 		[]{
-			BOOST_CHECK(
+			CHECK(
 				false
 			);
 		},
@@ -102,14 +105,15 @@ BOOST_AUTO_TEST_CASE(
 			int_ptr &&_ptr
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				*_ptr,
+			CHECK(
+				*_ptr
+				==
 				42
 			);
 		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		vector.empty()
 	);
 }

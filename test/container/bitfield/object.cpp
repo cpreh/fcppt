@@ -6,7 +6,7 @@
 
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,8 +29,9 @@ bitfield;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_initializer_list
+TEST_CASE(
+	"container::bitfield initializer_list",
+	"[container],[bitfield]"
 )
 {
 	bitfield const field1{
@@ -38,19 +39,19 @@ BOOST_AUTO_TEST_CASE(
 		test_enum::test3
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		field1.get(
 			test_enum::test1
 		)
 	);
 
-	BOOST_CHECK(
-		!field1.get(
+	CHECK_FALSE(
+		field1.get(
 			test_enum::test2
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		field1.get(
 			test_enum::test3
 		)

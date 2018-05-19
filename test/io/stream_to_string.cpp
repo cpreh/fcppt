@@ -6,14 +6,15 @@
 
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <sstream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	io_stream_to_string
+TEST_CASE(
+	"io::stream_to_string",
+	"[io]"
 )
 {
 	std::istringstream istream(
@@ -26,8 +27,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		"TEST abcd"
 	);
 }

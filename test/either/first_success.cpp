@@ -9,14 +9,15 @@
 #include <fcppt/either/first_success.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_first_success
+TEST_CASE(
+	"either::first_success",
+	"[either]"
 )
 {
 	typedef
@@ -72,49 +73,60 @@ BOOST_AUTO_TEST_CASE(
 	>
 	result_type;
 
-	result_type const result_s{
-		fcppt::either::first_success(
-			fcppt::container::array::make(
-				f2,
-				f1
+	SECTION(
+		"test success"
+	)
+	{
+		result_type const result{
+			fcppt::either::first_success(
+				fcppt::container::array::make(
+					f2,
+					f1
+				)
 			)
-		)
-	};
+		};
 
-	BOOST_REQUIRE(
-		result_s.has_success()
-	);
+		REQUIRE(
+			result.has_success()
+		);
 
-	BOOST_CHECK_EQUAL(
-		result_s.get_success_unsafe(),
-		42
-	);
+		CHECK(
+			result.get_success_unsafe()
+			==
+			42
+		);
+	}
 
-	result_type const result_f{
-		fcppt::either::first_success(
-			fcppt::container::array::make(
-				f2,
-				f3
+	SECTION(
+		"test failure"
+	)
+	{
+		result_type const result{
+			fcppt::either::first_success(
+				fcppt::container::array::make(
+					f2,
+					f3
+				)
 			)
-		)
-	};
+		};
 
-	BOOST_REQUIRE(
-		result_f.has_failure()
-	);
+		REQUIRE(
+			result.has_failure()
+		);
 
-	BOOST_REQUIRE_EQUAL(
-		result_f.get_failure_unsafe().size(),
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result_f.get_failure_unsafe()[0],
-		"f1"
-	);
-
-	BOOST_CHECK_EQUAL(
-		result_f.get_failure_unsafe()[1],
-		"f2"
-	);
+		CHECK(
+			result.get_failure_unsafe()
+			==
+			std::vector<
+				std::string
+			>{
+				std::string{
+					"f1"
+				},
+				std::string{
+					"f2"
+				}
+			}
+		);
+	}
 }

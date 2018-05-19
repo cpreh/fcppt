@@ -6,14 +6,16 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	filesystem_remove_extension
+TEST_CASE(
+	"filesystem::remove_extension",
+	"[filesystem]"
 )
 {
 	boost::filesystem::path const path1(
@@ -26,10 +28,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		path1,
-		fcppt::filesystem::remove_extension(
+	CHECK(
+		fcppt::test::defer(
 			path1
+			==
+			fcppt::filesystem::remove_extension(
+				path1
+			)
 		)
 	);
 
@@ -38,12 +43,15 @@ BOOST_AUTO_TEST_CASE(
 		/ FCPPT_TEXT("baz.txt")
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::filesystem::remove_extension(
-			path2
-		),
-		path1
-		/
-		FCPPT_TEXT("baz")
+	CHECK(
+		fcppt::test::defer(
+			fcppt::filesystem::remove_extension(
+				path2
+			)
+			==
+			path1
+			/
+			FCPPT_TEXT("baz")
+		)
 	);
 }

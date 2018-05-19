@@ -12,13 +12,14 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_at_optional
+TEST_CASE(
+	"container::at_optional",
+	"[container]"
 )
 {
 	std::vector<
@@ -34,11 +35,12 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int_ref;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::at_optional(
 			int_vector,
 			1
-		),
+		)
+		==
 		optional_int_ref{
 			fcppt::make_cref(
 				int_vector[
@@ -48,11 +50,12 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::at_optional(
 			int_vector,
 			2
-		),
+		)
+		==
 		optional_int_ref{}
 	);
 }

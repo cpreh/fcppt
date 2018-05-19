@@ -29,6 +29,7 @@ TEST_CASE(
 	int_vector const vec{
 		2,
 		5,
+		5,
 		7
 	};
 
@@ -54,7 +55,7 @@ TEST_CASE(
 			),
 			std::next(
 				vec.begin(),
-				2
+				3
 			)
 		)
 	);

@@ -12,13 +12,14 @@
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_fill
+TEST_CASE(
+	"container::grid::fill",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -67,43 +68,47 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test.get_unsafe(
 			pos(
 				0u,
 				0u
 			)
-		),
+		)
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test.get_unsafe(
 			pos(
 				1u,
 				0u
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test.get_unsafe(
 			pos(
 				0u,
 				1u
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		test.get_unsafe(
 			pos(
 				1u,
 				1u
 			)
-		),
+		)
+		==
 		2
 	);
 }

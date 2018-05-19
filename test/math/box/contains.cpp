@@ -7,12 +7,13 @@
 #include <fcppt/math/box/contains.hpp>
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_box_contains
+TEST_CASE(
+	"math::box::contains",
+	"[math],[box]"
 )
 {
 	typedef
@@ -32,7 +33,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::box::contains(
 			outer,
 			box2{
@@ -48,8 +49,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::box::contains(
+	CHECK_FALSE(
+		fcppt::math::box::contains(
 			outer,
 			box2{
 				box2::vector{
@@ -64,8 +65,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::box::contains(
+	CHECK_FALSE(
+		fcppt::math::box::contains(
 			outer,
 			box2{
 				box2::vector{

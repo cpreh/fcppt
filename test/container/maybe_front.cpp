@@ -12,13 +12,14 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_maybe_front
+TEST_CASE(
+	"container::maybe_front",
+	"[container]"
 )
 {
 	typedef
@@ -35,8 +36,8 @@ BOOST_AUTO_TEST_CASE(
 
 	int_vector const empty{};
 
-	BOOST_CHECK(
-		!fcppt::container::maybe_front(
+	CHECK_FALSE(
+		fcppt::container::maybe_front(
 			empty
 		).has_value()
 	);
@@ -46,10 +47,11 @@ BOOST_AUTO_TEST_CASE(
 		2
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::maybe_front(
 			vec12
-		),
+		)
+		==
 		optional_int_ref(
 			fcppt::make_cref(
 				vec12.front()

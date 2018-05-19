@@ -13,29 +13,34 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#if defined(FCPPT_BOOST_SUPPORT)
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
+#endif
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	literal_fundamental
+TEST_CASE(
+	"literal fundamental",
+	"[literal]"
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::literal<
 			unsigned
 		>(
 			2
-		),
+		)
+		==
 		2u
 	);
 }
 
 #if defined(FCPPT_BOOST_SUPPORT)
-BOOST_AUTO_TEST_CASE(
-	literal_boost_units
+TEST_CASE(
+	"literal boost_units",
+	"[literal]"
 )
 {
 	typedef
@@ -45,19 +50,21 @@ BOOST_AUTO_TEST_CASE(
 	>
 	length;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::literal<
 			length
 		>(
 			2
-		).value(),
+		).value()
+		==
 		2
 	);
 }
 #endif
 
-BOOST_AUTO_TEST_CASE(
-	literal_strong_typedef
+TEST_CASE(
+	"literal strong_typedef",
+	"[literal]"
 )
 {
 	FCPPT_MAKE_STRONG_TYPEDEF(
@@ -65,12 +72,13 @@ BOOST_AUTO_TEST_CASE(
 		my_type
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::literal<
 			my_type
 		>(
 			1
-		).get(),
+		).get()
+		==
 		1
 	);
 }

@@ -9,13 +9,14 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_success_opt
+TEST_CASE(
+	"either::success_opt",
+	"[either]"
 )
 {
 	typedef
@@ -31,23 +32,25 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::success_opt(
 			either_int(
 				std::string(
 					"test"
 				)
 			)
-		),
+		)
+		==
 		optional_int()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::either::success_opt(
 			either_int(
 				42
 			)
-		),
+		)
+		==
 		optional_int(
 			42
 		)

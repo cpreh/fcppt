@@ -7,12 +7,13 @@
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/read_from.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_buffer_read_from
+TEST_CASE(
+	"container::buffer::read_from",
+	"[container],[buffer]"
 )
 {
 	typedef
@@ -45,23 +46,27 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
-		result.read_size(),
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result.write_size(),
+	CHECK(
+		result.write_size()
+		==
 		8u
 	);
 
-	BOOST_CHECK_EQUAL(
-		result[0],
+	REQUIRE(
+		result.read_size()
+		==
+		2u
+	);
+
+	CHECK(
+		result[0]
+		==
 		10
 	);
 
-	BOOST_CHECK_EQUAL(
-		result[1],
+	CHECK(
+		result[1]
+		==
 		20
 	);
 }

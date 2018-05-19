@@ -11,13 +11,14 @@
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_move_range
+TEST_CASE(
+	"container move_range",
+	"[container]"
 )
 {
 	typedef
@@ -77,18 +78,21 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
+	REQUIRE(
+		result.size()
+		==
 		2u
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[0].get(),
+	CHECK(
+		*result[0].get()
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[1].get(),
+	CHECK(
+		*result[1].get()
+		==
 		1
 	);
 }

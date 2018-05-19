@@ -10,12 +10,13 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_buffer_read_from_opt
+TEST_CASE(
+	"container::buffer::read_from_opt",
+	"[container],[buffer]"
 )
 {
 	typedef
@@ -48,8 +49,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK(
-		!result1.has_value()
+	CHECK_FALSE(
+		result1.has_value()
 	);
 
 	optional_buffer_type const result2{
@@ -74,8 +75,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		result2.has_value()
 	);
-
 }

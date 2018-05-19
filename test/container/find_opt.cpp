@@ -17,13 +17,14 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_find_opt
+TEST_CASE(
+	"container::find_opt",
+	"[container]"
 )
 {
 	FCPPT_MAKE_STRONG_TYPEDEF(
@@ -94,13 +95,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int_ref;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::container::find_opt(
 			set,
 			strong_int(
 				3
 			)
-		),
+		)
+		==
 		optional_int_ref(
 			fcppt::make_cref(
 				*set.find(
@@ -110,8 +112,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::container::find_opt(
+	CHECK_FALSE(
+		fcppt::container::find_opt(
 			set,
 			strong_int(
 				4

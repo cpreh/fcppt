@@ -7,13 +7,14 @@
 #include <fcppt/no_init.hpp>
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_bitfield_empty
+TEST_CASE(
+	"container::bitfield empty",
+	"[container],[bitfield]"
 )
 {
 	typedef
@@ -30,12 +31,16 @@ BOOST_AUTO_TEST_CASE(
 	>
 	empty_bitfield;
 
-	empty_bitfield field{
-		fcppt::no_init()
-	};
+	CHECK(
+		empty_bitfield{
+			fcppt::no_init()
+		}.array().empty()
+	);
 
-	BOOST_CHECK_EQUAL(
-		empty_bitfield::static_size::value,
-		0u
+	static_assert(
+		empty_bitfield::static_size::value
+		==
+		0u,
+		""
 	);
 }

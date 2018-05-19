@@ -5,38 +5,41 @@
 
 
 #include <fcppt/widen.hpp>
+#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	codecvt_widen
+TEST_CASE(
+	"widen",
+	"[codecvt]"
 )
 {
 	// shouldn't need any multi byte characters
-	char const *const input(
+	std::string const input{
 		"foobar"
-	);
+	};
 
 	// test this multiple times
 	// because there was a corruption issue
-	for(
-		unsigned i = 0;
-		i < 3;
-		++i
-	)
-	{
-		std::wstring const output(
-			fcppt::widen(
-				input
-			)
-		);
+	fcppt::algorithm::repeat(
+		3u,
+		[
+			&input
+		]{
+			std::wstring const output(
+				fcppt::widen(
+					input
+				)
+			);
 
-		BOOST_CHECK_EQUAL(
-			output.size(),
-			6u
-		);
-	}
+			CHECK(
+				output.size()
+				==
+				6u
+			);
+		}
+	);
 }

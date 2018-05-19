@@ -11,13 +11,14 @@
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_grid_apply
+TEST_CASE(
+	"container::grid::apply",
+	"[container],[grid]"
 )
 {
 	typedef
@@ -112,42 +113,46 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		grid1.size(),
+	// TODO: Compare the whole grids
+	REQUIRE(
+		grid1.size()
+		==
 		result.size()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		result.get_unsafe(
 			string_grid::pos(
 				0u,
 				0u
 			)
-		),
+		)
+		==
 		std::string(
 			"00"
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		result.get_unsafe(
 			string_grid::pos(
 				1u,
 				2u
 			)
-		),
+		)
+		==
 		std::string(
 			"33"
 		)
 	);
 
-
-	BOOST_REQUIRE_EQUAL(
+	CHECK(
 		fcppt::container::grid::apply(
 			function,
 			grid1,
 			string_grid()
-		).size(),
+		).size()
+		==
 		string_grid::dim(
 			0u,
 			0u

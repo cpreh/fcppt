@@ -8,7 +8,7 @@
 #include <fcppt/intrusive/base.hpp>
 #include <fcppt/intrusive/list.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -82,17 +82,19 @@ private:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	list
+TEST_CASE(
+	"intrusive::list"
+	"[intrusive]"
 )
 {
 	test_list my_list{};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		std::distance(
 			my_list.begin(),
 			my_list.end()
-		),
+		)
+		==
 		0
 	);
 
@@ -102,15 +104,16 @@ BOOST_AUTO_TEST_CASE(
 			42
 		};
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			std::distance(
 				my_list.begin(),
 				my_list.end()
-			),
+			)
+			==
 			1
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			std::next(
 				my_list.begin()
 			)
@@ -124,7 +127,7 @@ BOOST_AUTO_TEST_CASE(
 				10
 			};
 
-			BOOST_CHECK(
+			CHECK(
 				std::next(
 					std::next(
 						my_list.begin()
@@ -134,23 +137,26 @@ BOOST_AUTO_TEST_CASE(
 				my_list.end()
 			);
 
-			BOOST_CHECK_EQUAL(
+			CHECK(
 				std::distance(
 					my_list.begin(),
 					my_list.end()
-				),
+				)
+				==
 				2
 			);
 
-			BOOST_CHECK_EQUAL(
-				my_list.begin()->value(),
+			CHECK(
+				my_list.begin()->value()
+				==
 				42
 			);
 
-			BOOST_CHECK_EQUAL(
+			CHECK(
 				std::next(
 					my_list.begin()
-				)->value(),
+				)->value()
+				==
 				10
 			);
 
@@ -160,16 +166,17 @@ BOOST_AUTO_TEST_CASE(
 				)
 			};
 
-			BOOST_CHECK_EQUAL(
+			CHECK(
 				std::distance(
 					my_list.begin(),
 					my_list.end()
-				),
+				)
+				==
 				2
 			);
 		}
 
-		BOOST_CHECK(
+		CHECK(
 			std::next(
 				my_list.begin()
 			)
@@ -183,11 +190,11 @@ BOOST_AUTO_TEST_CASE(
 			)
 		};
 
-		BOOST_CHECK(
+		CHECK(
 			my_list.empty()
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			std::next(
 				my_list2.begin()
 			)

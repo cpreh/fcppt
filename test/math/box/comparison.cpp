@@ -8,31 +8,35 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	box_comparison
+TEST_CASE(
+	"math::box comparison",
+	"[math],[box]"
 )
 {
-	typedef fcppt::math::box::object<
+	typedef
+	fcppt::math::box::object<
 		int,
 		2
-	> box_type;
+	>
+	box_type;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		box_type(
 			box_type::vector(1,2),
 			box_type::dim(3,4)
-		),
+		)
+		==
 		box_type(
 			box_type::vector(1,2),
 			box_type::dim(3,4)
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		box_type(
 			box_type::vector(1,2),
 			box_type::dim(3,4)
@@ -44,7 +48,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		box_type(
 			box_type::vector(1,2),
 			box_type::dim(3,4)

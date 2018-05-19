@@ -6,8 +6,11 @@
 
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/index_of_array.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,8 +26,9 @@ enum class test_enum
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	enum_index_of_array
+TEST_CASE(
+	"enum::index_of_array",
+	"[enum]"
 )
 {
 	typedef
@@ -39,17 +43,21 @@ BOOST_AUTO_TEST_CASE(
 		2u
 	}}};
 
-	BOOST_CHECK(
-		fcppt::enum_::index_of_array(
-			test,
-			2u
-		).get_unsafe()
-		==
-		test_enum::test2
+	CHECK(
+		fcppt::test::defer(
+			fcppt::enum_::index_of_array(
+				test,
+				2u
+			)
+			==
+			fcppt::optional::make(
+				test_enum::test2
+			)
+		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::enum_::index_of_array(
+	CHECK_FALSE(
+		fcppt::enum_::index_of_array(
 			test,
 			3u
 		).has_value()

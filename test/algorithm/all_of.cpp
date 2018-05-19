@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm all_of",
-	"[algorithm_all_of]"
+	"algorithm::all_of",
+	"[algorithm]"
 )
 {
 	typedef
@@ -40,8 +40,8 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
-		!fcppt::algorithm::all_of(
+	CHECK_FALSE(
+		fcppt::algorithm::all_of(
 			int_vector{
 				2,
 				3,
@@ -54,7 +54,8 @@ TEST_CASE(
 			{
 				return
 					_val % 2
-					== 0;
+					==
+					0;
 			}
 		)
 	);

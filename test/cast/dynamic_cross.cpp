@@ -10,7 +10,7 @@
 #include <fcppt/cast/dynamic_cross_exn.hpp>
 #include <fcppt/cast/dynamic_cross_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,30 +47,31 @@ public:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	cast_dynamic_cross
+TEST_CASE(
+	"cast::dynamic_cross",
+	"[cast]"
 )
 {
 	derived1 d1{};
 
-	BOOST_CHECK(
-		!fcppt::cast::dynamic_cross<
+	CHECK_FALSE(
+		fcppt::cast::dynamic_cross<
 			derived2
 		>(
 			d1
 		).has_value()
 	);
 
-	BOOST_CHECK((
-		!fcppt::cast::apply<
+	CHECK_FALSE(
+		fcppt::cast::apply<
 			fcppt::cast::dynamic_cross_fun,
 			derived2
 		>(
 			d1
 		).has_value()
-	));
+	);
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		fcppt::cast::dynamic_cross_exn<
 			derived2 &
 		>(

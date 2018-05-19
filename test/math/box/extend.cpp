@@ -4,19 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/text.hpp>
-#include <fcppt/io/cerr.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/extend_bounding_box.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_box_extend_bounding_box_vector
+TEST_CASE(
+	"math::box::extend_bounding_box vector",
+	"[math],[box]"
 )
 {
 	typedef
@@ -26,7 +25,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	box_type;
 
-	box_type b(
+	box_type box(
 		box_type::vector(
 			1,
 			1
@@ -37,27 +36,18 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	fcppt::io::cerr()
-		<< FCPPT_TEXT("Original box: ")
-		<< b
-		<< FCPPT_TEXT('\n');
-
-	b =
+	box =
 		fcppt::math::box::extend_bounding_box(
-			b,
+			box,
 			box_type::vector(
 				3,
 				4
 			)
 		);
 
-	fcppt::io::cerr()
-		<< FCPPT_TEXT("Added (3,4), now: ")
-		<< b
-		<< FCPPT_TEXT('\n');
-
-	BOOST_CHECK_EQUAL(
-		b,
+	REQUIRE(
+		box
+		==
 		box_type(
 			box_type::vector(
 				1,
@@ -70,22 +60,17 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	b =
+	box =
 		fcppt::math::box::extend_bounding_box(
-			b,
+			box,
 			box_type::vector(
 				0,0
 			)
 		);
 
-	fcppt::io::cerr()
-		<< FCPPT_TEXT("Added (0,0), now: ")
-		<< b
-		<< FCPPT_TEXT('\n');
-
-	// The tests are incremental, so require is...required here
-	BOOST_REQUIRE_EQUAL(
-		b,
+	REQUIRE(
+		box
+		==
 		box_type(
 			box_type::vector(
 				0,
@@ -99,22 +84,18 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 	// This point is inside the bounding box -> nothing should change
-	b =
+	box =
 		fcppt::math::box::extend_bounding_box(
-			b,
+			box,
 			box_type::vector(
 				1,
 				1
 			)
 		);
 
-	fcppt::io::cerr()
-		<< FCPPT_TEXT("Added (1,1), now: ")
-		<< b
-		<< FCPPT_TEXT('\n');
-
-	BOOST_REQUIRE_EQUAL(
-		b,
+	REQUIRE(
+		box
+		==
 		box_type(
 			box_type::vector(
 				0,
@@ -128,8 +109,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	math_box_extend_bounding_box_box
+TEST_CASE(
+	"math::box::extend_bounding_box box",
+	"[math],[box]"
 )
 {
 	typedef
@@ -172,19 +154,21 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::box::extend_bounding_box(
 			box1,
 			box2
-		),
+		)
+		==
 		expected
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::box::extend_bounding_box(
 			box2,
 			box1
-		),
+		)
+		==
 		expected
 	);
 }

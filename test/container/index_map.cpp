@@ -6,41 +6,48 @@
 
 #include <fcppt/container/index_map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_index_map
+TEST_CASE(
+	"container::index_map",
+	"[container]"
 )
 {
-	typedef fcppt::container::index_map<
+	typedef
+	fcppt::container::index_map<
 		int
-	> int_index_map;
+	>
+	int_index_map;
 
-	int_index_map map;
+	int_index_map map{};
 
 	map[
 		2
 	] = 42;
 
-	BOOST_REQUIRE_EQUAL(
-		map.impl().size(),
+	REQUIRE(
+		map.impl().size()
+		==
 		3u
 	);
 
-	BOOST_CHECK_EQUAL(
-		map[0],
+	CHECK(
+		map[0]
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
-		map[1],
+	CHECK(
+		map[1]
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
-		map[2],
+	CHECK(
+		map[2]
+		==
 		42
 	);
 }

@@ -5,33 +5,46 @@
 
 
 #include <fcppt/math/box/center.hpp>
-#include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	box_center
+TEST_CASE(
+	"math::box::center",
+	"[math],[box]"
 )
 {
-	typedef fcppt::math::box::object<
+	typedef
+	fcppt::math::box::object<
 		int,
 		3
-	> box_type;
+	>
+	box_type;
 
-	box_type const b(
-		box_type::vector(10,12,14),
-		box_type::dim(24,26,4)
-	);
-
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::box::center(
-			b
-		),
-		box_type::vector(22,25,16)
+			box_type{
+				box_type::vector{
+					10,
+					12,
+					14
+				},
+				box_type::dim{
+					24,
+					26,
+					4
+				}
+			}
+		)
+		==
+		box_type::vector{
+			22,
+			25,
+			16
+		}
 	);
 }

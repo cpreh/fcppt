@@ -7,12 +7,13 @@
 #include <fcppt/math/box/contains_point.hpp>
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_box_contains_point
+TEST_CASE(
+	"math::box::contains_point",
+	"[math],[box]"
 )
 {
 	typedef
@@ -32,7 +33,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::box::contains_point(
 			outer,
 			box2::vector{
@@ -42,8 +43,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::box::contains_point(
+	CHECK_FALSE(
+		fcppt::math::box::contains_point(
 			outer,
 			box2::vector{
 				-1,
@@ -52,8 +53,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::box::contains_point(
+	CHECK_FALSE(
+		fcppt::math::box::contains_point(
 			outer,
 			box2::vector{
 				6,

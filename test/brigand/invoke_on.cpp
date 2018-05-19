@@ -15,8 +15,8 @@
 
 
 TEST_CASE(
-	"brigand invoke_on",
-	"[brigand_invoke_on]"
+	"brigand::invoke_on",
+	"[brigand]"
 )
 {
 	typedef

@@ -6,13 +6,14 @@
 
 #include <fcppt/container/insert.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_insert
+TEST_CASE(
+	"container::insert",
+	"[container]"
 )
 {
 	typedef
@@ -23,15 +24,15 @@ BOOST_AUTO_TEST_CASE(
 
 	int_set set{};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::container::insert(
 			set,
 			1
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::container::insert(
+	CHECK_FALSE(
+		fcppt::container::insert(
 			set,
 			1
 		)

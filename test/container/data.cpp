@@ -7,23 +7,26 @@
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	container_data
+TEST_CASE(
+	"container::data",
+	"[container]"
 )
 {
-	typedef std::vector<
+	typedef
+	std::vector<
 		int
-	> int_vector;
+	>
+	int_vector;
 
-	int_vector container;
+	int_vector container{};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::container::data(
 			container
 		)
@@ -31,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 		nullptr
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::container::data_end(
 			container
 		)
@@ -47,7 +50,7 @@ BOOST_AUTO_TEST_CASE(
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		std::distance(
 			fcppt::container::data(
 				container
@@ -55,7 +58,8 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::container::data_end(
 				container
 			)
-		),
+		)
+		==
 		2
 	);
 }

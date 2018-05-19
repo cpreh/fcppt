@@ -6,13 +6,14 @@
 
 #include <fcppt/either/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	either_object
+TEST_CASE(
+	"either::object",
+	"[either]"
 )
 {
 	typedef
@@ -22,33 +23,44 @@ BOOST_AUTO_TEST_CASE(
 	>
 	either;
 
-	either const test1(
-		std::string(
-			"failure"
-		)
-	);
+	SECTION(
+		"test failure"
+	)
+	{
+		either const test1(
+			std::string(
+				"failure"
+			)
+		);
 
-	either const test2(
-		42
-	);
+		REQUIRE(
+			test1.has_failure()
+		);
 
-	BOOST_REQUIRE(
-		test1.has_failure()
-	);
+		CHECK(
+			test1.get_failure_unsafe()
+			==
+			std::string(
+				"failure"
+			)
+		);
+	}
 
-	BOOST_CHECK_EQUAL(
-		test1.get_failure_unsafe(),
-		std::string(
-			"failure"
-		)
-	);
+	SECTION(
+		"test success"
+	)
+	{
+		either const test2( 42
+		);
 
-	BOOST_REQUIRE(
-		test2.has_success()
-	);
+		REQUIRE(
+			test2.has_success()
+		);
 
-	BOOST_CHECK_EQUAL(
-		test2.get_success_unsafe(),
-		42
-	);
+		CHECK(
+			test2.get_success_unsafe()
+			==
+			42
+		);
+	}
 }
