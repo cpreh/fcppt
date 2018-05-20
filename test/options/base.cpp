@@ -22,9 +22,6 @@
 #include <fcppt/record/output.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/test/catch/either.hpp>
-#include <fcppt/test/catch/record.hpp>
-#include <fcppt/test/catch/strong_typedef.hpp>
-#include <fcppt/test/catch/variant.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
