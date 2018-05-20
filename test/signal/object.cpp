@@ -94,6 +94,10 @@ TEST_CASE(
 		);
 	}
 
+	REQUIRE(
+		sig.empty()
+	);
+
 	sig();
 
 	REQUIRE(

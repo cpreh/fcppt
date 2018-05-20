@@ -22,6 +22,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/test/catch/either.hpp>
+#include <fcppt/test/catch/variant.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/output.hpp>
