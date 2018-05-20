@@ -45,8 +45,6 @@ function(
 		LINK_LIBS
 			${_LINK_LIBS}
 			fcppt_core_interface
-		INCLUDE_DIRS
-			${TEST_DIR}/include
 	)
 endfunction()
 
