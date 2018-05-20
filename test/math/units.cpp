@@ -10,7 +10,6 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
 #include <boost/units/systems/si/time.hpp>
@@ -19,8 +18,9 @@
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_units
+TEST_CASE(
+	"math units",
+	"[math]"
 )
 {
 	typedef

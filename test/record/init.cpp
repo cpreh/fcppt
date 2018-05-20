@@ -14,7 +14,7 @@
 #include <fcppt/record/output.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -65,28 +65,31 @@ init_test()
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			record
-		),
+		)
+		==
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		Record{
 			int_label{} =
 				42
-		},
+		}
+		==
 		record
 	);
 }
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	record_init
+TEST_CASE(
+	"record::init",
+	"[record]"
 )
 {
 	typedef

@@ -12,12 +12,13 @@
 #include <fcppt/record/multiply_disjoint.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	record_multiply_disjoint
+TEST_CASE(
+	"record::multiply_disjoint",
+	"[record]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -75,21 +76,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			result
-		),
+		)
+		==
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::record::get<
 			move_only_label
 		>(
 			result
-		),
+		)
+		==
 		100
 	);
 }

@@ -11,12 +11,12 @@
 #include <fcppt/record/permute.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	record_permute
+TEST_CASE(
+	"record::permute"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -74,21 +74,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			result
-		),
+		)
+		==
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::record::get<
 			move_label
 		>(
 			result
-		),
+		)
+		==
 		100
 	);
 }

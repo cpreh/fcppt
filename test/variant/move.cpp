@@ -12,15 +12,15 @@
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_move
+TEST_CASE(
+	"variant move",
+	"[variant]"
 )
 {
 	typedef
@@ -44,12 +44,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::variant::get_exn<
 			int_unique_ptr
 		>(
 			test
-		),
+		)
+		==
 		42
 	);
 
@@ -59,12 +60,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::variant::get_exn<
 			int_unique_ptr
 		>(
 			test2
-		),
+		)
+		==
 		42
 	);
 
@@ -85,12 +87,13 @@ BOOST_AUTO_TEST_CASE(
 			test3
 		);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			std::string
 		>(
 			test4
-		),
+		)
+		==
 		std::string(
 			"test"
 		)
@@ -101,18 +104,20 @@ BOOST_AUTO_TEST_CASE(
 			test2
 		);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::variant::get_exn<
 			int_unique_ptr
 		>(
 			test4
-		),
+		)
+		==
 		42
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_move_nested
+TEST_CASE(
+	"variant move nested",
+	"[variant]"
 )
 {
 	typedef
@@ -139,7 +144,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::variant::get_exn<
 			fcppt::unique_ptr<
 				int
@@ -150,7 +155,8 @@ BOOST_AUTO_TEST_CASE(
 			>(
 				test
 			)
-		),
+		)
+		==
 		42
 	);
 
@@ -169,7 +175,7 @@ BOOST_AUTO_TEST_CASE(
 			test
 		);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*fcppt::variant::get_exn<
 			fcppt::unique_ptr<
 				int
@@ -180,7 +186,8 @@ BOOST_AUTO_TEST_CASE(
 			>(
 				test2
 			)
-		),
+		)
+		==
 		42
 	);
 }

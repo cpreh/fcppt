@@ -9,13 +9,14 @@
 #include <fcppt/variant/match.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_match
+TEST_CASE(
+	"variant::match",
+	"[variant]"
 )
 {
 	typedef
@@ -49,14 +50,16 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		"42"
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_match_move
+TEST_CASE(
+	"variant::match move",
+	"[variant]"
 )
 {
 	typedef
@@ -100,8 +103,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		"42"
 	);
 }

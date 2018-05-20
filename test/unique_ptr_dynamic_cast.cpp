@@ -12,7 +12,7 @@
 #include <fcppt/cast/dynamic_fun.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -57,8 +57,9 @@ public:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	unique_ptr_to_base
+TEST_CASE(
+	"unique_ptr_dynamic_cast",
+	"[smartptr]"
 )
 {
 	typedef
@@ -73,7 +74,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	derived_unique_ptr;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::holds_type<
 			base_unique_ptr
 		>(
@@ -88,7 +89,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::holds_type<
 			derived_unique_ptr
 		>(

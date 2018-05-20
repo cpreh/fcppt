@@ -8,12 +8,13 @@
 #include <fcppt/variant/type_info.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_equal
+TEST_CASE(
+	"variant equal",
+	"[variant]"
 )
 {
 	typedef
@@ -36,7 +37,7 @@ BOOST_AUTO_TEST_CASE(
 		string
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		v1 == v2
 	);
 
@@ -44,11 +45,11 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		v1 != v3
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::type_info(
 			v1
 		)

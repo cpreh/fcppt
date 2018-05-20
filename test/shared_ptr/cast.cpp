@@ -12,7 +12,7 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,8 +47,9 @@ derived_ptr;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	shared_ptr_dynamic_pointer_cast
+TEST_CASE(
+	"dynamic_pointer_cast",
+	"[smartptr]"
 )
 {
 	base_ptr const ptr(
@@ -68,14 +69,14 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			ptr2.has_value()
 		);
 
 		fcppt::optional::maybe(
 			ptr2,
 			[]{
-				BOOST_CHECK(
+				CHECK(
 					false
 				);
 			},
@@ -85,22 +86,25 @@ BOOST_AUTO_TEST_CASE(
 				derived_ptr const &_ptr2
 			)
 			{
-				BOOST_CHECK_EQUAL(
-					ptr.use_count(),
+				CHECK(
+					ptr.use_count()
+					==
 					_ptr2.use_count()
 				);
 			}
 		);
 	}
 
-	BOOST_CHECK_EQUAL(
-		ptr.use_count(),
+	CHECK(
+		ptr.use_count()
+		==
 		1l
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	shared_ptr_static_pointer_cast
+TEST_CASE(
+	"static_pointer_cast",
+	"[smartptr]"
 )
 {
 	base_ptr const ptr(
@@ -118,20 +122,23 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
-			ptr.use_count(),
+		CHECK(
+			ptr.use_count()
+			==
 			ptr2.use_count()
 		);
 	}
 
-	BOOST_CHECK_EQUAL(
-		ptr.use_count(),
+	CHECK(
+		ptr.use_count()
+		==
 		1l
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	shared_ptr_const_pointer_cast
+TEST_CASE(
+	"const_pointer_cast",
+	"[smartptr]"
 )
 {
 	typedef
@@ -155,14 +162,16 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
-			ptr.use_count(),
+		CHECK(
+			ptr.use_count()
+			==
 			ptr2.use_count()
 		);
 	}
 
-	BOOST_CHECK_EQUAL(
-		ptr.use_count(),
+	CHECK(
+		ptr.use_count()
+		==
 		1l
 	);
 }

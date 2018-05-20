@@ -15,7 +15,7 @@ add_fcppt_signal_test(
 )
 
 add_fcppt_signal_test(
-	simple
+	object
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
 )

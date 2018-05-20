@@ -12,14 +12,15 @@
 #include <fcppt/random/wrapper/make_uniform_container.hpp>
 #include <fcppt/random/wrapper/uniform_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	random_wrapper_uniform_container
+TEST_CASE(
+	"random::wrapper::uniform_container",
+	"[random]"
 )
 {
 	typedef
@@ -51,7 +52,7 @@ BOOST_AUTO_TEST_CASE(
 		>()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::algorithm::contains(
 			strings,
 			dist_inner(

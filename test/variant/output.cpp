@@ -10,12 +10,13 @@
 #include <fcppt/variant/output.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_output
+TEST_CASE(
+	"variant output",
+	"[variant]"
 )
 {
 	typedef
@@ -24,14 +25,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	variant;
 
-	fcppt::io::ostringstream stream;
+	fcppt::io::ostringstream stream{};
 
 	stream <<
 		variant{
 			42
 		};
 
-	BOOST_CHECK(
+	CHECK(
 		stream.str()
 		==
 		fcppt::string{

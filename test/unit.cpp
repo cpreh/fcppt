@@ -8,12 +8,13 @@
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	unit
+TEST_CASE(
+	"unit",
+	"[various]"
 )
 {
 	static_assert(
@@ -25,16 +26,15 @@ BOOST_AUTO_TEST_CASE(
 		""
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::unit{},
+	CHECK(
+		fcppt::unit{}
+		==
 		fcppt::unit{}
 	);
 
-	BOOST_CHECK(
-		!(
-			fcppt::unit{}
-			!=
-			fcppt::unit{}
-		)
+	CHECK_FALSE(
+		fcppt::unit{}
+		!=
+		fcppt::unit{}
 	);
 }

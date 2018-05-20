@@ -7,13 +7,14 @@
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/range/empty.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	range_empty
+TEST_CASE(
+	"range::empty",
+	"[range]"
 )
 {
 	typedef
@@ -22,12 +23,12 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector vec1{
+	int_vector const vec1{
 		1,
 		2
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::range::empty(
 			fcppt::iterator::make_range(
 				vec1.begin(),
@@ -36,8 +37,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::range::empty(
+	CHECK_FALSE(
+		fcppt::range::empty(
 			fcppt::iterator::make_range(
 				vec1.begin(),
 				vec1.end()

@@ -4,48 +4,49 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/const.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/unique_ptr_from_std.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	unique_ptr_from_std
+TEST_CASE(
+	"unique_ptr_from_std",
+	"[smartptr]"
 )
 {
-	BOOST_CHECK(
-		fcppt::optional::maybe(
-			fcppt::unique_ptr_from_std(
-				std::make_unique<
-					int
-				>(
-					42
-				)
-			),
-			fcppt::const_(
-				false
-			),
-			[](
-				fcppt::unique_ptr<
-					int
-				> const &_ptr
+	fcppt::optional::maybe(
+		fcppt::unique_ptr_from_std(
+			std::make_unique<
+				int
+			>(
+				42
 			)
-			{
-				return
-					*_ptr
-					==
-					42;
-			}
+		),
+		[]{
+			CHECK(
+				false
+			);
+		},
+		[](
+			fcppt::unique_ptr<
+				int
+			> const &_ptr
 		)
+		{
+			CHECK(
+				*_ptr
+				==
+				42
+			);
+		}
 	);
 
-	BOOST_CHECK(
-		!fcppt::unique_ptr_from_std(
+	CHECK_FALSE(
+		fcppt::unique_ptr_from_std(
 			std::unique_ptr<
 				int
 			>{}

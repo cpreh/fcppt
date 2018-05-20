@@ -14,7 +14,7 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,55 +29,60 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_io
+TEST_CASE(
+	"strong_typedef output",
+	"[strongtypedef]"
 )
 {
-	{
-		std::stringstream stream;
+	std::stringstream stream{};
 
-		strong_int const test(
-			42
-		);
+	strong_int const test(
+		42
+	);
 
-		stream << test;
+	stream << test;
 
-		strong_int result(
-			0
-		);
+	strong_int result(
+		0
+	);
 
-		BOOST_REQUIRE(
-			stream >> result
-		);
+	REQUIRE(
+		stream >> result
+	);
 
-		BOOST_CHECK_EQUAL(
-			test,
-			result
-		);
-	}
+	CHECK(
+		test
+		==
+		result
+	);
+}
 
-	{
-		std::stringstream stream;
+TEST_CASE(
+	"strong_typedef input",
+	"[strongtypedef]"
+)
+{
+	std::stringstream stream{};
 
-		stream << 42;
+	stream << 42;
 
-		fcppt::optional::object<
+	fcppt::optional::object<
+		strong_int
+	> const result2{
+		fcppt::io::extract<
 			strong_int
-		> const result2{
-			fcppt::io::extract<
-				strong_int
-			>(
-				stream
-			)
-		};
+		>(
+			stream
+		)
+	};
 
-		BOOST_CHECK_EQUAL(
-			fcppt::optional::make(
-				strong_int{
-					42
-				}
-			),
-			result2
-		);
-	}
+	CHECK(
+		fcppt::optional::make(
+			strong_int{
+				42
+			}
+		)
+		==
+		result2
+	);
 }

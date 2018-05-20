@@ -7,12 +7,13 @@
 #include <fcppt/variant/less.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_less
+TEST_CASE(
+	"variant less",
+	"[variant]"
 )
 {
 	typedef
@@ -30,12 +31,12 @@ BOOST_AUTO_TEST_CASE(
 		20
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		v1 < v2
 	);
 
-	BOOST_CHECK(
-		!(v2 < v1)
+	CHECK_FALSE(
+		v2 < v1
 	);
 
 	variant const v3(
@@ -44,11 +45,11 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		v1 < v3
 	);
 
-	BOOST_CHECK(
-		!(v3 < v1)
+	CHECK_FALSE(
+		v3 < v1
 	);
 }

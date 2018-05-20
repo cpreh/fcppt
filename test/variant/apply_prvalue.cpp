@@ -7,7 +7,7 @@
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,37 +22,48 @@ struct function
 		typename T2,
 		typename T3
 	>
-	bool
+	void
 	operator()(
 		T1 const &,
 		T2 const &,
 		T3 const &
 	) const
 	{
-		return
-			false;
+		CHECK(
+			false
+		);
 	}
 
-	bool
+	void
 	operator()(
 		bool const _bool,
 		int const _int,
 		std::string const &_string
 	) const
 	{
-		return
-			_bool == false
-			&&
-			_int == 42
-			&&
-			_string == "foo";
+		CHECK_FALSE(
+			_bool
+		);
+
+		CHECK(
+			_int
+			==
+			42
+		);
+
+		CHECK(
+			_string
+			==
+			"foo"
+		);
 	}
 };
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_apply_prvalue
+TEST_CASE(
+	"variant::apply prvalue",
+	"[variant]"
 )
 {
 	typedef
@@ -67,18 +78,16 @@ BOOST_AUTO_TEST_CASE(
 		"foo"
 	);
 
-	BOOST_CHECK(
-		fcppt::variant::apply_ternary(
-			function(),
-			variant(
-				false
-			),
-			variant(
-				42
-			),
-			variant(
-				string
-			)
+	fcppt::variant::apply_ternary(
+		function(),
+		variant(
+			false
+		),
+		variant(
+			42
+		),
+		variant(
+			string
 		)
 	);
 }

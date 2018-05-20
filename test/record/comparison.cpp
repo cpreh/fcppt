@@ -10,12 +10,13 @@
 #include <fcppt/record/output.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	record_comparison
+TEST_CASE(
+	"record comparison",
+	"[record]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -54,29 +55,31 @@ BOOST_AUTO_TEST_CASE(
 	>
 	record2;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		record1(
 			int_label{} = 42,
 			bool_label{} = false
-		),
+		)
+		==
 		record2(
 			int_label{} = 42,
 			bool_label{} = false
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		record1(
 			int_label{} = 42,
 			bool_label{} = false
-		),
+		)
+		==
 		record1(
 			int_label{} = 42,
 			bool_label{} = false
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		record1(
 			int_label{} = 42,
 			bool_label{} = false

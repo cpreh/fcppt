@@ -11,13 +11,14 @@
 #include <fcppt/variant/to_optional.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_to_optional
+TEST_CASE(
+	"variant::to_optional",
+	"[variant]"
 )
 {
 	typedef
@@ -31,12 +32,13 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::to_optional<
 			int
 		>(
 			var
-		),
+		)
+		==
 		fcppt::optional::object<
 			int
 		>(
@@ -44,20 +46,22 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::to_optional<
 			std::string
 		>(
 			var
-		),
+		)
+		==
 		fcppt::optional::object<
 			std::string
 		>()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_to_optional_move
+TEST_CASE(
+	"variant::to_optional move",
+	"[variant]"
 )
 {
 	typedef
@@ -73,8 +77,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	variant;
 
-	BOOST_CHECK_EQUAL(
-		*fcppt::variant::to_optional<
+	typedef
+	fcppt::optional::object<
+		int_unique_ptr
+	>
+	optional_int_unique_ptr;
+
+	optional_int_unique_ptr const result{
+		fcppt::variant::to_optional<
 			int_unique_ptr
 		>(
 			variant(
@@ -84,7 +94,16 @@ BOOST_AUTO_TEST_CASE(
 					42
 				)
 			)
-		).get_unsafe(),
+		)
+	};
+
+	REQUIRE(
+		result.has_value()
+	);
+
+	CHECK(
+		*result.get_unsafe()
+		==
 		42
 	);
 }

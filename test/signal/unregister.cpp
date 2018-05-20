@@ -9,7 +9,7 @@
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <functional>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -27,13 +27,14 @@ signal_type;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	signals_unregister
+TEST_CASE(
+	"signal unregister",
+	"[signal]"
 )
 {
 	std::vector<
 		int
-	> values;
+	> values{};
 
 	signal_type::function const empty_function{
 		[]{}
@@ -68,13 +69,15 @@ BOOST_AUTO_TEST_CASE(
 		);
 	}
 
-	BOOST_CHECK_EQUAL(
-		values.size(),
+	REQUIRE(
+		values.size()
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		values.back(),
+	CHECK(
+		values.back()
+		==
 		42
 	);
 
@@ -92,22 +95,25 @@ BOOST_AUTO_TEST_CASE(
 		);
 	}
 
-	BOOST_CHECK_EQUAL(
-		values.size(),
+	REQUIRE(
+		values.size()
+		==
 		2u
 	);
 
-	BOOST_CHECK_EQUAL(
-		values.back(),
+	CHECK(
+		values.back()
+		==
 		100
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	signal_simple_move
+TEST_CASE(
+	"signal unregister move",
+	"[signals]"
 )
 {
-	signal_type sig;
+	signal_type sig{};
 
 	bool done{
 		false
@@ -144,18 +150,18 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK(
+		CHECK(
 			sig.empty()
 		);
 
 		sig2();
 
-		BOOST_CHECK(
+		CHECK(
 			done
 		);
 	}
 
-	BOOST_CHECK(
+	CHECK(
 		unregistered
 	);
 }

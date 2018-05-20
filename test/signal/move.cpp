@@ -9,12 +9,13 @@
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	signal_move
+TEST_CASE(
+	"signal move",
+	"[signal]"
 )
 {
 	typedef
@@ -78,7 +79,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*signal(
 			signal_type::initial_value{
 				fcppt::make_unique_ptr<
@@ -87,7 +88,8 @@ BOOST_AUTO_TEST_CASE(
 					0
 				)
 			}
-		),
+		)
+		==
 		3
 	);
 }

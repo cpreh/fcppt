@@ -47,7 +47,7 @@ TEST_CASE(
 		nullptr
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::optional::from_pointer(
 			ptr
 		)

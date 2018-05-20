@@ -9,13 +9,14 @@
 #include <fcppt/shared_ptr_output.hpp>
 #include <fcppt/shared_ptr_std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	shared_ptr_hash
+TEST_CASE(
+	"shared_ptr hash",
+	"[smartptr]"
 )
 {
 	typedef
@@ -42,6 +43,9 @@ BOOST_AUTO_TEST_CASE(
 		x
 	};
 
+	SECTION(
+		"found"
+	)
 	{
 		int_shared_ptr_set::const_iterator const it(
 			set.find(
@@ -49,18 +53,22 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_REQUIRE(
+		REQUIRE(
 			it
 			!=
 			set.end()
 		);
 
-		BOOST_CHECK_EQUAL(
-			*it,
+		CHECK(
+			*it
+			==
 			x
 		);
 	}
 
+	SECTION(
+		"not found"
+	)
 	{
 		int_shared_ptr const y(
 			fcppt::make_shared_ptr<
@@ -70,16 +78,12 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		int_shared_ptr_set::const_iterator const it(
-			set.find(
+		CHECK(
+			set.count(
 				y
 			)
-		);
-
-		BOOST_CHECK(
-			it
 			==
-			set.end()
+			0u
 		);
 	}
 }

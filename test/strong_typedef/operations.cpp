@@ -9,7 +9,7 @@
 #include <fcppt/strong_typedef_operators.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,8 +28,9 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_arithmetic
+TEST_CASE(
+	"strong_typedef arithmetic",
+	"[strongtypedef]"
 )
 {
 	strong_int
@@ -40,59 +41,70 @@ BOOST_AUTO_TEST_CASE(
 			4
 		);
 
-	BOOST_CHECK_EQUAL(
-		test1 + test2,
+	CHECK(
+		test1 + test2
+		==
 		strong_int(6)
 	);
 
-	BOOST_CHECK_EQUAL(
-		test2 - test1,
+	CHECK(
+		test2 - test1
+		==
 		strong_int(2)
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1 * test2,
+	CHECK(
+		test1 * test2
+		==
 		strong_int(8)
 	);
 
-	BOOST_CHECK_EQUAL(
-		-test1,
+	CHECK(
+		-test1
+		==
 		strong_int(-2)
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1++,
+	CHECK(
+		test1++
+		==
 		strong_int(2)
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1,
+	REQUIRE(
+		test1
+		==
 		strong_int(3)
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1--,
+	REQUIRE(
+		test1--
+		==
 		strong_int(3)
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1,
+	REQUIRE(
+		test1
+		==
 		strong_int(2)
 	);
 
-	BOOST_CHECK_EQUAL(
-		++test1,
+	REQUIRE(
+		++test1
+		==
 		strong_int(3)
 	);
 
-	BOOST_CHECK_EQUAL(
-		--test1,
+	REQUIRE(
+		--test1
+		==
 		strong_int(2)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_assignment_arithmetic
+TEST_CASE(
+	"strong_typedef assignment arithmetic",
+	"[strongtypedef]"
 )
 {
 	strong_int test(
@@ -101,28 +113,32 @@ BOOST_AUTO_TEST_CASE(
 
 	test += strong_int(2);
 
-	BOOST_CHECK_EQUAL(
-		test,
+	REQUIRE(
+		test
+		==
 		strong_int(3)
 	);
 
 	test -= strong_int(1);
 
-	BOOST_CHECK_EQUAL(
-		test,
+	REQUIRE(
+		test
+		==
 		strong_int(2)
 	);
 
 	test *= strong_int(2);
 
-	BOOST_CHECK_EQUAL(
-		test,
+	REQUIRE(
+		test
+		==
 		strong_int(4)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_assignment_bitwise
+TEST_CASE(
+	"strong_typedef assignment bitwise",
+	"[strongtypedef]"
 )
 {
 	strong_uint test1{
@@ -131,28 +147,32 @@ BOOST_AUTO_TEST_CASE(
 
 	test1 &= strong_uint{2u};
 
-	BOOST_CHECK_EQUAL(
-		test1,
+	REQUIRE(
+		test1
+		==
 		strong_uint{2u}
 	);
 
 	test1 |= strong_uint{3u};
 
-	BOOST_CHECK_EQUAL(
-		test1,
+	REQUIRE(
+		test1
+		==
 		strong_uint{3u}
 	);
 
 	test1 ^= strong_uint{2u};
 
-	BOOST_CHECK_EQUAL(
-		test1,
+	REQUIRE(
+		test1
+		==
 		strong_uint{1u}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_bitwise
+TEST_CASE(
+	"strong_typedef bitwise",
+	"[strongtypedef]"
 )
 {
 	strong_uint const
@@ -163,37 +183,48 @@ BOOST_AUTO_TEST_CASE(
 			3u
 		);
 
-	BOOST_CHECK_EQUAL(
-		test1
-		&
-		test2,
+	CHECK(
+		(
+			test1
+			&
+			test2
+		)
+		==
 		strong_uint{2u}
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1
-		|
-		test2,
+	CHECK(
+		(
+			test1
+			|
+			test2
+		)
+		==
 		strong_uint{3u}
 	);
 
-	BOOST_CHECK_EQUAL(
-		test1
-		^
-		test2,
+	CHECK(
+		(
+			test1
+			^
+			test2
+		)
+		==
 		strong_uint{1u}
 	);
 
-	BOOST_CHECK_EQUAL(
-		~test1,
+	CHECK(
+		~test1
+		==
 		strong_uint{
 			~2u
 		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_comparison
+TEST_CASE(
+	"strong_typedef comparison",
+	"[strongtypedef]"
 )
 {
 	strong_int const
@@ -207,27 +238,39 @@ BOOST_AUTO_TEST_CASE(
 			2
 		);
 
-	BOOST_CHECK(
-		test1 == test2
+	CHECK(
+		test1
+		==
+		test2
 	);
 
-	BOOST_CHECK(
-		test1 != test3
+	CHECK(
+		test1
+		!=
+		test3
 	);
 
-	BOOST_CHECK(
-		test1 <= test2
+	CHECK(
+		test1
+		<=
+		test2
 	);
 
-	BOOST_CHECK(
-		test1 >= test2
+	CHECK(
+		test1
+		>=
+		test2
 	);
 
-	BOOST_CHECK(
-		test1 < test3
+	CHECK(
+		test1
+		<
+		test3
 	);
 
-	BOOST_CHECK(
-		test3 > test1
+	CHECK(
+		test3
+		>
+		test1
 	);
 }

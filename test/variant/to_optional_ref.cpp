@@ -14,12 +14,13 @@
 #include <fcppt/variant/to_optional_ref.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_to_optional_ref
+TEST_CASE(
+	"variant::to_optional_ref",
+	"[variant]"
 )
 {
 	typedef
@@ -34,12 +35,13 @@ BOOST_AUTO_TEST_CASE(
 			42
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::variant::to_optional_ref<
 				int
 			>(
 				var
-			),
+			)
+			==
 			fcppt::optional::reference<
 				int
 			>(
@@ -51,12 +53,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::variant::to_optional_ref<
 				std::string
 			>(
 				var
-			),
+			)
+			==
 			fcppt::optional::reference<
 				std::string
 			>()
@@ -68,12 +71,13 @@ BOOST_AUTO_TEST_CASE(
 			42
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::variant::to_optional_ref<
 				int const
 			>(
 				var
-			),
+			)
+			==
 			fcppt::optional::reference<
 				int const
 			>(
@@ -85,12 +89,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::variant::to_optional_ref<
 				std::string const
 			>(
 				var
-			),
+			)
+			==
 			fcppt::optional::reference<
 				std::string const
 			>()

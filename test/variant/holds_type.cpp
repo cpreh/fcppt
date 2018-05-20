@@ -7,14 +7,15 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_holds_type
+TEST_CASE(
+	"variant::holds_type",
+	"[variant]"
 )
 {
 	typedef
@@ -34,7 +35,7 @@ BOOST_AUTO_TEST_CASE(
 		string
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::holds_type<
 			std::string
 		>(
@@ -42,8 +43,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::variant::holds_type<
+	CHECK_FALSE(
+		fcppt::variant::holds_type<
 			int
 		>(
 			test
@@ -54,15 +55,15 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK(
-		!fcppt::variant::holds_type<
+	CHECK_FALSE(
+		fcppt::variant::holds_type<
 			std::string
 		>(
 			test2
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::holds_type<
 			int
 		>(

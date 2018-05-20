@@ -10,12 +10,13 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_to_base.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	reference_to_base
+TEST_CASE(
+	"reference_to_base",
+	"[ref]"
 )
 {
 	class base
@@ -54,7 +55,7 @@ BOOST_AUTO_TEST_CASE(
 	};
 
 	{
-		derived nonconst_derived;
+		derived nonconst_derived{};
 
 		fcppt::reference<
 			base
@@ -68,8 +69,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
-			&nonconst_derived,
+		CHECK(
+			&nonconst_derived
+			==
 			&nonconst_base.get()
 		);
 	}
@@ -89,8 +91,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
-			&const_derived,
+		CHECK(
+			&const_derived
+			==
 			&const_base.get()
 		);
 	}

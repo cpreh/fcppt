@@ -12,7 +12,7 @@
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -57,8 +57,9 @@ struct move_test
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_map
+TEST_CASE(
+	"strong_typedef_map",
+	"[strongtypedef]"
 )
 {
 	fcppt::strong_typedef<
@@ -83,14 +84,16 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
-		result.get(),
+	CHECK(
+		result.get()
+		==
 		"5"
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_map_move
+TEST_CASE(
+	"strong_typedef_map move",
+	"[strongtypedef]"
 )
 {
 	fcppt::strong_typedef<
@@ -121,8 +124,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
-		*result.get().ptr_,
+	CHECK(
+		*result.get().ptr_
+		==
 		5
 	);
 }

@@ -18,7 +18,7 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -98,8 +98,9 @@ public:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_dynamic_cast
+TEST_CASE(
+	"variant::dynamic_cast",
+	"[variant]"
 )
 {
 	typedef
@@ -139,8 +140,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		};
 
-		BOOST_CHECK_EQUAL(
-			result,
+		CHECK(
+			result
+			==
 			result_type{
 				result_variant{
 					fcppt::make_ref(
@@ -167,15 +169,17 @@ BOOST_AUTO_TEST_CASE(
 			)
 		};
 
-		BOOST_CHECK_EQUAL(
-			result,
+		CHECK(
+			result
+			==
 			result_type{}
 		);
 	}
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_dynamic_cast_const
+TEST_CASE(
+	"variant::dynamic_cast const",
+	"[variant]"
 )
 {
 	typedef
@@ -215,8 +219,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		};
 
-		BOOST_CHECK_EQUAL(
-			result,
+		CHECK(
+			result
+			==
 			result_type{
 				result_variant{
 					fcppt::make_cref(

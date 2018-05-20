@@ -9,7 +9,7 @@
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/shared_ptr_output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -55,8 +55,9 @@ public:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	enable_shared_from_this
+TEST_CASE(
+	"enable_shared_from_this",
+	"[smartptr]"
 )
 {
 	test_shared_ptr const ptr{
@@ -69,8 +70,9 @@ BOOST_AUTO_TEST_CASE(
 		ptr->get()
 	};
 
-	BOOST_CHECK_EQUAL(
-		ptr,
+	CHECK(
+		ptr
+		==
 		ptr2
 	);
 
@@ -82,8 +84,9 @@ BOOST_AUTO_TEST_CASE(
 		ptr3->get()
 	};
 
-	BOOST_CHECK_EQUAL(
-		ptr3,
+	CHECK(
+		ptr3
+		==
 		ptr4
 	);
 }

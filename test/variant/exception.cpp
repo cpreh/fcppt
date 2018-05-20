@@ -8,7 +8,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -55,8 +55,9 @@ struct throw_cctor
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_exception
+TEST_CASE(
+	"variant exception",
+	"[variant]"
 )
 {
 	typedef
@@ -70,29 +71,29 @@ BOOST_AUTO_TEST_CASE(
 		std::string("test")
 	);
 
-	BOOST_CHECK(
-		!test.is_invalid()
+	CHECK_FALSE(
+		test.is_invalid()
 	);
 
 	throw_cctor const test_cctor{};
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		test =
 			test_cctor,
 		fcppt::exception
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test.is_invalid()
 	);
 
-	BOOST_CHECK_THROW(
+	CHECK_THROWS_AS(
 		test =
 			throw_cctor(),
 		fcppt::exception
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test.is_invalid()
 	);
 }

@@ -7,7 +7,7 @@
 #include <fcppt/variant/compare.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,8 +34,9 @@ struct compare
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_equal
+TEST_CASE(
+	"variant::compare",
+	"[variant]"
 )
 {
 	typedef
@@ -58,7 +59,7 @@ BOOST_AUTO_TEST_CASE(
 		string
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::compare(
 			v1,
 			v2,
@@ -70,8 +71,8 @@ BOOST_AUTO_TEST_CASE(
 		42
 	);
 
-	BOOST_CHECK(
-		!fcppt::variant::compare(
+	CHECK_FALSE(
+		fcppt::variant::compare(
 			v1,
 			v3,
 			compare()

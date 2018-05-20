@@ -9,28 +9,13 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-bool
-check_exception(
-	fcppt::exception const &_exn
-)
-{
-	return
-		_exn.string()
-		==
-		FCPPT_TEXT("Invalid");
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	optional_to_exception
+TEST_CASE(
+	"optional::to_exception",
+	"[optional]"
 )
 {
 	typedef
@@ -48,22 +33,22 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::to_exception(
 			optional_int(
 				3
 			),
 			make_exception
-		),
+		)
+		==
 		3
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	CHECK_THROWS_AS(
 		fcppt::optional::to_exception(
 			optional_int(),
 			make_exception
 		),
-		fcppt::exception,
-		check_exception
+		fcppt::exception
 	);
 }

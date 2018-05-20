@@ -8,7 +8,7 @@
 #include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <functional>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -25,8 +25,9 @@ signal_type;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	signal_simple
+TEST_CASE(
+	"signal::object",
+	"[signal]"
 )
 {
 	int counter{
@@ -40,11 +41,12 @@ BOOST_AUTO_TEST_CASE(
 			int const _value
 		)
 		{
-			counter += _value;
+			counter +=
+				_value;
 		}
 	);
 
-	signal_type sig;
+	signal_type sig{};
 
 	{
 		fcppt::signal::auto_connection const con1(
@@ -58,15 +60,17 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_REQUIRE_EQUAL(
-			counter,
+		REQUIRE(
+			counter
+			==
 			0
 		);
 
 		sig();
 
-		BOOST_REQUIRE_EQUAL(
-			counter,
+		REQUIRE(
+			counter
+			==
 			1
 		);
 
@@ -83,25 +87,28 @@ BOOST_AUTO_TEST_CASE(
 
 		sig();
 
-		BOOST_REQUIRE_EQUAL(
-			counter,
+		REQUIRE(
+			counter
+			==
 			4
 		);
 	}
 
 	sig();
 
-	BOOST_REQUIRE_EQUAL(
-		counter,
+	REQUIRE(
+		counter
+		==
 		4
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	signal_simple_move
+TEST_CASE(
+	"signal::object move",
+	"[signal]"
 )
 {
-	signal_type sig;
+	signal_type sig{};
 
 	bool done{
 		false
@@ -125,13 +132,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		sig.empty()
 	);
 
 	sig2();
 
-	BOOST_CHECK(
+	CHECK(
 		done
 	);
 }

@@ -11,7 +11,7 @@
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,8 +37,9 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_apply
+TEST_CASE(
+	"strong_typedef_apply",
+	"[strongtypedef]"
 )
 {
 	fcppt::strong_typedef<
@@ -71,19 +72,19 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
-		result.get().first,
-		5
-	);
-
-	BOOST_CHECK_EQUAL(
-		result.get().second,
-		42
+	CHECK(
+		result.get()
+		==
+		std::make_pair(
+			5,
+			42
+		)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_apply_move
+TEST_CASE(
+	"strong_typedef_apply move",
+	"[strongtypedef]"
 )
 {
 	fcppt::strong_typedef<
@@ -128,13 +129,15 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
-		*result.get().first,
+	CHECK(
+		*result.get().first
+		==
 		5
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result.get().second,
+	CHECK(
+		*result.get().second
+		==
 		42
 	);
 }

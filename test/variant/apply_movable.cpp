@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/exception.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <tuple>
 #include <utility>
@@ -45,30 +46,40 @@ struct function
 		typename T2,
 		typename T3
 	>
-	bool
+	void
 	operator()(
 		T1 &,
 		T2 &,
 		T3 &
 	) const
 	{
-		return
-			false;
+		CHECK(
+			false
+		);
 	}
 
-	bool
+	void
 	operator()(
 		int_unique_ptr &_int,
 		string_unique_ptr &_string,
 		bool_unique_ptr &_bool
 	) const
 	{
-		return
-			*_int == 42
-			&&
-			*_string == "test"
-			&&
-			*_bool == true;
+		CHECK(
+			*_int
+			==
+			42
+		);
+
+		CHECK(
+			*_string
+			==
+			"test"
+		);
+
+		CHECK(
+			*_bool
+		);
 	}
 };
 
@@ -94,7 +105,10 @@ struct move_function
 		T3 &&
 	) const
 	{
-		FCPPT_ASSERT_UNREACHABLE;
+		throw
+			fcppt::exception{
+				FCPPT_TEXT("impossible")
+			};
 	}
 
 	move_result
@@ -129,8 +143,9 @@ variant;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_apply_movable
+TEST_CASE(
+	"variant::apply ref",
+	"[variant]"
 )
 {
 	variant int_variant(
@@ -159,18 +174,17 @@ BOOST_AUTO_TEST_CASE(
 
 	function const func{};
 
-	BOOST_CHECK(
-		fcppt::variant::apply_ternary(
-			func,
-			int_variant,
-			string_variant,
-			bool_variant
-		)
+	fcppt::variant::apply_ternary(
+		func,
+		int_variant,
+		string_variant,
+		bool_variant
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	variant_apply_move
+TEST_CASE(
+	"variant_apply move",
+	"[variant]"
 )
 {
 	move_result const result{
@@ -200,25 +214,27 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		),
+		)
+		==
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			1
 		>(
 			result
-		),
+		)
+		==
 		"test"
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		*std::get<
 			2
 		>(

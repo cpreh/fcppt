@@ -9,7 +9,7 @@
 #include <fcppt/record/make_label_arg.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,8 +24,9 @@ FCPPT_RECORD_MAKE_LABEL_ARG(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	record_arg_label
+TEST_CASE(
+	"record arg label",
+	"[record]"
 )
 {
 	typedef
@@ -46,21 +47,23 @@ BOOST_AUTO_TEST_CASE(
 		texture<1>{} = std::string("clouds")
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			texture<0>
 		>(
 			test_sprite
-		),
+		)
+		==
 		std::string("ground")
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			texture<1>
 		>(
 			test_sprite
-		),
+		)
+		==
 		std::string("clouds")
 	);
 }

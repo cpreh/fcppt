@@ -9,19 +9,20 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_to_const.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	reference_to_const
+TEST_CASE(
+	"reference_to_const",
+	"[ref]"
 )
 {
 	int value{
 		0
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::reference_to_const(
 			fcppt::make_ref(
 				value

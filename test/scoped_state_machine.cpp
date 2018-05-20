@@ -12,7 +12,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/state_machine.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -69,31 +69,34 @@ FCPPT_PP_POP_WARNING
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	scoped_state_machine
+TEST_CASE(
+	"scoped_state_machine",
+	"[various]"
 )
 {
-	machine test;
+	machine test{};
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test.terminated()
 	);
 
 	{
-		typedef fcppt::scoped_state_machine<
+		typedef
+		fcppt::scoped_state_machine<
 			machine
-		> scoped_machine;
+		>
+		scoped_machine;
 
 		scoped_machine const scoped(
 			test
 		);
 
-		BOOST_REQUIRE(
-			!test.terminated()
+		REQUIRE_FALSE(
+			test.terminated()
 		);
 	}
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test.terminated()
 	);
 }

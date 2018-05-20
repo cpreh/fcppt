@@ -8,7 +8,7 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,8 +30,9 @@ const_int_ref;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	reference
+TEST_CASE(
+	"reference",
+	"[ref]"
 )
 {
 	int x(
@@ -42,31 +43,35 @@ BOOST_AUTO_TEST_CASE(
 		x
 	);
 
-	BOOST_CHECK_EQUAL(
-		&ref.get(),
+	CHECK(
+		&ref.get()
+		==
 		&x
 	);
 
-	const_int_ref cref(
+	const_int_ref const cref(
 		x
 	);
 
-	BOOST_CHECK_EQUAL(
-		&cref.get(),
+	CHECK(
+		&cref.get()
+		==
 		&x
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		&fcppt::make_ref(
 			x
-		).get(),
+		).get()
+		==
 		&x
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		&fcppt::make_cref(
 			x
-		).get(),
+		).get()
+		==
 		&x
 	);
 
@@ -74,21 +79,25 @@ BOOST_AUTO_TEST_CASE(
 		ref
 	);
 
-	BOOST_CHECK_EQUAL(
-		&other_ref.get(),
+	CHECK(
+		&other_ref.get()
+		==
 		&ref.get()
 	);
 
-	ref = other_ref;
+	ref =
+		other_ref;
 
-	BOOST_CHECK_EQUAL(
-		&other_ref.get(),
+	CHECK(
+		&other_ref.get()
+		==
 		&ref.get()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	reference_hash
+TEST_CASE(
+	"reference hash",
+	"[ref]"
 )
 {
 	typedef
@@ -97,19 +106,20 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_ref_set;
 
-	int x(
-		42
-	);
-
-	int_ref_set set;
-
-	set.insert(
-		int_ref(
-			x
-		)
-	);
-
+	SECTION(
+		"set"
+	)
 	{
+		int x(
+			42
+		);
+
+		int_ref_set const set{
+			int_ref(
+				x
+			)
+		};
+
 		int_ref_set::const_iterator const it(
 			set.find(
 				int_ref(
@@ -118,37 +128,39 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_REQUIRE(
+		REQUIRE(
 			it
 			!=
 			set.end()
 		);
 
-		BOOST_CHECK_EQUAL(
-			&it->get(),
+		CHECK(
+			&it->get()
+			==
 			&x
 		);
 	}
 
-	typedef
-	std::unordered_set<
-		const_int_ref
-	>
-	const_int_ref_set;
-
-	int const y(
-		42
-	);
-
-	const_int_ref_set const_set;
-
-	const_set.insert(
-		const_int_ref(
-			y
-		)
-	);
-
+	SECTION(
+		"const set"
+	)
 	{
+		typedef
+		std::unordered_set<
+			const_int_ref
+		>
+		const_int_ref_set;
+
+		int const y(
+			42
+		);
+
+		const_int_ref_set const const_set{
+			const_int_ref(
+				y
+			)
+		};
+
 		const_int_ref_set::const_iterator const it(
 			const_set.find(
 				const_int_ref(
@@ -157,14 +169,15 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_REQUIRE(
+		REQUIRE(
 			it
 			!=
 			const_set.end()
 		);
 
-		BOOST_CHECK_EQUAL(
-			&it->get(),
+		CHECK(
+			&it->get()
+			==
 			&y
 		);
 	}

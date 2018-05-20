@@ -7,13 +7,14 @@
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	variant_get
+TEST_CASE(
+	"variant::get",
+	"[variant]"
 )
 {
 	typedef
@@ -32,12 +33,13 @@ BOOST_AUTO_TEST_CASE(
 		string
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			std::string
 		>(
 			test
-		),
+		)
+		==
 		string
 	);
 }

@@ -11,13 +11,14 @@
 #include <fcppt/record/set.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	record_object
+TEST_CASE(
+	"record::object",
+	"[record]"
 )
 {
 	class copy_only
@@ -108,7 +109,7 @@ BOOST_AUTO_TEST_CASE(
 		int
 		value() const
 		{
-			BOOST_CHECK(
+			CHECK(
 				valid_
 			);
 
@@ -177,16 +178,17 @@ BOOST_AUTO_TEST_CASE(
 			}
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			test
-		),
+		)
+		==
 		4
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::record::get<
 			bool_label
 		>(
@@ -194,21 +196,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			copy_only_label
 		>(
 			test
-		).value(),
+		).value()
+		==
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			move_only_label
 		>(
 			test
-		).value(),
+		).value()
+		==
 		10
 	);
 
@@ -218,16 +222,17 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			test2
-		),
+		)
+		==
 		4
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::record::get<
 			bool_label
 		>(
@@ -235,12 +240,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			move_only_label
 		>(
 			test2
-		).value(),
+		).value()
+		==
 		10
 	);
 
@@ -251,8 +257,8 @@ BOOST_AUTO_TEST_CASE(
 		false
 	);
 
-	BOOST_CHECK(
-		!fcppt::record::get<
+	CHECK_FALSE(
+		fcppt::record::get<
 			bool_label
 		>(
 			test2
@@ -268,12 +274,13 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			move_only_label
 		>(
 			test2
-		).value(),
+		).value()
+		==
 		100
 	);
 
@@ -284,12 +291,13 @@ BOOST_AUTO_TEST_CASE(
 	) =
 		42;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			test2
-		),
+		)
+		==
 		42
 	);
 }

@@ -11,7 +11,7 @@
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,8 +29,9 @@ variant;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	variany_apply_nonconst_unary
+TEST_CASE(
+	"variany::apply_unary nonconst",
+	"[variant]"
 )
 {
 	variant v1(
@@ -54,18 +55,20 @@ BOOST_AUTO_TEST_CASE(
 		v1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			std::string
 		>(
 			v1
-		),
+		)
+		==
 		std::string{}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	variany_apply_nonconst_binary
+TEST_CASE(
+	"variany::apply_binary nonconst",
+	"[variant]"
 )
 {
 	variant v1(
@@ -102,27 +105,30 @@ BOOST_AUTO_TEST_CASE(
 		v2
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			std::string
 		>(
 			v1
-		),
+		)
+		==
 		std::string{}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			int
 		>(
 			v2
-		),
+		)
+		==
 		0
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	variany_apply_nonconst_ternary
+TEST_CASE(
+	"variany::apply_ternary nonconst",
+	"[variant]"
 )
 {
 	variant v1(
@@ -172,30 +178,33 @@ BOOST_AUTO_TEST_CASE(
 		v3
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			std::string
 		>(
 			v1
-		),
+		)
+		==
 		std::string{}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			int
 		>(
 			v2
-		),
+		)
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::variant::get_exn<
 			bool
 		>(
 			v3
-		),
+		)
+		==
 		false
 	);
 }

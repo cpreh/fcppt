@@ -16,13 +16,14 @@
 #include <fcppt/record/permute.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	record_map
+TEST_CASE(
+	"record::map",
+	"[record]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -97,18 +98,19 @@ BOOST_AUTO_TEST_CASE(
 		)
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::record::get<
 			int_label
 		>(
 			result
-		),
+		)
+		==
 		fcppt::optional::make(
 			42
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::record::get<
 			move_only_label
 		>(

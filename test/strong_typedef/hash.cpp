@@ -10,7 +10,7 @@
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/strong_typedef_std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,8 +25,9 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_hash
+TEST_CASE(
+	"strong_typedef_hash",
+	"[strongtypedef]"
 )
 {
 	typedef
@@ -35,27 +36,32 @@ BOOST_AUTO_TEST_CASE(
 	>
 	hash_set;
 
-	hash_set elements;
-
-	elements.insert(
-		strong_int(1)
-	);
-
-	elements.insert(
+	hash_set const elements{
+		strong_int(1),
 		strong_int(2)
-	);
+	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		elements.count(
 			strong_int(1)
-		),
+		)
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		elements.count(
 			strong_int(2)
-		),
+		)
+		==
 		1u
+	);
+
+	CHECK(
+		elements.count(
+			strong_int(3)
+		)
+		==
+		0u
 	);
 }
