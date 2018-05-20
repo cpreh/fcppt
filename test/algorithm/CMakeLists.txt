@@ -18,6 +18,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	binary_search
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(
@@ -34,10 +36,14 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	find_if_opt
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(
 	find_opt
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(

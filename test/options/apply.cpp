@@ -21,7 +21,7 @@
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
-#include <fcppt/test/catch/either.hpp>
+#include <fcppt/catch/either.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>

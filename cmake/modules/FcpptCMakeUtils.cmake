@@ -1041,15 +1041,25 @@ function(
 	fcppt_utils_setup_tests
 )
 	set(
+		FCPPT_UTILS_CATCH_FILE_TEMP
+		${FCPPT_UTILS_PROJECT_BINARY_DIR}/catch_main_temp.cpp
+	)
+
+	set(
 		FCPPT_UTILS_CATCH_FILE
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/catch_main.cpp
 	)
 
 	file(
 		WRITE
-		${FCPPT_UTILS_CATCH_FILE}
+		${FCPPT_UTILS_CATCH_FILE_TEMP}
 		"#define CATCH_CONFIG_MAIN
 		#include <catch.hpp>"
+	)
+
+	configure_file(
+		${FCPPT_UTILS_CATCH_FILE_TEMP}
+		${FCPPT_UTILS_CATCH_FILE}
 	)
 
 	if(

@@ -5,9 +5,9 @@
 
 
 #include <fcppt/algorithm/binary_search.hpp>
+#include <fcppt/catch/defer.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <iterator>
@@ -40,7 +40,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::test::defer(
+		fcppt::catch_::defer(
 			fcppt::algorithm::binary_search(
 				vec,
 				5

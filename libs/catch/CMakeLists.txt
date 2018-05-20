@@ -1,0 +1,16 @@
+set(
+	FCPPT_CATCH_FILES
+	libs/catch/include/fcppt/catch/defer.hpp
+	libs/catch/include/fcppt/catch/either.hpp
+	libs/catch/include/fcppt/catch/variant.hpp
+)
+
+make_fcppt_library(
+	catch
+	"${FCPPT_CATCH_FILES}"
+	IS_INTERFACE
+	TRANSITIVE_FCPPT_DEPS
+		fcppt_core_interface
+	TRANSITIVE_IMPORTED_DEPS
+		Catch2::Catch
+)

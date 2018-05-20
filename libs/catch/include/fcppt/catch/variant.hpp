@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TEST_CATCH_EITHER_HPP_INCLUDED
-#define FCPPT_TEST_CATCH_EITHER_HPP_INCLUDED
+#ifndef FCPPT_CATCH_VARIANT_HPP_INCLUDED
+#define FCPPT_CATCH_VARIANT_HPP_INCLUDED
 
 #include <fcppt/insert_to_std_string_convert.hpp>
-#include <fcppt/either/object_fwd.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <string>
@@ -20,22 +20,19 @@ namespace Catch
 {
 
 template<
-	typename Failure,
-	typename Success
+	typename Types
 >
 struct StringMaker<
-	fcppt::either::object<
-		Failure,
-		Success
+	fcppt::variant::object<
+		Types
 	>
 >
 {
 	static
 	std::string
 	convert(
-		fcppt::either::object<
-			Failure,
-			Success
+		fcppt::variant::object<
+			Types
 		> const &_value
 	)
 	{

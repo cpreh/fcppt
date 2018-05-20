@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TEST_DEFER_HPP_INCLUDED
-#define FCPPT_TEST_DEFER_HPP_INCLUDED
+#ifndef FCPPT_CATCH_DEFER_HPP_INCLUDED
+#define FCPPT_CATCH_DEFER_HPP_INCLUDED
 
 
 namespace fcppt
 {
-namespace test
+namespace catch_
 {
 
 inline

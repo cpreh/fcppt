@@ -6,6 +6,7 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/defer.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -15,7 +16,6 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/defer.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -53,7 +53,7 @@ TEST_CASE(
 	parser_type;
 
 	CHECK(
-		fcppt::test::defer(
+		fcppt::catch_::defer(
 			fcppt::options::parse(
 				parser,
 				fcppt::args_vector{
@@ -87,7 +87,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::test::defer(
+		fcppt::catch_::defer(
 			fcppt::options::parse(
 				parser,
 				fcppt::args_vector{}

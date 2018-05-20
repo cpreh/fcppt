@@ -115,6 +115,10 @@ else()
 	)
 endif()
 
+find_package(
+	Catch2
+)
+
 option(
 	ENABLE_BOOST
 	"Build the boost support library"
@@ -131,6 +135,12 @@ option(
 	ENABLE_SYSTEM
 	"Build the system library"
 	${Boost_SYSTEM_FOUND}
+)
+
+option(
+	ENABLE_CATCH
+	"Build the Catch support library"
+	${Catch2_FOUND}
 )
 
 option(

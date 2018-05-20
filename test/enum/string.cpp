@@ -5,13 +5,13 @@
 
 
 #include <fcppt/text.hpp>
+#include <fcppt/catch/defer.hpp>
 #include <fcppt/enum/from_string.hpp>
 #include <fcppt/enum/names_array.hpp>
 #include <fcppt/enum/names_impl_fwd.hpp>
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -98,7 +98,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::test::defer(
+		fcppt::catch_::defer(
 			fcppt::enum_::from_string<
 				test_enum
 			>(

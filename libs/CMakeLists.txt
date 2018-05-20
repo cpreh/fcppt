@@ -22,6 +22,15 @@ if(
 	)
 endif()
 
+
+if(
+	ENABLE_CATCH
+)
+	add_subdirectory(
+		catch
+	)
+endif()
+
 add_subdirectory(
 	core
 )

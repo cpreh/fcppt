@@ -22,6 +22,7 @@ update_sublibrary()
 
 LIBS=(
 	boost
+	catch
 	core
 	filesystem
 	log

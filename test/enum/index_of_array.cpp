@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/catch/defer.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/index_of_array.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -44,7 +44,7 @@ TEST_CASE(
 	}}};
 
 	CHECK(
-		fcppt::test::defer(
+		fcppt::catch_::defer(
 			fcppt::enum_::index_of_array(
 				test,
 				2u
