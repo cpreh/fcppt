@@ -9,13 +9,14 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_inverse
+TEST_CASE(
+	"math::matrix::inverse",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -26,7 +27,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	large_matrix_type;
 
-	BOOST_CHECK((
+	CHECK(
 		fcppt::math::matrix::componentwise_equal(
 			fcppt::math::matrix::inverse(
 				large_matrix_type(
@@ -56,5 +57,5 @@ BOOST_AUTO_TEST_CASE(
 				double
 			>::epsilon()
 		)
-	));
+	);
 }

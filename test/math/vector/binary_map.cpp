@@ -10,12 +10,13 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_binary_map
+TEST_CASE(
+	"math::vector::binary_map",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -32,7 +33,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_vector;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::binary_map(
 			ui2_vector{
 				10u,
@@ -54,7 +55,8 @@ BOOST_AUTO_TEST_CASE(
 					+
 					_val2;
 			}
-		),
+		)
+		==
 		i2_vector(
 			13,
 			25

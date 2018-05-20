@@ -11,12 +11,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	matrix_map
+TEST_CASE(
+	"math::matrix::map",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -35,7 +36,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	imat2;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::map(
 			uimat2{
 				fcppt::math::matrix::row(
@@ -54,7 +55,8 @@ BOOST_AUTO_TEST_CASE(
 						_val
 					);
 			}
-		),
+		)
+		==
 		imat2(
 			fcppt::math::matrix::row(
 				1,2

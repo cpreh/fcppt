@@ -17,7 +17,7 @@
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/static_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -71,25 +71,22 @@ optional_derived_ref;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_dynamic_cast
+TEST_CASE(
+	"optional::dynamic_cast",
+	"[optional]"
 )
 {
 	optional_base_ref const empty_base{};
 
-	optional_derived_ref const empty_derived(
+	CHECK_FALSE(
 		fcppt::optional::dynamic_cast_<
 			derived
 		>(
 			empty_base
-		)
+		).has_value()
 	);
 
-	BOOST_CHECK(
-		!empty_derived.has_value()
-	);
-
-	derived derived_object;
+	derived derived_object{};
 
 	optional_base_ref const base_ref{
 		fcppt::reference<
@@ -107,8 +104,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		derived_ref,
+	CHECK(
+		derived_ref
+		==
 		optional_derived_ref{
 			fcppt::make_ref(
 				derived_object
@@ -117,25 +115,22 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_static_cast
+TEST_CASE(
+	"optional::static_cast",
+	"[optional]"
 )
 {
 	optional_base_ref const empty_base{};
 
-	optional_derived_ref const empty_derived(
+	CHECK_FALSE(
 		fcppt::optional::static_cast_<
 			derived
 		>(
 			empty_base
-		)
+		).has_value()
 	);
 
-	BOOST_CHECK(
-		!empty_derived.has_value()
-	);
-
-	derived derived_object;
+	derived derived_object{};
 
 	optional_base_ref const base_ref{
 		fcppt::reference<
@@ -153,8 +148,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		derived_ref,
+	CHECK(
+		derived_ref
+		==
 		optional_derived_ref(
 			fcppt::make_ref(
 				derived_object
@@ -163,8 +159,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_const_cast
+TEST_CASE(
+	"optional::const_cast"
+	"[optional]"
 )
 {
 	typedef
@@ -173,7 +170,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_const_base_ref;
 
-	base object;
+	base object{};
 
 	optional_const_base_ref const ref(
 		fcppt::make_cref(
@@ -189,8 +186,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		nonconst_ref,
+	CHECK(
+		nonconst_ref
+		==
 		optional_base_ref(
 			fcppt::make_ref(
 				object

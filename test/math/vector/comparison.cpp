@@ -7,12 +7,13 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_comparison
+TEST_CASE(
+	"math::vector comparison",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -27,19 +28,19 @@ BOOST_AUTO_TEST_CASE(
 		vec2(1u, 2u),
 		vec3(2u, 2u);
 
-	BOOST_CHECK(
+	CHECK(
 		vec1
 		==
 		vec2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		vec2
 		!=
 		vec3
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		vec1
 		<
 		vec3

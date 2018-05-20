@@ -11,7 +11,8 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#include <array>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -95,8 +96,9 @@ private:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_view_storage
+TEST_CASE(
+	"math::vector view storage",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -114,11 +116,17 @@ BOOST_AUTO_TEST_CASE(
 	>
 	view_vector;
 
-	unsigned data[] = { 1, 2 };
+	std::array<
+		unsigned,
+		2u
+	> array{{
+		1,
+		2
+	}};
 
 	view_vector const view{
 		unsigned_view_storage(
-			data
+			array.data()
 		)
 	};
 
@@ -133,8 +141,9 @@ BOOST_AUTO_TEST_CASE(
 		view
 	);
 
-	BOOST_CHECK_EQUAL(
-		vec,
+	CHECK(
+		vec
+		==
 		view
 	);
 }

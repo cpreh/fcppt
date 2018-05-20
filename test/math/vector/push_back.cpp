@@ -9,44 +9,34 @@
 #include <fcppt/math/vector/push_back.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_push_back
+TEST_CASE(
+	"math::vector::push_back",
+	"[math],[vector]"
 )
 {
-	typedef
-	fcppt::math::vector::static_<
-		int,
-		2
-	>
-	i2_vector;
-
-	typedef
-	fcppt::math::vector::static_<
-		int,
-		3
-	>
-	i3_vector;
-
-	i3_vector const vector(
+	CHECK(
 		fcppt::math::vector::push_back(
-			i2_vector(
+			fcppt::math::vector::static_<
+				int,
+				2
+			>{
 				1,
 				2
-			),
+			},
 			3
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i3_vector(
+		==
+		fcppt::math::vector::static_<
+			int,
+			3
+		>{
 			1,
 			2,
 			3
-		),
-		vector
+		}
 	);
 }

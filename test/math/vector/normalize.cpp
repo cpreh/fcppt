@@ -7,12 +7,13 @@
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_normalize
+TEST_CASE(
+	"math::vector::normalize",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -22,7 +23,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	float2_vec;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::vector::normalize(
 			float2_vec{
 				2.f,
@@ -31,8 +32,8 @@ BOOST_AUTO_TEST_CASE(
 		).has_value()
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::vector::normalize(
+	CHECK_FALSE(
+		fcppt::math::vector::normalize(
 			float2_vec{
 				0.f,
 				0.f

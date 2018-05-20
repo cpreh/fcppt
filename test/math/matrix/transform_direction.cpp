@@ -10,12 +10,13 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_transform_direction
+TEST_CASE(
+	"math::matrix::transform_direction",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -25,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	vector_type;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::transform_direction(
 			fcppt::math::matrix::scaling(
 				1,
@@ -37,7 +38,8 @@ BOOST_AUTO_TEST_CASE(
 				5,
 				6
 			)
-		),
+		)
+		==
 		vector_type(
 			4,
 			10,

@@ -9,12 +9,13 @@
 #include <fcppt/math/dim/push_back.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_dim_push_back
+TEST_CASE(
+	"math::dim::push_back",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -31,7 +32,13 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i3_dim;
 
-	i3_dim const dim(
+	CHECK(
+		i3_dim(
+			1,
+			2,
+			3
+		)
+		==
 		fcppt::math::dim::push_back(
 			i2_dim(
 				1,
@@ -39,14 +46,5 @@ BOOST_AUTO_TEST_CASE(
 			),
 			3
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i3_dim(
-			1,
-			2,
-			3
-		),
-		dim
 	);
 }

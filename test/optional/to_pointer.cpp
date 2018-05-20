@@ -8,12 +8,13 @@
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/to_pointer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_to_pointer
+TEST_CASE(
+	"optional::to_pointer",
+	"[optional]"
 )
 {
 	int const val{
@@ -26,7 +27,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int_cref;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::optional::to_pointer(
 			optional_int_cref{}
 		)
@@ -34,7 +35,7 @@ BOOST_AUTO_TEST_CASE(
 		nullptr
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::optional::to_pointer(
 			optional_int_cref{
 				fcppt::make_cref(

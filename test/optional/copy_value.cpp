@@ -11,13 +11,14 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_copy_value
+TEST_CASE(
+	"optional::copy_value",
+	"[optional]"
 )
 {
 	typedef
@@ -30,14 +31,15 @@ BOOST_AUTO_TEST_CASE(
 		"test1"
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::copy_value(
 			optional_string_ref{
 				fcppt::make_cref(
 					test
 				)
 			}
-		),
+		)
+		==
 		fcppt::optional::object<
 			std::string
 		>(

@@ -5,8 +5,10 @@
 
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
 #include <fcppt/options/help_result.hpp>
@@ -18,15 +20,22 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/output.hpp>
+#include <fcppt/test/catch/either.hpp>
+#include <fcppt/test/catch/record.hpp>
+#include <fcppt/test/catch/strong_typedef.hpp>
+#include <fcppt/test/catch/variant.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/holds_type.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	options_parse_help
+TEST_CASE(
+	"options::parse_help",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -47,7 +56,7 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::options::optional_help_text{}
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::variant::holds_type<
 			fcppt::options::help_text
 		>(
@@ -61,7 +70,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse_help(
 			fcppt::options::default_help_switch(),
 			int_arg,

@@ -83,10 +83,6 @@ add_fcppt_math_matrix_test(
 )
 
 add_fcppt_math_matrix_test(
-	rotation_x
-)
-
-add_fcppt_math_matrix_test(
 	scaling
 )
 

@@ -9,12 +9,13 @@
 #include <fcppt/optional/assign.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_assign
+TEST_CASE(
+	"optional::assign",
+	"[optional]"
 )
 {
 	typedef
@@ -32,14 +33,16 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		42
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_assign_move
+TEST_CASE(
+	"optional::assign move",
+	"[optional]"
 )
 {
 	typedef
@@ -67,8 +70,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result,
+	CHECK(
+		*result
+		==
 		42
 	);
 }

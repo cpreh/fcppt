@@ -9,7 +9,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -135,8 +135,9 @@ take_arg(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	move_if_rvalue
+TEST_CASE(
+	"move_if_rvalue",
+	"[various]"
 )
 {
 
@@ -147,8 +148,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
-			*foo,
+		CHECK(
+			*foo
+			==
 			10
 		);
 	}
@@ -162,8 +164,9 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
-			*foo,
+		CHECK(
+			*foo
+			==
 			10
 		);
 	}

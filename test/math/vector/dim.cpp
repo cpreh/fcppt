@@ -9,16 +9,17 @@
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_dim
+TEST_CASE(
+	"math::vector dim",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -35,7 +36,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_dim;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			1,
 			2
@@ -44,14 +45,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			3,
 			4
-		),
+		)
+		==
 		i2_vector(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			5,
 			2
@@ -60,14 +62,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			3,
 			4
-		),
+		)
+		==
 		i2_vector(
 			2,
 			-2
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			2,
 			3
@@ -76,14 +79,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			3,
 			4
-		),
+		)
+		==
 		i2_vector(
 			6,
 			12
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			6,
 			6
@@ -92,7 +96,8 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			2,
 			3
-		),
+		)
+		==
 		fcppt::optional::make(
 			i2_vector(
 				3,
@@ -101,8 +106,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!(
+	CHECK(
+		(
 			i2_vector(
 				6,
 				6
@@ -112,6 +117,10 @@ BOOST_AUTO_TEST_CASE(
 				2,
 				0
 			)
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			i2_vector
+		>{}
 	);
 }

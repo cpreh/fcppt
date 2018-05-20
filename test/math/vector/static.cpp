@@ -7,40 +7,13 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-test_func(
-	fcppt::math::vector::static_<
-		T,
-		N
-	> const _value
-)
-{
-	BOOST_CHECK_EQUAL(
-		_value.x(),
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		_value.y(),
-		1
-	);
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	math_vector_static
+TEST_CASE(
+	"math::vector::static",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -50,10 +23,20 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int2_vector;
 
-	test_func(
-		int2_vector{
-			0,
-			1
-		}
+	int2_vector const vec{
+		0,
+		1
+	};
+
+	CHECK(
+		vec.x()
+		==
+		0
+	);
+
+	CHECK(
+		vec.y()
+		==
+		1
 	);
 }

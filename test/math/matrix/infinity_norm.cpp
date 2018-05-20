@@ -8,11 +8,14 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(infinity_norm)
+TEST_CASE(
+	"math::matrix::infinity_norm",
+	"[math],[matrix]"
+)
 {
 	typedef
 	fcppt::math::matrix::static_<
@@ -22,22 +25,21 @@ BOOST_AUTO_TEST_CASE(infinity_norm)
 	>
 	matrix_type;
 
-	matrix_type const t(
-		fcppt::math::matrix::row(
-			3, 5, 7
-		),
-		fcppt::math::matrix::row(
-			2, 6, 4
-		),
-		fcppt::math::matrix::row(
-			0, 2, 8
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::infinity_norm(
-			t
-		),
+			matrix_type{
+				fcppt::math::matrix::row(
+					3, 5, 7
+				),
+				fcppt::math::matrix::row(
+					2, 6, 4
+				),
+				fcppt::math::matrix::row(
+					0, 2, 8
+				)
+			}
+		)
+		==
 		15
 	);
 }

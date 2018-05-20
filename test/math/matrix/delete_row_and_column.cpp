@@ -11,12 +11,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_delete_row_and_column
+TEST_CASE(
+	"math::matrix::delete_row_and_column",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -35,7 +36,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	small_matrix_type;
 
-	large_matrix_type const t(
+	large_matrix_type const matrix(
 		fcppt::math::matrix::row(
 			1, 2, 3
 		),
@@ -50,55 +51,45 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	{
-		small_matrix_type const result{
-			fcppt::math::matrix::delete_row_and_column<
-				2,
-				1
-			>(
-				t
+	CHECK(
+		fcppt::math::matrix::delete_row_and_column<
+			2,
+			1
+		>(
+			matrix
+		)
+		==
+		small_matrix_type(
+			fcppt::math::matrix::row(
+				1, 3
+			),
+			fcppt::math::matrix::row(
+				4, 6
+			),
+			fcppt::math::matrix::row(
+				10, 12
 			)
-		};
+		)
+	);
 
-		BOOST_CHECK_EQUAL(
-			result,
-			small_matrix_type(
-				fcppt::math::matrix::row(
-					1, 3
-				),
-				fcppt::math::matrix::row(
-					4, 6
-				),
-				fcppt::math::matrix::row(
-					10, 12
-				)
+	CHECK(
+		fcppt::math::matrix::delete_row_and_column<
+			0,
+			0
+		>(
+			matrix
+		)
+		==
+		small_matrix_type(
+			fcppt::math::matrix::row(
+				5, 6
+			),
+			fcppt::math::matrix::row(
+				8, 9
+			),
+			fcppt::math::matrix::row(
+				11, 12
 			)
-		);
-	}
-
-	{
-		small_matrix_type const result{
-			fcppt::math::matrix::delete_row_and_column<
-				0,
-				0
-			>(
-				t
-			)
-		};
-
-		BOOST_CHECK_EQUAL(
-			result,
-			small_matrix_type(
-				fcppt::math::matrix::row(
-					5, 6
-				),
-				fcppt::math::matrix::row(
-					8, 9
-				),
-				fcppt::math::matrix::row(
-					11, 12
-				)
-			)
-		);
-	}
+		)
+	);
 }

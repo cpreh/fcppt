@@ -9,12 +9,13 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_to_unsigned
+TEST_CASE(
+	"math::vector::to_unsigned",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -31,13 +32,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_vector;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::to_unsigned(
 			i2_vector{
 				1,
 				2
 			}
-		),
+		)
+		==
 		ui2_vector(
 			1u,
 			2u

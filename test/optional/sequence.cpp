@@ -10,13 +10,14 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_sequence
+TEST_CASE(
+	"optional::sequence",
+	"[optional]"
 )
 {
 	typedef
@@ -59,23 +60,22 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_REQUIRE(
+		REQUIRE(
 			result.has_value()
 		);
 
-		BOOST_REQUIRE_EQUAL(
-			result.get_unsafe()[0],
-			10
-		);
-
-		BOOST_REQUIRE_EQUAL(
-			result.get_unsafe()[1],
-			20
+		CHECK(
+			result.get_unsafe()
+			==
+			int_vector{
+				10,
+				20
+			}
 		);
 	}
 
 	{
-		result_type const result2(
+		CHECK_FALSE(
 			fcppt::optional::sequence<
 				int_vector
 			>(
@@ -85,17 +85,14 @@ BOOST_AUTO_TEST_CASE(
 					},
 					optional_int{}
 				}
-			)
-		);
-
-		BOOST_REQUIRE(
-			!result2.has_value()
+			).has_value()
 		);
 	}
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_sequence_move
+TEST_CASE(
+	"optional::sequence move",
+	"[optional]"
 )
 {
 	typedef
@@ -147,12 +144,19 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		result.has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result.get_unsafe()[0],
+	REQUIRE(
+		result.get_unsafe().size()
+		==
+		1u
+	);
+
+	CHECK(
+		*result.get_unsafe()[0]
+		==
 		42
 	);
 }

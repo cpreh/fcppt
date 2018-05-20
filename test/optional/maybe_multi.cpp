@@ -7,13 +7,14 @@
 #include <fcppt/optional/maybe_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	maybe_multi
+TEST_CASE(
+	"optional::maybe_multi",
+	"[optional]"
 )
 {
 	typedef
@@ -28,7 +29,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_unsigned;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::optional::maybe_multi(
 			[]
 			{
@@ -60,7 +61,7 @@ BOOST_AUTO_TEST_CASE(
 		"1020"
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::optional::maybe_multi(
 			[]
 			{

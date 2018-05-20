@@ -61,10 +61,6 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
-	general
-)
-
-add_fcppt_optional_test(
 	join
 )
 
@@ -102,6 +98,10 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	nothing
+)
+
+add_fcppt_optional_test(
+	object
 )
 
 add_fcppt_optional_test(

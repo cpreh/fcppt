@@ -29,8 +29,8 @@
 
 
 TEST_CASE(
-	"argument parser for options",
-	"[options_argument]"
+	"options::argument",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(

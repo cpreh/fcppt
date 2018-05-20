@@ -15,15 +15,17 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	options_many
+TEST_CASE(
+	"options::many",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -50,29 +52,31 @@ BOOST_AUTO_TEST_CASE(
 	)
 	parser_type;
 
-	BOOST_CHECK(
-		fcppt::options::parse(
-			parser,
-			fcppt::args_vector{
-				FCPPT_TEXT("123"),
-				FCPPT_TEXT("456")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			parser_type::result_type{
-				arg_label{} =
-					std::vector<
-						int
-					>{
-						123,
-						456
-					}
-			}
+	CHECK(
+		fcppt::test::defer(
+			fcppt::options::parse(
+				parser,
+				fcppt::args_vector{
+					FCPPT_TEXT("123"),
+					FCPPT_TEXT("456")
+				}
+			)
+			==
+			fcppt::options::make_success(
+				parser_type::result_type{
+					arg_label{} =
+						std::vector<
+							int
+						>{
+							123,
+							456
+						}
+				}
+			)
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse(
 			parser,
 			fcppt::args_vector{
@@ -82,19 +86,21 @@ BOOST_AUTO_TEST_CASE(
 		).has_failure()
 	);
 
-	BOOST_CHECK(
-		fcppt::options::parse(
-			parser,
-			fcppt::args_vector{}
-		)
-		==
-		fcppt::options::make_success(
-			parser_type::result_type{
-				arg_label{} =
-					std::vector<
-						int
-					>{}
-			}
+	CHECK(
+		fcppt::test::defer(
+			fcppt::options::parse(
+				parser,
+				fcppt::args_vector{}
+			)
+			==
+			fcppt::options::make_success(
+				parser_type::result_type{
+					arg_label{} =
+						std::vector<
+							int
+						>{}
+				}
+			)
 		)
 	);
 }

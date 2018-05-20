@@ -7,12 +7,13 @@
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_at
+TEST_CASE(
+	"math::vector::at",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -27,21 +28,23 @@ BOOST_AUTO_TEST_CASE(
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::at<
 			0
 		>(
 			vector_c
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::at<
 			1
 		>(
 			vector_c
-		),
+		)
+		==
 		2
 	);
 
@@ -58,12 +61,13 @@ BOOST_AUTO_TEST_CASE(
 	) =
 		42;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::at<
 			1
 		>(
 			vector_m
-		),
+		)
+		==
 		42
 	);
 }

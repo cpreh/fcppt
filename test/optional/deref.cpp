@@ -16,13 +16,14 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_deref_unique_ptr
+TEST_CASE(
+	"optional::deref unique_ptr",
+	"[optional]"
 )
 {
 	typedef
@@ -45,10 +46,11 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::deref(
 			opt_ptr
-		),
+		)
+		==
 		fcppt::optional::reference<
 			int
 		>(
@@ -59,8 +61,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_deref_vector
+TEST_CASE(
+	"optional::deref vector",
+	"[optional]"
 )
 {
 	typedef
@@ -75,14 +78,15 @@ BOOST_AUTO_TEST_CASE(
 		3
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::deref(
 			fcppt::optional::object<
 				int_vector::iterator
 			>(
 				ints.begin()
 			)
-		),
+		)
+		==
 		fcppt::optional::reference<
 			int
 		>(
@@ -96,14 +100,15 @@ BOOST_AUTO_TEST_CASE(
 		ints.front()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::deref(
 			fcppt::optional::object<
 				int_vector::const_iterator
 			>(
 				ints.cbegin()
 			)
-		),
+		)
+		==
 		fcppt::optional::reference<
 			int const
 		>(

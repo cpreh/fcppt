@@ -6,13 +6,14 @@
 
 #include <fcppt/move_clear.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	move_clear
+TEST_CASE(
+	"move_clear",
+	"[various]"
 )
 {
 	typedef
@@ -31,22 +32,16 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		moved.size(),
-		2u
+	CHECK(
+		moved
+		==
+		int_vector{
+			1,
+			2
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		moved[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		moved[1],
-		2
-	);
-
-	BOOST_CHECK(
+	CHECK(
 		ints.empty()
 	);
 }

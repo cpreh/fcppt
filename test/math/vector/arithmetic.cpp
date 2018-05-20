@@ -8,16 +8,17 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_arithmetic_self
+TEST_CASE(
+	"math::vector arithmetic self",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -45,8 +46,9 @@ BOOST_AUTO_TEST_CASE(
 			2u
 		);
 
-	BOOST_CHECK_EQUAL(
-		vec,
+	REQUIRE(
+		vec
+		==
 		ui2_vector(
 			1u,
 			2u
@@ -55,8 +57,9 @@ BOOST_AUTO_TEST_CASE(
 
 	vec *= 2u;
 
-	BOOST_CHECK_EQUAL(
-		vec,
+	REQUIRE(
+		vec
+		==
 		ui2_vector(
 			2u,
 			4u
@@ -70,8 +73,9 @@ BOOST_AUTO_TEST_CASE(
 
 	veci = -veci;
 
-	BOOST_CHECK_EQUAL(
-		veci,
+	CHECK(
+		veci
+		==
 		i2_vector(
 			-1,
 			-2
@@ -79,8 +83,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	vector_arithmetic_free
+TEST_CASE(
+	"math::vector arithmetic free",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -90,7 +95,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_vector;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			1,
 			2
@@ -99,14 +104,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_vector(
 			3,
 			4
-		),
+		)
+		==
 		i2_vector(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			5,
 			2
@@ -115,14 +121,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_vector(
 			3,
 			4
-		),
+		)
+		==
 		i2_vector(
 			2,
 			-2
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			2,
 			3
@@ -131,57 +138,62 @@ BOOST_AUTO_TEST_CASE(
 		i2_vector(
 			3,
 			4
-		),
+		)
+		==
 		i2_vector(
 			6,
 			12
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		-i2_vector(
 			2,
 			3
-		),
+		)
+		==
 		i2_vector(
 			-2,
 			-3
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		2
 		*
 		i2_vector(
 			2,
 			3
-		),
+		)
+		==
 		i2_vector(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			2,
 			3
 		)
 		*
-		2,
+		2
+		==
 		i2_vector(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			4,
 			6
 		)
 		/
-		2,
+		2
+		==
 		fcppt::optional::make(
 			i2_vector(
 				2,
@@ -190,7 +202,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_vector(
 			6,
 			6
@@ -199,7 +211,8 @@ BOOST_AUTO_TEST_CASE(
 		i2_vector(
 			2,
 			3
-		),
+		)
+		==
 		fcppt::optional::make(
 			i2_vector(
 				3,
@@ -208,8 +221,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!(
+	CHECK(
+		(
 			i2_vector(
 				6,
 				6
@@ -219,6 +232,10 @@ BOOST_AUTO_TEST_CASE(
 				2,
 				0
 			)
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			i2_vector
+		>{}
 	);
 }

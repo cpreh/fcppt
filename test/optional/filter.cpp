@@ -7,14 +7,16 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/optional/filter.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_filter
+TEST_CASE(
+	"optional::filter",
+	"[optional]"
 )
 {
 	typedef
@@ -35,51 +37,43 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	optional_int const result1(
+	CHECK(
 		fcppt::optional::filter(
 			optional_int(
 				42
 			),
 			function
 		)
+		==
+		optional_int{
+			42
+		}
 	);
 
-	BOOST_REQUIRE(
-		result1.has_value()
-	);
-
-	BOOST_CHECK_EQUAL(
-		result1.get_unsafe(),
-		42
-	);
-
-	optional_int const result2(
+	CHECK(
 		fcppt::optional::filter(
 			optional_int(
 				10
 			),
 			function
 		)
+		==
+		optional_int{}
 	);
 
-	BOOST_CHECK(
-		!result2.has_value()
-	);
-
-	optional_int const result3(
+	CHECK(
 		fcppt::optional::filter(
 			optional_int(),
 			function
 		)
-	);
-
-	BOOST_CHECK(
-		!result3.has_value()
+		==
+		optional_int{}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_filter_move
+TEST_CASE(
+	"optional::filter move",
+	"[optional]"
 )
 {
 	typedef
@@ -115,12 +109,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		result.has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result.get_unsafe(),
+	CHECK(
+		*result.get_unsafe()
+		==
 		42
 	);
 }

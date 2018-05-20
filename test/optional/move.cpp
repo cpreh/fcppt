@@ -5,9 +5,11 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
+#include <ostream>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -56,10 +58,35 @@ private:
 	std::string value_;
 };
 
+bool
+operator==(
+	movable const &_left,
+	movable const &_right
+)
+{
+	return
+		_left.value()
+		==
+		_right.value();
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_move
+std::ostream &
+operator<<(
+	std::ostream &_stream,
+	movable const &_object
+)
+{
+	return
+		_stream
+		<<
+		_object.value();
+}
+
+}
+
+TEST_CASE(
+	"optional move",
+	"[optional]"
 )
 {
 	typedef
@@ -80,17 +107,18 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE(
+	CHECK(
 		!opta.has_value()
 	);
 
-	BOOST_REQUIRE(
-		optb.has_value()
-	);
-
-	BOOST_CHECK_EQUAL(
-		optb.get_unsafe().value(),
-		"test"
+	CHECK(
+		optb
+		==
+		optional_movable{
+			movable{
+				"test"
+			}
+		}
 	);
 
 	optional_movable optc(
@@ -104,21 +132,21 @@ BOOST_AUTO_TEST_CASE(
 			optb
 		);
 
-	BOOST_REQUIRE(
-		optc.has_value()
-	);
-
-	BOOST_REQUIRE(
+	CHECK(
 		!optb.has_value()
 	);
 
-	BOOST_CHECK(
-		optc.get_unsafe().value()
+	CHECK(
+		optc
 		==
-		"test"
+		optional_movable{
+			movable{
+				"test"
+			}
+		}
 	);
 
-	optional_movable optd;
+	optional_movable optd{};
 
 	optd =
 		optional_movable(
@@ -127,10 +155,14 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-	BOOST_CHECK(
-		optd.get_unsafe().value()
+	CHECK(
+		optd
 		==
-		"test3"
+		optional_movable{
+			movable{
+				"test3"
+			}
+		}
 	);
 
 	optd =
@@ -140,9 +172,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-	BOOST_CHECK(
-		optd.get_unsafe().value()
+	CHECK(
+		optd
 		==
-		"test4"
+		optional_movable{
+			movable{
+				"test4"
+			}
+		}
 	);
 }

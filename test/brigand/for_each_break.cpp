@@ -9,7 +9,7 @@
 #include <fcppt/brigand/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <brigand/sequences/list.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -114,8 +114,9 @@ private:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	mpl_for_each_break
+TEST_CASE(
+	"brigand::for_each_break",
+	"[brigand]"
 )
 {
 	{
@@ -130,8 +131,9 @@ BOOST_AUTO_TEST_CASE(
 			func
 		);
 
-		BOOST_CHECK_EQUAL(
-			func.value(),
+		CHECK(
+			func.value()
+			==
 			2
 		);
 	}
@@ -148,8 +150,9 @@ BOOST_AUTO_TEST_CASE(
 			func
 		);
 
-		BOOST_CHECK_EQUAL(
-			func.value(),
+		CHECK(
+			func.value()
+			==
 			3
 		);
 	}

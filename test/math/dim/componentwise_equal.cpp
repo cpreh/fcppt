@@ -7,12 +7,13 @@
 #include <fcppt/math/dim/componentwise_equal.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_dim_componentwise_equal
+TEST_CASE(
+	"math::dim::componentwise_equal",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -26,7 +27,7 @@ BOOST_AUTO_TEST_CASE(
 		0.00001f
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::dim::componentwise_equal(
 			f2_dim(
 				1.f,
@@ -40,8 +41,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::dim::componentwise_equal(
+	CHECK_FALSE(
+		fcppt::math::dim::componentwise_equal(
 			f2_dim(
 				1.f,
 				2.f

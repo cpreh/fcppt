@@ -11,12 +11,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	matrix_binary_map
+TEST_CASE(
+	"math::matrix::binary_map",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -35,7 +36,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_matrix;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::binary_map(
 			ui2_matrix{
 				fcppt::math::matrix::row(
@@ -65,7 +66,8 @@ BOOST_AUTO_TEST_CASE(
 					+
 					_val2;
 			}
-		),
+		)
+		==
 		i2_matrix(
 			fcppt::math::matrix::row(
 				6,12

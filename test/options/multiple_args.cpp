@@ -15,26 +15,13 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-bool
-check_exception(
-	fcppt::options::duplicate_names const &
-)
-{
-	return
-		true;
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	options_multiple_args
+TEST_CASE(
+	"options multiple args",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -59,7 +46,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	flag2_type;
 
-	BOOST_CHECK_EXCEPTION(
+	CHECK_THROWS_AS(
 		flag1_type(
 			fcppt::options::optional_short_name{
 				fcppt::options::short_name{
@@ -77,11 +64,10 @@ BOOST_AUTO_TEST_CASE(
 			),
 			fcppt::options::optional_help_text{}
 		),
-		fcppt::options::duplicate_names,
-		check_exception
+		fcppt::options::duplicate_names
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	CHECK_THROWS_AS(
 		fcppt::options::apply(
 			flag1_type{
 				fcppt::options::optional_short_name{},
@@ -110,7 +96,6 @@ BOOST_AUTO_TEST_CASE(
 				fcppt::options::optional_help_text{}
 			}
 		),
-		fcppt::options::duplicate_names,
-		check_exception
+		fcppt::options::duplicate_names
 	);
 }

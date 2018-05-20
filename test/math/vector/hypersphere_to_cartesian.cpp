@@ -8,14 +8,15 @@
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <cmath>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_hypersphere_to_cartesian
+TEST_CASE(
+	"math::vector::hypersphere_to_cartesian",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -65,7 +66,7 @@ BOOST_AUTO_TEST_CASE(
 			)
 		};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::vector::componentwise_equal(
 			fcppt::math::vector::hypersphere_to_cartesian(
 				fvector1{
@@ -84,7 +85,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::vector::componentwise_equal(
 			fcppt::math::vector::hypersphere_to_cartesian(
 				fvector2{

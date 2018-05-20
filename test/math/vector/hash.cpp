@@ -9,19 +9,22 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_hash
+TEST_CASE(
+	"math::vector::hash",
+	"[math],[vector]"
 )
 {
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		int,
 		3
-	> int3_vector;
+	>
+	int3_vector;
 
 	typedef
 	std::unordered_set<
@@ -29,35 +32,35 @@ BOOST_AUTO_TEST_CASE(
 	>
 	vector_set;
 
-	vector_set set;
-
-	set.insert(
+	vector_set const set{
 		int3_vector(
 			1,
 			2,
 			3
 		)
-	);
+	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		set.count(
 			int3_vector(
 				1,
 				2,
 				3
 			)
-		),
+		)
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		set.count(
 			int3_vector(
 				4,
 				2,
 				3
 			)
-		),
+		)
+		==
 		0u
 	);
 }

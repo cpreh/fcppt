@@ -4,45 +4,54 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_output.hpp>
+#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/from_pointer.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-void
-test_function(
-	int
-)
-{
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	optional_from_pointer
+TEST_CASE(
+	"optional::from_pointer",
+	"[optional]"
 )
 {
 	typedef
-	void (*fun_ptr)(int);
+	fcppt::optional::reference<
+		int
+	>
+	optional_ref;
 
-	BOOST_CHECK(
+	int value{
+		0
+	};
+
+	CHECK(
 		fcppt::optional::from_pointer(
-			&test_function
-		).has_value()
+			&value
+		)
+		==
+		optional_ref{
+			fcppt::make_ref(
+				value
+			)
+		}
 	);
 
-	fun_ptr const ptr(
+	int *const ptr(
 		nullptr
 	);
 
-	BOOST_CHECK(
-		!fcppt::optional::from_pointer(
+	CHECK_FALSE(
+		fcppt::optional::from_pointer(
 			ptr
-		).has_value()
+		)
+		==
+		optional_ref{}
 	);
 }

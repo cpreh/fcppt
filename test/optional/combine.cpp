@@ -8,13 +8,14 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_combine
+TEST_CASE(
+	"optional::combine",
+	"[optional]"
 )
 {
 	typedef
@@ -27,7 +28,7 @@ BOOST_AUTO_TEST_CASE(
 		int
 	> const add{};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::combine(
 			optional_int(
 				10
@@ -36,44 +37,48 @@ BOOST_AUTO_TEST_CASE(
 				20
 			),
 			add
-		),
+		)
+		==
 		optional_int(
 			30
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::combine(
 			optional_int(
 				10
 			),
 			optional_int(),
 			add
-		),
+		)
+		==
 		optional_int(
 			10
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::combine(
 			optional_int(),
 			optional_int(
 				20
 			),
 			add
-		),
+		)
+		==
 		optional_int(
 			20
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::combine(
 			optional_int(),
 			optional_int(),
 			add
-		),
+		)
+		==
 		optional_int()
 	);
 }

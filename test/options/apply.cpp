@@ -33,8 +33,8 @@
 
 
 TEST_CASE(
-	"product parser for options",
-	"[options_apply]"
+	"options::apply",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(

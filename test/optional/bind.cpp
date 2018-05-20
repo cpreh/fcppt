@@ -5,15 +5,17 @@
 
 
 #include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_bind
+TEST_CASE(
+	"optional::bind",
+	"[optional]"
 )
 {
 	typedef
@@ -22,29 +24,43 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_string;
 
-	optional_string const opt_string(
-		"test1"
-	);
-
-	optional_string const &opt_string_ref(
-		opt_string
-	);
-
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::bind(
-			optional_string(
+			optional_string{
 				"test2"
-			),
-			[
-				&opt_string_ref
-			](
+			},
+			[](
+				std::string const &_value
+			)
+			{
+				return
+					optional_string{
+						"test1"
+						+
+						_value
+					};
+			}
+		)
+		==
+		optional_string{
+			"test1test2"
+		}
+	);
+
+	CHECK(
+		fcppt::optional::bind(
+			optional_string{
+				"test2"
+			},
+			[](
 				std::string const &
 			)
 			{
 				return
-					opt_string_ref;
+					optional_string{};
 			}
-		).get_unsafe(),
-		"test1"
+		)
+		==
+		optional_string{}
 	);
 }

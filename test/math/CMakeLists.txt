@@ -16,6 +16,10 @@ add_fcppt_math_test(
 	ceil_div
 )
 
+add_fcppt_math_test(
+	diff
+)
+
 add_subdirectory(
 	dim
 )
@@ -61,7 +65,3 @@ if(
 			fcppt_boost_interface
 	)
 endif()
-
-add_fcppt_math_test(
-	util
-)

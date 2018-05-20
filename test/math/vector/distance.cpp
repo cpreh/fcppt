@@ -7,13 +7,14 @@
 #include <fcppt/math/vector/distance.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_distance
+TEST_CASE(
+	"math::vector::distance",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -23,7 +24,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	float2_vector;
 
-	BOOST_CHECK(
+	CHECK_THAT(
 		std::abs(
 			fcppt::math::vector::distance(
 				float2_vector(
@@ -37,8 +38,11 @@ BOOST_AUTO_TEST_CASE(
 			)
 			-
 			2.8f
+		),
+		Catch::Matchers::WithinAbs(
+			0.f,
+			0.1f
 		)
-		< 0.1f
 	);
 
 	typedef
@@ -48,7 +52,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	uint2_vector;
 
-	BOOST_CHECK(
+	CHECK_THAT(
 		std::abs(
 			fcppt::math::vector::distance<
 				float
@@ -64,7 +68,10 @@ BOOST_AUTO_TEST_CASE(
 			)
 			-
 			2.8f
+		),
+		Catch::Matchers::WithinAbs(
+			0.f,
+			0.1f
 		)
-		< 0.1f
 	);
 }

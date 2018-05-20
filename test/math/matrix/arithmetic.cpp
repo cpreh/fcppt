@@ -10,7 +10,7 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,8 +27,9 @@ mat2;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_arithmetic_self
+TEST_CASE(
+	"math::matrix arithmetic self",
+	"[math],[matrix]"
 )
 {
 	{
@@ -51,8 +52,9 @@ BOOST_AUTO_TEST_CASE(
 				)
 			};
 
-		BOOST_CHECK_EQUAL(
-			left,
+		CHECK(
+			left
+			==
 			mat2(
 				fcppt::math::matrix::row(
 					6,8
@@ -84,8 +86,9 @@ BOOST_AUTO_TEST_CASE(
 				)
 			};
 
-		BOOST_CHECK_EQUAL(
-			left,
+		CHECK(
+			left
+			==
 			mat2(
 				fcppt::math::matrix::row(
 					-1,-2
@@ -110,8 +113,9 @@ BOOST_AUTO_TEST_CASE(
 		left *=
 			2;
 
-		BOOST_CHECK_EQUAL(
-			left,
+		CHECK(
+			left
+			==
 			mat2(
 				fcppt::math::matrix::row(
 					2,4
@@ -125,11 +129,12 @@ BOOST_AUTO_TEST_CASE(
 }
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_arithmetic_free
+TEST_CASE(
+	"math::matrix arithmetic free",
+	"[math],[matrix]"
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		mat2(
 			fcppt::math::matrix::row(
 				1,2
@@ -146,7 +151,8 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::math::matrix::row(
 				7,8
 			)
-		),
+		)
+		==
 		mat2(
 			fcppt::math::matrix::row(
 				6,8
@@ -157,7 +163,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		mat2(
 			fcppt::math::matrix::row(
 				5,6
@@ -174,7 +180,8 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::math::matrix::row(
 				2,1
 			)
-		),
+		)
+		==
 		mat2(
 			fcppt::math::matrix::row(
 				1,3
@@ -185,7 +192,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		mat2(
 			fcppt::math::matrix::row(
 				1,2
@@ -195,7 +202,8 @@ BOOST_AUTO_TEST_CASE(
 			)
 		)
 		*
-		2,
+		2
+		==
 		mat2(
 			fcppt::math::matrix::row(
 				2,4
@@ -206,7 +214,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		2
 		*
 		mat2(
@@ -216,7 +224,8 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::math::matrix::row(
 				3,4
 			)
-		),
+		)
+		==
 		mat2(
 			fcppt::math::matrix::row(
 				2,4

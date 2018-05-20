@@ -8,15 +8,17 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_ceil_div_signed
+TEST_CASE(
+	"math::vector::ceil_div_signed",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -26,13 +28,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_vector;
 
-	typedef
-	fcppt::optional::object<
-		i2_vector
-	>
-	result_type;
-
-	result_type const result{
+	CHECK(
 		fcppt::math::vector::ceil_div_signed(
 			i2_vector{
 				1,
@@ -40,15 +36,12 @@ BOOST_AUTO_TEST_CASE(
 			},
 			2
 		)
-	};
-
-	BOOST_CHECK_EQUAL(
-		result,
-		result_type{
+		==
+		fcppt::optional::make(
 			i2_vector(
 				1,
 				3
 			)
-		}
+		)
 	);
 }

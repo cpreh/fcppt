@@ -38,8 +38,8 @@
 
 
 TEST_CASE(
-	"commands parser for options"
-	"[options_commands]"
+	"options::commands",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(

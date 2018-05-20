@@ -14,13 +14,14 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_map
+TEST_CASE(
+	"optional::map",
+	"[optional]"
 )
 {
 	typedef
@@ -45,21 +46,23 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::map(
 			optional_string(),
 			conversion
-		),
+		)
+		==
 		optional_size()
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::map(
 			optional_string(
 				"test"
 			),
 			conversion
-		),
+		)
+		==
 		optional_size(
 			4u
 		)
@@ -86,8 +89,9 @@ public:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_map_ref
+TEST_CASE(
+	"optional::map ref",
+	"[optional]"
 )
 {
 	typedef
@@ -104,7 +108,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_noncopyable_ref;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::map(
 			optional_string(
 				"42"
@@ -120,7 +124,8 @@ BOOST_AUTO_TEST_CASE(
 						test
 					);
 			}
-		),
+		)
+		==
 		optional_noncopyable_ref{
 			fcppt::make_ref(
 				test

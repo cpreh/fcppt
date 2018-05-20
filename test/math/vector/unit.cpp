@@ -4,43 +4,38 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/object.hpp>
+#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/unit.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_unit
+TEST_CASE(
+	"math::vector::unit",
+	"[math[,[vector]"
 )
 {
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		int,
 		3
-	> int3_vector;
+	>
+	int3_vector;
 
-	int3_vector const vec(
+	CHECK(
 		fcppt::math::vector::unit<
 			int3_vector
 		>(
 			2
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec.x(),
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec.y(),
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec.z(),
-		1
+		==
+		int3_vector{
+			0,
+			0,
+			1
+		}
 	);
 }

@@ -10,12 +10,13 @@
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	dim_binary_map
+TEST_CASE(
+	"math::dim::binary_map",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -32,7 +33,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_dim;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::dim::binary_map(
 			ui2_dim{
 				10u,
@@ -54,7 +55,8 @@ BOOST_AUTO_TEST_CASE(
 					+
 					_val2;
 			}
-		),
+		)
+		==
 		i2_dim(
 			13,
 			25

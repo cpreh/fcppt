@@ -9,13 +9,14 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_apply
+TEST_CASE(
+	"optional::apply",
+	"[optiona;]"
 )
 {
 	typedef
@@ -36,7 +37,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_string;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::apply(
 			[](
 				int const _val1,
@@ -58,7 +59,8 @@ BOOST_AUTO_TEST_CASE(
 			optional_unsigned(
 				20u
 			)
-		),
+		)
+		==
 		optional_string(
 			std::string(
 				"1020"
@@ -66,7 +68,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::apply(
 			[](
 				int,
@@ -80,7 +82,8 @@ BOOST_AUTO_TEST_CASE(
 			optional_unsigned(
 				20
 			)
-		),
+		)
+		==
 		optional_string()
 	);
 }

@@ -9,12 +9,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_at_r_c
+TEST_CASE(
+	"math::matrix::at_r_c",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -34,67 +35,47 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	{
-		int const result{
-			fcppt::math::matrix::at_r_c<
-				0,
-				0
-			>(
-				mat
-			)
-		};
-
-		BOOST_CHECK_EQUAL(
-			result,
-			-3
-		);
-	}
-
-	{
-		int const result{
-			fcppt::math::matrix::at_r_c<
-				0,
-				1
-			>(
-				mat
-			)
-		};
-
-		BOOST_CHECK_EQUAL(
-			result,
-			2
-		);
-	}
-
-	{
-		int const result{
-			fcppt::math::matrix::at_r_c<
-				1,
-				0
-			>(
-				mat
-			)
-		};
-
-		BOOST_CHECK_EQUAL(
-			result,
-			-1
-		);
-	}
-
-	{
-		int const result{
-			fcppt::math::matrix::at_r_c<
-				1,
-				1
-			>(
-				mat
-			)
-		};
-
-		BOOST_CHECK_EQUAL(
-			result,
+	CHECK(
+		fcppt::math::matrix::at_r_c<
+			0,
 			0
-		);
-	}
+		>(
+			mat
+		)
+		==
+		-3
+	);
+
+	CHECK(
+		fcppt::math::matrix::at_r_c<
+			0,
+			1
+		>(
+			mat
+		)
+		==
+		2
+	);
+
+	CHECK(
+		fcppt::math::matrix::at_r_c<
+			1,
+			0
+		>(
+			mat
+		)
+		==
+		-1
+	);
+
+	CHECK(
+		fcppt::math::matrix::at_r_c<
+			1,
+			1
+		>(
+			mat
+		)
+		==
+		0
+	);
 }

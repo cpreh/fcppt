@@ -12,12 +12,13 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_sequence
+TEST_CASE(
+	"math::vector::sequence",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -36,7 +37,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	ui2_vector_opt;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::sequence(
 			ui2_vector_opt{
 				fcppt::optional::make(
@@ -46,7 +47,8 @@ BOOST_AUTO_TEST_CASE(
 					20u
 				)
 			}
-		),
+		)
+		==
 		fcppt::optional::make(
 			ui2_vector{
 				10u,
@@ -55,7 +57,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::sequence(
 			ui2_vector_opt{
 				fcppt::optional::object<
@@ -65,10 +67,10 @@ BOOST_AUTO_TEST_CASE(
 					20u
 				)
 			}
-		),
+		)
+		==
 		fcppt::optional::object<
 			ui2_vector
 		>{}
 	);
-
 }

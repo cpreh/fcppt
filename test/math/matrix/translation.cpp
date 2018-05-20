@@ -14,12 +14,13 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_translation
+TEST_CASE(
+	"math::matrix::translation",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -38,8 +39,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		trans,
+	CHECK(
+		trans
+		==
 		matrix_type(
 			fcppt::math::matrix::row(
 				1, 0, 0, 5
@@ -70,10 +72,11 @@ BOOST_AUTO_TEST_CASE(
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		trans
 		*
-		vec,
+		vec
+		==
 		vector_type(
 			6,
 			5,

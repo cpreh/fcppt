@@ -13,7 +13,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
 #include <cstring>
 #include <iterator>
@@ -90,23 +90,22 @@ template<
 	typename Type,
 	typename Pointer
 >
-struct raw_iterator_base
-{
-	typedef boost::iterator_facade<
-		raw_iterator<
-			Type,
-			Pointer
-		>,
+using
+raw_iterator_base
+=
+boost::iterator_facade<
+	raw_iterator<
 		Type,
-		std::random_access_iterator_tag,
-		proxy<
-			Type,
-			Pointer
-		>,
-		fcppt::math::difference_type
-	> type;
-
-};
+		Pointer
+	>,
+	Type,
+	std::random_access_iterator_tag,
+	proxy<
+		Type,
+		Pointer
+	>,
+	fcppt::math::difference_type
+>;
 
 template<
 	typename Type,
@@ -118,12 +117,14 @@ class raw_iterator
 		raw_iterator_base<
 			Type,
 			Pointer
-		>::type
+		>
 {
-	typedef typename raw_iterator_base<
+	typedef
+	raw_iterator_base<
 		Type,
 		Pointer
-	>::type base;
+	>
+	base;
 public:
 	typedef typename base::value_type value_type;
 
@@ -334,8 +335,9 @@ private:
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_raw_view
+TEST_CASE(
+	"math::vector raw_view",
+	"[math],[vector]"
 )
 {
 	typedef unsigned value_type;
@@ -368,22 +370,26 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		vector_raw::static_size::value,
-		2u
+	static_assert(
+		vector_raw::static_size::value
+		==
+		2u,
+		""
 	);
 
 	vec.x() = 1u;
 
 	vec.y() = 2u;
 
-	BOOST_CHECK_EQUAL(
-		vec.x(),
+	CHECK(
+		vec.x()
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		vec.y(),
+	CHECK(
+		vec.y()
+		==
 		2u
 	);
 
@@ -391,13 +397,15 @@ BOOST_AUTO_TEST_CASE(
 		vec
 	);
 
-	BOOST_CHECK_EQUAL(
-		copy.x(),
+	CHECK(
+		copy.x()
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		copy.y(),
+	CHECK(
+		copy.y()
+		==
 		2u
 	);
 }

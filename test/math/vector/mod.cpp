@@ -8,16 +8,17 @@
 #include <fcppt/math/vector/mod.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_mod
+TEST_CASE(
+	"math::vector::mod",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -27,14 +28,21 @@ BOOST_AUTO_TEST_CASE(
 	>
 	uivector2;
 
-	BOOST_CHECK_EQUAL(
+	typedef
+	fcppt::optional::object<
+		uivector2
+	>
+	optional_uivector2;
+
+	CHECK(
 		fcppt::math::vector::mod(
 			uivector2{
 				4u,
 				3u
 			},
 			2u
-		),
+		)
+		==
 		fcppt::optional::make(
 			uivector2{
 				0u,
@@ -43,17 +51,19 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::vector::mod(
+	CHECK(
+		fcppt::math::vector::mod(
 			uivector2{
 				4u,
 				3u
 			},
 			0u
-		).has_value()
+		)
+		==
+		optional_uivector2{}
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::vector::mod(
 			uivector2{
 				5u,
@@ -63,7 +73,8 @@ BOOST_AUTO_TEST_CASE(
 				3u,
 				2u
 			}
-		),
+		)
+		==
 		fcppt::optional::make(
 			uivector2{
 				2u,
@@ -72,8 +83,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::vector::mod(
+	CHECK(
+		fcppt::math::vector::mod(
 			uivector2{
 				4u,
 				3u
@@ -82,6 +93,8 @@ BOOST_AUTO_TEST_CASE(
 				0u,
 				1u
 			}
-		).has_value()
+		)
+		==
+		optional_uivector2{}
 	);
 }

@@ -9,12 +9,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_determinant
+TEST_CASE(
+	"math::matrix::determinant",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -33,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	small_matrix_type;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::determinant(
 			large_matrix_type(
 				fcppt::math::matrix::row(
@@ -46,11 +47,12 @@ BOOST_AUTO_TEST_CASE(
 					7,8,9
 				)
 			)
-		),
+		)
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::determinant(
 			small_matrix_type(
 				fcppt::math::matrix::row(
@@ -60,16 +62,18 @@ BOOST_AUTO_TEST_CASE(
 					-1,-2
 				)
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::determinant(
 			fcppt::math::matrix::identity<
 				large_matrix_type
 			>()
-		),
+		)
+		==
 		1
 	);
 }

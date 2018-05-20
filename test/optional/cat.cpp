@@ -10,13 +10,14 @@
 #include <fcppt/optional/cat.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_cat
+TEST_CASE(
+	"optional::cat",
+	"[optional]"
 )
 {
 	typedef
@@ -37,7 +38,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector const result(
+	CHECK(
 		fcppt::optional::cat<
 			int_vector
 		>(
@@ -48,21 +49,16 @@ BOOST_AUTO_TEST_CASE(
 				optional_int{}
 			}
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		1u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[0],
-		42
+		==
+		int_vector{
+			42
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	cat_optionals_move
+TEST_CASE(
+	"Optional::cat move",
+	"[optional]"
 )
 {
 	typedef
@@ -108,13 +104,15 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
+	REQUIRE(
+		result.size()
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[0],
+	CHECK(
+		*result[0]
+		==
 		42
 	);
 }

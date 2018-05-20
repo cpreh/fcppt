@@ -14,9 +14,8 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/maybe_multi.hpp>
-#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
@@ -92,11 +91,12 @@ fvector2;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	vector_angle_between
+TEST_CASE(
+	"math::vector::angle_between",
+	"[math],[vector]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		::compare(
 			fcppt::math::vector::angle_between(
 				fvector2{
@@ -114,8 +114,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::vector::angle_between(
+	CHECK_FALSE(
+		fcppt::math::vector::angle_between(
 			fvector2{
 				1.f,
 				0.f
@@ -128,11 +128,12 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	vector_angle_between_cast
+TEST_CASE(
+	"math::vector::angle_between_cast",
+	"[math],[vector]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		::compare(
 			fcppt::math::vector::angle_between_cast<
 				real
@@ -153,11 +154,12 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	vector_signed_angle_between
+TEST_CASE(
+	"math::vector::signed_angle_between",
+	"[math],[vector]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		::compare(
 			fcppt::math::vector::signed_angle_between(
 				fvector2{
@@ -176,11 +178,12 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	vector_signed_angle_between_cast
+TEST_CASE(
+	"math::vector::signed_angle_between_cast",
+	"[math],[vector]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		::compare(
 			fcppt::math::vector::signed_angle_between_cast<
 				real
@@ -200,8 +203,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::vector::signed_angle_between_cast<
+	CHECK_FALSE(
+		fcppt::math::vector::signed_angle_between_cast<
 			real
 		>(
 			uivector2{

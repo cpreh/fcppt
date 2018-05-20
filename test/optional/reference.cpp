@@ -8,12 +8,13 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_ref
+TEST_CASE(
+	"optional::reference",
+	"[optional]"
 )
 {
 	typedef
@@ -24,8 +25,8 @@ BOOST_AUTO_TEST_CASE(
 
 	optional_int_ref const test1{};
 
-	BOOST_CHECK(
-		!test1.has_value()
+	CHECK_FALSE(
+		test1.has_value()
 	);
 
 	int val{
@@ -38,25 +39,27 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	REQUIRE(
 		test2.has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		test2.get_unsafe().get(),
+	CHECK(
+		test2.get_unsafe().get()
+		==
 		42
 	);
 
 	test2 =
 		test1;
 
-	BOOST_CHECK(
-		!test2.has_value()
+	CHECK_FALSE(
+		test2.has_value()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_ref_const
+TEST_CASE(
+	"optional::reference const"
+	"[optional]"
 )
 {
 	typedef
@@ -67,8 +70,8 @@ BOOST_AUTO_TEST_CASE(
 
 	optional_int_ref_const const test1{};
 
-	BOOST_CHECK(
-		!test1.has_value()
+	CHECK_FALSE(
+		test1.has_value()
 	);
 
 	int const val1{
@@ -81,12 +84,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	REQUIRE(
 		test2.has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		test2.get_unsafe().get(),
+	CHECK(
+		test2.get_unsafe().get()
+		==
 		42
 	);
 
@@ -100,18 +104,19 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	REQUIRE(
 		test3.has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		test3.get_unsafe().get(),
+	CHECK(
+		test3.get_unsafe().get()
+		==
 		50
 	);
 
 	test3 = test1;
 
-	BOOST_CHECK(
-		!test3.has_value()
+	CHECK_FALSE(
+		test3.has_value()
 	);
 }

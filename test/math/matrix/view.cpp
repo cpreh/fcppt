@@ -11,17 +11,22 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_view
+TEST_CASE(
+	"math::matrix view",
+	"[math],[matrix]"
 )
 {
-	typedef int value_type;
+	typedef
+	int
+	value_type;
 
-	constexpr std::size_t const size = 3;
+	constexpr std::size_t const size{
+		3u
+	};
 
 	typedef
 	fcppt::math::matrix::static_<
@@ -50,12 +55,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::matrix::at_r<
 			0
 		>(
 			matrix
-		),
+		)
+		==
 		vector_type(
 			-3,
 			2,
@@ -78,8 +84,9 @@ BOOST_AUTO_TEST_CASE(
 			matrix
 		);
 
-	BOOST_CHECK_EQUAL(
-		vec,
+	CHECK(
+		vec
+		==
 		vector_type(
 			-1,
 			0,

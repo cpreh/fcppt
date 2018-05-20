@@ -9,13 +9,14 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/to_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_to_container
+TEST_CASE(
+	"optional::to_container",
+	"[optional]"
 )
 {
 	typedef
@@ -30,7 +31,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector const vec1{
+	CHECK(
 		fcppt::optional::to_container<
 			int_vector
 		>(
@@ -38,33 +39,26 @@ BOOST_AUTO_TEST_CASE(
 				42
 			}
 		)
-	};
-
-	BOOST_REQUIRE_EQUAL(
-		vec1.size(),
-		1u
+		==
+		int_vector{
+			42
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		vec1[0],
-		42
-	);
-
-	int_vector const vec2{
+	CHECK(
 		fcppt::optional::to_container<
 			int_vector
 		>(
 			optional_int{}
 		)
-	};
-
-	BOOST_CHECK(
-		vec2.empty()
+		==
+		int_vector{}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_to_container_move
+TEST_CASE(
+	"optional::to_container move",
+	"[optional]"
 )
 {
 	typedef
@@ -85,39 +79,47 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector const vec1{
-		fcppt::optional::to_container<
-			int_vector
-		>(
-			optional_int{
-				fcppt::make_unique_ptr<
-					int
-				>(
-					42
-				)
-			}
-		)
-	};
+	SECTION(
+		"success"
+	)
+	{
+		int_vector const vec1{
+			fcppt::optional::to_container<
+				int_vector
+			>(
+				optional_int{
+					fcppt::make_unique_ptr<
+						int
+					>(
+						42
+					)
+				}
+			)
+		};
 
-	BOOST_REQUIRE_EQUAL(
-		vec1.size(),
-		1u
-	);
+		REQUIRE(
+			vec1.size()
+			==
+			1u
+		);
 
-	BOOST_CHECK_EQUAL(
-		*vec1[0],
-		42
-	);
+		CHECK(
+			*vec1[0]
+			==
+			42
+		);
+	}
 
-	int_vector const vec2{
-		fcppt::optional::to_container<
-			int_vector
-		>(
-			optional_int{}
-		)
-	};
-
-	BOOST_CHECK(
-		vec2.empty()
-	);
+	SECTION(
+		"failure"
+	)
+	{
+		CHECK(
+			fcppt::optional::to_container<
+				int_vector
+			>(
+				optional_int{}
+			).empty()
+		);
+	}
 }

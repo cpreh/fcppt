@@ -10,12 +10,13 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/transpose.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_transpose
+TEST_CASE(
+	"math::matrix::transpose",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -34,7 +35,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	transposed_matrix_type;
 
-	transposed_matrix_type const transposed(
+	CHECK(
 		fcppt::math::matrix::transpose(
 			matrix_type(
 				fcppt::math::matrix::row(
@@ -45,10 +46,7 @@ BOOST_AUTO_TEST_CASE(
 				)
 			)
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		transposed,
+		==
 		transposed_matrix_type(
 			fcppt::math::matrix::row(
 				1, 4

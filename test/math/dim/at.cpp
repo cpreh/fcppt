@@ -7,12 +7,13 @@
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_dim_at
+TEST_CASE(
+	"math::dim::at",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -27,21 +28,23 @@ BOOST_AUTO_TEST_CASE(
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::dim::at<
 			0
 		>(
 			dim_c
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::dim::at<
 			1
 		>(
 			dim_c
-		),
+		)
+		==
 		2
 	);
 
@@ -58,12 +61,13 @@ BOOST_AUTO_TEST_CASE(
 	) =
 		42;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::dim::at<
 			1
 		>(
 			dim_m
-		),
+		)
+		==
 		42
 	);
 }

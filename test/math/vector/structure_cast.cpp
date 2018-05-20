@@ -10,12 +10,13 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_structure_cast
+TEST_CASE(
+	"math::vector::structure_cast",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -32,12 +33,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_vector;
 
-	i2_vector const result(
-		1,
-		2
-	);
-
-	i2_vector const converted(
+	CHECK(
 		fcppt::math::vector::structure_cast<
 			i2_vector,
 			fcppt::cast::to_signed_fun
@@ -47,10 +43,10 @@ BOOST_AUTO_TEST_CASE(
 				2u
 			)
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result,
-		converted
+		==
+		i2_vector{
+			1,
+			2
+		}
 	);
 }

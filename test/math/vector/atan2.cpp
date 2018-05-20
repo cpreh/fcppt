@@ -14,7 +14,7 @@
 #include <fcppt/optional/maybe_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -64,8 +64,9 @@ almost_equal(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_atan2
+TEST_CASE(
+	"math::vector::atan2",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -81,8 +82,8 @@ BOOST_AUTO_TEST_CASE(
 		>()
 	};
 
-	BOOST_CHECK(
-		!fcppt::math::vector::atan2(
+	CHECK_FALSE(
+		fcppt::math::vector::atan2(
 			float2_vec{
 				0.f,
 				0.f
@@ -90,7 +91,7 @@ BOOST_AUTO_TEST_CASE(
 		).has_value()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
@@ -104,7 +105,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
@@ -118,7 +119,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
@@ -134,7 +135,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{

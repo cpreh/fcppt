@@ -7,15 +7,18 @@
 #include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/istringstream.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/input.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_input
+TEST_CASE(
+	"math::vector input",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -25,45 +28,48 @@ BOOST_AUTO_TEST_CASE(
 	>
 	ui2_vector;
 
+	SECTION(
+		"input success"
+	)
 	{
-		fcppt::io::istringstream stream(
+		fcppt::io::istringstream stream{
 			FCPPT_TEXT("(42, 3)")
-		);
+		};
 
 		ui2_vector result(
 			fcppt::no_init{}
 		);
 
-		BOOST_CHECK(
+		REQUIRE(
 			stream
 				>> result
 		);
 
-		BOOST_CHECK_EQUAL(
-			result.x(),
-			42u
-		);
-
-		BOOST_CHECK_EQUAL(
-			result.y(),
-			3u
+		CHECK(
+			result
+			==
+			ui2_vector{
+				42u,
+				3u
+			}
 		);
 	}
 
+	SECTION(
+		"input failure"
+	)
 	{
-		fcppt::io::istringstream stream(
+		fcppt::io::istringstream stream{
 			FCPPT_TEXT("(42, 3")
-		);
+		};
 
 		ui2_vector result(
 			fcppt::no_init{}
 		);
 
-		BOOST_CHECK(
-			!(
-				stream
-					>> result
-			)
+		CHECK_FALSE(
+			stream
+				>> result
 		);
 	}
 }

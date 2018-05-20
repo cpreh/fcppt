@@ -10,13 +10,14 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
-#include <iostream>
-#include <ostream>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(exponential_pade)
+TEST_CASE(
+	"math::matrix::exponential_pade",
+	"[math[,[matrix]"
+)
 {
 	typedef
 	fcppt::math::matrix::static_<
@@ -26,34 +27,25 @@ BOOST_AUTO_TEST_CASE(exponential_pade)
 	>
 	matrix_type;
 
-	matrix_type const t(
-		fcppt::math::matrix::row(
-			2.0, -1.0, 1.0
-		),
-		fcppt::math::matrix::row(
-			0.0, 3.0, -1.0
-		),
-		fcppt::math::matrix::row(
-			2.0, 1.0, 3.0
-		)
-	);
+	double const epsilon{
+		0.01
+	};
 
-	double const epsilon =
-		0.01;
-
-	matrix_type const result(
-	        fcppt::math::matrix::exponential_pade(
-		        t
-		)
-	);
-
-	std::cout
-		<< result
-		<< '\n';
-
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::matrix::componentwise_equal(
-			result,
+			fcppt::math::matrix::exponential_pade(
+				matrix_type{
+					fcppt::math::matrix::row(
+						2.0, -1.0, 1.0
+					),
+					fcppt::math::matrix::row(
+						0.0, 3.0, -1.0
+					),
+					fcppt::math::matrix::row(
+						2.0, 1.0, 3.0
+					)
+				}
+			),
 			matrix_type(
 				fcppt::math::matrix::row(
 					23.6045,-7.38906,23.6045

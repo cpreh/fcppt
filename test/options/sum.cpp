@@ -13,12 +13,13 @@
 #include <fcppt/options/unit_switch.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	options_sum
+TEST_CASE(
+	"options::sum",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -50,7 +51,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	// TODO: Better test case
+	CHECK(
 		fcppt::options::parse(
 			sum,
 			fcppt::args_vector{
@@ -59,7 +61,7 @@ BOOST_AUTO_TEST_CASE(
 		).has_success()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse(
 			sum,
 			fcppt::args_vector{
@@ -68,7 +70,7 @@ BOOST_AUTO_TEST_CASE(
 		).has_success()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse(
 			sum,
 			fcppt::args_vector{}

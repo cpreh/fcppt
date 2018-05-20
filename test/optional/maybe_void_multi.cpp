@@ -8,12 +8,13 @@
 #include <fcppt/optional/maybe_void_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	maybe_void_multi
+TEST_CASE(
+	"optional::maybe_void_multi",
+	"[optional]"
 )
 {
 	typedef
@@ -55,7 +56,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		result
 		==
 		30

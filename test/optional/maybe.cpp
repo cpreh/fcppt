@@ -9,15 +9,15 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
-#include <memory>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	maybe
+TEST_CASE(
+	"optional::maybe",
+	"[optional]"
 )
 {
 	typedef
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::optional::maybe(
 			optional_int(
 				10
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(
 		"10"
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::optional::maybe(
 			optional_int(),
 			[]
@@ -73,8 +73,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	maybe_move
+TEST_CASE(
+	"optional::maybe move",
+	"[optional]"
 )
 {
 	typedef
@@ -118,8 +119,9 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result,
+	CHECK(
+		*result
+		==
 		42
 	);
 }

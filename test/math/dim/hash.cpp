@@ -8,13 +8,14 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_dim_hash
+TEST_CASE(
+	"math::dim::hash",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -30,35 +31,35 @@ BOOST_AUTO_TEST_CASE(
 	>
 	dim_set;
 
-	dim_set set;
-
-	set.insert(
+	dim_set const set{
 		int3_dim(
 			1,
 			2,
 			3
 		)
-	);
+	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		set.count(
 			int3_dim(
 				1,
 				2,
 				3
 			)
-		),
+		)
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		set.count(
 			int3_dim(
 				4,
 				2,
 				3
 			)
-		),
+		)
+		==
 		0u
 	);
 }

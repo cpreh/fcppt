@@ -11,12 +11,13 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_structure_cast
+TEST_CASE(
+	"math::matrix::structure_cast",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -35,16 +36,16 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_matrix;
 
-	i2_matrix const result(
-		fcppt::math::matrix::row(
-			1, 2
-		),
-		fcppt::math::matrix::row(
-			3, 4
-		)
-	);
-
-	i2_matrix const converted(
+	CHECK(
+		i2_matrix{
+			fcppt::math::matrix::row(
+				1, 2
+			),
+			fcppt::math::matrix::row(
+				3, 4
+			)
+		}
+		==
 		fcppt::math::matrix::structure_cast<
 			i2_matrix,
 			fcppt::cast::to_signed_fun
@@ -58,10 +59,5 @@ BOOST_AUTO_TEST_CASE(
 				)
 			)
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result,
-		converted
 	);
 }

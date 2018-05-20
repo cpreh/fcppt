@@ -13,12 +13,13 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_alternative
+TEST_CASE(
+	"optional::alternative",
+	"[optional]"
 )
 {
 	typedef
@@ -27,7 +28,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::alternative(
 			optional_int(
 				42
@@ -37,13 +38,14 @@ BOOST_AUTO_TEST_CASE(
 					10
 				)
 			)
-		),
+		)
+		==
 		optional_int(
 			42
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::alternative(
 			optional_int(),
 			fcppt::const_(
@@ -51,25 +53,27 @@ BOOST_AUTO_TEST_CASE(
 					10
 				)
 			)
-		),
+		)
+		==
 		optional_int(
 			10
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::alternative(
 			optional_int(),
 			fcppt::const_(
 				optional_int()
 			)
-		),
+		)
+		==
 		optional_int()
 	);
 
 	optional_int const value{};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::alternative(
 			value,
 			fcppt::const_(
@@ -77,15 +81,17 @@ BOOST_AUTO_TEST_CASE(
 					42
 				}
 			)
-		),
+		)
+		==
 		optional_int{
 			42
 		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_alternative_move
+TEST_CASE(
+	"optional::alternative move",
+	"[optional]"
 )
 {
 	typedef
@@ -100,33 +106,34 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int_unique_ptr;
 
-	BOOST_CHECK(
-		fcppt::optional::maybe(
-			fcppt::optional::alternative(
-				optional_int_unique_ptr(
-					fcppt::make_unique_ptr<
-						int
-					>(
-						42
-					)
-				),
-				[]{
-					return
-						optional_int_unique_ptr();
-				}
+	fcppt::optional::maybe(
+		fcppt::optional::alternative(
+			optional_int_unique_ptr(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					42
+				)
 			),
-			fcppt::const_(
-				false
-			),
-			[](
-				int_unique_ptr const &_ptr
-			)
-			{
+			[]{
 				return
-					*_ptr
-					==
-					42;
+					optional_int_unique_ptr();
 			}
+		),
+		[]{
+			CHECK(
+				false
+			);
+		},
+		[](
+			int_unique_ptr const &_ptr
 		)
+		{
+			CHECK(
+				*_ptr
+				==
+				42
+			);
+		}
 	);
 }

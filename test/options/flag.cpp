@@ -34,8 +34,8 @@
 
 
 TEST_CASE(
-	"parser for flag options",
-	"[options_flag]"
+	"options::flag",
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(

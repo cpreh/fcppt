@@ -33,8 +33,8 @@
 
 
 TEST_CASE(
-	"base parser for options"
-	"[options_base]"
+	"options::base"
+	"[options]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(

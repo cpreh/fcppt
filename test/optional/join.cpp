@@ -11,13 +11,14 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_join
+TEST_CASE(
+	"optional::join",
+	"[optional]"
 )
 {
 	typedef
@@ -32,29 +33,32 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_optional_string;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::join(
 			optional_optional_string(
 				optional_string(
 					"test2"
 				)
 			)
-		),
+		)
+		==
 		optional_string(
 			"test2"
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::join(
 			optional_optional_string()
-		),
+		)
+		==
 		optional_string()
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_join_move
+TEST_CASE(
+	"optional::join move",
+	"[optional]"
 )
 {
 	typedef
@@ -71,8 +75,8 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_optional_ptr;
 
-	BOOST_CHECK_EQUAL(
-		*fcppt::optional::join(
+	optional_ptr const result{
+		fcppt::optional::join(
 			optional_optional_ptr(
 				optional_ptr(
 					fcppt::make_unique_ptr<
@@ -82,7 +86,16 @@ BOOST_AUTO_TEST_CASE(
 					)
 				)
 			)
-		).get_unsafe(),
+		)
+	};
+
+	REQUIRE(
+		result.has_value()
+	);
+
+	CHECK(
+		*result.get_unsafe()
+		==
 		42
 	);
 }

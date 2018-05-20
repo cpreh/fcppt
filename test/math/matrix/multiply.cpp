@@ -10,12 +10,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_multiply
+TEST_CASE(
+	"math::matrix::multiply",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -53,8 +54,9 @@ BOOST_AUTO_TEST_CASE(
 			left * right
 		);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		mat3(
 			fcppt::math::matrix::row(
 				84,90,96

@@ -13,12 +13,13 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	maybe_void
+TEST_CASE(
+	"optional::maybe_void",
+	"[optional]"
 )
 {
 	typedef
@@ -46,8 +47,9 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		10
 	);
 
@@ -64,8 +66,9 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		10
 	);
 
@@ -83,16 +86,18 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		temp,
+	CHECK(
+		temp
+		==
 		optional_int(
 			30
 		)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	maybe_void_ref
+TEST_CASE(
+	"optional::maybe_void ref",
+	"[optional]"
 )
 {
 	int result{
@@ -121,14 +126,16 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		42
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	maybe_void_move
+TEST_CASE(
+	"optional::maybe_void move",
+	"[optional]"
 )
 {
 	typedef
@@ -155,8 +162,9 @@ BOOST_AUTO_TEST_CASE(
 			int_unique_ptr &&_ptr
 		)
 		{
-			BOOST_CHECK_EQUAL(
-				*_ptr,
+			CHECK(
+				*_ptr
+				==
 				42
 			);
 		}

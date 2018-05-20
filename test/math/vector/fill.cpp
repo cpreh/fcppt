@@ -4,15 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/fill.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	vector_fill
+TEST_CASE(
+	"math::vector::fill",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -22,21 +25,16 @@ BOOST_AUTO_TEST_CASE(
 	>
 	ui2_vector;
 
-	ui2_vector const vector(
+	CHECK(
 		fcppt::math::vector::fill<
 			ui2_vector
 		>(
 			42u
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		vector.x(),
-		42u
-	);
-
-	BOOST_CHECK_EQUAL(
-		vector.y(),
-		42u
+		==
+		ui2_vector{
+			42u,
+			42u
+		}
 	);
 }

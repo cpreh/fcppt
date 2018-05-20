@@ -6,17 +6,20 @@
 
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_comparison
+TEST_CASE(
+	"optional equal",
+	"[optional]"
 )
 {
-	typedef fcppt::optional::object<
+	typedef
+	fcppt::optional::object<
 		int
-	> optional_int;
+	>
+	optional_int;
 
 	optional_int const test1(
 		1
@@ -28,48 +31,49 @@ BOOST_AUTO_TEST_CASE(
 
 	optional_int const test3;
 
-	BOOST_CHECK(
+	CHECK(
 		test1 != test2
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test2 != test1
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test1 == test1
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test1 != test3
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test3 != test1
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		test3 == test3
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	optional_less
+TEST_CASE(
+	"optional less",
+	"[optional]"
 )
 {
-	typedef fcppt::optional::object<
+	typedef
+	fcppt::optional::object<
 		int
-	> optional_int;
+	>
+	optional_int;
 
-	BOOST_CHECK(
-		!(
-			optional_int()
-			<
-			optional_int()
-		)
+	CHECK_FALSE(
+		optional_int()
+		<
+		optional_int()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		optional_int()
 		<
 		optional_int(
@@ -77,17 +81,15 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!(
-			optional_int(
-				10
-			)
-			<
-			optional_int()
+	CHECK_FALSE(
+		optional_int(
+			10
 		)
+		<
+		optional_int()
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		optional_int(
 			5
 		)
@@ -97,15 +99,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!(
-			optional_int(
-				10
-			)
-			<
-			optional_int(
-				5
-			)
+	CHECK_FALSE(
+		optional_int(
+			10
+		)
+		<
+		optional_int(
+			5
 		)
 	);
 }

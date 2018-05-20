@@ -17,7 +17,7 @@
 #include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,8 +47,9 @@ compare_matrices(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_rotation_axis
+TEST_CASE(
+	"math::matrix rotation_axis",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -93,7 +94,7 @@ BOOST_AUTO_TEST_CASE(
 		1.f
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::vector::componentwise_equal(
 			trans
 			*
@@ -108,7 +109,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK((
+	CHECK(
 		::compare_matrices(
 			fcppt::math::matrix::rotation_axis(
 				0.0f,
@@ -122,7 +123,7 @@ BOOST_AUTO_TEST_CASE(
 				matrix_type
 			>()
 		)
-	));
+	);
 
 	float const angle{
 		fcppt::math::pi<
@@ -132,7 +133,7 @@ BOOST_AUTO_TEST_CASE(
 		2.f
 	};
 
-	BOOST_CHECK((
+	CHECK(
 		::compare_matrices(
 			fcppt::math::matrix::rotation_axis(
 				angle,
@@ -146,9 +147,9 @@ BOOST_AUTO_TEST_CASE(
 				angle
 			)
 		)
-	));
+	);
 
-	BOOST_CHECK((
+	CHECK(
 		::compare_matrices(
 			fcppt::math::matrix::rotation_axis(
 				angle,
@@ -162,9 +163,9 @@ BOOST_AUTO_TEST_CASE(
 				angle
 			)
 		)
-	));
+	);
 
-	BOOST_CHECK((
+	CHECK(
 		::compare_matrices(
 			fcppt::math::matrix::rotation_axis(
 				angle,
@@ -178,5 +179,5 @@ BOOST_AUTO_TEST_CASE(
 				angle
 			)
 		)
-	));
+	);
 }

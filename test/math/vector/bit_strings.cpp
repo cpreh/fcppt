@@ -10,17 +10,14 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <array>
-#include <iostream>
-#include <iterator>
-#include <ostream>
-#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_vector_bit_strings
+TEST_CASE(
+	"math::vector::bit_strings",
+	"[math],[vector]"
 )
 {
 	typedef
@@ -37,121 +34,41 @@ BOOST_AUTO_TEST_CASE(
 	>
 	vector3;
 
-	typedef
-	std::array<
-		vector2,
-		4
-	>
-	vector2_container;
-
-	typedef
-	std::array<
-		vector3,
-		8
-	>
-	vector3_container;
-
-	vector2_container const result2(
+	CHECK(
 		fcppt::math::vector::bit_strings<
 			int,
 			2
 		>()
+		==
+		std::array<
+			vector2,
+			4
+		>{{
+			vector2(0,0),
+			vector2(1,0),
+			vector2(0,1),
+			vector2(1,1)
+		}}
 	);
 
-	std::cout << "Result: \n";
-
-	for(
-		auto const &element
-		:
-		result2
-	)
-		std::cout << element << '\n';
-
-	std::cout << "Now checking...\n";
-
-	BOOST_REQUIRE_EQUAL(
-		result2.size(),
-		4u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result2[0],
-		vector2(0,0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result2[1],
-		vector2(1,0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result2[2],
-		vector2(0,1)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result2[3],
-		vector2(1,1)
-	);
-
-	vector3_container const result3(
+	CHECK(
 		fcppt::math::vector::bit_strings<
 			int,
 			3
 		>()
-	);
-
-	std::cout << "Result: \n";
-
-	for(
-		auto const &element
-		:
-		result3
-	)
-		std::cout << element << '\n';
-
-	BOOST_REQUIRE_EQUAL(
-		result3.size(),
-		8u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[0],
-		vector3(0,0,0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[1],
-		vector3(1,0,0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[2],
-		vector3(0,1,0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[3],
-		vector3(1,1,0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[4],
-		vector3(0,0,1)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[5],
-		vector3(1,0,1)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[6],
-		vector3(0,1,1)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3[7],
-		vector3(1,1,1)
+		==
+		std::array<
+			vector3,
+			8
+		>{{
+			vector3(0,0,0),
+			vector3(1,0,0),
+			vector3(0,1,0),
+			vector3(1,1,0),
+			vector3(0,0,1),
+			vector3(1,0,1),
+			vector3(0,1,1),
+			vector3(1,1,1)
+		}}
 	);
 }

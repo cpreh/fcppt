@@ -10,13 +10,14 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_hash
+TEST_CASE(
+	"math::matrix::hash",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -33,9 +34,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	matrix_set;
 
-	matrix_set set;
-
-	set.insert(
+	matrix_set const set{
 		int22_matrix(
 			fcppt::math::matrix::row(
 				1,
@@ -46,9 +45,9 @@ BOOST_AUTO_TEST_CASE(
 				4
 			)
 		)
-	);
+	};
 
-	BOOST_CHECK(
+	CHECK(
 		set.count(
 			int22_matrix(
 				fcppt::math::matrix::row(
@@ -61,10 +60,11 @@ BOOST_AUTO_TEST_CASE(
 				)
 			)
 		)
-		== 1u
+		==
+		1u
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		set.count(
 			int22_matrix(
 				fcppt::math::matrix::row(
@@ -77,6 +77,7 @@ BOOST_AUTO_TEST_CASE(
 				)
 			)
 		)
-		== 0u
+		==
+		0u
 	);
 }

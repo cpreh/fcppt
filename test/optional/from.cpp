@@ -11,12 +11,13 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	from_optional
+TEST_CASE(
+	"optional::from",
+	"[optiona]"
 )
 {
 	typedef
@@ -31,7 +32,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int_ref;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::from(
 			optional_int(),
 			[]
@@ -39,11 +40,12 @@ BOOST_AUTO_TEST_CASE(
 				return
 					42;
 			}
-		),
+		)
+		==
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::optional::from(
 			optional_int(
 				100
@@ -53,7 +55,8 @@ BOOST_AUTO_TEST_CASE(
 				return
 					42;
 			}
-		),
+		)
+		==
 		100
 	);
 
@@ -83,14 +86,16 @@ BOOST_AUTO_TEST_CASE(
 	).get() =
 		100;
 
-	BOOST_CHECK_EQUAL(
-		x,
+	CHECK(
+		x
+		==
 		100
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	from_optional_move
+TEST_CASE(
+	"optional::from move",
+	"[optiona;]"
 )
 {
 	typedef
@@ -125,8 +130,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		*ptr.get_unsafe(),
+	REQUIRE(
+		ptr.has_value()
+	);
+
+	CHECK(
+		*ptr.get_unsafe()
+		==
 		42
 	);
 }

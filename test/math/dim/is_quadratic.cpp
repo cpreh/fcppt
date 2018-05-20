@@ -7,12 +7,13 @@
 #include <fcppt/math/dim/is_quadratic.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	dim_is_quadratic
+TEST_CASE(
+	"math::dim::is_quadratic",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -22,8 +23,8 @@ BOOST_AUTO_TEST_CASE(
 	>
 	ui2_dim;
 
-	BOOST_CHECK(
-		!fcppt::math::dim::is_quadratic(
+	CHECK_FALSE(
+		fcppt::math::dim::is_quadratic(
 			ui2_dim{
 				10u,
 				20u
@@ -31,7 +32,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::dim::is_quadratic(
 			ui2_dim{
 				10u,

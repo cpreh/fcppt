@@ -8,12 +8,13 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	optional_make
+TEST_CASE(
+	"optional::nothing",
+	"[optional]"
 )
 {
 	typedef
@@ -26,8 +27,9 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::optional::nothing{}
 	};
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		optional_int{}
 	);
 }

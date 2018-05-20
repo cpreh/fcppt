@@ -12,12 +12,13 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	dim_arithmetic_self
+TEST_CASE(
+	"math::dim arithmetic_self",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -45,8 +46,9 @@ BOOST_AUTO_TEST_CASE(
 			2u
 		);
 
-	BOOST_CHECK_EQUAL(
-		dim,
+	CHECK(
+		dim
+		==
 		ui2_dim(
 			1u,
 			2u
@@ -55,8 +57,9 @@ BOOST_AUTO_TEST_CASE(
 
 	dim *= 2u;
 
-	BOOST_CHECK_EQUAL(
-		dim,
+	CHECK(
+		dim
+		==
 		ui2_dim(
 			2u,
 			4u
@@ -70,8 +73,9 @@ BOOST_AUTO_TEST_CASE(
 
 	dimi = -dimi;
 
-	BOOST_CHECK_EQUAL(
-		dimi,
+	CHECK(
+		dimi
+		==
 		i2_dim(
 			-1,
 			-2
@@ -79,8 +83,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	dim_arithmetic_free
+TEST_CASE(
+	"math::dim arithmetic free",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -90,7 +95,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_dim;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_dim(
 			1,
 			2
@@ -99,14 +104,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			3,
 			4
-		),
+		)
+		==
 		i2_dim(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_dim(
 			5,
 			2
@@ -115,14 +121,15 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			3,
 			4
-		),
+		)
+		==
 		i2_dim(
 			2,
 			-2
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_dim(
 			2,
 			3
@@ -131,57 +138,62 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			3,
 			4
-		),
+		)
+		==
 		i2_dim(
 			6,
 			12
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		-i2_dim(
 			2,
 			3
-		),
+		)
+		==
 		i2_dim(
 			-2,
 			-3
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_dim(
 			2,
 			3
 		)
 		*
-		2,
+		2
+		==
 		i2_dim(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		2
 		*
 		i2_dim(
 			2,
 			3
-		),
+		)
+		==
 		i2_dim(
 			4,
 			6
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_dim(
 			4,
 			6
 		)
 		/
-		2,
+		2
+		==
 		fcppt::optional::make(
 			i2_dim(
 				2,
@@ -190,7 +202,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		i2_dim(
 			6,
 			6
@@ -199,7 +211,8 @@ BOOST_AUTO_TEST_CASE(
 		i2_dim(
 			2,
 			3
-		),
+		)
+		==
 		fcppt::optional::make(
 			i2_dim(
 				3,
@@ -208,8 +221,8 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
-		!(
+	CHECK_FALSE(
+		(
 			i2_dim(
 				6,
 				6

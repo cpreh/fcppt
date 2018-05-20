@@ -6,27 +6,30 @@
 
 #include <fcppt/math/diff.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_diff
+TEST_CASE(
+	"math::diff",
+	"[math]"
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::diff(
 			10u,
 			20u
-		),
+		)
+		==
 		10u
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::diff(
 			-1,
 			1
-		),
+		)
+		==
 		2
 	);
 }

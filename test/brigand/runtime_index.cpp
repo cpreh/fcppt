@@ -8,7 +8,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,8 +33,9 @@ std::integral_constant<
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	mpl_runtime_index
+TEST_CASE(
+	"brigand::runtime_index",
+	"[brigand]"
 )
 {
 	typedef
@@ -43,7 +44,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	max_index;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::brigand::runtime_index<
 			max_index
 		>(
@@ -75,7 +76,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::brigand::runtime_index<
 			max_index
 		>(
@@ -107,7 +108,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::brigand::runtime_index<
 			max_index
 		>(
@@ -125,5 +126,4 @@ BOOST_AUTO_TEST_CASE(
 			)
 		)
 	);
-
 }

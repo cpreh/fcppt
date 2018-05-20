@@ -40,15 +40,11 @@ TEST_CASE(
 		)
 	);
 
-	CHECK(
+	CHECK_FALSE(
 		fcppt::math::div(
 			2.f,
 			0.f
-		)
-		==
-		fcppt::optional::object<
-			float
-		>{}
+		).has_value()
 	);
 
 	CHECK(

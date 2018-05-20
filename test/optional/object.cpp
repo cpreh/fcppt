@@ -6,7 +6,7 @@
 
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,18 +17,21 @@ fcppt::optional::object<
 	int
 >;
 
-BOOST_AUTO_TEST_CASE(
-	optional_general
+TEST_CASE(
+	"optional general",
+	"[optional]"
 )
 {
-	typedef fcppt::optional::object<
+	typedef
+	fcppt::optional::object<
 		std::string
-	> optional_string;
+	>
+	optional_string;
 
-	optional_string test;
+	optional_string test{};
 
-	BOOST_CHECK(
-		!test.has_value()
+	CHECK_FALSE(
+		test.has_value()
 	);
 
 	test =
@@ -36,19 +39,20 @@ BOOST_AUTO_TEST_CASE(
 			"test"
 		);
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		test.has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		test.get_unsafe(),
+	CHECK(
+		test.get_unsafe()
+		==
 		"test"
 	);
 
 	test =
 		optional_string();
 
-	BOOST_CHECK(
-		!test.has_value()
+	CHECK_FALSE(
+		test.has_value()
 	);
 }

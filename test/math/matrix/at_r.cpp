@@ -10,12 +10,13 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_at_r
+TEST_CASE(
+	"math::matrix::at_r",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -44,12 +45,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::math::vector::at<
 				0
 			>(
 				view
-			),
+			)
+			==
 			-3
 		);
 	}
@@ -63,12 +65,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::math::vector::at<
 				1
 			>(
 				view
-			),
+			)
+			==
 			2
 		);
 	}
@@ -82,12 +85,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::math::vector::at<
 				0
 			>(
 				view
-			),
+			)
+			==
 			-1
 		);
 	}
@@ -101,12 +105,13 @@ BOOST_AUTO_TEST_CASE(
 			)
 		);
 
-		BOOST_CHECK_EQUAL(
+		CHECK(
 			fcppt::math::vector::at<
 				1
 			>(
 				view
-			),
+			)
+			==
 			0
 		);
 	}

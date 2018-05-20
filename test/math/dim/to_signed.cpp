@@ -9,12 +9,13 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/to_signed.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_dim_to_signed
+TEST_CASE(
+	"math::dim::to_signed",
+	"[math],[dim]"
 )
 {
 	typedef
@@ -31,13 +32,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	i2_dim;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::dim::to_signed(
 			ui2_dim{
 				1u,
 				2u
 			}
-		),
+		)
+		==
 		i2_dim(
 			1,
 			2

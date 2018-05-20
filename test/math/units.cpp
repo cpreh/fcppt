@@ -15,6 +15,7 @@
 #include <boost/units/systems/si/length.hpp>
 #include <boost/units/systems/si/time.hpp>
 #include <boost/units/systems/si/velocity.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -22,37 +23,51 @@ BOOST_AUTO_TEST_CASE(
 	math_units
 )
 {
-	typedef int unit_type;
+	typedef
+	int
+	unit_type;
 
-	typedef boost::units::quantity<
+	typedef
+	boost::units::quantity<
 		boost::units::si::length,
 		unit_type
-	> length;
+	>
+	length;
 
-	typedef boost::units::quantity<
+	typedef
+	boost::units::quantity<
 		boost::units::si::time,
 		unit_type
-	> time;
+	>
+	time;
 
-	typedef boost::units::quantity<
+	typedef
+	boost::units::quantity<
 		boost::units::si::velocity,
 		unit_type
-	> velocity;
+	>
+	velocity;
 
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		length,
 		2
-	> length2;
+	>
+	length2;
 
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		time,
 		2
-	> time2;
+	>
+	time2;
 
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		velocity,
 		2
-	> velocity2;
+	>
+	velocity2;
 
 	length2 const l1(
 		length(
@@ -88,13 +103,19 @@ BOOST_AUTO_TEST_CASE(
 		t1
 	);
 
-	BOOST_CHECK_EQUAL(
-		v1.get_unsafe().x().value(),
+	REQUIRE(
+		v1.has_value()
+	);
+
+	CHECK(
+		v1.get_unsafe().x().value()
+		==
 		-25
 	);
 
-	BOOST_CHECK_EQUAL(
-		v1.get_unsafe().y().value(),
+	CHECK(
+		v1.get_unsafe().y().value()
+		==
 		100
 	);
 }
