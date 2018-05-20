@@ -1031,6 +1031,65 @@ function(
 	)
 endfunction()
 
+option(
+	FCPPT_UTILS_CATCH_LINK_STATIC
+	"Link to catch statically"
+	OFF
+)
+
+function(
+	fcppt_utils_setup_tests
+)
+	set(
+		FCPPT_UTILS_CATCH_FILE
+		${FCPPT_UTILS_PROJECT_BINARY_DIR}/catch_main.cpp
+	)
+
+	file(
+		WRITE
+		${FCPPT_UTILS_CATCH_FILE}
+		"#define CATCH_CONFIG_MAIN
+		#include <catch.hpp>"
+	)
+
+	if(
+		FCPPT_UTILS_CATCH_LINK_STATIC
+	)
+		set(
+			FCPPT_UTILS_CATCH_LIB_TYPE
+			"STATIC"
+		)
+
+		message(
+			WARNING
+			"Linking to Catch statically will drastically increase the
+			size of each test case"
+		)
+	else()
+		set(
+			FCPPT_UTILS_CATCH_LIB_TYPE
+			"SHARED"
+		)
+	endif()
+
+	find_package(
+		Catch2
+		REQUIRED
+	)
+
+	add_library(
+		fcppt_utils_catch_main
+		${FCPPT_UTILS_CATCH_LIB_TYPE}
+		${FCPPT_UTILS_CATCH_FILE}
+	)
+
+	target_link_libraries(
+		fcppt_utils_catch_main
+		PRIVATE
+		Catch2::Catch
+	)
+endfunction()
+
 function(
 	fcppt_utils_add_test
 	TEST_DIR
@@ -1087,7 +1146,6 @@ function(
 		${FULL_TEST_NAME}
 		PRIVATE
 		${_INCLUDE_DIRS}
-		${Boost_INCLUDE_DIRS}
 	)
 
 	target_link_libraries(
@@ -1099,32 +1157,11 @@ function(
 	if(
 		NOT ${_NO_CODE}
 	)
-		target_compile_definitions(
-			${FULL_TEST_NAME}
-			PRIVATE
-			BOOST_TEST_MODULE=${TEST_NAME}
-		)
-
-		if(
-			Boost_USE_STATIC_LIBS
-		)
-			target_compile_definitions(
-				${FULL_TEST_NAME}
-				PRIVATE
-				BOOST_TEST_NO_LIB
-			)
-		else()
-			target_compile_definitions(
-				${FULL_TEST_NAME}
-				PRIVATE
-				BOOST_TEST_DYN_LINK
-			)
-		endif()
-
 		target_link_libraries(
 			${FULL_TEST_NAME}
 			PRIVATE
-			${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+			fcppt_utils_catch_main
+			Catch2::Catch
 		)
 
 		add_test(

@@ -2,44 +2,6 @@ include(
 	CMakeParseArguments
 )
 
-option(
-	FCPPT_CATCH_LINK_STATIC
-	"Link to catch statically"
-	OFF
-)
-
-if(
-	FCPPT_CATCH_LINK_STATIC
-)
-	set(
-		FCPPT_CATCH_LIB_TYPE
-		"STATIC"
-	)
-
-	message(
-		WARNING
-		"Linking to Catch statically will drastically increase the
-		size of each test case"
-	)
-else()
-	set(
-		FCPPT_CATCH_LIB_TYPE
-		"SHARED"
-	)
-endif()
-
-add_library(
-	catch_main
-	${FCPPT_CATCH_LIB_TYPE}
-	catch_main.cpp
-)
-
-target_link_libraries(
-	catch_main
-	PRIVATE
-	Catch2::Catch
-)
-
 function(
 	add_fcppt_test
 	PATH_NAME
@@ -76,15 +38,12 @@ function(
 		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test
 	)
 
-	# TODO: Move Catch stuff to fcppt_utils_add_test
 	fcppt_utils_add_test(
 		${TEST_DIR}
 		"${PATH_NAME}"
 		${NO_CODE}
 		LINK_LIBS
 			${_LINK_LIBS}
-			catch_main
-			Catch2::Catch
 			fcppt_core_interface
 		INCLUDE_DIRS
 			${TEST_DIR}/include

@@ -96,11 +96,6 @@ find_package(
 	filesystem
 	signals
 	system
-	unit_test_framework
-)
-
-find_package(
-	Catch2
 )
 
 if(
@@ -147,7 +142,7 @@ option(
 option(
 	ENABLE_TEST
 	"Build the tests"
-	${Boost_UNIT_TEST_FRAMEWORK_FOUND}
+	OFF
 )
 
 set(
@@ -584,6 +579,8 @@ endif()
 if(
 	ENABLE_TEST
 )
+	fcppt_utils_setup_tests()
+
 	enable_testing()
 
 	add_subdirectory(

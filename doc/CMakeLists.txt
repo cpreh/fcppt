@@ -826,6 +826,7 @@ set(
 	libs/core/include/fcppt/iterator/category_at_least.hpp
 	libs/core/include/fcppt/iterator/is_types.hpp
 	libs/core/include/fcppt/iterator/make_range.hpp
+	libs/core/include/fcppt/iterator/range_comparison.hpp
 	libs/core/include/fcppt/iterator/range_decl.hpp
 	libs/core/include/fcppt/iterator/range_fwd.hpp
 	libs/core/include/fcppt/iterator/range_impl.hpp
