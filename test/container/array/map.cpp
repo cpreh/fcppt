@@ -11,8 +11,8 @@
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/array/map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

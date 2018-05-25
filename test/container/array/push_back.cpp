@@ -9,8 +9,8 @@
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/container/array/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

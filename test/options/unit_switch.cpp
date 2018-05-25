@@ -10,6 +10,7 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
+#include <fcppt/catch/either.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -20,9 +21,8 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/unit_switch.hpp>
 #include <fcppt/record/comparison.hpp>
-#include <fcppt/record/output.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/catch/either.hpp>
+#include <fcppt/record/output.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>

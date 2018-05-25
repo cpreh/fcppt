@@ -11,8 +11,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <catch.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 

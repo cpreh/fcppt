@@ -6,8 +6,8 @@
 
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

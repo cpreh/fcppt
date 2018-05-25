@@ -13,8 +13,8 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <cstring>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>

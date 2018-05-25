@@ -11,8 +11,8 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

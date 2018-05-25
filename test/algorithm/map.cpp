@@ -15,9 +15,9 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
 #include <array>
+#include <catch.hpp>
 #include <string>
 #include <type_traits>
 #include <vector>

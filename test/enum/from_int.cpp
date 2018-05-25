@@ -5,9 +5,9 @@
 
 
 #include <fcppt/exception.hpp>
+#include <fcppt/catch/defer.hpp>
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/enum/from_int_exn.hpp>
-#include <fcppt/catch/defer.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/config/external_begin.hpp>

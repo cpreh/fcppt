@@ -18,8 +18,8 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

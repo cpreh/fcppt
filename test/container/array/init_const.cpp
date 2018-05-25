@@ -7,8 +7,8 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/array/init_const.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

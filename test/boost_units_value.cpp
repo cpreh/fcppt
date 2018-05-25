@@ -6,9 +6,9 @@
 
 #include <fcppt/boost_units_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

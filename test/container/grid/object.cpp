@@ -13,8 +13,8 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <algorithm>
+#include <catch.hpp>
 #include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

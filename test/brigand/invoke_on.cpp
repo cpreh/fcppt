@@ -8,8 +8,8 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/brigand/invoke_on.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
+#include <catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

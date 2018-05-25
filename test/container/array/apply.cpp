@@ -12,8 +12,8 @@
 #include <fcppt/container/array/apply.hpp>
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
 #include <array>
+#include <catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
