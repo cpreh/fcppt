@@ -21,6 +21,11 @@ namespace spirit
 namespace traits
 {
 
+/**
+\brief Integrates \link fcppt::optional::object\endlink with boost.spirit
+
+\ingroup fcpptboost
+*/
 template<
 	typename Type,
 	typename Domain

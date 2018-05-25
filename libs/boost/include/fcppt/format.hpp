@@ -12,19 +12,23 @@
 #include <boost/format.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
 /**
 \brief A fcppt::char_type typedef for <a href="http://www.boost.org/doc/libs/1_49_0/libs/format/">boost.format</a>
-\ingroup fcpptstring
+
+\ingroup fcpptboost
 
 See the \link fcpptstring string module description \endlink for more
 information about fcppt::char_type.
 */
-typedef boost::basic_format<
+typedef
+boost::basic_format<
 	fcppt::char_type
-> format;
+>
+format;
 
 }
 

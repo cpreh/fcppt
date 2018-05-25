@@ -19,6 +19,11 @@ namespace fcppt
 namespace math
 {
 
+/**
+\brief Integrates boost.units with \link fcppt::math::is_zero\endlink.
+
+\ingroup fcpptboost
+*/
 template<
 	typename Unit,
 	typename Type

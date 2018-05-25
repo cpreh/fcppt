@@ -18,7 +18,7 @@ namespace fcppt
 /**
 \brief Converts a boost unit to its value
 
-\ingroup fcpptvarious
+\ingroup fcpptboost
 */
 struct boost_units_value
 {

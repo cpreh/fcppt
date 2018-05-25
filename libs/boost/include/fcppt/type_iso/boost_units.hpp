@@ -18,6 +18,11 @@ namespace fcppt
 namespace type_iso
 {
 
+/**
+\brief Integrates boost.units with fcppt.type_iso
+
+\ingroup fcpptboost
+*/
 template<
 	typename Unit,
 	typename Type

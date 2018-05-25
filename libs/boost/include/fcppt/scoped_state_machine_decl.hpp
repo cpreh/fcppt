@@ -18,7 +18,7 @@ namespace fcppt
 /**
 \brief Scopes a boost state machine
 
-\ingroup fcpptvarious
+\ingroup fcpptboost
 
 Calls initiate in the constructor and terminate in the destructor.
 

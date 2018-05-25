@@ -20,7 +20,9 @@ namespace fcppt
 {
 
 /**
-\ingroup fcpptliteral
+\brief Literal specialization for boost.units
+
+\ingroup fcpptboost
 */
 template<
 	typename Unit,
