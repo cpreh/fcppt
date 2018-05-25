@@ -19,6 +19,11 @@
 namespace Catch
 {
 
+/**
+\brief Output specialization for \link fcppt::either::object\endlink.
+
+\ingroup fcpptcatch
+*/
 template<
 	typename Failure,
 	typename Success

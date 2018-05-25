@@ -52,8 +52,10 @@ set(
 	doc/files/modules/assert.doxygen
 	doc/files/modules/assign.doxygen
 	doc/files/modules/bit.doxygen
+	doc/files/modules/boost.doxygen
 	doc/files/modules/brigand.doxygen
 	doc/files/modules/casts.doxygen
+	doc/files/modules/catch.doxygen
 	doc/files/modules/config.doxygen
 	doc/files/modules/container/array.doxygen
 	doc/files/modules/container/base.doxygen
@@ -204,6 +206,9 @@ set(
 	libs/boost/include/fcppt/spirit_traits/optional_basic.hpp
 	libs/boost/include/fcppt/spirit_traits/variant_basic.hpp
 	libs/boost/include/fcppt/type_iso/boost_units.hpp
+	libs/catch/include/fcppt/catch/defer.hpp
+	libs/catch/include/fcppt/catch/either.hpp
+	libs/catch/include/fcppt/catch/variant.hpp
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp

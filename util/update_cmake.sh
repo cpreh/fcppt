@@ -38,6 +38,7 @@ update_cmake \
 	doc/CMakeLists.txt \
 	FCPPT_DOC_FILES \
 	libs/boost/include \
+	libs/catch/include \
 	libs/core/include \
 	libs/filesystem/include \
 	libs/log/include \

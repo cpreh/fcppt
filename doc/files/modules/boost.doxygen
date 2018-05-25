@@ -1,0 +1,7 @@
+/**
+\defgroup fcpptboost fcppt.boost
+\ingroup fcpptmain
+\brief Boost support library
+
+This library provides some boost integration.
+*/

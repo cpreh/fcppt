@@ -13,6 +13,11 @@ namespace fcppt
 namespace catch_
 {
 
+/**
+\brief Use this to avoid catch printing an expression.
+
+\ingroup fcpptcatch
+*/
 inline
 bool
 defer(

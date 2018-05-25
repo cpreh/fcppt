@@ -19,6 +19,11 @@
 namespace Catch
 {
 
+/**
+\brief Output specialization for \link fcppt::variant::object\endlink.
+
+\ingroup fcpptcatch
+*/
 template<
 	typename Types
 >
