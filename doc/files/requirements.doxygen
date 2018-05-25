@@ -29,25 +29,37 @@
 
 \section requirements_download_installation_requirements Requirements
 
-fcppt needs the following at build time:
+You need the following dependencies to build fcppt:
 <ul>
 	<li><a href="https://www.cmake.org">>=cmake-3.1.0</a></li>
 	<li><a href="https://github.com/edouarda/brigand">brigand</a></li>
 </ul>
 
-To build fcppt.filesystem, fcppt.system or the fcppt tests you need
-<a href="https://boost.org">>=boost-1.47</a>
-and to build the documentation you need
+The following dependencies are optional:
+<ul>
+<li>
+To build fcppt.filesystem or fcppt.system you need,
+<a href="https://boost.org">>=boost-1.47</a>.
+</li>
+<li>
+To build the documentation, you need
 <a href="http://www.doxygen.org/">>=doxygen-1.7.5</a>.
+</li>
+<li>
+To build and run the tests, you need
+<a href="https://github.com/catchorg/Catch2">Catch2</a>.
+This is also needed to build fcppt.catch.
+</li>
+</ul>
 
 \section requirements_download_installation_tested_platforms Tested Platforms
 
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-7.2 (Gentoo Linux)</li>
+	<li>gcc-7.3 (Gentoo Linux)</li>
 	<li>gcc-6.3 (MinGW)</li>
-	<li>clang 5.0 (Gentoo Linux)</li>
+	<li>clang 6.0 (Gentoo Linux)</li>
 </ul>
 
 fcppt needs a C++14-conforming compiler which probably excludes everything
@@ -76,18 +88,18 @@ where <code>$path</code> points to Brigand's <code>include</code> directory.
 
 Several CMake options are available:
 <ul>
-<li><code>ENABLE_BOOST</code>: Whether to build <code>fcppt_boost</code>.
-This is also required for <code>ENABLE_FILESYSTEM</code>, <code>ENABLE_SYSTEM</code>
-and <code>ENABLE_TEST</code>. Take a look at CMake's <code>FindBoost.cmake</code>
+<li><code>ENABLE_BOOST</code>: Whether to build fcppt.boost.
+This is also required for <code>ENABLE_FILESYSTEM</code> and <code>ENABLE_SYSTEM</code>.
+Take a look at CMake's <code>FindBoost.cmake</code>
 on how to specify which Boost installation to use.</li>
-<li><code>ENABLE_FILESYSTEM</code>: Whether to build the <code>boost.filesystem</code>
+<li><code>ENABLE_FILESYSTEM</code>: Whether to build fcppt.filesystem, the <code>boost.filesystem</code>
 support library. <code>ENABLE_BOOST</code> is required for this.</li>
-<li><code>ENABLE_SYSTEM</code>: Whether to build the <code>boost.system</code>
+<li><code>ENABLE_SYSTEM</code>: Whether to build fcppt.system, the <code>boost.system</code>
 support library. <code>ENABLE_BOOST</code> is required for this.</li>
 <li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
 This is probably something you want to turn off when you install fcppt only.</li>
 <li><code>ENABLE_TEST</code>: Whether to build fcppt's tests.
-<code>ENABLE_BOOST</code> is required from this.</li>
+Catch2 is required for this.</li>
 <li><code>ENABLE_DOC</code>: Whether to build fcppt's documentation.
 <code>Doxygen</code> is required for this. Take a look at CMake's <code>FindDoxygen.cmake</code>
 on how to specify which Doxygen installation to use.</li>
@@ -105,8 +117,8 @@ don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 \subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
 
 fcppt comes with an exported CMake file that defines all of fcppt's targets, which currently
-are <code>boost</code>, <code>core</code>, <code>filesystem</code>, <code>log</code> and
-<code>options</code>.
+are <code>boost</code>, <code>catch</code>, <code>core</code>, <code>filesystem</code>,
+<code>log</code> and <code>options</code>.
 The following code provides a small example in which the target <code>mytarget</code>
 links to core and log:
 <pre>
@@ -138,7 +150,7 @@ target_link_libraries(
 	fcppt_core_interface
 )
 </pre>
-The boost support library only provides an interface target.
+The boost and catch support libraries only provide an interface target.
 
 Interfaces are CMake targets that do not include a library to link to but, as
 with regular targets, provide include directories and build flags.

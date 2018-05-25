@@ -3,6 +3,16 @@
 
 \section changes_changes_to_280 2.8.0
 
+\subsection changes_general_to_280 General changes
+
+<ul>
+<li>
+Replaced <code>boost.test</code> with <code>Catch2</code>.
+This means that in order to build the tests (<code>-D ENABLE_TEST=ON</code>),
+Catch2 is now required.
+</li>
+</ul>
+
 \subsection changes_added_functionality_to_280 Added functionality
 
 <ul>
