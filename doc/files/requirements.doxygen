@@ -92,6 +92,8 @@ Several CMake options are available:
 This is also required for <code>ENABLE_FILESYSTEM</code> and <code>ENABLE_SYSTEM</code>.
 Take a look at CMake's <code>FindBoost.cmake</code>
 on how to specify which Boost installation to use.</li>
+<li><code>ENABLE_CATCH</code>: Whether to build fcppt.catch.
+Catch2 is required for this.</li>
 <li><code>ENABLE_FILESYSTEM</code>: Whether to build fcppt.filesystem, the <code>boost.filesystem</code>
 support library. <code>ENABLE_BOOST</code> is required for this.</li>
 <li><code>ENABLE_SYSTEM</code>: Whether to build fcppt.system, the <code>boost.system</code>
