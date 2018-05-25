@@ -38,7 +38,7 @@ You need the following dependencies to build fcppt:
 The following dependencies are optional:
 <ul>
 <li>
-To build \ref fcpptfilesystem or \ref fcpptsystem you need,
+To build \ref fcpptboost, \ref fcpptfilesystem or \ref fcpptsystem you need,
 <a href="https://boost.org">>=boost-1.47</a>.
 </li>
 <li>
