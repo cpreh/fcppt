@@ -3,6 +3,9 @@
 \ingroup fcpptmain
 \brief Logging classes and functions
 
+<b>Link to <code>${fcppt_log_TARGET}</code>,
+or to <code>fcppt_log_interface</code> if you only need the headers.</b>
+
 <table id="toc">
 <tr>
 <td>

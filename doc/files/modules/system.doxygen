@@ -3,6 +3,8 @@
 \ingroup fcpptmain
 \brief Helper functions for boost::system
 
+<b>Link to <code>${fcppt_system_TARGET}</code>,
+or to <code>fcppt_system_interface</code> if you only need the headers.</b>
 */
 namespace fcppt
 {

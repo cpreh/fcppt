@@ -3,5 +3,5 @@
 \ingroup fcpptmain
 \brief Catch2 support library
 
-This library provides some Catch2 integration.
+<b>Link to <code>fcppt_catch_interface</code>.</b>
 */

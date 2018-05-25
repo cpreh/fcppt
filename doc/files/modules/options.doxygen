@@ -3,6 +3,9 @@
 \ingroup fcpptmain
 \brief Library for command-line options
 
+<b>Link to <code>${fcppt_options_TARGET}</code>,
+or to <code>fcppt_options_interface</code> if you only need the headers.</b>
+
 <table id="toc">
 <tr>
 <td>

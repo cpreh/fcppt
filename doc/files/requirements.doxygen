@@ -38,7 +38,7 @@ You need the following dependencies to build fcppt:
 The following dependencies are optional:
 <ul>
 <li>
-To build fcppt.filesystem or fcppt.system you need,
+To build \ref fcpptfilesystem or \ref fcpptsystem you need,
 <a href="https://boost.org">>=boost-1.47</a>.
 </li>
 <li>
@@ -48,7 +48,7 @@ To build the documentation, you need
 <li>
 To build and run the tests, you need
 <a href="https://github.com/catchorg/Catch2">Catch2</a>.
-This is also needed to build fcppt.catch.
+This is also needed to build \ref fcpptcatch.
 </li>
 </ul>
 
@@ -88,15 +88,15 @@ where <code>$path</code> points to Brigand's <code>include</code> directory.
 
 Several CMake options are available:
 <ul>
-<li><code>ENABLE_BOOST</code>: Whether to build fcppt.boost.
+<li><code>ENABLE_BOOST</code>: Whether to build \ref fcpptboost.
 This is also required for <code>ENABLE_FILESYSTEM</code> and <code>ENABLE_SYSTEM</code>.
 Take a look at CMake's <code>FindBoost.cmake</code>
 on how to specify which Boost installation to use.</li>
-<li><code>ENABLE_CATCH</code>: Whether to build fcppt.catch.
+<li><code>ENABLE_CATCH</code>: Whether to build \ref fcpptcatch.
 Catch2 is required for this.</li>
-<li><code>ENABLE_FILESYSTEM</code>: Whether to build fcppt.filesystem, the <code>boost.filesystem</code>
+<li><code>ENABLE_FILESYSTEM</code>: Whether to build \ref fcpptfilesystem, the <code>boost.filesystem</code>
 support library. <code>ENABLE_BOOST</code> is required for this.</li>
-<li><code>ENABLE_SYSTEM</code>: Whether to build fcppt.system, the <code>boost.system</code>
+<li><code>ENABLE_SYSTEM</code>: Whether to build \ref fcpptsystem, the <code>boost.system</code>
 support library. <code>ENABLE_BOOST</code> is required for this.</li>
 <li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
 This is probably something you want to turn off when you install fcppt only.</li>
@@ -110,7 +110,7 @@ on how to specify which Doxygen installation to use.</li>
 </ul>
 You need at least one of <code>ENABLE_SHARED</code> or <code>ENABLE_STATIC</code>.
 
-fcppt does not need to be installed in order to be used. After fcppt has been
+cppt does not need to be installed in order to be used. After fcppt has been
 built you can directly use it from its source directory. If you want to install
 don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 
@@ -152,7 +152,7 @@ target_link_libraries(
 	fcppt_core_interface
 )
 </pre>
-The boost and catch support libraries only provide an interface target.
+\ref fcpptboost and \ref fcpptcatch only provide an interface target.
 
 Interfaces are CMake targets that do not include a library to link to but, as
 with regular targets, provide include directories and build flags.
