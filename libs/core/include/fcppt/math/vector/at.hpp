@@ -36,7 +36,9 @@ template<
 >
 inline
 fcppt::container::to_reference_type<
-	Vector
+	std::remove_reference_t<
+		Vector
+	>
 >
 at(
 	Vector &_value
