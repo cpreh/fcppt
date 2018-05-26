@@ -15,3 +15,7 @@ add_fcppt_range_test(
 add_fcppt_range_test(
 	singular
 )
+
+add_fcppt_range_test(
+	size
+)

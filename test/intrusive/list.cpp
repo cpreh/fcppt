@@ -7,6 +7,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/intrusive/base.hpp>
 #include <fcppt/intrusive/list.hpp>
+#include <fcppt/range/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <iterator>
@@ -200,6 +201,106 @@ TEST_CASE(
 			)
 			==
 			my_list2.end()
+		);
+	}
+}
+
+TEST_CASE(
+	"intrusive::list size"
+	"[intrusive]"
+)
+{
+	test_list my_list{};
+
+	REQUIRE(
+		fcppt::range::size(
+			my_list
+		)
+		==
+		0u
+	);
+
+	{
+		test_class test1{
+			my_list,
+			42
+		};
+
+		REQUIRE(
+			fcppt::range::size(
+				my_list
+			)
+			==
+			1u
+		);
+
+		{
+			test_class test2{
+				my_list,
+				42
+			};
+
+			REQUIRE(
+				fcppt::range::size(
+					my_list
+				)
+				==
+				2u
+			);
+		}
+
+		REQUIRE(
+			fcppt::range::size(
+				my_list
+			)
+			==
+			1u
+		);
+	}
+
+	REQUIRE(
+		fcppt::range::size(
+			my_list
+		)
+		==
+		0u
+	);
+
+	{
+		test_class test1{
+			my_list,
+			42
+		};
+
+		REQUIRE(
+			fcppt::range::size(
+				my_list
+			)
+			==
+			1u
+		);
+
+		{
+			test_class test2{
+				my_list,
+				42
+			};
+
+			REQUIRE(
+				fcppt::range::size(
+					my_list
+				)
+				==
+				2u
+			);
+		}
+
+		REQUIRE(
+			fcppt::range::size(
+				my_list
+			)
+			==
+			1u
 		);
 	}
 }

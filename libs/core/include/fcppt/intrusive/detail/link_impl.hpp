@@ -39,13 +39,6 @@ fcppt::intrusive::detail::link<
 	Type
 >::unlink()
 {
-	if(
-		next_
-		==
-		prev_
-	)
-		return;
-
 	next_->link_.prev_ =
 		prev_;
 

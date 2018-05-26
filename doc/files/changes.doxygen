@@ -55,6 +55,12 @@ Catch2 is now required.
 	</ul>
 </li>
 
+<li>\ref fcpptrange
+	<ul>
+	<li>Added \link fcppt::range::size\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptions
 	<ul>
 	<li>Added \link fcppt::options::commands\endlink, which parses sub-commands.</li>
@@ -143,6 +149,18 @@ Catch2 is now required.
 <li>\ref fcpptalgorithm
 	<ul>
 	<li> Removed <code>fcppt::algorithm::array_binary_map</code>. This has been replaced by \link fcppt::container::array::apply\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_280 Bugfixes
+
+<ul>
+
+<li>\ref fcpptintrusive
+	<ul>
+	<li>Fixed unlinking of the last element.</li>
 	</ul>
 </li>
 

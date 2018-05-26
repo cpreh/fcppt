@@ -110,7 +110,7 @@ on how to specify which Doxygen installation to use.</li>
 </ul>
 You need at least one of <code>ENABLE_SHARED</code> or <code>ENABLE_STATIC</code>.
 
-cppt does not need to be installed in order to be used. After fcppt has been
+fcppt does not need to be installed in order to be used. After fcppt has been
 built you can directly use it from its source directory. If you want to install
 don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 

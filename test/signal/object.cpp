@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/range/size.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
@@ -46,7 +47,23 @@ TEST_CASE(
 		}
 	);
 
+	auto const con_size(
+		[](
+			signal_type const &_sig
+		)
+		{
+			return
+				fcppt::range::size(
+					_sig.connections()
+				);
+		}
+	);
+
 	signal_type sig{};
+
+	REQUIRE(
+		sig.empty()
+	);
 
 	{
 		fcppt::signal::auto_connection const con1(
@@ -58,6 +75,14 @@ TEST_CASE(
 					)
 				}
 			)
+		);
+
+		CHECK(
+			con_size(
+				sig
+			)
+			==
+			1
 		);
 
 		REQUIRE(
@@ -74,25 +99,51 @@ TEST_CASE(
 			1
 		);
 
-		fcppt::signal::auto_connection const con2(
-			sig.connect(
-				signal_type::function{
-					std::bind(
-						add,
-						2
-					)
-				}
+		{
+			fcppt::signal::auto_connection const con2(
+				sig.connect(
+					signal_type::function{
+						std::bind(
+							add,
+							2
+						)
+					}
+				)
+			);
+
+			CHECK(
+				con_size(
+					sig
+				)
+				==
+				2
+			);
+
+			sig();
+
+			REQUIRE(
+				counter
+				==
+				4
+			);
+		}
+
+		CHECK(
+			con_size(
+				sig
 			)
-		);
-
-		sig();
-
-		REQUIRE(
-			counter
 			==
-			4
+			1
 		);
 	}
+
+	CHECK(
+		con_size(
+			sig
+		)
+		==
+		0
+	);
 
 	REQUIRE(
 		sig.empty()

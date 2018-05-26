@@ -125,6 +125,8 @@ public:
 	using base::connect;
 
 	using base::empty;
+
+	using base::connections;
 private:
 	combiner_function combiner_;
 };
@@ -212,6 +214,8 @@ public:
 	using base::connect;
 
 	using base::empty;
+
+	using base::connections;
 };
 
 }
