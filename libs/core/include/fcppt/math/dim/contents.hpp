@@ -8,12 +8,14 @@
 #define FCPPT_MATH_DIM_CONTENTS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/storage_size.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <functional>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -46,15 +48,44 @@ contents(
 {
 	return
 		fcppt::algorithm::fold(
-			_dim.storage(),
+			fcppt::math::int_range_count<
+				fcppt::math::detail::storage_size<
+					S
+				>::value
+			>{},
 			fcppt::literal<
 				T
 			>(
 				1
 			),
-			std::multiplies<
-				T
-			>()
+			[
+				&_dim
+			](
+				auto const _index,
+				T const &_value
+			)
+			{
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
+						_index
+					)
+				>
+				index;
+
+				return
+					_value
+					*
+					fcppt::math::detail::linear_access<
+						index::value
+					>(
+						_dim.storage()
+					);
+			}
 		);
 }
 

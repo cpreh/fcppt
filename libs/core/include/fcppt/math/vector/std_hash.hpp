@@ -8,6 +8,8 @@
 #define FCPPT_MATH_VECTOR_STD_HASH_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/to_array.hpp>
+#include <fcppt/math/to_array_type.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/range/hash_impl.hpp>
 #include <fcppt/config/compiler.hpp>
@@ -57,10 +59,13 @@ struct hash<
 	{
 		return
 			fcppt::range::hash<
-				typename
-				type::storage_type
-			>()(
-				_value.storage()
+				fcppt::math::to_array_type<
+					type
+				>
+			>{}(
+				fcppt::math::to_array(
+					_value
+				)
 			);
 	}
 };

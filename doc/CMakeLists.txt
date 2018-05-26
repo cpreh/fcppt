@@ -899,6 +899,9 @@ set(
 	libs/core/include/fcppt/math/detail/dim_matches.hpp
 	libs/core/include/fcppt/math/detail/fill.hpp
 	libs/core/include/fcppt/math/detail/has_size.hpp
+	libs/core/include/fcppt/math/detail/hash_decl.hpp
+	libs/core/include/fcppt/math/detail/hash_fwd.hpp
+	libs/core/include/fcppt/math/detail/hash_impl.hpp
 	libs/core/include/fcppt/math/detail/if_not_last_index.hpp
 	libs/core/include/fcppt/math/detail/index_at.hpp
 	libs/core/include/fcppt/math/detail/init.hpp
@@ -909,6 +912,7 @@ set(
 	libs/core/include/fcppt/math/detail/map.hpp
 	libs/core/include/fcppt/math/detail/member_operator.hpp
 	libs/core/include/fcppt/math/detail/mod.hpp
+	libs/core/include/fcppt/math/detail/multiply_scalar.hpp
 	libs/core/include/fcppt/math/detail/narrow_cast.hpp
 	libs/core/include/fcppt/math/detail/null_storage.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_input.hpp
@@ -920,7 +924,6 @@ set(
 	libs/core/include/fcppt/math/detail/static_storage_impl.hpp
 	libs/core/include/fcppt/math/detail/storage_size.hpp
 	libs/core/include/fcppt/math/detail/structure_cast.hpp
-	libs/core/include/fcppt/math/detail/to_array_type.hpp
 	libs/core/include/fcppt/math/detail/to_different.hpp
 	libs/core/include/fcppt/math/detail/unary_type.hpp
 	libs/core/include/fcppt/math/diff.hpp
@@ -1230,6 +1233,7 @@ set(
 	libs/core/include/fcppt/range/hash_fwd.hpp
 	libs/core/include/fcppt/range/hash_impl.hpp
 	libs/core/include/fcppt/range/singular.hpp
+	libs/core/include/fcppt/range/size.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
 	libs/core/include/fcppt/record/comparison.hpp

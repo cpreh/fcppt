@@ -7,7 +7,11 @@
 #ifndef FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
@@ -43,8 +47,11 @@ is_quadratic(
 {
 	return
 		fcppt::algorithm::all_of(
-			_dim.storage(),
+			fcppt::math::int_range_count<
+				N
+			>{},
 			[
+				&_dim,
 				_first =
 					fcppt::math::dim::at<
 						0
@@ -52,11 +59,27 @@ is_quadratic(
 						_dim
 					)
 			](
-				T const _value
+				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
+						_index
+					)
+				>
+				index;
+
 				return
-					_value
+					fcppt::math::dim::at<
+						index::value
+					>(
+						_dim
+					)
 					==
 					_first;
 			}

@@ -7,7 +7,10 @@
 #ifndef FCPPT_MATH_TO_ARRAY_TYPE_HPP_INCLUDED
 #define FCPPT_MATH_TO_ARRAY_TYPE_HPP_INCLUDED
 
-#include <fcppt/math/detail/to_array_type.hpp>
+#include <fcppt/math/detail/storage_size.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,10 +29,14 @@ template<
 using
 to_array_type
 =
-typename
-fcppt::math::detail::to_array_type<
-	Type
->::type;
+std::array<
+	typename
+	Type::value_type,
+	fcppt::math::detail::storage_size<
+		typename
+		Type::storage_type
+	>::value
+>;
 
 }
 }

@@ -15,6 +15,7 @@
 #include <fcppt/math/detail/copy.hpp>
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/member_operator.hpp>
+#include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 
 
@@ -336,13 +337,10 @@ fcppt::math::vector::object<
 	value_type const &_value
 )
 {
-	for(
-		auto &item
-		:
-		storage_
-	)
-		item *=
-			_value;
+	fcppt::math::detail::multiply_scalar(
+		storage_,
+		_value
+	);
 
 	return
 		*this;

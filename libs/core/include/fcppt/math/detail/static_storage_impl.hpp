@@ -28,7 +28,7 @@ fcppt::math::detail::static_storage<
 	Args &&... _args
 )
 :
-	array_type{{
+	impl_{{
 		std::forward<
 			Args
 		>(
@@ -49,7 +49,7 @@ fcppt::math::detail::static_storage<
 	array_type &&_array
 )
 :
-	array_type(
+	impl_(
 		std::move(
 			_array
 		)
@@ -68,7 +68,7 @@ fcppt::math::detail::static_storage<
 	array_type const &_array
 )
 :
-	array_type(
+	impl_(
 		_array
 	)
 {
@@ -82,14 +82,76 @@ typename
 fcppt::math::detail::static_storage<
 	T,
 	N
->::array_type const &
+>::reference
 fcppt::math::detail::static_storage<
 	T,
 	N
->::get() const
+>::operator[](
+	fcppt::math::size_type const _index
+)
 {
 	return
-		*this;
+		impl_[
+			_index
+		];
+}
+
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+typename
+fcppt::math::detail::static_storage<
+	T,
+	N
+>::const_reference
+fcppt::math::detail::static_storage<
+	T,
+	N
+>::operator[](
+	fcppt::math::size_type const _index
+) const
+{
+	return
+		impl_[
+			_index
+		];
+}
+
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+typename
+fcppt::math::detail::static_storage<
+	T,
+	N
+>::pointer
+fcppt::math::detail::static_storage<
+	T,
+	N
+>::data()
+{
+	return
+		impl_.data();
+}
+
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+typename
+fcppt::math::detail::static_storage<
+	T,
+	N
+>::const_pointer
+fcppt::math::detail::static_storage<
+	T,
+	N
+>::data() const
+{
+	return
+		impl_.data();
 }
 
 #endif

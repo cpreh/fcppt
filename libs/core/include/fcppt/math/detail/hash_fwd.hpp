@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_HASH_FWD_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_HASH_FWD_HPP_INCLUDED
 
 
 namespace fcppt
@@ -18,11 +18,7 @@ namespace detail
 template<
 	typename Type
 >
-using
-storage_size
-=
-typename
-Type::storage_size;
+struct hash;
 
 }
 }

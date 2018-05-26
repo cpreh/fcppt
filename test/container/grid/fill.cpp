@@ -4,8 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/literal.hpp>
-#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/fill.hpp>
@@ -13,7 +11,6 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
-#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -52,17 +49,9 @@ TEST_CASE(
 					int
 				>(
 					fcppt::cast::to_signed(
-						fcppt::algorithm::fold(
-							_pos.storage(),
-							fcppt::literal<
-								pos::value_type
-							>(
-								0
-							),
-							std::plus<
-								pos::value_type
-							>()
-						)
+						_pos.x()
+						+
+						_pos.y()
 					)
 				);
 		}

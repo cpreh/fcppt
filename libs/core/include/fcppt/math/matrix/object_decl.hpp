@@ -112,7 +112,8 @@ public:
 		C,
 		fcppt::math::matrix::detail::row_view<
 			T,
-			C
+			C,
+			S
 		>
 	>
 	reference;
@@ -133,8 +134,9 @@ public:
 		T,
 		C,
 		fcppt::math::matrix::detail::row_view<
-			T const,
-			C
+			T,
+			C,
+			S const
 		>
 	>
 	const_reference;

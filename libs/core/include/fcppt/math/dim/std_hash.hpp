@@ -8,8 +8,8 @@
 #define FCPPT_MATH_DIM_STD_HASH_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/hash_impl.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
-#include <fcppt/range/hash_impl.hpp>
 #include <fcppt/config/compiler.hpp>
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -56,11 +56,10 @@ struct hash<
 	) const
 	{
 		return
-			fcppt::range::hash<
-				typename
-				type::storage_type
+			fcppt::math::detail::hash<
+				type
 			>()(
-				_value.storage()
+				_value
 			);
 	}
 };

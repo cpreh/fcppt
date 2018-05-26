@@ -36,9 +36,7 @@ template<
 >
 inline
 fcppt::container::to_reference_type<
-	std::remove_reference_t<
-		Matrix
-	>
+	Matrix
 >
 at_r(
 	Matrix &_value

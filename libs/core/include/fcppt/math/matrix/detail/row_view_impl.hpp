@@ -13,63 +13,55 @@
 
 template<
 	typename T,
-	fcppt::math::size_type C
+	fcppt::math::size_type C,
+	typename S
 >
 fcppt::math::matrix::detail::row_view<
 	T,
-	C
+	C,
+	S
 >::row_view(
-	pointer const _data,
+	S &_impl,
 	size_type const _index,
 	size_type const _columns
 )
 :
-	rep_(
-		_data
-		+
+	impl_{
+		_impl
+	},
+	offset_{
 		_index
 		*
 		_columns
-	)
+	}
 {
 }
 
 template<
 	typename T,
-	fcppt::math::size_type C
+	fcppt::math::size_type C,
+	typename S
 >
 typename
 fcppt::math::matrix::detail::row_view<
 	T,
-	C
->::iterator
+	C,
+	S
+>::const_reference
 fcppt::math::matrix::detail::row_view<
 	T,
-	C
->::begin() const
+	C,
+	S
+>::operator[](
+	size_type const _index
+) const
 {
 	return
-		rep_;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type C
->
-typename
-fcppt::math::matrix::detail::row_view<
-	T,
-	C
->::iterator
-fcppt::math::matrix::detail::row_view<
-	T,
-	C
->::end() const
-{
-	return
-		rep_
-		+
-		C;
+		impl_.get()[
+			offset_
+			+
+			_index
+		];
 }
 
 #endif

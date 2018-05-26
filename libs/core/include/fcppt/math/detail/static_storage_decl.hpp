@@ -7,6 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_STATIC_STORAGE_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STATIC_STORAGE_DECL_HPP_INCLUDED
 
+#include <fcppt/brigand/integral_cast.hpp>
+#include <fcppt/cast/size_fun.hpp>
+#include <fcppt/container/array/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,12 +29,6 @@ template<
 	fcppt::math::size_type N
 >
 class static_storage
-:
-	public
-		std::array<
-			T,
-			N
-		>
 {
 public:
 	typedef
@@ -40,6 +37,41 @@ public:
 		N
 	>
 	array_type;
+
+	typedef
+	fcppt::brigand::integral_cast<
+		fcppt::math::size_type,
+		fcppt::cast::size_fun,
+		fcppt::container::array::size<
+			array_type
+		>
+	>
+	storage_size;
+
+	typedef
+	typename
+	array_type::value_type
+	value_type;
+
+	typedef
+	typename
+	array_type::reference
+	reference;
+
+	typedef
+	typename
+	array_type::const_reference
+	const_reference;
+
+	typedef
+	typename
+	array_type::pointer
+	pointer;
+
+	typedef
+	typename
+	array_type::const_pointer
+	const_pointer;
 
 	template<
 		typename... Args
@@ -59,8 +91,23 @@ public:
 		array_type const &
 	);
 
-	array_type const &
-	get() const;
+	reference
+	operator[](
+		fcppt::math::size_type
+	);
+
+	const_reference
+	operator[](
+		fcppt::math::size_type
+	) const;
+
+	pointer
+	data();
+
+	const_pointer
+	data() const;
+private:
+	array_type impl_;
 };
 
 }

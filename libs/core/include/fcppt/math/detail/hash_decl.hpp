@@ -4,10 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_TO_ARRAY_TYPE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_TO_ARRAY_TYPE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_HASH_DECL_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_HASH_DECL_HPP_INCLUDED
 
-#include <fcppt/math/detail/assert_static_storage.hpp>
+#include <fcppt/math/detail/hash_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -20,17 +23,12 @@ namespace detail
 template<
 	typename Type
 >
-struct to_array_type
+struct hash
 {
-	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
-		typename
-		Type::storage_type
-	);
-
-	typedef
-	typename
-	Type::storage_type::array_type
-	type;
+	std::size_t
+	operator()(
+		Type const &
+	) const;
 };
 
 }

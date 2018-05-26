@@ -84,14 +84,9 @@ add_fcppt_math_vector_test(
 	push_back
 )
 
-#FIXME: How raw_view uses iterators is broken
-if(
-	ENABLE_BOOST
+add_fcppt_math_vector_test(
+	raw_view
 )
-	add_fcppt_math_vector_test(
-		raw_view
-	)
-endif()
 
 add_fcppt_math_vector_test(
 	sequence

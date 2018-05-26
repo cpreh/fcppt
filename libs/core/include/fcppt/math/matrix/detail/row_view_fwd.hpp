@@ -21,7 +21,8 @@ namespace detail
 
 template<
 	typename T,
-	fcppt::math::size_type C
+	fcppt::math::size_type C,
+	typename S
 >
 class row_view;
 

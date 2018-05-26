@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_ASSIGN_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_ASSIGN_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MULTIPLY_SCALAR_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MULTIPLY_SCALAR_HPP_INCLUDED
 
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
@@ -13,9 +13,6 @@
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/storage_size.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,40 +23,24 @@ namespace detail
 {
 
 template<
-	typename Dest,
-	typename Src
+	typename Storage
 >
-inline
-Dest &
-assign(
-	Dest &_dest,
-	Src const &_src
+void
+multiply_scalar(
+	Storage &_value,
+	typename
+	Storage::value_type const _mult
 )
 {
-	static_assert(
-		std::is_same<
-			fcppt::math::detail::storage_size<
-				typename
-				Dest::storage_type
-			>,
-			fcppt::math::detail::storage_size<
-				typename
-				Src::storage_type
-			>
-		>::value,
-		""
-	);
-
 	fcppt::algorithm::loop(
 		fcppt::math::int_range_count<
 			fcppt::math::detail::storage_size<
-				typename
-				Src::storage_type
+				Storage
 			>::value
 		>{},
 		[
-			&_dest,
-			&_src
+			&_value,
+			_mult
 		](
 			auto const _index
 		)
@@ -76,17 +57,12 @@ assign(
 			>
 			index;
 
-			_dest.storage()[
-				index::value
-			] =
-				_src.storage()[
-					index::value
-				];
+			_value[
+				index()
+			] *=
+				_mult;
 		}
 	);
-
-	return
-		_dest;
 }
 
 }

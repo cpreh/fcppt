@@ -14,6 +14,7 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/copy.hpp>
 #include <fcppt/math/detail/member_operator.hpp>
+#include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/detail/init_storage.hpp>
@@ -343,13 +344,10 @@ fcppt::math::matrix::object<
 	value_type const &_value
 )
 {
-	for(
-		auto &item
-		:
-		storage_
-	)
-		item *=
-			_value;
+	fcppt::math::detail::multiply_scalar(
+		storage_,
+		_value
+	);
 
 	return
 		*this;
@@ -381,7 +379,7 @@ fcppt::math::matrix::object<
 		reference(
 			typename
 			reference::storage_type(
-				storage_.data(),
+				storage_,
 				_j,
 				this->columns()
 			)
@@ -414,7 +412,7 @@ fcppt::math::matrix::object<
 		const_reference(
 			typename
 			const_reference::storage_type(
-				storage_.data(),
+				storage_,
 				_j,
 				this->columns()
 			)

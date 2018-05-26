@@ -52,6 +52,10 @@ add_fcppt_math_test(
 	sphere
 )
 
+add_fcppt_math_test(
+	static_storage
+)
+
 add_subdirectory(
 	vector
 )

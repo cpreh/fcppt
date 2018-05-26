@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_DECL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_DECL_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
@@ -23,7 +25,8 @@ namespace detail
 
 template<
 	typename T,
-	fcppt::math::size_type C
+	fcppt::math::size_type C,
+	typename S
 >
 class row_view
 {
@@ -33,38 +36,41 @@ public:
 	value_type;
 
 	typedef
-	fcppt::math::static_size<
-		C
-	>
-	static_size;
-
-	typedef
 	fcppt::math::size_type
 	size_type;
 
-	typedef T &reference;
+	typedef
+	fcppt::math::static_size<
+		C
+	>
+	storage_size;
 
-	typedef T const &const_reference;
+	typedef
+	fcppt::container::to_reference_type<
+		S
+	>
+	reference;
 
-	typedef T *pointer;
-
-	typedef T *iterator;
-
-	typedef T const *const_iterator;
+	typedef
+	reference
+	const_reference;
 
 	row_view(
-		pointer,
+		S &,
 		size_type index,
 		size_type columns
 	);
 
-	iterator
-	begin() const;
-
-	iterator
-	end() const;
+	const_reference
+	operator[](
+		size_type
+	) const;
 private:
-	pointer rep_;
+	fcppt::reference<
+		S
+	> impl_;
+
+	size_type offset_;
 };
 
 }

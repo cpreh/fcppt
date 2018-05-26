@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_LINEAR_ACCESS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_LINEAR_ACCESS_HPP_INCLUDED
 
-#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/storage_size.hpp>
@@ -47,13 +46,9 @@ linear_access(
 	);
 
 	return
-		*(
-			_storage.begin()
-			+
-			fcppt::cast::to_signed(
-				Index
-			)
-		);
+		_storage[
+			Index
+		];
 }
 
 }

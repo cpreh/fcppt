@@ -26,27 +26,31 @@ template<
 class view_storage
 {
 public:
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
-	typedef fcppt::math::size_type size_type;
+	typedef
+	fcppt::math::size_type
+	size_type;
 
 	typedef
 	fcppt::math::static_size<
 		N
 	>
-	static_size;
+	storage_size;
 
-	typedef value_type *pointer;
+	typedef
+	value_type *
+	pointer;
 
-	typedef value_type const *const_pointer;
+	typedef
+	value_type &
+	reference;
 
-	typedef value_type &reference;
-
-	typedef value_type const &const_reference;
-
-	typedef pointer iterator;
-
-	typedef const_pointer const_iterator;
+	typedef
+	value_type const &
+	const_reference;
 
 	explicit
 	view_storage(
@@ -59,36 +63,26 @@ public:
 	{
 	}
 
-	iterator
-	begin()
+	reference
+	operator[](
+		size_type const _index
+	)
 	{
 		return
-			data_;
+			data_[
+				_index
+			];
 	}
 
-	const_iterator
-	begin() const
+	const_reference
+	operator[](
+		size_type const _index
+	) const
 	{
 		return
-			data_;
-	}
-
-	iterator
-	end()
-	{
-		return
-			data_
-			+
-			N;
-	}
-
-	const_iterator
-	end() const
-	{
-		return
-			data_
-			+
-			N;
+			data_[
+				_index
+			];
 	}
 private:
 	pointer data_;
