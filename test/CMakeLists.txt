@@ -116,6 +116,14 @@ add_subdirectory(
 	cast
 )
 
+if(
+	ENABLE_CATCH
+)
+	add_subdirectory(
+		catch
+	)
+endif()
+
 add_fcppt_test(
 	const
 )
