@@ -5,15 +5,14 @@
 
 
 #include <fcppt/literal.hpp>
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
-#include <ostream>
 #include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -75,75 +74,17 @@ TEST_CASE(
 	);
 }
 
-namespace
-{
-
-class movable
-{
-	FCPPT_NONCOPYABLE(
-		movable
-	);
-public:
-	explicit
-	movable(
-		int const _value
-	)
-	:
-		value_{
-			_value
-		}
-	{
-	}
-
-	~movable()
-	{
-	}
-
-	movable(
-		movable &&
-	) = default;
-
-	int
-	value() const
-	{
-		return
-			value_;
-	}
-private:
-	int value_;
-};
-
-bool
-operator==(
-	movable const &_left,
-	movable const &_right
-)
-{
-	return
-		_left.value()
-		==
-		_right.value();
-}
-
-std::ostream &
-operator<<(
-	std::ostream &_stream,
-	movable const &_obj
-)
-{
-	return
-		_stream
-		<<
-		_obj.value();
-}
-
-}
-
 TEST_CASE(
 	"container::tuple::vararg_map move",
 	"[container],[tuple]"
 )
 {
+	typedef
+	fcppt::catch_::movable<
+		int
+	>
+	movable;
+
 	CHECK(
 		fcppt::container::tuple::vararg_map(
 			std::make_tuple(

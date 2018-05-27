@@ -4,91 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
-#include <ostream>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-class movable
-{
-	FCPPT_NONCOPYABLE(
-		movable
-	);
-public:
-	explicit
-	movable(
-		std::string const &_value
-	)
-	:
-		value_(
-			_value
-		)
-	{
-	}
-
-	movable(
-		movable &&
-	) = default;
-
-	movable &
-	operator=(
-		movable &&
-	) = default;
-
-	~movable()
-	{
-	}
-
-	std::string const &
-	value() const
-	{
-		return
-			value_;
-	}
-private:
-	std::string value_;
-};
-
-bool
-operator==(
-	movable const &_left,
-	movable const &_right
-)
-{
-	return
-		_left.value()
-		==
-		_right.value();
-}
-
-std::ostream &
-operator<<(
-	std::ostream &_stream,
-	movable const &_object
-)
-{
-	return
-		_stream
-		<<
-		_object.value();
-}
-
-}
 
 TEST_CASE(
 	"optional move",
 	"[optional]"
 )
 {
+	typedef
+	fcppt::catch_::movable<
+		std::string
+	>
+	movable;
+
 	typedef
 	fcppt::optional::object<
 		movable

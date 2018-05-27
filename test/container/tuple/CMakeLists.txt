@@ -22,4 +22,6 @@ add_fcppt_container_tuple_test(
 
 add_fcppt_container_tuple_test(
 	vararg_map
+	LINK_LIBS
+		fcppt_catch_interface
 )

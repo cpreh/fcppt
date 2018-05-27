@@ -14,6 +14,8 @@ add_fcppt_container_array_test(
 
 add_fcppt_container_array_test(
 	init
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_array_test(
@@ -22,6 +24,8 @@ add_fcppt_container_array_test(
 
 add_fcppt_container_array_test(
 	init_move
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_array_test(

@@ -4,84 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/array/init_move.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <catch.hpp>
-#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-class movable
-{
-	FCPPT_NONCOPYABLE(
-		movable
-	);
-public:
-	explicit
-	movable(
-		int const _value
-	)
-	:
-		value_{
-			_value
-		}
-	{
-	}
-
-	~movable()
-	{
-	}
-
-	movable(
-		movable &&
-	) = default;
-
-	int
-	value() const
-	{
-		return
-			value_;
-	}
-private:
-	int value_;
-};
-
-bool
-operator==(
-	movable const &_left,
-	movable const &_right
-)
-{
-	return
-		_left.value()
-		==
-		_right.value();
-}
-
-std::ostream &
-operator<<(
-	std::ostream &_stream,
-	movable const &_obj
-)
-{
-	return
-		_stream
-		<<
-		_obj.value();
-}
-
-}
 
 TEST_CASE(
 	"array::init_move",
 	"[container],[array]"
 )
 {
+	typedef
+	fcppt::catch_::movable<
+		int
+	>
+	movable;
+
 	typedef
 	std::array<
 		movable,
@@ -109,6 +50,5 @@ TEST_CASE(
 				42
 			}
 		}}
-
 	);
 }
