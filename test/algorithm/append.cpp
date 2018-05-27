@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/append.hpp>
+#include <fcppt/assign/make_container.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <vector>
@@ -35,14 +35,12 @@ TEST_CASE(
 		}
 	);
 
-	int_vector const result{
-		1,2,3,4,5,6
-	};
-
 	CHECK(
 		ints
 		==
-		result
+		int_vector{
+			1,2,3,4,5,6
+		}
 	);
 }
 
@@ -52,84 +50,65 @@ TEST_CASE(
 )
 {
 	typedef
-	std::vector<
-		fcppt::unique_ptr<
-			int
-		>
+	fcppt::catch_::movable<
+		int
 	>
-	int_ptr_vector;
+	movable;
 
-	int_ptr_vector ints;
+	typedef
+	std::vector<
+		movable
+	>
+	movable_vector;
 
-	ints.push_back(
-		fcppt::make_unique_ptr<
-			int
+	movable_vector ints(
+		fcppt::assign::make_container<
+			movable_vector
 		>(
-			1
-		)
-	);
-
-	ints.push_back(
-		fcppt::make_unique_ptr<
-			int
-		>(
-			2
+			movable{
+				1
+			},
+			movable{
+				2
+			}
 		)
 	);
 
 	fcppt::algorithm::append(
 		ints,
 		[]{
-			int_ptr_vector new_ints;
-
-			new_ints.push_back(
-				fcppt::make_unique_ptr<
-					int
-				>(
-					3
-				)
-			);
-
-			new_ints.push_back(
-				fcppt::make_unique_ptr<
-					int
-				>(
-					4
-				)
-			);
-
 			return
-				new_ints;
+				fcppt::assign::make_container<
+					movable_vector
+				>(
+					movable{
+						3
+					},
+					movable{
+						4
+					}
+				);
 		}()
 	);
 
-	REQUIRE(
-		ints.size()
-		==
-		4u
-	);
-
 	CHECK(
-		*ints[0]
+		ints
 		==
-		1
-	);
-
-	CHECK(
-		*ints[1]
-		==
-		2
-	);
-
-	CHECK(
-		*ints[2]
-		==
-		3
-	);
-
-	CHECK(
-		*ints[3]
-		==
-		4
+		fcppt::assign::make_container<
+			movable_vector
+		>(
+			movable{
+				1
+			},
+			movable{
+				2
+			},
+			movable{
+				3
+			},
+			movable{
+				4
+			}
+		)
 	);
 }

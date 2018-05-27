@@ -14,6 +14,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	append
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(
