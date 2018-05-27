@@ -8,7 +8,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -49,7 +49,7 @@ TEST_CASE(
 			strong_int_unique_ptr_vector
 		>(
 			fcppt::container::make_move_range(
-				fcppt::assign::make_container<
+				fcppt::container::make<
 					int_unique_ptr_vector
 				>(
 					fcppt::make_unique_ptr<

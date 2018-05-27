@@ -7,7 +7,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/join.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <map>
@@ -75,7 +75,7 @@ TEST_CASE(
 
 	int_unique_ptr_vector const result(
 		fcppt::algorithm::join(
-			fcppt::assign::make_container<
+			fcppt::container::make<
 				int_unique_ptr_vector
 			>(
 				fcppt::make_unique_ptr<
@@ -89,7 +89,7 @@ TEST_CASE(
 					2
 				)
 			),
-			fcppt::assign::make_container<
+			fcppt::container::make<
 				int_unique_ptr_vector
 			>(
 				fcppt::make_unique_ptr<
@@ -103,7 +103,7 @@ TEST_CASE(
 					4
 				)
 			),
-			fcppt::assign::make_container<
+			fcppt::container::make<
 				int_unique_ptr_vector
 			>(
 				fcppt::make_unique_ptr<

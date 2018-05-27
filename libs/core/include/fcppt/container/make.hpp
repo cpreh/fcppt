@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSIGN_MAKE_CONTAINER_HPP_INCLUDED
-#define FCPPT_ASSIGN_MAKE_CONTAINER_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_MAKE_HPP_INCLUDED
+#define FCPPT_CONTAINER_MAKE_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/algorithm/map.hpp>
@@ -18,13 +18,13 @@
 
 namespace fcppt
 {
-namespace assign
+namespace container
 {
 
 /**
 \brief Creates a container from variadic arguments by moving.
 
-\ingroup fcpptassign
+\ingroup fcpptcontainer
 */
 template<
 	typename Container,
@@ -32,7 +32,7 @@ template<
 >
 inline
 Container
-make_container(
+make(
 	Args &&... _args
 )
 {

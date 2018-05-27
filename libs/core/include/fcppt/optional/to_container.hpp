@@ -8,7 +8,7 @@
 #define FCPPT_OPTIONAL_TO_CONTAINER_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
@@ -34,8 +34,6 @@ If \a _source holds <code>x</code>, then <code>Container{x}</code> is returned.
 Otherwise the empty container is returned.
 
 \a Container and \a Optional must have the same value types.
-
-\tparam Container Must be constructible using \link fcppt::assign::make_container\endlink.
 */
 template<
 	typename Container,
@@ -83,7 +81,7 @@ to_container(
 			)
 			{
 				return
-					fcppt::assign::make_container<
+					fcppt::container::make<
 						Container
 					>(
 						fcppt::move_if_rvalue<

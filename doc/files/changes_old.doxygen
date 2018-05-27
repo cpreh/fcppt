@@ -681,7 +681,7 @@ longer supported.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptassign
+<li>fcpptassign
 	<ul>
 
 	<li>Added fcppt::assign::make_container_opt.</li>
@@ -932,7 +932,7 @@ longer supported.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptassign
+<li>fcpptassign
 	<ul>
 
 	<li>fcppt.assign is now move only. Use initializer lists for all other

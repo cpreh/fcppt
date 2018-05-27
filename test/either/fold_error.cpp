@@ -8,7 +8,7 @@
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/fold_error.hpp>
@@ -68,7 +68,7 @@ TEST_CASE(
 
 	CHECK(
 		fcppt::either::fold_error(
-			fcppt::assign::make_container<
+			fcppt::container::make<
 				std::vector<
 					fcppt::unique_ptr<
 						int

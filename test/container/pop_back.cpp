@@ -6,7 +6,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/container/pop_back.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
@@ -81,7 +81,7 @@ TEST_CASE(
 	int_ptr_vector;
 
 	int_ptr_vector vector(
-		fcppt::assign::make_container<
+		fcppt::container::make<
 			int_ptr_vector
 		>(
 			fcppt::make_unique_ptr<

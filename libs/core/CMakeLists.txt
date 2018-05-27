@@ -102,7 +102,6 @@ set(
 	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp
-	libs/core/include/fcppt/assign/make_container.hpp
 	libs/core/include/fcppt/backtrace/current_stack_frame.hpp
 	libs/core/include/fcppt/backtrace/print_current_stack_frame.hpp
 	libs/core/include/fcppt/backtrace/stack_frame.hpp
@@ -365,6 +364,7 @@ set(
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
 	libs/core/include/fcppt/container/insert.hpp
+	libs/core/include/fcppt/container/make.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/map_values_copy.hpp
 	libs/core/include/fcppt/container/map_values_ref.hpp

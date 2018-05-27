@@ -50,7 +50,6 @@ set(
 	doc/files/main.doxygen
 	doc/files/modules/algorithm.doxygen
 	doc/files/modules/assert.doxygen
-	doc/files/modules/assign.doxygen
 	doc/files/modules/bit.doxygen
 	doc/files/modules/boost.doxygen
 	doc/files/modules/brigand.doxygen
@@ -208,6 +207,12 @@ set(
 	libs/boost/include/fcppt/type_iso/boost_units.hpp
 	libs/catch/include/fcppt/catch/defer.hpp
 	libs/catch/include/fcppt/catch/either.hpp
+	libs/catch/include/fcppt/catch/movable.hpp
+	libs/catch/include/fcppt/catch/movable_comparison.hpp
+	libs/catch/include/fcppt/catch/movable_decl.hpp
+	libs/catch/include/fcppt/catch/movable_fwd.hpp
+	libs/catch/include/fcppt/catch/movable_impl.hpp
+	libs/catch/include/fcppt/catch/movable_output.hpp
 	libs/catch/include/fcppt/catch/variant.hpp
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/add_reference.hpp
@@ -308,7 +313,6 @@ set(
 	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp
-	libs/core/include/fcppt/assign/make_container.hpp
 	libs/core/include/fcppt/backtrace/current_stack_frame.hpp
 	libs/core/include/fcppt/backtrace/print_current_stack_frame.hpp
 	libs/core/include/fcppt/backtrace/stack_frame.hpp
@@ -571,6 +575,7 @@ set(
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
 	libs/core/include/fcppt/container/insert.hpp
+	libs/core/include/fcppt/container/make.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/map_values_copy.hpp
 	libs/core/include/fcppt/container/map_values_ref.hpp

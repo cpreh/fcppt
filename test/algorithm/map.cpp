@@ -13,7 +13,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/list.hpp>
 #include <array>
@@ -56,7 +56,7 @@ TEST_CASE(
 		fcppt::algorithm::map<
 			int_vector
 		>(
-			fcppt::assign::make_container<
+			fcppt::container::make<
 				int_unique_ptr_vector
 			>(
 				fcppt::make_unique_ptr<

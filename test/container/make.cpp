@@ -6,7 +6,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <vector>
@@ -14,7 +14,7 @@
 
 
 TEST_CASE(
-	"assign::make_container",
+	"container::make",
 	"[assign]"
 )
 {
@@ -27,7 +27,7 @@ TEST_CASE(
 	sequence;
 
 	sequence const result(
-		fcppt::assign::make_container<
+		fcppt::container::make<
 			sequence
 		>(
 			fcppt::make_unique_ptr<

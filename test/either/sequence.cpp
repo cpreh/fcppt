@@ -6,7 +6,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -168,7 +168,7 @@ TEST_CASE(
 		fcppt::either::sequence<
 			int_vector
 		>(
-			fcppt::assign::make_container<
+			fcppt::container::make<
 				either_int_vector
 			>(
 				either_int{

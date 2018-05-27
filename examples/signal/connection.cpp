@@ -5,7 +5,7 @@
 
 
 //! [signal_connection]
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/auto_connection_container.hpp>
 #include <fcppt/signal/object.hpp>
@@ -56,9 +56,9 @@ main()
 
 	void_signal signal;
 
-	// use fcppt::assign::make_container to pass a container of connections
+	// use fcppt::container::make to pass a container of connections
 	fcppt::signal::auto_connection_container const connections(
-		fcppt::assign::make_container<
+		fcppt::container::make<
 			fcppt::signal::auto_connection_container
 		>(
 			signal.connect(

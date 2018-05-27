@@ -5,7 +5,7 @@
 
 
 #include <fcppt/algorithm/append.hpp>
-#include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -62,7 +62,7 @@ TEST_CASE(
 	movable_vector;
 
 	movable_vector ints(
-		fcppt::assign::make_container<
+		fcppt::container::make<
 			movable_vector
 		>(
 			movable{
@@ -78,7 +78,7 @@ TEST_CASE(
 		ints,
 		[]{
 			return
-				fcppt::assign::make_container<
+				fcppt::container::make<
 					movable_vector
 				>(
 					movable{
@@ -94,7 +94,7 @@ TEST_CASE(
 	CHECK(
 		ints
 		==
-		fcppt::assign::make_container<
+		fcppt::container::make<
 			movable_vector
 		>(
 			movable{

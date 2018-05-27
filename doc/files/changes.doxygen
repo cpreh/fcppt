@@ -23,6 +23,12 @@ Catch2 is now required.
 	</ul>
 </li>
 
+<li>fcpptassign
+	<ul>
+	<li>Moved <code>fcppt::assign::make_container</code> to \link fcppt::container::make\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainerarray
 	<ul>
 	<li>Allow rvalues in \link fcppt::container::array::push_back\endlink.</li>
@@ -1374,7 +1380,7 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptassign
+<li>fcpptassign
 	<ul>
 	<li>Removed <code>fcppt::assign::make_container_opt</code>.</li>
 	<li>Removed <code>fcppt::assign::make_map</code>.</li>
