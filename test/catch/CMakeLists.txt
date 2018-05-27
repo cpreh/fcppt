@@ -9,7 +9,27 @@ function(
 endfunction()
 
 add_fcppt_catch_test(
+	defer
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_catch_test(
+	either
+	LINK_LIBS
+		fcppt_catch_interface
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_catch_test(
 	movable
 	LINK_LIBS
 		fcppt_catch_interface
+)
+
+add_fcppt_catch_test(
+	variant
+	LINK_LIBS
+		fcppt_catch_interface
+		${fcppt_core_TARGET}
 )
