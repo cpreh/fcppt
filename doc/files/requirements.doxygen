@@ -101,7 +101,7 @@ support library. <code>ENABLE_BOOST</code> is required for this.</li>
 <li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
 This is probably something you want to turn off when you install fcppt only.</li>
 <li><code>ENABLE_TEST</code>: Whether to build fcppt's tests.
-Catch2 is required for this.</li>
+Catch2 and <code>ENABLE_CATCH</code> are required for this.</li>
 <li><code>ENABLE_DOC</code>: Whether to build fcppt's documentation.
 <code>Doxygen</code> is required for this. Take a look at CMake's <code>FindDoxygen.cmake</code>
 on how to specify which Doxygen installation to use.</li>

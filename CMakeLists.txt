@@ -589,6 +589,15 @@ endif()
 if(
 	ENABLE_TEST
 )
+	if(
+		NOT ENABLE_CATCH
+	)
+		message(
+			FATAL_ERROR
+			"ENABLE_CATCH must be on if ENABLE_TEST is"
+		)
+	endif()
+
 	fcppt_utils_setup_tests()
 
 	enable_testing()
