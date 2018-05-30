@@ -41,4 +41,20 @@ TEST_CASE(
 			10
 		)
 	);
+
+	{
+		int const value{
+			10
+		};
+
+		CHECK(
+			movable{
+				value
+			}
+			==
+			movable{
+				10
+			}
+		);
+	}
 }

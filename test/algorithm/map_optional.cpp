@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map_optional.hpp>
+#include <fcppt/catch/movable.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -26,20 +26,20 @@ TEST_CASE(
 	int_vector;
 
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	std::vector<
-		int_unique_ptr
+		int_movable
 	>
-	int_unique_ptr_vector;
+	int_movable_vector;
 
-	int_unique_ptr_vector const result(
+	CHECK(
 		fcppt::algorithm::map_optional<
-			int_unique_ptr_vector
+			int_movable_vector
 		>(
 			int_vector{
 				1,
@@ -52,38 +52,32 @@ TEST_CASE(
 			{
 				typedef
 				fcppt::optional::object<
-					int_unique_ptr
+					int_movable
 				>
-				optional_ptr;
+				optional_int_movable;
 
 				return
 					_value
 					==
 					1
 					?
-						optional_ptr(
-							fcppt::make_unique_ptr<
-								int
-							>(
+						optional_int_movable{
+							int_movable{
 								_value
-							)
-						)
+							}
+						}
 					:
-						optional_ptr()
+						optional_int_movable{}
 					;
 			}
 		)
-	);
-
-	REQUIRE(
-		result.size()
 		==
-		1u
-	);
-
-	CHECK(
-		*result[0]
-		==
-		1
+		fcppt::container::make<
+			int_movable_vector
+		>(
+			int_movable{
+				1
+			}
+		)
 	);
 }

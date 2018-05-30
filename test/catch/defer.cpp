@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/catch/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>

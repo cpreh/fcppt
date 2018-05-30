@@ -10,10 +10,14 @@ endfunction()
 
 add_fcppt_container_tuple_test(
 	map
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_tuple_test(
 	push_back
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_tuple_test(

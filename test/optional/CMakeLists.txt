@@ -10,6 +10,8 @@ endfunction()
 
 add_fcppt_optional_test(
 	alternative
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(
@@ -30,6 +32,8 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	cat
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(
@@ -50,10 +54,14 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	filter
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(
 	from
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(
@@ -62,6 +70,8 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	join
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(
@@ -112,10 +122,14 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	sequence
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(
 	to_container
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_optional_test(

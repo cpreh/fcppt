@@ -5,10 +5,10 @@
 
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/tuple/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -72,47 +72,43 @@ TEST_CASE(
 	"[container],[tuple]"
 )
 {
+	typedef
+	fcppt::catch_::movable<
+		int
+	>
+	int_movable;
+
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		fcppt::unique_ptr<
-			int
-		>,
-		strong_unique_ptr
+		int_movable,
+		strong_int_movable
 	);
 
-	std::tuple<
-		strong_unique_ptr
-	> const result{
+	CHECK(
 		fcppt::container::tuple::map(
 			std::make_tuple(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					1
-				)
+				}
 			),
 			[](
-				fcppt::unique_ptr<
-					int
-				> &&_ptr
+				int_movable &&_value
 			)
 			{
 				return
-					strong_unique_ptr{
+					strong_int_movable{
 						std::move(
-							_ptr
+							_value
 						)
 					};
 			}
 		)
-	};
-
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
-		).get()
 		==
-		1
+		std::make_tuple(
+			strong_int_movable{
+				int_movable{
+					1
+				}
+			}
+		)
 	);
 }

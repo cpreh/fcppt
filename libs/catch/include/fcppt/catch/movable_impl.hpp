@@ -9,6 +9,7 @@
 
 #include <fcppt/catch/movable_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,8 +20,24 @@ template<
 fcppt::catch_::movable<
 	Type
 >::movable(
+	Type const &_value
+)
+:
+	value_{
+		_value
+	}
+{
+}
+
+template<
+	typename Type
+>
+fcppt::catch_::movable<
+	Type
+>::movable(
 	Type &&_value
 )
+
 :
 	value_{
 		std::move(
@@ -36,9 +53,21 @@ template<
 fcppt::catch_::movable<
 	Type
 >::movable(
-	movable &&
+	movable &&_other
 )
-= default;
+noexcept(
+	std::is_nothrow_move_constructible<
+		Type
+	>::value
+)
+:
+	value_{
+		std::move(
+			_other.value()
+		)
+	}
+{
+}
 
 template<
 	typename Type
@@ -49,9 +78,22 @@ fcppt::catch_::movable<
 fcppt::catch_::movable<
 	Type
 >::operator=(
-	movable &&
+	movable &&_other
 )
-= default;
+noexcept(
+	std::is_nothrow_move_assignable<
+		Type
+	>::value
+)
+{
+	value_ =
+		std::move(
+			_other.value()
+		);
+
+	return
+		*this;
+}
 
 template<
 	typename Type

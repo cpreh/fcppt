@@ -4,8 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/filter.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -77,45 +76,39 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	fcppt::optional::object<
-		int_unique_ptr
+		int_movable
 	>
-	optional_int_unique_ptr;
+	optional_int_movable;
 
-	optional_int_unique_ptr const result(
+	CHECK(
 		fcppt::optional::filter(
-			optional_int_unique_ptr(
-				fcppt::make_unique_ptr<
-					int
-				>(
+			optional_int_movable(
+				int_movable{
 					42
-				)
+				}
 			),
 			[](
-				int_unique_ptr const &_value
+				int_movable const &_value
 			)
 			{
 				return
-					*_value
+					_value.value()
 					==
 					42;
 			}
 		)
-	);
-
-	REQUIRE(
-		result.has_value()
-	);
-
-	CHECK(
-		*result.get_unsafe()
 		==
-		42
+		optional_int_movable{
+			int_movable{
+				42
+			}
+		}
 	);
 }

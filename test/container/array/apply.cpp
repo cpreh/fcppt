@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/array/apply.hpp>
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -71,28 +70,16 @@ TEST_CASE(
 )
 {
 	typedef
-	std::array<
-		std::pair<
-			fcppt::unique_ptr<
-				int
-			>,
-			fcppt::unique_ptr<
-				int
-			>
-		>,
-		1
+	fcppt::catch_::movable<
+		int
 	>
-	result_array;
+	int_movable;
 
-	result_array const result(
+	CHECK(
 		fcppt::container::array::apply(
 			[](
-				fcppt::unique_ptr<
-					int
-				> &&_arg1,
-				fcppt::unique_ptr<
-					int
-				> &&_arg2
+				int_movable &&_arg1,
+				int_movable &&_arg2
 			)
 			{
 				return
@@ -106,40 +93,33 @@ TEST_CASE(
 					);
 			},
 			fcppt::container::array::make(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					1
-				)
+				}
 			),
 			fcppt::container::array::make(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					2
-				)
+				}
 			)
 		)
-	);
-
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
-		).first
 		==
-		1
-	);
-
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
-		).second
-		==
-		2
+		std::array<
+			std::pair<
+				int_movable,
+				int_movable
+			>,
+			1
+		>{{
+			std::make_pair(
+				int_movable{
+					1
+				},
+				int_movable{
+					2
+				}
+			)
+		}}
 	);
 }
 

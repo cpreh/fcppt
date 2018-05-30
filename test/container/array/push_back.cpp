@@ -4,9 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
-#include <fcppt/container/array/make.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/array/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -50,48 +48,36 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
-	std::array<
-		int_unique_ptr,
-		2
-	> const result(
+	CHECK(
 		fcppt::container::array::push_back(
-			fcppt::container::array::make(
-				fcppt::make_unique_ptr<
-					int
-				>(
+			std::array<
+				int_movable,
+				1
+			>{{
+				int_movable{
 					1
-				)
-			),
-			fcppt::make_unique_ptr<
-				int
-			>(
+				}
+			}},
+			int_movable{
 				2
-			)
-		)
-	);
-
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
+			}
 		)
 		==
-		1
-	);
-
-	CHECK(
-		*std::get<
-			1
-		>(
-			result
-		)
-		==
-		2
+		std::array<
+			int_movable,
+			2
+		>{{
+			int_movable{
+				1
+			},
+			int_movable{
+				2
+			}
+		}}
 	);
 }

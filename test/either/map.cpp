@@ -5,9 +5,9 @@
 
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/object.hpp>
@@ -87,65 +87,56 @@ TEST_CASE(
 )
 {
 	typedef
+	fcppt::catch_::movable<
+		int
+	>
+	int_movable;
+
+	typedef
 	fcppt::either::object<
 		std::string,
-		fcppt::unique_ptr<
-			int
-		>
+		int_movable
 	>
 	either_int;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		fcppt::unique_ptr<
-			int
-		>,
-		strong_int
+		int_movable,
+		strong_int_movable
 	);
 
 	auto const map_function(
 		[](
-			fcppt::unique_ptr<
-				int
-			> &&_ptr
+			int_movable &&_value
 		)
 		{
 			return
-				strong_int{
+				strong_int_movable{
 					std::move(
-						_ptr
+						_value
 					)
 				};
 		}
 	);
 
-	fcppt::either::match(
+	CHECK(
 		fcppt::either::map(
-			either_int(
-				fcppt::make_unique_ptr<
-					int
-				>(
+			either_int{
+				int_movable{
 					20
-				)
-			),
+				}
+			},
 			map_function
-		),
-		[](
-			std::string const &
 		)
-		{
-			CHECK(
-				false
-			);
-		},
-		[](
-			strong_int const &_value
-		)
-		{
-			CHECK(
-				*_value.get()
-				==
-				20
-			);
+		==
+		fcppt::either::object<
+			std::string,
+			strong_int_movable
+		>{
+			strong_int_movable{
+				int_movable{
+					20
+				}
+			}
 		}
 	);
 }

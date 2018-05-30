@@ -5,11 +5,9 @@
 
 
 #include <fcppt/const.hpp>
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/alternative.hpp>
 #include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -95,45 +93,34 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	fcppt::optional::object<
-		int_unique_ptr
+		int_movable
 	>
-	optional_int_unique_ptr;
+	optional_int_movable;
 
-	fcppt::optional::maybe(
+	CHECK(
 		fcppt::optional::alternative(
-			optional_int_unique_ptr(
-				fcppt::make_unique_ptr<
-					int
-				>(
+			optional_int_movable{
+				int_movable{
 					42
-				)
-			),
+				}
+			},
 			[]{
 				return
-					optional_int_unique_ptr();
+					optional_int_movable{};
 			}
-		),
-		[]{
-			CHECK(
-				false
-			);
-		},
-		[](
-			int_unique_ptr const &_ptr
 		)
-		{
-			CHECK(
-				*_ptr
-				==
+		==
+		optional_int_movable{
+			int_movable{
 				42
-			);
+			}
 		}
 	);
 }

@@ -78,6 +78,8 @@ add_fcppt_container_test(
 
 add_fcppt_container_test(
 	move_range
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_test(
@@ -86,10 +88,14 @@ add_fcppt_container_test(
 
 add_fcppt_container_test(
 	pop_back
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_test(
 	pop_front
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_test(

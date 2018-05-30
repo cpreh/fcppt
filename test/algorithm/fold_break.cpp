@@ -5,12 +5,10 @@
 
 
 #include <fcppt/loop.hpp>
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
-#include <functional>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -78,35 +76,33 @@ TEST_CASE(
 	int_vector;
 
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	CHECK(
-		*fcppt::algorithm::fold_break(
+		fcppt::algorithm::fold_break(
 			int_vector{
 				1,
 				2,
 				3,
 				4
 			},
-			fcppt::make_unique_ptr<
-				int
-			>(
+			int_movable{
 				0
-			),
+			},
 			[](
 				int const _element,
-				int_unique_ptr &&_sum
+				int_movable &&_sum
 			)
 			{
-				*_sum
+				_sum.value()
 					+=
 					_element;
 
 				fcppt::loop const loop{
-					*_sum
+					_sum.value()
 					<=
 					5
 					?
@@ -123,7 +119,7 @@ TEST_CASE(
 						)
 					);
 			}
-		)
+		).value()
 		==
 		6
 	);

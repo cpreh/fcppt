@@ -4,8 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/tuple/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -53,50 +52,30 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
-	std::tuple<
-		int_unique_ptr,
-		int_unique_ptr
-	> const result(
+	CHECK(
 		fcppt::container::tuple::push_back(
-			std::tuple<
-				int_unique_ptr
-			>{
-				fcppt::make_unique_ptr<
-					int
-				>(
+			std::make_tuple(
+				int_movable{
 					1
-				)
-			},
-			fcppt::make_unique_ptr<
-				int
-			>(
+				}
+			),
+			int_movable{
 				2
-			)
-		)
-	);
-
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
+			}
 		)
 		==
-		1
-	);
-
-	CHECK(
-		*std::get<
-			1
-		>(
-			result
+		std::make_tuple(
+			int_movable{
+				1
+			},
+			int_movable{
+				2
+			}
 		)
-		==
-		2
 	);
 }

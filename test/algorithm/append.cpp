@@ -5,8 +5,8 @@
 
 
 #include <fcppt/algorithm/append.hpp>
-#include <fcppt/container/make.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <vector>

@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/join.hpp>
+#include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -62,40 +62,32 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::optional::object<
-		fcppt::unique_ptr<
-			int
-		>
+	fcppt::catch_::movable<
+		int
 	>
-	optional_ptr;
+	int_movable;
 
 	typedef
 	fcppt::optional::object<
-		optional_ptr
+		int_movable
 	>
-	optional_optional_ptr;
-
-	optional_ptr const result{
-		fcppt::optional::join(
-			optional_optional_ptr(
-				optional_ptr(
-					fcppt::make_unique_ptr<
-						int
-					>(
-						42
-					)
-				)
-			)
-		)
-	};
-
-	REQUIRE(
-		result.has_value()
-	);
+	optional_int_movable;
 
 	CHECK(
-		*result.get_unsafe()
+		fcppt::optional::join(
+			fcppt::optional::make(
+				optional_int_movable{
+					int_movable{
+						42
+					}
+				}
+			)
+		)
 		==
-		42
+		optional_int_movable{
+			int_movable{
+				42
+			}
+		}
 	);
 }

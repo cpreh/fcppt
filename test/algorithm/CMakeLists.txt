@@ -54,6 +54,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	fold_break
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(
@@ -66,6 +68,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	join
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(
@@ -85,11 +89,14 @@ add_fcppt_algorithm_test(
 add_fcppt_algorithm_test(
 	map
 	LINK_LIBS
+		fcppt_catch_interface
 		Brigand
 )
 
 add_fcppt_algorithm_test(
 	map_concat
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(
@@ -102,6 +109,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	map_optional
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_algorithm_test(

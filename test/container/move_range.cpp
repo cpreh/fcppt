@@ -5,9 +5,9 @@
 
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -22,77 +22,70 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	std::vector<
-		int_unique_ptr
+		int_movable
 	>
-	int_unique_ptr_vector;
+	int_movable_vector;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		int_unique_ptr,
-		strong_int_unique_ptr
+		int_movable,
+		strong_int_movable
 	);
 
 	typedef
 	std::vector<
-		strong_int_unique_ptr
+		strong_int_movable
 	>
-	strong_int_unique_ptr_vector;
+	strong_int_movable_vector;
 
-	strong_int_unique_ptr_vector const result(
+	CHECK(
 		fcppt::algorithm::map<
-			strong_int_unique_ptr_vector
+			strong_int_movable_vector
 		>(
 			fcppt::container::make_move_range(
 				fcppt::container::make<
-					int_unique_ptr_vector
+					int_movable_vector
 				>(
-					fcppt::make_unique_ptr<
-						int
-					>(
+					int_movable{
 						0
-					),
-					fcppt::make_unique_ptr<
-						int
-					>(
+					},
+					int_movable{
 						1
-					)
+					}
 				)
 			),
 			[](
-				int_unique_ptr &&_ptr
+				int_movable &&_value
 			)
 			{
 				return
-					strong_int_unique_ptr(
+					strong_int_movable{
 						std::move(
-							_ptr
+							_value
 						)
-					);
+					};
 			}
 		)
-	);
-
-	REQUIRE(
-		result.size()
 		==
-		2u
-	);
-
-	CHECK(
-		*result[0].get()
-		==
-		0
-	);
-
-	CHECK(
-		*result[1].get()
-		==
-		1
+		fcppt::container::make<
+			strong_int_movable_vector
+		>(
+			strong_int_movable{
+				int_movable{
+					0
+				}
+			},
+			strong_int_movable{
+				int_movable{
+					1
+				}
+			}
+		)
 	);
 }

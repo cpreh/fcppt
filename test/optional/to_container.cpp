@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/movable.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/to_container.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -62,64 +62,50 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	fcppt::optional::object<
-		int_unique_ptr
+		int_movable
 	>
-	optional_int;
+	optional_int_movable;
 
 	typedef
 	std::vector<
-		int_unique_ptr
+		int_movable
 	>
-	int_vector;
+	int_movable_vector;
 
-	SECTION(
-		"success"
-	)
-	{
-		int_vector const vec1{
-			fcppt::optional::to_container<
-				int_vector
-			>(
-				optional_int{
-					fcppt::make_unique_ptr<
-						int
-					>(
-						42
-					)
+	CHECK(
+		fcppt::optional::to_container<
+			int_movable_vector
+		>(
+			optional_int_movable{
+				int_movable{
+					42
 				}
-			)
-		};
+			}
+		)
+		==
+		fcppt::container::make<
+			int_movable_vector
+		>(
+			int_movable{
+				42
+			}
+		)
+	);
 
-		REQUIRE(
-			vec1.size()
-			==
-			1u
-		);
-
-		CHECK(
-			*vec1[0]
-			==
-			42
-		);
-	}
-
-	SECTION(
-		"failure"
-	)
-	{
-		CHECK(
-			fcppt::optional::to_container<
-				int_vector
-			>(
-				optional_int{}
-			).empty()
-		);
-	}
+	CHECK(
+		fcppt::optional::to_container<
+			int_movable_vector
+		>(
+			optional_int_movable{}
+		)
+		==
+		int_movable_vector{}
+	);
 }

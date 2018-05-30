@@ -55,6 +55,8 @@ add_fcppt_either_test(
 
 add_fcppt_either_test(
 	map
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_either_test(
@@ -71,6 +73,8 @@ add_fcppt_either_test(
 
 add_fcppt_either_test(
 	sequence
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_either_test(

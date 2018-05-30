@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/join.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -62,104 +61,73 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	std::vector<
-		int_unique_ptr
+		int_movable
 	>
-	int_unique_ptr_vector;
+	int_movable_vector;
 
-	int_unique_ptr_vector const result(
+	CHECK(
 		fcppt::algorithm::join(
 			fcppt::container::make<
-				int_unique_ptr_vector
+				int_movable_vector
 			>(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					1
-				),
-				fcppt::make_unique_ptr<
-					int
-				>(
+				},
+				int_movable{
 					2
-				)
+				}
 			),
 			fcppt::container::make<
-				int_unique_ptr_vector
+				int_movable_vector
 			>(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					3
-				),
-				fcppt::make_unique_ptr<
-					int
-				>(
+				},
+				int_movable{
 					4
-				)
+				}
 			),
 			fcppt::container::make<
-				int_unique_ptr_vector
+				int_movable_vector
 			>(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					5
-				),
-				fcppt::make_unique_ptr<
-					int
-				>(
+				},
+				int_movable{
 					6
-				)
+				}
 			)
 		)
-	);
-
-	REQUIRE(
-		result.size()
 		==
-		6u
-	);
-
-	CHECK(
-		*result[0]
-		==
-		1
-	);
-
-	CHECK(
-		*result[1]
-		==
-		2
-	);
-
-	CHECK(
-		*result[2]
-		==
-		3
-	);
-
-	CHECK(
-		*result[3]
-		==
-		4
-	);
-
-	CHECK(
-		*result[4]
-		==
-		5
-	);
-
-	CHECK(
-		*result[5]
-		==
-		6
+		fcppt::container::make<
+			int_movable_vector
+		>(
+			int_movable{
+				1
+			},
+			int_movable{
+				2
+			},
+			int_movable{
+				3
+			},
+			int_movable{
+				4
+			},
+			int_movable{
+				5
+			},
+			int_movable{
+				6
+			}
+		)
 	);
 }
 

@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map_concat.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -18,22 +17,22 @@ namespace
 {
 
 typedef
-fcppt::unique_ptr<
-	int
->
-int_unique_ptr;
-
-typedef
 std::vector<
 	int
 >
 int_vector;
 
 typedef
-std::vector<
-	int_unique_ptr
+fcppt::catch_::movable<
+	int
 >
-int_unique_ptr_vector;
+int_movable;
+
+typedef
+std::vector<
+	int_movable
+>
+int_movable_vector;
 
 }
 
@@ -47,27 +46,23 @@ TEST_CASE(
 			int_vector
 		>(
 			fcppt::container::make<
-				int_unique_ptr_vector
+				int_movable_vector
 			>(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					1
-				),
-				fcppt::make_unique_ptr<
-					int
-				>(
+				},
+				int_movable{
 					2
-				)
+				}
 			),
 			[](
-				int_unique_ptr const &_value
+				int_movable const &_value
 			)
 			{
 				return
 					int_vector{
-						*_value,
-						*_value + 5
+						_value.value(),
+						_value.value() + 5
 					};
 			}
 		)
@@ -91,9 +86,9 @@ TEST_CASE(
 		2
 	};
 
-	int_unique_ptr_vector const result(
+	CHECK(
 		fcppt::algorithm::map_concat<
-			int_unique_ptr_vector
+			int_movable_vector
 		>(
 			ints,
 			[](
@@ -102,50 +97,33 @@ TEST_CASE(
 			{
 				return
 					fcppt::container::make<
-						int_unique_ptr_vector
+						int_movable_vector
 					>(
-						fcppt::make_unique_ptr<
-							int
-						>(
+						int_movable{
 							_value
-						),
-						fcppt::make_unique_ptr<
-							int
-						>(
+						},
+						int_movable{
 							_value + 5
-						)
+						}
 					);
 			}
 		)
-	);
-
-	REQUIRE(
-		result.size()
 		==
-		4u
-	);
-
-	CHECK(
-		*result[0]
-		==
-		1
-	);
-
-	CHECK(
-		*result[1]
-		==
-		6
-	);
-
-	CHECK(
-		*result[2]
-		==
-		2
-	);
-
-	CHECK(
-		*result[3]
-		==
-		7
+		fcppt::container::make<
+			int_movable_vector
+		>(
+			int_movable{
+				1
+			},
+			int_movable{
+				6
+			},
+			int_movable{
+				2
+			},
+			int_movable{
+				7
+			}
+		)
 	);
 }

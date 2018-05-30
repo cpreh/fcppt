@@ -10,6 +10,8 @@ endfunction()
 
 add_fcppt_container_array_test(
 	apply
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_array_test(
@@ -34,8 +36,12 @@ add_fcppt_container_array_test(
 
 add_fcppt_container_array_test(
 	map
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_container_array_test(
 	push_back
+	LINK_LIBS
+		fcppt_catch_interface
 )

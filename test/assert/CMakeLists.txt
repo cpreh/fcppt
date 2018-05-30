@@ -11,6 +11,7 @@ endfunction()
 add_fcppt_assert_test(
 	optional_error
 	LINK_LIBS
+		fcppt_catch_interface
 		"${fcppt_core_TARGET}"
 )
 

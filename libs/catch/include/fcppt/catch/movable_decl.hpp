@@ -9,6 +9,9 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/catch/movable_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -35,16 +38,31 @@ class movable
 public:
 	explicit
 	movable(
+		Type const &
+	);
+
+	explicit
+	movable(
 		Type &&
 	);
 
 	movable(
 		movable &&
+	)
+	noexcept(
+		std::is_nothrow_move_constructible<
+			Type
+		>::value
 	);
 
 	movable &
 	operator=(
 		movable &&
+	)
+	noexcept(
+		std::is_nothrow_move_assignable<
+			Type
+		>::value
 	);
 
 	~movable();

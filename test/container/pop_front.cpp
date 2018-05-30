@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/pop_front.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -69,48 +67,37 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_ptr;
+	int_movable;
 
 	typedef
 	std::deque<
-		int_ptr
+		int_movable
 	>
-	int_ptr_queue;
+	int_movable_queue;
 
-	int_ptr_queue queue(
+	int_movable_queue queue(
 		fcppt::container::make<
-			int_ptr_queue
+			int_movable_queue
 		>(
-			fcppt::make_unique_ptr<
-				int
-			>(
+			int_movable{
 				42
-			)
+			}
 		)
 	);
 
-	fcppt::optional::maybe(
+	CHECK(
 		fcppt::container::pop_front(
 			queue
-		),
-		[]{
-			CHECK(
-				false
-			);
-		},
-		[](
-			int_ptr &&_ptr
 		)
-		{
-			CHECK(
-				*_ptr
-				==
+		==
+		fcppt::optional::make(
+			int_movable{
 				42
-			);
-		}
+			}
+		)
 	);
 
 	CHECK(

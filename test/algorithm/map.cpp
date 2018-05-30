@@ -6,13 +6,13 @@
 
 #include <fcppt/insert_to_std_string.hpp>
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/tag_type.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/list.hpp>
@@ -28,22 +28,22 @@ namespace
 {
 
 typedef
-fcppt::unique_ptr<
-	int
->
-int_unique_ptr;
-
-typedef
 std::vector<
 	int
 >
 int_vector;
 
 typedef
-std::vector<
-	int_unique_ptr
+fcppt::catch_::movable<
+	int
 >
-int_unique_ptr_vector;
+int_movable;
+
+typedef
+std::vector<
+	int_movable
+>
+int_movable_vector;
 
 }
 
@@ -57,25 +57,21 @@ TEST_CASE(
 			int_vector
 		>(
 			fcppt::container::make<
-				int_unique_ptr_vector
+				int_movable_vector
 			>(
-				fcppt::make_unique_ptr<
-					int
-				>(
+				int_movable{
 					1
-				),
-				fcppt::make_unique_ptr<
-					int
-				>(
+				},
+				int_movable{
 					2
-				)
+				}
 			),
 			[](
-				int_unique_ptr const &_value
+				int_movable const &_value
 			)
 			{
 				return
-					*_value;
+					_value.value();
 			}
 		)
 		==
@@ -91,46 +87,35 @@ TEST_CASE(
 	"[algorithm_map]"
 )
 {
-	int_vector const ints{
-		1,
-		2
-	};
-
-	int_unique_ptr_vector const result(
+	CHECK(
 		fcppt::algorithm::map<
-			int_unique_ptr_vector
+			int_movable_vector
 		>(
-			ints,
+			int_vector{
+				1,
+				2
+			},
 			[](
 				int const _value
 			)
 			{
 				return
-					fcppt::make_unique_ptr<
-						int
-					>(
+					int_movable{
 						_value
-					);
+					};
 			}
 		)
-	);
-
-	REQUIRE(
-		result.size()
 		==
-		ints.size()
-	);
-
-	CHECK(
-		*result[0]
-		==
-		1
-	);
-
-	CHECK(
-		*result[1]
-		==
-		2
+		fcppt::container::make<
+			int_movable_vector
+		>(
+			int_movable{
+				1
+			},
+			int_movable{
+				2
+			}
+		)
 	);
 }
 
@@ -229,72 +214,57 @@ TEST_CASE(
 )
 {
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		int_unique_ptr,
-		strong_ptr
+		int_movable,
+		strong_int_movable
 	);
 
 	typedef
 	std::array<
-		int_unique_ptr,
+		strong_int_movable,
 		2
 	>
-	source_array;
+	strong_int_movable_array;
 
-	typedef
-	std::array<
-		strong_ptr,
-		2
-	>
-	dest_array;
-
-	dest_array const result(
+	CHECK(
 		fcppt::algorithm::map<
-			dest_array
+			strong_int_movable_array
 		>(
-			source_array{{
-				fcppt::make_unique_ptr<
-					int
-				>(
+			std::array<
+				int_movable,
+				2
+			>{{
+				int_movable{
 					1
-				),
-				fcppt::make_unique_ptr<
-					int
-				>(
+				},
+				int_movable{
 					2
-				)
+				}
 			}},
 			[](
-				int_unique_ptr &&_value
+				int_movable &&_value
 			)
-			-> strong_ptr
+			-> strong_int_movable
 			{
 				return
-					strong_ptr{
+					strong_int_movable{
 						std::move(
 							_value
 						)
 					};
 			}
 		)
-	);
-
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
-		).get()
 		==
-		1
-	);
-
-	CHECK(
-		*std::get<
-			1
-		>(
-			result
-		).get()
-		==
-		2
+		strong_int_movable_array{{
+			strong_int_movable{
+				int_movable{
+					1
+				}
+			},
+			strong_int_movable{
+				int_movable{
+					2
+				}
+			}
+		}}
 	);
 }
