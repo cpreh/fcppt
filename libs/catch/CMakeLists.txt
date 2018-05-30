@@ -2,6 +2,7 @@ set(
 	FCPPT_CATCH_FILES
 	libs/catch/include/fcppt/catch/defer.hpp
 	libs/catch/include/fcppt/catch/either.hpp
+	libs/catch/include/fcppt/catch/make_movable.hpp
 	libs/catch/include/fcppt/catch/movable.hpp
 	libs/catch/include/fcppt/catch/movable_comparison.hpp
 	libs/catch/include/fcppt/catch/movable_decl.hpp

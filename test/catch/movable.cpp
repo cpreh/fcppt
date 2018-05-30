@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/catch/make_movable.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
@@ -29,5 +30,15 @@ TEST_CASE(
 		movable{
 			10
 		}
+	);
+
+	CHECK(
+		movable{
+			10
+		}
+		==
+		fcppt::catch_::make_movable(
+			10
+		)
 	);
 }
