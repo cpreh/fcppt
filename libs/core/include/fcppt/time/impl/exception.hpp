@@ -7,17 +7,27 @@
 #ifndef FCPPT_TIME_IMPL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_TIME_IMPL_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
 
 inline
 fcppt::time::exception::exception(
-	fcppt::string const &s
+	fcppt::string &&_what
 )
 :
-	fcppt::exception(
+	fcppt::exception{
 		FCPPT_TEXT("time: ")
-		+ s
-	)
-{}
+		+
+		std::move(
+			_what
+		)
+	}
+{
+}
 
 #endif

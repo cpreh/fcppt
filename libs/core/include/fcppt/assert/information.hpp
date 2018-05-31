@@ -46,11 +46,11 @@ public:
 	\param message The message of the assertion
 	*/
 	information(
-		fcppt::assert_::file const &file,
+		fcppt::assert_::file &&file,
 		fcppt::assert_::line line,
-		fcppt::assert_::function const &function,
-		fcppt::assert_::condition const &condition,
-		fcppt::assert_::message const &message
+		fcppt::assert_::function &&function,
+		fcppt::assert_::condition &&condition,
+		fcppt::assert_::message &&message
 	);
 
 	/**

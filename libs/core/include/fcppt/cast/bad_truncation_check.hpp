@@ -46,7 +46,7 @@ public:
 	\param dest The destination type information
 	*/
 	bad_truncation_check(
-		fcppt::string const &source_value,
+		fcppt::string &&source_value,
 		std::type_index const &source,
 		std::type_index const &dest
 	);

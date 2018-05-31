@@ -32,7 +32,9 @@ TEST_CASE(
 		){
 			return
 				fcppt::exception(
-					_error
+					fcppt::string(
+						_error
+					)
 				);
 		}
 	);

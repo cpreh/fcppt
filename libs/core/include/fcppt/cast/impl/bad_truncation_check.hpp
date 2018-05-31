@@ -12,12 +12,13 @@
 #include <fcppt/type_name_from_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
 inline
 fcppt::cast::bad_truncation_check::bad_truncation_check(
-	fcppt::string const &_source_value,
+	fcppt::string &&_source_value,
 	std::type_index const &_source,
 	std::type_index const &_destination
 )
@@ -25,7 +26,9 @@ fcppt::cast::bad_truncation_check::bad_truncation_check(
 	fcppt::exception(
 		FCPPT_TEXT("Invalid truncation_check_cast from ")
 		+
-		_source_value
+		std::move(
+			_source_value
+		)
 		+
 		FCPPT_TEXT(" of type \"")
 		+

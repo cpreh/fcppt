@@ -7,14 +7,27 @@
 #ifndef FCPPT_VARIANT_IMPL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_VARIANT_IMPL_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
+
 inline
 fcppt::variant::exception::exception(
-	fcppt::string const &_string
+	fcppt::string &&_string
 )
 :
-	fcppt::exception(
-		_string
-	)
-{}
+	fcppt::exception{
+		FCPPT_TEXT("variant: ")
+		+
+		std::move(
+			_string
+		)
+	}
+{
+}
 
 #endif

@@ -15,54 +15,60 @@
 
 inline
 fcppt::exception::exception(
-	fcppt::string const &_string
+	fcppt::string &&_string
 )
 :
 	string_(
-		_string
+		std::move(
+			_string
+		)
 	)
 {
 }
 
 inline
 fcppt::exception::exception(
-	exception const &_exception
+	exception const &
 )
-:
-	std::exception(),
-	string_(
-		_exception.string_
-	)
-{
-}
+= default;
+
+inline
+fcppt::exception::exception(
+	exception &&
+)
+= default;
 
 inline
 fcppt::exception &
 fcppt::exception::operator=(
-	fcppt::exception const &_exception
+	fcppt::exception const &
 )
-{
-	string_ = _exception.string_;
+= default;
 
-	return *this;
-}
+inline
+fcppt::exception &
+fcppt::exception::operator=(
+	fcppt::exception &&
+)
+= default;
 
 inline
 fcppt::string const &
 fcppt::exception::string() const
 {
-	return string_;
+	return
+		string_;
 }
 
 inline
 char const *
-fcppt::exception::what() const throw()
+fcppt::exception::what() const noexcept
 {
 	return "what cannot be supplied by an fcppt::exception, do not catch fcppt::exception as std::exception";
 }
 
 inline
-fcppt::exception::~exception() throw()
+fcppt::exception::~exception() noexcept
 {
 }
 

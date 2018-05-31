@@ -10,16 +10,21 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/variant/exception.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 inline
 fcppt::variant::invalid_get::invalid_get(
-	fcppt::string const &_error
+	fcppt::string &&_error
 )
 :
-	fcppt::variant::exception(
-		_error
-	)
+	fcppt::variant::exception{
+		std::move(
+			_error
+		)
+	}
 {
 }
 

@@ -29,7 +29,7 @@ class invalid_get
 public:
 	explicit
 	invalid_get(
-		fcppt::string const &
+		fcppt::string &&
 	);
 };
 

@@ -26,7 +26,7 @@ fcppt::exception is a wrapper around an exception that uses \link fcppt::string
 \endlink to store the error message. Note that you will have to use \link
 fcppt::exception::string \endlink to obtain the string. If you use
 <code>what()</code>, which is only provided for compatibility with
-<code>std::exception</code>, nothing useful will be given. The reason behind
+<code>std::exception</code>, nothing useful will be returned. The reason behind
 this is that a string conversion itself can result in exceptions being thrown.
 That is why <code>what()</code> does not try to convert from \link
 fcppt::string \endlink to <code>std::string</code>.
@@ -38,39 +38,28 @@ class exception
 public:
 	/**
 	\brief Constructs an exception from a string
-
-	Constructs an exception from \a what
-
-	\param what The error message to be returned by <code>string()</code>
 	*/
 	explicit
 	exception(
-		fcppt::string const &what
+		fcppt::string &&what
 	);
 
-	/**
-	\brief Copy constructs an exception
-
-	Copy constructs an exception from \a other
-
-	\param other The exception to copy construct from
-	*/
 	exception(
-		fcppt::exception const &other
+		exception const &
 	);
 
-	/**
-	\brief Assigns an exception
+	exception(
+		exception &&
+	);
 
-	Assigns an exception from \a other
-
-	\param other The exception to assign from
-
-	\return <code>*this</code>
-	*/
-	fcppt::exception &
+	exception &
 	operator=(
-		fcppt::exception const &other
+		exception const &
+	);
+
+	exception &
+	operator=(
+		exception &&
 	);
 
 	/**
@@ -89,11 +78,10 @@ public:
 	<code>std::exception</code>. It returns nothing useful.
 	*/
 	char const *
-	what() const throw()
+	what() const noexcept
 	override;
 
-	virtual
-	~exception() throw()
+	~exception() noexcept
 	override;
 private:
 	fcppt::string string_;

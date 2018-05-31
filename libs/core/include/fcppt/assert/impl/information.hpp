@@ -12,31 +12,42 @@
 #include <fcppt/assert/function.hpp>
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/message.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 inline
 fcppt::assert_::information::information(
-	fcppt::assert_::file const &_file,
+	fcppt::assert_::file &&_file,
 	fcppt::assert_::line const _line,
-	fcppt::assert_::function const &_function,
-	fcppt::assert_::condition const &_condition,
-	fcppt::assert_::message const &_message
+	fcppt::assert_::function &&_function,
+	fcppt::assert_::condition &&_condition,
+	fcppt::assert_::message &&_message
 )
 :
 	file_(
-		_file
+		std::move(
+			_file
+		)
 	),
 	line_(
 		_line
 	),
 	function_(
-		_function
+		std::move(
+			_function
+		)
 	),
 	condition_(
-		_condition
+		std::move(
+			_condition
+		)
 	),
 	message_(
-		_message
+		std::move(
+			_message
+		)
 	)
 {
 }

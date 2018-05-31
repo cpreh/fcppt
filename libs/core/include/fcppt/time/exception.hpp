@@ -36,7 +36,7 @@ public:
 	*/
 	explicit
 	exception(
-		fcppt::string const &message
+		fcppt::string &&message
 	);
 };
 
