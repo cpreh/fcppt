@@ -76,6 +76,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
 #endif
 
+#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(8, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-function-type)
+#endif
+
 #endif
 
 #define FCPPT_CONFIG_INSIDE_EXTERNAL_H
