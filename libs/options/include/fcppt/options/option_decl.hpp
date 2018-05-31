@@ -70,10 +70,10 @@ public:
 	\param help_text Optional help text for this flag.
 	*/
 	option(
-		fcppt::options::optional_short_name const &short_name,
-		fcppt::options::long_name const &long_name,
-		optional_default_value const &default_value,
-		fcppt::options::optional_help_text const &help_text
+		fcppt::options::optional_short_name &&short_name,
+		fcppt::options::long_name &&long_name,
+		optional_default_value &&default_value,
+		fcppt::options::optional_help_text &&help_text
 	);
 
 	typedef

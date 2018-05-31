@@ -42,21 +42,6 @@ template<
 fcppt::options::many<
 	Parser
 >::many(
-	Parser const &_parser
-)
-:
-	parser_{
-		_parser
-	}
-{
-}
-
-template<
-	typename Parser
->
-fcppt::options::many<
-	Parser
->::many(
 	Parser &&_parser
 )
 :

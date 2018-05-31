@@ -16,6 +16,9 @@
 #include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/switch_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -24,14 +27,18 @@ template<
 fcppt::options::switch_<
 	Label
 >::switch_(
-	fcppt::options::optional_short_name const &_short_name,
-	fcppt::options::long_name const &_long_name,
-	fcppt::options::optional_help_text const &_help_text
+	fcppt::options::optional_short_name &&_short_name,
+	fcppt::options::long_name &&_long_name,
+	fcppt::options::optional_help_text &&_help_text
 )
 :
 	impl_{
-		_short_name,
-		_long_name,
+		std::move(
+			_short_name
+		),
+		std::move(
+			_long_name
+		),
 		typename
 		impl::active_value{
 			true
@@ -40,7 +47,9 @@ fcppt::options::switch_<
 		impl::inactive_value{
 			false
 		},
-		_help_text
+		std::move(
+			_help_text
+		)
 	}
 {
 }

@@ -38,11 +38,6 @@ class sum
 {
 public:
 	sum(
-		Left const &,
-		Right const &
-	);
-
-	sum(
 		Left &&,
 		Right &&
 	);

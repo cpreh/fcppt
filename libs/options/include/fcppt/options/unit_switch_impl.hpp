@@ -26,6 +26,9 @@
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/variadic.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -34,13 +37,17 @@ template<
 fcppt::options::unit_switch<
 	Label
 >::unit_switch(
-	fcppt::options::optional_short_name const &_short_name,
-	fcppt::options::long_name const &_long_name
+	fcppt::options::optional_short_name &&_short_name,
+	fcppt::options::long_name &&_long_name
 )
 :
 	impl_{
-		_short_name,
-		_long_name,
+		std::move(
+			_short_name
+		),
+		std::move(
+			_long_name
+		),
 		fcppt::options::optional_help_text{}
 	}
 {

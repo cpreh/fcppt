@@ -47,11 +47,6 @@ class many
 public:
 	explicit
 	many(
-		Parser const &
-	);
-
-	explicit
-	many(
 		Parser &&
 	);
 

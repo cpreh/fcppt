@@ -49,27 +49,37 @@ fcppt::options::flag<
 	Label,
 	Type
 >::flag(
-	fcppt::options::optional_short_name const &_short_name,
-	fcppt::options::long_name const &_long_name,
-	active_value const &_active_value,
-	inactive_value const &_inactive_value,
-	fcppt::options::optional_help_text const &_help_text
+	fcppt::options::optional_short_name &&_short_name,
+	fcppt::options::long_name &&_long_name,
+	active_value &&_active_value,
+	inactive_value &&_inactive_value,
+	fcppt::options::optional_help_text &&_help_text
 )
 :
 	short_name_{
-		_short_name
+		std::move(
+			_short_name
+		)
 	},
 	long_name_(
-		_long_name
+		std::move(
+			_long_name
+		)
 	),
 	active_value_{
-		_active_value
+		std::move(
+			_active_value
+		)
 	},
 	inactive_value_{
-		_inactive_value
+		std::move(
+			_inactive_value
+		)
 	},
 	help_text_(
-		_help_text
+		std::move(
+			_help_text
+		)
 	)
 {
 	fcppt::options::detail::check_short_long_names(

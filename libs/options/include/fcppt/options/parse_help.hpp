@@ -78,7 +78,9 @@ parse_help(
 
 	auto const combined_parser{
 		fcppt::options::make_sum(
-			_help,
+			fcppt::make_cref(
+				_help
+			),
 			fcppt::make_cref(
 				_parser
 			)

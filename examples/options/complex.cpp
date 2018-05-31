@@ -16,6 +16,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/main.hpp>
+#include <fcppt/make_cref.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
@@ -232,11 +233,21 @@ try
 // ![options_parser]
 	auto const parser(
 		fcppt::options::apply(
-			input_file,
-			output_file,
-			execute,
-			openmode,
-			log_level
+			fcppt::make_cref(
+				input_file
+			),
+			fcppt::make_cref(
+				output_file
+			),
+			fcppt::make_cref(
+				execute
+			),
+			fcppt::make_cref(
+				openmode
+			),
+			fcppt::make_cref(
+				log_level
+			)
 		)
 	);
 

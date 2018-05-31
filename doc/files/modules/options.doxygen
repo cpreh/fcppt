@@ -191,8 +191,6 @@ sub-command that takes no arguments or options.
 </tr>
 </table>
 
-
-
 \subsection fcpptoptions_parsers_combinators Combinator parser types
 
 The following parsers can be used to create more advanced parsers:
@@ -294,6 +292,15 @@ See \link fcppt::options::make_sub_command\endlink and \link fcppt::options::mak
 </tr>
 </table>
 
+Passing a parser to another can be done in three different ways:
+<ul>
+<li>By moving. In this case, the parser must be an rvalue.
+Use \link fcppt::copy\endlink to create an explicit copy if needed.</li>
+<li>By reference. Use \link fcppt::make_cref\endlink in this case.
+Be careful to keep all parsers alive that are passed this way.</li>
+<li>By moving an \link fcppt::unique_ptr\endlink. This is useful
+if you want to pass an \link fcppt::options::base_unique_ptr\endlink.</li>
+</ul>
 
 \section fcpptoptions_complex A more complex example
 

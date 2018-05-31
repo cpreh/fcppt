@@ -47,11 +47,6 @@ class optional
 public:
 	explicit
 	optional(
-		Parser const &
-	);
-
-	explicit
-	optional(
 		Parser &&
 	);
 

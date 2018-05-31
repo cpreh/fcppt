@@ -54,8 +54,8 @@ public:
 	\param help_text Optional help text for this argument.
 	*/
 	argument(
-		fcppt::options::long_name const &long_name,
-		fcppt::options::optional_help_text const &help_text
+		fcppt::options::long_name &&long_name,
+		fcppt::options::optional_help_text &&help_text
 	);
 
 	typedef

@@ -96,6 +96,12 @@ Catch2 is now required.
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link fcppt::copy\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_280 Changed functionality
@@ -141,6 +147,8 @@ Catch2 is now required.
 	<ul>
 	<li>The active and inactive values in \link fcppt::options::flag\endlink must be different now.</li>
 	<li>All long and short names must be distinct now.</li>
+	<li>All parsers and their parameters are now passed as rvalue references.
+	Use \link fcppt::make_cref\endlink or \link fcppt::copy\endlink to pass them.</li>
 	</ul>
 </li>
 

@@ -45,28 +45,6 @@ fcppt::options::product<
 	Left,
 	Right
 >::product(
-	Left const &_left,
-	Right const &_right
-)
-:
-	left_(
-		_left
-	),
-	right_(
-		_right
-	)
-{
-	this->check_disjoint();
-}
-
-template<
-	typename Left,
-	typename Right
->
-fcppt::options::product<
-	Left,
-	Right
->::product(
 	Left &&_left,
 	Right &&_right
 )

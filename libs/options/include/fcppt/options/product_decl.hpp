@@ -43,11 +43,6 @@ class product
 {
 public:
 	product(
-		Left const &,
-		Right const &
-	);
-
-	product(
 		Left &&,
 		Right &&
 	);

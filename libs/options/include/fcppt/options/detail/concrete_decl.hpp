@@ -50,11 +50,6 @@ public:
 		Parser &&
 	);
 
-	explicit
-	concrete(
-		Parser const &
-	);
-
 	~concrete()
 	override;
 

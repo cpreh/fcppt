@@ -40,21 +40,6 @@ template<
 fcppt::options::optional<
 	Parser
 >::optional(
-	Parser const &_parser
-)
-:
-	parser_{
-		_parser
-	}
-{
-}
-
-template<
-	typename Parser
->
-fcppt::options::optional<
-	Parser
->::optional(
 	Parser &&_parser
 )
 :

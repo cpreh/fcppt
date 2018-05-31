@@ -53,8 +53,8 @@ public:
 	\param long_name The long name ("--flag") this parser will match.
 	*/
 	unit_switch(
-		fcppt::options::optional_short_name const &short_name,
-		fcppt::options::long_name const &long_name
+		fcppt::options::optional_short_name &&short_name,
+		fcppt::options::long_name &&long_name
 	);
 
 	typedef

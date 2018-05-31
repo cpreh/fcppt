@@ -44,15 +44,19 @@ fcppt::options::argument<
 	Label,
 	Type
 >::argument(
-	fcppt::options::long_name const &_long_name,
-	fcppt::options::optional_help_text const &_help_text
+	fcppt::options::long_name &&_long_name,
+	fcppt::options::optional_help_text &&_help_text
 )
 :
 	long_name_(
-		_long_name
+		std::move(
+			_long_name
+		)
 	),
 	help_text_{
-		_help_text
+		std::move(
+			_help_text
+		)
 	}
 {
 }

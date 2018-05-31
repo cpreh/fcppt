@@ -60,23 +60,31 @@ fcppt::options::option<
 	Label,
 	Type
 >::option(
-	fcppt::options::optional_short_name const &_short_name,
-	fcppt::options::long_name const &_long_name,
-	optional_default_value const &_default_value,
-	fcppt::options::optional_help_text const &_help_text
+	fcppt::options::optional_short_name &&_short_name,
+	fcppt::options::long_name &&_long_name,
+	optional_default_value &&_default_value,
+	fcppt::options::optional_help_text &&_help_text
 )
 :
 	short_name_(
-		_short_name
+		std::move(
+			_short_name
+		)
 	),
 	long_name_(
-		_long_name
+		std::move(
+			_long_name
+		)
 	),
 	default_value_(
-		_default_value
+		std::move(
+			_default_value
+		)
 	),
 	help_text_{
-		_help_text
+		std::move(
+			_help_text
+		)
 	}
 {
 	fcppt::options::detail::check_short_long_names(

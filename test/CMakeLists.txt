@@ -129,6 +129,10 @@ add_subdirectory(
 )
 
 add_fcppt_test(
+	copy
+)
+
+add_fcppt_test(
 	cyclic_iterator
 )
 

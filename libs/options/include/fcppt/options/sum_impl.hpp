@@ -35,27 +35,6 @@ fcppt::options::sum<
 	Left,
 	Right
 >::sum(
-	Left const &_left,
-	Right const &_right
-)
-:
-	left_(
-		_left
-	),
-	right_(
-		_right
-	)
-{
-}
-
-template<
-	typename Left,
-	typename Right
->
-fcppt::options::sum<
-	Left,
-	Right
->::sum(
 	Left &&_left,
 	Right &&_right
 )

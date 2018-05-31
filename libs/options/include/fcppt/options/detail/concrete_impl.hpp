@@ -49,24 +49,6 @@ template<
 fcppt::options::detail::concrete<
 	Result,
 	Parser
->::concrete(
-	Parser const &_parser
-)
-:
-	base_type(),
-	parser_(
-		_parser
-	)
-{
-}
-
-template<
-	typename Result,
-	typename Parser
->
-fcppt::options::detail::concrete<
-	Result,
-	Parser
 >::~concrete()
 {
 }

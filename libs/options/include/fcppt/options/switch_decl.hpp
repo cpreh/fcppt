@@ -55,9 +55,9 @@ public:
 	\param help_text Optional help text for this flag.
 	*/
 	switch_(
-		fcppt::options::optional_short_name const &short_name,
-		fcppt::options::long_name const &long_name,
-		fcppt::options::optional_help_text const &help_text
+		fcppt::options::optional_short_name &&short_name,
+		fcppt::options::long_name &&long_name,
+		fcppt::options::optional_help_text &&help_text
 	);
 
 	typedef

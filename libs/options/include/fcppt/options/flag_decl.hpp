@@ -78,11 +78,11 @@ public:
 	\param help_text Optional help text for this flag.
 	*/
 	flag(
-		fcppt::options::optional_short_name const &short_name,
-		fcppt::options::long_name const &long_name,
-		active_value const &active,
-		inactive_value const &inactive,
-		fcppt::options::optional_help_text const &help_text
+		fcppt::options::optional_short_name &&short_name,
+		fcppt::options::long_name &&long_name,
+		active_value &&active,
+		inactive_value &&inactive,
+		fcppt::options::optional_help_text &&help_text
 	);
 
 	typedef
