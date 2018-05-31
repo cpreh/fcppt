@@ -85,6 +85,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	to_optional
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_variant_test(

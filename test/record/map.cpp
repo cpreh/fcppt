@@ -4,15 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/make_movable.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
+#include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/map.hpp>
+#include <fcppt/record/output.hpp>
 #include <fcppt/record/permute.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -45,7 +46,7 @@ TEST_CASE(
 		fcppt::record::element<
 			move_only_label,
 			fcppt::optional::object<
-				fcppt::unique_ptr<
+				fcppt::catch_::movable<
 					int
 				>
 			>
@@ -53,7 +54,7 @@ TEST_CASE(
 	>
 	result_type;
 
-	result_type const result{
+	CHECK(
 		fcppt::record::permute<
 			result_type
 		>(
@@ -65,7 +66,7 @@ TEST_CASE(
 					>,
 					fcppt::record::element<
 						move_only_label,
-						fcppt::unique_ptr<
+						fcppt::catch_::movable<
 							int
 						>
 					>
@@ -73,9 +74,7 @@ TEST_CASE(
 					int_label{} =
 						42,
 					move_only_label{} =
-						fcppt::make_unique_ptr<
-							int
-						>(
+						fcppt::catch_::make_movable(
 							100
 						)
 				},
@@ -96,25 +95,18 @@ TEST_CASE(
 				}
 			)
 		)
-	};
-
-	CHECK(
-		fcppt::record::get<
-			int_label
-		>(
-			result
-		)
 		==
-		fcppt::optional::make(
-			42
-		)
-	);
-
-	CHECK(
-		fcppt::record::get<
-			move_only_label
-		>(
-			result
-		).has_value()
+		result_type{
+			int_label{} =
+				fcppt::optional::make(
+					42
+				),
+			move_only_label{} =
+				fcppt::optional::make(
+					fcppt::catch_::make_movable(
+						100
+					)
+				)
+		}
 	);
 }
