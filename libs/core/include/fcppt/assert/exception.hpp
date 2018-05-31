@@ -52,7 +52,7 @@ public:
 	/**
 	\brief Destroys the exception
 	*/
-	~exception() throw()
+	~exception() noexcept
 	override;
 private:
 	fcppt::assert_::information information_;

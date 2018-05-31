@@ -7,13 +7,14 @@
 #ifndef FCPPT_ASSERT_IMPL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_ASSERT_IMPL_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/exception.hpp>
 #include <fcppt/assert/information.hpp>
 #include <fcppt/assert/make_message.hpp>
 
 
 inline
 fcppt::assert_::exception::exception(
-	assert_::information const &_information
+	fcppt::assert_::information const &_information
 )
 :
 	fcppt::exception(
@@ -31,11 +32,12 @@ inline
 fcppt::assert_::information const &
 fcppt::assert_::exception::information() const
 {
-	return information_;
+	return
+		information_;
 }
 
 inline
-fcppt::assert_::exception::~exception() throw()
+fcppt::assert_::exception::~exception() noexcept
 {
 }
 
