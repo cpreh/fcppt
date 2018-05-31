@@ -1040,6 +1040,12 @@ option(
 function(
 	fcppt_utils_setup_tests
 )
+	find_package(
+		Catch2
+		CONFIG
+		REQUIRED
+	)
+
 	set(
 		FCPPT_UTILS_CATCH_FILE_TEMP
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/catch_main_temp.cpp
@@ -1087,17 +1093,22 @@ function(
 		REQUIRED
 	)
 
-	add_library(
+	if(
+		NOT TARGET
 		fcppt_utils_catch_main
-		${FCPPT_UTILS_CATCH_LIB_TYPE}
-		${FCPPT_UTILS_CATCH_FILE}
 	)
+		add_library(
+			fcppt_utils_catch_main
+			${FCPPT_UTILS_CATCH_LIB_TYPE}
+			${FCPPT_UTILS_CATCH_FILE}
+		)
 
-	target_link_libraries(
-		fcppt_utils_catch_main
-		PRIVATE
-		Catch2::Catch
-	)
+		target_link_libraries(
+			fcppt_utils_catch_main
+			PRIVATE
+			Catch2::Catch
+		)
+	endif()
 endfunction()
 
 function(

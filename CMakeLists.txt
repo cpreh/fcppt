@@ -117,6 +117,7 @@ endif()
 
 find_package(
 	Catch2
+	CONFIG
 )
 
 option(
