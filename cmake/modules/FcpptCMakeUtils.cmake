@@ -1103,6 +1103,13 @@ function(
 			${FCPPT_UTILS_CATCH_FILE}
 		)
 
+		set_target_properties(
+			fcppt_utils_catch_main
+			PROPERTIES
+			FOLDER
+			fcppt
+		)
+
 		target_link_libraries(
 			fcppt_utils_catch_main
 			PRIVATE
