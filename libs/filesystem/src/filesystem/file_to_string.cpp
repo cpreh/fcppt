@@ -104,7 +104,7 @@ fcppt::filesystem::file_to_string(
 
 							return
 								fcppt::optional::make_if(
-									_stream.eof(),
+									!_stream.bad(),
 									[
 										&ret
 									]{
