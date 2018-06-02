@@ -15,6 +15,11 @@ add_fcppt_container_tuple_test(
 )
 
 add_fcppt_container_tuple_test(
+	map_result
+	NO_CODE
+)
+
+add_fcppt_container_tuple_test(
 	push_back
 	LINK_LIBS
 		fcppt_catch_interface

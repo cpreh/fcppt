@@ -44,7 +44,9 @@ fcppt::container::tuple::detail::map_result<
 		>::value
 	>,
 	Tuple,
-	Function
+	fcppt::type_traits::remove_cv_ref_t<
+		Function
+	>
 >::type;
 
 }
