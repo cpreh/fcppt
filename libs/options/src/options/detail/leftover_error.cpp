@@ -5,6 +5,7 @@
 
 
 #include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/optional/make_if.hpp>
@@ -22,8 +23,9 @@ fcppt::options::detail::leftover_error(
 {
 	return
 		fcppt::optional::make_if(
-			not
-			_state.empty(),
+			fcppt::not_(
+				_state.empty()
+			),
 			[
 				&_state
 			]{

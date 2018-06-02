@@ -6,6 +6,7 @@
 
 #include <fcppt/brigand/equal_to.hpp>
 #include <fcppt/brigand/list_c.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -31,19 +32,20 @@ main()
 	);
 
 	static_assert(
-		not
-		fcppt::brigand::equal_to<
-			fcppt::brigand::list_c<
-				int,
-				3,
-				2
-			>,
-			fcppt::brigand::list_c<
-				int,
-				1,
-				2
-			>
-		>::value,
+		fcppt::not_(
+			fcppt::brigand::equal_to<
+				fcppt::brigand::list_c<
+					int,
+					3,
+					2
+				>,
+				fcppt::brigand::list_c<
+					int,
+					1,
+					2
+				>
+			>::value
+		),
 		"Lists equal"
 	);
 }

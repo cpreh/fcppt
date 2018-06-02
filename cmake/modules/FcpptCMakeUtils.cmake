@@ -1060,7 +1060,7 @@ function(
 		WRITE
 		${FCPPT_UTILS_CATCH_FILE_TEMP}
 		"#define CATCH_CONFIG_MAIN
-		#include <catch.hpp>"
+#include <catch.hpp>"
 	)
 
 	configure_file(
@@ -1078,8 +1078,7 @@ function(
 
 		message(
 			WARNING
-			"Linking to Catch statically will drastically increase the
-			size of each test case"
+			"Linking to Catch statically will drastically increase the size of each test case"
 		)
 	else()
 		set(
@@ -1106,6 +1105,10 @@ function(
 		set_target_properties(
 			fcppt_utils_catch_main
 			PROPERTIES
+			CXX_STANDARD
+			11
+			CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
+			ON
 			FOLDER
 			fcppt
 		)

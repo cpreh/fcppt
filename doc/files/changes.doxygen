@@ -99,6 +99,7 @@ Catch2 is now required.
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::copy\endlink.</li>
+	<li>Added \link fcppt::not_\endlink.</li>
 	</ul>
 </li>
 

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/char_type.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -56,9 +57,10 @@ fcppt::options::impl::is_flag(
 		==
 		_value.end()
 		||
-		not
-		is_dash(
-			*pos
+		fcppt::not_(
+			is_dash(
+				*pos
+			)
 		)
 	)
 		return

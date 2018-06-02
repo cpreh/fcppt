@@ -630,6 +630,7 @@ set(
 	libs/core/include/fcppt/container/tuple/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/to_varargs.hpp
 	libs/core/include/fcppt/container/tuple/vararg_map.hpp
+	libs/core/include/fcppt/copy.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp
 	libs/core/include/fcppt/cyclic_iterator_fwd.hpp
@@ -1114,6 +1115,7 @@ set(
 	libs/core/include/fcppt/no_init_fwd.hpp
 	libs/core/include/fcppt/nonassignable.hpp
 	libs/core/include/fcppt/noncopyable.hpp
+	libs/core/include/fcppt/not.hpp
 	libs/core/include/fcppt/optional/alternative.hpp
 	libs/core/include/fcppt/optional/apply.hpp
 	libs/core/include/fcppt/optional/assign.hpp

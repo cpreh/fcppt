@@ -5,6 +5,7 @@
 
 
 #include <fcppt/int_range_impl.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/algorithm/detail/optimize_map.hpp>
 #include <fcppt/config/compiler.hpp>
@@ -80,10 +81,11 @@ main()
 	);
 
 	static_assert(
-		not
-		fcppt::algorithm::detail::has_reserve<
-			int_int_map
-		>::value,
+		fcppt::not_(
+			fcppt::algorithm::detail::has_reserve<
+				int_int_map
+			>::value
+		),
 		"map does not have reserve"
 	);
 
@@ -103,11 +105,12 @@ main()
 	);
 
 	static_assert(
-		not
-		fcppt::algorithm::detail::optimize_map<
-			int_int_map,
-			int_vector
-		>::value,
+		fcppt::not_(
+			fcppt::algorithm::detail::optimize_map<
+				int_int_map,
+				int_vector
+			>::value
+		),
 		"map from vector to map cannot be optimized"
 	);
 
@@ -154,10 +157,11 @@ main()
 	};
 
 	static_assert(
-		not
-		source_optimized<
-			bi_range
-		>::value,
+		fcppt::not_(
+			source_optimized<
+				bi_range
+			>::value
+		),
 		"random access iterator not detected"
 	);
 

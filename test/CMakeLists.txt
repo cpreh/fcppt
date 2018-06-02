@@ -214,6 +214,11 @@ add_fcppt_test(
 	move_if_rvalue
 )
 
+add_fcppt_test(
+	not
+	NO_CODE
+)
+
 add_subdirectory(
 	optional
 )
