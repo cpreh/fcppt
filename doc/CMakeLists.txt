@@ -45,7 +45,6 @@ set(
 	doc/files/changes.doxygen
 	doc/files/changes_old.doxygen
 	doc/files/coding_style.doxygen
-	doc/files/coding_style_asthetic.doxygen
 	doc/files/logo.svg
 	doc/files/main.doxygen
 	doc/files/modules/algorithm.doxygen

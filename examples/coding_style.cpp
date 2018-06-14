@@ -46,7 +46,7 @@ template<
 	typename T
 >
 T
-from_int(
+from_index(
 	std::size_t const _value
 )
 {
@@ -66,10 +66,10 @@ std::array<T,N> make_array();
 template<typename T, std::size_t N>
 std::array<T,N> make_array()
 {
-// ![coding_style_array_fold]
+// ![coding_style_array_init]
 return fcppt::container::array::init<std::array<T,N>>(
-	[](std::size_t i) { return from_int<T>(i); });
-// ![coding_style_array_fold]
+	[](std::size_t i) { return from_index<T>(i); });
+// ![coding_style_array_init]
 }
 
 }

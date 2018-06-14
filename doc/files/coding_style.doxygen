@@ -6,132 +6,149 @@
 <td>
 
 <ul>
-	<li>\ref coding_typing</li>
-	<li>\ref coding_total</li>
+	<li>\ref coding_ownership</li>
+	<li>\ref coding_classes</li>
+	<li>\ref coding_functions</li>
 	<li>\ref coding_loops</li>
-	<li>\ref coding_const_init</li>
-	<li>\ref coding_asthetic</li>
-	<ul>
-		<li>\ref coding_indentation</li>
-		<li>\ref coding_naming</li>
-		<li>\ref coding_partitioning</li>
-	</ul>
+	<li>\ref coding_initialization</li>
 </ul>
 
 </td>
 </tr>
 </table>
 
-\section coding_typing Typing
+\section coding_ownership Ownership
 
-A (mostly) statically typed language like C++ has the advantage to forbid
-programs to even run if they are not well-typed. Making the most out of the type
-system can catch a lot of mistakes at compile-time. We can use types to
+When parameters are passed to functions, especially constructors,
+use one of the following cases to indicate ownership:
 <ul>
-<li>Express ownership: Choose between <code>fcppt::unique_ptr<T></code>, <code>
-fcppt::shared_ptr<T></code>, <code>fcppt::reference<T></code>,
-<code>T &&</code> and <code>T</code>.
-<ul>
-<li>\link fcppt::unique_ptr\endlink expresses unique ownership and should be
-the default class to use for non-copyable types.</li>
-<li>\link fcppt::shared_ptr\endlink expresses shared ownership.</li>
-<li>\link fcppt::reference\endlink should be prefered to raw references
-to make their use more explicit.</li>
-</ul>
-<li>Express optional values: Can a function take or, more importantly, return
-no value? Use <code>%fcppt::optional::object\<T></code> in this case. Instead of
-<code>T *</code>, use <code>%fcppt::optional::reference\<T></code>. See \ref fcpptoptional.</li>
-<li>Express values that can be of either type: Use
-<code>%fcppt::variant::variadic<T1,T2></code> to express that
-a value can either be of type <code>T1</code> or of type <code>T2</code>.
-See \ref fcpptvariant.</li>
-<li>Wrap types as <em>strong typedefs</em>, e.g.
-<code>%FCPPT_MAKE_STRONG_TYPEDEF(std::string,email_address)</code> to make their
-use clearer. See \ref fcpptstrongtypedef.</li>
+<li>When a function takes a copy, use <code>T &&</code>
+for types that are expensive to copy. This forces callers
+to pass an rvalue reference and make it explicit if they need
+to provide a copy, e.g.
+\code
+void f(std::string &&);
+void g() { std::string test{"hello"}; f(std::string(test)); }
+\endcode
+In cases copies are not expensive, use <code>T</code>.
+</li>
+<li>When a function only reads its parameter, use <code>T const &</code>.
+</li>
+<li>When a function takes ownership of a class that cannot be copied,
+use <code>fcppt::unique_ptr<T> &&</code>.
+</li>
+<li>When a function keeps a reference, use <code>fcppt::reference<T></code>.
+In this case, it makes it clear to the caller that he has to
+keep the object alive.
+</li>
+<li>When a function needs shared ownership, use <code>fcppt::shared_ptr<T></code>.
+This case should be considered last.
+</li>
+<li>Avoid regular pointers, especially <code>nullptr</code>.
+</li>
 </ul>
 
-\section coding_total Total functions
+\section coding_classes Classes
 
-A total function is a function that is well-defined for every possible
-combination of parameters. A partial function on the other hand can be
-undefined for some. This includes everything that is not expressed by the type
-system: undefined behavior, aborting the program or even throwing an exception.
-An example of a partial function is dereferencing a pointer. The pointer might
-be a null pointer, it might be uninitialized or it might point to 'one past the
-end'. Calling partial functions is error-prone because the programmer has to
-remember for which parameters the function is undefined. Consequently,
-partial functions are best avoided but cannot always be:
+Following are various points on how to design the interface of a class:
 <ul>
-<li>Prefer to use \ref fcpptoptional as a return type in case a function may
-not return anything. See \link fcppt::container::maybe_back\endlink for an
-example, which returns an empty optional in case a container is empty. This
-usually makes a function total.</li>
-<li>Throw exceptions in case resource allocation fails.</li>
-<li>Only abort the program or leave a case as undefined behavior as a last
-resort.</li>
+<li>Avoid default constructors! Default constructors are usually a sign
+of bad design, e.g. some code wants to assign to an object but does
+not need its value. Instead of using a default constructor,
+simply pass the desired values, e.g. <code>int i{0};</code>
+instead of <code>int i{};</code>. If you do not have a value for
+the object yet, do not create it in the first place!
+
+There are several types which replace standard types with
+the explicit intend not to be default-constructible, e.g.
+\link fcppt::function\endlink, \link fcppt::unique_ptr\endlink,
+\link fcppt::shared_ptr\endlink and \link fcppt::variant::object\endlink.
+</li>
+<li>Give every class a (non default) constructor. This ties
+in with \ref coding_ownership.
+Another point is that
+the initialization syntax for structs and classes allows for
+partial initialization, e.g.
+\code
+struct S { int i; int j; }; S x{42};
+\endcode
+However, most compilers issue a warning for this.
+</li>
+<li>Make classes explicitly noncopyable using \link FCPPT_NONCOPYABLE\endlink
+in case their copy constructors / assignment operators that are generated
+by default should not be used, or in case they can not be generated
+because a member is not copyable. If a class should be movable
+but not copyable, explicitly provide a move constructor and move
+assignment operator. Most of the time, the implementation obtained
+by using <code>= default</code> can be used.
+</li>
+<li>Do not use regular references as members. They make a class non
+assignable. Instead, use \link fcppt::reference\endlink.
+</li>
 </ul>
-See \ref fcpptassert on how to systematically handle partial
-functions.
+
+\section coding_functions Functions
+
+Following are various points about functions:
+<ul>
+<li>Make functions total! In case they can return nothing,
+use \link fcppt::optional::object\endlink.
+In case they can return an error, use \link fcppt::either::object\endlink.
+</li>
+<li>Avoid cases where certain combinations of parameters are invalid.
+These cases can usually be avoided by using \link fcppt::optional::object\endlink,
+\link fcppt::variant::object\endlink, and so on.
+If it is very difficult to avoid this, use \link FCPPT_ASSERT_PRE\endlink
+or throw an exception. Be sure to document this very carefully!
+</li>
+<li>Do not use default parameters and do not use function overloading.
+It is better to provide a function with a different name or to
+change the typing of parameters, e.g. by using \link fcppt::optional::object\endlink.
+</li>
+<li>Avoid functions that get multiple parameters of the same type.
+Use \link fcppt::strong_typedef\endlink to disambiguate which parameter is
+used for which purpose. For example, instead of
+<code>void f(std::string const &name, std::string const &email);</code> use
+\code
+FCPPT_MAKE_STRONG_TYPEDEF(std::string, name);
+FCPPT_MAKE_STRONG_TYPEDEF(std::string, email);
+void f(name const &, email const &);
+\endcode
+In some cases, merging multiple parameters into one can also help,
+e.g. instead of <code>void f(int x, int y);</code>, use
+<code>void f(fcppt::math::vector::static_<int,2>);</code>.
+</li>
+<li>Do not use return parameters! In case you need to return
+multiple objects, create a struct or class that encapsulates this.
+</li>
+</ul>
 
 \section coding_loops Loops
 
-Loops can be broken down into two separate concerns: Updating the loop
-condition and updating the loop's result. For example, a loop that sums integers
-from <code>1</code> to <code>n-1</code> can be written as:
-
+Avoid explicit loops if possible. There are many cases in which
+an algorithm can be used instead. For example, instead of
 \snippet coding_style.cpp coding_style_loop
-
-Here, updating the loop condition is done by incrementing <code>i</code> and
-updating the result by <code>result += i</code>. Instead of the loop condition
-we can use \link fcppt::int_range\endlink. Updating the loop's result can be
-decoupled from the loop itself using an algorithm, in this case \link
-fcppt::algorithm::fold\endlink.
-
+you can use \link fcppt::algorithm::fold\endlink
 \snippet coding_style.cpp coding_style_fold
 
-Unlike iterators, ranges have the great advantage of being composable, for
-example two ranges can be joined (taking their product) or appended, which is
-implemented by the <a
-href="http://www.boost.org/doc/libs/1_59_0/libs/range/doc/html/index.html">Boost.Range</a>
-library.
-For a collection of algorithms that replace loops see \ref fcpptalgorithm.
-Because imperative loops, especially ones using iterators, are so error-prone,
-raw loops are best avoided.
+Algorithms can only be used with ranges, not with iterators.
+In case you need to encapsulate iterators, use \link fcppt::iterator::range\endlink.
+There are also special ranges like
+\link fcppt::int_range\endlink or \link fcppt::enum_::range\endlink.
+Some algorithms also accept a <code>brigand::list</code> as a range
+in case you need to iterate over types.
 
-\section coding_const_init Const and initialization
+\section coding_initialization Initialization
 
-Declaring an object <code>const</code> makes it immutable and therefore easier
-to reason about. Obviously, a const object has to be initialized directly which
-can sometimes be hard to express. Consider an array of arbitrary size in a template:
+Initialize all objects and make them const if possible, especially do not use default constructors.
 
+Provide functions for cases in which initialization can not be expressed directly.
+Consider a function that initializes an array of arbitrary size:
 \snippet coding_style.cpp coding_style_make_array
+Say you have a function <code>T from_index(std::size_t)</code> that
+creates an array element given an index. You can then initialize the array using
+\snippet coding_style.cpp coding_style_array_init
 
-This case is handled by \link fcppt::container::array::init\endlink, for example:
-
-\snippet coding_style.cpp coding_style_array_fold
-
-Another common case is container initialization which usually consists of a
-series of <code>push_back</code> or <code>insert</code> operations. This is
-handled by \link fcppt::algorithm::map\endlink.
-
-Initialization also brings up the point of default constructors, which for
-historical reasons all fundamental types have. Instead of <code>int
-i{0};</code> the default constructor <code>int i{};</code> can be used. This is
-like pulling a value out of thin air and makes code less readable.
-
-Default constructors become worse when classes are more complex.
-<ul>
-<li>They can make the representation of a class more complicated, for example
-<code>%std::function</code> initializes to an empty function that throws an
-exception when called. Another example are singular iterators that have to
-distinguish between pointing to a sequence and pointing to nothing.</li>
-<li>They can lead to very obscure behavior to get a default-constructed value,
-for example <code>%boost::variant</code> default constructs an object of its
-first type.</li>
-<li>They can have undesired effects like constructing a null
-<code>std::unique_ptr</code>.</li>
-</ul>
-Alternatives to the classes mentioned above are \link
-fcppt::unique_ptr\endlink, \link fcppt::function\endlink and \link
-fcppt::variant::object\endlink, which do not provide default constructors.
+In case you really need uninitialized objects, create a constructor
+that takes \link fcppt::no_init\endlink.
 */
