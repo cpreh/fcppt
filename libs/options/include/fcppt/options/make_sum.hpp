@@ -25,41 +25,47 @@ namespace options
 \ingroup fcpptoptions
 */
 template<
-	typename Parser1,
-	typename Parser2
+	typename LeftLabel,
+	typename RightLabel,
+	typename Left,
+	typename Right
 >
 inline
 fcppt::options::sum<
 	fcppt::type_traits::remove_cv_ref_t<
-		Parser1
+		Left
 	>,
+	LeftLabel,
 	fcppt::type_traits::remove_cv_ref_t<
-		Parser2
-	>
+		Right
+	>,
+	RightLabel
 >
 make_sum(
-	Parser1 &&_parser1,
-	Parser2 &&_parser2
+	Left &&_left,
+	Right &&_right
 )
 {
 	return
 		fcppt::options::sum<
 			fcppt::type_traits::remove_cv_ref_t<
-				Parser1
+				Left
 			>,
+			LeftLabel,
 			fcppt::type_traits::remove_cv_ref_t<
-				Parser2
-			>
+				Right
+			>,
+			RightLabel
 		>(
 			std::forward<
-				Parser1
+				Left
 			>(
-				_parser1
+				_left
 			),
 			std::forward<
-				Parser2
+				Right
 			>(
-				_parser2
+				_right
 			)
 		);
 }

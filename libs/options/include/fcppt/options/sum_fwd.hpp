@@ -15,7 +15,9 @@ namespace options
 
 template<
 	typename Left,
-	typename Right
+	typename LeftLabel,
+	typename Right,
+	typename RightLabel
 >
 class sum;
 

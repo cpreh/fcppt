@@ -24,6 +24,8 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/record/get.hpp>
+#include <fcppt/record/make_label.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -77,8 +79,19 @@ parse_help(
 	>
 	result_type;
 
+	FCPPT_RECORD_MAKE_LABEL(
+		help_label
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		normal_label
+	);
+
 	auto const combined_parser{
-		fcppt::options::make_sum(
+		fcppt::options::make_sum<
+			help_label,
+			normal_label
+		>(
 			fcppt::make_cref(
 				_help
 			),
@@ -87,6 +100,12 @@ parse_help(
 			)
 		)
 	};
+
+	typedef
+	decltype(
+		combined_parser
+	)
+	sum_type;
 
 	return
 		fcppt::either::match(
@@ -118,9 +137,7 @@ parse_help(
 				&_parser
 			](
 				fcppt::options::result_of<
-					decltype(
-						combined_parser
-					)
+					sum_type
 				> &&_result
 			)
 			{
@@ -134,7 +151,8 @@ parse_help(
 							&_parser
 						](
 							fcppt::options::result_of<
-								fcppt::options::help_switch
+								typename
+								sum_type::left
 							> const &
 						)
 						{
@@ -150,7 +168,8 @@ parse_help(
 						[](
 							// TODO: rvalue ref
 							fcppt::options::result_of<
-								Parser
+								typename
+								sum_type::right
 							> _inner_result
 						)
 						{
@@ -158,7 +177,11 @@ parse_help(
 								return_type{
 									result_type{
 										std::move(
-											_inner_result
+											fcppt::record::get<
+												normal_label
+											>(
+												_inner_result
+											)
 										)
 									}
 								};

@@ -67,6 +67,8 @@ add_fcppt_options_test(
 
 add_fcppt_options_test(
 	sum
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_options_test(

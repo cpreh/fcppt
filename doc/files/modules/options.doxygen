@@ -230,12 +230,12 @@ of Left's and Right's result types. To combine two or more parsers at once, use
 \link fcppt::options::sum\endlink
 </td>
 <td>
-A parser of type <code>fcppt::options::sum<Left,Right></code> first
+A parser of type <code>fcppt::options::sum<Left,LeftLabel,Right,RightLabel></code> first
 tries <code>Left</code> and if that fails tries <code>Right</code>.
 It returns the result of the first one that succeeded or an error
-if both fail. Its result type is an <code>fcppt::variant::object</code>
-of <code>Left's</code> and <code>Right's</code> result types.
-You have to make sure that both are distinct.
+if both fail. Its result type is an <code>fcppt::variant::object</code> of
+a record with one element of Left's result type using LeftLabel
+and, similarly, a record with one element of Right's result type using RightLabel.
 </td>
 </tr>
 

@@ -15,6 +15,8 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/record/element_fwd.hpp>
+#include <fcppt/record/variadic_fwd.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 
 
@@ -33,7 +35,9 @@ Otherwise, it tries the right parser and returns its result.
 */
 template<
 	typename Left,
-	typename Right
+	typename LeftLabel,
+	typename Right,
+	typename RightLabel
 >
 class sum
 {
@@ -64,13 +68,45 @@ public:
 	~sum();
 
 	typedef
-	fcppt::variant::variadic<
-		fcppt::options::result_of<
-			Left
-		>,
-		fcppt::options::result_of<
-			Right
+	fcppt::record::variadic<
+		fcppt::record::element<
+			LeftLabel,
+			fcppt::options::result_of<
+				Left
+			>
 		>
+	>
+	left_result;
+
+	struct left
+	{
+		typedef
+		left_result
+		result_type;
+	};
+
+	typedef
+	fcppt::record::variadic<
+		fcppt::record::element<
+			RightLabel,
+			fcppt::options::result_of<
+				Right
+			>
+		>
+	>
+	right_result;
+
+	struct right
+	{
+		typedef
+		right_result
+		result_type;
+	};
+
+	typedef
+	fcppt::variant::variadic<
+		left_result,
+		right_result
 	>
 	result_type;
 
