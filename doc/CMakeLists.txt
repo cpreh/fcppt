@@ -1241,6 +1241,7 @@ set(
 	libs/core/include/fcppt/range/hash_impl.hpp
 	libs/core/include/fcppt/range/singular.hpp
 	libs/core/include/fcppt/range/size.hpp
+	libs/core/include/fcppt/record/all_disjoint.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
 	libs/core/include/fcppt/record/comparison.hpp

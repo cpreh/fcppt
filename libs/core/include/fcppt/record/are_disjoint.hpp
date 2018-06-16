@@ -22,6 +22,8 @@ namespace record
 
 /**
 \brief Tests if two records have disjoint label sets
+
+\ingroup fcpptrecord
 */
 template<
 	typename RecordL,

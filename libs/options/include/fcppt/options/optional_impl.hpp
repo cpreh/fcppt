@@ -27,6 +27,9 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/map.hpp>
 #include <fcppt/record/permute.hpp>
@@ -140,6 +143,9 @@ fcppt::options::optional<
 				fcppt::options::error &&_error
 			)
 			{
+				FCPPT_PP_PUSH_WARNING
+				FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+
 				return
 					fcppt::variant::match(
 						std::move(
@@ -195,6 +201,8 @@ fcppt::options::optional<
 								);
 						}
 					);
+
+				FCPPT_PP_POP_WARNING
 			},
 			[](
 				fcppt::options::state_with_value<

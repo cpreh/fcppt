@@ -9,6 +9,13 @@ function(
 endfunction()
 
 add_fcppt_record_test(
+	all_disjoint
+	NO_CODE
+	LINK_LIBS
+		Brigand
+)
+
+add_fcppt_record_test(
 	all_initializers
 	NO_CODE
 	LINK_LIBS
