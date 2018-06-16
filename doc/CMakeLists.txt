@@ -1596,6 +1596,7 @@ set(
 	libs/options/include/fcppt/options/deref.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
+	libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp

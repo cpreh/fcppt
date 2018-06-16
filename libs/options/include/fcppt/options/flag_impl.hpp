@@ -84,8 +84,8 @@ fcppt::options::flag<
 	)
 {
 	fcppt::options::detail::check_short_long_names(
-		_short_name,
-		_long_name
+		this->short_name_,
+		this->long_name_
 	);
 
 	if(

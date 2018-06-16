@@ -15,6 +15,7 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
@@ -35,6 +36,7 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/sub_command_label.hpp>
+#include <fcppt/options/detail/check_sub_command_names.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
@@ -43,6 +45,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -77,6 +80,24 @@ fcppt::options::commands<
 		)...
 	}
 {
+	fcppt::options::detail::check_sub_command_names(
+		fcppt::algorithm::map<
+			std::vector<
+				fcppt::string
+			>
+		>(
+			sub_commands_,
+			[](
+				auto const &_sub_command
+			)
+			{
+				return
+					fcppt::options::deref(
+						_sub_command
+					).name();
+			}
+		)
+	);
 }
 
 template<
@@ -229,14 +250,14 @@ fcppt::options::commands<
 									fcppt::string{},
 									[](
 										auto const &_parser,
-										fcppt::string &&_state
+										fcppt::string &&_inner_state
 									)
 									->
 									fcppt::string
 									{
 										return
 											std::move(
-												_state
+												_inner_state
 											)
 											+
 											fcppt::options::deref(

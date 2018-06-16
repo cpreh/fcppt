@@ -30,6 +30,7 @@ set(
 	libs/options/include/fcppt/options/deref.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
+	libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
@@ -159,6 +160,7 @@ set(
 	libs/options/include/fcppt/options/unit_switch_impl.hpp
 	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/check_short_long_names.cpp
+	libs/options/src/options/detail/check_sub_command_names.cpp
 	libs/options/src/options/detail/duplicate_names_text.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp

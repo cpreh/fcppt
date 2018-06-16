@@ -164,8 +164,7 @@ whether the flag was specified or not, the result type is either its
 <em>inactive value</em> or its <em>active value</em>. Flags never produce an
 error.
 As a shortcut, \link fcppt::options::switch_\endlink is a short-hand for a flag
-of type <code>bool</code>. There is also \link fcppt::options::unit_switch\endlink
-for a flag that always has to be specified (e.g. if you want to parse <code>--help</code>).
+of type <code>bool</code>.
 </td>
 </tr>
 <tr>
@@ -187,6 +186,14 @@ the parser's result type, an error occurs.
 <td>
 A parser that parses the empty command-line. This is useful, for example, when you want a
 sub-command that takes no arguments or options.
+</td>
+</tr>
+<tr>
+<td>
+\link fcppt::options::unit_switch\endlink
+</td>
+<td>
+A flag that always has to be specified (e.g. if you want to parse <code>--help</code>).
 </td>
 </tr>
 </table>
@@ -529,13 +536,14 @@ A description on how to use this parser.
 
 <tr>
 <td>
-<code>fcppt::options::result<result_type> parse(fcppt::options::parse_arguments &) const</code>
+<code>fcppt::options::parse_result<result_type> parse(fcppt::options::state &&, fcppt::options::parse_context const &) const</code>
 </td>
 <td>
-This is the main parsing function. An \link fcppt::options::parse_arguments\endlink
-contains the current command-line which the parser modifies in-place by removing
-arguments, flags or options. It also contains information on which option names
-the parent parser recognizes.
+This is the main parsing function. An \link fcppt::options::state\endlink
+contains the current command-line and an \link fcppt::options::parse_context\endlink
+contains information about the surrounding parsers.
+An \link fcppt::options::parse_result\endlink contains either an error or a result
+together with the remaining state.
 </td>
 </tr>
 </table>
