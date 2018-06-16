@@ -7,7 +7,7 @@
 #ifndef FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 #define FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/detail/truncation_check.hpp>
 #include <fcppt/optional/to_exception.hpp>
@@ -71,7 +71,7 @@ truncation_check(
 			{
 				return
 					fcppt::cast::bad_truncation_check(
-						fcppt::insert_to_fcppt_string(
+						fcppt::output_to_fcppt_string(
 							_source
 						),
 						std::type_index(

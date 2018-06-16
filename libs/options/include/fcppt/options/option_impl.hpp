@@ -8,7 +8,7 @@
 #define FCPPT_OPTIONS_OPTION_IMPL_HPP_INCLUDED
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional_string.hpp>
 #include <fcppt/string.hpp>
@@ -497,7 +497,7 @@ fcppt::options::option<
 					return
 						FCPPT_TEXT(" / ")
 						+
-						fcppt::insert_to_fcppt_string(
+						fcppt::output_to_fcppt_string(
 							_value
 						);
 				}

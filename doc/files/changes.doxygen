@@ -77,7 +77,7 @@ Catch2 is now required.
 
 <li>\ref fcpptstring
 	<ul>
-	<li>Added \link fcppt::insert_to_std_string_convert\endlink.</li>
+	<li>Added \link fcppt::output_to_std_string_convert\endlink.</li>
 	</ul>
 </li>
 
@@ -150,6 +150,12 @@ Catch2 is now required.
 	<li>All long and short names must be distinct now.</li>
 	<li>All parsers and their parameters are now passed as rvalue references.
 	Use \link fcppt::make_cref\endlink or \link fcppt::copy\endlink to pass them.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Renamed <code>fcppt::insert_to*_string</code> to <code>fcppt::output_to*_string</code>.</li>
 	</ul>
 </li>
 

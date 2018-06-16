@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/insert_to_std_string.hpp>
+#include <fcppt/output_to_std_string.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size.hpp>
@@ -51,7 +51,7 @@ int_vec_to_string_vec(
 {
 	return fcppt::algorithm::map<std::vector<std::string>>(
 		std::move(_vec),
-		[](int const _value) { return fcppt::insert_to_std_string(_value); }
+		[](int const _value) { return fcppt::output_to_std_string(_value); }
 	);
 }
 // ![vec_to_string]

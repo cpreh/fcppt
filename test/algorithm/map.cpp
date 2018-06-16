@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/insert_to_std_string.hpp>
+#include <fcppt/output_to_std_string.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -195,7 +195,7 @@ TEST_CASE(
 			-> std::string
 			{
 				return
-					fcppt::insert_to_std_string(
+					fcppt::output_to_std_string(
 						_value
 					);
 			}

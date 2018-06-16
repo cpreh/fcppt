@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -96,7 +96,7 @@ fcppt::options::flag<
 			fcppt::options::exception{
 				FCPPT_TEXT("The active and the inactive value must be different: ")
 				+
-				fcppt::insert_to_fcppt_string(
+				fcppt::output_to_fcppt_string(
 					_active_value.get()
 				)
 			};

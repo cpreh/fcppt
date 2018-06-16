@@ -556,11 +556,6 @@ set(
 	libs/core/include/fcppt/homogenous_pair_output.hpp
 	libs/core/include/fcppt/identity.hpp
 	libs/core/include/fcppt/impl/exception.hpp
-	libs/core/include/fcppt/insert_to_fcppt_string.hpp
-	libs/core/include/fcppt/insert_to_std_string.hpp
-	libs/core/include/fcppt/insert_to_std_string_convert.hpp
-	libs/core/include/fcppt/insert_to_std_wstring.hpp
-	libs/core/include/fcppt/insert_to_string.hpp
 	libs/core/include/fcppt/int_iterator_decl.hpp
 	libs/core/include/fcppt/int_iterator_fwd.hpp
 	libs/core/include/fcppt/int_iterator_impl.hpp
@@ -954,6 +949,11 @@ set(
 	libs/core/include/fcppt/optional_std_string_fwd.hpp
 	libs/core/include/fcppt/optional_string.hpp
 	libs/core/include/fcppt/optional_string_fwd.hpp
+	libs/core/include/fcppt/output_to_fcppt_string.hpp
+	libs/core/include/fcppt/output_to_std_string.hpp
+	libs/core/include/fcppt/output_to_std_string_convert.hpp
+	libs/core/include/fcppt/output_to_std_wstring.hpp
+	libs/core/include/fcppt/output_to_string.hpp
 	libs/core/include/fcppt/preprocessor/const.hpp
 	libs/core/include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/detail/function.hpp

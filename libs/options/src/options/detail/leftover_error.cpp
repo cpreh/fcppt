@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/output.hpp>
@@ -34,7 +34,7 @@ fcppt::options::detail::leftover_error(
 						fcppt::options::other_error{
 							FCPPT_TEXT("Leftover arguments ")
 							+
-							fcppt::insert_to_fcppt_string(
+							fcppt::output_to_fcppt_string(
 								fcppt::container::output(
 									_state.args_
 								)

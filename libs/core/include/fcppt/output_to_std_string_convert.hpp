@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_INSERT_TO_STD_STRING_CONVERT_HPP_INCLUDED
-#define FCPPT_INSERT_TO_STD_STRING_CONVERT_HPP_INCLUDED
+#ifndef FCPPT_OUTPUT_TO_STD_STRING_CONVERT_HPP_INCLUDED
+#define FCPPT_OUTPUT_TO_STD_STRING_CONVERT_HPP_INCLUDED
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -28,7 +28,7 @@ template<
 >
 inline
 std::string
-insert_to_std_string_convert(
+output_to_std_string_convert(
 	Type const &_value,
 	std::locale const &_locale
 		= std::locale()
@@ -36,7 +36,7 @@ insert_to_std_string_convert(
 {
 	return
 		fcppt::to_std_string(
-			fcppt::insert_to_fcppt_string(
+			fcppt::output_to_fcppt_string(
 				_value,
 				_locale
 			)

@@ -23,7 +23,7 @@ namespace type_traits
 
 \ingroup fcppttypetraits
 
-Tells if \a Type is a string. This trait is used by fcppt::insert_to_string and
+Tells if \a Type is a string. This trait is used by fcppt::output_to_string and
 fcppt::extract_from_string.
 
 \tparam Type Can be any type

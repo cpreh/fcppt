@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_INSERT_TO_STD_WSTRING_HPP_INCLUDED
-#define FCPPT_INSERT_TO_STD_WSTRING_HPP_INCLUDED
+#ifndef FCPPT_OUTPUT_TO_STD_WSTRING_HPP_INCLUDED
+#define FCPPT_OUTPUT_TO_STD_WSTRING_HPP_INCLUDED
 
-#include <fcppt/insert_to_string.hpp>
+#include <fcppt/output_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
@@ -29,22 +29,22 @@ consistent with the fcppt::extract_from_string function. See this function to
 see why this locale was chosen.
 
 \see fcppt::extract_from_string
-\see fcppt::insert_to_string
-\see fcppt::insert_to_fcppt_string
-\see fcppt::insert_to_std_string
+\see fcppt::output_to_string
+\see fcppt::output_to_fcppt_string
+\see fcppt::output_to_std_string
 */
 template<
 	typename Source
 >
 std::wstring
-insert_to_std_wstring(
+output_to_std_wstring(
 	Source const &_source,
 	std::locale const &_locale
 		= std::locale()
 )
 {
 	return
-		fcppt::insert_to_string<
+		fcppt::output_to_string<
 			std::wstring
 		>(
 			_source,

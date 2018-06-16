@@ -7,7 +7,7 @@
 #ifndef FCPPT_CATCH_EITHER_HPP_INCLUDED
 #define FCPPT_CATCH_EITHER_HPP_INCLUDED
 
-#include <fcppt/insert_to_std_string_convert.hpp>
+#include <fcppt/output_to_std_string_convert.hpp>
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -45,7 +45,7 @@ struct StringMaker<
 	)
 	{
 		return
-			fcppt::insert_to_std_string_convert(
+			fcppt::output_to_std_string_convert(
 				_value
 			);
 	}

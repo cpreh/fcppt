@@ -7,7 +7,7 @@
 #ifndef FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/information.hpp>
@@ -40,7 +40,7 @@ make_message(
 		+
 		FCPPT_TEXT(':')
 		+
-		fcppt::insert_to_fcppt_string(
+		fcppt::output_to_fcppt_string(
 			_info.line().get()
 		)
 		+

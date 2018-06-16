@@ -29,7 +29,7 @@ to loop over but also how the result is formed. What to loop over is best expres
 using ranges, while forming the result can be expressed using
 special algorithms. A very common operation is mapping one container into another.
 Here, we want to convert a container of integers into a container of strings by
-using \link fcppt::insert_to_string\endlink, which converts any type into a string
+using \link fcppt::output_to_string\endlink, which converts any type into a string
 that has an output operator defined:
 
 \snippet main.cpp vec_to_string

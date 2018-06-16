@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/output.hpp>
@@ -20,7 +20,7 @@ fcppt::options::detail::duplicate_names_text(
 	return
 		FCPPT_TEXT("A parser with duplicate names was constructed: ")
 		+
-		fcppt::insert_to_fcppt_string(
+		fcppt::output_to_fcppt_string(
 			fcppt::container::output(
 				_names
 			)

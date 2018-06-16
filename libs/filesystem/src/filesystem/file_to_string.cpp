@@ -6,7 +6,7 @@
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/exception.hpp>
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/optional_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -61,7 +61,7 @@ fcppt::filesystem::file_to_string(
 									+
 									FCPPT_TEXT(" of size ")
 									+
-									fcppt::insert_to_fcppt_string(
+									fcppt::output_to_fcppt_string(
 										_size
 									)
 									+

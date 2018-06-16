@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/insert_to_fcppt_string.hpp>
-#include <fcppt/insert_to_std_string.hpp>
-#include <fcppt/insert_to_std_string_convert.hpp>
-#include <fcppt/insert_to_std_wstring.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
+#include <fcppt/output_to_std_string.hpp>
+#include <fcppt/output_to_std_string_convert.hpp>
+#include <fcppt/output_to_std_wstring.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,12 +17,12 @@
 
 
 TEST_CASE(
-	"insert_to_string",
+	"output_to_string",
 	"[string]"
 )
 {
 	CHECK(
-		fcppt::insert_to_fcppt_string(
+		fcppt::output_to_fcppt_string(
 			42
 		)
 		==
@@ -32,7 +32,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::insert_to_std_string(
+		fcppt::output_to_std_string(
 			42
 		)
 		==
@@ -42,7 +42,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::insert_to_std_wstring(
+		fcppt::output_to_std_wstring(
 			42
 		)
 		==
@@ -52,7 +52,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::insert_to_std_string_convert(
+		fcppt::output_to_std_string_convert(
 			42
 		)
 		==

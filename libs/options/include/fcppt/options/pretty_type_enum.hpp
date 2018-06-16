@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_PRETTY_TYPE_ENUM_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRETTY_TYPE_ENUM_HPP_INCLUDED
 
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/enum/names.hpp>
 #include <fcppt/options/pretty_type_impl_fwd.hpp>
@@ -43,7 +43,7 @@ struct pretty_type_impl<
 	get()
 	{
 		return
-			fcppt::insert_to_fcppt_string(
+			fcppt::output_to_fcppt_string(
 				fcppt::container::output(
 					fcppt::enum_::names<
 						Enum

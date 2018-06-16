@@ -8,7 +8,7 @@
 #define FCPPT_ENUM_FROM_INT_EXN_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
-#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/cast/size.hpp>
@@ -78,7 +78,7 @@ from_int_exn(
 					fcppt::exception{
 						FCPPT_TEXT("Tried to cast value ")
 						+
-						fcppt::insert_to_fcppt_string(
+						fcppt::output_to_fcppt_string(
 							fcppt::cast::size<
 								unsigned long long
 							>(
