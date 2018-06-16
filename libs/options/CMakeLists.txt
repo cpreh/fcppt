@@ -28,6 +28,7 @@ set(
 	libs/options/include/fcppt/options/default_value_fwd.hpp
 	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/deref.hpp
+	libs/options/include/fcppt/options/deref_type.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
 	libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
@@ -35,6 +36,7 @@ set(
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
 	libs/options/include/fcppt/options/detail/deref.hpp
+	libs/options/include/fcppt/options/detail/deref_type.hpp
 	libs/options/include/fcppt/options/detail/duplicate_names_text.hpp
 	libs/options/include/fcppt/options/detail/flag_is_short.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
@@ -48,7 +50,6 @@ set(
 	libs/options/include/fcppt/options/detail/optional_error_fwd.hpp
 	libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 	libs/options/include/fcppt/options/detail/pop_arg.hpp
-	libs/options/include/fcppt/options/detail/result_of.hpp
 	libs/options/include/fcppt/options/detail/split_command.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/detail/use_flag.hpp

@@ -11,6 +11,8 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_fwd.hpp>
+#include <fcppt/record/element_fwd.hpp>
+#include <fcppt/record/variadic_fwd.hpp>
 
 
 namespace fcppt
@@ -24,11 +26,16 @@ namespace options
 \ingroup fcpptoptions
 */
 template<
+	typename Tag,
 	typename Parser
 >
 class sub_command
 {
 public:
+	typedef
+	Tag
+	tag;
+
 	sub_command(
 		fcppt::string &&,
 		Parser &&,
@@ -45,8 +52,13 @@ public:
 	help_text() const;
 
 	typedef
-	fcppt::options::result_of<
-		Parser
+	fcppt::record::variadic<
+		fcppt::record::element<
+			Tag,
+			fcppt::options::result_of<
+				Parser
+			>
+		>
 	>
 	result_type;
 private:

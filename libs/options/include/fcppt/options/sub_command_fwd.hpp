@@ -14,6 +14,7 @@ namespace options
 {
 
 template<
+	typename Tag,
 	typename Parser
 >
 class sub_command;

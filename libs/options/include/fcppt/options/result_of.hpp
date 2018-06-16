@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_RESULT_OF_HPP_INCLUDED
 #define FCPPT_OPTIONS_RESULT_OF_HPP_INCLUDED
 
-#include <fcppt/options/detail/result_of.hpp>
+#include <fcppt/options/deref_type.hpp>
 
 
 namespace fcppt
@@ -19,8 +19,6 @@ namespace options
 \brief The result of a parser type.
 
 \ingroup fcpptoptions
-
-\tparam Parser Either a parser or an \link fcppt::options::base_unique_ptr\endlink.
 */
 template<
 	typename Parser
@@ -29,9 +27,9 @@ using
 result_of
 =
 typename
-fcppt::options::detail::result_of<
+fcppt::options::deref_type<
 	Parser
->::type;
+>::result_type;
 
 }
 }

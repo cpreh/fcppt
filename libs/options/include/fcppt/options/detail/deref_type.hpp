@@ -4,11 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_RESULT_OF_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_RESULT_OF_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_DEREF_TYPE_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_DEREF_TYPE_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/options/base_unique_ptr_fwd.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -21,41 +24,42 @@ namespace detail
 template<
 	typename Parser
 >
-struct result_of
+struct deref_type
 {
 	typedef
-	typename
-	Parser::result_type
-	type;
-};
-
-template<
-	typename Result
->
-struct result_of<
-	fcppt::options::base_unique_ptr<
-		Result
+	std::remove_const_t<
+		Parser
 	>
->
-{
-	typedef
-	Result
 	type;
 };
 
 template<
 	typename Parser
 >
-struct result_of<
+struct deref_type<
+	fcppt::unique_ptr<
+		Parser
+	>
+>
+{
+	typedef
+	Parser
+	type;
+};
+
+template<
+	typename Parser
+>
+struct deref_type<
 	fcppt::reference<
 		Parser const
 	>
 >
-:
-fcppt::options::detail::result_of<
-	Parser
->
+
 {
+	typedef
+	Parser
+	type;
 };
 
 }

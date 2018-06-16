@@ -16,9 +16,11 @@
 
 
 template<
+	typename Tag,
 	typename Parser
 >
 fcppt::options::sub_command<
+	Tag,
 	Parser
 >::sub_command(
 	fcppt::string &&_name,
@@ -45,10 +47,12 @@ fcppt::options::sub_command<
 }
 
 template<
+	typename Tag,
 	typename Parser
 >
 fcppt::string const &
 fcppt::options::sub_command<
+	Tag,
 	Parser
 >::name() const
 {
@@ -57,10 +61,12 @@ fcppt::options::sub_command<
 }
 
 template<
+	typename Tag,
 	typename Parser
 >
 Parser const &
 fcppt::options::sub_command<
+	Tag,
 	Parser
 >::parser() const
 {
@@ -69,10 +75,12 @@ fcppt::options::sub_command<
 }
 
 template<
+	typename Tag,
 	typename Parser
 >
 fcppt::options::optional_help_text const &
 fcppt::options::sub_command<
+	Tag,
 	Parser
 >::help_text() const
 {

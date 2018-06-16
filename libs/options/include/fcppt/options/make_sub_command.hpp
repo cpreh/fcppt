@@ -27,10 +27,12 @@ namespace options
 \ingroup fcpptoptions
 */
 template<
+	typename Tag,
 	typename Parser
 >
 inline
 fcppt::options::sub_command<
+	Tag,
 	fcppt::type_traits::remove_cv_ref_t<
 		Parser
 	>
@@ -43,6 +45,7 @@ make_sub_command(
 {
 	return
 		fcppt::options::sub_command<
+			Tag,
 			fcppt::type_traits::remove_cv_ref_t<
 				Parser
 			>

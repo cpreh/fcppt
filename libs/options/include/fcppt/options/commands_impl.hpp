@@ -24,6 +24,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/commands_decl.hpp>
 #include <fcppt/options/deref.hpp>
+#include <fcppt/options/deref_type.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/help_text.hpp>
@@ -41,6 +42,7 @@
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
@@ -189,6 +191,21 @@ fcppt::options::commands<
 									auto &&_parser_result
 								)
 								{
+									typedef
+									fcppt::type_traits::remove_cv_ref_t<
+										decltype(
+											_sub_command
+										)
+									>
+									sub_command_type;
+
+									typedef
+									typename
+									fcppt::options::deref_type<
+										sub_command_type
+									>::tag
+									sub_command_tag;
+
 									return
 										fcppt::options::state_with_value<
 											result_type
@@ -203,9 +220,14 @@ fcppt::options::commands<
 													),
 												fcppt::options::sub_command_label{} =
 													variant_result{
-														std::move(
-															_parser_result.value_
-														)
+														fcppt::options::result_of<
+															sub_command_type
+														>{
+															sub_command_tag{} =
+																std::move(
+																	_parser_result.value_
+																)
+														}
 													}
 											}
 										};

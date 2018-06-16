@@ -429,8 +429,9 @@ should take no arguments, for which we make use of the unit parser.
 
 \snippet options/commands.cpp sub_parsers
 
-Next, we turn each of the parsers into a sub-command, giving it a name
-and an optional help text.
+Next, we turn each of the parsers into a sub-command, giving it a name,
+a label and an optional help text. The label is important to make
+the types of the sub-commands disjoiint.
 
 \snippet options/commands.cpp sub_commands
 

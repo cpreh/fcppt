@@ -115,8 +115,14 @@ try
 //![sub_parsers]
 
 //![sub_commands]
+	FCPPT_RECORD_MAKE_LABEL(
+		clone_label
+	);
+
 	auto const clone_command{
-		fcppt::options::make_sub_command(
+		fcppt::options::make_sub_command<
+			clone_label
+		>(
 			FCPPT_TEXT("clone"),
 			fcppt::make_cref(
 				clone_parser
@@ -129,8 +135,14 @@ try
 		)
 	};
 
+	FCPPT_RECORD_MAKE_LABEL(
+		pull_label
+	);
+
 	auto const pull_command{
-		fcppt::options::make_sub_command(
+		fcppt::options::make_sub_command<
+			pull_label
+		>(
 			FCPPT_TEXT("pull"),
 			fcppt::make_cref(
 				pull_parser
@@ -215,7 +227,11 @@ try
 						fcppt::record::get<
 							clone_path
 						>(
-							_clone
+							fcppt::record::get<
+								clone_label
+							>(
+								_clone
+							)
 						)
 						<<
 						FCPPT_TEXT('\n');

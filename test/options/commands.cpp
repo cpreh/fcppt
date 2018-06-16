@@ -24,6 +24,7 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/record/comparison.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/variant/comparison.hpp>
@@ -45,6 +46,14 @@ TEST_CASE(
 
 	FCPPT_RECORD_MAKE_LABEL(
 		option_label
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		command_foo_label
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		command_bar_label
 	);
 
 	typedef
@@ -73,7 +82,9 @@ TEST_CASE(
 				>(),
 				fcppt::options::optional_help_text{}
 			},
-			fcppt::options::make_sub_command(
+			fcppt::options::make_sub_command<
+				command_foo_label
+			>(
 				FCPPT_TEXT("foo"),
 				int_arg{
 					fcppt::options::long_name{
@@ -83,7 +94,9 @@ TEST_CASE(
 				},
 				fcppt::options::optional_help_text{}
 			),
-			fcppt::options::make_sub_command(
+			fcppt::options::make_sub_command<
+				command_bar_label
+			>(
 				FCPPT_TEXT("bar"),
 				int_option{
 					fcppt::options::optional_short_name{},
@@ -110,9 +123,27 @@ TEST_CASE(
 	result_type;
 
 	typedef
+	fcppt::record::variadic<
+		fcppt::record::element<
+			command_foo_label,
+			int_arg::result_type
+		>
+	>
+	command_foo_result_type;
+
+	typedef
+	fcppt::record::variadic<
+		fcppt::record::element<
+			command_bar_label,
+			int_option::result_type
+		>
+	>
+	command_bar_result_type;
+
+	typedef
 	fcppt::variant::variadic<
-		int_arg::result_type,
-		int_option::result_type
+		command_foo_result_type,
+		command_bar_result_type
 	>
 	command_result_type;
 
@@ -136,9 +167,12 @@ TEST_CASE(
 					},
 				fcppt::options::sub_command_label{} =
 					command_result_type{
-						int_arg::result_type{
-							arg_label{}
-								= 0
+						command_foo_result_type{
+							command_foo_label{} =
+								int_arg::result_type{
+									arg_label{}
+										= 0
+								}
 						}
 					}
 			}
@@ -166,9 +200,12 @@ TEST_CASE(
 					},
 				fcppt::options::sub_command_label{} =
 					command_result_type{
-						int_option::result_type{
-							option_label{}
-								= 0
+						command_bar_result_type{
+							command_bar_label{} =
+								int_option::result_type{
+									option_label{}
+										= 0
+								}
 						}
 					}
 			}
