@@ -8,9 +8,9 @@
 #define FCPPT_OPTIONS_OPTION_IMPL_HPP_INCLUDED
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/apply.hpp>
@@ -35,10 +35,10 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/pretty_type.hpp>
-#include <fcppt/options/state.hpp>
-#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>

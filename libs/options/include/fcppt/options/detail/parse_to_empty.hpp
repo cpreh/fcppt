@@ -12,9 +12,9 @@
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

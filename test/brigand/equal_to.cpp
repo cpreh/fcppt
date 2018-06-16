@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/not.hpp>
 #include <fcppt/brigand/equal_to.hpp>
 #include <fcppt/brigand/list_c.hpp>
-#include <fcppt/not.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

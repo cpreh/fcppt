@@ -24,8 +24,8 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
-#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/parse_result.hpp>
+#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/help_text.hpp>

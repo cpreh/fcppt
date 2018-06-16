@@ -13,8 +13,8 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/product_fwd.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/disjoint_product.hpp>
 
 

@@ -8,11 +8,11 @@
 #define FCPPT_OPTIONS_PARSE_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/parse_context.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 
 

@@ -15,8 +15,8 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/record/all_disjoint.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/variadic_fwd.hpp>

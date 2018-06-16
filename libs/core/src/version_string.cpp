@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/major_version.hpp>
 #include <fcppt/micro_version.hpp>
 #include <fcppt/minor_version.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/version_string.hpp>

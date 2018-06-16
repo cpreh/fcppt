@@ -6,8 +6,8 @@
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/exception.hpp>
-#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/optional_string.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/file_size.hpp>

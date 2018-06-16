@@ -20,9 +20,9 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/sum_decl.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/options/sum_decl.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/variant/variadic.hpp>

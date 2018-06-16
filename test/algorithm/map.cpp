@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/output_to_std_string.hpp>
 #include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/output_to_std_string.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/tag_type.hpp>

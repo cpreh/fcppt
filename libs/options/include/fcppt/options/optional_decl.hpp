@@ -14,8 +14,8 @@
 #include <fcppt/options/optional_fwd.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -6,10 +6,10 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/unit.hpp>
+#include <fcppt/unit_comparison.hpp>
+#include <fcppt/unit_output.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>

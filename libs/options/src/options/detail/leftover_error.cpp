@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/not.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/optional/make_if.hpp>

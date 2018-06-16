@@ -21,9 +21,9 @@
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
-#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/unit_switch_decl.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/get.hpp>

@@ -13,8 +13,8 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/variadic_fwd.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
