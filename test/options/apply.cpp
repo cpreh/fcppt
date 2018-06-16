@@ -12,8 +12,11 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/options/apply.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_active_value.hpp>
+#include <fcppt/options/make_inactive_value.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -73,12 +76,12 @@ TEST_CASE(
 				fcppt::options::long_name{
 					FCPPT_TEXT("flag")
 				},
-				int_flag_type::active_value{
+				fcppt::options::make_active_value(
 					42
-				},
-				int_flag_type::inactive_value{
+				),
+				fcppt::options::make_inactive_value(
 					10
-				},
+				),
 				fcppt::options::optional_help_text{}
 			}
 		)
@@ -103,5 +106,66 @@ TEST_CASE(
 					= 42
 			}
 		)
+	);
+}
+
+
+TEST_CASE(
+	"options::apply duplicate names",
+	"[options]"
+)
+{
+	FCPPT_RECORD_MAKE_LABEL(
+		flag_label1
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		flag_label2
+	);
+
+	typedef
+	fcppt::options::flag<
+		flag_label1,
+		int
+	>
+	flag1_type;
+
+	typedef
+	fcppt::options::flag<
+		flag_label2,
+		int
+	>
+	flag2_type;
+
+	CHECK_THROWS_AS(
+		fcppt::options::apply(
+			flag1_type{
+				fcppt::options::optional_short_name{},
+				fcppt::options::long_name{
+					FCPPT_TEXT("flag")
+				},
+				fcppt::options::make_active_value(
+					0
+				),
+				fcppt::options::make_inactive_value(
+					1
+				),
+				fcppt::options::optional_help_text{}
+			},
+			flag2_type{
+				fcppt::options::optional_short_name{},
+				fcppt::options::long_name{
+					FCPPT_TEXT("flag")
+				},
+				fcppt::options::make_active_value(
+					0
+				),
+				fcppt::options::make_inactive_value(
+					1
+				),
+				fcppt::options::optional_help_text{}
+			}
+		),
+		fcppt::options::duplicate_names
 	);
 }

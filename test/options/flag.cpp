@@ -10,6 +10,7 @@
 #include <fcppt/catch/either.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
+#include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -125,5 +126,43 @@ TEST_CASE(
 			fcppt::options::optional_help_text{}
 		),
 		fcppt::options::exception
+	);
+}
+
+TEST_CASE(
+	"options::flag duplicate names",
+	"[options]"
+)
+{
+	FCPPT_RECORD_MAKE_LABEL(
+		flag_label
+	);
+
+	typedef
+	fcppt::options::flag<
+		flag_label,
+		int
+	>
+	flag_type;
+
+	CHECK_THROWS_AS(
+		flag_type(
+			fcppt::options::optional_short_name{
+				fcppt::options::short_name{
+					FCPPT_TEXT("flag")
+				}
+			},
+			fcppt::options::long_name{
+				FCPPT_TEXT("flag")
+			},
+			fcppt::options::make_active_value(
+				0
+			),
+			fcppt::options::make_inactive_value(
+				1
+			),
+			fcppt::options::optional_help_text{}
+		),
+		fcppt::options::duplicate_names
 	);
 }

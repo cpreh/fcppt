@@ -48,10 +48,6 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
-	multiple_args
-)
-
-add_fcppt_options_test(
 	option
 	LINK_LIBS
 		fcppt_catch_interface

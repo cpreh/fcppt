@@ -11,6 +11,7 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_commands.hpp>
 #include <fcppt/options/make_sub_command.hpp>
@@ -23,6 +24,7 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_label.hpp>
+#include <fcppt/options/unit.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -240,5 +242,51 @@ TEST_CASE(
 				FCPPT_TEXT("foo"),
 			}
 		).has_failure()
+	);
+}
+
+TEST_CASE(
+	"options::commands duplicate names",
+	"[options]"
+)
+{
+	FCPPT_RECORD_MAKE_LABEL(
+		unit_label
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		command_1_label
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		command_2_label
+	);
+
+	CHECK_THROWS_AS(
+		fcppt::options::make_commands(
+			fcppt::options::unit<
+				unit_label
+			>{},
+			fcppt::options::make_sub_command<
+				command_1_label
+			>(
+				FCPPT_TEXT("foo"),
+				fcppt::options::unit<
+					unit_label
+				>{},
+				fcppt::options::optional_help_text{}
+			),
+			fcppt::options::make_sub_command<
+				command_2_label
+			>(
+				FCPPT_TEXT("foo"),
+				fcppt::options::unit<
+					unit_label
+				>{},
+				fcppt::options::optional_help_text{}
+			)
+
+		),
+		fcppt::options::duplicate_names
 	);
 }
