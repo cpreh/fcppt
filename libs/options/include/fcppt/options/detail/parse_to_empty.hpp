@@ -11,9 +11,11 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -40,7 +42,8 @@ fcppt::options::result<
 >
 parse_to_empty(
 	Parser const &_parser,
-	fcppt::options::parse_arguments &&_arguments
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 )
 {
 	typedef
@@ -54,12 +57,15 @@ parse_to_empty(
 			fcppt::options::deref(
 				_parser
 			).parse(
-				_arguments
+				std::move(
+					_state
+				),
+				_context
 			),
-			[
-				&_arguments
-			](
-				result_type &&_result
+			[](
+				fcppt::options::state_with_value<
+					result_type
+				> &&_result
 			)
 			{
 				typedef
@@ -74,7 +80,7 @@ parse_to_empty(
 				return
 					fcppt::optional::maybe(
 						fcppt::options::detail::leftover_error(
-							_arguments.state_
+							_result.state_
 						),
 						[
 							&_result
@@ -82,7 +88,7 @@ parse_to_empty(
 							return
 								return_type{
 									std::move(
-										_result
+										_result.value_
 									)
 								};
 						},

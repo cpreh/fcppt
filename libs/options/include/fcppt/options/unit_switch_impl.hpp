@@ -19,8 +19,10 @@
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/unit_switch_decl.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
@@ -56,7 +58,7 @@ fcppt::options::unit_switch<
 template<
 	typename Label
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::unit_switch<
 		Label
@@ -65,38 +67,53 @@ fcppt::options::result<
 fcppt::options::unit_switch<
 	Label
 >::parse(
-	fcppt::options::parse_arguments &_state
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
 	return
 		fcppt::either::bind(
 			impl_.parse(
-				_state
+				std::move(
+					_state
+				),
+				_context
 			),
 			[
 				this
 			](
-				fcppt::options::result_of<
-					impl
-				> const &_result
+				fcppt::options::state_with_value<
+					fcppt::options::result_of<
+						impl
+					>
+				> &&_result
 			)
 			{
 				return
 					fcppt::record::get<
 						Label
 					>(
-						_result
+						_result.value_
 					)
 					?
 						fcppt::options::make_success(
-							result_type{
-								Label{} =
-									fcppt::unit{}
+							fcppt::options::state_with_value<
+								result_type
+							>{
+								std::move(
+									_result.state_
+								),
+								result_type{
+									Label{} =
+										fcppt::unit{}
+								}
 							}
 						)
 					:
 						fcppt::either::make_failure<
-							result_type
+							fcppt::options::state_with_value<
+								result_type
+							>
 						>(
 							fcppt::options::error{
 								fcppt::options::missing_error{

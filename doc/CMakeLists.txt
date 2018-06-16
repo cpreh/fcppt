@@ -1595,9 +1595,7 @@ set(
 	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/deref.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
-	libs/options/include/fcppt/options/detail/arguments_from_parser.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
-	libs/options/include/fcppt/options/detail/combine_errors.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
@@ -1683,9 +1681,11 @@ set(
 	libs/options/include/fcppt/options/other_error.hpp
 	libs/options/include/fcppt/options/other_error_fwd.hpp
 	libs/options/include/fcppt/options/parse.hpp
-	libs/options/include/fcppt/options/parse_arguments.hpp
-	libs/options/include/fcppt/options/parse_arguments_fwd.hpp
+	libs/options/include/fcppt/options/parse_context.hpp
+	libs/options/include/fcppt/options/parse_context_fwd.hpp
 	libs/options/include/fcppt/options/parse_help.hpp
+	libs/options/include/fcppt/options/parse_result.hpp
+	libs/options/include/fcppt/options/parse_result_fwd.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
 	libs/options/include/fcppt/options/pretty_type_enum.hpp
 	libs/options/include/fcppt/options/pretty_type_impl.hpp
@@ -1700,6 +1700,10 @@ set(
 	libs/options/include/fcppt/options/short_name_fwd.hpp
 	libs/options/include/fcppt/options/state.hpp
 	libs/options/include/fcppt/options/state_fwd.hpp
+	libs/options/include/fcppt/options/state_with_value.hpp
+	libs/options/include/fcppt/options/state_with_value_decl.hpp
+	libs/options/include/fcppt/options/state_with_value_fwd.hpp
+	libs/options/include/fcppt/options/state_with_value_impl.hpp
 	libs/options/include/fcppt/options/sub_command_decl.hpp
 	libs/options/include/fcppt/options/sub_command_fwd.hpp
 	libs/options/include/fcppt/options/sub_command_impl.hpp

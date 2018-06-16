@@ -16,8 +16,9 @@
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result_fwd.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/unit_decl.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
@@ -35,7 +36,7 @@ fcppt::options::unit<
 template<
 	typename Label
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::unit<
 		Label
@@ -44,21 +45,31 @@ fcppt::options::result<
 fcppt::options::unit<
 	Label
 >::parse(
-	fcppt::options::parse_arguments &_args
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &
 ) const
 {
 	return
-		_args.state_.empty()
+		_state.empty()
 		?
 			fcppt::options::make_success(
-				result_type{
-					Label{} =
-						fcppt::unit{}
+				fcppt::options::state_with_value<
+					result_type
+				>{
+					std::move(
+						_state
+					),
+					result_type{
+						Label{} =
+							fcppt::unit{}
+					}
 				}
 			)
 		:
 			fcppt::either::make_failure<
-				result_type
+				fcppt::options::state_with_value<
+					result_type
+				>
 			>(
 				fcppt::options::error{
 					fcppt::options::other_error{

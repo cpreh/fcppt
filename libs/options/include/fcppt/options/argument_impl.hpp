@@ -23,9 +23,11 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/pretty_type.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_result.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>
@@ -65,7 +67,7 @@ template<
 	typename Label,
 	typename Type
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::argument<
 		Label,
@@ -76,7 +78,8 @@ fcppt::options::argument<
 	Label,
 	Type
 >::parse(
-	fcppt::options::parse_arguments &_arguments
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
 	return
@@ -84,8 +87,9 @@ fcppt::options::argument<
 			fcppt::either::from_optional(
 				fcppt::options::detail::pop_arg(
 					fcppt::make_ref(
-						_arguments
-					)
+						_state
+					),
+					_context
 				),
 				[
 					this
@@ -103,6 +107,7 @@ fcppt::options::argument<
 				}
 			),
 			[
+				&_state,
 				this
 			](
 				fcppt::string const &_arg
@@ -116,16 +121,25 @@ fcppt::options::argument<
 							>(
 								_arg
 							),
-							[](
+							[
+								&_state
+							](
 								Type &&_value
 							)
 							{
 								return
-									result_type{
-										Label{} =
-											std::move(
-												_value
-											)
+									fcppt::options::state_with_value<
+										result_type
+									>{
+										std::move(
+											_state
+										),
+										result_type{
+											Label{} =
+												std::move(
+													_value
+												)
+										}
 									};
 							}
 						),

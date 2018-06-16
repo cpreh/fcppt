@@ -17,10 +17,12 @@
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sum_decl.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -123,7 +125,7 @@ template<
 	typename Left,
 	typename Right
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::sum<
 		Left,
@@ -134,66 +136,83 @@ fcppt::options::sum<
 	Left,
 	Right
 >::parse(
-	fcppt::options::parse_arguments &_state
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
-	// TODO: Return parse arguments
-	fcppt::options::parse_arguments args_copy{
-		_state
-	};
-
 	return
 		fcppt::either::match(
 			fcppt::options::deref(
 				left_
 			).parse(
-				_state
+				fcppt::options::state{
+					_state
+				},
+				_context
 			),
 			[
-				&args_copy,
+				&_context,
 				&_state,
 				this
 			](
 				fcppt::options::error &&
 			)
 			{
-				_state =
-					args_copy;
-
 				return
 					fcppt::either::map(
 						fcppt::options::deref(
 							this->right_
 						).parse(
-							_state
+							std::move(
+								_state
+							),
+							_context
 						),
 						[](
-							fcppt::options::result_of<
-								Right
+							fcppt::options::state_with_value<
+								fcppt::options::result_of<
+									Right
+								>
 							> &&_result
 						)
 						{
 							return
-								result_type{
+								fcppt::options::state_with_value<
+									result_type
+								>{
 									std::move(
-										_result
-									)
+										_result.state_
+									),
+									result_type{
+										std::move(
+											_result.value_
+										)
+									}
 								};
 						}
 					);
 			},
 			[](
-				fcppt::options::result_of<
-					Left
+				fcppt::options::state_with_value<
+					fcppt::options::result_of<
+						Left
+					>
 				> &&_result
 			)
 			{
 				return
 					fcppt::options::make_success(
-						result_type{
+						fcppt::options::state_with_value<
+							result_type
+						>{
 							std::move(
-								_result
-							)
+								_result.state_
+							),
+							result_type{
+								std::move(
+									_result.value_
+								)
+							}
 						}
 					);
 			}

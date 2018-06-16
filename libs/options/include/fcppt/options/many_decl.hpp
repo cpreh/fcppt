@@ -11,9 +11,10 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/many_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -85,11 +86,12 @@ public:
 	>
 	result_type;
 
-	fcppt::options::result<
+	fcppt::options::parse_result<
 		result_type
 	>
 	parse(
-		fcppt::options::parse_arguments &
+		fcppt::options::state &&,
+		fcppt::options::parse_context const &
 	) const;
 
 	fcppt::options::flag_name_set

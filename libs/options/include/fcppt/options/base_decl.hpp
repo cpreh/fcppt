@@ -12,8 +12,9 @@
 #include <fcppt/options/base_fwd.hpp>
 #include <fcppt/options/flag_name_set_fwd.hpp>
 #include <fcppt/options/option_name_set_fwd.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result_fwd.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/is_object.hpp>
 
 
@@ -59,11 +60,12 @@ public:
 	result_type;
 
 	virtual
-	fcppt::options::result<
+	fcppt::options::parse_result<
 		result_type
 	>
 	parse(
-		fcppt::options::parse_arguments &
+		fcppt::options::state &&,
+		fcppt::options::parse_context const &
 	) const = 0;
 
 	virtual

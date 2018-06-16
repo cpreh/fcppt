@@ -12,9 +12,11 @@
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/concrete_decl.hpp>
 #include <fcppt/record/permute.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,12 +35,12 @@ fcppt::options::detail::concrete<
 	Parser &&_parser
 )
 :
-	base_type(),
-	parser_(
+	base_type{},
+	parser_{
 		std::move(
 			_parser
 		)
-	)
+	}
 {
 }
 
@@ -57,7 +59,7 @@ template<
 	typename Result,
 	typename Parser
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::detail::concrete<
 		Result,
@@ -68,7 +70,8 @@ fcppt::options::detail::concrete<
 	Result,
 	Parser
 >::parse(
-	fcppt::options::parse_arguments &_state
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
 	return
@@ -76,22 +79,34 @@ fcppt::options::detail::concrete<
 			fcppt::options::deref(
 				parser_
 			).parse(
-				_state
+				std::move(
+					_state
+				),
+				_context
 			),
 			[](
-				fcppt::options::result_of<
-					Parser
+				fcppt::options::state_with_value<
+					fcppt::options::result_of<
+						Parser
+					>
 				> &&_result
 			)
 			{
 				return
-					fcppt::record::permute<
+					fcppt::options::state_with_value<
 						result_type
-					>(
+					>{
 						std::move(
-							_result
+							_result.state_
+						),
+						fcppt::record::permute<
+							result_type
+						>(
+							std::move(
+								_result.value_
+							)
 						)
-					);
+					};
 			}
 		);
 }

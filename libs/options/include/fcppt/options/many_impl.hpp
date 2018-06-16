@@ -22,8 +22,10 @@
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_to_type.hpp>
@@ -111,7 +113,7 @@ fcppt::options::many<
 template<
 	typename Parser
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::many<
 		Parser
@@ -120,7 +122,8 @@ fcppt::options::result<
 fcppt::options::many<
 	Parser
 >::parse(
-	fcppt::options::parse_arguments &_state
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
 	// TODO: This is super ugly
@@ -153,6 +156,13 @@ fcppt::options::many<
 	>
 	optional_error;
 
+	fcppt::options::state state{
+		std::move(
+			_state
+		)
+	};
+
+	// TODO: This is super inefficient. Allow missing_error to return state!
 	while(
 		!optional_error.has_value()
 	)
@@ -160,7 +170,10 @@ fcppt::options::many<
 			fcppt::options::deref(
 				parser_
 			).parse(
-				_state
+				fcppt::options::state{
+					state
+				},
+				_context
 			),
 			[
 				&optional_error
@@ -176,20 +189,34 @@ fcppt::options::many<
 					);
 			},
 			[
+				&state,
 				&result
 			](
-				fcppt::options::result_of<
-					Parser
+				fcppt::options::state_with_value<
+					fcppt::options::result_of<
+						Parser
+					>
 				> &&_inner
 			)
 			{
+				state =
+					std::move(
+						_inner.state_
+					);
+
+				fcppt::options::result_of<
+					Parser
+				> &inner_value{
+					_inner.value_
+				};
+
 				result =
 					fcppt::record::init<
 						result_type
 					>(
 						[
 							&result,
-							&_inner
+							&inner_value
 						](
 							auto const _fcppt_inner_element
 						)
@@ -229,7 +256,7 @@ fcppt::options::many<
 									fcppt::record::get<
 										label
 									>(
-										_inner
+										inner_value
 									)
 								)
 							);
@@ -247,6 +274,7 @@ fcppt::options::many<
 				optional_error.get_unsafe()
 			),
 			[
+				&state,
 				&result
 			](
 				fcppt::options::missing_error const &
@@ -254,8 +282,15 @@ fcppt::options::many<
 			{
 				return
 					fcppt::options::make_success(
-						std::move(
-							result
+						fcppt::options::state_with_value<
+							result_type
+						>(
+							std::move(
+								state
+							),
+							std::move(
+								result
+							)
 						)
 					);
 			},
@@ -265,7 +300,9 @@ fcppt::options::many<
 			{
 				return
 					fcppt::either::make_failure<
-						result_type
+						fcppt::options::state_with_value<
+							result_type
+						>
 					>(
 						fcppt::options::error{
 							std::move(

@@ -24,10 +24,11 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/help_text.hpp>
@@ -106,7 +107,7 @@ template<
 	typename Label,
 	typename Type
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::flag<
 		Label,
@@ -117,16 +118,18 @@ fcppt::options::flag<
 	Label,
 	Type
 >::parse(
-	fcppt::options::parse_arguments &_arguments
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &
 ) const
 {
 	fcppt::reference<
 		fcppt::options::state
 	> const state{
-		_arguments.state_
+		_state
 	};
 
 	bool const long_found{
+		// TODO: Move state
 		fcppt::options::detail::use_flag(
 			state,
 			long_name_.get(),
@@ -138,24 +141,32 @@ fcppt::options::flag<
 
 	auto const make_success(
 		[
+			&_state,
 			this
 		](
 			bool const _value
 		)
 		->
-		fcppt::options::result<
+		fcppt::options::parse_result<
 			result_type
 		>
 		{
 			return
 				fcppt::options::make_success(
-					result_type{
-						Label{} =
-							_value
-							?
-								this->active_value_.get()
-							:
-								this->inactive_value_.get()
+					fcppt::options::state_with_value<
+						result_type
+					>{
+						std::move(
+							_state
+						),
+						result_type{
+							Label{} =
+								_value
+								?
+									this->active_value_.get()
+								:
+									this->inactive_value_.get()
+						}
 					}
 				);
 		}
@@ -198,7 +209,9 @@ fcppt::options::flag<
 					short_found
 					?
 						fcppt::either::make_failure<
-							result_type
+							fcppt::options::state_with_value<
+								result_type
+							>
 						>(
 							fcppt::options::error{
 								fcppt::options::other_error{

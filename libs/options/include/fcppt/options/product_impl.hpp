@@ -12,21 +12,20 @@
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/set_intersection.hpp>
 #include <fcppt/algorithm/set_union.hpp>
-#include <fcppt/either/failure_opt.hpp>
+#include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/either/match.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/duplicate_names.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/product_decl.hpp>
-#include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/detail/combine_errors.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/detail/duplicate_names_text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -134,7 +133,7 @@ template<
 	typename Left,
 	typename Right
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::product<
 		Left,
@@ -145,102 +144,79 @@ fcppt::options::product<
 	Left,
 	Right
 >::parse(
-	fcppt::options::parse_arguments &_state
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 	return
-		fcppt::either::match(
+		fcppt::either::bind(
 			fcppt::options::deref(
 				left_
 			).parse(
-				_state
+				std::move(
+					_state
+				),
+				_context
 			),
 			[
-				&_state,
+				&_context,
 				this
 			](
-				fcppt::options::error &&_error
-			)
-			{
-				return
-					fcppt::options::result<
-						result_type
-					>{
-						fcppt::optional::maybe(
-							fcppt::either::failure_opt(
-								fcppt::options::deref(
-									right_
-								).parse(
-									_state
-								)
-							),
-							[
-								&_error
-							]()
-							->
-							fcppt::options::error
-							{
-								return
-									std::move(
-										_error
-									);
-							},
-							[
-								&_error
-							](
-								fcppt::options::error &&_other_error
-							)
-							->
-							fcppt::options::error
-							{
-								return
-									fcppt::options::detail::combine_errors(
-										std::move(
-											_error
-										),
-										std::move(
-											_other_error
-										)
-									);
-							}
-						)
-					};
-			},
-			[
-				&_state,
-				this
-			](
-				fcppt::options::result_of<
-					Left
+				fcppt::options::state_with_value<
+					fcppt::options::result_of<
+						Left
+					>
 				> &&_left_result
 			)
+			->
+			fcppt::options::parse_result<
+				result_type
+			>
 			{
+				fcppt::options::result_of<
+					Left
+				> &left_value{
+					_left_result.value_
+				};
+
 				return
 					fcppt::either::map(
 						fcppt::options::deref(
 							right_
 						).parse(
-							_state
+							std::move(
+								_left_result.state_
+							),
+							_context
 						),
 						[
-							&_left_result
+							&left_value
 						](
-							fcppt::options::result_of<
-								Right
+							fcppt::options::state_with_value<
+								fcppt::options::result_of<
+									Right
+								>
 							> &&_right_result
 						)
 						{
 							return
-								fcppt::record::multiply_disjoint(
+								fcppt::options::state_with_value<
+									result_type
+								>{
 									std::move(
-										_left_result
+										_right_result.state_
 									),
-									std::move(
-										_right_result
+									fcppt::record::multiply_disjoint(
+										std::move(
+											left_value
+										),
+										std::move(
+											_right_result.value_
+										)
 									)
-								);
+								};
 						}
 					);
 			}

@@ -8,7 +8,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/option_name_set_fwd.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -25,21 +25,18 @@ fcppt::optional::object<
 	>
 >
 fcppt::options::detail::split_command(
-	fcppt::options::parse_arguments const &_parse_args
+	fcppt::args_vector const &_args,
+	fcppt::options::option_name_set const &_option_names
 )
 {
-	fcppt::args_vector const &args{
-		_parse_args.state_.args_
-	};
-
 	return
 		fcppt::optional::map(
 			fcppt::options::impl::next_arg(
-				args,
-				_parse_args.option_names_
+				_args,
+				_option_names
 			),
 			[
-				&args
+				&_args
 			](
 				fcppt::args_vector::const_iterator const _pos
 			)
@@ -47,7 +44,7 @@ fcppt::options::detail::split_command(
 				return
 					std::make_tuple(
 						fcppt::args_vector{
-							args.begin(),
+							_args.begin(),
 							_pos
 						},
 						*_pos,
@@ -55,7 +52,7 @@ fcppt::options::detail::split_command(
 							std::next(
 								_pos
 							),
-							args.end()
+							_args.end()
 						}
 					);
 			}

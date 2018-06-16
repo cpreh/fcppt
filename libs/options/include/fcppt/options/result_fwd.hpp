@@ -17,7 +17,7 @@ namespace options
 {
 
 /**
-\brief The result of a parse.
+\brief The result of a parse operation.
 
 \ingroup fcpptoptions
 

@@ -9,7 +9,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/optional/map.hpp>
-#include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/parse_context.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
 
@@ -17,19 +18,20 @@
 fcppt::optional_string
 fcppt::options::detail::pop_arg(
 	fcppt::reference<
-		fcppt::options::parse_arguments
-	> const _parse_args
+		fcppt::options::state
+	> const _state,
+	fcppt::options::parse_context const &_context
 )
 {
 	fcppt::args_vector &args{
-		_parse_args.get().state_.args_
+		_state.get().args_
 	};
 
 	return
 		fcppt::optional::map(
 			fcppt::options::impl::next_arg(
 				args,
-				_parse_args.get().option_names_
+				_context.option_names_
 			),
 			[
 				&args

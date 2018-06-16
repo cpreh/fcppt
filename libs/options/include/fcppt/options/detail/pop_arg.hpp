@@ -9,7 +9,8 @@
 
 #include <fcppt/optional_string.hpp>
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 
@@ -23,9 +24,11 @@ namespace detail
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::optional_string
 pop_arg(
+	// TODO: Return this
 	fcppt::reference<
-		fcppt::options::parse_arguments
-	>
+		fcppt::options::state
+	>,
+	fcppt::options::parse_context const &
 );
 
 }

@@ -17,6 +17,7 @@
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/either/join.hpp>
+#include <fcppt/either/map.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/map.hpp>
@@ -31,8 +32,11 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/pretty_type.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
@@ -97,7 +101,7 @@ template<
 	typename Label,
 	typename Type
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::option<
 		Label,
@@ -108,7 +112,8 @@ fcppt::options::option<
 	Label,
 	Type
 >::parse(
-	fcppt::options::parse_arguments &_args
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &
 ) const
 {
 	typedef
@@ -288,8 +293,9 @@ fcppt::options::option<
 	flag_result const long_found{
 		map_result(
 			fcppt::options::detail::use_option(
+				// TODO: Move state
 				fcppt::make_ref(
-					_args.state_
+					_state
 				),
 				long_name_.get(),
 				fcppt::options::detail::flag_is_short{
@@ -308,6 +314,10 @@ fcppt::options::option<
 			fcppt::optional_string const &_long_value_opt,
 			fcppt::optional_string const &_short_value_opt
 		)
+		->
+		fcppt::options::result<
+			result_type
+		>
 		{
 			FCPPT_PP_PUSH_WARNING
 			FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -319,6 +329,10 @@ fcppt::options::option<
 						&_short_value_opt,
 						make_or_default_value
 					]()
+					->
+					fcppt::options::result<
+						result_type
+					>
 					{
 						return
 							make_or_default_value(
@@ -332,6 +346,10 @@ fcppt::options::option<
 					](
 						fcppt::string const &_long_value
 					)
+					->
+					fcppt::options::result<
+						result_type
+					>
 					{
 						return
 							_short_value_opt.has_value()
@@ -363,59 +381,79 @@ fcppt::options::option<
 	);
 
 	return
-		fcppt::optional::maybe(
-			short_name_,
-			[
-				make_or_default_value,
-				&long_found
-			]()
-			->
-			fcppt::options::result<
-				result_type
-			>
-			{
-				return
-					fcppt::either::bind(
-						long_found,
-						make_or_default_value
-					);
-			},
-			[
-				combine_results,
-				map_result,
-				&long_found,
-				&_args
-			](
-				fcppt::options::short_name const &_short_name
-			)
-			->
-			fcppt::options::result<
-				result_type
-			>
-			{
-				flag_result const short_found{
-					map_result(
-						fcppt::options::detail::use_option(
-							fcppt::make_ref(
-								_args.state_
-							),
-							_short_name.get(),
-							fcppt::options::detail::flag_is_short{
-								true
-							}
-						)
-					)
-				};
-
-				return
-					fcppt::either::join(
-						// TODO: Combine both errors?
-						fcppt::either::apply(
-							combine_results,
+		fcppt::either::map(
+			fcppt::optional::maybe(
+				short_name_,
+				[
+					make_or_default_value,
+					&long_found
+				]()
+				->
+				fcppt::options::result<
+					result_type
+				>
+				{
+					return
+						fcppt::either::bind(
 							long_found,
-							short_found
+							make_or_default_value
+						);
+				},
+				[
+					combine_results,
+					map_result,
+					&long_found,
+					&_state
+				](
+					fcppt::options::short_name const &_short_name
+				)
+				->
+				fcppt::options::result<
+					result_type
+				>
+				{
+					flag_result const short_found{
+						map_result(
+							fcppt::options::detail::use_option(
+								// TODO: Move state
+								fcppt::make_ref(
+									_state
+								),
+								_short_name.get(),
+								fcppt::options::detail::flag_is_short{
+									true
+								}
+							)
 						)
-					);
+					};
+
+					return
+						fcppt::either::join(
+							fcppt::either::apply(
+								combine_results,
+								long_found,
+								short_found
+							)
+						);
+				}
+			),
+			[
+				&_state
+			](
+				result_type &&_result
+			)
+			{
+				return
+					fcppt::options::state_with_value<
+						result_type
+					>{
+						std::move(
+							_state
+						),
+						std::move(
+							_result
+						)
+					};
 			}
 		);
 }

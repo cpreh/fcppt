@@ -16,9 +16,10 @@
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/make_sum.hpp>
+#include <fcppt/options/parse_context.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/detail/arguments_from_parser.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -91,10 +92,14 @@ parse_help(
 		fcppt::either::match(
 			fcppt::options::detail::parse_to_empty(
 				combined_parser,
-				fcppt::options::detail::arguments_from_parser(
-					_args,
-					combined_parser
-				)
+				fcppt::options::state{
+					fcppt::args_vector{
+						_args
+					}
+				},
+				fcppt::options::parse_context{
+					combined_parser.option_names()
+				}
 			),
 			[](
 				fcppt::options::error &&_error

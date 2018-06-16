@@ -13,8 +13,9 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
-#include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/result.hpp>
+#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_result.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/switch_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -57,7 +58,7 @@ fcppt::options::switch_<
 template<
 	typename Label
 >
-fcppt::options::result<
+fcppt::options::parse_result<
 	typename
 	fcppt::options::switch_<
 		Label
@@ -66,12 +67,16 @@ fcppt::options::result<
 fcppt::options::switch_<
 	Label
 >::parse(
-	fcppt::options::parse_arguments &_state
+	fcppt::options::state &&_state,
+	fcppt::options::parse_context const &_context
 ) const
 {
 	return
 		impl_.parse(
-			_state
+			std::move(
+				_state
+			),
+			_context
 		);
 }
 

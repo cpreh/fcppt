@@ -4,17 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/parse_arguments.hpp>
+#ifndef FCPPT_OPTIONS_STATE_WITH_VALUE_IMPL_HPP_INCLUDED
+#define FCPPT_OPTIONS_STATE_WITH_VALUE_IMPL_HPP_INCLUDED
+
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::options::parse_arguments::parse_arguments(
+template<
+	typename T
+>
+fcppt::options::state_with_value<
+	T
+>::state_with_value(
 	fcppt::options::state &&_state,
-	fcppt::options::option_name_set &&_option_names
+	T &&_value
 )
 :
 	state_{
@@ -22,10 +29,12 @@ fcppt::options::parse_arguments::parse_arguments(
 			_state
 		)
 	},
-	option_names_{
+	value_{
 		std::move(
-			_option_names
+			_value
 		)
 	}
 {
 }
+
+#endif

@@ -29,9 +29,7 @@ set(
 	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/deref.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
-	libs/options/include/fcppt/options/detail/arguments_from_parser.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
-	libs/options/include/fcppt/options/detail/combine_errors.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
@@ -117,9 +115,11 @@ set(
 	libs/options/include/fcppt/options/other_error.hpp
 	libs/options/include/fcppt/options/other_error_fwd.hpp
 	libs/options/include/fcppt/options/parse.hpp
-	libs/options/include/fcppt/options/parse_arguments.hpp
-	libs/options/include/fcppt/options/parse_arguments_fwd.hpp
+	libs/options/include/fcppt/options/parse_context.hpp
+	libs/options/include/fcppt/options/parse_context_fwd.hpp
 	libs/options/include/fcppt/options/parse_help.hpp
+	libs/options/include/fcppt/options/parse_result.hpp
+	libs/options/include/fcppt/options/parse_result_fwd.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
 	libs/options/include/fcppt/options/pretty_type_enum.hpp
 	libs/options/include/fcppt/options/pretty_type_impl.hpp
@@ -134,6 +134,10 @@ set(
 	libs/options/include/fcppt/options/short_name_fwd.hpp
 	libs/options/include/fcppt/options/state.hpp
 	libs/options/include/fcppt/options/state_fwd.hpp
+	libs/options/include/fcppt/options/state_with_value.hpp
+	libs/options/include/fcppt/options/state_with_value_decl.hpp
+	libs/options/include/fcppt/options/state_with_value_fwd.hpp
+	libs/options/include/fcppt/options/state_with_value_impl.hpp
 	libs/options/include/fcppt/options/sub_command_decl.hpp
 	libs/options/include/fcppt/options/sub_command_fwd.hpp
 	libs/options/include/fcppt/options/sub_command_impl.hpp
@@ -155,7 +159,6 @@ set(
 	libs/options/include/fcppt/options/unit_switch_impl.hpp
 	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/check_short_long_names.cpp
-	libs/options/src/options/detail/combine_errors.cpp
 	libs/options/src/options/detail/duplicate_names_text.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
@@ -166,7 +169,7 @@ set(
 	libs/options/src/options/detail/use_flag.cpp
 	libs/options/src/options/detail/use_option.cpp
 	libs/options/src/options/is_option.cpp
-	libs/options/src/options/parse_arguments.cpp
+	libs/options/src/options/parse_context.cpp
 	libs/options/src/options/pretty_type_impl.cpp
 	libs/options/src/options/state.cpp
 )
