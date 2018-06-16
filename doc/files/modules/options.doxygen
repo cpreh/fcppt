@@ -290,7 +290,6 @@ the result of <code>O</code> with label name <code>fcppt::options::options_label
 a variant of results of <code>S_1,...,S_n</code> with label name <code>fcppt::options::sub_command_label</code>.
 </li>
 </ul>
-You have to make sure that the result types of <code>S_1,...,S_n</code> are all distinct.
 
 See \link fcppt::options::make_sub_command\endlink and \link fcppt::options::make_commands\endlink.
 

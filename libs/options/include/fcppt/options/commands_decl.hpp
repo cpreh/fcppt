@@ -17,10 +17,15 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/record/all_disjoint.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/variadic_fwd.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
@@ -64,6 +69,21 @@ public:
 		>=
 		1u,
 		"You must specify at least one subparser"
+	);
+
+	static_assert(
+		fcppt::record::all_disjoint<
+			::brigand::transform<
+				::brigand::list<
+					SubCommands...
+				>,
+				::brigand::bind<
+					fcppt::options::result_of,
+					::brigand::_1
+				>
+			>
+		>::value,
+		"All sub-command labels must be distinct"
 	);
 
 	/**
