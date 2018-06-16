@@ -23,12 +23,6 @@ Catch2 is now required.
 	</ul>
 </li>
 
-<li>fcpptassign
-	<ul>
-	<li>Moved <code>fcppt::assign::make_container</code> to \link fcppt::container::make\endlink.</li>
-	</ul>
-</li>
-
 <li>\ref fcpptcontainerarray
 	<ul>
 	<li>Allow rvalues in \link fcppt::container::array::push_back\endlink.</li>
@@ -123,6 +117,12 @@ Catch2 is now required.
 	and <code>fcppt::container::make_array</code>
 	to \ref fcpptcontainerarray.</li>
 	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to \link fcppt::container::tuple::vararg_map\endlink.</li>
+	</ul>
+</li>
+
+<li>fcpptassign
+	<ul>
+	<li>Moved <code>fcppt::assign::make_container</code> to \link fcppt::container::make\endlink.</li>
 	</ul>
 </li>
 
