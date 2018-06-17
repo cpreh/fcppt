@@ -105,6 +105,73 @@ template<
 	typename OptionsParser,
 	typename... SubCommands
 >
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+>::commands(
+	commands const &
+)
+= default;
+
+template<
+	typename OptionsParser,
+	typename... SubCommands
+>
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+>::commands(
+	commands &&
+)
+= default;
+
+template<
+	typename OptionsParser,
+	typename... SubCommands
+>
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+> &
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+>::operator=(
+	commands const &
+)
+= default;
+
+template<
+	typename OptionsParser,
+	typename... SubCommands
+>
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+> &
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+>::operator=(
+	commands &&
+)
+= default;
+
+template<
+	typename OptionsParser,
+	typename... SubCommands
+>
+fcppt::options::commands<
+	OptionsParser,
+	SubCommands...
+>::~commands()
+{
+}
+
+template<
+	typename OptionsParser,
+	typename... SubCommands
+>
 fcppt::options::parse_result<
 	typename
 	fcppt::options::commands<

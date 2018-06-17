@@ -42,6 +42,26 @@ public:
 		fcppt::options::optional_help_text &&
 	);
 
+	sub_command(
+		sub_command const &
+	);
+
+	sub_command(
+		sub_command &&
+	);
+
+	sub_command &
+	operator=(
+		sub_command const &
+	);
+
+	sub_command &
+	operator=(
+		sub_command &&
+	);
+
+	~sub_command();
+
 	fcppt::string const &
 	name() const;
 

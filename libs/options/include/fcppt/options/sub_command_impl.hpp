@@ -50,6 +50,73 @@ template<
 	typename Tag,
 	typename Parser
 >
+fcppt::options::sub_command<
+	Tag,
+	Parser
+>::sub_command(
+	sub_command const &
+)
+= default;
+
+template<
+	typename Tag,
+	typename Parser
+>
+fcppt::options::sub_command<
+	Tag,
+	Parser
+>::sub_command(
+	sub_command &&
+)
+= default;
+
+template<
+	typename Tag,
+	typename Parser
+>
+fcppt::options::sub_command<
+	Tag,
+	Parser
+> &
+fcppt::options::sub_command<
+	Tag,
+	Parser
+>::operator=(
+	sub_command const &
+)
+= default;
+
+template<
+	typename Tag,
+	typename Parser
+>
+fcppt::options::sub_command<
+	Tag,
+	Parser
+> &
+fcppt::options::sub_command<
+	Tag,
+	Parser
+>::operator=(
+	sub_command &&
+)
+= default;
+
+template<
+	typename Tag,
+	typename Parser
+>
+fcppt::options::sub_command<
+	Tag,
+	Parser
+>::~sub_command()
+{
+}
+
+template<
+	typename Tag,
+	typename Parser
+>
 fcppt::string const &
 fcppt::options::sub_command<
 	Tag,

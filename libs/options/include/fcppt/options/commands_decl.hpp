@@ -102,6 +102,26 @@ public:
 		SubCommandsArgs &&...
 	);
 
+	commands(
+		commands const &
+	);
+
+	commands(
+		commands &&
+	);
+
+	commands &
+	operator=(
+		commands const &
+	);
+
+	commands &
+	operator=(
+		commands &&
+	);
+
+	~commands();
+
 	typedef
 	fcppt::variant::variadic<
 		fcppt::options::result_of<
