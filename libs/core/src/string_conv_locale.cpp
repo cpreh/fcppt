@@ -13,6 +13,11 @@
 std::locale
 fcppt::string_conv_locale()
 {
+#if defined(__MINGW32__)
+	return
+		std::locale();
+#else
 	return
 		std::locale("");
+#endif
 }
