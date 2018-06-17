@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
-#define FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
+#ifndef FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
+#define FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
 
 #include <fcppt/brigand/set_union.hpp>
 #include <fcppt/record/label_set.hpp>
