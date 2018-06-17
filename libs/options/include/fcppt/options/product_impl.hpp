@@ -7,18 +7,21 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_apply.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/set_intersection.hpp>
 #include <fcppt/algorithm/set_union.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/container/output.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/duplicate_names.hpp>
+#include <fcppt/options/flag_name.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/name_set.hpp>
+#include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -26,12 +29,12 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
-#include <fcppt/options/detail/duplicate_names_text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <unordered_set>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -235,18 +238,7 @@ fcppt::options::product<
 >::flag_names() const
 {
 	return
-		fcppt::strong_typedef_apply(
-			[](
-				fcppt::options::name_set const &_left_set,
-				fcppt::options::name_set const &_right_set
-			)
-			{
-				return
-					fcppt::algorithm::set_union(
-						_left_set,
-						_right_set
-					);
-			},
+		fcppt::algorithm::set_union(
 			fcppt::options::deref(
 				left_
 			).flag_names(),
@@ -267,18 +259,7 @@ fcppt::options::product<
 >::option_names() const
 {
 	return
-		fcppt::strong_typedef_apply(
-			[](
-				fcppt::options::name_set const &_left_set,
-				fcppt::options::name_set const &_right_set
-			)
-			{
-				return
-					fcppt::algorithm::set_union(
-						_left_set,
-						_right_set
-					);
-			},
+		fcppt::algorithm::set_union(
 			fcppt::options::deref(
 				left_
 			).option_names(),
@@ -320,22 +301,50 @@ fcppt::options::product<
 	Right
 >::check_disjoint() const
 {
+	typedef
+	std::unordered_set<
+		fcppt::string
+	>
+	name_set;
+
 	auto const all_parameters(
 		[](
 			auto const &_parser
 		)
 		->
-		fcppt::options::name_set
+		name_set
 		{
 			return
 				fcppt::algorithm::set_union(
-					_parser.flag_names().get(),
-					_parser.option_names().get()
+					fcppt::algorithm::map<
+						name_set
+					>(
+						_parser.flag_names(),
+						[](
+							fcppt::options::flag_name const &_flag_name
+						)
+						{
+							return
+								_flag_name.get();
+						}
+					),
+					fcppt::algorithm::map<
+						name_set
+					>(
+						_parser.option_names(),
+						[](
+							fcppt::options::option_name const &_option_name
+						)
+						{
+							return
+								_option_name.name_;
+						}
+					)
 				);
 		}
 	);
 
-	fcppt::options::name_set const common_names{
+	name_set const common_names{
 		fcppt::algorithm::set_intersection(
 			all_parameters(
 				fcppt::options::deref(
@@ -355,8 +364,12 @@ fcppt::options::product<
 	)
 		throw
 			fcppt::options::duplicate_names{
-				fcppt::options::detail::duplicate_names_text(
-					common_names
+				FCPPT_TEXT("The following names appear multiple times in a product parser: ")
+				+
+				fcppt::output_to_fcppt_string(
+					fcppt::container::output(
+						common_names
+					)
 				)
 			};
 }

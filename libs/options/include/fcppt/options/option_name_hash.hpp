@@ -4,28 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_DUPLICATE_NAMES_TEXT_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_DUPLICATE_NAMES_TEXT_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_OPTION_NAME_HASH_HPP_INCLUDED
+#define FCPPT_OPTIONS_OPTION_NAME_HASH_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/options/name_set.hpp>
+#include <fcppt/options/option_name_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
 namespace options
 {
-namespace detail
-{
 
 FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::string
-duplicate_names_text(
-	fcppt::options::name_set const &
+std::size_t
+option_name_hash(
+	fcppt::options::option_name const &
 );
 
-}
 }
 }
 

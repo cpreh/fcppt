@@ -4,32 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_NAME_SET_HPP_INCLUDED
-#define FCPPT_OPTIONS_NAME_SET_HPP_INCLUDED
-
 #include <fcppt/string.hpp>
+#include <fcppt/options/option_name.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <unordered_set>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
+fcppt::options::option_name::option_name(
+	fcppt::string &&_name,
+	is_short const _is_short
+)
+:
+	name_{
+		std::move(
+			_name
+		)
+	},
+	is_short_{
+		_is_short
+	}
 {
-namespace options
-{
-
-/**
-\brief A set of flag and/or option names.
-
-\ingroup fcpptoptions
-*/
-typedef
-std::unordered_set<
-	fcppt::string
->
-name_set;
-
 }
-}
-
-#endif

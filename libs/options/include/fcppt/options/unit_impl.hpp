@@ -89,9 +89,7 @@ fcppt::options::unit<
 >::flag_names() const
 {
 	return
-		fcppt::options::flag_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::flag_name_set{};
 }
 
 template<
@@ -103,9 +101,7 @@ fcppt::options::unit<
 >::option_names() const
 {
 	return
-		fcppt::options::option_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::option_name_set{};
 }
 
 template<

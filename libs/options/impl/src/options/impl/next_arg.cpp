@@ -6,8 +6,10 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/impl/is_flag.hpp>
@@ -69,9 +71,16 @@ fcppt::options::impl::next_arg(
 						!=
 						end
 						&&
-						// FIXME: We should check if this flag is short or not
-						_option_names.get().count(
-							_flag.second
+						_option_names.count(
+							fcppt::options::option_name{
+								// TODO: Don't copy here.
+								fcppt::string{
+									_flag.second
+								},
+								fcppt::options::option_name::is_short{
+									_flag.first.get()
+								}
+							}
 						)
 						>=
 						1u

@@ -9,8 +9,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/options/commands_fwd.hpp>
-#include <fcppt/options/flag_name_set_fwd.hpp>
-#include <fcppt/options/option_name_set_fwd.hpp>
+#include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>

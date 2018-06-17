@@ -10,7 +10,7 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/option_name_set_fwd.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>

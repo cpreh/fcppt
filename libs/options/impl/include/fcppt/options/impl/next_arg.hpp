@@ -9,7 +9,7 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/option_name_set_fwd.hpp>
+#include <fcppt/options/option_name_set.hpp>
 
 
 namespace fcppt

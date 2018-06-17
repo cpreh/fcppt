@@ -19,7 +19,6 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
-#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
@@ -184,9 +183,7 @@ fcppt::options::argument<
 >::flag_names() const
 {
 	return
-		fcppt::options::flag_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::flag_name_set{};
 }
 
 template<
@@ -200,9 +197,7 @@ fcppt::options::argument<
 >::option_names() const
 {
 	return
-		fcppt::options::option_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::option_name_set{};
 }
 
 template<

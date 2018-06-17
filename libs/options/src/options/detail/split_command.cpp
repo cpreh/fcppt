@@ -8,7 +8,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/option_name_set_fwd.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
 #include <fcppt/config/external_begin.hpp>

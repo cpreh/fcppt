@@ -22,12 +22,13 @@
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
-#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_decl.hpp>
+#include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -42,7 +43,6 @@
 #include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
-#include <fcppt/options/detail/make_name_set_base.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/options/detail/use_option.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
@@ -469,9 +469,7 @@ fcppt::options::option<
 >::flag_names() const
 {
 	return
-		fcppt::options::flag_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::flag_name_set{};
 }
 
 template<
@@ -484,13 +482,41 @@ fcppt::options::option<
 	Type
 >::option_names() const
 {
+	fcppt::options::option_name_set result{
+		fcppt::options::option_name{
+			fcppt::string{
+				this->long_name_.get()
+			},
+			fcppt::options::option_name::is_short{
+				false
+			}
+		}
+	};
+
+	// TODO: Make a function for this?
+	fcppt::optional::maybe_void(
+		this->short_name_,
+		[
+			&result
+		](
+			fcppt::options::short_name const &_short_name
+		)
+		{
+			result.insert(
+				fcppt::options::option_name{
+					fcppt::string{
+						_short_name.get()
+					},
+					fcppt::options::option_name::is_short{
+						true
+					}
+				}
+			);
+		}
+	);
+
 	return
-		fcppt::options::option_name_set{
-			fcppt::options::detail::make_name_set_base(
-				long_name_,
-				short_name_
-			)
-		};
+		result;
 }
 
 template<

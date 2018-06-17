@@ -15,7 +15,6 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/make_success.hpp>
-#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -275,10 +274,9 @@ fcppt::options::sum<
 	RightLabel
 >::flag_names() const
 {
+	// TODO: union?
 	return
-		fcppt::options::flag_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::flag_name_set{};
 }
 
 template<
@@ -295,10 +293,9 @@ fcppt::options::sum<
 	RightLabel
 >::option_names() const
 {
+	// TODO: union?
 	return
-		fcppt::options::option_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::option_name_set{};
 }
 
 template<

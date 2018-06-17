@@ -29,7 +29,6 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/missing_error.hpp>
-#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>
 #include <fcppt/options/parse_context.hpp>
@@ -397,9 +396,7 @@ fcppt::options::commands<
 >::flag_names() const
 {
 	return
-		fcppt::options::flag_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::flag_name_set{};
 }
 
 template<
@@ -413,9 +410,7 @@ fcppt::options::commands<
 >::option_names() const
 {
 	return
-		fcppt::options::option_name_set{
-			fcppt::options::name_set{}
-		};
+		fcppt::options::option_name_set{};
 }
 
 template<
