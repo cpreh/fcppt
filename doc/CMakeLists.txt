@@ -759,6 +759,8 @@ set(
 	libs/core/include/fcppt/function_fwd.hpp
 	libs/core/include/fcppt/function_impl.hpp
 	libs/core/include/fcppt/getenv.hpp
+	libs/core/include/fcppt/hash.hpp
+	libs/core/include/fcppt/hash_combine.hpp
 	libs/core/include/fcppt/homogenous_pair.hpp
 	libs/core/include/fcppt/homogenous_pair_comparison.hpp
 	libs/core/include/fcppt/homogenous_pair_decl.hpp
@@ -1233,7 +1235,6 @@ set(
 	libs/core/include/fcppt/random/wrapper/uniform_container_decl.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_fwd.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_impl.hpp
-	libs/core/include/fcppt/range/detail/hash_combine.hpp
 	libs/core/include/fcppt/range/empty.hpp
 	libs/core/include/fcppt/range/hash.hpp
 	libs/core/include/fcppt/range/hash_decl.hpp

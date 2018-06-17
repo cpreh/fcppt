@@ -7,9 +7,10 @@
 #ifndef FCPPT_RANGE_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_IMPL_HPP_INCLUDED
 
+#include <fcppt/hash.hpp>
+#include <fcppt/hash_combine.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/range/hash_decl.hpp>
-#include <fcppt/range/detail/hash_combine.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -40,9 +41,11 @@ fcppt::range::hash<
 			std::size_t
 			{
 				return
-					fcppt::range::detail::hash_combine(
+					fcppt::hash_combine(
 						_cur,
-						_element
+						fcppt::hash(
+							_element
+						)
 					);
 			}
 		);

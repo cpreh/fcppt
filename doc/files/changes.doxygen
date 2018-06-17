@@ -100,6 +100,7 @@ Catch2 is now required.
 	<ul>
 	<li>Added \link fcppt::copy\endlink.</li>
 	<li>Added \link fcppt::not_\endlink.</li>
+	<li>Added \link fcppt::hash_combine\endlink and \link fcppt::hash\endlink.</li>
 	</ul>
 </li>
 
