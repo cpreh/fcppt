@@ -4,15 +4,13 @@ fcppt
 About
 -----
 
-Freundlich's C++ Toolkit (fcppt) is a collection of libraries focusing on
-improving general C++ code by providing better types, a strong focus on C++11
-(non-conforming compilers are mostly not supported) and functional programming
-(which is both efficient and syntactically affordable in C++11).
+Freundlich's C++ Toolkit (fcppt) is a collection of libraries that aim
+to improve general C++ code through better typing and functional programming.
 
 More information
 ----------------
 
-Check out our homepage at <a href="http://fcppt.org">fcppt.org</a> for more
+Check out our homepage at <a href="https://fcppt.org">fcppt.org</a> for more
 information.
 
 Contact
