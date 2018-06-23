@@ -123,7 +123,7 @@ While the design of <code>fcppt::variant</code> is similar to
 <ul>
 
 <li><code>%fcppt::variant</code> does not provide a default constructor.
-<code>%boost::variant</code> default contructs the first type of all possible
+<code>%boost::variant</code> default constructs the first type of all possible
 types instead, which does not make any sense.</li>
 
 <li><code>%fcppt::variant</code>'s constructor is explicit.</li>

@@ -47,7 +47,7 @@ such that their compositions are the identity.
 How they are implemented exactly can vary for every <code>D</code>
 significantly.
 In fcppt, these two functions are implemented as a specialization of \link
-fcppt::type_iso::transform\endlink. A specialiaztion needs to contain the two
+fcppt::type_iso::transform\endlink. A specialization needs to contain the two
 aforementioned functions along with the typedefs <code>decorated_type</code>
 and <code>undecorated_type</code>.
 

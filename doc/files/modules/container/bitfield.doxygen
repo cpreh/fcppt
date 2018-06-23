@@ -18,7 +18,7 @@ namespace bitfield
 
 Consider the states "a person can be hungry and tired, not hungry and tired,
 hungry and not tired or not hungry and not tired". Being hungry and being tired
-are orthogonal states which can be implmented using the bit representation of
+are orthogonal states which can be implemented using the bit representation of
 an enumeration:
 
 \code

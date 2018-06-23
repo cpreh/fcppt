@@ -84,7 +84,7 @@ Vector and dim are initialized in the same way: An
 \subsection fcpptmath_conversions Conversions
 
 <code>vector</code>, <code>dim</code> and <code>matrix</code> each have a
-<code>structure_cast</code> function. Structure casts perserve dimensions but
+<code>structure_cast</code> function. Structure casts preserve dimensions but
 convert the underlying value type. How this is done is specified by a function
 object.
 
@@ -157,7 +157,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains interpolation functions and functors
+\brief Contains interpolation functions
 */
 namespace interpolation
 {

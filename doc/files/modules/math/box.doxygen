@@ -36,7 +36,7 @@ A box is defined by two n-dimensional points. For example, a rectangle has a
 dimension of 2. The two points give a minimum bound and a non-inclusive maximum
 bound. More precisely, let a box be given by <code>p = (x_1,...,x_n)</code> and
 <code>q = (y_1,...,y_n)</code>. A point <code>r = (z_1,...,z_n)</code> is
-inside the box iff for all <code>1 <= i <= n</code> it holds that <code>x_i <=
+inside the box if for all <code>1 <= i <= n</code> it holds that <code>x_i <=
 z_i < y_i</code>. This representation makes it easy to specify empty boxes: For
 example, a rectangle defined by <code>(1,2), (1,2)</code> is empty.
 

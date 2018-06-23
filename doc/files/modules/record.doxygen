@@ -121,7 +121,7 @@ because of the order they appear in the declaration. So, in the example, <code>a
 
 Unlike normal labels, there are also labels that take an additional argument. Consider
 a sprite that can have a fixed number of textures <code>t_1,...,t_n</code> which will
-be rendered in order. To create a label that is parametrized, we use
+be rendered in order. To create a label that is parameterized, we use
 \link FCPPT_RECORD_MAKE_LABEL_ARG\endlink:
 
 \snippet record.cpp make_label_arg

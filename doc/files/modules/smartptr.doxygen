@@ -247,7 +247,7 @@ has been removed in favor of const unique ptrs.
 
 \snippet unique_ptr.cpp unique_ptr_const
 
-A unique ptr that has been delcared const cannot be copied nor moved.
+A unique ptr that has been declared const cannot be copied nor moved.
 Additionally, it can also not be swapped.
 
 \subsection smartptr_unique_ptr_pimpl Unique Pointers and Pimpl

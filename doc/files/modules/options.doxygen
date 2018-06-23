@@ -408,7 +408,7 @@ Second, the openmode needs to be passed as well.
 
 Instead of creating one program per command, it is useful to combine several
 commands into a single parser, where the sub-command is chosen by a specific name.
-Examples of this are used in several programs, namemly <code>git</code>.
+Examples of this are used in several programs, namely <code>git</code>.
 For example, <code>git clone</code> and <code>git pull</code> are
 different commands that take different arguments and options themselves.
 However, the <code>git</code> program itself can also take options
@@ -430,7 +430,7 @@ should take no arguments, for which we make use of the unit parser.
 
 Next, we turn each of the parsers into a sub-command, giving it a name,
 a label and an optional help text. The label is important to make
-the types of the sub-commands disjoiint.
+the types of the sub-commands disjoint.
 
 \snippet options/commands.cpp sub_commands
 

@@ -43,7 +43,7 @@ most efficient to use a string format that suits the current operating system.
 With that in mind, fcppt has a typedef called \link fcppt::char_type\endlink.
 This typedef is <code>wchar_t</code> on Windows systems and <code>char</code>
 on POSIX systems. It's configurable, however, so using <code>wchar_t</code> on
-POSIX is possible, too (see the <code>ENABLE_NARROW_STRING</code> cmake
+POSIX is possible, too (see the <code>ENABLE_NARROW_STRING</code> CMake
 option). Based on that, there's \link fcppt::string\endlink which is a
 <code>std::%basic_string</code>.
 
@@ -95,7 +95,7 @@ The following functions can be used to convert from and to strings:
 </tr>
 <tr>
 <td>\link fcppt::to_std_wstring\endlink</td>
-<td><codE>fcppt::string → std::string</codE> using \link fcppt::string_conv_locale\endlink</td>
+<td><code>fcppt::string → std::string</code> using \link fcppt::string_conv_locale\endlink</td>
 </tr>
 </table>
 
@@ -115,7 +115,7 @@ used "between" platforms. Writing an \link fcppt::string\endlink to a file (see
 below) on a Linux machine and reading it back in on a Windows machine probably
 does not work.
 
-Here is a small exmaple:
+Here is a small example:
 
 \snippet string_conversion.cpp string_conversion
 

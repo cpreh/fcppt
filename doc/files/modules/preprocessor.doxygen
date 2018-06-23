@@ -35,10 +35,10 @@ To disable warnings in a scope, fcppt provides the following macros:
 <dd>Pops the warning stack</dd>
 
 <dt>\link FCPPT_PP_DISABLE_GCC_WARNING \endlink</dt>
-<dd>Diables a given warning option only on gcc like compilers</dd>
+<dd>Disables a given warning option only on gcc like compilers</dd>
 
 <dt>\link FCPPT_PP_DISABLE_VC_WARNING \endlink</dt>
-<dd>Diables a given warning option only on VC++</dd>
+<dd>Disables a given warning option only on VC++</dd>
 </dl>
 
 To minimize the scope where warnings are disabled, you should always start with

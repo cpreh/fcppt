@@ -48,7 +48,7 @@ warning, error</code> and log locations are lists of strings.
 <dt>Formatting and direction of messages:</dt>
 
 <dd>A <em>log context</em> also assigns to each <em>log level</em> a <em>level
-stream</em>, which dictactes where to log to, e.g. to <code>std::clog</code>,
+stream</em>, which dictates where to log to, e.g. to <code>std::clog</code>,
 and how messages are formatted.
 </dd>
 
