@@ -137,10 +137,6 @@ lvalues.</li>
 
 <li><code>%fcppt::variant</code> provides ternary visitation.</li>
 
-<li><code>%fcppt::variant</code> reuses MPL instead of generating the template
-over and over for every number of possible types. It is therefore as extensible
-as MPL is.</li>
-
 <li><code>%boost::variant</code> offers the so-called "non-empty" guarantee.
 This means that a variant always holds one of its possible types, which is
 generally a good thing. However, the difficult part about this guarantee is

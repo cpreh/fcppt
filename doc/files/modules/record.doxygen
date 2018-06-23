@@ -42,11 +42,11 @@ gets a label together with a type as its template parameters:
 
 \snippet record.cpp record_elements
 
-Finally, a <em>record object</em> consists of an MPL sequence of elements:
+Finally, a <em>record object</em> consists of a Brigand sequence of elements:
 
 \snippet record.cpp record_object
 
-A shorthand, which omits the MPL sequence, is \link fcppt::record::variadic\endlink.
+A shorthand, which omits the Brigand sequence, is \link fcppt::record::variadic\endlink.
 
 \snippet record.cpp record_variadic
 
@@ -64,8 +64,8 @@ element for the given label to a stream:
 
 \snippet record.cpp record_output_label
 
-Remember that a record is declared by giving it an MPL sequence of elements. Such
-an MPL sequence can be used by \link fcppt::algorithm::loop\endlink, which will
+Remember that a record is declared by giving it a Brigand sequence of elements. Such
+a Brigand sequence can be used by \link fcppt::algorithm::loop\endlink, which will
 call a function for every type in the sequence. We use this to call <code>print_label</code>
 for every element of the record:
 
