@@ -8,7 +8,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
 	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
 	libs/filesystem/include/fcppt/filesystem/file_size.hpp
-	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/fstream.hpp
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
@@ -31,7 +30,6 @@ set(
 	libs/filesystem/src/filesystem/extension.cpp
 	libs/filesystem/src/filesystem/extension_without_dot.cpp
 	libs/filesystem/src/filesystem/file_size.cpp
-	libs/filesystem/src/filesystem/file_to_string.cpp
 	libs/filesystem/src/filesystem/normalize.cpp
 	libs/filesystem/src/filesystem/num_subpaths.cpp
 	libs/filesystem/src/filesystem/path_to_string.cpp

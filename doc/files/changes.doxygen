@@ -1,6 +1,21 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_290 2.9.0
+
+\subsection changes_removed_functionality_to_290 Removed functionality
+
+<ul>
+
+<li>\ref fcpptfilesystem
+	<ul>
+	<li>Removed <code>fcppt::filesystem::file_to_string</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+
 \section changes_changes_to_280 2.8.0
 
 \subsection changes_general_to_280 General changes
@@ -623,7 +638,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li>\link fcppt::filesystem::file_to_string\endlink now returns \link fcppt::optional_string\endlink for most errors.</li>
+	<li><code>fcppt::filesystem::file_to_string</code> now returns \link fcppt::optional_string\endlink for most errors.</li>
 	<li>\link fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream\endlink and \link fcppt::filesystem::fstream\endlink now use <code>std::basic_ifstream</code>,
 	<code>std::basic_ofstream</code> and <code>std::basic_fstream</code> instead of the boost variants.</li>
 	</ul>

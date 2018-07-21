@@ -1502,7 +1502,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
 	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
 	libs/filesystem/include/fcppt/filesystem/file_size.hpp
-	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/fstream.hpp
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
