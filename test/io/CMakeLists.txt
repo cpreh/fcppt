@@ -21,6 +21,10 @@ add_fcppt_io_test(
 )
 
 add_fcppt_io_test(
+	peek
+)
+
+add_fcppt_io_test(
 	read_write
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

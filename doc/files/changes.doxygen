@@ -3,6 +3,18 @@
 
 \section changes_changes_to_290 2.9.0
 
+\subsection changes_added_functionality_to_290 Added functionality
+
+<ul>
+
+<li>\ref fcpptio
+	<ul>
+	<li>Added \link fcppt::io::peek\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_290 Removed functionality
 
 <ul>
