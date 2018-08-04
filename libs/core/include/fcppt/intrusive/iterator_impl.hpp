@@ -51,7 +51,7 @@ fcppt::intrusive::iterator<
 >::increment()
 {
 	cur_ =
-		cur_->link_.next_;
+		cur_->next_;
 }
 
 template<
@@ -63,7 +63,7 @@ fcppt::intrusive::iterator<
 >::decrement()
 {
 	cur_ =
-		cur_->link_.prev_;
+		cur_->prev_;
 }
 
 template<

@@ -11,7 +11,6 @@
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/intrusive/iterator_fwd.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
-#include <fcppt/intrusive/detail/link_fwd.hpp>
 
 
 namespace fcppt
@@ -79,22 +78,10 @@ public:
 	empty() const;
 private:
 	typedef
-	fcppt::intrusive::detail::link<
-		Type
-	>
-	link_type;
-
-	typedef
 	fcppt::intrusive::base<
 		Type
 	>
 	base_type;
-
-	link_type
-	push_back(
-		base_type &
-	)
-	noexcept;
 
 	template<
 		typename T

@@ -131,6 +131,13 @@ test_func()
 		std::move(
 			e3
 		);
+
+	for(
+		element const &e
+		:
+		list
+	)
+		std::cout << e.value() << ' ';
 }
 
 }

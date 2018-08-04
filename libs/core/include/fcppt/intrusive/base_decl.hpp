@@ -11,7 +11,6 @@
 #include <fcppt/intrusive/base_fwd.hpp>
 #include <fcppt/intrusive/iterator_fwd.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
-#include <fcppt/intrusive/detail/link_decl.hpp>
 
 
 namespace fcppt
@@ -69,17 +68,6 @@ public:
 	void
 	unlink();
 private:
-	typedef
-	fcppt::intrusive::detail::link<
-		Type
-	>
-	link_type;
-
-	link_type
-	move_to(
-		base &
-	);
-
 	template<
 		typename T
 	>
@@ -90,14 +78,11 @@ private:
 	>
 	friend class fcppt::intrusive::iterator;
 
-	template<
-		typename T
-	>
-	friend class fcppt::intrusive::detail::link;
-
 	base();
 
-	link_type link_;
+	base *prev_;
+
+	base* next_;
 };
 
 }

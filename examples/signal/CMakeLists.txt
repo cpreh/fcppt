@@ -48,7 +48,7 @@ add_fcppt_signal_example(
 add_fcppt_signal_example(
 	connection
 	LINK_LIBS
-		fcppt_core_interface
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_signal_example(

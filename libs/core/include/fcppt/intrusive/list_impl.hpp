@@ -10,7 +10,6 @@
 #include <fcppt/intrusive/base_impl.hpp>
 #include <fcppt/intrusive/iterator_impl.hpp>
 #include <fcppt/intrusive/list_decl.hpp>
-#include <fcppt/intrusive/detail/link_impl.hpp>
 
 
 template<
@@ -30,9 +29,19 @@ template<
 fcppt::intrusive::list<
 	Type
 >::list(
-	list &&
+	list &&_other
 )
-= default;
+:
+	head_{}
+{
+	if(
+		!_other.empty()
+	)
+		head_ =
+			std::move(
+				_other.head_
+			);
+}
 
 template<
 	typename Type
@@ -43,9 +52,38 @@ fcppt::intrusive::list<
 fcppt::intrusive::list<
 	Type
 >::operator=(
-	list &&
+	list &&_other
 )
-= default;
+{
+	if(
+		&_other
+		==
+		this
+	)
+		return
+			*this;
+
+	if(
+		_other.empty()
+	)
+	{
+		head_.next_ =
+			&head_;
+
+		head_.prev_ =
+			&head_;
+	}
+	else
+	{
+		head_ =
+			std::move(
+				_other.head_
+			);
+	}
+
+	return
+		*this;
+}
 
 template<
 	typename Type
@@ -69,7 +107,7 @@ fcppt::intrusive::list<
 {
 	return
 		iterator{
-			head_.link_.next_
+			head_.next_
 		};
 }
 
@@ -103,7 +141,7 @@ fcppt::intrusive::list<
 {
 	return
 		const_iterator{
-			head_.link_.next_
+			head_.next_
 		};
 }
 
@@ -136,35 +174,6 @@ fcppt::intrusive::list<
 		this->begin()
 		==
 		this->end();
-}
-
-template<
-	typename Type
->
-typename
-fcppt::intrusive::list<
-	Type
->::link_type
-fcppt::intrusive::list<
-	Type
->::push_back(
-	base_type &_base
-)
-noexcept
-{
-	link_type const result{
-		head_.link_.prev_,
-		&head_
-	};
-
-	head_.link_.prev_->link_.next_ =
-		&_base;
-
-	head_.link_.prev_ =
-		&_base;
-
-	return
-		result;
 }
 
 #endif

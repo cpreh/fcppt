@@ -780,9 +780,6 @@ set(
 	libs/core/include/fcppt/intrusive/base_fwd.hpp
 	libs/core/include/fcppt/intrusive/base_impl.hpp
 	libs/core/include/fcppt/intrusive/detail/iterator_base.hpp
-	libs/core/include/fcppt/intrusive/detail/link_decl.hpp
-	libs/core/include/fcppt/intrusive/detail/link_fwd.hpp
-	libs/core/include/fcppt/intrusive/detail/link_impl.hpp
 	libs/core/include/fcppt/intrusive/iterator_decl.hpp
 	libs/core/include/fcppt/intrusive/iterator_fwd.hpp
 	libs/core/include/fcppt/intrusive/iterator_impl.hpp
@@ -815,6 +812,7 @@ set(
 	libs/core/include/fcppt/io/ostream_fwd.hpp
 	libs/core/include/fcppt/io/ostringstream.hpp
 	libs/core/include/fcppt/io/ostringstream_fwd.hpp
+	libs/core/include/fcppt/io/peek.hpp
 	libs/core/include/fcppt/io/read.hpp
 	libs/core/include/fcppt/io/read_chars.hpp
 	libs/core/include/fcppt/io/scoped_rdbuf.hpp

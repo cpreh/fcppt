@@ -9,7 +9,6 @@
 
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
-#include <fcppt/intrusive/detail/link_impl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -28,12 +27,18 @@ fcppt::intrusive::base<
 	list_type &_list
 )
 :
-	link_{
-		_list.push_back(
-			*this
-		)
+	prev_{
+		_list.head_.prev_
+	},
+	next_{
+		&_list.head_
 	}
 {
+	_list.head_.prev_->next_ =
+		this;
+
+	_list.head_.prev_ =
+		this;
 }
 
 template<
@@ -46,12 +51,24 @@ fcppt::intrusive::base<
 	base &&_other
 )
 :
-	link_{
-		_other.move_to(
-			*this
-		)
+	prev_{
+		_other.prev_
+	},
+	next_{
+		_other.next_
 	}
 {
+	prev_->next_ =
+		this;
+
+	next_->prev_ =
+		this;
+
+	_other.prev_ =
+		&_other;
+
+	_other.next_ =
+		&_other;
 }
 
 FCPPT_PP_POP_WARNING
@@ -69,10 +86,37 @@ fcppt::intrusive::base<
 	base &&_other
 )
 {
-	link_ =
-		_other.move_to(
-			*this
-		);
+	if(
+		&_other
+		==
+		this
+	)
+		return
+			*this;
+
+	next_->prev_ =
+		prev_;
+
+	prev_->next_ =
+		next_;
+
+	prev_ =
+		_other.prev_;
+
+	next_ =
+		_other.next_;
+
+	prev_->next_ =
+		this;
+
+	next_->prev_ =
+		this;
+
+	_other.prev_ =
+		&_other;
+
+	_other.next_ =
+		&_other;
 
 	return
 		*this;
@@ -86,7 +130,11 @@ fcppt::intrusive::base<
 	Type
 >::~base()
 {
-	this->unlink();
+	next_->prev_ =
+		prev_;
+
+	prev_->next_ =
+		next_;
 }
 
 template<
@@ -98,7 +146,17 @@ fcppt::intrusive::base<
 	Type
 >::unlink()
 {
-	link_.unlink();
+	next_->prev_ =
+		prev_;
+
+	prev_->next_ =
+		next_;
+
+	next_ =
+		this;
+
+	prev_ =
+		this;
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -112,44 +170,15 @@ fcppt::intrusive::base<
 	Type
 >::base()
 :
-	link_{
-		this,
+	prev_{
+		this
+	},
+	next_{
 		this
 	}
 {
 }
 
 FCPPT_PP_POP_WARNING
-
-template<
-	typename Type
->
-inline
-typename
-fcppt::intrusive::base<
-	Type
->::link_type
-fcppt::intrusive::base<
-	Type
->::move_to(
-	base &_other
-)
-{
-	// This may change link_ as well, in case it points to itself.
-	link_.move_to(
-		_other
-	);
-
-	link_type const temp{
-		link_
-	};
-
-	link_.reset(
-		*this
-	);
-
-	return
-		temp;
-}
 
 #endif

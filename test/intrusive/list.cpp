@@ -59,13 +59,12 @@ public:
 	=
 	default;
 
-/*
 	test_class &
 	operator=(
 		test_class &&
 	)
 	=
-	default;*/
+	default;
 
 	~test_class()
 	{
@@ -303,4 +302,67 @@ TEST_CASE(
 			1u
 		);
 	}
+}
+
+TEST_CASE(
+	"intrusive::list move assign"
+	"[intrusive]"
+)
+{
+	test_list list{};
+
+	// list.prev = list
+	// list.next = list
+
+	{
+		test_class e3{
+			list,
+			1
+		};
+
+		// e3.prev := list.prev = list
+		// e3.next := list
+		// list.prev.next = list.next := e3
+		// list.prev := e3
+
+		test_class e4{
+			list,
+			2
+		};
+
+		// e4.prev := list.prev = e3
+		// e4.next := list
+		// list.prev.next = e3.next := e4
+		// list.prev = e4
+
+		// list.next = e3
+		// list.prev = e4
+		// e3.prev = list
+		// e3.next = e4
+		// e4.prev = e3
+		// e4.next = list
+
+		e4 =
+			std::move(
+				e3
+			);
+
+		// e4.next.prev = list.prev := e4.prev = e3
+		// e4.prev.next = e3.next := e4.next = list
+		// e4.prev := e3.prev = list
+		// e4.next := e3.next = list
+		// e4.prev.next = list.next := e4
+		// e4.next.prev = list.prev := e4
+		// e3.next = e3
+		// e3.prev = e3
+
+		// list.next = e4
+		// list.prev = e4
+		// e4.prev = list
+		// e4.next = list
+	}
+
+	CHECK(
+		list.empty()
+	);
 }

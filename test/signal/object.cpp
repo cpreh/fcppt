@@ -165,17 +165,17 @@ TEST_CASE(
 {
 	signal_type sig{};
 
-	bool done{
-		false
+	int counter{
+		0
 	};
 
 	fcppt::signal::auto_connection const con1(
 		sig.connect(
 			signal_type::function{
 				[
-					&done
+					&counter
 				]{
-					done = true;
+					++counter;
 				}
 			}
 		)
@@ -191,9 +191,40 @@ TEST_CASE(
 		sig.empty()
 	);
 
+	sig();
+
+	CHECK(
+		counter
+		==
+		0
+	);
+
 	sig2();
 
 	CHECK(
-		done
+		counter
+		==
+		1
+	);
+
+	sig =
+		std::move(
+			sig2
+		);
+
+	sig();
+
+	CHECK(
+		counter
+		==
+		2
+	);
+
+	sig2();
+
+	CHECK(
+		counter
+		==
+		2
 	);
 }
