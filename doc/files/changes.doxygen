@@ -15,6 +15,18 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_290 Changed functionality
+
+<ul>
+
+<li>\ref fcpptoptions
+	<ul>
+	<li>Changed \link fcppt::options::sum\endlink to return a record containing a variant.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_290 Removed functionality
 
 <ul>

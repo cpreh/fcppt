@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_MAKE_SUM_HPP_INCLUDED
-#define FCPPT_OPTIONS_MAKE_SUM_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_MAKE_RIGHT_HPP_INCLUDED
+#define FCPPT_OPTIONS_MAKE_RIGHT_HPP_INCLUDED
 
-#include <fcppt/options/sum_impl.hpp>
+#include <fcppt/options/right.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -20,49 +20,33 @@ namespace options
 {
 
 /**
-\brief Creates the sum of two parsers.
+\brief Creates an \link fcppt::options::right\endlink.
 
 \ingroup fcpptoptions
 */
 template<
-	typename Label,
-	typename Left,
-	typename Right
+	typename Type
 >
 inline
-fcppt::options::sum<
-	Label,
+fcppt::options::right<
 	fcppt::type_traits::remove_cv_ref_t<
-		Left
-	>,
-	fcppt::type_traits::remove_cv_ref_t<
-		Right
+		Type
 	>
 >
-make_sum(
-	Left &&_left,
-	Right &&_right
+make_right(
+	Type &&_value
 )
 {
 	return
-		fcppt::options::sum<
-			Label,
+		fcppt::options::right<
 			fcppt::type_traits::remove_cv_ref_t<
-				Left
-			>,
-			fcppt::type_traits::remove_cv_ref_t<
-				Right
+				Type
 			>
 		>(
 			std::forward<
-				Left
+				Type
 			>(
-				_left
-			),
-			std::forward<
-				Right
-			>(
-				_right
+				_value
 			)
 		);
 }

@@ -15,8 +15,10 @@
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/help_text.hpp>
+#include <fcppt/options/left.hpp>
 #include <fcppt/options/make_sum.hpp>
 #include <fcppt/options/parse_context.hpp>
+#include <fcppt/options/right.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
@@ -80,17 +82,12 @@ parse_help(
 	result_type;
 
 	FCPPT_RECORD_MAKE_LABEL(
-		help_label
-	);
-
-	FCPPT_RECORD_MAKE_LABEL(
-		normal_label
+		label
 	);
 
 	auto const combined_parser{
 		fcppt::options::make_sum<
-			help_label,
-			normal_label
+			label
 		>(
 			fcppt::make_cref(
 				_help
@@ -146,14 +143,22 @@ parse_help(
 
 				return
 					fcppt::variant::match(
-						_result,
+						std::move(
+							fcppt::record::get<
+								label
+							>(
+								_result
+							)
+						),
 						[
 							&_parser
 						](
-							fcppt::options::result_of<
-								typename
-								sum_type::left
-							> const &
+							fcppt::options::left<
+								fcppt::options::result_of<
+									typename
+									sum_type::left
+								>
+							> &&
 						)
 						{
 							return
@@ -166,22 +171,19 @@ parse_help(
 								};
 						},
 						[](
-							// TODO: rvalue ref
-							fcppt::options::result_of<
-								typename
-								sum_type::right
-							> _inner_result
+							fcppt::options::right<
+								fcppt::options::result_of<
+									typename
+									sum_type::right
+								>
+							> &&_inner_result
 						)
 						{
 							return
 								return_type{
 									result_type{
 										std::move(
-											fcppt::record::get<
-												normal_label
-											>(
-												_inner_result
-											)
+											_inner_result.get()
 										)
 									}
 								};

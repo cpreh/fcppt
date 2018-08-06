@@ -40,6 +40,7 @@ set(
 	libs/options/include/fcppt/options/detail/flag_is_short.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
+	libs/options/include/fcppt/options/detail/left_tag.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
 	libs/options/include/fcppt/options/detail/missing_option_argument.hpp
@@ -48,6 +49,7 @@ set(
 	libs/options/include/fcppt/options/detail/optional_error_fwd.hpp
 	libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 	libs/options/include/fcppt/options/detail/pop_arg.hpp
+	libs/options/include/fcppt/options/detail/right_tag.hpp
 	libs/options/include/fcppt/options/detail/split_command.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/detail/use_flag.hpp
@@ -80,6 +82,8 @@ set(
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
 	libs/options/include/fcppt/options/is_option.hpp
+	libs/options/include/fcppt/options/left.hpp
+	libs/options/include/fcppt/options/left_fwd.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_active_value.hpp
@@ -87,8 +91,10 @@ set(
 	libs/options/include/fcppt/options/make_commands.hpp
 	libs/options/include/fcppt/options/make_default_value.hpp
 	libs/options/include/fcppt/options/make_inactive_value.hpp
+	libs/options/include/fcppt/options/make_left.hpp
 	libs/options/include/fcppt/options/make_many.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
+	libs/options/include/fcppt/options/make_right.hpp
 	libs/options/include/fcppt/options/make_sub_command.hpp
 	libs/options/include/fcppt/options/make_success.hpp
 	libs/options/include/fcppt/options/make_sum.hpp
@@ -134,6 +140,8 @@ set(
 	libs/options/include/fcppt/options/result.hpp
 	libs/options/include/fcppt/options/result_fwd.hpp
 	libs/options/include/fcppt/options/result_of.hpp
+	libs/options/include/fcppt/options/right.hpp
+	libs/options/include/fcppt/options/right_fwd.hpp
 	libs/options/include/fcppt/options/short_name.hpp
 	libs/options/include/fcppt/options/short_name_fwd.hpp
 	libs/options/include/fcppt/options/state.hpp

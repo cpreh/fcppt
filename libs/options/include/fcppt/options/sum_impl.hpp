@@ -14,6 +14,8 @@
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/make_left.hpp>
+#include <fcppt/options/make_right.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
@@ -31,16 +33,14 @@
 
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::sum(
 	Left &&_left,
 	Right &&_right
@@ -60,116 +60,101 @@ fcppt::options::sum<
 }
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::sum(
 	sum const &
 )
 = default;
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::sum(
 	sum &&
 )
 = default;
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 > &
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::operator=(
 	sum const &
 )
 = default;
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 > &
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::operator=(
 	sum &&
 )
 = default;
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::~sum()
 {
 }
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::parse_result<
 	typename
 	fcppt::options::sum<
+		Label,
 		Left,
-		LeftLabel,
-		Right,
-		RightLabel
+		Right
 	>::result_type
 >
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::parse(
 	fcppt::options::state &&_state,
 	fcppt::options::parse_context const &_context
@@ -219,12 +204,14 @@ fcppt::options::sum<
 										_right_result.state_
 									),
 									result_type{
-										right_result{
-											RightLabel{} =
-												std::move(
-													_right_result.value_
+										Label{} =
+											variant{
+												fcppt::options::make_right(
+													std::move(
+														_right_result.value_
+													)
 												)
-										}
+											}
 									}
 								};
 						}
@@ -247,12 +234,14 @@ fcppt::options::sum<
 								_left_result.state_
 							),
 							result_type{
-								left_result{
-									LeftLabel{} =
-										std::move(
-											_left_result.value_
+								Label{} =
+									variant{
+										fcppt::options::make_left(
+											std::move(
+												_left_result.value_
+											)
 										)
-								}
+									}
 							}
 						}
 					);
@@ -261,17 +250,15 @@ fcppt::options::sum<
 }
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::flag_name_set
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::flag_names() const
 {
 	// TODO: union?
@@ -280,17 +267,15 @@ fcppt::options::sum<
 }
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::options::option_name_set
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::option_names() const
 {
 	// TODO: union?
@@ -299,17 +284,15 @@ fcppt::options::sum<
 }
 
 template<
+	typename Label,
 	typename Left,
-	typename LeftLabel,
-	typename Right,
-	typename RightLabel
+	typename Right
 >
 fcppt::string
 fcppt::options::sum<
+	Label,
 	Left,
-	LeftLabel,
-	Right,
-	RightLabel
+	Right
 >::usage() const
 {
 	return

@@ -15,6 +15,8 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_success.hpp>
+#include <fcppt/options/make_left.hpp>
+#include <fcppt/options/make_right.hpp>
 #include <fcppt/options/make_sum.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
@@ -36,11 +38,7 @@ TEST_CASE(
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
-		left_label
-	);
-
-	FCPPT_RECORD_MAKE_LABEL(
-		right_label
+		label
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
@@ -55,8 +53,7 @@ TEST_CASE(
 
 	auto const sum(
 		fcppt::options::make_sum<
-			left_label,
-			right_label
+			label
 		>(
 			unit_parser{
 				fcppt::options::optional_short_name{},
@@ -91,17 +88,21 @@ TEST_CASE(
 			fcppt::options::result_of<
 				parser_type
 			>{
-				fcppt::options::result_of<
-					parser_type::left
-				>(
-					left_label{} =
-						fcppt::options::result_of<
-							unit_parser
-						>{
-							unit_label{} =
-								fcppt::unit{}
-						}
-				)
+				label{} =
+					parser_type::variant{
+						fcppt::options::make_left(
+							fcppt::options::result_of<
+								parser_type::left
+							>(
+								fcppt::options::result_of<
+									unit_parser
+								>{
+									unit_label{} =
+										fcppt::unit{}
+								}
+							)
+						)
+					}
 			}
 		)
 	);
@@ -118,17 +119,21 @@ TEST_CASE(
 			fcppt::options::result_of<
 				parser_type
 			>{
-				fcppt::options::result_of<
-					parser_type::right
-				>(
-					right_label{} =
-						fcppt::options::result_of<
-							unit_parser
-						>{
-							unit_label{} =
-								fcppt::unit{}
-						}
-				)
+				label{} =
+					parser_type::variant{
+						fcppt::options::make_right(
+							fcppt::options::result_of<
+								parser_type::right
+							>(
+								fcppt::options::result_of<
+									unit_parser
+								>{
+									unit_label{} =
+										fcppt::unit{}
+								}
+							)
+						)
+					}
 			}
 		)
 	);

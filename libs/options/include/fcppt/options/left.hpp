@@ -4,23 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_SUM_FWD_HPP_INCLUDED
-#define FCPPT_OPTIONS_SUM_FWD_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_LEFT_HPP_INCLUDED
+#define FCPPT_OPTIONS_LEFT_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/options/left_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-
-template<
-	typename Label,
-	typename Left,
-	typename Right
->
-class sum;
-
-}
-}
 
 #endif
