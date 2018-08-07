@@ -149,5 +149,9 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	split_string
+)
+
+add_fcppt_algorithm_test(
 	unique
 )

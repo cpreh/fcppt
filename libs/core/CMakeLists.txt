@@ -56,6 +56,7 @@ set(
 	libs/core/include/fcppt/algorithm/set_difference.hpp
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
 	libs/core/include/fcppt/algorithm/set_union.hpp
+	libs/core/include/fcppt/algorithm/split_string.hpp
 	libs/core/include/fcppt/algorithm/unique.hpp
 	libs/core/include/fcppt/algorithm/unique_if.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp

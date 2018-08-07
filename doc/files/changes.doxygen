@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::split_string\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptio
 	<ul>
 	<li>Added \link fcppt::io::peek\endlink.</li>
@@ -15,6 +21,7 @@
 
 <li>\ref fcpptoptions
 	<ul>
+	<li>Added \link fcppt::options::indent\endlink.</li>
 	<li>Added \link fcppt::options::combine_errors\endlink and use it in \link fcppt::options::sum\endlink.</li>
 	</ul>
 </li>

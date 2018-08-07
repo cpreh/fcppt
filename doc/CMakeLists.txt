@@ -267,6 +267,7 @@ set(
 	libs/core/include/fcppt/algorithm/set_difference.hpp
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
 	libs/core/include/fcppt/algorithm/set_union.hpp
+	libs/core/include/fcppt/algorithm/split_string.hpp
 	libs/core/include/fcppt/algorithm/unique.hpp
 	libs/core/include/fcppt/algorithm/unique_if.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp
@@ -1649,6 +1650,9 @@ set(
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
+	libs/options/include/fcppt/options/indent.hpp
+	libs/options/include/fcppt/options/indentation.hpp
+	libs/options/include/fcppt/options/indentation_fwd.hpp
 	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/left.hpp
 	libs/options/include/fcppt/options/left_fwd.hpp

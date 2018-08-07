@@ -84,6 +84,9 @@ set(
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
+	libs/options/include/fcppt/options/indent.hpp
+	libs/options/include/fcppt/options/indentation.hpp
+	libs/options/include/fcppt/options/indentation_fwd.hpp
 	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/left.hpp
 	libs/options/include/fcppt/options/left_fwd.hpp
@@ -182,6 +185,7 @@ set(
 	libs/options/src/options/detail/split_command.cpp
 	libs/options/src/options/detail/use_flag.cpp
 	libs/options/src/options/detail/use_option.cpp
+	libs/options/src/options/indent.cpp
 	libs/options/src/options/is_option.cpp
 	libs/options/src/options/option_name.cpp
 	libs/options/src/options/option_name_comparison.cpp
