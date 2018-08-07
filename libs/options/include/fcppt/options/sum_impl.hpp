@@ -9,8 +9,9 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/either/map.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
+#include <fcppt/options/combine_errors.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -24,6 +25,9 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/sum_decl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/variant/variadic.hpp>
@@ -175,11 +179,14 @@ fcppt::options::sum<
 				&_state,
 				this
 			](
-				fcppt::options::error &&
+				fcppt::options::error &&_error1
 			)
 			{
+				FCPPT_PP_PUSH_WARNING
+				FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+
 				return
-					fcppt::either::map(
+					fcppt::either::match(
 						fcppt::options::deref(
 							this->right_
 						).parse(
@@ -188,6 +195,45 @@ fcppt::options::sum<
 							),
 							_context
 						),
+						[
+							&_error1
+						](
+							fcppt::options::error &&_error2
+						)
+						{
+							return
+								fcppt::either::make_failure<
+									fcppt::options::state_with_value<
+										result_type
+									>
+								>(
+									fcppt::options::combine_errors(
+										std::move(
+											_error1
+										),
+										std::move(
+											_error2
+										),
+										[](
+											fcppt::string &&_string1,
+											fcppt::string &&_string2
+										)
+										{
+											// TODO: Format this better
+											return
+												std::move(
+													_string1
+												)
+												+
+												FCPPT_TEXT("\n|\n")
+												+
+												std::move(
+													_string2
+												);
+										}
+									)
+								);
+						},
 						[](
 							fcppt::options::state_with_value<
 								fcppt::options::result_of<
@@ -197,25 +243,29 @@ fcppt::options::sum<
 						)
 						{
 							return
-								fcppt::options::state_with_value<
-									result_type
-								>{
-									std::move(
-										_right_result.state_
-									),
-									result_type{
-										Label{} =
-											variant{
-												fcppt::options::make_right(
-													std::move(
-														_right_result.value_
+								fcppt::options::make_success(
+									fcppt::options::state_with_value<
+										result_type
+									>{
+										std::move(
+											_right_result.state_
+										),
+										result_type{
+											Label{} =
+												variant{
+													fcppt::options::make_right(
+														std::move(
+															_right_result.value_
+														)
 													)
-												)
-											}
+												}
+										}
 									}
-								};
+								);
 						}
 					);
+
+				FCPPT_PP_POP_WARNING
 			},
 			[](
 				fcppt::options::state_with_value<
@@ -296,16 +346,21 @@ fcppt::options::sum<
 >::usage() const
 {
 	return
+		// TODO: Format this better
+		FCPPT_TEXT("(\n")
+		+
 		fcppt::options::deref(
 			left_
 		).usage()
 		+
-		// TODO: Format this better
-		FCPPT_TEXT("\nOR\n")
+		FCPPT_TEXT("\n|\n")
 		+
 		fcppt::options::deref(
 			right_
-		).usage();
+		).usage()
+		+
+		FCPPT_TEXT("\n)")
+		;
 }
 
 #endif

@@ -1585,6 +1585,7 @@ set(
 	libs/options/include/fcppt/options/base_impl.hpp
 	libs/options/include/fcppt/options/base_unique_ptr.hpp
 	libs/options/include/fcppt/options/base_unique_ptr_fwd.hpp
+	libs/options/include/fcppt/options/combine_errors.hpp
 	libs/options/include/fcppt/options/commands_decl.hpp
 	libs/options/include/fcppt/options/commands_fwd.hpp
 	libs/options/include/fcppt/options/commands_impl.hpp
@@ -1597,6 +1598,8 @@ set(
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
 	libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
+	libs/options/include/fcppt/options/detail/combined_error_type.hpp
+	libs/options/include/fcppt/options/detail/combined_error_type_impl.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp

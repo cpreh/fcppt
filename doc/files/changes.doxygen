@@ -13,6 +13,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>Added \link fcppt::options::combine_errors\endlink and use it in \link fcppt::options::sum\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_290 Changed functionality
