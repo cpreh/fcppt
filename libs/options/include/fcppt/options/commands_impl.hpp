@@ -28,6 +28,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/help_text.hpp>
+#include <fcppt/options/indent.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>
@@ -497,55 +498,77 @@ fcppt::options::commands<
 		+
 		FCPPT_TEXT("\n")
 		+
-		fcppt::algorithm::fold(
-			sub_commands_,
-			fcppt::string{},
-			[](
-				auto const &_sub_command,
-				fcppt::string &&_state
-			)
-			->
-			fcppt::string
-			{
-				return
-					std::move(
-						_state
-					)
-					+
-					fcppt::options::deref(
-						_sub_command
-					).name()
-					+
-					FCPPT_TEXT(": ")
-					+
-					fcppt::options::deref(
-						fcppt::options::deref(
-							_sub_command
-						).parser()
-					).usage()
-					+
-					fcppt::optional::maybe(
-						fcppt::options::deref(
-							_sub_command
-						).help_text(),
-						fcppt::const_(
-							fcppt::string{}
-						),
-						[](
-							fcppt::options::help_text const &_help_text
+		fcppt::options::indent(
+			fcppt::algorithm::fold(
+				sub_commands_,
+				fcppt::string{},
+				[](
+					auto const &_sub_command,
+					fcppt::string &&_state
+				)
+				->
+				fcppt::string
+				{
+					return
+						std::move(
+							_state
 						)
-						{
-							return
-								FCPPT_TEXT(" (")
-								+
-								_help_text.get()
-								+
-								FCPPT_TEXT(")");
-						}
-					)
-					+
-					FCPPT_TEXT("\n");
-			}
+						+
+						fcppt::options::deref(
+							_sub_command
+						).name()
+						+
+						FCPPT_TEXT(": ")
+						+
+						fcppt::optional::maybe(
+							fcppt::options::deref(
+								_sub_command
+							).help_text(),
+							fcppt::const_(
+								fcppt::string{}
+							),
+							[](
+								fcppt::options::help_text const &_help_text
+							)
+							{
+								return
+									FCPPT_TEXT(" (")
+									+
+									_help_text.get()
+									+
+									FCPPT_TEXT(")");
+							}
+						)
+						+
+						fcppt::options::indent(
+							[
+								&_sub_command
+							]{
+								fcppt::string inner_usage{
+									fcppt::options::deref(
+										fcppt::options::deref(
+											_sub_command
+										).parser()
+									).usage()
+								};
+
+								return
+									inner_usage.empty()
+									?
+										fcppt::string{}
+									:
+										FCPPT_TEXT("\n")
+										+
+										std::move(
+											inner_usage
+										)
+									;
+							}()
+						)
+						+
+						FCPPT_TEXT("\n");
+				}
+			)
 		);
 }
 

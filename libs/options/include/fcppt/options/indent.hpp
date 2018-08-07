@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONS_INDENT_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/options/indentation_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 
@@ -18,15 +17,14 @@ namespace options
 {
 
 /**
-\brief Indents every line of a string.
+\brief Indents every line of a string once.
 
 \ingroup fcpptvarious
 */
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::string
 indent(
-	fcppt::string &&,
-	fcppt::options::indentation
+	fcppt::string &&
 );
 
 }

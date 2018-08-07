@@ -15,6 +15,7 @@
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/indent.hpp>
 #include <fcppt/options/make_left.hpp>
 #include <fcppt/options/make_right.hpp>
 #include <fcppt/options/make_success.hpp>
@@ -221,15 +222,20 @@ fcppt::options::sum<
 										{
 											// TODO: Format this better
 											return
-												std::move(
-													_string1
+												fcppt::options::indent(
+													std::move(
+														_string1
+													)
 												)
 												+
 												FCPPT_TEXT("\n|\n")
 												+
-												std::move(
-													_string2
-												);
+												fcppt::options::indent(
+													std::move(
+														_string2
+													)
+												)
+												;
 										}
 									)
 								);
@@ -346,18 +352,21 @@ fcppt::options::sum<
 >::usage() const
 {
 	return
-		// TODO: Format this better
 		FCPPT_TEXT("(\n")
 		+
-		fcppt::options::deref(
-			left_
-		).usage()
+		fcppt::options::indent(
+			fcppt::options::deref(
+				left_
+			).usage()
+		)
 		+
 		FCPPT_TEXT("\n|\n")
 		+
-		fcppt::options::deref(
-			right_
-		).usage()
+		fcppt::options::indent(
+			fcppt::options::deref(
+				right_
+			).usage()
+		)
 		+
 		FCPPT_TEXT("\n)")
 		;

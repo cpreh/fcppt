@@ -9,7 +9,6 @@
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/split_string.hpp>
-#include <fcppt/options/indentation.hpp>
 #include <fcppt/options/indent.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -19,8 +18,7 @@
 
 fcppt::string
 fcppt::options::indent(
-	fcppt::string &&_value,
-	fcppt::options::indentation const _indentation
+	fcppt::string &&_value
 )
 {
 	return
@@ -34,16 +32,14 @@ fcppt::options::indent(
 					_value,
 					FCPPT_TEXT('\n')
 				),
-				[
-					_indentation
-				](
+				[](
 					fcppt::string &&_element
 				)
 				{
 					return
 						fcppt::string(
-							_indentation.get(),
-							FCPPT_TEXT('\t')
+							2u,
+							FCPPT_TEXT(' ')
 						)
 						+
 						std::move(
