@@ -21,7 +21,7 @@
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Added \link fcppt::options::indent\endlink.</li>
+	<li>Added \link fcppt::options::indent\endlink and added indentation to various parser outputs.</li>
 	<li>Added \link fcppt::options::combine_errors\endlink and use it in \link fcppt::options::sum\endlink.</li>
 	</ul>
 </li>
@@ -47,6 +47,18 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Removed <code>fcppt::filesystem::file_to_string</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_290 Bugfixes
+
+<ul>
+
+<li>\ref fcpptintrusive
+	<ul>
+	<li>Fixed assignment of \link fcppt::intrusive::base\endlink.</li>
 	</ul>
 </li>
 
