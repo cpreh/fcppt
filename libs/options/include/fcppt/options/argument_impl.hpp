@@ -30,6 +30,9 @@
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -112,6 +115,9 @@ fcppt::options::argument<
 				fcppt::string const &_arg
 			)
 			{
+				FCPPT_PP_PUSH_WARNING
+				FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+
 				return
 					fcppt::either::from_optional(
 						fcppt::optional::map(
@@ -168,6 +174,8 @@ fcppt::options::argument<
 								};
 						}
 					);
+
+				FCPPT_PP_POP_WARNING
 			}
 		);
 }
