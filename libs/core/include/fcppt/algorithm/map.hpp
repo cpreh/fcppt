@@ -7,7 +7,8 @@
 #ifndef FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/map.hpp>
+#include <fcppt/algorithm/map_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -30,14 +31,11 @@ into the result container.
 \note As an optimization the result container has its capacity set to the
 source range's size at the start, if possible. For this to work, the result
 container needs a <code>reserve</code> function, and the source range needs a
-<code>size</code> function or must be a random access range.
+<code>size</code> function or must be a random-access range.
 
-\tparam TargetContainer Either a container that supports
-<code>insert(iterator,value_type)</code> or a <code>std::array</code>.
-
-\tparam SourceRange A range usable with \link fcppt::algorithm::loop\endlink
-or in case \a TargetContainer is a <code>std::array</code> then \a SourceRange
-must also be a <code>std::array</code> of the same size.
+The actual implementation of the algorithm is provided by \link
+fcppt::algorithm::map_impl\endlink which by default uses \link
+fcppt::algorithm::loop\endlink.
 
 \tparam Function A function callable as <code>TargetContainer::value_type
 (SourceRange::value_type)</code>.
@@ -54,9 +52,12 @@ map(
 )
 {
 	return
-		fcppt::algorithm::detail::map<
+		fcppt::algorithm::map_impl<
+			fcppt::type_traits::remove_cv_ref_t<
+				SourceRange
+			>,
 			TargetContainer
-		>(
+		>::execute(
 			std::forward<
 				SourceRange
 			>(

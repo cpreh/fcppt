@@ -16,7 +16,6 @@ set(
 	libs/core/include/fcppt/algorithm/detail/join_all.hpp
 	libs/core/include/fcppt/algorithm/detail/join_impl.hpp
 	libs/core/include/fcppt/algorithm/detail/join_insert.hpp
-	libs/core/include/fcppt/algorithm/detail/map.hpp
 	libs/core/include/fcppt/algorithm/detail/map_concat.hpp
 	libs/core/include/fcppt/algorithm/detail/map_reserve.hpp
 	libs/core/include/fcppt/algorithm/detail/mpl_size_type.hpp
@@ -43,7 +42,10 @@ set(
 	libs/core/include/fcppt/algorithm/loop_break_impl_fwd.hpp
 	libs/core/include/fcppt/algorithm/loop_break_tuple.hpp
 	libs/core/include/fcppt/algorithm/map.hpp
+	libs/core/include/fcppt/algorithm/map_array.hpp
 	libs/core/include/fcppt/algorithm/map_concat.hpp
+	libs/core/include/fcppt/algorithm/map_impl.hpp
+	libs/core/include/fcppt/algorithm/map_impl_fwd.hpp
 	libs/core/include/fcppt/algorithm/map_iteration.hpp
 	libs/core/include/fcppt/algorithm/map_iteration_second.hpp
 	libs/core/include/fcppt/algorithm/map_optional.hpp

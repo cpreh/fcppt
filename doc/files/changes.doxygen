@@ -10,6 +10,7 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::split_string\endlink.</li>
+	<li>Added \link fcppt::algorithm::map_impl\endlink as a customization point for \link fcppt::algorithm::map\endlink.</li>
 	</ul>
 </li>
 
@@ -31,6 +32,13 @@
 \subsection changes_changed_functionality_to_290 Changed functionality
 
 <ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>To use \link fcppt::algorithm::map\endlink on <code>std::array</code>, you have to include
+	<code>fcppt/algorithm/map_array.hpp</code>.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptoptions
 	<ul>

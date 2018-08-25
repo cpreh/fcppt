@@ -12,6 +12,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/algorithm/map_array.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
