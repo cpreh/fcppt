@@ -18,9 +18,9 @@
 #include <fcppt/options/left.hpp>
 #include <fcppt/options/make_sum.hpp>
 #include <fcppt/options/parse_context.hpp>
-#include <fcppt/options/right.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/right.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

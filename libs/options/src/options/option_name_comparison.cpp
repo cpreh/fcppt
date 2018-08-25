@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_comparison.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

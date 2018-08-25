@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/join.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/container/join.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>

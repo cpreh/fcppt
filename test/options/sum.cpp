@@ -14,9 +14,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/options/long_name.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/make_left.hpp>
 #include <fcppt/options/make_right.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/make_sum.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>

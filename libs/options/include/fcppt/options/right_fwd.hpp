@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_RIGHT_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_RIGHT_FWD_HPP_INCLUDED
 
-#include <fcppt/options/detail/right_tag.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/options/detail/right_tag.hpp>
 
 
 namespace fcppt

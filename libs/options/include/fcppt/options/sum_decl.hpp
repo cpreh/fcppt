@@ -13,8 +13,8 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
-#include <fcppt/options/right_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/right_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>
