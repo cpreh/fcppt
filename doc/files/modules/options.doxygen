@@ -406,6 +406,16 @@ Second, the openmode needs to be passed as well.
 
 \snippet options/complex.cpp options_open_output
 
+Here is the output of the parser's usage:
+
+\code{.unparsed}
+Input filename : string - The name of the input file to copy
+[ Output filename : string - The name of the output file. Defaults to input_file.bak ]
+[ --execute|-e ] - Whether to actually execute the actions
+[ --trunc ] - Whether to truncate the output file
+[ --loglevel|-l : [verbose,debug,info,warning,error,fatal] / warning ] - The log level to use
+\endcode
+
 \section fcpptoptions_commands Commands
 
 Instead of creating one program per command, it is useful to combine several
@@ -440,9 +450,65 @@ Finally, we combine everything into a commands parser.
 
 \snippet options/commands.cpp commands
 
-Here is an example of how its result can be used:
+Here is an example showing how to use the parser's result.
+We first check if the optional git directory has been specified.
 
-\snippet options/commands.cpp usage
+\snippet options/commands.cpp usage_git_dir
+
+We then match on the two different sub-commands.
+
+\snippet options/commands.cpp usage_sub_commands
+
+The main program prints the parser's usage in case of an error.
+
+\snippet options/commands.cpp main
+
+Here are some example invocations:
+
+\code{.unparsed}
+./fcppt_example_options_commands
+No command specified from [clone, pull, ]
+usage: [ --git-dir : string - The path to the repository ]
+  clone:  (Clone from another repository)
+    path : string - The path to clone from
+  pull:  (Pull all changes)
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_commands bar
+Invalid command bar
+Usage:
+[ --git-dir : string - The path to the repository ]
+  clone:  (Clone from another repository)
+    path : string - The path to clone from
+  pull:  (Pull all changes)
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_commands clone
+Missing argument "path".
+Usage:
+[ --git-dir : string - The path to the repository ]
+  clone:  (Clone from another repository)
+    path : string - The path to clone from
+  pull:  (Pull all changes)
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_commands clone dir
+Clone from dir
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_commands --git-dir x clone dir
+Git directory is x
+Clone from dir
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_commands pull
+pull
+\endcode
 
 \section fcpptoptions_help Help option
 
@@ -461,6 +527,24 @@ fcppt::options::help_text\endlink, otherwise it returns a regular \link
 fcppt::options::result\endlink.
 
 \snippet options/help.cpp options_help_match
+
+In this example, <code>parser</code> is a simple parser that parses an int:
+
+\snippet options/help.cpp options_help_int
+
+Here are a few example invocations:
+
+\code{.unparsed}
+./fcppt_example_options_help
+  Missing flag --help.
+|
+  Missing argument "arg1".
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_help --help
+arg1 : int - The main argument
+\endcode
 
 \section fcpptoptions_base Hiding parser implementation
 

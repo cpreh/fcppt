@@ -41,6 +41,7 @@ FCPPT_MAIN(
 	fcppt::args_char **argv
 )
 {
+	// ![options_help_int]
 	FCPPT_RECORD_MAKE_LABEL(
 		arg_label
 	);
@@ -62,6 +63,7 @@ FCPPT_MAIN(
 			}
 		}
 	};
+	// ![options_help_int]
 
 	// ![options_parse_help]
 	fcppt::options::help_result<

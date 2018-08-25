@@ -158,13 +158,9 @@ try
 	};
 //![commands]
 
-//![usage]
+//![usage_git_dir]
 	auto const on_success(
-		[](
-			fcppt::options::result_of<
-				decltype(commands)
-			> const &_result
-		)
+		[](fcppt::options::result_of<decltype(commands)> const &_result)
 		{
 			fcppt::optional::maybe_void(
 				fcppt::record::get<git_directory>(
@@ -180,14 +176,12 @@ try
 						<< FCPPT_TEXT('\n');
 				}
 			);
+//![usage_git_dir]
 
+//![usage_sub_commands]
 			fcppt::variant::match(
 				fcppt::record::get<fcppt::options::sub_command_label>(_result),
-				[](
-					fcppt::options::result_of<
-						decltype(clone_command)
-					> const &_clone
-				)
+				[](fcppt::options::result_of<decltype(clone_command)> const &_clone)
 				{
 					fcppt::io::cout()
 						<< FCPPT_TEXT("Clone from ")
@@ -199,11 +193,7 @@ try
 						)
 						<< FCPPT_TEXT('\n');
 				},
-				[](
-					fcppt::options::result_of<
-						decltype(pull_command)
-					> const &
-				)
+				[](fcppt::options::result_of<decltype(pull_command)> const &)
 				{
 					fcppt::io::cout()
 						<< FCPPT_TEXT("pull\n");
@@ -211,34 +201,26 @@ try
 			);
 		}
 	);
-//![usage]
+//![usage_sub_commands]
 
+//![main]
 	fcppt::either::match(
 		fcppt::options::parse(
 			commands,
-			fcppt::args_from_second(
-				argc,
-				argv
-			)
+			fcppt::args_from_second(argc,argv)
 		),
-		[
-			&commands
-		](
-			fcppt::options::error const &_error
-		)
+		[&commands]
+		(fcppt::options::error const &_error)
 		{
 			fcppt::io::cerr()
-				<<
-				_error
-				<<
-				FCPPT_TEXT("\nusage: ")
-				<<
-				commands.usage()
-				<<
-				FCPPT_TEXT("\n");
+				<< _error
+				<< FCPPT_TEXT("\nUsage:\n")
+				<< commands.usage()
+				<< FCPPT_TEXT("\n");
 		},
 		on_success
 	);
+//![main]
 
 	return
 		EXIT_SUCCESS;

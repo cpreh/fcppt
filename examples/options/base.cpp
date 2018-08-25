@@ -72,14 +72,10 @@ FCPPT_MAIN(
 	auto const create_base(
 		[]()
 		->
-		fcppt::options::base_unique_ptr<
-			result_type
-		>
+		fcppt::options::base_unique_ptr<result_type>
 		{
 			return
-				fcppt::options::make_base<
-					result_type
-				>(
+				fcppt::options::make_base<result_type>(
 					fcppt::options::apply(
 						fcppt::options::argument<
 							int_arg_label,
