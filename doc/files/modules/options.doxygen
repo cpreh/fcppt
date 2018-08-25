@@ -468,7 +468,8 @@ Here are some example invocations:
 \code{.unparsed}
 ./fcppt_example_options_commands
 No command specified from [clone, pull, ]
-usage: [ --git-dir : string - The path to the repository ]
+Usage:
+[ --git-dir : string - The path to the repository ]
   clone:  (Clone from another repository)
     path : string - The path to clone from
   pull:  (Pull all changes)
