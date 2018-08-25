@@ -6,7 +6,6 @@ set(
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
-	libs/core/include/fcppt/algorithm/append.hpp
 	libs/core/include/fcppt/algorithm/binary_search.hpp
 	libs/core/include/fcppt/algorithm/contains.hpp
 	libs/core/include/fcppt/algorithm/contains_if.hpp

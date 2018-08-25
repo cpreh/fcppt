@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -17,19 +16,6 @@
 int
 main()
 {
-{
-//! [append]
-std::vector<int> v{1,2,3};
-std::vector<int> w{4,5};
-
-fcppt::algorithm::append(
-	v,
-	w
-);
-
-// Now v contains: 1,2,3,4,5
-//! [append]
-}
 
 {
 //! [join_strings]
