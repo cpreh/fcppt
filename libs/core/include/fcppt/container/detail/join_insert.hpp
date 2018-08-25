@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_JOIN_INSERT_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_JOIN_INSERT_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_JOIN_INSERT_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_JOIN_INSERT_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/has_insert_range.hpp>
+#include <fcppt/container/detail/has_insert_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -15,7 +15,7 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 namespace detail
 {
@@ -26,7 +26,7 @@ template<
 >
 inline
 std::enable_if_t<
-	!fcppt::algorithm::detail::has_insert_range<
+	!fcppt::container::detail::has_insert_range<
 		Result
 	>::value,
 	void
@@ -50,7 +50,7 @@ template<
 >
 inline
 std::enable_if_t<
-	fcppt::algorithm::detail::has_insert_range<
+	fcppt::container::detail::has_insert_range<
 		Result
 	>::value,
 	void

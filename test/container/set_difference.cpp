@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/set_union.hpp>
+#include <fcppt/container/set_difference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <set>
@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm::set_union",
-	"[algorithm]"
+	"container::set_difference",
+	"[container]"
 )
 {
 	typedef
@@ -23,7 +23,7 @@ TEST_CASE(
 	int_set;
 
 	CHECK(
-		fcppt::algorithm::set_union(
+		fcppt::container::set_difference(
 			int_set{
 				1, 2, 3
 			},
@@ -33,7 +33,7 @@ TEST_CASE(
 		)
 		==
 		int_set{
-			1, 2, 3, 4
+			1
 		}
 	);
 }

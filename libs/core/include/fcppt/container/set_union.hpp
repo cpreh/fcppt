@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_SET_UNION_HPP_INCLUDED
-#define FCPPT_ALGORITHM_SET_UNION_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_SET_UNION_HPP_INCLUDED
+#define FCPPT_CONTAINER_SET_UNION_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -15,13 +15,13 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 
 /**
 \brief Returns the union of two sets
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainer
 
 \tparam Set Must be an associative container
 */

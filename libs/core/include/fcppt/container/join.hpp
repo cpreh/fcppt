@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_JOIN_HPP_INCLUDED
-#define FCPPT_ALGORITHM_JOIN_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_JOIN_HPP_INCLUDED
+#define FCPPT_CONTAINER_JOIN_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/join_impl.hpp>
+#include <fcppt/container/detail/join_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -16,13 +16,13 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 
 /**
 \brief Joins two containers.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainer
 
 Joins containers \a _first and all containers from \a _args, by inserting the
 containers from \a _args into \a _first.
@@ -48,7 +48,7 @@ join(
 )
 {
 	return
-		fcppt::algorithm::detail::join_impl(
+		fcppt::container::detail::join_impl(
 			std::forward<
 				Container
 			>(

@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_JOIN_IMPL_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_JOIN_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_JOIN_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_JOIN_IMPL_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/join_all.hpp>
+#include <fcppt/container/detail/join_all.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -16,7 +16,7 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 namespace detail
 {
@@ -33,7 +33,7 @@ join_impl(
 )
 {
 	return
-		fcppt::algorithm::detail::join_all(
+		fcppt::container::detail::join_all(
 			Container(
 				_first
 			),
@@ -62,7 +62,7 @@ join_impl(
 )
 {
 	return
-		fcppt::algorithm::detail::join_all(
+		fcppt::container::detail::join_all(
 			std::move(
 				_first
 			),

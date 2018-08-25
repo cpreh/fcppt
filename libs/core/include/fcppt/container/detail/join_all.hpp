@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_JOIN_ALL_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_JOIN_ALL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_JOIN_ALL_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_JOIN_ALL_HPP_INCLUDED
 
 #include <fcppt/move_iterator_if_rvalue.hpp>
-#include <fcppt/algorithm/detail/join_insert.hpp>
+#include <fcppt/container/detail/join_insert.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -17,7 +17,7 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 namespace detail
 {
@@ -53,7 +53,7 @@ join_all(
 	Args &&... _args
 )
 {
-	fcppt::algorithm::detail::join_insert(
+	fcppt::container::detail::join_insert(
 		_result,
 		fcppt::move_iterator_if_rvalue<
 			Container
@@ -68,7 +68,7 @@ join_all(
 	);
 
 	return
-		fcppt::algorithm::detail::join_all(
+		fcppt::container::detail::join_all(
 			std::move(
 				_result
 			),

@@ -37,6 +37,11 @@
 	<ul>
 	<li>To use \link fcppt::algorithm::map\endlink on <code>std::array</code>, you have to include
 	<code>fcppt/algorithm/map_array.hpp</code>.</li>
+	<li>Moved <code>fcppt::algorithm::join</code> to \link fcppt::container::join\endlink.</li>
+	<li>Moved <code>fcppt::algorithm::key_set</code> to \link fcppt::container::key_set\endlink.</li>
+	<li>Moved <code>fcppt::algorithm::set_difference</code> to \link fcppt::container::set_difference\endlink.</li>
+	<li>Moved <code>fcppt::algorithm::set_intersection</code> to \link fcppt::container::set_intersection\endlink.</li>
+	<li>Moved <code>fcppt::algorithm::set_union</code> to \link fcppt::container::set_union\endlink.</li>
 	</ul>
 </li>
 
@@ -552,7 +557,7 @@ C++11 library that has no dependencies itself.</li>
 	<li>Added \link fcppt::algorithm::equal\endlink.</li>
 	<li>\link fcppt::algorithm::append\endlink now also works on rvalues.</li>
 	<li>\link fcppt::algorithm::map\endlink now uses \link fcppt::algorithm::loop\endlink, so it works on different ranges.</li>
-	<li>Allow \link fcppt::algorithm::join\endlink to join maps and sets.</li>
+	<li>Allow <code>fcppt::algorithm::join</code> to join maps and sets.</li>
 	</ul>
 </li>
 
@@ -1556,7 +1561,7 @@ C++11 library that has no dependencies itself.</li>
 <ul>
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Fixed return type of \link fcppt::algorithm::join\endlink so it
+	<li>Fixed return type of <code>fcppt::algorithm::join</code> so it
 	never returns a reference.</li>
 	</ul>
 </li>

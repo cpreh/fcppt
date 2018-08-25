@@ -4,16 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/set_difference.hpp>
+#include <fcppt/container/key_set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
+#include <map>
 #include <set>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"algorithm::set_difference",
-	"[algorithm]"
+	"container key_set"
+	"[container_key_set]"
 )
 {
 	typedef
@@ -22,18 +24,36 @@ TEST_CASE(
 	>
 	int_set;
 
+	typedef
+	std::map<
+		int,
+		std::string
+	>
+	int_string_map;
+
 	CHECK(
-		fcppt::algorithm::set_difference(
-			int_set{
-				1, 2, 3
-			},
-			int_set{
-				2, 3, 4
+		fcppt::container::key_set<
+			int_set
+		>(
+			int_string_map{
+				std::make_pair(
+					42,
+					std::string(
+						"test"
+					)
+				),
+				std::make_pair(
+					10,
+					std::string(
+						"test2"
+					)
+				)
 			}
 		)
 		==
 		int_set{
-			1
+			10,
+			42
 		}
 	);
 }

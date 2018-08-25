@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/set_intersection.hpp>
+#include <fcppt/container/set_intersection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
 #include <set>
@@ -12,8 +12,8 @@
 
 
 TEST_CASE(
-	"algorithm::set_intersection",
-	"[algorithm]"
+	"container::set_intersection",
+	"[container]"
 )
 {
 	typedef
@@ -23,7 +23,7 @@ TEST_CASE(
 	int_set;
 
 	CHECK(
-		fcppt::algorithm::set_intersection(
+		fcppt::container::set_intersection(
 			int_set{
 				1, 2, 3
 			},

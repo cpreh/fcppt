@@ -98,7 +98,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::set_difference\endlink.</li>
+	<li>Added <code>fcppt::algorithm::set_difference</code>.</li>
 	<li>Added \link fcppt::algorithm::all_of\endlink.</li>
 	<li>Improve <code>reserve</code> optimization in \link
 	fcppt::algorithm::map \endlink by either using <code>%end() -
@@ -240,10 +240,10 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>\link fcppt::algorithm::join\endlink and
-	fcppt::algorithm::join_move have been merged.</li>
+	<li><code>fcppt::algorithm::join</code> and
+	<code>fcppt::algorithm::join_move</code> have been merged.</li>
 	<li>\link fcppt::algorithm::map_concat\endlink and
-	fcppt::algorithm::map_concat_move have been merged.</li>
+	<code>fcppt::algorithm::map_concat_move</code> have been merged.</li>
 	</ul>
 </li>
 

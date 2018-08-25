@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/join.hpp>
+#include <fcppt/container/join.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -16,8 +16,8 @@
 
 
 TEST_CASE(
-	"algorithm_join std::vector"
-	"[algorithm_join]"
+	"container_join std::vector"
+	"[container_join]"
 )
 {
 	typedef
@@ -32,7 +32,7 @@ TEST_CASE(
 	};
 
 	CHECK(
-		fcppt::algorithm::join(
+		fcppt::container::join(
 			int_vector{
 				1,
 				2
@@ -56,8 +56,8 @@ TEST_CASE(
 }
 
 TEST_CASE(
-	"algorithm_join move"
-	"[algorithm_join]"
+	"container_join move"
+	"[container_join]"
 )
 {
 	typedef
@@ -73,7 +73,7 @@ TEST_CASE(
 	int_movable_vector;
 
 	CHECK(
-		fcppt::algorithm::join(
+		fcppt::container::join(
 			fcppt::container::make<
 				int_movable_vector
 			>(
@@ -132,8 +132,8 @@ TEST_CASE(
 }
 
 TEST_CASE(
-	"algorithm_join std::map"
-	"[algorithm_join]"
+	"container_join std::map"
+	"[container_join]"
 )
 {
 	typedef
@@ -144,7 +144,7 @@ TEST_CASE(
 	int_map;
 
 	CHECK(
-		fcppt::algorithm::join(
+		fcppt::container::join(
 			int_map{
 				std::make_pair(
 					1,

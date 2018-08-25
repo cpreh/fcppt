@@ -4,19 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_KEY_SET_HPP_INCLUDED
-#define FCPPT_ALGORITHM_KEY_SET_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_KEY_SET_HPP_INCLUDED
+#define FCPPT_CONTAINER_KEY_SET_HPP_INCLUDED
 
 #include <fcppt/algorithm/map.hpp>
 
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 
 /**
 \brief Creates a set of keys from a map.
+
+\ingroup fcpptcontainer
 
 Inserts every key from \a _map into the resulting set.
 

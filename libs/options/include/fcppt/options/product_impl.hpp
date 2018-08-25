@@ -11,11 +11,11 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/algorithm/set_intersection.hpp>
-#include <fcppt/algorithm/set_union.hpp>
+#include <fcppt/container/output.hpp>
+#include <fcppt/container/set_intersection.hpp>
+#include <fcppt/container/set_union.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/container/output.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/duplicate_names.hpp>
@@ -238,7 +238,7 @@ fcppt::options::product<
 >::flag_names() const
 {
 	return
-		fcppt::algorithm::set_union(
+		fcppt::container::set_union(
 			fcppt::options::deref(
 				left_
 			).flag_names(),
@@ -259,7 +259,7 @@ fcppt::options::product<
 >::option_names() const
 {
 	return
-		fcppt::algorithm::set_union(
+		fcppt::container::set_union(
 			fcppt::options::deref(
 				left_
 			).option_names(),
@@ -315,7 +315,7 @@ fcppt::options::product<
 		name_set
 		{
 			return
-				fcppt::algorithm::set_union(
+				fcppt::container::set_union(
 					fcppt::algorithm::map<
 						name_set
 					>(
@@ -345,7 +345,7 @@ fcppt::options::product<
 	);
 
 	name_set const common_names{
-		fcppt::algorithm::set_intersection(
+		fcppt::container::set_intersection(
 			all_parameters(
 				fcppt::options::deref(
 					left_

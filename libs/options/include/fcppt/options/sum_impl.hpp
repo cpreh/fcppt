@@ -9,7 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/algorithm/set_union.hpp>
+#include <fcppt/container/set_union.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/options/combine_errors.hpp>
@@ -319,7 +319,7 @@ fcppt::options::sum<
 >::flag_names() const
 {
 	return
-		fcppt::algorithm::set_union(
+		fcppt::container::set_union(
 			fcppt::options::deref(
 				left_
 			).flag_names(),
@@ -342,7 +342,7 @@ fcppt::options::sum<
 >::option_names() const
 {
 	return
-		fcppt::algorithm::set_union(
+		fcppt::container::set_union(
 			fcppt::options::deref(
 				left_
 			).option_names(),

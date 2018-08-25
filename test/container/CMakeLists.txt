@@ -57,6 +57,16 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
+	join
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_container_test(
+	key_set
+)
+
+add_fcppt_container_test(
 	make
 )
 
@@ -104,6 +114,18 @@ add_fcppt_container_test(
 
 add_subdirectory(
 	raw_vector
+)
+
+add_fcppt_container_test(
+	set_difference
+)
+
+add_fcppt_container_test(
+	set_intersection
+)
+
+add_fcppt_container_test(
+	set_union
 )
 
 add_subdirectory(

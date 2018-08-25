@@ -4,18 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/key_set.hpp>
+#include <fcppt/container/set_union.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch.hpp>
-#include <map>
 #include <set>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"algorithm key_set"
-	"[algorithm_key_set]"
+	"container::set_union",
+	"[container]"
 )
 {
 	typedef
@@ -24,36 +22,18 @@ TEST_CASE(
 	>
 	int_set;
 
-	typedef
-	std::map<
-		int,
-		std::string
-	>
-	int_string_map;
-
 	CHECK(
-		fcppt::algorithm::key_set<
-			int_set
-		>(
-			int_string_map{
-				std::make_pair(
-					42,
-					std::string(
-						"test"
-					)
-				),
-				std::make_pair(
-					10,
-					std::string(
-						"test2"
-					)
-				)
+		fcppt::container::set_union(
+			int_set{
+				1, 2, 3
+			},
+			int_set{
+				2, 3, 4
 			}
 		)
 		==
 		int_set{
-			10,
-			42
+			1, 2, 3, 4
 		}
 	);
 }

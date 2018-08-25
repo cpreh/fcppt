@@ -67,16 +67,6 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
-	join
-	LINK_LIBS
-		fcppt_catch_interface
-)
-
-add_fcppt_algorithm_test(
-	key_set
-)
-
-add_fcppt_algorithm_test(
 	loop
 	LINK_LIBS
 		Brigand
@@ -134,18 +124,6 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	sequence_iteration
-)
-
-add_fcppt_algorithm_test(
-	set_difference
-)
-
-add_fcppt_algorithm_test(
-	set_intersection
-)
-
-add_fcppt_algorithm_test(
-	set_union
 )
 
 add_fcppt_algorithm_test(

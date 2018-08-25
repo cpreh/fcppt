@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_MAP_CONCAT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_CONCAT_HPP_INCLUDED
 
-#include <fcppt/algorithm/join.hpp>
 #include <fcppt/algorithm/detail/map_concat.hpp>
+#include <fcppt/container/join.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -59,7 +59,7 @@ map_concat(
 			)
 			{
 				return
-					fcppt::algorithm::join(
+					fcppt::container::join(
 						std::move(
 							_state1
 						),

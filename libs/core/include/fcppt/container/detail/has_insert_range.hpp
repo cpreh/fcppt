@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_HAS_INSERT_RANGE_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_HAS_INSERT_RANGE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_HAS_INSERT_RANGE_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_HAS_INSERT_RANGE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -14,7 +14,7 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 namespace detail
 {
