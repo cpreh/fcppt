@@ -117,10 +117,7 @@ FCPPT_MAIN(
 	> const result{
 		fcppt::options::parse(
 			*base,
-			fcppt::args_from_second(
-				argc,
-				argv
-			)
+			fcppt::args_from_second(argc, argv)
 		)
 	};
 // ![options_use_base]
@@ -143,10 +140,7 @@ FCPPT_MAIN(
 		<<
 		fcppt::options::parse(
 			combined,
-			fcppt::args_from_second(
-				argc,
-				argv
-			)
+			fcppt::args_from_second(argc, argv)
 		).has_success()
 		<<
 		FCPPT_TEXT('\n');

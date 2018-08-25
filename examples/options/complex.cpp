@@ -233,49 +233,31 @@ try
 // ![options_parser]
 	auto const parser(
 		fcppt::options::apply(
-			fcppt::make_cref(
-				input_file
-			),
-			fcppt::make_cref(
-				output_file
-			),
-			fcppt::make_cref(
-				execute
-			),
-			fcppt::make_cref(
-				openmode
-			),
-			fcppt::make_cref(
-				log_level
-			)
+			fcppt::make_cref(input_file),
+			fcppt::make_cref(output_file),
+			fcppt::make_cref(execute),
+			fcppt::make_cref(openmode),
+			fcppt::make_cref(log_level)
 		)
 	);
 
 	typedef
 	fcppt::options::result_of<
-		decltype(
-			parser
-		)
+		decltype(parser)
 	>
 	result_type;
 // ![options_parser]
 
 // ![options_main_program]
 	auto const main_program(
-		[](
-			result_type const &_result
-		)
+		[](result_type const &_result)
 		-> bool
 		{
 // ![options_main_program]
 
 // ![options_read_execute]
 			if(
-				!fcppt::record::get<
-					execute_label
-				>(
-					_result
-				)
+				!fcppt::record::get<execute_label>(_result)
 			)
 				return
 					false;
@@ -284,11 +266,7 @@ try
 // ![options_log_context]
 			fcppt::log::context log_context{
 				fcppt::log::optional_level{
-					fcppt::record::get<
-						log_level_label
-					>(
-						_result
-					)
+					fcppt::record::get<log_level_label>(_result)
 				},
 				fcppt::log::default_level_streams()
 			};
@@ -309,11 +287,7 @@ try
 				fcppt::filesystem::open_exn<
 					fcppt::filesystem::ifstream
 				>(
-					fcppt::record::get<
-						input_file_label
-					>(
-						_result
-					),
+					fcppt::record::get<input_file_label>(_result),
 					std::ios_base::openmode{}
 				)
 			};
@@ -322,20 +296,11 @@ try
 // ![options_output_filename]
 			fcppt::string const output_filename{
 				fcppt::optional::from(
-					fcppt::record::get<
-						output_file_label
-					>(
-						_result
-					),
-					[
-						&_result
-					]{
+					fcppt::record::get<output_file_label>(_result),
+					[&_result]
+					{
 						return
-							fcppt::record::get<
-								input_file_label
-							>(
-								_result
-							)
+							fcppt::record::get<input_file_label>(_result)
 							+
 							FCPPT_TEXT(".bak");
 					}
@@ -349,11 +314,7 @@ try
 					fcppt::filesystem::ofstream
 				>(
 					output_filename,
-					fcppt::record::get<
-						openmode_label
-					>(
-						_result
-					)
+					fcppt::record::get<openmode_label>(_result)
 				)
 			};
 // ![options_open_output]
@@ -370,68 +331,42 @@ try
 			fcppt::options::parse_help(
 				fcppt::options::default_help_switch(),
 				parser,
-				fcppt::args_from_second(
-					argc,
-					argv
-				)
+				fcppt::args_from_second(argc, argv)
 			),
-			[
-				main_program
-			](
-				fcppt::options::result<
-					result_type
-				> const &_result
-			)
+			[main_program]
+			(fcppt::options::result<result_type> const &_result)
 			{
 				return
 					fcppt::either::match(
 						_result,
-						[](
-							fcppt::options::error const &_error
-						)
+						[](fcppt::options::error const &_error)
 						{
 							fcppt::io::cerr()
-								<<
-								_error
-								<<
-								FCPPT_TEXT('\n');
+								<< _error
+								<< FCPPT_TEXT('\n');
 
 							return
 								EXIT_FAILURE;
 						},
-						[
-							main_program
-						](
-							result_type const &_options
-						)
+						[main_program]
+						(result_type const &_options)
 						{
-							if(
-								!main_program(
-									_options
-								)
-							)
+							if(!main_program(_options))
 								fcppt::io::cout()
-									<<
-									FCPPT_TEXT("The result is:\n")
-									<<
-									_options
-									<<
-									FCPPT_TEXT('\n');
+									<< FCPPT_TEXT("The result is:\n")
+									<< _options
+									<< FCPPT_TEXT('\n');
 
 							return
 								EXIT_SUCCESS;
 						}
 					);
 			},
-			[](
-				fcppt::options::help_text const &_help_text
-			)
+			[](fcppt::options::help_text const &_help_text)
 			{
 				fcppt::io::cout()
-					<<
-					_help_text
-					<<
-					FCPPT_TEXT('\n');
+					<< _help_text
+					<< FCPPT_TEXT('\n');
 
 				return
 					EXIT_SUCCESS;

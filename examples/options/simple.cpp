@@ -95,21 +95,12 @@ FCPPT_MAIN(
 
 // ![options_on_success]
 	auto const on_success(
-		[](
-			result_type const &_result
-		)
+		[](result_type const &_result)
 		{
 			fcppt::io::cout()
-				<<
-				FCPPT_TEXT("Your age is ")
-				<<
-				fcppt::record::get<
-					age_label
-				>(
-					_result
-				)
-				<<
-				FCPPT_TEXT('\n');
+				<< FCPPT_TEXT("Your age is ")
+				<< fcppt::record::get<age_label>(_result)
+				<< FCPPT_TEXT('\n');
 
 			return
 				EXIT_SUCCESS;
@@ -119,23 +110,15 @@ FCPPT_MAIN(
 
 // ![options_on_failure]
 	auto const on_failure(
-		[
-			&parser
-		](
-			fcppt::options::error const &_error
-		)
+		[&parser]
+		(fcppt::options::error const &_error)
 		{
 			fcppt::io::cerr()
-				<<
-				_error
-				<<
-				FCPPT_TEXT('\n')
-				<<
-				FCPPT_TEXT("Usage: ")
-				<<
-				parser.usage()
-				<<
-				FCPPT_TEXT('\n');
+				<< _error
+				<< FCPPT_TEXT('\n')
+				<< FCPPT_TEXT("Usage: ")
+				<< parser.usage()
+				<< FCPPT_TEXT('\n');
 
 			return
 				EXIT_FAILURE;

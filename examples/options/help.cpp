@@ -72,10 +72,7 @@ FCPPT_MAIN(
 		fcppt::options::parse_help(
 			fcppt::options::default_help_switch(),
 			parser,
-			fcppt::args_from_second(
-				argc,
-				argv
-			)
+			fcppt::args_from_second(argc, argv)
 		)
 	};
 	// ![options_parse_help]
@@ -92,20 +89,14 @@ FCPPT_MAIN(
 		)
 		{
 			fcppt::io::cout()
-				<<
-				_result
-				<<
-				FCPPT_TEXT('\n');
+				<< _result
+				<< FCPPT_TEXT('\n');
 		},
-		[](
-			fcppt::options::help_text const &_help_text
-		)
+		[](fcppt::options::help_text const &_help_text)
 		{
 			fcppt::io::cout()
-				<<
-				_help_text
-				<<
-				FCPPT_TEXT('\n');
+				<< _help_text
+				<< FCPPT_TEXT('\n');
 		}
 	);
 	// ![options_help_match]

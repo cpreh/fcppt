@@ -120,13 +120,9 @@ try
 	);
 
 	auto const clone_command{
-		fcppt::options::make_sub_command<
-			clone_label
-		>(
+		fcppt::options::make_sub_command<clone_label>(
 			FCPPT_TEXT("clone"),
-			fcppt::make_cref(
-				clone_parser
-			),
+			fcppt::make_cref(clone_parser),
 			fcppt::options::optional_help_text{
 				fcppt::options::help_text{
 					FCPPT_TEXT("Clone from another repository")
@@ -140,13 +136,9 @@ try
 	);
 
 	auto const pull_command{
-		fcppt::options::make_sub_command<
-			pull_label
-		>(
+		fcppt::options::make_sub_command<pull_label>(
 			FCPPT_TEXT("pull"),
-			fcppt::make_cref(
-				pull_parser
-			),
+			fcppt::make_cref(pull_parser),
 			fcppt::options::optional_help_text{
 				fcppt::options::help_text{
 					FCPPT_TEXT("Pull all changes")
@@ -159,15 +151,9 @@ try
 //![commands]
 	auto const commands{
 		fcppt::options::make_commands(
-			fcppt::make_cref(
-				options_parser
-			),
-			fcppt::make_cref(
-				clone_command
-			),
-			fcppt::make_cref(
-				pull_command
-			)
+			fcppt::make_cref(options_parser),
+			fcppt::make_cref(clone_command),
+			fcppt::make_cref(pull_command)
 		)
 	};
 //![commands]
@@ -176,77 +162,51 @@ try
 	auto const on_success(
 		[](
 			fcppt::options::result_of<
-				decltype(
-					commands
-				)
+				decltype(commands)
 			> const &_result
 		)
 		{
 			fcppt::optional::maybe_void(
-				fcppt::record::get<
-					git_directory
-				>(
-					fcppt::record::get<
-						fcppt::options::options_label
-					>(
+				fcppt::record::get<git_directory>(
+					fcppt::record::get<fcppt::options::options_label>(
 						_result
 					)
 				),
-				[](
-					fcppt::string const &_dir
-				)
+				[](fcppt::string const &_dir)
 				{
 					fcppt::io::cout()
-						<<
-						FCPPT_TEXT("Git directory is ")
-						<<
-						_dir
-						<<
-						FCPPT_TEXT('\n');
+						<< FCPPT_TEXT("Git directory is ")
+						<< _dir
+						<< FCPPT_TEXT('\n');
 				}
 			);
 
 			fcppt::variant::match(
-				fcppt::record::get<
-					fcppt::options::sub_command_label
-				>(
-					_result
-				),
+				fcppt::record::get<fcppt::options::sub_command_label>(_result),
 				[](
 					fcppt::options::result_of<
-						decltype(
-							clone_command
-						)
+						decltype(clone_command)
 					> const &_clone
 				)
 				{
 					fcppt::io::cout()
+						<< FCPPT_TEXT("Clone from ")
 						<<
-						FCPPT_TEXT("Clone from ")
-						<<
-						fcppt::record::get<
-							clone_path
-						>(
-							fcppt::record::get<
-								clone_label
-							>(
+						fcppt::record::get<clone_path>(
+							fcppt::record::get<clone_label>(
 								_clone
 							)
 						)
-						<<
-						FCPPT_TEXT('\n');
+						<< FCPPT_TEXT('\n');
 				},
 				[](
 					fcppt::options::result_of<
-						decltype(
-							pull_command
-						)
+						decltype(pull_command)
 					> const &
 				)
 				{
 					fcppt::io::cout()
-						<<
-						FCPPT_TEXT("pull\n");
+						<< FCPPT_TEXT("pull\n");
 				}
 			);
 		}
