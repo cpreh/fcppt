@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2017.
+//          Copyright Carl Philipp Reh 2009 - 2018.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -17,8 +17,8 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/list.hpp>
-#include <array>
 #include <catch2/catch.hpp>
+#include <array>
 #include <string>
 #include <type_traits>
 #include <vector>
