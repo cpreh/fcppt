@@ -12,7 +12,7 @@
 #include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

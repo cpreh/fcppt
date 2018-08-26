@@ -8,7 +8,7 @@
 #include <fcppt/optional/maybe_void_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

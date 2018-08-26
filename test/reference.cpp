@@ -8,7 +8,7 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 

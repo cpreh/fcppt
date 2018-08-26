@@ -75,6 +75,10 @@
 
 <ul>
 
+<li>
+Updated catch includes to use <code>catch2/catch.hpp</code>.
+</li>
+
 <li>\ref fcpptintrusive
 	<ul>
 	<li>Fixed assignment of \link fcppt::intrusive::base\endlink.</li>

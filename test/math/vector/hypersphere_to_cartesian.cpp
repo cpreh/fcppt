@@ -8,7 +8,7 @@
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <cmath>
 #include <limits>
 #include <fcppt/config/external_end.hpp>

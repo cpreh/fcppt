@@ -8,7 +8,7 @@
 #include <fcppt/unique_ptr_from_std.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 

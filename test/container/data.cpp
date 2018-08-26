@@ -7,7 +7,7 @@
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

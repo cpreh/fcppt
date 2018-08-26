@@ -6,7 +6,7 @@
 
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

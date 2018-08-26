@@ -14,7 +14,7 @@
 #include <boost/units/systems/si/length.hpp>
 #include <boost/units/systems/si/time.hpp>
 #include <boost/units/systems/si/velocity.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

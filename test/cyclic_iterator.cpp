@@ -7,7 +7,7 @@
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

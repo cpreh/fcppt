@@ -7,7 +7,7 @@
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/types_from.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

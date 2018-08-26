@@ -1060,7 +1060,7 @@ function(
 		WRITE
 		${FCPPT_UTILS_CATCH_FILE_TEMP}
 		"#define CATCH_CONFIG_MAIN
-#include <catch.hpp>"
+#include <catch2/catch.hpp>"
 	)
 
 	configure_file(

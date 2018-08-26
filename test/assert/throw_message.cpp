@@ -9,7 +9,7 @@
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/throw_message.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

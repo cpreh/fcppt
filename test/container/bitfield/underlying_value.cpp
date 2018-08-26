@@ -11,7 +11,7 @@
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

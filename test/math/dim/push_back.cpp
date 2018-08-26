@@ -9,7 +9,7 @@
 #include <fcppt/math/dim/push_back.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

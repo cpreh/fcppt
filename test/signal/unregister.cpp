@@ -9,7 +9,7 @@
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <functional>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

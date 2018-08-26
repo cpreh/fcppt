@@ -7,7 +7,7 @@
 #include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/truncation_check.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <climits>
 #include <limits>
 #include <fcppt/config/external_end.hpp>

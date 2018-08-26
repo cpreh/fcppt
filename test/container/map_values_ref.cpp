@@ -10,7 +10,7 @@
 #include <fcppt/reference_output.hpp>
 #include <fcppt/container/map_values_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <map>
 #include <string>
 #include <utility>

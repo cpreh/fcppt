@@ -6,7 +6,7 @@
 
 #include <fcppt/container/dynamic_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 

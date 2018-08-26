@@ -8,7 +8,7 @@
 #include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <string>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>

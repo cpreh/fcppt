@@ -8,7 +8,7 @@
 #include <fcppt/container/array/init_const.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

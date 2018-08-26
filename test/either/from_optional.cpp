@@ -9,7 +9,7 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

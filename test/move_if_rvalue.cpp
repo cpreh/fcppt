@@ -9,7 +9,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

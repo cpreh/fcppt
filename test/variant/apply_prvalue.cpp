@@ -7,7 +7,7 @@
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

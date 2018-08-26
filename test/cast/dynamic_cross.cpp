@@ -10,7 +10,7 @@
 #include <fcppt/cast/dynamic_cross_exn.hpp>
 #include <fcppt/cast/dynamic_cross_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -8,7 +8,7 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/to_root.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 

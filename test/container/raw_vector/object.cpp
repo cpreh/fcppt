@@ -8,7 +8,7 @@
 #include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <sstream>
 #include <utility>

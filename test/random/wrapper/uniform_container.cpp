@@ -12,7 +12,7 @@
 #include <fcppt/random/wrapper/make_uniform_container.hpp>
 #include <fcppt/random/wrapper/uniform_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

@@ -11,7 +11,7 @@
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

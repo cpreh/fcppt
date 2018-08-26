@@ -8,7 +8,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

@@ -14,7 +14,7 @@
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

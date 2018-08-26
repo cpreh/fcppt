@@ -16,7 +16,7 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <type_traits>
 #include <vector>

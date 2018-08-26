@@ -8,7 +8,7 @@
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

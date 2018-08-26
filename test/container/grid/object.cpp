@@ -14,7 +14,7 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

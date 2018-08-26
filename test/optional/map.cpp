@@ -14,7 +14,7 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

@@ -11,7 +11,7 @@
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/range.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -10,7 +10,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 

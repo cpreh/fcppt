@@ -7,7 +7,7 @@
 #include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/interval_distance.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

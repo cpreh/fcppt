@@ -12,7 +12,7 @@
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

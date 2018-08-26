@@ -8,7 +8,7 @@
 #include <fcppt/container/buffer/to_raw_vector.hpp>
 #include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

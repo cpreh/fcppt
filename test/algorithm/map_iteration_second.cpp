@@ -7,7 +7,7 @@
 #include <fcppt/algorithm/map_iteration_second.hpp>
 #include <fcppt/algorithm/update_action.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <map>
 #include <string>
 #include <utility>

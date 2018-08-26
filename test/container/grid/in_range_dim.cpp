@@ -8,7 +8,7 @@
 #include <fcppt/container/grid/in_range_dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
+#include <catch2/catch.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
