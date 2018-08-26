@@ -27,11 +27,14 @@ or to <code>fcppt_options_interface</code> if you only need the headers.</b>
 
 \section fcpptoptions_introduction Introduction
 
-In C++ the main function receives its arguments as an array of strings in the
-form of <code>(int argc, char **argv)</code>, where the first argument is
-usually the name of the executable. Consider a program that expects a single
-integer argument: It first checks if <code>argc</code> is <code>2</code> and if
-so, it tries to convert the second string from <code>argv</code> into an
+Passing arguments to a program is done via the main function,
+<code>int main(int argc, char **argv)</code>, where <code>argc</code> is
+the number of arguments and <code>argv</code> points to the arguments themselves.
+The first argument, <code>argv[0]</code>, is usually the name of the program,
+but does not have to be.
+Now, consider a program that expects a single
+integer argument: It first has to check if <code>argc</code> is <code>2</code> and if
+so, it has to convert <code>argv[1]</code> into an
 integer. If any of these two steps fails, it should also print an appropriate
 error message and exit. Handling arguments this way quickly gets out of
 hand. For example, we might have to deal with optional arguments, flags or
@@ -45,13 +48,13 @@ For example, a parser that expects a single integer with label
 name <code>age</code> has type <code>{ age : int }</code>. Parsers can be combined
 to yield more complicated parsers, so for example a parser that expects zero or
 more strings with label name <code>first_names</code> has type <code>{ first_names :
-std::vector<std::string> }</code>. Combining these two parsers yields <code>{ age
-: int, first_names : std::vector<std::string> }</code>.
+std::vector<std::string> }</code>. Combining these two parsers yields
+a parser of type <code>{ age : int, first_names : std::vector<std::string> }</code>.
 
 \section fcpptoptions_simple A simple example
 
-To start off, let us look at a simple example that expects a single argument of
-type <code>int</code>. First, we need to declare the label that is being used:
+To start off, let us look at a simple example, where we expect a single argument of
+type <code>int</code>. First, we declare the label to be used in the parser type:
 
 \snippet options/simple.cpp options_label
 
@@ -60,7 +63,7 @@ a single value of type <code>int</code>.
 
 \snippet options/simple.cpp options_arg_type
 
-Such a parser parses a command-line like <code>./program "123"</code>, yielding
+Such a parser parses a command-line like <code>./program 123</code>, yielding
 the record <code>{ age_label = 123 }</code>, which is of type
 <code>result_type = { age_label : int }</code>. Next, we define the
 actual parser:
@@ -73,11 +76,10 @@ Here, we see that an \link fcppt::options::argument\endlink gets two parameters:
 <li>a text called <code>help_text</code> which can be used to explain the argument's purpose
 to the user.</li>
 </ul>
-As you can see, the long name is mandatory, while the help text is optional.
 
 Instead of using <code>argc</code> and <code>argv</code> directly, we first use the
 helper function \link fcppt::args_from_second\endlink which copies every argument except the
-first (which usually hold's the program's name but isn't required to) into a container:
+first (which usually holds the program's name but does not have to) into a container:
 
 \snippet options/simple.cpp options_args_from_second
 
@@ -163,7 +165,7 @@ Parses a flag, e.g. <code>"-f"</code> or <code>"--flag"</code>. Depending on
 whether the flag was specified or not, the result type is either its
 <em>inactive value</em> or its <em>active value</em>. Flags never produce an
 error.
-As a shortcut, \link fcppt::options::switch_\endlink is a short-hand for a flag
+\link fcppt::options::switch_\endlink is a short-hand for a flag
 of type <code>bool</code>.
 </td>
 </tr>
@@ -193,7 +195,7 @@ sub-command that takes no arguments or options.
 \link fcppt::options::unit_switch\endlink
 </td>
 <td>
-A flag that always has to be specified (e.g. if you want to parse <code>--help</code>).
+A flag that always has to be specified (e.g. if you want to parse <code>"--help"</code>).
 </td>
 </tr>
 </table>
@@ -289,13 +291,16 @@ Its result is a record with
 the result of <code>O</code> with label name <code>fcppt::options::options_label</code> and
 </li>
 <li>
-a variant of results of <code>S_1,...,S_n</code> with label name <code>fcppt::options::sub_command_label</code>.
+a variant of the result types of <code>S_1,...,S_n</code> with label name <code>fcppt::options::sub_command_label</code>.
 </li>
 </ul>
 
 See \link fcppt::options::make_sub_command\endlink and \link fcppt::options::make_commands\endlink.
 
-\warning Do not include anything other than flags or options in <code>O</code>.
+\warning A commands parser looks for the first argument (i.e. a parameter that is not a flag or an option)
+which it uses as the name of the sub-command.
+Therefore, you should not include
+anything other than flags or options in <code>O</code>.
 </td>
 </tr>
 </table>
@@ -312,8 +317,8 @@ if you want to pass an \link fcppt::options::base_unique_ptr\endlink.</li>
 
 \section fcpptoptions_complex A more complex example
 
-Imagine a program that copies an input file to an output file, but with some
-additional twists:
+Imagine a program that copies an input file to an output file,
+with the following requirements:
 <ul>
 <li>
 The input filename always needs to be specified.
@@ -420,18 +425,18 @@ Input filename : string - The name of the input file to copy
 
 Instead of creating one program per command, it is useful to combine several
 commands into a single parser, where the sub-command is chosen by a specific name.
-Examples of this are used in several programs, namely <code>git</code>.
+Examples of this are found in several programs, namely <code>git</code>.
 For example, <code>git clone</code> and <code>git pull</code> are
 different commands that take different arguments and options themselves.
 However, the <code>git</code> program itself can also take options
-common to all sub-commands, for example <code>--git-dir</code> which
+common to all sub-commands, for example <code>"--git-dir"</code> which
 specifies the directory of the repository.
 In fcppt, this is handled by \link fcppt::options::commands\endlink.
 First, we declare the parser for the common options:
 
 \snippet options/commands.cpp common_options
 
-This parser can optionally take a <code>--git-dir</code> option.
+This parser can optionally take a <code>"--git-dir"</code> option.
 
 Then, we declare two parsers, one for each sub-command.
 We want the <code>clone</code> command to take exactly one argument,
