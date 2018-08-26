@@ -1116,7 +1116,7 @@ function(
 		target_link_libraries(
 			fcppt_utils_catch_main
 			PRIVATE
-			Catch2::Catch
+			Catch2::Catch2
 		)
 	endif()
 endfunction()
@@ -1192,7 +1192,7 @@ function(
 			${FULL_TEST_NAME}
 			PRIVATE
 			fcppt_utils_catch_main
-			Catch2::Catch
+			Catch2::Catch2
 		)
 
 		add_test(

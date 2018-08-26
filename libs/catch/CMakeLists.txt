@@ -19,5 +19,5 @@ make_fcppt_library(
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
 	TRANSITIVE_IMPORTED_DEPS
-		Catch2::Catch
+		Catch2::Catch2
 )
