@@ -105,19 +105,25 @@ codecvt(
 			)
 		);
 
-		if(
+		typename
+		buffer_type::size_type const written{
 			to_next
 			!=
 			nullptr
-		)
-			buf.written(
+			?
 				fcppt::cast::to_unsigned(
 					std::distance(
 						buf.write_data(),
 						to_next
 					)
 				)
-			);
+			:
+				0u
+		};
+
+		buf.written(
+			written
+		);
 
 		switch(
 			result
@@ -135,6 +141,17 @@ codecvt(
 					FCPPT_TEXT("codecvt: error!")
 				};
 		case std::codecvt_base::partial:
+			if(
+				written
+				==
+				0u
+			)
+				return
+					return_type(
+						buf.begin(),
+						buf.end()
+					);
+
 			buf.resize_write_area(
 				buf.read_size()
 				*

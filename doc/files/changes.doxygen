@@ -85,6 +85,12 @@ Updated catch includes to use <code>catch2/catch.hpp</code>.
 	</ul>
 </li>
 
+<li>\ref fcpptstring
+	<ul>
+	<li>Fixed string conversion when partial writes occur that don't write anything.</li>
+	</ul>
+</li>
+
 </ul>
 
 
