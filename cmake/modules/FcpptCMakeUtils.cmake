@@ -1215,6 +1215,11 @@ function(
 	)
 
 	set(
+		SINGLE_ARGS
+		INSTALL_DIR
+	)
+
+	set(
 		MULTI_ARGS
 		LINK_LIBS
 		INCLUDE_DIRS
@@ -1225,7 +1230,7 @@ function(
 	cmake_parse_arguments(
 		""
 		"${OPTION_ARGS}"
-		""
+		"${SINGLE_ARGS}"
 		"${MULTI_ARGS}"
 		${ARGN}
 	)
@@ -1299,6 +1304,20 @@ function(
 		PRIVATE
 		${_LINK_LIBS}
 	)
+
+	if(
+		NOT
+		"${_INSTALL_DIR}"
+		STREQUAL
+		""
+	)
+		install(
+			TARGETS
+			${FULL_EXAMPLE_NAME}
+			DESTINATION
+			"${_INSTALL_DIR}"
+		)
+	endif()
 endfunction()
 
 function(
