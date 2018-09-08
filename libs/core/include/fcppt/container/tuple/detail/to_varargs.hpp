@@ -7,10 +7,15 @@
 #ifndef FCPPT_CONTAINER_TUPLE_DETAIL_TO_VARARGS_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_DETAIL_TO_VARARGS_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if.hpp>
+#include <fcppt/not.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/sequences/at.hpp>
 #include <cstddef>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,8 +48,26 @@ to_varargs(
 {
 	return
 		_function(
-			fcppt::move_if_rvalue<
-				Tuple
+			fcppt::move_if<
+				fcppt::not_(
+					std::is_lvalue_reference<
+						Tuple
+					>::value
+				)
+				||
+				std::is_rvalue_reference<
+					::brigand::at_c<
+						fcppt::type_traits::remove_cv_ref_t<
+							Tuple
+						>,
+						// TODO: Convert tuple to brigand::list
+						fcppt::cast::size<
+							unsigned int
+						>(
+							Indices
+						)
+					>
+				>::value
 			>(
 				std::get<
 					Indices
