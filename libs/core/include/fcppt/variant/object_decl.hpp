@@ -182,17 +182,11 @@ public:
 	~object();
 
 	/**
-	\brief Returns a const reference to the held type without any checks
-
-	If <code>fcppt::mpl::index_of<types, U>::value ==
-	this->type_index()</code> is true, a const reference to currently held
-	value is be returned.
+	\brief Returns a const reference to the held type without any checks.
 
 	\tparam U Must be a type among <code>types</code>
 
-	\warning The behaviour is undefined if
-	<code>fcppt::mpl::index_of<types, U>::value ==
-	this->type_index()</code> is false.
+	\warning The behaviour is undefined if the variant does not contain <code>U</code>.
 	*/
 	template<
 		typename U
@@ -201,17 +195,11 @@ public:
 	get_unsafe() const;
 
 	/**
-	\brief Returns a reference to the held type without any checks
-
-	If <code>fcppt::mpl::index_of<types, U>::value ==
-	this->type_index()</code> is true, a reference to currently held value
-	is be returned.
+	\brief Returns a reference to the held type without any checks.
 
 	\tparam U Must be a type among <code>types</code>
 
-	\warning The behaviour is undefined if
-	<code>fcppt::mpl::index_of<types, U>::value ==
-	this->type_index()</code> is false.
+	\warning The behaviour is undefined if the variant does not contain <code>U</code>.
 	*/
 	template<
 		typename U
