@@ -7,7 +7,8 @@
 #ifndef FCPPT_CONTAINER_TUPLE_DETAIL_PUSH_BACK_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_DETAIL_PUSH_BACK_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if.hpp>
+#include <fcppt/container/tuple/move_element.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <tuple>
@@ -42,8 +43,11 @@ push_back(
 {
 	return
 		Result{
-			fcppt::move_if_rvalue<
-				Source
+			fcppt::move_if<
+				fcppt::container::tuple::move_element<
+					Source,
+					Indices
+				>::value
 			>(
 				std::get<
 					Indices

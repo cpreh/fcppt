@@ -414,11 +414,15 @@ set(
 	libs/core/include/fcppt/container/tuple/detail/push_back.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/detail/to_varargs.hpp
+	libs/core/include/fcppt/container/tuple/detail/types_of.hpp
 	libs/core/include/fcppt/container/tuple/map.hpp
 	libs/core/include/fcppt/container/tuple/map_result.hpp
+	libs/core/include/fcppt/container/tuple/move_element.hpp
 	libs/core/include/fcppt/container/tuple/push_back.hpp
 	libs/core/include/fcppt/container/tuple/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/to_varargs.hpp
+	libs/core/include/fcppt/container/tuple/type_at.hpp
+	libs/core/include/fcppt/container/tuple/types_of.hpp
 	libs/core/include/fcppt/container/tuple/vararg_map.hpp
 	libs/core/include/fcppt/copy.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
@@ -1231,12 +1235,14 @@ set(
 	libs/core/include/fcppt/unit_fwd.hpp
 	libs/core/include/fcppt/unit_output.hpp
 	libs/core/include/fcppt/use.hpp
+	libs/core/include/fcppt/variant/apply.hpp
 	libs/core/include/fcppt/variant/apply_binary.hpp
 	libs/core/include/fcppt/variant/apply_ternary.hpp
 	libs/core/include/fcppt/variant/apply_unary.hpp
 	libs/core/include/fcppt/variant/compare.hpp
 	libs/core/include/fcppt/variant/comparison.hpp
 	libs/core/include/fcppt/variant/current_type_name.hpp
+	libs/core/include/fcppt/variant/detail/apply.hpp
 	libs/core/include/fcppt/variant/detail/assert_type.hpp
 	libs/core/include/fcppt/variant/detail/disable_object.hpp
 	libs/core/include/fcppt/variant/detail/get_exn_impl.hpp

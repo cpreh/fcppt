@@ -41,12 +41,14 @@ apply(
 	FailFunction const &,
 	std::tuple<
 		Args...
-	> _args
+	> &&_tuple
 )
 {
 	return
 		fcppt::container::tuple::to_varargs(
-			_args,
+			std::move(
+				_tuple
+			),
 			[
 				&_function
 			](

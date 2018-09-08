@@ -7,7 +7,8 @@
 #ifndef FCPPT_CONTAINER_TUPLE_DETAIL_MAP_RESULT_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_DETAIL_MAP_RESULT_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if.hpp>
+#include <fcppt/container/tuple/move_element.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <tuple>
@@ -50,8 +51,11 @@ struct map_result<
 			std::declval<
 				Function
 			>()(
-				fcppt::move_if_rvalue<
-					Tuple
+				fcppt::move_if<
+					fcppt::container::tuple::move_element<
+						Tuple,
+						Indices
+					>::value
 				>(
 					std::get<
 						Indices

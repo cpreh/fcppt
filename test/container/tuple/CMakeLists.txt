@@ -20,6 +20,11 @@ add_fcppt_container_tuple_test(
 )
 
 add_fcppt_container_tuple_test(
+	move_element
+	NO_CODE
+)
+
+add_fcppt_container_tuple_test(
 	push_back
 	LINK_LIBS
 		fcppt_catch_interface
@@ -27,6 +32,11 @@ add_fcppt_container_tuple_test(
 
 add_fcppt_container_tuple_test(
 	to_varargs
+)
+
+add_fcppt_container_tuple_test(
+	type_at
+	NO_CODE
 )
 
 add_fcppt_container_tuple_test(
