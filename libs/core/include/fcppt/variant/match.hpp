@@ -9,7 +9,7 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/index_of.hpp>
@@ -51,7 +51,7 @@ match(
 	);
 
 	return
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			[
 				&tuple
 			](

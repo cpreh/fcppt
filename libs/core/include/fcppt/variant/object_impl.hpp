@@ -11,8 +11,7 @@
 #include <fcppt/detail/call_destructor.hpp>
 #include <fcppt/detail/placement_new.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/variant/apply_binary.hpp>
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/assert_type.hpp>
@@ -87,7 +86,7 @@ fcppt::variant::object<
 		_other.index_
 	)
 {
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		[
 			this
 		](
@@ -122,7 +121,7 @@ noexcept(
 		_other.index_
 	)
 {
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		[
 			this
 		](
@@ -248,7 +247,7 @@ fcppt::variant::object<
 		==
 		_other.type_index()
 	)
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			[
 				this
 			](
@@ -267,7 +266,7 @@ fcppt::variant::object<
 			_other
 		);
 	else
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			[
 				this
 			](
@@ -306,7 +305,7 @@ noexcept(
 		==
 		_other.type_index()
 	)
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			[
 				this
 			](
@@ -506,7 +505,7 @@ fcppt::variant::object<
 	)
 		return;
 
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		[](
 			auto &_value
 		)
@@ -532,7 +531,7 @@ fcppt::variant::object<
 	object &_other
 )
 {
-	fcppt::variant::apply_binary(
+	fcppt::variant::apply(
 		[
 			&_other,
 			this

@@ -9,7 +9,7 @@
 
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/detail/combined_error_type.hpp>
-#include <fcppt/variant/apply_binary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -43,7 +43,7 @@ combine_errors(
 )
 {
 	return
-		fcppt::variant::apply_binary(
+		fcppt::variant::apply(
 			[
 				&_function
 			](

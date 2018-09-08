@@ -9,12 +9,6 @@ function(
 endfunction()
 
 add_fcppt_variant_test(
-	apply
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_variant_test(
 	apply_movable
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -28,6 +22,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	apply_prvalue
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_test(

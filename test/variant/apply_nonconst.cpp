@@ -5,9 +5,7 @@
 
 
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/variant/apply_binary.hpp>
-#include <fcppt/variant/apply_ternary.hpp>
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -40,7 +38,7 @@ TEST_CASE(
 		)
 	);
 
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		[](
 			auto &_val
 		)
@@ -81,7 +79,7 @@ TEST_CASE(
 		42
 	);
 
-	fcppt::variant::apply_binary(
+	fcppt::variant::apply(
 		[](
 			auto &_val1,
 			auto &_val2
@@ -145,7 +143,7 @@ TEST_CASE(
 		true
 	);
 
-	fcppt::variant::apply_ternary(
+	fcppt::variant::apply(
 		[](
 			auto &_val1,
 			auto &_val2,

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/apply_ternary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -78,7 +78,7 @@ TEST_CASE(
 		"foo"
 	);
 
-	fcppt::variant::apply_ternary(
+	fcppt::variant::apply(
 		function(),
 		variant(
 			false

@@ -10,7 +10,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/type_name_from_index.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
@@ -38,7 +38,7 @@ current_type_name(
 )
 {
 	return
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			[](
 				auto const &_element
 			)

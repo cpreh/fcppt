@@ -4,14 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/exception.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/variant/apply_ternary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <stdexcept>
 #include <string>
 #include <tuple>
 #include <utility>
@@ -106,8 +105,8 @@ struct move_function
 	) const
 	{
 		throw
-			fcppt::exception{
-				FCPPT_TEXT("impossible")
+			std::runtime_error{
+				"impossible"
 			};
 	}
 
@@ -174,7 +173,7 @@ TEST_CASE(
 
 	function const func{};
 
-	fcppt::variant::apply_ternary(
+	fcppt::variant::apply(
 		func,
 		int_variant,
 		string_variant,
@@ -188,7 +187,7 @@ TEST_CASE(
 )
 {
 	move_result const result{
-		fcppt::variant::apply_ternary(
+		fcppt::variant::apply(
 			move_function{},
 			variant{
 				fcppt::make_unique_ptr<

@@ -36,6 +36,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added \link fcppt::variant::apply\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_290 Changed functionality
@@ -75,6 +81,12 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Removed <code>fcppt::filesystem::file_to_string</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Removed <code>fcppt::variant::apply_unary</code>, <code>fcppt::variant::apply_binary</code> and <code>fcppt::variant::apply_ternary</code>.
 	</ul>
 </li>
 
@@ -862,7 +874,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptvariant
 	<ul>
 	<li>Added \link fcppt::variant::types_of\endlink and <code>fcppt::variant::types_of_tpl</code>.</li>
-	<li>Added move semantics to \link fcppt::variant::apply_unary\endlink, \link fcppt::variant::apply_binary\endlink and \link fcppt::variant::apply_ternary\endlink.</li>
+	<li>Added move semantics to <code>fcppt::variant::apply_unary</code>, <code>fcppt::variant::apply_binary</code> and <code>fcppt::variant::apply_ternary</code>.</li>
 	<li>Improved the error message of \link fcppt::variant::invalid_get\endlink.</li>
 	<li>Added \link fcppt::variant::types_string\endlink.</li>
 	<li>Added \link fcppt::variant::current_type_name\endlink.</li>

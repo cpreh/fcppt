@@ -85,11 +85,6 @@ The following code shows how such a visitor is called:
 
 \snippet variant/visitation.cpp variant_visitor_apply
 
-\link fcppt::variant::apply_binary \endlink and \link
-fcppt::variant::apply_ternary \endlink are also provided. These can be used to
-visit two or three variants at the same time. In this case, the
-<code>operator()</code> takes two or three arguments, respectively.
-
 Here is a small example for defining a binary visitor:
 
 \snippet variant/binary_visitation.cpp variant_binary_visitation
@@ -130,12 +125,6 @@ types instead, which does not make any sense.</li>
 
 <li><code>%fcppt::variant</code> does not allow any implicit conversions in its
 constructors.</li>
-
-<li><code>%fcppt::variant</code> allows non const visitation and visitation of
-rvalues. <code>%boost::variant</code> only supports visitation of
-lvalues.</li>
-
-<li><code>%fcppt::variant</code> provides ternary visitation.</li>
 
 <li><code>%boost::variant</code> offers the so-called "non-empty" guarantee.
 This means that a variant always holds one of its possible types, which is
@@ -178,16 +167,8 @@ instead of relying on <code>%boost::detail::aligned_storage</code>.</li>
 <td>The same as <code>object_impl.hpp</code>.</td>
 </tr>
 <tr>
-<td><code>apply_unary.hpp</code></td>
-<td>Contains \link fcppt::variant::apply_unary \endlink for unary visitation.</td>
-</tr>
-<tr>
-<td><code>apply_binary.hpp</code></td>
-<td>Contains \link fcppt::variant::apply_binary \endlink for binary visitation.</td>
-</tr>
-<tr>
-<td><code>apply_ternary.hpp</code></td>
-<td>Contains \link fcppt::variant::apply_ternary \endlink for ternary visitation.</td>
+<td><code>apply.hpp</code></td>
+<td>Contains \link fcppt::variant::apply \endlink.</td>
 </tr>
 <tr>
 <td><code>compare.hpp</code></td>

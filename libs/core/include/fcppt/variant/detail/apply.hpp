@@ -54,6 +54,10 @@ apply(
 			](
 				auto &&... _inner_args
 			)
+			->
+			decltype(
+				auto
+			)
 			{
 				return
 					_function(
@@ -106,6 +110,10 @@ apply(
 				&_variants...
 			](
 				auto const _type
+			)
+			->
+			decltype(
+				auto
 			)
 			{
 				FCPPT_USE(

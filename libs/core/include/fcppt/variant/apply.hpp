@@ -10,11 +10,15 @@
 #include <fcppt/absurd.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/variant/detail/apply.hpp>
 #include <fcppt/variant/detail/get_unsafe.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/all.hpp>
 #include <brigand/sequences/front.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
 #include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -37,7 +41,20 @@ apply(
 	Variants &&... _variants
 )
 {
-	// TODO: static_assert
+	static_assert(
+		::brigand::all<
+			::brigand::list<
+				fcppt::type_traits::remove_cv_ref_t<
+					Variants
+				>...
+			>,
+			fcppt::variant::is_object<
+				::brigand::_1
+			>
+		>::value,
+		"Variants must all be variants"
+	);
+
 	return
 		fcppt::variant::detail::apply(
 			_function,

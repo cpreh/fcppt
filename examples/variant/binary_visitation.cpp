@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/apply_binary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
@@ -38,7 +38,7 @@ main()
 
 	// Does a binary visitation.
 	// Prints "Hello World" 42.
-	fcppt::variant::apply_binary(
+	fcppt::variant::apply(
 		[](
 			auto const &_val1,
 			auto const &_val2

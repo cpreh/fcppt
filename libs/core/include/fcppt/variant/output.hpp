@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 #define FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
@@ -54,7 +54,7 @@ operator<<(
 )
 {
 	return
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			[
 				&_stream
 			](

@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_TYPE_INFO_HPP_INCLUDED
 #define FCPPT_VARIANT_TYPE_INFO_HPP_INCLUDED
 
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/detail/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -36,7 +36,7 @@ type_info(
 )
 {
 	return
-		fcppt::variant::apply_unary(
+		fcppt::variant::apply(
 			fcppt::variant::detail::type_info(),
 			_variant
 		);

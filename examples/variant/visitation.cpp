@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -71,7 +71,7 @@ visit_simple()
 {
 // ![variant_visitor_apply]
 	// Prints "Not integral: Hello World".
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		print_visitor(),
 		string_or_int(
 			std::string(
@@ -81,7 +81,7 @@ visit_simple()
 	);
 
 	// Prints "Integral: 42".
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		print_visitor(),
 		string_or_int(
 			42

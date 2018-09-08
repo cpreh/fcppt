@@ -1447,9 +1447,6 @@ set(
 	libs/core/include/fcppt/unit_output.hpp
 	libs/core/include/fcppt/use.hpp
 	libs/core/include/fcppt/variant/apply.hpp
-	libs/core/include/fcppt/variant/apply_binary.hpp
-	libs/core/include/fcppt/variant/apply_ternary.hpp
-	libs/core/include/fcppt/variant/apply_unary.hpp
 	libs/core/include/fcppt/variant/compare.hpp
 	libs/core/include/fcppt/variant/comparison.hpp
 	libs/core/include/fcppt/variant/current_type_name.hpp

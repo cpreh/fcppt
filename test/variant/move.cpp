@@ -6,9 +6,6 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/variant/apply_binary.hpp>
-#include <fcppt/variant/apply_ternary.hpp>
-#include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -6,7 +6,7 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/invalid_get.hpp>
 #include <fcppt/variant/variadic.hpp>
@@ -57,7 +57,7 @@ try
 		)
 	);
 
-	fcppt::variant::apply_unary(
+	fcppt::variant::apply(
 		visitor(),
 		v
 	);
