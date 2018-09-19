@@ -64,6 +64,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 FCPPT_PP_DISABLE_VC_WARNING(5026) // move constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(5027) // move assignment operator could not be generated
+FCPPT_PP_DISABLE_VC_WARNING(5045) // Spectre mitigation for memory load
 
 #include <fcppt/config/msvc_version_at_least.hpp>
 
