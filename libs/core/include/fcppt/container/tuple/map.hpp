@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TUPLE_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_MAP_HPP_INCLUDED
 
+#include <fcppt/config/compiler.hpp>
 #include <fcppt/container/tuple/map_result.hpp>
 #include <fcppt/container/tuple/detail/map.hpp>
 #include <fcppt/type_traits/is_std_tuple.hpp>
@@ -41,16 +42,18 @@ template<
 	typename Function
 >
 inline
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 auto
-map(
-	Tuple &&_tuple,
-	Function const &_function
-)
-->
+#else
 fcppt::container::tuple::map_result<
 	Tuple,
 	Function
 >
+#endif
+map(
+	Tuple &&_tuple,
+	Function const &_function
+)
 {
 	typedef
 	fcppt::type_traits::remove_cv_ref_t<
