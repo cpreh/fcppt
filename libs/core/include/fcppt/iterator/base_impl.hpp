@@ -253,10 +253,12 @@ fcppt::iterator::base<
 	difference_type const _diff
 ) const
 {
+	derived temp{
+		this->get()
+	};
+
 	return
-		derived{
-			this->get()
-		}
+		temp
 		+=
 		_diff;
 }
@@ -292,10 +294,12 @@ fcppt::iterator::base<
 	difference_type const _diff
 ) const
 {
+	derived temp{
+		this->get()
+	};
+
 	return
-		derived{
-			this->get()
-		}
+		temp
 		-=
 		_diff;
 }
