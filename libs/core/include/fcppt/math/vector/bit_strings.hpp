@@ -74,7 +74,10 @@ std::array<
 	fcppt::math::power_of_2<
 		std::size_t
 	>(
-		N
+		// Workaround for VC++ a bug
+		fcppt::math::size_type{
+			N
+		}
 	)
 >
 bit_strings()
@@ -92,7 +95,10 @@ bit_strings()
 		fcppt::math::power_of_2<
 			std::size_t
 		>(
-			N
+			// Workaround for a VC++ bug
+			fcppt::math::size_type{
+				N
+			}
 		)
 	>
 	result_type;
