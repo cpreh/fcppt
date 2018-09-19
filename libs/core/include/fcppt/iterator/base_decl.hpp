@@ -7,6 +7,7 @@
 #ifndef FCPPT_ITERATOR_BASE_DECL_HPP_INCLUDED
 #define FCPPT_ITERATOR_BASE_DECL_HPP_INCLUDED
 
+#include <fcppt/not.hpp>
 #include <fcppt/brigand/implication.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/category_at_least.hpp>
@@ -81,6 +82,15 @@ public:
 	typename
 	Types::derived
 	derived;
+
+	static_assert(
+		fcppt::not_(
+			std::is_const<
+				derived
+			>::value
+		),
+		"Derived can not be const"
+	);
 
 	typedef
 	typename
