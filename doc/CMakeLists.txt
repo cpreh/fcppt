@@ -1517,7 +1517,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
-	libs/filesystem/include/fcppt/filesystem/size_to_size_t.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
 	libs/log/include/fcppt/log/_.hpp

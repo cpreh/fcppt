@@ -81,6 +81,7 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Removed <code>fcppt::filesystem::file_to_string</code>.</li>
+	<li>Removed <code>fcppt::filesystem::size_to_size_t</code>.</li>
 	</ul>
 </li>
 
@@ -638,7 +639,7 @@ C++11 library that has no dependencies itself.</li>
 	<ul>
 	<li>Added \link fcppt::filesystem::create_directory\endlink, \link fcppt::filesystem::create_directory_error\endlink and \link fcppt::filesystem::create_directories_recursive\endlink.</li>
 	<li>Added \link fcppt::filesystem::file_size\endlink.</li>
-	<li>Added \link fcppt::filesystem::size_to_size_t\endlink.</li>
+	<li>Added <code>fcppt::filesystem::size_to_size_t</code>.</li>
 	<li>Added \link fcppt::filesystem::open\endlink and \link fcppt::filesystem::open_exn\endlink.</li>
 	</ul>
 </li>
