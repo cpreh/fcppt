@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
 #include <fcppt/type_name.hpp>
 #include <fcppt/type_name_from_index.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::string
+std::string
 fcppt::type_name_from_index(
 	std::type_index const &_index
 )

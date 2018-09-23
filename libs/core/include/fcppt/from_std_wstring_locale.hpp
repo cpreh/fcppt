@@ -7,7 +7,7 @@
 #ifndef FCPPT_FROM_STD_WSTRING_LOCALE_HPP_INCLUDED
 #define FCPPT_FROM_STD_WSTRING_LOCALE_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/optional_string.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -26,7 +26,7 @@ See the \link fcpptstring string module description \endlink for more
 information about this function.
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::string
+fcppt::optional_string
 from_std_wstring_locale(
 	std::wstring const &,
 	std::locale const &

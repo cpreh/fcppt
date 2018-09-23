@@ -4,8 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/from_std_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/type_name.hpp>
 #include <fcppt/impl/private_config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
@@ -15,9 +13,12 @@
 #include <cxxabi.h>
 #include <fcppt/config/external_end.hpp>
 #endif
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 
-fcppt::string
+std::string
 fcppt::type_name(
 	char const *const _name
 )
@@ -37,21 +38,21 @@ fcppt::type_name(
 		)
 	);
 
-	// demangling failed?
 	return
-		status
+		status != 0
 		?
-			fcppt::from_std_string(
+			std::string{
 				_name
-			)
+			}
 		:
-			fcppt::from_std_string(
+			std::string{
 				name.get_pointer()
-			);
+			}
+		;
 #else
 	return
-		fcppt::from_std_string(
+		std::string{
 			_name
-		);
+		};
 #endif
 }

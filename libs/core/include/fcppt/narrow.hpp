@@ -7,6 +7,7 @@
 #ifndef FCPPT_NARROW_HPP_INCLUDED
 #define FCPPT_NARROW_HPP_INCLUDED
 
+#include <fcppt/optional_std_string.hpp>
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,7 +27,7 @@ namespace fcppt
 Converts \a _string to std::string using \a _locale.
 */
 FCPPT_DETAIL_SYMBOL
-std::string
+fcppt::optional_std_string
 narrow(
 	std::wstring const &_string,
 	std::locale const &_locale

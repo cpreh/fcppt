@@ -5,6 +5,7 @@
 
 
 #include <fcppt/narrow.hpp>
+#include <fcppt/optional_std_string.hpp>
 #include <fcppt/impl/codecvt.hpp>
 #include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -13,7 +14,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-std::string
+fcppt::optional_std_string
 fcppt::narrow(
 	std::wstring const &_string,
 	std::locale const &_locale

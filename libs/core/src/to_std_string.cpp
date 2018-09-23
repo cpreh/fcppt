@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/optional_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/public_config.hpp>
@@ -11,12 +12,9 @@
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/to_std_string_locale.hpp>
 #endif
-#include <fcppt/config/external_begin.hpp>
-#include <string>
-#include <fcppt/config/external_end.hpp>
 
 
-std::string
+fcppt::optional_std_string
 fcppt::to_std_string(
 	fcppt::string const &_input
 )
@@ -28,7 +26,9 @@ fcppt::to_std_string(
 			fcppt::string_conv_locale()
 		)
 #else
-		_input
+		fcppt::optional_std_string{
+			_input
+		}
 #endif
 		;
 }

@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
 #include <fcppt/type_name.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::string
+std::string
 fcppt::type_name_from_info(
 	std::type_info const &_info
 )

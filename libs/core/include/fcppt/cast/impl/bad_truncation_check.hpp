@@ -7,6 +7,7 @@
 #ifndef FCPPT_CAST_IMPL_BAD_TRUNCATION_CHECK_HPP_INCLUDED
 #define FCPPT_CAST_IMPL_BAD_TRUNCATION_CHECK_HPP_INCLUDED
 
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_index.hpp>
@@ -32,14 +33,18 @@ fcppt::cast::bad_truncation_check::bad_truncation_check(
 		+
 		FCPPT_TEXT(" of type \"")
 		+
-		fcppt::type_name_from_index(
-			_source
+		fcppt::from_std_string(
+			fcppt::type_name_from_index(
+				_source
+			)
 		)
 		+
 		FCPPT_TEXT("\" to type \"")
 		+
-		fcppt::type_name_from_index(
-			_destination
+		fcppt::from_std_string(
+			fcppt::type_name_from_index(
+				_destination
+			)
 		)
 		+
 		FCPPT_TEXT('"')

@@ -7,13 +7,12 @@
 #ifndef FCPPT_IMPL_CODECVT_HPP_INCLUDED
 #define FCPPT_IMPL_CODECVT_HPP_INCLUDED
 
-#include <fcppt/exception.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/impl/codecvt_type.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <locale>
@@ -31,8 +30,10 @@ template<
 	typename In,
 	typename Function
 >
-std::basic_string<
-	Out
+fcppt::optional::object<
+	std::basic_string<
+		Out
+	>
 >
 codecvt(
 	std::basic_string<
@@ -49,6 +50,12 @@ codecvt(
 	return_type;
 
 	typedef
+	fcppt::optional::object<
+		return_type
+	>
+	optional_return_type;
+
+	typedef
 	fcppt::container::buffer::object<
 		Out
 	>
@@ -58,7 +65,9 @@ codecvt(
 		_string.empty()
 	)
 		return
-			return_type();
+			optional_return_type(
+				return_type{}
+			);
 
 	fcppt::impl::codecvt_type const &conv(
 		std::use_facet<
@@ -131,15 +140,15 @@ codecvt(
 		{
 		case std::codecvt_base::noconv:
 			return
-				return_type(
-					_string.begin(),
-					_string.end()
-				);
-		case std::codecvt_base::error:
-			throw
-				fcppt::exception{
-					FCPPT_TEXT("codecvt: error!")
+				optional_return_type{
+					return_type(
+						_string.begin(),
+						_string.end()
+					)
 				};
+		case std::codecvt_base::error:
+			return
+				optional_return_type{};
 		case std::codecvt_base::partial:
 			if(
 				written
@@ -147,10 +156,12 @@ codecvt(
 				0u
 			)
 				return
-					return_type(
-						buf.begin(),
-						buf.end()
-					);
+					optional_return_type{
+						return_type(
+							buf.begin(),
+							buf.end()
+						)
+					};
 
 			buf.resize_write_area(
 				buf.read_size()
@@ -160,10 +171,12 @@ codecvt(
 			continue;
 		case std::codecvt_base::ok:
 			return
-				return_type(
-					buf.begin(),
-					buf.end()
-				);
+				optional_return_type{
+					return_type(
+						buf.begin(),
+						buf.end()
+					)
+				};
 		}
 
 		FCPPT_ASSERT_UNREACHABLE;

@@ -4,9 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/exception.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/widen.hpp>
 #include <fcppt/impl/codecvt.hpp>
 #include <fcppt/impl/codecvt_type.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
@@ -20,11 +23,19 @@ fcppt::widen(
 )
 {
 	return
-		fcppt::impl::codecvt<
-			wchar_t
-		>(
-			_string,
-			_locale,
-			&fcppt::impl::codecvt_type::in
+		fcppt::optional::to_exception(
+			fcppt::impl::codecvt<
+				wchar_t
+			>(
+				_string,
+				_locale,
+				&fcppt::impl::codecvt_type::in
+			),
+			[]{
+				return
+					fcppt::exception{
+						FCPPT_TEXT("Failed to convert std::string to std::wstring.")
+					};
+			}
 		);
 }

@@ -6,7 +6,6 @@
 
 #include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/output_to_std_string.hpp>
-#include <fcppt/output_to_std_string_convert.hpp>
 #include <fcppt/output_to_std_wstring.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -48,16 +47,6 @@ TEST_CASE(
 		==
 		std::wstring{
 			L"42"
-		}
-	);
-
-	CHECK(
-		fcppt::output_to_std_string_convert(
-			42
-		)
-		==
-		std::string{
-			"42"
 		}
 	);
 }

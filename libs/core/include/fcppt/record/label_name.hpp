@@ -7,7 +7,6 @@
 #ifndef FCPPT_RECORD_LABEL_NAME_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_NAME_HPP_INCLUDED
 
-#include <fcppt/to_std_string.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/record/is_label.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -41,12 +40,10 @@ label_name()
 	);
 
 	return
-		fcppt::to_std_string(
-			fcppt::type_name_from_info(
-				typeid(
-					typename
-					Label::tag
-				)
+		fcppt::type_name_from_info(
+			typeid(
+				typename
+				Label::tag
 			)
 		);
 }

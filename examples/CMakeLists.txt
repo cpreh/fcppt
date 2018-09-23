@@ -96,12 +96,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	codecvt
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_example(
 	config
 	LINK_LIBS
 		fcppt_core_interface

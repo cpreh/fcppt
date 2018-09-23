@@ -7,12 +7,12 @@
 #ifndef FCPPT_VARIANT_CURRENT_TYPE_NAME_HPP_INCLUDED
 #define FCPPT_VARIANT_CURRENT_TYPE_NAME_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/type_name_from_index.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,7 +30,7 @@ namespace variant
 template<
 	typename Elements
 >
-fcppt::string
+std::string
 current_type_name(
 	fcppt::variant::object<
 		Elements

@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONS_PRETTY_TYPE_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRETTY_TYPE_IMPL_HPP_INCLUDED
 
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/type_name_from_info.hpp>
@@ -42,9 +43,11 @@ struct pretty_type_impl
 	get()
 	{
 		return
-			fcppt::type_name_from_info(
-				typeid(
-					Type
+			fcppt::from_std_string(
+				fcppt::type_name_from_info(
+					typeid(
+						Type
+					)
 				)
 			);
 	}

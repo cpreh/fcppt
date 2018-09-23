@@ -8,6 +8,7 @@
 #define FCPPT_ENUM_FROM_INT_EXN_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_info.hpp>
@@ -88,9 +89,11 @@ from_int_exn(
 						+
 						FCPPT_TEXT(" to an enum of type ")
 						+
-						fcppt::type_name_from_info(
-							typeid(
-								Enum
+						fcppt::from_std_string(
+							fcppt::type_name_from_info(
+								typeid(
+									Enum
+								)
 							)
 						)
 						+

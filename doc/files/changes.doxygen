@@ -66,6 +66,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstring
+	<ul>
+	<li>Return optionals for string conversions that can fail, notably \link fcppt::narrow\endlink, \link fcppt::to_std_string\endlink and \link fcppt::from_std_wstring\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_290 Removed functionality
@@ -82,6 +88,12 @@
 	<ul>
 	<li>Removed <code>fcppt::filesystem::file_to_string</code>.</li>
 	<li>Removed <code>fcppt::filesystem::size_to_size_t</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Removed <code>fcppt::output_to_std_string_convert</code>.</li>
 	</ul>
 </li>
 
@@ -192,7 +204,7 @@ Catch2 is now required.
 
 <li>\ref fcpptstring
 	<ul>
-	<li>Added \link fcppt::output_to_std_string_convert\endlink.</li>
+	<li>Added <code>fcppt::output_to_std_string_convert</code>.</li>
 	</ul>
 </li>
 

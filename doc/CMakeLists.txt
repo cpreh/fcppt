@@ -119,7 +119,6 @@ set(
 	examples/cast/dynamic_exn.cpp
 	examples/cast/safe_numeric.cpp
 	examples/cast/truncation_check.cpp
-	examples/codecvt.cpp
 	examples/coding_style.cpp
 	examples/coding_style_asthetic.cpp
 	examples/config.cpp
@@ -205,6 +204,7 @@ set(
 	libs/boost/include/fcppt/spirit_traits/variant_basic.hpp
 	libs/boost/include/fcppt/type_iso/boost_units.hpp
 	libs/catch/include/fcppt/catch/defer.hpp
+	libs/catch/include/fcppt/catch/detail/output.hpp
 	libs/catch/include/fcppt/catch/either.hpp
 	libs/catch/include/fcppt/catch/make_movable.hpp
 	libs/catch/include/fcppt/catch/movable.hpp
@@ -1168,7 +1168,6 @@ set(
 	libs/core/include/fcppt/optional_string_fwd.hpp
 	libs/core/include/fcppt/output_to_fcppt_string.hpp
 	libs/core/include/fcppt/output_to_std_string.hpp
-	libs/core/include/fcppt/output_to_std_string_convert.hpp
 	libs/core/include/fcppt/output_to_std_wstring.hpp
 	libs/core/include/fcppt/output_to_string.hpp
 	libs/core/include/fcppt/preprocessor/const.hpp

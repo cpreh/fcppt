@@ -5,7 +5,7 @@
 
 
 #include <fcppt/from_std_wstring.hpp>
-#include <fcppt/string.hpp>
+#include <fcppt/optional_string.hpp>
 #include <fcppt/public_config.hpp>
 #if defined(FCPPT_NARROW_STRING)
 #include <fcppt/from_std_wstring_locale.hpp>
@@ -16,7 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::string
+fcppt::optional_string
 fcppt::from_std_wstring(
 	std::wstring const &_input
 )
@@ -28,7 +28,9 @@ fcppt::from_std_wstring(
 			fcppt::string_conv_locale()
 		)
 #else
-		_input
+		fcppt::optional_string{
+			_input
+		}
 #endif
 		;
 }

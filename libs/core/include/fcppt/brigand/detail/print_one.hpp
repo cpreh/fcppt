@@ -9,6 +9,7 @@
 
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/io/widen_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
@@ -32,9 +33,11 @@ print_one(
 {
 	_stream
 		<<
-		fcppt::type_name_from_info(
-			typeid(
-				Type
+		fcppt::io::widen_string(
+			fcppt::type_name_from_info(
+				typeid(
+					Type
+				)
 			)
 		);
 }

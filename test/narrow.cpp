@@ -5,6 +5,9 @@
 
 
 #include <fcppt/narrow.hpp>
+#include <fcppt/optional_std_string.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -25,6 +28,8 @@ TEST_CASE(
 			test
 		)
 		==
-		std::string{}
+		fcppt::optional_std_string{
+			std::string{}
+		}
 	);
 }

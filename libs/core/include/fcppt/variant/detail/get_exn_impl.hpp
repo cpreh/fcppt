@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_GET_EXN_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_GET_EXN_IMPL_HPP_INCLUDED
 
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/variant/current_type_name.hpp>
@@ -54,9 +55,11 @@ get_exn_impl(
 			fcppt::variant::invalid_get{
 				FCPPT_TEXT("Invalid get of type \"")
 				+
-				fcppt::type_name_from_info(
-					typeid(
-						return_type
+				fcppt::from_std_string(
+					fcppt::type_name_from_info(
+						typeid(
+							return_type
+						)
 					)
 				)
 				+
@@ -70,8 +73,10 @@ get_exn_impl(
 				+
 				FCPPT_TEXT("\". Current type was \"")
 				+
-				fcppt::variant::current_type_name(
-					_variant
+				fcppt::from_std_string(
+					fcppt::variant::current_type_name(
+						_variant
+					)
 				)
 				+
 				FCPPT_TEXT("\".")

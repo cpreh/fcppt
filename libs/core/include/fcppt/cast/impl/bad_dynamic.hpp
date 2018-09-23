@@ -8,6 +8,7 @@
 #define FCPPT_CAST_IMPL_BAD_DYNAMIC_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_index.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,14 +25,18 @@ fcppt::cast::bad_dynamic::bad_dynamic(
 	fcppt::exception(
 		FCPPT_TEXT("Invalid dynamic_cast from type \"")
 		+
-		fcppt::type_name_from_index(
-			_source
+		fcppt::from_std_string(
+			fcppt::type_name_from_index(
+				_source
+			)
 		)
 		+
 		FCPPT_TEXT("\" to type \"")
 		+
-		fcppt::type_name_from_index(
-			_destination
+		fcppt::from_std_string(
+			fcppt::type_name_from_index(
+				_destination
+			)
 		)
 		+
 		FCPPT_TEXT('"')

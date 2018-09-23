@@ -7,9 +7,9 @@
 #ifndef FCPPT_TYPE_NAME_FROM_INDEX_HPP_INCLUDED
 #define FCPPT_TYPE_NAME_FROM_INDEX_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,7 +23,7 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::string
+std::string
 type_name_from_index(
 	std::type_index const &
 );
