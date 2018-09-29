@@ -72,6 +72,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>\link fcppt::type_name\endlink, \link fcppt::type_name_from_info\endlink and \link fcppt::type_name_from_index\endlink now return <code>std::string</code>,</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_290 Removed functionality
