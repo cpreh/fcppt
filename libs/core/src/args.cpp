@@ -14,9 +14,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-#if defined(FCPPT_DETAIL_MAIN_WCHAR)
-#include <fcppt/from_std_wstring.hpp>
-#else
+#if !defined(FCPPT_DETAIL_MAIN_WCHAR)
 #include <fcppt/from_std_string.hpp>
 #endif
 
@@ -47,14 +45,17 @@ fcppt::args(
 
 				return
 #if defined(FCPPT_DETAIL_MAIN_WCHAR)
-					fcppt::from_std_wstring(
+					// fcppt::string is std::wstring in this case
+					args_string{
+						_arg
+					};
 #else
 					fcppt::from_std_string(
-#endif
 						args_string{
 							_arg
 						}
 					);
+#endif
 			}
 		);
 }
