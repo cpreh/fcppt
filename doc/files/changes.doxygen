@@ -125,6 +125,13 @@ Updated catch includes to use <code>catch2/catch.hpp</code>.
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>Use <code>std::set</code> instead of <code>std::unordered_set</code> so that
+	<code>set_union</code> actually works.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstring
 	<ul>
 	<li>Fixed string conversion when partial writes occur that don't write anything.</li>

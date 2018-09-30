@@ -8,10 +8,9 @@
 #define FCPPT_OPTIONS_FLAG_NAME_SET_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_std_hash.hpp>
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <unordered_set>
+#include <set>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,7 +28,7 @@ Each string in this set is expected not to be followed by a value,
 e.g. "--foo".
 */
 typedef
-std::unordered_set<
+std::set<
 	fcppt::options::flag_name
 >
 flag_name_set;

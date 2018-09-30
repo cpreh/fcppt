@@ -117,9 +117,7 @@ set(
 	libs/options/include/fcppt/options/option_name.hpp
 	libs/options/include/fcppt/options/option_name_comparison.hpp
 	libs/options/include/fcppt/options/option_name_fwd.hpp
-	libs/options/include/fcppt/options/option_name_hash.hpp
 	libs/options/include/fcppt/options/option_name_set.hpp
-	libs/options/include/fcppt/options/option_name_std_hash.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
 	libs/options/include/fcppt/options/optional_help_text.hpp
@@ -189,7 +187,6 @@ set(
 	libs/options/src/options/is_option.cpp
 	libs/options/src/options/option_name.cpp
 	libs/options/src/options/option_name_comparison.cpp
-	libs/options/src/options/option_name_hash.cpp
 	libs/options/src/options/parse_context.cpp
 	libs/options/src/options/pretty_type_impl.cpp
 	libs/options/src/options/state.cpp

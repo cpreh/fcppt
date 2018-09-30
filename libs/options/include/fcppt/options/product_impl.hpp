@@ -34,7 +34,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <unordered_set>
+#include <set>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -302,7 +302,7 @@ fcppt::options::product<
 >::check_disjoint() const
 {
 	typedef
-	std::unordered_set<
+	std::set<
 		fcppt::string
 	>
 	name_set;

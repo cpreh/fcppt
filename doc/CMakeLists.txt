@@ -1685,9 +1685,7 @@ set(
 	libs/options/include/fcppt/options/option_name.hpp
 	libs/options/include/fcppt/options/option_name_comparison.hpp
 	libs/options/include/fcppt/options/option_name_fwd.hpp
-	libs/options/include/fcppt/options/option_name_hash.hpp
 	libs/options/include/fcppt/options/option_name_set.hpp
-	libs/options/include/fcppt/options/option_name_std_hash.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
 	libs/options/include/fcppt/options/optional_help_text.hpp
