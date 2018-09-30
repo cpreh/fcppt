@@ -6,6 +6,7 @@
 
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_map.hpp>
@@ -37,8 +38,12 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	strong_int_ptr
 );
 
-struct move_test
+class move_test
 {
+	FCPPT_NONCOPYABLE(
+		move_test
+	);
+public:
 	explicit
 	move_test(
 		int_unique_ptr &&_ptr
@@ -51,6 +56,18 @@ struct move_test
 		}
 	{
 	}
+
+	move_test(
+		move_test &&
+	) = default;
+
+	move_test &
+	operator=(
+		move_test &&
+	) = default;
+
+	~move_test()
+	{}
 
 	int_unique_ptr ptr_;
 };
