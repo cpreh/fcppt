@@ -45,7 +45,7 @@ This typedef is <code>wchar_t</code> on Windows systems and <code>char</code>
 on POSIX systems. It's configurable, however, so using <code>wchar_t</code> on
 POSIX is possible, too (see the <code>ENABLE_NARROW_STRING</code> CMake
 option). Based on that, there's \link fcppt::string\endlink which is a
-<code>std::%basic_string</code>.
+<code>std::%basic_string</code> of \link fcppt::char_type\endlink.
 
 Unfortunately, making the character type configurable has some ramifications.
 For example, you cannot simply write:
@@ -75,47 +75,37 @@ The following functions can be used to convert from and to strings:
 </tr>
 <tr>
 <td>\link fcppt::from_std_string\endlink</td>
-<td><code>std::string → fcppt::string</code> using \link fcppt::string_conv_locale\endlink</td>
-</tr>
-<tr>
-<td>\link fcppt::from_std_string_locale\endlink</td>
-<td><code>std::string → fcppt::string</code> using the specified locale</td>
+<td><code>std::string → fcppt::string</code></td>
 </tr>
 <tr>
 <td>\link fcppt::from_std_wstring\endlink</td>
-<td><code>std::wstring → fcppt::string</code> using \link fcppt::string_conv_locale \endlink</td>
-</tr>
-<tr>
-<td>\link fcppt::from_std_wstring_locale\endlink</td>
-<td><code>std::wstring → fcppt::string</code> using the specified locale</td>
+<td><code>std::wstring → fcppt::optional::object<fcppt::string></code></td>
 </tr>
 <tr>
 <td>\link fcppt::to_std_string\endlink</td>
-<td><code>fcppt::string → std::string</code> using \link fcppt::string_conv_locale\endlink</td>
+<td><code>fcppt::string → fcppt::optional::object<std::string></code></td>
 </tr>
 <tr>
 <td>\link fcppt::to_std_wstring\endlink</td>
-<td><code>fcppt::string → std::string</code> using \link fcppt::string_conv_locale\endlink</td>
+<td><code>fcppt::string → std::string</code></td>
 </tr>
 </table>
 
-The function fcppt::string_conv_locale returns <code>std::locale("")</code>.
+Each of the above functions uses \link fcppt::string_conv_locale\endlink,
+which returns <code>std::locale("")</code>.
 The semantics of this locale are described, for example, in the
 <code>setlocale</code> manpage. Under Linux, this leads to the inspection of
 the locale environment variables (<code>LC_ALL, LANG</code> etc.). The default
 locale for an application is the (rather unlocalized) "C" locale. We feel that
 using the "native" locale as the default makes more sense, since the C locale
-has no information about the system's native encoding. Converting std::string
-to std::wstring on a typical Linux machine means converting UTF-8 to UTF-32.
-The C locale, however, has no information about these encodings, so it cannot
-work properly.
+has no information about the system's native encoding. Converting <code>std::string</code>
+to <code>std::wstring</code> on a typical Linux machine means converting UTF-8 to UTF-32.
+The C locale, however, has no information about these encodings.
+If you need to use a different locale, you can use the locale-variants:
+\link fcppt::from_std_string_locale\endlink, \link fcppt::from_std_wstring_locale\endlink,
+\link fcppt::to_std_string_locale\endlink and \link fcppt::to_std_wstring_locale\endlink.
 
-Note that \link fcppt::string\endlink is <strong>not</strong> intended to be
-used "between" platforms. Writing an \link fcppt::string\endlink to a file (see
-below) on a Linux machine and reading it back in on a Windows machine probably
-does not work.
-
-Here is a small example:
+Finally, here is a small example:
 
 \snippet string_conversion.cpp string_conversion
 
@@ -124,9 +114,6 @@ Here is a small example:
 To read in or write out files using the system's native character type, you can
 use the typedefs in the \link fcppt::io\endlink namespace, namely \link
 fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream \endlink, and so on.
-Note that these are not typedefs to the standard library streams, but to
-<code>boost::filesystem</code> streams. These streams take a filesystem path
-object in the constructor instead of a <code>const char *</code>.
 
 There are also preprocessor macros, currently \link FCPPT_PP_STRINGIZE\endlink
 and \link FCPPT_PP_FILE\endlink to provide compatibility with \link

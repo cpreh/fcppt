@@ -68,7 +68,7 @@
 
 <li>\ref fcpptstring
 	<ul>
-	<li>Return optionals for string conversions that can fail, notably \link fcppt::narrow\endlink, \link fcppt::to_std_string\endlink and \link fcppt::from_std_wstring\endlink.</li>
+	<li>String conversions that can fail now return optionals, notably \link fcppt::narrow\endlink, \link fcppt::to_std_string\endlink and \link fcppt::from_std_wstring\endlink.</li>
 	</ul>
 </li>
 
