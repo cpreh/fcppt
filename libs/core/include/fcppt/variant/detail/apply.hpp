@@ -16,8 +16,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/variant/detail/get_unsafe.hpp>
 #include <fcppt/variant/types_of.hpp>
+#include <fcppt/variant/detail/get_unsafe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>
