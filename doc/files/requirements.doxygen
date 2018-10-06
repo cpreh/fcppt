@@ -59,7 +59,8 @@ The following platforms are tested by us:
 <ul>
 	<li>gcc-8.2 (Gentoo Linux)</li>
 	<li>gcc-8.1 (MinGW)</li>
-	<li>clang 7.0.0 (Gentoo Linux)</li>
+	<li>clang-7.0.0 (Gentoo Linux)</li>
+	<li>VC++-14.15</li>
 </ul>
 
 fcppt needs a C++14-conforming compiler which probably excludes everything
