@@ -12,6 +12,9 @@
 #include <fcppt/use.hpp>
 #include <fcppt/brigand/invoke_on.hpp>
 #include <fcppt/container/tuple/to_varargs.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/detail/get_unsafe.hpp>
 #include <fcppt/variant/types_of.hpp>
@@ -27,6 +30,9 @@ namespace variant
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4702)
 
 template<
 	typename Function,
@@ -154,6 +160,8 @@ apply(
 			_fail_function
 		);
 }
+
+FCPPT_PP_POP_WARNING
 
 }
 }

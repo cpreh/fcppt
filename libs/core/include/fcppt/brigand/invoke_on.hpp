@@ -10,6 +10,9 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/brigand/runtime_index.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/at.hpp>
 #include <brigand/sequences/size.hpp>
@@ -21,6 +24,9 @@ namespace fcppt
 {
 namespace brigand
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4702)
 
 /**
 \brief Applies a function to the nth element of a sequence with a runtime index.
@@ -105,6 +111,8 @@ invoke_on(
 			_fail_function
 		);
 }
+
+FCPPT_PP_POP_WARNING
 
 }
 }

@@ -10,6 +10,9 @@
 #include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/detail/call_destructor.hpp>
 #include <fcppt/detail/placement_new.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_decl.hpp>
@@ -422,6 +425,9 @@ fcppt::variant::object<
 		elements;
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4702)
+
 template<
 	typename Types
 >
@@ -491,6 +497,8 @@ fcppt::variant::object<
 			U
 		>::value;
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename Types

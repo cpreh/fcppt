@@ -13,6 +13,9 @@
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/storage_size.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
@@ -57,10 +60,16 @@ multiply_scalar(
 			>
 			index;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4709)
+
 			_value[
 				index()
 			] *=
 				_mult;
+
+FCPPT_PP_POP_WARNING
+
 		}
 	);
 }

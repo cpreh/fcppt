@@ -8,6 +8,9 @@
 #define FCPPT_EITHER_TRY_CALL_HPP_INCLUDED
 
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -17,6 +20,9 @@ namespace fcppt
 {
 namespace either
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4702)
 
 /**
 \brief Catches exceptions of a function call and puts the result in an either
@@ -92,6 +98,8 @@ fcppt::either::object<
 			};
 	}
 }
+
+FCPPT_PP_POP_WARNING
 
 }
 }

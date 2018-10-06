@@ -7,6 +7,9 @@
 #ifndef FCPPT_BRIGAND_DETAIL_RUNTIME_INDEX_HPP_INCLUDED
 #define FCPPT_BRIGAND_DETAIL_RUNTIME_INDEX_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/functions/arithmetic/next.hpp>
 #include <type_traits>
@@ -43,6 +46,9 @@ struct runtime_index<
 	>
 >
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4702)
+
 	template<
 		typename Index,
 		typename Function,
@@ -61,6 +67,8 @@ struct runtime_index<
 		return
 			_fail_function();
 	}
+
+FCPPT_PP_POP_WARNING
 };
 
 template<

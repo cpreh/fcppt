@@ -8,6 +8,9 @@
 #define FCPPT_CONTAINER_TUPLE_TO_VARARGS_HPP_INCLUDED
 
 #include <fcppt/container/tuple/detail/to_varargs.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_std_tuple.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -22,6 +25,9 @@ namespace container
 {
 namespace tuple
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4702)
 
 /**
 \brief Passes tuple elements as variadic parameters to a function.
@@ -77,6 +83,8 @@ to_varargs(
 			>{}
 		);
 }
+
+FCPPT_PP_POP_WARNING
 
 }
 }
