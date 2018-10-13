@@ -134,48 +134,47 @@ if(
 		FCPPT_UTILS_COMPILE_OPTIONS
 		"-pedantic"
 		"-pedantic-errors"
-		"-Wall"
-		"-Wextra"
-		"-Wcast-align"
-		"-Wcast-qual"
-		"-Wconversion"
-		"-Wconversion-null"
-		"-Wdelete-non-virtual-dtor"
-		"-Wfloat-equal"
-		"-Winit-self"
-		"-Wmissing-declarations"
-		"-Wnon-virtual-dtor"
-		"-Wold-style-cast"
-		"-Woverloaded-virtual"
-		"-Wredundant-decls"
-		"-Wsign-promo"
-		"-Wsign-conversion"
-		"-Wshadow"
-		"-Wstrict-aliasing=1"
-		"-Wuninitialized"
-		"-Wunused"
-		"-Wunused-function"
-		#currently, -Wundef cannot be disabled via a pragma
 	)
 
 	if(
 		FCPPT_UTILS_COMPILER_IS_CLANGPP
 	)
+		# TODO: Revisit -Wpadded later
 		list(
 			APPEND
 			FCPPT_UTILS_COMPILE_OPTIONS
-			"-Wconditional-uninitialized"
-			"-Wdocumentation"
-			"-Wextra-semi"
-			"-Wimplicit-fallthrough"
-			"-Wundef"
-			"-Wunneeded-member-function"
-			"-Wunused-member-function"
+			"-Weverything"
+			"-Wno-c++98-compat"
+			"-Wno-c++98-compat-pedantic"
+			"-Wno-padded"
+			"-fcomment-block-commands=snippet"
 		)
 	else()
 		list(
 			APPEND
 			FCPPT_UTILS_COMPILE_OPTIONS
+			"-Wall"
+			"-Wextra"
+			"-Wcast-align"
+			"-Wcast-qual"
+			"-Wconversion"
+			"-Wconversion-null"
+			"-Wdelete-non-virtual-dtor"
+			"-Wfloat-equal"
+			"-Winit-self"
+			"-Wmissing-declarations"
+			"-Wnon-virtual-dtor"
+			"-Wold-style-cast"
+			"-Woverloaded-virtual"
+			"-Wredundant-decls"
+			"-Wsign-promo"
+			"-Wsign-conversion"
+			"-Wshadow"
+			"-Wstrict-aliasing=1"
+			"-Wuninitialized"
+			"-Wunused"
+			"-Wunused-function"
+			#currently, -Wundef cannot be disabled via a pragma
 			"-Wdouble-promotion"
 			"-Wlogical-op"
 			"-Wmaybe-uninitialized"

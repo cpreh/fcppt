@@ -35,7 +35,6 @@ std::false_type
 {
 };
 
-/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	fcppt::math::size_type N
@@ -50,7 +49,6 @@ struct is_box<
 std::true_type
 {
 };
-/// \endcond
 
 }
 }

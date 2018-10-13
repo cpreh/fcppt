@@ -78,9 +78,14 @@ FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
 
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation-unknown-command)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wreserved-id-macro)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-func-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wexit-time-destructors)
 
 #include <fcppt/config/clang_version_at_least.hpp>
 
@@ -96,7 +101,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
 
 #include <fcppt/config/gcc_version_at_least.hpp>
 
@@ -111,11 +115,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wclass-memaccess)
 #endif
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdeprecated)
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wpadded)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
 
 #endif
 

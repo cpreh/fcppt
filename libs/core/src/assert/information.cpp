@@ -4,12 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_IMPL_INFORMATION_HPP_INCLUDED
-#define FCPPT_ASSERT_IMPL_INFORMATION_HPP_INCLUDED
-
 #include <fcppt/assert/condition.hpp>
 #include <fcppt/assert/file.hpp>
 #include <fcppt/assert/function.hpp>
+#include <fcppt/assert/information.hpp>
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/message.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,7 +15,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-inline
 fcppt::assert_::information::information(
 	fcppt::assert_::file &&_file,
 	fcppt::assert_::line const _line,
@@ -52,7 +49,6 @@ fcppt::assert_::information::information(
 {
 }
 
-inline
 fcppt::assert_::file const &
 fcppt::assert_::information::file() const
 {
@@ -60,7 +56,6 @@ fcppt::assert_::information::file() const
 		file_;
 }
 
-inline
 fcppt::assert_::line
 fcppt::assert_::information::line() const
 {
@@ -68,7 +63,6 @@ fcppt::assert_::information::line() const
 		line_;
 }
 
-inline
 fcppt::assert_::function const &
 fcppt::assert_::information::function() const
 {
@@ -76,7 +70,6 @@ fcppt::assert_::information::function() const
 		function_;
 }
 
-inline
 fcppt::assert_::condition const &
 fcppt::assert_::information::condition() const
 {
@@ -84,12 +77,9 @@ fcppt::assert_::information::condition() const
 		condition_;
 }
 
-inline
 fcppt::assert_::message const &
 fcppt::assert_::information::message() const
 {
 	return
 		message_;
 }
-
-#endif

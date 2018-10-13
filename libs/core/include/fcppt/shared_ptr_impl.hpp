@@ -91,6 +91,30 @@ template<
 	typename Type,
 	typename Deleter
 >
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	shared_ptr const &
+)
+= default;
+
+template<
+	typename Type,
+	typename Deleter
+>
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	shared_ptr &&
+)
+= default;
+
+template<
+	typename Type,
+	typename Deleter
+>
 template<
 	typename Other
 >
@@ -188,6 +212,40 @@ fcppt::shared_ptr<
 	)
 {
 }
+
+template<
+	typename Type,
+	typename Deleter
+>
+fcppt::shared_ptr<
+	Type,
+	Deleter
+> &
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator=(
+	shared_ptr const &
+)
+=
+default;
+
+template<
+	typename Type,
+	typename Deleter
+>
+fcppt::shared_ptr<
+	Type,
+	Deleter
+> &
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator=(
+	shared_ptr &&
+)
+=
+default;
 
 template<
 	typename Type,

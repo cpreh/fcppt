@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_GRID_SPIRAL_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SPIRAL_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/spiral_range_fwd.hpp>
 #include <fcppt/type_traits/value_type.hpp>
@@ -25,9 +24,6 @@ template<
 >
 class spiral_range
 {
-	FCPPT_NONASSIGNABLE(
-		spiral_range
-	);
 public:
 	static_assert(
 		Pos::dim_wrapper::value
@@ -58,9 +54,9 @@ public:
 	iterator
 	end() const;
 private:
-	Pos const start_;
+	Pos start_;
 
-	value_type const dist_;
+	value_type dist_;
 };
 
 }

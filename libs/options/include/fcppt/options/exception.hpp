@@ -10,6 +10,8 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/options/exception_fwd.hpp>
+#include <fcppt/options/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 
 
 namespace fcppt
@@ -17,20 +19,45 @@ namespace fcppt
 namespace options
 {
 
-class exception
+class FCPPT_SYMBOL_CLASS exception
 :
 	public fcppt::exception
 {
 public:
+	FCPPT_OPTIONS_DETAIL_SYMBOL
 	explicit
 	exception(
 		fcppt::string &&
 	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	exception(
+		exception const &
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	exception(
+		exception &&
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	exception &
+	operator=(
+		exception const &
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	exception &
+	operator=(
+		exception &&
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	~exception() noexcept
+	override;
 };
 
 }
 }
-
-#include <fcppt/options/impl/exception.hpp>
 
 #endif

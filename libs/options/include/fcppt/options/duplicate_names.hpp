@@ -10,6 +10,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/duplicate_names_fwd.hpp>
 #include <fcppt/options/exception.hpp>
+#include <fcppt/options/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 
 
 namespace fcppt
@@ -17,20 +19,45 @@ namespace fcppt
 namespace options
 {
 
-class duplicate_names
+class FCPPT_SYMBOL_CLASS duplicate_names
 :
 	public fcppt::options::exception
 {
 public:
+	FCPPT_OPTIONS_DETAIL_SYMBOL
 	explicit
 	duplicate_names(
 		fcppt::string &&
 	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	duplicate_names(
+		duplicate_names const &
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	duplicate_names(
+		duplicate_names &&
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	duplicate_names &
+	operator=(
+		duplicate_names const &
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	duplicate_names &
+	operator=(
+		duplicate_names &&
+	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	~duplicate_names() noexcept
+	override;
 };
 
 }
 }
-
-#include <fcppt/options/impl/duplicate_names.hpp>
 
 #endif

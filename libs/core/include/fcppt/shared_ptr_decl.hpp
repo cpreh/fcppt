@@ -144,17 +144,19 @@ public:
 		> const &ref
 	);
 
+	shared_ptr(
+		shared_ptr const &
+	);
+
+	shared_ptr(
+		shared_ptr &&
+	);
+
 	/**
 	\brief Constructs a shared_ptr from a compatible shared_ptr
 
-	Constructs a shared_ptr from \a ref. If \a ref is empty, then the
-	constructed shared_ptr will be empty. Otherwise, the reference count
-	will be increased by one.
-
-	\tparam Other A type, so that <code>Other *</code> is implicitly
+	\tparam Other A type, so that <code>Other *</code> is
 	convertible to <code>Type *</code>
-
-	\param ref The shared pointer to copy from
 	*/
 	template<
 		typename Other
@@ -172,7 +174,7 @@ public:
 	Constructs a shared_ptr that shares ownership with \a ref and stores \a
 	data. This is useful for implementing dynamic_pointer_cast and so on.
 
-	\tparam Other A type, so that <code>Other *</code> is implicitly
+	\tparam Other A type, so that <code>Other *</code> is
 	convertible to <code>Type *</code>
 
 	\param ref The shared pointer to share ownership with
@@ -221,6 +223,16 @@ public:
 			Other,
 			Deleter
 		> &&ref
+	);
+
+	shared_ptr &
+	operator=(
+		shared_ptr const &
+	);
+
+	shared_ptr &
+	operator=(
+		shared_ptr &&
 	);
 
 	/**

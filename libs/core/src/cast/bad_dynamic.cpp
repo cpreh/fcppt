@@ -4,34 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CAST_IMPL_BAD_TRUNCATION_CHECK_HPP_INCLUDED
-#define FCPPT_CAST_IMPL_BAD_TRUNCATION_CHECK_HPP_INCLUDED
-
+#include <fcppt/exception.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_index.hpp>
+#include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
-fcppt::cast::bad_truncation_check::bad_truncation_check(
-	fcppt::string &&_source_value,
+fcppt::cast::bad_dynamic::bad_dynamic(
 	std::type_index const &_source,
 	std::type_index const &_destination
 )
 :
 	fcppt::exception(
-		FCPPT_TEXT("Invalid truncation_check_cast from ")
-		+
-		std::move(
-			_source_value
-		)
-		+
-		FCPPT_TEXT(" of type \"")
+		FCPPT_TEXT("Invalid dynamic_cast from type \"")
 		+
 		fcppt::from_std_string(
 			fcppt::type_name_from_index(
@@ -58,20 +47,42 @@ fcppt::cast::bad_truncation_check::bad_truncation_check(
 {
 }
 
-inline
+fcppt::cast::bad_dynamic::bad_dynamic(
+	bad_dynamic const &
+)
+= default;
+
+fcppt::cast::bad_dynamic::bad_dynamic(
+	bad_dynamic &&
+)
+= default;
+
+fcppt::cast::bad_dynamic &
+fcppt::cast::bad_dynamic::operator=(
+	bad_dynamic const &
+)
+= default;
+
+fcppt::cast::bad_dynamic &
+fcppt::cast::bad_dynamic::operator=(
+	bad_dynamic &&
+)
+= default;
+
+fcppt::cast::bad_dynamic::~bad_dynamic() noexcept
+{
+}
+
 std::type_index const &
-fcppt::cast::bad_truncation_check::source() const
+fcppt::cast::bad_dynamic::source() const
 {
 	return
 		source_;
 }
 
-inline
 std::type_index const &
-fcppt::cast::bad_truncation_check::destination() const
+fcppt::cast::bad_dynamic::destination() const
 {
 	return
 		destination_;
 }
-
-#endif

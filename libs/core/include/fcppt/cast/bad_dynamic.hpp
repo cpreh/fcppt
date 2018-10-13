@@ -9,6 +9,8 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/cast/bad_dynamic_fwd.hpp>
+#include <fcppt/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>
@@ -29,7 +31,7 @@ It stores an std::type_index for the source and the destination type.
 
 \see fcppt::cast::dynamic
 */
-class bad_dynamic
+class FCPPT_SYMBOL_CLASS bad_dynamic
 :
 	public fcppt::exception
 {
@@ -41,20 +43,49 @@ public:
 
 	\param dest The destination type information
 	*/
+	FCPPT_DETAIL_SYMBOL
 	bad_dynamic(
 		std::type_index const &source,
 		std::type_index const &dest
 	);
 
+	FCPPT_DETAIL_SYMBOL
+	bad_dynamic(
+		bad_dynamic const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	bad_dynamic(
+		bad_dynamic &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	bad_dynamic &
+	operator=(
+		bad_dynamic const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	bad_dynamic &
+	operator=(
+		bad_dynamic &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	~bad_dynamic() noexcept
+	override;
+
 	/**
 	\brief Returns the source type information
 	*/
+	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	source() const;
 
 	/**
 	\brief Returns the destination type information
 	*/
+	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	destination() const;
 private:
@@ -65,7 +96,5 @@ private:
 
 }
 }
-
-#include <fcppt/cast/impl/bad_dynamic.hpp>
 
 #endif

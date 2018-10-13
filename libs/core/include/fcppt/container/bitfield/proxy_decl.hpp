@@ -104,6 +104,10 @@ class proxy
 		size_type
 	);
 public:
+	proxy(
+		proxy const &
+	);
+
 	/**
 	\brief Assigns a new value to the bit.
 

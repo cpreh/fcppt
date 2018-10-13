@@ -313,7 +313,6 @@ public:
 	void
 	shrink_to_fit();
 private:
-/// \cond
 	template<
 		typename In
 	>
@@ -421,7 +420,6 @@ private:
 	);
 
 	impl impl_;
-/// \endcond
 };
 
 /**

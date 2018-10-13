@@ -9,6 +9,8 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 #include <fcppt/time/exception_fwd.hpp>
 
 
@@ -22,7 +24,7 @@ namespace time
 
 \ingroup fcppttime
 */
-class exception
+class FCPPT_SYMBOL_CLASS exception
 :
 	public fcppt::exception
 {
@@ -34,15 +36,40 @@ public:
 
 	\param message The message of the exception
 	*/
+	FCPPT_DETAIL_SYMBOL
 	explicit
 	exception(
 		fcppt::string &&message
 	);
+
+	FCPPT_DETAIL_SYMBOL
+	exception(
+		exception const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	exception(
+		exception &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	exception &
+	operator=(
+		exception const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	exception &
+	operator=(
+		exception &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	~exception() noexcept
+	override;
 };
 
 }
 }
-
-#include <fcppt/time/impl/exception.hpp>
 
 #endif

@@ -30,7 +30,6 @@ template<
 >
 struct has_dim;
 
-/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -52,7 +51,6 @@ fcppt::math::detail::dim_matches<
 >
 {
 };
-/// \endcond
 
 }
 }

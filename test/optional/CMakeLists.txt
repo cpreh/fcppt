@@ -134,6 +134,8 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	to_exception
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_optional_test(

@@ -4,15 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_IMPL_EXCEPTION_HPP_INCLUDED
-#define FCPPT_ASSERT_IMPL_EXCEPTION_HPP_INCLUDED
-
 #include <fcppt/exception.hpp>
+#include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/information.hpp>
 #include <fcppt/assert/make_message.hpp>
 
 
-inline
 fcppt::assert_::exception::exception(
 	fcppt::assert_::information const &_information
 )
@@ -28,17 +25,35 @@ fcppt::assert_::exception::exception(
 {
 }
 
-inline
+fcppt::assert_::exception::exception(
+	exception const &
+)
+= default;
+
+fcppt::assert_::exception::exception(
+	exception &&
+)
+= default;
+
+fcppt::assert_::exception &
+fcppt::assert_::exception::operator=(
+	exception const &
+)
+= default;
+
+fcppt::assert_::exception &
+fcppt::assert_::exception::operator=(
+	exception &&
+)
+= default;
+
+fcppt::assert_::exception::~exception() noexcept
+{
+}
+
 fcppt::assert_::information const &
 fcppt::assert_::exception::information() const
 {
 	return
 		information_;
 }
-
-inline
-fcppt::assert_::exception::~exception() noexcept
-{
-}
-
-#endif

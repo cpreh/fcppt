@@ -40,8 +40,8 @@ TEST_CASE(
 			2.8f
 		),
 		Catch::Matchers::WithinAbs(
-			0.f,
-			0.1f
+			0.,
+			0.1
 		)
 	);
 
@@ -70,8 +70,8 @@ TEST_CASE(
 			2.8f
 		),
 		Catch::Matchers::WithinAbs(
-			0.f,
-			0.1f
+			0.,
+			0.1
 		)
 	);
 }

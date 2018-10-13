@@ -77,8 +77,6 @@ set(
 	libs/core/include/fcppt/assert/exception_fwd.hpp
 	libs/core/include/fcppt/assert/file.hpp
 	libs/core/include/fcppt/assert/function.hpp
-	libs/core/include/fcppt/assert/impl/exception.hpp
-	libs/core/include/fcppt/assert/impl/information.hpp
 	libs/core/include/fcppt/assert/information.hpp
 	libs/core/include/fcppt/assert/information_fwd.hpp
 	libs/core/include/fcppt/assert/line.hpp
@@ -165,8 +163,6 @@ set(
 	libs/core/include/fcppt/cast/float_to_int.hpp
 	libs/core/include/fcppt/cast/float_to_int_fun.hpp
 	libs/core/include/fcppt/cast/from_void_ptr.hpp
-	libs/core/include/fcppt/cast/impl/bad_dynamic.hpp
-	libs/core/include/fcppt/cast/impl/bad_truncation_check.hpp
 	libs/core/include/fcppt/cast/int_to_enum.hpp
 	libs/core/include/fcppt/cast/int_to_enum_fun.hpp
 	libs/core/include/fcppt/cast/int_to_float.hpp
@@ -563,7 +559,6 @@ set(
 	libs/core/include/fcppt/homogenous_pair_impl.hpp
 	libs/core/include/fcppt/homogenous_pair_output.hpp
 	libs/core/include/fcppt/identity.hpp
-	libs/core/include/fcppt/impl/exception.hpp
 	libs/core/include/fcppt/int_iterator_decl.hpp
 	libs/core/include/fcppt/int_iterator_fwd.hpp
 	libs/core/include/fcppt/int_iterator_impl.hpp
@@ -964,6 +959,7 @@ set(
 	libs/core/include/fcppt/preprocessor/detail/function.hpp
 	libs/core/include/fcppt/preprocessor/detail/message.hpp
 	libs/core/include/fcppt/preprocessor/detail/stringize.hpp
+	libs/core/include/fcppt/preprocessor/disable_clang_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_gcc_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/file.hpp
@@ -1182,7 +1178,6 @@ set(
 	libs/core/include/fcppt/time/exception.hpp
 	libs/core/include/fcppt/time/exception_fwd.hpp
 	libs/core/include/fcppt/time/gmtime.hpp
-	libs/core/include/fcppt/time/impl/exception.hpp
 	libs/core/include/fcppt/time/localtime.hpp
 	libs/core/include/fcppt/time/output_tm.hpp
 	libs/core/include/fcppt/time/std_time.hpp
@@ -1256,8 +1251,6 @@ set(
 	libs/core/include/fcppt/variant/get_exn.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
-	libs/core/include/fcppt/variant/impl/exception.hpp
-	libs/core/include/fcppt/variant/impl/invalid_get.hpp
 	libs/core/include/fcppt/variant/invalid_get.hpp
 	libs/core/include/fcppt/variant/invalid_get_fwd.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
@@ -1287,14 +1280,19 @@ set(
 	libs/core/include/fcppt/widen.hpp
 	libs/core/src/args.cpp
 	libs/core/src/args_from_second.cpp
+	libs/core/src/assert/exception.cpp
+	libs/core/src/assert/information.cpp
 	libs/core/src/backtrace/current_stack_frame.cpp
 	libs/core/src/backtrace/print_current_stack_frame.cpp
+	libs/core/src/cast/bad_dynamic.cpp
+	libs/core/src/cast/bad_truncation_check.cpp
 	libs/core/src/endianness/host_format.cpp
 	libs/core/src/endianness/is_big_endian.cpp
 	libs/core/src/endianness/is_little_endian.cpp
 	libs/core/src/endianness/reverse_mem.cpp
 	libs/core/src/error/strerrno.cpp
 	libs/core/src/error/strerror.cpp
+	libs/core/src/exception.cpp
 	libs/core/src/from_std_string.cpp
 	libs/core/src/from_std_string_locale.cpp
 	libs/core/src/from_std_wstring.cpp
@@ -1310,6 +1308,7 @@ set(
 	libs/core/src/narrow.cpp
 	libs/core/src/string_conv_locale.cpp
 	libs/core/src/time/ctime.cpp
+	libs/core/src/time/exception.cpp
 	libs/core/src/time/gmtime.cpp
 	libs/core/src/time/localtime.cpp
 	libs/core/src/time/output_tm.cpp
@@ -1321,6 +1320,8 @@ set(
 	libs/core/src/type_name.cpp
 	libs/core/src/type_name_from_index.cpp
 	libs/core/src/type_name_from_info.cpp
+	libs/core/src/variant/exception.cpp
+	libs/core/src/variant/invalid_get.cpp
 	libs/core/src/version_string.cpp
 	libs/core/src/widen.cpp
 )

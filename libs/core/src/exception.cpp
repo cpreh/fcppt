@@ -4,16 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IMPL_EXCEPTION_HPP_INCLUDED
-#define FCPPT_IMPL_EXCEPTION_HPP_INCLUDED
-
+#include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
 fcppt::exception::exception(
 	fcppt::string &&_string
 )
@@ -26,33 +23,28 @@ fcppt::exception::exception(
 {
 }
 
-inline
 fcppt::exception::exception(
 	exception const &
 )
 = default;
 
-inline
 fcppt::exception::exception(
 	exception &&
 )
 = default;
 
-inline
 fcppt::exception &
 fcppt::exception::operator=(
-	fcppt::exception const &
+	exception const &
 )
 = default;
 
-inline
 fcppt::exception &
 fcppt::exception::operator=(
-	fcppt::exception &&
+	exception &&
 )
 = default;
 
-inline
 fcppt::string const &
 fcppt::exception::string() const
 {
@@ -60,16 +52,12 @@ fcppt::exception::string() const
 		string_;
 }
 
-inline
 char const *
 fcppt::exception::what() const noexcept
 {
 	return "what cannot be supplied by an fcppt::exception, do not catch fcppt::exception as std::exception";
 }
 
-inline
 fcppt::exception::~exception() noexcept
 {
 }
-
-#endif

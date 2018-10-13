@@ -40,7 +40,7 @@ fcppt::options::detail::check_sub_command_names(
 
 	for(
 		std::pair<
-			fcppt::string,
+			fcppt::string const,
 			std::size_t
 		> const &element
 		:

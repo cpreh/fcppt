@@ -1,6 +1,19 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_2100 2.10.0
+
+\subsection changes_added_functionality_to_2100 Added functionality
+
+<ul>
+<li>\ref fcpptpreprocessor
+	<ul>
+	<li>Added \link FCPPT_PP_DISABLE_CLANG_WARNING\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_290 2.9.0
 
 \subsection changes_added_functionality_to_290 Added functionality

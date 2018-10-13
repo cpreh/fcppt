@@ -98,6 +98,7 @@ The documentation is split into the following parts:
 	<li>
 		\subpage changes
 		<ul>
+			<li>\ref changes_changes_to_2100</li>
 			<li>\ref changes_changes_to_290</li>
 			<li>\ref changes_changes_to_280</li>
 			<li>\ref changes_changes_to_270</li>

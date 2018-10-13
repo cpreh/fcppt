@@ -9,6 +9,9 @@
 #define FCPPT_SIGNAL_CONNECTION_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/connection_fwd.hpp>
 
 
@@ -16,6 +19,9 @@ namespace fcppt
 {
 namespace signal
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wweak-vtables)
 
 /**
 \brief A connection returned by a connect call
@@ -36,6 +42,8 @@ public:
 	virtual
 	~connection() = 0;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

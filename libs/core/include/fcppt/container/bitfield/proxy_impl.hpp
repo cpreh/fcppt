@@ -103,6 +103,17 @@ template<
 >
 fcppt::container::bitfield::proxy<
 	StoredType
+>::proxy(
+	proxy const &
+)
+=
+default;
+
+template<
+	typename StoredType
+>
+fcppt::container::bitfield::proxy<
+	StoredType
 > &
 fcppt::container::bitfield::proxy<
 	StoredType

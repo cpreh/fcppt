@@ -4,24 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_IMPL_EXCEPTION_HPP_INCLUDED
-#define FCPPT_OPTIONS_IMPL_EXCEPTION_HPP_INCLUDED
-
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/variant/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
-fcppt::options::exception::exception(
+fcppt::variant::exception::exception(
 	fcppt::string &&_string
 )
 :
 	fcppt::exception{
-		FCPPT_TEXT("fcppt::options: ")
+		FCPPT_TEXT("variant: ")
 		+
 		std::move(
 			_string
@@ -30,4 +27,28 @@ fcppt::options::exception::exception(
 {
 }
 
-#endif
+fcppt::variant::exception::exception(
+	exception const &
+)
+= default;
+
+fcppt::variant::exception::exception(
+	exception &&
+)
+= default;
+
+fcppt::variant::exception &
+fcppt::variant::exception::operator=(
+	exception const &
+)
+= default;
+
+fcppt::variant::exception &
+fcppt::variant::exception::operator=(
+	exception &&
+)
+= default;
+
+fcppt::variant::exception::~exception() noexcept
+{
+}

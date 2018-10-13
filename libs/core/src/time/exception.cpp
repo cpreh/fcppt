@@ -4,18 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TIME_IMPL_EXCEPTION_HPP_INCLUDED
-#define FCPPT_TIME_IMPL_EXCEPTION_HPP_INCLUDED
-
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/time/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
 fcppt::time::exception::exception(
 	fcppt::string &&_what
 )
@@ -30,4 +27,28 @@ fcppt::time::exception::exception(
 {
 }
 
-#endif
+fcppt::time::exception::exception(
+	exception const &
+)
+= default;
+
+fcppt::time::exception::exception(
+	exception &&
+)
+= default;
+
+fcppt::time::exception &
+fcppt::time::exception::operator=(
+	exception const &
+)
+= default;
+
+fcppt::time::exception &
+fcppt::time::exception::operator=(
+	exception &&
+)
+= default;
+
+fcppt::time::exception::~exception() noexcept
+{
+}

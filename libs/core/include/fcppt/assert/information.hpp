@@ -13,6 +13,8 @@
 #include <fcppt/assert/function.hpp>
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/message.hpp>
+#include <fcppt/detail/symbol.hpp>
+
 
 namespace fcppt
 {
@@ -45,6 +47,7 @@ public:
 
 	\param message The message of the assertion
 	*/
+	FCPPT_DETAIL_SYMBOL
 	information(
 		fcppt::assert_::file &&file,
 		fcppt::assert_::line line,
@@ -56,30 +59,35 @@ public:
 	/**
 	\brief Returns the current file
 	*/
+	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::file const &
 	file() const;
 
 	/**
 	\brief Returns the line of the current file
 	*/
+	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::line
 	line() const;
 
 	/**
 	\brief Returns the current function
 	*/
+	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::function const &
 	function() const;
 
 	/**
 	\brief Returns the failed condition
 	*/
+	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::condition const &
 	condition() const;
 
 	/**
 	\brief Returns the message of the assertion
 	*/
+	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::message const &
 	message() const;
 private:
@@ -96,7 +104,5 @@ private:
 
 }
 }
-
-#include <fcppt/assert/impl/information.hpp>
 
 #endif

@@ -20,8 +20,6 @@ namespace math
 namespace detail
 {
 
-/// \cond
-
 template<
 	typename Function
 >
@@ -64,8 +62,6 @@ public:
 private:
 	Function const function_;
 };
-
-/// \endcond
 
 }
 }

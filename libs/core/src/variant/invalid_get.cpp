@@ -4,18 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_IMPL_INVALID_GET_HPP_INCLUDED
-#define FCPPT_VARIANT_IMPL_INVALID_GET_HPP_INCLUDED
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/variant/exception.hpp>
+#include <fcppt/variant/invalid_get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
 fcppt::variant::invalid_get::invalid_get(
 	fcppt::string &&_error
 )
@@ -28,4 +25,28 @@ fcppt::variant::invalid_get::invalid_get(
 {
 }
 
-#endif
+fcppt::variant::invalid_get::invalid_get(
+	invalid_get const &
+)
+= default;
+
+fcppt::variant::invalid_get::invalid_get(
+	invalid_get &&
+)
+= default;
+
+fcppt::variant::invalid_get &
+fcppt::variant::invalid_get::operator=(
+	invalid_get const &
+)
+= default;
+
+fcppt::variant::invalid_get &
+fcppt::variant::invalid_get::operator=(
+	invalid_get &&
+)
+= default;
+
+fcppt::variant::invalid_get::~invalid_get() noexcept
+{
+}

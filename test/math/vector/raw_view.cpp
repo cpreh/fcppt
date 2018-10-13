@@ -42,6 +42,11 @@ public:
 	{
 	}
 
+	proxy(
+		proxy const &
+	)
+	= default;
+
 	operator Type() const
 	{
 		Type result;

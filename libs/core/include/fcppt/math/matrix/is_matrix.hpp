@@ -35,7 +35,6 @@ std::false_type
 {
 };
 
-/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	fcppt::math::size_type R,
@@ -54,7 +53,6 @@ struct is_matrix<
 std::true_type
 {
 };
-/// \endcond
 
 }
 }

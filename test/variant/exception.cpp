@@ -22,6 +22,7 @@ struct throw_cctor
 	{
 	}
 
+	[[ noreturn ]]
 	throw_cctor(
 		throw_cctor const &
 	)
@@ -32,6 +33,7 @@ struct throw_cctor
 			);
 	}
 
+	[[ noreturn ]]
 	throw_cctor(
 		throw_cctor &&
 	)

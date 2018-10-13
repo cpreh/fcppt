@@ -288,8 +288,6 @@ set(
 	libs/core/include/fcppt/assert/exception_fwd.hpp
 	libs/core/include/fcppt/assert/file.hpp
 	libs/core/include/fcppt/assert/function.hpp
-	libs/core/include/fcppt/assert/impl/exception.hpp
-	libs/core/include/fcppt/assert/impl/information.hpp
 	libs/core/include/fcppt/assert/information.hpp
 	libs/core/include/fcppt/assert/information_fwd.hpp
 	libs/core/include/fcppt/assert/line.hpp
@@ -376,8 +374,6 @@ set(
 	libs/core/include/fcppt/cast/float_to_int.hpp
 	libs/core/include/fcppt/cast/float_to_int_fun.hpp
 	libs/core/include/fcppt/cast/from_void_ptr.hpp
-	libs/core/include/fcppt/cast/impl/bad_dynamic.hpp
-	libs/core/include/fcppt/cast/impl/bad_truncation_check.hpp
 	libs/core/include/fcppt/cast/int_to_enum.hpp
 	libs/core/include/fcppt/cast/int_to_enum_fun.hpp
 	libs/core/include/fcppt/cast/int_to_float.hpp
@@ -774,7 +770,6 @@ set(
 	libs/core/include/fcppt/homogenous_pair_impl.hpp
 	libs/core/include/fcppt/homogenous_pair_output.hpp
 	libs/core/include/fcppt/identity.hpp
-	libs/core/include/fcppt/impl/exception.hpp
 	libs/core/include/fcppt/int_iterator_decl.hpp
 	libs/core/include/fcppt/int_iterator_fwd.hpp
 	libs/core/include/fcppt/int_iterator_impl.hpp
@@ -1175,6 +1170,7 @@ set(
 	libs/core/include/fcppt/preprocessor/detail/function.hpp
 	libs/core/include/fcppt/preprocessor/detail/message.hpp
 	libs/core/include/fcppt/preprocessor/detail/stringize.hpp
+	libs/core/include/fcppt/preprocessor/disable_clang_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_gcc_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/file.hpp
@@ -1393,7 +1389,6 @@ set(
 	libs/core/include/fcppt/time/exception.hpp
 	libs/core/include/fcppt/time/exception_fwd.hpp
 	libs/core/include/fcppt/time/gmtime.hpp
-	libs/core/include/fcppt/time/impl/exception.hpp
 	libs/core/include/fcppt/time/localtime.hpp
 	libs/core/include/fcppt/time/output_tm.hpp
 	libs/core/include/fcppt/time/std_time.hpp
@@ -1467,8 +1462,6 @@ set(
 	libs/core/include/fcppt/variant/get_exn.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
-	libs/core/include/fcppt/variant/impl/exception.hpp
-	libs/core/include/fcppt/variant/impl/invalid_get.hpp
 	libs/core/include/fcppt/variant/invalid_get.hpp
 	libs/core/include/fcppt/variant/invalid_get_fwd.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
@@ -1647,8 +1640,6 @@ set(
 	libs/options/include/fcppt/options/help_switch_fwd.hpp
 	libs/options/include/fcppt/options/help_text.hpp
 	libs/options/include/fcppt/options/help_text_fwd.hpp
-	libs/options/include/fcppt/options/impl/duplicate_names.hpp
-	libs/options/include/fcppt/options/impl/exception.hpp
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp

@@ -8,6 +8,8 @@
 #define FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 #include <fcppt/variant/exception.hpp>
 #include <fcppt/variant/invalid_get_fwd.hpp>
 
@@ -22,20 +24,45 @@ namespace variant
 
 \ingroup fcpptvariant
 */
-class invalid_get
+class FCPPT_SYMBOL_CLASS invalid_get
 :
 	public fcppt::variant::exception
 {
 public:
+	FCPPT_DETAIL_SYMBOL
 	explicit
 	invalid_get(
 		fcppt::string &&
 	);
+
+	FCPPT_DETAIL_SYMBOL
+	invalid_get(
+		invalid_get const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	invalid_get(
+		invalid_get &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	invalid_get &
+	operator=(
+		invalid_get const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	invalid_get &
+	operator=(
+		invalid_get &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	~invalid_get() noexcept
+	override;
 };
 
 }
 }
-
-#include <fcppt/variant/impl/invalid_get.hpp>
 
 #endif

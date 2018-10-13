@@ -9,6 +9,8 @@
 
 #include <fcppt/exception_fwd.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
@@ -31,7 +33,7 @@ this is that a string conversion itself can result in exceptions being thrown.
 That is why <code>what()</code> does not try to convert from \link
 fcppt::string \endlink to <code>std::string</code>.
 */
-class exception
+class FCPPT_SYMBOL_CLASS exception
 :
 	public std::exception
 {
@@ -39,24 +41,29 @@ public:
 	/**
 	\brief Constructs an exception from a string
 	*/
+	FCPPT_DETAIL_SYMBOL
 	explicit
 	exception(
 		fcppt::string &&what
 	);
 
+	FCPPT_DETAIL_SYMBOL
 	exception(
 		exception const &
 	);
 
+	FCPPT_DETAIL_SYMBOL
 	exception(
 		exception &&
 	);
 
+	FCPPT_DETAIL_SYMBOL
 	exception &
 	operator=(
 		exception const &
 	);
 
+	FCPPT_DETAIL_SYMBOL
 	exception &
 	operator=(
 		exception &&
@@ -77,10 +84,12 @@ public:
 	This function's purpose is to provide compatibility with
 	<code>std::exception</code>. It returns nothing useful.
 	*/
+	FCPPT_DETAIL_SYMBOL
 	char const *
 	what() const noexcept
 	override;
 
+	FCPPT_DETAIL_SYMBOL
 	~exception() noexcept
 	override;
 private:
@@ -88,7 +97,5 @@ private:
 };
 
 }
-
-#include <fcppt/impl/exception.hpp>
 
 #endif

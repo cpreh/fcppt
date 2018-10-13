@@ -79,8 +79,6 @@ set(
 	libs/options/include/fcppt/options/help_switch_fwd.hpp
 	libs/options/include/fcppt/options/help_text.hpp
 	libs/options/include/fcppt/options/help_text_fwd.hpp
-	libs/options/include/fcppt/options/impl/duplicate_names.hpp
-	libs/options/include/fcppt/options/impl/exception.hpp
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
@@ -173,6 +171,8 @@ set(
 	libs/options/include/fcppt/options/unit_switch_decl.hpp
 	libs/options/include/fcppt/options/unit_switch_fwd.hpp
 	libs/options/include/fcppt/options/unit_switch_impl.hpp
+	libs/options/src/duplicate_names.cpp
+	libs/options/src/exception.cpp
 	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/check_short_long_names.cpp
 	libs/options/src/options/detail/check_sub_command_names.cpp

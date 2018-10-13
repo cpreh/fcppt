@@ -10,6 +10,8 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/cast/bad_truncation_check_fwd.hpp>
+#include <fcppt/detail/symbol.hpp>
+#include <fcppt/symbol/class.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>
@@ -31,7 +33,7 @@ types, stored as std::type_index.
 
 \see fcppt::truncation_check_cast
 */
-class bad_truncation_check
+class FCPPT_SYMBOL_CLASS bad_truncation_check
 :
 	public fcppt::exception
 {
@@ -45,21 +47,50 @@ public:
 
 	\param dest The destination type information
 	*/
+	FCPPT_DETAIL_SYMBOL
 	bad_truncation_check(
 		fcppt::string &&source_value,
 		std::type_index const &source,
 		std::type_index const &dest
 	);
 
+	FCPPT_DETAIL_SYMBOL
+	bad_truncation_check(
+		bad_truncation_check const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	bad_truncation_check(
+		bad_truncation_check &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	bad_truncation_check &
+	operator=(
+		bad_truncation_check const &
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	bad_truncation_check &
+	operator=(
+		bad_truncation_check &&
+	);
+
+	FCPPT_DETAIL_SYMBOL
+	~bad_truncation_check() noexcept
+	override;
+
 	/**
 	\brief Returns the source type information
 	*/
+	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	source() const;
 
 	/**
 	\brief Returns the destination type information
 	*/
+	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	destination() const;
 private:
@@ -70,7 +101,5 @@ private:
 
 }
 }
-
-#include <fcppt/cast/impl/bad_truncation_check.hpp>
 
 #endif

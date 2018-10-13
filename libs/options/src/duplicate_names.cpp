@@ -4,17 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_IMPL_DUPLICATE_NAMES_HPP_INCLUDED
-#define FCPPT_OPTIONS_IMPL_DUPLICATE_NAMES_HPP_INCLUDED
-
 #include <fcppt/string.hpp>
+#include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
 fcppt::options::duplicate_names::duplicate_names(
 	fcppt::string &&_string
 )
@@ -27,4 +24,28 @@ fcppt::options::duplicate_names::duplicate_names(
 {
 }
 
-#endif
+fcppt::options::duplicate_names::duplicate_names(
+	duplicate_names const &
+)
+= default;
+
+fcppt::options::duplicate_names::duplicate_names(
+	duplicate_names &&
+)
+= default;
+
+fcppt::options::duplicate_names &
+fcppt::options::duplicate_names::operator=(
+	duplicate_names const &
+)
+= default;
+
+fcppt::options::duplicate_names &
+fcppt::options::duplicate_names::operator=(
+	duplicate_names &&
+)
+= default;
+
+fcppt::options::duplicate_names::~duplicate_names() noexcept
+{
+}

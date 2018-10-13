@@ -88,6 +88,8 @@ add_fcppt_either_test(
 
 add_fcppt_either_test(
 	to_exception
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_either_test(

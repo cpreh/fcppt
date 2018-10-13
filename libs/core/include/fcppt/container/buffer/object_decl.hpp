@@ -219,7 +219,6 @@ private:
 	release_internal()
 	noexcept;
 
-/// \cond
 	struct impl
 	{
 		FCPPT_NONCOPYABLE(
@@ -260,7 +259,6 @@ private:
 	};
 
 	impl impl_;
-/// \endcond
 };
 
 template<
