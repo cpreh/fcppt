@@ -9,7 +9,6 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/log/detail/symbol.hpp>
@@ -41,13 +40,19 @@ public:
 	);
 
 	FCPPT_LOG_DETAIL_SYMBOL
+	temporary_output &
+	operator=(
+		temporary_output &&
+	);
+
+	FCPPT_LOG_DETAIL_SYMBOL
+	~temporary_output();
+
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::string
 	result() const;
 private:
-	// The unique_ptr should go when libstdc++ streams are movable
-	fcppt::unique_ptr<
-		fcppt::io::ostringstream
-	> stream_;
+	fcppt::io::ostringstream stream_;
 
 	template<
 		typename T
@@ -83,7 +88,7 @@ operator<<(
 	T const &_arg
 )
 {
-	*_temp.stream_ << _arg;
+	_temp.stream_ << _arg;
 
 	return
 		std::move(
