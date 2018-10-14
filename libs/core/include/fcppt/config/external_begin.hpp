@@ -78,24 +78,18 @@ FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
 
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 
-FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation-unknown-command)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdeprecated-dynamic-exception-spec)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wexit-time-destructors)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wglobal-constructors)
+FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wreserved-id-macro)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-noreturn)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-func-template)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-template-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wexit-time-destructors)
-
-#include <fcppt/config/clang_version_at_least.hpp>
-
-#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 6)
-FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
-#endif
-
-#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 9)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
-#endif
 
 #else
 

@@ -15,6 +15,9 @@
 #include <fcppt/brigand/print.hpp>
 #include <fcppt/cast/to_unsigned_fun.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/transform.hpp>
@@ -178,6 +181,9 @@ static_assert(
 
 namespace print
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wmissing-prototypes)
+
 //! [brigand_print}
 void
 print_vec()
@@ -201,6 +207,8 @@ print_vec()
 
 }
 //! [brigand_print}
+
+FCPPT_PP_POP_WARNING
 }
 
 }

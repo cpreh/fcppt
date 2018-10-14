@@ -16,6 +16,9 @@
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
@@ -104,6 +107,10 @@ enum_array()
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
+
 // ![enum_names]
 namespace
 {
@@ -141,6 +148,8 @@ struct names_impl<
 }
 }
 // ![enum_names]
+
+FCPPT_PP_POP_WARNING
 
 namespace
 {

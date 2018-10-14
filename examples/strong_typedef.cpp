@@ -7,6 +7,7 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -16,6 +17,9 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wmissing-prototypes)
 
 namespace
 {
@@ -169,6 +173,8 @@ void f(distance const _d1, distance const _d2)
 
 }
 }
+
+FCPPT_PP_POP_WARNING
 
 int
 main()

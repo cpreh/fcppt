@@ -14,6 +14,9 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/maybe_multi.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <limits>
@@ -33,6 +36,9 @@ real const epsilon{
 	>::epsilon()
 };
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
+
 auto const half_pi{
 	fcppt::math::pi<
 		real
@@ -40,6 +46,8 @@ auto const half_pi{
 	/
 	2.f
 };
+
+FCPPT_PP_POP_WARNING
 
 inline
 bool

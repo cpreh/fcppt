@@ -4,6 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-macros)
+
 //! [visibility_macros]
 #include <fcppt/symbol/export.hpp>
 #include <fcppt/symbol/import.hpp>
@@ -47,6 +55,8 @@
 #define MYLIB_EXPORT_FUNCTION_INSTANTIATION FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION
 #endif
 //![visibility_macros_instantiation_static]
+
+FCPPT_PP_POP_WARNING
 
 // We really can't use the macros in the example, so undef them
 #undef MYLIB_SYMBOL
