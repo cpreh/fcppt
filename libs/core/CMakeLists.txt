@@ -2,7 +2,6 @@ set(
 	FCPPT_CORE_FILES
 	libs/core/impl/include/fcppt/impl/codecvt.hpp
 	libs/core/impl/include/fcppt/impl/codecvt_type.hpp
-	libs/core/impl/include/fcppt/impl/export_class_instantiation.hpp
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
@@ -1303,7 +1302,6 @@ set(
 	libs/core/src/io/clog.cpp
 	libs/core/src/io/cout.cpp
 	libs/core/src/io/read_chars.cpp
-	libs/core/src/io/scoped_rdbuf.cpp
 	libs/core/src/io/write_chars.cpp
 	libs/core/src/narrow.cpp
 	libs/core/src/string_conv_locale.cpp
