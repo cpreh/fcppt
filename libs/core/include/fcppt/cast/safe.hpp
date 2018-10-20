@@ -34,8 +34,8 @@ template<
 	typename Dest,
 	typename Source
 >
-constexpr
 inline
+constexpr
 Dest
 safe(
 	Source const &_source

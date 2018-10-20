@@ -6,6 +6,12 @@
 \subsection changes_added_functionality_to_2100 Added functionality
 
 <ul>
+<li>\ref fcpptcasts
+	<ul>
+	<li>Added additional <code>constexpr</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptpreprocessor
 	<ul>
 	<li>Added \link FCPPT_PP_DISABLE_CLANG_WARNING\endlink.</li>

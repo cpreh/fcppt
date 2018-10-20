@@ -35,6 +35,7 @@ template<
 	typename Source
 >
 inline
+constexpr
 Dest
 int_to_float(
 	Source const _source

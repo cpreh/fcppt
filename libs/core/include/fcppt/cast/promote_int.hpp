@@ -26,6 +26,7 @@ template<
 	typename Type
 >
 inline
+constexpr
 fcppt::cast::promote_int_type<
 	Type
 >

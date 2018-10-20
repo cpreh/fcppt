@@ -26,8 +26,8 @@ struct size_fun
 		typename Dest,
 		typename Source
 	>
-	constexpr
 	static
+	constexpr
 	Dest
 	execute(
 		Source const &_source

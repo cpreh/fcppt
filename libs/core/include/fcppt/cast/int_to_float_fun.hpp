@@ -27,6 +27,7 @@ struct int_to_float_fun
 		typename Source
 	>
 	static
+	constexpr
 	Dest
 	execute(
 		Source const &_source
