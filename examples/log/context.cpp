@@ -7,7 +7,7 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/log/_.hpp>
+#include <fcppt/log/out.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/info.hpp>
@@ -66,13 +66,13 @@ try
 // ![log_debug]
 	FCPPT_LOG_INFO(
 		root_log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("Print from root!")
 	);
 
 	FCPPT_LOG_INFO(
 		child_log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("Print from child!")
 	);
 // ![log_debug]
@@ -93,7 +93,7 @@ try
 // ![log_info]
 	FCPPT_LOG_INFO(
 		child_log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("shouldn't be shown!")
 	);
 // ![log_info]
@@ -110,7 +110,7 @@ try
 
 	FCPPT_LOG_INFO(
 		child_log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("This is now shown!")
 	);
 // ![context_set2]

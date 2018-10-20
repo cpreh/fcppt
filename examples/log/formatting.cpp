@@ -9,7 +9,7 @@
 #include <fcppt/enum/array_init.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/log/_.hpp>
+#include <fcppt/log/out.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/error.hpp>
@@ -136,7 +136,7 @@ main()
 	// to cout.
 	FCPPT_LOG_DEBUG(
 		log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("test")
 	);
 
@@ -145,7 +145,7 @@ main()
 	// to cerr.
 	FCPPT_LOG_ERROR(
 		log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("some error")
 	);
 //! [log_print]

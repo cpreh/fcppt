@@ -14,6 +14,17 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_2100 Changed functionality
+
+<ul>
+<li>\ref fcpptlog
+	<ul>
+	<li>Renamed <code>fcppt::log::_</code> to \link fcppt::log::out\endlink.</li>
+	</ul>
+</li>
+</ul>
+
+
 \section changes_changes_to_290 2.9.0
 
 \subsection changes_added_functionality_to_290 Added functionality

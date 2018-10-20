@@ -68,7 +68,7 @@ only if the debug log level is enabled. This is important because the
 construction of the log message is avoided altogether when debug is not
 enabled.
 
-\link fcppt::log::_ \endlink is an object that basically acts like
+\link fcppt::log::out \endlink is an object that basically acts like
 a <code>std::basic_ostream</code>. This is used to
 create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
@@ -223,8 +223,8 @@ All headers are relative to the log subdirectory.
 <th>Description</th>
 </tr>
 <tr>
-<td><code>_.hpp</code></td>
-<td>Contains \link fcppt::log::_ \endlink.</td>
+<td><code>out.hpp</code></td>
+<td>Contains \link fcppt::log::out \endlink.</td>
 </tr>
 <tr>
 <td><code>context_fwd.hpp</code></td>

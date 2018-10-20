@@ -1511,7 +1511,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
-	libs/log/include/fcppt/log/_.hpp
 	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
 	libs/log/include/fcppt/log/context.hpp
 	libs/log/include/fcppt/log/context_fwd.hpp
@@ -1563,6 +1562,7 @@ set(
 	libs/log/include/fcppt/log/object_fwd.hpp
 	libs/log/include/fcppt/log/optional_level.hpp
 	libs/log/include/fcppt/log/optional_level_fwd.hpp
+	libs/log/include/fcppt/log/out.hpp
 	libs/log/include/fcppt/log/parameters.hpp
 	libs/log/include/fcppt/log/parameters_fwd.hpp
 	libs/log/include/fcppt/log/verbose.hpp

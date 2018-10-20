@@ -79,7 +79,7 @@ public:
 
 	Logs a message given by \a output to level \a level. If
 	<code>enabled(level)</code> is false, nothing will be
-	logged. An output can be constructed from \link fcppt::log::_ \endlink.
+	logged. An output can be constructed from \link fcppt::log::out \endlink.
 
 	\param level The log level to log to
 

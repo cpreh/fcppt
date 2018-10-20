@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG___HPP_INCLUDED
-#define FCPPT_LOG___HPP_INCLUDED
+#ifndef FCPPT_LOG_OUT_HPP_INCLUDED
+#define FCPPT_LOG_OUT_HPP_INCLUDED
 
 #include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/log/detail/symbol.hpp>
@@ -22,12 +22,11 @@ namespace log
 
 \ingroup fcpptlog
 
-This trampoline refers to an object that has <code>operator << </code>
-overloaded and accepts every input an <code>std::basic_ostream</code> does.
+Use this object to output to a log stream.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 extern
-fcppt::log::detail::output_helper const _;
+fcppt::log::detail::output_helper const out;
 
 }
 }

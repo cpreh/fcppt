@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/_.hpp>
+#include <fcppt/log/out.hpp>
 #include <fcppt/log/detail/output_helper.hpp>
 
 
 fcppt::log::detail::output_helper const
-fcppt::log::_
+fcppt::log::out
 	= fcppt::log::detail::output_helper();

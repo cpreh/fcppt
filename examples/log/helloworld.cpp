@@ -5,7 +5,7 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/log/_.hpp>
+#include <fcppt/log/out.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/default_level_streams.hpp>
@@ -49,21 +49,21 @@ main()
 	)
 		log.log(
 			fcppt::log::level::debug,
-			fcppt::log::_
+			fcppt::log::out
 				<< FCPPT_TEXT("Hello World")
 		);
 
 	// The same as above using a shorthand macro
 	FCPPT_LOG_DEBUG(
 		log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("Hello World")
 	);
 
 	// This is not printed because the verbose level is not enabled
 	FCPPT_LOG_VERBOSE(
 		log,
-		fcppt::log::_
+		fcppt::log::out
 			<< FCPPT_TEXT("Very verbose message")
 	);
 //! [helloworld]
