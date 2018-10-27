@@ -88,6 +88,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-func-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-template-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
 
