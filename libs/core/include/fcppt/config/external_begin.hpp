@@ -79,6 +79,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdeprecated-dynamic-exception-spec)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdisabled-macro-expansion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wexit-time-destructors)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
@@ -89,6 +90,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-template)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wused-but-marked-unused)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-template-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
 
