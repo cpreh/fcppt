@@ -94,6 +94,12 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wused-but-marked-unused)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-template-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
 
+#include <fcppt/config/clang_version_at_least.hpp>
+
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(8, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow-field)
+#endif
+
 #else
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
