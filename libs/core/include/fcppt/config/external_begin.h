@@ -35,6 +35,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wimplicit-fallthrough)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-parens)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wreserved-id-macro)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wshift-sign-overflow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
 
 #else

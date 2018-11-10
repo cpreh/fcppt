@@ -80,11 +80,14 @@ FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdeprecated-dynamic-exception-spec)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdisabled-macro-expansion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wduplicate-enum)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wexit-time-destructors)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
+FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-destructor-override)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-noreturn)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow-field)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-func-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
@@ -93,12 +96,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-template)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wused-but-marked-unused)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-template-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
-
-#include <fcppt/config/clang_version_at_least.hpp>
-
-#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(8, 0)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow-field)
-#endif
 
 #else
 
