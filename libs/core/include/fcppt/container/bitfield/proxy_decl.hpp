@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_DECL_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/bit/mask_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
@@ -36,10 +36,6 @@ template<
 >
 class proxy
 {
-	FCPPT_NONASSIGNABLE(
-		proxy
-	);
-
 	typedef
 	std::remove_const_t<
 		StoredType
@@ -74,7 +70,9 @@ class proxy
 			internal_type
 		>::value;
 
-	StoredType &array_;
+	fcppt::reference<
+		StoredType
+	> array_;
 
 	size_type const pos_;
 

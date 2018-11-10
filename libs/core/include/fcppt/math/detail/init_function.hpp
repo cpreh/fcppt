@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_INIT_FUNCTION_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INIT_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
 #include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -25,9 +24,6 @@ template<
 >
 class init_function
 {
-	FCPPT_NONASSIGNABLE(
-		init_function
-	);
 public:
 	explicit
 	init_function(
@@ -60,7 +56,7 @@ public:
 			);
 	}
 private:
-	Function const function_;
+	Function function_;
 };
 
 }

@@ -142,12 +142,12 @@ fcppt::container::bitfield::proxy<
 	if(
 		_value
 	)
-		array_[
+		array_.get()[
 			index
 		] |=
 			mask.get();
-        else
-		array_[
+	else
+		array_.get()[
 			index
 		] &=
 			~mask.get();
@@ -166,7 +166,7 @@ fcppt::container::bitfield::value_type() const
 {
 	return
 		fcppt::bit::test(
-			array_[
+			array_.get()[
 				this->array_offset(
 					pos_
 				)

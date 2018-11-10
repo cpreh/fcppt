@@ -37,57 +37,10 @@ private:
 };
 //! [noncopyable]
 
-//! [nonassignable]
-
-// The following is not assignable because it has a reference and a constant
-class test_nonassignable
-{
-	FCPPT_NONASSIGNABLE(
-		test_nonassignable
-	);
-public:
-	test_nonassignable(
-		int &_some_ref,
-		float const _some_float
-	)
-	:
-		some_ref_(
-			_some_ref
-		),
-		float_constant_(
-			_some_float
-		)
-	{
-		std::cout
-			<< some_ref_
-			<< ' '
-			<< float_constant_
-			<< '\n';
-	}
-private:
-	int &some_ref_;
-
-	float const float_constant_;
-};
-//! [nonassignable]
-
 }
 
 int
 main()
 {
-	test_noncopyable test1;
-
-	int ref(
-		0
-	);
-
-	float const foo(
-		42.f
-	);
-
-	test_nonassignable test2(
-		ref,
-		foo
-	);
+	test_noncopyable test1{};
 }

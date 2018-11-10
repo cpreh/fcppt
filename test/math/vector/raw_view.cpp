@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/nonassignable.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object.hpp>
@@ -25,9 +24,6 @@ template<
 >
 class proxy
 {
-	FCPPT_NONASSIGNABLE(
-		proxy
-	);
 public:
 	typedef Pointer pointer;
 
@@ -80,7 +76,7 @@ public:
 			*this;
 	}
 private:
-	pointer const data_;
+	pointer data_;
 };
 
 template<

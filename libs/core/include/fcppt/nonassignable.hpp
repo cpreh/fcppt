@@ -24,8 +24,6 @@ constant elements or references. To make it clear to the compiler and to the
 users that it should not be possible to assign objects of this class, this
 macro should be used.
 
-\snippet examples/noncopyable.cpp nonassignable
-
 \param classname The name of the class
 */
 #define FCPPT_NONASSIGNABLE(\
