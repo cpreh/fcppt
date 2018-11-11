@@ -9,12 +9,6 @@
 
 #include <fcppt/detail/check_cpp.hpp>
 
-#if !defined(FCPPT_CONFIG_INSIDE_EXTERNAL_HPP)
-#error "#include <fcppt/config/external_end.hpp> without prior begin!"
-#endif
-
-#undef FCPPT_CONFIG_INSIDE_EXTERNAL_HPP
-
 #include <fcppt/preprocessor/pop_warning.hpp>
 FCPPT_PP_POP_WARNING
 

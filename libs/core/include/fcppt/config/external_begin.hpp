@@ -11,10 +11,6 @@
 
 #include <fcppt/config/external_begin.h>
 
-#if defined(FCPPT_CONFIG_INSIDE_EXTERNAL_HPP)
-#error "Missing #include <fcppt/config/external_end.hpp>"
-#endif
-
 #include <fcppt/config/compiler.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
@@ -125,8 +121,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
 
 #endif
-
-#define FCPPT_CONFIG_INSIDE_EXTERNAL_HPP
 
 #endif
 

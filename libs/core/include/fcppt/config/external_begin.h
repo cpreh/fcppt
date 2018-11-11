@@ -7,10 +7,6 @@
 #ifndef FCPPT_CONFIG_EXTERNAL_BEGIN_H_INCLUDED
 #define FCPPT_CONFIG_EXTERNAL_BEGIN_H_INCLUDED
 
-#if defined(FCPPT_CONFIG_INSIDE_EXTERNAL_H)
-#error "Missing #include <fcppt/config/external_end.h>"
-#endif
-
 #include <fcppt/config/compiler.h>
 #include <fcppt/preprocessor/push_warning.h>
 FCPPT_PP_PUSH_WARNING
@@ -82,8 +78,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-function-type)
 #endif
 
 #endif
-
-#define FCPPT_CONFIG_INSIDE_EXTERNAL_H
 
 #endif
 

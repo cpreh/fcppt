@@ -13,6 +13,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptconfig
+	<ul>
+	<li><code>external_begin.h(pp)</code> and <code>external_end.h(pp)</code> includes can now overlap.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptpreprocessor
 	<ul>
 	<li>Added \link FCPPT_PP_DISABLE_CLANG_WARNING\endlink.</li>
