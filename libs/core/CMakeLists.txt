@@ -439,7 +439,6 @@ set(
 	libs/core/include/fcppt/detail/move_if.hpp
 	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
-	libs/core/include/fcppt/detail/nonassignable.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
 	libs/core/include/fcppt/detail/placement_new.hpp
 	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
@@ -896,7 +895,6 @@ set(
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/no_init.hpp
 	libs/core/include/fcppt/no_init_fwd.hpp
-	libs/core/include/fcppt/nonassignable.hpp
 	libs/core/include/fcppt/noncopyable.hpp
 	libs/core/include/fcppt/not.hpp
 	libs/core/include/fcppt/optional/alternative.hpp

@@ -39,6 +39,18 @@
 
 </ul>
 
+\subsection changes_removed_functionality_to_2100 Removed functionality
+
+<ul>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Removed <code>FCPPT_NONASSIGNABLE</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 
 \section changes_changes_to_290 2.9.0
 
@@ -1563,8 +1575,8 @@ C++11 library that has no dependencies itself.</li>
 	<ul>
 	<li>\link fcppt::cyclic_iterator\endlink now uses a pair to construct
 	its boundaries.</li>
-	<li>\link FCPPT_NONCOPYABLE\endlink and \link
-	FCPPT_NONASSIGNABLE\endlink now simply use <code>=delete</code> instead
+	<li>\link FCPPT_NONCOPYABLE\endlink and
+	<code>FCPPT_NONASSIGNABLE</code> now simply use <code>=delete</code> instead
 	of <code>private:</code></li>
 	</ul>
 </li>
