@@ -7,10 +7,10 @@
 #ifndef FCPPT_ASSERT_INFORMATION_HPP_INCLUDED
 #define FCPPT_ASSERT_INFORMATION_HPP_INCLUDED
 
-#include <fcppt/assert/information_fwd.hpp>
 #include <fcppt/assert/condition.hpp>
 #include <fcppt/assert/file.hpp>
 #include <fcppt/assert/function.hpp>
+#include <fcppt/assert/information_fwd.hpp>
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/message.hpp>
 #include <fcppt/detail/symbol.hpp>

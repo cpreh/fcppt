@@ -7,7 +7,6 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/log/out.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/info.hpp>
@@ -16,6 +15,7 @@
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
+#include <fcppt/log/out.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>

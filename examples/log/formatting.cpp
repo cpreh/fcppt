@@ -9,7 +9,6 @@
 #include <fcppt/enum/array_init.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/log/out.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/error.hpp>
@@ -19,6 +18,7 @@
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
+#include <fcppt/log/out.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/format/default_level.hpp>
 #include <fcppt/log/format/function.hpp>

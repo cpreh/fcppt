@@ -7,8 +7,8 @@
 #ifndef FCPPT_VARIANT_EXCEPTION_HPP_INCLUDED
 #define FCPPT_VARIANT_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/symbol/class.hpp>
 #include <fcppt/variant/exception_fwd.hpp>

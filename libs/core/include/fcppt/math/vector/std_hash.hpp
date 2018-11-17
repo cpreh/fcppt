@@ -11,10 +11,10 @@
 #include <fcppt/math/to_array.hpp>
 #include <fcppt/math/to_array_type.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/range/hash_impl.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/range/hash_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <functional>
