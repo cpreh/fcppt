@@ -118,6 +118,30 @@ fcppt::container::bitfield::proxy<
 fcppt::container::bitfield::proxy<
 	StoredType
 >::operator=(
+	proxy const &
+)
+=
+default;
+
+
+template<
+	typename StoredType
+>
+fcppt::container::bitfield::proxy<
+	StoredType
+>::~proxy()
+{
+}
+
+template<
+	typename StoredType
+>
+fcppt::container::bitfield::proxy<
+	StoredType
+> &
+fcppt::container::bitfield::proxy<
+	StoredType
+>::operator=(
 	fcppt::container::bitfield::value_type const _value
 )
 {

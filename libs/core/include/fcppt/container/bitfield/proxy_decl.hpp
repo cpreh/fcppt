@@ -74,7 +74,7 @@ class proxy
 		StoredType
 	> array_;
 
-	size_type const pos_;
+	size_type pos_;
 
 	template<
 		typename,
@@ -105,6 +105,13 @@ public:
 	proxy(
 		proxy const &
 	);
+
+	proxy &
+	operator=(
+		proxy const &
+	);
+
+	~proxy();
 
 	/**
 	\brief Assigns a new value to the bit.
