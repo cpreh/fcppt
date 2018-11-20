@@ -87,7 +87,7 @@ function(
 
 	set(
 		TEMP_FILE
-		"${BINARY_DIR}/fcppt_generate_symbol.h.in"
+		"${BINARY_DIR}/${SYMBOL_NAME_LONG}_generate_symbol.h.in"
 	)
 
 	if(
@@ -138,5 +138,6 @@ function(
 	configure_file(
 		"${TEMP_FILE}"
 		"${BINARY_DIR}/include/${_RELATIVE_PATH}/symbol.${SUFFIX_LOWER}"
+		COPYONLY
 	)
 endfunction()
