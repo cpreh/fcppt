@@ -56,7 +56,7 @@ fcppt::container::grid::pos_reference<
 >::value() const
 {
 	return
-		value_;
+		value_.get();
 }
 
 #endif

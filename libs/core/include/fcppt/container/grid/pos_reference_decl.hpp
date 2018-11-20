@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_REFERENCE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REFERENCE_DECL_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
@@ -61,7 +62,11 @@ public:
 private:
 	pos_type pos_;
 
-	reference value_;
+	fcppt::reference<
+		std::remove_reference_t<
+			reference
+		>
+	> value_;
 };
 
 }
