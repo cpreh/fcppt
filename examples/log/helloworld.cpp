@@ -58,13 +58,13 @@ main()
 		log,
 		fcppt::log::out
 			<< FCPPT_TEXT("Hello World")
-	);
+	)
 
 	// This is not printed because the verbose level is not enabled
 	FCPPT_LOG_VERBOSE(
 		log,
 		fcppt::log::out
 			<< FCPPT_TEXT("Very verbose message")
-	);
+	)
 //! [helloworld]
 }

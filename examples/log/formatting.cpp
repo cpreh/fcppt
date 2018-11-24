@@ -138,7 +138,7 @@ main()
 		log,
 		fcppt::log::out
 			<< FCPPT_TEXT("test")
-	);
+	)
 
 	// Prints:
 	// 'This is a formatting test: fcppt: Horrible error, please fix: some error'
@@ -147,6 +147,6 @@ main()
 		log,
 		fcppt::log::out
 			<< FCPPT_TEXT("some error")
-	);
+	)
 //! [log_print]
 }

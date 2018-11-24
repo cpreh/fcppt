@@ -68,13 +68,13 @@ try
 		root_log,
 		fcppt::log::out
 			<< FCPPT_TEXT("Print from root!")
-	);
+	)
 
 	FCPPT_LOG_INFO(
 		child_log,
 		fcppt::log::out
 			<< FCPPT_TEXT("Print from child!")
-	);
+	)
 // ![log_debug]
 
 // ![context_set]
@@ -95,7 +95,7 @@ try
 		child_log,
 		fcppt::log::out
 			<< FCPPT_TEXT("shouldn't be shown!")
-	);
+	)
 // ![log_info]
 
 // ![context_set2]
@@ -112,7 +112,7 @@ try
 		child_log,
 		fcppt::log::out
 			<< FCPPT_TEXT("This is now shown!")
-	);
+	)
 // ![context_set2]
 
 	return
