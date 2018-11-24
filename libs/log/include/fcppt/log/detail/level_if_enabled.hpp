@@ -10,8 +10,6 @@
 #include <fcppt/log/object.hpp>
 
 
-#if !defined(FCPPT_DISABLE_LOGGING)
-
 #define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
 	stream,\
 	level,\
@@ -28,15 +26,5 @@
 			(output)\
 		);\
 }
-
-#else
-
-#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
-	stream,\
-	level,\
-	output\
-)
-
-#endif
 
 #endif
