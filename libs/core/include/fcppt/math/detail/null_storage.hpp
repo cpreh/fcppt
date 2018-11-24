@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_NULL_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_NULL_STORAGE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/detail/init_storage.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -28,7 +30,13 @@ null_storage()
 		fcppt::math::detail::init_storage<
 			Result
 		>(
-			0
+			fcppt::literal<
+				fcppt::type_traits::value_type<
+					Result
+				>
+			>(
+				0
+			)
 		);
 }
 
