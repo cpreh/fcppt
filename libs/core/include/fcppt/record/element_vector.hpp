@@ -7,6 +7,8 @@
 #ifndef FCPPT_RECORD_ELEMENT_VECTOR_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_VECTOR_HPP_INCLUDED
 
+#include <fcppt/record/detail/element_vector.hpp>
+
 
 namespace fcppt
 {
@@ -27,7 +29,9 @@ using
 element_vector
 =
 typename
-Record::all_types;
+fcppt::record::detail::element_vector<
+	Record
+>::type;
 
 }
 }

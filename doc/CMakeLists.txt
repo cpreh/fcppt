@@ -1252,6 +1252,7 @@ set(
 	libs/core/include/fcppt/record/detail/element_init_impl.hpp
 	libs/core/include/fcppt/record/detail/element_to_label.hpp
 	libs/core/include/fcppt/record/detail/element_to_type.hpp
+	libs/core/include/fcppt/record/detail/element_vector.hpp
 	libs/core/include/fcppt/record/detail/find_element.hpp
 	libs/core/include/fcppt/record/detail/find_element_predicate.hpp
 	libs/core/include/fcppt/record/detail/get_either.hpp
