@@ -13,6 +13,7 @@ FCPPT_PP_PUSH_WARNING
 
 #if defined(FCPPT_CONFIG_GCC_COMPILER)
 
+#include <fcppt/config/clang_version_at_least.h>
 #include <fcppt/config/gcc_version_at_least.h>
 #include <fcppt/preprocessor/disable_gcc_warning.h>
 
@@ -33,6 +34,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-parens)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wreserved-id-macro)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshift-sign-overflow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
+
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(8, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi-stmt)
+#endif
 
 #else
 
