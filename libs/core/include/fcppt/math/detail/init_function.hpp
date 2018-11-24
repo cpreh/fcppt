@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_INIT_FUNCTION_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INIT_FUNCTION_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -47,7 +48,7 @@ public:
 	) const
 	{
 		return
-			function_(
+			function_.get()(
 				fcppt::brigand::integral_cast<
 					fcppt::math::size_type,
 					fcppt::cast::size_fun,
@@ -56,7 +57,9 @@ public:
 			);
 	}
 private:
-	Function function_;
+	fcppt::reference<
+		Function const
+	> function_;
 };
 
 }

@@ -11,9 +11,6 @@
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array_type.hpp>
 #include <fcppt/math/detail/init_function.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -43,9 +40,7 @@ init(
 				>
 			>(
 				fcppt::math::detail::init_function<
-					std::remove_const_t<
-						Function
-					>
+					Function
 				>(
 					_function
 				)
