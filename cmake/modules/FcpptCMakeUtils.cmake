@@ -160,10 +160,12 @@ if(
 			"-Wconversion"
 			"-Wconversion-null"
 			"-Wdelete-non-virtual-dtor"
+			"-Wduplicated-cond"
 			"-Wfloat-equal"
 			"-Winit-self"
 			"-Wmissing-declarations"
 			"-Wnon-virtual-dtor"
+			"-Wnull-dereference"
 			"-Wold-style-cast"
 			"-Woverloaded-virtual"
 			"-Wredundant-decls"
@@ -184,19 +186,6 @@ if(
 		)
 
 		#"-Wzero-as-null-pointer-constant" - too many warnings from boost that cannot be disabled
-
-		if(
-			CMAKE_CXX_COMPILER_VERSION
-			VERSION_GREATER
-			6.0
-		)
-			list(
-				APPEND
-				FCPPT_UTILS_COMPILE_OPTIONS
-				"-Wduplicated-cond"
-				"-Wnull-dereference"
-			)
-		endif()
 	endif()
 
 	if(

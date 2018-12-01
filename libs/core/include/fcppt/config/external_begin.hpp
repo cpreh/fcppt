@@ -54,6 +54,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object
 FCPPT_PP_DISABLE_VC_WARNING(4643) // forward declaration in namespace std
 FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4702) // unreachable code
+FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
 FCPPT_PP_DISABLE_VC_WARNING(4819) // unrepresentable characters
 FCPPT_PP_DISABLE_VC_WARNING(4913) // user defined binary operator, exists but is not used
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
@@ -61,12 +62,6 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 FCPPT_PP_DISABLE_VC_WARNING(5026) // move constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(5027) // move assignment operator could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(5045) // Spectre mitigation for memory load
-
-#include <fcppt/config/msvc_version_at_least.hpp>
-
-#if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1910)
-FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
-#endif
 
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
@@ -95,18 +90,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
 
 #else
 
-FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
-
-#include <fcppt/config/gcc_version_at_least.hpp>
-
-#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
-#endif
-
-#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(8, 0)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wclass-memaccess)
-#endif
+FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
 
 #endif
 
