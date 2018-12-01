@@ -7,11 +7,8 @@
 #ifndef FCPPT_OPTIONAL_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/optional/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <new>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,10 +20,7 @@ fcppt::optional::object<
 	T
 >::object()
 :
-	storage_(),
-	initialized_(
-		false
-	)
+	impl_{}
 {
 }
 
@@ -36,17 +30,13 @@ template<
 fcppt::optional::object<
 	T
 >::object(
-	const_reference _other
+	T const &_value
 )
 :
-	storage_(),
-	initialized_(
-		true
-	)
+	impl_{
+		_value
+	}
 {
-	this->construct(
-		_other
-	);
 }
 
 template<
@@ -58,148 +48,36 @@ fcppt::optional::object<
 	T &&_other
 )
 :
-	storage_(),
-	initialized_(
-		true
-	)
-{
-	this->move_from(
+	impl_{
 		std::move(
 			_other
 		)
-	);
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->::object(
-	object const &_other
-)
-:
-	storage_(),
-	initialized_(
-		_other.has_value()
-	)
+	}
 {
-	this->construct(
-		_other
-	);
 }
 
 template<
 	typename T
 >
-fcppt::optional::object<
-	T
->::object(
-	object &&_other
-)
-noexcept(
-	std::is_nothrow_move_constructible<
-		T
-	>::value
-)
-:
-	storage_(),
-	initialized_(
-		_other.has_value()
-	)
-{
-	this->move_from(
-		std::move(
-			_other
-		)
-	);
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
-> &
-fcppt::optional::object<
-	T
->::operator=(
-	object const &_other
-)
-{
-	return
-		this->assign(
-			_other
-		);
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
-> &
-fcppt::optional::object<
-	T
->::operator=(
-	object &&_other
-)
-noexcept(
-	std::is_nothrow_move_constructible<
-		T
-	>::value
-	&&
-	std::is_nothrow_move_assignable<
-		T
-	>::value
-)
-{
-	return
-		this->move_assign(
-			std::move(
-				_other
-			)
-		);
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->::~object()
-{
-	this->destroy();
-}
-
-template<
-	typename T
->
-typename
-fcppt::optional::object<
-	T
->::reference
+T &
 fcppt::optional::object<
 	T
 >::get_unsafe()
 {
 	return
-		*this->data();
+		*this->impl_;
 }
 
 template<
 	typename T
 >
-typename
-fcppt::optional::object<
-	T
->::const_reference
+T const &
 fcppt::optional::object<
 	T
 >::get_unsafe() const
 {
 	return
-		*this->data();
+		*this->impl_;
 }
 
 template<
@@ -211,320 +89,7 @@ fcppt::optional::object<
 >::has_value() const
 {
 	return
-		initialized_;
-}
-
-template<
-	typename T
->
-typename
-fcppt::optional::object<
-	T
->::pointer
-fcppt::optional::object<
-	T
->::data()
-{
-	return
-		fcppt::cast::from_void_ptr<
-			T *
-		>(
-			this->raw_data()
-		);
-}
-
-template<
-	typename T
->
-typename
-fcppt::optional::object<
-	T
->::const_pointer
-fcppt::optional::object<
-	T
->::data() const
-{
-	return
-		fcppt::cast::from_void_ptr<
-			T const *
-		>(
-			this->raw_data()
-		);
-}
-
-template<
-	typename T
->
-void *
-fcppt::optional::object<
-	T
->::raw_data()
-{
-	return
-		&storage_;
-}
-
-template<
-	typename T
->
-void const *
-fcppt::optional::object<
-	T
->::raw_data() const
-{
-	return
-		&storage_;
-}
-
-template<
-	typename T
->
-void
-fcppt::optional::object<
-	T
->::construct(
-	const_reference _other
-)
-{
-	new (
-		this->raw_data()
-	)
-	T(
-		_other
-	);
-}
-
-template<
-	typename T
->
-template<
-	typename Other
->
-void
-fcppt::optional::object<
-	T
->::construct(
-	fcppt::optional::object<
-		Other
-	> const &_other
-)
-{
-	if(
-		_other.has_value()
-	)
-		this->construct(
-			_other.get_unsafe()
-		);
-}
-
-template<
-	typename T
->
-void
-fcppt::optional::object<
-	T
->::move_from(
-	T &&_other
-)
-{
-	new (
-		this->raw_data()
-	)
-	T(
-		std::move(
-			_other
-		)
-	);
-}
-
-template<
-	typename T
->
-void
-fcppt::optional::object<
-	T
->::move_from(
-	object &&_other
-)
-{
-	if(
-		_other.has_value()
-	)
-	{
-		this->move_from(
-			std::move(
-				_other.get_unsafe()
-			)
-		);
-
-		_other.reset();
-	}
-}
-
-template<
-	typename T
->
-void
-fcppt::optional::object<
-	T
->::reset()
-{
-	this->destroy();
-
-	initialized_ = false;
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
-> &
-fcppt::optional::object<
-	T
->::assign(
-	const_reference _other
-)
-{
-	if(
-		this->has_value()
-	)
-		*this->data() = _other;
-	else
-	{
-		this->construct(
-			_other
-		);
-
-		initialized_ = true;
-	}
-
-	return *this;
-}
-
-template<
-	typename T
->
-template<
-	typename Other
->
-fcppt::optional::object<
-	T
-> &
-fcppt::optional::object<
-	T
->::assign(
-	fcppt::optional::object<
-		Other
-	> const &_other
-)
-{
-	if(
-		this->has_value()
-		&&
-		_other.has_value()
-	)
-		*this->data() = _other.get_unsafe();
-	else
-	{
-		this->destroy();
-
-		this->construct(
-			_other
-		);
-
-		initialized_ = _other.has_value();
-	}
-
-	return *this;
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
-> &
-fcppt::optional::object<
-	T
->::move_assign(
-	T && _other
-)
-{
-	if(
-		this->has_value()
-	)
-		*this->data() =
-			std::move(
-				_other
-			);
-	else
-	{
-		this->move_from(
-			std::move(
-				_other
-			)
-		);
-
-		initialized_ = true;
-	}
-
-	return *this;
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
-> &
-fcppt::optional::object<
-	T
->::move_assign(
-	object &&_other
-)
-{
-	if(
-		this->has_value()
-		&&
-		_other.has_value()
-	)
-	{
-		*this->data() =
-			std::move(
-				_other.get_unsafe()
-			);
-
-		_other.reset();
-	}
-	else
-	{
-		this->destroy();
-
-		initialized_ = _other.has_value();
-
-		this->move_from(
-			std::move(
-				_other
-			)
-		);
-	}
-
-	return *this;
-}
-
-template<
-	typename T
->
-void
-fcppt::optional::object<
-	T
->::destroy()
-{
-	if(
-		this->has_value()
-	)
-		this->data()->~T();
+		impl_.has_value();
 }
 
 #endif

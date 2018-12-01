@@ -10,7 +10,7 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/optional/object_decl.hpp>
-#include <fcppt/optional/reference_fwd.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <list>
 #include <type_traits>
