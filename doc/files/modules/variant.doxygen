@@ -35,30 +35,20 @@ A variant is a type that can hold objects of a fixed set of types, which is
 sometimes also called a <em>sum type</em>. The closest language feature in C++
 are unions, which are very low-level and dangerous to use:
 <ul>
-
 <li>A union does not know which type of object it actually holds. This can also
 be nothing at all when the union has not been initialized.</li>
-
 <li>Accessing the wrong type is undefined behaviour.</li>
-
 <li>A union also does not know how to call constructors or destructors.</li>
-
 </ul>
 
 \snippet variant/motivation.cpp variant_union
 
 <code>%fcppt::variant</code> fixes the aforementioned problems in the following way:
-
 <ul>
-
 <li>It keeps track of which type it holds.</li>
-
 <li>It is not default-constructible.</li>
-
 <li>It calls constructors, assignment operators and destructors as needed.</li>
-
 <li>Safe access is provided, similar to \ref fcpptoptional.</li>
-
 </ul>
 
 Consider a variant of an int and a string, for which we provide a print function:
@@ -113,35 +103,18 @@ an optional reference.</li>
 \section variant_design Design
 
 While the design of <code>fcppt::variant</code> is similar to
-<code>%boost::variant</code>, there are some key differences:
+<code>std::variant</code>, there are some key differences:
 
 <ul>
-
-<li><code>%fcppt::variant</code> does not provide a default constructor.
-<code>%boost::variant</code> default constructs the first type of all possible
+<li>\link fcppt::variant::object\endlink does not provide a default constructor.
+<code>std::variant</code> default constructs the first type of all possible
 types instead, which does not make any sense.</li>
-
-<li><code>%fcppt::variant</code>'s constructor is explicit.</li>
-
-<li><code>%fcppt::variant</code> does not allow any implicit conversions in its
+<li>\link fcppt::variant::object\endlink's constructor is explicit.</li>
+<li>\link fcppt::variant::object\endlink does not allow any implicit conversions in its
 constructors.</li>
-
-<li><code>%boost::variant</code> offers the so-called "non-empty" guarantee.
-This means that a variant always holds one of its possible types, which is
-generally a good thing. However, the difficult part about this guarantee is
-that an assignment of an object of different type than the variant already
-holds can throw an exception. In more detail, this means that the variant first
-has to destroy the object that is being held to make the store available for
-the new object. Then, if copy construction of the new object fails, there is no
-way to recover from that. <code>%boost::variant</code> circumvents that by
-heap-allocating the new object which can then safely be moved after destroying
-the old object. <code>%fcppt::variant</code> instead allows this corner case to
-leave the variant in an unspecified state which can only be used to destroy the
-variant or to assign a new object.</li>
-
-<li><code>%fcppt::variant</code> uses alignment support from the compiler
-instead of relying on <code>%boost::detail::aligned_storage</code>.</li>
-
+<li>\link fcppt::variant::object\endlink uses a <code>brigand::list</code> instead of
+variadic template parameters. There is also \link fcppt::variant::variadic\endlink
+which does the latter.</li>
 </ul>
 
 \section variant_headers Header files
@@ -176,11 +149,7 @@ instead of relying on <code>%boost::detail::aligned_storage</code>.</li>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
-<td>Includes <code>equal.hpp</code> and <code>not_equal.hpp</code>.</td>
-</tr>
-<tr>
-<td><code>equal.hpp</code></td>
-<td>Contains <code>operator==</code>.</td>
+<td>Contains <code>operator<</code>, <code>operator==</code> and <code>operator!=</code>.</td>
 </tr>
 <tr>
 <td><code>exception.hpp</code></td>
@@ -208,16 +177,8 @@ a type is held by the variant.</td>
 by \link fcppt::variant::get_exn \endlink.</td>
 </tr>
 <tr>
-<td><code>less.hpp</code></td>
-<td>Contains <code>operator<</code>.</td>
-</tr>
-<tr>
 <td><code>match.hpp</code></td>
 <td>Contains \link fcppt::variant::match\endlink.</td>
-</tr>
-<tr>
-<td><code>not_equal.hpp</code></td>
-<td>Contains <code>operator!=</code>.</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
