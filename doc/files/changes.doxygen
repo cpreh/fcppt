@@ -1,6 +1,41 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_300 3.0.0
+
+<p>
+fcppt now uses <code>C++-17</code>.
+</p>
+
+\subsection changes_changed_functionality_to_300 Changed functionality
+
+<ul>
+<li>\ref fcpptoptional
+	<ul>
+	<li>Now uses <code>std::optional</code> in its implementation.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>
+	Now uses <code>std::variant</code> in its implementation. This change makes the constructor
+	of \link fcppt::variant::object\endlink stricter,
+	since it now uses <code>std::is_constructible</code>. For example, an rvalue of a type that is
+	not movable cannot be used to construct a variant.
+	</li>
+	<li>
+	Removed the assignment operator of \link fcppt::variant::object\endlink that assigned
+	an underlying value. Assign a new variant instead.
+	</li>
+	<li>
+	Moved <code>fcppt/variant/less.hpp</code>, <code>fcppt/variant/equal.hpp</code>
+	and <code>fcppt/variant/not_equal.hpp</code>. into <code>fcppt/variant/comparison.hpp</code>.
+	</li>
+	</ul>
+</li>
+</ul>
+
 \section changes_changes_to_2100 2.10.0
 
 \subsection changes_added_functionality_to_2100 Added functionality

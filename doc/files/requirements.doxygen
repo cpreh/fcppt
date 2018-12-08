@@ -63,8 +63,8 @@ The following platforms are tested by us:
 	<li>VC++-14.16</li>
 </ul>
 
-fcppt needs a C++14-conforming compiler which probably excludes everything
-older than gcc-5.1 and clang-3.4.
+fcppt needs a C++17-conforming compiler which probably excludes everything
+older than gcc-8 and clang-6.
 
 \section requirements_download_installation_download Download
 
