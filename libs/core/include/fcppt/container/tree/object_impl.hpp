@@ -16,6 +16,7 @@
 #include <fcppt/container/pop_back.hpp>
 #include <fcppt/container/pop_front.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
+#include <fcppt/optional/from_pointer.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
@@ -39,7 +40,9 @@ fcppt::container::tree::object<
 	value_(
 		_value
 	),
-	parent_(),
+	parent_{
+		nullptr
+	},
 	children_()
 {
 }
@@ -58,7 +61,9 @@ fcppt::container::tree::object<
 			_value
 		)
 	),
-	parent_(),
+	parent_{
+		nullptr
+	},
 	children_()
 {
 }
@@ -81,7 +86,9 @@ fcppt::container::tree::object<
 			_value
 		)
 	),
-	parent_(),
+	parent_{
+		nullptr
+	},
 	children_(
 		this->move_children(
 			std::move(
@@ -104,7 +111,9 @@ fcppt::container::tree::object<
 	value_(
 		_other.value()
 	),
-	parent_(),
+	parent_{
+		nullptr
+	},
 	children_(
 		this->copy_children(
 			_other.children_
@@ -132,7 +141,9 @@ noexcept(
 			_other.value()
 		)
 	),
-	parent_(),
+	parent_{
+		nullptr
+	},
 	children_(
 		this->move_children(
 			std::move(
@@ -161,7 +172,7 @@ fcppt::container::tree::object<
 		_other.value_;
 
 	parent_
-		= optional_ref();
+		= nullptr;
 
 	children_ =
 		this->copy_children(
@@ -246,7 +257,9 @@ fcppt::container::tree::object<
 >::parent()
 {
 	return
-		parent_;
+		fcppt::optional::from_pointer(
+			parent_
+		);
 }
 
 template<
@@ -262,7 +275,9 @@ fcppt::container::tree::object<
 {
 	return
 		fcppt::optional::map(
-			parent_,
+			fcppt::optional::from_pointer(
+				parent_
+			),
 			[](
 				fcppt::reference<
 					object
@@ -300,7 +315,7 @@ fcppt::container::tree::object<
 	);
 
 	ret.parent_ =
-		optional_ref{};
+		nullptr;
 
 	return
 		ret;
@@ -457,7 +472,7 @@ fcppt::container::tree::object<
 			)
 			{
 				_result.parent_ =
-					optional_ref{};
+					nullptr;
 
 				return
 					std::move(
@@ -564,7 +579,7 @@ fcppt::container::tree::object<
 			)
 			{
 				_result.parent_ =
-					optional_ref{};
+					nullptr;
 
 				return
 					std::move(
@@ -790,12 +805,7 @@ fcppt::container::tree::object<
 		std::move(
 			_tree
 		)
-	)->parent_ =
-		optional_ref(
-			fcppt::make_ref(
-				*this
-			)
-		);
+	)->parent_ = this;
 }
 
 template<
@@ -998,13 +1008,7 @@ fcppt::container::tree::object<
 		:
 		result
 	)
-		child.parent_ =
-			typename
-			object::optional_ref(
-				fcppt::make_ref(
-					*this
-				)
-			);
+		child.parent_ = this;
 
 	return
 		result;
@@ -1034,13 +1038,7 @@ fcppt::container::tree::object<
 		:
 		result
 	)
-		child.parent_ =
-			typename
-			object::optional_ref(
-				fcppt::make_ref(
-					*this
-				)
-			);
+		child.parent_ = this;
 
 	return
 		result;

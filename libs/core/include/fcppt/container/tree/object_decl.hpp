@@ -10,7 +10,7 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/optional/object_decl.hpp>
-#include <fcppt/optional/reference.hpp>
+#include <fcppt/optional/reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <list>
 #include <type_traits>
@@ -392,7 +392,7 @@ private:
 
 	T value_;
 
-	optional_ref parent_;
+	object *parent_;
 
 	child_list children_;
 };
