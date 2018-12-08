@@ -44,10 +44,6 @@ TEST_CASE(
 	);
 
 	CHECK(
-		!opta.has_value()
-	);
-
-	CHECK(
 		optb
 		==
 		optional_movable{
@@ -67,10 +63,6 @@ TEST_CASE(
 		std::move(
 			optb
 		);
-
-	CHECK(
-		!optb.has_value()
-	);
 
 	CHECK(
 		optc
