@@ -30,12 +30,12 @@ include(
 
 set(
 	FCPPT_MAJOR_VERSION
-	2
+	3
 )
 
 set(
 	FCPPT_MINOR_VERSION
-	10
+	0
 )
 
 set(
