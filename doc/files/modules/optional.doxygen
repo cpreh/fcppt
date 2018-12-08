@@ -21,13 +21,13 @@
 
 \section optional_motivation Motivation
 
-Often it is necessary to distinguish between having a value and having none.
+The goal of an optional type is to make it explicit that a value might be missing.
 This includes operations that might return no result, for example looking for
-an element in a container. Also, in a lot of situations, data may be absent,
-for example a tree might have a parent or it might have none. Values that may
-be nothing are common in C++ but are not handled consistently. This includes
-special values like <code>std::string::npos</code>, <code>nullptr</code> or end
-iterators. Modelling optionals explicitly has several advantages. Consider the
+an element in a container, performing a conversion that can fail,
+a tree that might have no parent, and so on.
+Values that may be nothing are common in C++ but are not handled consistently.
+This includes special values like <code>std::string::npos</code>, <code>nullptr</code>
+or end iterators. Modelling optionals explicitly has several advantages. Consider the
 following example:
 
 \snippet optional.cpp optional_example_bad
@@ -35,9 +35,9 @@ following example:
 First of all, the example makes it clear that the function can deal with an
 <code>unsigned int</code> or nothing at all. However, using optionals in this way
 makes them no safer than using pointers that may be null. In order to fix this,
-we must avoid calling <code>get_unsafe</code> at all.
-The most basic operation that does this is called <code>maybe</code> which acts on the two
-different cases.
+we must avoid calling <code>get_unsafe</code> manually.
+The most basic operation that does this for us is called <code>maybe</code>.
+The user provides two functions which act on the two different cases.
 
 \snippet optional.cpp optional_example_good
 
@@ -46,23 +46,15 @@ a value and the code dereferencing the optional are both gone.
 
 \section optional_design Design
 
-The goal of \ref fcppt.optional, in contrast to <code>%boost::optional</code>
-(and sadly C++17's <code>std::optional</code>), is to avoid pointer semantics
-and use explicit conversions only.
-The key differences include:
+The key differences to <code>std::optional</code> include:
 <ul>
 <li><code>%fcppt::optional::object</code> does not have
 <code>operator-></code>, <code>operator*</code> nor <code>operator bool</code>,
 so that it does not mimic pointers.</li>
-<li><code>%fcppt::optional::object</code> uses alignment support from the
-compiler instead of relying on
-<code>%boost::detail::aligned_storage</code>.</li>
 <li><code>%fcppt::optional::object\<T></code> does not have an implicit
 constructor, nor assignment operator from <code>T</code>.</li>
-<li><code>%fcppt::optional::object</code> does not implement optional
-references directly (so <code>%fcppt::optional::object<T &></code> is not
-allowed). <code>%boost::optional</code> mimics the semantics of ordinary
-references. For example it allows implicit conversions for assignment.</li>
+<li>A lot of functions are provided that make the use of optionals safe
+by not having the user dereference optionals manually.</li>
 </ul>
 
 \section optional_reference Optional References
