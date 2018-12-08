@@ -37,6 +37,10 @@ add_fcppt_variant_test(
 )
 
 add_fcppt_variant_test(
+	comparison
+)
+
+add_fcppt_variant_test(
 	dynamic_cast
 	LINK_LIBS
 		Brigand
@@ -45,16 +49,6 @@ add_fcppt_variant_test(
 add_fcppt_variant_test(
 	dynamic_cast_types
         NO_CODE
-)
-
-add_fcppt_variant_test(
-	equal
-)
-
-add_fcppt_variant_test(
-	exception
-	LINK_LIBS
-		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_test(
@@ -67,10 +61,6 @@ add_fcppt_variant_test(
 	holds_type
 	LINK_LIBS
 		Brigand
-)
-
-add_fcppt_variant_test(
-	less
 )
 
 add_fcppt_variant_test(

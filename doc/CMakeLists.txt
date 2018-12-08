@@ -638,7 +638,6 @@ set(
 	libs/core/include/fcppt/cyclic_iterator_impl.hpp
 	libs/core/include/fcppt/default_deleter.hpp
 	libs/core/include/fcppt/default_deleter_fwd.hpp
-	libs/core/include/fcppt/detail/call_destructor.hpp
 	libs/core/include/fcppt/detail/char_type.hpp
 	libs/core/include/fcppt/detail/check_cpp.hpp
 	libs/core/include/fcppt/detail/const.hpp
@@ -652,7 +651,6 @@ set(
 	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
-	libs/core/include/fcppt/detail/placement_new.hpp
 	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
 	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
@@ -1443,19 +1441,16 @@ set(
 	libs/core/include/fcppt/variant/compare.hpp
 	libs/core/include/fcppt/variant/comparison.hpp
 	libs/core/include/fcppt/variant/current_type_name.hpp
-	libs/core/include/fcppt/variant/detail/apply.hpp
-	libs/core/include/fcppt/variant/detail/assert_type.hpp
 	libs/core/include/fcppt/variant/detail/disable_object.hpp
 	libs/core/include/fcppt/variant/detail/get_exn_impl.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe.hpp
-	libs/core/include/fcppt/variant/detail/index_of.hpp
-	libs/core/include/fcppt/variant/detail/nothrow_move_assignable.hpp
-	libs/core/include/fcppt/variant/detail/nothrow_move_constructible.hpp
-	libs/core/include/fcppt/variant/detail/type_info.hpp
+	libs/core/include/fcppt/variant/detail/get_unsafe_impl.hpp
+	libs/core/include/fcppt/variant/detail/has_type.hpp
+	libs/core/include/fcppt/variant/detail/std_type.hpp
+	libs/core/include/fcppt/variant/detail/std_type_impl.hpp
 	libs/core/include/fcppt/variant/detail/types_of.hpp
 	libs/core/include/fcppt/variant/dynamic_cast.hpp
 	libs/core/include/fcppt/variant/dynamic_cast_types.hpp
-	libs/core/include/fcppt/variant/equal.hpp
 	libs/core/include/fcppt/variant/exception.hpp
 	libs/core/include/fcppt/variant/exception_fwd.hpp
 	libs/core/include/fcppt/variant/get_exn.hpp
@@ -1464,9 +1459,7 @@ set(
 	libs/core/include/fcppt/variant/invalid_get.hpp
 	libs/core/include/fcppt/variant/invalid_get_fwd.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
-	libs/core/include/fcppt/variant/less.hpp
 	libs/core/include/fcppt/variant/match.hpp
-	libs/core/include/fcppt/variant/not_equal.hpp
 	libs/core/include/fcppt/variant/object.hpp
 	libs/core/include/fcppt/variant/object_decl.hpp
 	libs/core/include/fcppt/variant/object_fwd.hpp

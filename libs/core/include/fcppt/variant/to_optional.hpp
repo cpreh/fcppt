@@ -9,6 +9,7 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
@@ -51,9 +52,11 @@ to_optional(
 				fcppt::move_if_rvalue<
 					Variant
 				>(
-					_variant. template get_unsafe<
+					fcppt::variant::get_unsafe<
 						Type
-					>()
+					>(
+						_variant
+					)
 				)
 			}
 		:

@@ -9,6 +9,7 @@
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -57,5 +58,48 @@ TEST_CASE(
 		fcppt::variant::type_info(
 			v2
 		)
+	);
+}
+
+TEST_CASE(
+	"variant less",
+	"[variant]"
+)
+{
+	typedef
+	fcppt::variant::variadic<
+		int,
+		std::string
+	>
+	variant;
+
+	variant const v1(
+		10
+	);
+
+	variant const v2(
+		20
+	);
+
+	CHECK(
+		v1 < v2
+	);
+
+	CHECK_FALSE(
+		v2 < v1
+	);
+
+	variant const v3(
+		std::string(
+			"hello world"
+		)
+	);
+
+	CHECK(
+		v1 < v3
+	);
+
+	CHECK_FALSE(
+		v3 < v1
 	);
 }

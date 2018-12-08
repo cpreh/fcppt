@@ -4,33 +4,32 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_CALL_DESTRUCTOR_HPP_INCLUDED
-#define FCPPT_DETAIL_CALL_DESTRUCTOR_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
+#include <fcppt/brigand/found_t.hpp>
 
 
 namespace fcppt
+{
+namespace variant
 {
 namespace detail
 {
 
 template<
-	typename Type
+	typename Types,
+	typename Element
 >
-inline
-void
-call_destructor(
-	Type const &_value
-)
-{
-	FCPPT_USE(
-		_value
-	);
+using
+has_type
+=
+fcppt::brigand::found_t<
+	Types,
+	Element
+>;
 
-	_value.~Type();
 }
-
 }
 }
 

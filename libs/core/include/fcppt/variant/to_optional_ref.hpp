@@ -9,6 +9,7 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional/reference.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -58,9 +59,11 @@ to_optional_ref(
 		?
 			result_type{
 				fcppt::make_ref(
-					_variant. template get_unsafe<
+					fcppt::variant::get_unsafe<
 						element_type
-					>()
+					>(
+						_variant
+					)
 				)
 			}
 		:

@@ -7,20 +7,14 @@
 #ifndef FCPPT_VARIANT_APPLY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_HPP_INCLUDED
 
-#include <fcppt/absurd.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/is_object.hpp>
-#include <fcppt/variant/types_of.hpp>
-#include <fcppt/variant/detail/apply.hpp>
-#include <fcppt/variant/detail/get_unsafe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/all.hpp>
-#include <brigand/sequences/front.hpp>
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
-#include <tuple>
-#include <utility>
+#include <variant>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -56,34 +50,12 @@ apply(
 	);
 
 	return
-		fcppt::variant::detail::apply(
+		std::visit(
 			_function,
-			&fcppt::absurd<
-				decltype(
-					_function(
-						fcppt::move_if_rvalue<
-							Variants
-						>(
-							fcppt::variant::detail::get_unsafe<
-								::brigand::front<
-									fcppt::variant::types_of<
-										fcppt::type_traits::remove_cv_ref_t<
-											Variants
-										>
-									>
-								>
-							>(
-								_variants
-							)
-						)...
-					)
-				)
-			>,
-			std::tuple<>{},
-			std::forward<
+			fcppt::move_if_rvalue<
 				Variants
 			>(
-				_variants
+				_variants.impl()
 			)...
 		);
 }

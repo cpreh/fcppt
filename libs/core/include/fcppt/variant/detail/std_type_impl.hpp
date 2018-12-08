@@ -4,17 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_PLACEMENT_NEW_HPP_INCLUDED
-#define FCPPT_DETAIL_PLACEMENT_NEW_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_STD_TYPE_IMPL_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_STD_TYPE_IMPL_HPP_INCLUDED
 
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <new>
-#include <utility>
+#include <brigand/sequences/list.hpp>
+#include <variant>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
+{
+namespace variant
 {
 namespace detail
 {
@@ -22,27 +23,25 @@ namespace detail
 template<
 	typename Type
 >
-inline
-void
-placement_new(
-	void *const _store,
-	Type &&_value
-)
-{
-	new (
-		_store
-	)
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>(
-		std::forward<
-			Type
-		>(
-			_value
-		)
-	);
-}
+struct std_type_impl;
 
+template<
+	typename... Types
+>
+struct std_type_impl<
+	::brigand::list<
+		Types...
+	>
+>
+{
+	typedef
+	std::variant<
+		Types...
+	>
+	type;
+};
+
+}
 }
 }
 

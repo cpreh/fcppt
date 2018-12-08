@@ -8,13 +8,12 @@
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/any.hpp>
 #include <brigand/functions/lambda/apply.hpp>
 #include <brigand/types/args.hpp>
 #include <type_traits>
+#include <variant>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -69,12 +68,11 @@ holds_type(
 	);
 
 	return
-		_variant.type_index()
-		==
-		fcppt::variant::detail::index_of<
-			Elements,
+		std::holds_alternative<
 			Type
-		>::value;
+		>(
+			_variant.impl()
+		);
 }
 
 }

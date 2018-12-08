@@ -7,9 +7,10 @@
 #ifndef FCPPT_VARIANT_TYPE_INFO_HPP_INCLUDED
 #define FCPPT_VARIANT_TYPE_INFO_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/detail/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
@@ -37,7 +38,24 @@ type_info(
 {
 	return
 		fcppt::variant::apply(
-			fcppt::variant::detail::type_info(),
+			[](
+				auto const &_value
+			)
+			-> std::type_info const &
+			{
+				FCPPT_USE(
+					_value
+				);
+
+				return
+					typeid(
+						fcppt::type_traits::remove_cv_ref_t<
+							decltype(
+								_value
+							)
+						>
+					);
+			},
 			_variant
 		);
 }

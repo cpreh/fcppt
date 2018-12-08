@@ -8,12 +8,10 @@
 #define FCPPT_VARIANT_CURRENT_TYPE_NAME_HPP_INCLUDED
 
 #include <fcppt/type_name_from_index.hpp>
-#include <fcppt/use.hpp>
-#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -38,23 +36,10 @@ current_type_name(
 )
 {
 	return
-		fcppt::variant::apply(
-			[](
-				auto const &_element
+		fcppt::type_name_from_index(
+			fcppt::variant::type_info(
+				_variant
 			)
-			{
-				FCPPT_USE(
-					_element
-				);
-
-				return
-					fcppt::type_name_from_index(
-						typeid(
-							_element
-						)
-					);
-			},
-			_variant
 		);
 }
 

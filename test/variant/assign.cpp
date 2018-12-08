@@ -57,7 +57,8 @@ TEST_CASE(
 		)
 	);
 
-	test1 = 42;
+	test1 =
+		variant{42};
 
 	CHECK(
 		fcppt::variant::holds_type<
