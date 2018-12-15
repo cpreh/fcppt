@@ -82,7 +82,7 @@ TEST_CASE(
 				sig
 			)
 			==
-			1
+			1u
 		);
 
 		REQUIRE(
@@ -116,7 +116,7 @@ TEST_CASE(
 					sig
 				)
 				==
-				2
+				2u
 			);
 
 			sig();
@@ -133,7 +133,7 @@ TEST_CASE(
 				sig
 			)
 			==
-			1
+			1u
 		);
 	}
 
@@ -142,7 +142,7 @@ TEST_CASE(
 			sig
 		)
 		==
-		0
+		0u
 	);
 
 	REQUIRE(
