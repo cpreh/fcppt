@@ -44,6 +44,8 @@ FCPPT_PP_DISABLE_VC_WARNING(4510) // default constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(4512) // assignment operator could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(4548) // expression before comma has no effect
 FCPPT_PP_DISABLE_VC_WARNING(4555) // expression has no effect
+FCPPT_PP_DISABLE_VC_WARNING(4582) // constructor not implicitly called
+FCPPT_PP_DISABLE_VC_WARNING(4583) // destructor not implicitly called
 FCPPT_PP_DISABLE_VC_WARNING(4610) // T can never be instantiated because of private ctors
 FCPPT_PP_DISABLE_VC_WARNING(4619) // invalid pragma warning
 FCPPT_PP_DISABLE_VC_WARNING(4623) // default constructor implicitly deleted
