@@ -33,6 +33,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4263) // member function does not override any base 
 FCPPT_PP_DISABLE_VC_WARNING(4264) // no override available for virtual member function from base
 FCPPT_PP_DISABLE_VC_WARNING(4265) // destructor not virtual
 FCPPT_PP_DISABLE_VC_WARNING(4266) // no override available for virtual member function from base
+FCPPT_PP_DISABLE_VC_WARNING(4296) // expression is always false
 FCPPT_PP_DISABLE_VC_WARNING(4302) // type cast truncation
 FCPPT_PP_DISABLE_VC_WARNING(4307) // integral constant overflow
 FCPPT_PP_DISABLE_VC_WARNING(4309) // truncation of constant value
