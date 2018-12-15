@@ -8,6 +8,9 @@
 #define FCPPT_EITHER_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/either/object_fwd.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -18,6 +21,10 @@ namespace fcppt
 {
 namespace either
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
 \ingroup fcppteither
@@ -92,6 +99,8 @@ private:
 
 	variant_type impl_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

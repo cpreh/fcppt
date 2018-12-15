@@ -9,6 +9,9 @@
 
 #include <fcppt/not.hpp>
 #include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <optional>
 #include <type_traits>
@@ -19,6 +22,10 @@ namespace fcppt
 {
 namespace optional
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
 \brief A class that makes values optional.
@@ -118,6 +125,8 @@ private:
 		T
 	> impl_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
