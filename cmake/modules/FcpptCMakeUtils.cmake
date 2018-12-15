@@ -229,6 +229,7 @@ elseif(
 		/wd4714
 		/wd4738
 		/wd4820
+		/wd4866
 		/wd4868
 		/wd5031
 	)
@@ -248,6 +249,7 @@ elseif(
 	#4714 - function marked as __forceinline not inlined
 	#4738 - storing 32-bit float result in memory
 	#4820 - byte padding after data members
+	#4866 - compiler may not enforce left-to-right evaluation of a C++17 operator (e.g. operator<< used in ostreams)
 	#4868 - compiler may not enforce left-to-right evaluation order in braced initializer list
 	#5031 - warning(pop) in different file
 endif()
