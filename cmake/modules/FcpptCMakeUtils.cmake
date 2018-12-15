@@ -1314,11 +1314,11 @@ function(
 	fcppt_utils_link_imported_target_single
 	TARGET_NAME
 	VISIBILITY
-	PKGCONFIG_NAME
+	IMPORTED_NAME
 )
 	get_target_property(
 		INCLUDE_DIRS
-		${PKGCONFIG_NAME}
+		${IMPORTED_NAME}
 		INTERFACE_INCLUDE_DIRECTORIES
 	)
 
@@ -1337,7 +1337,7 @@ function(
 
 	get_target_property(
 		LINK_LIBRARIES
-		${PKGCONFIG_NAME}
+		${IMPORTED_NAME}
 		INTERFACE_LINK_LIBRARIES
 	)
 
@@ -1356,7 +1356,7 @@ function(
 
 	get_target_property(
 		COMPILE_OPTIONS
-		${PKGCONFIG_NAME}
+		${IMPORTED_NAME}
 		INTERFACE_COMPILE_OPTIONS
 	)
 
@@ -1370,6 +1370,25 @@ function(
 			${TARGET_NAME}
 			${VISIBILITY}
 			${COMPILE_OPTIONS}
+		)
+	endif()
+
+	get_target_property(
+		COMPILE_DEFINITIONS
+		${IMPORTED_NAME}
+		INTERFACE_COMPILE_DEFINITIONS
+	)
+
+	if(
+		NOT
+		"${COMPILE_DEFINITIONS}"
+		STREQUAL
+		"COMPILE_DEFINITIONS-NOTFOUND"
+	)
+		target_compile_definitions(
+			${TARGET_NAME}
+			${VISIBILITY}
+			${COMPILE_DEFINITIONS}
 		)
 	endif()
 endfunction()
