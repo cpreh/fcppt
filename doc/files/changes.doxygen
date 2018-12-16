@@ -14,6 +14,7 @@ fcppt now uses <code>C++-17</code>.
 <li>\ref fcpptbrigand
 	<ul>
 	<li>Added \link fcppt::brigand::is_set\endlink.</li>
+	<li>Added \link fcppt::brigand::unique\endlink.</li>
 	</ul>
 </li>
 
@@ -37,6 +38,7 @@ fcppt now uses <code>C++-17</code>.
 <li>\ref fcpptvariant
 	<ul>
 	<li>
+
 	Now uses <code>std::variant</code> in its implementation. This change makes the constructor
 	of \link fcppt::variant::object\endlink stricter,
 	since it now uses <code>std::is_constructible</code>. For example, an rvalue of a type that is
@@ -53,6 +55,7 @@ fcppt now uses <code>C++-17</code>.
 	<li>All types of a variant must be distinct now.</li>
 	</ul>
 </li>
+
 </ul>
 
 \section changes_changes_to_2100 2.10.0

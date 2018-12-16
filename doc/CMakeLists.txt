@@ -351,6 +351,7 @@ set(
 	libs/core/include/fcppt/brigand/set_intersection.hpp
 	libs/core/include/fcppt/brigand/set_symmetric_difference.hpp
 	libs/core/include/fcppt/brigand/set_union.hpp
+	libs/core/include/fcppt/brigand/unique.hpp
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
 	libs/core/include/fcppt/cast/apply.hpp

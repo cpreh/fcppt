@@ -105,3 +105,8 @@ add_fcppt_brigand_test(
 	set_union
 	NO_CODE
 )
+
+add_fcppt_brigand_test(
+	unique
+	NO_CODE
+)
