@@ -59,6 +59,10 @@ add_fcppt_brigand_test(
 )
 
 add_fcppt_brigand_test(
+	is_set
+)
+
+add_fcppt_brigand_test(
 	max_value
 	NO_CODE
 )

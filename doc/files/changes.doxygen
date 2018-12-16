@@ -7,6 +7,16 @@
 fcppt now uses <code>C++-17</code>.
 </p>
 
+\subsection changes_added_functionality_to_300 Added functionality
+
+<ul>
+<li>\ref fcpptbrigand
+	<ul>
+	<li>Added \link fcppt::brigand::is_set\endlink.</li>
+	</ul>
+</li>
+</ul>
+
 \subsection changes_changed_functionality_to_300 Changed functionality
 
 <ul>

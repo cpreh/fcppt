@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/brigand/is_set.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -48,6 +49,13 @@ public:
 			Types
 		>::value,
 		"Types must be a brigand sequence"
+	);
+
+	static_assert(
+		fcppt::brigand::is_set<
+			Types
+		>::value,
+		"Variant types must form a set"
 	);
 
 	typedef
