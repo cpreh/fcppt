@@ -30,7 +30,7 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>All labels of a record must be disjoint.</li>
+	<li>All labels of a record must be distinct now.</li>
 	</ul>
 </li>
 
@@ -50,6 +50,7 @@ fcppt now uses <code>C++-17</code>.
 	Moved <code>fcppt/variant/less.hpp</code>, <code>fcppt/variant/equal.hpp</code>
 	and <code>fcppt/variant/not_equal.hpp</code>. into <code>fcppt/variant/comparison.hpp</code>.
 	</li>
+	<li>All types of a variant must be distinct now.</li>
 	</ul>
 </li>
 </ul>
