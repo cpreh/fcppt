@@ -15,6 +15,7 @@
 #include <fcppt/record/is_element.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
+#include <fcppt/record/detail/enable_vararg_ctor.hpp>
 #include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/adapted/tuple.hpp>
@@ -111,16 +112,6 @@ public:
 	);
 
 	/**
-	\brief An uninitialized record
-
-	Calls only default constructors for its elements. Use this with care.
-	*/
-	explicit
-	object(
-		fcppt::no_init &&
-	);
-
-	/**
 	\brief Generic constructor.
 
 	Initializing an <code>element<L_i,T_i></code> is done by calling
@@ -135,36 +126,17 @@ public:
 	to \link fcppt::record::label\endlink.
 	*/
 	template<
-		typename ...Args
+		typename ...Args,
+		typename =
+			fcppt::record::detail::enable_vararg_ctor<
+				object,
+				Args...
+			>
 	>
 	explicit
 	object(
 		Args && ..._args
 	);
-
-	object(
-		object const &
-	);
-
-	object(
-		object &
-	);
-
-	object(
-		object &&
-	);
-
-	object &
-	operator=(
-		object const &
-	);
-
-	object &
-	operator=(
-		object &&
-	);
-
-	~object();
 
 	/**
 	\brief Sets an element by copy.

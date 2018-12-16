@@ -29,7 +29,7 @@ fcppt::record::object<
 	Types
 >::object()
 :
-	elements_()
+	elements_{}
 {
 	static_assert(
 		std::is_same<
@@ -54,19 +54,9 @@ fcppt::record::object<
 template<
 	typename Types
 >
-fcppt::record::object<
-	Types
->::object(
-	fcppt::no_init &&
-)
-{
-}
-
 template<
-	typename Types
->
-template<
-	typename ...Args
+	typename ...Args,
+	typename
 >
 fcppt::record::object<
 	Types
@@ -110,66 +100,6 @@ fcppt::record::object<
 		>::value,
 		"You have to initialize every element"
 	);
-}
-
-template<
-	typename Types
->
-fcppt::record::object<
-	Types
->::object(
-	object const &
-) = default;
-
-template<
-	typename Types
->
-fcppt::record::object<
-	Types
->::object(
-	object &
-) = default;
-
-template<
-	typename Types
->
-fcppt::record::object<
-	Types
->::object(
-	object &&
-) = default;
-
-template<
-	typename Types
->
-fcppt::record::object<
-	Types
-> &
-fcppt::record::object<
-	Types
->::operator=(
-	object const &
-) = default;
-
-template<
-	typename Types
->
-fcppt::record::object<
-	Types
-> &
-fcppt::record::object<
-	Types
->::operator=(
-	object &&
-) = default;
-
-template<
-	typename Types
->
-fcppt::record::object<
-	Types
->::~object()
-{
 }
 
 template<
