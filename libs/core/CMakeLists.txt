@@ -111,6 +111,7 @@ set(
 	libs/core/include/fcppt/brigand/detail/ceil_div.hpp
 	libs/core/include/fcppt/brigand/detail/for_each_break.hpp
 	libs/core/include/fcppt/brigand/detail/integral_cast_value.hpp
+	libs/core/include/fcppt/brigand/detail/is_set.hpp
 	libs/core/include/fcppt/brigand/detail/print.hpp
 	libs/core/include/fcppt/brigand/detail/print_one.hpp
 	libs/core/include/fcppt/brigand/detail/runtime_index.hpp
@@ -124,6 +125,7 @@ set(
 	libs/core/include/fcppt/brigand/implication.hpp
 	libs/core/include/fcppt/brigand/integral_cast.hpp
 	libs/core/include/fcppt/brigand/invoke_on.hpp
+	libs/core/include/fcppt/brigand/is_set.hpp
 	libs/core/include/fcppt/brigand/list_c.hpp
 	libs/core/include/fcppt/brigand/max_value.hpp
 	libs/core/include/fcppt/brigand/numeric_max.hpp
@@ -1047,6 +1049,7 @@ set(
 	libs/core/include/fcppt/record/detail/init_ctor.hpp
 	libs/core/include/fcppt/record/detail/is_tag.hpp
 	libs/core/include/fcppt/record/detail/label_is_same.hpp
+	libs/core/include/fcppt/record/detail/label_list.hpp
 	libs/core/include/fcppt/record/detail/make_tag.hpp
 	libs/core/include/fcppt/record/detail/map_result.hpp
 	libs/core/include/fcppt/record/detail/tag_base.hpp

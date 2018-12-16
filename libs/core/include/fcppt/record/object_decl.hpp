@@ -8,6 +8,7 @@
 #define FCPPT_RECORD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/brigand/is_set.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -16,6 +17,7 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/detail/enable_vararg_ctor.hpp>
+#include <fcppt/record/detail/label_list.hpp>
 #include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/adapted/tuple.hpp>
@@ -67,6 +69,15 @@ public:
 			>
 		>::value,
 		"Types of record::object must all be fcppt::record::element<>"
+	);
+
+	static_assert(
+		fcppt::brigand::is_set<
+			fcppt::record::detail::label_list<
+				Types
+			>
+		>::value,
+		"Labels of record::object must form a set"
 	);
 
 	typedef

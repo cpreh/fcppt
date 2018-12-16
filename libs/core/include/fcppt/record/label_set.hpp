@@ -7,13 +7,10 @@
 #ifndef FCPPT_RECORD_LABEL_SET_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_SET_HPP_INCLUDED
 
-#include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_vector.hpp>
+#include <fcppt/record/detail/label_list.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/fold.hpp>
-#include <brigand/sequences/insert.hpp>
 #include <brigand/sequences/set.hpp>
-#include <brigand/types/args.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -35,17 +32,10 @@ template<
 using
 label_set
 =
-::brigand::fold<
-	fcppt::record::element_vector<
-		Record
-	>,
-	::brigand::set<>,
-	::brigand::bind<
-		::brigand::insert,
-		::brigand::_state,
-		::brigand::bind<
-			fcppt::record::element_to_label,
-			::brigand::_element
+::brigand::as_set<
+	fcppt::record::detail::label_list<
+		fcppt::record::element_vector<
+			Record
 		>
 	>
 >;
