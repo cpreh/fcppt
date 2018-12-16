@@ -35,6 +35,8 @@ namespace record
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4521)
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
 \brief A generic struct that identifies elements by types.
