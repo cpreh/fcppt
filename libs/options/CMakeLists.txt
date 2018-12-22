@@ -171,8 +171,6 @@ set(
 	libs/options/include/fcppt/options/unit_switch_decl.hpp
 	libs/options/include/fcppt/options/unit_switch_fwd.hpp
 	libs/options/include/fcppt/options/unit_switch_impl.hpp
-	libs/options/src/duplicate_names.cpp
-	libs/options/src/exception.cpp
 	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/check_short_long_names.cpp
 	libs/options/src/options/detail/check_sub_command_names.cpp
@@ -183,6 +181,8 @@ set(
 	libs/options/src/options/detail/split_command.cpp
 	libs/options/src/options/detail/use_flag.cpp
 	libs/options/src/options/detail/use_option.cpp
+	libs/options/src/options/duplicate_names.cpp
+	libs/options/src/options/exception.cpp
 	libs/options/src/options/indent.cpp
 	libs/options/src/options/is_option.cpp
 	libs/options/src/options/option_name.cpp
