@@ -27,6 +27,7 @@ LIBS=(
 	filesystem
 	log
 	options
+	parse
 	system
 )
 
@@ -43,6 +44,7 @@ update_cmake \
 	libs/filesystem/include \
 	libs/log/include \
 	libs/options/include \
+	libs/parse/include \
 	libs/system/include \
 	examples \
 	-e ".*" \

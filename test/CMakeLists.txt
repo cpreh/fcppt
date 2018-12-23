@@ -68,6 +68,10 @@ fcppt_utils_link_target(
 	fcppt_options
 )
 
+fcppt_utils_link_target(
+	fcppt_parse
+)
+
 if(
 	ENABLE_BOOST
 )
@@ -231,6 +235,10 @@ add_subdirectory(
 
 add_subdirectory(
 	options
+)
+
+add_subdirectory(
+	parse
 )
 
 add_subdirectory(

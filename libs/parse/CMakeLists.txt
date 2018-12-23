@@ -1,0 +1,33 @@
+
+set(
+	FCPPT_PARSE_FILES
+	libs/parse/include/fcppt/parse/basic_char.hpp
+	libs/parse/include/fcppt/parse/basic_char_decl.hpp
+	libs/parse/include/fcppt/parse/basic_char_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_char_impl.hpp
+	libs/parse/include/fcppt/parse/context_decl.hpp
+	libs/parse/include/fcppt/parse/context_fwd.hpp
+	libs/parse/include/fcppt/parse/context_impl.hpp
+	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
+	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
+	libs/parse/include/fcppt/parse/detail/parse.hpp
+	libs/parse/include/fcppt/parse/parse_noskip.hpp
+	libs/parse/include/fcppt/parse/parse_skip.hpp
+	libs/parse/include/fcppt/parse/result_fwd.hpp
+	libs/parse/include/fcppt/parse/run_skipper.hpp
+	libs/parse/include/fcppt/parse/sequence_decl.hpp
+	libs/parse/include/fcppt/parse/sequence_fwd.hpp
+	libs/parse/include/fcppt/parse/sequence_impl.hpp
+	libs/parse/include/fcppt/parse/state.hpp
+	libs/parse/include/fcppt/parse/state_fwd.hpp
+	libs/parse/src/parse/state.cpp
+)
+
+make_fcppt_library(
+	parse
+	"${FCPPT_PARSE_FILES}"
+	FCPPT_DEPS
+		fcppt_core_interface
+	TRANSITIVE_FCPPT_DEPS
+		fcppt_core_interface
+)
