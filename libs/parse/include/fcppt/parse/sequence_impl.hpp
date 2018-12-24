@@ -15,7 +15,7 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/sequence_decl.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/detail/flatten_tuple.hpp>
+#include <fcppt/parse/detail/flatten_tuples.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -70,7 +70,7 @@ fcppt::parse::sequence<
 	fcppt::parse::context<
 		Skipper
 	> const &_context
-)
+) const
 {
 	return
 		fcppt::optional::bind(
@@ -107,7 +107,7 @@ fcppt::parse::sequence<
 						)
 						{
 							return
-								fcppt::parse::detail::flatten_tuple(
+								fcppt::parse::detail::flatten_tuples(
 									std::move(
 										_left_result
 									),

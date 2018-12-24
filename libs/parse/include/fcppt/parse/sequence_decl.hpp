@@ -12,7 +12,7 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/detail/flatten_tuple.hpp>
+#include <fcppt/parse/detail/flatten_tuples.hpp>
 
 
 namespace fcppt
@@ -34,10 +34,11 @@ public:
 
 	typedef
 	decltype(
-		fcppt::parse::detail::flatten_tuple(
+		fcppt::parse::detail::flatten_tuples(
 			std::declval<
 				fcppt::parse::result_of<
 					Left
+				>
 			>(),
 			std::declval<
 				fcppt::parse::result_of<
@@ -45,7 +46,7 @@ public:
 				>
 			>()
 		)
-	>
+	)
 	result_type;
 
 	template<

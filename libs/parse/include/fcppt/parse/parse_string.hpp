@@ -4,17 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_PARSE_NOSKIP_HPP_INCLUDED
-#define FCPPT_PARSE_PARSE_NOSKIP_HPP_INCLUDED
+#ifndef FCPPT_PARSE_PARSE_STRING_HPP_INCLUDED
+#define FCPPT_PARSE_PARSE_STRING_HPP_INCLUDED
 
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/reference.hpp>
+#include <fcppt/parse/parse_stream.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/detail/parse.hpp>
-#include <fcppt/parse/detail/no_skipper.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <sstream>
+#include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -24,25 +24,31 @@ namespace parse
 {
 
 template<
-	typename Parser
+	typename Parser,
+	typename Skipper
 >
 fcppt::parse::result<
 	fcppt::parse::result_of<
 		Parser
 	>
 >
-parse_noskip(
+parse_string(
 	Parser const &_parser,
-	std::istream &_input
+	std::string &&_string,
+	Skipper const &_skipper
 )
 {
+	std::istringstream stream{
+		std::move(
+			_string
+		)
+	};
+
 	return
-		fcppt::parse::detail::parse(
+		fcppt::parse::parse_stream(
 			_parser,
-			_input,
-			fcppt::optional::reference<
-				fcppt::parse::detail::no_skipper const
-			>()
+			stream,
+			_skipper
 		);
 }
 

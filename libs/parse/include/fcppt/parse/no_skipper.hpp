@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_DETAIL_NO_SKIPPER_HPP_INCLUDED
-#define FCPPT_PARSE_DETAIL_NO_SKIPPER_HPP_INCLUDED
+#ifndef FCPPT_PARSE_NO_SKIPPER_HPP_INCLUDED
+#define FCPPT_PARSE_NO_SKIPPER_HPP_INCLUDED
 
+#include <fcppt/parse/no_skipper_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
@@ -15,8 +16,6 @@
 namespace fcppt
 {
 namespace parse
-{
-namespace detail
 {
 
 class no_skipper
@@ -30,7 +29,6 @@ public:
 	}
 };
 
-}
 }
 }
 

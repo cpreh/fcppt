@@ -31,7 +31,7 @@ std::enable_if_t<
 		fcppt::type_traits::remove_cv_ref_t<
 			Type
 		>
-	>,
+	>::value,
 	fcppt::type_traits::remove_cv_ref_t<
 		Type
 	>
@@ -57,7 +57,7 @@ std::enable_if_t<
 			fcppt::type_traits::remove_cv_ref_t<
 				Type
 			>
-		>
+		>::value
 	),
 	std::tuple<
 		fcppt::type_traits::remove_cv_ref_t<

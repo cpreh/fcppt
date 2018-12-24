@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_CONTEXT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CONTEXT_DECL_HPP_INCLUDED
 
-#include <fcppt/optional/reference.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 
 
@@ -23,7 +23,7 @@ class context
 {
 public:
 	typedef
-	fcppt::optional::reference<
+	fcppt::reference<
 		Skipper const
 	>
 	skipper_ref;

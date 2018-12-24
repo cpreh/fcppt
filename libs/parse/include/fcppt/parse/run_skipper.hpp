@@ -8,8 +8,6 @@
 #define FCPPT_PARSE_RUN_SKIPPER_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/maybe_void.hpp>
-#include <fcppt/optional/reference.hpp>
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/state.hpp>
 
@@ -22,6 +20,7 @@ namespace parse
 template<
 	typename Skipper
 >
+inline
 void
 run_skipper(
 	fcppt::reference<
@@ -32,20 +31,8 @@ run_skipper(
 	> const &_context
 )
 {
-	fcppt::optional::maybe_void(
-		_context.skipper(),
-		[
-			_state
-		](
-			fcppt::reference<
-				Skipper const
-			> const _skipper
-		)
-		{
-			_skipper.get().run(
-				_state.get().stream()
-			);
-		}
+	_context.skipper().get().run(
+		_state.get().stream()
 	);
 }
 

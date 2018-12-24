@@ -14,3 +14,7 @@ endfunction()
 add_fcppt_parse_test(
 	basic_char
 )
+
+add_fcppt_parse_test(
+	sequence
+)
