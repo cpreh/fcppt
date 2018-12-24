@@ -1734,6 +1734,10 @@ set(
 	libs/parse/include/fcppt/parse/basic_char_decl.hpp
 	libs/parse/include/fcppt/parse/basic_char_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_char_impl.hpp
+	libs/parse/include/fcppt/parse/basic_literal.hpp
+	libs/parse/include/fcppt/parse/basic_literal_decl.hpp
+	libs/parse/include/fcppt/parse/basic_literal_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_literal_impl.hpp
 	libs/parse/include/fcppt/parse/char.hpp
 	libs/parse/include/fcppt/parse/char_decl.hpp
 	libs/parse/include/fcppt/parse/char_fwd.hpp

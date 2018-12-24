@@ -16,6 +16,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	basic_literal
+)
+
+add_fcppt_parse_test(
 	epsilon
 )
 
