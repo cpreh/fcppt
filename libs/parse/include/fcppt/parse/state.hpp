@@ -11,7 +11,7 @@
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <istream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,6 +23,10 @@ namespace parse
 class state
 {
 public:
+	typedef
+	std::istream::pos_type
+	pos_type;
+
 	FCPPT_PARSE_DETAIL_SYMBOL
 	explicit
 	state(

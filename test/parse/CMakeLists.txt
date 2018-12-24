@@ -16,5 +16,13 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	epsilon
+)
+
+add_fcppt_parse_test(
+	repetition
+)
+
+add_fcppt_parse_test(
 	sequence
 )

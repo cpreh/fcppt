@@ -16,11 +16,19 @@ set(
 	libs/parse/include/fcppt/parse/detail/deref.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
+	libs/parse/include/fcppt/parse/epsilon.hpp
+	libs/parse/include/fcppt/parse/epsilon_decl.hpp
+	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
+	libs/parse/include/fcppt/parse/epsilon_impl.hpp
 	libs/parse/include/fcppt/parse/no_skipper.hpp
 	libs/parse/include/fcppt/parse/no_skipper_fwd.hpp
+	libs/parse/include/fcppt/parse/operators/repetition.hpp
 	libs/parse/include/fcppt/parse/operators/sequence.hpp
 	libs/parse/include/fcppt/parse/parse_stream.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
+	libs/parse/include/fcppt/parse/repetition_decl.hpp
+	libs/parse/include/fcppt/parse/repetition_fwd.hpp
+	libs/parse/include/fcppt/parse/repetition_impl.hpp
 	libs/parse/include/fcppt/parse/result.hpp
 	libs/parse/include/fcppt/parse/result_fwd.hpp
 	libs/parse/include/fcppt/parse/result_of.hpp
