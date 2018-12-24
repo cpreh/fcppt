@@ -6,30 +6,34 @@
 
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/unit_output.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/no_skipper.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
-#include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/operators/alternative.hpp>
+#include <fcppt/variant/comparison.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"parse::repetition",
+	"parse::alternative",
 	"[parse]"
 )
 {
-	auto const parser{
-		*fcppt::parse::char_{}
-	};
+	auto const parser(
+		fcppt::parse::literal{'X'}
+		|
+		fcppt::parse::char_{}
+	);
 
 	typedef
 	fcppt::parse::result_of<
@@ -43,64 +47,43 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::no_skipper()
+			fcppt::parse::no_skipper{}
 		)
 		==
-		fcppt::optional::make(
-			result_type{}
-		)
+		fcppt::optional::object<
+			result_type
+		>{}
 	);
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"XYZ"
+				"X"
 			},
-			fcppt::parse::no_skipper()
+			fcppt::parse::no_skipper{}
 		)
 		==
 		fcppt::optional::make(
 			result_type{
-				'X', 'Y', 'Z'
+				fcppt::unit()
 			}
 		)
 	);
-}
-
-TEST_CASE(
-	"parse::repetition backtrack",
-	"[parse]"
-)
-{
-	auto const parser{
-		*fcppt::parse::literal{
-			'X'
-		}
-		>>
-		fcppt::parse::char_{}
-	};
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"XXXY"
+				"Y"
 			},
-			fcppt::parse::no_skipper()
+			fcppt::parse::no_skipper{}
 		)
 		==
 		fcppt::optional::make(
-			std::make_tuple(
-				std::vector<
-					fcppt::unit
-				>{
-					fcppt::unit{},
-					fcppt::unit{},
-					fcppt::unit{}
-				},
+			result_type{
 				'Y'
-			)
+			}
 		)
 	);
 }

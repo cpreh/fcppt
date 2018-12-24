@@ -12,6 +12,10 @@ function(
 endfunction()
 
 add_fcppt_parse_test(
+	alternative
+)
+
+add_fcppt_parse_test(
 	basic_char
 )
 
