@@ -8,11 +8,11 @@
 #define FCPPT_PARSE_SEQUENCE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/sequence_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/sequence_fwd.hpp>
+#include <fcppt/parse/sequence_result.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/detail/flatten_tuples.hpp>
 
 
 namespace fcppt
@@ -34,7 +34,7 @@ public:
 
 	typedef
 	decltype(
-		fcppt::parse::detail::flatten_tuples(
+		fcppt::parse::sequence_result(
 			std::declval<
 				fcppt::parse::result_of<
 					Left

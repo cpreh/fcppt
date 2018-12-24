@@ -13,6 +13,7 @@ set(
 	libs/parse/include/fcppt/parse/char_decl.hpp
 	libs/parse/include/fcppt/parse/char_fwd.hpp
 	libs/parse/include/fcppt/parse/char_impl.hpp
+	libs/parse/include/fcppt/parse/combine_tuples.hpp
 	libs/parse/include/fcppt/parse/context_decl.hpp
 	libs/parse/include/fcppt/parse/context_fwd.hpp
 	libs/parse/include/fcppt/parse/context_impl.hpp
@@ -40,6 +41,7 @@ set(
 	libs/parse/include/fcppt/parse/sequence_decl.hpp
 	libs/parse/include/fcppt/parse/sequence_fwd.hpp
 	libs/parse/include/fcppt/parse/sequence_impl.hpp
+	libs/parse/include/fcppt/parse/sequence_result.hpp
 	libs/parse/include/fcppt/parse/state.hpp
 	libs/parse/include/fcppt/parse/state_fwd.hpp
 	libs/parse/src/parse/state.cpp

@@ -30,3 +30,7 @@ add_fcppt_parse_test(
 add_fcppt_parse_test(
 	sequence
 )
+
+add_fcppt_parse_test(
+	sequence_result
+)

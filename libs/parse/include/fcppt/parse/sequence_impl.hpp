@@ -14,8 +14,8 @@
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/sequence_decl.hpp>
+#include <fcppt/parse/sequence_result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/detail/flatten_tuples.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -107,7 +107,7 @@ fcppt::parse::sequence<
 						)
 						{
 							return
-								fcppt::parse::detail::flatten_tuples(
+								fcppt::parse::sequence_result(
 									std::move(
 										_left_result
 									),
