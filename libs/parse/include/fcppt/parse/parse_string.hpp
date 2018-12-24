@@ -24,6 +24,7 @@ namespace parse
 {
 
 template<
+	typename Ch,
 	typename Parser,
 	typename Skipper
 >
@@ -34,11 +35,15 @@ fcppt::parse::result<
 >
 parse_string(
 	Parser const &_parser,
-	std::string &&_string,
+	std::basic_string<
+		Ch
+	> &&_string,
 	Skipper const &_skipper
 )
 {
-	std::istringstream stream{
+	std::basic_istringstream<
+		Ch
+	> stream{
 		std::move(
 			_string
 		)

@@ -42,14 +42,15 @@ set(
 	libs/parse/include/fcppt/parse/sequence_fwd.hpp
 	libs/parse/include/fcppt/parse/sequence_impl.hpp
 	libs/parse/include/fcppt/parse/sequence_result.hpp
-	libs/parse/include/fcppt/parse/state.hpp
+	libs/parse/include/fcppt/parse/state_decl.hpp
 	libs/parse/include/fcppt/parse/state_fwd.hpp
-	libs/parse/src/parse/state.cpp
+	libs/parse/include/fcppt/parse/state_impl.hpp
 )
 
 make_fcppt_library(
 	parse
 	"${FCPPT_PARSE_FILES}"
+	IS_INTERFACE
 	FCPPT_DEPS
 		fcppt_core_interface
 	TRANSITIVE_FCPPT_DEPS

@@ -68,10 +68,6 @@ fcppt_utils_link_target(
 	fcppt_options
 )
 
-fcppt_utils_link_target(
-	fcppt_parse
-)
-
 if(
 	ENABLE_BOOST
 )

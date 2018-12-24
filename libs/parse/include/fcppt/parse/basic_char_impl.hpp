@@ -12,7 +12,7 @@
 #include <fcppt/parse/basic_char_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state.hpp>
+#include <fcppt/parse/state_impl.hpp>
 
 
 template<
@@ -40,7 +40,9 @@ fcppt::parse::basic_char<
 	Ch
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state
+		fcppt::parse::state<
+			Ch
+		>
 	> const _state,
 	fcppt::parse::context<
 		Skipper

@@ -13,6 +13,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,7 +27,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
-			"",
+			std::string{},
 			fcppt::parse::no_skipper{}
 		)
 		==
@@ -38,7 +39,9 @@ TEST_CASE(
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
-			"X",
+			std::string{
+				"X"
+			},
 			fcppt::parse::no_skipper{}
 		)
 		==

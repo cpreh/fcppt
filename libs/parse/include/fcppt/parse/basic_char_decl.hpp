@@ -39,7 +39,9 @@ public:
 	>
 	parse(
 		fcppt::reference<
-			fcppt::parse::state
+			fcppt::parse::state<
+				Ch
+			>
 		>,
 		fcppt::parse::context<
 			Skipper

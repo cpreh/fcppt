@@ -9,7 +9,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/context_impl.hpp>
-#include <fcppt/parse/state.hpp>
+#include <fcppt/parse/state_impl.hpp>
 
 
 namespace fcppt
@@ -18,13 +18,16 @@ namespace parse
 {
 
 template<
+	typename Ch,
 	typename Skipper
 >
 inline
 void
 run_skipper(
 	fcppt::reference<
-		fcppt::parse::state
+		fcppt::parse::state<
+			Ch
+		>
 	> const _state,
 	fcppt::parse::context<
 		Skipper

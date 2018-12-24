@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_STATE_HPP_INCLUDED
-#define FCPPT_PARSE_STATE_HPP_INCLUDED
+#ifndef FCPPT_PARSE_STATE_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_STATE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <fcppt/config/external_end.hpp>
@@ -20,27 +19,35 @@ namespace fcppt
 namespace parse
 {
 
+template<
+	typename Ch
+>
 class state
 {
 public:
 	typedef
-	std::istream::pos_type
+	std::basic_istream<
+		Ch
+	>
+	stream_type;
+
+	typedef
+	typename
+	stream_type::pos_type
 	pos_type;
 
-	FCPPT_PARSE_DETAIL_SYMBOL
 	explicit
 	state(
 		fcppt::reference<
-			std::istream
+			stream_type
 		>
 	);
 
-	FCPPT_PARSE_DETAIL_SYMBOL
-	std::istream &
+	stream_type &
 	stream() const;
 private:
 	fcppt::reference<
-		std::istream
+		stream_type
 	> stream_;
 };
 

@@ -51,6 +51,7 @@ template<
 	typename Right
 >
 template<
+	typename Ch,
 	typename Skipper
 >
 fcppt::parse::result<
@@ -65,7 +66,9 @@ fcppt::parse::sequence<
 	Right
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state
+		fcppt::parse::state<
+			Ch
+		>
 	> const _state,
 	fcppt::parse::context<
 		Skipper

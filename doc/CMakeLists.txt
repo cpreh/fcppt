@@ -1771,8 +1771,9 @@ set(
 	libs/parse/include/fcppt/parse/sequence_fwd.hpp
 	libs/parse/include/fcppt/parse/sequence_impl.hpp
 	libs/parse/include/fcppt/parse/sequence_result.hpp
-	libs/parse/include/fcppt/parse/state.hpp
+	libs/parse/include/fcppt/parse/state_decl.hpp
 	libs/parse/include/fcppt/parse/state_fwd.hpp
+	libs/parse/include/fcppt/parse/state_impl.hpp
 	libs/system/include/fcppt/system/error_code_to_string.hpp
 	libs/system/include/fcppt/system/make_optional_error_code.hpp
 	libs/system/include/fcppt/system/optional_error_code.hpp

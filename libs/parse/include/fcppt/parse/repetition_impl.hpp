@@ -11,7 +11,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/repetition_decl.hpp>
-#include <fcppt/parse/state.hpp>
+#include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -40,6 +40,7 @@ template<
 	typename Parser
 >
 template<
+	typename Ch,
 	typename Skipper
 >
 fcppt::parse::result<
@@ -52,14 +53,19 @@ fcppt::parse::repetition<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state
+		fcppt::parse::state<
+			Ch
+		>
 	> const _state,
 	fcppt::parse::context<
 		Skipper
 	> const &_context
 ) const
 {
-	fcppt::parse::state::pos_type pos{
+	typename
+	fcppt::parse::state<
+		Ch
+	>::pos_type pos{
 		_state.get().stream().tellg()
 	};
 

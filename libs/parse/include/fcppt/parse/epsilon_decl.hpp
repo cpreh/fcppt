@@ -30,6 +30,7 @@ public:
 	result_type;
 
 	template<
+		typename Ch,
 		typename Skipper
 	>
 	fcppt::parse::result<
@@ -37,7 +38,9 @@ public:
 	>
 	parse(
 		fcppt::reference<
-			fcppt::parse::state
+			fcppt::parse::state<
+				Ch
+			>
 		>,
 		fcppt::parse::context<
 			Skipper

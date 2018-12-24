@@ -10,7 +10,7 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/parse/context_impl.hpp>
-#include <fcppt/parse/state.hpp>
+#include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,6 +24,7 @@ namespace parse
 {
 
 template<
+	typename Ch,
 	typename Parser,
 	typename Skipper
 >
@@ -34,11 +35,15 @@ fcppt::parse::result<
 >
 parse_stream(
 	Parser const &_parser,
-	std::istream &_input,
+	std::basic_istream<
+		Ch
+	> &_input,
 	Skipper const &_skipper
 )
 {
-	fcppt::parse::state state{
+	fcppt::parse::state<
+		Ch
+	> state{
 		fcppt::make_ref(
 			_input
 		)

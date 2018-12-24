@@ -13,6 +13,9 @@ namespace fcppt
 namespace parse
 {
 
+template<
+	typename Ch
+>
 class state;
 
 }
