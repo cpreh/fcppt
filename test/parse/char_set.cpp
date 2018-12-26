@@ -4,10 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/parse/basic_literal.hpp>
-#include <fcppt/parse/no_skipper.hpp>
+#include <fcppt/parse/char_set.hpp>
+#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -18,25 +16,23 @@
 
 
 TEST_CASE(
-	"parse::basic_literal",
+	"parse::char_set",
 	"[parse]"
 )
 {
-	fcppt::parse::basic_literal<
-		char
-	> const parser{
-		'X'
+	fcppt::parse::char_set const parser{
+		'a', 'b', 'c'
 	};
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::no_skipper{}
+			fcppt::parse::epsilon{}
 		)
 		==
 		fcppt::optional::object<
-			fcppt::unit
+			char
 		>{}
 	);
 
@@ -44,13 +40,27 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"X"
+				"d"
 			},
-			fcppt::parse::no_skipper{}
+			fcppt::parse::epsilon{}
+		)
+		==
+		fcppt::optional::object<
+			char
+		>{}
+	);
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{
+				"a"
+			},
+			fcppt::parse::epsilon{}
 		)
 		==
 		fcppt::optional::make(
-			fcppt::unit{}
+			'a'
 		)
 	);
 
@@ -58,13 +68,13 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"Y"
+				"b"
 			},
-			fcppt::parse::no_skipper{}
+			fcppt::parse::epsilon{}
 		)
 		==
-		fcppt::optional::object<
-			fcppt::unit
-		>{}
+		fcppt::optional::make(
+			'b'
+		)
 	);
 }

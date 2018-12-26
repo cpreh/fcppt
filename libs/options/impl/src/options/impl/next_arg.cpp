@@ -7,6 +7,7 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/container/contains.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/option_name.hpp>
@@ -71,7 +72,8 @@ fcppt::options::impl::next_arg(
 						!=
 						end
 						&&
-						_option_names.count(
+						fcppt::container::contains(
+							_option_names,
 							fcppt::options::option_name{
 								// TODO: Don't copy here.
 								fcppt::string{
@@ -82,8 +84,6 @@ fcppt::options::impl::next_arg(
 								}
 							}
 						)
-						>=
-						1u
 					)
 						++cur;
 

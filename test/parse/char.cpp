@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/parse/basic_char.hpp>
-#include <fcppt/parse/no_skipper.hpp>
+#include <fcppt/parse/char.hpp>
+#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -16,19 +16,17 @@
 
 
 TEST_CASE(
-	"parse::basic_char",
+	"parse::char",
 	"[parse]"
 )
 {
-	fcppt::parse::basic_char<
-		char
-	> const parser{};
+	fcppt::parse::char_ const parser{};
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::no_skipper{}
+			fcppt::parse::epsilon{}
 		)
 		==
 		fcppt::optional::object<
@@ -42,7 +40,7 @@ TEST_CASE(
 			std::string{
 				"X"
 			},
-			fcppt::parse::no_skipper{}
+			fcppt::parse::epsilon{}
 		)
 		==
 		fcppt::optional::make(

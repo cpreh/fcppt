@@ -10,7 +10,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/literal.hpp>
-#include <fcppt/parse/no_skipper.hpp>
+#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
@@ -43,7 +43,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::no_skipper()
+			fcppt::parse::epsilon()
 		)
 		==
 		fcppt::optional::make(
@@ -57,7 +57,7 @@ TEST_CASE(
 			std::string{
 				"XYZ"
 			},
-			fcppt::parse::no_skipper()
+			fcppt::parse::epsilon()
 		)
 		==
 		fcppt::optional::make(
@@ -87,7 +87,7 @@ TEST_CASE(
 			std::string{
 				"XXXY"
 			},
-			fcppt::parse::no_skipper()
+			fcppt::parse::epsilon()
 		)
 		==
 		fcppt::optional::make(

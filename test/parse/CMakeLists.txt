@@ -16,11 +16,11 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
-	basic_char
+	char
 )
 
 add_fcppt_parse_test(
-	basic_literal
+	char_set
 )
 
 add_fcppt_parse_test(
@@ -28,11 +28,36 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	ignore
+)
+
+add_fcppt_parse_test(
+	lexeme
+)
+
+add_fcppt_parse_test(
+	literal
+)
+
+add_fcppt_parse_test(
 	repetition
 )
 
 add_fcppt_parse_test(
+	repetition_result
+	NO_CODE
+)
+
+add_fcppt_parse_test(
 	sequence
+)
+
+add_fcppt_parse_test(
+	space
+)
+
+add_fcppt_parse_test(
+	space_skipper
 )
 
 add_fcppt_parse_test(

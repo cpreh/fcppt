@@ -15,6 +15,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/parse/basic_literal_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_impl.hpp>
 

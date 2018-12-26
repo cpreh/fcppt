@@ -7,7 +7,7 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
-#include <fcppt/parse/sequence_result.hpp>
+#include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <tuple>
@@ -15,12 +15,12 @@
 
 
 TEST_CASE(
-	"parse::sequence_result",
+	"parse::detail::sequence_result",
 	"[parse]"
 )
 {
 	CHECK(
-		fcppt::parse::sequence_result(
+		fcppt::parse::detail::sequence_result(
 			fcppt::unit{},
 			fcppt::unit{}
 		)
@@ -29,7 +29,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::sequence_result(
+		fcppt::parse::detail::sequence_result(
 			fcppt::unit{},
 			42
 		)
@@ -38,7 +38,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::sequence_result(
+		fcppt::parse::detail::sequence_result(
 			42,
 			fcppt::unit{}
 		)
@@ -47,7 +47,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::sequence_result(
+		fcppt::parse::detail::sequence_result(
 			42,
 			false
 		)
@@ -59,7 +59,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::sequence_result(
+		fcppt::parse::detail::sequence_result(
 			42,
 			std::make_tuple(
 				'X',
@@ -75,7 +75,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::sequence_result(
+		fcppt::parse::detail::sequence_result(
 			std::make_tuple(
 				'Y',
 				true

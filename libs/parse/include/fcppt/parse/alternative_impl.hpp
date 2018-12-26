@@ -11,10 +11,11 @@
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/parse/alternative_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/alternative_decl.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>

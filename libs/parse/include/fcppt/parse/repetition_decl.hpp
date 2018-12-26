@@ -8,13 +8,11 @@
 #define FCPPT_PARSE_REPETITION_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/repetition_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/repetition_fwd.hpp>
+#include <fcppt/parse/repetition_result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <vector>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -34,7 +32,7 @@ public:
 	);
 
 	typedef
-	std::vector<
+	fcppt::parse::repetition_result<
 		fcppt::parse::result_of<
 			Parser
 		>

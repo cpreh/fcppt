@@ -4,15 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_SEQUENCE_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_SEQUENCE_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_IGNORE_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_IGNORE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/unit_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/ignore_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/sequence_fwd.hpp>
-#include <fcppt/parse/sequence_result.hpp>
-#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 
 
@@ -22,26 +21,18 @@ namespace parse
 {
 
 template<
-	typename Left,
-	typename Right
+	typename Parser
 >
-class sequence
+class ignore
 {
 public:
-	sequence(
-		Left &&,
-		Right &&
+	explicit
+	ignore(
+		Parser &&
 	);
 
 	typedef
-	fcppt::parse::sequence_result<
-		fcppt::parse::result_of<
-			Left
-		>,
-		fcppt::parse::result_of<
-			Right
-		>
-	>
+	fcppt::unit
 	result_type;
 
 	template<
@@ -62,9 +53,7 @@ public:
 		> const &
 	) const;
 private:
-	Left left_;
-
-	Right right_;
+	Parser parser_;
 };
 
 }

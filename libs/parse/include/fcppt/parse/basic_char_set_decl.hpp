@@ -4,16 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_SEQUENCE_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_SEQUENCE_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_BASIC_CHAR_SET_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_BASIC_CHAR_SET_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/parse/basic_char_set_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/sequence_fwd.hpp>
-#include <fcppt/parse/sequence_result.hpp>
-#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/result_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <initializer_list>
+#include <unordered_set>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,30 +24,34 @@ namespace parse
 {
 
 template<
-	typename Left,
-	typename Right
+	typename Ch
 >
-class sequence
+class basic_char_set
 {
 public:
-	sequence(
-		Left &&,
-		Right &&
+	typedef
+	std::unordered_set<
+		Ch
+	>
+	char_set_type;
+
+	explicit
+	basic_char_set(
+		std::initializer_list<
+			Ch
+		> const &
+	);
+
+	explicit
+	basic_char_set(
+		char_set_type &&
 	);
 
 	typedef
-	fcppt::parse::sequence_result<
-		fcppt::parse::result_of<
-			Left
-		>,
-		fcppt::parse::result_of<
-			Right
-		>
-	>
+	Ch
 	result_type;
 
 	template<
-		typename Ch,
 		typename Skipper
 	>
 	fcppt::parse::result<
@@ -62,9 +68,7 @@ public:
 		> const &
 	) const;
 private:
-	Left left_;
-
-	Right right_;
+	char_set_type chars_;
 };
 
 }

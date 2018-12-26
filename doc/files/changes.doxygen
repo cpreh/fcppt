@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_310 3.1.0
+
+\subsection changes_added_functionality_to_310 Added functionality
+
+<ul>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::contains\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_300 3.0.0
 
 <p>

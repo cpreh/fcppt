@@ -4,28 +4,54 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_RUN_SKIPPER_HPP_INCLUDED
-#define FCPPT_PARSE_RUN_SKIPPER_HPP_INCLUDED
+#ifndef FCPPT_PARSE_LEXEME_IMPL_HPP_INCLUDED
+#define FCPPT_PARSE_LEXEME_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/lexeme_decl.hpp>
+#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/result.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
+template<
+	typename Parser
+>
+fcppt::parse::lexeme<
+	Parser
+>::lexeme(
+	Parser &&_parser
+)
+:
+	parser_{
+		std::move(
+			_parser
+		)
+	}
 {
-namespace parse
-{
+}
 
+template<
+	typename Parser
+>
 template<
 	typename Ch,
 	typename Skipper
 >
-inline
-void
-run_skipper(
+fcppt::parse::result<
+	typename
+	fcppt::parse::lexeme<
+		Parser
+	>::result_type
+>
+fcppt::parse::lexeme<
+	Parser
+>::parse(
 	fcppt::reference<
 		fcppt::parse::state<
 			Ch
@@ -33,8 +59,8 @@ run_skipper(
 	> const _state,
 	fcppt::parse::context<
 		Skipper
-	> const &_context
-)
+	> const &
+) const
 {
 	fcppt::parse::epsilon const skipper{};
 
@@ -46,13 +72,11 @@ run_skipper(
 		)
 	};
 
-	_context.skipper().get().parse(
-		_state,
-		context
-	);
-}
-
-}
+	return
+		parser_.parse(
+			_state,
+			context
+		);
 }
 
 #endif

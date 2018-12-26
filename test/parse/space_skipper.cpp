@@ -4,31 +4,28 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/space_skipper.hpp>
+#include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"parse::sequence",
+	"parse::space_skipper",
 	"[parse]"
 )
 {
-	auto const parser(
-		fcppt::parse::char_{}
-		>>
-		fcppt::parse::char_{}
-		>>
-		fcppt::parse::char_{}
-	);
+	auto const parser{
+		*fcppt::parse::char_{}
+	};
 
 	typedef
 	fcppt::parse::result_of<
@@ -42,45 +39,41 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::epsilon{}
+			fcppt::parse::space_skipper()
 		)
 		==
-		fcppt::optional::object<
-			result_type
-		>{}
+		fcppt::optional::make(
+			result_type{}
+		)
 	);
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"X"
+				" \t"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::space_skipper()
 		)
 		==
-		fcppt::optional::object<
-			result_type
-		>{}
+		fcppt::optional::make(
+			result_type{}
+		)
 	);
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"XYZ"
+				" ab \t"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::space_skipper()
 		)
 		==
-		fcppt::optional::object<
-			result_type
-		>{
-			std::make_tuple(
-				'X',
-				'Y',
-				'Z'
-			)
-		}
+		fcppt::optional::make(
+			result_type{
+				'a', 'b'
+			}
+		)
 	);
 }

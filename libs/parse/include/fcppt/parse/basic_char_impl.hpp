@@ -11,6 +11,7 @@
 #include <fcppt/io/get.hpp>
 #include <fcppt/parse/basic_char_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_impl.hpp>
 

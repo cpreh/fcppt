@@ -4,13 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/parse_string.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/output.hpp>
+#include <fcppt/parse/char.hpp>
+#include <fcppt/parse/make_lexeme.hpp>
+#include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/space_skipper.hpp>
+#include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -18,35 +20,37 @@
 
 
 TEST_CASE(
-	"parse::epsilon",
+	"parse::lexeme",
 	"[parse]"
 )
 {
-	fcppt::parse::epsilon const parser{};
+	auto const parser{
+		fcppt::parse::make_lexeme(
+			*fcppt::parse::char_{}
+		)
+	};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{},
-			fcppt::parse::epsilon{}
+	typedef
+	fcppt::parse::result_of<
+		decltype(
+			parser
 		)
-		==
-		fcppt::optional::make(
-			fcppt::unit{}
-		)
-	);
+	>
+	result_type;
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"X"
+				" ab "
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::space_skipper()
 		)
 		==
 		fcppt::optional::make(
-			fcppt::unit{}
+			result_type{
+				' ', 'a', 'b', ' '
+			}
 		)
 	);
 }

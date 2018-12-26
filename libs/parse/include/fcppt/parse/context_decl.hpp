@@ -7,8 +7,13 @@
 #ifndef FCPPT_PARSE_CONTEXT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CONTEXT_DECL_HPP_INCLUDED
 
+#include <fcppt/unit.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/result_of.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,6 +27,16 @@ template<
 class context
 {
 public:
+	static_assert(
+		std::is_same_v<
+			fcppt::parse::result_of<
+				Skipper
+			>,
+			fcppt::unit
+		>,
+		"Skippers must return fcppt::unit"
+	);
+
 	typedef
 	fcppt::reference<
 		Skipper const

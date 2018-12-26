@@ -12,10 +12,11 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/sequence_decl.hpp>
-#include <fcppt/parse/sequence_result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -110,7 +111,7 @@ fcppt::parse::sequence<
 						)
 						{
 							return
-								fcppt::parse::sequence_result(
+								fcppt::parse::detail::sequence_result(
 									std::move(
 										_left_result
 									),
