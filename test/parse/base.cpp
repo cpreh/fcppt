@@ -5,14 +5,15 @@
 
 
 #include <fcppt/make_cref.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

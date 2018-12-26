@@ -13,8 +13,11 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/not_decl.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/position.hpp>
+#include <fcppt/parse/set_position.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -64,11 +67,12 @@ fcppt::parse::not_<
 	> const &_context
 ) const
 {
-	typename
-	fcppt::parse::state<
+	fcppt::parse::position<
 		Ch
-	>::pos_type pos{
-		_state.get().stream().tellg()
+	> const pos{
+		fcppt::parse::get_position(
+			_state
+		)
 	};
 
 	bool const has_value{
@@ -80,8 +84,8 @@ fcppt::parse::not_<
 		).has_value()
 	};
 
-	// TODO: Do we have to do error handling in case pos == pos_type(-1)?
-	_state.get().stream().seekg(
+	fcppt::parse::set_position(
+		_state,
 		pos
 	);
 

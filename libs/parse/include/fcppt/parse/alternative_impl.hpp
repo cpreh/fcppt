@@ -14,9 +14,12 @@
 #include <fcppt/parse/alternative_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/set_position.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -77,11 +80,12 @@ fcppt::parse::alternative<
 	> const &_context
 ) const
 {
-	typename
-	fcppt::parse::state<
+	fcppt::parse::position<
 		Ch
-	>::pos_type const old_pos{
-		_state.get().stream().tellg()
+	> const old_pos{
+		fcppt::parse::get_position(
+			_state
+		)
 	};
 
 	return
@@ -98,7 +102,8 @@ fcppt::parse::alternative<
 				&_context,
 				this
 			]{
-				_state.get().stream().seekg(
+				fcppt::parse::set_position(
+					_state,
 					old_pos
 				);
 

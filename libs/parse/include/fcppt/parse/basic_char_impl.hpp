@@ -8,12 +8,12 @@
 #define FCPPT_PARSE_BASIC_CHAR_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/io/get.hpp>
 #include <fcppt/parse/basic_char_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/get_char.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 
 
 template<
@@ -56,8 +56,8 @@ fcppt::parse::basic_char<
 	);
 
 	return
-		fcppt::io::get(
-			_state.get().stream()
+		fcppt::parse::get_char(
+			_state
 		);
 }
 

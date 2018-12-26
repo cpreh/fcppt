@@ -10,14 +10,13 @@
 #include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/io/get.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/parse/basic_literal_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/char_impl.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 
 
 template<
@@ -60,15 +59,15 @@ fcppt::parse::basic_literal<
 	> const &_context
 ) const
 {
-	fcppt::parse::run_skipper(
-		_state,
-		_context
-	);
+	fcppt::parse::basic_char<
+		Ch
+	> const parser{};
 
 	return
 		fcppt::optional::bind(
-			fcppt::io::get(
-				_state.get().stream()
+			parser.parse(
+				_state,
+				_context
 			),
 			[
 				this
@@ -87,18 +86,6 @@ fcppt::parse::basic_literal<
 					);
 			}
 		);
-}
-
-template<
-	typename Ch
->
-Ch
-fcppt::parse::basic_literal<
-	Ch
->::get() const
-{
-	return
-		ch_;
 }
 
 #endif

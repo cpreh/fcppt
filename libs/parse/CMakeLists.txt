@@ -54,6 +54,7 @@ set(
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp
 	libs/parse/include/fcppt/parse/detail/deref.hpp
 	libs/parse/include/fcppt/parse/detail/deref_type.hpp
+	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
 	libs/parse/include/fcppt/parse/detail/sequence_result.hpp
@@ -66,6 +67,8 @@ set(
 	libs/parse/include/fcppt/parse/fail_decl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
 	libs/parse/include/fcppt/parse/fail_impl.hpp
+	libs/parse/include/fcppt/parse/get_char.hpp
+	libs/parse/include/fcppt/parse/get_position.hpp
 	libs/parse/include/fcppt/parse/ignore_decl.hpp
 	libs/parse/include/fcppt/parse/ignore_fwd.hpp
 	libs/parse/include/fcppt/parse/ignore_impl.hpp
@@ -96,6 +99,7 @@ set(
 	libs/parse/include/fcppt/parse/optional_impl.hpp
 	libs/parse/include/fcppt/parse/parse_stream.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
+	libs/parse/include/fcppt/parse/position.hpp
 	libs/parse/include/fcppt/parse/repetition_decl.hpp
 	libs/parse/include/fcppt/parse/repetition_fwd.hpp
 	libs/parse/include/fcppt/parse/repetition_impl.hpp
@@ -111,6 +115,7 @@ set(
 	libs/parse/include/fcppt/parse/sequence_fwd.hpp
 	libs/parse/include/fcppt/parse/sequence_impl.hpp
 	libs/parse/include/fcppt/parse/sequence_result.hpp
+	libs/parse/include/fcppt/parse/set_position.hpp
 	libs/parse/include/fcppt/parse/space.hpp
 	libs/parse/include/fcppt/parse/space_skipper.hpp
 	libs/parse/include/fcppt/parse/state_decl.hpp

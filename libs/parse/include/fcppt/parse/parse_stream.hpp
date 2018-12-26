@@ -13,6 +13,7 @@
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
@@ -40,6 +41,7 @@ parse_stream(
 	> &_input,
 	Skipper const &_skipper
 )
+try
 {
 	fcppt::parse::state<
 		Ch
@@ -62,6 +64,18 @@ parse_stream(
 				)
 			}
 		);
+}
+catch(
+	fcppt::parse::detail::exception const &
+)
+{
+	// TODO: Return an either here
+	return
+		fcppt::parse::result<
+			fcppt::parse::result_of<
+				Parser
+			>
+		>{};
 }
 
 }

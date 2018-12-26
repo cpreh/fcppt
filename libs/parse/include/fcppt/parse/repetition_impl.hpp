@@ -11,8 +11,11 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/position.hpp>
 #include <fcppt/parse/repetition_decl.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/set_position.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -63,11 +66,12 @@ fcppt::parse::repetition<
 	> const &_context
 ) const
 {
-	typename
-	fcppt::parse::state<
+	fcppt::parse::position<
 		Ch
-	>::pos_type pos{
-		_state.get().stream().tellg()
+	> pos{
+		fcppt::parse::get_position(
+			_state
+		)
 	};
 
 	result_type result{};
@@ -94,7 +98,9 @@ fcppt::parse::repetition<
 			break;
 
 		pos =
-			_state.get().stream().tellg();
+			fcppt::parse::get_position(
+				_state
+			);
 
 		result.push_back(
 			std::move(
@@ -103,8 +109,8 @@ fcppt::parse::repetition<
 		);
 	}
 
-	// TODO: Do we have to do error handling in case pos == pos_type(-1)?
-	_state.get().stream().seekg(
+	fcppt::parse::set_position(
+		_state,
 		pos
 	);
 
