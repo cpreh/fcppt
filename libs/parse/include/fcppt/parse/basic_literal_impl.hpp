@@ -89,4 +89,16 @@ fcppt::parse::basic_literal<
 		);
 }
 
+template<
+	typename Ch
+>
+Ch
+fcppt::parse::basic_literal<
+	Ch
+>::get() const
+{
+	return
+		ch_;
+}
+
 #endif

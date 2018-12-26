@@ -11,6 +11,7 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/ignore_decl.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
@@ -65,7 +66,9 @@ fcppt::parse::ignore<
 {
 	return
 		fcppt::optional::map(
-			this->parser_.parse(
+			fcppt::parse::deref(
+				this->parser_
+			).parse(
 				_state,
 				_context
 			),

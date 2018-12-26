@@ -46,7 +46,6 @@ public:
 			Skipper
 		> const &
 	) const;
-
 };
 
 }

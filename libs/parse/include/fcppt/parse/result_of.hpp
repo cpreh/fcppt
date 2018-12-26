@@ -7,6 +7,8 @@
 #ifndef FCPPT_PARSE_RESULT_OF_HPP_INCLUDED
 #define FCPPT_PARSE_RESULT_OF_HPP_INCLUDED
 
+#include <fcppt/parse/deref_type.hpp>
+
 
 namespace fcppt
 {
@@ -19,9 +21,10 @@ template<
 using
 result_of
 =
-// TODO: Deal with reference/unique_ptr
 typename
-Parser::result_type;
+fcppt::parse::deref_type<
+	Parser
+>::result_type;
 
 }
 }

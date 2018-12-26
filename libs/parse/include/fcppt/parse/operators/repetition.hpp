@@ -9,6 +9,9 @@
 
 #include <fcppt/parse/repetition_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt

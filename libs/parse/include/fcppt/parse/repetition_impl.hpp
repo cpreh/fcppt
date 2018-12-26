@@ -10,6 +10,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/repetition_decl.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/result.hpp>
@@ -79,7 +80,9 @@ fcppt::parse::repetition<
 				Parser
 			>
 		> element{
-			this->parser_.parse(
+			fcppt::parse::deref(
+				this->parser_
+			).parse(
 				_state,
 				_context
 			)

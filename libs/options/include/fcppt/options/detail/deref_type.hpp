@@ -55,7 +55,6 @@ struct deref_type<
 		Parser const
 	>
 >
-
 {
 	typedef
 	Parser

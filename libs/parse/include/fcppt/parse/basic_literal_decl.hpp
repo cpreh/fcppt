@@ -51,6 +51,9 @@ public:
 			Skipper
 		> const &
 	) const;
+
+	Ch
+	get() const;
 private:
 	Ch ch_;
 };

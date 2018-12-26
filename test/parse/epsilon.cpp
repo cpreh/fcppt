@@ -7,7 +7,6 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>

@@ -16,6 +16,19 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	alternative_result
+	NO_CODE
+)
+
+add_fcppt_parse_test(
+	as_struct
+)
+
+add_fcppt_parse_test(
+	base
+)
+
+add_fcppt_parse_test(
 	char
 )
 
@@ -24,7 +37,23 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	complement
+)
+
+add_fcppt_parse_test(
+	construct
+)
+
+add_fcppt_parse_test(
+	convert
+)
+
+add_fcppt_parse_test(
 	epsilon
+)
+
+add_fcppt_parse_test(
+	fail
 )
 
 add_fcppt_parse_test(
@@ -40,7 +69,19 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	not
+)
+
+add_fcppt_parse_test(
+	optional
+)
+
+add_fcppt_parse_test(
 	repetition
+)
+
+add_fcppt_parse_test(
+	repetition_plus
 )
 
 add_fcppt_parse_test(
@@ -53,6 +94,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	sequence_result
+)
+
+add_fcppt_parse_test(
 	space
 )
 
@@ -61,5 +106,5 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
-	sequence_result
+	string
 )

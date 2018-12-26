@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_COMBINE_TUPLES_HPP_INCLUDED
-#define FCPPT_PARSE_COMBINE_TUPLES_HPP_INCLUDED
+#ifndef FCPPT_PARSE_OPERATORS_OPTIONAL_HPP_INCLUDED
+#define FCPPT_PARSE_OPERATORS_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/parse/detail/flatten_tuples.hpp>
+#include <fcppt/parse/optional_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -19,29 +20,25 @@ namespace parse
 {
 
 template<
-	typename Left,
-	typename Right
+	typename Parser
 >
-// TODO: Better type
 auto
-combine_tuples(
-	Left &&_left,
-	Right &&_right
+operator-(
+	Parser &&_parser
 )
 {
 	return
-		fcppt::parse::detail::flatten_tuples(
+		fcppt::parse::optional<
+			fcppt::type_traits::remove_cv_ref_t<
+				Parser
+			>
+		>{
 			std::forward<
-				Left
+				Parser
 			>(
-				_left
-			),
-			std::forward<
-				Right
-			>(
-				_right
+				_parser
 			)
-		);
+		};
 }
 
 }

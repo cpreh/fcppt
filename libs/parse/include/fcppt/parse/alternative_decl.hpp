@@ -11,8 +11,9 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/alternative_fwd.hpp>
+#include <fcppt/parse/alternative_result.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/variant/variadic_fwd.hpp>
+#include <fcppt/parse/result_of.hpp>
 
 
 namespace fcppt
@@ -33,7 +34,7 @@ public:
 	);
 
 	typedef
-	fcppt::variant::variadic<
+	fcppt::parse::alternative_result<
 		fcppt::parse::result_of<
 			Left
 		>,

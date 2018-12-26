@@ -10,6 +10,7 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/context_impl.hpp>
+#include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/lexeme_decl.hpp>
 #include <fcppt/parse/state_fwd.hpp>
@@ -73,7 +74,9 @@ fcppt::parse::lexeme<
 	};
 
 	return
-		parser_.parse(
+		fcppt::parse::deref(
+			this->parser_
+		).parse(
 			_state,
 			context
 		);

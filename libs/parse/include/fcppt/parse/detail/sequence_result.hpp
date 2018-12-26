@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_DETAIL_SEQUENCE_RESULT_HPP_INCLUDED
 
 #include <fcppt/unit.hpp>
-#include <fcppt/parse/combine_tuples.hpp>
+#include <fcppt/parse/detail/combine_tuples.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
@@ -83,14 +83,14 @@ sequence_result(
 )
 ->
 decltype(
-	fcppt::parse::combine_tuples(
+	fcppt::parse::detail::combine_tuples(
 		_left,
 		_right
 	)
 )
 {
 	return
-		fcppt::parse::combine_tuples(
+		fcppt::parse::detail::combine_tuples(
 			std::forward<
 				Left
 			>(
