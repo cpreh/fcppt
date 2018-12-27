@@ -203,7 +203,6 @@ set(
 	libs/boost/include/fcppt/spirit_traits/optional_basic.hpp
 	libs/boost/include/fcppt/spirit_traits/variant_basic.hpp
 	libs/boost/include/fcppt/type_iso/boost_units.hpp
-	libs/catch/include/fcppt/catch/defer.hpp
 	libs/catch/include/fcppt/catch/detail/convert.hpp
 	libs/catch/include/fcppt/catch/either.hpp
 	libs/catch/include/fcppt/catch/make_movable.hpp

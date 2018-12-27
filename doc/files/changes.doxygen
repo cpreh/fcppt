@@ -36,6 +36,12 @@
 
 <ul>
 
+<li>\ref fcpptcatch
+	<ul>
+	<li>Removed <code>fcppt::catch_::defer</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainertuple
 	<ul>
 	<li>Removed <code>fcppt::container::tuple::to_varargs</code>. Use <code>std::apply</code>.</li>
