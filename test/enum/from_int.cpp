@@ -5,7 +5,7 @@
 
 
 #include <fcppt/exception.hpp>
-#include <fcppt/catch/defer.hpp>
+#include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/enum/from_int_exn.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -33,16 +33,14 @@ TEST_CASE(
 )
 {
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::enum_::from_int<
-				test_enum
-			>(
-				1u
-			)
-			==
-			fcppt::optional::make(
-				test_enum::enum2
-			)
+		fcppt::enum_::from_int<
+			test_enum
+		>(
+			1u
+		)
+		==
+		fcppt::optional::make(
+			test_enum::enum2
 		)
 	);
 

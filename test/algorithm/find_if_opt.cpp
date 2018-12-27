@@ -5,7 +5,7 @@
 
 
 #include <fcppt/algorithm/find_if_opt.hpp>
-#include <fcppt/catch/defer.hpp>
+#include <fcppt/catch/optional.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,23 +33,21 @@ TEST_CASE(
 	};
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::algorithm::find_if_opt(
-				vec,
-				[](
-					int const _i
-				)
-				{
-					return
-						_i == 3;
-				}
+		fcppt::algorithm::find_if_opt(
+			vec,
+			[](
+				int const _i
 			)
-			==
-			fcppt::optional::make(
-				std::next(
-					vec.begin(),
-					2
-				)
+			{
+				return
+					_i == 3;
+			}
+		)
+		==
+		fcppt::optional::make(
+			std::next(
+				vec.begin(),
+				2
 			)
 		)
 	);

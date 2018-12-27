@@ -5,10 +5,9 @@
 
 
 #include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/catch/defer.hpp>
+#include <fcppt/catch/either.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/output.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
@@ -70,20 +69,18 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::parse::parse_string(
-				parser,
-				std::wstring{
-					L"X"
-				},
-				fcppt::parse::epsilon{}
-			)
-			==
-			fcppt::parse::make_success<
-				wchar_t
-			>(
-				L'X'
-			)
+		fcppt::parse::parse_string(
+			parser,
+			std::wstring{
+				L"X"
+			},
+			fcppt::parse::epsilon{}
+		)
+		==
+		fcppt::parse::make_success<
+			wchar_t
+		>(
+			L'X'
 		)
 	);
 }

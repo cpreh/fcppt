@@ -5,11 +5,12 @@
 
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/record.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/output.hpp>
 #include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
@@ -23,9 +24,7 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/output.hpp>
 #include <fcppt/variant/comparison.hpp>
-#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>

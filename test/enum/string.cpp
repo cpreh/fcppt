@@ -5,7 +5,7 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/catch/defer.hpp>
+#include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/from_string.hpp>
 #include <fcppt/enum/names_array.hpp>
 #include <fcppt/enum/names_impl_fwd.hpp>
@@ -107,16 +107,14 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::enum_::from_string<
-				test_enum
-			>(
-				FCPPT_TEXT("test2")
-			)
-			==
-			fcppt::optional::make(
-				test_enum::test2
-			)
+		fcppt::enum_::from_string<
+			test_enum
+		>(
+			FCPPT_TEXT("test2")
+		)
+		==
+		fcppt::optional::make(
+			test_enum::test2
 		)
 	);
 }

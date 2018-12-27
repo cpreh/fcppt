@@ -1,7 +1,7 @@
 set(
 	FCPPT_CATCH_FILES
 	libs/catch/include/fcppt/catch/defer.hpp
-	libs/catch/include/fcppt/catch/detail/output.hpp
+	libs/catch/include/fcppt/catch/detail/convert.hpp
 	libs/catch/include/fcppt/catch/either.hpp
 	libs/catch/include/fcppt/catch/make_movable.hpp
 	libs/catch/include/fcppt/catch/movable.hpp
@@ -10,6 +10,9 @@ set(
 	libs/catch/include/fcppt/catch/movable_fwd.hpp
 	libs/catch/include/fcppt/catch/movable_impl.hpp
 	libs/catch/include/fcppt/catch/movable_output.hpp
+	libs/catch/include/fcppt/catch/optional.hpp
+	libs/catch/include/fcppt/catch/record.hpp
+	libs/catch/include/fcppt/catch/strong_typedef.hpp
 	libs/catch/include/fcppt/catch/variant.hpp
 )
 

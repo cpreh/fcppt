@@ -5,7 +5,7 @@
 
 
 #include <fcppt/algorithm/binary_search.hpp>
-#include <fcppt/catch/defer.hpp>
+#include <fcppt/catch/optional.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -40,17 +40,15 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::algorithm::binary_search(
-				vec,
-				5
-			)
-			==
-			fcppt::optional::make(
-				std::next(
-					vec.begin(),
-					1
-				)
+		fcppt::algorithm::binary_search(
+			vec,
+			5
+		)
+		==
+		fcppt::optional::make(
+			std::next(
+				vec.begin(),
+				1
 			)
 		)
 	);

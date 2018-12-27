@@ -6,7 +6,10 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/catch/defer.hpp>
+#include <fcppt/catch/either.hpp>
+#include <fcppt/catch/record.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -53,26 +56,24 @@ TEST_CASE(
 	parser_type;
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::options::parse(
-				parser,
-				fcppt::args_vector{
-					FCPPT_TEXT("123"),
-					FCPPT_TEXT("456")
-				}
-			)
-			==
-			fcppt::options::make_success(
-				parser_type::result_type{
-					arg_label{} =
-						std::vector<
-							int
-						>{
-							123,
-							456
-						}
-				}
-			)
+		fcppt::options::parse(
+			parser,
+			fcppt::args_vector{
+				FCPPT_TEXT("123"),
+				FCPPT_TEXT("456")
+			}
+		)
+		==
+		fcppt::options::make_success(
+			parser_type::result_type{
+				arg_label{} =
+					std::vector<
+						int
+					>{
+						123,
+						456
+					}
+			}
 		)
 	);
 
@@ -87,20 +88,18 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::options::parse(
-				parser,
-				fcppt::args_vector{}
-			)
-			==
-			fcppt::options::make_success(
-				parser_type::result_type{
-					arg_label{} =
-						std::vector<
-							int
-						>{}
-				}
-			)
+		fcppt::options::parse(
+			parser,
+			fcppt::args_vector{}
+		)
+		==
+		fcppt::options::make_success(
+			parser_type::result_type{
+				arg_label{} =
+					std::vector<
+						int
+					>{}
+			}
 		)
 	);
 }

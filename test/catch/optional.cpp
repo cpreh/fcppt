@@ -6,33 +6,32 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/catch/either.hpp>
-#include <fcppt/either/object.hpp>
+#include <fcppt/catch/optional.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"catch::either",
+	"catch::optional",
 	"[catch]"
 )
 {
 	typedef
-	fcppt::either::object<
-		fcppt::string,
-		int
+	fcppt::optional::object<
+		fcppt::string
 	>
-	either;
+	optional;
 
 	CHECK(
-		either{
+		optional{
 			fcppt::string{
 				FCPPT_TEXT("test")
 			}
 		}
 		==
-		either{
+		optional{
 			fcppt::string{
 				FCPPT_TEXT("test")
 			}

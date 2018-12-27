@@ -5,7 +5,6 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/catch/defer.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
@@ -29,12 +28,10 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::catch_::defer(
+		path1
+		==
+		fcppt::filesystem::remove_extension(
 			path1
-			==
-			fcppt::filesystem::remove_extension(
-				path1
-			)
 		)
 	);
 
@@ -44,14 +41,12 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::catch_::defer(
-			fcppt::filesystem::remove_extension(
-				path2
-			)
-			==
-			path1
-			/
-			FCPPT_TEXT("baz")
+		fcppt::filesystem::remove_extension(
+			path2
 		)
+		==
+		path1
+		/
+		FCPPT_TEXT("baz")
 	);
 }

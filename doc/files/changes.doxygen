@@ -7,6 +7,17 @@
 
 <ul>
 
+<li>\ref fcpptcatch
+	<p>
+	Output operators now recurse into Catch's output code instead
+	of using <code>operator<< </code>.
+	</p>
+	<ul>
+	<li>Added Catch output for \link fcppt::record::object\endlink,
+	\link fcppt::strong_typedef\endlink and \link fcppt::optional::object\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Added \link fcppt::container::contains\endlink.</li>

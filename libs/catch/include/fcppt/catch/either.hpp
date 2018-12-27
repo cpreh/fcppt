@@ -7,9 +7,9 @@
 #ifndef FCPPT_CATCH_EITHER_HPP_INCLUDED
 #define FCPPT_CATCH_EITHER_HPP_INCLUDED
 
-#include <fcppt/catch/detail/output.hpp>
+#include <fcppt/catch/detail/convert.hpp>
+#include <fcppt/either/match.hpp>
 #include <fcppt/either/object_fwd.hpp>
-#include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -45,8 +45,26 @@ struct StringMaker<
 	)
 	{
 		return
-			fcppt::catch_::detail::output(
-				_value
+			fcppt::either::match(
+				_value,
+				[](
+					Failure const &_failure
+				)
+				{
+					return
+						fcppt::catch_::detail::convert(
+							_failure
+						);
+				},
+				[](
+					Success const &_success
+				)
+				{
+					return
+						fcppt::catch_::detail::convert(
+							_success
+						);
+				}
 			);
 	}
 };

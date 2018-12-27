@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CATCH_VARIANT_HPP_INCLUDED
-#define FCPPT_CATCH_VARIANT_HPP_INCLUDED
+#ifndef FCPPT_CATCH_OPTIONAL_HPP_INCLUDED
+#define FCPPT_CATCH_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/catch/detail/convert.hpp>
-#include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -20,39 +20,45 @@ namespace Catch
 {
 
 /**
-\brief Output specialization for \link fcppt::variant::object\endlink.
+\brief Output specialization for \link fcppt::optional::object\endlink.
 
 \ingroup fcpptcatch
 */
 template<
-	typename Types
+	typename Type
 >
 struct StringMaker<
-	fcppt::variant::object<
-		Types
+	fcppt::optional::object<
+		Type
 	>
 >
 {
 	static
 	std::string
 	convert(
-		fcppt::variant::object<
-			Types
+		fcppt::optional::object<
+			Type
 		> const &_value
 	)
 	{
 		return
-			fcppt::variant::apply(
+			fcppt::optional::maybe(
+				_value,
+				[]{
+					return
+						std::string{"N"};
+				},
 				[](
-					auto const &_inner_value
+					Type const &_inner
 				)
 				{
 					return
+						std::string{"J "}
+						+
 						fcppt::catch_::detail::convert(
-							_inner_value
+							_inner
 						);
-				},
-				_value
+				}
 			);
 	}
 };

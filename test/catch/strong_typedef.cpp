@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/catch/either.hpp>
-#include <fcppt/either/object.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -18,21 +19,19 @@ TEST_CASE(
 	"[catch]"
 )
 {
-	typedef
-	fcppt::either::object<
+	FCPPT_MAKE_STRONG_TYPEDEF(
 		fcppt::string,
-		int
-	>
-	either;
+		strong_typedef
+	);
 
 	CHECK(
-		either{
+		strong_typedef{
 			fcppt::string{
 				FCPPT_TEXT("test")
 			}
 		}
 		==
-		either{
+		strong_typedef{
 			fcppt::string{
 				FCPPT_TEXT("test")
 			}
