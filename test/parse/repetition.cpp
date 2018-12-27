@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
+#include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
@@ -46,7 +47,9 @@ TEST_CASE(
 			fcppt::parse::epsilon()
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			result_type{}
 		)
 	);
@@ -60,7 +63,9 @@ TEST_CASE(
 			fcppt::parse::epsilon()
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			result_type{
 				'X', 'Y', 'Z'
 			}
@@ -90,7 +95,9 @@ TEST_CASE(
 			fcppt::parse::epsilon()
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			std::make_tuple(
 				std::vector<
 					fcppt::unit

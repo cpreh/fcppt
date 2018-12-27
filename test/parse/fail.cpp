@@ -4,14 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/fail.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -32,11 +27,7 @@ TEST_CASE(
 			parser,
 			std::string{},
 			fcppt::parse::epsilon{}
-		)
-		==
-		fcppt::optional::object<
-			fcppt::unit
-		>{}
+		).has_failure()
 	);
 
 	CHECK(
@@ -46,10 +37,6 @@ TEST_CASE(
 				"X"
 			},
 			fcppt::parse::epsilon{}
-		)
-		==
-		fcppt::optional::object<
-			fcppt::unit
-		>{}
+		).has_failure()
 	);
 }

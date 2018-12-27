@@ -8,11 +8,11 @@
 #define FCPPT_PARSE_SET_POSITION_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <ios>
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,19 +43,21 @@ set_position(
 		_state.get().stream()
 	};
 
+	stream.clear();
+
 	stream.seekg(
 		_pos
 	);
 
-	// FIXME
-/*
 	if(
-		_state.get().stream().fail()
+		stream.fail()
 	)
 		throw
-			fcppt::parse::detail::exception{
-				FCPPT_TEXT("seekg() failed")
-			};*/
+			fcppt::parse::detail::exception<
+				Ch
+			>{
+				"seekg() failed."
+			};
 }
 
 }

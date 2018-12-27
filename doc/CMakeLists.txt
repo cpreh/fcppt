@@ -655,6 +655,7 @@ set(
 	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
+	libs/core/include/fcppt/detail/string_literal.hpp
 	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
 	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
@@ -1360,6 +1361,7 @@ set(
 	libs/core/include/fcppt/static_pointer_cast.hpp
 	libs/core/include/fcppt/string.hpp
 	libs/core/include/fcppt/string_conv_locale.hpp
+	libs/core/include/fcppt/string_literal.hpp
 	libs/core/include/fcppt/strong_typedef.hpp
 	libs/core/include/fcppt/strong_typedef_apply.hpp
 	libs/core/include/fcppt/strong_typedef_arithmetic.hpp
@@ -1793,6 +1795,9 @@ set(
 	libs/parse/include/fcppt/parse/epsilon_decl.hpp
 	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
 	libs/parse/include/fcppt/parse/epsilon_impl.hpp
+	libs/parse/include/fcppt/parse/error.hpp
+	libs/parse/include/fcppt/parse/error_fwd.hpp
+	libs/parse/include/fcppt/parse/error_tag.hpp
 	libs/parse/include/fcppt/parse/fail.hpp
 	libs/parse/include/fcppt/parse/fail_decl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
@@ -1814,6 +1819,7 @@ set(
 	libs/parse/include/fcppt/parse/make_convert.hpp
 	libs/parse/include/fcppt/parse/make_ignore.hpp
 	libs/parse/include/fcppt/parse/make_lexeme.hpp
+	libs/parse/include/fcppt/parse/make_success.hpp
 	libs/parse/include/fcppt/parse/not_decl.hpp
 	libs/parse/include/fcppt/parse/not_fwd.hpp
 	libs/parse/include/fcppt/parse/not_impl.hpp

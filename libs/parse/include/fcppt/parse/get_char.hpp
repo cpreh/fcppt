@@ -8,13 +8,11 @@
 #define FCPPT_PARSE_GET_CHAR_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-//#include <fcppt/text.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/io/get.hpp>
-//#include <fcppt/optional/join.hpp>
-//#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/state_impl.hpp>
-//#include <fcppt/parse/detail/exception.hpp>
+#include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <fcppt/config/external_end.hpp>
@@ -45,37 +43,23 @@ get_char(
 		_state.get().stream()
 	};
 
+	if(
+		stream.bad()
+	)
+		throw
+			fcppt::parse::detail::exception<
+				Ch
+			>{
+				FCPPT_STRING_LITERAL(
+					Ch,
+					"stream failed."
+				)
+			};
+
 	return
 		fcppt::io::get(
 			stream
 		);
-
-	// FIXME
-/*
-	if(
-		stream.fail()
-		||
-		stream.bad()
-	)
-		throw
-			fcppt::parse::detail::exception{
-				FCPPT_TEXT("stream failed")
-			};
-
-	return
-		fcppt::optional::join(
-			fcppt::optional::make_if(
-				!stream.eof(),
-				[
-					&stream
-				]{
-					return
-						fcppt::io::get(
-							stream
-						);
-				}
-			)
-		);*/
 }
 
 }

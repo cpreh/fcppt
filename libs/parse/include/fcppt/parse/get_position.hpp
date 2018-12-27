@@ -8,7 +8,6 @@
 #define FCPPT_PARSE_GET_POSITION_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/exception.hpp>
@@ -54,8 +53,10 @@ get_position(
 		}
 	)
 		throw
-			fcppt::parse::detail::exception{
-				FCPPT_TEXT("tellg() failed")
+			fcppt::parse::detail::exception<
+				Ch
+			>{
+				"tellg() failed."
 			};
 
 	return

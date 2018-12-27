@@ -4,11 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/space_skipper.hpp>
@@ -47,7 +49,9 @@ TEST_CASE(
 			fcppt::parse::space_skipper()
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			result_type{
 				' ', 'a', 'b', ' '
 			}

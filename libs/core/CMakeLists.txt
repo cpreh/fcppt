@@ -443,6 +443,7 @@ set(
 	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
+	libs/core/include/fcppt/detail/string_literal.hpp
 	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
 	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
@@ -1148,6 +1149,7 @@ set(
 	libs/core/include/fcppt/static_pointer_cast.hpp
 	libs/core/include/fcppt/string.hpp
 	libs/core/include/fcppt/string_conv_locale.hpp
+	libs/core/include/fcppt/string_literal.hpp
 	libs/core/include/fcppt/strong_typedef.hpp
 	libs/core/include/fcppt/strong_typedef_apply.hpp
 	libs/core/include/fcppt/strong_typedef_arithmetic.hpp

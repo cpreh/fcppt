@@ -13,6 +13,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link FCPPT_STRING_LITERAL\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_300 3.0.0

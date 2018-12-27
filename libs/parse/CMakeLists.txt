@@ -63,6 +63,9 @@ set(
 	libs/parse/include/fcppt/parse/epsilon_decl.hpp
 	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
 	libs/parse/include/fcppt/parse/epsilon_impl.hpp
+	libs/parse/include/fcppt/parse/error.hpp
+	libs/parse/include/fcppt/parse/error_fwd.hpp
+	libs/parse/include/fcppt/parse/error_tag.hpp
 	libs/parse/include/fcppt/parse/fail.hpp
 	libs/parse/include/fcppt/parse/fail_decl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
@@ -84,6 +87,7 @@ set(
 	libs/parse/include/fcppt/parse/make_convert.hpp
 	libs/parse/include/fcppt/parse/make_ignore.hpp
 	libs/parse/include/fcppt/parse/make_lexeme.hpp
+	libs/parse/include/fcppt/parse/make_success.hpp
 	libs/parse/include/fcppt/parse/not_decl.hpp
 	libs/parse/include/fcppt/parse/not_fwd.hpp
 	libs/parse/include/fcppt/parse/not_impl.hpp

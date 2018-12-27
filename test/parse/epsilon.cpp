@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
+#include <fcppt/unit_output.hpp>
+#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -30,7 +34,9 @@ TEST_CASE(
 			fcppt::parse::epsilon{}
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			fcppt::unit{}
 		)
 	);
@@ -42,10 +48,6 @@ TEST_CASE(
 				"X"
 			},
 			fcppt::parse::epsilon{}
-		)
-		==
-		fcppt::optional::make(
-			fcppt::unit{}
-		)
+		).has_failure()
 	);
 }

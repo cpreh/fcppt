@@ -4,16 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/object.hpp>
+#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -43,11 +44,7 @@ TEST_CASE(
 			parser,
 			std::string{},
 			fcppt::parse::epsilon{}
-		)
-		==
-		fcppt::optional::object<
-			result_type
-		>{}
+		).has_failure()
 	);
 
 	CHECK(
@@ -57,11 +54,7 @@ TEST_CASE(
 				"X"
 			},
 			fcppt::parse::epsilon{}
-		)
-		==
-		fcppt::optional::object<
-			result_type
-		>{}
+		).has_failure()
 	);
 
 	CHECK(
@@ -73,14 +66,14 @@ TEST_CASE(
 			fcppt::parse::epsilon{}
 		)
 		==
-		fcppt::optional::object<
-			result_type
-		>{
-			std::make_tuple(
+		fcppt::parse::make_success<
+			char
+		>(
+			result_type{
 				'X',
 				'Y',
 				'Z'
-			)
-		}
+			}
+		)
 	);
 }

@@ -14,11 +14,11 @@ namespace container
 {
 
 /**
-\brief Checks if an associative container has a key.
+\brief Checks if a container has a key.
 
 \ingroup fcpptcontainer
 
-\tparam Container Must be an associative container with the <code>count</code> function.
+\tparam Container Must be a container with the <code>count</code> function.
 */
 template<
 	typename Container

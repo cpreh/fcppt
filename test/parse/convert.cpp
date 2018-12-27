@@ -4,15 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
+#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/make_convert.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <ostream>
 #include <string>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
@@ -58,6 +62,21 @@ operator==(
 			_right.x_,
 			_right.y_
 		);
+}
+
+std::ostream &
+operator<<(
+	std::ostream &_stream,
+	my_struct const &_value
+)
+{
+	return
+		_stream
+		<< '('
+		<< _value.x_
+		<< ','
+		<< _value.y_
+		<< ')';
 }
 
 }
@@ -107,7 +126,9 @@ TEST_CASE(
 			fcppt::parse::epsilon{}
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			my_struct{
 				'X',
 				'Y'

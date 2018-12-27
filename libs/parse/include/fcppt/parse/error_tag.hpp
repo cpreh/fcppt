@@ -4,10 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_SPACE_HPP_INCLUDED
-#define FCPPT_PARSE_SPACE_HPP_INCLUDED
-
-#include <fcppt/parse/char_set.hpp>
+#ifndef FCPPT_PARSE_ERROR_TAG_HPP_INCLUDED
+#define FCPPT_PARSE_ERROR_TAG_HPP_INCLUDED
 
 
 namespace fcppt
@@ -15,17 +13,9 @@ namespace fcppt
 namespace parse
 {
 
-inline
-fcppt::parse::char_set
-space()
+struct error_tag
 {
-	return
-		fcppt::parse::char_set{
-			' ',
-			'\n',
-			'\t'
-		};
-}
+};
 
 }
 }

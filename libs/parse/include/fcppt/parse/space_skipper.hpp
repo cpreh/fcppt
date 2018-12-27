@@ -17,7 +17,6 @@ namespace fcppt
 namespace parse
 {
 
-// TODO: Should this be inline?
 inline
 auto
 space_skipper()

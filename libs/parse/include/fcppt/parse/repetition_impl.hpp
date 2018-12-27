@@ -14,6 +14,7 @@
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/repetition_decl.hpp>
+#include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
@@ -66,6 +67,11 @@ fcppt::parse::repetition<
 	> const &_context
 ) const
 {
+	fcppt::parse::run_skipper(
+		_state,
+		_context
+	);
+
 	fcppt::parse::position<
 		Ch
 	> pos{

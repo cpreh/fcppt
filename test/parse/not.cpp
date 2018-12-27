@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/literal.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/not.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
@@ -39,11 +41,7 @@ TEST_CASE(
 				"XY"
 			},
 			fcppt::parse::epsilon()
-		)
-		==
-		fcppt::optional::object<
-			char
-		>{}
+		).has_failure()
 	);
 
 	CHECK(
@@ -55,7 +53,9 @@ TEST_CASE(
 			fcppt::parse::epsilon()
 		)
 		==
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			char
+		>(
 			'Y'
 		)
 	);
