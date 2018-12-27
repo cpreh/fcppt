@@ -627,14 +627,12 @@ set(
 	libs/core/include/fcppt/container/tuple/detail/map_result.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back_result.hpp
-	libs/core/include/fcppt/container/tuple/detail/to_varargs.hpp
 	libs/core/include/fcppt/container/tuple/detail/types_of.hpp
 	libs/core/include/fcppt/container/tuple/map.hpp
 	libs/core/include/fcppt/container/tuple/map_result.hpp
 	libs/core/include/fcppt/container/tuple/move_element.hpp
 	libs/core/include/fcppt/container/tuple/push_back.hpp
 	libs/core/include/fcppt/container/tuple/push_back_result.hpp
-	libs/core/include/fcppt/container/tuple/to_varargs.hpp
 	libs/core/include/fcppt/container/tuple/type_at.hpp
 	libs/core/include/fcppt/container/tuple/types_of.hpp
 	libs/core/include/fcppt/container/tuple/vararg_map.hpp

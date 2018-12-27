@@ -32,6 +32,18 @@
 
 </ul>
 
+\subsection changes_removed_functionality_to_300 Removed functionality
+
+<ul>
+
+<li>\ref fcpptcontainertuple
+	<ul>
+	<li>Removed <code>fcppt::container::tuple::to_varargs</code>. Use <code>std::apply</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_300 3.0.0
 
 <p>
@@ -408,7 +420,7 @@ Catch2 is now required.
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Renamed <code>fcppt::container::untuple</code> to \link fcppt::container::tuple::to_varargs\endlink.</li>
+	<li>Renamed <code>fcppt::container::untuple</code> to <code>fcppt::container::tuple::to_varargs</code>.</li>
 	</ul>
 </li>
 

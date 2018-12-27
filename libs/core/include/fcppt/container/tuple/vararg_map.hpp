@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_TUPLE_VARARG_MAP_HPP_INCLUDED
 
 #include <fcppt/container/tuple/map.hpp>
-#include <fcppt/container/tuple/to_varargs.hpp>
 #include <fcppt/type_traits/is_std_tuple.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,7 +24,7 @@ namespace tuple
 {
 
 /**
-\brief Combination of \link fcppt::container::tuple::map\endlink and \link fcppt::container::tuple::to_varargs\endlink.
+\brief Combination of \link fcppt::container::tuple::map\endlink and <code>std::apply</code>.
 
 \ingroup fcpptcontainertuple
 
@@ -59,7 +59,8 @@ vararg_map(
 	);
 
 	return
-		fcppt::container::tuple::to_varargs(
+		std::apply(
+			_anchor_function,
 			fcppt::container::tuple::map(
 				std::forward<
 					Tuple
@@ -67,8 +68,7 @@ vararg_map(
 					_tuple
 				),
 				_element_function
-			),
-			_anchor_function
+			)
 		);
 }
 
