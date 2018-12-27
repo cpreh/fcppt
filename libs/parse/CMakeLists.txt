@@ -48,6 +48,7 @@ set(
 	libs/parse/include/fcppt/parse/deref.hpp
 	libs/parse/include/fcppt/parse/deref_type.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_list.hpp
+	libs/parse/include/fcppt/parse/detail/check_bad.hpp
 	libs/parse/include/fcppt/parse/detail/combine_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_decl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
@@ -75,6 +76,10 @@ set(
 	libs/parse/include/fcppt/parse/ignore_decl.hpp
 	libs/parse/include/fcppt/parse/ignore_fwd.hpp
 	libs/parse/include/fcppt/parse/ignore_impl.hpp
+	libs/parse/include/fcppt/parse/int.hpp
+	libs/parse/include/fcppt/parse/int_decl.hpp
+	libs/parse/include/fcppt/parse/int_fwd.hpp
+	libs/parse/include/fcppt/parse/int_impl.hpp
 	libs/parse/include/fcppt/parse/lexeme.hpp
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp

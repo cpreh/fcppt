@@ -17,7 +17,7 @@
 #include <fcppt/parse/parse_stream.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <ios>
 #include <sstream>
 #include <string>
 #include <utility>
@@ -57,6 +57,10 @@ parse_string(
 			_string
 		)
 	};
+
+	stream.unsetf(
+		std::ios_base::skipws
+	);
 
 	return
 		fcppt::either::match(
