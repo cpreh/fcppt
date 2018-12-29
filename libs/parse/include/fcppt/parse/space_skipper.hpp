@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_SPACE_SKIPPER_HPP_INCLUDED
 #define FCPPT_PARSE_SPACE_SKIPPER_HPP_INCLUDED
 
-#include <fcppt/parse/make_ignore.hpp>
+#include <fcppt/parse/ignore_impl.hpp>
 #include <fcppt/parse/space.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 
@@ -22,9 +22,9 @@ auto
 space_skipper()
 {
 	return
-		fcppt::parse::make_ignore(
+		fcppt::parse::ignore{
 			*fcppt::parse::space()
-		);
+		};
 }
 
 }

@@ -9,7 +9,7 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/make_lexeme.hpp>
+#include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
@@ -27,9 +27,9 @@ TEST_CASE(
 )
 {
 	auto const parser{
-		fcppt::parse::make_lexeme(
+		fcppt::parse::lexeme{
 			*fcppt::parse::char_{}
-		)
+		}
 	};
 
 	typedef

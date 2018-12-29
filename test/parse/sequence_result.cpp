@@ -93,4 +93,19 @@ TEST_CASE(
 			false
 		)
 	);
+
+	CHECK(
+		fcppt::parse::detail::sequence_result(
+			'Y',
+			fcppt::parse::detail::sequence_result(
+				fcppt::unit{},
+				42
+			)
+		)
+		==
+		std::make_tuple(
+			'Y',
+			42
+		)
+	);
 }

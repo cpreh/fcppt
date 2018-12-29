@@ -20,45 +20,41 @@ namespace parse
 {
 
 template<
-	typename Result,
 	typename Parser,
-	typename Function
+	typename Convert
 >
 fcppt::parse::convert<
-	Result,
 	fcppt::type_traits::remove_cv_ref_t<
 		Parser
+	>,
+	fcppt::type_traits::remove_cv_ref_t<
+		Convert
 	>
 >
 make_convert(
 	Parser &&_parser,
-	Function &&_function
+	Convert &&_convert
 )
 {
-	typedef
-	fcppt::parse::convert<
-		Result,
-		fcppt::type_traits::remove_cv_ref_t<
-			Parser
-		>
-	>
-	result_type;
-
 	return
-		result_type{
+		fcppt::parse::convert<
+			fcppt::type_traits::remove_cv_ref_t<
+				Parser
+			>,
+			fcppt::type_traits::remove_cv_ref_t<
+				Convert
+			>
+		>{
 			std::forward<
 				Parser
 			>(
 				_parser
 			),
-			typename
-			result_type::convert_function{
-				std::forward<
-					Function
-				>(
-					_function
-				)
-			}
+			std::forward<
+				Convert
+			>(
+				_convert
+			)
 		};
 }
 

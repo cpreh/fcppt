@@ -6,14 +6,12 @@
 
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
-#include <fcppt/parse/char.hpp>
+#include <fcppt/parse/convert_const.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/ignore.hpp>
 #include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/string.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -22,22 +20,17 @@
 
 
 TEST_CASE(
-	"parse::ignore",
+	"parse::convert_const",
 	"[parse]"
 )
 {
-	auto const parser{
-		fcppt::parse::ignore{
-			fcppt::parse::char_{}
-		}
-	};
-
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{},
-			fcppt::parse::epsilon{}
-		).has_failure()
+	auto const parser(
+		fcppt::parse::convert_const(
+			fcppt::parse::string{
+				"true"
+			},
+			true
+		)
 	);
 
 	CHECK(
@@ -47,12 +40,22 @@ TEST_CASE(
 				"X"
 			},
 			fcppt::parse::epsilon{}
+		).has_failure()
+	);
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{
+				"true"
+			},
+			fcppt::parse::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
 			char
 		>(
-			fcppt::unit{}
+			true
 		)
 	);
 }

@@ -4,15 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_FLOAT_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_FLOAT_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/convert_fwd.hpp>
+#include <fcppt/parse/float_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -24,25 +23,22 @@ namespace parse
 {
 
 template<
-	typename Parser,
-	typename Convert
+	typename Type
 >
-class convert
+class float_
 {
 public:
-	convert(
-		Parser &&,
-		Convert &&
+	static_assert(
+		std::is_floating_point_v<
+			Type
+		>,
+		"Type must be an floategral type"
 	);
 
+	float_();
+
 	typedef
-	std::result_of_t<
-		Convert(
-			fcppt::parse::result_of<
-				Parser
-			> &&
-		)
-	>
+	Type
 	result_type;
 
 	template<
@@ -62,10 +58,6 @@ public:
 			Skipper
 		> const &
 	) const;
-private:
-	Parser parser_;
-
-	Convert convert_;
 };
 
 }

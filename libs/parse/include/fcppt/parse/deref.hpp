@@ -7,6 +7,7 @@
 #ifndef FCPPT_PARSE_DEREF_HPP_INCLUDED
 #define FCPPT_PARSE_DEREF_HPP_INCLUDED
 
+#include <fcppt/parse/deref_type.hpp>
 #include <fcppt/parse/detail/deref.hpp>
 
 
@@ -19,9 +20,9 @@ template<
 	typename Parser
 >
 inline
-decltype(
-	auto
-)
+fcppt::parse::deref_type<
+	Parser
+> const &
 deref(
 	Parser const &_parser
 )

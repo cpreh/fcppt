@@ -87,9 +87,7 @@ TEST_CASE(
 )
 {
 	auto const parser(
-		fcppt::parse::make_convert<
-			my_struct
-		>(
+		fcppt::parse::make_convert(
 			fcppt::parse::char_{}
 			>>
 			fcppt::parse::char_{},

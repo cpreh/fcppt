@@ -67,6 +67,9 @@ public:
 			Skipper
 		> const &
 	) const;
+
+	char_set_type const &
+	chars() const;
 private:
 	char_set_type chars_;
 };

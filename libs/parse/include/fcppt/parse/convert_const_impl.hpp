@@ -4,45 +4,50 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_OPTIONAL_IMPL_HPP_INCLUDED
-#define FCPPT_PARSE_OPTIONAL_IMPL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_CONVERT_CONST_IMPL_HPP_INCLUDED
+#define FCPPT_PARSE_CONVERT_CONST_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/maybe.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/convert_const_decl.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/get_position.hpp>
-#include <fcppt/parse/optional_decl.hpp>
-#include <fcppt/parse/position.hpp>
-#include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
 template<
-	typename Parser
+	typename Parser,
+	typename Result
 >
-fcppt::parse::optional<
-	Parser
->::optional(
-	Parser &&_parser
+fcppt::parse::convert_const<
+	Parser,
+	Result
+>::convert_const(
+	Parser &&_parser,
+	Result &&_result
 )
 :
 	parser_{
 		std::move(
 			_parser
 		)
+	},
+	result_{
+		std::move(
+			_result
+		)
 	}
 {
 }
 
 template<
-	typename Parser
+	typename Parser,
+	typename Result
 >
 template<
 	typename Ch,
@@ -50,12 +55,14 @@ template<
 >
 fcppt::parse::result<
 	typename
-	fcppt::parse::optional<
-		Parser
+	fcppt::parse::convert_const<
+		Parser,
+		Result
 	>::result_type
 >
-fcppt::parse::optional<
-	Parser
+fcppt::parse::convert_const<
+	Parser,
+	Result
 >::parse(
 	fcppt::reference<
 		fcppt::parse::state<
@@ -67,16 +74,8 @@ fcppt::parse::optional<
 	> const &_context
 ) const
 {
-	fcppt::parse::position<
-		Ch
-	> const pos{
-		fcppt::parse::get_position(
-			_state
-		)
-	};
-
 	return
-		fcppt::optional::maybe(
+		fcppt::optional::map(
 			fcppt::parse::deref(
 				this->parser_
 			).parse(
@@ -84,33 +83,15 @@ fcppt::parse::optional<
 				_context
 			),
 			[
-				_state,
-				pos
-			]{
-				fcppt::parse::set_position(
-					_state,
-					pos
-				);
-
-				return
-					fcppt::optional::make(
-						result_type{}
-					);
-			},
-			[](
+				this
+			](
 				fcppt::parse::result_of<
 					Parser
-				> &&_result
+				> const &
 			)
 			{
 				return
-					fcppt::optional::make(
-						result_type{
-							std::move(
-								_result
-							)
-						}
-					);
+					this->result_;
 			}
 		);
 }

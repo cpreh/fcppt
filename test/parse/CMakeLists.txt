@@ -51,11 +51,23 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	convert_const
+)
+
+add_fcppt_parse_test(
+	deref
+)
+
+add_fcppt_parse_test(
 	epsilon
 )
 
 add_fcppt_parse_test(
 	fail
+)
+
+add_fcppt_parse_test(
+	float
 )
 
 add_fcppt_parse_test(
@@ -76,12 +88,18 @@ add_fcppt_parse_test(
 	literal
 )
 
+#add_fcppt_parse_test(
+#	json
+#)
+
 add_fcppt_parse_test(
 	not
 )
 
 add_fcppt_parse_test(
 	optional
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_parse_test(
@@ -95,6 +113,12 @@ add_fcppt_parse_test(
 add_fcppt_parse_test(
 	repetition_result
 	NO_CODE
+)
+
+add_fcppt_parse_test(
+	separator
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_parse_test(

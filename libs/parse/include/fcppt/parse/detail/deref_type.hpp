@@ -8,6 +8,8 @@
 #define FCPPT_PARSE_DETAIL_DEREF_TYPE_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/parse/base_fwd.hpp>
+#include <fcppt/parse/base_unique_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -40,9 +42,32 @@ struct deref_type<
 		Parser const
 	>
 >
+:
+fcppt::parse::detail::deref_type<
+	Parser
+>
+{
+};
+
+template<
+	typename Result,
+	typename Ch,
+	typename Skipper
+>
+struct deref_type<
+	fcppt::parse::base_unique_ptr<
+		Result,
+		Ch,
+		Skipper
+	>
+>
 {
 	typedef
-	Parser
+	fcppt::parse::base<
+		Result,
+		Ch,
+		Skipper
+	>
 	type;
 };
 

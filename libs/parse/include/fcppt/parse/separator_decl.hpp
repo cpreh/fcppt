@@ -4,17 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_SEPARATOR_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_SEPARATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/convert_fwd.hpp>
+#include <fcppt/parse/separator_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -24,29 +24,26 @@ namespace parse
 {
 
 template<
-	typename Parser,
-	typename Convert
+	typename Inner,
+	typename Ch
 >
-class convert
+class separator
 {
 public:
-	convert(
-		Parser &&,
-		Convert &&
+	separator(
+		Inner &&,
+		Ch
 	);
 
 	typedef
-	std::result_of_t<
-		Convert(
-			fcppt::parse::result_of<
-				Parser
-			> &&
-		)
+	std::vector<
+		fcppt::parse::result_of<
+			Inner
+		>
 	>
 	result_type;
 
 	template<
-		typename Ch,
 		typename Skipper
 	>
 	fcppt::parse::result<
@@ -63,9 +60,9 @@ public:
 		> const &
 	) const;
 private:
-	Parser parser_;
+	Inner inner_;
 
-	Convert convert_;
+	Ch sep_;
 };
 
 }

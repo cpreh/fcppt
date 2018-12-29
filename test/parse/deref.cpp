@@ -4,20 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/either/comparison.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/make_cref.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char.hpp>
+#include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/make_base.hpp>
-#include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,7 +21,7 @@ TEST_CASE(
 )
 {
 	fcppt::parse::base_unique_ptr<
-		std::string,
+		char,
 		char,
 		fcppt::parse::epsilon
 	> const parser{
@@ -35,25 +29,25 @@ TEST_CASE(
 			char,
 			fcppt::parse::epsilon
 		>(
-			*fcppt::parse::char_{}
+			fcppt::parse::char_{}
 		)
 	};
 
 	CHECK(
-		fcppt::parse::parse_string(
-			*parser,
-			std::string{
-				"XY"
-			},
-			fcppt::parse::epsilon{}
-		)
+		parser.get_pointer()
 		==
-		fcppt::parse::make_success<
-			char
-		>(
-			std::string{
-				"XY"
-			}
+		&fcppt::parse::deref(
+			parser
+		)
+	);
+
+	CHECK(
+		parser.get_pointer()
+		==
+		&fcppt::parse::deref(
+			fcppt::make_cref(
+				parser
+			)
 		)
 	);
 }

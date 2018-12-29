@@ -21,15 +21,15 @@
 
 
 template<
-	typename Result,
-	typename Parser
+	typename Parser,
+	typename Convert
 >
 fcppt::parse::convert<
-	Result,
-	Parser
+	Parser,
+	Convert
 >::convert(
 	Parser &&_parser,
-	convert_function &&_convert
+	Convert &&_convert
 )
 :
 	parser_{
@@ -46,8 +46,8 @@ fcppt::parse::convert<
 }
 
 template<
-	typename Result,
-	typename Parser
+	typename Parser,
+	typename Convert
 >
 template<
 	typename Ch,
@@ -56,13 +56,13 @@ template<
 fcppt::parse::result<
 	typename
 	fcppt::parse::convert<
-		Result,
-		Parser
+		Parser,
+		Convert
 	>::result_type
 >
 fcppt::parse::convert<
-	Result,
-	Parser
+	Parser,
+	Convert
 >::parse(
 	fcppt::reference<
 		fcppt::parse::state<

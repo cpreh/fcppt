@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_CONVERT_FWD_HPP_INCLUDED
-#define FCPPT_PARSE_CONVERT_FWD_HPP_INCLUDED
+#ifndef FCPPT_PARSE_CONVERT_CONST_FWD_HPP_INCLUDED
+#define FCPPT_PARSE_CONVERT_CONST_FWD_HPP_INCLUDED
 
 
 namespace fcppt
@@ -15,9 +15,9 @@ namespace parse
 
 template<
 	typename Parser,
-	typename Convert
+	typename Result
 >
-class convert;
+class convert_const;
 
 }
 }

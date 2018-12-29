@@ -4,18 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_CONVERT_CONST_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_CONVERT_CONST_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/convert_fwd.hpp>
+#include <fcppt/parse/convert_const_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/result_of.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -25,24 +21,18 @@ namespace parse
 
 template<
 	typename Parser,
-	typename Convert
+	typename Result
 >
-class convert
+class convert_const
 {
 public:
-	convert(
+	convert_const(
 		Parser &&,
-		Convert &&
+		Result &&
 	);
 
 	typedef
-	std::result_of_t<
-		Convert(
-			fcppt::parse::result_of<
-				Parser
-			> &&
-		)
-	>
+	Result
 	result_type;
 
 	template<
@@ -65,7 +55,7 @@ public:
 private:
 	Parser parser_;
 
-	Convert convert_;
+	Result result_;
 };
 
 }

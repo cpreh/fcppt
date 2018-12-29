@@ -6,13 +6,10 @@
 
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
+#include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/complement.hpp>
@@ -28,10 +25,18 @@ TEST_CASE(
 )
 {
 	auto const parser{
-		~fcppt::parse::literal{
+		~fcppt::parse::char_set{
 			'X'
 		}
 	};
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{},
+			fcppt::parse::epsilon()
+		).has_failure()
+	);
 
 	CHECK(
 		fcppt::parse::parse_string(
@@ -46,14 +51,14 @@ TEST_CASE(
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
-			std::string{},
+			std::string{'Y'},
 			fcppt::parse::epsilon()
 		)
 		==
 		fcppt::parse::make_success<
 			char
 		>(
-			fcppt::unit{}
+			'Y'
 		)
 	);
 }

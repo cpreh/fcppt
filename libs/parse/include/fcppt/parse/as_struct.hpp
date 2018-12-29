@@ -8,9 +8,7 @@
 #define FCPPT_PARSE_AS_STRUCT_HPP_INCLUDED
 
 #include <fcppt/parse/convert_impl.hpp>
-#include <fcppt/parse/make_convert.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>
@@ -26,20 +24,13 @@ template<
 	typename Result,
 	typename Parser
 >
-fcppt::parse::convert<
-	Result,
-	fcppt::type_traits::remove_cv_ref_t<
-		Parser
-	>
->
+auto
 as_struct(
 	Parser &&_parser
 )
 {
 	return
-		fcppt::parse::make_convert<
-			Result
-		>(
+		fcppt::parse::convert{
 			std::forward<
 				Parser
 			>(
@@ -73,7 +64,7 @@ as_struct(
 						)
 					);
 			}
-		);
+		};
 }
 
 }

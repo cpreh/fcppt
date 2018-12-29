@@ -8,6 +8,8 @@
 #define FCPPT_PARSE_DETAIL_DEREF_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/parse/base_fwd.hpp>
+#include <fcppt/parse/base_unique_ptr_fwd.hpp>
 
 
 namespace fcppt
@@ -31,14 +33,43 @@ deref(
 }
 
 template<
+	typename Result,
+	typename Ch,
+	typename Skipper
+>
+inline
+fcppt::parse::base<
+	Result,
+	Ch,
+	Skipper
+> const &
+deref(
+	fcppt::parse::base_unique_ptr<
+		Result,
+		Ch,
+		Skipper
+	> const &_ptr
+)
+{
+	return
+		*_ptr;
+}
+
+template<
 	typename Parser
 >
 inline
-Parser const &
+auto
 deref(
 	fcppt::reference<
 		Parser const
 	> const &_ref
+)
+->
+decltype(
+	fcppt::parse::detail::deref(
+		_ref.get()
+	)
 )
 {
 	return

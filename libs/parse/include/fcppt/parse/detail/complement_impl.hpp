@@ -4,18 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_COMPLEMENT_IMPL_HPP_INCLUDED
-#define FCPPT_PARSE_COMPLEMENT_IMPL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_DETAIL_COMPLEMENT_IMPL_HPP_INCLUDED
+#define FCPPT_PARSE_DETAIL_COMPLEMENT_IMPL_HPP_INCLUDED
 
+#include <fcppt/const.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/optional/maybe.hpp>
+#include <fcppt/container/contains.hpp>
+#include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/complement_decl.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/detail/complement_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -24,7 +27,7 @@
 template<
 	typename Parser
 >
-fcppt::parse::complement<
+fcppt::parse::detail::complement<
 	Parser
 >::complement(
 	Parser &&_parser
@@ -47,11 +50,11 @@ template<
 >
 fcppt::parse::result<
 	typename
-	fcppt::parse::complement<
+	fcppt::parse::detail::complement<
 		Parser
 	>::result_type
 >
-fcppt::parse::complement<
+fcppt::parse::detail::complement<
 	Parser
 >::parse(
 	fcppt::reference<
@@ -64,30 +67,36 @@ fcppt::parse::complement<
 	> const &_context
 ) const
 {
+	fcppt::parse::basic_char<
+		Ch
+	> const parser{};
+
 	return
-		fcppt::optional::maybe(
-			fcppt::parse::deref(
-				this->parser_
-			).parse(
+		fcppt::optional::bind(
+			parser.parse(
 				_state,
 				_context
 			),
-			[]{
-				return
-					fcppt::optional::make(
-						fcppt::unit{}
-					);
-			},
-			[](
-				fcppt::parse::result_of<
-					Parser
-				> const &
+			[
+				this
+			](
+				Ch const _result
 			)
 			{
 				return
-					fcppt::parse::result<
-						result_type
-					>{};
+					fcppt::optional::make_if(
+						fcppt::not_(
+							fcppt::container::contains(
+								fcppt::parse::deref(
+									this->parser_
+								).chars(),
+								_result
+							)
+						),
+						fcppt::const_(
+							_result
+						)
+					);
 			}
 		);
 }

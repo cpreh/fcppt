@@ -90,4 +90,22 @@ main()
 		>,
 		""
 	);
+
+	static_assert(
+		std::is_same_v<
+			fcppt::parse::alternative_result<
+				fcppt::variant::variadic<
+					int,
+					float
+				>,
+				char
+			>,
+			fcppt::variant::variadic<
+				int,
+				float,
+				char
+			>
+		>,
+		""
+	);
 }
