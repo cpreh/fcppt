@@ -1782,6 +1782,7 @@ set(
 	libs/parse/include/fcppt/parse/deref.hpp
 	libs/parse/include/fcppt/parse/deref_type.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_list.hpp
+	libs/parse/include/fcppt/parse/detail/alternative_result.hpp
 	libs/parse/include/fcppt/parse/detail/check_bad.hpp
 	libs/parse/include/fcppt/parse/detail/combine_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/complement_decl.hpp
@@ -1795,6 +1796,7 @@ set(
 	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp
+	libs/parse/include/fcppt/parse/detail/make_alternative.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
 	libs/parse/include/fcppt/parse/detail/sequence_result.hpp
 	libs/parse/include/fcppt/parse/epsilon.hpp

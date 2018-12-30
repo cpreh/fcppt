@@ -34,9 +34,7 @@ main()
 				int,
 				int
 			>,
-			fcppt::variant::variadic<
-				int
-			>
+			int
 		>,
 		""
 	);
@@ -49,9 +47,7 @@ main()
 				>,
 				int
 			>,
-			fcppt::variant::variadic<
-				int
-			>
+			int
 		>,
 		""
 	);

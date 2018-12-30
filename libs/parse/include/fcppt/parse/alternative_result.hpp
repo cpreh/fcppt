@@ -9,6 +9,7 @@
 
 #include <fcppt/brigand/unique.hpp>
 #include <fcppt/parse/detail/alternative_list.hpp>
+#include <fcppt/parse/detail/alternative_result.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/append.hpp>
@@ -27,7 +28,7 @@ template<
 using
 alternative_result
 =
-fcppt::variant::object<
+fcppt::parse::detail::alternative_result<
 	fcppt::brigand::unique<
 		::brigand::append<
 			typename

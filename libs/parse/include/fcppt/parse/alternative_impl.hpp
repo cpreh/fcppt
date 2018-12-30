@@ -20,6 +20,7 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/detail/make_alternative.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -123,11 +124,13 @@ fcppt::parse::alternative<
 						{
 							return
 								fcppt::optional::make(
-									result_type{
+									fcppt::parse::detail::make_alternative<
+										result_type
+									>(
 										std::move(
 											_right_result
 										)
-									}
+									)
 								);
 						}
 					);
@@ -141,11 +144,13 @@ fcppt::parse::alternative<
 			{
 				return
 					fcppt::optional::make(
-						result_type{
+						fcppt::parse::detail::make_alternative<
+							result_type
+						>(
 							std::move(
 								_left_result
 							)
-						}
+						)
 					);
 			}
 		);

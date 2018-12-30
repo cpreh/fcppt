@@ -98,7 +98,7 @@ TEST_CASE(
 )
 {
 	fcppt::parse::separator const parser{
-		+~fcppt::parse::char_set{','}
+		+~fcppt::parse::char_set{',','='}
 		>>
 		fcppt::parse::literal{'='}
 		>>
