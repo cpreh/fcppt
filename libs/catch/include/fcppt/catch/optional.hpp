@@ -7,7 +7,7 @@
 #ifndef FCPPT_CATCH_OPTIONAL_HPP_INCLUDED
 #define FCPPT_CATCH_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/catch/detail/convert.hpp>
+#include <fcppt/catch/convert.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -55,7 +55,7 @@ struct StringMaker<
 					return
 						std::string{"J "}
 						+
-						fcppt::catch_::detail::convert(
+						fcppt::catch_::convert(
 							_inner
 						);
 				}

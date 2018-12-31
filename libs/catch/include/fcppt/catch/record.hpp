@@ -10,7 +10,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/catch/detail/convert.hpp>
+#include <fcppt/catch/convert.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/label_name.hpp>
@@ -85,7 +85,7 @@ struct StringMaker<
 						+
 						" = "
 						+
-						fcppt::catch_::detail::convert(
+						fcppt::catch_::convert(
 							fcppt::record::get<
 								label
 							>(

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CATCH_DETAIL_CONVERT_HPP_INCLUDED
-#define FCPPT_CATCH_DETAIL_CONVERT_HPP_INCLUDED
+#ifndef FCPPT_CATCH_CONVERT_HPP_INCLUDED
+#define FCPPT_CATCH_CONVERT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -17,9 +17,12 @@ namespace fcppt
 {
 namespace catch_
 {
-namespace detail
-{
 
+/**
+\brief Calls Catch's StringMaker
+
+\ingroup fcpptcatch
+*/
 template<
 	typename Type
 >
@@ -36,7 +39,6 @@ convert(
 		);
 }
 
-}
 }
 }
 

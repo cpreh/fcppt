@@ -88,9 +88,11 @@ add_fcppt_parse_test(
 	literal
 )
 
-#add_fcppt_parse_test(
-#	json
-#)
+add_fcppt_parse_test(
+	json
+	LINK_LIBS
+		fcppt_catch_interface
+)
 
 add_fcppt_parse_test(
 	not

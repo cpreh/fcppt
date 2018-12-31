@@ -8,6 +8,8 @@
 #include <fcppt/not.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/catch/convert.hpp>
+#include <fcppt/catch/variant.hpp>
 #include <fcppt/container/insert.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
@@ -19,6 +21,7 @@
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
+#include <fcppt/parse/make_convert.hpp>
 #include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/separator.hpp>
@@ -28,12 +31,13 @@
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <map>
 #include <string>
 #include <tuple>
-#include <unordered_map>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -49,89 +53,121 @@ struct null
 {
 };
 
-struct array;
+bool
+operator==(
+	json::null const &,
+	json::null const &
+);
 
-struct object;
+bool
+operator==(
+	json::null const &,
+	json::null const &
+)
+{
+	return
+		true;
+}
+
+struct value
+{
+	fcppt::variant::variadic<
+		json::null,
+		bool,
+		int,
+		float,
+		std::string,
+		std::vector<
+			json::value
+		>,
+		// std::unordered_map doesn't work here, why?
+		//std::unordered_map<
+		std::map<
+			std::string,
+			json::value
+		>
+	> impl;
+};
+
+bool
+operator==(
+	json::value const &,
+	json::value const &
+);
+
+bool
+operator==(
+	json::value const &_left,
+	json::value const &_right
+)
+{
+	return
+		_left.impl
+		==
+		_right.impl;
+}
 
 typedef
-fcppt::variant::variadic<
-	json::null,
-	bool,
-	int,
-	float,
-	std::string,
-	json::array,
-	json::object
+std::vector<
+	json::value
 >
-value;
+array;
 
-struct array
-{
-	std::vector<
-		json::value
-	> impl_;
-};
-
-struct object
-{
-	explicit
-	object(
-		std::vector<
-			std::tuple<
-				std::string,
-				json::value
-			>
-		> &&
-	);
-
-	std::unordered_map<
-		std::string,
-		json::value
-	> impl_;
-};
+typedef
+std::map<
+	std::string,
+	json::value
+>
+object;
 
 class double_insert
 {
 };
 
-object::object(
-	std::vector<
-		std::tuple<
-			std::string,
-			json::value
-		>
-	> &&_args
+typedef
+std::vector<
+	std::tuple<
+		std::string,
+		json::value
+	>
+>
+entries;
+
+object
+make_object(
+	entries &&
+);
+
+object
+make_object(
+	entries &&_args
 )
-:
-	impl_{
+{
+	return
 		fcppt::algorithm::fold(
 			fcppt::container::make_move_range(
 				std::move(
 					_args
 				)
 			),
-			std::unordered_map<
-				std::string,
-				json::value
-			>{},
+			object{},
 			[](
 				std::tuple<
 					std::string,
 					json::value
 				> const &_element,
-				std::unordered_map<
-					std::string,
-					json::value
-				> &&_state
+				// > &&_element,
+				object &&_state
 			)
 			{
 				if(
 					fcppt::not_(
 						fcppt::container::insert(
 							_state,
-							//std::move(
-								_element
-							//)
+							object::value_type{
+								std::get<0>(_element),
+								std::get<1>(_element)
+							}
 						)
 					)
 				)
@@ -143,11 +179,8 @@ object::object(
 					_state
 				);
 			}
-		)
-	}
-{
+		);
 }
-
 
 typedef
 fcppt::variant::variadic<
@@ -220,35 +253,36 @@ parser::parser()
 	},
 	value_{
 		parse::make_base<char_type,skipper>(
-			parse::convert_const(parse::string("null"), json::null{})
-			| (parse::convert_const(parse::string("true"), true)
-				| parse::convert_const(parse::string("false"), false))
-			| parse::int_<int>{}
-			| parse::float_<float>{}
+			parse::construct<json::value>(
+				parse::convert_const(parse::string("null"), json::null{})
+				| (parse::convert_const(parse::string("true"), true)
+					| parse::convert_const(parse::string("false"), false))
+				| parse::int_<int>{}
+				| parse::float_<float>{}
 
-			| fcppt::make_cref(string_)
-			| fcppt::make_cref(array_)
-			| fcppt::make_cref(object_)
+				| fcppt::make_cref(string_)
+				| fcppt::make_cref(array_)
+				| fcppt::make_cref(object_)
+			)
 		)
 	},
 	object_{
 		parse::make_base<char_type,skipper>(
-			fcppt::parse::construct<json::object>(
+			parse::make_convert(
 				parse::literal('{')
 				>> parse::separator(
 					fcppt::make_cref(string_) >> parse::literal(':') >> fcppt::make_cref(value_), ',')
-				>> parse::literal('}')
+				>> parse::literal('}'),
+				[](json::entries &&_entries) { return json::make_object(std::move(_entries)); }
 			)
 		)
 	},
 	array_{
 		parse::make_base<char_type,skipper>(
-			fcppt::parse::construct<json::array>(
-				parse::literal('[')
-				>> parse::separator(
-					fcppt::make_cref(value_), ',')
-				>> parse::literal(']')
-			)
+			parse::literal('[')
+			>> parse::separator(
+				fcppt::make_cref(value_), ',')
+			>> parse::literal(']')
 		)
 	},
 	start_{
@@ -258,6 +292,45 @@ parser::parser()
 	}
 {
 }
+
+}
+
+namespace Catch
+{
+
+template<>
+struct StringMaker<
+	json::null
+>
+{
+	static
+	std::string
+	convert(
+		json::null const &
+	)
+	{
+		return
+			std::string{"null"};
+	}
+};
+
+template<>
+struct StringMaker<
+	json::value
+>
+{
+	static
+	std::string
+	convert(
+		json::value const &_value
+	)
+	{
+		return
+			fcppt::catch_::convert(
+				_value.impl
+			);
+	}
+};
 
 }
 
