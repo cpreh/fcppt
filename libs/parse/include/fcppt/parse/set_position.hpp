@@ -10,6 +10,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/detail/check_bad.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
@@ -42,6 +43,10 @@ set_position(
 	> &stream{
 		_state.get().stream()
 	};
+
+	fcppt::parse::detail::check_bad(
+		stream
+	);
 
 	stream.clear();
 

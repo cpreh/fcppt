@@ -10,9 +10,12 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
+#include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/space_skipper.hpp>
+#include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -85,6 +88,10 @@ TEST_CASE(
 			int
 		>{}
 		>>
+		fcppt::parse::literal{
+			','
+		}
+		>>
 		fcppt::parse::int_<
 			int
 		>{}
@@ -102,7 +109,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				"12 3"
+				"12, 3"
 			},
 			fcppt::parse::space_skipper()
 		)
@@ -114,6 +121,45 @@ TEST_CASE(
 				12,
 				3
 			)
+		)
+	);
+}
+
+TEST_CASE(
+	"parse::int vector",
+	"[parse]"
+)
+{
+	auto const parser{
+		*fcppt::parse::int_<
+			int
+		>{}
+	};
+
+	typedef
+	fcppt::parse::result_of<
+		decltype(
+			parser
+		)
+	>
+	result_type;
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{
+				"10 20"
+			},
+			fcppt::parse::space_skipper()
+		)
+		==
+		fcppt::parse::make_success<
+			char
+		>(
+			result_type{
+				10,
+				20
+			}
 		)
 	);
 }

@@ -8,12 +8,17 @@
 #include <fcppt/not.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/recursive.hpp>
+#include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/convert.hpp>
+#include <fcppt/catch/either.hpp>
 #include <fcppt/catch/recursive.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/container/insert.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
+#include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/construct.hpp>
@@ -24,6 +29,7 @@
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/make_convert.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/recursive.hpp>
@@ -74,6 +80,7 @@ operator==(
 
 struct value
 {
+	typedef
 	fcppt::variant::variadic<
 		json::null,
 		bool,
@@ -91,8 +98,37 @@ struct value
 				json::value
 			>
 		>
-	> impl;
+	>
+	type;
+
+	type impl;
 };
+
+template<
+	typename Type
+>
+fcppt::recursive<
+	json::value
+>
+make_value(
+	Type &&_value
+)
+{
+	return
+		fcppt::recursive<
+			json::value
+		>{
+			json::value{
+				json::value::type{
+					std::forward<
+						Type
+					>(
+						_value
+					)
+				}
+			}
+		};
+}
 
 bool
 operator==(
@@ -369,5 +405,50 @@ TEST_CASE(
 			std::string{},
 			fcppt::parse::space_skipper()
 		).has_failure()
+	);
+
+	CHECK(
+		fcppt::parse::parse_string(
+			fcppt::parse::deref(
+				parser_.get()
+			),
+			std::string{"[]"},
+			fcppt::parse::space_skipper()
+		)
+		==
+		fcppt::parse::make_success<
+			char
+		>(
+			json::start{
+				json::array{}
+			}
+		)
+	);
+
+	CHECK(
+		fcppt::parse::parse_string(
+			fcppt::parse::deref(
+				parser_.get()
+			),
+			std::string{"[1, true]"},
+			fcppt::parse::space_skipper()
+		)
+		==
+		fcppt::parse::make_success<
+			char
+		>(
+			json::start{
+				fcppt::container::make<
+					json::array
+				>(
+					json::make_value(
+						1
+					),
+					json::make_value(
+						true
+					)
+				)
+			}
+		)
 	);
 }

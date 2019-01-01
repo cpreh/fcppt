@@ -10,6 +10,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/detail/check_bad.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
@@ -41,8 +42,23 @@ get_position(
 	>
 	pos_type;
 
+	std::basic_istream<
+		Ch
+	> &stream{
+		_state.get().stream()
+	};
+
+	fcppt::parse::detail::check_bad(
+		stream
+	);
+
+	if(
+		stream.eof()
+	)
+		stream.clear();
+
 	pos_type const pos{
-		_state.get().stream().tellg()
+		stream.tellg()
 	};
 
 	if(
