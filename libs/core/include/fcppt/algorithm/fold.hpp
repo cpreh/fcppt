@@ -60,7 +60,13 @@ fold(
 		{
 			_state =
 				_function(
-					_fcppt_element,
+					std::forward<
+						decltype(
+							_fcppt_element
+						)
+					>(
+						_fcppt_element
+					),
 					std::move(
 						_state
 					)

@@ -84,8 +84,16 @@ sequence_result(
 ->
 decltype(
 	fcppt::parse::detail::combine_tuples(
-		_left,
-		_right
+		std::forward<
+			Left
+		>(
+			_left
+		),
+		std::forward<
+			Right
+		>(
+			_right
+		)
 	)
 )
 {

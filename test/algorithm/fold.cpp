@@ -5,16 +5,20 @@
 
 
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/catch/movable.hpp>
+#include <fcppt/container/make.hpp>
+#include <fcppt/container/make_move_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <functional>
+#include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"algorithm_fold"
-	"[algorithm_fold]"
+	"algorithm::fold"
+	"[algorithm]"
 )
 {
 	typedef
@@ -59,5 +63,56 @@ TEST_CASE(
 		)
 		==
 		10
+	);
+}
+
+TEST_CASE(
+	"algorithm::fold move"
+	"[algorithm]"
+)
+{
+	typedef
+	fcppt::catch_::movable<
+		int
+	>
+	int_movable;
+
+	typedef
+	std::vector<
+		int_movable
+	>
+	int_vector;
+
+	int_vector vector{
+		fcppt::container::make<
+			int_vector
+		>(
+			int_movable{
+				1
+			}
+		)
+	};
+
+	CHECK(
+		fcppt::algorithm::fold(
+			fcppt::container::make_move_range(
+				std::move(
+					vector
+				)
+			),
+			0,
+			[](
+				int_movable &&_element,
+				int const _sum
+			)
+			{
+				return
+					_element.value()
+					+
+					_sum;
+			}
+		)
+		==
+		1
 	);
 }

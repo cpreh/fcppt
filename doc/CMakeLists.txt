@@ -1859,6 +1859,10 @@ set(
 	libs/parse/include/fcppt/parse/parse_stream.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
 	libs/parse/include/fcppt/parse/position.hpp
+	libs/parse/include/fcppt/parse/recursive.hpp
+	libs/parse/include/fcppt/parse/recursive_decl.hpp
+	libs/parse/include/fcppt/parse/recursive_fwd.hpp
+	libs/parse/include/fcppt/parse/recursive_impl.hpp
 	libs/parse/include/fcppt/parse/repetition_decl.hpp
 	libs/parse/include/fcppt/parse/repetition_fwd.hpp
 	libs/parse/include/fcppt/parse/repetition_impl.hpp

@@ -12,6 +12,7 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/join.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/construct.hpp>
@@ -153,7 +154,9 @@ fcppt::parse::separator<
 						{
 							return
 								fcppt::container::join(
-									result_type{
+									fcppt::container::make<
+										result_type
+									>(
 										std::move(
 											std::get<
 												0
@@ -161,7 +164,7 @@ fcppt::parse::separator<
 												_inner_result
 											).get()
 										)
-									},
+									),
 									std::move(
 										std::get<
 											1

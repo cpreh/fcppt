@@ -7,6 +7,13 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Allow rvalues in \link fcppt::algorithm::loop_break\endlink,
+	\link fcppt::algorithm::loop\endlink and \link fcppt::algorithm::fold\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcatch
 	<p>
 	Output operators now recurse into Catch's output code instead

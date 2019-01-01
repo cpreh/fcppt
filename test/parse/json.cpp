@@ -7,8 +7,10 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/recursive.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/convert.hpp>
+#include <fcppt/catch/recursive.hpp>
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/container/insert.hpp>
 #include <fcppt/container/make_move_range.hpp>
@@ -24,6 +26,7 @@
 #include <fcppt/parse/make_convert.hpp>
 #include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/recursive.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/space_skipper.hpp>
 #include <fcppt/parse/string.hpp>
@@ -35,7 +38,7 @@
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <tuple>
 #include <utility>
@@ -78,13 +81,15 @@ struct value
 		float,
 		std::string,
 		std::vector<
-			json::value
+			fcppt::recursive<
+				json::value
+			>
 		>,
-		// std::unordered_map doesn't work here, why?
-		//std::unordered_map<
-		std::map<
+		std::unordered_map<
 			std::string,
-			json::value
+			fcppt::recursive<
+				json::value
+			>
 		>
 	> impl;
 };
@@ -109,14 +114,18 @@ operator==(
 
 typedef
 std::vector<
-	json::value
+	fcppt::recursive<
+		json::value
+	>
 >
 array;
 
 typedef
-std::map<
+std::unordered_map<
 	std::string,
-	json::value
+	fcppt::recursive<
+		json::value
+	>
 >
 object;
 
@@ -128,7 +137,9 @@ typedef
 std::vector<
 	std::tuple<
 		std::string,
-		json::value
+		fcppt::recursive<
+			json::value
+		>
 	>
 >
 entries;
@@ -154,9 +165,10 @@ make_object(
 			[](
 				std::tuple<
 					std::string,
-					json::value
-				> const &_element,
-				// > &&_element,
+					fcppt::recursive<
+						json::value
+					>
+				> &&_element,
 				object &&_state
 			)
 			{
@@ -165,8 +177,12 @@ make_object(
 						fcppt::container::insert(
 							_state,
 							object::value_type{
-								std::get<0>(_element),
-								std::get<1>(_element)
+								std::move(
+									std::get<0>(_element)
+								),
+								std::move(
+									std::get<1>(_element)
+								)
 							}
 						)
 					)
@@ -271,7 +287,10 @@ parser::parser()
 			parse::make_convert(
 				parse::literal('{')
 				>> parse::separator(
-					fcppt::make_cref(string_) >> parse::literal(':') >> fcppt::make_cref(value_), ',')
+					fcppt::make_cref(string_)
+					>> parse::literal(':')
+					>> parse::recursive{fcppt::make_cref(value_)},
+					',')
 				>> parse::literal('}'),
 				[](json::entries &&_entries) { return json::make_object(std::move(_entries)); }
 			)
@@ -281,7 +300,8 @@ parser::parser()
 		parse::make_base<char_type,skipper>(
 			parse::literal('[')
 			>> parse::separator(
-				fcppt::make_cref(value_), ',')
+				parse::recursive{fcppt::make_cref(value_)},
+				',')
 			>> parse::literal(']')
 		)
 	},

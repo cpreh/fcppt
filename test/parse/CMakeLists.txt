@@ -105,6 +105,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	recursive
+)
+
+add_fcppt_parse_test(
 	repetition
 )
 
