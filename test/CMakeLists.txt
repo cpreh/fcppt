@@ -250,6 +250,10 @@ add_subdirectory(
 )
 
 add_fcppt_test(
+	recursive
+)
+
+add_fcppt_test(
 	reference
 )
 

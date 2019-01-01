@@ -1093,6 +1093,12 @@ set(
 	libs/core/include/fcppt/record/set.hpp
 	libs/core/include/fcppt/record/variadic.hpp
 	libs/core/include/fcppt/record/variadic_fwd.hpp
+	libs/core/include/fcppt/recursive.hpp
+	libs/core/include/fcppt/recursive_comparison.hpp
+	libs/core/include/fcppt/recursive_decl.hpp
+	libs/core/include/fcppt/recursive_fwd.hpp
+	libs/core/include/fcppt/recursive_impl.hpp
+	libs/core/include/fcppt/recursive_output.hpp
 	libs/core/include/fcppt/reference.hpp
 	libs/core/include/fcppt/reference_comparison.hpp
 	libs/core/include/fcppt/reference_decl.hpp

@@ -15,6 +15,7 @@
 	<ul>
 	<li>Added Catch output for \link fcppt::record::object\endlink,
 	\link fcppt::strong_typedef\endlink and \link fcppt::optional::object\endlink.</li>
+	<li>Added \link fcppt::catch_::convert\endlink.</li>
 	</ul>
 </li>
 
@@ -27,6 +28,7 @@
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_STRING_LITERAL\endlink.</li>
+	<li>Added \link fcppt::recursive\endlink.</li>
 	</ul>
 </li>
 

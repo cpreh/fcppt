@@ -35,6 +35,12 @@ add_fcppt_catch_test(
 )
 
 add_fcppt_catch_test(
+	recursive
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_catch_test(
 	strong_typedef
 	LINK_LIBS
 		fcppt_catch_interface

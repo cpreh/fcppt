@@ -341,11 +341,13 @@ TEST_CASE(
 {
 	parser const parser_{};
 
-	fcppt::parse::parse_string(
-		fcppt::parse::deref(
-			parser_.get()
-		),
-		std::string{},
-		fcppt::parse::space_skipper()
+	CHECK(
+		fcppt::parse::parse_string(
+			fcppt::parse::deref(
+				parser_.get()
+			),
+			std::string{},
+			fcppt::parse::space_skipper()
+		).has_failure()
 	);
 }
