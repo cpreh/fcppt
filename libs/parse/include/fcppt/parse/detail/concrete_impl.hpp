@@ -10,8 +10,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/base_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/concrete_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

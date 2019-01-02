@@ -13,8 +13,8 @@
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/parse/basic_literal_decl.hpp>
-#include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/char_impl.hpp>
+#include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 

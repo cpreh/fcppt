@@ -11,8 +11,8 @@
 #include <fcppt/parse/convert_const.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/string.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

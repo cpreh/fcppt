@@ -10,9 +10,9 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/convert_const_fwd.hpp>
+#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/result_fwd.hpp>
 
 
 namespace fcppt

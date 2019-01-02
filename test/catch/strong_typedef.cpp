@@ -5,8 +5,8 @@
 
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/strong_typedef.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -5,8 +5,8 @@
 
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/not.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/recursive.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/algorithm/fold.hpp>
@@ -25,11 +25,11 @@
 #include <fcppt/parse/convert_const.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/int.hpp>
+#include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/make_convert.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/recursive.hpp>
 #include <fcppt/parse/separator.hpp>
@@ -43,9 +43,9 @@
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <unordered_map>
 #include <string>
 #include <tuple>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

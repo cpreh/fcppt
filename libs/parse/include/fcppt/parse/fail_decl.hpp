@@ -8,11 +8,11 @@
 #define FCPPT_PARSE_FAIL_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/fail_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/fail_fwd.hpp>
+#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/result_fwd.hpp>
 
 
 namespace fcppt

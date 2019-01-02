@@ -9,13 +9,13 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/repetition_plus_fwd.hpp>
 #include <fcppt/parse/repetition_impl.hpp>
+#include <fcppt/parse/repetition_plus_fwd.hpp>
 #include <fcppt/parse/repetition_result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 
 
 namespace fcppt

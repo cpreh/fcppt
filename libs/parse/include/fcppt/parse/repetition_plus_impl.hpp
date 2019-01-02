@@ -12,8 +12,8 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/repetition_plus_decl.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

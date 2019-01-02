@@ -8,8 +8,8 @@
 #define FCPPT_RECURSIVE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/recursive_decl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 
 
 template<

@@ -12,9 +12,9 @@
 #include <fcppt/parse/basic_literal_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/is_char.hpp>
+#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/result_fwd.hpp>
 
 
 namespace fcppt

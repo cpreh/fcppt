@@ -11,9 +11,9 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/base_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/result_fwd.hpp>
 
 
 namespace fcppt

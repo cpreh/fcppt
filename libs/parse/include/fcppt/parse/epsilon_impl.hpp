@@ -7,13 +7,13 @@
 #ifndef FCPPT_PARSE_EPSILON_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_EPSILON_IMPL_HPP_INCLUDED
 
-#include <fcppt/unit.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/unit.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/parse/epsilon_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/epsilon_decl.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 
 
 inline

@@ -7,8 +7,8 @@
 #ifndef FCPPT_PARSE_CONTEXT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CONTEXT_DECL_HPP_INCLUDED
 
-#include <fcppt/unit.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/unit.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -10,8 +10,8 @@
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
 #include <fcppt/catch/either.hpp>
-#include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/record.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/long_name.hpp>

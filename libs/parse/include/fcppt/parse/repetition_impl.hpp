@@ -14,11 +14,11 @@
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/repetition_decl.hpp>
+#include <fcppt/parse/result.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/result.hpp>
-#include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

@@ -15,8 +15,8 @@
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_char_set_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
 #include <utility>

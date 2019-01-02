@@ -8,10 +8,10 @@
 #define FCPPT_PARSE_FAIL_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/fail_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/fail_decl.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 
 
 template<

@@ -11,10 +11,10 @@
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/optional_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 
 
 namespace fcppt

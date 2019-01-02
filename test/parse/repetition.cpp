@@ -9,13 +9,13 @@
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

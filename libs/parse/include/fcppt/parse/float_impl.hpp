@@ -11,9 +11,9 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/float_decl.hpp>
 #include <fcppt/parse/get.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_impl.hpp>
-#include <fcppt/parse/result.hpp>
 
 
 template<

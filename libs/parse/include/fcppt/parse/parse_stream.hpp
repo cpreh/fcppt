@@ -16,8 +16,8 @@
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/is_valid_argument.hpp>
-#include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>

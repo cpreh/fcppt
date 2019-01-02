@@ -9,8 +9,8 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/optional/map.hpp>
@@ -19,10 +19,10 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/literal.hpp>
-#include <fcppt/parse/separator_decl.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/separator_decl.hpp>
+#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>

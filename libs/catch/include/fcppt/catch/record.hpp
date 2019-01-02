@@ -7,8 +7,8 @@
 #ifndef FCPPT_CATCH_RECORD_HPP_INCLUDED
 #define FCPPT_CATCH_RECORD_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/convert.hpp>
 #include <fcppt/record/element_to_label.hpp>

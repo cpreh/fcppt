@@ -10,9 +10,9 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/basic_char_set_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
 #include <unordered_set>

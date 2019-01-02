@@ -7,8 +7,8 @@
 #ifndef FCPPT_CATCH_STRONG_TYPEDEF_HPP_INCLUDED
 #define FCPPT_CATCH_STRONG_TYPEDEF_HPP_INCLUDED
 
-#include <fcppt/catch/convert.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/catch/convert.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
