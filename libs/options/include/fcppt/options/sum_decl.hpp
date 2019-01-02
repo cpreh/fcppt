@@ -48,26 +48,6 @@ public:
 		Right &&
 	);
 
-	sum(
-		sum const &
-	);
-
-	sum(
-		sum &&
-	);
-
-	sum &
-	operator=(
-		sum const &
-	);
-
-	sum &
-	operator=(
-		sum &&
-	);
-
-	~sum();
-
 	typedef
 	fcppt::options::result_of<
 		Left

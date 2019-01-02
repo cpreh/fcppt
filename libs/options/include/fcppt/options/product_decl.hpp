@@ -48,26 +48,6 @@ public:
 		Right &&
 	);
 
-	product(
-		product const &
-	);
-
-	product(
-		product &&
-	);
-
-	product &
-	operator=(
-		product const &
-	);
-
-	product &
-	operator=(
-		product &&
-	);
-
-	~product();
-
 	typedef
 	fcppt::record::disjoint_product<
 		fcppt::options::result_of<

@@ -20,6 +20,7 @@
 #include <fcppt/record/all_disjoint.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/variadic_fwd.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/transform.hpp>
@@ -27,6 +28,7 @@
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
 #include <tuple>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -94,33 +96,30 @@ public:
 	*/
 	template<
 		typename OptionsParserArg,
-		typename... SubCommandsArgs
+		typename... SubCommandsArgs,
+		typename =
+			std::enable_if_t<
+				std::conjunction_v<
+					std::is_same<
+						OptionsParser,
+						fcppt::type_traits::remove_cv_ref_t<
+							OptionsParserArg
+						>
+					>,
+					std::is_same<
+						SubCommands,
+						fcppt::type_traits::remove_cv_ref_t<
+							SubCommandsArgs
+						>
+					>...
+				>
+			>
 	>
 	explicit
 	commands(
 		OptionsParserArg &&,
 		SubCommandsArgs &&...
 	);
-
-	commands(
-		commands const &
-	);
-
-	commands(
-		commands &&
-	);
-
-	commands &
-	operator=(
-		commands const &
-	);
-
-	commands &
-	operator=(
-		commands &&
-	);
-
-	~commands();
 
 	typedef
 	fcppt::variant::variadic<

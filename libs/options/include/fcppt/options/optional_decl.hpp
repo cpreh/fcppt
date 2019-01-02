@@ -51,26 +51,6 @@ public:
 		Parser &&
 	);
 
-	optional(
-		optional const &
-	);
-
-	optional(
-		optional &&
-	);
-
-	optional &
-	operator=(
-		optional const &
-	);
-
-	optional &
-	operator=(
-		optional &&
-	);
-
-	~optional();
-
 	typedef
 	fcppt::record::map_elements<
 		fcppt::options::result_of<

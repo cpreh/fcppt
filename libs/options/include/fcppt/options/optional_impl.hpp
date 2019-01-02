@@ -59,61 +59,6 @@ fcppt::options::optional<
 template<
 	typename Parser
 >
-fcppt::options::optional<
-	Parser
->::optional(
-	optional const &
-)
-= default;
-
-template<
-	typename Parser
->
-fcppt::options::optional<
-	Parser
->::optional(
-	optional &&
-)
-= default;
-
-template<
-	typename Parser
->
-fcppt::options::optional<
-	Parser
-> &
-fcppt::options::optional<
-	Parser
->::operator=(
-	optional const &
-)
-= default;
-
-template<
-	typename Parser
->
-fcppt::options::optional<
-	Parser
-> &
-fcppt::options::optional<
-	Parser
->::operator=(
-	optional &&
-)
-= default;
-
-template<
-	typename Parser
->
-fcppt::options::optional<
-	Parser
->::~optional()
-{
-}
-
-template<
-	typename Parser
->
 fcppt::options::parse_result<
 	typename
 	fcppt::options::optional<
