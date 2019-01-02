@@ -9,11 +9,11 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/unit_fwd.hpp>
-#include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_string_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/is_char.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/repetition_impl.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -29,8 +29,16 @@ template<
 	typename Ch
 >
 class basic_string
+:
+	private fcppt::parse::tag
 {
 public:
+	static_assert(
+		fcppt::parse::is_char<
+			Ch
+		>::value
+	);
+
 	explicit
 	basic_string(
 		std::basic_string<
@@ -62,12 +70,6 @@ private:
 	std::basic_string<
 		Ch
 	> string_;
-
-	fcppt::parse::repetition<
-		fcppt::parse::basic_char<
-			Ch
-		>
-	> impl_;
 };
 
 }

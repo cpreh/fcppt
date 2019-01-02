@@ -4,14 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_REPETITION_RESULT_HPP_INCLUDED
-#define FCPPT_PARSE_REPETITION_RESULT_HPP_INCLUDED
+#ifndef FCPPT_PARSE_IS_PARSER_HPP_INCLUDED
+#define FCPPT_PARSE_IS_PARSER_HPP_INCLUDED
 
-#include <fcppt/parse/is_char.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <type_traits>
-#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,21 +19,14 @@ namespace parse
 {
 
 template<
-	typename Result
+	typename Type
 >
 using
-repetition_result
+is_parser
 =
-std::conditional_t<
-	fcppt::parse::is_char<
-		Result
-	>::value,
-	std::basic_string<
-		Result
-	>,
-	std::vector<
-		Result
-	>
+std::is_base_of<
+	fcppt::parse::tag,
+	Type
 >;
 
 }

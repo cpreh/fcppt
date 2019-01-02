@@ -11,6 +11,7 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/convert_const_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 
 
@@ -24,6 +25,8 @@ template<
 	typename Result
 >
 class convert_const
+:
+	private fcppt::parse::tag
 {
 public:
 	convert_const(

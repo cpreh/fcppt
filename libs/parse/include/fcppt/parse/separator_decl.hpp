@@ -11,6 +11,7 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/separator_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -28,6 +29,8 @@ template<
 	typename Ch
 >
 class separator
+:
+	private fcppt::parse::tag
 {
 public:
 	separator(

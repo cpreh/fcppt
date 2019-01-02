@@ -12,6 +12,7 @@
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/alternative_fwd.hpp>
 #include <fcppt/parse/alternative_result.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 
@@ -26,6 +27,8 @@ template<
 	typename Right
 >
 class alternative
+:
+	private fcppt::parse::tag
 {
 public:
 	alternative(

@@ -93,6 +93,9 @@ set(
 	libs/parse/include/fcppt/parse/int_decl.hpp
 	libs/parse/include/fcppt/parse/int_fwd.hpp
 	libs/parse/include/fcppt/parse/int_impl.hpp
+	libs/parse/include/fcppt/parse/is_char.hpp
+	libs/parse/include/fcppt/parse/is_parser.hpp
+	libs/parse/include/fcppt/parse/is_valid_argument.hpp
 	libs/parse/include/fcppt/parse/lexeme.hpp
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp
@@ -153,6 +156,7 @@ set(
 	libs/parse/include/fcppt/parse/string_decl.hpp
 	libs/parse/include/fcppt/parse/string_fwd.hpp
 	libs/parse/include/fcppt/parse/string_impl.hpp
+	libs/parse/include/fcppt/parse/tag.hpp
 )
 
 make_fcppt_library(

@@ -18,13 +18,12 @@
 #include <fcppt/container/insert.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
-#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/object.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/convert_const.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/float.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
@@ -85,7 +84,6 @@ struct value
 		json::null,
 		bool,
 		int,
-		float,
 		std::string,
 		std::vector<
 			fcppt::recursive<
@@ -300,7 +298,9 @@ parser::parser()
 :
 	string_{
 		parse::make_base<char_type,skipper>(
-			parse::lexeme(parse::literal('"') >> *~parse::char_set{'"'} >> parse::literal('"'))
+			parse::literal('"')
+			>> parse::lexeme(*~parse::char_set{'"'})
+			>> parse::literal('"')
 		)
 	},
 	value_{
@@ -310,8 +310,6 @@ parser::parser()
 				| (parse::convert_const(parse::string("true"), true)
 					| parse::convert_const(parse::string("false"), false))
 				| parse::int_<int>{}
-				| parse::float_<float>{}
-
 				| fcppt::make_cref(string_)
 				| fcppt::make_cref(array_)
 				| fcppt::make_cref(object_)
@@ -347,6 +345,75 @@ parser::parser()
 		)
 	}
 {
+}
+
+namespace json
+{
+
+fcppt::either::object<
+	fcppt::parse::error<
+		char
+	>,
+	json::start
+>
+parse_string(
+	parser const &,
+	std::string &&
+);
+
+fcppt::either::object<
+	fcppt::parse::error<
+		char
+	>,
+	json::start
+>
+parse_string(
+	parser const &_parser,
+	std::string &&_input
+)
+{
+	return
+		fcppt::parse::parse_string(
+			fcppt::parse::deref(
+				_parser.get()
+			),
+			std::move(
+				_input
+			),
+			fcppt::parse::space_skipper()
+		);
+}
+
+fcppt::either::object<
+	fcppt::parse::error<
+		char
+	>,
+	json::start
+>
+make_success(
+	json::start &&
+);
+
+fcppt::either::object<
+	fcppt::parse::error<
+		char
+	>,
+	json::start
+>
+make_success(
+	json::start &&_value
+)
+{
+	return
+		fcppt::parse::make_success<
+			char
+		>(
+			std::move(
+				_value
+			)
+		);
+}
+
 }
 
 }
@@ -391,34 +458,26 @@ struct StringMaker<
 }
 
 TEST_CASE(
-	"parse::json",
+	"parse::json base",
 	"[parse]"
 )
 {
 	parser const parser_{};
 
 	CHECK(
-		fcppt::parse::parse_string(
-			fcppt::parse::deref(
-				parser_.get()
-			),
-			std::string{},
-			fcppt::parse::space_skipper()
+		json::parse_string(
+			parser_,
+			std::string{}
 		).has_failure()
 	);
 
 	CHECK(
-		fcppt::parse::parse_string(
-			fcppt::parse::deref(
-				parser_.get()
-			),
-			std::string{"[]"},
-			fcppt::parse::space_skipper()
+		json::parse_string(
+			parser_,
+			std::string{"[]"}
 		)
 		==
-		fcppt::parse::make_success<
-			char
-		>(
+		json::make_success(
 			json::start{
 				json::array{}
 			}
@@ -426,17 +485,107 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::parse_string(
-			fcppt::parse::deref(
-				parser_.get()
-			),
-			std::string{"[1, true]"},
-			fcppt::parse::space_skipper()
+		json::parse_string(
+			parser_,
+			std::string{"[1]"}
 		)
 		==
-		fcppt::parse::make_success<
-			char
-		>(
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::array
+				>(
+					json::make_value(
+						1
+					)
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"[null]"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::array
+				>(
+					json::make_value(
+						json::null{}
+					)
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"[true]"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::array
+				>(
+					json::make_value(
+						true
+					)
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"[false]"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::array
+				>(
+					json::make_value(
+						false
+					)
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"[ \"test\" ]"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::array
+				>(
+					json::make_value(
+						std::string{"test"}
+					)
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"[1, true]"}
+		)
+		==
+		json::make_success(
 			json::start{
 				fcppt::container::make<
 					json::array
@@ -447,6 +596,136 @@ TEST_CASE(
 					json::make_value(
 						true
 					)
+				)
+			}
+		)
+	);
+}
+
+TEST_CASE(
+	"parse::json object",
+	"[parse]"
+)
+{
+	parser const parser_{};
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"{}"}
+		)
+		==
+		json::make_success(
+			json::start{
+				json::object{}
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"{\"XY\":42}"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::object
+				>(
+					json::object::value_type{
+						std::string{"XY"},
+						json::make_value(
+							42
+						)
+					}
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{" { \"XY\" : 42 }"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::object
+				>(
+					json::object::value_type{
+						std::string{"XY"},
+						json::make_value(
+							42
+						)
+					}
+				)
+			}
+		)
+	);
+
+	CHECK(
+		json::parse_string(
+			parser_,
+			std::string{"{"
+				"\"X\" : true,"
+				"\"Y\" : [ 10, false, null ],"
+				"\"Z\" : { \"A\" : \"test\", \"B\" : 20 }"
+			"}"}
+		)
+		==
+		json::make_success(
+			json::start{
+				fcppt::container::make<
+					json::object
+				>(
+					json::object::value_type{
+						std::string{"X"},
+						json::make_value(
+							true
+						)
+					},
+					json::object::value_type{
+						std::string{"Y"},
+						json::make_value(
+							fcppt::container::make<
+								json::array
+							>(
+								json::make_value(
+									10
+								),
+								json::make_value(
+									false
+								),
+								json::make_value(
+									json::null{}
+								)
+							)
+						)
+					},
+					json::object::value_type{
+						std::string{"Z"},
+						json::make_value(
+							fcppt::container::make<
+								json::object
+							>(
+								json::object::value_type{
+									std::string{"A"},
+									json::make_value(
+										std::string{"test"}
+									)
+								},
+								json::object::value_type{
+									std::string{"B"},
+									json::make_value(
+										20
+									)
+								}
+							)
+						)
+					}
 				)
 			}
 		)

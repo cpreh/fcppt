@@ -13,6 +13,7 @@
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/parse/error.hpp>
+#include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_stream.hpp>
 #include <fcppt/parse/result_of.hpp>
@@ -50,6 +51,12 @@ parse_string(
 	Skipper const &_skipper
 )
 {
+	static_assert(
+		fcppt::parse::is_valid_argument<
+			Parser
+		>::value
+	);
+
 	std::basic_istringstream<
 		Ch
 	> stream{

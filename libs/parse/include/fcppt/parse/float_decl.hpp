@@ -11,6 +11,7 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/float_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -26,6 +27,8 @@ template<
 	typename Type
 >
 class float_
+:
+	private fcppt::parse::tag
 {
 public:
 	static_assert(

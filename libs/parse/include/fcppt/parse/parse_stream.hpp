@@ -15,6 +15,7 @@
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/error.hpp>
+#include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/detail/exception.hpp>
@@ -51,6 +52,12 @@ parse_stream(
 )
 try
 {
+	static_assert(
+		fcppt::parse::is_valid_argument<
+			Parser
+		>::value
+	);
+
 	fcppt::parse::state<
 		Ch
 	> state{

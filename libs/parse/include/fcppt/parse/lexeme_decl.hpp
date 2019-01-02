@@ -11,6 +11,7 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/lexeme_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 
@@ -24,6 +25,8 @@ template<
 	typename Parser
 >
 class lexeme
+:
+	private fcppt::parse::tag
 {
 public:
 	explicit

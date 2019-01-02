@@ -11,7 +11,9 @@
 #include <fcppt/unit_fwd.hpp>
 #include <fcppt/parse/basic_literal_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/is_char.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 
 
@@ -24,8 +26,16 @@ template<
 	typename Ch
 >
 class basic_literal
+:
+	private fcppt::parse::tag
 {
 public:
+	static_assert(
+		fcppt::parse::is_char<
+			Ch
+		>::value
+	);
+
 	explicit
 	basic_literal(
 		Ch

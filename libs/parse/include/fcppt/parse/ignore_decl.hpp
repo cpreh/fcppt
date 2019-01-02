@@ -12,6 +12,7 @@
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/ignore_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 
 
@@ -24,6 +25,8 @@ template<
 	typename Parser
 >
 class ignore
+:
+	private fcppt::parse::tag
 {
 public:
 	explicit

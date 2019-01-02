@@ -8,8 +8,10 @@
 #define FCPPT_PARSE_OPERATORS_ALTERNATIVE_HPP_INCLUDED
 
 #include <fcppt/parse/alternative_impl.hpp>
+#include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,9 +23,27 @@ namespace parse
 
 template<
 	typename Left,
-	typename Right
+	typename Right,
+	typename =
+		std::enable_if_t<
+			std::conjunction_v<
+				fcppt::parse::is_valid_argument<
+					Left
+				>,
+				fcppt::parse::is_valid_argument<
+					Right
+				>
+			>
+		>
 >
-auto
+fcppt::parse::alternative<
+	fcppt::type_traits::remove_cv_ref_t<
+		Left
+	>,
+	fcppt::type_traits::remove_cv_ref_t<
+		Right
+	>
+>
 operator|(
 	Left &&_left,
 	Right &&_right

@@ -15,6 +15,7 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/string.hpp>
+#include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -64,5 +65,37 @@ TEST_CASE(
 			},
 			fcppt::parse::epsilon{}
 		).has_failure()
+	);
+}
+
+TEST_CASE(
+	"parse::string sequence",
+	"[parse]"
+)
+{
+	auto const parser{
+		fcppt::parse::string{
+			std::string{"test1"}
+		}
+		>>
+		fcppt::parse::string{
+			std::string{"test2"}
+		}
+	};
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{
+				"test1test2"
+			},
+			fcppt::parse::epsilon{}
+		)
+		==
+		fcppt::parse::make_success<
+			char
+		>(
+			fcppt::unit{}
+		)
 	);
 }
