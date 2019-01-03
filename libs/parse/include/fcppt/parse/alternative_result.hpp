@@ -21,6 +21,13 @@ namespace fcppt
 namespace parse
 {
 
+/**
+\brief The result type of an alternative parser.
+
+\ingroup fcpptparse
+
+TODO
+*/
 template<
 	typename Left,
 	typename Right

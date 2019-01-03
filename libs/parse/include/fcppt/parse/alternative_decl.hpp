@@ -29,6 +29,19 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Tries two parsers in succession. Uses the result of the first one that does not fail.
+
+\ingroup fcpptparse
+
+This parser first saves the current position <code>p</code>.
+It then tries the parser \a Left.
+If it succeeds then its result is returned.
+Otherwise, the parser backtracks to position <code>p</code> and returns the result of \a Right
+(which might fail or not).
+
+See \link fcppt::parse::alternative_result\endlink on this parser's result type.
+*/
 template<
 	typename Left,
 	typename Right
