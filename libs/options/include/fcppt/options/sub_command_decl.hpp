@@ -11,6 +11,9 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_fwd.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/variadic_fwd.hpp>
 
@@ -19,6 +22,10 @@ namespace fcppt
 {
 namespace options
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
 \brief A sub command consists of a command name and a parser.
@@ -41,26 +48,6 @@ public:
 		Parser &&,
 		fcppt::options::optional_help_text &&
 	);
-
-	sub_command(
-		sub_command const &
-	);
-
-	sub_command(
-		sub_command &&
-	);
-
-	sub_command &
-	operator=(
-		sub_command const &
-	);
-
-	sub_command &
-	operator=(
-		sub_command &&
-	);
-
-	~sub_command();
 
 	fcppt::string const &
 	name() const;
@@ -88,6 +75,8 @@ private:
 
 	fcppt::options::optional_help_text help_text_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

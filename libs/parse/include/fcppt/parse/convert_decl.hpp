@@ -14,6 +14,9 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,6 +26,10 @@ namespace fcppt
 {
 namespace parse
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 template<
 	typename Parser,
@@ -70,6 +77,8 @@ private:
 
 	Convert convert_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

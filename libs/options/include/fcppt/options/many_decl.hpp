@@ -15,6 +15,9 @@
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -28,6 +31,10 @@ namespace fcppt
 {
 namespace options
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
 \brief A parser for zero or more elements.
@@ -85,6 +92,8 @@ public:
 private:
 	Parser parser_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
