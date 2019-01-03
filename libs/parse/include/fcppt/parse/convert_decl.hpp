@@ -7,6 +7,7 @@
 #ifndef FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
 
+#include <fcppt/function_impl.hpp>
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/convert_fwd.hpp>
@@ -17,9 +18,6 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -33,27 +31,31 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 template<
 	typename Parser,
-	typename Convert
+	typename Result
 >
 class convert
 :
 	private fcppt::parse::tag
 {
 public:
-	convert(
-		Parser &&,
-		Convert &&
-	);
+	typedef
+	Result
+	result_type;
 
 	typedef
-	std::result_of_t<
-		Convert(
+	fcppt::function<
+		result_type(
 			fcppt::parse::result_of<
 				Parser
 			> &&
 		)
 	>
-	result_type;
+	function_type;
+
+	convert(
+		Parser &&,
+		function_type &&
+	);
 
 	template<
 		typename Ch,
@@ -75,7 +77,7 @@ public:
 private:
 	Parser parser_;
 
-	Convert convert_;
+	function_type convert_;
 };
 
 FCPPT_PP_POP_WARNING

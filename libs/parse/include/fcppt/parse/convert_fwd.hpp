@@ -15,7 +15,7 @@ namespace parse
 
 template<
 	typename Parser,
-	typename Convert
+	typename Result
 >
 class convert;
 

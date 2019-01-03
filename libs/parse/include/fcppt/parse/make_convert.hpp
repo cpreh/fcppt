@@ -7,9 +7,12 @@
 #ifndef FCPPT_PARSE_MAKE_CONVERT_HPP_INCLUDED
 #define FCPPT_PARSE_MAKE_CONVERT_HPP_INCLUDED
 
+#include <fcppt/function_impl.hpp>
 #include <fcppt/parse/convert_impl.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,8 +30,12 @@ fcppt::parse::convert<
 	fcppt::type_traits::remove_cv_ref_t<
 		Parser
 	>,
-	fcppt::type_traits::remove_cv_ref_t<
-		Convert
+	std::result_of_t<
+		Convert(
+			fcppt::parse::result_of<
+				Parser
+			> &&
+		)
 	>
 >
 make_convert(
@@ -36,25 +43,41 @@ make_convert(
 	Convert &&_convert
 )
 {
+	typedef
+	std::result_of_t<
+		Convert(
+			fcppt::parse::result_of<
+				Parser
+			> &&
+		)
+	>
+	result_type;
+
 	return
 		fcppt::parse::convert<
 			fcppt::type_traits::remove_cv_ref_t<
 				Parser
 			>,
-			fcppt::type_traits::remove_cv_ref_t<
-				Convert
-			>
+			result_type
 		>{
 			std::forward<
 				Parser
 			>(
 				_parser
 			),
-			std::forward<
-				Convert
-			>(
-				_convert
-			)
+			fcppt::function<
+				result_type(
+					fcppt::parse::result_of<
+						Parser
+					> &&
+				)
+			>{
+				std::forward<
+					Convert
+				>(
+					_convert
+				)
+			}
 		};
 }
 
