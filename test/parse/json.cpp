@@ -99,6 +99,19 @@ struct value
 	>
 	type;
 
+	explicit
+	value(
+		type &&_impl
+	)
+	:
+	impl{
+		std::move(
+			_impl
+		)
+	}
+	{
+	}
+
 	type impl;
 };
 
