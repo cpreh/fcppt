@@ -28,7 +28,7 @@ namespace parse
 
 \ingroup fcpptparse
 
-\tparam A parser whose result is a <code>std::tuple</code>.
+\tparam Parser A parser whose result is a <code>std::tuple</code>.
 */
 template<
 	typename Result,
