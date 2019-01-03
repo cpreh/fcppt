@@ -82,6 +82,7 @@ set(
 	doc/files/modules/math/vector.doxygen
 	doc/files/modules/optional.doxygen
 	doc/files/modules/options.doxygen
+	doc/files/modules/parse.doxygen
 	doc/files/modules/preprocessor.doxygen
 	doc/files/modules/random.doxygen
 	doc/files/modules/range.doxygen

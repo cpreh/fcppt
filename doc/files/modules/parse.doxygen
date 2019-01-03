@@ -1,0 +1,28 @@
+/**
+\defgroup fcpptparse fcppt.parse
+\ingroup fcpptmain
+\brief Library for parsers
+
+<b>Link to <code>fcppt_options_interface</code>.</b>
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptparse_introduction</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptparse_introduction Introduction
+
+*/
+
+namespace fcppt
+{
+/// Library for parsers
+namespace parse{}
+}
