@@ -95,6 +95,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	named
+)
+
+add_fcppt_parse_test(
 	not
 )
 

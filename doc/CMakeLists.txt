@@ -1847,6 +1847,10 @@ set(
 	libs/parse/include/fcppt/parse/make_base.hpp
 	libs/parse/include/fcppt/parse/make_convert.hpp
 	libs/parse/include/fcppt/parse/make_success.hpp
+	libs/parse/include/fcppt/parse/named.hpp
+	libs/parse/include/fcppt/parse/named_decl.hpp
+	libs/parse/include/fcppt/parse/named_fwd.hpp
+	libs/parse/include/fcppt/parse/named_impl.hpp
 	libs/parse/include/fcppt/parse/not_decl.hpp
 	libs/parse/include/fcppt/parse/not_fwd.hpp
 	libs/parse/include/fcppt/parse/not_impl.hpp
