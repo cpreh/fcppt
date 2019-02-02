@@ -55,6 +55,7 @@ public:
 		typename Skipper
 	>
 	fcppt::parse::result<
+		Ch,
 		result_type
 	>
 	parse(

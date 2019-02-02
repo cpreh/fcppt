@@ -47,6 +47,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::recursive<
 		Parser

@@ -8,10 +8,10 @@
 #define FCPPT_PARSE_REPETITION_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/make.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/repetition_decl.hpp>
 #include <fcppt/parse/result.hpp>
@@ -49,6 +49,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::repetition<
 		Parser
@@ -86,6 +87,7 @@ fcppt::parse::repetition<
 	for(;;)
 	{
 		fcppt::parse::result<
+			Ch,
 			fcppt::parse::result_of<
 				Parser
 			>
@@ -99,7 +101,7 @@ fcppt::parse::repetition<
 		};
 
 		if(
-			!element.has_value()
+			element.has_failure()
 		)
 			break;
 
@@ -110,7 +112,7 @@ fcppt::parse::repetition<
 
 		result.push_back(
 			std::move(
-				element.get_unsafe()
+				element.get_success_unsafe()
 			)
 		);
 	}
@@ -121,7 +123,9 @@ fcppt::parse::repetition<
 	);
 
 	return
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			Ch
+		>(
 			std::move(
 				result
 			)

@@ -9,7 +9,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/optional/map.hpp>
+#include <fcppt/either/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/ignore_decl.hpp>
@@ -46,6 +46,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::ignore<
 		Parser
@@ -65,7 +66,7 @@ fcppt::parse::ignore<
 ) const
 {
 	return
-		fcppt::optional::map(
+		fcppt::either::map(
 			fcppt::parse::deref(
 				this->parser_
 			).parse(

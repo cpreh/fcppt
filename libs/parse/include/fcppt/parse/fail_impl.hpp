@@ -8,10 +8,16 @@
 #define FCPPT_PARSE_FAIL_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/fail_decl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -31,6 +37,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::fail<
 		Result
@@ -50,9 +57,22 @@ fcppt::parse::fail<
 ) const
 {
 	return
-		fcppt::parse::result<
+		fcppt::either::make_failure<
 			result_type
-		>{};
+		>(
+			fcppt::parse::error<
+				Ch
+			>{
+				std::basic_string<
+					Ch
+				>{
+					FCPPT_STRING_LITERAL(
+						Ch,
+						"fail"
+					)
+				}
+			}
+		);
 }
 
 #endif

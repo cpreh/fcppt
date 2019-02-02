@@ -7,18 +7,23 @@
 #ifndef FCPPT_PARSE_BASIC_CHAR_SET_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_CHAR_SET_IMPL_HPP_INCLUDED
 
-#include <fcppt/const.hpp>
+#include <fcppt/output_to_string.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/container/contains.hpp>
-#include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/make_if.hpp>
+#include <fcppt/container/output.hpp>
+#include <fcppt/either/bind.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_char_set_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
+#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -66,6 +71,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::basic_char_set<
 		Ch
@@ -89,7 +95,7 @@ fcppt::parse::basic_char_set<
 	> const parser{};
 
 	return
-		fcppt::optional::bind(
+		fcppt::either::bind(
 			parser.parse(
 				_state,
 				_context
@@ -101,15 +107,55 @@ fcppt::parse::basic_char_set<
 			)
 			{
 				return
-					fcppt::optional::make_if(
-						fcppt::container::contains(
-							this->chars_,
-							_result
-						),
-						fcppt::const_(
+					fcppt::container::contains(
+						this->chars_,
+						_result
+					)
+					?
+						fcppt::parse::make_success<
+							Ch
+						>(
 							_result
 						)
-					);
+					:
+						fcppt::either::make_failure<
+							result_type
+						>(
+							fcppt::parse::error<
+								Ch
+							>{
+								std::basic_string<
+									Ch
+								>{
+									FCPPT_STRING_LITERAL(
+										Ch,
+										"Expected {"
+									)
+								}
+								+
+								fcppt::output_to_string<
+									std::basic_string<
+										Ch
+									>
+								>(
+									fcppt::container::output(
+										this->chars_
+									)
+								)
+								+
+								std::basic_string<
+									Ch
+								>{
+									FCPPT_STRING_LITERAL(
+										Ch,
+										"}, got "
+									)
+								}
+								+
+								_result
+							}
+						)
+					;
 			}
 		);
 }

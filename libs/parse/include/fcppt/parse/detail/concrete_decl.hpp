@@ -69,6 +69,7 @@ public:
 
 	virtual
 	fcppt::parse::result<
+		Ch,
 		result_type
 	>
 	parse(

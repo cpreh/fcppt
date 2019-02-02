@@ -7,7 +7,8 @@
 #ifndef FCPPT_PARSE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_RESULT_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/either/object_impl.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 
 

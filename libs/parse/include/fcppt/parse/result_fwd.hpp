@@ -7,7 +7,8 @@
 #ifndef FCPPT_PARSE_RESULT_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_RESULT_FWD_HPP_INCLUDED
 
-#include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/either/object_fwd.hpp>
+#include <fcppt/parse/error_fwd.hpp>
 
 
 namespace fcppt
@@ -16,13 +17,17 @@ namespace parse
 {
 
 template<
-	typename T
+	typename Ch,
+	typename Type
 >
 using
 result
 =
-fcppt::optional::object<
-	T
+fcppt::either::object<
+	fcppt::parse::error<
+		Ch
+	>,
+	Type
 >;
 
 }

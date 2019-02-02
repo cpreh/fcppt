@@ -8,12 +8,18 @@
 #define FCPPT_PARSE_FLOAT_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
+#include <fcppt/either/from_optional.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/float_decl.hpp>
 #include <fcppt/parse/get.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -33,6 +39,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::float_<
 		Type
@@ -57,10 +64,27 @@ fcppt::parse::float_<
 	);
 
 	return
-		fcppt::parse::get<
-			Type
-		>(
-			_state
+		fcppt::either::from_optional(
+			fcppt::parse::get<
+				Type
+			>(
+				_state
+			),
+			[]{
+				return
+					fcppt::parse::error<
+						Ch
+					>{
+						std::basic_string<
+							Ch
+						>{
+							FCPPT_STRING_LITERAL(
+								Ch,
+								"Expected float"
+							)
+						}
+					};
+			}
 		);
 }
 

@@ -9,9 +9,9 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/optional/make.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/epsilon_decl.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 
@@ -26,6 +26,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	fcppt::parse::epsilon::result_type
 >
 fcppt::parse::epsilon::parse(
@@ -40,7 +41,9 @@ fcppt::parse::epsilon::parse(
 ) const
 {
 	return
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			Ch
+		>(
 			fcppt::unit{}
 		);
 }

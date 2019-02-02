@@ -7,16 +7,21 @@
 #ifndef FCPPT_PARSE_BASIC_LITERAL_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_LITERAL_IMPL_HPP_INCLUDED
 
-#include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/make_if.hpp>
+#include <fcppt/either/bind.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_literal_decl.hpp>
 #include <fcppt/parse/char_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -41,6 +46,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::basic_literal<
 		Ch
@@ -64,7 +70,7 @@ fcppt::parse::basic_literal<
 	> const parser{};
 
 	return
-		fcppt::optional::bind(
+		fcppt::either::bind(
 			parser.parse(
 				_state,
 				_context
@@ -76,14 +82,46 @@ fcppt::parse::basic_literal<
 			)
 			{
 				return
-					fcppt::optional::make_if(
-						_ch
-						==
-						this->ch_,
-						fcppt::const_(
+					_ch
+					==
+					this->ch_
+					?
+						fcppt::parse::make_success<
+							Ch
+						>(
 							fcppt::unit{}
 						)
-					);
+					:
+						fcppt::either::make_failure<
+							result_type
+						>(
+							fcppt::parse::error<
+								Ch
+							>{
+								std::basic_string<
+									Ch
+								>{
+									FCPPT_STRING_LITERAL(
+										Ch,
+										"Expected "
+									)
+								}
+								+
+								this->ch_
+								+
+								std::basic_string<
+									Ch
+								>{
+									FCPPT_STRING_LITERAL(
+										Ch,
+										", got "
+									)
+								}
+								+
+								_ch
+							}
+						)
+					;
 			}
 		);
 }

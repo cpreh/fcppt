@@ -8,12 +8,15 @@
 #define FCPPT_PARSE_BASIC_STRING_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
+#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_string_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -47,6 +50,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::basic_string<
 		Ch
@@ -81,18 +85,33 @@ fcppt::parse::basic_string<
 				_context
 			)
 			!=
-			fcppt::optional::make(
+			fcppt::parse::make_success<
+				Ch
+			>(
 				elem
 			)
 		)
 			return
-				fcppt::optional::object<
+				fcppt::either::make_failure<
 					result_type
-				>();
+				>(
+					fcppt::parse::error<
+						Ch
+					>{
+						FCPPT_STRING_LITERAL(
+							Ch,
+							"Expected "
+						)
+						+
+						this->string_
+					}
+				);
 	}
 
 	return
-		fcppt::optional::make(
+		fcppt::parse::make_success<
+			Ch
+		>(
 			fcppt::unit{}
 		);
 }

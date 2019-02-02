@@ -10,12 +10,12 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/either/object_impl.hpp>
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_stream.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
@@ -35,10 +35,8 @@ template<
 	typename Parser,
 	typename Skipper
 >
-fcppt::either::object<
-	fcppt::parse::error<
-		Ch
-	>,
+fcppt::parse::result<
+	Ch,
 	fcppt::parse::result_of<
 		Parser
 	>

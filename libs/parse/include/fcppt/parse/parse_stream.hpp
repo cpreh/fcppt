@@ -10,12 +10,11 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/either/from_optional.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/either/object_impl.hpp>
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/is_valid_argument.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/exception.hpp>
@@ -35,10 +34,8 @@ template<
 	typename Parser,
 	typename Skipper
 >
-fcppt::either::object<
-	fcppt::parse::error<
-		Ch
-	>,
+fcppt::parse::result<
+	Ch,
 	fcppt::parse::result_of<
 		Parser
 	>
@@ -67,33 +64,16 @@ try
 	};
 
 	return
-		fcppt::either::from_optional(
-			_parser.parse(
-				fcppt::make_ref(
-					state
-				),
-				fcppt::parse::context<
-					Skipper
-				>{
-					fcppt::make_cref(
-						_skipper
-					)
-				}
+		_parser.parse(
+			fcppt::make_ref(
+				state
 			),
-			[]{
-				return
-					fcppt::parse::error<
-						Ch
-					>{
-						std::basic_string<
-							Ch
-						>{
-							FCPPT_STRING_LITERAL(
-								Ch,
-								"Parsing failed since parser returned nothing."
-							)
-						}
-					};
+			fcppt::parse::context<
+				Skipper
+			>{
+				fcppt::make_cref(
+					_skipper
+				)
 			}
 		);
 }

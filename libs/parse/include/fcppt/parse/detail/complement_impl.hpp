@@ -7,15 +7,18 @@
 #ifndef FCPPT_PARSE_DETAIL_COMPLEMENT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_COMPLEMENT_IMPL_HPP_INCLUDED
 
-#include <fcppt/const.hpp>
-#include <fcppt/not.hpp>
+#include <fcppt/output_to_string.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/container/contains.hpp>
-#include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/make_if.hpp>
+#include <fcppt/container/output.hpp>
+#include <fcppt/either/bind.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/complement_decl.hpp>
@@ -49,6 +52,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::detail::complement<
 		Parser
@@ -72,7 +76,7 @@ fcppt::parse::detail::complement<
 	> const parser{};
 
 	return
-		fcppt::optional::bind(
+		fcppt::either::bind(
 			parser.parse(
 				_state,
 				_context
@@ -84,19 +88,55 @@ fcppt::parse::detail::complement<
 			)
 			{
 				return
-					fcppt::optional::make_if(
-						fcppt::not_(
-							fcppt::container::contains(
-								fcppt::parse::deref(
-									this->parser_
-								).chars(),
+					fcppt::container::contains(
+						fcppt::parse::deref(
+							this->parser_
+						).chars(),
+						_result
+					)
+					?
+						fcppt::either::make_failure<
+							result_type
+						>(
+							fcppt::parse::error<
+								Ch
+							>{
+								FCPPT_STRING_LITERAL(
+									Ch,
+									"Expected any char but {"
+								)
+								+
+								fcppt::output_to_string<
+									std::basic_string<
+										Ch
+									>
+								>(
+									fcppt::container::output(
+										fcppt::parse::deref(
+											this->parser_
+										).chars()
+									)
+								)
+								+
+								std::basic_string<
+									Ch
+								>{
+									FCPPT_STRING_LITERAL(
+										Ch,
+										"}, got "
+									)
+								}
+								+
 								_result
-							)
-						),
-						fcppt::const_(
+							}
+						)
+					:
+						fcppt::parse::make_success<
+							Ch
+						>(
 							_result
 						)
-					);
+					;
 			}
 		);
 }

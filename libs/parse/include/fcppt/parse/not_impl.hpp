@@ -7,19 +7,22 @@
 #ifndef FCPPT_PARSE_NOT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_NOT_IMPL_HPP_INCLUDED
 
-#include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/optional/make_if.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/not_decl.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -49,6 +52,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::not_<
 		Parser
@@ -81,7 +85,7 @@ fcppt::parse::not_<
 		).parse(
 			_state,
 			_context
-		).has_value()
+		).has_success()
 	};
 
 	fcppt::parse::set_position(
@@ -90,12 +94,31 @@ fcppt::parse::not_<
 	);
 
 	return
-		fcppt::optional::make_if(
-			!has_value,
-			fcppt::const_(
+		has_value
+		?
+			fcppt::either::make_failure<
+				result_type
+			>(
+				fcppt::parse::error<
+					Ch
+				>{
+					std::basic_string<
+						Ch
+					>{
+						FCPPT_STRING_LITERAL(
+							Ch,
+							"NOT"
+						)
+					}
+				}
+			)
+		:
+			fcppt::parse::make_success<
+				Ch
+			>(
 				fcppt::unit{}
 			)
-		);
+		;
 }
 
 #endif

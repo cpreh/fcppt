@@ -8,12 +8,13 @@
 #define FCPPT_PARSE_OPTIONAL_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/maybe.hpp>
+#include <fcppt/either/match.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/error_fwd.hpp>
 #include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/optional_decl.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
@@ -49,6 +50,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::optional<
 		Parser
@@ -76,7 +78,7 @@ fcppt::parse::optional<
 	};
 
 	return
-		fcppt::optional::maybe(
+		fcppt::either::match(
 			fcppt::parse::deref(
 				this->parser_
 			).parse(
@@ -86,14 +88,20 @@ fcppt::parse::optional<
 			[
 				_state,
 				pos
-			]{
+			](
+				fcppt::parse::error<
+					Ch
+				> &&
+			){
 				fcppt::parse::set_position(
 					_state,
 					pos
 				);
 
 				return
-					fcppt::optional::make(
+					fcppt::parse::make_success<
+						Ch
+					>(
 						result_type{}
 					);
 			},
@@ -104,7 +112,9 @@ fcppt::parse::optional<
 			)
 			{
 				return
-					fcppt::optional::make(
+					fcppt::parse::make_success<
+						Ch
+					>(
 						result_type{
 							std::move(
 								_result

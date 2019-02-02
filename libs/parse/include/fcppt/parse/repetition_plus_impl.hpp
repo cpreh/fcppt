@@ -8,13 +8,17 @@
 #define FCPPT_PARSE_REPETITION_PLUS_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/make_if.hpp>
+#include <fcppt/string_literal.hpp>
+#include <fcppt/either/bind.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/repetition_plus_decl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -44,6 +48,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::repetition_plus<
 		Parser
@@ -63,7 +68,7 @@ fcppt::parse::repetition_plus<
 ) const
 {
 	return
-		fcppt::optional::bind(
+		fcppt::either::bind(
 			this->parser_.parse(
 				_state,
 				_context
@@ -73,17 +78,34 @@ fcppt::parse::repetition_plus<
 			)
 			{
 				return
-					fcppt::optional::make_if(
-						!_result.empty(),
-						[
-							&_result
-						]{
-							return
-								std::move(
-									_result
-								);
-						}
-					);
+					_result.empty()
+					?
+						// TODO: Reimpement this for better error messages
+						fcppt::either::make_failure<
+							result_type
+						>(
+							fcppt::parse::error<
+								Ch
+							>{
+								std::basic_string<
+									Ch
+								>(
+									FCPPT_STRING_LITERAL(
+										Ch,
+										"PLUS"
+									)
+								)
+							}
+						)
+					:
+						fcppt::parse::make_success<
+							Ch
+						>(
+							std::move(
+								_result
+							)
+						)
+					;
 			}
 		);
 }

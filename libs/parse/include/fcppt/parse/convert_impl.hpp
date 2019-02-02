@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_CONVERT_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/map.hpp>
+#include <fcppt/either/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/convert_decl.hpp>
 #include <fcppt/parse/deref.hpp>
@@ -54,6 +54,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::convert<
 		Parser,
@@ -75,7 +76,7 @@ fcppt::parse::convert<
 ) const
 {
 	return
-		fcppt::optional::map(
+		fcppt::either::map(
 			fcppt::parse::deref(
 				this->parser_
 			).parse(

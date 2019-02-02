@@ -8,8 +8,8 @@
 #define FCPPT_PARSE_SEQUENCE_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/map.hpp>
+#include <fcppt/either/bind.hpp>
+#include <fcppt/either/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
@@ -56,6 +56,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::sequence<
 		Left,
@@ -77,7 +78,7 @@ fcppt::parse::sequence<
 ) const
 {
 	return
-		fcppt::optional::bind(
+		fcppt::either::bind(
 			fcppt::parse::deref(
 				this->left_
 			).parse(
@@ -95,7 +96,7 @@ fcppt::parse::sequence<
 			)
 			{
 				return
-					fcppt::optional::map(
+					fcppt::either::map(
 						fcppt::parse::deref(
 							this->right_
 						).parse(

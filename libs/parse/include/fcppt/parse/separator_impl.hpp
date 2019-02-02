@@ -13,7 +13,7 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/container/make.hpp>
-#include <fcppt/optional/map.hpp>
+#include <fcppt/either/map.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/context_fwd.hpp>
@@ -63,6 +63,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::separator<
 		Inner,
@@ -122,7 +123,7 @@ fcppt::parse::separator<
 	);
 
 	return
-		fcppt::optional::map(
+		fcppt::either::map(
 			parser.parse(
 				_state,
 				_context

@@ -8,7 +8,11 @@
 #define FCPPT_PARSE_NAMED_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
+#include <fcppt/either/map_failure.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/named_decl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
@@ -53,6 +57,7 @@ template<
 	typename Skipper
 >
 fcppt::parse::result<
+	Ch,
 	typename
 	fcppt::parse::named<
 		Ch,
@@ -73,11 +78,34 @@ fcppt::parse::named<
 	> const &_context
 ) const
 {
-	// TODO:
 	return
-		this->parser_.parse(
-			_state,
-			_context
+		fcppt::either::map_failure(
+			fcppt::parse::deref(
+				this->parser_
+			).parse(
+				_state,
+				_context
+			),
+			[
+				this
+			](
+				fcppt::parse::error<
+					Ch
+				> && // TODO
+			)
+			{
+				return
+					fcppt::parse::error<
+						Ch
+					>{
+						FCPPT_STRING_LITERAL(
+							Ch,
+							"Expected "
+						)
+						+
+						this->name_
+					};
+			}
 		);
 }
 
