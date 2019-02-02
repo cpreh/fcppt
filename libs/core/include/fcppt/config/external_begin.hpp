@@ -98,6 +98,12 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
 
+#include <fcppt/config/gcc_version_at_least.hpp>
+
+#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(9, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdeprecated-copy)
+#endif
+
 #endif
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
