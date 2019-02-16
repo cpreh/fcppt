@@ -1826,6 +1826,10 @@ set(
 	libs/parse/include/fcppt/parse/get.hpp
 	libs/parse/include/fcppt/parse/get_char.hpp
 	libs/parse/include/fcppt/parse/get_position.hpp
+	libs/parse/include/fcppt/parse/grammar.hpp
+	libs/parse/include/fcppt/parse/grammar_decl.hpp
+	libs/parse/include/fcppt/parse/grammar_fwd.hpp
+	libs/parse/include/fcppt/parse/grammar_impl.hpp
 	libs/parse/include/fcppt/parse/ignore.hpp
 	libs/parse/include/fcppt/parse/ignore_decl.hpp
 	libs/parse/include/fcppt/parse/ignore_fwd.hpp

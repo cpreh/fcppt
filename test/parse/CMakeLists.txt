@@ -75,6 +75,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	grammar
+)
+
+add_fcppt_parse_test(
 	ignore
 )
 
