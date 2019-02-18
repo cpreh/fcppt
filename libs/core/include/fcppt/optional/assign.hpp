@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONAL_ASSIGN_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/preprocessor/warn_unused_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -31,26 +30,10 @@ template<
 	typename Element,
 	typename Arg
 >
+[[nodiscard]]
 inline
 Element &
 assign(
-	fcppt::optional::object<
-		Element
-	> &_optional,
-	Arg &&_arg
-)
-FCPPT_PP_WARN_UNUSED_RESULT;
-
-}
-}
-
-template<
-	typename Element,
-	typename Arg
->
-inline
-Element &
-fcppt::optional::assign(
 	fcppt::optional::object<
 		Element
 	> &_optional,
@@ -80,6 +63,9 @@ fcppt::optional::assign(
 
 	return
 		_optional.get_unsafe();
+}
+
+}
 }
 
 #endif

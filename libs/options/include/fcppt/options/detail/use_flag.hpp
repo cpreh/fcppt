@@ -12,7 +12,6 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/symbol.hpp>
-#include <fcppt/preprocessor/warn_unused_result.hpp>
 
 
 namespace fcppt
@@ -22,6 +21,7 @@ namespace options
 namespace detail
 {
 
+[[nodiscard]]
 FCPPT_OPTIONS_DETAIL_SYMBOL
 bool
 use_flag(
@@ -30,8 +30,7 @@ use_flag(
 	>,
 	fcppt::string const &,
 	fcppt::options::detail::flag_is_short
-)
-FCPPT_PP_WARN_UNUSED_RESULT;
+);
 
 }
 }

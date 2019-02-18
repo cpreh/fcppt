@@ -8,7 +8,6 @@
 #define FCPPT_FILESYSTEM_CREATE_DIRECTORIES_RECURSIVE_HPP_INCLUDED
 
 #include <fcppt/filesystem/detail/symbol.hpp>
-#include <fcppt/preprocessor/warn_unused_result.hpp>
 #include <fcppt/system/optional_error_code.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
@@ -27,12 +26,12 @@ namespace filesystem
 
 Tries to create each nonexistant sub directory of \a path.
 */
+[[nodiscard]]
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::system::optional_error_code
 create_directories_recursive(
 	boost::filesystem::path const &path
-)
-FCPPT_PP_WARN_UNUSED_RESULT;
+);
 
 }
 }

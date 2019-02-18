@@ -8,7 +8,6 @@
 #define FCPPT_IO_WRITE_CHARS_HPP_INCLUDED
 
 #include <fcppt/detail/symbol.hpp>
-#include <fcppt/preprocessor/warn_unused_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <iosfwd>
@@ -29,14 +28,14 @@ Tries to write \a count chars from \a data to \a stream.
 
 \return If the write operation succeeded.
 */
+[[nodiscard]]
 FCPPT_DETAIL_SYMBOL
 bool
 write_chars(
 	std::ostream &stream,
 	char const *data,
 	std::size_t count
-)
-FCPPT_PP_WARN_UNUSED_RESULT;
+);
 
 }
 }
