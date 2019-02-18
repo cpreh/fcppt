@@ -41,7 +41,7 @@
 
 </ul>
 
-\subsection changes_removed_functionality_to_300 Removed functionality
+\subsection changes_removed_functionality_to_310 Removed functionality
 
 <ul>
 
@@ -54,6 +54,12 @@
 <li>\ref fcpptcontainertuple
 	<ul>
 	<li>Removed <code>fcppt::container::tuple::to_varargs</code>. Use <code>std::apply</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptpreprocessor
+	<ul>
+	<li>Removed <code>FCPPT_PP_WARN_UNUSED_RESULT</code>.</li>
 	</ul>
 </li>
 

@@ -1186,7 +1186,6 @@ set(
 	libs/core/include/fcppt/preprocessor/push_warning.hpp
 	libs/core/include/fcppt/preprocessor/stringize.hpp
 	libs/core/include/fcppt/preprocessor/todo.hpp
-	libs/core/include/fcppt/preprocessor/warn_unused_result.hpp
 	libs/core/include/fcppt/preprocessor/warning.hpp
 	libs/core/include/fcppt/random/distribution/base_type.hpp
 	libs/core/include/fcppt/random/distribution/base_value.hpp
