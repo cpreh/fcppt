@@ -9,9 +9,9 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/grammar_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/base_unique_ptr.hpp>
 
 
 namespace fcppt
