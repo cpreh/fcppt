@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/recursive.hpp>
+#include <fcppt/make_recursive.hpp>
+#include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_output.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -12,9 +13,9 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/recursive.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -27,9 +28,9 @@ TEST_CASE(
 )
 {
 	auto const parser{
-		fcppt::parse::recursive{
+		fcppt::parse::make_recursive(
 			fcppt::parse::char_{}
-		}
+		)
 	};
 
 	CHECK(
@@ -52,9 +53,9 @@ TEST_CASE(
 		fcppt::parse::make_success<
 			char
 		>(
-			fcppt::recursive{
+			fcppt::make_recursive(
 				'Y'
-			}
+			)
 		)
 	);
 }

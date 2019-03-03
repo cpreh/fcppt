@@ -12,7 +12,7 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/ignore.hpp>
+#include <fcppt/parse/make_ignore.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -27,9 +27,9 @@ TEST_CASE(
 )
 {
 	auto const parser{
-		fcppt::parse::ignore{
+		fcppt::parse::make_ignore(
 			fcppt::parse::char_{}
-		}
+		)
 	};
 
 	CHECK(

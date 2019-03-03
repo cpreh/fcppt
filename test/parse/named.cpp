@@ -35,7 +35,6 @@ TEST_CASE(
 		}
 	};
 
-	// TODO
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,

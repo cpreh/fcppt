@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_MAKE_SKIPPER_HPP_INCLUDED
-#define FCPPT_PARSE_MAKE_SKIPPER_HPP_INCLUDED
+#ifndef FCPPT_PARSE_MAKE_RECURSIVE_HPP_INCLUDED
+#define FCPPT_PARSE_MAKE_RECURSIVE_HPP_INCLUDED
 
-#include <fcppt/parse/make_ignore.hpp>
-#include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/recursive_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -22,21 +22,27 @@ namespace parse
 template<
 	typename Parser
 >
-inline
-auto
-make_skipper(
+fcppt::parse::recursive<
+	fcppt::type_traits::remove_cv_ref_t<
+		Parser
+	>
+>
+make_recursive(
 	Parser &&_parser
 )
 {
 	return
-		fcppt::parse::make_ignore(
-			*
+		fcppt::parse::recursive<
+			fcppt::type_traits::remove_cv_ref_t<
+				Parser
+			>
+		>{
 			std::forward<
 				Parser
 			>(
 				_parser
 			)
-		);
+		};
 }
 
 }

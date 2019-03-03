@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/recursive.hpp>
+#include <fcppt/make_recursive.hpp>
+#include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_output.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -105,12 +106,12 @@ TEST_CASE(
 			char
 		>(
 			std::make_tuple(
-				fcppt::recursive{
+				fcppt::make_recursive(
 					'X'
-				},
-				fcppt::recursive{
+				),
+				fcppt::make_recursive(
 					'Y'
-				}
+				)
 			)
 		)
 	);

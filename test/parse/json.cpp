@@ -25,13 +25,13 @@
 #include <fcppt/parse/convert_const.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/int.hpp>
-#include <fcppt/parse/lexeme.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/make_convert.hpp>
+#include <fcppt/parse/make_lexeme.hpp>
+#include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/recursive.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/space_skipper.hpp>
 #include <fcppt/parse/string.hpp>
@@ -312,7 +312,7 @@ parser::parser()
 	string_{
 		parse::make_base<char_type,skipper>(
 			parse::literal('"')
-			>> parse::lexeme(*~parse::char_set{'"'})
+			>> parse::make_lexeme(*~parse::char_set{'"'})
 			>> parse::literal('"')
 		)
 	},
@@ -336,7 +336,7 @@ parser::parser()
 				>> parse::separator(
 					fcppt::make_cref(string_)
 					>> parse::literal(':')
-					>> parse::recursive{fcppt::make_cref(value_)},
+					>> parse::make_recursive(fcppt::make_cref(value_)),
 					',')
 				>> parse::literal('}'),
 				[](json::entries &&_entries) { return json::make_object(std::move(_entries)); }
@@ -347,7 +347,7 @@ parser::parser()
 		parse::make_base<char_type,skipper>(
 			parse::literal('[')
 			>> parse::separator(
-				parse::recursive{fcppt::make_cref(value_)},
+				parse::make_recursive(fcppt::make_cref(value_)),
 				',')
 			>> parse::literal(']')
 		)

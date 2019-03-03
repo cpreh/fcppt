@@ -640,6 +640,7 @@ set(
 	libs/core/include/fcppt/make_literal_fundamental.hpp
 	libs/core/include/fcppt/make_literal_fwd.hpp
 	libs/core/include/fcppt/make_literal_strong_typedef.hpp
+	libs/core/include/fcppt/make_recursive.hpp
 	libs/core/include/fcppt/make_ref.hpp
 	libs/core/include/fcppt/make_shared_ptr.hpp
 	libs/core/include/fcppt/make_strong_typedef.hpp

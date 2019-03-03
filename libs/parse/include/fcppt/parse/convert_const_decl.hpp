@@ -16,6 +16,7 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
 
 namespace fcppt
@@ -70,6 +71,24 @@ private:
 };
 
 FCPPT_PP_POP_WARNING
+
+template<
+	typename Parser,
+	typename Result
+>
+convert_const(
+	Parser &&,
+	Result &&
+)
+->
+convert_const<
+	fcppt::type_traits::remove_cv_ref_t<
+		Parser
+	>,
+	fcppt::type_traits::remove_cv_ref_t<
+		Result
+	>
+>;
 
 }
 }

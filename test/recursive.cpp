@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/recursive.hpp>
+#include <fcppt/make_recursive.hpp>
+#include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -17,12 +18,12 @@ TEST_CASE(
 )
 {
 	CHECK(
-		fcppt::recursive{
+		fcppt::make_recursive(
 			10
-		}
+		)
 		==
-		fcppt::recursive{
+		fcppt::make_recursive(
 			10
-		}
+		)
 	);
 }

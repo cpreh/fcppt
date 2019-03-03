@@ -856,6 +856,7 @@ set(
 	libs/core/include/fcppt/make_literal_fundamental.hpp
 	libs/core/include/fcppt/make_literal_fwd.hpp
 	libs/core/include/fcppt/make_literal_strong_typedef.hpp
+	libs/core/include/fcppt/make_recursive.hpp
 	libs/core/include/fcppt/make_ref.hpp
 	libs/core/include/fcppt/make_shared_ptr.hpp
 	libs/core/include/fcppt/make_strong_typedef.hpp
@@ -1850,6 +1851,9 @@ set(
 	libs/parse/include/fcppt/parse/literal_impl.hpp
 	libs/parse/include/fcppt/parse/make_base.hpp
 	libs/parse/include/fcppt/parse/make_convert.hpp
+	libs/parse/include/fcppt/parse/make_ignore.hpp
+	libs/parse/include/fcppt/parse/make_lexeme.hpp
+	libs/parse/include/fcppt/parse/make_recursive.hpp
 	libs/parse/include/fcppt/parse/make_skipper.hpp
 	libs/parse/include/fcppt/parse/make_success.hpp
 	libs/parse/include/fcppt/parse/named.hpp
