@@ -14,6 +14,7 @@
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/sequence_decl.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/sequence_result.hpp>
@@ -95,6 +96,11 @@ fcppt::parse::sequence<
 				> &&_left_result
 			)
 			{
+				fcppt::parse::run_skipper(
+					_state,
+					_context
+				);
+
 				return
 					fcppt::either::map(
 						fcppt::parse::deref(

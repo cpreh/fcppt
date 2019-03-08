@@ -68,11 +68,6 @@ fcppt::parse::repetition<
 	> const &_context
 ) const
 {
-	fcppt::parse::run_skipper(
-		_state,
-		_context
-	);
-
 	fcppt::parse::position<
 		Ch
 	> pos{
@@ -104,6 +99,11 @@ fcppt::parse::repetition<
 			element.has_failure()
 		)
 			break;
+
+		fcppt::parse::run_skipper(
+			_state,
+			_context
+		);
 
 		pos =
 			fcppt::parse::get_position(

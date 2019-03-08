@@ -44,7 +44,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{
-				" ab "
+				"a b "
 			},
 			fcppt::parse::space_skipper()
 		)
@@ -53,7 +53,7 @@ TEST_CASE(
 			char
 		>(
 			result_type{
-				' ', 'a', 'b', ' '
+				'a', ' ', 'b', ' '
 			}
 		)
 	);

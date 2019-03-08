@@ -16,6 +16,7 @@
 #include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -63,18 +64,27 @@ try
 		)
 	};
 
+	fcppt::parse::context<
+		Skipper
+	> const context{
+		fcppt::make_cref(
+			_skipper
+		)
+	};
+
+	fcppt::parse::run_skipper(
+		fcppt::make_ref(
+			state
+		),
+		context
+	);
+
 	return
 		_parser.parse(
 			fcppt::make_ref(
 				state
 			),
-			fcppt::parse::context<
-				Skipper
-			>{
-				fcppt::make_cref(
-					_skipper
-				)
-			}
+			context
 		);
 }
 catch(

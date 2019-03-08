@@ -15,7 +15,6 @@
 #include <fcppt/parse/get.hpp>
 #include <fcppt/parse/int_decl.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -55,14 +54,9 @@ fcppt::parse::int_<
 	> const _state,
 	fcppt::parse::context<
 		Skipper
-	> const &_context
+	> const &
 ) const
 {
-	fcppt::parse::run_skipper(
-		_state,
-		_context
-	);
-
 	return
 		fcppt::either::from_optional(
 			fcppt::parse::get<
