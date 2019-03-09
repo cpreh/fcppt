@@ -19,15 +19,17 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/either/object.hpp>
+#include <fcppt/either/try_call.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/convert_const.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
-#include <fcppt/parse/make_convert.hpp>
+#include <fcppt/parse/make_convert_if.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/make_success.hpp>
@@ -191,14 +193,22 @@ std::vector<
 >
 entries;
 
-object
-make_object(
-	entries &&
+json::object
+make_object_(
+	json::entries &&
 );
 
-object
+fcppt::parse::result<
+	char,
+	json::object
+>
 make_object(
-	entries &&_args
+	json::entries &&
+);
+
+json::object
+make_object_(
+	json::entries &&_args
 )
 {
 	return
@@ -216,14 +226,14 @@ make_object(
 						json::value
 					>
 				> &&_element,
-				object &&_state
+				json::object &&_state
 			)
 			{
 				if(
 					fcppt::not_(
 						fcppt::container::insert(
 							_state,
-							object::value_type{
+							json::object::value_type{
 								std::move(
 									std::get<0>(_element)
 								),
@@ -235,12 +245,50 @@ make_object(
 					)
 				)
 					throw
-						double_insert{};
+						json::double_insert{};
 
 			return
 				std::move(
 					_state
 				);
+			}
+		);
+}
+
+fcppt::parse::result<
+	char,
+	json::object
+>
+make_object(
+	json::entries &&_args
+)
+{
+	return
+		fcppt::either::try_call<
+			json::double_insert
+		>(
+			[
+				&_args
+			]{
+				return
+					make_object_(
+						std::move(
+							_args
+						)
+					);
+			},
+			[](
+				json::double_insert const &
+			)
+			{
+				return
+					fcppt::parse::error<
+						char
+					>{
+						std::string{
+							"Double insert"
+						}
+					};
 			}
 		);
 }
@@ -331,7 +379,7 @@ parser::parser()
 	},
 	object_{
 		parse::make_base<char_type,skipper>(
-			parse::make_convert(
+			parse::make_convert_if(
 				parse::literal('{')
 				>> parse::separator(
 					fcppt::make_cref(string_)
