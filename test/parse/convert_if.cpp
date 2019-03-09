@@ -10,8 +10,8 @@
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/make_convert_if.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
