@@ -35,7 +35,7 @@ public:
 		std::is_floating_point_v<
 			Type
 		>,
-		"Type must be an floategral type"
+		"Type must be a floating point type"
 	);
 
 	float_();
