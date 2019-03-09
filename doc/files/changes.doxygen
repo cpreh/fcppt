@@ -32,6 +32,12 @@
 	</ul>
 </li>
 
+<li>\ref fcppteither
+	<ul>
+	<li>Added \link fcppt::either::construct\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_STRING_LITERAL\endlink.</li>

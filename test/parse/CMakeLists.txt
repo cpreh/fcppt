@@ -59,6 +59,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	convert_if
+)
+
+add_fcppt_parse_test(
 	deref
 )
 

@@ -47,6 +47,10 @@ set(
 	libs/parse/include/fcppt/parse/convert_const_impl.hpp
 	libs/parse/include/fcppt/parse/convert_decl.hpp
 	libs/parse/include/fcppt/parse/convert_fwd.hpp
+	libs/parse/include/fcppt/parse/convert_if.hpp
+	libs/parse/include/fcppt/parse/convert_if_decl.hpp
+	libs/parse/include/fcppt/parse/convert_if_fwd.hpp
+	libs/parse/include/fcppt/parse/convert_if_impl.hpp
 	libs/parse/include/fcppt/parse/convert_impl.hpp
 	libs/parse/include/fcppt/parse/deref.hpp
 	libs/parse/include/fcppt/parse/deref_type.hpp
@@ -111,6 +115,7 @@ set(
 	libs/parse/include/fcppt/parse/literal_impl.hpp
 	libs/parse/include/fcppt/parse/make_base.hpp
 	libs/parse/include/fcppt/parse/make_convert.hpp
+	libs/parse/include/fcppt/parse/make_convert_if.hpp
 	libs/parse/include/fcppt/parse/make_ignore.hpp
 	libs/parse/include/fcppt/parse/make_lexeme.hpp
 	libs/parse/include/fcppt/parse/make_recursive.hpp

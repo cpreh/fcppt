@@ -17,6 +17,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	construct
+)
+
+add_fcppt_either_test(
 	error_from_optional
 )
 

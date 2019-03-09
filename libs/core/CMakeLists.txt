@@ -451,6 +451,7 @@ set(
 	libs/core/include/fcppt/either/apply.hpp
 	libs/core/include/fcppt/either/bind.hpp
 	libs/core/include/fcppt/either/comparison.hpp
+	libs/core/include/fcppt/either/construct.hpp
 	libs/core/include/fcppt/either/detail/failure_type.hpp
 	libs/core/include/fcppt/either/detail/success_type.hpp
 	libs/core/include/fcppt/either/error.hpp
