@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_recursive.hpp>
-#include <fcppt/recursive_comparison.hpp>
+#include <fcppt/recursive.hpp>
 #include <fcppt/recursive_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -25,5 +25,40 @@ TEST_CASE(
 		fcppt::make_recursive(
 			10
 		)
+	);
+}
+
+TEST_CASE(
+	"recursive copy",
+	"[various]"
+)
+{
+	CHECK(
+		fcppt::recursive<
+			int
+		>{
+			fcppt::make_recursive(
+				10
+			)
+		}.get()
+		==
+		10
+	);
+
+	fcppt::recursive<
+		int
+	> value{
+		20
+	};
+
+	value =
+		fcppt::make_recursive(
+			30
+		);
+
+	CHECK(
+		value.get()
+		==
+		30
 	);
 }

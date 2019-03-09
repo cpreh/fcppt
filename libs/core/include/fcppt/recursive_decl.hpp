@@ -7,7 +7,6 @@
 #ifndef FCPPT_RECURSIVE_DECL_HPP_INCLUDED
 #define FCPPT_RECURSIVE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/recursive_fwd.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 
@@ -37,9 +36,6 @@ template<
 >
 class recursive
 {
-	FCPPT_NONCOPYABLE(
-		recursive
-	);
 public:
 	explicit
 	recursive(
@@ -52,8 +48,17 @@ public:
 	);
 
 	recursive(
+		recursive const &
+	);
+
+	recursive(
 		recursive &&
 	) noexcept;
+
+	recursive &
+	operator=(
+		recursive const &
+	);
 
 	recursive &
 	operator=(

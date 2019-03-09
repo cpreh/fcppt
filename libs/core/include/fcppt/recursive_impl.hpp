@@ -58,9 +58,51 @@ template<
 fcppt::recursive<
 	Type
 >::recursive(
+	recursive const &_other
+)
+:
+	impl_{
+		fcppt::make_unique_ptr<
+			Type
+		>(
+			_other.get()
+		)
+	}
+{
+}
+
+template<
+	typename Type
+>
+fcppt::recursive<
+	Type
+>::recursive(
 	recursive &&
 ) noexcept
 = default;
+
+template<
+	typename Type
+>
+fcppt::recursive<
+	Type
+> &
+fcppt::recursive<
+	Type
+>::operator=(
+	recursive const &_other
+)
+{
+	impl_ =
+		fcppt::make_unique_ptr<
+			Type
+		>(
+			_other.get()
+		);
+
+	return
+		*this;
+}
 
 template<
 	typename Type
