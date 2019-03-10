@@ -8,6 +8,7 @@
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/parse/basic_char_set.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
@@ -134,6 +135,42 @@ TEST_CASE(
 					std::string{"Y"},
 					2
 				)
+			}
+		)
+	);
+}
+
+TEST_CASE(
+	"parse::separator wchar",
+	"[parse]"
+)
+{
+	fcppt::parse::separator const parser{
+		+~fcppt::parse::basic_char_set<wchar_t>{L','},
+		L','
+	};
+
+	typedef
+	fcppt::parse::result_of<
+		decltype(
+			parser
+		)
+	>
+	result_type;
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::wstring{L"test1,test2"},
+			fcppt::parse::epsilon{}
+		)
+		==
+		fcppt::parse::make_success<
+			wchar_t
+		>(
+			result_type{
+				std::wstring{L"test1"},
+				std::wstring{L"test2"}
 			}
 		)
 	);

@@ -8,6 +8,7 @@
 #define FCPPT_PARSE_SET_POSITION_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/check_bad.hpp>
@@ -61,7 +62,10 @@ set_position(
 			fcppt::parse::detail::exception<
 				Ch
 			>{
-				"seekg() failed."
+				FCPPT_STRING_LITERAL(
+					Ch,
+					"seekg() failed."
+				)
 			};
 }
 

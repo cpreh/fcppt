@@ -15,10 +15,10 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/parse/basic_literal.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/separator_decl.hpp>
@@ -103,7 +103,9 @@ fcppt::parse::separator<
 		)
 		>>
 		*(
-			fcppt::parse::literal{
+			fcppt::parse::basic_literal<
+				Ch
+			>{
 				this->sep_
 			}
 			>>
