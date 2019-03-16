@@ -21,8 +21,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <string>
 #include <sstream>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
