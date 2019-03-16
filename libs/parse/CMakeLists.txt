@@ -94,6 +94,8 @@ set(
 	libs/parse/include/fcppt/parse/grammar_decl.hpp
 	libs/parse/include/fcppt/parse/grammar_fwd.hpp
 	libs/parse/include/fcppt/parse/grammar_impl.hpp
+	libs/parse/include/fcppt/parse/grammar_parse_stream.hpp
+	libs/parse/include/fcppt/parse/grammar_parse_string.hpp
 	libs/parse/include/fcppt/parse/ignore.hpp
 	libs/parse/include/fcppt/parse/ignore_decl.hpp
 	libs/parse/include/fcppt/parse/ignore_fwd.hpp
