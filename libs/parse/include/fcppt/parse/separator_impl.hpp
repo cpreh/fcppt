@@ -119,7 +119,7 @@ fcppt::parse::separator<
 
 	auto const parser(
 		-
-		fcppt::make_ref(
+		fcppt::make_cref(
 			inner_parser
 		)
 	);
