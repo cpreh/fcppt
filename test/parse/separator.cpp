@@ -9,6 +9,7 @@
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/basic_char_set.hpp>
+#include <fcppt/parse/basic_literal.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
@@ -33,7 +34,7 @@ TEST_CASE(
 {
 	fcppt::parse::separator const parser{
 		+~fcppt::parse::char_set{','},
-		','
+		fcppt::parse::literal{','}
 	};
 
 	typedef
@@ -105,7 +106,7 @@ TEST_CASE(
 		>>
 		fcppt::parse::int_<int>{}
 		,
-		','
+		fcppt::parse::literal{','}
 	};
 
 	typedef
@@ -147,7 +148,7 @@ TEST_CASE(
 {
 	fcppt::parse::separator const parser{
 		+~fcppt::parse::basic_char_set<wchar_t>{L','},
-		L','
+		fcppt::parse::basic_literal<wchar_t>{L','}
 	};
 
 	typedef

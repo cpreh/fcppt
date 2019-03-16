@@ -15,7 +15,6 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/parse/basic_literal.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
@@ -34,14 +33,14 @@
 
 template<
 	typename Inner,
-	typename Ch
+	typename Sep
 >
 fcppt::parse::separator<
 	Inner,
-	Ch
+	Sep
 >::separator(
 	Inner &&_inner,
-	Ch const _sep
+	Sep &&_sep
 )
 :
 	inner_{
@@ -50,16 +49,19 @@ fcppt::parse::separator<
 		)
 	},
 	sep_{
-		_sep
+		std::move(
+			_sep
+		)
 	}
 {
 }
 
 template<
 	typename Inner,
-	typename Ch
+	typename Sep
 >
 template<
+	typename Ch,
 	typename Skipper
 >
 fcppt::parse::result<
@@ -67,12 +69,12 @@ fcppt::parse::result<
 	typename
 	fcppt::parse::separator<
 		Inner,
-		Ch
+		Sep
 	>::result_type
 >
 fcppt::parse::separator<
 	Inner,
-	Ch
+	Sep
 >::parse(
 	fcppt::reference<
 		fcppt::parse::state<
@@ -103,11 +105,9 @@ fcppt::parse::separator<
 		)
 		>>
 		*(
-			fcppt::parse::basic_literal<
-				Ch
-			>{
+			fcppt::make_cref(
 				this->sep_
-			}
+			)
 			>>
 			fcppt::make_cref(
 				fcppt::parse::deref(

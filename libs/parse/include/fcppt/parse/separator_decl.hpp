@@ -8,6 +8,7 @@
 #define FCPPT_PARSE_SEPARATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/unit_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
@@ -19,6 +20,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,7 +36,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 template<
 	typename Inner,
-	typename Ch
+	typename Sep
 >
 class separator
 :
@@ -43,7 +45,16 @@ class separator
 public:
 	separator(
 		Inner &&,
-		Ch
+		Sep &&
+	);
+
+	static_assert(
+		std::is_same_v<
+			fcppt::parse::result_of<
+				Sep
+			>,
+			fcppt::unit
+		>
 	);
 
 	typedef
@@ -55,6 +66,7 @@ public:
 	result_type;
 
 	template<
+		typename Ch,
 		typename Skipper
 	>
 	fcppt::parse::result<
@@ -74,25 +86,27 @@ public:
 private:
 	Inner inner_;
 
-	Ch sep_;
+	Sep sep_;
 };
 
 FCPPT_PP_POP_WARNING
 
 template<
 	typename Inner,
-	typename Ch
+	typename Sep
 >
 separator(
 	Inner &&,
-	Ch
+	Sep &&
 )
 ->
 separator<
 	fcppt::type_traits::remove_cv_ref_t<
 		Inner
 	>,
-	Ch
+	fcppt::type_traits::remove_cv_ref_t<
+		Sep
+	>
 >;
 
 }

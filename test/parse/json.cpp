@@ -385,7 +385,7 @@ parser::parser()
 					fcppt::make_cref(string_)
 					>> parse::literal(':')
 					>> parse::make_recursive(fcppt::make_cref(value_)),
-					',')
+					parse::literal{','})
 				>> parse::literal('}'),
 				[](json::entries &&_entries) { return json::make_object(std::move(_entries)); }
 			)
@@ -396,7 +396,7 @@ parser::parser()
 			parse::literal('[')
 			>> parse::separator(
 				parse::make_recursive(fcppt::make_cref(value_)),
-				',')
+				parse::literal{','})
 			>> parse::literal(']')
 		)
 	},
