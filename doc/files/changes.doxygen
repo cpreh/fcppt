@@ -51,6 +51,12 @@
 
 <ul>
 
+<li>\ref fcpptboost
+	<ul>
+	<li>Removed spirit traits.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcatch
 	<ul>
 	<li>Removed <code>fcppt::catch_::defer</code>.</li>

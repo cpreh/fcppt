@@ -201,8 +201,6 @@ set(
 	libs/boost/include/fcppt/scoped_state_machine_decl.hpp
 	libs/boost/include/fcppt/scoped_state_machine_fwd.hpp
 	libs/boost/include/fcppt/scoped_state_machine_impl.hpp
-	libs/boost/include/fcppt/spirit_traits/optional_basic.hpp
-	libs/boost/include/fcppt/spirit_traits/variant_basic.hpp
 	libs/boost/include/fcppt/type_iso/boost_units.hpp
 	libs/catch/include/fcppt/catch/convert.hpp
 	libs/catch/include/fcppt/catch/either.hpp
