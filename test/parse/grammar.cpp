@@ -32,17 +32,14 @@ decltype(
 )
 skipper;
 
-typedef
-fcppt::parse::grammar<
-	int,
-	char,
-	skipper
->
-grammar_base;
-
 class grammar
 :
-	public grammar_base
+	public
+		fcppt::parse::grammar<
+			int,
+			char,
+			skipper
+		>
 {
 	FCPPT_NONCOPYABLE(
 		grammar

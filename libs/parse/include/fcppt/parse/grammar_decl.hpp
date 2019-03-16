@@ -31,6 +31,10 @@ class grammar
 	);
 public:
 	typedef
+	grammar
+	grammar_base;
+
+	typedef
 	Result
 	result_type;
 
