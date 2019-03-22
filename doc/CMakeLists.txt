@@ -1257,7 +1257,6 @@ set(
 	libs/core/include/fcppt/record/detail/element_to_label.hpp
 	libs/core/include/fcppt/record/detail/element_to_type.hpp
 	libs/core/include/fcppt/record/detail/element_vector.hpp
-	libs/core/include/fcppt/record/detail/enable_vararg_ctor.hpp
 	libs/core/include/fcppt/record/detail/find_element.hpp
 	libs/core/include/fcppt/record/detail/find_element_predicate.hpp
 	libs/core/include/fcppt/record/detail/get_either.hpp
@@ -1278,6 +1277,7 @@ set(
 	libs/core/include/fcppt/record/element_to_label.hpp
 	libs/core/include/fcppt/record/element_to_type.hpp
 	libs/core/include/fcppt/record/element_vector.hpp
+	libs/core/include/fcppt/record/enable_vararg_ctor.hpp
 	libs/core/include/fcppt/record/get.hpp
 	libs/core/include/fcppt/record/has_label.hpp
 	libs/core/include/fcppt/record/init.hpp

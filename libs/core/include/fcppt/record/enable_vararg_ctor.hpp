@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_DETAIL_ENABLE_VARARG_CTOR_HPP_INCLUDED
-#define FCPPT_RECORD_DETAIL_ENABLE_VARARG_CTOR_HPP_INCLUDED
+#ifndef FCPPT_RECORD_ENABLE_VARARG_CTOR_HPP_INCLUDED
+#define FCPPT_RECORD_ENABLE_VARARG_CTOR_HPP_INCLUDED
 
 #include <fcppt/record/detail/is_element_init.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -18,9 +18,12 @@ namespace fcppt
 {
 namespace record
 {
-namespace detail
-{
 
+/**
+\brief Checks if a parameter pack is suitable for record initialization.
+
+\ingroup fcpptrecord
+*/
 template<
 	typename... Args
 >
@@ -37,7 +40,6 @@ std::enable_if_t<
 	>
 >;
 
-}
 }
 }
 

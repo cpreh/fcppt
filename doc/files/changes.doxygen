@@ -38,6 +38,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptrecord
+	<ul>
+	<li>Added \link fcppt::record::enable_vararg_ctor\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_STRING_LITERAL\endlink.</li>
