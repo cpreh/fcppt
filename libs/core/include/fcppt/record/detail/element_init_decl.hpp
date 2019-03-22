@@ -7,7 +7,9 @@
 #ifndef FCPPT_RECORD_DETAIL_ELEMENT_INIT_DECL_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ELEMENT_INIT_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/record/detail/is_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -22,15 +24,17 @@ namespace record
 namespace detail
 {
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4521)
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
+
 template<
 	typename Tag,
 	typename Type
 >
 class element_init
 {
-	FCPPT_NONCOPYABLE(
-		element_init
-	);
 public:
 	typedef
 	Tag
@@ -64,22 +68,13 @@ public:
 		value_type const &
 	);
 
-	element_init(
-		element_init &&
-	);
-
-	element_init &
-	operator=(
-		element_init &&
-	);
-
-	~element_init();
-
 	value_type &
 	value();
 private:
 	value_type value_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
