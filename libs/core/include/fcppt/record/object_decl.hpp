@@ -142,7 +142,6 @@ public:
 		typename ...Args,
 		typename =
 			fcppt::record::detail::enable_vararg_ctor<
-				object,
 				Args...
 			>
 	>

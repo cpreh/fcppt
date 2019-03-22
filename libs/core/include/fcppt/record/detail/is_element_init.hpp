@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_DETAIL_ENABLE_VARARG_CTOR_HPP_INCLUDED
-#define FCPPT_RECORD_DETAIL_ENABLE_VARARG_CTOR_HPP_INCLUDED
+#ifndef FCPPT_RECORD_DETAIL_IS_ELEMENT_INIT_HPP_INCLUDED
+#define FCPPT_RECORD_DETAIL_IS_ELEMENT_INIT_HPP_INCLUDED
 
-#include <fcppt/record/detail/is_element_init.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -22,20 +21,28 @@ namespace detail
 {
 
 template<
-	typename... Args
+	typename Type
 >
-using
-enable_vararg_ctor
-=
-std::enable_if_t<
-	std::conjunction_v<
-		fcppt::record::detail::is_element_init<
-			fcppt::type_traits::remove_cv_ref_t<
-				Args
-			>
-		>...
+struct is_element_init
+:
+std::false_type
+{
+};
+
+template<
+	typename Tag,
+	typename Type
+>
+struct is_element_init<
+	fcppt::record::detail::element_init<
+		Tag,
+		Type
 	>
->;
+>
+:
+std::true_type
+{
+};
 
 }
 }

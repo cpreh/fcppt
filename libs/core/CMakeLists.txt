@@ -1044,11 +1044,11 @@ set(
 	libs/core/include/fcppt/record/detail/element_to_type.hpp
 	libs/core/include/fcppt/record/detail/element_vector.hpp
 	libs/core/include/fcppt/record/detail/enable_vararg_ctor.hpp
-	libs/core/include/fcppt/record/detail/enable_vararg_ctor_impl.hpp
 	libs/core/include/fcppt/record/detail/find_element.hpp
 	libs/core/include/fcppt/record/detail/find_element_predicate.hpp
 	libs/core/include/fcppt/record/detail/get_either.hpp
 	libs/core/include/fcppt/record/detail/init_ctor.hpp
+	libs/core/include/fcppt/record/detail/is_element_init.hpp
 	libs/core/include/fcppt/record/detail/is_tag.hpp
 	libs/core/include/fcppt/record/detail/label_is_same.hpp
 	libs/core/include/fcppt/record/detail/label_list.hpp
