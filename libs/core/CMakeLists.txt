@@ -635,6 +635,7 @@ set(
 	libs/core/include/fcppt/main.hpp
 	libs/core/include/fcppt/major_version.hpp
 	libs/core/include/fcppt/make_cref.hpp
+	libs/core/include/fcppt/make_function.hpp
 	libs/core/include/fcppt/make_homogenous_pair.hpp
 	libs/core/include/fcppt/make_int_range.hpp
 	libs/core/include/fcppt/make_int_range_count.hpp

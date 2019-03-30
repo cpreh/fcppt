@@ -48,6 +48,7 @@
 	<ul>
 	<li>Added \link FCPPT_STRING_LITERAL\endlink.</li>
 	<li>Added \link fcppt::recursive\endlink.</li>
+	<li>Added \link fcppt::make_function\endlink.</li>
 	</ul>
 </li>
 

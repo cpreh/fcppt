@@ -199,6 +199,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	make_function
+)
+
+add_fcppt_test(
 	make_unique_ptr
 )
 
