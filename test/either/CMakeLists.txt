@@ -38,10 +38,6 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
-	fold_error
-)
-
-add_fcppt_either_test(
 	from_optional
 )
 
@@ -79,6 +75,10 @@ add_fcppt_either_test(
 	sequence
 	LINK_LIBS
 		fcppt_catch_interface
+)
+
+add_fcppt_either_test(
+	sequence_error
 )
 
 add_fcppt_either_test(

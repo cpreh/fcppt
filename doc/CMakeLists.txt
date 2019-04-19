@@ -674,7 +674,6 @@ set(
 	libs/core/include/fcppt/either/failure_opt.hpp
 	libs/core/include/fcppt/either/failure_type.hpp
 	libs/core/include/fcppt/either/first_success.hpp
-	libs/core/include/fcppt/either/fold_error.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
 	libs/core/include/fcppt/either/is_object.hpp
 	libs/core/include/fcppt/either/join.hpp
@@ -691,6 +690,7 @@ set(
 	libs/core/include/fcppt/either/object_impl.hpp
 	libs/core/include/fcppt/either/output.hpp
 	libs/core/include/fcppt/either/sequence.hpp
+	libs/core/include/fcppt/either/sequence_error.hpp
 	libs/core/include/fcppt/either/success_opt.hpp
 	libs/core/include/fcppt/either/success_type.hpp
 	libs/core/include/fcppt/either/to_exception.hpp

@@ -11,7 +11,7 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
-#include <fcppt/either/fold_error.hpp>
+#include <fcppt/either/sequence_error.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -22,7 +22,7 @@
 
 
 TEST_CASE(
-	"either::fold_error",
+	"either::sequence_error",
 	"[either]"
 )
 {
@@ -33,7 +33,7 @@ TEST_CASE(
 	either_error;
 
 	CHECK(
-		fcppt::either::fold_error(
+		fcppt::either::sequence_error(
 			std::vector<
 				int
 			>{
@@ -67,7 +67,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::either::fold_error(
+		fcppt::either::sequence_error(
 			fcppt::container::make<
 				std::vector<
 					fcppt::unique_ptr<

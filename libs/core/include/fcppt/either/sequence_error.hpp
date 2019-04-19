@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_EITHER_FOLD_ERROR_HPP_INCLUDED
-#define FCPPT_EITHER_FOLD_ERROR_HPP_INCLUDED
+#ifndef FCPPT_EITHER_SEQUENCE_ERROR_HPP_INCLUDED
+#define FCPPT_EITHER_SEQUENCE_ERROR_HPP_INCLUDED
 
 #include <fcppt/loop.hpp>
 #include <fcppt/move_if_rvalue.hpp>
@@ -52,7 +52,7 @@ template<
 	typename Function
 >
 auto
-fold_error(
+sequence_error(
 	Sequence &&_sequence,
 	Function const &_function
 )

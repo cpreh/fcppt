@@ -54,6 +54,18 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_310 Changed functionality
+
+<ul>
+
+<li>\ref fcppteither
+	<ul>
+	<li>Renamed <code>fcppt::either::fold_error</code> to \link fcppt::either::sequence_error\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_310 Removed functionality
 
 <ul>
@@ -838,7 +850,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::map_failure\endlink.</li>
-	<li>Added \link fcppt::either::error\endlink, \link fcppt::either::no_error\endlink, \link fcppt::either::fold_error\endlink and \link fcppt::either::error_from_optional\endlink.</li>
+	<li>Added \link fcppt::either::error\endlink, \link fcppt::either::no_error\endlink, <code>fcppt::either::fold_error</code> and \link fcppt::either::error_from_optional\endlink.</li>
 	</ul>
 </li>
 

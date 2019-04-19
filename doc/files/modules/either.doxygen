@@ -145,10 +145,6 @@ is an either with a success type that only has one value, which is
 <td>Contains \link fcppt::either::first_success\endlink.</td>
 </tr>
 <tr>
-<td><code>fold_error.hpp</code></td>
-<td>Contains \link fcppt::either::fold_error\endlink.</td>
-</tr>
-<tr>
 <td><code>from_optional.hpp</code></td>
 <td>Contains \link fcppt::either::from_optional\endlink.</td>
 </tr>
@@ -187,6 +183,10 @@ is an either with a success type that only has one value, which is
 <tr>
 <td><code>sequence.hpp</code></td>
 <td>Contains \link fcppt::either::sequence\endlink.</td>
+</tr>
+<tr>
+<td><code>sequence_error.hpp</code></td>
+<td>Contains \link fcppt::either::sequence_error\endlink.</td>
 </tr>
 <tr>
 <td><code>success_opt.hpp</code></td>
