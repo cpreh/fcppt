@@ -463,6 +463,7 @@ set(
 	libs/core/include/fcppt/either/from_optional.hpp
 	libs/core/include/fcppt/either/is_object.hpp
 	libs/core/include/fcppt/either/join.hpp
+	libs/core/include/fcppt/either/loop.hpp
 	libs/core/include/fcppt/either/make_failure.hpp
 	libs/core/include/fcppt/either/make_success.hpp
 	libs/core/include/fcppt/either/map.hpp

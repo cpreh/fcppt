@@ -46,6 +46,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	loop
+)
+
+add_fcppt_either_test(
 	make_failure
 )
 

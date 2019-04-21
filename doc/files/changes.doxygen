@@ -35,6 +35,7 @@
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::construct\endlink.</li>
+	<li>Added \link fcppt::either::loop\endlink.</li>
 	</ul>
 </li>
 
