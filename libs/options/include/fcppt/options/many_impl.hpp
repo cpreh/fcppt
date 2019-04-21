@@ -10,10 +10,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/either/match.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -96,127 +94,117 @@ fcppt::options::many<
 		)
 	};
 
-	fcppt::optional::object<
-		fcppt::options::error
-	>
-	optional_error;
-
 	fcppt::options::state state{
 		std::move(
 			_state
 		)
 	};
 
-	// TODO: This is super inefficient. Allow missing_error to return state!
-	while(
-		!optional_error.has_value()
-	)
-		fcppt::either::match(
-			fcppt::options::deref(
-				parser_
-			).parse(
-				fcppt::options::state{
-					state
-				},
-				_context
-			),
-			[
-				&optional_error
-			](
-				fcppt::options::error &&_error
-			)
-			{
-				optional_error =
-					fcppt::optional::make(
-						std::move(
-							_error
-						)
-					);
-			},
-			[
-				&state,
-				&result
-			](
-				fcppt::options::state_with_value<
-					fcppt::options::result_of<
-						Parser
-					>
-				> &&_inner
-			)
-			{
-				state =
-					std::move(
-						_inner.state_
-					);
+	auto const next(
+		[
+			this,
+			&state,
+			&_context
+		]{
+			return
+				fcppt::options::deref(
+					this->parser_
+				).parse(
+					// TODO: This is super inefficient. Allow missing_error to return state!
+					fcppt::options::state{
+						state
+					},
+					_context
+				);
+		}
+	);
 
+	auto const loop(
+		[
+			&state,
+			&result
+		](
+			fcppt::options::state_with_value<
 				fcppt::options::result_of<
 					Parser
-				> &inner_value{
-					_inner.value_
-				};
+				>
+			> &&_inner
+		)
+		{
+			state =
+				std::move(
+					_inner.state_
+				);
 
-				result =
-					fcppt::record::init<
-						result_type
-					>(
-						[
-							&result,
-							&inner_value
-						](
-							auto const _fcppt_inner_element
-						)
-						{
-							FCPPT_USE(
+			fcppt::options::result_of<
+				Parser
+			> &inner_value{
+				_inner.value_
+			};
+
+			result =
+				fcppt::record::init<
+					result_type
+				>(
+					[
+						&result,
+						&inner_value
+					](
+						auto const _fcppt_inner_element
+					)
+					{
+						FCPPT_USE(
+							_fcppt_inner_element
+						);
+
+						typedef
+						std::remove_const_t<
+							decltype(
 								_fcppt_inner_element
-							);
+							)
+						>
+						element;
 
-							typedef
-							std::remove_const_t<
-								decltype(
-									_fcppt_inner_element
+						typedef
+						fcppt::record::element_to_label<
+							element
+						>
+						label;
+
+						fcppt::record::element_to_type<
+							element
+						> new_result{
+							std::move(
+								fcppt::record::get<
+									label
+								>(
+									result
 								)
-							>
-							element;
+							)
+						};
 
-							typedef
-							fcppt::record::element_to_label<
-								element
-							>
-							label;
-
-							fcppt::record::element_to_type<
-								element
-							> new_result{
-								std::move(
-									fcppt::record::get<
-										label
-									>(
-										result
-									)
+						new_result.push_back(
+							std::move(
+								fcppt::record::get<
+									label
+								>(
+									inner_value
 								)
-							};
+							)
+						);
 
-							new_result.push_back(
-								std::move(
-									fcppt::record::get<
-										label
-									>(
-										inner_value
-									)
-								)
-							);
-
-							return
-								new_result;
-						}
-					);
-			}
-		);
+						return
+							new_result;
+					}
+				);
+		}
+	);
 
 	return
 		fcppt::variant::match(
-			std::move(
-				optional_error.get_unsafe()
+			fcppt::either::loop(
+				next,
+				loop
 			),
 			[
 				&state,
