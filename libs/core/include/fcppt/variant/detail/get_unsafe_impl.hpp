@@ -45,12 +45,11 @@ get_unsafe_impl(
 		"Invalid variant type"
 	);
 
-	// TODO: Use get_if if we can get rid of gcc null-dereference warnings
 	return
-		std::get<
+		*std::get_if<
 			U
 		>(
-			_variant
+			&_variant
 		);
 }
 
