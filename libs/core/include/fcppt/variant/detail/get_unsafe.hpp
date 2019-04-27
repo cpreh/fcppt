@@ -24,11 +24,10 @@ template<
 	typename Variant
 >
 inline
-// TODO: apply_const?
 std::conditional_t<
-	std::is_const<
+	std::is_const_v<
 		Variant
-	>::value,
+	>,
 	Type const &,
 	Type &
 >
