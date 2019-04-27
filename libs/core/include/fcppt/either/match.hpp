@@ -10,6 +10,9 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -91,6 +94,9 @@ decltype(
 		"FailureFunction and SuccessFunction must return the same type"
 	);
 
+	FCPPT_PP_PUSH_WARNING
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+
 	return
 		_either.has_success()
 		?
@@ -110,6 +116,8 @@ decltype(
 				)
 			)
 		;
+
+	FCPPT_PP_POP_WARNING
 }
 
 }

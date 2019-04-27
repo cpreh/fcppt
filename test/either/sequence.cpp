@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/either.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/sequence.hpp>
@@ -47,84 +47,58 @@ TEST_CASE(
 	>
 	result_type;
 
-	SECTION(
-		"Test failure sequence"
-	)
-	{
-		either_int_vector const eithers1{
-			either_int{
-				42
-			},
-			either_int{
-				std::string(
-					"failure"
-				)
-			},
-			either_int{
-				10
-			},
-			either_int{
-				std::string(
-					"failure2"
-				)
+	CHECK(
+		fcppt::either::sequence<
+			int_vector
+		>(
+			either_int_vector{
+				either_int{
+					42
+				},
+				either_int{
+					std::string(
+						"failure"
+					)
+				},
+				either_int{
+					10
+				},
+				either_int{
+					std::string(
+						"failure2"
+					)
+				}
 			}
-		};
-
-		result_type const result{
-			fcppt::either::sequence<
-				int_vector
-			>(
-				eithers1
-			)
-		};
-
-		REQUIRE(
-			result.has_failure()
-		);
-
-		CHECK(
-			result.get_failure_unsafe()
-			==
-			std::string(
+		)
+		==
+		result_type{
+			std::string{
 				"failure"
-			)
-		);
-	}
-
-	SECTION(
-		"Test success sequence"
-	)
-	{
-		either_int_vector const eithers2{
-			either_int{
-				10
-			},
-			either_int{
-				20
 			}
-		};
+		}
+	);
 
-		result_type const result(
-			fcppt::either::sequence<
-				int_vector
-			>(
-				eithers2
-			)
-		);
-
-		REQUIRE(
-			result.has_success()
-		);
-
-		CHECK(
-			result.get_success_unsafe()
-			==
+	CHECK(
+		fcppt::either::sequence<
+			int_vector
+		>(
+			either_int_vector{
+				either_int{
+					10
+				},
+				either_int{
+					20
+				}
+			}
+		)
+		==
+		result_type{
 			int_vector{
 				10,
 				20
 			}
-		);
-	}
+		}
+	);
 }
 
 TEST_CASE(
@@ -133,15 +107,15 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	fcppt::either::object<
 		std::string,
-		int_unique_ptr
+		int_movable
 	>
 	either_int;
 
@@ -153,7 +127,7 @@ TEST_CASE(
 
 	typedef
 	std::vector<
-		int_unique_ptr
+		int_movable
 	>
 	int_vector;
 
@@ -164,7 +138,7 @@ TEST_CASE(
 	>
 	result_type;
 
-	result_type const result(
+	CHECK(
 		fcppt::either::sequence<
 			int_vector
 		>(
@@ -172,42 +146,29 @@ TEST_CASE(
 				either_int_vector
 			>(
 				either_int{
-					fcppt::make_unique_ptr<
-						int
-					>(
+					int_movable{
 						10
-					)
+					}
 				},
 				either_int{
-					fcppt::make_unique_ptr<
-						int
-					>(
+					int_movable{
 						20
-					)
+					}
 				}
 			)
 		)
-	);
-
-	REQUIRE(
-		result.has_success()
-	);
-
-	REQUIRE(
-		result.get_success_unsafe().size()
 		==
-		2u
-	);
-
-	CHECK(
-		*result.get_success_unsafe()[0]
-		==
-		10
-	);
-
-	CHECK(
-		*result.get_success_unsafe()[1]
-		==
-		20
+		result_type{
+			fcppt::container::make<
+				int_vector
+			>(
+				int_movable{
+					10
+				},
+				int_movable{
+					20
+				}
+			)
+		}
 	);
 }

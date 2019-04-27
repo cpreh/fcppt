@@ -8,6 +8,9 @@
 #ifndef FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
@@ -49,6 +52,9 @@ join_strings(
 		Range
 	> result;
 
+	FCPPT_PP_PUSH_WARNING
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+
 	for(
 		typename Range::const_iterator it(
 			_range.begin()
@@ -67,6 +73,8 @@ join_strings(
 		)
 			result += _delim;
 	}
+
+	FCPPT_PP_POP_WARNING
 
 	return
 		result;

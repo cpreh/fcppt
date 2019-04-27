@@ -16,6 +16,9 @@
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -134,12 +137,16 @@ sequence(
 								auto &&_value
 							)
 							{
+
+							FCPPT_PP_PUSH_WARNING
+							FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 								return
 									fcppt::move_if_rvalue<
 										Source
 									>(
 										_value.get_success_unsafe()
 									);
+							FCPPT_PP_POP_WARNING
 							}
 						)
 					};

@@ -8,6 +8,9 @@
 #define FCPPT_CATCH_MOVABLE_IMPL_HPP_INCLUDED
 
 #include <fcppt/catch/movable_decl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -47,6 +50,9 @@ fcppt::catch_::movable<
 {
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+
 template<
 	typename Type
 >
@@ -68,6 +74,8 @@ noexcept(
 	}
 {
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename Type

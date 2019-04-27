@@ -1126,6 +1126,7 @@ function(
 		LINK_LIBS
 		INCLUDE_DIRS
 		COMPILE_DEFINITIONS
+		COMPILE_OPTIONS
 	)
 
 	cmake_parse_arguments(
@@ -1174,6 +1175,12 @@ function(
 		${FULL_TEST_NAME}
 		PRIVATE
 		${_COMPILE_DEFINITIONS}
+	)
+
+	target_compile_options(
+		${FULL_TEST_NAME}
+		PRIVATE
+		${_COMPILE_OPTIONS}
 	)
 
 	target_link_libraries(

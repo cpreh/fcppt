@@ -13,6 +13,7 @@ function(
 
 	set(
 		MULTI_ARGS
+		COMPILE_OPTIONS
 		LINK_LIBS
 	)
 
@@ -45,6 +46,8 @@ function(
 		LINK_LIBS
 			${_LINK_LIBS}
 			fcppt_core_interface
+		COMPILE_OPTIONS
+			${_COMPILE_OPTIONS}
 	)
 endfunction()
 

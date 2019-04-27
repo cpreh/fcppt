@@ -8,6 +8,7 @@
 #define FCPPT_PARSE_REPETITION_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/either/loop.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/get_position.hpp>
@@ -78,44 +79,48 @@ fcppt::parse::repetition<
 
 	result_type result{};
 
-	// TODO: This code is terrible
-	for(;;)
-	{
-		fcppt::parse::result<
-			Ch,
+	fcppt::either::loop(
+		[
+			this,
+			_state,
+			&_context
+		]{
+			return
+				fcppt::parse::deref(
+					this->parser_
+				).parse(
+					_state,
+					_context
+				);
+		},
+		[
+			_state,
+			&_context,
+			&result,
+			&pos
+		](
 			fcppt::parse::result_of<
 				Parser
-			>
-		> element{
-			fcppt::parse::deref(
-				this->parser_
-			).parse(
+			> &&_element
+		)
+		{
+			fcppt::parse::run_skipper(
 				_state,
 				_context
-			)
-		};
-
-		if(
-			element.has_failure()
-		)
-			break;
-
-		fcppt::parse::run_skipper(
-			_state,
-			_context
-		);
-
-		pos =
-			fcppt::parse::get_position(
-				_state
 			);
 
-		result.push_back(
-			std::move(
-				element.get_success_unsafe()
-			)
-		);
-	}
+			pos =
+				fcppt::parse::get_position(
+					_state
+				);
+
+			result.push_back(
+				std::move(
+					_element
+				)
+			);
+		}
+	);
 
 	fcppt::parse::set_position(
 		_state,

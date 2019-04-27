@@ -17,6 +17,9 @@
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/all.hpp>
@@ -173,6 +176,9 @@ fcppt::either::object<
 	>
 	failure_array;
 
+	FCPPT_PP_PUSH_WARNING
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+
 	return
 		fcppt::algorithm::all_of(
 			std::array<
@@ -261,6 +267,8 @@ fcppt::either::object<
 				)
 			}
 		;
+
+	FCPPT_PP_POP_WARNING
 }
 
 }
