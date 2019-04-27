@@ -6,8 +6,8 @@
 
 #include <fcppt/container/pop_back.hpp>
 #include <fcppt/either/from_optional.hpp>
-#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/loop.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

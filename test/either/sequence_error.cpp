@@ -11,9 +11,9 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
-#include <fcppt/either/sequence_error.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/either/output.hpp>
+#include <fcppt/either/sequence_error.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
