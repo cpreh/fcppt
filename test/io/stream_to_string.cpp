@@ -5,6 +5,9 @@
 
 
 #include <fcppt/io/stream_to_string.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
@@ -17,19 +20,35 @@ TEST_CASE(
 	"[io]"
 )
 {
-	std::istringstream istream(
-		"TEST abcd"
-	);
+	{
+		std::istringstream istream{
+			"TEST abcd"
+		};
 
-	std::string const result(
-		fcppt::io::stream_to_string(
-			istream
-		)
-	);
+		CHECK(
+			fcppt::io::stream_to_string(
+				istream
+			)
+			==
+			fcppt::optional::make(
+				std::string{
+					"TEST abcd"
+				}
+			)
+		);
+	}
 
-	CHECK(
-		result
-		==
-		"TEST abcd"
-	);
+	{
+		std::istringstream istream{};
+
+		CHECK(
+			fcppt::io::stream_to_string(
+				istream
+			)
+			==
+			fcppt::optional::make(
+				std::string{}
+			)
+		);
+	}
 }

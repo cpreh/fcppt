@@ -65,6 +65,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptio
+	<ul>
+	<li>\link fcppt::io::stream_to_string\endlink now returns an optional.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_310 Removed functionality
