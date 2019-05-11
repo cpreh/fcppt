@@ -28,7 +28,6 @@ LIBS=(
 	log
 	options
 	parse
-	system
 )
 
 for lib in ${LIBS[@]} ; do
@@ -45,7 +44,6 @@ update_cmake \
 	libs/log/include \
 	libs/options/include \
 	libs/parse/include \
-	libs/system/include \
 	examples \
 	-e ".*" \
 	doc

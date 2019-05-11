@@ -9,7 +9,7 @@
 
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,10 +32,10 @@ Strips \a prefix from \a path.
 \param path The path to strip the prefix from
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-boost::filesystem::path
+std::filesystem::path
 strip_prefix(
-	boost::filesystem::path const &prefix,
-	boost::filesystem::path const &path
+	std::filesystem::path const &prefix,
+	std::filesystem::path const &path
 );
 
 }

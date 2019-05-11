@@ -92,7 +92,6 @@ set(
 	doc/files/modules/smartptr.doxygen
 	doc/files/modules/string.doxygen
 	doc/files/modules/strong_typedef.doxygen
-	doc/files/modules/system.doxygen
 	doc/files/modules/time.doxygen
 	doc/files/modules/type_iso.doxygen
 	doc/files/modules/type_traits.doxygen
@@ -761,6 +760,7 @@ set(
 	libs/core/include/fcppt/enum/to_string_impl_fwd.hpp
 	libs/core/include/fcppt/error/strerrno.hpp
 	libs/core/include/fcppt/error/strerror.hpp
+	libs/core/include/fcppt/error_code_to_string.hpp
 	libs/core/include/fcppt/exception.hpp
 	libs/core/include/fcppt/exception_fwd.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
@@ -865,6 +865,7 @@ set(
 	libs/core/include/fcppt/make_literal_fundamental.hpp
 	libs/core/include/fcppt/make_literal_fwd.hpp
 	libs/core/include/fcppt/make_literal_strong_typedef.hpp
+	libs/core/include/fcppt/make_optional_error_code.hpp
 	libs/core/include/fcppt/make_recursive.hpp
 	libs/core/include/fcppt/make_ref.hpp
 	libs/core/include/fcppt/make_shared_ptr.hpp
@@ -1168,6 +1169,8 @@ set(
 	libs/core/include/fcppt/optional/to_exception.hpp
 	libs/core/include/fcppt/optional/to_pointer.hpp
 	libs/core/include/fcppt/optional/value_type.hpp
+	libs/core/include/fcppt/optional_error_code.hpp
+	libs/core/include/fcppt/optional_error_code_fwd.hpp
 	libs/core/include/fcppt/optional_size_t.hpp
 	libs/core/include/fcppt/optional_size_t_fwd.hpp
 	libs/core/include/fcppt/optional_std_string.hpp
@@ -1510,7 +1513,6 @@ set(
 	libs/core/include/fcppt/widen.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directories_recursive.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_error.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
@@ -1928,10 +1930,6 @@ set(
 	libs/parse/include/fcppt/parse/string_fwd.hpp
 	libs/parse/include/fcppt/parse/string_impl.hpp
 	libs/parse/include/fcppt/parse/tag.hpp
-	libs/system/include/fcppt/system/error_code_to_string.hpp
-	libs/system/include/fcppt/system/make_optional_error_code.hpp
-	libs/system/include/fcppt/system/optional_error_code.hpp
-	libs/system/include/fcppt/system/optional_error_code_fwd.hpp
 )
 
 list(

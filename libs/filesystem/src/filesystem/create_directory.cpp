@@ -4,29 +4,28 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_optional_error_code.hpp>
+#include <fcppt/optional_error_code.hpp>
 #include <fcppt/filesystem/create_directory.hpp>
-#include <fcppt/system/make_optional_error_code.hpp>
-#include <fcppt/system/optional_error_code.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::system::optional_error_code
+fcppt::optional_error_code
 fcppt::filesystem::create_directory(
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_path
 )
 {
-	boost::system::error_code code{};
+	std::error_code code{};
 
-	boost::filesystem::create_directory(
+	std::filesystem::create_directory(
 		_path,
 		code
 	);
 
 	return
-		fcppt::system::make_optional_error_code(
+		fcppt::make_optional_error_code(
 			code
 		);
 }

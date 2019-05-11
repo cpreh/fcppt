@@ -8,13 +8,13 @@
 #include <fcppt/filesystem/normalize.hpp>
 #include <fcppt/filesystem/stem.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
-boost::filesystem::path
+std::filesystem::path
 fcppt::filesystem::normalize(
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_path
 )
 {
 	return
@@ -24,7 +24,7 @@ fcppt::filesystem::normalize(
 		==
 		FCPPT_TEXT(".")
 		?
-			boost::filesystem::path(
+			std::filesystem::path(
 				_path
 			).remove_filename()
 		:

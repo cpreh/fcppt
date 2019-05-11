@@ -4,20 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/char_type.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::string
 fcppt::filesystem::path_to_string(
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_path
 )
 {
 	return
 		_path.string<
-			fcppt::string
+			fcppt::char_type
 		>();
 }

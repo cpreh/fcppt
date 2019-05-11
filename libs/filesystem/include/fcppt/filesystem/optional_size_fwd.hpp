@@ -9,7 +9,7 @@
 
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/cstdint.hpp>
+#include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,7 +20,7 @@ namespace filesystem
 
 typedef
 fcppt::optional::object<
-	boost::uintmax_t
+	std::uintmax_t
 >
 optional_size;
 

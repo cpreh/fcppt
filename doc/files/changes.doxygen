@@ -1,6 +1,26 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_330 3.3.0
+
+<ul>
+<li>
+fcppt now uses <code>std::filesystem</code>.
+</li>
+</ul>
+
+\subsection changes_removed_functionality_to_330 Removed functionality
+
+<ul>
+
+<li>\ref fcpptfilesystem
+	<ul>
+	<li>Removed <code>fcppt::filesystem::create_directory_error</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_322 3.2.2
 
 \subsection changes_bugfixes_to_322 Bugfixes
@@ -10,7 +30,6 @@
 <li>\ref fcpptsmartptr
 	<ul>
 	<li>Fix #fcppt::unique_ptr assignment.</li>
-	</ul>
 </li>
 
 </ul>
@@ -953,7 +972,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li>Added #fcppt::filesystem::create_directory, #fcppt::filesystem::create_directory_error and #fcppt::filesystem::create_directories_recursive.</li>
+	<li>Added #fcppt::filesystem::create_directory, <code>fcppt::filesystem::create_directory_error</code> and #fcppt::filesystem::create_directories_recursive.</li>
 	<li>Added #fcppt::filesystem::file_size.</li>
 	<li>Added <code>fcppt::filesystem::size_to_size_t</code>.</li>
 	<li>Added #fcppt::filesystem::open and #fcppt::filesystem::open_exn.</li>
@@ -1006,7 +1025,7 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptsystem
+<li>fcpptsystem
 	<p>
 	New library that wraps some functionality from <code>boost.system</code>.
 	</p>

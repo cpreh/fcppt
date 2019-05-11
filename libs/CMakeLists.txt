@@ -1,12 +1,4 @@
 if(
-	ENABLE_SYSTEM
-)
-	add_subdirectory(
-		system
-	)
-endif()
-
-if(
 	ENABLE_FILESYSTEM
 )
 	add_subdirectory(

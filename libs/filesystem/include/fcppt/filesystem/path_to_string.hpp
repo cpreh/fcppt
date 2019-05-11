@@ -10,7 +10,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,7 +29,7 @@ Turns \a path into an fcppt::string.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string
 path_to_string(
-	boost::filesystem::path const &path
+	std::filesystem::path const &path
 );
 
 }

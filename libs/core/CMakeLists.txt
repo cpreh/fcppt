@@ -547,6 +547,7 @@ set(
 	libs/core/include/fcppt/enum/to_string_impl_fwd.hpp
 	libs/core/include/fcppt/error/strerrno.hpp
 	libs/core/include/fcppt/error/strerror.hpp
+	libs/core/include/fcppt/error_code_to_string.hpp
 	libs/core/include/fcppt/exception.hpp
 	libs/core/include/fcppt/exception_fwd.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
@@ -651,6 +652,7 @@ set(
 	libs/core/include/fcppt/make_literal_fundamental.hpp
 	libs/core/include/fcppt/make_literal_fwd.hpp
 	libs/core/include/fcppt/make_literal_strong_typedef.hpp
+	libs/core/include/fcppt/make_optional_error_code.hpp
 	libs/core/include/fcppt/make_recursive.hpp
 	libs/core/include/fcppt/make_ref.hpp
 	libs/core/include/fcppt/make_shared_ptr.hpp
@@ -954,6 +956,8 @@ set(
 	libs/core/include/fcppt/optional/to_exception.hpp
 	libs/core/include/fcppt/optional/to_pointer.hpp
 	libs/core/include/fcppt/optional/value_type.hpp
+	libs/core/include/fcppt/optional_error_code.hpp
+	libs/core/include/fcppt/optional_error_code_fwd.hpp
 	libs/core/include/fcppt/optional_size_t.hpp
 	libs/core/include/fcppt/optional_size_t_fwd.hpp
 	libs/core/include/fcppt/optional_std_string.hpp
@@ -1308,6 +1312,7 @@ set(
 	libs/core/src/endianness/reverse_mem.cpp
 	libs/core/src/error/strerrno.cpp
 	libs/core/src/error/strerror.cpp
+	libs/core/src/error_code_to_string.cpp
 	libs/core/src/exception.cpp
 	libs/core/src/from_std_string.cpp
 	libs/core/src/from_std_string_locale.cpp
@@ -1320,6 +1325,7 @@ set(
 	libs/core/src/io/cout.cpp
 	libs/core/src/io/read_chars.cpp
 	libs/core/src/io/write_chars.cpp
+	libs/core/src/make_optional_error_code.cpp
 	libs/core/src/narrow.cpp
 	libs/core/src/string_conv_locale.cpp
 	libs/core/src/time/ctime.cpp
@@ -1340,16 +1346,6 @@ set(
 	libs/core/src/version_string.cpp
 	libs/core/src/widen.cpp
 )
-
-if(
-	ENABLE_BOOST
-)
-	list(
-		APPEND
-		CORE_INCLUDE_DIRS
-		${Boost_INCLUDE_DIRS}
-	)
-endif()
 
 make_fcppt_library(
 	core

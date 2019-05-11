@@ -5,27 +5,28 @@
 
 
 #include <fcppt/make_optional_error_code.hpp>
-#include <fcppt/filesystem/create_directories_recursive.hpp>
 #include <fcppt/optional_error_code.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <filesystem>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional_error_code
-fcppt::filesystem::create_directories_recursive(
-	std::filesystem::path const &_path
+fcppt::make_optional_error_code(
+	std::error_code const &_error
 )
 {
-	std::error_code code{};
-
-	std::filesystem::create_directories(
-		_path,
-		code
-	);
-
 	return
-		fcppt::make_optional_error_code(
-			code
+		fcppt::optional::make_if(
+			_error
+			!=
+			std::error_code{},
+			[
+				&_error
+			]{
+				return
+					_error;
+			}
 		);
 }

@@ -10,8 +10,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <ios>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -39,12 +38,12 @@ fcppt::optional::object<
 	Stream
 >
 open(
-	boost::filesystem::path const &_path,
+	std::filesystem::path const &_path,
 	std::ios_base::openmode const _openmode
 )
 {
 	Stream result{
-		_path.BOOST_FILESYSTEM_C_STR,
+		_path,
 		_openmode
 	};
 

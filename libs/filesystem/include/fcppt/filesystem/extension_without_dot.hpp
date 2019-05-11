@@ -10,7 +10,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,7 +34,7 @@ the string will be empty.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string
 extension_without_dot(
-	boost::filesystem::path const &path
+	std::filesystem::path const &path
 );
 
 }

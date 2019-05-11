@@ -8,13 +8,13 @@
 #include <fcppt/filesystem/extension.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::string
 fcppt::filesystem::extension(
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_path
 )
 {
 	return

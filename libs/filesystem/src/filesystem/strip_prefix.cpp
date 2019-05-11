@@ -8,19 +8,19 @@
 #include <fcppt/filesystem/num_subpaths.hpp>
 #include <fcppt/filesystem/strip_prefix.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
 #include <algorithm>
+#include <filesystem>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
-boost::filesystem::path
+std::filesystem::path
 fcppt::filesystem::strip_prefix(
-	boost::filesystem::path const &_prefix,
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_prefix,
+	std::filesystem::path const &_path
 )
 {
-	boost::filesystem::path result;
+	std::filesystem::path result{};
 
 	std::for_each(
 		std::next(
@@ -35,7 +35,7 @@ fcppt::filesystem::strip_prefix(
 		[
 			&result
 		](
-			boost::filesystem::path const &_entry
+			std::filesystem::path const &_entry
 		)
 		{
 			result /=

@@ -7,10 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORY_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_CREATE_DIRECTORY_HPP_INCLUDED
 
+#include <fcppt/optional_error_code.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
-#include <fcppt/system/optional_error_code.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,9 +28,9 @@ Tries to create the last component of \a path as a directory.
 */
 [[nodiscard]]
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-fcppt::system::optional_error_code
+fcppt::optional_error_code
 create_directory(
-	boost::filesystem::path const &path
+	std::filesystem::path const &path
 );
 
 }

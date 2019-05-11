@@ -356,12 +356,9 @@ if(
 	endif()
 endif()
 
-# Ignore Boost's deprecated features
-set(
-	FCPPT_UTILS_COMPILE_DEFINITIONS
-	"BOOST_FILESYSTEM_NO_DEPRECATED"
-	"BOOST_SYSTEM_NO_DEPRECATED"
-)
+#set(
+#	FCPPT_UTILS_COMPILE_DEFINITIONS
+#)
 
 # configure standard CMake build paths
 set(
@@ -803,11 +800,11 @@ function(
 		${ARGN}
 	)
 
-	target_compile_definitions(
-		${TARGET_NAME}
-		PRIVATE
-		${FCPPT_UTILS_COMPILE_DEFINITIONS}
-	)
+#	target_compile_definitions(
+#		${TARGET_NAME}
+#		PRIVATE
+#		${FCPPT_UTILS_COMPILE_DEFINITIONS}
+#	)
 
 	target_compile_options(
 		${TARGET_NAME}
@@ -1423,3 +1420,26 @@ function(
 		)
 	endforeach()
 endfunction()
+
+include(
+	CheckCXXSourceCompiles
+)
+
+check_cxx_source_compiles(
+	"#include <iostream>
+	int main() { std::cout << _LIBCPP_VERSION; }"
+	FCPPT_UTILS_HAVE_LIBCXX
+)
+
+set(
+	FCPPT_UTILS_FILESYSTEM_LIBRARIES
+)
+
+if(
+	FCPPT_UTILS_HAVE_LIBCXX
+)
+	set(
+		FCPPT_UTILS_FILESYSTEM_LIBRARIES
+		"c++fs"
+	)
+endif()

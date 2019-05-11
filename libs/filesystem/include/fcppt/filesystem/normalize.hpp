@@ -9,7 +9,7 @@
 
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,9 +28,9 @@ Returns a copy of \a path with trailing slashes removed.
 \param path The path to remove trailing slashes from
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-boost::filesystem::path
+std::filesystem::path
 normalize(
-	boost::filesystem::path const &path
+	std::filesystem::path const &path
 );
 
 }

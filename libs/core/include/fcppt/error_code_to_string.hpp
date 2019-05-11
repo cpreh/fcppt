@@ -4,33 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SYSTEM_ERROR_CODE_TO_STRING_HPP_INCLUDED
-#define FCPPT_SYSTEM_ERROR_CODE_TO_STRING_HPP_INCLUDED
+#ifndef FCPPT_ERROR_CODE_TO_STRING_HPP_INCLUDED
+#define FCPPT_ERROR_CODE_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/system/detail/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/system/error_code.hpp>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace system
-{
 
 /**
-\brief Converts an error code to a string.
+\brief Converts an error code to an fcppt::string.
 
-\ingroup fcpptsystem
+\ingroup fcpptstring
 */
-FCPPT_SYSTEM_DETAIL_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::string
 error_code_to_string(
-	boost::system::error_code const &
+	std::error_code const &
 );
 
-}
 }
 
 #endif

@@ -7,8 +7,8 @@
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
 #include <catch2/catch.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -17,12 +17,12 @@ TEST_CASE(
 	"[filesystem]"
 )
 {
-	boost::filesystem::path const path1(
-		boost::filesystem::path(
+	std::filesystem::path const path1(
+		std::filesystem::path(
 			FCPPT_TEXT("foo")
 		)
 		/
-		boost::filesystem::path(
+		std::filesystem::path(
 			FCPPT_TEXT("bar")
 		)
 	);
@@ -35,7 +35,7 @@ TEST_CASE(
 		)
 	);
 
-	boost::filesystem::path const path2(
+	std::filesystem::path const path2(
 		path1
 		/ FCPPT_TEXT("baz.txt")
 	);

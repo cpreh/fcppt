@@ -1,13 +1,13 @@
 /**
 \defgroup fcpptfilesystem fcppt.filesystem
 \ingroup fcpptmain
-\brief Helper functions for boost::filesystem
+\brief Helper functions for std::filesystem
 
 <b>Link to <code>${fcppt_filesystem_TARGET}</code>,
 or to <code>fcppt_filesystem_interface</code> if you only need the headers.</b>
 */
 namespace fcppt
 {
-/// Helper functions for boost::filesystem
+/// Helper functions for std::filesystem
 namespace filesystem {}
 }

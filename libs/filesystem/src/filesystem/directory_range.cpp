@@ -6,14 +6,13 @@
 
 #include <fcppt/filesystem/directory_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::filesystem::directory_range::directory_range(
-	boost::filesystem::path _path
+	std::filesystem::path _path
 )
 :
 	begin_{
@@ -24,17 +23,16 @@ fcppt::filesystem::directory_range::directory_range(
 {
 }
 
-boost::filesystem::directory_iterator
+std::filesystem::directory_iterator
 fcppt::filesystem::directory_range::begin() const
 {
 	return
 		begin_;
 }
 
-boost::filesystem::directory_iterator
+std::filesystem::directory_iterator
 fcppt::filesystem::directory_range::end() const
 {
 	return
-		boost::filesystem::directory_iterator();
+		std::filesystem::directory_iterator();
 }
-

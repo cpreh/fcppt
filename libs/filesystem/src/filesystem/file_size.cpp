@@ -9,19 +9,18 @@
 #include <fcppt/filesystem/optional_size.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/cstdint.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
+#include <cstdint>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::filesystem::optional_size
 fcppt::filesystem::file_size(
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_path
 )
 {
-	boost::uintmax_t const size{
-		boost::filesystem::file_size(
+	std::uintmax_t const size{
+		std::filesystem::file_size(
 			_path
 		)
 	};
@@ -31,7 +30,7 @@ fcppt::filesystem::file_size(
 			size
 			!=
 			static_cast<
-				boost::uintmax_t
+				std::uintmax_t
 			>(
 				-1
 			),

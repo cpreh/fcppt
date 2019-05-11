@@ -5,16 +5,16 @@
 
 
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/error_code_to_string.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/system/error_code_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/system/error_code.hpp>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::string
-fcppt::system::error_code_to_string(
-	boost::system::error_code const &_error_code
+fcppt::error_code_to_string(
+	std::error_code const &_error_code
 )
 {
 	return

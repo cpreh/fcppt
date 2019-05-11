@@ -129,13 +129,7 @@ option(
 option(
 	ENABLE_FILESYSTEM
 	"Build the filesystem library"
-	${Boost_FILESYSTEM_FOUND}
-)
-
-option(
-	ENABLE_SYSTEM
-	"Build the system library"
-	${Boost_SYSTEM_FOUND}
+	ON
 )
 
 option(

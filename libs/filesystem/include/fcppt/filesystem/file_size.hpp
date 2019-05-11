@@ -10,7 +10,7 @@
 #include <fcppt/filesystem/optional_size.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,7 +30,7 @@ otherwise returns the empty optional.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::filesystem::optional_size
 file_size(
-	boost::filesystem::path const &path
+	std::filesystem::path const &path
 );
 
 }

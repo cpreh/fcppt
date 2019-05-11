@@ -10,8 +10,7 @@
 #include <fcppt/filesystem/directory_range_fwd.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,18 +30,18 @@ public:
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
 	explicit
 	directory_range(
-		boost::filesystem::path
+		std::filesystem::path
 	);
 
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	boost::filesystem::directory_iterator
+	std::filesystem::directory_iterator
 	begin() const;
 
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	boost::filesystem::directory_iterator
+	std::filesystem::directory_iterator
 	end() const;
 private:
-	boost::filesystem::directory_iterator begin_;
+	std::filesystem::directory_iterator begin_;
 };
 
 }

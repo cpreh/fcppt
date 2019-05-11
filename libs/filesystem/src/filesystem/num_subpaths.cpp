@@ -7,15 +7,15 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/filesystem/num_subpaths.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
 #include <cstddef>
+#include <filesystem>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
 std::size_t
 fcppt::filesystem::num_subpaths(
-	boost::filesystem::path const &_path
+	std::filesystem::path const &_path
 )
 {
 	return

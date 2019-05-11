@@ -9,8 +9,8 @@
 
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
 #include <cstddef>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,7 +31,7 @@ Returns how many sub-path \a path has
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::size_t
 num_subpaths(
-	boost::filesystem::path const &path
+	std::filesystem::path const &path
 );
 
 }

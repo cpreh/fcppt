@@ -38,15 +38,15 @@ You need the following dependencies to build fcppt:
 The following dependencies are optional:
 <ul>
 <li>
-To build \ref fcpptboost, \ref fcpptfilesystem or \ref fcpptsystem you need,
+To build \ref fcpptboost you need
 <a href="https://boost.org">>=boost-1.47</a>.
 </li>
 <li>
-To build the documentation, you need
+To build the documentation you need
 <a href="http://www.doxygen.org/">>=doxygen-1.7.5</a>.
 </li>
 <li>
-To build and run the tests, you need
+To build and run the tests you need
 <a href="https://github.com/catchorg/Catch2">Catch2</a>.
 This is also needed to build \ref fcpptcatch.
 </li>
@@ -91,12 +91,8 @@ where to find Boost.
 Several CMake options are available:
 <ul>
 <li><code>ENABLE_BOOST</code>: Whether to build \ref fcpptboost. Boost is required for this.</li>
-<li><code>ENABLE_CATCH</code>: Whether to build \ref fcpptcatch.
-Catch2 is required for this.</li>
-<li><code>ENABLE_FILESYSTEM</code>: Whether to build \ref fcpptfilesystem, the <code>boost.filesystem</code>
-support library. <code>ENABLE_SYSTEM</code> and Boost are required for this.</li>
-<li><code>ENABLE_SYSTEM</code>: Whether to build \ref fcpptsystem, the <code>boost.system</code>
-support library. Boost is required for this.</li>
+<li><code>ENABLE_CATCH</code>: Whether to build \ref fcpptcatch. Catch2 is required for this.</li>
+<li><code>ENABLE_FILESYSTEM</code>: Whether to build \ref fcpptfilesystem.</li>
 <li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
 This is probably something you want to turn off when you install fcppt only.</li>
 <li><code>ENABLE_TEST</code>: Whether to build fcppt's tests.

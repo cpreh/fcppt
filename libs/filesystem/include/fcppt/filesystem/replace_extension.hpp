@@ -10,7 +10,7 @@
 #include <fcppt/string_view.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -33,9 +33,9 @@ Replaces the extension of \a path with \a new_extension.
 \return A new path with the extension replaced
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-boost::filesystem::path
+std::filesystem::path
 replace_extension(
-	boost::filesystem::path const &path,
+	std::filesystem::path const &path,
 	fcppt::string_view const &new_extension
 );
 

@@ -760,7 +760,6 @@ INPUT                  = @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/core/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/log/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/options/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/parse/include \
-                         @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/system/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/doc/files
 
 # This tag can be used to specify the character encoding of the source files
