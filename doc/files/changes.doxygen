@@ -9,7 +9,13 @@
 
 <li>\ref fcpptcontainerbitfield
 	<ul>
-	<li>Added <code>operator<< </code>.</li>
+	<li>Added <code>operator<<</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Added <code>operator<<</code> for \link fcppt::enum_::array\endlink.</li>
 	</ul>
 </li>
 

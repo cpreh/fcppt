@@ -4,7 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/text.hpp>
 #include <fcppt/enum/array.hpp>
+#include <fcppt/enum/array_output.hpp>
+#include <fcppt/enum/names_array.hpp>
+#include <fcppt/enum/names_impl_fwd.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -21,6 +28,44 @@ enum class my_enum
 	fcppt_maximum = val3
 };
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
+
+fcppt::enum_::names_array<
+	my_enum
+> const names{{{
+	FCPPT_TEXT("val1"),
+	FCPPT_TEXT("val2"),
+	FCPPT_TEXT("val3")
+}}};
+
+FCPPT_PP_POP_WARNING
+
+}
+
+namespace fcppt
+{
+namespace enum_
+{
+
+template<>
+struct names_impl<
+	my_enum
+>
+{
+	static
+	fcppt::enum_::names_array<
+		my_enum
+	> const &
+	get()
+	{
+		return
+			::names;
+	}
+};
+
+}
 }
 
 TEST_CASE(

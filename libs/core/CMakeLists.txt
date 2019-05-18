@@ -504,6 +504,7 @@ set(
 	libs/core/include/fcppt/enum/array_fwd.hpp
 	libs/core/include/fcppt/enum/array_impl.hpp
 	libs/core/include/fcppt/enum/array_init.hpp
+	libs/core/include/fcppt/enum/array_output.hpp
 	libs/core/include/fcppt/enum/from_int.hpp
 	libs/core/include/fcppt/enum/from_int_exn.hpp
 	libs/core/include/fcppt/enum/from_string.hpp
