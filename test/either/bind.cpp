@@ -46,7 +46,7 @@ TEST_CASE(
 		}
 	);
 
-	either_bool const result_failure(
+	CHECK(
 		fcppt::either::bind(
 			either_int(
 				std::string(
@@ -55,18 +55,12 @@ TEST_CASE(
 			),
 			bind_function
 		)
-	);
-
-	REQUIRE(
-		result_failure.has_failure()
-	);
-
-	CHECK(
-		result_failure.get_failure_unsafe()
 		==
-		std::string(
-			"test"
-		)
+		either_bool{
+			std::string{
+				"test"
+			}
+		}
 	);
 
 	CHECK(
