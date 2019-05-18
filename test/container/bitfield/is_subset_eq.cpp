@@ -67,8 +67,8 @@ TEST_CASE(
 		test_enum::test2
 	] = true;
 
-	CHECK(
-		!fcppt::container::bitfield::is_subset_eq(
+	CHECK_FALSE(
+		fcppt::container::bitfield::is_subset_eq(
 			field1,
 			field2
 		)

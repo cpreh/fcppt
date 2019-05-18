@@ -445,6 +445,7 @@ set(
 	libs/core/include/fcppt/container/bitfield/object_fwd.hpp
 	libs/core/include/fcppt/container/bitfield/object_impl.hpp
 	libs/core/include/fcppt/container/bitfield/operators.hpp
+	libs/core/include/fcppt/container/bitfield/output.hpp
 	libs/core/include/fcppt/container/bitfield/proxy.hpp
 	libs/core/include/fcppt/container/bitfield/proxy_decl.hpp
 	libs/core/include/fcppt/container/bitfield/proxy_fwd.hpp

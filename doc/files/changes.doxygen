@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_320 3.2.0
+
+\subsection changes_added_functionality_to_320 Added functionality
+
+<ul>
+
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>Added <code>operator<< </code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_310 3.1.0
 
 \subsection changes_added_functionality_to_310 Added functionality
