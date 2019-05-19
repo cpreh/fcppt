@@ -6,7 +6,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/container/tree/print.hpp>
+#include <fcppt/container/tree/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
@@ -15,7 +15,7 @@
 
 
 TEST_CASE(
-	"container::tree::print",
+	"container::tree output",
 	"[container],[tree]"
 )
 {
@@ -47,12 +47,10 @@ TEST_CASE(
 		std::string("e")
 	);
 
-	std::ostringstream oss;
+	std::ostringstream oss{};
 
-	fcppt::container::tree::print(
-		oss,
-		tree
-	);
+	oss <<
+		tree;
 
 	CHECK(
 		oss.str()

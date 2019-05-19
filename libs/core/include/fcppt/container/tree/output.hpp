@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_TREE_PRINT_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_PRINT_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_OUTPUT_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/container/tree/detail/print.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
+#include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,6 +21,11 @@ namespace container
 namespace tree
 {
 
+/**
+\brief Outputs a tree.
+
+\ingroup fcpptcontainertree
+*/
 template<
 	typename Ch,
 	typename Traits,
@@ -30,7 +35,7 @@ std::basic_ostream<
 	Ch,
 	Traits
 > &
-print(
+operator<<(
 	std::basic_ostream<
 		Ch,
 		Traits

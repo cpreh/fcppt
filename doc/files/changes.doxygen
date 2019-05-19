@@ -21,6 +21,18 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_320 Changed functionality
+
+<ul>
+
+<li>\ref fcpptcontainertree
+	<ul>
+	<li>Renamed <code>fcppt::container::tree::output</code> to <code>operator<<</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_310 3.1.0
 
 \subsection changes_added_functionality_to_310 Added functionality

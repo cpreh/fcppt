@@ -47,11 +47,11 @@ add_fcppt_container_tree_test(
 )
 
 add_fcppt_container_tree_test(
-	pre_order
+	output
 )
 
 add_fcppt_container_tree_test(
-	print
+	pre_order
 )
 
 add_fcppt_container_tree_test(

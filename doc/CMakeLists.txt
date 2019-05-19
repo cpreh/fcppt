@@ -620,8 +620,8 @@ set(
 	libs/core/include/fcppt/container/tree/object_decl.hpp
 	libs/core/include/fcppt/container/tree/object_fwd.hpp
 	libs/core/include/fcppt/container/tree/object_impl.hpp
+	libs/core/include/fcppt/container/tree/output.hpp
 	libs/core/include/fcppt/container/tree/pre_order.hpp
-	libs/core/include/fcppt/container/tree/print.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
 	libs/core/include/fcppt/container/tuple/detail/map.hpp
 	libs/core/include/fcppt/container/tuple/detail/map_result.hpp
