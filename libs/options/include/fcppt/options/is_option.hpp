@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_IS_OPTION_HPP_INCLUDED
 #define FCPPT_OPTIONS_IS_OPTION_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 
@@ -26,7 +26,7 @@ Options are strings that with a '-'.
 FCPPT_OPTIONS_DETAIL_SYMBOL
 bool
 is_option(
-	fcppt::string const &
+	fcppt::string_view const &
 );
 
 }

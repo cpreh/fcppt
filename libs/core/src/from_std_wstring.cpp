@@ -6,19 +6,20 @@
 
 #include <fcppt/from_std_wstring.hpp>
 #include <fcppt/optional_string.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/public_config.hpp>
 #if defined(FCPPT_NARROW_STRING)
 #include <fcppt/from_std_wstring_locale.hpp>
 #include <fcppt/string_conv_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional_string
 fcppt::from_std_wstring(
-	std::wstring const &_input
+	std::wstring_view const &_input
 )
 {
 	return
@@ -29,7 +30,9 @@ fcppt::from_std_wstring(
 		)
 #else
 		fcppt::optional_string{
-			_input
+			fcppt::string{
+				_input
+			}
 		}
 #endif
 		;

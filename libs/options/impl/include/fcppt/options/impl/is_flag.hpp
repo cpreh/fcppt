@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -29,7 +30,7 @@ fcppt::optional::object<
 	>
 >
 is_flag(
-	fcppt::string const &
+	fcppt::string_view const &
 );
 
 }

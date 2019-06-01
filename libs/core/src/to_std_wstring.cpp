@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/to_std_wstring.hpp>
 #include <fcppt/public_config.hpp>
 #if defined(FCPPT_NARROW_STRING)
@@ -18,7 +18,7 @@
 
 std::wstring
 fcppt::to_std_wstring(
-	fcppt::string const &_input
+	fcppt::string_view const &_input
 )
 {
 	return
@@ -28,7 +28,9 @@ fcppt::to_std_wstring(
 			fcppt::string_conv_locale()
 		)
 #else
-		_input
+		std::wstring{
+			_input
+		}
 #endif
 		;
 }

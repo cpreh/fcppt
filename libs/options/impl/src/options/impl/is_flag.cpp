@@ -7,6 +7,7 @@
 #include <fcppt/char_type.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
@@ -23,11 +24,11 @@ fcppt::optional::object<
 	>
 >
 fcppt::options::impl::is_flag(
-	fcppt::string const &_value
+	fcppt::string_view const &_value
 )
 {
 	// TODO: This is terrible
-	fcppt::string::const_iterator pos{
+	fcppt::string_view::const_iterator pos{
 		_value.begin()
 	};
 

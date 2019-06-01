@@ -5,6 +5,7 @@
 
 
 #include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/replace_extension.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,15 +16,19 @@
 boost::filesystem::path
 fcppt::filesystem::replace_extension(
 	boost::filesystem::path const &_path,
-	fcppt::string const &_ext
+	fcppt::string_view const &_ext
 )
 {
 	return
 		boost::filesystem::path(
 			_path
 		).replace_extension(
-			FCPPT_TEXT(".")
+			fcppt::string{
+				FCPPT_TEXT(".")
+			}
 			+
-			_ext
+			fcppt::string{
+				_ext
+			}
 		);
 }

@@ -8,7 +8,7 @@
 #define FCPPT_OPTIONS_DETAIL_USE_FLAG_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/symbol.hpp>
@@ -28,7 +28,7 @@ use_flag(
 	fcppt::reference<
 		fcppt::options::state
 	>,
-	fcppt::string const &,
+	fcppt::string_view const &,
 	fcppt::options::detail::flag_is_short
 );
 

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/maybe_front.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -15,7 +15,7 @@
 
 bool
 fcppt::options::is_option(
-	fcppt::string const &_value
+	fcppt::string_view const &_value
 )
 {
 	return

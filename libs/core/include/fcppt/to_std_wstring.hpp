@@ -7,7 +7,7 @@
 #ifndef FCPPT_TO_STD_WSTRING_HPP_INCLUDED
 #define FCPPT_TO_STD_WSTRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -27,7 +27,7 @@ information about this function.
 FCPPT_DETAIL_SYMBOL
 std::wstring
 to_std_wstring(
-	fcppt::string const &
+	fcppt::string_view const &
 );
 
 }

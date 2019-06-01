@@ -8,6 +8,7 @@
 #define FCPPT_ENUM_FROM_STRING_IMPL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/enum/from_string_impl_fwd.hpp>
 #include <fcppt/enum/index_of_array.hpp>
 #include <fcppt/enum/names.hpp>
@@ -38,9 +39,9 @@ template<
 struct from_string_impl
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"Enum must be an enum type"
 	);
 
@@ -49,7 +50,7 @@ struct from_string_impl
 		Enum
 	>
 	get(
-		fcppt::string const &_string
+		fcppt::string_view const &_string
 	)
 	{
 		return
@@ -57,7 +58,10 @@ struct from_string_impl
 				fcppt::enum_::names<
 					Enum
 				>(),
-				_string
+				// TODO:
+				fcppt::string{
+					_string
+				}
 			);
 	}
 };

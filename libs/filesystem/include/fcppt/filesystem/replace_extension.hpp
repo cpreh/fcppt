@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_REPLACE_EXTENSION_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_REPLACE_EXTENSION_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
@@ -36,7 +36,7 @@ FCPPT_FILESYSTEM_DETAIL_SYMBOL
 boost::filesystem::path
 replace_extension(
 	boost::filesystem::path const &path,
-	fcppt::string const &new_extension
+	fcppt::string_view const &new_extension
 );
 
 }

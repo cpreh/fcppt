@@ -7,7 +7,7 @@
 #ifndef FCPPT_ENUM_FROM_STRING_HPP_INCLUDED
 #define FCPPT_ENUM_FROM_STRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/enum/from_string_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -37,13 +37,13 @@ fcppt::optional::object<
 	Enum
 >
 from_string(
-	fcppt::string const &_string
+	fcppt::string_view const &_string
 )
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"Enum must be an enum type"
 	);
 

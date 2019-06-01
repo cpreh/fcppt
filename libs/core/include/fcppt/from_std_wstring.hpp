@@ -10,7 +10,7 @@
 #include <fcppt/optional_string.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,7 +27,7 @@ information about this function.
 FCPPT_DETAIL_SYMBOL
 fcppt::optional_string
 from_std_wstring(
-	std::wstring const &
+	std::wstring_view const &
 );
 
 }

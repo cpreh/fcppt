@@ -47,9 +47,9 @@ input(
 )
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"Enum must be an enum type"
 	);
 

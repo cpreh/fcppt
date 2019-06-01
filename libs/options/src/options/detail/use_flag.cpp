@@ -7,6 +7,7 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
@@ -21,7 +22,7 @@ fcppt::options::detail::use_flag(
 	fcppt::reference<
 		fcppt::options::state
 	> const _state,
-	fcppt::string const &_name,
+	fcppt::string_view const &_name,
 	fcppt::options::detail::flag_is_short const _is_short
 )
 {
