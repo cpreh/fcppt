@@ -12,6 +12,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,7 +29,7 @@ Converts \a _string to std::wstring using \a _locale.
 FCPPT_DETAIL_SYMBOL
 std::wstring
 widen(
-	std::string const &,
+	std::string_view const &,
 	std::locale const &
 		= fcppt::string_conv_locale()
 );

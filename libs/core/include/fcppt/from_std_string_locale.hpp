@@ -11,7 +11,7 @@
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,7 +28,7 @@ information about this function.
 FCPPT_DETAIL_SYMBOL
 fcppt::string
 from_std_string_locale(
-	std::string const &,
+	std::string_view const &,
 	std::locale const &
 );
 

@@ -12,7 +12,7 @@
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,7 +29,7 @@ Converts \a _string to std::string using \a _locale.
 FCPPT_DETAIL_SYMBOL
 fcppt::optional_std_string
 narrow(
-	std::wstring const &_string,
+	std::wstring_view const &_string,
 	std::locale const &_locale
 		= fcppt::string_conv_locale()
 );

@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FROM_STD_STRING_HPP_INCLUDED
-#define FCPPT_FROM_STD_STRING_HPP_INCLUDED
+#ifndef FCPPT_STRING_VIEW_HPP_INCLUDED
+#define FCPPT_STRING_VIEW_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/detail/symbol.hpp>
+#include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
@@ -18,17 +17,18 @@ namespace fcppt
 {
 
 /**
-\brief Convert from std::string to fcppt::string using fcppt::string_conv_locale
+\brief The string view type used for text.
+
 \ingroup fcpptstring
 
 See the \link fcpptstring string module description \endlink for more
-information about this function.
+information about this type.
 */
-FCPPT_DETAIL_SYMBOL
-fcppt::string
-from_std_string(
-	std::string_view const &
-);
+typedef
+std::basic_string_view<
+	fcppt::char_type
+>
+string_view;
 
 }
 

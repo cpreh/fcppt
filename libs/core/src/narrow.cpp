@@ -10,13 +10,13 @@
 #include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional_std_string
 fcppt::narrow(
-	std::wstring const &_string,
+	std::wstring_view const &_string,
 	std::locale const &_locale
 )
 {

@@ -12,13 +12,13 @@
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::string
 fcppt::from_std_string_locale(
-	std::string const &_input,
+	std::string_view const &_input,
 	std::locale const &
 #if !defined(FCPPT_NARROW_STRING)
 		_locale
@@ -33,6 +33,8 @@ fcppt::from_std_string_locale(
 		);
 #else
 	return
-		_input;
+		fcppt::string{
+			_input
+		};
 #endif
 }

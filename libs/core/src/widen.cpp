@@ -13,12 +13,13 @@
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
 std::wstring
 fcppt::widen(
-	std::string const &_string,
+	std::string_view const &_string,
 	std::locale const &_locale
 )
 {

@@ -17,6 +17,7 @@
 #include <iterator>
 #include <locale>
 #include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,7 +37,7 @@ fcppt::optional::object<
 	>
 >
 codecvt(
-	std::basic_string<
+	std::basic_string_view<
 		In
 	> const &_string,
 	std::locale const &_locale,

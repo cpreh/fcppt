@@ -10,7 +10,7 @@
 #include <fcppt/optional_std_string.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -25,7 +25,7 @@ namespace fcppt
 FCPPT_DETAIL_SYMBOL
 fcppt::optional_std_string
 getenv(
-	std::string const &
+	std::string_view const &
 );
 
 }

@@ -1159,6 +1159,7 @@ set(
 	libs/core/include/fcppt/string.hpp
 	libs/core/include/fcppt/string_conv_locale.hpp
 	libs/core/include/fcppt/string_literal.hpp
+	libs/core/include/fcppt/string_view.hpp
 	libs/core/include/fcppt/strong_typedef.hpp
 	libs/core/include/fcppt/strong_typedef_apply.hpp
 	libs/core/include/fcppt/strong_typedef_arithmetic.hpp

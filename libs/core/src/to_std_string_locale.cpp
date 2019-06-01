@@ -5,7 +5,7 @@
 
 
 #include <fcppt/optional_std_string.hpp>
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/to_std_string_locale.hpp>
 #include <fcppt/public_config.hpp>
 #if !defined(FCPPT_NARROW_STRING)
@@ -13,12 +13,13 @@
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional_std_string
 fcppt::to_std_string_locale(
-	fcppt::string const &_input,
+	fcppt::string_view const &_input,
 	std::locale const &
 #if !defined(FCPPT_NARROW_STRING)
 		_locale
@@ -34,7 +35,9 @@ fcppt::to_std_string_locale(
 #else
 	return
 		fcppt::optional_std_string{
-			_input
+			std::string{
+				_input
+			}
 		};
 #endif
 }

@@ -24,9 +24,11 @@ namespace fcppt
 See the \link fcpptstring string module description \endlink for more
 information about this type.
 */
-typedef std::basic_string<
+typedef
+std::basic_string<
 	fcppt::char_type
-> string;
+>
+string;
 
 }
 

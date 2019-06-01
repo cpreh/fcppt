@@ -8,7 +8,7 @@
 #define FCPPT_TO_STD_STRING_HPP_INCLUDED
 
 #include <fcppt/optional_std_string.hpp>
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/detail/symbol.hpp>
 
 
@@ -25,7 +25,7 @@ information about this function.
 FCPPT_DETAIL_SYMBOL
 fcppt::optional_std_string
 to_std_string(
-	fcppt::string const &
+	fcppt::string_view const &
 );
 
 }

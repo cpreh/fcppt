@@ -9,17 +9,20 @@
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional_std_string
 fcppt::getenv(
-	std::string const &_val
+	std::string_view const &_val
 )
 {
 	char const *const ret{
 		std::getenv(
-			_val.c_str()
+			std::string{
+				_val
+			}.c_str()
 		)
 	};
 
