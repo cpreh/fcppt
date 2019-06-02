@@ -37,23 +37,14 @@ data_end(
 	Container &_container
 )
 {
-	auto const result(
+	return
 		fcppt::container::data(
 			_container
 		)
-	);
-
-	return
-		_container.empty()
-		?
-			result
-		:
-			result
-			+
-			fcppt::cast::to_signed(
-				_container.size()
-			)
-		;
+		+
+		fcppt::cast::to_signed(
+			_container.size()
+		);
 }
 
 }

@@ -8,6 +8,9 @@
 #define FCPPT_CONTAINER_DATA_HPP_INCLUDED
 
 #include <fcppt/container/to_pointer_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -40,9 +43,9 @@ data(
 		?
 			nullptr
 		:
-			&_container[
-				0
-			]
+			std::data(
+				_container
+			)
 		;
 }
 
