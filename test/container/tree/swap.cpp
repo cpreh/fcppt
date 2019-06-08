@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -54,9 +56,24 @@ TEST_CASE(
 		tree2.empty()
 	);
 
-	CHECK(
-		tree2.front().get_unsafe().get().value()
-		==
-		20
+	fcppt::optional::maybe(
+		tree2.front(),
+		[]{
+			CHECK(
+				false
+			);
+		},
+		[](
+			fcppt::reference<
+				i_tree
+			> const _tree
+		)
+		{
+			CHECK(
+				_tree.get().value()
+				==
+				20
+			);
+		}
 	);
 }
