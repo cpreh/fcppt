@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_ARRAY_JOIN_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_JOIN_HPP_INCLUDED
 
-#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/container/array/size.hpp>
 #include <fcppt/container/array/detail/join.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
@@ -16,7 +15,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/fold.hpp>
 #include <brigand/functions/arithmetic/plus.hpp>
-#include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/types/args.hpp>
 #include <brigand/sequences/list.hpp>
@@ -86,42 +84,35 @@ join(
 )
 {
 	static_assert(
-		fcppt::brigand::all_of<
-			::brigand::list<
+		std::conjunction_v<
+			fcppt::type_traits::is_std_array<
 				fcppt::type_traits::remove_cv_ref_t<
 					Array1
-				>,
-				fcppt::type_traits::remove_cv_ref_t<
-					Arrays
-				>...
+				>
 			>,
 			fcppt::type_traits::is_std_array<
-				::brigand::_1
-			>
-		>::value
+				fcppt::type_traits::remove_cv_ref_t<
+					Arrays
+				>
+			>...
+		>
 	);
 
 	static_assert(
-		fcppt::brigand::all_of<
-			::brigand::list<
+		std::conjunction_v<
+			std::is_same<
+				fcppt::type_traits::value_type<
+					fcppt::type_traits::remove_cv_ref_t<
+						Array1
+					>
+				>,
 				fcppt::type_traits::value_type<
 					fcppt::type_traits::remove_cv_ref_t<
 						Arrays
 					>
-				>...
-			>,
-			::brigand::bind<
-				std::is_same,
-				::brigand::pin<
-					fcppt::type_traits::value_type<
-						fcppt::type_traits::remove_cv_ref_t<
-							Array1
-						>
-					>
-				>,
-				::brigand::_1
-			>
-		>::value
+				>
+			>...
+		>
 	);
 
 	return
