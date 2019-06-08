@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptcontainerarray
+	<ul>
+	<li>Added \link fcppt::container::array::append\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainerbitfield
 	<ul>
 	<li>Added <code>operator<<</code>.</li>
