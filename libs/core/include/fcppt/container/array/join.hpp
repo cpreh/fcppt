@@ -16,8 +16,8 @@
 #include <brigand/algorithms/fold.hpp>
 #include <brigand/functions/arithmetic/plus.hpp>
 #include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
 #include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
 #include <array>
 #include <type_traits>
 #include <utility>

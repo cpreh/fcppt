@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/reference_output.hpp>
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic_cross.hpp>
 #include <fcppt/cast/dynamic_cross_exn.hpp>

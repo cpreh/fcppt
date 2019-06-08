@@ -8,8 +8,8 @@
 #define FCPPT_CONTAINER_GRID_STATIC_ROW_HPP_INCLUDED
 
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/grid/static_row_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/container/grid/static_row_type.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
