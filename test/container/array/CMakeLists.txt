@@ -37,6 +37,12 @@ add_fcppt_container_array_test(
 )
 
 add_fcppt_container_array_test(
+	join
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_container_array_test(
 	make
 )
 

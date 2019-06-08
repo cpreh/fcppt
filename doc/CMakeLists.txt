@@ -417,11 +417,13 @@ set(
 	libs/core/include/fcppt/container/array/append.hpp
 	libs/core/include/fcppt/container/array/apply.hpp
 	libs/core/include/fcppt/container/array/detail/init.hpp
+	libs/core/include/fcppt/container/array/detail/join.hpp
 	libs/core/include/fcppt/container/array/detail/push_back.hpp
 	libs/core/include/fcppt/container/array/detail/size.hpp
 	libs/core/include/fcppt/container/array/init.hpp
 	libs/core/include/fcppt/container/array/init_const.hpp
 	libs/core/include/fcppt/container/array/init_move.hpp
+	libs/core/include/fcppt/container/array/join.hpp
 	libs/core/include/fcppt/container/array/make.hpp
 	libs/core/include/fcppt/container/array/map.hpp
 	libs/core/include/fcppt/container/array/push_back.hpp

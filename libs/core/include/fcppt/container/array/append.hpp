@@ -27,13 +27,15 @@ namespace array
 {
 
 /**
-\brief Appends two arrays
+\brief Appends two arrays.
 
 \ingroup fcpptcontainerarray
 
 Let <code>_array1 = [x_1, ..., x_n]</code>
 and <code>_array2 = [y_1, ..., y_m]</code>.
 The result is <code>[x_1, ..., x_n, y_1, ..., y_m]</code>.
+
+Both arrays must have the same value type.
 
 \tparam Array1 Must be a std::array
 

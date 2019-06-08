@@ -9,7 +9,7 @@
 
 <li>\ref fcpptcontainerarray
 	<ul>
-	<li>Added \link fcppt::container::array::append\endlink.</li>
+	<li>Added \link fcppt::container::array::append\endlink and \link fcppt::container::array::join\endlink.</li>
 	</ul>
 </li>
 
