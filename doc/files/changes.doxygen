@@ -19,6 +19,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Added initialization using \link fcppt::container::grid::static_row\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptenum
 	<ul>
 	<li>Added <code>operator<<</code> for \link fcppt::enum_::array\endlink.</li>

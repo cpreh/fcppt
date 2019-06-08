@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/container/grid/dim_fwd.hpp>
+#include <fcppt/container/grid/is_static_row.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
 #include <fcppt/container/grid/pos_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -156,6 +157,36 @@ public:
 	object(
 		dim const &size,
 		Function const &function
+	);
+
+	/**
+	\brief Initialize the grid from a sequence of \link fcppt::container::grid::static_row_type\endlink.
+
+	Use \link fcppt::container::grid::static_row\endlink to create a grid row.
+	For example, calling this constructro with <code>static_row(1,2,3),static_row(4,5,6)</code>
+	will yields a grid of size <code>3x2</code>.
+
+	All arguments must have the same size (i.e. row length) and all rows must have value type <code>T</code>.
+	*/
+	template<
+		typename Arg1,
+		typename... Args,
+		typename =
+			std::enable_if_t<
+				std::conjunction_v<
+					fcppt::container::grid::is_static_row<
+						Arg1
+					>,
+					fcppt::container::grid::is_static_row<
+						Args
+					>...
+				>
+			>
+	>
+	explicit
+	object(
+		Arg1 &&,
+		Args &&...
 	);
 
 	object(

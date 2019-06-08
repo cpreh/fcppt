@@ -8,6 +8,8 @@
 #define FCPPT_CONTAINER_GRID_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/container/array/join.hpp>
+#include <fcppt/container/array/size.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
@@ -16,6 +18,8 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/null.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -99,6 +103,106 @@ fcppt::container::grid::object<
 		_size
 	)
 {
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
+template<
+	typename Arg1,
+	typename... Args,
+	typename
+>
+fcppt::container::grid::object<
+	T,
+	N,
+	A
+>::object(
+	Arg1 &&_arg1,
+	Args &&... _args
+)
+:
+	container_(
+		fcppt::algorithm::map<
+			container
+		>(
+			fcppt::container::array::join(
+				std::forward<
+					Arg1
+				>(
+					_arg1
+				),
+				std::forward<
+					Args
+				>(
+					_args
+				)...
+			),
+			[](
+				auto &&_value
+			)
+			{
+				return
+					std::move(
+						_value
+					);
+			}
+		)
+	),
+	size_{
+		fcppt::container::array::size<
+			fcppt::type_traits::remove_cv_ref_t<
+				Arg1
+			>
+		>::value,
+		sizeof...(
+			Args
+		)
+		+
+		1u
+	}
+{
+	static_assert(
+		std::conjunction_v<
+			std::is_same<
+				fcppt::container::array::size<
+					fcppt::type_traits::remove_cv_ref_t<
+						Arg1
+					>
+				>,
+				fcppt::container::array::size<
+					fcppt::type_traits::remove_cv_ref_t<
+						Args
+					>
+				>
+			>...
+		>,
+		"All rows must have the size size"
+	);
+
+	static_assert(
+		std::conjunction_v<
+			std::is_same<
+				T,
+				fcppt::type_traits::value_type<
+					fcppt::type_traits::remove_cv_ref_t<
+						Arg1
+					>
+				>
+			>,
+			std::is_same<
+				T,
+				fcppt::type_traits::value_type<
+					fcppt::type_traits::remove_cv_ref_t<
+						Args
+					>
+				>
+			>...
+		>,
+		"All rows must have value_type T"
+	);
 }
 
 template<

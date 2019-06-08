@@ -296,6 +296,7 @@ set(
 	libs/core/include/fcppt/container/grid/in_range_dim.hpp
 	libs/core/include/fcppt/container/grid/interpolate.hpp
 	libs/core/include/fcppt/container/grid/is_object.hpp
+	libs/core/include/fcppt/container/grid/is_static_row.hpp
 	libs/core/include/fcppt/container/grid/make_min.hpp
 	libs/core/include/fcppt/container/grid/make_pos_range.hpp
 	libs/core/include/fcppt/container/grid/make_pos_range_start_end.hpp
@@ -354,6 +355,8 @@ set(
 	libs/core/include/fcppt/container/grid/spiral_range_decl.hpp
 	libs/core/include/fcppt/container/grid/spiral_range_fwd.hpp
 	libs/core/include/fcppt/container/grid/spiral_range_impl.hpp
+	libs/core/include/fcppt/container/grid/static_row.hpp
+	libs/core/include/fcppt/container/grid/static_row_type.hpp
 	libs/core/include/fcppt/container/grid/sup.hpp
 	libs/core/include/fcppt/container/grid/sup_from_pos.hpp
 	libs/core/include/fcppt/container/grid/sup_from_pos_fwd.hpp

@@ -97,3 +97,9 @@ add_fcppt_container_grid_test(
 add_fcppt_container_grid_test(
 	spiral_range
 )
+
+add_fcppt_container_grid_test(
+	static_row
+	LINK_LIBS
+		fcppt_catch_interface
+)
