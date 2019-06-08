@@ -36,10 +36,12 @@ TEST_CASE(
 
 	int_vector const empty{};
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::container::maybe_front(
 			empty
-		).has_value()
+		)
+		==
+		optional_int_ref{}
 	);
 
 	int_vector const vec12{

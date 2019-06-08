@@ -5,8 +5,8 @@
 
 
 #include <fcppt/algorithm/index_of.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -57,10 +57,14 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::algorithm::index_of(
 			vec,
 			4
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			int_vector::size_type
+		>{}
 	);
 }

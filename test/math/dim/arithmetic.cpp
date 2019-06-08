@@ -8,8 +8,8 @@
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/dim/static.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -221,7 +221,7 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		(
 			i2_dim(
 				6,
@@ -232,6 +232,10 @@ TEST_CASE(
 				2,
 				0
 			)
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			i2_dim
+		>{}
 	);
 }

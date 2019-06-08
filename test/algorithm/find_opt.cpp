@@ -6,8 +6,8 @@
 
 #include <fcppt/algorithm/find_opt.hpp>
 #include <fcppt/catch/optional.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <iterator>
@@ -46,10 +46,14 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::algorithm::find_opt(
 			vec,
 			4
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			int_vector::const_iterator
+		>{}
 	);
 }

@@ -112,12 +112,14 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::container::find_opt(
 			set,
 			strong_int(
 				4
 			)
-		).has_value()
+		)
+		==
+		optional_int_ref{}
 	);
 }

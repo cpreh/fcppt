@@ -6,9 +6,10 @@
 
 #include <fcppt/math/is_zero_boost_units.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
@@ -95,27 +96,25 @@ TEST_CASE(
 		)
 	);
 
-	fcppt::optional::object<
-		velocity2
-	> const v1(
+	CHECK(
 		l1
 		/
 		t1
-	);
-
-	REQUIRE(
-		v1.has_value()
-	);
-
-	CHECK(
-		v1.get_unsafe().x().value()
 		==
-		-25
-	);
-
-	CHECK(
-		v1.get_unsafe().y().value()
-		==
-		100
+		fcppt::optional::make(
+			velocity2{
+				-25
+				*
+				boost::units::si::meter
+				/
+				boost::units::si::second
+				,
+				100
+				*
+				boost::units::si::meter
+				/
+				boost::units::si::second
+			}
+		)
 	);
 }

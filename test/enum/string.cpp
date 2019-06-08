@@ -10,8 +10,8 @@
 #include <fcppt/enum/names_array.hpp>
 #include <fcppt/enum/names_impl_fwd.hpp>
 #include <fcppt/enum/to_string.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -98,12 +98,16 @@ TEST_CASE(
 	"[enum]"
 )
 {
-	CHECK_FALSE(
+	CHECK(
 		fcppt::enum_::from_string<
 			test_enum
 		>(
 			FCPPT_TEXT("xy")
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			test_enum
+		>{}
 	);
 
 	CHECK(

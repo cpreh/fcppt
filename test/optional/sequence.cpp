@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/movable.hpp>
+#include <fcppt/catch/optional.hpp>
 #include <fcppt/container/make.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -44,50 +45,42 @@ TEST_CASE(
 	>
 	result_type;
 
-	{
-		result_type const result(
-			fcppt::optional::sequence<
-				int_vector
-			>(
-				optional_int_vector{
-					optional_int{
-						10
-					},
-					optional_int{
-						20
-					}
+	CHECK(
+		fcppt::optional::sequence<
+			int_vector
+		>(
+			optional_int_vector{
+				optional_int{
+					10
+				},
+				optional_int{
+					20
 				}
-			)
-		);
-
-		REQUIRE(
-			result.has_value()
-		);
-
-		CHECK(
-			result.get_unsafe()
-			==
+			}
+		)
+		==
+		fcppt::optional::make(
 			int_vector{
 				10,
 				20
 			}
-		);
-	}
+		)
+	);
 
-	{
-		CHECK_FALSE(
-			fcppt::optional::sequence<
-				int_vector
-			>(
-				optional_int_vector{
-					optional_int{
-						10
-					},
-					optional_int{}
-				}
-			).has_value()
-		);
-	}
+	CHECK(
+		fcppt::optional::sequence<
+			int_vector
+		>(
+			optional_int_vector{
+				optional_int{
+					10
+				},
+				optional_int{}
+			}
+		)
+		==
+		result_type{}
+	);
 }
 
 TEST_CASE(
@@ -96,67 +89,58 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		int
 	>
-	int_unique_ptr;
+	int_movable;
 
 	typedef
 	fcppt::optional::object<
-		int_unique_ptr
+		int_movable
 	>
-	optional_int_unique_ptr;
+	optional_int_movable;
 
 	typedef
 	std::vector<
-		optional_int_unique_ptr
+		optional_int_movable
 	>
-	optional_int_unique_ptr_vector;
+	optional_int_movable_vector;
 
 	typedef
 	std::vector<
-		int_unique_ptr
+		int_movable
 	>
-	int_unique_ptr_vector;
-
+	int_movable_vector;
 
 	typedef
 	fcppt::optional::object<
-		int_unique_ptr_vector
+		int_movable_vector
 	>
 	result_type;
 
-	result_type const result(
+	CHECK(
 		fcppt::optional::sequence<
-			int_unique_ptr_vector
+			int_movable_vector
 		>(
 			fcppt::container::make<
-				optional_int_unique_ptr_vector
+				optional_int_movable_vector
 			>(
-				optional_int_unique_ptr(
-					fcppt::make_unique_ptr<
-						int
-					>(
+				optional_int_movable{
+					int_movable{
 						42
-					)
-				)
+					}
+				}
 			)
 		)
-	);
-
-	REQUIRE(
-		result.has_value()
-	);
-
-	REQUIRE(
-		result.get_unsafe().size()
 		==
-		1u
-	);
-
-	CHECK(
-		*result.get_unsafe()[0]
-		==
-		42
+		result_type{
+			fcppt::container::make<
+				int_movable_vector
+			>(
+				int_movable{
+					42
+				}
+			)
+		}
 	);
 }

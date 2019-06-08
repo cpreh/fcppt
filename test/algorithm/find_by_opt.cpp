@@ -5,8 +5,8 @@
 
 
 #include <fcppt/algorithm/find_by_opt.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/catch/optional.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -68,7 +68,7 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::algorithm::find_by_opt(
 			vec,
 			[](
@@ -90,6 +90,8 @@ TEST_CASE(
 					;
 
 			}
-		).has_value()
+		)
+		==
+		result_type{}
 	);
 }

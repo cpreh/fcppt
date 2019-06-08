@@ -72,10 +72,12 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::container::find_opt_mapped(
 			values,
 			50
-		).has_value()
+		)
+		==
+		optional_string{}
 	);
 }

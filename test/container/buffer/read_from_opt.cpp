@@ -25,13 +25,7 @@ TEST_CASE(
 	>
 	buffer_type;
 
-	typedef
-	fcppt::optional::object<
-		buffer_type
-	>
-	optional_buffer_type;
-
-	optional_buffer_type const result1{
+	CHECK_FALSE(
 		fcppt::container::buffer::read_from_opt<
 			buffer_type
 		>(
@@ -46,14 +40,10 @@ TEST_CASE(
 						buffer_type::size_type
 					>();
 			}
-		)
-	};
-
-	CHECK_FALSE(
-		result1.has_value()
+		).has_value()
 	);
 
-	optional_buffer_type const result2{
+	CHECK(
 		fcppt::container::buffer::read_from_opt<
 			buffer_type
 		>(
@@ -72,10 +62,6 @@ TEST_CASE(
 						)
 					);
 			}
-		)
-	};
-
-	CHECK(
-		result2.has_value()
+		).has_value()
 	);
 }

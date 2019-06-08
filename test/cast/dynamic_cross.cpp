@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference.hpp>
+#include <fcppt/reference_output.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic_cross.hpp>
 #include <fcppt/cast/dynamic_cross_exn.hpp>
 #include <fcppt/cast/dynamic_cross_fun.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -54,21 +58,33 @@ TEST_CASE(
 {
 	derived1 d1{};
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::cast::dynamic_cross<
 			derived2
 		>(
 			d1
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			fcppt::reference<
+				derived2
+			>
+		>{}
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::cast::apply<
 			fcppt::cast::dynamic_cross_fun,
 			derived2
 		>(
 			d1
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			fcppt::reference<
+				derived2
+			>
+		>{}
 	);
 
 	CHECK_THROWS_AS(

@@ -8,8 +8,8 @@
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/enum/from_int_exn.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -44,12 +44,16 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::enum_::from_int<
 			test_enum
 		>(
 			2u
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			test_enum
+		>{}
 	);
 }
 

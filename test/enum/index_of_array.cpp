@@ -7,8 +7,8 @@
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/index_of_array.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -54,10 +54,14 @@ TEST_CASE(
 		)
 	);
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::enum_::index_of_array(
 			test,
 			3u
-		).has_value()
+		)
+		==
+		fcppt::optional::object<
+			test_enum
+		>{}
 	);
 }

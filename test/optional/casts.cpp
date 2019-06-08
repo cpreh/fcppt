@@ -78,12 +78,14 @@ TEST_CASE(
 {
 	optional_base_ref const empty_base{};
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::optional::dynamic_cast_<
 			derived
 		>(
 			empty_base
-		).has_value()
+		)
+		==
+		optional_derived_ref{}
 	);
 
 	derived derived_object{};
@@ -122,12 +124,14 @@ TEST_CASE(
 {
 	optional_base_ref const empty_base{};
 
-	CHECK_FALSE(
+	CHECK(
 		fcppt::optional::static_cast_<
 			derived
 		>(
 			empty_base
-		).has_value()
+		)
+		==
+		optional_derived_ref{}
 	);
 
 	derived derived_object{};
