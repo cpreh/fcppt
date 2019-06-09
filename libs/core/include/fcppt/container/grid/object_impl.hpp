@@ -151,7 +151,7 @@ fcppt::container::grid::object<
 			}
 		)
 	),
-	size_{
+	size_(
 		fcppt::container::array::size<
 			fcppt::type_traits::remove_cv_ref_t<
 				Arg1
@@ -162,7 +162,7 @@ fcppt::container::grid::object<
 		)
 		+
 		1u
-	}
+	)
 {
 	static_assert(
 		std::conjunction_v<
