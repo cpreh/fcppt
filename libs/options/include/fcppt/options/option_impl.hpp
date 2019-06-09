@@ -23,7 +23,6 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
@@ -34,9 +33,9 @@
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/pretty_type.hpp>
-#include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
@@ -118,10 +117,17 @@ fcppt::options::option<
 {
 	typedef
 	fcppt::either::object<
-		fcppt::options::error,
+		fcppt::options::parse_error,
 		fcppt::optional_string
 	>
 	flag_result;
+
+	typedef
+	fcppt::either::object<
+		fcppt::options::parse_error,
+		result_type
+	>
+	inner_result;
 
 	auto const map_result(
 		[](
@@ -138,7 +144,7 @@ fcppt::options::option<
 					)
 					{
 						return
-							fcppt::options::error{
+							fcppt::options::parse_error{
 								fcppt::options::other_error{
 									FCPPT_TEXT("Missing option for ")
 									+
@@ -152,12 +158,11 @@ fcppt::options::option<
 
 	auto const get_default_value(
 		[
+			&_state,
 			this
 		]()
 		->
-		fcppt::options::result<
-			result_type
-		>
+		inner_result
 		{
 			FCPPT_PP_PUSH_WARNING
 			FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -178,11 +183,15 @@ fcppt::options::option<
 						}
 					),
 					[
+						&_state,
 						this
 					]{
 						return
-							fcppt::options::error{
+							fcppt::options::parse_error{
 								fcppt::options::missing_error{
+									std::move(
+										_state
+									),
 									FCPPT_TEXT("Missing option ")
 									+
 									fcppt::options::detail::long_or_short_name(
@@ -207,9 +216,7 @@ fcppt::options::option<
 			fcppt::string const &_string
 		)
 		->
-		fcppt::options::result<
-			result_type
-		>
+		inner_result
 		{
 			FCPPT_PP_PUSH_WARNING
 			FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -240,7 +247,7 @@ fcppt::options::option<
 						&_string
 					]{
 						return
-							fcppt::options::error{
+							fcppt::options::parse_error{
 								fcppt::options::other_error{
 									FCPPT_TEXT("Failed to convert \"")
 									+
@@ -277,9 +284,7 @@ fcppt::options::option<
 			fcppt::optional_string const &_opt_value
 		)
 		->
-		fcppt::options::result<
-			result_type
-		>
+		inner_result
 		{
 			return
 				fcppt::optional::maybe(
@@ -293,7 +298,6 @@ fcppt::options::option<
 	flag_result const long_found{
 		map_result(
 			fcppt::options::detail::use_option(
-				// TODO: Move state
 				fcppt::make_ref(
 					_state
 				),
@@ -315,9 +319,7 @@ fcppt::options::option<
 			fcppt::optional_string const &_short_value_opt
 		)
 		->
-		fcppt::options::result<
-			result_type
-		>
+		inner_result
 		{
 			FCPPT_PP_PUSH_WARNING
 			FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -330,9 +332,7 @@ fcppt::options::option<
 						make_or_default_value
 					]()
 					->
-					fcppt::options::result<
-						result_type
-					>
+					inner_result
 					{
 						return
 							make_or_default_value(
@@ -347,17 +347,13 @@ fcppt::options::option<
 						fcppt::string const &_long_value
 					)
 					->
-					fcppt::options::result<
-						result_type
-					>
+					inner_result
 					{
 						return
 							_short_value_opt.has_value()
 							?
-								fcppt::options::result<
-									result_type
-								>{
-									fcppt::options::error{
+								inner_result{
+									fcppt::options::parse_error{
 										fcppt::options::other_error{
 											FCPPT_TEXT("Cannot specify both long and short name at once: ")
 											+
@@ -389,9 +385,7 @@ fcppt::options::option<
 					&long_found
 				]()
 				->
-				fcppt::options::result<
-					result_type
-				>
+				inner_result
 				{
 					return
 						fcppt::either::bind(
@@ -408,14 +402,11 @@ fcppt::options::option<
 					fcppt::options::short_name const &_short_name
 				)
 				->
-				fcppt::options::result<
-					result_type
-				>
+				inner_result
 				{
 					flag_result const short_found{
 						map_result(
 							fcppt::options::detail::use_option(
-								// TODO: Move state
 								fcppt::make_ref(
 									_state
 								),

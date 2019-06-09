@@ -12,21 +12,20 @@
 #include <fcppt/container/set_union.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/options/combine_errors.hpp>
 #include <fcppt/options/deref.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/indent.hpp>
 #include <fcppt/options/make_left.hpp>
 #include <fcppt/options/make_right.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/sum_decl.hpp>
+#include <fcppt/options/detail/combine_errors.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -102,7 +101,7 @@ fcppt::options::sum<
 				&_state,
 				this
 			](
-				fcppt::options::error &&_error1
+				fcppt::options::parse_error &&_error1
 			)
 			{
 				FCPPT_PP_PUSH_WARNING
@@ -121,7 +120,7 @@ fcppt::options::sum<
 						[
 							&_error1
 						](
-							fcppt::options::error &&_error2
+							fcppt::options::parse_error &&_error2
 						)
 						{
 							return
@@ -130,7 +129,7 @@ fcppt::options::sum<
 										result_type
 									>
 								>(
-									fcppt::options::combine_errors(
+									fcppt::options::detail::combine_errors(
 										std::move(
 											_error1
 										),
@@ -171,7 +170,9 @@ fcppt::options::sum<
 						)
 						{
 							return
-								fcppt::options::make_success(
+								fcppt::options::parse_result<
+									result_type
+								>{
 									fcppt::options::state_with_value<
 										result_type
 									>{
@@ -189,7 +190,7 @@ fcppt::options::sum<
 												}
 										}
 									}
-								);
+								};
 						}
 					);
 
@@ -204,7 +205,9 @@ fcppt::options::sum<
 			)
 			{
 				return
-					fcppt::options::make_success(
+					fcppt::options::parse_result<
+						result_type
+					>{
 						fcppt::options::state_with_value<
 							result_type
 						>{
@@ -222,7 +225,7 @@ fcppt::options::sum<
 									}
 							}
 						}
-					);
+					};
 			}
 		);
 }

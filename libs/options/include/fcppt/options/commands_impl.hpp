@@ -16,9 +16,9 @@
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/either/match.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -32,7 +32,9 @@
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
@@ -136,7 +138,7 @@ fcppt::options::commands<
 		>
 		{
 			return
-				fcppt::either::bind(
+				fcppt::either::match(
 					fcppt::options::detail::parse_to_empty(
 						this->options_parser_,
 						fcppt::options::state{
@@ -151,6 +153,27 @@ fcppt::options::commands<
 							).option_names()
 						}
 					),
+					[](
+						fcppt::options::error &&_error
+					)
+					->
+					fcppt::options::parse_result<
+						result_type
+					>
+					{
+						return
+							fcppt::options::parse_result<
+								result_type
+							>{
+								fcppt::options::parse_error{
+									fcppt::options::other_error{
+										std::move(
+											_error.get()
+										)
+									}
+								}
+							};
+					},
 					[
 						&_sub_command,
 						&_second_args
@@ -256,6 +279,7 @@ fcppt::options::commands<
 				).option_names()
 			),
 			[
+				&_state,
 				this
 			]{
 				return
@@ -264,8 +288,11 @@ fcppt::options::commands<
 							result_type
 						>
 					>(
-						fcppt::options::error{
+						fcppt::options::parse_error{
 							fcppt::options::missing_error{
+								std::move(
+									_state
+								),
 								FCPPT_TEXT("No command specified from [")
 								+
 								fcppt::algorithm::fold(
@@ -369,7 +396,7 @@ fcppt::options::commands<
 										result_type
 									>
 								>(
-									fcppt::options::error{
+									fcppt::options::parse_error{
 										fcppt::options::other_error{
 											FCPPT_TEXT("Invalid command ")
 											+

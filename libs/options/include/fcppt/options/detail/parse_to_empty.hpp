@@ -7,11 +7,14 @@
 #ifndef FCPPT_OPTIONS_DETAIL_PARSE_TO_EMPTY_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_PARSE_TO_EMPTY_HPP_INCLUDED
 
-#include <fcppt/either/bind.hpp>
+#include <fcppt/either/match.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
@@ -20,6 +23,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -52,8 +56,14 @@ parse_to_empty(
 	>
 	result_type;
 
+	typedef
+	fcppt::options::result<
+		result_type
+	>
+	return_type;
+
 	return
-		fcppt::either::bind(
+		fcppt::either::match(
 			fcppt::options::deref(
 				_parser
 			).parse(
@@ -63,17 +73,46 @@ parse_to_empty(
 				_context
 			),
 			[](
+				fcppt::options::parse_error &&_parse_error
+			)
+			{
+				return
+					return_type{
+						fcppt::variant::match(
+							std::move(
+								_parse_error
+							),
+							[](
+								fcppt::options::missing_error &&_error
+							)
+							{
+								return
+									fcppt::options::error{
+										std::move(
+											_error.error_
+										)
+									};
+							},
+							[](
+								fcppt::options::other_error &&_error
+							)
+							{
+								return
+									fcppt::options::error{
+										std::move(
+											_error.get()
+										)
+									};
+							}
+						)
+					};
+			},
+			[](
 				fcppt::options::state_with_value<
 					result_type
 				> &&_result
 			)
 			{
-				typedef
-				fcppt::options::result<
-					result_type
-				>
-				return_type;
-
 				FCPPT_PP_PUSH_WARNING
 				FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 

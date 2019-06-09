@@ -11,13 +11,12 @@
 #include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
-#include <fcppt/options/parse_result_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
+#include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/unit_decl.hpp>
 #include <fcppt/record/element.hpp>
@@ -52,7 +51,9 @@ fcppt::options::unit<
 	return
 		_state.empty()
 		?
-			fcppt::options::make_success(
+			fcppt::options::parse_result<
+				result_type
+			>{
 				fcppt::options::state_with_value<
 					result_type
 				>{
@@ -64,14 +65,14 @@ fcppt::options::unit<
 							fcppt::unit{}
 					}
 				}
-			)
+			}
 		:
 			fcppt::either::make_failure<
 				fcppt::options::state_with_value<
 					result_type
 				>
 			>(
-				fcppt::options::error{
+				fcppt::options::parse_error{
 					fcppt::options::other_error{
 						FCPPT_TEXT("Excess arguments")
 					}

@@ -13,14 +13,13 @@
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/deref.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/many_decl.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
@@ -110,10 +109,9 @@ fcppt::options::many<
 				fcppt::options::deref(
 					this->parser_
 				).parse(
-					// TODO: This is super inefficient. Allow missing_error to return state!
-					fcppt::options::state{
+					std::move(
 						state
-					},
+					),
 					_context
 				);
 		}
@@ -207,25 +205,26 @@ fcppt::options::many<
 				loop
 			),
 			[
-				&state,
 				&result
 			](
-				fcppt::options::missing_error const &
+				fcppt::options::missing_error &&_missing_error
 			)
 			{
 				return
-					fcppt::options::make_success(
+					fcppt::options::parse_result<
+						result_type
+					>{
 						fcppt::options::state_with_value<
 							result_type
 						>(
 							std::move(
-								state
+								_missing_error.state_
 							),
 							std::move(
 								result
 							)
 						)
-					);
+					};
 			},
 			[](
 				fcppt::options::other_error &&_other_error
@@ -237,7 +236,7 @@ fcppt::options::many<
 							result_type
 						>
 					>(
-						fcppt::options::error{
+						fcppt::options::parse_error{
 							std::move(
 								_other_error
 							)

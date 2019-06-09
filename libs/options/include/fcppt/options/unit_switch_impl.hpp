@@ -12,14 +12,13 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
@@ -80,6 +79,7 @@ fcppt::options::unit_switch<
 				_context
 			),
 			[
+				&_state,
 				this
 			](
 				fcppt::options::state_with_value<
@@ -96,7 +96,9 @@ fcppt::options::unit_switch<
 						_result.value_
 					)
 					?
-						fcppt::options::make_success(
+						fcppt::options::parse_result<
+							result_type
+						>{
 							fcppt::options::state_with_value<
 								result_type
 							>{
@@ -108,15 +110,18 @@ fcppt::options::unit_switch<
 										fcppt::unit{}
 								}
 							}
-						)
+						}
 					:
 						fcppt::either::make_failure<
 							fcppt::options::state_with_value<
 								result_type
 							>
 						>(
-							fcppt::options::error{
+							fcppt::options::parse_error{
 								fcppt::options::missing_error{
+									std::move(
+										_state
+									),
 									FCPPT_TEXT("Missing flag ")
 									+
 									fcppt::options::detail::long_or_short_name(

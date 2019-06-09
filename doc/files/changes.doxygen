@@ -49,6 +49,15 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>Changed \link fcppt::options::error\endlink to a string.
+	\link fcppt::options::missing_error\endlink and \link fcppt::options::other_error\endlink were moved to \link fcppt::options::parse_error\endlink.</li>
+	<li>Moved <code>fcppt::options::combine_errors</code> to detail.</li>
+	<li>\link fcppt::options::missing_error\endlink can now return a state, making optional parsers more efficient.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_310 3.1.0
@@ -292,7 +301,7 @@ fcppt now uses <code>C++-17</code>.
 <li>\ref fcpptoptions
 	<ul>
 	<li>Added \link fcppt::options::indent\endlink and added indentation to various parser outputs.</li>
-	<li>Added \link fcppt::options::combine_errors\endlink and use it in \link fcppt::options::sum\endlink.</li>
+	<li>Added <code>fcppt::options::combine_errors</code> and use it in \link fcppt::options::sum\endlink.</li>
 	</ul>
 </li>
 

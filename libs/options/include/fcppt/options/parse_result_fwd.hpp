@@ -7,7 +7,8 @@
 #ifndef FCPPT_OPTIONS_PARSE_RESULT_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_RESULT_FWD_HPP_INCLUDED
 
-#include <fcppt/options/result_fwd.hpp>
+#include <fcppt/either/object_fwd.hpp>
+#include <fcppt/options/parse_error_fwd.hpp>
 #include <fcppt/options/state_with_value_fwd.hpp>
 
 
@@ -29,7 +30,8 @@ template<
 using
 parse_result
 =
-fcppt::options::result<
+fcppt::either::object<
+	fcppt::options::parse_error,
 	fcppt::options::state_with_value<
 		T
 	>

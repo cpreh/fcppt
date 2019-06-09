@@ -10,7 +10,6 @@
 #include <fcppt/container/output.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
 #include <fcppt/options/detail/optional_error.hpp>
@@ -31,15 +30,13 @@ fcppt::options::detail::leftover_error(
 			]{
 				return
 					fcppt::options::error{
-						fcppt::options::other_error{
-							FCPPT_TEXT("Leftover arguments ")
-							+
-							fcppt::output_to_fcppt_string(
-								fcppt::container::output(
-									_state.args_
-								)
+						FCPPT_TEXT("Leftover arguments ")
+						+
+						fcppt::output_to_fcppt_string(
+							fcppt::container::output(
+								_state.args_
 							)
-						}
+						)
 					};
 			}
 		);

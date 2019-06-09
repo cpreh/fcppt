@@ -15,7 +15,6 @@
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/options/argument_decl.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
@@ -23,6 +22,7 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/state.hpp>
@@ -52,11 +52,11 @@ fcppt::options::argument<
 	fcppt::options::optional_help_text &&_help_text
 )
 :
-	long_name_(
+	long_name_{
 		std::move(
 			_long_name
 		)
-	),
+	},
 	help_text_{
 		std::move(
 			_help_text
@@ -94,14 +94,18 @@ fcppt::options::argument<
 					_context
 				),
 				[
+					&_state,
 					this
 				]{
 					return
-						fcppt::options::error{
+						fcppt::options::parse_error{
 							fcppt::options::missing_error{
+								std::move(
+									_state
+								),
 								FCPPT_TEXT("Missing argument \"")
 								+
-								long_name_.get()
+								this->long_name_.get()
 								+
 								FCPPT_TEXT("\".")
 							}
@@ -153,7 +157,7 @@ fcppt::options::argument<
 							&_arg
 						]{
 							return
-								fcppt::options::error{
+								fcppt::options::parse_error{
 									fcppt::options::other_error{
 										FCPPT_TEXT("Failed to convert \"")
 										+
@@ -167,7 +171,7 @@ fcppt::options::argument<
 										+
 										FCPPT_TEXT(" for argument \"")
 										+
-										long_name_.get()
+										this->long_name_.get()
 										+
 										FCPPT_TEXT("\".")
 									}
@@ -219,14 +223,14 @@ fcppt::options::argument<
 >::usage() const
 {
 	return
-		long_name_.get()
+		this->long_name_.get()
 		+
 		fcppt::options::detail::type_annotation<
 			Type
 		>()
 		+
 		fcppt::options::detail::help_text(
-			help_text_
+			this->help_text_
 		);
 }
 

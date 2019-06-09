@@ -15,14 +15,13 @@
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/deref.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_decl.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
@@ -82,10 +81,8 @@ fcppt::options::optional<
 				},
 				_context
 			),
-			[
-				&_state
-			](
-				fcppt::options::error &&_error
+			[](
+				fcppt::options::parse_error &&_error
 			)
 			{
 				FCPPT_PP_PUSH_WARNING
@@ -96,19 +93,19 @@ fcppt::options::optional<
 						std::move(
 							_error
 						),
-						[
-							&_state
-						](
-							fcppt::options::missing_error const &
+						[](
+							fcppt::options::missing_error &&_missing_error
 						)
 						{
 							return
-								fcppt::options::make_success(
+								fcppt::options::parse_result<
+									result_type
+								>{
 									fcppt::options::state_with_value<
 										result_type
 									>{
 										std::move(
-											_state
+											_missing_error.state_
 										),
 										fcppt::record::init<
 											result_type
@@ -126,7 +123,7 @@ fcppt::options::optional<
 											}
 										)
 									}
-								);
+								};
 						},
 						[](
 							fcppt::options::other_error &&_other_error
@@ -138,7 +135,7 @@ fcppt::options::optional<
 										result_type
 									>
 								>(
-									fcppt::options::error{
+									fcppt::options::parse_error{
 										std::move(
 											_other_error
 										)
@@ -158,7 +155,9 @@ fcppt::options::optional<
 			)
 			{
 				return
-					fcppt::options::make_success(
+					fcppt::options::parse_result<
+						result_type
+					>{
 						fcppt::options::state_with_value<
 							result_type
 						>{
@@ -186,7 +185,7 @@ fcppt::options::optional<
 								)
 							)
 						}
-					);
+					};
 			}
 		);
 }

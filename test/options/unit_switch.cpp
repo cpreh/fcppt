@@ -12,7 +12,6 @@
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
-#include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_success.hpp>
@@ -23,7 +22,6 @@
 #include <fcppt/options/unit_switch.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>

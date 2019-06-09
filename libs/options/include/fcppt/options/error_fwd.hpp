@@ -7,9 +7,8 @@
 #ifndef FCPPT_OPTIONS_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_FWD_HPP_INCLUDED
 
-#include <fcppt/options/missing_error_fwd.hpp>
-#include <fcppt/options/other_error_fwd.hpp>
-#include <fcppt/variant/variadic_fwd.hpp>
+#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/string.hpp>
 
 
 namespace fcppt
@@ -18,19 +17,14 @@ namespace options
 {
 
 /**
-\brief The error type returned by parsers.
+\brief The error type retuned.
 
 \ingroup fcpptoptions
-
-An error can either be caused by a missing argument or option, or by something
-else like a failed conversion.
 */
-typedef
-fcppt::variant::variadic<
-	fcppt::options::missing_error,
-	fcppt::options::other_error
->
-error;
+FCPPT_MAKE_STRONG_TYPEDEF(
+	fcppt::string,
+	error
+);
 
 }
 }

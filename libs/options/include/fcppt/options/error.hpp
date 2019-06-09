@@ -7,10 +7,8 @@
 #ifndef FCPPT_OPTIONS_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/options/error_fwd.hpp>
-#include <fcppt/options/missing_error.hpp>
-#include <fcppt/options/other_error.hpp>
-#include <fcppt/variant/variadic.hpp>
 
 
 #endif
