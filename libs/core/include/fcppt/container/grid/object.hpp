@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_HPP_INCLUDED
 
+#include <fcppt/container/grid/comparison.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
 #include <fcppt/container/grid/object_impl.hpp>

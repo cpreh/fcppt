@@ -7,8 +7,8 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/grid/apply.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/output.hpp>
+#include <fcppt/container/grid/output.hpp>
+#include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -113,37 +113,23 @@ TEST_CASE(
 		)
 	);
 
-	// TODO: Compare the whole grids
-	REQUIRE(
-		grid1.size()
-		==
-		result.size()
-	);
-
 	CHECK(
-		result.get_unsafe(
-			string_grid::pos(
-				0u,
-				0u
-			)
-		)
+		result
 		==
-		std::string(
-			"00"
-		)
-	);
-
-	CHECK(
-		result.get_unsafe(
-			string_grid::pos(
-				1u,
-				2u
+		string_grid{
+			fcppt::container::grid::static_row(
+				std::string{"00"},
+				std::string{"11"}
+			),
+			fcppt::container::grid::static_row(
+				std::string{"11"},
+				std::string{"22"}
+			),
+			fcppt::container::grid::static_row(
+				std::string{"22"},
+				std::string{"33"}
 			)
-		)
-		==
-		std::string(
-			"33"
-		)
+		}
 	);
 
 	CHECK(
@@ -151,11 +137,8 @@ TEST_CASE(
 			function,
 			grid1,
 			string_grid()
-		).size()
-		==
-		string_grid::dim(
-			0u,
-			0u
 		)
+		==
+		string_grid{}
 	);
 }

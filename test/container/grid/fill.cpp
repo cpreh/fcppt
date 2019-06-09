@@ -8,7 +8,8 @@
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/container/grid/output.hpp>
+#include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -58,46 +59,15 @@ TEST_CASE(
 	);
 
 	CHECK(
-		test.get_unsafe(
-			pos(
-				0u,
-				0u
-			)
-		)
+		test
 		==
-		0
-	);
-
-	CHECK(
-		test.get_unsafe(
-			pos(
-				1u,
-				0u
+		int2_grid{
+			fcppt::container::grid::static_row(
+				0, 1
+			),
+			fcppt::container::grid::static_row(
+				1, 2
 			)
-		)
-		==
-		1
-	);
-
-	CHECK(
-		test.get_unsafe(
-			pos(
-				0u,
-				1u
-			)
-		)
-		==
-		1
-	);
-
-	CHECK(
-		test.get_unsafe(
-			pos(
-				1u,
-				1u
-			)
-		)
-		==
-		2
+		}
 	);
 }

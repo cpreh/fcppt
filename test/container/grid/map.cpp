@@ -5,14 +5,14 @@
 
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/container/grid/map.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/output.hpp>
+#include <fcppt/container/grid/output.hpp>
+#include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -83,36 +83,23 @@ TEST_CASE(
 		)
 	);
 
-	REQUIRE(
-		grid.size()
-		==
-		result.size()
-	);
-
 	CHECK(
-		result.get_unsafe(
-			string_grid::pos(
-				0u,
-				0u
-			)
-		)
+		result
 		==
-		std::string(
-			"0"
-		)
-	);
-
-	CHECK(
-		result.get_unsafe(
-			string_grid::pos(
-				1u,
-				2u
+		string_grid{
+			fcppt::container::grid::static_row(
+				std::string{"0"},
+				std::string{"1"}
+			),
+			fcppt::container::grid::static_row(
+				std::string{"1"},
+				std::string{"2"}
+			),
+			fcppt::container::grid::static_row(
+				std::string{"2"},
+				std::string{"3"}
 			)
-		)
-		==
-		std::string(
-			"3"
-		)
+		}
 	);
 }
 
@@ -122,22 +109,22 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::unique_ptr<
+	fcppt::catch_::movable<
 		unsigned
 	>
-	uint_unique_ptr;
+	uint_movable;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		uint_unique_ptr,
+		uint_movable,
 		strong_result
 	);
 
 	typedef
 	fcppt::container::grid::object<
-		uint_unique_ptr,
+		uint_movable,
 		2
 	>
-	unique_ptr_grid;
+	movable_grid;
 
 	typedef
 	fcppt::container::grid::object<
@@ -148,19 +135,17 @@ TEST_CASE(
 
 	strong_grid const result(
 		fcppt::container::grid::map(
-			unique_ptr_grid(
-				unique_ptr_grid::dim{
+			movable_grid(
+				movable_grid::dim{
 					3u,
 					2u
 				},
 				[](
-					unique_ptr_grid::pos const _pos
+					movable_grid::pos const _pos
 				)
 				{
 					return
-						fcppt::make_unique_ptr<
-							unsigned
-						>(
+						uint_movable{
 							fcppt::cast::size<
 								unsigned
 							>(
@@ -176,11 +161,11 @@ TEST_CASE(
 									_pos
 								)
 							)
-						);
+						};
 				}
 			),
 			[](
-				uint_unique_ptr &&_value
+				uint_movable &&_value
 			)
 			{
 				return
@@ -193,34 +178,44 @@ TEST_CASE(
 		)
 	);
 
-	REQUIRE(
-		strong_grid::dim(
-			3u,
-			2u
-		)
-		==
-		result.size()
-	);
-
 	CHECK(
-		*result.get_unsafe(
-			strong_grid::pos(
-				0u,
-				0u
-			)
-		).get()
+		result
 		==
-		0u
-	);
-
-	CHECK(
-		*result.get_unsafe(
-			strong_grid::pos(
-				2u,
-				1u
+		strong_grid{
+			fcppt::container::grid::static_row(
+				strong_result{
+					uint_movable{
+						0u
+					}
+				},
+				strong_result{
+					uint_movable{
+						1u
+					}
+				},
+				strong_result{
+					uint_movable{
+						2u
+					}
+				}
+			),
+			fcppt::container::grid::static_row(
+				strong_result{
+					uint_movable{
+						1u
+					}
+				},
+				strong_result{
+					uint_movable{
+						2u
+					}
+				},
+				strong_result{
+					uint_movable{
+						3u
+					}
+				}
 			)
-		).get()
-		==
-		3u
+		}
 	);
 }

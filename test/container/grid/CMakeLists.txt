@@ -60,6 +60,7 @@ add_fcppt_container_grid_test(
 add_fcppt_container_grid_test(
 	map
 	LINK_LIBS
+		fcppt_catch_interface
 		"${fcppt_core_TARGET}"
 )
 
