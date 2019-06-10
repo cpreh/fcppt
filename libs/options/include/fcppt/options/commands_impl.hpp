@@ -129,8 +129,8 @@ fcppt::options::commands<
 			this
 		](
 			auto const &_sub_command,
-			fcppt::args_vector const &_first_args,
-			fcppt::args_vector const &_second_args
+			fcppt::args_vector &&_first_args,
+			fcppt::args_vector &&_second_args
 		)
 		->
 		fcppt::options::parse_result<
@@ -142,10 +142,9 @@ fcppt::options::commands<
 					fcppt::options::detail::parse_to_empty(
 						this->options_parser_,
 						fcppt::options::state{
-							// TODO: move
-							fcppt::args_vector{
+							std::move(
 								_first_args
-							}
+							)
 						},
 						fcppt::options::parse_context{
 							fcppt::options::deref(
@@ -205,10 +204,9 @@ fcppt::options::commands<
 									).parser()
 								).parse(
 									fcppt::options::state{
-										// TODO: move
-										fcppt::args_vector{
+										std::move(
 											_second_args
-										}
+										)
 									},
 									fcppt::options::parse_context{
 										fcppt::options::deref(
@@ -332,7 +330,7 @@ fcppt::options::commands<
 					fcppt::args_vector,
 					fcppt::string,
 					fcppt::args_vector
-				> const &_split_arguments
+				> &&_split_arguments
 			)
 			{
 				return
@@ -364,15 +362,19 @@ fcppt::options::commands<
 											optional_result_type{
 												parse_inner(
 													_parser,
-													std::get<
-														0
-													>(
-														_split_arguments
+													std::move(
+														std::get<
+															0
+														>(
+															_split_arguments
+														)
 													),
-													std::get<
-														2
-													>(
-														_split_arguments
+													std::move(
+														std::get<
+															2
+														>(
+															_split_arguments
+														)
 													)
 												)
 											}
@@ -400,10 +402,12 @@ fcppt::options::commands<
 										fcppt::options::other_error{
 											FCPPT_TEXT("Invalid command ")
 											+
-											std::get<
-												1
-											>(
-												_split_arguments
+											std::move(
+												std::get<
+													1
+												>(
+													_split_arguments
+												)
 											)
 										}
 									}
