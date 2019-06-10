@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
-#include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_failure.hpp>
@@ -121,16 +121,11 @@ fcppt::options::flag<
 	fcppt::options::parse_context const &
 ) const
 {
-	fcppt::reference<
-		fcppt::options::state
-	> const state{
-		_state
-	};
-
 	bool const long_found{
-		// TODO: Move state
 		fcppt::options::detail::use_flag(
-			state,
+			fcppt::make_ref(
+				_state
+			),
 			long_name_.get(),
 			fcppt::options::detail::flag_is_short{
 				false
@@ -189,14 +184,16 @@ fcppt::options::flag<
 				this,
 				make_success,
 				long_found,
-				state
+				&_state
 			](
 				fcppt::options::short_name const &_short_name
 			)
 			{
 				bool const short_found{
 					fcppt::options::detail::use_flag(
-						state,
+						fcppt::make_ref(
+							_state
+						),
 						_short_name.get(),
 						fcppt::options::detail::flag_is_short{
 							true
@@ -255,7 +252,6 @@ fcppt::options::flag<
 		}
 	};
 
-	// TODO: Make a function for this?
 	fcppt::optional::maybe_void(
 		this->short_name_,
 		[

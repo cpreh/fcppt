@@ -484,7 +484,6 @@ fcppt::options::option<
 		}
 	};
 
-	// TODO: Make a function for this?
 	fcppt::optional::maybe_void(
 		this->short_name_,
 		[

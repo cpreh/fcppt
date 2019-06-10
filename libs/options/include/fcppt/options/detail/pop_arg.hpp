@@ -24,7 +24,6 @@ namespace detail
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::optional_string
 pop_arg(
-	// TODO: Return this
 	fcppt::reference<
 		fcppt::options::state
 	>,
