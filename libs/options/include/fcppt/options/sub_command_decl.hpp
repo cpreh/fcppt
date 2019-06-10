@@ -43,6 +43,10 @@ public:
 	Tag
 	tag;
 
+	typedef
+	Parser
+	parser_type;
+
 	sub_command(
 		fcppt::string &&,
 		Parser &&,

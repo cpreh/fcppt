@@ -187,6 +187,16 @@ fcppt::options::commands<
 						result_type
 					>
 					{
+						typedef
+						fcppt::options::deref_type<
+							fcppt::type_traits::remove_cv_ref_t<
+								decltype(
+									_sub_command
+								)
+							>
+						>
+						sub_command_type;
+
 						return
 							fcppt::either::map(
 								fcppt::options::deref(
@@ -211,25 +221,14 @@ fcppt::options::commands<
 								[
 									&_options_result
 								](
-									// TODO: Specify this type
-									auto &&_parser_result
+									fcppt::options::state_with_value<
+										fcppt::options::result_of<
+											typename
+											sub_command_type::parser_type
+										>
+									> &&_parser_result
 								)
 								{
-									typedef
-									fcppt::type_traits::remove_cv_ref_t<
-										decltype(
-											_sub_command
-										)
-									>
-									sub_command_type;
-
-									typedef
-									typename
-									fcppt::options::deref_type<
-										sub_command_type
-									>::tag
-									sub_command_tag;
-
 									return
 										fcppt::options::state_with_value<
 											result_type
@@ -247,7 +246,8 @@ fcppt::options::commands<
 														fcppt::options::result_of<
 															sub_command_type
 														>{
-															sub_command_tag{} =
+															typename
+															sub_command_type::tag{} =
 																std::move(
 																	_parser_result.value_
 																)
