@@ -7,9 +7,13 @@
 #ifndef FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 
+#include <fcppt/config/compiler.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -98,8 +102,16 @@ decltype(
 				result;
 	}
 
+FCPPT_PP_PUSH_WARNING
+#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
+#endif
+
 	return
 		result_type();
+
+FCPPT_PP_POP_WARNING
+
 }
 
 }
