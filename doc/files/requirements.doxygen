@@ -58,10 +58,9 @@ The following platforms are tested by us:
 
 <ul>
 	<li>gcc-9.1 (Gentoo Linux)</li>
-	<li>gcc-8.3 (Gentoo Linux)</li>
 	<li>gcc-8.1 (MinGW)</li>
 	<li>clang-8.0.0 (Gentoo Linux)</li>
-	<li>VC++-14.16</li>
+	<li>VC++-14.21 (Visual Studio 2019)</li>
 </ul>
 
 fcppt needs a C++17-conforming compiler which probably excludes everything
