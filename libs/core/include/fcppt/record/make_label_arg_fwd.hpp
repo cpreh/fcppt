@@ -13,11 +13,11 @@
 
 
 /**
-\brief Creates a parametrized \link fcppt::record::label\endlink.
+\brief Creates a parametrized #fcppt::record::label.
 
 \ingroup fcpptrecord
 
-Creates an \link fcppt::record::label\endlink, passing it a unique,
+Creates an #fcppt::record::label, passing it a unique,
 implementation-defined tag type that depends on a template parameter.
 The result is a template alias that still takes a parameter of type
 \a arg.

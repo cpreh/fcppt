@@ -29,7 +29,7 @@ namespace math
 
 \ingroup fcpptmath
 
-The same as \link fcppt::math::ceil_div\endlink, except in case where dividend
+The same as #fcppt::math::ceil_div, except in case where dividend
 is negative, dividend / divisor is returned.
 
 \tparam T A signed type

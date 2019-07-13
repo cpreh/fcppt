@@ -25,7 +25,7 @@ namespace math
 
 In case divisor is 0, nothing is returned.
 
-\tparam R Any type that works with \link fcppt::math::is_zero\endlink.
+\tparam R Any type that works with #fcppt::math::is_zero.
 */
 template<
 	typename L,

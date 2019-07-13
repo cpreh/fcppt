@@ -14,9 +14,9 @@
 \brief Creates a new strong typedef using strong_typedef.
 \ingroup fcpptstrongtypedef
 \param type The type to be wrapped.
-\param name The name of the new typedef
+\param name The name of the new typedef.
 
-Read the \link fcpptstrongtypedef module description \endlink for more information.
+Read \ref fcpptstrongtypedef for more information.
 */
 #define FCPPT_MAKE_STRONG_TYPEDEF(\
 	type,\

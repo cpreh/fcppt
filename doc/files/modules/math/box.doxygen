@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::box::object box::object \endlink and helper functions, classes and types for it
+\brief Contains #fcppt::math::box::object box::object  and helper functions, classes and types for it
 */
 namespace box
 {
@@ -68,15 +68,15 @@ There are getters and setters for both representations as well:
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::box::object\endlink's declaration.</td>
+<td>Contains #fcppt::math::box::object's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::box::object\endlink's definition.</td>
+<td>Contains #fcppt::math::box::object's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::box::object\endlink's member functions.</td>
+<td>Contains the definition of #fcppt::math::box::object's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>

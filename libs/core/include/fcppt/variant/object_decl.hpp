@@ -36,7 +36,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 Movable, Assignable or AssignMovable and complete. It therefore must also not
 be const.
 
-See the \link fcpptvariant module description \endlink for more information.
+See \ref fcpptvariant for more information.
 */
 template<
 	typename Types

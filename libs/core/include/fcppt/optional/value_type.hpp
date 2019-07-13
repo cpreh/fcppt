@@ -20,7 +20,7 @@ namespace optional
 
 \ingroup fcpptoptional
 
-\tparam Optional Must be an \link fcppt::optional::object\endlink.
+\tparam Optional Must be an #fcppt::optional::object.
 */
 template<
 	typename Optional

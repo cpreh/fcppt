@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::dim::object dim::object \endlink and helper functions, classes and types for it
+\brief Contains #fcppt::math::dim::object dim::object  and helper functions, classes and types for it
 */
 namespace dim
 {
@@ -32,8 +32,7 @@ namespace dim
 
 \section fcpptmathdim_motivation Motivation
 
-Conceptually, a dimension is very similar to an \link
-fcppt::math::vector::object\endlink. However, it is often useful to distinguish
+Conceptually, a dimension is very similar to an #fcppt::math::vector::object. However, it is often useful to distinguish
 the two on the type level. For example, there are operations that apply to
 vectors (like the dot product) that make no sense in the context of a
 dimension.  Conversely, there are operations like "take the area of the
@@ -43,11 +42,11 @@ lower-dimensional getters for dim (<code>w(),h(),d()</code>).
 
 \section fcpptmathdim_converting_from_and_to_vectors Converting from and to vectors
 
-To convert a dimension to a vector, use \link fcppt::math::dim::to_vector\endlink:
+To convert a dimension to a vector, use #fcppt::math::dim::to_vector:
 
 \snippet math/dim.cpp conversion_to_vector
 
-Conversely, use \link fcppt::math::vector::to_dim\endlink to convert a vector to a dim:
+Conversely, use #fcppt::math::vector::to_dim to convert a vector to a dim:
 
 \snippet math/dim.cpp conversion_from_vector
 
@@ -60,15 +59,15 @@ Conversely, use \link fcppt::math::vector::to_dim\endlink to convert a vector to
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::dim::object\endlink's declaration.</td>
+<td>Contains #fcppt::math::dim::object's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::dim::object\endlink's definition.</td>
+<td>Contains #fcppt::math::dim::object's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::dim::object\endlink's member functions.</td>
+<td>Contains the definition of #fcppt::math::dim::object's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>

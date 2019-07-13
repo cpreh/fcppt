@@ -35,10 +35,10 @@ Argument parsers match the next command-line parameter that is not a flag
 stored in a record that has a single element with label \a Label and type \a
 Type. In case reading the value into \a Type fails, the parser also fails.
 
-\tparam Label An \link fcppt::record::label\endlink.
+\tparam Label An #fcppt::record::label.
 
 \tparam Type The type of the argument's value which must be readable from an
-\link fcppt::io::istream\endlink.
+#fcppt::io::istream.
 */
 template<
 	typename Label,

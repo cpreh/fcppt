@@ -20,7 +20,7 @@ namespace either
 
 \ingroup fcppteither
 
-\tparam Either Must be an \link fcppt::either::object\endlink.
+\tparam Either Must be an #fcppt::either::object.
 */
 template<
 	typename Either

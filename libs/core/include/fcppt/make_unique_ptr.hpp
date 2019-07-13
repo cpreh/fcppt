@@ -17,7 +17,7 @@ namespace fcppt
 {
 
 /**
-\brief Like <code>std::make_unique</code> for \link fcppt::unique_ptr\endlink
+\brief Like <code>std::make_unique</code> for #fcppt::unique_ptr
 
 \ingroup fcpptsmartptr
 */

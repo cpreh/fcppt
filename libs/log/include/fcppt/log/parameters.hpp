@@ -19,7 +19,7 @@ namespace log
 {
 
 /**
-\brief The parameters class for an \link fcppt::log::object \endlink
+\brief The parameters class for an #fcppt::log::object
 
 \ingroup fcpptlog
 */

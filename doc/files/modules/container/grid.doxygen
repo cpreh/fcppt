@@ -38,15 +38,14 @@ Let's first take a look at how to use a simple three dimensional grid of ints.
 
 \snippet container/grid.cpp grid_simple
 
-Grid uses \link fcppt::math::dim::object\endlink to specify its size and \link
-fcppt::math::vector::object\endlink to obtain an element.
+Grid uses #fcppt::math::dim::object to specify its size and #fcppt::math::vector::object to obtain an element.
 
 \section fcpptcontainergrid_init Initialization
 There are three ways to initialize a grid:
 <ul>
 <li>Provide a value that will be copied into each cell.</li>
 <li>Initialize each cell by calling a function with its position.</li>
-<li>Leave the grid uninitialized, using \link fcppt::no_init\endlink.</li>
+<li>Leave the grid uninitialized, using #fcppt::no_init.</li>
 </ul>
 Here is a small example:
 \snippet container/grid.cpp grid_init
@@ -55,9 +54,9 @@ Here is a small example:
 
 To conveniently iterate over a grid, two ranges are provided:
 <ul>
-<li>\link fcppt::container::grid::pos_range\endlink</li> which
+<li>#fcppt::container::grid::pos_range</li> which
 is a range over positions.
-<li>\link fcppt::container::grid::pos_ref_range\endlink which is a range over
+<li>#fcppt::container::grid::pos_ref_range which is a range over
 positions paired with the elements of a grid.</li>
 </ul>
 
@@ -71,15 +70,13 @@ simultaneously. Here is an example:
 \snippet container/grid_range.cpp pos_ref_range
 
 Additionally, you can iterate over sub ranges which are denoted by a pair of
-\link fcppt::container::grid::min\endlink and \link
-fcppt::container::grid::sup\endlink. Here, <code>min</code> denotes the first
+#fcppt::container::grid::min and #fcppt::container::grid::sup. Here, <code>min</code> denotes the first
 element in the range while <code>sup</code> is ''one past the end''. A range is
 empty if at least one element of <code>min</code> is greater or equal to the
 corresponding element in <code>sup</code>. It is often necessary to clamp
 positions to a valid range that doesn't exceed the size of a grid.  There are
-three functions for this: \link fcppt::container::grid::clamped_min\endlink,
-\link fcppt::container::grid::clamped_sup\endlink and \link
-fcppt::container::grid::clamped_sup_signed\endlink. An unsigned
+three functions for this: #fcppt::container::grid::clamped_min,
+#fcppt::container::grid::clamped_sup and #fcppt::container::grid::clamped_sup_signed. An unsigned
 <code>min</code> doesn't need to be clamped. Here is an example:
 
 \snippet container/grid_range.cpp pos_ref_sub_range
@@ -116,7 +113,7 @@ Here is an example:
 
 \section fcpptcontainergrid_resizing Resizing
 
-To resize a grid, we can use \link fcppt::container::grid::resize\endlink.
+To resize a grid, we can use #fcppt::container::grid::resize.
 Here's an example:
 \snippet container/grid.cpp grid_resize
 */

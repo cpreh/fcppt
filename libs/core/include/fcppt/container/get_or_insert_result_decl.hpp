@@ -20,7 +20,7 @@ namespace container
 {
 
 /**
-\brief The result type of \link fcppt::container::get_or_insert_with_result \endlink
+\brief The result type of #fcppt::container::get_or_insert_with_result
 
 \ingroup fcpptcontainer
 */

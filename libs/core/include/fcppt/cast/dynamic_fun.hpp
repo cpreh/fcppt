@@ -17,7 +17,7 @@ namespace cast
 {
 
 /**
-\brief Function object that uses \link fcppt::cast::dynamic\endlink
+\brief Function object that uses #fcppt::cast::dynamic
 
 \ingroup fcpptcasts
 */

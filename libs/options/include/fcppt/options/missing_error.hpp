@@ -24,7 +24,7 @@ namespace options
 \ingroup fcpptoptions
 
 A missing error is an error that occurs if a required argument or option has
-not been specified. Such an error makes \link fcppt::options::optional\endlink
+not been specified. Such an error makes #fcppt::options::optional
 parsers return an empty optional.
 */
 struct missing_error

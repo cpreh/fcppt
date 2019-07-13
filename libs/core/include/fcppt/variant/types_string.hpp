@@ -22,7 +22,7 @@ namespace variant
 
 \ingroup fcpptvariant
 
-\tparam Variant Must be an \link fcppt::variant::object\endlink.
+\tparam Variant Must be an #fcppt::variant::object.
 */
 template<
 	typename Variant

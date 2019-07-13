@@ -16,11 +16,11 @@ namespace record
 {
 
 /**
-\brief Extracts the type of an \link fcppt::record::element\endlink.
+\brief Extracts the type of an #fcppt::record::element.
 
 \ingroup fcpptrecord
 
-\tparam Element Must be an \link fcppt::record::element\endlink.
+\tparam Element Must be an #fcppt::record::element.
 */
 template<
 	typename Element

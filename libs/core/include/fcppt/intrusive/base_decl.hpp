@@ -23,8 +23,7 @@ namespace intrusive
 
 \ingroup fcpptintrusive
 
-Every type that is used as an element of an \link
-fcppt::intrusive::list\endlink must derive from this class.
+Every type that is used as an element of an #fcppt::intrusive::list must derive from this class.
 
 \tparam Type The derived type.
 */

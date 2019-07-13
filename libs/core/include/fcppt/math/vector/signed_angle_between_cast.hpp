@@ -30,8 +30,7 @@ namespace vector
 
 \ingroup fcpptmathvector
 
-This function is a generalization of \link
-fcppt::math::vector::signed_angle_between \endlink since it calculates the
+This function is a generalization of #fcppt::math::vector::signed_angle_between since it calculates the
 angle between two arbitrary vectors, instead of two floating-point vectors.
 In case of an error, nothing is returned.
 

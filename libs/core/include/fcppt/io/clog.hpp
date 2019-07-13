@@ -17,12 +17,10 @@ namespace io
 {
 
 /**
-\brief Returns either std::clog or std::wclog, depending on fcppt::char_type
+\brief Returns either std::clog or std::wclog, depending on #fcppt::char_type.
 \ingroup fcpptstring
 
-
-See the \link fcpptstring string module documentation \endlink for a motivation
-for this.
+See \ref fcpptstring for a motivation for this.
 */
 FCPPT_DETAIL_SYMBOL
 fcppt::io::ostream &

@@ -25,7 +25,7 @@ namespace bitfield
 
 /**
 \brief Meta function to retrieve the internal storage type used by
-\link fcppt::container::bitfield::object\endlink.
+#fcppt::container::bitfield::object.
 
 \ingroup fcpptcontainerbitfield
 

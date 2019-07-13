@@ -28,22 +28,22 @@ you cannot fix.
 
 To disable warnings in a scope, fcppt provides the following macros:
 <dl>
-<dt>\link FCPPT_PP_PUSH_WARNING \endlink</dt>
+<dt>#FCPPT_PP_PUSH_WARNING </dt>
 <dd>Pushes the warning stack</dd>
 
-<dt>\link FCPPT_PP_POP_WARNING \endlink</dt>
+<dt>#FCPPT_PP_POP_WARNING </dt>
 <dd>Pops the warning stack</dd>
 
-<dt>\link FCPPT_PP_DISABLE_GCC_WARNING \endlink</dt>
+<dt>#FCPPT_PP_DISABLE_GCC_WARNING </dt>
 <dd>Disables a given warning option only on gcc like compilers</dd>
 
-<dt>\link FCPPT_PP_DISABLE_VC_WARNING \endlink</dt>
+<dt>#FCPPT_PP_DISABLE_VC_WARNING </dt>
 <dd>Disables a given warning option only on VC++</dd>
 </dl>
 
 To minimize the scope where warnings are disabled, you should always start with
-an \link FCPPT_PP_PUSH_WARNING \endlink, followed by disabling the warning(s).
-To close the scope, \link FCPPT_PP_POP_WARNING \endlink should be used.
+an #FCPPT_PP_PUSH_WARNING , followed by disabling the warning(s).
+To close the scope, #FCPPT_PP_POP_WARNING  should be used.
 
 \warning These macros cannot be placed everywhere. You should only place them
 around statements or scopes. For example, placing them around an initialization
@@ -64,9 +64,9 @@ for gcc.
 Printing compiler messages can be useful to print general diagnostics, todo or
 fixme messages.
 
-fcppt provides \link FCPPT_PP_MESSAGE \endlink to do that. There are three more
-macros called \link FCPPT_PP_TODO \endlink, \link FCPPT_PP_FIXME \endlink and
-\link FCPPT_PP_WARNING \endlink, that print "TODO: ", "FIXME: " and "warning: "
+fcppt provides #FCPPT_PP_MESSAGE  to do that. There are three more
+macros called #FCPPT_PP_TODO , #FCPPT_PP_FIXME  and
+#FCPPT_PP_WARNING , that print "TODO: ", "FIXME: " and "warning: "
 in front or their message, respectively.
 
 \section preprocessor_pragma Pragmas in macros
@@ -81,7 +81,7 @@ be embedded in a macro, like in the following code:
 \endcode
 
 Instead, fcppt provides a macro that can be used instead of the pragma
-directive, called \link FCPPT_PP_PRAGMA \endlink. The above example can then be
+directive, called #FCPPT_PP_PRAGMA . The above example can then be
 written as:
 
 \code
@@ -92,9 +92,8 @@ written as:
 
 C++03 has <code>__FILE__</code> and <code>__LINE__</code> to print information
 about where a macro is invoked in a file. However, it is missing a
-<code>__FUNCTION__</code> macro that C99 (and now C++11) has.  \link
-FCPPT_PP_FUNCTION \endlink fills in that gap. There is also \link FCPPT_PP_FILE
-\endlink that expands to the current file compatible with fcppt::string.
+<code>__FUNCTION__</code> macro that C99 (and now C++11) has. #FCPPT_PP_FUNCTION fills in that gap.
+There is also #FCPPT_PP_FILE that expands to the current file compatible with #fcppt::string.
 
 \snippet preprocessor/printing.cpp pp_printing
 
@@ -107,51 +106,51 @@ FCPPT_PP_FUNCTION \endlink fills in that gap. There is also \link FCPPT_PP_FILE
 </tr>
 <tr>
 <td><code>disable_gcc_warning.hpp</code></td>
-<td>Contains \link FCPPT_PP_DISABLE_GCC_WARNING \endlink</td>
+<td>Contains #FCPPT_PP_DISABLE_GCC_WARNING </td>
 </tr>
 <tr>
 <td><code>disable_vc_warning.hpp</code></td>
-<td>Contains \link FCPPT_PP_DISABLE_VC_WARNING \endlink</td>
+<td>Contains #FCPPT_PP_DISABLE_VC_WARNING </td>
 </tr>
 <tr>
 <td><code>file.hpp</code></td>
-<td>Contains \link FCPPT_PP_FILE \endlink</td>
+<td>Contains #FCPPT_PP_FILE </td>
 </tr>
 <tr>
 <td><code>fixme.hpp</code></td>
-<td>Contains \link FCPPT_PP_FIXME \endlink</td>
+<td>Contains #FCPPT_PP_FIXME </td>
 </tr>
 <tr>
 <td><code>function.hpp</code></td>
-<td>Contains \link FCPPT_PP_FUNCTION \endlink</td>
+<td>Contains #FCPPT_PP_FUNCTION </td>
 </tr>
 <tr>
 <td><code>message.hpp</code></td>
-<td>Contains \link FCPPT_PP_MESSAGE \endlink</td>
+<td>Contains #FCPPT_PP_MESSAGE </td>
 </tr>
 <tr>
 <td><code>pop_warning.hpp</code></td>
-<td>Contains \link FCPPT_PP_POP_WARNING \endlink</td>
+<td>Contains #FCPPT_PP_POP_WARNING </td>
 </tr>
 <tr>
 <td><code>pragma.hpp</code></td>
-<td>Contains \link FCPPT_PP_PRAGMA \endlink</td>
+<td>Contains #FCPPT_PP_PRAGMA </td>
 </tr>
 <tr>
 <td><code>push_warning.hpp</code></td>
-<td>Contains \link FCPPT_PP_PUSH_WARNING \endlink</td>
+<td>Contains #FCPPT_PP_PUSH_WARNING </td>
 </tr>
 <tr>
 <td><code>stringize.hpp</code></td>
-<td>Contains \link FCPPT_PP_STRINGIZE \endlink</td>
+<td>Contains #FCPPT_PP_STRINGIZE </td>
 </tr>
 <tr>
 <td><code>todo.hpp</code></td>
-<td>Contains \link FCPPT_PP_TODO \endlink</td>
+<td>Contains #FCPPT_PP_TODO </td>
 </tr>
 <tr>
 <td><code>warning.hpp</code></td>
-<td>Contains \link FCPPT_PP_WARNING \endlink</td>
+<td>Contains #FCPPT_PP_WARNING </td>
 </tr>
 </table>
 */

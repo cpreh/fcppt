@@ -106,11 +106,11 @@ The macros are:
 <th>Header</th>
 </tr>
 <tr>
-<td>\link FCPPT_CONFIG_GCC_VERSION_AT_LEAST \endlink</td>
+<td>#FCPPT_CONFIG_GCC_VERSION_AT_LEAST </td>
 <td><code>fcppt/config/gcc_version_at_least.hpp</code></td>
 </tr>
 <tr>
-<td>\link FCPPT_CONFIG_CLANG_VERSION_AT_LEAST \endlink</td>
+<td>#FCPPT_CONFIG_CLANG_VERSION_AT_LEAST </td>
 <td><code>fcppt/config/clang_version_at_least.hpp</code></td>
 </tr>
 </table>

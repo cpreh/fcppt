@@ -83,38 +83,37 @@ to do that. For most of the macros, there also exists a <em>message</em>
 variant that lets you specify an additional message for what went wrong.
 
 <dl>
-<dt>\link FCPPT_ASSERT_PRE \endlink and \link FCPPT_ASSERT_PRE_MESSAGE
-\endlink</dt>
+<dt>#FCPPT_ASSERT_PRE  and #FCPPT_ASSERT_PRE_MESSAGE
+</dt>
 
 <dd>These should be used to check pre conditions for a function and they will
 terminate the program if they are violated.</dd>
 
-<dt>\link FCPPT_ASSERT_POST \endlink and \link FCPPT_ASSERT_POST_MESSAGE
-\endlink</dt>
+<dt>#FCPPT_ASSERT_POST  and #FCPPT_ASSERT_POST_MESSAGE
+</dt>
 
 <dd>These should be used to check for post conditions of functions. They will
 throw an exception on failure.</dd>
 
-<dt>\link FCPPT_ASSERT_ERROR \endlink and \link FCPPT_ASSERT_ERROR_MESSAGE
-\endlink</dt>
+<dt>#FCPPT_ASSERT_ERROR  and #FCPPT_ASSERT_ERROR_MESSAGE
+</dt>
 
 <dd>These should be used if something in the middle of a function goes wrong
 that could be considered a delayed pre condition. They will also terminate the
 program if they are violated.</dd>
 
-<dt>\link FCPPT_ASSERT_THROW \endlink and \link FCPPT_ASSERT_THROW_MESSAGE
-\endlink</dt>
+<dt>#FCPPT_ASSERT_THROW  and #FCPPT_ASSERT_THROW_MESSAGE
+</dt>
 
 <dd>These can generally be used as a replacement for throwing exceptions.</dd>
 
-<dt>\link FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE \endlink<dt>
+<dt>#FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE <dt>
 
 <dd>This macro can be used as a placeholder for unimplemented features. It must
 be given a message describing what feature is missing, and it will terminate
 the program.</dd>
 
-<dt>\link FCPPT_ASSERT_UNREACHABLE \endlink and \link
-FCPPT_ASSERT_UNREACHABLE_MESSAGE \endlink</dt>
+<dt>#FCPPT_ASSERT_UNREACHABLE  and #FCPPT_ASSERT_UNREACHABLE_MESSAGE </dt>
 
 <dd>These should be used to check for unreachable code, like reaching a default
 case in a switch that handles every possible enum value. They will
@@ -155,11 +154,11 @@ takes an fcppt::assert_::information object.
 </tr>
 <tr>
 <td><code>error.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_ERROR \endlink</td>
+<td>Contains #FCPPT_ASSERT_ERROR </td>
 </tr>
 <tr>
 <td><code>error_message.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_ERROR_MESSAGE \endlink</td>
+<td>Contains #FCPPT_ASSERT_ERROR_MESSAGE </td>
 </tr>
 <tr>
 <td><code>exception.hpp</code></td>
@@ -179,43 +178,43 @@ takes an fcppt::assert_::information object.
 </tr>
 <tr>
 <td><code>optional_error.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_OPTIONAL_ERROR \endlink</td>
+<td>Contains #FCPPT_ASSERT_OPTIONAL_ERROR </td>
 </tr>
 <tr>
 <td><code>post.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_POST \endlink</td>
+<td>Contains #FCPPT_ASSERT_POST </td>
 </tr>
 <tr>
 <td><code>post_message.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_POST_MESSAGE \endlink</td>
+<td>Contains #FCPPT_ASSERT_POST_MESSAGE </td>
 </tr>
 <tr>
 <td><code>pre.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_PRE \endlink</td>
+<td>Contains #FCPPT_ASSERT_PRE </td>
 </tr>
 <tr>
 <td><code>pre_message.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_PRE_MESSAGE \endlink</td>
+<td>Contains #FCPPT_ASSERT_PRE_MESSAGE </td>
 </tr>
 <tr>
 <td><code>throw.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_THROW \endlink</td>
+<td>Contains #FCPPT_ASSERT_THROW </td>
 </tr>
 <tr>
 <td><code>throw_message.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_THROW_MESSAGE \endlink</td>
+<td>Contains #FCPPT_ASSERT_THROW_MESSAGE </td>
 </tr>
 <tr>
 <td><code>unimplemented_message.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE \endlink</td>
+<td>Contains #FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE </td>
 </tr>
 <tr>
 <td><code>unreachable.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_UNREACHABLE \endlink</td>
+<td>Contains #FCPPT_ASSERT_UNREACHABLE </td>
 </tr>
 <tr>
 <td><code>unreachable_message.hpp</code></td>
-<td>Contains \link FCPPT_ASSERT_UNREACHABLE_MESSAGE \endlink</td>
+<td>Contains #FCPPT_ASSERT_UNREACHABLE_MESSAGE </td>
 </tr>
 </table>
 */

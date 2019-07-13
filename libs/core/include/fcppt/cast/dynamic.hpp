@@ -28,8 +28,7 @@ namespace cast
 
 Tries to cast \a _src to \a Dest using <code>dynamic_cast</code>. On failure,
 an empty optional is returned. To catch more mistakes, \a Base must be a
-base class of \a Derived. In case you need a cross cast, use \link
-fcppt::cast::dynamic_cross \endlink.
+base class of \a Derived. In case you need a cross cast, use #fcppt::cast::dynamic_cross.
 
 Here is an example:
 
@@ -39,7 +38,7 @@ Here is an example:
 
 \tparam Base A cv-qualified non-reference type.
 
-\see \link fcppt::cast::dynamic_cross \endlink
+\see #fcppt::cast::dynamic_cross
 */
 template<
 	typename Derived,

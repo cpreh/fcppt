@@ -28,7 +28,7 @@ namespace matrix
 
 \ingroup fcpptmathmatrix
 
-\tparam Matrix Must be an \link fcppt::math::matrix::object\endlink.
+\tparam Matrix Must be an #fcppt::math::matrix::object.
 */
 template<
 	fcppt::math::size_type Index,

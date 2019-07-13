@@ -29,8 +29,7 @@ namespace unregister
 \tparam T The signal's function type
 \ingroup fcpptsignal
 
-See the \link fcpptsignal module documentation \endlink for more information on
-unlinking.
+See \ref fcpptsignal for more information on unlinking.
 */
 template<
 	typename T

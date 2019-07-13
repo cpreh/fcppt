@@ -40,7 +40,7 @@ If it succeeds then its result is returned.
 Otherwise, the parser backtracks to position <code>p</code> and returns the result of \a Right
 (which might fail or not).
 
-See \link fcppt::parse::alternative_result\endlink on this parser's result type.
+See #fcppt::parse::alternative_result on this parser's result type.
 */
 template<
 	typename Left,

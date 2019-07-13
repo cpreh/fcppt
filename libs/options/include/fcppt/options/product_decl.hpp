@@ -36,7 +36,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 \ingroup fcpptoptions
 
 This parser first applies its left parser and if that succeeds also applies its
-right parser. Use \link fcppt::options::apply\endlink to create a product of
+right parser. Use #fcppt::options::apply to create a product of
 two or more parsers. The result type is a record that contains the elements of
 <em>both</em> \a Left and \a Right. Therefore, \a Left and \a Right must have
 <em>disjoint</em> label sets.

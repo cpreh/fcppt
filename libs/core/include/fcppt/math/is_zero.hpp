@@ -21,7 +21,7 @@ namespace math
 
 \ingroup fcpptmath
 
-Uses \link fcppt::literal\endlink to create a zero constant
+Uses #fcppt::literal to create a zero constant
 and uses <code>operator==</code> for comparison.
 
 This function is special because it also allows comparison of floating-point

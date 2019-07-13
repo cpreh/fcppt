@@ -21,9 +21,8 @@ namespace options
 
 \ingroup fcpptoptions
 
-Errors that are not \link fcppt::options::missing_error\endlink, for example
-failed conversion. Such errors make even \link
-fcppt::options::optional\endlink parsers fail.
+Errors that are not #fcppt::options::missing_error, for example
+failed conversion. Such errors make even #fcppt::options::optional parsers fail.
 */
 FCPPT_MAKE_STRONG_TYPEDEF(
 	fcppt::string,

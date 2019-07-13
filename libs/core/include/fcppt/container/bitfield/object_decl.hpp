@@ -36,9 +36,9 @@ namespace bitfield
 \tparam NumElements An integral constant wrapper specifying the number of bits.
 
 \tparam InternalType The internal storage type. Must be unsigned. This is
-\link fcppt::container::bitfield::default_internal_type\endlink by default.
+#fcppt::container::bitfield::default_internal_type by default.
 
-See the \link fcpptcontainerbitfield module description \endlink for more information.
+See \ref fcpptcontainerbitfield for more information.
 */
 template<
 	typename ElementType,

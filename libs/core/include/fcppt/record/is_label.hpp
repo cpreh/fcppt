@@ -19,7 +19,7 @@ namespace record
 {
 
 /**
-\brief Tests if a type is an \link fcppt::record::label\endlink.
+\brief Tests if a type is an #fcppt::record::label.
 
 \ingroup fcpptrecord
 */

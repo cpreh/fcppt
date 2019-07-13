@@ -21,8 +21,7 @@ namespace fcppt
 
 \ingroup fcpptstring
 
-See the \link fcpptstring string module description \endlink for more
-information about this type.
+See \ref fcpptstring for more information about this type.
 */
 typedef
 std::basic_string_view<

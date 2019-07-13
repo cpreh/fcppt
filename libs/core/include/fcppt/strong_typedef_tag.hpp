@@ -18,7 +18,7 @@ namespace fcppt
 
 \ingroup fcpptstrongtypedef
 
-\tparam StrongTypedef Must be an \link fcppt::strong_typedef\endlink.
+\tparam StrongTypedef Must be an #fcppt::strong_typedef.
 */
 template<
 	typename StrongTypedef

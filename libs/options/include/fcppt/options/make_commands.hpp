@@ -24,7 +24,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-\tparam SubCommands A parameter pack of \link fcppt::options::sub_command\endlink.
+\tparam SubCommands A parameter pack of #fcppt::options::sub_command.
 */
 template<
 	typename OptionsParser,

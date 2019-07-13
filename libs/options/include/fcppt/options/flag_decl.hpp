@@ -40,7 +40,7 @@ result of a flag is a record that has a single element with label \a Label and
 type \a Type.  In case the flag is off, the result will be the flag's inactive
 value, otherwise it will be that flag's active value.
 
-\tparam Label An \link fcppt::record::label\endlink.
+\tparam Label An #fcppt::record::label.
 
 \tparam Type The type of the flag's value.
 */

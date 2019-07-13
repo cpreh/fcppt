@@ -24,14 +24,12 @@ namespace fcppt
 
 \ingroup fcpptstring
 
-fcppt::exception is a wrapper around an exception that uses \link fcppt::string
-\endlink to store the error message. Note that you will have to use \link
-fcppt::exception::string \endlink to obtain the string. If you use
-<code>what()</code>, which is only provided for compatibility with
+fcppt::exception is a wrapper around an exception that uses #fcppt::string
+to store the error message. Note that you will have to use #fcppt::exception::string to obtain the string.
+If you use <code>what()</code>, which is only provided for compatibility with
 <code>std::exception</code>, nothing useful will be returned. The reason behind
 this is that a string conversion itself can result in exceptions being thrown.
-That is why <code>what()</code> does not try to convert from \link
-fcppt::string \endlink to <code>std::string</code>.
+That is why <code>what()</code> does not try to convert from #fcppt::string to <code>std::string</code>.
 */
 class FCPPT_SYMBOL_CLASS exception
 :

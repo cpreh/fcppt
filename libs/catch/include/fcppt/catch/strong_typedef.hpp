@@ -19,7 +19,7 @@ namespace Catch
 {
 
 /**
-\brief Output specialization for \link fcppt::strong_typedef\endlink.
+\brief Output specialization for #fcppt::strong_typedef.
 
 \ingroup fcpptcatch
 */

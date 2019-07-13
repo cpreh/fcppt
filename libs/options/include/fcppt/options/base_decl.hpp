@@ -32,7 +32,7 @@ This class serves as a base class for a concrete parser using \a Result as its
 result type. Hiding a concrete parser implementation is not necessary, but it
 can reduce compile times, and it hides the concrete (permuted) result type.
 
-\tparam Result The result type of the parser. Must be an \link fcppt::record::object\endlink.
+\tparam Result The result type of the parser. Must be an #fcppt::record::object.
 */
 template<
 	typename Result

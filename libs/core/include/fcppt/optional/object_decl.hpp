@@ -43,7 +43,7 @@ This class is a wrapper around <code>std::optional</code> that makes the followi
 Movable, Assignable or MoveAssignable and complete. It therefore must also not
 be const.
 
-See the \link fcpptoptional module description \endlink for more information.
+See \ref fcpptoptional for more information.
 */
 template<
 	typename T

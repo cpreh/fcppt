@@ -24,7 +24,7 @@ namespace enum_
 
 \ingroup fcpptenum
 
-Uses \link fcppt::enum_::to_string_impl\endlink to convert an enum to a string.
+Uses #fcppt::enum_::to_string_impl to convert an enum to a string.
 
 \tparam Enum Must be an enum type
 */

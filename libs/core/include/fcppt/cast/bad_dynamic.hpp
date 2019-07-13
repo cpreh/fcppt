@@ -22,7 +22,7 @@ namespace cast
 {
 
 /**
-\brief May be thrown by \link fcppt::cast::dynamic \endlink if the cast fails
+\brief May be thrown by #fcppt::cast::dynamic  if the cast fails
 
 \ingroup fcpptcasts
 

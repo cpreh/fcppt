@@ -31,7 +31,7 @@ Let <code>element<L_1,T_1>, ..., element<L_n,T_n></code> be the elements of \a R
 
 \ingroup fcpptrecord
 
-\tparam Result Must be an \link fcppt::record::object\endlink.
+\tparam Result Must be an #fcppt::record::object.
 
 \tparam Function A polymorphic function callable as
 <code>fcppt::record::label_value_type<Result, L> (fcppt::record::element<L,T>)</code>

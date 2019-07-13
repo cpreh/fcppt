@@ -14,7 +14,7 @@ namespace fcppt
 {
 
 /**
-\brief Casts an \link fcppt::shared_ptr \endlink using
+\brief Casts an #fcppt::shared_ptr  using
 <code>static_cast</code>
 
 \ingroup fcpptsmartptr

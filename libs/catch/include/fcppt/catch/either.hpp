@@ -20,7 +20,7 @@ namespace Catch
 {
 
 /**
-\brief Output specialization for \link fcppt::either::object\endlink.
+\brief Output specialization for #fcppt::either::object.
 
 \ingroup fcpptcatch
 */

@@ -21,7 +21,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-Using \link fcppt::options::pretty_type_impl\endlink, one can specialize how a
+Using #fcppt::options::pretty_type_impl, one can specialize how a
 type name is represented as a string. For example, the pretty name of
 <code>std::string</code> is simply <code>string</code> instead of
 <code>std::basic_string<char,std::char_traits<char>,std::allocator<char>></code>.

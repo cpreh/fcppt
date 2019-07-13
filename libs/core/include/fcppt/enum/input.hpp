@@ -29,7 +29,7 @@ namespace enum_
 
 \ingroup fcpptenum
 
-Uses \link fcppt::enum_::from_string\endlink to read an enum from \a _stream
+Uses #fcppt::enum_::from_string to read an enum from \a _stream
 and store it in \a _result. In case this fails, the failbit of \a _stream is set.
 This function is useful to implement <code>operator>></code> for an enum type.
 

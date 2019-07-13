@@ -24,7 +24,7 @@ namespace tuple
 {
 
 /**
-\brief Combination of \link fcppt::container::tuple::map\endlink and <code>std::apply</code>.
+\brief Combination of #fcppt::container::tuple::map and <code>std::apply</code>.
 
 \ingroup fcpptcontainertuple
 

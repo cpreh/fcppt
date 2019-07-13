@@ -57,8 +57,7 @@ The correct function call then looks like this:
 
 \snippet strong_typedef.cpp parameter_call
 
-Internally, the constructor of strong typedef uses \link
-fcppt::cast::safe_numeric\endlink which catches unsafe conversions
+Internally, the constructor of strong typedef uses #fcppt::cast::safe_numeric which catches unsafe conversions
 at compile-time. For example, the following code will not compile:
 
 \code
@@ -83,10 +82,9 @@ types need to be created:
 
 \snippet strong_typedef.cpp strong_typedef_is_same
 
-To achieve that, the \link FCPPT_MAKE_STRONG_TYPEDEF\endlink macro first
+To achieve that, the #FCPPT_MAKE_STRONG_TYPEDEF macro first
 creates an empty struct containing the name you specify as the first parameter.
-This is then used as the second parameter to \link
-fcppt::strong_typedef\endlink to make it a distinct type.
+This is then used as the second parameter to #fcppt::strong_typedef to make it a distinct type.
 
 \section fcpptstrongtypedef_headers Header files
 
@@ -97,15 +95,15 @@ fcppt::strong_typedef\endlink to make it a distinct type.
 </tr>
 <tr>
 <td><code>strong_typedef_fwd.hpp</code></td>
-<td>Contains \link fcppt::strong_typedef\endlink's declaration.</td>
+<td>Contains #fcppt::strong_typedef's declaration.</td>
 </tr>
 <tr>
 <td><code>strong_typedef_decl.hpp</code></td>
-<td>Contains \link fcppt::strong_typedef\endlink's definition.</td>
+<td>Contains #fcppt::strong_typedef's definition.</td>
 </tr>
 <tr>
 <td><code>strong_typedef_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::strong_typedef\endlink's member functions.</td>
+<td>Contains the definition of #fcppt::strong_typedef's member functions.</td>
 </tr>
 <tr>
 <td><code>strong_typedef.hpp</code></td>
@@ -127,7 +125,7 @@ fcppt::strong_typedef\endlink to make it a distinct type.
 </tr>
 <tr>
 <td><code>make_strong_typedef.hpp</code></td>
-<td>Contains \link FCPPT_MAKE_STRONG_TYPEDEF\endlink.</td>
+<td>Contains #FCPPT_MAKE_STRONG_TYPEDEF.</td>
 </tr>
 </table>
 */

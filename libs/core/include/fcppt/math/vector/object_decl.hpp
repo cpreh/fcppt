@@ -32,7 +32,7 @@ namespace vector
 
 \ingroup fcpptmathvector
 
-See the \link fcpptmathvector module documentation \endlink for more information.
+See \ref fcpptmathvector for more information.
 */
 template<
 	typename T,

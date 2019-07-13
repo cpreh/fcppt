@@ -55,7 +55,7 @@ public:
 	/**
 	\brief The iterator type
 
-	A typedef to an iterator type over \link fcppt::string \endlink
+	A typedef to an iterator type over #fcppt::string
 	*/
 	typedef
 	fcppt::log::detail::location_vector::const_iterator

@@ -27,10 +27,9 @@ namespace cast
 \ingroup fcpptcasts
 
 Tries to cast \a _src to \a Derived using <code>dynamic_cast</code>. On failure,
-an \link fcppt::cast::bad_dynamic \endlink is thrown that includes additional
+an #fcppt::cast::bad_dynamic  is thrown that includes additional
 information about the types involved. To catch more mistakes, \a Base must be a
-base class of \a Derived. In case you need a cross cast, use \link
-fcppt::cast::dynamic_cross_exn \endlink.
+base class of \a Derived. In case you need a cross cast, use #fcppt::cast::dynamic_cross_exn.
 
 Here is an example:
 

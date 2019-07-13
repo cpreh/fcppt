@@ -25,7 +25,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-\tparam Type Must be an \link fcppt::optional::object\endlink.
+\tparam Type Must be an #fcppt::optional::object.
 */
 template<
 	typename Type

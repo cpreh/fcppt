@@ -20,7 +20,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-\tparam Parser A regular parser, an \link fcppt::reference\endlink to a parser or an \link fcppt::unique_ptr\endlink to a parser.
+\tparam Parser A regular parser, an #fcppt::reference to a parser or an #fcppt::unique_ptr to a parser.
 */
 template<
 	typename Parser

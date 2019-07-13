@@ -23,8 +23,7 @@ namespace format
 
 \ingroup fcpptlog
 
-Creates a formatter that prints a time stamp in front like \link
-fcppt::log::format::time_stamp \endlink does.
+Creates a formatter that prints a time stamp in front like #fcppt::log::format::time_stamp does.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function

@@ -23,7 +23,7 @@ namespace record
 
 \ingroup fcpptrecord
 
-\tparam Tag An implementation-defined type, passed by \link FCPPT_RECORD_MAKE_LABEL\endlink.
+\tparam Tag An implementation-defined type, passed by #FCPPT_RECORD_MAKE_LABEL.
 */
 template<
 	typename Tag

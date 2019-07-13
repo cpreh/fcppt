@@ -15,7 +15,7 @@ namespace fcppt
 {
 
 /**
-\brief Extracts the type of \link fcppt::tag\endlink
+\brief Extracts the type of #fcppt::tag
 
 \ingroup fcpptvarious
 */

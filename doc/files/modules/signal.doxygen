@@ -148,32 +148,30 @@ Here's a simple, motivating example:
 \snippet "signal/simple.cpp" signal_simple
 
 As you can see, a signal is represented by an object of type
-\link fcppt::signal::object\endlink. This type has a template parameter which contains the
+#fcppt::signal::object. This type has a template parameter which contains the
 signal's function type. Note that signals may have a return type; see below for
 more on that.
 
 To attach a callback function to the signal, you have to call the
 <code>fcppt::signal::object::connect</code> member function. Arbitrarily many attached
-functions are allowed. The <code>connect</code> function returns an \link
-fcppt::signal::auto_connection auto_connection\endlink which is a unique pointer
-to a connection.
+functions are allowed. The <code>connect</code> function returns an #fcppt::signal::auto_connection auto_connection which is a unique pointer to a connection.
 The reason behind this is that connections may keep additional information that is
 important when they are destroyed (see \ref signal_disconnect_callbacks).
 The callback function is disconnected from the signal when the connection
 object dies.
 
 \note
-The "real" connection class, \link fcppt::signal::connection\endlink, is somewhat
+The "real" connection class, #fcppt::signal::connection, is somewhat
 "implementation-defined". You're never supposed to "look inside" this object.
 Merely pass it around using a smart pointer to it.
 
-\link fcppt::signal::object\endlink has overloads for <code>operator()</code>, so you can
+#fcppt::signal::object has overloads for <code>operator()</code>, so you can
 treat a signal as a function.
 
 \section signal_signals_with_return_values Signals with return values
 
 If a signal has a return value other than <code>void</code>, you cannot use
-\link fcppt::signal::object\endlink's default constructor. Instead, there's a constructor
+#fcppt::signal::object's default constructor. Instead, there's a constructor
 that takes a function of type
 \code
 result_type(result_type,result_type)
@@ -207,8 +205,8 @@ private:
 \endcode
 
 Then using a container of connections may be a better approach.
-\link fcppt::signal::auto_connection_container\endlink is a vector of
-\link fcppt::signal::auto_connection\endlink.  Again, an example should clarify how it's
+#fcppt::signal::auto_connection_container is a vector of
+#fcppt::signal::auto_connection.  Again, an example should clarify how it's
 used:
 
 \snippet "signal/connection.cpp" signal_connection

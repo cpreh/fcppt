@@ -23,7 +23,7 @@ namespace cast
 {
 
 /**
-\brief May be thrown by \link fcppt::cast::truncation_check \endlink if the
+\brief May be thrown by #fcppt::cast::truncation_check  if the
 conversion truncates
 
 \ingroup fcpptcasts

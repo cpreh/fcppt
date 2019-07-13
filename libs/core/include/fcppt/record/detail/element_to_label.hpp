@@ -22,7 +22,7 @@ namespace detail
 
 \ingroup fcpptrecord
 
-\tparam Element Must be an \link fcppt::record::element\endlink.
+\tparam Element Must be an #fcppt::record::element.
 */
 template<
 	typename Element

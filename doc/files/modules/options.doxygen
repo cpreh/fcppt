@@ -43,7 +43,7 @@ arbitrary many arguments.
 <code>fcppt.options</code> features declarative <em>parsers</em>.
 Instead of writing parsing code by hand, we only write down the arguments
 and their types that our program excepts. A parser (if it succeeds)
-produces an \link fcppt::record::object\endlink.
+produces an #fcppt::record::object.
 For example, a parser that expects a single integer with label
 name <code>age</code> has type <code>{ age : int }</code>. Parsers can be combined
 to yield more complicated parsers, so for example a parser that expects zero or
@@ -70,7 +70,7 @@ actual parser:
 
 \snippet options/simple.cpp options_arg_object
 
-Here, we see that an \link fcppt::options::argument\endlink gets two parameters:
+Here, we see that an #fcppt::options::argument gets two parameters:
 <ul>
 <li>The <em>long name</em> which is used as a placeholder in help messages and</li>
 <li>a text called <code>help_text</code> which can be used to explain the argument's purpose
@@ -78,14 +78,13 @@ to the user.</li>
 </ul>
 
 Instead of using <code>argc</code> and <code>argv</code> directly, we first use the
-helper function \link fcppt::args_from_second\endlink which copies every argument except the
+helper function #fcppt::args_from_second which copies every argument except the
 first (which usually holds the program's name but does not have to) into a container:
 
 \snippet options/simple.cpp options_args_from_second
 
-Parsing the arguments using a parser is done by calling the \link
-fcppt::options::parse\endlink function. Its result is an \link
-fcppt::options::result\endlink which is an \link fcppt::either::object\endlink
+Parsing the arguments using a parser is done by calling the #fcppt::options::parse function.
+Its result is an #fcppt::options::result which is an #fcppt::either::object
 that encapsulates the fact that a parser can fail.
 
 \snippet options/simple.cpp options_parse
@@ -96,13 +95,13 @@ define a function called <code>on_success</code> that receives <code>result_type
 
 \snippet options/simple.cpp options_on_success
 
-In case of failure we get an \link fcppt::options::error\endlink, containing a message
+In case of failure we get an #fcppt::options::error, containing a message
 of what went wrong. In addition to that, we also print <code>parser.usage()</code> which
 tells the user what the expected format is:
 
 \snippet options/simple.cpp options_on_failure
 
-Finally, we use \link fcppt::either::match\endlink to call one of these functions:
+Finally, we use #fcppt::either::match to call one of these functions:
 
 \snippet options/simple.cpp options_match
 
@@ -149,7 +148,7 @@ Description:
 </tr>
 <tr>
 <td>
-\link fcppt::options::argument\endlink
+#fcppt::options::argument
 </td>
 <td>
 Parses a single argument, e.g. <code>"arg"</code>. If there is no argument or
@@ -158,20 +157,20 @@ it cannot be converted to the parser's result type, an error occurs.
 </tr>
 <tr>
 <td>
-\link fcppt::options::flag\endlink
+#fcppt::options::flag
 </td>
 <td>
 Parses a flag, e.g. <code>"-f"</code> or <code>"--flag"</code>. Depending on
 whether the flag was specified or not, the result type is either its
 <em>inactive value</em> or its <em>active value</em>. Flags never produce an
 error.
-\link fcppt::options::switch_\endlink is a short-hand for a flag
+#fcppt::options::switch_ is a short-hand for a flag
 of type <code>bool</code>.
 </td>
 </tr>
 <tr>
 <td>
-\link fcppt::options::option\endlink
+#fcppt::options::option
 </td>
 <td>
 Parses an option, e.g. <code>"-o val"</code> or <code>"--opt val"</code>.
@@ -183,7 +182,7 @@ the parser's result type, an error occurs.
 </tr>
 <tr>
 <td>
-\link fcppt::options::unit\endlink
+#fcppt::options::unit
 </td>
 <td>
 A parser that parses the empty command-line. This is useful, for example, when you want a
@@ -192,7 +191,7 @@ sub-command that takes no arguments or options.
 </tr>
 <tr>
 <td>
-\link fcppt::options::unit_switch\endlink
+#fcppt::options::unit_switch
 </td>
 <td>
 A flag that always has to be specified (e.g. if you want to parse <code>"--help"</code>).
@@ -215,21 +214,21 @@ Description:
 
 <tr>
 <td>
-\link fcppt::options::product\endlink
+#fcppt::options::product
 </td>
 <td>
 A parser of type <code>fcppt::options::product<Left,Right></code> combines two
 parsers of type <code>Left</code> and <code>Right</code>, which must have
 <em>disjoint</em> records. The product parser first tries the left parser and
 then the right parser. It only succeeds if both succeed. Its result type is the
-<em>disjoint union</em> (see \link fcppt::record::multiply_disjoint\endlink)
+<em>disjoint union</em> (see #fcppt::record::multiply_disjoint)
 of Left's and Right's result types. To combine two or more parsers at once, use
-\link fcppt::options::apply\endlink.
+#fcppt::options::apply.
 </td>
 </tr>
 <tr>
 <td>
-\link fcppt::options::sum\endlink
+#fcppt::options::sum
 </td>
 <td>
 A parser of type <code>fcppt::options::sum<Label,Left,Right></code> first
@@ -245,33 +244,31 @@ and <code>RightResult</code> is the result type of <code>Right</code>.
 
 <tr>
 <td>
-\link fcppt::options::optional\endlink
+#fcppt::options::optional
 </td>
 <td>
 A parser of type <code>fcppt::options::optional<Parser></code> turns a parser
 of type <code>Parser</code> into a parser that may fail. Its result type has
-the same labels as Parser's result type, but with an extra \link
-fcppt::optional::object\endlink layer added on top. See \link
-fcppt::options::make_optional\endlink.
+the same labels as Parser's result type, but with an extra #fcppt::optional::object layer added on top.
+See #fcppt::options::make_optional.
 </td>
 </tr>
 
 <tr>
 <td>
-\link fcppt::options::many\endlink
+#fcppt::options::many
 </td>
 <td>
 A parser of type <code>fcppt::options::many<Parser></code> turns a parser of
 type <code>Parser</code> into a parser that parsers zero or more occurrences.
 Its result type has the same labels as Parser's result type, but with an extra
-<code>std::vector</code> layer added on top. See \link
-fcppt::options::make_many\endlink.
+<code>std::vector</code> layer added on top. See #fcppt::options::make_many.
 </td>
 </tr>
 
 <tr>
 <td>
-\link fcppt::options::commands\endlink
+#fcppt::options::commands
 </td>
 <td>
 A commands parser combines several sub-commands into a single parser.
@@ -295,7 +292,7 @@ a variant of the result types of <code>S_1,...,S_n</code> with label name <code>
 </li>
 </ul>
 
-See \link fcppt::options::make_sub_command\endlink and \link fcppt::options::make_commands\endlink.
+See #fcppt::options::make_sub_command and #fcppt::options::make_commands.
 
 \warning A commands parser looks for the first argument (i.e. a parameter that is not a flag or an option)
 which it uses as the name of the sub-command.
@@ -308,11 +305,11 @@ anything other than flags or options in <code>O</code>.
 Passing a parser to another can be done in three different ways:
 <ul>
 <li>By moving. In this case, the parser must be an rvalue.
-Use \link fcppt::copy\endlink to create an explicit copy if needed.</li>
-<li>By reference. Use \link fcppt::make_cref\endlink in this case.
+Use #fcppt::copy to create an explicit copy if needed.</li>
+<li>By reference. Use #fcppt::make_cref in this case.
 Be careful to keep all parsers alive that are passed this way.</li>
-<li>By moving an \link fcppt::unique_ptr\endlink. This is useful
-if you want to pass an \link fcppt::options::base_unique_ptr\endlink.</li>
+<li>By moving an #fcppt::unique_ptr. This is useful
+if you want to pass an #fcppt::options::base_unique_ptr.</li>
 </ul>
 
 \section fcpptoptions_complex A more complex example
@@ -346,7 +343,7 @@ We first start by declaring the labels the parsers are going to use:
 
 \snippet options/complex.cpp options_labels
 
-The input filename is an argument parser of type \link fcppt::string\endlink.
+The input filename is an argument parser of type #fcppt::string.
 
 \snippet options/complex.cpp options_input_file_option
 
@@ -366,16 +363,14 @@ while its active value is <code>std::ios_base::trunc</code>.
 
 \snippet options/complex.cpp options_openmode_option
 
-The log level is an option parser of type \link fcppt::log::level\endlink. It
+The log level is an option parser of type #fcppt::log::level. It
 can be set using <code>"-l level"</code> or <code>"--loglevel level"</code>,
-where <code>level</code> has to be one of \link fcppt::log::level\endlink's
-values. The parser also gets a default value of \link
-fcppt::log::level::warning\endlink.
+where <code>level</code> has to be one of #fcppt::log::level's
+values. The parser also gets a default value of #fcppt::log::level::warning.
 
 \snippet options/complex.cpp options_log_level_option
 
-Finally, the actual parser is created using \link
-fcppt::options::apply\endlink. Its type is complicated, so it is shortened
+Finally, the actual parser is created using #fcppt::options::apply. Its type is complicated, so it is shortened
 using <code>auto</code> here. See \ref fcpptoptions_base on how to hide a
 parser's actual type.
 
@@ -393,7 +388,7 @@ First, we check if the execute flag has been specified. If not, the executing st
 
 Next, we create a log context that uses the log-level specified. Notice how the
 string specified on the command-line has already been converted to a value of
-\link fcppt::log::level\endlink.
+#fcppt::log::level.
 
 \snippet options/complex.cpp options_log_context
 
@@ -431,7 +426,7 @@ different commands that take different arguments and options themselves.
 However, the <code>git</code> program itself can also take options
 common to all sub-commands, for example <code>"--git-dir"</code> which
 specifies the directory of the repository.
-In fcppt, this is handled by \link fcppt::options::commands\endlink.
+In fcppt, this is handled by #fcppt::options::commands.
 First, we declare the parser for the common options:
 
 \snippet options/commands.cpp common_options
@@ -520,17 +515,15 @@ pull
 
 A help option is a special flag like <code>"--help"</code>. If specified, the
 program should print its help text and not accept any other arguments. This
-layering of two parsers is implemented by \link
-fcppt::options::parse_help\endlink. It gets a parser of type \link
-fcppt::options::help_switch\endlink as its first argument, and a regular parser
-as its second argument. \link fcppt::options::default_help_switch\endlink is
+layering of two parsers is implemented by #fcppt::options::parse_help.
+It gets a parser of type #fcppt::options::help_switch as its first argument, and a regular parser
+as its second argument. #fcppt::options::default_help_switch is
 a switch that accepts <code>"--help"</code>:
 
 \snippet options/help.cpp options_parse_help
 
-If the help switch matches, the function returns an \link
-fcppt::options::help_text\endlink, otherwise it returns a regular \link
-fcppt::options::result\endlink.
+If the help switch matches, the function returns an #fcppt::options::help_text,
+otherwise it returns a regular #fcppt::options::result.
 
 \snippet options/help.cpp options_help_match
 
@@ -556,7 +549,7 @@ arg1 : int - The main argument
 
 As seen in \ref fcpptoptions_complex, the type of a parser can get very
 complex, because it carries the exact types of all the parsers used to build
-it. In order to hide this, the base class \link fcppt::options::base\endlink
+it. In order to hide this, the base class #fcppt::options::base
 can be used. Its only type parameter is the parser's result type, which means
 that we need to know the result type in advance. In the following example,
 we are going to expect a parser that returns an int and a bool:
@@ -572,8 +565,7 @@ The parser can then be used like any other parser:
 
 \snippet options/base.cpp options_use_base
 
-It is also possible to use such an \link
-fcppt::options::base_unique_ptr\endlink as an argument to another parser:
+It is also possible to use such an #fcppt::options::base_unique_ptr as an argument to another parser:
 
 \snippet options/base.cpp options_base_combine
 
@@ -631,17 +623,17 @@ A description on how to use this parser.
 <code>fcppt::options::parse_result<result_type> parse(fcppt::options::state &&, fcppt::options::parse_context const &) const</code>
 </td>
 <td>
-This is the main parsing function. An \link fcppt::options::state\endlink
-contains the current command-line and an \link fcppt::options::parse_context\endlink
+This is the main parsing function. An #fcppt::options::state
+contains the current command-line and an #fcppt::options::parse_context
 contains information about the surrounding parsers.
-An \link fcppt::options::parse_result\endlink contains either an error or a result
+An #fcppt::options::parse_result contains either an error or a result
 together with the remaining state.
 </td>
 </tr>
 </table>
 
-The function \link fcppt::options::deref\endlink dereferences a parser,
-which currently can be a copy, an \link fcppt::reference\endlink or an \link fcppt::unique_ptr\endlink.
+The function #fcppt::options::deref dereferences a parser,
+which currently can be a copy, an #fcppt::reference or an #fcppt::unique_ptr.
 This is used internally by a parser to access its sub-parsers.
 */
 

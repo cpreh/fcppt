@@ -24,15 +24,15 @@ namespace options
 {
 
 /**
-\brief Creates an \link fcppt::options::base\endlink.
+\brief Creates an #fcppt::options::base.
 
 \ingroup fcpptoptions
 
-Creates a unique pointer to \link fcppt::options::base\endlink, using the
+Creates a unique pointer to #fcppt::options::base, using the
 concrete parser \a _parser as its implementation. It is possible that the
 result type of \a Parser is a permuted version of \a Result.
 
-\tparam Result The result type of the parser. Must be an \link fcppt::record::object\endlink.
+\tparam Result The result type of the parser. Must be an #fcppt::record::object.
 */
 template<
 	typename Result,

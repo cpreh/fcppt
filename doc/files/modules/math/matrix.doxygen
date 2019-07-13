@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::matrix::object matrix::object \endlink and helper functions, classes and types for it
+\brief Contains #fcppt::math::matrix::object matrix::object  and helper functions, classes and types for it
 */
 namespace matrix
 {
@@ -69,14 +69,14 @@ Matrices can also be multiplied by a vector: An <code>R</code> by
 The matrix's internal representation is row-major, which means that a row is
 represented as a contiguous chunk of memory. Consequently,
 <code>operator[]</code> takes the <em>row number</em> and returns a row,
-which is represented as an \link fcppt::math::vector::object\endlink using a
+which is represented as an #fcppt::math::vector::object using a
 view as storage type. Here is an example:
 
 \snippet math/matrix.cpp row_iterate
 
 \section fcpptmathmatrix_identity Identity
 
-To get the identity matrix, use the \link fcppt::math::matrix::identity\endlink function:
+To get the identity matrix, use the #fcppt::math::matrix::identity function:
 
 \snippet math/matrix.cpp identity
 
@@ -89,15 +89,15 @@ To get the identity matrix, use the \link fcppt::math::matrix::identity\endlink 
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::matrix::object\endlink's declaration.</td>
+<td>Contains #fcppt::math::matrix::object's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::matrix::object\endlink's definition.</td>
+<td>Contains #fcppt::math::matrix::object's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::matrix::object\endlink's member functions.</td>
+<td>Contains the definition of #fcppt::math::matrix::object's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
@@ -117,7 +117,7 @@ To get the identity matrix, use the \link fcppt::math::matrix::identity\endlink 
 </tr>
 <tr>
 <td><code>vector.hpp</code></td>
-<td>Contains <code>operator*</code> for \link fcppt::math::vector::object\endlink.</td>
+<td>Contains <code>operator*</code> for #fcppt::math::vector::object.</td>
 </tr>
 </table>
 */

@@ -20,7 +20,7 @@ namespace math
 {
 
 /**
-\brief Integrates boost.units with \link fcppt::math::is_zero\endlink.
+\brief Integrates boost.units with #fcppt::math::is_zero.
 
 \ingroup fcpptboost
 */

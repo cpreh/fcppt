@@ -18,7 +18,7 @@ namespace fcppt
 {
 
 /**
-\brief Like <code>std::make_shared</code> for \link fcppt::shared_ptr\endlink
+\brief Like <code>std::make_shared</code> for #fcppt::shared_ptr
 
 \ingroup fcpptsmartptr
 */

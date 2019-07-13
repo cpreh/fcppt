@@ -20,7 +20,7 @@ namespace variant
 {
 
 /**
-\brief Thrown by \link fcppt::variant::get_exn\endlink.
+\brief Thrown by #fcppt::variant::get_exn.
 
 \ingroup fcpptvariant
 */

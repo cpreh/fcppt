@@ -28,9 +28,9 @@ namespace fcppt
 \ingroup fcpptstring
 
 \tparam Dest The destination type, has to have an <code>operator>></code> defined. Must
-have either a default constructor or must be constructible from \link fcppt::no_init\endlink.
+have either a default constructor or must be constructible from #fcppt::no_init.
 
-\tparam Source A string type (see \link fcppt::type_traits::is_string\endlink)
+\tparam Source A string type (see #fcppt::type_traits::is_string)
 
 \param _source The string to extract from
 

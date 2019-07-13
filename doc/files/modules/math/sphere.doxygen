@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::sphere::object sphere::object \endlink and helper functions, classes and types for it
+\brief Contains #fcppt::math::sphere::object sphere::object  and helper functions, classes and types for it
 */
 namespace sphere
 {
@@ -32,7 +32,7 @@ namespace sphere
 \section fcpptmathsphere_main Sphere overview
 
 An n-dimensional sphere is an object defined by an n-dimensional center that is
-represented as an \link fcppt::math::vector::object\endlink and a radius.
+represented as an #fcppt::math::vector::object and a radius.
 
 \section fcpptmathsphere_headers Header files
 
@@ -43,15 +43,15 @@ represented as an \link fcppt::math::vector::object\endlink and a radius.
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::sphere::object\endlink's declaration.</td>
+<td>Contains #fcppt::math::sphere::object's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::sphere::object\endlink's definition.</td>
+<td>Contains #fcppt::math::sphere::object's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::sphere::object\endlink's member functions.</td>
+<td>Contains the definition of #fcppt::math::sphere::object's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>

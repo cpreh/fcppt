@@ -26,7 +26,7 @@ namespace Catch
 {
 
 /**
-\brief Output specialization for \link fcppt::record::object\endlink.
+\brief Output specialization for #fcppt::record::object.
 
 \ingroup fcpptcatch
 */

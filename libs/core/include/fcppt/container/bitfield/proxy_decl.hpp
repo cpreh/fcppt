@@ -26,8 +26,7 @@ namespace bitfield
 /**
 \brief The proxy class referencing a single bit in a bitfield.
 
-This class is used as a reference type for \link
-fcppt::container::bitfield::object\endlink.
+This class is used as a reference type for #fcppt::container::bitfield::object.
 
 \tparam StoredType The internal container type for the bitfield.
 */

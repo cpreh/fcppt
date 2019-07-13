@@ -38,6 +38,6 @@ tree. Here is an example:
 
 \snippet container/tree_traversal.cpp main
 
-Aside from \link fcppt::container::tree::pre_order pre_order \endlink, no other
+Aside from #fcppt::container::tree::pre_order pre_order , no other
 traversals are implemented as of yet.
 */

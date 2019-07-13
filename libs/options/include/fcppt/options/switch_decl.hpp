@@ -30,7 +30,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-A switch parser is similar to \link fcppt::options::flag\endlink, but its value
+A switch parser is similar to #fcppt::options::flag, but its value
 type is fixed to <code>bool</code>, where its active value is <code>true</code>
 and its inactive value is <code>false</code>.
 */

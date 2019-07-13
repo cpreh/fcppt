@@ -24,8 +24,8 @@ namespace fcppt
 
 <code>std::unique_ptr</code> can easily be used as a null pointer because it
 has a default constructor and also a reset function. Null pointers should
-always be handled by optional references instead (see \link fcppt.optional
-\endlink). While it is not possible to completely forbid unique pointers that
+always be handled by optional references instead (see #fcppt.optional
+). While it is not possible to completely forbid unique pointers that
 are null, this class makes it harder to do so. Unique pointers that have been
 moved from are still null because a unique pointer must track its ownership
 status. Make sure not to access such pointers.

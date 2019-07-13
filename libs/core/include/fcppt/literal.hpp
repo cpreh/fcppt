@@ -25,7 +25,7 @@ namespace fcppt
 Creates a literal of type \a Type from the value \a _integral, using
 fcppt::make_literal to do any conversions if necessary.
 
-\tparam Type The literal type to create. Must be a value type. See \link fcppt::type_traits::is_value\endlink.
+\tparam Type The literal type to create. Must be a value type. See #fcppt::type_traits::is_value.
 
 \tparam Arg An arithmetic type.
 */

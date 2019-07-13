@@ -29,7 +29,7 @@ namespace vector
 /**
 \brief Division rounded up for signed vectors.
 
-Applies \link fcppt::math::ceil_div_signed\endlink to each component. Returns
+Applies #fcppt::math::ceil_div_signed to each component. Returns
 nothing in case _divisor is zero.
 
 \ingroup fcpptmathvector

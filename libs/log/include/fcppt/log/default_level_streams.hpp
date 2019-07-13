@@ -21,8 +21,8 @@ namespace log
 
 \ingroup fcpptlog
 
-Each level stream uses \link fcppt::log::format::default_level \endlink as its
-formatter and \link fcppt::log::default_stream \endlink as its stream.
+Each level stream uses #fcppt::log::format::default_level  as its
+formatter and #fcppt::log::default_stream  as its stream.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::level_stream_array

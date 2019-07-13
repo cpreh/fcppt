@@ -32,10 +32,9 @@ namespace either
 
 \ingroup fcppteither
 
-This function is similar to \link fcppt::either::sequence\endlink, except it
-does not produce an output sequence. Instead, \a _function returns \link
-fcppt::either::error\endlink, which on success contains an \link
-fcppt::unit\endlink on success.
+This function is similar to #fcppt::either::sequence, except it
+does not produce an output sequence. Instead, \a _function returns #fcppt::either::error,
+which on success contains an #fcppt::unit on success.
 Let <code>_sequence = [x_1, ..., x_n]</code>.
 The algorithms calls <code>_function(x_1), ..., _function(x_i)</code>,
 where <code>_function(x_i)</code> is either the first call that returns a failure, in

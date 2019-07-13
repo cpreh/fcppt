@@ -40,12 +40,12 @@ the current <em>locale</em> specifies. On most systems, this is UTF-8 for
 
 When you're designing a library that frequently calls system functions, it's
 most efficient to use a string format that suits the current operating system.
-With that in mind, fcppt has a typedef called \link fcppt::char_type\endlink.
+With that in mind, fcppt has a typedef called #fcppt::char_type.
 This typedef is <code>wchar_t</code> on Windows systems and <code>char</code>
 on POSIX systems. It's configurable, however, so using <code>wchar_t</code> on
 POSIX is possible, too (see the <code>ENABLE_NARROW_STRING</code> CMake
-option). Based on that, there's \link fcppt::string\endlink which is a
-<code>std::%basic_string</code> of \link fcppt::char_type\endlink.
+option). Based on that, there's #fcppt::string which is a
+<code>std::%basic_string</code> of #fcppt::char_type.
 
 Unfortunately, making the character type configurable has some ramifications.
 For example, you cannot simply write:
@@ -54,13 +54,13 @@ For example, you cannot simply write:
 fcppt::string s("foo");
 \endcode
 
-This will break if \link fcppt::string\endlink is a wide string.  To portably
-wrap literals, use the \link FCPPT_TEXT\endlink macro:
+This will break if #fcppt::string is a wide string.  To portably
+wrap literals, use the #FCPPT_TEXT macro:
 
 \snippet string.cpp text_literal
 
 There are other standard library structures such as <code>cout,clog,cin</code>
-which you cannot reliably use together with \link fcppt::string\endlink. fcppt
+which you cannot reliably use together with #fcppt::string. fcppt
 provides alternatives for these (see the members of the string module in the
 documentation for a list of all related functions and structures).
 
@@ -74,24 +74,24 @@ The following functions can be used to convert from and to strings:
 <th>Conversion description</th>
 </tr>
 <tr>
-<td>\link fcppt::from_std_string\endlink</td>
+<td>#fcppt::from_std_string</td>
 <td><code>std::string → fcppt::string</code></td>
 </tr>
 <tr>
-<td>\link fcppt::from_std_wstring\endlink</td>
+<td>#fcppt::from_std_wstring</td>
 <td><code>std::wstring → fcppt::optional::object<fcppt::string></code></td>
 </tr>
 <tr>
-<td>\link fcppt::to_std_string\endlink</td>
+<td>#fcppt::to_std_string</td>
 <td><code>fcppt::string → fcppt::optional::object<std::string></code></td>
 </tr>
 <tr>
-<td>\link fcppt::to_std_wstring\endlink</td>
+<td>#fcppt::to_std_wstring</td>
 <td><code>fcppt::string → std::string</code></td>
 </tr>
 </table>
 
-Each of the above functions uses \link fcppt::string_conv_locale\endlink,
+Each of the above functions uses #fcppt::string_conv_locale,
 which returns <code>std::locale("")</code>.
 The semantics of this locale are described, for example, in the
 <code>setlocale</code> manpage. Under Linux, this leads to the inspection of
@@ -102,8 +102,8 @@ has no information about the system's native encoding. Converting <code>std::str
 to <code>std::wstring</code> on a typical Linux machine means converting UTF-8 to UTF-32.
 The C locale, however, has no information about these encodings.
 If you need to use a different locale, you can use the locale-variants:
-\link fcppt::from_std_string_locale\endlink, \link fcppt::from_std_wstring_locale\endlink,
-\link fcppt::to_std_string_locale\endlink and \link fcppt::to_std_wstring_locale\endlink.
+#fcppt::from_std_string_locale, #fcppt::from_std_wstring_locale,
+#fcppt::to_std_string_locale and #fcppt::to_std_wstring_locale.
 
 Finally, here is a small example:
 
@@ -112,15 +112,12 @@ Finally, here is a small example:
 \section fcpptstring_streams IO streams and other adaptors
 
 To read in or write out files using the system's native character type, you can
-use the typedefs in the \link fcppt::io\endlink namespace, namely \link
-fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream \endlink, and so on.
+use the typedefs in the #fcppt::io namespace, namely #fcppt::filesystem::ifstream, #fcppt::filesystem::ofstream , and so on.
 
-There are also preprocessor macros, currently \link FCPPT_PP_STRINGIZE\endlink
-and \link FCPPT_PP_FILE\endlink to provide compatibility with \link
-fcppt::string\endlink. \link FCPPT_PP_STRINGIZE\endlink stringizes its
-argument to an \link fcppt::string\endlink literal. In the same fashion, \link
-FCPPT_PP_FILE\endlink adapts the standard macro <code>__FILE__</code> to return
-an \link fcppt::string\endlink literal.
+There are also preprocessor macros, currently #FCPPT_PP_STRINGIZE
+and #FCPPT_PP_FILE to provide compatibility with #fcppt::string. #FCPPT_PP_STRINGIZE stringizes its
+argument to an #fcppt::string literal. In the same fashion, #FCPPT_PP_FILE adapts the standard macro <code>__FILE__</code> to return
+an #fcppt::string literal.
 
 \section fcpptstring_lexical_conversions Lexical Conversions
 
@@ -134,23 +131,23 @@ these into the following functions:
 <th>Description</th>
 </tr>
 <tr>
-<td>\link fcppt::extract_from_string\endlink</td>
+<td>#fcppt::extract_from_string</td>
 <td><code>basic_string<CharT> → fcppt::optional::object<T></code></td>
 </tr>
 <tr>
-<td>\link fcppt::output_to_std_string\endlink</td>
+<td>#fcppt::output_to_std_string</td>
 <td><code>T → std::string</code></td>
 </tr>
 <tr>
-<td>\link fcppt::output_to_std_wstring\endlink</td>
+<td>#fcppt::output_to_std_wstring</td>
 <td><code>T → std::wstring</code></td>
 </tr>
 <tr>
-<td>\link fcppt::output_to_fcppt_string\endlink</td>
+<td>#fcppt::output_to_fcppt_string</td>
 <td><code>T → fcppt::string</code></td>
 </tr>
 <tr>
-<td>\link fcppt::output_to_string\endlink</td>
+<td>#fcppt::output_to_string</td>
 <td><code>T → basic_string<CharT></code></td>
 </tr>
 </table>
@@ -158,12 +155,11 @@ these into the following functions:
 \section fcpptstring_exception Exceptions
 
 C++ offers standard exceptions in the <code>\<stdexcept\></code> header. All of
-them use <code>std::string</code> which does not go well together with \link
-fcppt::string\endlink. fcppt instead defines its own exception base class:
-\link fcppt::exception\endlink. Although it derives from
+them use <code>std::string</code> which does not go well together with #fcppt::string.
+fcppt instead defines its own exception base class: #fcppt::exception. Although it derives from
 <code>std::exception</code>, its <code>what()</code> function returns a default
-message only. To get the error message of an \link fcppt::exception\endlink,
-use \link fcppt::exception::string\endlink.
+message only. To get the error message of an #fcppt::exception,
+use #fcppt::exception::string.
 
 \snippet string.cpp exception
 */

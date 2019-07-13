@@ -23,7 +23,7 @@ namespace tuple
 {
 
 /**
-\brief The result type of \link fcppt::container::tuple::map\endlink.
+\brief The result type of #fcppt::container::tuple::map.
 
 \ingroup fcpptcontainertuple
 */

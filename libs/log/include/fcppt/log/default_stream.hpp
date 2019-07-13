@@ -20,9 +20,8 @@ namespace log
 /**
 \brief The default stream to use a log level
 
-Log levels <code>verbose</code> through <code>warning</code> log to \link
-fcppt::io::clog \endlink, and log levels <code>error</code> and
-<code>fatal</code> log to \link fcppt::io::cerr \endlink.
+Log levels <code>verbose</code> through <code>warning</code> log to #fcppt::io::clog,
+and log levels <code>error</code> and <code>fatal</code> log to #fcppt::io::cerr.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::io::ostream &

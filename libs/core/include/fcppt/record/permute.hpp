@@ -30,8 +30,8 @@ namespace record
 
 \ingroup fcpptrecord
 
-\tparam Result Must be equivalent to Arg, and must be an \link fcppt::record::object\endlink.
-\tparam Arg Must be equivalent to Result, and must be an \link fcppt::record::object\endlink.
+\tparam Result Must be equivalent to Arg, and must be an #fcppt::record::object.
+\tparam Arg Must be equivalent to Result, and must be an #fcppt::record::object.
 */
 template<
 	typename Result,

@@ -18,7 +18,7 @@ namespace fcppt
 {
 
 /**
-\brief Creates an \link fcppt::recursive\endlink.
+\brief Creates an #fcppt::recursive.
 
 \ingroup fcpptvarious
 */

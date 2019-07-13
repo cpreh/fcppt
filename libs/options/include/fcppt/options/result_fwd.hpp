@@ -21,7 +21,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-The result of a parse is either \a T or an \link fcppt::options::error\endlink.
+The result of a parse is either \a T or an #fcppt::options::error.
 */
 template<
 	typename T

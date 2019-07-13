@@ -28,7 +28,7 @@ namespace dim
 \tparam S The dim's storage type
 \ingroup fcpptmathdim
 
-See the \link fcpptmathdim module description \endlink for more information.
+See \ref fcpptmathdim for more information.
 */
 template<
 	typename T,

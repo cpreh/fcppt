@@ -1,6 +1,14 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_321 3.2.1
+
+\subsection changes_bugfixes_to_321 Bugfixes
+
+<ul>
+<li>Fix Doxygen links.</li>
+</ul>
+
 \section changes_changes_to_320 3.2.0
 
 \subsection changes_added_functionality_to_320 Added functionality
@@ -9,7 +17,7 @@
 
 <li>\ref fcpptcontainerarray
 	<ul>
-	<li>Added \link fcppt::container::array::append\endlink and \link fcppt::container::array::join\endlink.</li>
+	<li>Added #fcppt::container::array::append and #fcppt::container::array::join.</li>
 	</ul>
 </li>
 
@@ -21,19 +29,19 @@
 
 <li>\ref fcpptcontainergrid
 	<ul>
-	<li>Added initialization using \link fcppt::container::grid::static_row\endlink.</li>
+	<li>Added initialization using #fcppt::container::grid::static_row.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Added <code>operator<<</code> for \link fcppt::enum_::array\endlink.</li>
+	<li>Added <code>operator<<</code> for #fcppt::enum_::array.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptstring
 	<ul>
-	<li>Added \link fcppt::string_view\endlink.</li>
+	<li>Added #fcppt::string_view.</li>
 	</ul>
 </li>
 
@@ -51,10 +59,10 @@
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Changed \link fcppt::options::error\endlink to a string.
-	\link fcppt::options::missing_error\endlink and \link fcppt::options::other_error\endlink were moved to \link fcppt::options::parse_error\endlink.</li>
+	<li>Changed #fcppt::options::error to a string.
+	#fcppt::options::missing_error and #fcppt::options::other_error were moved to #fcppt::options::parse_error.</li>
 	<li>Moved <code>fcppt::options::combine_errors</code> to detail.</li>
-	<li>\link fcppt::options::missing_error\endlink can now return a state, making optional parsers more efficient.</li>
+	<li>#fcppt::options::missing_error can now return a state, making optional parsers more efficient.</li>
 	</ul>
 </li>
 
@@ -68,8 +76,8 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Allow rvalues in \link fcppt::algorithm::loop_break\endlink,
-	\link fcppt::algorithm::loop\endlink and \link fcppt::algorithm::fold\endlink.</li>
+	<li>Allow rvalues in #fcppt::algorithm::loop_break,
+	#fcppt::algorithm::loop and #fcppt::algorithm::fold.</li>
 	</ul>
 </li>
 
@@ -79,36 +87,36 @@
 	of using <code>operator<< </code>.
 	</p>
 	<ul>
-	<li>Added Catch output for \link fcppt::record::object\endlink,
-	\link fcppt::strong_typedef\endlink and \link fcppt::optional::object\endlink.</li>
-	<li>Added \link fcppt::catch_::convert\endlink.</li>
+	<li>Added Catch output for #fcppt::record::object,
+	#fcppt::strong_typedef and #fcppt::optional::object.</li>
+	<li>Added #fcppt::catch_::convert.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::contains\endlink.</li>
+	<li>Added #fcppt::container::contains.</li>
 	</ul>
 </li>
 
 <li>\ref fcppteither
 	<ul>
-	<li>Added \link fcppt::either::construct\endlink.</li>
-	<li>Added \link fcppt::either::loop\endlink.</li>
+	<li>Added #fcppt::either::construct.</li>
+	<li>Added #fcppt::either::loop.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added \link fcppt::record::enable_vararg_ctor\endlink.</li>
+	<li>Added #fcppt::record::enable_vararg_ctor.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link FCPPT_STRING_LITERAL\endlink.</li>
-	<li>Added \link fcppt::recursive\endlink.</li>
-	<li>Added \link fcppt::make_function\endlink.</li>
+	<li>Added #FCPPT_STRING_LITERAL.</li>
+	<li>Added #fcppt::recursive.</li>
+	<li>Added #fcppt::make_function.</li>
 	</ul>
 </li>
 
@@ -120,13 +128,13 @@
 
 <li>\ref fcppteither
 	<ul>
-	<li>Renamed <code>fcppt::either::fold_error</code> to \link fcppt::either::sequence_error\endlink.</li>
+	<li>Renamed <code>fcppt::either::fold_error</code> to #fcppt::either::sequence_error.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>\link fcppt::io::stream_to_string\endlink now returns an optional.</li>
+	<li>#fcppt::io::stream_to_string now returns an optional.</li>
 	</ul>
 </li>
 
@@ -174,8 +182,8 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptbrigand
 	<ul>
-	<li>Added \link fcppt::brigand::is_set\endlink.</li>
-	<li>Added \link fcppt::brigand::unique\endlink.</li>
+	<li>Added #fcppt::brigand::is_set.</li>
+	<li>Added #fcppt::brigand::unique.</li>
 	</ul>
 </li>
 
@@ -201,12 +209,12 @@ fcppt now uses <code>C++-17</code>.
 	<li>
 
 	Now uses <code>std::variant</code> in its implementation. This change makes the constructor
-	of \link fcppt::variant::object\endlink stricter,
+	of #fcppt::variant::object stricter,
 	since it now uses <code>std::is_constructible</code>. For example, an rvalue of a type that is
 	not movable cannot be used to construct a variant.
 	</li>
 	<li>
-	Removed the assignment operator of \link fcppt::variant::object\endlink that assigned
+	Removed the assignment operator of #fcppt::variant::object that assigned
 	an underlying value. Assign a new variant instead.
 	</li>
 	<li>
@@ -239,7 +247,7 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptpreprocessor
 	<ul>
-	<li>Added \link FCPPT_PP_DISABLE_CLANG_WARNING\endlink.</li>
+	<li>Added #FCPPT_PP_DISABLE_CLANG_WARNING.</li>
 	</ul>
 </li>
 
@@ -251,7 +259,7 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptlog
 	<ul>
-	<li>Renamed <code>fcppt::log::_</code> to \link fcppt::log::out\endlink.</li>
+	<li>Renamed <code>fcppt::log::_</code> to #fcppt::log::out.</li>
 	</ul>
 </li>
 
@@ -278,36 +286,36 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::split_string\endlink.</li>
-	<li>Added \link fcppt::algorithm::map_impl\endlink as a customization point for \link fcppt::algorithm::map\endlink.</li>
+	<li>Added #fcppt::algorithm::split_string.</li>
+	<li>Added #fcppt::algorithm::map_impl as a customization point for #fcppt::algorithm::map.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainertuple
 	<ul>
 	<li>Move rvalue references out of tuples regardless whether the tuples are rvalues themselves.</li>
-	<li>Added \link fcppt::container::tuple::move_element\endlink.</li>
-	<li>Added \link fcppt::container::tuple::type_at\endlink.</li>
-	<li>Added \link fcppt::container::tuple::types_of\endlink.</li>
+	<li>Added #fcppt::container::tuple::move_element.</li>
+	<li>Added #fcppt::container::tuple::type_at.</li>
+	<li>Added #fcppt::container::tuple::types_of.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::peek\endlink.</li>
+	<li>Added #fcppt::io::peek.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Added \link fcppt::options::indent\endlink and added indentation to various parser outputs.</li>
-	<li>Added <code>fcppt::options::combine_errors</code> and use it in \link fcppt::options::sum\endlink.</li>
+	<li>Added #fcppt::options::indent and added indentation to various parser outputs.</li>
+	<li>Added <code>fcppt::options::combine_errors</code> and use it in #fcppt::options::sum.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::apply\endlink.</li>
+	<li>Added #fcppt::variant::apply.</li>
 	</ul>
 </li>
 
@@ -319,31 +327,31 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>To use \link fcppt::algorithm::map\endlink on <code>std::array</code>, you have to include
+	<li>To use #fcppt::algorithm::map on <code>std::array</code>, you have to include
 	<code>fcppt/algorithm/map_array.hpp</code>.</li>
-	<li>Moved <code>fcppt::algorithm::join</code> to \link fcppt::container::join\endlink.</li>
-	<li>Moved <code>fcppt::algorithm::key_set</code> to \link fcppt::container::key_set\endlink.</li>
-	<li>Moved <code>fcppt::algorithm::set_difference</code> to \link fcppt::container::set_difference\endlink.</li>
-	<li>Moved <code>fcppt::algorithm::set_intersection</code> to \link fcppt::container::set_intersection\endlink.</li>
-	<li>Moved <code>fcppt::algorithm::set_union</code> to \link fcppt::container::set_union\endlink.</li>
+	<li>Moved <code>fcppt::algorithm::join</code> to #fcppt::container::join.</li>
+	<li>Moved <code>fcppt::algorithm::key_set</code> to #fcppt::container::key_set.</li>
+	<li>Moved <code>fcppt::algorithm::set_difference</code> to #fcppt::container::set_difference.</li>
+	<li>Moved <code>fcppt::algorithm::set_intersection</code> to #fcppt::container::set_intersection.</li>
+	<li>Moved <code>fcppt::algorithm::set_union</code> to #fcppt::container::set_union.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Changed \link fcppt::options::sum\endlink to return a record containing a variant.</li>
+	<li>Changed #fcppt::options::sum to return a record containing a variant.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptstring
 	<ul>
-	<li>String conversions that can fail now return optionals, notably \link fcppt::narrow\endlink, \link fcppt::to_std_string\endlink and \link fcppt::from_std_wstring\endlink.</li>
+	<li>String conversions that can fail now return optionals, notably #fcppt::narrow, #fcppt::to_std_string and #fcppt::from_std_wstring.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>\link fcppt::type_name\endlink, \link fcppt::type_name_from_info\endlink and \link fcppt::type_name_from_index\endlink now return <code>std::string</code>,</li>
+	<li>#fcppt::type_name, #fcppt::type_name_from_info and #fcppt::type_name_from_index now return <code>std::string</code>,</li>
 	</ul>
 </li>
 
@@ -390,7 +398,7 @@ Updated catch includes to use <code>catch2/catch.hpp</code>.
 
 <li>\ref fcpptintrusive
 	<ul>
-	<li>Fixed assignment of \link fcppt::intrusive::base\endlink.</li>
+	<li>Fixed assignment of #fcppt::intrusive::base.</li>
 	</ul>
 </li>
 
@@ -428,59 +436,59 @@ Catch2 is now required.
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</li>
+	<li>Added #fcppt::algorithm::unique and #fcppt::algorithm::unique_if.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainerarray
 	<ul>
-	<li>Allow rvalues in \link fcppt::container::array::push_back\endlink.</li>
-	<li>Added \link fcppt::container::array::apply\endlink.</li>
+	<li>Allow rvalues in #fcppt::container::array::push_back.</li>
+	<li>Added #fcppt::container::array::apply.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
-	<li>Added \link fcppt::container::grid::dim_type\endlink and \link fcppt::container::grid::pos_type\endlink.</li>
+	<li>Added #fcppt::container::grid::dim_type and #fcppt::container::grid::pos_type.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainertuple
 	<ul>
-	<li>Added \link fcppt::container::tuple::push_back\endlink.</li>
+	<li>Added #fcppt::container::tuple::push_back.</li>
 	</ul>
 </li>
 
 <li>\ref fcppteither
 	<ul>
-	<li>Added \link fcppt::either::failure_type\endlink and \link fcppt::either::success_type\endlink.</li>
-	<li>Added \link fcppt::either::join\endlink.</li>
+	<li>Added #fcppt::either::failure_type and #fcppt::either::success_type.</li>
+	<li>Added #fcppt::either::join.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptiterator
 	<ul>
-	<li>Added <code>operator==</code> to \link fcppt::iterator::range\endlink.</li>
+	<li>Added <code>operator==</code> to #fcppt::iterator::range.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptrange
 	<ul>
-	<li>Added \link fcppt::range::size\endlink.</li>
+	<li>Added #fcppt::range::size.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Added \link fcppt::options::commands\endlink, which parses sub-commands.</li>
-	<li>Added \link fcppt::options::unit_switch\endlink and \link fcppt::options::unit\endlink.</li>
-	<li>Added \link fcppt::options::sum\endlink.</li>
+	<li>Added #fcppt::options::commands, which parses sub-commands.</li>
+	<li>Added #fcppt::options::unit_switch and #fcppt::options::unit.</li>
+	<li>Added #fcppt::options::sum.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added \link fcppt::record::all_disjoint\endlink.</li>
+	<li>Added #fcppt::record::all_disjoint.</li>
 	</ul>
 </li>
 
@@ -492,24 +500,24 @@ Catch2 is now required.
 
 <li>\ref fcpptstrongtypedef
 	<ul>
-	<li>Added \link fcppt::strong_typedef_apply\endlink.</li>
-	<li>Added \link fcppt::strong_typedef_map\endlink.</li>
-	<li>Added \link fcppt::strong_typedef_tag\endlink.</li>
+	<li>Added #fcppt::strong_typedef_apply.</li>
+	<li>Added #fcppt::strong_typedef_map.</li>
+	<li>Added #fcppt::strong_typedef_tag.</li>
 	</ul>
 </li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added \link fcppt::type_traits::remove_cv_ref_t\endlink.</li>
-	<li>Added \link fcppt::type_traits::value_type\endlink.</li>
+	<li>Added #fcppt::type_traits::remove_cv_ref_t.</li>
+	<li>Added #fcppt::type_traits::value_type.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::copy\endlink.</li>
-	<li>Added \link fcppt::not_\endlink.</li>
-	<li>Added \link fcppt::hash_combine\endlink and \link fcppt::hash\endlink.</li>
+	<li>Added #fcppt::copy.</li>
+	<li>Added #fcppt::not_.</li>
+	<li>Added #fcppt::hash_combine and #fcppt::hash.</li>
 	</ul>
 </li>
 
@@ -526,13 +534,13 @@ Catch2 is now required.
 	<code>fcppt::algorithm::array_init_move</code>, <code>fcppt::algorithm::array_push_back</code>
 	and <code>fcppt::container::make_array</code>
 	to \ref fcpptcontainerarray.</li>
-	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to \link fcppt::container::tuple::vararg_map\endlink.</li>
+	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to #fcppt::container::tuple::vararg_map.</li>
 	</ul>
 </li>
 
 <li>fcpptassign
 	<ul>
-	<li>Moved <code>fcppt::assign::make_container</code> to \link fcppt::container::make\endlink.</li>
+	<li>Moved <code>fcppt::assign::make_container</code> to #fcppt::container::make.</li>
 	</ul>
 </li>
 
@@ -544,28 +552,28 @@ Catch2 is now required.
 
 <li>\ref fcpptcontainerarray
 	<ul>
-	<li>\link fcppt::container::array::map\endlink no longer uses an explicit result type.</li>
+	<li>#fcppt::container::array::map no longer uses an explicit result type.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathdim
 	<ul>
-	<li>Renamed <code>fcppt::math::dim::construct</code> to \link fcppt::math::dim::push_back\endlink.</li>
+	<li>Renamed <code>fcppt::math::dim::construct</code> to #fcppt::math::dim::push_back.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathvector
 	<ul>
-	<li>Renamed <code>fcppt::math::vector::construct</code> to \link fcppt::math::vector::push_back\endlink.</li>
+	<li>Renamed <code>fcppt::math::vector::construct</code> to #fcppt::math::vector::push_back.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>The active and inactive values in \link fcppt::options::flag\endlink must be different now.</li>
+	<li>The active and inactive values in #fcppt::options::flag must be different now.</li>
 	<li>All long and short names must be distinct now.</li>
 	<li>All parsers and their parameters are now passed as rvalue references.
-	Use \link fcppt::make_cref\endlink or \link fcppt::copy\endlink to pass them.</li>
+	Use #fcppt::make_cref or #fcppt::copy to pass them.</li>
 	</ul>
 </li>
 
@@ -585,7 +593,7 @@ Catch2 is now required.
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li> Removed <code>fcppt::algorithm::array_binary_map</code>. This has been replaced by \link fcppt::container::array::apply\endlink.</li>
+	<li> Removed <code>fcppt::algorithm::array_binary_map</code>. This has been replaced by #fcppt::container::array::apply.</li>
 	</ul>
 </li>
 
@@ -625,7 +633,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Allow <code>std::array</code> in \link fcppt::algorithm::map\endlink.</li>
+	<li>Allow <code>std::array</code> in #fcppt::algorithm::map.</li>
 	<li>Allow rvalues in <code>fcppt::algorithm::array_map</code>.</li>
 	</ul>
 </li>
@@ -638,18 +646,18 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Added \link fcppt::cast::promote_int\endlink.</li>
-	<li>Added \link fcppt::cast::to_uint_ptr\endlink.</li>
+	<li>Added #fcppt::cast::promote_int.</li>
+	<li>Added #fcppt::cast::to_uint_ptr.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::map_values_ref\endlink and \link fcppt::container::map_values_copy\endlink.</li>
-	<li>Added \link fcppt::container::insert\endlink.</li>
-	<li>Added \link fcppt::container::pop_front\endlink.</li>
-	<li>Allow move-only types in \link fcppt::container::pop_front\endlink and \link fcppt::container::pop_back\endlink.</li>
-	<li>Added \link fcppt::container::size\endlink.</li>
+	<li>Added #fcppt::container::map_values_ref and #fcppt::container::map_values_copy.</li>
+	<li>Added #fcppt::container::insert.</li>
+	<li>Added #fcppt::container::pop_front.</li>
+	<li>Allow move-only types in #fcppt::container::pop_front and #fcppt::container::pop_back.</li>
+	<li>Added #fcppt::container::size.</li>
 	</ul>
 </li>
 
@@ -667,35 +675,35 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::div\endlink.</li>
-	<li>Added \link fcppt::math::is_zero\endlink.</li>
+	<li>Added #fcppt::math::div.</li>
+	<li>Added #fcppt::math::is_zero.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathdim
 	<ul>
-	<li>Added \link fcppt::math::dim::binary_map\endlink.</li>
-	<li>Added \link fcppt::math::dim::sequence\endlink.</li>
+	<li>Added #fcppt::math::dim::binary_map.</li>
+	<li>Added #fcppt::math::dim::sequence.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathmatrix
 	<ul>
-	<li>Added \link fcppt::math::matrix::binary_map\endlink.</li>
-	<li>Added \link fcppt::math::matrix::map\endlink.</li>
+	<li>Added #fcppt::math::matrix::binary_map.</li>
+	<li>Added #fcppt::math::matrix::map.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathvector
 	<ul>
-	<li>Added \link fcppt::math::vector::binary_map\endlink.</li>
-	<li>Added \link fcppt::math::vector::sequence\endlink.</li>
+	<li>Added #fcppt::math::vector::binary_map.</li>
+	<li>Added #fcppt::math::vector::sequence.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional::sequence\endlink.</li>
+	<li>Added #fcppt::optional::sequence.</li>
 	</ul>
 </li>
 
@@ -707,27 +715,27 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added \link fcppt::record::element_tag_tuple\endlink.</li>
+	<li>Added #fcppt::record::element_tag_tuple.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptref
 	<ul>
-	<li>Added \link fcppt::is_reference\endlink.</li>
+	<li>Added #fcppt::is_reference.</li>
 	</ul>
 </li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added \link fcppt::type_traits::function_result\endlink.</li>
-	<li>Added \link fcppt::type_traits::is_value\endlink.</li>
-	<li>Added \link fcppt::type_traits::is_std_tuple\endlink.</li>
+	<li>Added #fcppt::type_traits::function_result.</li>
+	<li>Added #fcppt::type_traits::is_value.</li>
+	<li>Added #fcppt::type_traits::is_std_tuple.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::move_clear\endlink.</li>
+	<li>Added #fcppt::move_clear.</li>
 	</ul>
 </li>
 
@@ -740,20 +748,20 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptcontainertree
 	<ul>
 	<li>Removed nonconst access to the children list.</li>
-	<li>\link fcppt::container::tree::object::front\endlink and \link fcppt::container::tree::object::back\endlink now return optional references.</li>
+	<li>#fcppt::container::tree::object::front and #fcppt::container::tree::object::back now return optional references.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptlog
 	<ul>
-	<li>Removed <code>boost::format</code> from \link fcppt::log::format::inserter\endlink.</li>
+	<li>Removed <code>boost::format</code> from #fcppt::log::format::inserter.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>\link fcppt::math::ceil_div\endlink and \link fcppt::math::ceil_div_signed\endlink now return optionals.</li>
-	<li>\link fcppt::math::mod\endlink now returns an optional.</li>
+	<li>#fcppt::math::ceil_div and #fcppt::math::ceil_div_signed now return optionals.</li>
+	<li>#fcppt::math::mod now returns an optional.</li>
 	</ul>
 </li>
 
@@ -765,11 +773,11 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptmathvector
 	<ul>
-	<li>\link fcppt::math::vector::ceil_div_signed\endlink now returns an optional.</li>
-	<li>\link fcppt::math::vector::mod\endlink now returns an optional.</li>
-	<li>\link fcppt::math::vector::atan2\endlink now returns an optional.</li>
-	<li>\link fcppt::math::vector::angle_between\endlink, \link fcppt::math::vector::angle_between_cast\endlink,
-	\link fcppt::math::vector::signed_angle_between\endlink and \link fcppt::math::vector::signed_angle_between_cast\endlink
+	<li>#fcppt::math::vector::ceil_div_signed now returns an optional.</li>
+	<li>#fcppt::math::vector::mod now returns an optional.</li>
+	<li>#fcppt::math::vector::atan2 now returns an optional.</li>
+	<li>#fcppt::math::vector::angle_between, #fcppt::math::vector::angle_between_cast,
+	#fcppt::math::vector::signed_angle_between and #fcppt::math::vector::signed_angle_between_cast
 	now return optionals.</li>
 	<li>All versions of <code>operator/</code> now return optionals.</li>
 	</ul>
@@ -777,7 +785,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptrange
 	<ul>
-	<li>Moved <code>fcppt::range_hash</code> to \link fcppt::range::hash\endlink.</li>
+	<li>Moved <code>fcppt::range_hash</code> to #fcppt::range::hash.</li>
 	</ul>
 </li>
 
@@ -886,61 +894,61 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::equal\endlink.</li>
+	<li>Added #fcppt::algorithm::equal.</li>
 	<li><code>fcppt::algorithm::append</code> now also works on rvalues.</li>
-	<li>\link fcppt::algorithm::map\endlink now uses \link fcppt::algorithm::loop\endlink, so it works on different ranges.</li>
+	<li>#fcppt::algorithm::map now uses #fcppt::algorithm::loop, so it works on different ranges.</li>
 	<li>Allow <code>fcppt::algorithm::join</code> to join maps and sets.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::dynamic_array\endlink which is a simple array for uninitialized, dynamically-sized storage.</li>
-	<li>Added \link fcppt::container::output\endlink that outputs a container to a stream.</li>
+	<li>Added #fcppt::container::dynamic_array which is a simple array for uninitialized, dynamically-sized storage.</li>
+	<li>Added #fcppt::container::output that outputs a container to a stream.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainerbuffer
 	<p>
-	This sub-library adds \link fcppt::container::buffer::object\endlink and utility functions which can be used to provide a buffer to external functions that write into raw memory.
+	This sub-library adds #fcppt::container::buffer::object and utility functions which can be used to provide a buffer to external functions that write into raw memory.
 	The buffer contains a read and a write area.
 	</p>
 </li>
 
 <li>\ref fcpptconfig
 	<ul>
-	<li>Added \link FCPPT_CONFIG_MSVC_VERSION_AT_LEAST\endlink.</li>
+	<li>Added #FCPPT_CONFIG_MSVC_VERSION_AT_LEAST.</li>
 	</ul>
 </li>
 
 <li>\ref fcppteither
 	<ul>
-	<li>Added \link fcppt::either::map_failure\endlink.</li>
-	<li>Added \link fcppt::either::error\endlink, \link fcppt::either::no_error\endlink, <code>fcppt::either::fold_error</code> and \link fcppt::either::error_from_optional\endlink.</li>
+	<li>Added #fcppt::either::map_failure.</li>
+	<li>Added #fcppt::either::error, #fcppt::either::no_error, <code>fcppt::either::fold_error</code> and #fcppt::either::error_from_optional.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Added \link fcppt::enum_::names\endlink and \link fcppt::enum_::names_impl\endlink.
-	<li>Added \link fcppt::enum_::from_string\endlink and \link fcppt::enum_::from_string_impl\endlink.
-	<li>Added \link fcppt::enum_::to_string\endlink and \link fcppt::enum_::to_string_impl\endlink.
-	<li>Added \link fcppt::enum_::input\endlink and \link fcppt::enum_::output\endlink.
+	<li>Added #fcppt::enum_::names and #fcppt::enum_::names_impl.
+	<li>Added #fcppt::enum_::from_string and #fcppt::enum_::from_string_impl.
+	<li>Added #fcppt::enum_::to_string and #fcppt::enum_::to_string_impl.
+	<li>Added #fcppt::enum_::input and #fcppt::enum_::output.
 	</ul>
 </li>
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li>Added \link fcppt::filesystem::create_directory\endlink, \link fcppt::filesystem::create_directory_error\endlink and \link fcppt::filesystem::create_directories_recursive\endlink.</li>
-	<li>Added \link fcppt::filesystem::file_size\endlink.</li>
+	<li>Added #fcppt::filesystem::create_directory, #fcppt::filesystem::create_directory_error and #fcppt::filesystem::create_directories_recursive.</li>
+	<li>Added #fcppt::filesystem::file_size.</li>
 	<li>Added <code>fcppt::filesystem::size_to_size_t</code>.</li>
-	<li>Added \link fcppt::filesystem::open\endlink and \link fcppt::filesystem::open_exn\endlink.</li>
+	<li>Added #fcppt::filesystem::open and #fcppt::filesystem::open_exn.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::write_chars\endlink.</li>
+	<li>Added #fcppt::io::write_chars.</li>
 	</ul>
 </li>
 
@@ -952,29 +960,29 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional::to_container\endlink.</li>
+	<li>Added #fcppt::optional::to_container.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Output errors from the second argument as well in \link fcppt::options::product\endlink.</li>
-	<li>Added <code>fcppt/options/pretty_type_enum.hpp</code> that outputs all possible enumerators via \link fcppt::enum_::names\endlink.</li>
+	<li>Output errors from the second argument as well in #fcppt::options::product.</li>
+	<li>Added <code>fcppt/options/pretty_type_enum.hpp</code> that outputs all possible enumerators via #fcppt::enum_::names.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptref
 	<ul>
-	<li>Added \link fcppt::add_reference\endlink.</li>
+	<li>Added #fcppt::add_reference.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptsmartptr
 	<ul>
-	<li>Added \link fcppt::unique_ptr_from_std\endlink.</li>
-	<li>Added \link fcppt::unique_ptr_dynamic_cast\endlink.</li>
-	<li>Added \link fcppt::shared_ptr_hash\endlink and the corresponding <code>std::hash</code> specialization.</li>
-	<li>Added \link fcppt::enable_shared_from_this\endlink.</li>
+	<li>Added #fcppt::unique_ptr_from_std.</li>
+	<li>Added #fcppt::unique_ptr_dynamic_cast.</li>
+	<li>Added #fcppt::shared_ptr_hash and the corresponding <code>std::hash</code> specialization.</li>
+	<li>Added #fcppt::enable_shared_from_this.</li>
 	</ul>
 </li>
 
@@ -992,8 +1000,8 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link FCPPT_MAIN\endlink as a name for the <code>main</code> function to support unicode arguments in Windows.</li>
-	<li>Added <code>operator==</code>, <code>operator!=</code> and <code>operator<< </code> for \link fcppt::unit\endlink.</li>
+	<li>Added #FCPPT_MAIN as a name for the <code>main</code> function to support unicode arguments in Windows.</li>
+	<li>Added <code>operator==</code>, <code>operator!=</code> and <code>operator<< </code> for #fcppt::unit.</li>
 	</ul>
 </li>
 
@@ -1012,63 +1020,63 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Renamed <code>fcppt::container::raw_vector</code> to \link fcppt::container::raw_vector::object\endlink.</li>
-	<li>Moved comparison functions of \link fcppt::container::raw_vector::object\endlink to <code>fcppt/container/raw_vector/comparison.hpp</code>.</li>
-	<li>Redesigned \link fcppt::container::raw_vector::object\endlink. It now only exposes essential functions and is no longer being meant as a replacement for <code>std::vector</code>.</li>
+	<li>Renamed <code>fcppt::container::raw_vector</code> to #fcppt::container::raw_vector::object.</li>
+	<li>Moved comparison functions of #fcppt::container::raw_vector::object to <code>fcppt/container/raw_vector/comparison.hpp</code>.</li>
+	<li>Redesigned #fcppt::container::raw_vector::object. It now only exposes essential functions and is no longer being meant as a replacement for <code>std::vector</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
-	<li>Renamed <code>operator[]</code> of \link fcppt::container::grid::object\endlink to \link fcppt::container::grid::object::get_unsafe\endlink.</li>
+	<li>Renamed <code>operator[]</code> of #fcppt::container::grid::object to #fcppt::container::grid::object::get_unsafe.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptenum
 	<p>
-	Moved most functionality that is related to contiguous enums to the \link fcppt::enum_\endlink namespace.
+	Moved most functionality that is related to contiguous enums to the #fcppt::enum_ namespace.
 	</p>
 </li>
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li><code>fcppt::filesystem::file_to_string</code> now returns \link fcppt::optional_string\endlink for most errors.</li>
-	<li>\link fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream\endlink and \link fcppt::filesystem::fstream\endlink now use <code>std::basic_ifstream</code>,
+	<li><code>fcppt::filesystem::file_to_string</code> now returns #fcppt::optional_string for most errors.</li>
+	<li>#fcppt::filesystem::ifstream, #fcppt::filesystem::ofstream and #fcppt::filesystem::fstream now use <code>std::basic_ifstream</code>,
 	<code>std::basic_ofstream</code> and <code>std::basic_fstream</code> instead of the boost variants.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Split <code>fcppt::math::at_c</code> into \link fcppt::math::vector::at\endlink, \link fcppt::math::dim::at\endlink and \link fcppt::math::matrix::at_r\endlink.</li>
+	<li>Split <code>fcppt::math::at_c</code> into #fcppt::math::vector::at, #fcppt::math::dim::at and #fcppt::math::matrix::at_r.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathdim
 	<ul>
-	<li>Renamed <code>operator[]</code> of \link fcppt::math::dim::object\endlink to \link fcppt::math::dim::object::get_unsafe\endlink.</li>
+	<li>Renamed <code>operator[]</code> of #fcppt::math::dim::object to #fcppt::math::dim::object::get_unsafe.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathmatrix
 	<ul>
-	<li>Renamed <code>operator[]</code> of \link fcppt::math::matrix::object\endlink to \link fcppt::math::matrix::object::get_unsafe\endlink.</li>
-	<li>Renamed <code>fcppt::math::matrix::at_c</code> to \link fcppt::math::matrix::at_r_c\endlink.</li>
-	<li>Renamed <code>fcppt::math::matrix::delete_row_and_column_static</code> to \link fcppt::math::matrix::delete_row_and_column\endlink.</li>
-	<li>\link fcppt::math::matrix::row_type\endlink is now an \link fcppt::math::vector::static_\endlink instead of a <code>std::array</code>.</li>
-	<li>\link fcppt::math::matrix::index\endlink now uses functions that return its row and column instead of static constants.</li>
+	<li>Renamed <code>operator[]</code> of #fcppt::math::matrix::object to #fcppt::math::matrix::object::get_unsafe.</li>
+	<li>Renamed <code>fcppt::math::matrix::at_c</code> to #fcppt::math::matrix::at_r_c.</li>
+	<li>Renamed <code>fcppt::math::matrix::delete_row_and_column_static</code> to #fcppt::math::matrix::delete_row_and_column.</li>
+	<li>#fcppt::math::matrix::row_type is now an #fcppt::math::vector::static_ instead of a <code>std::array</code>.</li>
+	<li>#fcppt::math::matrix::index now uses functions that return its row and column instead of static constants.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathvector
 	<ul>
-	<li>Renamed <code>operator[]</code> of \link fcppt::math::vector::object\endlink to \link fcppt::math::vector::object::get_unsafe\endlink.</li>
+	<li>Renamed <code>operator[]</code> of #fcppt::math::vector::object to #fcppt::math::vector::object::get_unsafe.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Renamed <code>fcppt::options::custom_pretty_type</code> to \link fcppt::options::pretty_type_impl\endlink.</li>
+	<li>Renamed <code>fcppt::options::custom_pretty_type</code> to #fcppt::options::pretty_type_impl.</li>
 	<li>Don't output values of flags. Output operators are usually not defined or their results are meaningless to the user.</li>
 	</ul>
 </li>
@@ -1081,19 +1089,19 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptsmartptr
 	<ul>
-	<li>Moved output operator of \link fcppt::shared_ptr\endlink to <code>fcppt/shared_ptr_output.hpp</code>.</li>
+	<li>Moved output operator of #fcppt::shared_ptr to <code>fcppt/shared_ptr_output.hpp</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Changed \link fcppt::variant::dynamic_cast_\endlink to take an MPL sequence of the types to cast instead of an MPL sequence of references.</li>
+	<li>Changed #fcppt::variant::dynamic_cast_ to take an MPL sequence of the types to cast instead of an MPL sequence of references.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>\link fcppt::args\endlink and \link fcppt::args_from_second\endlink now use \link fcppt::args_char\endlink instead of <code>char</code>.</li>
+	<li>#fcppt::args and #fcppt::args_from_second now use #fcppt::args_char instead of <code>char</code>.</li>
 	</ul>
 </li>
 
@@ -1112,7 +1120,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
-	<li>Removed constructor taking \link fcppt::no_init\endlink. The underlying container is now always a <code>std::vector</code>.</li>
+	<li>Removed constructor taking #fcppt::no_init. The underlying container is now always a <code>std::vector</code>.</li>
 	</ul>
 </li>
 
@@ -1168,11 +1176,11 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::types_of\endlink and <code>fcppt::variant::types_of_tpl</code>.</li>
+	<li>Added #fcppt::variant::types_of and <code>fcppt::variant::types_of_tpl</code>.</li>
 	<li>Added move semantics to <code>fcppt::variant::apply_unary</code>, <code>fcppt::variant::apply_binary</code> and <code>fcppt::variant::apply_ternary</code>.</li>
-	<li>Improved the error message of \link fcppt::variant::invalid_get\endlink.</li>
-	<li>Added \link fcppt::variant::types_string\endlink.</li>
-	<li>Added \link fcppt::variant::current_type_name\endlink.</li>
+	<li>Improved the error message of #fcppt::variant::invalid_get.</li>
+	<li>Added #fcppt::variant::types_string.</li>
+	<li>Added #fcppt::variant::current_type_name.</li>
 	</ul>
 </li>
 
@@ -1186,33 +1194,33 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::reverse\endlink.</li>
-	<li>Move rvalues in \link fcppt::algorithm::map\endlink.</li>
+	<li>Added #fcppt::algorithm::reverse.</li>
+	<li>Move rvalues in #fcppt::algorithm::map.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::move_range\endlink and \link fcppt::container::make_move_range\endlink.</li>
-	<li>Added \link fcppt::container::pop_back\endlink.</li>
+	<li>Added #fcppt::container::move_range and #fcppt::container::make_move_range.</li>
+	<li>Added #fcppt::container::pop_back.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::extract\endlink which can also read objects of types that take \link fcppt::no_init\endlink.</li>
+	<li>Added #fcppt::io::extract which can also read objects of types that take #fcppt::no_init.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptlog
 	<ul>
-	<li>Added <code>operator<<</code> and <code>operator>></code> for \link fcppt::log::level\endlink.</li>
+	<li>Added <code>operator<<</code> and <code>operator>></code> for #fcppt::log::level.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::to_array_type\endlink, <code>fcppt::math::to_array_type_tpl</code>, \link fcppt::math::from_array\endlink and \link fcppt::math::to_array\endlink.</li>
+	<li>Added #fcppt::math::to_array_type, <code>fcppt::math::to_array_type_tpl</code>, #fcppt::math::from_array and #fcppt::math::to_array.</li>
 	</ul>
 </li>
 
@@ -1227,8 +1235,8 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional::make_if\endlink.</li>
-	<li>Added \link fcppt::optional::nothing\endlink.</li>
+	<li>Added #fcppt::optional::make_if.</li>
+	<li>Added #fcppt::optional::nothing.</li>
 	</ul>
 </li>
 
@@ -1240,37 +1248,37 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added \link fcppt::record::label_set\endlink and <code>fcppt::record::label_set_tpl</code>.</li>
-	<li>Added \link fcppt::record::are_disjoint\endlink.</li>
-	<li>Added \link fcppt::record::disjoint_product\endlink and <code>fcppt::record::disjoint_product_tpl</code>.</li>
-	<li>Added \link fcppt::record::multiply_disjoint\endlink.</li>
-	<li>Added nonconst \link fcppt::record::get\endlink and \link fcppt::record::object::get\endlink.</li>
-	<li>Added \link fcppt::record::has_label\endlink.</li>
+	<li>Added #fcppt::record::label_set and <code>fcppt::record::label_set_tpl</code>.</li>
+	<li>Added #fcppt::record::are_disjoint.</li>
+	<li>Added #fcppt::record::disjoint_product and <code>fcppt::record::disjoint_product_tpl</code>.</li>
+	<li>Added #fcppt::record::multiply_disjoint.</li>
+	<li>Added nonconst #fcppt::record::get and #fcppt::record::object::get.</li>
+	<li>Added #fcppt::record::has_label.</li>
 	<li>Added <code>fcppt::record::label_value_type_tpl</code>.</li>
-	<li>Added \link fcppt::record::are_equivalent\endlink.</li>
-	<li>Added \link fcppt::record::element_map\endlink and <code>fcppt::record::element_map_tpl</code>.</li>
+	<li>Added #fcppt::record::are_equivalent.</li>
+	<li>Added #fcppt::record::element_map and <code>fcppt::record::element_map_tpl</code>.</li>
 	<li>Allow <code>==</code> and <code>!=</code> comparison for equivalent records.</li>
-	<li>Added \link fcppt::record::permute\endlink.</li>
-	<li>Added \link fcppt::record::map_elements\endlink and \link fcppt::record::map\endlink.</li>
-	<li>Added \link fcppt::record::element_vector \endlink and <code>fcppt::record::element_vector_tpl</code>.</li>
+	<li>Added #fcppt::record::permute.</li>
+	<li>Added #fcppt::record::map_elements and #fcppt::record::map.</li>
+	<li>Added #fcppt::record::element_vector  and <code>fcppt::record::element_vector_tpl</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptstrongtypedef
 	<ul>
-	<li>Added \link fcppt::no_init\endlink constructor to \link fcppt::strong_typedef\endlink.</li>
+	<li>Added #fcppt::no_init constructor to #fcppt::strong_typedef.</li>
 	</ul>
 </li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added \link fcppt::type_traits::constructible_from\endlink.</li>
+	<li>Added #fcppt::type_traits::constructible_from.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::args_from_second\endlink.</li>
+	<li>Added #fcppt::args_from_second.</li>
 	</ul>
 </li>
 
@@ -1291,13 +1299,13 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>\link fcppt::optional::alternative\endlink now evaluates its second argument only if the first is nothing.</li>
+	<li>#fcppt::optional::alternative now evaluates its second argument only if the first is nothing.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>\link fcppt::args_vector\endlink now uses \link fcppt::string\endlink instead of <code>std::string</code>.</li>
+	<li>#fcppt::args_vector now uses #fcppt::string instead of <code>std::string</code>.</li>
 	</ul>
 </li>
 
@@ -1337,39 +1345,39 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Allow nonconst references and arbitrary return types in \link fcppt::cast::apply\endlink.</li>
-	<li>Added \link fcppt::cast::dynamic_fun\endlink and \link fcppt::cast::dynamic_cross_fun\endlink.</li>
-	<li>Added \link fcppt::cast::dynamic_any\endlink and \link fcppt::cast::dynamic_any_fun\endlink.</li>
+	<li>Allow nonconst references and arbitrary return types in #fcppt::cast::apply.</li>
+	<li>Added #fcppt::cast::dynamic_fun and #fcppt::cast::dynamic_cross_fun.</li>
+	<li>Added #fcppt::cast::dynamic_any and #fcppt::cast::dynamic_any_fun.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
-	<li>Added \link fcppt::container::grid::resize\endlink.</li>
+	<li>Added #fcppt::container::grid::resize.</li>
 	</ul>
 </li>
 
 <li>\ref fcppteither
 	<ul>
-	<li>Added \link fcppt::either::failure_opt\endlink.</li>
+	<li>Added #fcppt::either::failure_opt.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::power_of_2\endlink.</li>
+	<li>Added #fcppt::math::power_of_2.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptref
 	<ul>
-	<li>Added \link fcppt::reference_to_const\endlink.</li>
+	<li>Added #fcppt::reference_to_const.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::dynamic_cast_\endlink which tries several dynamic casts.</li>
+	<li>Added #fcppt::variant::dynamic_cast_ which tries several dynamic casts.</li>
 	</ul>
 </li>
 
@@ -1381,7 +1389,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Renamed <code>fcppt::math::generate_binary_vectors</code> to \link fcppt::math::vector::bit_strings\endlink.</li>
+	<li>Renamed <code>fcppt::math::generate_binary_vectors</code> to #fcppt::math::vector::bit_strings.</li>
 	</ul>
 </li>
 
@@ -1448,13 +1456,13 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcppteither
 	<ul>
-	<li>Added \link fcppt::either::make_success\endlink and \link fcppt::either::make_failure\endlink.</li>
+	<li>Added #fcppt::either::make_success and #fcppt::either::make_failure.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::widen_string\endlink.</li>
+	<li>Added #fcppt::io::widen_string.</li>
 	</ul>
 </li>
 
@@ -1478,8 +1486,8 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::unit\endlink.</li>
-	<li>\link fcppt::move_if\endlink and \link fcppt::move_if_rvalue\endlink now also work on rvalues.</li>
+	<li>Added #fcppt::unit.</li>
+	<li>#fcppt::move_if and #fcppt::move_if_rvalue now also work on rvalues.</li>
 	</ul>
 </li>
 
@@ -1525,9 +1533,9 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::fold_break\endlink.</li>
-	<li>Added \link fcppt::algorithm::equal_range\endlink.</li>
-	<li>Added \link fcppt::algorithm::binary_search\endlink.</li>
+	<li>Added #fcppt::algorithm::fold_break.</li>
+	<li>Added #fcppt::algorithm::equal_range.</li>
+	<li>Added #fcppt::algorithm::binary_search.</li>
 	</ul>
 </li>
 
@@ -1543,20 +1551,20 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainerbitfield
 	<ul>
-	<li>Added \link fcppt::container::bitfield::init\endlink.</li>
+	<li>Added #fcppt::container::bitfield::init.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainertree
 	<ul>
-	<li>Added \link fcppt::container::tree::make_pre_order\endlink.</li>
-	<li>Added \link fcppt::container::tree::make_to_root\endlink.</li>
+	<li>Added #fcppt::container::tree::make_pre_order.</li>
+	<li>Added #fcppt::container::tree::make_to_root.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li>Added \link fcppt::filesystem::directory_range\endlink.</li>
+	<li>Added #fcppt::filesystem::directory_range.</li>
 	</ul>
 </li>
 
@@ -1568,7 +1576,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional::to_pointer\endlink.</li>
+	<li>Added #fcppt::optional::to_pointer.</li>
 	</ul>
 </li>
 
@@ -1585,12 +1593,12 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added <code>_fwd</code> headers to \link fcppt::io::istream\endlink,
-	\link fcppt::io::ostream\endlink, \link fcppt::io::istringstream\endlink,
-	\link fcppt::io::ostringstream\endlink and \link fcppt::io::stringstream\endlink.</li>
+	<li>Added <code>_fwd</code> headers to #fcppt::io::istream,
+	#fcppt::io::ostream, #fcppt::io::istringstream,
+	#fcppt::io::ostringstream and #fcppt::io::stringstream.</li>
 	<li>Moved <code>fcppt::io::ifstream</code>, <code>fcppt::io::ofstream</code> and
-	<code>fcppt::io::fstream</code> to \link fcppt::filesystem::ifstream\endlink,
-	\link fcppt::filesystem::ofstream\endlink and \link fcppt::filesystem::fstream\endlink.</li>
+	<code>fcppt::io::fstream</code> to #fcppt::filesystem::ifstream,
+	#fcppt::filesystem::ofstream and #fcppt::filesystem::fstream.</li>
 	</ul>
 </li>
 
@@ -1599,9 +1607,8 @@ C++11 library that has no dependencies itself.</li>
 	The logging library went through a major rewrite, with the purpose
 	to remove global objects.</p>
 	<ul>
-	<li>\link fcppt::log::object\endlink now always refers to an \link
-	fcppt::log::context\endlink.</li>
-	<li>Log levels are stored in \link fcppt::log::context\endlink objects
+	<li>#fcppt::log::object now always refers to an #fcppt::log::context.</li>
+	<li>Log levels are stored in #fcppt::log::context objects
 	only. This way, they can be set before any log locations are
 	created.</li>
 	</ul>
@@ -1610,7 +1617,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptcontainerbitfield
 	<ul>
 	<li>Renamed <code>fcppt::container::bitfield::object_from_enum</code>
-	to \link fcppt::container::bitfield::enum_object\endlink and introduced
+	to #fcppt::container::bitfield::enum_object and introduced
 	an <code>_fwd</code> header.</li>
 	</ul>
 </li>
@@ -1645,17 +1652,15 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::generate_n\endlink.</li>
-	<li>Allow different implementations for ranges via \link
-	fcppt::algorithm::loop_break_impl\endlink.</li>
+	<li>Added #fcppt::algorithm::generate_n.</li>
+	<li>Allow different implementations for ranges via #fcppt::algorithm::loop_break_impl.</li>
 	<li>Support <code>std::tuple</code> as a range.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Added \link fcppt::cast::dynamic_cross\endlink and \link
-	fcppt::cast::dynamic_cross_exn\endlink.</li>
+	<li>Added #fcppt::cast::dynamic_cross and #fcppt::cast::dynamic_cross_exn.</li>
 	</ul>
 </li>
 
@@ -1677,20 +1682,18 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
-	<li>Added \link fcppt::container::grid::make_min\endlink and \link
-	fcppt::container::grid::make_sup\endlink.</li>
-	<li>Added \link fcppt::container::grid::map\endlink.</li>
-	<li>Made \link fcppt::container::grid::pos_range\endlink and \link
-	fcppt::container::grid::pos_ref_range\endlink assignable.</li>
-	<li>Added \link fcppt::container::grid::apply\endlink.</li>
+	<li>Added #fcppt::container::grid::make_min and #fcppt::container::grid::make_sup.</li>
+	<li>Added #fcppt::container::grid::map.</li>
+	<li>Made #fcppt::container::grid::pos_range and #fcppt::container::grid::pos_ref_range assignable.</li>
+	<li>Added #fcppt::container::grid::apply.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainertree
 	<ul>
-	<li>\link fcppt::container::tree::pre_order\endlink is now
+	<li>#fcppt::container::tree::pre_order is now
 	copyable.</li>
-	<li>Added \link fcppt::container::tree::to_root\endlink.</li>
+	<li>Added #fcppt::container::tree::to_root.</li>
 	</ul>
 </li>
 
@@ -1709,8 +1712,8 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::read_chars\endlink.</li>
-	<li>Added \link fcppt::io::get\endlink.</li>
+	<li>Added #fcppt::io::read_chars.</li>
+	<li>Added #fcppt::io::get.</li>
 	</ul>
 </li>
 
@@ -1723,28 +1726,28 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional::filter\endlink.</li>
-	<li>Added \link fcppt::optional::apply\endlink.</li>
-	<li>Added \link fcppt::optional::cat\endlink.</li>
-	<li>Added \link fcppt::optional::make\endlink.</li>
+	<li>Added #fcppt::optional::filter.</li>
+	<li>Added #fcppt::optional::apply.</li>
+	<li>Added #fcppt::optional::cat.</li>
+	<li>Added #fcppt::optional::make.</li>
 	</ul>
 </li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added \link fcppt::type_traits::is_base_of\endlink that only works
+	<li>Added #fcppt::type_traits::is_base_of that only works
 	on complete types.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::move_if\endlink.</li>
-	<li>Added \link fcppt::args\endlink.</li>
-	<li>\link fcppt::cyclic_iterator\endlink can now be a random-access
+	<li>Added #fcppt::move_if.</li>
+	<li>Added #fcppt::args.</li>
+	<li>#fcppt::cyclic_iterator can now be a random-access
 	iterator.</li>
-	<li>Added \link fcppt::getenv\endlink.</li>
-	<li>Added \link FCPPT_USE\endlink.</li>
+	<li>Added #fcppt::getenv.</li>
+	<li>Added #FCPPT_USE.</li>
 	</ul>
 </li>
 
@@ -1756,12 +1759,9 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Renamed <code>fcppt::cast::try_dynamic</code> to \link
-	fcppt::cast::dynamic\endlink, and renamed
-	<code>%fcppt::cast::dynamic</code> to \link
-	fcppt::cast::dynamic_exn\endlink.</li>
-	<li>\link fcppt::cast::dynamic\endlink and \link
-	fcppt::cast::dynamic_exn\endlink only work on related types now.</li>
+	<li>Renamed <code>fcppt::cast::try_dynamic</code> to #fcppt::cast::dynamic, and renamed
+	<code>%fcppt::cast::dynamic</code> to #fcppt::cast::dynamic_exn.</li>
+	<li>#fcppt::cast::dynamic and #fcppt::cast::dynamic_exn only work on related types now.</li>
 	</ul>
 </li>
 
@@ -1773,27 +1773,25 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Moved everything to the \link fcppt::optional\endlink
+	<li>Moved everything to the #fcppt::optional
 	namespace.</li>
 	<li>Removed optional references and replaced them with optionals to
-	\link fcppt::reference\endlink.</li>
-	<li>Renamed <code>optional_bind_construct</code> to \link
-	fcppt::optional::map\endlink.</li>
+	#fcppt::reference.</li>
+	<li>Renamed <code>optional_bind_construct</code> to #fcppt::optional::map.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptref
 	<ul>
-	<li>Renamed <code>fcppt::reference_wrapper</code> to \link
-	fcppt::reference\endlink.</li>
+	<li>Renamed <code>fcppt::reference_wrapper</code> to #fcppt::reference.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>\link fcppt::cyclic_iterator\endlink now uses a pair to construct
+	<li>#fcppt::cyclic_iterator now uses a pair to construct
 	its boundaries.</li>
-	<li>\link FCPPT_NONCOPYABLE\endlink and
+	<li>#FCPPT_NONCOPYABLE and
 	<code>FCPPT_NONASSIGNABLE</code> now simply use <code>=delete</code> instead
 	of <code>private:</code></li>
 	</ul>
@@ -1914,9 +1912,8 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::loop\endlink to express loops over
-	different ranges, including MPL ranges. Also added \link
-	fcppt::algorithm::loop_break\endlink which is similar to the former but
+	<li>Added #fcppt::algorithm::loop to express loops over
+	different ranges, including MPL ranges. Also added #fcppt::algorithm::loop_break which is similar to the former but
 	can break out of the loop early.</li>
 	</ul>
 </li>
@@ -1924,15 +1921,13 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptbit
 	<ul>
 	<li> New library that makes creating bit masks and testing them a bit
-	safer and less tedious. See for example \link
-	fcppt::bit::shifted_mask\endlink and \link
-	fcppt::bit::test\endlink.</li>
+	safer and less tedious. See for example #fcppt::bit::shifted_mask and #fcppt::bit::test.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::find_opt\endlink which returns a
+	<li>Added #fcppt::container::find_opt which returns a
 	reference to <code> value_type</code> instead of
 	<code>mapped_type</code>.</li>
 	</ul>
@@ -1952,14 +1947,13 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::int_range\endlink and \link
-	fcppt::math::int_range_count\endlink.</li>
+	<li>Added #fcppt::math::int_range and #fcppt::math::int_range_count.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathmatrix
 	<ul>
-	<li>Added \link fcppt::math::matrix::init\endlink.</li>
+	<li>Added #fcppt::math::matrix::init.</li>
 	<li>Added <code>fcppt::math::matrix::at_c</code>.</li>
 	<li>Added <code>
 	fcppt::math::matrix::delete_row_and_column_static</code>.</li>
@@ -1982,7 +1976,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::expect\endlink which fails a stream if it
+	<li>Added #fcppt::io::expect which fails a stream if it
 	cannot read the expected value.</li>
 	</ul>
 </li>
@@ -1995,14 +1989,14 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptsignal
 	<ul>
-	<li>Added \link fcppt::signal::optional_auto_connection\endlink
+	<li>Added #fcppt::signal::optional_auto_connection
 	typedef.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::variadic\endlink.</li>
+	<li>Added #fcppt::variant::variadic.</li>
 	</ul>
 </li>
 
@@ -2012,8 +2006,8 @@ C++11 library that has no dependencies itself.</li>
 	<code>decltype</code> of an expression and also uses it. This is useful
 	in polymorphic lambdas where the argument is only used for its
 	type.</li>
-	<li>Added \link fcppt::tag_type\endlink which extracts the type of an
-	\link fcppt::tag\endlink.</li>
+	<li>Added #fcppt::tag_type which extracts the type of an
+	#fcppt::tag.</li>
 	<li>Added <code>fcppt::tag_value</code> to extract a
 	default-constructed value of a tag, which is useful for integral
 	constants.</li>
@@ -2027,10 +2021,9 @@ C++11 library that has no dependencies itself.</li>
 <ul>
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>\link fcppt::algorithm::sequence_iteration\endlink, \link
-	fcppt::algorithm::map_iteration\endlink and \link
-	fcppt::algorithm::map_iteration_second\endlink now expect their
-	function to return \link fcppt::algorithm::update_action\endlink
+	<li>#fcppt::algorithm::sequence_iteration, #fcppt::algorithm::map_iteration and
+	#fcppt::algorithm::map_iteration_second now expect their
+	function to return #fcppt::algorithm::update_action
 	instead of a bool.</li>
 	<li>Renamed <code>%fcppt::algorithm::array_fold_static</code> to
 	<code>%fcppt::algorithm::array_init</code>,
@@ -2043,14 +2036,13 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Renamed <code>fcppt::container::find_opt</code> to \link
-	fcppt::container::find_opt_mapped\endlink.</li>
+	<li>Renamed <code>fcppt::container::find_opt</code> to #fcppt::container::find_opt_mapped.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainerbitfield
 	<ul>
-	<li>Simplified \link fcppt::container::bitfield::object\endlink by
+	<li>Simplified #fcppt::container::bitfield::object by
 	removing iterator-based functions, <code>operator bool</code>,
 	<code>swap</code> and <code>clear</code>.</li>
 	<li>Moved comparison operators into
@@ -2062,7 +2054,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainertree
 	<ul>
-	<li>Made \link fcppt::container::tree::child_position\endlink a free
+	<li>Made #fcppt::container::tree::child_position a free
 	function and made its implementation safer.</li>
 	</ul>
 </li>
@@ -2076,7 +2068,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Use \link fcppt::math::size_type\endlink directly for static sizes,
+	<li>Use #fcppt::math::size_type directly for static sizes,
 	instead of <code>std::integral_constant</code>. This greatly simplifies
 	matching of template arguments.</li>
 	</ul>
@@ -2084,59 +2076,51 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptmathbox
 	<ul>
-	<li>\link fcppt::math::box::object\endlink now uses a
+	<li>#fcppt::math::box::object now uses a
 	<code>(pos,max)</code> representation instead of
 	<code>(pos,dim)</code>. This greatly simplifies a lot of algorithms on
 	boxes. It also changes the interface slightly.</li>
-	<li>Added \link fcppt::math::box::init_dim\endlink and \link
-	fcppt::math::box::init_max\endlink to replace the former
+	<li>Added #fcppt::math::box::init_dim and #fcppt::math::box::init_max to replace the former
 	<code>fcppt::math::box::init</code>.</li>
-	<li>Moved <code>null</code> of \link fcppt::math::box::object\endlink
-	to \link fcppt::math::box::null\endlink.</li>
+	<li>Moved <code>null</code> of #fcppt::math::box::object
+	to #fcppt::math::box::null.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathdim
 	<ul>
-	<li>Use variadic constructors for \link
-	fcppt::math::dim::object\endlink.</li>
-	<li>Moved <code>null</code> of \link fcppt::math::dim::object\endlink
-	to \link fcppt::math::dim::null\endlink.</li>
+	<li>Use variadic constructors for #fcppt::math::dim::object.</li>
+	<li>Moved <code>null</code> of #fcppt::math::dim::object
+	to #fcppt::math::dim::null.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathmatrix
 	<ul>
-	<li>Use variadic constructors for \link
-	fcppt::math::matrix::object\endlink which takes a parameter pack of
-	\link fcppt::math::matrix::row\endlink.</li>
-	<li>Moved <code>identity</code> of \link
-	fcppt::math::matrix::object\endlink to \link
-	fcppt::math::matrix::identity\endlink.</li>
+	<li>Use variadic constructors for #fcppt::math::matrix::object which takes a parameter pack of
+	#fcppt::math::matrix::row.</li>
+	<li>Moved <code>identity</code> of #fcppt::math::matrix::object to #fcppt::math::matrix::identity.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathsphere
 	<ul>
-	<li>Moved comparison operators of \link
-	fcppt::math::sphere::object\endlink to
+	<li>Moved comparison operators of #fcppt::math::sphere::object to
 	<code>fcppt/math/sphere/comparison.hpp</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathvector
 	<ul>
-	<li>Use variadic constructors for \link
-	fcppt::math::vector::object\endlink.</li>
-	<li>Moved <code>null</code> of \link fcppt::math::vector::object\endlink
-	to \link fcppt::math::vector::null\endlink.</li>
+	<li>Use variadic constructors for #fcppt::math::vector::object.</li>
+	<li>Moved <code>null</code> of #fcppt::math::vector::object
+	to #fcppt::math::vector::null.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptsmartptr
 	<ul>
-	<li>Renamed <code>fcppt::make_unique_ptr_fcppt</code> to \link
-	fcppt::make_unique_ptr\endlink.</li>
+	<li>Renamed <code>fcppt::make_unique_ptr_fcppt</code> to #fcppt::make_unique_ptr.</li>
 	</ul>
 </li>
 
@@ -2171,9 +2155,9 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptcontainergrid
 	<ul>
 	<li>Removed <code>fcppt::container::grid::object::at</code> in favor of
-	\link fcppt::container::grid::at_optional\endlink.</li>
+	#fcppt::container::grid::at_optional.</li>
 	<li>Removed <code>fcppt::container::grid::is_square</code> which is
-	covered by \link fcppt::math::dim::is_quadratic\endlink.</li>
+	covered by #fcppt::math::dim::is_quadratic.</li>
 	<li>Removed <code>fcppt::container::grid::iterator_position</code>
 	which was unused and probably broken.</li>
 	</ul>
@@ -2235,7 +2219,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptvariant
 	<ul>
 	<li>Removed <code>fcppt::variant::object::get_exn</code>. Use the free
-	function \link fcppt::variant::get_exn\endlink instead.</li>
+	function #fcppt::variant::get_exn instead.</li>
 	</ul>
 </li>
 

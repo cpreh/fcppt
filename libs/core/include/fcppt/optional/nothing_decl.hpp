@@ -19,7 +19,7 @@ namespace optional
 /**
 \brief A polymorphic empty optional
 
-Objects of this class implicitly convert into empty \link fcppt::optional::object\endlink.
+Objects of this class implicitly convert into empty #fcppt::optional::object.
 
 \ingroup fcpptoptional
 */

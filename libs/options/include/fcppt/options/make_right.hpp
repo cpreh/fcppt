@@ -20,7 +20,7 @@ namespace options
 {
 
 /**
-\brief Creates an \link fcppt::options::right\endlink.
+\brief Creates an #fcppt::options::right.
 
 \ingroup fcpptoptions
 */

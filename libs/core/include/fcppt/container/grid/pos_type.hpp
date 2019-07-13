@@ -22,7 +22,7 @@ namespace grid
 
 \ingroup fcpptcontainergrid
 
-\tparam Grid Must be an \link fcppt::container::grid::object\endlink.
+\tparam Grid Must be an #fcppt::container::grid::object.
 */
 template<
 	typename Grid

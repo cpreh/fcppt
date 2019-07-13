@@ -28,8 +28,8 @@ namespace record
 
 \ingroup fcpptrecord
 
-\tparam Record1 Must be an \link fcppt::record::object\endlink that is disjoint from \a Record2.
-\tparam Record2 Must be an \link fcppt::record::object\endlink that is disjoint from \a Record1.
+\tparam Record1 Must be an #fcppt::record::object that is disjoint from \a Record2.
+\tparam Record2 Must be an #fcppt::record::object that is disjoint from \a Record1.
 */
 template<
 	typename Record1,

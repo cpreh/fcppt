@@ -46,16 +46,13 @@ yield <code>D<T></code>. An isomorphism between <code>T</code> and
 such that their compositions are the identity.
 How they are implemented exactly can vary for every <code>D</code>
 significantly.
-In fcppt, these two functions are implemented as a specialization of \link
-fcppt::type_iso::transform\endlink. A specialization needs to contain the two
+In fcppt, these two functions are implemented as a specialization of #fcppt::type_iso::transform. A specialization needs to contain the two
 aforementioned functions along with the typedefs <code>decorated_type</code>
 and <code>undecorated_type</code>.
 
 In general, multiple type constructors can be applied one by one to yield:
 <code>D_1<...D_n<T>...></code>. The lifted functions that decorate and
-undecorate between this type and <code>T</code> are called \link
-fcppt::type_iso::decorate\endlink and \link
-fcppt::type_iso::undecorate\endlink.
+undecorate between this type and <code>T</code> are called #fcppt::type_iso::decorate and #fcppt::type_iso::undecorate.
 
 \section typeiso_example Example
 
@@ -74,19 +71,19 @@ The next example shows how to implement a type decoration:
 </tr>
 <tr>
 <td><code>decorate.hpp</code></td>
-<td>Contains \link fcppt::type_iso::decorate\endlink.</td>
+<td>Contains #fcppt::type_iso::decorate.</td>
 </tr>
 <tr>
 <td><code>undecorate.hpp</code></td>
-<td>Contains \link fcppt::type_iso::undecorate\endlink.</td>
+<td>Contains #fcppt::type_iso::undecorate.</td>
 </tr>
 <tr>
 <td><code>undecorated_type.hpp</code></td>
-<td>Contains the \link fcppt::type_iso::undecorated_type\endlink typedef.</td>
+<td>Contains the #fcppt::type_iso::undecorated_type typedef.</td>
 </tr>
 <tr>
 <td><code>transform_fwd.hpp</code></td>
-<td>Contains the forward declaration of \link fcppt::type_iso::transform\endlink.</td>
+<td>Contains the forward declaration of #fcppt::type_iso::transform.</td>
 </tr>
 <tr>
 <td><code>strong_typedef.hpp</code></td>

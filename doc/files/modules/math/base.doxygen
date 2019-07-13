@@ -62,7 +62,7 @@ normal vector that owns its elements, <code>S</code> can be
 
 \snippet math/vector.cpp vector2f
 
-This is exactly what \link fcppt::math::vector::static_\endlink does.
+This is exactly what #fcppt::math::vector::static_ does.
 
 \snippet math/vector.cpp vector2f_short
 
@@ -74,7 +74,7 @@ matrix, we could use <code>S=T*</code> instead.
 Vector and dim are initialized in the same way: An
 <code>fcppt::math::vector::object<T,N,S></code> can be initialized by either:
 <ul>
-<li>\link fcppt::no_init\endlink,</li>
+<li>#fcppt::no_init,</li>
 <li><code>N</code> values of type <code>T</code>,</li>
 <li>or a value of type <code>S</code>.</li>
 </ul>

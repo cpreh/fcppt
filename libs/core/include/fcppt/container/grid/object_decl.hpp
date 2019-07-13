@@ -27,11 +27,11 @@ namespace grid
 {
 
 /**
-\brief A simple n dimensional array
+\brief An n-dimensional array.
 
 \ingroup fcpptcontainergrid
 
-See the \link fcpptcontainergrid module description \endlink for more information.
+See \ref fcpptcontainergrid for more information.
 */
 template<
 	typename T,
@@ -160,9 +160,9 @@ public:
 	);
 
 	/**
-	\brief Initialize the grid from a sequence of \link fcppt::container::grid::static_row_type\endlink.
+	\brief Initialize the grid from a sequence of #fcppt::container::grid::static_row_type.
 
-	Use \link fcppt::container::grid::static_row\endlink to create a grid row.
+	Use #fcppt::container::grid::static_row to create a grid row.
 	For example, calling this constructro with <code>static_row(1,2,3),static_row(4,5,6)</code>
 	will yields a grid of size <code>3x2</code>.
 

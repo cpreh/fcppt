@@ -40,7 +40,7 @@ consisting of <code>R</code> rows and <code>C</code> columns.
 
 \tparam S The matrix's storage type
 
-See the \link fcpptmathmatrix module documentation \endlink for more information.
+See \ref fcpptmathmatrix for more information.
 */
 template<
 	typename T,
@@ -182,9 +182,8 @@ public:
 	/**
 	\brief Constructs a matrix from <code>R</code> rows
 
-	Constructs a matrix by using <code>R</code> arguments of type \link
-	fcppt::math::matrix::object::row_type\endlink. You can use
-	\link fcppt::math::matrix::row\endlink to create them.
+	Constructs a matrix by using <code>R</code> arguments of type #fcppt::math::matrix::object::row_type.
+	You can use #fcppt::math::matrix::row to create them.
 	*/
 	template<
 		typename ...Args

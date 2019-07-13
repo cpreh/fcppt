@@ -38,9 +38,8 @@ namespace grid
 
 \ingroup fcpptcontainergrid
 
-With \link fcppt::container::grid::object grid::object \endlink alone, you can
-only access values at discrete points (since the \link
-fcppt::container::grid::object::dim object::dim \endlink type used to specify
+With #fcppt::container::grid::object grid::object  alone, you can
+only access values at discrete points (since the #fcppt::container::grid::object::dim object::dim type used to specify
 positions has an integral <code>value_type</code>).
 
 Sometimes, however, you want to take a value in between the grid nodes. Think
@@ -51,7 +50,7 @@ and it works in all dimensions.
 To interpolate, you specify the \p _grid, the \p _floating_point_position and an
 \p _interpolator. The latter will determine what kind of interpolation is used
 (linear, trigonometric, ...). You can choose one of the functions in
-fcppt::math::interpolation or you can write your own interpolator function.
+#fcppt::math::interpolation or you can write your own interpolator function.
 
 Here's an example:
 

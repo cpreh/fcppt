@@ -34,8 +34,7 @@ namespace raw_vector
 
 \tparam A The allocator type.
 
-See the \link fcpptcontainerraw_vector module documentation \endlink for more
-information.
+See \ref fcpptcontainerraw_vector for more information.
 */
 template<
 	typename T,

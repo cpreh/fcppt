@@ -17,7 +17,7 @@ namespace fcppt
 {
 
 /**
-\brief Tests if a type is an \link fcppt::reference\endlink.
+\brief Tests if a type is an #fcppt::reference.
 
 \ingroup fcpptref
 */

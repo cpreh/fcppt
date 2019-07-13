@@ -16,7 +16,7 @@ namespace either
 {
 
 /**
-\brief The type that represents no error in an \link fcppt::either::error\endlink.
+\brief The type that represents no error in an #fcppt::either::error.
 
 \ingroup fcppteither
 */

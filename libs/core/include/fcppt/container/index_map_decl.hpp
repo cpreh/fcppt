@@ -26,7 +26,7 @@ namespace container
 
 This container is a wrapper around a vector that grows on demand. If the
 container is accessed with an out-of-bounds index, it inserts a new element
-first. This is most useful with \link fcppt::optional::object\endlink.
+first. This is most useful with #fcppt::optional::object.
 
 \tparam T The element type.
 

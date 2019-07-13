@@ -31,7 +31,7 @@ namespace buffer
 
 \tparam A The allocator type.
 
-See the \link fcpptcontainerbuffer module documentation \endlink for more information.
+See \ref fcpptcontainerbuffer for more information.
 */
 template<
 	typename T,

@@ -24,7 +24,7 @@ namespace cast
 
 Converts \a _source to an integer. The function ensures that only signed
 integers can be used as destination types. If you need to cast to unsigned
-integers, use \link fcppt::cast::to_unsigned \endlink in addition. This cast is
+integers, use #fcppt::cast::to_unsigned  in addition. This cast is
 unsafe and should be used with care.
 
 \tparam Source Must be a floating point type

@@ -21,8 +21,7 @@ namespace fcppt
 
 \ingroup fcpptboost
 
-See the \link fcpptstring string module description \endlink for more
-information about fcppt::char_type.
+See \ref fcpptstring for more information about #fcppt::char_type.
 */
 typedef
 boost::basic_format<

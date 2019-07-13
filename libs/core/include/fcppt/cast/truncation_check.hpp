@@ -30,7 +30,7 @@ namespace cast
 
 Casts \a _source of type \a Source to the type \a Dest. It returns the
 converted value iff the conversion results in no truncation, otherwise
-\link fcppt::cast::bad_truncation_check \endlink is thrown.
+#fcppt::cast::bad_truncation_check  is thrown.
 
 \tparam Dest Must be an integral type
 

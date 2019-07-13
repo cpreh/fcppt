@@ -18,8 +18,8 @@ Consider the following example, where we avoid partial functions:
 
 \snippet main.cpp print_at_2
 
-The \link fcppt::container::at_optional\endlink function returns an optional reference
-into the container, which the \link fcppt::optional::maybe\endlink function uses to either
+The #fcppt::container::at_optional function returns an optional reference
+into the container, which the #fcppt::optional::maybe function uses to either
 print the value or print that no element at position <code>2</code> exists.
 Notice we do not ask explicitly if the optional has a value or dereference it
 (which can crash if the value is null).
@@ -29,14 +29,14 @@ to loop over but also how the result is formed. What to loop over is best expres
 using ranges, while forming the result can be expressed using
 special algorithms. A very common operation is mapping one container into another.
 Here, we want to convert a container of integers into a container of strings by
-using \link fcppt::output_to_std_string\endlink, which converts any type into a string
+using #fcppt::output_to_std_string, which converts any type into a string
 that has an output operator defined:
 
 \snippet main.cpp vec_to_string
 
 Code using a standard loop would allocate an empty vector and then use <code>push_back</code>
 repeatedly. For good performance, it should also call <Code>reserve</code> before
-the first <code>push_back</code>. All of this is nicely encapsulated in \link fcppt::algorithm::map\endlink,
+the first <code>push_back</code>. All of this is nicely encapsulated in #fcppt::algorithm::map,
 so that you only have to focus on how to transform <em>a single element</em> into another.
 
 This also brings us to the next point, which is initialization. It is important to directly
@@ -53,8 +53,8 @@ Notice that the parameter <em>_index</em> is actually an integral constant, whic
 use to access the <code>make_value</code> template.
 
 To force initialization, fcppt also replaces certain standard types with types that have no
-default constructor, for example \link fcppt::unique_ptr\endlink, \link fcppt::function\endlink
-and \link fcppt::variant::object\endlink.
+default constructor, for example #fcppt::unique_ptr, #fcppt::function
+and #fcppt::variant::object.
 
 Following is a list of a few other libraries (for a complete list, see the modules page at the top):
 <ul>
@@ -79,7 +79,7 @@ The documentation is split into the following parts:
 
 <ul>
 	<li>
-		\link fcpptmain Documentation \endlink
+		\link fcpptmain Documentation\endlink
 	</li>
 	<li>
 		\subpage requirements_download_installation

@@ -31,7 +31,7 @@ namespace record
 For every <code>fcppt::record::element<L,T></code> in \a Record,
 <code>_function(get<L>(_record))</code> is stored in the result type.
 
-\tparam Record An \link fcppt::record::object\endlink.
+\tparam Record An #fcppt::record::object.
 
 \tparam Function a polymorphic function that can be called with every type in \a Record.
 

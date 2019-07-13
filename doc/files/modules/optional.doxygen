@@ -59,12 +59,11 @@ by not having the user dereference optionals manually.</li>
 
 \section optional_reference Optional References
 
-Instead of implementing optional references directly, fcppt offers \link
-fcppt::optional::reference\endlink which is a typedef to
+Instead of implementing optional references directly, fcppt offers #fcppt::optional::reference which is a typedef to
 <code>%fcppt::optional::object<fcppt::reference<T>></code>. The reason behind
 this is that code that acts on optionals might make use of references
 itself. For example it is not uncommon to pass the object held by an optional
-to functions like \link fcppt::optional::maybe_void\endlink by (const)
+to functions like #fcppt::optional::maybe_void by (const)
 reference, which can be used to change the object or to pass its address along.
 
 \snippet optional.cpp optional_reference
@@ -75,25 +74,25 @@ along has different semantics.
 
 \snippet optional.cpp optional_reference_2
 
-Using \link fcppt::reference\endlink for optional references clearly
+Using #fcppt::reference for optional references clearly
 distinguishes these two cases.
 
 \section optional_operations Common Operations
 
-\link fcppt::optional::maybe\endlink is the most basic function that operates
+#fcppt::optional::maybe is the most basic function that operates
 on optionals.
 
-\link fcppt::optional::map\endlink lifts a function to a function
+#fcppt::optional::map lifts a function to a function
 on optionals:
 
 \snippet optional.cpp optional_map
 
-The more general \link fcppt::optional::bind\endlink returns the function's
+The more general #fcppt::optional::bind returns the function's
 result directly:
 
 \snippet optional.cpp optional_bind
 
-Another commonly used function is \link fcppt::optional::from\endlink:
+Another commonly used function is #fcppt::optional::from:
 
 \snippet optional.cpp from_optional
 
@@ -106,15 +105,15 @@ Another commonly used function is \link fcppt::optional::from\endlink:
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::optional::object optional's \endlink declaration.</td>
+<td>Contains #fcppt::optional::object optional's  declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::optional::object optional's \endlink definition.</td>
+<td>Contains #fcppt::optional::object optional's  definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::optional::object optional's \endlink member functions.</td>
+<td>Contains the definition of #fcppt::optional::object optional's  member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
@@ -122,27 +121,27 @@ Another commonly used function is \link fcppt::optional::from\endlink:
 </tr>
 <tr>
 <td><code>alternative.hpp</code></td>
-<td>Contains \link fcppt::optional::alternative \endlink.</td>
+<td>Contains #fcppt::optional::alternative .</td>
 </tr>
 <tr>
 <td><code>apply.hpp</code></td>
-<td>Contains \link fcppt::optional::apply \endlink.</td>
+<td>Contains #fcppt::optional::apply .</td>
 </tr>
 <tr>
 <td><code>assign.hpp</code></td>
-<td>Contains \link fcppt::optional::assign \endlink.</td>
+<td>Contains #fcppt::optional::assign .</td>
 </tr>
 <tr>
 <td><code>bind.hpp</code></td>
-<td>Contains \link fcppt::optional::bind \endlink.</td>
+<td>Contains #fcppt::optional::bind .</td>
 </tr>
 <tr>
 <td><code>cat.hpp</code></td>
-<td>Contains \link fcppt::optional::cat \endlink.</td>
+<td>Contains #fcppt::optional::cat .</td>
 </tr>
 <tr>
 <td><code>combine.hpp</code></td>
-<td>Contains \link fcppt::optional::combine \endlink.</td>
+<td>Contains #fcppt::optional::combine .</td>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
@@ -150,59 +149,59 @@ Another commonly used function is \link fcppt::optional::from\endlink:
 </tr>
 <tr>
 <td><code>const_cast.hpp</code></td>
-<td>Contains \link fcppt::optional::const_cast_ \endlink.</td>
+<td>Contains #fcppt::optional::const_cast_ .</td>
 </tr>
 <tr>
 <td><code>copy_value.hpp</code></td>
-<td>Contains \link fcppt::optional::copy_value \endlink.</td>
+<td>Contains #fcppt::optional::copy_value .</td>
 </tr>
 <tr>
 <td><code>deref.hpp</code></td>
-<td>Contains \link fcppt::optional::deref \endlink.</td>
+<td>Contains #fcppt::optional::deref .</td>
 </tr>
 <tr>
 <td><code>dynamic_cast.hpp</code></td>
-<td>Contains \link fcppt::optional::dynamic_cast_ \endlink.</td>
+<td>Contains #fcppt::optional::dynamic_cast_ .</td>
 </tr>
 <tr>
 <td><code>filter.hpp</code></td>
-<td>Contains \link fcppt::optional::filter \endlink.</td>
+<td>Contains #fcppt::optional::filter .</td>
 </tr>
 <tr>
 <td><code>from.hpp</code></td>
-<td>Contains \link fcppt::optional::from \endlink.</td>
+<td>Contains #fcppt::optional::from .</td>
 </tr>
 <tr>
 <td><code>from_pointer.hpp</code></td>
-<td>Contains \link fcppt::optional::from_pointer \endlink.</td>
+<td>Contains #fcppt::optional::from_pointer .</td>
 </tr>
 <tr>
 <td><code>join.hpp</code></td>
-<td>Contains \link fcppt::optional::join \endlink.</td>
+<td>Contains #fcppt::optional::join .</td>
 </tr>
 <tr>
 <td><code>make.hpp</code></td>
-<td>Contains \link fcppt::optional::make \endlink.</td>
+<td>Contains #fcppt::optional::make .</td>
 </tr>
 <tr>
 <td><code>map.hpp</code></td>
-<td>Contains \link fcppt::optional::map \endlink.</td>
+<td>Contains #fcppt::optional::map .</td>
 </tr>
 <tr>
 <td><code>maybe.hpp</code></td>
-<td>Contains \link fcppt::optional::maybe \endlink.</td>
+<td>Contains #fcppt::optional::maybe .</td>
 </tr>
 <tr>
 <td><code>maybe_multi.hpp</code></td>
-<td>Contains \link fcppt::optional::maybe_multi \endlink.</td>
+<td>Contains #fcppt::optional::maybe_multi .</td>
 </tr>
 <tr>
 <td><code>maybe_void.hpp</code></td>
-<td>Contains \link fcppt::optional::maybe_void \endlink.</td>
+<td>Contains #fcppt::optional::maybe_void .</td>
 </tr>
 <tr>
 <td><code>maybe_void_multi.hpp</code></td>
-<td>Contains \link fcppt::optional::maybe_void_multi \endlink.</td>
+<td>Contains #fcppt::optional::maybe_void_multi .</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
@@ -210,7 +209,7 @@ Another commonly used function is \link fcppt::optional::from\endlink:
 </tr>
 <tr>
 <td><code>reference_fwd.hpp</code></td>
-<td>Contains the \link fcppt::optional::reference \endlink typedef.</td>
+<td>Contains the #fcppt::optional::reference  typedef.</td>
 </tr>
 <tr>
 <td><code>reference.hpp</code></td>
@@ -218,15 +217,15 @@ Another commonly used function is \link fcppt::optional::from\endlink:
 </tr>
 <tr>
 <td><code>sequence.hpp</code></td>
-<td>Contains \link fcppt::optional::sequence \endlink.</td>
+<td>Contains #fcppt::optional::sequence .</td>
 </tr>
 <tr>
 <td><code>static_cast.hpp</code></td>
-<td>Contains \link fcppt::optional::static_cast_ \endlink.</td>
+<td>Contains #fcppt::optional::static_cast_ .</td>
 </tr>
 <tr>
 <td><code>to_exception.hpp</code></td>
-<td>Contains \link fcppt::optional::to_exception \endlink.</td>
+<td>Contains #fcppt::optional::to_exception .</td>
 </tr>
 </table>
 */

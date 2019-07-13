@@ -26,7 +26,7 @@ optional on failure
 
 \ingroup fcpptcasts
 
-This cast is the same as \link fcppt::cast::dynamic \endlink but only works
+This cast is the same as #fcppt::cast::dynamic  but only works
 on unrelated types.
 
 Here is an example:
@@ -37,7 +37,7 @@ Here is an example:
 
 \tparam Src A cv-qualified non-reference type.
 
-\see \link fcppt::cast::dynamic \endlink
+\see #fcppt::cast::dynamic
 */
 template<
 	typename Dest,

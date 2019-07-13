@@ -43,12 +43,12 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 \ingroup fcpptrecord
 
-A record of an MPL sequence \link fcppt::record::element\endlink
+A record of an MPL sequence #fcppt::record::element
 <code>element<L_1,T_1>,...,element<L_n,T_n></code> contains an object
 of type <code>T_i</code>, accessible by <code>L_i</code>,
 for every <code>i = 1,...,n</code>.
 
-\tparam Types An MPL sequence of \link fcppt::record::element\endlink.
+\tparam Types An MPL sequence of #fcppt::record::element.
 */
 template<
 	typename Types
@@ -132,11 +132,10 @@ public:
 
 	The constructor checks that each <code>L_i</code> appears exactly once in \a Args.
 
-	\param _args A parameter pack, obtained by assignment to \link
-	fcppt::record::label\endlink.
+	\param _args A parameter pack, obtained by assignment to #fcppt::record::label.
 
 	\tparam Args Implementation-defined init types, obtained by assignment
-	to \link fcppt::record::label\endlink.
+	to #fcppt::record::label.
 	*/
 	template<
 		typename ...Args,

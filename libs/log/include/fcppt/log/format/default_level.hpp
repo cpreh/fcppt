@@ -25,8 +25,7 @@ namespace format
 \ingroup fcpptlog
 
 Creates a default formatter for a level stream with the level of \a level.
-This formatter prints the level's string in front as obtained by \link
-fcppt::log::level_to_string \endlink. It also appends a newline at the end.
+This formatter prints the level's string in front as obtained by #fcppt::log::level_to_string. It also appends a newline at the end.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function

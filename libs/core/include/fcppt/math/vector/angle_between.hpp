@@ -36,11 +36,11 @@ namespace vector
 The function returns nothing if any of the two vectors have length zero.
 
 If you want to calculate the angle between two vectors whose value type is not
-a floating point type, see \link fcppt::math::vector::angle_between_cast \endlink.
+a floating point type, see #fcppt::math::vector::angle_between_cast .
 
 If you want to calculate the signed angle between two 2D vectors, use
-\link fcppt::math::vector::signed_angle_between \endlink or
-\link fcppt::math::vector::signed_angle_between_cast \endlink.
+#fcppt::math::vector::signed_angle_between  or
+#fcppt::math::vector::signed_angle_between_cast .
 
 \see fcppt::math::vector::angle_between_cast
 \see fcppt::math::vector::signed_angle_between

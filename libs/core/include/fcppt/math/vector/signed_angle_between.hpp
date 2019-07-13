@@ -28,15 +28,15 @@ namespace vector
 
 \ingroup fcpptmathvector
 
-Uses \link fcppt::math::vector::atan2\endlink on the difference between the two
+Uses #fcppt::math::vector::atan2 on the difference between the two
 vectors. In case this fails, nothing is returned.
 
 If you want to calculate the angle between two vectors whose value type is not
-a floating-point type, see \link fcppt::math::vector::signed_angle_between_cast\endlink.
+a floating-point type, see #fcppt::math::vector::signed_angle_between_cast.
 
 If you want to calculate the (unsigned) angle between two vectors of higher
-dimensions, use \link fcppt::math::vector::angle_between\endlink or
-\link fcppt::math::vector::angle_between_cast\endlink.
+dimensions, use #fcppt::math::vector::angle_between or
+#fcppt::math::vector::angle_between_cast.
 
 \see fcppt::math::vector::signed_angle_between_cast
 \see fcppt::math::vector::angle_between

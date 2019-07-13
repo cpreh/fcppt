@@ -56,7 +56,7 @@ Consider a variant of an int and a string, for which we provide a print function
 \snippet variant/motivation.cpp variant_example
 
 Notice that we do not query which type the variant holds. Instead, we make use
-of \link fcppt::variant::match\endlink and write out all cases explicitly.
+of #fcppt::variant::match and write out all cases explicitly.
 
 \section variant_visitation Visitation
 
@@ -90,13 +90,13 @@ also supported.
 Visitation and matching are the most common ways to access a variant. The
 other ways are:
 <ul>
-<li>\link fcppt::variant::get_exn\endlink which throws an exception
+<li>#fcppt::variant::get_exn which throws an exception
 if the variant does not hold the queried type.</li>
-<li>\link fcppt::variant::get_unsafe\endlink which does not check if the
+<li>#fcppt::variant::get_unsafe which does not check if the
 variant actually holds the queried type. It is comparable to
 <code>static_cast</code> to a derived class.</li>
-<li>\link fcppt::variant::to_optional\endlink returns an optional to
-the queried type. Similarly, \link fcppt::variant::to_optional_ref\endlink returns
+<li>#fcppt::variant::to_optional returns an optional to
+the queried type. Similarly, #fcppt::variant::to_optional_ref returns
 an optional reference.</li>
 </ul>
 
@@ -106,14 +106,14 @@ While the design of <code>fcppt::variant</code> is similar to
 <code>std::variant</code>, there are some key differences:
 
 <ul>
-<li>\link fcppt::variant::object\endlink does not provide a default constructor.
+<li>#fcppt::variant::object does not provide a default constructor.
 <code>std::variant</code> default constructs the first type of all possible
 types instead, which does not make any sense.</li>
-<li>\link fcppt::variant::object\endlink's constructor is explicit.</li>
-<li>\link fcppt::variant::object\endlink does not allow any implicit conversions in its
+<li>#fcppt::variant::object's constructor is explicit.</li>
+<li>#fcppt::variant::object does not allow any implicit conversions in its
 constructors.</li>
-<li>\link fcppt::variant::object\endlink uses a <code>brigand::list</code> instead of
-variadic template parameters. There is also \link fcppt::variant::variadic\endlink
+<li>#fcppt::variant::object uses a <code>brigand::list</code> instead of
+variadic template parameters. There is also #fcppt::variant::variadic
 which does the latter.</li>
 </ul>
 
@@ -125,15 +125,15 @@ which does the latter.</li>
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::variant::object variants's \endlink declaration.</td>
+<td>Contains #fcppt::variant::object variants's  declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::variant::object variant's \endlink definition.</td>
+<td>Contains #fcppt::variant::object variant's  definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::variant::object variants's \endlink member functions.</td>
+<td>Contains the definition of #fcppt::variant::object variants's  member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
@@ -141,11 +141,11 @@ which does the latter.</li>
 </tr>
 <tr>
 <td><code>apply.hpp</code></td>
-<td>Contains \link fcppt::variant::apply \endlink.</td>
+<td>Contains #fcppt::variant::apply .</td>
 </tr>
 <tr>
 <td><code>compare.hpp</code></td>
-<td>Contains \link fcppt::variant::compare \endlink.</td>
+<td>Contains #fcppt::variant::compare .</td>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
@@ -153,32 +153,32 @@ which does the latter.</li>
 </tr>
 <tr>
 <td><code>exception.hpp</code></td>
-<td>Contains \link fcppt::variant::exception \endlink, the base class for every
+<td>Contains #fcppt::variant::exception , the base class for every
 variant exception.</td>
 </tr>
 <tr>
 <td><code>get_exn.hpp</code></td>
-<td>Contains \link fcppt::variant::get_exn \endlink.</td>
+<td>Contains #fcppt::variant::get_exn .</td>
 </tr>
 <tr>
 <td><code>get_unsafe.hpp</code></td>
-<td>Contains \link fcppt::variant::get_unsafe \endlink which does the same
-thing as the \link fcppt::variant::object::get_unsafe\endlink member
+<td>Contains #fcppt::variant::get_unsafe  which does the same
+thing as the #fcppt::variant::object::get_unsafe member
 function.</td>
 </tr>
 <tr>
 <td><code>holds_type.hpp</code></td>
-<td>Contains the \link fcppt::variant::holds_type \endlink function to check if
+<td>Contains the #fcppt::variant::holds_type  function to check if
 a type is held by the variant.</td>
 </tr>
 <tr>
 <td><code>invalid_get.hpp</code></td>
-<td>Contains \link fcppt::variant::invalid_get \endlink, which might be thrown
-by \link fcppt::variant::get_exn \endlink.</td>
+<td>Contains #fcppt::variant::invalid_get , which might be thrown
+by #fcppt::variant::get_exn .</td>
 </tr>
 <tr>
 <td><code>match.hpp</code></td>
-<td>Contains \link fcppt::variant::match\endlink.</td>
+<td>Contains #fcppt::variant::match.</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
@@ -186,23 +186,23 @@ by \link fcppt::variant::get_exn \endlink.</td>
 </tr>
 <tr>
 <td><code>to_optional.hpp</code></td>
-<td>Contains \link fcppt::variant::to_optional\endlink.</td>
+<td>Contains #fcppt::variant::to_optional.</td>
 </tr>
 <tr>
 <td><code>to_optional_ref.hpp</code></td>
-<td>Contains \link fcppt::variant::to_optional_ref\endlink.</td>
+<td>Contains #fcppt::variant::to_optional_ref.</td>
 </tr>
 <tr>
 <td><code>type_info.hpp</code></td>
-<td>Contains \link fcppt::variant::type_info\endlink.</td>
+<td>Contains #fcppt::variant::type_info.</td>
 </tr>
 <tr>
 <td><code>variadic_fwd.hpp</code></td>
-<td>Contains \link fcppt::variant::variadic\endlink and declares \link fcppt::variant::object\endlink.</td>
+<td>Contains #fcppt::variant::variadic and declares #fcppt::variant::object.</td>
 </tr>
 <tr>
 <td><code>variadic.hpp</code></td>
-<td>Includes <code>fcppt/variant/object_fwd.hpp</code> and defines \link fcppt::variant::object\endlink.</td>
+<td>Includes <code>fcppt/variant/object_fwd.hpp</code> and defines #fcppt::variant::object.</td>
 </tr>
 </table>
 */

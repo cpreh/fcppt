@@ -26,7 +26,7 @@ namespace grid
 {
 
 /**
-\brief Creates an \link fcppt::container::grid::static_row_type\endlink.
+\brief Creates an #fcppt::container::grid::static_row_type.
 
 \ingroup fcpptcontainergrid
 */

@@ -18,7 +18,7 @@ namespace grid
 {
 
 /**
-\brief Checks if a type is an \link fcppt::container::grid::static_row\endlink.
+\brief Checks if a type is an #fcppt::container::grid::static_row.
 
 \ingroup fcpptcontainergrid
 */

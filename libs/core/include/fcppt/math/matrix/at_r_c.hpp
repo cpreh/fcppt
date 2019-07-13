@@ -29,7 +29,7 @@ namespace matrix
 
 \ingroup fcpptmathmatrix
 
-\tparam Matrix Must be an \link fcppt::math::matrix::object\endlink.
+\tparam Matrix Must be an #fcppt::math::matrix::object.
 
 \tparam R The index of the row
 \tparam C The index of the column

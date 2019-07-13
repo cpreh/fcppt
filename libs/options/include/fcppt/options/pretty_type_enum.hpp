@@ -22,7 +22,7 @@ namespace options
 {
 
 /**
-\brief Specialization for enums that uses \link fcppt::enum_::names\endlink.
+\brief Specialization for enums that uses #fcppt::enum_::names.
 
 \ingroup fcpptoptions
 */

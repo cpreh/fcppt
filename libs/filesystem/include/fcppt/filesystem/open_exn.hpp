@@ -32,7 +32,7 @@ Tries to open \a _path with \a _openmode and throw an exception on failure.
 
 \tparam Stream Must be a std::{basic_ifstream,basic_ofstream,basic_fstream}.
 
-\tparam Exception Must be constructible from \link fcppt::string\endlink.
+\tparam Exception Must be constructible from #fcppt::string.
 */
 template<
 	typename Stream,

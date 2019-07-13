@@ -9,7 +9,7 @@ that write into a buffer handed to them, e.g. when reading from a file. If you n
 dynamically sized array instead, you could use a <code>std::%vector</code>.
 However, <code>std::%vector</code> default-initializes its values.
 
-\link fcppt::container::buffer::object\endlink instead manages a partially uninitialized
+#fcppt::container::buffer::object instead manages a partially uninitialized
 block of memory: It contains
 <ul>
 <li>a <em>write area</em>, which is uninitialized, and</li>
@@ -24,7 +24,7 @@ has, we increase the read area size appropriately.
 
 \snippet container/buffer.cpp buffer
 
-A buffer can be converted into an \link fcppt::container::raw_vector::object\endlink
-using \link fcppt::container::buffer::to_raw_vector\endlink. A raw vector acts more
+A buffer can be converted into an #fcppt::container::raw_vector::object
+using #fcppt::container::buffer::to_raw_vector. A raw vector acts more
 like a standard container and is similar to <code>std::%vector</code>.
 */

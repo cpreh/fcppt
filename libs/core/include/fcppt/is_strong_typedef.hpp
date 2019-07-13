@@ -17,7 +17,7 @@ namespace fcppt
 {
 
 /**
-\brief Tests if a type is an \link fcppt::strong_typedef\endlink.
+\brief Tests if a type is an #fcppt::strong_typedef.
 
 \ingroup fcpptstrongtypedef
 */

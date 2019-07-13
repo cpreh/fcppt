@@ -23,7 +23,7 @@ A record is declared using an MPL sequence of <em>element</em> types.
 
 \ingroup fcpptrecord
 
-\tparam Label Must be an \link fcppt::record::label\endlink.
+\tparam Label Must be an #fcppt::record::label.
 
 \tparam Type The value type of the label.
 */

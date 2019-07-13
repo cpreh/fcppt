@@ -24,7 +24,7 @@ namespace enum_
 
 \ingroup fcpptenum
 
-Uses \link fcppt::enum_::to_string\endlink to output \a _value to \a _stream.
+Uses #fcppt::enum_::to_string to output \a _value to \a _stream.
 This function is useful to implement <code>operator<<</code> for an enum type.
 
 \tparam Enum Must be an enum type

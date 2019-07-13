@@ -21,7 +21,7 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Iterates over \a _sequence, applying \a _update_action to each element. If \a
-_update_action returns \link fcppt::algorithm::update_action::remove\endlink,
+_update_action returns #fcppt::algorithm::update_action::remove,
 the element is removed from the sequence.
 
 \tparam UpdateAction A function callable as

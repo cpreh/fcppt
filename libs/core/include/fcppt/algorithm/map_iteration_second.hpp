@@ -23,9 +23,7 @@ second.
 \ingroup fcpptalgorithm
 
 Iterates over \a _map, applying \a _update_action to the mapped object of each
-element. If \a _update_action returns \link
-fcppt::algorithm::update_action::remove\endlink, the element is removed from
-the map.
+element. If \a _update_action returns #fcppt::algorithm::update_action::remove, the element is removed from the map.
 
 \tparam Map A map-like container.
 

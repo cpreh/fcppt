@@ -40,7 +40,7 @@ If there is no such pair of command-line parameters, then the option will use it
 The result of an option is a record that has a single element with label \a Label and
 type \a Type. In case reading the value into \a Type fails, the parser also fails.
 
-\tparam Label An \link fcppt::record::label\endlink.
+\tparam Label An #fcppt::record::label.
 
 \tparam Type The type of the flag's value.
 */

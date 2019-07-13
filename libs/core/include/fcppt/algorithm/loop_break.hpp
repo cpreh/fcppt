@@ -25,9 +25,8 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Iterates through \a _range, calling \a _body for every element of the range as
-long as \a _function returns \link fcppt::loop::continue_\endlink. The
-implementation for a specific range type is handled by \link
-fcppt::algorithm::loop_break_impl\endlink.
+long as \a _function returns fcppt::loop::continue_. The
+implementation for a specific range type is handled by #fcppt::algorithm::loop_break_impl.
 
 \tparam Body A function callable as <code>fcppt::loop (T)</code> for every type
 <code>T</code> in \a Range

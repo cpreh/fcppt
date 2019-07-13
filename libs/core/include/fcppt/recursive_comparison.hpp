@@ -14,7 +14,7 @@ namespace fcppt
 {
 
 /**
-\brief Compares two \link fcppt::recursive\endlink for equality.
+\brief Compares two #fcppt::recursive for equality.
 
 \ingroup fcpptvarious
 */
@@ -38,7 +38,7 @@ operator==(
 }
 
 /**
-\brief Compares two \link fcppt::recursive\endlink for inequality.
+\brief Compares two #fcppt::recursive for inequality.
 
 \ingroup fcpptvarious
 */

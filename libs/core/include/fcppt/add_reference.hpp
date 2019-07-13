@@ -14,7 +14,7 @@ namespace fcppt
 {
 
 /**
-\brief Metafunction that adds \link fcppt::reference\endlink.
+\brief Metafunction that adds #fcppt::reference.
 
 Transforms <code>T</code> into <code>fcppt::reference<T></code>.
 

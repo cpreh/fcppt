@@ -33,11 +33,11 @@ This, however, only works for the concrete type <code>person</code>. To find a m
 representation, we need to specify which elements a struct has in a generic way. To this end, we first
 of all need to create unique types that represent <em>element names</em> which we
 call <em>labels</em>. Such a label together with a unique tag type is created by
-\link FCPPT_RECORD_MAKE_LABEL\endlink:
+#FCPPT_RECORD_MAKE_LABEL:
 
 \snippet record.cpp record_make_label
 
-A record <em>element</em> is represented by \link fcppt::record::element\endlink. It
+A record <em>element</em> is represented by #fcppt::record::element. It
 gets a label together with a type as its template parameters:
 
 \snippet record.cpp record_elements
@@ -46,7 +46,7 @@ Finally, a <em>record object</em> consists of a Brigand sequence of elements:
 
 \snippet record.cpp record_object
 
-A shorthand, which omits the Brigand sequence, is \link fcppt::record::variadic\endlink.
+A shorthand, which omits the Brigand sequence, is #fcppt::record::variadic.
 
 \snippet record.cpp record_variadic
 
@@ -55,7 +55,7 @@ Before we continue, here is a small example of how to use such a record:
 \snippet record.cpp record_get_set
 
 The initialization syntax is further explained in \ref record_init. The
-functions \link fcppt::record::get\endlink and \link fcppt::record::set\endlink
+functions #fcppt::record::get and #fcppt::record::set
 are used to read and write elements.
 
 To return to our goal of creating a generic output function, we first create a
@@ -65,7 +65,7 @@ element for the given label to a stream:
 \snippet record.cpp record_output_label
 
 Remember that a record is declared by giving it a Brigand sequence of elements. Such
-a Brigand sequence can be used by \link fcppt::algorithm::loop\endlink, which will
+a Brigand sequence can be used by #fcppt::algorithm::loop, which will
 call a function for every type in the sequence. We use this to call <code>print_label</code>
 for every element of the record:
 
@@ -102,7 +102,7 @@ person const test_person{
 };
 \endcode
 
-The second way to initialize a record is via the \link fcppt::record::init\endlink
+The second way to initialize a record is via the #fcppt::record::init
 function. It is a generic function that calls a function for every element of the
 record (from first to last), which can be used to initialize a record in
 a generic way. Assume that we have the values for our record in a stream:
@@ -122,7 +122,7 @@ because of the order they appear in the declaration. So, in the example, <code>a
 Unlike normal labels, there are also labels that take an additional argument. Consider
 a sprite that can have a fixed number of textures <code>t_1,...,t_n</code> which will
 be rendered in order. To create a label that is parameterized, we use
-\link FCPPT_RECORD_MAKE_LABEL_ARG\endlink:
+#FCPPT_RECORD_MAKE_LABEL_ARG:
 
 \snippet record.cpp make_label_arg
 
@@ -150,15 +150,15 @@ Here is an example that shows how such a sprite can be initialized:
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::record::object record's \endlink declaration.</td>
+<td>Contains #fcppt::record::object record's  declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::record::object record's \endlink definition.</td>
+<td>Contains #fcppt::record::object record's  definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::record::object record's \endlink member functions.</td>
+<td>Contains the definition of #fcppt::record::object record's  member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
@@ -170,39 +170,39 @@ Here is an example that shows how such a sprite can be initialized:
 </tr>
 <tr>
 <td><code>element_fwd.hpp</code></td>
-<td>Contains \link fcppt::record::element element's \endlink declaration.</td>
+<td>Contains #fcppt::record::element element's  declaration.</td>
 </tr>
 <tr>
 <td><code>element.hpp</code></td>
-<td>Contains \link fcppt::record::element element's \endlink definition.</td>
+<td>Contains #fcppt::record::element element's  definition.</td>
 </tr>
 <tr>
 <td><code>element_to_label.hpp</code></td>
-<td>Contains \link fcppt::record::element_to_label\endlink.</td>
+<td>Contains #fcppt::record::element_to_label.</td>
 </tr>
 <tr>
 <td><code>element_to_type.hpp</code></td>
-<td>Contains \link fcppt::record::element_to_type\endlink.</td>
+<td>Contains #fcppt::record::element_to_type.</td>
 </tr>
 <tr>
 <td><code>get.hpp</code></td>
-<td>Contains \link fcppt::record::get\endlink.</td>
+<td>Contains #fcppt::record::get.</td>
 </tr>
 <tr>
 <td><code>init.hpp</code></td>
-<td>Contains \link fcppt::record::init\endlink.</td>
+<td>Contains #fcppt::record::init.</td>
 </tr>
 <tr>
 <td><code>label_fwd.hpp</code></td>
-<td>Contains \link fcppt::record::label label's \endlink declaration.</td>
+<td>Contains #fcppt::record::label label's  declaration.</td>
 </tr>
 <tr>
 <td><code>label_decl.hpp</code></td>
-<td>Contains \link fcppt::record::label label's \endlink definition.</td>
+<td>Contains #fcppt::record::label label's  definition.</td>
 </tr>
 <tr>
 <td><code>label_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::record::label label's \endlink member functions.</td>
+<td>Contains the definition of #fcppt::record::label label's  member functions.</td>
 </tr>
 <tr>
 <td><code>label.hpp</code></td>
@@ -210,15 +210,15 @@ Here is an example that shows how such a sprite can be initialized:
 </tr>
 <tr>
 <td><code>label_name.hpp</code></td>
-<td>Contains \link fcppt::record::label_name\endlink.</td>
+<td>Contains #fcppt::record::label_name.</td>
 </tr>
 <tr>
 <td><code>label_value_type.hpp</code></td>
-<td>Contains \link fcppt::record::label_value_type\endlink.</td>
+<td>Contains #fcppt::record::label_value_type.</td>
 </tr>
 <tr>
 <td><code>make_label_fwd.hpp</code></td>
-<td>Contains \link FCPPT_RECORD_MAKE_LABEL\endlink and includes <code>label_fwd.hpp</code>.</td>
+<td>Contains #FCPPT_RECORD_MAKE_LABEL and includes <code>label_fwd.hpp</code>.</td>
 </tr>
 <tr>
 <td><code>make_label.hpp</code></td>
@@ -226,7 +226,7 @@ Here is an example that shows how such a sprite can be initialized:
 </tr>
 <tr>
 <td><code>make_label_arg_fwd.hpp</code></td>
-<td>Contains \link FCPPT_RECORD_MAKE_LABEL_ARG\endlink and includes <code>label_fwd.hpp</code>.</td>
+<td>Contains #FCPPT_RECORD_MAKE_LABEL_ARG and includes <code>label_fwd.hpp</code>.</td>
 </tr>
 <tr>
 <td><code>make_label_arg.hpp</code></td>
@@ -238,16 +238,16 @@ Here is an example that shows how such a sprite can be initialized:
 </tr>
 <tr>
 <td><code>set.hpp</code></td>
-<td>Contains \link fcppt::record::set\endlink.</td>
+<td>Contains #fcppt::record::set.</td>
 </tr>
 </tr>
 <tr>
 <td><code>variadic_fwd.hpp</code></td>
-<td>Contains \link fcppt::record::variadic\endlink and declares \link fcppt::record::object\endlink.</td>
+<td>Contains #fcppt::record::variadic and declares #fcppt::record::object.</td>
 </tr>
 <tr>
 <td><code>variadic.hpp</code></td>
-<td>Includes <code>fcppt/record/object_fwd.hpp</code> and defines \link fcppt::record::object\endlink.</td>
+<td>Includes <code>fcppt/record/object_fwd.hpp</code> and defines #fcppt::record::object.</td>
 </tr>
 </table>
 */

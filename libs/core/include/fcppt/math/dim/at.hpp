@@ -28,7 +28,7 @@ namespace dim
 
 \ingroup fcpptmathdim
 
-\tparam Dim Must be an \link fcppt::math::dim::object\endlink.
+\tparam Dim Must be an #fcppt::math::dim::object.
 */
 template<
 	fcppt::math::size_type Index,

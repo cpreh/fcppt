@@ -17,8 +17,7 @@ namespace fcppt
 \brief The char_type used for text.
 \ingroup fcpptstring
 
-See the \link fcpptstring string module description \endlink for more
-information.
+See \ref fcpptstring for more information.
 */
 typedef fcppt::detail::char_type char_type;
 

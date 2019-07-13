@@ -23,8 +23,7 @@ namespace log
 \ingroup fcpptlog
 
 Converts the name of a log level given by \a name to its corresponding level
-enumerator. Accepts all strings as parameters that are listed in \link
-fcppt::log::level \endlink
+enumerator. Accepts all strings as parameters that are listed in #fcppt::log::level.
 
 \param name the name of the log level
 */

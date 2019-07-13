@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::vector::object vector::object \endlink and helper functions, classes and types for it
+\brief Contains #fcppt::math::vector::object vector::object  and helper functions, classes and types for it
 */
 namespace vector
 {
@@ -34,8 +34,7 @@ namespace vector
 
 A vector is a one-dimensional statically sized array, useful for representing
 points and directions. For a general introduction on vectors, see \ref
-fcpptmath_classes. For vector's interoperation with \link
-fcppt::math::matrix::object\endlink, see \ref fcpptmathmatrix_operators.
+fcpptmath_classes. For vector's interoperation with #fcppt::math::matrix::object, see \ref fcpptmathmatrix_operators.
 
 \section fcpptmathvector_dim Vector and dim
 
@@ -59,15 +58,15 @@ left-hand side and a dim on the right-hand side. These are defined in
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::vector::object\endlink's declaration.</td>
+<td>Contains #fcppt::math::vector::object's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::vector::object\endlink's definition.</td>
+<td>Contains #fcppt::math::vector::object's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::vector::object\endlink's member functions.</td>
+<td>Contains the definition of #fcppt::math::vector::object's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
@@ -91,7 +90,7 @@ left-hand side and a dim on the right-hand side. These are defined in
 </tr>
 <tr>
 <td><code>dim.hpp</code></td>
-<td>Contains arithmetic operators to interoperate with \link fcppt::math::dim::object\endlink.</td>
+<td>Contains arithmetic operators to interoperate with #fcppt::math::dim::object.</td>
 </tr>
 </table>
 */

@@ -29,7 +29,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-\tparam Label An \link fcppt::record::label\endlink.
+\tparam Label An #fcppt::record::label.
 */
 template<
 	typename Label

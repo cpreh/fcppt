@@ -26,7 +26,7 @@ namespace signal
 \tparam T The signal's function type
 \ingroup fcpptsignal
 
-See the \link fcpptsignal module documentation \endlink for more information.
+See \ref fcpptsignal for more information.
 */
 template<
 	typename T

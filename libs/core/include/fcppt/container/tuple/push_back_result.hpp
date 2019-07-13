@@ -18,7 +18,7 @@ namespace tuple
 {
 
 /**
-\brief The result type of \link fcppt::container::tuple::push_back\endlink.
+\brief The result type of #fcppt::container::tuple::push_back.
 
 \ingroup fcpptcontainertuple
 */

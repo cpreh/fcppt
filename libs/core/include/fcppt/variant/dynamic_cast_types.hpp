@@ -20,7 +20,7 @@ namespace variant
 {
 
 /**
-\brief The variant element types used for \link fcppt::variant::dynamic_cast_\endlink.
+\brief The variant element types used for #fcppt::variant::dynamic_cast_.
 
 \ingroup fcpptvariant
 */

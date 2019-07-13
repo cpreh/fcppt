@@ -42,7 +42,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 \ingroup fcpptoptions
 
 Wraps a parser such that it may fail. The result type is a record that adds one
-layer of \link fcppt::optional::object\endlink to the elements of the result
+layer of #fcppt::optional::object to the elements of the result
 type of \a Parser.
 
 \see fcppt::options::make_optional

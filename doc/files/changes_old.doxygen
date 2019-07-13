@@ -9,8 +9,8 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::find_opt\endlink.</li>
-	<li>Added \link fcppt::algorithm::index_of\endlink and
+	<li>Added #fcppt::algorithm::find_opt.</li>
+	<li>Added #fcppt::algorithm::index_of and
 	<code>%fcppt::algorithm::index_of_enum_array</code>.</li>
 	</ul>
 </li>
@@ -25,7 +25,7 @@
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::function\endlink which is a wrapper around
+	<li>Added #fcppt::function which is a wrapper around
 	<code>%std::function</code> that cannot be null and has an explicit
 	constructor.</li>
 	</ul>
@@ -39,7 +39,7 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Let \link fcppt::algorithm::find_if_opt\endlink return an optional
+	<li>Let #fcppt::algorithm::find_if_opt return an optional
 	iterator to make it more consistent with the other similar
 	algorithms.</li>
 	</ul>
@@ -47,18 +47,17 @@
 
 <li>\ref fcpptlog
 	<ul>
-	<li>Use \link fcppt::function\endlink for \link
-	fcppt::log::format::function\endlink.</li>
-	<li>Introduced \link fcppt::log::format::optional_function\endlink to
+	<li>Use #fcppt::function for #fcppt::log::format::function.</li>
+	<li>Introduced #fcppt::log::format::optional_function to
 	make it clear where a function can be missing.</li>
-	<li>Changed \link fcppt::log::parameters\endlink to only consist of a
+	<li>Changed #fcppt::log::parameters to only consist of a
 	single class.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptsignal
 	<ul>
-	<li>Use \link fcppt::function\endlink instead of
+	<li>Use #fcppt::function instead of
 	<code>%std::function</code>.</li>
 	<li>Use a strong typedef for the initial value of a signal.</li>
 	</ul>
@@ -72,8 +71,7 @@
 
 <li>\ref fcpptsmartptr
 	<ul>
-	<li>Readded \link FCPPT_ASSERT_COMPLETE\endlink to \link
-	fcppt::default_deleter\endlink.</li>
+	<li>Readded #FCPPT_ASSERT_COMPLETE to #fcppt::default_deleter.</li>
 	</ul>
 </li>
 
@@ -99,36 +97,31 @@ can be omitted from <code>return</code> statements.</li>
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added <code>fcppt::algorithm::set_difference</code>.</li>
-	<li>Added \link fcppt::algorithm::all_of\endlink.</li>
-	<li>Improve <code>reserve</code> optimization in \link
-	fcppt::algorithm::map \endlink by either using <code>%end() -
-	%begin()</code> or <code>%size()</code> of the source range.</li>
+	<li>Added #fcppt::algorithm::all_of.</li>
+	<li>Improve <code>reserve</code> optimization in #fcppt::algorithm::map
+	by either using <code>%end() - %begin()</code> or <code>%size()</code> of the source range.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Added \link fcppt::cast::to_void_ptr\endlink.</li>
+	<li>Added #fcppt::cast::to_void_ptr.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::maybe_front\endlink.</li>
-	<li>Added \link fcppt::container::maybe_back\endlink.</li>
+	<li>Added #fcppt::container::maybe_front.</li>
+	<li>Added #fcppt::container::maybe_back.</li>
 	<li>Added <code>noexcept</code> to move constructors and assignment
-	operators of <code>fcppt::container::raw_vector</code>, \link
-	fcppt::container::tree::object \endlink and \link
-	fcppt::container::grid::object \endlink.
+	operators of <code>fcppt::container::raw_vector</code>, #fcppt::container::tree::object and #fcppt::container::grid::object.
 	</li>
-	<li>Added \link fcppt::container::grid::at_optional\endlink.</li>
-	<li>Added \link fcppt::container::at_optional\endlink.</li>
-	<li>Added \link fcppt::container::grid::pos_range\endlink which is just
+	<li>Added #fcppt::container::grid::at_optional.</li>
+	<li>Added #fcppt::container::at_optional.</li>
+	<li>Added #fcppt::container::grid::pos_range which is just
 	a range over positions without a grid object.</li>
-	<li>Added <code>%size</code> function to \link
-	fcppt::container::grid::pos_ref_range\endlink.</li>
-	<li>Removed default constructor of \link
-	fcppt::container::tree::object\endlink.</li>
+	<li>Added <code>%size</code> function to #fcppt::container::grid::pos_ref_range.</li>
+	<li>Removed default constructor of #fcppt::container::tree::object.</li>
 	</ul>
 </li>
 
@@ -150,13 +143,12 @@ can be omitted from <code>return</code> statements.</li>
 	<ul>
 	<li>Added <code>fcppt::math::at_c</code> that accesses a container
 	using an integral constant as index.</li>
-	<li>Added \link fcppt::math::interval_distance\endlink.</li>
-	<li>Added \link fcppt::math::box::distance\endlink.</li>
-	<li>Added \link fcppt::math::vector::init\endlink,
-	fcppt::math::box::init and \link fcppt::math::dim::init
-	\endlink.</li>
-	<li>Added \link fcppt::math::vector::map\endlink and \link
-	fcppt::math::dim::map\endlink.</li>
+	<li>Added #fcppt::math::interval_distance.</li>
+	<li>Added #fcppt::math::box::distance.</li>
+	<li>Added #fcppt::math::vector::init,
+	fcppt::math::box::init and #fcppt::math::dim::init
+	.</li>
+	<li>Added #fcppt::math::vector::map and #fcppt::math::dim::map.</li>
 	</ul>
 </li>
 
@@ -174,7 +166,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptrandom
 	<ul>
-	<li>Added \link fcppt::random::wrapper::uniform_container\endlink which
+	<li>Added #fcppt::random::wrapper::uniform_container which
 	returns elements from a container using a uniform distribution.
 	</li>
 	<li>Added <code>SeedSeq</code> constructor to random number generators.</li>
@@ -183,11 +175,10 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptsmartptr
 	<ul>
-	<li>Added \link fcppt::unique_ptr\endlink which doesn't provide a
+	<li>Added #fcppt::unique_ptr which doesn't provide a
 	default constructor and is not supposed to hold a <code>nullptr</code>.</li>
-	<li>Added \link fcppt::unique_ptr_to_base\endlink and \link
-	fcppt::unique_ptr_to_const\endlink.</li>
-	<li>Added \link fcppt::default_deleter\endlink.</li>
+	<li>Added #fcppt::unique_ptr_to_base and #fcppt::unique_ptr_to_const.</li>
+	<li>Added #fcppt::default_deleter.</li>
 	</ul>
 </li>
 
@@ -208,7 +199,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::match \endlink function which often
+	<li>Added #fcppt::variant::match  function which often
 	makes code more readable that otherwise would have been written using a
 	unary visitation.</li>
 	<li>Added <code>noexcept</code> to the move constructor and assignment
@@ -218,10 +209,9 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::make_homogenous_pair\endlink.</li>
-	<li>Added <code>%size</code> function to \link
-	fcppt::int_range\endlink.</li>
-	<li>Added \link fcppt::tag\endlink.</li>
+	<li>Added #fcppt::make_homogenous_pair.</li>
+	<li>Added <code>%size</code> function to #fcppt::int_range.</li>
+	<li>Added #fcppt::tag.</li>
 	</ul>
 </li>
 
@@ -242,7 +232,7 @@ can be omitted from <code>return</code> statements.</li>
 	<ul>
 	<li><code>fcppt::algorithm::join</code> and
 	<code>fcppt::algorithm::join_move</code> have been merged.</li>
-	<li>\link fcppt::algorithm::map_concat\endlink and
+	<li>#fcppt::algorithm::map_concat and
 	<code>fcppt::algorithm::map_concat_move</code> have been merged.</li>
 	</ul>
 </li>
@@ -250,15 +240,13 @@ can be omitted from <code>return</code> statements.</li>
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Use <code>emplace</code> instead of <code>insert</code> in
-	\link fcppt::container::get_or_insert\endlink.</li>
-	<li>Changed the constructors of \link
-	fcppt::container::grid::object\endlink. Instead of the unsafe range
+	#fcppt::container::get_or_insert.</li>
+	<li>Changed the constructors of #fcppt::container::grid::object. Instead of the unsafe range
 	and iterator constructors, there is now a constructor that calls a
 	function for every position that must be initialized.</li>
 	<li>Renamed <code>%fcppt::container::grid::pos_range</code> to
-	\link fcppt::container::grid::pos_ref_range\endlink.</li>
-	<li>\link fcppt::container::grid::object\endlink uses \link
-	fcppt::no_init\endlink to make it more clear when elements might not be
+	#fcppt::container::grid::pos_ref_range.</li>
+	<li>#fcppt::container::grid::object uses #fcppt::no_init to make it more clear when elements might not be
 	initialized.</li>
 	<li>fcppt::container::grid::is_square now takes a dimension instead of
 	a grid object.</li>
@@ -273,34 +261,31 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Moved \link fcppt::math::box::object \endlink comparison operators
+	<li>Moved #fcppt::math::box::object  comparison operators
 	to <code>fcppt/math/box/comparison.hpp</code>.</li>
-	<li>Removed default constructor of \link
-	fcppt::math::matrix::object\endlink.</li>
+	<li>Removed default constructor of #fcppt::math::matrix::object.</li>
 	</ul>
 </li>
 
 <li><code>fcpptmpl</code>
 	<ul>
 	<li>Changed <code>fcppt::mpl::for_each</code> and
-	<code>fcppt::mpl::invoke_on</code> to use \link fcppt::tag\endlink to call
+	<code>fcppt::mpl::invoke_on</code> to use #fcppt::tag to call
 	its function.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptsmartptr
 	<ul>
-	<li>Removed default constructor of \link
-	fcppt::shared_ptr\endlink.</li>
-	<li>\link fcppt::weak_ptr::lock\endlink now returns an optional shared
+	<li>Removed default constructor of #fcppt::shared_ptr.</li>
+	<li>#fcppt::weak_ptr::lock now returns an optional shared
 	ptr.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptrandom
 	<ul>
-	<li>\link
-	fcppt::random::distribution::parameters::make_uniform_indices\endlink
+	<li>#fcppt::random::distribution::parameters::make_uniform_indices
 	now returns an optional distribution. This covers the case in which the
 	container is empty.</li>
 	</ul>
@@ -316,7 +301,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>The constructor of \link fcppt::variant::object\endlink is now
+	<li>The constructor of #fcppt::variant::object is now
 	<code>explicit</code>.</li>
 	</ul>
 </li>
@@ -344,15 +329,13 @@ for them.</li>
 <ul>
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Most algorithms (for example \link fcppt::algorithm::map \endlink and \link
-	fcppt::algorithm::fold \endlink) have been extended to allow nonconst lvalue and rvalue
-	ranges.</li>
+	<li>Most algorithms (for example #fcppt::algorithm::map and #fcppt::algorithm::fold ) have been extended to allow nonconst lvalue and rvalue ranges.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptassert
 	<ul>
-	<li>Added \link FCPPT_ASSERT_OPTIONAL_ERROR \endlink which first
+	<li>Added #FCPPT_ASSERT_OPTIONAL_ERROR  which first
 	asserts that an optional is set and then evaluates to its
 	contents.</li>
 	</ul>
@@ -360,14 +343,12 @@ for them.</li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::get_or_insert_with_result \endlink which returns if the
+	<li>Added #fcppt::container::get_or_insert_with_result  which returns if the
 	element was inserted.</li>
-	<li>Added \link fcppt::container::find_opt_iterator \endlink which returns an optional
+	<li>Added #fcppt::container::find_opt_iterator  which returns an optional
 	iterator instead of an optional reference.</li>
-	<li>Added \link fcppt::container::to_reference_type \endlink, \link
-	fcppt::container::to_iterator_type \endlink, \link
-	fcppt::container::to_pointer_type \endlink and \link
-	fcppt::container::to_mapped_type \endlink.
+	<li>Added #fcppt::container::to_reference_type, #fcppt::container::to_iterator_type,
+	#fcppt::container::to_pointer_type and #fcppt::container::to_mapped_type.
 	</ul>
 </li>
 
@@ -388,20 +369,20 @@ for them.</li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::const_ \endlink which is the const
+	<li>Added #fcppt::const_  which is the const
 	function.</li>
-	<li>Added \link fcppt::identity \endlink which is the identity
+	<li>Added #fcppt::identity  which is the identity
 	function.</li>
-	<li>Added \link fcppt::move_if_rvalue \endlink which is similar to
+	<li>Added #fcppt::move_if_rvalue  which is similar to
 	<code>std::foward</code> but works on two types.</li>
-	<li>Added \link fcppt::absurd \endlink which is the polymorphic
+	<li>Added #fcppt::absurd  which is the polymorphic
 	terminate function.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::to_optional \endlink which can be used
+	<li>Added #fcppt::variant::to_optional  which can be used
 	to query the variant for a specific type.</li>
 	</ul>
 </li>
@@ -447,7 +428,7 @@ operators in external headers. This goes towards supporting VC++ again, but the
 
 <ul>
 
-<li>Added \link fcppt::algorithm::find_by_opt \endlink and <code>%fcppt::algorithm::find_by_exn</code>.</li>
+<li>Added #fcppt::algorithm::find_by_opt  and <code>%fcppt::algorithm::find_by_exn</code>.</li>
 
 <li>Added <code>%fcppt::optional_to_exception</code>.</li>
 
@@ -524,8 +505,7 @@ are found via add_subdirectory.</li>
 
 <li>\ref fcpptconfig
 	<ul>
-	<li>Added \link FCPPT_CONFIG_CLANG_VERSION_AT_LEAST\endlink and \link
-	FCPPT_CONFIG_GCC_VERSION_AT_LEAST\endlink.</li>
+	<li>Added #FCPPT_CONFIG_CLANG_VERSION_AT_LEAST and #FCPPT_CONFIG_GCC_VERSION_AT_LEAST.</li>
 
 	<li>Ignore float conversion and inconsistent override warnings in
 	external headers.</li>

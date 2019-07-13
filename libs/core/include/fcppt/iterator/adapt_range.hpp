@@ -17,7 +17,7 @@ namespace iterator
 {
 
 /**
-\brief Turns a range into an \link fcppt::iterator::range\endlink.
+\brief Turns a range into an #fcppt::iterator::range.
 
 \ingroup fcpptiterator
 */

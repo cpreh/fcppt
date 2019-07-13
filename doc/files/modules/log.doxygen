@@ -56,19 +56,19 @@ and how messages are formatted.
 
 \subsection log_simple_example A simple example
 
-The class that does actual logging is called \link fcppt::log::object\endlink. It
-refers to an \link fcppt::log::location\endlink in a \link fcppt::log::context\endlink.
+The class that does actual logging is called #fcppt::log::object. It
+refers to an #fcppt::log::location in a #fcppt::log::context.
 The following example illustrates the use of a simple log object:
 
 \snippet log/helloworld.cpp helloworld
 
-Logging is done via the \link fcppt::log::object::log \endlink element
-function. The macro \link FCPPT_LOG_DEBUG\endlink is a short-hand for logging
+Logging is done via the #fcppt::log::object::log  element
+function. The macro #FCPPT_LOG_DEBUG is a short-hand for logging
 only if the debug log level is enabled. This is important because the
 construction of the log message is avoided altogether when debug is not
 enabled.
 
-\link fcppt::log::out \endlink is an object that basically acts like
+#fcppt::log::out  is an object that basically acts like
 a <code>std::basic_ostream</code>. This is used to
 create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
@@ -82,7 +82,7 @@ they are written to:
 
 <ul>
 <li>
-A log context contains an \link fcppt::log::level_stream\endlink for every
+A log context contains an #fcppt::log::level_stream for every
 log level. Each of them controls where output is written to and how it is
 formatted.
 </li>
@@ -91,7 +91,7 @@ Each level stream uses an <code>std::basic_ostream</code> as its log
 destination. Where output actually ends up is decided by its streambuf.
 </li>
 <li>
-Formatting is done through \link fcppt::log::format::function \endlink objects
+Formatting is done through #fcppt::log::format::function  objects
 which can be naturally chained together. Every log object and every level stream
 can have their own formatters.
 </ul>
@@ -108,19 +108,19 @@ implemented as follows:
 \snippet log/formatting.cpp logger_formatter_declaration
 
 We are also going to create another formatting function for the <em>error</em>
-level stream that logs to \link fcppt::io::cerr\endlink.
+level stream that logs to #fcppt::io::cerr.
 
 \snippet log/formatting.cpp error_formatter_declaration
 
 We then create the level streams, such that the <code>error</code> level logs
-to \link fcppt::io::cerr\endlink using the error function we just created.
-Every other level logs to \link fcppt::io::cout\endlink using the default
+to #fcppt::io::cerr using the error function we just created.
+Every other level logs to #fcppt::io::cout using the default
 formatting function.
 
 \snippet log/formatting.cpp logger_streams
 
 The log context we are going to use again has the debug level and every level
-above enabled. Instead of \link fcppt::log::default_level_streams\endlink we
+above enabled. Instead of #fcppt::log::default_level_streams we
 give it the level streams we just created.
 
 \snippet log/formatting.cpp logger_context
@@ -144,9 +144,9 @@ a debug scenario a lot of debug messages should be logged.
 
 A location is a list of <code>fcppt::log::name</code> values, e.g.
 <code>{"my_lib", "my_subsystem"}</code>.
-An \link fcppt::log::context \endlink associates locations with
-\link fcppt::log::optional_level\endlink values. These can be configured through
-the \link fcppt::log::context::set\endlink function, even before any log objects
+An #fcppt::log::context  associates locations with
+#fcppt::log::optional_level values. These can be configured through
+the #fcppt::log::context::set function, even before any log objects
 are created. This is useful, for example, for specifying log levels on the
 command line.
 
@@ -163,7 +163,7 @@ In its constructor, it gets a name, and in addition to that, it gets either
 The next example shows how log objects, contexts and locations can be used
 together.
 
-The log context gets a single \link fcppt::log::optional_level\endlink as its
+The log context gets a single #fcppt::log::optional_level as its
 parameter, which is used as a default for every location, unless changed.
 
 \snippet log/context.cpp declare_context
@@ -188,7 +188,7 @@ The first statement will print <code>root: warning: Print from root.</code> and
 the second statement will print <code>root: child: warning: Print from
 child.</code>
 
-The \link fcppt::log::context::set\endlink function can be used to change the
+The #fcppt::log::context::set function can be used to change the
 level of a location at runtime.
 
 \snippet log/context.cpp context_set
@@ -224,43 +224,43 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>out.hpp</code></td>
-<td>Contains \link fcppt::log::out \endlink.</td>
+<td>Contains #fcppt::log::out .</td>
 </tr>
 <tr>
 <td><code>context_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::context \endlink's declaration.</td>
+<td>Contains #fcppt::log::context 's declaration.</td>
 </tr>
 <tr>
 <td><code>context.hpp</code></td>
-<td>Contains \link fcppt::log::context \endlink's definition.</td>
+<td>Contains #fcppt::log::context 's definition.</td>
 </tr>
 <tr>
 <td><code>debug.hpp</code></td>
-<td>Contains the \link FCPPT_LOG_DEBUG\endlink macro.</td>
+<td>Contains the #FCPPT_LOG_DEBUG macro.</td>
 </tr>
 <tr>
 <td><code>error.hpp</code></td>
-<td>Contains the \link FCPPT_LOG_ERROR\endlink macro.</td>
+<td>Contains the #FCPPT_LOG_ERROR macro.</td>
 </tr>
 <tr>
 <td><code>fatal.hpp</code></td>
-<td>Contains the \link FCPPT_LOG_FATAL\endlink macro.</td>
+<td>Contains the #FCPPT_LOG_FATAL macro.</td>
 </tr>
 <tr>
 <td><code>info.hpp</code></td>
-<td>Contains the \link FCPPT_LOG_INFO\endlink macro.</td>
+<td>Contains the #FCPPT_LOG_INFO macro.</td>
 </tr>
 <tr>
 <td><code>level.hpp</code></td>
-<td>Contains the \link fcppt::log::level \endlink enumeration.</td>
+<td>Contains the #fcppt::log::level  enumeration.</td>
 </tr>
 <tr>
 <td><code>location_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::location \endlink's declaration.</td>
+<td>Contains #fcppt::log::location 's declaration.</td>
 </tr>
 <tr>
 <td><code>location.hpp</code></td>
-<td>Contains \link fcppt::log::location \endlink's definition.</td>
+<td>Contains #fcppt::log::location 's definition.</td>
 </tr>
 <tr>
 <td><code>name_fwd.hpp</code></td>
@@ -272,27 +272,27 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::object \endlink's declaration.</td>
+<td>Contains #fcppt::log::object 's declaration.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
-<td>Contains \link fcppt::log::object \endlink's defintiion.</td>
+<td>Contains #fcppt::log::object 's defintiion.</td>
 </tr>
 <tr>
 <td><code>parameters_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::parameters \endlink's declaration.</td>
+<td>Contains #fcppt::log::parameters 's declaration.</td>
 </tr>
 <tr>
 <td><code>parameters.hpp</code></td>
-<td>Contains \link fcppt::log::parameters \endlink's definition.</td>
+<td>Contains #fcppt::log::parameters 's definition.</td>
 </tr>
 <tr>
 <td><code>verbose.hpp</code></td>
-<td>Contains the \link FCPPT_LOG_VERBOSE\endlink macro.</td>
+<td>Contains the #FCPPT_LOG_VERBOSE macro.</td>
 </tr>
 <tr>
 <td><code>warning.hpp</code></td>
-<td>Contains the \link FCPPT_LOG_WARNING\endlink macro.</td>
+<td>Contains the #FCPPT_LOG_WARNING macro.</td>
 </tr>
 </table>
 
@@ -305,35 +305,35 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>default_level_streams.hpp</code></td>
-<td>Contains \link fcppt::log::default_level_streams \endlink for construction of all level stream defaults.</td>
+<td>Contains #fcppt::log::default_level_streams  for construction of all level stream defaults.</td>
 </tr>
 <tr>
 <td><code>default_stream.hpp</code></td>
-<td>Contains the \link fcppt::log::default_stream \endlink function.</td>
+<td>Contains the #fcppt::log::default_stream  function.</td>
 </tr>
 <tr>
 <td><code>level_from_string.hpp</code></td>
-<td>Contains \link fcppt::log::level_from_string \endlink.</td>
+<td>Contains #fcppt::log::level_from_string .</td>
 </tr>
 <tr>
 <td><code>level_stream_array.hpp</code></td>
-<td>Contains the \link fcppt::log::level_stream_array \endlink typedef.</td>
+<td>Contains the #fcppt::log::level_stream_array  typedef.</td>
 </tr>
 <tr>
 <td><code>level_stream_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::level_stream \endlink's declaration.</td>
+<td>Contains #fcppt::log::level_stream 's declaration.</td>
 </tr>
 <tr>
 <td><code>level_stream.hpp</code></td>
-<td>Contains \link fcppt::log::level_stream \endlink's definition.</td>
+<td>Contains #fcppt::log::level_stream 's definition.</td>
 </tr>
 <tr>
 <td><code>level_to_string.hpp</code></td>
-<td>Contains \link fcppt::log::level_to_string \endlink.</td>
+<td>Contains #fcppt::log::level_to_string .</td>
 </tr>
 <tr>
 <td><code>optional_level_fwd.hpp</code></td>
-<td>Contains the \link fcppt::log::optional_level \endlink typedef.</td>
+<td>Contains the #fcppt::log::optional_level  typedef.</td>
 </tr>
 <tr>
 <td><code>optional_level.hpp</code></td>
@@ -341,11 +341,11 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>format/chain.hpp</code></td>
-<td>Contains the \link fcppt::log::format::chain \endlink function.</td>
+<td>Contains the #fcppt::log::format::chain  function.</td>
 </tr>
 <tr>
 <td><code>format/default_level.hpp</code></td>
-<td>Contains the \link fcppt::log::format::default_level \endlink function.</td>
+<td>Contains the #fcppt::log::format::default_level  function.</td>
 </tr>
 <tr>
 <td><code>format/format.hpp</code></td>
@@ -353,7 +353,7 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>format/function_fwd.hpp</code></td>
-<td>Contains the \link fcppt::log::format::function \endlink typedef.</td>
+<td>Contains the #fcppt::log::format::function  typedef.</td>
 </tr>
 <tr>
 <td><code>format/function.hpp</code></td>
@@ -361,15 +361,15 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>format/inserter.hpp</code></td>
-<td>Contains the \link fcppt::log::format::inserter \endlink typedef.</td>
+<td>Contains the #fcppt::log::format::inserter  typedef.</td>
 </tr>
 <tr>
 <td><code>format/prefix.hpp</code></td>
-<td>Contains the \link fcppt::log::format::prefix \endlink function.</td>
+<td>Contains the #fcppt::log::format::prefix  function.</td>
 </tr>
 <tr>
 <td><code>format/time_stamp.hpp</code></td>
-<td>Contains the \link fcppt::log::format::time_stamp \endlink typedef.</td>
+<td>Contains the #fcppt::log::format::time_stamp  typedef.</td>
 </tr>
 </table>
 

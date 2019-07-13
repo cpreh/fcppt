@@ -33,9 +33,9 @@ namespace fcppt
 Returns a strong typedef with the same tag type and value
 <code>_function(_strong_typedef.get(), _strongs_typedefs.get()...)</code>.
 
-\tparam StrongTypedef1 Must be an \link fcppt::strong_typedef\endlink.
+\tparam StrongTypedef1 Must be an #fcppt::strong_typedef.
 
-\tparam StrongTypedefs Must all be \link fcppt::strong_typedef\endlink.
+\tparam StrongTypedefs Must all be #fcppt::strong_typedef.
 
 \tparam Function Must be a function callable as
 <code>R (StrongTypedef1::value_type, StrongTypedefs::value_type...)</code>,

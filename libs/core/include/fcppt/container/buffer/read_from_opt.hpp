@@ -28,7 +28,7 @@ Allocates a buffer <code>buf</code> of size \a _size and then calls
 is nothing, then nothing is returned. Otherwise, The result of the function is
 used to set <code>buf</code>'s read area size.
 
-\tparam Buffer An \link fcppt::container::buffer::object\endlink.
+\tparam Buffer An #fcppt::container::buffer::object.
 
 \tparam Function A function callable as <code>fcppt::optional::object<size_type> (pointer, size_type)</code>.
 */

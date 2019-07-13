@@ -26,7 +26,7 @@ namespace enum_
 
 \ingroup fcpptenum
 
-The default implementation uses \link fcppt::enum_::names\endlink.
+The default implementation uses #fcppt::enum_::names.
 
 \tparam Enum Must be an enum type
 */

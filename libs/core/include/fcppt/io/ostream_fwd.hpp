@@ -19,12 +19,10 @@ namespace io
 {
 
 /**
-\brief Typedef to either std::ostream or std::wostream, depending on fcppt::char_type
+\brief Typedef to either std::ostream or std::wostream, depending on #fcppt::char_type.
 \ingroup fcpptstring
 
-
-See the \link fcpptstring string module documentation \endlink for a motivation
-for this.
+See \ref fcpptstring for a motivation for this.
 */
 typedef
 std::basic_ostream<

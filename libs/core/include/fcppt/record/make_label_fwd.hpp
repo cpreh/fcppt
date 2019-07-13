@@ -13,11 +13,11 @@
 
 
 /**
-\brief Creates an \link fcppt::record::label\endlink.
+\brief Creates an #fcppt::record::label.
 
 \ingroup fcpptrecord
 
-Creates an \link fcppt::record::label\endlink, passing it a unique,
+Creates an #fcppt::record::label, passing it a unique,
 implementation-defined tag type.
 
 \param name The name of the label type.

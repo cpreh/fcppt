@@ -147,9 +147,7 @@ that extracts the underlying value of a <code>boost::units::quantity</code>
 
 \snippet random/complex.cpp random_complex_output
 
-The following example shows how you can specialize \link
-fcppt::type_iso::transform\endlink in order to use your own types with a
-distribution.
+The following example shows how you can specialize #fcppt::type_iso::transform in order to use your own types with a distribution.
 
 Suppose you have created a simple type similar to a strong typedef that wraps
 its underlying type:

@@ -32,7 +32,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-This parser is similar to \link fcppt::options::switch_\endlink but it
+This parser is similar to #fcppt::options::switch_ but it
 requires its switch to be specified.
 */
 template<

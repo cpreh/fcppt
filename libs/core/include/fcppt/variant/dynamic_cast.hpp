@@ -40,7 +40,7 @@ The result of the first cast that succeeds is returned.
 
 \tparam Types An MPL sequence.
 
-\tparam Cast A dynamic cast function from \ref fcpptcasts, e.g. \link fcppt::cast::dynamic_fun\endlink.
+\tparam Cast A dynamic cast function from \ref fcpptcasts, e.g. #fcppt::cast::dynamic_fun.
 
 \tparam Base The base class type to cast from.
 */

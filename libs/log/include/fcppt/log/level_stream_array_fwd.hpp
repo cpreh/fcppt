@@ -22,9 +22,8 @@ namespace log
 
 \ingroup fcpptlog
 
-An array of \link fcppt::log::level_stream \endlink with the size \link
-fcppt::log::level \endlink. Each entry corresponds to an enumerator from \link
-fcppt::log::level \endlink.
+An array of #fcppt::log::level_stream with the size #fcppt::log::level.
+Each entry corresponds to an enumerator from #fcppt::log::level.
 */
 typedef
 fcppt::enum_::array<

@@ -13,7 +13,7 @@ For example, \ref fcpptsignal uses this technique to know which functions it has
 
 A type <code>T</code> can be inserted into
 an <code>fcppt::intrusive::list<T></code> if it derives from <code>fcppt::intrusive::base<T></code>.
-The implementation of \link fcppt::intrusive::base\endlink owns a pair of pointers that represent
+The implementation of #fcppt::intrusive::base owns a pair of pointers that represent
 a list node. When such an object is destroyed or moved from, it automatically unlinks itself
 from the list.
 

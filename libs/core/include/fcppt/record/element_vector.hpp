@@ -20,7 +20,7 @@ namespace record
 
 \ingroup fcpptrecord
 
-\tparam Record Must be an \link fcppt::record::object\endlink.
+\tparam Record Must be an #fcppt::record::object.
 */
 template<
 	typename Record

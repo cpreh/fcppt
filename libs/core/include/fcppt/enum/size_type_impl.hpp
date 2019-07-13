@@ -19,7 +19,7 @@ namespace enum_
 {
 
 /**
-\brief Implementation of \link fcppt::enum_::size_type\endlink.
+\brief Implementation of #fcppt::enum_::size_type.
 
 \ingroup fcpptenum
 

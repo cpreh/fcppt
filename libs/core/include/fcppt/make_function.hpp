@@ -14,7 +14,7 @@ namespace fcppt
 {
 
 /**
-\brief Creates an \link fcppt::function\endlink.
+\brief Creates an #fcppt::function.
 
 \ingroup fcpptvarious
 */

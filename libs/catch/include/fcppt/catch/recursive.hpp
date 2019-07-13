@@ -19,7 +19,7 @@ namespace Catch
 {
 
 /**
-\brief Output specialization for \link fcppt::recursive\endlink.
+\brief Output specialization for #fcppt::recursive.
 
 \ingroup fcpptcatch
 */

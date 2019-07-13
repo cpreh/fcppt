@@ -16,7 +16,7 @@ namespace options
 {
 
 /**
-\brief The sub-command label name in \link fcppt::options::commands\endlink.
+\brief The sub-command label name in #fcppt::options::commands.
 
 \ingroup fcpptoptions
 */

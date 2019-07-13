@@ -26,7 +26,7 @@ namespace dim
 
 \ingroup fcpptmathdim
 
-Uses \link fcppt::optional::sequence\endlink.
+Uses #fcppt::optional::sequence.
 */
 template<
 	typename T,

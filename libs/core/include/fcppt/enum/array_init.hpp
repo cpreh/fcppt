@@ -27,7 +27,7 @@ Constructs an enum array of type \a Array by calling
 <code>_function(std::integral_constant<Array::enum_type,E>)</code> for every
 enumerator <code>E</code>.
 
-\tparam Array Must be an \link fcppt::enum_::array\endlink.
+\tparam Array Must be an #fcppt::enum_::array.
 
 \tparam Function Must be a function callable as <code>Array::value_type
 (std::integral_constant<Array::enum_type,E>)</code>.

@@ -17,11 +17,11 @@ namespace options
 {
 
 /**
-\brief A unique pointer for \link fcppt::options::base\endlink.
+\brief A unique pointer for #fcppt::options::base.
 
 \ingroup fcpptoptions
 
-\tparam Result The result type of the parser. Must be an \link fcppt::record::object\endlink.
+\tparam Result The result type of the parser. Must be an #fcppt::record::object.
 */
 template<
 	typename Result

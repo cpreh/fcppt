@@ -26,14 +26,14 @@ namespace cast
 
 \ingroup fcpptcasts
 
-This cast is the same as \link fcppt::cast::dynamic_exn \endlink but only works
+This cast is the same as #fcppt::cast::dynamic_exn  but only works
 on unrelated types.
 
 \tparam Dest The type to cast to. Must be a reference type. Must not inherit from \a Src.
 
 \tparam Src A cv-qualified non-reference type.
 
-\see \link fcppt::cast::dynamic_exn \endlink
+\see #fcppt::cast::dynamic_exn
 */
 template<
 	typename Dest,

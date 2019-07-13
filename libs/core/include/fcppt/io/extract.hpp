@@ -27,7 +27,7 @@ namespace io
 Uses <code>operator>></code> to extract a value of type \a Type from \a
 _stream. If extracting the value fails, an empty optional is returned.
 
-\tparam Type Must have a default constructor or a constructor for \link fcppt::no_init\endlink.
+\tparam Type Must have a default constructor or a constructor for #fcppt::no_init.
 */
 template<
 	typename Type,

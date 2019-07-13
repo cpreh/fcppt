@@ -61,8 +61,8 @@ the object yet, do not create it in the first place!
 
 There are several types which replace standard types with
 the explicit intend not to be default-constructible, e.g.
-\link fcppt::function\endlink, \link fcppt::unique_ptr\endlink,
-\link fcppt::shared_ptr\endlink and \link fcppt::variant::object\endlink.
+#fcppt::function, #fcppt::unique_ptr,
+#fcppt::shared_ptr and #fcppt::variant::object.
 </li>
 <li>Give every class a (non default) constructor. This ties
 in with \ref coding_ownership.
@@ -74,7 +74,7 @@ struct S { int i; int j; }; S x{42};
 \endcode
 However, most compilers issue a warning for this.
 </li>
-<li>Make classes explicitly noncopyable using \link FCPPT_NONCOPYABLE\endlink
+<li>Make classes explicitly noncopyable using #FCPPT_NONCOPYABLE
 in case their copy constructors / assignment operators that are generated
 by default should not be used, or in case they can not be generated
 because a member is not copyable. If a class should be movable
@@ -83,7 +83,7 @@ assignment operator. Most of the time, the implementation obtained
 by using <code>= default</code> can be used.
 </li>
 <li>Do not use regular references as members. They make a class non
-assignable. Instead, use \link fcppt::reference\endlink.
+assignable. Instead, use #fcppt::reference.
 </li>
 </ul>
 
@@ -92,21 +92,21 @@ assignable. Instead, use \link fcppt::reference\endlink.
 Following are various points about functions:
 <ul>
 <li>Make functions total! In case they can return nothing,
-use \link fcppt::optional::object\endlink.
-In case they can return an error, use \link fcppt::either::object\endlink.
+use #fcppt::optional::object.
+In case they can return an error, use #fcppt::either::object.
 </li>
 <li>Avoid cases where certain combinations of parameters are invalid.
-These cases can usually be avoided by using \link fcppt::optional::object\endlink,
-\link fcppt::variant::object\endlink, and so on.
-If it is very difficult to avoid this, use \link FCPPT_ASSERT_PRE\endlink
+These cases can usually be avoided by using #fcppt::optional::object,
+#fcppt::variant::object, and so on.
+If it is very difficult to avoid this, use #FCPPT_ASSERT_PRE
 or throw an exception. Be sure to document this very carefully!
 </li>
 <li>Do not use default parameters and do not use function overloading.
 It is better to provide a function with a different name or to
-change the typing of parameters, e.g. by using \link fcppt::optional::object\endlink.
+change the typing of parameters, e.g. by using #fcppt::optional::object.
 </li>
 <li>Avoid functions that get multiple parameters of the same type.
-Use \link fcppt::strong_typedef\endlink to disambiguate which parameter is
+Use #fcppt::strong_typedef to disambiguate which parameter is
 used for which purpose. For example, instead of
 <code>void f(std::string const &name, std::string const &email);</code> use
 \code
@@ -128,13 +128,13 @@ multiple objects, create a struct or class that encapsulates this.
 Avoid explicit loops if possible. There are many cases in which
 an algorithm can be used instead. For example, instead of
 \snippet coding_style.cpp coding_style_loop
-you can use \link fcppt::algorithm::fold\endlink
+you can use #fcppt::algorithm::fold
 \snippet coding_style.cpp coding_style_fold
 
 Algorithms can only be used with ranges, not with iterators.
-In case you need to encapsulate iterators, use \link fcppt::iterator::range\endlink.
+In case you need to encapsulate iterators, use #fcppt::iterator::range.
 There are also special ranges like
-\link fcppt::int_range\endlink or \link fcppt::enum_::range\endlink.
+#fcppt::int_range or #fcppt::enum_::range.
 Some algorithms also accept a <code>brigand::list</code> as a range
 in case you need to iterate over types.
 
@@ -150,5 +150,5 @@ creates an array element given an index. You can then initialize the array using
 \snippet coding_style.cpp coding_style_array_init
 
 In case you really need uninitialized objects, create a constructor
-that takes \link fcppt::no_init\endlink.
+that takes #fcppt::no_init.
 */

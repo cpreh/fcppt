@@ -31,12 +31,12 @@ For example, <code>operator!=</code> can be implemented from <code>operator==</c
 can be implemented from <code>operator-</code> that calculates the distance of two
 random access iterators. However, you might want to provide fundamentally
 different implementations for all of these (for performance reasons), but this
-is very rare. To make implementing iterators easier, \link fcppt::iterator::base\endlink
+is very rare. To make implementing iterators easier, #fcppt::iterator::base
 provides most operations using a default implementation, which the actual iterator type derives from.
-This class gets an \link fcppt::iterator::types\endlink as its template parameter,
+This class gets an #fcppt::iterator::types as its template parameter,
 which consists of:
 <ul>
-<li>The actual iterator type, which is the type deriving from \link fcppt::iterator::base\endlink.</li>
+<li>The actual iterator type, which is the type deriving from #fcppt::iterator::base.</li>
 <li>The <code>reference</code> type of the iterator, which is what <code>operator*</code> returns.</li>
 <li>The <code>value_type</code>, which is what users of the iterator can use to store a copy of
 a dereferenced object.</li>
@@ -45,7 +45,7 @@ This is only significant for random access iterator. Usually, this is
 <code>std::ptrdiff_t</code>.</li>
 <li>The <code>iterator_category</code>.</li>
 </ul>
-Deriving from \link fcppt::iterator::base\endlink also inherits all of these typedefs.
+Deriving from #fcppt::iterator::base also inherits all of these typedefs.
 In addition, <code>pointer</code> is also defined which is always
 <code>std::remove_reference<reference>::type *</code>, i.e. for forward iterators
 it is <code>T *</code> if <code>reference</code> is <code>T &</code> and
@@ -53,7 +53,7 @@ it is <code>T *</code> if <code>reference</code> is <code>T &</code> and
 for some type <code>T</code>.
 
 Let <code>It</code> be the type of the iterator we are going to implement,
-i.e. the type deriving from \link fcppt::iterator::base\endlink.
+i.e. the type deriving from #fcppt::iterator::base.
 The following operations need to be implemented by the derived class as <em>public</em>
 member functions:
 
@@ -144,7 +144,7 @@ a simple iterator using pointers over <code>int</code>. First, we declare the ty
 
 \snippet iterator.cpp iterator_types
 
-Next, we derive from \link fcppt::iterator::base\endlink and implement all operations required
+Next, we derive from #fcppt::iterator::base and implement all operations required
 for random access iterators:
 
 \snippet iterator.cpp iterator_impl

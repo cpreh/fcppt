@@ -14,11 +14,11 @@ namespace iterator
 {
 
 /**
-\brief The types passed to \link fcppt::iterator::base\endlink.
+\brief The types passed to #fcppt::iterator::base.
 
 \ingroup fcpptiterator
 
-\tparam Derived The derived type of \link fcppt::iterator::base\endlink.
+\tparam Derived The derived type of #fcppt::iterator::base.
 
 \tparam ValueType The value type of the iterator. This must be a type
 that users of the iterator can store a dereferenced value in.

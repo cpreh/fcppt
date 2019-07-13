@@ -30,7 +30,7 @@ namespace signal
 \tparam Enable Dummy for SFINAE operations
 \ingroup fcpptsignal
 
-See the \link fcpptsignal module documentation \endlink for more information.
+See \ref fcpptsignal for more information.
 */
 template<
 	typename T,
@@ -138,7 +138,7 @@ private:
 \tparam Base The signal's base class (determines the existence of unregister functions)
 \ingroup fcpptsignal
 
-See the \link fcpptsignal module documentation \endlink for more information.
+See the #fcpptsignal module documentation  for more information.
 */
 template<
 	typename T,

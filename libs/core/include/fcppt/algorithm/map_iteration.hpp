@@ -21,7 +21,7 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Iterates over \a _map, applying \a _update_action to each element. If \a
-_update_action returns \link fcppt::algorithm::update_action::remove\endlink,
+_update_action returns #fcppt::algorithm::update_action::remove,
 the element is deleted from the map.
 
 \tparam Map A map-like container.

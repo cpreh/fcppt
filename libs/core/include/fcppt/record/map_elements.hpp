@@ -27,9 +27,9 @@ namespace record
 
 \ingroup fcpptrecord
 
-\tparam Record Must be an \link fcppt::record::object\endlink.
+\tparam Record Must be an #fcppt::record::object.
 
-\tparam Function A metafunction accepting \link fcppt::record::element\endlink
+\tparam Function A metafunction accepting #fcppt::record::element
 as parameter and returning the new mapped type.
 */
 template<

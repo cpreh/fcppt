@@ -27,7 +27,7 @@ derived class
 
 Converts \a _source to the reference type specified by \a Derived. This cast is
 unsafe and should only be used if the \a _source has a dynamic type which is a
-subtype of \a Derived. Consider using \link fcppt::cast::dynamic \endlink instead.
+subtype of \a Derived. Consider using #fcppt::cast::dynamic  instead.
 
 Derived must be a reference to a class type derived from Base.
 

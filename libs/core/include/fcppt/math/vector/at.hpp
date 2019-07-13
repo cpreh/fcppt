@@ -28,7 +28,7 @@ namespace vector
 
 \ingroup fcpptmathvector
 
-\tparam Vector Must be an \link fcppt::math::vector::object\endlink.
+\tparam Vector Must be an #fcppt::math::vector::object.
 */
 template<
 	fcppt::math::size_type Index,

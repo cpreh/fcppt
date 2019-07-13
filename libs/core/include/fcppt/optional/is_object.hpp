@@ -19,7 +19,7 @@ namespace optional
 {
 
 /**
-\brief Checks if a given type is an \link fcppt::optional::object\endlink.
+\brief Checks if a given type is an #fcppt::optional::object.
 
 \ingroup fcpptoptional
 */
