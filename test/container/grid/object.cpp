@@ -296,12 +296,6 @@ TEST_CASE(
 		2
 	);
 
-	CHECK(
-		grid1.begin()
-		==
-		grid1.end()
-	);
-
 	int2_grid grid3;
 
 	grid3 =
