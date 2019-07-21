@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_322 3.2.2
+
+\subsection changes_bugfixes_to_322 Bugfixes
+
+<ul>
+
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Fix #fcppt::unique_ptr assignment.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_321 3.2.1
 
 \subsection changes_bugfixes_to_321 Bugfixes
