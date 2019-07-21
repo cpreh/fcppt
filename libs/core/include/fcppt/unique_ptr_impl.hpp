@@ -8,6 +8,9 @@
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -23,9 +26,9 @@ fcppt::unique_ptr<
 )
 noexcept
 :
-	ptr_(
+	impl_{
 		_ptr
-	)
+	}
 {
 }
 
@@ -38,15 +41,11 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::unique_ptr(
-	unique_ptr &&_other
+	unique_ptr &&
 )
 noexcept
-:
-	ptr_(
-		_other.release_ownership()
-	)
-{
-}
+=
+default;
 
 template<
 	typename Type,
@@ -61,16 +60,11 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::operator=(
-	unique_ptr &&_other
+	unique_ptr &&
 )
 noexcept
-{
-	ptr_ =
-		_other.release_ownership();
-
-	return
-		*this;
-}
+=
+default;
 
 template<
 	typename Type,
@@ -82,14 +76,6 @@ fcppt::unique_ptr<
 	Deleter
 >::~unique_ptr()
 {
-	if(
-		this->get_pointer()
-		!=
-		nullptr
-	)
-		Deleter()(
-			this->get_pointer()
-		);
 }
 
 template<
@@ -107,7 +93,7 @@ fcppt::unique_ptr<
 noexcept
 {
 	return
-		*this->get_pointer();
+		*this->impl_;
 }
 
 template<
@@ -147,7 +133,7 @@ fcppt::unique_ptr<
 noexcept
 {
 	return
-		ptr_;
+		this->impl_.get();
 }
 
 template<
@@ -166,14 +152,8 @@ fcppt::unique_ptr<
 >::release_ownership()
 noexcept
 {
-	pointer const result(
-		ptr_
-	);
-
-	ptr_ =
-		nullptr;
 	return
-		result;
+		this->impl_.release();
 }
 
 #endif

@@ -10,6 +10,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -95,7 +96,10 @@ public:
 	release_ownership()
 	noexcept;
 private:
-	pointer ptr_;
+	std::unique_ptr<
+		Type,
+		Deleter
+	> impl_;
 };
 
 }

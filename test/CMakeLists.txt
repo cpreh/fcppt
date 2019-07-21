@@ -303,6 +303,10 @@ add_subdirectory(
 )
 
 add_fcppt_test(
+	unique_ptr
+)
+
+add_fcppt_test(
 	unique_ptr_dynamic_cast
 )
 
