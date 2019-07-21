@@ -188,12 +188,6 @@ TEST_CASE(
 	);
 
 	CHECK(
-		sig.empty()
-	);
-
-	sig();
-
-	CHECK(
 		counter
 		==
 		0
@@ -219,8 +213,6 @@ TEST_CASE(
 		==
 		2
 	);
-
-	sig2();
 
 	CHECK(
 		counter

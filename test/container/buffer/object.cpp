@@ -113,18 +113,6 @@ TEST_CASE(
 		42
 	);
 
-	REQUIRE(
-		test1.write_data()
-		==
-		test1.write_data_end()
-	);
-
-	REQUIRE(
-		test1.read_data()
-		==
-		test1.read_data_end()
-	);
-
 	container_type test3{
 		0u
 	};
@@ -146,18 +134,6 @@ TEST_CASE(
 		]
 		==
 		42
-	);
-
-	REQUIRE(
-		test2.write_data()
-		==
-		test2.write_data_end()
-	);
-
-	REQUIRE(
-		test2.read_data()
-		==
-		test2.read_data_end()
 	);
 }
 

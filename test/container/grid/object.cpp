@@ -339,12 +339,6 @@ TEST_CASE(
 		==
 		2
 	);
-
-	CHECK(
-		grid2.begin()
-		==
-		grid2.end()
-	);
 }
 
 TEST_CASE(
