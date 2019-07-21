@@ -19,17 +19,15 @@ namespace fcppt
 {
 
 /**
-\brief A simpler unique_ptr that shouldn't be used as a null pointer
+\brief A simpler unique_ptr that shouldn't be used as a null pointer.
 
 \ingroup fcpptsmartptr
 
-<code>std::unique_ptr</code> can easily be used as a null pointer because it
-has a default constructor and also a reset function. Null pointers should
-always be handled by optional references instead (see #fcppt.optional
-). While it is not possible to completely forbid unique pointers that
-are null, this class makes it harder to do so. Unique pointers that have been
-moved from are still null because a unique pointer must track its ownership
-status. Make sure not to access such pointers.
+<code>std::unique_ptr</code> can easily be used as a null pointer because it has a default constructor and also a reset function.
+Null pointers should always be handled by optional references instead (see \ref fcpptoptional).
+While it is not possible to completely forbid unique pointers that are null, this class makes it harder to do so.
+Unique pointers that have been moved from may still be null because a unique pointer must track its ownership status.
+Make sure not to access such pointers.
 */
 template<
 	typename Type,
