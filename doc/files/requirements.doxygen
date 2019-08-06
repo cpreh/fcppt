@@ -1,24 +1,24 @@
 /**
-\page requirements_download_installation Requirements, Download and Installation
+\page installation_usage Installation and Usage
 
-\section requirements_download_installation_contents Contents
+\section installation_usage_contents Contents
 
 <table id="toc">
 <tr>
 <td>
 
 <ul>
-	<li>\ref requirements_download_installation_requirements</li>
-	<li>\ref requirements_download_installation_tested_platforms</li>
-	<li>\ref requirements_download_installation_download</li>
-	<li>\ref requirements_download_installation_building_and_installation</li>
+	<li>\ref installation_usage_requirements</li>
+	<li>\ref installation_usage_tested_platforms</li>
+	<li>\ref installation_usage_download</li>
+	<li>\ref installation_usage_building_and_installation</li>
 	<li>
-	\ref requirements_download_installation_using_fcppt
+	\ref installation_usage_using_fcppt
 		<ul>
-			<li>\ref requirements_download_installation_using_from_build_directory</li>
-			<li>\ref requirements_download_installation_using_from_installation</li>
-			<li>\ref requirements_download_installation_modify_cmakelists</li>
-			<li>\ref requirements_download_installation_static_and_shared_builds</li>
+			<li>\ref installation_usage_using_from_build_directory</li>
+			<li>\ref installation_usage_using_from_installation</li>
+			<li>\ref installation_usage_modify_cmakelists</li>
+			<li>\ref installation_usage_static_and_shared_builds</li>
 		</ul>
 	</li>
 </ul>
@@ -27,7 +27,7 @@
 </tr>
 </table>
 
-\section requirements_download_installation_requirements Requirements
+\section installation_usage_requirements Requirements
 
 You need the following dependencies to build fcppt:
 <ul>
@@ -52,7 +52,7 @@ This is also needed to build \ref fcpptcatch.
 </li>
 </ul>
 
-\section requirements_download_installation_tested_platforms Tested Platforms
+\section installation_usage_tested_platforms Tested Platforms
 
 The following platforms are tested by us:
 
@@ -66,15 +66,13 @@ The following platforms are tested by us:
 fcppt needs a C++17-conforming compiler which probably excludes everything
 older than gcc-8 and clang-6.
 
-\section requirements_download_installation_download Download
+\section installation_usage_download Download
 
-fcppt is on <a href="https://github.com/freundlich/fcppt">Github</a>.
-
-For releases, head over to <a href="https://github.com/freundlich/fcppt/releases">Github's download page</a>.
+The source code and releases are available on <a href="https://github.com/freundlich/fcppt">Github</a>.
 
 Gentoo ebuilds are available in <a href="https://github.com/freundlich/freundlich-gentoo">Freundlich's overlay</a>.
 
-\section requirements_download_installation_building_and_installation Building and Installation
+\section installation_usage_building_and_installation Building and Installation
 
 fcppt uses CMake as its build system, so the standard CMake procedure to build
 a project applies: First, download and extract the tarball or clone the git
@@ -115,9 +113,9 @@ fcppt does not need to be installed in order to be used. After fcppt has been
 built you can directly use it from its source directory. If you want to install
 don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 
-\section requirements_download_installation_using_fcppt Using fcppt
+\section installation_usage_using_fcppt Using fcppt
 
-\subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
+\subsection installation_usage_modify_cmakelists Modify your CMakeLists.txt
 
 fcppt comes with an exported CMake file that defines all of fcppt's targets, which currently
 are <code>boost</code>, <code>catch</code>, <code>core</code>, <code>filesystem</code>,
@@ -161,13 +159,13 @@ with regular targets, provide include directories and build flags.
 If fcppt has not been installed in a location already recognized by CMake, you
 will have to specify additional parameters depending on where fcppt is located:
 
-\subsection requirements_download_installation_using_from_build_directory Using fcppt from the build directory
+\subsection installation_usage_using_from_build_directory Using fcppt from the build directory
 
 If you don't install fcppt, you should specify fcppt's <em>build config</em>
 directory using <code>-D fcppt_DIR=${fcppt_build_dir}/config</code>, where
 <code>fcppt_build_dir</code> points to fcppt's build directory.
 
-\subsection requirements_download_installation_using_from_installation Using fcppt from an installation
+\subsection installation_usage_using_from_installation Using fcppt from an installation
 
 If fcppt is installed, fcppt's config is installed to
 <code>INSTALL_CMAKECONFIG_DIR</code> (which is usually
@@ -175,7 +173,7 @@ If fcppt is installed, fcppt's config is installed to
 <code>find_package(fcppt)</code> is used. Otherwise, you have to specify
 <code>fcppt_DIR</code> manually.
 
-\subsection requirements_download_installation_static_and_shared_builds Static and shared builds
+\subsection installation_usage_static_and_shared_builds Static and shared builds
 
 fcppt can be built as a static or shared library, which is controlled by
 <code>ENABLE_STATIC</code> and <code>ENABLE_SHARED</code>, respectively. If you

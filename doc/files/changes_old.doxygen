@@ -1102,7 +1102,7 @@ longer supported.</li>
 
 <li>Expose cmake targets from the build directory and when installing. This
 should make it a lot easier to use fcppt from other cmake based projects. See
-\ref requirements_download_installation_using_fcppt </li>
+\ref installation_usage_using_fcppt </li>
 
 <li>Some updates for VC++11, mostly warning fixes.</li>
 

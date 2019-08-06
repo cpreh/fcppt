@@ -1,12 +1,18 @@
 /**
 \mainpage Overview
 
-\section main_introduction Introduction
-
 Freundlich's C++ Toolkit (fcppt) is a collection of libraries that aim
 to improve general C++ code through better typing and functional programming.
 
-Here are a few quick examples that illustrate what we mean by that:
+\section source_and_downloads Source code and downloads
+
+The source code and releases are available on <a href="https://github.com/freundlich/fcppt">github</a>.
+
+\section installation_overview Installation
+
+See \ref installation_usage on how to install fcppt and on how to use it in your project.
+
+\section main_code_examples Why fcppt?
 
 Avoiding partial functions (functions that do not terminate, i.e. crash, on certain inputs)
 is one of fcppt's main goals. These are, unfortunately, all over the place in common C or C++ code:
@@ -82,14 +88,14 @@ The documentation is split into the following parts:
 		\link fcpptmain Documentation\endlink
 	</li>
 	<li>
-		\subpage requirements_download_installation
+		\subpage installation_usage
 		<ul>
-			<li>\ref requirements_download_installation_requirements</li>
-			<li>\ref requirements_download_installation_tested_platforms</li>
-			<li>\ref requirements_download_installation_download</li>
-			<li>\ref requirements_download_installation_building_and_installation</li>
-			<li>\ref requirements_download_installation_using_fcppt</li>
-			<li>\ref requirements_download_installation_static_and_shared_builds</li>
+			<li>\ref installation_usage_requirements</li>
+			<li>\ref installation_usage_tested_platforms</li>
+			<li>\ref installation_usage_download</li>
+			<li>\ref installation_usage_building_and_installation</li>
+			<li>\ref installation_usage_using_fcppt</li>
+			<li>\ref installation_usage_static_and_shared_builds</li>
 		</ul>
 	</li>
 	<li>
@@ -122,18 +128,4 @@ The documentation is split into the following parts:
 </td>
 </tr>
 </table>
-
-\section main_contact Contact
-
-You can contact us via our IRC channel
-
-<code>\verbatim #sge-sanguis \endverbatim</code>
-
-at
-
-<code>\verbatim irc.freenode.net \endverbatim</code>
-
-If you've found a bug or want to request something, please head over to the <a
-href="https://github.com/freundlich/fcppt/issues">github issue tracker</a> and
-create an issue.
 */
