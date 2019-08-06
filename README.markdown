@@ -1,6 +1,8 @@
 fcppt
 =====
 
+<img src="https://travis-ci.com/freundlich/fcppt.svg?branch=master">
+
 About
 -----
 
