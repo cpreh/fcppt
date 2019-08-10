@@ -43,15 +43,15 @@ Code example
 ```
 void print_at_2(std::vector<int> const &_vec)
 {
-	fcppt::optional::reference<int const> ref{
-		fcppt::container::at_optional(_vec, 2)
-	};
+  fcppt::optional::reference<int const> ref{
+    fcppt::container::at_optional(_vec, 2)
+  };
 
-	fcppt::optional::maybe(
-		ref,
-		[]{ std::cout << "No value at position 2\n"; },
-		[](fcppt::reference<int const> _value) { std::cout << "The value is " << _value.get() << '\n'; }
-	);
+  fcppt::optional::maybe(
+    ref,
+    []{ std::cout << "No value at position 2\n"; },
+    [](fcppt::reference<int const> _value) { std::cout << "The value is " << _value.get() << '\n'; }
+  );
 }
 ```
 
