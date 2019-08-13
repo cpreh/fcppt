@@ -25,7 +25,7 @@ namespace optional
 \tparam Arg A non reference type of the argument
 
 Converts \a _optional using <code>const_cast</code> to a <code>Result
-&</code> if \a <code>_optional.has_value()</code> is true. Otherwise, the empty
+&</code> if <code>_optional.has_value()</code> is true. Otherwise, the empty
 optional will be returned.
 */
 template<
