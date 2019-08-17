@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/from_std_string.hpp>
 #include <fcppt/error_code_to_string.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <system_error>
