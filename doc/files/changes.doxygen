@@ -19,6 +19,9 @@ fcppt now uses <code>std::filesystem</code>.
 	</ul>
 </li>
 
+<li>Removed the fcpptsystem library.
+</li>
+
 </ul>
 
 \section changes_changes_to_322 3.2.2

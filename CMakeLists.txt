@@ -35,12 +35,12 @@ set(
 
 set(
 	FCPPT_MINOR_VERSION
-	2
+	3
 )
 
 set(
 	FCPPT_MICRO_VERSION
-	2
+	0
 )
 
 set(
