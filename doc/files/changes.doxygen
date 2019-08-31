@@ -9,6 +9,18 @@ fcppt now uses <code>std::filesystem</code>.
 </li>
 </ul>
 
+\subsection changes_added_functionality_to_330 Added functionality
+
+<ul>
+
+<li>\ref fcpptrange
+	<ul>
+	<li>Added #fcppt::range::begin and #fcppt::range::end that call begin/end via ADL.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_330 Removed functionality
 
 <ul>

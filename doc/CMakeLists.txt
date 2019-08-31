@@ -1249,7 +1249,9 @@ set(
 	libs/core/include/fcppt/random/wrapper/uniform_container_decl.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_fwd.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_impl.hpp
+	libs/core/include/fcppt/range/begin.hpp
 	libs/core/include/fcppt/range/empty.hpp
+	libs/core/include/fcppt/range/end.hpp
 	libs/core/include/fcppt/range/hash.hpp
 	libs/core/include/fcppt/range/hash_decl.hpp
 	libs/core/include/fcppt/range/hash_fwd.hpp

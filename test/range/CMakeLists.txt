@@ -9,7 +9,15 @@ function(
 endfunction()
 
 add_fcppt_range_test(
+	begin
+)
+
+add_fcppt_range_test(
 	empty
+)
+
+add_fcppt_range_test(
+	end
 )
 
 add_fcppt_range_test(
