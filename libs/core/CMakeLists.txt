@@ -1039,6 +1039,7 @@ set(
 	libs/core/include/fcppt/range/begin.hpp
 	libs/core/include/fcppt/range/empty.hpp
 	libs/core/include/fcppt/range/end.hpp
+	libs/core/include/fcppt/range/from_pair.hpp
 	libs/core/include/fcppt/range/hash.hpp
 	libs/core/include/fcppt/range/hash_decl.hpp
 	libs/core/include/fcppt/range/hash_fwd.hpp

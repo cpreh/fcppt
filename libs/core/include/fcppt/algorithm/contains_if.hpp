@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_CONTAINS_IF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CONTAINS_IF_HPP_INCLUDED
 
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -35,14 +37,22 @@ contains_if(
 	Pred const &_pred
 )
 {
+	auto const range_end{
+		fcppt::range::end(
+			_range
+		)
+	};
+
 	return
 		std::find_if(
-			_range.begin(),
-			_range.end(),
+			fcppt::range::begin(
+				_range
+			),
+			range_end,
 			_pred
 		)
 		!=
-		_range.end();
+		range_end;
 }
 
 }

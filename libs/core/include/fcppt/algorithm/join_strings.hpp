@@ -11,6 +11,8 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
@@ -55,11 +57,25 @@ join_strings(
 	FCPPT_PP_PUSH_WARNING
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
+	// TODO
+	typedef
+	typename
+	Range::const_iterator
+	iterator;
+
+	iterator const end{
+		fcppt::range::end(
+			_range
+		)
+	};
+
 	for(
-		typename Range::const_iterator it(
-			_range.begin()
+		iterator it(
+			fcppt::range::begin(
+				_range
+			)
 		);
-		it != _range.end();
+		it != end;
 		++it
 	)
 	{
@@ -69,7 +85,8 @@ join_strings(
 			std::next(
 				it
 			)
-			!= _range.end()
+			!=
+			end
 		)
 			result += _delim;
 	}

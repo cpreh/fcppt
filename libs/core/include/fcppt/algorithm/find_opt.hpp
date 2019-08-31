@@ -9,6 +9,8 @@
 
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -58,12 +60,16 @@ find_opt(
 	result_type;
 
 	iterator_type const end{
-		_range.end()
+		fcppt::range::end(
+			_range
+		)
 	};
 
 	iterator_type const ret(
 		::std::find(
-			_range.begin(),
+			fcppt::range::begin(
+				_range
+			),
 			end,
 			_value
 		)

@@ -39,10 +39,20 @@ remove_if(
 	Predicate const &_predicate
 )
 {
-	typename Container::iterator const position(
+	// TODO
+	typedef
+	typename
+	Container::iterator
+	iterator;
+
+	iterator const end{
+		_container.end()
+	};
+
+	iterator const position(
 		std::remove_if(
 			_container.begin(),
-			_container.end(),
+			end,
 			_predicate
 		)
 	);
@@ -50,14 +60,14 @@ remove_if(
 	if(
 		position
 		==
-		_container.end()
+		end
 	)
 		return
 			false;
 
 	_container.erase(
 		position,
-		_container.end()
+		end
 	);
 
 	return

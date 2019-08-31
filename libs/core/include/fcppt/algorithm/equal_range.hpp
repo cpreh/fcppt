@@ -8,8 +8,10 @@
 #define FCPPT_ALGORITHM_EQUAL_RANGE_HPP_INCLUDED
 
 #include <fcppt/container/to_iterator_type.hpp>
-#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/iterator/range_impl.hpp>
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
+#include <fcppt/range/from_pair.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -45,18 +47,17 @@ equal_range(
 	T const &_value
 )
 {
-	auto const result{
-		::std::equal_range(
-			_range.begin(),
-			_range.end(),
-			_value
-		)
-	};
-
 	return
-		fcppt::iterator::make_range(
-			result.first,
-			result.second
+		fcppt::range::from_pair(
+			::std::equal_range(
+				fcppt::range::begin(
+					_range
+				),
+				fcppt::range::end(
+					_range
+				),
+				_value
+			)
 		);
 }
 

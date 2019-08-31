@@ -9,6 +9,8 @@
 
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/iterator/range_impl.hpp>
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 
 
 namespace fcppt
@@ -40,8 +42,12 @@ adapt_range(
 				Range
 			>
 		>{
-			_range.begin(),
-			_range.end()
+			fcppt::range::begin(
+				_range
+			),
+			fcppt::range::end(
+				_range
+			)
 		};
 }
 

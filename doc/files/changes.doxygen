@@ -16,6 +16,7 @@ fcppt now uses <code>std::filesystem</code>.
 <li>\ref fcpptrange
 	<ul>
 	<li>Added #fcppt::range::begin and #fcppt::range::end that call begin/end via ADL.</li>
+	<li>Added #fcppt::range::from_pair.</li>
 	</ul>
 </li>
 

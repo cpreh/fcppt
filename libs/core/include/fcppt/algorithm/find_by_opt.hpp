@@ -14,6 +14,8 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -48,7 +50,9 @@ find_by_opt(
 ->
 decltype(
 	_function(
-		*_range.begin()
+		*fcppt::range::begin(
+			_range
+		)
 	)
 )
 {
@@ -63,7 +67,9 @@ decltype(
 	typedef
 	decltype(
 		_function(
-			*_range.begin()
+			*fcppt::range::begin(
+				_range
+			)
 		)
 	)
 	result_type;
@@ -78,12 +84,16 @@ decltype(
 	);
 
 	iterator_type const end(
-		_range.end()
+		fcppt::range::end(
+			_range
+		)
 	);
 
 	for(
 		iterator_type cur(
-			_range.begin()
+			fcppt::range::begin(
+				_range
+			)
 		);
 		cur != end;
 		++cur

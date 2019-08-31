@@ -11,6 +11,7 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/range/begin.hpp>
 
 
 namespace fcppt
@@ -44,13 +45,16 @@ index_of(
 	T const &_value
 )
 {
+	// TODO
 	typedef
 	typename
 	Range::const_iterator
 	iterator_type;
 
 	iterator_type const beg(
-		_range.begin()
+		fcppt::range::begin(
+			_range
+		)
 	);
 
 	return

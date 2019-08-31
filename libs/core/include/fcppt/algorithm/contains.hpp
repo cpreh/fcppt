@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -35,14 +37,22 @@ contains(
 	T const &_value
 )
 {
+	auto const range_end{
+		fcppt::range::end(
+			_range
+		)
+	};
+
 	return
 		::std::find(
-			_range.begin(),
-			_range.end(),
+			fcppt::range::begin(
+				_range
+			),
+			range_end,
 			_value
 		)
 		!=
-		_range.end();
+		range_end;
 }
 
 }

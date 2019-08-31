@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_EQUAL_HPP_INCLUDED
 #define FCPPT_ALGORITHM_EQUAL_HPP_INCLUDED
 
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -35,10 +37,18 @@ equal(
 {
 	return
 		std::equal(
-			_range1.begin(),
-			_range1.end(),
-			_range2.begin(),
-			_range2.end()
+			fcppt::range::begin(
+				_range1
+			),
+			fcppt::range::end(
+				_range1
+			),
+			fcppt::range::begin(
+				_range2
+			),
+			fcppt::range::end(
+				_range2
+			)
 		);
 }
 

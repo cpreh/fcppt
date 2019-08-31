@@ -21,6 +21,10 @@ add_fcppt_range_test(
 )
 
 add_fcppt_range_test(
+	from_pair
+)
+
+add_fcppt_range_test(
 	singular
 )
 

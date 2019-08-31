@@ -221,4 +221,13 @@ main()
 		>::value,
 		"mpl vector not optimized"
 	);
+
+	// TODO
+/*
+	static_assert(
+		source_optimized<
+			int[5]
+		>::value,
+		"array not optimized"
+	);*/
 }

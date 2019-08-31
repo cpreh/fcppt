@@ -7,6 +7,9 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_REVERSE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_REVERSE_HPP_INCLUDED
 
+#include <fcppt/not.hpp>
+#include <fcppt/range/begin.hpp>
+#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -26,9 +29,11 @@ template<
 >
 inline
 std::enable_if_t<
-	!std::is_lvalue_reference<
-		Container
-	>::value,
+	fcppt::not_(
+		std::is_lvalue_reference_v<
+			Container
+		>
+	),
 	Container
 >
 reverse(
@@ -36,8 +41,12 @@ reverse(
 )
 {
 	std::reverse(
-		_container.begin(),
-		_container.end()
+		fcppt::range::begin(
+			_container
+		),
+		fcppt::range::end(
+			_container
+		)
 	);
 
 	return
