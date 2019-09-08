@@ -92,10 +92,6 @@ find_package(
 find_package(
 	Boost
 	1.47.0
-	COMPONENTS
-	filesystem
-	signals
-	system
 )
 
 if(
@@ -155,22 +151,8 @@ set(
 	"fcppt"
 	CACHE
 	STRING
-	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
+	"Which backend to use for the signal benchmark example {fcppt, boostsignals2}"
 )
-
-if(
-	${SIGNALS_BENCHMARK_BACKEND}
-	STREQUAL
-	"boostsignals"
-	AND
-	NOT
-	${Boost_SIGNALS_FOUND}
-)
-	message(
-		FATAL_ERROR
-		"Boost signals is required to run the boostsignals benchmark"
-	)
-endif()
 
 fcppt_utils_static_shared()
 

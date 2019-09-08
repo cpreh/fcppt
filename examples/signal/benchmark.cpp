@@ -4,14 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT
+#if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/auto_connection_container.hpp>
-#elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1)
-#include <fcppt/config/external_begin.hpp>
-#include <boost/signals.hpp>
-#include <vector>
-#include <fcppt/config/external_end.hpp>
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
 #include <fcppt/config/external_begin.hpp>
 #include <boost/signals2.hpp>
@@ -42,7 +37,7 @@ std::size_t const max_iterations = 1000000;
 int
 main()
 {
-#ifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT
+#if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
 	typedef
 	fcppt::signal::object<void()>
 	signal_type;
@@ -59,28 +54,6 @@ main()
 				)
 			)
 		);
-
-	s();
-#elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1)
-	typedef
-	boost::signal<void()>
-	signal_type;
-
-	signal_type s;
-
-	typedef
-	std::vector<boost::signals::connection>
-	connection_manager;
-
-	connection_manager manager;
-
-	manager.reserve(
-		max_iterations);
-
-	for(std::size_t i = 0; i < max_iterations; ++i)
-		manager.push_back(
-			s.connect(
-				&f));
 
 	s();
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)

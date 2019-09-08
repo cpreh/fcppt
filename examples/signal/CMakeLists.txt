@@ -9,23 +9,14 @@ function(
 endfunction()
 
 if(
-	${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals"
-)
-	add_fcppt_signal_example(
-		benchmark
-		LINK_LIBS
-			fcppt_core_interface
-			${Boost_SIGNALS_LIBRARY}
-		COMPILE_DEFINITIONS
-			FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1
-	)
-elseif(
 	${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals2"
 )
 	add_fcppt_signal_example(
 		benchmark
 		LINK_LIBS
 			fcppt_core_interface
+		INCLUDE_DIRS
+			${Boost_INCLUDE_DIRS}
 		COMPILE_DEFINITIONS
 			FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2
 	)
