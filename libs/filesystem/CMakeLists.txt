@@ -43,8 +43,4 @@ make_fcppt_library(
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
-	DEPS
-		${FCPPT_UTILS_FILESYSTEM_LIBRARIES}
-	TRANSITIVE_DEPS
-		${FCPPT_UTILS_FILESYSTEM_LIBRARIES}
 )

@@ -1420,26 +1420,3 @@ function(
 		)
 	endforeach()
 endfunction()
-
-include(
-	CheckCXXSourceCompiles
-)
-
-check_cxx_source_compiles(
-	"#include <iostream>
-	int main() { std::cout << _LIBCPP_VERSION; }"
-	FCPPT_UTILS_HAVE_LIBCXX
-)
-
-set(
-	FCPPT_UTILS_FILESYSTEM_LIBRARIES
-)
-
-if(
-	FCPPT_UTILS_HAVE_LIBCXX
-)
-	set(
-		FCPPT_UTILS_FILESYSTEM_LIBRARIES
-		"c++fs"
-	)
-endif()
