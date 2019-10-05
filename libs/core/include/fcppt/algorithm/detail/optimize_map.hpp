@@ -12,8 +12,7 @@
 #include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/logical/and.hpp>
-#include <brigand/functions/logical/or.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,11 +30,11 @@ template<
 using
 optimize_map
 =
-::brigand::and_<
+std::conjunction<
 	fcppt::algorithm::detail::has_reserve<
 		Dest
 	>,
-	::brigand::or_<
+	std::disjunction<
 		fcppt::algorithm::detail::has_random_access_iterator<
 			Source
 		>,

@@ -14,7 +14,6 @@
 #include <brigand/algorithms/all.hpp>
 #include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
-#include <brigand/functions/logical/and.hpp>
 #include <brigand/sequences/set.hpp>
 #include <brigand/types/args.hpp>
 #include <type_traits>
@@ -38,7 +37,7 @@ template<
 using
 are_equivalent
 =
-::brigand::and_<
+std::conjunction<
 	std::is_same<
 		fcppt::brigand::set_symmetric_difference<
 			fcppt::record::label_set<

@@ -14,7 +14,6 @@
 #include <fcppt/iterator/is_types.hpp>
 #include <fcppt/iterator/types.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/logical/or.hpp>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -134,7 +133,7 @@ private:
 			my_category_at_least<
 				std::forward_iterator_tag
 			>,
-			::brigand::or_<
+			std::disjunction<
 				std::is_same<
 					reference,
 					value_type &

@@ -8,8 +8,7 @@
 #define FCPPT_BRIGAND_IMPLICATION_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/logical/not.hpp>
-#include <brigand/functions/logical/or.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -39,8 +38,8 @@ template<
 using
 implication
 =
-::brigand::or_<
-	::brigand::not_<
+std::disjunction<
+	std::negation<
 		Left
 	>,
 	Right

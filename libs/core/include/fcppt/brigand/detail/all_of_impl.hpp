@@ -40,7 +40,7 @@ struct all_of_impl<
 	Predicate
 >
 :
-::brigand::and_<
+std::conjunction<
 	std::true_type,
 	::brigand::apply<
 		Predicate,

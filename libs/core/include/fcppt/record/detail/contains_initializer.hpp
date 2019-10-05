@@ -13,7 +13,6 @@
 #include <brigand/algorithms/find.hpp>
 #include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
-#include <brigand/functions/logical/not.hpp>
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
 #include <type_traits>
@@ -34,7 +33,7 @@ template<
 using
 contains_initializer
 =
-::brigand::not_<
+std::negation<
 	std::is_same<
 		::brigand::find<
 			Args,

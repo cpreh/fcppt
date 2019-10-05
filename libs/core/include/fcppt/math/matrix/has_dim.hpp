@@ -11,7 +11,7 @@
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/logical/and.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -59,7 +59,7 @@ struct has_dim<
 	DC
 >
 :
-::brigand::and_<
+std::conjunction<
 	fcppt::math::detail::dim_matches<
 		DR,
 		R

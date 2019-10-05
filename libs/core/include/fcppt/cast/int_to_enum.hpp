@@ -8,7 +8,6 @@
 #define FCPPT_CAST_INT_TO_ENUM_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/logical/and.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -44,14 +43,13 @@ int_to_enum(
 noexcept
 {
 	static_assert(
-		::brigand::and_<
-			std::is_enum<
-				Enum
-			>,
-			std::is_integral<
-				Source
-			>
-		>::value,
+		std::is_enum_v<
+			Enum
+		>
+		&&
+		std::is_integral_v<
+			Source
+		>,
 		"int_to_enum can only cast from integral types to enumerations"
 	);
 
