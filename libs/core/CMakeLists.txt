@@ -1358,8 +1358,10 @@ make_fcppt_library(
 		FCPPT
 	IMPORTED_DEPS
 		Brigand
+		Metal
 	TRANSITIVE_IMPORTED_DEPS
 		Brigand
+		Metal
 	INCLUDE_DIRS
 		${CORE_INCLUDE_DIRS}
 )

@@ -90,6 +90,11 @@ find_package(
 )
 
 find_package(
+	Metal
+	REQUIRED
+)
+
+find_package(
 	Boost
 	1.47.0
 )
@@ -606,6 +611,7 @@ set(
 install(
 	FILES
 	${FCPPT_CMAKE_MODULES_DIR}/FindBrigand.cmake
+	${FCPPT_CMAKE_MODULES_DIR}/FindMetal.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FindFcpptThreads.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtils.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptExport.cmake
