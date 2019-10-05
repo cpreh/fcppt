@@ -213,6 +213,10 @@ add_subdirectory(
 	math
 )
 
+add_subdirectory(
+	metal
+)
+
 add_fcppt_test(
 	move_clear
 )

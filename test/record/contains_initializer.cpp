@@ -9,7 +9,7 @@
 #include <fcppt/record/detail/contains_initializer.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -58,7 +58,7 @@ test(
 )
 {
 	typedef
-	brigand::list<
+	metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Args
 		>...

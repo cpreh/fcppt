@@ -10,11 +10,10 @@
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/find.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/partial.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/find_if.hpp>
+#include <metal/list/size.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -35,19 +34,20 @@ contains_initializer
 =
 std::negation<
 	std::is_same<
-		::brigand::find<
+		::metal::find_if<
 			Args,
-			::brigand::bind<
-				fcppt::record::detail::label_is_same,
-				::brigand::pin<
-					fcppt::record::element_to_label<
-						Element
-					>
+			::metal::partial<
+				::metal::trait<
+					fcppt::record::detail::label_is_same
 				>,
-				::brigand::_1
+				fcppt::record::element_to_label<
+					Element
+				>
 			>
 		>,
-		::brigand::list<>
+		::metal::size<
+			Args
+		>
 	>
 >;
 

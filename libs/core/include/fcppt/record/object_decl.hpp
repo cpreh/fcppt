@@ -25,6 +25,7 @@
 #include <brigand/algorithms/transform.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/types/args.hpp>
+#include <metal/list/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -57,17 +58,17 @@ class object
 {
 public:
 	static_assert(
-		fcppt::type_traits::is_brigand_sequence<
+		::metal::is_list<
 			Types
 		>::value,
 		"Types must be a brigand sequence"
 	);
 
 	static_assert(
-		::brigand::all<
+		::metal::all_of<
 			Types,
-			fcppt::record::is_element<
-				::brigand::_1
+			::metal::trait<
+				fcppt::record::is_element
 			>
 		>::value,
 		"Types of record::object must all be fcppt::record::element<>"
@@ -97,11 +98,10 @@ public:
 	*/
 	typedef
 	::brigand::as_tuple<
-		::brigand::transform<
+		::metal::transform<
 			all_types,
-			::brigand::bind<
-				fcppt::record::element_to_type,
-				::brigand::_1
+			::metal::lambda<
+				fcppt::record::element_to_type
 			>
 		>
 	>

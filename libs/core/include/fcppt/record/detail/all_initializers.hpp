@@ -7,12 +7,11 @@
 #ifndef FCPPT_RECORD_DETAIL_ALL_INITIALIZERS_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ALL_INITIALIZERS_HPP_INCLUDED
 
-#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/record/detail/contains_initializer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/partial.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,14 +29,13 @@ template<
 using
 all_initializers
 =
-fcppt::brigand::all_of<
+::metal::all_of<
 	Elements,
-	::brigand::bind<
-		fcppt::record::detail::contains_initializer,
-		::brigand::pin<
-			Args
+	::metal::partial<
+		::metal::trait<
+			fcppt::record::detail::contains_initializer
 		>,
-		::brigand::_1
+		Args
 	>
 >;
 

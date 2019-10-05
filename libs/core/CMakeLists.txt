@@ -105,9 +105,7 @@ set(
 	libs/core/include/fcppt/bit/shifted_mask.hpp
 	libs/core/include/fcppt/bit/shifted_mask_c.hpp
 	libs/core/include/fcppt/bit/test.hpp
-	libs/core/include/fcppt/brigand/all_of.hpp
 	libs/core/include/fcppt/brigand/ceil_div.hpp
-	libs/core/include/fcppt/brigand/detail/all_of_impl.hpp
 	libs/core/include/fcppt/brigand/detail/ceil_div.hpp
 	libs/core/include/fcppt/brigand/detail/for_each_break.hpp
 	libs/core/include/fcppt/brigand/detail/integral_cast_value.hpp
@@ -137,7 +135,6 @@ set(
 	libs/core/include/fcppt/brigand/set_difference.hpp
 	libs/core/include/fcppt/brigand/set_intersection.hpp
 	libs/core/include/fcppt/brigand/set_symmetric_difference.hpp
-	libs/core/include/fcppt/brigand/set_union.hpp
 	libs/core/include/fcppt/brigand/unique.hpp
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
@@ -900,6 +897,11 @@ set(
 	libs/core/include/fcppt/math/vector/to_signed.hpp
 	libs/core/include/fcppt/math/vector/to_unsigned.hpp
 	libs/core/include/fcppt/math/vector/unit.hpp
+	libs/core/include/fcppt/metal/set/has_key.hpp
+	libs/core/include/fcppt/metal/set/insert_key.hpp
+	libs/core/include/fcppt/metal/set/insert_key_relaxed.hpp
+	libs/core/include/fcppt/metal/set/make.hpp
+	libs/core/include/fcppt/metal/set/union.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
 	libs/core/include/fcppt/move_clear.hpp

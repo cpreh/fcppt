@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/all_of.hpp>
+#include <fcppt/metal/set/has_key.hpp>
+#include <fcppt/metal/set/insert_key_relaxed.hpp>
+#include <fcppt/metal/set/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -15,29 +15,31 @@
 int
 main()
 {
+	typedef
+	fcppt::metal::set::make<
+		short,
+		int
+	>
+	set;
+
 	static_assert(
-		fcppt::brigand::all_of<
-			brigand::list<
-				int,
-				long
+		std::is_same_v<
+			fcppt::metal::set::insert_key_relaxed<
+				set,
+				short
 			>,
-			std::is_integral<
-				brigand::_1
-			>
-		>::value,
-		""
+			set
+		>
 	);
 
 	static_assert(
-		!fcppt::brigand::all_of<
-			brigand::list<
-				float,
-				int
+		fcppt::metal::set::has_key<
+			fcppt::metal::set::insert_key_relaxed<
+				set,
+				long
 			>,
-			std::is_integral<
-				brigand::_1
-			>
-		>::value,
-		""
+			long
+		>::value
 	);
+
 }

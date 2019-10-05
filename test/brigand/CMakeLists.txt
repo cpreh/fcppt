@@ -11,11 +11,6 @@ function(
 endfunction()
 
 add_fcppt_brigand_test(
-	all_of
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
 	ceil_div
 	NO_CODE
 )
@@ -98,11 +93,6 @@ add_fcppt_brigand_test(
 
 add_fcppt_brigand_test(
 	set_symmetric_difference
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
-	set_union
 	NO_CODE
 )
 

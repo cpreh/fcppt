@@ -4,37 +4,37 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_VARIADIC_FWD_HPP_INCLUDED
-#define FCPPT_RECORD_VARIADIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_METAL_SET_MAKE_HPP_INCLUDED
+#define FCPPT_METAL_SET_MAKE_HPP_INCLUDED
 
-#include <fcppt/record/object_fwd.hpp>
+#include <fcppt/unit.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal/map/map.hpp>
+#include <metal/pair/pair.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace record
+namespace metal
+{
+namespace set
 {
 
-/**
-\brief Declares a record using a parameter pack.
-
-\ingroup fcpptrecord
-*/
 template<
 	typename... Types
 >
 using
-variadic
+make
 =
-fcppt::record::object<
-	::metal::list<
-		Types...
-	>
+::metal::map<
+	::metal::pair<
+		Types,
+		fcppt::unit
+	>...
 >;
 
+}
 }
 }
 

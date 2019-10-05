@@ -4,23 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/set_union.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/has_key.hpp>
-#include <brigand/sequences/set.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/metal/set/make.hpp>
+#include <fcppt/metal/set/has_key.hpp>
+#include <fcppt/metal/set/union.hpp>
 
 
 int
 main()
 {
 	typedef
-	fcppt::brigand::set_union<
-		brigand::set<
+	fcppt::metal::set::union_<
+		fcppt::metal::set::make<
 			short,
 			int
 		>,
-		brigand::set<
+		fcppt::metal::set::make<
 			int,
 			long
 		>
@@ -28,7 +26,7 @@ main()
 	result;
 
 	static_assert(
-		brigand::has_key<
+		fcppt::metal::set::has_key<
 			result,
 			int
 		>::value,
@@ -36,7 +34,7 @@ main()
 	);
 
 	static_assert(
-		brigand::has_key<
+		fcppt::metal::set::has_key<
 			result,
 			short
 		>::value,
@@ -44,7 +42,7 @@ main()
 	);
 
 	static_assert(
-		brigand::has_key<
+		fcppt::metal::set::has_key<
 			result,
 			long
 		>::value,
