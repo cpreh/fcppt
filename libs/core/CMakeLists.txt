@@ -122,7 +122,6 @@ set(
 	libs/core/include/fcppt/brigand/flip_pair.hpp
 	libs/core/include/fcppt/brigand/for_each_break.hpp
 	libs/core/include/fcppt/brigand/found_t.hpp
-	libs/core/include/fcppt/brigand/implication.hpp
 	libs/core/include/fcppt/brigand/integral_cast.hpp
 	libs/core/include/fcppt/brigand/invoke_on.hpp
 	libs/core/include/fcppt/brigand/is_set.hpp
@@ -1232,6 +1231,7 @@ set(
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/function_result.hpp
+	libs/core/include/fcppt/type_traits/implication.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_brigand_sequence.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp

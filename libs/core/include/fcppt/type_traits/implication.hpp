@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_IMPLICATION_HPP_INCLUDED
-#define FCPPT_BRIGAND_IMPLICATION_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_IMPLICATION_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_IMPLICATION_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -14,18 +14,16 @@
 
 namespace fcppt
 {
-namespace brigand
+namespace type_traits
 {
 
 /**
 \brief The implication function: \a Left -> \a Right
 
-\ingroup fcpptbrigand
+\ingroup fcppttype_traits
 
 Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
 \a Right)
-
-\snippet brigand/various.cpp brigand_implication
 
 \tparam Left A boolean expression
 

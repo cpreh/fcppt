@@ -8,11 +8,11 @@
 #define FCPPT_ITERATOR_BASE_DECL_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
-#include <fcppt/brigand/implication.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/category_at_least.hpp>
 #include <fcppt/iterator/is_types.hpp>
 #include <fcppt/iterator/types.hpp>
+#include <fcppt/type_traits/implication.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <type_traits>
@@ -129,7 +129,7 @@ private:
 	>;
 
 	static_assert(
-		fcppt::brigand::implication<
+		fcppt::type_traits::implication<
 			my_category_at_least<
 				std::forward_iterator_tag
 			>,
@@ -148,7 +148,7 @@ private:
 	);
 
 	static_assert(
-		fcppt::brigand::implication<
+		fcppt::type_traits::implication<
 			my_category_at_least<
 				std::random_access_iterator_tag
 			>,

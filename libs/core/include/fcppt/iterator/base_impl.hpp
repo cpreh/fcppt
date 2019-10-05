@@ -8,9 +8,9 @@
 #define FCPPT_ITERATOR_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/brigand/implication.hpp>
 #include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/type_traits/implication.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <type_traits>
@@ -26,7 +26,7 @@ fcppt::iterator::base<
 >::base()
 {
 	static_assert(
-		fcppt::brigand::implication<
+		fcppt::type_traits::implication<
 			my_category_at_least<
 				std::forward_iterator_tag
 			>,

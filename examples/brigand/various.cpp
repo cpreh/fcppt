@@ -7,7 +7,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/brigand/ceil_div.hpp>
 #include <fcppt/brigand/equal_to.hpp>
-#include <fcppt/brigand/implication.hpp>
 #include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/brigand/list_c.hpp>
 #include <fcppt/brigand/max_value.hpp>
@@ -55,26 +54,6 @@ static_assert(
 	""
 );
 //! [brigand_ceil_div]
-}
-
-namespace implication
-{
-//! [brigand_implication]
-typedef
-fcppt::brigand::implication<
-	std::false_type,
-	std::true_type
->
-result;
-
-static_assert(
-	brigand::equal_to<
-		result,
-		std::true_type
-	>::value,
-	""
-);
-//! [brigand_implication]
 }
 
 namespace integral_cast
