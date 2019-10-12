@@ -7,11 +7,9 @@
 #ifndef FCPPT_RECORD_LABEL_SET_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_SET_HPP_INCLUDED
 
+#include <fcppt/metal/set/from_list.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/detail/label_list.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/set.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -32,7 +30,7 @@ template<
 using
 label_set
 =
-::brigand::as_set<
+fcppt::metal::set::from_list<
 	fcppt::record::detail::label_list<
 		fcppt::record::element_vector<
 			Record

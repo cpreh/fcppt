@@ -10,12 +10,6 @@ function(
 	)
 endfunction()
 
-add_fcppt_metal_test(
-	set_insert_key_relaxed
-	NO_CODE
-)
-
-add_fcppt_metal_test(
-	set_union
-	NO_CODE
+add_subdirectory(
+	set
 )

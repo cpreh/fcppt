@@ -4,34 +4,36 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_DETAIL_LABEL_LIST_HPP_INCLUDED
-#define FCPPT_RECORD_DETAIL_LABEL_LIST_HPP_INCLUDED
+#ifndef FCPPT_METAL_SET_FROM_LIST_HPP_INCLUDED
+#define FCPPT_METAL_SET_FROM_LIST_HPP_INCLUDED
 
-#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/metal/set/insert_key_relaxed.hpp>
+#include <fcppt/metal/set/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/lambda/lambda.hpp>
-#include <metal/list/transform.hpp>
+#include <metal/list/accumulate.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace record
+namespace metal
 {
-namespace detail
+namespace set
 {
 
 template<
-	typename ElementList
+	typename List
 >
 using
-label_list
+from_list
 =
-::metal::transform<
-	ElementList,
+::metal::accumulate<
 	::metal::lambda<
-		fcppt::record::element_to_label
-	>
+		fcppt::metal::set::insert_key_relaxed
+	>,
+	fcppt::metal::set::make<>,
+	List
 >;
 
 }

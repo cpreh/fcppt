@@ -897,6 +897,7 @@ set(
 	libs/core/include/fcppt/math/vector/to_signed.hpp
 	libs/core/include/fcppt/math/vector/to_unsigned.hpp
 	libs/core/include/fcppt/math/vector/unit.hpp
+	libs/core/include/fcppt/metal/set/from_list.hpp
 	libs/core/include/fcppt/metal/set/has_key.hpp
 	libs/core/include/fcppt/metal/set/insert_key.hpp
 	libs/core/include/fcppt/metal/set/insert_key_relaxed.hpp
