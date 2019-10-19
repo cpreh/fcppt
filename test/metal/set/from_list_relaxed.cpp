@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/set/from_list.hpp>
-#include <fcppt/metal/set/has_key.hpp>
+#include <fcppt/metal/set/contains.hpp>
+#include <fcppt/metal/set/from_list_relaxed.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/list.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -15,7 +15,7 @@ int
 main()
 {
 	typedef
-	fcppt::metal::set::from_list<
+	fcppt::metal::set::from_list_relaxed<
 		::metal::list<
 			short,
 			int,
@@ -25,7 +25,7 @@ main()
 	result;
 
 	static_assert(
-		fcppt::metal::set::has_key<
+		fcppt::metal::set::contains<
 			result,
 			int
 		>::value,
@@ -33,7 +33,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::metal::set::has_key<
+		fcppt::metal::set::contains<
 			result,
 			short
 		>::value,

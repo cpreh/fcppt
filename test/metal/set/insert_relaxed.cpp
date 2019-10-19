@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/set/has_key.hpp>
-#include <fcppt/metal/set/insert_key_relaxed.hpp>
+#include <fcppt/metal/set/contains.hpp>
+#include <fcppt/metal/set/insert_relaxed.hpp>
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -24,7 +24,7 @@ main()
 
 	static_assert(
 		std::is_same_v<
-			fcppt::metal::set::insert_key_relaxed<
+			fcppt::metal::set::insert_relaxed<
 				set,
 				short
 			>,
@@ -33,13 +33,12 @@ main()
 	);
 
 	static_assert(
-		fcppt::metal::set::has_key<
-			fcppt::metal::set::insert_key_relaxed<
+		fcppt::metal::set::contains<
+			fcppt::metal::set::insert_relaxed<
 				set,
 				long
 			>,
 			long
 		>::value
 	);
-
 }

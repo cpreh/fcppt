@@ -4,32 +4,33 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/is_set.hpp>
+#ifndef FCPPT_METAL_SET_SIZE_HPP_INCLUDED
+#define FCPPT_METAL_SET_SIZE_HPP_INCLUDED
+
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/size.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-int
-main()
+namespace fcppt
 {
-	static_assert(
-		fcppt::brigand::is_set<
-			brigand::list<
-				int,
-				float
-			>
-		>::value,
-		""
-	);
+namespace metal
+{
+namespace set
+{
 
-	static_assert(
-		!fcppt::brigand::is_set<
-			brigand::list<
-				int,
-				int
-			>
-		>::value,
-		""
-	);
+template<
+	typename Set
+>
+using
+size
+=
+::metal::size<
+	Set
+>;
+
 }
+}
+}
+
+#endif

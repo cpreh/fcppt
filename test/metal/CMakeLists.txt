@@ -10,6 +10,11 @@ function(
 	)
 endfunction()
 
+add_fcppt_metal_test(
+	is_set
+	NO_CODE
+)
+
 add_subdirectory(
 	set
 )

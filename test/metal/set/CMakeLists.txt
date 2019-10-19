@@ -11,12 +11,22 @@ function(
 endfunction()
 
 add_fcppt_metal_set_test(
-	from_list
+	from_list_relaxed
 	NO_CODE
 )
 
 add_fcppt_metal_set_test(
-	insert_key_relaxed
+	insert_relaxed
+	NO_CODE
+)
+
+add_fcppt_metal_set_test(
+	make
+	NO_CODE
+)
+
+add_fcppt_metal_set_test(
+	make_relaxed
 	NO_CODE
 )
 

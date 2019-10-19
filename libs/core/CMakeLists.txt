@@ -897,11 +897,15 @@ set(
 	libs/core/include/fcppt/math/vector/to_signed.hpp
 	libs/core/include/fcppt/math/vector/to_unsigned.hpp
 	libs/core/include/fcppt/math/vector/unit.hpp
-	libs/core/include/fcppt/metal/set/from_list.hpp
-	libs/core/include/fcppt/metal/set/has_key.hpp
-	libs/core/include/fcppt/metal/set/insert_key.hpp
-	libs/core/include/fcppt/metal/set/insert_key_relaxed.hpp
+	libs/core/include/fcppt/metal/is_set.hpp
+	libs/core/include/fcppt/metal/set/contains.hpp
+	libs/core/include/fcppt/metal/set/empty.hpp
+	libs/core/include/fcppt/metal/set/from_list_relaxed.hpp
+	libs/core/include/fcppt/metal/set/insert.hpp
+	libs/core/include/fcppt/metal/set/insert_relaxed.hpp
 	libs/core/include/fcppt/metal/set/make.hpp
+	libs/core/include/fcppt/metal/set/make_relaxed.hpp
+	libs/core/include/fcppt/metal/set/size.hpp
 	libs/core/include/fcppt/metal/set/union.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp

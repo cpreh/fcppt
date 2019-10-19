@@ -4,37 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_VARIADIC_FWD_HPP_INCLUDED
-#define FCPPT_VARIANT_VARIADIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_METAL_SET_CONTAINS_HPP_INCLUDED
+#define FCPPT_METAL_SET_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal/map/has_key.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace variant
+namespace metal
+{
+namespace set
 {
 
-/**
-\brief Declares a variant using a parameter pack
-
-\ingroup fcpptvariant
-*/
 template<
-	typename... Types
+	typename Set,
+	typename Key
 >
 using
-variadic
+contains
 =
-fcppt::variant::object<
-	::metal::list<
-		Types...
-	>
+::metal::has_key<
+	Set,
+	Key
 >;
 
+}
 }
 }
 

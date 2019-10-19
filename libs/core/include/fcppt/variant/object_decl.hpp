@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/brigand/is_set.hpp>
+#include <fcppt/metal/is_set.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -16,6 +16,9 @@
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/variant/detail/std_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <metal/list/list.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -45,14 +48,14 @@ class object
 {
 public:
 	static_assert(
-		fcppt::type_traits::is_brigand_sequence<
+		::metal::is_list<
 			Types
 		>::value,
-		"Types must be a brigand sequence"
+		"Types must be a metal list"
 	);
 
 	static_assert(
-		fcppt::brigand::is_set<
+		fcppt::metal::is_set<
 			Types
 		>::value,
 		"Variant types must form a set"

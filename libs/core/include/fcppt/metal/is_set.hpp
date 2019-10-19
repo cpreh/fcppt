@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_METAL_SET_INSERT_KEY_HPP_INCLUDED
-#define FCPPT_METAL_SET_INSERT_KEY_HPP_INCLUDED
+#ifndef FCPPT_METAL_IS_SET_HPP_INCLUDED
+#define FCPPT_METAL_IS_SET_HPP_INCLUDED
 
-#include <fcppt/unit.hpp>
+#include <fcppt/metal/set/from_list_relaxed.hpp>
+#include <fcppt/metal/set/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/map/insert_key.hpp>
+#include <metal/list/size.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -17,23 +19,24 @@ namespace fcppt
 {
 namespace metal
 {
-namespace set
-{
 
 template<
-	typename Set,
-	typename Key
+	typename List
 >
 using
-insert_key
+is_set
 =
-::metal::insert_key<
-	Set,
-	Key,
-	fcppt::unit
+std::is_same<
+	::metal::size<
+		List
+	>,
+	fcppt::metal::set::size<
+		fcppt::metal::set::from_list_relaxed<
+			List
+		>
+	>
 >;
 
-}
 }
 }
 

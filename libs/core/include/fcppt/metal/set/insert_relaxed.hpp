@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_METAL_SET_INSERT_KEY_RELAXED_HPP_INCLUDED
-#define FCPPT_METAL_SET_INSERT_KEY_RELAXED_HPP_INCLUDED
+#ifndef FCPPT_METAL_SET_INSERT_RELAXED_HPP_INCLUDED
+#define FCPPT_METAL_SET_INSERT_RELAXED_HPP_INCLUDED
 
-#include <fcppt/metal/set/insert_key.hpp>
-#include <fcppt/metal/set/has_key.hpp>
+#include <fcppt/metal/set/contains.hpp>
+#include <fcppt/metal/set/insert.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/lambda/always.hpp>
 #include <metal/lambda/bind.hpp>
@@ -30,11 +30,11 @@ template<
 	typename Key
 >
 using
-insert_key_relaxed
+insert_relaxed
 =
 ::metal::invoke<
 	::metal::if_<
-		fcppt::metal::set::has_key<
+		fcppt::metal::set::contains<
 			Set,
 			Key
 		>,
@@ -43,7 +43,7 @@ insert_key_relaxed
 		>,
 		::metal::bind<
 			::metal::lambda<
-				fcppt::metal::set::insert_key
+				fcppt::metal::set::insert
 			>,
 			::metal::always<
 				Set

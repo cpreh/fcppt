@@ -4,16 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_METAL_SET_MAKE_HPP_INCLUDED
-#define FCPPT_METAL_SET_MAKE_HPP_INCLUDED
+#ifndef FCPPT_METAL_SET_MAKE_RELAXED_HPP_INCLUDED
+#define FCPPT_METAL_SET_MAKE_RELAXED_HPP_INCLUDED
 
-#include <fcppt/metal/set/empty.hpp>
-#include <fcppt/metal/set/insert.hpp>
+#include <fcppt/metal/set/from_list_relaxed.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/accumulate.hpp>
 #include <metal/list/list.hpp>
-#include <metal/map/map.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,13 +24,9 @@ template<
 	typename... Types
 >
 using
-make
+make_relaxed
 =
-::metal::accumulate<
-	::metal::lambda<
-		fcppt::metal::set::insert
-	>,
-	::metal::map<>,
+fcppt::metal::set::from_list_relaxed<
 	::metal::list<
 		Types...
 	>
