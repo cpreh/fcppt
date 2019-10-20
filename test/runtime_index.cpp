@@ -5,8 +5,8 @@
 
 
 #include <fcppt/const.hpp>
+#include <fcppt/runtime_index.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
@@ -34,8 +34,8 @@ std::integral_constant<
 }
 
 TEST_CASE(
-	"brigand::runtime_index",
-	"[brigand]"
+	"runtime_index",
+	"[various]"
 )
 {
 	typedef
@@ -45,7 +45,7 @@ TEST_CASE(
 	max_index;
 
 	CHECK(
-		fcppt::brigand::runtime_index<
+		fcppt::runtime_index<
 			max_index
 		>(
 			0u,
@@ -77,7 +77,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::brigand::runtime_index<
+		fcppt::runtime_index<
 			max_index
 		>(
 			1u,
@@ -109,7 +109,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::brigand::runtime_index<
+		fcppt::runtime_index<
 			max_index
 		>(
 			2u,

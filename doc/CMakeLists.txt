@@ -322,7 +322,6 @@ set(
 	libs/core/include/fcppt/brigand/detail/ceil_div.hpp
 	libs/core/include/fcppt/brigand/detail/for_each_break.hpp
 	libs/core/include/fcppt/brigand/detail/integral_cast_value.hpp
-	libs/core/include/fcppt/brigand/detail/is_set.hpp
 	libs/core/include/fcppt/brigand/detail/print.hpp
 	libs/core/include/fcppt/brigand/detail/print_one.hpp
 	libs/core/include/fcppt/brigand/detail/runtime_index.hpp
@@ -335,12 +334,9 @@ set(
 	libs/core/include/fcppt/brigand/found_t.hpp
 	libs/core/include/fcppt/brigand/integral_cast.hpp
 	libs/core/include/fcppt/brigand/invoke_on.hpp
-	libs/core/include/fcppt/brigand/is_set.hpp
 	libs/core/include/fcppt/brigand/list_c.hpp
 	libs/core/include/fcppt/brigand/max_value.hpp
 	libs/core/include/fcppt/brigand/numeric_max.hpp
-	libs/core/include/fcppt/brigand/pair_first.hpp
-	libs/core/include/fcppt/brigand/pair_second.hpp
 	libs/core/include/fcppt/brigand/partial_sums.hpp
 	libs/core/include/fcppt/brigand/print.hpp
 	libs/core/include/fcppt/brigand/runtime_index.hpp

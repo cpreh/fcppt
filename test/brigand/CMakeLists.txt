@@ -74,10 +74,6 @@ add_fcppt_brigand_test(
 )
 
 add_fcppt_brigand_test(
-	runtime_index
-)
-
-add_fcppt_brigand_test(
 	set_difference
 	NO_CODE
 )

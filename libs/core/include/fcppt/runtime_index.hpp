@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_RUNTIME_INDEX_HPP_INCLUDED
-#define FCPPT_BRIGAND_RUNTIME_INDEX_HPP_INCLUDED
+#ifndef FCPPT_RUNTIME_INDEX_HPP_INCLUDED
+#define FCPPT_RUNTIME_INDEX_HPP_INCLUDED
 
-#include <fcppt/brigand/detail/runtime_index.hpp>
+#include <fcppt/detail/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -15,13 +15,11 @@
 
 namespace fcppt
 {
-namespace brigand
-{
 
 /**
 \brief Transforms a runtime index into a an integral constant.
 
-\ingroup fcpptbrigand
+\ingroup fcpptvarious
 
 Passes \a _index as an integral constant to \a _function if \a _index is less
 than \a MaxIndex::value, and returns its result.
@@ -53,14 +51,14 @@ runtime_index(
 )
 {
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			Index
-		>::value,
+		>,
 		"runtime_index can only be used with unsigned indices"
 	);
 
 	return
-		fcppt::brigand::detail::runtime_index<
+		fcppt::detail::runtime_index<
 			MaxIndex,
 			std::integral_constant<
 				Index,
@@ -74,7 +72,6 @@ runtime_index(
 
 }
 
-}
 }
 
 #endif

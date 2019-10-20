@@ -4,21 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_DETAIL_RUNTIME_INDEX_HPP_INCLUDED
-#define FCPPT_BRIGAND_DETAIL_RUNTIME_INDEX_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_RUNTIME_INDEX_HPP_INCLUDED
+#define FCPPT_DETAIL_RUNTIME_INDEX_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/arithmetic/next.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
-{
-namespace brigand
 {
 namespace detail
 {
@@ -107,10 +104,13 @@ struct runtime_index<
 					CurrentIndex()
 				)
 			:
-				fcppt::brigand::detail::runtime_index<
+				fcppt::detail::runtime_index<
 					MaxIndex,
-					::brigand::next<
-						CurrentIndex
+					std::integral_constant<
+						Index,
+						CurrentIndex::value
+						+
+						1
 					>
 				>::execute(
 					_index,
@@ -121,7 +121,6 @@ struct runtime_index<
 	}
 };
 
-}
 }
 }
 

@@ -276,6 +276,10 @@ add_fcppt_test(
 	reference_to_const
 )
 
+add_fcppt_test(
+	runtime_index
+)
+
 if(
 	ENABLE_BOOST
 )
