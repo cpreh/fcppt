@@ -4,26 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_CEIL_DIV_HPP_INCLUDED
-#define FCPPT_BRIGAND_CEIL_DIV_HPP_INCLUDED
+#ifndef FCPPT_MATH_CEIL_DIV_STATIC_HPP_INCLUDED
+#define FCPPT_MATH_CEIL_DIV_STATIC_HPP_INCLUDED
 
-#include <fcppt/brigand/detail/ceil_div.hpp>
+#include <fcppt/math/detail/ceil_div_static.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace math
 {
 
 /**
-\brief Calculates a division of integral contants rounded towards infinity
+\brief Calculates a division of integral contants rounded towards infinity.
 
-\ingroup fcpptbrigand
+\ingroup fcpptmath
 
 Calculates <code>Dividend / Divisor</code> rounded towards infinity. For
-exabrigande, <code>5 / 3</code> would result in <code>2</code>.
-
-\snippet brigand/various.cpp brigand_ceil_div
+example, <code>5 / 3</code> would result in <code>2</code>.
+The result type is a <code>std::integral_constant<Type,V></code>,
+where <code>V</code> is the calculated value.
 
 \tparam Type Must be an unsigned integral type
 
@@ -37,10 +37,10 @@ template<
 	Type Divisor
 >
 using
-ceil_div
+ceil_div_static
 =
 typename
-fcppt::brigand::detail::ceil_div<
+fcppt::math::detail::ceil_div_static<
 	Type,
 	Dividend,
 	Divisor

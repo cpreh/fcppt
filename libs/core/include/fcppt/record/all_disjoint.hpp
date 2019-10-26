@@ -7,17 +7,18 @@
 #ifndef FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
 #define FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
 
-#include <fcppt/brigand/set_union.hpp>
+#include <fcppt/metal/set/make.hpp>
+#include <fcppt/metal/set/union.hpp>
+#include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/adapted/list.hpp>
-#include <brigand/algorithms/flatten.hpp>
-#include <brigand/algorithms/fold.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/set.hpp>
-#include <brigand/sequences/size.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/accumulate.hpp>
+#include <metal/list/flatten.hpp>
+#include <metal/list/size.hpp>
+#include <metal/list/transform.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,31 +40,36 @@ using
 all_disjoint
 =
 std::is_same<
-	::brigand::size<
-		::brigand::fold<
-			Records,
-			::brigand::set<>,
-			::brigand::bind<
-				fcppt::brigand::set_union,
-				::brigand::bind<
-					fcppt::record::label_set,
-					::brigand::_element
+	::metal::size<
+		::metal::accumulate<
+			::metal::bind<
+				::metal::lambda<
+					fcppt::metal::set::union_
 				>,
-				::brigand::_state
-			>
+				::metal::bind<
+					::metal::lambda<
+						fcppt::record::label_set
+					>,
+					::metal::_1
+				>,
+				::metal::_2
+			>,
+			::fcppt::metal::set::make<>,
+			Records
 		>
 	>,
-	::brigand::size<
-		::brigand::flatten<
-			::brigand::transform<
-				Records,
-				::brigand::bind<
-					::brigand::as_list,
-					::brigand::bind<
-						fcppt::record::label_set,
-						::brigand::_1
+	::metal::size<
+		::metal::flatten<
+			::metal::transform<
+				::metal::bind<
+					::metal::lambda<
+						fcppt::metal::set::to_list
+					>,
+					::metal::lambda<
+						fcppt::record::label_set
 					>
-				>
+				>,
+				Records
 			>
 		>
 	>

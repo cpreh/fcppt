@@ -7,10 +7,10 @@
 #ifndef FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
 #define FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
 
-#include <fcppt/brigand/set_intersection.hpp>
+#include <fcppt/metal/set/intersection.hpp>
+#include <fcppt/metal/set/make.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/set.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,7 +33,7 @@ using
 are_disjoint
 =
 std::is_same<
-	fcppt::brigand::set_intersection<
+	fcppt::metal::set::intersection<
 		fcppt::record::label_set<
 			RecordL
 		>,
@@ -41,7 +41,7 @@ std::is_same<
 			RecordR
 		>
 	>,
-	::brigand::set<>
+	fcppt::metal::set::make<>
 >;
 
 }

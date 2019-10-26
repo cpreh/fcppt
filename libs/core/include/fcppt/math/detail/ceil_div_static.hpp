@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_DETAIL_CEIL_DIV_HPP_INCLUDED
-#define FCPPT_BRIGAND_DETAIL_CEIL_DIV_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_CEIL_DIV_STATIC_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_CEIL_DIV_STATIC_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,7 +15,7 @@
 
 namespace fcppt
 {
-namespace brigand
+namespace math
 {
 namespace detail
 {
@@ -25,24 +25,7 @@ template<
 	Type Dividend,
 	Type Divisor
 >
-struct ceil_div
-:
-std::integral_constant<
-	Type,
-	Dividend
-	/
-	Divisor
-	+
-	(
-		Dividend
-		%
-		Divisor
-		?
-			1u
-		:
-			0u
-	)
->
+struct ceil_div_static
 {
 	static_assert(
 		Divisor
@@ -56,11 +39,30 @@ std::integral_constant<
 	);
 
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			Type
-		>::value,
+		>,
 		"ceil_div only works on unsigned types"
 	);
+
+	typedef
+	std::integral_constant<
+		Type,
+		Dividend
+		/
+		Divisor
+		+
+		(
+			Dividend
+			%
+			Divisor
+			?
+				1u
+			:
+				0u
+		)
+	>
+	type;
 };
 
 }

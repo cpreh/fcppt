@@ -8,7 +8,8 @@
 #define FCPPT_RECORD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/brigand/is_set.hpp>
+#include <fcppt/metal/as_tuple.hpp>
+#include <fcppt/metal/is_set.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -18,14 +19,12 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/detail/label_list.hpp>
-#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/adapted/tuple.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
 #include <metal/list/list.hpp>
+#include <metal/list/transform.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -61,7 +60,7 @@ public:
 		::metal::is_list<
 			Types
 		>::value,
-		"Types must be a brigand sequence"
+		"Types must be a metal list"
 	);
 
 	static_assert(
@@ -75,7 +74,7 @@ public:
 	);
 
 	static_assert(
-		fcppt::brigand::is_set<
+		fcppt::metal::is_set<
 			fcppt::record::detail::label_list<
 				Types
 			>
@@ -97,12 +96,12 @@ public:
 	\brief The std::tuple type <code>(T_1,...,T_n)</code>.
 	*/
 	typedef
-	::brigand::as_tuple<
+	fcppt::metal::as_tuple<
 		::metal::transform<
-			all_types,
 			::metal::lambda<
 				fcppt::record::element_to_type
-			>
+			>,
+			all_types
 		>
 	>
 	tuple;

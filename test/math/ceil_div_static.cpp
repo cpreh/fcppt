@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/ceil_div.hpp>
+#include <fcppt/math/ceil_div_static.hpp>
 
 
 int
 main()
 {
 	static_assert(
-		fcppt::brigand::ceil_div<
+		fcppt::math::ceil_div_static<
 			unsigned,
 			0u,
 			1u
@@ -22,7 +22,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::brigand::ceil_div<
+		fcppt::math::ceil_div_static<
 			unsigned,
 			1u,
 			1u
@@ -33,7 +33,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::brigand::ceil_div<
+		fcppt::math::ceil_div_static<
 			unsigned,
 			5u,
 			3u
@@ -44,7 +44,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::brigand::ceil_div<
+		fcppt::math::ceil_div_static<
 			unsigned,
 			6u,
 			3u

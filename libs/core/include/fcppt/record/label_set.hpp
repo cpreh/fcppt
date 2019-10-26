@@ -7,7 +7,7 @@
 #ifndef FCPPT_RECORD_LABEL_SET_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_SET_HPP_INCLUDED
 
-#include <fcppt/metal/set/from_list.hpp>
+#include <fcppt/metal/set/from_list_relaxed.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/detail/label_list.hpp>
 
@@ -30,7 +30,7 @@ template<
 using
 label_set
 =
-fcppt::metal::set::from_list<
+fcppt::metal::set::from_list_relaxed<
 	fcppt::record::detail::label_list<
 		fcppt::record::element_vector<
 			Record

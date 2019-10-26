@@ -21,12 +21,22 @@ add_fcppt_metal_set_test(
 )
 
 add_fcppt_metal_set_test(
+	intersection
+	NO_CODE
+)
+
+add_fcppt_metal_set_test(
 	make
 	NO_CODE
 )
 
 add_fcppt_metal_set_test(
 	make_relaxed
+	NO_CODE
+)
+
+add_fcppt_metal_set_test(
+	to_list
 	NO_CODE
 )
 

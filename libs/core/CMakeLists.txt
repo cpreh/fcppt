@@ -105,13 +105,10 @@ set(
 	libs/core/include/fcppt/bit/shifted_mask.hpp
 	libs/core/include/fcppt/bit/shifted_mask_c.hpp
 	libs/core/include/fcppt/bit/test.hpp
-	libs/core/include/fcppt/brigand/ceil_div.hpp
-	libs/core/include/fcppt/brigand/detail/ceil_div.hpp
 	libs/core/include/fcppt/brigand/detail/for_each_break.hpp
 	libs/core/include/fcppt/brigand/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/brigand/detail/print.hpp
 	libs/core/include/fcppt/brigand/detail/print_one.hpp
-	libs/core/include/fcppt/brigand/detail/runtime_index.hpp
 	libs/core/include/fcppt/brigand/enum_range.hpp
 	libs/core/include/fcppt/brigand/enum_range_start_end.hpp
 	libs/core/include/fcppt/brigand/equal_to.hpp
@@ -126,10 +123,8 @@ set(
 	libs/core/include/fcppt/brigand/numeric_max.hpp
 	libs/core/include/fcppt/brigand/partial_sums.hpp
 	libs/core/include/fcppt/brigand/print.hpp
-	libs/core/include/fcppt/brigand/runtime_index.hpp
 	libs/core/include/fcppt/brigand/sequence_to_string.hpp
 	libs/core/include/fcppt/brigand/set_difference.hpp
-	libs/core/include/fcppt/brigand/set_intersection.hpp
 	libs/core/include/fcppt/brigand/set_symmetric_difference.hpp
 	libs/core/include/fcppt/brigand/unique.hpp
 	libs/core/include/fcppt/c_deleter.hpp
@@ -440,6 +435,7 @@ set(
 	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
+	libs/core/include/fcppt/detail/runtime_index.hpp
 	libs/core/include/fcppt/detail/string_literal.hpp
 	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
 	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
@@ -680,6 +676,7 @@ set(
 	libs/core/include/fcppt/math/box/structure_cast.hpp
 	libs/core/include/fcppt/math/ceil_div.hpp
 	libs/core/include/fcppt/math/ceil_div_signed.hpp
+	libs/core/include/fcppt/math/ceil_div_static.hpp
 	libs/core/include/fcppt/math/clamp.hpp
 	libs/core/include/fcppt/math/deg_to_rad.hpp
 	libs/core/include/fcppt/math/detail/array_equal.hpp
@@ -688,6 +685,7 @@ set(
 	libs/core/include/fcppt/math/detail/assign.hpp
 	libs/core/include/fcppt/math/detail/binary_map.hpp
 	libs/core/include/fcppt/math/detail/binary_type.hpp
+	libs/core/include/fcppt/math/detail/ceil_div_static.hpp
 	libs/core/include/fcppt/math/detail/checked_access.hpp
 	libs/core/include/fcppt/math/detail/componentwise_equal.hpp
 	libs/core/include/fcppt/math/detail/copy.hpp
@@ -893,15 +891,20 @@ set(
 	libs/core/include/fcppt/math/vector/to_signed.hpp
 	libs/core/include/fcppt/math/vector/to_unsigned.hpp
 	libs/core/include/fcppt/math/vector/unit.hpp
+	libs/core/include/fcppt/metal/as.hpp
+	libs/core/include/fcppt/metal/as_tuple.hpp
+	libs/core/include/fcppt/metal/detail/as.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/set/contains.hpp
 	libs/core/include/fcppt/metal/set/empty.hpp
 	libs/core/include/fcppt/metal/set/from_list_relaxed.hpp
 	libs/core/include/fcppt/metal/set/insert.hpp
 	libs/core/include/fcppt/metal/set/insert_relaxed.hpp
+	libs/core/include/fcppt/metal/set/intersection.hpp
 	libs/core/include/fcppt/metal/set/make.hpp
 	libs/core/include/fcppt/metal/set/make_relaxed.hpp
 	libs/core/include/fcppt/metal/set/size.hpp
+	libs/core/include/fcppt/metal/set/to_list.hpp
 	libs/core/include/fcppt/metal/set/union.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
@@ -1132,6 +1135,7 @@ set(
 	libs/core/include/fcppt/reference_std_hash.hpp
 	libs/core/include/fcppt/reference_to_base.hpp
 	libs/core/include/fcppt/reference_to_const.hpp
+	libs/core/include/fcppt/runtime_index.hpp
 	libs/core/include/fcppt/shared_ptr.hpp
 	libs/core/include/fcppt/shared_ptr_decl.hpp
 	libs/core/include/fcppt/shared_ptr_fwd.hpp
@@ -1236,7 +1240,6 @@ set(
 	libs/core/include/fcppt/type_traits/function_result.hpp
 	libs/core/include/fcppt/type_traits/implication.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
-	libs/core/include/fcppt/type_traits/is_brigand_sequence.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp

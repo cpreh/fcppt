@@ -17,6 +17,11 @@ add_fcppt_math_test(
 )
 
 add_fcppt_math_test(
+	ceil_div_static
+	NO_CODE
+)
+
+add_fcppt_math_test(
 	diff
 )
 

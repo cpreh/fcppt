@@ -9,7 +9,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -51,7 +51,7 @@ main()
 
 	static_assert(
 		fcppt::record::all_disjoint<
-			::brigand::list<
+			::metal::list<
 				fcppt::record::variadic<
 					element_1
 				>,
@@ -68,7 +68,7 @@ main()
 
 	static_assert(
 		!fcppt::record::all_disjoint<
-			::brigand::list<
+			::metal::list<
 				fcppt::record::variadic<
 					element_1
 				>,

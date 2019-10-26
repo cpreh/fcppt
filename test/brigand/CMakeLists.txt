@@ -11,11 +11,6 @@ function(
 endfunction()
 
 add_fcppt_brigand_test(
-	ceil_div
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
 	enum_range
 	NO_CODE
 )
@@ -75,11 +70,6 @@ add_fcppt_brigand_test(
 
 add_fcppt_brigand_test(
 	set_difference
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
-	set_intersection
 	NO_CODE
 )
 
