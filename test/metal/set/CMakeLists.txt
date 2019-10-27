@@ -11,6 +11,11 @@ function(
 endfunction()
 
 add_fcppt_metal_set_test(
+	difference
+	NO_CODE
+)
+
+add_fcppt_metal_set_test(
 	from_list_relaxed
 	NO_CODE
 )
@@ -32,6 +37,11 @@ add_fcppt_metal_set_test(
 
 add_fcppt_metal_set_test(
 	make_relaxed
+	NO_CODE
+)
+
+add_fcppt_metal_set_test(
+	symmetric_difference
 	NO_CODE
 )
 

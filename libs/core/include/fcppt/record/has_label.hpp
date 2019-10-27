@@ -7,10 +7,8 @@
 #ifndef FCPPT_RECORD_HAS_LABEL_HPP_INCLUDED
 #define FCPPT_RECORD_HAS_LABEL_HPP_INCLUDED
 
+#include <fcppt/metal/set/contains.hpp>
 #include <fcppt/record/label_set.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/has_key.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -30,7 +28,7 @@ template<
 using
 has_label
 =
-::brigand::has_key<
+fcppt::metal::set::contains<
 	fcppt::record::label_set<
 		Record
 	>,

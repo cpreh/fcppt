@@ -7,15 +7,19 @@
 #ifndef FCPPT_RECORD_ARE_EQUIVALENT_HPP_INCLUDED
 #define FCPPT_RECORD_ARE_EQUIVALENT_HPP_INCLUDED
 
-#include <fcppt/brigand/set_symmetric_difference.hpp>
+#include <fcppt/metal/set/make.hpp>
+#include <fcppt/metal/set/symmetric_difference.hpp>
+#include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/record/element_map.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/set.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
+#include <metal/map/at_key.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,7 +43,7 @@ are_equivalent
 =
 std::conjunction<
 	std::is_same<
-		fcppt::brigand::set_symmetric_difference<
+		fcppt::metal::set::symmetric_difference<
 			fcppt::record::label_set<
 				Record1
 			>,
@@ -47,30 +51,39 @@ std::conjunction<
 				Record2
 			>
 		>,
-		::brigand::set<>
+		fcppt::metal::set::make<>
 	>,
-	::brigand::all<
-		fcppt::record::label_set<
-			Record1
+	::metal::all_of<
+		fcppt::metal::set::to_list<
+			fcppt::record::label_set<
+				Record1
+			>
 		>,
-		std::is_same<
-			::brigand::bind<
-				::brigand::lookup,
-				::brigand::pin<
+		::metal::bind<
+			::metal::trait<
+				std::is_same
+			>,
+			::metal::bind<
+				::metal::lambda<
+					::metal::at_key
+				>,
+				::metal::always<
 					fcppt::record::element_map<
 						Record1
 					>
 				>,
-				::brigand::_1
+				::metal::_1
 			>,
-			::brigand::bind<
-				::brigand::lookup,
-				::brigand::pin<
+			::metal::bind<
+				::metal::lambda<
+					::metal::at_key
+				>,
+				::metal::always<
 					fcppt::record::element_map<
 						Record2
 					>
 				>,
-				::brigand::_1
+				::metal::_1
 			>
 		>
 	>

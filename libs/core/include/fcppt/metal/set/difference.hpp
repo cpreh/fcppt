@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_METAL_SET_INTERSECTION_HPP_INCLUDED
-#define FCPPT_METAL_SET_INTERSECTION_HPP_INCLUDED
+#ifndef FCPPT_METAL_SET_DIFFERENCE_HPP_INCLUDED
+#define FCPPT_METAL_SET_DIFFERENCE_HPP_INCLUDED
 
 #include <fcppt/metal/set/contains.hpp>
-#include <fcppt/metal/set/insert_relaxed.hpp>
+#include <fcppt/metal/set/insert.hpp>
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -29,14 +29,13 @@ namespace set
 {
 
 /**
-\brief The intersection of two sets.
+\brief The difference of two sets.
 
 \ingroup fcpptmetal
 
-The result contains every element that is both in \a Set1 and \a Set2.
+The result contains every element that is in \a Set1, but not in \a Set2.
 
 \tparam Set1 Must be a metal set.
-
 \tparam Set2 Must be a metal set.
 */
 template<
@@ -44,7 +43,7 @@ template<
 	typename Set2
 >
 using
-intersection
+difference
 =
 ::metal::accumulate<
 	::metal::bind<
@@ -60,14 +59,14 @@ intersection
 			>,
 			::metal::_2
 		>,
+		::metal::_1,
 		::metal::bind<
 			::metal::lambda<
-				fcppt::metal::set::insert_relaxed
+				fcppt::metal::set::insert
 			>,
 			::metal::_1,
 			::metal::_2
-		>,
-		::metal::_1
+		>
 	>,
 	fcppt::metal::set::make<>,
 	fcppt::metal::set::to_list<

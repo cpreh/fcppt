@@ -11,11 +11,12 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/fold.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/insert.hpp>
-#include <brigand/sequences/pair.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/list/accumulate.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/map/insert_key.hpp>
+#include <metal/map/map.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -25,7 +26,7 @@ namespace record
 {
 
 /**
-\brief A metafunction computing the element map of a record
+\brief A metafunction computing the element map of a record.
 
 \ingroup fcpptrecord
 
@@ -37,25 +38,28 @@ template<
 using
 element_map
 =
-::brigand::fold<
+::metal::accumulate<
+	::metal::bind<
+		::metal::lambda<
+			::metal::insert_key
+		>,
+		::metal::_1,
+		::metal::bind<
+			::metal::lambda<
+				fcppt::record::element_to_label
+			>,
+			::metal::_2
+		>,
+		::metal::bind<
+			::metal::lambda<
+				fcppt::record::element_to_type
+			>,
+			::metal::_2
+		>
+	>,
+	::metal::map<>,
 	fcppt::record::element_vector<
 		Record
-	>,
-	::brigand::map<>,
-	::brigand::bind<
-		::brigand::insert,
-		::brigand::_state,
-		::brigand::bind<
-			::brigand::pair,
-			::brigand::bind<
-				fcppt::record::element_to_label,
-				::brigand::_element
-			>,
-			::brigand::bind<
-				fcppt::record::element_to_type,
-				::brigand::_element
-			>
-		>
 	>
 >;
 

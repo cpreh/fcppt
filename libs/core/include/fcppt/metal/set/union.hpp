@@ -8,12 +8,12 @@
 #define FCPPT_METAL_SET_UNION_HPP_INCLUDED
 
 #include <fcppt/metal/set/insert_relaxed.hpp>
+#include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/lambda/arg.hpp>
 #include <metal/lambda/bind.hpp>
 #include <metal/lambda/lambda.hpp>
 #include <metal/list/accumulate.hpp>
-#include <metal/pair/first.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -48,15 +48,12 @@ union_
 			fcppt::metal::set::insert_relaxed
 		>,
 		::metal::_1,
-		::metal::bind<
-			::metal::lambda<
-				::metal::first
-			>,
-			::metal::_2
-		>
+		::metal::_2
 	>,
 	Set1,
-	Set2
+	fcppt::metal::set::to_list<
+		Set2
+	>
 >;
 
 }

@@ -32,6 +32,8 @@ namespace record
 \brief Tests if multiple records have disjoint label sets
 
 \ingroup fcpptrecord
+
+\tparam Records A metal list.
 */
 template<
 	typename Records
@@ -50,9 +52,9 @@ std::is_same<
 					::metal::lambda<
 						fcppt::record::label_set
 					>,
-					::metal::_1
+					::metal::_2
 				>,
-				::metal::_2
+				::metal::_1
 			>,
 			::fcppt::metal::set::make<>,
 			Records
@@ -65,8 +67,11 @@ std::is_same<
 					::metal::lambda<
 						fcppt::metal::set::to_list
 					>,
-					::metal::lambda<
-						fcppt::record::label_set
+					::metal::bind<
+						::metal::lambda<
+							fcppt::record::label_set
+						>,
+						::metal::_1
 					>
 				>,
 				Records

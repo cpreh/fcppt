@@ -9,7 +9,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/map.hpp>
+#include <metal/map/at_key.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -44,24 +44,22 @@ main()
 	element_map;
 
 	static_assert(
-		std::is_same<
-			brigand::lookup<
+		std::is_same_v<
+			metal::at_key<
 				element_map,
 				int_label
 			>,
 			int
-		>::value,
-		""
+		>
 	);
 
 	static_assert(
-		std::is_same<
-			brigand::lookup<
+		std::is_same_v<
+			metal::at_key<
 				element_map,
 				bool_label
 			>,
 			bool
-		>::value,
-		""
+		>
 	);
 }

@@ -59,26 +59,6 @@ add_fcppt_brigand_test(
 )
 
 add_fcppt_brigand_test(
-	pair_first
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
-	pair_second
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
-	set_difference
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
-	set_symmetric_difference
-	NO_CODE
-)
-
-add_fcppt_brigand_test(
 	unique
 	NO_CODE
 )

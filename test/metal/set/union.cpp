@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/metal/set/contains.hpp>
 #include <fcppt/metal/set/make.hpp>
-#include <fcppt/metal/set/has_key.hpp>
 #include <fcppt/metal/set/union.hpp>
 
 
@@ -26,7 +26,7 @@ main()
 	result;
 
 	static_assert(
-		fcppt::metal::set::has_key<
+		fcppt::metal::set::contains<
 			result,
 			int
 		>::value,
@@ -34,7 +34,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::metal::set::has_key<
+		fcppt::metal::set::contains<
 			result,
 			short
 		>::value,
@@ -42,7 +42,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::metal::set::has_key<
+		fcppt::metal::set::contains<
 			result,
 			long
 		>::value,

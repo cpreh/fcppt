@@ -337,8 +337,6 @@ set(
 	libs/core/include/fcppt/brigand/partial_sums.hpp
 	libs/core/include/fcppt/brigand/print.hpp
 	libs/core/include/fcppt/brigand/sequence_to_string.hpp
-	libs/core/include/fcppt/brigand/set_difference.hpp
-	libs/core/include/fcppt/brigand/set_symmetric_difference.hpp
 	libs/core/include/fcppt/brigand/unique.hpp
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
@@ -1109,6 +1107,7 @@ set(
 	libs/core/include/fcppt/metal/detail/as.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/set/contains.hpp
+	libs/core/include/fcppt/metal/set/difference.hpp
 	libs/core/include/fcppt/metal/set/empty.hpp
 	libs/core/include/fcppt/metal/set/from_list_relaxed.hpp
 	libs/core/include/fcppt/metal/set/insert.hpp
@@ -1117,6 +1116,7 @@ set(
 	libs/core/include/fcppt/metal/set/make.hpp
 	libs/core/include/fcppt/metal/set/make_relaxed.hpp
 	libs/core/include/fcppt/metal/set/size.hpp
+	libs/core/include/fcppt/metal/set/symmetric_difference.hpp
 	libs/core/include/fcppt/metal/set/to_list.hpp
 	libs/core/include/fcppt/metal/set/union.hpp
 	libs/core/include/fcppt/micro_version.hpp

@@ -4,23 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/set_difference.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/has_key.hpp>
-#include <brigand/sequences/set.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/metal/set/contains.hpp>
+#include <fcppt/metal/set/difference.hpp>
+#include <fcppt/metal/set/make.hpp>
 
 
 int
 main()
 {
 	typedef
-	fcppt::brigand::set_difference<
-		brigand::set<
+	fcppt::metal::set::difference<
+		fcppt::metal::set::make<
 			short,
 			int
 		>,
-		brigand::set<
+		fcppt::metal::set::make<
 			int,
 			long
 		>
@@ -28,7 +26,8 @@ main()
 	result;
 
 	static_assert(
-		!brigand::has_key<
+		!
+		fcppt::metal::set::contains<
 			result,
 			int
 		>::value,
@@ -36,7 +35,7 @@ main()
 	);
 
 	static_assert(
-		brigand::has_key<
+		fcppt::metal::set::contains<
 			result,
 			short
 		>::value,
@@ -44,7 +43,8 @@ main()
 	);
 
 	static_assert(
-		!brigand::has_key<
+		!
+		fcppt::metal::set::contains<
 			result,
 			long
 		>::value,
