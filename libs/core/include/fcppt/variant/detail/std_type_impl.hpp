@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_DETAIL_STD_TYPE_IMPL_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,7 +29,7 @@ template<
 	typename... Types
 >
 struct std_type_impl<
-	::brigand::list<
+	::metal::list<
 		Types...
 	>
 >

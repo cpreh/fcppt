@@ -7,11 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_STATIC_STORAGE_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STATIC_STORAGE_DECL_HPP_INCLUDED
 
-#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/container/array/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage_fwd.hpp>
+#include <fcppt/type_traits/integral_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +39,7 @@ public:
 	array_type;
 
 	typedef
-	fcppt::brigand::integral_cast<
+	fcppt::type_traits::integral_cast<
 		fcppt::math::size_type,
 		fcppt::cast::size_fun,
 		fcppt::container::array::size<

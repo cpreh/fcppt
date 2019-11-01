@@ -9,8 +9,8 @@
 
 #include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/find.hpp>
-#include <brigand/sequences/front.hpp>
+#include <metal/list/at.hpp>
+#include <metal/list/find_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,8 +28,9 @@ template<
 using
 find_element
 =
-::brigand::front<
-	::brigand::find<
+::metal::at<
+	Elements,
+	::metal::find_if<
 		Elements,
 		fcppt::record::detail::find_element_predicate<
 			Label

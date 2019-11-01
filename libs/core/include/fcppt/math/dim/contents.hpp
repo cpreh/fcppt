@@ -11,7 +11,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/storage_size.hpp>

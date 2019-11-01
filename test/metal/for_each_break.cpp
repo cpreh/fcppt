@@ -6,9 +6,10 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
-#include <fcppt/brigand/for_each_break.hpp>
+#include <fcppt/metal/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <metal/list/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -114,15 +115,15 @@ private:
 }
 
 TEST_CASE(
-	"brigand::for_each_break",
-	"[brigand]"
+	"metal::for_each_break",
+	"[metal]"
 )
 {
 	{
 		function1 const func{};
 
-		fcppt::brigand::for_each_break<
-			brigand::list<
+		fcppt::metal::for_each_break<
+			metal::list<
 				int,
 				bool
 			>
@@ -140,8 +141,8 @@ TEST_CASE(
 	{
 		function2 const func{};
 
-		fcppt::brigand::for_each_break<
-			brigand::list<
+		fcppt::metal::for_each_break<
+			metal::list<
 				int,
 				bool
 			>

@@ -4,51 +4,43 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
-
-#include <fcppt/cast/size_fun.hpp>
 #include <fcppt/cast/to_unsigned_fun.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <limits>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
+int
+main()
 {
-namespace container
-{
-namespace bitfield
-{
-namespace detail
-{
+	typedef
+	std::integral_constant<
+		int,
+		2
+	> integral;
 
-template<
-	typename SizeType,
-	typename Type
->
-using element_bits
-=
-fcppt::type_traits::integral_cast<
-	SizeType,
-	fcppt::cast::size_fun,
+	typedef
 	fcppt::type_traits::integral_cast<
 		unsigned,
 		fcppt::cast::to_unsigned_fun,
-		std::integral_constant<
-			int,
-			std::numeric_limits<
-				Type
-			>::digits
-		>
+		integral
 	>
->;
+	result;
 
-}
-}
-}
-}
+	static_assert(
+		std::is_same_v<
+			fcppt::type_traits::value_type<
+				result
+			>,
+			unsigned
+		>
+	);
 
-#endif
+	static_assert(
+		result::value
+		==
+		2u
+	);
+}

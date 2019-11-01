@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_LOOP_BREAK_BRIGAND_HPP_INCLUDED
-#define FCPPT_ALGORITHM_LOOP_BREAK_BRIGAND_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_LOOP_BREAK_METAL_HPP_INCLUDED
+#define FCPPT_ALGORITHM_LOOP_BREAK_METAL_HPP_INCLUDED
 
 #include <fcppt/algorithm/loop_break_impl_fwd.hpp>
-#include <fcppt/brigand/for_each_break.hpp>
-#include <fcppt/type_traits/is_brigand_sequence.hpp>
+#include <fcppt/metal/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <metal/list/list.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,7 +26,7 @@ template<
 struct loop_break_impl<
 	Range,
 	std::enable_if_t<
-		fcppt::type_traits::is_brigand_sequence<
+		::metal::is_list<
 			Range
 		>::value
 	>
@@ -43,7 +43,7 @@ struct loop_break_impl<
 		Body const &_body
 	)
 	{
-		fcppt::brigand::for_each_break<
+		fcppt::metal::for_each_break<
 			Range
 		>(
 			_body

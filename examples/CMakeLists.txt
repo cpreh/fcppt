@@ -266,10 +266,6 @@ add_fcppt_example(
 )
 
 add_subdirectory(
-	brigand
-)
-
-add_subdirectory(
 	cast
 )
 
@@ -287,6 +283,10 @@ add_subdirectory(
 
 add_subdirectory(
 	math
+)
+
+add_subdirectory(
+	metal
 )
 
 add_subdirectory(

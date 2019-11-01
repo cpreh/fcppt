@@ -4,25 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_INVOKE_ON_HPP_INCLUDED
-#define FCPPT_BRIGAND_INVOKE_ON_HPP_INCLUDED
+#ifndef FCPPT_METAL_INVOKE_ON_HPP_INCLUDED
+#define FCPPT_METAL_INVOKE_ON_HPP_INCLUDED
 
 #include <fcppt/tag.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/brigand/runtime_index.hpp>
+#include <fcppt/metal/runtime_index.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/at.hpp>
-#include <brigand/sequences/size.hpp>
+#include <metal/list/at.hpp>
+#include <metal/list/size.hpp>
+#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 FCPPT_PP_PUSH_WARNING
@@ -31,7 +32,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4702)
 /**
 \brief Applies a function to the nth element of a sequence with a runtime index.
 
-\ingroup fcpptbrigand
+\ingroup fcpptmetal
 
 Let \a Sequence be the types <code>(t_0,...,t_{n-1})</code> and <code>i =
 _index</code>.
@@ -39,12 +40,12 @@ If i is less than n,
 the result is \a _function called with <code>fcppt::tag<t_i></code>.
 Otherwise, the result of \a _fail_function is returned.
 
-\note The compile time and the runtime cobrigandexities of this function are linear
-in the size of the BRIGAND sequence.
+\note The compile time and the runtime complexities of this function are linear
+in the size of the metal sequence.
 
-\snippet brigand/invoke_on.cpp brigand_invoke_on
+\snippet metal/invoke_on.cpp metal_invoke_on
 
-\tparam Sequence A brigand sequence.
+\tparam Sequence A metal::list.
 
 \tparam Index An unsigned type.
 
@@ -69,15 +70,15 @@ invoke_on(
 )
 {
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			Index
-		>::value,
-		"brigand::invoke_on can only be used with unsigned indices"
+		>,
+		"metal::invoke_on can only be used with unsigned indices"
 	);
 
 	return
-		fcppt::brigand::runtime_index<
-			::brigand::size<
+		fcppt::metal::runtime_index<
+			::metal::size<
 				Sequence
 			>
 		>(
@@ -99,11 +100,17 @@ invoke_on(
 				return
 					_function(
 						fcppt::tag<
-							::brigand::at_c<
+							::metal::at<
 								Sequence,
-								decltype(
-									_cur_index
-								)::value
+								::metal::number<
+									static_cast<
+										metal::int_
+									>(
+										decltype(
+											_cur_index
+										)::value
+									)
+								>
 							>
 						>()
 					);

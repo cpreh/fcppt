@@ -4,14 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/metal/set/contains.hpp>
 #include <fcppt/record/disjoint_product.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/variadic.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/has_key.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 int
@@ -57,7 +55,7 @@ main()
 	product_labels;
 
 	static_assert(
-		brigand::has_key<
+		fcppt::metal::set::contains<
 			product_labels,
 			int_label
 		>::value,
@@ -65,7 +63,7 @@ main()
 	);
 
 	static_assert(
-		brigand::has_key<
+		fcppt::metal::set::contains<
 			product_labels,
 			bool_label
 		>::value,

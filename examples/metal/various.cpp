@@ -5,19 +5,15 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/brigand/ceil_div.hpp>
 #include <fcppt/brigand/equal_to.hpp>
-#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/brigand/list_c.hpp>
 #include <fcppt/brigand/max_value.hpp>
 #include <fcppt/brigand/partial_sums.hpp>
 #include <fcppt/brigand/print.hpp>
-#include <fcppt/cast/to_unsigned_fun.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/transform.hpp>
 #include <brigand/functions/comparison/equal_to.hpp>
@@ -31,63 +27,6 @@
 
 namespace
 {
-
-namespace ceil_div
-{
-//! [brigand_ceil_div]
-typedef
-fcppt::brigand::ceil_div<
-	unsigned,
-	10u,
-	3u
->
-result;
-
-static_assert(
-	std::is_same<
-		result,
-		std::integral_constant<
-			unsigned,
-			4u
-		>
-	>::value,
-	""
-);
-//! [brigand_ceil_div]
-}
-
-namespace integral_cast
-{
-//! [brigand_integral_cast]
-typedef
-std::integral_constant<
-	int,
-	2
-> integral;
-
-typedef
-fcppt::brigand::integral_cast<
-	unsigned,
-	fcppt::cast::to_unsigned_fun,
-	integral
->::type
-result;
-
-static_assert(
-	std::is_same<
-		fcppt::type_traits::value_type<
-			result
-		>,
-		unsigned
-	>::value
-	&&
-	result::value
-	==
-	2u,
-	""
-);
-//! [brigand_integral_cast]
-}
 
 namespace max_value
 {

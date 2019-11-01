@@ -4,18 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//! [brigand_invoke_on]
+//! [metal_invoke_on]
 // In the following example, we are going to create a function that can
 // transform a color type given at runtime (defined via an enum) into a static
 // color type (represented by variant over static color types).
 #include <fcppt/tag.hpp>
-#include <fcppt/brigand/invoke_on.hpp>
+#include <fcppt/metal/invoke_on.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <cassert>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
@@ -43,7 +43,7 @@ struct rgb
 
 // Typedef the available static color types
 typedef
-brigand::list<
+metal::list<
 	bgr,
 	rgb
 >
@@ -86,7 +86,7 @@ make_color_variant(
 )
 {
 	return
-		fcppt::brigand::invoke_on<
+		fcppt::metal::invoke_on<
 			static_color_types
 		>(
 			fcppt::cast::to_unsigned(
@@ -122,4 +122,4 @@ main()
 		)
 	);
 }
-//! [brigand_invoke_on]
+//! [metal_invoke_on]

@@ -38,24 +38,24 @@ main()
 	my_record;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::record::label_value_type<
 				my_record,
 				int_label
 			>,
 			int
-		>::value,
+		>,
 		""
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::record::label_value_type<
 				my_record,
 				bool_label
 			>,
 			bool
-		>::value,
+		>,
 		""
 	);
 }

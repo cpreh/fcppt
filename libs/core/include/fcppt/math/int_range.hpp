@@ -7,11 +7,9 @@
 #ifndef FCPPT_MATH_INT_RANGE_HPP_INCLUDED
 #define FCPPT_MATH_INT_RANGE_HPP_INCLUDED
 
-#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/range.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/metal/interval.hpp>
 
 
 namespace fcppt
@@ -31,7 +29,7 @@ template<
 using
 int_range
 =
-::brigand::range<
+fcppt::metal::interval<
 	fcppt::math::size_type,
 	Start,
 	End

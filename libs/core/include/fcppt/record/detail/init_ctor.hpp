@@ -14,12 +14,12 @@
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/find.hpp>
-#include <brigand/algorithms/index_of.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/find_if.hpp>
+#include <metal/list/list.hpp>
 #include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -53,7 +53,7 @@ init_ctor(
 	);
 
 	typedef
-	::brigand::list<
+	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Args
 		>...
@@ -90,34 +90,36 @@ init_ctor(
 				);
 
 				typedef
-					::brigand::index_if<
-						args_list,
-						::brigand::bind<
-							fcppt::record::detail::label_is_same,
-							::brigand::pin<
-								fcppt::record::element_to_label<
-									fcppt::tag_type<
-										decltype(
-											_fcppt_element
-										)
-									>
+				::metal::find_if<
+					args_list,
+					::metal::bind<
+						::metal::trait<
+							fcppt::record::detail::label_is_same
+						>,
+						::metal::always<
+							fcppt::record::element_to_label<
+								fcppt::tag_type<
+									decltype(
+										_fcppt_element
+									)
 								>
-							>,
-							::brigand::_1
-						>
+							>
+						>,
+						::metal::_1
 					>
+				>
 				index_type;
 
-			return
-				std::move(
-					std::get<
-						index_type::value
-					>(
-						arguments
-					).value()
-				);
-		}
-	);
+				return
+					std::move(
+						std::get<
+							index_type::value
+						>(
+							arguments
+						).value()
+					);
+			}
+		);
 }
 
 }

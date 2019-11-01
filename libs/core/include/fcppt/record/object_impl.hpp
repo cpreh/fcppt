@@ -15,9 +15,9 @@
 #include <fcppt/record/detail/element_at.hpp>
 #include <fcppt/record/detail/init_ctor.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/sequences/size.hpp>
-#include <type_traits>
+#include <metal/list/empty.hpp>
+#include <metal/list/list.hpp>
+#include <metal/list/size.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,9 +32,8 @@ fcppt::record::object<
 	elements_{}
 {
 	static_assert(
-		std::is_same<
-			all_types,
-			::brigand::list<>
+		::metal::empty<
+			all_types
 		>::value,
 		"record not empty"
 	);
@@ -81,7 +80,7 @@ fcppt::record::object<
 	}
 {
 	static_assert(
-		::brigand::size<
+		::metal::size<
 			all_types
 		>::value
 		==
@@ -94,7 +93,7 @@ fcppt::record::object<
 	static_assert(
 		fcppt::record::detail::all_initializers<
 			all_types,
-			::brigand::list<
+			::metal::list<
 				Args...
 			>
 		>::value,

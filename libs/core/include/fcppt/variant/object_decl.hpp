@@ -11,7 +11,6 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
@@ -35,7 +34,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 \ingroup fcpptvariant
 
-\tparam Types An MPL sequence of types that must be CopyConstructible or
+\tparam Types A metal::list of types that must be CopyConstructible or
 Movable, Assignable or AssignMovable and complete. It therefore must also not
 be const.
 
@@ -68,7 +67,7 @@ public:
 	std_type;
 
 	/**
-	\brief The brigand sequence of the possible types
+	\brief The metal::list of the possible types
 	*/
 	typedef
 	Types

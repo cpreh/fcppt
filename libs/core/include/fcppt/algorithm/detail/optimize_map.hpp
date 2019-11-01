@@ -10,8 +10,8 @@
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/container/detail/has_size.hpp>
-#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <metal/list/list.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -41,7 +41,7 @@ std::conjunction<
 		fcppt::container::detail::has_size<
 			Source
 		>,
-		fcppt::type_traits::is_brigand_sequence<
+		::metal::is_list<
 			Source
 		>
 	>

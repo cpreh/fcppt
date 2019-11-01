@@ -8,12 +8,11 @@
 #define FCPPT_RECORD_ELEMENT_TAG_TUPLE_HPP_INCLUDED
 
 #include <fcppt/tag.hpp>
+#include <fcppt/metal/as_tuple.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/adapted/tuple.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/transform.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -35,14 +34,13 @@ template<
 using
 element_tag_tuple
 =
-::brigand::as_tuple<
-	::brigand::transform<
+fcppt::metal::as_tuple<
+	::metal::transform<
+		::metal::lambda<
+			fcppt::tag
+		>,
 		fcppt::record::element_vector<
 			Record
-		>,
-		::brigand::bind<
-			fcppt::tag,
-			::brigand::_1
 		>
 	>
 >;

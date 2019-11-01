@@ -23,7 +23,7 @@
 #include <fcppt/record/set.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <iostream>
 #include <ostream>
 #include <sstream>
@@ -94,7 +94,7 @@ name_element;
 //! [record_object]
 typedef
 fcppt::record::object<
-	brigand::list<
+	metal::list<
 		age_element,
 		name_element
 	>

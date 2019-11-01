@@ -10,8 +10,9 @@
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/record/detail/map_result.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,10 +35,12 @@ map_result
 =
 fcppt::record::map_elements<
 	Record,
-	::brigand::bind<
-		fcppt::record::detail::map_result,
+	::metal::bind<
+		::metal::lambda<
+			fcppt::record::detail::map_result
+		>,
 		Function,
-		::brigand::_1
+		::metal::_1
 	>
 >;
 

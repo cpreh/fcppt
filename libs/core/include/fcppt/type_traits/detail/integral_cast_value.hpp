@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_DETAIL_INTEGRAL_CAST_VALUE_HPP_INCLUDED
-#define FCPPT_BRIGAND_DETAIL_INTEGRAL_CAST_VALUE_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_DETAIL_INTEGRAL_CAST_VALUE_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_DETAIL_INTEGRAL_CAST_VALUE_HPP_INCLUDED
 
 #include <fcppt/cast/apply.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace type_traits
 {
 namespace detail
 {

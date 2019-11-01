@@ -10,7 +10,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
-#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/record/are_equivalent.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/get.hpp>

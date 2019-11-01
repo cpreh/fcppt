@@ -31,10 +31,6 @@ add_fcppt_brigand_test(
 )
 
 add_fcppt_brigand_test(
-	for_each_break
-)
-
-add_fcppt_brigand_test(
 	found_t
 	NO_CODE
 )
@@ -42,10 +38,6 @@ add_fcppt_brigand_test(
 add_fcppt_brigand_test(
 	list_c
 	NO_CODE
-)
-
-add_fcppt_brigand_test(
-	invoke_on
 )
 
 add_fcppt_brigand_test(

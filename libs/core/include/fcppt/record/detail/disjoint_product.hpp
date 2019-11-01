@@ -11,7 +11,7 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/append.hpp>
+#include <metal/list/append.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -38,7 +38,7 @@ struct disjoint_product
 
 	typedef
 	fcppt::record::object<
-		::brigand::append<
+		::metal::append<
 			fcppt::record::element_vector<
 				RecordL
 			>,

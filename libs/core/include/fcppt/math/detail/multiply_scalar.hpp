@@ -10,7 +10,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/storage_size.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>

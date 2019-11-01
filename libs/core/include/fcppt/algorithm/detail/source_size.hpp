@@ -10,9 +10,9 @@
 #include <fcppt/algorithm/detail/mpl_size_type.hpp>
 #include <fcppt/container/size.hpp>
 #include <fcppt/container/size_result_type.hpp>
-#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/size.hpp>
+#include <metal/list/list.hpp>
+#include <metal/list/size.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,7 +51,7 @@ template<
 struct source_size<
 	Source,
 	std::enable_if_t<
-		fcppt::type_traits::is_brigand_sequence<
+		::metal::is_list<
 			Source
 		>::value
 	>
@@ -66,7 +66,7 @@ struct source_size<
 	)
 	{
 		return
-			::brigand::size<
+			::metal::size<
 				Source
 			>::value;
 	}

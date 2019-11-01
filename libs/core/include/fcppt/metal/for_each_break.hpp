@@ -4,26 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_FOR_EACH_BREAK_HPP_INCLUDED
-#define FCPPT_BRIGAND_FOR_EACH_BREAK_HPP_INCLUDED
+#ifndef FCPPT_METAL_FOR_EACH_BREAK_HPP_INCLUDED
+#define FCPPT_METAL_FOR_EACH_BREAK_HPP_INCLUDED
 
-#include <fcppt/brigand/detail/for_each_break.hpp>
+#include <fcppt/literal.hpp>
+#include <fcppt/metal/detail/for_each_break.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <metal/number/number.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 /**
 \brief Invoke a function on each element of a sequence
 while giving the ability to break out of the loop.
 
-\ingroup fcpptbrigand
+\ingroup fcpptmetal
 
-\tparam Sequence A brigand sequence.
+\tparam Sequence A metal::list.
 
-\tparam Function The polymorphic function callable as <code>fcppt::loop
+\tparam Function A polymorphic function callable as <code>fcppt::loop
 (fcppt::tag<T>)</code> for every T in \a Sequence.
 */
 template<
@@ -37,9 +41,13 @@ for_each_break(
 )
 {
 	return
-		fcppt::brigand::detail::for_each_break<
+		fcppt::metal::detail::for_each_break<
 			Sequence,
-			0u
+			fcppt::literal<
+				::metal::int_
+			>(
+				0
+			)
 		>(
 			_function
 		);

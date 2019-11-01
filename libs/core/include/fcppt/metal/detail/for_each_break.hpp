@@ -4,32 +4,33 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_DETAIL_FOR_EACH_BREAK_HPP_INCLUDED
-#define FCPPT_BRIGAND_DETAIL_FOR_EACH_BREAK_HPP_INCLUDED
+#ifndef FCPPT_METAL_DETAIL_FOR_EACH_BREAK_HPP_INCLUDED
+#define FCPPT_METAL_DETAIL_FOR_EACH_BREAK_HPP_INCLUDED
 
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/at.hpp>
-#include <brigand/sequences/size.hpp>
+#include <metal/list/at.hpp>
+#include <metal/list/size.hpp>
+#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 namespace detail
 {
 
 template<
 	typename List,
-	unsigned Index,
+	::metal::int_ Index,
 	typename Fun
 >
 std::enable_if_t<
-	::brigand::size<
+	::metal::size<
 		List
 	>::value
 	==
@@ -44,12 +45,12 @@ for_each_break(
 
 template<
 	typename List,
-	unsigned Index,
+	::metal::int_ Index,
 	typename Fun
 >
 inline
 std::enable_if_t<
-	::brigand::size<
+	::metal::size<
 		List
 	>::value
 	!=
@@ -63,16 +64,18 @@ for_each_break(
 	switch(
 		_func(
 			fcppt::tag<
-				::brigand::at_c<
+				::metal::at<
 					List,
-					Index
+					::metal::number<
+						Index
+					>
 				>
 			>()
 		)
 	)
 	{
 	case fcppt::loop::continue_:
-		fcppt::brigand::detail::for_each_break<
+		fcppt::metal::detail::for_each_break<
 			List,
 			Index + 1u
 		>(

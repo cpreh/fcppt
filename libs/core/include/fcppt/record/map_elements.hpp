@@ -11,9 +11,11 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/transform.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -40,17 +42,23 @@ using
 map_elements
 =
 fcppt::record::object<
-	::brigand::transform<
+	::metal::transform<
+		::metal::bind<
+			::metal::lambda<
+				fcppt::record::element
+			>,
+			::metal::bind<
+				::metal::lambda<
+					fcppt::record::element_to_label
+				>,
+				::metal::_1
+			>,
+			::metal::always<
+				Function
+			>
+		>,
 		fcppt::record::element_vector<
 			Record
-		>,
-		::brigand::bind<
-			fcppt::record::element,
-			::brigand::bind<
-				fcppt::record::element_to_label,
-				::brigand::_1
-			>,
-			Function
 		>
 	>
 >;

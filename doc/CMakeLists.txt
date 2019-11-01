@@ -111,8 +111,6 @@ set(
 	examples/assert_complete.cpp
 	examples/assign.cpp
 	examples/backtrace.cpp
-	examples/brigand/invoke_on.cpp
-	examples/brigand/various.cpp
 	examples/cast.cpp
 	examples/cast/dynamic.cpp
 	examples/cast/dynamic_cross.cpp
@@ -156,6 +154,8 @@ set(
 	examples/math/vector/bit_strings.cpp
 	examples/math/vector/convert.cpp
 	examples/math/vector/various.cpp
+	examples/metal/invoke_on.cpp
+	examples/metal/various.cpp
 	examples/noncopyable.cpp
 	examples/optional.cpp
 	examples/options/base.cpp
@@ -242,9 +242,9 @@ set(
 	libs/core/include/fcppt/algorithm/join_strings.hpp
 	libs/core/include/fcppt/algorithm/loop.hpp
 	libs/core/include/fcppt/algorithm/loop_break.hpp
-	libs/core/include/fcppt/algorithm/loop_break_brigand.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl_fwd.hpp
+	libs/core/include/fcppt/algorithm/loop_break_metal.hpp
 	libs/core/include/fcppt/algorithm/loop_break_tuple.hpp
 	libs/core/include/fcppt/algorithm/map.hpp
 	libs/core/include/fcppt/algorithm/map_array.hpp
@@ -318,8 +318,6 @@ set(
 	libs/core/include/fcppt/bit/shifted_mask.hpp
 	libs/core/include/fcppt/bit/shifted_mask_c.hpp
 	libs/core/include/fcppt/bit/test.hpp
-	libs/core/include/fcppt/brigand/detail/for_each_break.hpp
-	libs/core/include/fcppt/brigand/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/brigand/detail/print.hpp
 	libs/core/include/fcppt/brigand/detail/print_one.hpp
 	libs/core/include/fcppt/brigand/enum_range.hpp
@@ -327,14 +325,9 @@ set(
 	libs/core/include/fcppt/brigand/equal_to.hpp
 	libs/core/include/fcppt/brigand/flip_map.hpp
 	libs/core/include/fcppt/brigand/flip_pair.hpp
-	libs/core/include/fcppt/brigand/for_each_break.hpp
-	libs/core/include/fcppt/brigand/found_t.hpp
-	libs/core/include/fcppt/brigand/integral_cast.hpp
-	libs/core/include/fcppt/brigand/invoke_on.hpp
 	libs/core/include/fcppt/brigand/list_c.hpp
 	libs/core/include/fcppt/brigand/max_value.hpp
 	libs/core/include/fcppt/brigand/numeric_max.hpp
-	libs/core/include/fcppt/brigand/partial_sums.hpp
 	libs/core/include/fcppt/brigand/print.hpp
 	libs/core/include/fcppt/brigand/sequence_to_string.hpp
 	libs/core/include/fcppt/brigand/unique.hpp
@@ -1105,7 +1098,15 @@ set(
 	libs/core/include/fcppt/metal/as.hpp
 	libs/core/include/fcppt/metal/as_tuple.hpp
 	libs/core/include/fcppt/metal/detail/as.hpp
+	libs/core/include/fcppt/metal/detail/for_each_break.hpp
+	libs/core/include/fcppt/metal/detail/interval.hpp
+	libs/core/include/fcppt/metal/detail/map_same_values.hpp
+	libs/core/include/fcppt/metal/for_each_break.hpp
+	libs/core/include/fcppt/metal/interval.hpp
+	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
+	libs/core/include/fcppt/metal/maps_equal.hpp
+	libs/core/include/fcppt/metal/partial_sums.hpp
 	libs/core/include/fcppt/metal/set/contains.hpp
 	libs/core/include/fcppt/metal/set/difference.hpp
 	libs/core/include/fcppt/metal/set/empty.hpp
@@ -1449,9 +1450,11 @@ set(
 	libs/core/include/fcppt/type_name_from_info.hpp
 	libs/core/include/fcppt/type_traits/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
+	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/function_result.hpp
 	libs/core/include/fcppt/type_traits/implication.hpp
+	libs/core/include/fcppt/type_traits/integral_cast.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp

@@ -24,6 +24,11 @@ add_fcppt_type_traits_test(
 )
 
 add_fcppt_type_traits_test(
+	integral_cast
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
 	is_base_of
 	NO_CODE
 )

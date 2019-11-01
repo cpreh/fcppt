@@ -16,7 +16,25 @@ add_fcppt_metal_test(
 )
 
 add_fcppt_metal_test(
+	for_each_break
+)
+
+add_fcppt_metal_test(
+	interval
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	invoke_on
+)
+
+add_fcppt_metal_test(
 	is_set
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	maps_equal
 	NO_CODE
 )
 

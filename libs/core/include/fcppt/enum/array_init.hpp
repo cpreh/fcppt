@@ -8,9 +8,9 @@
 #define FCPPT_ENUM_ARRAY_INIT_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
 #include <fcppt/container/array/init.hpp>
+#include <fcppt/type_traits/integral_cast.hpp>
 
 
 namespace fcppt
@@ -62,7 +62,7 @@ array_init(
 
 					return
 						_function(
-							fcppt::brigand::integral_cast<
+							fcppt::type_traits::integral_cast<
 								typename
 								Array::enum_type,
 								fcppt::cast::int_to_enum_fun,

@@ -9,7 +9,7 @@
 
 #include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/index_of.hpp>
+#include <metal/list/find_if.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,7 +36,7 @@ element_at(
 {
 	return
 		std::get<
-			::brigand::index_if<
+			::metal::find_if<
 				Types,
 				fcppt::record::detail::find_element_predicate<
 					Label
