@@ -49,7 +49,17 @@ add_fcppt_type_traits_test(
 )
 
 add_fcppt_type_traits_test(
+	numeric_max
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
 	remove_cv_ref
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
+	safe_integral_cast
 	NO_CODE
 )
 

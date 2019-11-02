@@ -13,11 +13,12 @@
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
+#include <metal/list/list.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -90,7 +91,7 @@ fcppt::strong_typedef<
 	);
 
 	typedef
-	::brigand::list<
+	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			StrongTypedefs
 		>...
@@ -104,26 +105,27 @@ fcppt::strong_typedef<
 	input_tag;
 
 	static_assert(
-		::brigand::all<
+		::metal::all_of<
 			strong_typedefs,
-			fcppt::is_strong_typedef<
-				::brigand::_1
+			::metal::trait<
+				fcppt::is_strong_typedef
 			>
 		>::value,
 		"StrongTypedefs must all be strong typedefs"
 	);
 
 	static_assert(
-		::brigand::all<
+		::metal::all_of<
 			strong_typedefs,
-			::brigand::bind<
-				std::is_same,
-				::brigand::pin<
+			::metal::bind<
+				::metal::trait<
+					std::is_same
+				>,
+				::metal::always<
 					input_tag
 				>,
-				::brigand::bind<
-					fcppt::strong_typedef_tag,
-					::brigand::_1
+				::metal::lambda<
+					fcppt::strong_typedef_tag
 				>
 			>
 		>::value,

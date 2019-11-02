@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/max_value.hpp>
+#include <fcppt/metal/max_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -36,9 +36,9 @@ int
 main()
 {
 	static_assert(
-		std::is_same<
-			fcppt::brigand::max_value<
-				brigand::list<
+		std::is_same_v<
+			fcppt::metal::max_value<
+				metal::list<
 					static_size<
 						5u
 					>,
@@ -53,7 +53,6 @@ main()
 			static_size<
 				7u
 			>
-		>::value,
-		""
+		>
 	);
 }

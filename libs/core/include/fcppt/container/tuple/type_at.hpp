@@ -8,10 +8,12 @@
 #define FCPPT_CONTAINER_TUPLE_TYPE_AT_HPP_INCLUDED
 
 #include <fcppt/cast/size.hpp>
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/container/tuple/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/at.hpp>
+#include <metal/list/at.hpp>
 #include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,15 +38,16 @@ template<
 using
 type_at
 =
-::brigand::at_c<
+::metal::at<
 	fcppt::container::tuple::types_of<
 		Tuple
 	>,
-	fcppt::cast::size<
-		unsigned int
-	>(
-		Index
-	)
+	fcppt::metal::to_number<
+		std::integral_constant<
+			std::size_t,
+			Index
+		>
+	>
 >;
 
 }

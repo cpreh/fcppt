@@ -7,8 +7,9 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/at.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/at.hpp>
+#include <metal/list/list.hpp>
+#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,7 +19,7 @@ main()
 {
 	typedef
 	fcppt::variant::dynamic_cast_types<
-		brigand::list<
+		metal::list<
 			int,
 			char const
 		>
@@ -26,28 +27,30 @@ main()
 	types;
 
 	static_assert(
-		std::is_same<
-			brigand::at_c<
+		std::is_same_v<
+			metal::at<
 				types,
-				0
+				metal::number<
+					0
+				>
 			>,
 			fcppt::reference<
 				int
 			>
-		>::value,
-		""
+		>
 	);
 
 	static_assert(
-		std::is_same<
-			brigand::at_c<
+		std::is_same_v<
+			metal::at<
 				types,
-				1
+				metal::number<
+					1
+				>
 			>,
 			fcppt::reference<
 				char const
 			>
-		>::value,
-		""
+		>
 	);
 }

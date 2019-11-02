@@ -108,10 +108,6 @@ if(
 endif()
 
 add_subdirectory(
-	brigand
-)
-
-add_subdirectory(
 	cast
 )
 

@@ -4,26 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_DETAIL_PRINT_HPP_INCLUDED
-#define FCPPT_BRIGAND_DETAIL_PRINT_HPP_INCLUDED
+#ifndef FCPPT_METAL_DETAIL_PRINT_HPP_INCLUDED
+#define FCPPT_METAL_DETAIL_PRINT_HPP_INCLUDED
 
 #include <fcppt/tag_type.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/brigand/detail/print_one.hpp>
+#include <fcppt/algorithm/loop.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/metal/detail/print_one.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/for_each.hpp>
-#include <brigand/sequences/back.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/type.hpp>
+#include <metal/list/back.hpp>
+#include <metal/list/empty.hpp>
+#include <metal/list/range.hpp>
+#include <metal/list/size.hpp>
+#include <metal/number/dec.hpp>
+#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 namespace detail
 {
@@ -32,9 +36,8 @@ template<
 	typename Sequence
 >
 std::enable_if_t<
-	std::is_same<
-		Sequence,
-		::brigand::list<>
+	::metal::empty<
+		Sequence
 	>::value,
 	void
 >
@@ -48,9 +51,8 @@ template<
 	typename Sequence
 >
 std::enable_if_t<
-	!std::is_same<
-		Sequence,
-		::brigand::list<>
+	!::metal::empty<
+		Sequence
 	>::value,
 	void
 >
@@ -58,11 +60,18 @@ print(
 	fcppt::io::ostream &_stream
 )
 {
-	::brigand::for_each<
-		::brigand::pop_back<
-			Sequence
-		>
-	>(
+	fcppt::algorithm::loop(
+		::metal::range<
+			Sequence,
+			::metal::number<
+				0
+			>,
+			::metal::dec<
+				::metal::size<
+					Sequence
+				>
+			>
+		>{},
 		[
 			&_stream
 		](
@@ -73,8 +82,8 @@ print(
 				_type
 			);
 
-			fcppt::brigand::detail::print_one<
-				::brigand::type_from<
+			fcppt::metal::detail::print_one<
+				fcppt::tag_type<
 					decltype(
 						_type
 					)
@@ -88,8 +97,8 @@ print(
 		}
 	);
 
-	fcppt::brigand::detail::print_one<
-		::brigand::back<
+	fcppt::metal::detail::print_one<
+		::metal::back<
 			Sequence
 		>
 	>(

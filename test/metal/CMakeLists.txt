@@ -16,7 +16,32 @@ add_fcppt_metal_test(
 )
 
 add_fcppt_metal_test(
+	enum_range
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	flip_map
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	flip_pair
+	NO_CODE
+)
+
+add_fcppt_metal_test(
 	for_each_break
+)
+
+add_fcppt_metal_test(
+	from_number
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	from_number_list
+	NO_CODE
 )
 
 add_fcppt_metal_test(
@@ -38,6 +63,31 @@ add_fcppt_metal_test(
 	NO_CODE
 )
 
+add_fcppt_metal_test(
+	max_value
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	partial_sums
+	NO_CODE
+)
+
 add_subdirectory(
 	set
+)
+
+add_fcppt_metal_test(
+	unique
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	to_number
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	to_number_list
+	NO_CODE
 )

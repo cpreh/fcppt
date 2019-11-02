@@ -11,9 +11,9 @@
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
+#include <metal/list/list.hpp>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,14 +36,14 @@ apply(
 )
 {
 	static_assert(
-		::brigand::all<
-			::brigand::list<
+		::metal::all_of<
+			::metal::list<
 				fcppt::type_traits::remove_cv_ref_t<
 					Variants
 				>...
 			>,
-			fcppt::variant::is_object<
-				::brigand::_1
+			::metal::trait<
+				fcppt::variant::is_object
 			>
 		>::value,
 		"Variants must all be variants"

@@ -7,12 +7,12 @@
 #ifndef FCPPT_PARSE_ALTERNATIVE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_RESULT_HPP_INCLUDED
 
-#include <fcppt/brigand/unique.hpp>
+#include <fcppt/metal/unique.hpp>
 #include <fcppt/parse/detail/alternative_list.hpp>
 #include <fcppt/parse/detail/alternative_result.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/append.hpp>
+#include <metal/list/join.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,8 +36,8 @@ using
 alternative_result
 =
 fcppt::parse::detail::alternative_result<
-	fcppt::brigand::unique<
-		::brigand::append<
+	fcppt::metal::unique<
+		::metal::join<
 			typename
 			fcppt::parse::detail::alternative_list<
 				Left

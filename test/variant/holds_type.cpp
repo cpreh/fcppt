@@ -7,7 +7,7 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -20,7 +20,7 @@ TEST_CASE(
 {
 	typedef
 	fcppt::variant::object<
-		brigand::list<
+		metal::list<
 			int,
 			std::string
 		>

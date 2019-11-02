@@ -7,16 +7,16 @@
 #ifndef FCPPT_METAL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_METAL_INVOKE_ON_HPP_INCLUDED
 
+#include <fcppt/runtime_index.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/metal/runtime_index.hpp>
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/at.hpp>
 #include <metal/list/size.hpp>
-#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -77,7 +77,7 @@ invoke_on(
 	);
 
 	return
-		fcppt::metal::runtime_index<
+		fcppt::runtime_index<
 			::metal::size<
 				Sequence
 			>
@@ -102,13 +102,9 @@ invoke_on(
 						fcppt::tag<
 							::metal::at<
 								Sequence,
-								::metal::number<
-									static_cast<
-										metal::int_
-									>(
-										decltype(
-											_cur_index
-										)::value
+								fcppt::metal::to_number<
+									decltype(
+										_cur_index
 									)
 								>
 							>

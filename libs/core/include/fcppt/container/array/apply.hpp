@@ -15,12 +15,13 @@
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/functions/comparison/equal_to.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
+#include <metal/list/list.hpp>
 #include <array>
 #include <type_traits>
 #include <utility>
@@ -103,7 +104,7 @@ std::array<
 	source1;
 
 	typedef
-	::brigand::list<
+	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Arrays
 		>...
@@ -118,25 +119,29 @@ std::array<
 	);
 
 	static_assert(
-		::brigand::all<
+		::metal::all_of<
 			sources,
-			fcppt::type_traits::is_std_array<
-				::brigand::_1
+			::metal::trait<
+				fcppt::type_traits::is_std_array
 			>
 		>::value,
 		"Arrays must all be std::arrays"
 	);
 
 	static_assert(
-		::brigand::all<
+		::metal::all_of<
 			sources,
-			::brigand::bind<
-				::brigand::equal_to,
-				::brigand::bind<
-					fcppt::container::array::size,
-					::brigand::_1
+			::metal::bind<
+				::metal::trait<
+					std::is_same
 				>,
-				::brigand::pin<
+				::metal::bind<
+					::metal::lambda<
+						fcppt::container::array::size
+					>,
+					::metal::_1
+				>,
+				::metal::always<
 					fcppt::container::array::size<
 						source1
 					>

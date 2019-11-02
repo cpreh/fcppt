@@ -7,10 +7,10 @@
 #ifndef FCPPT_VARIANT_DYNAMIC_CAST_TYPES_HPP_INCLUDED
 #define FCPPT_VARIANT_DYNAMIC_CAST_TYPES_HPP_INCLUDED
 
-#include <fcppt/add_reference.hpp>
+#include <fcppt/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/transform.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,11 +30,11 @@ template<
 using
 dynamic_cast_types
 =
-::brigand::transform<
-	Types,
-	fcppt::add_reference<
-		::brigand::_1
-	>
+::metal::transform<
+	::metal::lambda<
+		fcppt::reference
+	>,
+	Types
 >;
 
 }

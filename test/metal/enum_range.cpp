@@ -4,23 +4,47 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/numeric_max.hpp>
+#include <fcppt/metal/enum_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <limits>
+#include <metal/list/back.hpp>
+#include <metal/list/front.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
+namespace
+{
+
+enum class my_enum
+{
+	test1,
+	test2,
+	fcppt_maximum = test2
+};
+
+}
 
 int
 main()
 {
+	typedef
+	fcppt::metal::enum_range<
+		my_enum
+	>
+	range;
+
 	static_assert(
-		fcppt::brigand::numeric_max<
-			unsigned
+		metal::front<
+			range
 		>::value
 		==
-		std::numeric_limits<
-			unsigned
-		>::max(),
-		""
+		my_enum::test1
+	);
+
+	static_assert(
+		metal::back<
+			range
+		>::value
+		==
+		my_enum::test2
 	);
 }

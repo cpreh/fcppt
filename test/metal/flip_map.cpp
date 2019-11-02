@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/flip_map.hpp>
+#include <fcppt/metal/flip_map.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/map.hpp>
-#include <brigand/sequences/pair.hpp>
+#include <metal/map/map.hpp>
+#include <metal/pair/pair.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -16,30 +16,30 @@ int
 main()
 {
 	static_assert(
-		std::is_same<
-			fcppt::brigand::flip_map<
-				brigand::map<
-					brigand::pair<
+		std::is_same_v<
+			fcppt::metal::flip_map<
+				metal::map<
+					metal::pair<
 						int,
 						float
 					>,
-					brigand::pair<
+					metal::pair<
 						char,
 						long
 					>
 				>
 			>,
-			brigand::map<
-				brigand::pair<
+			metal::map<
+				metal::pair<
 					float,
 					int
 				>,
-				brigand::pair<
+				metal::pair<
 					long,
 					char
 				>
 			>
-		>::value,
+		>,
 		""
 	);
 }

@@ -12,14 +12,14 @@ add_fcppt_record_test(
 	all_disjoint
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(
 	all_initializers
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(
@@ -36,7 +36,7 @@ add_fcppt_record_test(
 	contains_initializer
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(
@@ -49,14 +49,14 @@ add_fcppt_record_test(
 	disjoint_product
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(
 	element_map
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(
@@ -78,7 +78,7 @@ add_fcppt_record_test(
 	label_set
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(
@@ -97,7 +97,7 @@ add_fcppt_record_test(
 	map_elements
 	NO_CODE
 	LINK_LIBS
-		Brigand
+		Metal
 )
 
 add_fcppt_record_test(

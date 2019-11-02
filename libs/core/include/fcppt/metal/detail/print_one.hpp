@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_DETAIL_PRINT_ONE_HPP_INCLUDED
-#define FCPPT_BRIGAND_DETAIL_PRINT_ONE_HPP_INCLUDED
+#ifndef FCPPT_METAL_DETAIL_PRINT_ONE_HPP_INCLUDED
+#define FCPPT_METAL_DETAIL_PRINT_ONE_HPP_INCLUDED
 
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/io/ostream.hpp>
@@ -17,7 +17,7 @@
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 namespace detail
 {

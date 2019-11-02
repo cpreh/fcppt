@@ -4,37 +4,29 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_LIST_C_HPP_INCLUDED
-#define FCPPT_BRIGAND_LIST_C_HPP_INCLUDED
+#ifndef FCPPT_METAL_TO_NUMBER_HPP_INCLUDED
+#define FCPPT_METAL_TO_NUMBER_HPP_INCLUDED
 
+#include <fcppt/type_traits/safe_integral_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
-#include <type_traits>
+#include <metal/number/number.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
-/**
-\brief A list of integral_constants.
-
-\ingroup fcpptbrigand
-*/
 template<
-	typename Type,
-	Type... Values
+	typename Src
 >
 using
-list_c
+to_number
 =
-::brigand::list<
-	std::integral_constant<
-		Type,
-		Values
-	>...
+fcppt::type_traits::safe_integral_cast<
+	::metal::int_,
+	Src
 >;
 
 }

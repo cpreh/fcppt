@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/object.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/metal/to_number_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/list.hpp>
+#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,14 +17,24 @@ main()
 {
 	static_assert(
 		std::is_same_v<
-			fcppt::variant::variadic<
-				int,
-				float
+			fcppt::metal::to_number_list<
+				::metal::list<
+					std::integral_constant<
+						int,
+						5
+					>,
+					std::integral_constant<
+						int,
+						10
+					>
+				>
 			>,
-			fcppt::variant::object<
-				metal::list<
-					int,
-					float
+			::metal::list<
+				metal::number<
+					5
+				>,
+				metal::number<
+					10
 				>
 			>
 		>

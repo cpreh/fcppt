@@ -6,28 +6,28 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/tag_type.hpp>
-#include <fcppt/brigand/invoke_on.hpp>
+#include <fcppt/metal/invoke_on.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"brigand::invoke_on",
-	"[brigand]"
+	"metal::invoke_on",
+	"[metal]"
 )
 {
 	typedef
-	brigand::list<
+	metal::list<
 		int,
 		long
 	>
 	list_type;
 
 	CHECK(
-		fcppt::brigand::invoke_on<
+		fcppt::metal::invoke_on<
 			list_type
 		>(
 			1u,
@@ -57,7 +57,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::brigand::invoke_on<
+		fcppt::metal::invoke_on<
 			list_type
 		>(
 			0u,
@@ -87,7 +87,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::brigand::invoke_on<
+		fcppt::metal::invoke_on<
 			list_type
 		>(
 			2u,

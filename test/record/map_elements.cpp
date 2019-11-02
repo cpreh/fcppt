@@ -13,8 +13,9 @@
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -66,11 +67,15 @@ main()
 	typedef
 	fcppt::record::map_elements<
 		my_record,
-		brigand::bind<
-			fcppt::optional::object,
-			brigand::bind<
-				fcppt::record::element_to_type,
-				brigand::_1
+		metal::bind<
+			::metal::lambda<
+				fcppt::optional::object
+			>,
+			metal::bind<
+				metal::lambda<
+					fcppt::record::element_to_type
+				>,
+				metal::_1
 			>
 		>
 	>
@@ -91,18 +96,22 @@ main()
 	typedef
 	fcppt::record::map_elements<
 		my_record,
-		brigand::bind<
-			result_helper,
-			decltype(
-				transform
-			),
-			brigand::_1
+		metal::bind<
+			metal::lambda<
+				result_helper
+			>,
+			metal::always<
+				decltype(
+					transform
+				)
+			>,
+			metal::_1
 		>
 	>
 	result2;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::record::label_value_type<
 				result1,
 				int_label
@@ -110,12 +119,12 @@ main()
 			fcppt::optional::object<
 				int
 			>
-		>::value,
+		>,
 		"Invalid int label in result1"
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::record::label_value_type<
 				result1,
 				bool_label
@@ -123,12 +132,12 @@ main()
 			fcppt::optional::object<
 				bool
 			>
-		>::value,
+		>,
 		"Invalid bool label in result1"
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::record::label_value_type<
 				result2,
 				int_label
@@ -136,12 +145,12 @@ main()
 			fcppt::optional::object<
 				int
 			>
-		>::value,
+		>,
 		"Invalid int label in result2"
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::record::label_value_type<
 				result2,
 				bool_label
@@ -149,7 +158,7 @@ main()
 			fcppt::optional::object<
 				bool
 			>
-		>::value,
+		>,
 		"Invalid bool label in result2"
 	);
 }

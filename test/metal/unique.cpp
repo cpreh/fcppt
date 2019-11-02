@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/found_t.hpp>
-#include <fcppt/brigand/unique.hpp>
+#include <fcppt/metal/unique.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/sequences/size.hpp>
+#include <metal/list/contains.hpp>
+#include <metal/list/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -17,8 +16,8 @@ main()
 {
 	{
 		typedef
-		fcppt::brigand::unique<
-			brigand::list<
+		fcppt::metal::unique<
+			metal::list<
 				int,
 				int
 			>
@@ -26,7 +25,7 @@ main()
 		list;
 
 		static_assert(
-			::brigand::size<
+			::metal::size<
 				list
 			>::value
 			==
@@ -35,7 +34,7 @@ main()
 		);
 
 		static_assert(
-			fcppt::brigand::found_t<
+			::metal::contains<
 				list,
 				int
 			>::value,
@@ -45,8 +44,8 @@ main()
 
 	{
 		typedef
-		fcppt::brigand::unique<
-			brigand::list<
+		fcppt::metal::unique<
+			metal::list<
 				int,
 				float
 			>
@@ -54,7 +53,7 @@ main()
 		list;
 
 		static_assert(
-			::brigand::size<
+			::metal::size<
 				list
 			>::value
 			==
@@ -63,7 +62,7 @@ main()
 		);
 
 		static_assert(
-			fcppt::brigand::found_t<
+			::metal::contains<
 				list,
 				int
 			>::value,
@@ -71,7 +70,7 @@ main()
 		);
 
 		static_assert(
-			fcppt::brigand::found_t<
+			::metal::contains<
 				list,
 				float
 			>::value,

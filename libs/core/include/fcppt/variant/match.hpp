@@ -8,11 +8,13 @@
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/metal/from_number.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/index_of.hpp>
+#include <metal/list/find.hpp>
+#include <cstddef>
 #include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -64,16 +66,19 @@ match(
 			{
 				return
 					std::get<
-						::brigand::index_of<
-							fcppt::variant::types_of<
+						fcppt::metal::from_number<
+							std::size_t,
+							::metal::find<
+								fcppt::variant::types_of<
+									fcppt::type_traits::remove_cv_ref_t<
+										Variant
+									>
+								>,
 								fcppt::type_traits::remove_cv_ref_t<
-									Variant
+									decltype(
+										_arg
+									)
 								>
-							>,
-							fcppt::type_traits::remove_cv_ref_t<
-								decltype(
-									_arg
-								)
 							>
 						>::value
 					>(

@@ -4,49 +4,42 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/brigand/enum_range.hpp>
+#include <fcppt/type_traits/safe_integral_cast.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/back.hpp>
-#include <brigand/sequences/front.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-enum class my_enum
-{
-	test1,
-	test2,
-	fcppt_maximum = test2
-};
-
-}
 
 int
 main()
 {
 	typedef
-	fcppt::brigand::enum_range<
-		my_enum
+	std::integral_constant<
+		int,
+		2
 	>
-	range;
+	integral;
+
+	typedef
+	fcppt::type_traits::safe_integral_cast<
+		unsigned,
+		integral
+	>
+	result;
 
 	static_assert(
-		brigand::front<
-			range
-		>::value
-		==
-		my_enum::test1,
-		""
+		std::is_same_v<
+			fcppt::type_traits::value_type<
+				result
+			>,
+			unsigned
+		>
 	);
 
 	static_assert(
-		brigand::back<
-			range
-		>::value
+		result::value
 		==
-		my_enum::test2,
-		""
+		2u
 	);
 }

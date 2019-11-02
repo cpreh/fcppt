@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_TUPLE_DETAIL_TYPES_OF_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,7 +37,7 @@ struct types_of<
 >
 {
 	typedef
-	::brigand::list<
+	::metal::list<
 		Types...
 	>
 	type;

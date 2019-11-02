@@ -10,13 +10,13 @@
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/map_array.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <catch2/catch.hpp>
 #include <array>
 #include <string>
@@ -121,7 +121,7 @@ TEST_CASE(
 }
 
 TEST_CASE(
-	"algorithm_map brigand",
+	"algorithm_map metal",
 	"[algorithm_map]"
 )
 {
@@ -129,7 +129,7 @@ TEST_CASE(
 		fcppt::algorithm::map<
 			int_vector
 		>(
-			brigand::list<
+			metal::list<
 				std::integral_constant<
 					int,
 					1

@@ -4,34 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
+#ifndef FCPPT_METAL_TO_NUMBER_LIST_HPP_INCLUDED
+#define FCPPT_METAL_TO_NUMBER_LIST_HPP_INCLUDED
 
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/contains.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/transform.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace variant
-{
-namespace detail
+namespace metal
 {
 
 template<
-	typename Types,
-	typename Element
+	typename List
 >
 using
-has_type
+to_number_list
 =
-::metal::contains<
-	Types,
-	Element
+::metal::transform<
+	::metal::lambda<
+		fcppt::metal::to_number
+	>,
+	List
 >;
 
-}
 }
 }
 

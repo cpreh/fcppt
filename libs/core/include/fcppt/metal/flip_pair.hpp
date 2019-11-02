@@ -4,29 +4,29 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_FLIP_PAIR_HPP_INCLUDED
-#define FCPPT_BRIGAND_FLIP_PAIR_HPP_INCLUDED
+#ifndef FCPPT_METAL_FLIP_PAIR_HPP_INCLUDED
+#define FCPPT_METAL_FLIP_PAIR_HPP_INCLUDED
 
-#include <fcppt/brigand/pair_first.hpp>
-#include <fcppt/brigand/pair_second.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/pair.hpp>
+#include <metal/pair/first.hpp>
+#include <metal/pair/pair.hpp>
+#include <metal/pair/second.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 /**
-\brief Flips a brigand pair.
+\brief Flips a metal pair.
 
-\ingroup fcpptbrigand
+\ingroup fcpptmetal
 
 Swaps first and second of \a Pair.
 
-\tparam Pair Must be a brigand pair.
+\tparam Pair Must be a metal pair.
 */
 template<
 	typename Pair
@@ -34,11 +34,11 @@ template<
 using
 flip_pair
 =
-::brigand::pair<
-	fcppt::brigand::pair_second<
+::metal::pair<
+	::metal::second<
 		Pair
 	>,
-	fcppt::brigand::pair_first<
+	::metal::first<
 		Pair
 	>
 >;

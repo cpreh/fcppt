@@ -9,12 +9,13 @@
 
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/front.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
+#include <metal/list/front.hpp>
+#include <metal/list/list.hpp>
 #include <array>
 #include <type_traits>
 #include <utility>
@@ -45,8 +46,8 @@ template<
 >
 inline
 std::array<
-	::brigand::front<
-		::brigand::list<
+	::metal::front<
+		::metal::list<
 			fcppt::type_traits::remove_cv_ref_t<
 				Args
 			>...
@@ -59,7 +60,7 @@ make(
 )
 {
 	typedef
-	::brigand::list<
+	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Args
 		>...
@@ -67,7 +68,7 @@ make(
 	decayed_args;
 
 	typedef
-	::brigand::front<
+	::metal::front<
 		decayed_args
 	>
 	first_type;
@@ -80,14 +81,16 @@ make(
 	result_type;
 
 	static_assert(
-		::brigand::all<
+		::metal::all_of<
 			decayed_args,
-			::brigand::bind<
-				std::is_same,
-				::brigand::pin<
+			::metal::bind<
+				::metal::trait<
+					std::is_same
+				>,
+				::metal::always<
 					first_type
 				>,
-				::brigand::_1
+				::metal::_1
 			>
 		>::value,
 		"All types of array::make must be the same"

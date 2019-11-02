@@ -7,13 +7,15 @@
 #ifndef FCPPT_METAL_PARTIAL_SUMS_HPP_INCLUDED
 #define FCPPT_METAL_PARTIAL_SUMS_HPP_INCLUDED
 
-#include <fcppt/metal/list_c.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/algorithms/fold.hpp>
-#include <metal/functions/arithmetic/plus.hpp>
-#include <metal/functions/lambda/bind.hpp>
-#include <metal/sequences/back.hpp>
-#include <metal/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/accumulate.hpp>
+#include <metal/list/append.hpp>
+#include <metal/list/back.hpp>
+#include <metal/number/add.hpp>
+#include <metal/number/number.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,38 +29,40 @@ namespace metal
 
 \ingroup fcpptmetal
 
-For the integral constants (c_1, ..., c_n) in \a Sequence, the resulting
-sequence will consist of the values (0, c_1, c_1 + c_2, ..., c_1 + ... c_n)
+For the integral constants <code>(c_1, ..., c_n)</code> in \a Sequence, the resulting
+sequence will consist of the values <code>(0, c_1, c_1 + c_2, ..., c_1 + ... c_n)</code>.
 
-\snippet metal/various.cpp metal_partial_sums
-
-\tparam Sequence A metal::list of integral constant types.
-
-\tparam IntType The integer type to use for the first zero.
+\tparam Sequence A metal::list of metal::numbers.
 */
 template<
-	typename Sequence,
-	typename IntType = int
+	typename Sequence
 >
 using
 partial_sums
 =
 ::metal::accumulate<
 	::metal::bind<
-		::metal::push_back,
-		::metal::_state,
+		::metal::lambda<
+			::metal::append
+		>,
+		::metal::_1,
 		::metal::bind<
-			::metal::plus,
-			::metal::bind<
-				::metal::back,
-				::metal::_state
+			::metal::lambda<
+				::metal::add
 			>,
-			::metal::_element
+			::metal::bind<
+				::metal::lambda<
+					::metal::back
+				>,
+				::metal::_1
+			>,
+			::metal::_2
 		>
 	>,
-	fcppt::metal::list_c<
-		IntType,
-		0
+	::metal::list<
+		::metal::number<
+			0
+		>
 	>,
 	Sequence
 >;

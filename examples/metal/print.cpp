@@ -4,30 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/is_set.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/metal/print.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/list.hpp>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
 int
 main()
 {
-	static_assert(
-		fcppt::metal::is_set<
-			metal::list<
-				int,
-				float
-			>
-		>::value
-	);
+//! [metal_print}
+	typedef
+	metal::list<
+		int,
+		float,
+		double
+	>
+	vec;
 
-	static_assert(
-		!fcppt::metal::is_set<
-			metal::list<
-				int,
-				int
-			>
-		>::value
-	);
+	// prints (int, float, double) to cout
+	fcppt::metal::print<
+		vec
+	>(
+		fcppt::io::cout()
+	)
+	<<
+	FCPPT_TEXT('\n');
+//! [metal_print}
 }

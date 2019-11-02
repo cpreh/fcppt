@@ -12,7 +12,6 @@
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/lambda/arg.hpp>
-#include <metal/lambda/always.hpp>
 #include <metal/lambda/bind.hpp>
 #include <metal/lambda/lambda.hpp>
 #include <metal/list/transform.hpp>
@@ -53,9 +52,7 @@ fcppt::record::object<
 				>,
 				::metal::_1
 			>,
-			::metal::always<
-				Function
-			>
+			Function
 		>,
 		fcppt::record::element_vector<
 			Record

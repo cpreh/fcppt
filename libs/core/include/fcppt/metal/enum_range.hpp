@@ -4,21 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_ENUM_RANGE_HPP_INCLUDED
-#define FCPPT_BRIGAND_ENUM_RANGE_HPP_INCLUDED
+#ifndef FCPPT_METAL_ENUM_RANGE_HPP_INCLUDED
+#define FCPPT_METAL_ENUM_RANGE_HPP_INCLUDED
 
-#include <fcppt/brigand/enum_range_start_end.hpp>
+#include <fcppt/metal/enum_range_start_end.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/min_value.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 /**
-\brief A brigand range over enums
+\brief A metal range over enums
 
 \ingroup fcpptenum
 */
@@ -28,7 +28,7 @@ template<
 using
 enum_range
 =
-fcppt::brigand::enum_range_start_end<
+fcppt::metal::enum_range_start_end<
 	Enum,
 	fcppt::enum_::min_value<
 		Enum

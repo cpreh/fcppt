@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/is_set.hpp>
+#include <fcppt/type_traits/numeric_max.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -14,20 +14,12 @@ int
 main()
 {
 	static_assert(
-		fcppt::metal::is_set<
-			metal::list<
-				int,
-				float
-			>
+		fcppt::type_traits::numeric_max<
+			unsigned
 		>::value
-	);
-
-	static_assert(
-		!fcppt::metal::is_set<
-			metal::list<
-				int,
-				int
-			>
-		>::value
+		==
+		std::numeric_limits<
+			unsigned
+		>::max()
 	);
 }

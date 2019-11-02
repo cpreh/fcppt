@@ -23,17 +23,17 @@ namespace type_traits
 
 \ingroup fcppttype_traits
 
-Casts \a Integral to an integral constant of type \a IntegralType. The cast is
+Casts \a Integral to an integral constant of type \a Dest. The cast is
 done using \a Conv from fcppt.casts.
 
-\tparam IntegralType An integral type to cast to
+\tparam Dest An integral type to cast to
 
 \tparam Conv A cast function from fcppt.casts
 
 \tparam Integral A std::integral_constant to cast from
 */
 template<
-	typename IntegralType,
+	typename Dest,
 	typename Conv,
 	typename Integral
 >
@@ -41,9 +41,9 @@ using
 integral_cast
 =
 std::integral_constant<
-	IntegralType,
+	Dest,
 	fcppt::type_traits::detail::integral_cast_value<
-		IntegralType,
+		Dest,
 		Conv,
 		Integral
 	>::value

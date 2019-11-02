@@ -17,7 +17,13 @@ add_fcppt_metal_example(
 )
 
 add_fcppt_metal_example(
-	various
+	max_value
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_metal_example(
+	print
 	LINK_LIBS
 		${fcppt_core_TARGET}
 )

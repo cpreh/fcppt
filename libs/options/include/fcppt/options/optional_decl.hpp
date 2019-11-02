@@ -22,8 +22,9 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -63,11 +64,15 @@ public:
 		fcppt::options::result_of<
 			Parser
 		>,
-		::brigand::bind<
-			fcppt::optional::object,
-			::brigand::bind<
-				fcppt::record::element_to_type,
-				::brigand::_1
+		::metal::bind<
+			::metal::lambda<
+				fcppt::optional::object
+			>,
+			::metal::bind<
+				::metal::lambda<
+					fcppt::record::element_to_type
+				>,
+				::metal::_1
 			>
 		>
 	>

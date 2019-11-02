@@ -155,7 +155,8 @@ set(
 	examples/math/vector/convert.cpp
 	examples/math/vector/various.cpp
 	examples/metal/invoke_on.cpp
-	examples/metal/various.cpp
+	examples/metal/max_value.cpp
+	examples/metal/print.cpp
 	examples/noncopyable.cpp
 	examples/optional.cpp
 	examples/options/base.cpp
@@ -216,7 +217,6 @@ set(
 	libs/catch/include/fcppt/catch/strong_typedef.hpp
 	libs/catch/include/fcppt/catch/variant.hpp
 	libs/core/include/fcppt/absurd.hpp
-	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
 	libs/core/include/fcppt/algorithm/binary_search.hpp
 	libs/core/include/fcppt/algorithm/contains.hpp
@@ -318,19 +318,6 @@ set(
 	libs/core/include/fcppt/bit/shifted_mask.hpp
 	libs/core/include/fcppt/bit/shifted_mask_c.hpp
 	libs/core/include/fcppt/bit/test.hpp
-	libs/core/include/fcppt/brigand/detail/print.hpp
-	libs/core/include/fcppt/brigand/detail/print_one.hpp
-	libs/core/include/fcppt/brigand/enum_range.hpp
-	libs/core/include/fcppt/brigand/enum_range_start_end.hpp
-	libs/core/include/fcppt/brigand/equal_to.hpp
-	libs/core/include/fcppt/brigand/flip_map.hpp
-	libs/core/include/fcppt/brigand/flip_pair.hpp
-	libs/core/include/fcppt/brigand/list_c.hpp
-	libs/core/include/fcppt/brigand/max_value.hpp
-	libs/core/include/fcppt/brigand/numeric_max.hpp
-	libs/core/include/fcppt/brigand/print.hpp
-	libs/core/include/fcppt/brigand/sequence_to_string.hpp
-	libs/core/include/fcppt/brigand/unique.hpp
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
 	libs/core/include/fcppt/cast/apply.hpp
@@ -1098,15 +1085,28 @@ set(
 	libs/core/include/fcppt/metal/as.hpp
 	libs/core/include/fcppt/metal/as_tuple.hpp
 	libs/core/include/fcppt/metal/detail/as.hpp
+	libs/core/include/fcppt/metal/detail/flip_map.hpp
 	libs/core/include/fcppt/metal/detail/for_each_break.hpp
+	libs/core/include/fcppt/metal/detail/from_number.hpp
 	libs/core/include/fcppt/metal/detail/interval.hpp
 	libs/core/include/fcppt/metal/detail/map_same_values.hpp
+	libs/core/include/fcppt/metal/detail/print.hpp
+	libs/core/include/fcppt/metal/detail/print_one.hpp
+	libs/core/include/fcppt/metal/enum_range.hpp
+	libs/core/include/fcppt/metal/enum_range_start_end.hpp
+	libs/core/include/fcppt/metal/flip_map.hpp
+	libs/core/include/fcppt/metal/flip_pair.hpp
 	libs/core/include/fcppt/metal/for_each_break.hpp
+	libs/core/include/fcppt/metal/from_number.hpp
+	libs/core/include/fcppt/metal/from_number_list.hpp
 	libs/core/include/fcppt/metal/interval.hpp
 	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
+	libs/core/include/fcppt/metal/max_value.hpp
 	libs/core/include/fcppt/metal/partial_sums.hpp
+	libs/core/include/fcppt/metal/print.hpp
+	libs/core/include/fcppt/metal/sequence_to_string.hpp
 	libs/core/include/fcppt/metal/set/contains.hpp
 	libs/core/include/fcppt/metal/set/difference.hpp
 	libs/core/include/fcppt/metal/set/empty.hpp
@@ -1120,6 +1120,9 @@ set(
 	libs/core/include/fcppt/metal/set/symmetric_difference.hpp
 	libs/core/include/fcppt/metal/set/to_list.hpp
 	libs/core/include/fcppt/metal/set/union.hpp
+	libs/core/include/fcppt/metal/to_number.hpp
+	libs/core/include/fcppt/metal/to_number_list.hpp
+	libs/core/include/fcppt/metal/unique.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
 	libs/core/include/fcppt/move_clear.hpp
@@ -1452,6 +1455,7 @@ set(
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
+	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp
 	libs/core/include/fcppt/type_traits/function_result.hpp
 	libs/core/include/fcppt/type_traits/implication.hpp
 	libs/core/include/fcppt/type_traits/integral_cast.hpp
@@ -1463,8 +1467,10 @@ set(
 	libs/core/include/fcppt/type_traits/is_std_tuple.hpp
 	libs/core/include/fcppt/type_traits/is_string.hpp
 	libs/core/include/fcppt/type_traits/is_value.hpp
+	libs/core/include/fcppt/type_traits/numeric_max.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref_t.hpp
+	libs/core/include/fcppt/type_traits/safe_integral_cast.hpp
 	libs/core/include/fcppt/type_traits/value_type.hpp
 	libs/core/include/fcppt/unique_ptr.hpp
 	libs/core/include/fcppt/unique_ptr_decl.hpp

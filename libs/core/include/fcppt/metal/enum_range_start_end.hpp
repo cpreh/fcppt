@@ -4,29 +4,31 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_ENUM_RANGE_START_END_HPP_INCLUDED
-#define FCPPT_BRIGAND_ENUM_RANGE_START_END_HPP_INCLUDED
+#ifndef FCPPT_METAL_ENUM_RANGE_START_END_HPP_INCLUDED
+#define FCPPT_METAL_ENUM_RANGE_START_END_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
+#include <fcppt/metal/interval.hpp>
+#include <fcppt/type_traits/integral_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/range.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/always.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/transform.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 /**
-\brief A brigand range over enums from a minimum to a maximum.
+\brief A metal range over enums from a minimum to a maximum.
 
 \ingroup fcpptenum
 */
@@ -38,8 +40,20 @@ template<
 using
 enum_range_start_end
 =
-::brigand::transform<
-	::brigand::range<
+::metal::transform<
+	::metal::bind<
+		::metal::lambda<
+			fcppt::type_traits::integral_cast
+		>,
+		::metal::always<
+			Enum
+		>,
+		::metal::always<
+			fcppt::cast::int_to_enum_fun
+		>,
+		::metal::_1
+	>,
+	fcppt::metal::interval<
 		std::underlying_type_t<
 			Enum
 		>,
@@ -65,12 +79,6 @@ enum_range_start_end
 		>(
 			1
 		)
-	>,
-	::brigand::bind<
-		fcppt::brigand::integral_cast,
-		Enum,
-		fcppt::cast::int_to_enum_fun,
-		::brigand::_1
 	>
 >;
 

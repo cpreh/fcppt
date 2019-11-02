@@ -231,8 +231,8 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptbrigand
 	<ul>
-	<li>Added #fcppt::brigand::is_set.</li>
-	<li>Added #fcppt::brigand::unique.</li>
+	<li>Added <code>fcppt::brigand::is_set</code>.</li>
+	<li>Added <code>fcppt::brigand::unique</code>.</li>
 	</ul>
 </li>
 
@@ -1022,7 +1022,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptref
 	<ul>
-	<li>Added #fcppt::add_reference.</li>
+	<li>Added <code>fcppt::add_reference</code>.</li>
 	</ul>
 </li>
 

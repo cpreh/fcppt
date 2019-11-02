@@ -4,29 +4,29 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_PRINT_HPP_INCLUDED
-#define FCPPT_BRIGAND_PRINT_HPP_INCLUDED
+#ifndef FCPPT_METAL_PRINT_HPP_INCLUDED
+#define FCPPT_METAL_PRINT_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/brigand/detail/print.hpp>
+#include <fcppt/metal/detail/print.hpp>
 #include <fcppt/io/ostream.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 /**
-\brief Pretty prints a brigand sequence.
+\brief Pretty prints a metal list.
 
-\ingroup fcpptbrigand
+\ingroup fcpptmetal
 
 Pretty prints \a Sequence to \a _stream. Every type in \a Sequence will be
 converted to a string using fcppt::type_name. The resulting format of the
 printed sequence will be <code>(name_1, ..., name_n)</code>.
 
-\tparam Sequence Must be a brigand sequence.
+\tparam Sequence Must be a metal::list.
 
 \param _stream The stream to print to.
 
@@ -43,7 +43,7 @@ print(
 	_stream
 		<< FCPPT_TEXT('(');
 
-	fcppt::brigand::detail::print<
+	fcppt::metal::detail::print<
 		Sequence
 	>(
 		_stream

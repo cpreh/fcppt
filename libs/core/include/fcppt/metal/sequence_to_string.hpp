@@ -4,25 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_SEQUENCE_TO_STRING_HPP_INCLUDED
-#define FCPPT_BRIGAND_SEQUENCE_TO_STRING_HPP_INCLUDED
+#ifndef FCPPT_METAL_SEQUENCE_TO_STRING_HPP_INCLUDED
+#define FCPPT_METAL_SEQUENCE_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/brigand/print.hpp>
+#include <fcppt/metal/print.hpp>
 #include <fcppt/io/ostringstream.hpp>
 
 
 namespace fcppt
 {
-namespace brigand
+namespace metal
 {
 
 /**
 \brief Converts a sequence to a string.
 
-\ingroup fcpptbrigand
+\ingroup fcpptmetal
 
-\tparam Sequence Must be a brigand sequence.
+\tparam Sequence Must be a metal sequence.
 */
 template<
 	typename Sequence
@@ -30,9 +30,9 @@ template<
 fcppt::string
 sequence_to_string()
 {
-	fcppt::io::ostringstream stream;
+	fcppt::io::ostringstream stream{};
 
-	fcppt::brigand::print<
+	fcppt::metal::print<
 		Sequence
 	>(
 		stream

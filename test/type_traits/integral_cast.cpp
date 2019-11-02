@@ -19,7 +19,8 @@ main()
 	std::integral_constant<
 		int,
 		2
-	> integral;
+	>
+	integral;
 
 	typedef
 	fcppt::type_traits::integral_cast<

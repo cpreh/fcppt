@@ -9,8 +9,8 @@
 
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/front.hpp>
-#include <brigand/sequences/size.hpp>
+#include <metal/list/front.hpp>
+#include <metal/list/size.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,12 +29,12 @@ using
 alternative_result
 =
 std::conditional_t<
-	::brigand::size<
+	::metal::size<
 		List
 	>::value
 	==
 	1u,
-	::brigand::front<
+	::metal::front<
 		List
 	>,
 	fcppt::variant::object<

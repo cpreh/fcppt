@@ -9,9 +9,7 @@
 
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/any.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/list/contains.hpp>
 #include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
@@ -55,14 +53,9 @@ holds_type(
 )
 {
 	static_assert(
-		::brigand::any<
+		::metal::contains<
 			Elements,
-			std::is_same<
-				::brigand::pin<
-					Type
-				>,
-				::brigand::_1
-			>
+			Type
 		>::value,
 		"Invalid Type in variant::holds_type"
 	);

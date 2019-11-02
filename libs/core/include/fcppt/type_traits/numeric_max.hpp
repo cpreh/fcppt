@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BRIGAND_NUMERIC_MAX_HPP_INCLUDED
-#define FCPPT_BRIGAND_NUMERIC_MAX_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_NUMERIC_MAX_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_NUMERIC_MAX_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <limits>
@@ -15,13 +15,13 @@
 
 namespace fcppt
 {
-namespace brigand
+namespace type_traits
 {
 
 /**
 \brief Metafunction to compute the maximum value of a type.
 
-\ingroup fcpptbrigand
+\ingroup fcppttype_traits
 
 \tparam Type Must be a type such that <code>std::numeric_limits<Type>::max()</code> is defined.
 */

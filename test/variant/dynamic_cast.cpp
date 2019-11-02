@@ -18,7 +18,7 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -104,7 +104,7 @@ TEST_CASE(
 )
 {
 	typedef
-	brigand::list<
+	metal::list<
 		derived1,
 		derived2
 	>
@@ -183,7 +183,7 @@ TEST_CASE(
 )
 {
 	typedef
-	brigand::list<
+	metal::list<
 		derived1 const,
 		derived2 const
 	>

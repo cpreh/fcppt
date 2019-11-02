@@ -4,9 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/is_set.hpp>
+#include <fcppt/metal/from_number_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/list.hpp>
+#include <metal/number/number.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -14,20 +16,28 @@ int
 main()
 {
 	static_assert(
-		fcppt::metal::is_set<
-			metal::list<
+		std::is_same_v<
+			fcppt::metal::from_number_list<
 				int,
-				float
+				::metal::list<
+					metal::number<
+						5
+					>,
+					metal::number<
+						10
+					>
+				>
+			>,
+			::metal::list<
+				std::integral_constant<
+					int,
+					5
+				>,
+				std::integral_constant<
+					int,
+					10
+				>
 			>
-		>::value
-	);
-
-	static_assert(
-		!fcppt::metal::is_set<
-			metal::list<
-				int,
-				int
-			>
-		>::value
+		>
 	);
 }

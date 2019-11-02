@@ -16,10 +16,9 @@
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/all.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/trait.hpp>
+#include <metal/list/all_of.hpp>
+#include <metal/list/list.hpp>
 #include <array>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -105,15 +104,14 @@ fcppt::container::grid::object<
 	);
 
 	static_assert(
-		::brigand::all<
-			::brigand::list<
+		::metal::all_of<
+			::metal::list<
 				fcppt::type_traits::remove_cv_ref_t<
 					Grids
 				>...
 			>,
-			::brigand::bind<
-				fcppt::container::grid::is_object,
-				::brigand::_1
+			::metal::trait<
+				fcppt::container::grid::is_object
 			>
 		>::value,
 		"Grids must all be grids"

@@ -19,7 +19,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
+#include <metal/list/list.hpp>
 #include <list>
 #include <map>
 #include <vector>
@@ -215,7 +215,7 @@ main()
 
 	static_assert(
 		source_optimized<
-			brigand::list<
+			metal::list<
 				int
 			>
 		>::value,

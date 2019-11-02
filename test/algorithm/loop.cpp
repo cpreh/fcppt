@@ -8,9 +8,9 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_brigand.hpp>
+#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/metal/interval.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/range.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,7 +25,7 @@ TEST_CASE(
 	};
 
 	fcppt::algorithm::loop(
-		brigand::range<
+		fcppt::metal::interval<
 			int,
 			0,
 			5

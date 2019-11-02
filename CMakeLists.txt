@@ -85,11 +85,6 @@ option(
 )
 
 find_package(
-	Brigand
-	REQUIRED
-)
-
-find_package(
 	Metal
 	REQUIRED
 )

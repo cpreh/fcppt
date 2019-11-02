@@ -9,16 +9,20 @@
 
 #include <fcppt/container/array/size.hpp>
 #include <fcppt/container/array/detail/join.hpp>
+#include <fcppt/metal/from_number.hpp>
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/fold.hpp>
-#include <brigand/functions/arithmetic/plus.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/accumulate.hpp>
+#include <metal/list/list.hpp>
+#include <metal/number/add.hpp>
 #include <array>
+#include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -57,24 +61,38 @@ std::array<
 			Array1
 		>
 	>,
-	::brigand::fold<
-		::brigand::list<
-			fcppt::type_traits::remove_cv_ref_t<
-				Arrays
-			>...
-		>,
-		fcppt::container::array::size<
-			fcppt::type_traits::remove_cv_ref_t<
-				Array1
-			>
-		>,
-		::brigand::bind<
-			::brigand::plus,
-			::brigand::bind<
-				fcppt::container::array::size,
-				::brigand::_element
+	fcppt::metal::from_number<
+		std::size_t,
+		::metal::accumulate<
+			::metal::bind<
+				::metal::lambda<
+					::metal::add
+				>,
+				::metal::bind<
+					::metal::lambda<
+						fcppt::metal::to_number
+					>,
+					::metal::bind<
+						::metal::lambda<
+							fcppt::container::array::size
+						>,
+						::metal::_2
+					>
+				>,
+				::metal::_1
 			>,
-			::brigand::_state
+			fcppt::metal::to_number<
+				fcppt::container::array::size<
+					fcppt::type_traits::remove_cv_ref_t<
+						Array1
+					>
+				>
+			>,
+			::metal::list<
+				fcppt::type_traits::remove_cv_ref_t<
+					Arrays
+				>...
+			>
 		>
 	>::value
 >

@@ -26,10 +26,11 @@
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/list.hpp>
-#include <brigand/types/args.hpp>
+#include <metal/lambda/arg.hpp>
+#include <metal/lambda/bind.hpp>
+#include <metal/lambda/lambda.hpp>
+#include <metal/list/list.hpp>
+#include <metal/list/transform.hpp>
 #include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -82,13 +83,15 @@ public:
 
 	static_assert(
 		fcppt::record::all_disjoint<
-			::brigand::transform<
-				::brigand::list<
-					SubCommands...
+			::metal::transform<
+				::metal::bind<
+					::metal::lambda<
+						fcppt::options::result_of
+					>,
+					::metal::_1
 				>,
-				::brigand::bind<
-					fcppt::options::result_of,
-					::brigand::_1
+				::metal::list<
+					SubCommands...
 				>
 			>
 		>::value,

@@ -7,16 +7,10 @@
 #ifndef FCPPT_METAL_DETAIL_INTERVAL_HPP_INCLUDED
 #define FCPPT_METAL_DETAIL_INTERVAL_HPP_INCLUDED
 
-#include <fcppt/cast/static_cast_fun.hpp>
-#include <fcppt/type_traits/integral_cast.hpp>
+#include <fcppt/metal/from_number_list.hpp>
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/always.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
 #include <metal/list/iota.hpp>
-#include <metal/list/transform.hpp>
-#include <metal/number/number.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -48,35 +42,22 @@ struct interval
 	);
 
 	typedef
-	::metal::transform<
-		::metal::bind<
-			::metal::lambda<
-				fcppt::type_traits::integral_cast
-			>,
-			::metal::always<
-				Type
-			>,
-			::metal::always<
-				fcppt::cast::static_cast_fun
-			>,
-			::metal::_1
-		>,
+	fcppt::metal::from_number_list<
+		Type,
 		::metal::iota<
-			::metal::number<
-				static_cast<
-					::metal::int_
-				>(
+			fcppt::metal::to_number<
+				std::integral_constant<
+					Type,
 					Begin
-				)
+				>
 			>,
-			::metal::number<
-				static_cast<
-					::metal::int_
-				>(
+			fcppt::metal::to_number<
+				std::integral_constant<
+					Type,
 					End
 					-
 					Begin
-				)
+				>
 			>
 		>
 	>
