@@ -12,9 +12,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <metal/lambda/partial.hpp>
 #include <metal/lambda/trait.hpp>
-#include <metal/list/find_if.hpp>
-#include <metal/list/size.hpp>
-#include <type_traits>
+#include <metal/list/any_of.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,21 +30,14 @@ template<
 using
 contains_initializer
 =
-std::negation<
-	std::is_same<
-		::metal::find_if<
-			Args,
-			::metal::partial<
-				::metal::trait<
-					fcppt::record::detail::label_is_same
-				>,
-				fcppt::record::element_to_label<
-					Element
-				>
-			>
+::metal::any_of<
+	Args,
+	::metal::partial<
+		::metal::trait<
+			fcppt::record::detail::label_is_same
 		>,
-		::metal::size<
-			Args
+		fcppt::record::element_to_label<
+			Element
 		>
 	>
 >;
