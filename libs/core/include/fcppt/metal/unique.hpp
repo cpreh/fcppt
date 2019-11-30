@@ -17,7 +17,7 @@ namespace metal
 {
 
 /**
-\brief Removes duplicates from a metal list.
+\brief Removes duplicates from a metal::list.
 
 \ingroup fcpptrecord
 

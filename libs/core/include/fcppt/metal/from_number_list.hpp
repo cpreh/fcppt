@@ -22,6 +22,17 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Converts a metal::list of metal::numbers into a metal::list of std::integral_constants.
+
+\ingroup fcpptmetal
+
+Applies <code>fcppt::metal::from_number<Result,_></code> to each element of the list.
+
+\tparam Result Must be an integral type.
+
+\tparam List Must be a metal::list of metal::numbers.
+*/
 template<
 	typename Result,
 	typename List

@@ -19,6 +19,15 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Converts a metal::list of std::integral_constants into a metal::list of metal::numbers.
+
+\ingroup fcpptmetal
+
+Applies #fcppt::metal::to_number to each element of the list.
+
+\tparam List Must be a metal::list of std::integral_constants.
+*/
 template<
 	typename List
 >

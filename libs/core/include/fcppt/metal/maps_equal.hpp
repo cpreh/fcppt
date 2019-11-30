@@ -28,6 +28,18 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Checks if two metal::maps are equal.
+
+\ingroup fcpptmetal
+
+Two maps are equal if and only if they contain the same key-value pairs.
+The order in which they occur does not matter.
+
+\tparam Map1 Must be a metal::map.
+
+\tparam Map2 Must be a metal::map.
+*/
 template<
 	typename Map1,
 	typename Map2

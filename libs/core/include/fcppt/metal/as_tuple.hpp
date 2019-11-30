@@ -18,6 +18,16 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Turns a metal list into a tuple.
+
+\ingroup fcpptmetal
+
+For <code>List=metal::list<t_1,...,t_n></code>
+the result type is <code>std::tuple<t_1,...,t_n></code>.
+
+\tparam List Must be a metal::list.
+*/
 template<
 	typename List
 >

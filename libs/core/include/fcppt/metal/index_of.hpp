@@ -15,6 +15,15 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Returns the index of an element of a metal::list.
+
+\ingroup fcpptmetal
+
+Similar to <code>metal::find</code> but asserts that the element is actually in the list.
+
+\tparam List Must be a metal::list.
+*/
 template<
 	typename List,
 	typename Type

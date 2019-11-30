@@ -18,7 +18,7 @@ namespace metal
 {
 
 /**
-\brief A metal range over enums
+\brief A metal range over enums.
 
 \ingroup fcpptenum
 */

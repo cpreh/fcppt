@@ -25,7 +25,7 @@ while giving the ability to break out of the loop.
 
 \ingroup fcpptmetal
 
-\tparam Sequence A metal::list.
+\tparam Sequence Must be a metal::list.
 
 \tparam Function A polymorphic function callable as <code>fcppt::loop
 (fcppt::tag<T>)</code> for every T in \a Sequence.

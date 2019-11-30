@@ -15,6 +15,16 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Turns a metal list into another type.
+
+\ingroup fcpptmetal
+
+For <code>List=metal::list<t_1,...,t_n></code>
+the result type is <code>Type<t_1,...,t_n></code>.
+
+\tparam List Must be a metal::list.
+*/
 template<
 	template<
 		typename ...

@@ -20,6 +20,13 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Checks if every element is unique in a metal::list.
+
+\ingroup fcpptmetal
+
+\tparam List Must be a metal::list.
+*/
 template<
 	typename List
 >

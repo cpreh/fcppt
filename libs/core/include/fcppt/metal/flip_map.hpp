@@ -23,7 +23,7 @@ namespace metal
 For each element of \a Map, swaps the key and the value type.
 For this to work, the mapped types of the map must all be different ypes.
 
-\tparam Map A metal map.
+\tparam Map A metal::map.
 */
 template<
 	typename Map

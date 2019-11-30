@@ -18,6 +18,17 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Converts a std::integral_constant to a metal::number.
+
+\ingroup fcpptmetal
+
+Let <code>Src=std::integral_constant<T,n></code>.
+The result will be <code>metal::number<n></code>.
+This only works if <code>n</code> can be converted without loss.
+
+\tparam Src Must be a std::integral_constant.
+*/
 template<
 	typename Src
 >

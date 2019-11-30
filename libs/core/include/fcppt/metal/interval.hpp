@@ -17,6 +17,15 @@ namespace fcppt
 namespace metal
 {
 
+/**
+\brief Creates a list of std::integral_constants that form an interval.
+
+\ingroup fcpptmetal
+
+Returns <code>metal::list<std::integral_constant<Type,Begin>, ..., std::integral_constant<Type,End-1>></code>.
+
+\tparam Type Must be an integral type.
+*/
 template<
 	typename Type,
 	Type Begin,

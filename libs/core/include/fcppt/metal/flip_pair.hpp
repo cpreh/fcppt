@@ -26,7 +26,7 @@ namespace metal
 
 Swaps first and second of \a Pair.
 
-\tparam Pair Must be a metal pair.
+\tparam Pair Must be a metal::pair.
 */
 template<
 	typename Pair
