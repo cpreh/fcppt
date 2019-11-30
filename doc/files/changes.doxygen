@@ -1,6 +1,34 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_340 3.4.0
+
+<ul>
+<li>
+Replaced Brigand with Metal.
+</li>
+</ul>
+
+\subsection changes_added_functionality_to_340 Added functionality
+
+<ul>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added #fcppt::type_traits::safe_integral_cast.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_340 Changed functionality
+
+<ul>
+<li>Moved <code>fcppt::brigand::implication</code> and #fcppt::type_traits::implication.</li>
+<li>Moved <code>fcppt::brigand::integral_cast</code> and #fcppt::type_traits::integral_cast.</li>
+<li>Moved <code>fcppt::brigand::ceil_div</code> and #fcppt::math::ceil_div_static.</li>
+</ul>
+
 \section changes_changes_to_330 3.3.0
 
 <ul>

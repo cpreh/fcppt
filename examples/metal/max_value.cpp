@@ -9,7 +9,7 @@
 #include <metal/lambda/lambda.hpp>
 #include <metal/list/list.hpp>
 #include <metal/list/transform.hpp>
-#include <metal/number/number.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,7 +32,8 @@ template<
 using
 sizeof_
 =
-metal::number<
+std::integral_constant<
+	std::size_t,
 	sizeof(Type)
 >;
 
