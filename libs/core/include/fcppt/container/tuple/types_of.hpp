@@ -18,7 +18,7 @@ namespace tuple
 {
 
 /**
-\brief The types of a tuple as a brigand sequence.
+\brief The types of a tuple as a metal::list.
 
 \ingroup fcpptcontainertuple
 

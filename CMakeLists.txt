@@ -605,7 +605,6 @@ set(
 
 install(
 	FILES
-	${FCPPT_CMAKE_MODULES_DIR}/FindBrigand.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FindMetal.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FindFcpptThreads.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtils.cmake

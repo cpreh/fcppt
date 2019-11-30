@@ -229,7 +229,7 @@ fcppt now uses <code>C++-17</code>.
 
 <ul>
 
-<li>\ref fcpptbrigand
+<li><code>fcpptbrigand</code>
 	<ul>
 	<li>Added <code>fcppt::brigand::is_set</code>.</li>
 	<li>Added <code>fcppt::brigand::unique</code>.</li>
@@ -687,7 +687,7 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptbrigand
+<li><code>fcpptbrigand</code>
 	<p>
 	New library for brigand utility functions.
 	</p>
@@ -891,7 +891,7 @@ C++11 library that has no dependencies itself.</li>
 </li>
 
 <li><code>fcpptmpl</code>
-	<p>This library is in the process of being replaced by \ref fcpptbrigand.</p>
+	<p>This library is in the process of being replaced by <code>fcpptbrigand></code>.</p>
 </li>
 
 <li>\ref fcpptrecord

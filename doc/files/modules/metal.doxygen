@@ -1,0 +1,11 @@
+/**
+\defgroup fcpptmetal fcppt.metal
+\ingroup fcpptmain
+\brief Metal related helper functions and metafunctions
+*/
+
+namespace fcppt
+{
+/// Metal related helper functions and metafunctions
+namespace metal {}
+}

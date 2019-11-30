@@ -32,7 +32,7 @@
 You need the following dependencies to build fcppt:
 <ul>
 	<li><a href="https://www.cmake.org">>=cmake-3.1.0</a></li>
-	<li><a href="https://github.com/edouarda/brigand">brigand</a></li>
+	<li><a href="https://github.com/brunocodutra/metal">Metal</a></li>
 </ul>
 
 The following dependencies are optional:
@@ -81,8 +81,8 @@ we refer to as <code>$build</code>. Change directory into
 <pre>cmake <code>$fcpptpath</code></pre> and pass all relevant arguments, e.g.
 <code>-G Ninja</code>, to CMake.
 
-To specify where to find Brigand, use <code>-DBRIGAND_INCLUDEDIR=$path</code>
-where <code>$path</code> points to Brigand's <code>include</code> directory.
+To specify where to find Metal, use <code>-DMetal_INCLUDEDIR=$path</code>
+where <code>$path</code> points to Metal's <code>include</code> directory.
 
 Take a look at CMake's <code>FindBoost.cmake</code> to see how to specify
 where to find Boost.

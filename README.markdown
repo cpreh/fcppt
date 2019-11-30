@@ -25,7 +25,7 @@ Dependencies
 ### Required
 * A C++-17-conforming compiler
 * <a href="https://cmake.org/">CMake</a>
-* <a href="https://github.com/edouarda/brigand">Brigand</a>
+* <a href="https://github.com/brunocodutra/metal">Metal</a>
 
 ### Optional
 * <a href="https://www.boost.org">Boost</a>

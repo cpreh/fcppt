@@ -112,7 +112,7 @@ types instead, which does not make any sense.</li>
 <li>#fcppt::variant::object's constructor is explicit.</li>
 <li>#fcppt::variant::object does not allow any implicit conversions in its
 constructors.</li>
-<li>#fcppt::variant::object uses a <code>brigand::list</code> instead of
+<li>#fcppt::variant::object uses a <code>metal::list</code> instead of
 variadic template parameters. There is also #fcppt::variant::variadic
 which does the latter.</li>
 </ul>

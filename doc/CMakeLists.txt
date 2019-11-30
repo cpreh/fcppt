@@ -51,7 +51,6 @@ set(
 	doc/files/modules/assert.doxygen
 	doc/files/modules/bit.doxygen
 	doc/files/modules/boost.doxygen
-	doc/files/modules/brigand.doxygen
 	doc/files/modules/casts.doxygen
 	doc/files/modules/catch.doxygen
 	doc/files/modules/config.doxygen
@@ -80,6 +79,7 @@ set(
 	doc/files/modules/math/matrix.doxygen
 	doc/files/modules/math/sphere.doxygen
 	doc/files/modules/math/vector.doxygen
+	doc/files/modules/metal.doxygen
 	doc/files/modules/optional.doxygen
 	doc/files/modules/options.doxygen
 	doc/files/modules/parse.doxygen

@@ -13,7 +13,7 @@ in pkgs.gcc8Stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgs.cmake ];
   buildInputs = [ pkgs.boost pkgs.catch2 ];
 
-  cmakeFlags = [ "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" "-DBrigand_INCLUDE_DIR=${pkgs.brigand}/include" ];
+  cmakeFlags = [ "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" "-DMetal_INCLUDE_DIR=${pkgs.metal}/include" ];
 
   enableParallelBuilding = true;
 
