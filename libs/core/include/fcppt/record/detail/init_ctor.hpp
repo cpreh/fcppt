@@ -10,6 +10,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/container/tuple/vararg_map.hpp>
+#include <fcppt/metal/index_of_if.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -18,7 +19,6 @@
 #include <metal/lambda/arg.hpp>
 #include <metal/lambda/bind.hpp>
 #include <metal/lambda/trait.hpp>
-#include <metal/list/find_if.hpp>
 #include <metal/list/list.hpp>
 #include <tuple>
 #include <utility>
@@ -90,7 +90,7 @@ init_ctor(
 				);
 
 				typedef
-				::metal::find_if<
+				fcppt::metal::index_of_if<
 					args_list,
 					::metal::bind<
 						::metal::trait<

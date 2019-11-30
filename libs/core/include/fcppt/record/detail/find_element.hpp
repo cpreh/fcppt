@@ -7,10 +7,10 @@
 #ifndef FCPPT_RECORD_DETAIL_FIND_ELEMENT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_FIND_ELEMENT_HPP_INCLUDED
 
+#include <fcppt/metal/index_of_if.hpp>
 #include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/at.hpp>
-#include <metal/list/find_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,7 +30,7 @@ find_element
 =
 ::metal::at<
 	Elements,
-	::metal::find_if<
+	fcppt::metal::index_of_if<
 		Elements,
 		fcppt::record::detail::find_element_predicate<
 			Label

@@ -45,6 +45,16 @@ add_fcppt_metal_test(
 )
 
 add_fcppt_metal_test(
+	index_of
+	NO_CODE
+)
+
+add_fcppt_metal_test(
+	index_of_if
+	NO_CODE
+)
+
+add_fcppt_metal_test(
 	interval
 	NO_CODE
 )

@@ -9,11 +9,11 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/metal/from_number.hpp>
+#include <fcppt/metal/index_of.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/find.hpp>
 #include <cstddef>
 #include <tuple>
 #include <utility>
@@ -68,7 +68,7 @@ match(
 					std::get<
 						fcppt::metal::from_number<
 							std::size_t,
-							::metal::find<
+							fcppt::metal::index_of<
 								fcppt::variant::types_of<
 									fcppt::type_traits::remove_cv_ref_t<
 										Variant
