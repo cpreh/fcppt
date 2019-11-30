@@ -64,6 +64,11 @@ add_fcppt_type_traits_test(
 )
 
 add_fcppt_type_traits_test(
+	to_bool
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
 	value_type
 	NO_CODE
 )

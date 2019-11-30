@@ -16,6 +16,7 @@ Replaced Brigand with Metal.
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added #fcppt::type_traits::safe_integral_cast.</li>
+	<li>Added #fcppt::type_traits::to_bool.</li>
 	</ul>
 </li>
 

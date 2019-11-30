@@ -10,6 +10,7 @@
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/container/detail/has_size.hpp>
+#include <fcppt/type_traits/to_bool.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal/list/list.hpp>
 #include <type_traits>
@@ -41,8 +42,10 @@ std::conjunction<
 		fcppt::container::detail::has_size<
 			Source
 		>,
-		::metal::is_list<
-			Source
+		fcppt::type_traits::to_bool<
+			::metal::is_list<
+				Source
+			>
 		>
 	>
 >;
