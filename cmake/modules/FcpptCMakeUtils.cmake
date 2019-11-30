@@ -222,6 +222,7 @@ elseif(
 		/wd4061
 		/wd4350
 		/wd4371
+		/wd4464
 		/wd4503
 		/wd4514
 		/wd4710
@@ -242,6 +243,7 @@ elseif(
 	#4350 - behaviour change due to implicit conversions (needed for unique_ptr)
 	#4371 - layout of class may have changed from previous compiler version
 	#4435 - layout change because of virtual base class
+	#4464 - relative include path contains ..
 	#4503 - decorated name length exceeded
 	#4514 - unreferenced inline function removed
 	#4710 - function not inlined
