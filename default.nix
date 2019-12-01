@@ -1,19 +1,32 @@
 let pkgs = import <nixpkgs> {};
-in pkgs.gcc8Stdenv.mkDerivation rec {
-  pname = "fcppt";
-  version = "3.2.2";
+    stdenv = pkgs.gcc9Stdenv;
+    metal = stdenv.mkDerivation rec {
+      pname = "metal";
+      version = "2.0.1";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "freundlich";
-    repo = "fcppt";
-    rev = version;
-    sha256 = "09mah52m3lih2n0swpsh8qb72yzl4nixaq99xp7wxyxxprhf4bpa";
-  };
+      src = pkgs.fetchFromGitHub {
+        owner = "brunocodutra";
+        repo = "metal";
+        rev = "v${version}";
+        sha256 = "16pmx8jmcjcz4jm04j33a9562pncwj28a9ff3wifkmmikfpw0bjd";
+      };
+
+      nativeBuildInputs = [ pkgs.cmake ];
+      buildInputs = [  ];
+
+      cmakeFlags = [ ];
+
+      enableParallelBuilding = true;
+    };
+in stdenv.mkDerivation rec {
+  name = "fcppt-master";
+
+  src = ./.;
 
   nativeBuildInputs = [ pkgs.cmake ];
   buildInputs = [ pkgs.boost pkgs.catch2 ];
 
-  cmakeFlags = [ "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" "-DMetal_INCLUDE_DIR=${pkgs.metal}/include" ];
+  cmakeFlags = [ "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" "-DMetal_INCLUDE_DIR=${metal}/include" ];
 
   enableParallelBuilding = true;
 
