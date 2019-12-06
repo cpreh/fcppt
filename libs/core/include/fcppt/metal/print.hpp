@@ -8,8 +8,8 @@
 #define FCPPT_METAL_PRINT_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/metal/detail/print.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/metal/detail/print.hpp>
 
 
 namespace fcppt

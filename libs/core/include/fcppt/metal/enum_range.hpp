@@ -7,9 +7,9 @@
 #ifndef FCPPT_METAL_ENUM_RANGE_HPP_INCLUDED
 #define FCPPT_METAL_ENUM_RANGE_HPP_INCLUDED
 
-#include <fcppt/metal/enum_range_start_end.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/min_value.hpp>
+#include <fcppt/metal/enum_range_start_end.hpp>
 
 
 namespace fcppt

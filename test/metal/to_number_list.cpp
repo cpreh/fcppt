@@ -7,7 +7,6 @@
 #include <fcppt/metal/to_number_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

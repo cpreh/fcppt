@@ -18,8 +18,8 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <catch2/catch.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

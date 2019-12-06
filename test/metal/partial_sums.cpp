@@ -5,8 +5,8 @@
 
 
 #include <fcppt/metal/partial_sums.hpp>
-#include <metal.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

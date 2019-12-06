@@ -8,16 +8,10 @@
 #define FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
 
 #include <fcppt/metal/set/make.hpp>
-#include <fcppt/metal/set/union.hpp>
 #include <fcppt/metal/set/to_list.hpp>
+#include <fcppt/metal/set/union.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
 #include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

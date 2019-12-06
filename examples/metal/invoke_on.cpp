@@ -9,15 +9,15 @@
 // transform a color type given at runtime (defined via an enum) into a static
 // color type (represented by variant over static color types).
 #include <fcppt/tag.hpp>
-#include <fcppt/metal/invoke_on.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
+#include <fcppt/metal/invoke_on.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <cassert>
 #include <exception>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

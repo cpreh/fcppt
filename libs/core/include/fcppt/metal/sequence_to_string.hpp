@@ -8,8 +8,8 @@
 #define FCPPT_METAL_SEQUENCE_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/metal/print.hpp>
 #include <fcppt/io/ostringstream.hpp>
+#include <fcppt/metal/print.hpp>
 
 
 namespace fcppt

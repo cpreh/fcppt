@@ -7,9 +7,7 @@
 #ifndef FCPPT_METAL_INTERVAL_HPP_INCLUDED
 #define FCPPT_METAL_INTERVAL_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
 #include <fcppt/metal/detail/interval.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt

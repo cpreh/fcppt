@@ -22,8 +22,6 @@
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 

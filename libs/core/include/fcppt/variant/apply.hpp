@@ -12,8 +12,6 @@
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 

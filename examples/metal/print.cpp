@@ -5,8 +5,8 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/metal/print.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/metal/print.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <ostream>

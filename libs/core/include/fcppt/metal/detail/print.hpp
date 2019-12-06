@@ -12,14 +12,9 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
-#include <fcppt/metal/detail/print_one.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/metal/detail/print_one.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
-#include <metal.hpp>
 #include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

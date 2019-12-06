@@ -8,11 +8,11 @@
 #define FCPPT_CONTAINER_TUPLE_TYPE_AT_HPP_INCLUDED
 
 #include <fcppt/cast/size.hpp>
-#include <fcppt/metal/to_number.hpp>
 #include <fcppt/container/tuple/types_of.hpp>
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <cstddef>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
