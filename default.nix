@@ -26,9 +26,11 @@ in stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgs.cmake ];
   buildInputs = [ pkgs.boost pkgs.catch2 ];
 
-  cmakeFlags = [ "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" "-DMetal_INCLUDE_DIR=${metal}/include" ];
+  cmakeFlags = [ "-DCMAKE_SKIP_BUILD_RPATH=false" "-DENABLE_BOOST=true" "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" "-DMetal_INCLUDE_DIR=${metal}/include" ];
 
   enableParallelBuilding = true;
+
+  doCheck = true;
 
   meta = with pkgs.stdenv.lib; {
     description = "Freundlich's C++ toolkit";
