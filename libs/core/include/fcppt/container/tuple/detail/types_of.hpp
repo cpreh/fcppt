@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_TUPLE_DETAIL_TYPES_OF_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 

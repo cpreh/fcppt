@@ -8,7 +8,7 @@
 #define FCPPT_METAL_DETAIL_AS_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

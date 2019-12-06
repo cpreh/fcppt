@@ -15,7 +15,7 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <cassert>
 #include <exception>
 #include <fcppt/config/external_end.hpp>

@@ -8,7 +8,7 @@
 #define FCPPT_METAL_SET_EMPTY_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/map/map.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

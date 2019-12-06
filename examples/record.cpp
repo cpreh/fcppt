@@ -23,7 +23,7 @@
 #include <fcppt/record/set.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <iostream>
 #include <ostream>
 #include <sstream>

@@ -7,7 +7,7 @@
 #include <fcppt/variant/object.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

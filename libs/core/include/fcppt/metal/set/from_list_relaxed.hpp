@@ -10,8 +10,8 @@
 #include <fcppt/metal/set/empty.hpp>
 #include <fcppt/metal/set/insert_relaxed.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/accumulate.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

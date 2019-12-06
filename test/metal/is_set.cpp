@@ -6,7 +6,7 @@
 
 #include <fcppt/metal/is_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

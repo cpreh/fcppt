@@ -12,7 +12,7 @@
 #include <fcppt/parse/detail/alternative_result.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/join.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

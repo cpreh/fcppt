@@ -22,9 +22,9 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

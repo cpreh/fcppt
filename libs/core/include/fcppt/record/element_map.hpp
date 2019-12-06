@@ -11,12 +11,12 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/accumulate.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/map/insert_key.hpp>
-#include <metal/map/map.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

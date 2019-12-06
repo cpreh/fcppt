@@ -6,8 +6,8 @@
 
 #include <fcppt/metal/enum_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/back.hpp>
-#include <metal/list/front.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

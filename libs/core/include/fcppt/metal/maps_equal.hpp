@@ -12,13 +12,13 @@
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/metal/set/symmetric_difference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/always.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/invoke.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/map/keys.hpp>
-#include <metal/number/if.hpp>
-#include <metal/number/number.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

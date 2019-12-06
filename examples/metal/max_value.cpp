@@ -6,9 +6,9 @@
 
 #include <fcppt/metal/max_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/list.hpp>
-#include <metal/list/transform.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

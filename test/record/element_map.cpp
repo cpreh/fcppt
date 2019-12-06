@@ -9,7 +9,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/map/at_key.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -11,7 +11,7 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/join.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -8,8 +8,8 @@
 #define FCPPT_METAL_DETAIL_INDEX_OF_IF_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/any_of.hpp>
-#include <metal/list/find_if.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

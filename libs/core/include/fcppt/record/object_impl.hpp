@@ -15,9 +15,9 @@
 #include <fcppt/record/detail/element_at.hpp>
 #include <fcppt/record/detail/init_ctor.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/empty.hpp>
-#include <metal/list/list.hpp>
-#include <metal/list/size.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

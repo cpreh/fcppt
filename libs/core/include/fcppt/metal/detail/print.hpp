@@ -15,12 +15,12 @@
 #include <fcppt/metal/detail/print_one.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/back.hpp>
-#include <metal/list/empty.hpp>
-#include <metal/list/range.hpp>
-#include <metal/list/size.hpp>
-#include <metal/number/dec.hpp>
-#include <metal/number/number.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

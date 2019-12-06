@@ -26,11 +26,11 @@
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/list.hpp>
-#include <metal/list/transform.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

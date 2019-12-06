@@ -6,7 +6,7 @@
 
 #include <fcppt/metal/flip_pair.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/pair/pair.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

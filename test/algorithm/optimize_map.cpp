@@ -19,7 +19,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <list>
 #include <map>
 #include <vector>

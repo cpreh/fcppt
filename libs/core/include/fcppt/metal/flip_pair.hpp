@@ -8,9 +8,9 @@
 #define FCPPT_METAL_FLIP_PAIR_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/pair/first.hpp>
-#include <metal/pair/pair.hpp>
-#include <metal/pair/second.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

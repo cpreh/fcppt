@@ -10,7 +10,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/metal/detail/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/number/number.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -10,7 +10,7 @@
 #include <fcppt/metal/set/from_list_relaxed.hpp>
 #include <fcppt/metal/set/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/size.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

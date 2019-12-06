@@ -6,8 +6,8 @@
 
 #include <fcppt/metal/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
-#include <metal/number/number.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

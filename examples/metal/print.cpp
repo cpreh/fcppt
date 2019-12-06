@@ -8,7 +8,7 @@
 #include <fcppt/metal/print.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 

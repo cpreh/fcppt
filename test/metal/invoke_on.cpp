@@ -8,7 +8,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/metal/invoke_on.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

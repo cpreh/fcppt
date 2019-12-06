@@ -9,7 +9,7 @@
 
 #include <fcppt/unit.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/map/insert_key.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

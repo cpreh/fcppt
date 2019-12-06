@@ -7,9 +7,9 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/at.hpp>
-#include <metal/list/list.hpp>
-#include <metal/number/number.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

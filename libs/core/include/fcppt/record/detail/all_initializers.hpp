@@ -9,9 +9,9 @@
 
 #include <fcppt/record/detail/contains_initializer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/partial.hpp>
-#include <metal/lambda/trait.hpp>
-#include <metal/list/all_of.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

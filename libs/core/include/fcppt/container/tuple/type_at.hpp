@@ -11,7 +11,7 @@
 #include <fcppt/metal/to_number.hpp>
 #include <fcppt/container/tuple/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/at.hpp>
+#include <metal.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

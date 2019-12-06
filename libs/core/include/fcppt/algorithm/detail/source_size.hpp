@@ -11,8 +11,8 @@
 #include <fcppt/container/size.hpp>
 #include <fcppt/container/size_result_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
-#include <metal/list/size.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

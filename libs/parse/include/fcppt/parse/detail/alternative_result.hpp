@@ -9,8 +9,8 @@
 
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/front.hpp>
-#include <metal/list/size.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

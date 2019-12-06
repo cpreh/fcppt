@@ -20,11 +20,11 @@
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/detail/label_list.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/lambda/trait.hpp>
-#include <metal/list/all_of.hpp>
-#include <metal/list/list.hpp>
-#include <metal/list/transform.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

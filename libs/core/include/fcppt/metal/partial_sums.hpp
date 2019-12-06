@@ -8,14 +8,14 @@
 #define FCPPT_METAL_PARTIAL_SUMS_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/accumulate.hpp>
-#include <metal/list/append.hpp>
-#include <metal/list/back.hpp>
-#include <metal/number/add.hpp>
-#include <metal/number/number.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -8,7 +8,7 @@
 #define FCPPT_METAL_SET_SIZE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/size.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

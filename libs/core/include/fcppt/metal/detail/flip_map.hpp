@@ -10,9 +10,9 @@
 #include <fcppt/metal/flip_pair.hpp>
 #include <fcppt/metal/is_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/transform.hpp>
-#include <metal/map/keys.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

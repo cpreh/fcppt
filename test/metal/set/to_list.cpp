@@ -7,7 +7,7 @@
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/contains.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

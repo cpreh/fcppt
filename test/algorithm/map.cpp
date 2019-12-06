@@ -16,7 +16,7 @@
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <catch2/catch.hpp>
 #include <array>
 #include <string>

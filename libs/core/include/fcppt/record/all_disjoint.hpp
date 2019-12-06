@@ -12,13 +12,13 @@
 #include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/accumulate.hpp>
-#include <metal/list/flatten.hpp>
-#include <metal/list/size.hpp>
-#include <metal/list/transform.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

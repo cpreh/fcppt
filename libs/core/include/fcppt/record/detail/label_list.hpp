@@ -9,8 +9,8 @@
 
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/transform.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -6,7 +6,7 @@
 
 #include <fcppt/metal/max_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

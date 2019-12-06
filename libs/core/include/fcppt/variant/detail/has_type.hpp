@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/contains.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

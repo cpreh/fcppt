@@ -10,11 +10,11 @@
 #include <fcppt/metal/set/contains.hpp>
 #include <fcppt/metal/set/insert.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/always.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/invoke.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/number/if.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

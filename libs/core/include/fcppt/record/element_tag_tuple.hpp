@@ -11,8 +11,8 @@
 #include <fcppt/metal/as_tuple.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/transform.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

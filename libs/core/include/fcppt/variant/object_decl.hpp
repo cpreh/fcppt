@@ -16,7 +16,7 @@
 #include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/variant/detail/std_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

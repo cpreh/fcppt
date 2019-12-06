@@ -12,12 +12,12 @@
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/lambda/always.hpp>
-#include <metal/lambda/arg.hpp>
-#include <metal/lambda/bind.hpp>
-#include <metal/lambda/lambda.hpp>
-#include <metal/list/accumulate.hpp>
-#include <metal/number/if.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

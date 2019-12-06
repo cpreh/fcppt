@@ -15,8 +15,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/at.hpp>
-#include <metal/list/size.hpp>
+#include <metal.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

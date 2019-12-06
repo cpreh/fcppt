@@ -18,7 +18,7 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 

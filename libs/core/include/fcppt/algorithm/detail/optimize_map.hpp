@@ -12,7 +12,7 @@
 #include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/type_traits/to_bool.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

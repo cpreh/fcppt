@@ -9,7 +9,7 @@
 #include <fcppt/metal/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

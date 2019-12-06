@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_DETAIL_STD_TYPE_IMPL_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
