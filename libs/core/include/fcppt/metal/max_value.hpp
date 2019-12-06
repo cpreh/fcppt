@@ -12,7 +12,6 @@
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

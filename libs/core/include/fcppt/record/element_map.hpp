@@ -12,7 +12,6 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

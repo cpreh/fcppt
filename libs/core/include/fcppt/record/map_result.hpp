@@ -11,7 +11,6 @@
 #include <fcppt/record/detail/map_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

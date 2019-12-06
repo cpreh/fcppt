@@ -13,7 +13,6 @@
 #include <fcppt/metal/set/to_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

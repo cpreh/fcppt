@@ -10,7 +10,6 @@
 #include <fcppt/record/detail/contains_initializer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
