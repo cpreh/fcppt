@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TYPE_TO_BOOL_HPP_INCLUDED
-#define FCPPT_TYPE_TO_BOOL_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_TO_BOOL_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_TO_BOOL_HPP_INCLUDED
 
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>

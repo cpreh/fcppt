@@ -1091,6 +1091,7 @@ set(
 	libs/core/include/fcppt/metal/detail/index_of.hpp
 	libs/core/include/fcppt/metal/detail/index_of_if.hpp
 	libs/core/include/fcppt/metal/detail/interval.hpp
+	libs/core/include/fcppt/metal/detail/list_to_variadic.hpp
 	libs/core/include/fcppt/metal/detail/map_same_values.hpp
 	libs/core/include/fcppt/metal/detail/print.hpp
 	libs/core/include/fcppt/metal/detail/print_one.hpp
@@ -1106,6 +1107,7 @@ set(
 	libs/core/include/fcppt/metal/interval.hpp
 	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
+	libs/core/include/fcppt/metal/list_to_variadic.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
 	libs/core/include/fcppt/metal/max_value.hpp
 	libs/core/include/fcppt/metal/partial_sums.hpp
@@ -1475,6 +1477,7 @@ set(
 	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref_t.hpp
 	libs/core/include/fcppt/type_traits/safe_integral_cast.hpp
+	libs/core/include/fcppt/type_traits/to_bool.hpp
 	libs/core/include/fcppt/type_traits/value_type.hpp
 	libs/core/include/fcppt/unique_ptr.hpp
 	libs/core/include/fcppt/unique_ptr_decl.hpp
