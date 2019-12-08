@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/list_to_variadic.hpp>
+#include <fcppt/metal/as.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
@@ -28,7 +28,7 @@ main()
 {
 	static_assert(
 		std::is_same_v<
-			fcppt::metal::list_to_variadic<
+			fcppt::metal::as<
 				test,
 				metal::list<
 					int,

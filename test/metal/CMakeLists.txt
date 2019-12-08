@@ -11,6 +11,11 @@ function(
 endfunction()
 
 add_fcppt_metal_test(
+	as
+	NO_CODE
+)
+
+add_fcppt_metal_test(
 	as_tuple
 	NO_CODE
 )
@@ -65,11 +70,6 @@ add_fcppt_metal_test(
 
 add_fcppt_metal_test(
 	is_set
-	NO_CODE
-)
-
-add_fcppt_metal_test(
-	list_to_variadic
 	NO_CODE
 )
 
