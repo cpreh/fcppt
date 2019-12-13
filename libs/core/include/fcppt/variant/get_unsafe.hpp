@@ -17,13 +17,13 @@ namespace variant
 {
 
 /**
-\brief Free get function
+\brief Free get function.
 
 \ingroup fcpptvariant
 
-Equal to <code>%_object.get&lt;Type&gt;()</code>
+Equal to <code>%_object.get&lt;Type&gt;()</code>.
 
-\see fcppt::variant::object::get()
+\see #fcppt::variant::object::get_unsafe
 */
 template<
 	typename Type,
@@ -46,13 +46,13 @@ get_unsafe(
 }
 
 /**
-\brief Free get function
+\brief Free get function.
 
 \ingroup fcpptvariant
 
-Equal to <code>%_object.get&lt;Type&gt;()</code>
+Equal to <code>%_object.get&lt;Type&gt;()</code>.
 
-\see fcppt::variant::object::get() const
+\see #fcppt::variant::object::get_unsafe
 */
 template<
 	typename Type,

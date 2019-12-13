@@ -17,13 +17,11 @@ namespace variant
 {
 
 /**
-\brief Free get function
+\brief Free get function that throws on error.
 
 \ingroup fcpptvariant
 
-Equal to <code>%_object.get&lt;Type&gt;()</code>
-
-\see fcppt::variant::object::get()
+\throw #fcppt::variant::invalid_get
 */
 template<
 	typename Type,
@@ -45,13 +43,11 @@ get_exn(
 }
 
 /**
-\brief Free get function
+\brief Free get function that throws on error.
 
 \ingroup fcpptvariant
 
-Equal to <code>%_object.get&lt;Type&gt;()</code>
-
-\see fcppt::variant::object::get() const
+\throw #fcppt::variant::invalid_get
 */
 template<
 	typename Type,
