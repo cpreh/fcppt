@@ -7,7 +7,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/variant/get_exn.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -27,7 +27,7 @@ TEST_CASE(
 	int_unique_ptr;
 
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		int_unique_ptr,
 		std::string
 	>
@@ -118,7 +118,7 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		fcppt::unique_ptr<
 			int
 		>
@@ -126,7 +126,7 @@ TEST_CASE(
 	variant_unique_ptr;
 
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		variant_unique_ptr
 	>
 	nested;

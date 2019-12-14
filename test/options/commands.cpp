@@ -30,7 +30,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
 #include <fcppt/variant/comparison.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -142,7 +142,7 @@ TEST_CASE(
 	command_bar_result_type;
 
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		command_foo_result_type,
 		command_bar_result_type
 	>

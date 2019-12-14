@@ -1506,6 +1506,8 @@ set(
 	libs/core/include/fcppt/variant/dynamic_cast_types.hpp
 	libs/core/include/fcppt/variant/exception.hpp
 	libs/core/include/fcppt/variant/exception_fwd.hpp
+	libs/core/include/fcppt/variant/from_list.hpp
+	libs/core/include/fcppt/variant/from_list_fwd.hpp
 	libs/core/include/fcppt/variant/get_exn.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
@@ -1524,8 +1526,6 @@ set(
 	libs/core/include/fcppt/variant/type_info.hpp
 	libs/core/include/fcppt/variant/types_of.hpp
 	libs/core/include/fcppt/variant/types_string.hpp
-	libs/core/include/fcppt/variant/variadic.hpp
-	libs/core/include/fcppt/variant/variadic_fwd.hpp
 	libs/core/include/fcppt/version_int.hpp
 	libs/core/include/fcppt/version_integral_c.hpp
 	libs/core/include/fcppt/version_string.hpp

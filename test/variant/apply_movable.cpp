@@ -7,7 +7,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <stdexcept>
@@ -133,7 +133,7 @@ struct move_function
 };
 
 typedef
-fcppt::variant::variadic<
+fcppt::variant::object<
 	int_unique_ptr,
 	string_unique_ptr,
 	bool_unique_ptr

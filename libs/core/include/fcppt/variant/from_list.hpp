@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_VARIADIC_HPP_INCLUDED
-#define FCPPT_VARIANT_VARIADIC_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_FROM_LIST_HPP_INCLUDED
+#define FCPPT_VARIANT_FROM_LIST_HPP_INCLUDED
 
-#include <fcppt/variant/object.hpp>
-#include <fcppt/variant/variadic_fwd.hpp>
+#include <fcppt/variant/from_list_fwd.hpp>
+#include <fcppt/variant/object_impl.hpp>
 
 
 #endif

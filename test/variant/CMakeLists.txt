@@ -58,6 +58,13 @@ add_fcppt_variant_test(
 )
 
 add_fcppt_variant_test(
+	from_list
+	NO_CODE
+	LINK_LIBS
+		Metal
+)
+
+add_fcppt_variant_test(
 	holds_type
 	LINK_LIBS
 		Metal
@@ -85,11 +92,4 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	to_optional_ref
-)
-
-add_fcppt_variant_test(
-	variadic
-	NO_CODE
-	LINK_LIBS
-		Metal
 )

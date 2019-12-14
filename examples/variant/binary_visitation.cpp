@@ -5,7 +5,7 @@
 
 
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <iostream>
@@ -19,7 +19,7 @@ main()
 {
 	// typedef a variant that can either hold a string or an int
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		std::string,
 		int
 	>

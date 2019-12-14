@@ -34,17 +34,17 @@ _right.get<T>())</code> holds.
 \param _compare The function to use for comparison
 */
 template<
-	typename Types,
+	typename... Types,
 	typename Compare
 >
 inline
 bool
 compare(
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_left,
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_right,
 	Compare const &_compare
 )

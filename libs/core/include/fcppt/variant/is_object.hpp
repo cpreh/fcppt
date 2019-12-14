@@ -28,11 +28,11 @@ std::false_type
 };
 
 template<
-	typename Types
+	typename... Types
 >
 struct is_object<
 	fcppt::variant::object<
-		Types
+		Types...
 	>
 >
 :

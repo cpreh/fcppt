@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_DETAIL_ALTERNATIVE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_ALTERNATIVE_RESULT_HPP_INCLUDED
 
-#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/from_list_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
@@ -36,7 +36,7 @@ std::conditional_t<
 	::metal::front<
 		List
 	>,
-	fcppt::variant::object<
+	fcppt::variant::from_list<
 		List
 	>
 >;

@@ -25,11 +25,11 @@ namespace Catch
 \ingroup fcpptcatch
 */
 template<
-	typename Types
+	typename... Types
 >
 struct StringMaker<
 	fcppt::variant::object<
-		Types
+		Types...
 	>
 >
 {
@@ -37,7 +37,7 @@ struct StringMaker<
 	std::string
 	convert(
 		fcppt::variant::object<
-			Types
+			Types...
 		> const &_value
 	)
 	{

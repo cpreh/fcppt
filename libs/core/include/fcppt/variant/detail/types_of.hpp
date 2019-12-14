@@ -8,6 +8,9 @@
 #define FCPPT_VARIANT_DETAIL_TYPES_OF_HPP_INCLUDED
 
 #include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <metal/list.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -23,16 +26,18 @@ template<
 struct types_of;
 
 template<
-	typename Types
+	typename... Types
 >
 struct types_of<
 	fcppt::variant::object<
-		Types
+		Types...
 	>
 >
 {
 	typedef
-	Types
+	::metal::list<
+		Types...
+	>
 	type;
 };
 

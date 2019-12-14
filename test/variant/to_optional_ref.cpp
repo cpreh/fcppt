@@ -12,7 +12,7 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/variant/to_optional_ref.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -24,7 +24,7 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		int,
 		std::string
 	>

@@ -19,13 +19,13 @@
 
 
 template<
-	typename Types
+	typename... Types
 >
 template<
 	typename U
 >
 fcppt::variant::object<
-	Types
+	Types...
 >::object(
 	U const &_other
 )
@@ -36,7 +36,7 @@ fcppt::variant::object<
 {
 	static_assert(
 		fcppt::variant::detail::has_type<
-			Types,
+			this_type,
 			U
 		>::value,
 		"Invalid variant type"
@@ -44,14 +44,14 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 template<
 	typename U,
 	typename
 >
 fcppt::variant::object<
-	Types
+	Types...
 >::object(
 	U &&_other
 )
@@ -64,7 +64,7 @@ fcppt::variant::object<
 {
 	static_assert(
 		fcppt::variant::detail::has_type<
-			Types,
+			this_type,
 			fcppt::type_traits::remove_cv_ref_t<
 				U
 			>
@@ -74,19 +74,19 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 template<
 	typename U
 >
 U &
 fcppt::variant::object<
-	Types
+	Types...
 >::get_unsafe()
 {
 	return
 		fcppt::variant::detail::get_unsafe_impl<
-			Types,
+			this_type,
 			U
 		>(
 			this->impl_
@@ -94,19 +94,19 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 template<
 	typename U
 >
 U const &
 fcppt::variant::object<
-	Types
+	Types...
 >::get_unsafe() const
 {
 	return
 		fcppt::variant::detail::get_unsafe_impl<
-			Types,
+			this_type,
 			U
 		>(
 			this->impl_
@@ -114,11 +114,11 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 fcppt::variant::size_type
 fcppt::variant::object<
-	Types
+	Types...
 >::type_index() const
 {
 	return
@@ -126,11 +126,11 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 bool
 fcppt::variant::object<
-	Types
+	Types...
 >::is_invalid() const
 {
 	return
@@ -140,14 +140,14 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 typename
 fcppt::variant::object<
-	Types
+	Types...
 >::std_type &
 fcppt::variant::object<
-	Types
+	Types...
 >::impl()
 {
 	return
@@ -155,14 +155,14 @@ fcppt::variant::object<
 }
 
 template<
-	typename Types
+	typename... Types
 >
 typename
 fcppt::variant::object<
-	Types
+	Types...
 >::std_type const &
 fcppt::variant::object<
-	Types
+	Types...
 >::impl() const
 {
 	return

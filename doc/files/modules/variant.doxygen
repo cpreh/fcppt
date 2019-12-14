@@ -112,9 +112,6 @@ types instead, which does not make any sense.</li>
 <li>#fcppt::variant::object's constructor is explicit.</li>
 <li>#fcppt::variant::object does not allow any implicit conversions in its
 constructors.</li>
-<li>#fcppt::variant::object uses a <code>metal::list</code> instead of
-variadic template parameters. There is also #fcppt::variant::variadic
-which does the latter.</li>
 </ul>
 
 \section variant_headers Header files
@@ -157,6 +154,14 @@ which does the latter.</li>
 variant exception.</td>
 </tr>
 <tr>
+<td><code>from_list_fwd.hpp</code></td>
+<td>Contains #fcppt::variant::from_list.</td>
+</tr>
+<tr>
+<td><code>from_list.hpp</code></td>
+<td>Includes <code>fcppt/variant/object_fwd.hpp</code> and defines #fcppt::variant::object.</td>
+</tr>
+<tr>
 <td><code>get_exn.hpp</code></td>
 <td>Contains #fcppt::variant::get_exn .</td>
 </tr>
@@ -195,14 +200,6 @@ by #fcppt::variant::get_exn .</td>
 <tr>
 <td><code>type_info.hpp</code></td>
 <td>Contains #fcppt::variant::type_info.</td>
-</tr>
-<tr>
-<td><code>variadic_fwd.hpp</code></td>
-<td>Contains #fcppt::variant::variadic and declares #fcppt::variant::object.</td>
-</tr>
-<tr>
-<td><code>variadic.hpp</code></td>
-<td>Includes <code>fcppt/variant/object_fwd.hpp</code> and defines #fcppt::variant::object.</td>
 </tr>
 </table>
 */

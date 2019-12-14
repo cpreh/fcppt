@@ -27,12 +27,12 @@ namespace variant
 \ingroup fcpptvariant
 */
 template<
-	typename Types
+	typename... Types
 >
 std::type_info const &
 type_info(
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_variant
 )
 {

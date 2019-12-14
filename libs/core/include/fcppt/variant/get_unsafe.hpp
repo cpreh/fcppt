@@ -27,13 +27,13 @@ Equal to <code>%_object.get&lt;Type&gt;()</code>.
 */
 template<
 	typename Type,
-	typename Elements
+	typename... Elements
 >
 inline
 Type &
 get_unsafe(
 	fcppt::variant::object<
-		Elements
+		Elements...
 	> &_object
 )
 {
@@ -56,13 +56,13 @@ Equal to <code>%_object.get&lt;Type&gt;()</code>.
 */
 template<
 	typename Type,
-	typename Elements
+	typename... Elements
 >
 inline
 Type const &
 get_unsafe(
 	fcppt::variant::object<
-		Elements
+		Elements...
 	> const &_object
 )
 {

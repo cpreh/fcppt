@@ -8,7 +8,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/variant/output.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -20,7 +20,7 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		int
 	>
 	variant;

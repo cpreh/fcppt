@@ -8,8 +8,8 @@
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/detail/has_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
@@ -42,19 +42,21 @@ variant
 */
 template<
 	typename Type,
-	typename Elements
+	typename... Elements
 >
 inline
 bool
 holds_type(
 	fcppt::variant::object<
-		Elements
+		Elements...
 	> const &_variant
 )
 {
 	static_assert(
-		::metal::contains<
-			Elements,
+		fcppt::variant::detail::has_type<
+			fcppt::variant::object<
+				Elements...
+			>,
 			Type
 		>::value,
 		"Invalid Type in variant::holds_type"

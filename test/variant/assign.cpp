@@ -6,7 +6,7 @@
 
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/holds_type.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -19,7 +19,7 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		int,
 		std::string
 	>

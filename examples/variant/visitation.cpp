@@ -5,7 +5,7 @@
 
 
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <string>
@@ -17,7 +17,7 @@ namespace
 {
 
 typedef
-fcppt::variant::variadic<
+fcppt::variant::object<
 	std::string,
 	int
 >

@@ -25,12 +25,12 @@ namespace variant
 */
 template<
 	typename Type,
-	typename Elements
+	typename... Elements
 >
 Type &
 get_exn(
 	fcppt::variant::object<
-		Elements
+		Elements...
 	> &_object
 )
 {
@@ -51,12 +51,12 @@ get_exn(
 */
 template<
 	typename Type,
-	typename Elements
+	typename... Elements
 >
 Type const &
 get_exn(
 	fcppt::variant::object<
-		Elements
+		Elements...
 	> const &_object
 )
 {

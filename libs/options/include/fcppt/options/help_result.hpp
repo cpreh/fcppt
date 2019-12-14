@@ -10,7 +10,7 @@
 #include <fcppt/options/help_result_fwd.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/result.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 
 
 #endif

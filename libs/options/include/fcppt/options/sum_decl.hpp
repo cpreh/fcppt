@@ -22,7 +22,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
-#include <fcppt/variant/variadic_fwd.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 
 
 namespace fcppt
@@ -82,7 +82,7 @@ public:
 	};
 
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		fcppt::options::left<
 			left_result
 		>,

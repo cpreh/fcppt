@@ -9,7 +9,7 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/variant/to_optional.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -22,7 +22,7 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		int,
 		std::string
 	>
@@ -74,7 +74,7 @@ TEST_CASE(
 		fcppt::variant::to_optional<
 			int_movable
 		>(
-			fcppt::variant::variadic<
+			fcppt::variant::object<
 				int,
 				int_movable
 			>{

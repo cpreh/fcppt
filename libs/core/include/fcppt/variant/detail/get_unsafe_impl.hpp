@@ -22,24 +22,26 @@ namespace detail
 {
 
 template<
-	typename Types,
+	typename Variant,
 	typename U,
-	typename Variant
+	typename StdVariant
 >
 std::conditional_t<
 	std::is_const_v<
-		Variant
+		StdVariant
 	>,
 	U const &,
 	U &
 >
 get_unsafe_impl(
-	Variant &_variant
+	StdVariant &_variant
 )
 {
 	static_assert(
 		fcppt::variant::detail::has_type<
-			Types,
+			std::remove_const_t<
+				Variant
+			>,
 			U
 		>::value,
 		"Invalid variant type"

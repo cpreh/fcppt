@@ -25,15 +25,15 @@ the same type and the values compare equal. This function requires all possible
 types of the variant to be equality comparable.
 */
 template<
-	typename Types
+	typename... Types
 >
 bool
 operator==(
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_left,
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_right
 )
 {
@@ -53,15 +53,15 @@ This function requires all possible types of the variant to be equality
 comparable.
 */
 template<
-	typename Types
+	typename... Types
 >
 bool
 operator!=(
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_a,
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_b
 )
 {
@@ -81,15 +81,15 @@ before <code>(_right.type_index(), val_right)</code>. This also implies that
 every type of the variant must be less comparable.
 */
 template<
-	typename Types
+	typename... Types
 >
 bool
 operator<(
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_left,
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_right
 )
 {

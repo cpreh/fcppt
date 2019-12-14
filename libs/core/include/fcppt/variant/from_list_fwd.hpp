@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_VARIADIC_FWD_HPP_INCLUDED
-#define FCPPT_VARIANT_VARIADIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
+#define FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
 
+#include <fcppt/metal/as.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -19,20 +17,21 @@ namespace variant
 {
 
 /**
-\brief Declares a variant using a parameter pack
+\brief Declares a variant using a metal::list.
 
 \ingroup fcpptvariant
+
+\tparam Types Must be a metal::list.
 */
 template<
-	typename... Types
+	typename Types
 >
 using
-variadic
+from_list
 =
-fcppt::variant::object<
-	::metal::list<
-		Types...
-	>
+fcppt::metal::as<
+	fcppt::variant::object,
+	Types
 >;
 
 }

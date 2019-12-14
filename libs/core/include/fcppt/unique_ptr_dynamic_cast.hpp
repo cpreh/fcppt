@@ -12,7 +12,7 @@
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/type_traits/is_base_of.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +39,7 @@ template<
 	typename Deleter
 >
 inline
-fcppt::variant::variadic<
+fcppt::variant::object<
 	fcppt::unique_ptr<
 		Derived,
 		Deleter
@@ -58,7 +58,7 @@ unique_ptr_dynamic_cast(
 noexcept
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		fcppt::unique_ptr<
 			Derived,
 			Deleter

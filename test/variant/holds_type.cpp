@@ -8,7 +8,6 @@
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <metal.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,10 +19,8 @@ TEST_CASE(
 {
 	typedef
 	fcppt::variant::object<
-		metal::list<
-			int,
-			std::string
-		>
+		int,
+		std::string
 	>
 	variant;
 

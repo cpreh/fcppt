@@ -8,6 +8,7 @@
 #define FCPPT_PARSE_DETAIL_ALTERNATIVE_LIST_HPP_INCLUDED
 
 #include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -33,16 +34,20 @@ struct alternative_list
 };
 
 template<
-	typename List
+	typename... List
 >
 struct alternative_list<
 	fcppt::variant::object<
-		List
+		List...
 	>
 >
 {
 	typedef
-	List
+	fcppt::variant::types_of<
+		fcppt::variant::object<
+			List...
+		>
+	>
 	type;
 };
 

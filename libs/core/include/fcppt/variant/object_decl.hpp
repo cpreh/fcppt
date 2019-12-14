@@ -34,44 +34,43 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 \ingroup fcpptvariant
 
-\tparam Types A metal::list of types that must be CopyConstructible or
-Movable, Assignable or AssignMovable and complete. It therefore must also not
-be const.
+\tparam Types The list of element types. It may not contain dupiicates.
 
 See \ref fcpptvariant for more information.
 */
 template<
-	typename Types
+	typename... Types
 >
 class object
 {
 public:
-	static_assert(
-		::metal::is_list<
-			Types
-		>::value,
-		"Types must be a metal list"
-	);
+	typedef
+	fcppt::variant::object<
+		Types...
+	>
+	this_type;
+
+	/**
+	\brief The metal::list of the possible types
+	*/
+	typedef
+	::metal::list<
+		Types...
+	>
+	types;
 
 	static_assert(
 		fcppt::metal::is_set<
-			Types
+			types
 		>::value,
 		"Variant types must form a set"
 	);
 
 	typedef
 	fcppt::variant::detail::std_type<
-		Types
+		types
 	>
 	std_type;
-
-	/**
-	\brief The metal::list of the possible types
-	*/
-	typedef
-	Types
-	types;
 
 	/**
 	\brief Constructs the variant from a value

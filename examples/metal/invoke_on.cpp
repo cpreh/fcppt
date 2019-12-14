@@ -12,8 +12,8 @@
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/metal/invoke_on.hpp>
+#include <fcppt/variant/from_list.hpp>
 #include <fcppt/variant/holds_type.hpp>
-#include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cassert>
 #include <exception>
@@ -51,7 +51,7 @@ static_color_types;
 
 // The variant type that can hold any of the static color types
 typedef
-fcppt::variant::object<
+fcppt::variant::from_list<
 	static_color_types
 >
 color_variant;

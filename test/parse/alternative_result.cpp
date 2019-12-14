@@ -5,7 +5,7 @@
 
 
 #include <fcppt/parse/alternative_result.hpp>
-#include <fcppt/variant/variadic_fwd.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -20,7 +20,7 @@ main()
 				int,
 				char
 			>,
-			fcppt::variant::variadic<
+			fcppt::variant::object<
 				int,
 				char
 			>
@@ -42,7 +42,7 @@ main()
 	static_assert(
 		std::is_same_v<
 			fcppt::parse::alternative_result<
-				fcppt::variant::variadic<
+				fcppt::variant::object<
 					int
 				>,
 				int
@@ -55,12 +55,12 @@ main()
 	static_assert(
 		std::is_same_v<
 			fcppt::parse::alternative_result<
-				fcppt::variant::variadic<
+				fcppt::variant::object<
 					int
 				>,
 				char
 			>,
-			fcppt::variant::variadic<
+			fcppt::variant::object<
 				int,
 				char
 			>
@@ -71,15 +71,15 @@ main()
 	static_assert(
 		std::is_same_v<
 			fcppt::parse::alternative_result<
-				fcppt::variant::variadic<
+				fcppt::variant::object<
 					int,
 					char
 				>,
-				fcppt::variant::variadic<
+				fcppt::variant::object<
 					int
 				>
 			>,
-			fcppt::variant::variadic<
+			fcppt::variant::object<
 				int,
 				char
 			>
@@ -90,13 +90,13 @@ main()
 	static_assert(
 		std::is_same_v<
 			fcppt::parse::alternative_result<
-				fcppt::variant::variadic<
+				fcppt::variant::object<
 					int,
 					float
 				>,
 				char
 			>,
-			fcppt::variant::variadic<
+			fcppt::variant::object<
 				int,
 				float,
 				char

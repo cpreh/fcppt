@@ -15,7 +15,7 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/dynamic_cast.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/from_list.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -111,7 +111,7 @@ TEST_CASE(
 	derived_types;
 
 	typedef
-	fcppt::variant::object<
+	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			derived_types
 		>
@@ -190,7 +190,7 @@ TEST_CASE(
 	derived_types;
 
 	typedef
-	fcppt::variant::object<
+	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			derived_types
 		>

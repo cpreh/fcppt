@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_HAS_TYPE_HPP_INCLUDED
 
+#include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -20,14 +21,16 @@ namespace detail
 {
 
 template<
-	typename Types,
+	typename Variant,
 	typename Element
 >
 using
 has_type
 =
 ::metal::contains<
-	Types,
+	fcppt::variant::types_of<
+		Variant
+	>,
 	Element
 >;
 

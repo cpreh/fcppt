@@ -34,7 +34,7 @@ possibles types to be printable.
 \return \a _stream
 */
 template<
-	typename Types,
+	typename... Types,
 	typename Ch,
 	typename Traits
 >
@@ -49,7 +49,7 @@ operator<<(
 		Traits
 	> &_stream,
 	fcppt::variant::object<
-		Types
+		Types...
 	> const &_object
 )
 {

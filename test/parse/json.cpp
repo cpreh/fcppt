@@ -41,8 +41,7 @@
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
-#include <fcppt/variant/comparison.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -82,7 +81,7 @@ operator==(
 struct value
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		json::null,
 		bool,
 		int,
@@ -294,7 +293,7 @@ make_object(
 }
 
 typedef
-fcppt::variant::variadic<
+fcppt::variant::object<
 	json::array,
 	json::object
 >

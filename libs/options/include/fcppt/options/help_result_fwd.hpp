@@ -9,7 +9,7 @@
 
 #include <fcppt/options/help_text_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
-#include <fcppt/variant/variadic_fwd.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 
 
 namespace fcppt
@@ -30,7 +30,7 @@ template<
 using
 help_result
 =
-fcppt::variant::variadic<
+fcppt::variant::object<
 	fcppt::options::result<
 		Result
 	>,

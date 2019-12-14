@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/variant/from_list.hpp>
 #include <fcppt/variant/object.hpp>
-#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
@@ -17,15 +17,15 @@ main()
 {
 	static_assert(
 		std::is_same_v<
-			fcppt::variant::variadic<
-				int,
-				float
-			>,
-			fcppt::variant::object<
+			fcppt::variant::from_list<
 				metal::list<
 					int,
 					float
 				>
+			>,
+			fcppt::variant::object<
+				int,
+				float
 			>
 		>
 	);

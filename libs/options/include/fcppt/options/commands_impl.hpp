@@ -45,7 +45,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>

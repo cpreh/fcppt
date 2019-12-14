@@ -5,7 +5,7 @@
 
 
 #include <fcppt/variant/compare.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -40,7 +40,7 @@ TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		bool,
 		int,
 		std::string

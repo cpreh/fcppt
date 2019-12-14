@@ -14,7 +14,7 @@ namespace variant
 {
 
 template<
-	typename Types
+	typename... Types
 >
 class object;
 

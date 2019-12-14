@@ -8,9 +8,9 @@
 #define FCPPT_OPTIONS_PARSE_ERROR_HPP_INCLUDED
 
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_error_fwd.hpp>
-#include <fcppt/variant/variadic.hpp>
 
 
 #endif

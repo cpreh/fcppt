@@ -11,7 +11,7 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/variadic.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -91,7 +91,7 @@ public:
 	get_failure_unsafe() const;
 private:
 	typedef
-	fcppt::variant::variadic<
+	fcppt::variant::object<
 		Failure,
 		Success
 	>

@@ -26,12 +26,12 @@ namespace variant
 \ingroup fcpptvariant
 */
 template<
-	typename Elements
+	typename... Elements
 >
 std::string
 current_type_name(
 	fcppt::variant::object<
-		Elements
+		Elements...
 	> const &_variant
 )
 {

@@ -16,8 +16,9 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/from_list.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <metal.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,7 +39,7 @@ The result of the first cast that succeeds is returned.
 
 \return An optional variant of types <code>fcppt::reference<T_1>,...,fcppt::reference<T_n></code>.
 
-\tparam Types An MPL sequence.
+\tparam Types A metal::list.
 
 \tparam Cast A dynamic cast function from \ref fcpptcasts, e.g. #fcppt::cast::dynamic_fun.
 
@@ -50,7 +51,7 @@ template<
 	typename Base
 >
 fcppt::optional::object<
-	fcppt::variant::object<
+	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			Types
 		>
@@ -60,8 +61,15 @@ dynamic_cast_(
 	Base &_base
 )
 {
+	static_assert(
+		::metal::is_list<
+			Types
+		>::value,
+		"Types must be a metal::list"
+	);
+
 	typedef
-	fcppt::variant::object<
+	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			Types
 		>
