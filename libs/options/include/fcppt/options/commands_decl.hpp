@@ -22,7 +22,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/all_disjoint.hpp>
 #include <fcppt/record/element_fwd.hpp>
-#include <fcppt/record/variadic_fwd.hpp>
+#include <fcppt/record/object_fwd.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -136,7 +136,7 @@ public:
 	variant_result;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			fcppt::options::options_label,
 			fcppt::options::result_of<

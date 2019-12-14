@@ -9,7 +9,7 @@
 
 #include <fcppt/record/are_disjoint.hpp>
 #include <fcppt/record/element_vector.hpp>
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/from_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -37,7 +37,7 @@ struct disjoint_product
 	);
 
 	typedef
-	fcppt::record::object<
+	fcppt::record::from_list<
 		::metal::join<
 			fcppt::record::element_vector<
 				RecordL

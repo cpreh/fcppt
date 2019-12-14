@@ -7,10 +7,9 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/record.hpp>
-#include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -26,7 +25,7 @@ TEST_CASE(
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			string_label,
 			fcppt::string

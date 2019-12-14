@@ -42,13 +42,9 @@ gets a label together with a type as its template parameters:
 
 \snippet record.cpp record_elements
 
-Finally, a <em>record object</em> consists of a metal::list of elements:
+Finally, a <em>record object</em> consists of a list of elements:
 
 \snippet record.cpp record_object
-
-A shorthand, which omits the metal::list, is #fcppt::record::variadic.
-
-\snippet record.cpp record_variadic
 
 Before we continue, here is a small example of how to use such a record:
 
@@ -185,6 +181,14 @@ Here is an example that shows how such a sprite can be initialized:
 <td>Contains #fcppt::record::element_to_type.</td>
 </tr>
 <tr>
+<td><code>from_list_fwd.hpp</code></td>
+<td>Contains #fcppt::record::from_list.</td>
+</tr>
+<tr>
+<td><code>from_list.hpp</code></td>
+<td>Includes <code>fcppt/record/from_list_fwd.hpp</code> and defines #fcppt::record::object.</td>
+</tr>
+<tr>
 <td><code>get.hpp</code></td>
 <td>Contains #fcppt::record::get.</td>
 </tr>
@@ -239,15 +243,6 @@ Here is an example that shows how such a sprite can be initialized:
 <tr>
 <td><code>set.hpp</code></td>
 <td>Contains #fcppt::record::set.</td>
-</tr>
-</tr>
-<tr>
-<td><code>variadic_fwd.hpp</code></td>
-<td>Contains #fcppt::record::variadic and declares #fcppt::record::object.</td>
-</tr>
-<tr>
-<td><code>variadic.hpp</code></td>
-<td>Includes <code>fcppt/record/object_fwd.hpp</code> and defines #fcppt::record::object.</td>
 </tr>
 </table>
 */

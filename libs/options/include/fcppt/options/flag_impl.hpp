@@ -35,7 +35,7 @@
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

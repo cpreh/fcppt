@@ -19,7 +19,7 @@
 #include <fcppt/options/switch_impl.hpp>
 #include <fcppt/options/unit_switch_fwd.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/variadic_fwd.hpp>
+#include <fcppt/record/object_fwd.hpp>
 
 
 namespace fcppt
@@ -59,7 +59,7 @@ public:
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			Label,
 			fcppt::unit

@@ -30,7 +30,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

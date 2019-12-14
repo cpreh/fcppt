@@ -1093,6 +1093,8 @@ set(
 	libs/core/include/fcppt/record/element_to_type.hpp
 	libs/core/include/fcppt/record/element_vector.hpp
 	libs/core/include/fcppt/record/enable_vararg_ctor.hpp
+	libs/core/include/fcppt/record/from_list.hpp
+	libs/core/include/fcppt/record/from_list_fwd.hpp
 	libs/core/include/fcppt/record/get.hpp
 	libs/core/include/fcppt/record/has_label.hpp
 	libs/core/include/fcppt/record/init.hpp
@@ -1121,8 +1123,6 @@ set(
 	libs/core/include/fcppt/record/output.hpp
 	libs/core/include/fcppt/record/permute.hpp
 	libs/core/include/fcppt/record/set.hpp
-	libs/core/include/fcppt/record/variadic.hpp
-	libs/core/include/fcppt/record/variadic_fwd.hpp
 	libs/core/include/fcppt/recursive.hpp
 	libs/core/include/fcppt/recursive_comparison.hpp
 	libs/core/include/fcppt/recursive_decl.hpp

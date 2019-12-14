@@ -9,7 +9,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 
 
 int
@@ -24,7 +24,7 @@ main()
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int
@@ -33,7 +33,7 @@ main()
 	record1;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			bool_label,
 			bool

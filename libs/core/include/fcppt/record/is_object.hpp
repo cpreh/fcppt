@@ -33,11 +33,11 @@ std::false_type
 };
 
 template<
-	typename Types
+	typename... Elements
 >
 struct is_object<
 	fcppt::record::object<
-		Types
+		Elements...
 	>
 >
 :

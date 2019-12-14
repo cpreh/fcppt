@@ -43,7 +43,7 @@
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>

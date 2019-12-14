@@ -9,7 +9,7 @@
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/set.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>
@@ -139,7 +139,7 @@ TEST_CASE(
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int

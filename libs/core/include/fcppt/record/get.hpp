@@ -25,18 +25,18 @@ Returns the element identified by \a Label from \a _arg.
 */
 template<
 	typename Label,
-	typename Types
+	typename... Elements
 >
 inline
 fcppt::record::label_value_type<
 	fcppt::record::object<
-		Types
+		Elements...
 	>,
 	Label
 > const &
 get(
 	fcppt::record::object<
-		Types
+		Elements...
 	> const &_arg
 )
 {
@@ -55,18 +55,18 @@ Returns the element identified by \a Label from \a _arg.
 */
 template<
 	typename Label,
-	typename Types
+	typename... Elements
 >
 inline
 fcppt::record::label_value_type<
 	fcppt::record::object<
-		Types
+		Elements...
 	>,
 	Label
 > &
 get(
 	fcppt::record::object<
-		Types
+		Elements...
 	> &_arg
 )
 {

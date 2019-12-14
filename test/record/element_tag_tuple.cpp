@@ -8,7 +8,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <type_traits>
@@ -41,7 +41,7 @@ main()
 	bool_element;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		int_element,
 		bool_element
 	>
@@ -54,7 +54,7 @@ main()
 	tag_tuple;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			tag_tuple,
 			std::tuple<
 				fcppt::tag<
@@ -64,7 +64,6 @@ main()
 					bool_element
 				>
 			>
-		>::value,
-		""
+		>
 	);
 }

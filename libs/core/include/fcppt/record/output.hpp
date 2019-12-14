@@ -13,6 +13,7 @@
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/object_impl.hpp>
@@ -34,7 +35,7 @@ namespace record
 template<
 	typename Ch,
 	typename Traits,
-	typename Types
+	typename... Elements
 >
 std::basic_ostream<
 	Ch,
@@ -46,7 +47,7 @@ operator<<(
 		Traits
 	> &_stream,
 	fcppt::record::object<
-		Types
+		Elements...
 	> const &_record
 )
 {
@@ -57,7 +58,11 @@ operator<<(
 		);
 
 	fcppt::algorithm::loop(
-		Types{},
+		fcppt::record::element_vector<
+			fcppt::record::object<
+				Elements...
+			>
+		>{},
 		[
 			&_stream,
 			&_record

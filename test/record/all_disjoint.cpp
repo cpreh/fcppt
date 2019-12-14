@@ -7,7 +7,7 @@
 #include <fcppt/record/all_disjoint.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -52,13 +52,13 @@ main()
 	static_assert(
 		fcppt::record::all_disjoint<
 			::metal::list<
-				fcppt::record::variadic<
+				fcppt::record::object<
 					element_1
 				>,
-				fcppt::record::variadic<
+				fcppt::record::object<
 					element_2
 				>,
-				fcppt::record::variadic<
+				fcppt::record::object<
 					element_3
 				>
 			>
@@ -69,14 +69,14 @@ main()
 	static_assert(
 		!fcppt::record::all_disjoint<
 			::metal::list<
-				fcppt::record::variadic<
+				fcppt::record::object<
 					element_1
 				>,
-				fcppt::record::variadic<
+				fcppt::record::object<
 					element_1,
 					element_2
 				>,
-				fcppt::record::variadic<
+				fcppt::record::object<
 					element_3
 				>
 			>

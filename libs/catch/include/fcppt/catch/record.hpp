@@ -12,6 +12,7 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/convert.hpp>
 #include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/object_fwd.hpp>
@@ -31,11 +32,11 @@ namespace Catch
 \ingroup fcpptcatch
 */
 template<
-	typename Types
+	typename... Elements
 >
 struct StringMaker<
 	fcppt::record::object<
-		Types
+		Elements...
 	>
 >
 {
@@ -43,7 +44,7 @@ struct StringMaker<
 	std::string
 	convert(
 		fcppt::record::object<
-			Types
+			Elements...
 		> const &_record
 	)
 	{
@@ -51,7 +52,11 @@ struct StringMaker<
 			'{'
 			+
 			fcppt::algorithm::fold(
-				Types{},
+				fcppt::record::element_vector<
+					fcppt::record::object<
+						Elements...
+					>
+				>{},
 				std::string{},
 				[
 					&_record

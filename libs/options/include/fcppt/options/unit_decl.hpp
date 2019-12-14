@@ -16,7 +16,7 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/unit_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>
-#include <fcppt/record/variadic_fwd.hpp>
+#include <fcppt/record/object_fwd.hpp>
 
 
 namespace fcppt
@@ -47,7 +47,7 @@ public:
 	element_type;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		element_type
 	>
 	result_type;

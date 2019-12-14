@@ -13,6 +13,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_to_type.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/label_name.hpp>
@@ -21,10 +22,8 @@
 #include <fcppt/record/object.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/record/set.hpp>
-#include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
-#include <metal.hpp>
 #include <ostream>
 #include <sstream>
 #include <stdexcept>
@@ -94,25 +93,11 @@ name_element;
 //! [record_object]
 typedef
 fcppt::record::object<
-	metal::list<
-		age_element,
-		name_element
-	>
->
-person;
-//! [record_object]
-
-namespace variadic
-{
-//! [record_variadic]
-typedef
-fcppt::record::variadic<
 	age_element,
 	name_element
 >
 person;
-//! [record_variadic]
-}
+//! [record_object]
 
 void
 get_set()
@@ -134,13 +119,13 @@ get_set()
 //! [record_output_label]
 template<
 	typename Label,
-	typename Types
+	typename... Elements
 >
 void
 print_label(
 	std::ostream &_stream,
 	fcppt::record::object<
-		Types
+		Elements...
 	> const &_record
 )
 {
@@ -156,19 +141,23 @@ print_label(
 
 //! [record_output]
 template<
-	typename Types
+	typename... Elements
 >
 void
 print(
 	std::ostream &_stream,
 	fcppt::record::object<
-		Types
+		Elements...
 	> const &_record
 )
 {
 	// Loop over all types in the record
 	fcppt::algorithm::loop(
-		Types{},
+		fcppt::record::element_vector<
+			fcppt::record::object<
+				Elements...
+			>
+		>{},
 		[
 			&_stream,
 			&_record
@@ -290,7 +279,7 @@ struct sprite_from_ints<
 >
 {
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		sprite_element<
 			Ints
 		>...

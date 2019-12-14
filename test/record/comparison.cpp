@@ -8,7 +8,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -42,14 +42,14 @@ TEST_CASE(
 	bool_element;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		int_element,
 		bool_element
 	>
 	record1;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		bool_element,
 		int_element
 	>

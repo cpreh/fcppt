@@ -26,7 +26,7 @@
 #include <fcppt/options/unit_switch_decl.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/get.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

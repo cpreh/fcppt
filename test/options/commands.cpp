@@ -26,9 +26,9 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/unit.hpp>
-#include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -124,7 +124,7 @@ TEST_CASE(
 	result_type;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			command_foo_label,
 			int_arg::result_type
@@ -133,7 +133,7 @@ TEST_CASE(
 	command_foo_result_type;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			command_bar_label,
 			int_option::result_type

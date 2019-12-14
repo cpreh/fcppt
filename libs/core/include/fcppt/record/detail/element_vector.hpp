@@ -8,6 +8,9 @@
 #define FCPPT_RECORD_DETAIL_ELEMENT_VECTOR_HPP_INCLUDED
 
 #include <fcppt/record/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <metal.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -23,16 +26,18 @@ template<
 struct element_vector;
 
 template<
-	typename Types
+	typename... Types
 >
 struct element_vector<
 	fcppt::record::object<
-		Types
+		Types...
 	>
 >
 {
 	typedef
-	Types
+	::metal::list<
+		Types...
+	>
 	type;
 };
 

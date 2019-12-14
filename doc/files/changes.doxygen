@@ -28,6 +28,14 @@ Replaced Brigand with Metal.
 <li>Moved <code>fcppt::brigand::implication</code> and #fcppt::type_traits::implication.</li>
 <li>Moved <code>fcppt::brigand::integral_cast</code> and #fcppt::type_traits::integral_cast.</li>
 <li>Moved <code>fcppt::brigand::ceil_div</code> and #fcppt::math::ceil_div_static.</li>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>#fcppt::record::object is now a variadic template.
+	Removed <code>fcppt::record::variadic</code> but added #fcppt::record::from_list.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_330 3.3.0

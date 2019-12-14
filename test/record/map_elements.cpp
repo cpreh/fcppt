@@ -11,7 +11,7 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/map_elements.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
@@ -50,7 +50,7 @@ main()
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int

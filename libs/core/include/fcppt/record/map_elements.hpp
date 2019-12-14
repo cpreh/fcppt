@@ -9,7 +9,7 @@
 
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_vector.hpp>
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/from_list.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -37,7 +37,7 @@ template<
 using
 map_elements
 =
-fcppt::record::object<
+fcppt::record::from_list<
 	::metal::transform<
 		::metal::bind<
 			::metal::lambda<

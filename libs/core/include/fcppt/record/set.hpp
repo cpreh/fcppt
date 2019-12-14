@@ -28,17 +28,17 @@ Copies \a _value to the element identified by \a Label in \a _arg.
 */
 template<
 	typename Label,
-	typename Types
+	typename... Elements
 >
 inline
 void
 set(
 	fcppt::record::object<
-		Types
+		Elements...
 	> &_arg,
 	fcppt::record::label_value_type<
 		fcppt::record::object<
-			Types
+			Elements...
 		>,
 		Label
 	> const &_value
@@ -60,17 +60,17 @@ Moves \a _value to the element identified by \a Label in \a _arg.
 */
 template<
 	typename Label,
-	typename Types
+	typename... Elements
 >
 inline
 void
 set(
 	fcppt::record::object<
-		Types
+		Elements...
 	> &_arg,
 	fcppt::record::label_value_type<
 		fcppt::record::object<
-			Types
+			Elements...
 		>,
 		Label
 	> &&_value

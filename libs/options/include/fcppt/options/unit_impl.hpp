@@ -20,7 +20,7 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/unit_decl.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 
 
 template<

@@ -15,7 +15,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_fwd.hpp>
-#include <fcppt/record/variadic_fwd.hpp>
+#include <fcppt/record/object_fwd.hpp>
 
 
 namespace fcppt
@@ -63,7 +63,7 @@ public:
 	help_text() const;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			Tag,
 			fcppt::options::result_of<

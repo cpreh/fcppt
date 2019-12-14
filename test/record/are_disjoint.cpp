@@ -7,7 +7,7 @@
 #include <fcppt/record/are_disjoint.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 
 
 int
@@ -22,7 +22,7 @@ main()
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int
@@ -31,7 +31,7 @@ main()
 	record1;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			bool_label,
 			bool
@@ -40,7 +40,7 @@ main()
 	record2;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int

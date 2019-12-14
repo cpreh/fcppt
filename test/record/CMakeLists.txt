@@ -65,6 +65,11 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	from_list
+	NO_CODE
+)
+
+add_fcppt_record_test(
 	init
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

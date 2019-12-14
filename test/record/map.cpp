@@ -13,9 +13,9 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/map.hpp>
+#include <fcppt/record/object_impl.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/record/permute.hpp>
-#include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>
@@ -36,7 +36,7 @@ TEST_CASE(
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			fcppt::optional::object<
@@ -59,7 +59,7 @@ TEST_CASE(
 			result_type
 		>(
 			fcppt::record::map(
-				fcppt::record::variadic<
+				fcppt::record::object<
 					fcppt::record::element<
 						int_label,
 						int

@@ -21,10 +21,10 @@
 
 
 template<
-	typename Types
+	typename... Elements
 >
 fcppt::record::object<
-	Types
+	Elements...
 >::object()
 :
 	elements_{}
@@ -38,10 +38,10 @@ fcppt::record::object<
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 fcppt::record::object<
-	Types
+	Elements...
 >::object(
 	fcppt::no_init const &
 )
@@ -49,14 +49,14 @@ fcppt::record::object<
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 template<
 	typename ...Args,
 	typename
 >
 fcppt::record::object<
-	Types
+	Elements...
 >::object(
 	Args && ..._args
 )
@@ -100,14 +100,14 @@ fcppt::record::object<
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 template<
 	typename Label
 >
 void
 fcppt::record::object<
-	Types
+	Elements...
 >::set(
 	fcppt::record::label_value_type<
 		this_type,
@@ -119,20 +119,20 @@ fcppt::record::object<
 		all_types,
 		Label
 	>(
-		elements_
+		this->elements_
 	) =
 		_value;
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 template<
 	typename Label
 >
 void
 fcppt::record::object<
-	Types
+	Elements...
 >::set(
 	fcppt::record::label_value_type<
 		this_type,
@@ -144,7 +144,7 @@ fcppt::record::object<
 		all_types,
 		Label
 	>(
-		elements_
+		this->elements_
 	) =
 		std::move(
 			_value
@@ -152,19 +152,19 @@ fcppt::record::object<
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 template<
 	typename Label
 >
 fcppt::record::label_value_type<
 	fcppt::record::object<
-		Types
+		Elements...
 	>,
 	Label
 > const &
 fcppt::record::object<
-	Types
+	Elements...
 >::get() const
 {
 	return
@@ -172,24 +172,24 @@ fcppt::record::object<
 			all_types,
 			Label
 		>(
-			elements_
+			this->elements_
 		);
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 template<
 	typename Label
 >
 fcppt::record::label_value_type<
 	fcppt::record::object<
-		Types
+		Elements...
 	>,
 	Label
 > &
 fcppt::record::object<
-	Types
+	Elements...
 >::get()
 {
 	return
@@ -197,23 +197,23 @@ fcppt::record::object<
 			all_types,
 			Label
 		>(
-			elements_
+			this->elements_
 		);
 }
 
 template<
-	typename Types
+	typename... Elements
 >
 typename
 fcppt::record::object<
-	Types
+	Elements...
 >::tuple const &
 fcppt::record::object<
-	Types
+	Elements...
 >::impl() const
 {
 	return
-		elements_;
+		this->elements_;
 }
 
 #endif

@@ -28,8 +28,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/record/output.hpp>
-#include <fcppt/record/variadic.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
@@ -55,7 +55,7 @@ FCPPT_MAIN(
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			int_arg_label,
 			int

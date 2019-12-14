@@ -14,7 +14,7 @@ namespace record
 {
 
 template<
-	typename Type
+	typename... Elements
 >
 class object;
 

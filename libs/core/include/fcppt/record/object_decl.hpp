@@ -44,35 +44,34 @@ A record of an MPL sequence #fcppt::record::element
 of type <code>T_i</code>, accessible by <code>L_i</code>,
 for every <code>i = 1,...,n</code>.
 
-\tparam Types An MPL sequence of #fcppt::record::element.
+\tparam Elements Each one must be of type #fcppt::record::element.
 */
 template<
-	typename Types
+	typename... Elements
 >
 class object
 {
 public:
-	static_assert(
-		::metal::is_list<
-			Types
-		>::value,
-		"Types must be a metal list"
-	);
+	typedef
+	::metal::list<
+		Elements...
+	>
+	all_types;
 
 	static_assert(
 		::metal::all_of<
-			Types,
+			all_types,
 			::metal::trait<
 				fcppt::record::is_element
 			>
 		>::value,
-		"Types of record::object must all be fcppt::record::element<>"
+		"Types of a record::object must all be fcppt::record::element<>"
 	);
 
 	static_assert(
 		fcppt::metal::is_set<
 			fcppt::record::detail::label_list<
-				Types
+				all_types
 			>
 		>::value,
 		"Labels of record::object must form a set"
@@ -80,13 +79,9 @@ public:
 
 	typedef
 	fcppt::record::object<
-		Types
+		Elements...
 	>
 	this_type;
-
-	typedef
-	Types
-	all_types;
 
 	/**
 	\brief The std::tuple type <code>(T_1,...,T_n)</code>.
@@ -105,7 +100,7 @@ public:
 	/**
 	\brief Constructor for empty records
 
-	Calling this if \a Types is not empty, a compile-time error occurs.
+	Calling this if \a Elements is not empty, a compile-time error occurs.
 	*/
 	object();
 

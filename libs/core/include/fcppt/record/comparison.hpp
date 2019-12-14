@@ -13,6 +13,7 @@
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/record/are_equivalent.hpp>
 #include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/object_impl.hpp>
 
@@ -31,26 +32,26 @@ namespace record
 \tparam Types2 Must be equivalent to Types1
 */
 template<
-	typename Types1,
-	typename Types2
+	typename... Types1,
+	typename... Types2
 >
 bool
 operator==(
 	fcppt::record::object<
-		Types1
+		Types1...
 	> const &_record1,
 	fcppt::record::object<
-		Types2
+		Types2...
 	> const &_record2
 )
 {
 	static_assert(
 		fcppt::record::are_equivalent<
 			fcppt::record::object<
-				Types1
+				Types1...
 			>,
 			fcppt::record::object<
-				Types2
+				Types2...
 			>
 		>::value,
 		"Both records must be equivalent"
@@ -58,7 +59,11 @@ operator==(
 
 	return
 		fcppt::algorithm::all_of(
-			Types1{},
+			fcppt::record::element_vector<
+				fcppt::record::object<
+					Types1...
+				>
+			>{},
 			[
 				&_record1,
 				&_record2
@@ -105,17 +110,17 @@ operator==(
 \tparam Types2 Must be equivalent to Types1
 */
 template<
-	typename Types1,
-	typename Types2
+	typename... Types1,
+	typename... Types2
 >
 inline
 bool
 operator!=(
 	fcppt::record::object<
-		Types1
+		Types1...
 	> const &_record1,
 	fcppt::record::object<
-		Types2
+		Types2...
 	> const &_record2
 )
 {

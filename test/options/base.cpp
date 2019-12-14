@@ -18,10 +18,9 @@
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
-#include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -38,7 +37,7 @@ TEST_CASE(
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			arg_label,
 			int

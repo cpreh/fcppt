@@ -7,7 +7,7 @@
 #include <fcppt/record/are_equivalent.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/variadic.hpp>
+#include <fcppt/record/object_impl.hpp>
 
 
 int
@@ -22,7 +22,7 @@ main()
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			label1,
 			int
@@ -35,7 +35,7 @@ main()
 	record1;
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			label2,
 			bool
@@ -56,7 +56,7 @@ main()
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			label1,
 			int
@@ -77,7 +77,7 @@ main()
 	);
 
 	typedef
-	fcppt::record::variadic<
+	fcppt::record::object<
 		fcppt::record::element<
 			label1,
 			int

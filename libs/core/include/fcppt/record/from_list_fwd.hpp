@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_VARIADIC_FWD_HPP_INCLUDED
-#define FCPPT_RECORD_VARIADIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_RECORD_FROM_LIST_FWD_HPP_INCLUDED
+#define FCPPT_RECORD_FROM_LIST_FWD_HPP_INCLUDED
 
+#include <fcppt/metal/as.hpp>
 #include <fcppt/record/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -19,20 +17,21 @@ namespace record
 {
 
 /**
-\brief Declares a record using a parameter pack.
+\brief Declares a record using a metal::list.
 
 \ingroup fcpptrecord
+
+\tparam List Must be a metal::list.
 */
 template<
-	typename... Types
+	typename List
 >
 using
-variadic
+from_list
 =
-fcppt::record::object<
-	::metal::list<
-		Types...
-	>
+fcppt::metal::as<
+	fcppt::record::object,
+	List
 >;
 
 }
