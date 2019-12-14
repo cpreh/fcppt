@@ -9,7 +9,7 @@
 
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
