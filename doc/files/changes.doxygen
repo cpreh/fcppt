@@ -25,21 +25,21 @@ Replaced Brigand with Metal.
 \subsection changes_changed_functionality_to_340 Changed functionality
 
 <ul>
-<li>Moved <code>fcppt::brigand::implication</code> and #fcppt::type_traits::implication.</li>
-<li>Moved <code>fcppt::brigand::integral_cast</code> and #fcppt::type_traits::integral_cast.</li>
-<li>Moved <code>fcppt::brigand::ceil_div</code> and #fcppt::math::ceil_div_static.</li>
+<li>Moved <code>fcppt::brigand::implication</code> to #fcppt::type_traits::implication.</li>
+<li>Moved <code>fcppt::brigand::integral_cast</code> to #fcppt::type_traits::integral_cast.</li>
+<li>Moved <code>fcppt::brigand::ceil_div</code> to #fcppt::math::ceil_div_static.</li>
 
 <li>\ref fcpptrecord
 	<ul>
 	<li>#fcppt::record::object is now a variadic template.
-	Removed <code>fcppt::record::variadic</code> but added #fcppt::record::from_list.</li>
+	Removed <code>fcppt::record::variadic</code> and added #fcppt::record::from_list.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
 	<li>#fcppt::variant::object is now a variadic template.
-	Removed <code>fcppt::variant::variadic</code> but added #fcppt::variant::from_list.</li>
+	Removed <code>fcppt::variant::variadic</code> and added #fcppt::variant::from_list.</li>
 	</ul>
 </li>
 
