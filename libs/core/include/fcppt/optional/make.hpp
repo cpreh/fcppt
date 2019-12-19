@@ -8,6 +8,9 @@
 #define FCPPT_OPTIONAL_MAKE_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -37,6 +40,12 @@ make(
 	Type &&_value
 )
 {
+
+FCPPT_PP_PUSH_WARNING
+#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
+#endif
+
 	return
 		fcppt::optional::object<
 			fcppt::type_traits::remove_cv_ref_t<
@@ -49,6 +58,8 @@ make(
 				_value
 			)
 		};
+
+FCPPT_PP_POP_WARNING
 }
 
 }
