@@ -10,12 +10,14 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/loop.hpp>
+#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/container/output.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
@@ -291,33 +293,30 @@ fcppt::options::commands<
 								std::move(
 									_state
 								),
-								FCPPT_TEXT("No command specified from [")
+								FCPPT_TEXT("No command specified from ")
 								+
-								fcppt::algorithm::fold(
-									this->sub_commands_,
-									fcppt::string{},
-									[](
-										auto const &_parser,
-										fcppt::string &&_inner_state
-									)
-									->
-									fcppt::string
-									{
-										return
-											std::move(
-												_inner_state
+								fcppt::output_to_fcppt_string(
+									fcppt::container::output(
+										fcppt::algorithm::map<
+											std::vector<
+												fcppt::string
+											>
+										>(
+											this->sub_commands_,
+											[](
+												auto const &_parser
 											)
-											+
-											fcppt::options::deref(
-												_parser
-											).name()
-											+
-											// TODO
-											FCPPT_TEXT(", ");
-									}
+											->
+											fcppt::string
+											{
+												return
+													fcppt::options::deref(
+														_parser
+													).name();
+											}
+										)
+									)
 								)
-								+
-								FCPPT_TEXT("]")
 							}
 						}
 					);
