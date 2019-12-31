@@ -7,7 +7,9 @@
 #ifndef FCPPT_OPTIONS_DEREF_HPP_INCLUDED
 #define FCPPT_OPTIONS_DEREF_HPP_INCLUDED
 
-#include <fcppt/options/detail/deref.hpp>
+#include <fcppt/deref.hpp>
+#include <fcppt/deref_reference.hpp>
+#include <fcppt/deref_unique_ptr.hpp>
 
 
 namespace fcppt
@@ -34,7 +36,7 @@ deref(
 )
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::deref(
 			_parser
 		);
 }

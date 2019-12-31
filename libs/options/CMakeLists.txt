@@ -37,8 +37,6 @@ set(
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
-	libs/options/include/fcppt/options/detail/deref.hpp
-	libs/options/include/fcppt/options/detail/deref_type.hpp
 	libs/options/include/fcppt/options/detail/flag_is_short.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp

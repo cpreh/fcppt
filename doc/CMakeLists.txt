@@ -613,6 +613,12 @@ set(
 	libs/core/include/fcppt/cyclic_iterator_impl.hpp
 	libs/core/include/fcppt/default_deleter.hpp
 	libs/core/include/fcppt/default_deleter_fwd.hpp
+	libs/core/include/fcppt/deref.hpp
+	libs/core/include/fcppt/deref_impl.hpp
+	libs/core/include/fcppt/deref_impl_fwd.hpp
+	libs/core/include/fcppt/deref_reference.hpp
+	libs/core/include/fcppt/deref_type.hpp
+	libs/core/include/fcppt/deref_unique_ptr.hpp
 	libs/core/include/fcppt/detail/char_type.hpp
 	libs/core/include/fcppt/detail/check_cpp.hpp
 	libs/core/include/fcppt/detail/const.hpp
@@ -804,6 +810,7 @@ set(
 	libs/core/include/fcppt/io/write_chars.hpp
 	libs/core/include/fcppt/is_reference.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
+	libs/core/include/fcppt/is_unique_ptr.hpp
 	libs/core/include/fcppt/iterator/adapt_range.hpp
 	libs/core/include/fcppt/iterator/base_decl.hpp
 	libs/core/include/fcppt/iterator/base_fwd.hpp
@@ -1642,8 +1649,6 @@ set(
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
-	libs/options/include/fcppt/options/detail/deref.hpp
-	libs/options/include/fcppt/options/detail/deref_type.hpp
 	libs/options/include/fcppt/options/detail/flag_is_short.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
@@ -1840,8 +1845,6 @@ set(
 	libs/parse/include/fcppt/parse/detail/concrete_decl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp
-	libs/parse/include/fcppt/parse/detail/deref.hpp
-	libs/parse/include/fcppt/parse/detail/deref_type.hpp
 	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp

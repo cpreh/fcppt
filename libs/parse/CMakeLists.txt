@@ -64,8 +64,6 @@ set(
 	libs/parse/include/fcppt/parse/detail/concrete_decl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp
-	libs/parse/include/fcppt/parse/detail/deref.hpp
-	libs/parse/include/fcppt/parse/detail/deref_type.hpp
 	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp

@@ -135,6 +135,10 @@ add_fcppt_test(
 	cyclic_iterator
 )
 
+add_fcppt_test(
+	deref
+)
+
 add_subdirectory(
 	either
 )
@@ -189,6 +193,16 @@ add_subdirectory(
 
 add_subdirectory(
 	intrusive
+)
+
+add_fcppt_test(
+	is_reference
+	NO_CODE
+)
+
+add_fcppt_test(
+	is_unique_ptr
+	NO_CODE
 )
 
 add_fcppt_test(

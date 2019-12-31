@@ -20,6 +20,12 @@ Replaced Brigand with Metal.
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added #fcppt::deref and #fcppt::deref_type.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_340 Changed functionality

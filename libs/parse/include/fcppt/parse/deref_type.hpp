@@ -7,7 +7,10 @@
 #ifndef FCPPT_PARSE_DEREF_TYPE_HPP_INCLUDED
 #define FCPPT_PARSE_DEREF_TYPE_HPP_INCLUDED
 
-#include <fcppt/parse/detail/deref_type.hpp>
+#include <fcppt/deref_reference.hpp>
+#include <fcppt/deref_type.hpp>
+#include <fcppt/deref_unique_ptr.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
 
 namespace fcppt
@@ -21,10 +24,11 @@ template<
 using
 deref_type
 =
-typename
-fcppt::parse::detail::deref_type<
-	Parser
->::type;
+fcppt::type_traits::remove_cv_ref_t<
+	fcppt::deref_type<
+		Parser
+	>
+>;
 
 }
 }
