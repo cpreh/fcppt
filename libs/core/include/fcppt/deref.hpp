@@ -18,7 +18,7 @@ namespace fcppt
 
 \ingroup fcpptvarious
 
-Calls fcppt::deref_impl::execute to derefernece \a _arg.
+Calls fcppt::deref_impl::execute to dereference \a _arg.
 */
 template<
 	typename Arg
