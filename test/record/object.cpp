@@ -8,8 +8,8 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/set.hpp>
 #include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>

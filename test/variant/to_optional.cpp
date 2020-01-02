@@ -8,8 +8,8 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
-#include <fcppt/variant/to_optional.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/to_optional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

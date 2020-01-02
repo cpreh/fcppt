@@ -5,8 +5,8 @@
 
 
 #include <fcppt/variant/comparison.hpp>
-#include <fcppt/variant/type_info.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

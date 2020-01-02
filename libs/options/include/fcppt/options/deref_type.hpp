@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_DEREF_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONS_DEREF_TYPE_HPP_INCLUDED
 
-#include <fcppt/deref_type.hpp>
 #include <fcppt/deref_reference.hpp>
+#include <fcppt/deref_type.hpp>
 #include <fcppt/deref_unique_ptr.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 

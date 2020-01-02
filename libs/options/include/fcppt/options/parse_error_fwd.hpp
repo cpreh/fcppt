@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_PARSE_ERROR_FWD_HPP_INCLUDED
 
 #include <fcppt/options/missing_error_fwd.hpp>
-#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/options/other_error_fwd.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 
 
 namespace fcppt
