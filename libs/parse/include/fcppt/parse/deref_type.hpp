@@ -26,7 +26,7 @@ deref_type
 =
 fcppt::type_traits::remove_cv_ref_t<
 	fcppt::deref_type<
-		Parser
+		Parser const
 	>
 >;
 

@@ -33,9 +33,10 @@ struct deref_impl<
 {
 // \cond
 	static
-	decltype(
-		auto
-	)
+	typename
+	std::remove_const_t<
+		Arg
+	>::element_type &
 	execute(
 		Arg &_value
 	)

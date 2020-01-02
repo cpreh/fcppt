@@ -33,13 +33,16 @@ struct deref_impl<
 	>
 >
 {
-// \cond
 	static
-	decltype(
-		auto
-	)
+	auto
 	execute(
 		Arg &_value
+	)
+	->
+	decltype(
+		fcppt::deref(
+			_value.get()
+		)
 	)
 	{
 		return
@@ -47,7 +50,6 @@ struct deref_impl<
 				_value.get()
 			);
 	}
-// \endcond
 };
 
 }
