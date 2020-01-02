@@ -46,24 +46,13 @@ FCPPT_MAIN(
 )
 {
 // ![options_base_record]
-	FCPPT_RECORD_MAKE_LABEL(
-		int_arg_label
-	);
-
-	FCPPT_RECORD_MAKE_LABEL(
-		switch_label
-	);
+	FCPPT_RECORD_MAKE_LABEL(int_arg_label);
+	FCPPT_RECORD_MAKE_LABEL(switch_label);
 
 	typedef
 	fcppt::record::object<
-		fcppt::record::element<
-			int_arg_label,
-			int
-		>,
-		fcppt::record::element<
-			switch_label,
-			bool
-		>
+		fcppt::record::element<int_arg_label, int>,
+		fcppt::record::element<switch_label, bool>
 	>
 	result_type;
 // ![options_base_record]
@@ -77,22 +66,13 @@ FCPPT_MAIN(
 			return
 				fcppt::options::make_base<result_type>(
 					fcppt::options::apply(
-						fcppt::options::argument<
-							int_arg_label,
-							int
-						>{
-							fcppt::options::long_name{
-								FCPPT_TEXT("arg")
-							},
+						fcppt::options::argument<int_arg_label, int>{
+							fcppt::options::long_name{FCPPT_TEXT("arg")},
 							fcppt::options::optional_help_text{}
 						},
-						fcppt::options::switch_<
-							switch_label
-						>{
+						fcppt::options::switch_<switch_label>{
 							fcppt::options::optional_short_name{},
-							fcppt::options::long_name{
-								FCPPT_TEXT("switch")
-							},
+							fcppt::options::long_name{FCPPT_TEXT("switch")},
 							fcppt::options::optional_help_text{}
 						}
 					)

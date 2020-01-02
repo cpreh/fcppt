@@ -42,34 +42,23 @@ FCPPT_MAIN(
 )
 {
 	// ![options_help_int]
-	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
-	);
+	FCPPT_RECORD_MAKE_LABEL(arg_label);
 
 	typedef
-	fcppt::options::argument<
-		arg_label,
-		int
-	>
+	fcppt::options::argument<arg_label, int>
 	parser_type;
 
 	parser_type const parser{
-		fcppt::options::long_name{
-			FCPPT_TEXT("arg1")
-		},
+		fcppt::options::long_name{FCPPT_TEXT("arg1")},
 		fcppt::options::optional_help_text{
-			fcppt::options::help_text{
-				FCPPT_TEXT("The main argument")
-			}
+			fcppt::options::help_text{FCPPT_TEXT("The main argument")}
 		}
 	};
 	// ![options_help_int]
 
 	// ![options_parse_help]
 	fcppt::options::help_result<
-		fcppt::options::result_of<
-			parser_type
-		>
+		fcppt::options::result_of<parser_type>
 	> const result{
 		fcppt::options::parse_help(
 			fcppt::options::default_help_switch(),
@@ -84,9 +73,7 @@ FCPPT_MAIN(
 		result,
 		[](
 			fcppt::options::result<
-				fcppt::options::result_of<
-					parser_type
-				>
+				fcppt::options::result_of<parser_type>
 			> const &_result
 		)
 		{

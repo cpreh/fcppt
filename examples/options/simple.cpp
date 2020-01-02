@@ -40,56 +40,37 @@ FCPPT_MAIN(
 )
 {
 // ![options_label]
-	FCPPT_RECORD_MAKE_LABEL(
-		age_label
-	);
+	FCPPT_RECORD_MAKE_LABEL(age_label);
 // ![options_label]
 
 // ![options_arg_type]
 	typedef
-	fcppt::options::argument<
-		age_label,
-		int
-	>
+	fcppt::options::argument<age_label, int>
 	parser_type;
 
 	typedef
-	fcppt::options::result_of<
-		parser_type
-	>
+	fcppt::options::result_of<parser_type>
 	result_type;
 // ![options_arg_type]
 
 // ![options_arg_object]
 	parser_type const parser{
-		fcppt::options::long_name{
-			FCPPT_TEXT("age")
-		},
+		fcppt::options::long_name{FCPPT_TEXT("age")},
 		fcppt::options::optional_help_text{
-			fcppt::options::help_text{
-				FCPPT_TEXT("Your age")
-			}
+			fcppt::options::help_text{FCPPT_TEXT("Your age")}
 		}
 	};
 // ![options_arg_object]
 
 // ![options_args_from_second]
 	fcppt::args_vector const args(
-		fcppt::args_from_second(
-			argc,
-			argv
-		)
+		fcppt::args_from_second(argc, argv)
 	);
 // ![options_args_from_second]
 
 // ![options_parse]
-	fcppt::options::result<
-		result_type
-	> const result{
-		fcppt::options::parse(
-			parser,
-			args
-		)
+	fcppt::options::result<result_type> const result{
+		fcppt::options::parse(parser, args)
 	};
 // ![options_parse]
 
@@ -128,11 +109,7 @@ FCPPT_MAIN(
 
 // ![options_match]
 	return
-		fcppt::either::match(
-			result,
-			on_failure,
-			on_success
-		);
+		fcppt::either::match(result, on_failure, on_success);
 // ![options_match]
 }
 

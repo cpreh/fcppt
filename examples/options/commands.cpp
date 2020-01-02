@@ -55,27 +55,16 @@ FCPPT_MAIN(
 try
 {
 //![common_options]
-	FCPPT_RECORD_MAKE_LABEL(
-		git_directory
-	);
+	FCPPT_RECORD_MAKE_LABEL(git_directory);
 
 	auto const options_parser{
 		fcppt::options::make_optional(
-			fcppt::options::option<
-				git_directory,
-				fcppt::string
-			>{
+			fcppt::options::option<git_directory, fcppt::string>{
 				fcppt::options::optional_short_name{},
-				fcppt::options::long_name{
-					FCPPT_TEXT("git-dir")
-				},
-				fcppt::options::no_default_value<
-					fcppt::string
-				>(),
+				fcppt::options::long_name{FCPPT_TEXT("git-dir")},
+				fcppt::options::no_default_value<fcppt::string>(),
 				fcppt::options::optional_help_text{
-					fcppt::options::help_text{
-						FCPPT_TEXT("The path to the repository")
-					}
+					fcppt::options::help_text{FCPPT_TEXT("The path to the repository")}
 				}
 			}
 		)
@@ -83,29 +72,18 @@ try
 //![common_options]
 
 //![sub_parsers]
-	FCPPT_RECORD_MAKE_LABEL(
-		clone_path
-	);
+	FCPPT_RECORD_MAKE_LABEL(clone_path);
 
 	auto const clone_parser{
-		fcppt::options::argument<
-			clone_path,
-			fcppt::string
-		>(
-			fcppt::options::long_name{
-				FCPPT_TEXT("path")
-			},
+		fcppt::options::argument<clone_path, fcppt::string>(
+			fcppt::options::long_name{FCPPT_TEXT("path")},
 			fcppt::options::optional_help_text{
-				fcppt::options::help_text{
-					FCPPT_TEXT("The path to clone from")
-				}
+				fcppt::options::help_text{FCPPT_TEXT("The path to clone from")}
 			}
 		)
 	};
 
-	FCPPT_RECORD_MAKE_LABEL(
-		pull_unit
-	);
+	FCPPT_RECORD_MAKE_LABEL(pull_unit);
 
 	auto const pull_parser{
 		fcppt::options::unit<
@@ -115,34 +93,26 @@ try
 //![sub_parsers]
 
 //![sub_commands]
-	FCPPT_RECORD_MAKE_LABEL(
-		clone_label
-	);
+	FCPPT_RECORD_MAKE_LABEL(clone_label);
 
 	auto const clone_command{
 		fcppt::options::make_sub_command<clone_label>(
 			FCPPT_TEXT("clone"),
 			fcppt::make_cref(clone_parser),
 			fcppt::options::optional_help_text{
-				fcppt::options::help_text{
-					FCPPT_TEXT("Clone from another repository")
-				}
+				fcppt::options::help_text{FCPPT_TEXT("Clone from another repository")}
 			}
 		)
 	};
 
-	FCPPT_RECORD_MAKE_LABEL(
-		pull_label
-	);
+	FCPPT_RECORD_MAKE_LABEL(pull_label);
 
 	auto const pull_command{
 		fcppt::options::make_sub_command<pull_label>(
 			FCPPT_TEXT("pull"),
 			fcppt::make_cref(pull_parser),
 			fcppt::options::optional_help_text{
-				fcppt::options::help_text{
-					FCPPT_TEXT("Pull all changes")
-				}
+				fcppt::options::help_text{FCPPT_TEXT("Pull all changes")}
 			}
 		)
 	};
@@ -164,9 +134,7 @@ try
 		{
 			fcppt::optional::maybe_void(
 				fcppt::record::get<git_directory>(
-					fcppt::record::get<fcppt::options::options_label>(
-						_result
-					)
+					fcppt::record::get<fcppt::options::options_label>(_result)
 				),
 				[](fcppt::string const &_dir)
 				{
@@ -187,9 +155,7 @@ try
 						<< FCPPT_TEXT("Clone from ")
 						<<
 						fcppt::record::get<clone_path>(
-							fcppt::record::get<clone_label>(
-								_clone
-							)
+							fcppt::record::get<clone_label>(_clone)
 						)
 						<< FCPPT_TEXT('\n');
 				},
