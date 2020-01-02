@@ -376,6 +376,10 @@ parser's actual type.
 
 \snippet options/complex.cpp options_parser
 
+We also check what the result type of the parser is to make sure we did not miss anything.
+
+\snippet options/complex.cpp options_result_type
+
 The main program is a lambda function that gets <code>result_type</code> as its
 parameter. This is a record that contains all the options of the parsers
 combined.
@@ -467,7 +471,7 @@ Here are some example invocations:
 
 \code{.unparsed}
 ./fcppt_example_options_commands
-No command specified from [clone, pull, ]
+No command specified from [clone, pull]
 Usage:
 [ --git-dir : string - The path to the repository ]
   clone:  (Clone from another repository)

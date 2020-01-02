@@ -38,6 +38,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
@@ -57,8 +58,11 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/switch.hpp>
+#include <fcppt/record/are_equivalent.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -180,11 +184,26 @@ try
 			fcppt::make_cref(log_level)
 		)
 	);
+// ![options_parser]
 
+// ![options_result_type]
 	typedef
 	fcppt::options::result_of<decltype(parser)>
 	result_type;
-// ![options_parser]
+
+	static_assert(
+		fcppt::record::are_equivalent<
+			result_type,
+			fcppt::record::object<
+				fcppt::record::element<input_file_label, fcppt::string>,
+				fcppt::record::element<output_file_label, fcppt::optional::object<fcppt::string> >,
+				fcppt::record::element<execute_label, bool>,
+				fcppt::record::element<openmode_label, std::ios_base::openmode>,
+				fcppt::record::element<log_level_label, fcppt::log::level>
+			>
+		>::value
+	);
+// ![options_result_type]
 
 // ![options_main_program]
 	auto const main_program(
