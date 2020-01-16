@@ -5,8 +5,8 @@
 
 
 #if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
-#include <fcppt/signal/object.hpp>
 #include <fcppt/signal/auto_connection_container.hpp>
+#include <fcppt/signal/object.hpp>
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
 #include <fcppt/config/external_begin.hpp>
 #include <boost/signals2.hpp>
@@ -16,9 +16,9 @@
 #error "Wrong option"
 #endif
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <iostream>
 #include <ostream>
-#include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
 namespace

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/public_config.hpp>
 #include <fcppt/literal.hpp>
+#include <fcppt/public_config.hpp>
 #if defined(FCPPT_BOOST_SUPPORT)
 #include <fcppt/make_literal_boost_units.hpp>
 #endif
@@ -14,11 +14,13 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <fcppt/config/external_end.hpp>
 #if defined(FCPPT_BOOST_SUPPORT)
+#include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
-#endif
 #include <fcppt/config/external_end.hpp>
+#endif
 
 
 TEST_CASE(

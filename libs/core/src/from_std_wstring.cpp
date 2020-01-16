@@ -6,8 +6,8 @@
 
 #include <fcppt/from_std_wstring.hpp>
 #include <fcppt/optional_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/public_config.hpp>
+#include <fcppt/string.hpp>
 #if defined(FCPPT_NARROW_STRING)
 #include <fcppt/from_std_wstring_locale.hpp>
 #include <fcppt/string_conv_locale.hpp>

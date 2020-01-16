@@ -8,8 +8,8 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/metal/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
 #include <metal.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

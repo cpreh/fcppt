@@ -15,7 +15,6 @@
 #include <fcppt/container/grid/detail/pos_iterator_base.hpp>
 #include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt

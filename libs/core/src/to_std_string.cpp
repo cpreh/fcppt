@@ -5,9 +5,9 @@
 
 
 #include <fcppt/optional_std_string.hpp>
+#include <fcppt/public_config.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/to_std_string.hpp>
-#include <fcppt/public_config.hpp>
 #if !defined(FCPPT_NARROW_STRING)
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/to_std_string_locale.hpp>

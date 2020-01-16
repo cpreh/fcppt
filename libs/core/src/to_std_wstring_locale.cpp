@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/public_config.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/to_std_wstring_locale.hpp>
-#include <fcppt/public_config.hpp>
 #if defined(FCPPT_NARROW_STRING)
 #include <fcppt/widen.hpp>
 #endif

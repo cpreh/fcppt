@@ -11,10 +11,10 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <cstddef>
 #include <execinfo.h>
 #include <unistd.h>
+#include <array>
+#include <cstddef>
 #include <fcppt/config/external_end.hpp>
 #endif
 

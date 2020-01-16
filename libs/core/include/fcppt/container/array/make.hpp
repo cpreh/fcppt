@@ -9,8 +9,8 @@
 
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <metal.hpp>
+#include <array>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
