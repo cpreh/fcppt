@@ -1,5 +1,6 @@
 set(
 	FCPPT_FILESYSTEM_FILES
+	libs/filesystem/impl/include/fcppt/filesystem/impl/make_range.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directories_recursive.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
@@ -9,6 +10,7 @@ set(
 	libs/filesystem/include/fcppt/filesystem/file_size.hpp
 	libs/filesystem/include/fcppt/filesystem/fstream.hpp
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
+	libs/filesystem/include/fcppt/filesystem/make_directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
@@ -27,6 +29,7 @@ set(
 	libs/filesystem/src/filesystem/extension.cpp
 	libs/filesystem/src/filesystem/extension_without_dot.cpp
 	libs/filesystem/src/filesystem/file_size.cpp
+	libs/filesystem/src/filesystem/make_directory_range.cpp
 	libs/filesystem/src/filesystem/normalize.cpp
 	libs/filesystem/src/filesystem/num_subpaths.cpp
 	libs/filesystem/src/filesystem/path_to_string.cpp
@@ -39,6 +42,7 @@ set(
 make_fcppt_library(
 	filesystem
 	"${FCPPT_FILESYSTEM_FILES}"
+	HAS_IMPL_DIR
 	FCPPT_DEPS
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS

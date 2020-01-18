@@ -7,10 +7,12 @@
 #ifndef FCPPT_FILESYSTEM_DIRECTORY_RANGE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_DIRECTORY_RANGE_HPP_INCLUDED
 
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/filesystem/directory_range_fwd.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,7 +22,7 @@ namespace filesystem
 {
 
 /**
-\brief A range for directory iterators
+\brief A range for directory iterators.
 
 \ingroup fcpptfilesystem
 */
@@ -28,9 +30,12 @@ class directory_range
 {
 public:
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	explicit
 	directory_range(
-		std::filesystem::path
+		std::filesystem::path const &,
+		std::filesystem::directory_options,
+		fcppt::reference<
+			std::error_code
+		>
 	);
 
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL

@@ -4,21 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/filesystem/directory_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
-#include <utility>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::filesystem::directory_range::directory_range(
-	std::filesystem::path _path
+	std::filesystem::path const &_path,
+	std::filesystem::directory_options const _options,
+	fcppt::reference<
+		std::error_code
+	> const _error
 )
 :
 	begin_{
-		std::move(
-			_path
-		)
+		_path,
+		_options,
+		_error.get()
 	}
 {
 }
