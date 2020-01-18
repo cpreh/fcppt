@@ -10,6 +10,7 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Added #fcppt::filesystem::make_directory_range.</li>
+	<li>Added #fcppt::filesystem::make_recursive_directory_range and #fcppt::filesystem::recursive_directory_range.</li>
 	</ul>
 </li>
 

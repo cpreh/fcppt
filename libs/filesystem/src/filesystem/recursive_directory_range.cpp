@@ -5,14 +5,14 @@
 
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/filesystem/directory_range.hpp>
+#include <fcppt/filesystem/recursive_directory_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::filesystem::directory_range::directory_range(
+fcppt::filesystem::recursive_directory_range::recursive_directory_range(
 	std::filesystem::path const &_path,
 	std::filesystem::directory_options const _options,
 	fcppt::reference<
@@ -28,16 +28,16 @@ fcppt::filesystem::directory_range::directory_range(
 {
 }
 
-std::filesystem::directory_iterator
-fcppt::filesystem::directory_range::begin() const
+std::filesystem::recursive_directory_iterator
+fcppt::filesystem::recursive_directory_range::begin() const
 {
 	return
 		this->begin_;
 }
 
-std::filesystem::directory_iterator
-fcppt::filesystem::directory_range::end() const
+std::filesystem::recursive_directory_iterator
+fcppt::filesystem::recursive_directory_range::end() const
 {
 	return
-		std::filesystem::directory_iterator();
+		std::filesystem::recursive_directory_iterator();
 }

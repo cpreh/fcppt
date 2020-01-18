@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FILESYSTEM_MAKE_DIRECTORY_RANGE_HPP_INCLUDED
-#define FCPPT_FILESYSTEM_MAKE_DIRECTORY_RANGE_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_MAKE_RECURSIVE_DIRECTORY_RANGE_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_MAKE_RECURSIVE_DIRECTORY_RANGE_HPP_INCLUDED
 
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/filesystem/directory_range.hpp>
+#include <fcppt/filesystem/recursive_directory_range.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
@@ -22,16 +22,16 @@ namespace filesystem
 {
 
 /**
-\brief Creates a directory range.
+\brief Creates a recursive directory range.
 
 \ingroup fcpptfilesystem
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::either::object<
 	std::error_code,
-	fcppt::filesystem::directory_range
+	fcppt::filesystem::recursive_directory_range
 >
-make_directory_range(
+make_recursive_directory_range(
 	std::filesystem::path const &,
 	std::filesystem::directory_options
 );

@@ -1551,6 +1551,7 @@ set(
 	libs/filesystem/include/fcppt/filesystem/fstream.hpp
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/make_directory_range.hpp
+	libs/filesystem/include/fcppt/filesystem/make_recursive_directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
@@ -1559,6 +1560,8 @@ set(
 	libs/filesystem/include/fcppt/filesystem/optional_size.hpp
 	libs/filesystem/include/fcppt/filesystem/optional_size_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
+	libs/filesystem/include/fcppt/filesystem/recursive_directory_range.hpp
+	libs/filesystem/include/fcppt/filesystem/recursive_directory_range_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
