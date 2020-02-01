@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-prettify_includes --library fcppt examples libs test
+LIBS=(--library fcppt)
+DIRS=(examples libs test)
+
+prettify_includes "${LIBS[@]}" "${DIRS[@]}"
