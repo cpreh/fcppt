@@ -14,6 +14,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstring
+	<ul>
+	<li>Added #fcppt::system.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_350 Changed functionality

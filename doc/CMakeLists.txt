@@ -1432,6 +1432,7 @@ set(
 	libs/core/include/fcppt/symbol/export_class_instantiation.hpp
 	libs/core/include/fcppt/symbol/export_function_instantiation.hpp
 	libs/core/include/fcppt/symbol/import.hpp
+	libs/core/include/fcppt/system.hpp
 	libs/core/include/fcppt/tag.hpp
 	libs/core/include/fcppt/tag_fwd.hpp
 	libs/core/include/fcppt/tag_type.hpp
