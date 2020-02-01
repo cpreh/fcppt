@@ -14,14 +14,18 @@
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/to_exception.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <stdlib.h>
-#include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <fcppt/config/external_end.hpp>
 #elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 #include <fcppt/const.hpp>
 #include <fcppt/public_config.hpp>
 #include <fcppt/optional/make_if.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <stdlib.h>
+#include <fcppt/config/external_end.hpp>
 #endif
 
 

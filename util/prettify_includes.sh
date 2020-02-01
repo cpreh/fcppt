@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-ARGS=(--library fcppt)
-
-find libs examples test \( \( -name '*.hpp' -o -name '*.cpp' \) \) -exec update_headers.sh '{}' "${ARGS[@]}" \;
+prettify_includes --library fcppt examples libs test

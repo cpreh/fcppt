@@ -7,8 +7,8 @@
 #ifndef FCPPT_SYSTEM_HPP_INCLUDED
 #define FCPPT_SYSTEM_HPP_INCLUDED
 
-#include <fcppt/detail/symbol.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
 
