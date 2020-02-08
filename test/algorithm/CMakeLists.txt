@@ -19,6 +19,10 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	contains_if
+)
+
+add_fcppt_algorithm_test(
 	equal
 )
 

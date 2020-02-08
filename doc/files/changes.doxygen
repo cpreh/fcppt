@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Use #fcppt::algorithm::loop_break in #fcppt::algorithm::contains_if.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Added #fcppt::filesystem::make_directory_range.</li>

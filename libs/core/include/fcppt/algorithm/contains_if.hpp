@@ -7,11 +7,8 @@
 #ifndef FCPPT_ALGORITHM_CONTAINS_IF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CONTAINS_IF_HPP_INCLUDED
 
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/loop.hpp>
+#include <fcppt/algorithm/loop_break.hpp>
 
 
 namespace fcppt
@@ -24,7 +21,7 @@ namespace algorithm
 
 \ingroup fcpptalgorithm
 
-\tparam Pred A function callable as <code>bool (Range::value_type)</code>.
+\tparam Pred A function callable as <code>bool (T)</code> for all types T that appear in \a Range.
 */
 template<
 	typename Range,
@@ -37,22 +34,39 @@ contains_if(
 	Pred const &_pred
 )
 {
-	auto const range_end{
-		fcppt::range::end(
-			_range
-		)
+	bool result{
+		false
 	};
 
-	return
-		std::find_if(
-			fcppt::range::begin(
-				_range
-			),
-			range_end,
-			_pred
+	fcppt::algorithm::loop_break(
+		_range,
+		[
+			&result,
+			&_pred
+		](
+			auto const &_value
 		)
-		!=
-		range_end;
+		{
+			if(
+				_pred(
+					_value
+				)
+			)
+			{
+				result =
+					true;
+
+				return
+					fcppt::loop::break_;
+			}
+
+			return
+				fcppt::loop::continue_;
+		}
+	);
+
+	return
+		result;
 }
 
 }
