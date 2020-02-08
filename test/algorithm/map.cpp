@@ -13,6 +13,7 @@
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/map_array.hpp>
+#include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,6 +21,7 @@
 #include <catch2/catch.hpp>
 #include <array>
 #include <string>
+#include <tuple>
 #include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -267,5 +269,47 @@ TEST_CASE(
 				}
 			}
 		}}
+	);
+}
+
+TEST_CASE(
+	"algorithm_map tuple",
+	"[algorithm_map]"
+)
+{
+	typedef
+	std::tuple<
+		std::string,
+		std::string
+	>
+	result_tuple;
+
+	CHECK(
+		fcppt::algorithm::map<
+			result_tuple
+		>(
+			std::tuple<
+				int,
+				long
+			>{
+				1,
+				2l
+			},
+			[](
+				auto const _value
+			)
+			-> std::string
+			{
+				return
+					fcppt::output_to_std_string(
+						_value
+					);
+			}
+		)
+		==
+		result_tuple{
+			"1",
+			"2"
+		}
 	);
 }

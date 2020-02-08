@@ -10,6 +10,7 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Use #fcppt::algorithm::loop_break in #fcppt::algorithm::contains_if.</li>
+	<li>Added #fcppt::algorithm::map_impl specialization for #fcppt::container::tuple::map.</li>
 	</ul>
 </li>
 
