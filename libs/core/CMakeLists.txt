@@ -381,11 +381,14 @@ set(
 	libs/core/include/fcppt/container/tree/output.hpp
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
+	libs/core/include/fcppt/container/tuple/detail/from_array.hpp
 	libs/core/include/fcppt/container/tuple/detail/map.hpp
 	libs/core/include/fcppt/container/tuple/detail/map_result.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/detail/types_of.hpp
+	libs/core/include/fcppt/container/tuple/from_array.hpp
+	libs/core/include/fcppt/container/tuple/from_array_result.hpp
 	libs/core/include/fcppt/container/tuple/map.hpp
 	libs/core/include/fcppt/container/tuple/map_result.hpp
 	libs/core/include/fcppt/container/tuple/move_element.hpp

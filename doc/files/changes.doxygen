@@ -20,6 +20,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainertuple
+	<ul>
+	<li>Added #fcppt::container::tuple::from_array.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Added #fcppt::filesystem::make_directory_range.</li>

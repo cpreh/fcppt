@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_container_tuple_test(
+	from_array
+)
+
+add_fcppt_container_tuple_test(
 	map
 	LINK_LIBS
 		fcppt_catch_interface
