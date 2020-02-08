@@ -14,6 +14,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainerarray
+	<ul>
+	<li>Added #fcppt::container::array::from_range.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Added #fcppt::filesystem::make_directory_range.</li>

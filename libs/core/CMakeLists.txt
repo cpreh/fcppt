@@ -40,6 +40,7 @@ set(
 	libs/core/include/fcppt/algorithm/map_iteration.hpp
 	libs/core/include/fcppt/algorithm/map_iteration_second.hpp
 	libs/core/include/fcppt/algorithm/map_optional.hpp
+	libs/core/include/fcppt/algorithm/map_tuple.hpp
 	libs/core/include/fcppt/algorithm/range_element_type.hpp
 	libs/core/include/fcppt/algorithm/remove.hpp
 	libs/core/include/fcppt/algorithm/remove_if.hpp
@@ -170,6 +171,7 @@ set(
 	libs/core/include/fcppt/container/array/detail/join.hpp
 	libs/core/include/fcppt/container/array/detail/push_back.hpp
 	libs/core/include/fcppt/container/array/detail/size.hpp
+	libs/core/include/fcppt/container/array/from_range.hpp
 	libs/core/include/fcppt/container/array/init.hpp
 	libs/core/include/fcppt/container/array/init_const.hpp
 	libs/core/include/fcppt/container/array/init_move.hpp
@@ -943,6 +945,7 @@ set(
 	libs/core/include/fcppt/optional/deref.hpp
 	libs/core/include/fcppt/optional/detail/cast.hpp
 	libs/core/include/fcppt/optional/detail/check.hpp
+	libs/core/include/fcppt/optional/detail/check_sequence.hpp
 	libs/core/include/fcppt/optional/detail/has_value_all.hpp
 	libs/core/include/fcppt/optional/detail/value_type.hpp
 	libs/core/include/fcppt/optional/dynamic_cast.hpp
