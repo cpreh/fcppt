@@ -40,6 +40,11 @@ add_fcppt_metal_test(
 )
 
 add_fcppt_metal_test(
+	function_args
+	NO_CODE
+)
+
+add_fcppt_metal_test(
 	from_number
 	NO_CODE
 )

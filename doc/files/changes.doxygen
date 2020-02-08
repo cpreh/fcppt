@@ -33,6 +33,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmetal
+	<ul>
+	<li>Added #fcppt::metal::function_args.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>#fcppt::optional::sequence now works on <code>std::tuple</code>.</li>

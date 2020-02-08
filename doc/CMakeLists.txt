@@ -1100,6 +1100,7 @@ set(
 	libs/core/include/fcppt/metal/detail/flip_map.hpp
 	libs/core/include/fcppt/metal/detail/for_each_break.hpp
 	libs/core/include/fcppt/metal/detail/from_number.hpp
+	libs/core/include/fcppt/metal/detail/function_args.hpp
 	libs/core/include/fcppt/metal/detail/index_of.hpp
 	libs/core/include/fcppt/metal/detail/index_of_if.hpp
 	libs/core/include/fcppt/metal/detail/interval.hpp
@@ -1113,6 +1114,7 @@ set(
 	libs/core/include/fcppt/metal/for_each_break.hpp
 	libs/core/include/fcppt/metal/from_number.hpp
 	libs/core/include/fcppt/metal/from_number_list.hpp
+	libs/core/include/fcppt/metal/function_args.hpp
 	libs/core/include/fcppt/metal/index_of.hpp
 	libs/core/include/fcppt/metal/index_of_if.hpp
 	libs/core/include/fcppt/metal/interval.hpp
