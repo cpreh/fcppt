@@ -21,6 +21,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptional
+	<ul>
+	<li>#fcppt::optional::sequence now works on <code>std::tuple</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstring
 	<ul>
 	<li>Added #fcppt::system.</li>

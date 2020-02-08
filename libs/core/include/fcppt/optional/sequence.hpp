@@ -8,13 +8,13 @@
 #define FCPPT_OPTIONAL_SEQUENCE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/optional/is_object.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/detail/check_sequence.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -54,31 +54,15 @@ sequence(
 	Source &&_source
 )
 {
-	typedef
-	fcppt::type_traits::value_type<
+	fcppt::optional::detail::check_sequence<
+		ResultContainer,
 		fcppt::type_traits::remove_cv_ref_t<
 			Source
 		>
-	>
-	source_optional;
+	> const test{};
 
-	static_assert(
-		fcppt::optional::is_object<
-			source_optional
-		>::value,
-		"The source must be a container of optionals"
-	);
-
-	static_assert(
-		std::is_same<
-			fcppt::type_traits::value_type<
-				ResultContainer
-			>,
-			fcppt::type_traits::value_type<
-				source_optional
-			>
-		>::value,
-		"ResultContainer must be a container of the source's success type"
+	FCPPT_USE(
+		test
 	);
 
 	return

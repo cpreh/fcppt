@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/container/make.hpp>
@@ -12,6 +14,7 @@
 #include <fcppt/optional/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <tuple>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -142,5 +145,36 @@ TEST_CASE(
 				}
 			)
 		}
+	);
+}
+
+TEST_CASE(
+	"optional::sequence tuple",
+	"[optional]"
+)
+{
+	CHECK(
+		fcppt::optional::sequence<
+			std::tuple<
+				int,
+				bool
+			>
+		>(
+			std::make_tuple(
+				fcppt::optional::make(
+					0
+				),
+				fcppt::optional::make(
+					false
+				)
+			)
+		)
+		==
+		fcppt::optional::make(
+			std::make_tuple(
+				0,
+				false
+			)
+		)
 	);
 }
