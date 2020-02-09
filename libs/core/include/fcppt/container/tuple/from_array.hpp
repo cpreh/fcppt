@@ -7,13 +7,13 @@
 #ifndef FCPPT_CONTAINER_TUPLE_FROM_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_FROM_ARRAY_HPP_INCLUDED
 
-#include <fcppt/container/array/size.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/container/tuple/from_array_result.hpp>
-#include <fcppt/container/tuple/detail/from_array.hpp>
+#include <fcppt/container/tuple/init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
+#include <array>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -50,17 +50,28 @@ from_array(
 	);
 
 	return
-		fcppt::container::tuple::detail::from_array(
-			std::make_index_sequence<
-				fcppt::container::array::size<
-					Array
-				>::value
-			>{},
-			std::forward<
+		fcppt::container::tuple::init<
+			fcppt::container::tuple::from_array_result<
 				Array
-			>(
-				_source
+			>
+		>(
+			[
+				&_source
+			](
+				auto const _index
 			)
+			{
+				return
+					fcppt::move_if_rvalue<
+						Array
+					>(
+						std::get<
+							_index()
+						>(
+							_source
+						)
+					);
+			}
 		);
 }
 

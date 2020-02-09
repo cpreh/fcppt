@@ -13,6 +13,12 @@ add_fcppt_container_tuple_test(
 )
 
 add_fcppt_container_tuple_test(
+	init
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_container_tuple_test(
 	map
 	LINK_LIBS
 		fcppt_catch_interface

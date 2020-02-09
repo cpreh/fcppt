@@ -23,6 +23,7 @@
 <li>\ref fcpptcontainertuple
 	<ul>
 	<li>Added #fcppt::container::tuple::from_array.</li>
+	<li>Added #fcppt::container::tuple::init.</li>
 	</ul>
 </li>
 
