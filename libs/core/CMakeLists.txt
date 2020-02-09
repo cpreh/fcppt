@@ -996,6 +996,10 @@ set(
 	libs/core/include/fcppt/output_to_std_string.hpp
 	libs/core/include/fcppt/output_to_std_wstring.hpp
 	libs/core/include/fcppt/output_to_string.hpp
+	libs/core/include/fcppt/overload.hpp
+	libs/core/include/fcppt/overloaded_decl.hpp
+	libs/core/include/fcppt/overloaded_fwd.hpp
+	libs/core/include/fcppt/overloaded_impl.hpp
 	libs/core/include/fcppt/preprocessor/const.hpp
 	libs/core/include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/detail/function.hpp

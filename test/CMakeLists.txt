@@ -254,6 +254,10 @@ add_subdirectory(
 	options
 )
 
+add_fcppt_test(
+	overload
+)
+
 add_subdirectory(
 	parse
 )

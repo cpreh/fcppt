@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/overload.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/tuple/init.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -13,9 +14,6 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-// TODO:
-template<class... Ts> struct overloaded : Ts... { using Ts::operator()...; };
-template<class... Ts> overloaded(Ts...) -> overloaded<Ts...>;
 
 TEST_CASE(
 	"tuple::init",
@@ -39,8 +37,7 @@ TEST_CASE(
 		fcppt::container::tuple::init<
 			tuple
 		>(
-			overloaded
-			{
+			fcppt::overload(
 				[](
 					std::integral_constant<
 						std::size_t,
@@ -64,7 +61,7 @@ TEST_CASE(
 							1u
 						};
 				}
-			}
+			)
 		)
 		==
 		tuple{
