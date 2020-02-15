@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_container_tuple_test(
+	apply
+)
+
+add_fcppt_container_tuple_test(
 	from_array
 )
 

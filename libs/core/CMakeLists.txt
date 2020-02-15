@@ -381,6 +381,10 @@ set(
 	libs/core/include/fcppt/container/tree/output.hpp
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
+	libs/core/include/fcppt/container/tuple/apply.hpp
+	libs/core/include/fcppt/container/tuple/apply_result.hpp
+	libs/core/include/fcppt/container/tuple/detail/apply_result_at.hpp
+	libs/core/include/fcppt/container/tuple/detail/apply_result_impl.hpp
 	libs/core/include/fcppt/container/tuple/detail/init.hpp
 	libs/core/include/fcppt/container/tuple/detail/map.hpp
 	libs/core/include/fcppt/container/tuple/detail/map_result.hpp
