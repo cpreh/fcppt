@@ -609,7 +609,6 @@ set(
 	libs/core/include/fcppt/container/tuple/move_element.hpp
 	libs/core/include/fcppt/container/tuple/push_back.hpp
 	libs/core/include/fcppt/container/tuple/push_back_result.hpp
-	libs/core/include/fcppt/container/tuple/type_at.hpp
 	libs/core/include/fcppt/container/tuple/types_of.hpp
 	libs/core/include/fcppt/container/tuple/vararg_map.hpp
 	libs/core/include/fcppt/copy.hpp

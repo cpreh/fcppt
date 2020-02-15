@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_TUPLE_MOVE_ELEMENT_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
-#include <fcppt/container/tuple/type_at.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,21 +51,21 @@ std::integral_constant<
 		>::value
 		||
 		std::is_lvalue_reference<
-			fcppt::container::tuple::type_at<
+			std::tuple_element_t<
+				Index,
 				fcppt::type_traits::remove_cv_ref_t<
 					Tuple
-				>,
-				Index
+				>
 			>
 		>::value
 	)
 	||
 	std::is_rvalue_reference<
-		fcppt::container::tuple::type_at<
+		std::tuple_element_t<
+			Index,
 			fcppt::type_traits::remove_cv_ref_t<
 				Tuple
-			>,
-			Index
+			>
 		>
 	>::value
 >;

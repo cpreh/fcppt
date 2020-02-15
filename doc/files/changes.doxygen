@@ -72,6 +72,18 @@
 
 </ul>
 
+\subsection changes_removed_functionality_to_350 Removed functionality
+
+<ul>
+
+<li>\ref fcpptcontainertuple
+	<ul>
+	<li>Removed <code>fcppt::container::tuple::type_at</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_340 3.4.0
 
 <ul>
@@ -465,7 +477,7 @@ fcppt now uses <code>C++-17</code>.
 	<ul>
 	<li>Move rvalue references out of tuples regardless whether the tuples are rvalues themselves.</li>
 	<li>Added #fcppt::container::tuple::move_element.</li>
-	<li>Added #fcppt::container::tuple::type_at.</li>
+	<li>Added <code>fcppt::container::tuple::type_at</code>.</li>
 	<li>Added #fcppt::container::tuple::types_of.</li>
 	</ul>
 </li>
