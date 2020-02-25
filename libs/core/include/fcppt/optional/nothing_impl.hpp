@@ -7,9 +7,18 @@
 #ifndef FCPPT_OPTIONAL_NOTHING_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_NOTHING_IMPL_HPP_INCLUDED
 
+#include <fcppt/config/compiler.hpp>
 #include <fcppt/optional/nothing_decl.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
+
+FCPPT_PP_PUSH_WARNING
+#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
+#endif
 
 template<
 	typename T
@@ -26,5 +35,7 @@ fcppt::optional::object<
 			T
 		>{};
 }
+
+FCPPT_PP_POP_WARNING
 
 #endif
