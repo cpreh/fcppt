@@ -8,7 +8,6 @@ let pkgs = import <nixpkgs> {};
         owner = "brunocodutra";
         repo = "metal";
         rev = "v${version}";
-        sha256 = "43256d2c7f5715d9dc029037bcd8512624ec7865";
       };
 
       nativeBuildInputs = [ pkgs.cmake ];
