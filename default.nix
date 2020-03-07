@@ -2,12 +2,13 @@ let pkgs = import <nixpkgs> {};
     stdenv = pkgs.gcc9Stdenv;
     metal = stdenv.mkDerivation rec {
       pname = "metal";
-      version = "2.1.1";
+      version = "2.0.1";
 
       src = pkgs.fetchFromGitHub {
         owner = "brunocodutra";
         repo = "metal";
         rev = "v${version}";
+        sha256 = "16pmx8jmcjcz4jm04j33a9562pncwj28a9ff3wifkmmikfpw0bjd";
       };
 
       nativeBuildInputs = [ pkgs.cmake ];
