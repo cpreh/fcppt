@@ -11,6 +11,7 @@
 #define FCPPT_DETAIL_NONCOPYABLE(\
 	classname\
 )\
+/* NOLINTNEXTLINE(bugprone-macro-parentheses)*/ \
 classname(classname const &) = delete; \
 classname &operator=(classname const &) = delete
 

@@ -47,7 +47,8 @@ public:
 	FCPPT_DETAIL_SYMBOL
 	exception(
 		exception &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	exception &
@@ -59,12 +60,14 @@ public:
 	exception &
 	operator=(
 		exception &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	~exception() noexcept
 	override;
 
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::information const &
 	information() const;

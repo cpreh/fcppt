@@ -104,6 +104,7 @@ public:
 
 	\warning The behaviour is undefined if <code>has_value()</code> is false
 	*/
+	[[nodiscard]]
 	T &
 	get_unsafe();
 
@@ -112,12 +113,14 @@ public:
 
 	\warning The behaviour is undefined if <code>has_value()</code> is false
 	*/
+	[[nodiscard]]
 	T const &
 	get_unsafe() const;
 
 	/**
 	\brief Returns whether the optional holds a value
 	*/
+	[[nodiscard]]
 	bool
 	has_value() const;
 private:

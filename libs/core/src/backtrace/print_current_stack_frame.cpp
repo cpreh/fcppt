@@ -25,7 +25,7 @@ fcppt::backtrace::print_current_stack_frame()
 #if defined(FCPPT_HAVE_BACKTRACE)
 
 	constexpr std::size_t const max_stacktrace_size{
-		128u
+		128U
 	};
 
 	typedef

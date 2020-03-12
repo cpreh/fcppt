@@ -30,11 +30,12 @@ struct value_type
 		"Optional must be an optional"
 	);
 
-	typedef
+	using
+	type
+	=
 	fcppt::type_traits::value_type<
 		Optional
-	>
-	type;
+	>;
 };
 
 }

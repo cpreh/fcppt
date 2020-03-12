@@ -28,13 +28,15 @@ template<
 class range
 {
 public:
-	typedef
-	Iterator
-	iterator;
+	using
+	iterator
+	=
+	Iterator;
 
-	typedef
-	Iterator
-	const_iterator;
+	using
+	const_iterator
+	=
+	Iterator;
 
 	range(
 		Iterator begin,

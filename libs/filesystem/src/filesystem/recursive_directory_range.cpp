@@ -36,7 +36,7 @@ fcppt::filesystem::recursive_directory_range::begin() const
 }
 
 std::filesystem::recursive_directory_iterator
-fcppt::filesystem::recursive_directory_range::end() const
+fcppt::filesystem::recursive_directory_range::end()
 {
 	return
 		std::filesystem::recursive_directory_iterator();

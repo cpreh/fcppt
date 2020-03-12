@@ -41,7 +41,7 @@ make_range(
 {
 	std::error_code error{};
 
-	Range const result{
+	Range result{
 		_path,
 		_options,
 		fcppt::make_ref(

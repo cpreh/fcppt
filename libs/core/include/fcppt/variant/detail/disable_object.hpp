@@ -27,20 +27,14 @@ template<
 using disable_object
 =
 std::enable_if_t<
-	!(
-		std::is_const<
-			std::remove_reference_t<
-				U
-			>
-		>::value
-		||
+	std::negation_v<
 		std::is_same<
 			fcppt::type_traits::remove_cv_ref_t<
 				U
 			>,
 			Variant
-		>::value
-	),
+		>
+	>,
 	Variant
 >;
 

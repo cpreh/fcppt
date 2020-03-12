@@ -31,6 +31,7 @@ fcppt::exception::exception(
 fcppt::exception::exception(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::exception &
@@ -43,19 +44,21 @@ fcppt::exception &
 fcppt::exception::operator=(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::string const &
 fcppt::exception::string() const
 {
 	return
-		string_;
+		this->string_;
 }
 
 char const *
 fcppt::exception::what() const noexcept
 {
-	return "what cannot be supplied by an fcppt::exception, do not catch fcppt::exception as std::exception";
+	return
+		"what cannot be supplied by an fcppt::exception, do not catch fcppt::exception as std::exception";
 }
 
 fcppt::exception::~exception() noexcept

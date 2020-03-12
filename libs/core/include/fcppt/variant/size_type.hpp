@@ -24,7 +24,10 @@ namespace variant
 
 \see fcppt::variant::object::type_index
 */
-typedef std::size_t size_type;
+using
+size_type
+=
+std::size_t;
 
 }
 }

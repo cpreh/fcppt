@@ -45,6 +45,7 @@ struct loop_break_impl
 			:
 			_range
 		)
+		{
 			switch(
 				_body(
 					std::forward<
@@ -62,6 +63,7 @@ struct loop_break_impl
 			case fcppt::loop::continue_:
 				break;
 			}
+		}
 	}
 };
 

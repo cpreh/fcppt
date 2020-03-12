@@ -19,11 +19,12 @@ namespace fcppt
 namespace backtrace
 {
 
-typedef
+using
+stack_frame
+=
 std::vector<
 	fcppt::string
->
-stack_frame;
+>;
 
 }
 }

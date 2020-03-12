@@ -53,16 +53,18 @@ public:
 	/**
 	\brief A type that represents the data stored in the strong typedef
 	*/
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
 	/**
 	\brief typedef for the <code>Tag</code> template parameter
 	*/
-	typedef
-	Tag
-	tag_type;
+	using
+	tag_type
+	=
+	Tag;
 
 	/**
 	\brief Constructs the strong typedef from a given value using fcppt::safe_cast.
@@ -94,12 +96,14 @@ public:
 	/**
 	\brief Return the strong typedef's value.
 	*/
+	[[nodiscard]]
 	T &
 	get();
 
 	/**
 	\brief Return the strong typedef's value.
 	*/
+	[[nodiscard]]
 	T const &
 	get() const;
 

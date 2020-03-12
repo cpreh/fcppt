@@ -59,6 +59,7 @@ public:
 	/**
 	\brief Returns the current file
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::file const &
 	file() const;
@@ -66,6 +67,7 @@ public:
 	/**
 	\brief Returns the line of the current file
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::line
 	line() const;
@@ -73,6 +75,7 @@ public:
 	/**
 	\brief Returns the current function
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::function const &
 	function() const;
@@ -80,6 +83,7 @@ public:
 	/**
 	\brief Returns the failed condition
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::condition const &
 	condition() const;
@@ -87,6 +91,7 @@ public:
 	/**
 	\brief Returns the message of the assertion
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	fcppt::assert_::message const &
 	message() const;

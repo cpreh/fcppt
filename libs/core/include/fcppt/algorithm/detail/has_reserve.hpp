@@ -38,7 +38,7 @@ struct has_reserve<
 		std::declval<
 			Type
 		>().reserve(
-			0u
+			0U
 		)
 	)
 >

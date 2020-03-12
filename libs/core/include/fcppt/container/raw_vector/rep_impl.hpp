@@ -41,43 +41,6 @@ noexcept
 template<
 	typename A
 >
-fcppt::container::raw_vector::rep<
-	A
->::rep(
-	rep const &
-)
-noexcept
-=
-default;
-
-template<
-	typename A
->
-fcppt::container::raw_vector::rep<
-	A
-> &
-fcppt::container::raw_vector::rep<
-	A
->::operator=(
-	rep const &
-)
-noexcept
-=
-default;
-
-template<
-	typename A
->
-fcppt::container::raw_vector::rep<
-	A
->::~rep()
-noexcept
-{
-}
-
-template<
-	typename A
->
 A const &
 fcppt::container::raw_vector::rep<
 	A
@@ -85,7 +48,7 @@ fcppt::container::raw_vector::rep<
 noexcept
 {
 	return
-		alloc_;
+		this->alloc_;
 }
 
 template<
@@ -101,7 +64,7 @@ fcppt::container::raw_vector::rep<
 noexcept
 {
 	return
-		first_;
+		this->first_;
 }
 
 template<
@@ -117,7 +80,7 @@ fcppt::container::raw_vector::rep<
 noexcept
 {
 	return
-		last_;
+		this->last_;
 }
 
 template<
@@ -133,7 +96,7 @@ fcppt::container::raw_vector::rep<
 noexcept
 {
 	return
-		cap_;
+		this->cap_;
 }
 
 

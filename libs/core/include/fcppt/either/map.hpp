@@ -26,7 +26,7 @@ namespace either
 
 If \a _either is set to success <code>s</code>, <code>r = _function(s)</code>
 is called and the result is
-<code>either<Either::failure,decltype(r)>(r)</code>.  Otherwise, the failure in
+<code>either<Either::failure,decltype(r)>(r)</code>. Otherwise, the failure in
 \a _either is returned.
 
 \tparam Function A function callable as <code>R (Either::success)</code> where
@@ -59,11 +59,12 @@ fcppt::either::object<
 	)
 >
 {
-	typedef
+	using
+	either
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Either
-	>
-	either;
+	>;
 
 	static_assert(
 		fcppt::either::is_object<
@@ -72,7 +73,9 @@ fcppt::either::object<
 		"Either must be an either"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		fcppt::either::failure_type<
 			fcppt::type_traits::remove_cv_ref_t<
@@ -88,8 +91,7 @@ fcppt::either::object<
 				)
 			)
 		)
-	>
-	result_type;
+	>;
 
 	return
 		_either.has_success()

@@ -21,11 +21,12 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
-typedef
+using
+optional_error_code
+=
 fcppt::optional::object<
 	std::error_code
->
-optional_error_code;
+>;
 
 }
 

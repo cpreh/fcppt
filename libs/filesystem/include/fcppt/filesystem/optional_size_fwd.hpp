@@ -18,11 +18,17 @@ namespace fcppt
 namespace filesystem
 {
 
-typedef
+/**
+\brief Optional size.
+
+\ingroup fcpptfilesystem
+*/
+using
+optional_size
+=
 fcppt::optional::object<
 	std::uintmax_t
->
-optional_size;
+>;
 
 }
 }

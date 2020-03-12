@@ -38,13 +38,16 @@ public:
 		>
 	);
 
+	[[nodiscard]]
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
 	std::filesystem::recursive_directory_iterator
 	begin() const;
 
+	[[nodiscard]]
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
+	static
 	std::filesystem::recursive_directory_iterator
-	end() const;
+	end();
 private:
 	std::filesystem::recursive_directory_iterator begin_;
 };

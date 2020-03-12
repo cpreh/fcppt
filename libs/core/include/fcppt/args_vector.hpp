@@ -21,11 +21,12 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
-typedef
+using
+args_vector
+=
 std::vector<
 	fcppt::string
->
-args_vector;
+>;
 
 }
 

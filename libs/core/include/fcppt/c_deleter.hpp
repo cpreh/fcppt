@@ -42,6 +42,7 @@ struct c_deleter
 	) const
 	noexcept
 	{
+		// NOLINTNEXTLINE(cppcoreguidelines-no-malloc,cppcoreguidelines-owning-memory,hicpp-no-malloc)
 		std::free(
 			_ptr
 		);

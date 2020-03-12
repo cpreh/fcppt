@@ -7,7 +7,7 @@
 #ifndef FCPPT_ARGS_CHAR_HPP_INCLUDED
 #define FCPPT_ARGS_CHAR_HPP_INCLUDED
 
-#include <fcppt/detail/main_wchar.hpp>
+#include <fcppt/detail/args_char.hpp>
 
 
 namespace fcppt
@@ -18,13 +18,10 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
-typedef
-#if defined(FCPPT_DETAIL_MAIN_WCHAR)
-wchar_t
-#else
-char
-#endif
-args_char;
+using
+args_char
+=
+fcppt::detail::args_char;
 
 }
 

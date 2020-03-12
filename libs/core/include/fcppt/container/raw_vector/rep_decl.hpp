@@ -32,10 +32,11 @@ template<
 class rep
 {
 public:
-	typedef
+	using
+	pointer
+	=
 	typename
-	A::pointer
-	pointer;
+	A::pointer;
 
 	rep(
 		A const &,
@@ -43,20 +44,6 @@ public:
 		pointer last,
 		pointer cap
 	)
-	noexcept;
-
-	rep(
-		rep const &
-	)
-	noexcept;
-
-	rep &
-	operator=(
-		rep const &
-	)
-	noexcept;
-
-	~rep()
 	noexcept;
 
 	A const &

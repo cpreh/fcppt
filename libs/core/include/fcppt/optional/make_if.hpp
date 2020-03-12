@@ -43,13 +43,14 @@ make_if(
 	Function const &_function
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		std::result_of_t<
 			Function()
 		>
-	>
-	result_type;
+	>;
 
 	return
 		_is_set

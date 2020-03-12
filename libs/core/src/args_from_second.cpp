@@ -28,6 +28,7 @@ fcppt::args_from_second(
 				-
 				1,
 				_argv
+				// NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 				+
 				1
 			)

@@ -26,9 +26,10 @@ template<
 >
 struct mpl_size_type
 {
-	typedef
-	void
-	type;
+	using
+	type
+	=
+	void;
 };
 
 template<
@@ -43,12 +44,13 @@ struct mpl_size_type<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	typename
 	::metal::size<
 		Type
-	>::value_type
-	type;
+	>::value_type;
 };
 
 }

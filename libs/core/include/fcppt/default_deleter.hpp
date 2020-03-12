@@ -38,6 +38,7 @@ struct default_deleter
 			T
 		);
 
+		// NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
 		delete
 			_ptr;
 	}

@@ -23,6 +23,7 @@ fcppt::filesystem::replace_extension(
 		std::filesystem::path(
 			_path
 		).replace_extension(
+			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			fcppt::string{
 				FCPPT_TEXT(".")
 			}

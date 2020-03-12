@@ -36,7 +36,7 @@ fcppt::filesystem::directory_range::begin() const
 }
 
 std::filesystem::directory_iterator
-fcppt::filesystem::directory_range::end() const
+fcppt::filesystem::directory_range::end()
 {
 	return
 		std::filesystem::directory_iterator();

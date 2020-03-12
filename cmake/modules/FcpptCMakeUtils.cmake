@@ -90,6 +90,7 @@ if(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
 		"-cppcoreguidelines-macro-usage"
+		"-cert-dcl21-cpp"
 		"-fuchsia-overloaded-operator"
 		"-fuchsia-trailing-return"
 		"-google-readability-namespace-comments"

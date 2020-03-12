@@ -39,17 +39,20 @@ class unique_ptr
 		unique_ptr
 	);
 public:
-	typedef
-	Type
-	element_type;
+	using
+	element_type
+	=
+	Type;
 
-	typedef
-	element_type *
-	pointer;
+	using
+	pointer
+	=
+	element_type *;
 
-	typedef
-	Deleter
-	deleter_type;
+	using
+	deleter_type
+	=
+	Deleter;
 
 	explicit
 	unique_ptr(

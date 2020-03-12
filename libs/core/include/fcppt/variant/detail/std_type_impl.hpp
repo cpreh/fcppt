@@ -34,11 +34,12 @@ struct std_type_impl<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	std::variant<
 		Types...
-	>
-	type;
+	>;
 };
 
 }

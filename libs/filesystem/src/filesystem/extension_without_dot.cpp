@@ -28,9 +28,11 @@ fcppt::filesystem::extension_without_dot(
 		!ret.empty()
 		&& ret[0] == FCPPT_TEXT('.')
 	)
+	{
 		ret.erase(
-			ret.begin()
+			ret.begin() // NOLINT(fuchsia-default-arguments-calls)
 		);
+	}
 
 	return
 		ret;

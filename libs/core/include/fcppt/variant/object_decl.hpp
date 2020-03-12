@@ -53,11 +53,12 @@ public:
 	/**
 	\brief The metal::list of the possible types
 	*/
-	typedef
+	using
+	types
+	=
 	::metal::list<
 		Types...
-	>
-	types;
+	>;
 
 	static_assert(
 		fcppt::metal::is_set<
@@ -66,29 +67,17 @@ public:
 		"Variant types must form a set"
 	);
 
-	typedef
+	using
+	std_type
+	=
 	fcppt::variant::detail::std_type<
 		types
-	>
-	std_type;
+	>;
 
 	/**
-	\brief Constructs the variant from a value
+	\brief Constructs the variant from a value.
 
-	\tparam U Must be a type among <code>types</code>
-	*/
-	template<
-		typename U
-	>
-	explicit
-	object(
-		U const &
-	);
-
-	/**
-	\brief Move constructs the variant from a value
-
-	Move constructs the variant from \a value.
+	Constructs the variant from \a value.
 
 	\tparam U Must be a type among <code>types</code>
 	*/
@@ -115,6 +104,7 @@ public:
 	template<
 		typename U
 	>
+	[[nodiscard]]
 	U const &
 	get_unsafe() const;
 
@@ -128,6 +118,7 @@ public:
 	template<
 		typename U
 	>
+	[[nodiscard]]
 	U &
 	get_unsafe();
 
@@ -136,6 +127,7 @@ public:
 
 	\return A runtime index into <code>types</code> of the held type.
 	*/
+	[[nodiscard]]
 	fcppt::variant::size_type
 	type_index() const;
 
@@ -147,12 +139,15 @@ public:
 	back to heap allocation. An invalid variant should only be destroyed or
 	assigned to.
 	*/
+	[[nodiscard]]
 	bool
 	is_invalid() const;
 
+	[[nodiscard]]
 	std_type &
 	impl();
 
+	[[nodiscard]]
 	std_type const &
 	impl() const;
 private:

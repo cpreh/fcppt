@@ -35,11 +35,6 @@ the failure value.
 template<
 	typename Optional
 >
-auto
-error_from_optional(
-	Optional &&_optional
-)
-->
 fcppt::either::error<
 	fcppt::optional::value_type<
 		fcppt::type_traits::remove_cv_ref_t<
@@ -47,6 +42,9 @@ fcppt::either::error<
 		>
 	>
 >
+error_from_optional(
+	Optional &&_optional
+)
 {
 	static_assert(
 		fcppt::optional::detail::check<
@@ -55,15 +53,16 @@ fcppt::either::error<
 		"Optional must be an optional"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::error<
 		fcppt::optional::value_type<
 			fcppt::type_traits::remove_cv_ref_t<
 				Optional
 			>
 		>
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::optional::maybe(

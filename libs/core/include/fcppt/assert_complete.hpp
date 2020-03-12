@@ -27,7 +27,7 @@ of its usage is shown below.
 	type\
 )\
 static_assert(\
-	sizeof(type) > 0,\
+	sizeof(type) > 0, /* NOLINT(bugprone-sizeof-expression)*/\
 	"Type must be complete" \
 )
 

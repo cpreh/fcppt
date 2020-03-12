@@ -75,8 +75,8 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::~unique_ptr()
-{
-}
+=
+default;
 
 template<
 	typename Type,

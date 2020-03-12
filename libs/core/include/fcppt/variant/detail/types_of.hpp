@@ -34,11 +34,12 @@ struct types_of<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	::metal::list<
 		Types...
-	>
-	type;
+	>;
 };
 
 }

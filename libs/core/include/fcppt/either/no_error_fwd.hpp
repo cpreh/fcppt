@@ -20,9 +20,10 @@ namespace either
 
 \ingroup fcppteither
 */
-typedef
-fcppt::unit
-no_error;
+using
+no_error
+=
+fcppt::unit;
 
 }
 }

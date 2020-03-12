@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_CHAR_TYPE_HPP_INCLUDED
-#define FCPPT_DETAIL_CHAR_TYPE_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_ARGS_CHAR_HPP_INCLUDED
+#define FCPPT_DETAIL_ARGS_CHAR_HPP_INCLUDED
 
-#include <fcppt/public_config.hpp>
+#include <fcppt/detail/main_wchar.hpp>
 
 
 namespace fcppt
@@ -16,12 +16,12 @@ namespace detail
 {
 
 using
-char_type
+args_char
 =
-#if defined(FCPPT_NARROW_STRING)
-char
-#else
+#if defined(FCPPT_DETAIL_MAIN_WCHAR)
 wchar_t
+#else
+char
 #endif
 ;
 

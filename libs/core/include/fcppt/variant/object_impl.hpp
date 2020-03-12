@@ -22,31 +22,6 @@ template<
 	typename... Types
 >
 template<
-	typename U
->
-fcppt::variant::object<
-	Types...
->::object(
-	U const &_other
-)
-:
-	impl_{
-		_other
-	}
-{
-	static_assert(
-		fcppt::variant::detail::has_type<
-			this_type,
-			U
-		>::value,
-		"Invalid variant type"
-	);
-}
-
-template<
-	typename... Types
->
-template<
 	typename U,
 	typename
 >
@@ -57,7 +32,9 @@ fcppt::variant::object<
 )
 :
 	impl_{
-		std::move(
+		std::forward<
+			U
+		>(
 			_other
 		)
 	}

@@ -50,38 +50,45 @@ class object
 		object
 	);
 public:
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
-	A
-	allocator_type;
+	using
+	allocator_type
+	=
+	A;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	A::size_type
-	size_type;
+	A::size_type;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	A::pointer
-	pointer;
+	A::pointer;
 
-	typedef
+	using
+	const_pointer
+	=
 	typename
-	A::const_pointer
-	const_pointer;
+	A::const_pointer;
 
-	typedef
+	using
+	const_reference
+	=
 	typename
-	A::const_reference
-	const_reference;
+	A::const_reference;
 
-	typedef
+	using
+	const_iterator
+	=
 	typename
-	A::const_pointer
-	const_iterator;
+	A::const_pointer;
 
 	/**
 	\brief Constructs an uninitialized buffer.
@@ -90,8 +97,17 @@ public:
 	*/
 	explicit
 	object(
+		size_type write_sz
+	);
+
+	/**
+	\brief Constructs an uninitialized buffer with custom allocator.
+
+	Constructs a buffer with a write area of size \a sz.
+	*/
+	object(
 		size_type write_sz,
-		A a = A()
+		A
 	);
 
 	object(
@@ -111,6 +127,7 @@ public:
 	/**
 	\brief The beginning of the read area.
 	*/
+	[[nodiscard]]
 	const_iterator
 	begin() const
 	noexcept;
@@ -118,6 +135,7 @@ public:
 	/**
 	\brief The end of the read area.
 	*/
+	[[nodiscard]]
 	const_iterator
 	end() const
 	noexcept;
@@ -125,6 +143,7 @@ public:
 	/**
 	\brief The read area at a given position.
 	*/
+	[[nodiscard]]
 	const_reference
 	operator[](
 		size_type
@@ -134,6 +153,7 @@ public:
 	/**
 	\brief The beginning of the read area.
 	*/
+	[[nodiscard]]
 	const_pointer
 	read_data() const
 	noexcept;
@@ -141,6 +161,7 @@ public:
 	/**
 	\brief The end of the read area.
 	*/
+	[[nodiscard]]
 	const_pointer
 	read_data_end() const
 	noexcept;
@@ -148,6 +169,7 @@ public:
 	/**
 	\brief The beginning of the write area.
 	*/
+	[[nodiscard]]
 	pointer
 	write_data()
 	noexcept;
@@ -155,6 +177,7 @@ public:
 	/**
 	\brief The end of the write area.
 	*/
+	[[nodiscard]]
 	pointer
 	write_data_end()
 	noexcept;
@@ -162,6 +185,7 @@ public:
 	/**
 	\brief The size of the read area.
 	*/
+	[[nodiscard]]
 	size_type
 	read_size() const
 	noexcept;
@@ -169,6 +193,7 @@ public:
 	/**
 	\brief The size of the write area.
 	*/
+	[[nodiscard]]
 	size_type
 	write_size() const
 	noexcept;
@@ -195,6 +220,7 @@ public:
 		size_type sz
 	);
 
+	[[nodiscard]]
 	allocator_type
 	get_allocator() const;
 
@@ -209,6 +235,7 @@ public:
 
 	\see fcppt::container::buffer::to_raw_vector
 	*/
+	[[nodiscard]]
 	fcppt::container::raw_vector::rep<
 		A
 	>
@@ -249,13 +276,13 @@ private:
 		deallocate()
 		noexcept;
 
-		A alloc_;
+		A alloc_;  // NOLINT(misc-non-private-member-variables-in-classes)
 
 		pointer
-			first_,
-			read_end_,
-			write_end_,
-			cap_;
+			first_,  // NOLINT(misc-non-private-member-variables-in-classes)
+			read_end_, // NOLINT(misc-non-private-member-variables-in-classes)
+			write_end_, // NOLINT(misc-non-private-member-variables-in-classes)
+			cap_; // NOLINT(misc-non-private-member-variables-in-classes)
 	};
 
 	impl impl_;

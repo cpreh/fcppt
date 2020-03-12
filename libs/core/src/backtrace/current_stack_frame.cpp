@@ -38,11 +38,12 @@ fcppt::backtrace::current_stack_frame(
 	void *
 	element_type;
 
-	typedef
+	using
+	symbol_sequence
+	=
 	fcppt::container::buffer::object<
 		element_type
-	>
-	symbol_sequence;
+	>;
 
 	symbol_sequence const symbols{
 		fcppt::container::buffer::read_from<

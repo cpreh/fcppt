@@ -31,7 +31,7 @@ fcppt::args(
 		>(
 			fcppt::iterator::make_range(
 				_argv,
-				_argv + _argc
+				_argv + _argc // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 			),
 			[](
 				fcppt::args_char const *const _arg

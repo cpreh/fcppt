@@ -53,7 +53,8 @@ public:
 	FCPPT_DETAIL_SYMBOL
 	exception(
 		exception &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	exception &
@@ -65,7 +66,8 @@ public:
 	exception &
 	operator=(
 		exception &&
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Returns the error message
@@ -73,6 +75,7 @@ public:
 	Use this function to print the error message instead of
 	<code>what()</code>
 	*/
+	[[nodiscard]]
 	fcppt::string const &
 	string() const;
 
@@ -82,6 +85,7 @@ public:
 	This function's purpose is to provide compatibility with
 	<code>std::exception</code>. It returns nothing useful.
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	char const *
 	what() const noexcept

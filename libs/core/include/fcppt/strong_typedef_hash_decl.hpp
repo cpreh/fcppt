@@ -33,10 +33,13 @@ struct strong_typedef_hash<
 	>
 >
 {
-	typedef fcppt::strong_typedef<
+	using
+	type
+	=
+	fcppt::strong_typedef<
 		Type,
 		Alias
-	> type;
+	>;
 
 	std::size_t
 	operator()(

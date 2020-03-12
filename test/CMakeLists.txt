@@ -155,6 +155,8 @@ add_subdirectory(
 
 add_fcppt_test(
 	extract_from_string
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
 )
 
 if(

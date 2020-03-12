@@ -7,29 +7,22 @@
 #ifndef FCPPT_OUTPUT_TO_STRING_HPP_INCLUDED
 #define FCPPT_OUTPUT_TO_STRING_HPP_INCLUDED
 
+#include <fcppt/insert_extract_locale.hpp>
+#include <fcppt/output_to_string_locale.hpp>
 #include <fcppt/type_traits/is_string.hpp>
-#include <fcppt/type_traits/value_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <locale>
-#include <sstream>
-#include <string>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
 
 /**
-\brief Convert an arbitrary type to a string
-\tparam Dest A string type, see fcppt::type_traits::is_string
-\tparam Source The type to make into a string. Has to have an <code>operator&lt;&lt;</code> defined.
-\param _source The object to convert
-\param _locale The locale (defaults to the C locale)
+\brief Convert an arbitrary type to a string, using #fcppt::insert_extract_locale.
+
 \ingroup fcpptstring
 
-Note that the default locale for this function is the C locale. This is
-consistent with the fcppt::extract_from_string function. See this function to
-see why this locale was chosen.
+\tparam Dest A string type, see fcppt::type_traits::is_string
+
+\tparam Source The type to make into a string. Has to have an <code>operator&lt;&lt;</code> defined.
 
 \see fcppt::extract_from_string
 \see fcppt::output_to_std_string
@@ -40,11 +33,10 @@ template<
 	typename Dest,
 	typename Source
 >
+inline
 Dest
 output_to_string(
-	Source const &_source,
-	std::locale const &_locale
-		= std::locale()
+	Source const &_source
 )
 {
 	static_assert(
@@ -54,25 +46,13 @@ output_to_string(
 		"insert_ot_string must return a string"
 	);
 
-	typedef
-	std::basic_ostringstream<
-		fcppt::type_traits::value_type<
-			Dest
-		>,
-		typename Dest::traits_type
-	>
-	ostringstream;
-
-	ostringstream oss;
-
-	oss.imbue(
-		_locale
-	);
-
-	oss << _source;
-
 	return
-		oss.str();
+		fcppt::output_to_string_locale<
+			Dest
+		>(
+			_source,
+			fcppt::insert_extract_locale()
+		);
 }
 
 }

@@ -19,6 +19,7 @@ fcppt::filesystem::remove_extension(
 	return
 		_path.parent_path()
 		/
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		fcppt::filesystem::stem(
 			_path
 		);

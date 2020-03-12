@@ -33,6 +33,7 @@ fcppt::assert_::exception::exception(
 fcppt::assert_::exception::exception(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::assert_::exception &
@@ -45,15 +46,16 @@ fcppt::assert_::exception &
 fcppt::assert_::exception::operator=(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::assert_::exception::~exception() noexcept
-{
-}
+=
+default;
 
 fcppt::assert_::information const &
 fcppt::assert_::exception::information() const
 {
 	return
-		information_;
+		this->information_;
 }

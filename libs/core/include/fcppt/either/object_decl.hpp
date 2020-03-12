@@ -36,19 +36,21 @@ template<
 class object
 {
 public:
-	typedef
-	Failure
-	failure;
+	using
+	failure
+	=
+	Failure;
 
-	typedef
-	Success
-	success;
+	using
+	success
+	=
+	Success;
 
 	static_assert(
-		!std::is_same<
+		!std::is_same_v<
 			Failure,
 			Success
-		>::value,
+		>,
 		"Success and Failure must be distinct"
 	);
 
@@ -72,30 +74,37 @@ public:
 		Failure const &
 	);
 
+	[[nodiscard]]
 	bool
 	has_success() const;
 
+	[[nodiscard]]
 	bool
 	has_failure() const;
 
+	[[nodiscard]]
 	Success &
 	get_success_unsafe();
 
+	[[nodiscard]]
 	Success const &
 	get_success_unsafe() const;
 
+	[[nodiscard]]
 	Failure &
 	get_failure_unsafe();
 
+	[[nodiscard]]
 	Failure const &
 	get_failure_unsafe() const;
 private:
-	typedef
+	using
+	variant_type
+	=
 	fcppt::variant::object<
 		Failure,
 		Success
-	>
-	variant_type;
+	>;
 
 	variant_type impl_;
 };

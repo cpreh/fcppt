@@ -414,6 +414,7 @@ set(
 	libs/core/include/fcppt/deref_reference.hpp
 	libs/core/include/fcppt/deref_type.hpp
 	libs/core/include/fcppt/deref_unique_ptr.hpp
+	libs/core/include/fcppt/detail/args_char.hpp
 	libs/core/include/fcppt/detail/char_type.hpp
 	libs/core/include/fcppt/detail/check_cpp.hpp
 	libs/core/include/fcppt/detail/const.hpp
@@ -531,6 +532,7 @@ set(
 	libs/core/include/fcppt/exception.hpp
 	libs/core/include/fcppt/exception_fwd.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
+	libs/core/include/fcppt/extract_from_string_locale.hpp
 	libs/core/include/fcppt/from_std_string.hpp
 	libs/core/include/fcppt/from_std_string_locale.hpp
 	libs/core/include/fcppt/from_std_wstring.hpp
@@ -549,6 +551,7 @@ set(
 	libs/core/include/fcppt/homogenous_pair_impl.hpp
 	libs/core/include/fcppt/homogenous_pair_output.hpp
 	libs/core/include/fcppt/identity.hpp
+	libs/core/include/fcppt/insert_extract_locale.hpp
 	libs/core/include/fcppt/int_iterator_decl.hpp
 	libs/core/include/fcppt/int_iterator_fwd.hpp
 	libs/core/include/fcppt/int_iterator_impl.hpp
@@ -996,9 +999,11 @@ set(
 	libs/core/include/fcppt/optional_string.hpp
 	libs/core/include/fcppt/optional_string_fwd.hpp
 	libs/core/include/fcppt/output_to_fcppt_string.hpp
+	libs/core/include/fcppt/output_to_fcppt_string_locale.hpp
 	libs/core/include/fcppt/output_to_std_string.hpp
 	libs/core/include/fcppt/output_to_std_wstring.hpp
 	libs/core/include/fcppt/output_to_string.hpp
+	libs/core/include/fcppt/output_to_string_locale.hpp
 	libs/core/include/fcppt/overload.hpp
 	libs/core/include/fcppt/overloaded_decl.hpp
 	libs/core/include/fcppt/overloaded_fwd.hpp
@@ -1365,6 +1370,7 @@ set(
 	libs/core/src/from_std_wstring.cpp
 	libs/core/src/from_std_wstring_locale.cpp
 	libs/core/src/getenv.cpp
+	libs/core/src/insert_extract_locale.cpp
 	libs/core/src/io/cerr.cpp
 	libs/core/src/io/cin.cpp
 	libs/core/src/io/clog.cpp

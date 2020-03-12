@@ -60,6 +60,7 @@ struct map_impl
 			)
 			{
 				result.insert(
+					// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 					result.end(),
 					_function(
 						fcppt::move_if_rvalue<

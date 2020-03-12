@@ -18,6 +18,7 @@ fcppt::filesystem::path_to_string(
 )
 {
 	return
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		_path.string<
 			fcppt::char_type
 		>();

@@ -23,11 +23,12 @@ namespace fcppt
 
 See \ref fcpptstring for more information about this type.
 */
-typedef
+using
+string_view
+=
 std::basic_string_view<
 	fcppt::char_type
->
-string_view;
+>;
 
 }
 

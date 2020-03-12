@@ -19,7 +19,10 @@ namespace fcppt
 
 See \ref fcpptstring for more information.
 */
-typedef fcppt::detail::char_type char_type;
+using
+char_type
+=
+fcppt::detail::char_type;
 
 }
 

@@ -27,14 +27,16 @@ template<
 >
 class reference
 {
+public:
 	// Do not bind to temporary objects
 	reference(
 		Type &&
 	) = delete;
-public:
-	typedef
-	Type
-	type;
+
+	using
+	type
+	=
+	Type;
 
 	explicit
 	reference(
@@ -42,6 +44,7 @@ public:
 	)
 	noexcept;
 
+	[[nodiscard]]
 	type &
 	get() const
 	noexcept;

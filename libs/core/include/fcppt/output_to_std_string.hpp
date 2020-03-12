@@ -7,7 +7,7 @@
 #ifndef FCPPT_OUTPUT_TO_STD_STRING_HPP_INCLUDED
 #define FCPPT_OUTPUT_TO_STD_STRING_HPP_INCLUDED
 
-#include <fcppt/output_to_string.hpp>
+#include <fcppt/output_to_string_locale.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
@@ -44,7 +44,7 @@ output_to_std_string(
 )
 {
 	return
-		fcppt::output_to_string<
+		fcppt::output_to_string_locale<
 			std::string
 		>(
 			_source,
