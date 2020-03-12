@@ -32,8 +32,6 @@ have either a default constructor or must be constructible from #fcppt::no_init.
 
 \tparam Source A string type (see #fcppt::type_traits::is_string)
 
-\param _source The string to extract from
-
 \note The string has to be consumed completely.
 */
 template<
