@@ -71,6 +71,52 @@ set(
 	"${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR_BASE}/${PROJECT_NAME}"
 )
 
+set(
+	FCPPT_UTILS_CLANG_TIDY
+	""
+	CACHE
+	FILEPATH
+	"Path to clang-tidy. If unset, clang-tidy will not be run."
+)
+
+if(
+	NOT
+	"${FCPPT_UTILS_CLANG_TIDY}"
+	STREQUAL
+	""
+)
+	# "-fuchsia-trailing-return" complains about code like X<decltype(_param)>
+	set(
+		FCPPT_UTILS_CLANG_TIDY_CHECKS
+		"*"
+		"-cppcoreguidelines-macro-usage"
+		"-fuchsia-overloaded-operator"
+		"-fuchsia-trailing-return"
+		"-google-readability-namespace-comments"
+		"-llvm-header-guard"
+		"-llvm-include-order"
+		"-llvm-namespace-comment"
+		"-modernize-use-default-member-init"
+		"-modernize-use-trailing-return-type"
+		"-readability-inconsistent-declaration-parameter-name"
+		"-readability-named-parameter"
+	)
+
+	string(
+		JOIN
+		","
+		FCPPT_UTILS_CLANG_TIDY_CHECKS_ARG
+		${FCPPT_UTILS_CLANG_TIDY_CHECKS}
+	)
+
+	set(
+		CMAKE_CXX_CLANG_TIDY
+		${FCPPT_UTILS_CLANG_TIDY}
+		"-header-filter=."
+		"-checks=${FCPPT_UTILS_CLANG_TIDY_CHECKS_ARG}"
+	)
+endif()
+
 foreach(
 	curdir
 	DATA_DIR
