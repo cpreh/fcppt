@@ -37,11 +37,12 @@ pop_back(
 	Container &_container
 )
 {
-	typedef
+	using
+	value_type
+	=
 	fcppt::container::to_value_type<
 		Container
-	>
-	value_type;
+	>;
 
 	return
 		fcppt::optional::make_if(

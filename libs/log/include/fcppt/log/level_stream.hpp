@@ -45,7 +45,7 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	level_stream(
 		fcppt::io::ostream &stream,
-		fcppt::log::format::optional_function const &formatter
+		fcppt::log::format::optional_function &&formatter
 	);
 
 	/**
@@ -82,6 +82,7 @@ public:
 	/**
 	\brief Gets the current stream
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::io::ostream &
 	get();
@@ -89,6 +90,7 @@ public:
 	/**
 	\brief Returns the associated formatter
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::format::optional_function const &
 	formatter() const;

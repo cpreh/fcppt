@@ -32,12 +32,13 @@ struct index_of_if
 		>::value
 	);
 
-	typedef
+	using
+	type
+	=
 	::metal::find_if<
 		List,
 		Pred
-	>
-	type;
+	>;
 };
 
 }

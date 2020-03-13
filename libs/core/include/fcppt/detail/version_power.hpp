@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
-#define FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_VERSION_POWER_HPP_INCLUDED
+#define FCPPT_DETAIL_VERSION_POWER_HPP_INCLUDED
 
-#include <fcppt/cast/safe.hpp>
+#include <fcppt/version_int.hpp>
 
 
 namespace fcppt
@@ -15,22 +15,12 @@ namespace fcppt
 namespace detail
 {
 
-template<
-	typename T,
-	typename U
->
-T
-strong_typedef_cast(
-	U const &_other
-)
-{
-	return
-		fcppt::cast::safe<
-			T
-		>(
-			_other
-		);
-}
+constexpr
+fcppt::version_int
+const
+version_power
+=
+1000U;
 
 }
 }

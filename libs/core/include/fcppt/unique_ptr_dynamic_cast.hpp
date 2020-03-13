@@ -9,6 +9,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/type_traits/is_base_of.hpp>
@@ -104,7 +105,9 @@ noexcept
 				> const _derived
 			)
 			{
-				_other.release_ownership();
+				FCPPT_USE(
+					_other.release_ownership()
+				);
 
 				return
 					result_type{

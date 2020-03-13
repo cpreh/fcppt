@@ -9,7 +9,6 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/strong_typedef_decl.hpp>
-#include <fcppt/detail/strong_typedef_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -19,23 +18,16 @@ template<
 	typename T,
 	typename Tag
 >
-template<
-	typename U
->
 fcppt::strong_typedef<
 	T,
 	Tag
 >::strong_typedef(
-	U const &_other
+	T const &_value
 )
 :
-	value_(
-		fcppt::detail::strong_typedef_cast<
-			T
-		>(
-			_other
-		)
-	)
+	value_{
+		_value
+	}
 {
 }
 
@@ -82,7 +74,7 @@ fcppt::strong_typedef<
 >::get()
 {
 	return
-		value_;
+		this->value_;
 }
 
 template<
@@ -96,7 +88,7 @@ fcppt::strong_typedef<
 >::get() const
 {
 	return
-		value_;
+		this->value_;
 }
 
 template<
@@ -117,7 +109,7 @@ fcppt::strong_typedef<
 	using std::swap;
 
 	swap(
-		value_,
+		this->value_,
 		_other.value_
 	);
 }

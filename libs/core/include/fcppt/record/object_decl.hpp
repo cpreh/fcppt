@@ -52,11 +52,12 @@ template<
 class object
 {
 public:
-	typedef
+	using
+	all_types
+	=
 	::metal::list<
 		Elements...
-	>
-	all_types;
+	>;
 
 	static_assert(
 		::metal::all_of<
@@ -77,16 +78,19 @@ public:
 		"Labels of record::object must form a set"
 	);
 
-	typedef
+	using
+	this_type
+	=
 	fcppt::record::object<
 		Elements...
-	>
-	this_type;
+	>;
 
 	/**
 	\brief The std::tuple type <code>(T_1,...,T_n)</code>.
 	*/
-	typedef
+	using
+	tuple
+	=
 	fcppt::metal::as_tuple<
 		::metal::transform<
 			::metal::lambda<
@@ -94,8 +98,7 @@ public:
 			>,
 			all_types
 		>
-	>
-	tuple;
+	>;
 
 	/**
 	\brief Constructor for empty records

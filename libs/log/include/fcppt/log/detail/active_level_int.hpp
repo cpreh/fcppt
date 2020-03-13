@@ -15,9 +15,10 @@ namespace log
 namespace detail
 {
 
-typedef
-unsigned
-active_level_int;
+using
+active_level_int
+=
+unsigned;
 
 }
 }

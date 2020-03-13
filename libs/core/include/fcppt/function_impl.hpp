@@ -29,9 +29,9 @@ fcppt::function<
 	F _function
 )
 :
-	impl_(
+	impl_{
 		_function
-	)
+	}
 {
 }
 
@@ -85,6 +85,7 @@ fcppt::function<
 >::function(
 	function &&
 )
+noexcept
 = default;
 
 template<
@@ -121,6 +122,7 @@ fcppt::function<
 >::operator=(
 	function &&
 )
+noexcept
 = default;
 
 template<
@@ -132,8 +134,8 @@ fcppt::function<
 		Args...
 	)
 >::~function()
-{
-}
+noexcept
+= default;
 
 template<
 	typename Ret,

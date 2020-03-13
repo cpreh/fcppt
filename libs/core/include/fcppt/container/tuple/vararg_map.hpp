@@ -45,11 +45,12 @@ vararg_map(
 	ElementFunction const &_element_function
 )
 {
-	typedef
+	using
+	tuple_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Tuple
-	>
-	tuple_type;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_std_tuple<

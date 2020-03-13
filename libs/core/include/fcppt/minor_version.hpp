@@ -9,6 +9,7 @@
 
 #include <fcppt/version.hpp>
 #include <fcppt/version_integral_c.hpp>
+#include <fcppt/detail/version_power.hpp>
 
 
 namespace fcppt
@@ -18,9 +19,13 @@ namespace fcppt
 \brief fcppt's minor version
 \ingroup fcpptvarious
 */
-typedef fcppt::version_integral_c<
-	(FCPPT_VERSION / 1000) % 1000
-> minor_version;
+using
+minor_version
+=
+fcppt::version_integral_c<
+	(FCPPT_VERSION / fcppt::detail::version_power)
+	% fcppt::detail::version_power
+>;
 
 }
 

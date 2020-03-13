@@ -36,6 +36,7 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 fcppt::log::detail::context_tree_node::context_tree_node(
 	context_tree_node &&_other
 )
+noexcept
 :
 	name_{
 		std::move(
@@ -43,20 +44,39 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 		)
 	},
 	atomic_level_{
-		_other.atomic_level_.load()
+		_other.atomic_level_.load() // NOLINT(fuchsia-default-arguments-calls)
 	}
 {
 }
 
-fcppt::log::detail::context_tree_node::~context_tree_node()
+fcppt::log::detail::context_tree_node &
+fcppt::log::detail::context_tree_node::operator=(
+	context_tree_node &&_other
+)
+noexcept
 {
+	name_ =
+		std::move(
+			_other.name_
+		);
+
+	atomic_level_ =
+		_other.atomic_level_.load(); // NOLINT(fuchsia-default-arguments-calls)
+
+	return
+		*this;
 }
+
+
+fcppt::log::detail::context_tree_node::~context_tree_node()
+noexcept
+= default;
 
 fcppt::log::name const &
 fcppt::log::detail::context_tree_node::name() const
 {
 	return
-		name_;
+		this->name_;
 }
 
 fcppt::log::optional_level
@@ -66,7 +86,7 @@ fcppt::log::detail::context_tree_node::level() const
 		fcppt::enum_::from_int<
 			fcppt::log::level
 		>(
-			atomic_level_.load()
+			this->atomic_level_.load() // NOLINT(fuchsia-default-arguments-calls)
 		);
 }
 
@@ -75,7 +95,7 @@ fcppt::log::detail::context_tree_node::level(
 	fcppt::log::optional_level const &_level
 )
 {
-	atomic_level_ =
+	this->atomic_level_ =
 		fcppt::log::impl::convert_level(
 			_level
 		);

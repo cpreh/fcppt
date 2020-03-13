@@ -115,7 +115,6 @@ set(
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
 	libs/core/include/fcppt/cast/detail/dynamic_exn.hpp
 	libs/core/include/fcppt/cast/detail/promote_int_type.hpp
-	libs/core/include/fcppt/cast/detail/safe.hpp
 	libs/core/include/fcppt/cast/detail/truncation_check.hpp
 	libs/core/include/fcppt/cast/dynamic.hpp
 	libs/core/include/fcppt/cast/dynamic_any.hpp
@@ -136,7 +135,6 @@ set(
 	libs/core/include/fcppt/cast/int_to_float_fun.hpp
 	libs/core/include/fcppt/cast/promote_int.hpp
 	libs/core/include/fcppt/cast/promote_int_type.hpp
-	libs/core/include/fcppt/cast/safe.hpp
 	libs/core/include/fcppt/cast/safe_numeric.hpp
 	libs/core/include/fcppt/cast/size.hpp
 	libs/core/include/fcppt/cast/size_fun.hpp
@@ -428,12 +426,13 @@ set(
 	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
+	libs/core/include/fcppt/detail/nonmovable.hpp
 	libs/core/include/fcppt/detail/runtime_index.hpp
 	libs/core/include/fcppt/detail/string_literal.hpp
-	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
 	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
 	libs/core/include/fcppt/detail/text.hpp
+	libs/core/include/fcppt/detail/version_power.hpp
 	libs/core/include/fcppt/detail/void.hpp
 	libs/core/include/fcppt/dynamic_pointer_cast.hpp
 	libs/core/include/fcppt/either/apply.hpp
@@ -941,9 +940,11 @@ set(
 	libs/core/include/fcppt/move_if_rvalue.hpp
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/narrow.hpp
+	libs/core/include/fcppt/narrow_locale.hpp
 	libs/core/include/fcppt/no_init.hpp
 	libs/core/include/fcppt/no_init_fwd.hpp
 	libs/core/include/fcppt/noncopyable.hpp
+	libs/core/include/fcppt/nonmovable.hpp
 	libs/core/include/fcppt/not.hpp
 	libs/core/include/fcppt/optional/alternative.hpp
 	libs/core/include/fcppt/optional/apply.hpp
@@ -1270,8 +1271,6 @@ set(
 	libs/core/include/fcppt/type_name.hpp
 	libs/core/include/fcppt/type_name_from_index.hpp
 	libs/core/include/fcppt/type_name_from_info.hpp
-	libs/core/include/fcppt/type_traits/constructible_from.hpp
-	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp
@@ -1349,6 +1348,7 @@ set(
 	libs/core/include/fcppt/weak_ptr_fwd.hpp
 	libs/core/include/fcppt/weak_ptr_impl.hpp
 	libs/core/include/fcppt/widen.hpp
+	libs/core/include/fcppt/widen_locale.hpp
 	libs/core/src/args.cpp
 	libs/core/src/args_from_second.cpp
 	libs/core/src/assert/exception.cpp
@@ -1379,6 +1379,7 @@ set(
 	libs/core/src/io/write_chars.cpp
 	libs/core/src/make_optional_error_code.cpp
 	libs/core/src/narrow.cpp
+	libs/core/src/narrow_locale.cpp
 	libs/core/src/string_conv_locale.cpp
 	libs/core/src/system.cpp
 	libs/core/src/time/ctime.cpp
@@ -1398,6 +1399,7 @@ set(
 	libs/core/src/variant/invalid_get.cpp
 	libs/core/src/version_string.cpp
 	libs/core/src/widen.cpp
+	libs/core/src/widen_locale.cpp
 )
 
 make_fcppt_library(

@@ -64,45 +64,51 @@ public:
 		Tree &_tree
 	)
 	:
-		tree_(
+		tree_{
 			_tree
-		)
+		}
 	{
 	}
 
 	class iterator;
 private:
-	typedef
+	using
+	tree_iterator
+	=
 	std::conditional_t<
-		std::is_const<
+		std::is_const_v<
 			Tree
-		>::value,
+		>,
 		typename
 		Tree::const_reverse_iterator,
 		typename
 		Tree::reverse_iterator
-	>
-	tree_iterator;
+	>;
 
-	typedef
+	using
+	tree_ref
+	=
 	fcppt::reference<
 		Tree
-	>
-	tree_ref;
+	>;
 
-	typedef
+	using
+	optional_tree_ref
+	=
 	fcppt::optional::reference<
 		Tree
-	>
-	optional_tree_ref;
+	>;
 
-	typedef
+	using
+	stack_type
+	=
 	std::stack<
 		tree_ref
-	>
-	stack_type;
+	>;
 
-	typedef
+	using
+	iterator_base
+	=
 	fcppt::iterator::base<
 		fcppt::iterator::types<
 			iterator,
@@ -115,8 +121,7 @@ private:
 			tree_iterator::difference_type,
 			std::forward_iterator_tag
 		>
-	>
-	iterator_base;
+	>;
 public:
 	class iterator final
 	:
@@ -142,31 +147,36 @@ public:
 		{
 		}
 
-		typedef
+		using
+		value_type
+		=
 		fcppt::type_traits::value_type<
 			iterator_base
-		>
-		value_type;
+		>;
 
-		typedef
+		using
+		reference
+		=
 		typename
-		iterator_base::reference
-		reference;
+		iterator_base::reference;
 
-		typedef
+		using
+		pointer
+		=
 		typename
-		iterator_base::pointer
-		pointer;
+		iterator_base::pointer;
 
-		typedef
+		using
+		difference_type
+		=
 		typename
-		iterator_base::difference_type
-		difference_type;
+		iterator_base::difference_type;
 
-		typedef
+		using
+		iterator_category
+		=
 		typename
-		iterator_base::iterator_category
-		iterator_category;
+		iterator_base::iterator_category;
 
 		void
 		increment()
@@ -184,51 +194,58 @@ public:
 					:
 					fcppt::iterator::make_range(
 						cur_deref.rbegin(),
+						// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 						std::prev(
 							cur_deref.rend()
 						)
 					)
 				)
-					positions_.push(
+				{
+					this->positions_.push(
 						tree_ref(
 							element
 						)
 					);
+				}
 
-				current_ =
+				this->current_ =
 					cur_deref.front();
 			}
 			else if(
-				positions_.empty()
+				this->positions_.empty()
 			)
-				current_ =
+			{
+				this->current_ =
 					optional_tree_ref();
+			}
 			else
 			{
 
-				current_ =
+				this->current_ =
 					optional_tree_ref(
-						positions_.top()
+						this->positions_.top()
 					);
 
-				positions_.pop();
+				this->positions_.pop();
 			}
 		}
 
+		[[nodiscard]]
 		reference
 		dereference() const
 		{
 			return
-				current_.get_unsafe().get();
+				this->current_.get_unsafe().get();
 		}
 
+		[[nodiscard]]
 		bool
 		equal(
 			iterator const &_other
 		) const
 		{
 			return
-				current_
+				this->current_
 				==
 				_other.current_;
 		}
@@ -238,20 +255,22 @@ public:
 		stack_type positions_;
 	};
 
-	typedef
-	iterator
-	const_iterator;
+	using
+	const_iterator
+	=
+	iterator;
 
 	/**
 	\brief Return an iterator to the first tree in the traversal
 	*/
+	[[nodiscard]]
 	iterator
 	begin() const
 	{
 		return
 			iterator(
 				optional_tree_ref(
-					tree_
+					this->tree_
 				)
 			);
 	}
@@ -259,6 +278,7 @@ public:
 	/**
 	\brief Return a dummy iterator to stop the traversal
 	*/
+	[[nodiscard]]
 	iterator
 	end() const
 	{

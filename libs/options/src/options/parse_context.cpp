@@ -22,3 +22,10 @@ fcppt::options::parse_context::parse_context(
 	}
 {
 }
+
+fcppt::options::option_name_set const &
+fcppt::options::parse_context::option_names() const
+{
+	return
+		this->option_names_;
+}

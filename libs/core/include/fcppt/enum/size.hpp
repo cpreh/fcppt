@@ -54,13 +54,13 @@ std::integral_constant<
 		>::value
 	)
 	+
-	1u
+	1U
 >
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Type
-		>::value,
+		>,
 		"Type must be an enum type"
 	);
 };

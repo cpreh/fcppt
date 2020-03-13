@@ -105,7 +105,7 @@ fcppt::options::optional<
 										result_type
 									>{
 										std::move(
-											_missing_error.state_
+											_missing_error.state()
 										),
 										fcppt::record::init<
 											result_type
@@ -162,14 +162,14 @@ fcppt::options::optional<
 							result_type
 						>{
 							std::move(
-								_result.state_
+								_result.state()
 							),
 							fcppt::record::permute<
 								result_type
 							>(
 								fcppt::record::map(
 									std::move(
-										_result.value_
+										_result.value()
 									),
 									[](
 										auto &&_element

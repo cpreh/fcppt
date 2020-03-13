@@ -7,7 +7,8 @@
 #ifndef FCPPT_LOG_CONTEXT_HPP_INCLUDED
 #define FCPPT_LOG_CONTEXT_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/log/const_level_stream_array_ref.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
@@ -34,10 +35,11 @@ namespace log
 */
 class context
 {
-	FCPPT_NONCOPYABLE(
+public:
+	FCPPT_NONMOVABLE(
 		context
 	);
-public:
+
 	/**
 	\brief Constructs a context
 
@@ -48,7 +50,7 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	context(
 		fcppt::log::optional_level const &root,
-		fcppt::log::level_stream_array const &streams
+		fcppt::log::level_stream_array &&streams
 	);
 
 	FCPPT_LOG_DETAIL_SYMBOL
@@ -88,30 +90,33 @@ private:
 	>
 	lock_guard;
 
-	fcppt::log::detail::context_tree const &
+	fcppt::reference<
+		fcppt::log::detail::context_tree const
+	>
 	root() const;
 
-	static
-	fcppt::log::detail::context_tree &
-	cast_tree(
-		fcppt::log::detail::context_tree const &,
-		lock_guard const &
-	);
-
-	fcppt::log::detail::context_tree const &
+	fcppt::reference<
+		fcppt::log::detail::context_tree const
+	>
 	find_location(
 		fcppt::log::location const &
 	);
 
-	fcppt::log::detail::context_tree const &
+	fcppt::reference<
+		fcppt::log::detail::context_tree
+	>
 	find_location_impl(
 		fcppt::log::location const &,
 		lock_guard const &
 	);
 
-	fcppt::log::detail::context_tree const &
+	fcppt::reference<
+		fcppt::log::detail::context_tree const
+	>
 	find_child(
-		fcppt::log::detail::context_tree const &,
+		fcppt::reference<
+			fcppt::log::detail::context_tree const
+		>,
 		fcppt::log::name const &
 	);
 

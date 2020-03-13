@@ -38,7 +38,8 @@ public:
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	exception(
 		exception &&
-	);
+	)
+	noexcept;
 
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	exception &
@@ -50,7 +51,8 @@ public:
 	exception &
 	operator=(
 		exception &&
-	);
+	)
+	noexcept;
 
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	~exception() noexcept

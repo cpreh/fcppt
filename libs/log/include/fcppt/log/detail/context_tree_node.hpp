@@ -37,9 +37,17 @@ public:
 
 	context_tree_node(
 		context_tree_node &&
-	);
+	)
+	noexcept;
 
-	~context_tree_node();
+	context_tree_node &
+	operator=(
+		context_tree_node &&
+	)
+	noexcept;
+
+	~context_tree_node()
+	noexcept;
 
 	fcppt::log::name const &
 	name() const;

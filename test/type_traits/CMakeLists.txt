@@ -9,11 +9,6 @@ function(
 endfunction()
 
 add_fcppt_type_traits_test(
-	constructible_from
-	NO_CODE
-)
-
-add_fcppt_type_traits_test(
 	function_result
 	NO_CODE
 )

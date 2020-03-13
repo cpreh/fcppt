@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/options/default_help_switch.hpp>
 #include <fcppt/options/help_switch.hpp>
@@ -18,7 +19,9 @@ fcppt::options::default_help_switch()
 		fcppt::options::help_switch{
 			fcppt::options::optional_short_name{},
 			fcppt::options::long_name{
-				FCPPT_TEXT("help")
+				fcppt::string{
+					FCPPT_TEXT("help")
+				}
 			}
 		};
 }

@@ -49,6 +49,7 @@ fcppt::options::detail::split_command(
 						},
 						*_pos,
 						fcppt::args_vector{
+							// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 							std::next(
 								_pos
 							),

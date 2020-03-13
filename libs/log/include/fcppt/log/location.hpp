@@ -75,6 +75,7 @@ public:
 	/**
 	\brief Returns an iterator to the beginning
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	const_iterator
 	begin() const;
@@ -82,6 +83,7 @@ public:
 	/**
 	\brief Returns an iterator to one past the end
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	const_iterator
 	end() const;
@@ -90,6 +92,7 @@ public:
 	\brief Creates a string represenation of the location using :: as
 	delimiter.
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::string
 	string() const;

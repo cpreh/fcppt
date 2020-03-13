@@ -58,17 +58,20 @@ fcppt::optional::object<
 	>
 >
 {
-	typedef
+	using
+	arg_type
+	=
 	decltype(
 		fcppt::move_if_rvalue<
 			Optional
 		>(
 			_source.get_unsafe()
 		)
-	)
-	arg_type;
+	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		std::remove_cv_t<
 			std::result_of_t<
@@ -77,8 +80,7 @@ fcppt::optional::object<
 				)
 			>
 		>
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::optional::bind(

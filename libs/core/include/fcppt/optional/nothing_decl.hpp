@@ -31,6 +31,7 @@ struct nothing
 	template<
 		typename T
 	>
+	// NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
 	operator
 	fcppt::optional::object<
 		T

@@ -55,14 +55,17 @@ fcppt::cast::bad_truncation_check::bad_truncation_check(
 {
 }
 
+// NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init,hicpp-member-init)
 fcppt::cast::bad_truncation_check::bad_truncation_check(
 	bad_truncation_check const &
 )
 = default;
 
+// NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init,hicpp-member-init)
 fcppt::cast::bad_truncation_check::bad_truncation_check(
 	bad_truncation_check &&
 )
+noexcept
 = default;
 
 fcppt::cast::bad_truncation_check &
@@ -75,22 +78,22 @@ fcppt::cast::bad_truncation_check &
 fcppt::cast::bad_truncation_check::operator=(
 	bad_truncation_check &&
 )
+noexcept
 = default;
 
 fcppt::cast::bad_truncation_check::~bad_truncation_check() noexcept
-{
-}
+= default;
 
 std::type_index const &
 fcppt::cast::bad_truncation_check::source() const
 {
 	return
-		source_;
+		this->source_;
 }
 
 std::type_index const &
 fcppt::cast::bad_truncation_check::destination() const
 {
 	return
-		destination_;
+		this->destination_;
 }

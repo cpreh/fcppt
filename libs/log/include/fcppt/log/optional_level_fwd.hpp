@@ -21,11 +21,12 @@ namespace log
 
 \ingroup fcpptlog
 */
-typedef
+using
+optional_level
+=
 fcppt::optional::object<
 	fcppt::log::level
->
-optional_level;
+>;
 
 }
 }

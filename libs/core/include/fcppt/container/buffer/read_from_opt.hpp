@@ -48,7 +48,7 @@ read_from_opt(
 	return
 		fcppt::container::buffer::append_from_opt(
 			Buffer{
-				0u
+				0U
 			},
 			_size,
 			_function

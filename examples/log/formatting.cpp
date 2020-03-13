@@ -109,7 +109,9 @@ main()
 		fcppt::log::optional_level{
 			fcppt::log::level::debug
 		},
-		level_streams
+		fcppt::log::level_stream_array{
+			level_streams
+		}
 	};
 //! [logger_context]
 

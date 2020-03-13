@@ -15,7 +15,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <stdlib.h>
+#include <cstdlib>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcppt/config/external_end.hpp>
@@ -24,7 +24,7 @@
 #include <fcppt/public_config.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <stdlib.h>
+#include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 #endif
 
@@ -38,6 +38,7 @@ fcppt::system(
 {
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	int const result{
+		// NOLINTNEXTLINE(cert-env33-c)
 		::system(
 			fcppt::optional::to_exception(
 				fcppt::to_std_string(
@@ -61,6 +62,7 @@ fcppt::system(
 
 	return
 		fcppt::optional::make_if(
+			// NOLINTNEXTLINE(hicpp-signed-bitwise)
 			WIFEXITED(
 				result
 			),
@@ -68,6 +70,7 @@ fcppt::system(
 				result
 			]{
 				return
+					// NOLINTNEXTLINE(hicpp-signed-bitwise)
 					WEXITSTATUS(
 						result
 					);

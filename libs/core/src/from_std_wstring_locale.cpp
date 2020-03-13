@@ -9,7 +9,7 @@
 #include <fcppt/public_config.hpp>
 #include <fcppt/string.hpp>
 #if defined(FCPPT_NARROW_STRING)
-#include <fcppt/narrow.hpp>
+#include <fcppt/narrow_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -29,7 +29,7 @@ fcppt::from_std_wstring_locale(
 {
 #if defined(FCPPT_NARROW_STRING)
 	return
-		fcppt::narrow(
+		fcppt::narrow_locale(
 			_input,
 			_locale
 		);

@@ -57,7 +57,8 @@ public:
 	FCPPT_DETAIL_SYMBOL
 	bad_dynamic(
 		bad_dynamic &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	bad_dynamic &
@@ -69,7 +70,8 @@ public:
 	bad_dynamic &
 	operator=(
 		bad_dynamic &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	~bad_dynamic() noexcept
@@ -78,6 +80,7 @@ public:
 	/**
 	\brief Returns the source type information
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	source() const;
@@ -85,6 +88,7 @@ public:
 	/**
 	\brief Returns the destination type information
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	destination() const;

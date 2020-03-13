@@ -74,7 +74,9 @@ fcppt::options::unit<
 			>(
 				fcppt::options::parse_error{
 					fcppt::options::other_error{
-						FCPPT_TEXT("Excess arguments")
+						fcppt::string{
+							FCPPT_TEXT("Excess arguments")
+						}
 					}
 				}
 			)

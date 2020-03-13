@@ -18,11 +18,12 @@ namespace options
 namespace detail
 {
 
-typedef
+using
+optional_error
+=
 fcppt::optional::object<
 	fcppt::options::error
->
-optional_error;
+>;
 
 }
 }

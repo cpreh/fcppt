@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string.hpp>
@@ -29,7 +30,9 @@ fcppt::log::format::default_level(
 				FCPPT_TEXT(": ")
 			},
 			fcppt::log::format::suffix_string{
-				FCPPT_TEXT("\n")
+				fcppt::string{
+					FCPPT_TEXT("\n")
+				}
 			}
 		);
 }

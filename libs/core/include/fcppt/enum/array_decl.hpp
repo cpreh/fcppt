@@ -45,142 +45,177 @@ template<
 class array
 {
 public:
-	typedef
-	Enum
-	enum_type;
+	using
+	enum_type
+	=
+	Enum;
 
-	typedef
+	using
+	static_size
+	=
 	fcppt::enum_::size<
 		Enum
-	>
-	static_size;
+	>;
 
-	typedef
+	using
+	internal
+	=
 	std::array<
 		Value,
 		static_size::value
-	>
-	internal;
+	>;
 
-	typedef
+	using
+	value_type
+	=
 	typename
-	internal::value_type
-	value_type;
+	internal::value_type;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	internal::difference_type
-	difference_type;
+	internal::difference_type;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	internal::size_type
-	size_type;
+	internal::size_type;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	internal::reference
-	reference;
+	internal::reference;
 
-	typedef
+	using
+	const_reference
+	=
 	typename
-	internal::const_reference
-	const_reference;
+	internal::const_reference;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	internal::pointer
-	pointer;
+	internal::pointer;
 
-	typedef
+	using
+	const_pointer
+	=
 	typename
-	internal::const_pointer
-	const_pointer;
+	internal::const_pointer;
 
-	typedef
+	using
+	iterator
+	=
 	typename
-	internal::iterator
-	iterator;
+	internal::iterator;
 
-	typedef
+	using
+	const_iterator
+	=
 	typename
-	internal::const_iterator
-	const_iterator;
+	internal::const_iterator;
 
-	typedef
+	using
+	reverse_iterator
+	=
 	typename
-	internal::reverse_iterator
-	reverse_iterator;
+	internal::reverse_iterator;
 
-	typedef
+	using
+	const_reverse_iterator
+	=
 	typename
-	internal::const_reverse_iterator
-	const_reverse_iterator;
+	internal::const_reverse_iterator;
 
+	[[nodiscard]]
 	reference
 	operator[](
 		Enum
 	);
 
+	[[nodiscard]]
 	const_reference
 	operator[](
 		Enum
 	) const;
 
+	[[nodiscard]]
 	reference
 	front();
 
+	[[nodiscard]]
 	const_reference
 	front() const;
 
+	[[nodiscard]]
 	reference
 	back();
 
+	[[nodiscard]]
 	const_reference
 	back() const;
 
+	[[nodiscard]]
 	pointer
 	data();
 
+	[[nodiscard]]
 	const_pointer
 	data() const;
 
+	[[nodiscard]]
 	iterator
 	begin();
 
+	[[nodiscard]]
 	iterator
 	end();
 
+	[[nodiscard]]
 	const_iterator
 	cbegin() const;
 
+	[[nodiscard]]
 	const_iterator
 	cend() const;
 
+	[[nodiscard]]
 	const_iterator
 	begin() const;
 
+	[[nodiscard]]
 	const_iterator
 	end() const;
 
+	[[nodiscard]]
 	reverse_iterator
 	rbegin();
 
+	[[nodiscard]]
 	reverse_iterator
 	rend();
 
+	[[nodiscard]]
 	const_reverse_iterator
 	crbegin() const;
 
+	[[nodiscard]]
 	const_reverse_iterator
 	crend() const;
 
+	[[nodiscard]]
 	const_reverse_iterator
 	rbegin() const;
 
+	[[nodiscard]]
 	const_reverse_iterator
 	rend() const;
 
+	[[nodiscard]]
 	constexpr
 	size_type
 	size() const;
@@ -195,17 +230,19 @@ public:
 		array &
 	);
 
+	[[nodiscard]]
 	internal const &
 	impl() const;
 
 // Not private so array is still a POD
+	[[nodiscard]]
 	static
 	typename
 	internal::size_type
 	to_index(
 		Enum
 	);
-
+// NOLINTNEXTLINE(misc-non-private-member-variables-in-classes)
 	internal impl_;
 };
 

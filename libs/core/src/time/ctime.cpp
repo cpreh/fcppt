@@ -29,10 +29,12 @@ fcppt::time::ctime(
 		==
 		nullptr
 	)
+	{
 		throw
 			fcppt::time::exception{
 				FCPPT_TEXT("std::ctime() failed!")
 			};
+	}
 
 	return
 		fcppt::from_std_string(

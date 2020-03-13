@@ -48,13 +48,14 @@ init_ctor(
 		)...
 	);
 
-	typedef
+	using
+	args_list
+	=
 	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Args
 		>...
-	>
-	args_list;
+	>;
 
 	return
 		fcppt::container::tuple::vararg_map(
@@ -85,7 +86,9 @@ init_ctor(
 					_fcppt_element
 				);
 
-				typedef
+				using
+				index_type
+				=
 				fcppt::metal::index_of_if<
 					args_list,
 					::metal::bind<
@@ -103,8 +106,7 @@ init_ctor(
 						>,
 						::metal::_1
 					>
-				>
-				index_type;
+				>;
 
 				return
 					std::move(

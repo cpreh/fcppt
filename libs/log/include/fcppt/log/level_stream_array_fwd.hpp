@@ -25,12 +25,13 @@ namespace log
 An array of #fcppt::log::level_stream with the size #fcppt::log::level.
 Each entry corresponds to an enumerator from #fcppt::log::level.
 */
-typedef
+using
+level_stream_array
+=
 fcppt::enum_::array<
 	fcppt::log::level,
 	fcppt::log::level_stream
->
-level_stream_array;
+>;
 
 }
 }

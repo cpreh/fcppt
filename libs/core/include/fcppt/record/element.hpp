@@ -33,13 +33,15 @@ template<
 >
 struct element
 {
-	typedef
-	Type
-	wrapped;
+	using
+	wrapped
+	=
+	Type;
 
-	typedef
-	Label
-	label;
+	using
+	label
+	=
+	Label;
 
 	static_assert(
 		fcppt::record::is_label<

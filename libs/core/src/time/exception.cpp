@@ -35,6 +35,7 @@ fcppt::time::exception::exception(
 fcppt::time::exception::exception(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::time::exception &
@@ -47,8 +48,8 @@ fcppt::time::exception &
 fcppt::time::exception::operator=(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::time::exception::~exception() noexcept
-{
-}
+= default;

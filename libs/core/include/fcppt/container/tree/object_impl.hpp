@@ -131,9 +131,9 @@ fcppt::container::tree::object<
 	object &&_other
 )
 noexcept(
-	std::is_nothrow_move_constructible<
+	std::is_nothrow_move_constructible_v<
 		T
-	>::value
+	>
 )
 :
 	value_(
@@ -164,17 +164,27 @@ fcppt::container::tree::object<
 > &
 fcppt::container::tree::object<
 	T
->::operator=(
+>::operator=( // NOLINT(bugprone-unhandled-self-assignment,cert-oop54-cpp)
 	object const &_other
 )
 {
-	value_ =
+	if(
+		this
+		==
+		&_other
+	)
+	{
+		return
+			*this;
+	}
+
+	this->value_ =
 		_other.value_;
 
-	parent_
+	this->parent_
 		= nullptr;
 
-	children_ =
+	this->children_ =
 		this->copy_children(
 			_other.children_
 		);
@@ -195,9 +205,9 @@ fcppt::container::tree::object<
 	object &&_other
 )
 noexcept(
-	std::is_nothrow_move_assignable<
+	std::is_nothrow_move_assignable_v<
 		T
-	>::value
+	>
 )
 {
 	value_ =
@@ -227,8 +237,7 @@ template<
 fcppt::container::tree::object<
 	T
 >::~object()
-{
-}
+= default;
 
 template<
 	typename T
@@ -242,7 +251,7 @@ fcppt::container::tree::object<
 >::children() const
 {
 	return
-		children_;
+		this->children_;
 }
 
 template<
@@ -258,7 +267,7 @@ fcppt::container::tree::object<
 {
 	return
 		fcppt::optional::from_pointer(
-			parent_
+			this->parent_
 		);
 }
 
@@ -276,7 +285,7 @@ fcppt::container::tree::object<
 	return
 		fcppt::optional::map(
 			fcppt::optional::from_pointer(
-				parent_
+				this->parent_
 			),
 			[](
 				fcppt::reference<
@@ -310,7 +319,7 @@ fcppt::container::tree::object<
 		)
 	);
 
-	children_.erase(
+	this->children_.erase(
 		_it
 	);
 
@@ -331,7 +340,7 @@ fcppt::container::tree::object<
 	T const &_value
 )
 {
-	value_ =
+	this->value_ =
 		_value;
 }
 
@@ -345,7 +354,7 @@ fcppt::container::tree::object<
 	T &&_value
 )
 {
-	value_ =
+	this->value_ =
 		std::move(
 			_value
 		);
@@ -360,7 +369,7 @@ fcppt::container::tree::object<
 >::value()
 {
 	return
-		value_;
+		this->value_;
 }
 
 template<
@@ -372,7 +381,7 @@ fcppt::container::tree::object<
 >::value() const
 {
 	return
-		value_;
+		this->value_;
 }
 
 template<
@@ -397,7 +406,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::make_ref(
-			children_.back()
+			this->children_.back()
 		);
 }
 
@@ -421,7 +430,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::make_ref(
-			children_.back()
+			this->children_.back()
 		);
 }
 
@@ -447,7 +456,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::make_ref(
-			children_.back()
+			this->children_.back()
 		);
 }
 
@@ -465,7 +474,7 @@ fcppt::container::tree::object<
 	return
 		fcppt::optional::map(
 			fcppt::container::pop_back(
-				children_
+				this->children_
 			),
 			[](
 				object &&_result
@@ -504,7 +513,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::make_ref(
-			children_.front()
+			this->children_.front()
 		);
 }
 
@@ -528,7 +537,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::make_ref(
-			children_.front()
+			this->children_.front()
 		);
 }
 
@@ -554,7 +563,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::make_ref(
-			children_.front()
+			this->children_.front()
 		);
 }
 
@@ -572,7 +581,7 @@ fcppt::container::tree::object<
 	return
 		fcppt::optional::map(
 			fcppt::container::pop_front(
-				children_
+				this->children_
 			),
 			[](
 				object &&_result
@@ -597,7 +606,7 @@ fcppt::container::tree::object<
 	T
 >::clear()
 {
-	children_.clear();
+	this->children_.clear();
 }
 
 template<
@@ -613,7 +622,7 @@ fcppt::container::tree::object<
 {
 	return
 		fcppt::container::maybe_back(
-			children_
+			this->children_
 		);
 }
 
@@ -630,7 +639,7 @@ fcppt::container::tree::object<
 {
 	return
 		fcppt::container::maybe_back(
-			children_
+			this->children_
 		);
 }
 
@@ -647,7 +656,7 @@ fcppt::container::tree::object<
 {
 	return
 		fcppt::container::maybe_front(
-			children_
+			this->children_
 		);
 }
 
@@ -665,7 +674,7 @@ fcppt::container::tree::object<
 
 	return
 		fcppt::container::maybe_front(
-			children_
+			this->children_
 		);
 }
 
@@ -681,7 +690,7 @@ fcppt::container::tree::object<
 >::begin()
 {
 	return
-		children_.begin();
+		this->children_.begin();
 }
 
 template<
@@ -696,7 +705,7 @@ fcppt::container::tree::object<
 >::end()
 {
 	return
-		children_.end();
+		this->children_.end();
 }
 
 template<
@@ -711,7 +720,7 @@ fcppt::container::tree::object<
 >::begin() const
 {
 	return
-		children_.begin();
+		this->children_.begin();
 }
 
 template<
@@ -726,7 +735,7 @@ fcppt::container::tree::object<
 >::end() const
 {
 	return
-		children_.end();
+		this->children_.end();
 }
 
 template<
@@ -741,7 +750,7 @@ fcppt::container::tree::object<
 >::rbegin()
 {
 	return
-		children_.rbegin();
+		this->children_.rbegin();
 }
 
 template<
@@ -756,7 +765,7 @@ fcppt::container::tree::object<
 >::rend()
 {
 	return
-		children_.rend();
+		this->children_.rend();
 }
 
 template<
@@ -771,7 +780,7 @@ fcppt::container::tree::object<
 >::rbegin() const
 {
 	return
-		children_.rbegin();
+		this->children_.rbegin();
 }
 
 template<
@@ -786,7 +795,7 @@ fcppt::container::tree::object<
 >::rend() const
 {
 	return
-		children_.rend();
+		this->children_.rend();
 }
 
 template<
@@ -800,7 +809,7 @@ fcppt::container::tree::object<
 	object &&_tree
 )
 {
-	children_.insert(
+	this->children_.insert(
 		_it,
 		std::move(
 			_tree
@@ -858,7 +867,7 @@ fcppt::container::tree::object<
 	iterator const _it
 )
 {
-	children_.erase(
+	this->children_.erase(
 		_it
 	);
 }
@@ -874,7 +883,7 @@ fcppt::container::tree::object<
 	iterator const _end
 )
 {
-	children_.erase(
+	this->children_.erase(
 		_begin,
 		_end
 	);
@@ -920,16 +929,16 @@ fcppt::container::tree::object<
 	using std::swap;
 
 	swap(
-		value_,
+		this->value_,
 		_other.value_
 	);
 
 	std::swap(
-		parent_,
+		this->parent_,
 		_other.parent_
 	);
 
-	children_.swap(
+	this->children_.swap(
 		_other.children_
 	);
 }
@@ -942,7 +951,7 @@ fcppt::container::tree::object<
 	T
 >::sort()
 {
-	children_.sort(
+	this->children_.sort(
 		[](
 			object const &_left,
 			object const &_right
@@ -969,7 +978,7 @@ fcppt::container::tree::object<
 	Predicate const &_predicate
 )
 {
-	children_.sort(
+	this->children_.sort(
 		[
 			_predicate
 		](
@@ -1008,7 +1017,10 @@ fcppt::container::tree::object<
 		:
 		result
 	)
-		child.parent_ = this;
+	{
+		child.parent_ =
+			this;
+	}
 
 	return
 		result;
@@ -1038,7 +1050,10 @@ fcppt::container::tree::object<
 		:
 		result
 	)
-		child.parent_ = this;
+	{
+		child.parent_ =
+			this;
+	}
 
 	return
 		result;

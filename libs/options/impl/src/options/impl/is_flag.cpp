@@ -27,7 +27,7 @@ fcppt::options::impl::is_flag(
 	fcppt::string_view const &_value
 )
 {
-	// TODO: This is terrible
+	// TODO(philipp): This is terrible
 	fcppt::string_view::const_iterator pos{
 		_value.begin()
 	};
@@ -64,8 +64,10 @@ fcppt::options::impl::is_flag(
 			)
 		)
 	)
+	{
 		return
 			result_type{};
+	}
 
 	++pos;
 
@@ -80,6 +82,7 @@ fcppt::options::impl::is_flag(
 						false
 					},
 					fcppt::string{
+						// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 						std::next(
 							pos
 						),

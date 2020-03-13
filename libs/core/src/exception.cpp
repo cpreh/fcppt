@@ -62,5 +62,4 @@ fcppt::exception::what() const noexcept
 }
 
 fcppt::exception::~exception() noexcept
-{
-}
+= default;

@@ -16,11 +16,12 @@ namespace fcppt
 namespace io
 {
 
-typedef
+using
+optional_buffer
+=
 fcppt::optional::object<
 	fcppt::io::buffer
->
-optional_buffer;
+>;
 
 }
 }

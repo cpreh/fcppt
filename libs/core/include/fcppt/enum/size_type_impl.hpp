@@ -31,19 +31,20 @@ template<
 struct size_type_impl
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Type
-		>::value,
+		>,
 		"Type must be an enum type"
 	);
 
-	typedef
+	using
+	type
+	=
 	std::make_unsigned_t<
 		std::underlying_type_t<
 			Type
 		>
-	>
-	type;
+	>;
 };
 
 }

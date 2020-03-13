@@ -43,25 +43,30 @@ template<
 >
 struct types
 {
-	typedef
-	Derived
-	derived;
+	using
+	derived
+	=
+	Derived;
 
-	typedef
-	ValueType
-	value_type;
+	using
+	value_type
+	=
+	ValueType;
 
-	typedef
-	Reference
-	reference;
+	using
+	reference
+	=
+	Reference;
 
-	typedef
-	DifferenceType
-	difference_type;
+	using
+	difference_type
+	=
+	DifferenceType;
 
-	typedef
-	IteratorCategory
-	iterator_category;
+	using
+	iterator_category
+	=
+	IteratorCategory;
 };
 
 }

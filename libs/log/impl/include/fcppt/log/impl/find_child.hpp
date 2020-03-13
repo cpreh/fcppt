@@ -7,6 +7,7 @@
 #ifndef FCPPT_LOG_IMPL_FIND_CHILD_HPP_INCLUDED
 #define FCPPT_LOG_IMPL_FIND_CHILD_HPP_INCLUDED
 
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/impl/optional_context_tree_ref.hpp>
@@ -21,7 +22,9 @@ namespace impl
 
 fcppt::log::impl::optional_context_tree_ref
 find_child(
-	fcppt::log::detail::context_tree &,
+	fcppt::reference<
+		fcppt::log::detail::context_tree
+	>,
 	fcppt::log::name const &
 );
 

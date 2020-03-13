@@ -35,6 +35,7 @@ fcppt::variant::exception::exception(
 fcppt::variant::exception::exception(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::variant::exception &
@@ -47,8 +48,8 @@ fcppt::variant::exception &
 fcppt::variant::exception::operator=(
 	exception &&
 )
+noexcept
 = default;
 
 fcppt::variant::exception::~exception() noexcept
-{
-}
+= default;

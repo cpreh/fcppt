@@ -7,6 +7,7 @@
 #ifndef FCPPT_ASSERT_BASIC_GATHER_INFORMATION_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_GATHER_INFORMATION_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/assert/condition.hpp>
 #include <fcppt/assert/file.hpp>
 #include <fcppt/assert/function.hpp>
@@ -46,12 +47,16 @@ fcppt::assert_::information(\
 		FCPPT_PP_FUNCTION\
 	),\
 	fcppt::assert_::condition(\
-		FCPPT_PP_STRINGIZE(\
-			condition_arg\
-		)\
+		fcppt::string{\
+			FCPPT_PP_STRINGIZE(\
+				condition_arg\
+			)\
+		}\
 	),\
 	fcppt::assert_::message(\
-		message_arg\
+		fcppt::string{\
+			message_arg\
+		}\
 	) \
 )
 

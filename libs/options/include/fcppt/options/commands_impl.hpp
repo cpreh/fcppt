@@ -234,7 +234,7 @@ fcppt::options::commands<
 											result_type
 										>{
 											std::move(
-												_parser_result.state_
+												_parser_result.state()
 											),
 											result_type{
 												fcppt::options::options_label{} =
@@ -249,7 +249,7 @@ fcppt::options::commands<
 															typename
 															sub_command_type::tag{} =
 																std::move(
-																	_parser_result.value_
+																	_parser_result.value()
 																)
 														}
 													}
@@ -273,7 +273,7 @@ fcppt::options::commands<
 	return
 		fcppt::optional::maybe(
 			fcppt::options::detail::split_command(
-				_state.args_,
+				_state.args(),
 				fcppt::options::deref(
 					options_parser_
 				).option_names()

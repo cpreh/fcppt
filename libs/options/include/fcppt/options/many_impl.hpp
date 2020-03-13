@@ -131,13 +131,13 @@ fcppt::options::many<
 		{
 			state =
 				std::move(
-					_inner.state_
+					_inner.state()
 				);
 
 			fcppt::options::result_of<
 				Parser
 			> &inner_value{
-				_inner.value_
+				_inner.value()
 			};
 
 			result =
@@ -218,7 +218,7 @@ fcppt::options::many<
 							result_type
 						>(
 							std::move(
-								_missing_error.state_
+								_missing_error.state()
 							),
 							std::move(
 								result

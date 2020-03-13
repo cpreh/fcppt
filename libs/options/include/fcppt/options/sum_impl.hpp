@@ -177,14 +177,14 @@ fcppt::options::sum<
 										result_type
 									>{
 										std::move(
-											_right_result.state_
+											_right_result.state()
 										),
 										result_type{
 											Label{} =
 												variant{
 													fcppt::options::make_right(
 														std::move(
-															_right_result.value_
+															_right_result.value()
 														)
 													)
 												}
@@ -212,14 +212,14 @@ fcppt::options::sum<
 							result_type
 						>{
 							std::move(
-								_left_result.state_
+								_left_result.state()
 							),
 							result_type{
 								Label{} =
 									variant{
 										fcppt::options::make_left(
 											std::move(
-												_left_result.value_
+												_left_result.value()
 											)
 										)
 									}

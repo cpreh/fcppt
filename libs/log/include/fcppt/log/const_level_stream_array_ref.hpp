@@ -16,11 +16,12 @@ namespace fcppt
 namespace log
 {
 
-typedef
+using
+const_level_stream_array_ref
+=
 fcppt::reference<
 	fcppt::log::level_stream_array const
->
-const_level_stream_array_ref;
+>;
 
 }
 }

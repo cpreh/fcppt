@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_OBJECT_HPP_INCLUDED
 #define FCPPT_LOG_OBJECT_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_decl.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
@@ -39,7 +39,7 @@ streams.
 */
 class object
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		object
 	);
 public:
@@ -48,6 +48,7 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
+		// NOLINTNEXTLINE(google-runtime-references)
 		fcppt::log::context &,
 		fcppt::log::parameters const &
 	);
@@ -57,6 +58,7 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
+		// NOLINTNEXTLINE(google-runtime-references)
 		fcppt::log::object &,
 		fcppt::log::parameters const &
 	);
@@ -66,6 +68,7 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
+		// NOLINTNEXTLINE(google-runtime-references)
 		fcppt::log::context &,
 		fcppt::log::location const &,
 		fcppt::log::parameters const &
@@ -101,6 +104,7 @@ public:
 
 	\param level The log level to get the level stream for
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::level_stream const &
 	level_sink(
@@ -112,6 +116,7 @@ public:
 
 	\param level The log level to query the activated state for
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	bool
 	enabled(
@@ -121,6 +126,7 @@ public:
 	/**
 	\brief Returns the associated formatter
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::format::optional_function const &
 	formatter() const;
@@ -128,6 +134,7 @@ public:
 	/**
 	\brief Returns the associated level streams
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::level_stream_array const &
 	level_streams() const;
@@ -135,17 +142,20 @@ public:
 	/**
 	\brief Returns the current log level
 	*/
+	[[nodiscard]]
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::optional_level
 	level() const;
 private:
-	typedef
+	using
+	context_tree_ref
+	=
 	fcppt::reference<
 		fcppt::log::detail::context_tree const
-	>
-	context_tree_ref;
+	>;
 
 	object(
+		// NOLINTNEXTLINE(google-runtime-references)
 		fcppt::log::context &,
 		context_tree_ref,
 		fcppt::log::parameters const &

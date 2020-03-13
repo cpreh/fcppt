@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/not.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
@@ -247,7 +248,7 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	return
-		impl_.first_;
+		this->impl_.first_;
 }
 
 template<
@@ -266,7 +267,7 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	return
-		impl_.first_;
+		this->impl_.first_;
 }
 
 template<
@@ -285,7 +286,7 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	return
-		impl_.last_;
+		this->impl_.last_;
 }
 
 template<
@@ -304,7 +305,22 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	return
-		impl_.last_;
+		this->impl_.last_;
+}
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::raw_vector::object<
+	T,
+	A
+>::object()
+:
+	object{
+		A{}
+	}
+{
 }
 
 template<
@@ -333,6 +349,26 @@ fcppt::container::raw_vector::object<
 	A
 >::object(
 	size_type const _sz,
+	T const &_value
+)
+:
+	object{
+		_sz,
+		_value,
+		A{}
+	}
+{
+}
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::raw_vector::object<
+	T,
+	A
+>::object(
+	size_type const _sz,
 	T const &_value,
 	A const &_alloc
 )
@@ -346,6 +382,29 @@ fcppt::container::raw_vector::object<
 		_sz,
 		_value
 	);
+}
+
+template<
+	typename T,
+	typename A
+>
+template<
+	typename In
+>
+fcppt::container::raw_vector::object<
+	T,
+	A
+>::object(
+	In const _begin,
+	In const _end
+)
+:
+	object{
+		_begin,
+		_end,
+		A{}
+	}
+{
 }
 
 template<
@@ -391,6 +450,26 @@ noexcept
 :
 	impl_{
 		_rep
+	}
+{
+}
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::raw_vector::object<
+	T,
+	A
+>::object(
+	std::initializer_list<
+		T
+	> const _inits
+)
+:
+	object{
+		_inits,
+		A{}
 	}
 {
 }
@@ -548,8 +627,8 @@ noexcept
 	return
 		fcppt::cast::to_unsigned(
 			std::distance(
-				impl_.first_,
-				impl_.last_
+				this->impl_.first_,
+				this->impl_.last_
 			)
 		);
 }
@@ -589,8 +668,8 @@ noexcept
 	return
 		fcppt::cast::to_unsigned(
 			std::distance(
-				impl_.first_,
-				impl_.cap_
+				this->impl_.first_,
+				this->impl_.cap_
 			)
 		);
 }
@@ -609,17 +688,17 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	std::swap(
-		impl_.first_,
+		this->impl_.first_,
 		_other.impl_.first_
 	);
 
 	std::swap(
-		impl_.last_,
+		this->impl_.last_,
 		_other.impl_.last_
 	);
 
 	std::swap(
-		impl_.cap_,
+		this->impl_.cap_,
 		_other.impl_.cap_
 	);
 }
@@ -642,20 +721,24 @@ fcppt::container::raw_vector::object<
 		>
 		this->size()
 	)
+	{
 		this->insert(
 			this->end(),
 			_size - this->size(),
 			_value
 		);
+	}
 	else if(
 		_size
 		<
 		this->size()
 	)
+	{
 		this->erase(
 			this->begin() + _size,
 			this->end()
 		);
+	}
 }
 
 template<
@@ -675,7 +758,9 @@ fcppt::container::raw_vector::object<
 		<=
 		this->capacity()
 	)
+	{
 		return;
+	}
 
 	this->reallocate(
 		this->new_capacity(
@@ -699,7 +784,7 @@ fcppt::container::raw_vector::object<
 >::get_allocator() const
 {
 	return
-		impl_.alloc_;
+		this->impl_.alloc_;
 }
 
 template<
@@ -720,7 +805,7 @@ fcppt::container::raw_vector::object<
 )
 {
 	size_type const new_size(
-		size() + 1u
+		this->size() + 1U
 	);
 
 	if(
@@ -738,7 +823,7 @@ fcppt::container::raw_vector::object<
 		);
 
 		pointer const new_memory(
-			impl_.alloc_.allocate(
+			this->impl_.alloc_.allocate(
 				new_cap,
 				nullptr
 			)
@@ -747,22 +832,26 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::uninitialized_copy(
 				this->begin(),
 				_position,
 				new_memory
 			);
+		}
 
 		*(new_memory + insert_sz) = _value;
 
 		if(
 			!this->empty()
 		)
+		{
 			std::uninitialized_copy(
 				_position,
 				this->end(),
-				new_memory + insert_sz + 1u
+				new_memory + insert_sz + 1U
 			);
+		}
 
 		this->deallocate();
 
@@ -772,13 +861,16 @@ fcppt::container::raw_vector::object<
 			new_cap
 		);
 
-		return this->begin() + insert_sz;
+		return
+			this->begin() + insert_sz;
 	}
+	// NOLINTNEXTLINE(readability-else-after-return)
 	else
 	{
 		if(
 			!this->empty()
 		)
+		{
 			std::copy_backward(
 				_position,
 				this->end(),
@@ -786,12 +878,14 @@ fcppt::container::raw_vector::object<
 					this->data_end()
 				)
 			);
+		}
 
 		*_position = _value;
 
-		++impl_.last_;
+		++this->impl_.last_;
 
-		return _position;
+		return
+			_position;
 	}
 }
 
@@ -828,7 +922,7 @@ fcppt::container::raw_vector::object<
 		);
 
 		pointer const new_memory(
-			impl_.alloc_.allocate(
+			this->impl_.alloc_.allocate(
 				new_cap,
 				nullptr
 			)
@@ -837,11 +931,13 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::uninitialized_copy(
 				this->begin(),
 				_position,
 				new_memory
 			);
+		}
 
 		std::uninitialized_fill(
 			new_memory + insert_sz,
@@ -852,11 +948,13 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::uninitialized_copy(
 				_position,
 				this->end(),
 				new_memory + insert_sz + _size
 			);
+		}
 
 		this->deallocate();
 
@@ -871,11 +969,13 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::copy_backward(
 				_position,
 				this->end(),
 				this->data_end() + _size
 			);
+		}
 
 		std::uninitialized_fill(
 			_position,
@@ -883,7 +983,7 @@ fcppt::container::raw_vector::object<
 			_value
 		);
 
-		impl_.last_ += _size;
+		this->impl_.last_ += _size;
 	}
 }
 
@@ -906,16 +1006,16 @@ fcppt::container::raw_vector::object<
 {
 	if(
 		_left
-		==
+		!=
 		_right
 	)
-		return;
-
-	this->insert_impl(
-		_position,
-		_left,
-		_right
-	);
+	{
+		this->insert_impl(
+			_position,
+			_left,
+			_right
+		);
+	}
 }
 
 template<
@@ -936,12 +1036,12 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	std::uninitialized_copy(
-		_position + 1u,
+		_position + 1U,
 		this->end(),
 		_position
 	);
 
-	--impl_.last_;
+	--this->impl_.last_;
 
 	return
 		_position;
@@ -977,7 +1077,7 @@ noexcept
 			_left
 		);
 
-		impl_.last_ -=
+		this->impl_.last_ -=
 			_right - _left;
 	}
 
@@ -1008,10 +1108,12 @@ template<
 	typename In
 >
 std::enable_if_t<
-	!fcppt::type_traits::is_iterator_of_category<
-		In,
-		std::forward_iterator_tag
-	>::value,
+	fcppt::not_(
+		fcppt::type_traits::is_iterator_of_category<
+			In,
+			std::forward_iterator_tag
+		>::value
+	),
 	void
 >
 fcppt::container::raw_vector::object<
@@ -1028,6 +1130,7 @@ fcppt::container::raw_vector::object<
 		_left != _right;
 		++_left
 	)
+	{
 		_position =
 			std::next(
 				this->insert(
@@ -1035,6 +1138,7 @@ fcppt::container::raw_vector::object<
 					*_left
 				)
 			);
+	}
 }
 
 template<
@@ -1090,7 +1194,7 @@ fcppt::container::raw_vector::object<
 		);
 
 		pointer const new_memory(
-			impl_.alloc_.allocate(
+			this->impl_.alloc_.allocate(
 				new_cap
 			)
 		);
@@ -1098,11 +1202,13 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::uninitialized_copy(
 				this->begin(),
 				_position,
 				new_memory
 			);
+		}
 
 		std::uninitialized_copy(
 			_left,
@@ -1113,11 +1219,13 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::uninitialized_copy(
 				_position,
 				this->end(),
 				new_memory + insert_sz + distance
 			);
+		}
 
 		this->deallocate();
 
@@ -1132,11 +1240,13 @@ fcppt::container::raw_vector::object<
 		if(
 			!this->empty()
 		)
+		{
 			std::copy_backward(
 				_position,
 				this->end(),
 				this->data_end() + distance
 			);
+		}
 
 		std::uninitialized_copy(
 			_left,
@@ -1144,7 +1254,7 @@ fcppt::container::raw_vector::object<
 			_position
 		);
 
-		impl_.last_ += distance;
+		this->impl_.last_ += distance;
 	}
 }
 
@@ -1170,7 +1280,7 @@ noexcept
 			_new_size,
 			this->capacity()
 			*
-			2u
+			2U
 		);
 }
 
@@ -1191,7 +1301,7 @@ fcppt::container::raw_vector::object<
 	);
 
 	pointer const new_memory(
-		impl_.alloc_.allocate(
+		this->impl_.alloc_.allocate(
 			_new_cap,
 			nullptr
 		)
@@ -1200,11 +1310,13 @@ fcppt::container::raw_vector::object<
 	if(
 		!this->empty()
 	)
+	{
 		std::uninitialized_copy(
 			this->begin(),
 			this->end(),
 			new_memory
 		);
+	}
 
 	this->deallocate();
 
@@ -1230,15 +1342,15 @@ fcppt::container::raw_vector::object<
 )
 noexcept
 {
-	impl_.first_ =
+	this->impl_.first_ =
 		_first;
 
-	impl_.last_ =
+	this->impl_.last_ =
 		impl_.first_
 		+
 		_size;
 
-	impl_.cap_ =
+	this->impl_.cap_ =
 		impl_.first_
 		+
 		_cap;
@@ -1256,14 +1368,16 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	if(
-		impl_.first_
+		this->impl_.first_
 		!=
 		nullptr
 	)
-		impl_.alloc_.deallocate(
-			impl_.first_,
+	{
+		this->impl_.alloc_.deallocate(
+			this->impl_.first_,
 			this->capacity()
 		);
+	}
 }
 
 template<
@@ -1366,16 +1480,16 @@ fcppt::container::raw_vector::object<
 )
 noexcept
 {
-	alloc_ =
+	this->alloc_ =
 		_other.alloc_;
 
-	first_ =
+	this->first_ =
 		_other.first_;
 
-	last_ =
+	this->last_ =
 		_other.last_;
 
-	cap_ =
+	this->cap_ =
 		_other.cap_;
 
 	_other.reset_pointers();
@@ -1393,8 +1507,8 @@ fcppt::container::raw_vector::object<
 	A
 >::impl::~impl()
 noexcept
-{
-}
+=
+default;
 
 template<
 	typename T,
@@ -1407,13 +1521,13 @@ fcppt::container::raw_vector::object<
 >::impl::reset_pointers()
 noexcept
 {
-	first_ =
+	this->first_ =
 		nullptr;
 
-	last_ =
+	this->last_ =
 		nullptr;
 
-	cap_ =
+	this->cap_ =
 		nullptr;
 }
 

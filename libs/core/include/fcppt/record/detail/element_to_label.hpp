@@ -17,13 +17,6 @@ namespace record
 namespace detail
 {
 
-/**
-\brief Extracts the type of an element and provides a type typedef to it
-
-\ingroup fcpptrecord
-
-\tparam Element Must be an #fcppt::record::element.
-*/
 template<
 	typename Element
 >
@@ -40,9 +33,10 @@ struct element_to_label<
 	>
 >
 {
-	typedef
-	Label
-	type;
+	using
+	type
+	=
+	Label;
 };
 
 }

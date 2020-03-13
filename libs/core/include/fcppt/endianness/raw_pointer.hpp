@@ -20,7 +20,10 @@ namespace endianness
 
 \ingroup fcpptendianness
 */
-typedef fcppt::endianness::raw_value *raw_pointer;
+using
+raw_pointer
+=
+fcppt::endianness::raw_value *;
 
 }
 }

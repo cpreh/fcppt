@@ -33,6 +33,7 @@ fcppt::variant::invalid_get::invalid_get(
 fcppt::variant::invalid_get::invalid_get(
 	invalid_get &&
 )
+noexcept
 = default;
 
 fcppt::variant::invalid_get &
@@ -45,8 +46,8 @@ fcppt::variant::invalid_get &
 fcppt::variant::invalid_get::operator=(
 	invalid_get &&
 )
+noexcept
 = default;
 
 fcppt::variant::invalid_get::~invalid_get() noexcept
-{
-}
+= default;

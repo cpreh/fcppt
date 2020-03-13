@@ -26,9 +26,12 @@ fcppt::time::output_tm(
 	if(
 		!cerberos
 	)
+	{
 		return
 			_stream;
+	}
 
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::use_facet<
 		std::time_put<
 			fcppt::io::ostream::char_type,

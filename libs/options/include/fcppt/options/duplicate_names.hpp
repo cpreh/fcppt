@@ -38,7 +38,8 @@ public:
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	duplicate_names(
 		duplicate_names &&
-	);
+	)
+	noexcept;
 
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	duplicate_names &
@@ -50,7 +51,8 @@ public:
 	duplicate_names &
 	operator=(
 		duplicate_names &&
-	);
+	)
+	noexcept;
 
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	~duplicate_names() noexcept

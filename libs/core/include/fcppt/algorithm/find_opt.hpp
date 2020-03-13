@@ -45,19 +45,21 @@ find_opt(
 	T const &_value
 )
 {
-	typedef
+	using
+	iterator_type
+	=
 	fcppt::container::to_iterator_type<
 		std::remove_reference_t<
 			Range
 		>
-	>
-	iterator_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		iterator_type
-	>
-	result_type;
+	>;
 
 	iterator_type const end{
 		fcppt::range::end(

@@ -9,13 +9,13 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/no_init.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/config/compiler.hpp>
 #include <fcppt/io/detail/extract_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/constructible_from.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <type_traits>
@@ -36,10 +36,10 @@ template<
 >
 inline
 std::enable_if_t<
-	fcppt::type_traits::constructible_from<
+	std::is_constructible_v<
 		Type,
 		fcppt::no_init
-	>::value,
+	>,
 	fcppt::optional::object<
 		Type
 	>
@@ -51,7 +51,6 @@ extract(
 	> &_stream
 )
 {
-	// TODO: Why does this warning appear here?
 FCPPT_PP_PUSH_WARNING
 #if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
@@ -79,10 +78,12 @@ template<
 >
 inline
 std::enable_if_t<
-	!fcppt::type_traits::constructible_from<
-		Type,
-		fcppt::no_init
-	>::value,
+	fcppt::not_(
+		std::is_constructible_v<
+			Type,
+			fcppt::no_init
+		>
+	),
 	fcppt::optional::object<
 		Type
 	>

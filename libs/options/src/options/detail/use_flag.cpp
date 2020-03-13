@@ -34,7 +34,7 @@ fcppt::options::detail::use_flag(
 	};
 
 	fcppt::args_vector &args{
-		_state.get().args_
+		_state.get().args()
 	};
 
 	fcppt::args_vector::iterator const pos{
@@ -52,6 +52,7 @@ fcppt::options::detail::use_flag(
 	)
 	{
 		args.erase(
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			pos
 		);
 

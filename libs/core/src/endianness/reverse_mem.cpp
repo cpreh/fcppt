@@ -27,16 +27,20 @@ fcppt::endianness::reverse_mem(
 			2
 		)
 	)
+	{
 		std::swap(
+			// NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 			_data[
 				index
 			],
+			// NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 			_data[
 				_len
 				-
 				index
 				-
-				1u
+				1U
 			]
 		);
+	}
 }

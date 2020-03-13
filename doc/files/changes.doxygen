@@ -56,6 +56,7 @@
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added #fcppt::overload.</li>
+	<li>Added #FCPPT_NONMOVABLE.</li>
 	</ul>
 </li>
 
@@ -77,9 +78,21 @@
 
 <ul>
 
+<li>\ref fcpptcast
+	<ul>
+	<li>Removed <code>fcppt::cast::safe</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainertuple
 	<ul>
 	<li>Removed <code>fcppt::container::tuple::type_at</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Removed <code>fcppt::type_traits::constructible_from</code>. Use <code>std::is_constructible</code>.</li>
 	</ul>
 </li>
 
@@ -1455,7 +1468,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added #fcppt::type_traits::constructible_from.</li>
+	<li>Added <code>fcppt::type_traits::constructible_from</code>.</li>
 	</ul>
 </li>
 

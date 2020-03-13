@@ -45,13 +45,8 @@ index_of(
 	T const &_value
 )
 {
-	// TODO
-	typedef
-	typename
-	Range::const_iterator
-	iterator_type;
-
-	iterator_type const beg(
+	// NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
+	auto const beg(
 		fcppt::range::begin(
 			_range
 		)
@@ -66,7 +61,7 @@ index_of(
 			[
 				beg
 			](
-				iterator_type const _it
+				auto const _it
 			)
 			{
 				return

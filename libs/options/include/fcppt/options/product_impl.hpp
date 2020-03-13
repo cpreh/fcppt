@@ -114,7 +114,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				fcppt::options::result_of<
 					Left
 				> &left_value{
-					_left_result.value_
+					_left_result.value()
 				};
 
 				return
@@ -123,7 +123,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 							right_
 						).parse(
 							std::move(
-								_left_result.state_
+								_left_result.state()
 							),
 							_context
 						),
@@ -142,14 +142,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 									result_type
 								>{
 									std::move(
-										_right_result.state_
+										_right_result.state()
 									),
 									fcppt::record::multiply_disjoint(
 										std::move(
 											left_value
 										),
 										std::move(
-											_right_result.value_
+											_right_result.value()
 										)
 									)
 								};
@@ -270,7 +270,7 @@ fcppt::options::product<
 						)
 						{
 							return
-								_option_name.name_;
+								_option_name.name();
 						}
 					)
 				);

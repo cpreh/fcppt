@@ -29,9 +29,10 @@ struct tag_type<
 	>
 >
 {
-	typedef
-	Type
-	type;
+	using
+	type
+	=
+	Type;
 };
 
 }

@@ -13,6 +13,7 @@
 
 fcppt::log::detail::temporary_output::temporary_output()
 :
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	stream_{}
 {
 }
@@ -20,21 +21,22 @@ fcppt::log::detail::temporary_output::temporary_output()
 fcppt::log::detail::temporary_output::temporary_output(
 	fcppt::log::detail::temporary_output &&
 )
+noexcept(false)
 = default;
 
 fcppt::log::detail::temporary_output &
 fcppt::log::detail::temporary_output::operator=(
 	fcppt::log::detail::temporary_output &&
 )
+noexcept(false)
 = default;
 
 fcppt::log::detail::temporary_output::~temporary_output()
-{
-}
+= default;
 
 fcppt::string
 fcppt::log::detail::temporary_output::result() const
 {
 	return
-		stream_.str();
+		this->stream_.str();
 }

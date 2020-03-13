@@ -35,11 +35,12 @@ from_pointer(
 	T *const _pointer
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::reference<
 		T
-	>
-	result_type;
+	>;
 
 	return
 		_pointer

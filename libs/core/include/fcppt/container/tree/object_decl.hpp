@@ -35,69 +35,81 @@ template<
 class object
 {
 public:
-	typedef
+	using
+	child_list
+	=
 	std::list<
 		object
-	>
-	child_list;
+	>;
 
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	child_list::size_type
-	size_type;
+	child_list::size_type;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	child_list::difference_type
-	difference_type;
+	child_list::difference_type;
 
-	typedef
+	using
+	iterator
+	=
 	typename
-	child_list::iterator
-	iterator;
+	child_list::iterator;
 
-	typedef
+	using
+	const_iterator
+	=
 	typename
-	child_list::const_iterator
-	const_iterator;
+	child_list::const_iterator;
 
-	typedef
+	using
+	reverse_iterator
+	=
 	typename
-	child_list::reverse_iterator
-	reverse_iterator;
+	child_list::reverse_iterator;
 
-	typedef
+	using
+	const_reverse_iterator
+	=
 	typename
-	child_list::const_reverse_iterator
-	const_reverse_iterator;
+	child_list::const_reverse_iterator;
 
-	typedef
+	using
+	optional_ref
+	=
 	fcppt::optional::reference<
 		object
-	>
-	optional_ref;
+	>;
 
-	typedef
+	using
+	const_optional_ref
+	=
 	fcppt::optional::reference<
 		object const
-	>
-	const_optional_ref;
+	>;
 
-	typedef
+	using
+	optional_object
+	=
 	fcppt::optional::object<
 		object
-	>
-	optional_object;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	fcppt::reference<
 		object
-	>
-	reference;
+	>;
 
 	/// Constructs the object using the given value
 	explicit
@@ -131,9 +143,9 @@ public:
 		object &&
 	)
 	noexcept(
-		std::is_nothrow_move_constructible<
+		std::is_nothrow_move_constructible_v<
 			T
-		>::value
+		>
 	);
 
 	/**
@@ -151,31 +163,35 @@ public:
 		object &&
 	)
 	noexcept(
-		std::is_nothrow_move_assignable<
+		std::is_nothrow_move_assignable_v<
 			T
-		>::value
+		>
 	);
 
 	~object();
 
+	[[nodiscard]]
 	child_list const &
 	children() const;
 
 	/**
 	\brief Returns a reference to the parent of this tree.
 	*/
+	[[nodiscard]]
 	optional_ref
 	parent();
 
 	/**
 	\brief Returns a reference to the parent of this tree.
 	*/
+	[[nodiscard]]
 	const_optional_ref
 	parent() const;
 
 	/**
 	\brief Detaches the given child from the parent and returns it.
 	*/
+	[[nodiscard]]
 	object
 	release(
 		iterator
@@ -197,12 +213,14 @@ public:
 	/**
 	\brief Retrieves the tree's value
 	*/
+	[[nodiscard]]
 	T &
 	value();
 
 	/**
 	\brief Retrieves the tree's value
 	*/
+	[[nodiscard]]
 	T const &
 	value() const;
 
@@ -230,6 +248,7 @@ public:
 	/**
 	\brief Removes a child from the end of the child list
 	*/
+	[[nodiscard]]
 	optional_object
 	pop_back();
 
@@ -257,6 +276,7 @@ public:
 	/**
 	\brief Removes a child from the front of the children list and returns it.
 	*/
+	[[nodiscard]]
 	optional_object
 	pop_front();
 
@@ -266,39 +286,51 @@ public:
 	void
 	clear();
 
+	[[nodiscard]]
 	optional_ref
 	back();
 
+	[[nodiscard]]
 	const_optional_ref
 	back() const;
 
+	[[nodiscard]]
 	optional_ref
 	front();
 
+	[[nodiscard]]
 	const_optional_ref
 	front() const;
 
+	[[nodiscard]]
 	iterator
 	begin();
 
+	[[nodiscard]]
 	iterator
 	end();
 
+	[[nodiscard]]
 	const_iterator
 	begin() const;
 
+	[[nodiscard]]
 	const_iterator
 	end() const;
 
+	[[nodiscard]]
 	reverse_iterator
 	rbegin();
 
+	[[nodiscard]]
 	reverse_iterator
 	rend();
 
+	[[nodiscard]]
 	const_reverse_iterator
 	rbegin() const;
 
+	[[nodiscard]]
 	const_reverse_iterator
 	rend() const;
 
@@ -346,12 +378,14 @@ public:
 	/**
 	\brief Returns the number of children
 	*/
+	[[nodiscard]]
 	size_type
 	size() const;
 
 	/**
 	\brief Returns if the container is empty
 	*/
+	[[nodiscard]]
 	bool
 	empty() const;
 

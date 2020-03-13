@@ -13,18 +13,23 @@
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/optional/from.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::log::level_stream::level_stream(
 	fcppt::io::ostream &_dest,
-	fcppt::log::format::optional_function const &_formatter
+	fcppt::log::format::optional_function &&_formatter
 )
 :
 	dest_(
 		_dest
 	),
 	formatter_(
-		_formatter
+		std::move(
+			_formatter
+		)
 	)
 {
 }

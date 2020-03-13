@@ -19,11 +19,12 @@ namespace fcppt
 
 \ingroup fcpptstring
 */
-typedef
+using
+optional_string
+=
 fcppt::optional::object<
 	fcppt::string
->
-optional_string;
+>;
 
 }
 

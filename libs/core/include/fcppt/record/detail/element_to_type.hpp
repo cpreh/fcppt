@@ -33,9 +33,10 @@ struct element_to_type<
 	>
 >
 {
-	typedef
-	Type
-	type;
+	using
+	type
+	=
+	Type;
 };
 
 }

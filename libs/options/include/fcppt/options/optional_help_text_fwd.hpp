@@ -21,11 +21,12 @@ namespace options
 
 \ingroup fcpptoptions
 */
-typedef
+using
+optional_help_text
+=
 fcppt::optional::object<
 	fcppt::options::help_text
->
-optional_help_text;
+>;
 
 }
 }

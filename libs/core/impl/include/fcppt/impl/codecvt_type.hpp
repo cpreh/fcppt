@@ -17,13 +17,14 @@ namespace fcppt
 namespace impl
 {
 
-typedef
+using
+codecvt_type
+=
 std::codecvt<
 	wchar_t,
 	char,
 	std::mbstate_t
->
-codecvt_type;
+>;
 
 }
 }

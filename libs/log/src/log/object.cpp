@@ -5,7 +5,6 @@
 
 
 #include <fcppt/const.hpp>
-#include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/level.hpp>
@@ -30,9 +29,7 @@ fcppt::log::object::object(
 :
 	object{
 		_context,
-		fcppt::make_cref(
-			_context.root()
-		),
+		_context.root(),
 		_parameters
 	}
 {
@@ -59,10 +56,8 @@ fcppt::log::object::object(
 :
 	object{
 		_context,
-		fcppt::make_cref(
-			_context.find_location(
-				_location
-			)
+		_context.find_location(
+			_location
 		),
 		_parameters
 	}
@@ -70,8 +65,7 @@ fcppt::log::object::object(
 }
 
 fcppt::log::object::~object()
-{
-}
+= default;
 
 void
 fcppt::log::object::log(
@@ -84,12 +78,14 @@ fcppt::log::object::log(
 			_level
 		)
 	)
+	{
 		this->level_sink(
 			_level
 		).log(
 			_helper,
-			formatter_
+			this->formatter_
 		);
+	}
 }
 
 fcppt::log::level_stream const &
@@ -132,21 +128,21 @@ fcppt::log::format::optional_function const &
 fcppt::log::object::formatter() const
 {
 	return
-		formatter_;
+		this->formatter_;
 }
 
 fcppt::log::level_stream_array const &
 fcppt::log::object::level_streams() const
 {
 	return
-		context_.level_streams().get();
+		this->context_.level_streams().get();
 }
 
 fcppt::log::optional_level
 fcppt::log::object::level() const
 {
 	return
-		node_.get().value().level();
+		this->node_.get().value().level();
 }
 
 fcppt::log::object::object(
@@ -160,7 +156,7 @@ fcppt::log::object::object(
 	},
 	node_{
 		_context.find_child(
-			_node.get(),
+			_node,
 			_parameters.name()
 		)
 	},

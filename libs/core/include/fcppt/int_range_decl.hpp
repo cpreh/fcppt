@@ -25,25 +25,29 @@ template<
 class int_range
 {
 public:
-	typedef
-	Int
-	value_type;
+	using
+	value_type
+	=
+	Int;
 
-	typedef
+	using
+	iterator
+	=
 	fcppt::int_iterator<
 		Int
-	>
+	>;
+
+	using
+	const_iterator
+	=
 	iterator;
 
-	typedef
-	iterator
-	const_iterator;
-
-	typedef
+	using
+	size_type
+	=
 	fcppt::type_iso::undecorated_type<
 		Int
-	>
-	size_type;
+	>;
 
 	/**
 	\brief Creates a range
@@ -60,14 +64,17 @@ public:
 		Int end
 	);
 
+	[[nodiscard]]
 	constexpr
 	iterator
 	begin() const;
 
+	[[nodiscard]]
 	constexpr
 	iterator
 	end() const;
 
+	[[nodiscard]]
 	constexpr
 	size_type
 	size() const;

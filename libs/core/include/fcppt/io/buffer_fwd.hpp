@@ -15,11 +15,12 @@ namespace fcppt
 namespace io
 {
 
-typedef
+using
+buffer
+=
 fcppt::container::raw_vector::object<
 	char
->
-buffer;
+>;
 
 }
 }

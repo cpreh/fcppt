@@ -37,4 +37,52 @@ fcppt::options::state_with_value<
 {
 }
 
+template<
+	typename T
+>
+fcppt::options::state &
+fcppt::options::state_with_value<
+	T
+>::state()
+{
+	return
+		this->state_;
+}
+
+template<
+	typename T
+>
+fcppt::options::state const &
+fcppt::options::state_with_value<
+	T
+>::state() const
+{
+	return
+		this->state_;
+}
+
+template<
+	typename T
+>
+T &
+fcppt::options::state_with_value<
+	T
+>::value()
+{
+	return
+		this->value_;
+}
+
+template<
+	typename T
+>
+T const &
+fcppt::options::state_with_value<
+	T
+>::value() const
+{
+	return
+		this->value_;
+}
+
 #endif

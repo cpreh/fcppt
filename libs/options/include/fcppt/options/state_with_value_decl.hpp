@@ -32,6 +32,22 @@ public:
 		T &&
 	);
 
+	[[nodiscard]]
+	fcppt::options::state &
+	state();
+
+	[[nodiscard]]
+	fcppt::options::state const &
+	state() const;
+
+	[[nodiscard]]
+	T &
+	value();
+
+	[[nodiscard]]
+	T const &
+	value() const;
+private:
 	fcppt::options::state state_;
 
 	T value_;

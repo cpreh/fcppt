@@ -30,9 +30,10 @@ template<
 >
 struct label
 {
-	typedef
-	Tag
-	tag;
+	using
+	tag
+	=
+	Tag;
 
 	static_assert(
 		fcppt::record::detail::is_tag<
@@ -47,6 +48,7 @@ struct label
 	template<
 		typename Arg
 	>
+	// NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
 	fcppt::record::detail::element_init<
 		Tag,
 		fcppt::type_traits::remove_cv_ref_t<

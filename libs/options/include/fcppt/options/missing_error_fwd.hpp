@@ -13,7 +13,7 @@ namespace fcppt
 namespace options
 {
 
-struct missing_error;
+class missing_error;
 
 }
 }

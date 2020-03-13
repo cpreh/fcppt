@@ -34,9 +34,11 @@ fcppt::options::detail::check_sub_command_names(
 		:
 		_names
 	)
+	{
 		++count_map[
 			name
 		];
+	}
 
 	for(
 		std::pair<
@@ -46,11 +48,13 @@ fcppt::options::detail::check_sub_command_names(
 		:
 		count_map
 	)
+	{
 		if(
 			element.second
 			>
-			1u
+			1U
 		)
+		{
 			throw
 				fcppt::options::duplicate_names{
 					FCPPT_TEXT("Sub command name \"")
@@ -59,4 +63,6 @@ fcppt::options::detail::check_sub_command_names(
 					+
 					FCPPT_TEXT("\" specified multiple times!")
 				};
+		}
+	}
 }

@@ -18,11 +18,12 @@ namespace log
 namespace impl
 {
 
-typedef
+using
+const_optional_context_tree_ref
+=
 fcppt::optional::reference<
 	fcppt::log::detail::context_tree const
->
-const_optional_context_tree_ref;
+>;
 
 }
 }

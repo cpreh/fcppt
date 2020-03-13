@@ -34,7 +34,7 @@ fcppt::options::detail::leftover_error(
 						+
 						fcppt::output_to_fcppt_string(
 							fcppt::container::output(
-								_state.args_
+								_state.args()
 							)
 						)
 					};

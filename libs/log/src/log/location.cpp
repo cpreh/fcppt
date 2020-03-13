@@ -16,7 +16,7 @@
 
 fcppt::log::location::location()
 :
-	entries_()
+	entries_{}
 {
 }
 
@@ -24,12 +24,11 @@ fcppt::log::location::location(
 	fcppt::log::name _initial
 )
 :
-	entries_(
-		1u,
+	entries_{
 		std::move(
 			_initial.get()
 		)
-	)
+	}
 {
 }
 
@@ -38,7 +37,7 @@ fcppt::log::location::operator /=(
 	fcppt::log::name _string
 )
 {
-	entries_.push_back(
+	this->entries_.push_back(
 		std::move(
 			_string.get()
 		)
@@ -52,14 +51,14 @@ fcppt::log::location::const_iterator
 fcppt::log::location::begin() const
 {
 	return
-		entries_.begin();
+		this->entries_.begin();
 }
 
 fcppt::log::location::const_iterator
 fcppt::log::location::end() const
 {
 	return
-		entries_.end();
+		this->entries_.end();
 }
 
 fcppt::string
@@ -87,7 +86,7 @@ fcppt::log::location::string() const
 
 fcppt::log::location
 fcppt::log::operator /(
-	log::location _location,
+	fcppt::log::location _location,
 	fcppt::log::name _string
 )
 {

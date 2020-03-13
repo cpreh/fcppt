@@ -26,3 +26,17 @@ fcppt::options::option_name::option_name(
 	}
 {
 }
+
+fcppt::string const &
+fcppt::options::option_name::name() const
+{
+	return
+		this->name_;
+}
+
+fcppt::options::option_name::is_short
+fcppt::options::option_name::get_is_short() const
+{
+	return
+		this->is_short_;
+}

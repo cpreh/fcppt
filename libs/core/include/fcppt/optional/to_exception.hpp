@@ -57,12 +57,14 @@ decltype(
 	if(
 		_optional.has_value()
 	)
+	{
 		return
 			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_optional.get_unsafe()
 			);
+	}
 
 	throw
 		_make_exception();

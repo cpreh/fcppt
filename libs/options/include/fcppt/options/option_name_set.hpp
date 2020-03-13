@@ -27,11 +27,12 @@ namespace options
 Each string in this set is expected to be followed by a value,
 e.g. "--foo bar".
 */
-typedef
+using
+option_name_set
+=
 std::set<
 	fcppt::options::option_name
->
-option_name_set;
+>;
 
 }
 }

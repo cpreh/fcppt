@@ -89,7 +89,7 @@ parse_to_empty(
 								return
 									fcppt::options::error{
 										std::move(
-											_error.error_
+											_error.error()
 										)
 									};
 							},
@@ -119,7 +119,7 @@ parse_to_empty(
 				return
 					fcppt::optional::maybe(
 						fcppt::options::detail::leftover_error(
-							_result.state_
+							_result.state()
 						),
 						[
 							&_result
@@ -127,7 +127,7 @@ parse_to_empty(
 							return
 								return_type{
 									std::move(
-										_result.value_
+										_result.value()
 									)
 								};
 						},

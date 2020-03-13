@@ -94,6 +94,7 @@ func();
 namespace mylib
 {
 // Export the vtable of someclass
+// NOLINTNEXTLINE(cppcoreguidelines-special-member-functions,hicpp-special-member-functions)
 class FCPPT_SYMBOL_CLASS someclass
 {
 public:
@@ -159,7 +160,7 @@ mylib::func()
 //! [visibility_define_function]
 
 mylib::someclass::~someclass()
-{}
+= default;
 
 //! [visibility_define_object]
 int const mylib::some_constant = 42;

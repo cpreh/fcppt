@@ -19,13 +19,13 @@ fcppt::options::operator==(
 )
 {
 	return
-		_left.name_
+		_left.name()
 		==
-		_right.name_
+		_right.name()
 		&&
-		_left.is_short_
+		_left.get_is_short()
 		==
-		_right.is_short_;
+		_right.get_is_short();
 }
 
 bool
@@ -36,12 +36,12 @@ fcppt::options::operator<(
 {
 	return
 		std::make_pair(
-			_left.name_,
-			_left.is_short_
+			_left.name(),
+			_left.get_is_short()
 		)
 		<
 		std::make_pair(
-			_right.name_,
-			_right.is_short_
+			_right.name(),
+			_right.get_is_short()
 		);
 }

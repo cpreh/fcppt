@@ -244,6 +244,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	nonmovable
+	NO_CODE
+)
+
+add_fcppt_test(
 	not
 	NO_CODE
 )

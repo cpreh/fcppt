@@ -34,11 +34,12 @@ struct element_vector<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	::metal::list<
 		Types...
-	>
-	type;
+	>;
 };
 
 }

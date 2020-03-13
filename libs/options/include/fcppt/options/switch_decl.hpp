@@ -39,12 +39,13 @@ template<
 >
 class switch_
 {
-	typedef
+	using
+	impl
+	=
 	fcppt::options::flag<
 		Label,
 		bool
-	>
-	impl;
+	>;
 public:
 	/**
 	\brief Constructs a switch parser.
@@ -61,11 +62,13 @@ public:
 		fcppt::options::optional_help_text &&help_text
 	);
 
-	typedef
+	using
+	result_type
+	=
 	typename
-	impl::result_type
-	result_type;
+	impl::result_type;
 
+	[[nodiscard]]
 	fcppt::options::parse_result<
 		result_type
 	>
@@ -74,18 +77,23 @@ public:
 		fcppt::options::parse_context const &
 	) const;
 
+	[[nodiscard]]
 	fcppt::options::flag_name_set
 	flag_names() const;
 
+	[[nodiscard]]
 	fcppt::options::option_name_set
 	option_names() const;
 
+	[[nodiscard]]
 	fcppt::string
 	usage() const;
 
+	[[nodiscard]]
 	fcppt::options::optional_short_name const &
 	short_name() const;
 
+	[[nodiscard]]
 	fcppt::options::long_name const &
 	long_name() const;
 private:

@@ -27,5 +27,19 @@ bool
 fcppt::options::state::empty() const
 {
 	return
-		args_.empty();
+		this->args().empty();
+}
+
+fcppt::args_vector &
+fcppt::options::state::args()
+{
+	return
+		this->args_;
+}
+
+fcppt::args_vector const &
+fcppt::options::state::args() const
+{
+	return
+		this->args_;
 }

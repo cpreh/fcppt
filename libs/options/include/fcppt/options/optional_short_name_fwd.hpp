@@ -21,11 +21,12 @@ namespace options
 
 \ingroup fcpptoptions
 */
-typedef
+using
+optional_short_name
+=
 fcppt::optional::object<
 	fcppt::options::short_name
->
-optional_short_name;
+>;
 
 }
 }

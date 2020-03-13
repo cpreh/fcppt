@@ -44,9 +44,9 @@ class strong_typedef
 {
 public:
 	static_assert(
-		!std::is_reference<
+		!std::is_reference_v<
 			T
-		>::value,
+		>,
 		"T must be a non-reference type"
 	);
 
@@ -67,14 +67,11 @@ public:
 	Tag;
 
 	/**
-	\brief Constructs the strong typedef from a given value using fcppt::safe_cast.
+	\brief Constructs a strong typedef by copying.
 	*/
-	template<
-		typename U
-	>
 	explicit
 	strong_typedef(
-		U const &
+		T const &
 	);
 
 	/**
@@ -86,7 +83,7 @@ public:
 	);
 
 	/**
-	\brief Constructs a strong typedef by moving
+	\brief Constructs a strong typedef by moving.
 	*/
 	explicit
 	strong_typedef(

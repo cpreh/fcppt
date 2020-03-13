@@ -47,14 +47,17 @@ fcppt::cast::bad_dynamic::bad_dynamic(
 {
 }
 
+// NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init,hicpp-member-init)
 fcppt::cast::bad_dynamic::bad_dynamic(
 	bad_dynamic const &
 )
 = default;
 
+// NOLINTNEXTLINE(cppcoreguidelines-pro-type-member-init,hicpp-member-init)
 fcppt::cast::bad_dynamic::bad_dynamic(
 	bad_dynamic &&
 )
+noexcept
 = default;
 
 fcppt::cast::bad_dynamic &
@@ -67,22 +70,23 @@ fcppt::cast::bad_dynamic &
 fcppt::cast::bad_dynamic::operator=(
 	bad_dynamic &&
 )
+noexcept
 = default;
 
-fcppt::cast::bad_dynamic::~bad_dynamic() noexcept
-{
-}
+fcppt::cast::bad_dynamic::~bad_dynamic()
+noexcept
+= default;
 
 std::type_index const &
 fcppt::cast::bad_dynamic::source() const
 {
 	return
-		source_;
+		this->source_;
 }
 
 std::type_index const &
 fcppt::cast::bad_dynamic::destination() const
 {
 	return
-		destination_;
+		this->destination_;
 }

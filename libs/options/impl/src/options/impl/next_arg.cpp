@@ -38,7 +38,7 @@ fcppt::options::impl::next_arg(
 		_args.end()
 	};
 
-	// TODO: This is terrible
+	// TODO(philipp): This is terrible
 	for(
 		fcppt::args_vector::const_iterator cur{
 			_args.begin()
@@ -75,7 +75,7 @@ fcppt::options::impl::next_arg(
 						fcppt::container::contains(
 							_option_names,
 							fcppt::options::option_name{
-								// TODO: Don't copy here.
+								// TODO(philipp): Don't copy here.
 								fcppt::string{
 									_flag.second
 								},
@@ -85,20 +85,23 @@ fcppt::options::impl::next_arg(
 							}
 						)
 					)
+					{
 						++cur;
+					}
 
 					return
 						true;
 				}
 			)
 		)
+		{
 			continue;
-		else
+		}
 
-			return
-				result_type{
-					cur
-				};
+		return
+			result_type{
+				cur
+			};
 	}
 
 	return

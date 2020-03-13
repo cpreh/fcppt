@@ -7,6 +7,7 @@
 #ifndef FCPPT_TYPE_ISO_DETAIL_UNDECORATED_TYPE_HPP_INCLUDED
 #define FCPPT_TYPE_ISO_DETAIL_UNDECORATED_TYPE_HPP_INCLUDED
 
+#include <fcppt/not.hpp>
 #include <fcppt/type_iso/transform.hpp>
 #include <fcppt/type_iso/detail/is_terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -39,9 +40,10 @@ struct undecorated_type<
 	>
 >
 {
-	typedef
-	Type
-	type;
+	using
+	type
+	=
+	Type;
 };
 
 template<
@@ -50,9 +52,11 @@ template<
 struct undecorated_type<
 	Type,
 	std::enable_if_t<
-		!fcppt::type_iso::detail::is_terminal<
-			Type
-		>::value
+		fcppt::not_(
+			fcppt::type_iso::detail::is_terminal<
+				Type
+			>::value
+		)
 	>
 >
 :

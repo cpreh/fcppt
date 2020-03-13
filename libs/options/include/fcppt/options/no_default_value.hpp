@@ -7,7 +7,6 @@
 #ifndef FCPPT_OPTIONS_NO_DEFAULT_VALUE_HPP_INCLUDED
 #define FCPPT_OPTIONS_NO_DEFAULT_VALUE_HPP_INCLUDED
 
-#include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/default_value.hpp>
 
@@ -39,7 +38,9 @@ no_default_value()
 				Type
 			>
 		>{
-			fcppt::optional::nothing{}
+			fcppt::optional::object<
+				Type
+			>{}
 		};
 }
 

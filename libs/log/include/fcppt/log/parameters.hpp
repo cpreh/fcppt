@@ -29,12 +29,14 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	parameters(
 		fcppt::log::name,
-		fcppt::log::format::optional_function const &
+		fcppt::log::format::optional_function &&
 	);
 
+	[[nodiscard]]
 	fcppt::log::name const &
 	name() const;
 
+	[[nodiscard]]
 	fcppt::log::format::optional_function const &
 	formatter() const;
 private:

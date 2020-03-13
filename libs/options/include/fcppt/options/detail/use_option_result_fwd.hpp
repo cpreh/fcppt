@@ -19,12 +19,13 @@ namespace options
 namespace detail
 {
 
-typedef
+using
+use_option_result
+=
 fcppt::either::object<
 	fcppt::options::detail::missing_option_argument,
 	fcppt::optional_string
->
-use_option_result;
+>;
 
 }
 }

@@ -32,6 +32,7 @@ fcppt::options::duplicate_names::duplicate_names(
 fcppt::options::duplicate_names::duplicate_names(
 	duplicate_names &&
 )
+noexcept
 = default;
 
 fcppt::options::duplicate_names &
@@ -44,8 +45,8 @@ fcppt::options::duplicate_names &
 fcppt::options::duplicate_names::operator=(
 	duplicate_names &&
 )
+noexcept
 = default;
 
 fcppt::options::duplicate_names::~duplicate_names() noexcept
-{
-}
+= default;

@@ -32,9 +32,10 @@ struct make_literal<
 	>
 >
 {
-	typedef
-	Type
-	decorated_type;
+	using
+	decorated_type
+	=
+	Type;
 
 	template<
 		typename Arg

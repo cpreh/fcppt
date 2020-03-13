@@ -26,6 +26,11 @@ public:
 		fcppt::options::option_name_set &&
 	);
 
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::options::option_name_set const &
+	option_names() const;
+private:
 	fcppt::options::option_name_set option_names_;
 };
 

@@ -101,6 +101,7 @@ if(
 		"-modernize-use-trailing-return-type"
 		"-readability-inconsistent-declaration-parameter-name"
 		"-readability-named-parameter"
+		"-readability-redundant-member-init"
 	)
 
 	string(

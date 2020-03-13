@@ -21,9 +21,11 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
+// In C++20, this can hopefully be a constexpr
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
 fcppt::enum_::names_array<
 	fcppt::log::level
-> const strings{{{
+> const strings{{{ // NOLINT(cert-err58-cpp)
 	FCPPT_TEXT("verbose"),
 	FCPPT_TEXT("debug"),
 	FCPPT_TEXT("info"),

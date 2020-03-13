@@ -58,7 +58,6 @@ struct from_string_impl
 				fcppt::enum_::names<
 					Enum
 				>(),
-				// TODO:
 				fcppt::string{
 					_string
 				}

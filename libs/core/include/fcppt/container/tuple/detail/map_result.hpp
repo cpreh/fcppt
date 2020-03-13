@@ -45,7 +45,9 @@ struct map_result<
 	Function
 >
 {
-	typedef
+	using
+	type
+	=
 	std::tuple<
 		decltype(
 			std::declval<
@@ -67,8 +69,7 @@ struct map_result<
 				)
 			)
 		)...
-	>
-	type;
+	>;
 };
 
 }

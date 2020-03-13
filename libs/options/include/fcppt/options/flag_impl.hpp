@@ -92,6 +92,7 @@ fcppt::options::flag<
 		==
 		_inactive_value.get()
 	)
+	{
 		throw
 			fcppt::options::exception{
 				FCPPT_TEXT("The active and the inactive value must be different: ")
@@ -100,6 +101,7 @@ fcppt::options::flag<
 					_active_value.get()
 				)
 			};
+	}
 }
 
 template<
@@ -126,7 +128,7 @@ fcppt::options::flag<
 			fcppt::make_ref(
 				_state
 			),
-			long_name_.get(),
+			this->long_name_.get(),
 			fcppt::options::detail::flag_is_short{
 				false
 			}
@@ -246,6 +248,7 @@ fcppt::options::flag<
 	Type
 >::flag_names() const
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	fcppt::options::flag_name_set result{
 		fcppt::options::flag_name{
 			this->long_name_.get()
@@ -300,14 +303,14 @@ fcppt::options::flag<
 		FCPPT_TEXT("[ ")
 		+
 		fcppt::options::detail::long_or_short_name(
-			long_name_,
-			short_name_
+			this->long_name_,
+			this->short_name_
 		)
 		+
 		FCPPT_TEXT(" ]")
 		+
 		fcppt::options::detail::help_text(
-			help_text_
+			this->help_text_
 		);
 }
 
@@ -322,7 +325,7 @@ fcppt::options::flag<
 >::short_name() const
 {
 	return
-		short_name_;
+		this->short_name_;
 }
 
 template<
@@ -336,7 +339,7 @@ fcppt::options::flag<
 >::long_name() const
 {
 	return
-		long_name_;
+		this->long_name_;
 }
 
 #endif

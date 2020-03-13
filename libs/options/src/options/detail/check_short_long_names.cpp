@@ -32,12 +32,14 @@ fcppt::options::detail::check_short_long_names(
 				==
 				_long_name.get()
 			)
+			{
 				throw
 					fcppt::options::duplicate_names{
 						FCPPT_TEXT("Long and short options cannot have the same name: ")
 						+
 						_short_name.get()
 					};
+			}
 		}
 	);
 }

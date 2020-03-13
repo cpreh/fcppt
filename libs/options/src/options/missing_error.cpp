@@ -29,3 +29,31 @@ fcppt::options::missing_error::missing_error(
 	}
 {
 }
+
+fcppt::options::state &
+fcppt::options::missing_error::state()
+{
+	return
+		this->state_;
+}
+
+fcppt::options::state const &
+fcppt::options::missing_error::state() const
+{
+	return
+		this->state_;
+}
+
+fcppt::string &
+fcppt::options::missing_error::error()
+{
+	return
+		this->error_;
+}
+
+fcppt::string const &
+fcppt::options::missing_error::error() const
+{
+	return
+		this->error_;
+}

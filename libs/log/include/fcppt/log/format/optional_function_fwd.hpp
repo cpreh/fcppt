@@ -21,11 +21,12 @@ namespace format
 /**
 \ingroup fcpptlog
 */
-typedef
+using
+optional_function
+=
 fcppt::optional::object<
 	fcppt::log::format::function
->
-optional_function;
+>;
 
 }
 }

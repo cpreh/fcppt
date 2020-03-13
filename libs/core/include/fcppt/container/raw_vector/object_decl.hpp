@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/not.hpp>
 #include <fcppt/container/raw_vector/object_fwd.hpp>
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/type_traits/is_iterator_of_category.hpp>
@@ -43,9 +44,9 @@ template<
 class object
 {
 	static_assert(
-		std::is_pod<
+		std::is_pod_v<
 			T
-		>::value,
+		>,
 		"T must be a POD type"
 	);
 
@@ -53,92 +54,112 @@ class object
 		object
 	);
 public:
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
-	A
-	allocator_type;
+	using
+	allocator_type
+	=
+	A;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	A::size_type
-	size_type;
+	A::size_type;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	A::difference_type
-	difference_type;
+	A::difference_type;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	A::pointer
+	A::pointer;
+
+	using
+	const_pointer
+	=
+	typename
+	A::const_pointer;
+
+	using
+	reference
+	=
+	typename
+	A::reference;
+
+	using
+	const_reference
+	=
+	typename
+	A::const_reference;
+
+	using
+	iterator
+	=
 	pointer;
 
-	typedef
-	typename
-	A::const_pointer
+	using
+	const_iterator
+	=
 	const_pointer;
 
-	typedef
-	typename
-	A::reference
-	reference;
-
-	typedef
-	typename
-	A::const_reference
-	const_reference;
-
-	typedef
-	pointer
-	iterator;
-
-	typedef
-	const_pointer
-	const_iterator;
-
+	[[nodiscard]]
 	iterator
 	begin()
 	noexcept;
 
+	[[nodiscard]]
 	const_iterator
 	begin() const
 	noexcept;
 
+	[[nodiscard]]
 	iterator
 	end()
 	noexcept;
 
+	[[nodiscard]]
 	const_iterator
 	end() const
 	noexcept;
 
+	[[nodiscard]]
 	reference
 	operator[](
 		size_type
 	)
 	noexcept;
 
+	[[nodiscard]]
 	const_reference
 	operator[](
 		size_type
 	) const
 	noexcept;
 
+	[[nodiscard]]
 	reference
 	front()
 	noexcept;
 
+	[[nodiscard]]
 	const_reference
 	front() const
 	noexcept;
 
+	[[nodiscard]]
 	reference
 	back()
 	noexcept;
 
+	[[nodiscard]]
 	const_reference
 	back() const
 	noexcept;
@@ -146,6 +167,7 @@ public:
 	/**
 	\brief Returns the pointer to the store.
 	*/
+	[[nodiscard]]
 	pointer
 	data()
 	noexcept;
@@ -153,6 +175,7 @@ public:
 	/**
 	\brief Returns the pointer to the store.
 	*/
+	[[nodiscard]]
 	const_pointer
 	data() const
 	noexcept;
@@ -162,6 +185,7 @@ public:
 
 	Equal to <code>data() + size()</code>.
 	*/
+	[[nodiscard]]
 	pointer
 	data_end()
 	noexcept;
@@ -171,19 +195,35 @@ public:
 
 	Equal to <code>data() + size()</code>.
 	*/
+	[[nodiscard]]
 	const_pointer
 	data_end() const
 	noexcept;
 
+	object();
+
 	explicit
 	object(
-		A const &a = A()
+		A const &
+	);
+
+	object(
+		size_type sz,
+		T const &value
 	);
 
 	object(
 		size_type sz,
 		T const &value,
-		A const &a = A()
+		A const &
+	);
+
+	template<
+		typename In
+	>
+	object(
+		In beg,
+		In end
 	);
 
 	template<
@@ -192,7 +232,7 @@ public:
 	object(
 		In beg,
 		In end,
-		A const &a = A()
+		A const &
 	);
 
 	/**
@@ -206,12 +246,17 @@ public:
 	)
 	noexcept;
 
-	explicit
+	object(
+		std::initializer_list<
+			value_type
+		>
+	);
+
 	object(
 		std::initializer_list<
 			value_type
 		>,
-		A const &a = A()
+		A const &
 	);
 
 	object(
@@ -241,14 +286,17 @@ public:
 	clear()
 	noexcept;
 
+	[[nodiscard]]
 	size_type
 	size() const
 	noexcept;
 
+	[[nodiscard]]
 	bool
 	empty() const
 	noexcept;
 
+	[[nodiscard]]
 	size_type
 	capacity() const
 	noexcept;
@@ -270,6 +318,7 @@ public:
 		size_type sz
 	);
 
+	[[nodiscard]]
 	allocator_type
 	get_allocator() const;
 
@@ -316,10 +365,12 @@ private:
 		typename In
 	>
 	std::enable_if_t<
-		!fcppt::type_traits::is_iterator_of_category<
-			In,
-			std::forward_iterator_tag
-		>::value,
+		fcppt::not_(
+			fcppt::type_traits::is_iterator_of_category<
+				In,
+				std::forward_iterator_tag
+			>::value
+		),
 		void
 	>
 	insert_impl(
@@ -344,6 +395,7 @@ private:
 		In end
 	);
 
+	[[nodiscard]]
 	size_type
 	new_capacity(
 		size_type new_size
@@ -405,12 +457,12 @@ private:
 		reset_pointers()
 		noexcept;
 
-		A alloc_;
+		A alloc_; // NOLINT(misc-non-private-member-variables-in-classes)
 
 		pointer
-			first_,
-	        	last_,
-			cap_;
+			first_, // NOLINT(misc-non-private-member-variables-in-classes)
+        	last_, // NOLINT(misc-non-private-member-variables-in-classes)
+			cap_; // NOLINT(misc-non-private-member-variables-in-classes)
 	};
 
 	explicit

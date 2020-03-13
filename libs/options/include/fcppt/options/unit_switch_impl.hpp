@@ -72,14 +72,13 @@ fcppt::options::unit_switch<
 {
 	return
 		fcppt::either::bind(
-			impl_.parse(
+			this->impl_.parse(
 				std::move(
 					_state
 				),
 				_context
 			),
 			[
-				&_state,
 				this
 			](
 				fcppt::options::state_with_value<
@@ -93,7 +92,7 @@ fcppt::options::unit_switch<
 					fcppt::record::get<
 						Label
 					>(
-						_result.value_
+						_result.value()
 					)
 					?
 						fcppt::options::parse_result<
@@ -103,7 +102,7 @@ fcppt::options::unit_switch<
 								result_type
 							>{
 								std::move(
-									_result.state_
+									_result.state()
 								),
 								result_type{
 									Label{} =
@@ -120,7 +119,7 @@ fcppt::options::unit_switch<
 							fcppt::options::parse_error{
 								fcppt::options::missing_error{
 									std::move(
-										_state
+										_result.state()
 									),
 									FCPPT_TEXT("Missing flag ")
 									+
@@ -147,7 +146,7 @@ fcppt::options::unit_switch<
 >::flag_names() const
 {
 	return
-		impl_.flag_names();
+		this->impl_.flag_names();
 }
 
 template<
@@ -159,7 +158,7 @@ fcppt::options::unit_switch<
 >::option_names() const
 {
 	return
-		impl_.option_names();
+		this->impl_.option_names();
 }
 
 template<
@@ -172,8 +171,8 @@ fcppt::options::unit_switch<
 {
 	return
 		fcppt::options::detail::long_or_short_name(
-			impl_.long_name(),
-			impl_.short_name()
+			this->impl_.long_name(),
+			this->impl_.short_name()
 		);
 }
 
@@ -186,7 +185,7 @@ fcppt::options::unit_switch<
 >::short_name() const
 {
 	return
-		impl_.short_name();
+		this->impl_.short_name();
 }
 
 template<
@@ -198,7 +197,7 @@ fcppt::options::unit_switch<
 >::long_name() const
 {
 	return
-		impl_.long_name();
+		this->impl_.long_name();
 }
 
 #endif

@@ -15,6 +15,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
+//NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
 template<
 	typename Tag
 >

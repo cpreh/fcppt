@@ -40,11 +40,12 @@ struct as<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	Type<
 		Elements...
-	>
-	type;
+	>;
 };
 
 }

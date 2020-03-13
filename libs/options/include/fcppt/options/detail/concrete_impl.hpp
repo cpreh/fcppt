@@ -97,13 +97,13 @@ fcppt::options::detail::concrete<
 						result_type
 					>{
 						std::move(
-							_result.state_
+							_result.state()
 						),
 						fcppt::record::permute<
 							result_type
 						>(
 							std::move(
-								_result.value_
+								_result.value()
 							)
 						)
 					};

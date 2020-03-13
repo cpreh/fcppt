@@ -43,7 +43,8 @@ public:
 	FCPPT_DETAIL_SYMBOL
 	invalid_get(
 		invalid_get &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	invalid_get &
@@ -55,7 +56,8 @@ public:
 	invalid_get &
 	operator=(
 		invalid_get &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	~invalid_get() noexcept

@@ -37,13 +37,16 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	temporary_output(
 		temporary_output &&
-	);
+	)
+	noexcept(false);
 
 	FCPPT_LOG_DETAIL_SYMBOL
 	temporary_output &
 	operator=(
 		temporary_output &&
-	);
+	)
+	noexcept(false)
+	;
 
 	FCPPT_LOG_DETAIL_SYMBOL
 	~temporary_output();

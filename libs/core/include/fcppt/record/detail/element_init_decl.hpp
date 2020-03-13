@@ -36,18 +36,20 @@ template<
 class element_init
 {
 public:
-	typedef
-	Tag
-	tag;
+	using
+	tag
+	=
+	Tag;
 
-	typedef
-	Type
-	value_type;
+	using
+	value_type
+	=
+	Type;
 
 	static_assert(
-		!std::is_lvalue_reference<
+		!std::is_lvalue_reference_v<
 			value_type
-		>::value,
+		>,
 		"Type must not be a reference"
 	);
 

@@ -77,45 +77,51 @@ public:
 		"Types must be fcppt::iterator::types"
 	);
 
-	typedef
+	using
+	derived
+	=
 	typename
-	Types::derived
-	derived;
+	Types::derived;
 
 	static_assert(
 		fcppt::not_(
-			std::is_const<
+			std::is_const_v<
 				derived
-			>::value
+			>
 		),
 		"Derived can not be const"
 	);
 
-	typedef
+	using
+	value_type
+	=
 	typename
-	Types::value_type
-	value_type;
+	Types::value_type;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	Types::reference
-	reference;
+	Types::reference;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	Types::difference_type
-	difference_type;
+	Types::difference_type;
 
-	typedef
+	using
+	pointer
+	=
 	std::add_pointer_t<
 		reference
-	>
-	pointer;
+	>;
 
-	typedef
+	using
+	iterator_category
+	=
 	typename
-	Types::iterator_category
-	iterator_category;
+	Types::iterator_category;
 private:
 	template<
 		typename Category

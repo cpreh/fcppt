@@ -11,21 +11,31 @@
 
 
 #if defined(FCPPT_CONFIG_GCC_COMPILER)
-#	include <fcppt/from_std_string.hpp>
+#include <fcppt/from_std_string.hpp>
+#include <string_view>
 #	define FCPPT_PP_DETAIL_FUNCTION \
 	fcppt::from_std_string( \
-		__PRETTY_FUNCTION__ \
+		std::string_view{\
+			static_cast< \
+				char const * \
+			>( \
+				__PRETTY_FUNCTION__ \
+			) \
+		}\
 	)
 #elif defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	include <fcppt/from_std_string.hpp>
+#include <fcppt/from_std_string.hpp>
+#include <string_view>
 #	define FCPPT_PP_DETAIL_FUNCTION \
 	fcppt::from_std_string(\
-		__FUNCSIG__\
+		std::string_view{\
+			__FUNCSIG__\
+		}\
 	)
 #else
-#	include <fcppt/text.hpp>
+#include <fcppt/string.hpp>
 #	define FCPPT_PP_DETAIL_FUNCTION \
-	FCPPT_TEXT("")
+	fcppt::string{}
 #endif
 
 #endif

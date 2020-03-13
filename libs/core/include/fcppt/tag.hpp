@@ -25,9 +25,10 @@ template<
 >
 struct tag
 {
-	typedef
-	Type
-	type;
+	using
+	type
+	=
+	Type;
 };
 
 }

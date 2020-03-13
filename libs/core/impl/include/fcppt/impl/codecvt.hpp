@@ -44,33 +44,38 @@ codecvt(
 	Function const &_function
 )
 {
-	typedef
+	using
+	return_type
+	=
 	std::basic_string<
 		Out
-	>
-	return_type;
+	>;
 
-	typedef
+	using
+	optional_return_type
+	=
 	fcppt::optional::object<
 		return_type
-	>
-	optional_return_type;
+	>;
 
-	typedef
+	using
+	buffer_type
+	=
 	fcppt::container::buffer::object<
 		Out
-	>
-	buffer_type;
+	>;
 
 	if(
 		_string.empty()
 	)
+	{
 		return
 			optional_return_type(
 				return_type{}
 			);
+	}
 
-	fcppt::impl::codecvt_type const &conv(
+	auto const &conv(
 		std::use_facet<
 			fcppt::impl::codecvt_type
 		>(
@@ -82,9 +87,10 @@ codecvt(
 		_string.size()
 	};
 
-	typedef
-	fcppt::impl::codecvt_type::state_type
-	state_type;
+	using
+	state_type
+	=
+	fcppt::impl::codecvt_type::state_type;
 
 	state_type state{};
 
@@ -128,7 +134,7 @@ codecvt(
 					)
 				)
 			:
-				0u
+				0U
 		};
 
 		buf.written(
@@ -154,8 +160,9 @@ codecvt(
 			if(
 				written
 				==
-				0u
+				0U
 			)
+			{
 				return
 					optional_return_type{
 						return_type(
@@ -163,11 +170,12 @@ codecvt(
 							buf.end()
 						)
 					};
+			}
 
 			buf.resize_write_area(
 				buf.read_size()
 				*
-				2u
+				2U
 			);
 			continue;
 		case std::codecvt_base::ok:

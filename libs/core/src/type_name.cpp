@@ -24,7 +24,7 @@ fcppt::type_name(
 )
 {
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
-	int status;
+	int status{0};
 
 	fcppt::unique_ptr<
 		char,

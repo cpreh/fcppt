@@ -71,6 +71,7 @@ split_string(
 		cur != _string.end();
 		++cur
 	)
+	{
 		if(
 			*cur
 			==
@@ -85,10 +86,12 @@ split_string(
 			);
 
 			last =
+				// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 				std::next(
 					cur
 				);
 		}
+	}
 
 	result.push_back(
 		String{

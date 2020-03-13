@@ -27,14 +27,35 @@ A missing error is an error that occurs if a required argument or option has
 not been specified. Such an error makes #fcppt::options::optional
 parsers return an empty optional.
 */
-struct missing_error
+class missing_error
 {
+public:
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	missing_error(
 		fcppt::options::state &&,
 		fcppt::string &&
 	);
 
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::options::state &
+	state();
+
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::options::state const &
+	state() const;
+
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::string &
+	error();
+
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::string const &
+	error() const;
+private:
 	fcppt::options::state state_;
 
 	fcppt::string error_;

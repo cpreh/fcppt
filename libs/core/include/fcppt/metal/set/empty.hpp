@@ -19,9 +19,10 @@ namespace metal
 namespace set
 {
 
-typedef
-::metal::map<>
-empty;
+using
+empty
+=
+::metal::map<>;
 
 }
 }

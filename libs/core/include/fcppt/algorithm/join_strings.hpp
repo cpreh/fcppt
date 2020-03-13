@@ -57,20 +57,14 @@ join_strings(
 	FCPPT_PP_PUSH_WARNING
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
-	// TODO
-	typedef
-	typename
-	Range::const_iterator
-	iterator;
-
-	iterator const end{
+	auto const end{
 		fcppt::range::end(
 			_range
 		)
 	};
 
 	for(
-		iterator it(
+		auto it(
 			fcppt::range::begin(
 				_range
 			)
@@ -82,13 +76,16 @@ join_strings(
 		result += *it;
 
 		if(
+			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			std::next(
 				it
 			)
 			!=
 			end
 		)
+		{
 			result += _delim;
+		}
 	}
 
 	FCPPT_PP_POP_WARNING

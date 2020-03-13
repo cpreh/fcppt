@@ -24,14 +24,14 @@ fcppt::options::detail::pop_arg(
 )
 {
 	fcppt::args_vector &args{
-		_state.get().args_
+		_state.get().args()
 	};
 
 	return
 		fcppt::optional::map(
 			fcppt::options::impl::next_arg(
 				args,
-				_context.option_names_
+				_context.option_names()
 			),
 			[
 				&args

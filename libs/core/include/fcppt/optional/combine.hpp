@@ -57,7 +57,9 @@ fcppt::optional::object<
 	)
 >
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		decltype(
 			_function(
@@ -73,8 +75,7 @@ fcppt::optional::object<
 				)
 			)
 		)
-	>
-	result_type;
+	>;
 
 	static_assert(
 		fcppt::optional::detail::check<
@@ -86,6 +87,7 @@ fcppt::optional::object<
 	if(
 		!_optional1.has_value()
 	)
+	{
 		return
 			result_type{
 				std::forward<
@@ -94,10 +96,12 @@ fcppt::optional::object<
 					_optional2
 				)
 			};
+	}
 
 	if(
 		!_optional2.has_value()
 	)
+	{
 		return
 			result_type{
 				std::forward<
@@ -106,6 +110,7 @@ fcppt::optional::object<
 					_optional1
 				)
 			};
+	}
 
 	return
 		result_type{

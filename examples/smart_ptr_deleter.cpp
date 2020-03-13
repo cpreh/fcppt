@@ -18,7 +18,9 @@ main()
 	> void_c_ptr;
 
 	void_c_ptr ptr(
+		// NOLINTNEXTLINE(cppcoreguidelines-no-malloc,hicpp-no-malloc)
 		std::malloc(
+			// NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			100
 		)
 	);

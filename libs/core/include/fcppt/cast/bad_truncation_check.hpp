@@ -62,7 +62,8 @@ public:
 	FCPPT_DETAIL_SYMBOL
 	bad_truncation_check(
 		bad_truncation_check &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	bad_truncation_check &
@@ -74,7 +75,8 @@ public:
 	bad_truncation_check &
 	operator=(
 		bad_truncation_check &&
-	);
+	)
+	noexcept;
 
 	FCPPT_DETAIL_SYMBOL
 	~bad_truncation_check() noexcept
@@ -83,6 +85,7 @@ public:
 	/**
 	\brief Returns the source type information
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	source() const;
@@ -90,6 +93,7 @@ public:
 	/**
 	\brief Returns the destination type information
 	*/
+	[[nodiscard]]
 	FCPPT_DETAIL_SYMBOL
 	std::type_index const &
 	destination() const;

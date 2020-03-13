@@ -58,7 +58,9 @@ std::remove_reference_t<
 	)
 >
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		decltype(
 			_function(
@@ -69,8 +71,7 @@ std::remove_reference_t<
 				)
 			)
 		)
-	>
-	result_type;
+	>;
 
 	static_assert(
 		fcppt::optional::detail::check<

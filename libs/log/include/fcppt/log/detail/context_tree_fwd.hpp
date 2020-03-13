@@ -18,11 +18,12 @@ namespace log
 namespace detail
 {
 
-typedef
+using
+context_tree
+=
 fcppt::container::tree::object<
 	fcppt::log::detail::context_tree_node
->
-context_tree;
+>;
 
 }
 }

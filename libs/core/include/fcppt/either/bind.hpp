@@ -53,11 +53,12 @@ decltype(
 	)
 )
 {
-	typedef
+	using
+	either
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Either
-	>
-	either;
+	>;
 
 	static_assert(
 		fcppt::either::is_object<
@@ -66,7 +67,9 @@ decltype(
 		"Either must be an either"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	decltype(
 		_function(
 			fcppt::move_if_rvalue<
@@ -75,8 +78,7 @@ decltype(
 				_either.get_success_unsafe()
 			)
 		)
-	)
-	result_type;
+	);
 
 	static_assert(
 		fcppt::either::is_object<

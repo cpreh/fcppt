@@ -36,9 +36,10 @@ class function<
 >
 {
 public:
-	typedef
-	Ret
-	result_type;
+	using
+	result_type
+	=
+	Ret;
 
 	template<
 		typename F
@@ -65,7 +66,8 @@ public:
 
 	function(
 		function &&
-	);
+	)
+	noexcept;
 
 	function &
 	operator=(
@@ -75,9 +77,11 @@ public:
 	function &
 	operator=(
 		function &&
-	);
+	)
+	noexcept;
 
-	~function();
+	~function()
+	noexcept;
 
 	Ret
 	operator()(

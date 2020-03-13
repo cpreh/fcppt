@@ -38,9 +38,9 @@ fcppt::options::detail::use_option(
 		)
 	};
 
-	// TODO: This is terrible
+	// TODO(philipp): This is terrible
 	fcppt::args_vector &args{
-		_state.get().args_
+		_state.get().args()
 	};
 
 	fcppt::args_vector::iterator const end{
@@ -60,33 +60,41 @@ fcppt::options::detail::use_option(
 		==
 		end
 	)
+	{
 		return
 			fcppt::options::detail::use_option_result{
 				fcppt::optional_string{}
 			};
+	}
 
 	if(
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::next(
 			pos
 		)
 		==
 		end
 	)
+	{
 		return
 			fcppt::options::detail::use_option_result{
 				fcppt::options::detail::missing_option_argument{
 					flag_name
 				}
 			};
+	}
 
 	fcppt::string result{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		*std::next(
 			pos
 		)
 	};
 
 	args.erase(
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		pos,
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::next(
 			pos,
 			2

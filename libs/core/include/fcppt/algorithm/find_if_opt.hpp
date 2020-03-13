@@ -46,19 +46,21 @@ find_if_opt(
 	Comp const &_comp
 )
 {
-	typedef
+	using
+	iterator_type
+	=
 	fcppt::container::to_iterator_type<
 		std::remove_reference_t<
 			Range
 		>
-	>
-	iterator_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		iterator_type
-	>
-	result_type;
+	>;
 
 	iterator_type const end{
 		fcppt::range::end(

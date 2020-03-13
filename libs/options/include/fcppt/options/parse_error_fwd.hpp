@@ -25,12 +25,13 @@ namespace options
 An error can either be caused by a missing argument or option, or by something
 else like a failed conversion.
 */
-typedef
+using
+parse_error
+=
 fcppt::variant::object<
 	fcppt::options::missing_error,
 	fcppt::options::other_error
->
-parse_error;
+>;
 
 }
 }

@@ -73,16 +73,19 @@ public:
 
 	~unique_ptr();
 
+	[[nodiscard]]
 	std::add_lvalue_reference_t<
 		Type
 	>
 	operator*() const
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	operator->() const
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	get_pointer() const
 	noexcept;
@@ -93,6 +96,7 @@ public:
 	This can be used to move the pointer to another class that takes over
 	ownership. Use this with extreme caution.
 	*/
+	[[nodiscard]]
 	pointer
 	release_ownership()
 	noexcept;

@@ -16,7 +16,11 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
-typedef unsigned long version_int;
+using
+version_int
+=
+// NOLINTNEXTLINE(google-runtime-int)
+unsigned long;
 
 }
 

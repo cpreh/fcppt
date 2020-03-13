@@ -25,13 +25,14 @@ namespace format
 
 This object gets a string from which it returns a new string
 */
-typedef
+using
+function
+=
 fcppt::function<
 	fcppt::string (
 		fcppt::string
 	)
->
-function;
+>;
 
 }
 }

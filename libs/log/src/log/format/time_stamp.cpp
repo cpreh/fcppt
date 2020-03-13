@@ -23,7 +23,8 @@ fcppt::log::format::time_stamp()
 				fcppt::string const &_text
 			)
 			{
-				fcppt::io::ostringstream stream;
+				// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+				fcppt::io::ostringstream stream{};
 
 				fcppt::time::output_tm(
 					stream,

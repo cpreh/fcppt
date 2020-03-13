@@ -34,13 +34,14 @@ maybe_front(
 	Container &_container
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::reference<
 		fcppt::container::to_value_type<
 			Container
 		>
-	>
-	result_type;
+	>;
 
 	return
 		_container.empty()

@@ -57,7 +57,7 @@ void f(first_name);
 
 void g()
 {
-	email_address address("a@b.com");
+	email_address address(std::string{"a@b.com"});
 
 	//f(address); error
 }
@@ -190,7 +190,7 @@ main()
 
 	motivation2::g();
 
-	motivation2::f(motivation2::first_name(""));
+	motivation2::f(motivation2::first_name(std::string{}));
 
 	distance_example::f(distance_example::distance(1),distance_example::distance(2));
 }

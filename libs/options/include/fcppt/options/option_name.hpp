@@ -38,6 +38,16 @@ public:
 		is_short
 	);
 
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::string const &
+	name() const;
+
+	[[nodiscard]]
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	is_short
+	get_is_short() const;
+private:
 	fcppt::string name_;
 
 	is_short is_short_;

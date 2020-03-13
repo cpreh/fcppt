@@ -23,11 +23,12 @@ namespace options
 
 A help parser is a switch used to display a help message.
 */
-typedef
+using
+help_switch
+=
 fcppt::options::unit_switch<
 	fcppt::options::detail::help_label
->
-help_switch;
+>;
 
 }
 }

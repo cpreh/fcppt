@@ -35,14 +35,14 @@ combine_errors_impl(
 	return
 		fcppt::options::missing_error{
 			std::move(
-				_error2.state_
+				_error2.state()
 			),
 			_function(
 				std::move(
-					_error1.error_
+					_error1.error()
 				),
 				std::move(
-					_error2.error_
+					_error2.error()
 				)
 			)
 		};
@@ -66,7 +66,7 @@ combine_errors_impl(
 					_error1.get()
 				),
 				std::move(
-					_error2.error_
+					_error2.error()
 				)
 			)
 		};
@@ -87,7 +87,7 @@ combine_errors_impl(
 		fcppt::options::other_error{
 			_function(
 				std::move(
-					_error1.error_
+					_error1.error()
 				),
 				std::move(
 					_error2.get()

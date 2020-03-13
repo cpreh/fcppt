@@ -72,9 +72,10 @@ public:
 	/**
 	\brief The value type
 	*/
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
 	/**
 	\brief Constructs an empty optional

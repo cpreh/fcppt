@@ -40,11 +40,12 @@ template<
 >
 class unit_switch
 {
-	typedef
+	using
+	impl
+	=
 	fcppt::options::switch_<
 		Label
-	>
-	impl;
+	>;
 public:
 	/**
 	\brief Constructs a switch parser.
@@ -58,15 +59,17 @@ public:
 		fcppt::options::long_name &&long_name
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			Label,
 			fcppt::unit
 		>
-	>
-	result_type;
+	>;
 
+	[[nodiscard]]
 	fcppt::options::parse_result<
 		result_type
 	>
@@ -75,18 +78,23 @@ public:
 		fcppt::options::parse_context const &
 	) const;
 
+	[[nodiscard]]
 	fcppt::options::flag_name_set
 	flag_names() const;
 
+	[[nodiscard]]
 	fcppt::options::option_name_set
 	option_names() const;
 
+	[[nodiscard]]
 	fcppt::string
 	usage() const;
 
+	[[nodiscard]]
 	fcppt::options::optional_short_name const &
 	short_name() const;
 
+	[[nodiscard]]
 	fcppt::options::long_name const &
 	long_name() const;
 private:

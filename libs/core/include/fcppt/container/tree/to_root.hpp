@@ -33,11 +33,12 @@ template<
 >
 class to_root
 {
-	typedef
+	using
+	tree_value_type
+	=
 	std::remove_cv_t<
 		Tree
-	>
-	tree_value_type;
+	>;
 
 	static_assert(
 		fcppt::container::tree::is_object<
@@ -62,19 +63,23 @@ public:
 
 	class iterator;
 private:
-	typedef
+	using
+	tree_ref
+	=
 	fcppt::reference<
 		Tree
-	>
-	tree_ref;
+	>;
 
-	typedef
+	using
+	optional_tree_ref
+	=
 	fcppt::optional::reference<
 		Tree
-	>
-	optional_tree_ref;
+	>;
 
-	typedef
+	using
+	iterator_base
+	=
 	fcppt::iterator::base<
 		fcppt::iterator::types<
 			iterator,
@@ -84,8 +89,7 @@ private:
 			tree_value_type::difference_type,
 			std::forward_iterator_tag
 		>
-	>
-	iterator_base;
+	>;
 public:
 	class iterator final
 	:
@@ -109,31 +113,36 @@ public:
 		{
 		}
 
-		typedef
+		using
+		value_type
+		=
 		fcppt::type_traits::value_type<
 			iterator_base
-		>
-		value_type;
+		>;
 
-		typedef
+		using
+		reference
+		=
 		typename
-		iterator_base::reference
-		reference;
+		iterator_base::reference;
 
-		typedef
+		using
+		pointer
+		=
 		typename
-		iterator_base::pointer
-		pointer;
+		iterator_base::pointer;
 
-		typedef
+		using
+		difference_type
+		=
 		typename
-		iterator_base::difference_type
-		difference_type;
+		iterator_base::difference_type;
 
-		typedef
+		using
+		iterator_category
+		=
 		typename
-		iterator_base::iterator_category
-		iterator_category;
+		iterator_base::iterator_category;
 
 		void
 		increment()
@@ -142,6 +151,7 @@ public:
 				this->dereference().parent();
 		}
 
+		[[nodiscard]]
 		reference
 		dereference() const
 		{
@@ -149,6 +159,7 @@ public:
 				current_.get_unsafe().get();
 		}
 
+		[[nodiscard]]
 		bool
 		equal(
 			iterator const &_other
@@ -163,13 +174,15 @@ public:
 		optional_tree_ref current_;
 	};
 
-	typedef
-	iterator
-	const_iterator;
+	using
+	const_iterator
+	=
+	iterator;
 
 	/**
 	\brief Return an iterator to the first tree in the traversal
 	*/
+	[[nodiscard]]
 	iterator
 	begin() const
 	{
@@ -184,6 +197,7 @@ public:
 	/**
 	\brief Return a dummy iterator to stop the traversal
 	*/
+	[[nodiscard]]
 	iterator
 	end() const
 	{

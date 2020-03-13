@@ -38,11 +38,12 @@ public:
 	{
 	}
 
+	[[nodiscard]]
 	Container const &
 	container() const
 	{
 		return
-			container_.get();
+			this->container_.get();
 	}
 private:
 	fcppt::reference<
@@ -75,12 +76,13 @@ operator<<(
 			'['
 		);
 
-	typedef
+	using
+	const_iterator
+	=
 	typename
-	Container::const_iterator
-	const_iterator;
+	Container::const_iterator;
 
-	const_iterator const end(
+	auto const end(
 		_output.container().end()
 	);
 
@@ -97,17 +99,20 @@ operator<<(
 			*it;
 
 		if(
+			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			std::next(
 				it
 			)
 			!=
 			end
 		)
+		{
 			_stream
 				<<
 				_stream.widen(
 					','
 				);
+		}
 	}
 
 	_stream

@@ -14,7 +14,7 @@
 
 fcppt::log::parameters::parameters(
 	fcppt::log::name _name,
-	fcppt::log::format::optional_function const &_formatter
+	fcppt::log::format::optional_function &&_formatter
 )
 :
 	name_{
@@ -23,7 +23,9 @@ fcppt::log::parameters::parameters(
 		)
 	},
 	formatter_{
-		_formatter
+		std::move(
+			_formatter
+		)
 	}
 {
 }
@@ -32,12 +34,12 @@ fcppt::log::name const &
 fcppt::log::parameters::name() const
 {
 	return
-		name_;
+		this->name_;
 }
 
 fcppt::log::format::optional_function const &
 fcppt::log::parameters::formatter() const
 {
 	return
-		formatter_;
+		this->formatter_;
 }
