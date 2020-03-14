@@ -18,6 +18,7 @@
 #include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <utility>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -118,14 +119,21 @@ fcppt::math::dim::object<
 	N,
 	S
 >::object(
-	object &&
+	object &&_other
 )
 noexcept(
 	std::is_nothrow_move_constructible_v<
 		storage_type
 	>
 )
-= default;
+:
+	storage_{
+		std::move(
+			_other.storage_
+		)
+	}
+{
+}
 
 template<
 	typename T,
@@ -191,14 +199,32 @@ fcppt::math::dim::object<
 	N,
 	S
 >::operator=(
-	object &&
+	object &&_other
 )
 noexcept(
 	std::is_nothrow_move_assignable_v<
 		storage_type
 	>
 )
-= default;
+{
+	if(
+		this
+		==
+		&_other
+	)
+	{
+		return
+			*this;
+	}
+
+	storage_ =
+		std::move(
+			_other.storage_
+		);
+
+	return
+		*this;
+}
 
 template<
 	typename T,
