@@ -13,7 +13,7 @@ endfunction()
 add_fcppt_metal_example(
 	invoke_on
 	LINK_LIBS
-		fcppt_core_interface
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_metal_example(

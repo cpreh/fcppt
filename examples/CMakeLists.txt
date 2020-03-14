@@ -164,7 +164,7 @@ add_fcppt_example(
 add_fcppt_example(
         main
 	LINK_LIBS
-		fcppt_core_interface
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_example(
