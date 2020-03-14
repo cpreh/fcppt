@@ -22,6 +22,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -143,7 +144,11 @@ fcppt::math::matrix::object<
 >::object(
 	object &&
 )
-noexcept
+noexcept(
+	std::is_nothrow_move_constructible_v<
+		storage_type
+	>
+)
 = default;
 
 template<
@@ -221,7 +226,11 @@ fcppt::math::matrix::object<
 >::operator=(
 	object &&
 )
-noexcept
+noexcept(
+	std::is_nothrow_move_assignable_v<
+		storage_type
+	>
+)
 = default;
 
 template<

@@ -12,6 +12,9 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -155,7 +158,11 @@ public:
 	object(
 		object &&
 	)
-	noexcept;
+	noexcept(
+		std::is_nothrow_move_constructible_v<
+			storage_type
+		>
+	);
 
 	/**
 	\brief Create a vector from a vector with the same dimension and value
@@ -190,7 +197,11 @@ public:
 	operator=(
 		object &&
 	)
-	noexcept;
+	noexcept(
+		std::is_nothrow_move_assignable_v<
+			storage_type
+		>
+	);
 
 	/**
 	\brief Copy the values from a different vector

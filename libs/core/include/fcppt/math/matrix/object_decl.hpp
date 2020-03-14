@@ -15,6 +15,9 @@
 #include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -219,7 +222,11 @@ public:
 	object(
 		object &&
 	)
-	noexcept;
+	noexcept(
+		std::is_nothrow_move_constructible_v<
+			storage_type
+		>
+	);
 
 	/**
 	\brief Create a matrix from a matrix with the same dimension and value
@@ -255,7 +262,11 @@ public:
 	operator=(
 		object &&
 	)
-	noexcept;
+	noexcept(
+		std::is_nothrow_move_assignable_v<
+			storage_type
+		>
+	);
 
 	/**
 	\brief Copy the values from a different matrix of the same size but

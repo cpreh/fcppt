@@ -17,6 +17,9 @@
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -117,7 +120,11 @@ fcppt::math::vector::object<
 >::object(
 	object &&
 )
-noexcept
+noexcept(
+	std::is_nothrow_move_constructible_v<
+		storage_type
+	>
+)
 = default;
 
 template<
@@ -186,7 +193,11 @@ fcppt::math::vector::object<
 >::operator=(
 	object &&
 )
-noexcept
+noexcept(
+	std::is_nothrow_move_assignable_v<
+		storage_type
+	>
+)
 = default;
 
 template<
