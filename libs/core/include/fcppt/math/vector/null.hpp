@@ -43,14 +43,15 @@ null()
 		"Vector must be a vector"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::vector::static_<
 		fcppt::type_traits::value_type<
 			Vector
 		>,
 		Vector::static_size::value
-	>
-	result_type;
+	>;
 
 	return
 		result_type(

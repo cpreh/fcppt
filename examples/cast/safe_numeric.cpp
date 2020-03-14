@@ -16,11 +16,15 @@ namespace
 class my_class
 {
 public:
+	using
+	int_type
+	=
+	unsigned long; // NOLINT(google-runtime-int)
 	// The constructor would normally be declared like this:
 	/*
 	explicit
 	my_class(
-		unsigned long
+		int_type
 	);
 	*/
 
@@ -38,7 +42,7 @@ public:
 	:
 		inner_(
 			fcppt::cast::safe_numeric<
-				unsigned long
+				int_type
 			>(
 				_other
 			)
@@ -46,7 +50,7 @@ public:
 	{
 	}
 private:
-	unsigned long inner_;
+	int_type inner_;
 };
 //! [safe_numeric_cast_class]
 
@@ -59,14 +63,14 @@ main()
 //! [safe_numeric_cast_objects]
 	// Ok, because an unsigned int can be converted to an unsigned long
 	my_class const test1(
-		10u
+		1U
 	);
 
 	// Doesn't compile, because the signedness is different, although it
 	// would work at runtime. The value could as well be negative.
 	/*
 	my_class const test2(
-		10
+		1
 	);
 	*/
 

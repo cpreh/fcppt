@@ -50,6 +50,7 @@ fcppt::intrusive::base<
 >::base(
 	base &&_other
 )
+noexcept
 :
 	prev_{
 		_other.prev_
@@ -85,14 +86,17 @@ fcppt::intrusive::base<
 >::operator=(
 	base &&_other
 )
+noexcept
 {
 	if(
 		&_other
 		==
 		this
 	)
+	{
 		return
 			*this;
+	}
 
 	next_->prev_ =
 		prev_;

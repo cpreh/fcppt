@@ -18,70 +18,96 @@
 
 namespace
 {
+
 void
 print_trace(
-	unsigned const levels)
+	unsigned const levels
+)
 {
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Descended ")
 		<< levels
 		<< FCPPT_TEXT(" levels, printing stack trace (manually) now...\n\n");
 
-	fcppt::backtrace::stack_frame const sf =
+	fcppt::backtrace::stack_frame const sf{
 		fcppt::backtrace::current_stack_frame(
 			fcppt::backtrace::stack_limit(
-				levels * 2u));
+				levels * 2U
+			)
+		)
+	};
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Stacktrace begin...\n");
+
 	for(
 		auto const &current_symbol
 		:
 		sf
 	)
+	{
 		fcppt::io::cout()
 			<< current_symbol
 			<< FCPPT_TEXT("\n");
+	}
+
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Stacktrace end.\n");
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT("And the same, non-manually: \n\n");
+
 	fcppt::backtrace::print_current_stack_frame();
 }
 
 void
 recursive_function_1(
 	unsigned,
-	unsigned);
+	unsigned
+);
 
 void
 recursive_function_0(
 	unsigned const current_depth,
-	unsigned const maximum_depth)
+	unsigned const maximum_depth
+)
 {
 	if(current_depth != maximum_depth)
+	{
 		recursive_function_1(
-			current_depth+1u,
-			maximum_depth);
+			current_depth + 1U,
+			maximum_depth
+		);
+	}
 	else
+	{
 		print_trace(
-			maximum_depth);
+			maximum_depth
+		);
+	}
 }
 
 void
 recursive_function_1(
 	unsigned const current_depth,
-	unsigned const maximum_depth)
+	unsigned const maximum_depth
+)
 {
 	if(current_depth != maximum_depth)
+	{
 		recursive_function_0(
-			current_depth+1u,
-			maximum_depth);
+			current_depth + 1U,
+			maximum_depth
+		);
+	}
 	else
+	{
 		print_trace(
-			maximum_depth);
+			maximum_depth
+		);
+	}
 }
+
 }
 
 int
@@ -95,7 +121,10 @@ main()
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Ok, done, descending into a recursive function...\n");
 
-	typedef fcppt::random::generator::minstd_rand generator_type;
+	using
+	generator_type
+	=
+	fcppt::random::generator::minstd_rand;
 
 	generator_type generator(
 		fcppt::random::generator::seed_from_chrono<
@@ -103,11 +132,14 @@ main()
 		>()
 	);
 
-	typedef fcppt::random::distribution::basic<
+	using
+	distribution
+	=
+	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			unsigned
 		>
-	> distribution;
+	>;
 
 	fcppt::random::variate<
 		generator_type,
@@ -117,11 +149,17 @@ main()
 		distribution(
 			distribution::param_type(
 				distribution::param_type::min(
-					10u),
+					10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				),
 				distribution::param_type::max(
-					100u))));
+					100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				)
+			)
+		)
+	);
 
 	recursive_function_0(
-		0u,
-		random_depth());
+		0U,
+		random_depth()
+	);
 }

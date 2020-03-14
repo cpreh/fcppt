@@ -38,17 +38,27 @@ public:
 	/**
 	\brief The generator type
 	*/
-	typedef Generator generator;
+	using
+	generator
+	=
+	Generator;
 
 	/**
 	\brief The distribution type
 	*/
-	typedef Distribution distribution;
+	using
+	distribution
+	=
+	Distribution;
 
 	/**
 	\brief The result returned by drawing random numbers
 	*/
-	typedef typename distribution::result_type result_type;
+	using
+	result_type
+	=
+	typename
+	distribution::result_type;
 
 	/**
 	\brief Constructs a variate object
@@ -64,10 +74,11 @@ public:
 		Distribution const &distribution
 	);
 
-	typedef
+	using
+	param_type
+	=
 	typename
-	Distribution::param_type
-	param_type;
+	Distribution::param_type;
 
 	/**
 	\brief Constructs a variate object
@@ -93,9 +104,12 @@ public:
 	result_type
 	operator()();
 private:
-	typedef fcppt::reference<
+	using
+	generator_reference
+	=
+	fcppt::reference<
 		generator
-	> generator_reference;
+	>;
 
 	generator_reference generator_;
 

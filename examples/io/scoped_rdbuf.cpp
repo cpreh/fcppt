@@ -13,7 +13,8 @@
 int
 main()
 {
-	fcppt::io::ostringstream ostream;
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+	fcppt::io::ostringstream ostream{};
 
 	{
 		fcppt::io::scoped_rdbuf const scoped(

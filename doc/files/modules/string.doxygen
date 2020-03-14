@@ -25,10 +25,11 @@ In C++ there are two main character types: <code>char</code> and
 <code>wchar_t</code>. <code>char</code> is always 1 byte long, the size of
 <code>wchar_t</code> is implementation-defined. In Windows, it's 2, in Linux,
 it's often 4.  Consequently, there are two types of character literals: narrow
-and wide literals, as such:
-
-\snippet string.cpp literals
-
+and wide literals, i.e.
+\code
+char const chars[] = "foobar";
+wchar_t const wchars[] = L"foobar";
+\endcode
 Depending on the operating system, one of these character types is the "native"
 one. System functions like <code>CreateFile</code> in Windows accept
 <code>wchar_t</code>. In Linux, calls like <code>open</code> accept

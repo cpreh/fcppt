@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_DETAIL_CONCRETE_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_CONCRETE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/options/base_decl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -36,16 +36,17 @@ class concrete
 			Result
 		>
 {
-	typedef
+	using
+	base_type
+	=
 	fcppt::options::base<
 		Result
-	>
-	base_type;
-
-	FCPPT_NONCOPYABLE(
+	>;
+public:
+	FCPPT_NONMOVABLE(
 		concrete
 	);
-public:
+
 	explicit
 	concrete(
 		Parser &&
@@ -54,10 +55,12 @@ public:
 	~concrete()
 	override;
 
-	typedef
-	Result
-	result_type;
+	using
+	result_type
+	=
+	Result;
 
+	[[nodiscard]]
 	fcppt::options::parse_result<
 		result_type
 	>
@@ -67,14 +70,17 @@ public:
 	) const
 	override;
 
+	[[nodiscard]]
 	fcppt::options::flag_name_set
 	flag_names() const
 	override;
 
+	[[nodiscard]]
 	fcppt::options::option_name_set
 	option_names() const
 	override;
 
+	[[nodiscard]]
 	fcppt::string
 	usage() const
 	override;

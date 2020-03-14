@@ -16,6 +16,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <exception>
 #include <iostream>
 #include <istream>
 #include <sstream>
@@ -29,37 +30,42 @@ namespace
 {
 
 //! [either_read_raw]
-typedef
+using
+int_string_pair
+=
 std::pair<
 	int,
 	std::string
->
-int_string_pair;
+>;
 
 int_string_pair
 read_stream_raw(
 	std::istream &_stream
 )
 {
-	int result_int;
+	int result_int{0};
 
 	if(
 		!(_stream >> result_int)
 	)
+	{
 		throw
 			std::runtime_error{
 				"Failed reading the int"
 			};
+	}
 
 	std::string result_string;
 
 	if(
 		!(_stream >> result_string)
 	)
+	{
 		throw
 			std::runtime_error{
 				"Failed reading the string"
 			};
+	}
 
 	return
 		int_string_pair{
@@ -82,14 +88,15 @@ read(
 	std::string const &_error
 )
 {
-	Type result;
+	Type result{};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		std::runtime_error,
 		Type
-	>
-	result_type;
+	>;
 
 	return
 		_stream >> result
@@ -276,7 +283,7 @@ int
 do_something()
 {
 	return
-		42;
+		1;
 }
 
 enum class error_code
@@ -319,8 +326,10 @@ either_error(
 
 int
 main()
+try
 {
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream stream(
 			"42 test"
 		);
@@ -335,6 +344,7 @@ main()
 	}
 
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream stream(
 			"42 test"
 		);
@@ -349,6 +359,7 @@ main()
 	}
 
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream stream(
 			"42 test"
 		);
@@ -363,6 +374,7 @@ main()
 	}
 
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream stream(
 			"42 test"
 		);
@@ -373,6 +385,7 @@ main()
 	}
 
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream stream(
 			"42 test"
 		);
@@ -387,4 +400,9 @@ main()
 			error_code::failure1
 		)
 	);
+}
+catch(
+	std::exception const &
+)
+{
 }

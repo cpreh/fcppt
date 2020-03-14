@@ -43,28 +43,40 @@ public:
 	\brief The type if the <code>std::weak_ptr</code> used to implement
 	this class
 	*/
-	typedef
+	using
+	impl_type
+	=
 	std::weak_ptr<
 		Type
-	>
-	impl_type;
+	>;
 
 	/**
 	\brief The corresponding shared pointer class
 	*/
-	typedef
+	using
+	shared_ptr
+	=
 	fcppt::shared_ptr<
 		Type,
 		Deleter
-	>
-	shared_ptr;
+	>;
 
 	/**
 	\brief The element type, which is \a Type
 	*/
-	typedef
-	Type
-	element_type;
+	using
+	element_type
+	=
+	Type;
+
+	/**
+	\brief The reference count type.
+	*/
+	using
+	count_type
+	=
+	// NOLINTNEXTLINE(google-runtime-int)
+	long;
 
 	/**
 	\brief Constructs an empty weak ptr
@@ -85,6 +97,7 @@ public:
 	template<
 		typename Other
 	>
+	explicit
 	weak_ptr(
 		fcppt::weak_ptr<
 			Other,
@@ -106,6 +119,7 @@ public:
 	template<
 		typename Other
 	>
+	explicit
 	weak_ptr(
 		fcppt::shared_ptr<
 			Other,
@@ -122,6 +136,7 @@ public:
 	that object will be returned. If all shared_ptrs have been destroyed,
 	then an empty optional will be returned.
 	*/
+	[[nodiscard]]
 	fcppt::optional::object<
 		shared_ptr
 	>
@@ -136,7 +151,8 @@ public:
 	\note This type is <code>long</code> because
 	<code>std::shared_ptr</code> also uses <code>long</code>.
 	*/
-	long
+	[[nodiscard]]
+	count_type
 	use_count() const
 	noexcept;
 
@@ -146,6 +162,7 @@ public:
 	If this weak_ptr is empty, false will be returned. Otherwise if the
 	shared count is still greater than zero, true will be returned.
 	*/
+	[[nodiscard]]
 	bool
 	expired() const
 	noexcept;
@@ -166,6 +183,7 @@ public:
 	/**
 	\brief Returns the underlying <code>std::weak_ptr</code> object
 	*/
+	[[nodiscard]]
 	impl_type
 	std_ptr() const;
 private:

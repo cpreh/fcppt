@@ -33,9 +33,12 @@ struct hash<
 	>
 >
 {
-	typedef fcppt::reference<
+	using
+	type
+	=
+	fcppt::reference<
 		Type
-	> type;
+	>;
 
 	std::size_t
 	operator()(

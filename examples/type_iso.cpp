@@ -31,7 +31,7 @@ f()
 		strong_int
 	);
 
-	strong_int const var(
+	auto const var(
 		fcppt::type_iso::decorate<
 			strong_int
 		>(
@@ -86,6 +86,7 @@ public:
 			);
 	}
 
+	[[nodiscard]]
 	int
 	get() const
 	{
@@ -98,9 +99,7 @@ private:
 
 }
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 
 template<>
@@ -108,13 +107,15 @@ struct transform<
 	mine::custom_int
 >
 {
-	typedef
-	int
-	undecorated_type;
+	using
+	undecorated_type
+	=
+	int;
 
-	typedef
-	mine::custom_int
-	decorated_type;
+	using
+	decorated_type
+	=
+	mine::custom_int;
 
 	static
 	decorated_type
@@ -139,7 +140,6 @@ struct transform<
 	}
 };
 
-}
 }
 //![decorate_custom]
 

@@ -64,6 +64,7 @@ extract_from_string_locale(
 		Source::traits_type
 	>;
 
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	istringstream iss{
 		_source
 	};

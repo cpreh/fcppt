@@ -18,19 +18,21 @@
 namespace
 {
 // ![conversion_to_vector]
-typedef
+using
+dim3
+=
 fcppt::math::dim::static_<
 	int,
 	3
->
-dim3;
+>;
 
-typedef
+using
+vector3
+=
 fcppt::math::vector::static_<
 	int,
 	3
->
-vector3;
+>;
 
 void
 f()

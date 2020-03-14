@@ -21,24 +21,25 @@ int
 main()
 {
 // ![vector_dim_decl]
-	typedef
+	using
+	float3_vec
+	=
 	fcppt::math::vector::static_<
 		float,
 		3
-	>
-	float3_vec;
+	>;
 
 	float3_vec vec2(
-		10.f,
-		20.f,
-		30.f
+		10.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		20.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		30.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 // ![vector_dim_decl]
 
 	float3_vec const vec1(
-		1.f,
-		2.f,
-		3.f
+		1.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		3.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	// add two vectors
@@ -47,22 +48,23 @@ main()
 	std::cout << vec2 << '\n';
 
 	// multiply by a scalar
-	vec2 *= 0.5f;
+	vec2 *= 0.5F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	std::cout << vec2 << '\n';
 
 // ![vector_dim]
-	typedef
+	using
+	float3_dim
+	=
 	fcppt::math::dim::static_<
 		float,
 		3
-	>
-	float3_dim;
+	>;
 
 	float3_dim const dim(
-		1.4f,
-		1.5f,
-		1.6f
+		1.4F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1.6F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	// dims can be added to or subtracted from vectors

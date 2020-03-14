@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
@@ -21,9 +21,12 @@ namespace
 {
 
 //! [unique_ptr_factory]
-typedef fcppt::unique_ptr<
+using
+unique_int_ptr
+=
+fcppt::unique_ptr<
 	int
-> unique_int_ptr;
+>;
 
 // Create a unique_ptr factory
 unique_int_ptr
@@ -35,7 +38,7 @@ int_ptr_factory()
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			1
 		);
 }
 //! [unique_ptr_factory]
@@ -70,7 +73,7 @@ test2()
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			1
 		)
 	);
 
@@ -88,7 +91,7 @@ test3()
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			1
 		)
 	);
 
@@ -108,7 +111,7 @@ test3()
 
 	// ptr is now the null pointer
 	fcppt::io::cout()
-		<< ptr.get_pointer()
+		<< ptr.get_pointer() // NOLINT(bugprone-use-after-move,hicpp-invalid-access-moved)
 		<< FCPPT_TEXT('\n');
 }
 //! [unique_ptr_move_dangerous]
@@ -116,9 +119,13 @@ test3()
 
 namespace
 {
-typedef fcppt::shared_ptr<
+
+using
+shared_int_ptr
+=
+fcppt::shared_ptr<
 	int
-> shared_int_ptr;
+>;
 
 shared_int_ptr
 to_shared_ptr(
@@ -144,33 +151,50 @@ namespace
 //! [unique_ptr_to_base]
 struct base
 {
+	FCPPT_NONMOVABLE(
+		base
+	);
+
+	base()
+	= default;
+
 	virtual
 	~base()
-	{
-	}
+	= default;
 };
 
-struct dervied
+struct derived
 :
 	base
 {
+	FCPPT_NONMOVABLE(
+		derived
+	);
+
+	derived()
+	= default;
+
+	~derived()
+	override
+	= default;
 };
 
 void
 test4()
 {
-	typedef
+	using
+	base_ptr
+	=
 	fcppt::unique_ptr<
 		base
-	>
-	base_ptr;
+	>;
 
 	base_ptr foo(
 		fcppt::unique_ptr_to_base<
 			base
 		>(
 			fcppt::make_unique_ptr<
-				dervied
+				derived
 			>()
 		)
 	);
@@ -186,18 +210,19 @@ void
 test5()
 {
 //! [unique_ptr_to_const]
-	typedef
+	using
+	const_int_ptr
+	=
 	fcppt::unique_ptr<
 		int const
-	>
-	const_int_ptr;
+	>;
 
 	const_int_ptr foo(
 		fcppt::unique_ptr_to_const(
 			fcppt::make_unique_ptr<
 				int
 			>(
-				42
+				1
 			)
 		)
 	);
@@ -213,15 +238,18 @@ void
 test6()
 {
 //! [unique_ptr_const]
-	typedef fcppt::unique_ptr<
-		int
-	> const scoped_int_ptr;
+	using
+	scoped_int_ptr
+	=
+	fcppt::unique_ptr<
+		int const
+	>;
 
 	scoped_int_ptr const ptr(
 		fcppt::make_unique_ptr<
-			int
+			int const
 		>(
-			42
+			1
 		)
 	);
 //! [unique_ptr_const]
@@ -238,7 +266,7 @@ class foo_impl;
 class foo
 {
 	// Explicitly disable copying
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		foo
 	);
 public:

@@ -37,17 +37,21 @@ template<
 class pos_ref_range
 {
 public:
-	typedef
+	using
+	iterator
+	=
 	fcppt::container::grid::pos_ref_iterator<
 		Grid
-	>
+	>;
+
+	using
+	const_iterator
+	=
 	iterator;
 
-	typedef
-	iterator
-	const_iterator;
-
-	typedef
+	using
+	pos_range
+	=
 	fcppt::container::grid::pos_range<
 		fcppt::type_traits::value_type<
 			fcppt::container::grid::pos_type<
@@ -57,23 +61,25 @@ public:
 			>
 		>,
 		Grid::static_size::value
-	>
-	pos_range;
+	>;
 
-	typedef
+	using
+	min_type
+	=
 	typename
-	pos_range::min_type
-	min_type;
+	pos_range::min_type;
 
-	typedef
+	using
+	sup_type
+	=
 	typename
-	pos_range::sup_type
-	sup_type;
+	pos_range::sup_type;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	pos_range::size_type
-	size_type;
+	pos_range::size_type;
 
 	pos_ref_range(
 		Grid &,
@@ -81,25 +87,31 @@ public:
 		sup_type
 	);
 
+	[[nodiscard]]
 	iterator
 	begin() const;
 
+	[[nodiscard]]
 	iterator
 	end() const;
 
+	[[nodiscard]]
 	size_type
 	size() const;
 
+	[[nodiscard]]
 	min_type const &
 	min() const;
 
+	[[nodiscard]]
 	sup_type const &
 	sup() const;
 private:
-	typedef
+	using
+	pos_iterator
+	=
 	typename
-	pos_range::iterator
-	pos_iterator;
+	pos_range::iterator;
 
 	iterator
 	make_iterator(

@@ -53,18 +53,19 @@ std::array<
 		>
 	>::value
 	+
-	1u
+	1U
 >
 push_back(
 	Source &&_source,
 	NewElement && _new_element
 )
 {
-	typedef
+	using
+	source_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Source
-	>
-	source_type;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_std_array<
@@ -73,11 +74,12 @@ push_back(
 		"Source must be a std::array"
 	);
 
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		source_type
-	>
-	value_type;
+	>;
 
 	static_assert(
 		std::is_same<
@@ -89,20 +91,22 @@ push_back(
 		"Source must be the same type as the array element type"
 	);
 
-	typedef
+	using
+	source_size
+	=
 	fcppt::container::array::size<
 		source_type
-	>
-	source_size;
+	>;
 
-	typedef
+	using
+	dest_array
+	=
 	std::array<
 		value_type,
 		source_size::value
 		+
-		1u
-	>
-	dest_array;
+		1U
+	>;
 
 	return
 		fcppt::container::array::detail::push_back<

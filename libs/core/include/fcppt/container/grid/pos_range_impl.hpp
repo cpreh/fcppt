@@ -13,6 +13,9 @@
 #include <fcppt/container/grid/pos_range_decl.hpp>
 #include <fcppt/container/grid/range_size.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -23,15 +26,19 @@ fcppt::container::grid::pos_range<
 	SizeType,
 	Size
 >::pos_range(
-	min_type const _min,
-	sup_type const _sup
+	min_type _min,
+	sup_type _sup
 )
 :
 	min_(
-		_min
+		std::move(
+			_min
+		)
 	),
 	sup_(
-		_sup
+		std::move(
+			_sup
+		)
 	)
 {
 }

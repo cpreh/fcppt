@@ -115,19 +115,21 @@ fcppt::options::option<
 	fcppt::options::parse_context const &
 ) const
 {
-	typedef
+	using
+	flag_result
+	=
 	fcppt::either::object<
 		fcppt::options::parse_error,
 		fcppt::optional_string
-	>
-	flag_result;
+	>;
 
-	typedef
+	using
+	inner_result
+	=
 	fcppt::either::object<
 		fcppt::options::parse_error,
 		result_type
-	>
-	inner_result;
+	>;
 
 	auto const map_result(
 		[](
@@ -473,6 +475,7 @@ fcppt::options::option<
 	Type
 >::option_names() const
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	fcppt::options::option_name_set result{
 		fcppt::options::option_name{
 			fcppt::string{

@@ -40,7 +40,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4355)
 	{
 	}
 FCPPT_PP_POP_WARNING
-
+private:
 	inner inner_;
 };
 //! [pp_warning_vc]

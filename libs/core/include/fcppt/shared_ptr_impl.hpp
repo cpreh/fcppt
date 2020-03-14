@@ -33,10 +33,11 @@ fcppt::shared_ptr<
 	Other *const _ptr
 )
 :
-	impl_(
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+	impl_{
 		_ptr,
 		Deleter()
-	)
+	}
 {
 }
 
@@ -56,11 +57,11 @@ fcppt::shared_ptr<
 	Alloc const &_alloc
 )
 :
-	impl_(
+	impl_{
 		_ptr,
 		Deleter(),
 		_alloc
-	)
+	}
 {
 }
 
@@ -109,6 +110,7 @@ fcppt::shared_ptr<
 >::shared_ptr(
 	shared_ptr &&
 )
+noexcept
 = default;
 
 template<
@@ -207,9 +209,10 @@ fcppt::shared_ptr<
 	> &&_other
 )
 :
-	impl_(
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+	impl_{
 		_other.release_ownership()
-	)
+	}
 {
 }
 
@@ -244,6 +247,7 @@ fcppt::shared_ptr<
 >::operator=(
 	shared_ptr &&
 )
+noexcept
 =
 default;
 
@@ -268,7 +272,7 @@ fcppt::shared_ptr<
 	> const &_other
 )
 {
-	impl_ =
+	this->impl_ =
 		_other.impl;
 
 	return
@@ -296,7 +300,7 @@ fcppt::shared_ptr<
 	> &&_other
 )
 {
-	impl_.reset(
+	this->impl_.reset(
 		_other.release_ownership()
 	);
 
@@ -312,8 +316,8 @@ fcppt::shared_ptr<
 	Type,
 	Deleter
 >::~shared_ptr()
-{
-}
+noexcept
+= default;
 
 template<
 	typename Type,
@@ -329,7 +333,7 @@ fcppt::shared_ptr<
 >::operator* () const
 {
 	return
-		*impl_;
+		*this->impl_;
 }
 
 template<
@@ -346,7 +350,7 @@ fcppt::shared_ptr<
 >::operator-> () const
 {
 	return
-		impl_.operator->();
+		this->impl_.operator->();
 }
 
 template<
@@ -363,7 +367,7 @@ fcppt::shared_ptr<
 >::get_pointer() const
 {
 	return
-		impl_.get();
+		this->impl_.get();
 }
 
 template<
@@ -377,21 +381,25 @@ fcppt::shared_ptr<
 >::unique() const
 {
 	return
-		impl_.unique();
+		this->impl_.unique();
 }
 
 template<
 	typename Type,
 	typename Deleter
 >
-long
+typename
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::count_type
 fcppt::shared_ptr<
 	Type,
 	Deleter
 >::use_count() const
 {
 	return
-		impl_.use_count();
+		this->impl_.use_count();
 }
 
 template<
@@ -410,7 +418,7 @@ fcppt::shared_ptr<
 )
 {
 	std::swap(
-		impl_,
+		this->impl_,
 		_other.impl_
 	);
  }
@@ -429,7 +437,7 @@ fcppt::shared_ptr<
 >::std_ptr() const
 {
 	return
-		impl_;
+		this->impl_;
 }
 
 template<
@@ -453,10 +461,10 @@ fcppt::shared_ptr<
 	)
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			Deleter,
 			fcppt::default_deleter
-		>::value,
+		>,
 		"make_shared_ptr only works with default_deleter"
 	);
 }
@@ -474,11 +482,13 @@ fcppt::shared_ptr<
 >::shared_ptr(
 	std::shared_ptr<
 		Other
-	> const _other
+	> _other
 )
 :
 	impl_(
-		_other
+		std::move(
+			_other
+		)
 	)
 {
 }
@@ -565,7 +575,8 @@ fcppt::swap(
 	fcppt::shared_ptr<
 		Type,
 		Deleter
-	> &_b)
+	> &_b
+)
 {
 	_a.swap(
 		_b

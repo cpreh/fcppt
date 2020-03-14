@@ -14,6 +14,7 @@
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/point_rotate.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <ostream>
@@ -28,16 +29,20 @@ main()
 		2
 	> vec(
 		1,
-		2);
+		2
+	);
 
-	typedef fcppt::math::vector::static_<
+	using
+	vec2f
+	=
+	fcppt::math::vector::static_<
 		float,
 		2
-	> vec2f;
+	>;
 
 	vec2f const vecf(
-		1.f,
-		2.f
+		1.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	fcppt::math::vector::atan2(
@@ -47,11 +52,21 @@ main()
 	fcppt::math::vector::point_rotate(
 		vecf,
 		vecf,
-		3.f
+		3.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
-	fcppt::math::vector::normalize(
-		vecf
+	fcppt::optional::maybe_void(
+		fcppt::math::vector::normalize(
+			vecf
+		),
+		[](
+			vec2f const &_vec
+		)
+		{
+			fcppt::io::cout()
+				<< _vec
+				<< FCPPT_TEXT('\n');
+		}
 	);
 
 	fcppt::io::cout()
@@ -59,43 +74,38 @@ main()
 		<< fcppt::math::vector::length<float>(vec) << FCPPT_TEXT('\n')
 		<< length(vecf) << FCPPT_TEXT('\n');
 
-	typedef fcppt::math::vector::static_<
+	using
+	vec3d
+	=
+	fcppt::math::vector::static_<
 		double,
 		3
-	> vec3d;
+	>;
 
 	{
-		vec3d
-			a(
-				1.0,
-				0.0,
-				0.0
-			),
-			b(
-				0.0,
-				1.0,
-				0.0
-			),
-			c(
-				0.0,
-				0.0,
-				-1.0
-			);
+		vec3d const a(
+			1.0,
+			0.0,
+			0.0
+		);
 
-		normalize(a);
-		normalize(b);
-		normalize(c);
+		vec3d const b(
+			0.0,
+			1.0,
+			0.0
+		);
 
 		fcppt::io::cout()
 			<< fcppt::math::vector::cross(a, b)
-			<< FCPPT_TEXT(' ')
-			<< c
 			<< FCPPT_TEXT('\n');
 	}
 
-	typedef fcppt::math::box::rect<
+	using
+	int_rect
+	=
+	fcppt::math::box::rect<
 		int
-	> int_rect;
+	>;
 
 	int_rect test_rect(
 		int_rect::vector(1, 2),

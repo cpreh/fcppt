@@ -35,28 +35,32 @@ template<
 >
 class proxy
 {
-	typedef
+	using
+	array_type
+	=
 	std::remove_const_t<
 		StoredType
-	>
-	array_type;
+	>;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	array_type::size_type
-	size_type;
+	array_type::size_type;
 
-	typedef
+	using
+	internal_type
+	=
 	fcppt::type_traits::value_type<
 		array_type
-	>
-	internal_type;
+	>;
 
-	typedef
+	using
+	mask_type
+	=
 	fcppt::bit::mask<
 		internal_type
-	>
-	mask_type;
+	>;
 
 	proxy(
 		StoredType &,
@@ -105,10 +109,21 @@ public:
 		proxy const &
 	);
 
+	proxy(
+		proxy &&
+	)
+	noexcept;
+
 	proxy &
 	operator=(
 		proxy const &
 	);
+
+	proxy &
+	operator=(
+		proxy &&
+	)
+	noexcept;
 
 	~proxy();
 
@@ -129,6 +144,7 @@ public:
 	by this proxy is set or not, the value will be <code>true</code> or
 	<code>false</code>.
 	*/
+	// NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
 	operator
 	fcppt::container::bitfield::value_type() const;
 };

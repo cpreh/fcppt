@@ -9,6 +9,10 @@ FCPPT_PP_DISABLE_VC_WARNING(4702)
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -16,9 +20,12 @@ namespace
 //! [shared_ptr_example]
 
 // Typedef a shared_ptr to in int
-typedef fcppt::shared_ptr<
+using
+int_ptr
+=
+fcppt::shared_ptr<
 	int
-> int_ptr;
+>;
 
 // Objects of this class should share ownership of int_ptrs
 class owner
@@ -29,9 +36,11 @@ public:
 		int_ptr _ptr
 	)
 	:
-		ptr_(
-			_ptr
-		)
+		ptr_{
+			std::move(
+				_ptr
+			)
+		}
 	{
 	}
 private:
@@ -42,19 +51,19 @@ void
 shared_ptr_example()
 {
 	// Creates a shared_ptr
-	int_ptr const ptr(
+	int_ptr const ptr{
 		new int(42)
-	);
+	};
 
 	// Copies the ownership to owner1, increasing the shared count to 2
-	owner owner1(
+	owner owner1{
 		ptr
-	);
+	};
 
 	// Copies from owner1 to owner2, increasing the shared count to 3
-	owner owner2(
+	owner owner2{ // NOLINT(performance-unnecessary-copy-initialization)
 		owner1
-	);
+	};
 
 	// The destruction of owner2, owner1 and ptr will free the int
 }
@@ -71,19 +80,22 @@ shared_ptr_example()
 namespace
 {
 
-typedef fcppt::shared_ptr<
+using
+void_c_ptr
+=
+fcppt::shared_ptr<
 	void,
 	fcppt::c_deleter
-> void_c_ptr;
+>;
 
 void
 test_c_deleter()
 {
-	void_c_ptr ptr(
-		std::malloc(
-			100
+	void_c_ptr ptr{
+		std::malloc( // NOLINT(cppcoreguidelines-no-malloc,hicpp-no-malloc)
+			100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
-	);
+	};
 
 	// calls std::free
 }
@@ -99,7 +111,7 @@ namespace
 // argument.
 void
 take_pointer(
-	int_ptr,
+	int_ptr &&,
 	bool
 )
 {
@@ -125,7 +137,7 @@ wrong()
 	// c) int_ptr(...) is never reached and we have a leak
 	take_pointer(
 		int_ptr(
-			new int (100)
+			new int (100)  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		throw_something()
 	);
@@ -146,7 +158,7 @@ right()
 		fcppt::make_shared_ptr<
 			int
 		>(
-			100
+			1
 		),
 		throw_something()
 	);
@@ -155,6 +167,7 @@ right()
 
 }
 
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
@@ -164,34 +177,50 @@ namespace
 // ![shared_ptr_cast]
 struct base
 {
+	FCPPT_NONMOVABLE(
+		base
+	);
+
+	base() = default;
+
 	virtual ~base()
-	{
-	}
+	= default;
 };
 
 struct derived
 :
 base
-{};
+{
+	FCPPT_NONMOVABLE(
+		derived
+	);
+
+	derived() = default;
+
+	~derived() override
+	= default;
+};
 
 void
 cast()
 {
-	typedef
+	using
+	base_ptr
+	=
 	fcppt::shared_ptr<
 		base
-	>
-	base_ptr;
+	>;
 
 	base_ptr ptr(
 		new derived()
 	);
 
-	typedef
+	using
+	derived_ptr
+	=
 	fcppt::shared_ptr<
 		derived
-	>
-	derived_ptr;
+	>;
 
 	fcppt::optional::object<
 		derived_ptr
@@ -206,8 +235,10 @@ cast()
 	if(
 		dptr.has_value()
 	)
+	{
 		fcppt::io::cout()
 			<< FCPPT_TEXT("ptr points to a derived.\n");
+	}
 }
 // ![shared_ptr_cast]
 

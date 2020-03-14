@@ -30,32 +30,36 @@ template<
 class range
 {
 public:
-	typedef
-	Enum
-	value_type;
+	using
+	value_type
+	=
+	Enum;
 
-	typedef
+	using
+	iterator
+	=
 	fcppt::enum_::iterator<
 		Enum
-	>
+	>;
+
+	using
+	const_iterator
+	=
 	iterator;
 
-	typedef
-	iterator
-	const_iterator;
-
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"Enum must be an enumeration type"
 	);
 
-	typedef
+	using
+	size_type
+	=
 	fcppt::enum_::size_type<
 		Enum
-	>
-	size_type;
+	>;
 
 	constexpr
 	range(
@@ -64,16 +68,19 @@ public:
 	)
 	noexcept;
 
+	[[nodiscard]]
 	constexpr
 	iterator
 	begin() const
 	noexcept;
 
+	[[nodiscard]]
 	constexpr
 	iterator
 	end() const
 	noexcept;
 
+	[[nodiscard]]
 	constexpr
 	size_type
 	size() const

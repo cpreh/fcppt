@@ -56,12 +56,13 @@ next_position(
 	> const _sup
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::container::grid::pos<
 		SizeType,
 		Size
-	>
-	result_type;
+	>;
 
 	result_type result{
 		_current
@@ -74,7 +75,7 @@ next_position(
 			fcppt::math::int_range_count<
 				Size
 				-
-				1u
+				1U
 			>{},
 			result,
 			[
@@ -89,13 +90,14 @@ next_position(
 					_index
 				);
 
-				typedef
+				using
+				index
+				=
 				fcppt::tag_type<
 					decltype(
 						_index
 					)
-				>
-				index;
+				>;
 
 				if(
 					fcppt::math::vector::at<
@@ -126,7 +128,7 @@ next_position(
 					fcppt::math::vector::at<
 						index::value
 						+
-						1u
+						1U
 					>(
 						_result
 					);

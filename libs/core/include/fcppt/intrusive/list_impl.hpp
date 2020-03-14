@@ -31,16 +31,19 @@ fcppt::intrusive::list<
 >::list(
 	list &&_other
 )
+noexcept
 :
 	head_{}
 {
 	if(
 		!_other.empty()
 	)
-		head_ =
+	{
+		this->head_ =
 			std::move(
 				_other.head_
 			);
+	}
 }
 
 template<
@@ -54,28 +57,31 @@ fcppt::intrusive::list<
 >::operator=(
 	list &&_other
 )
+noexcept
 {
 	if(
 		&_other
 		==
 		this
 	)
+	{
 		return
 			*this;
+	}
 
 	if(
 		_other.empty()
 	)
 	{
-		head_.next_ =
-			&head_;
+		this->head_.next_ =
+			&this->head_;
 
-		head_.prev_ =
-			&head_;
+		this->head_.prev_ =
+			&this->head_;
 	}
 	else
 	{
-		head_ =
+		this->head_ =
 			std::move(
 				_other.head_
 			);
@@ -91,8 +97,7 @@ template<
 fcppt::intrusive::list<
 	Type
 >::~list()
-{
-}
+= default;
 
 template<
 	typename Type
@@ -107,7 +112,7 @@ fcppt::intrusive::list<
 {
 	return
 		iterator{
-			head_.next_
+			this->head_.next_
 		};
 }
 
@@ -124,7 +129,7 @@ fcppt::intrusive::list<
 {
 	return
 		iterator{
-			&head_
+			&this->head_
 		};
 }
 
@@ -141,7 +146,7 @@ fcppt::intrusive::list<
 {
 	return
 		const_iterator{
-			head_.next_
+			this->head_.next_
 		};
 }
 
@@ -158,7 +163,7 @@ fcppt::intrusive::list<
 {
 	return
 		const_iterator{
-			&head_
+			&this->head_
 		};
 }
 

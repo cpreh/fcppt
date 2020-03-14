@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_BASE_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_BASE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/options/base_fwd.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -39,7 +39,7 @@ template<
 >
 class base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		base
 	);
 
@@ -55,10 +55,12 @@ public:
 	virtual
 	~base() = 0;
 
-	typedef
-	Result
-	result_type;
+	using
+	result_type
+	=
+	Result;
 
+	[[nodiscard]]
 	virtual
 	fcppt::options::parse_result<
 		result_type
@@ -68,14 +70,17 @@ public:
 		fcppt::options::parse_context const &
 	) const = 0;
 
+	[[nodiscard]]
 	virtual
 	fcppt::options::flag_name_set
 	flag_names() const = 0;
 
+	[[nodiscard]]
 	virtual
 	fcppt::options::option_name_set
 	option_names() const = 0;
 
+	[[nodiscard]]
 	virtual
 	fcppt::string
 	usage() const = 0;

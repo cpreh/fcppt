@@ -47,7 +47,9 @@ repeat(
 		index < _count;
 		++index
 	)
+	{
 		_function();
+	}
 }
 
 }

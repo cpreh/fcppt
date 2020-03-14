@@ -15,13 +15,14 @@
 #include <fcppt/config/external_end.hpp>
 
 
-//NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
+// NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
 template<
 	typename Tag
 >
 template<
 	typename Arg
 >
+// NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
 fcppt::record::detail::element_init<
 	Tag,
 	fcppt::type_traits::remove_cv_ref_t<

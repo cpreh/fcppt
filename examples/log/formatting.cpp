@@ -66,7 +66,7 @@ int
 main()
 {
 //! [logger_streams]
-	fcppt::log::level_stream_array const level_streams(
+	auto const level_streams(
 		fcppt::enum_::array_init<
 			fcppt::log::level_stream_array
 		>(

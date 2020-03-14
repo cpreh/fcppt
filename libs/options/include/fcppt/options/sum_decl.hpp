@@ -55,33 +55,39 @@ public:
 		Right &&
 	);
 
-	typedef
+	using
+	left_result
+	=
 	fcppt::options::result_of<
 		Left
-	>
-	left_result;
+	>;
 
 	struct left
 	{
-		typedef
-		left_result
-		result_type;
+		using
+		result_type
+		=
+		left_result;
 	};
 
-	typedef
+	using
+	right_result
+	=
 	fcppt::options::result_of<
 		Right
-	>
-	right_result;
+	>;
 
 	struct right
 	{
-		typedef
-		right_result
-		result_type;
+		using
+		result_type
+		=
+		right_result;
 	};
 
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		fcppt::options::left<
 			left_result
@@ -89,18 +95,19 @@ public:
 		fcppt::options::right<
 			right_result
 		>
-	>
-	variant;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			Label,
 			variant
 		>
-	>
-	result_type;
+	>;
 
+	[[nodiscard]]
 	fcppt::options::parse_result<
 		result_type
 	>
@@ -109,12 +116,15 @@ public:
 		fcppt::options::parse_context const &
 	) const;
 
+	[[nodiscard]]
 	fcppt::options::flag_name_set
 	flag_names() const;
 
+	[[nodiscard]]
 	fcppt::options::option_name_set
 	option_names() const;
 
+	[[nodiscard]]
 	fcppt::string
 	usage() const;
 private:

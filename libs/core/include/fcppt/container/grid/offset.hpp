@@ -65,7 +65,7 @@ offset(
 	return
 		fcppt::algorithm::fold(
 			fcppt::math::int_range<
-				1u,
+				1U,
 				Size
 			>{},
 			std::make_pair(
@@ -95,20 +95,21 @@ offset(
 					_index
 				);
 
-				typedef
+				using
+				index
+				=
 				fcppt::tag_type<
 					decltype(
 						_index
 					)
-				>
-				index;
+				>;
 
 				_sum.second *=
 					stacked_dim{
 						fcppt::math::dim::at<
 							index::value
 							-
-							1u
+							1U
 						>(
 							_size
 						)

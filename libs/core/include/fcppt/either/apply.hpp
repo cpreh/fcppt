@@ -81,11 +81,12 @@ fcppt::either::object<
 	)
 >
 {
-	typedef
+	using
+	either1
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Either1
-	>
-	either1;
+	>;
 
 	static_assert(
 		fcppt::either::is_object<
@@ -94,13 +95,14 @@ fcppt::either::object<
 		"Either1 must be an either"
 	);
 
-	typedef
+	using
+	eithers
+	=
 	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Eithers
 		>...
-	>
-	eithers;
+	>;
 
 	static_assert(
 		::metal::all_of<
@@ -112,11 +114,12 @@ fcppt::either::object<
 		"Eithers must all be eithers"
 	);
 
-	typedef
+	using
+	failure
+	=
 	fcppt::either::failure_type<
 		either1
-	>
-	failure;
+	>;
 
 	static_assert(
 		::metal::all_of<
@@ -136,7 +139,9 @@ fcppt::either::object<
 		"All eithers must have the same failure type"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		failure,
 		decltype(
@@ -153,25 +158,26 @@ fcppt::either::object<
 				)...
 			)
 		)
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	optional_failure
+	=
 	fcppt::optional::object<
 		failure
-	>
-	optional_failure;
+	>;
 
 	constexpr std::size_t const num_eithers{
-		sizeof...(Eithers) + 1u
+		sizeof...(Eithers) + 1U
 	};
 
-	typedef
+	using
+	failure_array
+	=
 	std::array<
 		optional_failure,
 		num_eithers
-	>
-	failure_array;
+	>;
 
 	FCPPT_PP_PUSH_WARNING
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
@@ -224,10 +230,11 @@ fcppt::either::object<
 						)
 					};
 
-					typedef
+					using
+					iterator
+					=
 					typename
-					failure_array::iterator
-					iterator;
+					failure_array::iterator;
 
 					// Silence -Wnull-dereference warning
 					iterator const failure_it{

@@ -31,11 +31,12 @@ template<
 >
 struct check_sequence
 {
-	typedef
+	using
+	source_optional
+	=
 	fcppt::type_traits::value_type<
 		Source
-	>
-	source_optional;
+	>;
 
 	static_assert(
 		fcppt::optional::is_object<

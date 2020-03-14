@@ -91,6 +91,7 @@ operator<<(
 	T const &_arg
 )
 {
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay,hicpp-no-array-decay)
 	_temp.stream_ << _arg;
 
 	return

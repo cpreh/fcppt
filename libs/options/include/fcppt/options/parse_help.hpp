@@ -65,21 +65,23 @@ parse_help(
 	fcppt::args_vector const &_args
 )
 {
-	typedef
+	using
+	return_type
+	=
 	fcppt::options::help_result<
 		fcppt::options::result_of<
 			Parser
 		>
-	>
-	return_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::options::result<
 		fcppt::options::result_of<
 			Parser
 		>
-	>
-	result_type;
+	>;
 
 	FCPPT_RECORD_MAKE_LABEL(
 		label
@@ -98,11 +100,12 @@ parse_help(
 		)
 	};
 
-	typedef
+	using
+	sum_type
+	=
 	decltype(
 		combined_parser
-	)
-	sum_type;
+	);
 
 	return
 		fcppt::either::match(

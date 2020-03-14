@@ -16,18 +16,19 @@ int
 main()
 {
 //! [cyclic_iterator]
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
-	// typedef a cyclic_iterator over int_vector::const_iterator
-	typedef
+	using
+	const_cyclic_iterator
+	=
 	fcppt::cyclic_iterator<
 		int_vector::const_iterator
-	>
-	const_cyclic_iterator;
+	>;
 
 	int_vector const ints{{
 		1, 2
@@ -43,7 +44,7 @@ main()
 
 	// prints 1, 2, 1, 2, 1, 2,
 	fcppt::algorithm::repeat(
-		6,
+		6, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		[
 			&it
 		]{

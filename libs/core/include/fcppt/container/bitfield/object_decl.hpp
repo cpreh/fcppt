@@ -49,67 +49,74 @@ class object
 {
 public:
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			InternalType
-		>::value,
+		>,
 		"InternalType must be unsigned"
 	);
 
 	/**
 	\brief The internal array type.
 	*/
-	typedef
+	using
+	array_type
+	=
 	fcppt::container::bitfield::array<
 		NumElements,
 		InternalType
-	>
-	array_type;
+	>;
 
 	/**
 	\brief The size of the underlying array.
 	*/
-	typedef
+	using
+	array_size
+	=
 	typename
 	fcppt::container::array::size<
 		array_type
-	>::type
-	array_size;
+	>::type;
 
 	/**
 	\brief Typedef to <code>ElementType</code>.
 	*/
-	typedef
-	ElementType
-	element_type;
+	using
+	element_type
+	=
+	ElementType;
 
 	/**
 	\brief The size type which is taken from <code>NumElements</code>.
 	*/
-	typedef
+	using
+	size_type
+	=
 	typename
-	NumElements::value_type
-	size_type;
+	NumElements::value_type;
 
 	/**
 	\brief The value type, which is bool.
 	*/
-	typedef
-	fcppt::container::bitfield::value_type
-	value_type;
+	using
+	value_type
+	=
+	fcppt::container::bitfield::value_type;
 
 	/**
 	\brief Typedef to <code>NumElements</code>.
 	*/
-	typedef
-	NumElements
-	static_size;
+	using
+	static_size
+	=
+	NumElements;
 
 	/**
 	\brief Typedef to the internal storage type (template parameter <code>InternalType</code>
 	*/
-	typedef
-	InternalType
-	internal_type;
+	using
+	internal_type
+	=
+	InternalType;
 
 	/**
 	\brief A type denoting a reference to a mask value (a reference to a
@@ -118,11 +125,12 @@ public:
 	Note that this is <em>not</em> a <code>bool</code> nor an
 	<code>internal_type</code>, but a proxy class.
 	*/
-	typedef
+	using
+	reference
+	=
 	fcppt::container::bitfield::proxy<
 		array_type
-	>
-	reference;
+	>;
 
 	/**
 	\brief A type denoting a const reference to a mask value (a reference to a
@@ -131,20 +139,22 @@ public:
 	Note that this is <em>not</em> a <code>bool</code> nor an
 	<code>internal_type</code>, but a proxy class.
 	*/
-	typedef
+	using
+	const_reference
+	=
 	fcppt::container::bitfield::proxy<
 		array_type const
-	>
-	const_reference;
+	>;
 
 	/**
 	\brief Initializer list type used to initialize a bitfield.
 	*/
-	typedef
+	using
+	initializer_list_type
+	=
 	std::initializer_list<
 		ElementType
-	>
-	initializer_list_type;
+	>;
 
 	/**
 	\brief Constructs an uninitialized bitfield.
@@ -158,7 +168,6 @@ public:
 	\brief Constructs a bitfield using an initializer list, setting every
 	bit from the list to true.
 	*/
-	explicit
 	object(
 		initializer_list_type const &
 	);

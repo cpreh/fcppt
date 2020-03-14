@@ -32,7 +32,7 @@ fcppt::math::int_range<
 	fcppt::literal<
 		fcppt::math::size_type
 	>(
-		0u
+		0U
 	),
 	Count
 >;

@@ -41,59 +41,67 @@ public:
 	/**
 	\brief A typedef for the \p N parameter
 	*/
-	typedef
+	using
+	dim_wrapper
+	=
 	fcppt::math::static_size<
 		N
-	>
-	dim_wrapper;
+	>;
 
-	typedef
-	dim_wrapper
-	static_size;
+	using
+	static_size
+	=
+	dim_wrapper;
 
 	/**
 	\brief A typedef for the \p S parameter
 	*/
-	typedef
-	S
-	storage_type;
+	using
+	storage_type
+	=
+	S;
 
 	/**
 	\brief A type that counts the number of elements in a dim.
 	*/
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
 	/**
 	\brief A type that provides the difference between the addresses of two elements in a dim.
 	*/
-	typedef
-	fcppt::math::difference_type
-	difference_type;
+	using
+	difference_type
+	=
+	fcppt::math::difference_type;
 
 	/**
 	\brief A type that represents the data type stored in a dim.
 	*/
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
 	/**
 	\brief A type that provides a reference to an element stored in a dim.
 	*/
-	typedef
+	using
+	reference
+	=
 	typename
-	storage_type::reference
-	reference;
+	storage_type::reference;
 
 	/**
 	\brief A type that provides a reference to a <code>const</code> element stored in a dim for reading and performing <code>const</code> operations.
 	*/
-	typedef
+	using
+	const_reference
+	=
 	typename
-	storage_type::const_reference
-	const_reference;
+	storage_type::const_reference;
 
 	/**
 	\brief Construct an uninitialized dim
@@ -132,6 +140,14 @@ public:
 	);
 
 	/**
+	\brief Move-construct the dim from another dim
+	*/
+	object(
+		object &&
+	)
+	noexcept;
+
+	/**
 	\brief Create a dim from a dim with the same dimension and value type but different storage type
 	\tparam OtherStorage The other dim's storage type
 	*/
@@ -154,6 +170,15 @@ public:
 	operator=(
 		object const &
 	);
+
+	/**
+	\brief Move the values from a different dim
+	*/
+	object &
+	operator=(
+		object &&
+	)
+	noexcept;
 
 	/**
 	\brief Copy the values from a different dim
@@ -232,6 +257,7 @@ public:
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
+	[[nodiscard]]
 	reference
 	get_unsafe(
 		size_type
@@ -243,6 +269,7 @@ public:
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
+	[[nodiscard]]
 	const_reference
 	get_unsafe(
 		size_type
@@ -251,42 +278,50 @@ public:
 	/**
 	\brief Returns a reference to the first element in the dim
 	*/
+	[[nodiscard]]
 	reference
 	w();
 
 	/**
 	\brief Returns a reference to the first element in the dim
 	*/
+	[[nodiscard]]
 	const_reference
 	w() const;
 
 	/**
 	\brief Returns a reference to the second element in the dim
 	*/
+	[[nodiscard]]
 	reference
 	h();
 
 	/**
 	\brief Returns a reference to the second element in the dim
 	*/
+	[[nodiscard]]
 	const_reference
 	h() const;
 
 	/**
 	\brief Returns a reference to the third element in the dim
 	*/
+	[[nodiscard]]
 	reference
 	d();
 
 	/**
 	\brief Returns a reference to the third element in the dim
 	*/
+	[[nodiscard]]
 	const_reference
 	d() const;
 
+	[[nodiscard]]
 	S &
 	storage();
 
+	[[nodiscard]]
 	S const &
 	storage() const;
 private:

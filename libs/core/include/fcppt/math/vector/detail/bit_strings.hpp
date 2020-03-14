@@ -31,7 +31,7 @@ template<
 	typename Vector
 >
 std::enable_if_t<
-	N == 0u,
+	N == 0U,
 	void
 >
 bit_strings(
@@ -78,7 +78,7 @@ template<
 	typename Vector
 >
 std::enable_if_t<
-	N != 0u,
+	N != 0U,
 	void
 >
 bit_strings(
@@ -102,7 +102,7 @@ bit_strings(
 	fcppt::math::vector::detail::bit_strings<
 		N
 		-
-		1u
+		1U
 	>(
 		it,
 		_vector
@@ -124,7 +124,7 @@ bit_strings(
 	fcppt::math::vector::detail::bit_strings<
 		N
 		-
-		1u
+		1U
 	>(
 		it,
 		_vector

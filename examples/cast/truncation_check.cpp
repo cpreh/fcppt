@@ -24,12 +24,12 @@ try
 	// This might fail or it might not fail depending on the
 	// implementation.
 	// fcppt::bad_truncation_check_cast will be thrown on failure.
-	unsigned const result(
+	auto const result(
 		fcppt::cast::truncation_check<
 			unsigned
 		>(
 			std::numeric_limits<
-				unsigned long
+				unsigned long //NOLINT(google-runtime-int)
 			>::max()
 		)
 	);
@@ -57,7 +57,7 @@ try
 {
 	// -1 cannot be represented as an unsigned. This will throw an
 	// fcppt::bad_truncation_check_cast.
-	unsigned const result(
+	auto const result(
 		fcppt::cast::truncation_check<
 			unsigned
 		>(

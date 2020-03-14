@@ -18,9 +18,10 @@ namespace bit
 
 \ingroup fcpptbit
 */
-typedef
-unsigned
-shift_count;
+using
+shift_count
+=
+unsigned;
 
 }
 }

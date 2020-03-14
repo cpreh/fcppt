@@ -57,11 +57,12 @@ join(
 	Either &&_either
 )
 {
-	typedef
+	using
+	either
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Either
-	>
-	either;
+	>;
 
 	static_assert(
 		fcppt::either::is_object<

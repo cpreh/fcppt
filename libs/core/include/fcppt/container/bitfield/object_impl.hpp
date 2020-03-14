@@ -53,10 +53,12 @@ fcppt::container::bitfield::object<
 		:
 		_init
 	)
+	{
 		this->set(
 			elem,
 			true
 		);
+	}
 }
 
 template<

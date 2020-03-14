@@ -20,7 +20,7 @@ float_to_int()
 {
 // ![float_to_int]
 	float const f(
-		3.5f
+		3.5F
 	);
 
 	int const i(

@@ -41,51 +41,57 @@ public:
 	/**
 	\brief A type that represents the data type stored in a box's vector/dimension.
 	*/
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
+	using
+	dim_wrapper
+	=
 	fcppt::math::static_size<
 		N
-	>
-	dim_wrapper;
+	>;
 
 	/**
 	\brief A type that represents the data type stored in a box's
 	vector/dimension (synonymous to value_type).
 	*/
-	typedef
-	value_type
-	scalar;
+	using
+	scalar
+	=
+	value_type;
 
 	/**
 	\brief A type that counts the number of elements in a box's
 	vector/dimension.
 	*/
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
 	/**
 	\brief A type represents a box's position.
 	*/
-	typedef
+	using
+	vector
+	=
 	fcppt::math::vector::static_<
 		T,
 		N
-	>
-	vector;
+	>;
 
 	/**
 	\brief A type represents a box's size.
 	*/
-	typedef
+	using
+	dim
+	=
 	fcppt::math::dim::static_<
 		T,
 		N
-	>
-	dim;
+	>;
 
 	/**
 	\brief Construct an uninitialized box
@@ -107,8 +113,8 @@ public:
 	\param size The box's size
 	*/
 	object(
-		vector const &pos,
-		dim const &size
+		vector pos,
+		dim size
 	);
 
 	/**
@@ -119,43 +125,54 @@ public:
 	\param max The box's max position
 	*/
 	object(
-		vector const &min,
-		vector const &max
+		vector min,
+		vector max
 	);
 
 	/**
 	\brief Return the box's position
 	*/
+	[[nodiscard]]
 	vector &
 	pos();
 
+	[[nodiscard]]
 	vector const &
 	pos() const;
 
+	[[nodiscard]]
 	vector &
 	max();
 
+	[[nodiscard]]
 	vector const &
 	max() const;
 
+	[[nodiscard]]
 	dim
 	size() const;
 
+	[[nodiscard]]
 	value_type
 	left() const;
 
+	[[nodiscard]]
 	value_type
 	right() const;
 
+	[[nodiscard]]
 	value_type
 	top() const;
 
+	[[nodiscard]]
 	value_type
 	bottom() const;
 
+	[[nodiscard]]
 	value_type
 	front() const;
 
+	[[nodiscard]]
 	value_type
 	back() const;
 private:

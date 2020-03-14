@@ -27,6 +27,8 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -38,19 +40,20 @@ FCPPT_MAIN(
 	int argc,
 	fcppt::args_char **argv
 )
+try
 {
 // ![options_label]
 	FCPPT_RECORD_MAKE_LABEL(age_label);
 // ![options_label]
 
 // ![options_arg_type]
-	typedef
-	fcppt::options::argument<age_label, int>
-	parser_type;
+	using parser_type
+	=
+	fcppt::options::argument<age_label, int>;
 
-	typedef
-	fcppt::options::result_of<parser_type>
-	result_type;
+	using result_type
+	=
+	fcppt::options::result_of<parser_type>;
 // ![options_arg_type]
 
 // ![options_arg_object]
@@ -112,5 +115,19 @@ FCPPT_MAIN(
 		fcppt::either::match(result, on_failure, on_success);
 // ![options_match]
 }
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
+}
+
 
 FCPPT_PP_POP_WARNING

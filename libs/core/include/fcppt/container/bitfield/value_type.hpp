@@ -20,7 +20,10 @@ namespace bitfield
 
 This is currently a boolean, but might be subject to change.
 */
-typedef bool value_type;
+using
+value_type
+=
+bool;
 
 }
 }

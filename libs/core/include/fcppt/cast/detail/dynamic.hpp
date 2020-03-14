@@ -38,11 +38,12 @@ noexcept
 		)
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::reference<
 		Derived
-	>
-	result_type;
+	>;
 
 	return
 		derived_ptr

@@ -28,7 +28,7 @@ inline
 std::enable_if_t<
 	Index::value
 	!=
-	Size::value - 1u,
+	Size::value - 1U,
 	void
 >
 if_not_last_index(
@@ -49,7 +49,7 @@ inline
 std::enable_if_t<
 	Index::value
 	==
-	Size::value - 1u,
+	Size::value - 1U,
 	void
 >
 if_not_last_index(

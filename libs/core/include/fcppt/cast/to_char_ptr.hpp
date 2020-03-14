@@ -45,6 +45,7 @@ noexcept
 	);
 
 	return
+		// NOLINTNEXTLINE(cppcoreguidelines-pro-type-reinterpret-cast)
 		reinterpret_cast<
 			Dest
 		>(

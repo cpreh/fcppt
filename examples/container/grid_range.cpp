@@ -30,19 +30,21 @@ void
 pos_range()
 {
 // ![pos_range]
-	typedef
+	using
+	pos2
+	=
 	fcppt::container::grid::pos<
 		fcppt::container::grid::size_type,
 		2
-	>
-	pos2;
+	>;
 
-	typedef
+	using
+	dim2
+	=
 	fcppt::container::grid::dim<
 		fcppt::container::grid::size_type,
 		2
-	>
-	dim2;
+	>;
 
 	// Outputs: (0,0), (1,0), (0,1), (1,1), (0,2), (1,2)
 	for(
@@ -50,14 +52,16 @@ pos_range()
 		:
 		fcppt::container::grid::make_pos_range(
 			dim2{
-				2u,
-				3u
+				2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			}
 		)
 	)
+	{
 		std::cout
 			<< pos
 			<< '\n';
+	}
 // ![pos_range]
 }
 
@@ -65,20 +69,21 @@ void
 pos_ref_range()
 {
 // ![pos_ref_range]
-	typedef
+	using
+	uint2_grid
+	=
 	fcppt::container::grid::object<
 		unsigned,
 		2
-	>
-	uint2_grid;
+	>;
 
 	uint2_grid const grid(
 		uint2_grid::dim{
-			2u,
-			2u
+			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		},
 		[](
-			uint2_grid::pos const _pos
+			uint2_grid::pos const &_pos
 		)
 		{
 			return
@@ -92,11 +97,12 @@ pos_ref_range()
 		}
 	);
 
-	typedef
+	using
+	pos_ref
+	=
 	fcppt::container::grid::pos_reference<
 		uint2_grid const
-	>
-	pos_ref;
+	>;
 
 	// Outputs: (0,0): 0, (1,0): 1, (0,1): 1, (1,1): 2
 	for(
@@ -106,42 +112,46 @@ pos_ref_range()
 			grid
 		)
 	)
+	{
 		std::cout
 			<< ref.pos()
 			<< ": "
 			<< ref.value()
 			<< '\n';
+	}
 
 // ![pos_ref_range]
 }
 
 // ![pos_ref_sub_range]
-typedef
+using
+uint2_grid
+=
 fcppt::container::grid::object<
 	unsigned,
 	2
->
-uint2_grid;
+>;
 
 void
 pos_ref_sub_range(
-	uint2_grid::pos const _min,
-	uint2_grid::pos const _sup
+	uint2_grid::pos const &_min,
+	uint2_grid::pos const &_sup
 )
 {
 	uint2_grid const grid(
 		uint2_grid::dim{
-			2u,
-			2u
+			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		},
-		42u
+		42U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
-	typedef
+	using
+	pos_ref
+	=
 	fcppt::container::grid::pos_reference<
 		uint2_grid const
-	>
-	pos_ref;
+	>;
 
 	for(
 		pos_ref const &ref
@@ -158,12 +168,13 @@ pos_ref_sub_range(
 			)
 		)
 	)
+	{
 		std::cout
 			<< ref.pos()
 			<< ": "
 			<< ref.value()
 			<< '\n';
-
+	}
 }
 // ![pos_ref_sub_range]
 
@@ -178,12 +189,12 @@ main()
 
 	pos_ref_sub_range(
 		uint2_grid::pos(
-			1u,
-			1u
+			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		uint2_grid::pos(
-			3u,
-			3u
+			3U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 
@@ -191,8 +202,8 @@ main()
 		<<
 		fcppt::container::grid::make_sup(
 			uint2_grid::pos{
-				1u,
-				2u
+				1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			}
 		)
 		<< '\n';

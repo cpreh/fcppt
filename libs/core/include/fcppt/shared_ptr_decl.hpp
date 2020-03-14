@@ -50,33 +50,56 @@ public:
 	\brief The type of the <code>std::shared_ptr</code> used to implement
 	this class
 	*/
-	typedef std::shared_ptr<
+	using
+	impl_type
+	=
+	std::shared_ptr<
 		Type
-	> impl_type;
+	>;
 
 	/**
 	\brief The element type, which is \a Type
 	*/
-	typedef typename impl_type::element_type element_type;
+	using
+	element_type
+	=
+	typename
+	impl_type::element_type;
 
 	/**
 	\brief Same as element_type
 	*/
-	typedef element_type value_type;
+	using
+	value_type
+	=
+	element_type;
 
 	/**
 	\brief The pointer type, same as <code>value_type *</code>
 	*/
-	typedef element_type *pointer;
+	using
+	pointer
+	=
+	element_type *;
 
 	/**
 	\brief The reference type, same as <code>value_type &</code>
 	*/
-	typedef
+	using
+	reference
+	=
 	std::add_lvalue_reference_t<
 		element_type
-	>
-	reference;
+	>;
+
+	/**
+	\brief The reference count type.
+	*/
+	using
+	count_type
+	=
+	// NOLINTNEXTLINE(google-runtime-int)
+	long;
 
 	/**
 	\brief Constructs a shared_ptr from a compatible pointer type
@@ -150,7 +173,8 @@ public:
 
 	shared_ptr(
 		shared_ptr &&
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Constructs a shared_ptr from a compatible shared_ptr
@@ -161,6 +185,7 @@ public:
 	template<
 		typename Other
 	>
+	explicit
 	shared_ptr(
 		fcppt::shared_ptr<
 			Other,
@@ -233,7 +258,8 @@ public:
 	shared_ptr &
 	operator=(
 		shared_ptr &&
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Assigns a shared_ptr from a compatible shared_ptr
@@ -292,7 +318,8 @@ public:
 	count will be decreased by one, possibly leading to the destruction of
 	the object. Deletion will be done calling Deleter().
 	*/
-	~shared_ptr();
+	~shared_ptr()
+	noexcept;
 
 	/**
 	\brief Dereferences the owned pointer
@@ -301,6 +328,7 @@ public:
 
 	\warning The behaviour is undefined if the shared_ptr is empty.
 	*/
+	[[nodiscard]]
 	reference
 	operator* () const;
 
@@ -311,6 +339,7 @@ public:
 
 	\warning The behaviour is undefined if the shared_ptr is empty.
 	*/
+	[[nodiscard]]
 	pointer
 	operator-> () const;
 
@@ -320,6 +349,7 @@ public:
 	Returns a pointer to the owned object or the null pointer if the
 	shared_ptr is empty.
 	*/
+	[[nodiscard]]
 	pointer
 	get_pointer() const;
 
@@ -330,6 +360,7 @@ public:
 	true will be returned if this shared_ptr is the only shared_ptr that
 	takes part in the ownership of the currently owned object.
 	*/
+	[[nodiscard]]
 	bool
 	unique() const;
 
@@ -343,7 +374,8 @@ public:
 	\note This type is <code>long</code> because
 	<code>std::shared_ptr</code> also uses <code>long</code>.
 	*/
-	long
+	[[nodiscard]]
+	count_type
 	use_count() const;
 
 	/**
@@ -361,20 +393,19 @@ public:
 	/**
 	\brief Returns the underlying <code>std::shared_ptr</code> object
 	*/
+	[[nodiscard]]
 	impl_type
 	std_ptr() const;
 
-// \cond
-	// Intentionally not explicit
 	template<
 		typename Other
 	>
+	explicit
 	shared_ptr(
 		fcppt::detail::make_shared_wrapper<
 			Other
 		> &&
 	);
-// \endcond
 private:
 	impl_type impl_;
 

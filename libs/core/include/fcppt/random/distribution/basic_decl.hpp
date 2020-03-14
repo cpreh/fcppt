@@ -41,30 +41,36 @@ public:
 	/**
 	\brief A self typedef required by the standard
 	*/
-	typedef
-	basic
-	distribution_type;
+	using
+	distribution_type
+	=
+	basic;
 
 	/**
 	\brief The underlying distribution used
 	*/
-	typedef
+	using
+	wrapped_distribution
+	=
 	typename
-	Parameters::distribution wrapped_distribution;
+	Parameters::distribution;
 
 	/**
 	\brief The result type of applying this distribution
 	*/
-	typedef
+	using
+	result_type
+	=
 	typename
-	Parameters::result_type result_type;
+	Parameters::result_type;
 
 	/**
 	\brief The parameters type, required by the standard
 	*/
-	typedef
-	Parameters
-	param_type;
+	using
+	param_type
+	=
+	Parameters;
 
 	/**
 	\brief Constructs the distribution from the parameters type
@@ -112,6 +118,7 @@ public:
 	/**
 	\brief Returns the parameters used to construct the distribution
 	*/
+	[[nodiscard]]
 	param_type
 	param() const;
 
@@ -140,6 +147,7 @@ public:
 	template<
 		typename Rng
 	>
+	[[nodiscard]]
 	result_type
 	operator()(
 		Rng &generator
@@ -160,6 +168,7 @@ public:
 	template<
 		typename Rng
 	>
+	[[nodiscard]]
 	result_type
 	operator()(
 		Rng &generator,
@@ -169,18 +178,21 @@ public:
 	/**
 	\brief The minimum value that can be produced
 	*/
+	[[nodiscard]]
 	result_type
 	min() const;
 
 	/**
 	\brief The maximum value that can be produced
 	*/
+	[[nodiscard]]
 	result_type
 	max() const;
 
 	/**
 	\brief The underlying distribution
 	*/
+	[[nodiscard]]
 	wrapped_distribution const &
 	distribution() const;
 private:

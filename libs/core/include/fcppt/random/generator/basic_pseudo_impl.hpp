@@ -52,8 +52,7 @@ inline
 fcppt::random::generator::basic_pseudo<
 	Generator
 >::~basic_pseudo()
-{
-}
+= default;
 
 template<
 	typename Generator
@@ -68,7 +67,7 @@ fcppt::random::generator::basic_pseudo<
 >::operator()()
 {
 	return
-		wrapped_();
+		this->wrapped_();
 }
 
 template<

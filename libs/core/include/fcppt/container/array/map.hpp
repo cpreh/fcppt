@@ -79,11 +79,12 @@ std::array<
 	>::value
 >
 {
-	typedef
+	using
+	source_array
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Array
-	>
-	source_array;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_std_array<
@@ -92,7 +93,9 @@ std::array<
 		"Array must be a std::array"
 	);
 
-	typedef
+	using
+	result_array
+	=
 	std::array<
 		decltype(
 			_function(
@@ -112,8 +115,7 @@ std::array<
 		fcppt::container::array::size<
 			source_array
 		>::value
-	>
-	result_array;
+	>;
 
 	return
 		fcppt::container::array::init<

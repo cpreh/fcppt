@@ -36,6 +36,7 @@ template<
 	fcppt::math::size_type N,
 	typename S
 >
+[[nodiscard]]
 inline
 fcppt::optional::object<
 	fcppt::math::vector::static_<

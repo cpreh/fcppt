@@ -177,7 +177,11 @@ fcppt::options::optional<
 									{
 										return
 											fcppt::optional::make(
-												std::move(
+												std::forward<
+													decltype(
+														_element
+													)
+												>(
 													_element
 												)
 											);

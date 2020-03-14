@@ -31,29 +31,34 @@ template<
 class row_view
 {
 public:
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
-	typedef
+	using
+	storage_size
+	=
 	fcppt::math::static_size<
 		C
-	>
-	storage_size;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	fcppt::container::to_reference_type<
 		S
-	>
-	reference;
+	>;
 
-	typedef
-	reference
-	const_reference;
+	using
+	const_reference
+	=
+	reference;
 
 	row_view(
 		S &,

@@ -49,13 +49,14 @@ at_optional(
 	> const _pos
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::reference<
 		fcppt::container::to_value_type<
 			Grid
 		>
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::container::grid::in_range(

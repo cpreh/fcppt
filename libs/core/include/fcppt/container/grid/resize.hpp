@@ -62,11 +62,12 @@ resize(
 	Function const &_init
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Grid
-	>
-	result_type;
+	>;
 
 	static_assert(
 		fcppt::container::grid::is_object<

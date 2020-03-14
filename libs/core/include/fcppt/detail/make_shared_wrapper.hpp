@@ -25,11 +25,12 @@ template<
 class make_shared_wrapper
 {
 public:
-	typedef
+	using
+	ptr_type
+	=
 	std::shared_ptr<
 		T
-	>
-	ptr_type;
+	>;
 
 	explicit
 	make_shared_wrapper(

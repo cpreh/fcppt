@@ -10,19 +10,23 @@
 #include <fcppt/io/cout.hpp>
 
 
-int main()
+int
+main()
 {
 
-	typedef fcppt::homogenous_pair<
+	using
+	int_pair
+	=
+	fcppt::homogenous_pair<
 		int
-	> int_pair;
+	>;
 
 	int_pair test1(
-		5,
-		10
+		1,
+		2
 	);
 
-	test1.first = 42;
+	test1.first = 3;
 
 	fcppt::io::cout()
 		<< test1

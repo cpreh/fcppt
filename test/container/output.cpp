@@ -30,7 +30,8 @@ TEST_CASE(
 	};
 
 	{
-		std::ostringstream stream;
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+		std::ostringstream stream{};
 
 		stream
 			<<
@@ -48,7 +49,8 @@ TEST_CASE(
 	}
 
 	{
-		std::wostringstream stream;
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+		std::wostringstream stream{};
 
 		stream
 			<<

@@ -11,6 +11,7 @@
 #include <fcppt/metal/set/from_list_relaxed.hpp>
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/metal/set/symmetric_difference.hpp>
+#include <fcppt/type_traits/to_bool.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
@@ -41,38 +42,40 @@ template<
 using
 maps_equal
 =
-::metal::invoke<
-	::metal::if_<
-		::metal::as_number<
-			std::is_same<
-				fcppt::metal::set::symmetric_difference<
-					fcppt::metal::set::from_list_relaxed<
-						::metal::keys<
-							Map1
+fcppt::type_traits::to_bool<
+	::metal::invoke<
+		::metal::if_<
+			::metal::as_number<
+				std::is_same<
+					fcppt::metal::set::symmetric_difference<
+						fcppt::metal::set::from_list_relaxed<
+							::metal::keys<
+								Map1
+							>
+						>,
+						fcppt::metal::set::from_list_relaxed<
+							::metal::keys<
+								Map2
+							>
 						>
 					>,
-					fcppt::metal::set::from_list_relaxed<
-						::metal::keys<
-							Map2
-						>
-					>
+					fcppt::metal::set::make<>
+				>
+			>,
+			::metal::bind<
+				::metal::lambda<
+					fcppt::metal::detail::map_same_values
 				>,
-				fcppt::metal::set::make<>
-			>
-		>,
-		::metal::bind<
-			::metal::lambda<
-				fcppt::metal::detail::map_same_values
+				::metal::always<
+					Map1
+				>,
+				::metal::always<
+					Map2
+				>
 			>,
 			::metal::always<
-				Map1
-			>,
-			::metal::always<
-				Map2
+				::metal::false_
 			>
-		>,
-		::metal::always<
-			::metal::false_
 		>
 	>
 >;

@@ -23,11 +23,12 @@ namespace filesystem
 
 \ingroup fcpptstring
 */
-typedef
+using
+ofstream
+=
 std::basic_ofstream<
 	fcppt::char_type
->
-ofstream;
+>;
 
 }
 }

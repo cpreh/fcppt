@@ -27,11 +27,12 @@ namespace options
 Each string in this set is expected not to be followed by a value,
 e.g. "--foo".
 */
-typedef
+using
+flag_name_set
+=
 std::set<
 	fcppt::options::flag_name
->
-flag_name_set;
+>;
 
 }
 }

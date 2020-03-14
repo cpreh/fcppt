@@ -22,9 +22,10 @@ namespace grid
 
 \ingroup fcpptcontainergrid
 */
-typedef
-fcppt::math::size_type
-size_type;
+using
+size_type
+=
+fcppt::math::size_type;
 
 }
 }

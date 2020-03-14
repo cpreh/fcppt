@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/intrusive/base.hpp>
 #include <fcppt/intrusive/list.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,17 +21,18 @@ namespace
 //! [intrusive_fwd]
 class element;
 
-typedef
+using
+element_list
+=
 fcppt::intrusive::list<
 	element
->
-element_list;
+>;
 //! [intrusive_fwd]
 
 //! [intrusive_element]
 class element
 :
-	public
+public
 	fcppt::intrusive::base<
 		element
 	>
@@ -39,14 +42,16 @@ class element
 	);
 public:
 	element(
-		element_list &_list,
+		fcppt::reference<
+			element_list
+		> const _list,
 		int const _value
 	)
 	:
 		fcppt::intrusive::base<
 			element
 		>{
-			_list
+			_list.get()
 		},
 		value_{
 			_value
@@ -56,17 +61,21 @@ public:
 
 	element(
 		element &&
-	) = default;
+	)
+	noexcept
+	= default;
 
 	element &
 	operator=(
 		element &&
-	) = default;
+	)
+	noexcept
+	= default;
 
 	~element()
-	{
-	}
+	= default;
 
+	[[nodiscard]]
 	int
 	value() const
 	{
@@ -84,14 +93,14 @@ test_func()
 	element_list list{};
 
 	element e1{
-		list,
-		5
+		fcppt::make_ref(list),
+		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	};
 
 	{
 		element e2{
-			list,
-			10
+			fcppt::make_ref(list),
+			10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		};
 
 		// Prints 5, 10
@@ -100,7 +109,9 @@ test_func()
 			:
 			list
 		)
+		{
 			std::cout << e.value() << ' ';
+		}
 	}
 
 	std::cout << '\n';
@@ -111,7 +122,9 @@ test_func()
 		:
 		list
 	)
+	{
 		std::cout << e.value() << ' ';
+	}
 
 //! [intrusive_test]
 	std::cout << '\n';
@@ -123,7 +136,7 @@ test_func()
 	};
 
 	element e4{
-		list,
+		fcppt::make_ref(list),
 		1
 	};
 
@@ -137,7 +150,9 @@ test_func()
 		:
 		list
 	)
+	{
 		std::cout << e.value() << ' ';
+	}
 }
 
 }

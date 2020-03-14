@@ -89,10 +89,10 @@ fcppt::cyclic_iterator<
 	> const &_other
 )
 {
-	it_ =
+	this->it_ =
 		_other.it_;
 
-	boundary_ =
+	this->boundary_ =
 		_other._boundary;
 
 	return
@@ -111,7 +111,7 @@ fcppt::cyclic_iterator<
 >::get_boundary() const
 {
 	return
-		boundary_;
+		this->boundary_;
 }
 
 template<
@@ -126,7 +126,7 @@ fcppt::cyclic_iterator<
 >::get() const
 {
 	return
-		it_;
+		this->it_;
 }
 
 template<
@@ -141,16 +141,16 @@ fcppt::cyclic_iterator<
 {
 	difference_type const size{
 		std::distance(
-			boundary_.first,
-			boundary_.second
+			this->boundary_.first,
+			this->boundary_.second
 		)
 	};
 
 	difference_type const diff{
 		(
 			std::distance(
-				boundary_.first,
-				it_
+				this->boundary_.first,
+				this->it_
 			)
 			+
 			_diff
@@ -159,8 +159,8 @@ fcppt::cyclic_iterator<
 		size
 	};
 
-	it_ =
-		boundary_.first
+	this->it_ =
+		this->boundary_.first
 		+
 		(
 			diff
@@ -184,12 +184,14 @@ fcppt::cyclic_iterator<
 >::increment()
 {
 	if(
-		++it_
+		++this->it_
 		==
-		boundary_.second
+		this->boundary_.second
 	)
-		it_ =
-			boundary_.first;
+	{
+		this->it_ =
+			this->boundary_.first;
+	}
 }
 
 template<
@@ -201,16 +203,20 @@ fcppt::cyclic_iterator<
 >::decrement()
 {
 	if(
-		it_
+		this->it_
 		==
-		boundary_.first
+		this->boundary_.first
 	)
-		it_ =
+	{
+		this->it_ =
 			std::prev(
-				boundary_.second
+				this->boundary_.second
 			);
+	}
 	else
-		--it_;
+	{
+		--this->it_;
+	}
 }
 
 template<
@@ -224,7 +230,7 @@ fcppt::cyclic_iterator<
 ) const
 {
 	return
-		it_
+		this->it_
 		==
 		_other.it_;
 }
@@ -241,7 +247,7 @@ fcppt::cyclic_iterator<
 >::dereference() const
 {
 	return
-		*it_;
+		*this->it_;
 }
 
 template<
@@ -259,7 +265,7 @@ fcppt::cyclic_iterator<
 {
 	return
 		std::distance(
-			it_,
+			this->it_,
 			_other.it_
 		);
 }

@@ -37,14 +37,15 @@ struct from_number<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	fcppt::type_traits::safe_integral_cast<
 		Dest,
 		::metal::number<
 			Value
 		>
-	>
-	type;
+	>;
 };
 
 }

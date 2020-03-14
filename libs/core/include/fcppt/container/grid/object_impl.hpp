@@ -145,7 +145,11 @@ fcppt::container::grid::object<
 			)
 			{
 				return
-					std::move(
+					std::forward<
+						decltype(
+							_value
+						)
+					>(
 						_value
 					);
 			}
@@ -161,7 +165,7 @@ fcppt::container::grid::object<
 			Args
 		)
 		+
-		1u
+		1U
 	)
 {
 	static_assert(
@@ -312,8 +316,7 @@ fcppt::container::grid::object<
 	N,
 	A
 >::~object()
-{
-}
+= default;
 
 template<
 	typename T,
@@ -426,7 +429,7 @@ fcppt::container::grid::object<
 	return
 		this->content()
 		==
-		0u;
+		0U;
 }
 
 template<

@@ -9,6 +9,7 @@
 // transform a color type given at runtime (defined via an enum) into a static
 // color type (represented by variant over static color types).
 #include <fcppt/tag.hpp>
+#include <fcppt/assert/error.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/metal/invoke_on.hpp>
@@ -16,7 +17,6 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <cassert>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
@@ -42,30 +42,30 @@ struct rgb
 };
 
 // Typedef the available static color types
-typedef
+using
+static_color_types
+=
 metal::list<
 	bgr,
 	rgb
->
-static_color_types;
+>;
 
 // The variant type that can hold any of the static color types
-typedef
+using
+color_variant
+=
 fcppt::variant::from_list<
 	static_color_types
->
-color_variant;
+>;
 
 // Transforms a concrete color type into a color_variant. This function will be
 // used with invoke_on.
 struct create_function
 {
-	typedef color_variant result_type;
-
 	template<
 		typename ConcreteColor
 	>
-	result_type
+	color_variant
 	operator()(
 		fcppt::tag<
 			ConcreteColor
@@ -114,7 +114,7 @@ main()
 		)
 	);
 
-	assert(
+	FCPPT_ASSERT_ERROR(
 		fcppt::variant::holds_type<
 			rgb
 		>(

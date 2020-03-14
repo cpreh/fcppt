@@ -66,10 +66,14 @@ fcppt::enable_shared_from_this<
 >::fcppt_shared_from_this()
 {
 	return
-		fcppt::detail::make_shared_wrapper<
+		fcppt::shared_ptr<
 			Type
 		>{
-			this->shared_from_this()
+			fcppt::detail::make_shared_wrapper<
+				Type
+			>{
+				this->shared_from_this()
+			}
 		};
 }
 
@@ -84,10 +88,14 @@ fcppt::enable_shared_from_this<
 >::fcppt_shared_from_this() const
 {
 	return
-		fcppt::detail::make_shared_wrapper<
+		fcppt::shared_ptr<
 			Type const
 		>{
-			this->shared_from_this()
+			fcppt::detail::make_shared_wrapper<
+				Type const
+			>{
+				this->shared_from_this()
+			}
 		};
 }
 

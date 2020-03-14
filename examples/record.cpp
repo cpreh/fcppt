@@ -75,28 +75,31 @@ FCPPT_RECORD_MAKE_LABEL(
 //! [record_make_label]
 
 //! [record_elements]
-typedef
+using
+age_element
+=
 fcppt::record::element<
 	age,
 	int
->
-age_element;
+>;
 
-typedef
+using
+name_element
+=
 fcppt::record::element<
 	name,
 	std::string
->
-name_element;
+>;
 //! [record_elements]
 
 //! [record_object]
-typedef
+using
+person
+=
 fcppt::record::object<
 	age_element,
 	name_element
->
-person;
+>;
 //! [record_object]
 
 void
@@ -104,13 +107,13 @@ get_set()
 {
 //! [record_get_set]
 	person test_person{
-		age{} = 42,
+		age{} = 1,
 		name{} = std::string("test")
 	};
 
 	std::cout << fcppt::record::get<age>(test_person) << '\n';
 
-	fcppt::record::set<age>(test_person, 13);
+	fcppt::record::set<age>(test_person, 2);
 
 	std::cout << fcppt::record::get<age>(test_person) << '\n';
 //! [record_get_set]
@@ -189,6 +192,7 @@ void
 init_stream()
 {
 // ![record_init_stream]
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::istringstream stream{
 		"42 test"
 	};
@@ -217,8 +221,10 @@ init_stream()
 				if(
 					!(stream >> input)
 				)
+				{
 					throw
 						std::runtime_error{"failure"};
+				}
 
 				return
 					input;
@@ -278,13 +284,14 @@ struct sprite_from_ints<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	fcppt::record::object<
 		sprite_element<
 			Ints
 		>...
-	>
-	type;
+	>;
 };
 
 template<
@@ -306,11 +313,12 @@ void
 test()
 {
 // ![sprite_example]
-	typedef
+	using
+	sprite_type
+	=
 	sprite<
-		2u
-	>
-	sprite_type;
+		2U
+	>;
 
 	sprite_type const test_sprite{
 		texture<0>{} = std::string("ground"),

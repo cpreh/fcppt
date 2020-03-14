@@ -74,15 +74,16 @@ operator<<(
 				_element
 			);
 
-			typedef
+			using
+			label
+			=
 			fcppt::record::element_to_label<
 				fcppt::tag_type<
 					decltype(
 						_element
 					)
 				>
-			>
-			label;
+			>;
 
 			_stream
 				<<

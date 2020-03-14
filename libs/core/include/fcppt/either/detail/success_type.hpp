@@ -29,10 +29,11 @@ struct success_type
 		"Either must be an either"
 	);
 
-	typedef
+	using
+	type
+	=
 	typename
-	Either::success
-	type;
+	Either::success;
 };
 
 }

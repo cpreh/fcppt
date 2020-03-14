@@ -39,34 +39,38 @@ public
 	>
 {
 public:
-	typedef
+	using
+	iterator_base
+	=
 	fcppt::intrusive::detail::iterator_base<
 		Type
-	>
-	iterator_base;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	iterator_base::reference
-	reference;
+	iterator_base::reference;
 
-	typedef
+	using
+	base_type
+	=
 	fcppt::intrusive::base<
 		std::remove_const_t<
 			Type
 		>
-	>
-	base_type;
+	>;
 
-	typedef
+	using
+	pointer_type
+	=
 	std::conditional_t<
-		std::is_const<
+		std::is_const_v<
 			Type
-		>::value,
+		>,
 		base_type const,
 		base_type
-	> *
-	pointer_type;
+	> *;
 
 	iterator();
 

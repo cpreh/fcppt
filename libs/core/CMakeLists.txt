@@ -1002,6 +1002,7 @@ set(
 	libs/core/include/fcppt/output_to_fcppt_string.hpp
 	libs/core/include/fcppt/output_to_fcppt_string_locale.hpp
 	libs/core/include/fcppt/output_to_std_string.hpp
+	libs/core/include/fcppt/output_to_std_string_locale.hpp
 	libs/core/include/fcppt/output_to_std_wstring.hpp
 	libs/core/include/fcppt/output_to_string.hpp
 	libs/core/include/fcppt/output_to_string_locale.hpp

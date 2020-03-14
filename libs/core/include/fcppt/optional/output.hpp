@@ -51,12 +51,13 @@ operator<<(
 	> const &_opt_value
 )
 {
-	typedef
+	using
+	result_type
+	=
 	std::basic_ostream<
 		Ch,
 		Traits
-	> &
-	result_type;
+	> &;
 
 	return
 		fcppt::optional::maybe(

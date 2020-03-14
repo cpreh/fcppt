@@ -17,7 +17,10 @@ namespace math
 \brief The size type used for structure sizes
 \ingroup fcpptmath
 */
-typedef unsigned size_type;
+using
+size_type
+=
+unsigned;
 
 }
 }

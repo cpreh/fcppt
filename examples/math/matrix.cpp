@@ -26,13 +26,14 @@ namespace
 {
 
 // ![decl]
-typedef
+using
+int_matrix_2x3
+=
 fcppt::math::matrix::static_<
 	int,
 	2,
 	3
->
-int_matrix_2x3;
+>;
 
 void
 ctor()
@@ -52,13 +53,14 @@ ctor()
 // ![decl]
 
 // ![identity]
-typedef
+using
+int_matrix_3x3
+=
 fcppt::math::matrix::static_<
 	int,
 	3,
 	3
->
-int_matrix_3x3;
+>;
 
 void
 identity()
@@ -86,7 +88,7 @@ row_iterate()
 	// Will output: (1,0,0),(0,1,0),(0,0,1),
 	fcppt::algorithm::loop(
 		fcppt::math::int_range_count<
-			m.rows()
+			int_matrix_3x3::rows()
 		>{},
 		[
 			&m
@@ -98,13 +100,14 @@ row_iterate()
 				_row
 			);
 
-			typedef
+			using
+			row
+			=
 			fcppt::tag_type<
 				decltype(
 					_row
 				)
-			>
-			row;
+			>;
 
 			std::cout
 				<<

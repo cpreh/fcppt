@@ -50,13 +50,17 @@ operator<(
 		<
 		_right.first
 	)
+	{
 		return true;
+	}
 	if(
 		_right.first
 		<
 		_left.first
 	)
+	{
 		return false;
+	}
 
 	return
 		_left.second

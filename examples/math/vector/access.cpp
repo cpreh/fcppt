@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[vectoraccess
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -13,17 +12,19 @@
 int
 main()
 {
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		float,
 		2
-	> float2_vec;
+	>
+	float2_vec;
 
-	float2_vec obj(
-		1.f,
-		2.f
-	);
+	float2_vec obj{
+		1.F,
+		2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	};
 
-	obj.x() = 42.f;
+	obj.x() = 42.F;  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	fcppt::io::cout()
 		<< obj.x()
@@ -31,4 +32,3 @@ main()
 		<< obj.y()
 		<< FCPPT_TEXT('\n');
 }
-//]

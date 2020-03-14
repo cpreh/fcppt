@@ -52,13 +52,14 @@ multiply_scalar(
 				_index
 			);
 
-			typedef
+			using
+			index
+			=
 			fcppt::tag_type<
 				decltype(
 					_index
 				)
-			>
-			index;
+			>;
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4709)

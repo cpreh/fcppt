@@ -97,9 +97,11 @@ try
 		:
 		tree
 	)
+	{
 		fcppt::io::cout()
 			<< item.value()
 			<< FCPPT_TEXT('\n');
+	}
 
 	fcppt::optional::maybe_void(
 		tree.front(),

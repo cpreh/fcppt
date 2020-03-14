@@ -31,47 +31,54 @@ template<
 class static_storage
 {
 public:
-	typedef
+	using
+	array_type
+	=
 	std::array<
 		T,
 		N
-	>
-	array_type;
+	>;
 
-	typedef
+	using
+	storage_size
+	=
 	fcppt::type_traits::integral_cast<
 		fcppt::math::size_type,
 		fcppt::cast::size_fun,
 		fcppt::container::array::size<
 			array_type
 		>
-	>
-	storage_size;
+	>;
 
-	typedef
+	using
+	value_type
+	=
 	typename
-	array_type::value_type
-	value_type;
+	array_type::value_type;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	array_type::reference
-	reference;
+	array_type::reference;
 
-	typedef
+	using
+	const_reference
+	=
 	typename
-	array_type::const_reference
-	const_reference;
+	array_type::const_reference;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	array_type::pointer
-	pointer;
+	array_type::pointer;
 
-	typedef
+	using
+	const_pointer
+	=
 	typename
-	array_type::const_pointer
-	const_pointer;
+	array_type::const_pointer;
 
 	template<
 		typename... Args
@@ -91,19 +98,23 @@ public:
 		array_type const &
 	);
 
+	[[nodiscard]]
 	reference
 	operator[](
 		fcppt::math::size_type
 	);
 
+	[[nodiscard]]
 	const_reference
 	operator[](
 		fcppt::math::size_type
 	) const;
 
+	[[nodiscard]]
 	pointer
 	data();
 
+	[[nodiscard]]
 	const_pointer
 	data() const;
 private:

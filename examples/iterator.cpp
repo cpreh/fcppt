@@ -47,6 +47,7 @@ public:
 	: ptr_{_ptr}
 	{}
 
+	[[nodiscard]]
 	reference
 	operator*() const
 	{
@@ -59,6 +60,7 @@ public:
 		++ptr_;
 	}
 
+	[[nodiscard]]
 	bool
 	equal(my_iterator const &_other) const
 	{
@@ -77,6 +79,7 @@ public:
 		ptr_ += _distance;
 	}
 
+	[[nodiscard]]
 	difference_type
 	distance_to(my_iterator const &_other) const
 	{
@@ -100,7 +103,7 @@ main()
 
 	++it;
 
-	*it = 5;
+	*it = 0;
 
 	// Array is now {1,5,3}
 

@@ -64,12 +64,13 @@ operator *(
 	> const &_right
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::vector::static_<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
 		R
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::math::vector::init<
@@ -82,11 +83,12 @@ operator *(
 				auto const _row
 			)
 			{
-				typedef
+				using
+				value_type
+				=
 				fcppt::type_traits::value_type<
 					result_type
-				>
-				value_type;
+				>;
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -117,19 +119,21 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 								_row
 							);
 
-							typedef
+							using
+							column
+							=
 							fcppt::tag_type<
 								decltype(
 									_column
 								)
-							>
-							column;
+							>;
 
-							typedef
+							using
+							row
+							=
 							decltype(
 								_row
-							)
-							row;
+							);
 
 							return
 								_sum

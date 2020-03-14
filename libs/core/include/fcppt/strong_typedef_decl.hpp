@@ -71,7 +71,7 @@ public:
 	*/
 	explicit
 	strong_typedef(
-		T const &
+		T
 	);
 
 	/**
@@ -80,14 +80,6 @@ public:
 	explicit
 	strong_typedef(
 		fcppt::no_init const &
-	);
-
-	/**
-	\brief Constructs a strong typedef by moving.
-	*/
-	explicit
-	strong_typedef(
-		T &&
 	);
 
 	/**

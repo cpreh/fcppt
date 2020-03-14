@@ -83,13 +83,14 @@ init(
 					_fcppt_element
 				);
 
-				typedef
+				using
+				fcppt_element
+				=
 				fcppt::tag_type<
 					decltype(
 						_fcppt_element
 					)
-				>
-				fcppt_element;
+				>;
 
 				return
 					fcppt::record::element_to_label<

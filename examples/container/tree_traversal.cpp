@@ -13,6 +13,8 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,10 +22,13 @@ int
 main()
 try
 {
-	//! [main]
-	typedef fcppt::container::tree::object<
+//! [main]
+	using
+	string_tree
+	=
+	fcppt::container::tree::object<
 		fcppt::string
-	> string_tree;
+	>;
 
 	// Create a tree, insert 5 elements below the root
 	string_tree tree(
@@ -60,10 +65,12 @@ try
 			tree
 		)
 	)
+	{
 		fcppt::io::cout()
 			<< item.value()
 			<< std::endl;
-	//! [main]
+	}
+//! [main]
 }
 catch(
 	fcppt::exception const &_error
@@ -72,6 +79,17 @@ catch(
 	fcppt::io::cerr()
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
+
+	return
+		EXIT_FAILURE;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<< _error.what()
+		<< '\n';
 
 	return
 		EXIT_FAILURE;

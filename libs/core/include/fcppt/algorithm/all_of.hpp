@@ -52,8 +52,10 @@ all_of(
 					_element
 				)
 			)
+			{
 				return
 					fcppt::loop::continue_;
+			}
 
 			result =
 				false;

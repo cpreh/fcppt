@@ -45,10 +45,18 @@ combine_errors(
 				return
 					fcppt::options::parse_error{
 						fcppt::options::detail::combine_errors_impl(
-							std::move(
+							std::forward<
+								decltype(
+									_val1
+								)
+							>(
 								_val1
 							),
-							std::move(
+							std::forward<
+								decltype(
+									_val2
+								)
+							>(
 								_val2
 							),
 							_function

@@ -27,16 +27,18 @@ struct transform<
 	>
 >
 {
-	typedef
-	Type
-	undecorated_type;
+	using
+	undecorated_type
+	=
+	Type;
 
-	typedef
+	using
+	decorated_type
+	=
 	fcppt::strong_typedef<
 		Type,
 		Alias
-	>
-	decorated_type;
+	>;
 
 	static
 	inline

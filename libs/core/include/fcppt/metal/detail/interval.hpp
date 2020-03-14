@@ -41,7 +41,9 @@ struct interval
 		End
 	);
 
-	typedef
+	using
+	type
+	=
 	fcppt::metal::from_number_list<
 		Type,
 		::metal::iota<
@@ -60,8 +62,7 @@ struct interval
 				>
 			>
 		>
-	>
-	type;
+	>;
 };
 
 }

@@ -8,6 +8,9 @@
 #define FCPPT_CONTAINER_GRID_POS_REFERENCE_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/grid/pos_reference_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -16,12 +19,14 @@ template<
 fcppt::container::grid::pos_reference<
 	Grid
 >::pos_reference(
-	pos_type const &_pos,
+	pos_type _pos,
 	reference _value
 )
 :
 	pos_(
-		_pos
+		std::move(
+			_pos
+		)
 	),
 	value_(
 		_value

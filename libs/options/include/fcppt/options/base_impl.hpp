@@ -16,8 +16,7 @@ template<
 fcppt::options::base<
 	Result
 >::base()
-{
-}
+= default;
 
 template<
 	typename Result
@@ -25,7 +24,6 @@ template<
 fcppt::options::base<
 	Result
 >::~base()
-{
-}
+= default;
 
 #endif

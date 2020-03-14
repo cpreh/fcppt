@@ -20,7 +20,10 @@ namespace bitfield
 
 \see fcppt::container::bitfield::array
 */
-typedef unsigned default_internal_type;
+using
+default_internal_type
+=
+unsigned;
 
 }
 }

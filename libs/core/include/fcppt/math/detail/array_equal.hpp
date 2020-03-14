@@ -46,8 +46,7 @@ array_equal(
 				typename
 				T2::storage_type
 			>
-		>::value,
-		""
+		>::value
 	);
 
 	return
@@ -69,13 +68,14 @@ array_equal(
 					_index
 				);
 
-				typedef
+				using
+				index
+				=
 				fcppt::tag_type<
 					decltype(
 						_index
 					)
-				>
-				index;
+				>;
 
 				return
 					_v1.storage()[

@@ -68,7 +68,7 @@ fcppt::options::many<
 	fcppt::options::parse_context const &_context
 ) const
 {
-	// TODO: This is super ugly
+	// TODO(philipp): This is super ugly
 	result_type result{
 		fcppt::record::init<
 			result_type
@@ -155,19 +155,21 @@ fcppt::options::many<
 							_fcppt_inner_element
 						);
 
-						typedef
+						using
+						element
+						=
 						std::remove_const_t<
 							decltype(
 								_fcppt_inner_element
 							)
-						>
-						element;
+						>;
 
-						typedef
+						using
+						label
+						=
 						fcppt::record::element_to_label<
 							element
-						>
-						label;
+						>;
 
 						fcppt::record::element_to_type<
 							element

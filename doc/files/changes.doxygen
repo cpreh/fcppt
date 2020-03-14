@@ -47,6 +47,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Made the conversion constructor of #fcppt::shared_ptr explicit.</li>
+	<li>Made the #fcppt::weak_ptr constructor from #fcppt::shared_ptr explicit.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstring
 	<ul>
 	<li>Added #fcppt::system.</li>
@@ -78,7 +85,7 @@
 
 <ul>
 
-<li>\ref fcpptcast
+<li>\ref fcpptcasts
 	<ul>
 	<li>Removed <code>fcppt::cast::safe</code>.</li>
 	</ul>

@@ -25,34 +25,37 @@ template<
 struct is_raw_pointer
 {
 	static_assert(
-		std::is_pointer<
+		std::is_pointer_v<
 			Type
-		>::value,
+		>,
 		"Type must be a pointer"
 	);
 
-	typedef
+	using
+	base_type
+	=
 	std::remove_cv_t<
 		std::remove_pointer_t<
 			Type
 		>
-	>
-	base_type;
+	>;
 
-	typedef
+	using
+	type
+	=
 	std::integral_constant<
 		bool,
-		std::is_same<
-			base_type,
-			char
-		>::value
-		||
-		std::is_same<
-			base_type,
-			unsigned char
-		>::value
-	>
-	type;
+		std::disjunction_v<
+			std::is_same<
+				base_type,
+				char
+			>,
+			std::is_same<
+				base_type,
+				unsigned char
+			>
+		>
+	>;
 };
 
 }

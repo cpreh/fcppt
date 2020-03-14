@@ -89,6 +89,7 @@ if(
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
+		"-bugprone-macro-parentheses"
 		"-cppcoreguidelines-macro-usage"
 		"-cert-dcl21-cpp"
 		"-fuchsia-overloaded-operator"

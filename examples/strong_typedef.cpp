@@ -27,7 +27,7 @@ namespace
 namespace motivation
 {
 //![motivation_string]
-void f(std::string first_name);
+void f(std::string const &first_name);
 
 void g()
 {
@@ -35,7 +35,7 @@ void g()
 	f(email_address);
 }
 //![motivation_string]
-void f(std::string)
+void f(std::string const &)
 {
 }
 }
@@ -53,7 +53,7 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	email_address
 );
 
-void f(first_name);
+void f(first_name const &);
 
 void g()
 {
@@ -81,7 +81,8 @@ FCPPT_PP_DISABLE_VC_WARNING(4800)
 void g()
 {
 //! [bad_call]
-f(true,100,'c');
+// NOLINTNEXTLINE(readability-implicit-bool-conversion,modernize-use-bool-literals)
+f(true,1,'c');
 //! [bad_call]
 }
 
@@ -120,7 +121,7 @@ void named_parameters_call_test()
 {
 //! [parameter_call]
 f(
-	vertex_count(100),
+	vertex_count(1),
 	enable_culling(true),
 	draw_char('c')
 );
@@ -151,7 +152,7 @@ namespace motivation2
 {
 //![get]
 void
-f(first_name const _name)
+f(first_name const &_name)
 {
 	std::cout << _name.get() << '\n';
 }

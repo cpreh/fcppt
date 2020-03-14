@@ -100,13 +100,15 @@ print_recurse(
 )
 {
 	constexpr size_type const index(
-		Level - 1u
+		Level - 1U
 	);
 
 	_stream
 		<< _stream.widen('(');
 
-	typedef
+	using
+	dim_value_type
+	=
 	fcppt::type_traits::value_type<
 		fcppt::container::grid::dim_type<
 			fcppt::container::grid::object<
@@ -115,8 +117,7 @@ print_recurse(
 				Alloc
 			>
 		>
-	>
-	dim_value_type;
+	>;
 
 	dim_value_type const sz{
 		fcppt::math::dim::at<
@@ -150,10 +151,12 @@ print_recurse(
 		);
 
 		if(
-			i < sz - 1u
+			i < sz - 1U
 		)
+		{
 			_stream
 				<< _stream.widen(',');
+		}
 	}
 
 	_stream

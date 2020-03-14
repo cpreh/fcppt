@@ -39,7 +39,9 @@ namespace
 namespace tmp
 {
 // ![vector2f]
-typedef
+using
+vector2f
+=
 fcppt::math::vector::object<
 	float,
 	2,
@@ -47,18 +49,18 @@ fcppt::math::vector::object<
 		float,
 		2
 	>
->
-vector2f;
+>;
 // ![vector2f]
 }
 
 // ![vector2f_short]
-typedef
+using
+vector2f
+=
 fcppt::math::vector::static_<
 	float,
 	2
->
-vector2f;
+>;
 // ![vector2f_short]
 
 void
@@ -71,13 +73,13 @@ init()
 		fcppt::no_init{}
 	);
 
-	v1.x() = 0.1f;
-	v1.y() = 0.2f;
+	v1.x() = 0.1F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	v1.y() = 0.2F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	// same as v1
 	vector2f const v2(
-		0.1f,
-		0.2f
+		0.1F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		0.2F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 // ![init]
 
@@ -92,7 +94,7 @@ convert()
 		int,
 		1
 	> const i(
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	auto const f(
@@ -120,7 +122,7 @@ push_back_narrow()
 		int,
 		1
 	> const small(
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 	// Convert smaller to bigger. Only works for N and N+1 and we have to
 	// specify the additional element.
@@ -130,7 +132,7 @@ push_back_narrow()
 	> const bigger(
 		fcppt::math::vector::push_back(
 			small,
-			20
+			20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 
@@ -167,11 +169,11 @@ void
 comparison()
 {
 // ![comparison]
-	vector2f const x(1.f,2.f);
+	vector2f const x(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
-	vector2f const y(1.f,2.f);
+	vector2f const y(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
-	std::cout << (x == y) << ',' << (x - y == vector2f{0.f,0.f}) << '\n';
+	std::cout << (x == y) << ',' << (x - y == vector2f{0.F,0.F}) << '\n';
 // ![comparison]
 }
 
@@ -179,10 +181,10 @@ void
 comparison_length()
 {
 // ![comparison_length]
-	vector2f const x(1.f,2.f);
-	vector2f const y(1.f,2.f);
+	vector2f const x(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const y(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
-	float const epsilon(0.001f);
+	float const epsilon(0.001F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	std::cout << (fcppt::math::vector::length(x - y) < epsilon) << '\n';
 // ![comparison_length]
@@ -192,10 +194,10 @@ void
 comparison_range()
 {
 // ![comparison_range]
-	vector2f const x(1.f,2.f);
-	vector2f const y(1.f,2.f);
+	vector2f const x(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const y(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
-	float const epsilon(0.001f);
+	float const epsilon(0.001F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	std::cout << fcppt::math::vector::componentwise_equal(x,y,epsilon) << '\n';
 // ![comparison_range]
@@ -235,9 +237,10 @@ struct make_literal<
 	second
 >
 {
-	typedef
-	second
-	decorated_type;
+	using
+	decorated_type
+	=
+	second;
 
 	static
 	decorated_type
@@ -271,26 +274,29 @@ void
 asymmetric_div()
 {
 // ![asymmetric_div]
-	typedef
+	using
+	meter2
+	=
 	fcppt::math::vector::static_<
 		meter,
 		2
-	>
-	meter2;
+	>;
 
-	typedef
+	using
+	second2
+	=
 	fcppt::math::vector::static_<
 		second,
 		2
-	>
-	second2;
+	>;
 
-	typedef
+	using
+	speed2
+	=
 	fcppt::math::vector::static_<
 		speed,
 		2
-	>
-	speed2;
+	>;
 
 	fcppt::optional::object<
 		speed2

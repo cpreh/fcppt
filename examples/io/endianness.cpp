@@ -19,12 +19,13 @@ int
 main()
 {
 //[io_endianness]
-	std::stringstream stream;
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+	std::stringstream stream{};
 
 	// Write 42u into the stream, using big endianness
 	fcppt::io::write(
 		stream,
-		42u,
+		42U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		fcppt::endianness::format::big
 	);
 

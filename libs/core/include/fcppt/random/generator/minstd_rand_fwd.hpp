@@ -20,9 +20,12 @@ namespace random
 namespace generator
 {
 
-typedef fcppt::random::generator::basic_pseudo<
+using
+minstd_rand
+=
+fcppt::random::generator::basic_pseudo<
 	std::minstd_rand
-> minstd_rand;
+>;
 
 }
 }

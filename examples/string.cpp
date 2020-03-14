@@ -9,9 +9,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iostream>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -27,16 +24,6 @@ something()
 int
 main()
 {
-
-{
-//![literals]
-char const chars[] = "foobar";
-wchar_t const wchars[] = L"foobar";
-//![literals]
-
-	std::cout << chars << '\n';
-	std::wcout << wchars << L'\n';
-}
 
 {
 

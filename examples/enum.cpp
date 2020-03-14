@@ -73,9 +73,11 @@ iterate()
 			myenum
 		>()
 	)
+	{
 		print_enum(
 			value
 		);
+	}
 // ![enum_range]
 }
 
@@ -83,12 +85,13 @@ void
 enum_array()
 {
 // ![enum_array]
-	typedef
+	using
+	array
+	=
 	fcppt::enum_::array<
 		myenum,
 		bool
-	>
-	array;
+	>;
 
 	// Requires three {} pairs because the array wraps std::array
 	// internally
@@ -114,19 +117,17 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 // ![enum_names]
 namespace
 {
-
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
 fcppt::enum_::names_array<
 	myenum
-> const names{{{
+> const names{{{ // NOLINT(cert-err58-cpp)
 	FCPPT_TEXT("val1"),
 	FCPPT_TEXT("val2")
 }}};
 
 }
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 
 template<>
@@ -145,7 +146,6 @@ struct names_impl<
 	}
 };
 
-}
 }
 // ![enum_names]
 

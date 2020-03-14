@@ -34,7 +34,7 @@ template<
 	typename Interpolator
 >
 std::enable_if_t<
-	N == 1u,
+	N == 1U,
 	fcppt::type_traits::value_type<
 		Grid
 	>
@@ -51,15 +51,15 @@ interpolate(
 		_interpolator(
 			_pos.x(),
 			_grid.get_unsafe(
-				_indices[
+				_indices[ // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
 					_value_index
 				]
 			),
 			_grid.get_unsafe(
-				_indices[
+				_indices[ // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
 					_value_index
 					+
-					1u
+					1U
 				]
 			)
 		);
@@ -73,7 +73,7 @@ template<
 	typename Interpolator
 >
 std::enable_if_t<
-	N != 1u,
+	N != 1U,
 	fcppt::type_traits::value_type<
 		Grid
 	>
@@ -86,13 +86,17 @@ interpolate(
 	Interpolator const &_interpolator
 )
 {
-	typedef typename
-	FloatVector::size_type
-	float_vector_size_type;
+	using
+	float_vector_size_type
+	=
+	typename
+	FloatVector::size_type;
 
-	typedef typename
-	IndexSequence::size_type
-	index_sequence_size_type;
+	using
+	index_sequence_size_type
+	=
+	typename
+	IndexSequence::size_type;
 
 	constexpr std::size_t const next_n(
 		N

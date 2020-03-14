@@ -48,7 +48,9 @@ multiply_disjoint(
 	Record2 &&_record2
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::disjoint_product<
 		fcppt::type_traits::remove_cv_ref_t<
 			Record1
@@ -56,8 +58,7 @@ multiply_disjoint(
 		fcppt::type_traits::remove_cv_ref_t<
 			Record2
 		>
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::record::init<

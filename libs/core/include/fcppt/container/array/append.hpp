@@ -68,23 +68,26 @@ append(
 	Array2 &&_array2
 )
 {
-	typedef
+	using
+	array1
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Array1
-	>
-	array1;
+	>;
 
-	typedef
+	using
+	array2
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Array2
-	>
-	array2;
+	>;
 
-	typedef
+	using
+	element_type
+	=
 	fcppt::type_traits::value_type<
 		array1
-	>
-	element_type;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_std_array<
@@ -107,11 +110,12 @@ append(
 		>
 	);
 
-	typedef
+	using
+	array1_size
+	=
 	fcppt::container::array::size<
 		Array1
-	>
-	array1_size;
+	>;
 
 	return
 		fcppt::container::array::init<
@@ -136,6 +140,7 @@ append(
 					<
 					array1_size::value
 				)
+				{
 					return
 						fcppt::move_if_rvalue<
 							Array1
@@ -146,7 +151,9 @@ append(
 								_array1
 							)
 						);
+				}
 				else
+				{
 					return
 						fcppt::move_if_rvalue<
 							Array2
@@ -159,6 +166,7 @@ append(
 								_array2
 							)
 						);
+				}
 			}
 		);
 

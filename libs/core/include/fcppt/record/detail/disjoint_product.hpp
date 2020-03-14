@@ -36,7 +36,9 @@ struct disjoint_product
 		"RecordL and RecordR must be disjoint"
 	);
 
-	typedef
+	using
+	type
+	=
 	fcppt::record::from_list<
 		::metal::join<
 			fcppt::record::element_vector<
@@ -46,8 +48,7 @@ struct disjoint_product
 				RecordR
 			>
 		>
-	>
-	type;
+	>;
 };
 
 }

@@ -48,11 +48,12 @@ class iterator final
 		>
 {
 public:
-	typedef
+	using
+	size_type
+	=
 	fcppt::enum_::size_type<
 		Enum
-	>
-	size_type;
+	>;
 
 	explicit
 	iterator(

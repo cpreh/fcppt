@@ -55,7 +55,9 @@ init_storage(
 	> const &_value
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::matrix::detail::static_storage<
 		Type,
 		fcppt::cast::size<
@@ -64,8 +66,7 @@ init_storage(
 			R
 		),
 		C
-	>
-	result_type;
+	>;
 
 	return
 		result_type{
@@ -83,7 +84,9 @@ init_storage(
 						_index
 					);
 
-					typedef
+					using
+					index
+					=
 					fcppt::math::matrix::detail::index_absolute<
 						C,
 						fcppt::cast::size<
@@ -91,8 +94,7 @@ init_storage(
 						>(
 							_index()
 						)
-					>
-					index;
+					>;
 
 					return
 						fcppt::math::detail::checked_access<

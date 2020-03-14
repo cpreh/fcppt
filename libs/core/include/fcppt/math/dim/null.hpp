@@ -43,14 +43,15 @@ null()
 		"Dim must be a dim"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::dim::static_<
 		fcppt::type_traits::value_type<
 			Dim
 		>,
 		Dim::static_size::value
-	>
-	result_type;
+	>;
 
 	return
 		result_type(

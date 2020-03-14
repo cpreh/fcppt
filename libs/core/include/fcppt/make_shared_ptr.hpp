@@ -7,6 +7,7 @@
 #ifndef FCPPT_MAKE_SHARED_PTR_HPP_INCLUDED
 #define FCPPT_MAKE_SHARED_PTR_HPP_INCLUDED
 
+#include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
@@ -18,7 +19,7 @@ namespace fcppt
 {
 
 /**
-\brief Like <code>std::make_shared</code> for #fcppt::shared_ptr
+\brief Like <code>std::make_shared</code> but for #fcppt::shared_ptr.
 
 \ingroup fcpptsmartptr
 */
@@ -27,7 +28,7 @@ template<
 	typename... Args
 >
 inline
-fcppt::detail::make_shared_wrapper<
+fcppt::shared_ptr<
 	Res
 >
 make_shared_ptr(
@@ -35,17 +36,21 @@ make_shared_ptr(
 )
 {
 	return
-		fcppt::detail::make_shared_wrapper<
+		fcppt::shared_ptr<
 			Res
 		>(
-			std::make_shared<
+			fcppt::detail::make_shared_wrapper<
 				Res
 			>(
-				std::forward<
-					Args
+				std::make_shared<
+					Res
 				>(
-					_args
-				)...
+					std::forward<
+						Args
+					>(
+						_args
+					)...
+				)
 			)
 		);
 }

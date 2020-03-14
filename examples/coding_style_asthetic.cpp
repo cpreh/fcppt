@@ -4,20 +4,28 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+
+
 namespace
 {
 
-typedef
-int
-result_type;
+using
+result_type
+=
+int;
 
-typedef
-int
-T1;
+using
+T1
+=
+int;
 
-typedef
-int
-T2;
+using
+T2
+=
+int;
 
 int
 expression1(
@@ -68,8 +76,11 @@ struct test
 		)
 	{
 	}
-
-	int value_;
+private:
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-private-field)
+	int value_; // NOLINT(clang-diagnostic-unused-private-field)
+FCPPT_PP_POP_WARNING
 };
 
 test
@@ -95,6 +106,6 @@ main()
 	);
 
 	make_test(
-		42
+		1
 	);
 }

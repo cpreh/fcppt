@@ -82,21 +82,25 @@ interpolate(
 	Interpolator const &_interpolator
 )
 {
-	typedef
+	using
+	grid_type
+	=
 	fcppt::container::grid::object<
 		T,
 		N,
 		A
-	>
-	grid_type;
+	>;
 
-	typedef
+	using
+	integer_vector_type
+	=
 	fcppt::container::grid::pos_type<
 		grid_type
-	>
-	integer_vector_type;
+	>;
 
-	typedef
+	using
+	binary_vector_array_type
+	=
 	std::array<
 		integer_vector_type,
 		fcppt::math::power_of_2<
@@ -104,17 +108,18 @@ interpolate(
 		>(
 			N
 		)
-	>
-	binary_vector_array_type;
+	>;
 
-	typedef
+	using
+	binary_vector_array_type_size_type
+	=
 	typename
-	binary_vector_array_type::size_type
-	binary_vector_array_type_size_type;
+	binary_vector_array_type::size_type;
 
-	typedef
-	F
-	vector_value_type;
+	using
+	vector_value_type
+	=
+	F;
 
 	integer_vector_type const floored(
 		fcppt::math::vector::to_unsigned(
@@ -138,9 +143,13 @@ interpolate(
 	);
 
 	for(
-		integer_vector_type &i : binary_vectors
+		integer_vector_type &i
+		:
+		binary_vectors
 	)
+	{
 		i += floored;
+	}
 
 	return
 		fcppt::container::grid::detail::interpolate<

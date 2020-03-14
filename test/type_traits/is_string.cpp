@@ -4,45 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_METAL_DETAIL_INDEX_OF_HPP_INCLUDED
-#define FCPPT_METAL_DETAIL_INDEX_OF_HPP_INCLUDED
-
+#include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
-{
-namespace metal
-{
-namespace detail
-{
-
-template<
-	typename List,
-	typename Type
->
-struct index_of
+int
+main()
 {
 	static_assert(
-		::metal::contains<
-			List,
-			Type
+		fcppt::type_traits::is_string<
+			std::string
 		>::value
 	);
 
-	using
-	type
-	=
-	::metal::find<
-		List,
-		Type
-	>;
-};
+	static_assert(
+		fcppt::type_traits::is_string<
+			std::wstring
+		>::value
+	);
 
+	static_assert(
+		!fcppt::type_traits::is_string<
+			int
+		>::value
+	);
 }
-}
-}
-
-#endif

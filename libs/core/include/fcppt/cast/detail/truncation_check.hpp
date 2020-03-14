@@ -31,13 +31,13 @@ template<
 	typename Source
 >
 std::enable_if_t<
-	std::is_signed<
+	std::is_signed_v<
 		Dest
-	>::value
+	>
 	==
-	std::is_signed<
+	std::is_signed_v<
 		Source
-	>::value
+	>
 	&&
 	sizeof(
 		Dest
@@ -67,13 +67,13 @@ template<
 	typename Source
 >
 std::enable_if_t<
-	std::is_unsigned<
+	std::is_unsigned_v<
 		Dest
-	>::value
+	>
 	&&
-	std::is_unsigned<
+	std::is_unsigned_v<
 		Source
-	>::value
+	>
 	&&
 	sizeof(
 		Dest
@@ -90,11 +90,12 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef
+	using
+	dest_type
+	=
 	fcppt::optional::object<
 		Dest
-	>
-	dest_type;
+	>;
 
 	return
 		fcppt::cast::size<
@@ -124,13 +125,13 @@ template<
 	typename Source
 >
 std::enable_if_t<
-	std::is_signed<
+	std::is_signed_v<
 		Dest
-	>::value
+	>
 	&&
-	std::is_signed<
+	std::is_signed_v<
 		Source
-	>::value
+	>
 	&&
 	sizeof(
 		Dest
@@ -147,9 +148,12 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional::object<
+	using
+	dest_type
+	=
+	fcppt::optional::object<
 		Dest
-	> dest_type;
+	>;
 
 	return
 		fcppt::cast::size<
@@ -189,13 +193,13 @@ template<
 	typename Source
 >
 std::enable_if_t<
-	std::is_unsigned<
+	std::is_unsigned_v<
 		Dest
-	>::value
+	>
 	&&
-	std::is_signed<
+	std::is_signed_v<
 		Source
-	>::value,
+	>,
 	fcppt::optional::object<
 		Dest
 	>
@@ -204,9 +208,12 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional::object<
+	using
+	dest_type
+	=
+	fcppt::optional::object<
 		Dest
-	> dest_type;
+	>;
 
 	return
 		_source
@@ -233,13 +240,13 @@ template<
 	typename Source
 >
 std::enable_if_t<
-	std::is_signed<
+	std::is_signed_v<
 		Dest
-	>::value
+	>
 	&&
-	std::is_unsigned<
+	std::is_unsigned_v<
 		Source
-	>::value,
+	>,
 	fcppt::optional::object<
 		Dest
 	>
@@ -248,19 +255,26 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional::object<
+	using
+	dest_type
+	=
+	fcppt::optional::object<
 		Dest
-	> dest_type;
+	>;
 
-	typedef
+	using
+	intermediate_type
+	=
 	std::make_unsigned_t<
 		Dest
-	>
-	intermediate_type;
+	>;
 
-	typedef fcppt::optional::object<
+	using
+	intermediate_dest
+	=
+	fcppt::optional::object<
 		intermediate_type
-	> intermediate_dest;
+	>;
 
 	intermediate_dest const dest(
 		fcppt::cast::detail::truncation_check<

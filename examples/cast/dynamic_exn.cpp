@@ -4,38 +4,77 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//! [dynamic_exn]
+#include <fcppt/nonmovable.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/reference_to_base.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/cast/dynamic_exn.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
+//! [dynamic_exn]
 namespace
 {
 
 struct base
 {
+	FCPPT_NONMOVABLE(
+		base
+	);
+
+	base()
+	= default;
+
 	virtual
 	~base()
-	{}
+	= default;
 };
 
 struct derived1
 :
 	base
 {
+	FCPPT_NONMOVABLE(
+		derived1
+	);
+
+	derived1()
+	= default;
+
+	~derived1()
+	override
+	= default;
 };
 
 struct derived2
 :
 	base
 {
+	FCPPT_NONMOVABLE(
+		derived2
+	);
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
+	derived2()
+	= default;
+FCPPT_PP_POP_WARNING
+
+	~derived2()
+	override
+	= default;
 };
 
 void
 f(
-	base &_base
+	fcppt::reference<
+		base
+	> const _base
 )
 {
 	try
@@ -45,7 +84,7 @@ f(
 			fcppt::cast::dynamic_exn<
 				derived2 &
 			>(
-				_base
+				_base.get()
 			)
 		);
 
@@ -73,6 +112,12 @@ main()
 	derived1 d1;
 
 	f(
-		d1
+		fcppt::reference_to_base<
+			base
+		>(
+			fcppt::make_ref(
+				d1
+			)
+		)
 	);
 }

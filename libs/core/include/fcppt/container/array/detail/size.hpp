@@ -39,12 +39,13 @@ struct size<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	std::integral_constant<
 		std::size_t,
 		N
-	>
-	type;
+	>;
 };
 
 }

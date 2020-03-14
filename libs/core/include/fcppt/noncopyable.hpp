@@ -18,6 +18,8 @@
 Makes the class called \a classname noncopyable. The macro must be placed
 inside the class definition and called with the name of the class. It deletes
 the copy constructor and the assignment operator.
+The idea is that the user still implements a move constructor and a move
+assignment operator. If this is not desired, use #FCPPT_NONMOVABLE instead.
 
 \snippet examples/noncopyable.cpp noncopyable
 

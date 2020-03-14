@@ -23,7 +23,7 @@ coding_style_loop(
 {
 // ![coding_style_loop]
 int result{0};
-for(int i{1}; i < n; ++i) result += i;
+for(int i{1}; i < n; ++i) { result += i; }
 // ![coding_style_loop]
 }
 
@@ -78,11 +78,11 @@ int
 main()
 {
 	coding_style_loop(
-		42
+		1
 	);
 
 	coding_style_fold(
-		42
+		1
 	);
 
 	make_array<

@@ -75,7 +75,7 @@ for_each_break(
 	case fcppt::loop::continue_:
 		fcppt::metal::detail::for_each_break<
 			List,
-			Index + 1u
+			Index + 1U
 		>(
 			_func
 		);

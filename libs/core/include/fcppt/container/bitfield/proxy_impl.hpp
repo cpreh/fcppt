@@ -114,6 +114,18 @@ template<
 >
 fcppt::container::bitfield::proxy<
 	StoredType
+>::proxy(
+	proxy &&
+)
+noexcept
+=
+default;
+
+template<
+	typename StoredType
+>
+fcppt::container::bitfield::proxy<
+	StoredType
 > &
 fcppt::container::bitfield::proxy<
 	StoredType
@@ -123,6 +135,20 @@ fcppt::container::bitfield::proxy<
 =
 default;
 
+template<
+	typename StoredType
+>
+fcppt::container::bitfield::proxy<
+	StoredType
+> &
+fcppt::container::bitfield::proxy<
+	StoredType
+>::operator=(
+	proxy &&
+)
+noexcept
+=
+default;
 
 template<
 	typename StoredType
@@ -130,8 +156,7 @@ template<
 fcppt::container::bitfield::proxy<
 	StoredType
 >::~proxy()
-{
-}
+= default;
 
 template<
 	typename StoredType
@@ -145,17 +170,17 @@ fcppt::container::bitfield::proxy<
 	fcppt::container::bitfield::value_type const _value
 )
 {
-	size_type const
-		index(
-			this->array_offset(
-				pos_
-			)
-		),
-		bit(
-			this->bit_offset(
-				pos_
-			)
-		);
+	size_type const index(
+		this->array_offset(
+			pos_
+		)
+	);
+
+	size_type const bit(
+		this->bit_offset(
+			pos_
+		)
+	);
 
 	mask_type const mask(
 		this->bit_mask(
@@ -166,15 +191,19 @@ fcppt::container::bitfield::proxy<
 	if(
 		_value
 	)
+	{
 		array_.get()[
 			index
 		] |=
 			mask.get();
+	}
 	else
+	{
 		array_.get()[
 			index
 		] &=
 			~mask.get();
+	}
 
 	return
 		*this;

@@ -14,6 +14,9 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/to_dim.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -44,8 +47,8 @@ fcppt::math::box::object<
 	T,
 	N
 >::object(
-	vector const &_pos,
-	dim const &_size
+	vector const _pos,
+	dim const _size
 )
 :
 	min_(
@@ -67,15 +70,19 @@ fcppt::math::box::object<
 	T,
 	N
 >::object(
-	vector const &_min,
-	vector const &_max
+	vector _min,
+	vector _max
 )
 :
 	min_(
-		_min
+		std::move(
+			_min
+		)
 	),
 	max_(
-		_max
+		std::move(
+			_max
+		)
 	)
 {
 }

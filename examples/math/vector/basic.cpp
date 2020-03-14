@@ -13,21 +13,25 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 {
 	// typedef a vector that has a static size of three elements of float
-	typedef fcppt::math::vector::static_<
+	using
+	float3_vec
+	=
+	fcppt::math::vector::static_<
 		float,
 		3
-	> float3_vec;
+	>;
 
 	// vectors can be constructed directly. Note that you cannot specify less
 	// than N arguments (3 in this case) or you'll get a compiler error.
-	float3_vec obj(
-		1.f,
-		2.f,
-		3.f
-	);
+	float3_vec obj{
+		1.F,
+		2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		3.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	};
 
 	std::cout << obj << '\n'; // prints something close to (1, 2, 3)
 }

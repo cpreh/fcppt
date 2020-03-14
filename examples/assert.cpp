@@ -14,6 +14,10 @@
 #include <fcppt/assert/throw.hpp>
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/io/cerr.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <exception>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -89,23 +93,30 @@ is_fruit(
 // Define an exception that can be constructed from an
 // fcppt::assert_::information
 class my_exception
+:
+	std::exception
 {
 public:
 	explicit
 	my_exception(
-		fcppt::assert_::information const &_info
+		fcppt::assert_::information &&_info
 	)
 	:
+		std::exception{},
 		info_(
-			_info
+			std::move(
+				_info
+			)
 		)
 	{
 	}
 
+	[[nodiscard]]
 	fcppt::assert_::information const &
 	info() const
 	{
-		return info_;
+		return
+			this->info_;
 	}
 private:
 	fcppt::assert_::information info_;
@@ -149,7 +160,7 @@ main()
 try
 {
 	library_function(
-		5
+		1
 	);
 
 	is_fruit(

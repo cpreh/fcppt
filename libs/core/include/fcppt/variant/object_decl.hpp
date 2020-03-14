@@ -44,11 +44,12 @@ template<
 class object
 {
 public:
-	typedef
+	using
+	this_type
+	=
 	fcppt::variant::object<
 		Types...
-	>
-	this_type;
+	>;
 
 	/**
 	\brief The metal::list of the possible types

@@ -181,6 +181,12 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	nonmovable
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_example(
 	optional
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -231,12 +237,6 @@ add_fcppt_example(
 
 add_fcppt_example(
 	type_iso
-	LINK_LIBS
-		fcppt_core_interface
-)
-
-add_fcppt_example(
-	type_traits
 	LINK_LIBS
 		fcppt_core_interface
 )

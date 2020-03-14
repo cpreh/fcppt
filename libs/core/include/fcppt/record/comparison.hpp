@@ -75,15 +75,16 @@ operator==(
 					_tag
 				);
 
-				typedef
+				using
+				label
+				=
 				fcppt::record::element_to_label<
 					fcppt::tag_type<
 						decltype(
 							_tag
 						)
 					>
-				>
-				label;
+				>;
 
 				return
 					fcppt::record::get<

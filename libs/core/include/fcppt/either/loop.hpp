@@ -53,23 +53,26 @@ loop(
 	Loop const &_loop
 )
 {
-	typedef
+	using
+	either_type
+	=
 	std::result_of_t<
 		Next()
-	>
-	either_type;
+	>;
 
-	typedef
+	using
+	failure_type
+	=
 	fcppt::either::failure_type<
 		either_type
-	>
-	failure_type;
+	>;
 
-	typedef
+	using
+	optional_failure_type
+	=
 	fcppt::optional::object<
 		failure_type
-	>
-	optional_failure_type;
+	>;
 
 FCPPT_PP_PUSH_WARNING
 #if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)

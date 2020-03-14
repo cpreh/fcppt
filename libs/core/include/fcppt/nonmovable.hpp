@@ -18,8 +18,8 @@
 
 Makes the class called \a classname nonmovable and noncopyable.
 The macro must be placed inside the class definition and called with the name
-of the class. It deletes the move constructor and the move assignment operator.
-This complements #FCPPT_NONCOPYABLE.
+of the class. It deletes the move constructor, the copy constructor,
+the move assignment operator and the copy assignment operator.
 
 \param classname The name of the class.
 */

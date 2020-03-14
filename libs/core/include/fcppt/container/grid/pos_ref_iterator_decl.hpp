@@ -44,72 +44,82 @@ class pos_ref_iterator final
 			Grid
 		>
 {
-	typedef
+	using
+	base_type
+	=
 	fcppt::container::grid::detail::pos_ref_iterator_base<
 		Grid
-	>
-	base_type;
+	>;
 
-	typedef
+	using
+	dim
+	=
 	fcppt::container::grid::dim_type<
 		std::remove_cv_t<
 			Grid
 		>
-	>
-	dim;
+	>;
 
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos_type<
 		std::remove_cv_t<
 			Grid
 		>
-	>
-	pos;
+	>;
 
-	typedef
+	using
+	iterator
+	=
 	fcppt::container::to_iterator_type<
 		Grid
-	>
-	iterator;
+	>;
 public:
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		base_type
-	>
-	value_type;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	base_type::reference
-	reference;
+	base_type::reference;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	base_type::pointer
-	pointer;
+	base_type::pointer;
 
-	typedef
+	using
+	iterator_category
+	=
 	typename
-	base_type::iterator_category
-	iterator_category;
+	base_type::iterator_category;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	base_type::difference_type
-	difference_type;
+	base_type::difference_type;
 
-	typedef
+	using
+	pos_iterator
+	=
 	fcppt::container::grid::pos_iterator<
 		fcppt::type_traits::value_type<
 			pos
 		>,
 		pos::static_size::value
-	>
-	pos_iterator;
+	>;
 
 	pos_ref_iterator(
-		iterator const &,
-		pos_iterator const &,
+		iterator,
+		pos_iterator,
 		dim
 	);
 

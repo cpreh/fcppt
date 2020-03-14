@@ -45,66 +45,74 @@ public:
 	/**
 	\brief A typedef for the \p N parameter
 	*/
-	typedef
+	using
+	dim_wrapper
+	=
 	fcppt::math::static_size<
 		N
-	>
-	dim_wrapper;
+	>;
 
 	/**
 	\brief The static size
 	*/
-	typedef
-	dim_wrapper
-	static_size;
+	using
+	static_size
+	=
+	dim_wrapper;
 
 	/**
 	\brief A typedef for the \p S parameter
 	*/
-	typedef
-	S
-	storage_type;
+	using
+	storage_type
+	=
+	S;
 
 	/**
 	\brief A type that counts the number of elements in a vector.
 	*/
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
 	/**
 	\brief A type that provides the difference between the addresses of two
 	elements in a vector.
 	*/
-	typedef
-	fcppt::math::difference_type
-	difference_type;
+	using
+	difference_type
+	=
+	fcppt::math::difference_type;
 
 	/**
 	\brief A type that represents the data type stored in a vector.
 	*/
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
 	/**
 	\brief A type that provides a reference to an element stored in a
 	vector.
 	*/
-	typedef
+	using
+	reference
+	=
 	typename
-	storage_type::reference
-	reference;
+	storage_type::reference;
 
 	/**
 	\brief A type that provides a reference to a <code>const</code> element
 	stored in a vector for reading and performing <code>const</code>
 	operations.
 	*/
-	typedef
+	using
+	const_reference
+	=
 	typename
-	storage_type::const_reference
-	const_reference;
+	storage_type::const_reference;
 
 	/**
 	\brief Construct an uninitialized vector
@@ -142,6 +150,14 @@ public:
 	);
 
 	/**
+	\brief Move-construct the vector from another vector
+	*/
+	object(
+		object &&
+	)
+	noexcept;
+
+	/**
 	\brief Create a vector from a vector with the same dimension and value
 	type but different storage type
 
@@ -166,6 +182,15 @@ public:
 	operator=(
 		object const &
 	);
+
+	/**
+	\brief Move the values from a different vector
+	*/
+	object &
+	operator=(
+		object &&
+	)
+	noexcept;
 
 	/**
 	\brief Copy the values from a different vector
@@ -244,6 +269,7 @@ public:
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
+	[[nodiscard]]
 	const_reference
 	get_unsafe(
 		size_type
@@ -255,6 +281,7 @@ public:
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
+	[[nodiscard]]
 	reference
 	get_unsafe(
 		size_type
@@ -263,54 +290,64 @@ public:
 	/**
 	\brief Returns a reference to the first element in the vector
 	*/
+	[[nodiscard]]
 	reference
 	x();
 
 	/**
 	\brief Returns a reference to the first element in the vector
 	*/
+	[[nodiscard]]
 	const_reference
 	x() const;
 
 	/**
 	\brief Returns a reference to the second element in the vector
 	*/
+	[[nodiscard]]
 	reference
 	y();
 
 	/**
 	\brief Returns a reference to the second element in the vector
 	*/
+	[[nodiscard]]
 	const_reference
 	y() const;
 
 	/**
 	\brief Returns a reference to the third element in the vector
 	*/
+	[[nodiscard]]
 	reference
 	z();
 
 	/**
 	\brief Returns a reference to the third element in the vector
 	*/
+	[[nodiscard]]
 	const_reference
 	z() const;
 
 	/**
 	\brief Returns a reference to the fourth element in the vector
 	*/
+	[[nodiscard]]
 	reference
 	w();
 
 	/**
 	\brief Returns a reference to the fourth element in the vector
 	*/
+	[[nodiscard]]
 	const_reference
 	w() const;
 
+	[[nodiscard]]
 	S &
 	storage();
 
+	[[nodiscard]]
 	S const &
 	storage() const;
 private:

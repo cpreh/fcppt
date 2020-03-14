@@ -55,7 +55,9 @@ public:
 		Right &&
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::disjoint_product<
 		fcppt::options::result_of<
 			Left
@@ -63,9 +65,9 @@ public:
 		fcppt::options::result_of<
 			Right
 		>
-	>
-	result_type;
+	>;
 
+	[[nodiscard]]
 	fcppt::options::parse_result<
 		result_type
 	>
@@ -74,12 +76,15 @@ public:
 		fcppt::options::parse_context const &
 	) const;
 
+	[[nodiscard]]
 	fcppt::options::flag_name_set
 	flag_names() const;
 
+	[[nodiscard]]
 	fcppt::options::option_name_set
 	option_names() const;
 
+	[[nodiscard]]
 	fcppt::string
 	usage() const;
 private:

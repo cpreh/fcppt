@@ -141,7 +141,7 @@ fcppt::options::sum<
 											fcppt::string &&_string2
 										)
 										{
-											// TODO: Format this better
+											// TODO(philipp): Format this better
 											return
 												fcppt::options::indent(
 													std::move(

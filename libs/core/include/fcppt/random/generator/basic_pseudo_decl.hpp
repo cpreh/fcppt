@@ -8,7 +8,7 @@
 #define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>
 
@@ -37,16 +37,23 @@ template<
 >
 class basic_pseudo
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		basic_pseudo
 	);
 
-	typedef Generator wrapped;
+	using
+	wrapped
+	=
+	Generator;
 public:
 	/**
 	\brief The result type used for drawing random numbers
 	*/
-	typedef typename wrapped::result_type result_type;
+	using
+	result_type
+	=
+	typename
+	wrapped::result_type;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		result_type,

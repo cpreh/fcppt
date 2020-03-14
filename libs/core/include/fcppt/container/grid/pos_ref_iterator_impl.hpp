@@ -16,6 +16,9 @@
 #include <fcppt/container/grid/pos_reference_impl.hpp>
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -24,19 +27,25 @@ template<
 fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::pos_ref_iterator(
-	iterator const &_iterator,
-	pos_iterator const &_pos_iterator,
-	dim const _size
+	iterator _iterator,
+	pos_iterator _pos_iterator,
+	dim _size
 )
 :
 	iterator_(
-		_iterator
+		std::move(
+			_iterator
+		)
 	),
 	pos_iterator_(
-		_pos_iterator
+		std::move(
+			_pos_iterator
+		)
 	),
 	size_(
-		_size
+		std::move(
+			_size
+		)
 	)
 {
 }

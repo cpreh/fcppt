@@ -25,7 +25,7 @@ main()
 	>
 	int_unique_ptr_vector;
 
-	int_unique_ptr_vector const int_ptrs(
+	auto const int_ptrs(
 		fcppt::container::make<
 			int_unique_ptr_vector
 		>(
@@ -48,6 +48,8 @@ main()
 		:
 		int_ptrs
 	)
+	{
 		std::cout << *elem << '\n';
+	}
 // ![assign]
 }

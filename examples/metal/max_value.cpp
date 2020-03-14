@@ -16,13 +16,14 @@ namespace
 {
 //! [metal_max_value]
 // Calculate the maximum size of all the types
-typedef
+using
+types
+=
 metal::list<
-	short,
-	int,
-	long
->
-types;
+	short, // NOLINT(google-runtime-int)
+	int, // NOLINT(google-runtime-int)
+	long // NOLINT(google-runtime-int)
+>;
 
 template<
 	typename Type
@@ -35,7 +36,9 @@ std::integral_constant<
 	sizeof(Type)
 >;
 
-typedef
+using
+result
+=
 fcppt::metal::max_value<
 	metal::transform<
 		metal::lambda<
@@ -43,17 +46,15 @@ fcppt::metal::max_value<
 		>,
 		types
 	>
->
-result;
+>;
 
 static_assert(
 	std::is_same_v<
 		result,
 		sizeof_<
-			long
+			long // NOLINT(google-runtime-int)
 		>
-	>,
-	""
+	>
 );
 //! [metal_max_value]
 }

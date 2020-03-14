@@ -56,11 +56,12 @@ decorate(
 	Type const &_value
 )
 {
-	typedef
+	using
+	transform_type
+	=
 	fcppt::type_iso::transform<
 		Result
-	>
-	transform_type;
+	>;
 
 	return
 		transform_type::decorate(

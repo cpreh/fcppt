@@ -8,7 +8,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-// TODO: Output openmode properly
+// TODO(philipp): Output openmode properly
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 
@@ -67,7 +67,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
 #include <ios>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -90,9 +92,9 @@ try
 // ![options_labels]
 
 // ![options_input_file_option]
-	typedef
-	fcppt::options::argument<input_file_label, fcppt::string>
-	input_file_option;
+	using input_file_option
+	=
+	fcppt::options::argument<input_file_label, fcppt::string>;
 
 	input_file_option const input_file{
 		fcppt::options::long_name{FCPPT_TEXT("Input filename")},
@@ -103,13 +105,13 @@ try
 // ![options_input_file_option]
 
 // ![options_output_file_option]
-	typedef
-	fcppt::options::argument<output_file_label, fcppt::string>
-	output_file_option;
+	using output_file_option
+	=
+	fcppt::options::argument<output_file_label, fcppt::string>;
 
-	typedef
-	fcppt::options::optional<output_file_option>
-	optional_output_file_option;
+	using optional_output_file_option
+	=
+	fcppt::options::optional<output_file_option>;
 
 	optional_output_file_option const output_file{
 		fcppt::options::make_optional(
@@ -124,9 +126,9 @@ try
 // ![options_output_file_option]
 
 // ![options_execute_switch]
-	typedef
-	fcppt::options::switch_<execute_label>
-	execute_switch;
+	using execute_switch
+	=
+	fcppt::options::switch_<execute_label>;
 
 	execute_switch const execute{
 		fcppt::options::optional_short_name{
@@ -140,9 +142,9 @@ try
 // ![options_execute_switch]
 
 // ![options_openmode_option]
-	typedef
-	fcppt::options::flag<openmode_label, std::ios_base::openmode>
-	openmode_option;
+	using openmode_option
+	=
+	fcppt::options::flag<openmode_label, std::ios_base::openmode>;
 
 	openmode_option const openmode{
 		fcppt::options::optional_short_name{},
@@ -156,9 +158,9 @@ try
 // ![options_openmode_option]
 
 // ![options_log_level_option]
-	typedef
-	fcppt::options::option<log_level_label, fcppt::log::level>
-	log_level_option;
+	using log_level_option
+	=
+	fcppt::options::option<log_level_label, fcppt::log::level>;
 
 	log_level_option const log_level{
 		fcppt::options::optional_short_name{
@@ -187,9 +189,9 @@ try
 // ![options_parser]
 
 // ![options_result_type]
-	typedef
-	fcppt::options::result_of<decltype(parser)>
-	result_type;
+	using result_type
+	=
+	fcppt::options::result_of<decltype(parser)>;
 
 	static_assert(
 		fcppt::record::are_equivalent<
@@ -214,8 +216,9 @@ try
 
 // ![options_read_execute]
 			if(!fcppt::record::get<execute_label>(_result))
-				return
-					false;
+			{
+				return false;
+			}
 // ![options_read_execute]
 
 // ![options_log_context]
@@ -240,7 +243,7 @@ try
 				fcppt::filesystem::open_exn<
 					fcppt::filesystem::ifstream
 				>(
-					fcppt::record::get<input_file_label>(_result),
+					fcppt::record::get<input_file_label>(_result), // NOLINT(fuchsia-default-arguments-calls)
 					std::ios_base::openmode{}
 				)
 			};
@@ -265,7 +268,7 @@ try
 				fcppt::filesystem::open_exn<
 					fcppt::filesystem::ofstream
 				>(
-					output_filename,
+					output_filename, // NOLINT(fuchsia-default-arguments-calls)
 					fcppt::record::get<openmode_label>(_result)
 				)
 			};
@@ -304,10 +307,12 @@ try
 						(result_type const &_options)
 						{
 							if(!main_program(_options))
+							{
 								fcppt::io::cout()
 									<< FCPPT_TEXT("The result is:\n")
 									<< _options
 									<< FCPPT_TEXT('\n');
+							}
 
 							return
 								EXIT_SUCCESS;
@@ -339,6 +344,20 @@ catch(
 	return
 		EXIT_FAILURE;
 }
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
+}
+
 
 FCPPT_PP_POP_WARNING
 FCPPT_PP_POP_WARNING

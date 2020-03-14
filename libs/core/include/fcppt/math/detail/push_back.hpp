@@ -42,8 +42,7 @@ push_back(
 		==
 		Src::static_size::value
 		+
-		1u,
-		""
+		1U
 	);
 
 	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
@@ -51,14 +50,15 @@ push_back(
 		Dest::storage_type
 	);
 
-	typedef
+	using
+	src_storage
+	=
 	fcppt::math::detail::static_storage<
 		fcppt::type_traits::value_type<
 			Src
 		>,
 		Src::static_size::value
-	>
-	src_storage;
+	>;
 
 	return
 		fcppt::math::from_array<

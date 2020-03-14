@@ -51,62 +51,72 @@ template<
 class object
 {
 public:
-	typedef
+	using
+	static_rows
+	=
 	fcppt::math::static_size<
 		R
-	>
-	static_rows;
+	>;
 
-	typedef
+	using
+	static_columns
+	=
 	fcppt::math::static_size<
 		C
-	>
-	static_columns;
+	>;
 
-	typedef
-	static_rows
-	static_size;
+	using
+	static_size
+	=
+	static_rows;
 
-	typedef
+	using
+	dim_wrapper
+	=
 	fcppt::math::static_size<
 		static_rows::value
 		*
 		static_columns::value
-	>
-	dim_wrapper;
+	>;
 
 	/**
 	\brief A typedef for the \p S parameter
 	*/
-	typedef
-	S
-	storage_type;
+	using
+	storage_type
+	=
+	S;
 
 	/**
 	\brief A type that counts the number of elements in a matrix.
 	*/
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
 	/**
 	\brief A type that provides the difference between the addresses of two elements in a matrix.
 	*/
-	typedef
-	fcppt::math::difference_type
-	difference_type;
+	using
+	difference_type
+	=
+	fcppt::math::difference_type;
 
 	/**
 	\brief A type that represents the data type stored in a matrix.
 	*/
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
 	/**
 	\brief A reference to a row of the matrix.
 	*/
-	typedef
+	using
+	reference
+	=
 	fcppt::math::vector::object<
 		T,
 		C,
@@ -115,21 +125,23 @@ public:
 			C,
 			S
 		>
-	>
-	reference;
+	>;
 
 	/**
 	\brief A reference to an element of the matrix.
 	*/
-	typedef
+	using
+	inner_reference
+	=
 	typename
-	reference::reference
-	inner_reference;
+	reference::reference;
 
 	/**
 	\brief A const reference to a row of the matrix.
 	*/
-	typedef
+	using
+	const_reference
+	=
 	fcppt::math::vector::object<
 		T,
 		C,
@@ -138,26 +150,27 @@ public:
 			C,
 			S const
 		>
-	>
-	const_reference;
+	>;
 
 	/**
 	\brief A const reference to an element of the matrix.
 	*/
-	typedef
+	using
+	const_inner_reference
+	=
 	typename
-	const_reference::const_reference
-	const_inner_reference;
+	const_reference::const_reference;
 
 	/**
 	\brief The type of a row, which is a vector of <code>C</code> elements.
 	*/
-	typedef
+	using
+	row_type
+	=
 	fcppt::math::matrix::row_type<
 		T,
 		C
-	>
-	row_type;
+	>;
 
 	/**
 	\brief Construct an uninitialized matrix
@@ -201,6 +214,14 @@ public:
 	);
 
 	/**
+	\brief Move-construct the matrix from another matrix
+	*/
+	object(
+		object &&
+	)
+	noexcept;
+
+	/**
 	\brief Create a matrix from a matrix with the same dimension and value
 	type but different storage type
 
@@ -226,6 +247,15 @@ public:
 	operator=(
 		object const &
 	);
+
+	/**
+	\brief Move the values from a different matrix
+	*/
+	object &
+	operator=(
+		object &&
+	)
+	noexcept;
 
 	/**
 	\brief Copy the values from a different matrix of the same size but
@@ -288,6 +318,7 @@ public:
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
+	[[nodiscard]]
 	reference
 	get_unsafe(
 		size_type
@@ -299,6 +330,7 @@ public:
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
+	[[nodiscard]]
 	const_reference
 	get_unsafe(
 		size_type
@@ -307,6 +339,7 @@ public:
 	/**
 	\brief Returns the number of rows in the matrix.
 	*/
+	[[nodiscard]]
 	constexpr
 	static
 	size_type
@@ -315,110 +348,145 @@ public:
 	/**
 	\brief Returns the number of columns in the matrix.
 	*/
+	[[nodiscard]]
 	constexpr
 	static
 	size_type
 	columns();
 
+	[[nodiscard]]
 	S &
 	storage();
 
+	[[nodiscard]]
 	S const &
 	storage() const;
 
+	[[nodiscard]]
 	inner_reference
 	m00();
 
+	[[nodiscard]]
 	const_inner_reference
 	m00() const;
 
+	[[nodiscard]]
 	inner_reference
 	m01();
 
+	[[nodiscard]]
 	const_inner_reference
 	m01() const;
 
+	[[nodiscard]]
 	inner_reference
 	m02();
 
+	[[nodiscard]]
 	const_inner_reference
 	m02() const;
 
+	[[nodiscard]]
 	inner_reference
 	m03();
 
+	[[nodiscard]]
 	const_inner_reference
 	m03() const;
 
+	[[nodiscard]]
 	inner_reference
 	m10();
 
+	[[nodiscard]]
 	const_inner_reference
 	m10() const;
 
+	[[nodiscard]]
 	inner_reference
 	m11();
 
+	[[nodiscard]]
 	const_inner_reference
 	m11() const;
 
+	[[nodiscard]]
 	inner_reference
 	m12();
 
+	[[nodiscard]]
 	const_inner_reference
 	m12() const;
 
+	[[nodiscard]]
 	inner_reference
 	m13();
 
+	[[nodiscard]]
 	const_inner_reference
 	m13() const;
 
+	[[nodiscard]]
 	inner_reference
 	m20();
 
+	[[nodiscard]]
 	const_inner_reference
 	m20() const;
 
+	[[nodiscard]]
 	inner_reference
 	m21();
 
+	[[nodiscard]]
 	const_inner_reference
 	m21() const;
 
+	[[nodiscard]]
 	inner_reference
 	m22();
 
+	[[nodiscard]]
 	const_inner_reference
 	m22() const;
 
+	[[nodiscard]]
 	inner_reference
 	m23();
 
+	[[nodiscard]]
 	const_inner_reference
 	m23() const;
 
+	[[nodiscard]]
 	inner_reference
 	m30();
 
+	[[nodiscard]]
 	const_inner_reference
 	m30() const;
 
+	[[nodiscard]]
 	inner_reference
 	m31();
 
+	[[nodiscard]]
 	const_inner_reference
 	m31() const;
 
+	[[nodiscard]]
 	inner_reference
 	m32();
 
+	[[nodiscard]]
 	const_inner_reference
 	m32() const;
 
+	[[nodiscard]]
 	inner_reference
 	m33();
 
+	[[nodiscard]]
 	const_inner_reference
 	m33() const;
 private:

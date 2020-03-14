@@ -22,7 +22,7 @@ std_delete(
 		T
 	);
 
-	delete _param;
+	delete _param; // NOLINT(cppcoreguidelines-owning-memory)
 }
 //! [assert_complete]
 
@@ -34,8 +34,8 @@ struct complete
 
 int main()
 {
-	complete *const ptr(
-		new complete
+	auto *const ptr( // NOLINT(cppcoreguidelines-owning-memory)
+		new complete{}
 	);
 
 	std_delete(

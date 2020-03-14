@@ -29,6 +29,8 @@
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -40,13 +42,14 @@ FCPPT_MAIN(
 	int argc,
 	fcppt::args_char **argv
 )
+try
 {
 	// ![options_help_int]
 	FCPPT_RECORD_MAKE_LABEL(arg_label);
 
-	typedef
-	fcppt::options::argument<arg_label, int>
-	parser_type;
+	using parser_type
+	=
+	fcppt::options::argument<arg_label, int>;
 
 	parser_type const parser{
 		fcppt::options::long_name{FCPPT_TEXT("arg1")},
@@ -92,6 +95,19 @@ FCPPT_MAIN(
 
 	return
 		EXIT_SUCCESS;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }
 
 FCPPT_PP_POP_WARNING

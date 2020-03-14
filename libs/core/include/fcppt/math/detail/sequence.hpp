@@ -35,11 +35,12 @@ sequence(
 	Source const &_source
 )
 {
-	typedef
+	using
+	temp_array
+	=
 	fcppt::math::to_array_type<
 		Dest
-	>
-	temp_array;
+	>;
 
 	return
 		fcppt::optional::map(

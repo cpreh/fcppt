@@ -16,21 +16,22 @@ int
 main()
 {
 // ![init_points]
-	typedef
+	using
+	box2i
+	=
 	fcppt::math::box::object<
 		unsigned,
 		2
-	>
-	box2i;
+	>;
 
 	box2i const box(
 		box2i::vector(
-			1u,
-			2u
+			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		box2i::vector(
-			2u,
-			3u
+			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 // ![init_points]
@@ -38,12 +39,12 @@ main()
 // ![init_size]
 	box2i const box2(
 		box2i::vector(
-			1u,
-			2u
+			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		box2i::dim(
-			1u,
-			1u
+			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 // ![init_size]

@@ -30,14 +30,14 @@ template<
 	typename Src
 >
 inline
-Dest &
+void
 assign(
 	Dest &_dest,
 	Src const &_src
 )
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::math::detail::storage_size<
 				typename
 				Dest::storage_type
@@ -46,8 +46,7 @@ assign(
 				typename
 				Src::storage_type
 			>
-		>::value,
-		""
+		>
 	);
 
 	fcppt::algorithm::loop(
@@ -68,13 +67,14 @@ assign(
 				_index
 			);
 
-			typedef
+			using
+			index
+			=
 			fcppt::tag_type<
 				decltype(
 					_index
 				)
-			>
-			index;
+			>;
 
 			_dest.storage()[
 				index::value
@@ -84,9 +84,6 @@ assign(
 				];
 		}
 	);
-
-	return
-		_dest;
 }
 
 }

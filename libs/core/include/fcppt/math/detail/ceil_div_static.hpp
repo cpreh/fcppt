@@ -45,7 +45,9 @@ struct ceil_div_static
 		"ceil_div only works on unsigned types"
 	);
 
-	typedef
+	using
+	type
+	=
 	std::integral_constant<
 		Type,
 		Dividend
@@ -57,12 +59,11 @@ struct ceil_div_static
 			%
 			Divisor
 			?
-				1u
+				1U
 			:
-				0u
+				0U
 		)
-	>
-	type;
+	>;
 };
 
 }

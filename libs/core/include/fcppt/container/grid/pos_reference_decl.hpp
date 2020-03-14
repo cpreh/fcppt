@@ -35,28 +35,32 @@ template<
 class pos_reference
 {
 public:
-	typedef
+	using
+	pos_type
+	=
 	fcppt::container::grid::pos_type<
 		std::remove_cv_t<
 			Grid
 		>
-	>
-	pos_type;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	fcppt::container::to_reference_type<
 		Grid
-	>
-	reference;
+	>;
 
 	pos_reference(
-		pos_type const &,
+		pos_type,
 		reference
 	);
 
+	[[nodiscard]]
 	pos_type const &
 	pos() const;
 
+	[[nodiscard]]
 	reference
 	value() const;
 private:

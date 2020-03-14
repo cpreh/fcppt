@@ -45,46 +45,54 @@ class cyclic_iterator final
 		>
 {
 public:
-	typedef
+	using
+	base_type
+	=
 	fcppt::detail::cyclic_iterator_base<
 		ContainerIterator
-	>
-	base_type;
+	>;
 
-	typedef
-	ContainerIterator
-	container_iterator_type;
+	using
+	container_iterator_type
+	=
+	ContainerIterator;
 
-	typedef
+	using
+	value_type
+	=
 	typename
-	base_type::value_type
-	value_type;
+	base_type::value_type;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	base_type::reference
-	reference;
+	base_type::reference;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	base_type::pointer
-	pointer;
+	base_type::pointer;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	base_type::difference_type
-	difference_type;
+	base_type::difference_type;
 
-	typedef
+	using
+	iterator_category
+	=
 	typename
-	base_type::iterator_category
-	iterator_category;
+	base_type::iterator_category;
 
-	typedef
+	using
+	boundary
+	=
 	fcppt::homogenous_pair<
 		container_iterator_type
-	>
-	boundary;
+	>;
 
 	cyclic_iterator();
 
@@ -140,12 +148,14 @@ public:
 	/**
 	\brief Returns the boundary
 	*/
+	[[nodiscard]]
 	boundary const &
 	get_boundary() const;
 
 	/**
 	\brief Returns the underlying iterator
 	*/
+	[[nodiscard]]
 	container_iterator_type
 	get() const;
 
@@ -160,14 +170,17 @@ public:
 	void
 	decrement();
 
+	[[nodiscard]]
 	bool
 	equal(
 		cyclic_iterator const &
 	) const;
 
+	[[nodiscard]]
 	reference
 	dereference() const;
 
+	[[nodiscard]]
 	difference_type
 	distance_to(
 		cyclic_iterator const &

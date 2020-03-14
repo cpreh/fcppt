@@ -234,11 +234,12 @@ fcppt::options::product<
 	Right
 >::check_disjoint() const
 {
-	typedef
+	using
+	name_set
+	=
 	std::set<
 		fcppt::string
-	>
-	name_set;
+	>;
 
 	auto const all_parameters(
 		[](
@@ -295,6 +296,7 @@ fcppt::options::product<
 	if(
 		!common_names.empty()
 	)
+	{
 		throw
 			fcppt::options::duplicate_names{
 				FCPPT_TEXT("The following names appear multiple times in a product parser: ")
@@ -305,6 +307,7 @@ fcppt::options::product<
 					)
 				)
 			};
+	}
 }
 
 #endif

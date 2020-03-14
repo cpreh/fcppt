@@ -50,11 +50,12 @@ permute(
 		"Result must be an fcppt::record::object"
 	);
 
-	typedef
+	using
+	arg_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Arg
-	>
-	arg_type;
+	>;
 
 	static_assert(
 		fcppt::record::is_object<

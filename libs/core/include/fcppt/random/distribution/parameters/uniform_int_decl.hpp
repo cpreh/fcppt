@@ -39,27 +39,31 @@ template<
 class uniform_int
 {
 public:
-	typedef
-	IntType
-	result_type;
+	using
+	result_type
+	=
+	IntType;
 
-	typedef
+	using
+	base_type
+	=
 	fcppt::random::distribution::base_type<
 		result_type
-	>
-	base_type;
+	>;
 
-	typedef
+	using
+	distribution
+	=
 	typename
 	Distribution:: template apply<
 		base_type
-	>::type
-	distribution;
+	>::type;
 
-	typedef
+	using
+	wrapped_param_type
+	=
 	typename
-	distribution::param_type
-	wrapped_param_type;
+	distribution::param_type;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		IntType,

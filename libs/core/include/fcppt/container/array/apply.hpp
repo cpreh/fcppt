@@ -91,19 +91,21 @@ std::array<
 	>::value
 >
 {
-	typedef
+	using
+	source1
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Array1
-	>
-	source1;
+	>;
 
-	typedef
+	using
+	sources
+	=
 	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Arrays
 		>...
-	>
-	sources;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_std_array<
@@ -145,7 +147,9 @@ std::array<
 		"All arrays must have the same number of elements"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	std::array<
 		fcppt::type_traits::remove_cv_ref_t<
 			decltype(
@@ -178,8 +182,7 @@ std::array<
 		fcppt::container::array::size<
 			source1
 		>::value
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::container::array::init<
@@ -198,11 +201,12 @@ std::array<
 					_index
 				);
 
-				typedef
+				using
+				index
+				=
 				decltype(
 					_index
-				)
-				index;
+				);
 
 				return
 					_function(

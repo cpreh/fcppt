@@ -51,13 +51,14 @@ template<
 class option
 {
 public:
-	typedef
+	using
+	optional_default_value
+	=
 	fcppt::options::default_value<
 		fcppt::optional::object<
 			Type
 		>
-	>
-	optional_default_value;
+	>;
 
 	/**
 	\brief Constructs an option parser.
@@ -77,19 +78,22 @@ public:
 		fcppt::options::optional_help_text &&help_text
 	);
 
-	typedef
+	using
+	element_type
+	=
 	fcppt::record::element<
 		Label,
 		Type
-	>
-	element_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::object<
 		element_type
-	>
-	result_type;
+	>;
 
+	[[nodiscard]]
 	fcppt::options::parse_result<
 		result_type
 	>
@@ -98,12 +102,15 @@ public:
 		fcppt::options::parse_context const &
 	) const;
 
+	[[nodiscard]]
 	fcppt::options::flag_name_set
 	flag_names() const;
 
+	[[nodiscard]]
 	fcppt::options::option_name_set
 	option_names() const;
 
+	[[nodiscard]]
 	fcppt::string
 	usage() const;
 private:

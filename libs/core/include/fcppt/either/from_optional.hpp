@@ -63,7 +63,9 @@ fcppt::either::object<
 		"Optional must be an optional"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		decltype(
 			_failure_function()
@@ -73,8 +75,7 @@ fcppt::either::object<
 				Optional
 			>
 		>
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::optional::maybe(

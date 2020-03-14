@@ -158,6 +158,7 @@ set(
 	examples/metal/max_value.cpp
 	examples/metal/print.cpp
 	examples/noncopyable.cpp
+	examples/nonmovable.cpp
 	examples/optional.cpp
 	examples/options/base.cpp
 	examples/options/commands.cpp
@@ -184,7 +185,6 @@ set(
 	examples/string_conversion.cpp
 	examples/strong_typedef.cpp
 	examples/type_iso.cpp
-	examples/type_traits.cpp
 	examples/unique_ptr.cpp
 	examples/variant/binary_visitation.cpp
 	examples/variant/motivation.cpp
@@ -1216,6 +1216,7 @@ set(
 	libs/core/include/fcppt/output_to_fcppt_string.hpp
 	libs/core/include/fcppt/output_to_fcppt_string_locale.hpp
 	libs/core/include/fcppt/output_to_std_string.hpp
+	libs/core/include/fcppt/output_to_std_string_locale.hpp
 	libs/core/include/fcppt/output_to_std_wstring.hpp
 	libs/core/include/fcppt/output_to_string.hpp
 	libs/core/include/fcppt/output_to_string_locale.hpp

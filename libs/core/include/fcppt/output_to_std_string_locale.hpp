@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OUTPUT_TO_STD_STRING_HPP_INCLUDED
-#define FCPPT_OUTPUT_TO_STD_STRING_HPP_INCLUDED
+#ifndef FCPPT_OUTPUT_TO_STD_STRING_LOCALE_HPP_INCLUDED
+#define FCPPT_OUTPUT_TO_STD_STRING_LOCALE_HPP_INCLUDED
 
-#include <fcppt/insert_extract_locale.hpp>
-#include <fcppt/output_to_std_string_locale.hpp>
+#include <fcppt/output_to_string_locale.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <locale>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,7 +18,7 @@ namespace fcppt
 {
 
 /**
-\brief Convert an arbitrary type to a std::string, using #fcppt::insert_extract_locale.
+\brief Convert an arbitrary type to a std::string, using a custom locale.
 
 \ingroup fcpptstring
 
@@ -34,14 +34,17 @@ template<
 >
 inline
 std::string
-output_to_std_string(
-	Source const &_source
+output_to_std_string_locale(
+	Source const &_source,
+	std::locale const &_locale
 )
 {
 	return
-		fcppt::output_to_std_string_locale(
+		fcppt::output_to_string_locale<
+			std::string
+		>(
 			_source,
-			fcppt::insert_extract_locale()
+			_locale
 		);
 }
 

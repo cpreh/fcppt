@@ -24,13 +24,14 @@ template<
 >
 struct safe_integral_cast
 {
-	typedef
+	using
+	type
+	=
 	fcppt::type_traits::integral_cast<
 		Dest,
 		fcppt::cast::static_cast_fun,
 		Src
-	>
-	type;
+	>;
 
 	static_assert(
 		static_cast<

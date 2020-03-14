@@ -78,5 +78,5 @@ main()
 
 	int_vec_to_string_vec(std::vector<int>{});
 
-	init_array<4u>();
+	init_array<4U>();
 }

@@ -35,12 +35,13 @@ checked_access(
 	T &&_value
 )
 {
-	typedef
+	using
+	static_size
+	=
 	typename
 	std::remove_reference_t<
 		T
-	>::static_size
-	static_size;
+	>::static_size;
 
 	static_assert(
 		N < static_size::value,

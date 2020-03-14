@@ -9,23 +9,29 @@
 #include <fcppt/text.hpp>
 #include <fcppt/weak_ptr_impl.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <exception>
+#include <fcppt/config/external_end.hpp>
 
 
 int
 main()
+try
 {
 //! [weak_ptr]
-	typedef
+	using
+	weak_int_ptr
+	=
 	fcppt::weak_ptr<
 		int
-	>
-	weak_int_ptr;
+	>;
 
-	typedef
+	using
+	shared_int_ptr
+	=
 	fcppt::shared_ptr<
 		int
-	>
-	shared_int_ptr;
+	>;
 
 	weak_int_ptr weak_p;
 
@@ -34,19 +40,23 @@ main()
 			fcppt::make_shared_ptr<
 				int
 			>(
-				42
+				1
 			)
 		);
 
 		// Create a weak_ptr to the shared_ptr
 		weak_p =
-			int_ptr;
+			weak_int_ptr{
+				int_ptr
+			};
 
 		if(
 			weak_p.lock().has_value()
 		)
+		{
 			fcppt::io::cout()
 				<< FCPPT_TEXT("A shared ptr is still alive.\n");
+		}
 	}
 
 	// Observe if a shared_ptr is still alive. At this point, no
@@ -54,7 +64,14 @@ main()
 	if(
 		!weak_p.lock().has_value()
 	)
+	{
 		fcppt::io::cout()
 			<< FCPPT_TEXT("No shared ptrs are alive.\n");
+	}
 //! [weak_ptr]
+}
+catch(
+	std::exception const &
+)
+{
 }

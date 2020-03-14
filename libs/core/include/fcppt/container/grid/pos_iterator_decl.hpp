@@ -41,62 +41,72 @@ class pos_iterator final
 			Size
 		>
 {
-	typedef
+	using
+	base_type
+	=
 	fcppt::container::grid::detail::pos_iterator_base<
 		SizeType,
 		Size
-	>
-	base_type;
+	>;
 public:
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		base_type
-	>
+	>;
+
+	using
+	pos
+	=
 	value_type;
 
-	typedef
-	value_type
-	pos;
-
-	typedef
+	using
+	size_type
+	=
 	fcppt::type_traits::value_type<
 		pos
-	>
-	size_type;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	base_type::reference
-	reference;
+	base_type::reference;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	base_type::pointer
-	pointer;
+	base_type::pointer;
 
-	typedef
+	using
+	iterator_category
+	=
 	typename
-	base_type::iterator_category
-	iterator_category;
+	base_type::iterator_category;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	base_type::difference_type
-	difference_type;
+	base_type::difference_type;
 
-	typedef
+	using
+	min
+	=
 	fcppt::container::grid::min<
 		size_type,
 		Size
-	>
-	min;
+	>;
 
-	typedef
+	using
+	sup
+	=
 	fcppt::container::grid::sup<
 		size_type,
 		Size
-	>
-	sup;
+	>;
 
 	pos_iterator(
 		pos,

@@ -41,47 +41,57 @@ public:
 
 	list(
 		list &&
-	);
+	)
+	noexcept;
 
 	list &
 	operator=(
 		list &&
-	);
+	)
+	noexcept;
 
 	~list();
 
-	typedef
+	using
+	iterator
+	=
 	fcppt::intrusive::iterator<
 		Type
-	>
-	iterator;
+	>;
 
-	typedef
+	using
+	const_iterator
+	=
 	fcppt::intrusive::iterator<
 		Type const
-	>
-	const_iterator;
+	>;
 
+	[[nodiscard]]
 	iterator
 	begin();
 
+	[[nodiscard]]
 	iterator
 	end();
 
+	[[nodiscard]]
 	const_iterator
 	begin() const;
 
+	[[nodiscard]]
 	const_iterator
 	end() const;
 
+	[[nodiscard]]
 	bool
 	empty() const;
 private:
-	typedef
+	using
+	base_type
+	=
 	fcppt::intrusive::base<
 		Type
-	>
-	base_type;
+	>;
 
 	template<
 		typename T

@@ -42,11 +42,12 @@ make_range_start_end(
 )
 noexcept
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::enum_::range<
 		Enum
-	>
-	result_type;
+	>;
 
 	return
 		result_type(

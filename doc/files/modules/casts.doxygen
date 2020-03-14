@@ -135,12 +135,6 @@ Here are some examples of how the constructor can and can't be called:
 
 \snippet cast/safe_numeric.cpp safe_numeric_cast_objects
 
-#fcppt::cast::safe is another cast that extends the set of types that
-#fcppt::cast::safe_numeric can cast. If the types are both arithmetic types,
-then they will be converted using #fcppt::cast::safe_numeric, otherwise they
-must be implicitly convertible. This is used for constructing strong typedefs,
-see \ref fcpptstrongtypedef.
-
 \section fcpptcasts_truncation_check Checking truncation
 
 #fcppt::cast::truncation_check complements #fcppt::cast::safe_numeric by checking at runtime if a conversion

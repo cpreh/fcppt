@@ -41,17 +41,19 @@ identity()
 		"Matrix must be a matrix"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::matrix::to_static<
 		Matrix
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		result_type
-	>
-	value_type;
+	>;
 
 	return
 		fcppt::math::matrix::init<

@@ -167,19 +167,21 @@ operator *(
 	> const &_right
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::matrix::static_<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M1,
 		M2
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		result_type
-	>
-	value_type;
+	>;
 
 	return
 		fcppt::math::matrix::init<
@@ -215,13 +217,14 @@ operator *(
 								_pos
 							);
 
-							typedef
+							using
+							pos
+							=
 							fcppt::tag_type<
 								decltype(
 									_pos
 								)
-							>
-							pos;
+							>;
 
 							return
 								_sum

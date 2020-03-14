@@ -36,11 +36,12 @@ class base
 		base
 	);
 public:
-	typedef
+	using
+	list_type
+	=
 	fcppt::intrusive::list<
 		Type
-	>
-	list_type;
+	>;
 
 	/**
 	\brief Inserts the element at the back of a list.
@@ -52,12 +53,14 @@ public:
 
 	base(
 		base &&
-	);
+	)
+	noexcept;
 
 	base &
 	operator=(
 		base &&
-	);
+	)
+	noexcept;
 
 	~base();
 

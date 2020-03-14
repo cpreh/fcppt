@@ -55,6 +55,7 @@ add_fcppt_container_array_test(
 add_fcppt_container_array_test(
 	map
 	LINK_LIBS
+		${fcppt_core_TARGET}
 		fcppt_catch_interface
 )
 

@@ -22,11 +22,13 @@ fcppt::strong_typedef<
 	T,
 	Tag
 >::strong_typedef(
-	T const &_value
+	T _value
 )
 :
 	value_{
-		_value
+		std::move(
+			_value
+		)
 	}
 {
 }
@@ -41,25 +43,6 @@ fcppt::strong_typedef<
 >::strong_typedef(
 	fcppt::no_init const &
 )
-{
-}
-
-template<
-	typename T,
-	typename Tag
->
-fcppt::strong_typedef<
-	T,
-	Tag
->::strong_typedef(
-	T &&_value
-)
-:
-	value_(
-		std::move(
-			_value
-		)
-	)
 {
 }
 

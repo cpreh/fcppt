@@ -72,11 +72,12 @@ public:
 			};
 	}
 
+	[[nodiscard]]
 	int
 	get() const
 	{
 		return
-			value_;
+			this->value_;
 	}
 private:
 	explicit

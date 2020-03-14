@@ -16,11 +16,12 @@ namespace fcppt
 namespace io
 {
 
-typedef
+using
+scoped_rdbuf
+=
 fcppt::io::basic_scoped_rdbuf<
 	fcppt::char_type
->
-scoped_rdbuf;
+>;
 
 }
 }

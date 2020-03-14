@@ -61,12 +61,14 @@ decltype(
 	if(
 		_either.has_success()
 	)
+	{
 		return
 			fcppt::move_if_rvalue<
 				Either
 			>(
 				_either.get_success_unsafe()
 			);
+	}
 
 	throw
 		_make_exception(

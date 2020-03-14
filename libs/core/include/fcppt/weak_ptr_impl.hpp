@@ -68,6 +68,7 @@ fcppt::weak_ptr<
 	> const &_other
 )
 :
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	impl_(
 		_other.std_ptr()
 	)
@@ -92,16 +93,17 @@ fcppt::weak_ptr<
 {
 	typename
 	shared_ptr::impl_type result(
-		impl_.lock()
+		this->impl_.lock()
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		shared_ptr
-	>
-	result_type;
+	>;
 
-       	return
+	return
 		result
 		?
 			result_type(
@@ -120,7 +122,11 @@ template<
 	typename Type,
 	typename Deleter
 >
-long
+typename
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::count_type
 fcppt::weak_ptr<
 	Type,
 	Deleter
@@ -128,7 +134,7 @@ fcppt::weak_ptr<
 noexcept
 {
 	return
-		impl_.use_count();
+		this->impl_.use_count();
 }
 
 template<
@@ -143,7 +149,7 @@ fcppt::weak_ptr<
 noexcept
 {
 	return
-		impl_.expired();
+		this->impl_.expired();
 }
 
 template<
@@ -159,7 +165,7 @@ fcppt::weak_ptr<
 )
 noexcept
 {
-	impl_.swap(
+	this->impl_.swap(
 		_other.impl_
 	);
 }
@@ -178,7 +184,7 @@ fcppt::weak_ptr<
 >::std_ptr() const
 {
 	return
-		impl_;
+		this->impl_;
 }
 
 template<

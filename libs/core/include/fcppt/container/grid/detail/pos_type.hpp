@@ -31,10 +31,11 @@ struct pos_type
 		"Grid must be a grid"
 	);
 
-	typedef
+	using
+	type
+	=
 	typename
-	Grid::pos
-	type;
+	Grid::pos;
 };
 
 }

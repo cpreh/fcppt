@@ -42,92 +42,105 @@ class object
 {
 // \cond
 	static_assert(
-		N >= 1u,
+		N >= 1U,
 		"The dimensions of a grid cannot be zero"
 	);
 
-	typedef
+	using
+	container
+	=
 	std::vector<
 		T,
 		A
-	>
-	container;
+	>;
 // \endcond
 public:
-	typedef
+	using
+	static_size
+	=
 	std::integral_constant<
 		fcppt::container::grid::size_type,
 		N
-	>
-	static_size;
+	>;
 
-	typedef
-	A
-	allocator_type;
+	using
+	allocator_type
+	=
+	A;
 
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	container::size_type
-	size_type;
+	container::size_type;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	container::difference_type
-	difference_type;
+	container::difference_type;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	container::reference
-	reference;
+	container::reference;
 
-	typedef
+	using
+	const_reference
+	=
 	typename
-	container::const_reference
-	const_reference;
+	container::const_reference;
 
-	typedef
+	using
+	iterator
+	=
 	typename
-	container::iterator
-	iterator;
+	container::iterator;
 
-	typedef
+	using
+	const_iterator
+	=
 	typename
-	container::const_iterator
-	const_iterator;
+	container::const_iterator;
 
 	/**
 	\brief A type representing the dimension of the grid
 	*/
-	typedef
+	using
+	dim
+	=
 	fcppt::container::grid::dim<
 		size_type,
 		N
-	>
-	dim;
+	>;
 
 	/**
 	\brief A type representing a position in the grid
 	*/
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos<
 		size_type,
 		N
-	>
-	pos;
+	>;
 
 	/**
 	\brief A signed version of pos
 	*/
-	typedef
+	using
+	signed_pos
+	=
 	fcppt::container::grid::pos<
 		difference_type,
 		N
-	>
-	signed_pos;
+	>;
 
 	/**
 	\brief An empty grid.
@@ -224,6 +237,7 @@ public:
 
 	\warning Behaviour is undefined if the position is out of range.
 	*/
+	[[nodiscard]]
 	reference
 	get_unsafe(
 		pos const &
@@ -234,6 +248,7 @@ public:
 
 	\warning Behaviour is undefined if the position is out of range.
 	*/
+	[[nodiscard]]
 	const_reference
 	get_unsafe(
 		pos const &
@@ -246,30 +261,37 @@ public:
 	<code>size_type</code> value, but the dimension. Use content() to get
 	the number of elements
 	*/
+	[[nodiscard]]
 	dim const &
 	size() const;
 
 	/**
 	\brief Returns the number of elements in the grid.
 	*/
+	[[nodiscard]]
 	size_type
 	content() const;
 
 	/**
 	\brief Tests if the grid is empty.
 	*/
+	[[nodiscard]]
 	bool
 	empty() const;
 
+	[[nodiscard]]
 	iterator
 	begin();
 
+	[[nodiscard]]
 	iterator
 	end();
 
+	[[nodiscard]]
 	const_iterator
 	begin() const;
 
+	[[nodiscard]]
 	const_iterator
 	end() const;
 

@@ -7,7 +7,7 @@
 #ifndef FCPPT_IO_BASIC_SCOPED_RDBUF_DECL_HPP_INCLUDED
 #define FCPPT_IO_BASIC_SCOPED_RDBUF_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
@@ -31,16 +31,17 @@ template<
 >
 class basic_scoped_rdbuf
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		basic_scoped_rdbuf
 	);
 public:
-	typedef
+	using
+	stream_type
+	=
 	std::basic_ios<
 		Ch,
 		Traits
-	>
-	stream_type;
+	>;
 
 	/**
 	\brief Gives a streambuf from one stream to another
@@ -55,12 +56,13 @@ public:
 
 	~basic_scoped_rdbuf();
 private:
-	typedef
+	using
+	streambuf_type
+	=
 	std::basic_streambuf<
 		Ch,
 		Traits
-	>
-	streambuf_type;
+	>;
 
 	stream_type &receiver_;
 

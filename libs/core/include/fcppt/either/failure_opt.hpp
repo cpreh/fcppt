@@ -39,11 +39,12 @@ failure_opt(
 	Either &&_either
 )
 {
-	typedef
+	using
+	either
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Either
-	>
-	either;
+	>;
 
 	static_assert(
 		fcppt::either::is_object<
@@ -52,13 +53,14 @@ failure_opt(
 		"Either must be an either"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		fcppt::either::failure_type<
 			either
 		>
-	>
-	result_type;
+	>;
 
 	return
 		_either.has_failure()

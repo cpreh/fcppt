@@ -47,11 +47,13 @@ main()
 			fcppt::log::level::debug
 		)
 	)
+	{
 		log.log(
 			fcppt::log::level::debug,
 			fcppt::log::out
 				<< FCPPT_TEXT("Hello World")
 		);
+	}
 
 	// The same as above using a shorthand macro
 	FCPPT_LOG_DEBUG(

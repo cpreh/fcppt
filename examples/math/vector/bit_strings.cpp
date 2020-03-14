@@ -17,22 +17,24 @@ int
 main()
 {
 // ![bit_strings]
-	typedef
+	using
+	vector3
+	=
 	fcppt::math::vector::static_<
 		int,
 		3
-	>
-	vector3;
+	>;
 
 	// In dimension 3, we have 2^3=8 vectors, so typedef an array of this size
 	// here:
 
-	typedef
+	using
+	binary_vectors
+	=
 	std::array<
 		vector3,
-		8
-	>
-	binary_vectors;
+		8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	>;
 
 	binary_vectors const vs(
 		fcppt::math::vector::bit_strings<

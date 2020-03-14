@@ -82,14 +82,17 @@ std::array<
 >
 bit_strings()
 {
-	typedef
+	using
+	vector_type
+	=
 	fcppt::math::vector::static_<
 		T,
 		N
-	>
-	vector_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	std::array<
 		vector_type,
 		fcppt::math::power_of_2<
@@ -100,10 +103,9 @@ bit_strings()
 				N
 			}
 		)
-	>
-	result_type;
+	>;
 
-	result_type result(
+	auto result(
 		fcppt::container::array::init_const<
 			result_type
 		>(
@@ -113,7 +115,9 @@ bit_strings()
 		)
 	);
 
-	typename result_type::iterator it = result.begin();
+	auto it{
+		result.begin()
+	};
 
 	fcppt::math::vector::detail::bit_strings<
 		N - fcppt::literal<fcppt::math::size_type>(1),
@@ -126,7 +130,8 @@ bit_strings()
 		>()
 	);
 
-	return result;
+	return
+		result;
 }
 
 }

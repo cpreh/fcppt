@@ -50,17 +50,19 @@ parse_to_empty(
 	fcppt::options::parse_context const &_context
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::options::result_of<
 		Parser
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	return_type
+	=
 	fcppt::options::result<
 		result_type
-	>
-	return_type;
+	>;
 
 	return
 		fcppt::either::match(

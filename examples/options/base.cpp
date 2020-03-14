@@ -33,6 +33,8 @@
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -44,17 +46,18 @@ FCPPT_MAIN(
 	int argc,
 	fcppt::args_char **argv
 )
+try
 {
 // ![options_base_record]
 	FCPPT_RECORD_MAKE_LABEL(int_arg_label);
 	FCPPT_RECORD_MAKE_LABEL(switch_label);
 
-	typedef
+	using result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<int_arg_label, int>,
 		fcppt::record::element<switch_label, bool>
-	>
-	result_type;
+	>;
 // ![options_base_record]
 
 // ![options_create_base]
@@ -123,6 +126,19 @@ FCPPT_MAIN(
 
 	return
 		EXIT_SUCCESS;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }
 
 FCPPT_PP_POP_WARNING

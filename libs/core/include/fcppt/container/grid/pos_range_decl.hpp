@@ -36,60 +36,72 @@ template<
 class pos_range
 {
 public:
-	typedef
+	using
+	iterator
+	=
 	fcppt::container::grid::pos_iterator<
 		SizeType,
 		Size
-	>
+	>;
+
+	using
+	const_iterator
+	=
 	iterator;
 
-	typedef
-	iterator
-	const_iterator;
-
-	typedef
+	using
+	pos
+	=
 	fcppt::type_traits::value_type<
 		iterator
-	>
-	pos;
+	>;
 
-	typedef
+	using
+	min_type
+	=
 	typename
-	iterator::min
-	min_type;
+	iterator::min;
 
-	typedef
+	using
+	sup_type
+	=
 	typename
-	iterator::sup
-	sup_type;
+	iterator::sup;
 
 	pos_range(
 		min_type,
 		sup_type
 	);
 
+	[[nodiscard]]
 	iterator
 	begin() const;
 
+	[[nodiscard]]
 	iterator
 	end() const;
 
-	typedef
+	using
+	size_type
+	=
 	std::make_unsigned_t<
 		typename
 		iterator::difference_type
-	>
-	size_type;
+	>;
 
+	[[nodiscard]]
 	size_type
 	size() const;
 
+	[[nodiscard]]
 	min_type const &
 	min() const;
 
+	[[nodiscard]]
 	sup_type const &
 	sup() const;
 private:
+	[[nodiscard]]
 	iterator
 	make_iterator(
 		pos

@@ -135,6 +135,23 @@ template<
 	fcppt::math::size_type C,
 	typename S
 >
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+>::object(
+	object &&
+)
+noexcept
+= default;
+
+template<
+	typename T,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S
+>
 template<
 	typename OtherStorage
 >
@@ -190,6 +207,29 @@ template<
 	fcppt::math::size_type C,
 	typename S
 >
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+>::operator=(
+	object &&
+)
+noexcept
+= default;
+
+template<
+	typename T,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S
+>
 template<
 	typename OtherStorage
 >
@@ -213,11 +253,13 @@ fcppt::math::matrix::object<
 	> const &_other
 )
 {
+	fcppt::math::detail::assign(
+		*this,
+		_other
+	);
+
 	return
-		fcppt::math::detail::assign(
-			*this,
-			_other
-		);
+		*this;
 }
 
 template<
@@ -232,8 +274,7 @@ fcppt::math::matrix::object<
 	C,
 	S
 >::~object()
-{
-}
+= default;
 
 template<
 	typename T,

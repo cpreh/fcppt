@@ -41,17 +41,17 @@ rotation_2d(
 	T const _angle
 )
 {
-	T const
-		sinx{
-			std::sin(
-				_angle
-			)
-		},
-		cosx{
-			std::cos(
-				_angle
-			)
-		};
+	T const sinx{
+		std::sin(
+			_angle
+		)
+	};
+
+	T const cosx{
+		std::cos(
+			_angle
+		)
+	};
 
 	return
 		fcppt::math::matrix::static_<

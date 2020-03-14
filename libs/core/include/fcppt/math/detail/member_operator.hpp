@@ -36,8 +36,7 @@ member_operator(
 	static_assert(
 		Type1::dim_wrapper::value
 		==
-		Type2::dim_wrapper::value,
-		""
+		Type2::dim_wrapper::value
 	);
 
 	fcppt::algorithm::loop(
@@ -55,13 +54,14 @@ member_operator(
 				_index
 			);
 
-			typedef
+			using
+			index
+			=
 			fcppt::tag_type<
 				decltype(
 					_index
 				)
-			>
-			index;
+			>;
 
 			_function(
 				fcppt::math::detail::linear_access<

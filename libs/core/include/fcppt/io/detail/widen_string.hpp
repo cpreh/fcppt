@@ -35,11 +35,12 @@ public:
 	{
 	}
 
+	[[nodiscard]]
 	std::string const &
 	get() const
 	{
 		return
-			string_;
+			this->string_;
 	}
 private:
 	std::string string_;
@@ -66,11 +67,13 @@ operator<<(
 		:
 		_string.get()
 	)
+	{
 		_stream
 			<<
 			_stream.widen(
 				ch
 			);
+	}
 
 	return
 		_stream;

@@ -34,21 +34,30 @@ public:
 	/**
 	\brief The value type
 	*/
-	typedef T value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef T first_type;
+	using
+	first_type
+	=
+	T;
 
-	typedef T second_type;
+	using
+	second_type
+	=
+	T;
 
 	/**
 	\brief The first element
 	*/
-	value_type first;
+	value_type first; // NOLINT(misc-non-private-member-variables-in-classes)
 
 	/**
 	\brief The second element
 	*/
-	value_type second;
+	value_type second; // NOLINT(misc-non-private-member-variables-in-classes)
 
 	/**
 	\brief Initializes a pair

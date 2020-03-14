@@ -27,7 +27,7 @@ main()
 	buffer_type;
 
 	buffer_type raw_chars{
-		1024
+		1024 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	};
 
 	std::ifstream file{
@@ -54,6 +54,7 @@ main()
 			)
 		)
 	)
+	{
 		// If reading succeeded, we have read gcount bytes and therefore
 		// gcount / sizeof(int) integers.
 		raw_chars.written(
@@ -67,6 +68,7 @@ main()
 			/
 			sizeof(int)
 		);
+	}
 
 	std::cout
 		<< "Integers read: ";
@@ -76,8 +78,10 @@ main()
 		:
 		raw_chars
 	)
+	{
 		std::cout
 			<< value << ", ";
+	}
 
 	std::cout
 		<< '\n';

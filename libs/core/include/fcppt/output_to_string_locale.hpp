@@ -49,15 +49,16 @@ output_to_string_locale(
 		"insert_ot_string must return a string"
 	);
 
-	typedef
+	using
+	ostringstream
+	=
 	std::basic_ostringstream<
 		fcppt::type_traits::value_type<
 			Dest
 		>,
 		typename
 		Dest::traits_type
-	>
-	ostringstream;
+	>;
 
 	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	ostringstream oss{};

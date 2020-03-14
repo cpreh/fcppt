@@ -9,6 +9,11 @@ function(
 endfunction()
 
 add_fcppt_type_traits_test(
+	is_float_or_double
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
 	function_result
 	NO_CODE
 )
@@ -30,6 +35,11 @@ add_fcppt_type_traits_test(
 
 add_fcppt_type_traits_test(
 	is_raw_pointer
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
+	is_string
 	NO_CODE
 )
 

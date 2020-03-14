@@ -12,6 +12,9 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -22,19 +25,25 @@ fcppt::container::grid::pos_iterator<
 	SizeType,
 	Size
 >::pos_iterator(
-	pos const _current,
-	min const _min,
-	sup const _sup
+	pos _current,
+	min _min,
+	sup _sup
 )
 :
 	current_(
-		_current
+		std::move(
+			_current
+		)
 	),
 	min_(
-		_min
+		std::move(
+			_min
+		)
 	),
 	sup_(
-		_sup
+		std::move(
+			_sup
+		)
 	)
 {
 }
