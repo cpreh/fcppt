@@ -8,7 +8,7 @@
 #include <fcppt/public_config.hpp>
 #include <fcppt/string.hpp>
 #if !defined(FCPPT_NARROW_STRING)
-#include <fcppt/widen.hpp>
+#include <fcppt/widen_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -27,7 +27,7 @@ fcppt::from_std_string_locale(
 {
 #if !defined(FCPPT_NARROW_STRING)
 	return
-		fcppt::widen(
+		fcppt::widen_locale(
 			_input,
 			_locale
 		);

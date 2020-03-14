@@ -9,7 +9,7 @@
 #include <fcppt/string_view.hpp>
 #include <fcppt/to_std_string_locale.hpp>
 #if !defined(FCPPT_NARROW_STRING)
-#include <fcppt/narrow.hpp>
+#include <fcppt/narrow_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -28,7 +28,7 @@ fcppt::to_std_string_locale(
 {
 #if !defined(FCPPT_NARROW_STRING)
 	return
-		fcppt::narrow(
+		fcppt::narrow_locale(
 			_input,
 			_locale
 		);
