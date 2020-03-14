@@ -12,7 +12,9 @@
 
 #if defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <string_view>
+#include <fcppt/config/external_end.hpp>
 #	define FCPPT_PP_DETAIL_FUNCTION \
 	fcppt::from_std_string( \
 		std::string_view{\
@@ -25,7 +27,9 @@
 	)
 #elif defined(FCPPT_CONFIG_MSVC_COMPILER)
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <string_view>
+#include <fcppt/config/external_end.hpp>
 #	define FCPPT_PP_DETAIL_FUNCTION \
 	fcppt::from_std_string(\
 		std::string_view{\

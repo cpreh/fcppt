@@ -15,9 +15,9 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstdlib>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 #elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 #include <fcppt/const.hpp>

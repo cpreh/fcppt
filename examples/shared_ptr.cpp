@@ -167,8 +167,8 @@ right()
 
 }
 
-#include <fcppt/nonmovable.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
 namespace
