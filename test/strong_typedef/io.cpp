@@ -9,10 +9,14 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/config/compiler.hpp>
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
@@ -66,6 +70,11 @@ TEST_CASE(
 
 	stream << 42;
 
+FCPPT_PP_PUSH_WARNING
+#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
+#endif
+
 	fcppt::optional::object<
 		strong_int
 	> const result2{
@@ -75,6 +84,8 @@ TEST_CASE(
 			stream
 		)
 	};
+
+FCPPT_PP_POP_WARNING
 
 	CHECK(
 		fcppt::optional::make(
