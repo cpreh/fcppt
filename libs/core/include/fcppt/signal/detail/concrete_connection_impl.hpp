@@ -11,6 +11,9 @@
 #include <fcppt/intrusive/base_impl.hpp>
 #include <fcppt/signal/connection_impl.hpp>
 #include <fcppt/signal/detail/concrete_connection_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -20,7 +23,7 @@ fcppt::signal::detail::concrete_connection<
 	Function
 >::concrete_connection(
 	list_type &_list,
-	function_type const &_function
+	function_type &&_function
 )
 :
 	fcppt::signal::connection{},
@@ -28,7 +31,9 @@ fcppt::signal::detail::concrete_connection<
 		_list
 	},
 	function_(
-		_function
+		std::move(
+			_function
+		)
 	)
 {
 }
@@ -39,8 +44,7 @@ template<
 fcppt::signal::detail::concrete_connection<
 	Function
 >::~concrete_connection()
-{
-}
+= default;
 
 template<
 	typename Function

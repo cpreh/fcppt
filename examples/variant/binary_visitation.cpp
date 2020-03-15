@@ -8,6 +8,7 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -16,6 +17,7 @@
 
 int
 main()
+try
 {
 	// typedef a variant that can either hold a string or an int
 	typedef
@@ -54,4 +56,20 @@ main()
 		u
 	);
 //! [variant_binary_visitation]
+
+	return
+		EXIT_SUCCESS;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }

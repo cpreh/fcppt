@@ -19,23 +19,26 @@ TEST_CASE(
 	"[algorithm_map_optional]",
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int_movable_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_movable_vector;
+	>;
 
 	CHECK(
 		fcppt::algorithm::map_optional<
@@ -50,11 +53,12 @@ TEST_CASE(
 				int const _value
 			)
 			{
-				typedef
+				using
+				optional_int_movable
+				=
 				fcppt::optional::object<
 					int_movable
-				>
-				optional_int_movable;
+				>;
 
 				return
 					_value

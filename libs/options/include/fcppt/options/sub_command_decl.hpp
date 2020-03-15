@@ -39,13 +39,15 @@ template<
 class sub_command
 {
 public:
-	typedef
-	Tag
-	tag;
+	using
+	tag
+	=
+	Tag;
 
-	typedef
-	Parser
-	parser_type;
+	using
+	parser_type
+	=
+	Parser;
 
 	sub_command(
 		fcppt::string &&,
@@ -53,16 +55,21 @@ public:
 		fcppt::options::optional_help_text &&
 	);
 
+	[[nodiscard]]
 	fcppt::string const &
 	name() const;
 
+	[[nodiscard]]
 	Parser const &
 	parser() const;
 
+	[[nodiscard]]
 	fcppt::options::optional_help_text const &
 	help_text() const;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			Tag,
@@ -70,8 +77,7 @@ public:
 				Parser
 			>
 		>
-	>
-	result_type;
+	>;
 private:
 	fcppt::string name_;
 

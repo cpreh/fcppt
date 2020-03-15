@@ -7,6 +7,8 @@
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <type_traits>
@@ -84,7 +86,7 @@ visit_simple()
 	fcppt::variant::apply(
 		print_visitor(),
 		string_or_int(
-			42
+			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 // ![variant_visitor_apply]
@@ -95,6 +97,20 @@ visit_simple()
 
 int
 main()
+try
 {
 	visit_simple();
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }

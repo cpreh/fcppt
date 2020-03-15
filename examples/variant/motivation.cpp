@@ -7,9 +7,13 @@
 #include <fcppt/variant/match.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+
 
 
 namespace
@@ -25,13 +29,14 @@ variant_union()
 		float f;
 	};
 
-	int_or_float var;
+	int_or_float var; // NOLINT(cppcoreguidelines-pro-type-member-init,hicpp-member-init)
 
 	// Undefined behaviour because the union doesn't store anything
 	//std::cout << var.i << '\n';
 
 	// Ok, but doesn't track that the type is int
-	var.i = 42;
+	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-union-access)
+	var.i = 42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	// Undefined behaviour because the union stores an int
 	//std::cout << var.f << '\n';
@@ -107,8 +112,22 @@ variant_example()
 
 int
 main()
+try
 {
 	variant_union();
 
 	variant_example();
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }

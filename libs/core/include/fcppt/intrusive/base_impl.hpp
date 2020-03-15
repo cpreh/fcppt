@@ -149,6 +149,7 @@ void
 fcppt::intrusive::base<
 	Type
 >::unlink()
+noexcept
 {
 	next_->prev_ =
 		prev_;

@@ -29,7 +29,7 @@ print_values(
 )
 {
 	fcppt::algorithm::repeat(
-		20u,
+		20U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		[
 			&rng
 		]{
@@ -50,7 +50,10 @@ int
 main()
 {
 // ![random_generator]
-	typedef fcppt::random::generator::mt19937 generator_type;
+	using
+	generator_type
+	=
+	fcppt::random::generator::mt19937;
 
 	generator_type generator(
 		fcppt::random::generator::seed_from_chrono<
@@ -61,18 +64,24 @@ main()
 
 	{
 // ![random_uniform_int_distribution]
-	typedef fcppt::random::distribution::basic<
+	using
+	uniform_int
+	=
+	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			int
 		>
-	> uniform_int;
+	>;
 // ![random_uniform_int_distribution]
 
 // ![random_uniform_int]
-	typedef fcppt::random::variate<
+	using
+	variate
+	=
+	fcppt::random::variate<
 		generator_type,
 		uniform_int
-	> variate;
+	>;
 
 	variate rng(
 		generator,
@@ -81,7 +90,7 @@ main()
 				0
 			),
 			uniform_int::param_type::max(
-				10
+				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -93,25 +102,31 @@ main()
 	}
 
 	{
-	typedef fcppt::random::distribution::basic<
+	using
+	uniform_real
+	=
+	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_real<
 			float
 		>
-	> uniform_real;
+	>;
 
-	typedef fcppt::random::variate<
+	using
+	variate
+	=
+	fcppt::random::variate<
 		generator_type,
 		uniform_real
-	> variate;
+	>;
 
 	variate rng(
 		generator,
 		uniform_real(
 			uniform_real::param_type::min(
-				0.f
+				0.F
 			),
 			uniform_real::param_type::sup(
-				10.f
+				10.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -123,16 +138,22 @@ main()
 
 	{
 // ![random_normal]
-	typedef fcppt::random::distribution::basic<
+	using
+	normal
+	=
+	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::normal<
 			double
 		>
-	> normal;
+	>;
 
-	typedef fcppt::random::variate<
+	using
+	variate
+	=
+	fcppt::random::variate<
 		generator_type,
 		normal
-	> variate;
+	>;
 
 	variate rng(
 		generator,
@@ -141,7 +162,7 @@ main()
 				0.
 			),
 			normal::param_type::stddev(
-				5.
+				5. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);

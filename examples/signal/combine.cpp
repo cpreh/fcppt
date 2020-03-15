@@ -17,19 +17,19 @@ namespace
 int
 first_callback()
 {
-	return 4;
+	return 4; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
 int
 second_callback()
 {
-	return 8;
+	return 8; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
 int
 third_callback()
 {
-	return 15;
+	return 15; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
 int
@@ -45,11 +45,17 @@ combiner(
 
 int main()
 {
-	typedef int function();
+	using
+	function
+	=
+	int();
 
-	typedef fcppt::signal::object<
+	using
+	int_signal
+	=
+	fcppt::signal::object<
 		function
-	> int_signal;
+	>;
 
 	int_signal signal{
 		int_signal::combiner_function(

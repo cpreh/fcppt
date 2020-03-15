@@ -6,10 +6,16 @@
 
 //! [signal_simple]
 #include <fcppt/make_ref.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -31,7 +37,9 @@ callback(
 
 void
 other_callback(
-	test_struct &
+	fcppt::reference<
+		test_struct
+	>
 )
 {
 	fcppt::io::cout()
@@ -42,12 +50,14 @@ other_callback(
 
 int
 main()
+try
 {
-	typedef
+	using
+	signal_type
+	=
 	fcppt::signal::object<
 		void (int)
-	>
-	signal_type;
+	>;
 
 	signal_type signal;
 
@@ -64,13 +74,16 @@ main()
 	signal(3);
 
 	// Define another function
-	typedef
+	using
+	signal2_type
+	=
 	fcppt::signal::object<
 		void(
-			test_struct &
+			fcppt::reference<
+				test_struct
+			>
 		)
-	>
-	signal2_type;
+	>;
 
 	signal2_type signal2;
 
@@ -82,10 +95,28 @@ main()
 		)
 	);
 
-	test_struct foo;
+	test_struct foo{};
 	// Outputs: "other_callback" called
 	signal2(
-		foo
+		fcppt::make_ref(
+			foo
+		)
 	);
+
+	return
+		EXIT_SUCCESS;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }
 //! [signal_simple]

@@ -34,16 +34,18 @@ struct transform<
 	>
 >
 {
-	typedef
-	Type
-	undecorated_type;
+	using
+	undecorated_type
+	=
+	Type;
 
-	typedef
+	using
+	decorated_type
+	=
 	boost::units::quantity<
 		Unit,
 		Type
-	>
-	decorated_type;
+	>;
 
 	static
 	inline

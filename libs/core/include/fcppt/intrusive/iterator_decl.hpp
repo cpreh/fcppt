@@ -85,9 +85,11 @@ public:
 	void
 	decrement();
 
+	[[nodiscard]]
 	reference
 	dereference() const;
 
+	[[nodiscard]]
 	bool
 	equal(
 		iterator const &

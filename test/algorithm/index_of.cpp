@@ -19,11 +19,12 @@ TEST_CASE(
 	"[algorithm_find_opt]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const vec{
 		1,
@@ -39,7 +40,7 @@ TEST_CASE(
 		==
 		fcppt::optional::make(
 			int_vector::size_type{
-				1u
+				1U
 			}
 		)
 	);
@@ -52,7 +53,7 @@ TEST_CASE(
 		==
 		fcppt::optional::make(
 			int_vector::size_type{
-				2u
+				2U
 			}
 		)
 	);

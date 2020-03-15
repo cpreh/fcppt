@@ -53,38 +53,41 @@ public:
 	/**
 	\brief A typedef for the signal's base class
 	*/
-	typedef
+	using
+	base
+	=
 	Base<
 		T
-	>
-	base;
+	>;
 
 	/**
 	\brief A typedef for the function's return type
 	*/
-	typedef
-	typename
+	using
+	result_type
+	=
 	fcppt::type_traits::function_result<
 		T
-	>::type
-	result_type;
+	>;
 
-	typedef
+	using
+	function
+	=
 	typename
-	base::function
-	function;
+	base::function;
 
 	/**
 	\brief Typedef to the combiner function
 	*/
-	typedef
+	using
+	combiner_function
+	=
 	fcppt::function<
 		result_type (
 			result_type,
 			result_type
 		)
-	>
-	combiner_function;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		result_type,
@@ -101,12 +104,14 @@ public:
 
 	object(
 		object &&
-	);
+	)
+	noexcept;
 
 	object &
 	operator=(
 		object &&
-	);
+	)
+	noexcept;
 
 	~object();
 
@@ -166,16 +171,18 @@ public:
 	/**
 	\brief A typedef for the signal's base class
 	*/
-	typedef
+	using
+	base
+	=
 	Base<
 		T
-	>
-	base;
+	>;
 
-	typedef
+	using
+	function
+	=
 	typename
-	base::function
-	function;
+	base::function;
 
 	/**
 	\brief Construct an empty signal
@@ -184,21 +191,24 @@ public:
 
 	object(
 		object &&
-	);
+	)
+	noexcept;
 
 	object &
 	operator=(
 		object &&
-	);
+	)
+	noexcept;
 
 	~object();
 
 	/**
 	\brief Typedef to the function's return type
 	*/
-	typedef
-	void
-	result_type;
+	using
+	result_type
+	=
+	void;
 
 	/**
 	\brief Call the signal

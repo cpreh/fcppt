@@ -58,7 +58,9 @@ TEST_CASE(
 	{
 		fcppt::signal::auto_connection const con1(
 			sig.connect(
-				empty_function,
+				signal_type::function{
+					empty_function
+				},
 				fcppt::signal::unregister::function{
 					std::bind(
 						unregister,
@@ -84,7 +86,9 @@ TEST_CASE(
 	{
 		fcppt::signal::auto_connection const con2(
 			sig.connect(
-				empty_function,
+				signal_type::function{
+					empty_function
+				},
 				fcppt::signal::unregister::function{
 					std::bind(
 						unregister,

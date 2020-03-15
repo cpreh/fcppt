@@ -12,6 +12,10 @@
 #include <fcppt/signal/connection_impl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <exception>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -21,8 +25,8 @@ fcppt::signal::unregister::detail::concrete_connection<
 	Function
 >::concrete_connection(
 	list_type &_list,
-	function_type const &_function,
-	fcppt::signal::unregister::function const &_unregister
+	function_type &&_function,
+	fcppt::signal::unregister::function &&_unregister
 )
 :
 	fcppt::signal::connection{},
@@ -30,10 +34,14 @@ fcppt::signal::unregister::detail::concrete_connection<
 		_list
 	},
 	function_{
-		_function
+		std::move(
+			_function
+		)
 	},
 	unregister_(
-		_unregister
+		std::move(
+			_unregister
+		)
 	)
 {
 }
@@ -47,7 +55,16 @@ fcppt::signal::unregister::detail::concrete_connection<
 {
 	this->unlink();
 
-	unregister_();
+	try
+	{
+		this->unregister_();
+	}
+	catch(
+		...
+	)
+	{
+		std::terminate();
+	}
 }
 
 template<

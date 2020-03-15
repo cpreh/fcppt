@@ -10,6 +10,9 @@
 #include <fcppt/random/distribution/base_value.hpp>
 #include <fcppt/random/distribution/decorated_value.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -20,15 +23,19 @@ fcppt::random::distribution::parameters::uniform_int<
 	IntType,
 	Distribution
 >::uniform_int(
-	min const _min,
-	max const _max
+	min _min,
+	max _max
 )
 :
 	min_(
-		_min
+		std::move(
+			_min
+		)
 	),
 	max_(
-		_max
+		std::move(
+			_max
+		)
 	)
 {
 }

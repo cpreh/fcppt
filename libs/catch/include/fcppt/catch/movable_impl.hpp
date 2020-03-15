@@ -62,9 +62,9 @@ fcppt::catch_::movable<
 	movable &&_other
 )
 noexcept(
-	std::is_nothrow_move_constructible<
+	std::is_nothrow_move_constructible_v<
 		Type
-	>::value
+	>
 )
 :
 	value_{
@@ -89,9 +89,9 @@ fcppt::catch_::movable<
 	movable &&_other
 )
 noexcept(
-	std::is_nothrow_move_assignable<
+	std::is_nothrow_move_assignable_v<
 		Type
-	>::value
+	>
 )
 {
 	value_ =
@@ -109,8 +109,7 @@ template<
 fcppt::catch_::movable<
 	Type
 >::~movable()
-{
-}
+= default;
 
 template<
 	typename Type

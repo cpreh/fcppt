@@ -20,11 +20,12 @@ namespace random
 namespace generator
 {
 
-typedef
+using
+mt19937
+=
 fcppt::random::generator::basic_pseudo<
 	std::mt19937
->
-mt19937;
+>;
 
 }
 }

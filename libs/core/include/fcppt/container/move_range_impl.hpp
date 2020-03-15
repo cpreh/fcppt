@@ -39,6 +39,7 @@ fcppt::container::move_range<
 >::move_range(
 	move_range &&
 )
+noexcept
 = default;
 
 template<
@@ -52,6 +53,7 @@ fcppt::container::move_range<
 >::operator=(
 	move_range &&
 )
+noexcept
 = default;
 
 template<
@@ -60,8 +62,7 @@ template<
 fcppt::container::move_range<
 	Container
 >::~move_range()
-{
-}
+= default;
 
 template<
 	typename Container

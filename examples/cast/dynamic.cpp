@@ -11,9 +11,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/cast/dynamic.hpp>
 #include <fcppt/optional/reference.hpp>
-#include <fcppt/preprocessor/disable_clang_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
@@ -60,12 +57,6 @@ struct derived2
 	FCPPT_NONMOVABLE(
 		derived2
 	);
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
-	derived2()
-	= default;
-FCPPT_PP_POP_WARNING
 
 	~derived2()
 	override

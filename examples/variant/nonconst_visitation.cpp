@@ -12,6 +12,7 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -43,12 +44,13 @@ main()
 try
 {
 	// typedef a variant that can either hold a string or an int
-	typedef
+	using
+	string_or_int
+	=
 	fcppt::variant::object<
 		std::string,
 		int
-	>
-	string_or_int;
+	>;
 
 //! [variant_nonconst_visitation]
 	string_or_int v(
@@ -93,4 +95,17 @@ catch(
 
 	return
 		EXIT_SUCCESS;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }

@@ -8,8 +8,8 @@
 #define FCPPT_ALGORITHM_REVERSE_HPP_INCLUDED
 
 #include <fcppt/algorithm/detail/reverse.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,7 +30,7 @@ template<
 	typename Container
 >
 inline
-std::remove_reference_t<
+fcppt::type_traits::remove_cv_ref_t<
 	Container
 >
 reverse(

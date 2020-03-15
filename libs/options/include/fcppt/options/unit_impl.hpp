@@ -29,8 +29,7 @@ template<
 fcppt::options::unit<
 	Label
 >::unit()
-{
-}
+= default;
 
 template<
 	typename Label

@@ -25,10 +25,12 @@ public:
 	{
 	}
 
+	[[nodiscard]]
 	Type
 	value() const
 	{
-		return value_;
+		return
+			this->value_;
 	}
 private:
 	Type value_;
@@ -42,9 +44,7 @@ private:
 #include <fcppt/type_iso/transform.hpp>
 
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 
 template<
@@ -56,15 +56,17 @@ struct transform<
 	>
 >
 {
-	typedef
+	using
+	decorated_type
+	=
 	mine::my_type<
 		Type
-	>
-	decorated_type;
+	>;
 
-	typedef
-	Type
-	undecorated_type;
+	using
+	undecorated_type
+	=
+	Type;
 
 	// A static function that converts to the base type
 	static
@@ -92,7 +94,6 @@ struct transform<
 };
 
 }
-}
 //![random_transform_specialization]
 
 #include <fcppt/text.hpp>
@@ -104,17 +105,21 @@ struct transform<
 int
 main()
 {
-	typedef mine::my_type<
+	using
+	my_int_type
+	=
+	mine::my_type<
 		int
-	> my_int_type;
+	>;
 
-	typedef
+	using
+	distribution
+	=
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			my_int_type
 		>
-	>
-	distribution;
+	>;
 
 	fcppt::io::cout()
 		<<
@@ -126,7 +131,7 @@ main()
 			),
 			distribution::param_type::max(
 				my_int_type(
-					10
+					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			)
 		)

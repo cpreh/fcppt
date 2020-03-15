@@ -27,18 +27,20 @@ main()
 		my_type
 	);
 
-	typedef
+	using
+	distribution
+	=
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			my_type
 		>
-	>
-	distribution;
+	>;
 //![random_strong_typedef_distribution]
 
-	typedef
-	fcppt::random::generator::minstd_rand
-	generator_type;
+	using
+	generator_type
+	=
+	fcppt::random::generator::minstd_rand;
 
 	generator_type generator(
 		fcppt::random::generator::seed_from_chrono<
@@ -46,10 +48,13 @@ main()
 		>()
 	);
 
-	typedef fcppt::random::variate<
+	using
+	variate
+	=
+	fcppt::random::variate<
 		generator_type,
 		distribution
-	> variate;
+	>;
 
 //![random_strong_typedef_variate]
 	variate rng(
@@ -62,7 +67,7 @@ main()
 			),
 			distribution::param_type::max(
 				my_type(
-					10
+					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			)
 		)
@@ -71,7 +76,7 @@ main()
 
 //![random_strong_typedef_output]
 	fcppt::algorithm::repeat(
-		10u,
+		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		[
 			&rng
 		]{

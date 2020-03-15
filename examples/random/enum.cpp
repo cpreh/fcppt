@@ -34,7 +34,10 @@ enum class my_enum
 int
 main()
 {
-	typedef fcppt::random::generator::minstd_rand generator_type;
+	using
+	generator_type
+	=
+	fcppt::random::generator::minstd_rand;
 
 	generator_type generator(
 		fcppt::random::generator::seed_from_chrono<
@@ -43,17 +46,23 @@ main()
 	);
 
 // ![random_enum_distribution]
-	typedef fcppt::random::distribution::basic<
+	using
+	uniform_enum
+	=
+	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			my_enum
 		>
-	> uniform_enum;
+	>;
 // ![random_enum_distribution]
 
-	typedef fcppt::random::variate<
+	using
+	variate
+	=
+	fcppt::random::variate<
 		generator_type,
 		uniform_enum
-	> variate;
+	>;
 
 // ![random_enum_parameters]
 	variate rng(

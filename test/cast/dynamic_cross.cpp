@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/apply.hpp>
@@ -23,30 +23,27 @@ namespace
 
 struct derived1
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived1
 	);
 public:
 	derived1()
-	{
-	}
+	= default;
 
 	virtual
 	~derived1()
-	{
-	}
+	= default;
 };
 
 struct derived2
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived2
 	);
 public:
 	virtual
 	~derived2()
-	{
-	}
+	= default;
 };
 
 }

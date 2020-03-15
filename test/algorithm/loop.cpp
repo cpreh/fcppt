@@ -28,7 +28,7 @@ TEST_CASE(
 		fcppt::metal::interval<
 			int,
 			0,
-			5
+			5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		>{},
 		[
 			&value
@@ -40,19 +40,19 @@ TEST_CASE(
 				_index
 			);
 
-			typedef
+			using
+			index
+			=
 			fcppt::tag_type<
 				decltype(
 					_index
 				)
-			>
-			index;
+			>;
 
 			static_assert(
 				index::value
 				<
-				5,
-				""
+				5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			);
 
 			value +=
@@ -78,7 +78,7 @@ TEST_CASE(
 
 	fcppt::algorithm::loop(
 		fcppt::make_int_range_count(
-			5
+			5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		[
 			&value

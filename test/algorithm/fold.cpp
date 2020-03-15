@@ -10,7 +10,6 @@
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <functional>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -21,17 +20,19 @@ TEST_CASE(
 	"[algorithm]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
-	typedef
+	using
+	int_vector_vector
+	=
 	std::vector<
 		int_vector
-	>
-	int_vector_vector;
+	>;
 
 	CHECK(
 		fcppt::algorithm::fold(
@@ -55,9 +56,14 @@ TEST_CASE(
 					fcppt::algorithm::fold(
 						_vec,
 						_sum,
-						std::plus<
-							int
-						>()
+						[](
+							int const _a,
+							int const _b
+						)
+						{
+							return
+								_a + _b;
+						}
 					);
 			}
 		)
@@ -71,17 +77,19 @@ TEST_CASE(
 	"[algorithm]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_vector;
+	>;
 
 	int_vector vector{
 		fcppt::container::make<

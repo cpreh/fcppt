@@ -37,18 +37,19 @@ fcppt::random::distribution::parameters::uniform_int<
 make_uniform_enum_advanced()
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"make_uniform_enum_advanced can only be used for enumeration types"
 	);
 
-	typedef
+	using
+	param_type
+	=
 	fcppt::random::distribution::parameters::uniform_int<
 		Enum,
 		Distribution
-	>
-	param_type;
+	>;
 
 	return
 		param_type(
@@ -56,7 +57,7 @@ make_uniform_enum_advanced()
 				fcppt::cast::int_to_enum<
 					Enum
 				>(
-					0u
+					0U
 				)
 			),
 			typename param_type::max(

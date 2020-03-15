@@ -33,11 +33,11 @@ inline
 std::enable_if_t<
 	Index
 	==
-	std::tuple_size<
+	std::tuple_size_v<
 		fcppt::type_traits::remove_cv_ref_t<
 			Tuple
 		>
-	>::value
+	>
 >
 tuple_loop_break(
 	Tuple &&,
@@ -55,11 +55,11 @@ inline
 std::enable_if_t<
 	Index
 	<
-	std::tuple_size<
+	std::tuple_size_v<
 		fcppt::type_traits::remove_cv_ref_t<
 			Tuple
 		>
-	>::value
+	>
 >
 tuple_loop_break(
 	Tuple &&_tuple,
@@ -80,7 +80,7 @@ tuple_loop_break(
 		fcppt::algorithm::detail::tuple_loop_break<
 			Index
 			+
-			1u
+			1U
 		>(
 			std::forward<
 				Tuple

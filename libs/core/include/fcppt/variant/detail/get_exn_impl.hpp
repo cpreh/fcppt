@@ -38,11 +38,12 @@ get_exn_impl(
 	Variant &_variant
 )
 {
-	typedef
+	using
+	return_type
+	=
 	std::remove_const_t<
 		Ret
-	>
-	return_type;
+	>;
 
 	if(
 		!fcppt::variant::holds_type<
@@ -51,6 +52,7 @@ get_exn_impl(
 			_variant
 		)
 	)
+	{
 		throw
 			fcppt::variant::invalid_get{
 				FCPPT_TEXT("Invalid get of type \"")
@@ -81,6 +83,7 @@ get_exn_impl(
 				+
 				FCPPT_TEXT("\".")
 			};
+	}
 
 	return
 		fcppt::variant::get_unsafe<

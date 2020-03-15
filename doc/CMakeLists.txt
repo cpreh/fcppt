@@ -1486,6 +1486,7 @@ set(
 	libs/core/include/fcppt/type_name.hpp
 	libs/core/include/fcppt/type_name_from_index.hpp
 	libs/core/include/fcppt/type_name_from_info.hpp
+	libs/core/include/fcppt/type_traits/detail/function_result.hpp
 	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp

@@ -68,7 +68,8 @@ public:
 	\brief Unlinks this element from the list.
 	*/
 	void
-	unlink();
+	unlink()
+	noexcept;
 private:
 	template<
 		typename T

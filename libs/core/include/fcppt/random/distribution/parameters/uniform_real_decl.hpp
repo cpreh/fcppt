@@ -40,26 +40,30 @@ template<
 class uniform_real
 {
 public:
-	typedef
-	FloatType
-	result_type;
+	using
+	result_type
+	=
+	FloatType;
 
-	typedef
+	using
+	base_type
+	=
 	fcppt::random::distribution::base_type<
 		result_type
-	>
-	base_type;
+	>;
 
-	typedef
+	using
+	distribution
+	=
 	std::uniform_real_distribution<
 		base_type
-	>
-	distribution;
+	>;
 
-	typedef
+	using
+	wrapped_param_type
+	=
 	typename
-	distribution::param_type
-	wrapped_param_type;
+	distribution::param_type;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		FloatType,

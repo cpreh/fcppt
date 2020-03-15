@@ -33,6 +33,7 @@ to_uint_ptr(
 noexcept
 {
 	return
+		// NOLINTNEXTLINE(cppcoreguidelines-pro-type-reinterpret-cast)
 		reinterpret_cast<
 			std::uintptr_t
 		>(

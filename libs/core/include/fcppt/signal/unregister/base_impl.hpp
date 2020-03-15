@@ -16,6 +16,9 @@
 #include <fcppt/signal/unregister/base_decl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -25,8 +28,8 @@ fcppt::signal::auto_connection
 fcppt::signal::unregister::base<
 	T
 >::connect(
-	function const &_function,
-	fcppt::signal::unregister::function const &_unregister
+	function &&_function,
+	fcppt::signal::unregister::function &&_unregister
 )
 {
 	return
@@ -37,8 +40,12 @@ fcppt::signal::unregister::base<
 				concrete_connection
 			>(
 				connections_,
-				_function,
-				_unregister
+				std::move(
+					_function
+				),
+				std::move(
+					_unregister
+				)
 			)
 		);
 }
@@ -73,7 +80,9 @@ fcppt::signal::unregister::base<
 	T
 >::base(
 	base &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T
@@ -85,7 +94,9 @@ fcppt::signal::unregister::base<
 	T
 >::operator=(
 	base &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T
@@ -93,13 +104,13 @@ template<
 fcppt::signal::unregister::base<
 	T
 >::~base()
-{
-}
+= default;
 
 template<
 	typename T
 >
-typename fcppt::signal::unregister::base<
+typename
+fcppt::signal::unregister::base<
 	T
 >::connection_list &
 fcppt::signal::unregister::base<

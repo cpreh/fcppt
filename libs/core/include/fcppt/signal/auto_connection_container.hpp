@@ -19,11 +19,12 @@ namespace fcppt
 namespace signal
 {
 
-typedef
+using
+auto_connection_container
+=
 std::vector<
 	fcppt::signal::auto_connection
->
-auto_connection_container;
+>;
 
 }
 }

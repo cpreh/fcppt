@@ -42,36 +42,44 @@ public:
 
 	move_range(
 		move_range &&
-	);
+	)
+	noexcept;
 
 	move_range &
 	operator=(
 		move_range &&
-	);
+	)
+	noexcept;
 
 	~move_range();
 
-	typedef
+	using
+	iterator
+	=
 	std::move_iterator<
 		typename
 		Container::iterator
-	>
-	iterator;
+	>;
 
-	typedef
+	using
+	const_iterator
+	=
 	typename
-	Container::const_iterator
-	const_iterator;
+	Container::const_iterator;
 
+	[[nodiscard]]
 	iterator
 	begin();
 
+	[[nodiscard]]
 	iterator
 	end();
 
+	[[nodiscard]]
 	const_iterator
 	begin() const;
 
+	[[nodiscard]]
 	const_iterator
 	end() const;
 private:

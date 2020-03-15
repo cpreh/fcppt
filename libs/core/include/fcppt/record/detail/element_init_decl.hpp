@@ -62,12 +62,7 @@ public:
 
 	explicit
 	element_init(
-		value_type &&
-	);
-
-	explicit
-	element_init(
-		value_type const &
+		value_type
 	);
 
 	value_type &

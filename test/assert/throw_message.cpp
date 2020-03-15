@@ -16,7 +16,6 @@
 namespace
 {
 
-// TODO: Put this in algorithm?
 bool
 contains_string(
 	fcppt::string const &_string,
@@ -24,7 +23,7 @@ contains_string(
 )
 {
 	return
-		_string.find(
+		_string.find( // NOLINT(fuchsia-default-arguments-calls)
 			_sub_string
 		)
 		!=
@@ -60,7 +59,7 @@ TEST_CASE(
 			);
 		}(),
 		fcppt::assert_::exception,
-		Catch::Matchers::Predicate<
+		Catch::Matchers::Predicate< // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::assert_::exception
 		>(
 			contains_false
@@ -76,7 +75,7 @@ TEST_CASE(
 			);
 		}(),
 		fcppt::assert_::exception,
-		Catch::Matchers::Predicate<
+		Catch::Matchers::Predicate< // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::assert_::exception
 		>(
 			[

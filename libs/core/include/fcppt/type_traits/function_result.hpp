@@ -7,6 +7,8 @@
 #ifndef FCPPT_TYPE_TRAITS_FUNCTION_RESULT_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_FUNCTION_RESULT_HPP_INCLUDED
 
+#include <fcppt/type_traits/detail/function_result.hpp>
+
 
 namespace fcppt
 {
@@ -21,22 +23,13 @@ namespace type_traits
 template<
 	typename F
 >
-struct function_result;
-
-template<
-	typename Result,
-	typename... Args
->
-struct function_result<
-	Result(
-		Args...
-	)
->
-{
-	typedef
-	Result
-	type;
-};
+using
+function_result
+=
+typename
+fcppt::type_traits::detail::function_result<
+	F
+>::type;
 
 }
 }

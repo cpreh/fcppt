@@ -17,6 +17,7 @@
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
@@ -27,8 +28,10 @@ void
 f()
 {
 	static unsigned i = 0;
-	if(++i % 10000 == 0)
+	if(++i % 10000 == 0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	{
 		std::cout << "|\n";
+	}
 }
 
 std::size_t const max_iterations = 1000000;
@@ -36,6 +39,7 @@ std::size_t const max_iterations = 1000000;
 
 int
 main()
+try
 {
 #if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
 	typedef
@@ -47,6 +51,7 @@ main()
 	fcppt::signal::auto_connection_container manager;
 
 	for(std::size_t i = 0; i < max_iterations; ++i)
+	{
 		manager.push_back(
 			s.connect(
 				signal_type::function(
@@ -54,6 +59,7 @@ main()
 				)
 			)
 		);
+	}
 
 	s();
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
@@ -70,13 +76,31 @@ main()
 	connection_manager manager;
 
 	manager.reserve(
-		max_iterations);
+		max_iterations
+	);
 
 	for(std::size_t i = 0; i < max_iterations; ++i)
+	{
 		manager.push_back(
 			s.connect(
-				&f));
+				&f
+			)
+		);
+	}
 
 	s();
 #endif
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
 }

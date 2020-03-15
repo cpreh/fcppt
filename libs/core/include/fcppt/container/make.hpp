@@ -36,13 +36,14 @@ make(
 	Args &&... _args
 )
 {
-	typedef
+	using
+	reference_type
+	=
 	fcppt::reference<
 		fcppt::type_traits::value_type<
 			Container
 		>
-	>
-	reference_type;
+	>;
 
 	return
 		fcppt::algorithm::map<

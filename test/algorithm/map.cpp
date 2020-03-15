@@ -30,23 +30,26 @@
 namespace
 {
 
-typedef
+using
+int_vector
+=
 std::vector<
 	int
->
-int_vector;
+>;
 
-typedef
+using
+int_movable
+=
 fcppt::catch_::movable<
 	int
->
-int_movable;
+>;
 
-typedef
+using
+int_movable_vector
+=
 std::vector<
 	int_movable
->
-int_movable_vector;
+>;
 
 }
 
@@ -149,13 +152,14 @@ TEST_CASE(
 					_value
 				);
 
-				typedef
+				using
+				type
+				=
 				fcppt::tag_type<
 					decltype(
 						_value
 					)
-				>
-				type;
+				>;
 
 				return
 					type::value;
@@ -174,12 +178,13 @@ TEST_CASE(
 	"[algorithm_map]"
 )
 {
-	typedef
+	using
+	string_2_array
+	=
 	std::array<
 		std::string,
 		2
-	>
-	string_2_array;
+	>;
 
 	CHECK(
 		fcppt::algorithm::map<
@@ -221,12 +226,13 @@ TEST_CASE(
 		strong_int_movable
 	);
 
-	typedef
+	using
+	strong_int_movable_array
+	=
 	std::array<
 		strong_int_movable,
 		2
-	>
-	strong_int_movable_array;
+	>;
 
 	CHECK(
 		fcppt::algorithm::map<
@@ -277,12 +283,13 @@ TEST_CASE(
 	"[algorithm_map]"
 )
 {
-	typedef
+	using
+	result_tuple
+	=
 	std::tuple<
 		std::string,
 		std::string
-	>
-	result_tuple;
+	>;
 
 	CHECK(
 		fcppt::algorithm::map<
@@ -293,7 +300,7 @@ TEST_CASE(
 				long
 			>{
 				1,
-				2l
+				2L
 			},
 			[](
 				auto const _value

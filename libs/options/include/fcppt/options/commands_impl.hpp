@@ -188,15 +188,16 @@ fcppt::options::commands<
 						result_type
 					>
 					{
-						typedef
+						using
+						sub_command_type
+						=
 						fcppt::options::deref_type<
 							fcppt::type_traits::remove_cv_ref_t<
 								decltype(
 									_sub_command
 								)
 							>
-						>
-						sub_command_type;
+						>;
 
 						return
 							fcppt::either::map(
@@ -262,13 +263,14 @@ fcppt::options::commands<
 		}
 	);
 
-	typedef
+	using
+	optional_result_type
+	=
 	fcppt::optional::object<
 		fcppt::options::parse_result<
 			result_type
 		>
-	>
-	optional_result_type;
+	>;
 
 	return
 		fcppt::optional::maybe(

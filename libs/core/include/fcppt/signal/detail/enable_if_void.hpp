@@ -24,15 +24,15 @@ namespace detail
 template<
 	typename T
 >
-using enable_if_void
+using
+enable_if_void
 =
 std::enable_if_t<
-	std::is_void<
-		typename
+	std::is_void_v<
 		fcppt::type_traits::function_result<
 			T
-		>::type
-	>::value
+		>
+	>
 >;
 
 }

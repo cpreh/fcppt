@@ -50,9 +50,9 @@ public:
 		movable &&
 	)
 	noexcept(
-		std::is_nothrow_move_constructible<
+		std::is_nothrow_move_constructible_v<
 			Type
-		>::value
+		>
 	);
 
 	movable &
@@ -60,16 +60,18 @@ public:
 		movable &&
 	)
 	noexcept(
-		std::is_nothrow_move_assignable<
+		std::is_nothrow_move_assignable_v<
 			Type
-		>::value
+		>
 	);
 
 	~movable();
 
+	[[nodiscard]]
 	Type &
 	value();
 
+	[[nodiscard]]
 	Type const &
 	value() const;
 private:

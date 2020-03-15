@@ -41,6 +41,8 @@
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -200,6 +202,19 @@ catch(
 		_exception.string()
 		<<
 		FCPPT_TEXT('\n');
+
+	return
+		EXIT_FAILURE;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
 
 	return
 		EXIT_FAILURE;

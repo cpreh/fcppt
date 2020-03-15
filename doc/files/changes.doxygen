@@ -57,6 +57,12 @@
 <li>\ref fcpptstring
 	<ul>
 	<li>Added #fcppt::system.</li>
+	<lI>Added #fcppt::insert_extract_locale as a replacement for the <code>=std::locale()</code> parameters.</li>
+	<li>Added variants of various functions taking a locale:
+	This includes #fcppt::extract_from_string_locale, #fcppt::from_std_string_locale, #fcppt::from_std_wstring_locale
+	#fcppt::narrow_locale, #fcppt::output_to_string_locale, #fcppt::output_to_std_string_locale,
+	#fcppt::output_to_std_wstring_locale, #fcppt::to_std_string_locale, #fcppt::to_std_wstring_locale and #fcppt::widen_locale.</li>
+	</li>
 	</ul>
 </li>
 
@@ -76,6 +82,27 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Changed constructor of #fcppt::filesystem::directory_range to return an error code.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Removed the default <code>=std::locale()</code> parameter from
+	#fcppt::extract_from_string, #fcppt::from_std_string, #fcppt::from_std_wstring
+	#fcppt::narrow, #fcppt::output_to_string, #fcppt::output_to_std_string,
+	#fcppt::output_to_std_wstring, #fcppt::to_std_string, #fcppt::to_std_wstring and #fcppt::widen.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptsignal
+	<ul>
+	<li>Callbacks are now moved into signals.</li>
+	</Ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Removed nested <code>::type</code> from #fcppt::type_traits::function_result.</li>
 	</ul>
 </li>
 

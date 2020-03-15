@@ -13,12 +13,10 @@
 
 inline
 fcppt::signal::connection::connection()
-{
-}
+= default;
 
 inline
 fcppt::signal::connection::~connection()
-{
-}
+= default;
 
 #endif

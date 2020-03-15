@@ -38,7 +38,7 @@ join_insert(
 )
 {
 	_result.insert(
-		_result.end(),
+		_result.end(), // NOLINT(fuchsia-default-arguments-calls)
 		_begin,
 		_end
 	);

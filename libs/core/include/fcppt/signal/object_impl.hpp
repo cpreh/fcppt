@@ -53,7 +53,9 @@ fcppt::signal::object<
 	Enable
 >::object(
 	object &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T,
@@ -73,7 +75,9 @@ fcppt::signal::object<
 	Enable
 >::operator=(
 	object &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T,
@@ -87,8 +91,7 @@ fcppt::signal::object<
 	Base,
 	Enable
 >::~object()
-{
-}
+= default;
 
 template<
 	typename T,
@@ -154,8 +157,7 @@ fcppt::signal::object<
 		T
 	>
 >::object()
-{
-}
+= default;
 
 template<
 	typename T,
@@ -171,7 +173,9 @@ fcppt::signal::object<
 	>
 >::object(
 	object &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T,
@@ -194,7 +198,9 @@ fcppt::signal::object<
 	>
 >::operator=(
 	object &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T,
@@ -209,8 +215,7 @@ fcppt::signal::object<
 		T
 	>
 >::~object()
-{
-}
+= default;
 
 template<
 	typename T,
@@ -243,9 +248,11 @@ fcppt::signal::object<
 		:
 		base::connections()
 	)
+	{
 		item.function()(
 			_args...
 		);
+	}
 }
 
 #endif

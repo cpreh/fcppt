@@ -39,17 +39,11 @@ remove_if(
 	Predicate const &_predicate
 )
 {
-	// TODO
-	typedef
-	typename
-	Container::iterator
-	iterator;
-
-	iterator const end{
-		_container.end()
+	auto const end{
+		_container.end() // NOLINT(fuchsia-default-arguments-calls)
 	};
 
-	iterator const position(
+	auto const position(
 		std::remove_if(
 			_container.begin(),
 			end,
@@ -62,12 +56,14 @@ remove_if(
 		==
 		end
 	)
+	{
 		return
 			false;
+	}
 
 	_container.erase(
-		position,
-		end
+		position, // NOLINT(fuchsia-default-arguments-calls)
+		end // NOLINT(fuchsia-default-arguments-calls)
 	);
 
 	return

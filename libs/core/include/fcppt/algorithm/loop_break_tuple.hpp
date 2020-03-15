@@ -46,7 +46,7 @@ struct loop_break_impl<
 	)
 	{
 		fcppt::algorithm::detail::tuple_loop_break<
-			0u
+			0U
 		>(
 			std::forward<
 				Tuple

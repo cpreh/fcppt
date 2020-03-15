@@ -12,7 +12,8 @@
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <functional>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <map>
 #include <string>
@@ -28,21 +29,24 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
 // ![global_map]
-typedef
+using
+signal_type
+=
 fcppt::signal::object<
 	void(),
 	fcppt::signal::unregister::base
->
-signal_type;
+>;
 
-typedef
+using
+name_to_signal
+=
 std::map<
 	std::string,
 	signal_type
->
-name_to_signal;
+>;
 
-name_to_signal global_name_to_signal;
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
+name_to_signal global_name_to_signal{};
 
 // This function will be called whenever a connection dies. It receives the
 // signal's name.
@@ -62,9 +66,11 @@ remove_function(
 			_name
 		)->second.empty()
 	)
+	{
 		global_name_to_signal.erase(
 			_name
 		);
+	}
 }
 // ![global_map]
 
@@ -74,7 +80,7 @@ FCPPT_PP_POP_WARNING
 fcppt::signal::auto_connection
 register_named_signal(
 	std::string const &_name,
-	fcppt::signal::unregister::function const &_function
+	fcppt::signal::unregister::function &&_function
 )
 {
 	// If the signal doesn't exist, add it to the map.
@@ -85,24 +91,31 @@ register_named_signal(
 		==
 		global_name_to_signal.end()
 	)
+	{
 		global_name_to_signal.insert(
 			std::make_pair(
 				_name,
 				signal_type()
 			)
 		);
+	}
 
 	return
 		global_name_to_signal.find(
 			_name
 		)->second.connect(
-			_function,
+			std::move(
+				_function
+			),
 			// Add our remove function as the disconnect handler (see above)
 			fcppt::signal::unregister::function{
-				std::bind(
-					&remove_function,
+				[
 					_name
-				)
+				]{
+					remove_function(
+						_name
+					);
+				}
 			}
 		);
 }
@@ -110,10 +123,11 @@ register_named_signal(
 
 }
 
-// ![main]
 int
 main()
+try
 {
+// ![main]
 	fcppt::signal::auto_connection const hello_connection(
 		register_named_signal(
 			"hello",
@@ -151,5 +165,20 @@ main()
 	}
 
 	// Will print "Goodbye hello!" at end of scope
-}
 // ![main]
+	return
+		EXIT_SUCCESS;
+}
+catch(
+	std::exception const &_error
+)
+{
+	std::cerr
+		<<
+		_error.what()
+		<<
+		'\n';
+
+	return
+		EXIT_FAILURE;
+}

@@ -56,23 +56,25 @@ decltype(
 	)
 )
 {
-	typedef
+	using
+	iterator_type
+	=
 	fcppt::container::to_iterator_type<
 		std::remove_reference_t<
 			Range
 		>
-	>
-	iterator_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	decltype(
 		_function(
 			*fcppt::range::begin(
 				_range
 			)
 		)
-	)
-	result_type;
+	);
 
 	static_assert(
 		fcppt::optional::is_object<
@@ -108,8 +110,10 @@ decltype(
 		if(
 			result.has_value()
 		)
+		{
 			return
 				result;
+		}
 	}
 
 FCPPT_PP_PUSH_WARNING

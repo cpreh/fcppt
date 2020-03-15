@@ -9,6 +9,7 @@
 
 #include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/optional/is_object.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -53,31 +54,39 @@ map_optional(
 		_source
 	)
 	{
-		auto result_element(
-			_function(
-				element
-			)
-		);
-
 		static_assert(
 			fcppt::optional::is_object<
 				decltype(
-					result_element
+					_function(
+						element
+					)
 				)
 			>::value,
 			"map_optional requires a function that returns an optional"
 		);
 
-		// TODO: maybe_void
-		if(
-			result_element.has_value()
-		)
-			result.insert(
-				result.end(),
-				std::move(
-					result_element.get_unsafe()
-				)
-			);
+		fcppt::optional::maybe_void(
+			_function(
+				element
+			),
+			[
+				&result
+			](
+				auto &&_inner
+			)
+			{
+				result.insert(
+					result.end(), // NOLINT(fuchsia-default-arguments-calls)
+					std::forward<
+						decltype(
+							_inner
+						)
+					>(
+						_inner
+					)
+				);
+			}
+		);
 	}
 
 	return

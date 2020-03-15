@@ -50,7 +50,9 @@ reverse(
 	);
 
 	return
-		std::move(
+		std::forward<
+			Container
+		>(
 			_container
 		);
 }

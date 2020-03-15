@@ -21,11 +21,12 @@ namespace signal
 \brief A unique pointer to a connection
 \ingroup fcpptsignal
 */
-typedef
+using
+auto_connection
+=
 fcppt::unique_ptr<
 	fcppt::signal::connection
->
-auto_connection;
+>;
 
 }
 }

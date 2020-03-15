@@ -15,6 +15,9 @@
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/connection.hpp>
 #include <fcppt/signal/detail/concrete_connection_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -24,7 +27,7 @@ fcppt::signal::auto_connection
 fcppt::signal::base<
 	T
 >::connect(
-	function const &_function
+	function &&_function
 )
 {
 	return
@@ -35,7 +38,9 @@ fcppt::signal::base<
 				concrete_connection
 			>(
 				connections_,
-				_function
+				std::move(
+					_function
+				)
 			)
 		);
 }
@@ -70,7 +75,9 @@ fcppt::signal::base<
 	T
 >::base(
 	base &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T
@@ -82,7 +89,9 @@ fcppt::signal::base<
 	T
 >::operator=(
 	base &&
-) = default;
+)
+noexcept
+= default;
 
 template<
 	typename T
@@ -90,8 +99,7 @@ template<
 fcppt::signal::base<
 	T
 >::~base()
-{
-}
+= default;
 
 template<
 	typename T

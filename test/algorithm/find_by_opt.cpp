@@ -20,11 +20,12 @@ TEST_CASE(
 	"[algorithm_find_by_opt]",
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const vec{
 		1,
@@ -32,11 +33,12 @@ TEST_CASE(
 		3
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::algorithm::find_by_opt(

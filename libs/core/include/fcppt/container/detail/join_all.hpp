@@ -9,8 +9,8 @@
 
 #include <fcppt/move_iterator_if_rvalue.hpp>
 #include <fcppt/container/detail/join_insert.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,13 +27,17 @@ template<
 	typename... Args
 >
 inline
-Result
+fcppt::type_traits::remove_cv_ref_t<
+	Result
+>
 join_all(
 	Result &&_first
 )
 {
 	return
-		std::move(
+		std::forward<
+			Result
+		>(
 			_first
 		);
 }
@@ -44,7 +48,7 @@ template<
 	typename... Args
 >
 inline
-std::remove_cv_t<
+fcppt::type_traits::remove_cv_ref_t<
 	Result
 >
 join_all(
@@ -69,7 +73,9 @@ join_all(
 
 	return
 		fcppt::container::detail::join_all(
-			std::move(
+			std::forward<
+				Result
+			>(
 				_result
 			),
 			std::forward<

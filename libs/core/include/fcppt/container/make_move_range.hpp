@@ -42,11 +42,11 @@ make_move_range(
 )
 {
 	static_assert(
-		std::is_rvalue_reference<
+		std::is_rvalue_reference_v<
 			decltype(
 				_container
 			)
-		>::value,
+		>,
 		"Container must be an rvalue reference"
 	);
 
@@ -56,7 +56,9 @@ make_move_range(
 				Container
 			>
 		>(
-			std::move(
+			std::forward<
+				Container
+			>(
 				_container
 			)
 		);

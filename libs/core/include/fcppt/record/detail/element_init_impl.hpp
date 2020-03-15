@@ -21,30 +21,13 @@ fcppt::record::detail::element_init<
 	Tag,
 	Type
 >::element_init(
-	value_type &&_value
+	value_type _value
 )
 :
 	value_(
 		std::move(
 			_value
 		)
-	)
-{
-}
-
-template<
-	typename Tag,
-	typename Type
->
-fcppt::record::detail::element_init<
-	Tag,
-	Type
->::element_init(
-	value_type const &_value
-)
-:
-	value_(
-		_value
 	)
 {
 }
@@ -64,7 +47,7 @@ fcppt::record::detail::element_init<
 >::value()
 {
 	return
-		value_;
+		this->value_;
 }
 
 #endif

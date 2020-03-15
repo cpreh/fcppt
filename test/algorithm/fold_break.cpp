@@ -19,11 +19,12 @@ TEST_CASE(
 	"[algorithm_fold_break]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	CHECK(
 		fcppt::algorithm::fold_break(
@@ -69,17 +70,19 @@ TEST_CASE(
 	"[algorithm_fold_break]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
 	CHECK(
 		fcppt::algorithm::fold_break(

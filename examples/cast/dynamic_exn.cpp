@@ -12,9 +12,6 @@
 #include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/cast/dynamic_exn.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/preprocessor/disable_clang_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
 
 //! [dynamic_exn]
@@ -58,12 +55,6 @@ struct derived2
 	FCPPT_NONMOVABLE(
 		derived2
 	);
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
-	derived2()
-	= default;
-FCPPT_PP_POP_WARNING
 
 	~derived2()
 	override

@@ -16,23 +16,26 @@
 namespace
 {
 
-typedef
+using
+int_vector
+=
 std::vector<
 	int
->
-int_vector;
+>;
 
-typedef
+using
+int_movable
+=
 fcppt::catch_::movable<
 	int
->
-int_movable;
+>;
 
-typedef
+using
+int_movable_vector
+=
 std::vector<
 	int_movable
->
-int_movable_vector;
+>;
 
 }
 

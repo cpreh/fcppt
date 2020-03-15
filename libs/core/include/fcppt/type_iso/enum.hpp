@@ -26,17 +26,18 @@ template<
 struct transform<
 	Enum,
 	std::enable_if_t<
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value
+		>
 	>
 >
 {
-	typedef
+	using
+	undecorated_type
+	=
 	std::underlying_type_t<
 		Enum
-	>
-	undecorated_type;
+	>;
 
 	static
 	inline

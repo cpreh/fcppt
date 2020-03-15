@@ -63,7 +63,9 @@ join_impl(
 {
 	return
 		fcppt::container::detail::join_all(
-			std::move(
+			std::forward<
+				Container
+			>(
 				_first
 			),
 			std::forward<

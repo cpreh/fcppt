@@ -29,11 +29,12 @@ struct uniform_int_wrapper
 	>
 	struct apply
 	{
-		typedef
+		using
+		type
+		=
 		std::uniform_int_distribution<
 			Type
-		>
-		type;
+		>;
 	};
 };
 

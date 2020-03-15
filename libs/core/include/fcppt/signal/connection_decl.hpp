@@ -8,7 +8,7 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -33,7 +33,7 @@ established.
 */
 class connection
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		connection
 	);
 protected:

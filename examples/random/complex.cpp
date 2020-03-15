@@ -26,29 +26,33 @@ int
 main()
 {
 //![random_complex_distribution]
-	typedef
+	using
+	meter
+	=
 	boost::units::quantity<
 		boost::units::si::length,
 		int
-	> meter;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		meter,
 		radius
 	);
 
-	typedef
+	using
+	distribution
+	=
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			radius
 		>
-	>
-	distribution;
+	>;
 //![random_complex_distribution]
 
-	typedef
-	fcppt::random::generator::minstd_rand
-	generator_type;
+	using
+	generator_type
+	=
+	fcppt::random::generator::minstd_rand;
 
 	generator_type generator(
 		fcppt::random::generator::seed_from_chrono<
@@ -56,12 +60,13 @@ main()
 		>()
 	);
 
-	typedef
+	using
+	variate
+	=
 	fcppt::random::variate<
 		generator_type,
 		distribution
-	>
-	variate;
+	>;
 
 //![random_complex_variate]
 	variate rng(
@@ -74,7 +79,7 @@ main()
 			),
 			distribution::param_type::max(
 				radius(
-					10 * boost::units::si::meter
+					10 * boost::units::si::meter // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			)
 		)
@@ -83,7 +88,7 @@ main()
 
 //![random_complex_output]
 	fcppt::algorithm::repeat(
-		10u,
+		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		[
 			&rng
 		]{
@@ -97,20 +102,22 @@ main()
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
 
-	typedef
+	using
+	meter_distribution
+	=
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			meter
 		>
-	>
-	meter_distribution;
+	>;
 
-	typedef
+	using
+	meter_variate
+	=
 	fcppt::random::variate<
 		generator_type,
 		meter_distribution
-	>
-	meter_variate;
+	>;
 
 	meter_variate meter_rng(
 		generator,
@@ -119,13 +126,13 @@ main()
 				0 * boost::units::si::meter
 			),
 			meter_distribution::param_type::max(
-				10 * boost::units::si::meter
+				10 * boost::units::si::meter // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
 
 	fcppt::algorithm::repeat(
-		10u,
+		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		[
 			&meter_rng
 		]{

@@ -43,26 +43,28 @@ public:
 	/**
 	\brief A typedef for the function's return type
 	*/
-	typedef
-	T
-	function_signature;
+	using
+	function_signature
+	=
+	T;
 
 	/**
 	\brief A typedef for the wrapped function
 	*/
-	typedef
+	using
+	function
+	=
 	fcppt::function<
 		T
-	>
-	function;
+	>;
 
 	/**
 	\brief Connect a callback to this signal
 	*/
 	fcppt::signal::auto_connection
 	connect(
-		function const &,
-		fcppt::signal::unregister::function const &
+		function &&,
+		fcppt::signal::unregister::function &&
 	);
 
 	/**
@@ -71,28 +73,32 @@ public:
 	bool
 	empty() const;
 protected:
-	typedef
+	using
+	concrete_connection
+	=
 	fcppt::signal::unregister::detail::concrete_connection<
 		function_signature
-	>
-	concrete_connection;
+	>;
 
-	typedef
+	using
+	connection_list
+	=
 	fcppt::intrusive::list<
 		concrete_connection
-	>
-	connection_list;
+	>;
 
 	base();
 
 	base(
 		base &&
-	);
+	)
+	noexcept;
 
 	base &
 	operator=(
 		base &&
-	);
+	)
+	noexcept;
 
 	~base();
 

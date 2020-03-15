@@ -14,14 +14,13 @@ int
 main()
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::type_traits::function_result<
 				int (
 					float
 				)
-			>::type,
+			>,
 			int
-		>::value,
-		""
+		>
 	);
 }

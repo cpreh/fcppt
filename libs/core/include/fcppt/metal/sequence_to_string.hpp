@@ -30,6 +30,7 @@ template<
 fcppt::string
 sequence_to_string()
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	fcppt::io::ostringstream stream{};
 
 	fcppt::metal::print<

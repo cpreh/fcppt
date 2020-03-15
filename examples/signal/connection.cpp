@@ -50,14 +50,17 @@ take_connection(
 int
 main()
 {
-	typedef fcppt::signal::object<
+	using
+	void_signal
+	=
+	fcppt::signal::object<
 		void ()
-	> void_signal;
+	>;
 
 	void_signal signal;
 
 	// use fcppt::container::make to pass a container of connections
-	fcppt::signal::auto_connection_container const connections(
+	auto const connections(
 		fcppt::container::make<
 			fcppt::signal::auto_connection_container
 		>(

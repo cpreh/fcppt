@@ -25,7 +25,7 @@ TEST_CASE(
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			decltype(
 				fcppt::cast::promote_int(
 					'c'
@@ -34,7 +34,6 @@ TEST_CASE(
 			decltype(
 				+'c'
 			)
-		>::value,
-		""
+		>
 	);
 }
