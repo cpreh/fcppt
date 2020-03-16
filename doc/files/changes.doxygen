@@ -102,7 +102,7 @@
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Removed nested <code>::type</code> from #fcppt::type_traits::function_result.</li>
+	<li>Removed nested <code>type</code> from #fcppt::type_traits::function_result.</li>
 	</ul>
 </li>
 
