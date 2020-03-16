@@ -19,6 +19,24 @@ fcppt::container::dynamic_array<
 	T,
 	A
 >::dynamic_array(
+	size_type const _size
+)
+:
+	dynamic_array{
+		_size,
+		A{}
+	}
+{
+}
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::dynamic_array<
+	T,
+	A
+>::dynamic_array(
 	size_type const _size,
 	A const _alloc
 )
@@ -27,7 +45,7 @@ fcppt::container::dynamic_array<
 		_alloc
 	},
 	data_{
-		alloc_.allocate(
+		alloc_.allocate( // NOLINT(fuchsia-default-arguments-calls)
 			_size
 		)
 	},

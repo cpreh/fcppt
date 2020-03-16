@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/use.hpp>
 #include <fcppt/container/grid/make_pos_ref_crange.hpp>
 #include <fcppt/container/grid/make_pos_ref_crange_start_end.hpp>
 #include <fcppt/container/grid/make_pos_ref_range.hpp>
@@ -25,40 +26,45 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	element_type
+	=
 	fcppt::container::grid::pos<
 		std::size_t,
 		2
-	>
-	element_type;
+	>;
 
-	typedef
+	using
+	dim2_grid
+	=
 	fcppt::container::grid::object<
 		element_type,
 		2
-	>
-	dim2_grid;
+	>;
 
-	typedef
+	using
+	min
+	=
 	fcppt::container::grid::min_from_pos<
 		dim2_grid::pos
-	>
-	min;
+	>;
 
-	typedef
+	using
+	sup
+	=
 	fcppt::container::grid::sup_from_pos<
 		dim2_grid::pos
-	>
-	sup;
+	>;
 
-	typedef
-	dim2_grid::pos
-	pos;
+	using
+	pos
+	=
+	dim2_grid::pos;
 
 	dim2_grid grid(
 		dim2_grid::dim(
-			4u,
-			6u
+			4U,
+			6U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		fcppt::math::vector::null<
 			pos
@@ -66,34 +72,38 @@ TEST_CASE(
 	);
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_range(
 			grid
 		)
 	)
+	{
 		element.value()
 		=
 		element.pos();
+	}
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_crange(
 			grid
 		)
 	)
+	{
 		CHECK(
 			element.value()
 			==
 			element.pos()
 		);
+	}
 
 	grid =
 		dim2_grid(
 			dim2_grid::dim(
-				4u,
-				6U
+				4U,
+				6U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::vector::null<
 				element_type
@@ -101,60 +111,63 @@ TEST_CASE(
 		);
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
 			min{
 				pos(
-					1u,
+					1U,
 					1U
 				)
 			},
 			sup{
 				pos(
-					3u,
-					3u
+					3U,
+					3U
 				)
 			}
 		)
 	)
+	{
 		element.value()
 		=
 		element.pos();
+	}
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_crange_start_end(
 			grid,
 			min{
 				pos(
-					1u,
-					1u
+					1U,
+					1U
 				)
 			},
 			sup{
 				pos(
-					3u,
-					3u
+					3U,
+					3U
 				)
 			}
 		)
 	)
+	{
 		CHECK(
 			element.value()
 			==
 			element.pos()
 		);
-
+	}
 
 	bool loop_empty(
 		true
 	);
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
@@ -170,15 +183,21 @@ TEST_CASE(
 			}
 		)
 	)
+	{
+		FCPPT_USE(
+			element
+		);
+
 		loop_empty =
 			false;
+	}
 
 	CHECK(
 		loop_empty
 	);
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
@@ -189,21 +208,27 @@ TEST_CASE(
 			},
 			sup{
 				pos(
-					0u,
-					1u
+					0U,
+					1U
 				)
 			}
 		)
 	)
+	{
+		FCPPT_USE(
+			element
+		);
+
 		loop_empty =
 			false;
+	}
 
 	CHECK(
 		loop_empty
 	);
 
 	for(
-		auto const element
+		auto const &element
 		:
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
@@ -214,14 +239,20 @@ TEST_CASE(
 			},
 			sup{
 				pos(
-					1u,
-					0u
+					1U,
+					0U
 				)
 			}
 		)
 	)
+	{
+		FCPPT_USE(
+			element
+		);
+
 		loop_empty =
 			false;
+	}
 
 	CHECK(
 		loop_empty

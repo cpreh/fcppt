@@ -22,6 +22,7 @@ TEST_CASE(
 	>
 	int_set;
 
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	int_set const ints{
 		1,2,3
 	};

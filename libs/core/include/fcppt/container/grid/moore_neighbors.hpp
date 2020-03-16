@@ -47,12 +47,13 @@ moore_neighbors(
 	> const _pos
 )
 {
-	typedef
+	using
+	pos_type
+	=
 	fcppt::container::grid::pos<
 		T,
 		N
-	>
-	pos_type;
+	>;
 
 	return
 		fcppt::container::grid::moore_neighbor_array<

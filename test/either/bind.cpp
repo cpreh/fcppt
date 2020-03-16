@@ -18,19 +18,21 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either_int;
+	>;
 
-	typedef
+	using
+	either_bool
+	=
 	fcppt::either::object<
 		std::string,
 		bool
-	>
-	either_bool;
+	>;
 
 	auto const bind_function(
 		[](
@@ -41,7 +43,7 @@ TEST_CASE(
 				either_bool(
 					_value
 					>
-					10
+					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				);
 		}
 	);

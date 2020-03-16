@@ -58,7 +58,7 @@ TEST_CASE(
 								)
 							>
 						>(
-							42
+							1
 						)
 					);
 			}
@@ -68,8 +68,8 @@ TEST_CASE(
 			unsigned,
 			unsigned long
 		>{
-			42u,
-			42uL
+			1U,
+			1UL
 		}
 	);
 }
@@ -89,7 +89,7 @@ TEST_CASE(
 		fcppt::container::tuple::vararg_map(
 			std::make_tuple(
 				movable{
-					42
+					1
 				}
 			),
 			[](
@@ -120,7 +120,7 @@ TEST_CASE(
 		)
 		==
 		movable{
-			42
+			1
 		}
 	);
 }

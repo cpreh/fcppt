@@ -36,7 +36,7 @@ moore_neighbor_array
 =
 std::array<
 	Pos,
-	8
+	8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 >;
 
 }

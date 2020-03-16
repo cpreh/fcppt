@@ -39,30 +39,34 @@ template<
 class index_map
 {
 public:
-	typedef
+	using
+	internal_type
+	=
 	std::vector<
 		T,
 		A
-	>
-	internal_type;
+	>;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	internal_type::size_type
-	size_type;
+	internal_type::size_type;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	internal_type::reference
-	reference;
+	internal_type::reference;
 
 	index_map();
 
-	typedef
+	using
+	insert_function
+	=
 	fcppt::function<
 		T ()
-	>
-	insert_function;
+	>;
 
 	/**
 	\brief Returns the element at an index or inserts new ones using a function.

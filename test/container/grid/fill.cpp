@@ -20,29 +20,31 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int2_grid
+	=
 	fcppt::container::grid::object<
 		int,
 		2
-	>
-	int2_grid;
+	>;
 
 	int2_grid test(
 		int2_grid::dim(
-			2u,
-			2u
+			2U,
+			2U
 		),
 		0
 	);
 
-	typedef
-	int2_grid::pos
-	pos;
+	using
+	pos
+	=
+	int2_grid::pos;
 
 	fcppt::container::grid::fill(
 		test,
 		[](
-			pos const _pos
+			pos const &_pos
 		)
 		{
 			return

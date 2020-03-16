@@ -209,6 +209,7 @@ fcppt::cyclic_iterator<
 	)
 	{
 		this->it_ =
+			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			std::prev(
 				this->boundary_.second
 			);

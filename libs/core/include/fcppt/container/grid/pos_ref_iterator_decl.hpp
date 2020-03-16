@@ -126,9 +126,11 @@ public:
 	void
 	increment();
 
+	[[nodiscard]]
 	reference
 	dereference() const;
 
+	[[nodiscard]]
 	bool
 	equal(
 		pos_ref_iterator const &

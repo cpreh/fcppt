@@ -51,11 +51,12 @@ push_back(
 	NewElement &&_new_element
 )
 {
-	typedef
+	using
+	source_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Tuple
-	>
-	source_type;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_std_tuple<

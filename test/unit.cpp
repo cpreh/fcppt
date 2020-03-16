@@ -22,8 +22,7 @@ TEST_CASE(
 			fcppt::unit
 		)
 		==
-		1u,
-		""
+		1U
 	);
 
 	CHECK(

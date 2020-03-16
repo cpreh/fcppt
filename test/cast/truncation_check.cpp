@@ -77,20 +77,20 @@ TEST_CASE(
 		fcppt::cast::truncation_check<
 			unsigned
 		>(
-			10u
+			10U
 		)
 		==
-		10u
+		10U
 	);
 
 	CHECK(
 		fcppt::cast::truncation_check<
 			unsigned long
 		>(
-			42u
+			42U
 		)
 		==
-		42ul
+		42UL
 	);
 
 	CHECK(
@@ -100,6 +100,6 @@ TEST_CASE(
 			-1
 		)
 		==
-		-1l
+		-1L
 	);
 }

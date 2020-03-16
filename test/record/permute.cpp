@@ -27,35 +27,39 @@ TEST_CASE(
 		move_label
 	);
 
-	typedef
+	using
+	int_element
+	=
 	fcppt::record::element<
 		int_label,
 		int
-	>
-	int_element;
+	>;
 
-	typedef
+	using
+	move_element
+	=
 	fcppt::record::element<
 		move_label,
 		fcppt::unique_ptr<
 			int
 		>
-	>
-	move_element;
+	>;
 
-	typedef
+	using
+	result_record
+	=
 	fcppt::record::object<
 		int_element,
 		move_element
-	>
-	result_record;
+	>;
 
-	typedef
+	using
+	arg_record
+	=
 	fcppt::record::object<
 		move_element,
 		int_element
-	>
-	arg_record;
+	>;
 
 	result_record const result{
 		fcppt::record::permute<

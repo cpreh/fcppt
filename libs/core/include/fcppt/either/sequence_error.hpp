@@ -68,7 +68,9 @@ decltype(
 	)
 )
 {
-	typedef
+	using
+	either_type
+	=
 	decltype(
 		_function(
 			std::declval<
@@ -79,8 +81,7 @@ decltype(
 				>
 			>()
 		)
-	)
-	either_type;
+	);
 
 	static_assert(
 		fcppt::either::is_object<

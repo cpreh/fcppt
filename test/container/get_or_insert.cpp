@@ -17,14 +17,15 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_string_map
+	=
 	std::map<
 		int,
 		std::string
-	>
-	int_string_map;
+	>;
 
-	int_string_map map;
+	int_string_map map{};
 
 	auto const inserter(
 		[](
@@ -41,14 +42,14 @@ TEST_CASE(
 	std::string &inserted(
 		fcppt::container::get_or_insert(
 			map,
-			42,
+			42, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			inserter
 		)
 	);
 
 	int_string_map::iterator const it{
 		map.find(
-			42
+			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	};
 
@@ -75,7 +76,7 @@ TEST_CASE(
 	CHECK(
 		&fcppt::container::get_or_insert(
 			map,
-			42,
+			42, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			inserter
 		)
 		==

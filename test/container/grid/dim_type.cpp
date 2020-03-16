@@ -15,15 +15,16 @@
 int
 main()
 {
-	typedef
+	using
+	grid
+	=
 	fcppt::container::grid::object<
 		int,
 		2
-	>
-	grid;
+	>;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::container::grid::dim_type<
 				grid
 			>,
@@ -31,7 +32,6 @@ main()
 				grid::size_type,
 				2
 			>
-		>::value,
-		""
+		>
 	);
 }

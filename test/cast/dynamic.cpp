@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/apply.hpp>
@@ -26,54 +26,48 @@ namespace
 
 struct base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		base
 	);
 
 	base()
-	{
-	}
+	= default;
 
 	virtual
 	~base()
-	{
-	}
+	= default;
 };
 
 struct derived1
 :
 	base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived1
 	);
 
 	derived1()
-	{
-	}
+	= default;
 
 	~derived1()
 	override
-	{
-	}
+	= default;
 };
 
 struct derived2
 :
 	base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived2
 	);
 
 	derived2()
-	{
-	}
+	= default;
 
 	~derived2()
 	override
-	{
-	}
+	= default;
 };
 
 }

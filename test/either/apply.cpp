@@ -18,26 +18,29 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either_int;
+	>;
 
-	typedef
+	using
+	either_uint
+	=
 	fcppt::either::object<
 		std::string,
 		unsigned
-	>
-	either_uint;
+	>;
 
-	typedef
+	using
+	either_bool
+	=
 	fcppt::either::object<
 		std::string,
 		bool
-	>
-	either_bool;
+	>;
 
 	auto const apply_function(
 		[](
@@ -48,11 +51,11 @@ TEST_CASE(
 			return
 				_value1
 				>
-				10
+				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				&&
 				_value2
 				<
-				100u;
+				100U; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		}
 	);
 
@@ -82,7 +85,7 @@ TEST_CASE(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
-				42
+				42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			either_uint(
 				std::string(
@@ -102,10 +105,10 @@ TEST_CASE(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
-				20
+				20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			either_uint(
-				100u
+				100U
 			)
 		)
 		==

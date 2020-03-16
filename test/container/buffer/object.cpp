@@ -14,11 +14,12 @@
 namespace
 {
 
-typedef
+using
+container_type
+=
 fcppt::container::buffer::object<
 	int
->
-container_type;
+>;
 
 }
 
@@ -34,38 +35,38 @@ TEST_CASE(
 )
 {
 	container_type test1{
-		5u
+		5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	};
 
 	REQUIRE(
 		test1.read_size()
 		==
-		0u
+		0U
 	);
 
 	REQUIRE(
 		test1.write_size()
 		==
-		5u
+		5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	*test1.write_data() =
-		10;
+		10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	test1.written(
-		1u
+		1U
 	);
 
 	REQUIRE(
 		test1.read_size()
 		==
-		1u
+		1U
 	);
 
 	REQUIRE(
 		test1.write_size()
 		==
-		4u
+		4U
 	);
 
 	CHECK(
@@ -73,7 +74,7 @@ TEST_CASE(
 			0
 		]
 		==
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }
 
@@ -83,14 +84,14 @@ TEST_CASE(
 )
 {
 	container_type test1{
-		100u
+		100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	};
 
 	*test1.write_data() =
-		42;
+		42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	test1.written(
-		1u
+		1U
 	);
 
 	container_type test2(
@@ -102,7 +103,7 @@ TEST_CASE(
 	REQUIRE(
 		test2.write_size()
 		==
-		99u
+		99U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	CHECK(
@@ -110,11 +111,11 @@ TEST_CASE(
 			0
 		]
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	container_type test3{
-		0u
+		0U
 	};
 
 	test3 =
@@ -125,7 +126,7 @@ TEST_CASE(
 	REQUIRE(
 		test3.write_size()
 		==
-		99u
+		99U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	CHECK(
@@ -133,7 +134,7 @@ TEST_CASE(
 			0
 		]
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }
 
@@ -143,46 +144,46 @@ TEST_CASE(
 )
 {
 	container_type container{
-		2u
+		2U
 	};
 
-	container.write_data()[0] = 10;
+	container.write_data()[0] = 10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	container.written(
-		1u
+		1U
 	);
 
 	CHECK(
 		container.read_size()
 		==
-		1u
+		1U
 	);
 
 	CHECK(
 		container.write_size()
 		==
-		1u
+		1U
 	);
 
 	container.resize_write_area(
-		3u
+		3U
 	);
 
 	CHECK(
 		container.write_size()
 		==
-		3u
+		3U
 	);
 
 	REQUIRE(
 		container.read_size()
 		==
-		1u
+		1U
 	);
 
 	CHECK(
 		container[0]
 		==
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }

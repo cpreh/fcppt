@@ -21,7 +21,7 @@ namespace fcppt
 template<
 	typename... Types
 >
-struct overloaded
+struct overloaded // NOLINT(fuchsia-multiple-inheritance)
 :
 	Types...
 {

@@ -25,7 +25,7 @@ TEST_CASE(
 	// test this multiple times
 	// because there was a corruption issue
 	fcppt::algorithm::repeat(
-		3u,
+		3U,
 		[
 			&input
 		]{
@@ -38,7 +38,7 @@ TEST_CASE(
 			CHECK(
 				output.size()
 				==
-				6u
+				6U
 			);
 		}
 	);

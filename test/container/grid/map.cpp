@@ -26,27 +26,29 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	string_grid
+	=
 	fcppt::container::grid::object<
 		std::string,
 		2
-	>
-	string_grid;
+	>;
 
-	typedef
+	using
+	uint_grid
+	=
 	fcppt::container::grid::object<
 		unsigned,
 		2
-	>
-	uint_grid;
+	>;
 
 	uint_grid const grid(
 		uint_grid::dim{
-			2u,
-			3u
+			2U,
+			3U
 		},
 		[](
-			uint_grid::pos const _pos
+			uint_grid::pos const &_pos
 		)
 		{
 			return
@@ -108,40 +110,43 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	uint_movable
+	=
 	fcppt::catch_::movable<
 		unsigned
-	>
-	uint_movable;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		uint_movable,
 		strong_result
 	);
 
-	typedef
+	using
+	movable_grid
+	=
 	fcppt::container::grid::object<
 		uint_movable,
 		2
-	>
-	movable_grid;
+	>;
 
-	typedef
+	using
+	strong_grid
+	=
 	fcppt::container::grid::object<
 		strong_result,
 		2
-	>
-	strong_grid;
+	>;
 
 	strong_grid const result(
 		fcppt::container::grid::map(
 			movable_grid(
 				movable_grid::dim{
-					3u,
-					2u
+					3U,
+					2U
 				},
 				[](
-					movable_grid::pos const _pos
+					movable_grid::pos const &_pos
 				)
 				{
 					return
@@ -185,34 +190,34 @@ TEST_CASE(
 			fcppt::container::grid::static_row(
 				strong_result{
 					uint_movable{
-						0u
+						0U
 					}
 				},
 				strong_result{
 					uint_movable{
-						1u
+						1U
 					}
 				},
 				strong_result{
 					uint_movable{
-						2u
+						2U
 					}
 				}
 			),
 			fcppt::container::grid::static_row(
 				strong_result{
 					uint_movable{
-						1u
+						1U
 					}
 				},
 				strong_result{
 					uint_movable{
-						2u
+						2U
 					}
 				},
 				strong_result{
 					uint_movable{
-						3u
+						3U
 					}
 				}
 			)

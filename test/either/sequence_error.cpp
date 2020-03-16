@@ -26,11 +26,12 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_error
+	=
 	fcppt::either::error<
 		std::string
-	>
-	either_error;
+	>;
 
 	CHECK(
 		fcppt::either::sequence_error(

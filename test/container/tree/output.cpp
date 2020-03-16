@@ -47,7 +47,7 @@ TEST_CASE(
 		std::string("e")
 	);
 
-	std::ostringstream oss{};
+	std::ostringstream oss{}; // NOLINT(fuchsia-default-arguments-calls)
 
 	oss <<
 		tree;

@@ -88,11 +88,12 @@ fcppt::container::grid::object<
 	>::static_size::value
 >
 {
-	typedef
+	using
+	grid1
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Grid1
-	>
-	grid1;
+	>;
 
 	static_assert(
 		fcppt::container::grid::is_object<
@@ -115,13 +116,16 @@ fcppt::container::grid::object<
 		"Grids must all be grids"
 	);
 
-	typedef
+	using
+	pos_type
+	=
 	fcppt::container::grid::pos_type<
 		grid1
-	>
-	pos_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::container::grid::object<
 		decltype(
 			_function(
@@ -146,14 +150,14 @@ fcppt::container::grid::object<
 			)
 		),
 		grid1::static_size::value
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	dim_type
+	=
 	fcppt::container::grid::dim_type<
 		grid1
-	>
-	dim_type;
+	>;
 
 	return
 		fcppt::algorithm::all_of(

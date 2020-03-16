@@ -19,24 +19,26 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	string_vector
+	=
 	std::vector<
 		std::string
-	>
-	string_vector;
+	>;
 
-	typedef
+	using
+	int_string_map
+	=
 	std::map<
 		int,
 		std::string
-	>
-	int_string_map;
+	>;
 
 	CHECK(
 		fcppt::container::map_values_copy<
 			string_vector
 		>(
-			int_string_map{
+			int_string_map{ // NOLINT(fuchsia-default-arguments-calls)
 				std::make_pair(
 					1,
 					"test1"

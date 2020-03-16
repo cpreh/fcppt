@@ -16,23 +16,24 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_set
+	=
 	std::set<
 		int
-	>
-	int_set;
+	>;
 
 	CHECK(
 		fcppt::container::set_difference(
-			int_set{
+			int_set{ // NOLINT(fuchsia-default-arguments-calls)
 				1, 2, 3
 			},
-			int_set{
+			int_set{ // NOLINT(fuchsia-default-arguments-calls)
 				2, 3, 4
 			}
 		)
 		==
-		int_set{
+		int_set{ // NOLINT(fuchsia-default-arguments-calls)
 			1
 		}
 	);

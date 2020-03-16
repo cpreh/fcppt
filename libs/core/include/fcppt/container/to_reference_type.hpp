@@ -35,9 +35,9 @@ using
 to_reference_type
 =
 std::conditional_t<
-	std::is_const<
+	std::is_const_v<
 		Container
-	>::value,
+	>,
 	typename
 	Container::const_reference,
 	typename

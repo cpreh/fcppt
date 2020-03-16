@@ -63,7 +63,9 @@ first_success(
 	Functions const &_functions
 )
 {
-	typedef
+	using
+	failure_container
+	=
 	std::vector<
 		fcppt::either::failure_type<
 			std::result_of_t<
@@ -72,10 +74,11 @@ first_success(
 				>()
 			>
 		>
-	>
-	failure_container;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		failure_container,
 		fcppt::either::success_type<
@@ -85,10 +88,9 @@ first_success(
 				>()
 			>
 		>
-	>
-	result_type;
+	>;
 
-	failure_container failures;
+	failure_container failures{};
 
 	for(
 		fcppt::type_traits::value_type<
@@ -105,12 +107,14 @@ first_success(
 		if(
 			result.has_success()
 		)
+		{
 			return
 				result_type{
 					std::move(
 						result.get_success_unsafe()
 					)
 				};
+		}
 
 		failures.push_back(
 			std::move(

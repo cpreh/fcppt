@@ -46,18 +46,22 @@ public:
 	)
 	noexcept;
 
+	[[nodiscard]]
 	A const &
 	alloc() const
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	first() const
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	last() const
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	cap() const
 	noexcept;

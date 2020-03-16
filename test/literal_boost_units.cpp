@@ -4,36 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/set_union.hpp>
+#include <fcppt/literal.hpp>
+#include <fcppt/make_literal_boost_units.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/units/quantity.hpp>
+#include <boost/units/systems/si/length.hpp>
 #include <catch2/catch.hpp>
-#include <set>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"container::set_union",
-	"[container]"
+	"literal boost_units",
+	"[literal]"
 )
 {
 	typedef
-	std::set<
+	boost::units::quantity<
+		boost::units::si::length,
 		int
 	>
-	int_set;
+	length;
 
 	CHECK(
-		fcppt::container::set_union(
-			int_set{ // NOLINT(fuchsia-default-arguments-calls)
-				1, 2, 3
-			},
-			int_set{ // NOLINT(fuchsia-default-arguments-calls)
-				2, 3, 4
-			}
-		)
+		fcppt::literal<
+			length
+		>(
+			2
+		).value()
 		==
-		int_set{ // NOLINT(fuchsia-default-arguments-calls)
-			1, 2, 3, 4
-		}
+		2
 	);
 }

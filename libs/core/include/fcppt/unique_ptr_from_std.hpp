@@ -39,7 +39,7 @@ unique_ptr_from_std(
 {
 	return
 		fcppt::optional::make_if(
-			_ptr.get()
+			_ptr
 			!=
 			nullptr,
 			[

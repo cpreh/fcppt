@@ -21,11 +21,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_queue
+	=
 	std::deque<
 		int
-	>
-	int_queue;
+	>;
 
 	int_queue empty{};
 
@@ -70,24 +71,26 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int_movable_queue
+	=
 	std::deque<
 		int_movable
-	>
-	int_movable_queue;
+	>;
 
-	int_movable_queue queue(
+	auto queue(
 		fcppt::container::make<
 			int_movable_queue
 		>(
 			int_movable{
-				42
+				1
 			}
 		)
 	);
@@ -99,7 +102,7 @@ TEST_CASE(
 		==
 		fcppt::optional::make(
 			int_movable{
-				42
+				1
 			}
 		)
 	);

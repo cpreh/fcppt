@@ -18,30 +18,32 @@ TEST_CASE(
 	"[container],[buffer]"
 )
 {
-	typedef
+	using
+	buffer_type
+	=
 	fcppt::container::buffer::object<
 		int
-	>
-	buffer_type;
+	>;
 
 	buffer_type buffer{
-		2u
+		2U
 	};
 
 	buffer.write_data()[
 		0
 	]
-		= 10;
+		= 10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	buffer.written(
-		1u
+		1U
 	);
 
-	typedef
+	using
+	raw_vector_type
+	=
 	fcppt::container::raw_vector::object<
 		int
-	>
-	raw_vector_type;
+	>;
 
 	raw_vector_type raw_vector{
 		fcppt::container::buffer::to_raw_vector(
@@ -52,21 +54,9 @@ TEST_CASE(
 	};
 
 	CHECK(
-		buffer.read_size()
-		==
-		0u
-	);
-
-	CHECK(
-		buffer.write_size()
-		==
-		0u
-	);
-
-	CHECK(
 		raw_vector.capacity()
 		==
-		2u
+		2U
 	);
 
 	CHECK(

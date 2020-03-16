@@ -56,7 +56,7 @@ TEST_CASE(
 							)
 						>::value
 						+
-						1u
+						1U
 					>{};
 			}
 		)
@@ -72,11 +72,12 @@ TEST_CASE(
 	"[container],[tuple]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		int_movable,

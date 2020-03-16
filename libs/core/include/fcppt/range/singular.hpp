@@ -36,6 +36,7 @@ singular(
 			_range
 		)
 		&&
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::next(
 			_range.begin()
 		)

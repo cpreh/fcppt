@@ -33,50 +33,57 @@ class spiral_iterator final
 			Pos
 		>
 {
-	typedef
+	using
+	base_type
+	=
 	fcppt::container::grid::detail::spiral_iterator_base<
 		Pos
-	>
-	base_type;
+	>;
 
-	typedef
-	Pos
-	pos;
+	using
+	pos
+	=
+	Pos;
 public:
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		base_type
-	>
-	value_type;
+	>;
 
 	static_assert(
-		std::is_signed<
+		std::is_signed_v<
 			fcppt::type_traits::value_type<
 				Pos
 			>
-		>::value,
+		>,
 		"spiral_iterator only works with signed integers"
 	);
 
-	typedef
+	using
+	reference
+	=
 	typename
-	base_type::reference
-	reference;
+	base_type::reference;
 
-	typedef
+	using
+	pointer
+	=
 	typename
-	base_type::pointer
-	pointer;
+	base_type::pointer;
 
-	typedef
+	using
+	iterator_category
+	=
 	typename
-	base_type::iterator_category
-	iterator_category;
+	base_type::iterator_category;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	base_type::difference_type
-	difference_type;
+	base_type::difference_type;
 
 	spiral_iterator(
 		pos current,
@@ -86,9 +93,11 @@ public:
 	void
 	increment();
 
+	[[nodiscard]]
 	reference
 	dereference() const;
 
+	[[nodiscard]]
 	bool
 	equal(
 		spiral_iterator const &

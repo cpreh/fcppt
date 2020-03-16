@@ -59,11 +59,13 @@ print(
 		:
 		_tree
 	)
+	{
 		fcppt::container::tree::detail::print(
 			_stream,
 			child,
-			_indent + 1u
+			_indent + 1U
 		);
+	}
 }
 
 }

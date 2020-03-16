@@ -32,7 +32,7 @@ TEST_CASE(
 	>
 	int_string_map;
 
-	int_string_map const values{
+	int_string_map const values{ // NOLINT(fuchsia-default-arguments-calls)
 		std::make_pair(
 			42,
 			std::string(
@@ -47,13 +47,14 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		fcppt::reference<
 			std::string const
 		>
-	>
-	optional_string;
+	>;
 
 	CHECK(
 		optional_string(

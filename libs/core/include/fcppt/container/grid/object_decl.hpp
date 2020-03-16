@@ -210,9 +210,9 @@ public:
 		object &&
 	)
 	noexcept(
-		std::is_nothrow_move_constructible<
+		std::is_nothrow_move_constructible_v<
 			T
-		>::value
+		>
 	);
 
 	object &
@@ -225,9 +225,9 @@ public:
 		object &&
 	)
 	noexcept(
-		std::is_nothrow_move_assignable<
+		std::is_nothrow_move_assignable_v<
 			T
-		>::value
+		>
 	);
 
 	~object();

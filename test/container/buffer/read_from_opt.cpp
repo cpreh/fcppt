@@ -29,7 +29,7 @@ TEST_CASE(
 		fcppt::container::buffer::read_from_opt<
 			buffer_type
 		>(
-			10u,
+			10U,
 			[](
 				buffer_type::pointer,
 				buffer_type::size_type
@@ -47,7 +47,7 @@ TEST_CASE(
 		fcppt::container::buffer::read_from_opt<
 			buffer_type
 		>(
-			10u,
+			10U,
 			[](
 				buffer_type::pointer,
 				buffer_type::size_type

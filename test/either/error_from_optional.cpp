@@ -22,17 +22,19 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::error<
 		int
-	>
-	either_int;
+	>;
 
 	CHECK(
 		fcppt::either::error_from_optional(

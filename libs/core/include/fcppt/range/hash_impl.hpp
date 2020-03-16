@@ -31,7 +31,7 @@ fcppt::range::hash<
 		fcppt::algorithm::fold(
 			_value,
 			std::size_t{
-				0u
+				0U
 			},
 			[](
 				auto const &_element,

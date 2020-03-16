@@ -37,6 +37,7 @@ contains(
 	T const &_value
 )
 {
+	// NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
 	auto const range_end{
 		fcppt::range::end(
 			_range

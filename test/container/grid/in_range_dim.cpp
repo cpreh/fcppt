@@ -18,31 +18,33 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int2_pos
+	=
 	fcppt::container::grid::pos<
 		std::size_t,
-		2u
-	>
-	int2_pos;
+		2U
+	>;
 
-	typedef
+	using
+	int2_dim
+	=
 	fcppt::container::grid::dim<
 		std::size_t,
-		2u
-	>
-	int2_dim;
+		2U
+	>;
 
 	int2_dim const test{
-		3u,
-		4u
+		3U,
+		4U
 	};
 
 	CHECK(
 		fcppt::container::grid::in_range_dim(
 			test,
 			int2_pos(
-				2u,
-				2u
+				2U,
+				2U
 			)
 		)
 	);
@@ -51,8 +53,8 @@ TEST_CASE(
 		fcppt::container::grid::in_range_dim(
 			test,
 			int2_pos(
-				3u,
-				2u
+				3U,
+				2U
 			)
 		)
 	);
@@ -61,7 +63,7 @@ TEST_CASE(
 		fcppt::container::grid::in_range_dim(
 			test,
 			int2_pos(
-				2u,
+				2U,
 				4U
 			)
 		)

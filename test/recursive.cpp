@@ -19,11 +19,11 @@ TEST_CASE(
 {
 	CHECK(
 		fcppt::make_recursive(
-			10
+			1
 		)
 		==
 		fcppt::make_recursive(
-			10
+			1
 		)
 	);
 }
@@ -38,27 +38,27 @@ TEST_CASE(
 			int
 		>{
 			fcppt::make_recursive(
-				10
+				1
 			)
 		}.get()
 		==
-		10
+		1
 	);
 
 	fcppt::recursive<
 		int
 	> value{
-		20
+		2
 	};
 
 	value =
 		fcppt::make_recursive(
-			30
+			3
 		);
 
 	CHECK(
 		value.get()
 		==
-		30
+		3
 	);
 }

@@ -17,14 +17,15 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	int_tree
+	=
 	fcppt::container::tree::object<
 		int
-	>
-	int_tree;
+	>;
 
 	int_tree tree(
-		42
+		1
 	);
 
 	CHECK(
@@ -32,14 +33,14 @@ TEST_CASE(
 			tree
 		)
 		==
-		0u
+		0U
 	);
 
 	fcppt::reference<
 		int_tree
 	> const back{
 		tree.push_back(
-			13
+			2
 		)
 	};
 
@@ -48,7 +49,7 @@ TEST_CASE(
 			tree
 		)
 		==
-		0u
+		0U
 	);
 
 	CHECK(
@@ -56,6 +57,6 @@ TEST_CASE(
 			back.get()
 		)
 		==
-		1u
+		1U
 	);
 }

@@ -37,12 +37,12 @@ unique_if(
 )
 {
 	_container.erase(
-		std::unique(
+		std::unique( // NOLINT(fuchsia-default-arguments-calls)
 			_container.begin(),
 			_container.end(),
 			_predicate
 		),
-		_container.end()
+		_container.end() // NOLINT(fuchsia-default-arguments-calls)
 	);
 }
 

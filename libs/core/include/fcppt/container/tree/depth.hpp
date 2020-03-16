@@ -34,22 +34,24 @@ depth(
 	> const &_tree
 )
 {
-	typedef
+	using
+	tree_type
+	=
 	fcppt::container::tree::object<
 		Value
-	>
-	tree_type;
+	>;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	tree_type::size_type
-	size_type;
+	tree_type::size_type;
 
 	return
 		fcppt::algorithm::fold(
 			_tree.children(),
 			size_type{
-				0u
+				0U
 			},
 			[](
 				tree_type const &_ref,
@@ -66,7 +68,7 @@ depth(
 			}
 		)
 		+
-		1u;
+		1U;
 }
 
 }

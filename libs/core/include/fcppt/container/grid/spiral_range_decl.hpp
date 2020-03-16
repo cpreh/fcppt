@@ -31,26 +31,30 @@ public:
 		"Sorry, this only works with two dimensional grids for now"
 	);
 
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		Pos
-	>
-	value_type;
+	>;
 
 	spiral_range(
 		Pos start,
 		value_type dist
 	);
 
-	typedef
+	using
+	iterator
+	=
 	fcppt::container::grid::spiral_iterator<
 		Pos
-	>
-	iterator;
+	>;
 
+	[[nodiscard]]
 	iterator
 	begin() const;
 
+	[[nodiscard]]
 	iterator
 	end() const;
 private:

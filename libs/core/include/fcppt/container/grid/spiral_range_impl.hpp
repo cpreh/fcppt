@@ -9,6 +9,9 @@
 
 #include <fcppt/container/grid/spiral_iterator_impl.hpp>
 #include <fcppt/container/grid/spiral_range_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -17,12 +20,14 @@ template<
 fcppt::container::grid::spiral_range<
 	Pos
 >::spiral_range(
-	Pos const _start,
+	Pos _start,
 	value_type const _dist
 )
 :
 	start_(
-		_start
+		std::move(
+			_start
+		)
 	),
 	dist_(
 		_dist

@@ -49,10 +49,12 @@ fill(
 			_grid
 		)
 	)
+	{
 		element.value() =
 			_function(
 				element.pos()
 			);
+	}
 }
 
 }

@@ -20,18 +20,20 @@ TEST_CASE(
 	"[container],[tuple]"
 )
 {
-	typedef
+	using
+	movable
+	=
 	fcppt::catch_::movable<
 		std::size_t
-	>
-	movable;
+	>;
 
-	typedef
+	using
+	tuple
+	=
 	std::tuple<
 		movable,
 		std::size_t
-	>
-	tuple;
+	>;
 
 	CHECK(
 		fcppt::container::tuple::init<
@@ -58,7 +60,7 @@ TEST_CASE(
 				{
 					return
 						std::size_t{
-							1u
+							1U
 						};
 				}
 			)
@@ -66,10 +68,10 @@ TEST_CASE(
 		==
 		tuple{
 			movable{
-				0u
+				0U
 			},
 			std::size_t{
-				1u
+				1U
 			}
 		}
 	);

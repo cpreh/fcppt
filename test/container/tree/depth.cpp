@@ -55,7 +55,7 @@ TEST_CASE(
 			leaf.get()
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -63,7 +63,7 @@ TEST_CASE(
 			child_1.get()
 		)
 		==
-		2u
+		2U
 	);
 
 	CHECK(
@@ -71,6 +71,6 @@ TEST_CASE(
 			tree
 		)
 		==
-		3u
+		3U
 	);
 }

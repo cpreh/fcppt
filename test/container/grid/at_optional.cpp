@@ -16,17 +16,18 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int2_grid
+	=
 	fcppt::container::grid::object<
 		int,
 		2
-	>
-	int2_grid;
+	>;
 
 	int2_grid grid(
 		int2_grid::dim{
-			2u,
-			3u
+			2U,
+			3U
 		},
 		0
 	);
@@ -35,8 +36,8 @@ TEST_CASE(
 		fcppt::container::grid::at_optional(
 			grid,
 			int2_grid::pos(
-				1u,
-				2u
+				1U,
+				2U
 			)
 		).has_value()
 	);
@@ -45,8 +46,8 @@ TEST_CASE(
 		fcppt::container::grid::at_optional(
 			grid,
 			int2_grid::pos(
-				2u,
-				2u
+				2U,
+				2U
 			)
 		).has_value()
 	);
@@ -59,8 +60,8 @@ TEST_CASE(
 		fcppt::container::grid::at_optional(
 			const_grid,
 			int2_grid::pos(
-				1u,
-				2u
+				1U,
+				2U
 			)
 		).has_value()
 	);

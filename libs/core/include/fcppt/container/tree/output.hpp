@@ -48,7 +48,7 @@ operator<<(
 	fcppt::container::tree::detail::print(
 		_stream,
 		_tree,
-		0u
+		0U
 	);
 
 	return

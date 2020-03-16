@@ -6,7 +6,7 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_to_base.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -14,46 +14,49 @@
 #include <fcppt/config/external_end.hpp>
 
 
+namespace
+{
+
+class base
+{
+	FCPPT_NONMOVABLE(
+		base
+	);
+public:
+	base()
+	= default;
+
+	virtual
+	~base()
+	= default;
+};
+
+class derived
+:
+	public base
+{
+	FCPPT_NONMOVABLE(
+		derived
+	);
+public:
+	derived()
+	:
+		base()
+	{
+	}
+
+	~derived()
+	override
+	= default;
+};
+
+}
+
 TEST_CASE(
 	"reference_to_base",
 	"[ref]"
 )
 {
-	class base
-	{
-		FCPPT_NONCOPYABLE(
-			base
-		);
-	public:
-		base()
-		{
-		}
-
-		virtual
-		~base()
-		{
-		}
-	};
-
-	class derived
-	:
-		public base
-	{
-		FCPPT_NONCOPYABLE(
-			derived
-		);
-	public:
-		derived()
-		:
-			base()
-		{
-		}
-
-		~derived()
-		{
-		}
-	};
-
 	{
 		derived nonconst_derived{};
 

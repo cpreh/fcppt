@@ -23,7 +23,7 @@ main()
 	grid;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::container::grid::pos_type<
 				grid
 			>,
@@ -31,7 +31,6 @@ main()
 				grid::size_type,
 				2
 			>
-		>::value,
-		""
+		>
 	);
 }

@@ -21,12 +21,14 @@ template<
 fcppt::container::grid::spiral_iterator<
 	Pos
 >::spiral_iterator(
-	pos const _cur,
+	pos _cur,
 	difference_type const _max_dist
 )
 :
 	cur_(
-		_cur
+		std::move(
+			_cur
+		)
 	),
 	max_dist_(
 		_max_dist

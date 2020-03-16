@@ -113,6 +113,7 @@ private:
 	typename
 	pos_range::iterator;
 
+	[[nodiscard]]
 	iterator
 	make_iterator(
 		pos_iterator

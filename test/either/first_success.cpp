@@ -20,24 +20,26 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either_int;
+	>;
 
-	typedef
+	using
+	function_type
+	=
 	fcppt::function<
 		either_int ()
-	>
-	function_type;
+	>;
 
 	function_type const f1{
 		[]{
 			return
 				either_int{
-					42
+					1
 				};
 		}
 	};
@@ -64,14 +66,15 @@ TEST_CASE(
 		}
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		std::vector<
 			std::string
 		>,
 		int
-	>
-	result_type;
+	>;
 
 	SECTION(
 		"test success"
@@ -93,7 +96,7 @@ TEST_CASE(
 		CHECK(
 			result.get_success_unsafe()
 			==
-			42
+			1
 		);
 	}
 

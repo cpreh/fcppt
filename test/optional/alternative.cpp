@@ -20,11 +20,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
 	CHECK(
 		fcppt::optional::alternative(
@@ -92,17 +93,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	optional_int_movable
+	=
 	fcppt::optional::object<
 		int_movable
-	>
-	optional_int_movable;
+	>;
 
 	CHECK(
 		fcppt::optional::alternative(

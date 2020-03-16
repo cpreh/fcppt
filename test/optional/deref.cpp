@@ -26,17 +26,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	optional_int_unique_ptr
+	=
 	fcppt::optional::object<
 		int_unique_ptr
-	>
-	optional_int_unique_ptr;
+	>;
 
 	optional_int_unique_ptr const opt_ptr(
 		fcppt::make_unique_ptr<
@@ -66,11 +68,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector ints{
 		1,

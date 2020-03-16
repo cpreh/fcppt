@@ -22,17 +22,19 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
-	typedef
+	using
+	optional_int_ref
+	=
 	fcppt::optional::reference<
 		int const
-	>
-	optional_int_ref;
+	>;
 
 	int_vector const empty{};
 

@@ -20,6 +20,7 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
+[[nodiscard]]
 inline
 std::size_t
 hash_combine(
@@ -36,19 +37,19 @@ hash_combine(
 			_hash_new
 			+
 			std::size_t{
-				0x9e3779b9u
+				0x9e3779b9U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			}
 			+
 			(
 				_hash_old
 				<<
-				6u
+				6U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 			+
 			(
 				_hash_old
 				>>
-				2u
+				2U
 			)
 		);
 }

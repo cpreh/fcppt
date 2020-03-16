@@ -18,19 +18,21 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	inner_either
+	=
 	fcppt::either::object<
 		int,
 		std::string
-	>
-	inner_either;
+	>;
 
-	typedef
+	using
+	outer_either
+	=
 	fcppt::either::object<
 		int,
 		inner_either
-	>
-	outer_either;
+	>;
 
 	CHECK(
 		fcppt::either::join(

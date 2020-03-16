@@ -53,26 +53,29 @@ make(
 	Args &&... _args
 )
 {
-	typedef
+	using
+	decayed_args
+	=
 	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Args
 		>...
-	>
-	decayed_args;
+	>;
 
-	typedef
+	using
+	first_type
+	=
 	::metal::front<
 		decayed_args
-	>
-	first_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	std::array<
 		first_type,
 		sizeof...(Args)
-	>
-	result_type;
+	>;
 
 	static_assert(
 		::metal::all_of<

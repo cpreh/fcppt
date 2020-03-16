@@ -31,12 +31,13 @@ struct make_literal<
 	>
 >
 {
-	typedef
+	using
+	decorated_type
+	=
 	fcppt::strong_typedef<
 		Type,
 		Tag
-	>
-	decorated_type;
+	>;
 
 	template<
 		typename Fundamental

@@ -19,24 +19,27 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos<
 		unsigned,
 		2
-	>
-	pos;
+	>;
 
-	typedef
+	using
+	min
+	=
 	fcppt::container::grid::min_from_pos<
 		pos
-	>
-	min;
+	>;
 
-	typedef
+	using
+	sup
+	=
 	fcppt::container::grid::sup_from_pos<
 		pos
-	>
-	sup;
+	>;
 
 	CHECK(
 		fcppt::container::grid::make_pos_range_start_end(
@@ -47,31 +50,31 @@ TEST_CASE(
 			},
 			sup{
 				pos(
-					3u,
-					2u
+					3U,
+					2U
 				)
 			}
 		).size()
 		==
-		6u
+		6U
 	);
 
 	CHECK(
 		fcppt::container::grid::make_pos_range_start_end(
 			min{
 				pos(
-					3u,
-					2u
+					3U,
+					2U
 				)
 			},
 			sup{
 				pos(
-					3u,
-					1u
+					3U,
+					1U
 				)
 			}
 		).size()
 		==
-		0u
+		0U
 	);
 }

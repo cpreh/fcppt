@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/unique_ptr_dynamic_cast.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
@@ -21,25 +21,23 @@ namespace
 
 class base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		base
 	);
 public:
 	base()
-	{
-	}
+	= default;
 
 	virtual
 	~base()
-	{
-	}
+	= default;
 };
 
 class derived
 :
 	public base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived
 	);
 public:
@@ -51,8 +49,7 @@ public:
 
 	~derived()
 	override
-	{
-	}
+	= default;
 };
 
 }
@@ -62,17 +59,19 @@ TEST_CASE(
 	"[smartptr]"
 )
 {
-	typedef
+	using
+	base_unique_ptr
+	=
 	fcppt::unique_ptr<
 		base
-	>
-	base_unique_ptr;
+	>;
 
-	typedef
+	using
+	derived_unique_ptr
+	=
 	fcppt::unique_ptr<
 		derived
-	>
-	derived_unique_ptr;
+	>;
 
 	CHECK(
 		fcppt::variant::holds_type<

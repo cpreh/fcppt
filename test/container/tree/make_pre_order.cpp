@@ -15,7 +15,7 @@
 int
 main()
 {
-	// TODO: Make a proper testcase
+	// TODO(philipp): Make a proper testcase
 
 	typedef
 	fcppt::container::tree::object<
@@ -28,7 +28,7 @@ main()
 	};
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			decltype(
 				fcppt::container::tree::make_pre_order(
 					tree
@@ -37,8 +37,7 @@ main()
 			fcppt::container::tree::pre_order<
 				i_tree
 			>
-		>::value,
-		""
+		>
 	);
 
 	i_tree const c_tree{
@@ -46,7 +45,7 @@ main()
 	};
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			decltype(
 				fcppt::container::tree::make_pre_order(
 					c_tree
@@ -55,7 +54,6 @@ main()
 			fcppt::container::tree::pre_order<
 				i_tree const
 			>
-		>::value,
-		""
+		>
 	);
 }

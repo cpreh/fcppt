@@ -21,28 +21,31 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int_movable_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_movable_vector;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		int_movable,
 		strong_int_movable
 	);
 
-	typedef
+	using
+	strong_int_movable_vector
+	=
 	std::vector<
 		strong_int_movable
-	>
-	strong_int_movable_vector;
+	>;
 
 	CHECK(
 		fcppt::algorithm::map<

@@ -21,27 +21,29 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	string_grid
+	=
 	fcppt::container::grid::object<
 		std::string,
 		2
-	>
-	string_grid;
+	>;
 
-	typedef
+	using
+	uint_grid
+	=
 	fcppt::container::grid::object<
 		unsigned,
 		2
-	>
-	uint_grid;
+	>;
 
 	uint_grid const grid1(
 		uint_grid::dim{
-			2u,
-			3u
+			2U,
+			3U
 		},
 		[](
-			uint_grid::pos const _pos
+			uint_grid::pos const &_pos
 		)
 		{
 			return
@@ -65,11 +67,11 @@ TEST_CASE(
 
 	string_grid const grid2(
 		string_grid::dim{
-			2u,
-			3u
+			2U,
+			3U
 		},
 		[](
-			string_grid::pos const _pos
+			string_grid::pos const &_pos
 		)
 		{
 			return

@@ -17,25 +17,26 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int2_grid
+	=
 	fcppt::container::grid::object<
 		int,
 		2
-	>
-	int2_grid;
+	>;
 
 	int2_grid const test1(
 		int2_grid::dim(
-			5u,
-			10u
+			5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		0
 	);
 
 	int2_grid test2(
 		int2_grid::dim(
-			10u,
-			2u
+			10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U
 		),
 		0
 	);

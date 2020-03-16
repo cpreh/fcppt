@@ -17,33 +17,36 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
-	int
-	int_type;
+	using
+	int_type
+	=
+	int;
 
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos<
 		int_type,
 		2
-	>
-	pos;
+	>;
 
-	typedef
+	using
+	pos_vector
+	=
 	std::vector<
 		pos
-	>
-	pos_vector;
+	>;
 
 	pos_vector positions{};
 
 	positions.reserve(
-		100
+		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	auto const manhattan_distance(
 		[](
-			pos const _p1,
-			pos const _p2
+			pos const &_p1,
+			pos const &_p2
 		)
 		{
 			return
@@ -73,7 +76,7 @@ TEST_CASE(
 		pos_vector result{};
 
 		for(
-			auto const cur
+			auto const &cur
 			:
 			fcppt::container::grid::make_spiral_range(
 				pos(
@@ -83,15 +86,17 @@ TEST_CASE(
 				2
 			)
 		)
+		{
 			result.push_back(
 				cur
 			);
+		}
 
 		REQUIRE_FALSE(
 			result.empty()
 		);
 
-		pos_vector::const_iterator it(
+		pos_vector::const_iterator it( // NOLINT(fuchsia-default-arguments-calls)
 			result.begin()
 		);
 
@@ -121,6 +126,7 @@ TEST_CASE(
 				i < count;
 				++i
 			)
+			{
 				CHECK(
 					manhattan_distance(
 						*it++,
@@ -129,6 +135,7 @@ TEST_CASE(
 					==
 					cur
 				);
+			}
 		}
 	}
 }

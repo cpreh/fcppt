@@ -65,13 +65,14 @@ operator<<(
 	> const &_object
 )
 {
-	typedef
+	using
+	object
+	=
 	fcppt::container::grid::object<
 		T,
 		N,
 		A
-	>
-	object;
+	>;
 
 	fcppt::container::grid::detail::print_recurse<
 		N

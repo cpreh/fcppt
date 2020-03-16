@@ -16,17 +16,18 @@ TEST_CASE(
 	"[container],[buffer]"
 )
 {
-	typedef
+	using
+	buffer_type
+	=
 	fcppt::container::buffer::object<
 		int
-	>
-	buffer_type;
+	>;
 
 	buffer_type const result{
 		fcppt::container::buffer::read_from<
 			buffer_type
 		>(
-			10u,
+			10U,
 			[](
 				buffer_type::pointer const _data,
 				buffer_type::size_type
@@ -34,14 +35,14 @@ TEST_CASE(
 			{
 				_data[
 					0
-				] = 10;
+				] = 10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 				_data[
 					1
-				] = 20;
+				] = 20; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 				return
-					2u;
+					2U;
 			}
 		)
 	};
@@ -49,24 +50,24 @@ TEST_CASE(
 	CHECK(
 		result.write_size()
 		==
-		8u
+		8U
 	);
 
 	REQUIRE(
 		result.read_size()
 		==
-		2u
+		2U
 	);
 
 	CHECK(
 		result[0]
 		==
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	CHECK(
 		result[1]
 		==
-		20
+		20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }

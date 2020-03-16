@@ -15,7 +15,7 @@ int
 main()
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::either::failure_type<
 				fcppt::either::object<
 					int,
@@ -23,7 +23,6 @@ main()
 				>
 			>,
 			int
-		>::value,
-		""
+		>
 	);
 }

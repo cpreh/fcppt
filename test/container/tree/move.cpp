@@ -23,11 +23,12 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	string_tree
+	=
 	fcppt::container::tree::object<
 		std::string
-	>
-	string_tree;
+	>;
 
 	string_tree tree1(
 		"root"
@@ -41,10 +42,6 @@ TEST_CASE(
 		std::move(
 			tree1
 		)
-	);
-
-	CHECK(
-		tree1.empty()
 	);
 
 	CHECK(
@@ -113,10 +110,6 @@ TEST_CASE(
 		);
 
 	CHECK(
-		tree2.empty()
-	);
-
-	CHECK(
 		tree3.value()
 		==
 		std::string("root")
@@ -178,36 +171,40 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	string_unique_ptr
+	=
 	fcppt::unique_ptr<
 		std::string
-	>
-	string_unique_ptr;
+	>;
 
-	typedef
+	using
+	string_unique_ptr_tree
+	=
 	fcppt::container::tree::object<
 		string_unique_ptr
-	>
-	string_unique_ptr_tree;
+	>;
 
-	typedef
+	using
+	string_unique_ptr_tree_vector
+	=
 	std::vector<
 		string_unique_ptr_tree
-	>
-	string_unique_ptr_tree_vector;
+	>;
 
-	typedef
+	using
+	string_vector
+	=
 	std::vector<
 		std::string
-	>
-	string_vector;
+	>;
 
 	string_vector const strings{
 		"foo",
 		"bar"
 	};
 
-	string_unique_ptr_tree_vector const result(
+	auto const result(
 		fcppt::algorithm::map<
 			string_unique_ptr_tree_vector
 		>(

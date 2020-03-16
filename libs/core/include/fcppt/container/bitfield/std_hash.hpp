@@ -37,13 +37,14 @@ struct hash<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	fcppt::container::bitfield::object<
 		ElementType,
 		NumElements,
 		InternalType
-	>
-	type;
+	>;
 
 	std::size_t
 	operator()(

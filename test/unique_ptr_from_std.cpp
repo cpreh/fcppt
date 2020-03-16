@@ -23,7 +23,7 @@ TEST_CASE(
 			std::make_unique<
 				int
 			>(
-				42
+				1
 			)
 		),
 		[]{
@@ -40,7 +40,7 @@ TEST_CASE(
 			CHECK(
 				*_ptr
 				==
-				42
+				1
 			);
 		}
 	);

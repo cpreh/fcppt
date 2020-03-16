@@ -19,35 +19,37 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	dim
+	=
 	fcppt::container::grid::dim<
 		unsigned,
 		2
-	>
-	dim;
+	>;
 
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos<
 		unsigned,
 		2
-	>
-	pos;
+	>;
 
 	CHECK(
 		fcppt::container::grid::clamped_sup(
 			pos(
-				4u,
-				5u
+				4U,
+				5U
 			),
 			dim(
-				3u,
-				3u
+				3U,
+				3U
 			)
 		).get()
 		==
 		pos(
-			3u,
-			3u
+			3U,
+			3U
 		)
 	);
 }

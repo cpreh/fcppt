@@ -8,7 +8,7 @@
 #ifndef FCPPT_SCOPED_STATE_MACHINE_DECL_HPP_INCLUDED
 #define FCPPT_SCOPED_STATE_MACHINE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/scoped_state_machine_fwd.hpp>
 
 
@@ -29,7 +29,7 @@ template<
 >
 class scoped_state_machine
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		scoped_state_machine
 	);
 public:

@@ -69,15 +69,16 @@ struct StringMaker<
 						_element
 					);
 
-					typedef
+					using
+					label
+					=
 					fcppt::record::element_to_label<
 						fcppt::tag_type<
 							decltype(
 								_element
 							)
 						>
-					>
-					label;
+					>;
 
 					return
 						std::move(

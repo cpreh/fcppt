@@ -21,11 +21,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector empty{};
 
@@ -70,24 +71,26 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int_movable_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_movable_vector;
+	>;
 
-	int_movable_vector vector(
+	auto vector(
 		fcppt::container::make<
 			int_movable_vector
 		>(
 			int_movable{
-				42
+				1
 			}
 		)
 	);
@@ -99,7 +102,7 @@ TEST_CASE(
 		==
 		fcppt::optional::make(
 			int_movable{
-				42
+				1
 			}
 		)
 	);

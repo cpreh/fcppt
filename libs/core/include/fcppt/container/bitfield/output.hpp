@@ -52,11 +52,13 @@ operator<<(
 			ElementType
 		>()
 	)
+	{
 		if(
 			_bitfield[
 				elem
 			]
 		)
+		{
 			_stream
 				<<
 				fcppt::enum_::to_string(
@@ -64,6 +66,8 @@ operator<<(
 				)
 				<<
 				FCPPT_TEXT(',');
+		}
+	}
 
 	_stream
 		<<

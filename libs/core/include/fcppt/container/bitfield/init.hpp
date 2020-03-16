@@ -43,10 +43,11 @@ init(
 		Result::null()
 	);
 
-	typedef
+	using
+	element_type
+	=
 	typename
-	Result::element_type
-	element_type;
+	Result::element_type;
 
 	for(
 		element_type const value
@@ -57,12 +58,14 @@ init(
 			Result::static_size
 		>()
 	)
+	{
 		result.set(
 			value,
 			_function(
 				value
 			)
 		);
+	}
 
 	return
 		result;

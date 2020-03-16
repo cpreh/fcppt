@@ -19,13 +19,15 @@ TEST_CASE(
 	"[algorithm_map_iteration_second]"
 )
 {
-	typedef
+	using
+	sequence
+	=
 	std::map<
 		int,
 		std::string
-	>
-	sequence;
+	>;
 
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	sequence seq{
 		std::make_pair(
 			1,
@@ -78,7 +80,7 @@ TEST_CASE(
 	CHECK(
 		seq
 		==
-		sequence{
+		sequence{ // NOLINT(fuchsia-default-arguments-calls)
 			std::make_pair(
 				2,
 				"2"

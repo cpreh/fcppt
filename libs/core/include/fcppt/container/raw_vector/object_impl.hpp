@@ -203,7 +203,7 @@ noexcept
 {
 	return
 		*(
-			std::prev(
+			std::prev( // NOLINT(fuchsia-default-arguments-calls)
 				this->end()
 			)
 		);
@@ -226,7 +226,7 @@ noexcept
 {
 	return
 		*(
-			std::prev(
+			std::prev( // NOLINT(fuchsia-default-arguments-calls)
 				this->end()
 			)
 		);
@@ -586,7 +586,7 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	this->erase(
-		std::prev(
+		std::prev( // NOLINT(fuchsia-default-arguments-calls)
 			this->end()
 		)
 	);
@@ -874,6 +874,7 @@ fcppt::container::raw_vector::object<
 			std::copy_backward(
 				_position,
 				this->end(),
+				//NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 				std::next(
 					this->data_end()
 				)
@@ -1132,6 +1133,7 @@ fcppt::container::raw_vector::object<
 	)
 	{
 		_position =
+			//NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			std::next(
 				this->insert(
 					_position,
@@ -1194,6 +1196,7 @@ fcppt::container::raw_vector::object<
 		);
 
 		pointer const new_memory(
+			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 			this->impl_.alloc_.allocate(
 				new_cap
 			)

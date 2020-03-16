@@ -11,20 +11,14 @@ int
 main()
 {
 	static_assert(
-		fcppt::not_(
+		!fcppt::not_(
 			true
 		)
-		==
-		false,
-		""
 	);
 
 	static_assert(
 		fcppt::not_(
 			false
 		)
-		==
-		true,
-		""
 	);
 }

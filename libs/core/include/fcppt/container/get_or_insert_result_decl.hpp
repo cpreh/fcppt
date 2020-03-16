@@ -31,9 +31,9 @@ class get_or_insert_result
 {
 public:
 	static_assert(
-		std::is_reference<
+		std::is_reference_v<
 			Reference
-		>::value,
+		>,
 		"Reference must be a reference type"
 	);
 
@@ -45,6 +45,7 @@ public:
 	template<
 		typename Other
 	>
+	explicit
 	get_or_insert_result(
 		get_or_insert_result<
 			Other
@@ -54,6 +55,7 @@ public:
 	/**
 	\brief A reference to the element in the container
 	*/
+	[[nodiscard]]
 	Reference
 	element() const;
 
@@ -62,6 +64,7 @@ public:
 
 	\return <code>true</code> if the element was inserted, <code>false</code> if it was found.
 	*/
+	[[nodiscard]]
 	bool
 	inserted() const;
 private:

@@ -29,7 +29,7 @@ TEST_CASE(
 			}
 		)
 		==
-		4u
+		4U
 	);
 
 	CHECK(
@@ -42,7 +42,7 @@ TEST_CASE(
 			}
 		)
 		==
-		2u
+		2U
 	);
 
 }

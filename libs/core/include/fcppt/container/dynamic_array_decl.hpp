@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_DYNAMIC_ARRAY_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_DYNAMIC_ARRAY_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/container/dynamic_array_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -35,56 +35,68 @@ template<
 class dynamic_array
 {
 	static_assert(
-		std::is_pod<
+		std::is_pod_v<
 			T
-		>::value,
+		>,
 		"T must be a POD"
 	);
 
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		dynamic_array
 	);
 public:
-	typedef
+	using
+	pointer
+	=
 	typename
-	A::pointer
-	pointer;
+	A::pointer;
 
-	typedef
+	using
+	const_pointer
+	=
 	typename
-	A::const_pointer
-	const_pointer;
+	A::const_pointer;
 
-	typedef
+	using
+	size_type
+	=
 	typename
-	A::size_type
-	size_type;
+	A::size_type;
 
 	explicit
 	dynamic_array(
+		size_type
+	);
+
+	dynamic_array(
 		size_type,
-		A a = A()
+		A
 	);
 
 	~dynamic_array()
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	data()
 	noexcept;
 
+	[[nodiscard]]
 	const_pointer
 	data() const
 	noexcept;
 
+	[[nodiscard]]
 	pointer
 	data_end()
 	noexcept;
 
+	[[nodiscard]]
 	const_pointer
 	data_end() const
 	noexcept;
 
+	[[nodiscard]]
 	size_type
 	size() const
 	noexcept;

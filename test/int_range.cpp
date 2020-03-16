@@ -33,23 +33,21 @@ void
 check_category()
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			typename
 			Iterator::iterator_category,
 			std::input_iterator_tag
-		>::value,
-		""
+		>
 	);
 }
 
 static_assert(
-	std::is_same<
+	std::is_same_v<
 		fcppt::int_iterator<
 			int
 		>::iterator_category,
 		std::input_iterator_tag
-	>::value,
-	""
+	>
 );
 
 template<
@@ -170,10 +168,6 @@ TEST_CASE(
 				3,
 				2
 			)
-		)
-		==
-		std::vector<
-			int
-		>{}
+		).empty()
 	);
 }

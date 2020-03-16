@@ -52,12 +52,14 @@ public:
 	increment()
 	noexcept;
 
+	[[nodiscard]]
 	bool
 	equal(
 		int_iterator
 	) const
 	noexcept;
 
+	[[nodiscard]]
 	Int
 	dereference() const
 	noexcept;

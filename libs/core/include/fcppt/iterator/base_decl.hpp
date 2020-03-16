@@ -167,25 +167,30 @@ private:
 protected:
 	base();
 public:
+	[[nodiscard]]
 	reference
 	operator*() const;
 
 	derived &
 	operator++();
 
+	[[nodiscard]]
 	bool
 	operator==(
 		base const &
 	) const;
 
+	[[nodiscard]]
 	bool
 	operator!=(
 		base const &
 	) const;
 
+	[[nodiscard]]
 	pointer
 	operator->() const;
 
+	[[nodiscard]]
 	derived
 	operator++(
 		int
@@ -200,6 +205,7 @@ public:
 	derived &
 	operator--();
 
+	[[nodiscard]]
 	derived
 	operator--(
 		int
@@ -211,6 +217,7 @@ public:
 		difference_type
 	);
 
+	[[nodiscard]]
 	derived
 	operator+(
 		difference_type
@@ -221,24 +228,29 @@ public:
 		difference_type
 	);
 
+	[[nodiscard]]
 	derived
 	operator-(
 		difference_type
 	) const;
 
+	[[nodiscard]]
 	reference
 	operator[](
 		difference_type
 	) const;
 
+	[[nodiscard]]
 	difference_type
 	operator-(
 		base const &
 	) const;
 private:
+	[[nodiscard]]
 	derived &
 	get();
 
+	[[nodiscard]]
 	derived const &
 	get() const;
 };

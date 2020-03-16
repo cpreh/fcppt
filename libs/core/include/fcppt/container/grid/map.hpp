@@ -69,11 +69,12 @@ fcppt::container::grid::object<
 	>::static_size::value
 >
 {
-	typedef
+	using
+	source_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Source
-	>
-	source_type;
+	>;
 
 	static_assert(
 		fcppt::container::grid::is_object<
@@ -82,7 +83,9 @@ fcppt::container::grid::object<
 		"Source must be a grid"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::container::grid::object<
 		decltype(
 			_function(
@@ -100,8 +103,7 @@ fcppt::container::grid::object<
 			)
 		),
 		source_type::static_size::value
-	>
-	result_type;
+	>;
 
 	return
 		result_type(

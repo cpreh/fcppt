@@ -93,6 +93,16 @@ fcppt::recursive<
 	recursive const &_other
 )
 {
+	if(
+		this
+		==
+		&_other
+	)
+	{
+		return
+			*this;
+	}
+
 	impl_ =
 		fcppt::make_unique_ptr<
 			Type
@@ -123,8 +133,7 @@ template<
 fcppt::recursive<
 	Type
 >::~recursive()
-{
-}
+= default;
 
 template<
 	typename Type

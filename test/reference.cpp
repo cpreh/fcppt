@@ -16,17 +16,19 @@
 namespace
 {
 
-typedef
+using
+int_ref
+=
 fcppt::reference<
 	int
->
-int_ref;
+>;
 
-typedef
+using
+const_int_ref
+=
 fcppt::reference<
 	int const
->
-const_int_ref;
+>;
 
 }
 
@@ -36,7 +38,7 @@ TEST_CASE(
 )
 {
 	int x(
-		42
+		1
 	);
 
 	int_ref ref(
@@ -100,18 +102,19 @@ TEST_CASE(
 	"[ref]"
 )
 {
-	typedef
+	using
+	int_ref_set
+	=
 	std::unordered_set<
 		int_ref
-	>
-	int_ref_set;
+	>;
 
 	SECTION(
 		"set"
 	)
 	{
 		int x(
-			42
+			1
 		);
 
 		int_ref_set const set{
@@ -120,7 +123,7 @@ TEST_CASE(
 			)
 		};
 
-		int_ref_set::const_iterator const it(
+		auto const it(
 			set.find(
 				int_ref(
 					x
@@ -145,14 +148,15 @@ TEST_CASE(
 		"const set"
 	)
 	{
-		typedef
+		using
+		const_int_ref_set
+		=
 		std::unordered_set<
 			const_int_ref
-		>
-		const_int_ref_set;
+		>;
 
 		int const y(
-			42
+			1
 		);
 
 		const_int_ref_set const const_set{
@@ -161,7 +165,7 @@ TEST_CASE(
 			)
 		};
 
-		const_int_ref_set::const_iterator const it(
+		auto const it(
 			const_set.find(
 				const_int_ref(
 					y

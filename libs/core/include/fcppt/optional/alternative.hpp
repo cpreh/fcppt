@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONAL_ALTERNATIVE_HPP_INCLUDED
 
 #include <fcppt/optional/detail/check.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -33,7 +34,7 @@ template<
 	typename Optional,
 	typename Function
 >
-std::remove_reference_t<
+fcppt::type_traits::remove_cv_ref_t<
 	Optional
 >
 alternative(

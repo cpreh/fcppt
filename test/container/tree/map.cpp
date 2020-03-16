@@ -20,33 +20,36 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	int_tree
+	=
 	fcppt::container::tree::object<
 		int
-	>
-	int_tree;
+	>;
 
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	int_unique_ptr_tree
+	=
 	fcppt::container::tree::object<
 		int_unique_ptr
-	>
-	int_unique_ptr_tree;
+	>;
 
 	int_tree test(
-		42
+		1
 	);
 
 	test.push_back(
-		13
+		2
 	);
 
-	int_unique_ptr_tree const result(
+	auto const result(
 		fcppt::container::tree::map<
 			int_unique_ptr_tree
 		>(
@@ -68,7 +71,7 @@ TEST_CASE(
 	CHECK(
 		*result.value()
 		==
-		42
+		1
 	);
 
 	fcppt::optional::maybe(
@@ -85,7 +88,7 @@ TEST_CASE(
 		)
 		{
 			CHECK(
-				13
+				2
 				==
 				*_ref.get().value()
 			);

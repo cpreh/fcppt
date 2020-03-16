@@ -23,12 +23,13 @@
 namespace
 {
 
-typedef
+using
+int2_grid
+=
 fcppt::container::grid::object<
 	int,
 	2
->
-int2_grid;
+>;
 
 }
 
@@ -39,8 +40,8 @@ TEST_CASE(
 {
 	int2_grid const test(
 		int2_grid::dim(
-			10u,
-			20u
+			10U,
+			20U
 		),
 		42
 	);
@@ -63,11 +64,11 @@ TEST_CASE(
 {
 	int2_grid const test(
 		int2_grid::dim(
-			5u,
-			10u
+			5U,
+			10U
 		),
 		[](
-			int2_grid::pos
+			int2_grid::pos const &
 		)
 		{
 			static int entry{
@@ -86,6 +87,7 @@ TEST_CASE(
 			test.size().h()
 		)
 	)
+	{
 		for(
 			auto const x
 			:
@@ -111,6 +113,7 @@ TEST_CASE(
 				)
 			);
 		}
+	}
 }
 
 TEST_CASE(
@@ -118,21 +121,22 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int3_grid
+	=
 	fcppt::container::grid::object<
 		int,
 		3
-	>
-	int3_grid;
+	>;
 
 	int3_grid const test(
 		int3_grid::dim(
-			5u,
-			10u,
-			8u
+			5U,
+			10U,
+			8U
 		),
 		[](
-			int3_grid::pos
+			int3_grid::pos const &
 		)
 		{
 			static int entry{
@@ -151,6 +155,7 @@ TEST_CASE(
 			test.size().d()
 		)
 	)
+	{
 		for(
 			auto const y
 			:
@@ -158,6 +163,7 @@ TEST_CASE(
 				test.size().h()
 			)
 		)
+		{
 			for(
 				auto const x
 				:
@@ -184,6 +190,8 @@ TEST_CASE(
 					)
 				);
 			}
+		}
+	}
 }
 
 TEST_CASE(
@@ -193,8 +201,8 @@ TEST_CASE(
 {
 	int2_grid const test(
 		int2_grid::dim(
-			5u,
-			2u
+			5U,
+			2U
 		),
 		42
 	);
@@ -217,8 +225,8 @@ TEST_CASE(
 {
 	int2_grid const test(
 		int2_grid::dim(
-			3u,
-			2u
+			3U,
+			2U
 		),
 		0
 	);
@@ -226,7 +234,7 @@ TEST_CASE(
 	CHECK(
 		test.content()
 		==
-		6u
+		6U
 	);
 }
 
@@ -237,24 +245,24 @@ TEST_CASE(
 {
 	int2_grid grid1(
 		int2_grid::dim(
-			2u,
-			3u
+			2U,
+			3U
 		),
 		0
 	);
 
 	grid1.get_unsafe(
 		int2_grid::pos(
-			0u,
-			0u
+			0U,
+			0U
 		)
 	)
 		= 1;
 
 	grid1.get_unsafe(
 		int2_grid::pos(
-			1u,
-			1u
+			1U,
+			1U
 		)
 	)
 		= 2;
@@ -269,16 +277,16 @@ TEST_CASE(
 		grid2.size()
 		==
 		int2_grid::dim(
-			2u,
-			3u
+			2U,
+			3U
 		)
 	);
 
 	CHECK(
 		grid2.get_unsafe(
 			int2_grid::pos(
-				0u,
-				0u
+				0U,
+				0U
 			)
 		)
 		==
@@ -288,8 +296,8 @@ TEST_CASE(
 	CHECK(
 		grid2.get_unsafe(
 			int2_grid::pos(
-				1u,
-				1u
+				1U,
+				1U
 			)
 		)
 		==
@@ -307,16 +315,16 @@ TEST_CASE(
 		grid3.size()
 		==
 		int2_grid::dim(
-			2u,
-			3u
+			2U,
+			3U
 		)
 	);
 
 	CHECK(
 		grid3.get_unsafe(
 			int2_grid::pos(
-				0u,
-				0u
+				0U,
+				0U
 			)
 		)
 		==
@@ -326,8 +334,8 @@ TEST_CASE(
 	CHECK(
 		grid3.get_unsafe(
 			int2_grid::pos(
-				1u,
-				1u
+				1U,
+				1U
 			)
 		)
 		==
@@ -342,11 +350,11 @@ TEST_CASE(
 {
 	int2_grid const grid(
 		int2_grid::dim(
-			2u,
-			3u
+			2U,
+			3U
 		),
 		[](
-			int2_grid::pos const _pos
+			int2_grid::pos const &_pos
 		)
 		{
 			return
@@ -362,9 +370,10 @@ TEST_CASE(
 		}
 	);
 
-	typedef
-	int2_grid::pos
-	pos;
+	using
+	pos
+	=
+	int2_grid::pos;
 
 	REQUIRE(
 		fcppt::cast::to_signed(
@@ -380,8 +389,8 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			pos(
-				0u,
-				0u
+				0U,
+				0U
 			)
 		)
 		==
@@ -391,8 +400,8 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			pos(
-				1u,
-				2u
+				1U,
+				2U
 			)
 		)
 		==

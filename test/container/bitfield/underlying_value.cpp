@@ -28,15 +28,17 @@ TEST_CASE(
 		fcppt_maximum = test3
 	};
 
-	typedef
+	using
+	bitfield
+	=
 	fcppt::container::bitfield::enum_object<
 		test_enum
-	>
-	bitfield;
+	>;
 
-	typedef
-	bitfield::internal_type
-	internal_type;
+	using
+	internal_type
+	=
+	bitfield::internal_type;
 
 	auto const check_bit(
 		[](

@@ -17,23 +17,25 @@
 namespace
 {
 
-typedef
+using
+pos
+=
 fcppt::container::grid::pos<
 	unsigned,
 	2
->
-pos;
+>;
 
-typedef
+using
+array
+=
 fcppt::container::grid::neumann_neighbor_array<
 	pos
->
-array;
+>;
 
 bool
 contains_element(
 	array const &_result,
-	pos const _pos
+	pos const &_pos
 )
 {
 	return
@@ -53,8 +55,8 @@ TEST_CASE(
 	array const result(
 		fcppt::container::grid::neumann_neighbors(
 			pos(
-				5u,
-				7u
+				5U,
+				7U
 			)
 		)
 	);
@@ -63,8 +65,8 @@ TEST_CASE(
 		contains_element(
 			result,
 			pos(
-				4u,
-				7u
+				4U,
+				7U
 			)
 		)
 	);
@@ -73,8 +75,8 @@ TEST_CASE(
 		contains_element(
 			result,
 			pos(
-				6u,
-				7u
+				6U,
+				7U
 			)
 		)
 	);
@@ -83,8 +85,8 @@ TEST_CASE(
 		contains_element(
 			result,
 			pos(
-				5u,
-				6u
+				5U,
+				6U
 			)
 		)
 	);
@@ -93,8 +95,8 @@ TEST_CASE(
 		contains_element(
 			result,
 			pos(
-				5u,
-				8u
+				5U,
+				8U
 			)
 		)
 	);

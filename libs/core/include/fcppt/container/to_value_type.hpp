@@ -36,9 +36,9 @@ using
 to_value_type
 =
 std::conditional_t<
-	std::is_const<
+	std::is_const_v<
 		Container
-	>::value,
+	>,
 	fcppt::type_traits::value_type<
 		Container
 	> const,

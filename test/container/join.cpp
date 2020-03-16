@@ -20,11 +20,12 @@ TEST_CASE(
 	"[container_join]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const vec3{
 		5,
@@ -60,17 +61,19 @@ TEST_CASE(
 	"[container_join]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int_movable_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_movable_vector;
+	>;
 
 	CHECK(
 		fcppt::container::join(
@@ -136,16 +139,17 @@ TEST_CASE(
 	"[container_join]"
 )
 {
-	typedef
+	using
+	int_map
+	=
 	std::map<
 		int,
 		char
-	>
-	int_map;
+	>;
 
 	CHECK(
 		fcppt::container::join(
-			int_map{
+			int_map{ // NOLINT(fuchsia-default-arguments-calls)
 				std::make_pair(
 					1,
 					'a'
@@ -155,7 +159,7 @@ TEST_CASE(
 					'b'
 				)
 			},
-			int_map{
+			int_map{ // NOLINT(fuchsia-default-arguments-calls)
 				std::make_pair(
 					2,
 					'c'
@@ -167,7 +171,7 @@ TEST_CASE(
 			}
 		)
 		==
-		int_map{
+		int_map{ // NOLINT(fuchsia-default-arguments-calls)
 			std::make_pair(
 				1,
 				'a'

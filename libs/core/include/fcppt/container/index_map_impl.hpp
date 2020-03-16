@@ -50,7 +50,7 @@ fcppt::container::index_map<
 		size_type const needed_size{
 			_index
 			+
-			1u
+			1U
 		};
 
 		impl_.reserve(
@@ -62,9 +62,11 @@ fcppt::container::index_map<
 			<
 			needed_size
 		)
+		{
 			impl_.push_back(
 				_insert()
 			);
+		}
 	}
 
 	return

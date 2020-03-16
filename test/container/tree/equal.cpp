@@ -23,19 +23,19 @@ TEST_CASE(
 	ui_tree;
 
 	ui_tree tree1{
-		42
+		1
 	};
 
 	tree1.push_back(
-		100
+		2
 	);
 
 	ui_tree tree2{
-		42
+		1
 	};
 
 	tree2.push_back(
-		100
+		2
 	);
 
 	CHECK(
@@ -45,7 +45,7 @@ TEST_CASE(
 	);
 
 	tree2.push_back(
-		200
+		3
 	);
 
 	CHECK(

@@ -20,19 +20,21 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	dim
+	=
 	fcppt::container::grid::dim<
 		unsigned,
 		2
-	>
-	dim;
+	>;
 
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos<
 		int,
 		2
-	>
-	pos;
+	>;
 
 	CHECK(
 		fcppt::container::grid::clamped_sup_signed(
@@ -41,8 +43,8 @@ TEST_CASE(
 				5
 			),
 			dim(
-				3u,
-				3u
+				3U,
+				3U
 			)
 		).get()
 		==

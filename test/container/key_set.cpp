@@ -18,24 +18,26 @@ TEST_CASE(
 	"[container_key_set]"
 )
 {
-	typedef
+	using
+	int_set
+	=
 	std::set<
 		int
-	>
-	int_set;
+	>;
 
-	typedef
+	using
+	int_string_map
+	=
 	std::map<
 		int,
 		std::string
-	>
-	int_string_map;
+	>;
 
 	CHECK(
 		fcppt::container::key_set<
 			int_set
 		>(
-			int_string_map{
+			int_string_map{ // NOLINT(fuchsia-default-arguments-calls)
 				std::make_pair(
 					42,
 					std::string(
@@ -51,7 +53,7 @@ TEST_CASE(
 			}
 		)
 		==
-		int_set{
+		int_set{ // NOLINT(fuchsia-default-arguments-calls)
 			10,
 			42
 		}

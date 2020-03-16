@@ -20,12 +20,11 @@ namespace
 static_assert(
 	fcppt::bit::shifted_mask_c<
 		unsigned,
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	>().get()
 	==
-	1u
-	<< 10,
-	""
+	1U
+	<< 10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 );
 
 }
@@ -42,27 +41,27 @@ TEST_CASE(
 			10
 		).get()
 		==
-		1u
+		1U
 		<<
-		10
+		10U
 	);
 
 	auto const mask_c(
 		fcppt::bit::mask_c<
 			unsigned,
-			0xFFu
+			0xFFU
 		>()
 	);
 
 	CHECK(
 		mask_c.get()
 		==
-		0xFFu
+		0xFFU
 	);
 
 	CHECK_FALSE(
 		fcppt::bit::test(
-			0xF0u,
+			0xF0U,
 			fcppt::bit::mask<
 				unsigned
 			>(
@@ -73,7 +72,7 @@ TEST_CASE(
 
 	CHECK(
 		fcppt::bit::test(
-			0xF0u,
+			0xF0U,
 			fcppt::bit::mask<
 				unsigned
 			>(

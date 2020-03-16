@@ -65,12 +65,14 @@ public:
 	increment()
 	noexcept;
 
+	[[nodiscard]]
 	bool
 	equal(
 		iterator
 	) const
 	noexcept;
 
+	[[nodiscard]]
 	Enum
 	dereference() const
 	noexcept;

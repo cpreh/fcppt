@@ -17,19 +17,21 @@ TEST_CASE(
 	"[container],[bitfield]"
 )
 {
-	typedef
+	using
+	static_size
+	=
 	std::integral_constant<
 		unsigned,
 		0
-	>
-	static_size;
+	>;
 
-	typedef
+	using
+	empty_bitfield
+	=
 	fcppt::container::bitfield::object<
 		unsigned,
 		static_size
-	>
-	empty_bitfield;
+	>;
 
 	CHECK(
 		empty_bitfield{
@@ -40,7 +42,6 @@ TEST_CASE(
 	static_assert(
 		empty_bitfield::static_size::value
 		==
-		0u,
-		""
+		0U
 	);
 }

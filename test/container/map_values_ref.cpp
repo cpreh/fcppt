@@ -23,30 +23,33 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	string_vector_ref
+	=
 	std::vector<
 		fcppt::reference<
 			std::string
 		>
-	>
-	string_vector_ref;
+	>;
 
-	typedef
+	using
+	string_vector_cref
+	=
 	std::vector<
 		fcppt::reference<
 			std::string const
 		>
-	>
-	string_vector_cref;
+	>;
 
-	typedef
+	using
+	int_string_map
+	=
 	std::map<
 		int,
 		std::string
-	>
-	int_string_map;
+	>;
 
-	int_string_map map{
+	int_string_map map{ // NOLINT(fuchsia-default-arguments-calls)
 		std::make_pair(
 			1,
 			"test1"

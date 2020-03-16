@@ -72,28 +72,31 @@ TEST_CASE(
 
 	FCPPT_PP_PUSH_WARNING
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
-		typedef
-		void
-		is_transparent;
+		using
+		is_transparent
+		=
+		void;
 	FCPPT_PP_POP_WARNING
 	};
 
-	typedef
+	using
+	int_set
+	=
 	std::set<
 		int,
 		comp
-	>
-	int_set;
+	>;
 
-	int_set const set{
+	int_set const set{ // NOLINT(fuchsia-default-arguments-calls)
 		1,2,3
 	};
 
-	typedef
+	using
+	optional_int_ref
+	=
 	fcppt::optional::reference<
 		int const
-	>
-	optional_int_ref;
+	>;
 
 	CHECK(
 		fcppt::container::find_opt(

@@ -38,12 +38,13 @@ struct push_back_result<
 	NewElement
 >
 {
-	typedef
+	using
+	type
+	=
 	std::tuple<
 		Types...,
 		NewElement
-	>
-	type;
+	>;
 };
 
 }

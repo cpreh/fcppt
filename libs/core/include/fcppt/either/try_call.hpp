@@ -64,7 +64,9 @@ fcppt::either::object<
 	)
 >
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		decltype(
 			_to_exception(
@@ -76,8 +78,7 @@ fcppt::either::object<
 		decltype(
 			_function()
 		)
-	>
-	result_type;
+	>;
 
 	try
 	{

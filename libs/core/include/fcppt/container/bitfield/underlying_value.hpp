@@ -56,7 +56,7 @@ underlying_value(
 			InternalType
 		>::array_size::value
 		==
-		1u,
+		1U,
 		"underlying_type can only be used on bitfields with a size of 1"
 	);
 

@@ -21,31 +21,35 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either_int;
+	>;
 
-	typedef
+	using
+	either_int_vector
+	=
 	std::vector<
 		either_int
-	>
-	either_int_vector;
+	>;
 
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		std::string,
 		int_vector
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::either::sequence<
@@ -106,37 +110,42 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int_movable
-	>
-	either_int;
+	>;
 
-	typedef
+	using
+	either_int_vector
+	=
 	std::vector<
 		either_int
-	>
-	either_int_vector;
+	>;
 
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_vector;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		std::string,
 		int_vector
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::either::sequence<

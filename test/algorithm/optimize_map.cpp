@@ -29,11 +29,12 @@
 namespace
 {
 
-typedef
+using
+int_vector
+=
 std::vector<
 	int
->
-int_vector;
+>;
 
 template<
 	typename Source
@@ -51,12 +52,13 @@ fcppt::algorithm::detail::optimize_map<
 int
 main()
 {
-	typedef
+	using
+	int_int_map
+	=
 	std::map<
 		int,
 		int
-	>
-	int_int_map;
+	>;
 
 	static_assert(
 		fcppt::algorithm::detail::optimize_map<
@@ -123,13 +125,16 @@ main()
 
 	struct ra_range
 	{
-		typedef
-		int_vector::iterator
-		iterator;
+		using
+		iterator
+		=
+		int_vector::iterator;
 
+		[[nodiscard]]
 		iterator
 		begin() const;
 
+		[[nodiscard]]
 		iterator
 		end() const;
 	};
@@ -143,15 +148,18 @@ main()
 
 	struct bi_range
 	{
-		typedef
+		using
+		iterator
+		=
 		std::list<
 			int
-		>::iterator
-		iterator;
+		>::iterator;
 
+		[[nodiscard]]
 		iterator
 		begin() const;
 
+		[[nodiscard]]
 		iterator
 		end() const;
 	};
@@ -221,13 +229,4 @@ main()
 		>::value,
 		"mpl vector not optimized"
 	);
-
-	// TODO
-/*
-	static_assert(
-		source_optimized<
-			int[5]
-		>::value,
-		"array not optimized"
-	);*/
 }

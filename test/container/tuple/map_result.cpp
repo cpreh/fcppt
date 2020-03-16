@@ -29,13 +29,13 @@ main()
 						)
 					>::value
 					+
-					1u
+					1U
 				>{};
 		}
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::container::tuple::map_result<
 				std::tuple<
 					std::integral_constant<
@@ -61,8 +61,7 @@ main()
 					3
 				>
 			>
-		>::value,
-		""
+		>
 	);
 
 	FCPPT_USE(

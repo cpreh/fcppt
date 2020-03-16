@@ -18,18 +18,20 @@ TEST_CASE(
 	"[container],[array]"
 )
 {
-	typedef
+	using
+	movable
+	=
 	fcppt::catch_::movable<
 		std::size_t
-	>
-	movable;
+	>;
 
-	typedef
+	using
+	movable_2_array
+	=
 	std::array<
 		movable,
 		2
-	>
-	movable_2_array;
+	>;
 
 	CHECK(
 		fcppt::container::array::init<
@@ -47,10 +49,10 @@ TEST_CASE(
 		==
 		movable_2_array{{
 			movable{
-				0u
+				0U
 			},
 			movable{
-				1u
+				1U
 			}
 		}}
 	);

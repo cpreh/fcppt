@@ -41,7 +41,7 @@ fcppt::container::grid::static_row_type<
 	fcppt::cast::size<
 		fcppt::container::grid::size_type
 	>(
-		sizeof...(Args) + 1u
+		sizeof...(Args) + 1U
 	)
 >
 static_row(
@@ -49,11 +49,12 @@ static_row(
 	Args && ..._args
 )
 {
-	typedef
+	using
+	element_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Arg1
-	>
-	element_type;
+	>;
 
 	static_assert(
 		std::conjunction_v<
@@ -73,7 +74,7 @@ static_row(
 			fcppt::cast::size<
 				fcppt::container::grid::size_type
 			>(
-				sizeof...(Args) + 1u
+				sizeof...(Args) + 1U
 			)
 		>{{
 			std::forward<

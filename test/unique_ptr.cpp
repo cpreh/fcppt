@@ -27,14 +27,14 @@ TEST_CASE(
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			2
 		)
 	};
 
 	CHECK(
 		*ptr
 		==
-		42
+		2
 	);
 
 	int_unique_ptr ptr2{
@@ -46,21 +46,21 @@ TEST_CASE(
 	CHECK(
 		*ptr2
 		==
-		42
+		2
 	);
 
 	int_unique_ptr ptr3{
 		fcppt::make_unique_ptr<
 			int
 		>(
-			10
+			1
 		)
 	};
 
 	CHECK(
 		*ptr3
 		==
-		10
+		1
 	);
 
 	ptr3 =
@@ -71,6 +71,6 @@ TEST_CASE(
 	CHECK(
 		*ptr3
 		==
-		42
+		2
 	);
 }

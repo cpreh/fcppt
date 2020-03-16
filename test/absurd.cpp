@@ -14,14 +14,13 @@ int
 main()
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			decltype(
 				fcppt::absurd<
 					int
 				>()
 			),
 			int
-		>::value,
-		""
+		>
 	);
 }

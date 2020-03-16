@@ -236,9 +236,9 @@ fcppt::container::grid::object<
 	object &&_other
 )
 noexcept(
-	std::is_nothrow_move_constructible<
+	std::is_nothrow_move_constructible_v<
 		T
-	>::value
+	>
 )
 :
 	container_(
@@ -247,7 +247,9 @@ noexcept(
 		)
 	),
 	size_(
-		_other.size_
+		std::move(
+			_other.size_
+		)
 	)
 {
 }
@@ -289,18 +291,30 @@ fcppt::container::grid::object<
 	object &&_other
 )
 noexcept(
-	std::is_nothrow_move_assignable<
+	std::is_nothrow_move_assignable_v<
 		T
-	>::value
+	>
 )
 {
+	if(
+		this
+		==
+		&_other
+	)
+	{
+		return
+			*this;
+	}
+
 	container_ =
 		std::move(
 			_other.container_
 		);
 
 	size_ =
-		_other.size_;
+		std::move(
+			_other.size_
+		);
 
 	return
 		*this;

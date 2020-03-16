@@ -24,11 +24,12 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	i_tree
+	=
 	fcppt::container::tree::object<
 		int
-	>
-	i_tree;
+	>;
 
 	i_tree tree(
 		1
@@ -51,18 +52,19 @@ TEST_CASE(
 	);
 
 	tree.push_back(
-		5
+		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	tree.push_back(
-		6
+		6 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
-	typedef
+	using
+	traversal_type
+	=
 	fcppt::container::tree::pre_order<
 		i_tree const
-	>
-	traversal_type;
+	>;
 
 	traversal_type const trav(
 		tree

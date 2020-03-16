@@ -17,18 +17,20 @@ TEST_CASE(
 	"[container],[array]"
 )
 {
-	typedef
+	using
+	movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	movable;
+	>;
 
-	typedef
+	using
+	movable_2_array
+	=
 	std::array<
 		movable,
 		2
-	>
-	movable_2_array;
+	>;
 
 	CHECK(
 		fcppt::container::array::init_move<

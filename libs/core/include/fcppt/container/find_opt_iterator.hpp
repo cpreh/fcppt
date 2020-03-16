@@ -48,13 +48,14 @@ find_opt_iterator(
 		)
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		fcppt::container::to_iterator_type<
 			Container
 		>
-	>
-	result_type;
+	>;
 
 	return
 		it

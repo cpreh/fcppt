@@ -19,14 +19,15 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	int_tree
+	=
 	fcppt::container::tree::object<
 		int
-	>
-	int_tree;
+	>;
 
 	int_tree test{
-		42,
+		0,
 		int_tree::child_list{
 			int_tree{
 				1

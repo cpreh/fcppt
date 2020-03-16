@@ -29,7 +29,7 @@ TEST_CASE(
 	int_array;
 
 	int_array array1{
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	};
 
 	CHECK(
@@ -44,7 +44,7 @@ TEST_CASE(
 	CHECK(
 		array1.size()
 		==
-		10u
+		10U
 	);
 
 	int_array array2{
@@ -54,6 +54,6 @@ TEST_CASE(
 	CHECK(
 		array2.size()
 		==
-		0u
+		0U
 	);
 }

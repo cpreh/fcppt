@@ -68,17 +68,21 @@ sequence(
 	Source &&_source
 )
 {
-	typedef
+	using
+	source_type
+	=
 	std::remove_reference_t<
 		Source
-	>
-	source_type;
+	>;
 
-	typedef
+	using
+	source_either
+	=
 	fcppt::type_traits::value_type<
-		source_type
-	>
-	source_either;
+		std::remove_const_t<
+			source_type
+		>
+	>;
 
 	static_assert(
 		fcppt::either::is_object<
@@ -87,24 +91,25 @@ sequence(
 		"The source must be a container of eithers"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		fcppt::either::failure_type<
 			source_either
 		>,
 		ResultContainer
-	>
-	result_type;
+	>;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::type_traits::value_type<
 				ResultContainer
 			>,
 			fcppt::either::success_type<
 				source_either
 			>
-		>::value,
+		>,
 		"ResultContainer must be a container of the source's success type"
 	);
 

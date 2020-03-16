@@ -19,9 +19,7 @@ TEST_CASE(
 	"[string]"
 )
 {
-	std::wstring const test{
-		L"\0"
-	};
+	std::wstring const test{};
 
 	CHECK(
 		fcppt::narrow(

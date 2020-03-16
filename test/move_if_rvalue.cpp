@@ -6,7 +6,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -25,7 +25,7 @@ fcppt::unique_ptr<
 int_unique_ptr;
 
 static_assert(
-	std::is_same<
+	std::is_same_v<
 		decltype(
 			fcppt::move_if_rvalue<
 				int_unique_ptr
@@ -38,12 +38,11 @@ static_assert(
 		fcppt::unique_ptr<
 			int
 		> &&
-	>::value,
-	""
+	>
 );
 
 static_assert(
-	std::is_same<
+	std::is_same_v<
 		decltype(
 			fcppt::move_if_rvalue<
 				int &
@@ -54,12 +53,11 @@ static_assert(
 			)
 		),
 		float &
-	>::value,
-	""
+	>
 );
 
 static_assert(
-	std::is_same<
+	std::is_same_v<
 		decltype(
 			fcppt::move_if_rvalue<
 				int &
@@ -70,13 +68,12 @@ static_assert(
 			)
 		),
 		int &&
-	>::value,
-	""
+	>
 );
 
 class container
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		container
 	);
 public:
@@ -86,15 +83,14 @@ public:
 			fcppt::make_unique_ptr<
 				int
 			>(
-				10
+				1
 			)
 		)
 	{
 	}
 
 	~container()
-	{
-	}
+	= default;
 
 	int_unique_ptr &
 	get()
@@ -151,7 +147,7 @@ TEST_CASE(
 		CHECK(
 			*foo
 			==
-			10
+			1
 		);
 	}
 
@@ -167,7 +163,7 @@ TEST_CASE(
 		CHECK(
 			*foo
 			==
-			10
+			1
 		);
 	}
 }

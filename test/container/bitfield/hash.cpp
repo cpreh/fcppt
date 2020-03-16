@@ -25,17 +25,19 @@ TEST_CASE(
 		fcppt_maximum = test2
 	};
 
-	typedef
+	using
+	bitfield
+	=
 	fcppt::container::bitfield::enum_object<
 		test_enum
-	>
-	bitfield;
+	>;
 
-	typedef
+	using
+	bitfield_set
+	=
 	std::unordered_set<
 		bitfield
-	>
-	bitfield_set;
+	>;
 
 	bitfield_set const values{
 		bitfield{
@@ -55,7 +57,7 @@ TEST_CASE(
 			}
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -65,7 +67,7 @@ TEST_CASE(
 			}
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -75,6 +77,6 @@ TEST_CASE(
 			}
 		)
 		==
-		0u
+		0U
 	);
 }

@@ -183,6 +183,7 @@ public:
 	/**
 	\brief Returns a const reference to the specified bit.
 	*/
+	[[nodiscard]]
 	const_reference
 	operator[](
 		ElementType
@@ -191,6 +192,7 @@ public:
 	/**
 	\brief Returns a reference to the specified bit.
 	*/
+	[[nodiscard]]
 	reference
 	operator[](
 		ElementType
@@ -212,6 +214,7 @@ public:
 	/**
 	\brief Returns if the specified bit is set.
 	*/
+	[[nodiscard]]
 	value_type
 	get(
 		ElementType
@@ -220,18 +223,21 @@ public:
 	/**
 	\brief Accessor to the internal array.
 	*/
+	[[nodiscard]]
 	array_type &
 	array();
 
 	/**
 	\brief Const accessor to the internal array.
 	*/
+	[[nodiscard]]
 	array_type const &
 	array() const;
 
 	/**
 	\brief Returns the bitfield with all bits set to zero.
 	*/
+	[[nodiscard]]
 	static
 	object
 	null();

@@ -24,15 +24,15 @@ TEST_CASE(
 	i_tree;
 
 	i_tree tree1(
-		10
+		1
 	);
 
 	tree1.push_back(
-		20
+		2
 	);
 
 	i_tree tree2(
-		30
+		3
 	);
 
 	swap(
@@ -43,13 +43,13 @@ TEST_CASE(
 	CHECK(
 		tree1.value()
 		==
-		30
+		3
 	);
 
 	CHECK(
 		tree2.value()
 		==
-		10
+		1
 	);
 
 	CHECK_FALSE(
@@ -72,7 +72,7 @@ TEST_CASE(
 			CHECK(
 				_tree.get().value()
 				==
-				20
+				2
 			);
 		}
 	);

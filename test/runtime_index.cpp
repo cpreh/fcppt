@@ -16,9 +16,10 @@
 namespace
 {
 
-typedef
-unsigned
-int_type;
+using
+int_type
+=
+unsigned;
 
 template<
 	int_type Value
@@ -38,17 +39,18 @@ TEST_CASE(
 	"[various]"
 )
 {
-	typedef
+	using
+	max_index
+	=
 	int_c<
-		2u
-	>
-	max_index;
+		2U
+	>;
 
 	CHECK(
 		fcppt::runtime_index<
 			max_index
 		>(
-			0u,
+			0U,
 			[](
 				auto const _type
 			)
@@ -59,16 +61,16 @@ TEST_CASE(
 				);
 
 				return
-					std::is_same<
+					std::is_same_v<
 						int_c<
 							decltype(
 								_type
 							)::value
 						>,
 						int_c<
-							0u
+							0U
 						>
-					>::value;
+					>;
 			},
 			fcppt::const_(
 				false
@@ -80,7 +82,7 @@ TEST_CASE(
 		fcppt::runtime_index<
 			max_index
 		>(
-			1u,
+			1U,
 			[](
 				auto const _type
 			)
@@ -91,16 +93,16 @@ TEST_CASE(
 				);
 
 				return
-					std::is_same<
+					std::is_same_v<
 						int_c<
 							decltype(
 								_type
 							)::value
 						>,
 						int_c<
-							1u
+							1U
 						>
-					>::value;
+					>;
 			},
 			fcppt::const_(
 				false
@@ -112,7 +114,7 @@ TEST_CASE(
 		fcppt::runtime_index<
 			max_index
 		>(
-			2u,
+			2U,
 			[](
 				auto
 			)

@@ -5,6 +5,9 @@
 
 
 #include <fcppt/nonmovable.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -18,6 +21,15 @@ struct test
 	FCPPT_NONMOVABLE(
 		test
 	);
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
+	test()
+	= default;
+
+	~test()
+	= default;
+FCPPT_PP_POP_WARNING
 };
 
 }

@@ -19,18 +19,20 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either_int;
+	>;
 
 	auto const failure_function(
 		[]{

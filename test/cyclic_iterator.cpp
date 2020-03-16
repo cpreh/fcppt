@@ -18,12 +18,13 @@ TEST_CASE(
 	"[cyclic_iterator]"
 )
 {
-	typedef
+	using
+	int3_array
+	=
 	std::array<
 		int,
 		3
-	>
-	int3_array;
+	>;
 
 	int3_array const array{{
 		1,
@@ -31,11 +32,12 @@ TEST_CASE(
 		3
 	}};
 
-	typedef
+	using
+	iterator
+	=
 	fcppt::cyclic_iterator<
 		int3_array::const_iterator
-	>
-	iterator;
+	>;
 
 	iterator const start(
 		array.begin(),
@@ -96,7 +98,7 @@ TEST_CASE(
 	REQUIRE(
 		test.get()
 		==
-		std::prev(
+		std::prev( // NOLINT(fuchsia-default-arguments-calls)
 			array.end()
 		)
 	);
@@ -125,7 +127,7 @@ TEST_CASE(
 		3
 	);
 
-	test -= 300;
+	test -= 300; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	REQUIRE(
 		*test

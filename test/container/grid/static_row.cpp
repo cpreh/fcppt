@@ -17,12 +17,13 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int2_grid
+	=
 	fcppt::container::grid::object<
 		int,
 		2
-	>
-	int2_grid;
+	>;
 
 	int2_grid const grid{
 		fcppt::container::grid::static_row(
@@ -36,7 +37,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				0u, 0u
+				0U, 0U
 			)
 		)
 		==
@@ -46,7 +47,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				1u, 0u
+				1U, 0U
 			)
 		)
 		==
@@ -56,7 +57,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				0u, 1u
+				0U, 1U
 			)
 		)
 		==
@@ -66,7 +67,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				1u, 1u
+				1U, 1U
 			)
 		)
 		==
@@ -79,18 +80,20 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	int2_grid
+	=
 	fcppt::container::grid::object<
 		int_movable,
 		2
-	>
-	int2_grid;
+	>;
 
 	int2_grid const grid{
 		fcppt::container::grid::static_row(
@@ -106,7 +109,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				0u, 0u
+				0U, 0U
 			)
 		)
 		==
@@ -116,7 +119,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				1u, 0u
+				1U, 0U
 			)
 		)
 		==
@@ -126,7 +129,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				0u, 1u
+				0U, 1U
 			)
 		)
 		==
@@ -136,7 +139,7 @@ TEST_CASE(
 	CHECK(
 		grid.get_unsafe(
 			int2_grid::pos(
-				1u, 1u
+				1U, 1U
 			)
 		)
 		==

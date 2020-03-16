@@ -26,7 +26,7 @@ TEST_CASE(
 	>
 	sequence;
 
-	sequence const result(
+	auto const result(
 		fcppt::container::make<
 			sequence
 		>(
@@ -52,7 +52,7 @@ TEST_CASE(
 	REQUIRE(
 		result.size()
 		==
-		3u
+		3U
 	);
 
 	CHECK(

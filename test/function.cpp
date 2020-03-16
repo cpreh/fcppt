@@ -25,13 +25,14 @@ TEST_CASE(
 	"[various]"
 )
 {
-	typedef
+	using
+	function_type
+	=
 	fcppt::function<
 		int (
 			int
 		)
-	>
-	function_type;
+	>;
 
 	function_type const fun{
 		[](
@@ -41,16 +42,16 @@ TEST_CASE(
 			return
 				_val
 				+
-				10;
+				10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		}
 	};
 
 	CHECK(
 		fun(
-			10
+			5
 		)
 		==
-		20
+		15
 	);
 }
 
@@ -60,19 +61,21 @@ TEST_CASE(
 	"[various]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	function_type
+	=
 	fcppt::function<
 		int (
 			int_unique_ptr &&
 		)
-	>
-	function_type;
+	>;
 
 	function_type const fun{
 		[](
@@ -82,7 +85,7 @@ TEST_CASE(
 			return
 				*_val
 				+
-				10;
+				10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		}
 	};
 
@@ -91,10 +94,10 @@ TEST_CASE(
 			fcppt::make_unique_ptr<
 				int
 			>(
-				10
+				5
 			)
 		)
 		==
-		20
+		15
 	);
 }

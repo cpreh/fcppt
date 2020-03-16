@@ -17,22 +17,23 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	i_tree
+	=
 	fcppt::container::tree::object<
 		int
-	>
-	i_tree;
+	>;
 
 	i_tree head(
-		10
+		1
 	);
 
 	head.push_back(
-		20
+		2
 	);
 
 	head.push_back(
-		30
+		3
 	);
 
 	i_tree const head2(
@@ -42,13 +43,13 @@ TEST_CASE(
 	CHECK(
 		head2.value()
 		==
-		10
+		1
 	);
 
 	REQUIRE(
 		head2.children().size()
 		==
-		2u
+		2U
 	);
 
 	fcppt::optional::maybe(
@@ -69,7 +70,7 @@ TEST_CASE(
 			CHECK(
 				_front.get().value()
 				==
-				20
+				2
 			);
 
 			fcppt::optional::maybe(
@@ -115,7 +116,7 @@ TEST_CASE(
 			CHECK(
 				_back.get().value()
 				==
-				30
+				3
 			);
 
 			fcppt::optional::maybe(
