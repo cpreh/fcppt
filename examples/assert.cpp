@@ -94,6 +94,7 @@ is_fruit(
 // fcppt::assert_::information
 class my_exception
 :
+public
 	std::exception
 {
 public:
