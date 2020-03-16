@@ -17,6 +17,7 @@ FCPPT_PP_PUSH_WARNING
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 
+#include <fcppt/config/msvc_version_at_least.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4005) // macro redefinition
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
@@ -65,6 +66,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 FCPPT_PP_DISABLE_VC_WARNING(5026) // move constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(5027) // move assignment operator could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(5045) // Spectre mitigation for memory load
+#if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1925)
+FCPPT_PP_DISABLE_VC_WARNING(5204) // Class with virtual functions but without virtual destrutor
+#endif
 
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
