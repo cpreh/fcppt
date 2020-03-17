@@ -8,10 +8,17 @@
 #define FCPPT_OVERLOADED_DECL_HPP_INCLUDED
 
 #include <fcppt/overloaded_fwd.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4626)
+FCPPT_PP_DISABLE_VC_WARNING(5027)
 
 /**
 \brief Overloads multiple lambdas.
@@ -36,6 +43,8 @@ struct overloaded // NOLINT(fuchsia-multiple-inheritance)
 	using
 	Types::operator()...;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 
