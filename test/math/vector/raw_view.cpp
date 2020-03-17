@@ -25,7 +25,10 @@ template<
 class proxy
 {
 public:
-	typedef Pointer pointer;
+	using
+	pointer
+	=
+	Pointer;
 
 	explicit
 	proxy(
@@ -43,6 +46,29 @@ public:
 	)
 	= default;
 
+	proxy(
+		proxy &&
+	)
+	noexcept
+	= default;
+
+	proxy &
+	operator=(
+		proxy const &
+	)
+	= default;
+
+	proxy &
+	operator=(
+		proxy &&
+	)
+	noexcept
+	= default;
+
+	~proxy()
+	= default;
+
+	// NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
 	operator Type() const
 	{
 		Type result;
@@ -85,31 +111,36 @@ template<
 class raw_view
 {
 public:
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
-	typedef
-	unsigned char *
-	pointer;
+	using
+	pointer
+	=
+	unsigned char *;
 
-	typedef
-	unsigned char const *
-	const_pointer;
+	using
+	const_pointer
+	=
+	unsigned char const *;
 
-	typedef
+	using
+	reference
+	=
 	proxy<
 		Type,
 		pointer
-	>
-	reference;
+	>;
 
-	typedef
+	using
+	const_reference
+	=
 	proxy<
 		Type,
 		const_pointer
-	>
-	const_reference;
+	>;
 
 	explicit
 	raw_view(
@@ -148,6 +179,7 @@ public:
 			};
 	}
 private:
+	[[nodiscard]]
 	pointer
 	index_of(
 		size_type const _index
@@ -175,36 +207,40 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
-	unsigned
-	value_type;
+	using
+	value_type
+	=
+	unsigned;
 
-	typedef
+	using
+	value_raw_view
+	=
 	raw_view<
 		value_type
-	>
-	value_raw_view;
+	>;
 
 	constexpr fcppt::math::size_type const num_elements(
-		2
+		2U
 	);
 
-	typedef
+	using
+	vector_raw
+	=
 	fcppt::math::vector::object<
 		value_type,
 		num_elements,
 		value_raw_view
-	>
-	vector_raw;
+	>;
 
-	typedef
+	using
+	array_type
+	=
 	std::array<
 		unsigned char,
 		sizeof(value_type)
 		*
 		num_elements
-	>
-	array_type;
+	>;
 
 	array_type array = {{ 0, 0 }};
 
@@ -217,24 +253,23 @@ TEST_CASE(
 	static_assert(
 		vector_raw::static_size::value
 		==
-		2u,
-		""
+		2U
 	);
 
-	vec.x() = 1u;
+	vec.x() = 1U;
 
-	vec.y() = 2u;
+	vec.y() = 2U;
 
 	CHECK(
 		vec.x()
 		==
-		1u
+		1U
 	);
 
 	CHECK(
 		vec.y()
 		==
-		2u
+		2U
 	);
 
 	vector_raw const copy(
@@ -244,12 +279,12 @@ TEST_CASE(
 	CHECK(
 		copy.x()
 		==
-		1u
+		1U
 	);
 
 	CHECK(
 		copy.y()
 		==
-		2u
+		2U
 	);
 }

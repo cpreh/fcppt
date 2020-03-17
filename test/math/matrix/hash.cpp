@@ -20,19 +20,21 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	int22_matrix
+	=
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	>
-	int22_matrix;
+	>;
 
-	typedef
+	using
+	matrix_set
+	=
 	std::unordered_set<
 		int22_matrix
-	>
-	matrix_set;
+	>;
 
 	matrix_set const set{
 		int22_matrix(
@@ -61,7 +63,7 @@ TEST_CASE(
 			)
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -78,6 +80,6 @@ TEST_CASE(
 			)
 		)
 		==
-		0u
+		0U
 	);
 }

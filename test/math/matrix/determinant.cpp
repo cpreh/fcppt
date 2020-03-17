@@ -18,21 +18,23 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	large_matrix_type
+	=
 	fcppt::math::matrix::static_<
 		int,
 		3,
 		3
-	>
-	large_matrix_type;
+	>;
 
-	typedef
+	using
+	small_matrix_type
+	=
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	>
-	small_matrix_type;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::determinant(

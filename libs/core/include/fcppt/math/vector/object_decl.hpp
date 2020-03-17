@@ -134,7 +134,7 @@ public:
 	*/
 	explicit
 	object(
-		storage_type const &
+		storage_type &&
 	);
 
 	template<
@@ -159,6 +159,7 @@ public:
 		object &&
 	)
 	noexcept(
+		// NOLINTNEXTLINE(hicpp-noexcept-move,performance-noexcept-move-constructor)
 		std::is_nothrow_move_constructible_v<
 			storage_type
 		>
@@ -198,6 +199,7 @@ public:
 		object &&
 	)
 	noexcept(
+		// NOLINTNEXTLINE(hicpp-noexcept-move,performance-noexcept-move-constructor)
 		std::is_nothrow_move_assignable_v<
 			storage_type
 		>

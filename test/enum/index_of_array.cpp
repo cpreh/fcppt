@@ -39,14 +39,14 @@ TEST_CASE(
 	array;
 
 	array const test{{{
-		1u,
-		2u
+		1U,
+		2U
 	}}};
 
 	CHECK(
 		fcppt::enum_::index_of_array(
 			test,
-			2u
+			2U
 		)
 		==
 		fcppt::optional::make(
@@ -57,7 +57,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::enum_::index_of_array(
 			test,
-			3u
+			3U
 		)
 		==
 		fcppt::optional::object<

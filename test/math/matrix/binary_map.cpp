@@ -20,30 +20,32 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	ui2_matrix
+	=
 	fcppt::math::matrix::static_<
 		unsigned,
 		2,
 		2
-	>
-	ui2_matrix;
+	>;
 
-	typedef
+	using
+	i2_matrix
+	=
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	>
-	i2_matrix;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::binary_map(
 			ui2_matrix{
 				fcppt::math::matrix::row(
-					5u,10u
+					5U,10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
-					15u,20u
+					15U,20U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			},
 			i2_matrix{
@@ -51,7 +53,7 @@ TEST_CASE(
 					1,2
 				),
 				fcppt::math::matrix::row(
-					3,4
+					3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			},
 			[](
@@ -70,10 +72,10 @@ TEST_CASE(
 		==
 		i2_matrix(
 			fcppt::math::matrix::row(
-				6,12
+				6,12 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				18,24
+				18,24 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);

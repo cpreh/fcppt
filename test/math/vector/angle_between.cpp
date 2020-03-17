@@ -5,6 +5,7 @@
 
 
 #include <fcppt/const.hpp>
+#include <fcppt/literal.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
@@ -26,9 +27,10 @@
 namespace
 {
 
-typedef
-float
-real;
+using
+real
+=
+float;
 
 real const epsilon{
 	std::numeric_limits<
@@ -39,12 +41,16 @@ real const epsilon{
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 
-auto const half_pi{
+real const half_pi{
 	fcppt::math::pi<
 		real
 	>()
 	/
-	2.f
+	fcppt::literal<
+		real
+	>(
+		2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	)
 };
 
 FCPPT_PP_POP_WARNING
@@ -83,19 +89,21 @@ compare(
 		);
 }
 
-typedef
+using
+uivector2
+=
 fcppt::math::vector::static_<
 	unsigned,
 	2
->
-uivector2;
+>;
 
-typedef
+using
+fvector2
+=
 fcppt::math::vector::static_<
 	real,
 	2
->
-fvector2;
+>;
 
 }
 
@@ -108,12 +116,12 @@ TEST_CASE(
 		::compare(
 			fcppt::math::vector::angle_between(
 				fvector2{
-					1.f,
-					0.f
+					1.F,
+					0.F
 				},
 				fvector2{
-					0.f,
-					1.f
+					0.F,
+					1.F
 				}
 			),
 			fcppt::optional::make(
@@ -125,12 +133,12 @@ TEST_CASE(
 	CHECK_FALSE(
 		fcppt::math::vector::angle_between(
 			fvector2{
-				1.f,
-				0.f
+				1.F,
+				0.F
 			},
 			fvector2{
-				0.f,
-				0.f
+				0.F,
+				0.F
 			}
 		).has_value()
 	);
@@ -147,12 +155,12 @@ TEST_CASE(
 				real
 			>(
 				uivector2{
-					1u,
-					0u
+					1U,
+					0U
 				},
 				uivector2{
-					0u,
-					1u
+					0U,
+					1U
 				}
 			),
 			fcppt::optional::make(
@@ -171,12 +179,12 @@ TEST_CASE(
 		::compare(
 			fcppt::math::vector::signed_angle_between(
 				fvector2{
-					2.f,
-					1.f
+					2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					1.F
 				},
 				fvector2{
-					2.f,
-					2.f
+					2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				}
 			),
 			fcppt::optional::make(
@@ -197,12 +205,12 @@ TEST_CASE(
 				real
 			>(
 				uivector2{
-					2u,
-					1u
+					2U,
+					1U
 				},
 				uivector2{
-					2u,
-					2u
+					2U,
+					2U
 				}
 			),
 			fcppt::optional::make(
@@ -216,12 +224,12 @@ TEST_CASE(
 			real
 		>(
 			uivector2{
-				2u,
-				2u
+				2U,
+				2U
 			},
 			uivector2{
-				2u,
-				2u
+				2U,
+				2U
 			}
 		).has_value()
 	);

@@ -11,18 +11,18 @@
 int
 main()
 {
-	typedef
+	using
+	ui2_dim
+	=
 	fcppt::math::dim::static_<
 		unsigned,
 		2
-	>
-	ui2_dim;
+	>;
 
 	static_assert(
 		fcppt::math::dim::has_dim<
 			ui2_dim,
 			2
-		>::value,
-		""
+		>::value
 	);
 }

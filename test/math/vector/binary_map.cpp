@@ -19,25 +19,27 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	ui2_vector
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	ui2_vector;
+	>;
 
-	typedef
+	using
+	i2_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	i2_vector;
+	>;
 
 	CHECK(
 		fcppt::math::vector::binary_map(
 			ui2_vector{
-				10u,
-				20u
+				10U,
+				20U
 			},
 			i2_vector{
 				3,

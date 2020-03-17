@@ -30,11 +30,12 @@ template<
 inline
 T
 pi()
+noexcept
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			T
-		>::value,
+		>,
 		"math::pi must return a floating point type"
 	);
 

@@ -57,31 +57,33 @@ rotation_y(
 	T const _angle
 )
 {
-	T const
-		sinx{
-			std::sin(
-				_angle
-			)
-		},
-		cosx{
-			std::cos(
-				_angle
-			)
-		},
-		one{
-			fcppt::literal<
-				T
-			>(
-				1
-			)
-		},
-		zero{
-			fcppt::literal<
-				T
-			>(
-				0
-			)
-		};
+	T const sinx{
+		std::sin(
+			_angle
+		)
+	};
+
+	T const cosx{
+		std::cos(
+			_angle
+		)
+	};
+
+	T const one{
+		fcppt::literal<
+			T
+		>(
+			1
+		)
+	};
+
+	T const zero{
+		fcppt::literal<
+			T
+		>(
+			0
+		)
+	};
 
 	return
 		fcppt::math::matrix::static_<

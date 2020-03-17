@@ -45,21 +45,21 @@ translation(
 	T const _z
 )
 {
-	T const
-		zero{
-			fcppt::literal<
-				T
-			>(
-				0
-			)
-		},
-		one{
-			fcppt::literal<
-				T
-			>(
-				1
-			)
-		};
+	T const zero{
+		fcppt::literal<
+			T
+		>(
+			0
+		)
+	};
+
+	T const one{
+		fcppt::literal<
+			T
+		>(
+			1
+		)
+	};
 
 	return
 		fcppt::math::matrix::static_<

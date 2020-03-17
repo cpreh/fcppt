@@ -44,13 +44,13 @@ float_to_int(
 noexcept
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			Source
-		>::value
+		>
 		&&
-		std::is_signed<
+		std::is_signed_v<
 			Dest
-		>::value,
+		>,
 		"float_to_int can only cast from floating point types to signed integer types"
 	);
 

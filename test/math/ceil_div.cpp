@@ -21,52 +21,52 @@ TEST_CASE(
 {
 	CHECK(
 		fcppt::math::ceil_div(
-			0u,
-			1u
+			0U,
+			1U
 		)
 		==
 		fcppt::optional::make(
-			0u
+			0U
 		)
 	);
 
 	CHECK(
 		fcppt::math::ceil_div(
-			1u,
-			1u
+			1U,
+			1U
 		)
 		==
 		fcppt::optional::make(
-			1u
+			1U
 		)
 	);
 
 	CHECK(
 		fcppt::math::ceil_div(
-			5u,
-			3u
+			5U,
+			3U
 		)
 		==
 		fcppt::optional::make(
-			2u
+			2U
 		)
 	);
 
 	CHECK(
 		fcppt::math::ceil_div(
-			6u,
-			3u
+			6U,
+			3U
 		)
 		==
 		fcppt::optional::make(
-			2u
+			2U
 		)
 	);
 
 	CHECK(
 		fcppt::math::ceil_div(
-			2u,
-			0u
+			2U,
+			0U
 		)
 		==
 		fcppt::optional::object<

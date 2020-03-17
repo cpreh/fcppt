@@ -8,6 +8,9 @@
 #define FCPPT_ALGORITHM_REPEAT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -36,6 +39,13 @@ repeat(
 	Function const &_function
 )
 {
+	static_assert(
+		std::is_integral_v<
+			Count
+		>,
+		"Count must be an integral type"
+	);
+
 	for(
 		Count index(
 			fcppt::literal<

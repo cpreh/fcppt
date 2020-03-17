@@ -67,45 +67,51 @@ rotation_axis(
 	> const &_vector
 )
 {
-	T const
-		sinx{
-			std::sin(
-				_angle
-			)
-		},
-		cosx{
-			std::cos(
-				_angle
-			)
-		},
-		one{
-			fcppt::literal<
-				T
-			>(
-				1
-			)
-		},
-		cosxc{
-			one
-			-
-			cosx
-		},
-		x{
-			_vector.x()
-		},
-		y{
-			_vector.y()
-		},
-		z{
-			_vector.z()
-		},
-		zero{
-			fcppt::literal<
-				T
-			>(
-				0
-			)
-		};
+	T const sinx{
+		std::sin(
+			_angle
+		)
+	};
+
+	T const cosx{
+		std::cos(
+			_angle
+		)
+	};
+
+	T const one{
+		fcppt::literal<
+			T
+		>(
+			1
+		)
+	};
+
+	T const cosxc{
+		one
+		-
+		cosx
+	};
+
+	T const x{
+		_vector.x()
+	};
+
+	T const y{
+		_vector.y()
+	};
+
+	T const z{
+		_vector.z()
+	};
+
+	T const zero{
+		fcppt::literal<
+			T
+		>(
+			0
+		)
+	};
 
 	return
 		fcppt::math::matrix::static_<

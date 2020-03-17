@@ -59,7 +59,7 @@ public:
 	state()
 	= default;
 
-	~state()
+	~state() // NOLINT(hicpp-use-override,modernize-use-override)
 	//override TODO(philipp)
 	= default;
 };

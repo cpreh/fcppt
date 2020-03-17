@@ -20,21 +20,23 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	ui2_matrix
+	=
 	fcppt::math::matrix::static_<
 		unsigned,
 		2,
 		2
-	>
-	ui2_matrix;
+	>;
 
-	typedef
+	using
+	i2_matrix
+	=
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	>
-	i2_matrix;
+	>;
 
 	CHECK(
 		i2_matrix{
@@ -52,10 +54,10 @@ TEST_CASE(
 		>(
 			ui2_matrix(
 				fcppt::math::matrix::row(
-					1u, 2u
+					1U, 2U
 				),
 				fcppt::math::matrix::row(
-					3u, 4u
+					3U, 4U
 				)
 			)
 		)

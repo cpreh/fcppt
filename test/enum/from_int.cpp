@@ -36,7 +36,7 @@ TEST_CASE(
 		fcppt::enum_::from_int<
 			test_enum
 		>(
-			1u
+			1U
 		)
 		==
 		fcppt::optional::make(
@@ -48,7 +48,7 @@ TEST_CASE(
 		fcppt::enum_::from_int<
 			test_enum
 		>(
-			2u
+			2U
 		)
 		==
 		fcppt::optional::object<
@@ -66,7 +66,7 @@ TEST_CASE(
 		fcppt::enum_::from_int_exn<
 			test_enum
 		>(
-			1u
+			1U
 		)
 		==
 		test_enum::enum2
@@ -76,7 +76,7 @@ TEST_CASE(
 		fcppt::enum_::from_int_exn<
 			test_enum
 		>(
-			2u
+			2U
 		),
 		fcppt::exception
 	);

@@ -46,10 +46,10 @@ fcppt::math::matrix::static_<
 	T,
 	R
 	-
-	1u,
+	1U,
 	C
 	-
-	1u
+	1U
 >
 delete_row_and_column(
 	fcppt::math::matrix::object<
@@ -60,17 +60,18 @@ delete_row_and_column(
 	> const &_matrix
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::matrix::static_<
 		T,
 		R
 		-
-		1u,
+		1U,
 		C
 		-
-		1u
-	>
-	result_type;
+		1U
+	>;
 
 	return
 		fcppt::math::matrix::init<

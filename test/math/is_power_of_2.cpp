@@ -17,37 +17,37 @@ TEST_CASE(
 {
 	CHECK_FALSE(
 		fcppt::math::is_power_of_2(
-			0u
+			0U
 		)
 	);
 
 	CHECK(
 		fcppt::math::is_power_of_2(
-			1u
+			1U
 		)
 	);
 
 	CHECK(
 		fcppt::math::is_power_of_2(
-			2u
+			2U
 		)
 	);
 
 	CHECK(
 		fcppt::math::is_power_of_2(
-			4u
+			4U
 		)
 	);
 
 	CHECK_FALSE(
 		fcppt::math::is_power_of_2(
-			3u
+			3U
 		)
 	);
 
 	CHECK_FALSE(
 		fcppt::math::is_power_of_2(
-			5u
+			5U
 		)
 	);
 }

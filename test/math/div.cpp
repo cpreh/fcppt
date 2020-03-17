@@ -42,8 +42,8 @@ TEST_CASE(
 
 	CHECK_FALSE(
 		fcppt::math::div(
-			2.f,
-			0.f
+			2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			0.F
 		).has_value()
 	);
 
@@ -52,12 +52,12 @@ TEST_CASE(
 			long,
 			int
 		>(
-			4l,
+			4L,
 			2
 		)
 		==
 		fcppt::optional::make(
-			2l
+			2L
 		)
 	);
 }

@@ -16,6 +16,7 @@ TEST_CASE(
 	"[io]"
 )
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::istringstream stream{
 		"xy"
 	};

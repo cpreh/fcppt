@@ -66,18 +66,19 @@ angle_between_cast(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			Dest
-		>::value,
+		>,
 		"angle_between_cast must return a floating-point type"
 	);
 
-	typedef
+	using
+	intermediate_type
+	=
 	fcppt::math::vector::static_<
 		Dest,
 		N
-	>
-	intermediate_type;
+	>;
 
 	return
 		fcppt::math::vector::angle_between(

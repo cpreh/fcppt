@@ -11,37 +11,37 @@
 int
 main()
 {
-	typedef
+	using
+	f1x1
+	=
 	fcppt::math::matrix::static_<
 		float,
 		1,
 		1
-	>
-	f1x1;
+	>;
 
 	static_assert(
 		fcppt::math::matrix::has_dim<
 			f1x1,
 			1,
 			1
-		>::value,
-		""
+		>::value
 	);
 
-	typedef
+	using
+	f2x3
+	=
 	fcppt::math::matrix::static_<
 		float,
 		2,
 		3
-	>
-	f2x3;
+	>;
 
 	static_assert(
 		fcppt::math::matrix::has_dim<
 			f2x3,
 			2,
 			3
-		>::value,
-		""
+		>::value
 	);
 }

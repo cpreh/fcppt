@@ -18,18 +18,20 @@ TEST_CASE(
 	"[math],[dim]"
 )
 {
-	typedef
+	using
+	int3_dim
+	=
 	fcppt::math::dim::static_<
 		int,
 		3
-	>
-	int3_dim;
+	>;
 
-	typedef
+	using
+	dim_set
+	=
 	std::unordered_set<
 		int3_dim
-	>
-	dim_set;
+	>;
 
 	dim_set const set{
 		int3_dim(
@@ -48,7 +50,7 @@ TEST_CASE(
 			)
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -60,6 +62,6 @@ TEST_CASE(
 			)
 		)
 		==
-		0u
+		0U
 	);
 }

@@ -56,44 +56,55 @@ sqrt(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			T
-		>::value,
+		>,
 		"matrix::sqrt can only be used on floating point types"
 	);
 
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		T,
 		N,
 		N
-	>
-	matrix_type;
+	>;
 
-	matrix_type
-		X(
-			_matrix
-		),
-		Y(
-			fcppt::math::matrix::identity<
-				matrix_type
-			>()
-		);
+	matrix_type X(
+		_matrix
+	);
 
-	while(fcppt::math::matrix::infinity_norm(X * X - _matrix) > _epsilon)
+	matrix_type Y(
+		fcppt::math::matrix::identity<
+			matrix_type
+		>()
+	);
+
+	while(
+		fcppt::math::matrix::infinity_norm(
+			X * X - _matrix
+		)
+		>
+		_epsilon
+	)
 	{
-		matrix_type const inverse_X =
+		matrix_type const inverse_X{
 			fcppt::math::matrix::inverse(
-				X);
+				X
+			)
+		};
 
 		X =
 			fcppt::literal<T>(
-				0.5) *
+				0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			) *
 			(X + fcppt::math::matrix::inverse(Y));
 
 		Y =
 			fcppt::literal<T>(
-				0.5) *
+				0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			) *
 			(Y + inverse_X);
 	}
 

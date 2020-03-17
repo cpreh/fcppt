@@ -54,13 +54,14 @@ adjugate(
 	> const &_matrix
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::matrix::static_<
 		T,
 		N,
 		N
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::math::matrix::init<

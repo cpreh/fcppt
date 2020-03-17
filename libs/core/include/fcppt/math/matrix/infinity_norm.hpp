@@ -72,13 +72,14 @@ infinity_norm(
 					_row
 				);
 
-				typedef
+				using
+				row
+				=
 				fcppt::tag_type<
 					decltype(
 						_row
 					)
-				>
-				row;
+				>;
 
 				return
 					std::max(
@@ -103,13 +104,14 @@ infinity_norm(
 									_column
 								);
 
-								typedef
+								using
+								column
+								=
 								fcppt::tag_type<
 									decltype(
 										_column
 									)
-								>
-								column;
+								>;
 
 								return
 									_current_row_sum

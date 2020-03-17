@@ -41,6 +41,7 @@ fcppt::make_literal<
 literal(
 	Arg const &&_integral
 )
+noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_value<
@@ -50,9 +51,9 @@ literal(
 	);
 
 	static_assert(
-		std::is_arithmetic<
+		std::is_arithmetic_v<
 			Arg
-		>::value,
+		>,
 		"literal can only be used on arithmetic types"
 	);
 

@@ -192,7 +192,7 @@ public:
 	*/
 	explicit
 	object(
-		storage_type const &
+		storage_type &&
 	);
 
 	/**

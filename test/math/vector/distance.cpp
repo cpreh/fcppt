@@ -17,40 +17,42 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	float2_vector
+	=
 	fcppt::math::vector::static_<
 		float,
 		2
-	>
-	float2_vector;
+	>;
 
 	CHECK_THAT(
 		std::abs(
 			fcppt::math::vector::distance(
 				float2_vector(
-					1.f,
-					2.f
+					1.F,
+					2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				float2_vector(
-					3.f,
-					4.f
+					3.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					4.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			)
 			-
-			2.8f
+			2.8F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		Catch::Matchers::WithinAbs(
 			0.,
-			0.1
+			0.1 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 
-	typedef
+	using
+	uint2_vector
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	uint2_vector;
+	>;
 
 	CHECK_THAT(
 		std::abs(
@@ -58,20 +60,20 @@ TEST_CASE(
 				float
 			>(
 				uint2_vector(
-					1u,
-					2u
+					1U,
+					2U
 				),
 				uint2_vector(
-					3u,
-					4u
+					3U,
+					4U
 				)
 			)
 			-
-			2.8f
+			2.8F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		Catch::Matchers::WithinAbs(
 			0.,
-			0.1
+			0.1 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 }

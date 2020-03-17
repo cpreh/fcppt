@@ -101,13 +101,14 @@ determinant(
 					_row
 				);
 
-				typedef
+				using
+				row
+				=
 				fcppt::tag_type<
 					decltype(
 						_row
 					)
-				>
-				row;
+				>;
 
 				T const coeff{
 					row::value

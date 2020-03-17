@@ -48,6 +48,7 @@ operator<<(
 			Enum
 		>()
 	)
+	{
 		_stream
 			<<
 			fcppt::enum_::to_string(
@@ -61,6 +62,7 @@ operator<<(
 			]
 			<<
 			FCPPT_TEXT(", ");
+	}
 
 	_stream
 		<<

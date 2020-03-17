@@ -19,38 +19,39 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	large_matrix_type
+	=
 	fcppt::math::matrix::static_<
 		double,
 		3,
 		3
-	>
-	large_matrix_type;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::componentwise_equal(
 			fcppt::math::matrix::inverse(
 				large_matrix_type(
 					fcppt::math::matrix::row(
-						0.,1.,2.
+						0.,1.,2. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					),
 					fcppt::math::matrix::row(
-						1.,0.,3.
+						1.,0.,3. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					),
 					fcppt::math::matrix::row(
-						4.,-3.,8.
+						4.,-3.,8. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					)
 				)
 			),
 			large_matrix_type(
 				fcppt::math::matrix::row(
-					-9./2.,7.,-3./2.
+					-9./2.,7.,-3./2. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
-					-2.,4.,-1.
+					-2.,4.,-1. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
-					3./2.,-2.,1./2.
+					3./2.,-2.,1./2. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			),
 			std::numeric_limits<

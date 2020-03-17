@@ -21,48 +21,50 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	ui2_vector
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	ui2_vector;
+	>;
 
-	typedef
+	using
+	i2_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	i2_vector;
+	>;
 
 	ui2_vector vec(
-		0u,
-		0u
+		0U,
+		0U
 	);
 
 	vec +=
 		ui2_vector(
-			1u,
-			2u
+			1U,
+			2U
 		);
 
 	REQUIRE(
 		vec
 		==
 		ui2_vector(
-			1u,
-			2u
+			1U,
+			2U
 		)
 	);
 
-	vec *= 2u;
+	vec *= 2U;
 
 	REQUIRE(
 		vec
 		==
 		ui2_vector(
-			2u,
-			4u
+			2U,
+			4U
 		)
 	);
 
@@ -88,12 +90,13 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	i2_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	i2_vector;
+	>;
 
 	CHECK(
 		i2_vector(

@@ -20,30 +20,32 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	uimat2
+	=
 	fcppt::math::matrix::static_<
 		unsigned,
 		2,
 		2
-	>
-	uimat2;
+	>;
 
-	typedef
+	using
+	imat2
+	=
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	>
-	imat2;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::map(
 			uimat2{
 				fcppt::math::matrix::row(
-					1u,2u
+					1U,2U
 				),
 				fcppt::math::matrix::row(
-					3u,4u
+					3U,4U
 				)
 			},
 			[](

@@ -39,22 +39,23 @@ make_homogenous_pair(
 )
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::type_traits::remove_cv_ref_t<
 				Type1
 			>,
 			fcppt::type_traits::remove_cv_ref_t<
 				Type2
 			>
-		>::value,
+		>,
 		"Type1 and Type2 must be the same decayed type"
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Type1
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::homogenous_pair<

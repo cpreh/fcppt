@@ -47,6 +47,7 @@ struct make_literal<
 	get(
 		Fundamental const _fundamental
 	)
+	noexcept
 	{
 		FCPPT_CHECK_LITERAL_CONVERSION(
 			Type,

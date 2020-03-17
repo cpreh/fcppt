@@ -19,11 +19,12 @@
 namespace
 {
 
-typedef
+using
+string_vector
+=
 std::vector<
 	std::string
->
-string_vector;
+>;
 
 template<
 	bool IsConst
@@ -70,27 +71,31 @@ class iterator_tpl
 		>
 {
 public:
-	typedef
+	using
+	base
+	=
 	base_type<
 		IsConst
-	>
-	base;
+	>;
 
-	typedef
+	using
+	reference
+	=
 	typename
-	base::reference
-	reference;
+	base::reference;
 
-	typedef
+	using
+	difference_type
+	=
 	typename
-	base::difference_type
-	difference_type;
+	base::difference_type;
 
-	typedef
+	using
+	impl_type
+	=
 	iterator_type<
 		IsConst
-	>
-	impl_type;
+	>;
 
 	iterator_tpl()
 	:
@@ -109,6 +114,7 @@ public:
 	{
 	}
 
+	[[nodiscard]]
 	reference
 	dereference() const
 	{
@@ -122,6 +128,7 @@ public:
 		++impl_;
 	}
 
+	[[nodiscard]]
 	bool
 	equal(
 		iterator_tpl const &_other
@@ -148,6 +155,7 @@ public:
 			_diff;
 	}
 
+	[[nodiscard]]
 	difference_type
 	distance_to(
 		iterator_tpl const &_other
@@ -162,22 +170,25 @@ private:
 	impl_type impl_;
 };
 
-typedef
+using
+const_iterator
+=
 iterator_tpl<
 	true
->
-const_iterator;
+>;
 
-typedef
+using
+iterator
+=
 iterator_tpl<
 	false
->
-iterator;
+>;
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects,cert-err58-cpp)
 string_vector const vec_c{
 	"1",
 	"2",
@@ -193,7 +204,9 @@ TEST_CASE(
 	"[iterator]"
 )
 {
-	iterator it1{}, it2{};
+	iterator it1{};
+
+	iterator it2{};
 
 	CHECK(
 		it1

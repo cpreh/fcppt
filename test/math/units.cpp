@@ -24,51 +24,58 @@ TEST_CASE(
 	"[math]"
 )
 {
-	typedef
-	int
-	unit_type;
+	using
+	unit_type
+	=
+	int;
 
-	typedef
+	using
+	length
+	=
 	boost::units::quantity<
 		boost::units::si::length,
 		unit_type
-	>
-	length;
+	>;
 
-	typedef
+	using
+	time
+	=
 	boost::units::quantity<
 		boost::units::si::time,
 		unit_type
-	>
-	time;
+	>;
 
-	typedef
+	using
+	velocity
+	=
 	boost::units::quantity<
 		boost::units::si::velocity,
 		unit_type
-	>
-	velocity;
+	>;
 
-	typedef
+	using
+	length2
+	=
 	fcppt::math::vector::static_<
 		length,
 		2
-	>
-	length2;
+	>;
 
-	typedef
+	using
+	time2
+	=
 	fcppt::math::vector::static_<
 		time,
 		2
-	>
-	time2;
+	>;
 
-	typedef
+	using
+	velocity2
+	=
 	fcppt::math::vector::static_<
 		velocity,
 		2
-	>
-	velocity2;
+	>;
 
 	length2 const l1(
 		length(

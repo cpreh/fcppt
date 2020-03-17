@@ -16,17 +16,17 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	uivector2
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	uivector2;
+	>;
 
-	uivector2 const
-		vec1(1u, 2u),
-		vec2(1u, 2u),
-		vec3(2u, 2u);
+	uivector2 const vec1(1U, 2U);
+	uivector2 const vec2(1U, 2U);
+	uivector2 const vec3(2U, 2U);
 
 	CHECK(
 		vec1

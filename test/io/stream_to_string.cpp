@@ -21,6 +21,7 @@ TEST_CASE(
 )
 {
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream istream{
 			"TEST abcd"
 		};
@@ -39,6 +40,7 @@ TEST_CASE(
 	}
 
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		std::istringstream istream{};
 
 		CHECK(

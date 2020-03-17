@@ -11,25 +11,24 @@
 int
 main()
 {
-	typedef
+	using
+	large_matrix_type
+	=
 	fcppt::math::matrix::static_<
 		double,
 		3,
 		3
-	>
-	large_matrix_type;
+	>;
 
 	static_assert(
 		fcppt::math::matrix::is_matrix<
 			large_matrix_type
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::math::matrix::is_matrix<
 			int
-		>::value,
-		""
+		>::value
 	);
 }

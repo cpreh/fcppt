@@ -31,14 +31,15 @@ TEST_CASE(
 	"[enum]"
 )
 {
-	typedef
+	using
+	my_array
+	=
 	fcppt::enum_::array<
 		my_enum,
 		int
-	>
-	my_array;
+	>;
 
-	my_array const array(
+	auto const array(
 		fcppt::enum_::array_init<
 			my_array
 		>(

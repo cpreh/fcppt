@@ -16,26 +16,27 @@ TEST_CASE(
 	"[math],[dim]"
 )
 {
-	typedef
+	using
+	f2_dim
+	=
 	fcppt::math::dim::static_<
 		float,
 		2
-	>
-	f2_dim;
+	>;
 
 	float const epsilon(
-		0.00001f
+		0.00001F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	CHECK(
 		fcppt::math::dim::componentwise_equal(
 			f2_dim(
-				1.f,
-				2.f
+				1.F,
+				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			f2_dim(
-				1.f,
-				2.f
+				1.F,
+				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			epsilon
 		)
@@ -44,12 +45,12 @@ TEST_CASE(
 	CHECK_FALSE(
 		fcppt::math::dim::componentwise_equal(
 			f2_dim(
-				1.f,
-				2.f
+				1.F,
+				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			f2_dim(
-				1.1f,
-				2.f
+				1.1F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			epsilon
 		)

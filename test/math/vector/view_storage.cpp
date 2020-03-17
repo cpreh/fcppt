@@ -26,31 +26,37 @@ template<
 class view_storage
 {
 public:
-	typedef
-	T
-	value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef
-	fcppt::math::size_type
-	size_type;
+	using
+	size_type
+	=
+	fcppt::math::size_type;
 
-	typedef
+	using
+	storage_size
+	=
 	fcppt::math::static_size<
 		N
-	>
-	storage_size;
+	>;
 
-	typedef
-	value_type *
-	pointer;
+	using
+	pointer
+	=
+	value_type *;
 
-	typedef
-	value_type &
-	reference;
+	using
+	reference
+	=
+	value_type &;
 
-	typedef
-	value_type const &
-	const_reference;
+	using
+	const_reference
+	=
+	value_type const &;
 
 	explicit
 	view_storage(
@@ -95,24 +101,26 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	unsigned_view_storage
+	=
 	view_storage<
 		unsigned,
 		2
-	>
-	unsigned_view_storage;
+	>;
 
-	typedef
+	using
+	view_vector
+	=
 	fcppt::math::vector::object<
 		unsigned,
 		2,
 		unsigned_view_storage
-	>
-	view_vector;
+	>;
 
 	std::array<
 		unsigned,
-		2u
+		2U
 	> array{{
 		1,
 		2
@@ -124,12 +132,13 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	uivector2
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	uivector2;
+	>;
 
 	uivector2 const vec(
 		view

@@ -16,6 +16,7 @@
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <type_traits>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
@@ -55,13 +56,13 @@ from_int_exn(
 )
 {
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			Value
-		>::value
+		>
 		&&
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"cast_to_enum can only cast from unsigned types to enumeration types"
 	);
 
@@ -81,7 +82,7 @@ from_int_exn(
 						+
 						fcppt::output_to_fcppt_string(
 							fcppt::cast::size<
-								unsigned long long
+								std::uintmax_t
 							>(
 								_value
 							)

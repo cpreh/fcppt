@@ -20,17 +20,18 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		fcppt::homogenous_pair<
 			fcppt::math::size_type
 		>,
 		4,
 		4
-	>
-	matrix_type;
+	>;
 
-	matrix_type const mat(
+	auto const mat(
 		fcppt::math::matrix::init<
 			matrix_type
 		>(
@@ -56,8 +57,8 @@ TEST_CASE(
 		mat.m00()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			0u
+			0U,
+			0U
 		)
 	);
 
@@ -65,8 +66,8 @@ TEST_CASE(
 		mat.m01()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			1u
+			0U,
+			1U
 		)
 	);
 
@@ -74,8 +75,8 @@ TEST_CASE(
 		mat.m02()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			2u
+			0U,
+			2U
 		)
 	);
 
@@ -83,8 +84,8 @@ TEST_CASE(
 		mat.m03()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			3u
+			0U,
+			3U
 		)
 	);
 
@@ -93,8 +94,8 @@ TEST_CASE(
 		mat_nc.m00()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			0u
+			0U,
+			0U
 		)
 	);
 
@@ -102,8 +103,8 @@ TEST_CASE(
 		mat_nc.m01()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			1u
+			0U,
+			1U
 		)
 	);
 
@@ -111,8 +112,8 @@ TEST_CASE(
 		mat_nc.m02()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			2u
+			0U,
+			2U
 		)
 	);
 
@@ -120,8 +121,8 @@ TEST_CASE(
 		mat_nc.m03()
 		==
 		fcppt::make_homogenous_pair(
-			0u,
-			3u
+			0U,
+			3U
 		)
 	);
 
@@ -130,8 +131,8 @@ TEST_CASE(
 		mat.m10()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			0u
+			1U,
+			0U
 		)
 	);
 
@@ -139,8 +140,8 @@ TEST_CASE(
 		mat.m11()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			1u
+			1U,
+			1U
 		)
 	);
 
@@ -148,8 +149,8 @@ TEST_CASE(
 		mat.m12()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			2u
+			1U,
+			2U
 		)
 	);
 
@@ -157,8 +158,8 @@ TEST_CASE(
 		mat.m13()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			3u
+			1U,
+			3U
 		)
 	);
 
@@ -167,8 +168,8 @@ TEST_CASE(
 		mat_nc.m10()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			0u
+			1U,
+			0U
 		)
 	);
 
@@ -176,8 +177,8 @@ TEST_CASE(
 		mat_nc.m11()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			1u
+			1U,
+			1U
 		)
 	);
 
@@ -185,8 +186,8 @@ TEST_CASE(
 		mat_nc.m12()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			2u
+			1U,
+			2U
 		)
 	);
 
@@ -194,8 +195,8 @@ TEST_CASE(
 		mat_nc.m13()
 		==
 		fcppt::make_homogenous_pair(
-			1u,
-			3u
+			1U,
+			3U
 		)
 	);
 
@@ -204,8 +205,8 @@ TEST_CASE(
 		mat.m20()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			0u
+			2U,
+			0U
 		)
 	);
 
@@ -213,8 +214,8 @@ TEST_CASE(
 		mat.m21()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			1u
+			2U,
+			1U
 		)
 	);
 
@@ -222,8 +223,8 @@ TEST_CASE(
 		mat.m22()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			2u
+			2U,
+			2U
 		)
 	);
 
@@ -231,8 +232,8 @@ TEST_CASE(
 		mat.m23()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			3u
+			2U,
+			3U
 		)
 	);
 
@@ -241,8 +242,8 @@ TEST_CASE(
 		mat_nc.m20()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			0u
+			2U,
+			0U
 		)
 	);
 
@@ -250,8 +251,8 @@ TEST_CASE(
 		mat_nc.m21()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			1u
+			2U,
+			1U
 		)
 	);
 
@@ -259,8 +260,8 @@ TEST_CASE(
 		mat_nc.m22()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			2u
+			2U,
+			2U
 		)
 	);
 
@@ -268,8 +269,8 @@ TEST_CASE(
 		mat_nc.m23()
 		==
 		fcppt::make_homogenous_pair(
-			2u,
-			3u
+			2U,
+			3U
 		)
 	);
 
@@ -278,8 +279,8 @@ TEST_CASE(
 		mat.m30()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			0u
+			3U,
+			0U
 		)
 	);
 
@@ -287,8 +288,8 @@ TEST_CASE(
 		mat.m31()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			1u
+			3U,
+			1U
 		)
 	);
 
@@ -296,8 +297,8 @@ TEST_CASE(
 		mat.m32()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			2u
+			3U,
+			2U
 		)
 	);
 
@@ -305,8 +306,8 @@ TEST_CASE(
 		mat.m33()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			3u
+			3U,
+			3U
 		)
 	);
 
@@ -315,8 +316,8 @@ TEST_CASE(
 		mat_nc.m30()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			0u
+			3U,
+			0U
 		)
 	);
 
@@ -324,8 +325,8 @@ TEST_CASE(
 		mat_nc.m31()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			1u
+			3U,
+			1U
 		)
 	);
 
@@ -333,8 +334,8 @@ TEST_CASE(
 		mat_nc.m32()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			2u
+			3U,
+			2U
 		)
 	);
 
@@ -342,8 +343,8 @@ TEST_CASE(
 		mat_nc.m33()
 		==
 		fcppt::make_homogenous_pair(
-			3u,
-			3u
+			3U,
+			3U
 		)
 	);
 }

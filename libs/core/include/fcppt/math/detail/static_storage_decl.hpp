@@ -90,12 +90,7 @@ public:
 
 	explicit
 	static_storage(
-		array_type &&
-	);
-
-	explicit
-	static_storage(
-		array_type const &
+		array_type
 	);
 
 	[[nodiscard]]

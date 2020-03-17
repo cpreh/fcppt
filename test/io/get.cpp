@@ -18,15 +18,17 @@ TEST_CASE(
 	"[io]"
 )
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::istringstream stream{
 		"x"
 	};
 
-	typedef
+	using
+	optional_char
+	=
 	fcppt::optional::object<
 		char
-	>
-	optional_char;
+	>;
 
 	CHECK(
 		fcppt::io::get(

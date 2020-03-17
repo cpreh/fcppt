@@ -25,7 +25,7 @@ namespace
 {
 
 float const epsilon{
-	0.001f
+	0.001F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 };
 
 template<
@@ -52,20 +52,22 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		float,
 		4,
 		4
-	>
-	matrix_type;
+	>;
 
-	typedef
+	using
+	vector_rotation_type
+	=
 	fcppt::math::vector::static_<
 		float,
 		3
-	>
-	vector_rotation_type;
+	>;
 
 	matrix_type const trans(
 		fcppt::math::matrix::rotation_axis(
@@ -73,25 +75,26 @@ TEST_CASE(
 				float
 			>(),
 			vector_rotation_type(
-				1.f,
-				0.f,
-				0.f
+				1.F,
+				0.F,
+				0.F
 			)
 		)
 	);
 
-	typedef
+	using
+	vector_type
+	=
 	fcppt::math::vector::static_<
 		float,
 		4
-	>
-	vector_type;
+	>;
 
 	vector_type const vec(
-		0.f,
-		1.f,
-		0.f,
-		1.f
+		0.F,
+		1.F,
+		0.F,
+		1.F
 	);
 
 	CHECK(
@@ -100,10 +103,10 @@ TEST_CASE(
 			*
 			vec,
 			vector_type(
-				0.f,
-				-1.f,
-				0.f,
-				1.f
+				0.F,
+				-1.F,
+				0.F,
+				1.F
 			),
 			epsilon
 		)
@@ -112,11 +115,11 @@ TEST_CASE(
 	CHECK(
 		::compare_matrices(
 			fcppt::math::matrix::rotation_axis(
-				0.0f,
+				0.F,
 				vector_rotation_type(
-					0.f,
-					0.f,
-					0.f
+					0.F,
+					0.F,
+					0.F
 				)
 			),
 			fcppt::math::matrix::identity<
@@ -130,7 +133,7 @@ TEST_CASE(
 			float
 		>()
 		/
-		2.f
+		2.F
 	};
 
 	CHECK(
@@ -138,9 +141,9 @@ TEST_CASE(
 			fcppt::math::matrix::rotation_axis(
 				angle,
 				vector_rotation_type(
-					1.0f,
-					0.0f,
-					0.0f
+					1.F,
+					0.F,
+					0.F
 				)
 			),
 			fcppt::math::matrix::rotation_x(
@@ -154,9 +157,9 @@ TEST_CASE(
 			fcppt::math::matrix::rotation_axis(
 				angle,
 				vector_rotation_type(
-					0.0f,
-					1.0f,
-					0.0f
+					0.F,
+					1.F,
+					0.F
 				)
 			),
 			fcppt::math::matrix::rotation_y(
@@ -170,9 +173,9 @@ TEST_CASE(
 			fcppt::math::matrix::rotation_axis(
 				angle,
 				vector_rotation_type(
-					0.0f,
-					0.0f,
-					1.0f
+					0.F,
+					0.F,
+					1.F
 				)
 			),
 			fcppt::math::matrix::rotation_z(

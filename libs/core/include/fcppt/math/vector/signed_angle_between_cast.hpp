@@ -61,18 +61,19 @@ signed_angle_between_cast(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			Dest
-		>::value,
+		>,
 		"signed_angle_between_cast can only be used on vectors of floating-point type"
 	);
 
-	typedef
+	using
+	intermediate_type
+	=
 	fcppt::math::vector::static_<
 		Dest,
 		2
-	>
-	intermediate_type;
+	>;
 
 	return
 		fcppt::math::vector::signed_angle_between(

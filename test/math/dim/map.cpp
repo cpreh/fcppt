@@ -19,25 +19,27 @@ TEST_CASE(
 	"[math],[dim]"
 )
 {
-	typedef
+	using
+	ui2_dim
+	=
 	fcppt::math::dim::static_<
 		unsigned,
 		2
-	>
-	ui2_dim;
+	>;
 
-	typedef
+	using
+	i2_dim
+	=
 	fcppt::math::dim::static_<
 		int,
 		2
-	>
-	i2_dim;
+	>;
 
 	CHECK(
 		fcppt::math::dim::map(
 			ui2_dim(
-				10u,
-				20u
+				10U,
+				20U
 			),
 			[](
 				unsigned const _val

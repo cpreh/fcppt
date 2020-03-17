@@ -16,12 +16,13 @@ TEST_CASE(
 	"[math],[dim]"
 )
 {
-	typedef
+	using
+	dim2
+	=
 	fcppt::math::dim::static_<
 		int,
 		2
-	>
-	dim2;
+	>;
 
 	dim2 const dim_c(
 		1,
@@ -59,7 +60,7 @@ TEST_CASE(
 	>(
 		dim_m
 	) =
-		42;
+		42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	CHECK(
 		fcppt::math::dim::at<
@@ -68,6 +69,6 @@ TEST_CASE(
 			dim_m
 		)
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }

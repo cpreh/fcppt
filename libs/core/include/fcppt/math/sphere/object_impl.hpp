@@ -10,6 +10,9 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/sphere/object_decl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -20,15 +23,19 @@ fcppt::math::sphere::object<
 	T,
 	N
 >::object(
-	point_type const &_origin,
-	const_reference _radius
+	point_type _origin,
+	value_type _radius
 )
 :
 	origin_(
-		_origin
+		std::move(
+			_origin
+		)
 	),
 	radius_(
-		_radius
+		std::move(
+			_radius
+		)
 	)
 {
 }

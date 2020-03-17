@@ -36,33 +36,48 @@ template<
 class object
 {
 public:
-	typedef T value_type;
+	using
+	value_type
+	=
+	T;
 
-	typedef T &reference;
+	using
+	reference
+	=
+	T &;
 
-	typedef T const &const_reference;
+	using
+	const_reference
+	=
+	T const &;
 
-	typedef
+	using
+	point_type
+	=
 	fcppt::math::vector::static_<
 		value_type,
 		N
-	> point_type;
+	>;
 
 	/// Constructs a sphere from @a origin and @a radius
 	object(
-		point_type const &origin,
-		const_reference radius
+		point_type origin,
+		value_type radius
 	);
 
+	[[nodiscard]]
 	point_type &
 	origin();
 
+	[[nodiscard]]
 	point_type const &
 	origin() const;
 
+	[[nodiscard]]
 	reference
 	radius();
 
+	[[nodiscard]]
 	const_reference
 	radius() const;
 private:

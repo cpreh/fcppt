@@ -44,9 +44,9 @@ trigonometric(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			Float
-		>::value,
+		>,
 		"trigonometric can only be used on floating point types"
 	);
 
@@ -55,7 +55,7 @@ trigonometric(
 			fcppt::literal<
 				Float
 			>(
-				0.5
+				0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 			*
 			(

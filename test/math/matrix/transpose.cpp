@@ -19,21 +19,23 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		3
-	>
-	matrix_type;
+	>;
 
-	typedef
+	using
+	transposed_matrix_type
+	=
 	fcppt::math::matrix::static_<
 		int,
 		3,
 		2
-	>
-	transposed_matrix_type;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::transpose(

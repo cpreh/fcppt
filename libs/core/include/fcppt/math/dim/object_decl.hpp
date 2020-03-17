@@ -120,11 +120,10 @@ public:
 
 	/**
 	\brief Construct a dim from a storage source
-	\param s The storage source to copy from
 	*/
 	explicit
 	object(
-		storage_type const &s
+		storage_type &&
 	);
 
 	template<

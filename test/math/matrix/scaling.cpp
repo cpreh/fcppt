@@ -23,13 +23,14 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		int,
 		4,
 		4
-	>
-	matrix_type;
+	>;
 
 	matrix_type const trans(
 		fcppt::math::matrix::scaling(
@@ -58,12 +59,13 @@ TEST_CASE(
 		)
 	);
 
-	typedef
+	using
+	vector_type
+	=
 	fcppt::math::vector::static_<
 		int,
 		4
-	>
-	vector_type;
+	>;
 
 	vector_type const vec(
 		1,

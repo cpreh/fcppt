@@ -106,11 +106,13 @@ fcppt::math::matrix::object<
 	C,
 	S
 >::object(
-	storage_type const &_storage
+	storage_type &&_storage
 )
 :
 	storage_(
-		_storage
+		std::move(
+			_storage
+		)
 	)
 {
 }

@@ -17,13 +17,14 @@
 namespace
 {
 
-typedef
+using
+mat2
+=
 fcppt::math::matrix::static_<
 	int,
 	2,
 	2
->
-mat2;
+>;
 
 }
 
@@ -38,17 +39,17 @@ TEST_CASE(
 				1,2
 			),
 			fcppt::math::matrix::row(
-				3,4
+				3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		};
 
 		left +=
 			mat2{
 				fcppt::math::matrix::row(
-					5,6
+					5,6 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
-					7,8
+					7,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			};
 
@@ -57,10 +58,10 @@ TEST_CASE(
 			==
 			mat2(
 				fcppt::math::matrix::row(
-					6,8
+					6,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
-					10,12
+					10,12 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			)
 		);
@@ -72,14 +73,14 @@ TEST_CASE(
 				1,2
 			),
 			fcppt::math::matrix::row(
-				3,4
+				3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		};
 
 		left -=
 			mat2{
 				fcppt::math::matrix::row(
-					2,4
+					2,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
 					1,2
@@ -106,22 +107,22 @@ TEST_CASE(
 				1,2
 			),
 			fcppt::math::matrix::row(
-				3,4
+				3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		};
 
 		left *=
-			2;
+			2; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 		CHECK(
 			left
 			==
 			mat2(
 				fcppt::math::matrix::row(
-					2,4
+					2,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				fcppt::math::matrix::row(
-					6,8
+					6,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			)
 		);
@@ -140,25 +141,25 @@ TEST_CASE(
 				1,2
 			),
 			fcppt::math::matrix::row(
-				3,4
+				3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 		+
 		mat2(
 			fcppt::math::matrix::row(
-				5,6
+				5,6 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				7,8
+				7,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 		==
 		mat2(
 			fcppt::math::matrix::row(
-				6,8
+				6,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				10,12
+				10,12 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -166,16 +167,16 @@ TEST_CASE(
 	CHECK(
 		mat2(
 			fcppt::math::matrix::row(
-				5,6
+				5,6 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				7,8
+				7,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 		-
 		mat2(
 			fcppt::math::matrix::row(
-				4,3
+				4,3 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
 				2,1
@@ -184,10 +185,10 @@ TEST_CASE(
 		==
 		mat2(
 			fcppt::math::matrix::row(
-				1,3
+				1,3 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				5,7
+				5,7 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -198,7 +199,7 @@ TEST_CASE(
 				1,2
 			),
 			fcppt::math::matrix::row(
-				3,4
+				3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 		*
@@ -206,10 +207,10 @@ TEST_CASE(
 		==
 		mat2(
 			fcppt::math::matrix::row(
-				2,4
+				2,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				6,8
+				6,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -222,16 +223,16 @@ TEST_CASE(
 				1,2
 			),
 			fcppt::math::matrix::row(
-				3,4
+				3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 		==
 		mat2(
 			fcppt::math::matrix::row(
-				2,4
+				2,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			fcppt::math::matrix::row(
-				6,8
+				6,8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);

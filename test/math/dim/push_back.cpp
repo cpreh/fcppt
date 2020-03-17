@@ -18,19 +18,21 @@ TEST_CASE(
 	"[math],[dim]"
 )
 {
-	typedef
+	using
+	i2_dim
+	=
 	fcppt::math::dim::static_<
 		int,
 		2
-	>
-	i2_dim;
+	>;
 
-	typedef
+	using
+	i3_dim
+	=
 	fcppt::math::dim::static_<
 		int,
 		3
-	>
-	i3_dim;
+	>;
 
 	CHECK(
 		i3_dim(

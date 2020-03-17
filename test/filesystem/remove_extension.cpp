@@ -18,11 +18,11 @@ TEST_CASE(
 )
 {
 	std::filesystem::path const path1(
-		std::filesystem::path(
+		std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
 			FCPPT_TEXT("foo")
 		)
 		/
-		std::filesystem::path(
+		std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
 			FCPPT_TEXT("bar")
 		)
 	);
@@ -37,7 +37,7 @@ TEST_CASE(
 
 	std::filesystem::path const path2(
 		path1
-		/ FCPPT_TEXT("baz.txt")
+		/ FCPPT_TEXT("baz.txt") // NOLINT(fuchsia-default-arguments-calls)
 	);
 
 	CHECK(
@@ -47,6 +47,6 @@ TEST_CASE(
 		==
 		path1
 		/
-		FCPPT_TEXT("baz")
+		FCPPT_TEXT("baz") // NOLINT(fuchsia-default-arguments-calls)
 	);
 }

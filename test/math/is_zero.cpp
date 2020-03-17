@@ -23,7 +23,7 @@ TEST_CASE(
 
 	CHECK(
 		fcppt::math::is_zero(
-			0.f
+			0.F
 		)
 	);
 

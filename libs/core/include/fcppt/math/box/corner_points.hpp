@@ -57,14 +57,17 @@ corner_points(
 	> const &_box
 )
 {
-	typedef
+	using
+	vector_type
+	=
 	fcppt::math::vector::static_<
 		T,
 		N
-	>
-	vector_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	std::array<
 		vector_type,
 		fcppt::math::power_of_2<
@@ -72,8 +75,7 @@ corner_points(
 		>(
 			N
 		)
-	>
-	result_type;
+	>;
 
 	result_type const corners(
 		fcppt::math::vector::bit_strings<

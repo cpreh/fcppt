@@ -17,11 +17,11 @@ TEST_CASE(
 {
 	CHECK(
 		fcppt::math::diff(
-			10u,
-			20u
+			10U,
+			20U
 		)
 		==
-		10u
+		10U
 	);
 
 	CHECK(

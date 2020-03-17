@@ -46,30 +46,13 @@ fcppt::math::detail::static_storage<
 	T,
 	N
 >::static_storage(
-	array_type &&_array
+	array_type _array
 )
 :
 	impl_(
 		std::move(
 			_array
 		)
-	)
-{
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-fcppt::math::detail::static_storage<
-	T,
-	N
->::static_storage(
-	array_type const &_array
-)
-:
-	impl_(
-		_array
 	)
 {
 }

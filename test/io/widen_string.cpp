@@ -17,7 +17,8 @@ TEST_CASE(
 	"[io]"
 )
 {
-	fcppt::io::ostringstream stream;
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+	fcppt::io::ostringstream stream{};
 
 	stream
 		<<

@@ -24,19 +24,21 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either_int;
+	>;
 
-	typedef
+	using
+	either_bool
+	=
 	fcppt::either::object<
 		std::string,
 		bool
-	>
-	either_bool;
+	>;
 
 	auto const map_function(
 		[](
@@ -46,7 +48,7 @@ TEST_CASE(
 			return
 				_value
 				>
-				10;
+				10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		}
 	);
 
@@ -70,7 +72,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::either::map(
 			either_int(
-				20
+				20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			map_function
 		)
@@ -86,18 +88,20 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		std::string,
 		int_movable
-	>
-	either_int;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		int_movable,
@@ -122,7 +126,7 @@ TEST_CASE(
 		fcppt::either::map(
 			either_int{
 				int_movable{
-					20
+					20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				}
 			},
 			map_function
@@ -134,7 +138,7 @@ TEST_CASE(
 		>{
 			strong_int_movable{
 				int_movable{
-					20
+					20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				}
 			}
 		}

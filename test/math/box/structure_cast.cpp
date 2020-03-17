@@ -19,19 +19,21 @@ TEST_CASE(
 	"[math],[box]"
 )
 {
-	typedef
+	using
+	box_f2
+	=
 	fcppt::math::box::object<
 		float,
 		2
-	>
-	box_f2;
+	>;
 
-	typedef
+	using
+	box_i2
+	=
 	fcppt::math::box::object<
 		int,
 		2
-	>
-	box_i2;
+	>;
 
 	CHECK(
 		fcppt::math::box::structure_cast<
@@ -40,12 +42,12 @@ TEST_CASE(
 		>(
 			box_f2{
 				box_f2::vector(
-					1.5f,
-					2.5f
+					1.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.5F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				),
 				box_f2::dim(
-					3.5f,
-					4.5f
+					3.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					4.5F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			}
 		)
@@ -57,7 +59,7 @@ TEST_CASE(
 			),
 			box_i2::dim(
 				3,
-				4
+				4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);

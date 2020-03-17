@@ -50,21 +50,24 @@ interval_distance(
 {
 	// handle symmetric cases by swapping
 	if (_i1.second <= _i2.second)
+	{
 		std::swap(_i1,_i2);
+	}
 
 	return
-	_i2.first <= _i1.first
-	?
-	// this difference represents
-	// either the positive distance between them or if they overlap,
-	// the amount by which they do (as negative "distance")
-	_i1.first - _i2.second
-	:
-	// one completely contains the other, so return the smaller of the two parts
-	std::max(
-		_i2.second - _i1.second,
-		_i1.first - _i2.first
-	);
+		_i2.first <= _i1.first
+		?
+		// this difference represents
+		// either the positive distance between them or if they overlap,
+		// the amount by which they do (as negative "distance")
+			_i1.first - _i2.second
+		:
+		// one completely contains the other, so return the smaller of the two parts
+			std::max(
+				_i2.second - _i1.second,
+				_i1.first - _i2.first
+			)
+		;
 }
 
 }

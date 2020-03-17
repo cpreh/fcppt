@@ -20,11 +20,12 @@ TEST_CASE(
 	"[math],[box]"
 )
 {
-	typedef
+	using
+	box2
+	=
 	fcppt::math::box::rect<
 		fcppt::math::size_type
-	>
-	box2;
+	>;
 
 	CHECK(
 		fcppt::math::box::init_max<
@@ -44,12 +45,12 @@ TEST_CASE(
 		==
 		box2(
 			box2::vector(
-				0u,
-				1u
+				0U,
+				1U
 			),
 			box2::vector(
-				0u,
-				1u
+				0U,
+				1U
 			)
 		)
 	);

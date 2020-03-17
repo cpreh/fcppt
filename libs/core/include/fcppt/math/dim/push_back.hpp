@@ -33,7 +33,7 @@ template<
 inline
 fcppt::math::dim::static_<
 	T,
-	N + 1u
+	N + 1U
 >
 push_back(
 	fcppt::math::dim::object<
@@ -48,7 +48,7 @@ push_back(
 		fcppt::math::detail::push_back<
 			fcppt::math::dim::static_<
 				T,
-				N + 1u
+				N + 1U
 			>
 		>(
 			_dim,

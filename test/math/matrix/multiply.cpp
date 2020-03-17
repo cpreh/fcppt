@@ -19,40 +19,42 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	mat3
+	=
 	fcppt::math::matrix::static_<
 		int,
 		3,
 		3
-	>
-	mat3;
+	>;
 
-	mat3 const
-		left(
-			fcppt::math::matrix::row(
-				1,2,3
-			),
-			fcppt::math::matrix::row(
-				4,5,6
-			),
-			fcppt::math::matrix::row(
-				7,8,9
-			)
+	mat3 const left(
+		fcppt::math::matrix::row(
+			1,2,3
 		),
-		right(
-			fcppt::math::matrix::row(
-				10,11,12
-			),
-			fcppt::math::matrix::row(
-				13,14,15
-			),
-			fcppt::math::matrix::row(
-				16,17,18
-			)
+		fcppt::math::matrix::row(
+			4,5,6
 		),
-		result(
-			left * right
-		);
+		fcppt::math::matrix::row(
+			7,8,9
+		)
+	);
+
+	mat3 const right(
+		fcppt::math::matrix::row(
+			10,11,12
+		),
+		fcppt::math::matrix::row(
+			13,14,15
+		),
+		fcppt::math::matrix::row(
+			16,17,18
+		)
+	);
+
+	mat3 const result(
+		left * right
+	);
 
 	CHECK(
 		result

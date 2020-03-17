@@ -47,14 +47,14 @@ stream_to_string(
 	std::basic_ostringstream<
 		Ch,
 		Traits
-	> output{};
+	> output{}; // NOLINT(fuchsia-default-arguments-calls)
 
 	output <<
 		_input.rdbuf();
 
 	return
 		fcppt::optional::make_if(
-			// TODO: What should we check here?
+			// TODO(philipp): What should we check here?
 			//_input.eof()
 			!_input.fail()
 			&&

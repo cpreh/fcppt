@@ -66,9 +66,11 @@ expect(
 				!=
 				_value
 			)
+			{
 				_stream.setstate(
 					std::ios_base::failbit
 				);
+			}
 		}
 	);
 

@@ -20,11 +20,12 @@ namespace
 
 class test_class;
 
-typedef
+using
+test_list
+=
 fcppt::intrusive::list<
 	test_class
->
-test_list;
+>;
 
 class test_class
 :
@@ -38,7 +39,7 @@ class test_class
 	);
 public:
 	test_class(
-		test_list &_list,
+		test_list &_list, //NOLINT(google-runtime-references)
 		int const _value
 	)
 	:
@@ -56,6 +57,7 @@ public:
 	test_class(
 		test_class &&
 	)
+	noexcept
 	=
 	default;
 
@@ -63,13 +65,14 @@ public:
 	operator=(
 		test_class &&
 	)
+	noexcept
 	=
 	default;
 
 	~test_class()
-	{
-	}
+	= default;
 
+	[[nodiscard]]
 	int
 	value() const
 	{
@@ -101,7 +104,7 @@ TEST_CASE(
 	{
 		test_class test1{
 			my_list,
-			42
+			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		};
 
 		CHECK(
@@ -114,7 +117,7 @@ TEST_CASE(
 		);
 
 		CHECK(
-			std::next(
+			std::next( // NOLINT(fuchsia-default-arguments-calls)
 				my_list.begin()
 			)
 			==
@@ -124,14 +127,13 @@ TEST_CASE(
 		{
 			test_class test2{
 				my_list,
-				10
+				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			};
 
 			CHECK(
-				std::next(
-					std::next(
-						my_list.begin()
-					)
+				std::next( // NOLINT(fuchsia-default-arguments-calls)
+					my_list.begin(),
+					2
 				)
 				==
 				my_list.end()
@@ -149,15 +151,15 @@ TEST_CASE(
 			CHECK(
 				my_list.begin()->value()
 				==
-				42
+				42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			);
 
 			CHECK(
-				std::next(
+				std::next( // NOLINT(fuchsia-default-arguments-calls)
 					my_list.begin()
 				)->value()
 				==
-				10
+				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			);
 
 			test_class test3{
@@ -177,7 +179,7 @@ TEST_CASE(
 		}
 
 		CHECK(
-			std::next(
+			std::next( // NOLINT(fuchsia-default-arguments-calls)
 				my_list.begin()
 			)
 			==
@@ -191,11 +193,7 @@ TEST_CASE(
 		};
 
 		CHECK(
-			my_list.empty()
-		);
-
-		CHECK(
-			std::next(
+			std::next( // NOLINT(fuchsia-default-arguments-calls)
 				my_list2.begin()
 			)
 			==
@@ -216,13 +214,13 @@ TEST_CASE(
 			my_list
 		)
 		==
-		0u
+		0U
 	);
 
 	{
 		test_class test1{
 			my_list,
-			42
+			0
 		};
 
 		REQUIRE(
@@ -230,13 +228,13 @@ TEST_CASE(
 				my_list
 			)
 			==
-			1u
+			1U
 		);
 
 		{
 			test_class test2{
 				my_list,
-				42
+				0
 			};
 
 			REQUIRE(
@@ -244,7 +242,7 @@ TEST_CASE(
 					my_list
 				)
 				==
-				2u
+				2U
 			);
 		}
 
@@ -253,7 +251,7 @@ TEST_CASE(
 				my_list
 			)
 			==
-			1u
+			1U
 		);
 	}
 
@@ -262,13 +260,13 @@ TEST_CASE(
 			my_list
 		)
 		==
-		0u
+		0U
 	);
 
 	{
 		test_class test1{
 			my_list,
-			42
+			0
 		};
 
 		REQUIRE(
@@ -276,13 +274,13 @@ TEST_CASE(
 				my_list
 			)
 			==
-			1u
+			1U
 		);
 
 		{
 			test_class test2{
 				my_list,
-				42
+				0
 			};
 
 			REQUIRE(
@@ -290,7 +288,7 @@ TEST_CASE(
 					my_list
 				)
 				==
-				2u
+				2U
 			);
 		}
 
@@ -299,7 +297,7 @@ TEST_CASE(
 				my_list
 			)
 			==
-			1u
+			1U
 		);
 	}
 }

@@ -35,9 +35,10 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
 fcppt::enum_::names_array<
 	test_enum
-> const names{{{
+> const names{{{ // NOLINT(cert-err58-cpp)
 	FCPPT_TEXT("test1"),
 	FCPPT_TEXT("test2"),
 	FCPPT_TEXT("test3")
@@ -47,9 +48,7 @@ FCPPT_PP_POP_WARNING
 
 }
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 
 template<>
@@ -68,7 +67,6 @@ struct names_impl<
 	}
 };
 
-}
 }
 
 TEST_CASE(

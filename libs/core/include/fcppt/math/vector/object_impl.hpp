@@ -86,11 +86,13 @@ fcppt::math::vector::object<
 	N,
 	S
 >::object(
-	storage_type const &_storage
+	storage_type &&_storage
 )
 :
 	storage_(
-		_storage
+		std::move(
+			_storage
+		)
 	)
 {
 }

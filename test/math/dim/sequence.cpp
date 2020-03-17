@@ -21,38 +21,40 @@ TEST_CASE(
 	"[math],[dim]"
 )
 {
-	typedef
+	using
+	ui2_dim
+	=
 	fcppt::math::dim::static_<
 		unsigned,
 		2
-	>
-	ui2_dim;
+	>;
 
-	typedef
+	using
+	ui2_dim_opt
+	=
 	fcppt::math::dim::static_<
 		fcppt::optional::object<
 			unsigned
 		>,
 		2
-	>
-	ui2_dim_opt;
+	>;
 
 	CHECK(
 		fcppt::math::dim::sequence(
 			ui2_dim_opt{
 				fcppt::optional::make(
-					10u
+					10U
 				),
 				fcppt::optional::make(
-					20u
+					20U
 				)
 			}
 		)
 		==
 		fcppt::optional::make(
 			ui2_dim{
-				10u,
-				20u
+				10U,
+				20U
 			}
 		)
 	);
@@ -64,7 +66,7 @@ TEST_CASE(
 					unsigned
 				>{},
 				fcppt::optional::make(
-					20u
+					20U
 				)
 			}
 		)

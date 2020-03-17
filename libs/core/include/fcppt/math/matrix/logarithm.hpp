@@ -54,23 +54,28 @@ logarithm(
 	> A,
 	T const e1,
 	T const e2,
-	T const e3)
+	T const e3
+)
 {
 	static_assert(
-		std::is_floating_point<T>::value,
+		std::is_floating_point_v<
+			T
+		>,
 		"logarithm can only be used on floating point types"
 	);
 
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		T,
 		N,
 		N
-	>
-	matrix_type;
+	>;
 
-	fcppt::math::size_type k =
-		0u;
+	fcppt::math::size_type k{
+		0U
+	};
 
 	while(
 		fcppt::math::matrix::infinity_norm(
@@ -87,7 +92,8 @@ logarithm(
 		A =
 			fcppt::math::matrix::sqrt(
 				A,
-				e3);
+				e3
+			);
 		k++;
 	}
 
@@ -96,14 +102,17 @@ logarithm(
 			matrix_type
 		>();
 
-	matrix_type
-		Z =
-			A,
-		X =
-			A;
+	matrix_type Z{
+		A
+	};
 
-	fcppt::math::size_type i =
-		1u;
+	matrix_type X{
+		A
+	};
+
+	fcppt::math::size_type i{
+		1U
+	};
 
 	while(fcppt::math::matrix::infinity_norm(Z) > e2)
 	{
@@ -117,6 +126,7 @@ logarithm(
 	}
 
 	if(k != fcppt::literal<fcppt::math::size_type>(0))
+	{
 		X =
 			fcppt::cast::int_to_float<
 				T
@@ -124,17 +134,19 @@ logarithm(
 				fcppt::literal<
 					fcppt::math::size_type
 				>(
-					1u
+					1U
 				)
 				<<
 				k
 			)
 			*
 			X;
+	}
 
 	return
 		X;
 }
+
 }
 }
 }

@@ -26,19 +26,21 @@ TEST_CASE(
 		int_strong
 	);
 
-	typedef
+	using
+	either_string
+	=
 	fcppt::either::object<
 		std::string,
 		int_strong
-	>
-	either_string;
+	>;
 
-	typedef
+	using
+	either_char
+	=
 	fcppt::either::object<
 		char,
 		int_strong
-	>
-	either_char;
+	>;
 
 	auto const map_function(
 		[](

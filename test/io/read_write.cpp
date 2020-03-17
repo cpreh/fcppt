@@ -18,11 +18,12 @@
 namespace
 {
 
-typedef
+using
+optional_int
+=
 fcppt::optional::object<
 	int
->
-optional_int;
+>;
 
 
 void
@@ -34,7 +35,8 @@ test_read_write(
 		42
 	};
 
-	std::stringstream stream;
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+	std::stringstream stream{};
 
 	fcppt::io::write(
 		stream,
@@ -77,7 +79,8 @@ TEST_CASE(
 	);
 
 	{
-		std::stringstream stream;
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+		std::stringstream stream{};
 
 		CHECK(
 			fcppt::io::read<

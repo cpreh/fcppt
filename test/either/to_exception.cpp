@@ -60,7 +60,7 @@ TEST_CASE(
 			make_exception
 		),
 		fcppt::exception,
-		Catch::Matchers::Predicate<
+		Catch::Matchers::Predicate< // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::exception
 		>(
 			[](

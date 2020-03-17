@@ -20,28 +20,31 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
-	int
-	value_type;
+	using
+	value_type
+	=
+	int;
 
 	constexpr std::size_t const size{
-		3u
+		3U
 	};
 
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		value_type,
 		size,
 		size
-	>
-	matrix_type;
+	>;
 
-	typedef
+	using
+	vector_type
+	=
 	fcppt::math::vector::static_<
 		value_type,
 		size
-	>
-	vector_type;
+	>;
 
 	matrix_type const matrix(
 		fcppt::math::matrix::row(

@@ -26,9 +26,9 @@ template<
 struct make_literal<
 	Type,
 	std::enable_if_t<
-		std::is_arithmetic<
+		std::is_arithmetic_v<
 			Type
-		>::value
+		>
 	>
 >
 {
@@ -46,6 +46,7 @@ struct make_literal<
 	get(
 		Arg const _value
 	)
+	noexcept
 	{
 		FCPPT_CHECK_LITERAL_CONVERSION(
 			decorated_type,

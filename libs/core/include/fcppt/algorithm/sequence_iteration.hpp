@@ -53,7 +53,7 @@ sequence_iteration(
 		case fcppt::algorithm::update_action::remove:
 			it =
 				_sequence.erase(
-					it
+					it // NOLINT(fuchsia-default-arguments-calls)
 				);
 
 			break;

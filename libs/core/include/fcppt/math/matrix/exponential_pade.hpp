@@ -10,7 +10,6 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/make_int_range.hpp>
-#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
@@ -58,42 +57,44 @@ exponential_pade(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			T
-		>::value,
+		>,
 		"exponential_pade can only be used on floating point types"
 	);
 
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		T,
 		DN,
 		DN
-	>
-	matrix_type;
+	>;
 
-	T const
-		zero{
-			fcppt::literal<
-				T
-			>(
-				0
-			)
-		},
-		one{
-			fcppt::literal<
-				T
-			>(
-				1
-			)
-		},
-		two{
-			fcppt::literal<
-				T
-			>(
-				2
-			)
-		};
+	T const zero{
+		fcppt::literal<
+			T
+		>(
+			0
+		)
+	};
+
+	T const one{
+		fcppt::literal<
+			T
+		>(
+			1
+		)
+	};
+
+	T const two{
+		fcppt::literal<
+			T
+		>(
+			2
+		)
+	};
 
 	T const j{
 		std::max(
@@ -122,22 +123,23 @@ exponential_pade(
 		_matrix
 	);
 
-	matrix_type
-		D(
-			fcppt::math::matrix::identity<
-				matrix_type
-			>()
-		),
-		N(
-			fcppt::math::matrix::identity<
-				matrix_type
-			>()
-		),
-		X(
-			fcppt::math::matrix::identity<
-				matrix_type
-			>()
-		);
+	matrix_type D(
+		fcppt::math::matrix::identity<
+			matrix_type
+		>()
+	);
+
+	matrix_type N(
+		fcppt::math::matrix::identity<
+			matrix_type
+		>()
+	);
+
+	matrix_type X(
+		fcppt::math::matrix::identity<
+			matrix_type
+		>()
+	);
 
 	T c{
 		fcppt::literal<
@@ -148,7 +150,7 @@ exponential_pade(
 	};
 
 	fcppt::math::size_type const q{
-		6u
+		6U
 	};
 
 	for(
@@ -158,27 +160,27 @@ exponential_pade(
 			fcppt::literal<
 				fcppt::math::size_type
 			>(
-				1u
+				1U
 			),
 			q
 		)
 	)
 	{
-		T const
-			qf{
-				fcppt::cast::int_to_float<
-					T
-				>(
-					q
-				)
-			},
-			kf{
-				fcppt::cast::int_to_float<
-					T
-				>(
-					k
-				)
-			};
+		T const qf{
+			fcppt::cast::int_to_float<
+				T
+			>(
+				q
+			)
+		};
+
+		T const kf{
+			fcppt::cast::int_to_float<
+				T
+			>(
+				k
+			)
+		};
 
 		c =
 			(c * (qf - kf + one))
@@ -197,7 +199,7 @@ exponential_pade(
 
 		D +=
 			(
-				k % 2u == 0u
+				k % 2U == 0U
 				?
 					fcppt::literal<
 						T
@@ -226,15 +228,21 @@ exponential_pade(
 		X
 	);
 
-	fcppt::algorithm::repeat(
-		j,
-		[
-			&result
-		]{
-			result =
-				result * result;
-		}
-	);
+	for( // NOLINT(clang-analyzer-security.FloatLoopCounter)
+		T count{
+			fcppt::literal<
+				T
+			>(
+				0
+			)
+		};
+		count < j;
+		++count // NOLINT(cert-flp30-c)
+	)
+	{
+		result =
+			result * result;
+	}
 
 	return
 		result;

@@ -19,27 +19,28 @@ TEST_CASE(
 	"[math],[sphere]"
 )
 {
-	typedef
+	using
+	circle_type
+	=
 	fcppt::math::sphere::circle<
 		float
-	>
-	circle_type;
+	>;
 
 	CHECK(
 		fcppt::math::sphere::intersects(
 			circle_type(
 				circle_type::point_type(
-					0.f,
-					0.f
+					0.F,
+					0.F
 				),
-				1.f
+				1.F
 			),
 			circle_type(
 				circle_type::point_type(
-					1.f,
-					0.f
+					1.F,
+					0.F
 				),
-				1.f
+				1.F
 			)
 		)
 	);
@@ -50,11 +51,12 @@ TEST_CASE(
 	"[math],[sphere]"
 )
 {
-	typedef
+	using
+	circle_type
+	=
 	fcppt::math::sphere::circle<
 		int
-	>
-	circle_type;
+	>;
 
 	CHECK(
 		circle_type(

@@ -46,7 +46,9 @@ init(
 		"Box must be a box::object"
 	);
 
-	typedef
+	using
+	result_array
+	=
 	std::array<
 		fcppt::homogenous_pair<
 			fcppt::type_traits::value_type<
@@ -54,10 +56,9 @@ init(
 			>
 		>,
 		Box::dim_wrapper::value
-	>
-	result_array;
+	>;
 
-	result_array const results(
+	auto const results(
 		fcppt::container::array::init<
 			result_array
 		>(
