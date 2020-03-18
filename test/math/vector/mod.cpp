@@ -21,32 +21,34 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	uivector2
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	uivector2;
+	>;
 
-	typedef
+	using
+	optional_uivector2
+	=
 	fcppt::optional::object<
 		uivector2
-	>
-	optional_uivector2;
+	>;
 
 	CHECK(
 		fcppt::math::vector::mod(
 			uivector2{
-				4u,
-				3u
+				4U,
+				3U
 			},
-			2u
+			2U
 		)
 		==
 		fcppt::optional::make(
 			uivector2{
-				0u,
-				1u
+				0U,
+				1U
 			}
 		)
 	);
@@ -54,10 +56,10 @@ TEST_CASE(
 	CHECK(
 		fcppt::math::vector::mod(
 			uivector2{
-				4u,
-				3u
+				4U,
+				3U
 			},
-			0u
+			0U
 		)
 		==
 		optional_uivector2{}
@@ -66,19 +68,19 @@ TEST_CASE(
 	CHECK(
 		fcppt::math::vector::mod(
 			uivector2{
-				5u,
-				3u
+				5U,
+				3U
 			},
 			uivector2{
-				3u,
-				2u
+				3U,
+				2U
 			}
 		)
 		==
 		fcppt::optional::make(
 			uivector2{
-				2u,
-				1u
+				2U,
+				1U
 			}
 		)
 	);
@@ -86,12 +88,12 @@ TEST_CASE(
 	CHECK(
 		fcppt::math::vector::mod(
 			uivector2{
-				4u,
-				3u
+				4U,
+				3U
 			},
 			uivector2{
-				0u,
-				1u
+				0U,
+				1U
 			}
 		)
 		==

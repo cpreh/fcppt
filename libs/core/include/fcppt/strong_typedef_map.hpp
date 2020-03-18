@@ -57,11 +57,12 @@ fcppt::strong_typedef<
 	>
 >
 {
-	typedef
+	using
+	input_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		StrongTypedef
-	>
-	input_type;
+	>;
 
 	static_assert(
 		fcppt::is_strong_typedef<

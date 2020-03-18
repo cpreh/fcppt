@@ -17,13 +17,14 @@
 namespace
 {
 
-typedef
+using
+variant
+=
 fcppt::variant::object<
 	bool,
 	int,
 	std::string
->
-variant;
+>;
 
 }
 
@@ -58,9 +59,7 @@ TEST_CASE(
 			std::string
 		>(
 			v1
-		)
-		==
-		std::string{}
+		).empty()
 	);
 }
 
@@ -76,7 +75,7 @@ TEST_CASE(
 	);
 
 	variant v2(
-		42
+		1
 	);
 
 	fcppt::variant::apply(
@@ -108,9 +107,7 @@ TEST_CASE(
 			std::string
 		>(
 			v1
-		)
-		==
-		std::string{}
+		).empty()
 	);
 
 	CHECK(
@@ -136,7 +133,7 @@ TEST_CASE(
 	);
 
 	variant v2(
-		42
+		1
 	);
 
 	variant v3(
@@ -181,9 +178,7 @@ TEST_CASE(
 			std::string
 		>(
 			v1
-		)
-		==
-		std::string{}
+		).empty()
 	);
 
 	CHECK(
@@ -196,13 +191,11 @@ TEST_CASE(
 		0
 	);
 
-	CHECK(
+	CHECK_FALSE(
 		fcppt::variant::get_exn<
 			bool
 		>(
 			v3
 		)
-		==
-		false
 	);
 }

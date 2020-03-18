@@ -43,7 +43,7 @@ const_cast_(
 {
 	return
 		FCPPT_OPTIONAL_DETAIL_CAST(
-			const_cast
+			const_cast // NOLINT(cppcoreguidelines-pro-type-const-cast)
 		);
 }
 

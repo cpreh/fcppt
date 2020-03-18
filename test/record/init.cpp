@@ -45,7 +45,7 @@ struct init_function
 	) const
 	{
 		return
-			42;
+			1;
 	}
 };
 
@@ -55,7 +55,7 @@ template<
 void
 init_test()
 {
-	Record const record(
+	auto const record(
 		fcppt::record::init<
 			Record
 		>(
@@ -72,13 +72,13 @@ init_test()
 			record
 		)
 		==
-		42
+		1
 	);
 
 	CHECK(
 		Record{
 			int_label{} =
-				42
+				1
 		}
 		==
 		record

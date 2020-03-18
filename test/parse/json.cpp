@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/recursive.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
@@ -78,9 +78,12 @@ operator==(
 		true;
 }
 
-struct value
+class value
 {
-	typedef
+public:
+	using
+	type
+	=
 	fcppt::variant::object<
 		json::null,
 		bool,
@@ -97,15 +100,14 @@ struct value
 				json::value
 			>
 		>
-	>
-	type;
+	>;
 
 	explicit
 	value(
 		type &&_impl
 	)
 	:
-	impl{
+	impl_{
 		std::move(
 			_impl
 		)
@@ -113,7 +115,15 @@ struct value
 	{
 	}
 
-	type impl;
+	[[nodiscard]]
+	type const &
+	get() const
+	{
+		return
+			impl_;
+	}
+private:
+	type impl_;
 };
 
 template<
@@ -155,33 +165,37 @@ operator==(
 )
 {
 	return
-		_left.impl
+		_left.get()
 		==
-		_right.impl;
+		_right.get();
 }
 
-typedef
+using
+array
+=
 std::vector<
 	fcppt::recursive<
 		json::value
 	>
->
-array;
+>;
 
-typedef
+using
+object
+=
 std::unordered_map<
 	std::string,
 	fcppt::recursive<
 		json::value
 	>
->
-object;
+>;
 
 class double_insert
 {
 };
 
-typedef
+using
+entries
+=
 std::vector<
 	std::tuple<
 		std::string,
@@ -189,8 +203,7 @@ std::vector<
 			json::value
 		>
 	>
->
-entries;
+>;
 
 json::object
 make_object_(
@@ -243,8 +256,11 @@ make_object_(
 						)
 					)
 				)
+				{
 					throw
+						// NOLINTNEXTLINE(hicpp-exception-baseclass)
 						json::double_insert{};
+				}
 
 			return
 				std::move(
@@ -292,24 +308,27 @@ make_object(
 		);
 }
 
-typedef
+using
+start
+=
 fcppt::variant::object<
 	json::array,
 	json::object
->
-start;
+>;
 
 }
 
-typedef
-char
-char_type;
+using
+char_type
+=
+char;
 
-typedef
+using
+skipper
+=
 decltype(
 	fcppt::parse::space_skipper()
-)
-skipper;
+);
 
 template<
 	typename Type
@@ -325,16 +344,16 @@ fcppt::parse::base_unique_ptr<
 
 class parser
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		parser
 	);
 public:
 	parser();
 
 	~parser()
-	{
-	}
+	= default;
 
+	[[nodiscard]]
 	base<json::start> const &
 	get() const
 	{
@@ -510,7 +529,7 @@ struct StringMaker<
 	{
 		return
 			fcppt::catch_::convert(
-				_value.impl
+				_value.get()
 			);
 	}
 };

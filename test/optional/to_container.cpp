@@ -19,17 +19,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	CHECK(
 		fcppt::optional::to_container<
@@ -50,9 +52,7 @@ TEST_CASE(
 			int_vector
 		>(
 			optional_int{}
-		)
-		==
-		int_vector{}
+		).empty()
 	);
 }
 
@@ -61,23 +61,26 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	optional_int_movable
+	=
 	fcppt::optional::object<
 		int_movable
-	>
-	optional_int_movable;
+	>;
 
-	typedef
+	using
+	int_movable_vector
+	=
 	std::vector<
 		int_movable
-	>
-	int_movable_vector;
+	>;
 
 	CHECK(
 		fcppt::optional::to_container<
@@ -104,8 +107,6 @@ TEST_CASE(
 			int_movable_vector
 		>(
 			optional_int_movable{}
-		)
-		==
-		int_movable_vector{}
+		).empty()
 	);
 }

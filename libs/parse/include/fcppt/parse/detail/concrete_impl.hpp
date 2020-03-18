@@ -50,8 +50,7 @@ fcppt::parse::detail::concrete<
 	Ch,
 	Skipper
 >::~concrete()
-{
-}
+= default;
 
 template<
 	typename Parser,
@@ -83,7 +82,7 @@ fcppt::parse::detail::concrete<
 ) const
 {
 	return
-		parser_.parse(
+		this->parser_.parse(
 			_state,
 			_context
 		);

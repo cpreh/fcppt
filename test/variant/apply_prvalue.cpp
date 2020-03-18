@@ -48,7 +48,7 @@ struct function
 		CHECK(
 			_int
 			==
-			42
+			1
 		);
 
 		CHECK(
@@ -66,13 +66,14 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		bool,
 		int,
 		std::string
-	>
-	variant;
+	>;
 
 	std::string const string(
 		"foo"
@@ -84,7 +85,7 @@ TEST_CASE(
 			false
 		),
 		variant(
-			42
+			1
 		),
 		variant(
 			string

@@ -15,14 +15,13 @@ int
 main()
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::optional::value_type<
 				fcppt::optional::object<
 					int
 				>
 			>,
 			int
-		>::value,
-		""
+		>
 	);
 }

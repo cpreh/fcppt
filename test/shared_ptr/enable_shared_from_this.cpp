@@ -18,17 +18,19 @@ namespace
 
 class test_class;
 
-typedef
+using
+test_shared_ptr
+=
 fcppt::shared_ptr<
 	test_class
->
-test_shared_ptr;
+>;
 
-typedef
+using
+const_test_shared_ptr
+=
 fcppt::shared_ptr<
 	test_class const
->
-const_test_shared_ptr;
+>;
 
 class test_class
 :
@@ -38,6 +40,7 @@ public
 	>
 {
 public:
+	[[nodiscard]]
 	test_shared_ptr
 	get()
 	{
@@ -45,6 +48,7 @@ public:
 			this->fcppt_shared_from_this();
 	}
 
+	[[nodiscard]]
 	const_test_shared_ptr
 	get() const
 	{

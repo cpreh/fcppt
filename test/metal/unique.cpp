@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/metal/contains.hpp>
 #include <fcppt/metal/unique.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
@@ -14,66 +15,63 @@ int
 main()
 {
 	{
-		typedef
+		using
+		list
+		=
 		fcppt::metal::unique<
 			metal::list<
 				int,
 				int
 			>
-		>
-		list;
+		>;
 
 		static_assert(
 			::metal::size<
 				list
 			>::value
 			==
-			1u,
-			""
+			1U
 		);
 
 		static_assert(
-			::metal::contains<
+			fcppt::metal::contains<
 				list,
 				int
-			>::value,
-			""
+			>::value
 		);
 	}
 
 	{
-		typedef
+		using
+		list
+		=
 		fcppt::metal::unique<
 			metal::list<
 				int,
 				float
 			>
-		>
-		list;
+		>;
 
 		static_assert(
 			::metal::size<
 				list
 			>::value
 			==
-			2u,
-			""
+			2U
 		);
 
 		static_assert(
-			::metal::contains<
+			fcppt::metal::contains<
 				list,
 				int
-			>::value,
-			""
+			>::value
 		);
 
 		static_assert(
-			::metal::contains<
+			fcppt::metal::contains<
 				list,
 				float
-			>::value,
-			""
+			>::value
 		);
 	}
 }

@@ -38,17 +38,19 @@ to_optional_ref(
 	Variant &_variant
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::reference<
 		Type
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	element_type
+	=
 	std::remove_cv_t<
 		Type
-	>
-	element_type;
+	>;
 
 	return
 		fcppt::variant::holds_type<

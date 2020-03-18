@@ -21,17 +21,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	optional_string;
+	>;
 
-	typedef
+	using
+	optional_optional_string
+	=
 	fcppt::optional::object<
 		optional_string
-	>
-	optional_optional_string;
+	>;
 
 	CHECK(
 		fcppt::optional::join(
@@ -61,17 +63,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	optional_int_movable
+	=
 	fcppt::optional::object<
 		int_movable
-	>
-	optional_int_movable;
+	>;
 
 	CHECK(
 		fcppt::optional::join(

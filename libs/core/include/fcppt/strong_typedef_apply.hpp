@@ -72,11 +72,12 @@ fcppt::strong_typedef<
 	>
 >
 {
-	typedef
+	using
+	strong_typedef1
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		StrongTypedef1
-	>
-	strong_typedef1;
+	>;
 
 	static_assert(
 		fcppt::is_strong_typedef<
@@ -85,19 +86,21 @@ fcppt::strong_typedef<
 		"StrongTypedef1 must be a strong typedef"
 	);
 
-	typedef
+	using
+	strong_typedefs
+	=
 	::metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			StrongTypedefs
 		>...
-	>
-	strong_typedefs;
+	>;
 
-	typedef
+	using
+	input_tag
+	=
 	fcppt::strong_typedef_tag<
 		strong_typedef1
-	>
-	input_tag;
+	>;
 
 	static_assert(
 		::metal::all_of<

@@ -44,7 +44,9 @@ construct(
 	Failure const &_failure
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::either::object<
 		std::result_of_t<
 			Failure()
@@ -52,8 +54,7 @@ construct(
 		std::result_of_t<
 			Success()
 		>
-	>
-	result_type;
+	>;
 
 	return
 		_value

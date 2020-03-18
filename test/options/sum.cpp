@@ -44,11 +44,12 @@ TEST_CASE(
 		unit_label
 	);
 
-	typedef
+	using
+	unit_parser
+	=
 	fcppt::options::unit_switch<
 		unit_label
-	>
-	unit_parser;
+	>;
 
 	auto const sum(
 		fcppt::options::make_sum<
@@ -69,11 +70,12 @@ TEST_CASE(
 		)
 	);
 
-	typedef
+	using
+	parser_type
+	=
 	decltype(
 		sum
-	)
-	parser_type;
+	);
 
 	CHECK(
 		fcppt::options::parse(

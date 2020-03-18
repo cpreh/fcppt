@@ -5,6 +5,9 @@
 
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -21,11 +24,11 @@ TEST_CASE(
 	"[record]"
 )
 {
-	class copy_only
+	class copy
 	{
 	public:
 		explicit
-		copy_only(
+		copy(
 			int const _value
 		)
 		:
@@ -35,10 +38,7 @@ TEST_CASE(
 		{
 		}
 
-		copy_only(
-			copy_only const &
-		) = default;
-
+		[[nodiscard]]
 		int
 		value() const
 		{
@@ -72,6 +72,7 @@ TEST_CASE(
 		move_only(
 			move_only &&_other
 		)
+		noexcept
 		:
 			value_{
 				_other.value_
@@ -88,7 +89,18 @@ TEST_CASE(
 		operator=(
 			move_only &&_other
 		)
+		noexcept
 		{
+			if(
+				&_other
+				==
+				this
+			)
+			{
+				return
+					*this;
+			}
+
 			value_ =
 				_other.value_;
 
@@ -102,10 +114,13 @@ TEST_CASE(
 				*this;
 		}
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunneeded-member-function)
 		~move_only()
-		{
-		}
+		= default;
+FCPPT_PP_POP_WARNING
 
+		[[nodiscard]]
 		int
 		value() const
 		{
@@ -131,7 +146,7 @@ TEST_CASE(
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
-		copy_only_label
+		copy_label
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
@@ -149,8 +164,8 @@ TEST_CASE(
 			bool
 		>,
 		fcppt::record::element<
-			copy_only_label,
-			copy_only
+			copy_label,
+			copy
 		>,
 		fcppt::record::element<
 			move_only_label,
@@ -168,13 +183,13 @@ TEST_CASE(
 			arg1,
 		bool_label{} =
 			true,
-		copy_only_label{} =
-			copy_only(
-				42
+		copy_label{} =
+			copy(
+				42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 		move_only_label{} =
 			move_only{
-				10
+				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			}
 	};
 
@@ -198,12 +213,12 @@ TEST_CASE(
 
 	CHECK(
 		fcppt::record::get<
-			copy_only_label
+			copy_label
 		>(
 			test
 		).value()
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	CHECK(
@@ -213,7 +228,7 @@ TEST_CASE(
 			test
 		).value()
 		==
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	my_record test2(
@@ -247,7 +262,7 @@ TEST_CASE(
 			test2
 		).value()
 		==
-		10
+		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	fcppt::record::set<
@@ -270,7 +285,7 @@ TEST_CASE(
 	>(
 		test2,
 		move_only{
-			100
+			100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		}
 	);
 
@@ -281,7 +296,7 @@ TEST_CASE(
 			test2
 		).value()
 		==
-		100
+		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	fcppt::record::get<
@@ -289,7 +304,7 @@ TEST_CASE(
 	>(
 		test2
 	) =
-		42;
+		42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	CHECK(
 		fcppt::record::get<
@@ -298,6 +313,6 @@ TEST_CASE(
 			test2
 		)
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }

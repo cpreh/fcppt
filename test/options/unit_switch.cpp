@@ -36,17 +36,19 @@ TEST_CASE(
 		dummy_label
 	);
 
-	typedef
+	using
+	switch_type
+	=
 	fcppt::options::unit_switch<
 		dummy_label
-	>
-	switch_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::options::result_of<
 		switch_type
-	>
-	result_type;
+	>;
 
 	switch_type const switch_{
 		fcppt::options::optional_short_name{

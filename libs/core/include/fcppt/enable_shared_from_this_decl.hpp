@@ -46,18 +46,31 @@ protected:
 		enable_shared_from_this const &
 	);
 
+	enable_shared_from_this(
+		enable_shared_from_this &&
+	)
+	noexcept;
+
 	enable_shared_from_this &
 	operator=(
 		enable_shared_from_this const &
 	);
 
+	enable_shared_from_this &
+	operator=(
+		enable_shared_from_this &&
+	)
+	noexcept;
+
 	~enable_shared_from_this();
 
+	[[nodiscard]]
 	fcppt::shared_ptr<
 		Type
 	>
 	fcppt_shared_from_this();
 
+	[[nodiscard]]
 	fcppt::shared_ptr<
 		Type const
 	>

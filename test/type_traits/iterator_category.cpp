@@ -18,16 +18,14 @@ main()
 		fcppt::type_traits::is_iterator_of_category<
 			int *,
 			std::input_iterator_tag
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		fcppt::type_traits::is_iterator_of_category<
 			int *,
 			std::random_access_iterator_tag
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
@@ -36,8 +34,7 @@ main()
 				int
 			>::const_iterator,
 			std::random_access_iterator_tag
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
@@ -46,8 +43,7 @@ main()
 				int
 			>::const_iterator,
 			std::bidirectional_iterator_tag
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
@@ -56,8 +52,7 @@ main()
 				int
 			>::const_iterator,
 			std::forward_iterator_tag
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
@@ -66,7 +61,6 @@ main()
 				int
 			>,
 			std::output_iterator_tag
-		>::value,
-		""
+		>::value
 	);
 }

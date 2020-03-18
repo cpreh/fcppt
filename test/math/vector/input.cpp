@@ -21,17 +21,19 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	ui2_vector
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	ui2_vector;
+	>;
 
 	SECTION(
 		"input success"
 	)
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		fcppt::io::istringstream stream{
 			FCPPT_TEXT("(42, 3)")
 		};
@@ -49,8 +51,8 @@ TEST_CASE(
 			result
 			==
 			ui2_vector{
-				42u,
-				3u
+				42U,
+				3U
 			}
 		);
 	}
@@ -59,6 +61,7 @@ TEST_CASE(
 		"input failure"
 	)
 	{
+		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 		fcppt::io::istringstream stream{
 			FCPPT_TEXT("(42, 3")
 		};

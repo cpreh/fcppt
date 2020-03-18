@@ -25,7 +25,7 @@ TEST_CASE(
 	"[parse]"
 )
 {
-	using namespace Catch::literals;
+	using Catch::literals:: operator""_a;
 
 	fcppt::parse::float_<
 
@@ -84,7 +84,7 @@ TEST_CASE(
 			CHECK(
 				_value
 				==
-				1.5_a
+				1.5_a // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			);
 		}
 	);

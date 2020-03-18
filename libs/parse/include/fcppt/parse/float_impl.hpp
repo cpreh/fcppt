@@ -27,8 +27,7 @@ template<
 fcppt::parse::float_<
 	Type
 >::float_()
-{
-}
+= default;
 
 template<
 	typename Type

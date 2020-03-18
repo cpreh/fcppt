@@ -49,7 +49,7 @@ set_position(
 		stream
 	);
 
-	stream.clear();
+	stream.clear(); // NOLINT(fuchsia-default-arguments-calls)
 
 	stream.seekg(
 		_pos
@@ -58,7 +58,9 @@ set_position(
 	if(
 		stream.fail()
 	)
+	{
 		throw
+			// NOLINTNEXTLINE(hicpp-exception-baseclass)
 			fcppt::parse::detail::exception<
 				Ch
 			>{
@@ -67,6 +69,7 @@ set_position(
 					"seekg() failed."
 				)
 			};
+	}
 }
 
 }

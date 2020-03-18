@@ -57,19 +57,21 @@ TEST_CASE(
 		command_bar_label
 	);
 
-	typedef
+	using
+	int_arg
+	=
 	fcppt::options::argument<
 		arg_label,
 		int
-	>
-	int_arg;
+	>;
 
-	typedef
+	using
+	int_option
+	=
 	fcppt::options::option<
 		option_label,
 		int
-	>
-	int_option;
+	>;
 
 	auto const commands{
 		fcppt::options::make_commands(
@@ -115,38 +117,42 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::options::result_of<
 		decltype(
 			commands
 		)
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	command_foo_result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			command_foo_label,
 			int_arg::result_type
 		>
-	>
-	command_foo_result_type;
+	>;
 
-	typedef
+	using
+	command_bar_result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			command_bar_label,
 			int_option::result_type
 		>
-	>
-	command_bar_result_type;
+	>;
 
-	typedef
+	using
+	command_result_type
+	=
 	fcppt::variant::object<
 		command_foo_result_type,
 		command_bar_result_type
-	>
-	command_result_type;
+	>;
 
 	CHECK(
 		fcppt::options::parse(

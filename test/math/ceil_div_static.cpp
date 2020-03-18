@@ -13,44 +13,40 @@ main()
 	static_assert(
 		fcppt::math::ceil_div_static<
 			unsigned,
-			0u,
-			1u
+			0U,
+			1U
 		>::value
 		==
-		0u,
-		""
+		0U
 	);
 
 	static_assert(
 		fcppt::math::ceil_div_static<
 			unsigned,
-			1u,
-			1u
+			1U,
+			1U
 		>::value
 		==
-		1u,
-		""
+		1U
 	);
 
 	static_assert(
 		fcppt::math::ceil_div_static<
 			unsigned,
-			5u,
-			3u
+			5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U
 		>::value
 		==
-		2u,
-		""
+		2U
 	);
 
 	static_assert(
 		fcppt::math::ceil_div_static<
 			unsigned,
-			6u,
-			3u
+			6U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U
 		>::value
 		==
-		2u,
-		""
+		2U
 	);
 }

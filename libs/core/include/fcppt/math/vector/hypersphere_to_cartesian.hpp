@@ -124,7 +124,7 @@ fcppt::math::vector::static_<
 	T,
 	N
 	+
-	1u
+	1U
 >
 hypersphere_to_cartesian(
 	fcppt::math::vector::object<
@@ -134,20 +134,22 @@ hypersphere_to_cartesian(
 	> const &_angles
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::vector::static_<
 		T,
 		N
 		+
-		1u
-	>
-	result_type;
+		1U
+	>;
 
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		result_type
-	>
-	value_type;
+	>;
 
 	return
 		fcppt::math::vector::init<
@@ -186,13 +188,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 								_inner_index
 							);
 
-							typedef
+							using
+							inner_index
+							=
 							fcppt::tag_type<
 								decltype(
 									_inner_index
 								)
-							>
-							inner_index;
+							>;
 
 							return
 								_prod

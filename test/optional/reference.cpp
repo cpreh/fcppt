@@ -17,11 +17,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int_ref
+	=
 	fcppt::optional::reference<
 		int
-	>
-	optional_int_ref;
+	>;
 
 	optional_int_ref const test1{};
 
@@ -30,7 +31,7 @@ TEST_CASE(
 	);
 
 	int val{
-		42
+		1
 	};
 
 	optional_int_ref test2(
@@ -46,7 +47,7 @@ TEST_CASE(
 	CHECK(
 		test2.get_unsafe().get()
 		==
-		42
+		1
 	);
 
 	test2 =
@@ -62,11 +63,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int_ref_const
+	=
 	fcppt::optional::reference<
 		int const
-	>
-	optional_int_ref_const;
+	>;
 
 	optional_int_ref_const const test1{};
 
@@ -75,7 +77,7 @@ TEST_CASE(
 	);
 
 	int const val1{
-		42
+		1
 	};
 
 	optional_int_ref_const test2(
@@ -91,11 +93,11 @@ TEST_CASE(
 	CHECK(
 		test2.get_unsafe().get()
 		==
-		42
+		1
 	);
 
 	int val2{
-		50
+		2
 	};
 
 	optional_int_ref_const test3(
@@ -111,7 +113,7 @@ TEST_CASE(
 	CHECK(
 		test3.get_unsafe().get()
 		==
-		50
+		2
 	);
 
 	test3 = test1;

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_METAL_SET_CONTAINS_HPP_INCLUDED
-#define FCPPT_METAL_SET_CONTAINS_HPP_INCLUDED
+#ifndef FCPPT_METAL_CONTAINS_HPP_INCLUDED
+#define FCPPT_METAL_CONTAINS_HPP_INCLUDED
 
 #include <fcppt/type_traits/to_bool.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,24 +17,26 @@ namespace fcppt
 {
 namespace metal
 {
-namespace set
-{
 
+/**
+\brief Like <code>metal::contains</code>, but returning a boolean.
+
+\ingroup fcpptmetal
+*/
 template<
-	typename Set,
-	typename Key
+	typename List,
+	typename Value
 >
 using
 contains
 =
 fcppt::type_traits::to_bool<
-	::metal::has_key<
-		Set,
-		Key
+	::metal::contains<
+		List,
+		Value
 	>
 >;
 
-}
 }
 }
 

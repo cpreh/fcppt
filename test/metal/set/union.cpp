@@ -12,18 +12,19 @@
 int
 main()
 {
-	typedef
+	using
+	result
+	=
 	fcppt::metal::set::union_<
 		fcppt::metal::set::make<
-			short,
+			short, // NOLINT(google-runtime-int)
 			int
 		>,
 		fcppt::metal::set::make<
 			int,
-			long
+			long // NOLINT(google-runtime-int)
 		>
-	>
-	result;
+	>;
 
 	static_assert(
 		fcppt::metal::set::contains<
@@ -36,7 +37,7 @@ main()
 	static_assert(
 		fcppt::metal::set::contains<
 			result,
-			short
+			short // NOLINT(google-runtime-int)
 		>::value,
 		"Set does not contain short"
 	);
@@ -44,7 +45,7 @@ main()
 	static_assert(
 		fcppt::metal::set::contains<
 			result,
-			long
+			long // NOLINT(google-runtime-int)
 		>::value,
 		"Set does not contain long"
 	);

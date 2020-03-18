@@ -40,12 +40,14 @@ struct hash<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	fcppt::math::vector::object<
 		T,
 		N,
 		S
-	> type;
+	>;
 
 	std::size_t
 	operator()(

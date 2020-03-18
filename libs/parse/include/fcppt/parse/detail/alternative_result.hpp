@@ -32,7 +32,7 @@ std::conditional_t<
 		List
 	>::value
 	==
-	1u,
+	1U,
 	::metal::front<
 		List
 	>,

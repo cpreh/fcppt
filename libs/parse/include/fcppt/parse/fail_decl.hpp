@@ -30,14 +30,16 @@ class fail
 public:
 	fail();
 
-	typedef
-	Result
-	result_type;
+	using
+	result_type
+	=
+	Result;
 
 	template<
 		typename Ch,
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

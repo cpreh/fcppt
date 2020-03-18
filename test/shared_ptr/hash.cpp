@@ -19,23 +19,25 @@ TEST_CASE(
 	"[smartptr]"
 )
 {
-	typedef
+	using
+	int_shared_ptr
+	=
 	fcppt::shared_ptr<
 		int
-	>
-	int_shared_ptr;
+	>;
 
-	typedef
+	using
+	int_shared_ptr_set
+	=
 	std::unordered_set<
 		int_shared_ptr
-	>
-	int_shared_ptr_set;
+	>;
 
 	int_shared_ptr const x(
 		fcppt::make_shared_ptr<
 			int
 		>(
-			42
+			1
 		)
 	);
 
@@ -47,7 +49,7 @@ TEST_CASE(
 		"found"
 	)
 	{
-		int_shared_ptr_set::const_iterator const it(
+		auto const it(
 			set.find(
 				x
 			)
@@ -74,7 +76,7 @@ TEST_CASE(
 			fcppt::make_shared_ptr<
 				int
 			>(
-				42
+				1
 			)
 		);
 
@@ -83,7 +85,7 @@ TEST_CASE(
 				y
 			)
 			==
-			0u
+			0U
 		);
 	}
 }

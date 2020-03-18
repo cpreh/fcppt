@@ -61,15 +61,16 @@ make_convert_if(
 	Convert &&_convert
 )
 {
-	typedef
+	using
+	result_type
+	=
 	std::result_of_t<
 		Convert(
 			fcppt::parse::result_of<
 				Parser
 			> &&
 		)
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::parse::convert_if<

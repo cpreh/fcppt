@@ -40,11 +40,12 @@ make_default_value(
 	Type &&_value
 )
 {
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::remove_cv_ref_t<
 		Type
-	>
-	value_type;
+	>;
 
 	static_assert(
 		fcppt::optional::is_object<

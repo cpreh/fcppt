@@ -6,7 +6,7 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_output.hpp>
@@ -26,48 +26,47 @@ namespace
 
 class base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		base
 	);
 public:
 	base()
-	{
-	}
+	= default;
 
 	virtual
 	~base()
-	{
-	}
+	= default;
 };
 
 class derived
 :
 	public base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived
 	);
 public:
 	derived()
-	{
-	}
+	= default;
 
 	~derived()
-	{
-	}
+	override
+	= default;
 };
 
-typedef
+using
+optional_base_ref
+=
 fcppt::optional::reference<
 	base
->
-optional_base_ref;
+>;
 
-typedef
+using
+optional_derived_ref
+=
 fcppt::optional::reference<
 	derived
->
-optional_derived_ref;
+>;
 
 }
 
@@ -168,11 +167,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_const_base_ref
+	=
 	fcppt::optional::reference<
 		base const
-	>
-	optional_const_base_ref;
+	>;
 
 	base object{};
 

@@ -92,6 +92,7 @@ fcppt::parse::basic_string<
 				elem
 			)
 		)
+		{
 			return
 				fcppt::either::make_failure<
 					result_type
@@ -107,6 +108,7 @@ fcppt::parse::basic_string<
 						this->string_
 					}
 				);
+		}
 	}
 
 	return

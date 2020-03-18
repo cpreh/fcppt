@@ -49,7 +49,9 @@ main()
 		bool_label
 	);
 
-	typedef
+	using
+	my_record
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
@@ -59,10 +61,11 @@ main()
 			bool_label,
 			bool
 		>
-	>
-	my_record;
+	>;
 
-	typedef
+	using
+	result1
+	=
 	fcppt::record::map_elements<
 		my_record,
 		metal::bind<
@@ -76,8 +79,7 @@ main()
 				metal::_1
 			>
 		>
-	>
-	result1;
+	>;
 
 	auto const transform(
 		[](
@@ -91,7 +93,9 @@ main()
 		}
 	);
 
-	typedef
+	using
+	result2
+	=
 	fcppt::record::map_elements<
 		my_record,
 		metal::bind<
@@ -105,8 +109,7 @@ main()
 			>,
 			metal::_1
 		>
-	>
-	result2;
+	>;
 
 	static_assert(
 		std::is_same_v<

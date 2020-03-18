@@ -17,11 +17,12 @@ TEST_CASE(
 	"[range]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const vec1{
 		1,
@@ -36,20 +37,20 @@ TEST_CASE(
 			)
 		)
 		==
-		0u
+		0U
 	);
 
 	CHECK(
 		fcppt::range::size(
 			fcppt::iterator::make_range(
 				vec1.begin(),
-				std::next(
+				std::next( // NOLINT(fuchsia-default-arguments-calls)
 					vec1.begin()
 				)
 			)
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -60,6 +61,6 @@ TEST_CASE(
 			)
 		)
 		==
-		2u
+		2U
 	);
 }

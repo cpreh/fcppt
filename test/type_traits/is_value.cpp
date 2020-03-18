@@ -21,84 +21,72 @@ main()
 	static_assert(
 		fcppt::type_traits::is_value<
 			int
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		fcppt::type_traits::is_value<
 			test_class
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		fcppt::type_traits::is_value<
 			test_enum
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		fcppt::type_traits::is_value<
 			int *
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		fcppt::type_traits::is_value<
 			int const *
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
 			int const
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
 			int volatile
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
 			int &
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
 			int &&
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
-			int[10]
-		>::value,
-		""
+			int[1] // NOLINT(hicpp-avoid-c-arrays,modernize-avoid-c-arrays,cppcoreguidelines-avoid-c-arrays)
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
 			void
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_value<
 			void ()
-		>::value,
-		""
+		>::value
 	);
 }

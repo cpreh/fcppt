@@ -19,17 +19,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	movable
+	=
 	fcppt::catch_::movable<
 		std::string
-	>
-	movable;
+	>;
 
-	typedef
+	using
+	optional_movable
+	=
 	fcppt::optional::object<
 		movable
-	>
-	optional_movable;
+	>;
 
 	optional_movable opta(
 		movable(

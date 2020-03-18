@@ -25,8 +25,9 @@
 namespace
 {
 
-struct my_struct
+class my_struct
 {
+public:
 	my_struct(
 		char const _x,
 		char const _y
@@ -41,6 +42,22 @@ struct my_struct
 	{
 	}
 
+	[[nodiscard]]
+	char const &
+	x() const
+	{
+		return
+			x_;
+	}
+
+	[[nodiscard]]
+	char const &
+	y() const
+	{
+		return
+			y_;
+	}
+private:
 	char x_;
 
 	char y_;
@@ -54,13 +71,13 @@ operator==(
 {
 	return
 		std::tie(
-			_left.x_,
-			_left.y_
+			_left.x(),
+			_left.y()
 		)
 		==
 		std::tie(
-			_right.x_,
-			_right.y_
+			_right.x(),
+			_right.y()
 		);
 }
 
@@ -73,9 +90,9 @@ operator<<(
 	return
 		_stream
 		<< '('
-		<< _value.x_
+		<< _value.x()
 		<< ','
-		<< _value.y_
+		<< _value.y()
 		<< ')';
 }
 

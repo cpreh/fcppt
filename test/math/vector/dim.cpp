@@ -22,19 +22,21 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	i2_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	i2_vector;
+	>;
 
-	typedef
+	using
+	i2_dim
+	=
 	fcppt::math::dim::static_<
 		int,
 		2
-	>
-	i2_dim;
+	>;
 
 	CHECK(
 		i2_vector(

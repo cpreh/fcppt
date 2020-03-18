@@ -28,19 +28,21 @@ template<
 class uniform_container
 {
 public:
-	typedef
+	using
+	result_type
+	=
 	fcppt::container::to_reference_type<
 		Container
-	>
-	result_type;
+	>;
 
-	typedef
+	using
+	param_type
+	=
 	fcppt::random::distribution::parameters::uniform_int<
 		typename
 		Container::size_type,
 		IntDistribution
-	>
-	param_type;
+	>;
 
 	uniform_container(
 		Container &,

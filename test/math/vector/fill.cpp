@@ -18,23 +18,24 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	ui2_vector
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	ui2_vector;
+	>;
 
 	CHECK(
 		fcppt::math::vector::fill<
 			ui2_vector
 		>(
-			42u
+			42U
 		)
 		==
 		ui2_vector{
-			42u,
-			42u
+			42U,
+			42U
 		}
 	);
 }

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/not.hpp>
 #include <fcppt/metal/set/contains.hpp>
 #include <fcppt/metal/set/intersection.hpp>
 #include <fcppt/metal/set/make.hpp>
@@ -12,18 +13,19 @@
 int
 main()
 {
-	typedef
+	using
+	result
+	=
 	fcppt::metal::set::intersection<
 		fcppt::metal::set::make<
-			short,
+			short, // NOLINT(google-runtime-int)
 			int
 		>,
 		fcppt::metal::set::make<
 			int,
-			long
+			long // NOLINT(google-runtime-int)
 		>
-	>
-	result;
+	>;
 
 	static_assert(
 		fcppt::metal::set::contains<
@@ -34,18 +36,22 @@ main()
 	);
 
 	static_assert(
-		!fcppt::metal::set::contains<
-			result,
-			short
-		>::value,
+		fcppt::not_(
+			fcppt::metal::set::contains<
+				result,
+				short // NOLINT(google-runtime-int)
+			>::value
+		),
 		"Set contains short"
 	);
 
 	static_assert(
-		!fcppt::metal::set::contains<
-			result,
-			long
-		>::value,
+		fcppt::not_(
+			fcppt::metal::set::contains<
+				result,
+				long // NOLINT(google-runtime-int)
+			>::value
+		),
 		"Set contains long"
 	);
 }

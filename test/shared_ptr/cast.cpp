@@ -7,6 +7,7 @@
 #include <fcppt/const_pointer_cast.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
 #include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/static_pointer_cast.hpp>
 #include <fcppt/optional/maybe.hpp>
@@ -19,31 +20,51 @@
 namespace
 {
 
-struct base
+class base
 {
+public:
+	FCPPT_NONMOVABLE(
+		base
+	);
+
+	base()
+	= default;
+
 	virtual
 	~base()
-	{
-	}
+	= default;
 };
 
-struct derived
+class derived
 :
-	base
+	public base
 {
+public:
+	FCPPT_NONMOVABLE(
+		derived
+	);
+
+	derived()
+	= default;
+
+	~derived()
+	override
+	= default;
 };
 
-typedef
+using
+base_ptr
+=
 fcppt::shared_ptr<
 	base
->
-base_ptr;
+>;
 
-typedef
+using
+derived_ptr
+=
 fcppt::shared_ptr<
 	derived
->
-derived_ptr;
+>;
 
 }
 
@@ -98,7 +119,7 @@ TEST_CASE(
 	CHECK(
 		ptr.use_count()
 		==
-		1l
+		1L
 	);
 }
 
@@ -132,7 +153,7 @@ TEST_CASE(
 	CHECK(
 		ptr.use_count()
 		==
-		1l
+		1L
 	);
 }
 
@@ -172,6 +193,6 @@ TEST_CASE(
 	CHECK(
 		ptr.use_count()
 		==
-		1l
+		1L
 	);
 }

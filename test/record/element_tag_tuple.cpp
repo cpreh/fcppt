@@ -26,32 +26,36 @@ main()
 		bool_label
 	);
 
-	typedef
+	using
+	int_element
+	=
 	fcppt::record::element<
 		int_label,
 		int
-	>
-	int_element;
+	>;
 
-	typedef
+	using
+	bool_element
+	=
 	fcppt::record::element<
 		bool_label,
 		bool
-	>
-	bool_element;
+	>;
 
-	typedef
+	using
+	my_record
+	=
 	fcppt::record::object<
 		int_element,
 		bool_element
-	>
-	my_record;
+	>;
 
-	typedef
+	using
+	tag_tuple
+	=
 	fcppt::record::element_tag_tuple<
 		my_record
-	>
-	tag_tuple;
+	>;
 
 	static_assert(
 		std::is_same_v<

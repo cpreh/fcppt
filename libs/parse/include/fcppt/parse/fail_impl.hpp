@@ -26,8 +26,7 @@ template<
 fcppt::parse::fail<
 	Result
 >::fail()
-{
-}
+= default;
 
 template<
 	typename Result

@@ -20,24 +20,26 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		int_unique_ptr,
 		std::string
-	>
-	variant;
+	>;
 
 	variant test(
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			1
 		)
 	);
 
@@ -48,7 +50,7 @@ TEST_CASE(
 			test
 		)
 		==
-		42
+		1
 	);
 
 	variant test2(
@@ -64,7 +66,7 @@ TEST_CASE(
 			test2
 		)
 		==
-		42
+		1
 	);
 
 	variant test3(
@@ -108,7 +110,7 @@ TEST_CASE(
 			test4
 		)
 		==
-		42
+		1
 	);
 }
 
@@ -117,26 +119,28 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	variant_unique_ptr
+	=
 	fcppt::variant::object<
 		fcppt::unique_ptr<
 			int
 		>
-	>
-	variant_unique_ptr;
+	>;
 
-	typedef
+	using
+	nested
+	=
 	fcppt::variant::object<
 		variant_unique_ptr
-	>
-	nested;
+	>;
 
 	nested test{
 		variant_unique_ptr{
 			fcppt::make_unique_ptr<
 				int
 			>(
-				42
+				1
 			)
 		}
 	};
@@ -154,7 +158,7 @@ TEST_CASE(
 			)
 		)
 		==
-		42
+		1
 	);
 
 	nested test2{
@@ -162,7 +166,7 @@ TEST_CASE(
 			fcppt::make_unique_ptr<
 				int
 			>(
-				10
+				2
 			)
 		}
 	};
@@ -185,6 +189,6 @@ TEST_CASE(
 			)
 		)
 		==
-		42
+		1
 	);
 }

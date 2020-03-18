@@ -19,9 +19,10 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
-	float
-	real;
+	using
+	real
+	=
+	float;
 
 	real const epsilon{
 		std::numeric_limits<
@@ -29,42 +30,45 @@ TEST_CASE(
 		>::epsilon()
 	};
 
-	typedef
+	using
+	fvector1
+	=
 	fcppt::math::vector::static_<
 		real,
 		1
-	>
-	fvector1;
+	>;
 
-	typedef
+	using
+	fvector2
+	=
 	fcppt::math::vector::static_<
 		real,
 		2
-	>
-	fvector2;
+	>;
 
-	typedef
+	using
+	fvector3
+	=
 	fcppt::math::vector::static_<
 		real,
 		3
-	>
-	fvector3;
+	>;
 
-	real const
-		phi1{
-			fcppt::literal<
-				real
-			>(
-				1.5
-			)
-		},
-		phi2{
-			fcppt::literal<
-				real
-			>(
-				0.5
-			)
-		};
+	real const phi1{
+		fcppt::literal<
+			real
+		>(
+			1.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		)
+	};
+
+	real const phi2{
+		fcppt::literal<
+			real
+		>(
+			0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		)
+	};
 
 	CHECK(
 		fcppt::math::vector::componentwise_equal(
@@ -99,13 +103,15 @@ TEST_CASE(
 				),
 				std::sin(
 					phi1
-				) *
+				)
+				*
 				std::cos(
 					phi2
 				),
 				std::sin(
 					phi1
-				) *
+				)
+				*
 				std::sin(
 					phi2
 				)

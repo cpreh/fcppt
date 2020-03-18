@@ -48,15 +48,17 @@ public:
 		> &&
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		Parser
-	>
-	result_type;
+	>;
 
 	template<
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

@@ -20,16 +20,17 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
 	CHECK(
 		fcppt::optional::maybe(
 			optional_int(
-				10
+				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			[]
 			{
@@ -78,17 +79,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	optional_int_unique_ptr
+	=
 	fcppt::optional::object<
 		int_unique_ptr
-	>
-	optional_int_unique_ptr;
+	>;
 
 	int_unique_ptr const result(
 		fcppt::optional::maybe(
@@ -96,7 +99,7 @@ TEST_CASE(
 				fcppt::make_unique_ptr<
 					int
 				>(
-					42
+					42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
 			),
 			[]{
@@ -104,7 +107,7 @@ TEST_CASE(
 					fcppt::make_unique_ptr<
 						int
 					>(
-						10
+						10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					);
 			},
 			[](
@@ -122,6 +125,6 @@ TEST_CASE(
 	CHECK(
 		*result
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }

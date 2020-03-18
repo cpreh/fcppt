@@ -10,7 +10,6 @@
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <functional>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,12 +17,13 @@
 namespace
 {
 
-typedef
+using
+signal_type
+=
 fcppt::signal::object<
 	void (),
 	fcppt::signal::unregister::base
->
-signal_type;
+>;
 
 }
 
@@ -62,10 +62,13 @@ TEST_CASE(
 					empty_function
 				},
 				fcppt::signal::unregister::function{
-					std::bind(
-						unregister,
-						42
-					)
+					[
+						&unregister
+					]{
+						unregister(
+							42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						);
+					}
 				}
 			)
 		);
@@ -74,13 +77,13 @@ TEST_CASE(
 	REQUIRE(
 		values.size()
 		==
-		1u
+		1U
 	);
 
 	CHECK(
 		values.back()
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	{
@@ -90,10 +93,13 @@ TEST_CASE(
 					empty_function
 				},
 				fcppt::signal::unregister::function{
-					std::bind(
-						unregister,
-						100
-					)
+					[
+						&unregister
+					]{
+						unregister(
+							100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						);
+					}
 				}
 			)
 		);
@@ -102,13 +108,13 @@ TEST_CASE(
 	REQUIRE(
 		values.size()
 		==
-		2u
+		2U
 	);
 
 	CHECK(
 		values.back()
 		==
-		100
+		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }
 
@@ -152,10 +158,6 @@ TEST_CASE(
 			std::move(
 				sig
 			)
-		);
-
-		CHECK(
-			sig.empty()
 		);
 
 		sig2();

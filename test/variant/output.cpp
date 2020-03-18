@@ -19,24 +19,26 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		int
-	>
-	variant;
+	>;
 
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	fcppt::io::ostringstream stream{};
 
 	stream <<
 		variant{
-			42
+			1
 		};
 
 	CHECK(
 		stream.str()
 		==
 		fcppt::string{
-			FCPPT_TEXT("42")
+			FCPPT_TEXT("1")
 		}
 	);
 }

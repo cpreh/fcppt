@@ -14,15 +14,16 @@
 int
 main()
 {
-	typedef
+	using
+	result
+	=
 	fcppt::metal::set::from_list_relaxed<
 		::metal::list<
-			short,
+			short, // NOLINT(google-runtime-int)
 			int,
 			int
 		>
-	>
-	result;
+	>;
 
 	static_assert(
 		fcppt::metal::set::contains<
@@ -35,7 +36,7 @@ main()
 	static_assert(
 		fcppt::metal::set::contains<
 			result,
-			short
+			short // NOLINT(google-runtime-int)
 		>::value,
 		"Set does not contain short"
 	);

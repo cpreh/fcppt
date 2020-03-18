@@ -20,17 +20,19 @@ TEST_CASE(
 	"[optiona]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	optional_int_ref
+	=
 	fcppt::optional::reference<
 		int
-	>
-	optional_int_ref;
+	>;
 
 	CHECK(
 		fcppt::optional::from(
@@ -38,30 +40,30 @@ TEST_CASE(
 			[]
 			{
 				return
-					42;
+					42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			}
 		)
 		==
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	CHECK(
 		fcppt::optional::from(
 			optional_int(
-				100
+				100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			[]
 			{
 				return
-					42;
+					42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			}
 		)
 		==
-		100
+		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 
 	int x{
-		42
+		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	};
 
 	int y{
@@ -84,12 +86,12 @@ TEST_CASE(
 				);
 		}
 	).get() =
-		100;
+		100; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	CHECK(
 		x
 		==
-		100
+		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }
 
@@ -98,29 +100,30 @@ TEST_CASE(
 	"[optiona;]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
 	CHECK(
 		fcppt::optional::from(
 			fcppt::optional::make(
 				int_movable{
-					42
+					42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				}
 			),
 			[]{
 				return
 					int_movable{
-						10
+						10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					};
 			}
 		)
 		==
 		int_movable{
-			42
+			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		}
 	);
 }

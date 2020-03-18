@@ -25,8 +25,9 @@
 namespace
 {
 
-struct my_struct
+class my_struct
 {
+public:
 	explicit
 	my_struct(
 		char const _x
@@ -38,6 +39,14 @@ struct my_struct
 	{
 	}
 
+	[[nodiscard]]
+	char
+	x() const
+	{
+		return
+			x_;
+	}
+private:
 	char x_;
 };
 
@@ -48,9 +57,9 @@ operator==(
 )
 {
 	return
-		_left.x_
+		_left.x()
 		==
-		_right.x_;
+		_right.x();
 }
 
 std::ostream &
@@ -62,7 +71,7 @@ operator<<(
 	return
 		_stream
 		<<
-		_value.x_;
+		_value.x();
 }
 
 }

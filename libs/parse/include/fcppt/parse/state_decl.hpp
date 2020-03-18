@@ -25,11 +25,12 @@ template<
 class state
 {
 public:
-	typedef
+	using
+	stream_type
+	=
 	std::basic_istream<
 		Ch
-	>
-	stream_type;
+	>;
 
 	explicit
 	state(
@@ -38,6 +39,7 @@ public:
 		>
 	);
 
+	[[nodiscard]]
 	stream_type &
 	stream() const;
 private:

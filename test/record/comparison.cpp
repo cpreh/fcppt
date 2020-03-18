@@ -27,33 +27,37 @@ TEST_CASE(
 		bool_label
 	);
 
-	typedef
+	using
+	int_element
+	=
 	fcppt::record::element<
 		int_label,
 		int
-	>
-	int_element;
+	>;
 
-	typedef
+	using
+	bool_element
+	=
 	fcppt::record::element<
 		bool_label,
 		bool
-	>
-	bool_element;
+	>;
 
-	typedef
+	using
+	record1
+	=
 	fcppt::record::object<
 		int_element,
 		bool_element
-	>
-	record1;
+	>;
 
-	typedef
+	using
+	record2
+	=
 	fcppt::record::object<
 		bool_element,
 		int_element
-	>
-	record2;
+	>;
 
 	CHECK(
 		record1(

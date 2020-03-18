@@ -21,7 +21,9 @@ main()
 		label2
 	);
 
-	typedef
+	using
+	record1
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			label1,
@@ -31,10 +33,11 @@ main()
 			label2,
 			bool
 		>
-	>
-	record1;
+	>;
 
-	typedef
+	using
+	record2
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			label2,
@@ -44,18 +47,18 @@ main()
 			label1,
 			int
 		>
-	>
-	record2;
+	>;
 
 	static_assert(
 		fcppt::record::are_equivalent<
 			record1,
 			record2
-		>::value,
-		""
+		>::value
 	);
 
-	typedef
+	using
+	record3
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			label1,
@@ -65,31 +68,29 @@ main()
 			label2,
 			int
 		>
-	>
-	record3;
+	>;
 
 	static_assert(
 		!fcppt::record::are_equivalent<
 			record1,
 			record3
-		>::value,
-		""
+		>::value
 	);
 
-	typedef
+	using
+	record4
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			label1,
 			int
 		>
-	>
-	record4;
+	>;
 
 	static_assert(
 		!fcppt::record::are_equivalent<
 			record1,
 			record4
-		>::value,
-		""
+		>::value
 	);
 }

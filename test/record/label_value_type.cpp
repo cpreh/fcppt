@@ -24,7 +24,9 @@ main()
 		bool_label
 	);
 
-	typedef
+	using
+	my_record
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
@@ -34,8 +36,7 @@ main()
 			bool_label,
 			bool
 		>
-	>
-	my_record;
+	>;
 
 	static_assert(
 		std::is_same_v<
@@ -44,8 +45,7 @@ main()
 				int_label
 			>,
 			int
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -55,7 +55,6 @@ main()
 				bool_label
 			>,
 			bool
-		>,
-		""
+		>
 	);
 }

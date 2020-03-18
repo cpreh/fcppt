@@ -38,23 +38,25 @@ TEST_CASE(
 		arg_label
 	);
 
-	typedef
+	using
+	int_arg_type
+	=
 	fcppt::options::argument<
 		arg_label,
 		int
-	>
-	int_arg_type;
+	>;
 
 	FCPPT_RECORD_MAKE_LABEL(
 		flag_label
 	);
 
-	typedef
+	using
+	int_flag_type
+	=
 	fcppt::options::flag<
 		flag_label,
 		int
-	>
-	int_flag_type;
+	>;
 
 	auto const mult_parser(
 		fcppt::options::apply(
@@ -120,19 +122,21 @@ TEST_CASE(
 		flag_label2
 	);
 
-	typedef
+	using
+	flag1_type
+	=
 	fcppt::options::flag<
 		flag_label1,
 		int
-	>
-	flag1_type;
+	>;
 
-	typedef
+	using
+	flag2_type
+	=
 	fcppt::options::flag<
 		flag_label2,
 		int
-	>
-	flag2_type;
+	>;
 
 	CHECK_THROWS_AS(
 		fcppt::options::apply(

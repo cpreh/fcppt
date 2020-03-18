@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -13,6 +13,9 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -24,17 +27,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_size
+	=
 	fcppt::optional::object<
 		std::string::size_type
-	>
-	optional_size;
+	>;
 
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	optional_string;
+	>;
 
 	auto const conversion(
 		[](
@@ -64,7 +69,7 @@ TEST_CASE(
 		)
 		==
 		optional_size(
-			4u
+			4U
 		)
 	);
 }
@@ -74,17 +79,19 @@ namespace
 
 class noncopyable
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		noncopyable
 	);
 public:
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
 	noncopyable()
-	{
-	}
+	= default;
 
 	~noncopyable()
-	{
-	}
+	= default;
+FCPPT_PP_POP_WARNING
 };
 
 }
@@ -94,19 +101,21 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	optional_string;
+	>;
 
 	noncopyable test{};
 
-	typedef
+	using
+	optional_noncopyable_ref
+	=
 	fcppt::optional::reference<
 		noncopyable
-	>
-	optional_noncopyable_ref;
+	>;
 
 	CHECK(
 		fcppt::optional::map(
@@ -116,7 +125,7 @@ TEST_CASE(
 			[
 				&test
 			](
-				std::string
+				std::string const &
 			)
 			{
 				return

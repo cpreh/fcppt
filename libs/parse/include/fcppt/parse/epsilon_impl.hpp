@@ -18,8 +18,7 @@
 
 inline
 fcppt::parse::epsilon::epsilon()
-{
-}
+= default;
 
 template<
 	typename Ch,

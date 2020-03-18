@@ -33,15 +33,13 @@ main()
 		fcppt::type_traits::is_base_of<
 			base,
 			derived
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::type_traits::is_base_of<
 			test,
 			derived
-		>::value,
-		""
+		>::value
 	);
 }

@@ -24,8 +24,7 @@ main()
 				int,
 				char
 			>
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -35,8 +34,7 @@ main()
 				int
 			>,
 			int
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -48,8 +46,7 @@ main()
 				int
 			>,
 			int
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -64,8 +61,7 @@ main()
 				int,
 				char
 			>
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -83,8 +79,7 @@ main()
 				int,
 				char
 			>
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -101,7 +96,6 @@ main()
 				float,
 				char
 			>
-		>,
-		""
+		>
 	);
 }

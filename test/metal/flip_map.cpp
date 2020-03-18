@@ -24,7 +24,7 @@ main()
 					>,
 					metal::pair<
 						char,
-						long
+						long // NOLINT(google-runtime-int)
 					>
 				>
 			>,
@@ -34,11 +34,10 @@ main()
 					int
 				>,
 				metal::pair<
-					long,
+					long, // NOLINT(google-runtime-int)
 					char
 				>
 			>
-		>,
-		""
+		>
 	);
 }

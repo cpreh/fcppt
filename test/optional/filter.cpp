@@ -18,11 +18,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
 	auto const function(
 		[](
@@ -32,27 +33,27 @@ TEST_CASE(
 			return
 				_value
 				==
-				42;
+				1;
 		}
 	);
 
 	CHECK(
 		fcppt::optional::filter(
 			optional_int(
-				42
+				1
 			),
 			function
 		)
 		==
 		optional_int{
-			42
+			1
 		}
 	);
 
 	CHECK(
 		fcppt::optional::filter(
 			optional_int(
-				10
+				2
 			),
 			function
 		)
@@ -75,17 +76,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
-	typedef
+	using
+	optional_int_movable
+	=
 	fcppt::optional::object<
 		int_movable
-	>
-	optional_int_movable;
+	>;
 
 	CHECK(
 		fcppt::optional::filter(

@@ -48,6 +48,7 @@ cat(
 		:
 		_source
 	)
+	{
 		fcppt::optional::maybe_void(
 			element,
 			[
@@ -57,7 +58,7 @@ cat(
 			)
 			{
 				result.insert(
-					result.end(),
+					result.end(), // NOLINT(fuchsia-default-arguments-calls)
 					fcppt::move_if_rvalue<
 						Source
 					>(
@@ -66,6 +67,7 @@ cat(
 				);
 			}
 		);
+	}
 
 	return
 		result;

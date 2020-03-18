@@ -4,27 +4,44 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/metal/to_number.hpp>
+#include <fcppt/not.hpp>
+#include <fcppt/metal/contains.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 int
 main()
 {
+	using
+	list
+	=
+	metal::list<
+		int,
+		bool
+	>;
+
 	static_assert(
-		std::is_same_v<
-			fcppt::metal::to_number<
-				std::integral_constant<
-					int,
-					5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				>
-			>,
-			metal::number<
-				5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			>
-		>
+		fcppt::metal::contains<
+			list,
+			int
+		>::value
+	);
+
+	static_assert(
+		fcppt::metal::contains<
+			list,
+			bool
+		>::value
+	);
+
+	static_assert(
+		fcppt::not_(
+			fcppt::metal::contains<
+				list,
+				float
+			>::value
+		)
 	);
 }

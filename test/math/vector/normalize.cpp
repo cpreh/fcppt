@@ -16,18 +16,19 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	float2_vec
+	=
 	fcppt::math::vector::static_<
 		float,
 		2
-	>
-	float2_vec;
+	>;
 
 	CHECK(
 		fcppt::math::vector::normalize(
 			float2_vec{
-				2.f,
-				0.f
+				2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				0.F
 			}
 		).has_value()
 	);
@@ -35,8 +36,8 @@ TEST_CASE(
 	CHECK_FALSE(
 		fcppt::math::vector::normalize(
 			float2_vec{
-				0.f,
-				0.f
+				0.F,
+				0.F
 			}
 		).has_value()
 	);

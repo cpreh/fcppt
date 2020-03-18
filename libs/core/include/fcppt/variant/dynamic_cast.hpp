@@ -68,19 +68,21 @@ dynamic_cast_(
 		"Types must be a metal::list"
 	);
 
-	typedef
+	using
+	variant_type
+	=
 	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			Types
 		>
-	>
-	variant_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		variant_type
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::algorithm::fold_break(

@@ -37,12 +37,13 @@ TEST_CASE(
 		arg_label
 	);
 
-	typedef
+	using
+	int_flag_type
+	=
 	fcppt::options::flag<
 		arg_label,
 		int
-	>
-	int_flag_type;
+	>;
 
 	int_flag_type const int_flag{
 		fcppt::options::optional_short_name{
@@ -135,12 +136,13 @@ TEST_CASE(
 		flag_label
 	);
 
-	typedef
+	using
+	flag_type
+	=
 	fcppt::options::flag<
 		flag_label,
 		int
-	>
-	flag_type;
+	>;
 
 	CHECK_THROWS_AS(
 		flag_type(

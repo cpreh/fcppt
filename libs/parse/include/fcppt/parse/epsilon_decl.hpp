@@ -28,14 +28,16 @@ class epsilon
 public:
 	epsilon();
 
-	typedef
-	fcppt::unit
-	result_type;
+	using
+	result_type
+	=
+	fcppt::unit;
 
 	template<
 		typename Ch,
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

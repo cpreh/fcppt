@@ -43,7 +43,9 @@ public:
 		Right &&
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::sequence_result<
 		fcppt::parse::result_of<
 			Left
@@ -51,13 +53,13 @@ public:
 		fcppt::parse::result_of<
 			Right
 		>
-	>
-	result_type;
+	>;
 
 	template<
 		typename Ch,
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

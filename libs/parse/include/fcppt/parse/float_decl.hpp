@@ -40,14 +40,16 @@ public:
 
 	float_();
 
-	typedef
-	Type
-	result_type;
+	using
+	result_type
+	=
+	Type;
 
 	template<
 		typename Ch,
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

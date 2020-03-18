@@ -19,11 +19,12 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		int_unique_ptr,
@@ -34,7 +35,7 @@ TEST_CASE(
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			1
 		)
 	);
 
@@ -47,14 +48,14 @@ TEST_CASE(
 	CHECK(
 		*val2.get()
 		==
-		42
+		1
 	);
 
 	strong_int_ptr val3(
 		fcppt::make_unique_ptr<
 			int
 		>(
-			10
+			2
 		)
 	);
 
@@ -66,6 +67,6 @@ TEST_CASE(
 	CHECK(
 		*val3.get()
 		==
-		42
+		1
 	);
 }

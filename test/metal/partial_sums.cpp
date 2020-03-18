@@ -14,19 +14,21 @@
 int
 main()
 {
-	typedef
+	using
+	vec
+	=
 	metal::numbers<
 		3,
 		4,
-		5
-	>
-	vec;
+		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	>;
 
-	typedef
+	using
+	result
+	=
 	fcppt::metal::partial_sums<
 		vec
-	>
-	result;
+	>;
 
 	static_assert(
 		std::is_same_v<
@@ -34,8 +36,8 @@ main()
 			metal::numbers<
 				0,
 				3,
-				7,
-				12
+				7, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				12 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			>
 		>
 	);

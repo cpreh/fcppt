@@ -59,7 +59,7 @@ parse_string(
 
 	std::basic_istringstream<
 		Ch
-	> stream{
+	> stream{ // NOLINT(fuchsia-default-arguments-calls)
 		std::move(
 			_string
 		)

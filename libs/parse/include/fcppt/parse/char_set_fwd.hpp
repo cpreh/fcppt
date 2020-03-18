@@ -15,11 +15,12 @@ namespace fcppt
 namespace parse
 {
 
-typedef
+using
+char_set
+=
 fcppt::parse::basic_char_set<
 	char
->
-char_set;
+>;
 
 }
 }

@@ -19,18 +19,20 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	int3_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		3
-	>
-	int3_vector;
+	>;
 
-	typedef
+	using
+	vector_set
+	=
 	std::unordered_set<
 		int3_vector
-	>
-	vector_set;
+	>;
 
 	vector_set const set{
 		int3_vector(
@@ -49,7 +51,7 @@ TEST_CASE(
 			)
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -61,6 +63,6 @@ TEST_CASE(
 			)
 		)
 		==
-		0u
+		0U
 	);
 }

@@ -41,13 +41,14 @@ public:
 	{
 	}
 
+	[[nodiscard]]
 	std::basic_string<
 		Ch
 	> const &
 	what() const
 	{
 		return
-			what_;
+			this->what_;
 	}
 private:
 	std::basic_string<

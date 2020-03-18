@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_GRAMMAR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_GRAMMAR_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/grammar_fwd.hpp>
@@ -26,21 +26,24 @@ template<
 >
 class grammar
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		grammar
 	);
 public:
-	typedef
-	grammar
-	grammar_base;
+	using
+	grammar_base
+	=
+	grammar;
 
-	typedef
-	Result
-	result_type;
+	using
+	result_type
+	=
+	Result;
 
-	typedef
-	Ch
-	char_type;
+	using
+	char_type
+	=
+	Ch;
 
 	template<
 		typename Type
@@ -65,17 +68,20 @@ public:
 
 	~grammar();
 
+	[[nodiscard]]
 	base_type<
 		Result
 	> const &
 	start() const;
 
+	[[nodiscard]]
 	Skipper const &
 	skipper() const;
 
 	template<
 		typename Parser
 	>
+	[[nodiscard]]
 	static
 	base_type<
 		fcppt::parse::result_of<

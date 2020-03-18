@@ -21,12 +21,11 @@ main()
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::strong_typedef_tag<
 				strong_uint
 			>,
 			strong_uint::tag_type
-		>::value,
-		""
+		>
 	);
 }

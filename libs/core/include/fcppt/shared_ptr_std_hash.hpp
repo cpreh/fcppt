@@ -33,9 +33,12 @@ struct hash<
 	>
 >
 {
-	typedef fcppt::shared_ptr<
+	using
+	type
+	=
+	fcppt::shared_ptr<
 		Type
-	> type;
+	>;
 
 	std::size_t
 	operator()(

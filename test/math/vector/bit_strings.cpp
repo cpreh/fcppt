@@ -20,19 +20,21 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	vector2
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	vector2;
+	>;
 
-	typedef
+	using
+	vector3
+	=
 	fcppt::math::vector::static_<
 		int,
 		3
-	>
-	vector3;
+	>;
 
 	CHECK(
 		fcppt::math::vector::bit_strings<

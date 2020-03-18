@@ -33,13 +33,13 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
-	strong_int
-		test1(
-			2
-		),
-		test2(
-			4
-		);
+	strong_int test1(
+		2
+	);
+
+	strong_int test2(
+		4
+	);
 
 	CHECK(
 		test1 + test2
@@ -142,31 +142,31 @@ TEST_CASE(
 )
 {
 	strong_uint test1{
-		3u
+		3U
 	};
 
-	test1 &= strong_uint{2u};
+	test1 &= strong_uint{2U};
 
 	REQUIRE(
 		test1
 		==
-		strong_uint{2u}
+		strong_uint{2U}
 	);
 
-	test1 |= strong_uint{3u};
+	test1 |= strong_uint{3U};
 
 	REQUIRE(
 		test1
 		==
-		strong_uint{3u}
+		strong_uint{3U}
 	);
 
-	test1 ^= strong_uint{2u};
+	test1 ^= strong_uint{2U};
 
 	REQUIRE(
 		test1
 		==
-		strong_uint{1u}
+		strong_uint{1U}
 	);
 }
 
@@ -175,13 +175,13 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
-	strong_uint const
-		test1(
-			2u
-		),
-		test2(
-			3u
-		);
+	strong_uint const test1(
+		2U
+	);
+
+	strong_uint const test2(
+		3U
+	);
 
 	CHECK(
 		(
@@ -190,7 +190,7 @@ TEST_CASE(
 			test2
 		)
 		==
-		strong_uint{2u}
+		strong_uint{2U}
 	);
 
 	CHECK(
@@ -200,7 +200,7 @@ TEST_CASE(
 			test2
 		)
 		==
-		strong_uint{3u}
+		strong_uint{3U}
 	);
 
 	CHECK(
@@ -210,14 +210,14 @@ TEST_CASE(
 			test2
 		)
 		==
-		strong_uint{1u}
+		strong_uint{1U}
 	);
 
 	CHECK(
 		~test1
 		==
 		strong_uint{
-			~2u
+			~2U
 		}
 	);
 }
@@ -227,16 +227,17 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
-	strong_int const
-		test1(
-			1
-		),
-		test2(
-			1
-		),
-		test3(
-			2
-		);
+	strong_int const test1(
+		1
+	);
+
+	strong_int const test2(
+		1
+	);
+
+	strong_int const test3(
+		2
+	);
 
 	CHECK(
 		test1

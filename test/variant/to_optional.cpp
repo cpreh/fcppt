@@ -21,12 +21,13 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		int,
 		std::string
-	>
-	variant;
+	>;
 
 	variant const var(
 		42
@@ -64,11 +65,12 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
 	CHECK(
 		fcppt::variant::to_optional<

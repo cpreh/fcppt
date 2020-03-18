@@ -57,18 +57,20 @@ public:
 		>
 	);
 
-	typedef
+	using
+	result_type
+	=
 	std::vector<
 		fcppt::parse::result_of<
 			Inner
 		>
-	>
-	result_type;
+	>;
 
 	template<
 		typename Ch,
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

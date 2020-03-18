@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -29,11 +29,12 @@
 namespace
 {
 
-typedef
+using
+skipper
+=
 decltype(
 	fcppt::parse::space_skipper()
-)
-skipper;
+);
 
 class grammar
 :
@@ -44,7 +45,7 @@ class grammar
 			skipper
 		>
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		grammar
 	);
 public:
@@ -69,7 +70,7 @@ grammar::grammar()
 		fcppt::parse::space_skipper()
 	},
 	start_{
-		this->make_base(
+		grammar_base::make_base(
 			fcppt::parse::int_<int>{}
 		)
 	}
@@ -79,8 +80,7 @@ grammar::grammar()
 FCPPT_PP_POP_WARNING
 
 grammar::~grammar()
-{
-}
+= default;
 
 }
 
@@ -110,6 +110,7 @@ TEST_CASE(
 	"[parse]"
 )
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::istringstream stream{
 		std::string{
 			" 42"

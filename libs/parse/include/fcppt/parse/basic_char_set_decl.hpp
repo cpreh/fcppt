@@ -35,13 +35,13 @@ class basic_char_set
 	private fcppt::parse::tag
 {
 public:
-	typedef
+	using
+	char_set_type
+	=
 	std::unordered_set<
 		Ch
-	>
-	char_set_type;
+	>;
 
-	explicit
 	basic_char_set(
 		std::initializer_list<
 			Ch
@@ -53,13 +53,15 @@ public:
 		char_set_type &&
 	);
 
-	typedef
-	Ch
-	result_type;
+	using
+	result_type
+	=
+	Ch;
 
 	template<
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type
@@ -75,6 +77,7 @@ public:
 		> const &
 	) const;
 
+	[[nodiscard]]
 	char_set_type const &
 	chars() const;
 private:

@@ -44,11 +44,12 @@ get(
 		_stream.get()
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		Ch
-	>
-	result_type;
+	>;
 
 	return
 		result

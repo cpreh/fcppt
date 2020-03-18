@@ -16,12 +16,13 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	vector2
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	vector2;
+	>;
 
 	vector2 const vector_c(
 		1,
@@ -59,7 +60,7 @@ TEST_CASE(
 	>(
 		vector_m
 	) =
-		42;
+		3;
 
 	CHECK(
 		fcppt::math::vector::at<
@@ -68,6 +69,6 @@ TEST_CASE(
 			vector_m
 		)
 		==
-		42
+		3
 	);
 }

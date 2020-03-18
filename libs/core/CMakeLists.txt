@@ -888,6 +888,7 @@ set(
 	libs/core/include/fcppt/math/vector/unit.hpp
 	libs/core/include/fcppt/metal/as.hpp
 	libs/core/include/fcppt/metal/as_tuple.hpp
+	libs/core/include/fcppt/metal/contains.hpp
 	libs/core/include/fcppt/metal/detail/as.hpp
 	libs/core/include/fcppt/metal/detail/flip_map.hpp
 	libs/core/include/fcppt/metal/detail/for_each_break.hpp

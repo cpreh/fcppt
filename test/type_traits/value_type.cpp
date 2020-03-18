@@ -15,36 +15,38 @@ int
 main()
 {
 
-	typedef
+	using
+	vector
+	=
 	std::vector<
 		int
-	>
-	vector;
+	>;
 
-	typedef
+	using
+	array
+	=
 	std::array<
 		bool,
 		2
-	>
-	array;
+	>;
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::type_traits::value_type<
 				vector
 			>,
 			int
-		>::value,
+		>,
 		"value_type not int"
 	);
 
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			fcppt::type_traits::value_type<
 				array
 			>,
 			bool
-		>::value,
+		>,
 		"value_type not bool"
 	);
 }

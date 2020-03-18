@@ -17,17 +17,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	optional_unsigned
+	=
 	fcppt::optional::object<
 		unsigned
-	>
-	optional_unsigned;
+	>;
 
 	CHECK(
 		fcppt::optional::maybe_multi(
@@ -54,7 +56,7 @@ TEST_CASE(
 				10
 			),
 			optional_unsigned(
-				20u
+				20U
 			)
 		)
 		==

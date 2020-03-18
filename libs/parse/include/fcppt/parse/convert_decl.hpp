@@ -38,19 +38,21 @@ class convert
 	private fcppt::parse::tag
 {
 public:
-	typedef
-	Result
-	result_type;
+	using
+	result_type
+	=
+	Result;
 
-	typedef
+	using
+	function_type
+	=
 	fcppt::function<
 		result_type(
 			fcppt::parse::result_of<
 				Parser
 			> &&
 		)
-	>
-	function_type;
+	>;
 
 	convert(
 		Parser &&,
@@ -61,6 +63,7 @@ public:
 		typename Ch,
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

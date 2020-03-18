@@ -10,7 +10,6 @@
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <functional>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,11 +17,12 @@
 namespace
 {
 
-typedef
+using
+signal_type
+=
 fcppt::signal::object<
 	void ()
->
-signal_type;
+>;
 
 }
 
@@ -69,10 +69,13 @@ TEST_CASE(
 		fcppt::signal::auto_connection const con1(
 			sig.connect(
 				signal_type::function{
-					std::bind(
-						add,
-						1
-					)
+					[
+						&add
+					]{
+						add(
+							1
+						);
+					}
 				}
 			)
 		);
@@ -82,7 +85,7 @@ TEST_CASE(
 				sig
 			)
 			==
-			1u
+			1U
 		);
 
 		REQUIRE(
@@ -103,10 +106,13 @@ TEST_CASE(
 			fcppt::signal::auto_connection const con2(
 				sig.connect(
 					signal_type::function{
-						std::bind(
-							add,
-							2
-						)
+						[
+							&add
+						]{
+							add(
+								2
+							);
+						}
 					}
 				)
 			);
@@ -116,7 +122,7 @@ TEST_CASE(
 					sig
 				)
 				==
-				2u
+				2U
 			);
 
 			sig();
@@ -133,7 +139,7 @@ TEST_CASE(
 				sig
 			)
 			==
-			1u
+			1U
 		);
 	}
 
@@ -142,7 +148,7 @@ TEST_CASE(
 			sig
 		)
 		==
-		0u
+		0U
 	);
 
 	REQUIRE(

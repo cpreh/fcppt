@@ -55,8 +55,7 @@ fcppt::parse::grammar<
 	Ch,
 	Skipper
 >::~grammar()
-{
-}
+= default;
 
 template<
 	typename Result,

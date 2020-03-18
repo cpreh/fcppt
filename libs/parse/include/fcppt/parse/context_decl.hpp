@@ -37,11 +37,12 @@ public:
 		"Skippers must return fcppt::unit"
 	);
 
-	typedef
+	using
+	skipper_ref
+	=
 	fcppt::reference<
 		Skipper const
-	>
-	skipper_ref;
+	>;
 
 	explicit
 	context(

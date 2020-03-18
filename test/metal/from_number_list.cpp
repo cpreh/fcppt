@@ -20,21 +20,21 @@ main()
 				int,
 				::metal::list<
 					metal::number<
-						5
+						5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					>,
 					metal::number<
-						10
+						10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					>
 				>
 			>,
 			::metal::list<
 				std::integral_constant<
 					int,
-					5
+					5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				>,
 				std::integral_constant<
 					int,
-					10
+					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				>
 			>
 		>

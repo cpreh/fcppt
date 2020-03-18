@@ -35,11 +35,12 @@ to_optional(
 	Variant &&_variant
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		Type
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::variant::holds_type<

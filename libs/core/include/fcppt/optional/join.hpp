@@ -41,13 +41,14 @@ join(
 	Optional &&_source
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::value_type<
 		fcppt::type_traits::remove_cv_ref_t<
 			Optional
 		>
-	>
-	result_type;
+	>;
 
 	static_assert(
 		fcppt::optional::detail::check<

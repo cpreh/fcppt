@@ -18,25 +18,26 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
 	optional_int test;
 
 	int const &result(
 		fcppt::optional::assign(
 			test,
-			42
+			1
 		)
 	);
 
 	CHECK(
 		result
 		==
-		42
+		1
 	);
 }
 
@@ -45,17 +46,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	optional_int_unique_ptr
+	=
 	fcppt::optional::object<
 		int_unique_ptr
-	>
-	optional_int_unique_ptr;
+	>;
 
 	optional_int_unique_ptr test;
 
@@ -65,7 +68,7 @@ TEST_CASE(
 			fcppt::make_unique_ptr<
 				int
 			>(
-				42
+				1
 			)
 		)
 	);
@@ -73,6 +76,6 @@ TEST_CASE(
 	CHECK(
 		*result
 		==
-		42
+		1
 	);
 }

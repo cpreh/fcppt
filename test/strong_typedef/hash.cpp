@@ -46,7 +46,7 @@ TEST_CASE(
 			strong_int(1)
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -54,7 +54,7 @@ TEST_CASE(
 			strong_int(2)
 		)
 		==
-		1u
+		1U
 	);
 
 	CHECK(
@@ -62,6 +62,6 @@ TEST_CASE(
 			strong_int(3)
 		)
 		==
-		0u
+		0U
 	);
 }

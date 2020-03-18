@@ -35,12 +35,13 @@ make_uniform_container_advanced(
 	Container &_container
 )
 {
-	typedef
+	using
+	result_type_inner
+	=
 	fcppt::random::wrapper::uniform_container<
 		Container,
 		IntDistribution
-	>
-	result_type_inner;
+	>;
 
 	return
 		fcppt::optional::map(

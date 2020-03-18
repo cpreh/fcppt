@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_DETAIL_CONCRETE_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_CONCRETE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/base_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
@@ -40,19 +40,20 @@ public
 		Skipper
 	>
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		concrete
 	);
 
-	typedef
+	using
+	base_type
+	=
 	fcppt::parse::base<
 		fcppt::parse::result_of<
 			Parser
 		>,
 		Ch,
 		Skipper
-	>
-	base_type;
+	>;
 public:
 	explicit
 	concrete(
@@ -62,12 +63,13 @@ public:
 	~concrete()
 	override;
 
-	typedef
+	using
+	result_type
+	=
 	typename
-	base_type::result_type
-	result_type;
+	base_type::result_type;
 
-	virtual
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

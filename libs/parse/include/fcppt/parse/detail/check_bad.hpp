@@ -35,7 +35,9 @@ check_bad(
 	if(
 		_stream.bad()
 	)
+	{
 		throw
+			// NOLINTNEXTLINE(hicpp-exception-baseclass)
 			fcppt::parse::detail::exception<
 				Ch
 			>{
@@ -44,6 +46,7 @@ check_bad(
 					"stream failed."
 				)
 			};
+	}
 }
 
 }

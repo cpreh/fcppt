@@ -19,23 +19,26 @@ TEST_CASE(
 	"[optiona;]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	optional_unsigned
+	=
 	fcppt::optional::object<
 		unsigned
-	>
-	optional_unsigned;
+	>;
 
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	optional_string;
+	>;
 
 	CHECK(
 		fcppt::optional::apply(
@@ -57,7 +60,7 @@ TEST_CASE(
 				10
 			),
 			optional_unsigned(
-				20u
+				20U
 			)
 		)
 		==

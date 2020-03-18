@@ -130,6 +130,7 @@ fcppt::shared_ptr<
 	> const &_other
 )
 :
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	impl_(
 		_other.std_ptr()
 	)
@@ -159,10 +160,10 @@ fcppt::shared_ptr<
 	)
 {
 	static_assert(
-		std::is_same<
+		std::is_same_v<
 			Deleter,
 			fcppt::default_deleter
-		>::value,
+		>,
 		"storing a different pointer in a shared_ptr only works with default_deleter"
 	);
 }

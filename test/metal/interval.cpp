@@ -14,13 +14,14 @@
 int
 main()
 {
-	typedef
+	using
+	interval
+	=
 	fcppt::metal::interval<
 		int,
 		3,
-		5
-	>
-	interval;
+		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	>;
 
 	static_assert(
 		std::is_same_v<

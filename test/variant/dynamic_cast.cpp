@@ -6,7 +6,7 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
@@ -28,72 +28,64 @@ namespace
 
 class base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		base
 	);
 public:
 	base()
-	{
-	}
+	= default;
 
 	virtual
 	~base()
-	{
-	}
+	= default;
 };
 
 class derived1
 :
 	public base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived1
 	);
 public:
 	derived1()
-	{
-	}
+	= default;
 
 	~derived1()
 	override
-	{
-	}
+	= default;
 };
 
 class derived2
 :
 	public base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived2
 	);
 public:
 	derived2()
-	{
-	}
+	= default;
 
 	~derived2()
 	override
-	{
-	}
+	= default;
 };
 
 class derived3
 :
 	public base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		derived3
 	);
 public:
 	derived3()
-	{
-	}
+	= default;
 
 	~derived3()
 	override
-	{
-	}
+	= default;
 };
 
 }
@@ -103,26 +95,29 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	derived_types
+	=
 	metal::list<
 		derived1,
 		derived2
-	>
-	derived_types;
+	>;
 
-	typedef
+	using
+	result_variant
+	=
 	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			derived_types
 		>
-	>
-	result_variant;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		result_variant
-	>
-	result_type;
+	>;
 
 	{
 		derived1 d1{};
@@ -182,26 +177,29 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	derived_types
+	=
 	metal::list<
 		derived1 const,
 		derived2 const
-	>
-	derived_types;
+	>;
 
-	typedef
+	using
+	result_variant
+	=
 	fcppt::variant::from_list<
 		fcppt::variant::dynamic_cast_types<
 			derived_types
 		>
-	>
-	result_variant;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		result_variant
-	>
-	result_type;
+	>;
 
 	derived2 d2{};
 

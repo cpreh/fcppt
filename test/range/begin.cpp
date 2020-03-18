@@ -15,6 +15,7 @@ TEST_CASE(
 	"[range]"
 )
 {
+	// NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
 	int array[3] = { 0, 0, 0 };
 
 	CHECK(

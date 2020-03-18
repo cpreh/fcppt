@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/not.hpp>
 #include <fcppt/metal/set/contains.hpp>
 #include <fcppt/metal/set/make.hpp>
 #include <fcppt/metal/set/symmetric_difference.hpp>
@@ -12,31 +13,34 @@
 int
 main()
 {
-	typedef
+	using
+	result
+	=
 	fcppt::metal::set::symmetric_difference<
 		fcppt::metal::set::make<
-			short,
+			short, // NOLINT(google-runtime-int)
 			int
 		>,
 		fcppt::metal::set::make<
 			int,
-			long
+			long // NOLINT(google-runtime-int)
 		>
-	>
-	result;
+	>;
 
 	static_assert(
-		!fcppt::metal::set::contains<
-			result,
-			int
-		>::value,
+		fcppt::not_(
+			fcppt::metal::set::contains<
+				result,
+				int
+			>::value
+		),
 		"Set contains int"
 	);
 
 	static_assert(
 		fcppt::metal::set::contains<
 			result,
-			short
+			short // NOLINT(google-runtime-int)
 		>::value,
 		"Set does not contain short"
 	);
@@ -44,7 +48,7 @@ main()
 	static_assert(
 		fcppt::metal::set::contains<
 			result,
-			long
+			long // NOLINT(google-runtime-int)
 		>::value,
 		"Set does not contain long"
 	);

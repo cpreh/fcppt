@@ -21,38 +21,40 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	ui2_vector
+	=
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>
-	ui2_vector;
+	>;
 
-	typedef
+	using
+	ui2_vector_opt
+	=
 	fcppt::math::vector::static_<
 		fcppt::optional::object<
 			unsigned
 		>,
 		2
-	>
-	ui2_vector_opt;
+	>;
 
 	CHECK(
 		fcppt::math::vector::sequence(
 			ui2_vector_opt{
 				fcppt::optional::make(
-					10u
+					10U
 				),
 				fcppt::optional::make(
-					20u
+					20U
 				)
 			}
 		)
 		==
 		fcppt::optional::make(
 			ui2_vector{
-				10u,
-				20u
+				10U,
+				20U
 			}
 		)
 	);
@@ -64,7 +66,7 @@ TEST_CASE(
 					unsigned
 				>{},
 				fcppt::optional::make(
-					20u
+					20U
 				)
 			}
 		)

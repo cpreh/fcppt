@@ -21,6 +21,11 @@ add_fcppt_metal_test(
 )
 
 add_fcppt_metal_test(
+	contains
+	NO_CODE
+)
+
+add_fcppt_metal_test(
 	enum_range
 	NO_CODE
 )

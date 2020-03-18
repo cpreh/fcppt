@@ -20,23 +20,26 @@
 namespace
 {
 
-typedef
+using
+int_unique_ptr
+=
 fcppt::unique_ptr<
 	int
->
-int_unique_ptr;
+>;
 
-typedef
+using
+string_unique_ptr
+=
 fcppt::unique_ptr<
 	std::string
->
-string_unique_ptr;
+>;
 
-typedef
+using
+bool_unique_ptr
+=
 fcppt::unique_ptr<
 	bool
->
-bool_unique_ptr;
+>;
 
 struct function
 {
@@ -59,15 +62,15 @@ struct function
 
 	void
 	operator()(
-		int_unique_ptr &_int,
-		string_unique_ptr &_string,
-		bool_unique_ptr &_bool
+		int_unique_ptr &_int, // NOLINT(google-runtime-references)
+		string_unique_ptr &_string, // NOLINT(google-runtime-references)
+		bool_unique_ptr &_bool // NOLINT(google-runtime-references)
 	) const
 	{
 		CHECK(
 			*_int
 			==
-			42
+			1
 		);
 
 		CHECK(
@@ -82,13 +85,14 @@ struct function
 	}
 };
 
-typedef
+using
+move_result
+=
 std::tuple<
 	int_unique_ptr,
 	string_unique_ptr,
 	bool_unique_ptr
->
-move_result;
+>;
 
 struct move_function
 {
@@ -132,13 +136,14 @@ struct move_function
 	}
 };
 
-typedef
+using
+variant
+=
 fcppt::variant::object<
 	int_unique_ptr,
 	string_unique_ptr,
 	bool_unique_ptr
->
-variant;
+>;
 
 }
 
@@ -151,7 +156,7 @@ TEST_CASE(
 		fcppt::make_unique_ptr<
 			int
 		>(
-			42
+			1
 		)
 	);
 
@@ -159,7 +164,9 @@ TEST_CASE(
 		fcppt::make_unique_ptr<
 			std::string
 		>(
-			"test"
+			std::string{
+				"test"
+			}
 		)
 	);
 
@@ -193,14 +200,16 @@ TEST_CASE(
 				fcppt::make_unique_ptr<
 					int
 				>(
-					42
+					1
 				)
 			},
 			variant{
 				fcppt::make_unique_ptr<
 					std::string
 				>(
-					"test"
+					std::string{
+						"test"
+					}
 				)
 			},
 			variant{
@@ -220,7 +229,7 @@ TEST_CASE(
 			result
 		)
 		==
-		42
+		1
 	);
 
 	CHECK(

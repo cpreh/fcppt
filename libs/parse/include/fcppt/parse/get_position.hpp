@@ -37,11 +37,12 @@ get_position(
 	> const _state
 )
 {
-	typedef
+	using
+	pos_type
+	=
 	fcppt::parse::position<
 		Ch
-	>
-	pos_type;
+	>;
 
 	std::basic_istream<
 		Ch
@@ -56,7 +57,9 @@ get_position(
 	if(
 		stream.eof()
 	)
-		stream.clear();
+	{
+		stream.clear(); // NOLINT(fuchsia-default-arguments-calls)
+	}
 
 	pos_type const pos{
 		stream.tellg()
@@ -69,7 +72,9 @@ get_position(
 			-1
 		}
 	)
+	{
 		throw
+			// NOLINTNEXTLINE(hicpp-exception-baseclass)
 			fcppt::parse::detail::exception<
 				Ch
 			>{
@@ -78,6 +83,7 @@ get_position(
 					"tellg() failed."
 				)
 			};
+	}
 
 	return
 		pos;

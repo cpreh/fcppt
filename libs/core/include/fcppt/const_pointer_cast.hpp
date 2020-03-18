@@ -48,6 +48,7 @@ const_pointer_cast(
 			Dest
 		>(
 			_ptr,
+			// NOLINTNEXTLINE(cppcoreguidelines-pro-type-const-cast)
 			const_cast<
 				Dest *
 			>(

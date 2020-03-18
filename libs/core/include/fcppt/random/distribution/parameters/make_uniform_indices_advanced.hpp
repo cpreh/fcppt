@@ -36,19 +36,21 @@ make_uniform_indices_advanced(
 	Container const &_container
 )
 {
-	typedef
+	using
+	param_type
+	=
 	fcppt::random::distribution::parameters::uniform_int<
 		typename
 		Container::size_type,
 		Distribution
-	>
-	param_type;
+	>;
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		param_type
-	>
-	result_type;
+	>;
 
 	return
 		_container.empty()
@@ -58,10 +60,10 @@ make_uniform_indices_advanced(
 			result_type(
 				param_type(
 					typename param_type::min(
-						0u
+						0U
 					),
 					typename param_type::max(
-						_container.size() - 1u
+						_container.size() - 1U
 					)
 				)
 			)

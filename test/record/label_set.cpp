@@ -22,7 +22,9 @@ main()
 		bool_label
 	);
 
-	typedef
+	using
+	my_record
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
@@ -32,14 +34,14 @@ main()
 			bool_label,
 			bool
 		>
-	>
-	my_record;
+	>;
 
-	typedef
+	using
+	label_set
+	=
 	fcppt::record::label_set<
 		my_record
-	>
-	label_set;
+	>;
 
 	static_assert(
 		fcppt::metal::set::contains<

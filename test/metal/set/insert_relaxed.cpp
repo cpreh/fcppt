@@ -15,18 +15,19 @@
 int
 main()
 {
-	typedef
+	using
+	set
+	=
 	fcppt::metal::set::make<
-		short,
+		short, //NOLINT(google-runtime-int)
 		int
-	>
-	set;
+	>;
 
 	static_assert(
 		std::is_same_v<
 			fcppt::metal::set::insert_relaxed<
 				set,
-				short
+				short //NOLINT(google-runtime-int)
 			>,
 			set
 		>
@@ -36,9 +37,9 @@ main()
 		fcppt::metal::set::contains<
 			fcppt::metal::set::insert_relaxed<
 				set,
-				long
+				long //NOLINT(google-runtime-int)
 			>,
-			long
+			long //NOLINT(google-runtime-int)
 		>::value
 	);
 }

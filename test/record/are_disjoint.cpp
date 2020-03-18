@@ -21,25 +21,29 @@ main()
 		bool_label
 	);
 
-	typedef
+	using
+	record1
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int
 		>
-	>
-	record1;
+	>;
 
-	typedef
+	using
+	record2
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			bool_label,
 			bool
 		>
-	>
-	record2;
+	>;
 
-	typedef
+	using
+	record3
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
@@ -49,30 +53,26 @@ main()
 			bool_label,
 			bool
 		>
-	>
-	record3;
+	>;
 
 	static_assert(
 		fcppt::record::are_disjoint<
 			record1,
 			record2
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::record::are_disjoint<
 			record1,
 			record3
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		!fcppt::record::are_disjoint<
 			record2,
 			record3
-		>::value,
-		""
+		>::value
 	);
 }

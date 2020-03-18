@@ -38,10 +38,11 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::stringstream stream{};
 
 	strong_int const test(
-		42
+		1
 	);
 
 	stream << test;
@@ -66,9 +67,10 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::stringstream stream{};
 
-	stream << 42;
+	stream << 1;
 
 FCPPT_PP_PUSH_WARNING
 #if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
@@ -90,7 +92,7 @@ FCPPT_PP_POP_WARNING
 	CHECK(
 		fcppt::optional::make(
 			strong_int{
-				42
+				1
 			}
 		)
 		==

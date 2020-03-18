@@ -15,20 +15,22 @@
 int
 main()
 {
-	typedef
+	using
+	integral
+	=
 	std::integral_constant<
 		int,
 		2
-	>
-	integral;
+	>;
 
-	typedef
+	using
+	result
+	=
 	fcppt::type_traits::integral_cast<
 		unsigned,
 		fcppt::cast::to_unsigned_fun,
 		integral
-	>
-	result;
+	>;
 
 	static_assert(
 		std::is_same_v<
@@ -42,6 +44,6 @@ main()
 	static_assert(
 		result::value
 		==
-		2u
+		2U
 	);
 }

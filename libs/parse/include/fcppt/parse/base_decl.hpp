@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_BASE_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_BASE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/base_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
@@ -30,7 +30,7 @@ class base
 :
 	private fcppt::parse::tag
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		base
 	);
 protected:
@@ -39,10 +39,12 @@ public:
 	virtual
 	~base();
 
-	typedef
-	Result
-	result_type;
+	using
+	result_type
+	=
+	Result;
 
+	[[nodiscard]]
 	virtual
 	fcppt::parse::result<
 		Ch,

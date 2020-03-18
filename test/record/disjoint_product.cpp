@@ -23,50 +23,52 @@ main()
 		bool_label
 	);
 
-	typedef
+	using
+	record1
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int
 		>
-	>
-	record1;
+	>;
 
-	typedef
+	using
+	record2
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			bool_label,
 			bool
 		>
-	>
-	record2;
+	>;
 
-	typedef
+	using
+	product_record
+	=
 	fcppt::record::disjoint_product<
 		record1,
 		record2
-	>
-	product_record;
+	>;
 
-	typedef
+	using
+	product_labels
+	=
 	fcppt::record::label_set<
 		product_record
-	>
-	product_labels;
+	>;
 
 	static_assert(
 		fcppt::metal::set::contains<
 			product_labels,
 			int_label
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
 		fcppt::metal::set::contains<
 			product_labels,
 			bool_label
-		>::value,
-		""
+		>::value
 	);
 }

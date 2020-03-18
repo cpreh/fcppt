@@ -19,18 +19,19 @@ TEST_CASE(
 	"[metal]"
 )
 {
-	typedef
+	using
+	list_type
+	=
 	metal::list<
 		int,
-		long
-	>
-	list_type;
+		long // NOLINT(google-runtime-int)
+	>;
 
 	CHECK(
 		fcppt::metal::invoke_on<
 			list_type
 		>(
-			1u,
+			1U,
 			[](
 				auto const _type
 			)
@@ -60,7 +61,7 @@ TEST_CASE(
 		fcppt::metal::invoke_on<
 			list_type
 		>(
-			0u,
+			0U,
 			[](
 				auto const _type
 			)
@@ -90,7 +91,7 @@ TEST_CASE(
 		fcppt::metal::invoke_on<
 			list_type
 		>(
-			2u,
+			2U,
 			[](
 				auto
 			)

@@ -27,22 +27,24 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	strong_int
 );
 
-typedef
+using
+int_unique_ptr
+=
 fcppt::unique_ptr<
 	int
->
-int_unique_ptr;
+>;
 
 FCPPT_MAKE_STRONG_TYPEDEF(
 	int_unique_ptr,
 	strong_int_ptr
 );
 
-typedef
+using
+move_test
+=
 fcppt::catch_::movable<
 	int_unique_ptr
->
-move_test;
+>;
 
 }
 

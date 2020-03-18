@@ -20,8 +20,7 @@ main()
 				char
 			>,
 			std::string
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -30,8 +29,7 @@ main()
 				wchar_t
 			>,
 			std::wstring
-		>,
-		""
+		>
 	);
 
 	static_assert(
@@ -42,7 +40,6 @@ main()
 			std::vector<
 				int
 			>
-		>,
-		""
+		>
 	);
 }

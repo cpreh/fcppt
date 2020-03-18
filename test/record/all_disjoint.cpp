@@ -28,26 +28,29 @@ main()
 		label_3
 	);
 
-	typedef
+	using
+	element_1
+	=
 	fcppt::record::element<
 		label_1,
 		int
-	>
-	element_1;
+	>;
 
-	typedef
+	using
+	element_2
+	=
 	fcppt::record::element<
 		label_2,
 		int
-	>
-	element_2;
+	>;
 
-	typedef
+	using
+	element_3
+	=
 	fcppt::record::element<
 		label_3,
 		int
-	>
-	element_3;
+	>;
 
 	static_assert(
 		fcppt::record::all_disjoint<
@@ -62,8 +65,7 @@ main()
 					element_3
 				>
 			>
-		>::value,
-		""
+		>::value
 	);
 
 	static_assert(
@@ -80,7 +82,6 @@ main()
 					element_3
 				>
 			>
-		>::value,
-		""
+		>::value
 	);
 }

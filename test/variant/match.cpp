@@ -19,12 +19,13 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		int,
 		std::string
-	>
-	variant;
+	>;
 
 	std::string const result(
 		fcppt::variant::match(
@@ -62,18 +63,20 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		int_unique_ptr,
 		std::string
-	>
-	variant;
+	>;
 
 	std::string const result(
 		fcppt::variant::match(

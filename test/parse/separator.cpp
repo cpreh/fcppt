@@ -37,13 +37,14 @@ TEST_CASE(
 		fcppt::parse::literal{','}
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		decltype(
 			parser
 		)
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::parse::parse_string(
@@ -109,13 +110,14 @@ TEST_CASE(
 		fcppt::parse::literal{','}
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		decltype(
 			parser
 		)
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::parse::parse_string(
@@ -151,13 +153,14 @@ TEST_CASE(
 		fcppt::parse::basic_literal<wchar_t>{L','}
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		decltype(
 			parser
 		)
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::parse::parse_string(

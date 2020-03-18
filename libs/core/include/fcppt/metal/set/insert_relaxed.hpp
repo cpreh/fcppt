@@ -7,6 +7,7 @@
 #ifndef FCPPT_METAL_SET_INSERT_RELAXED_HPP_INCLUDED
 #define FCPPT_METAL_SET_INSERT_RELAXED_HPP_INCLUDED
 
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/metal/set/contains.hpp>
 #include <fcppt/metal/set/insert.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,9 +31,11 @@ insert_relaxed
 =
 ::metal::invoke<
 	::metal::if_<
-		fcppt::metal::set::contains<
-			Set,
-			Key
+		fcppt::metal::to_number<
+			fcppt::metal::set::contains<
+				Set,
+				Key
+			>
 		>,
 		::metal::always<
 			Set

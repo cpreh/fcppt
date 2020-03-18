@@ -37,13 +37,15 @@ public:
 
 	basic_char();
 
-	typedef
-	Ch
-	result_type;
+	using
+	result_type
+	=
+	Ch;
 
 	template<
 		typename Skipper
 	>
+	[[nodiscard]]
 	fcppt::parse::result<
 		Ch,
 		result_type

@@ -27,8 +27,7 @@ template<
 fcppt::parse::int_<
 	Type
 >::int_()
-{
-}
+= default;
 
 template<
 	typename Type

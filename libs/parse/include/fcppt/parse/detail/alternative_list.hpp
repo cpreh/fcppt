@@ -26,11 +26,12 @@ template<
 >
 struct alternative_list
 {
-	typedef
+	using
+	type
+	=
 	::metal::list<
 		T
-	>
-	type;
+	>;
 };
 
 template<
@@ -42,13 +43,14 @@ struct alternative_list<
 	>
 >
 {
-	typedef
+	using
+	type
+	=
 	fcppt::variant::types_of<
 		fcppt::variant::object<
 			List...
 		>
-	>
-	type;
+	>;
 };
 
 }

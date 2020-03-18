@@ -27,8 +27,7 @@ template<
 fcppt::parse::basic_char<
 	Ch
 >::basic_char()
-{
-}
+= default;
 
 template<
 	typename Ch

@@ -29,33 +29,37 @@ TEST_CASE(
 		move_only_label
 	);
 
-	typedef
+	using
+	int_element
+	=
 	fcppt::record::element<
 		int_label,
 		int
-	>
-	int_element;
+	>;
 
-	typedef
+	using
+	move_only_element
+	=
 	fcppt::record::element<
 		move_only_label,
 		fcppt::unique_ptr<
 			int
 		>
-	>
-	move_only_element;
+	>;
 
-	typedef
+	using
+	record1
+	=
 	fcppt::record::object<
 		int_element
-	>
-	record1;
+	>;
 
-	typedef
+	using
+	record2
+	=
 	fcppt::record::object<
 		move_only_element
-	>
-	record2;
+	>;
 
 	record1 const arg1{
 		int_label{} =

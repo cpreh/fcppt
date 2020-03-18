@@ -11,6 +11,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/epsilon.hpp>
+#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_impl.hpp>
 
 
@@ -23,8 +24,11 @@ template<
 	typename Ch,
 	typename Skipper
 >
-inline
-void
+// [[nodiscard]] TODO(philipp)
+fcppt::parse::result<
+	Ch,
+	fcppt::unit
+>
 run_skipper(
 	fcppt::reference<
 		fcppt::parse::state<
@@ -46,10 +50,11 @@ run_skipper(
 		)
 	};
 
-	_context.skipper().get().parse(
-		_state,
-		context
-	);
+	return
+		_context.skipper().get().parse(
+			_state,
+			context
+		);
 }
 
 }

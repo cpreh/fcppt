@@ -15,6 +15,7 @@ TEST_CASE(
 	"[range]"
 )
 {
+	// NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
 	int array[3] = { 0, 0, 0 };
 
 	CHECK(
@@ -22,6 +23,6 @@ TEST_CASE(
 			array
 		)
 		==
-		&array[0] + 3
+		&array[0] + 3 // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 	);
 }

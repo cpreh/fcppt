@@ -18,17 +18,19 @@ TEST_CASE(
 	"[signal]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
-	typedef
+	using
+	signal_type
+	=
 	fcppt::signal::object<
 		int_unique_ptr ()
-	>
-	signal_type;
+	>;
 
 	signal_type signal{
 		signal_type::combiner_function{

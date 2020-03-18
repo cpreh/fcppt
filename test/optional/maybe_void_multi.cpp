@@ -17,17 +17,19 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
-	typedef
+	using
+	optional_unsigned
+	=
 	fcppt::optional::object<
 		unsigned
-	>
-	optional_unsigned;
+	>;
 
 	int result{
 		0
@@ -49,16 +51,16 @@ TEST_CASE(
 				);
 		},
 		optional_int(
-			10
+			10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		),
 		optional_unsigned(
-			20
+			20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 
 	CHECK(
 		result
 		==
-		30
+		30 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	);
 }

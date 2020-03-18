@@ -38,6 +38,7 @@
 <li>\ref fcpptmetal
 	<ul>
 	<li>Added #fcppt::metal::function_args.</li>
+	<li>Added #fcppt::metal::contains, which returns a boolean instead of a <code>metal::number</code>.</li>
 	</ul>
 </li>
 
@@ -82,6 +83,12 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Changed constructor of #fcppt::filesystem::directory_range to return an error code.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmetal
+	<ul>
+	<li>#fcppt::metal::set::contains now returns a boolean instead of a <code>metal::number</code>.</li>
 	</ul>
 </li>
 

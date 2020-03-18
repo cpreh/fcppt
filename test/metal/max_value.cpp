@@ -15,9 +15,10 @@
 namespace
 {
 
-typedef
-std::size_t
-size_type;
+using
+size_type
+=
+std::size_t;
 
 template<
 	size_type Size
@@ -40,18 +41,18 @@ main()
 			fcppt::metal::max_value<
 				metal::list<
 					static_size<
-						5u
+						5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					>,
 					static_size<
-						7u
+						7U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					>,
 					static_size<
-						3u
+						3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					>
 				>
 			>,
 			static_size<
-				7u
+				7U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			>
 		>
 	);

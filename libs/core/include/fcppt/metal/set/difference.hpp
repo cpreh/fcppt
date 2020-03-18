@@ -7,6 +7,7 @@
 #ifndef FCPPT_METAL_SET_DIFFERENCE_HPP_INCLUDED
 #define FCPPT_METAL_SET_DIFFERENCE_HPP_INCLUDED
 
+#include <fcppt/metal/to_number.hpp>
 #include <fcppt/metal/set/contains.hpp>
 #include <fcppt/metal/set/insert.hpp>
 #include <fcppt/metal/set/make.hpp>
@@ -46,8 +47,13 @@ difference
 			::metal::if_
 		>,
 		::metal::bind<
-			::metal::lambda<
-				fcppt::metal::set::contains
+			::metal::bind<
+				::metal::lambda<
+					fcppt::metal::to_number
+				>,
+				::metal::lambda<
+					fcppt::metal::set::contains
+				>
 			>,
 			::metal::always<
 				Set2

@@ -21,9 +21,10 @@
 namespace
 {
 
-typedef
-float
-scalar;
+using
+scalar
+=
+float;
 
 bool
 almost_equal(
@@ -54,7 +55,7 @@ almost_equal(
 					fcppt::literal<
 						scalar
 					>(
-						0.01f
+						0.01F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					);
 			},
 			_f1,
@@ -69,12 +70,13 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	float2_vec
+	=
 	fcppt::math::vector::static_<
 		scalar,
 		2
-	>
-	float2_vec;
+	>;
 
 	scalar const pi{
 		fcppt::math::pi<
@@ -85,8 +87,8 @@ TEST_CASE(
 	CHECK_FALSE(
 		fcppt::math::vector::atan2(
 			float2_vec{
-				0.f,
-				0.f
+				0.F,
+				0.F
 			}
 		).has_value()
 	);
@@ -95,12 +97,12 @@ TEST_CASE(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
-					1.f,
-					0.f
+					1.F,
+					0.F
 				}
 			),
 			fcppt::optional::make(
-				0.f
+				0.F
 			)
 		)
 	);
@@ -109,8 +111,8 @@ TEST_CASE(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
-					-1.f,
-					0.f
+					-1.F,
+					0.F
 				}
 			),
 			fcppt::optional::make(
@@ -123,14 +125,14 @@ TEST_CASE(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
-					0.f,
-					1.f
+					0.F,
+					1.F
 				}
 			),
 			fcppt::optional::make(
 				pi
 				/
-				2.f
+				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -139,14 +141,14 @@ TEST_CASE(
 		almost_equal(
 			fcppt::math::vector::atan2(
 				float2_vec{
-					0.f,
-					-1.f
+					0.F,
+					-1.F
 				}
 			),
 			fcppt::optional::make(
 				-pi
 				/
-				2.f
+				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);

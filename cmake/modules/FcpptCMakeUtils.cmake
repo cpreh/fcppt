@@ -115,7 +115,7 @@ if(
 	set(
 		CMAKE_CXX_CLANG_TIDY
 		${FCPPT_UTILS_CLANG_TIDY}
-		"-header-filter=."
+		"-header-filter=.*"
 		"-checks=${FCPPT_UTILS_CLANG_TIDY_CHECKS_ARG}"
 	)
 endif()

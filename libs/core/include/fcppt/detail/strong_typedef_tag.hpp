@@ -27,10 +27,11 @@ struct strong_typedef_tag
 		"StrongTypedef must be an fcppt::strong_typedef"
 	);
 
-	typedef
+	using
+	type
+	=
 	typename
-	StrongTypedef::tag_type
-	type;
+	StrongTypedef::tag_type;
 };
 
 }
