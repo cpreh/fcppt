@@ -28,26 +28,29 @@ FCPPT_RECORD_MAKE_LABEL(
 	float_label
 );
 
-typedef
+using
+int_element
+=
 fcppt::record::element<
 	int_label,
 	int
->
-int_element;
+>;
 
-typedef
+using
+bool_element
+=
 fcppt::record::element<
 	bool_label,
 	bool
->
-bool_element;
+>;
 
-typedef
+using
+float_element
+=
 fcppt::record::element<
 	float_label,
 	float
->
-float_element;
+>;
 
 template<
 	typename... Args
@@ -57,13 +60,14 @@ test(
 	Args &&...
 )
 {
-	typedef
+	using
+	args_type
+	=
 	metal::list<
 		fcppt::type_traits::remove_cv_ref_t<
 			Args
 		>...
-	>
-	args_type;
+	>;
 
 	static_assert(
 		fcppt::record::detail::contains_initializer<
