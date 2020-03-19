@@ -57,13 +57,6 @@ The correct function call then looks like this:
 
 \snippet strong_typedef.cpp parameter_call
 
-Internally, the constructor of strong typedef uses #fcppt::cast::safe_numeric which catches unsafe conversions
-at compile-time. For example, the following code will not compile:
-
-\code
-f(vertex_count(true),enable_culling('c'),draw_char(100));
-\endcode
-
 \section fcpptstrongtypedef_operations Operations
 
 The <code>get</code> function extracts the value of a strong typedef.

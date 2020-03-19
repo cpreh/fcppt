@@ -127,7 +127,7 @@
 
 <li>\ref fcpptcontainertuple
 	<ul>
-	<li>Removed <code>fcppt::container::tuple::type_at</code>.</li>
+	<li>Removed <code>fcppt::container::tuple::type_at</code>. Use <code>std::tuple_element</code>.</li>
 	</ul>
 </li>
 
