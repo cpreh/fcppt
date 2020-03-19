@@ -30,53 +30,90 @@ namespace either
 
 \section either_motivation Motivation
 
-Either is a sum of a <em>failure</em> and a <em>success</em> type. As an
-example, consider reading a series of values from a stream. The following code
-tries to read an int followed by a string. If either of them fails, an
-exception is thrown.
+The downside of exceptions, which are the usual way to handle errors in C++, is that they do not appear in the type system.
+If a function changes which exceptions it throws, all the code that uses the function will still compile.
+This can make keeping track of which errors to handle where extremely difficult.
+Instead of having a function that throws an exception, i.e.
 
-\snippet either.cpp either_read_raw
+\snippet either.cpp either_motivation_exception
 
-Instead of throwing an exception, we can store the exception in an either.
+we can move the exception into the return type instead, like so:
 
-\snippet either.cpp either_read
+\snippet either.cpp either_motivation_either
 
-This can then be used to chain both reading operations together. #fcppt::either::apply takes several eithers and combines them if all
-contain successes. Otherwise it returns the first error.
+In the first example, where the exception is used, a caller has to know that such an exception may be thrown and catch it.
 
-\snippet either.cpp either_read_apply
+\snippet either.cpp either_motivation_exception_call
 
-Both \ref fcpptoptional and \ref fcpptvariant are closely
-related to either. An optional can be thought of as an either with an empty
-failure type, while a variant generalizes sum types but assigns their
-components no special meaning.
+In the second example, where the either is used, we cannot ignore that an error can occur.
+The simplest way to deconstruct an <code>either<F,S></code> is to call the #fcppt::either::match function.
+It gets two lambdas, where the first one receives <code>F</code>
+and the second one receives <code>S</code>.
+
+\snippet either.cpp either_motivation_either_call
+
+In general, an <code>either<F,S></code> is basically the same as a <code>std::variant<F,S></code>
+but with additional meaning assigned to <code>F</code> and <code>S</code>.
+This becomes apparant in functions like #fcppt::either::map, #fcppt::either::apply and #fcppt::either::bind.
+
+\note Either does not make exceptions obsolete. They are still crucial to implement RAII,
+and there might be cases where it is simply not desired to make an error explicit in the type system.
 
 \section either_operations Operations
 
-As seen in the introduction, multiple eithers can be combined together using
-#fcppt::either::apply. The more basic function #fcppt::either::map operates on a single either.
+The simplest operation on eithers is #fcppt::either::map.
+It allows us to transform the success value while keeping the error value.
+For example, consider a function that might return an int, which we want to transform into a string.
+This can be done as follows:
 
-Notice that the example given in the introduction makes use of the fact that an
-<code>istream</code> can enter the <code>fail</code> state in which all future
-operations will fail as well. Therefore, it is possible to read multiple
-eithers from a stream and then combine them together. Imagine this was not
-possible and it would be an error to continue reading from a failed stream. We
-would need an operation that not only chains eithers together but also dictates
-how they are produced. This is done by #fcppt::either::bind:
+\snippet either.cpp either_map
+
+We often have to chain multiple eithers together.
+For example, if we want to call two functions, each of which can fail, we only want to produce
+a result if both succeeed.
+This can be done with #fcppt::either::apply.
+
+\snippet either.cpp either_apply
+
+Note that since #fcppt::either::apply is a variadic template, so it can work on arbitrarly many eithers,
+the function is its first parameter.
+
+Another, more even more basic operation, is #fcppt::either::bind.
+As an example, let us look at how reading from a <code>std::istream</code> would work using eithers.
+Consider a function that tries to read an int and if that succeeds tries to read a string.
+
+\snippet either.cpp either_read_raw
+
+First note that the function reading from the stream, which is <code>operator>> </code>,
+uses a reference parameter to store its result.
+Since <code>operator>></code> returns a reference to <code>_stream</code>,
+the expression <code>!(_stream >> something)</code> checks if reading <code>something</code>
+produced an error. If that is the case, we cannot use the stream to read more data,
+and we need to abort early.
+
+To do this with eithers instead, first, let us encapsulate reading a single value in a template function
+which returns an either.
+
+\snippet either.cpp either_read
+
+Then, we can use this function to read the two eithers in succession,
+which is done using #fcppt::either::bind.
 
 \snippet either.cpp either_read_bind
 
-The most basic function that acts on the two cases of an either is #fcppt::either::match. Again, consider the function from the introduction.
+Note that the difference to using #fcppt::either::apply is that the second operation
+is not done if the first one returned an error.
+Unfortunately, chaining more of these operations together creates more and more nested code.
+In other programming languages like Haskell, there is special notation to bring every operation
+on the same indentation level, called the \em Do-Notation.
 
-\snippet either.cpp either_match
-
-Alternatively, there is the convenience function #fcppt::either::to_exception that throws an exception in case of an error:
+If at some point you want to turn an either back into an exception, you can use #fcppt::either::to_exception.
 
 \snippet either.cpp either_to_exception
 
 \section either_error Errors
 
-When functions return optional errors but <em>no success</em> values, it is more
+When functions return optional errors but <em>no success</em> values, it can be more
 convenient to handle such cases as eithers. An #fcppt::either::error
 is an either with a success type that only has one value, which is
 #fcppt::unit. For example:

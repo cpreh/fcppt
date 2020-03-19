@@ -29,185 +29,183 @@
 namespace
 {
 
+bool
+error()
+{
+	return
+		false;
+}
+
+// [either_motivation_exception]
+int example_function()
+{
+	// some code
+	// ...
+	if(error())
+	{
+		throw std::runtime_error{"something went wrong"};
+	}
+
+	return 1;
+}
+// [either_motivation_exception]
+
+// [either_motivation_either]
+using result_type =
+fcppt::either::object<std::runtime_error,int>;
+
+result_type
+example_function2()
+{
+	// some code
+	// ...
+	if(error())
+	{
+		return result_type{std::runtime_error{"something went wrong"}};
+	}
+
+	return result_type{1};
+}
+// [either_motivation_either]
+
+// [either_motivation_exception_call]
+void caller()
+{
+	try {
+		int const result{
+			example_function()
+		};
+
+		std::cout << "result is " << result << '\n';
+	}
+	catch(std::runtime_error const &) {
+		// do something else
+	}
+}
+// [either_motivation_exception_call]
+
+// [either_motivation_either_call]
+void caller2()
+{
+	fcppt::either::match(
+		example_function2(),
+		[](std::runtime_error const &)
+		{
+			// do something else
+		},
+		[](int const _result)
+		{
+			std::cout << "result is " << _result << '\n';
+		}
+	);
+}
+// [either_motivation_either_call]
+
+// [either_map]
+fcppt::either::object<std::runtime_error, int>
+get_int();
+
+fcppt::either::object<std::runtime_error,std::string>
+get_string()
+{
+	return
+		fcppt::either::map(
+			get_int(),
+			[](int const _value)
+			{
+				return
+					std::to_string(_value);
+			}
+		);
+}
+// [either_map]
+fcppt::either::object<std::runtime_error, int>
+get_int()
+{
+	return
+		fcppt::either::object<std::runtime_error,int>{0};
+}
+
+// [either_apply]
+fcppt::either::object<std::runtime_error,std::string>
+get_two_strings()
+{
+	return
+		fcppt::either::apply(
+			[](int const _value1, int const _value2)
+			{
+				return
+					std::to_string(_value1) + " " + std::to_string(_value2);
+			},
+			get_int(),
+			get_int()
+		);
+}
+// [either_apply]
+
 //! [either_read_raw]
 using
-int_string_pair
-=
-std::pair<
-	int,
-	std::string
->;
+int_string_pair =
+std::pair<int,std::string>;
 
 int_string_pair
-read_stream_raw(
-	std::istream &_stream
-)
+read_stream_raw(std::istream &_stream)
 {
 	int result_int{0};
 
-	if(
-		!(_stream >> result_int)
-	)
+	if(!(_stream >> result_int))
 	{
-		throw
-			std::runtime_error{
-				"Failed reading the int"
-			};
+		throw std::runtime_error{"error"};
 	}
 
-	std::string result_string;
+	std::string result_string{};
 
-	if(
-		!(_stream >> result_string)
-	)
+	if(!(_stream >> result_string))
 	{
-		throw
-			std::runtime_error{
-				"Failed reading the string"
-			};
+		throw std::runtime_error{"error"};
 	}
 
 	return
-		int_string_pair{
-			result_int,
-			result_string
-		};
+		int_string_pair{result_int, result_string};
 }
 //! [either_read_raw]
 
 //! [either_read]
-template<
-	typename Type
->
-fcppt::either::object<
-	std::runtime_error,
-	Type
->
-read(
-	std::istream &_stream,
-	std::string const &_error
-)
+template<typename Type>
+fcppt::either::object<std::runtime_error, Type>
+read(std::istream &_stream)
 {
 	Type result{};
 
-	using
-	result_type
-	=
-	fcppt::either::object<
-		std::runtime_error,
-		Type
-	>;
+	using return_type =
+	fcppt::either::object<std::runtime_error, Type>;
 
 	return
 		_stream >> result
 		?
-			result_type{
-				result
-			}
+			return_type{result}
 		:
-			result_type{
-				std::runtime_error{
-					_error
-				}
-			}
+			return_type{std::runtime_error{"error"}}
 		;
 }
 //! [either_read]
 
-//! [either_read_apply]
-fcppt::either::object<
-	std::runtime_error,
-	int_string_pair
->
-read_stream_either(
-	std::istream &_stream
-)
-{
-	fcppt::either::object<
-		std::runtime_error,
-		int
-	> const either_int(
-		read<
-			int
-		>(
-			_stream,
-			"read int"
-		)
-	);
-
-	fcppt::either::object<
-		std::runtime_error,
-		std::string
-	> const either_string(
-		read<
-			std::string
-		>(
-			_stream,
-			"read string"
-		)
-	);
-
-	return
-		fcppt::either::apply(
-			[](
-				int const _i,
-				std::string const &_s
-			)
-			{
-				return
-					int_string_pair(
-						_i,
-						_s
-					);
-			},
-			either_int,
-			either_string
-		);
-}
-//! [either_read_apply]
-
 //! [either_read_bind]
-fcppt::either::object<
-	std::runtime_error,
-	int_string_pair
->
-read_stream_either_bind(
-	std::istream &_stream
-)
+fcppt::either::object<std::runtime_error, int_string_pair>
+read_stream_either(std::istream &_stream)
 {
 	return
 		fcppt::either::bind(
-			read<
-				int
-			>(
-				_stream,
-				"read int"
-			),
-			[
-				&_stream
-			](
-				int const _int_value
-			)
+			read<int>(_stream),
+			[&_stream](int const _int_value)
 			{
 				return
 					fcppt::either::map(
-						read<
-							std::string
-						>(
-							_stream,
-							"read string"
-						),
-						[
-							_int_value
-						](
-							std::string const &_string_value
-						)
+						read<std::string>(_stream),
+						[_int_value](std::string const &_string_value)
 						{
 							return
-								std::make_pair(
-									_int_value,
-									_string_value
-								);
+								std::make_pair(_int_value,_string_value);
 						}
 					);
 			}
@@ -215,67 +213,18 @@ read_stream_either_bind(
 }
 //! [either_read_bind]
 
-//! [either_match]
-void
-either_match(
-	std::istream &_stream
-)
-{
-	fcppt::either::match(
-		read_stream_either(
-			_stream
-		),
-		[](
-			std::runtime_error const &_error
-		)
-		{
-			std::cerr
-				<< "Reading failed "
-				<< _error.what()
-				<< '\n';
-		},
-		[](
-			int_string_pair const &_result
-		)
-		{
-			std::cout
-				<< "The result is "
-				<< _result.first
-				<< ", "
-				<< _result.second
-				<< '\n';
-		}
-	);
-}
-//! [either_match]
-
 //! [either_to_exception]
-void
-either_to_exception(
-	std::istream &_stream
-)
+int_string_pair
+either_to_exception(std::istream &_stream)
 {
-	int_string_pair const result(
+	return
 		fcppt::either::to_exception(
-			read_stream_either(
-				_stream
-			),
-			[](
-				std::runtime_error const &_error
-			)
+			read_stream_either(_stream),
+			[](std::runtime_error const &_error)
 			{
-				return
-					_error;
+				return _error;
 			}
-		)
-	);
-
-	std::cout
-		<< "The result is "
-		<< result.first
-		<< ", "
-		<< result.second
-		<< '\n';
+		);
 }
 //! [either_to_exception]
 
@@ -294,25 +243,17 @@ enum class error_code
 //! [either_error]
 auto
 either_error(
-	fcppt::optional::object<
-		error_code
-	> const _error
+	fcppt::optional::object<error_code> const _error
 )
 {
-	fcppt::either::error<
-		error_code
-	> const either_error{
-		fcppt::either::error_from_optional(
-			_error
-		)
+	fcppt::either::error<error_code> const either_error{
+		fcppt::either::error_from_optional(_error)
 	};
 
 	return
 		fcppt::either::map(
 			either_error,
-			[](
-				fcppt::either::no_error
-			)
+			[](fcppt::either::no_error)
 			{
 				// Do something in case of no error.
 				return
@@ -364,32 +305,6 @@ try
 			"42 test"
 		);
 
-		std::cout
-			<<
-			read_stream_either_bind(
-				stream
-			).has_success()
-			<<
-			'\n';
-	}
-
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::istringstream stream(
-			"42 test"
-		);
-
-		either_match(
-			stream
-		);
-	}
-
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::istringstream stream(
-			"42 test"
-		);
-
 		either_to_exception(
 			stream
 		);
@@ -400,6 +315,14 @@ try
 			error_code::failure1
 		)
 	);
+
+	caller();
+
+	caller2();
+
+	get_string();
+
+	get_two_strings();
 }
 catch(
 	std::exception const &
