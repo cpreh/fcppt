@@ -10,6 +10,9 @@
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -73,6 +76,8 @@ extract_from_string_locale(
 		_locale
 	);
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 	fcppt::optional::object<
 		Dest
 	> result{
@@ -92,6 +97,7 @@ extract_from_string_locale(
 		:
 			fcppt::optional::nothing{}
 		;
+FCPPT_PP_POP_WARNING
 }
 
 }
