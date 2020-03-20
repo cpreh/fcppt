@@ -24,23 +24,16 @@ namespace
 //! [optional_example_bad]
 void
 optional_example_bad(
-	fcppt::optional::object<
-		unsigned
-	> const _opt
+	fcppt::optional::object<unsigned> const _opt
 )
 {
-	if(
-		_opt.has_value()
-	)
+	if(_opt.has_value())
 	{
-		std::cout
-			<< _opt.get_unsafe()
-			<< '\n';
+		std::cout << _opt.get_unsafe() << '\n';
 	}
 	else
 	{
-		std::cout
-			<< "No value\n";
+		std::cout << "No value\n";
 	}
 }
 //! [optional_example_bad]
@@ -48,24 +41,17 @@ optional_example_bad(
 //! [optional_example_good]
 void
 optional_example_good(
-	fcppt::optional::object<
-		unsigned
-	> const _opt
+	fcppt::optional::object<unsigned> const _opt
 )
 {
 	fcppt::optional::maybe(
 		_opt,
 		[]{
-			std::cout
-				<< "No value\n";
+			std::cout << "No value\n";
 		},
-		[](
-			unsigned const _val
-		)
+		[](unsigned const _val)
 		{
-			std::cout
-				<< _val
-				<< '\n';
+			std::cout << _val << '\n';
 		}
 	);
 }
@@ -102,33 +88,19 @@ void
 optional_bind()
 {
 //! [optional_bind]
-	using
-	optional_uint
-	=
-	fcppt::optional::object<
-		unsigned
-	>;
+	using optional_uint =
+	fcppt::optional::object<unsigned>;
 
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+	using optional_string =
+	fcppt::optional::object<std::string>;
 
 	optional_string const value{
 		fcppt::optional::bind(
 			optional_uint{1U},
-			[](
-				unsigned const _val
-			)
+			[](unsigned const _val)
 			{
 				return
-					optional_string(
-						std::to_string(
-							_val
-						)
-					);
+					optional_string(std::to_string(_val));
 			}
 		)
 	};
@@ -140,14 +112,10 @@ optional_bind()
 	optional_string const value2{
 		fcppt::optional::map(
 			optional_uint{1U},
-			[](
-				unsigned const _val
-			)
+			[](unsigned const _val)
 			{
 				return
-					std::to_string(
-						_val
-					);
+					std::to_string(_val);
 			}
 		)
 	};
@@ -160,12 +128,8 @@ void
 from_optional()
 {
 //! [from_optional]
-	using
-	optional_uint
-	=
-	fcppt::optional::object<
-		unsigned
-	>;
+	using optional_uint =
+	fcppt::optional::object<unsigned>;
 
 	unsigned const value{
 		fcppt::optional::from(
@@ -182,12 +146,8 @@ from_optional()
 }
 
 //! [optional_reference]
-using
-optional_int
-=
-fcppt::optional::object<
-	int
->;
+using optional_int =
+fcppt::optional::object<int>;
 
 void
 set_ref(
@@ -196,9 +156,7 @@ set_ref(
 {
 	fcppt::optional::maybe_void(
 		_opt_ref,
-		[](
-			int &_ref
-		)
+		[](int &_ref)
 		{
 			_ref = 1;
 		}
@@ -207,12 +165,8 @@ set_ref(
 //! [optional_reference]
 
 //! [optional_reference_2]
-using
-optional_int_ref
-=
-fcppt::optional::reference<
-	int
->;
+using optional_int_ref =
+fcppt::optional::reference<int>;
 
 void
 set_ref2(
@@ -221,11 +175,7 @@ set_ref2(
 {
 	fcppt::optional::maybe_void(
 		_opt_ref,
-		[](
-			fcppt::reference<
-				int
-			> const _ref
-		)
+		[](fcppt::reference<int> const _ref)
 		{
 			_ref.get() = 1;
 		}
