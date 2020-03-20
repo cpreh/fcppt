@@ -64,28 +64,20 @@ namespace record
 {
 //! [record_make_label]
 // age = fcppt::record::label<T> for a unique tag type T
-FCPPT_RECORD_MAKE_LABEL(
-	age
-);
+FCPPT_RECORD_MAKE_LABEL(age);
 
 // name = fcppt::record::label<T> for a unique tag type T
-FCPPT_RECORD_MAKE_LABEL(
-	name
-);
+FCPPT_RECORD_MAKE_LABEL(name);
 //! [record_make_label]
 
 //! [record_elements]
-using
-age_element
-=
+using age_element =
 fcppt::record::element<
 	age,
 	int
 >;
 
-using
-name_element
-=
+using name_element =
 fcppt::record::element<
 	name,
 	std::string
@@ -93,9 +85,7 @@ fcppt::record::element<
 //! [record_elements]
 
 //! [record_object]
-using
-person
-=
+using person =
 fcppt::record::object<
 	age_element,
 	name_element
@@ -161,10 +151,7 @@ print(
 				Elements...
 			>
 		>{},
-		[
-			&_stream,
-			&_record
-		](
+		[&_stream, &_record](
 			// _element is fcppt::tag<fcppt::record::element<L,T>>
 			auto const _element
 		)
@@ -203,9 +190,7 @@ init_stream()
 		fcppt::record::init<
 			person
 		>(
-			[
-				&stream
-			](
+			[&stream](
 				// _element is fcppt::record::element<L,T>
 				auto const _element
 			)
@@ -254,29 +239,19 @@ FCPPT_RECORD_MAKE_LABEL_ARG(
 // ![make_label_arg]
 
 // ![sprite_element]
-template<
-	unsigned I
->
-using
-sprite_element
-=
+template<unsigned I>
+using sprite_element =
 fcppt::record::element<
-	texture<
-		I
-	>,
+	texture<I>,
 	std::string
 >;
 // ![sprite_element]
 
 // ![sprite_generic]
-template<
-	typename T
->
+template<typename T>
 struct sprite_from_ints;
 
-template<
-	unsigned... Ints
->
+template<unsigned... Ints>
 struct sprite_from_ints<
 	std::integer_sequence<
 		unsigned,
@@ -284,9 +259,7 @@ struct sprite_from_ints<
 	>
 >
 {
-	using
-	type
-	=
+	using type =
 	fcppt::record::object<
 		sprite_element<
 			Ints
@@ -294,12 +267,8 @@ struct sprite_from_ints<
 	>;
 };
 
-template<
-	unsigned N
->
-using
-sprite
-=
+template<unsigned N>
+using sprite =
 typename
 sprite_from_ints<
 	std::make_integer_sequence<
@@ -313,12 +282,8 @@ void
 test()
 {
 // ![sprite_example]
-	using
-	sprite_type
-	=
-	sprite<
-		2U
-	>;
+	using sprite_type =
+	sprite<2U>;
 
 	sprite_type const test_sprite{
 		texture<0>{} = std::string("ground"),
