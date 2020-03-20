@@ -44,15 +44,16 @@ struct apply_result_impl<
 	Tuples...
 >
 {
-	typedef
+	using
+	type
+	=
 	std::tuple<
 		fcppt::container::tuple::detail::apply_result_at<
 			Function,
 			Indices,
 			Tuples...
 		>...
-	>
-	type;
+	>;
 };
 
 }

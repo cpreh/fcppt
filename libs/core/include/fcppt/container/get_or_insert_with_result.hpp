@@ -45,12 +45,13 @@ get_or_insert_with_result(
 	Create const &_create
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::container::get_or_insert_result<
 		typename
 		Container::mapped_type &
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::optional::maybe(

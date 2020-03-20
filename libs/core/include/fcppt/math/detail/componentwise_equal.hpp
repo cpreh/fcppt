@@ -40,17 +40,17 @@ componentwise_equal(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			fcppt::type_traits::value_type<
 				Range1
 			>
-		>::value
+		>
 		&&
-		std::is_floating_point<
+		std::is_floating_point_v<
 			fcppt::type_traits::value_type<
 				Range2
 			>
-		>::value,
+		>,
 		"componentwise_equal can only be used on ranges of floating point type"
 	);
 
@@ -78,13 +78,14 @@ componentwise_equal(
 					_index
 				);
 
-				typedef
+				using
+				index
+				=
 				fcppt::tag_type<
 					decltype(
 						_index
 					)
-				>
-				index;
+				>;
 
 				return
 					fcppt::math::diff(

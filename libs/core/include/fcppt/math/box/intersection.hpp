@@ -54,12 +54,13 @@ intersection(
 	> const &_b
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::math::box::object<
 		T,
 		N
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::math::box::intersects(

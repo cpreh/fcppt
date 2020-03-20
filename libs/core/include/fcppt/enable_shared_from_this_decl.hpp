@@ -34,11 +34,12 @@ public
 		Type
 	>
 {
-	typedef
+	using
+	base
+	=
 	std::enable_shared_from_this<
 		Type
-	>
-	base;
+	>;
 protected:
 	enable_shared_from_this();
 

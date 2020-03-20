@@ -19,11 +19,12 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
-typedef
+using
+args_range
+=
 fcppt::iterator::range<
 	fcppt::args_vector::const_iterator
->
-args_range;
+>;
 
 }
 

@@ -55,15 +55,18 @@ read(
 )
 {
 	static_assert(
-		std::is_arithmetic<
+		std::is_arithmetic_v<
 			Type
-		>::value,
+		>,
 		"io::read must return an arithmetic type"
 	);
 
-	typedef fcppt::optional::object<
+	using
+	result_type
+	=
+	fcppt::optional::object<
 		Type
-	> result_type;
+	>;
 
 	Type result;
 

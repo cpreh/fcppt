@@ -58,7 +58,9 @@ unique_ptr_dynamic_cast(
 )
 noexcept
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::variant::object<
 		fcppt::unique_ptr<
 			Derived,
@@ -68,8 +70,7 @@ noexcept
 			Base,
 			Deleter
 		>
-	>
-	result_type;
+	>;
 
 	static_assert(
 		fcppt::type_traits::is_base_of<

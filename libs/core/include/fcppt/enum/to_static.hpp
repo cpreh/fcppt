@@ -45,17 +45,18 @@ to_static(
 )
 {
 	static_assert(
-		std::is_enum<
+		std::is_enum_v<
 			Enum
-		>::value,
+		>,
 		"runtime_enum can only be used on enumeration types"
 	);
 
-	typedef
+	using
+	int_type
+	=
 	fcppt::enum_::size_type<
 		Enum
-	>
-	int_type;
+	>;
 
 	return
 		fcppt::runtime_index<

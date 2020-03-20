@@ -25,19 +25,20 @@ template<
 struct promote_int_type
 {
 	static_assert(
-		std::is_integral<
+		std::is_integral_v<
 			Type
-		>::value,
+		>,
 		"Type must be an integral type."
 	);
 
-	typedef
+	using
+	type
+	=
 	decltype(
 		+std::declval<
 			Type
 		>()
-	)
-	type;
+	);
 };
 
 }

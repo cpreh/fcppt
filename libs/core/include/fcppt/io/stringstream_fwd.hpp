@@ -24,11 +24,12 @@ namespace io
 
 See \ref fcpptstring for a motivation for this.
 */
-typedef
+using
+stringstream
+=
 std::basic_stringstream<
 	fcppt::char_type
->
-stringstream;
+>;
 
 }
 }

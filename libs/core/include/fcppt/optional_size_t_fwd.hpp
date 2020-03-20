@@ -16,11 +16,12 @@
 namespace fcppt
 {
 
-typedef
+using
+optional_size_t
+=
 fcppt::optional::object<
 	std::size_t
->
-optional_size_t;
+>;
 
 }
 

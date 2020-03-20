@@ -42,13 +42,14 @@ make_pos_ref_range(
 	Grid &_grid
 )
 {
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos_type<
 		std::remove_cv_t<
 			Grid
 		>
-	>
-	pos;
+	>;
 
 	return
 		fcppt::container::grid::make_pos_ref_range_start_end(

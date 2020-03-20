@@ -34,11 +34,12 @@ struct function_args<
 	)
 >
 {
-	typedef
+	using
+	type
+	=
 	::metal::list<
 		Args...
-	>
-	type;
+	>;
 };
 
 }

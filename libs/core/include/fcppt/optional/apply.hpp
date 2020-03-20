@@ -57,7 +57,9 @@ fcppt::optional::object<
 	)
 >
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		decltype(
 			_function(
@@ -68,8 +70,7 @@ fcppt::optional::object<
 				)...
 			)
 		)
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::optional::detail::has_value_all(

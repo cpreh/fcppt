@@ -65,13 +65,14 @@ one_dimensional_input(
 				_index
 			);
 
-			typedef
+			using
+			index
+			=
 			fcppt::tag_type<
 				decltype(
 					_index
 				)
-			>
-			index;
+			>;
 
 			_stream >>
 				fcppt::math::detail::checked_access<

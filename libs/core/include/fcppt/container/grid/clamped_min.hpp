@@ -51,17 +51,18 @@ clamped_min(
 )
 {
 	static_assert(
-		std::is_signed<
+		std::is_signed_v<
 			Source
-		>::value,
+		>,
 		"Source must be signed"
 	);
 
-	typedef
+	using
+	dest_type
+	=
 	std::make_unsigned_t<
 		Source
-	>
-	dest_type;
+	>;
 
 	return
 		fcppt::container::grid::min<

@@ -32,11 +32,12 @@ unique(
 	Container &_container
 )
 {
-	typedef
+	using
+	value_type
+	=
 	fcppt::type_traits::value_type<
 		Container
-	>
-	value_type;
+	>;
 
 	return
 		fcppt::algorithm::unique_if(

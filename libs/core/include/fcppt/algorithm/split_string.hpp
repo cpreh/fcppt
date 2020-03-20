@@ -48,10 +48,11 @@ split_string(
 	> const _delim
 )
 {
-	typedef
+	using
+	iterator
+	=
 	typename
-	String::const_iterator
-	iterator;
+	String::const_iterator;
 
 	std::vector<
 		String

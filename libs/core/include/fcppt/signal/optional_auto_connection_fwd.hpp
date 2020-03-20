@@ -22,11 +22,12 @@ namespace signal
 
 \ingroup fcpptsignal
 */
-typedef
+using
+optional_auto_connection
+=
 fcppt::optional::object<
 	fcppt::signal::auto_connection
->
-optional_auto_connection;
+>;
 
 }
 }

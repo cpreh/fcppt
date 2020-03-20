@@ -29,12 +29,13 @@ FCPPT_RECORD_DETAIL_MAKE_TAG(\
 	name\
 ); \
 \
-typedef \
+using \
+name \
+= \
 fcppt::record::label<\
 	FCPPT_RECORD_DETAIL_TAG_NAME(\
 		name\
 	) \
-> \
-name
+>
 
 #endif

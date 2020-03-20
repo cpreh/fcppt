@@ -25,9 +25,12 @@ Read \ref fcpptstrongtypedef for more information.
 struct fcppt_strong_typedef_##name##_tag\
 {};\
 \
-typedef fcppt::strong_typedef<\
+using \
+name \
+= \
+fcppt::strong_typedef<\
 	type,\
 	fcppt_strong_typedef_##name##_tag\
-> name
+>
 
 #endif

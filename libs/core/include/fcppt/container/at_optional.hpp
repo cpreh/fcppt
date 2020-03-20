@@ -40,13 +40,14 @@ at_optional(
 	typename Container::size_type const _index
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::reference<
 		fcppt::container::to_value_type<
 			Container
 		>
-	>
-	result_type;
+	>;
 
 	return
 		_index

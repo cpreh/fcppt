@@ -55,15 +55,16 @@ binary_search(
 		)
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		fcppt::container::to_iterator_type<
 			std::remove_reference_t<
 				Range
 			>
 		>
-	>
-	result_type;
+	>;
 
 	return
 		fcppt::range::singular(

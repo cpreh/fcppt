@@ -26,14 +26,15 @@ template<
 >
 struct flip_map
 {
-	typedef
+	using
+	type
+	=
 	::metal::transform<
 		::metal::lambda<
 			fcppt::metal::flip_pair
 		>,
 		Map
-	>
-	type;
+	>;
 
 	static_assert(
 		fcppt::metal::is_set<

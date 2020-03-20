@@ -95,17 +95,18 @@ distance(
 	> const &_v2
 )
 {
-	typedef
+	using
+	result_vector
+	=
 	fcppt::math::vector::static_<
 		Dest,
 		N
-	>
-	result_vector;
+	>;
 
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			Dest
-		>::value,
+		>,
 		"Dest must be a floating point type"
 	);
 
