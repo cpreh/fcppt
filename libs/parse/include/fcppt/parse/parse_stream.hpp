@@ -10,6 +10,8 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string_literal.hpp>
+#include <fcppt/unit.hpp>
+#include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/error.hpp>
@@ -72,19 +74,30 @@ try
 		)
 	};
 
-	fcppt::parse::run_skipper(
-		fcppt::make_ref(
-			state
-		),
-		context
-	);
-
 	return
-		_parser.parse(
-			fcppt::make_ref(
-				state
+		fcppt::either::bind(
+			fcppt::parse::run_skipper(
+				fcppt::make_ref(
+					state
+				),
+				context
 			),
-			context
+			[
+				&context,
+				&state,
+				&_parser
+			](
+				fcppt::unit const &
+			)
+			{
+				return
+					_parser.parse(
+						fcppt::make_ref(
+							state
+						),
+						context
+					);
+			}
 		);
 }
 catch(

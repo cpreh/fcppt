@@ -8,6 +8,7 @@
 #define FCPPT_PARSE_SEQUENCE_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
@@ -96,35 +97,47 @@ fcppt::parse::sequence<
 				> &&_left_result
 			)
 			{
-				fcppt::parse::run_skipper(
-					_state,
-					_context
-				);
-
 				return
-					fcppt::either::map(
-						fcppt::parse::deref(
-							this->right_
-						).parse(
+					fcppt::either::bind(
+						fcppt::parse::run_skipper(
 							_state,
 							_context
 						),
 						[
-							&_left_result
+							&_left_result,
+							_state,
+							&_context,
+							this
 						](
-							fcppt::parse::result_of<
-								Right
-							> &&_right_result
+							fcppt::unit const &
 						)
 						{
 							return
-								fcppt::parse::detail::sequence_result(
-									std::move(
-										_left_result
+								fcppt::either::map(
+									fcppt::parse::deref(
+										this->right_
+									).parse(
+										_state,
+										_context
 									),
-									std::move(
-										_right_result
+									[
+										&_left_result
+									](
+										fcppt::parse::result_of<
+											Right
+										> &&_right_result
 									)
+									{
+										return
+											fcppt::parse::detail::sequence_result(
+												std::move(
+													_left_result
+												),
+												std::move(
+													_right_result
+												)
+											);
+									}
 								);
 						}
 					);

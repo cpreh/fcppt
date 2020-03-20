@@ -24,7 +24,7 @@ template<
 	typename Ch,
 	typename Skipper
 >
-// [[nodiscard]] TODO(philipp)
+[[nodiscard]]
 fcppt::parse::result<
 	Ch,
 	fcppt::unit
