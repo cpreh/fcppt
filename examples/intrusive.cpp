@@ -21,9 +21,7 @@ namespace
 //! [intrusive_fwd]
 class element;
 
-using
-element_list
-=
+using element_list =
 fcppt::intrusive::list<
 	element
 >;
@@ -37,47 +35,31 @@ public
 		element
 	>
 {
-	FCPPT_NONCOPYABLE(
-		element
-	);
+	FCPPT_NONCOPYABLE(element);
 public:
 	element(
-		fcppt::reference<
-			element_list
-		> const _list,
+		fcppt::reference<element_list> const _list,
 		int const _value
 	)
 	:
-		fcppt::intrusive::base<
-			element
-		>{
+		fcppt::intrusive::base<element>{
 			_list.get()
 		},
-		value_{
-			_value
-		}
+		value_{_value}
 	{
 	}
 
-	element(
-		element &&
-	)
-	noexcept
-	= default;
+	element(element &&)
+	noexcept = default;
 
 	element &
-	operator=(
-		element &&
-	)
-	noexcept
-	= default;
+	operator=(element &&)
+	noexcept = default;
 
-	~element()
-	= default;
+	~element() = default;
 
 	[[nodiscard]]
-	int
-	value() const
+	int value() const
 	{
 		return value_;
 	}
@@ -92,23 +74,13 @@ test_func()
 //! [intrusive_test]
 	element_list list{};
 
-	element e1{
-		fcppt::make_ref(list),
-		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	};
+	element e1{fcppt::make_ref(list), 5}; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	{
-		element e2{
-			fcppt::make_ref(list),
-			10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		};
+		element e2{fcppt::make_ref(list), 10}; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 		// Prints 5, 10
-		for(
-			element const &e
-			:
-			list
-		)
+		for(element const &e : list)
 		{
 			std::cout << e.value() << ' ';
 		}
@@ -117,11 +89,7 @@ test_func()
 	std::cout << '\n';
 
 	// Prints 5
-	for(
-		element const &e
-		:
-		list
-	)
+	for(element const &e : list)
 	{
 		std::cout << e.value() << ' ';
 	}
