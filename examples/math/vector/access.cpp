@@ -12,12 +12,13 @@
 int
 main()
 {
-	typedef
+	using
+	float2_vec
+	=
 	fcppt::math::vector::static_<
 		float,
 		2
-	>
-	float2_vec;
+	>;
 
 	float2_vec obj{
 		1.F,

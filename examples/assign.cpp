@@ -17,13 +17,14 @@ int
 main()
 {
 // ![assign]
-	typedef
+	using
+	int_unique_ptr_vector
+	=
 	std::vector<
 		fcppt::unique_ptr<
 			int
 		>
-	>
-	int_unique_ptr_vector;
+	>;
 
 	auto const int_ptrs(
 		fcppt::container::make<

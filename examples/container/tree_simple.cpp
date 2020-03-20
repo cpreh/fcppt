@@ -23,11 +23,10 @@ main()
 try
 {
 //! [main]
-	typedef
+	using string_tree =
 	fcppt::container::tree::object<
 		fcppt::string
-	>
-	string_tree;
+	>;
 
 	string_tree tree(
 		FCPPT_TEXT("hello")

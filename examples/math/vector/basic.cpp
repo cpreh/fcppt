@@ -16,7 +16,6 @@
 int
 main()
 {
-	// typedef a vector that has a static size of three elements of float
 	using
 	float3_vec
 	=

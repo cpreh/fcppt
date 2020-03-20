@@ -17,13 +17,14 @@ int
 main()
 {
 //! [metal_print}
-	typedef
+	using
+	vec
+	=
 	metal::list<
 		int,
 		float,
 		double
-	>
-	vec;
+	>;
 
 	// prints (int, float, double) to cout
 	fcppt::metal::print<

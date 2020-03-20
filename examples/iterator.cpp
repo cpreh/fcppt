@@ -20,15 +20,14 @@ namespace
 // ![iterator_types]
 class my_iterator;
 
-typedef
+using iterator_types =
 fcppt::iterator::types<
 	my_iterator, // The derived type
 	int, // The value type
 	int &, // The reference type, which is non const so the iterator is also an output iterator
 	std::ptrdiff_t, // The difference type for pointers
 	std::random_access_iterator_tag // The iterator category
->
-iterator_types;
+>;
 // ![iterator_types]
 
 // ![iterator_impl]

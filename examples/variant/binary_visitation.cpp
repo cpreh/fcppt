@@ -19,13 +19,13 @@ int
 main()
 try
 {
-	// typedef a variant that can either hold a string or an int
-	typedef
+	using
+	string_or_int
+	=
 	fcppt::variant::object<
 		std::string,
 		int
-	>
-	string_or_int;
+	>;
 
 //! [variant_binary_visitation]
 	string_or_int const v(

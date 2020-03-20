@@ -10,7 +10,6 @@
 #include <fcppt/io/cout.hpp>
 
 //! [bitfield]
-
 namespace
 {
 
@@ -21,11 +20,11 @@ enum class person_status
 	fcppt_maximum = tired // note the extra field here
 };
 
-typedef
+using
+bitfield =
 fcppt::container::bitfield::enum_object<
 	person_status
->
-bitfield;
+>;
 
 void
 output(

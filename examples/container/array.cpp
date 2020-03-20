@@ -16,9 +16,9 @@ int
 main()
 {
 //! [array_map]
-typedef
-std::array<int,3>
-three_ints;
+using
+three_ints =
+std::array<int,3>;
 
 three_ints const a{{ 1,2,3 }};
 

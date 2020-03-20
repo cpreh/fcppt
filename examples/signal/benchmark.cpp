@@ -42,9 +42,10 @@ main()
 try
 {
 #if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
-	typedef
-	fcppt::signal::object<void()>
-	signal_type;
+	using
+	signal_type
+	=
+	fcppt::signal::object<void()>;
 
 	signal_type s;
 
@@ -63,15 +64,17 @@ try
 
 	s();
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
-	typedef
-	boost::signals2::signal<void()>
-	signal_type;
+	using
+	signal_type
+	=
+	boost::signals2::signal<void()>;
 
 	signal_type s;
 
-	typedef
-	std::vector<boost::signals2::connection>
-	connection_manager;
+	using
+	connection_manager
+	=
+	std::vector<boost::signals2::connection>;
 
 	connection_manager manager;
 

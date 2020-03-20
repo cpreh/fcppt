@@ -18,7 +18,6 @@ namespace
 {
 
 //! [grid_simple]
-// typedef a three dimensional grid of ints
 using
 int3d_grid
 =
