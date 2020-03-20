@@ -18,18 +18,11 @@ namespace
 {
 
 // ![literal_motivation]
-template<
-	typename T
->
-T
-half(
-	T const _value
-)
+template<typename T>
+T half(T const _value )
 {
 	return
-		_value
-		/
-		2;
+		_value / 2;
 }
 // ![literal_motivation]
 
@@ -43,11 +36,7 @@ void
 try_strong()
 {
 	// Doesn't work
-	/*half(
-		strong_int(
-			10
-		)
-	);*/
+	// half(strong_int(10));
 }
 // ![literal_strong_typedef_1]
 }
@@ -60,11 +49,8 @@ namespace mine
 class custom_type
 {
 public:
-	static
-	custom_type
-	make(
-		int const _value
-	)
+	static custom_type
+	make(int const _value)
 	{
 		return
 			custom_type{
@@ -73,29 +59,23 @@ public:
 	}
 
 	[[nodiscard]]
-	int
-	get() const
+	int get() const
 	{
 		return
 			this->value_;
 	}
 private:
 	explicit
-	custom_type(
-		int const _value
-	)
+	custom_type(int const _value)
 	:
-		value_{
-			_value
-		}
+		value_{_value}
 	{
 	}
 
 	int value_;
 };
 
-inline
-custom_type
+inline custom_type
 operator/(
 	custom_type const _left,
 	custom_type const _right
@@ -103,43 +83,29 @@ operator/(
 {
 	return
 		custom_type::make(
-			_left.get()
-			/
-			_right.get()
+			_left.get() / _right.get()
 		);
 }
 
 }
 // ![literal_custom_type]
 
-
 // ![literal_specialize]
 namespace fcppt
 {
 
 template<>
-struct make_literal<
-	mine::custom_type
->
+struct make_literal<mine::custom_type>
 {
-	typedef
-	mine::custom_type
-	decorated_type;
+	using decorated_type =
+	mine::custom_type;
 
-	template<
-		typename Fundamental
-	>
-	static
-	mine::custom_type
-	get(
-		Fundamental const _value
-	)
+	template<typename Fundamental>
+	static mine::custom_type
+	get(Fundamental const _value)
 	{
 		static_assert(
-			std::is_same<
-				Fundamental,
-				int
-			>::value,
+			std::is_same_v<Fundamental, int>,
 			"custom_types should be initialized by integers"
 		);
 
@@ -156,22 +122,11 @@ struct make_literal<
 namespace
 {
 // ![literal_half]
-template<
-	typename T
->
-T
-half_2(
-	T const _value
-)
+template<typename T>
+T half_2(T const _value)
 {
 	return
-		_value
-		/
-		fcppt::literal<
-			T
-		>(
-			2
-		);
+		_value / fcppt::literal<T>(2);
 }
 // ![literal_half]
 
@@ -181,14 +136,8 @@ literal_use()
 {
 	// Prints 2
 	std::cout
-		<<
-		half_2(
-			mine::custom_type::make(
-				4
-			)
-		).get()
-		<<
-		'\n';
+		<< half_2(mine::custom_type::make(4)).get()
+		<< '\n';
 }
 // ![literal_use]
 
