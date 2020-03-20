@@ -7,12 +7,11 @@
 #ifndef FCPPT_EITHER_LOOP_HPP_INCLUDED
 #define FCPPT_EITHER_LOOP_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -75,9 +74,7 @@ loop(
 	>;
 
 FCPPT_PP_PUSH_WARNING
-#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
-#endif
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
 	optional_failure_type error{};
 

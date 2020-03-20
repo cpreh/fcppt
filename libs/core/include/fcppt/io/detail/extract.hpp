@@ -10,10 +10,9 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/not.hpp>
-#include <fcppt/config/compiler.hpp>
 #include <fcppt/io/detail/extract_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -52,9 +51,7 @@ extract(
 )
 {
 FCPPT_PP_PUSH_WARNING
-#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
-#endif
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
 	Type result{
 		fcppt::no_init{}

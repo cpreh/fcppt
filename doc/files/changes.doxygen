@@ -48,6 +48,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptpreprocessor
+	<ul>
+	<li>Added #FCPPT_PP_DISABLE_GNU_GCC_WARNING, which disables warnings on GCC but not on Clang.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptsmartptr
 	<ul>
 	<li>Made the conversion constructor of #fcppt::shared_ptr explicit.</li>

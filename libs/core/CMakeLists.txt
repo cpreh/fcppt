@@ -1019,6 +1019,7 @@ set(
 	libs/core/include/fcppt/preprocessor/detail/stringize.hpp
 	libs/core/include/fcppt/preprocessor/disable_clang_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_gcc_warning.hpp
+	libs/core/include/fcppt/preprocessor/disable_gnu_gcc_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/file.hpp
 	libs/core/include/fcppt/preprocessor/fixme.hpp
