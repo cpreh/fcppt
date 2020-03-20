@@ -16,76 +16,55 @@
 #include <fcppt/config/external_end.hpp>
 
 
-//! [dynamic]
 namespace
 {
 
+//! [dynamic]
 struct base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
+	FCPPT_NONMOVABLE(base);
 
-	base()
-	= default;
+	base() = default;
 
 	virtual
-	~base()
-	= default;
+	~base() = default;
 };
 
 struct derived1
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived1
-	);
+	FCPPT_NONMOVABLE(derived1);
 
-	derived1()
-	= default;
+	derived1() = default;
 
 	~derived1()
-	override
-	= default;
+	override = default;
 };
 
 struct derived2
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived2
-	);
+	FCPPT_NONMOVABLE(derived2);
 
 	~derived2()
-	override
-	= default;
+	override = default;
 };
 
 void
 f(
-	fcppt::reference<
-		base
-	> const _base
+	fcppt::reference<base> const _base
 )
 {
-	fcppt::optional::reference<
-		derived2
-	> const to_d2{
-		fcppt::cast::dynamic<
-			derived2
-		>(
+	fcppt::optional::reference<derived2> const to_d2{
+		fcppt::cast::dynamic<derived2>(
 			_base.get()
 		)
 	};
 
-	fcppt::optional::reference<
-		derived1
-	> const to_d1{
-		fcppt::cast::dynamic<
-			derived1
-		>(
+	fcppt::optional::reference<derived1> const to_d1{
+		fcppt::cast::dynamic<derived1>(
 			_base.get()
 		)
 	};
@@ -96,9 +75,9 @@ f(
 		<< to_d1.has_value()
 		<< '\n';
 }
+//! [dynamic]
 
 }
-//! [dynamic]
 
 int
 main()

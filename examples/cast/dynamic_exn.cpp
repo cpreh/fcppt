@@ -14,67 +14,52 @@
 #include <fcppt/io/cout.hpp>
 
 
-//! [dynamic_exn]
 namespace
 {
 
+//! [dynamic_exn]
 struct base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
+	FCPPT_NONMOVABLE(base);
 
-	base()
-	= default;
+	base() = default;
 
 	virtual
-	~base()
-	= default;
+	~base() = default;
 };
 
 struct derived1
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived1
-	);
+	FCPPT_NONMOVABLE(derived1);
 
-	derived1()
-	= default;
+	derived1() = default;
 
 	~derived1()
-	override
-	= default;
+	override = default;
 };
 
 struct derived2
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived2
-	);
+	FCPPT_NONMOVABLE(derived2);
 
 	~derived2()
-	override
-	= default;
+	override = default;
 };
 
 void
 f(
-	fcppt::reference<
-		base
-	> const _base
+	fcppt::reference<base> const _base
 )
 {
 	try
 	{
 		// try to cast _base into a d2
 		derived2 &d2(
-			fcppt::cast::dynamic_exn<
-				derived2 &
-			>(
+			fcppt::cast::dynamic_exn<derived2 &>(
 				_base.get()
 			)
 		);
@@ -83,9 +68,7 @@ f(
 			<< &d2
 			<< FCPPT_TEXT('\n');
 	}
-	catch(
-		fcppt::cast::bad_dynamic const &_error
-	)
+	catch(fcppt::cast::bad_dynamic const &_error)
 	{
 		// shows a nice message with the types in it
 		fcppt::io::cout()
@@ -93,9 +76,9 @@ f(
 			<< FCPPT_TEXT('\n');
 	}
 }
+//! [dynamic_exn]
 
 }
-//! [dynamic_exn]
 
 int
 main()

@@ -20,31 +20,18 @@ void
 float_to_int()
 {
 // ![float_to_int_fun]
-	using
-	vec_2f
-	=
-	fcppt::math::vector::static_<
-		float,
-		2
-	>;
+	using vec_2f =
+	fcppt::math::vector::static_<float, 2>;
 
-	using
-	vec_2i
-	=
-	fcppt::math::vector::static_<
-		int,
-		2
-	>;
+	using vec_2i =
+	fcppt::math::vector::static_<int, 2>;
 
 	auto const res(
 		fcppt::math::vector::structure_cast<
 			vec_2i,
 			fcppt::cast::float_to_int_fun
 		>(
-			vec_2f(
-				1.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			)
+			vec_2f(1.F, 2.F) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 

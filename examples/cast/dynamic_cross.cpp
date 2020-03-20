@@ -14,66 +14,50 @@
 #include <fcppt/config/external_end.hpp>
 
 
-//! [dynamic_cross]
 namespace
 {
 
+//! [dynamic_cross]
 struct base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
+	FCPPT_NONMOVABLE(base);
 
-	base()
-	= default;
+	base() = default;
 
 	virtual
-	~base()
-	= default;
+	~base() = default;
 };
 
 struct derived1
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived1
-	);
+	FCPPT_NONMOVABLE(derived1);
 
 	derived1()
 	= default;
 
 	~derived1()
-	override
-	= default;
+	override = default;
 };
 
 struct derived2
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived2
-	);
+	FCPPT_NONMOVABLE(derived2);
 
 	~derived2()
-	override
-	= default;
+	override = default;
 };
 
 void
 f(
-	fcppt::reference<
-		derived1
-	> const _d1
+	fcppt::reference<derived1> const _d1
 )
 {
-	fcppt::optional::reference<
-		derived2
-	> const to_d2(
-		fcppt::cast::dynamic_cross<
-			derived2
-		>(
+	fcppt::optional::reference<derived2> const to_d2(
+		fcppt::cast::dynamic_cross<derived2>(
 			_d1.get()
 		)
 	);
@@ -82,9 +66,9 @@ f(
 		<< to_d2.has_value()
 		<< '\n';
 }
+//! [dynamic_cross]
 
 }
-//! [dynamic_cross]
 
 int
 main()
