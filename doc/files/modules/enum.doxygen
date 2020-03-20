@@ -38,12 +38,12 @@ It is often desirable to know the enum's maximum value, or its number of
 enumerators, for that matter. Unfortunately, C++ offers no introspection of any
 kind which makes it possible to query the maximum value. fcppt provides a trait
 class called #fcppt::enum_::max_value which has the default behavior of
-inferring the maximum value from the special enumerator value
+setting the maximum value to the special enumerator value
 <code>fcppt_maximum</code>, for example:
 
 \snippet enum.cpp enum_maximum
 
-Additionally, the trait class can also be specialized. Building on top of this,
+Additionally, #fcppt::enum_::max_value can also be specialized. Building on top of this,
 #fcppt::enum_::size calculates the number of enumerators in an enum, setting
 it to <code>fcppt::enum_::max_value<Enum> + 1</code> by default.
 

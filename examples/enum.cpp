@@ -34,6 +34,7 @@ enum class myenum
 	val2,
 	fcppt_maximum = val2
 };
+//! [enum_maximum]
 
 void
 print_enum(
@@ -54,12 +55,9 @@ void
 print()
 {
 	print_enum(
-		fcppt::enum_::max_value<
-			myenum
-		>::value
+		fcppt::enum_::max_value<myenum>::value
 	);
 }
-//! [enum_maximum]
 
 void
 iterate()
@@ -69,14 +67,10 @@ iterate()
 	for(
 		myenum const value
 		:
-		fcppt::enum_::make_range<
-			myenum
-		>()
+		fcppt::enum_::make_range<myenum>()
 	)
 	{
-		print_enum(
-			value
-		);
+		print_enum(value);
 	}
 // ![enum_range]
 }
@@ -85,26 +79,15 @@ void
 enum_array()
 {
 // ![enum_array]
-	using
-	array
-	=
-	fcppt::enum_::array<
-		myenum,
-		bool
-	>;
+	using array =
+	fcppt::enum_::array<myenum, bool>;
 
-	// Requires three {} pairs because the array wraps std::array
-	// internally
-	array const val{{{
-		true,
-		false
-	}}};
+	// Requires three {} pairs because the array wraps std::array internally
+	array const val{{{true, false}}};
 
 	std::cout
-		<<
-		val[myenum::val1]
-		<<
-		'\n';
+		<< val[myenum::val1]
+		<< '\n';
 // ![enum_array]
 }
 
@@ -118,9 +101,7 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 namespace
 {
 // NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<
-	myenum
-> const names{{{ // NOLINT(cert-err58-cpp)
+fcppt::enum_::names_array<myenum> const names{{{ // NOLINT(cert-err58-cpp)
 	FCPPT_TEXT("val1"),
 	FCPPT_TEXT("val2")
 }}};
@@ -131,18 +112,13 @@ namespace fcppt::enum_
 {
 
 template<>
-struct names_impl<
-	myenum
->
+struct names_impl<myenum>
 {
 	static
-	fcppt::enum_::names_array<
-		myenum
-	> const &
+	fcppt::enum_::names_array<myenum> const &
 	get()
 	{
-		return
-			::names;
+		return ::names;
 	}
 };
 
@@ -158,14 +134,10 @@ void
 enum_to_string()
 {
 // ![enum_to_string]
-	myenum const test{
-		myenum::val2
-	};
+	myenum const test{myenum::val2};
 
 	fcppt::string const converted{
-		fcppt::enum_::to_string(
-			test
-		)
+		fcppt::enum_::to_string(test)
 	};
 // ![enum_to_string]
 	fcppt::io::cout()
@@ -180,23 +152,15 @@ enum_from_string()
 {
 // ![enum_from_string]
 	// Returns an empty optional
-	fcppt::optional::object<
-		myenum
-	> const enum1{
-		fcppt::enum_::from_string<
-			myenum
-		>(
+	fcppt::optional::object<myenum> const enum1{
+		fcppt::enum_::from_string<myenum>(
 			FCPPT_TEXT("test")
 		)
 	};
 
 	// Returns myenum::val1
-	fcppt::optional::object<
-		myenum
-	> const enum2{
-		fcppt::enum_::from_string<
-			myenum
-		>(
+	fcppt::optional::object<myenum> const enum2{
+		fcppt::enum_::from_string<myenum>(
 			FCPPT_TEXT("val1")
 		)
 	};
