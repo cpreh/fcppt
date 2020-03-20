@@ -26,17 +26,14 @@ namespace
 {
 
 // ![decl]
-using
-int_matrix_2x3
-=
+using int_matrix_2x3 =
 fcppt::math::matrix::static_<
 	int,
 	2,
 	3
 >;
 
-void
-ctor()
+void ctor()
 {
 	int_matrix_2x3 const m(
 		fcppt::math::matrix::row(
@@ -53,17 +50,14 @@ ctor()
 // ![decl]
 
 // ![identity]
-using
-int_matrix_3x3
-=
+using int_matrix_3x3 =
 fcppt::math::matrix::static_<
 	int,
 	3,
 	3
 >;
 
-void
-identity()
+void identity()
 {
 	auto const m(
 		fcppt::math::matrix::identity<
@@ -76,8 +70,7 @@ identity()
 // ![identity]
 
 // ![row_iterate]
-void
-row_iterate()
+void row_iterate()
 {
 	auto const m(
 		fcppt::math::matrix::identity<
@@ -90,23 +83,13 @@ row_iterate()
 		fcppt::math::int_range_count<
 			int_matrix_3x3::rows()
 		>{},
-		[
-			&m
-		](
-			auto const _row
-		)
+		[&m](auto const _row)
 		{
-			FCPPT_USE(
-				_row
-			);
+			FCPPT_USE(_row);
 
-			using
-			row
-			=
+			using row =
 			fcppt::tag_type<
-				decltype(
-					_row
-				)
+				decltype(_row)
 			>;
 
 			std::cout

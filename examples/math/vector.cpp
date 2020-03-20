@@ -39,9 +39,7 @@ namespace
 namespace tmp
 {
 // ![vector2f]
-using
-vector2f
-=
+using vector2f =
 fcppt::math::vector::object<
 	float,
 	2,
@@ -54,9 +52,7 @@ fcppt::math::vector::object<
 }
 
 // ![vector2f_short]
-using
-vector2f
-=
+using vector2f =
 fcppt::math::vector::static_<
 	float,
 	2
@@ -67,20 +63,13 @@ void
 init()
 {
 // ![init]
-
 	// v1 is not initialized
-	vector2f v1(
-		fcppt::no_init{}
-	);
-
+	vector2f v1{fcppt::no_init{}};
 	v1.x() = 0.1F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 	v1.y() = 0.2F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 
 	// same as v1
-	vector2f const v2(
-		0.1F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		0.2F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	);
+	vector2f const v2{0.1F, 0.2F}; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 // ![init]
 
 	std::cout << v1 << ' ' << v2 << '\n';
@@ -274,25 +263,19 @@ void
 asymmetric_div()
 {
 // ![asymmetric_div]
-	using
-	meter2
-	=
+	using meter2 =
 	fcppt::math::vector::static_<
 		meter,
 		2
 	>;
 
-	using
-	second2
-	=
+	using second2 =
 	fcppt::math::vector::static_<
 		second,
 		2
 	>;
 
-	using
-	speed2
-	=
+	using speed2 =
 	fcppt::math::vector::static_<
 		speed,
 		2
@@ -301,15 +284,9 @@ asymmetric_div()
 	fcppt::optional::object<
 		speed2
 	> const s{
-		meter2(
-			meter{},
-			meter{}
-		)
+		meter2(meter{}, meter{})
 		/
-		second2(
-			second{},
-			second{}
-		)
+		second2(second{},second{})
 	};
 // ![asymmetric_div]
 

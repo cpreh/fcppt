@@ -21,9 +21,7 @@ int
 main()
 {
 // ![vector_dim_decl]
-	using
-	float3_vec
-	=
+	using float3_vec =
 	fcppt::math::vector::static_<
 		float,
 		3
@@ -53,9 +51,7 @@ main()
 	std::cout << vec2 << '\n';
 
 // ![vector_dim]
-	using
-	float3_dim
-	=
+	using float3_dim =
 	fcppt::math::dim::static_<
 		float,
 		3

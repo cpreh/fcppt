@@ -18,17 +18,13 @@
 namespace
 {
 // ![conversion_to_vector]
-using
-dim3
-=
+using dim3 =
 fcppt::math::dim::static_<
 	int,
 	3
 >;
 
-using
-vector3
-=
+using vector3 =
 fcppt::math::vector::static_<
 	int,
 	3
@@ -37,37 +33,24 @@ fcppt::math::vector::static_<
 void
 f()
 {
-	dim3 const d(
-		1,
-		2,
-		3
-	);
+	dim3 const d{1, 2, 3};
 
 	vector3 const v(
-		fcppt::math::dim::to_vector(
-			d
-		)
+		fcppt::math::dim::to_vector(d)
 	);
 
 	std::cout << v << '\n';
 }
-
 // ![conversion_to_vector]
 
 // ![conversion_from_vector]
 void
 g()
 {
-	vector3 const v(
-		1,
-		2,
-		3
-	);
+	vector3 const v{1,2,3};
 
 	dim3 const d(
-		fcppt::math::vector::to_dim(
-			v
-		)
+		fcppt::math::vector::to_dim(v)
 	);
 
 	std::cout << d << '\n';
