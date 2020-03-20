@@ -141,7 +141,7 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 );
 
 static_assert(
-	!std::is_same<first,second>::value,
+	!std::is_same_v<first,second>,
 	"Both types must be different"
 );
 //! [strong_typedef_is_same]
