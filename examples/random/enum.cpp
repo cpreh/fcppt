@@ -46,9 +46,7 @@ main()
 	);
 
 // ![random_enum_distribution]
-	using
-	uniform_enum
-	=
+	using uniform_enum =
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			my_enum

@@ -8,26 +8,19 @@
 namespace mine
 {
 
-template<
-	typename Type
->
+template<typename Type>
 class my_type
 {
 public:
 	explicit
-	my_type(
-		Type const _value
-	)
+	my_type(Type const _value)
 	:
-		value_(
-			_value
-		)
+		value_(_value)
 	{
 	}
 
 	[[nodiscard]]
-	Type
-	value() const
+	Type value() const
 	{
 		return
 			this->value_;
@@ -47,49 +40,31 @@ private:
 namespace fcppt::type_iso
 {
 
-template<
-	typename Type
->
+template<typename Type>
 struct transform<
-	mine::my_type<
-		Type
-	>
+	mine::my_type<Type>
 >
 {
-	using
-	decorated_type
-	=
-	mine::my_type<
-		Type
-	>;
+	using decorated_type =
+	mine::my_type<Type>;
 
-	using
-	undecorated_type
-	=
+	using undecorated_type =
 	Type;
 
 	// A static function that converts to the base type
-	static
-	undecorated_type
-	undecorate(
-		decorated_type const &_value
-	)
+	static undecorated_type
+	undecorate(decorated_type const &_value)
 	{
 		return
 			_value.value();
 	}
 
 	// A static function that converts from the base type
-	static
-	decorated_type
-	decorated_value(
-		undecorated_type const &_value
-	)
+	static decorated_type
+	decorated_value(undecorated_type const &_value)
 	{
 		return
-			decorated_type(
-				_value
-			);
+			decorated_type(_value);
 	}
 };
 

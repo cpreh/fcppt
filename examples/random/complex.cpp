@@ -26,9 +26,7 @@ int
 main()
 {
 //![random_complex_distribution]
-	using
-	meter
-	=
+	using meter =
 	boost::units::quantity<
 		boost::units::si::length,
 		int
@@ -39,9 +37,7 @@ main()
 		radius
 	);
 
-	using
-	distribution
-	=
+	using distribution =
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			radius
@@ -49,9 +45,7 @@ main()
 	>;
 //![random_complex_distribution]
 
-	using
-	generator_type
-	=
+	using generator_type =
 	fcppt::random::generator::minstd_rand;
 
 	generator_type generator(
@@ -60,9 +54,7 @@ main()
 		>()
 	);
 
-	using
-	variate
-	=
+	using variate =
 	fcppt::random::variate<
 		generator_type,
 		distribution
@@ -73,14 +65,10 @@ main()
 		generator,
 		distribution(
 			distribution::param_type::min(
-				radius(
-					0 * boost::units::si::meter
-				)
+				radius(0 * boost::units::si::meter)
 			),
 			distribution::param_type::max(
-				radius(
-					10 * boost::units::si::meter // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				)
+				radius(10 * boost::units::si::meter) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			)
 		)
 	);
@@ -89,9 +77,7 @@ main()
 //![random_complex_output]
 	fcppt::algorithm::repeat(
 		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		[
-			&rng
-		]{
+		[&rng]{
 			fcppt::io::cout()
 				<< rng().get().value()
 				<< FCPPT_TEXT(' ');

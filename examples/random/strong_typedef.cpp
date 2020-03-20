@@ -27,9 +27,7 @@ main()
 		my_type
 	);
 
-	using
-	distribution
-	=
+	using distribution =
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			my_type
@@ -60,16 +58,8 @@ main()
 	variate rng(
 		generator,
 		distribution(
-			distribution::param_type::min(
-				my_type(
-					0
-				)
-			),
-			distribution::param_type::max(
-				my_type(
-					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				)
-			)
+			distribution::param_type::min(my_type(0)),
+			distribution::param_type::max(my_type(10)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 //![random_strong_typedef_variate]
@@ -77,9 +67,7 @@ main()
 //![random_strong_typedef_output]
 	fcppt::algorithm::repeat(
 		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		[
-			&rng
-		]{
+		[&rng]{
 			fcppt::io::cout()
 				// Outputs objects of type my_type
 				<< rng()

@@ -20,27 +20,19 @@ namespace
 {
 
 // ![random_print_values]
-template<
-	typename Rng
->
-void
-print_values(
-	Rng &rng
-)
+template<typename Rng>
+void print_values(Rng &rng)
 {
 	fcppt::algorithm::repeat(
 		20U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		[
-			&rng
-		]{
+		[&rng]{
 			fcppt::io::cout()
 				<< rng()
 				<< FCPPT_TEXT(' ');
 		}
 	);
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT('\n');
+	fcppt::io::cout() << FCPPT_TEXT('\n');
 }
 // ![random_print_values]
 
@@ -50,9 +42,7 @@ int
 main()
 {
 // ![random_generator]
-	using
-	generator_type
-	=
+	using generator_type =
 	fcppt::random::generator::mt19937;
 
 	generator_type generator(
@@ -64,9 +54,7 @@ main()
 
 	{
 // ![random_uniform_int_distribution]
-	using
-	uniform_int
-	=
+	using uniform_int =
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::uniform_int<
 			int
@@ -75,9 +63,7 @@ main()
 // ![random_uniform_int_distribution]
 
 // ![random_uniform_int]
-	using
-	variate
-	=
+	using variate =
 	fcppt::random::variate<
 		generator_type,
 		uniform_int
@@ -86,18 +72,12 @@ main()
 	variate rng(
 		generator,
 		uniform_int(
-			uniform_int::param_type::min(
-				0
-			),
-			uniform_int::param_type::max(
-				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			)
+			uniform_int::param_type::min(0),
+			uniform_int::param_type::max(10) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 
-	print_values(
-		rng
-	);
+	print_values(rng);
 // ![random_uniform_int]
 	}
 
@@ -138,18 +118,14 @@ main()
 
 	{
 // ![random_normal]
-	using
-	normal
-	=
+	using normal =
 	fcppt::random::distribution::basic<
 		fcppt::random::distribution::parameters::normal<
 			double
 		>
 	>;
 
-	using
-	variate
-	=
+	using variate =
 	fcppt::random::variate<
 		generator_type,
 		normal
@@ -158,18 +134,12 @@ main()
 	variate rng(
 		generator,
 		normal(
-			normal::param_type::mean(
-				0.
-			),
-			normal::param_type::stddev(
-				5. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			)
+			normal::param_type::mean(0.),
+			normal::param_type::stddev(5.) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 	);
 
-	print_values(
-		rng
-	);
+	print_values(rng);
 // ![random_normal]
 	}
 }
