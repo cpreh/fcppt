@@ -18,11 +18,7 @@ namespace
 {
 
 //! [shared_ptr_example]
-
-// Typedef a shared_ptr to in int
-using
-int_ptr
-=
+using int_ptr =
 fcppt::shared_ptr<
 	int
 >;
@@ -32,15 +28,9 @@ class owner
 {
 public:
 	explicit
-	owner(
-		int_ptr _ptr
-	)
+	owner(int_ptr _ptr)
 	:
-		ptr_{
-			std::move(
-				_ptr
-			)
-		}
+		ptr_{std::move(_ptr)}
 	{
 	}
 private:
@@ -67,9 +57,9 @@ shared_ptr_example()
 
 	// The destruction of owner2, owner1 and ptr will free the int
 }
+//! [shared_ptr_example]
 
 }
-//! [shared_ptr_example]
 
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -132,13 +122,11 @@ wrong()
 	// The order in which function arguments and their sub-expressions are
 	// evaluated is unspecified. So it might be possible that they are
 	// evaluated as follows:
-	// a) new int(100)
+	// a) new int(1)
 	// b) throw_something()
 	// c) int_ptr(...) is never reached and we have a leak
 	take_pointer(
-		int_ptr(
-			new int (100)  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		),
+		int_ptr(new int (1)),
 		throw_something()
 	);
 }
@@ -155,11 +143,7 @@ void
 right()
 {
 	take_pointer(
-		fcppt::make_shared_ptr<
-			int
-		>(
-			1
-		),
+		fcppt::make_shared_ptr<int>(1),
 		throw_something()
 	);
 }
@@ -177,9 +161,7 @@ namespace
 // ![shared_ptr_cast]
 struct base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
+	FCPPT_NONMOVABLE(base);
 
 	base() = default;
 
@@ -191,9 +173,7 @@ struct derived
 :
 base
 {
-	FCPPT_NONMOVABLE(
-		derived
-	);
+	FCPPT_NONMOVABLE(derived);
 
 	derived() = default;
 
@@ -204,37 +184,23 @@ base
 void
 cast()
 {
-	using
-	base_ptr
-	=
+	using base_ptr =
 	fcppt::shared_ptr<
 		base
 	>;
 
-	base_ptr ptr(
-		new derived()
-	);
+	base_ptr ptr(new derived());
 
-	using
-	derived_ptr
-	=
+	using derived_ptr =
 	fcppt::shared_ptr<
 		derived
 	>;
 
-	fcppt::optional::object<
-		derived_ptr
-	> dptr(
-		fcppt::dynamic_pointer_cast<
-			derived
-		>(
-			ptr
-		)
+	fcppt::optional::object<derived_ptr> dptr(
+		fcppt::dynamic_pointer_cast<derived>(ptr)
 	);
 
-	if(
-		dptr.has_value()
-	)
+	if(dptr.has_value())
 	{
 		fcppt::io::cout()
 			<< FCPPT_TEXT("ptr points to a derived.\n");

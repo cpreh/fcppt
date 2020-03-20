@@ -21,9 +21,7 @@ namespace
 {
 
 //! [unique_ptr_factory]
-using
-unique_int_ptr
-=
+using unique_int_ptr =
 fcppt::unique_ptr<
 	int
 >;
@@ -35,19 +33,13 @@ int_ptr_factory()
 	// make_unique_ptr is a factory function to make a unique_ptr An
 	// rvalue is returned here, so no moving is necessary.
 	return
-		fcppt::make_unique_ptr<
-			int
-		>(
-			1
-		);
+		fcppt::make_unique_ptr<int>(1);
 }
 //! [unique_ptr_factory]
 
 //! [unique_ptr_factory_use]
 void
-int_ptr_arg(
-	unique_int_ptr &&ptr
-)
+int_ptr_arg(unique_int_ptr &&ptr)
 {
 	fcppt::io::cout()
 		<< *ptr
@@ -57,12 +49,9 @@ int_ptr_arg(
 void
 test()
 {
-	int_ptr_arg(
-		int_ptr_factory()
-	);
+	int_ptr_arg(int_ptr_factory());
 }
 //! [unique_ptr_factory_use]
-
 
 //! [unique_ptr_move]
 unique_int_ptr
@@ -70,11 +59,7 @@ test2()
 {
 	// ptr is a named object
 	unique_int_ptr ptr(
-		fcppt::make_unique_ptr<
-			int
-		>(
-			1
-		)
+		fcppt::make_unique_ptr<int>(1)
 	);
 
 	// ptr must be moved here to take ownership away from it
@@ -88,26 +73,16 @@ void
 test3()
 {
 	unique_int_ptr ptr(
-		fcppt::make_unique_ptr<
-			int
-		>(
-			1
-		)
+		fcppt::make_unique_ptr<int>(1)
 	);
 
 	// Implicit move is not allowed
 	/*
-	int_ptr_arg(
-		ptr
-	);
+	int_ptr_arg(ptr	);
 	*/
 
 	// Make the move explicit
-	int_ptr_arg(
-		std::move(
-			ptr
-		)
-	);
+	int_ptr_arg(std::move(ptr));
 
 	// ptr is now the null pointer
 	fcppt::io::cout()
@@ -151,51 +126,37 @@ namespace
 //! [unique_ptr_to_base]
 struct base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
+	FCPPT_NONMOVABLE(base);
 
-	base()
-	= default;
+	base() = default;
 
 	virtual
-	~base()
-	= default;
+	~base() = default;
 };
 
 struct derived
 :
 	base
 {
-	FCPPT_NONMOVABLE(
-		derived
-	);
+	FCPPT_NONMOVABLE(derived);
 
-	derived()
-	= default;
+	derived() = default;
 
 	~derived()
-	override
-	= default;
+	override = default;
 };
 
 void
 test4()
 {
-	using
-	base_ptr
-	=
+	using base_ptr =
 	fcppt::unique_ptr<
 		base
 	>;
 
 	base_ptr foo(
-		fcppt::unique_ptr_to_base<
-			base
-		>(
-			fcppt::make_unique_ptr<
-				derived
-			>()
+		fcppt::unique_ptr_to_base<base>(
+			fcppt::make_unique_ptr<derived>()
 		)
 	);
 }
@@ -210,20 +171,14 @@ void
 test5()
 {
 //! [unique_ptr_to_const]
-	using
-	const_int_ptr
-	=
+	using const_int_ptr =
 	fcppt::unique_ptr<
 		int const
 	>;
 
 	const_int_ptr foo(
 		fcppt::unique_ptr_to_const(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				1
-			)
+			fcppt::make_unique_ptr<int>(1)
 		)
 	);
 //! [unique_ptr_to_const]
@@ -238,19 +193,13 @@ void
 test6()
 {
 //! [unique_ptr_const]
-	using
-	scoped_int_ptr
-	=
+	using scoped_int_ptr =
 	fcppt::unique_ptr<
 		int const
 	>;
 
 	scoped_int_ptr const ptr(
-		fcppt::make_unique_ptr<
-			int const
-		>(
-			1
-		)
+		fcppt::make_unique_ptr<int const>(1)
 	);
 //! [unique_ptr_const]
 }
@@ -265,10 +214,8 @@ class foo_impl;
 
 class foo
 {
-	// Explicitly disable copying
-	FCPPT_NONMOVABLE(
-		foo
-	);
+	// Explicitly disable copying and moving
+	FCPPT_NONMOVABLE(foo);
 public:
 	foo();
 
@@ -290,9 +237,7 @@ class foo_impl
 foo::foo()
 :
 	impl_(
-		fcppt::make_unique_ptr<
-			foo_impl
-		>()
+		fcppt::make_unique_ptr<foo_impl>()
 	)
 {
 }

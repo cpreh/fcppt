@@ -12,10 +12,11 @@ int
 main()
 {
 //! [c_deleter]
-	typedef fcppt::unique_ptr<
+	using void_c_ptr =
+	fcppt::unique_ptr<
 		void,
 		fcppt::c_deleter
-	> void_c_ptr;
+	>;
 
 	void_c_ptr ptr(
 		// NOLINTNEXTLINE(cppcoreguidelines-no-malloc,hicpp-no-malloc)
