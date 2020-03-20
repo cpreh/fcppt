@@ -30,14 +30,10 @@ namespace
 
 //! [logger_formatter_declaration]
 fcppt::string
-log_formatter(
-	fcppt::string const &_text
-)
+log_formatter(fcppt::string const &_text)
 {
 	return
-		FCPPT_TEXT("This is a formatting test: ")
-		+
-		_text;
+		FCPPT_TEXT("This is a formatting test: ") + _text;
 }
 //! [logger_formatter_declaration]
 
@@ -47,16 +43,10 @@ log_formatter(
 // newline here, because this is normally done by the default formatters for
 // each log level.
 fcppt::string
-error_formatter(
-	fcppt::string const &_text
-)
+error_formatter(fcppt::string const &_text)
 {
 	return
-		FCPPT_TEXT("Horrible error, please fix: ")
-		+
-		_text
-		+
-		FCPPT_TEXT('\n');
+		FCPPT_TEXT("Horrible error, please fix: ") + _text + FCPPT_TEXT('\n');
 }
 //! [error_formatter_declaration]
 
@@ -67,19 +57,13 @@ main()
 {
 //! [logger_streams]
 	auto const level_streams(
-		fcppt::enum_::array_init<
-			fcppt::log::level_stream_array
-		>(
-			[](
-				fcppt::log::level const _level
-			)
+		fcppt::enum_::array_init<fcppt::log::level_stream_array>(
+			[](fcppt::log::level const _level)
 			{
 				// Create a special sink for the error log level that prints to
 				// cerr and also has a special formatter.
 				return
-					_level
-					==
-					fcppt::log::level::error
+					_level == fcppt::log::level::error
 					?
 						fcppt::log::level_stream(
 							fcppt::io::cerr(),
@@ -119,9 +103,7 @@ main()
 	fcppt::log::object log{
 		context,
 		fcppt::log::parameters{
-			fcppt::log::name{
-				FCPPT_TEXT("fcppt")
-			},
+			fcppt::log::name{FCPPT_TEXT("fcppt")},
 			// Create a special formatter for the whole log
 			fcppt::log::format::optional_function{
 				fcppt::log::format::function{
@@ -138,8 +120,7 @@ main()
 	// to cout.
 	FCPPT_LOG_DEBUG(
 		log,
-		fcppt::log::out
-			<< FCPPT_TEXT("test")
+		fcppt::log::out << FCPPT_TEXT("test")
 	)
 
 	// Prints:
@@ -147,8 +128,7 @@ main()
 	// to cerr.
 	FCPPT_LOG_ERROR(
 		log,
-		fcppt::log::out
-			<< FCPPT_TEXT("some error")
+		fcppt::log::out << FCPPT_TEXT("some error")
 	)
 //! [log_print]
 }

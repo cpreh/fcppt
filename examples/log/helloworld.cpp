@@ -34,39 +34,30 @@ main()
 	fcppt::log::object log{
 		context,
 		fcppt::log::parameters{
-			fcppt::log::name{
-				FCPPT_TEXT("fcppt")
-			},
+			fcppt::log::name{FCPPT_TEXT("fcppt")},
 			fcppt::log::format::optional_function{}
 		}
 	};
 
 	// Outputs "fcppt: debug: Hello World"
-	if(
-		log.enabled(
-			fcppt::log::level::debug
-		)
-	)
+	if(log.enabled(fcppt::log::level::debug))
 	{
 		log.log(
 			fcppt::log::level::debug,
-			fcppt::log::out
-				<< FCPPT_TEXT("Hello World")
+			fcppt::log::out << FCPPT_TEXT("Hello World")
 		);
 	}
 
 	// The same as above using a shorthand macro
 	FCPPT_LOG_DEBUG(
 		log,
-		fcppt::log::out
-			<< FCPPT_TEXT("Hello World")
+		fcppt::log::out << FCPPT_TEXT("Hello World")
 	)
 
 	// This is not printed because the verbose level is not enabled
 	FCPPT_LOG_VERBOSE(
 		log,
-		fcppt::log::out
-			<< FCPPT_TEXT("Very verbose message")
+		fcppt::log::out << FCPPT_TEXT("Very verbose message")
 	)
 //! [helloworld]
 }
