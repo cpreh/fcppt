@@ -14,29 +14,22 @@
 namespace
 {
 
-int
-first_callback()
+int first_callback()
 {
 	return 4; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
-int
-second_callback()
+int second_callback()
 {
 	return 8; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
-int
-third_callback()
+int third_callback()
 {
 	return 15; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
-int
-combiner(
-	int const a,
-	int const b
-)
+int combiner(int const a, int const b)
 {
 	return a * b;
 }
@@ -45,57 +38,34 @@ combiner(
 
 int main()
 {
-	using
-	function
-	=
+	using function =
 	int();
 
-	using
-	int_signal
-	=
-	fcppt::signal::object<
-		function
-	>;
+	using int_signal =
+	fcppt::signal::object<function>;
 
 	int_signal signal{
-		int_signal::combiner_function(
-			&combiner
-		)
+		int_signal::combiner_function(&combiner)
 	};
 
 	fcppt::signal::auto_connection const connection1{
-		signal.connect(
-			int_signal::function{
-				&first_callback
-			}
-		)
+		signal.connect(int_signal::function{&first_callback})
 	};
 
 	fcppt::signal::auto_connection const connection2{
-		signal.connect(
-			int_signal::function{
-				&second_callback
-			}
-		)
+		signal.connect(int_signal::function{&second_callback})
 	};
 
 	fcppt::signal::auto_connection const connection3{
-		signal.connect(
-			int_signal::function{
-				&third_callback
-			}
-		)
+		signal.connect(int_signal::function{&third_callback})
 	};
 
 	// Outputs ((1*4)*8)*15=480
 	fcppt::io::cout()
 		<<
 		signal(
-			int_signal::initial_value{
-				1
-			}
+			int_signal::initial_value{1}
 		)
-		<<
-		FCPPT_TEXT('\n');
+		<< FCPPT_TEXT('\n');
 }
 //! [signal_combine]

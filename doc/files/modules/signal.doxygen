@@ -9,10 +9,8 @@
 
 <ul>
 	<li>\ref signal_introduction</li>
-	<li>\ref signal_motivation</li>
 	<li>\ref signal_basic_usage</li>
 	<li>\ref signal_signals_with_return_values</li>
-	<li>\ref signal_connection_manager</li>
 	<li>\ref signal_disconnect_callbacks</li>
 	<li>\ref signal_benchmarks</li>
 </ul>
@@ -23,155 +21,34 @@
 
 \section signal_introduction Introduction
 
-From the introduction of <a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals.html">boost.signals</a>:
-
-<blockquote>
-The Boost.Signals library is an implementation of a managed signals and slots
-system. Signals represent callbacks with multiple targets, and are also called
-publishers or events in similar systems. Signals are connected to some set of
-slots, which are callback receivers (also called event targets or subscribers),
-which are called when the signal is "emitted."
-
-Signals and slots are managed, in that signals and slots (or, more properly,
-objects that occur as part of the slots) track all connections and are capable
-of automatically disconnecting signal/slot connections when either is
-destroyed. This enables the user to make signal/slot connections without
-expending a great effort to manage the lifetimes of those connections with
-regard to the lifetimes of all objects involved.
-
-When signals are connected to multiple slots, there is a question regarding the
-relationship between the return values of the slots and the return value of the
-signals. Boost.Signals allows the user to specify the manner in which multiple
-return values are combined.
-</blockquote>
-
-\section signal_motivation Motivation
-
-There are (at least) three signal implementations out there. The table below
-shows the most well-known implementations with some remarks.
-
-<table>
-	<tr>
-		<th>
-			Name
-		</th>
-		<th>
-			Remarks
-		</th>
-	</tr>
-	<tr>
-		<td>
-			<a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals.html">boost.signals</a>
-		</td>
-		<td>
-			<ul>
-				<li>
-					The first version of boost's solution to signals.
-				</li>
-				<li>
-					Extremely slow (see benchmarks below).
-				</li>
-				<li>
-					Not header-only.
-				</li>
-				<li>
-					Not thread-safe.
-				</li>
-				<li>
-					Works with very old compilers.
-				</li>
-				<li>
-					No disconnect callback.
-				</li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals2.html">boost.signals2</a>
-		</td>
-		<td>
-			<ul>
-				<li>
-					The second version of boost's solution to signals.
-				</li>
-				<li>
-					Still pretty slow (see benchmarks below).
-				</li>
-				<li>
-					Header-only.
-				</li>
-				<li>
-					Thread-safe.
-				</li>
-				<li>
-					No disconnect callback.
-				</li>
-			</ul>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<a href="http://libsigc.sourceforge.net/">libsigc++</a>
-		</td>
-		<td>
-			<ul>
-				<li>
-					Independent of boost.
-				</li>
-				<li>
-					Not header-only.
-				</li>
-				<li>
-					Relatively fast.
-				</li>
-				<li>
-					Slightly "quirky" interface (<code>signal&lt;void,int&gt;</code> instead of <code>signal&lt;void(int)&gt;</code>)
-				</li>
-				<li>
-					No disconnect callback.
-				</li>
-			</ul>
-		</td>
-	</tr>
-</table>
-
-When you're working on a high-performance application such as a real-time game,
-you're often reluctant to use certain constructs (such as signals) because of
-performance concerns. As you can see from the table above, this might indeed be
-an issue with the given implementations. This has led to a fcppt.signal.
+\ref fcppt.signal is a library similar to <code>boost.signals2</code>.
+It was created when <code>boost.signals</code> (version 1) was the only
+signals library available in boost, which was really slow.
+The speed is however comparable to <code>boost.signals2</code>.
+See the old benchmark in \ref signal_benchmarks.
 
 \section signal_basic_usage Basic usage
 
-Here's a simple, motivating example:
+Here is a simple, motivating example:
 
 \snippet "signal/simple.cpp" signal_simple
 
-As you can see, a signal is represented by an object of type
-#fcppt::signal::object. This type has a template parameter which contains the
-signal's function type. Note that signals may have a return type; see below for
-more on that.
+A signal is of type #fcppt::signal::object.
+This type has a template parameter which contains the signal's function type.
+Note that signals may have a return type; see below for more on that.
 
 To attach a callback function to the signal, you have to call the
 <code>fcppt::signal::object::connect</code> member function. Arbitrarily many attached
-functions are allowed. The <code>connect</code> function returns an #fcppt::signal::auto_connection auto_connection which is a unique pointer to a connection.
+functions are allowed. The <code>connect</code> function returns an #fcppt::signal::auto_connection,
+which is a unique pointer to a connection.
 The reason behind this is that connections may keep additional information that is
 important when they are destroyed (see \ref signal_disconnect_callbacks).
-The callback function is disconnected from the signal when the connection
-object dies.
-
-\note
-The "real" connection class, #fcppt::signal::connection, is somewhat
-"implementation-defined". You're never supposed to "look inside" this object.
-Merely pass it around using a smart pointer to it.
-
-#fcppt::signal::object has overloads for <code>operator()</code>, so you can
-treat a signal as a function.
+The callback function is disconnected from the signal when the connection object dies.
 
 \section signal_signals_with_return_values Signals with return values
 
 If a signal has a return value other than <code>void</code>, you cannot use
-#fcppt::signal::object's default constructor. Instead, there's a constructor
+#fcppt::signal::object's default constructor. Instead, there is a constructor
 that takes a function of type
 \code
 result_type(result_type,result_type)
@@ -180,40 +57,15 @@ where <code>result_type</code> is the return type of the signal's function type.
 is used to combine the results of the different callbacks that are connected to the signal.
 The initial value of this operation is passed when the signal itself is called.
 
-Here's an example which should clarify how combiners are used:
+Here is an example which should clarify how combiners are used:
 
 \snippet "signal/combine.cpp" signal_combine
 
 Note that there are setters for both the initial value and the combiner.
 
-\section signal_connection_manager Connection managers
-
-If you have code with a lot of connection objects, like this:
-
-\code
-class foo
-{
-public:
-	// ...
-private:
-	fcppt::signal::auto_connection const a;
-	fcppt::signal::auto_connection const b;
-	fcppt::signal::auto_connection const c;
-	fcppt::signal::auto_connection const d;
-	fcppt::signal::auto_connection const e;
-};
-\endcode
-
-Then using a container of connections may be a better approach.
-#fcppt::signal::auto_connection_container is a vector of
-#fcppt::signal::auto_connection.  Again, an example should clarify how it's
-used:
-
-\snippet "signal/connection.cpp" signal_connection
-
 \section signal_disconnect_callbacks Disconnect callbacks
 
-One unique feature of fcppt::signal::object is the ability to receive a
+One unique feature of #fcppt::signal::object is the ability to receive a
 callback from the signal when a connection dies. To demonstrate how this works,
 let's say you want to associate a name with a signal. Users can then attach to
 such a named signal (think about a Quake-style console where you can register
@@ -222,8 +74,8 @@ dies, the signal should die with it. To do that, we define:
 
 \snippet signal/unregister.cpp global_map
 
-To receive disconnect "events", we use fcppt::signal::object's second
-template parameter and set it to fcppt::signal::unregister::base. Using this
+To receive disconnect "events", we use #fcppt::signal::object's second
+template parameter and set it to #fcppt::signal::unregister::base. Using this
 base class, we have the empty method at our disposal to check if there are
 connections attached to the signal.
 
@@ -236,14 +88,9 @@ might look like this:
 
 \snippet signal/unregister.cpp main
 
-Note that in "real" code, it is advisable to use more typedefs: Use a typedef
-for the signal's function, one for the signal itself and one for the signal's
-function wrapper (<code>std::function<void()></code>).
-
 \section signal_benchmarks Benchmarks
 
-We're assuming connecting and disconnecting signals isn't a big performance
-issue. Instead, our benchmark is as follows:
+Out benchmark is as follows:
 
 <ul>
 	<li>
@@ -258,7 +105,7 @@ issue. Instead, our benchmark is as follows:
 	</li>
 </ul>
 
-The results are as follows:
+The results were as follows:
 
 <table>
 	<tr>
@@ -301,13 +148,9 @@ The results are as follows:
 	</tr>
 </table>
 
-Or, graphically:
+Or graphically:
 
 \image html signal_benchmark.svg "Benchmark results"
-
-As you can see, fcppt.signal outperforms all the other signal libraries.
-Additionally, it behaves the same way across different compilers with respect
-to speed.
 */
 
 namespace fcppt

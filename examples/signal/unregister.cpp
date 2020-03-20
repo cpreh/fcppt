@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/container/find_opt_iterator.hpp>
+#include <fcppt/container/get_or_insert.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -15,7 +18,7 @@
 #include <cstdlib>
 #include <exception>
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -29,18 +32,14 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
 // ![global_map]
-using
-signal_type
-=
+using signal_type =
 fcppt::signal::object<
 	void(),
 	fcppt::signal::unregister::base
 >;
 
-using
-name_to_signal
-=
-std::map<
+using name_to_signal =
+std::unordered_map<
 	std::string,
 	signal_type
 >;
@@ -50,27 +49,24 @@ name_to_signal global_name_to_signal{};
 
 // This function will be called whenever a connection dies. It receives the
 // signal's name.
-void
-remove_function(
-	std::string const &_name
-)
+void remove_function(std::string const &_name)
 {
-	std::cout
-		<< "Goodbye, "
-		<< _name
-		<< "!\n";
+	std::cout << "Goodbye, " << _name << "!\n";
 
-	// Signal has "empty" to test if there are connections attached to it.
-	if(
-		global_name_to_signal.find(
+	fcppt::optional::maybe_void(
+		fcppt::container::find_opt_iterator(
+			global_name_to_signal,
 			_name
-		)->second.empty()
-	)
-	{
-		global_name_to_signal.erase(
-			_name
-		);
-	}
+		),
+		[](name_to_signal::iterator const _pos)
+		{
+			// "empty" returns true if there are connections attached to the signal.
+			if(_pos->second.empty())
+			{
+				global_name_to_signal.erase(_pos);
+			}
+		}
+	);
 }
 // ![global_map]
 
@@ -83,35 +79,24 @@ register_named_signal(
 	fcppt::signal::unregister::function &&_function
 )
 {
-	// If the signal doesn't exist, add it to the map.
-	if(
-		global_name_to_signal.find(
-			_name
+	signal_type &signal{
+		fcppt::container::get_or_insert(
+			global_name_to_signal,
+			_name,
+			[](std::string const &)
+			{
+				return
+					signal_type();
+			}
 		)
-		==
-		global_name_to_signal.end()
-	)
-	{
-		global_name_to_signal.insert(
-			std::make_pair(
-				_name,
-				signal_type()
-			)
-		);
-	}
+	};
 
 	return
-		global_name_to_signal.find(
-			_name
-		)->second.connect(
-			std::move(
-				_function
-			),
+		signal.connect(
+			std::move(_function),
 			// Add our remove function as the disconnect handler (see above)
 			fcppt::signal::unregister::function{
-				[
-					_name
-				]{
+				[_name]{
 					remove_function(
 						_name
 					);
@@ -140,9 +125,7 @@ try
 	);
 
 	// Will print "goodbye"
-	global_name_to_signal.find(
-		"hello"
-	)->second();
+	global_name_to_signal["hello"]();
 
 	{
 		fcppt::signal::auto_connection const goodbye_connection(
@@ -157,9 +140,7 @@ try
 		);
 
 		// Will print "goodbye!"
-		global_name_to_signal.find(
-			"goodbye"
-		)->second();
+		global_name_to_signal["goodbye"]();
 
 		// Will print "Goodbye goodbye!" at end of scope
 	}
