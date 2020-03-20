@@ -24,13 +24,9 @@ namespace
 struct visitor
 {
 	// operator() takes T as non const ref
-	template<
-		typename T
-	>
+	template<typename T>
 	void
-	operator()(
-		T &_val
-	) const
+	operator()(T &_val) const
 	{
 		// reset _val to the default value
 		_val = T();
@@ -44,9 +40,7 @@ main()
 try
 {
 	// typedef a variant that can either hold a string or an int
-	using
-	string_or_int
-	=
+	using string_or_int =
 	fcppt::variant::object<
 		std::string,
 		int
@@ -54,9 +48,7 @@ try
 
 //! [variant_nonconst_visitation]
 	string_or_int v(
-		std::string(
-			"Hello World"
-		)
+		std::string("Hello World")
 	);
 
 	fcppt::variant::apply(
@@ -67,11 +59,10 @@ try
 	// only prints a newline because the string contains nothing anymore
 	std::cout
 		<<
-		fcppt::variant::get_exn<
-			std::string
-		>(
+		fcppt::variant::get_exn<std::string>(
 			v
-		) << '\n';
+		)
+		<< '\n';
 //! [variant_nonconst_visitation]
 
 	fcppt::variant::get_exn<

@@ -18,28 +18,21 @@
 namespace
 {
 
-typedef
+using string_or_int =
 fcppt::variant::object<
 	std::string,
 	int
->
-string_or_int;
+>;
 
 // ![variant_visitor]
 struct print_visitor
 {
-	template<
-		typename T
-	>
+	template<typename T>
 	std::enable_if_t<
-		!std::is_integral<
-			T
-		>::value,
+		!std::is_integral_v<T>,
 		void
 	>
-	operator()(
-		T const &_value
-	) const
+	operator()(T const &_value) const
 	{
 		std::cout
 			<< "Not integral: "
@@ -47,18 +40,14 @@ struct print_visitor
 			<< '\n';
 	}
 
-	template<
-		typename T
-	>
+	template<typename T>
 	std::enable_if_t<
 		std::is_integral<
 			T
 		>::value,
 		void
 	>
-	operator()(
-		T const _value
-	) const
+	operator()(T const _value) const
 	{
 		std::cout
 			<< "Integral: "
@@ -76,9 +65,7 @@ visit_simple()
 	fcppt::variant::apply(
 		print_visitor(),
 		string_or_int(
-			std::string(
-				"Hello World"
-			)
+			std::string("Hello World")
 		)
 	);
 
@@ -86,7 +73,7 @@ visit_simple()
 	fcppt::variant::apply(
 		print_visitor(),
 		string_or_int(
-			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1
 		)
 	);
 // ![variant_visitor_apply]

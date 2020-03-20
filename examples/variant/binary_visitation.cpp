@@ -29,17 +29,13 @@ try
 
 //! [variant_binary_visitation]
 	string_or_int const v(
-		std::string(
-			"Hello World"
-		)
+		std::string("Hello World")
 	);
 
-	string_or_int const u(
-		42
-	);
+	string_or_int const u(1);
 
 	// Does a binary visitation.
-	// Prints "Hello World" 42.
+	// Prints "Hello World" 1.
 	fcppt::variant::apply(
 		[](
 			auto const &_val1,

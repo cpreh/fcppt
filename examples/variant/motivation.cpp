@@ -36,23 +36,19 @@ variant_union()
 
 	// Ok, but doesn't track that the type is int
 	// NOLINTNEXTLINE(cppcoreguidelines-pro-type-union-access)
-	var.i = 42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	var.i = 1;
 
 	// Undefined behaviour because the union stores an int
 	//std::cout << var.f << '\n';
 
 	auto const print(
-		[](
-			int_or_float
-		)
+		[](int_or_float)
 		{
 			// how do we know which type of object is stored?
 		}
 	);
 
-	print(
-		var
-	);
+	print(var);
 //! [variant_union]
 }
 
@@ -60,32 +56,26 @@ void
 variant_example()
 {
 //! [variant_example]
-	typedef
+	using
+	string_or_int =
 	fcppt::variant::object<
 		std::string,
 		int
-	>
-	string_or_int;
+	>;
 
 	auto const print(
-		[](
-			string_or_int const &_v
-		)
+		[](string_or_int const &_v)
 		{
 			fcppt::variant::match(
 				_v,
-				[](
-					std::string const &_str
-				)
+				[](std::string const &_str)
 				{
 					std::cout
 						<< "We have a string "
 						<< _str
 						<< '\n';
 				},
-				[](
-					int const _i
-				)
+				[](int const _i)
 				{
 					std::cout
 						<< "We have an int "
@@ -97,14 +87,10 @@ variant_example()
 	);
 
 	string_or_int const var(
-		std::string(
-			"Hello World"
-		)
+		std::string("Hello World")
 	);
 
-	print(
-		var
-	);
+	print(var);
 //! [variant_example]
 }
 
