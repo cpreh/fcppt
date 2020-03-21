@@ -24,8 +24,10 @@
 \ref fcppt.signal is a library similar to <code>boost.signals2</code>.
 It was created when <code>boost.signals</code> (version 1) was the only
 signals library available in boost, which was really slow.
-The speed is however comparable to <code>boost.signals2</code>.
 See the old benchmark in \ref signal_benchmarks.
+One of the major differences between \ref fcppt.signal and <code>boost.signals2</code>
+is that <code>boost.signals2</code> is thread-safe, while \ref fcppt.signal is not,
+which makes up for some of the speed difference.
 
 \section signal_basic_usage Basic usage
 

@@ -78,7 +78,7 @@ This can be done with #fcppt::either::apply.
 Note that since #fcppt::either::apply is a variadic template, so it can work on arbitrarly many eithers,
 the function is its first parameter.
 
-Another, more even more basic operation, is #fcppt::either::bind.
+Another, even more basic operation, is #fcppt::either::bind.
 As an example, let us look at how reading from a <code>std::istream</code> would work using eithers.
 Consider a function that tries to read an int and if that succeeds tries to read a string.
 
