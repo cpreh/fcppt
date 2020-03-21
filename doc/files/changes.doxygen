@@ -54,13 +54,6 @@
 	</ul>
 </li>
 
-<li>\ref fcpptsmartptr
-	<ul>
-	<li>Made the conversion constructor of #fcppt::shared_ptr explicit.</li>
-	<li>Made the #fcppt::weak_ptr constructor from #fcppt::shared_ptr explicit.</li>
-	</ul>
-</li>
-
 <li>\ref fcpptstring
 	<ul>
 	<li>Added #fcppt::system.</li>
@@ -98,6 +91,19 @@
 	</ul>
 </li>
 
+<li>\ref fcpptsignal
+	<ul>
+	<li>Callbacks are now moved into signals.</li>
+	</Ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Made the conversion constructor of #fcppt::shared_ptr explicit.</li>
+	<li>Made the #fcppt::weak_ptr constructor from #fcppt::shared_ptr explicit.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstring
 	<ul>
 	<li>Removed the default <code>=std::locale()</code> parameter from
@@ -105,12 +111,6 @@
 	#fcppt::narrow, #fcppt::output_to_string, #fcppt::output_to_std_string,
 	#fcppt::output_to_std_wstring, #fcppt::to_std_string, #fcppt::to_std_wstring and #fcppt::widen.</li>
 	</ul>
-</li>
-
-<li>\ref fcpptsignal
-	<ul>
-	<li>Callbacks are now moved into signals.</li>
-	</Ul>
 </li>
 
 <li>\ref fcppttypetraits
