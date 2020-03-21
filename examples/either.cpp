@@ -51,20 +51,20 @@ int example_function()
 // [either_motivation_exception]
 
 // [either_motivation_either]
-using result_type =
+using int_or_exception=
 fcppt::either::object<std::runtime_error,int>;
 
-result_type
+int_or_exception
 example_function2()
 {
 	// some code
 	// ...
 	if(error())
 	{
-		return result_type{std::runtime_error{"something went wrong"}};
+		return int_or_exception{std::runtime_error{"something went wrong"}};
 	}
 
-	return result_type{1};
+	return int_or_exception{1};
 }
 // [either_motivation_either]
 
