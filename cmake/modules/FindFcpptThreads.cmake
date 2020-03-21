@@ -6,10 +6,6 @@
 #	FcpptThreads_DEFINITIONS  - Additional compiler flags required
 #	FcpptThreads_LIBRARIES    - All thread libraries to link to
 
-include(
-	FindPkgConfig
-)
-
 # No extra libraries needed for windows
 if(
 	WIN32
