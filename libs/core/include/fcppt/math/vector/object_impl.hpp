@@ -17,6 +17,9 @@
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -111,6 +114,9 @@ fcppt::math::vector::object<
 )
 = default;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -136,6 +142,8 @@ noexcept(
 	}
 {
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
