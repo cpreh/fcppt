@@ -105,6 +105,12 @@ if(
 		"-readability-redundant-member-init"
 	)
 
+	list(
+		APPEND
+		FCPPT_UTILS_CLANG_TIDY_CHECKS
+		${FCPPT_UTILS_CLANG_TIDY_ADDITIONAL_CHECKS}
+	)
+
 	string(
 		JOIN
 		","
