@@ -16,7 +16,8 @@
 
 
 TEST_CASE(
-	"record::permute"
+	"record::permute",
+	"[record]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
