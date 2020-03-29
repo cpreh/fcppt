@@ -9,7 +9,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/log/const_level_stream_array_ref.hpp>
+#include <fcppt/log/const_level_stream_array_reference.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location_fwd.hpp>
@@ -81,7 +81,7 @@ public:
 	\brief The level streams of this context
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::const_level_stream_array_ref
+	fcppt::log::const_level_stream_array_reference
 	level_streams() const;
 private:
 	typedef

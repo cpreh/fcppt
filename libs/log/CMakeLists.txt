@@ -15,7 +15,8 @@ set(
 	libs/log/impl/src/log/impl/find_child_const.cpp
 	libs/log/impl/src/log/impl/find_or_create_child.cpp
 	libs/log/impl/src/log/impl/tree_formatter.cpp
-	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
+	libs/log/include/fcppt/log/const_level_stream_array_reference.hpp
+	libs/log/include/fcppt/log/const_level_stream_array_reference_fwd.hpp
 	libs/log/include/fcppt/log/context.hpp
 	libs/log/include/fcppt/log/context_fwd.hpp
 	libs/log/include/fcppt/log/context_reference.hpp

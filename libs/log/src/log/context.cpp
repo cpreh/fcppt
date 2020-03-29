@@ -13,7 +13,7 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/container/tree/make_pre_order.hpp>
-#include <fcppt/log/const_level_stream_array_ref.hpp>
+#include <fcppt/log/const_level_stream_array_reference.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location.hpp>
@@ -142,7 +142,7 @@ fcppt::log::context::get(
 		).get().value().level();
 }
 
-fcppt::log::const_level_stream_array_ref
+fcppt::log::const_level_stream_array_reference
 fcppt::log::context::level_streams() const
 {
 	return

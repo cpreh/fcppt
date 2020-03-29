@@ -1593,7 +1593,8 @@ set(
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
-	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
+	libs/log/include/fcppt/log/const_level_stream_array_reference.hpp
+	libs/log/include/fcppt/log/const_level_stream_array_reference_fwd.hpp
 	libs/log/include/fcppt/log/context.hpp
 	libs/log/include/fcppt/log/context_fwd.hpp
 	libs/log/include/fcppt/log/context_reference.hpp
