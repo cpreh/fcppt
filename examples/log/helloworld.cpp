@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
@@ -32,7 +33,9 @@ main()
 
 	// Create a log object at location "{ fcppt }"
 	fcppt::log::object log{
-		context,
+		fcppt::make_ref(
+			context
+		),
 		fcppt::log::parameters{
 			fcppt::log::name{FCPPT_TEXT("fcppt")},
 			fcppt::log::format::optional_function{}

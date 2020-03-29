@@ -5,6 +5,7 @@
 
 
 #include <fcppt/exception.hpp>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/log/context.hpp>
@@ -41,7 +42,9 @@ try
 	};
 
 	fcppt::log::object root_log{
-		context,
+		fcppt::make_ref(
+			context
+		),
 		fcppt::log::parameters(
 			root_name,
 			fcppt::log::format::optional_function{}

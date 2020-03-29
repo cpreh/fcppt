@@ -18,6 +18,8 @@ set(
 	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
 	libs/log/include/fcppt/log/context.hpp
 	libs/log/include/fcppt/log/context_fwd.hpp
+	libs/log/include/fcppt/log/context_reference.hpp
+	libs/log/include/fcppt/log/context_reference_fwd.hpp
 	libs/log/include/fcppt/log/debug.hpp
 	libs/log/include/fcppt/log/default_level_streams.hpp
 	libs/log/include/fcppt/log/default_stream.hpp

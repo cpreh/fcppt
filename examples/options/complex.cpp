@@ -17,6 +17,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/exception.hpp>
 #include <fcppt/main.hpp>
 #include <fcppt/make_cref.hpp>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
@@ -231,7 +232,9 @@ try
 // ![options_log_context]
 
 			fcppt::log::object logger{
-				log_context,
+				fcppt::make_ref(
+					log_context
+				),
 				fcppt::log::parameters{
 					fcppt::log::name{FCPPT_TEXT("options")},
 					fcppt::log::format::optional_function{}

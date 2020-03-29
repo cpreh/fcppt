@@ -9,7 +9,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_decl.hpp>
-#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/context_reference.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array_fwd.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
@@ -48,8 +48,7 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
-		// NOLINTNEXTLINE(google-runtime-references)
-		fcppt::log::context &,
+		fcppt::log::context_reference,
 		fcppt::log::parameters const &
 	);
 
@@ -58,8 +57,7 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
-		// NOLINTNEXTLINE(google-runtime-references)
-		fcppt::log::object &,
+		fcppt::log::object const &parent,
 		fcppt::log::parameters const &
 	);
 
@@ -68,8 +66,7 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
-		// NOLINTNEXTLINE(google-runtime-references)
-		fcppt::log::context &,
+		fcppt::log::context_reference,
 		fcppt::log::location const &,
 		fcppt::log::parameters const &
 	);
@@ -155,13 +152,12 @@ private:
 	>;
 
 	object(
-		// NOLINTNEXTLINE(google-runtime-references)
-		fcppt::log::context &,
+		fcppt::log::context_reference,
 		context_tree_ref,
 		fcppt::log::parameters const &
 	);
 
-	fcppt::log::context &context_;
+	fcppt::log::context_reference const context_;
 
 	context_tree_ref const node_;
 

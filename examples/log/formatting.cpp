@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/enum/array_init.hpp>
@@ -101,7 +102,9 @@ main()
 
 //! [logger_declaration]
 	fcppt::log::object log{
-		context,
+		fcppt::make_ref(
+			context
+		),
 		fcppt::log::parameters{
 			fcppt::log::name{FCPPT_TEXT("fcppt")},
 			// Create a special formatter for the whole log

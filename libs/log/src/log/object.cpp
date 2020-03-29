@@ -7,6 +7,7 @@
 #include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/context_reference.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
@@ -23,20 +24,20 @@
 
 
 fcppt::log::object::object(
-	fcppt::log::context &_context,
+	fcppt::log::context_reference const _context,
 	fcppt::log::parameters const &_parameters
 )
 :
 	object{
 		_context,
-		_context.root(),
+		_context.get().root(),
 		_parameters
 	}
 {
 }
 
 fcppt::log::object::object(
-	fcppt::log::object &_parent,
+	fcppt::log::object const &_parent,
 	fcppt::log::parameters const &_parameters
 )
 :
@@ -49,14 +50,14 @@ fcppt::log::object::object(
 }
 
 fcppt::log::object::object(
-	fcppt::log::context &_context,
+	fcppt::log::context_reference const _context,
 	fcppt::log::location const &_location,
 	fcppt::log::parameters const &_parameters
 )
 :
 	object{
 		_context,
-		_context.find_location(
+		_context.get().find_location(
 			_location
 		),
 		_parameters
@@ -135,7 +136,7 @@ fcppt::log::level_stream_array const &
 fcppt::log::object::level_streams() const
 {
 	return
-		this->context_.level_streams().get();
+		this->context_.get().level_streams().get();
 }
 
 fcppt::log::optional_level
@@ -146,7 +147,7 @@ fcppt::log::object::level() const
 }
 
 fcppt::log::object::object(
-	fcppt::log::context &_context,
+	fcppt::log::context_reference const _context,
 	context_tree_ref const _node,
 	fcppt::log::parameters const &_parameters
 )
@@ -155,7 +156,7 @@ fcppt::log::object::object(
 		_context
 	},
 	node_{
-		_context.find_child(
+		_context.get().find_child(
 			_node,
 			_parameters.name()
 		)

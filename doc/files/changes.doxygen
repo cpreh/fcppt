@@ -85,6 +85,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptlog
+	<ul>
+	<li>Use #fcppt::reference to pass #fcppt::log::context to #fcppt::log::object.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmetal
 	<ul>
 	<li>#fcppt::metal::set::contains now returns a boolean instead of a <code>metal::number</code>.</li>
