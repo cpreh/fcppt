@@ -1,3 +1,6 @@
+# Set FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER to specify the header-filter option.
+# This defaults to .*
+
 set(
 	FCPPT_UTILS_CLANG_TIDY
 	""
@@ -45,10 +48,21 @@ if(
 		${FCPPT_UTILS_CLANG_TIDY_CHECKS}
 	)
 
+	if(
+		"${FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER}"
+		STREQUAL
+		""
+	)
+		set(
+			FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER
+			".*"
+		)
+	endif()
+
 	set(
 		CMAKE_CXX_CLANG_TIDY
 		${FCPPT_UTILS_CLANG_TIDY}
-		"-header-filter=.*"
+		"-header-filter=${FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER}"
 		"-checks=${FCPPT_UTILS_CLANG_TIDY_CHECKS_ARG}"
 	)
 endif()
