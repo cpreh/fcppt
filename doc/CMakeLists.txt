@@ -1645,6 +1645,8 @@ set(
 	libs/log/include/fcppt/log/name_fwd.hpp
 	libs/log/include/fcppt/log/object.hpp
 	libs/log/include/fcppt/log/object_fwd.hpp
+	libs/log/include/fcppt/log/object_reference.hpp
+	libs/log/include/fcppt/log/object_reference_fwd.hpp
 	libs/log/include/fcppt/log/optional_level.hpp
 	libs/log/include/fcppt/log/optional_level_fwd.hpp
 	libs/log/include/fcppt/log/out.hpp
