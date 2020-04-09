@@ -81,8 +81,10 @@ we refer to as <code>$build</code>. Change directory into
 <pre>cmake <code>$fcpptpath</code></pre> and pass all relevant arguments, e.g.
 <code>-G Ninja</code>, to CMake.
 
-To specify where to find Metal, use <code>-DMetal_INCLUDEDIR=$path</code>
-where <code>$path</code> points to Metal's <code>include</code> directory.
+To specify where to find Metal, use CMake's standard package search function,
+i.e. specify <code>-DMetal_DIR=$path</code>,
+where <code>$path</code> points to the directory where <code>MetalConfig.cmake</code> is located.
+If you want to use Metal from its build directory, this will be located under <code>$build/Metal/lib/cmake/Metal</code>.
 
 Take a look at CMake's <code>FindBoost.cmake</code> to see how to specify
 where to find Boost.
