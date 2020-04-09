@@ -26,7 +26,7 @@ in stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkgs.cmake ];
   buildInputs = [ pkgs.boost pkgs.catch2 metal ];
 
-  cmakeFlags = [ "-DCMAKE_SKIP_BUILD_RPATH=false" "-DENABLE_BOOST=true" "-DENABLE_EXAMPLES=false" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" ];
+  cmakeFlags = [ "-DCMAKE_SKIP_BUILD_RPATH=false" "-DENABLE_BOOST=true" "-DENABLE_EXAMPLES=true" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" ];
 
   enableParallelBuilding = true;
 
