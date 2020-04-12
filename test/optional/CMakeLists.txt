@@ -103,6 +103,10 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	monad
+)
+
+add_fcppt_optional_test(
 	move
 	LINK_LIBS
 		fcppt_catch_interface

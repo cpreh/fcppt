@@ -237,12 +237,21 @@ add_subdirectory(
 	metal
 )
 
+add_subdirectory(
+	monad
+)
+
 add_fcppt_test(
 	move_clear
 )
 
 add_fcppt_test(
 	move_if_rvalue
+)
+
+add_fcppt_test(
+	move_if_rvalue_type
+	NO_CODE
 )
 
 add_fcppt_test(

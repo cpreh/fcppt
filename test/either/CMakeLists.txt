@@ -83,6 +83,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	monad
+)
+
+add_fcppt_either_test(
 	object
 )
 

@@ -10,7 +10,6 @@
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,58 +17,12 @@
 namespace
 {
 
-typedef
+using
+int_unique_ptr
+=
 fcppt::unique_ptr<
 	int
->
-int_unique_ptr;
-
-static_assert(
-	std::is_same_v<
-		decltype(
-			fcppt::move_if_rvalue<
-				int_unique_ptr
-			>(
-				std::declval<
-					int_unique_ptr &
-				>()
-			)
-		),
-		fcppt::unique_ptr<
-			int
-		> &&
-	>
-);
-
-static_assert(
-	std::is_same_v<
-		decltype(
-			fcppt::move_if_rvalue<
-				int &
-			>(
-				std::declval<
-					float &
-				>()
-			)
-		),
-		float &
-	>
-);
-
-static_assert(
-	std::is_same_v<
-		decltype(
-			fcppt::move_if_rvalue<
-				int &
-			>(
-				std::declval<
-					int
-				>()
-			)
-		),
-		int &&
-	>
-);
+>;
 
 class container
 {

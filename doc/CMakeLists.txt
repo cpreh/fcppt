@@ -670,6 +670,7 @@ set(
 	libs/core/include/fcppt/either/map.hpp
 	libs/core/include/fcppt/either/map_failure.hpp
 	libs/core/include/fcppt/either/match.hpp
+	libs/core/include/fcppt/either/monad.hpp
 	libs/core/include/fcppt/either/no_error.hpp
 	libs/core/include/fcppt/either/no_error_fwd.hpp
 	libs/core/include/fcppt/either/object.hpp
@@ -1150,9 +1151,15 @@ set(
 	libs/core/include/fcppt/metal/unique.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
+	libs/core/include/fcppt/monad/bind.hpp
+	libs/core/include/fcppt/monad/detail/do.hpp
+	libs/core/include/fcppt/monad/do.hpp
+	libs/core/include/fcppt/monad/inner_type.hpp
+	libs/core/include/fcppt/monad/instance_fwd.hpp
 	libs/core/include/fcppt/move_clear.hpp
 	libs/core/include/fcppt/move_if.hpp
 	libs/core/include/fcppt/move_if_rvalue.hpp
+	libs/core/include/fcppt/move_if_rvalue_type.hpp
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/narrow_locale.hpp
@@ -1189,6 +1196,7 @@ set(
 	libs/core/include/fcppt/optional/maybe_multi.hpp
 	libs/core/include/fcppt/optional/maybe_void.hpp
 	libs/core/include/fcppt/optional/maybe_void_multi.hpp
+	libs/core/include/fcppt/optional/monad.hpp
 	libs/core/include/fcppt/optional/nothing.hpp
 	libs/core/include/fcppt/optional/nothing_decl.hpp
 	libs/core/include/fcppt/optional/nothing_fwd.hpp
