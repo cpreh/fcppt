@@ -9,8 +9,8 @@
 
 #include <fcppt/monad/instance_fwd.hpp>
 #include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
