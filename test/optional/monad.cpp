@@ -4,8 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/unit_fwd.hpp>
 #include <fcppt/monad/bind.hpp>
+#include <fcppt/monad/constructor.hpp>
 #include <fcppt/monad/inner_type.hpp>
+#include <fcppt/monad/return.hpp>
+#include <fcppt/optional/make.hpp>
 #include <fcppt/optional/monad.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -21,6 +25,20 @@ namespace
 
 static_assert(
 	std::is_same_v<
+		fcppt::monad::constructor<
+			fcppt::optional::object<
+				fcppt::unit
+			>,
+			int
+		>,
+		fcppt::optional::object<
+			int
+		>
+	>
+);
+
+static_assert(
+	std::is_same_v<
 		fcppt::monad::inner_type<
 			fcppt::optional::object<
 				int
@@ -33,7 +51,27 @@ static_assert(
 }
 
 TEST_CASE(
-	"optional moand",
+	"optional monad return",
+	"[optional]"
+)
+{
+	CHECK(
+		fcppt::monad::return_<
+			fcppt::optional::object<
+				fcppt::unit
+			>
+		>(
+			5
+		)
+		==
+		fcppt::optional::make(
+			5
+		)
+	);
+}
+
+TEST_CASE(
+	"optional monad bind",
 	"[optional]"
 )
 {

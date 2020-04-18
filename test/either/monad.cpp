@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/either/error.hpp>
+#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/monad.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/monad/bind.hpp>
+#include <fcppt/monad/constructor.hpp>
 #include <fcppt/monad/inner_type.hpp>
+#include <fcppt/monad/return.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -17,6 +21,21 @@
 
 namespace
 {
+
+static_assert(
+	std::is_same_v<
+		fcppt::monad::constructor<
+			fcppt::either::error<
+				bool
+			>,
+			int
+		>,
+		fcppt::either::object<
+			bool,
+			int
+		>
+	>
+);
 
 static_assert(
 	std::is_same_v<
@@ -33,7 +52,29 @@ static_assert(
 }
 
 TEST_CASE(
-	"either monad",
+	"either monad return",
+	"[either]"
+)
+{
+	CHECK(
+		fcppt::monad::return_<
+			fcppt::either::error<
+				std::string
+			>
+		>(
+			1
+		)
+		==
+		fcppt::either::make_success<
+			std::string
+		>(
+			1
+		)
+	);
+}
+
+TEST_CASE(
+	"either monad bind",
 	"[either]"
 )
 {

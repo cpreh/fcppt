@@ -1152,10 +1152,12 @@ set(
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
 	libs/core/include/fcppt/monad/bind.hpp
+	libs/core/include/fcppt/monad/constructor.hpp
 	libs/core/include/fcppt/monad/detail/do.hpp
 	libs/core/include/fcppt/monad/do.hpp
 	libs/core/include/fcppt/monad/inner_type.hpp
 	libs/core/include/fcppt/monad/instance_fwd.hpp
+	libs/core/include/fcppt/monad/return.hpp
 	libs/core/include/fcppt/move_clear.hpp
 	libs/core/include/fcppt/move_if.hpp
 	libs/core/include/fcppt/move_if_rvalue.hpp

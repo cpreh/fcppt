@@ -8,6 +8,7 @@
 #define FCPPT_EITHER_MONAD_HPP_INCLUDED
 
 #include <fcppt/either/bind.hpp>
+#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/monad/instance_fwd.hpp>
@@ -33,6 +34,20 @@ struct instance<
 >
 {
 	template<
+		typename Type
+	>
+	struct constructor
+	{
+		using
+		type
+		=
+		fcppt::either::object<
+			Failure,
+			Type
+		>;
+	};
+
+	template<
 		typename Either
 	>
 	struct inner_type
@@ -44,6 +59,28 @@ struct instance<
 			Either
 		>;
 	};
+
+	template<
+		typename Value
+	>
+	static
+	auto
+	return_(
+		Value &&_value
+	)
+	{
+		return
+			fcppt::either::make_success<
+				Failure
+			>(
+				std::forward<
+					Value
+				>(
+					_value
+				)
+			);
+	}
+
 
 	template<
 		typename Either,

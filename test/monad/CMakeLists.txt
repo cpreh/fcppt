@@ -11,6 +11,17 @@ function(
 endfunction()
 
 add_fcppt_monad_test(
+	constructor
+	NO_CODE
+)
+
+add_fcppt_monad_test(
+	bind
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_monad_test(
 	do
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -19,4 +30,8 @@ add_fcppt_monad_test(
 add_fcppt_monad_test(
 	inner_type
 	NO_CODE
+)
+
+add_fcppt_monad_test(
+	return
 )

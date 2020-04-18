@@ -9,6 +9,7 @@
 
 #include <fcppt/monad/instance_fwd.hpp>
 #include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -31,6 +32,19 @@ struct instance<
 >
 {
 	template<
+		typename Type
+	>
+	struct constructor
+	{
+		using
+		type
+		=
+		fcppt::optional::object<
+			Type
+		>;
+	};
+
+	template<
 		typename Optional
 	>
 	struct inner_type
@@ -42,6 +56,25 @@ struct instance<
 			Optional
 		>;
 	};
+
+	template<
+		typename Value
+	>
+	static
+	auto
+	return_(
+		Value &&_value
+	)
+	{
+		return
+			fcppt::optional::make(
+				std::forward<
+					Value
+				>(
+					_value
+				)
+			);
+	}
 
 	template<
 		typename Optional,
