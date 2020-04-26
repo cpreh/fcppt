@@ -86,12 +86,11 @@ i.e. specify <code>-DMetal_DIR=$path</code>,
 where <code>$path</code> points to the directory where <code>MetalConfig.cmake</code> is located.
 If you want to use Metal from its build directory, this will be located under <code>$build/Metal/lib/cmake/Metal</code>.
 
-Take a look at CMake's <code>FindBoost.cmake</code> to see how to specify
-where to find Boost.
-
 Several CMake options are available:
 <ul>
-<li><code>ENABLE_BOOST</code>: Whether to build \ref fcpptboost. Boost is required for this.</li>
+<li><code>ENABLE_BOOST</code>: Whether to build \ref fcpptboost. Boost is required for this.
+Take a look at CMake's <code>FindBoost.cmake</code> to see how to specify
+where to find Boost.</li>
 <li><code>ENABLE_CATCH</code>: Whether to build \ref fcpptcatch. Catch2 is required for this.</li>
 <li><code>ENABLE_FILESYSTEM</code>: Whether to build \ref fcpptfilesystem.</li>
 <li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
