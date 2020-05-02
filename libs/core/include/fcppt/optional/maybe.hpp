@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONAL_MAYBE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAYBE_HPP_INCLUDED
 
+#include <fcppt/cond.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
@@ -46,8 +47,8 @@ std::result_of_t<
 >
 maybe(
 	Optional &&_optional,
-	Default const _default,
-	Transform const _transform
+	Default const &_default,
+	Transform const &_transform
 )
 {
 	static_assert(
@@ -58,36 +59,47 @@ maybe(
 	);
 
 	static_assert(
-		std::is_same<
-			decltype(
-				_default()
-			),
-			decltype(
-				_transform(
+		std::is_same_v<
+			std::invoke_result_t<
+				Default
+			>,
+			std::invoke_result_t<
+				Transform,
+				decltype(
 					fcppt::move_if_rvalue<
 						Optional
 					>(
 						_optional.get_unsafe()
 					)
 				)
-			)
-		>::value,
+			>
+		>,
 		"Default and Transform must return the same type"
 	);
 
 	return
-		_optional.has_value()
-		?
-			_transform(
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_optional.get_unsafe()
-				)
-			)
-		:
-			_default()
-		;
+		fcppt::cond(
+			_optional.has_value(),
+			[
+				&_transform,
+				&_optional
+			]()
+			->
+			std::invoke_result_t<
+				Default
+			>
+			{
+				return
+					_transform(
+						fcppt::move_if_rvalue<
+							Optional
+						>(
+							_optional.get_unsafe()
+						)
+					);
+			},
+			_default
+		);
 }
 
 }

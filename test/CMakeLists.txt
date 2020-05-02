@@ -120,6 +120,10 @@ if(
 endif()
 
 add_fcppt_test(
+	cond
+)
+
+add_fcppt_test(
 	const
 )
 

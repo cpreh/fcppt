@@ -153,6 +153,7 @@ set(
 	libs/core/include/fcppt/check_literal_conversion.hpp
 	libs/core/include/fcppt/com_deleter.hpp
 	libs/core/include/fcppt/com_deleter_fwd.hpp
+	libs/core/include/fcppt/cond.hpp
 	libs/core/include/fcppt/config/clang_version_at_least.hpp
 	libs/core/include/fcppt/config/compiler.hpp
 	libs/core/include/fcppt/config/detail/msvc_version_at_least.hpp

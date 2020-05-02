@@ -4,22 +4,46 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/const.hpp>
+#include <fcppt/cond.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"const"
+	"cond"
 	"[various]"
 )
 {
 	CHECK(
-		fcppt::const_(
-			5
-		)()
+		fcppt::cond(
+			true,
+			[]{
+				return
+					1;
+			},
+			[]{
+				return
+					2;
+			}
+		)
 		==
-		5
+		1
+	);
+
+	CHECK(
+		fcppt::cond(
+			false,
+			[]{
+				return
+					1;
+			},
+			[]{
+				return
+					2;
+			}
+		)
+		==
+		2
 	);
 }

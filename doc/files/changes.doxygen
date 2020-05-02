@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_360 3.6.0
+
+\subsection changes_added_functionality_to_360 Added functionality
+
+<ul>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added #fcppt::cond.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_350 3.5.0
 
 \subsection changes_added_functionality_to_350 Added functionality
