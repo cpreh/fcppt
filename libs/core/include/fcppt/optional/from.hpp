@@ -7,9 +7,12 @@
 #ifndef FCPPT_OPTIONAL_FROM_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FROM_HPP_INCLUDED
 
+#include <fcppt/cond.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -34,8 +37,8 @@ template<
 	typename Optional,
 	typename Default
 >
-std::result_of_t<
-	Default()
+std::invoke_result_t<
+	Default
 >
 from(
 	Optional &&_optional,
@@ -49,17 +52,39 @@ from(
 		"Optional must be an optional"
 	);
 
+	static_assert(
+		std::is_same_v<
+			std::invoke_result_t<
+				Default
+			>,
+			fcppt::optional::value_type<
+				fcppt::type_traits::remove_cv_ref_t<
+					Optional
+				>
+			>
+		>
+	);
+
 	return
-		_optional.has_value()
-		?
-			fcppt::move_if_rvalue<
-				Optional
-			>(
-				_optional.get_unsafe()
-			)
-		:
-			_default()
-		;
+		fcppt::cond(
+			_optional.has_value(),
+			[
+				&_optional
+			]()
+			->
+			std::invoke_result_t<
+				Default
+			>
+			{
+				return
+					fcppt::move_if_rvalue<
+						Optional
+					>(
+						_optional.get_unsafe()
+					);
+			},
+			_default
+		);
 }
 
 }
