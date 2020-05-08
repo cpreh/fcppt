@@ -84,11 +84,12 @@ public:
 	fcppt::log::const_level_stream_array_reference
 	level_streams() const;
 private:
-	typedef
+	using
+	lock_guard
+	=
 	std::lock_guard<
 		std::mutex
-	>
-	lock_guard;
+	>;
 
 	fcppt::reference<
 		fcppt::log::detail::context_tree const

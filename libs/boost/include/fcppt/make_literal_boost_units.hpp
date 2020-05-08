@@ -35,7 +35,9 @@ struct make_literal<
 	>
 >
 {
-	typedef
+	using
+	decorated_type
+	=
 	boost::units::quantity<
 		boost::units::unit<
 			boost::units::dimensionless_type,
@@ -43,8 +45,7 @@ struct make_literal<
 			Unit::system_type
 		>,
 		Type
-	>
-	decorated_type;
+	>;
 
 	template<
 		typename Fundamental

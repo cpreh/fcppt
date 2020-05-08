@@ -23,11 +23,12 @@ namespace fcppt
 
 See \ref fcpptstring for more information about #fcppt::char_type.
 */
-typedef
+using
+format
+=
 boost::basic_format<
 	fcppt::char_type
->
-format;
+>;
 
 }
 

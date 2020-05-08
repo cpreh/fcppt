@@ -57,9 +57,10 @@ public:
 
 	A typedef to an iterator type over #fcppt::string
 	*/
-	typedef
-	fcppt::log::detail::location_vector::const_iterator
-	const_iterator;
+	using
+	const_iterator
+	=
+	fcppt::log::detail::location_vector::const_iterator;
 
 	/**
 	\brief Adds a new element to this location

@@ -23,11 +23,12 @@ namespace detail
 
 \ingroup fcpptlog
 */
-typedef
+using
+optional_object_ref
+=
 fcppt::optional::reference<
 	fcppt::log::object
->
-optional_object_ref;
+>;
 
 }
 }
