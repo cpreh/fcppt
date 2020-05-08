@@ -82,6 +82,7 @@ operator<<(
 	typename
 	Container::const_iterator;
 
+	// NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
 	auto const end(
 		_output.container().end()
 	);
