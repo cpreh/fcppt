@@ -43,9 +43,11 @@ public:
 		Iterator end
 	);
 
+	[[nodiscard]]
 	Iterator
 	begin() const;
 
+	[[nodiscard]]
 	Iterator
 	end() const;
 private:
