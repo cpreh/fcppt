@@ -13,8 +13,9 @@
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/apply.hpp>
+#include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/maybe_multi.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -67,25 +68,27 @@ compare(
 )
 {
 	return
-		fcppt::optional::maybe_multi(
+		fcppt::optional::from(
+			fcppt::optional::apply(
+				[](
+					real const _t1,
+					real const _t2
+				)
+				{
+					return
+						fcppt::math::diff(
+							_t1,
+							_t2
+						)
+						<
+						epsilon;
+				},
+				_o1,
+				_o2
+			),
 			fcppt::const_(
 				true
-			),
-			[](
-				real const _t1,
-				real const _t2
 			)
-			{
-				return
-					fcppt::math::diff(
-						_t1,
-						_t2
-					)
-					<
-					epsilon;
-			},
-			_o1,
-			_o2
 		);
 }
 

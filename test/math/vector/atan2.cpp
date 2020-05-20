@@ -10,8 +10,9 @@
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/apply.hpp>
+#include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/maybe_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -37,29 +38,31 @@ almost_equal(
 )
 {
 	return
-		fcppt::optional::maybe_multi(
+		fcppt::optional::from(
+			fcppt::optional::apply(
+				[](
+					scalar const _x1,
+					scalar const _x2
+				)
+				{
+					return
+						fcppt::math::diff(
+							_x1,
+							_x2
+						)
+						<
+						fcppt::literal<
+							scalar
+						>(
+							0.01F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						);
+				},
+				_f1,
+				_f2
+			),
 			fcppt::const_(
 				false
-			),
-			[](
-				scalar const _x1,
-				scalar const _x2
 			)
-			{
-				return
-					fcppt::math::diff(
-						_x1,
-						_x2
-					)
-					<
-					fcppt::literal<
-						scalar
-					>(
-						0.01F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					);
-			},
-			_f1,
-			_f2
 		);
 }
 
