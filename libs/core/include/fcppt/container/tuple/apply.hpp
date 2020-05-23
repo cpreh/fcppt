@@ -28,7 +28,7 @@ namespace tuple
 {
 
 /**
-\brief Applies a function to each tuple of elements of multiple tuples and returns an
+\brief Applies a function to each tuple of elements of multiple tuples and returns a
 tuple containing the results.
 
 \ingroup fcpptcontainertuple
