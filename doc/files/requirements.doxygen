@@ -57,9 +57,9 @@ This is also needed to build \ref fcpptcatch.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-9.3 (Gentoo Linux)</li>
+	<li>gcc-10,1.0 (Gentoo Linux)</li>
 	<li>clang-10 (Gentoo Linux)</li>
-	<li>VC++-14.25 (Visual Studio 2019)</li>
+	<li>VC++-14.26 (Visual Studio 2019)</li>
 </ul>
 
 fcppt needs a C++17-conforming compiler which probably excludes everything
