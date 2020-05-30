@@ -89,7 +89,7 @@ fcppt::recursive<
 > &
 fcppt::recursive<
 	Type
->::operator=(
+>::operator=( // NOLINT(cert-oop54-cpp)
 	recursive const &_other
 )
 {

@@ -67,9 +67,11 @@ public:
 
 	~recursive();
 
+	[[nodiscard]]
 	Type &
 	get();
 
+	[[nodiscard]]
 	Type const &
 	get() const;
 private:
