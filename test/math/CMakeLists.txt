@@ -54,6 +54,10 @@ add_subdirectory(
 )
 
 add_fcppt_math_test(
+	next_power_of_2
+)
+
+add_fcppt_math_test(
 	sphere
 )
 

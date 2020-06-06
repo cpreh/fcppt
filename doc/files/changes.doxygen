@@ -15,6 +15,19 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_360 Changed functionality
+
+<ul>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>#fcppt::math::next_power_of_2 is now the identity on powers of two.
+	It will also now return 1 when called with 0.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_350 3.5.0
 
 \subsection changes_added_functionality_to_350 Added functionality

@@ -20,8 +20,13 @@ namespace math
 {
 
 /**
-\brief Calculates the next power of 2 for an unsigned value
+\brief Calculates the next power of 2 for an unsigned value.
+
 \ingroup fcpptmath
+
+If _value is a power of two, then _value is returned.
+Otherwise, the least power of two that is greater than _value is returned.
+
 \tparam T An unsigned type
 */
 template<
@@ -33,11 +38,21 @@ next_power_of_2(
 )
 {
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			T
-		>::value,
+		>,
 		"next_power_of_2 can only be used on unsigned types"
 	);
+
+	if(
+		_value
+		==
+		fcppt::literal<T>(0)
+	)
+	{
+		return
+			fcppt::literal<T>(1);
+	}
 
 	T const two(
 		fcppt::literal<T>(2)
@@ -48,20 +63,27 @@ next_power_of_2(
 			_value
 		)
 	)
-		return _value * two;
+	{
+		return
+			_value;
+	}
 
 	T counter(
 		_value
 	);
 
 	T ret(
-		fcppt::literal<T>(1u)
+		fcppt::literal<T>(1)
 	);
 
 	while(
-		counter /= two
+		(counter /= two)
+		!=
+		fcppt::literal<T>(0)
 	)
+	{
 		ret *= two;
+	}
 
 	return ret * two;
 }
