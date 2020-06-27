@@ -52,8 +52,10 @@ set_position(
 	stream.clear(); // NOLINT(fuchsia-default-arguments-calls)
 
 	stream.seekg(
-		_pos
+		_pos.first
 	);
+
+	// TODO
 
 	if(
 		stream.fail()

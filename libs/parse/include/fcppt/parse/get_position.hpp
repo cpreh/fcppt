@@ -9,6 +9,8 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/parse/line_number.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/check_bad.hpp>
@@ -40,9 +42,10 @@ get_position(
 	using
 	pos_type
 	=
-	fcppt::parse::position<
+	typename
+	std::basic_istream<
 		Ch
-	>;
+	>::pos_type;
 
 	std::basic_istream<
 		Ch
@@ -86,7 +89,13 @@ get_position(
 	}
 
 	return
-		pos;
+		std::make_pair(
+			pos,
+			// TODO
+			fcppt::optional::object<
+				fcppt::parse::line_number
+			>{}
+		);
 }
 
 }

@@ -7,8 +7,11 @@
 #ifndef FCPPT_PARSE_POSITION_HPP_INCLUDED
 #define FCPPT_PARSE_POSITION_HPP_INCLUDED
 
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/parse/line_number.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,10 +26,15 @@ template<
 using
 position
 =
-typename
-std::basic_istream<
-	Ch
->::pos_type;
+std::pair<
+	typename
+	std::basic_istream<
+		Ch
+	>::pos_type,
+	fcppt::optional::object<
+		fcppt::parse::line_number
+	>
+>;
 
 }
 }
