@@ -70,6 +70,7 @@ set(
 	libs/parse/include/fcppt/parse/detail/make_alternative.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
 	libs/parse/include/fcppt/parse/detail/sequence_result.hpp
+	libs/parse/include/fcppt/parse/detail/to_line_counting_rdbuf.hpp
 	libs/parse/include/fcppt/parse/epsilon.hpp
 	libs/parse/include/fcppt/parse/epsilon_decl.hpp
 	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
@@ -109,6 +110,10 @@ set(
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp
 	libs/parse/include/fcppt/parse/lexeme_impl.hpp
+	libs/parse/include/fcppt/parse/line_counting_rdbuf.hpp
+	libs/parse/include/fcppt/parse/line_counting_rdbuf_decl.hpp
+	libs/parse/include/fcppt/parse/line_counting_rdbuf_fwd.hpp
+	libs/parse/include/fcppt/parse/line_counting_rdbuf_impl.hpp
 	libs/parse/include/fcppt/parse/line_number.hpp
 	libs/parse/include/fcppt/parse/literal.hpp
 	libs/parse/include/fcppt/parse/literal_decl.hpp
