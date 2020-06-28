@@ -22,20 +22,23 @@ fcppt::io::basic_scoped_rdbuf<
 	Ch,
 	Traits
 >::basic_scoped_rdbuf(
-	stream_type &_source,
-	stream_type &_receiver
+	fcppt::reference<
+		stream_type
+	> const _stream,
+	fcppt::reference<
+		streambuf_type
+	> const _buffer
 )
 :
-	receiver_(
-		_receiver
-	),
-	old_(
-		_receiver.rdbuf()
-	)
+	stream_{
+		_stream
+	},
+	old_{
+		_stream.get().rdbuf(
+			&_buffer.get()
+		)
+	}
 {
-	receiver_.rdbuf(
-		_source.rdbuf()
-	);
 }
 
 template<
@@ -47,8 +50,8 @@ fcppt::io::basic_scoped_rdbuf<
 	Traits
 >::~basic_scoped_rdbuf()
 {
-	receiver_.rdbuf(
-		old_
+	this->stream_.get().rdbuf(
+		this->old_
 	);
 }
 

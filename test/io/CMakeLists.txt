@@ -31,6 +31,12 @@ add_fcppt_io_test(
 )
 
 add_fcppt_io_test(
+	scoped_rdbuf
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_io_test(
 	stream_to_string
 )
 

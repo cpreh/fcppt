@@ -19,6 +19,12 @@
 
 <ul>
 
+<li>\ref fcpptio
+	<ul>
+	<li>Changed #fcppt::io::basic_scoped_rdbuf to use a stream and a streambuf instead of two streams.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>#fcppt::math::next_power_of_2 is now the identity on powers of two.

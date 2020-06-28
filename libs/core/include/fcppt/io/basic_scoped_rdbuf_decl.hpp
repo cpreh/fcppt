@@ -8,6 +8,7 @@
 #define FCPPT_IO_BASIC_SCOPED_RDBUF_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
@@ -20,8 +21,7 @@ namespace io
 {
 
 /**
-\brief Gives a streambuf from one stream to another, restoring the original
-state in the destructor.
+\brief Changes the streambuf of a stream temporarily.
 
 \ingroup fcpptio
 */
@@ -43,19 +43,6 @@ public:
 		Traits
 	>;
 
-	/**
-	\brief Gives a streambuf from one stream to another
-
-	\param source The stream whose streambuf to take
-	\param receiver The stream that will receive the streambuf
-	*/
-	basic_scoped_rdbuf(
-		stream_type &source,
-		stream_type &receiver
-	);
-
-	~basic_scoped_rdbuf();
-private:
 	using
 	streambuf_type
 	=
@@ -64,10 +51,22 @@ private:
 		Traits
 	>;
 
-	stream_type &receiver_;
+	basic_scoped_rdbuf(
+		fcppt::reference<
+			stream_type
+		>,
+		fcppt::reference<
+			streambuf_type
+		>
+	);
+
+	~basic_scoped_rdbuf();
+private:
+	fcppt::reference<
+		stream_type
+	> const stream_;
 
 	streambuf_type *const old_;
-
 };
 
 }

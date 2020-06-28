@@ -4,10 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/char_type.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_to_base.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/io/scoped_rdbuf.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <ios>
+#include <streambuf>
+#include <fcppt/config/external_end.hpp>
 
 
 int
@@ -18,8 +25,24 @@ main()
 
 	{
 		fcppt::io::scoped_rdbuf const scoped(
-			ostream,
-			fcppt::io::cout()
+			fcppt::reference_to_base<
+				std::basic_ios<
+					fcppt::char_type
+				>
+			>(
+				fcppt::make_ref(
+					fcppt::io::cout()
+				)
+			),
+			fcppt::reference_to_base<
+				std::basic_streambuf<
+					fcppt::char_type
+				>
+			>(
+				fcppt::make_ref(
+					*ostream.rdbuf()
+				)
+			)
 		);
 
 		fcppt::io::cout()
