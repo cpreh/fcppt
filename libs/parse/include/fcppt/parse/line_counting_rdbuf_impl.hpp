@@ -7,10 +7,12 @@
 #ifndef FCPPT_PARSE_LINE_COUNTING_RDBUF_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_LINE_COUNTING_RDBUF_IMPL_HPP_INCLUDED
 
-#include <fcppt/string_literal.hpp>
 #include <fcppt/strong_typedef_arithmetic.hpp>
 #include <fcppt/parse/line_counting_rdbuf_decl.hpp>
 #include <fcppt/parse/line_number.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <locale>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -24,6 +26,17 @@ fcppt::parse::line_counting_rdbuf<
 :
 	source_{
 		_source
+	},
+	newline_{
+		std::use_facet<
+			std::ctype<
+				Ch
+			>
+		>(
+			source_.get().getloc()
+		).widen(
+			'\n'
+		)
 	},
 	line_{
 		1U
@@ -77,16 +90,13 @@ fcppt::parse::line_counting_rdbuf<
 >::uflow()
 {
 	int_type const result{
-		source_.get().uflow()
+		source_.get().sbumpc()
 	};
 
 	if(
 		result
 		==
-		FCPPT_STRING_LITERAL(
-			Ch,
-			'\n'
-		)
+		this->newline_
 	)
 	{
 		++this->line_;

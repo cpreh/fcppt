@@ -79,6 +79,8 @@ public:
 private:
 	streambuf_ref const source_;
 
+	Ch const newline_;
+
 	fcppt::parse::line_number line_;
 };
 
