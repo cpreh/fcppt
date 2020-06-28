@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptfilesystem
+	<ul>
+	<li>Allow #fcppt::filesystem::open and #fcppt::filesystem::open_exn to open filebufs as well.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added #fcppt::cond.</li>

@@ -42,10 +42,12 @@ open(
 	std::ios_base::openmode const _openmode
 )
 {
-	Stream result{
+	Stream result{};
+
+	result.open(
 		_path,
 		_openmode
-	};
+	);
 
 	return
 		fcppt::optional::make_if(
