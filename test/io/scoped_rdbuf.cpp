@@ -34,7 +34,7 @@ TEST_CASE(
 
 	std::basic_stringbuf<
 		fcppt::char_type
-	> buffer{};
+	> buffer{}; // NOLINT(fuchsia-default-arguments-calls)
 
 	{
 		std::basic_ios<
