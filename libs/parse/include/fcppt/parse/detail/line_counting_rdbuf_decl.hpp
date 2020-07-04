@@ -7,7 +7,7 @@
 #ifndef FCPPT_PARSE_DETAIL_LINE_COUNTING_RDBUF_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_LINE_COUNTING_RDBUF_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/line_number.hpp>
 #include <fcppt/parse/detail/line_counting_rdbuf_fwd.hpp>
@@ -33,7 +33,7 @@ class line_counting_rdbuf
 			Ch
 		>
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		line_counting_rdbuf
 	);
 public:
@@ -61,17 +61,6 @@ public:
 	line_counting_rdbuf(
 		streambuf_ref
 	);
-
-	line_counting_rdbuf(
-		line_counting_rdbuf &&
-	)
-	noexcept;
-
-	line_counting_rdbuf &
-	operator=(
-		line_counting_rdbuf &&
-	)
-	noexcept;
 
 	~line_counting_rdbuf()
 	override;

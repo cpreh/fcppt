@@ -9,6 +9,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_decl.hpp>
+#include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/optional/object_decl.hpp>
 #include <fcppt/parse/detail/line_counting_rdbuf_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -56,8 +57,10 @@ private:
 	> *old_buffer_;
 
 	fcppt::optional::object<
-		fcppt::parse::detail::line_counting_rdbuf<
-			Ch
+		fcppt::unique_ptr<
+			fcppt::parse::detail::line_counting_rdbuf<
+				Ch
+			>
 		>
 	> buffer_;
 };

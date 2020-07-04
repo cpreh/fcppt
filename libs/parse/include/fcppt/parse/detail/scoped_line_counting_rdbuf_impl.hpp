@@ -7,7 +7,9 @@
 #ifndef FCPPT_PARSE_DETAIL_SCOPED_LINE_COUNTING_RDBUF_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_SCOPED_LINE_COUNTING_RDBUF_IMPL_HPP_INCLUDED
 
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/optional/from_pointer.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe_void.hpp>
@@ -48,8 +50,10 @@ fcppt::parse::detail::scoped_line_counting_rdbuf<
 			)
 			{
 				return
-					fcppt::parse::detail::line_counting_rdbuf<
-						Ch
+					fcppt::make_unique_ptr<
+						fcppt::parse::detail::line_counting_rdbuf<
+							Ch
+						>
 					>(
 						_buf
 					);
@@ -62,13 +66,15 @@ fcppt::parse::detail::scoped_line_counting_rdbuf<
 		[
 			this
 		](
-			fcppt::parse::detail::line_counting_rdbuf<
-				Ch
+			fcppt::unique_ptr<
+				fcppt::parse::detail::line_counting_rdbuf<
+					Ch
+				>
 			> &_buffer
 		)
 		{
 			this->stream_.get().rdbuf(
-				&_buffer
+				_buffer.get_pointer()
 			);
 		}
 	);

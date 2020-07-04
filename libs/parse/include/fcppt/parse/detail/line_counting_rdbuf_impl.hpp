@@ -56,31 +56,6 @@ template<
 >
 fcppt::parse::detail::line_counting_rdbuf<
 	Ch
->::line_counting_rdbuf(
-	line_counting_rdbuf &&
-)
-noexcept
-= default;
-
-template<
-	typename Ch
->
-fcppt::parse::detail::line_counting_rdbuf<
-	Ch
-> &
-fcppt::parse::detail::line_counting_rdbuf<
-	Ch
->::operator=(
-	line_counting_rdbuf &&
-)
-noexcept
-= default;
-
-template<
-	typename Ch
->
-fcppt::parse::detail::line_counting_rdbuf<
-	Ch
 >::~line_counting_rdbuf()
 = default;
 
