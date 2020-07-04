@@ -18,7 +18,7 @@
 
 
 TEST_CASE(
-	"parse::line_counting_rdbuf",
+	"parse::detail::line_counting_rdbuf",
 	"[parse]"
 )
 {

@@ -67,8 +67,13 @@ set(
 	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp
+	libs/parse/include/fcppt/parse/detail/line_counting_rdbuf_decl.hpp
+	libs/parse/include/fcppt/parse/detail/line_counting_rdbuf_fwd.hpp
+	libs/parse/include/fcppt/parse/detail/line_counting_rdbuf_impl.hpp
 	libs/parse/include/fcppt/parse/detail/make_alternative.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
+	libs/parse/include/fcppt/parse/detail/scoped_line_counting_rdbuf_decl.hpp
+	libs/parse/include/fcppt/parse/detail/scoped_line_counting_rdbuf_impl.hpp
 	libs/parse/include/fcppt/parse/detail/sequence_result.hpp
 	libs/parse/include/fcppt/parse/detail/to_line_counting_rdbuf.hpp
 	libs/parse/include/fcppt/parse/epsilon.hpp
@@ -110,10 +115,6 @@ set(
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp
 	libs/parse/include/fcppt/parse/lexeme_impl.hpp
-	libs/parse/include/fcppt/parse/line_counting_rdbuf.hpp
-	libs/parse/include/fcppt/parse/line_counting_rdbuf_decl.hpp
-	libs/parse/include/fcppt/parse/line_counting_rdbuf_fwd.hpp
-	libs/parse/include/fcppt/parse/line_counting_rdbuf_impl.hpp
 	libs/parse/include/fcppt/parse/line_number.hpp
 	libs/parse/include/fcppt/parse/literal.hpp
 	libs/parse/include/fcppt/parse/literal_decl.hpp
