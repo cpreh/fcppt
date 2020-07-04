@@ -96,9 +96,9 @@ add_fcppt_parse_test(
 	lexeme
 )
 
-add_fcppt_parse_test(
-	line_counting_rdbuf
-)
+#add_fcppt_parse_test(
+#	line_counting_rdbuf
+#)
 
 add_fcppt_parse_test(
 	literal

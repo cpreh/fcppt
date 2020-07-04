@@ -51,6 +51,12 @@ public:
 		base_type
 	>;
 
+	using
+	traits_type
+	=
+	typename
+	base_type::traits_type;
+
 	explicit
 	line_counting_rdbuf(
 		streambuf_ref
@@ -87,12 +93,22 @@ public:
 
 	[[nodiscard]]
 	int_type
-	uflow()
+	underflow()
 	override;
+
+/*
+	[[nodiscard]]
+	int_type
+	uflow()
+	override;*/
 private:
 	streambuf_ref source_;
 
 	Ch newline_;
+
+	Ch buffer_;
+
+	bool is_at_newline_;
 
 	fcppt::parse::line_number line_;
 };

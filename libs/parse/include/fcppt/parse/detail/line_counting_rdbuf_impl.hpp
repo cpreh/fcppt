@@ -11,6 +11,7 @@
 #include <fcppt/parse/line_number.hpp>
 #include <fcppt/parse/detail/line_counting_rdbuf_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <iterator>
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,6 +38,12 @@ fcppt::parse::detail::line_counting_rdbuf<
 		).widen(
 			'\n'
 		)
+	},
+	buffer_{
+		0
+	},
+	is_at_newline_{
+		false
 	},
 	line_{
 		1U
@@ -112,23 +119,81 @@ fcppt::parse::detail::line_counting_rdbuf<
 >::int_type
 fcppt::parse::detail::line_counting_rdbuf<
 	Ch
->::uflow()
+>::underflow()
 {
 	int_type const result{
-		source_.get().sbumpc()
+		this->source_.get().sbumpc()
 	};
 
 	if(
 		result
-		==
-		this->newline_
+		!=
+		traits_type::eof()
 	)
 	{
-		++this->line_;
+		this->buffer_ =
+			traits_type::to_char_type(
+				result
+			);
+
+		this->setg(
+			&this->buffer_,
+			&this->buffer_,
+			std::next( // NOLINT(fuchsia-default-arguments-calls)
+				&this->buffer_
+			)
+		);
+
+		if(
+			this->is_at_newline_
+		)
+		{
+			++this->line_;
+		}
+
+		this->is_at_newline_ =
+			this->buffer_
+			==
+			this->newline_;
 	}
 
 	return
 		result;
 }
+
+/*
+template<
+	typename Ch
+>
+typename
+fcppt::parse::detail::line_counting_rdbuf<
+	Ch
+>::int_type
+fcppt::parse::detail::line_counting_rdbuf<
+	Ch
+>::uflow()
+{
+	int_type const result{
+		this->underflow()
+	};
+
+	if(
+		this->gptr()
+		!=
+		nullptr
+		&&
+		this->gptr()
+		!=
+		this->egptr()
+	)
+	{
+		this->gbump(
+			1
+		);
+	}
+
+	return
+		result;
+}*/
 
 #endif

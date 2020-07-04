@@ -21,6 +21,7 @@ TEST_CASE(
 	"[parse]"
 )
 {
+	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	std::istringstream stream{};
 
 	std::streambuf *const old_buffer{
