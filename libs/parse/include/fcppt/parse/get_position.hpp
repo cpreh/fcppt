@@ -10,12 +10,11 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
 #include <fcppt/optional/map.hpp>
-#include <fcppt/parse/line_counting_rdbuf_impl.hpp>
-#include <fcppt/parse/line_number.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/check_bad.hpp>
 #include <fcppt/parse/detail/exception.hpp>
+#include <fcppt/parse/detail/line_counting_rdbuf_impl.hpp>
 #include <fcppt/parse/detail/to_line_counting_rdbuf.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
@@ -99,7 +98,7 @@ get_position(
 				),
 				[](
 					fcppt::reference<
-						fcppt::parse::line_counting_rdbuf<
+						fcppt::parse::detail::line_counting_rdbuf<
 							Ch
 						>
 					> const _buf

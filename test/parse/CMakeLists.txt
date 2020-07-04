@@ -97,6 +97,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	line_counting_rdbuf
+)
+
+add_fcppt_parse_test(
 	literal
 )
 

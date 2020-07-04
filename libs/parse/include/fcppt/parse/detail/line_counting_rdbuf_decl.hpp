@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_LINE_COUNTING_RDBUF_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_LINE_COUNTING_RDBUF_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_DETAIL_LINE_COUNTING_RDBUF_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_DETAIL_LINE_COUNTING_RDBUF_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/line_counting_rdbuf_fwd.hpp>
 #include <fcppt/parse/line_number.hpp>
+#include <fcppt/parse/detail/line_counting_rdbuf_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <streambuf>
 #include <fcppt/config/external_end.hpp>
@@ -19,6 +19,8 @@
 namespace fcppt
 {
 namespace parse
+{
+namespace detail
 {
 
 template<
@@ -84,6 +86,7 @@ private:
 	fcppt::parse::line_number line_;
 };
 
+}
 }
 }
 

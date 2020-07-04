@@ -4,13 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_LINE_COUNTING_RDBUF_FWD_HPP_INCLUDED
-#define FCPPT_PARSE_LINE_COUNTING_RDBUF_FWD_HPP_INCLUDED
+#ifndef FCPPT_PARSE_DETAIL_LINE_COUNTING_RDBUF_FWD_HPP_INCLUDED
+#define FCPPT_PARSE_DETAIL_LINE_COUNTING_RDBUF_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
 namespace parse
+{
+namespace detail
 {
 
 template<
@@ -18,6 +20,7 @@ template<
 >
 class line_counting_rdbuf;
 
+}
 }
 }
 

@@ -12,7 +12,7 @@
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/from_pointer.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/parse/line_counting_rdbuf_impl.hpp>
+#include <fcppt/parse/detail/line_counting_rdbuf_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <streambuf>
@@ -31,7 +31,7 @@ template<
 >
 fcppt::optional::object<
 	fcppt::reference<
-		fcppt::parse::line_counting_rdbuf<
+		fcppt::parse::detail::line_counting_rdbuf<
 			Ch
 		>
 	>
@@ -57,7 +57,7 @@ to_line_counting_rdbuf(
 			{
 				return
 					fcppt::cast::dynamic<
-						fcppt::parse::line_counting_rdbuf<
+						fcppt::parse::detail::line_counting_rdbuf<
 							Ch
 						>
 					>(
