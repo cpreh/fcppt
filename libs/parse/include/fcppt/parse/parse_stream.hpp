@@ -7,24 +7,14 @@
 #ifndef FCPPT_PARSE_PARSE_STREAM_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_STREAM_HPP_INCLUDED
 
-#include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/string_literal.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/either/bind.hpp>
-#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/context_impl.hpp>
-#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/is_skipper.hpp>
 #include <fcppt/parse/is_valid_argument.hpp>
+#include <fcppt/parse/parse.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state_impl.hpp>
-#include <fcppt/parse/detail/exception.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
-#include <string>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/parse/detail/stream_impl.hpp>
 
 
 namespace fcppt
@@ -50,7 +40,6 @@ parse_stream(
 	> &_input,
 	Skipper const &_skipper
 )
-try
 {
 	static_assert(
 		fcppt::parse::is_valid_argument<
@@ -58,74 +47,25 @@ try
 		>::value
 	);
 
-	fcppt::parse::state<
+	static_assert(
+		fcppt::parse::is_skipper<
+			Skipper
+		>::value
+	);
+
+	fcppt::parse::detail::stream<
 		Ch
-	> state{
+	> stream{
 		fcppt::make_ref(
 			_input
 		)
 	};
 
-	fcppt::parse::context<
-		Skipper
-	> const context{
-		fcppt::make_cref(
+	return
+		fcppt::parse::parse(
+			_parser,
+			stream,
 			_skipper
-		)
-	};
-
-	return
-		fcppt::either::bind(
-			fcppt::parse::run_skipper(
-				fcppt::make_ref(
-					state
-				),
-				context
-			),
-			[
-				&context,
-				&state,
-				&_parser
-			](
-				fcppt::unit const &
-			)
-			{
-				return
-					_parser.parse(
-						fcppt::make_ref(
-							state
-						),
-						context
-					);
-			}
-		);
-}
-catch(
-	fcppt::parse::detail::exception<
-		Ch
-	> const &_error
-)
-{
-	return
-		fcppt::either::make_failure<
-			fcppt::parse::result_of<
-				Parser
-			>
-		>(
-			fcppt::parse::error<
-				Ch
-			>{
-				std::basic_string<
-					Ch
-				>{
-					FCPPT_STRING_LITERAL(
-						Ch,
-						"Parsing failed: "
-					)
-				}
-				+
-				_error.what()
-			}
 		);
 }
 

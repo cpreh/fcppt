@@ -4,11 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_POSITION_HPP_INCLUDED
-#define FCPPT_PARSE_POSITION_HPP_INCLUDED
+#ifndef FCPPT_PARSE_DETAIL_STREAM_FWD_HPP_INCLUDED
+#define FCPPT_PARSE_DETAIL_STREAM_FWD_HPP_INCLUDED
 
-#include <fcppt/parse/position_comparison.hpp>
-#include <fcppt/parse/position_impl.hpp>
 
+namespace fcppt
+{
+namespace parse
+{
+namespace detail
+{
+
+template<
+	typename Ch
+>
+class stream;
+
+}
+}
+}
 
 #endif

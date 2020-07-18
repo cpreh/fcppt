@@ -49,6 +49,7 @@ public:
 		skipper_ref
 	);
 
+	[[nodiscard]]
 	skipper_ref
 	skipper() const;
 private:

@@ -8,13 +8,9 @@
 #define FCPPT_PARSE_GET_CHAR_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/io/get.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/parse/basic_stream_impl.hpp>
 #include <fcppt/parse/state_impl.hpp>
-#include <fcppt/parse/detail/check_bad.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -36,20 +32,8 @@ get_char(
 	> const _state
 )
 {
-	std::basic_istream<
-		Ch
-	> &stream{
-		_state.get().stream()
-	};
-
-	fcppt::parse::detail::check_bad(
-		stream
-	);
-
 	return
-		fcppt::io::get(
-			stream
-		);
+		_state.get().stream().get_char();
 }
 
 }

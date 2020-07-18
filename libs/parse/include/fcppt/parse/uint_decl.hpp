@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_INT_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_INT_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_UINT_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_UINT_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/int_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
+#include <fcppt/parse/uint_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,7 +26,7 @@ namespace parse
 template<
 	typename Type
 >
-class int_
+class uint_
 :
 	private fcppt::parse::tag
 {
@@ -39,13 +39,13 @@ public:
 	);
 
 	static_assert(
-		std::is_signed_v<
+		std::is_unsigned_v<
 			Type
 		>,
 		"Type must be signed"
 	);
 
-	int_();
+	uint_();
 
 	using
 	result_type

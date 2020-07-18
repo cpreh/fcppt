@@ -8,10 +8,8 @@
 #define FCPPT_PARSE_STATE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <istream>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,7 +26,7 @@ public:
 	using
 	stream_type
 	=
-	std::basic_istream<
+	fcppt::parse::basic_stream<
 		Ch
 	>;
 

@@ -9,12 +9,12 @@
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/space_skipper.hpp>
+#include <fcppt/parse/uint.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -25,12 +25,12 @@
 
 
 TEST_CASE(
-	"parse::int",
+	"parse::uint",
 	"[parse]"
 )
 {
-	fcppt::parse::int_<
-		int
+	fcppt::parse::uint_<
+		unsigned
 	> const parser{};
 
 	CHECK(
@@ -73,43 +73,27 @@ TEST_CASE(
 		fcppt::parse::make_success<
 			char
 		>(
-			42
-		)
-	);
-
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"-42"
-			},
-			fcppt::parse::epsilon{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			-42
+			42U
 		)
 	);
 }
 
 TEST_CASE(
-	"parse::int sequence",
+	"parse::uint sequence",
 	"[parse]"
 )
 {
 	auto const parser(
-		fcppt::parse::int_<
-			int
+		fcppt::parse::uint_<
+			unsigned
 		>{}
 		>>
 		fcppt::parse::literal{
 			','
 		}
 		>>
-		fcppt::parse::int_<
-			int
+		fcppt::parse::uint_<
+			unsigned
 		>{}
 	);
 
@@ -134,21 +118,21 @@ TEST_CASE(
 			char
 		>(
 			std::make_tuple(
-				12,
-				3
+				12U,
+				3U
 			)
 		)
 	);
 }
 
 TEST_CASE(
-	"parse::int vector",
+	"parse::uint vector",
 	"[parse]"
 )
 {
 	auto const parser{
-		*fcppt::parse::int_<
-			int
+		*fcppt::parse::uint_<
+			unsigned
 		>{}
 	};
 
@@ -174,8 +158,8 @@ TEST_CASE(
 			char
 		>(
 			result_type{
-				10,
-				20
+				10U,
+				20U
 			}
 		)
 	);

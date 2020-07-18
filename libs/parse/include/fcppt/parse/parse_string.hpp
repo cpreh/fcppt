@@ -14,6 +14,7 @@
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/error.hpp>
+#include <fcppt/parse/is_skipper.hpp>
 #include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_stream.hpp>
@@ -54,6 +55,12 @@ parse_string(
 	static_assert(
 		fcppt::parse::is_valid_argument<
 			Parser
+		>::value
+	);
+
+	static_assert(
+		fcppt::parse::is_skipper<
+			Skipper
 		>::value
 	);
 
@@ -99,7 +106,7 @@ parse_string(
 							+
 							FCPPT_STRING_LITERAL(
 								Ch,
-								" Remaining input: \""
+								". Remaining input: \""
 							)
 							+
 							fcppt::optional::from(

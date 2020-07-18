@@ -1853,6 +1853,9 @@ set(
 	libs/parse/include/fcppt/parse/basic_literal_decl.hpp
 	libs/parse/include/fcppt/parse/basic_literal_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_literal_impl.hpp
+	libs/parse/include/fcppt/parse/basic_stream_decl.hpp
+	libs/parse/include/fcppt/parse/basic_stream_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_stream_impl.hpp
 	libs/parse/include/fcppt/parse/basic_string.hpp
 	libs/parse/include/fcppt/parse/basic_string_decl.hpp
 	libs/parse/include/fcppt/parse/basic_string_fwd.hpp
@@ -1897,15 +1900,13 @@ set(
 	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp
-	libs/parse/include/fcppt/parse/detail/line_counting_rdbuf_decl.hpp
-	libs/parse/include/fcppt/parse/detail/line_counting_rdbuf_fwd.hpp
-	libs/parse/include/fcppt/parse/detail/line_counting_rdbuf_impl.hpp
 	libs/parse/include/fcppt/parse/detail/make_alternative.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
-	libs/parse/include/fcppt/parse/detail/scoped_line_counting_rdbuf_decl.hpp
-	libs/parse/include/fcppt/parse/detail/scoped_line_counting_rdbuf_impl.hpp
 	libs/parse/include/fcppt/parse/detail/sequence_result.hpp
-	libs/parse/include/fcppt/parse/detail/to_line_counting_rdbuf.hpp
+	libs/parse/include/fcppt/parse/detail/stream_decl.hpp
+	libs/parse/include/fcppt/parse/detail/stream_fwd.hpp
+	libs/parse/include/fcppt/parse/detail/stream_impl.hpp
+	libs/parse/include/fcppt/parse/digits.hpp
 	libs/parse/include/fcppt/parse/epsilon.hpp
 	libs/parse/include/fcppt/parse/epsilon_decl.hpp
 	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
@@ -1921,7 +1922,6 @@ set(
 	libs/parse/include/fcppt/parse/float_decl.hpp
 	libs/parse/include/fcppt/parse/float_fwd.hpp
 	libs/parse/include/fcppt/parse/float_impl.hpp
-	libs/parse/include/fcppt/parse/get.hpp
 	libs/parse/include/fcppt/parse/get_char.hpp
 	libs/parse/include/fcppt/parse/get_position.hpp
 	libs/parse/include/fcppt/parse/grammar.hpp
@@ -1940,6 +1940,7 @@ set(
 	libs/parse/include/fcppt/parse/int_impl.hpp
 	libs/parse/include/fcppt/parse/is_char.hpp
 	libs/parse/include/fcppt/parse/is_parser.hpp
+	libs/parse/include/fcppt/parse/is_skipper.hpp
 	libs/parse/include/fcppt/parse/is_valid_argument.hpp
 	libs/parse/include/fcppt/parse/lexeme.hpp
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
@@ -1955,6 +1956,7 @@ set(
 	libs/parse/include/fcppt/parse/make_convert_if.hpp
 	libs/parse/include/fcppt/parse/make_ignore.hpp
 	libs/parse/include/fcppt/parse/make_lexeme.hpp
+	libs/parse/include/fcppt/parse/make_literal.hpp
 	libs/parse/include/fcppt/parse/make_recursive.hpp
 	libs/parse/include/fcppt/parse/make_skipper.hpp
 	libs/parse/include/fcppt/parse/make_success.hpp
@@ -1975,9 +1977,13 @@ set(
 	libs/parse/include/fcppt/parse/optional_decl.hpp
 	libs/parse/include/fcppt/parse/optional_fwd.hpp
 	libs/parse/include/fcppt/parse/optional_impl.hpp
+	libs/parse/include/fcppt/parse/parse.hpp
 	libs/parse/include/fcppt/parse/parse_stream.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
 	libs/parse/include/fcppt/parse/position.hpp
+	libs/parse/include/fcppt/parse/position_decl.hpp
+	libs/parse/include/fcppt/parse/position_fwd.hpp
+	libs/parse/include/fcppt/parse/position_impl.hpp
 	libs/parse/include/fcppt/parse/recursive.hpp
 	libs/parse/include/fcppt/parse/recursive_decl.hpp
 	libs/parse/include/fcppt/parse/recursive_fwd.hpp
@@ -2012,6 +2018,10 @@ set(
 	libs/parse/include/fcppt/parse/string_fwd.hpp
 	libs/parse/include/fcppt/parse/string_impl.hpp
 	libs/parse/include/fcppt/parse/tag.hpp
+	libs/parse/include/fcppt/parse/uint.hpp
+	libs/parse/include/fcppt/parse/uint_decl.hpp
+	libs/parse/include/fcppt/parse/uint_fwd.hpp
+	libs/parse/include/fcppt/parse/uint_impl.hpp
 )
 
 list(

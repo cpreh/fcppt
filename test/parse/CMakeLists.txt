@@ -93,12 +93,13 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
-	lexeme
+	is_skipper
+	NO_CODE
 )
 
-#add_fcppt_parse_test(
-#	line_counting_rdbuf
-#)
+add_fcppt_parse_test(
+	lexeme
+)
 
 add_fcppt_parse_test(
 	literal
@@ -142,10 +143,6 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
-	scoped_line_counting_rdbuf
-)
-
-add_fcppt_parse_test(
 	separator
 	LINK_LIBS
 		fcppt_catch_interface
@@ -168,5 +165,15 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	stream
+)
+
+add_fcppt_parse_test(
 	string
+)
+
+add_fcppt_parse_test(
+	uint
+	LINK_LIBS
+		fcppt_catch_interface
 )

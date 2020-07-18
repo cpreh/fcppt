@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_POSITION_HPP_INCLUDED
-#define FCPPT_PARSE_POSITION_HPP_INCLUDED
+#ifndef FCPPT_PARSE_UINT_HPP_INCLUDED
+#define FCPPT_PARSE_UINT_HPP_INCLUDED
 
-#include <fcppt/parse/position_comparison.hpp>
-#include <fcppt/parse/position_impl.hpp>
+#include <fcppt/parse/uint_impl.hpp>
 
 
 #endif

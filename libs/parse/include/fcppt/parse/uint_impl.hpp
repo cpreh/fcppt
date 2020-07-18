@@ -4,39 +4,37 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_FLOAT_IMPL_HPP_INCLUDED
-#define FCPPT_PARSE_FLOAT_IMPL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
+#define FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
 
-#include <fcppt/char_literal.hpp>
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/output_to_string.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/either/bind.hpp>
+#include <fcppt/unit.hpp>
 #include <fcppt/either/from_optional.hpp>
+#include <fcppt/either/monad.hpp>
+#include <fcppt/monad/do.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/digits.hpp>
 #include <fcppt/parse/error.hpp>
-#include <fcppt/parse/float_decl.hpp>
-#include <fcppt/parse/int_impl.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
-#include <fcppt/parse/make_literal.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/state_impl.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/run_skipper.hpp>
+#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/uint_decl.hpp>
+#include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
 template<
 	typename Type
 >
-fcppt::parse::float_<
+fcppt::parse::uint_<
 	Type
->::float_()
+>::uint_()
 = default;
 
 template<
@@ -49,11 +47,11 @@ template<
 fcppt::parse::result<
 	Ch,
 	typename
-	fcppt::parse::float_<
+	fcppt::parse::uint_<
 		Type
 	>::result_type
 >
-fcppt::parse::float_<
+fcppt::parse::uint_<
 	Type
 >::parse(
 	fcppt::reference<
@@ -67,15 +65,7 @@ fcppt::parse::float_<
 ) const
 {
 	auto const parser{
-		fcppt::parse::int_<
-			std::int64_t
-		>{}
-		>>
 		fcppt::parse::make_lexeme(
-			fcppt::parse::make_literal(
-				FCPPT_CHAR_LITERAL(Ch, '.')
-			)
-			>>
 			+
 			fcppt::parse::digits<
 				Ch
@@ -84,11 +74,25 @@ fcppt::parse::float_<
 	};
 
 	return
-		fcppt::either::bind(
-			parser.parse(
+		fcppt::monad::do_(
+			fcppt::parse::run_skipper(
 				_state,
 				_context
 			),
+			[
+				&parser,
+				&_state,
+				&_context
+			](
+				fcppt::unit
+			)
+			{
+				return
+					parser.parse(
+						_state,
+						_context
+					);
+			},
 			[](
 				fcppt::parse::result_of<
 					decltype(
@@ -97,39 +101,15 @@ fcppt::parse::float_<
 				> const &_result
 			)
 			{
-				std::basic_string<
-					Ch
-				> const float_string{
-					fcppt::output_to_string<
-						std::basic_string<
-							Ch
-						>
-					>(
-						std::get<0>(
-							_result
-						)
-					)
-					+
-					std::basic_string<
-						Ch
-					>{
-						'.'
-					}
-					+
-					std::get<1>(
-						_result
-					)
-				};
-
 				return
 					fcppt::either::from_optional(
 						fcppt::extract_from_string<
 							Type
 						>(
-							float_string
+							_result
 						),
 						[
-							&float_string
+							&_result
 						]{
 							return
 								fcppt::parse::error<
@@ -140,11 +120,11 @@ fcppt::parse::float_<
 									>{
 										FCPPT_STRING_LITERAL(
 											Ch,
-											"Expected float, got "
+											"Failed to parse unsigned integer from "
 										)
 									}
 									+
-									float_string
+									_result
 								};
 						}
 					);
