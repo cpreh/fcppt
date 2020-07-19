@@ -363,6 +363,7 @@ set(
 	libs/core/include/fcppt/cast/to_void.hpp
 	libs/core/include/fcppt/cast/to_void_ptr.hpp
 	libs/core/include/fcppt/cast/truncation_check.hpp
+	libs/core/include/fcppt/char_literal.hpp
 	libs/core/include/fcppt/char_type.hpp
 	libs/core/include/fcppt/check_literal_conversion.hpp
 	libs/core/include/fcppt/com_deleter.hpp
@@ -628,6 +629,7 @@ set(
 	libs/core/include/fcppt/deref_type.hpp
 	libs/core/include/fcppt/deref_unique_ptr.hpp
 	libs/core/include/fcppt/detail/args_char.hpp
+	libs/core/include/fcppt/detail/char_literal.hpp
 	libs/core/include/fcppt/detail/char_type.hpp
 	libs/core/include/fcppt/detail/check_cpp.hpp
 	libs/core/include/fcppt/detail/const.hpp

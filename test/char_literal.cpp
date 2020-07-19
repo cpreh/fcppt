@@ -4,33 +4,32 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string_literal.hpp>
+#include <fcppt/char_literal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 TEST_CASE(
-	"string_literal",
+	"char_literal",
 	"[various]"
 )
 {
 	CHECK(
-		FCPPT_STRING_LITERAL(
+		FCPPT_CHAR_LITERAL(
 			char,
-			"test"
+			't'
 		)
 		==
-		std::string{"test"}
+		't'
 	);
 
 	CHECK(
-		FCPPT_STRING_LITERAL(
+		FCPPT_CHAR_LITERAL(
 			wchar_t,
-			"test"
+			't'
 		)
 		==
-		std::wstring{L"test"}
+		L't'
 	);
 }

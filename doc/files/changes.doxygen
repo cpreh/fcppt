@@ -16,6 +16,7 @@
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added #fcppt::cond.</li>
+	<li>Added #FCPPT_CHAR_LITERAL.</li>
 	</ul>
 </li>
 
