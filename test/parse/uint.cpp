@@ -29,7 +29,7 @@ TEST_CASE(
 	"[parse]"
 )
 {
-	fcppt::parse::uint_<
+	fcppt::parse::uint<
 		unsigned
 	> const parser{};
 
@@ -84,7 +84,7 @@ TEST_CASE(
 )
 {
 	auto const parser(
-		fcppt::parse::uint_<
+		fcppt::parse::uint<
 			unsigned
 		>{}
 		>>
@@ -92,7 +92,7 @@ TEST_CASE(
 			','
 		}
 		>>
-		fcppt::parse::uint_<
+		fcppt::parse::uint<
 			unsigned
 		>{}
 	);
@@ -131,7 +131,7 @@ TEST_CASE(
 )
 {
 	auto const parser{
-		*fcppt::parse::uint_<
+		*fcppt::parse::uint<
 			unsigned
 		>{}
 	};

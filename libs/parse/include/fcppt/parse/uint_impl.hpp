@@ -32,9 +32,9 @@
 template<
 	typename Type
 >
-fcppt::parse::uint_<
+fcppt::parse::uint<
 	Type
->::uint_()
+>::uint()
 = default;
 
 template<
@@ -47,11 +47,11 @@ template<
 fcppt::parse::result<
 	Ch,
 	typename
-	fcppt::parse::uint_<
+	fcppt::parse::uint<
 		Type
 	>::result_type
 >
-fcppt::parse::uint_<
+fcppt::parse::uint<
 	Type
 >::parse(
 	fcppt::reference<

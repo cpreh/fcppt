@@ -16,7 +16,7 @@ namespace parse
 template<
 	typename Type
 >
-class uint_;
+class uint;
 
 }
 }

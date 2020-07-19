@@ -26,7 +26,7 @@ namespace parse
 template<
 	typename Type
 >
-class uint_
+class uint
 :
 	private fcppt::parse::tag
 {
@@ -45,7 +45,7 @@ public:
 		"Type must be signed"
 	);
 
-	uint_();
+	uint();
 
 	using
 	result_type
