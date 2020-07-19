@@ -7,13 +7,13 @@
 #ifndef FCPPT_PARSE_DETAIL_STREAM_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_STREAM_DECL_HPP_INCLUDED
 
+#include <fcppt/nonmovable.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/parse/basic_stream_decl.hpp>
 #include <fcppt/parse/line_number.hpp>
 #include <fcppt/parse/position_fwd.hpp>
 #include <fcppt/parse/detail/stream_fwd.hpp>
-#include <fcppt/nonmovable.hpp>
-#include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
