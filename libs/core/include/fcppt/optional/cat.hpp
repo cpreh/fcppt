@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONAL_CAT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 
 
@@ -42,9 +41,7 @@ cat(
 	TargetContainer result;
 
 	for(
-		fcppt::algorithm::range_element_type<
-			Source
-		> element
+		auto &&element
 		:
 		_source
 	)

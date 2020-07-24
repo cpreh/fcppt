@@ -9,7 +9,6 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break_impl_fwd.hpp>
-#include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -39,9 +38,7 @@ struct loop_break_impl
 	)
 	{
 		for(
-			fcppt::algorithm::range_element_type<
-				Arg
-			> element
+			auto &&element
 			:
 			_range
 		)

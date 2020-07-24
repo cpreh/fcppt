@@ -7,7 +7,6 @@
 #ifndef FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -47,9 +46,7 @@ map_optional(
 	TargetContainer result;
 
 	for(
-		fcppt::algorithm::range_element_type<
-			Source
-		> element
+		auto &&element
 		:
 		_source
 	)

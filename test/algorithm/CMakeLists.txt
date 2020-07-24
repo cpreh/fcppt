@@ -114,6 +114,11 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	range_element_type
+	NO_CODE
+)
+
+add_fcppt_algorithm_test(
 	remove
 )
 

@@ -1984,6 +1984,7 @@ set(
 	libs/parse/include/fcppt/parse/parse_stream.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
 	libs/parse/include/fcppt/parse/position.hpp
+	libs/parse/include/fcppt/parse/position_comparison.hpp
 	libs/parse/include/fcppt/parse/position_decl.hpp
 	libs/parse/include/fcppt/parse/position_fwd.hpp
 	libs/parse/include/fcppt/parse/position_impl.hpp
