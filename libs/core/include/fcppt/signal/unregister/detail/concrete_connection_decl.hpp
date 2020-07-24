@@ -79,6 +79,7 @@ public:
 	~concrete_connection()
 	override;
 
+	[[nodiscard]]
 	function_type const &
 	function() const;
 private:
