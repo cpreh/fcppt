@@ -7,26 +7,17 @@
 #ifndef FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
 
-#include <fcppt/extract_from_string.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/either/from_optional.hpp>
-#include <fcppt/either/monad.hpp>
-#include <fcppt/monad/do.hpp>
+#include <fcppt/either/bind.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/digits.hpp>
-#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/uint_decl.hpp>
-#include <fcppt/parse/operators/repetition_plus.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <string>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/parse/detail/basic_int_impl.hpp>
 
 
 template<
@@ -66,15 +57,14 @@ fcppt::parse::uint<
 {
 	auto const parser{
 		fcppt::parse::make_lexeme(
-			+
-			fcppt::parse::digits<
-				Ch
-			>()
+			fcppt::parse::detail::basic_int<
+				Type
+			>{}
 		)
 	};
 
 	return
-		fcppt::monad::do_(
+		fcppt::either::bind(
 			fcppt::parse::run_skipper(
 				_state,
 				_context
@@ -91,42 +81,6 @@ fcppt::parse::uint<
 					parser.parse(
 						_state,
 						_context
-					);
-			},
-			[](
-				fcppt::parse::result_of<
-					decltype(
-						parser
-					)
-				> const &_result
-			)
-			{
-				return
-					fcppt::either::from_optional(
-						fcppt::extract_from_string<
-							Type
-						>(
-							_result
-						),
-						[
-							&_result
-						]{
-							return
-								fcppt::parse::error<
-									Ch
-								>{
-									std::basic_string<
-										Ch
-									>{
-										FCPPT_STRING_LITERAL(
-											Ch,
-											"Failed to parse unsigned integer from "
-										)
-									}
-									+
-									_result
-								};
-						}
 					);
 			}
 		);

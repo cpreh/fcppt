@@ -59,6 +59,9 @@ set(
 	libs/parse/include/fcppt/parse/deref_type.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_list.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_result.hpp
+	libs/parse/include/fcppt/parse/detail/basic_int_decl.hpp
+	libs/parse/include/fcppt/parse/detail/basic_int_fwd.hpp
+	libs/parse/include/fcppt/parse/detail/basic_int_impl.hpp
 	libs/parse/include/fcppt/parse/detail/check_bad.hpp
 	libs/parse/include/fcppt/parse/detail/combine_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/complement_decl.hpp
