@@ -40,9 +40,9 @@ fcppt::math::matrix::static_<
 	4
 >
 scaling(
-	T const _x,
-	T const _y,
-	T const _z
+	T const _x, // NOLINT(readability-avoid-const-params-in-decls)
+	T const _y, // NOLINT(readability-avoid-const-params-in-decls)
+	T const _z // NOLINT(readability-avoid-const-params-in-decls)
 )
 {
 	T const zero{
