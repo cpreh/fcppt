@@ -75,6 +75,7 @@ public:
 	result of <code>insert()</code> is inserted. Note that \a insert might
 	be called multiple times.
 	*/
+	[[nodiscard]]
 	reference
 	get(
 		size_type index,
@@ -87,11 +88,13 @@ public:
 	Returns the element at \a index. If there is no such element,
 	<code>T()</code> is inserted.
 	*/
+	[[nodiscard]]
 	reference
 	operator[](
 		size_type index
 	);
 
+	[[nodiscard]]
 	internal_type const &
 	impl() const;
 private:

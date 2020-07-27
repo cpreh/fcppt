@@ -15,11 +15,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_index_map
+	=
 	fcppt::container::index_map<
 		int
-	>
-	int_index_map;
+	>;
 
 	int_index_map map{};
 
