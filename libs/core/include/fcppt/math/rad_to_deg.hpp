@@ -30,17 +30,22 @@ template<
 inline
 T
 rad_to_deg(
-	T const rad
+	T const _rad
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			T
-		>::value,
+		>,
 		"rad_to_deg can only be used on floating point types"
 	);
 
-	return rad * fcppt::literal<T>(180) / fcppt::math::pi<T>();
+	return
+		_rad
+		*
+		fcppt::literal<T>(180) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		/
+		fcppt::math::pi<T>();
 }
 
 }

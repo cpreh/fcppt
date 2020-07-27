@@ -22,6 +22,10 @@ add_fcppt_math_test(
 )
 
 add_fcppt_math_test(
+	deg_to_rad
+)
+
+add_fcppt_math_test(
 	diff
 )
 
@@ -55,6 +59,10 @@ add_subdirectory(
 
 add_fcppt_math_test(
 	next_power_of_2
+)
+
+add_fcppt_math_test(
+	rad_to_deg
 )
 
 add_fcppt_math_test(
