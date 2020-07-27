@@ -24,7 +24,7 @@ template<
 inline
 void const *
 to_void_ptr(
-	Source const *const _ptr
+	Source const *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
 )
 noexcept
 {
