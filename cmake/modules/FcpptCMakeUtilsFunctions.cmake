@@ -967,6 +967,26 @@ function(
 	endif()
 
 	get_target_property(
+		SYSTEM_INCLUDE_DIRS
+		${IMPORTED_NAME}
+		INTERFACE_SYSTEM_INCLUDE_DIRECTORIES
+	)
+
+	if(
+		NOT
+		"${SYSTEM_INCLUDE_DIRS}"
+		STREQUAL
+		"SYSTEM_INCLUDE_DIRS-NOTFOUND"
+	)
+		target_include_directories(
+			${TARGET_NAME}
+			SYSTEM
+			${VISIBILITY}
+			${SYSTEM_INCLUDE_DIRS}
+		)
+	endif()
+
+	get_target_property(
 		LINK_LIBRARIES
 		${IMPORTED_NAME}
 		INTERFACE_LINK_LIBRARIES
