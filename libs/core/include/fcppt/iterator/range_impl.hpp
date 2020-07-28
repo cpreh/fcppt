@@ -8,6 +8,9 @@
 #define FCPPT_ITERATOR_RANGE_IMPL_HPP_INCLUDED
 
 #include <fcppt/iterator/range_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -16,15 +19,19 @@ template<
 fcppt::iterator::range<
 	Iterator
 >::range(
-	Iterator const _begin,
-	Iterator const _end
+	Iterator _begin,
+	Iterator _end
 )
 :
 	begin_{
-		_begin
+		std::move(
+			_begin
+		)
 	},
 	end_{
-		_end
+		std::move(
+			_end
+		)
 	}
 {
 }
