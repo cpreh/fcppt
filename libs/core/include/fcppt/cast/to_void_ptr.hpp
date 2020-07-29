@@ -43,7 +43,7 @@ template<
 inline
 void *
 to_void_ptr(
-	Source *const _ptr
+	Source *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
 )
 noexcept
 {

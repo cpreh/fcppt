@@ -34,7 +34,7 @@ fcppt::int_range<
 	Int
 >
 make_int_range_count(
-	Int const _count
+	Int const _count // NOLINT(readability-avoid-const-params-in-decls)
 )
 {
 	return
