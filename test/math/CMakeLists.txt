@@ -53,6 +53,10 @@ add_fcppt_math_test(
 	is_zero
 )
 
+add_fcppt_math_test(
+	log2
+)
+
 add_subdirectory(
 	matrix
 )

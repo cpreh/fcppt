@@ -34,16 +34,18 @@ log2(
 )
 {
 	static_assert(
-		std::is_unsigned<
+		std::is_unsigned_v<
 			T
-		>::value,
+		>,
 		"log2 can only be used on unsigned types"
 	);
 
 	T r(1);
 
 	while((x >> r) != 0)
+	{
 		++r;
+	}
 	return --r;
 }
 
