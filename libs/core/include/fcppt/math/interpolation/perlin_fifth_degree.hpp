@@ -43,9 +43,9 @@ perlin_fifth_degree(
 )
 {
 	static_assert(
-		std::is_floating_point<
+		std::is_floating_point_v<
 			Float
-		>::value,
+		>,
 		"perlin_fifth_degree can only be used on floating point types"
 	);
 
@@ -54,11 +54,11 @@ perlin_fifth_degree(
 			_f * _f * _f * (
 				_f *
 				(
-					fcppt::literal<Float>(6.0f) * _f
+					fcppt::literal<Float>(6.0) * _f // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 					-
-					fcppt::literal<Float>(15.0f)
+					fcppt::literal<Float>(15.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 				)
-				+ fcppt::literal<Float>(10.0f)
+				+ fcppt::literal<Float>(10.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 			),
 			_v1,
 			_v2

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/interpolation/linear.hpp>
+#include <fcppt/math/interpolation/perlin_fifth_degree.hpp>
 #include <fcppt/math/interpolation/trigonometric.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/length.hpp>
@@ -19,14 +20,15 @@
 namespace
 {
 
-typedef
+using
+vector2
+=
 fcppt::math::vector::static_<
 	double,
 	2
->
-vector2;
+>;
 
-double const epsilon{
+constexpr double const epsilon{
 	0.001
 };
 
@@ -185,5 +187,25 @@ TEST_CASE(
 		)
 		<
 		epsilon
+	);
+}
+
+TEST_CASE(
+	"math::interpolation::perlin_fifth_degree",
+	"[math],[interpolation]"
+)
+{
+	CHECK_THAT(
+		std::abs(
+			fcppt::math::interpolation::perlin_fifth_degree(
+				0.0,
+				1.0,
+				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			)
+		),
+		Catch::Matchers::WithinAbs(
+			1.0,
+			epsilon
+		)
 	);
 }
