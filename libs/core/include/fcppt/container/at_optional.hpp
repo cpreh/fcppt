@@ -9,6 +9,7 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/container/to_value_type.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/reference.hpp>
 
 
@@ -40,30 +41,23 @@ at_optional(
 	typename Container::size_type const _index
 )
 {
-	using
-	result_type
-	=
-	fcppt::optional::reference<
-		fcppt::container::to_value_type<
-			Container
-		>
-	>;
-
 	return
-		_index
-		<
-		_container.size()
-		?
-			result_type{
-				fcppt::make_ref(
-					_container[
-						_index
-					]
-				)
+		fcppt::optional::make_if(
+			_index
+			<
+			_container.size(),
+			[
+				&_container,
+				_index
+			]{
+				return
+					fcppt::make_ref(
+						_container[ // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
+							_index
+						]
+					);
 			}
-		:
-			result_type()
-		;
+		);
 }
 
 }

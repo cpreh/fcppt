@@ -44,11 +44,11 @@ fcppt::math::box::object<
 	N
 >
 extend_bounding_box(
-	fcppt::math::box::object<
+	fcppt::math::box::object< // NOLINT(readability-avoid-const-params-in-decls)
 		T,
 		N
 	> const _box,
-	typename
+	typename // NOLINT(readability-avoid-const-params-in-decls)
 	fcppt::math::box::object<
 		T,
 		N
