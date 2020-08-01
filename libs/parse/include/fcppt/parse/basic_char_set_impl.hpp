@@ -16,7 +16,6 @@
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_char_set_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>

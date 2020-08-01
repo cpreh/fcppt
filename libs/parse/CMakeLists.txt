@@ -39,6 +39,7 @@ set(
 	libs/parse/include/fcppt/parse/char_set_decl.hpp
 	libs/parse/include/fcppt/parse/char_set_fwd.hpp
 	libs/parse/include/fcppt/parse/char_set_impl.hpp
+	libs/parse/include/fcppt/parse/column.hpp
 	libs/parse/include/fcppt/parse/construct.hpp
 	libs/parse/include/fcppt/parse/context_decl.hpp
 	libs/parse/include/fcppt/parse/context_fwd.hpp
@@ -129,11 +130,17 @@ set(
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp
 	libs/parse/include/fcppt/parse/lexeme_impl.hpp
-	libs/parse/include/fcppt/parse/line_number.hpp
+	libs/parse/include/fcppt/parse/line.hpp
 	libs/parse/include/fcppt/parse/literal.hpp
 	libs/parse/include/fcppt/parse/literal_decl.hpp
 	libs/parse/include/fcppt/parse/literal_fwd.hpp
 	libs/parse/include/fcppt/parse/literal_impl.hpp
+	libs/parse/include/fcppt/parse/location.hpp
+	libs/parse/include/fcppt/parse/location_decl.hpp
+	libs/parse/include/fcppt/parse/location_equal.hpp
+	libs/parse/include/fcppt/parse/location_fwd.hpp
+	libs/parse/include/fcppt/parse/location_impl.hpp
+	libs/parse/include/fcppt/parse/location_output.hpp
 	libs/parse/include/fcppt/parse/make_base.hpp
 	libs/parse/include/fcppt/parse/make_convert.hpp
 	libs/parse/include/fcppt/parse/make_convert_if.hpp
@@ -169,6 +176,7 @@ set(
 	libs/parse/include/fcppt/parse/position_equal.hpp
 	libs/parse/include/fcppt/parse/position_fwd.hpp
 	libs/parse/include/fcppt/parse/position_impl.hpp
+	libs/parse/include/fcppt/parse/position_output.hpp
 	libs/parse/include/fcppt/parse/recursive.hpp
 	libs/parse/include/fcppt/parse/recursive_decl.hpp
 	libs/parse/include/fcppt/parse/recursive_fwd.hpp

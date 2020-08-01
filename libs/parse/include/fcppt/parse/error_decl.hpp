@@ -9,6 +9,9 @@
 
 #include <fcppt/parse/error_fwd.hpp>
 #include <fcppt/parse/fatal_tag_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -18,6 +21,9 @@ namespace fcppt
 {
 namespace parse
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
 template<
 	typename Ch
@@ -58,6 +64,8 @@ private:
 
 	bool is_fatal_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

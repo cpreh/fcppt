@@ -9,8 +9,8 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_equal.hpp>
+#include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/make_success.hpp>

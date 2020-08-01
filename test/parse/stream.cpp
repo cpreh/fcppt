@@ -8,10 +8,13 @@
 #include <fcppt/reference_to_base.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/char.hpp>
+#include <fcppt/parse/column.hpp>
 #include <fcppt/parse/epsilon.hpp>
-#include <fcppt/parse/line_number.hpp>
+#include <fcppt/parse/line.hpp>
+#include <fcppt/parse/location.hpp>
 #include <fcppt/parse/parse.hpp>
 #include <fcppt/parse/position.hpp>
+#include <fcppt/parse/position_output.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -73,8 +76,9 @@ TEST_CASE(
 		position{
 			offset{},  // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
-				fcppt::parse::line_number{
-					1U
+				fcppt::parse::location{
+					fcppt::parse::line{1U},
+					fcppt::parse::column{1U}
 				}
 			)
 		}
@@ -88,8 +92,9 @@ TEST_CASE(
 		position{
 			offset{} + std::streamoff{1},  // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
-				fcppt::parse::line_number{
-					1U
+				fcppt::parse::location{
+					fcppt::parse::line{1U},
+					fcppt::parse::column{2U}
 				}
 			)
 		}
@@ -103,8 +108,9 @@ TEST_CASE(
 		position{
 			offset{} + std::streamoff{2}, // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
-				fcppt::parse::line_number{
-					1U
+				fcppt::parse::location{
+					fcppt::parse::line{1U},
+					fcppt::parse::column{3U}
 				}
 			)
 		}
@@ -118,8 +124,9 @@ TEST_CASE(
 		position{
 			offset{} + std::streamoff{3}, // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
-				fcppt::parse::line_number{
-					2U
+				fcppt::parse::location{
+					fcppt::parse::line{2U},
+					fcppt::parse::column{1U}
 				}
 			)
 		}

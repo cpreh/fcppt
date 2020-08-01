@@ -11,7 +11,8 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/error.hpp>
-#include <fcppt/parse/line_number.hpp>
+#include <fcppt/parse/location.hpp>
+#include <fcppt/parse/location_output.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -47,7 +48,7 @@ expected(
 			Ch
 		>{
 			fcppt::optional::maybe(
-				_pos.line(),
+				_pos.location(),
 				[]{
 					return
 						std::basic_string<
@@ -55,7 +56,7 @@ expected(
 						>{};
 				},
 				[](
-					fcppt::parse::line_number const _line
+					fcppt::parse::location const &_location
 				)
 				{
 					return
@@ -73,7 +74,7 @@ expected(
 								Ch
 							>
 						>(
-							_line.get()
+							_location
 						)
 						+
 						std::basic_string<

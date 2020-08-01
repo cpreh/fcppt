@@ -7,8 +7,8 @@
 #ifndef FCPPT_PARSE_POSITION_EQUAL_HPP_INCLUDED
 #define FCPPT_PARSE_POSITION_EQUAL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/optional/comparison.hpp>
+#include <fcppt/parse/location_equal.hpp>
 #include <fcppt/parse/position_impl.hpp>
 
 
@@ -33,7 +33,7 @@ operator==(
 	return
 		_left.pos() == _right.pos()
 		&&
-		_left.line() == _right.line();
+		_left.location() == _right.location();
 }
 
 }

@@ -11,7 +11,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/parse/basic_stream_decl.hpp>
-#include <fcppt/parse/line_number.hpp>
+#include <fcppt/parse/location.hpp>
 #include <fcppt/parse/position_fwd.hpp>
 #include <fcppt/parse/detail/stream_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -81,7 +81,7 @@ public:
 private:
 	impl_ref const impl_;
 
-	fcppt::parse::line_number line_;
+	fcppt::parse::location location_;
 };
 
 }

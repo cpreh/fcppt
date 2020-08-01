@@ -17,14 +17,14 @@ fcppt::parse::position<
 	Ch
 >::position(
 	pos_type const _pos,
-	optional_line_number const &_line
+	optional_location const _location
 )
 :
 	pos_{
 		_pos
 	},
-	line_{
-		_line
+	location_{
+		_location
 	}
 {
 }
@@ -50,13 +50,13 @@ template<
 typename
 fcppt::parse::position<
 	Ch
->::optional_line_number const &
+>::optional_location const &
 fcppt::parse::position<
 	Ch
->::line() const
+>::location() const
 {
 	return
-		this->line_;
+		this->location_;
 }
 
 #endif

@@ -15,7 +15,9 @@
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/basic_stream_impl.hpp>
-#include <fcppt/parse/line_number.hpp>
+#include <fcppt/parse/column.hpp>
+#include <fcppt/parse/line.hpp>
+#include <fcppt/parse/location.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/detail/check_bad.hpp>
 #include <fcppt/parse/detail/exception.hpp>
@@ -37,8 +39,13 @@ fcppt::parse::detail::stream<
 	impl_{
 		_impl
 	},
-	line_{
-		1U
+	location_{
+		fcppt::parse::line{
+			1U
+		},
+		fcppt::parse::column{
+			1U
+		}
 	}
 {
 }
@@ -93,7 +100,16 @@ fcppt::parse::detail::stream<
 				FCPPT_CHAR_LITERAL(Ch, '\n')
 			)
 			{
-				++this->line_;
+				++this->location_.line();
+
+				this->location_.column() =
+					fcppt::parse::column{
+						1U
+					};
+			}
+			else
+			{
+				++this->location_.column();
 			}
 		}
 	);
@@ -167,7 +183,7 @@ fcppt::parse::detail::stream<
 		>{
 			pos,
 			fcppt::optional::make(
-				this->line_
+				this->location_
 			)
 		};
 }
@@ -217,15 +233,15 @@ fcppt::parse::detail::stream<
 	}
 
 	fcppt::optional::maybe_void(
-		_position.line(),
+		_position.location(),
 		[
 			this
 		](
-			fcppt::parse::line_number const _line
+			fcppt::parse::location const &_location
 		)
 		{
-			this->line_ =
-				_line;
+			this->location_ =
+				_location;
 		}
 	);
 }

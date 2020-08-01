@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_POSITION_DECL_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/parse/line_number.hpp>
+#include <fcppt/parse/location.hpp>
 #include <fcppt/parse/position_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
@@ -35,15 +35,15 @@ public:
 	>::pos_type;
 
 	using
-	optional_line_number
+	optional_location
 	=
 	fcppt::optional::object<
-		fcppt::parse::line_number
+		fcppt::parse::location
 	>;
 
 	position(
 		pos_type,
-		optional_line_number const &
+		optional_location
 	);
 
 	[[nodiscard]]
@@ -51,12 +51,12 @@ public:
 	pos() const;
 
 	[[nodiscard]]
-	optional_line_number const &
-	line() const;
+	optional_location const &
+	location() const;
 private:
 	pos_type pos_;
 
-	optional_line_number line_;
+	optional_location location_;
 };
 
 }
