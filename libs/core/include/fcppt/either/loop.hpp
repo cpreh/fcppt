@@ -42,6 +42,7 @@ template<
 	typename Next,
 	typename Loop
 >
+[[nodiscard]]
 fcppt::either::failure_type<
 	std::result_of_t<
 		Next()

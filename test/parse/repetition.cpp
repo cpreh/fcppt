@@ -11,6 +11,7 @@
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/literal.hpp>
+#include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
@@ -109,5 +110,29 @@ TEST_CASE(
 				'Y'
 			)
 		)
+	);
+}
+
+TEST_CASE(
+	"parse::repetition fatal",
+	"[parse]"
+)
+{
+	auto const parser{
+		*fcppt::parse::make_fatal(
+			fcppt::parse::literal{
+				'X'
+			}
+		)
+	};
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{
+				"XXYX"
+			},
+			fcppt::parse::epsilon()
+		).has_failure()
 	);
 }

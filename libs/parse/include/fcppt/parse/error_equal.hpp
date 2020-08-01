@@ -29,9 +29,7 @@ operator==(
 )
 {
 	return
-		_left.get() == _right.get()
-		&&
-		_left.is_fatal() == _right.is_fatal();
+		_left.get() == _right.get();
 }
 
 }

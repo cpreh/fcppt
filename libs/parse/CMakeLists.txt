@@ -96,6 +96,9 @@ set(
 	libs/parse/include/fcppt/parse/fail_decl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
 	libs/parse/include/fcppt/parse/fail_impl.hpp
+	libs/parse/include/fcppt/parse/fatal_decl.hpp
+	libs/parse/include/fcppt/parse/fatal_fwd.hpp
+	libs/parse/include/fcppt/parse/fatal_impl.hpp
 	libs/parse/include/fcppt/parse/fatal_tag.hpp
 	libs/parse/include/fcppt/parse/fatal_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/float.hpp
@@ -134,6 +137,7 @@ set(
 	libs/parse/include/fcppt/parse/make_base.hpp
 	libs/parse/include/fcppt/parse/make_convert.hpp
 	libs/parse/include/fcppt/parse/make_convert_if.hpp
+	libs/parse/include/fcppt/parse/make_fatal.hpp
 	libs/parse/include/fcppt/parse/make_ignore.hpp
 	libs/parse/include/fcppt/parse/make_lexeme.hpp
 	libs/parse/include/fcppt/parse/make_literal.hpp

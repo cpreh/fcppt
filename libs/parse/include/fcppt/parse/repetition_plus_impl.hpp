@@ -80,7 +80,7 @@ fcppt::parse::repetition_plus<
 				return
 					_result.empty()
 					?
-						// TODO(philipp): Reimpement this for better error messages
+						// TODO(philipp): Reimplement this for better error messages
 						fcppt::either::make_failure<
 							result_type
 						>(

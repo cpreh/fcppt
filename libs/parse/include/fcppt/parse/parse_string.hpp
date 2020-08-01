@@ -14,6 +14,7 @@
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/error.hpp>
+#include <fcppt/parse/error_add.hpp>
 #include <fcppt/parse/is_skipper.hpp>
 #include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/make_success.hpp>
@@ -97,13 +98,13 @@ parse_string(
 							Parser
 						>
 					>(
+						std::move(
+							_failure
+						)
+						+
 						fcppt::parse::error<
 							Ch
 						>{
-							std::move(
-								_failure.get()
-							)
-							+
 							FCPPT_STRING_LITERAL(
 								Ch,
 								". Remaining input: \""

@@ -13,6 +13,7 @@
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
+#include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
@@ -34,13 +35,14 @@ TEST_CASE(
 		-fcppt::parse::char_{}
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		decltype(
 			parser
 		)
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::parse::parse_string(
@@ -103,5 +105,26 @@ TEST_CASE(
 				'X'
 			)
 		)
+	);
+}
+
+TEST_CASE(
+	"parse::optional fatal",
+	"[parse]"
+)
+{
+	auto const parser{
+		-
+		fcppt::parse::make_fatal(
+			fcppt::parse::int_<int>{}
+		)
+	};
+
+	CHECK(
+		fcppt::parse::parse_string(
+			parser,
+			std::string{"X"},
+			fcppt::parse::epsilon()
+		).has_failure()
 	);
 }

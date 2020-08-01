@@ -8,11 +8,12 @@
 #define FCPPT_PARSE_OPTIONAL_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/error_fwd.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/optional_decl.hpp>
@@ -91,7 +92,7 @@ fcppt::parse::optional<
 			](
 				fcppt::parse::error<
 					Ch
-				> &&
+				> &&_error
 			){
 				fcppt::parse::set_position(
 					_state,
@@ -99,11 +100,22 @@ fcppt::parse::optional<
 				);
 
 				return
-					fcppt::parse::make_success<
-						Ch
-					>(
-						result_type{}
-					);
+					_error.is_fatal()
+					?
+						fcppt::either::make_failure<
+							result_type
+						>(
+							std::move(
+								_error
+							)
+						)
+					:
+						fcppt::parse::make_success<
+							Ch
+						>(
+							result_type{}
+						)
+					;
 			},
 			[](
 				fcppt::parse::result_of<

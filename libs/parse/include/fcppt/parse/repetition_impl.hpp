@@ -11,9 +11,11 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/loop.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/position.hpp>
@@ -82,72 +84,76 @@ fcppt::parse::repetition<
 
 	result_type result{};
 
-	fcppt::either::loop(
-		[
-			this,
-			_state,
-			&_context
-		]{
-			return
-				fcppt::either::bind(
-					fcppt::parse::deref(
-						this->parser_
-					).parse(
-						_state,
-						_context
-					),
-					[
-						_state,
-						&_context
-					](
-						fcppt::parse::result_of<
-							Parser
-						> &&_element
-					)
-					{
-						return
-							fcppt::either::map(
-								fcppt::parse::run_skipper(
-									_state,
-									_context
-								),
-								[
-									&_element
-								](
-									fcppt::unit const &
-								)
-								{
-									return
-										std::move(
-											_element
-										);
-								}
-							);
-					}
-				);
-		},
-		[
-			_state,
-			&result,
-			&pos
-		](
-			fcppt::parse::result_of<
-				Parser
-			> &&_element
-		)
-		{
-			pos =
-				fcppt::parse::get_position(
-					_state
-				);
+	fcppt::parse::error<
+		Ch
+	> error{
+		fcppt::either::loop(
+			[
+				this,
+				_state,
+				&_context
+			]{
+				return
+					fcppt::either::bind(
+						fcppt::parse::deref(
+							this->parser_
+						).parse(
+							_state,
+							_context
+						),
+						[
+							_state,
+							&_context
+						](
+							fcppt::parse::result_of<
+								Parser
+							> &&_element
+						)
+						{
+							return
+								fcppt::either::map(
+									fcppt::parse::run_skipper(
+										_state,
+										_context
+									),
+									[
+										&_element
+									](
+										fcppt::unit const &
+									)
+									{
+										return
+											std::move(
+												_element
+											);
+									}
+								);
+						}
+					);
+			},
+			[
+				_state,
+				&result,
+				&pos
+			](
+				fcppt::parse::result_of<
+					Parser
+				> &&_element
+			)
+			{
+				pos =
+					fcppt::parse::get_position(
+						_state
+					);
 
-			result.push_back(
-				std::move(
-					_element
-				)
-			);
-		}
-	);
+				result.push_back(
+					std::move(
+						_element
+					)
+				);
+			}
+		)
+	};
 
 	fcppt::parse::set_position(
 		_state,
@@ -155,13 +161,24 @@ fcppt::parse::repetition<
 	);
 
 	return
-		fcppt::parse::make_success<
-			Ch
-		>(
-			std::move(
-				result
+		error.is_fatal()
+		?
+			fcppt::either::make_failure<
+				result_type
+			>(
+				std::move(
+					error
+				)
 			)
-		);
+		:
+			fcppt::parse::make_success<
+				Ch
+			>(
+				std::move(
+					result
+				)
+			)
+		;
 }
 
 #endif

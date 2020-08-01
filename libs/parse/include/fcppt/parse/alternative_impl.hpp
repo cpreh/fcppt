@@ -117,80 +117,91 @@ fcppt::parse::alternative<
 				);
 
 				return
-					fcppt::either::match(
-						fcppt::parse::deref(
-							this->right_
-						).parse(
-							_state,
-							_context
-						),
-						[
-							&_left_error
-						](
-							fcppt::parse::error<
-								Ch
-							> &&_right_error
+					_left_error.is_fatal()
+					?
+						fcppt::either::make_failure<
+							result_type
+						>(
+							std::move(
+								_left_error
+							)
 						)
-						{
-							return
-								fcppt::either::make_failure<
-									result_type
-								>(
-									fcppt::parse::error<
-										Ch
-									>(
-										std::basic_string<
-											Ch
-										>(
-											FCPPT_STRING_LITERAL(
-												Ch,
-												"Alternative: "
-											)
-										)
-									)
-									+
-									std::move(
-										_left_error
-									)
-									+
-									fcppt::parse::error<
-										Ch
-									>(
-										std::basic_string<
-											Ch
-										>(
-											FCPPT_STRING_LITERAL(
-												Ch,
-												" OR "
-											)
-										)
-									)
-									+
-									std::move(
-										_right_error
-									)
-								);
-						},
-						[](
-							fcppt::parse::result_of<
-								Right
-							> &&_right_result
-						)
-						{
-							return
-								fcppt::parse::make_success<
+					:
+						fcppt::either::match(
+							fcppt::parse::deref(
+								this->right_
+							).parse(
+								_state,
+								_context
+							),
+							[
+								&_left_error
+							](
+								fcppt::parse::error<
 									Ch
-								>(
-									fcppt::parse::detail::make_alternative<
+								> &&_right_error
+							)
+							{
+								return
+									fcppt::either::make_failure<
 										result_type
 									>(
-										std::move(
-											_right_result
+										fcppt::parse::error<
+											Ch
+										>(
+											std::basic_string<
+												Ch
+											>(
+												FCPPT_STRING_LITERAL(
+													Ch,
+													"Alternative: "
+												)
+											)
 										)
-									)
-								);
-						}
-					);
+										+
+										std::move(
+											_left_error
+										)
+										+
+										fcppt::parse::error<
+											Ch
+										>(
+											std::basic_string<
+												Ch
+											>(
+												FCPPT_STRING_LITERAL(
+													Ch,
+													" OR "
+												)
+											)
+										)
+										+
+										std::move(
+											_right_error
+										)
+									);
+							},
+							[](
+								fcppt::parse::result_of<
+									Right
+								> &&_right_result
+							)
+							{
+								return
+									fcppt::parse::make_success<
+										Ch
+									>(
+										fcppt::parse::detail::make_alternative<
+											result_type
+										>(
+											std::move(
+												_right_result
+											)
+										)
+									);
+							}
+						)
+					;
 			},
 			[](
 				fcppt::parse::result_of<

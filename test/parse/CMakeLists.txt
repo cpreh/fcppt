@@ -75,6 +75,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	fatal
+)
+
+add_fcppt_parse_test(
 	float
 )
 
