@@ -86,12 +86,18 @@ set(
 	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
 	libs/parse/include/fcppt/parse/epsilon_impl.hpp
 	libs/parse/include/fcppt/parse/error.hpp
+	libs/parse/include/fcppt/parse/error_add.hpp
+	libs/parse/include/fcppt/parse/error_decl.hpp
+	libs/parse/include/fcppt/parse/error_equal.hpp
 	libs/parse/include/fcppt/parse/error_fwd.hpp
-	libs/parse/include/fcppt/parse/error_tag.hpp
+	libs/parse/include/fcppt/parse/error_impl.hpp
+	libs/parse/include/fcppt/parse/error_output.hpp
 	libs/parse/include/fcppt/parse/fail.hpp
 	libs/parse/include/fcppt/parse/fail_decl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
 	libs/parse/include/fcppt/parse/fail_impl.hpp
+	libs/parse/include/fcppt/parse/fatal_tag.hpp
+	libs/parse/include/fcppt/parse/fatal_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/float.hpp
 	libs/parse/include/fcppt/parse/float_decl.hpp
 	libs/parse/include/fcppt/parse/float_fwd.hpp
@@ -155,8 +161,8 @@ set(
 	libs/parse/include/fcppt/parse/parse_stream.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
 	libs/parse/include/fcppt/parse/position.hpp
-	libs/parse/include/fcppt/parse/position_comparison.hpp
 	libs/parse/include/fcppt/parse/position_decl.hpp
+	libs/parse/include/fcppt/parse/position_equal.hpp
 	libs/parse/include/fcppt/parse/position_fwd.hpp
 	libs/parse/include/fcppt/parse/position_impl.hpp
 	libs/parse/include/fcppt/parse/recursive.hpp

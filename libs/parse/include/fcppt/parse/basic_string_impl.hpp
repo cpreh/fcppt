@@ -9,7 +9,6 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_failure.hpp>

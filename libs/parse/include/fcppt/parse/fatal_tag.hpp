@@ -4,8 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_ERROR_TAG_HPP_INCLUDED
-#define FCPPT_PARSE_ERROR_TAG_HPP_INCLUDED
+#ifndef FCPPT_PARSE_FATAL_TAG_HPP_INCLUDED
+#define FCPPT_PARSE_FATAL_TAG_HPP_INCLUDED
+
+#include <fcppt/parse/fatal_tag_fwd.hpp>
 
 
 namespace fcppt
@@ -13,7 +15,7 @@ namespace fcppt
 namespace parse
 {
 
-struct error_tag
+struct fatal_tag
 {
 };
 

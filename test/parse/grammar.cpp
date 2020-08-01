@@ -6,10 +6,10 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
+#include <fcppt/parse/error_equal.hpp>
+#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/grammar.hpp>
 #include <fcppt/parse/grammar_parse_stream.hpp>
 #include <fcppt/parse/grammar_parse_string.hpp>
