@@ -9,7 +9,6 @@
 
 #include <fcppt/output_to_string.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/container/contains.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/either/bind.hpp>
@@ -21,6 +20,7 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/detail/expected.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
 #include <string>
@@ -101,38 +101,29 @@ fcppt::parse::basic_char_set<
 				_context
 			),
 			[
+				_state,
 				this
 			](
-				Ch const _result
+				Ch const _ch
 			)
 			{
 				return
 					fcppt::container::contains(
 						this->chars_,
-						_result
+						_ch
 					)
 					?
 						fcppt::parse::make_success<
 							Ch
 						>(
-							_result
+							_ch
 						)
 					:
 						fcppt::either::make_failure<
 							result_type
 						>(
-							fcppt::parse::error<
-								Ch
-							>{
-								std::basic_string<
-									Ch
-								>{
-									FCPPT_STRING_LITERAL(
-										Ch,
-										"Expected {"
-									)
-								}
-								+
+							fcppt::parse::detail::expected(
+								_state.get().stream().get_position(),
 								fcppt::output_to_string<
 									std::basic_string<
 										Ch
@@ -141,19 +132,9 @@ fcppt::parse::basic_char_set<
 									fcppt::container::output(
 										this->chars_
 									)
-								)
-								+
-								std::basic_string<
-									Ch
-								>{
-									FCPPT_STRING_LITERAL(
-										Ch,
-										"}, got "
-									)
-								}
-								+
-								_result
-							}
+								),
+								_ch
+							)
 						)
 					;
 			}

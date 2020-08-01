@@ -8,7 +8,6 @@
 #define FCPPT_PARSE_BASIC_LITERAL_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
@@ -19,6 +18,7 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/detail/expected.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -76,6 +76,7 @@ fcppt::parse::basic_literal<
 				_context
 			),
 			[
+				_state,
 				this
 			](
 				Ch const _ch
@@ -95,31 +96,15 @@ fcppt::parse::basic_literal<
 						fcppt::either::make_failure<
 							result_type
 						>(
-							fcppt::parse::error<
-								Ch
-							>{
+							fcppt::parse::detail::expected(
+								_state.get().stream().get_position(),
 								std::basic_string<
 									Ch
 								>{
-									FCPPT_STRING_LITERAL(
-										Ch,
-										"Expected "
-									)
-								}
-								+
-								this->ch_
-								+
-								std::basic_string<
-									Ch
-								>{
-									FCPPT_STRING_LITERAL(
-										Ch,
-										", got "
-									)
-								}
-								+
+									this->ch_
+								},
 								_ch
-							}
+							)
 						)
 					;
 			}

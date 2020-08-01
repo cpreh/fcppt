@@ -38,7 +38,7 @@ fcppt::parse::detail::stream<
 		_impl
 	},
 	line_{
-		0U
+		1U
 	}
 {
 }

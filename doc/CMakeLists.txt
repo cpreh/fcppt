@@ -1901,6 +1901,7 @@ set(
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp
 	libs/parse/include/fcppt/parse/detail/exception.hpp
+	libs/parse/include/fcppt/parse/detail/expected.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp
 	libs/parse/include/fcppt/parse/detail/make_alternative.hpp

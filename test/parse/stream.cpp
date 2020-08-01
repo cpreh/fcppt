@@ -74,7 +74,7 @@ TEST_CASE(
 			offset{},  // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
 				fcppt::parse::line_number{
-					0U
+					1U
 				}
 			)
 		}
@@ -89,7 +89,7 @@ TEST_CASE(
 			offset{} + std::streamoff{1},  // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
 				fcppt::parse::line_number{
-					0U
+					1U
 				}
 			)
 		}
@@ -104,7 +104,7 @@ TEST_CASE(
 			offset{} + std::streamoff{2}, // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
 				fcppt::parse::line_number{
-					0U
+					1U
 				}
 			)
 		}
@@ -119,7 +119,7 @@ TEST_CASE(
 			offset{} + std::streamoff{3}, // NOLINT(fuchsia-default-arguments-calls)
 			fcppt::optional::make(
 				fcppt::parse::line_number{
-					1U
+					2U
 				}
 			)
 		}
