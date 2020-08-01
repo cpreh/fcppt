@@ -7,18 +7,22 @@
 #ifndef FCPPT_PARSE_REPETITION_PLUS_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_REPETITION_PLUS_IMPL_HPP_INCLUDED
 
+#include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/either/bind.hpp>
-#include <fcppt/either/make_failure.hpp>
+#include <fcppt/container/join.hpp>
+#include <fcppt/either/map.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/repetition_plus_decl.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -67,45 +71,51 @@ fcppt::parse::repetition_plus<
 	> const &_context
 ) const
 {
+	auto const parser{
+		fcppt::make_cref(
+			fcppt::parse::deref(
+				this->parser_
+			)
+		)
+		>>
+		*
+		fcppt::make_cref(
+			fcppt::parse::deref(
+				this->parser_
+			)
+		)
+	};
+
 	return
-		fcppt::either::bind(
-			this->parser_.parse(
+		fcppt::either::map(
+			parser.parse(
 				_state,
 				_context
 			),
 			[](
-				result_type &&_result
+				fcppt::parse::result_of<
+					decltype(
+						parser
+					)
+				> &&_result
 			)
 			{
+				// TODO(philipp): Should we reverse this so that push_back works?
 				return
-					_result.empty()
-					?
-						// TODO(philipp): Reimplement this for better error messages
-						fcppt::either::make_failure<
-							result_type
-						>(
-							fcppt::parse::error<
-								Ch
-							>{
-								std::basic_string<
-									Ch
-								>(
-									FCPPT_STRING_LITERAL(
-										Ch,
-										"PLUS"
-									)
-								)
-							}
-						)
-					:
-						fcppt::parse::make_success<
-							Ch
-						>(
+					fcppt::container::join(
+						result_type{
 							std::move(
+								std::get<0>(
+									_result
+								)
+							)
+						},
+						std::move(
+							std::get<1>(
 								_result
 							)
 						)
-					;
+					);
 			}
 		);
 }

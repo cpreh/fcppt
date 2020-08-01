@@ -154,7 +154,7 @@ fcppt::parse::alternative<
 											>(
 												FCPPT_STRING_LITERAL(
 													Ch,
-													"Alternative: "
+													"{ "
 												)
 											)
 										)
@@ -178,6 +178,19 @@ fcppt::parse::alternative<
 										+
 										std::move(
 											_right_error
+										)
+										+
+										fcppt::parse::error<
+											Ch
+										>(
+											std::basic_string<
+												Ch
+											>(
+												FCPPT_STRING_LITERAL(
+													Ch,
+													" }"
+												)
+											)
 										)
 									);
 							},

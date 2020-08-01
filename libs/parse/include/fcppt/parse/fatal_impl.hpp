@@ -10,6 +10,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/fatal_decl.hpp>
 #include <fcppt/parse/fatal_tag.hpp>
@@ -19,8 +20,6 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-#include <iostream>
 
 template<
 	typename Parser
@@ -68,7 +67,9 @@ fcppt::parse::fatal<
 {
 	return
 		fcppt::either::map_failure(
-			this->parser_.parse(
+			fcppt::parse::deref(
+				this->parser_
+			).parse(
 				_state,
 				_context
 			),

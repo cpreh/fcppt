@@ -9,7 +9,6 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/repetition_impl.hpp>
 #include <fcppt/parse/repetition_plus_fwd.hpp>
 #include <fcppt/parse/repetition_result.hpp>
 #include <fcppt/parse/result_fwd.hpp>
@@ -72,9 +71,7 @@ public:
 		> const &
 	) const;
 private:
-	fcppt::parse::repetition<
-		Parser
-	> parser_;
+	Parser parser_;
 };
 
 FCPPT_PP_POP_WARNING
