@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_WRAPPER_MAKE_UNIFORM_CONTAINER_HPP_INCLUDED
 #define FCPPT_RANDOM_WRAPPER_MAKE_UNIFORM_CONTAINER_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
 #include <fcppt/random/wrapper/make_uniform_container_advanced.hpp>
@@ -31,7 +32,9 @@ fcppt::optional::object<
 	>
 >
 make_uniform_container(
-	Container &_container
+	fcppt::reference<
+		Container
+	> const _container
 )
 {
 	return

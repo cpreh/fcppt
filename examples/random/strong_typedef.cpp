@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -56,7 +57,9 @@ main()
 
 //![random_strong_typedef_variate]
 	variate rng(
-		generator,
+		fcppt::make_ref(
+			generator
+		),
 		distribution(
 			distribution::param_type::min(my_type(0)),
 			distribution::param_type::max(my_type(10)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)

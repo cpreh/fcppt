@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_WRAPPER_MAKE_UNIFORM_CONTAINER_ADVANCED_HPP_INCLUDED
 #define FCPPT_RANDOM_WRAPPER_MAKE_UNIFORM_CONTAINER_ADVANCED_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp>
@@ -32,7 +33,9 @@ fcppt::optional::object<
 	>
 >
 make_uniform_container_advanced(
-	Container &_container
+	fcppt::reference<
+		Container
+	> const _container
 )
 {
 	using
@@ -48,7 +51,7 @@ make_uniform_container_advanced(
 			fcppt::random::distribution::parameters::make_uniform_indices_advanced<
 				IntDistribution
 			>(
-				_container
+				_container.get()
 			),
 			[
 				&_container

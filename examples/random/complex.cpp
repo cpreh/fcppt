@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/text.hpp>
@@ -62,7 +63,7 @@ main()
 
 //![random_complex_variate]
 	variate rng(
-		generator,
+		fcppt::make_ref(generator),
 		distribution(
 			distribution::param_type::min(
 				radius(0 * boost::units::si::meter)
@@ -106,7 +107,7 @@ main()
 	>;
 
 	meter_variate meter_rng(
-		generator,
+		fcppt::make_ref(generator),
 		meter_distribution(
 			meter_distribution::param_type::min(
 				0 * boost::units::si::meter

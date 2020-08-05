@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/io/cout.hpp>
@@ -64,7 +65,7 @@ main()
 
 // ![random_enum_parameters]
 	variate rng(
-		generator,
+		fcppt::make_ref(generator),
 		uniform_enum(
 			fcppt::random::distribution::parameters::make_uniform_enum<
 				my_enum

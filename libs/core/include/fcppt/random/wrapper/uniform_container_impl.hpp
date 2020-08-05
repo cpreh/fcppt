@@ -19,7 +19,7 @@ fcppt::random::wrapper::uniform_container<
 	Container,
 	IntDistribution
 >::uniform_container(
-	Container &_container,
+	container_reference const _container,
 	param_type const &_parameters
 )
 :

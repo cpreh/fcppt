@@ -44,8 +44,15 @@ public:
 		IntDistribution
 	>;
 
+	using
+	container_reference
+	=
+	fcppt::reference<
+		Container
+	>;
+
 	uniform_container(
-		Container &,
+		container_reference,
 		param_type const &
 	);
 
@@ -57,10 +64,7 @@ public:
 		Generator &
 	);
 private:
-	fcppt::reference<
-		Container
-	>
-	container_;
+	container_reference container_;
 
 	fcppt::random::distribution::basic<
 		param_type

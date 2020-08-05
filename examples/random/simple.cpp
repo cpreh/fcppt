@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/io/cout.hpp>
@@ -70,7 +71,7 @@ main()
 	>;
 
 	variate rng(
-		generator,
+		fcppt::make_ref(generator),
 		uniform_int(
 			uniform_int::param_type::min(0),
 			uniform_int::param_type::max(10) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
@@ -100,7 +101,7 @@ main()
 	>;
 
 	variate rng(
-		generator,
+		fcppt::make_ref(generator),
 		uniform_real(
 			uniform_real::param_type::min(
 				0.F
@@ -132,7 +133,7 @@ main()
 	>;
 
 	variate rng(
-		generator,
+		fcppt::make_ref(generator),
 		normal(
 			normal::param_type::mean(0.),
 			normal::param_type::stddev(5.) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)

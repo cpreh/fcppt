@@ -60,6 +60,13 @@ public:
 	typename
 	distribution::result_type;
 
+	using
+	generator_reference
+	=
+	fcppt::reference<
+		generator
+	>;
+
 	/**
 	\brief Constructs a variate object
 
@@ -70,7 +77,7 @@ public:
 	\param distribution The distribution to use
 	*/
 	variate(
-		Generator &generator,
+		generator_reference generator,
 		Distribution const &distribution
 	);
 
@@ -91,7 +98,7 @@ public:
 	\param param The parameters for the distribution
 	*/
 	variate(
-		Generator &generator,
+		generator_reference generator,
 		param_type const &param
 	);
 
@@ -104,13 +111,6 @@ public:
 	result_type
 	operator()();
 private:
-	using
-	generator_reference
-	=
-	fcppt::reference<
-		generator
-	>;
-
 	generator_reference generator_;
 
 	distribution distribution_;

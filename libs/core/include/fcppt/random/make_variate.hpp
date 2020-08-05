@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_MAKE_VARIATE_HPP_INCLUDED
 #define FCPPT_RANDOM_MAKE_VARIATE_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/random/variate_impl.hpp>
 
 
@@ -24,7 +25,9 @@ fcppt::random::variate<
 	Distribution
 >
 make_variate(
-	Generator &_generator,
+	fcppt::reference<
+		Generator
+	> const _generator,
 	Distribution const &_distribution
 )
 {

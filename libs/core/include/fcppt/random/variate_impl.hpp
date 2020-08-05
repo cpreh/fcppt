@@ -18,7 +18,7 @@ fcppt::random::variate<
 	Generator,
 	Distribution
 >::variate(
-	Generator &_generator,
+	generator_reference const _generator,
 	Distribution const &_distribution
 )
 :
@@ -39,7 +39,7 @@ fcppt::random::variate<
 	Generator,
 	Distribution
 >::variate(
-	Generator &_generator,
+	generator_reference const _generator,
 	param_type const &_param
 )
 :

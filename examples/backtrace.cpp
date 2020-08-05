@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/backtrace/current_stack_frame.hpp>
 #include <fcppt/backtrace/print_current_stack_frame.hpp>
@@ -145,7 +146,9 @@ main()
 		generator_type,
 		distribution
 	> random_depth(
-		generator,
+		fcppt::make_ref(
+			generator
+		),
 		distribution(
 			distribution::param_type(
 				distribution::param_type::min(

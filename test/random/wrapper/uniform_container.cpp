@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/assert/optional_error.hpp>
@@ -23,11 +24,12 @@ TEST_CASE(
 	"[random]"
 )
 {
-	typedef
+	using
+	string_vector
+	=
 	std::vector<
 		std::string
-	>
-	string_vector;
+	>;
 
 	string_vector const strings{
 		std::string("test1"),
@@ -36,7 +38,9 @@ TEST_CASE(
 
 	auto dist(
 		fcppt::random::wrapper::make_uniform_container(
-			strings
+			fcppt::make_cref(
+				strings
+			)
 		)
 	);
 
