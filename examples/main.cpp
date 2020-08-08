@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/algorithm/map.hpp>
@@ -21,62 +20,51 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 // ![print_at_2]
-void
-print_at_2(
-	std::vector<int> const &_vec
-)
+void print_at_2(std::vector<int> const &_vec)
 {
-	fcppt::optional::reference<int const> ref{
-		fcppt::container::at_optional(_vec, 2)
-	};
+  fcppt::optional::reference<int const> ref{fcppt::container::at_optional(_vec, 2)};
 
-	fcppt::optional::maybe(
-		ref,
-		[]{ std::cout << "No value at position 2\n"; },
-		[](fcppt::reference<int const> _value) { std::cout << "The value is " << _value.get() << '\n'; }
-	);
+  fcppt::optional::maybe(
+      ref,
+      [] { std::cout << "No value at position 2\n"; },
+      [](fcppt::reference<int const> _value) {
+        std::cout << "The value is " << _value.get() << '\n';
+      });
 }
 // ![print_at_2]
 
 // ![vec_to_string]
-std::vector<std::string>
-int_vec_to_string_vec(
-	std::vector<int> &&_vec
-)
+std::vector<std::string> int_vec_to_string_vec(std::vector<int> &&_vec)
 {
-	return fcppt::algorithm::map<std::vector<std::string>>(
-		std::move(_vec),
-		[](int const _value) { return fcppt::output_to_std_string(_value); }
-	);
+  return fcppt::algorithm::map<std::vector<std::string>>(
+      std::move(_vec), [](int const _value) { return fcppt::output_to_std_string(_value); });
 }
 // ![vec_to_string]
 
 // ![init_array]
-template<std::size_t N>
-struct make_value { static constexpr unsigned int const value = fcppt::cast::size<unsigned int>(N); };
-
-template<std::size_t N>
-std::array<unsigned int, N>
-init_array()
+template <std::size_t N>
+struct make_value
 {
-	return fcppt::container::array::init<std::array<unsigned int,N>>(
-		[](auto const _index) { return make_value<_index>::value; }
-	);
+  static constexpr unsigned int const value = fcppt::cast::size<unsigned int>(N);
+};
+
+template <std::size_t N>
+std::array<unsigned int, N> init_array()
+{
+  return fcppt::container::array::init<std::array<unsigned int, N>>(
+      [](auto const _index) { return make_value<_index>::value; });
 }
 // ![init_array]
 }
 
-int
-main()
+int main()
 {
-	print_at_2(std::vector<int>{});
+  print_at_2(std::vector<int>{});
 
-	int_vec_to_string_vec(std::vector<int>{});
+  int_vec_to_string_vec(std::vector<int>{});
 
-	init_array<4U>();
+  init_array<4U>();
 }
