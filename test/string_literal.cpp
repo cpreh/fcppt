@@ -33,4 +33,22 @@ TEST_CASE(
 		==
 		std::wstring{L"test"}
 	);
+
+	CHECK(
+		FCPPT_STRING_LITERAL(
+			char16_t,
+			"test"
+		)
+		==
+		std::u16string{u"test"}
+	);
+
+	CHECK(
+		FCPPT_STRING_LITERAL(
+			char32_t,
+			"test"
+		)
+		==
+		std::u32string{U"test"}
+	);
 }

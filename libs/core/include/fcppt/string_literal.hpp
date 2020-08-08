@@ -8,6 +8,7 @@
 #define FCPPT_STRING_LITERAL_HPP_INCLUDED
 
 #include <fcppt/detail/string_literal.hpp>
+#include <fcppt/detail/make_char_literals.hpp>
 
 
 /**
@@ -28,8 +29,9 @@ If \a _type is wchar_t, then the literal will be of type <code>wchar_t const *</
 fcppt::detail::string_literal<\
 	_type\
 >(\
-	_literal, \
-	L ## _literal \
+	FCPPT_DETAIL_MAKE_CHAR_LITERALS(\
+		_literal\
+	)\
 )
 
 #endif

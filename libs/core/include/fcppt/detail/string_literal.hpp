@@ -7,8 +7,10 @@
 #ifndef FCPPT_DETAIL_STRING_LITERAL_HPP_INCLUDED
 #define FCPPT_DETAIL_STRING_LITERAL_HPP_INCLUDED
 
+#include <fcppt/detail/string_types.hpp>
+#include <fcppt/metal/as_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,40 +23,19 @@ template<
 	typename Type
 >
 inline
-std::enable_if_t<
-	std::is_same_v<
-		Type,
-		char
-	>,
-	char const *
->
+Type const *
 string_literal(
-	char const *const _literal,
-	wchar_t const *
+	fcppt::metal::as_tuple<
+		fcppt::detail::string_types
+	> const &_args
 )
 {
 	return
-		_literal;
-}
-
-template<
-	typename Type
->
-inline
-std::enable_if_t<
-	std::is_same_v<
-		Type,
-		wchar_t
-	>,
-	wchar_t const *
->
-string_literal(
-	char const *,
-	wchar_t const *const _literal
-)
-{
-	return
-		_literal;
+		std::get<
+			Type const *
+		>(
+			_args
+		);
 }
 
 }

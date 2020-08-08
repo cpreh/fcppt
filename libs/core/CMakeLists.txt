@@ -417,12 +417,14 @@ set(
 	libs/core/include/fcppt/detail/args_char.hpp
 	libs/core/include/fcppt/detail/char_literal.hpp
 	libs/core/include/fcppt/detail/char_type.hpp
+	libs/core/include/fcppt/detail/char_types.hpp
 	libs/core/include/fcppt/detail/check_cpp.hpp
 	libs/core/include/fcppt/detail/const.hpp
 	libs/core/include/fcppt/detail/cyclic_iterator_base.hpp
 	libs/core/include/fcppt/detail/equal.hpp
 	libs/core/include/fcppt/detail/main.hpp
 	libs/core/include/fcppt/detail/main_wchar.hpp
+	libs/core/include/fcppt/detail/make_char_literals.hpp
 	libs/core/include/fcppt/detail/make_shared_wrapper.hpp
 	libs/core/include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	libs/core/include/fcppt/detail/move_if.hpp
@@ -432,6 +434,7 @@ set(
 	libs/core/include/fcppt/detail/nonmovable.hpp
 	libs/core/include/fcppt/detail/runtime_index.hpp
 	libs/core/include/fcppt/detail/string_literal.hpp
+	libs/core/include/fcppt/detail/string_types.hpp
 	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
 	libs/core/include/fcppt/detail/text.hpp

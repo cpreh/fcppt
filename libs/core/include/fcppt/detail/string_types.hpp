@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_CHAR_LITERAL_HPP_INCLUDED
-#define FCPPT_DETAIL_CHAR_LITERAL_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_STRING_TYPES_HPP_INCLUDED
+#define FCPPT_DETAIL_STRING_TYPES_HPP_INCLUDED
 
 #include <fcppt/detail/char_types.hpp>
-#include <fcppt/metal/as_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
+#include <metal.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,24 +19,20 @@ namespace fcppt
 namespace detail
 {
 
-template<
-	typename Type
->
-inline
-Type
-char_literal(
-	fcppt::metal::as_tuple<
+using
+string_types
+=
+::metal::transform<
+	::metal::lambda<
+		std::add_pointer_t
+	>,
+	::metal::transform<
+		::metal::lambda<
+			std::add_const_t
+		>,
 		fcppt::detail::char_types
-	> const &_args
-)
-{
-	return
-		std::get<
-			Type
-		>(
-			_args
-		);
-}
+	>
+>;
 
 }
 }

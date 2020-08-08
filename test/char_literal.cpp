@@ -32,4 +32,23 @@ TEST_CASE(
 		==
 		L't'
 	);
+
+	CHECK(
+		FCPPT_CHAR_LITERAL(
+			char16_t,
+			't'
+		)
+		==
+		u't'
+	);
+
+
+	CHECK(
+		FCPPT_CHAR_LITERAL(
+			char32_t,
+			't'
+		)
+		==
+		U't'
+	);
 }
