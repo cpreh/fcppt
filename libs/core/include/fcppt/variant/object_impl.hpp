@@ -7,11 +7,9 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/get_unsafe_impl.hpp>
-#include <fcppt/variant/detail/has_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <variant>
@@ -39,15 +37,6 @@ fcppt::variant::object<
 		)
 	}
 {
-	static_assert(
-		fcppt::variant::detail::has_type<
-			this_type,
-			fcppt::type_traits::remove_cv_ref_t<
-				U
-			>
-		>::value,
-		"Invalid variant type"
-	);
 }
 
 template<
