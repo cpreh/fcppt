@@ -20,6 +20,11 @@ namespace fcppt
 namespace monad
 {
 
+/**
+\brief Monadic return.
+
+\ingroup fcpptmonad
+*/
 template<
 	typename Type,
 	typename Value

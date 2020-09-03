@@ -15,6 +15,16 @@ namespace fcppt
 namespace monad
 {
 
+/**
+\brief Applies the constructor of a monad.
+
+\ingroup fcpptmonad
+
+Applies the constructor \a Type to \a Value.
+
+For example, if <code>Type=optional</code> and <code>Value=int</code> then the
+result is <code>optional<int></code>.
+*/
 template<
 	typename Type,
 	typename Value

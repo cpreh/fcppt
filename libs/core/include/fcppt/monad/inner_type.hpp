@@ -15,6 +15,14 @@ namespace fcppt
 namespace monad
 {
 
+/**
+\brief Extracts the type a monadic constructor was used with.
+
+\ingroup fcpptmonad
+
+Becaused C++ lacks type inference, we need a special function to get
+<code>a</code> from <code>m a</code>.
+*/
 template<
 	typename Type
 >

@@ -80,6 +80,7 @@ set(
 	doc/files/modules/math/sphere.doxygen
 	doc/files/modules/math/vector.doxygen
 	doc/files/modules/metal.doxygen
+	doc/files/modules/monad.doxygen
 	doc/files/modules/optional.doxygen
 	doc/files/modules/options.doxygen
 	doc/files/modules/parse.doxygen

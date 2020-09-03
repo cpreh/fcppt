@@ -1,0 +1,11 @@
+/**
+\defgroup fcpptmonad fcppt.monad
+\ingroup fcpptmain
+\brief Monad typeclass and related functions
+*/
+
+namespace fcppt
+{
+///  Monad typeclass and related functions
+namespace monad {}
+}

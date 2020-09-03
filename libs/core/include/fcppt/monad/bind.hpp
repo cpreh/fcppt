@@ -22,10 +22,16 @@ namespace fcppt
 namespace monad
 {
 
+/**
+\brief Monadic bind.
+
+\ingroup fcpptmonad
+*/
 template<
 	typename Arg,
 	typename Function
 >
+inline
 std::invoke_result_t<
 	Function,
 	fcppt::move_if_rvalue_type<
