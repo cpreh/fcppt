@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MONAD_DETAIL_DO_HPP_INCLUDED
-#define FCPPT_MONAD_DETAIL_DO_HPP_INCLUDED
+#ifndef FCPPT_MONAD_DETAIL_CHAIN_HPP_INCLUDED
+#define FCPPT_MONAD_DETAIL_CHAIN_HPP_INCLUDED
 
 #include <fcppt/monad/bind.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -28,7 +28,7 @@ inline
 fcppt::type_traits::remove_cv_ref_t<
 	Value
 >
-do_(
+chain(
 	Value &&_value
 )
 {
@@ -45,15 +45,16 @@ template<
 	typename Lambda,
 	typename... Lambdas
 >
+inline
 auto
-do_(
+chain(
 	Value &&_value,
 	Lambda const &_lambda,
 	Lambdas const &... _lambdas
 )
 {
 	return
-		fcppt::monad::detail::do_(
+		fcppt::monad::detail::chain(
 			fcppt::monad::bind(
 				std::forward<
 					Value

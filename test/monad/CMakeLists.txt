@@ -22,7 +22,7 @@ add_fcppt_monad_test(
 )
 
 add_fcppt_monad_test(
-	do
+	chain
 	LINK_LIBS
 		${fcppt_core_TARGET}
 )

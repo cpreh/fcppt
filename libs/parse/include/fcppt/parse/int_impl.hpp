@@ -11,7 +11,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/monad.hpp>
-#include <fcppt/monad/do.hpp>
+#include <fcppt/monad/chain.hpp>
 #include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/int_decl.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
@@ -78,7 +78,7 @@ fcppt::parse::int_<
 	};
 
 	return
-		fcppt::monad::do_(
+		fcppt::monad::chain(
 			fcppt::parse::run_skipper(
 				_state,
 				_context

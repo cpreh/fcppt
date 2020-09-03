@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MONAD_DO_HPP_INCLUDED
-#define FCPPT_MONAD_DO_HPP_INCLUDED
+#ifndef FCPPT_MONAD_CHAIN_HPP_INCLUDED
+#define FCPPT_MONAD_CHAIN_HPP_INCLUDED
 
-#include <fcppt/monad/detail/do.hpp>
+#include <fcppt/monad/detail/chain.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -18,18 +18,26 @@ namespace fcppt
 namespace monad
 {
 
+/**
+\brief Chains multiple bind calls.
+
+\ingroup fcpptmonad
+
+Let <code>Lambdas = l_1, ..., l_n</code>.
+Calls <code>bind(... bind(bind(_value,_l1),l_2) ... ,l_n)</code>.
+*/
 template<
 	typename Value,
 	typename... Lambdas
 >
 auto
-do_(
+chain(
 	Value &&_value,
 	Lambdas const &... _lambdas
 )
 {
 	return
-		fcppt::monad::detail::do_(
+		fcppt::monad::detail::chain(
 			std::forward<
 				Value
 			>(

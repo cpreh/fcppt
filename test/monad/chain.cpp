@@ -5,7 +5,7 @@
 
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/monad/do.hpp>
+#include <fcppt/monad/chain.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/monad.hpp>
@@ -17,12 +17,12 @@
 
 
 TEST_CASE(
-	"monad::do",
+	"monad::chain",
 	"[monad]"
 )
 {
 	CHECK(
-		fcppt::monad::do_(
+		fcppt::monad::chain(
 			fcppt::optional::make(
 				std::string{"1"}
 			),
