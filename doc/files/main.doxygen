@@ -64,13 +64,13 @@ and #fcppt::variant::object.
 
 Following is a list of a few other libraries (for a complete list, see the modules page at the top):
 <ul>
-<li>\ref fcppteither carries a success or an error value. In comparison, \ref fcpptoptional only
-has a single error value.</li>
 <li>\ref fcpptrecord allows to create record types, which are a collection of statically named elements.</li>
 <li>\ref fcpptoptions provides declarative command-line option parsers, similar to Haskell's <code>optparse-applicative</code> library.</li>
+<li>\ref fcppteither carries a success or an error value. In comparison, \ref fcpptoptional only
+has a single error value.</li>
+<li>\ref fcpptoptional provides utility functions for optionals.</li>
 <li>\ref fcpptenum allows, for example, to iterate over enums, convert enums from
 and to strings, create arrays that are indexed by enums, and so on.</li>
-<li>\ref fcpptcasts replaces the standard casts with more explicit ones.</li>
 </ul>
 
 For more technical details, you can also take a look at our \ref code_style.
