@@ -35,99 +35,60 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
 
-int
-FCPPT_MAIN(
-	int argc,
-	fcppt::args_char **argv
-)
+int FCPPT_MAIN(int argc, fcppt::args_char **argv)
 try
 {
-// ![options_label]
-	FCPPT_RECORD_MAKE_LABEL(age_label);
-// ![options_label]
+  // ![options_label]
+  FCPPT_RECORD_MAKE_LABEL(age_label);
+  // ![options_label]
 
-// ![options_arg_type]
-	using parser_type
-	=
-	fcppt::options::argument<age_label, int>;
+  // ![options_arg_type]
+  using parser_type = fcppt::options::argument<age_label, int>;
 
-	using result_type
-	=
-	fcppt::options::result_of<parser_type>;
-// ![options_arg_type]
+  using result_type = fcppt::options::result_of<parser_type>;
+  // ![options_arg_type]
 
-// ![options_arg_object]
-	parser_type const parser{
-		fcppt::options::long_name{FCPPT_TEXT("age")},
-		fcppt::options::optional_help_text{
-			fcppt::options::help_text{FCPPT_TEXT("Your age")}
-		}
-	};
-// ![options_arg_object]
+  // ![options_arg_object]
+  parser_type const parser{
+      fcppt::options::long_name{FCPPT_TEXT("age")},
+      fcppt::options::optional_help_text{fcppt::options::help_text{FCPPT_TEXT("Your age")}}};
+  // ![options_arg_object]
 
-// ![options_args_from_second]
-	fcppt::args_vector const args(
-		fcppt::args_from_second(argc, argv)
-	);
-// ![options_args_from_second]
+  // ![options_args_from_second]
+  fcppt::args_vector const args(fcppt::args_from_second(argc, argv));
+  // ![options_args_from_second]
 
-// ![options_parse]
-	fcppt::options::result<result_type> const result{
-		fcppt::options::parse(parser, args)
-	};
-// ![options_parse]
+  // ![options_parse]
+  fcppt::options::result<result_type> const result{fcppt::options::parse(parser, args)};
+  // ![options_parse]
 
-// ![options_on_success]
-	auto const on_success(
-		[](result_type const &_result)
-		{
-			fcppt::io::cout()
-				<< FCPPT_TEXT("Your age is ")
-				<< fcppt::record::get<age_label>(_result)
-				<< FCPPT_TEXT('\n');
+  // ![options_on_success]
+  auto const on_success([](result_type const &_result) {
+    fcppt::io::cout() << FCPPT_TEXT("Your age is ") << fcppt::record::get<age_label>(_result)
+                      << FCPPT_TEXT('\n');
 
-			return
-				EXIT_SUCCESS;
-		}
-	);
-// ![options_on_success]
+    return EXIT_SUCCESS;
+  });
+  // ![options_on_success]
 
-// ![options_on_failure]
-	auto const on_failure(
-		[&parser]
-		(fcppt::options::error const &_error)
-		{
-			fcppt::io::cerr()
-				<< _error
-				<< FCPPT_TEXT('\n')
-				<< FCPPT_TEXT("Usage: ")
-				<< parser.usage()
-				<< FCPPT_TEXT('\n');
+  // ![options_on_failure]
+  auto const on_failure([&parser](fcppt::options::error const &_error) {
+    fcppt::io::cerr() << _error << FCPPT_TEXT('\n') << FCPPT_TEXT("Usage: ") << parser.usage()
+                      << FCPPT_TEXT('\n');
 
-			return
-				EXIT_FAILURE;
-		}
-	);
-// ![options_on_failure]
+    return EXIT_FAILURE;
+  });
+  // ![options_on_failure]
 
-// ![options_match]
-	return
-		fcppt::either::match(result, on_failure, on_success);
-// ![options_match]
+  // ![options_match]
+  return fcppt::either::match(result, on_failure, on_success);
+  // ![options_match]
 }
-catch(
-	std::exception const &_error
-)
+catch (std::exception const &_error)
 {
-	std::cerr
-		<<
-		_error.what()
-		<<
-		'\n';
+  std::cerr << _error.what() << '\n';
 
-	return
-		EXIT_FAILURE;
+  return EXIT_FAILURE;
 }
-
 
 FCPPT_PP_POP_WARNING
