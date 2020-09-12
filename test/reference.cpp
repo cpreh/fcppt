@@ -30,6 +30,17 @@ fcppt::reference<
 	int const
 >;
 
+struct test
+{
+	[[nodiscard]]
+	int
+	value() const // NOLINT(readability-convert-member-functions-to-static)
+	{
+		return
+			42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	}
+};
+
 }
 
 TEST_CASE(
@@ -185,4 +196,24 @@ TEST_CASE(
 			&y
 		);
 	}
+}
+
+TEST_CASE(
+	"reference call",
+	"[ref]"
+)
+{
+	test t{};
+
+	fcppt::reference<
+		test
+	> const ref{
+		t
+	};
+
+	CHECK(
+		ref->value()
+		==
+		42
+	);
 }

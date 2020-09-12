@@ -19,8 +19,7 @@ namespace fcppt
 \ingroup fcpptref
 
 C++11's reference is also a function call wrapper, which implies that
-the type it holds must be complete. This class's purpose is to allow objects of
-incomplete type to be stored as references in containers instead of pointers.
+the type it holds must be complete. Here, we drop this requirement.
 */
 template<
 	typename Type
@@ -47,6 +46,11 @@ public:
 	[[nodiscard]]
 	type &
 	get() const
+	noexcept;
+
+	[[nodiscard]]
+	type *
+	operator->() const
 	noexcept;
 private:
 	type *impl_;

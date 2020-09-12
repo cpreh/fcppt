@@ -41,7 +41,24 @@ fcppt::reference<
 noexcept
 {
 	return
-		*impl_;
+		*this->impl_;
+}
+
+template<
+	typename Type
+>
+inline
+typename
+fcppt::reference<
+	Type
+>::type *
+fcppt::reference<
+	Type
+>::operator->() const
+noexcept
+{
+	return
+		this->impl_;
 }
 
 #endif
