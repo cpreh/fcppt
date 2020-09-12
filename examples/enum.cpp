@@ -26,69 +26,45 @@
 
 namespace
 {
-
 //! [enum_maximum]
 enum class myenum
 {
-	val1,
-	val2,
-	fcppt_maximum = val2
+  val1,
+  val2,
+  fcppt_maximum = val2
 };
 //! [enum_maximum]
 
-void
-print_enum(
-	myenum const _value
-)
+void print_enum(myenum const _value)
 {
-	std::cout
-		<<
-		// Convert to an integer
-		fcppt::cast::enum_to_underlying(
-			_value
-		)
-		<< '\n';
-
+  std::cout <<
+      // Convert to an integer
+      fcppt::cast::enum_to_underlying(_value) << '\n';
 }
 
-void
-print()
+void print() { print_enum(fcppt::enum_::max_value<myenum>::value); }
+
+void iterate()
 {
-	print_enum(
-		fcppt::enum_::max_value<myenum>::value
-	);
+  // ![enum_range]
+  // Prints 0, 1
+  for (myenum const value : fcppt::enum_::make_range<myenum>())
+  {
+    print_enum(value);
+  }
+  // ![enum_range]
 }
 
-void
-iterate()
+void enum_array()
 {
-// ![enum_range]
-	// Prints 0, 1
-	for(
-		myenum const value
-		:
-		fcppt::enum_::make_range<myenum>()
-	)
-	{
-		print_enum(value);
-	}
-// ![enum_range]
-}
+  // ![enum_array]
+  using array = fcppt::enum_::array<myenum, bool>;
 
-void
-enum_array()
-{
-// ![enum_array]
-	using array =
-	fcppt::enum_::array<myenum, bool>;
+  // Requires three {} pairs because the array wraps std::array internally
+  array const val{{{true, false}}};
 
-	// Requires three {} pairs because the array wraps std::array internally
-	array const val{{{true, false}}};
-
-	std::cout
-		<< val[myenum::val1]
-		<< '\n';
-// ![enum_array]
+  std::cout << val[myenum::val1] << '\n';
+  // ![enum_array]
 }
 
 }
@@ -101,25 +77,18 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 namespace
 {
 // NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<myenum> const names{{{ // NOLINT(cert-err58-cpp)
-	FCPPT_TEXT("val1"),
-	FCPPT_TEXT("val2")
-}}};
+fcppt::enum_::names_array<myenum> const names{{{// NOLINT(cert-err58-cpp)
+                                                FCPPT_TEXT("val1"),
+                                                FCPPT_TEXT("val2")}}};
 
 }
 
 namespace fcppt::enum_
 {
-
-template<>
+template <>
 struct names_impl<myenum>
 {
-	static
-	fcppt::enum_::names_array<myenum> const &
-	get()
-	{
-		return ::names;
-	}
+  static fcppt::enum_::names_array<myenum> const &get() { return ::names; }
 };
 
 }
@@ -129,66 +98,43 @@ FCPPT_PP_POP_WARNING
 
 namespace
 {
-
-void
-enum_to_string()
+void enum_to_string()
 {
-// ![enum_to_string]
-	myenum const test{myenum::val2};
+  // ![enum_to_string]
+  myenum const test{myenum::val2};
 
-	fcppt::string const converted{
-		fcppt::enum_::to_string(test)
-	};
-// ![enum_to_string]
-	fcppt::io::cout()
-		<<
-		converted
-		<<
-		FCPPT_TEXT('\n');
+  fcppt::string const converted{fcppt::enum_::to_string(test)};
+  // ![enum_to_string]
+  fcppt::io::cout() << converted << FCPPT_TEXT('\n');
 }
 
-void
-enum_from_string()
+void enum_from_string()
 {
-// ![enum_from_string]
-	// Returns an empty optional
-	fcppt::optional::object<myenum> const enum1{
-		fcppt::enum_::from_string<myenum>(
-			FCPPT_TEXT("test")
-		)
-	};
+  // ![enum_from_string]
+  // Returns an empty optional
+  fcppt::optional::object<myenum> const enum1{
+      fcppt::enum_::from_string<myenum>(FCPPT_TEXT("test"))};
 
-	// Returns myenum::val1
-	fcppt::optional::object<myenum> const enum2{
-		fcppt::enum_::from_string<myenum>(
-			FCPPT_TEXT("val1")
-		)
-	};
-// ![enum_from_string]
+  // Returns myenum::val1
+  fcppt::optional::object<myenum> const enum2{
+      fcppt::enum_::from_string<myenum>(FCPPT_TEXT("val1"))};
+  // ![enum_from_string]
 
-	fcppt::io::cout()
-		<<
-		enum1.has_value()
-		<<
-		FCPPT_TEXT('\n')
-		<<
-		enum2.has_value()
-		<<
-		FCPPT_TEXT('\n');
+  fcppt::io::cout() << enum1.has_value() << FCPPT_TEXT('\n') << enum2.has_value()
+                    << FCPPT_TEXT('\n');
 }
 
 }
 
-int
-main()
+int main()
 {
-	print();
+  print();
 
-	iterate();
+  iterate();
 
-	enum_array();
+  enum_array();
 
-	enum_to_string();
+  enum_to_string();
 
-	enum_from_string();
+  enum_from_string();
 }
