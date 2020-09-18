@@ -8,6 +8,7 @@
 #define FCPPT_PARSE_SPACE_HPP_INCLUDED
 
 #include <fcppt/parse/char_set.hpp>
+#include <fcppt/parse/detail/space_set.hpp>
 
 
 namespace fcppt
@@ -21,9 +22,9 @@ space()
 {
 	return
 		fcppt::parse::char_set{
-			' ',
-			'\n',
-			'\t'
+			fcppt::parse::detail::space_set<
+				char
+			>()
 		};
 }
 

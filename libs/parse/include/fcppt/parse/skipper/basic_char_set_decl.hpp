@@ -4,15 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_BASIC_CHAR_SET_DECL_HPP_INCLUDED
-#define FCPPT_PARSE_BASIC_CHAR_SET_DECL_HPP_INCLUDED
+#ifndef FCPPT_PARSE_SKIPPER_BASIC_CHAR_SET_DECL_HPP_INCLUDED
+#define FCPPT_PARSE_SKIPPER_BASIC_CHAR_SET_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/basic_char_set_fwd.hpp>
-#include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/parse/tag.hpp>
+#include <fcppt/parse/skipper/basic_char_set_fwd.hpp>
+#include <fcppt/parse/skipper/result_fwd.hpp>
+#include <fcppt/parse/skipper/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
 #include <unordered_set>
@@ -23,13 +22,15 @@ namespace fcppt
 {
 namespace parse
 {
+namespace skipper
+{
 
 template<
 	typename Ch
 >
 class basic_char_set
 :
-	private fcppt::parse::tag
+	private fcppt::parse::skipper::tag
 {
 public:
 	using
@@ -50,28 +51,16 @@ public:
 		char_set_type &&
 	);
 
-	using
-	result_type
-	=
-	Ch;
-
-	template<
-		typename Skipper
-	>
 	[[nodiscard]]
-	fcppt::parse::result<
-		Ch,
-		result_type
+	fcppt::parse::skipper::result<
+		Ch
 	>
-	parse(
+	skip(
 		fcppt::reference<
 			fcppt::parse::state<
 				Ch
 			>
-		>,
-		fcppt::parse::context<
-			Skipper
-		> const &
+		>
 	) const;
 
 	[[nodiscard]]
@@ -81,6 +70,7 @@ private:
 	char_set_type chars_;
 };
 
+}
 }
 }
 

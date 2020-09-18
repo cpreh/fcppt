@@ -8,17 +8,11 @@
 #define FCPPT_PARSE_BASIC_CHAR_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
-#include <fcppt/either/from_optional.hpp>
 #include <fcppt/parse/basic_char_decl.hpp>
 #include <fcppt/parse/context_fwd.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/get_char.hpp>
+#include <fcppt/parse/get_char_error.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/state_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <string>
-#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -56,25 +50,8 @@ fcppt::parse::basic_char<
 ) const
 {
 	return
-		fcppt::either::from_optional(
-			fcppt::parse::get_char(
-				_state
-			),
-			[]{
-				return
-					fcppt::parse::error<
-						Ch
-					>{
-						std::basic_string<
-							Ch
-						>{
-							FCPPT_STRING_LITERAL(
-								Ch,
-								"EOF"
-							)
-						}
-					};
-			}
+		fcppt::parse::get_char_error(
+			_state
 		);
 }
 

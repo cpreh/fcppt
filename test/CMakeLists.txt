@@ -14,6 +14,7 @@ function(
 	set(
 		MULTI_ARGS
 		COMPILE_OPTIONS
+		INCLUDE_DIRS
 		LINK_LIBS
 	)
 
@@ -46,6 +47,8 @@ function(
 		LINK_LIBS
 			${_LINK_LIBS}
 			fcppt_core_interface
+		INCLUDE_DIRS
+			${_INCLUDE_DIRS}
 		COMPILE_OPTIONS
 			${_COMPILE_OPTIONS}
 	)

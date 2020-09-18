@@ -79,11 +79,12 @@ TEST_CASE(
 	"[parse]"
 )
 {
-	typedef
+	using
+	inner_type
+	=
 	fcppt::parse::recursive<
 		fcppt::parse::char_
-	>
-	inner_type;
+	>;
 
 	auto const parser(
 		inner_type{

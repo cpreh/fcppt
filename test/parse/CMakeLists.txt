@@ -164,6 +164,10 @@ add_fcppt_parse_test(
 	space
 )
 
+add_subdirectory(
+	skipper
+)
+
 add_fcppt_parse_test(
 	space_skipper
 )
