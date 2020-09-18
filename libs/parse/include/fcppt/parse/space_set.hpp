@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_DETAIL_SPACE_SET_HPP_INCLUDED
-#define FCPPT_PARSE_DETAIL_SPACE_SET_HPP_INCLUDED
+#ifndef FCPPT_PARSE_SPACE_SET_HPP_INCLUDED
+#define FCPPT_PARSE_SPACE_SET_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -16,8 +16,6 @@
 namespace fcppt
 {
 namespace parse
-{
-namespace detail
 {
 
 template<
@@ -39,7 +37,6 @@ space_set()
 		};
 }
 
-}
 }
 }
 

@@ -12,12 +12,11 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/digits.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/basic_int_decl.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -51,13 +50,11 @@ fcppt::parse::detail::basic_int<
 	Type
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	auto const parser{
@@ -71,7 +68,7 @@ fcppt::parse::detail::basic_int<
 		fcppt::either::bind(
 			parser.parse(
 				_state,
-				_context
+				_skipper
 			),
 			[](
 				fcppt::parse::result_of<

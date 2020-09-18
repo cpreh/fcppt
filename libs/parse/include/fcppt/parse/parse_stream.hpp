@@ -8,13 +8,12 @@
 #define FCPPT_PARSE_PARSE_STREAM_HPP_INCLUDED
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/parse/context_impl.hpp>
-#include <fcppt/parse/is_skipper.hpp>
-#include <fcppt/parse/is_valid_argument.hpp>
+#include <fcppt/parse/is_parser.hpp>
 #include <fcppt/parse/parse.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
+#include <fcppt/parse/skipper/is_skipper.hpp>
 
 
 namespace fcppt
@@ -42,13 +41,13 @@ parse_stream(
 )
 {
 	static_assert(
-		fcppt::parse::is_valid_argument<
+		fcppt::parse::is_parser<
 			Parser
 		>::value
 	);
 
 	static_assert(
-		fcppt::parse::is_skipper<
+		fcppt::parse::skipper::is_skipper<
 			Skipper
 		>::value
 	);

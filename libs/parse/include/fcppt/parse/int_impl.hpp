@@ -12,18 +12,17 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/either/monad.hpp>
 #include <fcppt/monad/chain.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/int_decl.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/make_literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/basic_int_impl.hpp>
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
@@ -55,13 +54,11 @@ fcppt::parse::int_<
 	Type
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	auto const parser{
@@ -79,14 +76,14 @@ fcppt::parse::int_<
 
 	return
 		fcppt::monad::chain(
-			fcppt::parse::run_skipper(
-				_state,
-				_context
+			fcppt::parse::skipper::run(
+				_skipper,
+				_state
 			),
 			[
 				&parser,
 				&_state,
-				&_context
+				&_skipper
 			](
 				fcppt::unit
 			)
@@ -94,7 +91,7 @@ fcppt::parse::int_<
 				return
 					parser.parse(
 						_state,
-						_context
+						_skipper
 					);
 			},
 			[](

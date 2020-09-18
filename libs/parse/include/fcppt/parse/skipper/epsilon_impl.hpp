@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_SKIPPER_EPSILON_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/skipper/epsilon_decl.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/result.hpp>
@@ -26,7 +26,7 @@ fcppt::parse::skipper::result<
 >
 fcppt::parse::skipper::epsilon::skip(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	>

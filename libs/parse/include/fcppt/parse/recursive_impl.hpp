@@ -10,13 +10,12 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/construct.hpp>
-#include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/recursive_decl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -57,13 +56,11 @@ fcppt::parse::recursive<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	return
@@ -81,7 +78,7 @@ fcppt::parse::recursive<
 			)
 		).parse(
 			_state,
-			_context
+			_skipper
 		);
 }
 

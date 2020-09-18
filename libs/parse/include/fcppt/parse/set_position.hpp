@@ -10,7 +10,6 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_stream_impl.hpp>
 #include <fcppt/parse/position.hpp>
-#include <fcppt/parse/state_impl.hpp>
 
 
 namespace fcppt
@@ -24,7 +23,7 @@ template<
 void
 set_position(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
@@ -33,7 +32,7 @@ set_position(
 	> const _pos
 )
 {
-	_state.get().stream().set_position(
+	_state.get().set_position(
 		_pos
 	);
 }

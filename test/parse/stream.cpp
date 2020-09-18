@@ -9,13 +9,13 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/column.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/line.hpp>
 #include <fcppt/parse/location.hpp>
 #include <fcppt/parse/parse.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/position_output.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <ios>
@@ -53,7 +53,7 @@ TEST_CASE(
 			fcppt::parse::parse(
 				fcppt::parse::char_{},
 				stream,
-				fcppt::parse::epsilon{}
+				fcppt::parse::skipper::epsilon{}
 			);
 		}
 	};

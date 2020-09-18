@@ -35,12 +35,12 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/separator.hpp>
-#include <fcppt/parse/space_skipper.hpp>
 #include <fcppt/parse/string.hpp>
 #include <fcppt/parse/operators/alternative.hpp>
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -327,7 +327,7 @@ using
 skipper
 =
 decltype(
-	fcppt::parse::space_skipper()
+	fcppt::parse::skipper::space()
 );
 
 template<
@@ -459,7 +459,7 @@ parse_string(
 			std::move(
 				_input
 			),
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		);
 }
 

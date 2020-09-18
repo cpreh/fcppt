@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_SKIPPER_BASIC_CHAR_SET_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/skipper/basic_char_set_fwd.hpp>
 #include <fcppt/parse/skipper/result_fwd.hpp>
 #include <fcppt/parse/skipper/tag.hpp>
@@ -57,7 +57,7 @@ public:
 	>
 	skip(
 		fcppt::reference<
-			fcppt::parse::state<
+			fcppt::parse::basic_stream<
 				Ch
 			>
 		>

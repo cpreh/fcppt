@@ -4,13 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_MAKE_SKIPPER_HPP_INCLUDED
-#define FCPPT_PARSE_MAKE_SKIPPER_HPP_INCLUDED
+#ifndef FCPPT_PARSE_BLANK_SET_HPP_INCLUDED
+#define FCPPT_PARSE_BLANK_SET_HPP_INCLUDED
 
-#include <fcppt/parse/make_ignore.hpp>
-#include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/char_literal.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
+#include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,23 +19,21 @@ namespace parse
 {
 
 template<
-	typename Parser
+	typename Ch
 >
 inline
-auto
-make_skipper(
-	Parser &&_parser
-)
+std::unordered_set<
+	Ch
+>
+blank_set()
 {
 	return
-		fcppt::parse::make_ignore(
-			*
-			std::forward<
-				Parser
-			>(
-				_parser
-			)
-		);
+		std::unordered_set<
+			Ch
+		>{
+			FCPPT_CHAR_LITERAL(Ch, ' '),
+			FCPPT_CHAR_LITERAL(Ch, '\t')
+		};
 }
 
 }

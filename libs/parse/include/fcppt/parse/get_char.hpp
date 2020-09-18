@@ -10,7 +10,6 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/basic_stream_impl.hpp>
-#include <fcppt/parse/state_impl.hpp>
 
 
 namespace fcppt
@@ -26,14 +25,14 @@ fcppt::optional::object<
 >
 get_char(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state
 )
 {
 	return
-		_state.get().stream().get_char();
+		_state.get().get_char();
 }
 
 }

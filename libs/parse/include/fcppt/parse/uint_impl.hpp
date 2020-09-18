@@ -10,14 +10,13 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/uint_decl.hpp>
 #include <fcppt/parse/detail/basic_int_impl.hpp>
+#include <fcppt/parse/skipper/run.hpp>
 
 
 template<
@@ -46,13 +45,11 @@ fcppt::parse::uint<
 	Type
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	auto const parser{
@@ -65,14 +62,14 @@ fcppt::parse::uint<
 
 	return
 		fcppt::either::bind(
-			fcppt::parse::run_skipper(
-				_state,
-				_context
+			fcppt::parse::skipper::run(
+				_skipper,
+				_state
 			),
 			[
 				&parser,
 				&_state,
-				&_context
+				&_skipper
 			](
 				fcppt::unit
 			)
@@ -80,7 +77,7 @@ fcppt::parse::uint<
 				return
 					parser.parse(
 						_state,
-						_context
+						_skipper
 					);
 			}
 		);

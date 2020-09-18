@@ -11,7 +11,7 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
@@ -20,7 +20,6 @@
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/set_position.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <utility>
@@ -62,13 +61,11 @@ fcppt::parse::not_<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	fcppt::parse::position<
@@ -84,7 +81,7 @@ fcppt::parse::not_<
 			this->parser_
 		).parse(
 			_state,
-			_context
+			_skipper
 		).has_success()
 	};
 

@@ -7,6 +7,7 @@
 #ifndef FCPPT_PARSE_BLANK_HPP_INCLUDED
 #define FCPPT_PARSE_BLANK_HPP_INCLUDED
 
+#include <fcppt/parse/blank_set.hpp>
 #include <fcppt/parse/char_set.hpp>
 
 
@@ -21,8 +22,9 @@ blank()
 {
 	return
 		fcppt::parse::char_set{
-			' ',
-			'\t'
+			fcppt::parse::blank_set<
+				char
+			>()
 		};
 }
 

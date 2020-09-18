@@ -8,15 +8,15 @@
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/space_skipper.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
+#include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -37,7 +37,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		).has_failure()
 	);
 
@@ -47,7 +47,7 @@ TEST_CASE(
 			std::string{
 				"X"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		).has_failure()
 	);
 
@@ -57,7 +57,7 @@ TEST_CASE(
 			std::string{
 				" 42"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		).has_failure()
 	);
 
@@ -67,7 +67,7 @@ TEST_CASE(
 			std::string{
 				"42"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
@@ -83,7 +83,7 @@ TEST_CASE(
 			std::string{
 				"-42"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
@@ -117,7 +117,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		).has_failure()
 	);
 
@@ -127,7 +127,7 @@ TEST_CASE(
 			std::string{
 				"12, 3"
 			},
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		)
 		==
 		fcppt::parse::make_success<
@@ -167,7 +167,7 @@ TEST_CASE(
 			std::string{
 				"10 20"
 			},
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		)
 		==
 		fcppt::parse::make_success<

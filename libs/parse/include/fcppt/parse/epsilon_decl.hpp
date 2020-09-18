@@ -9,10 +9,9 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/unit_fwd.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/epsilon_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 
 
@@ -44,13 +43,11 @@ public:
 	>
 	parse(
 		fcppt::reference<
-			fcppt::parse::state<
+			fcppt::parse::basic_stream<
 				Ch
 			>
 		>,
-		fcppt::parse::context<
-			Skipper
-		> const &
+		Skipper const &
 	) const;
 };
 

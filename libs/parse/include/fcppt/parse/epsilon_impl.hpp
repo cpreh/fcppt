@@ -9,11 +9,10 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/epsilon_decl.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 
 
 inline
@@ -30,13 +29,11 @@ fcppt::parse::result<
 >
 fcppt::parse::epsilon::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	>,
-	fcppt::parse::context<
-		Skipper
-	> const &
+	Skipper const &
 ) const
 {
 	return

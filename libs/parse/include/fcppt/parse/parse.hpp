@@ -7,22 +7,19 @@
 #ifndef FCPPT_PARSE_PARSE_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_HPP_INCLUDED
 
-#include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/context_impl.hpp>
 #include <fcppt/parse/error.hpp>
-#include <fcppt/parse/is_skipper.hpp>
-#include <fcppt/parse/is_valid_argument.hpp>
+#include <fcppt/parse/is_parser.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/run_skipper.hpp>
-#include <fcppt/parse/state_impl.hpp>
 #include <fcppt/parse/detail/exception.hpp>
+#include <fcppt/parse/skipper/is_skipper.hpp>
+#include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -54,45 +51,29 @@ parse(
 try
 {
 	static_assert(
-		fcppt::parse::is_valid_argument<
+		fcppt::parse::is_parser<
 			Parser
 		>::value
 	);
 
 	static_assert(
-		fcppt::parse::is_skipper<
+		fcppt::parse::skipper::is_skipper<
 			Skipper
 		>::value
 	);
 
-	fcppt::parse::state<
-		Ch
-	> state{
-		fcppt::make_ref(
-			_input
-		)
-	};
-
-	fcppt::parse::context<
-		Skipper
-	> const context{
-		fcppt::make_cref(
-			_skipper
-		)
-	};
-
 	return
 		fcppt::either::bind(
-			fcppt::parse::run_skipper(
+			fcppt::parse::skipper::run(
+				_skipper,
 				fcppt::make_ref(
-					state
-				),
-				context
+					_input
+				)
 			),
 			[
-				&context,
-				&state,
-				&_parser
+				&_parser,
+				&_input,
+				&_skipper
 			](
 				fcppt::unit const &
 			)
@@ -100,9 +81,9 @@ try
 				return
 					_parser.parse(
 						fcppt::make_ref(
-							state
+							_input
 						),
-						context
+						_skipper
 					);
 			}
 		);

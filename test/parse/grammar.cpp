@@ -15,7 +15,7 @@
 #include <fcppt/parse/grammar_parse_string.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/space_skipper.hpp>
+#include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -33,7 +33,7 @@ using
 skipper
 =
 decltype(
-	fcppt::parse::space_skipper()
+	fcppt::parse::skipper::space()
 );
 
 class grammar
@@ -67,7 +67,7 @@ grammar::grammar()
 		fcppt::make_cref(
 			this->start_
 		),
-		fcppt::parse::space_skipper()
+		fcppt::parse::skipper::space()
 	},
 	start_{
 		grammar_base::make_base(

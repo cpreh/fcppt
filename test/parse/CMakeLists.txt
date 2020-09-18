@@ -97,11 +97,6 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
-	is_skipper
-	NO_CODE
-)
-
-add_fcppt_parse_test(
 	lexeme
 )
 

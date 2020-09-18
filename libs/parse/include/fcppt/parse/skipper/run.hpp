@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_SKIPPER_RUN_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/skipper/is_skipper.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 
@@ -31,7 +31,7 @@ fcppt::parse::skipper::result<
 run(
 	Skipper const &_skipper,
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state

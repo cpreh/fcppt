@@ -11,7 +11,6 @@
 #include <fcppt/parse/basic_char_set.hpp>
 #include <fcppt/parse/basic_literal.hpp>
 #include <fcppt/parse/char_set.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
@@ -20,6 +19,7 @@
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -50,7 +50,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
@@ -64,7 +64,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{"test"},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
@@ -80,7 +80,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{"test1,test2,test3"},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
@@ -123,7 +123,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{"X=1,Y=2"},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<
@@ -166,7 +166,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::wstring{L"test1,test2"},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<

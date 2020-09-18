@@ -22,6 +22,11 @@ add_fcppt_parse_skipper_test(
 )
 
 add_fcppt_parse_skipper_test(
+	is_skipper
+	NO_CODE
+)
+
+add_fcppt_parse_skipper_test(
 	literal
 )
 

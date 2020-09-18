@@ -7,14 +7,12 @@
 #ifndef FCPPT_PARSE_LEXEME_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_LEXEME_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/context_impl.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/lexeme_decl.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -55,31 +53,20 @@ fcppt::parse::lexeme<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &
+	Skipper const &
 ) const
 {
-	fcppt::parse::epsilon const skipper{};
-
-	fcppt::parse::context<
-		fcppt::parse::epsilon
-	> const context{
-		fcppt::make_cref(
-			skipper
-		)
-	};
 
 	return
 		fcppt::parse::deref(
 			this->parser_
 		).parse(
 			_state,
-			context
+			fcppt::parse::skipper::epsilon{}
 		);
 }
 

@@ -4,30 +4,35 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PARSE_SPACE_HPP_INCLUDED
-#define FCPPT_PARSE_SPACE_HPP_INCLUDED
+#ifndef FCPPT_PARSE_SKIPPER_SPACE_HPP_INCLUDED
+#define FCPPT_PARSE_SKIPPER_SPACE_HPP_INCLUDED
 
-#include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/space_set.hpp>
+#include <fcppt/parse/skipper/char_set.hpp>
+#include <fcppt/parse/skipper/operators/repetition.hpp>
 
 
 namespace fcppt
 {
 namespace parse
 {
+namespace skipper
+{
 
 inline
-fcppt::parse::char_set
+auto
 space()
 {
 	return
-		fcppt::parse::char_set{
+		*
+		fcppt::parse::skipper::char_set{
 			fcppt::parse::space_set<
 				char
 			>()
 		};
 }
 
+}
 }
 }
 

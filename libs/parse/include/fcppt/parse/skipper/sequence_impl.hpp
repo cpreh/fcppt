@@ -10,8 +10,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/no_error.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/parse/skipper/sequence_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -59,7 +59,7 @@ fcppt::parse::skipper::sequence<
 	Right
 >::skip(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state

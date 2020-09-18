@@ -12,6 +12,7 @@
 #include <fcppt/either/match.hpp>
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/optional/from.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>

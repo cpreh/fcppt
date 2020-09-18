@@ -11,15 +11,15 @@
 #include <fcppt/reference_to_base.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/parse/error_add.hpp>
-#include <fcppt/parse/is_skipper.hpp>
-#include <fcppt/parse/is_valid_argument.hpp>
+#include <fcppt/parse/is_parser.hpp>
 #include <fcppt/parse/parse_stream.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/detail/consume_remaining.hpp>
+#include <fcppt/parse/skipper/is_skipper.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <istream>
 #include <ios>
+#include <istream>
 #include <sstream>
 #include <string>
 #include <utility>
@@ -51,13 +51,13 @@ parse_string(
 )
 {
 	static_assert(
-		fcppt::parse::is_valid_argument<
+		fcppt::parse::is_parser<
 			Parser
 		>::value
 	);
 
 	static_assert(
-		fcppt::parse::is_skipper<
+		fcppt::parse::skipper::is_skipper<
 			Skipper
 		>::value
 	);

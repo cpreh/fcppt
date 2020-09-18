@@ -7,8 +7,8 @@
 #ifndef FCPPT_STRING_LITERAL_HPP_INCLUDED
 #define FCPPT_STRING_LITERAL_HPP_INCLUDED
 
-#include <fcppt/detail/string_literal.hpp>
 #include <fcppt/detail/make_char_literals.hpp>
+#include <fcppt/detail/string_literal.hpp>
 
 
 /**

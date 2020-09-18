@@ -11,14 +11,13 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/sequence_decl.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/sequence_result.hpp>
+#include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -70,13 +69,11 @@ fcppt::parse::sequence<
 	Right
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	return
@@ -85,11 +82,11 @@ fcppt::parse::sequence<
 				this->left_
 			).parse(
 				_state,
-				_context
+				_skipper
 			),
 			[
 				&_state,
-				&_context,
+				&_skipper,
 				this
 			](
 				fcppt::parse::result_of<
@@ -99,14 +96,14 @@ fcppt::parse::sequence<
 			{
 				return
 					fcppt::either::bind(
-						fcppt::parse::run_skipper(
-							_state,
-							_context
+						fcppt::parse::skipper::run(
+							_skipper,
+							_state
 						),
 						[
 							&_left_result,
 							_state,
-							&_context,
+							&_skipper,
 							this
 						](
 							fcppt::unit const &
@@ -118,7 +115,7 @@ fcppt::parse::sequence<
 										this->right_
 									).parse(
 										_state,
-										_context
+										_skipper
 									),
 									[
 										&_left_result

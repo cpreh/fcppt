@@ -10,9 +10,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/skipper/literal.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
-#include <fcppt/test/parse/skipper/skip_string.hpp>
 #include <fcppt/parse/skipper/operators/repetition.hpp>
 #include <fcppt/parse/skipper/operators/sequence.hpp>
+#include <fcppt/test/parse/skipper/skip_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>

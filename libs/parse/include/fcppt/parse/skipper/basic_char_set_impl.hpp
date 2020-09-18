@@ -12,8 +12,9 @@
 #include <fcppt/container/contains.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/either/bind.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/get_char_error.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/detail/expected.hpp>
 #include <fcppt/parse/skipper/basic_char_set_decl.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
@@ -72,7 +73,7 @@ fcppt::parse::skipper::basic_char_set<
 	Ch
 >::skip(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state
@@ -102,7 +103,9 @@ fcppt::parse::skipper::basic_char_set<
 					:
 						fcppt::parse::skipper::make_failure(
 							fcppt::parse::detail::expected(
-								_state.get().stream().get_position(),
+								fcppt::parse::get_position(
+									_state
+								),
 								fcppt::output_to_string<
 									std::basic_string<
 										Ch

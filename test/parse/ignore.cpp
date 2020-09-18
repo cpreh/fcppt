@@ -9,12 +9,12 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/error_equal.hpp>
 #include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_ignore.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -36,7 +36,7 @@ TEST_CASE(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		).has_failure()
 	);
 
@@ -46,7 +46,7 @@ TEST_CASE(
 			std::string{
 				"X"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<

@@ -10,10 +10,10 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
 #include <fcppt/either/from_optional.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_char.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -33,7 +33,7 @@ fcppt::parse::result<
 >
 get_char_error(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state

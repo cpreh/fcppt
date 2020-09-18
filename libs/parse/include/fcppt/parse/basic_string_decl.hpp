@@ -9,11 +9,10 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/unit_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/basic_string_fwd.hpp>
-#include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/is_char.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -61,13 +60,11 @@ public:
 	>
 	parse(
 		fcppt::reference<
-			fcppt::parse::state<
+			fcppt::parse::basic_stream<
 				Ch
 			>
 		>,
-		fcppt::parse::context<
-			Skipper
-		> const &
+		Skipper const &
 	) const;
 private:
 	std::basic_string<

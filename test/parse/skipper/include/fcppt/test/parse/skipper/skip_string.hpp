@@ -12,14 +12,13 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/parse/basic_stream_impl.hpp>
 #include <fcppt/parse/error.hpp>
-#include <fcppt/parse/state_impl.hpp>
+#include <fcppt/parse/detail/consume_remaining.hpp>
+#include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
 #include <fcppt/parse/skipper/is_skipper.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/parse/skipper/run.hpp>
-#include <fcppt/parse/detail/consume_remaining.hpp>
-#include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
 #include <istream>
@@ -86,20 +85,6 @@ try
 		)
 	};
 
-	fcppt::parse::state<
-		Ch
-	> state{
-		fcppt::reference_to_base<
-			fcppt::parse::basic_stream<
-				Ch
-			>
-		>(
-			fcppt::make_ref(
-				stream
-			)
-		)
-	};
-
 	return
 		fcppt::parse::detail::consume_remaining(
 			fcppt::reference_to_base<
@@ -113,8 +98,14 @@ try
 			),
 			fcppt::parse::skipper::run(
 				_skipper,
-				fcppt::make_ref(
-					state
+				fcppt::reference_to_base<
+					fcppt::parse::basic_stream<
+						Ch
+					>
+				>(
+					fcppt::make_ref(
+						stream
+					)
 				)
 			)
 		);

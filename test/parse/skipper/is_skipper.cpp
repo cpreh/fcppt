@@ -5,23 +5,23 @@
 
 
 #include <fcppt/not.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/int.hpp>
-#include <fcppt/parse/is_skipper.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
+#include <fcppt/parse/skipper/is_skipper.hpp>
 
 
 int
 main()
 {
 	static_assert(
-		fcppt::parse::is_skipper<
-			fcppt::parse::epsilon
+		fcppt::parse::skipper::is_skipper<
+			fcppt::parse::skipper::epsilon
 		>::value
 	);
 
 	static_assert(
 		fcppt::not_(
-			fcppt::parse::is_skipper<
+			fcppt::parse::skipper::is_skipper<
 				fcppt::parse::int_<
 					int
 				>

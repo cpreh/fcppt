@@ -13,12 +13,11 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/basic_string_decl.hpp>
-#include <fcppt/parse/context_fwd.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -60,13 +59,11 @@ fcppt::parse::basic_string<
 	Ch
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	fcppt::parse::basic_char<
@@ -82,7 +79,7 @@ fcppt::parse::basic_string<
 		if(
 			impl.parse(
 				_state,
-				_context
+				_skipper
 			)
 			!=
 			fcppt::parse::make_success<

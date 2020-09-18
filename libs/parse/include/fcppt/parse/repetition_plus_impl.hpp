@@ -12,12 +12,11 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/repetition_plus_decl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -62,13 +61,11 @@ fcppt::parse::repetition_plus<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	auto const parser{
@@ -90,7 +87,7 @@ fcppt::parse::repetition_plus<
 		fcppt::either::map(
 			parser.parse(
 				_state,
-				_context
+				_skipper
 			),
 			[](
 				fcppt::parse::result_of<

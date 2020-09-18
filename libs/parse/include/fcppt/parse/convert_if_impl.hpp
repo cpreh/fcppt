@@ -9,12 +9,11 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/bind.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/convert_if_decl.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -70,13 +69,11 @@ fcppt::parse::convert_if<
 	Result
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	return
@@ -85,7 +82,7 @@ fcppt::parse::convert_if<
 				this->parser_
 			).parse(
 				_state,
-				_context
+				_skipper
 			),
 			[
 				this

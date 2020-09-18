@@ -8,8 +8,8 @@
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/make_base.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -23,11 +23,11 @@ TEST_CASE(
 	fcppt::parse::base_unique_ptr<
 		char,
 		char,
-		fcppt::parse::epsilon
+		fcppt::parse::skipper::epsilon
 	> const parser{
 		fcppt::parse::make_base<
 			char,
-			fcppt::parse::epsilon
+			fcppt::parse::skipper::epsilon
 		>(
 			fcppt::parse::char_{}
 		)

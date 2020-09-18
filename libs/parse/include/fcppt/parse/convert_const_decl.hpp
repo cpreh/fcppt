@@ -8,10 +8,9 @@
 #define FCPPT_PARSE_CONVERT_CONST_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/convert_const_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -58,13 +57,11 @@ public:
 	>
 	parse(
 		fcppt::reference<
-			fcppt::parse::state<
+			fcppt::parse::basic_stream<
 				Ch
 			>
 		>,
-		fcppt::parse::context<
-			Skipper
-		> const &
+		Skipper const &
 	) const;
 private:
 	Parser parser_;

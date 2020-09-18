@@ -10,16 +10,16 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/no_error.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/position.hpp>
+#include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/repetition_decl.hpp>
 #include <fcppt/parse/skipper/result.hpp>
-#include <fcppt/parse/set_position.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -55,7 +55,7 @@ fcppt::parse::skipper::repetition<
 	Parser
 >::skip(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state

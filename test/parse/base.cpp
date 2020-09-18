@@ -8,13 +8,13 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/epsilon.hpp>
 #include <fcppt/parse/error_equal.hpp>
 #include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -29,11 +29,11 @@ TEST_CASE(
 	fcppt::parse::base_unique_ptr<
 		std::string,
 		char,
-		fcppt::parse::epsilon
+		fcppt::parse::skipper::epsilon
 	> const parser{
 		fcppt::parse::make_base<
 			char,
-			fcppt::parse::epsilon
+			fcppt::parse::skipper::epsilon
 		>(
 			*fcppt::parse::char_{}
 		)
@@ -45,7 +45,7 @@ TEST_CASE(
 			std::string{
 				"XY"
 			},
-			fcppt::parse::epsilon{}
+			fcppt::parse::skipper::epsilon{}
 		)
 		==
 		fcppt::parse::make_success<

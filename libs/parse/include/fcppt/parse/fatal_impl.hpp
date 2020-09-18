@@ -9,13 +9,12 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/map_failure.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/fatal_decl.hpp>
 #include <fcppt/parse/fatal_tag.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -56,13 +55,11 @@ fcppt::parse::fatal<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	return
@@ -71,7 +68,7 @@ fcppt::parse::fatal<
 				this->parser_
 			).parse(
 				_state,
-				_context
+				_skipper
 			),
 			[](
 				fcppt::parse::error<

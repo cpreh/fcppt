@@ -13,7 +13,7 @@
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
@@ -22,9 +22,8 @@
 #include <fcppt/parse/repetition_decl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/run_skipper.hpp>
 #include <fcppt/parse/set_position.hpp>
-#include <fcppt/parse/state_fwd.hpp>
+#include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -65,13 +64,11 @@ fcppt::parse::repetition<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	fcppt::parse::position<
@@ -91,7 +88,7 @@ fcppt::parse::repetition<
 			[
 				this,
 				_state,
-				&_context
+				&_skipper
 			]{
 				return
 					fcppt::either::bind(
@@ -99,11 +96,11 @@ fcppt::parse::repetition<
 							this->parser_
 						).parse(
 							_state,
-							_context
+							_skipper
 						),
 						[
 							_state,
-							&_context
+							&_skipper
 						](
 							fcppt::parse::result_of<
 								Parser
@@ -112,9 +109,9 @@ fcppt::parse::repetition<
 						{
 							return
 								fcppt::either::map(
-									fcppt::parse::run_skipper(
-										_state,
-										_context
+									fcppt::parse::skipper::run(
+										_skipper,
+										_state
 									),
 									[
 										&_element

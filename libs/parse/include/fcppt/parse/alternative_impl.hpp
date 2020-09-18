@@ -12,7 +12,7 @@
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/parse/alternative_decl.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
@@ -21,7 +21,6 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/set_position.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/make_alternative.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -76,13 +75,11 @@ fcppt::parse::alternative<
 	Right
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	fcppt::parse::position<
@@ -99,12 +96,12 @@ fcppt::parse::alternative<
 				this->left_
 			).parse(
 				_state,
-				_context
+				_skipper
 			),
 			[
 				old_pos,
 				&_state,
-				&_context,
+				&_skipper,
 				this
 			](
 				fcppt::parse::error<
@@ -132,7 +129,7 @@ fcppt::parse::alternative<
 								this->right_
 							).parse(
 								_state,
-								_context
+								_skipper
 							),
 							[
 								&_left_error

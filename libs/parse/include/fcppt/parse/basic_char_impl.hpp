@@ -9,10 +9,9 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_char_decl.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/get_char_error.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 
 
 template<
@@ -40,13 +39,11 @@ fcppt::parse::basic_char<
 	Ch
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &
+	Skipper const &
 ) const
 {
 	return

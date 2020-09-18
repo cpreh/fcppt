@@ -15,10 +15,10 @@
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_char_set_decl.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
+#include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/expected.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
@@ -80,13 +80,11 @@ fcppt::parse::basic_char_set<
 	Ch
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	fcppt::parse::basic_char<
@@ -97,7 +95,7 @@ fcppt::parse::basic_char_set<
 		fcppt::either::bind(
 			parser.parse(
 				_state,
-				_context
+				_skipper
 			),
 			[
 				_state,
@@ -122,7 +120,9 @@ fcppt::parse::basic_char_set<
 							result_type
 						>(
 							fcppt::parse::detail::expected(
-								_state.get().stream().get_position(),
+								fcppt::parse::get_position(
+									_state
+								),
 								fcppt::output_to_string<
 									std::basic_string<
 										Ch

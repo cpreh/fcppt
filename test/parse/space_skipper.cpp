@@ -12,8 +12,8 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/space_skipper.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -29,19 +29,20 @@ TEST_CASE(
 		*fcppt::parse::char_{}
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		decltype(
 			parser
 		)
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
 			std::string{},
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		)
 		==
 		fcppt::parse::make_success<
@@ -57,7 +58,7 @@ TEST_CASE(
 			std::string{
 				" \t"
 			},
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		)
 		==
 		fcppt::parse::make_success<
@@ -73,7 +74,7 @@ TEST_CASE(
 			std::string{
 				" \t\nab"
 			},
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		)
 		==
 		fcppt::parse::make_success<

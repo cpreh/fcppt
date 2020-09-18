@@ -9,9 +9,8 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/base_impl.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/parse/detail/concrete_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -72,19 +71,17 @@ fcppt::parse::detail::concrete<
 	Skipper
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	return
 		this->parser_.parse(
 			_state,
-			_context
+			_skipper
 		);
 }
 

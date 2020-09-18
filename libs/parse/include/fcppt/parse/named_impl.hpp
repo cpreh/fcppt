@@ -10,12 +10,11 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
 #include <fcppt/either/map_failure.hpp>
-#include <fcppt/parse/context_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/named_decl.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <utility>
@@ -69,13 +68,11 @@ fcppt::parse::named<
 	Parser
 >::parse(
 	fcppt::reference<
-		fcppt::parse::state<
+		fcppt::parse::basic_stream<
 			Ch
 		>
 	> const _state,
-	fcppt::parse::context<
-		Skipper
-	> const &_context
+	Skipper const &_skipper
 ) const
 {
 	return
@@ -84,7 +81,7 @@ fcppt::parse::named<
 				this->parser_
 			).parse(
 				_state,
-				_context
+				_skipper
 			),
 			[
 				this

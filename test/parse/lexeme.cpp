@@ -13,8 +13,8 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/space_skipper.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
+#include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -46,7 +46,7 @@ TEST_CASE(
 			std::string{
 				"a b "
 			},
-			fcppt::parse::space_skipper()
+			fcppt::parse::skipper::space()
 		)
 		==
 		fcppt::parse::make_success<
