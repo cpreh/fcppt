@@ -7,9 +7,7 @@
 #ifndef FCPPT_PARSE_SKIPPER_SPACE_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_SPACE_HPP_INCLUDED
 
-#include <fcppt/parse/space_set.hpp>
-#include <fcppt/parse/skipper/char_set.hpp>
-#include <fcppt/parse/skipper/operators/repetition.hpp>
+#include <fcppt/parse/skipper/basic_space.hpp>
 
 
 namespace fcppt
@@ -24,12 +22,9 @@ auto
 space()
 {
 	return
-		*
-		fcppt::parse::skipper::char_set{
-			fcppt::parse::space_set<
-				char
-			>()
-		};
+		fcppt::parse::skipper::basic_space<
+			char
+		>();
 }
 
 }

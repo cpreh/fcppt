@@ -8,9 +8,7 @@
 #define FCPPT_PARSE_BLANK_SET_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <unordered_set>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/parse/basic_char_set_container.hpp>
 
 
 namespace fcppt
@@ -22,13 +20,13 @@ template<
 	typename Ch
 >
 inline
-std::unordered_set<
+fcppt::parse::basic_char_set_container<
 	Ch
 >
 blank_set()
 {
 	return
-		std::unordered_set<
+		fcppt::parse::basic_char_set_container<
 			Ch
 		>{
 			FCPPT_CHAR_LITERAL(Ch, ' '),

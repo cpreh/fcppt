@@ -37,3 +37,7 @@ add_fcppt_parse_skipper_test(
 add_fcppt_parse_skipper_test(
 	sequence
 )
+
+add_fcppt_parse_skipper_test(
+	space
+)

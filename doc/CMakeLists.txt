@@ -1849,6 +1849,7 @@ set(
 	libs/parse/include/fcppt/parse/basic_char_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_char_impl.hpp
 	libs/parse/include/fcppt/parse/basic_char_set.hpp
+	libs/parse/include/fcppt/parse/basic_char_set_container.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_decl.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_impl.hpp
@@ -2039,6 +2040,7 @@ set(
 	libs/parse/include/fcppt/parse/skipper/basic_literal_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_literal_fwd.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_literal_impl.hpp
+	libs/parse/include/fcppt/parse/skipper/basic_space.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set_fwd.hpp

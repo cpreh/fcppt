@@ -8,13 +8,13 @@
 #define FCPPT_PARSE_SKIPPER_BASIC_CHAR_SET_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/parse/basic_char_set_container.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/skipper/basic_char_set_fwd.hpp>
 #include <fcppt/parse/skipper/result_fwd.hpp>
 #include <fcppt/parse/skipper/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
-#include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,7 +36,7 @@ public:
 	using
 	char_set_type
 	=
-	std::unordered_set<
+	fcppt::parse::basic_char_set_container<
 		Ch
 	>;
 
