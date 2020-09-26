@@ -11,7 +11,7 @@
 #include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/skipper/space.hpp>
@@ -41,7 +41,7 @@ TEST_CASE(
 	result_type;
 
 	CHECK(
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			parser,
 			std::string{
 				"a b "

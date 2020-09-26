@@ -6,6 +6,7 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_to_base.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/column.hpp>
@@ -15,7 +16,6 @@
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/position_output.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
-#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <ios>
@@ -50,10 +50,11 @@ TEST_CASE(
 		[
 			&stream
 		]{
-			fcppt::parse::parse(
-				fcppt::parse::char_{},
-				stream,
-				fcppt::parse::skipper::epsilon{}
+			FCPPT_USE(
+				fcppt::parse::parse(
+					fcppt::parse::char_{},
+					stream
+				)
 			);
 		}
 	};

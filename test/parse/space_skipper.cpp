@@ -10,7 +10,7 @@
 #include <fcppt/parse/error_equal.hpp>
 #include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/skipper/space.hpp>
@@ -39,7 +39,7 @@ TEST_CASE(
 	>;
 
 	CHECK(
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			parser,
 			std::string{},
 			fcppt::parse::skipper::space()
@@ -53,7 +53,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			parser,
 			std::string{
 				" \t"
@@ -69,7 +69,7 @@ TEST_CASE(
 	);
 
 	CHECK(
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			parser,
 			std::string{
 				" \t\nab"

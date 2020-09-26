@@ -3,7 +3,7 @@
 \ingroup fcpptmain
 \brief Library for parsers
 
-<b>Link to <code>fcppt_options_interface</code>.</b>
+<b>Link to <code>fcppt_parse_interface</code>.</b>
 
 <table id="toc">
 <tr>
@@ -18,6 +18,38 @@
 </table>
 
 \section fcpptparse_introduction Introduction
+
+In a broad sense, a parser gets a string as input and if it belongs to a certain language, produces a specific output.
+For example, suppose we want to parse numbers of the form
+<code>[0-9]*</code>, where we allow multiple leading zeroes for simplicity.
+Each word that belongs to this language should produce a word over the alphabet
+<code>{0,...,9}</code>.
+To encode this in C++, we start with an enum of the form
+\snippet parse/main.cpp digit
+Next, we create a function that given <code>char c</code> and <code>digit d</code>,
+it produces a parser that returns <code>d</code> if and only if it gets <code>c</code> as input:
+\snippet parse/main.cpp make_digit
+
+\section fcpptparse_definition Parser definition
+
+A parser is an object with the following properties:
+
+<ul>
+<li>
+It inherits from #fcppt::parse::tag.
+</li>
+<li>
+It has a typedef <code>result_type</code>.
+</li>
+<li>
+It has a member function
+\code
+template<typename Ch, typename Skipper>
+fcppt::parse::result<Ch, result_type>
+parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const
+\endcode
+</li>
+</ul>
 
 */
 

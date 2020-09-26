@@ -7,11 +7,7 @@
 #ifndef FCPPT_PARSE_DETAIL_ALTERNATIVE_LIST_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_ALTERNATIVE_LIST_HPP_INCLUDED
 
-#include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/types_of.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/parse/detail/alternative_list_impl.hpp>
 
 
 namespace fcppt
@@ -24,34 +20,13 @@ namespace detail
 template<
 	typename T
 >
-struct alternative_list
-{
-	using
-	type
-	=
-	::metal::list<
-		T
-	>;
-};
-
-template<
-	typename... List
->
-struct alternative_list<
-	fcppt::variant::object<
-		List...
-	>
->
-{
-	using
-	type
-	=
-	fcppt::variant::types_of<
-		fcppt::variant::object<
-			List...
-		>
-	>;
-};
+using
+alternative_list
+=
+typename
+fcppt::parse::detail::alternative_list_impl<
+	T
+>::type;
 
 }
 }

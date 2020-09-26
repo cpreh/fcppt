@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_GRAMMAR_PARSE_STRING_HPP_INCLUDED
 
 #include <fcppt/parse/grammar.hpp>
-#include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -42,7 +42,7 @@ grammar_parse_string(
 )
 {
 	return
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			*_grammar.start(),
 			std::move(
 				_string

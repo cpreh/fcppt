@@ -7,22 +7,11 @@
 #ifndef FCPPT_PARSE_PARSE_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_HPP_INCLUDED
 
-#include <fcppt/make_ref.hpp>
-#include <fcppt/string_literal.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/either/bind.hpp>
-#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/is_parser.hpp>
+#include <fcppt/parse/phrase_parse.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/detail/exception.hpp>
-#include <fcppt/parse/skipper/is_skipper.hpp>
-#include <fcppt/parse/skipper/run.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <string>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/parse/skipper/epsilon.hpp>
 
 
 namespace fcppt
@@ -32,9 +21,10 @@ namespace parse
 
 template<
 	typename Ch,
-	typename Parser,
-	typename Skipper
+	typename Parser
 >
+[[nodiscard]]
+inline
 fcppt::parse::result<
 	Ch,
 	fcppt::parse::result_of<
@@ -45,75 +35,14 @@ parse(
 	Parser const &_parser,
 	fcppt::parse::basic_stream<
 		Ch
-	> &_input,
-	Skipper const &_skipper
-)
-try
-{
-	static_assert(
-		fcppt::parse::is_parser<
-			Parser
-		>::value
-	);
-
-	static_assert(
-		fcppt::parse::skipper::is_skipper<
-			Skipper
-		>::value
-	);
-
-	return
-		fcppt::either::bind(
-			fcppt::parse::skipper::run(
-				_skipper,
-				fcppt::make_ref(
-					_input
-				)
-			),
-			[
-				&_parser,
-				&_input,
-				&_skipper
-			](
-				fcppt::unit const &
-			)
-			{
-				return
-					_parser.parse(
-						fcppt::make_ref(
-							_input
-						),
-						_skipper
-					);
-			}
-		);
-}
-catch(
-	fcppt::parse::detail::exception<
-		Ch
-	> const &_error
+	> &_input
 )
 {
 	return
-		fcppt::either::make_failure<
-			fcppt::parse::result_of<
-				Parser
-			>
-		>(
-			fcppt::parse::error<
-				Ch
-			>{
-				std::basic_string<
-					Ch
-				>{
-					FCPPT_STRING_LITERAL(
-						Ch,
-						"Parsing failed: "
-					)
-				}
-				+
-				_error.what()
-			}
+		fcppt::parse::phrase_parse(
+			_parser,
+			_input,
+			fcppt::parse::skipper::epsilon()
 		);
 }
 

@@ -15,7 +15,6 @@
 #include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -45,8 +44,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				"X"
-			},
-			fcppt::parse::skipper::epsilon{}
+			}
 		)
 		==
 		fcppt::parse::make_success<

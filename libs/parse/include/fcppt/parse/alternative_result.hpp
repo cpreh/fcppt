@@ -38,14 +38,12 @@ alternative_result
 fcppt::parse::detail::alternative_result<
 	fcppt::metal::unique<
 		::metal::join<
-			typename
 			fcppt::parse::detail::alternative_list<
 				Left
-			>::type,
-			typename
+			>,
 			fcppt::parse::detail::alternative_list<
 				Right
-			>::type
+			>
 		>
 	>
 >;

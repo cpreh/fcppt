@@ -12,10 +12,10 @@
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
-#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -36,8 +36,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
-			std::string{},
-			fcppt::parse::skipper::epsilon{}
+			std::string{}
 		).has_failure()
 	);
 
@@ -46,8 +45,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				"X"
-			},
-			fcppt::parse::skipper::epsilon{}
+			}
 		).has_failure()
 	);
 
@@ -56,8 +54,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				" 42"
-			},
-			fcppt::parse::skipper::epsilon{}
+			}
 		).has_failure()
 	);
 
@@ -66,8 +63,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				"42"
-			},
-			fcppt::parse::skipper::epsilon{}
+			}
 		)
 		==
 		fcppt::parse::make_success<
@@ -82,8 +78,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				"-42"
-			},
-			fcppt::parse::skipper::epsilon{}
+			}
 		)
 		==
 		fcppt::parse::make_success<
@@ -116,13 +111,12 @@ TEST_CASE(
 	CHECK(
 		fcppt::parse::parse_string(
 			parser,
-			std::string{},
-			fcppt::parse::skipper::epsilon{}
+			std::string{}
 		).has_failure()
 	);
 
 	CHECK(
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			parser,
 			std::string{
 				"12, 3"
@@ -162,7 +156,7 @@ TEST_CASE(
 	>;
 
 	CHECK(
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			parser,
 			std::string{
 				"10 20"

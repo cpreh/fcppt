@@ -33,7 +33,7 @@
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/string.hpp>
 #include <fcppt/parse/operators/alternative.hpp>
@@ -452,7 +452,7 @@ parse_string(
 )
 {
 	return
-		fcppt::parse::parse_string(
+		fcppt::parse::phrase_parse_string(
 			fcppt::parse::deref(
 				_parser.get()
 			),

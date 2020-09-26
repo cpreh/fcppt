@@ -8,7 +8,7 @@
 #define FCPPT_PARSE_GRAMMAR_PARSE_STREAM_HPP_INCLUDED
 
 #include <fcppt/parse/grammar.hpp>
-#include <fcppt/parse/parse_stream.hpp>
+#include <fcppt/parse/phrase_parse_stream.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
@@ -41,7 +41,7 @@ grammar_parse_stream(
 )
 {
 	return
-		fcppt::parse::parse_stream(
+		fcppt::parse::phrase_parse_stream(
 			*_grammar.start(),
 			_stream,
 			_grammar.skipper()

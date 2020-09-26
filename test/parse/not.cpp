@@ -14,7 +14,6 @@
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/not.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
-#include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -39,8 +38,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				"XY"
-			},
-			fcppt::parse::skipper::epsilon()
+			}
 		).has_failure()
 	);
 
@@ -49,8 +47,7 @@ TEST_CASE(
 			parser,
 			std::string{
 				"Y"
-			},
-			fcppt::parse::skipper::epsilon()
+			}
 		)
 		==
 		fcppt::parse::make_success<

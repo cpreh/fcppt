@@ -13,6 +13,7 @@
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -44,8 +45,7 @@ TEST_CASE(
 			*parser,
 			std::string{
 				"XY"
-			},
-			fcppt::parse::skipper::epsilon{}
+			}
 		)
 		==
 		fcppt::parse::make_success<
@@ -56,4 +56,23 @@ TEST_CASE(
 			}
 		)
 	);
+
+	CHECK(
+		fcppt::parse::phrase_parse_string(
+			*parser,
+			std::string{
+				"XY"
+			},
+			fcppt::parse::skipper::epsilon()
+		)
+		==
+		fcppt::parse::make_success<
+			char
+		>(
+			std::string{
+				"XY"
+			}
+		)
+	);
+
 }
