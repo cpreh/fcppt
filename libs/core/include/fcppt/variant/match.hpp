@@ -12,6 +12,7 @@
 #include <fcppt/metal/index_of.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
+#include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -35,7 +36,13 @@ order the types appear in the variant.
 */
 template<
 	typename Variant,
-	typename... Functions
+	typename... Functions,
+	typename Enable =
+		fcppt::variant::is_object<
+			fcppt::type_traits::remove_cv_ref_t<
+				Variant
+			>
+		>
 >
 inline
 decltype(
