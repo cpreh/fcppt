@@ -91,12 +91,15 @@ noexcept
 		*this;
 }
 
+
 template<
 	typename Type
 >
 fcppt::intrusive::list<
 	Type
->::~list()
+>::~list<
+	Type
+>()
 = default;
 
 template<

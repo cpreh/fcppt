@@ -519,6 +519,7 @@ noexcept
 {
 }
 
+
 template<
 	typename T,
 	typename A
@@ -526,7 +527,10 @@ template<
 fcppt::container::raw_vector::object<
 	T,
 	A
->::~object()
+>::~object<
+	T,
+	A
+>()
 noexcept
 {
 	this->deallocate();
@@ -824,8 +828,7 @@ fcppt::container::raw_vector::object<
 
 		pointer const new_memory(
 			this->impl_.alloc_.allocate(
-				new_cap,
-				nullptr
+				new_cap
 			)
 		);
 
@@ -924,8 +927,7 @@ fcppt::container::raw_vector::object<
 
 		pointer const new_memory(
 			this->impl_.alloc_.allocate(
-				new_cap,
-				nullptr
+				new_cap
 			)
 		);
 
@@ -1305,8 +1307,7 @@ fcppt::container::raw_vector::object<
 
 	pointer const new_memory(
 		this->impl_.alloc_.allocate(
-			_new_cap,
-			nullptr
+			_new_cap
 		)
 	);
 

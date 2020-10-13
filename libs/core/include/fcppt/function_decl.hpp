@@ -53,35 +53,11 @@ public:
 		typename F,
 		typename Alloc
 	>
-	explicit
 	function(
 		std::allocator_arg_t,
 		Alloc const &,
 		F
 	);
-
-	function(
-		function const &
-	);
-
-	function(
-		function &&
-	)
-	noexcept;
-
-	function &
-	operator=(
-		function const &
-	);
-
-	function &
-	operator=(
-		function &&
-	)
-	noexcept;
-
-	~function()
-	noexcept;
 
 	Ret
 	operator()(

@@ -270,6 +270,7 @@ fcppt::math::vector::object<
 		*this;
 }
 
+
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -279,7 +280,11 @@ fcppt::math::vector::object<
 	T,
 	N,
 	S
->::~object()
+>::~object<
+	T,
+	N,
+	S
+>()
 = default;
 
 template<

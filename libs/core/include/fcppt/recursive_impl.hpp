@@ -132,7 +132,9 @@ template<
 >
 fcppt::recursive<
 	Type
->::~recursive()
+>::~recursive<
+	Type
+>()
 = default;
 
 template<

@@ -62,7 +62,10 @@ template<
 fcppt::container::dynamic_array<
 	T,
 	A
->::~dynamic_array()
+>::~dynamic_array<
+	T,
+	A
+>()
 noexcept
 {
 	alloc_.deallocate(

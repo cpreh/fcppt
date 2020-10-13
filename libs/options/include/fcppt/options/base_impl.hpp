@@ -18,12 +18,15 @@ fcppt::options::base<
 >::base()
 = default;
 
+
 template<
 	typename Result
 >
 fcppt::options::base<
 	Result
->::~base()
+>::~base<
+	Result
+>()
 = default;
 
 #endif

@@ -48,7 +48,10 @@ template<
 fcppt::io::basic_scoped_rdbuf<
 	Ch,
 	Traits
->::~basic_scoped_rdbuf()
+>::~basic_scoped_rdbuf<
+	Ch,
+	Traits
+>()
 {
 	this->stream_.get().rdbuf(
 		this->old_

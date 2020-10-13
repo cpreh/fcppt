@@ -32,7 +32,9 @@ template<
 >
 fcppt::scoped_state_machine<
 	Machine
->::~scoped_state_machine()
+>::~scoped_state_machine<
+	Machine
+>()
 {
 	machine_.terminate();
 }

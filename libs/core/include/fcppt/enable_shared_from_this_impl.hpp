@@ -76,7 +76,9 @@ template<
 >
 fcppt::enable_shared_from_this<
 	Type
->::~enable_shared_from_this()
+>::~enable_shared_from_this<
+	Type
+>()
 = default;
 
 template<

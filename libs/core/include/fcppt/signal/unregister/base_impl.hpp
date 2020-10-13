@@ -98,12 +98,15 @@ fcppt::signal::unregister::base<
 noexcept
 = default;
 
+
 template<
 	typename T
 >
 fcppt::signal::unregister::base<
 	T
->::~base()
+>::~base<
+	T
+>()
 = default;
 
 template<

@@ -79,6 +79,7 @@ fcppt::signal::object<
 noexcept
 = default;
 
+
 template<
 	typename T,
 	template<
@@ -90,7 +91,11 @@ fcppt::signal::object<
 	T,
 	Base,
 	Enable
->::~object()
+>::~object<
+	T,
+	Base,
+	Enable
+>()
 = default;
 
 template<
@@ -202,6 +207,7 @@ fcppt::signal::object<
 noexcept
 = default;
 
+
 template<
 	typename T,
 	template<
@@ -214,7 +220,13 @@ fcppt::signal::object<
 	fcppt::signal::detail::enable_if_void<
 		T
 	>
->::~object()
+>::~object<
+	T,
+	Base,
+	fcppt::signal::detail::enable_if_void<
+		T
+	>
+>()
 = default;
 
 template<

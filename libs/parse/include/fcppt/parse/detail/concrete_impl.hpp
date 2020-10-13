@@ -39,6 +39,7 @@ fcppt::parse::detail::concrete<
 {
 }
 
+
 template<
 	typename Parser,
 	typename Ch,
@@ -48,7 +49,11 @@ fcppt::parse::detail::concrete<
 	Parser,
 	Ch,
 	Skipper
->::~concrete()
+>::~concrete<
+	Parser,
+	Ch,
+	Skipper
+>()
 = default;
 
 template<

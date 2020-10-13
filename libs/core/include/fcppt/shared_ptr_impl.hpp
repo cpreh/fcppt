@@ -316,7 +316,10 @@ template<
 fcppt::shared_ptr<
 	Type,
 	Deleter
->::~shared_ptr()
+>::~shared_ptr<
+	Type,
+	Deleter
+>()
 noexcept
 = default;
 

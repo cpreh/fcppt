@@ -50,12 +50,15 @@ fcppt::parse::detail::stream<
 {
 }
 
+
 template<
 	typename Ch
 >
 fcppt::parse::detail::stream<
 	Ch
->::~stream()
+>::~stream<
+	Ch
+>()
 = default;
 
 template<

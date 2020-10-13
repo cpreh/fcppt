@@ -74,7 +74,10 @@ inline
 fcppt::unique_ptr<
 	Type,
 	Deleter
->::~unique_ptr()
+>::~unique_ptr<
+	Type,
+	Deleter
+>()
 =
 default;
 

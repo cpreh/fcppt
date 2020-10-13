@@ -231,12 +231,15 @@ noexcept(
 		*this;
 }
 
+
 template<
 	typename T
 >
 fcppt::container::tree::object<
 	T
->::~object()
+>::~object<
+	T
+>()
 = default;
 
 template<

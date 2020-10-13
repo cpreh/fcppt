@@ -320,6 +320,7 @@ noexcept(
 		*this;
 }
 
+
 template<
 	typename T,
 	fcppt::container::grid::size_type N,
@@ -329,7 +330,11 @@ fcppt::container::grid::object<
 	T,
 	N,
 	A
->::~object()
+>::~object<
+	T,
+	N,
+	A
+>()
 = default;
 
 template<

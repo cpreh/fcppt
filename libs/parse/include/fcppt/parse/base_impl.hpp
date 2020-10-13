@@ -22,6 +22,7 @@ fcppt::parse::base<
 >::base()
 = default;
 
+
 template<
 	typename Result,
 	typename Ch,
@@ -31,7 +32,11 @@ fcppt::parse::base<
 	Result,
 	Ch,
 	Skipper
->::~base()
+>::~base<
+	Result,
+	Ch,
+	Skipper
+>()
 = default;
 
 #endif

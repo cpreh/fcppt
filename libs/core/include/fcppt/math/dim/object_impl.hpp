@@ -262,6 +262,7 @@ fcppt::math::dim::object<
 		*this;
 }
 
+
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -271,7 +272,11 @@ fcppt::math::dim::object<
 	T,
 	N,
 	S
->::~object()
+>::~object<
+	T,
+	N,
+	S
+>()
 = default;
 
 template<

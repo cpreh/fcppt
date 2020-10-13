@@ -6,6 +6,8 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/scoped_state_machine.hpp>
+#include <fcppt/config/clang_version_at_least.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -43,6 +45,9 @@ public:
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4265)
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(11, 0)
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wsuggest-destructor-override)
+#endif
 
 class state
 :
@@ -80,11 +85,12 @@ TEST_CASE(
 	);
 
 	{
-		typedef
+		using
+		scoped_machine
+		=
 		fcppt::scoped_state_machine<
 			machine
-		>
-		scoped_machine;
+		>;
 
 		scoped_machine const scoped(
 			test

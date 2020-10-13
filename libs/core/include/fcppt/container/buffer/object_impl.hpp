@@ -52,8 +52,7 @@ fcppt::container::buffer::object<
 	impl_{
 		_alloc,
 		_alloc.allocate(
-			_size,
-			nullptr
+			_size
 		),
 		_size
 	}
@@ -105,6 +104,7 @@ noexcept
 		*this;
 }
 
+
 template<
 	typename T,
 	typename A
@@ -112,7 +112,10 @@ template<
 fcppt::container::buffer::object<
 	T,
 	A
->::~object()
+>::~object<
+	T,
+	A
+>()
 noexcept
 {
 	impl_.deallocate();

@@ -46,12 +46,15 @@ fcppt::signal::unregister::detail::concrete_connection<
 {
 }
 
+
 template<
 	typename Function
 >
 fcppt::signal::unregister::detail::concrete_connection<
 	Function
->::~concrete_connection()
+>::~concrete_connection<
+	Function
+>()
 {
 	this->unlink();
 

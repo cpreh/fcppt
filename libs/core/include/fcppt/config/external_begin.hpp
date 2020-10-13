@@ -95,6 +95,13 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wused-but-marked-unused)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-template-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
 
+#include <fcppt/config/clang_version_at_least.hpp>
+
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(11, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-destructor-override)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
+#endif
+
 #else
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wclass-memaccess)

@@ -44,6 +44,7 @@ fcppt::options::detail::concrete<
 {
 }
 
+
 template<
 	typename Result,
 	typename Parser
@@ -51,7 +52,10 @@ template<
 fcppt::options::detail::concrete<
 	Result,
 	Parser
->::~concrete()
+>::~concrete<
+	Result,
+	Parser
+>()
 = default;
 
 template<

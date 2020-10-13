@@ -45,13 +45,16 @@ fcppt::random::generator::basic_pseudo<
 {
 }
 
+
 template<
 	typename Generator
 >
 inline
 fcppt::random::generator::basic_pseudo<
 	Generator
->::~basic_pseudo()
+>::~basic_pseudo<
+	Generator
+>()
 = default;
 
 template<

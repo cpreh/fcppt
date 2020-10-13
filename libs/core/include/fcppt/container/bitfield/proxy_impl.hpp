@@ -155,7 +155,9 @@ template<
 >
 fcppt::container::bitfield::proxy<
 	StoredType
->::~proxy()
+>::~proxy<
+	StoredType
+>()
 = default;
 
 template<

@@ -18,12 +18,15 @@ fcppt::parse::basic_stream<
 >::basic_stream()
 = default;
 
+
 template<
 	typename Ch
 >
 fcppt::parse::basic_stream<
 	Ch
->::~basic_stream()
+>::~basic_stream<
+	Ch
+>()
 = default;
 
 #endif

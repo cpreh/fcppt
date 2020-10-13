@@ -299,6 +299,7 @@ fcppt::math::matrix::object<
 		*this;
 }
 
+
 template<
 	typename T,
 	fcppt::math::size_type R,
@@ -310,7 +311,12 @@ fcppt::math::matrix::object<
 	R,
 	C,
 	S
->::~object()
+>::~object<
+	T,
+	R,
+	C,
+	S
+>()
 = default;
 
 template<

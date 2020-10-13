@@ -126,13 +126,16 @@ noexcept
 		*this;
 }
 
+
 template<
 	typename Type
 >
 inline
 fcppt::intrusive::base<
 	Type
->::~base()
+>::~base<
+	Type
+>()
 {
 	next_->prev_ =
 		prev_;

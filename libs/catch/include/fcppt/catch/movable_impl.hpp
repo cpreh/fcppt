@@ -108,7 +108,9 @@ template<
 >
 fcppt::catch_::movable<
 	Type
->::~movable()
+>::~movable<
+	Type
+>()
 = default;
 
 template<
