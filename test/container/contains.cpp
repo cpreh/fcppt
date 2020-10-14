@@ -16,11 +16,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_set
+	=
 	std::set<
 		int
-	>
-	int_set;
+	>;
 
 	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
 	int_set const ints{

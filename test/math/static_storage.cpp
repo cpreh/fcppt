@@ -15,12 +15,13 @@ TEST_CASE(
 	"[math]"
 )
 {
-	typedef
+	using
+	storage_type
+	=
 	fcppt::math::detail::static_storage<
 		int,
 		2
-	>
-	storage_type;
+	>;
 
 	{
 		storage_type const const_storage{

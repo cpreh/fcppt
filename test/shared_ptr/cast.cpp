@@ -162,11 +162,12 @@ TEST_CASE(
 	"[smartptr]"
 )
 {
-	typedef
+	using
+	const_base_ptr
+	=
 	fcppt::shared_ptr<
 		base const
-	>
-	const_base_ptr;
+	>;
 
 	const_base_ptr const ptr(
 		fcppt::make_shared_ptr<

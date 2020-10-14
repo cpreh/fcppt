@@ -414,11 +414,13 @@ public:
 		Predicate const &
 	);
 private:
+	[[nodiscard]]
 	child_list
 	copy_children(
 		child_list const &
 	);
 
+	[[nodiscard]]
 	child_list
 	move_children(
 		child_list &&

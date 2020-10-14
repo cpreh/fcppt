@@ -19,12 +19,13 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	vector_type
+	=
 	fcppt::math::vector::static_<
 		int,
 		3
-	>
-	vector_type;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::transform_point(

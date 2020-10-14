@@ -32,13 +32,14 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::parse::result_of<
 		decltype(
 			parser
 		)
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::parse::phrase_parse_string(

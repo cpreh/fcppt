@@ -19,11 +19,12 @@ TEST_CASE(
 	"[container],[buffer]"
 )
 {
-	typedef
+	using
+	buffer_type
+	=
 	fcppt::container::buffer::object<
 		int
-	>
-	buffer_type;
+	>;
 
 	CHECK_FALSE(
 		fcppt::container::buffer::read_from_opt<

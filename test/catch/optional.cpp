@@ -18,11 +18,12 @@ TEST_CASE(
 	"[catch]"
 )
 {
-	typedef
+	using
+	optional
+	=
 	fcppt::optional::object<
 		fcppt::string
-	>
-	optional;
+	>;
 
 	CHECK(
 		optional{

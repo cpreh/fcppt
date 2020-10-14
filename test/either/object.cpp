@@ -16,12 +16,13 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either
+	=
 	fcppt::either::object<
 		std::string,
 		int
-	>
-	either;
+	>;
 
 	SECTION(
 		"test failure"

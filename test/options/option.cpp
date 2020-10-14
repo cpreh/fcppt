@@ -36,12 +36,13 @@ TEST_CASE(
 		arg_label
 	);
 
-	typedef
+	using
+	int_option_type
+	=
 	fcppt::options::option<
 		arg_label,
 		int
-	>
-	int_option_type;
+	>;
 
 	int_option_type const int_option{
 		fcppt::options::optional_short_name{

@@ -30,13 +30,14 @@ TEST_CASE(
 	"[various]"
 )
 {
-	typedef
+	using
+	int_function
+	=
 	fcppt::function<
 		int (
 			int
 		)
-	>
-	int_function;
+	>;
 
 	int_function const func{
 		fcppt::make_function(

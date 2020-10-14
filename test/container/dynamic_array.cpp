@@ -22,11 +22,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_array
+	=
 	fcppt::container::dynamic_array<
 		int
-	>
-	int_array;
+	>;
 
 	int_array array1{
 		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)

@@ -39,11 +39,12 @@ TEST_CASE(
 				_value
 			);
 
-			typedef
+			using
+			val
+			=
 			decltype(
 				_value
-			)
-			val;
+			);
 
 			CHECK(
 				val::value

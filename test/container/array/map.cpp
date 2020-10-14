@@ -63,11 +63,12 @@ TEST_CASE(
 	"[container],[array]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		int_movable,

@@ -17,11 +17,12 @@ TEST_CASE(
 	"[smartptr]"
 )
 {
-	typedef
+	using
+	int_unique_ptr
+	=
 	fcppt::unique_ptr<
 		int
-	>
-	int_unique_ptr;
+	>;
 
 	int_unique_ptr ptr{
 		fcppt::make_unique_ptr<

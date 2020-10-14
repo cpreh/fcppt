@@ -24,14 +24,15 @@ TEST_CASE(
 		string_label
 	);
 
-	typedef
+	using
+	record
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			string_label,
 			fcppt::string
 		>
-	>
-	record;
+	>;
 
 	CHECK(
 		record{

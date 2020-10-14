@@ -45,11 +45,12 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	traversal_type
+	=
 	fcppt::container::tree::to_root<
 		i_tree const
-	>
-	traversal_type;
+	>;
 
 	traversal_type const trav(
 		child_2.get()

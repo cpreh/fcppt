@@ -49,11 +49,12 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	parser_type
+	=
 	decltype(
 		parser
-	)
-	parser_type;
+	);
 
 	CHECK(
 		fcppt::options::parse(

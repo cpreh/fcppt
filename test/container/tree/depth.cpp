@@ -18,11 +18,12 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	string_tree
+	=
 	fcppt::container::tree::object<
 		std::string
-	>
-	string_tree;
+	>;
 
 	string_tree tree("a");
 

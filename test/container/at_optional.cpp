@@ -29,11 +29,12 @@ TEST_CASE(
 		2
 	};
 
-	typedef
+	using
+	optional_int_ref
+	=
 	fcppt::optional::reference<
 		int const
-	>
-	optional_int_ref;
+	>;
 
 	CHECK(
 		fcppt::container::at_optional(

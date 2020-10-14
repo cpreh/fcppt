@@ -21,11 +21,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_ref
+	=
 	fcppt::optional::reference<
 		int
-	>
-	optional_ref;
+	>;
 
 	int value{
 		0

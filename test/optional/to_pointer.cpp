@@ -21,11 +21,12 @@ TEST_CASE(
 		42
 	};
 
-	typedef
+	using
+	optional_int_cref
+	=
 	fcppt::optional::reference<
 		int const
-	>
-	optional_int_cref;
+	>;
 
 	CHECK(
 		fcppt::optional::to_pointer(

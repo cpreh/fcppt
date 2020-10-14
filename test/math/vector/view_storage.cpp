@@ -60,7 +60,7 @@ public:
 
 	explicit
 	view_storage(
-		pointer const _data
+		pointer const _data // NOLINT(misc-misplaced-const)
 	)
 	:
 		data_(

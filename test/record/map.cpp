@@ -35,7 +35,9 @@ TEST_CASE(
 		move_only_label
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
@@ -51,8 +53,7 @@ TEST_CASE(
 				>
 			>
 		>
-	>
-	result_type;
+	>;
 
 	CHECK(
 		fcppt::record::permute<

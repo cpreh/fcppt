@@ -19,12 +19,13 @@ TEST_CASE(
 	"[either]"
 )
 {
-	typedef
+	using
+	either_int
+	=
 	fcppt::either::object<
 		fcppt::string,
 		int
-	>
-	either_int;
+	>;
 
 	auto const make_exception(
 		[](

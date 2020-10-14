@@ -17,11 +17,12 @@ TEST_CASE(
 	"[range]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const vec1{
 		1,

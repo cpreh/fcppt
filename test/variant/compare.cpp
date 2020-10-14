@@ -39,13 +39,14 @@ TEST_CASE(
 	"[variant]"
 )
 {
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		bool,
 		int,
 		std::string
-	>
-	variant;
+	>;
 
 	std::string const string(
 		"hello world"

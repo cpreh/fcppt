@@ -15,14 +15,15 @@
 int
 main()
 {
-	typedef
+	using
+	types
+	=
 	fcppt::variant::dynamic_cast_types<
 		metal::list<
 			int,
 			char const
 		>
-	>
-	types;
+	>;
 
 	static_assert(
 		std::is_same_v<

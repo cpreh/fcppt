@@ -31,11 +31,12 @@ TEST_CASE(
 		)
 	};
 
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
 	CHECK(
 		fcppt::either::success_opt(

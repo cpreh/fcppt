@@ -32,14 +32,15 @@ fcppt::options::impl::is_flag(
 		_value.begin()
 	};
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		std::pair<
 			fcppt::options::detail::flag_is_short,
 			fcppt::string
 		>
-	>
-	result_type;
+	>;
 
 	auto const is_dash(
 		[](

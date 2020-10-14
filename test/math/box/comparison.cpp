@@ -17,12 +17,13 @@ TEST_CASE(
 	"[math],[box]"
 )
 {
-	typedef
+	using
+	box_type
+	=
 	fcppt::math::box::object<
 		int,
 		2
-	>
-	box_type;
+	>;
 
 	CHECK(
 		box_type(

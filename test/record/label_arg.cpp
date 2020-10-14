@@ -29,7 +29,9 @@ TEST_CASE(
 	"[record]"
 )
 {
-	typedef
+	using
+	record_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			texture<0>,
@@ -39,8 +41,7 @@ TEST_CASE(
 			texture<1>,
 			std::string
 		>
-	>
-	record_type;
+	>;
 
 	record_type const test_sprite{
 		texture<0>{} = std::string("ground"),

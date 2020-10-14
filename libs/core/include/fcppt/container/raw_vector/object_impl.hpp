@@ -867,7 +867,7 @@ fcppt::container::raw_vector::object<
 		return
 			this->begin() + insert_sz;
 	}
-	// NOLINTNEXTLINE(readability-else-after-return)
+	// NOLINTNEXTLINE(readability-else-after-return,llvm-else-after-return)
 	else
 	{
 		if(

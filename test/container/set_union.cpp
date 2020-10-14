@@ -16,11 +16,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_set
+	=
 	std::set<
 		int
-	>
-	int_set;
+	>;
 
 	CHECK(
 		fcppt::container::set_union(

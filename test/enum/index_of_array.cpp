@@ -31,12 +31,13 @@ TEST_CASE(
 	"[enum]"
 )
 {
-	typedef
+	using
+	array
+	=
 	fcppt::enum_::array<
 		test_enum,
 		unsigned
-	>
-	array;
+	>;
 
 	array const test{{{
 		1U,

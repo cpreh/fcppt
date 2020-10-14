@@ -14,12 +14,13 @@
 int
 main()
 {
-	typedef
+	using
+	list
+	=
 	metal::list<
 		int,
 		float
-	>
-	list;
+	>;
 
 	static_assert(
 		std::is_same_v<

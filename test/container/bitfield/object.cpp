@@ -21,11 +21,12 @@ enum class test_enum
 	fcppt_maximum = test3
 };
 
-typedef
+using
+bitfield
+=
 fcppt::container::bitfield::enum_object<
 	test_enum
->
-bitfield;
+>;
 
 }
 

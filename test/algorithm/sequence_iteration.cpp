@@ -17,11 +17,12 @@ TEST_CASE(
 	"[algorithm]"
 )
 {
-	typedef
+	using
+	sequence
+	=
 	std::vector<
 		int
-	>
-	sequence;
+	>;
 
 	sequence seq{
 		1,

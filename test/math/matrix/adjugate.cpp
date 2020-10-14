@@ -20,13 +20,14 @@ TEST_CASE(
 	"[math],[matrix]"
 )
 {
-	typedef
+	using
+	matrix_type
+	=
 	fcppt::math::matrix::static_<
 		int,
 		3,
 		3
-	>
-	matrix_type;
+	>;
 
 	CHECK(
 		fcppt::math::matrix::adjugate(

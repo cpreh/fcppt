@@ -28,11 +28,12 @@ fcppt::options::impl::next_arg(
 	fcppt::options::option_name_set const &_option_names
 )
 {
-	typedef
+	using
+	result_type
+	=
 	fcppt::optional::object<
 		fcppt::args_vector::const_iterator
-	>
-	result_type;
+	>;
 
 	fcppt::args_vector::const_iterator const end{
 		_args.end()

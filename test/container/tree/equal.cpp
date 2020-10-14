@@ -16,11 +16,12 @@ TEST_CASE(
 	"[container],[tree]"
 )
 {
-	typedef
+	using
+	ui_tree
+	=
 	fcppt::container::tree::object<
 		unsigned
-	>
-	ui_tree;
+	>;
 
 	ui_tree tree1{
 		1

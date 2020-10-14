@@ -20,11 +20,12 @@ TEST_CASE(
 	"[algorithm_equal_range]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const vec{
 		2,

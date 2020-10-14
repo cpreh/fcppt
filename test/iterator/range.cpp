@@ -60,11 +60,12 @@ TEST_CASE(
 	"[iterator]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector vec1{
 		1,

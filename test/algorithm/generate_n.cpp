@@ -16,11 +16,12 @@ TEST_CASE(
 	"[algorithm_generate_n]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	CHECK(
 		fcppt::algorithm::generate_n<

@@ -22,7 +22,7 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::unique_ptr(
-	pointer const _ptr
+	pointer const _ptr // NOLINT(misc-misplaced-const)
 )
 noexcept
 :

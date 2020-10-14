@@ -72,7 +72,7 @@ fcppt::parse::convert<
 	Skipper const &_skipper
 ) const
 {
-	return
+	return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
 		fcppt::either::map(
 			fcppt::parse::deref(
 				this->parser_

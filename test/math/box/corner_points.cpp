@@ -19,12 +19,13 @@ TEST_CASE(
 	"[math],[box]"
 )
 {
-	typedef
+	using
+	box_type
+	=
 	fcppt::math::box::object<
 		int,
 		2
-	>
-	box_type;
+	>;
 
 	CHECK(
 		fcppt::math::box::corner_points(

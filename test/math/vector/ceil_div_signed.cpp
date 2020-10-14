@@ -21,12 +21,13 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	i2_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	i2_vector;
+	>;
 
 	CHECK(
 		fcppt::math::vector::ceil_div_signed(

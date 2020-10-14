@@ -37,11 +37,12 @@ fcppt::args(
 				fcppt::args_char const *const _arg
 			)
 			{
-				typedef
+				using
+				args_string
+				=
 				std::basic_string<
 					fcppt::args_char
-				>
-				args_string;
+				>;
 
 				return
 #if defined(FCPPT_DETAIL_MAIN_WCHAR)

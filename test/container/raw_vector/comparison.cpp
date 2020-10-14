@@ -15,11 +15,12 @@ TEST_CASE(
 	"[container],[raw_vector]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	fcppt::container::raw_vector::object<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const test1{
 		1,

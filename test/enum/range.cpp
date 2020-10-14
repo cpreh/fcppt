@@ -27,11 +27,12 @@ enum class test_enum
 	fcppt_maximum = test3
 };
 
-typedef
+using
+enum_vector
+=
 std::vector<
 	test_enum
->
-enum_vector;
+>;
 
 enum_vector
 copy_range(

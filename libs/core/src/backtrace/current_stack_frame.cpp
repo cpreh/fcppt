@@ -34,9 +34,10 @@ fcppt::backtrace::current_stack_frame(
 )
 {
 #if defined(FCPPT_HAVE_BACKTRACE)
-	typedef
-	void *
-	element_type;
+	using
+	element_type
+	=
+	void *;
 
 	using
 	symbol_sequence

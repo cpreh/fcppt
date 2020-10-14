@@ -18,11 +18,12 @@ TEST_CASE(
 	"[string]"
 )
 {
-	typedef
+	using
+	opt_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	opt_int;
+	>;
 
 	CHECK(
 		fcppt::extract_from_string<

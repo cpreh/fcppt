@@ -31,11 +31,12 @@ TEST_CASE(
 		dummy_label
 	);
 
-	typedef
+	using
+	unit_type
+	=
 	fcppt::options::unit<
 		dummy_label
-	>
-	unit_type;
+	>;
 
 	unit_type const unit{};
 

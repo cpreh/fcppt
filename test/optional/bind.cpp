@@ -18,11 +18,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	optional_string;
+	>;
 
 	CHECK(
 		fcppt::optional::bind(

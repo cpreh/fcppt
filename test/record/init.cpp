@@ -92,14 +92,15 @@ TEST_CASE(
 	"[record]"
 )
 {
-	typedef
+	using
+	my_record
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
 			int
 		>
-	>
-	my_record;
+	>;
 
 	init_test<
 		my_record

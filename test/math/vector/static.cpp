@@ -16,12 +16,13 @@ TEST_CASE(
 	"[math],[vector]"
 )
 {
-	typedef
+	using
+	int2_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		2
-	>
-	int2_vector;
+	>;
 
 	int2_vector const vec{
 		0,

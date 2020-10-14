@@ -28,14 +28,15 @@ fcppt::backtrace::print_current_stack_frame()
 		128U
 	};
 
-	typedef
+	using
+	symbol_sequence
+	=
 	std::array<
 		void *,
 		max_stacktrace_size
-	>
-	symbol_sequence;
+	>;
 
-	symbol_sequence resulting_symbols;
+	symbol_sequence resulting_symbols{};
 
 	int const number_of_symbols(
 		::backtrace(

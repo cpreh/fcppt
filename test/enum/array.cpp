@@ -71,12 +71,13 @@ TEST_CASE(
 	"[enum]"
 )
 {
-	typedef
+	using
+	int_array
+	=
 	fcppt::enum_::array<
 		my_enum,
 		int
-	>
-	int_array;
+	>;
 
 	int_array const test1{{{
 		1,

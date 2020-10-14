@@ -16,11 +16,12 @@ TEST_CASE(
 	"[math],[box]"
 )
 {
-	typedef
+	using
+	box2
+	=
 	fcppt::math::box::rect<
 		int
-	>
-	box2;
+	>;
 
 	box2 const outer{
 		box2::vector{

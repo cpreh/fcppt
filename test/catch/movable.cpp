@@ -16,11 +16,12 @@ TEST_CASE(
 	"[catch]"
 )
 {
-	typedef
+	using
+	movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	movable;
+	>;
 
 	CHECK(
 		movable{

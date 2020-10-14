@@ -25,12 +25,13 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_string_map
+	=
 	std::map<
 		int,
 		std::string
-	>
-	int_string_map;
+	>;
 
 	int_string_map const values{ // NOLINT(fuchsia-default-arguments-calls)
 		std::make_pair(

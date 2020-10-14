@@ -35,11 +35,12 @@ TEST_CASE(
 		arg_label
 	);
 
-	typedef
+	using
+	switch_type
+	=
 	fcppt::options::switch_<
 		arg_label
-	>
-	switch_type;
+	>;
 
 	switch_type const switch_{
 		fcppt::options::optional_short_name{

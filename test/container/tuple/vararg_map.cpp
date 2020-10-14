@@ -79,11 +79,12 @@ TEST_CASE(
 	"[container],[tuple]"
 )
 {
-	typedef
+	using
+	movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	movable;
+	>;
 
 	CHECK(
 		fcppt::container::tuple::vararg_map(

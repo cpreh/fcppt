@@ -153,7 +153,9 @@ FCPPT_PP_POP_WARNING
 		move_only_label
 	);
 
-	typedef
+	using
+	my_record
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			int_label,
@@ -171,8 +173,7 @@ FCPPT_PP_POP_WARNING
 			move_only_label,
 			move_only
 		>
-	>
-	my_record;
+	>;
 
 	int const arg1{
 		4

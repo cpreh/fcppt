@@ -25,11 +25,12 @@ enum class my_enum
 int
 main()
 {
-	typedef
+	using
+	range
+	=
 	fcppt::metal::enum_range<
 		my_enum
-	>
-	range;
+	>;
 
 	static_assert(
 		metal::front<

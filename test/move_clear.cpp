@@ -16,11 +16,12 @@ TEST_CASE(
 	"[various]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector ints{
 		1,2

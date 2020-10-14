@@ -44,7 +44,7 @@ std::unordered_map<
 	signal_type
 >;
 
-// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects, cppcoreguidelines-avoid-non-const-global-variables)
 name_to_signal global_name_to_signal{};
 
 // This function will be called whenever a connection dies. It receives the

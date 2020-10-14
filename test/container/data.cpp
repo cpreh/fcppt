@@ -18,11 +18,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector container{};
 

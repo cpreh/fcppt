@@ -16,11 +16,12 @@ TEST_CASE(
 	"[algorithm]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	CHECK(
 		fcppt::algorithm::all_of(

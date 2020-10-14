@@ -22,11 +22,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_string
+	=
 	fcppt::optional::object<
 		std::string
-	>
-	optional_string;
+	>;
 
 	optional_string test{};
 

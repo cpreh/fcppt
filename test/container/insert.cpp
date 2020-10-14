@@ -16,11 +16,12 @@ TEST_CASE(
 	"[container]"
 )
 {
-	typedef
+	using
+	int_set
+	=
 	std::set<
 		int
-	>
-	int_set;
+	>;
 
 	int_set set{};
 

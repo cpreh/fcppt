@@ -18,12 +18,13 @@ TEST_CASE(
 	"[math],[box]"
 )
 {
-	typedef
+	using
+	signed_box_type
+	=
 	fcppt::math::box::object<
 		int,
 		2
-	>
-	signed_box_type;
+	>;
 
 	CHECK(
 		fcppt::math::box::shrink(

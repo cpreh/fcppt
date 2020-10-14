@@ -18,12 +18,13 @@ TEST_CASE(
 	"[catch]"
 )
 {
-	typedef
+	using
+	either
+	=
 	fcppt::either::object<
 		fcppt::string,
 		int
-	>
-	either;
+	>;
 
 	CHECK(
 		either{

@@ -16,11 +16,12 @@ TEST_CASE(
 	"[various]"
 )
 {
-	typedef
+	using
+	int_homogenous_pair
+	=
 	fcppt::homogenous_pair<
 		int
-	>
-	int_homogenous_pair;
+	>;
 
 	CHECK(
 		int_homogenous_pair(

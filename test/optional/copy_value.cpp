@@ -21,11 +21,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_string_ref
+	=
 	fcppt::optional::reference<
 		std::string const
-	>
-	optional_string_ref;
+	>;
 
 	std::string const test(
 		"test1"

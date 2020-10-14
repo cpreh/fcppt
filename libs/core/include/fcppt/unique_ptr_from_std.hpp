@@ -37,7 +37,7 @@ unique_ptr_from_std(
 	> &&_ptr
 )
 {
-	return
+	return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
 		fcppt::optional::make_if(
 			_ptr
 			!=

@@ -17,12 +17,13 @@ TEST_CASE(
 	"[container],[array]"
 )
 {
-	typedef
+	using
+	int_2_array
+	=
 	std::array<
 		int,
 		2
-	>
-	int_2_array;
+	>;
 
 	CHECK(
 		fcppt::container::array::init_const<

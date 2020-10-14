@@ -36,14 +36,15 @@ TEST_CASE(
 		arg_label
 	);
 
-	typedef
+	using
+	result_type
+	=
 	fcppt::record::object<
 		fcppt::record::element<
 			arg_label,
 			int
 		>
-	>
-	result_type;
+	>;
 
 	fcppt::options::base_unique_ptr<
 		result_type

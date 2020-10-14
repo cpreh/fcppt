@@ -18,11 +18,12 @@ TEST_CASE(
 	"[optional]"
 )
 {
-	typedef
+	using
+	optional_int
+	=
 	fcppt::optional::object<
 		int
-	>
-	optional_int;
+	>;
 
 	auto const make_exception(
 		[]{

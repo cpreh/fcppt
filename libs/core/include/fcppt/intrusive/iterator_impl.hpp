@@ -32,7 +32,7 @@ template<
 fcppt::intrusive::iterator<
 	Type
 >::iterator(
-	pointer_type const _cur
+	pointer_type const _cur // NOLINT(misc-misplaced-const)
 )
 :
 	iterator_base{},

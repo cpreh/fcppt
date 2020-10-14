@@ -11,13 +11,14 @@
 int
 main()
 {
-	typedef
+	using
+	set
+	=
 	fcppt::metal::set::make_relaxed<
 		int,
 		int,
 		bool
-	>
-	set;
+	>;
 
 	static_assert(
 		fcppt::metal::set::contains<

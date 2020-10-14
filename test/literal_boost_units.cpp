@@ -18,12 +18,13 @@ TEST_CASE(
 	"[literal]"
 )
 {
-	typedef
+	using
+	length
+	=
 	boost::units::quantity<
 		boost::units::si::length,
 		int
-	>
-	length;
+	>;
 
 	CHECK(
 		fcppt::literal<

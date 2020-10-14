@@ -16,11 +16,12 @@ TEST_CASE(
 	"[algorithm]"
 )
 {
-	typedef
+	using
+	int_vector
+	=
 	std::vector<
 		int
-	>
-	int_vector;
+	>;
 
 	int_vector const expected{
 		3,2,1

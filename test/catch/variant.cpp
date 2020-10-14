@@ -20,11 +20,12 @@ TEST_CASE(
 	"[catch]"
 )
 {
-	typedef
+	using
+	variant
+	=
 	fcppt::variant::object<
 		fcppt::string
-	>
-	variant;
+	>;
 
 	CHECK(
 		variant{

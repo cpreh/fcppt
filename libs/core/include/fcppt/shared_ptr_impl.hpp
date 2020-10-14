@@ -151,7 +151,7 @@ fcppt::shared_ptr<
 	fcppt::shared_ptr<
 		Other
 	> const & _other,
-	pointer const _data
+	pointer const _data // NOLINT(misc-misplaced-const)
 )
 :
 	impl_(

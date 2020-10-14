@@ -18,13 +18,14 @@ TEST_CASE(
 	"[assign]"
 )
 {
-	typedef
+	using
+	sequence
+	=
 	std::vector<
 		fcppt::unique_ptr<
 			int
 		>
-	>
-	sequence;
+	>;
 
 	auto const result(
 		fcppt::container::make<

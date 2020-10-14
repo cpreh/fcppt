@@ -31,12 +31,13 @@ TEST_CASE(
 		arg_label
 	);
 
-	typedef
+	using
+	int_arg_type
+	=
 	fcppt::options::argument<
 		arg_label,
 		int
-	>
-	int_arg_type;
+	>;
 
 	int_arg_type const int_arg{
 		fcppt::options::long_name{

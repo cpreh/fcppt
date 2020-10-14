@@ -144,7 +144,7 @@ public:
 
 	explicit
 	raw_view(
-		pointer const _data
+		pointer const _data // NOLINT(misc-misplaced-const)
 	)
 	:
 		data_(

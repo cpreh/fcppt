@@ -18,12 +18,13 @@ TEST_CASE(
 	"[math[,[vector]"
 )
 {
-	typedef
+	using
+	int3_vector
+	=
 	fcppt::math::vector::static_<
 		int,
 		3
-	>
-	int3_vector;
+	>;
 
 	CHECK(
 		fcppt::math::vector::unit<

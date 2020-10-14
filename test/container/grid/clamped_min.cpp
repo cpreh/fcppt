@@ -20,12 +20,13 @@ TEST_CASE(
 	"[container],[grid]"
 )
 {
-	typedef
+	using
+	pos
+	=
 	fcppt::container::grid::pos<
 		int,
 		2
-	>
-	pos;
+	>;
 
 	CHECK(
 		fcppt::container::grid::clamped_min(

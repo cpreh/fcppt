@@ -30,11 +30,12 @@ TEST_CASE(
 	"[strongtypedef]"
 )
 {
-	typedef
+	using
+	hash_set
+	=
 	std::unordered_set<
 		strong_int
-	>
-	hash_set;
+	>;
 
 	hash_set const elements{
 		strong_int(1),

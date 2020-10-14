@@ -51,11 +51,12 @@ TEST_CASE(
 	"[container],[tuple]"
 )
 {
-	typedef
+	using
+	int_movable
+	=
 	fcppt::catch_::movable<
 		int
-	>
-	int_movable;
+	>;
 
 	CHECK(
 		fcppt::container::tuple::push_back(
