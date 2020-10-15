@@ -46,7 +46,7 @@ init(
 				>{}
 			)...
 		}};
-}
+} // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
 
 }
 }
