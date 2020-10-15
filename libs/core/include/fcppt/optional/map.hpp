@@ -82,7 +82,7 @@ fcppt::optional::object<
 		>
 	>;
 
-	return
+	return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
 		fcppt::optional::bind(
 			std::forward<
 				Optional

@@ -53,7 +53,7 @@ init(
 		"Array must be an array"
 	);
 
-	return
+	return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
 		fcppt::container::array::detail::init<
 			Array
 		>(
