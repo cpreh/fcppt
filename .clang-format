@@ -122,5 +122,9 @@ StatementMacros:
 TabWidth:        4
 UseCRLF:         false
 UseTab:          Never
+WhitespaceSensitiveMacros:
+  - FCPPT_PP_DISABLE_CLANG_WARNING
+  - FCPPT_PP_DISABLE_GCC_WARNING
+  - FCPPT_PP_DISABLE_VC_WARNING
 ...
 
