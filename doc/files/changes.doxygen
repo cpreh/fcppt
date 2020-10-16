@@ -17,6 +17,7 @@
 	<ul>
 	<li>Added #fcppt::cond.</li>
 	<li>Added #FCPPT_CHAR_LITERAL.</li>
+	<li>Allow more character types in #FCPPT_STRING_LITERAL.</li>
 	</ul>
 </li>
 
@@ -46,6 +47,12 @@
 	</ul>
 </li>
 
+</ul>
+
+\subsection changes_bugfixes_to_360 Bugfixes
+
+<ul>
+<li>Fix clang-11 issues with destructor names.</li>
 </ul>
 
 \section changes_changes_to_350 3.5.0
