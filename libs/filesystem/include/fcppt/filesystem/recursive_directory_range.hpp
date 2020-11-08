@@ -45,9 +45,8 @@ public:
 
 	[[nodiscard]]
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	static
 	std::filesystem::recursive_directory_iterator
-	end();
+	end() const;
 private:
 	std::filesystem::recursive_directory_iterator begin_;
 };

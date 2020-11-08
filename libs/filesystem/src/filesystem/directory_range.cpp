@@ -36,7 +36,7 @@ fcppt::filesystem::directory_range::begin() const
 }
 
 std::filesystem::directory_iterator
-fcppt::filesystem::directory_range::end()
+fcppt::filesystem::directory_range::end() const // NOLINT(readability-convert-member-functions-to-static)
 {
 	return
 		std::filesystem::directory_iterator();

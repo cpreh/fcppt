@@ -45,9 +45,8 @@ public:
 
 	[[nodiscard]]
 	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	static
 	std::filesystem::directory_iterator
-	end();
+	end() const;
 private:
 	std::filesystem::directory_iterator begin_;
 };
