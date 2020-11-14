@@ -9,6 +9,7 @@
 
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,7 +38,9 @@ make_unique_ptr(
 		fcppt::unique_ptr<
 			Res
 		>(
-			new Res(
+			std::make_unique<
+				Res
+			>(
 				std::forward<
 					Args
 				>(

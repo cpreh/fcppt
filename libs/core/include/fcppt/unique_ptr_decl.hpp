@@ -54,6 +54,9 @@ public:
 	=
 	Deleter;
 
+	/**
+	\brief Constructs a unique_ptr from a pointer. This pointer should not be equal to nullptr.
+	*/
 	explicit
 	unique_ptr(
 		pointer
@@ -99,6 +102,17 @@ public:
 	[[nodiscard]]
 	pointer
 	release_ownership()
+	noexcept;
+
+	/**
+	\brief For implementation purposes only.
+	*/
+	explicit
+	unique_ptr(
+		std::unique_ptr<
+			Type
+		> &&
+	)
 	noexcept;
 private:
 	std::unique_ptr<

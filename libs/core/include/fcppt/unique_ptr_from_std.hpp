@@ -12,6 +12,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -49,7 +50,9 @@ unique_ptr_from_std(
 					fcppt::unique_ptr<
 						Type
 					>(
-						_ptr.release()
+						std::move(
+							_ptr
+						)
 					);
 			}
 		);

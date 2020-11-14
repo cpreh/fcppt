@@ -7,8 +7,10 @@
 #ifndef FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
+#include <fcppt/default_deleter_fwd.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -157,6 +159,33 @@ noexcept
 {
 	return
 		this->impl_.release();
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+inline
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::unique_ptr(
+	std::unique_ptr<
+		Type
+	> &&_impl
+)
+noexcept
+:
+	impl_{
+		_impl.release()
+	}
+{
+	static_assert(
+		std::is_same_v<
+			Deleter,
+			fcppt::default_deleter
+		>
+	);
 }
 
 #endif
