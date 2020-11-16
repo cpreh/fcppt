@@ -140,56 +140,67 @@ fcppt::parse::alternative<
 							)
 							{
 								return
-									fcppt::either::make_failure<
-										result_type
-									>(
-										fcppt::parse::error<
-											Ch
+									_right_error.is_fatal()
+									?
+										fcppt::either::make_failure<
+											result_type
 										>(
-											std::basic_string<
+											std::move(
+												_right_error
+											)
+										)
+									:
+										fcppt::either::make_failure<
+											result_type
+										>(
+											fcppt::parse::error<
 												Ch
 											>(
-												FCPPT_STRING_LITERAL(
-													Ch,
-													"{ "
+												std::basic_string<
+													Ch
+												>(
+													FCPPT_STRING_LITERAL(
+														Ch,
+														"{ "
+													)
+												)
+											)
+											+
+											std::move(
+												_left_error
+											)
+											+
+											fcppt::parse::error<
+												Ch
+											>(
+												std::basic_string<
+													Ch
+												>(
+													FCPPT_STRING_LITERAL(
+														Ch,
+														" OR "
+													)
+												)
+											)
+											+
+											std::move(
+												_right_error
+											)
+											+
+											fcppt::parse::error<
+												Ch
+											>(
+												std::basic_string<
+													Ch
+												>(
+													FCPPT_STRING_LITERAL(
+														Ch,
+														" }"
+													)
 												)
 											)
 										)
-										+
-										std::move(
-											_left_error
-										)
-										+
-										fcppt::parse::error<
-											Ch
-										>(
-											std::basic_string<
-												Ch
-											>(
-												FCPPT_STRING_LITERAL(
-													Ch,
-													" OR "
-												)
-											)
-										)
-										+
-										std::move(
-											_right_error
-										)
-										+
-										fcppt::parse::error<
-											Ch
-										>(
-											std::basic_string<
-												Ch
-											>(
-												FCPPT_STRING_LITERAL(
-													Ch,
-													" }"
-												)
-											)
-										)
-									);
+									;
 							},
 							[](
 								fcppt::parse::result_of<
