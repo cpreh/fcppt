@@ -1966,6 +1966,10 @@ set(
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp
 	libs/parse/include/fcppt/parse/lexeme_impl.hpp
 	libs/parse/include/fcppt/parse/line.hpp
+	libs/parse/include/fcppt/parse/list.hpp
+	libs/parse/include/fcppt/parse/list_decl.hpp
+	libs/parse/include/fcppt/parse/list_fwd.hpp
+	libs/parse/include/fcppt/parse/list_impl.hpp
 	libs/parse/include/fcppt/parse/literal.hpp
 	libs/parse/include/fcppt/parse/literal_decl.hpp
 	libs/parse/include/fcppt/parse/literal_fwd.hpp

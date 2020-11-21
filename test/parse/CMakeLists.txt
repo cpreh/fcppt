@@ -101,6 +101,12 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	list
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_parse_test(
 	literal
 )
 

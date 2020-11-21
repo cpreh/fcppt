@@ -15,6 +15,7 @@
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
