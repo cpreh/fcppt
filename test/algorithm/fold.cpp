@@ -10,7 +10,6 @@
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -91,21 +90,15 @@ TEST_CASE(
 		int_movable
 	>;
 
-	int_vector vector{
-		fcppt::container::make<
-			int_vector
-		>(
-			int_movable{
-				1
-			}
-		)
-	};
-
 	CHECK(
 		fcppt::algorithm::fold(
 			fcppt::container::make_move_range(
-				std::move(
-					vector
+				fcppt::container::make<
+					int_vector
+				>(
+					int_movable{
+						1
+					}
 				)
 			),
 			0,
