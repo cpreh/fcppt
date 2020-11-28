@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_SET_INSERT_RELAXED_HPP_INCLUDED
 #define FCPPT_METAL_SET_INSERT_RELAXED_HPP_INCLUDED
 
@@ -14,45 +13,20 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
 namespace set
 {
-
-template<
-	typename Set,
-	typename Key
->
-using
-insert_relaxed
-=
-::metal::invoke<
-	::metal::if_<
-		fcppt::metal::to_number<
-			fcppt::metal::set::contains<
-				Set,
-				Key
-			>
-		>,
-		::metal::always<
-			Set
-		>,
-		::metal::bind<
-			::metal::lambda<
-				fcppt::metal::set::insert
-			>,
-			::metal::always<
-				Set
-			>,
-			::metal::always<
-				Key
-			>
-		>
-	>
->;
+template <typename Set, typename Key>
+using insert_relaxed = ::metal::invoke<::metal::if_<
+    fcppt::metal::to_number<fcppt::metal::set::contains<Set, Key>>,
+    ::metal::always<Set>,
+    ::metal::bind<
+        ::metal::lambda<fcppt::metal::set::insert>,
+        ::metal::always<Set>,
+        ::metal::always<Key>>>>;
 
 }
 }

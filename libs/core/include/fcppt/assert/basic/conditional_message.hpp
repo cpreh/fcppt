@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_BASIC_CONDITIONAL_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_CONDITIONAL_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/basic/unconditional_message.hpp>
-
 
 /**
 \brief Asserts that a condition is true, with an extra message on failure
@@ -24,18 +22,8 @@ printing \a message.
 
 \param action The action to take on failure
 */
-#define FCPPT_ASSERT_BASIC_CONDITIONAL_MESSAGE(\
-	condition,\
-	message, \
-	action\
-) \
-if( \
-	!(condition)\
-)\
-	FCPPT_ASSERT_BASIC_UNCONDITIONAL_MESSAGE(\
-		condition, \
-		message, \
-		action \
-	)
+#define FCPPT_ASSERT_BASIC_CONDITIONAL_MESSAGE(condition, message, action) \
+  if (!(condition)) \
+  FCPPT_ASSERT_BASIC_UNCONDITIONAL_MESSAGE(condition, message, action)
 
 #endif

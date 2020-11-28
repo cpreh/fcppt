@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/io/write_chars.hpp>
@@ -13,25 +12,10 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
-bool
-fcppt::io::write_chars(
-	std::ostream &_stream,
-	char const *const _data,
-	std::size_t const _count
-)
+bool fcppt::io::write_chars(
+    std::ostream &_stream, char const *const _data, std::size_t const _count)
 {
-	_stream.write(
-		_data,
-		fcppt::cast::size<
-			std::streamsize
-		>(
-			fcppt::cast::to_signed(
-				_count
-			)
-		)
-	);
+  _stream.write(_data, fcppt::cast::size<std::streamsize>(fcppt::cast::to_signed(_count)));
 
-	return
-		_stream.good();
+  return _stream.good();
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_ELEMENT_TO_TYPE_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_TO_TYPE_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 /**
 \brief Extracts the label of an element
 
@@ -25,18 +22,9 @@ namespace record
 
 \tparam Element Must be an #fcppt::record::element.
 */
-template<
-	typename Element
->
-using
-element_to_type
-=
-typename
-fcppt::record::detail::element_to_type<
-	std::remove_cv_t<
-		Element
-	>
->::type;
+template <typename Element>
+using element_to_type =
+    typename fcppt::record::detail::element_to_type<std::remove_cv_t<Element>>::type;
 
 }
 }

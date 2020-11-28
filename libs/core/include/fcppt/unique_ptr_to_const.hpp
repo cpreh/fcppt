@@ -3,45 +3,23 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_UNIQUE_PTR_TO_CONST_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_TO_CONST_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_impl.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Casts a unique_ptr to a const unique_ptr
 
 \ingroup fcpptsmartptr
 */
-template<
-	typename Type,
-	typename Deleter
->
-inline
-fcppt::unique_ptr<
-	Type const,
-	Deleter
->
-unique_ptr_to_const(
-	fcppt::unique_ptr<
-		Type,
-		Deleter
-	> &&_other
-)
-noexcept
+template <typename Type, typename Deleter>
+inline fcppt::unique_ptr<Type const, Deleter>
+unique_ptr_to_const(fcppt::unique_ptr<Type, Deleter> &&_other) noexcept
 {
-	return
-		fcppt::unique_ptr<
-			Type const,
-			Deleter
-		>(
-			_other.release_ownership()
-		);
+  return fcppt::unique_ptr<Type const, Deleter>(_other.release_ownership());
 }
 
 }

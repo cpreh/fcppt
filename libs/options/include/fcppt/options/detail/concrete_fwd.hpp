@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_DETAIL_CONCRETE_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_CONCRETE_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -14,11 +12,7 @@ namespace options
 {
 namespace detail
 {
-
-template<
-	typename Result,
-	typename Parser
->
+template <typename Result, typename Parser>
 class concrete;
 
 }

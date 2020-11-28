@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_DETAIL_USE_FLAG_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_USE_FLAG_HPP_INCLUDED
 
@@ -13,24 +12,16 @@
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
 namespace detail
 {
-
-[[nodiscard]]
-FCPPT_OPTIONS_DETAIL_SYMBOL
-bool
-use_flag(
-	fcppt::reference<
-		fcppt::options::state
-	>,
-	fcppt::string_view const &,
-	fcppt::options::detail::flag_is_short
-);
+[[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool use_flag(
+    fcppt::reference<fcppt::options::state>,
+    fcppt::string_view const &,
+    fcppt::options::detail::flag_is_short);
 
 }
 }

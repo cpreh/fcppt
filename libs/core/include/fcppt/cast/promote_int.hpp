@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_PROMOTE_INT_HPP_INCLUDED
 #define FCPPT_CAST_PROMOTE_INT_HPP_INCLUDED
 
 #include <fcppt/cast/promote_int_type.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Promotes an integral type to int or unsigned int.
 
@@ -22,26 +19,10 @@ namespace cast
 
 \tparam Type Must be an integral type.
 */
-template<
-	typename Type
->
-inline
-constexpr
-fcppt::cast::promote_int_type<
-	Type
->
-promote_int(
-	Type const &_value
-)
+template <typename Type>
+inline constexpr fcppt::cast::promote_int_type<Type> promote_int(Type const &_value)
 {
-	return
-		static_cast<
-			fcppt::cast::promote_int_type<
-				Type
-			>
-		>(
-			_value
-		);
+  return static_cast<fcppt::cast::promote_int_type<Type>>(_value);
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_MAKE_POS_REF_RANGE_START_END_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MAKE_POS_REF_RANGE_START_END_HPP_INCLUDED
 
@@ -13,14 +12,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief A pos ref range over a sub-grid
 
@@ -28,42 +25,17 @@ namespace grid
 
 Creates a pos ref range from \a _min to, but not including, \a _sup.
 */
-template<
-	typename Grid
->
-inline
-fcppt::container::grid::pos_ref_range<
-	Grid
->
-make_pos_ref_range_start_end(
-	Grid &_grid,
-	typename
-	fcppt::container::grid::pos_ref_range<
-		Grid
-	>::min_type const _min,
-	typename
-	fcppt::container::grid::pos_ref_range<
-		Grid
-	>::sup_type const _sup
-)
+template <typename Grid>
+inline fcppt::container::grid::pos_ref_range<Grid> make_pos_ref_range_start_end(
+    Grid &_grid,
+    typename fcppt::container::grid::pos_ref_range<Grid>::min_type const _min,
+    typename fcppt::container::grid::pos_ref_range<Grid>::sup_type const _sup)
 {
-	static_assert(
-		fcppt::container::grid::is_object<
-			std::remove_const_t<
-				Grid
-			>
-		>::value,
-		"Grid must be a grid::object"
-	);
+  static_assert(
+      fcppt::container::grid::is_object<std::remove_const_t<Grid>>::value,
+      "Grid must be a grid::object");
 
-	return
-		fcppt::container::grid::pos_ref_range<
-			Grid
-		>(
-			_grid,
-			_min,
-			_sup
-		);
+  return fcppt::container::grid::pos_ref_range<Grid>(_grid, _min, _sup);
 }
 
 }

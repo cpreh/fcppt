@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANGE_END_HPP_INCLUDED
 #define FCPPT_RANGE_END_HPP_INCLUDED
 
@@ -11,31 +10,21 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace range
 {
-
 /**
 \brief Calls end via ADL.
 
 \ingroup fcpptrange
 */
-template<
-	typename Range
->
-auto
-end(
-	Range &_range
-)
+template <typename Range>
+auto end(Range &_range)
 {
-	using std::end;
+  using std::end;
 
-	return
-		end(
-			_range
-		);
+  return end(_range);
 }
 
 }

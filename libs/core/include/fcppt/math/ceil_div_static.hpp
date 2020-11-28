@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_CEIL_DIV_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_CEIL_DIV_STATIC_HPP_INCLUDED
 
 #include <fcppt/math/detail/ceil_div_static.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Calculates a division of integral contants rounded towards infinity.
 
@@ -31,20 +28,9 @@ where <code>V</code> is the calculated value.
 
 \tparam Divisor The divisor
 */
-template<
-	typename Type,
-	Type Dividend,
-	Type Divisor
->
-using
-ceil_div_static
-=
-typename
-fcppt::math::detail::ceil_div_static<
-	Type,
-	Dividend,
-	Divisor
->::type;
+template <typename Type, Type Dividend, Type Divisor>
+using ceil_div_static =
+    typename fcppt::math::detail::ceil_div_static<Type, Dividend, Divisor>::type;
 
 }
 }

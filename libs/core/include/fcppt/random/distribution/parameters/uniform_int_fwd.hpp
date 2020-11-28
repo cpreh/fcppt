@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_FWD_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_FWD_HPP_INCLUDED
 
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
-
 
 namespace fcppt
 {
@@ -18,12 +16,9 @@ namespace distribution
 {
 namespace parameters
 {
-
-template<
-	typename IntType,
-	typename Distribution
-		= fcppt::random::distribution::parameters::uniform_int_wrapper
->
+template <
+    typename IntType,
+    typename Distribution = fcppt::random::distribution::parameters::uniform_int_wrapper>
 class uniform_int;
 
 }

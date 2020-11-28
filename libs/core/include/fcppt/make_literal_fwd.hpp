@@ -3,21 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MAKE_LITERAL_FWD_HPP_INCLUDED
 #define FCPPT_MAKE_LITERAL_FWD_HPP_INCLUDED
 
-
 namespace fcppt
 {
-
 /**
 \ingroup fcpptliteral
 */
-template<
-	typename Type,
-	typename Enable = void
->
+template <typename Type, typename Enable = void>
 struct make_literal;
 
 }

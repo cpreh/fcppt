@@ -3,30 +3,22 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_OPTIONAL_LEVEL_FWD_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_LEVEL_FWD_HPP_INCLUDED
 
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace log
 {
-
 /**
 \brief An optional level
 
 \ingroup fcpptlog
 */
-using
-optional_level
-=
-fcppt::optional::object<
-	fcppt::log::level
->;
+using optional_level = fcppt::optional::object<fcppt::log::level>;
 
 }
 }

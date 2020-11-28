@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_ARRAY_DETAIL_INIT_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_DETAIL_INIT_HPP_INCLUDED
 
@@ -13,7 +12,6 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
@@ -22,30 +20,10 @@ namespace array
 {
 namespace detail
 {
-
-template<
-	typename Array,
-	typename Function,
-	std::size_t... Ints
->
-inline
-Array
-init(
-	std::index_sequence<
-		Ints...
-	>,
-	Function const &_function
-)
+template <typename Array, typename Function, std::size_t... Ints>
+inline Array init(std::index_sequence<Ints...>, Function const &_function)
 {
-	return
-		Array{{
-			_function(
-				std::integral_constant<
-					std::size_t,
-					Ints
-				>{}
-			)...
-		}};
+  return Array{{_function(std::integral_constant<std::size_t, Ints>{})...}};
 } // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
 
 }

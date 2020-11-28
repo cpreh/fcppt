@@ -3,14 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_NOT_HPP_INCLUDED
 #define FCPPT_NOT_HPP_INCLUDED
 
-
 namespace fcppt
 {
-
 /**
 \brief Boolean not.
 
@@ -18,16 +15,7 @@ namespace fcppt
 
 This function is a replacement for <code>!</code>.
 */
-constexpr
-inline
-bool
-not_(
-	bool const _value
-)
-{
-	return
-		!_value;
-}
+constexpr inline bool not_(bool const _value) { return !_value; }
 
 }
 

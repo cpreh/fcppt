@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 #define FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace time
 {
-
 /**
 \brief Outputs an <code>%std::tm</code> to a stream
 
@@ -35,11 +32,7 @@ obtained from the locale of \a stream. Example:
 \return \a stream
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::io::ostream &
-output_tm(
-	fcppt::io::ostream &stream,
-	std::tm const &tm
-);
+fcppt::io::ostream &output_tm(fcppt::io::ostream &stream, std::tm const &tm);
 
 }
 }

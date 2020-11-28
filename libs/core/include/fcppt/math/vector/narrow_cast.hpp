@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_NARROW_CAST_HPP_INCLUDED
 
@@ -11,14 +10,12 @@
 #include <fcppt/math/detail/narrow_cast.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Shortens a vector to a smaller dimension
 
@@ -32,28 +29,10 @@ The inverse operation is fcppt::math::vector::construct.
 
 \see fcppt::math::vector::construct
 */
-template<
-	typename Dest,
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-inline
-Dest
-narrow_cast(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> const &_src
-)
+template <typename Dest, typename T, fcppt::math::size_type N, typename S>
+inline Dest narrow_cast(fcppt::math::vector::object<T, N, S> const &_src)
 {
-	return
-		fcppt::math::detail::narrow_cast<
-			Dest
-		>(
-			_src
-		);
+  return fcppt::math::detail::narrow_cast<Dest>(_src);
 }
 
 }

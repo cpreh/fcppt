@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 
@@ -19,104 +18,37 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename T
->
-fcppt::signal::auto_connection
-fcppt::signal::base<
-	T
->::connect(
-	function &&_function
-)
+template <typename T>
+fcppt::signal::auto_connection fcppt::signal::base<T>::connect(function &&_function)
 {
-	return
-		fcppt::unique_ptr_to_base<
-			fcppt::signal::connection
-		>(
-			fcppt::make_unique_ptr<
-				concrete_connection
-			>(
-				connections_,
-				std::move(
-					_function
-				)
-			)
-		);
+  return fcppt::unique_ptr_to_base<fcppt::signal::connection>(
+      fcppt::make_unique_ptr<concrete_connection>(connections_, std::move(_function)));
 }
 
-template<
-	typename T
->
-bool
-fcppt::signal::base<
-	T
->::empty() const
+template <typename T>
+bool fcppt::signal::base<T>::empty() const
 {
-	return
-		connections_.empty();
+  return connections_.empty();
 }
 
-template<
-	typename T
->
-fcppt::signal::base<
-	T
->::base()
-:
-	connections_()
+template <typename T>
+fcppt::signal::base<T>::base() : connections_()
 {
 }
 
-template<
-	typename T
->
-fcppt::signal::base<
-	T
->::base(
-	base &&
-)
-noexcept
-= default;
+template <typename T>
+fcppt::signal::base<T>::base(base &&) noexcept = default;
 
-template<
-	typename T
->
-fcppt::signal::base<
-	T
-> &
-fcppt::signal::base<
-	T
->::operator=(
-	base &&
-)
-noexcept
-= default;
+template <typename T>
+fcppt::signal::base<T> &fcppt::signal::base<T>::operator=(base &&) noexcept = default;
 
+template <typename T>
+fcppt::signal::base<T>::~base<T>() = default;
 
-template<
-	typename T
->
-fcppt::signal::base<
-	T
->::~base<
-	T
->()
-= default;
-
-template<
-	typename T
->
-typename
-fcppt::signal::base<
-	T
->::connection_list &
-fcppt::signal::base<
-	T
->::connections() const
+template <typename T>
+typename fcppt::signal::base<T>::connection_list &fcppt::signal::base<T>::connections() const
 {
-	return
-		connections_;
+  return connections_;
 }
 
 #endif

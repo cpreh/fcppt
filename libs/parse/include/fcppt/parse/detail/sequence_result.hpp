@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_SEQUENCE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_SEQUENCE_RESULT_HPP_INCLUDED
 
@@ -15,101 +14,32 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
 namespace detail
 {
+inline fcppt::unit sequence_result(fcppt::unit, fcppt::unit) { return fcppt::unit{}; }
 
-inline
-fcppt::unit
-sequence_result(
-	fcppt::unit,
-	fcppt::unit
-)
+template <typename Left>
+fcppt::type_traits::remove_cv_ref_t<Left> sequence_result(Left &&_left, fcppt::unit)
 {
-	return
-		fcppt::unit{};
+  return std::forward<Left>(_left);
 }
 
-template<
-	typename Left
->
-fcppt::type_traits::remove_cv_ref_t<
-	Left
->
-sequence_result(
-	Left &&_left,
-	fcppt::unit
-)
+template <typename Right>
+fcppt::type_traits::remove_cv_ref_t<Right> sequence_result(fcppt::unit, Right &&_right)
 {
-	return
-		std::forward<
-			Left
-		>(
-			_left
-		);
+  return std::forward<Right>(_right);
 }
 
-template<
-	typename Right
->
-fcppt::type_traits::remove_cv_ref_t<
-	Right
->
-sequence_result(
-	fcppt::unit,
-	Right &&_right
-)
+template <typename Left, typename Right>
+auto sequence_result(Left &&_left, Right &&_right) -> decltype(
+    fcppt::parse::detail::combine_tuples(std::forward<Left>(_left), std::forward<Right>(_right)))
 {
-	return
-		std::forward<
-			Right
-		>(
-			_right
-		);
-}
-
-template<
-	typename Left,
-	typename Right
->
-auto
-sequence_result(
-	Left &&_left,
-	Right &&_right
-)
-->
-decltype(
-	fcppt::parse::detail::combine_tuples(
-		std::forward<
-			Left
-		>(
-			_left
-		),
-		std::forward<
-			Right
-		>(
-			_right
-		)
-	)
-)
-{
-	return
-		fcppt::parse::detail::combine_tuples(
-			std::forward<
-				Left
-			>(
-				_left
-			),
-			std::forward<
-				Right
-			>(
-				_right
-			)
-		);
+  return fcppt::parse::detail::combine_tuples(
+      std::forward<Left>(_left), std::forward<Right>(_right));
 }
 
 }

@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_GET_HPP_INCLUDED
 #define FCPPT_RECORD_GET_HPP_INCLUDED
 
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_impl.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 /**
 \brief Gets an element from a record
 
@@ -23,27 +20,11 @@ namespace record
 
 Returns the element identified by \a Label from \a _arg.
 */
-template<
-	typename Label,
-	typename... Elements
->
-inline
-fcppt::record::label_value_type<
-	fcppt::record::object<
-		Elements...
-	>,
-	Label
-> const &
-get(
-	fcppt::record::object<
-		Elements...
-	> const &_arg
-)
+template <typename Label, typename... Elements>
+inline fcppt::record::label_value_type<fcppt::record::object<Elements...>, Label> const &
+get(fcppt::record::object<Elements...> const &_arg)
 {
-	return
-		_arg. template get<
-			Label
-		>();
+  return _arg.template get<Label>();
 }
 
 /**
@@ -53,27 +34,11 @@ get(
 
 Returns the element identified by \a Label from \a _arg.
 */
-template<
-	typename Label,
-	typename... Elements
->
-inline
-fcppt::record::label_value_type<
-	fcppt::record::object<
-		Elements...
-	>,
-	Label
-> &
-get(
-	fcppt::record::object<
-		Elements...
-	> &_arg
-)
+template <typename Label, typename... Elements>
+inline fcppt::record::label_value_type<fcppt::record::object<Elements...>, Label> &
+get(fcppt::record::object<Elements...> &_arg)
 {
-	return
-		_arg. template get<
-			Label
-		>();
+  return _arg.template get<Label>();
 }
 
 }

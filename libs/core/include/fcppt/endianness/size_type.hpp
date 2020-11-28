@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENDIANNESS_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_SIZE_TYPE_HPP_INCLUDED
 
@@ -11,21 +10,16 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace endianness
 {
-
 /**
 \brief The size of raw memory, used to swap bytes
 
 \ingroup fcpptendianness
 */
-using
-size_type
-=
-std::size_t;
+using size_type = std::size_t;
 
 }
 }

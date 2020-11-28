@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_WEAK_PTR_DECL_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_DECL_HPP_INCLUDED
 
@@ -14,10 +13,8 @@
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief A weak reference to an object owned by a shared pointer
 
@@ -32,162 +29,112 @@ any shared pointers left.
 
 \tparam Deleter A deleter class that must be callable with a pointer to Type.
 */
-template<
-	typename Type,
-	typename Deleter
->
+template <typename Type, typename Deleter>
 class weak_ptr
 {
 public:
-	/**
-	\brief The type if the <code>std::weak_ptr</code> used to implement
-	this class
-	*/
-	using
-	impl_type
-	=
-	std::weak_ptr<
-		Type
-	>;
+  /**
+  \brief The type if the <code>std::weak_ptr</code> used to implement
+  this class
+  */
+  using impl_type = std::weak_ptr<Type>;
 
-	/**
-	\brief The corresponding shared pointer class
-	*/
-	using
-	shared_ptr
-	=
-	fcppt::shared_ptr<
-		Type,
-		Deleter
-	>;
+  /**
+  \brief The corresponding shared pointer class
+  */
+  using shared_ptr = fcppt::shared_ptr<Type, Deleter>;
 
-	/**
-	\brief The element type, which is \a Type
-	*/
-	using
-	element_type
-	=
-	Type;
+  /**
+  \brief The element type, which is \a Type
+  */
+  using element_type = Type;
 
-	/**
-	\brief The reference count type.
-	*/
-	using
-	count_type
-	=
-	// NOLINTNEXTLINE(google-runtime-int)
-	long;
+  /**
+  \brief The reference count type.
+  */
+  using count_type =
+      // NOLINTNEXTLINE(google-runtime-int)
+      long;
 
-	/**
-	\brief Constructs an empty weak ptr
-	*/
-	weak_ptr();
+  /**
+  \brief Constructs an empty weak ptr
+  */
+  weak_ptr();
 
-	/**
-	\brief Constructs a weak_ptr from a compatible weak_ptr type
+  /**
+  \brief Constructs a weak_ptr from a compatible weak_ptr type
 
-	Constructs a weak_ptr from the weak_ptr \a ref. This weak_ptr will
-	belong to the same shared_ptrs as \a ref does.
+  Constructs a weak_ptr from the weak_ptr \a ref. This weak_ptr will
+  belong to the same shared_ptrs as \a ref does.
 
-	\tparam Other A type, so that <code>Other *</code> is implicitly
-	convertible to <code>Type *</code>
+  \tparam Other A type, so that <code>Other *</code> is implicitly
+  convertible to <code>Type *</code>
 
-	\param ref The weak_ptr to copy
-	*/
-	template<
-		typename Other
-	>
-	explicit
-	weak_ptr(
-		fcppt::weak_ptr<
-			Other,
-			Deleter
-		> const &ref
-	);
+  \param ref The weak_ptr to copy
+  */
+  template <typename Other>
+  explicit weak_ptr(fcppt::weak_ptr<Other, Deleter> const &ref);
 
-	/**
-	\brief Constructs a weak_ptr from a compatible shared_ptr
+  /**
+  \brief Constructs a weak_ptr from a compatible shared_ptr
 
-	Constructs a weak_ptr from the shared_ptr \a ref which will keep track
-	of the shared count of the shared_ptr.
+  Constructs a weak_ptr from the shared_ptr \a ref which will keep track
+  of the shared count of the shared_ptr.
 
-	\tparam Other A type, so that <code>Other *</code> is implicitly
-	convertible to <code>Type *</code>
+  \tparam Other A type, so that <code>Other *</code> is implicitly
+  convertible to <code>Type *</code>
 
-	\param ref The shared_ptr to monitor
-	*/
-	template<
-		typename Other
-	>
-	explicit
-	weak_ptr(
-		fcppt::shared_ptr<
-			Other,
-			Deleter
-		> const &ref
-	);
+  \param ref The shared_ptr to monitor
+  */
+  template <typename Other>
+  explicit weak_ptr(fcppt::shared_ptr<Other, Deleter> const &ref);
 
-	/**
-	\brief Returns a shared_ptr pointing to the shared object of this
-	weak_ptr
+  /**
+  \brief Returns a shared_ptr pointing to the shared object of this
+  weak_ptr
 
-	If the shared object is still alive (which means that the reference
-	count is still greater than zero), then a new shared_ptr also owning
-	that object will be returned. If all shared_ptrs have been destroyed,
-	then an empty optional will be returned.
-	*/
-	[[nodiscard]]
-	fcppt::optional::object<
-		shared_ptr
-	>
-	lock() const;
+  If the shared object is still alive (which means that the reference
+  count is still greater than zero), then a new shared_ptr also owning
+  that object will be returned. If all shared_ptrs have been destroyed,
+  then an empty optional will be returned.
+  */
+  [[nodiscard]] fcppt::optional::object<shared_ptr> lock() const;
 
-	/**
-	\brief The use count
+  /**
+  \brief The use count
 
-	If this weak_ptr is empty, zero will be returned. Otherwise the shared
-	count of the shared object will be returned.
+  If this weak_ptr is empty, zero will be returned. Otherwise the shared
+  count of the shared object will be returned.
 
-	\note This type is <code>long</code> because
-	<code>std::shared_ptr</code> also uses <code>long</code>.
-	*/
-	[[nodiscard]]
-	count_type
-	use_count() const
-	noexcept;
+  \note This type is <code>long</code> because
+  <code>std::shared_ptr</code> also uses <code>long</code>.
+  */
+  [[nodiscard]] count_type use_count() const noexcept;
 
-	/**
-	\brief Returns if the weak_ptr still points to a shared object
+  /**
+  \brief Returns if the weak_ptr still points to a shared object
 
-	If this weak_ptr is empty, false will be returned. Otherwise if the
-	shared count is still greater than zero, true will be returned.
-	*/
-	[[nodiscard]]
-	bool
-	expired() const
-	noexcept;
+  If this weak_ptr is empty, false will be returned. Otherwise if the
+  shared count is still greater than zero, true will be returned.
+  */
+  [[nodiscard]] bool expired() const noexcept;
 
-	/**
-	\brief Swaps the weak_ptr
+  /**
+  \brief Swaps the weak_ptr
 
-	Swaps the weak_ptr with \a other.
+  Swaps the weak_ptr with \a other.
 
-	\param other The shared_ptr to swap with
-	*/
-	void
-	swap(
-		weak_ptr &other
-	)
-	noexcept;
+  \param other The shared_ptr to swap with
+  */
+  void swap(weak_ptr &other) noexcept;
 
-	/**
-	\brief Returns the underlying <code>std::weak_ptr</code> object
-	*/
-	[[nodiscard]]
-	impl_type
-	std_ptr() const;
+  /**
+  \brief Returns the underlying <code>std::weak_ptr</code> object
+  */
+  [[nodiscard]] impl_type std_ptr() const;
+
 private:
-	impl_type impl_;
+  impl_type impl_;
 };
 
 /**
@@ -205,23 +152,10 @@ Pointers to \a Type1 and to \a Type2 must be comparable using
 
 \param right The right argument
 */
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-bool
-operator<(
-	fcppt::weak_ptr<
-		Type1,
-		Deleter
-	> const &left,
-	fcppt::weak_ptr<
-		Type2,
-		Deleter
-	> const &right
-)
-noexcept;
+template <typename Type1, typename Type2, typename Deleter>
+bool operator<(
+    fcppt::weak_ptr<Type1, Deleter> const &left,
+    fcppt::weak_ptr<Type2, Deleter> const &right) noexcept;
 
 /**
 \brief Swaps two weak pointers
@@ -234,22 +168,8 @@ Swaps \a left and \a right
 
 \param right The right argument
 */
-template<
-	typename Type,
-	typename Deleter
->
-void
-swap(
-	fcppt::weak_ptr<
-		Type,
-		Deleter
-	> &left,
-	fcppt::weak_ptr<
-		Type,
-		Deleter
-	> &right
-)
-noexcept;
+template <typename Type, typename Deleter>
+void swap(fcppt::weak_ptr<Type, Deleter> &left, fcppt::weak_ptr<Type, Deleter> &right) noexcept;
 
 }
 

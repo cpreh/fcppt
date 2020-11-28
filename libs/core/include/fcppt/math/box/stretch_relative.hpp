@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
 
@@ -16,70 +15,28 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/to_dim.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace box
 {
-
 /**
 \brief Stretch a box around its center by a given factor
 
 \ingroup fcpptmathbox
 */
-template<
-	typename T,
-	fcppt::math::size_type N
->
-fcppt::math::box::object<
-	T,
-	N
->
-stretch_relative(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_box,
-	typename
-	fcppt::math::box::object<
-		T,
-		N
-	>::vector const &_factors
-)
+template <typename T, fcppt::math::size_type N>
+fcppt::math::box::object<T, N> stretch_relative(
+    fcppt::math::box::object<T, N> const &_box,
+    typename fcppt::math::box::object<T, N>::vector const &_factors)
 {
-	auto const dim(
-		_box.size()
-		*
-		fcppt::math::vector::to_dim(
-			_factors
-		)
-	);
+  auto const dim(_box.size() * fcppt::math::vector::to_dim(_factors));
 
-	return
-		fcppt::math::box::object<
-			T,
-			N
-		>(
-			fcppt::math::box::center(
-				_box
-			)
-			-
-			(
-				fcppt::math::dim::to_vector(
-					dim
-				)
-				/
-				fcppt::literal<
-					T
-				>(
-					2
-				)
-			).get_unsafe()
-			,
-			dim
-		);
+  return fcppt::math::box::object<T, N>(
+      fcppt::math::box::center(_box) -
+          (fcppt::math::dim::to_vector(dim) / fcppt::literal<T>(2)).get_unsafe(),
+      dim);
 }
 
 }

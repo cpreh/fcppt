@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-
 
 /**
 \brief The default assert message
@@ -17,7 +15,6 @@
 
 The default assert message, which is empty.
 */
-#define FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE \
-FCPPT_TEXT("")
+#define FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE FCPPT_TEXT("")
 
 #endif

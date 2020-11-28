@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_DETAIL_MAP_RESULT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_MAP_RESULT_HPP_INCLUDED
 
@@ -12,28 +11,14 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
 namespace detail
 {
-
-template<
-	typename Function,
-	typename Arg
->
-using
-map_result
-=
-std::result_of_t<
-	Function(
-		fcppt::record::element_to_type<
-			Arg
-		>
-	)
->;
+template <typename Function, typename Arg>
+using map_result = std::result_of_t<Function(fcppt::record::element_to_type<Arg>)>;
 
 }
 }

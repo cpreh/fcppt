@@ -3,11 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_GRAMMAR_HPP_INCLUDED
 #define FCPPT_PARSE_GRAMMAR_HPP_INCLUDED
 
 #include <fcppt/parse/grammar_impl.hpp>
-
 
 #endif

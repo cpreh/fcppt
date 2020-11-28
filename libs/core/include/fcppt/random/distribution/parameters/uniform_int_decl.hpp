@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_DECL_HPP_INCLUDED
 
@@ -13,7 +12,6 @@
 #include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
 
-
 namespace fcppt
 {
 namespace random
@@ -22,7 +20,6 @@ namespace distribution
 {
 namespace parameters
 {
-
 /**
 \brief Parameters class for uniform int distributions
 
@@ -32,76 +29,42 @@ typedefs for the min and max parameters.
 
 \ingroup fcpptrandom
 */
-template<
-	typename IntType,
-	typename Distribution
->
+template <typename IntType, typename Distribution>
 class uniform_int
 {
 public:
-	using
-	result_type
-	=
-	IntType;
+  using result_type = IntType;
 
-	using
-	base_type
-	=
-	fcppt::random::distribution::base_type<
-		result_type
-	>;
+  using base_type = fcppt::random::distribution::base_type<result_type>;
 
-	using
-	distribution
-	=
-	typename
-	Distribution:: template apply<
-		base_type
-	>::type;
+  using distribution = typename Distribution::template apply<base_type>::type;
 
-	using
-	wrapped_param_type
-	=
-	typename
-	distribution::param_type;
+  using wrapped_param_type = typename distribution::param_type;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		IntType,
-		min
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(IntType, min);
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		IntType,
-		max
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(IntType, max);
 
-	/**
-	\brief Constructs parameters for a uniform int distribution
+  /**
+  \brief Constructs parameters for a uniform int distribution
 
-	Constructs parameters for a uniform int distribution that can produce
-	values from \a _min to (including) \a _max
+  Constructs parameters for a uniform int distribution that can produce
+  values from \a _min to (including) \a _max
 
-	\param _min The minimum value this distribution can produce
+  \param _min The minimum value this distribution can produce
 
-	\param _max The maximum values this distribution can produce
-	*/
-	uniform_int(
-		min _min,
-		max _max
-	);
+  \param _max The maximum values this distribution can produce
+  */
+  uniform_int(min _min, max _max);
 
-	wrapped_param_type
-	convert_from() const;
+  wrapped_param_type convert_from() const;
 
-	static
-	uniform_int
-	convert_to(
-		distribution const &
-	);
+  static uniform_int convert_to(distribution const &);
+
 private:
-	min min_;
+  min min_;
 
-	max max_;
+  max max_;
 };
 
 }

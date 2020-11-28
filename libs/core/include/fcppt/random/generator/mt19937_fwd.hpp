@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_GENERATOR_MT19937_FWD_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_MT19937_FWD_HPP_INCLUDED
 
@@ -12,20 +11,13 @@
 #include <random>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace random
 {
 namespace generator
 {
-
-using
-mt19937
-=
-fcppt::random::generator::basic_pseudo<
-	std::mt19937
->;
+using mt19937 = fcppt::random::generator::basic_pseudo<std::mt19937>;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args.hpp>
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_vector.hpp>
@@ -18,45 +17,22 @@
 #include <fcppt/from_std_string.hpp>
 #endif
 
-
-fcppt::args_vector
-fcppt::args(
-	int const _argc,
-	fcppt::args_char const *const *const _argv
-)
+fcppt::args_vector fcppt::args(int const _argc, fcppt::args_char const *const *const _argv)
 {
-	return
-		fcppt::algorithm::map<
-			fcppt::args_vector
-		>(
-			fcppt::iterator::make_range(
-				_argv,
-				_argv + _argc // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
-			),
-			[](
-				fcppt::args_char const *const _arg
-			)
-			{
-				using
-				args_string
-				=
-				std::basic_string<
-					fcppt::args_char
-				>;
+  return fcppt::algorithm::map<fcppt::args_vector>(
+      fcppt::iterator::make_range(
+          _argv,
+          _argv + _argc // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+          ),
+      [](fcppt::args_char const *const _arg) {
+        using args_string = std::basic_string<fcppt::args_char>;
 
-				return
+        return
 #if defined(FCPPT_DETAIL_MAIN_WCHAR)
-					// fcppt::string is std::wstring in this case
-					args_string{
-						_arg
-					};
+            // fcppt::string is std::wstring in this case
+            args_string{_arg};
 #else
-					fcppt::from_std_string(
-						args_string{
-							_arg
-						}
-					);
+            fcppt::from_std_string(args_string{_arg});
 #endif
-			}
-		);
+      });
 }

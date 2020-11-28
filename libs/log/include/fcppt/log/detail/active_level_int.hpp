@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_DETAIL_ACTIVE_LEVEL_INT_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_ACTIVE_LEVEL_INT_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -14,11 +12,7 @@ namespace log
 {
 namespace detail
 {
-
-using
-active_level_int
-=
-unsigned;
+using active_level_int = unsigned;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_APPLY_HPP_INCLUDED
 #define FCPPT_OPTIONS_APPLY_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief Combines two or more parsers.
 
@@ -30,23 +27,10 @@ the individual parsers must be pairwise disjoint.
 
 \tparam Parsers Must be at least two parsers.
 */
-template<
-	typename... Parsers
->
-inline
-auto
-apply(
-	Parsers &&..._parsers
-)
+template <typename... Parsers>
+inline auto apply(Parsers &&..._parsers)
 {
-	return
-		fcppt::options::detail::apply(
-			std::forward<
-				Parsers
-			>(
-				_parsers
-			)...
-		);
+  return fcppt::options::detail::apply(std::forward<Parsers>(_parsers)...);
 }
 
 }

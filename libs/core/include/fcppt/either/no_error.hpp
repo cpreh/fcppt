@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_NO_ERROR_HPP_INCLUDED
 #define FCPPT_EITHER_NO_ERROR_HPP_INCLUDED
 
 #include <fcppt/unit.hpp>
 #include <fcppt/either/no_error_fwd.hpp>
-
 
 #endif

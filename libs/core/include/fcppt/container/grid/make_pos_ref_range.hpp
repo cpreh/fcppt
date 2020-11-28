@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_MAKE_POS_REF_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MAKE_POS_REF_RANGE_HPP_INCLUDED
 
@@ -18,57 +17,26 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief A pos ref range over a grid
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename Grid
->
-inline
-fcppt::container::grid::pos_ref_range<
-	Grid
->
-make_pos_ref_range(
-	Grid &_grid
-)
+template <typename Grid>
+inline fcppt::container::grid::pos_ref_range<Grid> make_pos_ref_range(Grid &_grid)
 {
-	using
-	pos
-	=
-	fcppt::container::grid::pos_type<
-		std::remove_cv_t<
-			Grid
-		>
-	>;
+  using pos = fcppt::container::grid::pos_type<std::remove_cv_t<Grid>>;
 
-	return
-		fcppt::container::grid::make_pos_ref_range_start_end(
-			_grid,
-			fcppt::container::grid::min_from_pos<
-				pos
-			>(
-				fcppt::math::vector::null<
-					pos
-				>()
-			),
-			fcppt::container::grid::sup_from_pos<
-				pos
-			>(
-				fcppt::math::dim::to_vector(
-					_grid.size()
-				)
-			)
-		);
+  return fcppt::container::grid::make_pos_ref_range_start_end(
+      _grid,
+      fcppt::container::grid::min_from_pos<pos>(fcppt::math::vector::null<pos>()),
+      fcppt::container::grid::sup_from_pos<pos>(fcppt::math::dim::to_vector(_grid.size())));
 }
 
 }

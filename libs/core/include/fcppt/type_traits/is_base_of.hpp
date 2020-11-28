@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_TRAITS_IS_BASE_OF_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_BASE_OF_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace type_traits
 {
-
 /**
 \brief Like <code>std::is_base_of</code>, but only works on complete types
 
@@ -31,24 +28,12 @@ both \a Base and \a Derived are complete.
 
 \tparam Derived A complete type
 */
-template<
-	typename Base,
-	typename Derived
->
-struct is_base_of
-:
-std::is_base_of<
-	Base,
-	Derived
->
+template <typename Base, typename Derived>
+struct is_base_of : std::is_base_of<Base, Derived>
 {
-	FCPPT_ASSERT_COMPLETE(
-		Base
-	);
+  FCPPT_ASSERT_COMPLETE(Base);
 
-	FCPPT_ASSERT_COMPLETE(
-		Derived
-	);
+  FCPPT_ASSERT_COMPLETE(Derived);
 };
 
 }

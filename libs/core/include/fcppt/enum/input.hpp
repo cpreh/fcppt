@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_INPUT_HPP_INCLUDED
 #define FCPPT_ENUM_INPUT_HPP_INCLUDED
 
@@ -18,12 +17,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief Reads an enum value from a stream.
 
@@ -37,63 +34,21 @@ This function is useful to implement <code>operator>></code> for an enum type.
 
 \return \a _stream
 */
-template<
-	typename Enum
->
-fcppt::io::istream &
-input(
-	fcppt::io::istream &_stream,
-	Enum &_result
-)
+template <typename Enum>
+fcppt::io::istream &input(fcppt::io::istream &_stream, Enum &_result)
 {
-	static_assert(
-		std::is_enum_v<
-			Enum
-		>,
-		"Enum must be an enum type"
-	);
+  static_assert(std::is_enum_v<Enum>, "Enum must be an enum type");
 
-	fcppt::optional::maybe_void(
-		fcppt::io::extract<
-			fcppt::string
-		>(
-			_stream
-		),
-		[
-			&_result,
-			&_stream
-		](
-			fcppt::string const &_value
-		)
-		{
-			fcppt::optional::maybe(
-				fcppt::enum_::from_string<
-					Enum
-				>(
-					_value
-				),
-				[
-					&_stream
-				]{
-					_stream.setstate(
-						std::ios_base::failbit
-					);
-				},
-				[
-					&_result
-				](
-					Enum const _arg
-				)
-				{
-					_result =
-						_arg;
-				}
-			);
-		}
-	);
+  fcppt::optional::maybe_void(
+      fcppt::io::extract<fcppt::string>(_stream),
+      [&_result, &_stream](fcppt::string const &_value) {
+        fcppt::optional::maybe(
+            fcppt::enum_::from_string<Enum>(_value),
+            [&_stream] { _stream.setstate(std::ios_base::failbit); },
+            [&_result](Enum const _arg) { _result = _arg; });
+      });
 
-	return
-		_stream;
+  return _stream;
 }
 
 }

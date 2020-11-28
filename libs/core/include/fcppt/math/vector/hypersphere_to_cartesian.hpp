@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
@@ -27,14 +26,12 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
 
@@ -73,10 +70,10 @@ fcppt::math::vector::static_<float,2>
 vector2f;
 
 vector3f point =
-	fcppt::math::vector::hypersphere_to_cartesian(
-		vector2f(
-			fcppt::math::pi<float>(),
-			0.0f));
+    fcppt::math::vector::hypersphere_to_cartesian(
+        vector2f(
+            fcppt::math::pi<float>(),
+            0.0f));
 \endcode
 
 Note that in two dimensions, you have polar coordinates, and so you need one
@@ -115,149 +112,42 @@ Changing the inclination towards positive infinity results in a
 counterclockwise rotation around the z axis, assuming the viewer looks down
 the positive z axis.
 */
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-fcppt::math::vector::static_<
-	T,
-	N
-	+
-	1U
->
-hypersphere_to_cartesian(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> const &_angles
-)
+template <typename T, fcppt::math::size_type N, typename S>
+fcppt::math::vector::static_<T, N + 1U>
+hypersphere_to_cartesian(fcppt::math::vector::object<T, N, S> const &_angles)
 {
-	using
-	result_type
-	=
-	fcppt::math::vector::static_<
-		T,
-		N
-		+
-		1U
-	>;
+  using result_type = fcppt::math::vector::static_<T, N + 1U>;
 
-	using
-	value_type
-	=
-	fcppt::type_traits::value_type<
-		result_type
-	>;
+  using value_type = fcppt::type_traits::value_type<result_type>;
 
-	return
-		fcppt::math::vector::init<
-			result_type
-		>(
-			[
-				&_angles
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::math::vector::init<result_type>([&_angles](auto const _index) {
+    FCPPT_USE(_index);
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
-				value_type const sins(
-					fcppt::algorithm::fold(
-						fcppt::math::int_range_count<
-							_index()
-						>{},
-						fcppt::literal<
-							value_type
-						>(
-							1
-						),
-						[
-							&_angles
-						](
-							auto const _inner_index,
-							value_type const _prod
-						)
-						{
-							FCPPT_USE(
-								_inner_index
-							);
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+    value_type const sins(fcppt::algorithm::fold(
+        fcppt::math::int_range_count<_index()>{},
+        fcppt::literal<value_type>(1),
+        [&_angles](auto const _inner_index, value_type const _prod) {
+          FCPPT_USE(_inner_index);
 
-							using
-							inner_index
-							=
-							fcppt::tag_type<
-								decltype(
-									_inner_index
-								)
-							>;
+          using inner_index = fcppt::tag_type<decltype(_inner_index)>;
 
-							return
-								_prod
-								*
-								std::sin(
-									fcppt::math::vector::at<
-										inner_index::value
-									>(
-										_angles
-									)
-								);
-						}
-					)
-				);
+          return _prod * std::sin(fcppt::math::vector::at<inner_index::value>(_angles));
+        }));
 
-				result_type const cos_angles(
-					fcppt::math::vector::push_back(
-						fcppt::math::vector::init<
-							fcppt::math::vector::static_<
-								T,
-								N
-							>
-						>(
-							[
-								&_angles
-							](
-								auto const _inner_index
-							)
-							{
-								FCPPT_USE(
-									_inner_index
-								);
+    result_type const cos_angles(fcppt::math::vector::push_back(
+        fcppt::math::vector::init<fcppt::math::vector::static_<T, N>>(
+            [&_angles](auto const _inner_index) {
+              FCPPT_USE(_inner_index);
 
-								return
-									std::cos(
-										fcppt::math::vector::at<
-											_inner_index()
-										>(
-											_angles
-										)
-									);
-							}
-						),
-						fcppt::literal<
-							value_type
-						>(
-							1
-						)
-					)
-				);
-FCPPT_PP_POP_WARNING
+              return std::cos(fcppt::math::vector::at<_inner_index()>(_angles));
+            }),
+        fcppt::literal<value_type>(1)));
+    FCPPT_PP_POP_WARNING
 
-				return
-					sins
-					*
-					fcppt::math::vector::at<
-						_index()
-					>(
-						cos_angles
-					);
-			}
-		);
+    return sins * fcppt::math::vector::at<_index()>(cos_angles);
+  });
 }
 
 }

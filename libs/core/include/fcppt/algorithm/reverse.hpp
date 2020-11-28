@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_REVERSE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_REVERSE_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Reverses a container
 
@@ -26,25 +23,10 @@ namespace algorithm
 
 \tparam Container Must be a bidirectional container
 */
-template<
-	typename Container
->
-inline
-fcppt::type_traits::remove_cv_ref_t<
-	Container
->
-reverse(
-	Container &&_container
-)
+template <typename Container>
+inline fcppt::type_traits::remove_cv_ref_t<Container> reverse(Container &&_container)
 {
-	return
-		fcppt::algorithm::detail::reverse(
-			std::forward<
-				Container
-			>(
-				_container
-			)
-		);
+  return fcppt::algorithm::detail::reverse(std::forward<Container>(_container));
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BITFIELD_HASH_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_HASH_DECL_HPP_INCLUDED
 
@@ -12,28 +11,21 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace bitfield
 {
-
 /**
 \brief A hash function for bitfields.
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename Bitfield
->
+template <typename Bitfield>
 struct hash
 {
-	std::size_t
-	operator()(
-		Bitfield const &
-	) const;
+  std::size_t operator()(Bitfield const &) const;
 };
 
 }

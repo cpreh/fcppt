@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PREPROCESSOR_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_WARNING_HPP_INCLUDED
 
 #include <fcppt/preprocessor/message.hpp>
-
 
 /**
 \brief Prints a warning compiler message
@@ -23,11 +21,6 @@ etc. as a real warning.
 
 \see FCPPT_PP_MESSAGE
 */
-#define FCPPT_PP_WARNING(\
-	message\
-)\
-FCPPT_PP_MESSAGE(\
-	"warning: " message\
-)
+#define FCPPT_PP_WARNING(message) FCPPT_PP_MESSAGE("warning: " message)
 
 #endif

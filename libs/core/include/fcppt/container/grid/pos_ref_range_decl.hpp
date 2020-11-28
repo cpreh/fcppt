@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 
@@ -18,112 +17,55 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief A range over grid references
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename Grid
->
+template <typename Grid>
 class pos_ref_range
 {
 public:
-	using
-	iterator
-	=
-	fcppt::container::grid::pos_ref_iterator<
-		Grid
-	>;
+  using iterator = fcppt::container::grid::pos_ref_iterator<Grid>;
 
-	using
-	const_iterator
-	=
-	iterator;
+  using const_iterator = iterator;
 
-	using
-	pos_range
-	=
-	fcppt::container::grid::pos_range<
-		fcppt::type_traits::value_type<
-			fcppt::container::grid::pos_type<
-				std::remove_cv_t<
-					Grid
-				>
-			>
-		>,
-		Grid::static_size::value
-	>;
+  using pos_range = fcppt::container::grid::pos_range<
+      fcppt::type_traits::value_type<fcppt::container::grid::pos_type<std::remove_cv_t<Grid>>>,
+      Grid::static_size::value>;
 
-	using
-	min_type
-	=
-	typename
-	pos_range::min_type;
+  using min_type = typename pos_range::min_type;
 
-	using
-	sup_type
-	=
-	typename
-	pos_range::sup_type;
+  using sup_type = typename pos_range::sup_type;
 
-	using
-	size_type
-	=
-	typename
-	pos_range::size_type;
+  using size_type = typename pos_range::size_type;
 
-	pos_ref_range(
-		Grid &,
-		min_type,
-		sup_type
-	);
+  pos_ref_range(Grid &, min_type, sup_type);
 
-	[[nodiscard]]
-	iterator
-	begin() const;
+  [[nodiscard]] iterator begin() const;
 
-	[[nodiscard]]
-	iterator
-	end() const;
+  [[nodiscard]] iterator end() const;
 
-	[[nodiscard]]
-	size_type
-	size() const;
+  [[nodiscard]] size_type size() const;
 
-	[[nodiscard]]
-	min_type const &
-	min() const;
+  [[nodiscard]] min_type const &min() const;
 
-	[[nodiscard]]
-	sup_type const &
-	sup() const;
+  [[nodiscard]] sup_type const &sup() const;
+
 private:
-	using
-	pos_iterator
-	=
-	typename
-	pos_range::iterator;
+  using pos_iterator = typename pos_range::iterator;
 
-	[[nodiscard]]
-	iterator
-	make_iterator(
-		pos_iterator
-	) const;
+  [[nodiscard]] iterator make_iterator(pos_iterator) const;
 
-	fcppt::reference<
-		Grid
-	> grid_;
+  fcppt::reference<Grid> grid_;
 
-	pos_range pos_range_;
+  pos_range pos_range_;
 };
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_JOIN_HPP_INCLUDED
 #define FCPPT_CONTAINER_JOIN_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Joins two containers.
 
@@ -34,32 +31,11 @@ container.
 
 \tparam Container A container class that supports insert of iterator ranges.
 */
-template<
-	typename Container,
-	typename... Args
->
-inline
-fcppt::type_traits::remove_cv_ref_t<
-	Container
->
-join(
-	Container &&_first,
-	Args && ..._args
-)
+template <typename Container, typename... Args>
+inline fcppt::type_traits::remove_cv_ref_t<Container> join(Container &&_first, Args &&..._args)
 {
-	return
-		fcppt::container::detail::join_impl(
-			std::forward<
-				Container
-			>(
-				_first
-			),
-			std::forward<
-				Args
-			>(
-				_args
-			)...
-		);
+  return fcppt::container::detail::join_impl(
+      std::forward<Container>(_first), std::forward<Args>(_args)...);
 }
 
 }

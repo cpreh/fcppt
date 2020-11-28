@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 
@@ -17,77 +16,28 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Calculate vector modulo a scalar
 
 \ingroup fcpptmathvector
 */
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-fcppt::optional::object<
-	fcppt::math::vector::static_<
-		T,
-		N
-	>
->
-mod(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> const &_arg,
-	T const _div
-)
+template <typename T, fcppt::math::size_type N, typename S>
+fcppt::optional::object<fcppt::math::vector::static_<T, N>>
+mod(fcppt::math::vector::object<T, N, S> const &_arg, T const _div)
 {
-	return
-		fcppt::math::detail::sequence<
-			fcppt::math::vector::static_<
-				T,
-				N
-			>
-		>(
-			fcppt::math::vector::init<
-				fcppt::math::vector::static_<
-					fcppt::optional::object<
-						T
-					>,
-					N
-				>
-			>(
-				[
-					&_arg,
-					_div
-				](
-					auto const _index
-				)
-				{
-					FCPPT_USE(
-						_index
-					);
+  return fcppt::math::detail::sequence<fcppt::math::vector::static_<T, N>>(
+      fcppt::math::vector::init<fcppt::math::vector::static_<fcppt::optional::object<T>, N>>(
+          [&_arg, _div](auto const _index) {
+            FCPPT_USE(_index);
 
-					return
-						fcppt::math::mod(
-							fcppt::math::vector::at<
-								_index
-							>(
-								_arg
-							),
-							_div
-						);
-				}
-			)
-		);
+            return fcppt::math::mod(fcppt::math::vector::at<_index>(_arg), _div);
+          }));
 }
 
 /**
@@ -95,73 +45,19 @@ mod(
 
 \ingroup fcpptmathvector
 */
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S1,
-	typename S2
->
-fcppt::optional::object<
-	fcppt::math::vector::static_<
-		T,
-		N
-	>
->
-mod(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S1
-	> const &_v0,
-	fcppt::math::vector::object<
-		T,
-		N,
-		S2
-	> const &_v1
-)
+template <typename T, fcppt::math::size_type N, typename S1, typename S2>
+fcppt::optional::object<fcppt::math::vector::static_<T, N>>
+mod(fcppt::math::vector::object<T, N, S1> const &_v0,
+    fcppt::math::vector::object<T, N, S2> const &_v1)
 {
-	return
-		fcppt::math::detail::sequence<
-			fcppt::math::vector::static_<
-				T,
-				N
-			>
-		>(
-			fcppt::math::vector::init<
-				fcppt::math::vector::static_<
-					fcppt::optional::object<
-						T
-					>,
-					N
-				>
-			>(
-				[
-					&_v0,
-					&_v1
-				](
-					auto const _index
-				)
-				{
-					FCPPT_USE(
-						_index
-					);
+  return fcppt::math::detail::sequence<fcppt::math::vector::static_<T, N>>(
+      fcppt::math::vector::init<fcppt::math::vector::static_<fcppt::optional::object<T>, N>>(
+          [&_v0, &_v1](auto const _index) {
+            FCPPT_USE(_index);
 
-					return
-						fcppt::math::mod(
-							fcppt::math::vector::at<
-								_index
-							>(
-								_v0
-							),
-							fcppt::math::vector::at<
-								_index
-							>(
-								_v1
-							)
-						);
-				}
-			)
-		);
+            return fcppt::math::mod(
+                fcppt::math::vector::at<_index>(_v0), fcppt::math::vector::at<_index>(_v1));
+          }));
 }
 
 }

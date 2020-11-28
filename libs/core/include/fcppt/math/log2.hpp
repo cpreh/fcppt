@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_LOG2_HPP_INCLUDED
 #define FCPPT_MATH_LOG2_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
 \ingroup fcpptmath
@@ -24,29 +21,18 @@ namespace math
 \warning
 Behaviour is undefined if \p x is 0.
 */
-template<
-	typename T
->
-inline
-T
-log2(
-	T const x
-)
+template <typename T>
+inline T log2(T const x)
 {
-	static_assert(
-		std::is_unsigned_v<
-			T
-		>,
-		"log2 can only be used on unsigned types"
-	);
+  static_assert(std::is_unsigned_v<T>, "log2 can only be used on unsigned types");
 
-	T r(1);
+  T r(1);
 
-	while((x >> r) != 0)
-	{
-		++r;
-	}
-	return --r;
+  while ((x >> r) != 0)
+  {
+    ++r;
+  }
+  return --r;
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_SIZE_RESULT_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_SIZE_RESULT_TYPE_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief The size type of a range.
 
@@ -25,21 +22,9 @@ namespace container
 
 This type is always unsigned.
 */
-template<
-	typename Range
->
-using
-size_result_type
-=
-std::make_unsigned_t<
-	decltype(
-		fcppt::container::detail::size(
-			std::declval<
-				Range
-			>()
-		)
-	)
->;
+template <typename Range>
+using size_result_type =
+    std::make_unsigned_t<decltype(fcppt::container::detail::size(std::declval<Range>()))>;
 
 }
 }

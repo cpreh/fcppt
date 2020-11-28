@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_DATA_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Returns a pointer to the beginning of a random access container.
 
@@ -28,25 +25,10 @@ _container is empty.
 
 \tparam Container Must be a random-access container.
 */
-template<
-	typename Container
->
-fcppt::container::to_pointer_type<
-	Container
->
-data(
-	Container &_container
-)
+template <typename Container>
+fcppt::container::to_pointer_type<Container> data(Container &_container)
 {
-	return
-		_container.empty()
-		?
-			nullptr
-		:
-			std::data(
-				_container
-			)
-		;
+  return _container.empty() ? nullptr : std::data(_container);
 }
 
 }

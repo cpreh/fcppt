@@ -3,20 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_COMMANDS_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_COMMANDS_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace options
 {
-
-template<
-	typename OptionsParser,
-	typename... SubParsers
->
+template <typename OptionsParser, typename... SubParsers>
 class commands;
 
 }

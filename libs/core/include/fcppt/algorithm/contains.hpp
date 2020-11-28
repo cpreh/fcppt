@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Checks if a given value is inside a range.
 
@@ -26,34 +23,13 @@ namespace algorithm
 
 \tparam T Must be equality comparable to the range's value type.
 */
-template<
-	typename Range,
-	typename T
->
-inline
-bool
-contains(
-	Range const &_range,
-	T const &_value
-)
+template <typename Range, typename T>
+inline bool contains(Range const &_range, T const &_value)
 {
-	// NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
-	auto const range_end{
-		fcppt::range::end(
-			_range
-		)
-	};
+  // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
+  auto const range_end{fcppt::range::end(_range)};
 
-	return
-		::std::find(
-			fcppt::range::begin(
-				_range
-			),
-			range_end,
-			_value
-		)
-		!=
-		range_end;
+  return ::std::find(fcppt::range::begin(_range), range_end, _value) != range_end;
 }
 
 }

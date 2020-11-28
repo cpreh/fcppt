@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_STATIC_DOWNCAST_HPP_INCLUDED
 #define FCPPT_CAST_STATIC_DOWNCAST_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Statically converts a reference to a base class to a reference to a
 derived class
@@ -35,39 +32,16 @@ Derived must be a reference to a class type derived from Base.
 
 \tparam Base A cv-qualified non-reference type.
 */
-template<
-	typename Derived,
-	typename Base
->
-std::enable_if_t<
-	std::is_reference<
-		Derived
-	>::value,
-	Derived
->
-static_downcast(
-	Base &_source
-)
-noexcept
+template <typename Derived, typename Base>
+std::enable_if_t<std::is_reference<Derived>::value, Derived> static_downcast(Base &_source) noexcept
 {
-	static_assert(
-		fcppt::type_traits::is_base_of<
-			std::remove_cv_t<
-				Base
-			>,
-			fcppt::type_traits::remove_cv_ref_t<
-				Derived
-			>
-		>::value,
-		"static_downcast can only cast from references to base classes to references to derived classes"
-	);
+  static_assert(
+      fcppt::type_traits::
+          is_base_of<std::remove_cv_t<Base>, fcppt::type_traits::remove_cv_ref_t<Derived>>::value,
+      "static_downcast can only cast from references to base classes to references to derived "
+      "classes");
 
-	return
-		static_cast<
-			Derived
-		>(
-			_source
-		);
+  return static_cast<Derived>(_source);
 }
 
 }

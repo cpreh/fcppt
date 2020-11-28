@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRONG_TYPEDEF_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_operators.hpp>
 #include <fcppt/strong_typedef_std_hash.hpp>
-
 
 #endif

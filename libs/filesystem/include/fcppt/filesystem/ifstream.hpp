@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_IFSTREAM_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IFSTREAM_HPP_INCLUDED
 
@@ -12,23 +11,16 @@
 #include <fstream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Typedef to <code>basic_ifstream</code>, depending on fcppt::char_type.
 
 \ingroup fcpptstring
 */
-using
-ifstream
-=
-std::basic_ifstream<
-	fcppt::char_type
->;
+using ifstream = std::basic_ifstream<fcppt::char_type>;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_MAKE_BASE_HPP_INCLUDED
 #define FCPPT_OPTIONS_MAKE_BASE_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief Creates an #fcppt::options::base.
 
@@ -34,38 +31,13 @@ result type of \a Parser is a permuted version of \a Result.
 
 \tparam Result The result type of the parser. Must be an #fcppt::record::object.
 */
-template<
-	typename Result,
-	typename Parser
->
-fcppt::options::base_unique_ptr<
-	Result
->
-make_base(
-	Parser &&_parser
-)
+template <typename Result, typename Parser>
+fcppt::options::base_unique_ptr<Result> make_base(Parser &&_parser)
 {
-	return
-		fcppt::unique_ptr_to_base<
-			fcppt::options::base<
-				Result
-			>
-		>(
-			fcppt::make_unique_ptr<
-				fcppt::options::detail::concrete<
-					Result,
-					fcppt::type_traits::remove_cv_ref_t<
-						Parser
-					>
-				>
-			>(
-				std::forward<
-					Parser
-				>(
-					_parser
-				)
-			)
-		);
+  return fcppt::unique_ptr_to_base<fcppt::options::base<Result>>(
+      fcppt::make_unique_ptr<
+          fcppt::options::detail::concrete<Result, fcppt::type_traits::remove_cv_ref_t<Parser>>>(
+          std::forward<Parser>(_parser)));
 }
 
 }

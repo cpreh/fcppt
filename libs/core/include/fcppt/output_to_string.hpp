@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OUTPUT_TO_STRING_HPP_INCLUDED
 #define FCPPT_OUTPUT_TO_STRING_HPP_INCLUDED
 
@@ -11,10 +10,8 @@
 #include <fcppt/output_to_string_locale.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Convert an arbitrary type to a string, using #fcppt::insert_extract_locale.
 
@@ -29,30 +26,13 @@ namespace fcppt
 \see fcppt::output_to_std_wstring
 \see fcppt::output_to_fcppt_string
 */
-template<
-	typename Dest,
-	typename Source
->
-inline
-Dest
-output_to_string(
-	Source const &_source
-)
+template <typename Dest, typename Source>
+inline Dest output_to_string(Source const &_source)
 {
-	static_assert(
-		fcppt::type_traits::is_string<
-			Dest
-		>::value,
-		"insert_ot_string must return a string"
-	);
+  static_assert(
+      fcppt::type_traits::is_string<Dest>::value, "insert_ot_string must return a string");
 
-	return
-		fcppt::output_to_string_locale<
-			Dest
-		>(
-			_source,
-			fcppt::insert_extract_locale()
-		);
+  return fcppt::output_to_string_locale<Dest>(_source, fcppt::insert_extract_locale());
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_ARGUMENT_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_ARGUMENT_DECL_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief An argument parser
 
@@ -40,64 +37,36 @@ Type. In case reading the value into \a Type fails, the parser also fails.
 \tparam Type The type of the argument's value which must be readable from an
 #fcppt::io::istream.
 */
-template<
-	typename Label,
-	typename Type
->
+template <typename Label, typename Type>
 class argument
 {
 public:
-	/**
-	\brief Constructs an argument parser.
+  /**
+  \brief Constructs an argument parser.
 
-	\param long_name The name of the argument as displayed in usage output.
+  \param long_name The name of the argument as displayed in usage output.
 
-	\param help_text Optional help text for this argument.
-	*/
-	argument(
-		fcppt::options::long_name &&long_name,
-		fcppt::options::optional_help_text &&help_text
-	);
+  \param help_text Optional help text for this argument.
+  */
+  argument(fcppt::options::long_name &&long_name, fcppt::options::optional_help_text &&help_text);
 
-	using
-	element_type
-	=
-	fcppt::record::element<
-		Label,
-		Type
-	>;
+  using element_type = fcppt::record::element<Label, Type>;
 
-	using
-	result_type
-	=
-	fcppt::record::object<
-		element_type
-	>;
+  using result_type = fcppt::record::object<element_type>;
 
-	[[nodiscard]]
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const;
+  [[nodiscard]] fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
-	[[nodiscard]]
-	fcppt::options::flag_name_set
-	flag_names() const;
+  [[nodiscard]] fcppt::options::flag_name_set flag_names() const;
 
-	[[nodiscard]]
-	fcppt::options::option_name_set
-	option_names() const;
+  [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-	[[nodiscard]]
-	fcppt::string
-	usage() const;
+  [[nodiscard]] fcppt::string usage() const;
+
 private:
-	fcppt::options::long_name long_name_;
+  fcppt::options::long_name long_name_;
 
-	fcppt::options::optional_help_text help_text_;
+  fcppt::options::optional_help_text help_text_;
 };
 
 }

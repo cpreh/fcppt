@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_HPP_INCLUDED
 
@@ -15,14 +14,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Calculates the signed angle between two 2D vectors.
 
@@ -44,40 +41,16 @@ dimensions, use #fcppt::math::vector::angle_between or
 
 \tparam T Must be a floating-point type.
 */
-template<
-	typename T,
-	typename S1,
-	typename S2
->
-fcppt::optional::object<
-	T
->
-signed_angle_between(
-	fcppt::math::vector::object<
-		T,
-		2,
-		S1
-	> const &_from,
-	fcppt::math::vector::object<
-		T,
-		2,
-		S2
-	> const &_to
-)
+template <typename T, typename S1, typename S2>
+fcppt::optional::object<T> signed_angle_between(
+    fcppt::math::vector::object<T, 2, S1> const &_from,
+    fcppt::math::vector::object<T, 2, S2> const &_to)
 {
-	static_assert(
-		std::is_floating_point<
-			T
-		>::value,
-		"signed_angle_between can only be used on floating-point vector types"
-	);
+  static_assert(
+      std::is_floating_point<T>::value,
+      "signed_angle_between can only be used on floating-point vector types");
 
-	return
-		fcppt::math::vector::atan2(
-			_to
-			-
-			_from
-		);
+  return fcppt::math::vector::atan2(_to - _from);
 }
 
 }

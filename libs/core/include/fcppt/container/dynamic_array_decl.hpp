@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_DYNAMIC_ARRAY_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_DYNAMIC_ARRAY_DECL_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief An array of dynamic size that does not initialize.
 
@@ -28,84 +25,42 @@ namespace container
 
 \tparam A The allocator type.
 */
-template<
-	typename T,
-	typename A
->
+template <typename T, typename A>
 class dynamic_array
 {
-	static_assert(
-		std::is_pod_v<
-			T
-		>,
-		"T must be a POD"
-	);
+  static_assert(std::is_pod_v<T>, "T must be a POD");
 
-	FCPPT_NONMOVABLE(
-		dynamic_array
-	);
+  FCPPT_NONMOVABLE(dynamic_array);
+
 public:
-	using
-	pointer
-	=
-	typename
-	A::pointer;
+  using pointer = typename A::pointer;
 
-	using
-	const_pointer
-	=
-	typename
-	A::const_pointer;
+  using const_pointer = typename A::const_pointer;
 
-	using
-	size_type
-	=
-	typename
-	A::size_type;
+  using size_type = typename A::size_type;
 
-	explicit
-	dynamic_array(
-		size_type
-	);
+  explicit dynamic_array(size_type);
 
-	dynamic_array(
-		size_type,
-		A
-	);
+  dynamic_array(size_type, A);
 
-	~dynamic_array()
-	noexcept;
+  ~dynamic_array() noexcept;
 
-	[[nodiscard]]
-	pointer
-	data()
-	noexcept;
+  [[nodiscard]] pointer data() noexcept;
 
-	[[nodiscard]]
-	const_pointer
-	data() const
-	noexcept;
+  [[nodiscard]] const_pointer data() const noexcept;
 
-	[[nodiscard]]
-	pointer
-	data_end()
-	noexcept;
+  [[nodiscard]] pointer data_end() noexcept;
 
-	[[nodiscard]]
-	const_pointer
-	data_end() const
-	noexcept;
+  [[nodiscard]] const_pointer data_end() const noexcept;
 
-	[[nodiscard]]
-	size_type
-	size() const
-	noexcept;
+  [[nodiscard]] size_type size() const noexcept;
+
 private:
-	A alloc_;
+  A alloc_;
 
-	pointer data_;
+  pointer data_;
 
-	size_type size_;
+  size_type size_;
 };
 
 }

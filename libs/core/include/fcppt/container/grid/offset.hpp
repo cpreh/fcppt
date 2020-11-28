@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
 
@@ -23,113 +22,42 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Returns the absolute offset of a position
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename SizeType,
-	fcppt::container::grid::size_type Size
->
-SizeType
-offset(
-	fcppt::container::grid::pos<
-		SizeType,
-		Size
-	> const &_pos,
-	fcppt::container::grid::dim<
-		SizeType,
-		Size
-	> const &_size
-)
+template <typename SizeType, fcppt::container::grid::size_type Size>
+SizeType offset(
+    fcppt::container::grid::pos<SizeType, Size> const &_pos,
+    fcppt::container::grid::dim<SizeType, Size> const &_size)
 {
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		SizeType,
-		result
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(SizeType, result);
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		SizeType,
-		stacked_dim
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(SizeType, stacked_dim);
 
-	return
-		fcppt::algorithm::fold(
-			fcppt::math::int_range<
-				1U,
-				Size
-			>{},
-			std::make_pair(
-				result{
-					_pos.x()
-				},
-				stacked_dim{
-					fcppt::literal<
-						SizeType
-					>(
-						1
-					)
-				}
-			),
-			[
-				&_pos,
-				&_size
-			](
-				auto const _index,
-				std::pair<
-					result,
-					stacked_dim
-				> _sum
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::algorithm::fold(
+             fcppt::math::int_range<1U, Size>{},
+             std::make_pair(result{_pos.x()}, stacked_dim{fcppt::literal<SizeType>(1)}),
+             [&_pos, &_size](auto const _index, std::pair<result, stacked_dim> _sum) {
+               FCPPT_USE(_index);
 
-				using
-				index
-				=
-				fcppt::tag_type<
-					decltype(
-						_index
-					)
-				>;
+               using index = fcppt::tag_type<decltype(_index)>;
 
-				_sum.second *=
-					stacked_dim{
-						fcppt::math::dim::at<
-							index::value
-							-
-							1U
-						>(
-							_size
-						)
-					};
+               _sum.second *= stacked_dim{fcppt::math::dim::at<index::value - 1U>(_size)};
 
-				_sum.first +=
-					result{
-						fcppt::math::vector::at<
-							index::value
-						>(
-							_pos
-						)
-						*
-						_sum.second.get()
-					};
+               _sum.first +=
+                   result{fcppt::math::vector::at<index::value>(_pos) * _sum.second.get()};
 
-				return
-					_sum;
-			}
-		).first.get();
+               return _sum;
+             })
+      .first.get();
 }
 
 }

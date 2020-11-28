@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_OUTPUT_HPP_INCLUDED
 #define FCPPT_ENUM_OUTPUT_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief Outputs an enum value to a stream.
 
@@ -31,28 +28,12 @@ This function is useful to implement <code>operator<<</code> for an enum type.
 
 \return \a _stream
 */
-template<
-	typename Enum
->
-fcppt::io::ostream &
-output(
-	fcppt::io::ostream &_stream,
-	Enum const _value
-)
+template <typename Enum>
+fcppt::io::ostream &output(fcppt::io::ostream &_stream, Enum const _value)
 {
-	static_assert(
-		std::is_enum<
-			Enum
-		>::value,
-		"Enum must be an enum type"
-	);
+  static_assert(std::is_enum<Enum>::value, "Enum must be an enum type");
 
-	return
-		_stream
-		<<
-		fcppt::enum_::to_string(
-			_value
-		);
+  return _stream << fcppt::enum_::to_string(_value);
 }
 
 }

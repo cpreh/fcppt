@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Calculates the length of a vector
 \ingroup fcpptmathvector
@@ -55,44 +52,23 @@ vector3f vi(1,2,3);
 
 // No need to specify the return type here, it'll be float.
 float vf_length =
-	fcppt::math::vector::length(
-		vf);
+    fcppt::math::vector::length(
+        vf);
 
 // It's not so clear here. So we specify "float" explicitly
 float vi_length =
-	fcppt::math::vector::length<float>(
-		vi);
+    fcppt::math::vector::length<float>(
+        vi);
 
 // Hopefully, this prints "true"
 std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 \endcode
 */
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-inline
-std::enable_if_t<
-	std::is_floating_point<
-		T
-	>::value,
-	T
->
-length(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> const &_vec
-)
+template <typename T, fcppt::math::size_type N, typename S>
+inline std::enable_if_t<std::is_floating_point<T>::value, T>
+length(fcppt::math::vector::object<T, N, S> const &_vec)
 {
-	return
-		std::sqrt(
-			fcppt::math::vector::length_square(
-				_vec
-			)
-		);
+  return std::sqrt(fcppt::math::vector::length_square(_vec));
 }
 
 /**
@@ -126,49 +102,23 @@ vector3f vi(1,2,3);
 
 // No need to specify the return type here, it'll be float.
 float vf_length =
-	fcppt::math::vector::length(
-		vf);
+    fcppt::math::vector::length(
+        vf);
 
 // It's not so clear here. So we specify "float" explicitly
 float vi_length =
-	fcppt::math::vector::length<float>(
-		vi);
+    fcppt::math::vector::length<float>(
+        vi);
 
 // Hopefully, this prints "true"
 std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 \endcode
 */
-template<
-	typename Dest,
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-inline
-std::enable_if_t<
-	!std::is_floating_point<
-		T
-	>::value,
-	Dest
->
-length(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> const &_vec
-)
+template <typename Dest, typename T, fcppt::math::size_type N, typename S>
+inline std::enable_if_t<!std::is_floating_point<T>::value, Dest>
+length(fcppt::math::vector::object<T, N, S> const &_vec)
 {
-	return
-		std::sqrt(
-			fcppt::cast::int_to_float<
-				Dest
-			>(
-				fcppt::math::vector::length_square(
-					_vec
-				)
-			)
-		);
+  return std::sqrt(fcppt::cast::int_to_float<Dest>(fcppt::math::vector::length_square(_vec)));
 }
 
 }

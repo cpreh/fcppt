@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
@@ -15,38 +14,13 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-fcppt::string
-fcppt::options::indent(
-	fcppt::string &&_value
-)
+fcppt::string fcppt::options::indent(fcppt::string &&_value)
 {
-	return
-		fcppt::algorithm::join_strings(
-			fcppt::algorithm::map<
-				std::vector<
-					fcppt::string
-				>
-			>(
-				fcppt::algorithm::split_string(
-					_value,
-					FCPPT_TEXT('\n')
-				),
-				[](
-					fcppt::string &&_element
-				)
-				{
-					return
-						fcppt::string(
-							2u,
-							FCPPT_TEXT(' ')
-						)
-						+
-						std::move(
-							_element
-						);
-				}
-			),
-			FCPPT_TEXT("\n")
-		);
+  return fcppt::algorithm::join_strings(
+      fcppt::algorithm::map<std::vector<fcppt::string>>(
+          fcppt::algorithm::split_string(_value, FCPPT_TEXT('\n')),
+          [](fcppt::string &&_element) {
+            return fcppt::string(2u, FCPPT_TEXT(' ')) + std::move(_element);
+          }),
+      FCPPT_TEXT("\n"));
 }

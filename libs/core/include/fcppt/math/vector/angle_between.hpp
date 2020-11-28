@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 
@@ -20,14 +19,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Calculates the angle between two floating point vectors
 
@@ -49,60 +46,20 @@ If you want to calculate the signed angle between two 2D vectors, use
 \warning
 The behaviour is undefined if \p _from or \p _to are very close to zero.
 */
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S1,
-	typename S2
->
-fcppt::optional::object<
-	T
->
-angle_between(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S1
-	> const &_from,
-	fcppt::math::vector::object<
-		T,
-		N,
-		S2
-	> const &_to
-)
+template <typename T, fcppt::math::size_type N, typename S1, typename S2>
+fcppt::optional::object<T> angle_between(
+    fcppt::math::vector::object<T, N, S1> const &_from,
+    fcppt::math::vector::object<T, N, S2> const &_to)
 {
-	static_assert(
-		std::is_floating_point<
-			T
-		>::value,
-		"angle_between can only be used on vectors of floating-point type"
-	);
+  static_assert(
+      std::is_floating_point<T>::value,
+      "angle_between can only be used on vectors of floating-point type");
 
-	return
-		fcppt::optional::map(
-			fcppt::math::div(
-				fcppt::math::vector::dot(
-					_from,
-					_to
-				),
-				fcppt::math::vector::length(
-					_from
-				)
-				*
-				fcppt::math::vector::length(
-					_to
-				)
-			),
-			[](
-				T const _angle
-			)
-			{
-				return
-					std::acos(
-						_angle
-					);
-			}
-		);
+  return fcppt::optional::map(
+      fcppt::math::div(
+          fcppt::math::vector::dot(_from, _to),
+          fcppt::math::vector::length(_from) * fcppt::math::vector::length(_to)),
+      [](T const _angle) { return std::acos(_angle); });
 }
 
 }

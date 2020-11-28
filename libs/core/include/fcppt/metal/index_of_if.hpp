@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_INDEX_OF_IF_HPP_INCLUDED
 #define FCPPT_METAL_INDEX_OF_IF_HPP_INCLUDED
 
 #include <fcppt/metal/detail/index_of_if.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 /**
 \brief Returns the index of an element of a metal::list that matches a predicate.
 
@@ -24,18 +21,8 @@ Similar to <code>metal::find_if</code> but asserts that the element is actually 
 
 \tparam List Must be a metal::list.
 */
-template<
-	typename List,
-	typename Pred
->
-using
-index_of_if
-=
-typename
-fcppt::metal::detail::index_of_if<
-	List,
-	Pred
->::type;
+template <typename List, typename Pred>
+using index_of_if = typename fcppt::metal::detail::index_of_if<List, Pred>::type;
 
 }
 }

@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ERROR_STRERRNO_HPP_INCLUDED
 #define FCPPT_ERROR_STRERRNO_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/detail/symbol.hpp>
 
-
 namespace fcppt
 {
 namespace error
 {
-
 /**
 \brief A wrapper around <code>std::strerror(strerrno)</code>
 
@@ -25,8 +22,7 @@ A wrapper around <code>std::strerror(strerrno)</code> returning the message for
 the current global error number.
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::string
-strerrno();
+fcppt::string strerrno();
 
 }
 }

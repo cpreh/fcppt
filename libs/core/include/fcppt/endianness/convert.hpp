@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENDIANNESS_CONVERT_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_CONVERT_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace endianness
 {
-
 /**
 \brief Converts the endianness of an object
 
@@ -37,32 +34,13 @@ _format to the host format.
 
 \return The converted value
 */
-template<
-	typename Type
->
-Type
-convert(
-	Type const &_value,
-	fcppt::endianness::format const _format
-)
+template <typename Type>
+Type convert(Type const &_value, fcppt::endianness::format const _format)
 {
-	static_assert(
-		std::is_arithmetic<
-			Type
-		>::value,
-		"endianness::convert can only be used on arithmetic types"
-	);
+  static_assert(
+      std::is_arithmetic<Type>::value, "endianness::convert can only be used on arithmetic types");
 
-	return
-		_format
-		==
-		fcppt::endianness::host_format()
-		?
-			_value
-		:
-			fcppt::endianness::swap(
-				_value
-			);
+  return _format == fcppt::endianness::host_format() ? _value : fcppt::endianness::swap(_value);
 }
 
 }

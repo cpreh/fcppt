@@ -3,17 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/is_big_endian.hpp>
 
-
-bool
-fcppt::endianness::is_big_endian()
+bool fcppt::endianness::is_big_endian()
 {
-	return
-		fcppt::endianness::host_format()
-		==
-		fcppt::endianness::format::big;
+  return fcppt::endianness::host_format() == fcppt::endianness::format::big;
 }

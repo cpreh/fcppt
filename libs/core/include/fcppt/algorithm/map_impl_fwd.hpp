@@ -3,21 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_MAP_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_IMPL_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace algorithm
 {
-
-template<
-	typename Source,
-	typename Target,
-	typename Enable = void
->
+template <typename Source, typename Target, typename Enable = void>
 struct map_impl;
 
 }

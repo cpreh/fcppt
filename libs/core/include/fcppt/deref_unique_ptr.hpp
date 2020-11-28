@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DEREF_UNIQUE_PTR_HPP_INCLUDED
 #define FCPPT_DEREF_UNIQUE_PTR_HPP_INCLUDED
 
@@ -13,38 +12,14 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
-template<
-	typename Arg
->
-struct deref_impl<
-	Arg,
-	std::enable_if_t<
-		fcppt::is_unique_ptr<
-			std::remove_const_t<
-				Arg
-			>
-		>::value
-	>
->
+template <typename Arg>
+struct deref_impl<Arg, std::enable_if_t<fcppt::is_unique_ptr<std::remove_const_t<Arg>>::value>>
 {
-// \cond
-	static
-	typename
-	std::remove_const_t<
-		Arg
-	>::element_type &
-	execute(
-		Arg &_value
-	)
-	{
-		return
-			*_value;
-	}
-// \endcond
+  // \cond
+  static typename std::remove_const_t<Arg>::element_type &execute(Arg &_value) { return *_value; }
+  // \endcond
 };
 
 }

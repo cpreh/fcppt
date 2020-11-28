@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRING_CONV_LOCALE_HPP_INCLUDED
 #define FCPPT_STRING_CONV_LOCALE_HPP_INCLUDED
 
@@ -12,18 +11,15 @@
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Returns the default locale to use when converting between strings.
 
 \ingroup fcpptstring
 */
 FCPPT_DETAIL_SYMBOL
-std::locale
-string_conv_locale();
+std::locale string_conv_locale();
 
 }
 

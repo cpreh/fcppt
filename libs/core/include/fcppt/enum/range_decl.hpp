@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_ENUM_RANGE_DECL_HPP_INCLUDED
 
@@ -13,82 +12,41 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief A range over a contiguous enum
 
 \ingroup fcpptenum
 */
-template<
-	typename Enum
->
+template <typename Enum>
 class range
 {
 public:
-	using
-	value_type
-	=
-	Enum;
+  using value_type = Enum;
 
-	using
-	iterator
-	=
-	fcppt::enum_::iterator<
-		Enum
-	>;
+  using iterator = fcppt::enum_::iterator<Enum>;
 
-	using
-	const_iterator
-	=
-	iterator;
+  using const_iterator = iterator;
 
-	static_assert(
-		std::is_enum_v<
-			Enum
-		>,
-		"Enum must be an enumeration type"
-	);
+  static_assert(std::is_enum_v<Enum>, "Enum must be an enumeration type");
 
-	using
-	size_type
-	=
-	fcppt::enum_::size_type<
-		Enum
-	>;
+  using size_type = fcppt::enum_::size_type<Enum>;
 
-	constexpr
-	range(
-		size_type begin,
-		size_type end
-	)
-	noexcept;
+  constexpr range(size_type begin, size_type end) noexcept;
 
-	[[nodiscard]]
-	constexpr
-	iterator
-	begin() const
-	noexcept;
+  [[nodiscard]] constexpr iterator begin() const noexcept;
 
-	[[nodiscard]]
-	constexpr
-	iterator
-	end() const
-	noexcept;
+  [[nodiscard]] constexpr iterator end() const noexcept;
 
-	[[nodiscard]]
-	constexpr
-	size_type
-	size() const
-	noexcept;
+  [[nodiscard]] constexpr size_type size() const noexcept;
+
 private:
-	size_type begin_;
+  size_type begin_;
 
-	size_type end_;
+  size_type end_;
 };
 
 }

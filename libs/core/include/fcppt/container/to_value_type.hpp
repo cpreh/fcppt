@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TO_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TO_VALUE_TYPE_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief The value type of a container depending on its constness.
 
@@ -29,23 +26,11 @@ If \a Container is <code>const</code>, the result is
 
 \tparam Container A range type.
 */
-template<
-	typename Container
->
-using
-to_value_type
-=
-std::conditional_t<
-	std::is_const_v<
-		Container
-	>,
-	fcppt::type_traits::value_type<
-		Container
-	> const,
-	fcppt::type_traits::value_type<
-		Container
-	>
->;
+template <typename Container>
+using to_value_type = std::conditional_t<
+    std::is_const_v<Container>,
+    fcppt::type_traits::value_type<Container> const,
+    fcppt::type_traits::value_type<Container>>;
 
 }
 }

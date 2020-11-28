@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_DECL_HPP_INCLUDED
 
@@ -16,53 +15,33 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
-template<
-	typename Ch
->
+template <typename Ch>
 class error
 {
 public:
-	using
-	value_type
-	=
-	std::basic_string<
-		Ch
-	>;
+  using value_type = std::basic_string<Ch>;
 
-	explicit
-	error(
-		value_type &&
-	);
+  explicit error(value_type &&);
 
-	error(
-		value_type &&,
-		fcppt::parse::fatal_tag const &
-	);
+  error(value_type &&, fcppt::parse::fatal_tag const &);
 
-	[[nodiscard]]
-	bool
-	is_fatal() const;
+  [[nodiscard]] bool is_fatal() const;
 
-	[[nodiscard]]
-	value_type &
-	get();
+  [[nodiscard]] value_type &get();
 
-	[[nodiscard]]
-	value_type const &
-	get() const;
+  [[nodiscard]] value_type const &get() const;
+
 private:
-	value_type value_;
+  value_type value_;
 
-	bool is_fatal_;
+  bool is_fatal_;
 };
 
 FCPPT_PP_POP_WARNING

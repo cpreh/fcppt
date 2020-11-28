@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 
@@ -20,7 +19,6 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
@@ -29,138 +27,55 @@ namespace grid
 {
 namespace detail
 {
-
-template<
-	fcppt::container::grid::size_type Level,
-	typename Ch,
-	typename Traits,
-	typename Type,
-	fcppt::container::grid::size_type Size,
-	typename Alloc
->
-std::enable_if_t<
-	Level == 0,
-	void
->
-print_recurse(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::container::grid::object<
-		Type,
-		Size,
-		Alloc
-	> const &_object,
-	fcppt::container::grid::pos_type<
-		fcppt::container::grid::object<
-			Type,
-			Size,
-			Alloc
-		>
-	> const _pos
-)
+template <
+    fcppt::container::grid::size_type Level,
+    typename Ch,
+    typename Traits,
+    typename Type,
+    fcppt::container::grid::size_type Size,
+    typename Alloc>
+std::enable_if_t<Level == 0, void> print_recurse(
+    std::basic_ostream<Ch, Traits> &_stream,
+    fcppt::container::grid::object<Type, Size, Alloc> const &_object,
+    fcppt::container::grid::pos_type<fcppt::container::grid::object<Type, Size, Alloc>> const _pos)
 {
-	_stream
-		<<
-		_object.get_unsafe(
-			_pos
-		);
+  _stream << _object.get_unsafe(_pos);
 }
 
-template<
-	fcppt::container::grid::size_type Level,
-	typename Ch,
-	typename Traits,
-	typename Type,
-	fcppt::container::grid::size_type Size,
-	typename Alloc
->
-std::enable_if_t<
-	Level != 0,
-	void
->
-print_recurse(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::container::grid::object<
-		Type,
-		Size,
-		Alloc
-	> const &_object,
-	fcppt::container::grid::pos_type<
-		fcppt::container::grid::object<
-			Type,
-			Size,
-			Alloc
-		>
-	> _pos
-)
+template <
+    fcppt::container::grid::size_type Level,
+    typename Ch,
+    typename Traits,
+    typename Type,
+    fcppt::container::grid::size_type Size,
+    typename Alloc>
+std::enable_if_t<Level != 0, void> print_recurse(
+    std::basic_ostream<Ch, Traits> &_stream,
+    fcppt::container::grid::object<Type, Size, Alloc> const &_object,
+    fcppt::container::grid::pos_type<fcppt::container::grid::object<Type, Size, Alloc>> _pos)
 {
-	constexpr size_type const index(
-		Level - 1U
-	);
+  constexpr size_type const index(Level - 1U);
 
-	_stream
-		<< _stream.widen('(');
+  _stream << _stream.widen('(');
 
-	using
-	dim_value_type
-	=
-	fcppt::type_traits::value_type<
-		fcppt::container::grid::dim_type<
-			fcppt::container::grid::object<
-				Type,
-				Size,
-				Alloc
-			>
-		>
-	>;
+  using dim_value_type = fcppt::type_traits::value_type<
+      fcppt::container::grid::dim_type<fcppt::container::grid::object<Type, Size, Alloc>>>;
 
-	dim_value_type const sz{
-		fcppt::math::dim::at<
-			index
-		>(
-			_object.size()
-		)
-	};
+  dim_value_type const sz{fcppt::math::dim::at<index>(_object.size())};
 
-	for(
-		dim_value_type const i
-		:
-		fcppt::make_int_range_count(
-			sz
-		)
-	)
-	{
-		fcppt::math::vector::at<
-			index
-		>(
-			_pos
-		) =
-			i;
+  for (dim_value_type const i : fcppt::make_int_range_count(sz))
+  {
+    fcppt::math::vector::at<index>(_pos) = i;
 
-		fcppt::container::grid::detail::print_recurse<
-			index
-		>(
-			_stream,
-			_object,
-			_pos
-		);
+    fcppt::container::grid::detail::print_recurse<index>(_stream, _object, _pos);
 
-		if(
-			i < sz - 1U
-		)
-		{
-			_stream
-				<< _stream.widen(',');
-		}
-	}
+    if (i < sz - 1U)
+    {
+      _stream << _stream.widen(',');
+    }
+  }
 
-	_stream
-		<< _stream.widen(')');
+  _stream << _stream.widen(')');
 }
 
 }

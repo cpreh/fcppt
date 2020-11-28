@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 
@@ -13,32 +12,18 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
 namespace detail
 {
-
-template<
-	typename Args,
-	typename Element
->
-using
-contains_initializer
-=
-::metal::any_of<
-	Args,
-	::metal::partial<
-		::metal::trait<
-			fcppt::record::detail::label_is_same
-		>,
-		fcppt::record::element_to_label<
-			Element
-		>
-	>
->;
+template <typename Args, typename Element>
+using contains_initializer = ::metal::any_of<
+    Args,
+    ::metal::partial<
+        ::metal::trait<fcppt::record::detail::label_is_same>,
+        fcppt::record::element_to_label<Element>>>;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MAKE_LITERAL_BOOST_UNITS_HPP_INCLUDED
 #define FCPPT_MAKE_LITERAL_BOOST_UNITS_HPP_INCLUDED
 
@@ -15,61 +14,27 @@
 #include <boost/units/unit.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Literal specialization for boost.units
 
 \ingroup fcpptboost
 */
-template<
-	typename Unit,
-	typename Type
->
-struct make_literal<
-	boost::units::quantity<
-		Unit,
-		Type
-	>
->
+template <typename Unit, typename Type>
+struct make_literal<boost::units::quantity<Unit, Type>>
 {
-	using
-	decorated_type
-	=
-	boost::units::quantity<
-		boost::units::unit<
-			boost::units::dimensionless_type,
-			typename
-			Unit::system_type
-		>,
-		Type
-	>;
+  using decorated_type = boost::units::quantity<
+      boost::units::unit<boost::units::dimensionless_type, typename Unit::system_type>,
+      Type>;
 
-	template<
-		typename Fundamental
-	>
-	static
-	decorated_type
-	get(
-		Fundamental const _fundamental
-	)
-	{
-		FCPPT_CHECK_LITERAL_CONVERSION(
-			Type,
-			Fundamental
-		);
+  template <typename Fundamental>
+  static decorated_type get(Fundamental const _fundamental)
+  {
+    FCPPT_CHECK_LITERAL_CONVERSION(Type, Fundamental);
 
-		return
-			decorated_type::from_value(
-				static_cast<
-					Type
-				>(
-					_fundamental
-				)
-			);
-	}
+    return decorated_type::from_value(static_cast<Type>(_fundamental));
+  }
 };
 
 }

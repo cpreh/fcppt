@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECURSIVE_OUTPUT_HPP_INCLUDED
 #define FCPPT_RECURSIVE_OUTPUT_HPP_INCLUDED
 
@@ -12,33 +11,13 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
-template<
-	typename Ch,
-	typename Traits,
-	typename Type
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::recursive<
-		Type
-	> const &_value
-)
+template <typename Ch, typename Traits, typename Type>
+std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::recursive<Type> const &_value)
 {
-	return
-		_stream
-		<<
-		_value.get();
+  return _stream << _value.get();
 }
 
 }

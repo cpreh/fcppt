@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DIFF_HPP_INCLUDED
 #define FCPPT_MATH_DIFF_HPP_INCLUDED
 
 #include <fcppt/math/detail/diff.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Calculates the absolute distance between \p a and \p b
 \ingroup fcpptmath
@@ -28,21 +25,10 @@ For unsigned types, this returns:
 
 For other types, <code>abs(a-b)</code> is returned.
 */
-template<
-	typename T
->
-inline
-T
-diff(
-	T const &_a,
-	T const &_b
-)
+template <typename T>
+inline T diff(T const &_a, T const &_b)
 {
-	return
-		fcppt::math::detail::diff(
-			_a,
-			_b
-		);
+  return fcppt::math::detail::diff(_a, _b);
 }
 
 }

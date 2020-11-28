@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_OPTION_NAME_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTION_NAME_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <fcppt/options/option_name_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief An option name that may be for a short or long option
 
@@ -27,30 +24,19 @@ namespace options
 class option_name
 {
 public:
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		bool,
-		is_short
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(bool, is_short);
 
-	FCPPT_OPTIONS_DETAIL_SYMBOL
-	option_name(
-		fcppt::string &&,
-		is_short
-	);
+  FCPPT_OPTIONS_DETAIL_SYMBOL
+  option_name(fcppt::string &&, is_short);
 
-	[[nodiscard]]
-	FCPPT_OPTIONS_DETAIL_SYMBOL
-	fcppt::string const &
-	name() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::string const &name() const;
 
-	[[nodiscard]]
-	FCPPT_OPTIONS_DETAIL_SYMBOL
-	is_short
-	get_is_short() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL is_short get_is_short() const;
+
 private:
-	fcppt::string name_;
+  fcppt::string name_;
 
-	is_short is_short_;
+  is_short is_short_;
 };
 
 }

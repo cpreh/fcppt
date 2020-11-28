@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_FAIL_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_FAIL_IMPL_HPP_INCLUDED
 
@@ -18,57 +17,17 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+template <typename Result>
+fcppt::parse::fail<Result>::fail() = default;
 
-template<
-	typename Result
->
-fcppt::parse::fail<
-	Result
->::fail()
-= default;
-
-template<
-	typename Result
->
-template<
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::fail<
-		Result
-	>::result_type
->
-fcppt::parse::fail<
-	Result
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	>,
-	Skipper const &
-) const
+template <typename Result>
+template <typename Ch, typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::fail<Result>::result_type>
+fcppt::parse::fail<Result>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const
 {
-	return
-		fcppt::either::make_failure<
-			result_type
-		>(
-			fcppt::parse::error<
-				Ch
-			>{
-				std::basic_string<
-					Ch
-				>{
-					FCPPT_STRING_LITERAL(
-						Ch,
-						"fail"
-					)
-				}
-			}
-		);
+  return fcppt::either::make_failure<result_type>(
+      fcppt::parse::error<Ch>{std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "fail")}});
 }
 
 #endif

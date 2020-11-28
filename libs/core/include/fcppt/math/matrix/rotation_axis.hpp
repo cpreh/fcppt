@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_ROTATION_AXIS_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROTATION_AXIS_HPP_INCLUDED
 
@@ -15,14 +14,12 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Calculates a 4x4 rotation matrix around an arbitrary axis given as a
 unit vector
@@ -49,89 +46,34 @@ fcppt::math::matrix::rotation_z
 \see
 fcppt::math::matrix::rotation_axis
 */
-template<
-	typename T,
-	typename S
->
-fcppt::math::matrix::static_<
-	T,
-	4,
-	4
->
-rotation_axis(
-	T const _angle,
-	fcppt::math::vector::object<
-		T,
-		3,
-		S
-	> const &_vector
-)
+template <typename T, typename S>
+fcppt::math::matrix::static_<T, 4, 4>
+rotation_axis(T const _angle, fcppt::math::vector::object<T, 3, S> const &_vector)
 {
-	T const sinx{
-		std::sin(
-			_angle
-		)
-	};
+  T const sinx{std::sin(_angle)};
 
-	T const cosx{
-		std::cos(
-			_angle
-		)
-	};
+  T const cosx{std::cos(_angle)};
 
-	T const one{
-		fcppt::literal<
-			T
-		>(
-			1
-		)
-	};
+  T const one{fcppt::literal<T>(1)};
 
-	T const cosxc{
-		one
-		-
-		cosx
-	};
+  T const cosxc{one - cosx};
 
-	T const x{
-		_vector.x()
-	};
+  T const x{_vector.x()};
 
-	T const y{
-		_vector.y()
-	};
+  T const y{_vector.y()};
 
-	T const z{
-		_vector.z()
-	};
+  T const z{_vector.z()};
 
-	T const zero{
-		fcppt::literal<
-			T
-		>(
-			0
-		)
-	};
+  T const zero{fcppt::literal<T>(0)};
 
-	return
-		fcppt::math::matrix::static_<
-			T,
-			4,
-			4
-		>(
-			fcppt::math::matrix::row(
-				cosx + x*x*cosxc,   x*y*cosxc - z*sinx, x*z*cosxc + y*sinx, zero
-			),
-			fcppt::math::matrix::row(
-				x*y*cosxc + z*sinx, cosx + y*y*cosxc,   y*z*cosxc - x*sinx, zero
-			),
-			fcppt::math::matrix::row(
-				x*z*cosxc - y*sinx, y*z*cosxc + x*sinx, cosx + z*z*cosxc,   zero
-			),
-			fcppt::math::matrix::row(
-				zero,               zero,               zero,               one
-			)
-		);
+  return fcppt::math::matrix::static_<T, 4, 4>(
+      fcppt::math::matrix::row(
+          cosx + x * x * cosxc, x * y * cosxc - z * sinx, x * z * cosxc + y * sinx, zero),
+      fcppt::math::matrix::row(
+          x * y * cosxc + z * sinx, cosx + y * y * cosxc, y * z * cosxc - x * sinx, zero),
+      fcppt::math::matrix::row(
+          x * z * cosxc - y * sinx, y * z * cosxc + x * sinx, cosx + z * z * cosxc, zero),
+      fcppt::math::matrix::row(zero, zero, zero, one));
 }
 
 }

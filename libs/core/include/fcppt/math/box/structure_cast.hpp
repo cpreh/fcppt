@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_BOX_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRUCTURE_CAST_HPP_INCLUDED
 
@@ -13,14 +12,12 @@
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace box
 {
-
 /**
 \brief Converts a box into a different box of the same dimension using Conv
 \ingroup fcpptmathbox
@@ -28,42 +25,14 @@ namespace box
 \tparam Dest The destination box's <code>value_type</code>
 \tparam N The box's dimension
 */
-template<
-	typename Dest,
-	typename Conv,
-	typename T,
-	fcppt::math::size_type N
->
-Dest
-structure_cast(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_src
-)
+template <typename Dest, typename Conv, typename T, fcppt::math::size_type N>
+Dest structure_cast(fcppt::math::box::object<T, N> const &_src)
 {
-	static_assert(
-		fcppt::math::box::is_box<
-			Dest
-		>::value,
-		"Dest must be a box"
-	);
+  static_assert(fcppt::math::box::is_box<Dest>::value, "Dest must be a box");
 
-	return
-		Dest(
-			fcppt::math::vector::structure_cast<
-				typename Dest::vector,
-				Conv
-			>(
-				_src.pos()
-			),
-			fcppt::math::dim::structure_cast<
-				typename Dest::dim,
-				Conv
-			>(
-				_src.size()
-			)
-		);
+  return Dest(
+      fcppt::math::vector::structure_cast<typename Dest::vector, Conv>(_src.pos()),
+      fcppt::math::dim::structure_cast<typename Dest::dim, Conv>(_src.size()));
 }
 
 }

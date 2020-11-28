@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_IS_POWER_OF_2_HPP_INCLUDED
 #define FCPPT_MATH_IS_POWER_OF_2_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Checks if a number is a power of two
 \ingroup fcpptmath
@@ -25,25 +22,12 @@ namespace math
 If you need to check whether a signed integral type is a power of two, convert
 it to its unsigned counterpart before checking.
 */
-template<
-	typename T
->
-inline
-constexpr
-bool
-is_power_of_2(
-	T const x
-)
-noexcept
+template <typename T>
+inline constexpr bool is_power_of_2(T const x) noexcept
 {
-	static_assert(
-		std::is_unsigned<
-			T
-		>::value,
-		"is_power_of_2 can only be used on unsigned types"
-	);
+  static_assert(std::is_unsigned<T>::value, "is_power_of_2 can only be used on unsigned types");
 
-	return x && !(x & (x - 1));
+  return x && !(x & (x - 1));
 }
 
 }

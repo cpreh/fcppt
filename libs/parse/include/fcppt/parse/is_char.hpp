@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_IS_CHAR_HPP_INCLUDED
 #define FCPPT_PARSE_IS_CHAR_HPP_INCLUDED
 
@@ -11,28 +10,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Type
->
-using
-is_char
-=
-std::disjunction<
-	std::is_same<
-		Type,
-		char
-	>,
-	std::is_same<
-		Type,
-		wchar_t
-	>
->;
+template <typename Type>
+using is_char = std::disjunction<std::is_same<Type, char>, std::is_same<Type, wchar_t>>;
 
 }
 }

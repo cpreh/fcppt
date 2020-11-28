@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_COMPARISON_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_COMPARISON_HPP_INCLUDED
 
@@ -14,48 +13,23 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Compares two grids for equality
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-bool
-operator==(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_a,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_b
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+bool operator==(
+    fcppt::container::grid::object<T, N, A> const &_a,
+    fcppt::container::grid::object<T, N, A> const &_b)
 {
-	return
-		_a.size()
-		==
-		_b.size()
-		&&
-		fcppt::detail::equal(
-			_a.begin(),
-			_a.end(),
-			_b.begin()
-		);
+  return _a.size() == _b.size() && fcppt::detail::equal(_a.begin(), _a.end(), _b.begin());
 }
 
 /**
@@ -63,28 +37,12 @@ operator==(
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-inline
-bool
-operator!=(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_a,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_b
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+inline bool operator!=(
+    fcppt::container::grid::object<T, N, A> const &_a,
+    fcppt::container::grid::object<T, N, A> const &_b)
 {
-	return
-		!(_a == _b);
+  return !(_a == _b);
 }
 
 /**
@@ -95,40 +53,14 @@ operator!=(
 The first component in the lexicographical order is the size of both grids. If
 both sizes are equal, <code>%std::lexicographical_compare</code> is used.
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-bool
-operator<(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_a,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_b
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+bool operator<(
+    fcppt::container::grid::object<T, N, A> const &_a,
+    fcppt::container::grid::object<T, N, A> const &_b)
 {
-	return
-		_a.size()
-		!=
-		_b.size()
-		?
-			_a.size()
-			<
-			_b.size()
-		:
-			std::lexicographical_compare(
-				_a.begin(),
-				_a.end(),
-				_b.begin(),
-				_b.end()
-			);
+  return _a.size() != _b.size()
+             ? _a.size() < _b.size()
+             : std::lexicographical_compare(_a.begin(), _a.end(), _b.begin(), _b.end());
 }
 
 /**
@@ -136,28 +68,12 @@ operator<(
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-inline
-bool
-operator>(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_a,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_b
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+inline bool operator>(
+    fcppt::container::grid::object<T, N, A> const &_a,
+    fcppt::container::grid::object<T, N, A> const &_b)
 {
-	return
-		_b < _a;
+  return _b < _a;
 }
 
 /**
@@ -165,28 +81,12 @@ operator>(
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-inline
-bool
-operator<=(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_a,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_b
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+inline bool operator<=(
+    fcppt::container::grid::object<T, N, A> const &_a,
+    fcppt::container::grid::object<T, N, A> const &_b)
 {
-	return
-		!(_a > _b);
+  return !(_a > _b);
 }
 
 /**
@@ -194,28 +94,12 @@ operator<=(
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-inline
-bool
-operator>=(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_a,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_b
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+inline bool operator>=(
+    fcppt::container::grid::object<T, N, A> const &_a,
+    fcppt::container::grid::object<T, N, A> const &_b)
 {
-	return
-		!(_a < _b);
+  return !(_a < _b);
 }
 
 }

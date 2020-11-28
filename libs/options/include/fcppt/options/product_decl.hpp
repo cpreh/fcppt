@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_PRODUCT_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_DECL_HPP_INCLUDED
 
@@ -20,12 +19,10 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/disjoint_product.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
@@ -43,57 +40,30 @@ two or more parsers. The result type is a record that contains the elements of
 
 \see fcppt::options::apply
 */
-template<
-	typename Left,
-	typename Right
->
+template <typename Left, typename Right>
 class product
 {
 public:
-	product(
-		Left &&,
-		Right &&
-	);
+  product(Left &&, Right &&);
 
-	using
-	result_type
-	=
-	fcppt::record::disjoint_product<
-		fcppt::options::result_of<
-			Left
-		>,
-		fcppt::options::result_of<
-			Right
-		>
-	>;
+  using result_type = fcppt::record::
+      disjoint_product<fcppt::options::result_of<Left>, fcppt::options::result_of<Right>>;
 
-	[[nodiscard]]
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const;
+  [[nodiscard]] fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
-	[[nodiscard]]
-	fcppt::options::flag_name_set
-	flag_names() const;
+  [[nodiscard]] fcppt::options::flag_name_set flag_names() const;
 
-	[[nodiscard]]
-	fcppt::options::option_name_set
-	option_names() const;
+  [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-	[[nodiscard]]
-	fcppt::string
-	usage() const;
+  [[nodiscard]] fcppt::string usage() const;
+
 private:
-	void
-	check_disjoint() const;
+  void check_disjoint() const;
 
-	Left left_;
+  Left left_;
 
-	Right right_;
+  Right right_;
 };
 
 FCPPT_PP_POP_WARNING

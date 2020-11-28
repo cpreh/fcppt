@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
@@ -25,136 +24,53 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Multiplies a matrix by a vector
 
 \ingroup fcpptmathmatrix
 */
-template<
-	typename Left,
-	typename Right,
-	fcppt::math::size_type R,
-	fcppt::math::size_type C,
-	typename S1,
-	typename S2
->
-fcppt::math::vector::static_<
-	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
-	R
->
-operator *(
-	fcppt::math::matrix::object<
-		Left,
-		R,
-		C,
-		S1
-	> const &_left,
-	fcppt::math::vector::object<
-		Right,
-		C,
-		S2
-	> const &_right
-)
+template <
+    typename Left,
+    typename Right,
+    fcppt::math::size_type R,
+    fcppt::math::size_type C,
+    typename S1,
+    typename S2>
+fcppt::math::vector::static_<FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right), R> operator*(
+    fcppt::math::matrix::object<Left, R, C, S1> const &_left,
+    fcppt::math::vector::object<Right, C, S2> const &_right)
 {
-	using
-	result_type
-	=
-	fcppt::math::vector::static_<
-		FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
-		R
-	>;
+  using result_type =
+      fcppt::math::vector::static_<FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right), R>;
 
-	return
-		fcppt::math::vector::init<
-			result_type
-		>(
-			[
-				&_left,
-				&_right
-			](
-				auto const _row
-			)
-			{
-				using
-				value_type
-				=
-				fcppt::type_traits::value_type<
-					result_type
-				>;
+  return fcppt::math::vector::init<result_type>([&_left, &_right](auto const _row) {
+    using value_type = fcppt::type_traits::value_type<result_type>;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
-				return
-					fcppt::algorithm::fold(
-						fcppt::math::int_range_count<
-							C
-						>{},
-						fcppt::literal<
-							value_type
-						>(
-							0
-						),
-						[
-							&_left,
-							&_right,
-							_row
-						](
-							auto const _column,
-							value_type const _sum
-						)
-						{
-							FCPPT_USE(
-								_column
-							);
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+    return fcppt::algorithm::fold(
+        fcppt::math::int_range_count<C>{},
+        fcppt::literal<value_type>(0),
+        [&_left, &_right, _row](auto const _column, value_type const _sum) {
+          FCPPT_USE(_column);
 
-							FCPPT_USE(
-								_row
-							);
+          FCPPT_USE(_row);
 
-							using
-							column
-							=
-							fcppt::tag_type<
-								decltype(
-									_column
-								)
-							>;
+          using column = fcppt::tag_type<decltype(_column)>;
 
-							using
-							row
-							=
-							decltype(
-								_row
-							);
+          using row = decltype(_row);
 
-							return
-								_sum
-								+
-								fcppt::math::matrix::at_r_c<
-									row::value,
-									column::value
-								>(
-									_left
-								)
-								*
-								fcppt::math::vector::at<
-									column::value
-								>(
-									_right
-								);
-						}
-					);
-FCPPT_PP_POP_WARNING
-			}
-		);
+          return _sum + fcppt::math::matrix::at_r_c<row::value, column::value>(_left) *
+                            fcppt::math::vector::at<column::value>(_right);
+        });
+    FCPPT_PP_POP_WARNING
+  });
 }
 
 }

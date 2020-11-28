@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TIME_EXCEPTION_FWD_HPP_INCLUDED
 #define FCPPT_TIME_EXCEPTION_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace time
 {
-
 class exception;
 
 }

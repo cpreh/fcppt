@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_SUB_COMMAND_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_SUB_COMMAND_IMPL_HPP_INCLUDED
 
@@ -14,78 +13,30 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename Tag,
-	typename Parser
->
-fcppt::options::sub_command<
-	Tag,
-	Parser
->::sub_command(
-	fcppt::string &&_name,
-	Parser &&_parser,
-	fcppt::options::optional_help_text &&_help_text
-)
-:
-	name_{
-		std::move(
-			_name
-		)
-	},
-	parser_{
-		std::move(
-			_parser
-		)
-	},
-	help_text_{
-		std::move(
-			_help_text
-		)
-	}
+template <typename Tag, typename Parser>
+fcppt::options::sub_command<Tag, Parser>::sub_command(
+    fcppt::string &&_name, Parser &&_parser, fcppt::options::optional_help_text &&_help_text)
+    : name_{std::move(_name)}, parser_{std::move(_parser)}, help_text_{std::move(_help_text)}
 {
 }
 
-template<
-	typename Tag,
-	typename Parser
->
-fcppt::string const &
-fcppt::options::sub_command<
-	Tag,
-	Parser
->::name() const
+template <typename Tag, typename Parser>
+fcppt::string const &fcppt::options::sub_command<Tag, Parser>::name() const
 {
-	return
-		name_;
+  return name_;
 }
 
-template<
-	typename Tag,
-	typename Parser
->
-Parser const &
-fcppt::options::sub_command<
-	Tag,
-	Parser
->::parser() const
+template <typename Tag, typename Parser>
+Parser const &fcppt::options::sub_command<Tag, Parser>::parser() const
 {
-	return
-		parser_;
+  return parser_;
 }
 
-template<
-	typename Tag,
-	typename Parser
->
+template <typename Tag, typename Parser>
 fcppt::options::optional_help_text const &
-fcppt::options::sub_command<
-	Tag,
-	Parser
->::help_text() const
+fcppt::options::sub_command<Tag, Parser>::help_text() const
 {
-	return
-		help_text_;
+  return help_text_;
 }
 
 #endif

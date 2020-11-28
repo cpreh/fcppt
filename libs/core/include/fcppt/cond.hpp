@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_COND_HPP_INCLUDED
 #define FCPPT_COND_HPP_INCLUDED
 
@@ -11,10 +10,8 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Functional if-then-else.
 
@@ -28,43 +25,18 @@ The functions \a If and \a Then must return the same type <code>R</code>.
 
 \tparam Then A function callable as <code>R ()</code>.
 */
-template<
-	typename If,
-	typename Then
->
-inline
-std::invoke_result_t<
-	If
->
-cond(
-	bool const _conditional,
-	If const &_if,
-	Then const &_then
-)
+template <typename If, typename Then>
+inline std::invoke_result_t<If> cond(bool const _conditional, If const &_if, Then const &_then)
 {
-	static_assert(
-		std::is_same_v<
-			std::invoke_result_t<
-				If
-			>,
-			std::invoke_result_t<
-				Then
-			>
-		>
-	);
+  static_assert(std::is_same_v<std::invoke_result_t<If>, std::invoke_result_t<Then>>);
 
-	if(
-		_conditional
-	)
-	{
-		return
-			_if();
-	}
+  if (_conditional)
+  {
+    return _if();
+  }
 
-	return
-		_then();
+  return _then();
 }
-
 
 }
 

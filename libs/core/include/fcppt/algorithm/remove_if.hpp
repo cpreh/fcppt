@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_REMOVE_IF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_REMOVE_IF_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Removes all elements from a container matching a predicate.
 
@@ -29,45 +26,26 @@ Removes all elements from \p _container matching \p _predicate.
 \return <code>true</code> if something has been removed, <code>false</code>
 otherwise.
 */
-template<
-	typename Container,
-	typename Predicate
->
-bool
-remove_if(
-	Container &_container,
-	Predicate const &_predicate
-)
+template <typename Container, typename Predicate>
+bool remove_if(Container &_container, Predicate const &_predicate)
 {
-	auto const end{
-		_container.end() // NOLINT(fuchsia-default-arguments-calls)
-	};
+  auto const end{
+      _container.end() // NOLINT(fuchsia-default-arguments-calls)
+  };
 
-	auto const position(
-		std::remove_if(
-			_container.begin(),
-			end,
-			_predicate
-		)
-	);
+  auto const position(std::remove_if(_container.begin(), end, _predicate));
 
-	if(
-		position
-		==
-		end
-	)
-	{
-		return
-			false;
-	}
+  if (position == end)
+  {
+    return false;
+  }
 
-	_container.erase(
-		position, // NOLINT(fuchsia-default-arguments-calls)
-		end // NOLINT(fuchsia-default-arguments-calls)
-	);
+  _container.erase(
+      position, // NOLINT(fuchsia-default-arguments-calls)
+      end // NOLINT(fuchsia-default-arguments-calls)
+  );
 
-	return
-		true;
+  return true;
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_GET_CHAR_ERROR_HPP_INCLUDED
 #define FCPPT_PARSE_GET_CHAR_ERROR_HPP_INCLUDED
 
@@ -18,48 +17,17 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch
->
-fcppt::parse::result<
-	Ch,
-	Ch
->
-get_char_error(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state
-)
+template <typename Ch>
+fcppt::parse::result<Ch, Ch>
+get_char_error(fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)
 {
-	return
-		fcppt::either::from_optional(
-			fcppt::parse::get_char(
-				_state
-			),
-			[]{
-				return
-					fcppt::parse::error<
-						Ch
-					>{
-						std::basic_string<
-							Ch
-						>{
-							FCPPT_STRING_LITERAL(
-								Ch,
-								"EOF"
-							)
-						}
-					};
-			}
-		);
+  return fcppt::either::from_optional(fcppt::parse::get_char(_state), [] {
+    return fcppt::parse::error<Ch>{std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "EOF")}};
+  });
 }
 
 }

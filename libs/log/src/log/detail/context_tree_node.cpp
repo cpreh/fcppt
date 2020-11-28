@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/name.hpp>
@@ -14,89 +13,42 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 fcppt::log::detail::context_tree_node::context_tree_node(
-	fcppt::log::name _name,
-	fcppt::log::optional_level const &_level
-)
-:
-	name_{
-		std::move(
-			_name
-		)
-	},
-	atomic_level_{
-		fcppt::log::impl::convert_level(
-			_level
-		)
-	}
+    fcppt::log::name _name, fcppt::log::optional_level const &_level)
+    : name_{std::move(_name)}, atomic_level_{fcppt::log::impl::convert_level(_level)}
 {
 }
 
-fcppt::log::detail::context_tree_node::context_tree_node(
-	context_tree_node &&_other
-)
-noexcept
-:
-	name_{
-		std::move(
-			_other.name_
-		)
-	},
-	atomic_level_{
-		_other.atomic_level_.load() // NOLINT(fuchsia-default-arguments-calls)
-	}
+fcppt::log::detail::context_tree_node::context_tree_node(context_tree_node &&_other) noexcept
+    : name_{std::move(_other.name_)},
+      atomic_level_{
+          _other.atomic_level_.load() // NOLINT(fuchsia-default-arguments-calls)
+      }
 {
 }
 
 fcppt::log::detail::context_tree_node &
-fcppt::log::detail::context_tree_node::operator=(
-	context_tree_node &&_other
-)
-noexcept
+fcppt::log::detail::context_tree_node::operator=(context_tree_node &&_other) noexcept
 {
-	name_ =
-		std::move(
-			_other.name_
-		);
+  name_ = std::move(_other.name_);
 
-	atomic_level_ =
-		_other.atomic_level_.load(); // NOLINT(fuchsia-default-arguments-calls)
+  atomic_level_ = _other.atomic_level_.load(); // NOLINT(fuchsia-default-arguments-calls)
 
-	return
-		*this;
+  return *this;
 }
 
+fcppt::log::detail::context_tree_node::~context_tree_node() noexcept = default;
 
-fcppt::log::detail::context_tree_node::~context_tree_node()
-noexcept
-= default;
+fcppt::log::name const &fcppt::log::detail::context_tree_node::name() const { return this->name_; }
 
-fcppt::log::name const &
-fcppt::log::detail::context_tree_node::name() const
+fcppt::log::optional_level fcppt::log::detail::context_tree_node::level() const
 {
-	return
-		this->name_;
+  return fcppt::enum_::from_int<fcppt::log::level>(
+      this->atomic_level_.load() // NOLINT(fuchsia-default-arguments-calls)
+  );
 }
 
-fcppt::log::optional_level
-fcppt::log::detail::context_tree_node::level() const
+void fcppt::log::detail::context_tree_node::level(fcppt::log::optional_level const &_level)
 {
-	return
-		fcppt::enum_::from_int<
-			fcppt::log::level
-		>(
-			this->atomic_level_.load() // NOLINT(fuchsia-default-arguments-calls)
-		);
-}
-
-void
-fcppt::log::detail::context_tree_node::level(
-	fcppt::log::optional_level const &_level
-)
-{
-	this->atomic_level_ =
-		fcppt::log::impl::convert_level(
-			_level
-		);
+  this->atomic_level_ = fcppt::log::impl::convert_level(_level);
 }

@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_FROM_LIST_HPP_INCLUDED
 #define FCPPT_RECORD_FROM_LIST_HPP_INCLUDED
 
 #include <fcppt/record/from_list_fwd.hpp>
 #include <fcppt/record/object_impl.hpp>
-
 
 #endif

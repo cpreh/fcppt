@@ -3,14 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BITFIELD_DETAIL_NULL_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_NULL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
 #include <fcppt/container/array/init_const.hpp>
 #include <fcppt/type_traits/value_type.hpp>
-
 
 namespace fcppt
 {
@@ -20,26 +18,11 @@ namespace bitfield
 {
 namespace detail
 {
-
-template<
-	typename Array
->
-inline
-Array
-null_array()
+template <typename Array>
+inline Array null_array()
 {
-	return
-		fcppt::container::array::init_const<
-			Array
-		>(
-			fcppt::literal<
-				fcppt::type_traits::value_type<
-					Array
-				>
-			>(
-				0
-			)
-		);
+  return fcppt::container::array::init_const<Array>(
+      fcppt::literal<fcppt::type_traits::value_type<Array>>(0));
 }
 
 }

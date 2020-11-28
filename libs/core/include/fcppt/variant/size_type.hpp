@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_SIZE_TYPE_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief An integer type used to describe a type index
 
@@ -24,10 +21,7 @@ namespace variant
 
 \see fcppt::variant::object::type_index
 */
-using
-size_type
-=
-std::size_t;
+using size_type = std::size_t;
 
 }
 }

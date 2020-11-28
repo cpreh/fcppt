@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_IS_SET_HPP_INCLUDED
 #define FCPPT_METAL_IS_SET_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 /**
 \brief Checks if every element is unique in a metal::list.
 
@@ -27,22 +24,10 @@ namespace metal
 
 \tparam List Must be a metal::list.
 */
-template<
-	typename List
->
-using
-is_set
-=
-std::is_same<
-	::metal::size<
-		List
-	>,
-	fcppt::metal::set::size<
-		fcppt::metal::set::from_list_relaxed<
-			List
-		>
-	>
->;
+template <typename List>
+using is_set = std::is_same<
+    ::metal::size<List>,
+    fcppt::metal::set::size<fcppt::metal::set::from_list_relaxed<List>>>;
 
 }
 }

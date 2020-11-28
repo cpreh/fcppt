@@ -3,28 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_RESULT_OF_HPP_INCLUDED
 #define FCPPT_PARSE_RESULT_OF_HPP_INCLUDED
 
 #include <fcppt/parse/deref_type.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Parser
->
-using
-result_of
-=
-typename
-fcppt::parse::deref_type<
-	Parser
->::result_type;
+template <typename Parser>
+using result_of = typename fcppt::parse::deref_type<Parser>::result_type;
 
 }
 }

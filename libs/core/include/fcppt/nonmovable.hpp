@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_NONMOVABLE_HPP_INCLUDED
 #define FCPPT_NONMOVABLE_HPP_INCLUDED
 
 #include <fcppt/detail/noncopyable.hpp>
 #include <fcppt/detail/nonmovable.hpp>
-
 
 /**
 \brief Makes a class nonmovable.
@@ -23,14 +21,8 @@ the move assignment operator and the copy assignment operator.
 
 \param classname The name of the class.
 */
-#define FCPPT_NONMOVABLE(\
-	classname\
-) \
-FCPPT_DETAIL_NONCOPYABLE(\
-	classname\
-);\
-FCPPT_DETAIL_NONMOVABLE(\
-	classname\
-)
+#define FCPPT_NONMOVABLE(classname) \
+  FCPPT_DETAIL_NONCOPYABLE(classname); \
+  FCPPT_DETAIL_NONMOVABLE(classname)
 
 #endif

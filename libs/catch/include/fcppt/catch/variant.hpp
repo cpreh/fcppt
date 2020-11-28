@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CATCH_VARIANT_HPP_INCLUDED
 #define FCPPT_CATCH_VARIANT_HPP_INCLUDED
 
@@ -15,46 +14,21 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace Catch
 {
-
 /**
 \brief Output specialization for #fcppt::variant::object.
 
 \ingroup fcpptcatch
 */
-template<
-	typename... Types
->
-struct StringMaker<
-	fcppt::variant::object<
-		Types...
-	>
->
+template <typename... Types>
+struct StringMaker<fcppt::variant::object<Types...>>
 {
-	static
-	std::string
-	convert(
-		fcppt::variant::object<
-			Types...
-		> const &_value
-	)
-	{
-		return
-			fcppt::variant::apply(
-				[](
-					auto const &_inner_value
-				)
-				{
-					return
-						fcppt::catch_::convert(
-							_inner_value
-						);
-				},
-				_value
-			);
-	}
+  static std::string convert(fcppt::variant::object<Types...> const &_value)
+  {
+    return fcppt::variant::apply(
+        [](auto const &_inner_value) { return fcppt::catch_::convert(_inner_value); }, _value);
+  }
 };
 
 }

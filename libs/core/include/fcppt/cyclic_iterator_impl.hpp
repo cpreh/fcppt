@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CYCLIC_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CYCLIC_ITERATOR_IMPL_HPP_INCLUDED
 
@@ -14,261 +13,105 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename ContainerIterator
->
-fcppt::cyclic_iterator<
-	ContainerIterator
->::cyclic_iterator()
-:
-	it_{},
-	boundary_{
-		container_iterator_type{},
-		container_iterator_type{}
-	}
+template <typename ContainerIterator>
+fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator()
+    : it_{}, boundary_{container_iterator_type{}, container_iterator_type{}}
 {
 }
 
-template<
-	typename ContainerIterator
->
-template<
-	typename OtherIterator
->
-fcppt::cyclic_iterator<
-	ContainerIterator
->::cyclic_iterator(
-	cyclic_iterator<
-		OtherIterator
-	> const &_other
-)
-:
-	it_(
-		_other.it_
-	),
-	boundary_(
-		_other.boundary_
-	)
+template <typename ContainerIterator>
+template <typename OtherIterator>
+fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator(
+    cyclic_iterator<OtherIterator> const &_other)
+    : it_(_other.it_), boundary_(_other.boundary_)
 {
 }
 
-template<
-	typename ContainerIterator
->
-fcppt::cyclic_iterator<
-	ContainerIterator
->::cyclic_iterator(
-	container_iterator_type const &_it,
-	boundary const &_boundary
-)
-:
-	it_(
-		_it
-	),
-	boundary_(
-		_boundary
-	)
+template <typename ContainerIterator>
+fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator(
+    container_iterator_type const &_it, boundary const &_boundary)
+    : it_(_it), boundary_(_boundary)
 {
 }
 
-template<
-	typename ContainerIterator
->
-template<
-	typename OtherIterator
->
-fcppt::cyclic_iterator<
-	ContainerIterator
-> &
-fcppt::cyclic_iterator<
-	ContainerIterator
->::operator=(
-	cyclic_iterator<
-		OtherIterator
-	> const &_other
-)
+template <typename ContainerIterator>
+template <typename OtherIterator>
+fcppt::cyclic_iterator<ContainerIterator> &
+fcppt::cyclic_iterator<ContainerIterator>::operator=(cyclic_iterator<OtherIterator> const &_other)
 {
-	this->it_ =
-		_other.it_;
+  this->it_ = _other.it_;
 
-	this->boundary_ =
-		_other._boundary;
+  this->boundary_ = _other._boundary;
 
-	return
-		*this;
+  return *this;
 }
 
-template<
-	typename ContainerIterator
->
-typename
-fcppt::cyclic_iterator<
-	ContainerIterator
->::boundary const &
-fcppt::cyclic_iterator<
-	ContainerIterator
->::get_boundary() const
+template <typename ContainerIterator>
+typename fcppt::cyclic_iterator<ContainerIterator>::boundary const &
+fcppt::cyclic_iterator<ContainerIterator>::get_boundary() const
 {
-	return
-		this->boundary_;
+  return this->boundary_;
 }
 
-template<
-	typename ContainerIterator
->
-typename
-fcppt::cyclic_iterator<
-	ContainerIterator
->::container_iterator_type
-fcppt::cyclic_iterator<
-	ContainerIterator
->::get() const
+template <typename ContainerIterator>
+typename fcppt::cyclic_iterator<ContainerIterator>::container_iterator_type
+fcppt::cyclic_iterator<ContainerIterator>::get() const
 {
-	return
-		this->it_;
+  return this->it_;
 }
 
-template<
-	typename ContainerIterator
->
-void
-fcppt::cyclic_iterator<
-	ContainerIterator
->::advance(
-	difference_type const _diff
-)
+template <typename ContainerIterator>
+void fcppt::cyclic_iterator<ContainerIterator>::advance(difference_type const _diff)
 {
-	difference_type const size{
-		std::distance(
-			this->boundary_.first,
-			this->boundary_.second
-		)
-	};
+  difference_type const size{std::distance(this->boundary_.first, this->boundary_.second)};
 
-	difference_type const diff{
-		(
-			std::distance(
-				this->boundary_.first,
-				this->it_
-			)
-			+
-			_diff
-		)
-		%
-		size
-	};
+  difference_type const diff{(std::distance(this->boundary_.first, this->it_) + _diff) % size};
 
-	this->it_ =
-		this->boundary_.first
-		+
-		(
-			diff
-			<
-			0
-			?
-				diff
-				+
-				size
-			:
-				diff
-		);
+  this->it_ = this->boundary_.first + (diff < 0 ? diff + size : diff);
 }
 
-template<
-	typename ContainerIterator
->
-void
-fcppt::cyclic_iterator<
-	ContainerIterator
->::increment()
+template <typename ContainerIterator>
+void fcppt::cyclic_iterator<ContainerIterator>::increment()
 {
-	if(
-		++this->it_
-		==
-		this->boundary_.second
-	)
-	{
-		this->it_ =
-			this->boundary_.first;
-	}
+  if (++this->it_ == this->boundary_.second)
+  {
+    this->it_ = this->boundary_.first;
+  }
 }
 
-template<
-	typename ContainerIterator
->
-void
-fcppt::cyclic_iterator<
-	ContainerIterator
->::decrement()
+template <typename ContainerIterator>
+void fcppt::cyclic_iterator<ContainerIterator>::decrement()
 {
-	if(
-		this->it_
-		==
-		this->boundary_.first
-	)
-	{
-		this->it_ =
-			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-			std::prev(
-				this->boundary_.second
-			);
-	}
-	else
-	{
-		--this->it_;
-	}
+  if (this->it_ == this->boundary_.first)
+  {
+    this->it_ =
+        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+        std::prev(this->boundary_.second);
+  }
+  else
+  {
+    --this->it_;
+  }
 }
 
-template<
-	typename ContainerIterator
->
-bool
-fcppt::cyclic_iterator<
-	ContainerIterator
->::equal(
-	cyclic_iterator const &_other
-) const
+template <typename ContainerIterator>
+bool fcppt::cyclic_iterator<ContainerIterator>::equal(cyclic_iterator const &_other) const
 {
-	return
-		this->it_
-		==
-		_other.it_;
+  return this->it_ == _other.it_;
 }
 
-template<
-	typename ContainerIterator
->
-typename
-fcppt::cyclic_iterator<
-	ContainerIterator
->::reference
-fcppt::cyclic_iterator<
-	ContainerIterator
->::dereference() const
+template <typename ContainerIterator>
+typename fcppt::cyclic_iterator<ContainerIterator>::reference
+fcppt::cyclic_iterator<ContainerIterator>::dereference() const
 {
-	return
-		*this->it_;
+  return *this->it_;
 }
 
-template<
-	typename ContainerIterator
->
-typename
-fcppt::cyclic_iterator<
-	ContainerIterator
->::difference_type
-fcppt::cyclic_iterator<
-	ContainerIterator
->::distance_to(
-	cyclic_iterator const &_other
-) const
+template <typename ContainerIterator>
+typename fcppt::cyclic_iterator<ContainerIterator>::difference_type
+fcppt::cyclic_iterator<ContainerIterator>::distance_to(cyclic_iterator const &_other) const
 {
-	return
-		std::distance(
-			this->it_,
-			_other.it_
-		);
+  return std::distance(this->it_, _other.it_);
 }
 
 #endif

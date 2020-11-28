@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Optionally finds an element and transforms it.
 
@@ -36,93 +33,36 @@ an empty optional, if there is any. Otherwise, returns the empty optional.
 \tparam Function A function callable as <code>fcppt::optional::object<R>
 (Range::value_type)</code>, where <code>R</code> is the result type.
 */
-template<
-	typename Range,
-	typename Function
->
-inline
-auto
-find_by_opt(
-	Range &&_range,
-	Function const &_function
-)
-->
-decltype(
-	_function(
-		*fcppt::range::begin(
-			_range
-		)
-	)
-)
+template <typename Range, typename Function>
+inline auto find_by_opt(Range &&_range, Function const &_function)
+    -> decltype(_function(*fcppt::range::begin(_range)))
 {
-	using
-	iterator_type
-	=
-	fcppt::container::to_iterator_type<
-		std::remove_reference_t<
-			Range
-		>
-	>;
+  using iterator_type = fcppt::container::to_iterator_type<std::remove_reference_t<Range>>;
 
-	using
-	result_type
-	=
-	decltype(
-		_function(
-			*fcppt::range::begin(
-				_range
-			)
-		)
-	);
+  using result_type = decltype(_function(*fcppt::range::begin(_range)));
 
-	static_assert(
-		fcppt::optional::is_object<
-			std::remove_const_t<
-				result_type
-			>
-		>::value,
-		"Function must return an optional"
-	);
+  static_assert(
+      fcppt::optional::is_object<std::remove_const_t<result_type>>::value,
+      "Function must return an optional");
 
-	iterator_type const end(
-		fcppt::range::end(
-			_range
-		)
-	);
+  iterator_type const end(fcppt::range::end(_range));
 
-	for(
-		iterator_type cur(
-			fcppt::range::begin(
-				_range
-			)
-		);
-		cur != end;
-		++cur
-	)
-	{
-		result_type result(
-			_function(
-				*cur
-			)
-		);
+  for (iterator_type cur(fcppt::range::begin(_range)); cur != end; ++cur)
+  {
+    result_type result(_function(*cur));
 
-		if(
-			result.has_value()
-		)
-		{
-			return
-				result;
-		}
-	}
+    if (result.has_value())
+    {
+      return result;
+    }
+  }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
-	return
-		result_type();
+  return result_type();
 
-FCPPT_PP_POP_WARNING
-
+  FCPPT_PP_POP_WARNING
 }
 
 }

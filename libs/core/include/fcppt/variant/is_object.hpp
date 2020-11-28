@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_IS_OBJECT_HPP_INCLUDED
 #define FCPPT_VARIANT_IS_OBJECT_HPP_INCLUDED
 
@@ -12,31 +11,17 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
-template<
-	typename Type
->
-struct is_object
-:
-std::false_type
+template <typename Type>
+struct is_object : std::false_type
 {
 };
 
-template<
-	typename... Types
->
-struct is_object<
-	fcppt::variant::object<
-		Types...
-	>
->
-:
-std::true_type
+template <typename... Types>
+struct is_object<fcppt::variant::object<Types...>> : std::true_type
 {
 };
 

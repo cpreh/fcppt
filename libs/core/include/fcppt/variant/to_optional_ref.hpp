@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_TO_OPTIONAL_REF_HPP_INCLUDED
 #define FCPPT_VARIANT_TO_OPTIONAL_REF_HPP_INCLUDED
 
@@ -16,61 +15,25 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief Converts a variant and a type to an optional reference
 
 \ingroup fcpptvariant
 */
-template<
-	typename Type,
-	typename Variant
->
-fcppt::optional::reference<
-	Type
->
-to_optional_ref(
-	Variant &_variant
-)
+template <typename Type, typename Variant>
+fcppt::optional::reference<Type> to_optional_ref(Variant &_variant)
 {
-	using
-	result_type
-	=
-	fcppt::optional::reference<
-		Type
-	>;
+  using result_type = fcppt::optional::reference<Type>;
 
-	using
-	element_type
-	=
-	std::remove_cv_t<
-		Type
-	>;
+  using element_type = std::remove_cv_t<Type>;
 
-	return
-		fcppt::variant::holds_type<
-			element_type
-		>(
-			_variant
-		)
-		?
-			result_type{
-				fcppt::make_ref(
-					fcppt::variant::get_unsafe<
-						element_type
-					>(
-						_variant
-					)
-				)
-			}
-		:
-			result_type{}
-		;
+  return fcppt::variant::holds_type<element_type>(_variant)
+             ? result_type{fcppt::make_ref(fcppt::variant::get_unsafe<element_type>(_variant))}
+             : result_type{};
 }
 
 }

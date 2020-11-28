@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_STD_HASH_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STD_HASH_HPP_INCLUDED
 
@@ -20,54 +19,20 @@
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace std
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wmismatched-tags)
 
-template<
-	typename T,
-	fcppt::math::size_type R,
-	fcppt::math::size_type C,
-	typename S
->
-struct hash<
-	fcppt::math::matrix::object<
-		T,
-		R,
-		C,
-		S
-	>
->
+template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
+struct hash<fcppt::math::matrix::object<T, R, C, S>>
 {
-	using
-	type
-	=
-	fcppt::math::matrix::object<
-		T,
-		R,
-		C,
-		S
-	>;
+  using type = fcppt::math::matrix::object<T, R, C, S>;
 
-	std::size_t
-	operator()(
-		type const &_value
-	) const
-	{
-		return
-			fcppt::range::hash<
-				fcppt::math::to_array_type<
-					type
-				>
-			>{}(
-				fcppt::math::to_array(
-					_value
-				)
-			);
-	}
+  std::size_t operator()(type const &_value) const
+  {
+    return fcppt::range::hash<fcppt::math::to_array_type<type>>{}(fcppt::math::to_array(_value));
+  }
 };
 
 FCPPT_PP_POP_WARNING

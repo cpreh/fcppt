@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_DETAIL_HAS_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_HAS_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
 
@@ -14,46 +13,24 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
 namespace detail
 {
-
-template<
-	typename Type,
-	typename Test = void
->
-struct has_random_access_iterator
-:
-std::false_type
+template <typename Type, typename Test = void>
+struct has_random_access_iterator : std::false_type
 {
 };
 
-template<
-	typename Type
->
+template <typename Type>
 struct has_random_access_iterator<
-	Type,
-	decltype(
-		fcppt::detail::void_(
-			std::declval<
-				Type
-			>().begin()
-		)
-	)
->
-:
-fcppt::type_traits::is_iterator_of_category<
-	decltype(
-		std::declval<
-			Type
-		>().begin()
-	),
-	std::random_access_iterator_tag
->
+    Type,
+    decltype(fcppt::detail::void_(std::declval<Type>().begin()))>
+    : fcppt::type_traits::is_iterator_of_category<
+          decltype(std::declval<Type>().begin()),
+          std::random_access_iterator_tag>
 {
 };
 

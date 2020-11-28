@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_OPTION_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTION_DECL_HPP_INCLUDED
 
@@ -22,12 +21,10 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief An option parser
 
@@ -44,83 +41,50 @@ type \a Type. In case reading the value into \a Type fails, the parser also fail
 
 \tparam Type The type of the flag's value.
 */
-template<
-	typename Label,
-	typename Type
->
+template <typename Label, typename Type>
 class option
 {
 public:
-	using
-	optional_default_value
-	=
-	fcppt::options::default_value<
-		fcppt::optional::object<
-			Type
-		>
-	>;
+  using optional_default_value = fcppt::options::default_value<fcppt::optional::object<Type>>;
 
-	/**
-	\brief Constructs an option parser.
+  /**
+  \brief Constructs an option parser.
 
-	\param short_name An optional short name ("-o") this parser will match.
+  \param short_name An optional short name ("-o") this parser will match.
 
-	\param long_name The long name ("--option") this parser will match.
+  \param long_name The long name ("--option") this parser will match.
 
-	\param default_value An optional default value for this parser.
+  \param default_value An optional default value for this parser.
 
-	\param help_text Optional help text for this flag.
-	*/
-	option(
-		fcppt::options::optional_short_name &&short_name,
-		fcppt::options::long_name &&long_name,
-		optional_default_value &&default_value,
-		fcppt::options::optional_help_text &&help_text
-	);
+  \param help_text Optional help text for this flag.
+  */
+  option(
+      fcppt::options::optional_short_name &&short_name,
+      fcppt::options::long_name &&long_name,
+      optional_default_value &&default_value,
+      fcppt::options::optional_help_text &&help_text);
 
-	using
-	element_type
-	=
-	fcppt::record::element<
-		Label,
-		Type
-	>;
+  using element_type = fcppt::record::element<Label, Type>;
 
-	using
-	result_type
-	=
-	fcppt::record::object<
-		element_type
-	>;
+  using result_type = fcppt::record::object<element_type>;
 
-	[[nodiscard]]
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const;
+  [[nodiscard]] fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
-	[[nodiscard]]
-	fcppt::options::flag_name_set
-	flag_names() const;
+  [[nodiscard]] fcppt::options::flag_name_set flag_names() const;
 
-	[[nodiscard]]
-	fcppt::options::option_name_set
-	option_names() const;
+  [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-	[[nodiscard]]
-	fcppt::string
-	usage() const;
+  [[nodiscard]] fcppt::string usage() const;
+
 private:
-	fcppt::options::optional_short_name short_name_;
+  fcppt::options::optional_short_name short_name_;
 
-	fcppt::options::long_name long_name_;
+  fcppt::options::long_name long_name_;
 
-	optional_default_value default_value_;
+  optional_default_value default_value_;
 
-	fcppt::options::optional_help_text help_text_;
+  fcppt::options::optional_help_text help_text_;
 };
 
 }

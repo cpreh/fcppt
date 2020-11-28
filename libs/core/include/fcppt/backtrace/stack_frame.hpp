@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_BACKTRACE_STACK_FRAME_HPP_INCLUDED
 #define FCPPT_BACKTRACE_STACK_FRAME_HPP_INCLUDED
 
@@ -13,18 +12,11 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace backtrace
 {
-
-using
-stack_frame
-=
-std::vector<
-	fcppt::string
->;
+using stack_frame = std::vector<fcppt::string>;
 
 }
 }

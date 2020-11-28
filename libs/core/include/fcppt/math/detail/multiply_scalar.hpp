@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_MULTIPLY_SCALAR_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MULTIPLY_SCALAR_HPP_INCLUDED
 
@@ -17,62 +16,29 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace detail
 {
-
-template<
-	typename Storage
->
-void
-multiply_scalar(
-	Storage &_value,
-	typename
-	Storage::value_type const _mult
-)
+template <typename Storage>
+void multiply_scalar(Storage &_value, typename Storage::value_type const _mult)
 {
-	fcppt::algorithm::loop(
-		fcppt::math::int_range_count<
-			fcppt::math::detail::storage_size<
-				Storage
-			>::value
-		>{},
-		[
-			&_value,
-			_mult
-		](
-			auto const _index
-		)
-		{
-			FCPPT_USE(
-				_index
-			);
+  fcppt::algorithm::loop(
+      fcppt::math::int_range_count<fcppt::math::detail::storage_size<Storage>::value>{},
+      [&_value, _mult](auto const _index) {
+        FCPPT_USE(_index);
 
-			using
-			index
-			=
-			fcppt::tag_type<
-				decltype(
-					_index
-				)
-			>;
+        using index = fcppt::tag_type<decltype(_index)>;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_VC_WARNING(4709)
+        FCPPT_PP_PUSH_WARNING
+        FCPPT_PP_DISABLE_VC_WARNING(4709)
 
-			_value[
-				index()
-			] *=
-				_mult;
+        _value[index()] *= _mult;
 
-FCPPT_PP_POP_WARNING
-
-		}
-	);
+        FCPPT_PP_POP_WARNING
+      });
 }
 
 }

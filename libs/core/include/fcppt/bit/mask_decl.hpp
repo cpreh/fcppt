@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_BIT_MASK_DECL_HPP_INCLUDED
 #define FCPPT_BIT_MASK_DECL_HPP_INCLUDED
 
@@ -12,43 +11,27 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace bit
 {
-
 /**
 \brief A bit mask
 
 \ingroup fcpptbit
 */
-template<
-	typename Type
->
+template <typename Type>
 class mask
 {
 public:
-	static_assert(
-		std::is_integral<
-			Type
-		>::value,
-		"Type must be integral"
-	);
+  static_assert(std::is_integral<Type>::value, "Type must be integral");
 
-	constexpr
-	explicit
-	mask(
-		Type
-	)
-	noexcept;
+  constexpr explicit mask(Type) noexcept;
 
-	constexpr
-	Type
-	get() const
-	noexcept;
+  constexpr Type get() const noexcept;
+
 private:
-	Type value_;
+  Type value_;
 };
 
 }

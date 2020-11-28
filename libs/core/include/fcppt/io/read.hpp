@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_READ_HPP_INCLUDED
 #define FCPPT_IO_READ_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace io
 {
-
 /**
 \brief Reads an object of arithmetic type from a stream
 
@@ -43,60 +40,20 @@ returned.
 \return If the read is successful, an optional containing the read object will
 be returned. Otherwise an empty optional will be returned.
 */
-template<
-	typename Type
->
-fcppt::optional::object<
-	Type
->
-read(
-	std::istream &_stream,
-	fcppt::endianness::format const _format
-)
+template <typename Type>
+fcppt::optional::object<Type> read(std::istream &_stream, fcppt::endianness::format const _format)
 {
-	static_assert(
-		std::is_arithmetic_v<
-			Type
-		>,
-		"io::read must return an arithmetic type"
-	);
+  static_assert(std::is_arithmetic_v<Type>, "io::read must return an arithmetic type");
 
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		Type
-	>;
+  using result_type = fcppt::optional::object<Type>;
 
-	Type result;
+  Type result;
 
-	return
-		_stream.read(
-			fcppt::cast::to_char_ptr<
-				char *
-			>(
-				&result
-			),
-			fcppt::cast::size<
-				std::streamsize
-			>(
-				fcppt::cast::to_signed(
-					sizeof(
-						Type
-					)
-				)
-			)
-		)
-		?
-			result_type(
-				fcppt::endianness::convert(
-					result,
-					_format
-				)
-			)
-		:
-			result_type()
-		;
+  return _stream.read(
+             fcppt::cast::to_char_ptr<char *>(&result),
+             fcppt::cast::size<std::streamsize>(fcppt::cast::to_signed(sizeof(Type))))
+             ? result_type(fcppt::endianness::convert(result, _format))
+             : result_type();
 }
 
 }

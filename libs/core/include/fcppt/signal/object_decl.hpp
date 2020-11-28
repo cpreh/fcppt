@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <fcppt/signal/detail/enable_if_void.hpp>
 #include <fcppt/type_traits/function_result.hpp>
 
-
 namespace fcppt
 {
 namespace signal
 {
-
 /**
 \brief Represents a signal with a non-void return value
 \tparam T The signal's function type
@@ -32,110 +29,57 @@ namespace signal
 
 See \ref fcpptsignal for more information.
 */
-template<
-	typename T,
-	template<
-		typename
-	> class Base,
-	typename Enable
->
-class object
-:
-private
-	Base<
-		T
-	>
+template <typename T, template <typename> class Base, typename Enable>
+class object : private Base<T>
 {
-	FCPPT_NONCOPYABLE(
-		object
-	);
+  FCPPT_NONCOPYABLE(object);
+
 public:
-	/**
-	\brief A typedef for the signal's base class
-	*/
-	using
-	base
-	=
-	Base<
-		T
-	>;
+  /**
+  \brief A typedef for the signal's base class
+  */
+  using base = Base<T>;
 
-	/**
-	\brief A typedef for the function's return type
-	*/
-	using
-	result_type
-	=
-	fcppt::type_traits::function_result<
-		T
-	>;
+  /**
+  \brief A typedef for the function's return type
+  */
+  using result_type = fcppt::type_traits::function_result<T>;
 
-	using
-	function
-	=
-	typename
-	base::function;
+  using function = typename base::function;
 
-	/**
-	\brief Typedef to the combiner function
-	*/
-	using
-	combiner_function
-	=
-	fcppt::function<
-		result_type (
-			result_type,
-			result_type
-		)
-	>;
+  /**
+  \brief Typedef to the combiner function
+  */
+  using combiner_function = fcppt::function<result_type(result_type, result_type)>;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		result_type,
-		initial_value
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(result_type, initial_value);
 
-	/**
-	\brief Construct a signal with a combiner
-	*/
-	explicit
-	object(
-		combiner_function &&
-	);
+  /**
+  \brief Construct a signal with a combiner
+  */
+  explicit object(combiner_function &&);
 
-	object(
-		object &&
-	)
-	noexcept;
+  object(object &&) noexcept;
 
-	object &
-	operator=(
-		object &&
-	)
-	noexcept;
+  object &operator=(object &&) noexcept;
 
-	~object();
+  ~object();
 
-	/**
-	\brief Call the signal
-	*/
-	template<
-		typename... Args
-	>
-	result_type
-	operator()(
-		initial_value &&,
-		Args &&...
-	);
+  /**
+  \brief Call the signal
+  */
+  template <typename... Args>
+  result_type operator()(initial_value &&, Args &&...);
 
-	using base::connect;
+  using base::connect;
 
-	using base::empty;
+  using base::empty;
 
-	using base::connections;
+  using base::connections;
+
 private:
-	combiner_function combiner_;
+  combiner_function combiner_;
 };
-
 
 /**
 \brief Represents a signal without a return value
@@ -145,87 +89,46 @@ private:
 
 See the #fcpptsignal module documentation  for more information.
 */
-template<
-	typename T,
-	template<
-		typename
-	> class Base
->
-class object<
-	T,
-	Base,
-	fcppt::signal::detail::enable_if_void<
-		T
-	>
->
-:
-private
-	Base<
-		T
-	>
+template <typename T, template <typename> class Base>
+class object<T, Base, fcppt::signal::detail::enable_if_void<T>> : private Base<T>
 {
-	FCPPT_NONCOPYABLE(
-		object
-	);
+  FCPPT_NONCOPYABLE(object);
+
 public:
-	/**
-	\brief A typedef for the signal's base class
-	*/
-	using
-	base
-	=
-	Base<
-		T
-	>;
+  /**
+  \brief A typedef for the signal's base class
+  */
+  using base = Base<T>;
 
-	using
-	function
-	=
-	typename
-	base::function;
+  using function = typename base::function;
 
-	/**
-	\brief Construct an empty signal
-	*/
-	object();
+  /**
+  \brief Construct an empty signal
+  */
+  object();
 
-	object(
-		object &&
-	)
-	noexcept;
+  object(object &&) noexcept;
 
-	object &
-	operator=(
-		object &&
-	)
-	noexcept;
+  object &operator=(object &&) noexcept;
 
-	~object();
+  ~object();
 
-	/**
-	\brief Typedef to the function's return type
-	*/
-	using
-	result_type
-	=
-	void;
+  /**
+  \brief Typedef to the function's return type
+  */
+  using result_type = void;
 
-	/**
-	\brief Call the signal
-	*/
-	template<
-		typename... Args
-	>
-	result_type
-	operator()(
-		Args &&...
-	);
+  /**
+  \brief Call the signal
+  */
+  template <typename... Args>
+  result_type operator()(Args &&...);
 
-	using base::connect;
+  using base::connect;
 
-	using base::empty;
+  using base::empty;
 
-	using base::connections;
+  using base::connections;
 };
 
 }

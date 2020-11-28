@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/log/context.hpp>
@@ -22,152 +21,72 @@
 #include <fcppt/log/impl/tree_formatter.hpp>
 #include <fcppt/optional/maybe.hpp>
 
-
 fcppt::log::object::object(
-	fcppt::log::context_reference const _context,
-	fcppt::log::parameters const &_parameters
-)
-:
-	object{
-		_context,
-		_context.get().root(),
-		_parameters
-	}
+    fcppt::log::context_reference const _context, fcppt::log::parameters const &_parameters)
+    : object{_context, _context.get().root(), _parameters}
 {
 }
 
 fcppt::log::object::object(
-	fcppt::log::object const &_parent,
-	fcppt::log::parameters const &_parameters
-)
-:
-	object{
-		_parent.context_,
-		_parent.node_,
-		_parameters
-	}
+    fcppt::log::object const &_parent, fcppt::log::parameters const &_parameters)
+    : object{_parent.context_, _parent.node_, _parameters}
 {
 }
 
 fcppt::log::object::object(
-	fcppt::log::context_reference const _context,
-	fcppt::log::location const &_location,
-	fcppt::log::parameters const &_parameters
-)
-:
-	object{
-		_context,
-		_context.get().find_location(
-			_location
-		),
-		_parameters
-	}
+    fcppt::log::context_reference const _context,
+    fcppt::log::location const &_location,
+    fcppt::log::parameters const &_parameters)
+    : object{_context, _context.get().find_location(_location), _parameters}
 {
 }
 
-fcppt::log::object::~object()
-= default;
+fcppt::log::object::~object() = default;
 
-void
-fcppt::log::object::log(
-	fcppt::log::level const _level,
-	fcppt::log::detail::temporary_output const &_helper
-)
+void fcppt::log::object::log(
+    fcppt::log::level const _level, fcppt::log::detail::temporary_output const &_helper)
 {
-	if(
-		this->enabled(
-			_level
-		)
-	)
-	{
-		this->level_sink(
-			_level
-		).log(
-			_helper,
-			this->formatter_
-		);
-	}
+  if (this->enabled(_level))
+  {
+    this->level_sink(_level).log(_helper, this->formatter_);
+  }
 }
 
-fcppt::log::level_stream const &
-fcppt::log::object::level_sink(
-	fcppt::log::level const _level
-) const
+fcppt::log::level_stream const &fcppt::log::object::level_sink(fcppt::log::level const _level) const
 {
-	return
-		this->level_streams()[
-			_level
-		];
+  return this->level_streams()[_level];
 }
 
-bool
-fcppt::log::object::enabled(
-	fcppt::log::level const _level
-) const
+bool fcppt::log::object::enabled(fcppt::log::level const _level) const
 {
-	return
-		fcppt::optional::maybe(
-			this->level(),
-			fcppt::const_(
-				false
-			),
-			[
-				_level
-			](
-				fcppt::log::level const _enabled_level
-			)
-			{
-				return
-					_level
-					>=
-					_enabled_level;
-			}
-		);
+  return fcppt::optional::maybe(
+      this->level(), fcppt::const_(false), [_level](fcppt::log::level const _enabled_level) {
+        return _level >= _enabled_level;
+      });
 }
 
-fcppt::log::format::optional_function const &
-fcppt::log::object::formatter() const
+fcppt::log::format::optional_function const &fcppt::log::object::formatter() const
 {
-	return
-		this->formatter_;
+  return this->formatter_;
 }
 
-fcppt::log::level_stream_array const &
-fcppt::log::object::level_streams() const
+fcppt::log::level_stream_array const &fcppt::log::object::level_streams() const
 {
-	return
-		this->context_.get().level_streams().get();
+  return this->context_.get().level_streams().get();
 }
 
-fcppt::log::optional_level
-fcppt::log::object::level() const
+fcppt::log::optional_level fcppt::log::object::level() const
 {
-	return
-		this->node_.get().value().level();
+  return this->node_.get().value().level();
 }
 
 fcppt::log::object::object(
-	fcppt::log::context_reference const _context,
-	context_tree_ref const _node,
-	fcppt::log::parameters const &_parameters
-)
-:
-	context_{
-		_context
-	},
-	node_{
-		_context.get().find_child(
-			_node,
-			_parameters.name()
-		)
-	},
-	formatter_(
-		fcppt::log::format::chain(
-			_parameters.formatter(),
-			fcppt::log::impl::tree_formatter(
-				node_.get()
-			)
-		)
-	)
+    fcppt::log::context_reference const _context,
+    context_tree_ref const _node,
+    fcppt::log::parameters const &_parameters)
+    : context_{_context},
+      node_{_context.get().find_child(_node, _parameters.name())},
+      formatter_(fcppt::log::format::chain(
+          _parameters.formatter(), fcppt::log::impl::tree_formatter(node_.get())))
 {
 }

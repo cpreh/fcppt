@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BUFFER_READ_FROM_OPT_HPP_INCLUDED
 #define FCPPT_CONTAINER_BUFFER_READ_FROM_OPT_HPP_INCLUDED
 
 #include <fcppt/container/buffer/append_from_opt.hpp>
 #include <fcppt/optional/object_impl.hpp>
-
 
 namespace fcppt
 {
@@ -17,7 +15,6 @@ namespace container
 {
 namespace buffer
 {
-
 /**
 \brief Reads into a buffer using a function which may fail.
 
@@ -30,29 +27,14 @@ used to set <code>buf</code>'s read area size.
 
 \tparam Buffer An #fcppt::container::buffer::object.
 
-\tparam Function A function callable as <code>fcppt::optional::object<size_type> (pointer, size_type)</code>.
+\tparam Function A function callable as <code>fcppt::optional::object<size_type> (pointer,
+size_type)</code>.
 */
-template<
-	typename Buffer,
-	typename Function
->
-fcppt::optional::object<
-	Buffer
->
-read_from_opt(
-	typename
-	Buffer::size_type const _size,
-	Function const &_function
-)
+template <typename Buffer, typename Function>
+fcppt::optional::object<Buffer>
+read_from_opt(typename Buffer::size_type const _size, Function const &_function)
 {
-	return
-		fcppt::container::buffer::append_from_opt(
-			Buffer{
-				0U
-			},
-			_size,
-			_function
-		);
+  return fcppt::container::buffer::append_from_opt(Buffer{0U}, _size, _function);
 }
 
 }

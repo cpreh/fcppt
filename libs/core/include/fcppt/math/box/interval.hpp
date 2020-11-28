@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_BOX_INTERVAL_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERVAL_HPP_INCLUDED
 
@@ -13,48 +12,22 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace box
 {
-
 /**
 \brief Creates an interval from a box
 
 \ingroup fcpptmathbox
 */
-template<
-	fcppt::math::size_type Index,
-	typename T,
-	fcppt::math::size_type N
->
-inline
-fcppt::homogenous_pair<
-	T
->
-interval(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_box
-)
+template <fcppt::math::size_type Index, typename T, fcppt::math::size_type N>
+inline fcppt::homogenous_pair<T> interval(fcppt::math::box::object<T, N> const &_box)
 {
-	return
-		fcppt::make_homogenous_pair(
-			fcppt::math::vector::at<
-				Index
-			>(
-				_box.pos()
-			),
-			fcppt::math::vector::at<
-				Index
-			>(
-				_box.max()
-			)
-		);
+  return fcppt::make_homogenous_pair(
+      fcppt::math::vector::at<Index>(_box.pos()), fcppt::math::vector::at<Index>(_box.max()));
 }
 
 }

@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_STREAM_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_STREAM_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -14,10 +12,7 @@ namespace parse
 {
 namespace detail
 {
-
-template<
-	typename Ch
->
+template <typename Ch>
 class stream;
 
 }

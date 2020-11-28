@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_IDENTITY_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_IDENTITY_HPP_INCLUDED
 
@@ -13,75 +12,30 @@
 #include <fcppt/math/matrix/to_static.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Returns the identity matrix;
 
 \ingroup fcpptmathmatrix
 */
-template<
-	typename Matrix
->
-fcppt::math::matrix::to_static<
-	Matrix
->
-identity()
+template <typename Matrix>
+fcppt::math::matrix::to_static<Matrix> identity()
 {
-	static_assert(
-		fcppt::math::matrix::is_matrix<
-			Matrix
-		>::value,
-		"Matrix must be a matrix"
-	);
+  static_assert(fcppt::math::matrix::is_matrix<Matrix>::value, "Matrix must be a matrix");
 
-	using
-	result_type
-	=
-	fcppt::math::matrix::to_static<
-		Matrix
-	>;
+  using result_type = fcppt::math::matrix::to_static<Matrix>;
 
-	using
-	value_type
-	=
-	fcppt::type_traits::value_type<
-		result_type
-	>;
+  using value_type = fcppt::type_traits::value_type<result_type>;
 
-	return
-		fcppt::math::matrix::init<
-			result_type
-		>(
-			[](
-				auto const _index
-			)
-			{
-				return
-					_index.row()
-					==
-					_index.column()
-					?
-						fcppt::literal<
-							value_type
-						>(
-							1
-						)
-					:
-						fcppt::literal<
-							value_type
-						>(
-							0
-						)
-					;
-			}
-		);
+  return fcppt::math::matrix::init<result_type>([](auto const _index) {
+    return _index.row() == _index.column() ? fcppt::literal<value_type>(1)
+                                           : fcppt::literal<value_type>(0);
+  });
 }
 
 }

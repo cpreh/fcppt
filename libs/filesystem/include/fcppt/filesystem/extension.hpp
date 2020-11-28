@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_EXTENSION_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_EXTENSION_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Returns the extension of a path as string
 
@@ -32,10 +29,7 @@ Returns the extension of \a path as a string instead of a path.
 empty.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-fcppt::string
-extension(
-	std::filesystem::path const &path
-);
+fcppt::string extension(std::filesystem::path const &path);
 
 }
 }

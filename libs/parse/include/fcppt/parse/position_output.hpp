@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_POSITION_OUTPUT_HPP_INCLUDED
 #define FCPPT_PARSE_POSITION_OUTPUT_HPP_INCLUDED
 
@@ -15,38 +14,15 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch
->
-std::basic_ostream<
-	Ch
-> &
-operator<<(
-	std::basic_ostream<
-		Ch
-	> &_stream,
-	fcppt::parse::position<
-		Ch
-	> const &_pos
-)
+template <typename Ch>
+std::basic_ostream<Ch> &
+operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::position<Ch> const &_pos)
 {
-	return
-		_stream
-		<<
-		_pos.pos()
-		<<
-		FCPPT_STRING_LITERAL(
-			Ch,
-			", "
-		)
-		<<
-		_pos.location();
+  return _stream << _pos.pos() << FCPPT_STRING_LITERAL(Ch, ", ") << _pos.location();
 }
 
 }

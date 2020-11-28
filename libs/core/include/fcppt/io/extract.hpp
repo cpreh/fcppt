@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_EXTRACT_HPP_INCLUDED
 #define FCPPT_IO_EXTRACT_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace io
 {
-
 /**
 \brief Reads a value from a stream, returning an optional.
 
@@ -29,28 +26,10 @@ _stream. If extracting the value fails, an empty optional is returned.
 
 \tparam Type Must have a default constructor or a constructor for #fcppt::no_init.
 */
-template<
-	typename Type,
-	typename Ch,
-	typename Traits
->
-inline
-fcppt::optional::object<
-	Type
->
-extract(
-	std::basic_istream<
-		Ch,
-		Traits
-	> &_stream
-)
+template <typename Type, typename Ch, typename Traits>
+inline fcppt::optional::object<Type> extract(std::basic_istream<Ch, Traits> &_stream)
 {
-	return
-		fcppt::io::detail::extract<
-			Type
-		>(
-			_stream
-		);
+  return fcppt::io::detail::extract<Type>(_stream);
 }
 
 }

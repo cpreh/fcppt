@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BITFIELD_DETAIL_MAKE_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_MAKE_RANGE_HPP_INCLUDED
 
@@ -15,7 +14,6 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
@@ -24,49 +22,16 @@ namespace bitfield
 {
 namespace detail
 {
-
-template<
-	typename Element,
-	typename Size
->
-inline
-std::enable_if_t<
-	std::is_enum<
-		Element
-	>::value,
-	fcppt::enum_::range<
-		Element
-	>
->
-make_range()
+template <typename Element, typename Size>
+inline std::enable_if_t<std::is_enum<Element>::value, fcppt::enum_::range<Element>> make_range()
 {
-	return
-		fcppt::enum_::make_range<
-			Element
-		>();
+  return fcppt::enum_::make_range<Element>();
 }
 
-template<
-	typename Element,
-	typename Size
->
-inline
-std::enable_if_t<
-	std::is_integral<
-		Element
-	>::value,
-	fcppt::int_range<
-		Element
-	>
->
-make_range()
+template <typename Element, typename Size>
+inline std::enable_if_t<std::is_integral<Element>::value, fcppt::int_range<Element>> make_range()
 {
-	return
-		fcppt::make_int_range_count<
-			Element
-		>(
-			Size::value
-		);
+  return fcppt::make_int_range_count<Element>(Size::value);
 }
 
 }

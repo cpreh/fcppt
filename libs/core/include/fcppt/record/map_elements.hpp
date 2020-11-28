@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_MAP_ELEMENTS_HPP_INCLUDED
 #define FCPPT_RECORD_MAP_ELEMENTS_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 /**
 \brief Maps the elements of a vector using a metafunction.
 
@@ -30,32 +27,13 @@ namespace record
 \tparam Function A metafunction accepting #fcppt::record::element
 as parameter and returning the new mapped type.
 */
-template<
-	typename Record,
-	typename Function
->
-using
-map_elements
-=
-fcppt::record::from_list<
-	::metal::transform<
-		::metal::bind<
-			::metal::lambda<
-				fcppt::record::element
-			>,
-			::metal::bind<
-				::metal::lambda<
-					fcppt::record::element_to_label
-				>,
-				::metal::_1
-			>,
-			Function
-		>,
-		fcppt::record::element_vector<
-			Record
-		>
-	>
->;
+template <typename Record, typename Function>
+using map_elements = fcppt::record::from_list<::metal::transform<
+    ::metal::bind<
+        ::metal::lambda<fcppt::record::element>,
+        ::metal::bind<::metal::lambda<fcppt::record::element_to_label>, ::metal::_1>,
+        Function>,
+    fcppt::record::element_vector<Record>>>;
 
 }
 }

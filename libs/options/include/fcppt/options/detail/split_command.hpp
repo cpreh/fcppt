@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_DETAIL_SPLIT_COMMAND_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_SPLIT_COMMAND_HPP_INCLUDED
 
@@ -16,26 +15,15 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
 namespace detail
 {
-
 FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::optional::object<
-	std::tuple<
-		fcppt::args_vector,
-		fcppt::string,
-		fcppt::args_vector
-	>
->
-split_command(
-	fcppt::args_vector const &,
-	fcppt::options::option_name_set const &
-);
+fcppt::optional::object<std::tuple<fcppt::args_vector, fcppt::string, fcppt::args_vector>>
+split_command(fcppt::args_vector const &, fcppt::options::option_name_set const &);
 
 }
 }

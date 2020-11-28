@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OUTPUT_TO_STRING_LOCALE_HPP_INCLUDED
 #define FCPPT_OUTPUT_TO_STRING_LOCALE_HPP_INCLUDED
 
@@ -14,10 +13,8 @@
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Convert an arbitrary type to a string, using a custom locale.
 
@@ -32,45 +29,23 @@ namespace fcppt
 \see fcppt::output_to_std_wstring
 \see fcppt::output_to_fcppt_string
 */
-template<
-	typename Dest,
-	typename Source
->
-Dest
-output_to_string_locale(
-	Source const &_source,
-	std::locale const &_locale
-)
+template <typename Dest, typename Source>
+Dest output_to_string_locale(Source const &_source, std::locale const &_locale)
 {
-	static_assert(
-		fcppt::type_traits::is_string<
-			Dest
-		>::value,
-		"insert_ot_string must return a string"
-	);
+  static_assert(
+      fcppt::type_traits::is_string<Dest>::value, "insert_ot_string must return a string");
 
-	using
-	ostringstream
-	=
-	std::basic_ostringstream<
-		fcppt::type_traits::value_type<
-			Dest
-		>,
-		typename
-		Dest::traits_type
-	>;
+  using ostringstream =
+      std::basic_ostringstream<fcppt::type_traits::value_type<Dest>, typename Dest::traits_type>;
 
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	ostringstream oss{};
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  ostringstream oss{};
 
-	oss.imbue(
-		_locale
-	);
+  oss.imbue(_locale);
 
-	oss << _source;
+  oss << _source;
 
-	return
-		oss.str();
+  return oss.str();
 }
 
 }

@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_SUP_FROM_POS_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SUP_FROM_POS_HPP_INCLUDED
 
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/container/grid/sup_from_pos_fwd.hpp>
-
 
 #endif

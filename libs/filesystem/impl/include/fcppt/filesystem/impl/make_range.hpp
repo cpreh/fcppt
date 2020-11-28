@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_IMPL_MAKE_RANGE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IMPL_MAKE_RANGE_HPP_INCLUDED
 
@@ -19,53 +18,23 @@
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
 namespace impl
 {
-
-template<
-	typename Range
->
-fcppt::either::object<
-	std::error_code,
-	Range
->
-make_range(
-	std::filesystem::path const &_path,
-	std::filesystem::directory_options const _options
-)
+template <typename Range>
+fcppt::either::object<std::error_code, Range>
+make_range(std::filesystem::path const &_path, std::filesystem::directory_options const _options)
 {
-	std::error_code error{};
+  std::error_code error{};
 
-	Range result{
-		_path,
-		_options,
-		fcppt::make_ref(
-			error
-		)
-	};
+  Range result{_path, _options, fcppt::make_ref(error)};
 
-	return
-		fcppt::either::map(
-			fcppt::either::error_from_optional(
-				fcppt::make_optional_error_code(
-					error
-				)
-			),
-			[
-				&result
-			](
-				fcppt::either::no_error const &
-			)
-			{
-				return
-					result;
-			}
-		);
+  return fcppt::either::map(
+      fcppt::either::error_from_optional(fcppt::make_optional_error_code(error)),
+      [&result](fcppt::either::no_error const &) { return result; });
 }
 
 }

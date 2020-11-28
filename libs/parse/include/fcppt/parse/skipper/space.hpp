@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_SPACE_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_SPACE_HPP_INCLUDED
 
 #include <fcppt/parse/skipper/basic_space.hpp>
-
 
 namespace fcppt
 {
@@ -16,16 +14,7 @@ namespace parse
 {
 namespace skipper
 {
-
-inline
-auto
-space()
-{
-	return
-		fcppt::parse::skipper::basic_space<
-			char
-		>();
-}
+inline auto space() { return fcppt::parse::skipper::basic_space<char>(); }
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MOVE_CLEAR_HPP_INCLUDED
 #define FCPPT_MOVE_CLEAR_HPP_INCLUDED
 
@@ -11,10 +10,8 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Moves out of a value and clears it.
 
@@ -28,25 +25,14 @@ and leave an empty container behind.
 
 \tparam Type Must be movable and have a default constructor.
 */
-template<
-	typename Type
->
-Type
-move_clear(
-	Type &_value
-)
+template <typename Type>
+Type move_clear(Type &_value)
 {
-	Type result(
-		std::move(
-			_value
-		)
-	);
+  Type result(std::move(_value));
 
-	_value =
-		Type();
+  _value = Type();
 
-	return
-		result;
+  return result;
 }
 
 }

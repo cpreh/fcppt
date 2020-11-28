@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Combines two optionals
 
@@ -29,104 +26,31 @@ If \a _optional1 is set to x1 and \a _optional2 is set to x2, then
 <code>Optional(_function(x1, x2))</code>. Otherwise, if at least one optional
 is set, that optional is returned.
 */
-template<
-	typename Optional,
-	typename Function
->
-auto
-combine(
-	Optional &&_optional1,
-	Optional &&_optional2,
-	Function const &_function
-)
-->
-fcppt::optional::object<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Optional
-			>(
-				_optional1.get_unsafe()
-			),
-			fcppt::move_if_rvalue<
-				Optional
-			>(
-				_optional2.get_unsafe()
-			)
-		)
-	)
->
+template <typename Optional, typename Function>
+auto combine(Optional &&_optional1, Optional &&_optional2, Function const &_function)
+    -> fcppt::optional::object<decltype(_function(
+        fcppt::move_if_rvalue<Optional>(_optional1.get_unsafe()),
+        fcppt::move_if_rvalue<Optional>(_optional2.get_unsafe())))>
 {
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_optional1.get_unsafe()
-				),
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_optional2.get_unsafe()
-				)
-			)
-		)
-	>;
+  using result_type = fcppt::optional::object<decltype(_function(
+      fcppt::move_if_rvalue<Optional>(_optional1.get_unsafe()),
+      fcppt::move_if_rvalue<Optional>(_optional2.get_unsafe())))>;
 
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
+  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
-	if(
-		!_optional1.has_value()
-	)
-	{
-		return
-			result_type{
-				std::forward<
-					Optional
-				>(
-					_optional2
-				)
-			};
-	}
+  if (!_optional1.has_value())
+  {
+    return result_type{std::forward<Optional>(_optional2)};
+  }
 
-	if(
-		!_optional2.has_value()
-	)
-	{
-		return
-			result_type{
-				std::forward<
-					Optional
-				>(
-					_optional1
-				)
-			};
-	}
+  if (!_optional2.has_value())
+  {
+    return result_type{std::forward<Optional>(_optional1)};
+  }
 
-	return
-		result_type{
-			_function(
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_optional1.get_unsafe()
-				),
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_optional2.get_unsafe()
-				)
-			)
-		};
+  return result_type{_function(
+      fcppt::move_if_rvalue<Optional>(_optional1.get_unsafe()),
+      fcppt::move_if_rvalue<Optional>(_optional2.get_unsafe()))};
 }
 
 }

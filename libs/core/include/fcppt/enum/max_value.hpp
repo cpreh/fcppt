@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_MAX_VALUE_HPP_INCLUDED
 #define FCPPT_ENUM_MAX_VALUE_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief The maximum enumerator in an enum
 
@@ -32,22 +29,10 @@ enumerator in an enum in C++.
 
 \tparam Type Must be an enum type
 */
-template<
-	typename Type
->
-struct max_value
-:
-std::integral_constant<
-	Type,
-	Type::fcppt_maximum
->
+template <typename Type>
+struct max_value : std::integral_constant<Type, Type::fcppt_maximum>
 {
-	static_assert(
-		std::is_enum<
-			Type
-		>::value,
-		"Type must be an enum type"
-	);
+  static_assert(std::is_enum<Type>::value, "Type must be an enum type");
 };
 
 }

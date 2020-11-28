@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_STREAM_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_STREAM_DECL_HPP_INCLUDED
 
@@ -18,70 +17,34 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
 namespace detail
 {
-
-template<
-	typename Ch
->
-class stream
-:
-	public
-		fcppt::parse::basic_stream<
-			Ch
-		>
+template <typename Ch>
+class stream : public fcppt::parse::basic_stream<Ch>
 {
-	FCPPT_NONMOVABLE(
-		stream
-	);
+  FCPPT_NONMOVABLE(stream);
+
 public:
-	using
-	impl_ref
-	=
-	fcppt::reference<
-		std::basic_istream<
-			Ch
-		>
-	>;
+  using impl_ref = fcppt::reference<std::basic_istream<Ch>>;
 
-	explicit
-	stream(
-		impl_ref
-	);
+  explicit stream(impl_ref);
 
-	~stream()
-	override;
+  ~stream() override;
 
-	[[nodiscard]]
-	fcppt::optional::object<
-		Ch
-	>
-	get_char()
-	override;
+  [[nodiscard]] fcppt::optional::object<Ch> get_char() override;
 
-	[[nodiscard]]
-	fcppt::parse::position<
-		Ch
-	>
-	get_position() const
-	override;
+  [[nodiscard]] fcppt::parse::position<Ch> get_position() const override;
 
-	void
-	set_position(
-		fcppt::parse::position<
-			Ch
-		> const &
-	)
-	override;
+  void set_position(fcppt::parse::position<Ch> const &) override;
+
 private:
-	impl_ref const impl_;
+  impl_ref const impl_;
 
-	fcppt::parse::location location_;
+  fcppt::parse::location location_;
 };
 
 }

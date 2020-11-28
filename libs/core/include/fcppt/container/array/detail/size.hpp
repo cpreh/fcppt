@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_ARRAY_DETAIL_SIZE_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_DETAIL_SIZE_HPP_INCLUDED
 
@@ -13,7 +12,6 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
@@ -22,30 +20,13 @@ namespace array
 {
 namespace detail
 {
-
-template<
-	typename Type
->
+template <typename Type>
 struct size;
 
-template<
-	typename T,
-	std::size_t N
->
-struct size<
-	std::array<
-		T,
-		N
-	>
->
+template <typename T, std::size_t N>
+struct size<std::array<T, N>>
 {
-	using
-	type
-	=
-	std::integral_constant<
-		std::size_t,
-		N
-	>;
+  using type = std::integral_constant<std::size_t, N>;
 };
 
 }

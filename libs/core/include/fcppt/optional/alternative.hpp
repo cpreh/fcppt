@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_ALTERNATIVE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_ALTERNATIVE_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Returns the first optional if it is not nothing
 
@@ -30,45 +27,19 @@ the result of \a _optional2 is returned.
 
 \tparam Function A function callable as <code>Optional ()</code>.
 */
-template<
-	typename Optional,
-	typename Function
->
-fcppt::type_traits::remove_cv_ref_t<
-	Optional
->
-alternative(
-	Optional &&_optional1,
-	Function const &_optional2
-)
+template <typename Optional, typename Function>
+fcppt::type_traits::remove_cv_ref_t<Optional>
+alternative(Optional &&_optional1, Function const &_optional2)
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"optional_alternative must return an optional"
-	);
+  static_assert(
+      fcppt::optional::detail::check<Optional>::value,
+      "optional_alternative must return an optional");
 
-	static_assert(
-		fcppt::optional::detail::check<
-			std::result_of_t<
-				Function()
-			>
-		>::value,
-		"Function must return an optional"
-	);
+  static_assert(
+      fcppt::optional::detail::check<std::result_of_t<Function()>>::value,
+      "Function must return an optional");
 
-	return
-		_optional1.has_value()
-		?
-			std::forward<
-				Optional
-			>(
-				_optional1
-			)
-		:
-			_optional2()
-		;
+  return _optional1.has_value() ? std::forward<Optional>(_optional1) : _optional2();
 }
 
 }

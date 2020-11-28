@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_ERROR_OUTPUT_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/variant/output.hpp>
-
 
 #endif

@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_REP_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_DECL_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
-
 
 namespace fcppt
 {
@@ -16,7 +14,6 @@ namespace container
 {
 namespace raw_vector
 {
-
 /**
 \brief The representation of a raw vector.
 
@@ -26,53 +23,30 @@ Can be used to initialize a raw vector by taking ownership of the memory from an
 
 \tparam A The allocator type.
 */
-template<
-	typename A
->
+template <typename A>
 class rep
 {
 public:
-	using
-	pointer
-	=
-	typename
-	A::pointer;
+  using pointer = typename A::pointer;
 
-	rep(
-		A const &,
-		pointer first,
-		pointer last,
-		pointer cap
-	)
-	noexcept;
+  rep(A const &, pointer first, pointer last, pointer cap) noexcept;
 
-	[[nodiscard]]
-	A const &
-	alloc() const
-	noexcept;
+  [[nodiscard]] A const &alloc() const noexcept;
 
-	[[nodiscard]]
-	pointer
-	first() const
-	noexcept;
+  [[nodiscard]] pointer first() const noexcept;
 
-	[[nodiscard]]
-	pointer
-	last() const
-	noexcept;
+  [[nodiscard]] pointer last() const noexcept;
 
-	[[nodiscard]]
-	pointer
-	cap() const
-	noexcept;
+  [[nodiscard]] pointer cap() const noexcept;
+
 private:
-	A alloc_;
+  A alloc_;
 
-	pointer first_;
+  pointer first_;
 
-	pointer last_;
+  pointer last_;
 
-	pointer cap_;
+  pointer cap_;
 };
 
 }

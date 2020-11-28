@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
@@ -13,10 +12,8 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Casts an #fcppt::shared_ptr  using
 <code>dynamic_cast</code>
@@ -34,45 +31,14 @@ the resulting shared_ptr will share ownership with the source.
 
 \param _ptr The source shared_ptr
 */
-template<
-	typename Dest,
-	typename Source
->
-fcppt::optional::object<
-	fcppt::shared_ptr<
-		Dest
-	>
->
-dynamic_pointer_cast(
-	fcppt::shared_ptr<
-		Source
-	> const &_ptr
-)
+template <typename Dest, typename Source>
+fcppt::optional::object<fcppt::shared_ptr<Dest>>
+dynamic_pointer_cast(fcppt::shared_ptr<Source> const &_ptr)
 {
-	return
-		fcppt::optional::map(
-			fcppt::cast::dynamic<
-				Dest
-			>(
-				*_ptr
-			),
-			[
-				&_ptr
-			](
-				fcppt::reference<
-					Dest
-				> const _dest
-			)
-			{
-				return
-					fcppt::shared_ptr<
-						Dest
-					>(
-						_ptr,
-						&_dest.get()
-					);
-			}
-		);
+  return fcppt::optional::map(
+      fcppt::cast::dynamic<Dest>(*_ptr), [&_ptr](fcppt::reference<Dest> const _dest) {
+        return fcppt::shared_ptr<Dest>(_ptr, &_dest.get());
+      });
 }
 
 }

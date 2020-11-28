@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_INDEX_OF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_INDEX_OF_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/range/begin.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Returns the index of the first element found in a sequence.
 
@@ -31,47 +28,16 @@ occurrence if there is any, otherwise returns the empty optional.
 
 \tparam T A type equality-comparable to the ranges's value type.
 */
-template<
-	typename Range,
-	typename T
->
-inline
-fcppt::optional::object<
-	typename
-	Range::size_type
->
-index_of(
-	Range const &_range,
-	T const &_value
-)
+template <typename Range, typename T>
+inline fcppt::optional::object<typename Range::size_type>
+index_of(Range const &_range, T const &_value)
 {
-	// NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
-	auto const beg(
-		fcppt::range::begin(
-			_range
-		)
-	);
+  // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
+  auto const beg(fcppt::range::begin(_range));
 
-	return
-		fcppt::optional::map(
-			fcppt::algorithm::find_opt(
-				_range,
-				_value
-			),
-			[
-				beg
-			](
-				auto const _it
-			)
-			{
-				return
-					fcppt::cast::to_unsigned(
-						_it
-						-
-						beg
-					);
-			}
-		);
+  return fcppt::optional::map(fcppt::algorithm::find_opt(_range, _value), [beg](auto const _it) {
+    return fcppt::cast::to_unsigned(_it - beg);
+  });
 }
 
 }

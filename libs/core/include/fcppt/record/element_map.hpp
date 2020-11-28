@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_ELEMENT_MAP_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_MAP_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 /**
 \brief A metafunction computing the element map of a record.
 
@@ -27,36 +24,15 @@ namespace record
 
 \tparam Record Must be an #fcppt::record::object.
 */
-template<
-	typename Record
->
-using
-element_map
-=
-::metal::accumulate<
-	::metal::bind<
-		::metal::lambda<
-			::metal::insert_key
-		>,
-		::metal::_1,
-		::metal::bind<
-			::metal::lambda<
-				fcppt::record::element_to_label
-			>,
-			::metal::_2
-		>,
-		::metal::bind<
-			::metal::lambda<
-				fcppt::record::element_to_type
-			>,
-			::metal::_2
-		>
-	>,
-	::metal::map<>,
-	fcppt::record::element_vector<
-		Record
-	>
->;
+template <typename Record>
+using element_map = ::metal::accumulate<
+    ::metal::bind<
+        ::metal::lambda<::metal::insert_key>,
+        ::metal::_1,
+        ::metal::bind<::metal::lambda<fcppt::record::element_to_label>, ::metal::_2>,
+        ::metal::bind<::metal::lambda<fcppt::record::element_to_type>, ::metal::_2>>,
+    ::metal::map<>,
+    fcppt::record::element_vector<Record>>;
 
 }
 }

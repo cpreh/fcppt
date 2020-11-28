@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_DETAIL_CHECK_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DETAIL_CHECK_HPP_INCLUDED
 
@@ -13,25 +12,14 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
 namespace detail
 {
-
-template<
-	typename Type
->
-using
-check
-=
-fcppt::optional::is_object<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>
->;
+template <typename Type>
+using check = fcppt::optional::is_object<fcppt::type_traits::remove_cv_ref_t<Type>>;
 
 }
 }

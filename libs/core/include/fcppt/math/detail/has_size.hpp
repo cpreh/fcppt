@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_HAS_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_HAS_SIZE_HPP_INCLUDED
 
@@ -13,26 +12,14 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace detail
 {
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-using has_size
-=
-std::is_same<
-	T,
-	fcppt::math::static_size<
-		N
-	>
->;
+template <typename T, fcppt::math::size_type N>
+using has_size = std::is_same<T, fcppt::math::static_size<N>>;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
 
@@ -12,23 +11,15 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
-template<>
-struct names_impl<
-	fcppt::log::level
->
+template <>
+struct names_impl<fcppt::log::level>
 {
-	FCPPT_LOG_DETAIL_SYMBOL
-	static
-	fcppt::enum_::names_array<
-		fcppt::log::level
-	> const &
-	get();
+  FCPPT_LOG_DETAIL_SYMBOL
+  static fcppt::enum_::names_array<fcppt::log::level> const &get();
 };
 
 }

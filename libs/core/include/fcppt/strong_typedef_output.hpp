@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRONG_TYPEDEF_OUTPUT_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_OUTPUT_HPP_INCLUDED
 
@@ -12,40 +11,18 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Output operator for strong typedefs
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename Ch,
-	typename Traits,
-	typename T,
-	typename Tag
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_value
-)
+template <typename Ch, typename Traits, typename T, typename Tag>
+std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::strong_typedef<T, Tag> const &_value)
 {
-	return
-		_stream
-		<<
-		_value.get();
+  return _stream << _value.get();
 }
 
 }

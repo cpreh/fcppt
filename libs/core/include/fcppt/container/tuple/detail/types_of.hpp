@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TUPLE_DETAIL_TYPES_OF_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_DETAIL_TYPES_OF_HPP_INCLUDED
 
@@ -11,7 +10,6 @@
 #include <metal.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
-
 
 namespace fcppt
 {
@@ -21,27 +19,13 @@ namespace tuple
 {
 namespace detail
 {
-
-template<
-	typename Type
->
+template <typename Type>
 struct types_of;
 
-template<
-	typename... Types
->
-struct types_of<
-	std::tuple<
-		Types...
-	>
->
+template <typename... Types>
+struct types_of<std::tuple<Types...>>
 {
-	using
-	type
-	=
-	::metal::list<
-		Types...
-	>;
+  using type = ::metal::list<Types...>;
 };
 
 }

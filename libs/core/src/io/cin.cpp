@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/public_config.hpp>
 #include <fcppt/io/cin.hpp>
 #include <fcppt/io/istream_fwd.hpp>
@@ -11,15 +10,13 @@
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
-
-fcppt::io::istream &
-fcppt::io::cin()
+fcppt::io::istream &fcppt::io::cin()
 {
-	return
+  return
 #if defined(FCPPT_NARROW_STRING)
-		std::cin
+      std::cin
 #else
-		std::wcin
+      std::wcin
 #endif
-	;
+      ;
 }

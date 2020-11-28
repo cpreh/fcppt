@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_FLIP_MAP_HPP_INCLUDED
 #define FCPPT_METAL_FLIP_MAP_HPP_INCLUDED
 
 #include <fcppt/metal/detail/flip_map.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 /**
 \brief Flips a metal map.
 
@@ -25,19 +22,10 @@ For this to work, the mapped types of the map must all be different ypes.
 
 \tparam Map A metal::map.
 */
-template<
-	typename Map
->
-using
-flip_map
-=
-typename
-fcppt::metal::detail::flip_map<
-	Map
->::type;
+template <typename Map>
+using flip_map = typename fcppt::metal::detail::flip_map<Map>::type;
 
 }
 }
 
 #endif
-

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_ENUM_ITERATOR_DECL_HPP_INCLUDED
 
@@ -16,68 +15,34 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \ingroup fcpptenum
 */
-template<
-	typename Enum
->
-class iterator final
-:
-	public
-		fcppt::iterator::base<
-			fcppt::iterator::types<
-				fcppt::enum_::iterator<
-					Enum
-				>,
-				Enum,
-				Enum,
-				std::make_signed_t<
-					fcppt::enum_::size_type<
-						Enum
-					>
-				>,
-				std::input_iterator_tag
-			>
-		>
+template <typename Enum>
+class iterator final : public fcppt::iterator::base<fcppt::iterator::types<
+                           fcppt::enum_::iterator<Enum>,
+                           Enum,
+                           Enum,
+                           std::make_signed_t<fcppt::enum_::size_type<Enum>>,
+                           std::input_iterator_tag>>
 {
 public:
-	using
-	size_type
-	=
-	fcppt::enum_::size_type<
-		Enum
-	>;
+  using size_type = fcppt::enum_::size_type<Enum>;
 
-	explicit
-	iterator(
-		size_type
-	)
-	noexcept;
+  explicit iterator(size_type) noexcept;
 
-	void
-	increment()
-	noexcept;
+  void increment() noexcept;
 
-	[[nodiscard]]
-	bool
-	equal(
-		iterator
-	) const
-	noexcept;
+  [[nodiscard]] bool equal(iterator) const noexcept;
 
-	[[nodiscard]]
-	Enum
-	dereference() const
-	noexcept;
+  [[nodiscard]] Enum dereference() const noexcept;
+
 private:
-	size_type value_;
+  size_type value_;
 };
 
 }

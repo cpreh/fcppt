@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_ROTATION_Z_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROTATION_Z_HPP_INCLUDED
 
@@ -14,14 +13,12 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Calculates a 4x4 rotation matrix around the z axis
 
@@ -45,65 +42,22 @@ fcppt::math::matrix::rotation_z
 \see
 fcppt::math::matrix::rotation_axis
 */
-template<
-	typename T
->
-fcppt::math::matrix::static_<
-	T,
-	4,
-	4
->
-rotation_z(
-	T const _angle
-)
+template <typename T>
+fcppt::math::matrix::static_<T, 4, 4> rotation_z(T const _angle)
 {
-	T const sinx{
-		std::sin(
-			_angle
-		)
-	};
+  T const sinx{std::sin(_angle)};
 
-	T const cosx{
-		std::cos(
-			_angle
-		)
-	};
+  T const cosx{std::cos(_angle)};
 
-	T const one{
-		fcppt::literal<
-			T
-		>(
-			1
-		)
-	};
+  T const one{fcppt::literal<T>(1)};
 
-	T const zero{
-		fcppt::literal<
-			T
-		>(
-			0
-		)
-	};
+  T const zero{fcppt::literal<T>(0)};
 
-	return
-		fcppt::math::matrix::static_<
-			T,
-			4,
-			4
-		>(
-			fcppt::math::matrix::row(
-				cosx, -sinx, zero, zero
-			),
-			fcppt::math::matrix::row(
-				sinx,  cosx, zero, zero
-			),
-			fcppt::math::matrix::row(
-				zero,  zero,  one, zero
-			),
-			fcppt::math::matrix::row(
-				zero,  zero, zero,  one
-			)
-		);
+  return fcppt::math::matrix::static_<T, 4, 4>(
+      fcppt::math::matrix::row(cosx, -sinx, zero, zero),
+      fcppt::math::matrix::row(sinx, cosx, zero, zero),
+      fcppt::math::matrix::row(zero, zero, one, zero),
+      fcppt::math::matrix::row(zero, zero, zero, one));
 }
 
 }

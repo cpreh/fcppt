@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_EPSILON_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_EPSILON_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -14,7 +12,6 @@ namespace parse
 {
 namespace skipper
 {
-
 class epsilon;
 
 }

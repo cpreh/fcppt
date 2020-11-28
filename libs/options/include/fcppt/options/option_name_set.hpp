@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_OPTION_NAME_SET_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTION_NAME_SET_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief The set of option names.
 
@@ -27,12 +24,7 @@ namespace options
 Each string in this set is expected to be followed by a value,
 e.g. "--foo bar".
 */
-using
-option_name_set
-=
-std::set<
-	fcppt::options::option_name
->;
+using option_name_set = std::set<fcppt::options::option_name>;
 
 }
 }

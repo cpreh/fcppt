@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_MAKE_CONVERT_IF_HPP_INCLUDED
 #define FCPPT_PARSE_MAKE_CONVERT_IF_HPP_INCLUDED
 
@@ -19,94 +18,28 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Parser,
-	typename Convert
->
+template <typename Parser, typename Convert>
 fcppt::parse::convert_if<
-	fcppt::type_traits::value_type<
-		fcppt::type_traits::value_type<
-			fcppt::either::failure_type<
-				std::result_of_t<
-					Convert(
-						fcppt::parse::result_of<
-							Parser
-						> &&
-					)
-				>
-			>
-		>
-	>,
-	fcppt::type_traits::remove_cv_ref_t<
-		Parser
-	>,
-	fcppt::either::success_type<
-		std::result_of_t<
-			Convert(
-				fcppt::parse::result_of<
-					Parser
-				> &&
-			)
-		>
-	>
->
-make_convert_if(
-	Parser &&_parser,
-	Convert &&_convert
-)
+    fcppt::type_traits::value_type<fcppt::type_traits::value_type<fcppt::either::failure_type<
+        std::result_of_t<Convert(fcppt::parse::result_of<Parser> &&)>>>>,
+    fcppt::type_traits::remove_cv_ref_t<Parser>,
+    fcppt::either::success_type<std::result_of_t<Convert(fcppt::parse::result_of<Parser> &&)>>>
+make_convert_if(Parser &&_parser, Convert &&_convert)
 {
-	using
-	result_type
-	=
-	std::result_of_t<
-		Convert(
-			fcppt::parse::result_of<
-				Parser
-			> &&
-		)
-	>;
+  using result_type = std::result_of_t<Convert(fcppt::parse::result_of<Parser> &&)>;
 
-	return
-		fcppt::parse::convert_if<
-			fcppt::type_traits::value_type<
-				fcppt::type_traits::value_type<
-					fcppt::either::failure_type<
-						result_type
-					>
-				>
-			>,
-			fcppt::type_traits::remove_cv_ref_t<
-				Parser
-			>,
-			fcppt::either::success_type<
-				result_type
-			>
-		>{
-			std::forward<
-				Parser
-			>(
-				_parser
-			),
-			fcppt::function<
-				result_type(
-					fcppt::parse::result_of<
-						Parser
-					> &&
-				)
-			>{
-				std::forward<
-					Convert
-				>(
-					_convert
-				)
-			}
-		};
+  return fcppt::parse::convert_if<
+      fcppt::type_traits::value_type<
+          fcppt::type_traits::value_type<fcppt::either::failure_type<result_type>>>,
+      fcppt::type_traits::remove_cv_ref_t<Parser>,
+      fcppt::either::success_type<result_type>>{
+      std::forward<Parser>(_parser),
+      fcppt::function<result_type(fcppt::parse::result_of<Parser> &&)>{
+          std::forward<Convert>(_convert)}};
 }
 
 }

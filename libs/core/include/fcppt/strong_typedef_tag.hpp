@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRONG_TYPEDEF_TAG_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_TAG_HPP_INCLUDED
 
 #include <fcppt/detail/strong_typedef_tag.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief The tag type of a strong typedef.
 
@@ -20,16 +17,8 @@ namespace fcppt
 
 \tparam StrongTypedef Must be an #fcppt::strong_typedef.
 */
-template<
-	typename StrongTypedef
->
-using
-strong_typedef_tag
-=
-typename
-fcppt::detail::strong_typedef_tag<
-	StrongTypedef
->::type;
+template <typename StrongTypedef>
+using strong_typedef_tag = typename fcppt::detail::strong_typedef_tag<StrongTypedef>::type;
 
 }
 

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_INDEX_MAP_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_INDEX_MAP_DECL_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief An index-based container that grows on demand.
 
@@ -32,73 +29,41 @@ first. This is most useful with #fcppt::optional::object.
 
 \tparam A The allocator type.
 */
-template<
-	typename T,
-	typename A
->
+template <typename T, typename A>
 class index_map
 {
 public:
-	using
-	internal_type
-	=
-	std::vector<
-		T,
-		A
-	>;
+  using internal_type = std::vector<T, A>;
 
-	using
-	size_type
-	=
-	typename
-	internal_type::size_type;
+  using size_type = typename internal_type::size_type;
 
-	using
-	reference
-	=
-	typename
-	internal_type::reference;
+  using reference = typename internal_type::reference;
 
-	index_map();
+  index_map();
 
-	using
-	insert_function
-	=
-	fcppt::function<
-		T ()
-	>;
+  using insert_function = fcppt::function<T()>;
 
-	/**
-	\brief Returns the element at an index or inserts new ones using a function.
+  /**
+  \brief Returns the element at an index or inserts new ones using a function.
 
-	Returns the element at \a index. If there is no such element, the
-	result of <code>insert()</code> is inserted. Note that \a insert might
-	be called multiple times.
-	*/
-	[[nodiscard]]
-	reference
-	get(
-		size_type index,
-		insert_function insert
-	);
+  Returns the element at \a index. If there is no such element, the
+  result of <code>insert()</code> is inserted. Note that \a insert might
+  be called multiple times.
+  */
+  [[nodiscard]] reference get(size_type index, insert_function insert);
 
-	/**
-	\brief Returns the element at an index or inserts new default-constructed one.
+  /**
+  \brief Returns the element at an index or inserts new default-constructed one.
 
-	Returns the element at \a index. If there is no such element,
-	<code>T()</code> is inserted.
-	*/
-	[[nodiscard]]
-	reference
-	operator[](
-		size_type index
-	);
+  Returns the element at \a index. If there is no such element,
+  <code>T()</code> is inserted.
+  */
+  [[nodiscard]] reference operator[](size_type index);
 
-	[[nodiscard]]
-	internal_type const &
-	impl() const;
+  [[nodiscard]] internal_type const &impl() const;
+
 private:
-	internal_type impl_;
+  internal_type impl_;
 };
 
 }

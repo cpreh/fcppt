@@ -3,17 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DETAIL_NONCOPYABLE_HPP_INCLUDED
 #define FCPPT_DETAIL_NONCOPYABLE_HPP_INCLUDED
 
-
-#define FCPPT_DETAIL_NONCOPYABLE(\
-	classname\
-)\
-/* NOLINTNEXTLINE(bugprone-macro-parentheses)*/ \
-classname(classname const &) = delete; \
-classname &operator=(classname const &) = delete
-
+#define FCPPT_DETAIL_NONCOPYABLE(classname) \
+  /* NOLINTNEXTLINE(bugprone-macro-parentheses)*/ \
+  classname(classname const &) = delete; \
+  classname &operator=(classname const &) = delete
 
 #endif

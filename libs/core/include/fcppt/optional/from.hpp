@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_FROM_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FROM_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Returns the value contained in an optional or a default value
 
@@ -33,58 +30,21 @@ _default is returned.
 
 \tparam Default Must be a function of type <code>Optional::value_type ()</code>
 */
-template<
-	typename Optional,
-	typename Default
->
-std::invoke_result_t<
-	Default
->
-from(
-	Optional &&_optional,
-	Default const _default
-)
+template <typename Optional, typename Default>
+std::invoke_result_t<Default> from(Optional &&_optional, Default const _default)
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
+  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
-	static_assert(
-		std::is_same_v<
-			std::invoke_result_t<
-				Default
-			>,
-			fcppt::optional::value_type<
-				fcppt::type_traits::remove_cv_ref_t<
-					Optional
-				>
-			>
-		>
-	);
+  static_assert(std::is_same_v<
+                std::invoke_result_t<Default>,
+                fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>);
 
-	return
-		fcppt::cond(
-			_optional.has_value(),
-			[
-				&_optional
-			]()
-			->
-			std::invoke_result_t<
-				Default
-			>
-			{
-				return
-					fcppt::move_if_rvalue<
-						Optional
-					>(
-						_optional.get_unsafe()
-					);
-			},
-			_default
-		);
+  return fcppt::cond(
+      _optional.has_value(),
+      [&_optional]() -> std::invoke_result_t<Default> {
+        return fcppt::move_if_rvalue<Optional>(_optional.get_unsafe());
+      },
+      _default);
 }
 
 }

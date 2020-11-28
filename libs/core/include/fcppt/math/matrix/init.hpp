@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 
@@ -12,14 +11,12 @@
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Initializes a matrix
 
@@ -32,48 +29,18 @@ Calls <code>_function</code> for every index of the matrix.
 \tparam Function Must be a polymorphic function of type <code>Matrix::value_type
 (fcppt::math::matrix::index<R,C>)</code>
 */
-template<
-	typename Matrix,
-	typename Function
->
-inline
-Matrix
-init(
-	Function const &_function
-)
+template <typename Matrix, typename Function>
+inline Matrix init(Function const &_function)
 {
-	static_assert(
-		fcppt::math::matrix::is_matrix<
-			Matrix
-		>::value,
-		"Matrix must be a matrix"
-	);
+  static_assert(fcppt::math::matrix::is_matrix<Matrix>::value, "Matrix must be a matrix");
 
-	return
-		fcppt::math::detail::init<
-			Matrix
-		>(
-			[
-				&_function
-			](
-				auto const _absolute
-			)
-			{
-				FCPPT_USE(
-					_absolute
-				);
+  return fcppt::math::detail::init<Matrix>([&_function](auto const _absolute) {
+    FCPPT_USE(_absolute);
 
-				return
-					_function(
-						fcppt::math::matrix::detail::index_absolute<
-							Matrix::static_columns::value,
-							decltype(
-								_absolute
-							)::value
-						>{}
-					);
-			}
-		);
+    return _function(
+        fcppt::math::matrix::detail::
+            index_absolute<Matrix::static_columns::value, decltype(_absolute)::value>{});
+  });
 }
 
 }

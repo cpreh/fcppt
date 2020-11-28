@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_REAL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_REAL_HPP_INCLUDED
 
 #include <fcppt/random/distribution/parameters/uniform_real_decl.hpp>
 #include <fcppt/random/distribution/parameters/uniform_real_fwd.hpp>
 #include <fcppt/random/distribution/parameters/uniform_real_impl.hpp>
-
 
 #endif

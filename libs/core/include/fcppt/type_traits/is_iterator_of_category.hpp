@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_OF_CATEGORY_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_OF_CATEGORY_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace type_traits
 {
-
 /**
 \brief Checks if an iterator models a given category
 
@@ -30,19 +27,9 @@ random access iterator also models a bidrectional iterator.
 
 \tparam Category Must be an iterator category
 */
-template<
-	typename Iterator,
-	typename Category
->
-using is_iterator_of_category
-=
-fcppt::iterator::category_at_least<
-	typename
-	std::iterator_traits<
-		Iterator
-	>::iterator_category,
-	Category
->;
+template <typename Iterator, typename Category>
+using is_iterator_of_category = fcppt::iterator::
+    category_at_least<typename std::iterator_traits<Iterator>::iterator_category, Category>;
 
 }
 }

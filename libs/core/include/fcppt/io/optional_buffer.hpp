@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_OPTIONAL_BUFFER_HPP_INCLUDED
 #define FCPPT_IO_OPTIONAL_BUFFER_HPP_INCLUDED
 
 #include <fcppt/io/buffer.hpp>
 #include <fcppt/io/optional_buffer_fwd.hpp>
 #include <fcppt/optional/object_impl.hpp>
-
 
 #endif

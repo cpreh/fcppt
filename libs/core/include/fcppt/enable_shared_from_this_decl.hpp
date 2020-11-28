@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENABLE_SHARED_FROM_THIS_DECL_HPP_INCLUDED
 #define FCPPT_ENABLE_SHARED_FROM_THIS_DECL_HPP_INCLUDED
 
@@ -13,10 +12,8 @@
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Allows an object to obtain a shared ptr to itself.
 
@@ -24,58 +21,27 @@ namespace fcppt
 
 Derive from this class to allow an object to obtain a shared ptr to itself.
 */
-template<
-	typename Type
->
-class enable_shared_from_this
-:
-public
-	std::enable_shared_from_this<
-		Type
-	>
+template <typename Type>
+class enable_shared_from_this : public std::enable_shared_from_this<Type>
 {
-	using
-	base
-	=
-	std::enable_shared_from_this<
-		Type
-	>;
+  using base = std::enable_shared_from_this<Type>;
+
 protected:
-	enable_shared_from_this();
+  enable_shared_from_this();
 
-	enable_shared_from_this(
-		enable_shared_from_this const &
-	);
+  enable_shared_from_this(enable_shared_from_this const &);
 
-	enable_shared_from_this(
-		enable_shared_from_this &&
-	)
-	noexcept;
+  enable_shared_from_this(enable_shared_from_this &&) noexcept;
 
-	enable_shared_from_this &
-	operator=(
-		enable_shared_from_this const &
-	);
+  enable_shared_from_this &operator=(enable_shared_from_this const &);
 
-	enable_shared_from_this &
-	operator=(
-		enable_shared_from_this &&
-	)
-	noexcept;
+  enable_shared_from_this &operator=(enable_shared_from_this &&) noexcept;
 
-	~enable_shared_from_this();
+  ~enable_shared_from_this();
 
-	[[nodiscard]]
-	fcppt::shared_ptr<
-		Type
-	>
-	fcppt_shared_from_this();
+  [[nodiscard]] fcppt::shared_ptr<Type> fcppt_shared_from_this();
 
-	[[nodiscard]]
-	fcppt::shared_ptr<
-		Type const
-	>
-	fcppt_shared_from_this() const;
+  [[nodiscard]] fcppt::shared_ptr<Type const> fcppt_shared_from_this() const;
 };
 
 }

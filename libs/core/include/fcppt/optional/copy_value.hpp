@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_COPY_VALUE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COPY_VALUE_HPP_INCLUDED
 
@@ -15,44 +14,20 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Copies the value of an optional reference
 
 \ingroup fcpptoptional
 */
-template<
-	typename Type
->
-fcppt::optional::object<
-	std::remove_cv_t<
-		Type
-	>
->
-copy_value(
-	fcppt::optional::reference<
-		Type
-	> const &_opt
-)
+template <typename Type>
+fcppt::optional::object<std::remove_cv_t<Type>>
+copy_value(fcppt::optional::reference<Type> const &_opt)
 {
-	return
-		fcppt::optional::map(
-			_opt,
-			[](
-				fcppt::reference<
-					Type
-				> const _ref
-			)
-			{
-				return
-					_ref.get();
-			}
-		);
+  return fcppt::optional::map(_opt, [](fcppt::reference<Type> const _ref) { return _ref.get(); });
 }
 
 }

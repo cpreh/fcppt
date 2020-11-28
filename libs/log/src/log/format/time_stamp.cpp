@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/ostringstream.hpp>
@@ -13,33 +12,14 @@
 #include <fcppt/time/output_tm.hpp>
 #include <fcppt/time/std_time.hpp>
 
-
-fcppt::log::format::function
-fcppt::log::format::time_stamp()
+fcppt::log::format::function fcppt::log::format::time_stamp()
 {
-	return
-		fcppt::log::format::function(
-			[](
-				fcppt::string const &_text
-			)
-			{
-				// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-				fcppt::io::ostringstream stream{};
+  return fcppt::log::format::function([](fcppt::string const &_text) {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    fcppt::io::ostringstream stream{};
 
-				fcppt::time::output_tm(
-					stream,
-					fcppt::time::localtime(
-						fcppt::time::std_time()
-					)
-				);
+    fcppt::time::output_tm(stream, fcppt::time::localtime(fcppt::time::std_time()));
 
-				return
-					stream.str()
-					+
-					FCPPT_TEXT(": ")
-					+
-					_text
-					;
-			}
-		);
+    return stream.str() + FCPPT_TEXT(": ") + _text;
+  });
 }

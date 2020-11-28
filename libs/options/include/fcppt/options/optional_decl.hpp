@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_OPTIONAL_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTIONAL_DECL_HPP_INCLUDED
 
@@ -25,12 +24,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
@@ -46,59 +43,29 @@ type of \a Parser.
 
 \see fcppt::options::make_optional
 */
-template<
-	typename Parser
->
+template <typename Parser>
 class optional
 {
 public:
-	explicit
-	optional(
-		Parser &&
-	);
+  explicit optional(Parser &&);
 
-	using
-	result_type
-	=
-	fcppt::record::map_elements<
-		fcppt::options::result_of<
-			Parser
-		>,
-		::metal::bind<
-			::metal::lambda<
-				fcppt::optional::object
-			>,
-			::metal::bind<
-				::metal::lambda<
-					fcppt::record::element_to_type
-				>,
-				::metal::_1
-			>
-		>
-	>;
+  using result_type = fcppt::record::map_elements<
+      fcppt::options::result_of<Parser>,
+      ::metal::bind<
+          ::metal::lambda<fcppt::optional::object>,
+          ::metal::bind<::metal::lambda<fcppt::record::element_to_type>, ::metal::_1>>>;
 
-	[[nodiscard]]
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const;
+  [[nodiscard]] fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
-	[[nodiscard]]
-	fcppt::options::flag_name_set
-	flag_names() const;
+  [[nodiscard]] fcppt::options::flag_name_set flag_names() const;
 
-	[[nodiscard]]
-	fcppt::options::option_name_set
-	option_names() const;
+  [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-	[[nodiscard]]
-	fcppt::string
-	usage() const;
+  [[nodiscard]] fcppt::string usage() const;
+
 private:
-	Parser parser_;
+  Parser parser_;
 };
 
 FCPPT_PP_POP_WARNING

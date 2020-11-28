@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_STATE_WITH_VALUE_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_STATE_WITH_VALUE_IMPL_HPP_INCLUDED
 
@@ -13,76 +12,34 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename T
->
-fcppt::options::state_with_value<
-	T
->::state_with_value(
-	fcppt::options::state &&_state,
-	T &&_value
-)
-:
-	state_{
-		std::move(
-			_state
-		)
-	},
-	value_{
-		std::move(
-			_value
-		)
-	}
+template <typename T>
+fcppt::options::state_with_value<T>::state_with_value(fcppt::options::state &&_state, T &&_value)
+    : state_{std::move(_state)}, value_{std::move(_value)}
 {
 }
 
-template<
-	typename T
->
-fcppt::options::state &
-fcppt::options::state_with_value<
-	T
->::state()
+template <typename T>
+fcppt::options::state &fcppt::options::state_with_value<T>::state()
 {
-	return
-		this->state_;
+  return this->state_;
 }
 
-template<
-	typename T
->
-fcppt::options::state const &
-fcppt::options::state_with_value<
-	T
->::state() const
+template <typename T>
+fcppt::options::state const &fcppt::options::state_with_value<T>::state() const
 {
-	return
-		this->state_;
+  return this->state_;
 }
 
-template<
-	typename T
->
-T &
-fcppt::options::state_with_value<
-	T
->::value()
+template <typename T>
+T &fcppt::options::state_with_value<T>::value()
 {
-	return
-		this->value_;
+  return this->value_;
 }
 
-template<
-	typename T
->
-T const &
-fcppt::options::state_with_value<
-	T
->::value() const
+template <typename T>
+T const &fcppt::options::state_with_value<T>::value() const
 {
-	return
-		this->value_;
+  return this->value_;
 }
 
 #endif

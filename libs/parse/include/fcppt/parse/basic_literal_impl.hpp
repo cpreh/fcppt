@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_BASIC_LITERAL_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_LITERAL_IMPL_HPP_INCLUDED
 
@@ -23,92 +22,25 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename Ch
->
-fcppt::parse::basic_literal<
-	Ch
->::basic_literal(
-	Ch const _ch
-)
-:
-	ch_{
-		_ch
-	}
+template <typename Ch>
+fcppt::parse::basic_literal<Ch>::basic_literal(Ch const _ch) : ch_{_ch}
 {
 }
 
-template<
-	typename Ch
->
-template<
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::basic_literal<
-		Ch
-	>::result_type
->
-fcppt::parse::basic_literal<
-	Ch
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state,
-	Skipper const &_skipper
-) const
+template <typename Ch>
+template <typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::basic_literal<Ch>::result_type>
+fcppt::parse::basic_literal<Ch>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-	fcppt::parse::basic_char<
-		Ch
-	> const parser{};
+  fcppt::parse::basic_char<Ch> const parser{};
 
-	return
-		fcppt::either::bind(
-			parser.parse(
-				_state,
-				_skipper
-			),
-			[
-				_state,
-				this
-			](
-				Ch const _ch
-			)
-			{
-				return
-					_ch
-					==
-					this->ch_
-					?
-						fcppt::parse::make_success<
-							Ch
-						>(
-							fcppt::unit{}
-						)
-					:
-						fcppt::either::make_failure<
-							result_type
-						>(
-							fcppt::parse::detail::expected(
-								fcppt::parse::get_position(
-									_state
-								),
-								std::basic_string<
-									Ch
-								>{
-									this->ch_
-								},
-								_ch
-							)
-						)
-					;
-			}
-		);
+  return fcppt::either::bind(parser.parse(_state, _skipper), [_state, this](Ch const _ch) {
+    return _ch == this->ch_
+               ? fcppt::parse::make_success<Ch>(fcppt::unit{})
+               : fcppt::either::make_failure<result_type>(fcppt::parse::detail::expected(
+                     fcppt::parse::get_position(_state), std::basic_string<Ch>{this->ch_}, _ch));
+  });
 }
 
 #endif

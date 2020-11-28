@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_PARSE_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_ERROR_HPP_INCLUDED
 
@@ -11,6 +10,5 @@
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_error_fwd.hpp>
 #include <fcppt/variant/object_impl.hpp>
-
 
 #endif

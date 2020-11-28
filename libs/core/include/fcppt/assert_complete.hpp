@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_COMPLETE_HPP_INCLUDED
 #define FCPPT_ASSERT_COMPLETE_HPP_INCLUDED
-
 
 /**
 \brief Assert at compile time that a type is complete
@@ -23,12 +21,9 @@ of its usage is shown below.
 
 \snippet assert_complete.cpp assert_complete
 */
-#define FCPPT_ASSERT_COMPLETE(\
-	type\
-)\
-static_assert(\
-	sizeof(type) > 0, /* NOLINT(bugprone-sizeof-expression)*/\
-	"Type must be complete" \
-)
+#define FCPPT_ASSERT_COMPLETE(type) \
+  static_assert( \
+      sizeof(type) > 0, /* NOLINT(bugprone-sizeof-expression)*/ \
+      "Type must be complete")
 
 #endif

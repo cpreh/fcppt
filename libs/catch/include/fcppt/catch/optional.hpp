@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CATCH_OPTIONAL_HPP_INCLUDED
 #define FCPPT_CATCH_OPTIONAL_HPP_INCLUDED
 
@@ -15,52 +14,23 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace Catch
 {
-
 /**
 \brief Output specialization for #fcppt::optional::object.
 
 \ingroup fcpptcatch
 */
-template<
-	typename Type
->
-struct StringMaker<
-	fcppt::optional::object<
-		Type
-	>
->
+template <typename Type>
+struct StringMaker<fcppt::optional::object<Type>>
 {
-	static
-	std::string
-	convert(
-		fcppt::optional::object<
-			Type
-		> const &_value
-	)
-	{
-		return
-			fcppt::optional::maybe(
-				_value,
-				[]{
-					return
-						std::string{"N"};
-				},
-				[](
-					Type const &_inner
-				)
-				{
-					return
-						std::string{"J "}
-						+
-						fcppt::catch_::convert(
-							_inner
-						);
-				}
-			);
-	}
+  static std::string convert(fcppt::optional::object<Type> const &_value)
+  {
+    return fcppt::optional::maybe(
+        _value,
+        [] { return std::string{"N"}; },
+        [](Type const &_inner) { return std::string{"J "} + fcppt::catch_::convert(_inner); });
+  }
 };
 
 }

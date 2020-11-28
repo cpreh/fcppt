@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/char_type.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/string.hpp>
@@ -16,89 +15,31 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-fcppt::optional::object<
-	std::pair<
-		fcppt::options::detail::flag_is_short,
-		fcppt::string
-	>
->
-fcppt::options::impl::is_flag(
-	fcppt::string_view const &_value
-)
+fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>
+fcppt::options::impl::is_flag(fcppt::string_view const &_value)
 {
-	// TODO(philipp): This is terrible
-	fcppt::string_view::const_iterator pos{
-		_value.begin()
-	};
+  // TODO(philipp): This is terrible
+  fcppt::string_view::const_iterator pos{_value.begin()};
 
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		std::pair<
-			fcppt::options::detail::flag_is_short,
-			fcppt::string
-		>
-	>;
+  using result_type =
+      fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>;
 
-	auto const is_dash(
-		[](
-			fcppt::char_type const _ch
-		)
-		{
-			return
-				_ch
-				==
-				FCPPT_TEXT('-');
-		}
-	);
+  auto const is_dash([](fcppt::char_type const _ch) { return _ch == FCPPT_TEXT('-'); });
 
-	if(
-		pos
-		==
-		_value.end()
-		||
-		fcppt::not_(
-			is_dash(
-				*pos
-			)
-		)
-	)
-	{
-		return
-			result_type{};
-	}
+  if (pos == _value.end() || fcppt::not_(is_dash(*pos)))
+  {
+    return result_type{};
+  }
 
-	++pos;
+  ++pos;
 
-	return
-		result_type{
-			is_dash(
-				*pos
-			)
-			?
-				std::make_pair(
-					fcppt::options::detail::flag_is_short{
-						false
-					},
-					fcppt::string{
-						// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-						std::next(
-							pos
-						),
-						_value.end()
-					}
-				)
-			:
-				std::make_pair(
-					fcppt::options::detail::flag_is_short{
-						true
-					},
-					fcppt::string{
-						pos,
-						_value.end()
-					}
-				)
-		};
+  return result_type{
+      is_dash(*pos)
+          ? std::make_pair(
+                fcppt::options::detail::flag_is_short{false},
+                fcppt::string{// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+                              std::next(pos),
+                              _value.end()})
+          : std::make_pair(
+                fcppt::options::detail::flag_is_short{true}, fcppt::string{pos, _value.end()})};
 }

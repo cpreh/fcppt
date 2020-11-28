@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_SET_UNION_HPP_INCLUDED
 #define FCPPT_METAL_SET_UNION_HPP_INCLUDED
 
@@ -13,14 +12,12 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
 namespace set
 {
-
 /**
 \brief The union of two sets.
 
@@ -32,26 +29,11 @@ The result contains every element that is in \a Set1 or in \a Set2.
 
 \tparam Set2 Must be a metal set.
 */
-template<
-	typename Set1,
-	typename Set2
->
-using
-union_
-=
-::metal::accumulate<
-	::metal::bind<
-		::metal::lambda<
-			fcppt::metal::set::insert_relaxed
-		>,
-		::metal::_1,
-		::metal::_2
-	>,
-	Set1,
-	fcppt::metal::set::to_list<
-		Set2
-	>
->;
+template <typename Set1, typename Set2>
+using union_ = ::metal::accumulate<
+    ::metal::bind<::metal::lambda<fcppt::metal::set::insert_relaxed>, ::metal::_1, ::metal::_2>,
+    Set1,
+    fcppt::metal::set::to_list<Set2>>;
 
 }
 }

@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_INTERPOLATION_LINEAR_HPP_INCLUDED
 #define FCPPT_MATH_INTERPOLATION_LINEAR_HPP_INCLUDED
 
@@ -13,14 +12,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace interpolation
 {
-
 /**
 \brief Interpolates between two values linearly
 
@@ -30,26 +27,14 @@ namespace interpolation
 
 \tparam Value Must support scalar multiplication with \a Float and addition
 */
-template<
-	typename Float,
-	typename Value
->
-Value
-linear(
-	Float const &_f,
-	Value const &_v1,
-	Value const &_v2
-)
+template <typename Float, typename Value>
+Value linear(Float const &_f, Value const &_v1, Value const &_v2)
 {
-	static_assert(
-		std::is_floating_point<
-			Float
-		>::value,
-		"interpolation::linear can only be used on floating point types"
-	);
+  static_assert(
+      std::is_floating_point<Float>::value,
+      "interpolation::linear can only be used on floating point types");
 
-	return
-		(fcppt::literal<Float>(1) - _f) * _v1 + _f * _v2;
+  return (fcppt::literal<Float>(1) - _f) * _v1 + _f * _v2;
 }
 
 }

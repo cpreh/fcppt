@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_UNIQUE_PTR_FROM_STD_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_FROM_STD_HPP_INCLUDED
 
@@ -15,47 +14,19 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Converts a <code>std::unique_ptr</code> to an fcppt unique ptr.
 
 \ingroup fcpptsmartptr
 */
-template<
-	typename Type
->
-fcppt::optional::object<
-	fcppt::unique_ptr<
-		Type
-	>
->
-unique_ptr_from_std(
-	std::unique_ptr<
-		Type
-	> &&_ptr
-)
+template <typename Type>
+fcppt::optional::object<fcppt::unique_ptr<Type>> unique_ptr_from_std(std::unique_ptr<Type> &&_ptr)
 {
-	return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
-		fcppt::optional::make_if(
-			_ptr
-			!=
-			nullptr,
-			[
-				&_ptr
-			]{
-				return
-					fcppt::unique_ptr<
-						Type
-					>(
-						std::move(
-							_ptr
-						)
-					);
-			}
-		);
+  return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
+      fcppt::optional::make_if(
+          _ptr != nullptr, [&_ptr] { return fcppt::unique_ptr<Type>(std::move(_ptr)); });
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
@@ -16,50 +15,25 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
-bool
-fcppt::options::detail::use_flag(
-	fcppt::reference<
-		fcppt::options::state
-	> const _state,
-	fcppt::string_view const &_name,
-	fcppt::options::detail::flag_is_short const _is_short
-)
+bool fcppt::options::detail::use_flag(
+    fcppt::reference<fcppt::options::state> const _state,
+    fcppt::string_view const &_name,
+    fcppt::options::detail::flag_is_short const _is_short)
 {
-	fcppt::string const flag_name{
-		fcppt::options::impl::flag_name(
-			_name,
-			_is_short
-		)
-	};
+  fcppt::string const flag_name{fcppt::options::impl::flag_name(_name, _is_short)};
 
-	fcppt::args_vector &args{
-		_state.get().args()
-	};
+  fcppt::args_vector &args{_state.get().args()};
 
-	fcppt::args_vector::iterator const pos{
-		std::find(
-			args.begin(),
-			args.end(),
-			flag_name
-		)
-	};
+  fcppt::args_vector::iterator const pos{std::find(args.begin(), args.end(), flag_name)};
 
-	if(
-		pos
-		!=
-		args.end()
-	)
-	{
-		args.erase(
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-			pos
-		);
+  if (pos != args.end())
+  {
+    args.erase(
+        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+        pos);
 
-		return
-			true;
-	}
+    return true;
+  }
 
-	return
-		false;
+  return false;
 }

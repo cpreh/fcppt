@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_EXTENSION_WITHOUT_DOT_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_EXTENSION_WITHOUT_DOT_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Returns the extension of a path as string without the dot
 
@@ -32,10 +29,7 @@ Returns the extension of \a path without the dot as a string instead of a path.
 the string will be empty.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-fcppt::string
-extension_without_dot(
-	std::filesystem::path const &path
-);
+fcppt::string extension_without_dot(std::filesystem::path const &path);
 
 }
 }

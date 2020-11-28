@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Outputs a grid
 
@@ -42,52 +39,16 @@ y_1), ..., (x_n, y_m))</code>.
 
 \return \a _stream
 */
-template<
-	typename Ch,
-	typename Traits,
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_object
-)
+template <typename Ch, typename Traits, typename T, fcppt::container::grid::size_type N, typename A>
+std::basic_ostream<Ch, Traits> &operator<<(
+    std::basic_ostream<Ch, Traits> &_stream, fcppt::container::grid::object<T, N, A> const &_object)
 {
-	using
-	object
-	=
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	>;
+  using object = fcppt::container::grid::object<T, N, A>;
 
-	fcppt::container::grid::detail::print_recurse<
-		N
-	>(
-		_stream,
-		_object,
-		fcppt::math::vector::null<
-			fcppt::container::grid::pos_type<
-				object
-			>
-		>()
-	);
+  fcppt::container::grid::detail::print_recurse<N>(
+      _stream, _object, fcppt::math::vector::null<fcppt::container::grid::pos_type<object>>());
 
-	return
-		_stream;
+  return _stream;
 }
 
 }

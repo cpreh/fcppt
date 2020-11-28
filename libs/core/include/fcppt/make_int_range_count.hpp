@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MAKE_INT_RANGE_COUNT_HPP_INCLUDED
 #define FCPPT_MAKE_INT_RANGE_COUNT_HPP_INCLUDED
 
@@ -11,10 +10,8 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/make_int_range.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Creates a forward integer range starting at zero
 
@@ -26,26 +23,12 @@ integers), for example strong typedefs of integers.
 
 \param _count The number of elements in the range
 */
-template<
-	typename Int
->
-inline
-fcppt::int_range<
-	Int
->
-make_int_range_count(
-	Int const _count // NOLINT(readability-avoid-const-params-in-decls)
+template <typename Int>
+inline fcppt::int_range<Int>
+make_int_range_count(Int const _count // NOLINT(readability-avoid-const-params-in-decls)
 )
 {
-	return
-		fcppt::make_int_range(
-			fcppt::literal<
-				Int
-			>(
-				0
-			),
-			_count
-		);
+  return fcppt::make_int_range(fcppt::literal<Int>(0), _count);
 }
 
 }

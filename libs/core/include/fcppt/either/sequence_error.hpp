@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_SEQUENCE_ERROR_HPP_INCLUDED
 #define FCPPT_EITHER_SEQUENCE_ERROR_HPP_INCLUDED
 
@@ -21,12 +20,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Folds over a range, breaking out on the first error.
 
@@ -46,116 +43,32 @@ success is returned.
 \tparam Function Must be a function callable as
 <code>fcppt::either::error<T>(Sequence::value_type)</code> for some type <code>T</code>.
 */
-template<
-	typename Sequence,
-	typename Function
->
-auto
-sequence_error(
-	Sequence &&_sequence,
-	Function const &_function
-)
-->
-decltype(
-	_function(
-		std::declval<
-			fcppt::container::to_value_type<
-				std::remove_reference_t<
-					Sequence
-				>
-			>
-		>()
-	)
-)
+template <typename Sequence, typename Function>
+auto sequence_error(Sequence &&_sequence, Function const &_function) -> decltype(
+    _function(std::declval<fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>()))
 {
-	using
-	either_type
-	=
-	decltype(
-		_function(
-			std::declval<
-				fcppt::container::to_value_type<
-					std::remove_reference_t<
-						Sequence
-					>
-				>
-			>()
-		)
-	);
+  using either_type = decltype(_function(
+      std::declval<fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>()));
 
-	static_assert(
-		fcppt::either::is_object<
-			either_type
-		>::value,
-		"Function must return an either"
-	);
+  static_assert(fcppt::either::is_object<either_type>::value, "Function must return an either");
 
-	static_assert(
-		std::is_same<
-			fcppt::either::success_type<
-				either_type
-			>,
-			fcppt::either::no_error
-		>::value,
-		"Function must return an either::error"
-	);
+  static_assert(
+      std::is_same<fcppt::either::success_type<either_type>, fcppt::either::no_error>::value,
+      "Function must return an either::error");
 
-	return
-		fcppt::algorithm::fold_break(
-			std::forward<
-				Sequence
-			>(
-				_sequence
-			),
-			either_type{
-				fcppt::either::no_error{}
-			},
-			[
-				&_function
-			](
-				auto &&_element,
-				either_type
-			)
-			{
-				return
-					fcppt::either::match(
-						_function(
-							fcppt::move_if_rvalue<
-								Sequence
-							>(
-								_element
-							)
-						),
-						[](
-							fcppt::either::failure_type<
-								either_type
-							> &&_error
-						)
-						{
-							return
-								std::make_pair(
-									fcppt::loop::break_,
-									either_type{
-										std::move(
-											_error
-										)
-									}
-								);
-						},
-						[](
-							fcppt::either::no_error
-						){
-							return
-								std::make_pair(
-									fcppt::loop::continue_,
-									either_type{
-										fcppt::either::no_error{}
-									}
-								);
-						}
-					);
-			}
-		);
+  return fcppt::algorithm::fold_break(
+      std::forward<Sequence>(_sequence),
+      either_type{fcppt::either::no_error{}},
+      [&_function](auto &&_element, either_type) {
+        return fcppt::either::match(
+            _function(fcppt::move_if_rvalue<Sequence>(_element)),
+            [](fcppt::either::failure_type<either_type> &&_error) {
+              return std::make_pair(fcppt::loop::break_, either_type{std::move(_error)});
+            },
+            [](fcppt::either::no_error) {
+              return std::make_pair(fcppt::loop::continue_, either_type{fcppt::either::no_error{}});
+            });
+      });
 }
 
 }

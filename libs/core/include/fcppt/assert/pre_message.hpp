@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_PRE_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_PRE_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/basic/terminate_message_conditional.hpp>
-
 
 /**
 \brief Asserts a pre condition of a function, with an extra message on failure
@@ -23,13 +21,7 @@ function's preconditions.
 
 \param message The message to print on failure
 */
-#define FCPPT_ASSERT_PRE_MESSAGE(\
-	condition,\
-	message\
-)\
-FCPPT_ASSERT_BASIC_TERMINATE_MESSAGE_CONDITIONAL(\
-	condition,\
-	message\
-)
+#define FCPPT_ASSERT_PRE_MESSAGE(condition, message) \
+  FCPPT_ASSERT_BASIC_TERMINATE_MESSAGE_CONDITIONAL(condition, message)
 
 #endif

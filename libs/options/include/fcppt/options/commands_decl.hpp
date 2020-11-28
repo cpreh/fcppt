@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_COMMANDS_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_COMMANDS_DECL_HPP_INCLUDED
 
@@ -31,12 +30,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
@@ -61,124 +58,52 @@ in \a OptionsParser, because otherwise this may lead to very confusing results.
 
 \tparam OptionsParser A parser that should only parse options.
 */
-template<
-	typename OptionsParser,
-	typename... SubCommands
->
+template <typename OptionsParser, typename... SubCommands>
 class commands
 {
 public:
-	static_assert(
-		sizeof...(
-			SubCommands
-		)
-		>=
-		1U,
-		"You must specify at least one subparser"
-	);
+  static_assert(sizeof...(SubCommands) >= 1U, "You must specify at least one subparser");
 
-	static_assert(
-		fcppt::record::all_disjoint<
-			::metal::transform<
-				::metal::bind<
-					::metal::lambda<
-						fcppt::options::result_of
-					>,
-					::metal::_1
-				>,
-				::metal::list<
-					SubCommands...
-				>
-			>
-		>::value,
-		"All sub-command labels must be distinct"
-	);
+  static_assert(
+      fcppt::record::all_disjoint<::metal::transform<
+          ::metal::bind<::metal::lambda<fcppt::options::result_of>, ::metal::_1>,
+          ::metal::list<SubCommands...>>>::value,
+      "All sub-command labels must be distinct");
 
-	/**
-	\brief Constructs a commands parser.
+  /**
+  \brief Constructs a commands parser.
 
-	\tparam OptionsParserArg A cv-ref to \a OptionsParser
-	\tparam SubCommandsArgs Cv-refs to \a SubCommands
-	*/
-	template<
-		typename OptionsParserArg,
-		typename... SubCommandsArgs,
-		typename =
-			std::enable_if_t<
-				std::conjunction_v<
-					std::is_same<
-						OptionsParser,
-						fcppt::type_traits::remove_cv_ref_t<
-							OptionsParserArg
-						>
-					>,
-					std::is_same<
-						SubCommands,
-						fcppt::type_traits::remove_cv_ref_t<
-							SubCommandsArgs
-						>
-					>...
-				>
-			>
-	>
-	explicit
-	commands(
-		OptionsParserArg &&,
-		SubCommandsArgs &&...
-	);
+  \tparam OptionsParserArg A cv-ref to \a OptionsParser
+  \tparam SubCommandsArgs Cv-refs to \a SubCommands
+  */
+  template <
+      typename OptionsParserArg,
+      typename... SubCommandsArgs,
+      typename = std::enable_if_t<std::conjunction_v<
+          std::is_same<OptionsParser, fcppt::type_traits::remove_cv_ref_t<OptionsParserArg>>,
+          std::is_same<SubCommands, fcppt::type_traits::remove_cv_ref_t<SubCommandsArgs>>...>>>
+  explicit commands(OptionsParserArg &&, SubCommandsArgs &&...);
 
-	using
-	variant_result
-	=
-	fcppt::variant::object<
-		fcppt::options::result_of<
-			SubCommands
-		>...
-	>;
+  using variant_result = fcppt::variant::object<fcppt::options::result_of<SubCommands>...>;
 
-	using
-	result_type
-	=
-	fcppt::record::object<
-		fcppt::record::element<
-			fcppt::options::options_label,
-			fcppt::options::result_of<
-				OptionsParser
-			>
-		>,
-		fcppt::record::element<
-			fcppt::options::sub_command_label,
-			variant_result
-		>
-	>;
+  using result_type = fcppt::record::object<
+      fcppt::record::
+          element<fcppt::options::options_label, fcppt::options::result_of<OptionsParser>>,
+      fcppt::record::element<fcppt::options::sub_command_label, variant_result>>;
 
-	[[nodiscard]]
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const;
+  [[nodiscard]] fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
-	[[nodiscard]]
-	fcppt::options::flag_name_set
-	flag_names() const;
+  [[nodiscard]] fcppt::options::flag_name_set flag_names() const;
 
-	[[nodiscard]]
-	fcppt::options::option_name_set
-	option_names() const;
+  [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-	[[nodiscard]]
-	fcppt::string
-	usage() const;
+  [[nodiscard]] fcppt::string usage() const;
+
 private:
-	OptionsParser options_parser_;
+  OptionsParser options_parser_;
 
-	std::tuple<
-		SubCommands...
-	>
-	sub_commands_;
+  std::tuple<SubCommands...> sub_commands_;
 };
 
 FCPPT_PP_POP_WARNING

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRING_HPP_INCLUDED
 #define FCPPT_STRING_HPP_INCLUDED
 
@@ -12,10 +11,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief The string type used for text.
 
@@ -23,12 +20,7 @@ namespace fcppt
 
 See \ref fcpptstring for more information about this type.
 */
-using
-string
-=
-std::basic_string<
-	fcppt::char_type
->;
+using string = std::basic_string<fcppt::char_type>;
 
 }
 

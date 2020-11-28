@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_NEUMANN_NEIGHBORS_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_NEUMANN_NEIGHBORS_HPP_INCLUDED
 
@@ -11,14 +10,12 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \ingroup fcpptcontainergrid
 
@@ -30,52 +27,20 @@ Computes the von Neumann neighbors of \a _pos. No range checking is performed.
 
 \return An array with four elements, containing the neighbors
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N
->
-fcppt::container::grid::neumann_neighbor_array<
-	fcppt::container::grid::pos<
-		T,
-		N
-	>
->
-neumann_neighbors(
-	fcppt::container::grid::pos<
-		T,
-		N
-	> const _pos
-)
+template <typename T, fcppt::container::grid::size_type N>
+fcppt::container::grid::neumann_neighbor_array<fcppt::container::grid::pos<T, N>>
+neumann_neighbors(fcppt::container::grid::pos<T, N> const _pos)
 {
-	using
-	pos_type
-	=
-	fcppt::container::grid::pos<
-		T,
-		N
-	>;
+  using pos_type = fcppt::container::grid::pos<T, N>;
 
-	return
-		fcppt::container::grid::neumann_neighbor_array<
-			pos_type
-		>{{
-			pos_type{
-				_pos.x() - 1,
-				_pos.y()
-			},
-			pos_type{
-				_pos.x() + 1,
-				_pos.y()
-			},
-			pos_type{
-				_pos.x(),
-				_pos.y() - 1,
-			},
-			pos_type{
-				_pos.x(),
-				_pos.y() + 1
-			}
-		}};
+  return fcppt::container::grid::neumann_neighbor_array<pos_type>{
+      {pos_type{_pos.x() - 1, _pos.y()},
+       pos_type{_pos.x() + 1, _pos.y()},
+       pos_type{
+           _pos.x(),
+           _pos.y() - 1,
+       },
+       pos_type{_pos.x(), _pos.y() + 1}}};
 }
 
 }

@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 
@@ -17,14 +16,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Computes atan2 of a vector.
 
@@ -48,50 +45,15 @@ of (x,y). This is what happens in fcppt's atan2 function.
 
 \tparam T Must be a floating-point type.
 */
-template<
-	typename T,
-	typename S
->
-inline
-fcppt::optional::object<
-	T
->
-atan2(
-	fcppt::math::vector::object<
-		T,
-		2,
-		S
-	> const &_vector
-)
+template <typename T, typename S>
+inline fcppt::optional::object<T> atan2(fcppt::math::vector::object<T, 2, S> const &_vector)
 {
-	static_assert(
-		std::is_floating_point<
-			T
-		>::value,
-		"atan2 can only be used on vectors of floating point type"
-	);
+  static_assert(
+      std::is_floating_point<T>::value, "atan2 can only be used on vectors of floating point type");
 
-	return
-		fcppt::optional::make_if(
-			!(
-				fcppt::math::is_zero(
-					_vector.x()
-				)
-				&&
-				fcppt::math::is_zero(
-					_vector.y()
-				)
-			),
-			[
-				&_vector
-			]{
-				return
-					std::atan2(
-						_vector.y(),
-						_vector.x()
-					);
-			}
-		);
+  return fcppt::optional::make_if(
+      !(fcppt::math::is_zero(_vector.x()) && fcppt::math::is_zero(_vector.y())),
+      [&_vector] { return std::atan2(_vector.y(), _vector.x()); });
 }
 
 }

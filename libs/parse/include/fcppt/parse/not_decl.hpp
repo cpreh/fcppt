@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_NOT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_NOT_DECL_HPP_INCLUDED
 
@@ -17,53 +16,28 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
-template<
-	typename Parser
->
-class not_
-:
-	private fcppt::parse::tag
+template <typename Parser>
+class not_ : private fcppt::parse::tag
 {
 public:
-	explicit
-	not_(
-		Parser &&
-	);
+  explicit not_(Parser &&);
 
-	using
-	result_type
-	=
-	fcppt::unit;
+  using result_type = fcppt::unit;
 
-	template<
-		typename Ch,
-		typename Skipper
-	>
-	[[nodiscard]]
-	fcppt::parse::result<
-		Ch,
-		result_type
-	>
-	parse(
-		fcppt::reference<
-			fcppt::parse::basic_stream<
-				Ch
-			>
-		>,
-		Skipper const &
-	) const;
+  template <typename Ch, typename Skipper>
+  [[nodiscard]] fcppt::parse::result<Ch, result_type>
+  parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
+
 private:
-	Parser parser_;
+  Parser parser_;
 };
 
 FCPPT_PP_POP_WARNING

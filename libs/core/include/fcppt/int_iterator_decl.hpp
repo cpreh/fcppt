@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_INT_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_INT_ITERATOR_DECL_HPP_INCLUDED
 
@@ -14,57 +13,29 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief An iterator over integers.
 
 \ingroup fcpptvarious
 */
-template<
-	typename Int
->
+template <typename Int>
 class int_iterator final
-:
-	public
-		fcppt::iterator::base<
-			fcppt::iterator::types<
-				fcppt::int_iterator<
-					Int
-				>,
-				Int,
-				Int,
-				Int,
-				std::input_iterator_tag
-			>
-		>
+    : public fcppt::iterator::base<
+          fcppt::iterator::types<fcppt::int_iterator<Int>, Int, Int, Int, std::input_iterator_tag>>
 {
 public:
-	explicit
-	int_iterator(
-		Int
-	)
-	noexcept;
+  explicit int_iterator(Int) noexcept;
 
-	void
-	increment()
-	noexcept;
+  void increment() noexcept;
 
-	[[nodiscard]]
-	bool
-	equal(
-		int_iterator
-	) const
-	noexcept;
+  [[nodiscard]] bool equal(int_iterator) const noexcept;
 
-	[[nodiscard]]
-	Int
-	dereference() const
-	noexcept;
+  [[nodiscard]] Int dereference() const noexcept;
+
 private:
-	Int value_;
+  Int value_;
 };
 
 }

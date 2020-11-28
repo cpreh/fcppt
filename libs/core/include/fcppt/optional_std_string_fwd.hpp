@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_STD_STRING_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_STD_STRING_FWD_HPP_INCLUDED
 
@@ -12,21 +11,14 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief An optional std string.
 
 \ingroup fcpptstring
 */
-using
-optional_std_string
-=
-fcppt::optional::object<
-	std::string
->;
+using optional_std_string = fcppt::optional::object<std::string>;
 
 }
 

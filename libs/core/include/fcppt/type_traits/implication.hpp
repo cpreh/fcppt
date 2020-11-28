@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_TRAITS_IMPLICATION_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IMPLICATION_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace type_traits
 {
-
 /**
 \brief The implication function: \a Left -> \a Right
 
@@ -29,19 +26,8 @@ Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
 
 \tparam Right A boolean expression
 */
-template<
-	typename Left,
-	typename Right
->
-using
-implication
-=
-std::disjunction<
-	std::negation<
-		Left
-	>,
-	Right
->;
+template <typename Left, typename Right>
+using implication = std::disjunction<std::negation<Left>, Right>;
 
 }
 }

@@ -3,30 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/options/base_decl.hpp>
 
+template <typename Result>
+fcppt::options::base<Result>::base() = default;
 
-template<
-	typename Result
->
-fcppt::options::base<
-	Result
->::base()
-= default;
-
-
-template<
-	typename Result
->
-fcppt::options::base<
-	Result
->::~base<
-	Result
->()
-= default;
+template <typename Result>
+fcppt::options::base<Result>::~base<Result>() = default;
 
 #endif

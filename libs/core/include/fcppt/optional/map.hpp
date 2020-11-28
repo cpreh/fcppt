@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Maps over an optional using a function
 
@@ -33,80 +30,19 @@ is returned.
 \tparam Function A function callable as <code>R (Optional::value_type)</code>
 where <code>R</code> is the result type
 */
-template<
-	typename Optional,
-	typename Function
->
-inline
-auto
-map(
-	Optional &&_source,
-	Function const &_function
-)
-->
-fcppt::optional::object<
-	std::remove_cv_t<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_source.get_unsafe()
-				)
-			)
-		)
-	>
->
+template <typename Optional, typename Function>
+inline auto map(Optional &&_source, Function const &_function) -> fcppt::optional::object<
+    std::remove_cv_t<decltype(_function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>>
 {
-	using
-	arg_type
-	=
-	decltype(
-		fcppt::move_if_rvalue<
-			Optional
-		>(
-			_source.get_unsafe()
-		)
-	);
+  using arg_type = decltype(fcppt::move_if_rvalue<Optional>(_source.get_unsafe()));
 
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		std::remove_cv_t<
-			std::result_of_t<
-				Function(
-					arg_type
-				)
-			>
-		>
-	>;
+  using result_type =
+      fcppt::optional::object<std::remove_cv_t<std::result_of_t<Function(arg_type)>>>;
 
-	return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
-		fcppt::optional::bind(
-			std::forward<
-				Optional
-			>(
-				_source
-			),
-			[
-				&_function
-			](
-				arg_type _arg
-			)
-			{
-				return
-					result_type(
-						_function(
-							std::forward<
-								arg_type
-							>(
-								_arg
-							)
-						)
-					);
-			}
-		);
+  return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
+      fcppt::optional::bind(std::forward<Optional>(_source), [&_function](arg_type _arg) {
+        return result_type(_function(std::forward<arg_type>(_arg)));
+      });
 }
 
 }

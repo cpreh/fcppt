@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_BIND_HPP_INCLUDED
 #define FCPPT_EITHER_BIND_HPP_INCLUDED
 
@@ -16,12 +15,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Monadic bind on the success type of an either
 
@@ -33,87 +30,27 @@ is returned. Otherwise, the failure in \a _either is returned.
 \tparam Function A function callable as <code>either<Either::failure,R>
 (Either::success)</code> where <code>R</code> is the result type
 */
-template<
-	typename Either,
-	typename Function
->
-auto
-bind(
-	Either &&_either,
-	Function const &_function
-)
-->
-decltype(
-	_function(
-		fcppt::move_if_rvalue<
-			Either
-		>(
-			_either.get_success_unsafe()
-		)
-	)
-)
+template <typename Either, typename Function>
+auto bind(Either &&_either, Function const &_function)
+    -> decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))
 {
-	using
-	either
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Either
-	>;
+  using either = fcppt::type_traits::remove_cv_ref_t<Either>;
 
-	static_assert(
-		fcppt::either::is_object<
-			either
-		>::value,
-		"Either must be an either"
-	);
+  static_assert(fcppt::either::is_object<either>::value, "Either must be an either");
 
-	using
-	result_type
-	=
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Either
-			>(
-				_either.get_success_unsafe()
-			)
-		)
-	);
+  using result_type =
+      decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())));
 
-	static_assert(
-		fcppt::either::is_object<
-			result_type
-		>::value,
-		"The result must be an either"
-	);
+  static_assert(fcppt::either::is_object<result_type>::value, "The result must be an either");
 
-	static_assert(
-		std::is_same<
-			fcppt::either::failure_type<
-				result_type
-			>,
-			fcppt::either::failure_type<
-				either
-			>
-		>::value,
-		"failure types must be the same"
-	);
+  static_assert(
+      std::is_same<fcppt::either::failure_type<result_type>, fcppt::either::failure_type<either>>::
+          value,
+      "failure types must be the same");
 
-	return
-		_either.has_success()
-		?
-			_function(
-				fcppt::move_if_rvalue<
-					Either
-				>(
-					_either.get_success_unsafe()
-				)
-			)
-		:
-			result_type(
-				_either.get_failure_unsafe()
-			)
-		;
+  return _either.has_success()
+             ? _function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe()))
+             : result_type(_either.get_failure_unsafe());
 }
 
 }

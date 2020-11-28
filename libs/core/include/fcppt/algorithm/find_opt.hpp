@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
 
@@ -16,12 +15,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Like <code>std::find</code> but returns an empty optional on failure.
 
@@ -29,65 +26,19 @@ namespace algorithm
 
 \tparam T Must be equality-comparable to <code>Range::value_type</code>.
 */
-template<
-	typename Range,
-	typename T
->
-fcppt::optional::object<
-	fcppt::container::to_iterator_type<
-		std::remove_reference_t<
-			Range
-		>
-	>
->
-find_opt(
-	Range &&_range,
-	T const &_value
-)
+template <typename Range, typename T>
+fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>
+find_opt(Range &&_range, T const &_value)
 {
-	using
-	iterator_type
-	=
-	fcppt::container::to_iterator_type<
-		std::remove_reference_t<
-			Range
-		>
-	>;
+  using iterator_type = fcppt::container::to_iterator_type<std::remove_reference_t<Range>>;
 
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		iterator_type
-	>;
+  using result_type = fcppt::optional::object<iterator_type>;
 
-	iterator_type const end{
-		fcppt::range::end(
-			_range
-		)
-	};
+  iterator_type const end{fcppt::range::end(_range)};
 
-	iterator_type const ret(
-		::std::find(
-			fcppt::range::begin(
-				_range
-			),
-			end,
-			_value
-		)
-	);
+  iterator_type const ret(::std::find(fcppt::range::begin(_range), end, _value));
 
-	return
-		ret
-		==
-		end
-		?
-			result_type()
-		:
-			result_type(
-				ret
-			)
-		;
+  return ret == end ? result_type() : result_type(ret);
 }
 
 }

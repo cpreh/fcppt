@@ -4,17 +4,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SCOPED_STATE_MACHINE_DECL_HPP_INCLUDED
 #define FCPPT_SCOPED_STATE_MACHINE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/scoped_state_machine_fwd.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Scopes a boost state machine
 
@@ -24,23 +21,18 @@ Calls initiate in the constructor and terminate in the destructor.
 
 \tparam Machine Must be a boost::statechart::state_machine
 */
-template<
-	typename Machine
->
+template <typename Machine>
 class scoped_state_machine
 {
-	FCPPT_NONMOVABLE(
-		scoped_state_machine
-	);
-public:
-	explicit
-	scoped_state_machine(
-		Machine &
-	);
+  FCPPT_NONMOVABLE(scoped_state_machine);
 
-	~scoped_state_machine();
+public:
+  explicit scoped_state_machine(Machine &);
+
+  ~scoped_state_machine();
+
 private:
-	Machine &machine_;
+  Machine &machine_;
 };
 
 }

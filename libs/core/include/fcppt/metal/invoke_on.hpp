@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_METAL_INVOKE_ON_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4702)
 
@@ -53,65 +50,22 @@ in \a Sequence, where R is the result type.
 
 \tparam FailFunction Must be a callable as <code>R ()</code>, where R is the result tye.
 */
-template<
-	typename Sequence,
-	typename Index,
-	typename Function,
-	typename FailFunction
->
-decltype(
-	auto
-)
-invoke_on(
-	Index const &_index,
-	Function const &_function,
-	FailFunction const &_fail_function
-)
+template <typename Sequence, typename Index, typename Function, typename FailFunction>
+decltype(auto)
+invoke_on(Index const &_index, Function const &_function, FailFunction const &_fail_function)
 {
-	static_assert(
-		std::is_unsigned_v<
-			Index
-		>,
-		"metal::invoke_on can only be used with unsigned indices"
-	);
+  static_assert(
+      std::is_unsigned_v<Index>, "metal::invoke_on can only be used with unsigned indices");
 
-	return
-		fcppt::runtime_index<
-			::metal::size<
-				Sequence
-			>
-		>(
-			_index,
-			[
-				&_function
-			](
-				auto const _cur_index
-			)
-			->
-			decltype(
-				auto
-			)
-			{
-				FCPPT_USE(
-					_cur_index
-				);
+  return fcppt::runtime_index<::metal::size<Sequence>>(
+      _index,
+      [&_function](auto const _cur_index) -> decltype(auto) {
+        FCPPT_USE(_cur_index);
 
-				return
-					_function(
-						fcppt::tag<
-							::metal::at<
-								Sequence,
-								fcppt::metal::to_number<
-									decltype(
-										_cur_index
-									)
-								>
-							>
-						>()
-					);
-			},
-			_fail_function
-		);
+        return _function(
+            fcppt::tag<::metal::at<Sequence, fcppt::metal::to_number<decltype(_cur_index)>>>());
+      },
+      _fail_function);
 }
 
 FCPPT_PP_POP_WARNING

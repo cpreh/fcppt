@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_FLOAT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_FLOAT_IMPL_HPP_INCLUDED
 
@@ -29,124 +28,33 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
+template <typename Type>
+fcppt::parse::float_<Type>::float_() = default;
 
-template<
-	typename Type
->
-fcppt::parse::float_<
-	Type
->::float_()
-= default;
-
-template<
-	typename Type
->
-template<
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::float_<
-		Type
-	>::result_type
->
-fcppt::parse::float_<
-	Type
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state,
-	Skipper const &_skipper
-) const
+template <typename Type>
+template <typename Ch, typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::float_<Type>::result_type>
+fcppt::parse::float_<Type>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-	auto const parser{
-		fcppt::parse::int_<
-			std::int64_t
-		>{}
-		>>
-		fcppt::parse::make_lexeme(
-			fcppt::parse::make_literal(
-				FCPPT_CHAR_LITERAL(Ch, '.')
-			)
-			>>
-			+
-			fcppt::parse::digits<
-				Ch
-			>()
-		)
-	};
+  auto const parser{
+      fcppt::parse::int_<std::int64_t>{} >>
+      fcppt::parse::make_lexeme(
+          fcppt::parse::make_literal(FCPPT_CHAR_LITERAL(Ch, '.')) >> +fcppt::parse::digits<Ch>())};
 
-	return
-		fcppt::either::bind(
-			parser.parse(
-				_state,
-				_skipper
-			),
-			[](
-				fcppt::parse::result_of<
-					decltype(
-						parser
-					)
-				> const &_result
-			)
-			{
-				std::basic_string<
-					Ch
-				> const float_string{
-					fcppt::output_to_string<
-						std::basic_string<
-							Ch
-						>
-					>(
-						std::get<0>(
-							_result
-						)
-					)
-					+
-					std::basic_string<
-						Ch
-					>{
-						'.'
-					}
-					+
-					std::get<1>(
-						_result
-					)
-				};
+  return fcppt::either::bind(
+      parser.parse(_state, _skipper), [](fcppt::parse::result_of<decltype(parser)> const &_result) {
+        std::basic_string<Ch> const float_string{
+            fcppt::output_to_string<std::basic_string<Ch>>(std::get<0>(_result)) +
+            std::basic_string<Ch>{'.'} + std::get<1>(_result)};
 
-				return
-					fcppt::either::from_optional(
-						fcppt::extract_from_string<
-							Type
-						>(
-							float_string
-						),
-						[
-							&float_string
-						]{
-							return
-								fcppt::parse::error<
-									Ch
-								>{
-									std::basic_string<
-										Ch
-									>{
-										FCPPT_STRING_LITERAL(
-											Ch,
-											"Expected float, got "
-										)
-									}
-									+
-									float_string
-								};
-						}
-					);
-			}
-		);
+        return fcppt::either::from_optional(
+            fcppt::extract_from_string<Type>(float_string), [&float_string] {
+              return fcppt::parse::error<Ch>{
+                  std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Expected float, got ")} +
+                  float_string};
+            });
+      });
 }
 
 #endif

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DETAIL_CONST_HPP_INCLUDED
 #define FCPPT_DETAIL_CONST_HPP_INCLUDED
 
@@ -11,39 +10,20 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace detail
 {
-
-template<
-	typename Type
->
+template <typename Type>
 class const_
 {
 public:
-	explicit
-	const_(
-		Type _value
-	)
-	:
-		value_{
-			std::move(
-				_value
-			)
-		}
-	{
-	}
+  explicit const_(Type _value) : value_{std::move(_value)} {}
 
-	Type
-	operator()() const
-	{
-		return
-			value_;
-	}
+  Type operator()() const { return value_; }
+
 private:
-	Type value_;
+  Type value_;
 };
 
 }

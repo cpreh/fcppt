@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_SEQUENCE_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_SEQUENCE_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -14,11 +12,7 @@ namespace parse
 {
 namespace skipper
 {
-
-template<
-	typename Left,
-	typename Right
->
+template <typename Left, typename Right>
 class sequence;
 
 }

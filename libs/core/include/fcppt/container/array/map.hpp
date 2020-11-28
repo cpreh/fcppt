@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_ARRAY_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_MAP_HPP_INCLUDED
 
@@ -20,14 +19,12 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace array
 {
-
 /**
 \brief Applies a function to every element of an array and returns an array of
 the results.
@@ -45,107 +42,27 @@ Example:
 \tparam Function Must be a function callable as <code>R (Array::value_type)</code>,
 where <code>R</code> is the result type.
 **/
-template<
-	typename Array,
-	typename Function
->
-inline
-auto
-map(
-	Array &&_source,
-	Function const &_function
-)
-->
-std::array<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Array
-			>(
-				std::declval<
-					fcppt::container::to_reference_type<
-						std::remove_reference_t<
-							Array
-						>
-					>
-				>()
-			)
-		)
-	),
-	fcppt::container::array::size<
-		fcppt::type_traits::remove_cv_ref_t<
-			Array
-		>
-	>::value
->
+template <typename Array, typename Function>
+inline auto map(Array &&_source, Function const &_function) -> std::array<
+    decltype(_function(fcppt::move_if_rvalue<Array>(
+        std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
+    fcppt::container::array::size<fcppt::type_traits::remove_cv_ref_t<Array>>::value>
 {
-	using
-	source_array
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Array
-	>;
+  using source_array = fcppt::type_traits::remove_cv_ref_t<Array>;
 
-	static_assert(
-		fcppt::type_traits::is_std_array<
-			source_array
-		>::value,
-		"Array must be a std::array"
-	);
+  static_assert(
+      fcppt::type_traits::is_std_array<source_array>::value, "Array must be a std::array");
 
-	using
-	result_array
-	=
-	std::array<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Array
-				>(
-					std::declval<
-						fcppt::container::to_reference_type<
-							std::remove_reference_t<
-								Array
-							>
-						>
-					>()
-				)
-			)
-		),
-		fcppt::container::array::size<
-			source_array
-		>::value
-	>;
+  using result_array = std::array<
+      decltype(_function(fcppt::move_if_rvalue<Array>(
+          std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
+      fcppt::container::array::size<source_array>::value>;
 
-	return
-		fcppt::container::array::init<
-			result_array
-		>(
-			[
-				&_source,
-				&_function
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::container::array::init<result_array>([&_source, &_function](auto const _index) {
+    FCPPT_USE(_index);
 
-				return
-					_function(
-						fcppt::move_if_rvalue<
-							Array
-						>(
-							std::get<
-								_index()
-							>(
-								_source
-							)
-						)
-					);
-			}
-		);
+    return _function(fcppt::move_if_rvalue<Array>(std::get<_index()>(_source)));
+  });
 }
 
 }

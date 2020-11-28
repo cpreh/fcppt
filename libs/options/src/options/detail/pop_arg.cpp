@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/optional_string.hpp>
 #include <fcppt/reference_impl.hpp>
@@ -14,43 +13,19 @@
 #include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
 
-
-fcppt::optional_string
-fcppt::options::detail::pop_arg(
-	fcppt::reference<
-		fcppt::options::state
-	> const _state,
-	fcppt::options::parse_context const &_context
-)
+fcppt::optional_string fcppt::options::detail::pop_arg(
+    fcppt::reference<fcppt::options::state> const _state,
+    fcppt::options::parse_context const &_context)
 {
-	fcppt::args_vector &args{
-		_state.get().args()
-	};
+  fcppt::args_vector &args{_state.get().args()};
 
-	return
-		fcppt::optional::map(
-			fcppt::options::impl::next_arg(
-				args,
-				_context.option_names()
-			),
-			[
-				&args
-			](
-				fcppt::args_vector::const_iterator const _pos
-			)
-			->
-			fcppt::string
-			{
-				fcppt::string result{
-					*_pos
-				};
+  return fcppt::optional::map(
+      fcppt::options::impl::next_arg(args, _context.option_names()),
+      [&args](fcppt::args_vector::const_iterator const _pos) -> fcppt::string {
+        fcppt::string result{*_pos};
 
-				args.erase(
-					_pos
-				);
+        args.erase(_pos);
 
-				return
-					result;
-			}
-		);
+        return result;
+      });
 }

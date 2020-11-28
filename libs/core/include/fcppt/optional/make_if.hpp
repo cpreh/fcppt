@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_MAKE_IF_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAKE_IF_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Creates an optional depending on a boolean
 
@@ -29,38 +26,13 @@ as an optional. Otherwise, the empty optional is returned.
 \tparam Function A function callable as <code>R ()</code> where <code>R</code>
 is the result type.
 */
-template<
-	typename Function
->
-inline
-fcppt::optional::object<
-	std::result_of_t<
-		Function()
-	>
->
-make_if(
-	bool const _is_set,
-	Function const &_function
-)
+template <typename Function>
+inline fcppt::optional::object<std::result_of_t<Function()>>
+make_if(bool const _is_set, Function const &_function)
 {
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		std::result_of_t<
-			Function()
-		>
-	>;
+  using result_type = fcppt::optional::object<std::result_of_t<Function()>>;
 
-	return
-		_is_set
-		?
-			result_type{
-				_function()
-			}
-		:
-			result_type{}
-		;
+  return _is_set ? result_type{_function()} : result_type{};
 }
 
 }

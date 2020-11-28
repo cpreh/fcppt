@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_THROW_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_THROW_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/basic/conditional.hpp>
 #include <fcppt/assert/basic/gather_information.hpp>
-
 
 /**
 \brief Throws an exception on a failed assertion, with an extra message on
@@ -26,19 +24,8 @@ exception must have a constructor that takes an fcppt::assert_::information.
 
 \param message The message to print on failure
 */
-#define FCPPT_ASSERT_THROW_MESSAGE(\
-	condition,\
-	exception,\
-	message\
-) \
-FCPPT_ASSERT_BASIC_CONDITIONAL(\
-	condition,\
-	throw exception(\
-		FCPPT_ASSERT_BASIC_GATHER_INFORMATION(\
-			condition,\
-			message\
-		)\
-	) \
-)
+#define FCPPT_ASSERT_THROW_MESSAGE(condition, exception, message) \
+  FCPPT_ASSERT_BASIC_CONDITIONAL( \
+      condition, throw exception(FCPPT_ASSERT_BASIC_GATHER_INFORMATION(condition, message)))
 
 #endif

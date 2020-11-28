@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_PRINT_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_PRINT_HPP_INCLUDED
 
@@ -13,7 +12,6 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
@@ -22,50 +20,20 @@ namespace tree
 {
 namespace detail
 {
-
-template<
-	typename Ch,
-	typename Traits,
-	typename Value
->
-void
-print(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::container::tree::object<
-		Value
-	> const &_tree,
-	unsigned const _indent
-)
+template <typename Ch, typename Traits, typename Value>
+void print(
+    std::basic_ostream<Ch, Traits> &_stream,
+    fcppt::container::tree::object<Value> const &_tree,
+    unsigned const _indent)
 {
-	fcppt::algorithm::repeat(
-		_indent,
-		[
-			&_stream
-		]{
-			_stream
-				<< _stream.widen('\t');
-		}
-	);
+  fcppt::algorithm::repeat(_indent, [&_stream] { _stream << _stream.widen('\t'); });
 
-	_stream
-		<<_tree.value()
-		<< _stream.widen('\n');
+  _stream << _tree.value() << _stream.widen('\n');
 
-	for(
-		auto const &child
-		:
-		_tree
-	)
-	{
-		fcppt::container::tree::detail::print(
-			_stream,
-			child,
-			_indent + 1U
-		);
-	}
+  for (auto const &child : _tree)
+  {
+    fcppt::container::tree::detail::print(_stream, child, _indent + 1U);
+  }
 }
 
 }

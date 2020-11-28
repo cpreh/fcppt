@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_MAP_HPP_INCLUDED
 #define FCPPT_RECORD_MAP_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 /**
 \brief Maps a record using a function.
 
@@ -37,58 +34,17 @@ For every <code>fcppt::record::element<L,T></code> in \a Record,
 
 \see fcppt::record::map_result
 */
-template<
-	typename Record,
-	typename Function
->
-inline
-fcppt::record::map_result<
-	Record,
-	Function
->
-map(
-	Record &&_record,
-	Function const &_function
-)
+template <typename Record, typename Function>
+inline fcppt::record::map_result<Record, Function> map(Record &&_record, Function const &_function)
 {
-	return
-		fcppt::record::init<
-			fcppt::record::map_result<
-				Record,
-				Function
-			>
-		>(
-			[
-				&_record,
-				&_function
-			](
-				auto const _element
-			)
-			{
-				FCPPT_USE(
-					_element
-				);
+  return fcppt::record::init<fcppt::record::map_result<Record, Function>>([&_record, &_function](
+                                                                              auto const _element) {
+    FCPPT_USE(_element);
 
-				return
-					_function(
-						fcppt::move_if_rvalue<
-							Record
-						>(
-							fcppt::record::get<
-								fcppt::record::element_to_label<
-									std::remove_const_t<
-										decltype(
-											_element
-										)
-									>
-								>
-							>(
-								_record
-							)
-						)
-					);
-			}
-		);
+    return _function(fcppt::move_if_rvalue<Record>(
+        fcppt::record::get<
+            fcppt::record::element_to_label<std::remove_const_t<decltype(_element)>>>(_record)));
+  });
 }
 
 }

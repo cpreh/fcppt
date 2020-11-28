@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_INT_TO_FLOAT_HPP_INCLUDED
 #define FCPPT_CAST_INT_TO_FLOAT_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts an int to a float
 
@@ -30,35 +27,14 @@ used with care.
 
 \tparam Dest Must be a floating point type
 */
-template<
-	typename Dest,
-	typename Source
->
-inline
-constexpr
-Dest
-int_to_float(
-	Source const _source
-)
-noexcept
+template <typename Dest, typename Source>
+inline constexpr Dest int_to_float(Source const _source) noexcept
 {
-	static_assert(
-		std::is_integral<
-			Source
-		>::value
-		&&
-		std::is_floating_point<
-			Dest
-		>::value,
-		"int_to_float can only cast from integral types to floating point types"
-	);
+  static_assert(
+      std::is_integral<Source>::value && std::is_floating_point<Dest>::value,
+      "int_to_float can only cast from integral types to floating point types");
 
-	return
-		static_cast<
-			Dest
-		>(
-			_source
-		);
+  return static_cast<Dest>(_source);
 }
 
 }

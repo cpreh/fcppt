@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BITFIELD_COMPARISON_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_COMPARISON_HPP_INCLUDED
 
@@ -12,44 +11,23 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace bitfield
 {
-
 /**
 \brief Compares two bitfields for equality.
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator==(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+bool operator==(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		std::equal(
-			_left.array().begin(),
-			_left.array().end(),
-			_right.array().begin()
-		);
+  return std::equal(_left.array().begin(), _left.array().end(), _right.array().begin());
 }
 
 /**
@@ -57,31 +35,12 @@ operator==(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator!=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+bool operator!=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		!(
-			_left
-			==
-			_right
-		);
+  return !(_left == _right);
 }
 
 /**
@@ -89,32 +48,13 @@ operator!=(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator<(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+bool operator<(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		std::lexicographical_compare(
-			_left.array().begin(),
-			_left.array().end(),
-			_right.array().begin(),
-			_right.array().end()
-		);
+  return std::lexicographical_compare(
+      _left.array().begin(), _left.array().end(), _right.array().begin(), _right.array().end());
 }
 
 /**
@@ -122,27 +62,12 @@ operator<(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator<=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+bool operator<=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		!(_left > _right);
+  return !(_left > _right);
 }
 
 /**
@@ -150,27 +75,12 @@ operator<=(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator>(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+bool operator>(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		_right < _left;
+  return _right < _left;
 }
 
 /**
@@ -178,27 +88,12 @@ operator>(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator>=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+bool operator>=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		!(_left < _right);
+  return !(_left < _right);
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_ARRAY_INIT_MOVE_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_INIT_MOVE_HPP_INCLUDED
 
@@ -11,14 +10,12 @@
 #include <fcppt/container/array/init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace array
 {
-
 /**
 \brief Constructs an array by calling a function for every element.
 
@@ -31,41 +28,16 @@ Constructs an array of type \a Array by initializing every element with
 
 \tparam Function A function callable as <code>Array::value_type ()</code>.
 */
-template<
-	typename Array,
-	typename Function
->
-inline
-Array
-init_move(
-	Function const &_function
-)
+template <typename Array, typename Function>
+inline Array init_move(Function const &_function)
 {
-	static_assert(
-		fcppt::type_traits::is_std_array<
-			Array
-		>::value,
-		"Array must be an array"
-	);
+  static_assert(fcppt::type_traits::is_std_array<Array>::value, "Array must be an array");
 
-	return
-		fcppt::container::array::init<
-			Array
-		>(
-			[
-				&_function
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::container::array::init<Array>([&_function](auto const _index) {
+    FCPPT_USE(_index);
 
-				return
-					_function();
-			}
-		);
+    return _function();
+  });
 }
 
 }

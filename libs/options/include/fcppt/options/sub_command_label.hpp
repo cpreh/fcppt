@@ -3,26 +3,21 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_SUB_COMMAND_LABEL_HPP_INCLUDED
 #define FCPPT_OPTIONS_SUB_COMMAND_LABEL_HPP_INCLUDED
 
 #include <fcppt/record/make_label.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief The sub-command label name in #fcppt::options::commands.
 
 \ingroup fcpptoptions
 */
-FCPPT_RECORD_MAKE_LABEL(
-	sub_command_label
-);
+FCPPT_RECORD_MAKE_LABEL(sub_command_label);
 
 }
 }

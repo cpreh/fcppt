@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ITERATOR_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_ITERATOR_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/iterator/range_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace iterator
 {
-
 /**
 \brief A range formed from two iterators.
 
@@ -22,38 +19,24 @@ namespace iterator
 
 \tparam Iterator Must be an iterator.
 */
-template<
-	typename Iterator
->
+template <typename Iterator>
 class range
 {
 public:
-	using
-	iterator
-	=
-	Iterator;
+  using iterator = Iterator;
 
-	using
-	const_iterator
-	=
-	Iterator;
+  using const_iterator = Iterator;
 
-	range(
-		Iterator begin,
-		Iterator end
-	);
+  range(Iterator begin, Iterator end);
 
-	[[nodiscard]]
-	Iterator
-	begin() const;
+  [[nodiscard]] Iterator begin() const;
 
-	[[nodiscard]]
-	Iterator
-	end() const;
+  [[nodiscard]] Iterator end() const;
+
 private:
-	Iterator begin_;
+  Iterator begin_;
 
-	Iterator end_;
+  Iterator end_;
 };
 
 }

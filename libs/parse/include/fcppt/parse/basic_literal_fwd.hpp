@@ -3,19 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_BASIC_LITERAL_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_LITERAL_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch
->
+template <typename Ch>
 class basic_literal;
 
 }

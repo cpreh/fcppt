@@ -4,13 +4,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 
 #include <fcppt/signal/object_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/object_impl.hpp>
-
 
 #endif

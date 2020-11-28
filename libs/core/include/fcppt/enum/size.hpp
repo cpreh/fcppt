@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_SIZE_HPP_INCLUDED
 #define FCPPT_ENUM_SIZE_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief The number of enumerators in an enum
 
@@ -35,34 +32,14 @@ enumerators in an enum in C++.
 
 \tparam Type Must be an enum type
 */
-template<
-	typename Type
->
-struct size
-:
-std::integral_constant<
-	fcppt::enum_::size_type<
-		Type
-	>,
-	fcppt::cast::enum_to_int<
-		fcppt::enum_::size_type<
-			Type
-		>
-	>(
-		fcppt::enum_::max_value<
-			Type
-		>::value
-	)
-	+
-	1U
->
+template <typename Type>
+struct size : std::integral_constant<
+                  fcppt::enum_::size_type<Type>,
+                  fcppt::cast::enum_to_int<fcppt::enum_::size_type<Type>>(
+                      fcppt::enum_::max_value<Type>::value) +
+                      1U>
 {
-	static_assert(
-		std::is_enum_v<
-			Type
-		>,
-		"Type must be an enum type"
-	);
+  static_assert(std::is_enum_v<Type>, "Type must be an enum type");
 };
 
 }

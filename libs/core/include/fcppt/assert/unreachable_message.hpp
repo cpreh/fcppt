@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_UNREACHABLE_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_UNREACHABLE_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/basic/terminate_message.hpp>
-
 
 /**
 \brief Terminates the program, also printing a message
@@ -20,12 +18,7 @@ an unreachable code part is executed.
 
 \param message The message to print
 */
-#define FCPPT_ASSERT_UNREACHABLE_MESSAGE(\
-	message\
-)\
-FCPPT_ASSERT_BASIC_TERMINATE_MESSAGE(\
-	unreachable code,\
-	message\
-)
+#define FCPPT_ASSERT_UNREACHABLE_MESSAGE(message) \
+  FCPPT_ASSERT_BASIC_TERMINATE_MESSAGE(unreachable code, message)
 
 #endif

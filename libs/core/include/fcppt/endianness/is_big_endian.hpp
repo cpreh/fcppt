@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENDIANNESS_IS_BIG_ENDIAN_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_IS_BIG_ENDIAN_HPP_INCLUDED
 
 #include <fcppt/detail/symbol.hpp>
 
-
 namespace fcppt
 {
 namespace endianness
 {
-
 /**
 \brief Returns if this machine uses big endianness
 
@@ -23,8 +20,7 @@ namespace endianness
 Equivalent to <code>host_format() == format::big</code>
 */
 FCPPT_DETAIL_SYMBOL
-bool
-is_big_endian();
+bool is_big_endian();
 
 }
 }

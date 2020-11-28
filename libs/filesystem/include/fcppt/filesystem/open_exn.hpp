@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_OPEN_EXN_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_OPEN_EXN_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <ios>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Opens a file, throwing an exception on failure.
 
@@ -34,38 +31,12 @@ Tries to open \a _path with \a _openmode and throw an exception on failure.
 
 \tparam Exception Must be constructible from #fcppt::string.
 */
-template<
-	typename Stream,
-	typename Exception =
-		fcppt::exception
->
-Stream
-open_exn(
-	std::filesystem::path const &_path,
-	std::ios_base::openmode const _openmode
-)
+template <typename Stream, typename Exception = fcppt::exception>
+Stream open_exn(std::filesystem::path const &_path, std::ios_base::openmode const _openmode)
 {
-	return
-		fcppt::optional::to_exception(
-			fcppt::filesystem::open<
-				Stream
-			>(
-				_path,
-				_openmode
-			),
-			[
-				&_path
-			]{
-				return
-					Exception{
-						FCPPT_TEXT("Failed to open ")
-						+
-						fcppt::filesystem::path_to_string(
-							_path
-						)
-					};
-			}
-		);
+  return fcppt::optional::to_exception(fcppt::filesystem::open<Stream>(_path, _openmode), [&_path] {
+    return Exception{FCPPT_TEXT("Failed to open ") + fcppt::filesystem::path_to_string(_path)};
+  });
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_GETENV_HPP_INCLUDED
 #define FCPPT_GETENV_HPP_INCLUDED
 
@@ -13,20 +12,15 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Gets an optional value from the environment
 
 \ingroup fcpptvarious
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::optional_std_string
-getenv(
-	std::string_view const &
-);
+fcppt::optional_std_string getenv(std::string_view const &);
 
 }
 

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_ERROR_HPP_INCLUDED
 #define FCPPT_ASSERT_ERROR_HPP_INCLUDED
 
@@ -20,11 +19,6 @@ that should not happen.
 
 \param condition The condition to check for
 */
-#define FCPPT_ASSERT_ERROR(\
-	condition\
-)\
-FCPPT_ASSERT_BASIC_TERMINATE_CONDITIONAL(\
-	condition\
-)
+#define FCPPT_ASSERT_ERROR(condition) FCPPT_ASSERT_BASIC_TERMINATE_CONDITIONAL(condition)
 
 #endif

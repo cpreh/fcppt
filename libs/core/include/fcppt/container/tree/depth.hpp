@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TREE_DEPTH_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DEPTH_HPP_INCLUDED
 
@@ -13,62 +12,27 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace tree
 {
-
-template<
-	typename Value
->
-typename
-fcppt::container::tree::object<
-	Value
->::size_type
-depth(
-	fcppt::container::tree::object<
-		Value
-	> const &_tree
-)
+template <typename Value>
+typename fcppt::container::tree::object<Value>::size_type
+depth(fcppt::container::tree::object<Value> const &_tree)
 {
-	using
-	tree_type
-	=
-	fcppt::container::tree::object<
-		Value
-	>;
+  using tree_type = fcppt::container::tree::object<Value>;
 
-	using
-	size_type
-	=
-	typename
-	tree_type::size_type;
+  using size_type = typename tree_type::size_type;
 
-	return
-		fcppt::algorithm::fold(
-			_tree.children(),
-			size_type{
-				0U
-			},
-			[](
-				tree_type const &_ref,
-				size_type const _result
-			)
-			{
-				return
-					std::max(
-						_result,
-						fcppt::container::tree::depth(
-							_ref
-						)
-					);
-			}
-		)
-		+
-		1U;
+  return fcppt::algorithm::fold(
+             _tree.children(),
+             size_type{0U},
+             [](tree_type const &_ref, size_type const _result) {
+               return std::max(_result, fcppt::container::tree::depth(_ref));
+             }) +
+         1U;
 }
 
 }

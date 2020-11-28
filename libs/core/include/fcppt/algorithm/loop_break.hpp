@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_LOOP_BREAK_HPP_INCLUDED
 #define FCPPT_ALGORITHM_LOOP_BREAK_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Iterates through a range with the ability to break out of the loop.
 
@@ -31,29 +28,11 @@ implementation for a specific range type is handled by #fcppt::algorithm::loop_b
 \tparam Body A function callable as <code>fcppt::loop (T)</code> for every type
 <code>T</code> in \a Range
 */
-template<
-	typename Range,
-	typename Body
->
-inline
-void
-loop_break(
-	Range &&_range,
-	Body const &_body
-)
+template <typename Range, typename Body>
+inline void loop_break(Range &&_range, Body const &_body)
 {
-	fcppt::algorithm::loop_break_impl<
-		fcppt::type_traits::remove_cv_ref_t<
-			Range
-		>
-	>::execute(
-		std::forward<
-			Range
-		>(
-			_range
-		),
-		_body
-	);
+  fcppt::algorithm::loop_break_impl<fcppt::type_traits::remove_cv_ref_t<Range>>::execute(
+      std::forward<Range>(_range), _body);
 }
 
 }

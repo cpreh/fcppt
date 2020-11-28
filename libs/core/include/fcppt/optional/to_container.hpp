@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_TO_CONTAINER_HPP_INCLUDED
 #define FCPPT_OPTIONAL_TO_CONTAINER_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Puts the value of an optional into a container or returns an empty container.
 
@@ -35,63 +32,23 @@ Otherwise the empty container is returned.
 
 \a Container and \a Optional must have the same value types.
 */
-template<
-	typename Container,
-	typename Optional
->
-Container
-to_container(
-	Optional &&_source
-)
+template <typename Container, typename Optional>
+Container to_container(Optional &&_source)
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
+  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
-	static_assert(
-		std::is_same<
-			fcppt::type_traits::value_type<
-				Container
-			>,
-			fcppt::optional::value_type<
-				fcppt::type_traits::remove_cv_ref_t<
-					Optional
-				>
-			>
-		>::value,
-		"Container must have the same value_type as Optional"
-	);
+  static_assert(
+      std::is_same<
+          fcppt::type_traits::value_type<Container>,
+          fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>::value,
+      "Container must have the same value_type as Optional");
 
-	return
-		fcppt::optional::maybe(
-			std::forward<
-				Optional
-			>(
-				_source
-			),
-			[]{
-				return
-					Container{};
-			},
-			[](
-				auto &&_inner
-			)
-			{
-				return
-					fcppt::container::make<
-						Container
-					>(
-						fcppt::move_if_rvalue<
-							Optional
-						>(
-							_inner
-						)
-					);
-			}
-		);
+  return fcppt::optional::maybe(
+      std::forward<Optional>(_source),
+      [] { return Container{}; },
+      [](auto &&_inner) {
+        return fcppt::container::make<Container>(fcppt::move_if_rvalue<Optional>(_inner));
+      });
 }
 
 }

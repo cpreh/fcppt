@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Compares two optionals for equality
 
@@ -27,26 +24,11 @@ equal. This function requires \a T to be equality comparable.
 \param _a The first optional
 \param _b The second optional
 */
-template<
-	typename T
->
-bool
-operator==(
-	fcppt::optional::object<
-		T
-	> const &_a,
-	fcppt::optional::object<
-		T
-	> const &_b
-)
+template <typename T>
+bool operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
-	return
-		_a.has_value() && _b.has_value()
-		?
-			_a.get_unsafe() == _b.get_unsafe()
-		:
-			_a.has_value() == _b.has_value()
-		;
+  return _a.has_value() && _b.has_value() ? _a.get_unsafe() == _b.get_unsafe()
+                                          : _a.has_value() == _b.has_value();
 }
 
 /**
@@ -60,21 +42,10 @@ This function requires \a T to be equality comparable.
 \param _a The first optional
 \param _b The second optional
 */
-template<
-	typename T
->
-bool
-operator!=(
-	fcppt::optional::object<
-		T
-	> const &_a,
-	fcppt::optional::object<
-		T
-	> const &_b
-)
+template <typename T>
+bool operator!=(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
-	return
-		!(_a == _b);
+  return !(_a == _b);
 }
 
 /**
@@ -88,26 +59,11 @@ returns <code>_a.has_value() < _b.has_value()</code>, otherwise returns
 \param _a The first optional
 \param _b The second optional
 */
-template<
-	typename T
->
-bool
-operator<(
-	fcppt::optional::object<
-		T
-	> const &_a,
-	fcppt::optional::object<
-		T
-	> const &_b
-)
+template <typename T>
+bool operator<(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
-	return
-		_a.has_value() && _b.has_value()
-		?
-			_a.get_unsafe() < _b.get_unsafe()
-		:
-			_a.has_value() < _b.has_value()
-		;
+  return _a.has_value() && _b.has_value() ? _a.get_unsafe() < _b.get_unsafe()
+                                          : _a.has_value() < _b.has_value();
 }
 
 }

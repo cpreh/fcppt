@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OUTPUT_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Outputs an optional to a basic_ostream
 
@@ -32,69 +29,18 @@ Outputs the value held by \a _opt_value to \a _stream, or nothing.
 
 \return \a _stream
 */
-template<
-	typename Type,
-	typename Ch,
-	typename Traits
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::optional::object<
-		Type
-	> const &_opt_value
-)
+template <typename Type, typename Ch, typename Traits>
+std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::optional::object<Type> const &_opt_value)
 {
-	using
-	result_type
-	=
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &;
+  using result_type = std::basic_ostream<Ch, Traits> &;
 
-	return
-		fcppt::optional::maybe(
-			_opt_value,
-			[
-				&_stream
-			]()
-			-> result_type
-			{
-				return
-					_stream
-					<<
-					_stream.widen(
-						'N'
-					);
-			},
-			[
-				&_stream
-			](
-				Type const &_value
-			)
-			-> result_type
-			{
-				return
-					_stream
-					<<
-					_stream.widen(
-						'J'
-					)
-					<<
-					_stream.widen(
-						' '
-					)
-					<<
-					_value;
-			}
-		);
+  return fcppt::optional::maybe(
+      _opt_value,
+      [&_stream]() -> result_type { return _stream << _stream.widen('N'); },
+      [&_stream](Type const &_value) -> result_type {
+        return _stream << _stream.widen('J') << _stream.widen(' ') << _value;
+      });
 }
 
 }

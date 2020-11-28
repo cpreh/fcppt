@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_SEQUENCE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_SEQUENCE_HPP_INCLUDED
 
@@ -20,12 +19,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Sequences a container of optionals
 
@@ -43,67 +40,22 @@ returned.
 
 \tparam Source Must be an optional type
 */
-template<
-	typename ResultContainer,
-	typename Source
->
-fcppt::optional::object<
-	ResultContainer
->
-sequence(
-	Source &&_source
-)
+template <typename ResultContainer, typename Source>
+fcppt::optional::object<ResultContainer> sequence(Source &&_source)
 {
-	fcppt::optional::detail::check_sequence<
-		ResultContainer,
-		fcppt::type_traits::remove_cv_ref_t<
-			Source
-		>
-	> const test{};
+  fcppt::optional::detail::
+      check_sequence<ResultContainer, fcppt::type_traits::remove_cv_ref_t<Source>> const test{};
 
-	FCPPT_USE(
-		test
-	);
+  FCPPT_USE(test);
 
-	return
-		fcppt::optional::make_if(
-			!fcppt::algorithm::contains_if(
-				_source,
-				[](
-					auto const &_optional
-				)
-				-> bool
-				{
-					return
-						!_optional.has_value();
-				}
-			),
-			[
-				&_source
-			]{
-				return
-					fcppt::algorithm::map<
-						ResultContainer
-					>(
-						std::forward<
-							Source
-						>(
-							_source
-						),
-						[](
-							auto &&_value
-						)
-						{
-							return
-								fcppt::move_if_rvalue<
-									Source
-								>(
-									_value.get_unsafe()
-								);
-						}
-					);
-			}
-		);
+  return fcppt::optional::make_if(
+      !fcppt::algorithm::contains_if(
+          _source, [](auto const &_optional) -> bool { return !_optional.has_value(); }),
+      [&_source] {
+        return fcppt::algorithm::map<ResultContainer>(
+            std::forward<Source>(_source),
+            [](auto &&_value) { return fcppt::move_if_rvalue<Source>(_value.get_unsafe()); });
+      });
 }
 
 }

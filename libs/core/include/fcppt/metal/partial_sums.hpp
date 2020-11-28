@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_PARTIAL_SUMS_HPP_INCLUDED
 #define FCPPT_METAL_PARTIAL_SUMS_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 /**
 \brief Calculates a new sequence that consists of the sums of the old sequence.
 
@@ -27,38 +24,17 @@ sequence will consist of the values <code>(0, c_1, c_1 + c_2, ..., c_1 + ... c_n
 
 \tparam Sequence A metal::list of metal::numbers.
 */
-template<
-	typename Sequence
->
-using
-partial_sums
-=
-::metal::accumulate<
-	::metal::bind<
-		::metal::lambda<
-			::metal::append
-		>,
-		::metal::_1,
-		::metal::bind<
-			::metal::lambda<
-				::metal::add
-			>,
-			::metal::bind<
-				::metal::lambda<
-					::metal::back
-				>,
-				::metal::_1
-			>,
-			::metal::_2
-		>
-	>,
-	::metal::list<
-		::metal::number<
-			0
-		>
-	>,
-	Sequence
->;
+template <typename Sequence>
+using partial_sums = ::metal::accumulate<
+    ::metal::bind<
+        ::metal::lambda<::metal::append>,
+        ::metal::_1,
+        ::metal::bind<
+            ::metal::lambda<::metal::add>,
+            ::metal::bind<::metal::lambda<::metal::back>, ::metal::_1>,
+            ::metal::_2>>,
+    ::metal::list<::metal::number<0>>,
+    Sequence>;
 
 }
 }

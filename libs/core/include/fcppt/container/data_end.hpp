@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/to_pointer_type.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Returns a pointer one past the end of a random-access container>
 
@@ -27,24 +24,10 @@ Returns a pointer to one past the end of \a _container, or the null pointer if
 
 \tparam Container Must be a random-access container.
 */
-template<
-	typename Container
->
-fcppt::container::to_pointer_type<
-	Container
->
-data_end(
-	Container &_container
-)
+template <typename Container>
+fcppt::container::to_pointer_type<Container> data_end(Container &_container)
 {
-	return
-		fcppt::container::data(
-			_container
-		)
-		+
-		fcppt::cast::to_signed(
-			_container.size()
-		);
+  return fcppt::container::data(_container) + fcppt::cast::to_signed(_container.size());
 }
 
 }

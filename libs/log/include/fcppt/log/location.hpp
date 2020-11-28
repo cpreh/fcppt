@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_LOCATION_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <fcppt/log/detail/location_vector.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-
 namespace fcppt
 {
 namespace log
 {
-
 /**
 \brief A location of a logger in a context.
 
@@ -33,72 +30,55 @@ level.
 class location
 {
 public:
-	/**
-	\brief Constructs an empty location
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	location();
+  /**
+  \brief Constructs an empty location
+  */
+  FCPPT_LOG_DETAIL_SYMBOL
+  location();
 
-	/**
-	\brief Constructs a location with one element
+  /**
+  \brief Constructs a location with one element
 
-	Constructs a location with one element given by \a root
+  Constructs a location with one element given by \a root
 
-	\param root The root element
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	explicit
-	location(
-		fcppt::log::name root
-	);
+  \param root The root element
+  */
+  FCPPT_LOG_DETAIL_SYMBOL
+  explicit location(fcppt::log::name root);
 
-	/**
-	\brief The iterator type
+  /**
+  \brief The iterator type
 
-	A typedef to an iterator type over #fcppt::string
-	*/
-	using
-	const_iterator
-	=
-	fcppt::log::detail::location_vector::const_iterator;
+  A typedef to an iterator type over #fcppt::string
+  */
+  using const_iterator = fcppt::log::detail::location_vector::const_iterator;
 
-	/**
-	\brief Adds a new element to this location
+  /**
+  \brief Adds a new element to this location
 
-	Adds \a name to this location
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::location &
-	operator /=(
-		fcppt::log::name name
-	);
+  Adds \a name to this location
+  */
+  FCPPT_LOG_DETAIL_SYMBOL
+  fcppt::log::location &operator/=(fcppt::log::name name);
 
-	/**
-	\brief Returns an iterator to the beginning
-	*/
-	[[nodiscard]]
-	FCPPT_LOG_DETAIL_SYMBOL
-	const_iterator
-	begin() const;
+  /**
+  \brief Returns an iterator to the beginning
+  */
+  [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL const_iterator begin() const;
 
-	/**
-	\brief Returns an iterator to one past the end
-	*/
-	[[nodiscard]]
-	FCPPT_LOG_DETAIL_SYMBOL
-	const_iterator
-	end() const;
+  /**
+  \brief Returns an iterator to one past the end
+  */
+  [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL const_iterator end() const;
 
-	/**
-	\brief Creates a string represenation of the location using :: as
-	delimiter.
-	*/
-	[[nodiscard]]
-	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::string
-	string() const;
+  /**
+  \brief Creates a string represenation of the location using :: as
+  delimiter.
+  */
+  [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL fcppt::string string() const;
+
 private:
-	fcppt::log::detail::location_vector entries_;
+  fcppt::log::detail::location_vector entries_;
 };
 
 /**
@@ -107,11 +87,7 @@ private:
 Forms a new location from \a location and \a name.
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::log::location
-operator /(
-	fcppt::log::location location,
-	fcppt::log::name element
-);
+fcppt::log::location operator/(fcppt::log::location location, fcppt::log::name element);
 
 }
 }

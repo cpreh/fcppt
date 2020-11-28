@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_DETAIL_IS_ELEMENT_INIT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_IS_ELEMENT_INIT_HPP_INCLUDED
 
@@ -12,35 +11,19 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
 namespace detail
 {
-
-template<
-	typename Type
->
-struct is_element_init
-:
-std::false_type
+template <typename Type>
+struct is_element_init : std::false_type
 {
 };
 
-template<
-	typename Tag,
-	typename Type
->
-struct is_element_init<
-	fcppt::record::detail::element_init<
-		Tag,
-		Type
-	>
->
-:
-std::true_type
+template <typename Tag, typename Type>
+struct is_element_init<fcppt::record::detail::element_init<Tag, Type>> : std::true_type
 {
 };
 

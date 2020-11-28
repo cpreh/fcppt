@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TUPLE_PUSH_BACK_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_PUSH_BACK_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace tuple
 {
-
 /**
 \brief Pushes an element to the back of a <code>std::tuple</code>.
 
@@ -34,62 +31,22 @@ The result of the function is <code>(v_1,...,v_n,_new_element)</code>.
 
 \tparam Tuple Must be a <code>std::tuple</code>.
 */
-template<
-	typename Tuple,
-	typename NewElement
->
+template <typename Tuple, typename NewElement>
 fcppt::container::tuple::push_back_result<
-	fcppt::type_traits::remove_cv_ref_t<
-		Tuple
-	>,
-	fcppt::type_traits::remove_cv_ref_t<
-		NewElement
-	>
->
-push_back(
-	Tuple &&_tuple,
-	NewElement &&_new_element
-)
+    fcppt::type_traits::remove_cv_ref_t<Tuple>,
+    fcppt::type_traits::remove_cv_ref_t<NewElement>>
+push_back(Tuple &&_tuple, NewElement &&_new_element)
 {
-	using
-	source_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Tuple
-	>;
+  using source_type = fcppt::type_traits::remove_cv_ref_t<Tuple>;
 
-	static_assert(
-		fcppt::type_traits::is_std_tuple<
-			source_type
-		>::value,
-		"Tuple must be a std::tuple"
-	);
+  static_assert(fcppt::type_traits::is_std_tuple<source_type>::value, "Tuple must be a std::tuple");
 
-	return
-		fcppt::container::tuple::detail::push_back<
-			fcppt::container::tuple::push_back_result<
-				source_type,
-				fcppt::type_traits::remove_cv_ref_t<
-					NewElement
-				>
-			>
-		>(
-			std::make_index_sequence<
-				std::tuple_size<
-					source_type
-				>::value
-			>{},
-			std::forward<
-				Tuple
-			>(
-				_tuple
-			),
-			std::forward<
-				NewElement
-			>(
-				_new_element
-			)
-		);
+  return fcppt::container::tuple::detail::push_back<fcppt::container::tuple::push_back_result<
+      source_type,
+      fcppt::type_traits::remove_cv_ref_t<NewElement>>>(
+      std::make_index_sequence<std::tuple_size<source_type>::value>{},
+      std::forward<Tuple>(_tuple),
+      std::forward<NewElement>(_new_element));
 }
 
 }

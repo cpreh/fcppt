@@ -3,25 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_SCOPED_RDBUF_FWD_HPP_INCLUDED
 #define FCPPT_IO_SCOPED_RDBUF_FWD_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace io
 {
-
-using
-scoped_rdbuf
-=
-fcppt::io::basic_scoped_rdbuf<
-	fcppt::char_type
->;
+using scoped_rdbuf = fcppt::io::basic_scoped_rdbuf<fcppt::char_type>;
 
 }
 }

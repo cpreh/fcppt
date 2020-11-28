@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
@@ -11,14 +10,12 @@
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace log
 {
 namespace format
 {
-
 /**
 \brief Composes two formatters
 
@@ -30,11 +27,9 @@ If \a parent and \a child are not nothing, their functions are composed
 parent is returned. Otherwise, \a child is returned.
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::log::format::optional_function
-chain(
-	fcppt::log::format::optional_function const &parent,
-	fcppt::log::format::optional_function const &child
-);
+fcppt::log::format::optional_function chain(
+    fcppt::log::format::optional_function const &parent,
+    fcppt::log::format::optional_function const &child);
 
 }
 }

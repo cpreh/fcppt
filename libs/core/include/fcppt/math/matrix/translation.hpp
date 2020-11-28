@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 
@@ -12,14 +11,12 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Calculates a 4x4 translation matrix from three coordinates
 
@@ -31,55 +28,26 @@ namespace matrix
 
 \param _z The z translation
 */
-template<
-	typename T
->
+template <typename T>
 fcppt::math::matrix::static_<
-	T,
-	4,
-	4
->
+    T,
+    4,
+    4>
 translation(
-	T const _x, // NOLINT(readability-avoid-const-params-in-decls)
-	T const _y, // NOLINT(readability-avoid-const-params-in-decls)
-	T const _z // NOLINT(readability-avoid-const-params-in-decls)
+    T const _x, // NOLINT(readability-avoid-const-params-in-decls)
+    T const _y, // NOLINT(readability-avoid-const-params-in-decls)
+    T const _z // NOLINT(readability-avoid-const-params-in-decls)
 )
 {
-	T const zero{
-		fcppt::literal<
-			T
-		>(
-			0
-		)
-	};
+  T const zero{fcppt::literal<T>(0)};
 
-	T const one{
-		fcppt::literal<
-			T
-		>(
-			1
-		)
-	};
+  T const one{fcppt::literal<T>(1)};
 
-	return
-		fcppt::math::matrix::static_<
-			T,
-			4,
-			4
-		>(
-			fcppt::math::matrix::row(
-				one, zero, zero, _x
-			),
-			fcppt::math::matrix::row(
-				zero, one, zero, _y
-			),
-			fcppt::math::matrix::row(
-				zero, zero, one, _z
-			),
-			fcppt::math::matrix::row(
-				zero, zero, zero, one
-			)
-		);
+  return fcppt::math::matrix::static_<T, 4, 4>(
+      fcppt::math::matrix::row(one, zero, zero, _x),
+      fcppt::math::matrix::row(zero, one, zero, _y),
+      fcppt::math::matrix::row(zero, zero, one, _z),
+      fcppt::math::matrix::row(zero, zero, zero, one));
 }
 
 /**
@@ -89,30 +57,11 @@ translation(
 
 \param _vec A three-dimensional vector
 */
-template<
-	typename T,
-	typename S
->
-inline
-fcppt::math::matrix::static_<
-	T,
-	4,
-	4
->
-translation(
-	fcppt::math::vector::object<
-		T,
-		3,
-		S
-	> const &_vec
-)
+template <typename T, typename S>
+inline fcppt::math::matrix::static_<T, 4, 4>
+translation(fcppt::math::vector::object<T, 3, S> const &_vec)
 {
-	return
-		fcppt::math::matrix::translation(
-			_vec.x(),
-			_vec.y(),
-			_vec.z()
-		);
+  return fcppt::math::matrix::translation(_vec.x(), _vec.y(), _vec.z());
 }
 
 }

@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_NOTHING_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_NOTHING_DECL_HPP_INCLUDED
 
 #include <fcppt/optional/nothing_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief A polymorphic empty optional
 
@@ -25,17 +22,12 @@ Objects of this class implicitly convert into empty #fcppt::optional::object.
 */
 struct nothing
 {
-	/**
-	\brief Returns an empty optional.
-	*/
-	template<
-		typename T
-	>
-	// NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
-	operator
-	fcppt::optional::object<
-		T
-	> () const;
+  /**
+  \brief Returns an empty optional.
+  */
+  template <typename T>
+  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
+  operator fcppt::optional::object<T>() const;
 };
 
 }

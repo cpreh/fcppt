@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/size_type.hpp>
 
-
 namespace fcppt
 {
 namespace endianness
 {
-
 /**
 \brief Reverses the byte order of a given memory block
 
@@ -30,11 +27,7 @@ size.
 \param size The size of the memory block
 */
 FCPPT_DETAIL_SYMBOL
-void
-reverse_mem(
-	fcppt::endianness::raw_pointer data,
-	fcppt::endianness::size_type size
-);
+void reverse_mem(fcppt::endianness::raw_pointer data, fcppt::endianness::size_type size);
 
 }
 }

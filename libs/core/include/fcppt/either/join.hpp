@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_JOIN_HPP_INCLUDED
 #define FCPPT_EITHER_JOIN_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Joins an either.
 
@@ -36,74 +33,26 @@ Otherwise, the success value of the inner either is returned.
 
 \tparam Either Must be an <code>fcppt::either::object<F,fcppt::either::object<F,S>></code>.
 */
-template<
-	typename Either
->
+template <typename Either>
 fcppt::either::object<
-	fcppt::either::failure_type<
-		fcppt::type_traits::remove_cv_ref_t<
-			Either
-		>
-	>,
-	fcppt::either::success_type<
-		fcppt::either::success_type<
-			fcppt::type_traits::remove_cv_ref_t<
-				Either
-			>
-		>
-	>
->
-join(
-	Either &&_either
-)
+    fcppt::either::failure_type<fcppt::type_traits::remove_cv_ref_t<Either>>,
+    fcppt::either::success_type<
+        fcppt::either::success_type<fcppt::type_traits::remove_cv_ref_t<Either>>>>
+join(Either &&_either)
 {
-	using
-	either
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Either
-	>;
+  using either = fcppt::type_traits::remove_cv_ref_t<Either>;
 
-	static_assert(
-		fcppt::either::is_object<
-			either
-		>::value,
-		"Either must be an either"
-	);
+  static_assert(fcppt::either::is_object<either>::value, "Either must be an either");
 
-	static_assert(
-		std::is_same<
-			fcppt::either::failure_type<
-				either
-			>,
-			fcppt::either::failure_type<
-				fcppt::either::success_type<
-					either
-				>
-			>
-		>::value,
-		"Both eithers must have the same failure type"
-	);
+  static_assert(
+      std::is_same<
+          fcppt::either::failure_type<either>,
+          fcppt::either::failure_type<fcppt::either::success_type<either>>>::value,
+      "Both eithers must have the same failure type");
 
-	return
-		fcppt::either::bind(
-			std::forward<
-				Either
-			>(
-				_either
-			),
-			[](
-				auto &&_value
-			)
-			{
-				return
-					fcppt::move_if_rvalue<
-						Either
-					>(
-						_value
-					);
-			}
-		);
+  return fcppt::either::bind(std::forward<Either>(_either), [](auto &&_value) {
+    return fcppt::move_if_rvalue<Either>(_value);
+  });
 }
 
 }

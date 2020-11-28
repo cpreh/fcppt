@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_EXCEPTION_HPP_INCLUDED
 #define FCPPT_VARIANT_EXCEPTION_HPP_INCLUDED
 
@@ -13,55 +12,35 @@
 #include <fcppt/symbol/class.hpp>
 #include <fcppt/variant/exception_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief The base exception class for variant exceptions
 
 \ingroup fcpptvariant
 */
-class FCPPT_SYMBOL_CLASS exception
-:
-	public fcppt::exception
+class FCPPT_SYMBOL_CLASS exception : public fcppt::exception
 {
 public:
-	FCPPT_DETAIL_SYMBOL
-	explicit
-	exception(
-		fcppt::string &&
-	);
+  FCPPT_DETAIL_SYMBOL
+  explicit exception(fcppt::string &&);
 
-	FCPPT_DETAIL_SYMBOL
-	exception(
-		exception const &
-	);
+  FCPPT_DETAIL_SYMBOL
+  exception(exception const &);
 
-	FCPPT_DETAIL_SYMBOL
-	exception(
-		exception &&
-	)
-	noexcept;
+  FCPPT_DETAIL_SYMBOL
+  exception(exception &&) noexcept;
 
-	FCPPT_DETAIL_SYMBOL
-	exception &
-	operator=(
-		exception const &
-	);
+  FCPPT_DETAIL_SYMBOL
+  exception &operator=(exception const &);
 
-	FCPPT_DETAIL_SYMBOL
-	exception &
-	operator=(
-		exception &&
-	)
-	noexcept;
+  FCPPT_DETAIL_SYMBOL
+  exception &operator=(exception &&) noexcept;
 
-	FCPPT_DETAIL_SYMBOL
-	~exception() noexcept
-	override;
+  FCPPT_DETAIL_SYMBOL
+  ~exception() noexcept override;
 };
 
 }

@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/detail/deleted_index.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace matrix
 {
-
 /**
 \brief Deletes a specific row and rolumn (a cross) from the matrix
 
@@ -34,74 +31,25 @@ namespace matrix
 \tparam DR The index of the row to delete
 \tparam DC The index of the column to delete
 */
-template<
-	fcppt::math::size_type DR,
-	fcppt::math::size_type DC,
-	typename T,
-	typename S,
-	fcppt::math::size_type R,
-	fcppt::math::size_type C
->
-fcppt::math::matrix::static_<
-	T,
-	R
-	-
-	1U,
-	C
-	-
-	1U
->
-delete_row_and_column(
-	fcppt::math::matrix::object<
-		T,
-		R,
-		C,
-		S
-	> const &_matrix
-)
+template <
+    fcppt::math::size_type DR,
+    fcppt::math::size_type DC,
+    typename T,
+    typename S,
+    fcppt::math::size_type R,
+    fcppt::math::size_type C>
+fcppt::math::matrix::static_<T, R - 1U, C - 1U>
+delete_row_and_column(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
 {
-	using
-	result_type
-	=
-	fcppt::math::matrix::static_<
-		T,
-		R
-		-
-		1U,
-		C
-		-
-		1U
-	>;
+  using result_type = fcppt::math::matrix::static_<T, R - 1U, C - 1U>;
 
-	return
-		fcppt::math::matrix::init<
-			result_type
-		>(
-			[
-				&_matrix
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::math::matrix::init<result_type>([&_matrix](auto const _index) {
+    FCPPT_USE(_index);
 
-				return
-					fcppt::math::matrix::at_r_c<
-						fcppt::math::matrix::detail::deleted_index(
-							_index.row(),
-							DR
-						),
-						fcppt::math::matrix::detail::deleted_index(
-							_index.column(),
-							DC
-						)
-					>(
-						_matrix
-					);
-			}
-		);
+    return fcppt::math::matrix::at_r_c<
+        fcppt::math::matrix::detail::deleted_index(_index.row(), DR),
+        fcppt::math::matrix::detail::deleted_index(_index.column(), DC)>(_matrix);
+  });
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_BASE_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_BASE_DECL_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/is_object.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief The base class for parsers with a given result type.
 
@@ -34,56 +31,29 @@ can reduce compile times, and it hides the concrete (permuted) result type.
 
 \tparam Result The result type of the parser. Must be an #fcppt::record::object.
 */
-template<
-	typename Result
->
+template <typename Result>
 class base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
+  FCPPT_NONMOVABLE(base);
 
-	static_assert(
-		fcppt::record::is_object<
-			Result
-		>::value,
-		"Result must be an fcppt::record::object"
-	);
+  static_assert(fcppt::record::is_object<Result>::value, "Result must be an fcppt::record::object");
+
 protected:
-	base();
+  base();
+
 public:
-	virtual
-	~base() = 0;
+  virtual ~base() = 0;
 
-	using
-	result_type
-	=
-	Result;
+  using result_type = Result;
 
-	[[nodiscard]]
-	virtual
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const = 0;
+  [[nodiscard]] virtual fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const = 0;
 
-	[[nodiscard]]
-	virtual
-	fcppt::options::flag_name_set
-	flag_names() const = 0;
+  [[nodiscard]] virtual fcppt::options::flag_name_set flag_names() const = 0;
 
-	[[nodiscard]]
-	virtual
-	fcppt::options::option_name_set
-	option_names() const = 0;
+  [[nodiscard]] virtual fcppt::options::option_name_set option_names() const = 0;
 
-	[[nodiscard]]
-	virtual
-	fcppt::string
-	usage() const = 0;
+  [[nodiscard]] virtual fcppt::string usage() const = 0;
 };
 
 }

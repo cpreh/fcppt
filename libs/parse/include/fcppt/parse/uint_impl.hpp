@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
 
@@ -18,69 +17,20 @@
 #include <fcppt/parse/detail/basic_int_impl.hpp>
 #include <fcppt/parse/skipper/run.hpp>
 
+template <typename Type>
+fcppt::parse::uint<Type>::uint() = default;
 
-template<
-	typename Type
->
-fcppt::parse::uint<
-	Type
->::uint()
-= default;
-
-template<
-	typename Type
->
-template<
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::uint<
-		Type
-	>::result_type
->
-fcppt::parse::uint<
-	Type
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state,
-	Skipper const &_skipper
-) const
+template <typename Type>
+template <typename Ch, typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::uint<Type>::result_type>
+fcppt::parse::uint<Type>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-	auto const parser{
-		fcppt::parse::make_lexeme(
-			fcppt::parse::detail::basic_int<
-				Type
-			>{}
-		)
-	};
+  auto const parser{fcppt::parse::make_lexeme(fcppt::parse::detail::basic_int<Type>{})};
 
-	return
-		fcppt::either::bind(
-			fcppt::parse::skipper::run(
-				_skipper,
-				_state
-			),
-			[
-				&parser,
-				&_state,
-				&_skipper
-			](
-				fcppt::unit
-			)
-			{
-				return
-					parser.parse(
-						_state,
-						_skipper
-					);
-			}
-		);
+  return fcppt::either::bind(
+      fcppt::parse::skipper::run(_skipper, _state),
+      [&parser, &_state, &_skipper](fcppt::unit) { return parser.parse(_state, _skipper); });
 }
 
 #endif

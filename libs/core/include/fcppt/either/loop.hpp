@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_LOOP_HPP_INCLUDED
 #define FCPPT_EITHER_LOOP_HPP_INCLUDED
 
@@ -19,12 +18,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Loops a function returning an either.
 
@@ -38,89 +35,34 @@ _loop.
 
 \tparam Loop A Function callable as void (success_type<R>), where R is the result of \a Next.
 */
-template<
-	typename Next,
-	typename Loop
->
-[[nodiscard]]
-fcppt::either::failure_type<
-	std::result_of_t<
-		Next()
-	>
->
-loop(
-	Next const &_next,
-	Loop const &_loop
-)
+template <typename Next, typename Loop>
+[[nodiscard]] fcppt::either::failure_type<std::result_of_t<Next()>>
+loop(Next const &_next, Loop const &_loop)
 {
-	using
-	either_type
-	=
-	std::result_of_t<
-		Next()
-	>;
+  using either_type = std::result_of_t<Next()>;
 
-	using
-	failure_type
-	=
-	fcppt::either::failure_type<
-		either_type
-	>;
+  using failure_type = fcppt::either::failure_type<either_type>;
 
-	using
-	optional_failure_type
-	=
-	fcppt::optional::object<
-		failure_type
-	>;
+  using optional_failure_type = fcppt::optional::object<failure_type>;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
-	optional_failure_type error{};
+  optional_failure_type error{};
 
-FCPPT_PP_POP_WARNING
+  FCPPT_PP_POP_WARNING
 
-	while(
-		!error.has_value()
-	)
-	{
-		fcppt::either::match(
-			_next(),
-			[
-				&error
-			](
-				failure_type &&_failure
-			)
-			{
-				error =
-					optional_failure_type{
-						std::move(
-							_failure
-						)
-					};
-			},
-			[
-				&_loop
-			](
-				fcppt::either::success_type<
-					either_type
-				> &&_success
-			)
-			{
-				_loop(
-					std::move(
-						_success
-					)
-				);
-			}
-		);
-	}
+  while (!error.has_value())
+  {
+    fcppt::either::match(
+        _next(),
+        [&error](failure_type &&_failure) { error = optional_failure_type{std::move(_failure)}; },
+        [&_loop](fcppt::either::success_type<either_type> &&_success) {
+          _loop(std::move(_success));
+        });
+  }
 
-	return
-		std::move(
-			error.get_unsafe()
-		);
+  return std::move(error.get_unsafe());
 }
 
 }

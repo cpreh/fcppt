@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/system.hpp>
 #include <fcppt/config/platform.hpp>
@@ -28,74 +27,37 @@
 #include <fcppt/config/external_end.hpp>
 #endif
 
-
-fcppt::optional::object<
-	int
->
-fcppt::system(
-	fcppt::string const &_command
-)
+fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)
 {
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
-	int const result{
-		// NOLINTNEXTLINE(cert-env33-c)
-		::system(
-			fcppt::optional::to_exception(
-				fcppt::to_std_string(
-					_command
-				),
-				[
-					&_command
-				]{
-					return
-						fcppt::exception{
-							FCPPT_TEXT("Failed to convert command \"")
-							+
-							_command
-							+
-							FCPPT_TEXT("\" for fcppt::system!")
-						};
-				}
-			).c_str()
-		)
-	};
+  int const result{
+      // NOLINTNEXTLINE(cert-env33-c)
+      ::system(fcppt::optional::to_exception(fcppt::to_std_string(_command), [&_command] {
+                 return fcppt::exception{
+                     FCPPT_TEXT("Failed to convert command \"") + _command +
+                     FCPPT_TEXT("\" for fcppt::system!")};
+               }).c_str())};
 
-	return
-		fcppt::optional::make_if(
-			// NOLINTNEXTLINE(hicpp-signed-bitwise)
-			WIFEXITED(
-				result
-			),
-			[
-				result
-			]{
-				return
-					// NOLINTNEXTLINE(hicpp-signed-bitwise)
-					WEXITSTATUS(
-						result
-					);
-			}
-		);
+  return fcppt::optional::make_if(
+      // NOLINTNEXTLINE(hicpp-signed-bitwise)
+      WIFEXITED(result),
+      [result] {
+        return
+            // NOLINTNEXTLINE(hicpp-signed-bitwise)
+            WEXITSTATUS(result);
+      });
 #elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-	int const result{
+  int const result
+  {
 #if defined(FCPPT_NARROW_STRING)
-		::system(
+    ::system(
 #else
-		_wsystem(
+    _wsystem(
 #endif
-			_command.c_str()
-		)
-	};
+        _command.c_str())
+  };
 
-	return
-		fcppt::optional::make_if(
-			result
-			!=
-			-1,
-			fcppt::const_(
-				result
-			)
-		);
+  return fcppt::optional::make_if(result != -1, fcppt::const_(result));
 #else
 #error "Implement me!"
 #endif

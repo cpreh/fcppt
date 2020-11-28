@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_HELP_RESULT_HPP_INCLUDED
 #define FCPPT_OPTIONS_HELP_RESULT_HPP_INCLUDED
 
@@ -11,6 +10,5 @@
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/variant/object_impl.hpp>
-
 
 #endif

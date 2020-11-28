@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GET_OR_INSERT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GET_OR_INSERT_HPP_INCLUDED
 
 #include <fcppt/container/get_or_insert_with_result.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Gets from or inserts an element into a map.
 
@@ -28,25 +25,11 @@ object which is then inserted into \a _container and returned.
 
 \tparam Create A function of type <code>Container::mapped_type (Container::key_type)</code>.
 */
-template<
-	typename Container,
-	typename Create
->
-inline
-typename
-Container::mapped_type &
-get_or_insert(
-	Container &_container,
-	typename Container::key_type const &_key,
-	Create const &_create
-)
+template <typename Container, typename Create>
+inline typename Container::mapped_type &get_or_insert(
+    Container &_container, typename Container::key_type const &_key, Create const &_create)
 {
-	return
-		fcppt::container::get_or_insert_with_result(
-			_container,
-			_key,
-			_create
-		).element();
+  return fcppt::container::get_or_insert_with_result(_container, _key, _create).element();
 }
 
 }

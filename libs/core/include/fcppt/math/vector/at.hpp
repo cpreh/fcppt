@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_VECTOR_AT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_AT_HPP_INCLUDED
 
@@ -15,14 +14,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace vector
 {
-
 /**
 \brief Access an element using a compile-time constant
 
@@ -30,35 +27,13 @@ namespace vector
 
 \tparam Vector Must be an #fcppt::math::vector::object.
 */
-template<
-	fcppt::math::size_type Index,
-	typename Vector
->
-inline
-fcppt::container::to_reference_type<
-	std::remove_reference_t<
-		Vector
-	>
->
-at(
-	Vector &_value
-)
+template <fcppt::math::size_type Index, typename Vector>
+inline fcppt::container::to_reference_type<std::remove_reference_t<Vector>> at(Vector &_value)
 {
-	static_assert(
-		fcppt::math::vector::is_vector<
-			std::remove_cv_t<
-				Vector
-			>
-		>::value,
-		"Vector must be a vector"
-	);
+  static_assert(
+      fcppt::math::vector::is_vector<std::remove_cv_t<Vector>>::value, "Vector must be a vector");
 
-	return
-		fcppt::math::detail::checked_access<
-			Index
-		>(
-			_value
-		);
+  return fcppt::math::detail::checked_access<Index>(_value);
 }
 
 }

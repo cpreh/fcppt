@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_RECURSIVE_DIRECTORY_RANGE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_RECURSIVE_DIRECTORY_RANGE_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief A range for recursive directory iterators.
 
@@ -29,26 +26,20 @@ namespace filesystem
 class recursive_directory_range
 {
 public:
-	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	recursive_directory_range(
-		std::filesystem::path const &,
-		std::filesystem::directory_options,
-		fcppt::reference<
-			std::error_code
-		>
-	);
+  FCPPT_FILESYSTEM_DETAIL_SYMBOL
+  recursive_directory_range(
+      std::filesystem::path const &,
+      std::filesystem::directory_options,
+      fcppt::reference<std::error_code>);
 
-	[[nodiscard]]
-	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	std::filesystem::recursive_directory_iterator
-	begin() const;
+  [[nodiscard]] FCPPT_FILESYSTEM_DETAIL_SYMBOL std::filesystem::recursive_directory_iterator
+  begin() const;
 
-	[[nodiscard]]
-	FCPPT_FILESYSTEM_DETAIL_SYMBOL
-	std::filesystem::recursive_directory_iterator
-	end() const;
+  [[nodiscard]] FCPPT_FILESYSTEM_DETAIL_SYMBOL std::filesystem::recursive_directory_iterator
+  end() const;
+
 private:
-	std::filesystem::recursive_directory_iterator begin_;
+  std::filesystem::recursive_directory_iterator begin_;
 };
 
 }

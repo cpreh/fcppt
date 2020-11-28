@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_ISO_DETAIL_IS_TERMINAL_HPP_INCLUDED
 #define FCPPT_TYPE_ISO_DETAIL_IS_TERMINAL_HPP_INCLUDED
 
@@ -13,25 +12,15 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace type_iso
 {
 namespace detail
 {
-
-template<
-	typename Type
->
-using is_terminal
-=
-std::is_base_of<
-	fcppt::type_iso::detail::terminal_tag,
-	fcppt::type_iso::transform<
-		Type
-	>
->;
+template <typename Type>
+using is_terminal =
+    std::is_base_of<fcppt::type_iso::detail::terminal_tag, fcppt::type_iso::transform<Type>>;
 
 }
 }

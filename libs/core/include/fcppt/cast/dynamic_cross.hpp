@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_DYNAMIC_CROSS_HPP_INCLUDED
 #define FCPPT_CAST_DYNAMIC_CROSS_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Tries a <code>dynamic_cast</code> on unrelated types, returning an empty
 optional on failure
@@ -39,37 +36,14 @@ Here is an example:
 
 \see #fcppt::cast::dynamic
 */
-template<
-	typename Dest,
-	typename Src
->
-inline
-fcppt::optional::reference<
-	Dest
->
-dynamic_cross(
-	Src &_src
-)
-noexcept
+template <typename Dest, typename Src>
+inline fcppt::optional::reference<Dest> dynamic_cross(Src &_src) noexcept
 {
-	static_assert(
-		!fcppt::type_traits::is_base_of<
-			std::remove_cv_t<
-				Src
-			>,
-			std::remove_cv_t<
-				Dest
-			>
-		>::value,
-		"dynamic_cross can only be used on unrelated types"
-	);
+  static_assert(
+      !fcppt::type_traits::is_base_of<std::remove_cv_t<Src>, std::remove_cv_t<Dest>>::value,
+      "dynamic_cross can only be used on unrelated types");
 
-	return
-		fcppt::cast::detail::dynamic<
-			Dest
-		>(
-			_src
-		);
+  return fcppt::cast::detail::dynamic<Dest>(_src);
 }
 
 }

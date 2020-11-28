@@ -4,13 +4,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_AUTO_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_AUTO_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/connection.hpp>
-
 
 #endif

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 #define FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 
@@ -17,12 +16,10 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Cast between integral types, checking for truncation
 
@@ -38,55 +35,20 @@ converted value iff the conversion results in no truncation, otherwise
 
 \throw fcppt::cast::bad_truncation_check if truncation occurs
 */
-template<
-	typename Dest,
-	typename Source
->
-Dest
-truncation_check(
-	Source const _source
-)
+template <typename Dest, typename Source>
+Dest truncation_check(Source const _source)
 {
-	static_assert(
-		std::is_integral<
-			Source
-		>::value
-		&&
-		std::is_integral<
-			Dest
-		>::value,
-		"truncation_check_cast can only cast from integral to integral types"
-	);
+  static_assert(
+      std::is_integral<Source>::value && std::is_integral<Dest>::value,
+      "truncation_check_cast can only cast from integral to integral types");
 
-	return
-		fcppt::optional::to_exception(
-			fcppt::cast::detail::truncation_check<
-				Dest
-			>(
-				_source
-			),
-			[
-				_source
-			]
-			{
-				return
-					fcppt::cast::bad_truncation_check(
-						fcppt::output_to_fcppt_string(
-							_source
-						),
-						std::type_index(
-							typeid(
-								Source
-							)
-						),
-						std::type_index(
-							typeid(
-								Dest
-							)
-						)
-					);
-			}
-		);
+  return fcppt::optional::to_exception(
+      fcppt::cast::detail::truncation_check<Dest>(_source), [_source] {
+        return fcppt::cast::bad_truncation_check(
+            fcppt::output_to_fcppt_string(_source),
+            std::type_index(typeid(Source)),
+            std::type_index(typeid(Dest)));
+      });
 }
 
 }

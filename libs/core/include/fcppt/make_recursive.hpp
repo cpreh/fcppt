@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MAKE_RECURSIVE_HPP_INCLUDED
 #define FCPPT_MAKE_RECURSIVE_HPP_INCLUDED
 
@@ -13,39 +12,17 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Creates an #fcppt::recursive.
 
 \ingroup fcpptvarious
 */
-template<
-	typename Type
->
-fcppt::recursive<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>
->
-make_recursive(
-	Type &&_value
-)
+template <typename Type>
+fcppt::recursive<fcppt::type_traits::remove_cv_ref_t<Type>> make_recursive(Type &&_value)
 {
-	return
-		fcppt::recursive<
-			fcppt::type_traits::remove_cv_ref_t<
-				Type
-			>
-		>{
-			std::forward<
-				Type
-			>(
-				_value
-			)
-		};
+  return fcppt::recursive<fcppt::type_traits::remove_cv_ref_t<Type>>{std::forward<Type>(_value)};
 }
 
 }

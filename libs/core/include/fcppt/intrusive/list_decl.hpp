@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_INTRUSIVE_LIST_DECL_HPP_INCLUDED
 #define FCPPT_INTRUSIVE_LIST_DECL_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <fcppt/intrusive/iterator_fwd.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace intrusive
 {
-
 /**
 \brief An intrusive list.
 
@@ -28,77 +25,41 @@ Elements that are going to be part of a list must derive from
 parameter and as long as they are not destroyed or moved from, they are part of
 the list.
 */
-template<
-	typename Type
->
+template <typename Type>
 class list
 {
-	FCPPT_NONCOPYABLE(
-		list
-	);
+  FCPPT_NONCOPYABLE(list);
+
 public:
-	list();
+  list();
 
-	list(
-		list &&
-	)
-	noexcept;
+  list(list &&) noexcept;
 
-	list &
-	operator=(
-		list &&
-	)
-	noexcept;
+  list &operator=(list &&) noexcept;
 
-	~list();
+  ~list();
 
-	using
-	iterator
-	=
-	fcppt::intrusive::iterator<
-		Type
-	>;
+  using iterator = fcppt::intrusive::iterator<Type>;
 
-	using
-	const_iterator
-	=
-	fcppt::intrusive::iterator<
-		Type const
-	>;
+  using const_iterator = fcppt::intrusive::iterator<Type const>;
 
-	[[nodiscard]]
-	iterator
-	begin();
+  [[nodiscard]] iterator begin();
 
-	[[nodiscard]]
-	iterator
-	end();
+  [[nodiscard]] iterator end();
 
-	[[nodiscard]]
-	const_iterator
-	begin() const;
+  [[nodiscard]] const_iterator begin() const;
 
-	[[nodiscard]]
-	const_iterator
-	end() const;
+  [[nodiscard]] const_iterator end() const;
 
-	[[nodiscard]]
-	bool
-	empty() const;
+  [[nodiscard]] bool empty() const;
+
 private:
-	using
-	base_type
-	=
-	fcppt::intrusive::base<
-		Type
-	>;
+  using base_type = fcppt::intrusive::base<Type>;
 
-	template<
-		typename T
-	>
-	friend class fcppt::intrusive::base;
+  template <typename T>
+  friend class fcppt::intrusive::base;
 
-	base_type head_;
+  base_type head_;
 };
 
 }

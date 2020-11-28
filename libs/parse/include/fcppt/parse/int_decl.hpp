@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_INT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_INT_DECL_HPP_INCLUDED
 
@@ -16,58 +15,25 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Type
->
-class int_
-:
-	private fcppt::parse::tag
+template <typename Type>
+class int_ : private fcppt::parse::tag
 {
 public:
-	static_assert(
-		std::is_integral_v<
-			Type
-		>,
-		"Type must be an integral type"
-	);
+  static_assert(std::is_integral_v<Type>, "Type must be an integral type");
 
-	static_assert(
-		std::is_signed_v<
-			Type
-		>,
-		"Type must be signed"
-	);
+  static_assert(std::is_signed_v<Type>, "Type must be signed");
 
-	int_();
+  int_();
 
-	using
-	result_type
-	=
-	Type;
+  using result_type = Type;
 
-	template<
-		typename Ch,
-		typename Skipper
-	>
-	[[nodiscard]]
-	fcppt::parse::result<
-		Ch,
-		result_type
-	>
-	parse(
-		fcppt::reference<
-			fcppt::parse::basic_stream<
-				Ch
-			>
-		>,
-		Skipper const &
-	) const;
+  template <typename Ch, typename Skipper>
+  [[nodiscard]] fcppt::parse::result<Ch, result_type>
+  parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
 };
 
 }

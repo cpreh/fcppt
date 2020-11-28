@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_UNIT_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_UNIT_DECL_HPP_INCLUDED
 
@@ -18,12 +17,10 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief A parser that succeeds when provided with no arguments.
 
@@ -31,49 +28,24 @@ namespace options
 
 \tparam Label An #fcppt::record::label.
 */
-template<
-	typename Label
->
+template <typename Label>
 class unit
 {
 public:
-	unit();
+  unit();
 
-	using
-	element_type
-	=
-	fcppt::record::element<
-		Label,
-		fcppt::unit
-	>;
+  using element_type = fcppt::record::element<Label, fcppt::unit>;
 
-	using
-	result_type
-	=
-	fcppt::record::object<
-		element_type
-	>;
+  using result_type = fcppt::record::object<element_type>;
 
-	[[nodiscard]]
-	fcppt::options::parse_result<
-		result_type
-	>
-	parse(
-		fcppt::options::state &&,
-		fcppt::options::parse_context const &
-	) const;
+  [[nodiscard]] fcppt::options::parse_result<result_type>
+  parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
-	[[nodiscard]]
-	fcppt::options::flag_name_set
-	flag_names() const;
+  [[nodiscard]] fcppt::options::flag_name_set flag_names() const;
 
-	[[nodiscard]]
-	fcppt::options::option_name_set
-	option_names() const;
+  [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-	[[nodiscard]]
-	fcppt::string
-	usage() const;
+  [[nodiscard]] fcppt::string usage() const;
 };
 
 }

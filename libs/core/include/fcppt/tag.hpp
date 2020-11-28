@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TAG_HPP_INCLUDED
 #define FCPPT_TAG_HPP_INCLUDED
 
 #include <fcppt/tag_fwd.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief A value for a type name
 
@@ -20,15 +17,10 @@ namespace fcppt
 
 This class can be used to pass the type \a Type as a value.
 */
-template<
-	typename Type
->
+template <typename Type>
 struct tag
 {
-	using
-	type
-	=
-	Type;
+  using type = Type;
 };
 
 }

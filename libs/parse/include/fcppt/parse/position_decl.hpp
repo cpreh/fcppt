@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_POSITION_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_POSITION_DECL_HPP_INCLUDED
 
@@ -14,49 +13,28 @@
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch
->
+template <typename Ch>
 class position
 {
 public:
-	using
-	pos_type
-	=
-	typename
-	std::basic_istream<
-		Ch
-	>::pos_type;
+  using pos_type = typename std::basic_istream<Ch>::pos_type;
 
-	using
-	optional_location
-	=
-	fcppt::optional::object<
-		fcppt::parse::location
-	>;
+  using optional_location = fcppt::optional::object<fcppt::parse::location>;
 
-	position(
-		pos_type,
-		optional_location
-	);
+  position(pos_type, optional_location);
 
-	[[nodiscard]]
-	pos_type const &
-	pos() const;
+  [[nodiscard]] pos_type const &pos() const;
 
-	[[nodiscard]]
-	optional_location const &
-	location() const;
+  [[nodiscard]] optional_location const &location() const;
+
 private:
-	pos_type pos_;
+  pos_type pos_;
 
-	optional_location location_;
+  optional_location location_;
 };
 
 }

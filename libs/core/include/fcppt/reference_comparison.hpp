@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_REFERENCE_COMPARISON_HPP_INCLUDED
 #define FCPPT_REFERENCE_COMPARISON_HPP_INCLUDED
 
@@ -12,10 +11,8 @@
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Compares two references for equality
 
@@ -27,24 +24,10 @@ refer to the same object.
 \param _a The first reference
 \param _b The second reference
 */
-template<
-	typename T
->
-bool
-operator==(
-	fcppt::reference<
-		T
-	> const &_a,
-	fcppt::reference<
-		T
-	> const &_b
-)
-noexcept
+template <typename T>
+bool operator==(fcppt::reference<T> const &_a, fcppt::reference<T> const &_b) noexcept
 {
-	return
-		&_a.get()
-		==
-		&_b.get();
+  return &_a.get() == &_b.get();
 }
 
 /**
@@ -57,22 +40,10 @@ Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 \param _a The first reference
 \param _b The second reference
 */
-template<
-	typename T
->
-bool
-operator!=(
-	fcppt::reference<
-		T
-	> const &_a,
-	fcppt::reference<
-		T
-	> const &_b
-)
-noexcept
+template <typename T>
+bool operator!=(fcppt::reference<T> const &_a, fcppt::reference<T> const &_b) noexcept
 {
-	return
-		!(_a == _b);
+  return !(_a == _b);
 }
 
 /**
@@ -86,27 +57,10 @@ Compares \a _a and \a _b lexicographically by comparing the stored pointers via
 \param _a The first reference
 \param _b The second reference
 */
-template<
-	typename T
->
-bool
-operator<(
-	fcppt::reference<
-		T
-	> const &_a,
-	fcppt::reference<
-		T
-	> const &_b
-)
-noexcept
+template <typename T>
+bool operator<(fcppt::reference<T> const &_a, fcppt::reference<T> const &_b) noexcept
 {
-	return
-		std::less<
-			T *
-		>()(
-			&_a.get(),
-			&_b.get()
-		);
+  return std::less<T *>()(&_a.get(), &_b.get());
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_EPSILON_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_EPSILON_DECL_HPP_INCLUDED
 
@@ -13,35 +12,20 @@
 #include <fcppt/parse/skipper/result_fwd.hpp>
 #include <fcppt/parse/skipper/tag.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
 namespace skipper
 {
-
-class epsilon
-:
-	private fcppt::parse::skipper::tag
+class epsilon : private fcppt::parse::skipper::tag
 {
 public:
-	epsilon();
+  epsilon();
 
-	template<
-		typename Ch
-	>
-	[[nodiscard]]
-	fcppt::parse::skipper::result<
-		Ch
-	>
-	skip(
-		fcppt::reference<
-			fcppt::parse::basic_stream<
-				Ch
-			>
-		>
-	) const;
+  template <typename Ch>
+  [[nodiscard]] fcppt::parse::skipper::result<Ch>
+      skip(fcppt::reference<fcppt::parse::basic_stream<Ch>>) const;
 };
 
 }

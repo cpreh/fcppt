@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_MAKE_DEFAULT_VALUE_HPP_INCLUDED
 #define FCPPT_OPTIONS_MAKE_DEFAULT_VALUE_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief Creates a default value
 
@@ -27,44 +24,16 @@ namespace options
 
 \tparam Type Must be an #fcppt::optional::object.
 */
-template<
-	typename Type
->
-inline
-fcppt::options::default_value<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>
->
-make_default_value(
-	Type &&_value
-)
+template <typename Type>
+inline fcppt::options::default_value<fcppt::type_traits::remove_cv_ref_t<Type>>
+make_default_value(Type &&_value)
 {
-	using
-	value_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>;
+  using value_type = fcppt::type_traits::remove_cv_ref_t<Type>;
 
-	static_assert(
-		fcppt::optional::is_object<
-			value_type
-		>::value,
-		"Type must be an fcppt::optional::object"
-	);
+  static_assert(
+      fcppt::optional::is_object<value_type>::value, "Type must be an fcppt::optional::object");
 
-	return
-		fcppt::options::default_value<
-			value_type
-		>{
-			std::forward<
-				Type
-			>(
-				_value
-			)
-		};
-
+  return fcppt::options::default_value<value_type>{std::forward<Type>(_value)};
 }
 
 }

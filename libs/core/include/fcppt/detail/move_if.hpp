@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DETAIL_MOVE_IF_HPP_INCLUDED
 #define FCPPT_DETAIL_MOVE_IF_HPP_INCLUDED
 
@@ -11,57 +10,31 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace detail
 {
-
-template<
-	bool Cond
->
+template <bool Cond>
 struct move_if;
 
-template<>
-struct move_if<
-	false
->
+template <>
+struct move_if<false>
 {
-	template<
-		typename Arg
-	>
-	inline
-	static
-	Arg &
-	execute(
-		Arg &_arg
-	)
-	{
-		return
-			_arg;
-	}
+  template <typename Arg>
+  inline static Arg &execute(Arg &_arg)
+  {
+    return _arg;
+  }
 };
 
-template<>
-struct move_if<
-	true
->
+template <>
+struct move_if<true>
 {
-	template<
-		typename Arg
-	>
-	inline
-	static
-	Arg &&
-	execute(
-		Arg &_arg
-	)
-	{
-		return
-			std::move(
-				_arg
-			);
-	}
+  template <typename Arg>
+  inline static Arg &&execute(Arg &_arg)
+  {
+    return std::move(_arg);
+  }
 };
 
 }

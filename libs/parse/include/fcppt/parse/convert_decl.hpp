@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CONVERT_DECL_HPP_INCLUDED
 
@@ -18,67 +17,32 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
-template<
-	typename Parser,
-	typename Result
->
-class convert
-:
-	private fcppt::parse::tag
+template <typename Parser, typename Result>
+class convert : private fcppt::parse::tag
 {
 public:
-	using
-	result_type
-	=
-	Result;
+  using result_type = Result;
 
-	using
-	function_type
-	=
-	fcppt::function<
-		result_type(
-			fcppt::parse::result_of<
-				Parser
-			> &&
-		)
-	>;
+  using function_type = fcppt::function<result_type(fcppt::parse::result_of<Parser> &&)>;
 
-	convert(
-		Parser &&,
-		function_type &&
-	);
+  convert(Parser &&, function_type &&);
 
-	template<
-		typename Ch,
-		typename Skipper
-	>
-	[[nodiscard]]
-	fcppt::parse::result<
-		Ch,
-		result_type
-	>
-	parse(
-		fcppt::reference<
-			fcppt::parse::basic_stream<
-				Ch
-			>
-		>,
-		Skipper const &
-	) const;
+  template <typename Ch, typename Skipper>
+  [[nodiscard]] fcppt::parse::result<Ch, result_type>
+  parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
+
 private:
-	Parser parser_;
+  Parser parser_;
 
-	function_type convert_;
+  function_type convert_;
 };
 
 FCPPT_PP_POP_WARNING

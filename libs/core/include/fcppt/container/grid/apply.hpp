@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_APPLY_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_APPLY_HPP_INCLUDED
 
@@ -21,14 +20,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Applies a function to multiple grids of the same size
 
@@ -40,180 +37,49 @@ is a grid of size <code>s</code> such that for every position <code>p <
 s</code>, <code>r[p] = _function(g_1[p],...,g_n[p])</code>. If g_1,...g_n are
 not of the same size, the result is an empty grid.
 */
-template<
-	typename Function,
-	typename Grid1,
-	typename... Grids
->
-auto
-apply(
-	Function const &_function,
-	Grid1 &&_grid1,
-	Grids &&... _grids
-)
-->
-fcppt::container::grid::object<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Grid1
-			>(
-				_grid1.get_unsafe(
-					std::declval<
-						fcppt::container::grid::pos_type<
-							fcppt::type_traits::remove_cv_ref_t<
-								Grid1
-							>
-						>
-					>()
-				)
-			),
-			fcppt::move_if_rvalue<
-				Grids
-			>(
-				_grids.get_unsafe(
-					std::declval<
-						fcppt::container::grid::pos_type<
-							fcppt::type_traits::remove_cv_ref_t<
-								Grid1
-							>
-						>
-					>()
-				)
-			)...
-		)
-	),
-	fcppt::type_traits::remove_cv_ref_t<
-		Grid1
-	>::static_size::value
->
+template <typename Function, typename Grid1, typename... Grids>
+auto apply(Function const &_function, Grid1 &&_grid1, Grids &&..._grids)
+    -> fcppt::container::grid::object<
+        decltype(_function(
+            fcppt::move_if_rvalue<Grid1>(
+                _grid1.get_unsafe(std::declval<fcppt::container::grid::pos_type<
+                                      fcppt::type_traits::remove_cv_ref_t<Grid1>>>())),
+            fcppt::move_if_rvalue<Grids>(
+                _grids.get_unsafe(std::declval<fcppt::container::grid::pos_type<
+                                      fcppt::type_traits::remove_cv_ref_t<Grid1>>>()))...)),
+        fcppt::type_traits::remove_cv_ref_t<Grid1>::static_size::value>
 {
-	using
-	grid1
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Grid1
-	>;
+  using grid1 = fcppt::type_traits::remove_cv_ref_t<Grid1>;
 
-	static_assert(
-		fcppt::container::grid::is_object<
-			grid1
-		>::value,
-		"Grid1 must be a grid"
-	);
+  static_assert(fcppt::container::grid::is_object<grid1>::value, "Grid1 must be a grid");
 
-	static_assert(
-		::metal::all_of<
-			::metal::list<
-				fcppt::type_traits::remove_cv_ref_t<
-					Grids
-				>...
-			>,
-			::metal::trait<
-				fcppt::container::grid::is_object
-			>
-		>::value,
-		"Grids must all be grids"
-	);
+  static_assert(
+      ::metal::all_of<
+          ::metal::list<fcppt::type_traits::remove_cv_ref_t<Grids>...>,
+          ::metal::trait<fcppt::container::grid::is_object>>::value,
+      "Grids must all be grids");
 
-	using
-	pos_type
-	=
-	fcppt::container::grid::pos_type<
-		grid1
-	>;
+  using pos_type = fcppt::container::grid::pos_type<grid1>;
 
-	using
-	result_type
-	=
-	fcppt::container::grid::object<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Grid1
-				>(
-					_grid1.get_unsafe(
-						std::declval<
-							pos_type
-						>()
-					)
-				),
-				fcppt::move_if_rvalue<
-					Grids
-				>(
-					_grids.get_unsafe(
-						std::declval<
-							pos_type
-						>()
-					)
-				)...
-			)
-		),
-		grid1::static_size::value
-	>;
+  using result_type = fcppt::container::grid::object<
+      decltype(_function(
+          fcppt::move_if_rvalue<Grid1>(_grid1.get_unsafe(std::declval<pos_type>())),
+          fcppt::move_if_rvalue<Grids>(_grids.get_unsafe(std::declval<pos_type>()))...)),
+      grid1::static_size::value>;
 
-	using
-	dim_type
-	=
-	fcppt::container::grid::dim_type<
-		grid1
-	>;
+  using dim_type = fcppt::container::grid::dim_type<grid1>;
 
-	return
-		fcppt::algorithm::all_of(
-			std::array<
-				dim_type,
-				sizeof...(
-					Grids
-				)
-			>{{
-				_grids.size()...
-			}},
-			[
-				&_grid1
-			](
-				dim_type const _dim
-			)
-			{
-				return
-					_dim
-					==
-					_grid1.size();
-			}
-		)
-		?
-			result_type(
-				_grid1.size(),
-				[
-					&_function,
-					&_grid1,
-					&_grids...
-				](
-					pos_type const _pos
-				)
-				{
-					return
-						_function(
-							fcppt::move_if_rvalue<
-								Grid1
-							>(
-								_grid1.get_unsafe(
-									_pos
-								)
-							),
-							fcppt::move_if_rvalue<
-								Grids
-							>(
-								_grids.get_unsafe(
-									_pos
-								)
-							)...
-						);
-				}
-			)
-		:
-			result_type()
-		;
+  return fcppt::algorithm::all_of(
+             std::array<dim_type, sizeof...(Grids)>{{_grids.size()...}},
+             [&_grid1](dim_type const _dim) { return _dim == _grid1.size(); })
+             ? result_type(
+                   _grid1.size(),
+                   [&_function, &_grid1, &_grids...](pos_type const _pos) {
+                     return _function(
+                         fcppt::move_if_rvalue<Grid1>(_grid1.get_unsafe(_pos)),
+                         fcppt::move_if_rvalue<Grids>(_grids.get_unsafe(_pos))...);
+                   })
+             : result_type();
 }
 
 }

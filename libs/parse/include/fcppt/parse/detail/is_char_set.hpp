@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_IS_CHAR_SET_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_IS_CHAR_SET_HPP_INCLUDED
 
@@ -12,33 +11,19 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
 namespace detail
 {
-
-template<
-	typename
->
-struct is_char_set
-:
-std::false_type
+template <typename>
+struct is_char_set : std::false_type
 {
 };
 
-template<
-	typename Ch
->
-struct is_char_set<
-	fcppt::parse::basic_char_set<
-		Ch
-	>
->
-:
-std::true_type
+template <typename Ch>
+struct is_char_set<fcppt::parse::basic_char_set<Ch>> : std::true_type
 {
 };
 

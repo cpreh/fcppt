@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VERSION_INTEGRAL_C_HPP_INCLUDED
 #define FCPPT_VERSION_INTEGRAL_C_HPP_INCLUDED
 
@@ -12,24 +11,15 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief An integral constant for a version component
 
 \ingroup fcpptvarious
 */
-template<
-	fcppt::version_int Value
->
-using version_integral_c
-=
-std::integral_constant<
-	fcppt::version_int,
-	Value
->;
+template <fcppt::version_int Value>
+using version_integral_c = std::integral_constant<fcppt::version_int, Value>;
 
 }
 

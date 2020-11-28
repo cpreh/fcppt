@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_MAYBE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAYBE_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Transforms an optional value or returns a default value
 
@@ -37,69 +34,26 @@ moved iff \a _optional is an rvalue.
 
 \tparam Transform Must be a function of type <code>Ret (Optional::value_type)</code>
 */
-template<
-	typename Optional,
-	typename Default,
-	typename Transform
->
-std::result_of_t<
-	Default()
->
-maybe(
-	Optional &&_optional,
-	Default const &_default,
-	Transform const &_transform
-)
+template <typename Optional, typename Default, typename Transform>
+std::result_of_t<Default()>
+maybe(Optional &&_optional, Default const &_default, Transform const &_transform)
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
+  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
-	static_assert(
-		std::is_same_v<
-			std::invoke_result_t<
-				Default
-			>,
-			std::invoke_result_t<
-				Transform,
-				decltype(
-					fcppt::move_if_rvalue<
-						Optional
-					>(
-						_optional.get_unsafe()
-					)
-				)
-			>
-		>,
-		"Default and Transform must return the same type"
-	);
+  static_assert(
+      std::is_same_v<
+          std::invoke_result_t<Default>,
+          std::invoke_result_t<
+              Transform,
+              decltype(fcppt::move_if_rvalue<Optional>(_optional.get_unsafe()))>>,
+      "Default and Transform must return the same type");
 
-	return
-		fcppt::cond(
-			_optional.has_value(),
-			[
-				&_transform,
-				&_optional
-			]()
-			->
-			std::invoke_result_t<
-				Default
-			>
-			{
-				return
-					_transform(
-						fcppt::move_if_rvalue<
-							Optional
-						>(
-							_optional.get_unsafe()
-						)
-					);
-			},
-			_default
-		);
+  return fcppt::cond(
+      _optional.has_value(),
+      [&_transform, &_optional]() -> std::invoke_result_t<Default> {
+        return _transform(fcppt::move_if_rvalue<Optional>(_optional.get_unsafe()));
+      },
+      _default);
 }
 
 }

@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SIZE_TYPE_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-
 
 namespace fcppt
 {
@@ -16,16 +14,12 @@ namespace container
 {
 namespace grid
 {
-
 /**
 \brief An unsigned type used to count grid dimensions
 
 \ingroup fcpptcontainergrid
 */
-using
-size_type
-=
-fcppt::math::size_type;
+using size_type = fcppt::math::size_type;
 
 }
 }

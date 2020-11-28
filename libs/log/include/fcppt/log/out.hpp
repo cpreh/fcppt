@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_OUT_HPP_INCLUDED
 #define FCPPT_LOG_OUT_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 
-
 namespace fcppt
 {
 namespace log
 {
-
 /**
 \brief Trampoline to create logger output
 
@@ -25,8 +22,7 @@ namespace log
 Use this object to output to a log stream.
 */
 FCPPT_LOG_DETAIL_SYMBOL
-extern
-fcppt::log::detail::output_helper const out;
+extern fcppt::log::detail::output_helper const out;
 
 }
 }

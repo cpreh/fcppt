@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 
@@ -16,122 +15,55 @@
 #include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief An iterator over grid position
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename SizeType,
-	fcppt::container::grid::size_type Size
->
-class pos_iterator final
-:
-	public
-		fcppt::container::grid::detail::pos_iterator_base<
-			SizeType,
-			Size
-		>
+template <typename SizeType, fcppt::container::grid::size_type Size>
+class pos_iterator final : public fcppt::container::grid::detail::pos_iterator_base<SizeType, Size>
 {
-	using
-	base_type
-	=
-	fcppt::container::grid::detail::pos_iterator_base<
-		SizeType,
-		Size
-	>;
+  using base_type = fcppt::container::grid::detail::pos_iterator_base<SizeType, Size>;
+
 public:
-	using
-	value_type
-	=
-	fcppt::type_traits::value_type<
-		base_type
-	>;
+  using value_type = fcppt::type_traits::value_type<base_type>;
 
-	using
-	pos
-	=
-	value_type;
+  using pos = value_type;
 
-	using
-	size_type
-	=
-	fcppt::type_traits::value_type<
-		pos
-	>;
+  using size_type = fcppt::type_traits::value_type<pos>;
 
-	using
-	reference
-	=
-	typename
-	base_type::reference;
+  using reference = typename base_type::reference;
 
-	using
-	pointer
-	=
-	typename
-	base_type::pointer;
+  using pointer = typename base_type::pointer;
 
-	using
-	iterator_category
-	=
-	typename
-	base_type::iterator_category;
+  using iterator_category = typename base_type::iterator_category;
 
-	using
-	difference_type
-	=
-	typename
-	base_type::difference_type;
+  using difference_type = typename base_type::difference_type;
 
-	using
-	min
-	=
-	fcppt::container::grid::min<
-		size_type,
-		Size
-	>;
+  using min = fcppt::container::grid::min<size_type, Size>;
 
-	using
-	sup
-	=
-	fcppt::container::grid::sup<
-		size_type,
-		Size
-	>;
+  using sup = fcppt::container::grid::sup<size_type, Size>;
 
-	pos_iterator(
-		pos,
-		min,
-		sup
-	);
+  pos_iterator(pos, min, sup);
 
-	void
-	increment();
+  void increment();
 
-	[[nodiscard]]
-	reference
-	dereference() const;
+  [[nodiscard]] reference dereference() const;
 
-	[[nodiscard]]
-	bool
-	equal(
-		pos_iterator const &
-	) const;
+  [[nodiscard]] bool equal(pos_iterator const &) const;
+
 private:
-	pos current_;
+  pos current_;
 
-	min min_;
+  min min_;
 
-	sup sup_;
+  sup sup_;
 };
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_APPLY_HPP_INCLUDED
 #define FCPPT_OPTIONAL_APPLY_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Applies a function to multiple optionals or returns nothing
 
@@ -34,61 +31,16 @@ where <code>R</code> is the result type
 
 \tparam Optionals A parameter pack of optionals
 */
-template<
-	typename Function,
-	typename... Optionals
->
-inline
-auto
-apply(
-	Function const &_function,
-	Optionals &&... _optionals
-)
-->
-fcppt::optional::object<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Optionals
-			>(
-				_optionals.get_unsafe()
-			)...
-		)
-	)
->
+template <typename Function, typename... Optionals>
+inline auto apply(Function const &_function, Optionals &&..._optionals) -> fcppt::optional::object<
+    decltype(_function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>
 {
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Optionals
-				>(
-					_optionals.get_unsafe()
-				)...
-			)
-		)
-	>;
+  using result_type = fcppt::optional::object<decltype(
+      _function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>;
 
-	return
-		fcppt::optional::detail::has_value_all(
-			_optionals...
-		)
-		?
-			result_type(
-				_function(
-					fcppt::move_if_rvalue<
-						Optionals
-					>(
-						_optionals.get_unsafe()
-					)...
-				)
-			)
-		:
-			result_type{}
-		;
+  return fcppt::optional::detail::has_value_all(_optionals...)
+             ? result_type(_function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))
+             : result_type{};
 }
 
 }

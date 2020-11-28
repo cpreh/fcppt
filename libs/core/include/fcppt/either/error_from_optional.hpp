@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_ERROR_FROM_OPTIONAL_HPP_INCLUDED
 #define FCPPT_EITHER_ERROR_FROM_OPTIONAL_HPP_INCLUDED
 
@@ -18,12 +17,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Converts an optional error to an either.
 
@@ -32,65 +29,19 @@ namespace either
 If \a _optional is set to <code>x</code>, then <code>x</code> is returned as
 the failure value.
 */
-template<
-	typename Optional
->
-fcppt::either::error<
-	fcppt::optional::value_type<
-		fcppt::type_traits::remove_cv_ref_t<
-			Optional
-		>
-	>
->
-error_from_optional(
-	Optional &&_optional
-)
+template <typename Optional>
+fcppt::either::error<fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>
+error_from_optional(Optional &&_optional)
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
+  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
-	using
-	result_type
-	=
-	fcppt::either::error<
-		fcppt::optional::value_type<
-			fcppt::type_traits::remove_cv_ref_t<
-				Optional
-			>
-		>
-	>;
+  using result_type = fcppt::either::error<
+      fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>;
 
-	return
-		fcppt::optional::maybe(
-			std::forward<
-				Optional
-			>(
-				_optional
-			),
-			[]{
-				return
-					result_type{
-						fcppt::either::no_error{}
-					};
-			},
-			[](
-				auto &&_value
-			)
-			{
-				return
-					result_type(
-						fcppt::move_if_rvalue<
-							Optional
-						>(
-							_value
-						)
-					);
-			}
-		);
+  return fcppt::optional::maybe(
+      std::forward<Optional>(_optional),
+      [] { return result_type{fcppt::either::no_error{}}; },
+      [](auto &&_value) { return result_type(fcppt::move_if_rvalue<Optional>(_value)); });
 }
 
 }

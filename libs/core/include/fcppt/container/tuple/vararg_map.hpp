@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TUPLE_VARARG_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_VARARG_MAP_HPP_INCLUDED
 
@@ -15,14 +14,12 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace tuple
 {
-
 /**
 \brief Combination of #fcppt::container::tuple::map and <code>std::apply</code>.
 
@@ -30,47 +27,19 @@ namespace tuple
 
 \tparam Tuple Must be a <code>std::tuple</code>.
 */
-template<
-	typename Tuple,
-	typename AnchorFunction,
-	typename ElementFunction
->
-inline
-decltype(
-	auto
-)
-vararg_map(
-	Tuple &&_tuple,
-	AnchorFunction const &_anchor_function,
-	ElementFunction const &_element_function
-)
+template <typename Tuple, typename AnchorFunction, typename ElementFunction>
+inline decltype(auto) vararg_map(
+    Tuple &&_tuple,
+    AnchorFunction const &_anchor_function,
+    ElementFunction const &_element_function)
 {
-	using
-	tuple_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Tuple
-	>;
+  using tuple_type = fcppt::type_traits::remove_cv_ref_t<Tuple>;
 
-	static_assert(
-		fcppt::type_traits::is_std_tuple<
-			tuple_type
-		>::value,
-		"Tuple must be a tuple"
-	);
+  static_assert(fcppt::type_traits::is_std_tuple<tuple_type>::value, "Tuple must be a tuple");
 
-	return
-		std::apply(
-			_anchor_function,
-			fcppt::container::tuple::map(
-				std::forward<
-					Tuple
-				>(
-					_tuple
-				),
-				_element_function
-			)
-		);
+  return std::apply(
+      _anchor_function,
+      fcppt::container::tuple::map(std::forward<Tuple>(_tuple), _element_function));
 }
 
 }

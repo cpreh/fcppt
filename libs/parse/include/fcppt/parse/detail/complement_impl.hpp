@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_COMPLEMENT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_COMPLEMENT_IMPL_HPP_INCLUDED
 
@@ -25,117 +24,28 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename Parser
->
-fcppt::parse::detail::complement<
-	Parser
->::complement(
-	Parser &&_parser
-)
-:
-	parser_{
-		std::move(
-			_parser
-		)
-	}
+template <typename Parser>
+fcppt::parse::detail::complement<Parser>::complement(Parser &&_parser) : parser_{std::move(_parser)}
 {
 }
 
-template<
-	typename Parser
->
-template<
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::detail::complement<
-		Parser
-	>::result_type
->
-fcppt::parse::detail::complement<
-	Parser
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state,
-	Skipper const &_skipper
-) const
+template <typename Parser>
+template <typename Ch, typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::detail::complement<Parser>::result_type>
+fcppt::parse::detail::complement<Parser>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-	fcppt::parse::basic_char<
-		Ch
-	> const parser{};
+  fcppt::parse::basic_char<Ch> const parser{};
 
-	return
-		fcppt::either::bind(
-			parser.parse(
-				_state,
-				_skipper
-			),
-			[
-				this
-			](
-				Ch const _result
-			)
-			{
-				return
-					fcppt::container::contains(
-						fcppt::parse::deref(
-							this->parser_
-						).chars(),
-						_result
-					)
-					?
-						fcppt::either::make_failure<
-							result_type
-						>(
-							fcppt::parse::error<
-								Ch
-							>{
-								FCPPT_STRING_LITERAL(
-									Ch,
-									"Expected any char but {"
-								)
-								+
-								fcppt::output_to_string<
-									std::basic_string<
-										Ch
-									>
-								>(
-									fcppt::container::output(
-										fcppt::parse::deref(
-											this->parser_
-										).chars()
-									)
-								)
-								+
-								std::basic_string<
-									Ch
-								>{
-									FCPPT_STRING_LITERAL(
-										Ch,
-										"}, got "
-									)
-								}
-								+
-								_result
-							}
-						)
-					:
-						fcppt::parse::make_success<
-							Ch
-						>(
-							_result
-						)
-					;
-			}
-		);
+  return fcppt::either::bind(parser.parse(_state, _skipper), [this](Ch const _result) {
+    return fcppt::container::contains(fcppt::parse::deref(this->parser_).chars(), _result)
+               ? fcppt::either::make_failure<result_type>(fcppt::parse::error<Ch>{
+                     FCPPT_STRING_LITERAL(Ch, "Expected any char but {") +
+                     fcppt::output_to_string<std::basic_string<Ch>>(
+                         fcppt::container::output(fcppt::parse::deref(this->parser_).chars())) +
+                     std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "}, got ")} + _result})
+               : fcppt::parse::make_success<Ch>(_result);
+  });
 }
 
 #endif

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FROM_STD_WSTRING_LOCALE_HPP_INCLUDED
 #define FCPPT_FROM_STD_WSTRING_LOCALE_HPP_INCLUDED
 
@@ -14,10 +13,8 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Convert from std::wstring to #fcppt::string using a custom locale.
 \ingroup fcpptstring
@@ -25,11 +22,7 @@ namespace fcppt
 See \ref fcpptstring for more information about this function.
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::optional_string
-from_std_wstring_locale(
-	std::wstring_view const &,
-	std::locale const &
-);
+fcppt::optional_string from_std_wstring_locale(std::wstring_view const &, std::locale const &);
 
 }
 

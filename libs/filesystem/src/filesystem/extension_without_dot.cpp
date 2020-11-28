@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/extension.hpp>
@@ -12,28 +11,15 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-
-fcppt::string
-fcppt::filesystem::extension_without_dot(
-	std::filesystem::path const &_path
-)
+fcppt::string fcppt::filesystem::extension_without_dot(std::filesystem::path const &_path)
 {
-	fcppt::string ret{
-		fcppt::filesystem::extension(
-			_path
-		)
-	};
+  fcppt::string ret{fcppt::filesystem::extension(_path)};
 
-	if(
-		!ret.empty()
-		&& ret[0] == FCPPT_TEXT('.')
-	)
-	{
-		ret.erase(
-			ret.begin() // NOLINT(fuchsia-default-arguments-calls)
-		);
-	}
+  if (!ret.empty() && ret[0] == FCPPT_TEXT('.'))
+  {
+    ret.erase(ret.begin() // NOLINT(fuchsia-default-arguments-calls)
+    );
+  }
 
-	return
-		ret;
+  return ret;
 }

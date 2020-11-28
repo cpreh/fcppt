@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_REFERENCE_STD_HASH_HPP_INCLUDED
 #define FCPPT_REFERENCE_STD_HASH_HPP_INCLUDED
 
@@ -17,42 +16,20 @@
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace std
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wmismatched-tags)
 
-template<
-	typename Type
->
-struct hash<
-	fcppt::reference<
-		Type
-	>
->
+template <typename Type>
+struct hash<fcppt::reference<Type>>
 {
-	using
-	type
-	=
-	fcppt::reference<
-		Type
-	>;
+  using type = fcppt::reference<Type>;
 
-	std::size_t
-	operator()(
-		type const &_value
-	) const
-	noexcept
-	{
-		return
-			fcppt::reference_hash<
-				type
-			>()(
-				_value
-			);
-	}
+  std::size_t operator()(type const &_value) const noexcept
+  {
+    return fcppt::reference_hash<type>()(_value);
+  }
 };
 
 FCPPT_PP_POP_WARNING

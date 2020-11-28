@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONST_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_CONST_POINTER_CAST_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Casts an #fcppt::shared_ptr  using
 <code>const_cast</code>
@@ -30,31 +27,13 @@ Casts the pointer stored in \a _ptr to type <code>U *</code> using
 
 \return The converted shared_ptr
 */
-template<
-	typename Dest,
-	typename Source
->
-fcppt::shared_ptr<
-	Dest
->
-const_pointer_cast(
-	fcppt::shared_ptr<
-		Source const
-	> const &_ptr
-)
+template <typename Dest, typename Source>
+fcppt::shared_ptr<Dest> const_pointer_cast(fcppt::shared_ptr<Source const> const &_ptr)
 {
-	return
-		fcppt::shared_ptr<
-			Dest
-		>(
-			_ptr,
-			// NOLINTNEXTLINE(cppcoreguidelines-pro-type-const-cast)
-			const_cast<
-				Dest *
-			>(
-				_ptr.get_pointer()
-			)
-		);
+  return fcppt::shared_ptr<Dest>(
+      _ptr,
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-type-const-cast)
+      const_cast<Dest *>(_ptr.get_pointer()));
 }
 
 }

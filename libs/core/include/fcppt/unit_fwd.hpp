@@ -3,14 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_UNIT_FWD_HPP_INCLUDED
 #define FCPPT_UNIT_FWD_HPP_INCLUDED
 
-
 namespace fcppt
 {
-
 struct unit;
 
 }

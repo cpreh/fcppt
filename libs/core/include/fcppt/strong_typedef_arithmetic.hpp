@@ -3,50 +3,23 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRONG_TYPEDEF_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_ARITHMETIC_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Add two strong typedefs.
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
->
-operator+(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_left,
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_right
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag>
+operator+(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, Tag> const &_right)
 {
-	return
-		fcppt::strong_typedef<
-			T,
-			Tag
-		>{
-			_left.get()
-			+
-			_right.get()
-		};
+  return fcppt::strong_typedef<T, Tag>{_left.get() + _right.get()};
 }
 
 /**
@@ -54,35 +27,11 @@ operator+(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
->
-operator-(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_left,
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_right
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag>
+operator-(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, Tag> const &_right)
 {
-	return
-		fcppt::strong_typedef<
-			T,
-			Tag
-		>{
-			_left.get()
-			-
-			_right.get()
-		};
+  return fcppt::strong_typedef<T, Tag>{_left.get() - _right.get()};
 }
 
 /**
@@ -90,35 +39,11 @@ operator-(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
->
-operator*(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_left,
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_right
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag>
+operator*(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, Tag> const &_right)
 {
-	return
-		fcppt::strong_typedef<
-			T,
-			Tag
-		>{
-			_left.get()
-			*
-			_right.get()
-		};
+  return fcppt::strong_typedef<T, Tag>{_left.get() * _right.get()};
 }
 
 /**
@@ -126,29 +51,10 @@ operator*(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
->
-operator -(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const &_value
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag> operator-(fcppt::strong_typedef<T, Tag> const &_value)
 {
-	return
-		fcppt::strong_typedef<
-			T,
-			Tag
-		>{
-			-_value.get()
-		};
+  return fcppt::strong_typedef<T, Tag>{-_value.get()};
 }
 
 /**
@@ -156,26 +62,12 @@ operator -(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
-> &
-operator ++(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> &_value
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag> &operator++(fcppt::strong_typedef<T, Tag> &_value)
 {
-	++_value.get();
+  ++_value.get();
 
-	return
-		_value;
+  return _value;
 }
 
 /**
@@ -183,26 +75,12 @@ operator ++(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
-> &
-operator --(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> &_value
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag> &operator--(fcppt::strong_typedef<T, Tag> &_value)
 {
-	--_value.get();
+  --_value.get();
 
-	return
-		_value;
+  return _value;
 }
 
 /**
@@ -210,34 +88,14 @@ operator --(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
->
-operator ++(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> &_value,
-	int
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag> operator++(fcppt::strong_typedef<T, Tag> &_value, int)
 {
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const temp{
-		_value
-	};
+  fcppt::strong_typedef<T, Tag> const temp{_value};
 
-	++_value;
+  ++_value;
 
-	return
-		temp;
+  return temp;
 }
 
 /**
@@ -245,34 +103,14 @@ operator ++(
 
 \ingroup fcpptstrongtypedef
 */
-template<
-	typename T,
-	typename Tag
->
-inline
-fcppt::strong_typedef<
-	T,
-	Tag
->
-operator --(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> &_value,
-	int
-)
+template <typename T, typename Tag>
+inline fcppt::strong_typedef<T, Tag> operator--(fcppt::strong_typedef<T, Tag> &_value, int)
 {
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> const temp{
-		_value
-	};
+  fcppt::strong_typedef<T, Tag> const temp{_value};
 
-	--_value;
+  --_value;
 
-	return
-		temp;
+  return temp;
 }
 
 }

@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_NO_INIT_HPP_INCLUDED
 #define FCPPT_NO_INIT_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief A dummy struct to use a constructor that does not initialize
 

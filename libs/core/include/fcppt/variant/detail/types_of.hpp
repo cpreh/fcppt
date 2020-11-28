@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_DETAIL_TYPES_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_TYPES_OF_HPP_INCLUDED
 
@@ -12,34 +11,19 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
 namespace detail
 {
-
-template<
-	typename Type
->
+template <typename Type>
 struct types_of;
 
-template<
-	typename... Types
->
-struct types_of<
-	fcppt::variant::object<
-		Types...
-	>
->
+template <typename... Types>
+struct types_of<fcppt::variant::object<Types...>>
 {
-	using
-	type
-	=
-	::metal::list<
-		Types...
-	>;
+  using type = ::metal::list<Types...>;
 };
 
 }

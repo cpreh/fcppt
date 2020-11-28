@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_CEIL_DIV_SIGNED_HPP_INCLUDED
 #define FCPPT_MATH_CEIL_DIV_SIGNED_HPP_INCLUDED
 
@@ -18,12 +17,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Calculates dividend / divisor rounded towards infinity.
 
@@ -34,77 +31,22 @@ is negative, dividend / divisor is returned.
 
 \tparam T A signed type
 */
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->
-ceil_div_signed(
-	T const &_dividend,
-	T const &_divisor
-)
+template <typename T>
+fcppt::optional::object<T> ceil_div_signed(T const &_dividend, T const &_divisor)
 {
-	static_assert(
-		std::is_signed<
-			T
-		>::value,
-		"ceil_div_signed can only be used on signed types"
-	);
+  static_assert(std::is_signed<T>::value, "ceil_div_signed can only be used on signed types");
 
-	T const zero{
-		fcppt::literal<
-			T
-		>(
-			0
-		)
-	};
+  T const zero{fcppt::literal<T>(0)};
 
-	return
-		(
-			_dividend
-			<
-			zero
-		)
-		?
-			fcppt::optional::make_if(
-				_divisor
-				!=
-				zero,
-				[
-					_dividend,
-					_divisor
-				]{
-					return
-						_dividend
-						/
-						_divisor
-						;
-				}
-			)
-		:
-			fcppt::optional::map(
-				fcppt::math::ceil_div(
-					fcppt::cast::to_unsigned(
-						_dividend
-					),
-					fcppt::cast::to_unsigned(
-						_divisor
-					)
-				),
-				[](
-					std::make_unsigned_t<
-						T
-					> const _result
-				)
-				{
-					return
-						fcppt::cast::to_signed(
-							_result
-						);
-				}
-			)
-		;
+  return (_dividend < zero)
+             ? fcppt::optional::make_if(
+                   _divisor != zero, [_dividend, _divisor] { return _dividend / _divisor; })
+             : fcppt::optional::map(
+                   fcppt::math::ceil_div(
+                       fcppt::cast::to_unsigned(_dividend), fcppt::cast::to_unsigned(_divisor)),
+                   [](std::make_unsigned_t<T> const _result) {
+                     return fcppt::cast::to_signed(_result);
+                   });
 }
 
 }

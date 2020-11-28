@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 #define FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief Implementation of #fcppt::enum_::size_type.
 
@@ -25,26 +22,12 @@ namespace enum_
 
 \tparam Type Must be an enum type
 */
-template<
-	typename Type
->
+template <typename Type>
 struct size_type_impl
 {
-	static_assert(
-		std::is_enum_v<
-			Type
-		>,
-		"Type must be an enum type"
-	);
+  static_assert(std::is_enum_v<Type>, "Type must be an enum type");
 
-	using
-	type
-	=
-	std::make_unsigned_t<
-		std::underlying_type_t<
-			Type
-		>
-	>;
+  using type = std::make_unsigned_t<std::underlying_type_t<Type>>;
 };
 
 }

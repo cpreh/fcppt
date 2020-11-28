@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 #define FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 
@@ -21,100 +20,34 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 /**
 \brief Outputs a record to a stream
 
 \ingroup fcpptrecord
 */
-template<
-	typename Ch,
-	typename Traits,
-	typename... Elements
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::record::object<
-		Elements...
-	> const &_record
-)
+template <typename Ch, typename Traits, typename... Elements>
+std::basic_ostream<Ch, Traits> &operator<<(
+    std::basic_ostream<Ch, Traits> &_stream, fcppt::record::object<Elements...> const &_record)
 {
-	_stream
-		<<
-		_stream.widen(
-			'{'
-		);
+  _stream << _stream.widen('{');
 
-	fcppt::algorithm::loop(
-		fcppt::record::element_vector<
-			fcppt::record::object<
-				Elements...
-			>
-		>{},
-		[
-			&_stream,
-			&_record
-		](
-			auto const _element
-		)
-		{
-			FCPPT_USE(
-				_element
-			);
+  fcppt::algorithm::loop(
+      fcppt::record::element_vector<fcppt::record::object<Elements...>>{},
+      [&_stream, &_record](auto const _element) {
+        FCPPT_USE(_element);
 
-			using
-			label
-			=
-			fcppt::record::element_to_label<
-				fcppt::tag_type<
-					decltype(
-						_element
-					)
-				>
-			>;
+        using label = fcppt::record::element_to_label<fcppt::tag_type<decltype(_element)>>;
 
-			_stream
-				<<
-				fcppt::io::widen_string(
-					fcppt::record::label_name<
-						label
-					>()
-				)
-				<<
-				fcppt::io::widen_string(
-					" = "
-				)
-				<<
-				fcppt::record::get<
-					label
-				>(
-					_record
-				)
-				<<
-				fcppt::io::widen_string(
-					", "
-				);
-		}
-	);
+        _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
+                << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record)
+                << fcppt::io::widen_string(", ");
+      });
 
-	return
-		_stream
-		<<
-		_stream.widen(
-			'}'
-		);
+  return _stream << _stream.widen('}');
 }
 
 }

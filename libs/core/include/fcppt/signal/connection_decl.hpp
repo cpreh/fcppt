@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_CONNECTION_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_DECL_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/connection_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace signal
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wweak-vtables)
 
@@ -33,14 +30,13 @@ established.
 */
 class connection
 {
-	FCPPT_NONMOVABLE(
-		connection
-	);
+  FCPPT_NONMOVABLE(connection);
+
 protected:
-	connection();
+  connection();
+
 public:
-	virtual
-	~connection() = 0;
+  virtual ~connection() = 0;
 };
 
 FCPPT_PP_POP_WARNING

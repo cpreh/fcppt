@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string_view.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/maybe_front.hpp>
@@ -12,20 +11,8 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/options/is_option.hpp>
 
-
-bool
-fcppt::options::is_option(
-	fcppt::string_view const &_value
-)
+bool fcppt::options::is_option(fcppt::string_view const &_value)
 {
-	return
-		fcppt::optional::copy_value(
-			fcppt::container::maybe_front(
-				_value
-			)
-		)
-		==
-		fcppt::optional::make(
-			FCPPT_TEXT('-')
-		);
+  return fcppt::optional::copy_value(fcppt::container::maybe_front(_value)) ==
+         fcppt::optional::make(FCPPT_TEXT('-'));
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_MAKE_COMMANDS_HPP_INCLUDED
 #define FCPPT_OPTIONS_MAKE_COMMANDS_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief Makes a commands parser.
 
@@ -26,44 +23,16 @@ namespace options
 
 \tparam SubCommands A parameter pack of #fcppt::options::sub_command.
 */
-template<
-	typename OptionsParser,
-	typename... SubCommands
->
-inline
-fcppt::options::commands<
-	fcppt::type_traits::remove_cv_ref_t<
-		OptionsParser
-	>,
-	fcppt::type_traits::remove_cv_ref_t<
-		SubCommands
-	>...
->
-make_commands(
-	OptionsParser &&_options_parser,
-	SubCommands &&... _sub_commands
-)
+template <typename OptionsParser, typename... SubCommands>
+inline fcppt::options::commands<
+    fcppt::type_traits::remove_cv_ref_t<OptionsParser>,
+    fcppt::type_traits::remove_cv_ref_t<SubCommands>...>
+make_commands(OptionsParser &&_options_parser, SubCommands &&..._sub_commands)
 {
-	return
-		fcppt::options::commands<
-			fcppt::type_traits::remove_cv_ref_t<
-				OptionsParser
-			>,
-			fcppt::type_traits::remove_cv_ref_t<
-				SubCommands
-			> ...
-		>{
-			std::forward<
-				OptionsParser
-			>(
-				_options_parser
-			),
-			std::forward<
-				SubCommands
-			>(
-				_sub_commands
-			)...
-		};
+  return fcppt::options::commands<
+      fcppt::type_traits::remove_cv_ref_t<OptionsParser>,
+      fcppt::type_traits::remove_cv_ref_t<SubCommands>...>{
+      std::forward<OptionsParser>(_options_parser), std::forward<SubCommands>(_sub_commands)...};
 }
 
 }

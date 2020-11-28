@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_EXCEPTION_HPP_INCLUDED
 
@@ -12,48 +11,22 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
 namespace detail
 {
-
-template<
-	typename Ch
->
+template <typename Ch>
 class exception
 {
 public:
-	explicit
-	exception(
-		std::basic_string<
-			Ch
-		> &&_what
-	)
-	:
-		what_{
-			std::move(
-				_what
-			)
-		}
-	{
-	}
+  explicit exception(std::basic_string<Ch> &&_what) : what_{std::move(_what)} {}
 
-	[[nodiscard]]
-	std::basic_string<
-		Ch
-	> const &
-	what() const
-	{
-		return
-			this->what_;
-	}
+  [[nodiscard]] std::basic_string<Ch> const &what() const { return this->what_; }
+
 private:
-	std::basic_string<
-		Ch
-	> what_;
+  std::basic_string<Ch> what_;
 };
 
 }

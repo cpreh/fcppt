@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_EITHER_ERROR_FWD_HPP_INCLUDED
 
 #include <fcppt/either/no_error_fwd.hpp>
 #include <fcppt/either/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief An either without a success value.
 
@@ -24,16 +21,8 @@ namespace either
 An either with a failure but no success value. This is useful in case errors
 are returned as optionals.
 */
-template<
-	typename Failure
->
-using
-error
-=
-fcppt::either::object<
-	Failure,
-	fcppt::either::no_error
->;
+template <typename Failure>
+using error = fcppt::either::object<Failure, fcppt::either::no_error>;
 
 }
 }

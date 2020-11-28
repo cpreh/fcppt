@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 
@@ -11,37 +10,17 @@
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace detail
 {
-
-template<
-	typename Dest,
-	typename Source,
-	typename Function
->
-inline
-Dest
-map(
-	Source const &_source,
-	Function const &_function
-)
+template <typename Dest, typename Source, typename Function>
+inline Dest map(Source const &_source, Function const &_function)
 {
-	return
-		fcppt::math::from_array<
-			Dest
-		>(
-			fcppt::container::array::map(
-				fcppt::math::to_array(
-					_source
-				),
-				_function
-			)
-		);
+  return fcppt::math::from_array<Dest>(
+      fcppt::container::array::map(fcppt::math::to_array(_source), _function));
 }
 
 }

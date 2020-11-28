@@ -3,16 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/insert_extract_locale.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
-
-std::locale
-fcppt::insert_extract_locale()
-{
-	return
-		std::locale{};
-}
+std::locale fcppt::insert_extract_locale() { return std::locale{}; }

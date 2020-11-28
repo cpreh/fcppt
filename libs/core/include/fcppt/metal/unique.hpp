@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_UNIQUE_HPP_INCLUDED
 #define FCPPT_METAL_UNIQUE_HPP_INCLUDED
 
 #include <fcppt/metal/set/from_list_relaxed.hpp>
 #include <fcppt/metal/set/to_list.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 /**
 \brief Removes duplicates from a metal::list.
 
@@ -23,17 +20,8 @@ namespace metal
 
 \tparam Sequence Must be a metal::list.
 */
-template<
-	typename Sequence
->
-using
-unique
-=
-fcppt::metal::set::to_list<
-	fcppt::metal::set::from_list_relaxed<
-		Sequence
-	>
->;
+template <typename Sequence>
+using unique = fcppt::metal::set::to_list<fcppt::metal::set::from_list_relaxed<Sequence>>;
 
 }
 }

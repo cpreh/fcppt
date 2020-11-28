@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_INTERPOLATION_TRIGONOMETRIC_HPP_INCLUDED
 #define FCPPT_MATH_INTERPOLATION_TRIGONOMETRIC_HPP_INCLUDED
 
@@ -15,7 +14,6 @@
 #include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
-
 
 namespace fcppt
 {
@@ -32,50 +30,19 @@ namespace interpolation
 
 \tparam Value Must support scalar multiplication with \a Float and addition
 */
-template<
-	typename Float,
-	typename Value
->
-Value
-trigonometric(
-	Float const &_f,
-	Value const &_v1,
-	Value const &_v2
-)
+template <typename Float, typename Value>
+Value trigonometric(Float const &_f, Value const &_v1, Value const &_v2)
 {
-	static_assert(
-		std::is_floating_point_v<
-			Float
-		>,
-		"trigonometric can only be used on floating point types"
-	);
+  static_assert(
+      std::is_floating_point_v<Float>, "trigonometric can only be used on floating point types");
 
-	return
-		fcppt::math::interpolation::linear(
-			fcppt::literal<
-				Float
-			>(
-				0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			)
-			*
-			(
-				fcppt::literal<
-					Float
-				>(
-					1
-				)
-				-
-				std::cos(
-					fcppt::math::pi<
-						Float
-					>()
-					*
-					_f
-				)
-			),
-			_v1,
-			_v2
-		);
+  return fcppt::math::interpolation::linear(
+      fcppt::literal<Float>(
+          0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+          ) *
+          (fcppt::literal<Float>(1) - std::cos(fcppt::math::pi<Float>() * _f)),
+      _v1,
+      _v2);
 }
 
 }

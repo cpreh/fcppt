@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/literal.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/time/exception.hpp>
@@ -12,32 +11,14 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
-
-std::time_t
-fcppt::time::std_time()
+std::time_t fcppt::time::std_time()
 {
-	std::time_t const ret(
-		std::time(
-			nullptr
-		)
-	);
+  std::time_t const ret(std::time(nullptr));
 
-	if(
-		ret
-		==
-		fcppt::literal<
-			std::time_t
-		>(
-			-1
-		)
-	)
-	{
-		throw
-			fcppt::time::exception{
-				FCPPT_TEXT("std_time() failed!")
-			};
-	}
+  if (ret == fcppt::literal<std::time_t>(-1))
+  {
+    throw fcppt::time::exception{FCPPT_TEXT("std_time() failed!")};
+  }
 
-	return
-		ret;
+  return ret;
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CATCH_CONVERT_HPP_INCLUDED
 #define FCPPT_CATCH_CONVERT_HPP_INCLUDED
 
@@ -12,31 +11,19 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace catch_
 {
-
 /**
 \brief Calls Catch's StringMaker
 
 \ingroup fcpptcatch
 */
-template<
-	typename Type
->
-std::string
-convert(
-	Type const &_value
-)
+template <typename Type>
+std::string convert(Type const &_value)
 {
-	return
-		Catch::StringMaker<
-			Type
-		>::convert(
-			_value
-		);
+  return Catch::StringMaker<Type>::convert(_value);
 }
 
 }

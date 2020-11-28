@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_CLAMP_HPP_INCLUDED
 #define FCPPT_MATH_CLAMP_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Clamps a value into a range
 
@@ -26,28 +23,12 @@ namespace math
 
 \pre \p _vmin <= \p _vmax
 */
-template<
-	typename T
->
-T
-clamp(
-	T const &_value,
-	T const &_vmin,
-	T const &_vmax
-)
+template <typename T>
+T clamp(T const &_value, T const &_vmin, T const &_vmax)
 {
-	FCPPT_ASSERT_PRE(
-		_vmin <= _vmax
-	);
+  FCPPT_ASSERT_PRE(_vmin <= _vmax);
 
-	return
-		std::max(
-			std::min(
-				_value,
-				_vmax
-			),
-			_vmin
-		);
+  return std::max(std::min(_value, _vmax), _vmin);
 }
 
 }

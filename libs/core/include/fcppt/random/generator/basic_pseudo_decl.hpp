@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 
@@ -12,14 +11,12 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace random
 {
 namespace generator
 {
-
 /**
 \brief A wrapper around pseudo random number generators
 
@@ -32,89 +29,62 @@ default value for it.
 
 \tparam Generator Must be a pseudo random number generator
 */
-template<
-	typename Generator
->
+template <typename Generator>
 class basic_pseudo
 {
-	FCPPT_NONMOVABLE(
-		basic_pseudo
-	);
+  FCPPT_NONMOVABLE(basic_pseudo);
 
-	using
-	wrapped
-	=
-	Generator;
+  using wrapped = Generator;
+
 public:
-	/**
-	\brief The result type used for drawing random numbers
-	*/
-	using
-	result_type
-	=
-	typename
-	wrapped::result_type;
+  /**
+  \brief The result type used for drawing random numbers
+  */
+  using result_type = typename wrapped::result_type;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		result_type,
-		seed
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(result_type, seed);
 
-	/**
-	\brief Constructs the generator using a seed
+  /**
+  \brief Constructs the generator using a seed
 
-	Constructs the generator using \a _seed
+  Constructs the generator using \a _seed
 
-	\param _seed The seed to use
-	*/
-	explicit
-	basic_pseudo(
-		seed _seed
-	);
+  \param _seed The seed to use
+  */
+  explicit basic_pseudo(seed _seed);
 
-	/**
-	\brief Constructs the generator using a seed sequence
+  /**
+  \brief Constructs the generator using a seed sequence
 
-	Constructs the generator using \a _seq
+  Constructs the generator using \a _seq
 
-	\tparam SeedSeq must be a seed sequence
-	*/
-	template<
-		typename SeedSeq
-	>
-	explicit
-	basic_pseudo(
-		SeedSeq &_seq
-	);
+  \tparam SeedSeq must be a seed sequence
+  */
+  template <typename SeedSeq>
+  explicit basic_pseudo(SeedSeq &_seq);
 
-	/**
-	\brief Destroys the generator
-	*/
-	~basic_pseudo();
+  /**
+  \brief Destroys the generator
+  */
+  ~basic_pseudo();
 
-	/**
-	\brief Draws a random number
-	*/
-	result_type
-	operator()();
+  /**
+  \brief Draws a random number
+  */
+  result_type operator()();
 
-	/**
-	\brief Returns the minimum element of all the possible random numbers
-	*/
-	static
-	constexpr
-	result_type
-	min();
+  /**
+  \brief Returns the minimum element of all the possible random numbers
+  */
+  static constexpr result_type min();
 
-	/**
-	\brief Returns the maximum element of all the possible random numbers
-	*/
-	static
-	constexpr
-	result_type
-	max();
+  /**
+  \brief Returns the maximum element of all the possible random numbers
+  */
+  static constexpr result_type max();
+
 private:
-	wrapped wrapped_;
+  wrapped wrapped_;
 };
 
 }

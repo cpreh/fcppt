@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_ARRAY_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ARRAY_EQUAL_HPP_INCLUDED
 
@@ -17,76 +16,29 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace detail
 {
-
-template<
-	typename T1,
-	typename T2
->
-inline
-bool
-array_equal(
-	T1 const &_v1,
-	T2 const &_v2
-)
+template <typename T1, typename T2>
+inline bool array_equal(T1 const &_v1, T2 const &_v2)
 {
-	static_assert(
-		std::is_same<
-			fcppt::math::detail::storage_size<
-				typename
-				T1::storage_type
-			>,
-			fcppt::math::detail::storage_size<
-				typename
-				T2::storage_type
-			>
-		>::value
-	);
+  static_assert(std::is_same<
+                fcppt::math::detail::storage_size<typename T1::storage_type>,
+                fcppt::math::detail::storage_size<typename T2::storage_type>>::value);
 
-	return
-		fcppt::algorithm::all_of(
-			fcppt::math::int_range_count<
-				fcppt::math::detail::storage_size<
-					typename
-					T1::storage_type
-				>::value
-			>{},
-			[
-				&_v1,
-				&_v2
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::algorithm::all_of(
+      fcppt::math::int_range_count<
+          fcppt::math::detail::storage_size<typename T1::storage_type>::value>{},
+      [&_v1, &_v2](auto const _index) {
+        FCPPT_USE(_index);
 
-				using
-				index
-				=
-				fcppt::tag_type<
-					decltype(
-						_index
-					)
-				>;
+        using index = fcppt::tag_type<decltype(_index)>;
 
-				return
-					_v1.storage()[
-						index::value
-					]
-					==
-					_v2.storage()[
-						index::value
-					];
-			}
-		);
+        return _v1.storage()[index::value] == _v2.storage()[index::value];
+      });
 }
 
 }

@@ -3,17 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECURSIVE_DECL_HPP_INCLUDED
 #define FCPPT_RECURSIVE_DECL_HPP_INCLUDED
 
 #include <fcppt/recursive_fwd.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Turns an incomplete type into a complete one, allowing recursion.
 
@@ -31,53 +28,30 @@ its type to be incomplete. We can therefore write
 struct X { std::vector<fcppt::recursive<X>> x; };
 \endcode
 */
-template<
-	typename Type
->
+template <typename Type>
 class recursive
 {
 public:
-	explicit
-	recursive(
-		Type const &
-	);
+  explicit recursive(Type const &);
 
-	explicit
-	recursive(
-		Type &&
-	);
+  explicit recursive(Type &&);
 
-	recursive(
-		recursive const &
-	);
+  recursive(recursive const &);
 
-	recursive(
-		recursive &&
-	) noexcept;
+  recursive(recursive &&) noexcept;
 
-	recursive &
-	operator=(
-		recursive const &
-	);
+  recursive &operator=(recursive const &);
 
-	recursive &
-	operator=(
-		recursive &&
-	) noexcept;
+  recursive &operator=(recursive &&) noexcept;
 
-	~recursive();
+  ~recursive();
 
-	[[nodiscard]]
-	Type &
-	get();
+  [[nodiscard]] Type &get();
 
-	[[nodiscard]]
-	Type const &
-	get() const;
+  [[nodiscard]] Type const &get() const;
+
 private:
-	fcppt::unique_ptr<
-		Type
-	> impl_;
+  fcppt::unique_ptr<Type> impl_;
 };
 
 }

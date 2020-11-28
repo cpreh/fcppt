@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_SET_MAKE_HPP_INCLUDED
 #define FCPPT_METAL_SET_MAKE_HPP_INCLUDED
 
@@ -13,29 +12,15 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
 namespace set
 {
-
-template<
-	typename... Types
->
-using
-make
-=
-::metal::accumulate<
-	::metal::lambda<
-		fcppt::metal::set::insert
-	>,
-	::metal::map<>,
-	::metal::list<
-		Types...
-	>
->;
+template <typename... Types>
+using make = ::metal::
+    accumulate<::metal::lambda<fcppt::metal::set::insert>, ::metal::map<>, ::metal::list<Types...>>;
 
 }
 }

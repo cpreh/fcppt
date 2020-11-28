@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_COLUMN_HPP_INCLUDED
 #define FCPPT_PARSE_COLUMN_HPP_INCLUDED
 
@@ -13,16 +12,11 @@
 #include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-FCPPT_MAKE_STRONG_TYPEDEF(
-	std::uint64_t,
-	column
-);
+FCPPT_MAKE_STRONG_TYPEDEF(std::uint64_t, column);
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
@@ -11,18 +10,9 @@
 #include <fcppt/log/impl/find_child_const.hpp>
 #include <fcppt/log/impl/find_child_tpl.hpp>
 
-
-fcppt::log::impl::const_optional_context_tree_ref
-fcppt::log::impl::find_child_const(
-	fcppt::reference<
-		fcppt::log::detail::context_tree const
-	> const _tree,
-	fcppt::log::name const &_name
-)
+fcppt::log::impl::const_optional_context_tree_ref fcppt::log::impl::find_child_const(
+    fcppt::reference<fcppt::log::detail::context_tree const> const _tree,
+    fcppt::log::name const &_name)
 {
-	return
-		fcppt::log::impl::find_child_tpl(
-			_tree,
-			_name
-		);
+  return fcppt::log::impl::find_child_tpl(_tree, _name);
 }

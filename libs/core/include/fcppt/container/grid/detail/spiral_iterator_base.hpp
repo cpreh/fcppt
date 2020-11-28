@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_SPIRAL_ITERATOR_BASE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_SPIRAL_ITERATOR_BASE_HPP_INCLUDED
 
@@ -15,7 +14,6 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
@@ -24,26 +22,13 @@ namespace grid
 {
 namespace detail
 {
-
-template<
-	typename Pos
->
-using
-spiral_iterator_base
-=
-fcppt::iterator::base<
-	fcppt::iterator::types<
-		fcppt::container::grid::spiral_iterator<
-			Pos
-		>,
-		Pos,
-		Pos,
-		fcppt::type_traits::value_type<
-			Pos
-		>,
-		std::input_iterator_tag
-	>
->;
+template <typename Pos>
+using spiral_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
+    fcppt::container::grid::spiral_iterator<Pos>,
+    Pos,
+    Pos,
+    fcppt::type_traits::value_type<Pos>,
+    std::input_iterator_tag>>;
 
 }
 }

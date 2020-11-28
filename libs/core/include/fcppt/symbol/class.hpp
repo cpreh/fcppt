@@ -3,19 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SYMBOL_CLASS_HPP_INCLUDED
 #define FCPPT_SYMBOL_CLASS_HPP_INCLUDED
 
 #include <fcppt/config/compiler.hpp>
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	define FCPPT_SYMBOL_CLASS_IMPL
+#define FCPPT_SYMBOL_CLASS_IMPL
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#	include <fcppt/symbol/export.hpp>
-#	define FCPPT_SYMBOL_CLASS_IMPL FCPPT_SYMBOL_EXPORT
+#include <fcppt/symbol/export.hpp>
+#define FCPPT_SYMBOL_CLASS_IMPL FCPPT_SYMBOL_EXPORT
 #else
-#	error "Don't know what FCPPT_DETAIL_SYMBOL_CLASS should be"
+#error "Don't know what FCPPT_DETAIL_SYMBOL_CLASS should be"
 #endif
 
 /**
@@ -44,9 +43,9 @@ class FCPPT_DETAIL_SYMBOL_CLASS my_exception
 
 class FCPPT_DETAIL_SYMBOL_CLASS my_base
 {
-	virtual
-	void
-	do_something() = 0;
+    virtual
+    void
+    do_something() = 0;
 };
 \endcode
 

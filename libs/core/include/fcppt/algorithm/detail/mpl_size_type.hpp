@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 
@@ -12,45 +11,22 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
 namespace detail
 {
-
-template<
-	typename Type,
-	typename Test = void
->
+template <typename Type, typename Test = void>
 struct mpl_size_type
 {
-	using
-	type
-	=
-	void;
+  using type = void;
 };
 
-template<
-	typename Type
->
-struct mpl_size_type<
-	Type,
-	std::enable_if_t<
-		::metal::is_list<
-			Type
-		>::value
-	>
->
+template <typename Type>
+struct mpl_size_type<Type, std::enable_if_t<::metal::is_list<Type>::value>>
 {
-	using
-	type
-	=
-	typename
-	::metal::size<
-		Type
-	>::value_type;
+  using type = typename ::metal::size<Type>::value_type;
 };
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_FROM_INT_EXN_HPP_INCLUDED
 #define FCPPT_ENUM_FROM_INT_EXN_HPP_INCLUDED
 
@@ -21,12 +20,10 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief Cast an unsigned value to an enum
 
@@ -46,62 +43,21 @@ size
 
 \return The casted value if it fits into the enum's range
 */
-template<
-	typename Enum,
-	typename Value
->
-Enum
-from_int_exn(
-	Value const &_value
-)
+template <typename Enum, typename Value>
+Enum from_int_exn(Value const &_value)
 {
-	static_assert(
-		std::is_unsigned_v<
-			Value
-		>
-		&&
-		std::is_enum_v<
-			Enum
-		>,
-		"cast_to_enum can only cast from unsigned types to enumeration types"
-	);
+  static_assert(
+      std::is_unsigned_v<Value> && std::is_enum_v<Enum>,
+      "cast_to_enum can only cast from unsigned types to enumeration types");
 
-	return
-		fcppt::optional::to_exception(
-			fcppt::enum_::from_int<
-				Enum
-			>(
-				_value
-			),
-			[
-				_value
-			]{
-				return
-					fcppt::exception{
-						FCPPT_TEXT("Tried to cast value ")
-						+
-						fcppt::output_to_fcppt_string(
-							fcppt::cast::size<
-								std::uintmax_t
-							>(
-								_value
-							)
-						)
-						+
-						FCPPT_TEXT(" to an enum of type ")
-						+
-						fcppt::from_std_string(
-							fcppt::type_name_from_info(
-								typeid(
-									Enum
-								)
-							)
-						)
-						+
-						FCPPT_TEXT(" which doesn't fit into the enum's range!")
-					};
-			}
-		);
+  return fcppt::optional::to_exception(fcppt::enum_::from_int<Enum>(_value), [_value] {
+    return fcppt::exception{
+        FCPPT_TEXT("Tried to cast value ") +
+        fcppt::output_to_fcppt_string(fcppt::cast::size<std::uintmax_t>(_value)) +
+        FCPPT_TEXT(" to an enum of type ") +
+        fcppt::from_std_string(fcppt::type_name_from_info(typeid(Enum))) +
+        FCPPT_TEXT(" which doesn't fit into the enum's range!")};
+  });
 }
 
 }

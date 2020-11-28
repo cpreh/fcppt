@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace box
 {
-
 /**
 \brief Test if one box is completely inside another box
 
@@ -33,74 +30,21 @@ namespace box
 
 \param _inner The inner (smaller) box
 */
-template<
-	typename T,
-	fcppt::math::size_type N
->
-inline
-bool
-contains(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_outer,
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_inner
-)
+template <typename T, fcppt::math::size_type N>
+inline bool
+contains(fcppt::math::box::object<T, N> const &_outer, fcppt::math::box::object<T, N> const &_inner)
 {
-	return
-		fcppt::algorithm::all_of(
-			fcppt::math::int_range_count<
-				N
-			>{},
-			[
-				&_outer,
-				&_inner
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::algorithm::all_of(
+      fcppt::math::int_range_count<N>{}, [&_outer, &_inner](auto const _index) {
+        FCPPT_USE(_index);
 
-				using
-				index
-				=
-				fcppt::tag_type<
-					decltype(
-						_index
-					)
-				>;
+        using index = fcppt::tag_type<decltype(_index)>;
 
-				return
-					fcppt::math::vector::at<
-						index::value
-					>(
-						_inner.pos()
-					)
-					>=
-					fcppt::math::vector::at<
-						index::value
-					>(
-						_outer.pos()
-					)
-					&&
-					fcppt::math::vector::at<
-						index::value
-					>(
-						_inner.max()
-					)
-					<=
-					fcppt::math::vector::at<
-						index::value
-					>(
-						_outer.max()
-					);
-			}
-		);
+        return fcppt::math::vector::at<index::value>(_inner.pos()) >=
+                   fcppt::math::vector::at<index::value>(_outer.pos()) &&
+               fcppt::math::vector::at<index::value>(_inner.max()) <=
+                   fcppt::math::vector::at<index::value>(_outer.max());
+      });
 }
 
 }

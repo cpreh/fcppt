@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_MAKE_RIGHT_HPP_INCLUDED
 #define FCPPT_OPTIONS_MAKE_RIGHT_HPP_INCLUDED
 
@@ -13,42 +12,20 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief Creates an #fcppt::options::right.
 
 \ingroup fcpptoptions
 */
-template<
-	typename Type
->
-inline
-fcppt::options::right<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>
->
-make_right(
-	Type &&_value
-)
+template <typename Type>
+inline fcppt::options::right<fcppt::type_traits::remove_cv_ref_t<Type>> make_right(Type &&_value)
 {
-	return
-		fcppt::options::right<
-			fcppt::type_traits::remove_cv_ref_t<
-				Type
-			>
-		>(
-			std::forward<
-				Type
-			>(
-				_value
-			)
-		);
+  return fcppt::options::right<fcppt::type_traits::remove_cv_ref_t<Type>>(
+      std::forward<Type>(_value));
 }
 
 }

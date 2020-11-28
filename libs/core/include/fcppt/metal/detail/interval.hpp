@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_DETAIL_INTERVAL_HPP_INCLUDED
 #define FCPPT_METAL_DETAIL_INTERVAL_HPP_INCLUDED
 
@@ -14,55 +13,24 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
 namespace detail
 {
-
-template<
-	typename Type,
-	Type Begin,
-	Type End
->
+template <typename Type, Type Begin, Type End>
 struct interval
 {
-	static_assert(
-		std::is_integral_v<
-			Type
-		>
-	);
+  static_assert(std::is_integral_v<Type>);
 
-	static_assert(
-		Begin
-		<=
-		End
-	);
+  static_assert(Begin <= End);
 
-	using
-	type
-	=
-	fcppt::metal::from_number_list<
-		Type,
-		::metal::iota<
-			fcppt::metal::to_number<
-				std::integral_constant<
-					Type,
-					Begin
-				>
-			>,
-			fcppt::metal::to_number<
-				std::integral_constant<
-					Type,
-					End
-					-
-					Begin
-				>
-			>
-		>
-	>;
+  using type = fcppt::metal::from_number_list<
+      Type,
+      ::metal::iota<
+          fcppt::metal::to_number<std::integral_constant<Type, Begin>>,
+          fcppt::metal::to_number<std::integral_constant<Type, End - Begin>>>>;
 };
 
 }

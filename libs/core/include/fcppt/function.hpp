@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FUNCTION_HPP_INCLUDED
 #define FCPPT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/function_decl.hpp>
 #include <fcppt/function_fwd.hpp>
 #include <fcppt/function_impl.hpp>
-
 
 #endif

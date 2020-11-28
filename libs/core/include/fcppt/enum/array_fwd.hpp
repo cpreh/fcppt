@@ -3,20 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_ARRAY_FWD_HPP_INCLUDED
 #define FCPPT_ENUM_ARRAY_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace enum_
 {
-
-template<
-	typename Enum,
-	typename Value
->
+template <typename Enum, typename Value>
 class array;
 
 }

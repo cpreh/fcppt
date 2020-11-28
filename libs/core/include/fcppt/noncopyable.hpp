@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_NONCOPYABLE_HPP_INCLUDED
 #define FCPPT_NONCOPYABLE_HPP_INCLUDED
 
 #include <fcppt/detail/noncopyable.hpp>
-
 
 /**
 \brief Makes a class noncopyable.
@@ -25,11 +23,6 @@ assignment operator. If this is not desired, use #FCPPT_NONMOVABLE instead.
 
 \param classname The name of the class.
 */
-#define FCPPT_NONCOPYABLE(\
-	classname\
-) \
-FCPPT_DETAIL_NONCOPYABLE(\
-	classname\
-)
+#define FCPPT_NONCOPYABLE(classname) FCPPT_DETAIL_NONCOPYABLE(classname)
 
 #endif

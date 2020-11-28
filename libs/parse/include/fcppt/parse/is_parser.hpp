@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_IS_PARSER_HPP_INCLUDED
 #define FCPPT_PARSE_IS_PARSER_HPP_INCLUDED
 
@@ -12,22 +11,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Type
->
-using
-is_parser
-=
-std::is_base_of<
-	fcppt::parse::tag,
-	Type
->;
+template <typename Type>
+using is_parser = std::is_base_of<fcppt::parse::tag, Type>;
 
 }
 }

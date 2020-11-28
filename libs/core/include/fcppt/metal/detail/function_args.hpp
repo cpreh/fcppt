@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_DETAIL_FUNCTION_ARGS_HPP_INCLUDED
 #define FCPPT_METAL_DETAIL_FUNCTION_ARGS_HPP_INCLUDED
 
@@ -11,35 +10,19 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
 namespace detail
 {
-
-template<
-	typename Function
->
+template <typename Function>
 struct function_args;
 
-template<
-	typename Ret,
-	typename... Args
->
-struct function_args<
-	Ret (
-		Args...
-	)
->
+template <typename Ret, typename... Args>
+struct function_args<Ret(Args...)>
 {
-	using
-	type
-	=
-	::metal::list<
-		Args...
-	>;
+  using type = ::metal::list<Args...>;
 };
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_STATIC_CAST_HPP_INCLUDED
 #define FCPPT_OPTIONAL_STATIC_CAST_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/detail/cast.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Converts an optional reference using <code>static_cast</code>
 
@@ -32,23 +29,10 @@ optional will be returned.
 \warning The behaviour is undefined if the <code>static_cast</code> is not well
 formed.
 */
-template<
-	typename Result,
-	typename Arg
->
-fcppt::optional::reference<
-	Result
->
-static_cast_(
-	fcppt::optional::reference<
-		Arg
-	> const &_optional
-)
+template <typename Result, typename Arg>
+fcppt::optional::reference<Result> static_cast_(fcppt::optional::reference<Arg> const &_optional)
 {
-	return
-		FCPPT_OPTIONAL_DETAIL_CAST(
-			fcppt::cast::static_downcast
-		);
+  return FCPPT_OPTIONAL_DETAIL_CAST(fcppt::cast::static_downcast);
 }
 
 }

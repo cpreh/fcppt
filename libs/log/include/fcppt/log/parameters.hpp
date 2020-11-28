@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOG_PARAMETERS_HPP_INCLUDED
 #define FCPPT_LOG_PARAMETERS_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
-
 namespace fcppt
 {
 namespace log
 {
-
 /**
 \brief The parameters class for an #fcppt::log::object
 
@@ -26,23 +23,17 @@ namespace log
 class parameters
 {
 public:
-	FCPPT_LOG_DETAIL_SYMBOL
-	parameters(
-		fcppt::log::name,
-		fcppt::log::format::optional_function &&
-	);
+  FCPPT_LOG_DETAIL_SYMBOL
+  parameters(fcppt::log::name, fcppt::log::format::optional_function &&);
 
-	[[nodiscard]]
-	fcppt::log::name const &
-	name() const;
+  [[nodiscard]] fcppt::log::name const &name() const;
 
-	[[nodiscard]]
-	fcppt::log::format::optional_function const &
-	formatter() const;
+  [[nodiscard]] fcppt::log::format::optional_function const &formatter() const;
+
 private:
-	fcppt::log::name name_;
+  fcppt::log::name name_;
 
-	fcppt::log::format::optional_function formatter_;
+  fcppt::log::format::optional_function formatter_;
 };
 
 }

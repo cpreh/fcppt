@@ -3,19 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ITERATOR_BASE_FWD_HPP_INCLUDED
 #define FCPPT_ITERATOR_BASE_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace iterator
 {
-
-template<
-	typename Types
->
+template <typename Types>
 class base;
 
 }

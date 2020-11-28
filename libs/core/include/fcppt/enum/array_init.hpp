@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ENUM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ENUM_ARRAY_INIT_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <fcppt/container/array/init.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
 
-
 namespace fcppt
 {
 namespace enum_
 {
-
 /**
 \brief Constructs an array by calling a function with static enumerators.
 
@@ -34,46 +31,18 @@ enumerator <code>E</code>.
 
 \see fcppt::container::array::init
 */
-template<
-	typename Array,
-	typename Function
->
-inline
-Array
-array_init(
-	Function const &_function
-)
+template <typename Array, typename Function>
+inline Array array_init(Function const &_function)
 {
-	return
-		Array{
-			fcppt::container::array::init<
-				typename
-				Array::internal
-			>(
-				[
-					&_function
-				](
-					auto const _fcppt_index
-				)
-				{
-					FCPPT_USE(
-						_fcppt_index
-					);
+  return Array{fcppt::container::array::init<typename Array::internal>(
+      [&_function](auto const _fcppt_index) {
+        FCPPT_USE(_fcppt_index);
 
-					return
-						_function(
-							fcppt::type_traits::integral_cast<
-								typename
-								Array::enum_type,
-								fcppt::cast::int_to_enum_fun,
-								decltype(
-									_fcppt_index
-								)
-							>{}
-						);
-				}
-			)
-		};
+        return _function(fcppt::type_traits::integral_cast<
+                         typename Array::enum_type,
+                         fcppt::cast::int_to_enum_fun,
+                         decltype(_fcppt_index)>{});
+      })};
 }
 
 }

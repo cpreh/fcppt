@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_PI_HPP_INCLUDED
 #define FCPPT_MATH_PI_HPP_INCLUDED
 
@@ -13,40 +12,21 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Returns Pi for type T
 \ingroup fcpptmath
 \tparam T Must be a floating point type
 */
-template<
-	typename T
->
-inline
-T
-pi()
-noexcept
+template <typename T>
+inline T pi() noexcept
 {
-	static_assert(
-		std::is_floating_point_v<
-			T
-		>,
-		"math::pi must return a floating point type"
-	);
+  static_assert(std::is_floating_point_v<T>, "math::pi must return a floating point type");
 
-	return
-		std::acos(
-			fcppt::literal<
-				T
-			>(
-				-1
-			)
-		);
+  return std::acos(fcppt::literal<T>(-1));
 }
 
 }

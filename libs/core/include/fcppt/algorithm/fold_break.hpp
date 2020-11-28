@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_FOLD_BREAK_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FOLD_BREAK_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Folds a range into a value, can break out early.
 
@@ -35,56 +32,19 @@ for all <code>1 <= j < x</code>.
 \tparam Function Must be callable as <code>std::pair<fcppt::loop, State>
 (Range::value_type,State)</code>.
 **/
-template<
-	typename Range,
-	typename State,
-	typename Function
->
-inline
-State
-fold_break(
-	Range &&_range,
-	State _state,
-	Function _function
-)
+template <typename Range, typename State, typename Function>
+inline State fold_break(Range &&_range, State _state, Function _function)
 {
-	fcppt::algorithm::loop_break(
-		std::forward<
-			Range
-		>(
-			_range
-		),
-		[
-			&_state,
-			&_function
-		](
-			auto &&_fcppt_element
-		)
-		{
-			std::pair<
-				fcppt::loop,
-				State
-			> result{
-				_function(
-					_fcppt_element,
-					std::move(
-						_state
-					)
-				)
-			};
+  fcppt::algorithm::loop_break(
+      std::forward<Range>(_range), [&_state, &_function](auto &&_fcppt_element) {
+        std::pair<fcppt::loop, State> result{_function(_fcppt_element, std::move(_state))};
 
-			_state =
-				std::move(
-					result.second
-				);
+        _state = std::move(result.second);
 
-			return
-				result.first;
-		}
-	);
+        return result.first;
+      });
 
-	return
-		_state;
+  return _state;
 }
 
 }

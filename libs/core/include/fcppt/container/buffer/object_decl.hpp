@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BUFFER_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BUFFER_OBJECT_DECL_HPP_INCLUDED
 
@@ -14,14 +13,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace buffer
 {
-
 /**
 \brief A contiguous container for uninitialized data that contains a write and a read area.
 
@@ -33,277 +30,151 @@ namespace buffer
 
 See \ref fcpptcontainerbuffer for more information.
 */
-template<
-	typename T,
-	typename A
->
+template <typename T, typename A>
 class object
 {
-	static_assert(
-		std::is_pod<
-			T
-		>::value,
-		"T must be a POD"
-	);
+  static_assert(std::is_pod<T>::value, "T must be a POD");
 
-	FCPPT_NONCOPYABLE(
-		object
-	);
+  FCPPT_NONCOPYABLE(object);
+
 public:
-	using
-	value_type
-	=
-	T;
+  using value_type = T;
 
-	using
-	allocator_type
-	=
-	A;
+  using allocator_type = A;
 
-	using
-	size_type
-	=
-	typename
-	A::size_type;
+  using size_type = typename A::size_type;
 
-	using
-	pointer
-	=
-	typename
-	A::pointer;
+  using pointer = typename A::pointer;
 
-	using
-	const_pointer
-	=
-	typename
-	A::const_pointer;
+  using const_pointer = typename A::const_pointer;
 
-	using
-	const_reference
-	=
-	typename
-	A::const_reference;
+  using const_reference = typename A::const_reference;
 
-	using
-	const_iterator
-	=
-	typename
-	A::const_pointer;
+  using const_iterator = typename A::const_pointer;
 
-	/**
-	\brief Constructs an uninitialized buffer.
+  /**
+  \brief Constructs an uninitialized buffer.
 
-	Constructs a buffer with a write area of size \a sz.
-	*/
-	explicit
-	object(
-		size_type write_sz
-	);
+  Constructs a buffer with a write area of size \a sz.
+  */
+  explicit object(size_type write_sz);
 
-	/**
-	\brief Constructs an uninitialized buffer with custom allocator.
+  /**
+  \brief Constructs an uninitialized buffer with custom allocator.
 
-	Constructs a buffer with a write area of size \a sz.
-	*/
-	object(
-		size_type write_sz,
-		A
-	);
+  Constructs a buffer with a write area of size \a sz.
+  */
+  object(size_type write_sz, A);
 
-	object(
-		object &&
-	)
-	noexcept;
+  object(object &&) noexcept;
 
-	object &
-	operator=(
-		object &&
-	)
-	noexcept;
+  object &operator=(object &&) noexcept;
 
-	~object()
-	noexcept;
+  ~object() noexcept;
 
-	/**
-	\brief The beginning of the read area.
-	*/
-	[[nodiscard]]
-	const_iterator
-	begin() const
-	noexcept;
+  /**
+  \brief The beginning of the read area.
+  */
+  [[nodiscard]] const_iterator begin() const noexcept;
 
-	/**
-	\brief The end of the read area.
-	*/
-	[[nodiscard]]
-	const_iterator
-	end() const
-	noexcept;
+  /**
+  \brief The end of the read area.
+  */
+  [[nodiscard]] const_iterator end() const noexcept;
 
-	/**
-	\brief The read area at a given position.
-	*/
-	[[nodiscard]]
-	const_reference
-	operator[](
-		size_type
-	) const
-	noexcept;
+  /**
+  \brief The read area at a given position.
+  */
+  [[nodiscard]] const_reference operator[](size_type) const noexcept;
 
-	/**
-	\brief The beginning of the read area.
-	*/
-	[[nodiscard]]
-	const_pointer
-	read_data() const
-	noexcept;
+  /**
+  \brief The beginning of the read area.
+  */
+  [[nodiscard]] const_pointer read_data() const noexcept;
 
-	/**
-	\brief The end of the read area.
-	*/
-	[[nodiscard]]
-	const_pointer
-	read_data_end() const
-	noexcept;
+  /**
+  \brief The end of the read area.
+  */
+  [[nodiscard]] const_pointer read_data_end() const noexcept;
 
-	/**
-	\brief The beginning of the write area.
-	*/
-	[[nodiscard]]
-	pointer
-	write_data()
-	noexcept;
+  /**
+  \brief The beginning of the write area.
+  */
+  [[nodiscard]] pointer write_data() noexcept;
 
-	/**
-	\brief The end of the write area.
-	*/
-	[[nodiscard]]
-	pointer
-	write_data_end()
-	noexcept;
+  /**
+  \brief The end of the write area.
+  */
+  [[nodiscard]] pointer write_data_end() noexcept;
 
-	/**
-	\brief The size of the read area.
-	*/
-	[[nodiscard]]
-	size_type
-	read_size() const
-	noexcept;
+  /**
+  \brief The size of the read area.
+  */
+  [[nodiscard]] size_type read_size() const noexcept;
 
-	/**
-	\brief The size of the write area.
-	*/
-	[[nodiscard]]
-	size_type
-	write_size() const
-	noexcept;
+  /**
+  \brief The size of the write area.
+  */
+  [[nodiscard]] size_type write_size() const noexcept;
 
-	/**
-	\brief Adds to the read area.
+  /**
+  \brief Adds to the read area.
 
-	Adds \a sz elements to the read area. This function should be
-	called after data has been read into the write area.
-	*/
-	void
-	written(
-		size_type sz
-	)
-	noexcept;
+  Adds \a sz elements to the read area. This function should be
+  called after data has been read into the write area.
+  */
+  void written(size_type sz) noexcept;
 
-	/**
-	\brief Resizes the write area.
+  /**
+  \brief Resizes the write area.
 
-	Sets the size of the write area to \a sz.
-	*/
-	void
-	resize_write_area(
-		size_type sz
-	);
+  Sets the size of the write area to \a sz.
+  */
+  void resize_write_area(size_type sz);
 
-	[[nodiscard]]
-	allocator_type
-	get_allocator() const;
+  [[nodiscard]] allocator_type get_allocator() const;
 
-	void
-	swap(
-		object &
-	)
-	noexcept;
+  void swap(object &) noexcept;
 
-	/**
-	\brief Releases the storage.
+  /**
+  \brief Releases the storage.
 
-	\see fcppt::container::buffer::to_raw_vector
-	*/
-	[[nodiscard]]
-	fcppt::container::raw_vector::rep<
-		A
-	>
-	release()
-	noexcept;
+  \see fcppt::container::buffer::to_raw_vector
+  */
+  [[nodiscard]] fcppt::container::raw_vector::rep<A> release() noexcept;
+
 private:
-	void
-	release_internal()
-	noexcept;
+  void release_internal() noexcept;
 
-	struct impl
-	{
-		FCPPT_NONCOPYABLE(
-			impl
-		);
-	public:
-		impl(
-			A const &,
-			pointer first,
-			size_type size
-		);
+  struct impl
+  {
+    FCPPT_NONCOPYABLE(impl);
 
-		impl(
-			impl &&
-		)
-		noexcept;
+  public:
+    impl(A const &, pointer first, size_type size);
 
-		impl &
-		operator=(
-			impl &&
-		)
-		noexcept;
+    impl(impl &&) noexcept;
 
-		~impl()
-		noexcept;
+    impl &operator=(impl &&) noexcept;
 
-		void
-		deallocate()
-		noexcept;
+    ~impl() noexcept;
 
-		A alloc_;  // NOLINT(misc-non-private-member-variables-in-classes)
+    void deallocate() noexcept;
 
-		pointer
-			first_,  // NOLINT(misc-non-private-member-variables-in-classes)
-			read_end_, // NOLINT(misc-non-private-member-variables-in-classes)
-			write_end_, // NOLINT(misc-non-private-member-variables-in-classes)
-			cap_; // NOLINT(misc-non-private-member-variables-in-classes)
-	};
+    A alloc_; // NOLINT(misc-non-private-member-variables-in-classes)
 
-	impl impl_;
+    pointer first_, // NOLINT(misc-non-private-member-variables-in-classes)
+        read_end_, // NOLINT(misc-non-private-member-variables-in-classes)
+        write_end_, // NOLINT(misc-non-private-member-variables-in-classes)
+        cap_; // NOLINT(misc-non-private-member-variables-in-classes)
+  };
+
+  impl impl_;
 };
 
-template<
-	typename T,
-	typename A
->
-void
-swap(
-	fcppt::container::buffer::object<
-		T,
-		A
-	> &,
-	fcppt::container::buffer::object<
-		T,
-		A
-	> &
-)
-noexcept;
+template <typename T, typename A>
+void swap(
+    fcppt::container::buffer::object<T, A> &, fcppt::container::buffer::object<T, A> &) noexcept;
 
 }
 }

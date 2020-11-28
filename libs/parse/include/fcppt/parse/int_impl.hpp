@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_INT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_INT_IMPL_HPP_INCLUDED
 
@@ -27,101 +26,27 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
+template <typename Type>
+fcppt::parse::int_<Type>::int_() = default;
 
-template<
-	typename Type
->
-fcppt::parse::int_<
-	Type
->::int_()
-= default;
-
-template<
-	typename Type
->
-template<
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::int_<
-		Type
-	>::result_type
->
-fcppt::parse::int_<
-	Type
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state,
-	Skipper const &_skipper
-) const
+template <typename Type>
+template <typename Ch, typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::int_<Type>::result_type>
+fcppt::parse::int_<Type>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-	auto const parser{
-		fcppt::parse::make_lexeme(
-			-
-			fcppt::parse::make_literal(
-				FCPPT_CHAR_LITERAL(Ch, '-')
-			)
-			>>
-			fcppt::parse::detail::basic_int<
-				Type
-			>{}
-		)
-	};
+  auto const parser{fcppt::parse::make_lexeme(
+      -fcppt::parse::make_literal(FCPPT_CHAR_LITERAL(Ch, '-')) >>
+      fcppt::parse::detail::basic_int<Type>{})};
 
-	return
-		fcppt::monad::chain(
-			fcppt::parse::skipper::run(
-				_skipper,
-				_state
-			),
-			[
-				&parser,
-				&_state,
-				&_skipper
-			](
-				fcppt::unit
-			)
-			{
-				return
-					parser.parse(
-						_state,
-						_skipper
-					);
-			},
-			[](
-				fcppt::parse::result_of<
-					decltype(
-						parser
-					)
-				> const &_result
-			)
-			{
-				Type const value{
-					std::get<1>(
-						_result
-					)
-				};
+  return fcppt::monad::chain(
+      fcppt::parse::skipper::run(_skipper, _state),
+      [&parser, &_state, &_skipper](fcppt::unit) { return parser.parse(_state, _skipper); },
+      [](fcppt::parse::result_of<decltype(parser)> const &_result) {
+        Type const value{std::get<1>(_result)};
 
-				return
-					fcppt::parse::make_success<
-						Ch
-					>(
-						std::get<0>(
-							_result
-						).has_value()
-						?
-							-value
-						:
-							value
-					);
-			}
-		);
+        return fcppt::parse::make_success<Ch>(std::get<0>(_result).has_value() ? -value : value);
+      });
 }
 
 #endif

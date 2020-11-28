@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_FROM_VOID_PTR_HPP_INCLUDED
 #define FCPPT_CAST_FROM_VOID_PTR_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts a void pointer to a different pointer
 
@@ -29,36 +26,14 @@ This cast is unsafe.
 
 \tparam Dest Must be a pointer type
 */
-template<
-	typename Dest,
-	typename Source
->
-inline
-Dest
-from_void_ptr(
-	Source *const _ptr
-)
-noexcept
+template <typename Dest, typename Source>
+inline Dest from_void_ptr(Source *const _ptr) noexcept
 {
-	static_assert(
-		std::is_pointer<
-			Dest
-		>::value
-		&&
-		std::is_void<
-			std::remove_cv_t<
-				Source
-			>
-		>::value,
-		"from_void_ptr can only cast from a pointer to (cv) void to a different pointer type"
-	);
+  static_assert(
+      std::is_pointer<Dest>::value && std::is_void<std::remove_cv_t<Source>>::value,
+      "from_void_ptr can only cast from a pointer to (cv) void to a different pointer type");
 
-	return
-		static_cast<
-			Dest
-		>(
-			_ptr
-		);
+  return static_cast<Dest>(_ptr);
 }
 
 }

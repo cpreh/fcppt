@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_MAKE_MOVE_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_MAKE_MOVE_RANGE_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Creates a move range from a container
 
@@ -28,40 +25,15 @@ namespace container
 
 \tparam Container A container type.
 */
-template<
-	typename Container
->
-inline
-fcppt::container::move_range<
-	std::remove_reference_t<
-		Container
-	>
->
-make_move_range(
-	Container &&_container
-)
+template <typename Container>
+inline fcppt::container::move_range<std::remove_reference_t<Container>>
+make_move_range(Container &&_container)
 {
-	static_assert(
-		std::is_rvalue_reference_v<
-			decltype(
-				_container
-			)
-		>,
-		"Container must be an rvalue reference"
-	);
+  static_assert(
+      std::is_rvalue_reference_v<decltype(_container)>, "Container must be an rvalue reference");
 
-	return
-		fcppt::container::move_range<
-			std::remove_reference_t<
-				Container
-			>
-		>(
-			std::forward<
-				Container
-			>(
-				_container
-			)
-		);
+  return fcppt::container::move_range<std::remove_reference_t<Container>>(
+      std::forward<Container>(_container));
 }
 
 }

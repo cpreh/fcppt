@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_NEUMANN_NEIGHBOR_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_NEUMANN_NEIGHBOR_ARRAY_HPP_INCLUDED
 
@@ -13,14 +12,12 @@
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \ingroup fcpptcontainergrid
 
@@ -28,16 +25,8 @@ namespace grid
 
 \tparam Pos Must be an fcppt::container::grid::pos
 */
-template<
-	typename Pos
->
-using
-neumann_neighbor_array
-=
-std::array<
-	Pos,
-	4
->;
+template <typename Pos>
+using neumann_neighbor_array = std::array<Pos, 4>;
 
 }
 }

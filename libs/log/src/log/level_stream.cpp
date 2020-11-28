@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/const.hpp>
 #include <fcppt/identity.hpp>
 #include <fcppt/make_ref.hpp>
@@ -17,69 +16,31 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 fcppt::log::level_stream::level_stream(
-	fcppt::io::ostream &_dest,
-	fcppt::log::format::optional_function &&_formatter
-)
-:
-	dest_(
-		_dest
-	),
-	formatter_(
-		std::move(
-			_formatter
-		)
-	)
+    fcppt::io::ostream &_dest, fcppt::log::format::optional_function &&_formatter)
+    : dest_(_dest), formatter_(std::move(_formatter))
 {
 }
 
-void
-fcppt::log::level_stream::log(
-	fcppt::log::detail::temporary_output const &_output,
-	fcppt::log::format::optional_function const &_additional_formatter
-) const
+void fcppt::log::level_stream::log(
+    fcppt::log::detail::temporary_output const &_output,
+    fcppt::log::format::optional_function const &_additional_formatter) const
 {
-	dest_.get()
-		<<
-		fcppt::optional::from(
-			fcppt::log::format::chain(
-				_additional_formatter,
-				this->formatter()
-			),
-			fcppt::const_(
-				fcppt::log::format::function(
-					fcppt::identity{}
-				)
-			)
-		)(
-			_output.result()
-		);
+  dest_.get() << fcppt::optional::from(
+      fcppt::log::format::chain(_additional_formatter, this->formatter()),
+      fcppt::const_(fcppt::log::format::function(fcppt::identity{})))(_output.result());
 
-	dest_.get().flush();
+  dest_.get().flush();
 }
 
-void
-fcppt::log::level_stream::sink(
-	fcppt::io::ostream &_stream
-)
+void fcppt::log::level_stream::sink(fcppt::io::ostream &_stream)
 {
-	dest_ =
-		fcppt::make_ref(
-			_stream
-		);
+  dest_ = fcppt::make_ref(_stream);
 }
 
-fcppt::io::ostream &
-fcppt::log::level_stream::get()
-{
-	return
-		dest_.get();
-}
+fcppt::io::ostream &fcppt::log::level_stream::get() { return dest_.get(); }
 
-fcppt::log::format::optional_function const &
-fcppt::log::level_stream::formatter() const
+fcppt::log::format::optional_function const &fcppt::log::level_stream::formatter() const
 {
-	return
-		formatter_;
+  return formatter_;
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DETAIL_STRING_LITERAL_HPP_INCLUDED
 #define FCPPT_DETAIL_STRING_LITERAL_HPP_INCLUDED
 
@@ -13,29 +12,14 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace detail
 {
-
-template<
-	typename Type
->
-inline
-Type const *
-string_literal(
-	fcppt::metal::as_tuple<
-		fcppt::detail::string_types
-	> const &_args
-)
+template <typename Type>
+inline Type const *string_literal(fcppt::metal::as_tuple<fcppt::detail::string_types> const &_args)
 {
-	return
-		std::get<
-			Type const *
-		>(
-			_args
-		);
+  return std::get<Type const *>(_args);
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TUPLE_MOVE_ELEMENT_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_MOVE_ELEMENT_HPP_INCLUDED
 
@@ -15,14 +14,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace tuple
 {
-
 /**
 \brief If a tuple element should be moved.
 
@@ -36,39 +33,15 @@ references in a tuple.
 
 \tparam Tuple Must be a <code>std::tuple</code>.
 */
-template<
-	typename Tuple,
-	std::size_t Index
->
-using
-move_element
-=
-std::integral_constant<
-	bool,
-	fcppt::not_(
-		std::is_lvalue_reference<
-			Tuple
-		>::value
-		||
-		std::is_lvalue_reference<
-			std::tuple_element_t<
-				Index,
-				fcppt::type_traits::remove_cv_ref_t<
-					Tuple
-				>
-			>
-		>::value
-	)
-	||
-	std::is_rvalue_reference<
-		std::tuple_element_t<
-			Index,
-			fcppt::type_traits::remove_cv_ref_t<
-				Tuple
-			>
-		>
-	>::value
->;
+template <typename Tuple, std::size_t Index>
+using move_element = std::integral_constant<
+    bool,
+    fcppt::not_(
+        std::is_lvalue_reference<Tuple>::value ||
+        std::is_lvalue_reference<
+            std::tuple_element_t<Index, fcppt::type_traits::remove_cv_ref_t<Tuple>>>::value) ||
+        std::is_rvalue_reference<
+            std::tuple_element_t<Index, fcppt::type_traits::remove_cv_ref_t<Tuple>>>::value>;
 
 }
 }

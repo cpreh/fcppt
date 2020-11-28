@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CATCH_STRONG_TYPEDEF_HPP_INCLUDED
 #define FCPPT_CATCH_STRONG_TYPEDEF_HPP_INCLUDED
 
@@ -14,40 +13,20 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace Catch
 {
-
 /**
 \brief Output specialization for #fcppt::strong_typedef.
 
 \ingroup fcpptcatch
 */
-template<
-	typename Type,
-	typename Tag
->
-struct StringMaker<
-	fcppt::strong_typedef<
-		Type,
-		Tag
-	>
->
+template <typename Type, typename Tag>
+struct StringMaker<fcppt::strong_typedef<Type, Tag>>
 {
-	static
-	std::string
-	convert(
-		fcppt::strong_typedef<
-			Type,
-			Tag
-		> const &_value
-	)
-	{
-		return
-			fcppt::catch_::convert(
-				_value.get()
-			);
-	}
+  static std::string convert(fcppt::strong_typedef<Type, Tag> const &_value)
+  {
+    return fcppt::catch_::convert(_value.get());
+  }
 };
 
 }

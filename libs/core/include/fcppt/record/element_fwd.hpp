@@ -3,20 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_ELEMENT_FWD_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace record
 {
-
-template<
-	typename Label,
-	typename Type
->
+template <typename Label, typename Type>
 struct element;
 
 }

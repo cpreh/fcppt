@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_DECL_HPP_INCLUDED
 
@@ -15,7 +14,6 @@
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace signal
@@ -24,68 +22,34 @@ namespace unregister
 {
 namespace detail
 {
-
-template<
-	typename Function
->
+template <typename Function>
 class concrete_connection // NOLINT(fuchsia-multiple-inheritance)
-:
-	public
-		fcppt::signal::connection,
-	public
-		fcppt::intrusive::base<
-			fcppt::signal::unregister::detail::concrete_connection<
-				Function
-			>
-		>
+    : public fcppt::signal::connection,
+      public fcppt::intrusive::base<
+          fcppt::signal::unregister::detail::concrete_connection<Function>>
 {
-	FCPPT_NONMOVABLE(
-		concrete_connection
-	);
+  FCPPT_NONMOVABLE(concrete_connection);
+
 public:
-	using
-	function_signature
-	=
-	Function;
+  using function_signature = Function;
 
-	using
-	function_type
-	=
-	fcppt::function<
-		Function
-	>;
+  using function_type = fcppt::function<Function>;
 
-	using
-	base_type
-	=
-	fcppt::intrusive::base<
-		fcppt::signal::unregister::detail::concrete_connection<
-			Function
-		>
-	>;
+  using base_type =
+      fcppt::intrusive::base<fcppt::signal::unregister::detail::concrete_connection<Function>>;
 
-	using
-	list_type
-	=
-	typename
-	base_type::list_type;
+  using list_type = typename base_type::list_type;
 
-	concrete_connection(
-		list_type &,
-		function_type &&,
-		fcppt::signal::unregister::function &&
-	);
+  concrete_connection(list_type &, function_type &&, fcppt::signal::unregister::function &&);
 
-	~concrete_connection()
-	override;
+  ~concrete_connection() override;
 
-	[[nodiscard]]
-	function_type const &
-	function() const;
+  [[nodiscard]] function_type const &function() const;
+
 private:
-	function_type const function_;
+  function_type const function_;
 
-	fcppt::signal::unregister::function const unregister_;
+  fcppt::signal::unregister::function const unregister_;
 };
 
 }

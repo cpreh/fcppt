@@ -3,20 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_VARIATE_FWD_HPP_INCLUDED
 #define FCPPT_RANDOM_VARIATE_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace random
 {
-
-template<
-	typename Generator,
-	typename Distribution
->
+template <typename Generator, typename Distribution>
 class variate;
 
 }

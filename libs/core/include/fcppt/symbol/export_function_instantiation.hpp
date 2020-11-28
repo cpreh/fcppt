@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION_HPP_INCLUDED
 #define FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION_HPP_INCLUDED
 
 #include <fcppt/symbol/export.hpp>
-
 
 /**
 \brief Tells that an explicit function instantiation should be exported

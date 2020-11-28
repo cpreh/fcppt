@@ -3,19 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_LABEL_FWD_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace record
 {
-
-template<
-	typename Tag
->
+template <typename Tag>
 struct label;
 
 }

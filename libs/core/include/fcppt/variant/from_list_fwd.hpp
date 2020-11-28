@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
 #define FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
 
 #include <fcppt/metal/as.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief Declares a variant using a metal::list.
 
@@ -23,16 +20,8 @@ namespace variant
 
 \tparam Types Must be a metal::list.
 */
-template<
-	typename Types
->
-using
-from_list
-=
-fcppt::metal::as<
-	fcppt::variant::object,
-	Types
->;
+template <typename Types>
+using from_list = fcppt::metal::as<fcppt::variant::object, Types>;
 
 }
 }

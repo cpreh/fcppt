@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRONG_TYPEDEF_APPLY_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_APPLY_HPP_INCLUDED
 
@@ -17,10 +16,8 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Applies a function to multiple strong typedefs.
 
@@ -37,130 +34,46 @@ Returns a strong typedef with the same tag type and value
 <code>R (StrongTypedef1::value_type, StrongTypedefs::value_type...)</code>,
 where <code>R</code> is the result type.
 */
-template<
-	typename StrongTypedef1,
-	typename Function,
-	typename... StrongTypedefs
->
-inline
-auto
-strong_typedef_apply(
-	Function const &_function,
-	StrongTypedef1 &&_strong_typedef1,
-	StrongTypedefs &&... _strong_typedefs
-)
-->
-fcppt::strong_typedef<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				StrongTypedef1
-			>(
-				_strong_typedef1.get()
-			),
-			fcppt::move_if_rvalue<
-				StrongTypedefs
-			>(
-				_strong_typedefs.get()
-			)...
-		)
-	),
-	fcppt::strong_typedef_tag<
-		fcppt::type_traits::remove_cv_ref_t<
-			StrongTypedef1
-		>
-	>
->
+template <typename StrongTypedef1, typename Function, typename... StrongTypedefs>
+inline auto strong_typedef_apply(
+    Function const &_function,
+    StrongTypedef1 &&_strong_typedef1,
+    StrongTypedefs &&..._strong_typedefs)
+    -> fcppt::strong_typedef<
+        decltype(_function(
+            fcppt::move_if_rvalue<StrongTypedef1>(_strong_typedef1.get()),
+            fcppt::move_if_rvalue<StrongTypedefs>(_strong_typedefs.get())...)),
+        fcppt::strong_typedef_tag<fcppt::type_traits::remove_cv_ref_t<StrongTypedef1>>>
 {
-	using
-	strong_typedef1
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		StrongTypedef1
-	>;
+  using strong_typedef1 = fcppt::type_traits::remove_cv_ref_t<StrongTypedef1>;
 
-	static_assert(
-		fcppt::is_strong_typedef<
-			strong_typedef1
-		>::value,
-		"StrongTypedef1 must be a strong typedef"
-	);
+  static_assert(
+      fcppt::is_strong_typedef<strong_typedef1>::value, "StrongTypedef1 must be a strong typedef");
 
-	using
-	strong_typedefs
-	=
-	::metal::list<
-		fcppt::type_traits::remove_cv_ref_t<
-			StrongTypedefs
-		>...
-	>;
+  using strong_typedefs = ::metal::list<fcppt::type_traits::remove_cv_ref_t<StrongTypedefs>...>;
 
-	using
-	input_tag
-	=
-	fcppt::strong_typedef_tag<
-		strong_typedef1
-	>;
+  using input_tag = fcppt::strong_typedef_tag<strong_typedef1>;
 
-	static_assert(
-		::metal::all_of<
-			strong_typedefs,
-			::metal::trait<
-				fcppt::is_strong_typedef
-			>
-		>::value,
-		"StrongTypedefs must all be strong typedefs"
-	);
+  static_assert(
+      ::metal::all_of<strong_typedefs, ::metal::trait<fcppt::is_strong_typedef>>::value,
+      "StrongTypedefs must all be strong typedefs");
 
-	static_assert(
-		::metal::all_of<
-			strong_typedefs,
-			::metal::bind<
-				::metal::trait<
-					std::is_same
-				>,
-				::metal::always<
-					input_tag
-				>,
-				::metal::lambda<
-					fcppt::strong_typedef_tag
-				>
-			>
-		>::value,
-		"All strong typedefs must have the same tag type"
-	);
+  static_assert(
+      ::metal::all_of<
+          strong_typedefs,
+          ::metal::bind<
+              ::metal::trait<std::is_same>,
+              ::metal::always<input_tag>,
+              ::metal::lambda<fcppt::strong_typedef_tag>>>::value,
+      "All strong typedefs must have the same tag type");
 
-	return
-		fcppt::strong_typedef<
-			decltype(
-				_function(
-					fcppt::move_if_rvalue<
-						StrongTypedef1
-					>(
-						_strong_typedef1.get()
-					),
-					fcppt::move_if_rvalue<
-						StrongTypedefs
-					>(
-						_strong_typedefs.get()
-					)...
-				)
-			),
-			input_tag
-		>(
-			_function(
-				fcppt::move_if_rvalue<
-					StrongTypedef1
-				>(
-					_strong_typedef1.get()
-				),
-				fcppt::move_if_rvalue<
-					StrongTypedefs
-				>(
-					_strong_typedefs.get()
-				)...
-			)
-		);
+  return fcppt::strong_typedef<
+      decltype(_function(
+          fcppt::move_if_rvalue<StrongTypedef1>(_strong_typedef1.get()),
+          fcppt::move_if_rvalue<StrongTypedefs>(_strong_typedefs.get())...)),
+      input_tag>(_function(
+      fcppt::move_if_rvalue<StrongTypedef1>(_strong_typedef1.get()),
+      fcppt::move_if_rvalue<StrongTypedefs>(_strong_typedefs.get())...));
 }
 
 }

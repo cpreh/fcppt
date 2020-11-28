@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PREPROCESSOR_DISABLE_GCC_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DISABLE_GCC_WARNING_HPP_INCLUDED
 
 #include <fcppt/detail/check_cpp.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.h>
-
 
 #endif

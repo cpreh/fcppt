@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief Checks if a type is held by a variant
 
@@ -40,34 +37,14 @@ variant
 
 \return If the type is held by the variant
 */
-template<
-	typename Type,
-	typename... Elements
->
-inline
-bool
-holds_type(
-	fcppt::variant::object<
-		Elements...
-	> const &_variant
-)
+template <typename Type, typename... Elements>
+inline bool holds_type(fcppt::variant::object<Elements...> const &_variant)
 {
-	static_assert(
-		fcppt::variant::detail::has_type<
-			fcppt::variant::object<
-				Elements...
-			>,
-			Type
-		>::value,
-		"Invalid Type in variant::holds_type"
-	);
+  static_assert(
+      fcppt::variant::detail::has_type<fcppt::variant::object<Elements...>, Type>::value,
+      "Invalid Type in variant::holds_type");
 
-	return
-		std::holds_alternative<
-			Type
-		>(
-			_variant.impl()
-		);
+  return std::holds_alternative<Type>(_variant.impl());
 }
 
 }

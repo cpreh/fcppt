@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LOOP_HPP_INCLUDED
 #define FCPPT_LOOP_HPP_INCLUDED
 
 #include <fcppt/loop_fwd.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Denotes a loop control statement
 
@@ -22,8 +19,8 @@ Used by various algorithms that need the ability to break out of a loop early.
 */
 enum class loop
 {
-	break_,
-	continue_
+  break_,
+  continue_
 };
 
 }

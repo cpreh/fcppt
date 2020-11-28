@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/public_config.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/to_std_wstring.hpp>
@@ -15,22 +14,16 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-std::wstring
-fcppt::to_std_wstring(
-	fcppt::string_view const &_input
-)
+std::wstring fcppt::to_std_wstring(fcppt::string_view const &_input)
 {
-	return
+  return
 #if defined(FCPPT_NARROW_STRING)
-		fcppt::to_std_wstring_locale(
-			_input,
-			fcppt::string_conv_locale()
-		)
+      fcppt::to_std_wstring_locale(_input, fcppt::string_conv_locale())
 #else
-		std::wstring{
-			_input
-		}
+      std::wstring
+  {
+    _input
+  }
 #endif
-		;
+          ;
 }

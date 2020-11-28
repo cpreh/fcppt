@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
@@ -25,22 +24,20 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Interpolates a value inside the grid cells
 
 \ingroup fcpptcontainergrid
 
 With #fcppt::container::grid::object grid::object  alone, you can
-only access values at discrete points (since the #fcppt::container::grid::object::dim object::dim type used to specify
-positions has an integral <code>value_type</code>).
+only access values at discrete points (since the #fcppt::container::grid::object::dim object::dim
+type used to specify positions has an integral <code>value_type</code>).
 
 Sometimes, however, you want to take a value in between the grid nodes. Think
 about a magnifying filter for textures, or drawing a line from one plot point
@@ -61,117 +58,48 @@ Here's an example:
 \tparam Interpolator A function callable as <code>T (F, T, T)</code>.
 
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A,
-	typename F,
-	typename Interpolator
->
-T
-interpolate(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_grid,
-	fcppt::math::vector::static_<
-		F,
-		N
-	> const &_floating_point_position,
-	Interpolator const &_interpolator
-)
+template <
+    typename T,
+    fcppt::container::grid::size_type N,
+    typename A,
+    typename F,
+    typename Interpolator>
+T interpolate(
+    fcppt::container::grid::object<T, N, A> const &_grid,
+    fcppt::math::vector::static_<F, N> const &_floating_point_position,
+    Interpolator const &_interpolator)
 {
-	using
-	grid_type
-	=
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	>;
+  using grid_type = fcppt::container::grid::object<T, N, A>;
 
-	using
-	integer_vector_type
-	=
-	fcppt::container::grid::pos_type<
-		grid_type
-	>;
+  using integer_vector_type = fcppt::container::grid::pos_type<grid_type>;
 
-	using
-	binary_vector_array_type
-	=
-	std::array<
-		integer_vector_type,
-		fcppt::math::power_of_2<
-			std::size_t
-		>(
-			N
-		)
-	>;
+  using binary_vector_array_type =
+      std::array<integer_vector_type, fcppt::math::power_of_2<std::size_t>(N)>;
 
-	using
-	binary_vector_array_type_size_type
-	=
-	typename
-	binary_vector_array_type::size_type;
+  using binary_vector_array_type_size_type = typename binary_vector_array_type::size_type;
 
-	using
-	vector_value_type
-	=
-	F;
+  using vector_value_type = F;
 
-	integer_vector_type const floored(
-		fcppt::math::vector::to_unsigned(
-			fcppt::math::vector::structure_cast<
-				typename
-				grid_type::signed_pos,
-				fcppt::cast::float_to_int_fun
-			>(
-				_floating_point_position
-			)
-		)
-	);
+  integer_vector_type const floored(fcppt::math::vector::to_unsigned(
+      fcppt::math::vector::
+          structure_cast<typename grid_type::signed_pos, fcppt::cast::float_to_int_fun>(
+              _floating_point_position)));
 
-	binary_vector_array_type binary_vectors(
-		fcppt::math::vector::bit_strings<
-			fcppt::type_traits::value_type<
-				integer_vector_type
-			>,
-			N
-		>()
-	);
+  binary_vector_array_type binary_vectors(
+      fcppt::math::vector::bit_strings<fcppt::type_traits::value_type<integer_vector_type>, N>());
 
-	for(
-		integer_vector_type &i
-		:
-		binary_vectors
-	)
-	{
-		i += floored;
-	}
+  for (integer_vector_type &i : binary_vectors)
+  {
+    i += floored;
+  }
 
-	return
-		fcppt::container::grid::detail::interpolate<
-			integer_vector_type::dim_wrapper::value
-		>(
-			_grid,
-			binary_vectors,
-			fcppt::literal<
-				binary_vector_array_type_size_type
-			>(
-				0
-			),
-			fcppt::math::vector::mod(
-				_floating_point_position,
-				fcppt::literal<
-					vector_value_type
-				>(
-					1
-				)
-			).get_unsafe(),
-			_interpolator
-		);
+  return fcppt::container::grid::detail::interpolate<integer_vector_type::dim_wrapper::value>(
+      _grid,
+      binary_vectors,
+      fcppt::literal<binary_vector_array_type_size_type>(0),
+      fcppt::math::vector::mod(_floating_point_position, fcppt::literal<vector_value_type>(1))
+          .get_unsafe(),
+      _interpolator);
 }
 
 }

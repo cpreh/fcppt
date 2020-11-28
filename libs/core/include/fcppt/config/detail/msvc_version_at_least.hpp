@@ -3,27 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST_HPP_INCLUDED
 #define FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST_HPP_INCLUDED
 
 #include <fcppt/config/compiler.hpp>
 
-
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 
-
-#define FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST(\
-	version\
-) \
-((version) <= _MSC_VER)
+#define FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST(version) ((version) <= _MSC_VER)
 
 #else
 
-#define FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST(\
-	version \
-) \
-false
+#define FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST(version) false
 
 #endif
 

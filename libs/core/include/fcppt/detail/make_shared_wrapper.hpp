@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DETAIL_MAKE_SHARED_WRAPPER_HPP_INCLUDED
 #define FCPPT_DETAIL_MAKE_SHARED_WRAPPER_HPP_INCLUDED
 
@@ -13,48 +12,22 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace detail
 {
-
-template<
-	typename T
->
+template <typename T>
 class make_shared_wrapper
 {
 public:
-	using
-	ptr_type
-	=
-	std::shared_ptr<
-		T
-	>;
+  using ptr_type = std::shared_ptr<T>;
 
-	explicit
-	make_shared_wrapper(
-		ptr_type &&_ptr
-	)
-	:
-		ptr_(
-			std::move(
-				_ptr
-			)
-		)
-	{
-	}
+  explicit make_shared_wrapper(ptr_type &&_ptr) : ptr_(std::move(_ptr)) {}
 
-	ptr_type
-	release()
-	{
-		return
-			std::move(
-				ptr_
-			);
-	}
+  ptr_type release() { return std::move(ptr_); }
+
 private:
-	ptr_type ptr_;
+  ptr_type ptr_;
 };
 
 }

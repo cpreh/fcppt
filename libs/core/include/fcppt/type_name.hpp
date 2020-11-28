@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_NAME_HPP_INCLUDED
 #define FCPPT_TYPE_NAME_HPP_INCLUDED
 
@@ -12,20 +11,15 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Returns a demangled type name if possible
 
 \ingroup fcpptvarious
 */
 FCPPT_DETAIL_SYMBOL
-std::string
-type_name(
-	char const *
-);
+std::string type_name(char const *);
 
 }
 

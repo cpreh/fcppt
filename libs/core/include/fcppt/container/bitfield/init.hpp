@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BITFIELD_INIT_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_INIT_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/detail/make_range.hpp>
-
 
 namespace fcppt
 {
@@ -17,7 +15,6 @@ namespace container
 {
 namespace bitfield
 {
-
 /**
 \brief Initialize a bitfield using a function
 
@@ -30,45 +27,20 @@ Every bit of \a Result with index <code>e</code> is set to
 
 \tparam Function Must be callable as <code>bool (Result::element_type)</code>.
 */
-template<
-	typename Result,
-	typename Function
->
-Result
-init(
-	Function const &_function
-)
+template <typename Result, typename Function>
+Result init(Function const &_function)
 {
-	Result result(
-		Result::null()
-	);
+  Result result(Result::null());
 
-	using
-	element_type
-	=
-	typename
-	Result::element_type;
+  using element_type = typename Result::element_type;
 
-	for(
-		element_type const value
-		:
-		fcppt::container::bitfield::detail::make_range<
-			element_type,
-			typename
-			Result::static_size
-		>()
-	)
-	{
-		result.set(
-			value,
-			_function(
-				value
-			)
-		);
-	}
+  for (element_type const value :
+       fcppt::container::bitfield::detail::make_range<element_type, typename Result::static_size>())
+  {
+    result.set(value, _function(value));
+  }
 
-	return
-		result;
+  return result;
 }
 
 }

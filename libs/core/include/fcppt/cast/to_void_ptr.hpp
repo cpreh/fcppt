@@ -3,33 +3,24 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_TO_VOID_PTR_HPP_INCLUDED
 #define FCPPT_CAST_TO_VOID_PTR_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts a pointer to const to a pointer to const void
 
 \ingroup fcpptcasts
 */
-template<
-	typename Source
->
-inline
-void const *
-to_void_ptr(
-	Source const *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
-)
-noexcept
+template <typename Source>
+inline void const *
+to_void_ptr(Source const *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
+            ) noexcept
 {
-	return
-		_ptr;
+  return _ptr;
 }
 
 /**
@@ -37,18 +28,11 @@ noexcept
 
 \ingroup fcpptcasts
 */
-template<
-	typename Source
->
-inline
-void *
-to_void_ptr(
-	Source *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
-)
-noexcept
+template <typename Source>
+inline void *to_void_ptr(Source *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
+                         ) noexcept
 {
-	return
-		_ptr;
+  return _ptr;
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_IN_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_IN_RANGE_HPP_INCLUDED
 
@@ -12,14 +11,12 @@
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Checks if the given position \p _pos is out of bounds.
 
@@ -28,33 +25,12 @@ namespace grid
 \returns <code>true</code> if is not out of bounds, <code>false</code> otherwise.
 
 */
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-inline
-bool
-in_range(
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	> const &_grid,
-	fcppt::container::grid::pos_type<
-		fcppt::container::grid::object<
-			T,
-			N,
-			A
-		>
-	> const &_pos
-)
+template <typename T, fcppt::container::grid::size_type N, typename A>
+inline bool in_range(
+    fcppt::container::grid::object<T, N, A> const &_grid,
+    fcppt::container::grid::pos_type<fcppt::container::grid::object<T, N, A>> const &_pos)
 {
-	return
-		fcppt::container::grid::in_range_dim(
-			_grid.size(),
-			_pos
-		);
+  return fcppt::container::grid::in_range_dim(_grid.size(), _pos);
 }
 
 }

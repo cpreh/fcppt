@@ -4,16 +4,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_HOMOGENOUS_PAIR_COMPARISON_HPP_INCLUDED
 #define FCPPT_HOMOGENOUS_PAIR_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair_impl.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Compares two homogenous pairs lexicographically
 
@@ -32,41 +29,19 @@ _right.first</code>.
 
 \return If \a _left is lexicographically less than \a _right
 */
-template<
-	typename T
->
-bool
-operator<(
-	fcppt::homogenous_pair<
-		T
-	> const &_left,
-	fcppt::homogenous_pair<
-		T
-	> const &_right
-)
+template <typename T>
+bool operator<(fcppt::homogenous_pair<T> const &_left, fcppt::homogenous_pair<T> const &_right)
 {
-	if(
-		_left.first
-		<
-		_right.first
-	)
-	{
-		return true;
-	}
-	if(
-		_right.first
-		<
-		_left.first
-	)
-	{
-		return false;
-	}
+  if (_left.first < _right.first)
+  {
+    return true;
+  }
+  if (_right.first < _left.first)
+  {
+    return false;
+  }
 
-	return
-		_left.second
-		<
-		_right.second;
-
+  return _left.second < _right.second;
 }
 
 /**
@@ -83,24 +58,11 @@ Compares the two pairs \a _left and \a _right for equality, using
 
 \return If both pairs are equal
 */
-template<
-	typename T
->
-inline
-bool
-operator==(
-	fcppt::homogenous_pair<
-		T
-	> const &_left,
-	fcppt::homogenous_pair<
-		T
-	> const &_right
-)
+template <typename T>
+inline bool
+operator==(fcppt::homogenous_pair<T> const &_left, fcppt::homogenous_pair<T> const &_right)
 {
-	return
-		_left.first == _right.first
-		&&
-		_left.second == _right.second;
+  return _left.first == _right.first && _left.second == _right.second;
 }
 
 /**
@@ -117,26 +79,11 @@ Compares the two pairs \a _left and \a _right for equality, using
 
 \return If both pairs are not equal
 */
-template<
-	typename T
->
-inline
-bool
-operator!=(
-	fcppt::homogenous_pair<
-		T
-	> const &_left,
-	fcppt::homogenous_pair<
-		T
-	> const &_right
-)
+template <typename T>
+inline bool
+operator!=(fcppt::homogenous_pair<T> const &_left, fcppt::homogenous_pair<T> const &_right)
 {
-	return
-		!(
-			_left
-			==
-			_right
-		);
+  return !(_left == _right);
 }
 
 }

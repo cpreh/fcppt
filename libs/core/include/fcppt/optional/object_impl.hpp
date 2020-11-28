@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OBJECT_IMPL_HPP_INCLUDED
 
@@ -12,84 +11,37 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->::object()
-:
-	impl_{}
+template <typename T>
+fcppt::optional::object<T>::object() : impl_{}
 {
 }
 
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->::object(
-	T const &_value
-)
-:
-	impl_{
-		_value
-	}
+template <typename T>
+fcppt::optional::object<T>::object(T const &_value) : impl_{_value}
 {
 }
 
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->::object(
-	T &&_other
-)
-:
-	impl_{
-		std::move(
-			_other
-		)
-	}
+template <typename T>
+fcppt::optional::object<T>::object(T &&_other) : impl_{std::move(_other)}
 {
 }
 
-template<
-	typename T
->
-T &
-fcppt::optional::object<
-	T
->::get_unsafe()
+template <typename T>
+T &fcppt::optional::object<T>::get_unsafe()
 {
-	return
-		*this->impl_;
+  return *this->impl_;
 }
 
-template<
-	typename T
->
-T const &
-fcppt::optional::object<
-	T
->::get_unsafe() const
+template <typename T>
+T const &fcppt::optional::object<T>::get_unsafe() const
 {
-	return
-		*this->impl_;
+  return *this->impl_;
 }
 
-template<
-	typename T
->
-bool
-fcppt::optional::object<
-	T
->::has_value() const
+template <typename T>
+bool fcppt::optional::object<T>::has_value() const
 {
-	return
-		impl_.has_value();
+  return impl_.has_value();
 }
 
 #endif

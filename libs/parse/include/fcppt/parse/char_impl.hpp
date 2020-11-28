@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_CHAR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_CHAR_IMPL_HPP_INCLUDED
 
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/char_decl.hpp>
-
 
 #endif

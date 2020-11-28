@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_ARRAY_APPEND_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_APPEND_HPP_INCLUDED
 
@@ -18,14 +17,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace array
 {
-
 /**
 \brief Appends two arrays.
 
@@ -41,135 +38,39 @@ Both arrays must have the same value type.
 
 \tparam Array2 Must be a std::array
 */
-template<
-	typename Array1,
-	typename Array2
->
+template <typename Array1, typename Array2>
 std::array<
-	fcppt::type_traits::value_type<
-		fcppt::type_traits::remove_cv_ref_t<
-			Array1
-		>
-	>,
-	fcppt::container::array::size<
-		fcppt::type_traits::remove_cv_ref_t<
-			Array1
-		>
-	>::value
-	+
-	fcppt::container::array::size<
-		fcppt::type_traits::remove_cv_ref_t<
-			Array2
-		>
-	>::value
->
-append(
-	Array1 &&_array1,
-	Array2 &&_array2
-)
+    fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
+    fcppt::container::array::size<fcppt::type_traits::remove_cv_ref_t<Array1>>::value +
+        fcppt::container::array::size<fcppt::type_traits::remove_cv_ref_t<Array2>>::value>
+append(Array1 &&_array1, Array2 &&_array2)
 {
-	using
-	array1
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Array1
-	>;
+  using array1 = fcppt::type_traits::remove_cv_ref_t<Array1>;
 
-	using
-	array2
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Array2
-	>;
+  using array2 = fcppt::type_traits::remove_cv_ref_t<Array2>;
 
-	using
-	element_type
-	=
-	fcppt::type_traits::value_type<
-		array1
-	>;
+  using element_type = fcppt::type_traits::value_type<array1>;
 
-	static_assert(
-		fcppt::type_traits::is_std_array<
-			array1
-		>::value
-	);
+  static_assert(fcppt::type_traits::is_std_array<array1>::value);
 
-	static_assert(
-		fcppt::type_traits::is_std_array<
-			array2
-		>::value
-	);
+  static_assert(fcppt::type_traits::is_std_array<array2>::value);
 
-	static_assert(
-		std::is_same_v<
-			element_type,
-			fcppt::type_traits::value_type<
-				array2
-			>
-		>
-	);
+  static_assert(std::is_same_v<element_type, fcppt::type_traits::value_type<array2>>);
 
-	using
-	array1_size
-	=
-	fcppt::container::array::size<
-		Array1
-	>;
+  using array1_size = fcppt::container::array::size<Array1>;
 
-	return
-		fcppt::container::array::init<
-			std::array<
-				element_type,
-				array1_size::value
-				+
-				fcppt::container::array::size<
-					array2
-				>::value
-			>
-		>(
-			[
-				&_array1,
-				&_array2
-			](
-				auto const _index
-			)
-			{
-				if constexpr(
-					_index()
-					<
-					array1_size::value
-				)
-				{
-					return
-						fcppt::move_if_rvalue<
-							Array1
-						>(
-							std::get<
-								_index()
-							>(
-								_array1
-							)
-						);
-				}
-				else
-				{
-					return
-						fcppt::move_if_rvalue<
-							Array2
-						>(
-							std::get<
-								_index()
-								-
-								array1_size::value
-							>(
-								_array2
-							)
-						);
-				}
-			}
-		);
-
+  return fcppt::container::array::init<
+      std::array<element_type, array1_size::value + fcppt::container::array::size<array2>::value>>(
+      [&_array1, &_array2](auto const _index) {
+        if constexpr (_index() < array1_size::value)
+        {
+          return fcppt::move_if_rvalue<Array1>(std::get<_index()>(_array1));
+        }
+        else
+        {
+          return fcppt::move_if_rvalue<Array2>(std::get<_index() - array1_size::value>(_array2));
+        }
+      });
 }
 
 }

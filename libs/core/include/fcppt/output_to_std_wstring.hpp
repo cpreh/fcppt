@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OUTPUT_TO_STD_WSTRING_HPP_INCLUDED
 #define FCPPT_OUTPUT_TO_STD_WSTRING_HPP_INCLUDED
 
@@ -13,10 +12,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Convert an arbitrary type to a std::wstring, using #fcppt::insert_extract_locale.
 
@@ -27,20 +24,10 @@ namespace fcppt
 \see fcppt::output_to_fcppt_string
 \see fcppt::output_to_std_string
 */
-template<
-	typename Source
->
-inline
-std::wstring
-output_to_std_wstring(
-	Source const &_source
-)
+template <typename Source>
+inline std::wstring output_to_std_wstring(Source const &_source)
 {
-	return
-		fcppt::output_to_std_wstring_locale(
-			_source,
-			fcppt::insert_extract_locale()
-		);
+  return fcppt::output_to_std_wstring_locale(_source, fcppt::insert_extract_locale());
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_RESIZE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_RESIZE_HPP_INCLUDED
 
@@ -21,14 +20,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Returns a resized grid with potentially new elements
 
@@ -45,84 +42,26 @@ position <code>p</code> in <code>g</code> we have that:
 
 \tparam Function A function callable as <code>Grid::value_type (Grid::pos)</code>.
 */
-template<
-	typename Grid,
-	typename Function
->
-fcppt::type_traits::remove_cv_ref_t<
-	Grid
->
-resize(
-	Grid &&_grid,
-	fcppt::container::grid::dim_type<
-		fcppt::type_traits::remove_cv_ref_t<
-			Grid
-		>
-	> const &_new_size,
-	Function const &_init
-)
+template <typename Grid, typename Function>
+fcppt::type_traits::remove_cv_ref_t<Grid> resize(
+    Grid &&_grid,
+    fcppt::container::grid::dim_type<fcppt::type_traits::remove_cv_ref_t<Grid>> const &_new_size,
+    Function const &_init)
 {
-	using
-	result_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Grid
-	>;
+  using result_type = fcppt::type_traits::remove_cv_ref_t<Grid>;
 
-	static_assert(
-		fcppt::container::grid::is_object<
-			result_type
-		>::value,
-		"Grid must be a grid"
-	);
+  static_assert(fcppt::container::grid::is_object<result_type>::value, "Grid must be a grid");
 
-	return
-		result_type{
-			_new_size,
-			[
-				&_grid,
-				&_init
-			](
-				fcppt::container::grid::pos_type<
-					result_type
-				> const _fcppt_pos
-			)
-			{
-				return
-					fcppt::optional::maybe(
-						fcppt::container::grid::at_optional(
-							_grid,
-							_fcppt_pos
-						),
-						[
-							&_init,
-							_fcppt_pos
-						]{
-							return
-								_init(
-									_fcppt_pos
-								);
-						},
-						[](
-							fcppt::reference<
-								fcppt::container::to_value_type<
-									std::remove_reference_t<
-										Grid
-									>
-								>
-							> const _ref
-						)
-						{
-							return
-								fcppt::move_if_rvalue<
-									Grid
-								>(
-									_ref.get()
-								);
-						}
-					);
-			}
-		};
+  return result_type{
+      _new_size, [&_grid, &_init](fcppt::container::grid::pos_type<result_type> const _fcppt_pos) {
+        return fcppt::optional::maybe(
+            fcppt::container::grid::at_optional(_grid, _fcppt_pos),
+            [&_init, _fcppt_pos] { return _init(_fcppt_pos); },
+            [](fcppt::reference<
+                fcppt::container::to_value_type<std::remove_reference_t<Grid>>> const _ref) {
+              return fcppt::move_if_rvalue<Grid>(_ref.get());
+            });
+      }};
 }
 
 }

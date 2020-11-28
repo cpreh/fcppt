@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_PHRASE_PARSE_STRING_HPP_INCLUDED
 #define FCPPT_PARSE_PHRASE_PARSE_STRING_HPP_INCLUDED
 
@@ -25,73 +24,26 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch,
-	typename Parser,
-	typename Skipper
->
-[[nodiscard]]
-fcppt::parse::result<
-	Ch,
-	fcppt::parse::result_of<
-		Parser
-	>
->
-phrase_parse_string(
-	Parser const &_parser,
-	std::basic_string<
-		Ch
-	> &&_string,
-	Skipper const &_skipper
-)
+template <typename Ch, typename Parser, typename Skipper>
+[[nodiscard]] fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
+phrase_parse_string(Parser const &_parser, std::basic_string<Ch> &&_string, Skipper const &_skipper)
 {
-	static_assert(
-		fcppt::parse::is_parser<
-			Parser
-		>::value
-	);
+  static_assert(fcppt::parse::is_parser<Parser>::value);
 
-	static_assert(
-		fcppt::parse::skipper::is_skipper<
-			Skipper
-		>::value
-	);
+  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
 
-	std::basic_istringstream<
-		Ch
-	> stream{ // NOLINT(fuchsia-default-arguments-calls)
-		std::move(
-			_string
-		)
-	};
+  std::basic_istringstream<Ch> stream{// NOLINT(fuchsia-default-arguments-calls)
+                                      std::move(_string)};
 
-	stream.unsetf(
-		std::ios_base::skipws
-	);
+  stream.unsetf(std::ios_base::skipws);
 
-	return
-		fcppt::parse::detail::consume_remaining(
-			fcppt::reference_to_base<
-				std::basic_istream<
-					Ch
-				>
-			>(
-				fcppt::make_ref(
-					stream
-				)
-			),
-			fcppt::parse::phrase_parse_stream(
-				_parser,
-				stream,
-				_skipper
-			)
-		);
+  return fcppt::parse::detail::consume_remaining(
+      fcppt::reference_to_base<std::basic_istream<Ch>>(fcppt::make_ref(stream)),
+      fcppt::parse::phrase_parse_stream(_parser, stream, _skipper));
 }
 
 }

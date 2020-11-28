@@ -3,20 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_IS_ZERO_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_MATH_IS_ZERO_IMPL_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace math
 {
-
-template<
-	typename T,
-	typename Enable = void
->
+template <typename T, typename Enable = void>
 struct is_zero_impl;
 
 }

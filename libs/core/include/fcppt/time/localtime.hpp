@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TIME_LOCALTIME_HPP_INCLUDED
 #define FCPPT_TIME_LOCALTIME_HPP_INCLUDED
 
@@ -16,7 +15,6 @@ namespace fcppt
 {
 namespace time
 {
-
 /**
 \brief A wrapper around <code>%std::localtime</code>
 
@@ -28,10 +26,7 @@ Converts \a time to an <code>%std::tm</code> using
 \param time The time to convert
 */
 FCPPT_DETAIL_SYMBOL
-std::tm
-localtime(
-	std::time_t time
-);
+std::tm localtime(std::time_t time);
 
 }
 }

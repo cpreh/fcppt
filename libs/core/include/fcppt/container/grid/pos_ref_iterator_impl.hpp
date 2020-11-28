@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_IMPL_HPP_INCLUDED
 
@@ -20,92 +19,36 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename Grid
->
-fcppt::container::grid::pos_ref_iterator<
-	Grid
->::pos_ref_iterator(
-	iterator _iterator,
-	pos_iterator _pos_iterator,
-	dim _size
-)
-:
-	iterator_(
-		std::move(
-			_iterator
-		)
-	),
-	pos_iterator_(
-		std::move(
-			_pos_iterator
-		)
-	),
-	size_(
-		std::move(
-			_size
-		)
-	)
+template <typename Grid>
+fcppt::container::grid::pos_ref_iterator<Grid>::pos_ref_iterator(
+    iterator _iterator, pos_iterator _pos_iterator, dim _size)
+    : iterator_(std::move(_iterator)),
+      pos_iterator_(std::move(_pos_iterator)),
+      size_(std::move(_size))
 {
 }
 
-template<
-	typename Grid
->
-void
-fcppt::container::grid::pos_ref_iterator<
-	Grid
->::increment()
+template <typename Grid>
+void fcppt::container::grid::pos_ref_iterator<Grid>::increment()
 {
-	++pos_iterator_;
+  ++pos_iterator_;
 }
 
-template<
-	typename Grid
->
-typename
-fcppt::container::grid::pos_ref_iterator<
-	Grid
->::reference
-fcppt::container::grid::pos_ref_iterator<
-	Grid
->::dereference() const
+template <typename Grid>
+typename fcppt::container::grid::pos_ref_iterator<Grid>::reference
+fcppt::container::grid::pos_ref_iterator<Grid>::dereference() const
 {
-	pos const current(
-		*pos_iterator_
-	);
+  pos const current(*pos_iterator_);
 
-	return
-		reference(
-			current,
-			*(
-				iterator_
-				+
-				fcppt::cast::to_signed(
-					fcppt::container::grid::offset(
-						current,
-						size_
-					)
-				)
-			)
-		);
+  return reference(
+      current,
+      *(iterator_ + fcppt::cast::to_signed(fcppt::container::grid::offset(current, size_))));
 }
 
-template<
-	typename Grid
->
-bool
-fcppt::container::grid::pos_ref_iterator<
-	Grid
->::equal(
-	pos_ref_iterator const &_other
-) const
+template <typename Grid>
+bool fcppt::container::grid::pos_ref_iterator<Grid>::equal(pos_ref_iterator const &_other) const
 {
-	return
-		pos_iterator_
-		==
-		_other.pos_iterator_;
+  return pos_iterator_ == _other.pos_iterator_;
 }
 
 #endif

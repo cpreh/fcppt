@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_ARRAY_MAKE_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_MAKE_HPP_INCLUDED
 
@@ -15,14 +14,12 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace array
 {
-
 /**
 \brief Make an array out of a parameter pack.
 
@@ -35,72 +32,26 @@ the same type <code>T</code>. The result is
 \tparam Args A parameter pack <code>t_1,...,t_n</code> such that
 <code>remove_cv_ref<t_1> = ... = remove_cv_ref<t_n></code>.
 */
-template<
-	typename... Args
->
-inline
-std::array<
-	::metal::front<
-		::metal::list<
-			fcppt::type_traits::remove_cv_ref_t<
-				Args
-			>...
-		>
-	>,
-	sizeof...(Args)
->
-make(
-	Args &&... _args
-)
+template <typename... Args>
+inline std::array<
+    ::metal::front<::metal::list<fcppt::type_traits::remove_cv_ref_t<Args>...>>,
+    sizeof...(Args)>
+make(Args &&..._args)
 {
-	using
-	decayed_args
-	=
-	::metal::list<
-		fcppt::type_traits::remove_cv_ref_t<
-			Args
-		>...
-	>;
+  using decayed_args = ::metal::list<fcppt::type_traits::remove_cv_ref_t<Args>...>;
 
-	using
-	first_type
-	=
-	::metal::front<
-		decayed_args
-	>;
+  using first_type = ::metal::front<decayed_args>;
 
-	using
-	result_type
-	=
-	std::array<
-		first_type,
-		sizeof...(Args)
-	>;
+  using result_type = std::array<first_type, sizeof...(Args)>;
 
-	static_assert(
-		::metal::all_of<
-			decayed_args,
-			::metal::bind<
-				::metal::trait<
-					std::is_same
-				>,
-				::metal::always<
-					first_type
-				>,
-				::metal::_1
-			>
-		>::value,
-		"All types of array::make must be the same"
-	);
+  static_assert(
+      ::metal::all_of<
+          decayed_args,
+          ::metal::bind<::metal::trait<std::is_same>, ::metal::always<first_type>, ::metal::_1>>::
+          value,
+      "All types of array::make must be the same");
 
-	return
-		result_type{{
-			std::forward<
-				Args
-			>(
-				_args
-			)...
-		}};
+  return result_type{{std::forward<Args>(_args)...}};
 }
 
 }

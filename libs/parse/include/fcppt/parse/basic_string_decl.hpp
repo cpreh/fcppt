@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_BASIC_STRING_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_STRING_DECL_HPP_INCLUDED
 
@@ -18,58 +17,26 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch
->
-class basic_string
-:
-	private fcppt::parse::tag
+template <typename Ch>
+class basic_string : private fcppt::parse::tag
 {
 public:
-	static_assert(
-		fcppt::parse::is_char<
-			Ch
-		>::value
-	);
+  static_assert(fcppt::parse::is_char<Ch>::value);
 
-	explicit
-	basic_string(
-		std::basic_string<
-			Ch
-		> &&
-	);
+  explicit basic_string(std::basic_string<Ch> &&);
 
-	using
-	result_type
-	=
-	fcppt::unit;
+  using result_type = fcppt::unit;
 
-	template<
-		typename Skipper
-	>
-	[[nodiscard]]
-	fcppt::parse::result<
-		Ch,
-		result_type
-	>
-	parse(
-		fcppt::reference<
-			fcppt::parse::basic_stream<
-				Ch
-			>
-		>,
-		Skipper const &
-	) const;
+  template <typename Skipper>
+  [[nodiscard]] fcppt::parse::result<Ch, result_type>
+  parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
+
 private:
-	std::basic_string<
-		Ch
-	> string_;
+  std::basic_string<Ch> string_;
 };
 
 }

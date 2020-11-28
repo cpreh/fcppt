@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_INSERT_EXTRACT_LOCALE_HPP_INCLUDED
 #define FCPPT_INSERT_EXTRACT_LOCALE_HPP_INCLUDED
 
@@ -12,10 +11,8 @@
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Returns the default locale to use when converting from or to strings.
 
@@ -28,8 +25,7 @@ is the thousand separator for this locale.
 \ingroup fcpptstring
 */
 FCPPT_DETAIL_SYMBOL
-std::locale
-insert_extract_locale();
+std::locale insert_extract_locale();
 
 }
 

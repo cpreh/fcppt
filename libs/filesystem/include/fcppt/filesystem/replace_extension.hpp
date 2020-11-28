@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_REPLACE_EXTENSION_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_REPLACE_EXTENSION_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Replaces the extension of a path
 
@@ -34,10 +31,7 @@ Replaces the extension of \a path with \a new_extension.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::filesystem::path
-replace_extension(
-	std::filesystem::path const &path,
-	fcppt::string_view const &new_extension
-);
+replace_extension(std::filesystem::path const &path, fcppt::string_view const &new_extension);
 
 }
 }

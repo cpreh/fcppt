@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_REFERENCE_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_REFERENCE_HASH_IMPL_HPP_INCLUDED
 
@@ -14,26 +13,11 @@
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename Type
->
+template <typename Type>
 std::size_t
-fcppt::reference_hash<
-	fcppt::reference<
-		Type
-	>
->::operator()(
-	type const &_value
-) const
-noexcept
+fcppt::reference_hash<fcppt::reference<Type>>::operator()(type const &_value) const noexcept
 {
-	return
-		std::hash<
-			Type *
-		>()(
-			&_value.get()
-		);
+  return std::hash<Type *>()(&_value.get());
 }
 
 #endif

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Filters an optional
 
@@ -29,42 +26,14 @@ true, \a _source is returned. Otherwise, the empty optional is returned.
 
 \tparam Function A function callable as <code>bool (Optional::value_type)</code>.
 */
-template<
-	typename Optional,
-	typename Function
->
-fcppt::type_traits::remove_cv_ref_t<
-	Optional
->
-filter(
-	Optional &&_source,
-	Function const &_function
-)
+template <typename Optional, typename Function>
+fcppt::type_traits::remove_cv_ref_t<Optional> filter(Optional &&_source, Function const &_function)
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
+  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
-	return
-		_source.has_value()
-		&&
-		_function(
-			_source.get_unsafe()
-		)
-		?
-			std::forward<
-				Optional
-			>(
-				_source
-			)
-		:
-			fcppt::type_traits::remove_cv_ref_t<
-				Optional
-			>{}
-		;
+  return _source.has_value() && _function(_source.get_unsafe())
+             ? std::forward<Optional>(_source)
+             : fcppt::type_traits::remove_cv_ref_t<Optional>{};
 }
 
 }

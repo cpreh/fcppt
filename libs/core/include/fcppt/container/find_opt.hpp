@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <fcppt/optional/deref.hpp>
 #include <fcppt/optional/reference.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Returns an element from a find operation or an empty optional.
 
@@ -31,28 +28,11 @@ is returned.
 
 \tparam Key Must be a key that can be searched for.
 */
-template<
-	typename Container,
-	typename Key
->
-inline
-fcppt::optional::reference<
-	fcppt::container::to_value_type<
-		Container
-	>
->
-find_opt(
-	Container &_container,
-	Key const &_key
-)
+template <typename Container, typename Key>
+inline fcppt::optional::reference<fcppt::container::to_value_type<Container>>
+find_opt(Container &_container, Key const &_key)
 {
-	return
-		fcppt::optional::deref(
-			fcppt::container::find_opt_iterator(
-				_container,
-				_key
-			)
-		);
+  return fcppt::optional::deref(fcppt::container::find_opt_iterator(_container, _key));
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TO_MAPPED_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TO_MAPPED_TYPE_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Gets the mapped type of an associative container.
 
@@ -28,21 +25,11 @@ If \a Container is <code>const</code>, the result is
 
 \tparam Container An associative container.
 */
-template<
-	typename Container
->
-using
-to_mapped_type
-=
-std::conditional_t<
-	std::is_const_v<
-		Container
-	>,
-	typename
-	Container::mapped_type const,
-	typename
-	Container::mapped_type
->;
+template <typename Container>
+using to_mapped_type = std::conditional_t<
+    std::is_const_v<Container>,
+    typename Container::mapped_type const,
+    typename Container::mapped_type>;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_RECORD_OBJECT_DECL_HPP_INCLUDED
 
@@ -23,12 +22,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace record
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4521)
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -46,169 +43,94 @@ for every <code>i = 1,...,n</code>.
 
 \tparam Elements Each one must be of type #fcppt::record::element.
 */
-template<
-	typename... Elements
->
+template <typename... Elements>
 class object
 {
 public:
-	using
-	all_types
-	=
-	::metal::list<
-		Elements...
-	>;
+  using all_types = ::metal::list<Elements...>;
 
-	static_assert(
-		::metal::all_of<
-			all_types,
-			::metal::trait<
-				fcppt::record::is_element
-			>
-		>::value,
-		"Types of a record::object must all be fcppt::record::element<>"
-	);
+  static_assert(
+      ::metal::all_of<all_types, ::metal::trait<fcppt::record::is_element>>::value,
+      "Types of a record::object must all be fcppt::record::element<>");
 
-	static_assert(
-		fcppt::metal::is_set<
-			fcppt::record::detail::label_list<
-				all_types
-			>
-		>::value,
-		"Labels of record::object must form a set"
-	);
+  static_assert(
+      fcppt::metal::is_set<fcppt::record::detail::label_list<all_types>>::value,
+      "Labels of record::object must form a set");
 
-	using
-	this_type
-	=
-	fcppt::record::object<
-		Elements...
-	>;
+  using this_type = fcppt::record::object<Elements...>;
 
-	/**
-	\brief The std::tuple type <code>(T_1,...,T_n)</code>.
-	*/
-	using
-	tuple
-	=
-	fcppt::metal::as_tuple<
-		::metal::transform<
-			::metal::lambda<
-				fcppt::record::element_to_type
-			>,
-			all_types
-		>
-	>;
+  /**
+  \brief The std::tuple type <code>(T_1,...,T_n)</code>.
+  */
+  using tuple = fcppt::metal::as_tuple<
+      ::metal::transform<::metal::lambda<fcppt::record::element_to_type>, all_types>>;
 
-	/**
-	\brief Constructor for empty records
+  /**
+  \brief Constructor for empty records
 
-	Calling this if \a Elements is not empty, a compile-time error occurs.
-	*/
-	object();
+  Calling this if \a Elements is not empty, a compile-time error occurs.
+  */
+  object();
 
-	/**
-	\brief An uninitialized record
+  /**
+  \brief An uninitialized record
 
-	Calls only default constructors for its elements. Use this with care.
-	*/
-	explicit
-	object(
-		fcppt::no_init const &
-	);
+  Calls only default constructors for its elements. Use this with care.
+  */
+  explicit object(fcppt::no_init const &);
 
-	/**
-	\brief Generic constructor.
+  /**
+  \brief Generic constructor.
 
-	Initializing an <code>element<L_i,T_i></code> is done by calling
-	<code>L_i{} = v_i</code> where <code>v_i</code> is of type <code>T_i</code>.
+  Initializing an <code>element<L_i,T_i></code> is done by calling
+  <code>L_i{} = v_i</code> where <code>v_i</code> is of type <code>T_i</code>.
 
-	The constructor checks that each <code>L_i</code> appears exactly once in \a Args.
+  The constructor checks that each <code>L_i</code> appears exactly once in \a Args.
 
-	\param _args A parameter pack, obtained by assignment to #fcppt::record::label.
+  \param _args A parameter pack, obtained by assignment to #fcppt::record::label.
 
-	\tparam Args Implementation-defined init types, obtained by assignment
-	to #fcppt::record::label.
-	*/
-	template<
-		typename ...Args,
-		typename =
-			fcppt::record::enable_vararg_ctor<
-				Args...
-			>
-	>
-	explicit
-	object(
-		Args && ..._args
-	);
+  \tparam Args Implementation-defined init types, obtained by assignment
+  to #fcppt::record::label.
+  */
+  template <typename... Args, typename = fcppt::record::enable_vararg_ctor<Args...>>
+  explicit object(Args &&..._args);
 
-	/**
-	\brief Sets an element by copy.
+  /**
+  \brief Sets an element by copy.
 
-	\see fcppt::record::set.
-	*/
-	template<
-		typename Label
-	>
-	void
-	set(
-		fcppt::record::label_value_type<
-			this_type,
-			Label
-		> const &
-	);
+  \see fcppt::record::set.
+  */
+  template <typename Label>
+  void set(fcppt::record::label_value_type<this_type, Label> const &);
 
-	/**
-	\brief Sets an element by move.
+  /**
+  \brief Sets an element by move.
 
-	\see fcppt::record::set.
-	*/
-	template<
-		typename Label
-	>
-	void
-	set(
-		fcppt::record::label_value_type<
-			this_type,
-			Label
-		> &&
-	);
+  \see fcppt::record::set.
+  */
+  template <typename Label>
+  void set(fcppt::record::label_value_type<this_type, Label> &&);
 
-	/**
-	\brief Gets an element.
+  /**
+  \brief Gets an element.
 
-	\see fcppt::record::get.
-	*/
-	template<
-		typename Label
-	>
-	[[nodiscard]]
-	fcppt::record::label_value_type<
-		this_type,
-		Label
-	> const &
-	get() const;
+  \see fcppt::record::get.
+  */
+  template <typename Label>
+  [[nodiscard]] fcppt::record::label_value_type<this_type, Label> const &get() const;
 
-	/**
-	\brief Gets an element.
+  /**
+  \brief Gets an element.
 
-	\see fcppt::record::get.
-	*/
-	template<
-		typename Label
-	>
-	[[nodiscard]]
-	fcppt::record::label_value_type<
-		this_type,
-		Label
-	> &
-	get();
+  \see fcppt::record::get.
+  */
+  template <typename Label>
+  [[nodiscard]] fcppt::record::label_value_type<this_type, Label> &get();
 
-	[[nodiscard]]
-	tuple const &
-	impl() const;
+  [[nodiscard]] tuple const &impl() const;
+
 private:
-	tuple elements_;
+  tuple elements_;
 };
 
 FCPPT_PP_POP_WARNING

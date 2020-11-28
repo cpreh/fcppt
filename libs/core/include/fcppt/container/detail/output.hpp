@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_DETAIL_OUTPUT_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_OUTPUT_HPP_INCLUDED
 
@@ -13,117 +12,51 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace detail
 {
-
-template<
-	typename Container
->
+template <typename Container>
 class output
 {
 public:
-	explicit
-	output(
-		Container const &_container
-	)
-	:
-		container_{
-			_container
-		}
-	{
-	}
+  explicit output(Container const &_container) : container_{_container} {}
 
-	[[nodiscard]]
-	Container const &
-	container() const
-	{
-		return
-			this->container_.get();
-	}
+  [[nodiscard]] Container const &container() const { return this->container_.get(); }
+
 private:
-	fcppt::reference<
-		Container const
-	> container_;
+  fcppt::reference<Container const> container_;
 };
 
-template<
-	typename Container,
-	typename Ch,
-	typename Traits
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::container::detail::output<
-		Container
-	> const &_output
-)
+template <typename Container, typename Ch, typename Traits>
+std::basic_ostream<Ch, Traits> &operator<<(
+    std::basic_ostream<Ch, Traits> &_stream,
+    fcppt::container::detail::output<Container> const &_output)
 {
-	_stream
-		<<
-		_stream.widen(
-			'['
-		);
+  _stream << _stream.widen('[');
 
-	using
-	const_iterator
-	=
-	typename
-	Container::const_iterator;
+  using const_iterator = typename Container::const_iterator;
 
-	// NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
-	auto const end(
-		_output.container().end()
-	);
+  // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
+  auto const end(_output.container().end());
 
-	for(
-		const_iterator it{
-			_output.container().begin()
-		};
-		it != end;
-		++it
-	)
-	{
-		_stream
-			<<
-			*it;
+  for (const_iterator it{_output.container().begin()}; it != end; ++it)
+  {
+    _stream << *it;
 
-		if(
-			// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-			std::next(
-				it
-			)
-			!=
-			end
-		)
-		{
-			_stream
-				<<
-				_stream.widen(
-					','
-				);
-		}
-	}
+    if (
+        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+        std::next(it) != end)
+    {
+      _stream << _stream.widen(',');
+    }
+  }
 
-	_stream
-		<<
-		_stream.widen(
-			']'
-		);
+  _stream << _stream.widen(']');
 
-	return
-		_stream;
+  return _stream;
 }
 
 }

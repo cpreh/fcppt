@@ -3,19 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace optional
 {
-
-template<
-	typename T
->
+template <typename T>
 class object;
 
 }

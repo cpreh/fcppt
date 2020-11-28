@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MAP_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Maps over grids
 
@@ -36,99 +33,27 @@ result.
 \tparam Function A function callable as <code>R (Source::value_type)</code> where
 <code>R</code> is the result type
 */
-template<
-	typename Source,
-	typename Function
->
-auto
-map(
-	Source &&_source,
-	Function const &_function
-)
-->
-fcppt::container::grid::object<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Source
-			>(
-				_source.get_unsafe(
-					std::declval<
-						fcppt::container::grid::pos_type<
-							fcppt::type_traits::remove_cv_ref_t<
-								Source
-							>
-						>
-					>()
-				)
-			)
-		)
-	),
-	fcppt::type_traits::remove_cv_ref_t<
-		Source
-	>::static_size::value
->
+template <typename Source, typename Function>
+auto map(Source &&_source, Function const &_function) -> fcppt::container::grid::object<
+    decltype(_function(fcppt::move_if_rvalue<Source>(_source.get_unsafe(
+        std::declval<
+            fcppt::container::grid::pos_type<fcppt::type_traits::remove_cv_ref_t<Source>>>())))),
+    fcppt::type_traits::remove_cv_ref_t<Source>::static_size::value>
 {
-	using
-	source_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Source
-	>;
+  using source_type = fcppt::type_traits::remove_cv_ref_t<Source>;
 
-	static_assert(
-		fcppt::container::grid::is_object<
-			source_type
-		>::value,
-		"Source must be a grid"
-	);
+  static_assert(fcppt::container::grid::is_object<source_type>::value, "Source must be a grid");
 
-	using
-	result_type
-	=
-	fcppt::container::grid::object<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Source
-				>(
-					_source.get_unsafe(
-						std::declval<
-							fcppt::container::grid::pos_type<
-								source_type
-							>
-						>()
-					)
-				)
-			)
-		),
-		source_type::static_size::value
-	>;
+  using result_type = fcppt::container::grid::object<
+      decltype(_function(fcppt::move_if_rvalue<Source>(
+          _source.get_unsafe(std::declval<fcppt::container::grid::pos_type<source_type>>())))),
+      source_type::static_size::value>;
 
-	return
-		result_type(
-			_source.size(),
-			[
-				&_source,
-				&_function
-			](
-				fcppt::container::grid::pos_type<
-					source_type
-				> const _pos
-			)
-			{
-				return
-					_function(
-						fcppt::move_if_rvalue<
-							Source
-						>(
-							_source.get_unsafe(
-								_pos
-							)
-						)
-					);
-			}
-		);
+  return result_type(
+      _source.size(),
+      [&_source, &_function](fcppt::container::grid::pos_type<source_type> const _pos) {
+        return _function(fcppt::move_if_rvalue<Source>(_source.get_unsafe(_pos)));
+      });
 }
 
 }

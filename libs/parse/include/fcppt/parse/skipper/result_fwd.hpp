@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_RESULT_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_RESULT_FWD_HPP_INCLUDED
 
 #include <fcppt/either/error_fwd.hpp>
 #include <fcppt/parse/error_fwd.hpp>
-
 
 namespace fcppt
 {
@@ -17,18 +15,8 @@ namespace parse
 {
 namespace skipper
 {
-
-template<
-	typename Ch
->
-using
-result
-=
-fcppt::either::error<
-	fcppt::parse::error<
-		Ch
-	>
->;
+template <typename Ch>
+using result = fcppt::either::error<fcppt::parse::error<Ch>>;
 
 }
 }

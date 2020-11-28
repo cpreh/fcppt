@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
@@ -18,92 +17,35 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace detail
 {
-
-template<
-	typename Range1,
-	typename Range2,
-	typename T
->
-inline
-bool
-componentwise_equal(
-	Range1 const &_r1,
-	Range2 const &_r2,
-	T const &_epsilon
-)
+template <typename Range1, typename Range2, typename T>
+inline bool componentwise_equal(Range1 const &_r1, Range2 const &_r2, T const &_epsilon)
 {
-	static_assert(
-		std::is_floating_point_v<
-			fcppt::type_traits::value_type<
-				Range1
-			>
-		>
-		&&
-		std::is_floating_point_v<
-			fcppt::type_traits::value_type<
-				Range2
-			>
-		>,
-		"componentwise_equal can only be used on ranges of floating point type"
-	);
+  static_assert(
+      std::is_floating_point_v<fcppt::type_traits::value_type<Range1>> &&
+          std::is_floating_point_v<fcppt::type_traits::value_type<Range2>>,
+      "componentwise_equal can only be used on ranges of floating point type");
 
-	static_assert(
-		Range1::dim_wrapper::value
-		==
-		Range2::dim_wrapper::value,
-		"Ranges of different size in componentwise_equal"
-	);
+  static_assert(
+      Range1::dim_wrapper::value == Range2::dim_wrapper::value,
+      "Ranges of different size in componentwise_equal");
 
-	return
-		fcppt::algorithm::all_of(
-			fcppt::math::int_range_count<
-				Range1::dim_wrapper::value
-			>{},
-			[
-				&_r1,
-				&_r2,
-				_epsilon
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::algorithm::all_of(
+      fcppt::math::int_range_count<Range1::dim_wrapper::value>{},
+      [&_r1, &_r2, _epsilon](auto const _index) {
+        FCPPT_USE(_index);
 
-				using
-				index
-				=
-				fcppt::tag_type<
-					decltype(
-						_index
-					)
-				>;
+        using index = fcppt::tag_type<decltype(_index)>;
 
-				return
-					fcppt::math::diff(
-						fcppt::math::detail::linear_access<
-							index::value
-						>(
-							_r1.storage()
-						),
-						fcppt::math::detail::linear_access<
-							index::value
-						>(
-							_r2.storage()
-						)
-					)
-					<
-					_epsilon;
-			}
-		);
+        return fcppt::math::diff(
+                   fcppt::math::detail::linear_access<index::value>(_r1.storage()),
+                   fcppt::math::detail::linear_access<index::value>(_r2.storage())) < _epsilon;
+      });
 }
 
 }

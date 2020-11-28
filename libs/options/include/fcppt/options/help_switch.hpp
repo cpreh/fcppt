@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_HELP_SWITCH_HPP_INCLUDED
 #define FCPPT_OPTIONS_HELP_SWITCH_HPP_INCLUDED
 
 #include <fcppt/options/help_switch_fwd.hpp>
 #include <fcppt/options/unit_switch_impl.hpp>
-
 
 #endif

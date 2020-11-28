@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 
@@ -16,14 +15,12 @@
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace dim
 {
-
 /**
 \brief Checks if all elements of the dim are the same
 
@@ -31,60 +28,18 @@ namespace dim
 
 \param _dim The dimension to check
 */
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-bool
-is_quadratic(
-	fcppt::math::dim::object<
-		T,
-		N,
-		S
-	> const &_dim
-)
+template <typename T, fcppt::math::size_type N, typename S>
+bool is_quadratic(fcppt::math::dim::object<T, N, S> const &_dim)
 {
-	return
-		fcppt::algorithm::all_of(
-			fcppt::math::int_range_count<
-				N
-			>{},
-			[
-				&_dim,
-				_first =
-					fcppt::math::dim::at<
-						0
-					>(
-						_dim
-					)
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+  return fcppt::algorithm::all_of(
+      fcppt::math::int_range_count<N>{},
+      [&_dim, _first = fcppt::math::dim::at<0>(_dim)](auto const _index) {
+        FCPPT_USE(_index);
 
-				using
-				index
-				=
-				fcppt::tag_type<
-					decltype(
-						_index
-					)
-				>;
+        using index = fcppt::tag_type<decltype(_index)>;
 
-				return
-					fcppt::math::dim::at<
-						index::value
-					>(
-						_dim
-					)
-					==
-					_first;
-			}
-		);
+        return fcppt::math::dim::at<index::value>(_dim) == _first;
+      });
 }
 
 }

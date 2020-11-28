@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_INT_TO_ENUM_HPP_INCLUDED
 #define FCPPT_CAST_INT_TO_ENUM_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts an int to an enum
 
@@ -30,35 +27,14 @@ integer value. Consider using fcppt::cast_to_enum instead.
 
 \tparam Enum Must be an enumeration type
 */
-template<
-	typename Enum,
-	typename Source
->
-inline
-constexpr
-Enum
-int_to_enum(
-	Source const _source
-)
-noexcept
+template <typename Enum, typename Source>
+inline constexpr Enum int_to_enum(Source const _source) noexcept
 {
-	static_assert(
-		std::is_enum_v<
-			Enum
-		>
-		&&
-		std::is_integral_v<
-			Source
-		>,
-		"int_to_enum can only cast from integral types to enumerations"
-	);
+  static_assert(
+      std::is_enum_v<Enum> && std::is_integral_v<Source>,
+      "int_to_enum can only cast from integral types to enumerations");
 
-	return
-		static_cast<
-			Enum
-		>(
-			_source
-		);
+  return static_cast<Enum>(_source);
 }
 
 }

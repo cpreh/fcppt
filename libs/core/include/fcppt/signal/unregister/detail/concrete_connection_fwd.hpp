@@ -4,10 +4,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -17,10 +15,7 @@ namespace unregister
 {
 namespace detail
 {
-
-template<
-	typename Function
->
+template <typename Function>
 class concrete_connection;
 
 }

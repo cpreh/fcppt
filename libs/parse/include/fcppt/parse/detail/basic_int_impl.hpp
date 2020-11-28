@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_DETAIL_BASIC_INT_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_BASIC_INT_IMPL_HPP_INCLUDED
 
@@ -23,90 +22,25 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+template <typename Type>
+fcppt::parse::detail::basic_int<Type>::basic_int() = default;
 
-template<
-	typename Type
->
-fcppt::parse::detail::basic_int<
-	Type
->::basic_int()
-= default;
-
-template<
-	typename Type
->
-template<
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	typename
-	fcppt::parse::detail::basic_int<
-		Type
-	>::result_type
->
-fcppt::parse::detail::basic_int<
-	Type
->::parse(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state,
-	Skipper const &_skipper
-) const
+template <typename Type>
+template <typename Ch, typename Skipper>
+fcppt::parse::result<Ch, typename fcppt::parse::detail::basic_int<Type>::result_type>
+fcppt::parse::detail::basic_int<Type>::parse(
+    fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-	auto const parser{
-		+
-		fcppt::parse::digits<
-			Ch
-		>()
-	};
+  auto const parser{+fcppt::parse::digits<Ch>()};
 
-	return
-		fcppt::either::bind(
-			parser.parse(
-				_state,
-				_skipper
-			),
-			[](
-				fcppt::parse::result_of<
-					decltype(
-						parser
-					)
-				> const &_result
-			)
-			{
-				return
-					fcppt::either::from_optional(
-						fcppt::extract_from_string<
-							Type
-						>(
-							_result
-						),
-						[
-							&_result
-						]{
-							return
-								fcppt::parse::error<
-									Ch
-								>{
-									std::basic_string<
-										Ch
-									>{
-										FCPPT_STRING_LITERAL(
-											Ch,
-											"Failed to parse integer from "
-										)
-									}
-									+
-									_result
-								};
-						}
-					);
-			}
-		);
+  return fcppt::either::bind(
+      parser.parse(_state, _skipper), [](fcppt::parse::result_of<decltype(parser)> const &_result) {
+        return fcppt::either::from_optional(fcppt::extract_from_string<Type>(_result), [&_result] {
+          return fcppt::parse::error<Ch>{
+              std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Failed to parse integer from ")} +
+              _result};
+        });
+      });
 }
 
 #endif

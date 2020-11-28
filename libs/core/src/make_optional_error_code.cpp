@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_optional_error_code.hpp>
 #include <fcppt/optional_error_code.hpp>
 #include <fcppt/optional/make_if.hpp>
@@ -11,22 +10,7 @@
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-
-fcppt::optional_error_code
-fcppt::make_optional_error_code(
-	std::error_code const &_error
-)
+fcppt::optional_error_code fcppt::make_optional_error_code(std::error_code const &_error)
 {
-	return
-		fcppt::optional::make_if(
-			_error
-			!=
-			std::error_code{},
-			[
-				&_error
-			]{
-				return
-					_error;
-			}
-		);
+  return fcppt::optional::make_if(_error != std::error_code{}, [&_error] { return _error; });
 }

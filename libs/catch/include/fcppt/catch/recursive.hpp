@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CATCH_RECURSIVE_HPP_INCLUDED
 #define FCPPT_CATCH_RECURSIVE_HPP_INCLUDED
 
@@ -14,37 +13,20 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace Catch
 {
-
 /**
 \brief Output specialization for #fcppt::recursive.
 
 \ingroup fcpptcatch
 */
-template<
-	typename Types
->
-struct StringMaker<
-	fcppt::recursive<
-		Types
-	>
->
+template <typename Types>
+struct StringMaker<fcppt::recursive<Types>>
 {
-	static
-	std::string
-	convert(
-		fcppt::recursive<
-			Types
-		> const &_value
-	)
-	{
-		return
-			fcppt::catch_::convert(
-				_value.get()
-			);
-	}
+  static std::string convert(fcppt::recursive<Types> const &_value)
+  {
+    return fcppt::catch_::convert(_value.get());
+  }
 };
 
 }

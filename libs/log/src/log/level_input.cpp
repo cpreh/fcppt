@@ -3,23 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/enum/input.hpp>
 #include <fcppt/io/istream_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_input.hpp>
 #include <fcppt/log/level_strings.hpp>
 
-
-fcppt::io::istream &
-fcppt::log::operator>>(
-	fcppt::io::istream &_stream,
-	fcppt::log::level &_level
-)
+fcppt::io::istream &fcppt::log::operator>>(fcppt::io::istream &_stream, fcppt::log::level &_level)
 {
-	return
-		fcppt::enum_::input(
-			_stream,
-			_level
-		);
+  return fcppt::enum_::input(_stream, _level);
 }

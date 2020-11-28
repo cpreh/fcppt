@@ -3,17 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECURSIVE_FWD_HPP_INCLUDED
 #define FCPPT_RECURSIVE_FWD_HPP_INCLUDED
 
-
 namespace fcppt
 {
-
-template<
-	typename Type
->
+template <typename Type>
 class recursive;
 
 }

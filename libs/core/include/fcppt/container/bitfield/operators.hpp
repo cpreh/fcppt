@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_BITFIELD_OPERATORS_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_OPERATORS_HPP_INCLUDED
 
@@ -12,45 +11,25 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace bitfield
 {
-
 /**
 \brief Set a bit to true.
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
-> &
-operator|=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &_left,
-	ElementType const _index
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &operator|=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &_left,
+    ElementType const _index)
 {
-	_left.set(
-		_index,
-		true
-	);
+  _left.set(_index, true);
 
-	return
-		_left;
+  return _left;
 }
 
 /**
@@ -58,46 +37,19 @@ operator|=(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
-> &
-operator|=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &operator|=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	std::transform(
-		_left.array().begin(),
-		_left.array().end(),
-		_right.array().begin(),
-		_left.array().begin(),
-		[](
-			InternalType const _arg1,
-			InternalType const _arg2
-		)
-		{
-			return
-				_arg1 | _arg2;
-		}
-	);
+  std::transform(
+      _left.array().begin(),
+      _left.array().end(),
+      _right.array().begin(),
+      _left.array().begin(),
+      [](InternalType const _arg1, InternalType const _arg2) { return _arg1 | _arg2; });
 
-	return
-		_left;
+  return _left;
 }
 
 /**
@@ -105,46 +57,19 @@ operator|=(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
-> &
-operator&=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &operator&=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	std::transform(
-		_left.array().begin(),
-		_left.array().end(),
-		_right.array().begin(),
-		_left.array().begin(),
-		[](
-			InternalType const _arg1,
-			InternalType const _arg2
-		)
-		{
-			return
-				_arg1 & _arg2;
-		}
-	);
+  std::transform(
+      _left.array().begin(),
+      _left.array().end(),
+      _right.array().begin(),
+      _left.array().begin(),
+      [](InternalType const _arg1, InternalType const _arg2) { return _arg1 & _arg2; });
 
-	return
-		_left;
+  return _left;
 }
 
 /**
@@ -152,46 +77,19 @@ operator&=(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
-> &
-operator^=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &operator^=(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> &_left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	std::transform(
-		_left.array().begin(),
-		_left.array().end(),
-		_right.array().begin(),
-		_left.array().begin(),
-		[](
-			InternalType const _arg1,
-			InternalType const _arg2
-		)
-		{
-			return
-				_arg1 ^ _arg2;
-		}
-	);
+  std::transform(
+      _left.array().begin(),
+      _left.array().end(),
+      _right.array().begin(),
+      _left.array().begin(),
+      [](InternalType const _arg1, InternalType const _arg2) { return _arg1 ^ _arg2; });
 
-	return
-		_left;
+  return _left;
 }
 
 /**
@@ -199,39 +97,17 @@ operator^=(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->
-operator~(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> _field
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType>
+operator~(fcppt::container::bitfield::object<ElementType, NumElements, InternalType> _field)
 {
-	std::transform(
-		_field.array().begin(),
-		_field.array().end(),
-		_field.array().begin(),
-		[](
-			InternalType const _arg
-		)
-		{
-			return
-				~_arg;
-		}
-	);
+  std::transform(
+      _field.array().begin(),
+      _field.array().end(),
+      _field.array().begin(),
+      [](InternalType const _arg) { return ~_arg; });
 
-	return
-		_field;
+  return _field;
 }
 
 /**
@@ -239,25 +115,12 @@ operator~(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::value_type
-operator&(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_field,
-	ElementType const _index
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::value_type operator&(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_field,
+    ElementType const _index)
 {
-	return
-		_field.get(
-			_index
-		);
+  return _field.get(_index);
 }
 
 /**
@@ -265,29 +128,12 @@ operator&(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->
-operator|(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> _field,
-	ElementType const _index
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> operator|(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> _field,
+    ElementType const _index)
 {
-	return
-		_field
-		|=
-		_index;
+  return _field |= _index;
 }
 
 /**
@@ -295,33 +141,12 @@ operator|(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->
-operator|(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> _left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> operator|(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> _left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		_left
-		|=
-		_right;
+  return _left |= _right;
 }
 
 /**
@@ -329,33 +154,12 @@ operator|(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->
-operator&(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> _left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> operator&(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> _left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		_left
-		&=
-		_right;
+  return _left &= _right;
 }
 
 /**
@@ -363,33 +167,12 @@ operator&(
 
 \ingroup fcpptcontainerbitfield
 */
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->
-operator^(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> _left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &_right
-)
+template <typename ElementType, typename NumElements, typename InternalType>
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> operator^(
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> _left,
+    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
 {
-	return
-		_left
-		^=
-		_right;
+  return _left ^= _right;
 }
 
 }

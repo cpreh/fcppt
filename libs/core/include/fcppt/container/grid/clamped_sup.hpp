@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_GRID_CLAMPED_SUP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_CLAMPED_SUP_HPP_INCLUDED
 
@@ -19,83 +18,31 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
 namespace grid
 {
-
 /**
 \brief Clamps a position to a grid's size
 
 \ingroup fcpptcontainergrid
 */
-template<
-	typename Source,
-	fcppt::container::grid::size_type Size
->
-fcppt::container::grid::sup<
-	Source,
-	Size
->
-clamped_sup(
-	fcppt::container::grid::pos<
-		Source,
-		Size
-	> const _pos,
-	fcppt::container::grid::dim<
-		Source,
-		Size
-	> const _size
-)
+template <typename Source, fcppt::container::grid::size_type Size>
+fcppt::container::grid::sup<Source, Size> clamped_sup(
+    fcppt::container::grid::pos<Source, Size> const _pos,
+    fcppt::container::grid::dim<Source, Size> const _size)
 {
-	static_assert(
-		std::is_unsigned<
-			Source
-		>::value,
-		"Source must be unsigned"
-	);
+  static_assert(std::is_unsigned<Source>::value, "Source must be unsigned");
 
-	return
-		fcppt::container::grid::sup<
-			Source,
-			Size
-		>(
-			fcppt::math::vector::init<
-				fcppt::container::grid::pos<
-					Source,
-					Size
-				>
-			>(
-				[
-					&_pos,
-					&_size
-				](
-					auto const _index
-				)
-				{
-					FCPPT_USE(
-						_index
-					);
+  return fcppt::container::grid::sup<Source, Size>(
+      fcppt::math::vector::init<fcppt::container::grid::pos<Source, Size>>([&_pos, &_size](
+                                                                               auto const _index) {
+        FCPPT_USE(_index);
 
-					return
-						std::min(
-							fcppt::math::vector::at<
-								_index
-							>(
-								_pos
-							),
-							fcppt::math::dim::at<
-								_index
-							>(
-								_size
-							)
-						);
-				}
-			)
-		);
+        return std::min(fcppt::math::vector::at<_index>(_pos), fcppt::math::dim::at<_index>(_size));
+      }));
 }
 
 }

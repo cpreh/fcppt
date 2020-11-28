@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 #define FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Converts an optional of one type to another
 
@@ -35,64 +32,18 @@ dereferenced and the result from applying \a _function is returned.
 \param _function The function to apply to the value inside \a _source. It must
 accept a type of \a Source.
 */
-template<
-	typename Optional,
-	typename Function
->
-inline
-auto
-bind(
-	Optional &&_source,
-	Function const &_function
-)
-->
-std::remove_reference_t<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Optional
-			>(
-				_source.get_unsafe()
-			)
-		)
-	)
->
+template <typename Optional, typename Function>
+inline auto bind(Optional &&_source, Function const &_function) -> std::remove_reference_t<
+    decltype(_function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>
 {
-	using
-	result_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_source.get_unsafe()
-				)
-			)
-		)
-	>;
+  using result_type = fcppt::type_traits::remove_cv_ref_t<decltype(
+      _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>;
 
-	static_assert(
-		fcppt::optional::detail::check<
-			result_type
-		>::value,
-		"optional_bind must return an optional"
-	);
+  static_assert(
+      fcppt::optional::detail::check<result_type>::value, "optional_bind must return an optional");
 
-	return
-		_source.has_value()
-		?
-			_function(
-				fcppt::move_if_rvalue<
-					Optional
-				>(
-					_source.get_unsafe()
-				)
-			)
-		:
-			result_type{}
-		;
+  return _source.has_value() ? _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe()))
+                             : result_type{};
 }
 
 }

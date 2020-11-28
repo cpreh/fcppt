@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_POWER_OF_2_HPP_INCLUDED
 #define FCPPT_MATH_POWER_OF_2_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Calculates two to the power of n
 
@@ -29,32 +26,12 @@ Returns <code>2 ^ _exponent</code>.
 
 \tparam Result Must be a type constructible with \ref fcppt.literal.
 */
-template<
-	typename Result,
-	typename Exponent
->
-inline
-constexpr
-Result
-power_of_2(
-	Exponent const _exponent
-)
+template <typename Result, typename Exponent>
+inline constexpr Result power_of_2(Exponent const _exponent)
 {
-	static_assert(
-		std::is_unsigned<
-			Exponent
-		>::value,
-		"Exponent must be unsigned"
-	);
+  static_assert(std::is_unsigned<Exponent>::value, "Exponent must be unsigned");
 
-	return
-		fcppt::literal<
-			Result
-		>(
-			1
-		)
-		<<
-		_exponent;
+  return fcppt::literal<Result>(1) << _exponent;
 }
 
 }

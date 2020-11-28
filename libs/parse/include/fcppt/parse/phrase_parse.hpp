@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_PHRASE_PARSE_HPP_INCLUDED
 #define FCPPT_PARSE_PHRASE_PARSE_HPP_INCLUDED
 
@@ -24,99 +23,29 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch,
-	typename Parser,
-	typename Skipper
->
-[[nodiscard]]
-inline
-fcppt::parse::result<
-	Ch,
-	fcppt::parse::result_of<
-		Parser
-	>
->
-phrase_parse(
-	Parser const &_parser,
-	fcppt::parse::basic_stream<
-		Ch
-	> &_input,
-	Skipper const &_skipper
-)
+template <typename Ch, typename Parser, typename Skipper>
+[[nodiscard]] inline fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
+phrase_parse(Parser const &_parser, fcppt::parse::basic_stream<Ch> &_input, Skipper const &_skipper)
 try
 {
-	static_assert(
-		fcppt::parse::is_parser<
-			Parser
-		>::value
-	);
+  static_assert(fcppt::parse::is_parser<Parser>::value);
 
-	static_assert(
-		fcppt::parse::skipper::is_skipper<
-			Skipper
-		>::value
-	);
+  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
 
-	return
-		fcppt::either::bind(
-			fcppt::parse::skipper::run(
-				_skipper,
-				fcppt::make_ref(
-					_input
-				)
-			),
-			[
-				&_parser,
-				&_input,
-				&_skipper
-			](
-				fcppt::unit const &
-			)
-			{
-				return
-					_parser.parse(
-						fcppt::make_ref(
-							_input
-						),
-						_skipper
-					);
-			}
-		);
+  return fcppt::either::bind(
+      fcppt::parse::skipper::run(_skipper, fcppt::make_ref(_input)),
+      [&_parser, &_input, &_skipper](fcppt::unit const &) {
+        return _parser.parse(fcppt::make_ref(_input), _skipper);
+      });
 }
-catch(
-	fcppt::parse::detail::exception<
-		Ch
-	> const &_error
-)
+catch (fcppt::parse::detail::exception<Ch> const &_error)
 {
-	return
-		fcppt::either::make_failure<
-			fcppt::parse::result_of<
-				Parser
-			>
-		>(
-			fcppt::parse::error<
-				Ch
-			>{
-				std::basic_string<
-					Ch
-				>{
-					FCPPT_STRING_LITERAL(
-						Ch,
-						"Parsing failed: "
-					)
-				}
-				+
-				_error.what()
-			}
-		);
+  return fcppt::either::make_failure<fcppt::parse::result_of<Parser>>(fcppt::parse::error<Ch>{
+      std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Parsing failed: ")} + _error.what()});
 }
 
 }

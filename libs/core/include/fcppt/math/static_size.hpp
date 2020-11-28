@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_STATIC_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_STATIC_SIZE_HPP_INCLUDED
 
@@ -12,26 +11,17 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief An mpl integral_c for math::size_type
 
 \ingroup fcpptmath
 */
-template<
-	fcppt::math::size_type N
->
-using static_size
-=
-std::integral_constant<
-	fcppt::math::size_type,
-	N
->;
+template <fcppt::math::size_type N>
+using static_size = std::integral_constant<fcppt::math::size_type, N>;
 
 }
 }

@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_BOX_INIT_DIM_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INIT_DIM_HPP_INCLUDED
 
 #include <fcppt/math/box/detail/init.hpp>
 #include <fcppt/math/dim/init.hpp>
-
 
 namespace fcppt
 {
@@ -17,7 +15,6 @@ namespace math
 {
 namespace box
 {
-
 /**
 \brief Initializes a box from pairs of positions and sizes
 
@@ -32,34 +29,12 @@ the position and <code>second</code> is the size.
 \tparam Function A (polymorphic) function of type
 <code>fcppt::homogenous_pair<Box::value_type> (Index)</code>
 */
-template<
-	typename Box,
-	typename Function
->
-inline
-Box
-init_dim(
-	Function const &_function
-)
+template <typename Box, typename Function>
+inline Box init_dim(Function const &_function)
 {
-	return
-		fcppt::math::box::detail::init<
-			Box
-		>(
-			[](
-				auto const &_init
-			)
-			{
-				return
-					fcppt::math::dim::init<
-						typename
-						Box::dim
-					>(
-						_init
-					);
-			},
-			_function
-		);
+  return fcppt::math::box::detail::init<Box>(
+      [](auto const &_init) { return fcppt::math::dim::init<typename Box::dim>(_init); },
+      _function);
 }
 
 }

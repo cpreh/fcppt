@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_INT_TO_ENUM_FUN_HPP_INCLUDED
 #define FCPPT_CAST_INT_TO_ENUM_FUN_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_enum.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Function object of fcppt::cast::int_to_enum
 
@@ -22,25 +19,11 @@ namespace cast
 */
 struct int_to_enum_fun
 {
-	template<
-		typename Dest,
-		typename Source
-	>
-	static
-	constexpr
-	Dest
-	execute(
-		Source const &_source
-	)
-	noexcept
-	{
-		return
-			fcppt::cast::int_to_enum<
-				Dest
-			>(
-				_source
-			);
-	}
+  template <typename Dest, typename Source>
+  static constexpr Dest execute(Source const &_source) noexcept
+  {
+    return fcppt::cast::int_to_enum<Dest>(_source);
+  }
 };
 
 }

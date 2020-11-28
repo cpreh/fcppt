@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_DYNAMIC_CAST_HPP_INCLUDED
 #define FCPPT_VARIANT_DYNAMIC_CAST_HPP_INCLUDED
 
@@ -22,12 +21,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief Tries several dynamic casts
 
@@ -45,95 +42,28 @@ The result of the first cast that succeeds is returned.
 
 \tparam Base The base class type to cast from.
 */
-template<
-	typename Types,
-	typename Cast,
-	typename Base
->
-fcppt::optional::object<
-	fcppt::variant::from_list<
-		fcppt::variant::dynamic_cast_types<
-			Types
-		>
-	>
->
-dynamic_cast_(
-	Base &_base
-)
+template <typename Types, typename Cast, typename Base>
+fcppt::optional::object<fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<Types>>>
+dynamic_cast_(Base &_base)
 {
-	static_assert(
-		::metal::is_list<
-			Types
-		>::value,
-		"Types must be a metal::list"
-	);
+  static_assert(::metal::is_list<Types>::value, "Types must be a metal::list");
 
-	using
-	variant_type
-	=
-	fcppt::variant::from_list<
-		fcppt::variant::dynamic_cast_types<
-			Types
-		>
-	>;
+  using variant_type = fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<Types>>;
 
-	using
-	result_type
-	=
-	fcppt::optional::object<
-		variant_type
-	>;
+  using result_type = fcppt::optional::object<variant_type>;
 
-	return
-		fcppt::algorithm::fold_break(
-			Types{},
-			result_type{},
-			[
-				&_base
-			](
-				auto const _type,
-				result_type const &_result
-			)
-			{
-				FCPPT_USE(
-					_type
-				);
+  return fcppt::algorithm::fold_break(
+      Types{}, result_type{}, [&_base](auto const _type, result_type const &_result) {
+        FCPPT_USE(_type);
 
-				return
-					_result.has_value()
-					?
-						std::make_pair(
-							fcppt::loop::break_,
-							_result
-						)
-					:
-						std::make_pair(
-							fcppt::loop::continue_,
-							fcppt::optional::map(
-								fcppt::cast::apply<
-									Cast,
-									fcppt::tag_type<
-										decltype(
-											_type
-										)
-									>
-								>(
-									_base
-								),
-								[](
-									auto const _ref
-								)
-								{
-									return
-										variant_type{
-											_ref
-										};
-								}
-							)
-						)
-					;
-			}
-		);
+        return _result.has_value()
+                   ? std::make_pair(fcppt::loop::break_, _result)
+                   : std::make_pair(
+                         fcppt::loop::continue_,
+                         fcppt::optional::map(
+                             fcppt::cast::apply<Cast, fcppt::tag_type<decltype(_type)>>(_base),
+                             [](auto const _ref) { return variant_type{_ref}; }));
+      });
 }
 
 }

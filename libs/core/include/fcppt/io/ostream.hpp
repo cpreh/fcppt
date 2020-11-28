@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_OSTREAM_HPP_INCLUDED
 #define FCPPT_IO_OSTREAM_HPP_INCLUDED
 
@@ -11,6 +10,5 @@
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
-
 
 #endif

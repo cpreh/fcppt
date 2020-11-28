@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRING_VIEW_HPP_INCLUDED
 #define FCPPT_STRING_VIEW_HPP_INCLUDED
 
@@ -12,10 +11,8 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief The string view type used for text.
 
@@ -23,12 +20,7 @@ namespace fcppt
 
 See \ref fcpptstring for more information about this type.
 */
-using
-string_view
-=
-std::basic_string_view<
-	fcppt::char_type
->;
+using string_view = std::basic_string_view<fcppt::char_type>;
 
 }
 

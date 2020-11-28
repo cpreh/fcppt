@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_ALTERNATIVE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_RESULT_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
 /**
 \brief The result type of an alternative parser.
 
@@ -28,25 +25,11 @@ namespace parse
 
 TODO
 */
-template<
-	typename Left,
-	typename Right
->
-using
-alternative_result
-=
-fcppt::parse::detail::alternative_result<
-	fcppt::metal::unique<
-		::metal::join<
-			fcppt::parse::detail::alternative_list<
-				Left
-			>,
-			fcppt::parse::detail::alternative_list<
-				Right
-			>
-		>
-	>
->;
+template <typename Left, typename Right>
+using alternative_result =
+    fcppt::parse::detail::alternative_result<fcppt::metal::unique<::metal::join<
+        fcppt::parse::detail::alternative_list<Left>,
+        fcppt::parse::detail::alternative_list<Right>>>>;
 
 }
 }

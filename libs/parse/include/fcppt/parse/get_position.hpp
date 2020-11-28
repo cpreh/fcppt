@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_GET_POSITION_HPP_INCLUDED
 #define FCPPT_PARSE_GET_POSITION_HPP_INCLUDED
 
@@ -11,28 +10,15 @@
 #include <fcppt/parse/basic_stream_impl.hpp>
 #include <fcppt/parse/position.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Ch
->
-fcppt::parse::position<
-	Ch
->
-get_position(
-	fcppt::reference<
-		fcppt::parse::basic_stream<
-			Ch
-		>
-	> const _state
-)
+template <typename Ch>
+fcppt::parse::position<Ch>
+get_position(fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)
 {
-	return
-		_state.get().get_position();
+  return _state.get().get_position();
 }
 
 }

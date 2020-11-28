@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 #define FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief Outputs the value held by the variant to a basic_ostream
 
@@ -33,46 +30,15 @@ possibles types to be printable.
 
 \return \a _stream
 */
-template<
-	typename... Types,
-	typename Ch,
-	typename Traits
->
-inline
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::variant::object<
-		Types...
-	> const &_object
-)
+template <typename... Types, typename Ch, typename Traits>
+inline std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::variant::object<Types...> const &_object)
 {
-	return
-		fcppt::variant::apply(
-			[
-				&_stream
-			](
-				auto const &_value
-			)
-			->
-			std::basic_ostream<
-				Ch,
-				Traits
-			> &
-			{
-				return
-					_stream
-					<<
-					_value;
-			},
-			_object
-		);
+  return fcppt::variant::apply(
+      [&_stream](auto const &_value) -> std::basic_ostream<Ch, Traits> & {
+        return _stream << _value;
+      },
+      _object);
 }
 
 }

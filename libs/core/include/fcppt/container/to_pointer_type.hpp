@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONTAINER_TO_POINTER_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TO_POINTER_TYPE_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace container
 {
-
 /**
 \brief Gets the pointer type of a container.
 
@@ -28,21 +25,11 @@ If \a Container is <code>const</code>, the result is
 
 \tparam Container A range type.
 */
-template<
-	typename Container
->
-using
-to_pointer_type
-=
-std::conditional_t<
-	std::is_const_v<
-		Container
-	>,
-	typename
-	Container::const_pointer,
-	typename
-	Container::pointer
->;
+template <typename Container>
+using to_pointer_type = std::conditional_t<
+    std::is_const_v<Container>,
+    typename Container::const_pointer,
+    typename Container::pointer>;
 
 }
 }

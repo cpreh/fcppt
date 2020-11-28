@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_DECL_HPP_INCLUDED
 
@@ -15,7 +14,6 @@
 #include <random>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace random
@@ -24,7 +22,6 @@ namespace distribution
 {
 namespace parameters
 {
-
 /**
 \brief Parameters class for normal distributions
 
@@ -34,74 +31,42 @@ typedefs for the mean and stddev parameters.
 
 \ingroup fcpptrandom
 */
-template<
-	typename FloatType
->
+template <typename FloatType>
 class normal
 {
 public:
-	using
-	result_type
-	=
-	FloatType;
+  using result_type = FloatType;
 
-	using
-	base_type
-	=
-	fcppt::random::distribution::base_type<
-		result_type
-	>;
+  using base_type = fcppt::random::distribution::base_type<result_type>;
 
-	using
-	distribution
-	=
-	std::normal_distribution<
-		base_type
-	>;
+  using distribution = std::normal_distribution<base_type>;
 
-	using
-	wrapped_param_type
-	=
-	typename
-	distribution::param_type;
+  using wrapped_param_type = typename distribution::param_type;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		FloatType,
-		mean
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(FloatType, mean);
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		FloatType,
-		stddev
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(FloatType, stddev);
 
-	/**
-	\brief Constructs parameters for a normal distribution
+  /**
+  \brief Constructs parameters for a normal distribution
 
-	Constructs parameters for a normal distribution that uses \a _mean and
-	\a _stddev as its parameters.
+  Constructs parameters for a normal distribution that uses \a _mean and
+  \a _stddev as its parameters.
 
-	\param _mean The mean value
+  \param _mean The mean value
 
-	\param _stddev The standard deviation value
-	*/
-	normal(
-		mean _mean,
-		stddev _stddev
-	);
+  \param _stddev The standard deviation value
+  */
+  normal(mean _mean, stddev _stddev);
 
-	wrapped_param_type
-	convert_from() const;
+  wrapped_param_type convert_from() const;
 
-	static
-	normal
-	convert_to(
-		distribution const &
-	);
+  static normal convert_to(distribution const &);
+
 private:
-	mean mean_;
+  mean mean_;
 
-	stddev stddev_;
+  stddev stddev_;
 };
 
 }

@@ -3,27 +3,22 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_DETAIL_CHAR_TYPE_HPP_INCLUDED
 #define FCPPT_DETAIL_CHAR_TYPE_HPP_INCLUDED
 
 #include <fcppt/public_config.hpp>
 
-
 namespace fcppt
 {
 namespace detail
 {
-
-using
-char_type
-=
+using char_type =
 #if defined(FCPPT_NARROW_STRING)
-char
+    char
 #else
-wchar_t
+    wchar_t
 #endif
-;
+    ;
 
 }
 }

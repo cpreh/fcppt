@@ -3,24 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VERSION_INT_HPP_INCLUDED
 #define FCPPT_VERSION_INT_HPP_INCLUDED
 
-
 namespace fcppt
 {
-
 /**
 \brief The int type to use for a version component
 
 \ingroup fcpptvarious
 */
-using
-version_int
-=
-// NOLINTNEXTLINE(google-runtime-int)
-unsigned long;
+using version_int =
+    // NOLINTNEXTLINE(google-runtime-int)
+    unsigned long;
 
 }
 

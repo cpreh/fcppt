@@ -3,29 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SPACE_HPP_INCLUDED
 #define FCPPT_PARSE_SPACE_HPP_INCLUDED
 
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/space_set.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-inline
-fcppt::parse::char_set
-space()
+inline fcppt::parse::char_set space()
 {
-	return
-		fcppt::parse::char_set{
-			fcppt::parse::space_set<
-				char
-			>()
-		};
+  return fcppt::parse::char_set{fcppt::parse::space_set<char>()};
 }
 
 }

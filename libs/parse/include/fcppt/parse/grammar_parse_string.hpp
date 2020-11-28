@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_GRAMMAR_PARSE_STRING_HPP_INCLUDED
 #define FCPPT_PARSE_GRAMMAR_PARSE_STRING_HPP_INCLUDED
 
@@ -15,40 +14,16 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
-
-template<
-	typename Result,
-	typename Ch,
-	typename Skipper
->
-fcppt::parse::result<
-	Ch,
-	Result
->
-grammar_parse_string(
-	std::basic_string<
-		Ch
-	> &&_string,
-	fcppt::parse::grammar<
-		Result,
-		Ch,
-		Skipper
-	> const &_grammar
-)
+template <typename Result, typename Ch, typename Skipper>
+fcppt::parse::result<Ch, Result> grammar_parse_string(
+    std::basic_string<Ch> &&_string, fcppt::parse::grammar<Result, Ch, Skipper> const &_grammar)
 {
-	return
-		fcppt::parse::phrase_parse_string(
-			*_grammar.start(),
-			std::move(
-				_string
-			),
-			_grammar.skipper()
-		);
+  return fcppt::parse::phrase_parse_string(
+      *_grammar.start(), std::move(_string), _grammar.skipper());
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_VARIANT_CURRENT_TYPE_NAME_HPP_INCLUDED
 #define FCPPT_VARIANT_CURRENT_TYPE_NAME_HPP_INCLUDED
 
@@ -14,33 +13,19 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace variant
 {
-
 /**
 \brief Returns the type name of the current type.
 
 \ingroup fcpptvariant
 */
-template<
-	typename... Elements
->
-std::string
-current_type_name(
-	fcppt::variant::object<
-		Elements...
-	> const &_variant
-)
+template <typename... Elements>
+std::string current_type_name(fcppt::variant::object<Elements...> const &_variant)
 {
-	return
-		fcppt::type_name_from_index(
-			fcppt::variant::type_info(
-				_variant
-			)
-		);
+  return fcppt::type_name_from_index(fcppt::variant::type_info(_variant));
 }
 
 }

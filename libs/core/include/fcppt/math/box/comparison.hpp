@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_BOX_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_BOX_COMPARISON_HPP_INCLUDED
 
@@ -14,40 +13,22 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace box
 {
-
 /**
 \brief Compare two boxes componentwise using <code>value_type</code>'s <code>operator==</code>
 
 \ingroup fcpptmathbox
 */
-template<
-	typename T,
-	fcppt::math::size_type N
->
-inline
-bool
-operator==(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_a,
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_b
-)
+template <typename T, fcppt::math::size_type N>
+inline bool
+operator==(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, N> const &_b)
 {
-	return
-		_a.pos() == _b.pos()
-		&&
-		_a.size() == _b.size();
+  return _a.pos() == _b.pos() && _a.size() == _b.size();
 }
 
 /**
@@ -55,25 +36,11 @@ operator==(
 
 \ingroup fcpptmathbox
 */
-template<
-	typename T,
-	fcppt::math::size_type N
->
-inline
-bool
-operator!=(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_a,
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_b
-)
+template <typename T, fcppt::math::size_type N>
+inline bool
+operator!=(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, N> const &_b)
 {
-	return
-		!(_a == _b);
+  return !(_a == _b);
 }
 
 /**
@@ -81,33 +48,11 @@ operator!=(
 
 \ingroup fcpptmathbox
 */
-template<
-	typename T,
-	fcppt::math::size_type N
->
-inline
-bool
-operator<(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_a,
-	fcppt::math::box::object<
-		T,
-		N
-	> const &_b
-)
+template <typename T, fcppt::math::size_type N>
+inline bool
+operator<(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, N> const &_b)
 {
-	return
-		std::make_pair(
-			_a.pos(),
-			_a.size()
-		)
-		<
-		std::make_pair(
-			_b.pos(),
-			_b.size()
-		);
+  return std::make_pair(_a.pos(), _a.size()) < std::make_pair(_b.pos(), _b.size());
 }
 
 }

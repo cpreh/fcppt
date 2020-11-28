@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_DETAIL_WIDEN_STRING_HPP_INCLUDED
 #define FCPPT_IO_DETAIL_WIDEN_STRING_HPP_INCLUDED
 
@@ -13,70 +12,33 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace io
 {
 namespace detail
 {
-
 class widen_string
 {
 public:
-	explicit
-	widen_string(
-		std::string &&_string
-	)
-	:
-		string_{
-			_string
-		}
-	{
-	}
+  explicit widen_string(std::string &&_string) : string_{_string} {}
 
-	[[nodiscard]]
-	std::string const &
-	get() const
-	{
-		return
-			this->string_;
-	}
+  [[nodiscard]] std::string const &get() const { return this->string_; }
+
 private:
-	std::string string_;
+  std::string string_;
 };
 
-template<
-	typename Ch,
-	typename Traits
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_stream,
-	fcppt::io::detail::widen_string const &_string
-)
+template <typename Ch, typename Traits>
+std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::io::detail::widen_string const &_string)
 {
-	for(
-		char const ch
-		:
-		_string.get()
-	)
-	{
-		_stream
-			<<
-			_stream.widen(
-				ch
-			);
-	}
+  for (char const ch : _string.get())
+  {
+    _stream << _stream.widen(ch);
+  }
 
-	return
-		_stream;
+  return _stream;
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_IO_WRITE_HPP_INCLUDED
 #define FCPPT_IO_WRITE_HPP_INCLUDED
 
@@ -18,12 +17,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace io
 {
-
 /**
 \brief Writes an object of arithmetic type to a stream
 
@@ -40,46 +37,16 @@ will be done binary.
 
 \param _format The endianness to use
 */
-template<
-	typename Type
->
-void
-write(
-	std::ostream &_stream,
-	Type const &_value,
-	fcppt::endianness::format const _format
-)
+template <typename Type>
+void write(std::ostream &_stream, Type const &_value, fcppt::endianness::format const _format)
 {
-	static_assert(
-		std::is_arithmetic<
-			Type
-		>::value,
-		"io::write can only be used on arithmetic types"
-	);
+  static_assert(std::is_arithmetic<Type>::value, "io::write can only be used on arithmetic types");
 
-	Type const tmp(
-		fcppt::endianness::convert(
-			_value,
-			_format
-		)
-	);
+  Type const tmp(fcppt::endianness::convert(_value, _format));
 
-	_stream.write(
-		fcppt::cast::to_char_ptr<
-			char const *
-		>(
-			&tmp
-		),
-		fcppt::cast::size<
-			std::streamsize
-		>(
-			fcppt::cast::to_signed(
-				sizeof(
-					Type
-				)
-			)
-		)
-	);
+  _stream.write(
+      fcppt::cast::to_char_ptr<char const *>(&tmp),
+      fcppt::cast::size<std::streamsize>(fcppt::cast::to_signed(sizeof(Type))));
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MOVE_IF_RVALUE_HPP_INCLUDED
 #define FCPPT_MOVE_IF_RVALUE_HPP_INCLUDED
 
@@ -13,10 +12,8 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Moves an object if a type is an rvalue
 
@@ -27,30 +24,10 @@ is similar to <code>std::forward</code> except that this function depends on
 two types instead of one. This can be useful in situations where you want to
 move a member if the surrounding object is an rvalue.
 */
-template<
-	typename Type,
-	typename Arg
->
-inline
-decltype(
-	auto
-)
-move_if_rvalue(
-	Arg &&_arg
-)
+template <typename Type, typename Arg>
+inline decltype(auto) move_if_rvalue(Arg &&_arg)
 {
-	return
-		fcppt::move_if<
-			!std::is_lvalue_reference<
-				Type
-			>::value
-		>(
-			std::forward<
-				Arg
-			>(
-				_arg
-			)
-		);
+  return fcppt::move_if<!std::is_lvalue_reference<Type>::value>(std::forward<Arg>(_arg));
 }
 
 }

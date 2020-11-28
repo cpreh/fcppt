@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
-
 
 namespace fcppt
 {
@@ -14,15 +12,8 @@ namespace math
 {
 namespace detail
 {
-
-template<
-	typename Type
->
-using
-storage_size
-=
-typename
-Type::storage_size;
+template <typename Type>
+using storage_size = typename Type::storage_size;
 
 }
 }

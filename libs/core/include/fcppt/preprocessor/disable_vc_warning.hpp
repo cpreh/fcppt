@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PREPROCESSOR_DISABLE_VC_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DISABLE_VC_WARNING_HPP_INCLUDED
 
 #include <fcppt/preprocessor/detail/disable_vc_warning.hpp>
-
 
 /**
 \brief Disables a given VC++ warning (does nothing on other compilers)
@@ -21,11 +19,7 @@ Disables the VC++ warning denoted by \a warning_number
 
 \see \ref preprocessor_warnings
 */
-#define FCPPT_PP_DISABLE_VC_WARNING(\
-	warning_number\
-)\
-FCPPT_PP_DETAIL_DISABLE_VC_WARNING(\
-	warning_number\
-)
+#define FCPPT_PP_DISABLE_VC_WARNING(warning_number) \
+  FCPPT_PP_DETAIL_DISABLE_VC_WARNING(warning_number)
 
 #endif

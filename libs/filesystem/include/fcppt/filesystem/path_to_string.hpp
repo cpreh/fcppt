@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_PATH_TO_STRING_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_PATH_TO_STRING_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Turns a path into an fcppt::string
 
@@ -27,10 +24,7 @@ namespace filesystem
 Turns \a path into an fcppt::string.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-fcppt::string
-path_to_string(
-	std::filesystem::path const &path
-);
+fcppt::string path_to_string(std::filesystem::path const &path);
 
 }
 }

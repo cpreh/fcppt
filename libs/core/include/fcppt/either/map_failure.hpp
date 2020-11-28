@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_MAP_FAILURE_HPP_INCLUDED
 #define FCPPT_EITHER_MAP_FAILURE_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Maps over the failure type of an either.
 
@@ -32,88 +29,22 @@ is called and the result is
 \tparam Function A function callable as <code>R (Either::failure)</code> where
 <code>R</code> is the result type
 */
-template<
-	typename Either,
-	typename Function
->
-auto
-map_failure(
-	Either &&_either,
-	Function const &_function
-)
-->
-fcppt::either::object<
-	decltype(
-		_function(
-			fcppt::move_if_rvalue<
-				Either
-			>(
-				_either.get_failure_unsafe()
-			)
-		)
-	),
-	fcppt::either::success_type<
-		fcppt::type_traits::remove_cv_ref_t<
-			Either
-		>
-	>
->
+template <typename Either, typename Function>
+auto map_failure(Either &&_either, Function const &_function) -> fcppt::either::object<
+    decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_failure_unsafe()))),
+    fcppt::either::success_type<fcppt::type_traits::remove_cv_ref_t<Either>>>
 {
-	using
-	either
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Either
-	>;
+  using either = fcppt::type_traits::remove_cv_ref_t<Either>;
 
-	static_assert(
-		fcppt::either::is_object<
-			either
-		>::value,
-		"Either must be an either"
-	);
+  static_assert(fcppt::either::is_object<either>::value, "Either must be an either");
 
-	using
-	result_type
-	=
-	fcppt::either::object<
-		decltype(
-			_function(
-				fcppt::move_if_rvalue<
-					Either
-				>(
-					_either.get_failure_unsafe()
-				)
-			)
-		),
-		fcppt::either::success_type<
-			fcppt::type_traits::remove_cv_ref_t<
-				Either
-			>
-		>
-	>;
+  using result_type = fcppt::either::object<
+      decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_failure_unsafe()))),
+      fcppt::either::success_type<fcppt::type_traits::remove_cv_ref_t<Either>>>;
 
-	return
-		_either.has_failure()
-		?
-			result_type(
-				_function(
-					fcppt::move_if_rvalue<
-						Either
-					>(
-						_either.get_failure_unsafe()
-					)
-				)
-			)
-		:
-			result_type(
-				fcppt::move_if_rvalue<
-					Either
-				>(
-					_either.get_success_unsafe()
-				)
-			)
-		;
+  return _either.has_failure()
+             ? result_type(_function(fcppt::move_if_rvalue<Either>(_either.get_failure_unsafe())))
+             : result_type(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe()));
 }
 
 }

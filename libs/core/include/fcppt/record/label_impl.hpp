@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 
@@ -14,40 +13,15 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 // NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
-template<
-	typename Tag
->
-template<
-	typename Arg
->
+template <typename Tag>
+template <typename Arg>
 // NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
-fcppt::record::detail::element_init<
-	Tag,
-	fcppt::type_traits::remove_cv_ref_t<
-		Arg
-	>
->
-fcppt::record::label<
-	Tag
->::operator=(
-	Arg &&_arg
-)
+fcppt::record::detail::element_init<Tag, fcppt::type_traits::remove_cv_ref_t<Arg>>
+fcppt::record::label<Tag>::operator=(Arg &&_arg)
 {
-	return
-		fcppt::record::detail::element_init<
-			Tag,
-			fcppt::type_traits::remove_cv_ref_t<
-				Arg
-			>
-		>(
-			std::forward<
-				Arg
-			>(
-				_arg
-			)
-		);
+  return fcppt::record::detail::element_init<Tag, fcppt::type_traits::remove_cv_ref_t<Arg>>(
+      std::forward<Arg>(_arg));
 }
 
 #endif

@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_BASIC_UNCONDITIONAL_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_UNCONDITIONAL_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/basic/message_and_action.hpp>
 #include <fcppt/assert/basic/unconditional.hpp>
-
 
 /**
 \brief Takes an unconditional action, also printing a message
@@ -25,16 +23,7 @@ reason and \a message.
 
 \param action The action to take
 */
-#define FCPPT_ASSERT_BASIC_UNCONDITIONAL_MESSAGE(\
-	reason,\
-	message,\
-	action\
-) \
-FCPPT_ASSERT_BASIC_MESSAGE_AND_ACTION(\
-	FCPPT_ASSERT_BASIC_UNCONDITIONAL,\
-	message,\
-	reason,\
-	action \
-)
+#define FCPPT_ASSERT_BASIC_UNCONDITIONAL_MESSAGE(reason, message, action) \
+  FCPPT_ASSERT_BASIC_MESSAGE_AND_ACTION(FCPPT_ASSERT_BASIC_UNCONDITIONAL, message, reason, action)
 
 #endif

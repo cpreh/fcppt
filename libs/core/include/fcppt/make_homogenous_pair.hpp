@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MAKE_HOMOGENOUS_PAIR_HPP_INCLUDED
 #define FCPPT_MAKE_HOMOGENOUS_PAIR_HPP_INCLUDED
 
@@ -14,64 +13,27 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Like <code>std::make_pair</code> for fcppt::homogenous_pair
 
 \ingroup fcpptvarious
 */
-template<
-	typename Type1,
-	typename Type2
->
-inline
-fcppt::homogenous_pair<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type1
-	>
->
-make_homogenous_pair(
-	Type1 &&_first,
-	Type2 &&_second
-)
+template <typename Type1, typename Type2>
+inline fcppt::homogenous_pair<fcppt::type_traits::remove_cv_ref_t<Type1>>
+make_homogenous_pair(Type1 &&_first, Type2 &&_second)
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::type_traits::remove_cv_ref_t<
-				Type1
-			>,
-			fcppt::type_traits::remove_cv_ref_t<
-				Type2
-			>
-		>,
-		"Type1 and Type2 must be the same decayed type"
-	);
+  static_assert(
+      std::is_same_v<
+          fcppt::type_traits::remove_cv_ref_t<Type1>,
+          fcppt::type_traits::remove_cv_ref_t<Type2>>,
+      "Type1 and Type2 must be the same decayed type");
 
-	using
-	result_type
-	=
-	fcppt::type_traits::remove_cv_ref_t<
-		Type1
-	>;
+  using result_type = fcppt::type_traits::remove_cv_ref_t<Type1>;
 
-	return
-		fcppt::homogenous_pair<
-			result_type
-		>(
-			std::forward<
-				Type1
-			>(
-				_first
-			),
-			std::forward<
-				Type2
-			>(
-				_second
-			)
-		);
+  return fcppt::homogenous_pair<result_type>(
+      std::forward<Type1>(_first), std::forward<Type2>(_second));
 }
 
 }

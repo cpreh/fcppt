@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 
@@ -16,10 +15,8 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
@@ -36,75 +33,49 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 A strong typedef is a wrapper around a type. It has an explicit constructor and
 a get member function.
 */
-template<
-	typename T,
-	typename Tag
->
+template <typename T, typename Tag>
 class strong_typedef
 {
 public:
-	static_assert(
-		!std::is_reference_v<
-			T
-		>,
-		"T must be a non-reference type"
-	);
+  static_assert(!std::is_reference_v<T>, "T must be a non-reference type");
 
-	/**
-	\brief A type that represents the data stored in the strong typedef
-	*/
-	using
-	value_type
-	=
-	T;
+  /**
+  \brief A type that represents the data stored in the strong typedef
+  */
+  using value_type = T;
 
-	/**
-	\brief typedef for the <code>Tag</code> template parameter
-	*/
-	using
-	tag_type
-	=
-	Tag;
+  /**
+  \brief typedef for the <code>Tag</code> template parameter
+  */
+  using tag_type = Tag;
 
-	/**
-	\brief Constructs a strong typedef by copying.
-	*/
-	explicit
-	strong_typedef(
-		T
-	);
+  /**
+  \brief Constructs a strong typedef by copying.
+  */
+  explicit strong_typedef(T);
 
-	/**
-	\brief Creates an uninitialized strong typedef.
-	*/
-	explicit
-	strong_typedef(
-		fcppt::no_init const &
-	);
+  /**
+  \brief Creates an uninitialized strong typedef.
+  */
+  explicit strong_typedef(fcppt::no_init const &);
 
-	/**
-	\brief Return the strong typedef's value.
-	*/
-	[[nodiscard]]
-	T &
-	get();
+  /**
+  \brief Return the strong typedef's value.
+  */
+  [[nodiscard]] T &get();
 
-	/**
-	\brief Return the strong typedef's value.
-	*/
-	[[nodiscard]]
-	T const &
-	get() const;
+  /**
+  \brief Return the strong typedef's value.
+  */
+  [[nodiscard]] T const &get() const;
 
-	/**
-	\brief Swap the contents of another strong typedef
-	*/
-	void
-	swap(
-		strong_typedef &
-	);
+  /**
+  \brief Swap the contents of another strong typedef
+  */
+  void swap(strong_typedef &);
+
 private:
-	T value_;
+  T value_;
 };
 
 FCPPT_PP_POP_WARNING
@@ -116,21 +87,8 @@ FCPPT_PP_POP_WARNING
 
 \tparam Tag A unique tag type
 */
-template<
-	typename T,
-	typename Tag
->
-void
-swap(
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> &,
-	fcppt::strong_typedef<
-		T,
-		Tag
-	> &
-);
+template <typename T, typename Tag>
+void swap(fcppt::strong_typedef<T, Tag> &, fcppt::strong_typedef<T, Tag> &);
 
 }
 

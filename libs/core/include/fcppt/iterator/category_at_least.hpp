@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ITERATOR_CATEGORY_AT_LEAST_HPP_INCLUDED
 #define FCPPT_ITERATOR_CATEGORY_AT_LEAST_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace iterator
 {
-
 /**
 \brief Checks if an iterator category includes another.
 
@@ -31,16 +28,8 @@ the value is true.
 
 \tparam CategoryRef Must be one of the <code>std::</code> iterator category classes.
 */
-template<
-	typename Category,
-	typename CategoryRef
->
-using category_at_least
-=
-std::is_base_of<
-	CategoryRef,
-	Category
->;
+template <typename Category, typename CategoryRef>
+using category_at_least = std::is_base_of<CategoryRef, Category>;
 
 }
 }

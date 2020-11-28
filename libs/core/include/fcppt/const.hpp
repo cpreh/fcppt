@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CONST_HPP_INCLUDED
 #define FCPPT_CONST_HPP_INCLUDED
 
@@ -13,41 +12,19 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Function returning a constant
 
 \ingroup fcpptvarious
 */
-template<
-	typename Type
->
-inline
-fcppt::detail::const_<
-	Type
->
-const_(
-	Type _value
-)
+template <typename Type>
+inline fcppt::detail::const_<Type> const_(Type _value)
 {
-	static_assert(
-		!std::is_lvalue_reference<
-			Type
-		>::value,
-		"Type must be a non-reference type"
-	);
+  static_assert(!std::is_lvalue_reference<Type>::value, "Type must be a non-reference type");
 
-	return
-		fcppt::detail::const_<
-			Type
-		>(
-			std::move(
-				_value
-			)
-		);
+  return fcppt::detail::const_<Type>(std::move(_value));
 }
 
 }

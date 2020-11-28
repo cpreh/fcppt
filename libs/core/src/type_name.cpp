@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/type_name.hpp>
 #include <fcppt/impl/private_config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
@@ -17,42 +16,16 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-std::string
-fcppt::type_name(
-	char const *const _name
-)
+std::string fcppt::type_name(char const *const _name)
 {
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
-	int status{0};
+  int status{0};
 
-	fcppt::unique_ptr<
-		char,
-		fcppt::c_deleter
-	> name(
-		abi::__cxa_demangle(
-			_name,
-			nullptr,
-			nullptr,
-			&status
-		)
-	);
+  fcppt::unique_ptr<char, fcppt::c_deleter> name(
+      abi::__cxa_demangle(_name, nullptr, nullptr, &status));
 
-	return
-		status != 0
-		?
-			std::string{
-				_name
-			}
-		:
-			std::string{
-				name.get_pointer()
-			}
-		;
+  return status != 0 ? std::string{_name} : std::string{name.get_pointer()};
 #else
-	return
-		std::string{
-			_name
-		};
+  return std::string{_name};
 #endif
 }

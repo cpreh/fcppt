@@ -3,19 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_BASE_UNIQUE_PTR_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_BASE_UNIQUE_PTR_FWD_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/options/base_fwd.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief A unique pointer for #fcppt::options::base.
 
@@ -23,17 +20,8 @@ namespace options
 
 \tparam Result The result type of the parser. Must be an #fcppt::record::object.
 */
-template<
-	typename Result
->
-using
-base_unique_ptr
-=
-fcppt::unique_ptr<
-	fcppt::options::base<
-		Result
-	>
->;
+template <typename Result>
+using base_unique_ptr = fcppt::unique_ptr<fcppt::options::base<Result>>;
 
 }
 }

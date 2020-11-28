@@ -3,22 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION_HPP_INCLUDED
 #define FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION_HPP_INCLUDED
 
 #include <fcppt/config/compiler.hpp>
 
-
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	define FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION_IMPL
+#define FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION_IMPL
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#	include <fcppt/symbol/export.hpp>
-#	define FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION_IMPL FCPPT_SYMBOL_EXPORT
+#include <fcppt/symbol/export.hpp>
+#define FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION_IMPL FCPPT_SYMBOL_EXPORT
 #else
-#	error "Don't know what FCPPT_EXPORT_CLASS_INSTANTIATION should be"
+#error "Don't know what FCPPT_EXPORT_CLASS_INSTANTIATION should be"
 #endif
-
 
 /**
 \brief Tells that an explicit class instantiation should be exported

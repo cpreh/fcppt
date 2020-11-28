@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_FLOAT_TO_INT_HPP_INCLUDED
 #define FCPPT_CAST_FLOAT_TO_INT_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts a float to a signed int
 
@@ -31,35 +28,14 @@ unsafe and should be used with care.
 
 \tparam Dest Must be a signed integer type
 */
-template<
-	typename Dest,
-	typename Source
->
-inline
-constexpr
-Dest
-float_to_int(
-	Source const _source
-)
-noexcept
+template <typename Dest, typename Source>
+inline constexpr Dest float_to_int(Source const _source) noexcept
 {
-	static_assert(
-		std::is_floating_point_v<
-			Source
-		>
-		&&
-		std::is_signed_v<
-			Dest
-		>,
-		"float_to_int can only cast from floating point types to signed integer types"
-	);
+  static_assert(
+      std::is_floating_point_v<Source> && std::is_signed_v<Dest>,
+      "float_to_int can only cast from floating point types to signed integer types");
 
-	return
-		static_cast<
-			Dest
-		>(
-			_source
-		);
+  return static_cast<Dest>(_source);
 }
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RANGE_HASH_DECL_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_DECL_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace range
 {
-
 /**
 \brief Hashes a range.
 
@@ -28,15 +25,10 @@ hashes of the elements in the range.
 
 \tparam Type Must be supported by std::hash.
 */
-template<
-	typename Type
->
+template <typename Type>
 struct hash
 {
-	std::size_t
-	operator()(
-		Type const &
-	) const;
+  std::size_t operator()(Type const &) const;
 };
 
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONAL_ASSIGN_HPP_INCLUDED
 #define FCPPT_OPTIONAL_ASSIGN_HPP_INCLUDED
 
@@ -13,12 +12,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace optional
 {
-
 /**
 \brief Assigns an optional and returns a reference to the optional's contents
 
@@ -26,43 +23,16 @@ namespace optional
 
 Assign \a _arg to \a _optional and returns a reference to \a _arg.
 */
-template<
-	typename Element,
-	typename Arg
->
-[[nodiscard]]
-inline
-Element &
-assign(
-	fcppt::optional::object<
-		Element
-	> &_optional,
-	Arg &&_arg
-)
+template <typename Element, typename Arg>
+[[nodiscard]] inline Element &assign(fcppt::optional::object<Element> &_optional, Arg &&_arg)
 {
-	static_assert(
-		std::is_same<
-			Element,
-			std::remove_cv_t<
-				Arg
-			>
-		>::value,
-		"Argument type must be the same as the optional's element type"
-	);
+  static_assert(
+      std::is_same<Element, std::remove_cv_t<Arg>>::value,
+      "Argument type must be the same as the optional's element type");
 
-	_optional =
-		fcppt::optional::object<
-			Element
-		>(
-			std::forward<
-				Arg
-			>(
-				_arg
-			)
-		);
+  _optional = fcppt::optional::object<Element>(std::forward<Arg>(_arg));
 
-	return
-		_optional.get_unsafe();
+  return _optional.get_unsafe();
 }
 
 }

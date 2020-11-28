@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TEXT_HPP_INCLUDED
 #define FCPPT_TEXT_HPP_INCLUDED
 
 #include <fcppt/detail/text.hpp>
-
 
 /**
 \brief A macro to wrap a narrow character literal so it results in a fcppt::char_type[] array.

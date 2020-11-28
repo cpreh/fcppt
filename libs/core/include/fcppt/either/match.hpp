@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_EITHER_MATCH_HPP_INCLUDED
 #define FCPPT_EITHER_MATCH_HPP_INCLUDED
 
@@ -18,12 +17,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace either
 {
-
 /**
 \brief Matches on the two cases of an either
 
@@ -39,85 +36,32 @@ where <code>R</code> is the result type
 \tparam SuccessFunction A function callable as <code>R (Either::success)</code>
 where <code>R</code> is the result type
 */
-template<
-	typename Either,
-	typename FailureFunction,
-	typename SuccessFunction
->
-auto
-match(
-	Either &&_either,
-	FailureFunction const &_failure_function,
-	SuccessFunction const &_success_function
-)
-->
-decltype(
-	_success_function(
-		fcppt::move_if_rvalue<
-			Either
-		>(
-			_either.get_success_unsafe()
-		)
-	)
-)
+template <typename Either, typename FailureFunction, typename SuccessFunction>
+auto match(
+    Either &&_either,
+    FailureFunction const &_failure_function,
+    SuccessFunction const &_success_function)
+    -> decltype(_success_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))
 {
-	static_assert(
-		fcppt::either::is_object<
-			fcppt::type_traits::remove_cv_ref_t<
-				Either
-			>
-		>::value,
-		"Either must be an either"
-	);
+  static_assert(
+      fcppt::either::is_object<fcppt::type_traits::remove_cv_ref_t<Either>>::value,
+      "Either must be an either");
 
-	static_assert(
-		std::is_same<
-			decltype(
-				_success_function(
-					fcppt::move_if_rvalue<
-						Either
-					>(
-						_either.get_success_unsafe()
-					)
-				)
-			),
-			decltype(
-				_failure_function(
-					fcppt::move_if_rvalue<
-						Either
-					>(
-						_either.get_failure_unsafe()
-					)
-				)
-			)
-		>::value,
-		"FailureFunction and SuccessFunction must return the same type"
-	);
+  static_assert(
+      std::is_same<
+          decltype(_success_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe()))),
+          decltype(_failure_function(
+              fcppt::move_if_rvalue<Either>(_either.get_failure_unsafe())))>::value,
+      "FailureFunction and SuccessFunction must return the same type");
 
-	FCPPT_PP_PUSH_WARNING
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
-	return
-		_either.has_success()
-		?
-			_success_function(
-				fcppt::move_if_rvalue<
-					Either
-				>(
-					_either.get_success_unsafe()
-				)
-			)
-		:
-			_failure_function(
-				fcppt::move_if_rvalue<
-					Either
-				>(
-					_either.get_failure_unsafe()
-				)
-			)
-		;
+  return _either.has_success()
+             ? _success_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe()))
+             : _failure_function(fcppt::move_if_rvalue<Either>(_either.get_failure_unsafe()));
 
-	FCPPT_PP_POP_WARNING
+  FCPPT_PP_POP_WARNING
 }
 
 }

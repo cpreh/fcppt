@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ABSURD_HPP_INCLUDED
 #define FCPPT_ABSURD_HPP_INCLUDED
 
@@ -11,10 +10,8 @@
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief The polymorphic terminate function
 
@@ -23,14 +20,10 @@ namespace fcppt
 Terminates the program but can be used where an expression of any type is
 required.
 */
-template<
-	typename T
->
-inline
-T
-absurd()
+template <typename T>
+inline T absurd()
 {
-	std::terminate();
+  std::terminate();
 }
 
 }

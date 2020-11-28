@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_TRAITS_SAFE_INTEGRAL_CAST_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_SAFE_INTEGRAL_CAST_HPP_INCLUDED
 
 #include <fcppt/type_traits/detail/safe_integral_cast.hpp>
 
-
 namespace fcppt
 {
 namespace type_traits
 {
-
 /**
 \brief Casts std::integral_constants and checks for truncation.
 
@@ -24,18 +21,9 @@ namespace type_traits
 
 \tparam Src A std::integral_constant.
 */
-template<
-	typename DestType,
-	typename Src
->
-using
-safe_integral_cast
-=
-typename
-fcppt::type_traits::detail::safe_integral_cast<
-	DestType,
-	Src
->::type;
+template <typename DestType, typename Src>
+using safe_integral_cast =
+    typename fcppt::type_traits::detail::safe_integral_cast<DestType, Src>::type;
 
 }
 }

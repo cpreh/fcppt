@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_LITERAL_HPP_INCLUDED
 #define FCPPT_LITERAL_HPP_INCLUDED
 
@@ -13,10 +12,8 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Creates a literal of a type
 
@@ -29,40 +26,14 @@ fcppt::make_literal to do any conversions if necessary.
 
 \tparam Arg An arithmetic type.
 */
-template<
-	typename Type,
-	typename Arg
->
-constexpr
-typename
-fcppt::make_literal<
-	Type
->::decorated_type
-literal(
-	Arg const &&_integral
-)
-noexcept
+template <typename Type, typename Arg>
+constexpr typename fcppt::make_literal<Type>::decorated_type literal(Arg const &&_integral) noexcept
 {
-	static_assert(
-		fcppt::type_traits::is_value<
-			Type
-		>::value,
-		"Type must be a value type"
-	);
+  static_assert(fcppt::type_traits::is_value<Type>::value, "Type must be a value type");
 
-	static_assert(
-		std::is_arithmetic_v<
-			Arg
-		>,
-		"literal can only be used on arithmetic types"
-	);
+  static_assert(std::is_arithmetic_v<Arg>, "literal can only be used on arithmetic types");
 
-	return
-		fcppt::make_literal<
-			Type
-		>::get(
-			_integral
-		);
+  return fcppt::make_literal<Type>::get(_integral);
 }
 
 }

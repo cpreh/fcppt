@@ -3,11 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_BASIC_LITERAL_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_BASIC_LITERAL_HPP_INCLUDED
 
 #include <fcppt/parse/skipper/basic_literal_impl.hpp>
-
 
 #endif

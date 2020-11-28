@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_INTRUSIVE_DETAIL_ITERATOR_BASE_HPP_INCLUDED
 #define FCPPT_INTRUSIVE_DETAIL_ITERATOR_BASE_HPP_INCLUDED
 
@@ -16,33 +15,19 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace intrusive
 {
 namespace detail
 {
-
-template<
-	typename Type
->
-using
-iterator_base
-=
-fcppt::iterator::base<
-	fcppt::iterator::types<
-		fcppt::intrusive::iterator<
-			Type
-		>,
-		std::remove_const_t<
-			Type
-		>,
-		Type &,
-		std::ptrdiff_t,
-		std::bidirectional_iterator_tag
-	>
->;
+template <typename Type>
+using iterator_base = fcppt::iterator::base<fcppt::iterator::types<
+    fcppt::intrusive::iterator<Type>,
+    std::remove_const_t<Type>,
+    Type &,
+    std::ptrdiff_t,
+    std::bidirectional_iterator_tag>>;
 
 }
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_TYPE_TRAITS_INTEGRAL_CAST_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_INTEGRAL_CAST_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace type_traits
 {
-
 /**
 \brief Does an integral cast on an integral constant
 
@@ -32,22 +29,10 @@ done using \a Conv from fcppt.casts.
 
 \tparam Integral A std::integral_constant to cast from
 */
-template<
-	typename Dest,
-	typename Conv,
-	typename Integral
->
-using
-integral_cast
-=
-std::integral_constant<
-	Dest,
-	fcppt::type_traits::detail::integral_cast_value<
-		Dest,
-		Conv,
-		Integral
-	>::value
->;
+template <typename Dest, typename Conv, typename Integral>
+using integral_cast = std::integral_constant<
+    Dest,
+    fcppt::type_traits::detail::integral_cast_value<Dest, Conv, Integral>::value>;
 
 }
 }

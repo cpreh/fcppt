@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_BASIC_GATHER_INFORMATION_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_GATHER_INFORMATION_HPP_INCLUDED
 
@@ -18,7 +17,6 @@
 #include <fcppt/preprocessor/function.hpp>
 #include <fcppt/preprocessor/stringize.hpp>
 
-
 /**
 \brief Gathers fcppt::assert_::information at the current file and function
 
@@ -32,32 +30,12 @@ obtained from \a condition_arg, and the message obtained from \a message_arg.
 
 \param message_arg The message of the assertion
 */
-#define FCPPT_ASSERT_BASIC_GATHER_INFORMATION(\
-	condition_arg,\
-	message_arg\
-)\
-fcppt::assert_::information(\
-	fcppt::assert_::file(\
-		FCPPT_PP_FILE\
-	),\
-	fcppt::assert_::line(\
-		__LINE__\
-	),\
-	fcppt::assert_::function(\
-		FCPPT_PP_FUNCTION\
-	),\
-	fcppt::assert_::condition(\
-		fcppt::string{\
-			FCPPT_PP_STRINGIZE(\
-				condition_arg\
-			)\
-		}\
-	),\
-	fcppt::assert_::message(\
-		fcppt::string{\
-			message_arg\
-		}\
-	) \
-)
+#define FCPPT_ASSERT_BASIC_GATHER_INFORMATION(condition_arg, message_arg) \
+  fcppt::assert_::information( \
+      fcppt::assert_::file(FCPPT_PP_FILE), \
+      fcppt::assert_::line(__LINE__), \
+      fcppt::assert_::function(FCPPT_PP_FUNCTION), \
+      fcppt::assert_::condition(fcppt::string{FCPPT_PP_STRINGIZE(condition_arg)}), \
+      fcppt::assert_::message(fcppt::string{message_arg}))
 
 #endif

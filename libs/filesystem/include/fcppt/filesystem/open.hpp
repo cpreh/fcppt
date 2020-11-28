@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_FILESYSTEM_OPEN_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_OPEN_HPP_INCLUDED
 
@@ -15,12 +14,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace filesystem
 {
-
 /**
 \brief Opens a file, returning an optional.
 
@@ -31,36 +28,15 @@ failure.
 
 \tparam Stream Must be a std::{basic_ifstream,basic_ofstream,basic_fstream}.
 */
-template<
-	typename Stream
->
-fcppt::optional::object<
-	Stream
->
-open(
-	std::filesystem::path const &_path,
-	std::ios_base::openmode const _openmode
-)
+template <typename Stream>
+fcppt::optional::object<Stream>
+open(std::filesystem::path const &_path, std::ios_base::openmode const _openmode)
 {
-	Stream result{};
+  Stream result{};
 
-	result.open(
-		_path,
-		_openmode
-	);
+  result.open(_path, _openmode);
 
-	return
-		fcppt::optional::make_if(
-			result.is_open(),
-			[
-				&result
-			]{
-				return
-					std::move(
-						result
-					);
-			}
-		);
+  return fcppt::optional::make_if(result.is_open(), [&result] { return std::move(result); });
 }
 
 }

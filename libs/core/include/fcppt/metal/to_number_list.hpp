@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_METAL_TO_NUMBER_LIST_HPP_INCLUDED
 #define FCPPT_METAL_TO_NUMBER_LIST_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace metal
 {
-
 /**
 \brief Converts a metal::list of std::integral_constants into a metal::list of metal::numbers.
 
@@ -27,18 +24,8 @@ Applies #fcppt::metal::to_number to each element of the list.
 
 \tparam List Must be a metal::list of std::integral_constants.
 */
-template<
-	typename List
->
-using
-to_number_list
-=
-::metal::transform<
-	::metal::lambda<
-		fcppt::metal::to_number
-	>,
-	List
->;
+template <typename List>
+using to_number_list = ::metal::transform<::metal::lambda<fcppt::metal::to_number>, List>;
 
 }
 }

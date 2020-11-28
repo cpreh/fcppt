@@ -3,10 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ASSERT_BASIC_UNCONDITIONAL_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_UNCONDITIONAL_HPP_INCLUDED
-
 
 /**
 \brief Takes an unconditional action
@@ -17,9 +15,6 @@ Takes the unconditional action \a action.
 
 \param action The action to take
 */
-#define FCPPT_ASSERT_BASIC_UNCONDITIONAL(\
-	action\
-) \
-action \
+#define FCPPT_ASSERT_BASIC_UNCONDITIONAL(action) action
 
 #endif

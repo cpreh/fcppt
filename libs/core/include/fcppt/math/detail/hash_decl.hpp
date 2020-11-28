@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_DETAIL_HASH_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_HASH_DECL_HPP_INCLUDED
 
@@ -12,23 +11,16 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace detail
 {
-
-template<
-	typename Type
->
+template <typename Type>
 struct hash
 {
-	std::size_t
-	operator()(
-		Type const &
-	) const;
+  std::size_t operator()(Type const &) const;
 };
 
 }

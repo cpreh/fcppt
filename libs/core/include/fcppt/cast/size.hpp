@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_SIZE_HPP_INCLUDED
 #define FCPPT_CAST_SIZE_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts a type to a similar type of different size
 
@@ -35,51 +32,16 @@ the following cases must hold:
 
 </ul>
 */
-template<
-	typename Dest,
-	typename Source
->
-inline
-constexpr
-Dest
-size(
-	Source const _source
-)
-noexcept
+template <typename Dest, typename Source>
+inline constexpr Dest size(Source const _source) noexcept
 {
-	static_assert(
-		std::is_floating_point<
-			Dest
-		>::value
-		==
-		std::is_floating_point<
-			Source
-		>::value
-		||
-		std::is_signed<
-			Dest
-		>::value
-		==
-		std::is_signed<
-			Source
-		>::value
-		||
-		std::is_unsigned<
-			Dest
-		>::value
-		==
-		std::is_unsigned<
-			Source
-		>::value,
-		"size cast can only convert between types of the same signedness"
-	);
+  static_assert(
+      std::is_floating_point<Dest>::value == std::is_floating_point<Source>::value ||
+          std::is_signed<Dest>::value == std::is_signed<Source>::value ||
+          std::is_unsigned<Dest>::value == std::is_unsigned<Source>::value,
+      "size cast can only convert between types of the same signedness");
 
-	return
-		static_cast<
-			Dest
-		>(
-			_source
-		);
+  return static_cast<Dest>(_source);
 }
 
 }

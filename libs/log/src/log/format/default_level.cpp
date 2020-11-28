@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/level.hpp>
@@ -14,25 +13,9 @@
 #include <fcppt/log/format/prefix_string.hpp>
 #include <fcppt/log/format/suffix_string.hpp>
 
-
-fcppt::log::format::function
-fcppt::log::format::default_level(
-	fcppt::log::level const _level
-)
+fcppt::log::format::function fcppt::log::format::default_level(fcppt::log::level const _level)
 {
-	return
-		fcppt::log::format::inserter(
-			fcppt::log::format::prefix_string{
-				fcppt::log::level_to_string(
-					_level
-				)
-				+
-				FCPPT_TEXT(": ")
-			},
-			fcppt::log::format::suffix_string{
-				fcppt::string{
-					FCPPT_TEXT("\n")
-				}
-			}
-		);
+  return fcppt::log::format::inserter(
+      fcppt::log::format::prefix_string{fcppt::log::level_to_string(_level) + FCPPT_TEXT(": ")},
+      fcppt::log::format::suffix_string{fcppt::string{FCPPT_TEXT("\n")}});
 }

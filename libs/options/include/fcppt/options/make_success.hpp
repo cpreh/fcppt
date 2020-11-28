@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_OPTIONS_MAKE_SUCCESS_HPP_INCLUDED
 #define FCPPT_OPTIONS_MAKE_SUCCESS_HPP_INCLUDED
 
@@ -15,40 +14,19 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace options
 {
-
 /**
 \brief Creates a success value.
 
 \ingroup fcpptoptions
 */
-template<
-	typename Type
->
-inline
-fcppt::options::result<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>
->
-make_success(
-	Type &&_value
-)
+template <typename Type>
+inline fcppt::options::result<fcppt::type_traits::remove_cv_ref_t<Type>> make_success(Type &&_value)
 {
-	return
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
-			std::forward<
-				Type
-			>(
-				_value
-			)
-		);
+  return fcppt::either::make_success<fcppt::options::error>(std::forward<Type>(_value));
 }
 
 }

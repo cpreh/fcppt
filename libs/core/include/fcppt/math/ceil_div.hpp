@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_CEIL_DIV_HPP_INCLUDED
 #define FCPPT_MATH_CEIL_DIV_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
-
 /**
 \brief Calculates dividend / divisor rounded towards infinity.
 
@@ -31,65 +28,17 @@ dividend can not be divided by divisor.
 
 \tparam T An unsigned type.
 */
-template<
-	typename T
->
-fcppt::optional::object<
-	T
->
-ceil_div(
-	T const &_dividend,
-	T const &_divisor
-)
+template <typename T>
+fcppt::optional::object<T> ceil_div(T const &_dividend, T const &_divisor)
 {
-	static_assert(
-		std::is_unsigned<
-			T
-		>::value,
-		"ceil_div can only be used on unsigned types"
-	);
+  static_assert(std::is_unsigned<T>::value, "ceil_div can only be used on unsigned types");
 
-	T const zero{
-		fcppt::literal<
-			T
-		>(
-			0
-		)
-	};
+  T const zero{fcppt::literal<T>(0)};
 
-	return
-		fcppt::optional::make_if(
-			_divisor
-			!=
-			zero,
-			[
-				_dividend,
-				_divisor
-			]{
-				return
-					_dividend
-					/
-					_divisor
-					+
-					(
-						_dividend
-						%
-						_divisor
-						?
-							fcppt::literal<
-								T
-							>(
-								1
-							)
-						:
-							fcppt::literal<
-								T
-							>(
-								0
-							)
-					);
-			}
-		);
+  return fcppt::optional::make_if(_divisor != zero, [_dividend, _divisor] {
+    return _dividend / _divisor +
+           (_dividend % _divisor ? fcppt::literal<T>(1) : fcppt::literal<T>(0));
+  });
 }
 
 }

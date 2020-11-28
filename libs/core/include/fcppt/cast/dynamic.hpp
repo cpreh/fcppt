@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_DYNAMIC_HPP_INCLUDED
 #define FCPPT_CAST_DYNAMIC_HPP_INCLUDED
 
@@ -14,12 +13,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts between references of related types using
 <code>dynamic_cast</code>, returning an empty optional on failure
@@ -40,37 +37,14 @@ Here is an example:
 
 \see #fcppt::cast::dynamic_cross
 */
-template<
-	typename Derived,
-	typename Base
->
-inline
-fcppt::optional::reference<
-	Derived
->
-dynamic(
-	Base &_base
-)
-noexcept
+template <typename Derived, typename Base>
+inline fcppt::optional::reference<Derived> dynamic(Base &_base) noexcept
 {
-	static_assert(
-		fcppt::type_traits::is_base_of<
-			std::remove_cv_t<
-				Base
-			>,
-			std::remove_cv_t<
-				Derived
-			>
-		>::value,
-		"dynamic can only cast from references to base classes to references to derived classes"
-	);
+  static_assert(
+      fcppt::type_traits::is_base_of<std::remove_cv_t<Base>, std::remove_cv_t<Derived>>::value,
+      "dynamic can only cast from references to base classes to references to derived classes");
 
-	return
-		fcppt::cast::detail::dynamic<
-			Derived
-		>(
-			_base
-		);
+  return fcppt::cast::detail::dynamic<Derived>(_base);
 }
 
 }

@@ -3,12 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PREPROCESSOR_TODO_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_TODO_HPP_INCLUDED
 
 #include <fcppt/preprocessor/message.hpp>
-
 
 /**
 \brief Prints a TODO compiler message
@@ -21,11 +19,6 @@ Prints the compiler message <code>"TODO: " message</code>.
 
 \see FCPPT_PP_MESSAGE
 */
-#define FCPPT_PP_TODO(\
-	message\
-)\
-FCPPT_PP_MESSAGE(\
-	"TODO: " message\
-)
+#define FCPPT_PP_TODO(message) FCPPT_PP_MESSAGE("TODO: " message)
 
 #endif

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_PARSE_SKIPPER_IS_VALID_ARGUMENT_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_IS_VALID_ARGUMENT_HPP_INCLUDED
 
@@ -11,27 +10,15 @@
 #include <fcppt/parse/skipper/is_skipper.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
-
 namespace fcppt
 {
 namespace parse
 {
 namespace skipper
 {
-
-template<
-	typename Type
->
-using
-is_valid_argument
-=
-fcppt::parse::skipper::is_skipper<
-	fcppt::parse::deref_type<
-		fcppt::type_traits::remove_cv_ref_t<
-			Type
-		>
-	>
->;
+template <typename Type>
+using is_valid_argument = fcppt::parse::skipper::is_skipper<
+    fcppt::parse::deref_type<fcppt::type_traits::remove_cv_ref_t<Type>>>;
 
 }
 }

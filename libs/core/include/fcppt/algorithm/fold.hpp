@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ALGORITHM_FOLD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FOLD_HPP_INCLUDED
 
@@ -12,12 +11,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace algorithm
 {
-
 /**
 \brief Folds a range into a value.
 
@@ -32,50 +29,14 @@ _function(element, cur_state)</code> for every element of \a _range.
 \tparam Function Must be callable as <code>State (Range::value_type,
 State)</code>.
 **/
-template<
-	typename Range,
-	typename State,
-	typename Function
->
-inline
-State
-fold(
-	Range &&_range,
-	State _state,
-	Function _function
-)
+template <typename Range, typename State, typename Function>
+inline State fold(Range &&_range, State _state, Function _function)
 {
-	fcppt::algorithm::loop(
-		std::forward<
-			Range
-		>(
-			_range
-		),
-		[
-			&_state,
-			&_function
-		](
-			auto &&_fcppt_element
-		)
-		{
-			_state =
-				_function(
-					std::forward<
-						decltype(
-							_fcppt_element
-						)
-					>(
-						_fcppt_element
-					),
-					std::move(
-						_state
-					)
-				);
-		}
-	);
+  fcppt::algorithm::loop(std::forward<Range>(_range), [&_state, &_function](auto &&_fcppt_element) {
+    _state = _function(std::forward<decltype(_fcppt_element)>(_fcppt_element), std::move(_state));
+  });
 
-	return
-		_state;
+  return _state;
 }
 
 }

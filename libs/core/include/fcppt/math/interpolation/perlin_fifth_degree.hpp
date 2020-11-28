@@ -4,7 +4,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_MATH_INTERPOLATION_PERLIN_FIFTH_DEGREE_HPP_INCLUDED
 #define FCPPT_MATH_INTERPOLATION_PERLIN_FIFTH_DEGREE_HPP_INCLUDED
 
@@ -14,14 +13,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace math
 {
 namespace interpolation
 {
-
 /**
 \brief Interpolates between two values using perlin fifth degree
 
@@ -31,38 +28,27 @@ namespace interpolation
 
 \tparam Value Must support scalar multiplication with \a Float and addition
 */
-template<
-	typename Float,
-	typename Value
->
-Value
-perlin_fifth_degree(
-	Float const &_f,
-	Value const &_v1,
-	Value const &_v2
-)
+template <typename Float, typename Value>
+Value perlin_fifth_degree(Float const &_f, Value const &_v1, Value const &_v2)
 {
-	static_assert(
-		std::is_floating_point_v<
-			Float
-		>,
-		"perlin_fifth_degree can only be used on floating point types"
-	);
+  static_assert(
+      std::is_floating_point_v<Float>,
+      "perlin_fifth_degree can only be used on floating point types");
 
-	return
-		fcppt::math::interpolation::linear(
-			_f * _f * _f * (
-				_f *
-				(
-					fcppt::literal<Float>(6.0) * _f // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					-
-					fcppt::literal<Float>(15.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				)
-				+ fcppt::literal<Float>(10.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			),
-			_v1,
-			_v2
-		);
+  return fcppt::math::interpolation::linear(
+      _f * _f * _f *
+          (_f *
+               (fcppt::literal<Float>(6.0) *
+                    _f // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+                -
+                fcppt::literal<Float>(
+                    15.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+                ) +
+           fcppt::literal<Float>(
+               10.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+           ),
+      _v1,
+      _v2);
 }
 
 }
@@ -70,4 +56,3 @@ perlin_fifth_degree(
 }
 
 #endif
-

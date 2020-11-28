@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_RUNTIME_INDEX_HPP_INCLUDED
 #define FCPPT_RUNTIME_INDEX_HPP_INCLUDED
 
@@ -12,10 +11,8 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
-
 /**
 \brief Transforms a runtime index into a an integral constant.
 
@@ -34,42 +31,14 @@ every N of type \a Index, where R is the result type.
 
 \tparam FailFunction A function callable as <code> R()</code>, where R is the result type.
 */
-template<
-	typename MaxIndex,
-	typename Index,
-	typename Function,
-	typename FailFunction
->
-inline
-decltype(
-	auto
-)
-runtime_index(
-	Index const _index,
-	Function const &_function,
-	FailFunction const &_fail_function
-)
+template <typename MaxIndex, typename Index, typename Function, typename FailFunction>
+inline decltype(auto)
+runtime_index(Index const _index, Function const &_function, FailFunction const &_fail_function)
 {
-	static_assert(
-		std::is_unsigned_v<
-			Index
-		>,
-		"runtime_index can only be used with unsigned indices"
-	);
+  static_assert(std::is_unsigned_v<Index>, "runtime_index can only be used with unsigned indices");
 
-	return
-		fcppt::detail::runtime_index<
-			MaxIndex,
-			std::integral_constant<
-				Index,
-				0
-			>
-		>::execute(
-			_index,
-			_function,
-			_fail_function
-		);
-
+  return fcppt::detail::runtime_index<MaxIndex, std::integral_constant<Index, 0>>::execute(
+      _index, _function, _fail_function);
 }
 
 }

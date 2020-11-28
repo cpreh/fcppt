@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_CAST_TO_SIGNED_HPP_INCLUDED
 #define FCPPT_CAST_TO_SIGNED_HPP_INCLUDED
 
@@ -11,12 +10,10 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace fcppt
 {
 namespace cast
 {
-
 /**
 \brief Converts an unsigned int to its signed type
 
@@ -27,34 +24,12 @@ used if \a _value fits into the result.
 
 \tparam Type Must be an unsigned type
 */
-template<
-	typename Type
->
-inline
-constexpr
-std::make_signed_t<
-	Type
->
-to_signed(
-	Type const _value
-)
-noexcept
+template <typename Type>
+inline constexpr std::make_signed_t<Type> to_signed(Type const _value) noexcept
 {
-	static_assert(
-		std::is_unsigned<
-			Type
-		>::value,
-		"to_signed can only cast from unsigned types"
-	);
+  static_assert(std::is_unsigned<Type>::value, "to_signed can only cast from unsigned types");
 
-	return
-		static_cast<
-			std::make_signed_t<
-				Type
-			>
-		>(
-			_value
-		);
+  return static_cast<std::make_signed_t<Type>>(_value);
 }
 
 }

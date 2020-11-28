@@ -3,16 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #ifndef FCPPT_ITERATOR_TYPES_HPP_INCLUDED
 #define FCPPT_ITERATOR_TYPES_HPP_INCLUDED
-
 
 namespace fcppt
 {
 namespace iterator
 {
-
 /**
 \brief The types passed to #fcppt::iterator::base.
 
@@ -34,39 +31,23 @@ distance between two iterators.
 \tparam IteratorCategory The category of the iterator. Must be one of the
 <code>std::</code> iterator category classes.
 */
-template<
-	typename Derived,
-	typename ValueType,
-	typename Reference,
-	typename DifferenceType,
-	typename IteratorCategory
->
+template <
+    typename Derived,
+    typename ValueType,
+    typename Reference,
+    typename DifferenceType,
+    typename IteratorCategory>
 struct types
 {
-	using
-	derived
-	=
-	Derived;
+  using derived = Derived;
 
-	using
-	value_type
-	=
-	ValueType;
+  using value_type = ValueType;
 
-	using
-	reference
-	=
-	Reference;
+  using reference = Reference;
 
-	using
-	difference_type
-	=
-	DifferenceType;
+  using difference_type = DifferenceType;
 
-	using
-	iterator_category
-	=
-	IteratorCategory;
+  using iterator_category = IteratorCategory;
 };
 
 }
