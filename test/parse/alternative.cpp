@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
@@ -25,136 +24,39 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::alternative",
-	"[parse]"
-)
+TEST_CASE("parse::alternative", "[parse]")
 {
-	auto const parser(
-		fcppt::parse::int_<int>{}
-		|
-		fcppt::parse::literal{'X'}
-		|
-		fcppt::parse::char_{}
-	);
+  auto const parser(fcppt::parse::int_<int>{} | fcppt::parse::literal{'X'} | fcppt::parse::char_{});
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"42"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				42
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"42"}) ==
+      fcppt::parse::make_success<char>(result_type{42}));
 }
 
-
-TEST_CASE(
-	"parse::alternative backtrack",
-	"[parse]"
-)
+TEST_CASE("parse::alternative backtrack", "[parse]")
 {
-	auto const parser(
-		fcppt::parse::literal{'X'}
-		|
-		fcppt::parse::char_{}
-	);
+  auto const parser(fcppt::parse::literal{'X'} | fcppt::parse::char_{});
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"X"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				fcppt::unit()
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"X"}) ==
+      fcppt::parse::make_success<char>(result_type{fcppt::unit()}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"Y"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				'Y'
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"Y"}) ==
+      fcppt::parse::make_success<char>(result_type{'Y'}));
 }
 
-TEST_CASE(
-	"parse::alternative fatal",
-	"[parse]"
-)
+TEST_CASE("parse::alternative fatal", "[parse]")
 {
-	auto const parser(
-		fcppt::parse::make_fatal(
-			fcppt::parse::literal{'X'}
-		)
-		|
-		fcppt::parse::char_{}
-	);
+  auto const parser(fcppt::parse::make_fatal(fcppt::parse::literal{'X'}) | fcppt::parse::char_{});
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"Y"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());
 }

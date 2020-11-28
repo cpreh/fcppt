@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/filter.hpp>
 #include <fcppt/optional/object.hpp>
@@ -12,106 +11,27 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::filter",
-	"[optional]"
-)
+TEST_CASE("optional::filter", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	auto const function(
-		[](
-			int const _value
-		)
-		{
-			return
-				_value
-				==
-				1;
-		}
-	);
+  auto const function([](int const _value) { return _value == 1; });
 
-	CHECK(
-		fcppt::optional::filter(
-			optional_int(
-				1
-			),
-			function
-		)
-		==
-		optional_int{
-			1
-		}
-	);
+  CHECK(fcppt::optional::filter(optional_int(1), function) == optional_int{1});
 
-	CHECK(
-		fcppt::optional::filter(
-			optional_int(
-				2
-			),
-			function
-		)
-		==
-		optional_int{}
-	);
+  CHECK(fcppt::optional::filter(optional_int(2), function) == optional_int{});
 
-	CHECK(
-		fcppt::optional::filter(
-			optional_int(),
-			function
-		)
-		==
-		optional_int{}
-	);
+  CHECK(fcppt::optional::filter(optional_int(), function) == optional_int{});
 }
 
-TEST_CASE(
-	"optional::filter move",
-	"[optional]"
-)
+TEST_CASE("optional::filter move", "[optional]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	optional_int_movable
-	=
-	fcppt::optional::object<
-		int_movable
-	>;
+  using optional_int_movable = fcppt::optional::object<int_movable>;
 
-	CHECK(
-		fcppt::optional::filter(
-			optional_int_movable(
-				int_movable{
-					42
-				}
-			),
-			[](
-				int_movable const &_value
-			)
-			{
-				return
-					_value.value()
-					==
-					42;
-			}
-		)
-		==
-		optional_int_movable{
-			int_movable{
-				42
-			}
-		}
-	);
+  CHECK(
+      fcppt::optional::filter(optional_int_movable(int_movable{42}), [](int_movable const &_value) {
+        return _value.value() == 42;
+      }) == optional_int_movable{int_movable{42}});
 }

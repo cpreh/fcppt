@@ -3,29 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/metal/function_args.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::metal::function_args<
-				void(
-					int,
-					bool
-				)
-			>,
-			::metal::list<
-				int,
-				bool
-			>
-		>
-	);
+  static_assert(
+      std::is_same_v<fcppt::metal::function_args<void(int, bool)>, ::metal::list<int, bool>>);
 }

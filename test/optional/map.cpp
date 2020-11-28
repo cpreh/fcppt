@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_comparison.hpp>
@@ -21,124 +20,45 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::map",
-	"[optional]"
-)
+TEST_CASE("optional::map", "[optional]")
 {
-	using
-	optional_size
-	=
-	fcppt::optional::object<
-		std::string::size_type
-	>;
+  using optional_size = fcppt::optional::object<std::string::size_type>;
 
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+  using optional_string = fcppt::optional::object<std::string>;
 
-	auto const conversion(
-		[](
-			std::string const &_val
-		)
-		{
-			return
-				_val.size();
-		}
-	);
+  auto const conversion([](std::string const &_val) { return _val.size(); });
 
-	CHECK(
-		fcppt::optional::map(
-			optional_string(),
-			conversion
-		)
-		==
-		optional_size()
-	);
+  CHECK(fcppt::optional::map(optional_string(), conversion) == optional_size());
 
-	CHECK(
-		fcppt::optional::map(
-			optional_string(
-				"test"
-			),
-			conversion
-		)
-		==
-		optional_size(
-			4U
-		)
-	);
+  CHECK(fcppt::optional::map(optional_string("test"), conversion) == optional_size(4U));
 }
 
 namespace
 {
-
 class noncopyable
 {
-	FCPPT_NONMOVABLE(
-		noncopyable
-	);
+  FCPPT_NONMOVABLE(noncopyable);
+
 public:
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
+  noncopyable() = default;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
-	noncopyable()
-	= default;
-
-	~noncopyable()
-	= default;
-FCPPT_PP_POP_WARNING
+  ~noncopyable() = default;
+  FCPPT_PP_POP_WARNING
 };
 
 }
 
-TEST_CASE(
-	"optional::map ref",
-	"[optional]"
-)
+TEST_CASE("optional::map ref", "[optional]")
 {
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+  using optional_string = fcppt::optional::object<std::string>;
 
-	noncopyable test{};
+  noncopyable test{};
 
-	using
-	optional_noncopyable_ref
-	=
-	fcppt::optional::reference<
-		noncopyable
-	>;
+  using optional_noncopyable_ref = fcppt::optional::reference<noncopyable>;
 
-	CHECK(
-		fcppt::optional::map(
-			optional_string(
-				"42"
-			),
-			[
-				&test
-			](
-				std::string const &
-			)
-			{
-				return
-					fcppt::make_ref(
-						test
-					);
-			}
-		)
-		==
-		optional_noncopyable_ref{
-			fcppt::make_ref(
-				test
-			)
-		}
-	);
+  CHECK(fcppt::optional::map(optional_string("42"), [&test](std::string const &) {
+          return fcppt::make_ref(test);
+        }) == optional_noncopyable_ref{fcppt::make_ref(test)});
 }

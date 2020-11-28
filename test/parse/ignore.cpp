@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -19,37 +18,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::ignore",
-	"[parse]"
-)
+TEST_CASE("parse::ignore", "[parse]")
 {
-	auto const parser{
-		fcppt::parse::make_ignore(
-			fcppt::parse::char_{}
-		)
-	};
+  auto const parser{fcppt::parse::make_ignore(fcppt::parse::char_{})};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"X"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			fcppt::unit{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"X"}) ==
+      fcppt::parse::make_success<char>(fcppt::unit{}));
 }

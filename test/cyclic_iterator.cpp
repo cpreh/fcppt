@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -12,134 +11,59 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"cyclic_iterator array",
-	"[cyclic_iterator]"
-)
+TEST_CASE("cyclic_iterator array", "[cyclic_iterator]")
 {
-	using
-	int3_array
-	=
-	std::array<
-		int,
-		3
-	>;
+  using int3_array = std::array<int, 3>;
 
-	int3_array const array{{
-		1,
-		2,
-		3
-	}};
+  int3_array const array{{1, 2, 3}};
 
-	using
-	iterator
-	=
-	fcppt::cyclic_iterator<
-		int3_array::const_iterator
-	>;
+  using iterator = fcppt::cyclic_iterator<int3_array::const_iterator>;
 
-	iterator const start(
-		array.begin(),
-		iterator::boundary{
-			array.begin(),
-			array.end()
-		}
-	);
+  iterator const start(array.begin(), iterator::boundary{array.begin(), array.end()});
 
-	iterator test(
-		start
-	);
+  iterator test(start);
 
-	REQUIRE(
-		*test
-		==
-		1
-	);
+  REQUIRE(*test == 1);
 
-	++test;
+  ++test;
 
-	REQUIRE(
-		*test
-		==
-		2
-	);
+  REQUIRE(*test == 2);
 
-	++test;
+  ++test;
 
-	REQUIRE(
-		*test
-		==
-		3
-	);
+  REQUIRE(*test == 3);
 
-	++test;
+  ++test;
 
-	REQUIRE(
-		*test
-		==
-		1
-	);
+  REQUIRE(*test == 1);
 
-	REQUIRE(
-		test.get()
-		==
-		array.begin()
-	);
+  REQUIRE(test.get() == array.begin());
 
-	--test;
+  --test;
 
-	REQUIRE(
-		*test
-		==
-		3
-	);
+  REQUIRE(*test == 3);
 
-	REQUIRE(
-		test.get()
-		==
-		std::prev( // NOLINT(fuchsia-default-arguments-calls)
-			array.end()
-		)
-	);
+  REQUIRE(
+      test.get() == std::prev( // NOLINT(fuchsia-default-arguments-calls)
+                        array.end()));
 
-	--test;
+  --test;
 
-	REQUIRE(
-		*test
-		==
-		2
-	);
+  REQUIRE(*test == 2);
 
-	test += 2;
+  test += 2;
 
-	REQUIRE(
-		*test
-		==
-		1
-	);
+  REQUIRE(*test == 1);
 
-	test -= 1;
+  test -= 1;
 
-	REQUIRE(
-		*test
-		==
-		3
-	);
+  REQUIRE(*test == 3);
 
-	test -= 300;
+  test -= 300;
 
-	REQUIRE(
-		*test
-		==
-		3
-	);
+  REQUIRE(*test == 3);
 
-	++test;
+  ++test;
 
-	REQUIRE(
-		test
-		==
-		start
-	);
+  REQUIRE(test == start);
 }

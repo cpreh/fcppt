@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/container/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -12,59 +11,27 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::output",
-	"[container]"
-)
+TEST_CASE("container::output", "[container]")
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	int_vector const input{
-		1,
-		2
-	};
+  int_vector const input{1, 2};
 
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::ostringstream stream{};
+  {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    std::ostringstream stream{};
 
-		stream
-			<<
-			fcppt::container::output(
-				input
-			);
+    stream << fcppt::container::output(input);
 
-		CHECK(
-			stream.str()
-			==
-			std::string(
-				"[1,2]"
-			)
-		);
-	}
+    CHECK(stream.str() == std::string("[1,2]"));
+  }
 
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::wostringstream stream{};
+  {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    std::wostringstream stream{};
 
-		stream
-			<<
-			fcppt::container::output(
-				input
-			);
+    stream << fcppt::container::output(input);
 
-		CHECK(
-			stream.str()
-			==
-			std::wstring(
-				L"[1,2]"
-			)
-		);
-	}
+    CHECK(stream.str() == std::wstring(L"[1,2]"));
+  }
 }

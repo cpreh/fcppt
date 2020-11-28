@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/algorithm/map_optional.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
@@ -13,75 +12,18 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm map_optional",
-	"[algorithm_map_optional]",
-)
+TEST_CASE("algorithm map_optional", "[algorithm_map_optional]", )
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	int_movable_vector
-	=
-	std::vector<
-		int_movable
-	>;
+  using int_movable_vector = std::vector<int_movable>;
 
-	CHECK(
-		fcppt::algorithm::map_optional<
-			int_movable_vector
-		>(
-			int_vector{
-				1,
-				2,
-				3
-			},
-			[](
-				int const _value
-			)
-			{
-				using
-				optional_int_movable
-				=
-				fcppt::optional::object<
-					int_movable
-				>;
+  CHECK(
+      fcppt::algorithm::map_optional<int_movable_vector>(int_vector{1, 2, 3}, [](int const _value) {
+        using optional_int_movable = fcppt::optional::object<int_movable>;
 
-				return
-					_value
-					==
-					1
-					?
-						optional_int_movable{
-							int_movable{
-								_value
-							}
-						}
-					:
-						optional_int_movable{}
-					;
-			}
-		)
-		==
-		fcppt::container::make<
-			int_movable_vector
-		>(
-			int_movable{
-				1
-			}
-		)
-	);
+        return _value == 1 ? optional_int_movable{int_movable{_value}} : optional_int_movable{};
+      }) == fcppt::container::make<int_movable_vector>(int_movable{1}));
 }

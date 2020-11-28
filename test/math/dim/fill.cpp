@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/fill.hpp>
 #include <fcppt/math/dim/output.hpp>
@@ -12,30 +11,9 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::dim::fill",
-	"[math],[dim]"
-)
+TEST_CASE("math::dim::fill", "[math],[dim]")
 {
-	using
-	ui2_dim
-	=
-	fcppt::math::dim::static_<
-		unsigned,
-		2
-	>;
+  using ui2_dim = fcppt::math::dim::static_<unsigned, 2>;
 
-	CHECK(
-		ui2_dim(
-			42U,
-			42U
-		)
-		==
-		fcppt::math::dim::fill<
-			ui2_dim
-		>(
-			42U
-		)
-	);
+  CHECK(ui2_dim(42U, 42U) == fcppt::math::dim::fill<ui2_dim>(42U));
 }

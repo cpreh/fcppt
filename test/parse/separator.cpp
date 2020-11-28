@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
@@ -26,151 +25,49 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::separator",
-	"[parse]"
-)
+TEST_CASE("parse::separator", "[parse]")
 {
-	fcppt::parse::separator const parser{
-		+~fcppt::parse::char_set{','},
-		fcppt::parse::literal{','}
-	};
+  fcppt::parse::separator const parser{+~fcppt::parse::char_set{','}, fcppt::parse::literal{','}};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{}) ==
+      fcppt::parse::make_success<char>(result_type{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{"test"}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				std::string{"test"}
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"test"}) ==
+      fcppt::parse::make_success<char>(result_type{std::string{"test"}}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{"test1,test2,test3"}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				std::string{"test1"},
-				std::string{"test2"},
-				std::string{"test3"}
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"test1,test2,test3"}) ==
+      fcppt::parse::make_success<char>(
+          result_type{std::string{"test1"}, std::string{"test2"}, std::string{"test3"}}));
 }
 
-TEST_CASE(
-	"parse::separator sequence",
-	"[parse]"
-)
+TEST_CASE("parse::separator sequence", "[parse]")
 {
-	fcppt::parse::separator const parser{
-		+~fcppt::parse::char_set{',','='}
-		>>
-		fcppt::parse::literal{'='}
-		>>
-		fcppt::parse::int_<int>{}
-		,
-		fcppt::parse::literal{','}
-	};
+  fcppt::parse::separator const parser{
+      +~fcppt::parse::char_set{',', '='} >> fcppt::parse::literal{'='} >> fcppt::parse::int_<int>{},
+      fcppt::parse::literal{','}};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{"X=1,Y=2"}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				std::make_tuple(
-					std::string{"X"},
-					1
-				),
-				std::make_tuple(
-					std::string{"Y"},
-					2
-				)
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"X=1,Y=2"}) ==
+      fcppt::parse::make_success<char>(
+          result_type{std::make_tuple(std::string{"X"}, 1), std::make_tuple(std::string{"Y"}, 2)}));
 }
 
-TEST_CASE(
-	"parse::separator wchar",
-	"[parse]"
-)
+TEST_CASE("parse::separator wchar", "[parse]")
 {
-	fcppt::parse::separator const parser{
-		+~fcppt::parse::basic_char_set<wchar_t>{L','},
-		fcppt::parse::basic_literal<wchar_t>{L','}
-	};
+  fcppt::parse::separator const parser{
+      +~fcppt::parse::basic_char_set<wchar_t>{L','}, fcppt::parse::basic_literal<wchar_t>{L','}};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::wstring{L"test1,test2"}
-		)
-		==
-		fcppt::parse::make_success<
-			wchar_t
-		>(
-			result_type{
-				std::wstring{L"test1"},
-				std::wstring{L"test2"}
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::wstring{L"test1,test2"}) ==
+      fcppt::parse::make_success<wchar_t>(
+          result_type{std::wstring{L"test1"}, std::wstring{L"test2"}}));
 }

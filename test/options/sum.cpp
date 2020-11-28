@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
@@ -30,119 +29,35 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"options::sum",
-	"[options]"
-)
+TEST_CASE("options::sum", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		label
-	);
+  FCPPT_RECORD_MAKE_LABEL(label);
 
-	FCPPT_RECORD_MAKE_LABEL(
-		unit_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(unit_label);
 
-	using
-	unit_parser
-	=
-	fcppt::options::unit_switch<
-		unit_label
-	>;
+  using unit_parser = fcppt::options::unit_switch<unit_label>;
 
-	auto const sum(
-		fcppt::options::make_sum<
-			label
-		>(
-			unit_parser{
-				fcppt::options::optional_short_name{},
-				fcppt::options::long_name{
-					FCPPT_TEXT("left")
-				}
-			},
-			unit_parser{
-				fcppt::options::optional_short_name{},
-				fcppt::options::long_name{
-					FCPPT_TEXT("right")
-				}
-			}
-		)
-	);
+  auto const sum(fcppt::options::make_sum<label>(
+      unit_parser{
+          fcppt::options::optional_short_name{}, fcppt::options::long_name{FCPPT_TEXT("left")}},
+      unit_parser{
+          fcppt::options::optional_short_name{}, fcppt::options::long_name{FCPPT_TEXT("right")}}));
 
-	using
-	parser_type
-	=
-	decltype(
-		sum
-	);
+  using parser_type = decltype(sum);
 
-	CHECK(
-		fcppt::options::parse(
-			sum,
-			fcppt::args_vector{
-				FCPPT_TEXT("--left")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			fcppt::options::result_of<
-				parser_type
-			>{
-				label{} =
-					parser_type::variant{
-						fcppt::options::make_left(
-							fcppt::options::result_of<
-								parser_type::left
-							>(
-								fcppt::options::result_of<
-									unit_parser
-								>{
-									unit_label{} =
-										fcppt::unit{}
-								}
-							)
-						)
-					}
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(sum, fcppt::args_vector{FCPPT_TEXT("--left")}) ==
+      fcppt::options::make_success(fcppt::options::result_of<parser_type>{
+          label{} = parser_type::variant{
+              fcppt::options::make_left(fcppt::options::result_of<parser_type::left>(
+                  fcppt::options::result_of<unit_parser>{unit_label{} = fcppt::unit{}}))}}));
 
-	CHECK(
-		fcppt::options::parse(
-			sum,
-			fcppt::args_vector{
-				FCPPT_TEXT("--right")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			fcppt::options::result_of<
-				parser_type
-			>{
-				label{} =
-					parser_type::variant{
-						fcppt::options::make_right(
-							fcppt::options::result_of<
-								parser_type::right
-							>(
-								fcppt::options::result_of<
-									unit_parser
-								>{
-									unit_label{} =
-										fcppt::unit{}
-								}
-							)
-						)
-					}
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(sum, fcppt::args_vector{FCPPT_TEXT("--right")}) ==
+      fcppt::options::make_success(fcppt::options::result_of<parser_type>{
+          label{} = parser_type::variant{
+              fcppt::options::make_right(fcppt::options::result_of<parser_type::right>(
+                  fcppt::options::result_of<unit_parser>{unit_label{} = fcppt::unit{}}))}}));
 
-	CHECK(
-		fcppt::options::parse(
-			sum,
-			fcppt::args_vector{}
-		).has_failure()
-	);
+  CHECK(fcppt::options::parse(sum, fcppt::args_vector{}).has_failure());
 }

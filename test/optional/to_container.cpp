@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -13,100 +12,28 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::to_container",
-	"[optional]"
-)
+TEST_CASE("optional::to_container", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	CHECK(
-		fcppt::optional::to_container<
-			int_vector
-		>(
-			optional_int{
-				42
-			}
-		)
-		==
-		int_vector{
-			42
-		}
-	);
+  CHECK(fcppt::optional::to_container<int_vector>(optional_int{42}) == int_vector{42});
 
-	CHECK(
-		fcppt::optional::to_container<
-			int_vector
-		>(
-			optional_int{}
-		).empty()
-	);
+  CHECK(fcppt::optional::to_container<int_vector>(optional_int{}).empty());
 }
 
-TEST_CASE(
-	"optional::to_container move",
-	"[optional]"
-)
+TEST_CASE("optional::to_container move", "[optional]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	optional_int_movable
-	=
-	fcppt::optional::object<
-		int_movable
-	>;
+  using optional_int_movable = fcppt::optional::object<int_movable>;
 
-	using
-	int_movable_vector
-	=
-	std::vector<
-		int_movable
-	>;
+  using int_movable_vector = std::vector<int_movable>;
 
-	CHECK(
-		fcppt::optional::to_container<
-			int_movable_vector
-		>(
-			optional_int_movable{
-				int_movable{
-					42
-				}
-			}
-		)
-		==
-		fcppt::container::make<
-			int_movable_vector
-		>(
-			int_movable{
-				42
-			}
-		)
-	);
+  CHECK(
+      fcppt::optional::to_container<int_movable_vector>(optional_int_movable{int_movable{42}}) ==
+      fcppt::container::make<int_movable_vector>(int_movable{42}));
 
-	CHECK(
-		fcppt::optional::to_container<
-			int_movable_vector
-		>(
-			optional_int_movable{}
-		).empty()
-	);
+  CHECK(fcppt::optional::to_container<int_movable_vector>(optional_int_movable{}).empty());
 }

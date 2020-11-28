@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
@@ -23,139 +22,43 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::uint",
-	"[parse]"
-)
+TEST_CASE("parse::uint", "[parse]")
 {
-	fcppt::parse::uint<
-		unsigned
-	> const parser{};
+  fcppt::parse::uint<unsigned> const parser{};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"X"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"X"}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				" 42"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{" 42"}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"42"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			42U
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"42"}) ==
+      fcppt::parse::make_success<char>(42U));
 }
 
-TEST_CASE(
-	"parse::uint sequence",
-	"[parse]"
-)
+TEST_CASE("parse::uint sequence", "[parse]")
 {
-	auto const parser(
-		fcppt::parse::uint<
-			unsigned
-		>{}
-		>>
-		fcppt::parse::literal{
-			','
-		}
-		>>
-		fcppt::parse::uint<
-			unsigned
-		>{}
-	);
+  auto const parser(
+      fcppt::parse::uint<unsigned>{} >> fcppt::parse::literal{','} >>
+      fcppt::parse::uint<unsigned>{});
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::phrase_parse_string(
-			parser,
-			std::string{
-				"12, 3"
-			},
-			fcppt::parse::skipper::space()
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			std::make_tuple(
-				12U,
-				3U
-			)
-		)
-	);
+  CHECK(
+      fcppt::parse::phrase_parse_string(
+          parser, std::string{"12, 3"}, fcppt::parse::skipper::space()) ==
+      fcppt::parse::make_success<char>(std::make_tuple(12U, 3U)));
 }
 
-TEST_CASE(
-	"parse::uint vector",
-	"[parse]"
-)
+TEST_CASE("parse::uint vector", "[parse]")
 {
-	auto const parser{
-		*fcppt::parse::uint<
-			unsigned
-		>{}
-	};
+  auto const parser{*fcppt::parse::uint<unsigned>{}};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::phrase_parse_string(
-			parser,
-			std::string{
-				"10 20"
-			},
-			fcppt::parse::skipper::space()
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				10U,
-				20U
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::phrase_parse_string(
+          parser, std::string{"10 20"}, fcppt::parse::skipper::space()) ==
+      fcppt::parse::make_success<char>(result_type{10U, 20U}));
 }

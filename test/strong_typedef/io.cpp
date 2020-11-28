@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
@@ -21,78 +20,41 @@
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
-FCPPT_MAKE_STRONG_TYPEDEF(
-	int,
-	strong_int
-);
+FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
 }
 
-TEST_CASE(
-	"strong_typedef output",
-	"[strongtypedef]"
-)
+TEST_CASE("strong_typedef output", "[strongtypedef]")
 {
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	std::stringstream stream{};
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  std::stringstream stream{};
 
-	strong_int const test(
-		1
-	);
+  strong_int const test(1);
 
-	stream << test;
+  stream << test;
 
-	strong_int result(
-		0
-	);
+  strong_int result(0);
 
-	REQUIRE(
-		stream >> result
-	);
+  REQUIRE(stream >> result);
 
-	CHECK(
-		test
-		==
-		result
-	);
+  CHECK(test == result);
 }
 
-TEST_CASE(
-	"strong_typedef input",
-	"[strongtypedef]"
-)
+TEST_CASE("strong_typedef input", "[strongtypedef]")
 {
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	std::stringstream stream{};
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  std::stringstream stream{};
 
-	stream << 1;
+  stream << 1;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
-	fcppt::optional::object<
-		strong_int
-	> const result2{
-		fcppt::io::extract<
-			strong_int
-		>(
-			stream
-		)
-	};
+  fcppt::optional::object<strong_int> const result2{fcppt::io::extract<strong_int>(stream)};
 
-FCPPT_PP_POP_WARNING
+  FCPPT_PP_POP_WARNING
 
-	CHECK(
-		fcppt::optional::make(
-			strong_int{
-				1
-			}
-		)
-		==
-		result2
-	);
+  CHECK(fcppt::optional::make(strong_int{1}) == result2);
 }

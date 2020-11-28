@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/function.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
@@ -11,93 +10,24 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
+template class fcppt::function<int(int)>;
 
-template
-class
-fcppt::function<
-	int (
-		int
-	)
->;
-
-TEST_CASE(
-	"function",
-	"[various]"
-)
+TEST_CASE("function", "[various]")
 {
-	using
-	function_type
-	=
-	fcppt::function<
-		int (
-			int
-		)
-	>;
+  using function_type = fcppt::function<int(int)>;
 
-	function_type const fun{
-		[](
-			int const _val
-		)
-		{
-			return
-				_val
-				+
-				10;
-		}
-	};
+  function_type const fun{[](int const _val) { return _val + 10; }};
 
-	CHECK(
-		fun(
-			5
-		)
-		==
-		15
-	);
+  CHECK(fun(5) == 15);
 }
 
-
-TEST_CASE(
-	"function move",
-	"[various]"
-)
+TEST_CASE("function move", "[various]")
 {
-	using
-	int_unique_ptr
-	=
-	fcppt::unique_ptr<
-		int
-	>;
+  using int_unique_ptr = fcppt::unique_ptr<int>;
 
-	using
-	function_type
-	=
-	fcppt::function<
-		int (
-			int_unique_ptr &&
-		)
-	>;
+  using function_type = fcppt::function<int(int_unique_ptr &&)>;
 
-	function_type const fun{
-		[](
-			int_unique_ptr &&_val
-		)
-		{
-			return
-				*_val
-				+
-				10;
-		}
-	};
+  function_type const fun{[](int_unique_ptr &&_val) { return *_val + 10; }};
 
-	CHECK(
-		fun(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				5
-			)
-		)
-		==
-		15
-	);
+  CHECK(fun(fcppt::make_unique_ptr<int>(5)) == 15);
 }

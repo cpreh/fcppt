@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/algorithm/index_of.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -13,59 +12,16 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm find_opt"
-	"[algorithm_find_opt]"
-)
+TEST_CASE("algorithm find_opt"
+          "[algorithm_find_opt]")
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	int_vector const vec{
-		1,
-		2,
-		3
-	};
+  int_vector const vec{1, 2, 3};
 
-	CHECK(
-		fcppt::algorithm::index_of(
-			vec,
-			2
-		)
-		==
-		fcppt::optional::make(
-			int_vector::size_type{
-				1U
-			}
-		)
-	);
+  CHECK(fcppt::algorithm::index_of(vec, 2) == fcppt::optional::make(int_vector::size_type{1U}));
 
-	CHECK(
-		fcppt::algorithm::index_of(
-			vec,
-			3
-		)
-		==
-		fcppt::optional::make(
-			int_vector::size_type{
-				2U
-			}
-		)
-	);
+  CHECK(fcppt::algorithm::index_of(vec, 3) == fcppt::optional::make(int_vector::size_type{2U}));
 
-	CHECK(
-		fcppt::algorithm::index_of(
-			vec,
-			4
-		)
-		==
-		fcppt::optional::object<
-			int_vector::size_type
-		>{}
-	);
+  CHECK(fcppt::algorithm::index_of(vec, 4) == fcppt::optional::object<int_vector::size_type>{});
 }

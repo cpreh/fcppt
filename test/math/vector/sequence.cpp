@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/sequence.hpp>
@@ -15,64 +14,19 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::vector::sequence",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::sequence", "[math],[vector]")
 {
-	using
-	ui2_vector
-	=
-	fcppt::math::vector::static_<
-		unsigned,
-		2
-	>;
+  using ui2_vector = fcppt::math::vector::static_<unsigned, 2>;
 
-	using
-	ui2_vector_opt
-	=
-	fcppt::math::vector::static_<
-		fcppt::optional::object<
-			unsigned
-		>,
-		2
-	>;
+  using ui2_vector_opt = fcppt::math::vector::static_<fcppt::optional::object<unsigned>, 2>;
 
-	CHECK(
-		fcppt::math::vector::sequence(
-			ui2_vector_opt{
-				fcppt::optional::make(
-					10U
-				),
-				fcppt::optional::make(
-					20U
-				)
-			}
-		)
-		==
-		fcppt::optional::make(
-			ui2_vector{
-				10U,
-				20U
-			}
-		)
-	);
+  CHECK(
+      fcppt::math::vector::sequence(
+          ui2_vector_opt{fcppt::optional::make(10U), fcppt::optional::make(20U)}) ==
+      fcppt::optional::make(ui2_vector{10U, 20U}));
 
-	CHECK(
-		fcppt::math::vector::sequence(
-			ui2_vector_opt{
-				fcppt::optional::object<
-					unsigned
-				>{},
-				fcppt::optional::make(
-					20U
-				)
-			}
-		)
-		==
-		fcppt::optional::object<
-			ui2_vector
-		>{}
-	);
+  CHECK(
+      fcppt::math::vector::sequence(
+          ui2_vector_opt{fcppt::optional::object<unsigned>{}, fcppt::optional::make(20U)}) ==
+      fcppt::optional::object<ui2_vector>{});
 }

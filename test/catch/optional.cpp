@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/optional.hpp>
@@ -12,30 +11,9 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"catch::optional",
-	"[catch]"
-)
+TEST_CASE("catch::optional", "[catch]")
 {
-	using
-	optional
-	=
-	fcppt::optional::object<
-		fcppt::string
-	>;
+  using optional = fcppt::optional::object<fcppt::string>;
 
-	CHECK(
-		optional{
-			fcppt::string{
-				FCPPT_TEXT("test")
-			}
-		}
-		==
-		optional{
-			fcppt::string{
-				FCPPT_TEXT("test")
-			}
-		}
-	);
+  CHECK(optional{fcppt::string{FCPPT_TEXT("test")}} == optional{fcppt::string{FCPPT_TEXT("test")}});
 }

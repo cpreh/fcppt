@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/monad/inner_type.hpp>
 #include <fcppt/optional/monad.hpp>
 #include <fcppt/optional/object_fwd.hpp>
@@ -11,18 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::monad::inner_type<
-				fcppt::optional::object<
-					int
-				>
-			>,
-			int
-		>
-	);
+  static_assert(std::is_same_v<fcppt::monad::inner_type<fcppt::optional::object<int>>, int>);
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/const.hpp>
 #include <fcppt/literal.hpp>
 #include <fcppt/math/diff.hpp>
@@ -24,216 +23,67 @@
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+using real = float;
 
-using
-real
-=
-float;
-
-real const epsilon{
-	std::numeric_limits<
-		real
-	>::epsilon()
-};
+real const epsilon{std::numeric_limits<real>::epsilon()};
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 
-real const half_pi{
-	fcppt::math::pi<
-		real
-	>()
-	/
-	fcppt::literal<
-		real
-	>(
-		2.F
-	)
-};
+real const half_pi{fcppt::math::pi<real>() / fcppt::literal<real>(2.F)};
 
 FCPPT_PP_POP_WARNING
 
-inline
-bool
-compare(
-	fcppt::optional::object<
-		real
-	> const _o1,
-	fcppt::optional::object<
-		real
-	> const _o2
-)
+inline bool
+compare(fcppt::optional::object<real> const _o1, fcppt::optional::object<real> const _o2)
 {
-	return
-		fcppt::optional::from(
-			fcppt::optional::apply(
-				[](
-					real const _t1,
-					real const _t2
-				)
-				{
-					return
-						fcppt::math::diff(
-							_t1,
-							_t2
-						)
-						<
-						epsilon;
-				},
-				_o1,
-				_o2
-			),
-			fcppt::const_(
-				true
-			)
-		);
+  return fcppt::optional::from(
+      fcppt::optional::apply(
+          [](real const _t1, real const _t2) { return fcppt::math::diff(_t1, _t2) < epsilon; },
+          _o1,
+          _o2),
+      fcppt::const_(true));
 }
 
-using
-uivector2
-=
-fcppt::math::vector::static_<
-	unsigned,
-	2
->;
+using uivector2 = fcppt::math::vector::static_<unsigned, 2>;
 
-using
-fvector2
-=
-fcppt::math::vector::static_<
-	real,
-	2
->;
+using fvector2 = fcppt::math::vector::static_<real, 2>;
 
 }
 
-TEST_CASE(
-	"math::vector::angle_between",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::angle_between", "[math],[vector]")
 {
-	CHECK(
-		::compare(
-			fcppt::math::vector::angle_between(
-				fvector2{
-					1.F,
-					0.F
-				},
-				fvector2{
-					0.F,
-					1.F
-				}
-			),
-			fcppt::optional::make(
-				half_pi
-			)
-		)
-	);
+  CHECK(::compare(
+      fcppt::math::vector::angle_between(fvector2{1.F, 0.F}, fvector2{0.F, 1.F}),
+      fcppt::optional::make(half_pi)));
 
-	CHECK_FALSE(
-		fcppt::math::vector::angle_between(
-			fvector2{
-				1.F,
-				0.F
-			},
-			fvector2{
-				0.F,
-				0.F
-			}
-		).has_value()
-	);
+  CHECK_FALSE(
+      fcppt::math::vector::angle_between(fvector2{1.F, 0.F}, fvector2{0.F, 0.F}).has_value());
 }
 
-TEST_CASE(
-	"math::vector::angle_between_cast",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::angle_between_cast", "[math],[vector]")
 {
-	CHECK(
-		::compare(
-			fcppt::math::vector::angle_between_cast<
-				real
-			>(
-				uivector2{
-					1U,
-					0U
-				},
-				uivector2{
-					0U,
-					1U
-				}
-			),
-			fcppt::optional::make(
-				half_pi
-			)
-		)
-	);
+  CHECK(::compare(
+      fcppt::math::vector::angle_between_cast<real>(uivector2{1U, 0U}, uivector2{0U, 1U}),
+      fcppt::optional::make(half_pi)));
 }
 
-TEST_CASE(
-	"math::vector::signed_angle_between",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::signed_angle_between", "[math],[vector]")
 {
-	CHECK(
-		::compare(
-			fcppt::math::vector::signed_angle_between(
-				fvector2{
-					2.F,
-					1.F
-				},
-				fvector2{
-					2.F,
-					2.F
-				}
-			),
-			fcppt::optional::make(
-				half_pi
-			)
-		)
-	);
+  CHECK(::compare(
+      fcppt::math::vector::signed_angle_between(fvector2{2.F, 1.F}, fvector2{2.F, 2.F}),
+      fcppt::optional::make(half_pi)));
 }
 
-TEST_CASE(
-	"math::vector::signed_angle_between_cast",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::signed_angle_between_cast", "[math],[vector]")
 {
-	CHECK(
-		::compare(
-			fcppt::math::vector::signed_angle_between_cast<
-				real
-			>(
-				uivector2{
-					2U,
-					1U
-				},
-				uivector2{
-					2U,
-					2U
-				}
-			),
-			fcppt::optional::make(
-				half_pi
-			)
-		)
-	);
+  CHECK(::compare(
+      fcppt::math::vector::signed_angle_between_cast<real>(uivector2{2U, 1U}, uivector2{2U, 2U}),
+      fcppt::optional::make(half_pi)));
 
-	CHECK_FALSE(
-		fcppt::math::vector::signed_angle_between_cast<
-			real
-		>(
-			uivector2{
-				2U,
-				2U
-			},
-			uivector2{
-				2U,
-				2U
-			}
-		).has_value()
-	);
+  CHECK_FALSE(
+      fcppt::math::vector::signed_angle_between_cast<real>(uivector2{2U, 2U}, uivector2{2U, 2U})
+          .has_value());
 }

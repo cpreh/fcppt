@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/literal.hpp>
 #include <fcppt/make_literal_boost_units.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,27 +11,9 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"literal boost_units",
-	"[literal]"
-)
+TEST_CASE("literal boost_units", "[literal]")
 {
-	using
-	length
-	=
-	boost::units::quantity<
-		boost::units::si::length,
-		int
-	>;
+  using length = boost::units::quantity<boost::units::si::length, int>;
 
-	CHECK(
-		fcppt::literal<
-			length
-		>(
-			2
-		).value()
-		==
-		2
-	);
+  CHECK(fcppt::literal<length>(2).value() == 2);
 }

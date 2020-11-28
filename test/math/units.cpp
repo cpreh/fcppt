@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/is_zero_boost_units.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -18,110 +17,28 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math units",
-	"[math]"
-)
+TEST_CASE("math units", "[math]")
 {
-	using
-	unit_type
-	=
-	int;
+  using unit_type = int;
 
-	using
-	length
-	=
-	boost::units::quantity<
-		boost::units::si::length,
-		unit_type
-	>;
+  using length = boost::units::quantity<boost::units::si::length, unit_type>;
 
-	using
-	time
-	=
-	boost::units::quantity<
-		boost::units::si::time,
-		unit_type
-	>;
+  using time = boost::units::quantity<boost::units::si::time, unit_type>;
 
-	using
-	velocity
-	=
-	boost::units::quantity<
-		boost::units::si::velocity,
-		unit_type
-	>;
+  using velocity = boost::units::quantity<boost::units::si::velocity, unit_type>;
 
-	using
-	length2
-	=
-	fcppt::math::vector::static_<
-		length,
-		2
-	>;
+  using length2 = fcppt::math::vector::static_<length, 2>;
 
-	using
-	time2
-	=
-	fcppt::math::vector::static_<
-		time,
-		2
-	>;
+  using time2 = fcppt::math::vector::static_<time, 2>;
 
-	using
-	velocity2
-	=
-	fcppt::math::vector::static_<
-		velocity,
-		2
-	>;
+  using velocity2 = fcppt::math::vector::static_<velocity, 2>;
 
-	length2 const l1(
-		length(
-			-100
-			*
-			boost::units::si::meter
-		),
-		length(
-			200
-			*
-			boost::units::si::meter
-		)
-	);
+  length2 const l1(length(-100 * boost::units::si::meter), length(200 * boost::units::si::meter));
 
-	time2 const t1(
-		time(
-			4
-			*
-			boost::units::si::second
-		),
-		time(
-			2
-			*
-			boost::units::si::second
-		)
-	);
+  time2 const t1(time(4 * boost::units::si::second), time(2 * boost::units::si::second));
 
-	CHECK(
-		l1
-		/
-		t1
-		==
-		fcppt::optional::make(
-			velocity2{
-				-25
-				*
-				boost::units::si::meter
-				/
-				boost::units::si::second
-				,
-				100
-				*
-				boost::units::si::meter
-				/
-				boost::units::si::second
-			}
-		)
-	);
+  CHECK(
+      l1 / t1 == fcppt::optional::make(velocity2{
+                     -25 * boost::units::si::meter / boost::units::si::second,
+                     100 * boost::units::si::meter / boost::units::si::second}));
 }

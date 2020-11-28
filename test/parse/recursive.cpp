@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_output.hpp>
@@ -20,39 +19,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::recursive",
-	"[parse]"
-)
+TEST_CASE("parse::recursive", "[parse]")
 {
-	auto const parser{
-		fcppt::parse::make_recursive(
-			fcppt::parse::char_{}
-		)
-	};
+  auto const parser{fcppt::parse::make_recursive(fcppt::parse::char_{})};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"Y"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			fcppt::make_recursive(
-				'Y'
-			)
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"Y"}) ==
+      fcppt::parse::make_success<char>(fcppt::make_recursive('Y')));
 }

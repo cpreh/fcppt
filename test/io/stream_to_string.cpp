@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
@@ -14,43 +13,19 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"io::stream_to_string",
-	"[io]"
-)
+TEST_CASE("io::stream_to_string", "[io]")
 {
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::istringstream istream{
-			"TEST abcd"
-		};
+  {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    std::istringstream istream{"TEST abcd"};
 
-		CHECK(
-			fcppt::io::stream_to_string(
-				istream
-			)
-			==
-			fcppt::optional::make(
-				std::string{
-					"TEST abcd"
-				}
-			)
-		);
-	}
+    CHECK(fcppt::io::stream_to_string(istream) == fcppt::optional::make(std::string{"TEST abcd"}));
+  }
 
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::istringstream istream{};
+  {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    std::istringstream istream{};
 
-		CHECK(
-			fcppt::io::stream_to_string(
-				istream
-			)
-			==
-			fcppt::optional::make(
-				std::string{}
-			)
-		);
-	}
+    CHECK(fcppt::io::stream_to_string(istream) == fcppt::optional::make(std::string{}));
+  }
 }

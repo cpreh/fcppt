@@ -3,26 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/dim/has_dim.hpp>
 #include <fcppt/math/dim/static.hpp>
 
-
-int
-main()
+int main()
 {
-	using
-	ui2_dim
-	=
-	fcppt::math::dim::static_<
-		unsigned,
-		2
-	>;
+  using ui2_dim = fcppt::math::dim::static_<unsigned, 2>;
 
-	static_assert(
-		fcppt::math::dim::has_dim<
-			ui2_dim,
-			2
-		>::value
-	);
+  static_assert(fcppt::math::dim::has_dim<ui2_dim, 2>::value);
 }

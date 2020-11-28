@@ -3,45 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/type_traits/safe_integral_cast.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	using
-	integral
-	=
-	std::integral_constant<
-		int,
-		2
-	>;
+  using integral = std::integral_constant<int, 2>;
 
-	using
-	result
-	=
-	fcppt::type_traits::safe_integral_cast<
-		unsigned,
-		integral
-	>;
+  using result = fcppt::type_traits::safe_integral_cast<unsigned, integral>;
 
-	static_assert(
-		std::is_same_v<
-			fcppt::type_traits::value_type<
-				result
-			>,
-			unsigned
-		>
-	);
+  static_assert(std::is_same_v<fcppt::type_traits::value_type<result>, unsigned>);
 
-	static_assert(
-		result::value
-		==
-		2U
-	);
+  static_assert(result::value == 2U);
 }

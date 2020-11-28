@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/container/make.hpp>
@@ -12,65 +11,20 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::make",
-	"[assign]"
-)
+TEST_CASE("container::make", "[assign]")
 {
-	using
-	sequence
-	=
-	std::vector<
-		fcppt::unique_ptr<
-			int
-		>
-	>;
+  using sequence = std::vector<fcppt::unique_ptr<int>>;
 
-	auto const result(
-		fcppt::container::make<
-			sequence
-		>(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				3
-			),
-			fcppt::make_unique_ptr<
-				int
-			>(
-				4
-			),
-			fcppt::make_unique_ptr<
-				int
-			>(
-				5
-			)
+  auto const result(fcppt::container::make<sequence>(
+      fcppt::make_unique_ptr<int>(3), fcppt::make_unique_ptr<int>(4), fcppt::make_unique_ptr<int>(5)
 
-		)
-	);
+          ));
 
-	REQUIRE(
-		result.size()
-		==
-		3U
-	);
+  REQUIRE(result.size() == 3U);
 
-	CHECK(
-		*result[0]
-		==
-		3
-	);
+  CHECK(*result[0] == 3);
 
-	CHECK(
-		*result[1]
-		==
-		4
-	);
+  CHECK(*result[1] == 4);
 
-	CHECK(
-		*result[2]
-		==
-		5
-	);
+  CHECK(*result[2] == 5);
 }

@@ -3,26 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"range::end",
-	"[range]"
-)
+TEST_CASE("range::end", "[range]")
 {
-	// NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
-	int array[3] = { 0, 0, 0 };
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
+  int array[3] = {0, 0, 0};
 
-	CHECK(
-		fcppt::range::end(
-			array
-		)
-		==
-		&array[0] + 3 // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
-	);
+  CHECK(
+      fcppt::range::end(array) ==
+      &array[0] + 3 // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+  );
 }

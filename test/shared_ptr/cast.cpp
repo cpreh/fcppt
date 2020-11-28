@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/const_pointer_cast.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
 #include <fcppt/make_shared_ptr.hpp>
@@ -16,184 +15,76 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 class base
 {
 public:
-	FCPPT_NONMOVABLE(
-		base
-	);
+  FCPPT_NONMOVABLE(base);
 
-	base()
-	= default;
+  base() = default;
 
-	virtual
-	~base()
-	= default;
+  virtual ~base() = default;
 };
 
-class derived
-:
-	public base
+class derived : public base
 {
 public:
-	FCPPT_NONMOVABLE(
-		derived
-	);
+  FCPPT_NONMOVABLE(derived);
 
-	derived()
-	= default;
+  derived() = default;
 
-	~derived()
-	override
-	= default;
+  ~derived() override = default;
 };
 
-using
-base_ptr
-=
-fcppt::shared_ptr<
-	base
->;
+using base_ptr = fcppt::shared_ptr<base>;
 
-using
-derived_ptr
-=
-fcppt::shared_ptr<
-	derived
->;
+using derived_ptr = fcppt::shared_ptr<derived>;
 
 }
 
-TEST_CASE(
-	"dynamic_pointer_cast",
-	"[smartptr]"
-)
+TEST_CASE("dynamic_pointer_cast", "[smartptr]")
 {
-	base_ptr const ptr(
-		fcppt::make_shared_ptr<
-			derived
-		>()
-	);
+  base_ptr const ptr(fcppt::make_shared_ptr<derived>());
 
-	{
-		fcppt::optional::object<
-			derived_ptr
-		> const ptr2(
-			fcppt::dynamic_pointer_cast<
-				derived
-			>(
-				ptr
-			)
-		);
+  {
+    fcppt::optional::object<derived_ptr> const ptr2(fcppt::dynamic_pointer_cast<derived>(ptr));
 
-		CHECK(
-			ptr2.has_value()
-		);
+    CHECK(ptr2.has_value());
 
-		fcppt::optional::maybe(
-			ptr2,
-			[]{
-				CHECK(
-					false
-				);
-			},
-			[
-				&ptr
-			](
-				derived_ptr const &_ptr2
-			)
-			{
-				CHECK(
-					ptr.use_count()
-					==
-					_ptr2.use_count()
-				);
-			}
-		);
-	}
+    fcppt::optional::maybe(
+        ptr2,
+        [] { CHECK(false); },
+        [&ptr](derived_ptr const &_ptr2) { CHECK(ptr.use_count() == _ptr2.use_count()); });
+  }
 
-	CHECK(
-		ptr.use_count()
-		==
-		1L
-	);
+  CHECK(ptr.use_count() == 1L);
 }
 
-TEST_CASE(
-	"static_pointer_cast",
-	"[smartptr]"
-)
+TEST_CASE("static_pointer_cast", "[smartptr]")
 {
-	base_ptr const ptr(
-		fcppt::make_shared_ptr<
-			derived
-		>()
-	);
+  base_ptr const ptr(fcppt::make_shared_ptr<derived>());
 
-	{
-		derived_ptr const ptr2(
-			fcppt::static_pointer_cast<
-				derived
-			>(
-				ptr
-			)
-		);
+  {
+    derived_ptr const ptr2(fcppt::static_pointer_cast<derived>(ptr));
 
-		CHECK(
-			ptr.use_count()
-			==
-			ptr2.use_count()
-		);
-	}
+    CHECK(ptr.use_count() == ptr2.use_count());
+  }
 
-	CHECK(
-		ptr.use_count()
-		==
-		1L
-	);
+  CHECK(ptr.use_count() == 1L);
 }
 
-TEST_CASE(
-	"const_pointer_cast",
-	"[smartptr]"
-)
+TEST_CASE("const_pointer_cast", "[smartptr]")
 {
-	using
-	const_base_ptr
-	=
-	fcppt::shared_ptr<
-		base const
-	>;
+  using const_base_ptr = fcppt::shared_ptr<base const>;
 
-	const_base_ptr const ptr(
-		fcppt::make_shared_ptr<
-			base
-		>()
-	);
+  const_base_ptr const ptr(fcppt::make_shared_ptr<base>());
 
-	{
-		base_ptr const ptr2(
-			fcppt::const_pointer_cast<
-				base
-			>(
-				ptr
-			)
-		);
+  {
+    base_ptr const ptr2(fcppt::const_pointer_cast<base>(ptr));
 
-		CHECK(
-			ptr.use_count()
-			==
-			ptr2.use_count()
-		);
-	}
+    CHECK(ptr.use_count() == ptr2.use_count());
+  }
 
-	CHECK(
-		ptr.use_count()
-		==
-		1L
-	);
+  CHECK(ptr.use_count() == 1L);
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/fill.hpp>
@@ -14,62 +13,20 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::grid::fill",
-	"[container],[grid]"
-)
+TEST_CASE("container::grid::fill", "[container],[grid]")
 {
-	using
-	int2_grid
-	=
-	fcppt::container::grid::object<
-		int,
-		2
-	>;
+  using int2_grid = fcppt::container::grid::object<int, 2>;
 
-	int2_grid test(
-		int2_grid::dim(
-			2U,
-			2U
-		),
-		0
-	);
+  int2_grid test(int2_grid::dim(2U, 2U), 0);
 
-	using
-	pos
-	=
-	int2_grid::pos;
+  using pos = int2_grid::pos;
 
-	fcppt::container::grid::fill(
-		test,
-		[](
-			pos const &_pos
-		)
-		{
-			return
-				fcppt::cast::size<
-					int
-				>(
-					fcppt::cast::to_signed(
-						_pos.x()
-						+
-						_pos.y()
-					)
-				);
-		}
-	);
+  fcppt::container::grid::fill(test, [](pos const &_pos) {
+    return fcppt::cast::size<int>(fcppt::cast::to_signed(_pos.x() + _pos.y()));
+  });
 
-	CHECK(
-		test
-		==
-		int2_grid{
-			fcppt::container::grid::static_row(
-				0, 1
-			),
-			fcppt::container::grid::static_row(
-				1, 2
-			)
-		}
-	);
+  CHECK(
+      test ==
+      int2_grid{
+          fcppt::container::grid::static_row(0, 1), fcppt::container::grid::static_row(1, 2)});
 }

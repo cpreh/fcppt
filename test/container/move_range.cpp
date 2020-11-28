@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -15,80 +14,21 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container move_range",
-	"[container]"
-)
+TEST_CASE("container move_range", "[container]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	int_movable_vector
-	=
-	std::vector<
-		int_movable
-	>;
+  using int_movable_vector = std::vector<int_movable>;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		int_movable,
-		strong_int_movable
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(int_movable, strong_int_movable);
 
-	using
-	strong_int_movable_vector
-	=
-	std::vector<
-		strong_int_movable
-	>;
+  using strong_int_movable_vector = std::vector<strong_int_movable>;
 
-	CHECK(
-		fcppt::algorithm::map<
-			strong_int_movable_vector
-		>(
-			fcppt::container::make_move_range(
-				fcppt::container::make<
-					int_movable_vector
-				>(
-					int_movable{
-						0
-					},
-					int_movable{
-						1
-					}
-				)
-			),
-			[](
-				int_movable &&_value
-			)
-			{
-				return
-					strong_int_movable{
-						std::move(
-							_value
-						)
-					};
-			}
-		)
-		==
-		fcppt::container::make<
-			strong_int_movable_vector
-		>(
-			strong_int_movable{
-				int_movable{
-					0
-				}
-			},
-			strong_int_movable{
-				int_movable{
-					1
-				}
-			}
-		)
-	);
+  CHECK(
+      fcppt::algorithm::map<strong_int_movable_vector>(
+          fcppt::container::make_move_range(
+              fcppt::container::make<int_movable_vector>(int_movable{0}, int_movable{1})),
+          [](int_movable &&_value) { return strong_int_movable{std::move(_value)}; }) ==
+      fcppt::container::make<strong_int_movable_vector>(
+          strong_int_movable{int_movable{0}}, strong_int_movable{int_movable{1}}));
 }

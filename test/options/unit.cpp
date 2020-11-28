@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
@@ -21,45 +20,17 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"options::unit",
-	"[options]"
-)
+TEST_CASE("options::unit", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		dummy_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(dummy_label);
 
-	using
-	unit_type
-	=
-	fcppt::options::unit<
-		dummy_label
-	>;
+  using unit_type = fcppt::options::unit<dummy_label>;
 
-	unit_type const unit{};
+  unit_type const unit{};
 
-	CHECK(
-		fcppt::options::parse(
-			unit,
-			fcppt::args_vector{}
-		)
-		==
-		fcppt::options::make_success(
-			unit_type::result_type{
-				dummy_label{}
-					= fcppt::unit{}
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(unit, fcppt::args_vector{}) ==
+      fcppt::options::make_success(unit_type::result_type{dummy_label{} = fcppt::unit{}}));
 
-	CHECK(
-		fcppt::options::parse(
-			unit,
-			fcppt::args_vector{
-				FCPPT_TEXT("")
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::options::parse(unit, fcppt::args_vector{FCPPT_TEXT("")}).has_failure());
 }

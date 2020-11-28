@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -13,47 +12,19 @@
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"io::extract",
-	"[io]"
-)
+TEST_CASE("io::extract", "[io]")
 {
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::istringstream stream{
-			"xy"
-		};
+  {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    std::istringstream stream{"xy"};
 
-		CHECK(
-			fcppt::io::extract<
-				int
-			>(
-				stream
-			)
-			==
-			fcppt::optional::object<
-				int
-			>{}
-		);
-	}
+    CHECK(fcppt::io::extract<int>(stream) == fcppt::optional::object<int>{});
+  }
 
-	{
-		// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-		std::istringstream stream{
-			"42"
-		};
+  {
+    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+    std::istringstream stream{"42"};
 
-		CHECK(
-			fcppt::io::extract<
-				int
-			>(
-				stream
-			)
-			==
-			fcppt::optional::make(
-				42
-			)
-		);
-	}
+    CHECK(fcppt::io::extract<int>(stream) == fcppt::optional::make(42));
+  }
 }

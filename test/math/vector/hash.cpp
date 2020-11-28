@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -13,56 +12,15 @@
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::vector::hash",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::hash", "[math],[vector]")
 {
-	using
-	int3_vector
-	=
-	fcppt::math::vector::static_<
-		int,
-		3
-	>;
+  using int3_vector = fcppt::math::vector::static_<int, 3>;
 
-	using
-	vector_set
-	=
-	std::unordered_set<
-		int3_vector
-	>;
+  using vector_set = std::unordered_set<int3_vector>;
 
-	vector_set const set{
-		int3_vector(
-			1,
-			2,
-			3
-		)
-	};
+  vector_set const set{int3_vector(1, 2, 3)};
 
-	CHECK(
-		set.count(
-			int3_vector(
-				1,
-				2,
-				3
-			)
-		)
-		==
-		1U
-	);
+  CHECK(set.count(int3_vector(1, 2, 3)) == 1U);
 
-	CHECK(
-		set.count(
-			int3_vector(
-				4,
-				2,
-				3
-			)
-		)
-		==
-		0U
-	);
+  CHECK(set.count(int3_vector(4, 2, 3)) == 0U);
 }

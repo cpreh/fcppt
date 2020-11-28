@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -25,108 +24,51 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+using skipper = decltype(fcppt::parse::skipper::space());
 
-using
-skipper
-=
-decltype(
-	fcppt::parse::skipper::space()
-);
-
-class grammar
-:
-	public
-		fcppt::parse::grammar<
-			int,
-			char,
-			skipper
-		>
+class grammar : public fcppt::parse::grammar<int, char, skipper>
 {
-	FCPPT_NONMOVABLE(
-		grammar
-	);
-public:
-	grammar();
+  FCPPT_NONMOVABLE(grammar);
 
-	~grammar();
+public:
+  grammar();
+
+  ~grammar();
+
 private:
-	grammar_base::base_type<
-		int
-	> start_;
+  grammar_base::base_type<int> start_;
 };
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 grammar::grammar()
-:
-	grammar_base{
-		fcppt::make_cref(
-			this->start_
-		),
-		fcppt::parse::skipper::space()
-	},
-	start_{
-		grammar_base::make_base(
-			fcppt::parse::int_<int>{}
-		)
-	}
+    : grammar_base{fcppt::make_cref(this->start_), fcppt::parse::skipper::space()},
+      start_{grammar_base::make_base(fcppt::parse::int_<int>{})}
 {
 }
 
 FCPPT_PP_POP_WARNING
 
-grammar::~grammar()
-= default;
+grammar::~grammar() = default;
 
 }
 
-TEST_CASE(
-	"parse::grammar string",
-	"[parse]"
-)
+TEST_CASE("parse::grammar string", "[parse]")
 {
-	CHECK(
-		fcppt::parse::grammar_parse_string(
-			std::string{
-				" 42"
-			},
-			grammar{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			42
-		)
-	);
+  CHECK(
+      fcppt::parse::grammar_parse_string(std::string{" 42"}, grammar{}) ==
+      fcppt::parse::make_success<char>(42));
 }
 
-TEST_CASE(
-	"parse::grammar stream",
-	"[parse]"
-)
+TEST_CASE("parse::grammar stream", "[parse]")
 {
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	std::istringstream stream{
-		std::string{
-			" 42"
-		}
-	};
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  std::istringstream stream{std::string{" 42"}};
 
-	CHECK(
-		fcppt::parse::grammar_parse_stream(
-			stream,
-			grammar{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			42
-		)
-	);
+  CHECK(
+      fcppt::parse::grammar_parse_stream(stream, grammar{}) ==
+      fcppt::parse::make_success<char>(42));
 }

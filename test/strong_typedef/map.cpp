@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/output_to_std_string.hpp>
@@ -18,106 +17,33 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
-FCPPT_MAKE_STRONG_TYPEDEF(
-	int,
-	strong_int
-);
+using int_unique_ptr = fcppt::unique_ptr<int>;
 
-using
-int_unique_ptr
-=
-fcppt::unique_ptr<
-	int
->;
+FCPPT_MAKE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
 
-FCPPT_MAKE_STRONG_TYPEDEF(
-	int_unique_ptr,
-	strong_int_ptr
-);
-
-using
-move_test
-=
-fcppt::catch_::movable<
-	int_unique_ptr
->;
+using move_test = fcppt::catch_::movable<int_unique_ptr>;
 
 }
 
-TEST_CASE(
-	"strong_typedef_map",
-	"[strongtypedef]"
-)
+TEST_CASE("strong_typedef_map", "[strongtypedef]")
 {
-	fcppt::strong_typedef<
-		std::string,
-		fcppt::strong_typedef_tag<
-			strong_int
-		>
-	> const result{
-		fcppt::strong_typedef_map(
-			strong_int{
-				5
-			},
-			[](
-				int const _value
-			)
-			{
-				return
-					fcppt::output_to_std_string(
-						_value
-					);
-			}
-		)
-	};
+  fcppt::strong_typedef<std::string, fcppt::strong_typedef_tag<strong_int>> const result{
+      fcppt::strong_typedef_map(
+          strong_int{5}, [](int const _value) { return fcppt::output_to_std_string(_value); })};
 
-	CHECK(
-		result.get()
-		==
-		"5"
-	);
+  CHECK(result.get() == "5");
 }
 
-TEST_CASE(
-	"strong_typedef_map move",
-	"[strongtypedef]"
-)
+TEST_CASE("strong_typedef_map move", "[strongtypedef]")
 {
-	fcppt::strong_typedef<
-		move_test,
-		fcppt::strong_typedef_tag<
-			strong_int_ptr
-		>
-	> const result{
-		fcppt::strong_typedef_map(
-			strong_int_ptr{
-				fcppt::make_unique_ptr<
-					int
-				>(
-					5
-				)
-			},
-			[](
-				int_unique_ptr &&_ptr
-			)
-			{
-				return
-					move_test{
-						std::move(
-							_ptr
-						)
-					};
-			}
-		)
-	};
+  fcppt::strong_typedef<move_test, fcppt::strong_typedef_tag<strong_int_ptr>> const result{
+      fcppt::strong_typedef_map(
+          strong_int_ptr{fcppt::make_unique_ptr<int>(5)},
+          [](int_unique_ptr &&_ptr) { return move_test{std::move(_ptr)}; })};
 
-	CHECK(
-		*result.get().value()
-		==
-		5
-	);
+  CHECK(*result.get().value() == 5);
 }

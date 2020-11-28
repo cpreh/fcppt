@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
@@ -14,86 +13,30 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm_loop mpl"
-	"[algorithm_loop]"
-)
+TEST_CASE("algorithm_loop mpl"
+          "[algorithm_loop]")
 {
-	int value{
-		0
-	};
+  int value{0};
 
-	fcppt::algorithm::loop(
-		fcppt::metal::interval<
-			int,
-			0,
-			5
-		>{},
-		[
-			&value
-		](
-			auto const _index
-		)
-		{
-			FCPPT_USE(
-				_index
-			);
+  fcppt::algorithm::loop(fcppt::metal::interval<int, 0, 5>{}, [&value](auto const _index) {
+    FCPPT_USE(_index);
 
-			using
-			index
-			=
-			fcppt::tag_type<
-				decltype(
-					_index
-				)
-			>;
+    using index = fcppt::tag_type<decltype(_index)>;
 
-			static_assert(
-				index::value
-				<
-				5
-			);
+    static_assert(index::value < 5);
 
-			value +=
-				index::value;
-		}
-	);
+    value += index::value;
+  });
 
-	CHECK(
-		value
-		==
-		10
-	);
+  CHECK(value == 10);
 }
 
-TEST_CASE(
-	"algorithm_loop_range",
-	"[algorithm_loop]"
-)
+TEST_CASE("algorithm_loop_range", "[algorithm_loop]")
 {
-	int value{
-		0
-	};
+  int value{0};
 
-	fcppt::algorithm::loop(
-		fcppt::make_int_range_count(
-			5
-		),
-		[
-			&value
-		](
-			int const _value
-		)
-		{
-			value +=
-				_value;
-		}
-	);
+  fcppt::algorithm::loop(
+      fcppt::make_int_range_count(5), [&value](int const _value) { value += _value; });
 
-	CHECK(
-		value
-		==
-		10
-	);
+  CHECK(value == 10);
 }

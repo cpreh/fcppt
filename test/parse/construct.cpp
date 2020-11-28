@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -20,39 +19,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::construct",
-	"[parse]"
-)
+TEST_CASE("parse::construct", "[parse]")
 {
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		char,
-		strong_char
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(char, strong_char);
 
-	auto const parser(
-		fcppt::parse::construct<
-			strong_char
-		>(
-			fcppt::parse::char_{}
-		)
-	);
+  auto const parser(fcppt::parse::construct<strong_char>(fcppt::parse::char_{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"X"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			strong_char{
-				'X'
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"X"}) ==
+      fcppt::parse::make_success<char>(strong_char{'X'}));
 }

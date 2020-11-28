@@ -3,80 +3,38 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/variant/compare.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 struct compare
 {
-	template<
-		typename T
-	>
-	bool
-	operator()(
-		T const &_a,
-		T const &_b
-	) const
-	{
-		return
-			_a
-			==
-			_b;
-	}
+  template <typename T>
+  bool operator()(T const &_a, T const &_b) const
+  {
+    return _a == _b;
+  }
 };
 
 }
 
-TEST_CASE(
-	"variant::compare",
-	"[variant]"
-)
+TEST_CASE("variant::compare", "[variant]")
 {
-	using
-	variant
-	=
-	fcppt::variant::object<
-		bool,
-		int,
-		std::string
-	>;
+  using variant = fcppt::variant::object<bool, int, std::string>;
 
-	std::string const string(
-		"hello world"
-	);
+  std::string const string("hello world");
 
-	variant const v1(
-		string
-	);
+  variant const v1(string);
 
-	variant const v2(
-		string
-	);
+  variant const v2(string);
 
-	CHECK(
-		fcppt::variant::compare(
-			v1,
-			v2,
-			compare()
-		)
-	);
+  CHECK(fcppt::variant::compare(v1, v2, compare()));
 
-	variant const v3(
-		42
-	);
+  variant const v3(42);
 
-	CHECK_FALSE(
-		fcppt::variant::compare(
-			v1,
-			v3,
-			compare()
-		)
-	);
+  CHECK_FALSE(fcppt::variant::compare(v1, v3, compare()));
 }

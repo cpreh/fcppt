@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -11,26 +10,10 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"either::make_failure",
-	"[either]"
-)
+TEST_CASE("either::make_failure", "[either]")
 {
-	fcppt::either::object<
-		std::string,
-		int
-	> const result{
-		fcppt::either::make_failure<
-			int
-		>(
-			std::string{
-				"test"
-			}
-		)
-	};
+  fcppt::either::object<std::string, int> const result{
+      fcppt::either::make_failure<int>(std::string{"test"})};
 
-	CHECK_FALSE(
-		result.has_success()
-	);
+  CHECK_FALSE(result.has_success());
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
@@ -20,42 +19,14 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::lexeme",
-	"[parse]"
-)
+TEST_CASE("parse::lexeme", "[parse]")
 {
-	auto const parser{
-		fcppt::parse::make_lexeme(
-			*fcppt::parse::char_{}
-		)
-	};
+  auto const parser{fcppt::parse::make_lexeme(*fcppt::parse::char_{})};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::phrase_parse_string(
-			parser,
-			std::string{
-				"a b "
-			},
-			fcppt::parse::skipper::space()
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				'a', ' ', 'b', ' '
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::phrase_parse_string(
+          parser, std::string{"a b "}, fcppt::parse::skipper::space()) ==
+      fcppt::parse::make_success<char>(result_type{'a', ' ', 'b', ' '}));
 }

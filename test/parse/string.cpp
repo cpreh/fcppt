@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
@@ -20,77 +19,25 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::string",
-	"[parse]"
-)
+TEST_CASE("parse::string", "[parse]")
 {
-	fcppt::parse::string const parser{
-		std::string{
-			"test"
-		}
-	};
+  fcppt::parse::string const parser{std::string{"test"}};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"test"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			fcppt::unit{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"test"}) ==
+      fcppt::parse::make_success<char>(fcppt::unit{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"te"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"te"}).has_failure());
 }
 
-TEST_CASE(
-	"parse::string sequence",
-	"[parse]"
-)
+TEST_CASE("parse::string sequence", "[parse]")
 {
-	auto const parser{
-		fcppt::parse::string{
-			std::string{"test1"}
-		}
-		>>
-		fcppt::parse::string{
-			std::string{"test2"}
-		}
-	};
+  auto const parser{
+      fcppt::parse::string{std::string{"test1"}} >> fcppt::parse::string{std::string{"test2"}}};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"test1test2"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			fcppt::unit{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"test1test2"}) ==
+      fcppt::parse::make_success<char>(fcppt::unit{}));
 }

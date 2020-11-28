@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -12,56 +11,15 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::bind",
-	"[optional]"
-)
+TEST_CASE("optional::bind", "[optional]")
 {
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+  using optional_string = fcppt::optional::object<std::string>;
 
-	CHECK(
-		fcppt::optional::bind(
-			optional_string{
-				"test2"
-			},
-			[](
-				std::string const &_value
-			)
-			{
-				return
-					optional_string{
-						"test1"
-						+
-						_value
-					};
-			}
-		)
-		==
-		optional_string{
-			"test1test2"
-		}
-	);
+  CHECK(fcppt::optional::bind(optional_string{"test2"}, [](std::string const &_value) {
+          return optional_string{"test1" + _value};
+        }) == optional_string{"test1test2"});
 
-	CHECK(
-		fcppt::optional::bind(
-			optional_string{
-				"test2"
-			},
-			[](
-				std::string const &
-			)
-			{
-				return
-					optional_string{};
-			}
-		)
-		==
-		optional_string{}
-	);
+  CHECK(fcppt::optional::bind(optional_string{"test2"}, [](std::string const &) {
+          return optional_string{};
+        }) == optional_string{});
 }

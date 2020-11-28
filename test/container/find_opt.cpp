@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/reference_comparison.hpp>
@@ -21,108 +20,36 @@
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::find_opt",
-	"[container]"
-)
+TEST_CASE("container::find_opt", "[container]")
 {
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		int,
-		strong_int
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
-	struct comp
-	{
-		bool
-		operator()(
-			int const _left,
-			int const _right
-		) const
-		{
-			return
-				_left
-				<
-				_right;
-		}
+  struct comp
+  {
+    bool operator()(int const _left, int const _right) const { return _left < _right; }
 
-		bool
-		operator()(
-			int const _value,
-			strong_int const _comp
-		) const
-		{
-			return
-				_value
-				<
-				_comp.get();
-		}
+    bool operator()(int const _value, strong_int const _comp) const { return _value < _comp.get(); }
 
-		bool
-		operator()(
-			strong_int const _comp,
-			int const _value
-		) const
-		{
-			return
-				_comp.get()
-				<
-				_value;
-		}
+    bool operator()(strong_int const _comp, int const _value) const { return _comp.get() < _value; }
 
-	FCPPT_PP_PUSH_WARNING
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
-		using
-		is_transparent
-		=
-		void;
-	FCPPT_PP_POP_WARNING
-	};
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
+    using is_transparent = void;
+    FCPPT_PP_POP_WARNING
+  };
 
-	using
-	int_set
-	=
-	std::set<
-		int,
-		comp
-	>;
+  using int_set = std::set<int, comp>;
 
-	int_set const set{ // NOLINT(fuchsia-default-arguments-calls)
-		1,2,3
-	};
+  int_set const set{// NOLINT(fuchsia-default-arguments-calls)
+                    1,
+                    2,
+                    3};
 
-	using
-	optional_int_ref
-	=
-	fcppt::optional::reference<
-		int const
-	>;
+  using optional_int_ref = fcppt::optional::reference<int const>;
 
-	CHECK(
-		fcppt::container::find_opt(
-			set,
-			strong_int(
-				3
-			)
-		)
-		==
-		optional_int_ref(
-			fcppt::make_cref(
-				*set.find(
-					3
-				)
-			)
-		)
-	);
+  CHECK(
+      fcppt::container::find_opt(set, strong_int(3)) ==
+      optional_int_ref(fcppt::make_cref(*set.find(3))));
 
-	CHECK(
-		fcppt::container::find_opt(
-			set,
-			strong_int(
-				4
-			)
-		)
-		==
-		optional_int_ref{}
-	);
+  CHECK(fcppt::container::find_opt(set, strong_int(4)) == optional_int_ref{});
 }

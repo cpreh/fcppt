@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/to_root.hpp>
@@ -12,90 +11,35 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::tree::to_root",
-	"[container],[tree]"
-)
+TEST_CASE("container::tree::to_root", "[container],[tree]")
 {
-	using
-	i_tree
-	=
-	fcppt::container::tree::object<
-		int
-	>;
+  using i_tree = fcppt::container::tree::object<int>;
 
-	i_tree tree(
-		1
-	);
+  i_tree tree(1);
 
-	fcppt::reference<
-		i_tree
-	> const child{
-		tree.push_back(
-			2
-		)
-	};
+  fcppt::reference<i_tree> const child{tree.push_back(2)};
 
-	fcppt::reference<
-		i_tree
-	> const child_2{
-		child.get().push_back(
-			3
-		)
-	};
+  fcppt::reference<i_tree> const child_2{child.get().push_back(3)};
 
-	using
-	traversal_type
-	=
-	fcppt::container::tree::to_root<
-		i_tree const
-	>;
+  using traversal_type = fcppt::container::tree::to_root<i_tree const>;
 
-	traversal_type const trav(
-		child_2.get()
-	);
+  traversal_type const trav(child_2.get());
 
-	REQUIRE(
-		std::distance(
-			trav.begin(),
-			trav.end()
-		)
-		==
-		3
-	);
+  REQUIRE(std::distance(trav.begin(), trav.end()) == 3);
 
-	traversal_type::iterator it(
-		trav.begin()
-	);
+  traversal_type::iterator it(trav.begin());
 
-	CHECK(
-		it->value()
-		==
-		3
-	);
+  CHECK(it->value() == 3);
 
-	++it;
+  ++it;
 
-	CHECK(
-		it->value()
-		==
-		2
-	);
+  CHECK(it->value() == 2);
 
-	++it;
+  ++it;
 
-	CHECK(
-		it->value()
-		==
-		1
-	);
+  CHECK(it->value() == 1);
 
-	++it;
+  ++it;
 
-	CHECK(
-		it
-		==
-		trav.end()
-	);
+  CHECK(it == trav.end());
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
@@ -12,208 +11,85 @@
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+using int_ref = fcppt::reference<int>;
 
-using
-int_ref
-=
-fcppt::reference<
-	int
->;
-
-using
-const_int_ref
-=
-fcppt::reference<
-	int const
->;
+using const_int_ref = fcppt::reference<int const>;
 
 struct test
 {
-	[[nodiscard]]
-	int
-	value() const // NOLINT(readability-convert-member-functions-to-static)
-	{
-		return
-			42;
-	}
+  [[nodiscard]] int value() const // NOLINT(readability-convert-member-functions-to-static)
+  {
+    return 42;
+  }
 };
 
 }
 
-TEST_CASE(
-	"reference",
-	"[ref]"
-)
+TEST_CASE("reference", "[ref]")
 {
-	int x(
-		1
-	);
+  int x(1);
 
-	int_ref ref(
-		x
-	);
+  int_ref ref(x);
 
-	CHECK(
-		&ref.get()
-		==
-		&x
-	);
+  CHECK(&ref.get() == &x);
 
-	const_int_ref const cref(
-		x
-	);
+  const_int_ref const cref(x);
 
-	CHECK(
-		&cref.get()
-		==
-		&x
-	);
+  CHECK(&cref.get() == &x);
 
-	CHECK(
-		&fcppt::make_ref(
-			x
-		).get()
-		==
-		&x
-	);
+  CHECK(&fcppt::make_ref(x).get() == &x);
 
-	CHECK(
-		&fcppt::make_cref(
-			x
-		).get()
-		==
-		&x
-	);
+  CHECK(&fcppt::make_cref(x).get() == &x);
 
-	int_ref other_ref(
-		ref
-	);
+  int_ref other_ref(ref);
 
-	CHECK(
-		&other_ref.get()
-		==
-		&ref.get()
-	);
+  CHECK(&other_ref.get() == &ref.get());
 
-	ref =
-		other_ref;
+  ref = other_ref;
 
-	CHECK(
-		&other_ref.get()
-		==
-		&ref.get()
-	);
+  CHECK(&other_ref.get() == &ref.get());
 }
 
-TEST_CASE(
-	"reference hash",
-	"[ref]"
-)
+TEST_CASE("reference hash", "[ref]")
 {
-	using
-	int_ref_set
-	=
-	std::unordered_set<
-		int_ref
-	>;
+  using int_ref_set = std::unordered_set<int_ref>;
 
-	SECTION(
-		"set"
-	)
-	{
-		int x(
-			1
-		);
+  SECTION("set")
+  {
+    int x(1);
 
-		int_ref_set const set{
-			int_ref(
-				x
-			)
-		};
+    int_ref_set const set{int_ref(x)};
 
-		auto const it(
-			set.find(
-				int_ref(
-					x
-				)
-			)
-		);
+    auto const it(set.find(int_ref(x)));
 
-		REQUIRE(
-			it
-			!=
-			set.end()
-		);
+    REQUIRE(it != set.end());
 
-		CHECK(
-			&it->get()
-			==
-			&x
-		);
-	}
+    CHECK(&it->get() == &x);
+  }
 
-	SECTION(
-		"const set"
-	)
-	{
-		using
-		const_int_ref_set
-		=
-		std::unordered_set<
-			const_int_ref
-		>;
+  SECTION("const set")
+  {
+    using const_int_ref_set = std::unordered_set<const_int_ref>;
 
-		int const y(
-			1
-		);
+    int const y(1);
 
-		const_int_ref_set const const_set{
-			const_int_ref(
-				y
-			)
-		};
+    const_int_ref_set const const_set{const_int_ref(y)};
 
-		auto const it(
-			const_set.find(
-				const_int_ref(
-					y
-				)
-			)
-		);
+    auto const it(const_set.find(const_int_ref(y)));
 
-		REQUIRE(
-			it
-			!=
-			const_set.end()
-		);
+    REQUIRE(it != const_set.end());
 
-		CHECK(
-			&it->get()
-			==
-			&y
-		);
-	}
+    CHECK(&it->get() == &y);
+  }
 }
 
-TEST_CASE(
-	"reference call",
-	"[ref]"
-)
+TEST_CASE("reference call", "[ref]")
 {
-	test t{};
+  test t{};
 
-	fcppt::reference<
-		test
-	> const ref{
-		t
-	};
+  fcppt::reference<test> const ref{t};
 
-	CHECK(
-		ref->value()
-		==
-		42
-	);
+  CHECK(ref->value() == 42);
 }

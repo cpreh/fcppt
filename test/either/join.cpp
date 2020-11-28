@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/join.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
@@ -12,69 +11,17 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"either::join",
-	"[either]"
-)
+TEST_CASE("either::join", "[either]")
 {
-	using
-	inner_either
-	=
-	fcppt::either::object<
-		int,
-		std::string
-	>;
+  using inner_either = fcppt::either::object<int, std::string>;
 
-	using
-	outer_either
-	=
-	fcppt::either::object<
-		int,
-		inner_either
-	>;
+  using outer_either = fcppt::either::object<int, inner_either>;
 
-	CHECK(
-		fcppt::either::join(
-			outer_either(
-				5
-			)
-		)
-		==
-		inner_either(
-			5
-		)
-	);
+  CHECK(fcppt::either::join(outer_either(5)) == inner_either(5));
 
-	CHECK(
-		fcppt::either::join(
-			outer_either(
-				inner_either(
-					5
-				)
-			)
-		)
-		==
-		inner_either(
-			5
-		)
-	);
+  CHECK(fcppt::either::join(outer_either(inner_either(5))) == inner_either(5));
 
-	CHECK(
-		fcppt::either::join(
-			outer_either(
-				inner_either(
-					std::string(
-						"test"
-					)
-				)
-			)
-		)
-		==
-		inner_either(
-			std::string(
-				"test"
-			)
-		)
-	);
+  CHECK(
+      fcppt::either::join(outer_either(inner_either(std::string("test")))) ==
+      inner_either(std::string("test")));
 }

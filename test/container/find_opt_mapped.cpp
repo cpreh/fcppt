@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
@@ -19,67 +18,19 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::find_opt_mapped",
-	"[container]"
-)
+TEST_CASE("container::find_opt_mapped", "[container]")
 {
-	using
-	int_string_map
-	=
-	std::map<
-		int,
-		std::string
-	>;
+  using int_string_map = std::map<int, std::string>;
 
-	int_string_map const values{ // NOLINT(fuchsia-default-arguments-calls)
-		std::make_pair(
-			42,
-			std::string(
-				"test"
-			)
-		),
-		std::make_pair(
-			100,
-			std::string(
-				"test2"
-			)
-		)
-	};
+  int_string_map const values{// NOLINT(fuchsia-default-arguments-calls)
+                              std::make_pair(42, std::string("test")),
+                              std::make_pair(100, std::string("test2"))};
 
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		fcppt::reference<
-			std::string const
-		>
-	>;
+  using optional_string = fcppt::optional::object<fcppt::reference<std::string const>>;
 
-	CHECK(
-		optional_string(
-			fcppt::container::find_opt_mapped(
-				values,
-				42
-			)
-		)
-		==
-		optional_string(
-			fcppt::make_cref(
-				values.at(
-					42
-				)
-			)
-		)
-	);
+  CHECK(
+      optional_string(fcppt::container::find_opt_mapped(values, 42)) ==
+      optional_string(fcppt::make_cref(values.at(42))));
 
-	CHECK(
-		fcppt::container::find_opt_mapped(
-			values,
-			50
-		)
-		==
-		optional_string{}
-	);
+  CHECK(fcppt::container::find_opt_mapped(values, 50) == optional_string{});
 }

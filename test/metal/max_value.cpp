@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/metal/max_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
@@ -11,49 +10,19 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+using size_type = std::size_t;
 
-using
-size_type
-=
-std::size_t;
-
-template<
-	size_type Size
->
-using
-static_size
-=
-std::integral_constant<
-	size_type,
-	Size
->;
+template <size_type Size>
+using static_size = std::integral_constant<size_type, Size>;
 
 }
 
-int
-main()
+int main()
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::metal::max_value<
-				metal::list<
-					static_size<
-						5U
-					>,
-					static_size<
-						7U
-					>,
-					static_size<
-						3U
-					>
-				>
-			>,
-			static_size<
-				7U
-			>
-		>
-	);
+  static_assert(
+      std::is_same_v<
+          fcppt::metal::max_value<metal::list<static_size<5U>, static_size<7U>, static_size<3U>>>,
+          static_size<7U>>);
 }

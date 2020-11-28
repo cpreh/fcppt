@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/either/monad.hpp>
@@ -18,148 +17,38 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+static_assert(std::is_same_v<
+              fcppt::monad::constructor<fcppt::either::error<bool>, int>,
+              fcppt::either::object<bool, int>>);
 
-static_assert(
-	std::is_same_v<
-		fcppt::monad::constructor<
-			fcppt::either::error<
-				bool
-			>,
-			int
-		>,
-		fcppt::either::object<
-			bool,
-			int
-		>
-	>
-);
-
-static_assert(
-	std::is_same_v<
-		fcppt::monad::inner_type<
-			fcppt::either::object<
-				bool,
-				int
-			>
-		>,
-		int
-	>
-);
+static_assert(std::is_same_v<fcppt::monad::inner_type<fcppt::either::object<bool, int>>, int>);
 
 }
 
-TEST_CASE(
-	"either monad return",
-	"[either]"
-)
+TEST_CASE("either monad return", "[either]")
 {
-	CHECK(
-		fcppt::monad::return_<
-			fcppt::either::error<
-				std::string
-			>
-		>(
-			1
-		)
-		==
-		fcppt::either::make_success<
-			std::string
-		>(
-			1
-		)
-	);
+  CHECK(
+      fcppt::monad::return_<fcppt::either::error<std::string>>(1) ==
+      fcppt::either::make_success<std::string>(1));
 }
 
-TEST_CASE(
-	"either monad bind",
-	"[either]"
-)
+TEST_CASE("either monad bind", "[either]")
 {
-	using
-	either_int
-	=
-	fcppt::either::object<
-		std::string,
-		int
-	>;
+  using either_int = fcppt::either::object<std::string, int>;
 
-	using
-	either_bool
-	=
-	fcppt::either::object<
-		std::string,
-		bool
-	>;
+  using either_bool = fcppt::either::object<std::string, bool>;
 
-	auto const bind_function(
-		[](
-			int const _value
-		)
-		{
-			return
-				either_bool(
-					_value
-					>
-					10
-				);
-		}
-	);
+  auto const bind_function([](int const _value) { return either_bool(_value > 10); });
 
-	CHECK(
-		fcppt::monad::bind(
-			either_int(
-				std::string(
-					"test"
-				)
-			),
-			bind_function
-		)
-		==
-		either_bool{
-			std::string{
-				"test"
-			}
-		}
-	);
+  CHECK(
+      fcppt::monad::bind(either_int(std::string("test")), bind_function) ==
+      either_bool{std::string{"test"}});
 
-	CHECK(
-		fcppt::monad::bind(
-			either_int(
-				20
-			),
-			bind_function
-		)
-		==
-		either_bool(
-			true
-		)
-	);
+  CHECK(fcppt::monad::bind(either_int(20), bind_function) == either_bool(true));
 
-	CHECK(
-		fcppt::monad::bind(
-			either_int(
-				20
-			),
-			[](
-				int
-			)
-			{
-				return
-					either_bool(
-						std::string(
-							"failure"
-						)
-					);
-			}
-		)
-		==
-		either_bool(
-			std::string(
-				"failure"
-			)
-		)
-	);
+  CHECK(fcppt::monad::bind(either_int(20), [](int) {
+          return either_bool(std::string("failure"));
+        }) == either_bool(std::string("failure")));
 }

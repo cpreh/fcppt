@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/reference_impl.hpp>
@@ -16,161 +15,47 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::maybe_void",
-	"[optional]"
-)
+TEST_CASE("optional::maybe_void", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	int result{
-		0
-	};
+  int result{0};
 
-	fcppt::optional::maybe_void(
-		optional_int(
-			10
-		),
-		[
-			&result
-		](
-			int const _val
-		)
-		{
-			result =
-				_val;
-		}
-	);
+  fcppt::optional::maybe_void(optional_int(10), [&result](int const _val) { result = _val; });
 
-	CHECK(
-		result
-		==
-		10
-	);
+  CHECK(result == 10);
 
-	fcppt::optional::maybe_void(
-		optional_int(),
-		[
-			&result
-		](
-			int const _val
-		)
-		{
-			result =
-				_val;
-		}
-	);
+  fcppt::optional::maybe_void(optional_int(), [&result](int const _val) { result = _val; });
 
-	CHECK(
-		result
-		==
-		10
-	);
+  CHECK(result == 10);
 
-	optional_int temp(
-		0
-	);
+  optional_int temp(0);
 
-	fcppt::optional::maybe_void(
-		temp,
-		[](
-			int &_val
-		)
-		{
-			_val = 30;
-		}
-	);
+  fcppt::optional::maybe_void(temp, [](int &_val) { _val = 30; });
 
-	CHECK(
-		temp
-		==
-		optional_int(
-			30
-		)
-	);
+  CHECK(temp == optional_int(30));
 }
 
-TEST_CASE(
-	"optional::maybe_void ref",
-	"[optional]"
-)
+TEST_CASE("optional::maybe_void ref", "[optional]")
 {
-	int result{
-		0
-	};
+  int result{0};
 
-	using
-	optional_int_ref
-	=
-	fcppt::optional::reference<
-		int
-	>;
+  using optional_int_ref = fcppt::optional::reference<int>;
 
-	fcppt::optional::maybe_void(
-		optional_int_ref{
-			fcppt::make_ref(
-				result
-			)
-		},
-		[](
-			fcppt::reference<
-				int
-			> const _val
-		)
-		{
-			_val.get() = 1;
-		}
-	);
+  fcppt::optional::maybe_void(
+      optional_int_ref{fcppt::make_ref(result)},
+      [](fcppt::reference<int> const _val) { _val.get() = 1; });
 
-	CHECK(
-		result
-		==
-		1
-	);
+  CHECK(result == 1);
 }
 
-TEST_CASE(
-	"optional::maybe_void move",
-	"[optional]"
-)
+TEST_CASE("optional::maybe_void move", "[optional]")
 {
-	using
-	int_unique_ptr
-	=
-	fcppt::unique_ptr<
-		int
-	>;
+  using int_unique_ptr = fcppt::unique_ptr<int>;
 
-	using
-	optional_int_unique_ptr
-	=
-	fcppt::optional::object<
-		int_unique_ptr
-	>;
+  using optional_int_unique_ptr = fcppt::optional::object<int_unique_ptr>;
 
-	fcppt::optional::maybe_void(
-		optional_int_unique_ptr(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				1
-			)
-		),
-		[](
-			int_unique_ptr &&_ptr
-		)
-		{
-			CHECK(
-				*_ptr
-				==
-				1
-			);
-		}
-	);
+  fcppt::optional::maybe_void(
+      optional_int_unique_ptr(fcppt::make_unique_ptr<int>(1)),
+      [](int_unique_ptr &&_ptr) { CHECK(*_ptr == 1); });
 }

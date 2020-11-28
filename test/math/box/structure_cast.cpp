@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -13,54 +12,14 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::box::structure_cast",
-	"[math],[box]"
-)
+TEST_CASE("math::box::structure_cast", "[math],[box]")
 {
-	using
-	box_f2
-	=
-	fcppt::math::box::object<
-		float,
-		2
-	>;
+  using box_f2 = fcppt::math::box::object<float, 2>;
 
-	using
-	box_i2
-	=
-	fcppt::math::box::object<
-		int,
-		2
-	>;
+  using box_i2 = fcppt::math::box::object<int, 2>;
 
-	CHECK(
-		fcppt::math::box::structure_cast<
-			box_i2,
-			fcppt::cast::float_to_int_fun
-		>(
-			box_f2{
-				box_f2::vector(
-					1.5F,
-					2.5F
-				),
-				box_f2::dim(
-					3.5F,
-					4.5F
-				)
-			}
-		)
-		==
-		box_i2(
-			box_i2::vector(
-				1,
-				2
-			),
-			box_i2::dim(
-				3,
-				4
-			)
-		)
-	);
+  CHECK(
+      fcppt::math::box::structure_cast<box_i2, fcppt::cast::float_to_int_fun>(
+          box_f2{box_f2::vector(1.5F, 2.5F), box_f2::dim(3.5F, 4.5F)}) ==
+      box_i2(box_i2::vector(1, 2), box_i2::dim(3, 4)));
 }

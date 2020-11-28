@@ -3,71 +3,21 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/homogenous_pair.hpp>
 #include <fcppt/homogenous_pair_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"homogenous_pair",
-	"[various]"
-)
+TEST_CASE("homogenous_pair", "[various]")
 {
-	using
-	int_homogenous_pair
-	=
-	fcppt::homogenous_pair<
-		int
-	>;
+  using int_homogenous_pair = fcppt::homogenous_pair<int>;
 
-	CHECK(
-		int_homogenous_pair(
-			5,
-			6
-		)
-		<
-		int_homogenous_pair(
-			5,
-			7
-		)
-	);
+  CHECK(int_homogenous_pair(5, 6) < int_homogenous_pair(5, 7));
 
-	CHECK(
-		int_homogenous_pair(
-			3,
-			6
-		)
-		<
-		int_homogenous_pair(
-			5,
-			1
-		)
-	);
+  CHECK(int_homogenous_pair(3, 6) < int_homogenous_pair(5, 1));
 
-	CHECK(
-		int_homogenous_pair(
-			3,
-			6
-		)
-		!=
-		int_homogenous_pair(
-			5,
-			1
-		)
-	);
+  CHECK(int_homogenous_pair(3, 6) != int_homogenous_pair(5, 1));
 
-	CHECK(
-		int_homogenous_pair(
-			2,
-			3
-		)
-		==
-		int_homogenous_pair(
-			2,
-			3
-		)
-	);
+  CHECK(int_homogenous_pair(2, 3) == int_homogenous_pair(2, 3));
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/contains.hpp>
@@ -18,50 +17,18 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"random::wrapper::uniform_container",
-	"[random]"
-)
+TEST_CASE("random::wrapper::uniform_container", "[random]")
 {
-	using
-	string_vector
-	=
-	std::vector<
-		std::string
-	>;
+  using string_vector = std::vector<std::string>;
 
-	string_vector const strings{
-		std::string("test1"),
-		std::string("test2")
-	};
+  string_vector const strings{std::string("test1"), std::string("test2")};
 
-	auto dist(
-		fcppt::random::wrapper::make_uniform_container(
-			fcppt::make_cref(
-				strings
-			)
-		)
-	);
+  auto dist(fcppt::random::wrapper::make_uniform_container(fcppt::make_cref(strings)));
 
-	auto &dist_inner(
-		FCPPT_ASSERT_OPTIONAL_ERROR(
-			dist
-		)
-	);
+  auto &dist_inner(FCPPT_ASSERT_OPTIONAL_ERROR(dist));
 
-	fcppt::random::generator::minstd_rand generator(
-		fcppt::random::generator::seed_from_chrono<
-			fcppt::random::generator::minstd_rand::seed
-		>()
-	);
+  fcppt::random::generator::minstd_rand generator(
+      fcppt::random::generator::seed_from_chrono<fcppt::random::generator::minstd_rand::seed>());
 
-	CHECK(
-		fcppt::algorithm::contains(
-			strings,
-			dist_inner(
-				generator
-			)
-		)
-	);
+  CHECK(fcppt::algorithm::contains(strings, dist_inner(generator)));
 }

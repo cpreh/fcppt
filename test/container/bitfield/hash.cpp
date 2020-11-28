@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/container/bitfield/comparison.hpp>
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/std_hash.hpp>
@@ -12,71 +11,25 @@
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::bitfield hash",
-	"[container],[bitfield]"
-)
+TEST_CASE("container::bitfield hash", "[container],[bitfield]")
 {
-	enum class test_enum
-	{
-		test1,
-		test2,
-		fcppt_maximum = test2
-	};
+  enum class test_enum
+  {
+    test1,
+    test2,
+    fcppt_maximum = test2
+  };
 
-	using
-	bitfield
-	=
-	fcppt::container::bitfield::enum_object<
-		test_enum
-	>;
+  using bitfield = fcppt::container::bitfield::enum_object<test_enum>;
 
-	using
-	bitfield_set
-	=
-	std::unordered_set<
-		bitfield
-	>;
+  using bitfield_set = std::unordered_set<bitfield>;
 
-	bitfield_set const values{
-		bitfield{
-			test_enum::test1
-		},
-		bitfield{
-			test_enum::test1,
-			test_enum::test2
-		}
-	};
+  bitfield_set const values{
+      bitfield{test_enum::test1}, bitfield{test_enum::test1, test_enum::test2}};
 
-	CHECK(
-		values.count(
-			bitfield{
-				test_enum::test1,
-				test_enum::test2
-			}
-		)
-		==
-		1U
-	);
+  CHECK(values.count(bitfield{test_enum::test1, test_enum::test2}) == 1U);
 
-	CHECK(
-		values.count(
-			bitfield{
-				test_enum::test1
-			}
-		)
-		==
-		1U
-	);
+  CHECK(values.count(bitfield{test_enum::test1}) == 1U);
 
-	CHECK(
-		values.count(
-			bitfield{
-				test_enum::test2
-			}
-		)
-		==
-		0U
-	);
+  CHECK(values.count(bitfield{test_enum::test2}) == 0U);
 }

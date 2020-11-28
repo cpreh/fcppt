@@ -3,39 +3,22 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/io/expect.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"io::expect",
-	"[io]"
-)
+TEST_CASE("io::expect", "[io]")
 {
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	std::istringstream stream{
-		"xy"
-	};
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  std::istringstream stream{"xy"};
 
-	fcppt::io::expect(
-		stream,
-		'x'
-	);
+  fcppt::io::expect(stream, 'x');
 
-	CHECK(
-		stream
-	);
+  CHECK(stream);
 
-	fcppt::io::expect(
-		stream,
-		'x'
-	);
+  fcppt::io::expect(stream, 'x');
 
-	CHECK_FALSE(
-		stream
-	);
+  CHECK_FALSE(stream);
 }

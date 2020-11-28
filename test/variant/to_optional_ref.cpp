@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_comparison.hpp>
@@ -17,89 +16,31 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"variant::to_optional_ref",
-	"[variant]"
-)
+TEST_CASE("variant::to_optional_ref", "[variant]")
 {
-	using
-	variant
-	=
-	fcppt::variant::object<
-		int,
-		std::string
-	>;
+  using variant = fcppt::variant::object<int, std::string>;
 
-	{
-		variant var(
-			1
-		);
+  {
+    variant var(1);
 
-		CHECK(
-			fcppt::variant::to_optional_ref<
-				int
-			>(
-				var
-			)
-			==
-			fcppt::optional::reference<
-				int
-			>(
-				fcppt::make_ref(
-					var.get_unsafe<
-						int
-					>()
-				)
-			)
-		);
+    CHECK(
+        fcppt::variant::to_optional_ref<int>(var) ==
+        fcppt::optional::reference<int>(fcppt::make_ref(var.get_unsafe<int>())));
 
-		CHECK(
-			fcppt::variant::to_optional_ref<
-				std::string
-			>(
-				var
-			)
-			==
-			fcppt::optional::reference<
-				std::string
-			>()
-		);
-	}
+    CHECK(
+        fcppt::variant::to_optional_ref<std::string>(var) ==
+        fcppt::optional::reference<std::string>());
+  }
 
-	{
-		variant const var(
-			1
-		);
+  {
+    variant const var(1);
 
-		CHECK(
-			fcppt::variant::to_optional_ref<
-				int const
-			>(
-				var
-			)
-			==
-			fcppt::optional::reference<
-				int const
-			>(
-				fcppt::make_cref(
-					var.get_unsafe<
-						int
-					>()
-				)
-			)
-		);
+    CHECK(
+        fcppt::variant::to_optional_ref<int const>(var) ==
+        fcppt::optional::reference<int const>(fcppt::make_cref(var.get_unsafe<int>())));
 
-		CHECK(
-			fcppt::variant::to_optional_ref<
-				std::string const
-			>(
-				var
-			)
-			==
-			fcppt::optional::reference<
-				std::string const
-			>()
-		);
-	}
+    CHECK(
+        fcppt::variant::to_optional_ref<std::string const>(var) ==
+        fcppt::optional::reference<std::string const>());
+  }
 }

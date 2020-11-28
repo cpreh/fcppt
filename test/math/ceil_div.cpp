@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/ceil_div.hpp>
 #include <fcppt/math/ceil_div_signed.hpp>
 #include <fcppt/optional/make.hpp>
@@ -13,103 +12,24 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::ceil_div",
-	"[math]"
-)
+TEST_CASE("math::ceil_div", "[math]")
 {
-	CHECK(
-		fcppt::math::ceil_div(
-			0U,
-			1U
-		)
-		==
-		fcppt::optional::make(
-			0U
-		)
-	);
+  CHECK(fcppt::math::ceil_div(0U, 1U) == fcppt::optional::make(0U));
 
-	CHECK(
-		fcppt::math::ceil_div(
-			1U,
-			1U
-		)
-		==
-		fcppt::optional::make(
-			1U
-		)
-	);
+  CHECK(fcppt::math::ceil_div(1U, 1U) == fcppt::optional::make(1U));
 
-	CHECK(
-		fcppt::math::ceil_div(
-			5U,
-			3U
-		)
-		==
-		fcppt::optional::make(
-			2U
-		)
-	);
+  CHECK(fcppt::math::ceil_div(5U, 3U) == fcppt::optional::make(2U));
 
-	CHECK(
-		fcppt::math::ceil_div(
-			6U,
-			3U
-		)
-		==
-		fcppt::optional::make(
-			2U
-		)
-	);
+  CHECK(fcppt::math::ceil_div(6U, 3U) == fcppt::optional::make(2U));
 
-	CHECK(
-		fcppt::math::ceil_div(
-			2U,
-			0U
-		)
-		==
-		fcppt::optional::object<
-			unsigned
-		>{}
-	);
+  CHECK(fcppt::math::ceil_div(2U, 0U) == fcppt::optional::object<unsigned>{});
 }
 
-TEST_CASE(
-	"math::ceil_div_signed",
-	"[math]"
-)
+TEST_CASE("math::ceil_div_signed", "[math]")
 {
-	CHECK(
-		fcppt::math::ceil_div_signed(
-			-3,
-			2
-		)
-		==
-		fcppt::optional::make(
-			-1
-		)
-	);
+  CHECK(fcppt::math::ceil_div_signed(-3, 2) == fcppt::optional::make(-1));
 
-	CHECK(
-		fcppt::math::ceil_div_signed(
-			5,
-			3
-		)
-		==
-		fcppt::optional::make(
-			2
-		)
-	);
+  CHECK(fcppt::math::ceil_div_signed(5, 3) == fcppt::optional::make(2));
 
-	CHECK(
-		fcppt::math::ceil_div_signed(
-			5,
-			0
-		)
-		==
-		fcppt::optional::object<
-			int
-		>{}
-	);
+  CHECK(fcppt::math::ceil_div_signed(5, 0) == fcppt::optional::object<int>{});
 }

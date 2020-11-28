@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/nonmovable.hpp>
@@ -20,183 +19,74 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 class base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
-public:
-	base()
-	= default;
+  FCPPT_NONMOVABLE(base);
 
-	virtual
-	~base()
-	= default;
+public:
+  base() = default;
+
+  virtual ~base() = default;
 };
 
-class derived
-:
-	public base
+class derived : public base
 {
-	FCPPT_NONMOVABLE(
-		derived
-	);
-public:
-	derived()
-	= default;
+  FCPPT_NONMOVABLE(derived);
 
-	~derived()
-	override
-	= default;
+public:
+  derived() = default;
+
+  ~derived() override = default;
 };
 
-using
-optional_base_ref
-=
-fcppt::optional::reference<
-	base
->;
+using optional_base_ref = fcppt::optional::reference<base>;
 
-using
-optional_derived_ref
-=
-fcppt::optional::reference<
-	derived
->;
+using optional_derived_ref = fcppt::optional::reference<derived>;
 
 }
 
-TEST_CASE(
-	"optional::dynamic_cast",
-	"[optional]"
-)
+TEST_CASE("optional::dynamic_cast", "[optional]")
 {
-	optional_base_ref const empty_base{};
+  optional_base_ref const empty_base{};
 
-	CHECK(
-		fcppt::optional::dynamic_cast_<
-			derived
-		>(
-			empty_base
-		)
-		==
-		optional_derived_ref{}
-	);
+  CHECK(fcppt::optional::dynamic_cast_<derived>(empty_base) == optional_derived_ref{});
 
-	derived derived_object{};
+  derived derived_object{};
 
-	optional_base_ref const base_ref{
-		fcppt::reference<
-			base
-		>(
-			derived_object
-		)
-	};
+  optional_base_ref const base_ref{fcppt::reference<base>(derived_object)};
 
-	optional_derived_ref const derived_ref(
-		fcppt::optional::dynamic_cast_<
-			derived
-		>(
-			base_ref
-		)
-	);
+  optional_derived_ref const derived_ref(fcppt::optional::dynamic_cast_<derived>(base_ref));
 
-	CHECK(
-		derived_ref
-		==
-		optional_derived_ref{
-			fcppt::make_ref(
-				derived_object
-			)
-		}
-	);
+  CHECK(derived_ref == optional_derived_ref{fcppt::make_ref(derived_object)});
 }
 
-TEST_CASE(
-	"optional::static_cast",
-	"[optional]"
-)
+TEST_CASE("optional::static_cast", "[optional]")
 {
-	optional_base_ref const empty_base{};
+  optional_base_ref const empty_base{};
 
-	CHECK(
-		fcppt::optional::static_cast_<
-			derived
-		>(
-			empty_base
-		)
-		==
-		optional_derived_ref{}
-	);
+  CHECK(fcppt::optional::static_cast_<derived>(empty_base) == optional_derived_ref{});
 
-	derived derived_object{};
+  derived derived_object{};
 
-	optional_base_ref const base_ref{
-		fcppt::reference<
-			base
-		>(
-			derived_object
-		)
-	};
+  optional_base_ref const base_ref{fcppt::reference<base>(derived_object)};
 
-	optional_derived_ref const derived_ref(
-		fcppt::optional::static_cast_<
-			derived
-		>(
-			base_ref
-		)
-	);
+  optional_derived_ref const derived_ref(fcppt::optional::static_cast_<derived>(base_ref));
 
-	CHECK(
-		derived_ref
-		==
-		optional_derived_ref(
-			fcppt::make_ref(
-				derived_object
-			)
-		)
-	);
+  CHECK(derived_ref == optional_derived_ref(fcppt::make_ref(derived_object)));
 }
 
-TEST_CASE(
-	"optional::const_cast"
-	"[optional]"
-)
+TEST_CASE("optional::const_cast"
+          "[optional]")
 {
-	using
-	optional_const_base_ref
-	=
-	fcppt::optional::reference<
-		base const
-	>;
+  using optional_const_base_ref = fcppt::optional::reference<base const>;
 
-	base object{};
+  base object{};
 
-	optional_const_base_ref const ref(
-		fcppt::make_cref(
-			object
-		)
-	);
+  optional_const_base_ref const ref(fcppt::make_cref(object));
 
-	optional_base_ref const nonconst_ref(
-		fcppt::optional::const_cast_<
-			base
-		>(
-			ref
-		)
-	);
+  optional_base_ref const nonconst_ref(fcppt::optional::const_cast_<base>(ref));
 
-	CHECK(
-		nonconst_ref
-		==
-		optional_base_ref(
-			fcppt::make_ref(
-				object
-			)
-		)
-	);
+  CHECK(nonconst_ref == optional_base_ref(fcppt::make_ref(object)));
 }

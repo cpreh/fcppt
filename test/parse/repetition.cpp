@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
@@ -22,113 +21,34 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::repetition",
-	"[parse]"
-)
+TEST_CASE("parse::repetition", "[parse]")
 {
-	auto const parser{
-		*fcppt::parse::char_{}
-	};
+  auto const parser{*fcppt::parse::char_{}};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{}) ==
+      fcppt::parse::make_success<char>(result_type{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"XYZ"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				'X', 'Y', 'Z'
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"XYZ"}) ==
+      fcppt::parse::make_success<char>(result_type{'X', 'Y', 'Z'}));
 }
 
-TEST_CASE(
-	"parse::repetition backtrack",
-	"[parse]"
-)
+TEST_CASE("parse::repetition backtrack", "[parse]")
 {
-	auto const parser{
-		*fcppt::parse::literal{
-			'X'
-		}
-		>>
-		fcppt::parse::char_{}
-	};
+  auto const parser{*fcppt::parse::literal{'X'} >> fcppt::parse::char_{}};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"XXXY"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			std::make_tuple(
-				std::vector<
-					fcppt::unit
-				>{
-					fcppt::unit{},
-					fcppt::unit{},
-					fcppt::unit{}
-				},
-				'Y'
-			)
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"XXXY"}) ==
+      fcppt::parse::make_success<char>(std::make_tuple(
+          std::vector<fcppt::unit>{fcppt::unit{}, fcppt::unit{}, fcppt::unit{}}, 'Y')));
 }
 
-TEST_CASE(
-	"parse::repetition fatal",
-	"[parse]"
-)
+TEST_CASE("parse::repetition fatal", "[parse]")
 {
-	auto const parser{
-		*fcppt::parse::make_fatal(
-			fcppt::parse::literal{
-				'X'
-			}
-		)
-	};
+  auto const parser{*fcppt::parse::make_fatal(fcppt::parse::literal{'X'})};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"XXYX"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"XXYX"}).has_failure());
 }

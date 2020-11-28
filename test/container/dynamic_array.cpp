@@ -3,58 +3,25 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/container/dynamic_array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
+template class fcppt::container::dynamic_array<int>;
 
-template
-class
-fcppt::container::dynamic_array<
-	int
->;
-
-TEST_CASE(
-	"container::dynamic_array",
-	"[container]"
-)
+TEST_CASE("container::dynamic_array", "[container]")
 {
-	using
-	int_array
-	=
-	fcppt::container::dynamic_array<
-		int
-	>;
+  using int_array = fcppt::container::dynamic_array<int>;
 
-	int_array array1{
-		10
-	};
+  int_array array1{10};
 
-	CHECK(
-		std::distance(
-			array1.data(),
-			array1.data_end()
-		)
-		==
-		10
-	);
+  CHECK(std::distance(array1.data(), array1.data_end()) == 10);
 
-	CHECK(
-		array1.size()
-		==
-		10U
-	);
+  CHECK(array1.size() == 10U);
 
-	int_array array2{
-		0
-	};
+  int_array array2{0};
 
-	CHECK(
-		array2.size()
-		==
-		0U
-	);
+  CHECK(array2.size() == 0U);
 }

@@ -3,37 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"make_unique_ptr",
-	"[smartptr]"
-)
+TEST_CASE("make_unique_ptr", "[smartptr]")
 {
-	using
-	int_ptr
-	=
-	fcppt::unique_ptr<
-		int
-	>;
+  using int_ptr = fcppt::unique_ptr<int>;
 
-	int_ptr const test1(
-		fcppt::make_unique_ptr<
-			int
-		>(
-			42
-		)
-	);
+  int_ptr const test1(fcppt::make_unique_ptr<int>(42));
 
-	CHECK(
-		*test1
-		==
-		42
-	);
+  CHECK(*test1 == 42);
 }

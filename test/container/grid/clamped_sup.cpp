@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/container/grid/clamped_sup.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -13,43 +12,11 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::grid::clamped_sup",
-	"[container],[grid]"
-)
+TEST_CASE("container::grid::clamped_sup", "[container],[grid]")
 {
-	using
-	dim
-	=
-	fcppt::container::grid::dim<
-		unsigned,
-		2
-	>;
+  using dim = fcppt::container::grid::dim<unsigned, 2>;
 
-	using
-	pos
-	=
-	fcppt::container::grid::pos<
-		unsigned,
-		2
-	>;
+  using pos = fcppt::container::grid::pos<unsigned, 2>;
 
-	CHECK(
-		fcppt::container::grid::clamped_sup(
-			pos(
-				4U,
-				5U
-			),
-			dim(
-				3U,
-				3U
-			)
-		).get()
-		==
-		pos(
-			3U,
-			3U
-		)
-	);
+  CHECK(fcppt::container::grid::clamped_sup(pos(4U, 5U), dim(3U, 3U)).get() == pos(3U, 3U));
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
@@ -11,70 +10,26 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::tree swap",
-	"[container],[tree]"
-)
+TEST_CASE("container::tree swap", "[container],[tree]")
 {
-	using
-	i_tree
-	=
-	fcppt::container::tree::object<
-		int
-	>;
+  using i_tree = fcppt::container::tree::object<int>;
 
-	i_tree tree1(
-		1
-	);
+  i_tree tree1(1);
 
-	tree1.push_back(
-		2
-	);
+  tree1.push_back(2);
 
-	i_tree tree2(
-		3
-	);
+  i_tree tree2(3);
 
-	swap(
-		tree1,
-		tree2
-	);
+  swap(tree1, tree2);
 
-	CHECK(
-		tree1.value()
-		==
-		3
-	);
+  CHECK(tree1.value() == 3);
 
-	CHECK(
-		tree2.value()
-		==
-		1
-	);
+  CHECK(tree2.value() == 1);
 
-	CHECK_FALSE(
-		tree2.empty()
-	);
+  CHECK_FALSE(tree2.empty());
 
-	fcppt::optional::maybe(
-		tree2.front(),
-		[]{
-			CHECK(
-				false
-			);
-		},
-		[](
-			fcppt::reference<
-				i_tree
-			> const _tree
-		)
-		{
-			CHECK(
-				_tree.get().value()
-				==
-				2
-			);
-		}
-	);
+  fcppt::optional::maybe(
+      tree2.front(),
+      [] { CHECK(false); },
+      [](fcppt::reference<i_tree> const _tree) { CHECK(_tree.get().value() == 2); });
 }

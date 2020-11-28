@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
@@ -12,71 +11,17 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::matrix::at_r_c",
-	"[math],[matrix]"
-)
+TEST_CASE("math::matrix::at_r_c", "[math],[matrix]")
 {
-	using
-	matrix_type
-	=
-	fcppt::math::matrix::static_<
-		int,
-		2,
-		2
-	>;
+  using matrix_type = fcppt::math::matrix::static_<int, 2, 2>;
 
-	matrix_type const mat(
-		fcppt::math::matrix::row(
-			-3, 2
-		),
-		fcppt::math::matrix::row(
-			-1, 0
-		)
-	);
+  matrix_type const mat(fcppt::math::matrix::row(-3, 2), fcppt::math::matrix::row(-1, 0));
 
-	CHECK(
-		fcppt::math::matrix::at_r_c<
-			0,
-			0
-		>(
-			mat
-		)
-		==
-		-3
-	);
+  CHECK(fcppt::math::matrix::at_r_c<0, 0>(mat) == -3);
 
-	CHECK(
-		fcppt::math::matrix::at_r_c<
-			0,
-			1
-		>(
-			mat
-		)
-		==
-		2
-	);
+  CHECK(fcppt::math::matrix::at_r_c<0, 1>(mat) == 2);
 
-	CHECK(
-		fcppt::math::matrix::at_r_c<
-			1,
-			0
-		>(
-			mat
-		)
-		==
-		-1
-	);
+  CHECK(fcppt::math::matrix::at_r_c<1, 0>(mat) == -1);
 
-	CHECK(
-		fcppt::math::matrix::at_r_c<
-			1,
-			1
-		>(
-			mat
-		)
-		==
-		0
-	);
+  CHECK(fcppt::math::matrix::at_r_c<1, 1>(mat) == 0);
 }

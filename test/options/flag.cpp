@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/either.hpp>
@@ -27,141 +26,53 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"options::flag",
-	"[options]"
-)
+TEST_CASE("options::flag", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(arg_label);
 
-	using
-	int_flag_type
-	=
-	fcppt::options::flag<
-		arg_label,
-		int
-	>;
+  using int_flag_type = fcppt::options::flag<arg_label, int>;
 
-	int_flag_type const int_flag{
-		fcppt::options::optional_short_name{
-			fcppt::options::short_name{
-				FCPPT_TEXT("f")
-			}
-		},
-		fcppt::options::long_name{
-			FCPPT_TEXT("flag")
-		},
-		fcppt::options::make_active_value(
-			42
-		),
-		fcppt::options::make_inactive_value(
-			10
-		),
-		fcppt::options::optional_help_text{}
-	};
+  int_flag_type const int_flag{
+      fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
+      fcppt::options::long_name{FCPPT_TEXT("flag")},
+      fcppt::options::make_active_value(42),
+      fcppt::options::make_inactive_value(10),
+      fcppt::options::optional_help_text{}};
 
-	CHECK(
-		fcppt::options::parse(
-			int_flag,
-			fcppt::args_vector{
-				FCPPT_TEXT("-f")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			int_flag_type::result_type{
-				arg_label{}
-					= 42
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(int_flag, fcppt::args_vector{FCPPT_TEXT("-f")}) ==
+      fcppt::options::make_success(int_flag_type::result_type{arg_label{} = 42}));
 
-	CHECK(
-		fcppt::options::parse(
-			int_flag,
-			fcppt::args_vector{
-				FCPPT_TEXT("--flag")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			int_flag_type::result_type{
-				arg_label{}
-					= 42
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(int_flag, fcppt::args_vector{FCPPT_TEXT("--flag")}) ==
+      fcppt::options::make_success(int_flag_type::result_type{arg_label{} = 42}));
 
-	CHECK(
-		fcppt::options::parse(
-			int_flag,
-			fcppt::args_vector{}
-		)
-		==
-		fcppt::options::make_success(
-			int_flag_type::result_type{
-				arg_label{}
-					= 10
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(int_flag, fcppt::args_vector{}) ==
+      fcppt::options::make_success(int_flag_type::result_type{arg_label{} = 10}));
 
-	CHECK_THROWS_AS(
-		int_flag_type(
-			fcppt::options::optional_short_name{},
-			fcppt::options::long_name{
-				FCPPT_TEXT("flag")
-			},
-			fcppt::options::make_active_value(
-				0
-			),
-			fcppt::options::make_inactive_value(
-				0
-			),
-			fcppt::options::optional_help_text{}
-		),
-		fcppt::options::exception
-	);
+  CHECK_THROWS_AS(
+      int_flag_type(
+          fcppt::options::optional_short_name{},
+          fcppt::options::long_name{FCPPT_TEXT("flag")},
+          fcppt::options::make_active_value(0),
+          fcppt::options::make_inactive_value(0),
+          fcppt::options::optional_help_text{}),
+      fcppt::options::exception);
 }
 
-TEST_CASE(
-	"options::flag duplicate names",
-	"[options]"
-)
+TEST_CASE("options::flag duplicate names", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		flag_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(flag_label);
 
-	using
-	flag_type
-	=
-	fcppt::options::flag<
-		flag_label,
-		int
-	>;
+  using flag_type = fcppt::options::flag<flag_label, int>;
 
-	CHECK_THROWS_AS(
-		flag_type(
-			fcppt::options::optional_short_name{
-				fcppt::options::short_name{
-					FCPPT_TEXT("flag")
-				}
-			},
-			fcppt::options::long_name{
-				FCPPT_TEXT("flag")
-			},
-			fcppt::options::make_active_value(
-				0
-			),
-			fcppt::options::make_inactive_value(
-				1
-			),
-			fcppt::options::optional_help_text{}
-		),
-		fcppt::options::duplicate_names
-	);
+  CHECK_THROWS_AS(
+      flag_type(
+          fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("flag")}},
+          fcppt::options::long_name{FCPPT_TEXT("flag")},
+          fcppt::options::make_active_value(0),
+          fcppt::options::make_inactive_value(1),
+          fcppt::options::optional_help_text{}),
+      fcppt::options::duplicate_names);
 }

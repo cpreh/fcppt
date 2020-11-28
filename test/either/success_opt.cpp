@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/success_opt.hpp>
 #include <fcppt/optional/object.hpp>
@@ -13,48 +12,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"either::success_opt",
-	"[either]"
-)
+TEST_CASE("either::success_opt", "[either]")
 {
-	using
-	either_int
-	=
-	fcppt::either::object<
-		std::string,
-		int
-	>;
+  using either_int = fcppt::either::object<std::string, int>;
 
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	CHECK(
-		fcppt::either::success_opt(
-			either_int(
-				std::string(
-					"test"
-				)
-			)
-		)
-		==
-		optional_int()
-	);
+  CHECK(fcppt::either::success_opt(either_int(std::string("test"))) == optional_int());
 
-	CHECK(
-		fcppt::either::success_opt(
-			either_int(
-				42
-			)
-		)
-		==
-		optional_int(
-			42
-		)
-	);
+  CHECK(fcppt::either::success_opt(either_int(42)) == optional_int(42));
 }

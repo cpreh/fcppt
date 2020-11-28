@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
@@ -13,42 +12,18 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm_loop_break tuple"
-	"[algorithm_loop_break]"
-)
+TEST_CASE("algorithm_loop_break tuple"
+          "[algorithm_loop_break]")
 {
-	auto const tuple(
-		std::make_tuple(
-			42,
-			10L
-		)
-	);
+  auto const tuple(std::make_tuple(42, 10L));
 
-	std::string result{};
+  std::string result{};
 
-	fcppt::algorithm::loop_break(
-		tuple,
-		[
-			&result
-		](
-			auto const &_value
-		)
-		{
-			result +=
-				std::to_string(
-					_value
-				);
+  fcppt::algorithm::loop_break(tuple, [&result](auto const &_value) {
+    result += std::to_string(_value);
 
-			return
-				fcppt::loop::continue_;
-		}
-	);
+    return fcppt::loop::continue_;
+  });
 
-	CHECK(
-		result
-		==
-		"4210"
-	);
+  CHECK(result == "4210");
 }

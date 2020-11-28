@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/std_hash.hpp>
@@ -12,56 +11,15 @@
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::dim::hash",
-	"[math],[dim]"
-)
+TEST_CASE("math::dim::hash", "[math],[dim]")
 {
-	using
-	int3_dim
-	=
-	fcppt::math::dim::static_<
-		int,
-		3
-	>;
+  using int3_dim = fcppt::math::dim::static_<int, 3>;
 
-	using
-	dim_set
-	=
-	std::unordered_set<
-		int3_dim
-	>;
+  using dim_set = std::unordered_set<int3_dim>;
 
-	dim_set const set{
-		int3_dim(
-			1,
-			2,
-			3
-		)
-	};
+  dim_set const set{int3_dim(1, 2, 3)};
 
-	CHECK(
-		set.count(
-			int3_dim(
-				1,
-				2,
-				3
-			)
-		)
-		==
-		1U
-	);
+  CHECK(set.count(int3_dim(1, 2, 3)) == 1U);
 
-	CHECK(
-		set.count(
-			int3_dim(
-				4,
-				2,
-				3
-			)
-		)
-		==
-		0U
-	);
+  CHECK(set.count(int3_dim(4, 2, 3)) == 0U);
 }

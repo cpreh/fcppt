@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/optional.hpp>
@@ -24,102 +23,33 @@
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::optional",
-	"[parse]"
-)
+TEST_CASE("parse::optional", "[parse]")
 {
-	auto const parser{
-		-fcppt::parse::char_{}
-	};
+  auto const parser{-fcppt::parse::char_{}};
 
-	using
-	result_type
-	=
-	fcppt::parse::result_of<
-		decltype(
-			parser
-		)
-	>;
+  using result_type = fcppt::parse::result_of<decltype(parser)>;
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{}) ==
+      fcppt::parse::make_success<char>(result_type{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				'X'
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			result_type{
-				'X'
-			}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{'X'}) ==
+      fcppt::parse::make_success<char>(result_type{'X'}));
 }
 
-TEST_CASE(
-	"parse::optional backtrack",
-	"[parse]"
-)
+TEST_CASE("parse::optional backtrack", "[parse]")
 {
-	auto const parser{
-		-fcppt::parse::int_<int>{}
-		>>
-		fcppt::parse::char_{}
-	};
+  auto const parser{-fcppt::parse::int_<int>{} >> fcppt::parse::char_{}};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{"X"}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			std::make_tuple(
-				fcppt::optional::object<
-					int
-				>{},
-				'X'
-			)
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"X"}) ==
+      fcppt::parse::make_success<char>(std::make_tuple(fcppt::optional::object<int>{}, 'X')));
 }
 
-TEST_CASE(
-	"parse::optional fatal",
-	"[parse]"
-)
+TEST_CASE("parse::optional fatal", "[parse]")
 {
-	auto const parser{
-		-
-		fcppt::parse::make_fatal(
-			fcppt::parse::int_<int>{}
-		)
-	};
+  auto const parser{-fcppt::parse::make_fatal(fcppt::parse::int_<int>{})};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{"X"}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"X"}).has_failure());
 }

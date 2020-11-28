@@ -3,50 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
+  using vector = std::vector<int>;
 
-	using
-	vector
-	=
-	std::vector<
-		int
-	>;
+  using array = std::array<bool, 2>;
 
-	using
-	array
-	=
-	std::array<
-		bool,
-		2
-	>;
+  static_assert(std::is_same_v<fcppt::type_traits::value_type<vector>, int>, "value_type not int");
 
-	static_assert(
-		std::is_same_v<
-			fcppt::type_traits::value_type<
-				vector
-			>,
-			int
-		>,
-		"value_type not int"
-	);
-
-	static_assert(
-		std::is_same_v<
-			fcppt::type_traits::value_type<
-				array
-			>,
-			bool
-		>,
-		"value_type not bool"
-	);
+  static_assert(std::is_same_v<fcppt::type_traits::value_type<array>, bool>, "value_type not bool");
 }

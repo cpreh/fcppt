@@ -3,45 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
-
-int
-main()
+int main()
 {
-	using
-	f1x1
-	=
-	fcppt::math::matrix::static_<
-		float,
-		1,
-		1
-	>;
+  using f1x1 = fcppt::math::matrix::static_<float, 1, 1>;
 
-	static_assert(
-		fcppt::math::matrix::has_dim<
-			f1x1,
-			1,
-			1
-		>::value
-	);
+  static_assert(fcppt::math::matrix::has_dim<f1x1, 1, 1>::value);
 
-	using
-	f2x3
-	=
-	fcppt::math::matrix::static_<
-		float,
-		2,
-		3
-	>;
+  using f2x3 = fcppt::math::matrix::static_<float, 2, 3>;
 
-	static_assert(
-		fcppt::math::matrix::has_dim<
-			f2x3,
-			2,
-			3
-		>::value
-	);
+  static_assert(fcppt::math::matrix::has_dim<f2x3, 2, 3>::value);
 }

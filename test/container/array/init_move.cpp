@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/array/init_move.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -11,46 +10,13 @@
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"array::init_move",
-	"[container],[array]"
-)
+TEST_CASE("array::init_move", "[container],[array]")
 {
-	using
-	movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using movable = fcppt::catch_::movable<int>;
 
-	using
-	movable_2_array
-	=
-	std::array<
-		movable,
-		2
-	>;
+  using movable_2_array = std::array<movable, 2>;
 
-	CHECK(
-		fcppt::container::array::init_move<
-			movable_2_array
-		>(
-			[]{
-				return
-					movable{
-						42
-					};
-			}
-		)
-		==
-		movable_2_array{{
-			movable{
-				42
-			},
-			movable{
-				42
-			}
-		}}
-	);
+  CHECK(fcppt::container::array::init_move<movable_2_array>([] {
+          return movable{42};
+        }) == movable_2_array{{movable{42}, movable{42}}});
 }

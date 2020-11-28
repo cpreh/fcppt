@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/join.hpp>
@@ -15,83 +14,26 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::join",
-	"[optional]"
-)
+TEST_CASE("optional::join", "[optional]")
 {
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+  using optional_string = fcppt::optional::object<std::string>;
 
-	using
-	optional_optional_string
-	=
-	fcppt::optional::object<
-		optional_string
-	>;
+  using optional_optional_string = fcppt::optional::object<optional_string>;
 
-	CHECK(
-		fcppt::optional::join(
-			optional_optional_string(
-				optional_string(
-					"test2"
-				)
-			)
-		)
-		==
-		optional_string(
-			"test2"
-		)
-	);
+  CHECK(
+      fcppt::optional::join(optional_optional_string(optional_string("test2"))) ==
+      optional_string("test2"));
 
-	CHECK(
-		fcppt::optional::join(
-			optional_optional_string()
-		)
-		==
-		optional_string()
-	);
+  CHECK(fcppt::optional::join(optional_optional_string()) == optional_string());
 }
 
-TEST_CASE(
-	"optional::join move",
-	"[optional]"
-)
+TEST_CASE("optional::join move", "[optional]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	optional_int_movable
-	=
-	fcppt::optional::object<
-		int_movable
-	>;
+  using optional_int_movable = fcppt::optional::object<int_movable>;
 
-	CHECK(
-		fcppt::optional::join(
-			fcppt::optional::make(
-				optional_int_movable{
-					int_movable{
-						42
-					}
-				}
-			)
-		)
-		==
-		optional_int_movable{
-			int_movable{
-				42
-			}
-		}
-	);
+  CHECK(
+      fcppt::optional::join(fcppt::optional::make(optional_int_movable{int_movable{42}})) ==
+      optional_int_movable{int_movable{42}});
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -18,302 +17,112 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"record::object",
-	"[record]"
-)
+TEST_CASE("record::object", "[record]")
 {
-	class copy
-	{
-	public:
-		explicit
-		copy(
-			int const _value
-		)
-		:
-			value_(
-				_value
-			)
-		{
-		}
+  class copy
+  {
+  public:
+    explicit copy(int const _value) : value_(_value) {}
 
-		[[nodiscard]]
-		int
-		value() const
-		{
-			return
-				value_;
-		}
-	private:
-		int value_;
-	};
+    [[nodiscard]] int value() const { return value_; }
 
-	class move_only
-	{
-		FCPPT_NONCOPYABLE(
-			move_only
-		);
-	public:
-		explicit
-		move_only(
-			int const _value
-		)
-		:
-			value_{
-				_value
-			},
-			valid_{
-				true
-			}
-		{
-		}
+  private:
+    int value_;
+  };
 
-		move_only(
-			move_only &&_other
-		)
-		noexcept
-		:
-			value_{
-				_other.value_
-			},
-			valid_{
-				_other.valid_
-			}
-		{
-			_other.valid_ =
-				false;
-		}
+  class move_only
+  {
+    FCPPT_NONCOPYABLE(move_only);
 
-		move_only &
-		operator=(
-			move_only &&_other
-		)
-		noexcept
-		{
-			if(
-				&_other
-				==
-				this
-			)
-			{
-				return
-					*this;
-			}
+  public:
+    explicit move_only(int const _value) : value_{_value}, valid_{true} {}
 
-			value_ =
-				_other.value_;
+    move_only(move_only &&_other) noexcept : value_{_other.value_}, valid_{_other.valid_}
+    {
+      _other.valid_ = false;
+    }
 
-			valid_ =
-				_other.valid_;
+    move_only &operator=(move_only &&_other) noexcept
+    {
+      if (&_other == this)
+      {
+        return *this;
+      }
 
-			_other.valid_ =
-				false;
+      value_ = _other.value_;
 
-			return
-				*this;
-		}
+      valid_ = _other.valid_;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wunneeded-member-function)
-		~move_only()
-		= default;
-FCPPT_PP_POP_WARNING
+      _other.valid_ = false;
 
-		[[nodiscard]]
-		int
-		value() const
-		{
-			CHECK(
-				valid_
-			);
+      return *this;
+    }
 
-			return
-				value_;
-		}
-	private:
-		int value_;
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_CLANG_WARNING(-Wunneeded-member-function)
+    ~move_only() = default;
+    FCPPT_PP_POP_WARNING
 
-		bool valid_;
-	};
+    [[nodiscard]] int value() const
+    {
+      CHECK(valid_);
 
-	FCPPT_RECORD_MAKE_LABEL(
-		int_label
-	);
+      return value_;
+    }
 
-	FCPPT_RECORD_MAKE_LABEL(
-		bool_label
-	);
+  private:
+    int value_;
 
-	FCPPT_RECORD_MAKE_LABEL(
-		copy_label
-	);
+    bool valid_;
+  };
 
-	FCPPT_RECORD_MAKE_LABEL(
-		move_only_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(int_label);
 
-	using
-	my_record
-	=
-	fcppt::record::object<
-		fcppt::record::element<
-			int_label,
-			int
-		>,
-		fcppt::record::element<
-			bool_label,
-			bool
-		>,
-		fcppt::record::element<
-			copy_label,
-			copy
-		>,
-		fcppt::record::element<
-			move_only_label,
-			move_only
-		>
-	>;
+  FCPPT_RECORD_MAKE_LABEL(bool_label);
 
-	int const arg1{
-		4
-	};
+  FCPPT_RECORD_MAKE_LABEL(copy_label);
 
-	my_record test{
-		int_label{} =
-			arg1,
-		bool_label{} =
-			true,
-		copy_label{} =
-			copy(
-				42
-			),
-		move_only_label{} =
-			move_only{
-				10
-			}
-	};
+  FCPPT_RECORD_MAKE_LABEL(move_only_label);
 
-	CHECK(
-		fcppt::record::get<
-			int_label
-		>(
-			test
-		)
-		==
-		4
-	);
+  using my_record = fcppt::record::object<
+      fcppt::record::element<int_label, int>,
+      fcppt::record::element<bool_label, bool>,
+      fcppt::record::element<copy_label, copy>,
+      fcppt::record::element<move_only_label, move_only>>;
 
-	CHECK(
-		fcppt::record::get<
-			bool_label
-		>(
-			test
-		)
-	);
+  int const arg1{4};
 
-	CHECK(
-		fcppt::record::get<
-			copy_label
-		>(
-			test
-		).value()
-		==
-		42
-	);
+  my_record test{
+      int_label{} = arg1,
+      bool_label{} = true,
+      copy_label{} = copy(42),
+      move_only_label{} = move_only{10}};
 
-	CHECK(
-		fcppt::record::get<
-			move_only_label
-		>(
-			test
-		).value()
-		==
-		10
-	);
+  CHECK(fcppt::record::get<int_label>(test) == 4);
 
-	my_record test2(
-		std::move(
-			test
-		)
-	);
+  CHECK(fcppt::record::get<bool_label>(test));
 
-	CHECK(
-		fcppt::record::get<
-			int_label
-		>(
-			test2
-		)
-		==
-		4
-	);
+  CHECK(fcppt::record::get<copy_label>(test).value() == 42);
 
-	CHECK(
-		fcppt::record::get<
-			bool_label
-		>(
-			test2
-		)
-	);
+  CHECK(fcppt::record::get<move_only_label>(test).value() == 10);
 
-	CHECK(
-		fcppt::record::get<
-			move_only_label
-		>(
-			test2
-		).value()
-		==
-		10
-	);
+  my_record test2(std::move(test));
 
-	fcppt::record::set<
-		bool_label
-	>(
-		test2,
-		false
-	);
+  CHECK(fcppt::record::get<int_label>(test2) == 4);
 
-	CHECK_FALSE(
-		fcppt::record::get<
-			bool_label
-		>(
-			test2
-		)
-	);
+  CHECK(fcppt::record::get<bool_label>(test2));
 
-	fcppt::record::set<
-		move_only_label
-	>(
-		test2,
-		move_only{
-			100
-		}
-	);
+  CHECK(fcppt::record::get<move_only_label>(test2).value() == 10);
 
-	CHECK(
-		fcppt::record::get<
-			move_only_label
-		>(
-			test2
-		).value()
-		==
-		100
-	);
+  fcppt::record::set<bool_label>(test2, false);
 
-	fcppt::record::get<
-		int_label
-	>(
-		test2
-	) =
-		42;
+  CHECK_FALSE(fcppt::record::get<bool_label>(test2));
 
-	CHECK(
-		fcppt::record::get<
-			int_label
-		>(
-			test2
-		)
-		==
-		42
-	);
+  fcppt::record::set<move_only_label>(test2, move_only{100});
+
+  CHECK(fcppt::record::get<move_only_label>(test2).value() == 100);
+
+  fcppt::record::get<int_label>(test2) = 42;
+
+  CHECK(fcppt::record::get<int_label>(test2) == 42);
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/copy_value.hpp>
@@ -15,38 +14,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::copy_value",
-	"[optional]"
-)
+TEST_CASE("optional::copy_value", "[optional]")
 {
-	using
-	optional_string_ref
-	=
-	fcppt::optional::reference<
-		std::string const
-	>;
+  using optional_string_ref = fcppt::optional::reference<std::string const>;
 
-	std::string const test(
-		"test1"
-	);
+  std::string const test("test1");
 
-	CHECK(
-		fcppt::optional::copy_value(
-			optional_string_ref{
-				fcppt::make_cref(
-					test
-				)
-			}
-		)
-		==
-		fcppt::optional::object<
-			std::string
-		>(
-			std::string(
-				"test1"
-			)
-		)
-	);
+  CHECK(
+      fcppt::optional::copy_value(optional_string_ref{fcppt::make_cref(test)}) ==
+      fcppt::optional::object<std::string>(std::string("test1")));
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit_fwd.hpp>
 #include <fcppt/monad/bind.hpp>
 #include <fcppt/monad/constructor.hpp>
@@ -19,106 +18,30 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+static_assert(std::is_same_v<
+              fcppt::monad::constructor<fcppt::optional::object<fcppt::unit>, int>,
+              fcppt::optional::object<int>>);
 
-static_assert(
-	std::is_same_v<
-		fcppt::monad::constructor<
-			fcppt::optional::object<
-				fcppt::unit
-			>,
-			int
-		>,
-		fcppt::optional::object<
-			int
-		>
-	>
-);
-
-static_assert(
-	std::is_same_v<
-		fcppt::monad::inner_type<
-			fcppt::optional::object<
-				int
-			>
-		>,
-		int
-	>
-);
+static_assert(std::is_same_v<fcppt::monad::inner_type<fcppt::optional::object<int>>, int>);
 
 }
 
-TEST_CASE(
-	"optional monad return",
-	"[optional]"
-)
+TEST_CASE("optional monad return", "[optional]")
 {
-	CHECK(
-		fcppt::monad::return_<
-			fcppt::optional::object<
-				fcppt::unit
-			>
-		>(
-			5
-		)
-		==
-		fcppt::optional::make(
-			5
-		)
-	);
+  CHECK(fcppt::monad::return_<fcppt::optional::object<fcppt::unit>>(5) == fcppt::optional::make(5));
 }
 
-TEST_CASE(
-	"optional monad bind",
-	"[optional]"
-)
+TEST_CASE("optional monad bind", "[optional]")
 {
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+  using optional_string = fcppt::optional::object<std::string>;
 
-	CHECK(
-		fcppt::monad::bind(
-			optional_string{
-				"test2"
-			},
-			[](
-				std::string const &_value
-			)
-			{
-				return
-					optional_string{
-						"test1"
-						+
-						_value
-					};
-			}
-		)
-		==
-		optional_string{
-			"test1test2"
-		}
-	);
+  CHECK(fcppt::monad::bind(optional_string{"test2"}, [](std::string const &_value) {
+          return optional_string{"test1" + _value};
+        }) == optional_string{"test1test2"});
 
-	CHECK(
-		fcppt::monad::bind(
-			optional_string{
-				"test2"
-			},
-			[](
-				std::string const &
-			)
-			{
-				return
-					optional_string{};
-			}
-		)
-		==
-		optional_string{}
-	);
+  CHECK(fcppt::monad::bind(optional_string{"test2"}, [](std::string const &) {
+          return optional_string{};
+        }) == optional_string{});
 }

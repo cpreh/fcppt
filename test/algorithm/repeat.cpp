@@ -3,35 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm::repeat",
-	"[algorithm]"
-)
+TEST_CASE("algorithm::repeat", "[algorithm]")
 {
-	int value(
-		0
-	);
+  int value(0);
 
-	fcppt::algorithm::repeat(
-		10,
-		[
-			&value
-		]()
-		{
-			++value;
-		}
-	);
+  fcppt::algorithm::repeat(10, [&value]() { ++value; });
 
-	CHECK(
-		value
-		==
-		10
-	);
+  CHECK(value == 10);
 }

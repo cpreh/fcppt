@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/bit/shift_count.hpp>
 #include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/test.hpp>
@@ -14,87 +13,36 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::bitfield::underlying_value",
-	"[container],[bitfield]"
-)
+TEST_CASE("container::bitfield::underlying_value", "[container],[bitfield]")
 {
-	enum class test_enum
-	{
-		test1,
-		test2,
-		test3,
-		fcppt_maximum = test3
-	};
+  enum class test_enum
+  {
+    test1,
+    test2,
+    test3,
+    fcppt_maximum = test3
+  };
 
-	using
-	bitfield
-	=
-	fcppt::container::bitfield::enum_object<
-		test_enum
-	>;
+  using bitfield = fcppt::container::bitfield::enum_object<test_enum>;
 
-	using
-	internal_type
-	=
-	bitfield::internal_type;
+  using internal_type = bitfield::internal_type;
 
-	auto const check_bit(
-		[](
-			internal_type const _value,
-			test_enum const _enum
-		)
-		-> bool
-		{
-		return
-				fcppt::bit::test(
-					_value,
-					fcppt::bit::shifted_mask<
-						bitfield::internal_type
-					>(
-						fcppt::cast::enum_to_int<
-							fcppt::bit::shift_count
-						>(
-							_enum
-						)
-					)
-				);
-		}
-	);
+  auto const check_bit([](internal_type const _value, test_enum const _enum) -> bool {
+    return fcppt::bit::test(
+        _value,
+        fcppt::bit::shifted_mask<bitfield::internal_type>(
+            fcppt::cast::enum_to_int<fcppt::bit::shift_count>(_enum)));
+  });
 
-	bitfield field1(
-		bitfield::null()
-	);
+  bitfield field1(bitfield::null());
 
-	field1[
-		test_enum::test2
-	] = true;
+  field1[test_enum::test2] = true;
 
-	bitfield::internal_type const value(
-		fcppt::container::bitfield::underlying_value(
-			field1
-		)
-	);
+  bitfield::internal_type const value(fcppt::container::bitfield::underlying_value(field1));
 
-	CHECK_FALSE(
-		check_bit(
-			value,
-			test_enum::test1
-		)
-	);
+  CHECK_FALSE(check_bit(value, test_enum::test1));
 
-	CHECK(
-		check_bit(
-			value,
-			test_enum::test2
-		)
-	);
+  CHECK(check_bit(value, test_enum::test2));
 
-	CHECK_FALSE(
-		check_bit(
-			value,
-			test_enum::test3
-		)
-	);
+  CHECK_FALSE(check_bit(value, test_enum::test3));
 }

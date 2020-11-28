@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/nonmovable.hpp>
@@ -13,91 +12,47 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 class base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
-public:
-	base()
-	= default;
+  FCPPT_NONMOVABLE(base);
 
-	virtual
-	~base()
-	= default;
+public:
+  base() = default;
+
+  virtual ~base() = default;
 };
 
-class derived
-:
-	public base
+class derived : public base
 {
-	FCPPT_NONMOVABLE(
-		derived
-	);
-public:
-	derived()
-	:
-		base()
-	{
-	}
+  FCPPT_NONMOVABLE(derived);
 
-	~derived()
-	override
-	= default;
+public:
+  derived() : base() {}
+
+  ~derived() override = default;
 };
 
 }
 
-TEST_CASE(
-	"reference_to_base",
-	"[ref]"
-)
+TEST_CASE("reference_to_base", "[ref]")
 {
-	{
-		derived nonconst_derived{};
+  {
+    derived nonconst_derived{};
 
-		fcppt::reference<
-			base
-		> const nonconst_base(
-			fcppt::reference_to_base<
-				base
-			>(
-				fcppt::make_ref(
-					nonconst_derived
-				)
-			)
-		);
+    fcppt::reference<base> const nonconst_base(
+        fcppt::reference_to_base<base>(fcppt::make_ref(nonconst_derived)));
 
-		CHECK(
-			&nonconst_derived
-			==
-			&nonconst_base.get()
-		);
-	}
+    CHECK(&nonconst_derived == &nonconst_base.get());
+  }
 
-	{
-		derived const const_derived{};
+  {
+    derived const const_derived{};
 
-		fcppt::reference<
-			base const
-		> const const_base(
-			fcppt::reference_to_base<
-				base const
-			>(
-				fcppt::make_cref(
-					const_derived
-				)
-			)
-		);
+    fcppt::reference<base const> const const_base(
+        fcppt::reference_to_base<base const>(fcppt::make_cref(const_derived)));
 
-		CHECK(
-			&const_derived
-			==
-			&const_base.get()
-		);
-	}
+    CHECK(&const_derived == &const_base.get());
+  }
 }

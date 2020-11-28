@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/narrow.hpp>
 #include <fcppt/optional_std_string.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -13,21 +12,9 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"narrow",
-	"[string]"
-)
+TEST_CASE("narrow", "[string]")
 {
-	std::wstring const test{};
+  std::wstring const test{};
 
-	CHECK(
-		fcppt::narrow(
-			test
-		)
-		==
-		fcppt::optional_std_string{
-			std::string{}
-		}
-	);
+  CHECK(fcppt::narrow(test) == fcppt::optional_std_string{std::string{}});
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/variant/apply.hpp>
@@ -16,237 +15,81 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+using int_unique_ptr = fcppt::unique_ptr<int>;
 
-using
-int_unique_ptr
-=
-fcppt::unique_ptr<
-	int
->;
+using string_unique_ptr = fcppt::unique_ptr<std::string>;
 
-using
-string_unique_ptr
-=
-fcppt::unique_ptr<
-	std::string
->;
-
-using
-bool_unique_ptr
-=
-fcppt::unique_ptr<
-	bool
->;
+using bool_unique_ptr = fcppt::unique_ptr<bool>;
 
 struct function
 {
-	template<
-		typename T1,
-		typename T2,
-		typename T3
-	>
-	void
-	operator()(
-		T1 &,
-		T2 &,
-		T3 &
-	) const
-	{
-		CHECK(
-			false
-		);
-	}
+  template <typename T1, typename T2, typename T3>
+  void operator()(T1 &, T2 &, T3 &) const
+  {
+    CHECK(false);
+  }
 
-	void
-	operator()(
-		int_unique_ptr &_int, // NOLINT(google-runtime-references)
-		string_unique_ptr &_string, // NOLINT(google-runtime-references)
-		bool_unique_ptr &_bool // NOLINT(google-runtime-references)
-	) const
-	{
-		CHECK(
-			*_int
-			==
-			1
-		);
+  void operator()(
+      int_unique_ptr &_int, // NOLINT(google-runtime-references)
+      string_unique_ptr &_string, // NOLINT(google-runtime-references)
+      bool_unique_ptr &_bool // NOLINT(google-runtime-references)
+  ) const
+  {
+    CHECK(*_int == 1);
 
-		CHECK(
-			*_string
-			==
-			"test"
-		);
+    CHECK(*_string == "test");
 
-		CHECK(
-			*_bool
-		);
-	}
+    CHECK(*_bool);
+  }
 };
 
-using
-move_result
-=
-std::tuple<
-	int_unique_ptr,
-	string_unique_ptr,
-	bool_unique_ptr
->;
+using move_result = std::tuple<int_unique_ptr, string_unique_ptr, bool_unique_ptr>;
 
 struct move_function
 {
-	template<
-		typename T1,
-		typename T2,
-		typename T3
-	>
-	move_result
-	operator()(
-		T1 &&,
-		T2 &&,
-		T3 &&
-	) const
-	{
-		throw
-			std::runtime_error{
-				"impossible"
-			};
-	}
+  template <typename T1, typename T2, typename T3>
+  move_result operator()(T1 &&, T2 &&, T3 &&) const
+  {
+    throw std::runtime_error{"impossible"};
+  }
 
-	move_result
-	operator()(
-		int_unique_ptr &&_int,
-		string_unique_ptr &&_string,
-		bool_unique_ptr &&_bool
-	) const
-	{
-		return
-			move_result{
-				std::move(
-					_int
-				),
-				std::move(
-					_string
-				),
-				std::move(
-					_bool
-				)
-			};
-	}
+  move_result
+  operator()(int_unique_ptr &&_int, string_unique_ptr &&_string, bool_unique_ptr &&_bool) const
+  {
+    return move_result{std::move(_int), std::move(_string), std::move(_bool)};
+  }
 };
 
-using
-variant
-=
-fcppt::variant::object<
-	int_unique_ptr,
-	string_unique_ptr,
-	bool_unique_ptr
->;
+using variant = fcppt::variant::object<int_unique_ptr, string_unique_ptr, bool_unique_ptr>;
 
 }
 
-TEST_CASE(
-	"variant::apply ref",
-	"[variant]"
-)
+TEST_CASE("variant::apply ref", "[variant]")
 {
-	variant int_variant(
-		fcppt::make_unique_ptr<
-			int
-		>(
-			1
-		)
-	);
+  variant int_variant(fcppt::make_unique_ptr<int>(1));
 
-	variant string_variant(
-		fcppt::make_unique_ptr<
-			std::string
-		>(
-			std::string{
-				"test"
-			}
-		)
-	);
+  variant string_variant(fcppt::make_unique_ptr<std::string>(std::string{"test"}));
 
-	variant bool_variant(
-		fcppt::make_unique_ptr<
-			bool
-		>(
-			true
-		)
-	);
+  variant bool_variant(fcppt::make_unique_ptr<bool>(true));
 
-	function const func{};
+  function const func{};
 
-	fcppt::variant::apply(
-		func,
-		int_variant,
-		string_variant,
-		bool_variant
-	);
+  fcppt::variant::apply(func, int_variant, string_variant, bool_variant);
 }
 
-TEST_CASE(
-	"variant_apply move",
-	"[variant]"
-)
+TEST_CASE("variant_apply move", "[variant]")
 {
-	move_result const result{
-		fcppt::variant::apply(
-			move_function{},
-			variant{
-				fcppt::make_unique_ptr<
-					int
-				>(
-					1
-				)
-			},
-			variant{
-				fcppt::make_unique_ptr<
-					std::string
-				>(
-					std::string{
-						"test"
-					}
-				)
-			},
-			variant{
-				fcppt::make_unique_ptr<
-					bool
-				>(
-					true
-				)
-			}
-		)
-	};
+  move_result const result{fcppt::variant::apply(
+      move_function{},
+      variant{fcppt::make_unique_ptr<int>(1)},
+      variant{fcppt::make_unique_ptr<std::string>(std::string{"test"})},
+      variant{fcppt::make_unique_ptr<bool>(true)})};
 
-	CHECK(
-		*std::get<
-			0
-		>(
-			result
-		)
-		==
-		1
-	);
+  CHECK(*std::get<0>(result) == 1);
 
-	CHECK(
-		*std::get<
-			1
-		>(
-			result
-		)
-		==
-		"test"
-	);
+  CHECK(*std::get<1>(result) == "test");
 
-	CHECK(
-		*std::get<
-			2
-		>(
-			result
-		)
-	);
+  CHECK(*std::get<2>(result));
 }

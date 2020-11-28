@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit_fwd.hpp>
 #include <fcppt/monad/constructor.hpp>
 #include <fcppt/optional/monad.hpp>
@@ -12,21 +11,9 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::monad::constructor<
-				fcppt::optional::object<
-					fcppt::unit
-				>,
-				int
-			>,
-			fcppt::optional::object<
-				int
-			>
-		>
-	);
+  static_assert(std::is_same_v<
+                fcppt::monad::constructor<fcppt::optional::object<fcppt::unit>, int>,
+                fcppt::optional::object<int>>);
 }

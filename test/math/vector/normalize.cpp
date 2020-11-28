@@ -3,42 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::vector::normalize",
-	"[math],[vector]"
-)
+TEST_CASE("math::vector::normalize", "[math],[vector]")
 {
-	using
-	float2_vec
-	=
-	fcppt::math::vector::static_<
-		float,
-		2
-	>;
+  using float2_vec = fcppt::math::vector::static_<float, 2>;
 
-	CHECK(
-		fcppt::math::vector::normalize(
-			float2_vec{
-				2.F,
-				0.F
-			}
-		).has_value()
-	);
+  CHECK(fcppt::math::vector::normalize(float2_vec{2.F, 0.F}).has_value());
 
-	CHECK_FALSE(
-		fcppt::math::vector::normalize(
-			float2_vec{
-				0.F,
-				0.F
-			}
-		).has_value()
-	);
+  CHECK_FALSE(fcppt::math::vector::normalize(float2_vec{0.F, 0.F}).has_value());
 }

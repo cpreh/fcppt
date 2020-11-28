@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
@@ -19,44 +18,15 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::literal",
-	"[parse]"
-)
+TEST_CASE("parse::literal", "[parse]")
 {
-	fcppt::parse::literal const parser{
-		'X'
-	};
+  fcppt::parse::literal const parser{'X'};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"X"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			fcppt::unit{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"X"}) ==
+      fcppt::parse::make_success<char>(fcppt::unit{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"Y"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());
 }

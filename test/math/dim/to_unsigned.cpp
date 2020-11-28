@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/dim/static.hpp>
@@ -12,39 +11,11 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::dim::to_unsigned",
-	"[math],[dim]"
-)
+TEST_CASE("math::dim::to_unsigned", "[math],[dim]")
 {
-	using
-	ui2_dim
-	=
-	fcppt::math::dim::static_<
-		unsigned,
-		2
-	>;
+  using ui2_dim = fcppt::math::dim::static_<unsigned, 2>;
 
-	using
-	i2_dim
-	=
-	fcppt::math::dim::static_<
-		int,
-		2
-	>;
+  using i2_dim = fcppt::math::dim::static_<int, 2>;
 
-	CHECK(
-		fcppt::math::dim::to_unsigned(
-			i2_dim{
-				1,
-				2
-			}
-		)
-		==
-		ui2_dim(
-			1U,
-			2U
-		)
-	);
+  CHECK(fcppt::math::dim::to_unsigned(i2_dim{1, 2}) == ui2_dim(1U, 2U));
 }

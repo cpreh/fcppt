@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/either.hpp>
@@ -25,75 +24,24 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"options::optional",
-	"[options]"
-)
+TEST_CASE("options::optional", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(arg_label);
 
-	auto const parser{
-		fcppt::options::make_optional(
-			fcppt::options::argument<
-				arg_label,
-				int
-			>{
-				fcppt::options::long_name{
-					FCPPT_TEXT("arg1")
-				},
-				fcppt::options::optional_help_text{}
-			}
-		)
-	};
+  auto const parser{fcppt::options::make_optional(fcppt::options::argument<arg_label, int>{
+      fcppt::options::long_name{FCPPT_TEXT("arg1")}, fcppt::options::optional_help_text{}})};
 
-	using
-	parser_type
-	=
-	decltype(
-		parser
-	);
+  using parser_type = decltype(parser);
 
-	CHECK(
-		fcppt::options::parse(
-			parser,
-			fcppt::args_vector{
-				FCPPT_TEXT("123")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			parser_type::result_type{
-				arg_label{} =
-					fcppt::optional::make(
-						123
-					)
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(parser, fcppt::args_vector{FCPPT_TEXT("123")}) ==
+      fcppt::options::make_success(
+          parser_type::result_type{arg_label{} = fcppt::optional::make(123)}));
 
-	CHECK(
-		fcppt::options::parse(
-			parser,
-			fcppt::args_vector{
-				FCPPT_TEXT("test")
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::options::parse(parser, fcppt::args_vector{FCPPT_TEXT("test")}).has_failure());
 
-	CHECK(
-		fcppt::options::parse(
-			parser,
-			fcppt::args_vector{}
-		)
-		==
-		fcppt::options::make_success(
-			parser_type::result_type{
-				arg_label{} =
-					fcppt::optional::nothing{}
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(parser, fcppt::args_vector{}) ==
+      fcppt::options::make_success(
+          parser_type::result_type{arg_label{} = fcppt::optional::nothing{}}));
 }

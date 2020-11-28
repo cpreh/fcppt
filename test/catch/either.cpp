@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/either.hpp>
@@ -12,31 +11,9 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"catch::either",
-	"[catch]"
-)
+TEST_CASE("catch::either", "[catch]")
 {
-	using
-	either
-	=
-	fcppt::either::object<
-		fcppt::string,
-		int
-	>;
+  using either = fcppt::either::object<fcppt::string, int>;
 
-	CHECK(
-		either{
-			fcppt::string{
-				FCPPT_TEXT("test")
-			}
-		}
-		==
-		either{
-			fcppt::string{
-				FCPPT_TEXT("test")
-			}
-		}
-	);
+  CHECK(either{fcppt::string{FCPPT_TEXT("test")}} == either{fcppt::string{FCPPT_TEXT("test")}});
 }

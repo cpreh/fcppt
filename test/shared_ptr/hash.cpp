@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/shared_ptr_output.hpp>
@@ -13,79 +12,29 @@
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"shared_ptr hash",
-	"[smartptr]"
-)
+TEST_CASE("shared_ptr hash", "[smartptr]")
 {
-	using
-	int_shared_ptr
-	=
-	fcppt::shared_ptr<
-		int
-	>;
+  using int_shared_ptr = fcppt::shared_ptr<int>;
 
-	using
-	int_shared_ptr_set
-	=
-	std::unordered_set<
-		int_shared_ptr
-	>;
+  using int_shared_ptr_set = std::unordered_set<int_shared_ptr>;
 
-	int_shared_ptr const x(
-		fcppt::make_shared_ptr<
-			int
-		>(
-			1
-		)
-	);
+  int_shared_ptr const x(fcppt::make_shared_ptr<int>(1));
 
-	int_shared_ptr_set const set{
-		x
-	};
+  int_shared_ptr_set const set{x};
 
-	SECTION(
-		"found"
-	)
-	{
-		auto const it(
-			set.find(
-				x
-			)
-		);
+  SECTION("found")
+  {
+    auto const it(set.find(x));
 
-		REQUIRE(
-			it
-			!=
-			set.end()
-		);
+    REQUIRE(it != set.end());
 
-		CHECK(
-			*it
-			==
-			x
-		);
-	}
+    CHECK(*it == x);
+  }
 
-	SECTION(
-		"not found"
-	)
-	{
-		int_shared_ptr const y(
-			fcppt::make_shared_ptr<
-				int
-			>(
-				1
-			)
-		);
+  SECTION("not found")
+  {
+    int_shared_ptr const y(fcppt::make_shared_ptr<int>(1));
 
-		CHECK(
-			set.count(
-				y
-			)
-			==
-			0U
-		);
-	}
+    CHECK(set.count(y) == 0U);
+  }
 }

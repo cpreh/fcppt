@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/row.hpp>
@@ -12,70 +11,21 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::matrix::determinant",
-	"[math],[matrix]"
-)
+TEST_CASE("math::matrix::determinant", "[math],[matrix]")
 {
-	using
-	large_matrix_type
-	=
-	fcppt::math::matrix::static_<
-		int,
-		3,
-		3
-	>;
+  using large_matrix_type = fcppt::math::matrix::static_<int, 3, 3>;
 
-	using
-	small_matrix_type
-	=
-	fcppt::math::matrix::static_<
-		int,
-		2,
-		2
-	>;
+  using small_matrix_type = fcppt::math::matrix::static_<int, 2, 2>;
 
-	CHECK(
-		fcppt::math::matrix::determinant(
-			large_matrix_type(
-				fcppt::math::matrix::row(
-					1,2,3
-				),
-				fcppt::math::matrix::row(
-					4,5,6
-				),
-				fcppt::math::matrix::row(
-					7,8,9
-				)
-			)
-		)
-		==
-		0
-	);
+  CHECK(
+      fcppt::math::matrix::determinant(large_matrix_type(
+          fcppt::math::matrix::row(1, 2, 3),
+          fcppt::math::matrix::row(4, 5, 6),
+          fcppt::math::matrix::row(7, 8, 9))) == 0);
 
-	CHECK(
-		fcppt::math::matrix::determinant(
-			small_matrix_type(
-				fcppt::math::matrix::row(
-					-3,-5
-				),
-				fcppt::math::matrix::row(
-					-1,-2
-				)
-			)
-		)
-		==
-		1
-	);
+  CHECK(
+      fcppt::math::matrix::determinant(small_matrix_type(
+          fcppt::math::matrix::row(-3, -5), fcppt::math::matrix::row(-1, -2))) == 1);
 
-	CHECK(
-		fcppt::math::matrix::determinant(
-			fcppt::math::matrix::identity<
-				large_matrix_type
-			>()
-		)
-		==
-		1
-	);
+  CHECK(fcppt::math::matrix::determinant(fcppt::math::matrix::identity<large_matrix_type>()) == 1);
 }

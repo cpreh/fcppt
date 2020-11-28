@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
@@ -17,80 +16,23 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::map_values_ref",
-	"[container]"
-)
+TEST_CASE("container::map_values_ref", "[container]")
 {
-	using
-	string_vector_ref
-	=
-	std::vector<
-		fcppt::reference<
-			std::string
-		>
-	>;
+  using string_vector_ref = std::vector<fcppt::reference<std::string>>;
 
-	using
-	string_vector_cref
-	=
-	std::vector<
-		fcppt::reference<
-			std::string const
-		>
-	>;
+  using string_vector_cref = std::vector<fcppt::reference<std::string const>>;
 
-	using
-	int_string_map
-	=
-	std::map<
-		int,
-		std::string
-	>;
+  using int_string_map = std::map<int, std::string>;
 
-	int_string_map map{ // NOLINT(fuchsia-default-arguments-calls)
-		std::make_pair(
-			1,
-			"test1"
-		),
-		std::make_pair(
-			2,
-			"test2"
-		)
-	};
+  int_string_map map{// NOLINT(fuchsia-default-arguments-calls)
+                     std::make_pair(1, "test1"),
+                     std::make_pair(2, "test2")};
 
-	CHECK(
-		fcppt::container::map_values_ref<
-			string_vector_ref
-		>(
-			map
-		)
-		==
-		string_vector_ref{
-			fcppt::make_ref(
-				map[1]
-			),
-			fcppt::make_ref(
-				map[2]
-			)
-		}
-	);
+  CHECK(
+      fcppt::container::map_values_ref<string_vector_ref>(map) ==
+      string_vector_ref{fcppt::make_ref(map[1]), fcppt::make_ref(map[2])});
 
-	CHECK(
-		fcppt::container::map_values_ref<
-			string_vector_cref
-		>(
-			map
-		)
-		==
-		string_vector_cref{
-			fcppt::make_cref(
-				map[1]
-			),
-			fcppt::make_cref(
-				map[2]
-			)
-		}
-	);
+  CHECK(
+      fcppt::container::map_values_ref<string_vector_cref>(map) ==
+      string_vector_cref{fcppt::make_cref(map[1]), fcppt::make_cref(map[2])});
 }

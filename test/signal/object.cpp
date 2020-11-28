@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/range/size.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base.hpp>
@@ -13,216 +12,82 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
-using
-signal_type
-=
-fcppt::signal::object<
-	void ()
->;
+using signal_type = fcppt::signal::object<void()>;
 
 }
 
-TEST_CASE(
-	"signal::object",
-	"[signal]"
-)
+TEST_CASE("signal::object", "[signal]")
 {
-	int counter{
-		0
-	};
+  int counter{0};
 
-	auto const add(
-		[
-			&counter
-		](
-			int const _value
-		)
-		{
-			counter +=
-				_value;
-		}
-	);
+  auto const add([&counter](int const _value) { counter += _value; });
 
-	auto const con_size(
-		[](
-			signal_type const &_sig
-		)
-		{
-			return
-				fcppt::range::size(
-					_sig.connections()
-				);
-		}
-	);
+  auto const con_size(
+      [](signal_type const &_sig) { return fcppt::range::size(_sig.connections()); });
 
-	signal_type sig{};
+  signal_type sig{};
 
-	REQUIRE(
-		sig.empty()
-	);
+  REQUIRE(sig.empty());
 
-	{
-		fcppt::signal::auto_connection const con1(
-			sig.connect(
-				signal_type::function{
-					[
-						&add
-					]{
-						add(
-							1
-						);
-					}
-				}
-			)
-		);
+  {
+    fcppt::signal::auto_connection const con1(
+        sig.connect(signal_type::function{[&add] { add(1); }}));
 
-		CHECK(
-			con_size(
-				sig
-			)
-			==
-			1U
-		);
+    CHECK(con_size(sig) == 1U);
 
-		REQUIRE(
-			counter
-			==
-			0
-		);
+    REQUIRE(counter == 0);
 
-		sig();
+    sig();
 
-		REQUIRE(
-			counter
-			==
-			1
-		);
+    REQUIRE(counter == 1);
 
-		{
-			fcppt::signal::auto_connection const con2(
-				sig.connect(
-					signal_type::function{
-						[
-							&add
-						]{
-							add(
-								2
-							);
-						}
-					}
-				)
-			);
+    {
+      fcppt::signal::auto_connection const con2(
+          sig.connect(signal_type::function{[&add] { add(2); }}));
 
-			CHECK(
-				con_size(
-					sig
-				)
-				==
-				2U
-			);
+      CHECK(con_size(sig) == 2U);
 
-			sig();
+      sig();
 
-			REQUIRE(
-				counter
-				==
-				4
-			);
-		}
+      REQUIRE(counter == 4);
+    }
 
-		CHECK(
-			con_size(
-				sig
-			)
-			==
-			1U
-		);
-	}
+    CHECK(con_size(sig) == 1U);
+  }
 
-	CHECK(
-		con_size(
-			sig
-		)
-		==
-		0U
-	);
+  CHECK(con_size(sig) == 0U);
 
-	REQUIRE(
-		sig.empty()
-	);
+  REQUIRE(sig.empty());
 
-	sig();
+  sig();
 
-	REQUIRE(
-		counter
-		==
-		4
-	);
+  REQUIRE(counter == 4);
 }
 
-TEST_CASE(
-	"signal::object move",
-	"[signal]"
-)
+TEST_CASE("signal::object move", "[signal]")
 {
-	signal_type sig{};
+  signal_type sig{};
 
-	int counter{
-		0
-	};
+  int counter{0};
 
-	fcppt::signal::auto_connection const con1(
-		sig.connect(
-			signal_type::function{
-				[
-					&counter
-				]{
-					++counter;
-				}
-			}
-		)
-	);
+  fcppt::signal::auto_connection const con1(
+      sig.connect(signal_type::function{[&counter] { ++counter; }}));
 
-	signal_type sig2(
-		std::move(
-			sig
-		)
-	);
+  signal_type sig2(std::move(sig));
 
-	CHECK(
-		counter
-		==
-		0
-	);
+  CHECK(counter == 0);
 
-	sig2();
+  sig2();
 
-	CHECK(
-		counter
-		==
-		1
-	);
+  CHECK(counter == 1);
 
-	sig =
-		std::move(
-			sig2
-		);
+  sig = std::move(sig2);
 
-	sig();
+  sig();
 
-	CHECK(
-		counter
-		==
-		2
-	);
+  CHECK(counter == 2);
 
-	CHECK(
-		counter
-		==
-		2
-	);
+  CHECK(counter == 2);
 }

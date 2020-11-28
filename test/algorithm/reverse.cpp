@@ -3,53 +3,25 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm::reverse",
-	"[algorithm]"
-)
+TEST_CASE("algorithm::reverse", "[algorithm]")
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	int_vector const expected{
-		3,2,1
-	};
+  int_vector const expected{3, 2, 1};
 
-	{
-		int_vector const vec{
-			1,2,3
-		};
+  {
+    int_vector const vec{1, 2, 3};
 
-		CHECK(
-			fcppt::algorithm::reverse(
-				vec
-			)
-			==
-			expected
-		);
-	}
+    CHECK(fcppt::algorithm::reverse(vec) == expected);
+  }
 
-	{
-		CHECK(
-			fcppt::algorithm::reverse(
-				int_vector{
-					1,2,3
-				}
-			)
-			==
-			expected
-		);
-	}
+  {
+    CHECK(fcppt::algorithm::reverse(int_vector{1, 2, 3}) == expected);
+  }
 }

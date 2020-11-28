@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/comparison.hpp>
@@ -14,44 +13,11 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::box::init_dim",
-	"[math],[box]"
-)
+TEST_CASE("math::box::init_dim", "[math],[box]")
 {
-	using
-	box2
-	=
-	fcppt::math::box::rect<
-		fcppt::math::size_type
-	>;
+  using box2 = fcppt::math::box::rect<fcppt::math::size_type>;
 
-	CHECK(
-		fcppt::math::box::init_dim<
-			box2
-		>(
-			[](
-				auto const _index
-			)
-			{
-				return
-					fcppt::make_homogenous_pair(
-						_index(),
-						_index()
-					);
-			}
-		)
-		==
-		box2(
-			box2::vector(
-				0U,
-				1U
-			),
-			box2::dim(
-				0U,
-				1U
-			)
-		)
-	);
+  CHECK(fcppt::math::box::init_dim<box2>([](auto const _index) {
+          return fcppt::make_homogenous_pair(_index(), _index());
+        }) == box2(box2::vector(0U, 1U), box2::dim(0U, 1U)));
 }

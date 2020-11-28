@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -18,46 +17,17 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::skipper::space",
-	"[parse]"
-)
+TEST_CASE("parse::skipper::space", "[parse]")
 {
-	auto const parser{
-		fcppt::parse::skipper::space()
-	};
+  auto const parser{fcppt::parse::skipper::space()};
 
-	CHECK(
-		fcppt::test::parse::skipper::skip_string(
-			parser,
-			std::string{}
-		)
-		==
-		fcppt::parse::skipper::make_success<
-			char
-		>()
-	);
+  CHECK(
+      fcppt::test::parse::skipper::skip_string(parser, std::string{}) ==
+      fcppt::parse::skipper::make_success<char>());
 
-	CHECK(
-		fcppt::test::parse::skipper::skip_string(
-			parser,
-			std::string{
-				" \t \n"
-			}
-		)
-		==
-		fcppt::parse::skipper::make_success<
-			char
-		>()
-	);
+  CHECK(
+      fcppt::test::parse::skipper::skip_string(parser, std::string{" \t \n"}) ==
+      fcppt::parse::skipper::make_success<char>());
 
-	CHECK(
-		fcppt::test::parse::skipper::skip_string(
-			parser,
-			std::string{
-				" X "
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::test::parse::skipper::skip_string(parser, std::string{" X "}).has_failure());
 }

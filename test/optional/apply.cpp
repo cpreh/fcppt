@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/optional/apply.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -13,80 +12,24 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::apply",
-	"[optiona;]"
-)
+TEST_CASE("optional::apply", "[optiona;]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	using
-	optional_unsigned
-	=
-	fcppt::optional::object<
-		unsigned
-	>;
+  using optional_unsigned = fcppt::optional::object<unsigned>;
 
-	using
-	optional_string
-	=
-	fcppt::optional::object<
-		std::string
-	>;
+  using optional_string = fcppt::optional::object<std::string>;
 
-	CHECK(
-		fcppt::optional::apply(
-			[](
-				int const _val1,
-				unsigned const _val2
-			)
-			{
-				return
-					std::to_string(
-						_val1
-					)
-					+
-					std::to_string(
-						_val2
-					);
-			},
-			optional_int(
-				10
-			),
-			optional_unsigned(
-				20U
-			)
-		)
-		==
-		optional_string(
-			std::string(
-				"1020"
-			)
-		)
-	);
+  CHECK(
+      fcppt::optional::apply(
+          [](int const _val1, unsigned const _val2) {
+            return std::to_string(_val1) + std::to_string(_val2);
+          },
+          optional_int(10),
+          optional_unsigned(20U)) == optional_string(std::string("1020")));
 
-	CHECK(
-		fcppt::optional::apply(
-			[](
-				int,
-				unsigned
-			)
-			{
-				return
-					std::string{};
-			},
-			optional_int(),
-			optional_unsigned(
-				20
-			)
-		)
-		==
-		optional_string()
-	);
+  CHECK(
+      fcppt::optional::apply(
+          [](int, unsigned) { return std::string{}; }, optional_int(), optional_unsigned(20)) ==
+      optional_string());
 }

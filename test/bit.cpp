@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/bit/mask.hpp>
 #include <fcppt/bit/mask_c.hpp>
 #include <fcppt/bit/shifted_mask.hpp>
@@ -13,71 +12,21 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
-static_assert(
-	fcppt::bit::shifted_mask_c<
-		unsigned,
-		10
-	>().get()
-	==
-	1U
-	<< 10U
-);
+static_assert(fcppt::bit::shifted_mask_c<unsigned, 10>().get() == 1U << 10U);
 
 }
 
-TEST_CASE(
-	"bit",
-	"[bit]"
-)
+TEST_CASE("bit", "[bit]")
 {
-	CHECK(
-		fcppt::bit::shifted_mask<
-			unsigned
-		>(
-			10
-		).get()
-		==
-		1U
-		<<
-		10U
-	);
+  CHECK(fcppt::bit::shifted_mask<unsigned>(10).get() == 1U << 10U);
 
-	auto const mask_c(
-		fcppt::bit::mask_c<
-			unsigned,
-			0xFFU
-		>()
-	);
+  auto const mask_c(fcppt::bit::mask_c<unsigned, 0xFFU>());
 
-	CHECK(
-		mask_c.get()
-		==
-		0xFFU
-	);
+  CHECK(mask_c.get() == 0xFFU);
 
-	CHECK_FALSE(
-		fcppt::bit::test(
-			0xF0U,
-			fcppt::bit::mask<
-				unsigned
-			>(
-				0x0FU
-			)
-		)
-	);
+  CHECK_FALSE(fcppt::bit::test(0xF0U, fcppt::bit::mask<unsigned>(0x0FU)));
 
-	CHECK(
-		fcppt::bit::test(
-			0xF0U,
-			fcppt::bit::mask<
-				unsigned
-			>(
-				0x1FU
-			)
-		)
-	);
+  CHECK(fcppt::bit::test(0xF0U, fcppt::bit::mask<unsigned>(0x1FU)));
 }

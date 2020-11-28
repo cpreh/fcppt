@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
@@ -14,84 +13,27 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::tree::map",
-	"[container],[tree]"
-)
+TEST_CASE("container::tree::map", "[container],[tree]")
 {
-	using
-	int_tree
-	=
-	fcppt::container::tree::object<
-		int
-	>;
+  using int_tree = fcppt::container::tree::object<int>;
 
-	using
-	int_unique_ptr
-	=
-	fcppt::unique_ptr<
-		int
-	>;
+  using int_unique_ptr = fcppt::unique_ptr<int>;
 
-	using
-	int_unique_ptr_tree
-	=
-	fcppt::container::tree::object<
-		int_unique_ptr
-	>;
+  using int_unique_ptr_tree = fcppt::container::tree::object<int_unique_ptr>;
 
-	int_tree test(
-		1
-	);
+  int_tree test(1);
 
-	test.push_back(
-		2
-	);
+  test.push_back(2);
 
-	auto const result(
-		fcppt::container::tree::map<
-			int_unique_ptr_tree
-		>(
-			test,
-			[](
-				int const _value
-			)
-			{
-				return
-					fcppt::make_unique_ptr<
-						int
-					>(
-						_value
-					);
-			}
-		)
-	);
+  auto const result(fcppt::container::tree::map<int_unique_ptr_tree>(
+      test, [](int const _value) { return fcppt::make_unique_ptr<int>(_value); }));
 
-	CHECK(
-		*result.value()
-		==
-		1
-	);
+  CHECK(*result.value() == 1);
 
-	fcppt::optional::maybe(
-		result.back(),
-		[]{
-			CHECK(
-				false
-			);
-		},
-		[](
-			fcppt::reference<
-				int_unique_ptr_tree const
-			> const _ref
-		)
-		{
-			CHECK(
-				2
-				==
-				*_ref.get().value()
-			);
-		}
-	);
+  fcppt::optional::maybe(
+      result.back(),
+      [] { CHECK(false); },
+      [](fcppt::reference<int_unique_ptr_tree const> const _ref) {
+        CHECK(2 == *_ref.get().value());
+      });
 }

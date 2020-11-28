@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/either.hpp>
@@ -28,65 +27,21 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"options::parse_help",
-	"[options]"
-)
+TEST_CASE("options::parse_help", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(arg_label);
 
-	using
-	int_arg_type
-	=
-	fcppt::options::argument<
-		arg_label,
-		int
-	>;
+  using int_arg_type = fcppt::options::argument<arg_label, int>;
 
-	int_arg_type const int_arg{
-		fcppt::options::long_name{
-			FCPPT_TEXT("arg1")
-		},
-		fcppt::options::optional_help_text{}
-	};
+  int_arg_type const int_arg{
+      fcppt::options::long_name{FCPPT_TEXT("arg1")}, fcppt::options::optional_help_text{}};
 
-	CHECK(
-		fcppt::variant::holds_type<
-			fcppt::options::help_text
-		>(
-			fcppt::options::parse_help(
-				fcppt::options::default_help_switch(),
-				int_arg,
-				fcppt::args_vector{
-					FCPPT_TEXT("--help")
-				}
-			)
-		)
-	);
+  CHECK(fcppt::variant::holds_type<fcppt::options::help_text>(fcppt::options::parse_help(
+      fcppt::options::default_help_switch(), int_arg, fcppt::args_vector{FCPPT_TEXT("--help")})));
 
-	CHECK(
-		fcppt::options::parse_help(
-			fcppt::options::default_help_switch(),
-			int_arg,
-			fcppt::args_vector{
-				FCPPT_TEXT("1")
-			}
-		)
-		==
-		fcppt::options::help_result<
-			fcppt::options::result_of<
-				int_arg_type
-			>
-		>{
-			fcppt::options::make_success(
-				int_arg_type::result_type{
-					arg_label{}
-						= 1
-				}
-			)
-		}
-	);
+  CHECK(
+      fcppt::options::parse_help(
+          fcppt::options::default_help_switch(), int_arg, fcppt::args_vector{FCPPT_TEXT("1")}) ==
+      fcppt::options::help_result<fcppt::options::result_of<int_arg_type>>{
+          fcppt::options::make_success(int_arg_type::result_type{arg_label{} = 1})});
 }

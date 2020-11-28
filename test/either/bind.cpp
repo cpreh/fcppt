@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
@@ -12,94 +11,21 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"either::bind",
-	"[either]"
-)
+TEST_CASE("either::bind", "[either]")
 {
-	using
-	either_int
-	=
-	fcppt::either::object<
-		std::string,
-		int
-	>;
+  using either_int = fcppt::either::object<std::string, int>;
 
-	using
-	either_bool
-	=
-	fcppt::either::object<
-		std::string,
-		bool
-	>;
+  using either_bool = fcppt::either::object<std::string, bool>;
 
-	auto const bind_function(
-		[](
-			int const _value
-		)
-		{
-			return
-				either_bool(
-					_value
-					>
-					10
-				);
-		}
-	);
+  auto const bind_function([](int const _value) { return either_bool(_value > 10); });
 
-	CHECK(
-		fcppt::either::bind(
-			either_int(
-				std::string(
-					"test"
-				)
-			),
-			bind_function
-		)
-		==
-		either_bool{
-			std::string{
-				"test"
-			}
-		}
-	);
+  CHECK(
+      fcppt::either::bind(either_int(std::string("test")), bind_function) ==
+      either_bool{std::string{"test"}});
 
-	CHECK(
-		fcppt::either::bind(
-			either_int(
-				20
-			),
-			bind_function
-		)
-		==
-		either_bool(
-			true
-		)
-	);
+  CHECK(fcppt::either::bind(either_int(20), bind_function) == either_bool(true));
 
-	CHECK(
-		fcppt::either::bind(
-			either_int(
-				20
-			),
-			[](
-				int
-			)
-			{
-				return
-					either_bool(
-						std::string(
-							"failure"
-						)
-					);
-			}
-		)
-		==
-		either_bool(
-			std::string(
-				"failure"
-			)
-		)
-	);
+  CHECK(fcppt::either::bind(either_int(20), [](int) {
+          return either_bool(std::string("failure"));
+        }) == either_bool(std::string("failure")));
 }

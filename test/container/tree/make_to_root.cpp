@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/container/tree/make_to_root.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/to_root.hpp>
@@ -11,50 +10,21 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	// TODO(philipp): Make a proper testcase
+  // TODO(philipp): Make a proper testcase
 
-	using
-	i_tree
-	=
-	fcppt::container::tree::object<
-		int
-	>;
+  using i_tree = fcppt::container::tree::object<int>;
 
-	i_tree tree{
-		1
-	};
+  i_tree tree{1};
 
-	static_assert(
-		std::is_same_v<
-			decltype(
-				fcppt::container::tree::make_to_root(
-					tree
-				)
-			),
-			fcppt::container::tree::to_root<
-				i_tree
-			>
-		>
-	);
+  static_assert(std::is_same_v<
+                decltype(fcppt::container::tree::make_to_root(tree)),
+                fcppt::container::tree::to_root<i_tree>>);
 
-	i_tree const c_tree{
-		1
-	};
+  i_tree const c_tree{1};
 
-	static_assert(
-		std::is_same_v<
-			decltype(
-				fcppt::container::tree::make_to_root(
-					c_tree
-				)
-			),
-			fcppt::container::tree::to_root<
-				i_tree const
-			>
-		>
-	);
+  static_assert(std::is_same_v<
+                decltype(fcppt::container::tree::make_to_root(c_tree)),
+                fcppt::container::tree::to_root<i_tree const>>);
 }

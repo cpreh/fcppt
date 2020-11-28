@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char_set.hpp>
@@ -16,59 +15,19 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::char_set",
-	"[parse]"
-)
+TEST_CASE("parse::char_set", "[parse]")
 {
-	fcppt::parse::char_set const parser{
-		'a', 'b', 'c'
-	};
+  fcppt::parse::char_set const parser{'a', 'b', 'c'};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"d"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"d"}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"a"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			'a'
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"a"}) ==
+      fcppt::parse::make_success<char>('a'));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"b"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			'b'
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"b"}) ==
+      fcppt::parse::make_success<char>('b'));
 }

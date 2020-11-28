@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/identity.hpp>
@@ -20,167 +19,49 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
+float const epsilon{0.001F};
 
-float const epsilon{
-	0.001F
-};
-
-template<
-	typename Matrix
->
-bool
-compare_matrices(
-	Matrix const &_m1,
-	Matrix const &_m2
-)
+template <typename Matrix>
+bool compare_matrices(Matrix const &_m1, Matrix const &_m2)
 {
-	return
-		fcppt::math::matrix::componentwise_equal(
-			_m1,
-			_m2,
-			epsilon
-		);
+  return fcppt::math::matrix::componentwise_equal(_m1, _m2, epsilon);
 }
 
 }
 
-TEST_CASE(
-	"math::matrix rotation_axis",
-	"[math],[matrix]"
-)
+TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
 {
-	using
-	matrix_type
-	=
-	fcppt::math::matrix::static_<
-		float,
-		4,
-		4
-	>;
+  using matrix_type = fcppt::math::matrix::static_<float, 4, 4>;
 
-	using
-	vector_rotation_type
-	=
-	fcppt::math::vector::static_<
-		float,
-		3
-	>;
+  using vector_rotation_type = fcppt::math::vector::static_<float, 3>;
 
-	matrix_type const trans(
-		fcppt::math::matrix::rotation_axis(
-			fcppt::math::pi<
-				float
-			>(),
-			vector_rotation_type(
-				1.F,
-				0.F,
-				0.F
-			)
-		)
-	);
+  matrix_type const trans(fcppt::math::matrix::rotation_axis(
+      fcppt::math::pi<float>(), vector_rotation_type(1.F, 0.F, 0.F)));
 
-	using
-	vector_type
-	=
-	fcppt::math::vector::static_<
-		float,
-		4
-	>;
+  using vector_type = fcppt::math::vector::static_<float, 4>;
 
-	vector_type const vec(
-		0.F,
-		1.F,
-		0.F,
-		1.F
-	);
+  vector_type const vec(0.F, 1.F, 0.F, 1.F);
 
-	CHECK(
-		fcppt::math::vector::componentwise_equal(
-			trans
-			*
-			vec,
-			vector_type(
-				0.F,
-				-1.F,
-				0.F,
-				1.F
-			),
-			epsilon
-		)
-	);
+  CHECK(fcppt::math::vector::componentwise_equal(
+      trans * vec, vector_type(0.F, -1.F, 0.F, 1.F), epsilon));
 
-	CHECK(
-		::compare_matrices(
-			fcppt::math::matrix::rotation_axis(
-				0.F,
-				vector_rotation_type(
-					0.F,
-					0.F,
-					0.F
-				)
-			),
-			fcppt::math::matrix::identity<
-				matrix_type
-			>()
-		)
-	);
+  CHECK(::compare_matrices(
+      fcppt::math::matrix::rotation_axis(0.F, vector_rotation_type(0.F, 0.F, 0.F)),
+      fcppt::math::matrix::identity<matrix_type>()));
 
-	float const angle{
-		fcppt::math::pi<
-			float
-		>()
-		/
-		2.F
-	};
+  float const angle{fcppt::math::pi<float>() / 2.F};
 
-	CHECK(
-		::compare_matrices(
-			fcppt::math::matrix::rotation_axis(
-				angle,
-				vector_rotation_type(
-					1.F,
-					0.F,
-					0.F
-				)
-			),
-			fcppt::math::matrix::rotation_x(
-				angle
-			)
-		)
-	);
+  CHECK(::compare_matrices(
+      fcppt::math::matrix::rotation_axis(angle, vector_rotation_type(1.F, 0.F, 0.F)),
+      fcppt::math::matrix::rotation_x(angle)));
 
-	CHECK(
-		::compare_matrices(
-			fcppt::math::matrix::rotation_axis(
-				angle,
-				vector_rotation_type(
-					0.F,
-					1.F,
-					0.F
-				)
-			),
-			fcppt::math::matrix::rotation_y(
-				angle
-			)
-		)
-	);
+  CHECK(::compare_matrices(
+      fcppt::math::matrix::rotation_axis(angle, vector_rotation_type(0.F, 1.F, 0.F)),
+      fcppt::math::matrix::rotation_y(angle)));
 
-	CHECK(
-		::compare_matrices(
-			fcppt::math::matrix::rotation_axis(
-				angle,
-				vector_rotation_type(
-					0.F,
-					0.F,
-					1.F
-				)
-			),
-			fcppt::math::matrix::rotation_z(
-				angle
-			)
-		)
-	);
+  CHECK(::compare_matrices(
+      fcppt::math::matrix::rotation_axis(angle, vector_rotation_type(0.F, 0.F, 1.F)),
+      fcppt::math::matrix::rotation_z(angle)));
 }

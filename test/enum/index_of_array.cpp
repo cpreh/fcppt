@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/index_of_array.hpp>
@@ -13,56 +12,24 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 enum class test_enum
 {
-	test1,
-	test2,
-	fcppt_maximum = test2
+  test1,
+  test2,
+  fcppt_maximum = test2
 };
 
 }
 
-TEST_CASE(
-	"enum::index_of_array",
-	"[enum]"
-)
+TEST_CASE("enum::index_of_array", "[enum]")
 {
-	using
-	array
-	=
-	fcppt::enum_::array<
-		test_enum,
-		unsigned
-	>;
+  using array = fcppt::enum_::array<test_enum, unsigned>;
 
-	array const test{{{
-		1U,
-		2U
-	}}};
+  array const test{{{1U, 2U}}};
 
-	CHECK(
-		fcppt::enum_::index_of_array(
-			test,
-			2U
-		)
-		==
-		fcppt::optional::make(
-			test_enum::test2
-		)
-	);
+  CHECK(fcppt::enum_::index_of_array(test, 2U) == fcppt::optional::make(test_enum::test2));
 
-	CHECK(
-		fcppt::enum_::index_of_array(
-			test,
-			3U
-		)
-		==
-		fcppt::optional::object<
-			test_enum
-		>{}
-	);
+  CHECK(fcppt::enum_::index_of_array(test, 3U) == fcppt::optional::object<test_enum>{});
 }

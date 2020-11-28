@@ -3,26 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::either::failure_type<
-				fcppt::either::object<
-					int,
-					float
-				>
-			>,
-			int
-		>
-	);
+  static_assert(
+      std::is_same_v<fcppt::either::failure_type<fcppt::either::object<int, float>>, int>);
 }

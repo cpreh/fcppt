@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/recursive.hpp>
 #include <fcppt/recursive_output.hpp>
@@ -11,54 +10,15 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
+TEST_CASE("recursive", "[various]") { CHECK(fcppt::make_recursive(1) == fcppt::make_recursive(1)); }
 
-TEST_CASE(
-	"recursive",
-	"[various]"
-)
+TEST_CASE("recursive copy", "[various]")
 {
-	CHECK(
-		fcppt::make_recursive(
-			1
-		)
-		==
-		fcppt::make_recursive(
-			1
-		)
-	);
-}
+  CHECK(fcppt::recursive<int>{fcppt::make_recursive(1)}.get() == 1);
 
-TEST_CASE(
-	"recursive copy",
-	"[various]"
-)
-{
-	CHECK(
-		fcppt::recursive<
-			int
-		>{
-			fcppt::make_recursive(
-				1
-			)
-		}.get()
-		==
-		1
-	);
+  fcppt::recursive<int> value{2};
 
-	fcppt::recursive<
-		int
-	> value{
-		2
-	};
+  value = fcppt::make_recursive(3);
 
-	value =
-		fcppt::make_recursive(
-			3
-		);
-
-	CHECK(
-		value.get()
-		==
-		3
-	);
+  CHECK(value.get() == 3);
 }

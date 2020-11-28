@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/variant/match.hpp>
@@ -13,102 +12,28 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"variant::match",
-	"[variant]"
-)
+TEST_CASE("variant::match", "[variant]")
 {
-	using
-	variant
-	=
-	fcppt::variant::object<
-		int,
-		std::string
-	>;
+  using variant = fcppt::variant::object<int, std::string>;
 
-	std::string const result(
-		fcppt::variant::match(
-			variant(
-				42
-			),
-			[](
-				int const _value
-			)
-			{
-				return
-					std::to_string(
-						_value
-					);
-			},
-			[](
-				std::string const &_value
-			)
-			{
-				return
-					_value;
-			}
-		)
-	);
+  std::string const result(fcppt::variant::match(
+      variant(42),
+      [](int const _value) { return std::to_string(_value); },
+      [](std::string const &_value) { return _value; }));
 
-	CHECK(
-		result
-		==
-		"42"
-	);
+  CHECK(result == "42");
 }
 
-TEST_CASE(
-	"variant::match move",
-	"[variant]"
-)
+TEST_CASE("variant::match move", "[variant]")
 {
-	using
-	int_unique_ptr
-	=
-	fcppt::unique_ptr<
-		int
-	>;
+  using int_unique_ptr = fcppt::unique_ptr<int>;
 
-	using
-	variant
-	=
-	fcppt::variant::object<
-		int_unique_ptr,
-		std::string
-	>;
+  using variant = fcppt::variant::object<int_unique_ptr, std::string>;
 
-	std::string const result(
-		fcppt::variant::match(
-			variant(
-				fcppt::make_unique_ptr<
-					int
-				>(
-					42
-				)
-			),
-			[](
-				int_unique_ptr &&_value
-			)
-			{
-				return
-					std::to_string(
-						*_value
-					);
-			},
-			[](
-				std::string const &_value
-			)
-			{
-				return
-					_value;
-			}
-		)
-	);
+  std::string const result(fcppt::variant::match(
+      variant(fcppt::make_unique_ptr<int>(42)),
+      [](int_unique_ptr &&_value) { return std::to_string(*_value); },
+      [](std::string const &_value) { return _value; }));
 
-	CHECK(
-		result
-		==
-		"42"
-	);
+  CHECK(result == "42");
 }

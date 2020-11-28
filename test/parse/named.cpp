@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/error_equal.hpp>
@@ -17,42 +16,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::named",
-	"[parse]"
-)
+TEST_CASE("parse::named", "[parse]")
 {
-	auto const parser{
-		fcppt::parse::named{
-			fcppt::parse::int_<
-				int
-			>{},
-			std::string{
-				"int"
-			}
-		}
-	};
+  auto const parser{fcppt::parse::named{fcppt::parse::int_<int>{}, std::string{"int"}}};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"42"
-			}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			42
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{"42"}) ==
+      fcppt::parse::make_success<char>(42));
 }

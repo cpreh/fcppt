@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/optional/combine.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -12,74 +11,17 @@
 #include <functional>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::combine",
-	"[optional]"
-)
+TEST_CASE("optional::combine", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	std::plus<
-		int
-	> const add{};
+  std::plus<int> const add{};
 
-	CHECK(
-		fcppt::optional::combine(
-			optional_int(
-				10
-			),
-			optional_int(
-				20
-			),
-			add
-		)
-		==
-		optional_int(
-			30
-		)
-	);
+  CHECK(fcppt::optional::combine(optional_int(10), optional_int(20), add) == optional_int(30));
 
-	CHECK(
-		fcppt::optional::combine(
-			optional_int(
-				10
-			),
-			optional_int(),
-			add
-		)
-		==
-		optional_int(
-			10
-		)
-	);
+  CHECK(fcppt::optional::combine(optional_int(10), optional_int(), add) == optional_int(10));
 
-	CHECK(
-		fcppt::optional::combine(
-			optional_int(),
-			optional_int(
-				20
-			),
-			add
-		)
-		==
-		optional_int(
-			20
-		)
-	);
+  CHECK(fcppt::optional::combine(optional_int(), optional_int(20), add) == optional_int(20));
 
-	CHECK(
-		fcppt::optional::combine(
-			optional_int(),
-			optional_int(),
-			add
-		)
-		==
-		optional_int()
-	);
+  CHECK(fcppt::optional::combine(optional_int(), optional_int(), add) == optional_int());
 }

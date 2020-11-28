@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/algorithm/equal_range.hpp>
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/iterator/range_comparison.hpp>
@@ -14,50 +13,16 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"algorithm equal_range"
-	"[algorithm_equal_range]"
-)
+TEST_CASE("algorithm equal_range"
+          "[algorithm_equal_range]")
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	int_vector const vec{
-		2,
-		5,
-		5,
-		7
-	};
+  int_vector const vec{2, 5, 5, 7};
 
-	CHECK(
-		fcppt::range::empty(
-			fcppt::algorithm::equal_range(
-				vec,
-				3
-			)
-		)
-	);
+  CHECK(fcppt::range::empty(fcppt::algorithm::equal_range(vec, 3)));
 
-	CHECK(
-		fcppt::algorithm::equal_range(
-			vec,
-			5
-		)
-		==
-		fcppt::iterator::make_range(
-			std::next(
-				vec.begin(),
-				1
-			),
-			std::next(
-				vec.begin(),
-				3
-			)
-		)
-	);
+  CHECK(
+      fcppt::algorithm::equal_range(vec, 5) ==
+      fcppt::iterator::make_range(std::next(vec.begin(), 1), std::next(vec.begin(), 3)));
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
@@ -19,33 +18,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"parse::epsilon",
-	"[parse]"
-)
+TEST_CASE("parse::epsilon", "[parse]")
 {
-	fcppt::parse::epsilon const parser{};
+  fcppt::parse::epsilon const parser{};
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{}
-		)
-		==
-		fcppt::parse::make_success<
-			char
-		>(
-			fcppt::unit{}
-		)
-	);
+  CHECK(
+      fcppt::parse::parse_string(parser, std::string{}) ==
+      fcppt::parse::make_success<char>(fcppt::unit{}));
 
-	CHECK(
-		fcppt::parse::parse_string(
-			parser,
-			std::string{
-				"X"
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::parse::parse_string(parser, std::string{"X"}).has_failure());
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -12,44 +11,13 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::to_exception",
-	"[optional]"
-)
+TEST_CASE("optional::to_exception", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	auto const make_exception(
-		[]{
-			return
-				fcppt::exception(
-					FCPPT_TEXT("Invalid")
-				);
-		}
-	);
+  auto const make_exception([] { return fcppt::exception(FCPPT_TEXT("Invalid")); });
 
-	CHECK(
-		fcppt::optional::to_exception(
-			optional_int(
-				3
-			),
-			make_exception
-		)
-		==
-		3
-	);
+  CHECK(fcppt::optional::to_exception(optional_int(3), make_exception) == 3);
 
-	CHECK_THROWS_AS(
-		fcppt::optional::to_exception(
-			optional_int(),
-			make_exception
-		),
-		fcppt::exception
-	);
+  CHECK_THROWS_AS(fcppt::optional::to_exception(optional_int(), make_exception), fcppt::exception);
 }

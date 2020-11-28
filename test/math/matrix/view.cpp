@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/matrix/at_r.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -14,86 +13,26 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"math::matrix view",
-	"[math],[matrix]"
-)
+TEST_CASE("math::matrix view", "[math],[matrix]")
 {
-	using
-	value_type
-	=
-	int;
+  using value_type = int;
 
-	constexpr std::size_t const size{
-		3U
-	};
+  constexpr std::size_t const size{3U};
 
-	using
-	matrix_type
-	=
-	fcppt::math::matrix::static_<
-		value_type,
-		size,
-		size
-	>;
+  using matrix_type = fcppt::math::matrix::static_<value_type, size, size>;
 
-	using
-	vector_type
-	=
-	fcppt::math::vector::static_<
-		value_type,
-		size
-	>;
+  using vector_type = fcppt::math::vector::static_<value_type, size>;
 
-	matrix_type const matrix(
-		fcppt::math::matrix::row(
-			-3, 2, -5
-		),
-		fcppt::math::matrix::row(
-			-1, 0, -2
-		),
-		fcppt::math::matrix::row(
-			3, -4, 1
-		)
-	);
+  matrix_type const matrix(
+      fcppt::math::matrix::row(-3, 2, -5),
+      fcppt::math::matrix::row(-1, 0, -2),
+      fcppt::math::matrix::row(3, -4, 1));
 
-	CHECK(
-		fcppt::math::matrix::at_r<
-			0
-		>(
-			matrix
-		)
-		==
-		vector_type(
-			-3,
-			2,
-			-5
-		)
-	);
+  CHECK(fcppt::math::matrix::at_r<0>(matrix) == vector_type(-3, 2, -5));
 
-	vector_type vec(
-		fcppt::math::matrix::at_r<
-			0
-		>(
-			matrix
-		)
-	);
+  vector_type vec(fcppt::math::matrix::at_r<0>(matrix));
 
-	vec =
-		fcppt::math::matrix::at_r<
-			1
-		>(
-			matrix
-		);
+  vec = fcppt::math::matrix::at_r<1>(matrix);
 
-	CHECK(
-		vec
-		==
-		vector_type(
-			-1,
-			0,
-			-2
-		)
-	);
+  CHECK(vec == vector_type(-1, 0, -2));
 }

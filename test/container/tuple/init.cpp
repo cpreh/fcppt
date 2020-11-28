@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/overload.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/tuple/init.hpp>
@@ -14,65 +13,15 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"tuple::init",
-	"[container],[tuple]"
-)
+TEST_CASE("tuple::init", "[container],[tuple]")
 {
-	using
-	movable
-	=
-	fcppt::catch_::movable<
-		std::size_t
-	>;
+  using movable = fcppt::catch_::movable<std::size_t>;
 
-	using
-	tuple
-	=
-	std::tuple<
-		movable,
-		std::size_t
-	>;
+  using tuple = std::tuple<movable, std::size_t>;
 
-	CHECK(
-		fcppt::container::tuple::init<
-			tuple
-		>(
-			fcppt::overload(
-				[](
-					std::integral_constant<
-						std::size_t,
-						0
-					>
-				){
-					return
-						movable{
-							0
-						};
-				},
-				[](
-					std::integral_constant<
-						std::size_t,
-						1
-					>
-				)
-				{
-					return
-						std::size_t{
-							1U
-						};
-				}
-			)
-		)
-		==
-		tuple{
-			movable{
-				0U
-			},
-			std::size_t{
-				1U
-			}
-		}
-	);
+  CHECK(
+      fcppt::container::tuple::init<tuple>(fcppt::overload(
+          [](std::integral_constant<std::size_t, 0>) { return movable{0}; },
+          [](std::integral_constant<std::size_t, 1>) { return std::size_t{1U}; })) ==
+      tuple{movable{0U}, std::size_t{1U}});
 }

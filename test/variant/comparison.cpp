@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/type_info.hpp>
@@ -12,96 +11,40 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"variant equal",
-	"[variant]"
-)
+TEST_CASE("variant equal", "[variant]")
 {
-	using
-	variant
-	=
-	fcppt::variant::object<
-		bool,
-		int,
-		std::string
-	>;
+  using variant = fcppt::variant::object<bool, int, std::string>;
 
-	std::string const string(
-		"hello world"
-	);
+  std::string const string("hello world");
 
-	variant const v1(
-		string
-	);
+  variant const v1(string);
 
-	variant const v2(
-		string
-	);
+  variant const v2(string);
 
-	CHECK(
-		v1 == v2
-	);
+  CHECK(v1 == v2);
 
-	variant const v3(
-		42
-	);
+  variant const v3(42);
 
-	CHECK(
-		v1 != v3
-	);
+  CHECK(v1 != v3);
 
-	CHECK(
-		fcppt::variant::type_info(
-			v1
-		)
-		==
-		fcppt::variant::type_info(
-			v2
-		)
-	);
+  CHECK(fcppt::variant::type_info(v1) == fcppt::variant::type_info(v2));
 }
 
-TEST_CASE(
-	"variant less",
-	"[variant]"
-)
+TEST_CASE("variant less", "[variant]")
 {
-	using
-	variant
-	=
-	fcppt::variant::object<
-		int,
-		std::string
-	>;
+  using variant = fcppt::variant::object<int, std::string>;
 
-	variant const v1(
-		10
-	);
+  variant const v1(10);
 
-	variant const v2(
-		20
-	);
+  variant const v2(20);
 
-	CHECK(
-		v1 < v2
-	);
+  CHECK(v1 < v2);
 
-	CHECK_FALSE(
-		v2 < v1
-	);
+  CHECK_FALSE(v2 < v1);
 
-	variant const v3(
-		std::string(
-			"hello world"
-		)
-	);
+  variant const v3(std::string("hello world"));
 
-	CHECK(
-		v1 < v3
-	);
+  CHECK(v1 < v3);
 
-	CHECK_FALSE(
-		v3 < v1
-	);
+  CHECK_FALSE(v3 < v1);
 }

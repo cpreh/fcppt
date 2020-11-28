@@ -3,41 +3,24 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/metal/flip_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	static_assert(
-		std::is_same_v<
-			fcppt::metal::flip_map<
-				metal::map<
-					metal::pair<
-						int,
-						float
-					>,
-					metal::pair<
-						char,
-						long // NOLINT(google-runtime-int)
-					>
-				>
-			>,
-			metal::map<
-				metal::pair<
-					float,
-					int
-				>,
-				metal::pair<
-					long, // NOLINT(google-runtime-int)
-					char
-				>
-			>
-		>
-	);
+  static_assert(std::is_same_v<
+                fcppt::metal::flip_map<metal::map<
+                    metal::pair<int, float>,
+                    metal::pair<
+                        char,
+                        long // NOLINT(google-runtime-int)
+                        >>>,
+                metal::map<
+                    metal::pair<float, int>,
+                    metal::pair<
+                        long, // NOLINT(google-runtime-int)
+                        char>>>);
 }

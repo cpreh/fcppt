@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/unique_ptr.hpp>
@@ -15,95 +14,41 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 class base
 {
-	FCPPT_NONMOVABLE(
-		base
-	);
-public:
-	base()
-	= default;
+  FCPPT_NONMOVABLE(base);
 
-	virtual
-	~base()
-	= default;
+public:
+  base() = default;
+
+  virtual ~base() = default;
 };
 
-class derived
-:
-	public base
+class derived : public base
 {
-	FCPPT_NONMOVABLE(
-		derived
-	);
-public:
-	derived()
-	:
-		base()
-	{
-	}
+  FCPPT_NONMOVABLE(derived);
 
-	~derived()
-	override
-	= default;
+public:
+  derived() : base() {}
+
+  ~derived() override = default;
 };
 
 }
 
-TEST_CASE(
-	"unique_ptr_dynamic_cast",
-	"[smartptr]"
-)
+TEST_CASE("unique_ptr_dynamic_cast", "[smartptr]")
 {
-	using
-	base_unique_ptr
-	=
-	fcppt::unique_ptr<
-		base
-	>;
+  using base_unique_ptr = fcppt::unique_ptr<base>;
 
-	using
-	derived_unique_ptr
-	=
-	fcppt::unique_ptr<
-		derived
-	>;
+  using derived_unique_ptr = fcppt::unique_ptr<derived>;
 
-	CHECK(
-		fcppt::variant::holds_type<
-			base_unique_ptr
-		>(
-			fcppt::unique_ptr_dynamic_cast<
-				fcppt::cast::dynamic_fun,
-				derived
-			>(
-				fcppt::make_unique_ptr<
-					base
-				>()
-			)
-		)
-	);
+  CHECK(fcppt::variant::holds_type<base_unique_ptr>(
+      fcppt::unique_ptr_dynamic_cast<fcppt::cast::dynamic_fun, derived>(
+          fcppt::make_unique_ptr<base>())));
 
-	CHECK(
-		fcppt::variant::holds_type<
-			derived_unique_ptr
-		>(
-			fcppt::unique_ptr_dynamic_cast<
-				fcppt::cast::dynamic_fun,
-				derived
-			>(
-				fcppt::unique_ptr_to_base<
-					base
-				>(
-					fcppt::make_unique_ptr<
-						derived
-					>()
-				)
-			)
-		)
-	);
+  CHECK(fcppt::variant::holds_type<derived_unique_ptr>(
+      fcppt::unique_ptr_dynamic_cast<fcppt::cast::dynamic_fun, derived>(
+          fcppt::unique_ptr_to_base<base>(fcppt::make_unique_ptr<derived>()))));
 }

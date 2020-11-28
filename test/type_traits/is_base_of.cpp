@@ -3,20 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/type_traits/is_base_of.hpp>
-
 
 namespace
 {
-
 struct base
 {
 };
 
-struct derived
-:
-base
+struct derived : base
 {
 };
 
@@ -26,20 +21,9 @@ struct test
 
 }
 
-int
-main()
+int main()
 {
-	static_assert(
-		fcppt::type_traits::is_base_of<
-			base,
-			derived
-		>::value
-	);
+  static_assert(fcppt::type_traits::is_base_of<base, derived>::value);
 
-	static_assert(
-		!fcppt::type_traits::is_base_of<
-			test,
-			derived
-		>::value
-	);
+  static_assert(!fcppt::type_traits::is_base_of<test, derived>::value);
 }

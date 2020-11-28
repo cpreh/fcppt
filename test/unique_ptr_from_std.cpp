@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/unique_ptr_from_std.hpp>
 #include <fcppt/optional/maybe.hpp>
@@ -12,44 +11,12 @@
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"unique_ptr_from_std",
-	"[smartptr]"
-)
+TEST_CASE("unique_ptr_from_std", "[smartptr]")
 {
-	fcppt::optional::maybe(
-		fcppt::unique_ptr_from_std(
-			std::make_unique<
-				int
-			>(
-				1
-			)
-		),
-		[]{
-			CHECK(
-				false
-			);
-		},
-		[](
-			fcppt::unique_ptr<
-				int
-			> const &_ptr
-		)
-		{
-			CHECK(
-				*_ptr
-				==
-				1
-			);
-		}
-	);
+  fcppt::optional::maybe(
+      fcppt::unique_ptr_from_std(std::make_unique<int>(1)),
+      [] { CHECK(false); },
+      [](fcppt::unique_ptr<int> const &_ptr) { CHECK(*_ptr == 1); });
 
-	CHECK_FALSE(
-		fcppt::unique_ptr_from_std(
-			std::unique_ptr<
-				int
-			>{}
-		).has_value()
-	);
+  CHECK_FALSE(fcppt::unique_ptr_from_std(std::unique_ptr<int>{}).has_value());
 }

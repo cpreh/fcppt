@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
@@ -15,44 +14,15 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::from_pointer",
-	"[optional]"
-)
+TEST_CASE("optional::from_pointer", "[optional]")
 {
-	using
-	optional_ref
-	=
-	fcppt::optional::reference<
-		int
-	>;
+  using optional_ref = fcppt::optional::reference<int>;
 
-	int value{
-		0
-	};
+  int value{0};
 
-	CHECK(
-		fcppt::optional::from_pointer(
-			&value
-		)
-		==
-		optional_ref{
-			fcppt::make_ref(
-				value
-			)
-		}
-	);
+  CHECK(fcppt::optional::from_pointer(&value) == optional_ref{fcppt::make_ref(value)});
 
-	int *const ptr(
-		nullptr
-	);
+  int *const ptr(nullptr);
 
-	CHECK(
-		fcppt::optional::from_pointer(
-			ptr
-		)
-		==
-		optional_ref{}
-	);
+  CHECK(fcppt::optional::from_pointer(ptr) == optional_ref{});
 }

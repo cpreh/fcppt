@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/tag.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
@@ -14,60 +13,20 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		int_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(int_label);
 
-	FCPPT_RECORD_MAKE_LABEL(
-		bool_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(bool_label);
 
-	using
-	int_element
-	=
-	fcppt::record::element<
-		int_label,
-		int
-	>;
+  using int_element = fcppt::record::element<int_label, int>;
 
-	using
-	bool_element
-	=
-	fcppt::record::element<
-		bool_label,
-		bool
-	>;
+  using bool_element = fcppt::record::element<bool_label, bool>;
 
-	using
-	my_record
-	=
-	fcppt::record::object<
-		int_element,
-		bool_element
-	>;
+  using my_record = fcppt::record::object<int_element, bool_element>;
 
-	using
-	tag_tuple
-	=
-	fcppt::record::element_tag_tuple<
-		my_record
-	>;
+  using tag_tuple = fcppt::record::element_tag_tuple<my_record>;
 
-	static_assert(
-		std::is_same_v<
-			tag_tuple,
-			std::tuple<
-				fcppt::tag<
-					int_element
-				>,
-				fcppt::tag<
-					bool_element
-				>
-			>
-		>
-	);
+  static_assert(
+      std::is_same_v<tag_tuple, std::tuple<fcppt::tag<int_element>, fcppt::tag<bool_element>>>);
 }

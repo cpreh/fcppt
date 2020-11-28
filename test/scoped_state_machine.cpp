@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/scoped_state_machine.hpp>
 #include <fcppt/config/clang_version_at_least.hpp>
@@ -17,30 +16,18 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 class state;
 
-class machine
-:
-public
-	boost::statechart::state_machine<
-		machine,
-		state
-	>
+class machine : public boost::statechart::state_machine<machine, state>
 {
-	FCPPT_NONMOVABLE(
-		machine
-	);
-public:
-	machine()
-	= default;
+  FCPPT_NONMOVABLE(machine);
 
-	~machine()
-	override
-	= default;
+public:
+  machine() = default;
+
+  ~machine() override = default;
 };
 
 FCPPT_PP_PUSH_WARNING
@@ -49,59 +36,35 @@ FCPPT_PP_DISABLE_VC_WARNING(4265)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wsuggest-destructor-override)
 #endif
 
-class state
-:
-public
-	boost::statechart::simple_state<
-		state,
-		machine
-	>
+class state : public boost::statechart::simple_state<state, machine>
 {
-	FCPPT_NONMOVABLE(
-		state
-	);
-public:
-	state()
-	= default;
+  FCPPT_NONMOVABLE(state);
 
-	~state() // NOLINT(hicpp-use-override,modernize-use-override)
-	//override TODO(philipp)
-	= default;
+public:
+  state() = default;
+
+  ~state() // NOLINT(hicpp-use-override,modernize-use-override)
+      // override TODO(philipp)
+      = default;
 };
 
 FCPPT_PP_POP_WARNING
 
 }
 
-TEST_CASE(
-	"scoped_state_machine",
-	"[various]"
-)
+TEST_CASE("scoped_state_machine", "[various]")
 {
-	machine test{};
+  machine test{};
 
-	REQUIRE(
-		test.terminated()
-	);
+  REQUIRE(test.terminated());
 
-	{
-		using
-		scoped_machine
-		=
-		fcppt::scoped_state_machine<
-			machine
-		>;
+  {
+    using scoped_machine = fcppt::scoped_state_machine<machine>;
 
-		scoped_machine const scoped(
-			test
-		);
+    scoped_machine const scoped(test);
 
-		REQUIRE_FALSE(
-			test.terminated()
-		);
-	}
+    REQUIRE_FALSE(test.terminated());
+  }
 
-	REQUIRE(
-		test.terminated()
-	);
+  REQUIRE(test.terminated());
 }

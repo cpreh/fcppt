@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/container/make.hpp>
@@ -14,176 +13,53 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container_join std::vector"
-	"[container_join]"
-)
+TEST_CASE("container_join std::vector"
+          "[container_join]")
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	int_vector const vec3{
-		5,
-		6
-	};
+  int_vector const vec3{5, 6};
 
-	CHECK(
-		fcppt::container::join(
-			int_vector{
-				1,
-				2
-			},
-			int_vector{
-				3,
-				4
-			},
-			vec3
-		)
-		==
-		int_vector{
-			1,
-			2,
-			3,
-			4,
-			5,
-			6
-		}
-	);
+  CHECK(
+      fcppt::container::join(int_vector{1, 2}, int_vector{3, 4}, vec3) ==
+      int_vector{1, 2, 3, 4, 5, 6});
 }
 
-TEST_CASE(
-	"container_join move"
-	"[container_join]"
-)
+TEST_CASE("container_join move"
+          "[container_join]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	int_movable_vector
-	=
-	std::vector<
-		int_movable
-	>;
+  using int_movable_vector = std::vector<int_movable>;
 
-	CHECK(
-		fcppt::container::join(
-			fcppt::container::make<
-				int_movable_vector
-			>(
-				int_movable{
-					1
-				},
-				int_movable{
-					2
-				}
-			),
-			fcppt::container::make<
-				int_movable_vector
-			>(
-				int_movable{
-					3
-				},
-				int_movable{
-					4
-				}
-			),
-			fcppt::container::make<
-				int_movable_vector
-			>(
-				int_movable{
-					5
-				},
-				int_movable{
-					6
-				}
-			)
-		)
-		==
-		fcppt::container::make<
-			int_movable_vector
-		>(
-			int_movable{
-				1
-			},
-			int_movable{
-				2
-			},
-			int_movable{
-				3
-			},
-			int_movable{
-				4
-			},
-			int_movable{
-				5
-			},
-			int_movable{
-				6
-			}
-		)
-	);
+  CHECK(
+      fcppt::container::join(
+          fcppt::container::make<int_movable_vector>(int_movable{1}, int_movable{2}),
+          fcppt::container::make<int_movable_vector>(int_movable{3}, int_movable{4}),
+          fcppt::container::make<int_movable_vector>(int_movable{5}, int_movable{6})) ==
+      fcppt::container::make<int_movable_vector>(
+          int_movable{1},
+          int_movable{2},
+          int_movable{3},
+          int_movable{4},
+          int_movable{5},
+          int_movable{6}));
 }
 
-TEST_CASE(
-	"container_join std::map"
-	"[container_join]"
-)
+TEST_CASE("container_join std::map"
+          "[container_join]")
 {
-	using
-	int_map
-	=
-	std::map<
-		int,
-		char
-	>;
+  using int_map = std::map<int, char>;
 
-	CHECK(
-		fcppt::container::join(
-			int_map{ // NOLINT(fuchsia-default-arguments-calls)
-				std::make_pair(
-					1,
-					'a'
-				),
-				std::make_pair(
-					2,
-					'b'
-				)
-			},
-			int_map{ // NOLINT(fuchsia-default-arguments-calls)
-				std::make_pair(
-					2,
-					'c'
-				),
-				std::make_pair(
-					3,
-					'd'
-				)
-			}
-		)
-		==
-		int_map{ // NOLINT(fuchsia-default-arguments-calls)
-			std::make_pair(
-				1,
-				'a'
-			),
-			std::make_pair(
-				2,
-				'b'
-			),
-			std::make_pair(
-				3,
-				'd'
-			)
-		}
-	);
+  CHECK(
+      fcppt::container::join(
+          int_map{// NOLINT(fuchsia-default-arguments-calls)
+                  std::make_pair(1, 'a'),
+                  std::make_pair(2, 'b')},
+          int_map{// NOLINT(fuchsia-default-arguments-calls)
+                  std::make_pair(2, 'c'),
+                  std::make_pair(3, 'd')}) == int_map{// NOLINT(fuchsia-default-arguments-calls)
+                                                      std::make_pair(1, 'a'),
+                                                      std::make_pair(2, 'b'),
+                                                      std::make_pair(3, 'd')});
 }

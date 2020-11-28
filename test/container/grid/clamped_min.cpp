@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/container/grid/clamped_min.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -14,33 +13,11 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::grid::clamped_min",
-	"[container],[grid]"
-)
+TEST_CASE("container::grid::clamped_min", "[container],[grid]")
 {
-	using
-	pos
-	=
-	fcppt::container::grid::pos<
-		int,
-		2
-	>;
+  using pos = fcppt::container::grid::pos<int, 2>;
 
-	CHECK(
-		fcppt::container::grid::clamped_min(
-			pos(
-				-1,
-				5
-			)
-		).get()
-		==
-		fcppt::math::vector::to_unsigned(
-			pos(
-				0,
-				5
-			)
-		)
-	);
+  CHECK(
+      fcppt::container::grid::clamped_min(pos(-1, 5)).get() ==
+      fcppt::math::vector::to_unsigned(pos(0, 5)));
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/either.hpp>
@@ -21,60 +20,20 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"options::argument",
-	"[options]"
-)
+TEST_CASE("options::argument", "[options]")
 {
-	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
-	);
+  FCPPT_RECORD_MAKE_LABEL(arg_label);
 
-	using
-	int_arg_type
-	=
-	fcppt::options::argument<
-		arg_label,
-		int
-	>;
+  using int_arg_type = fcppt::options::argument<arg_label, int>;
 
-	int_arg_type const int_arg{
-		fcppt::options::long_name{
-			FCPPT_TEXT("arg1")
-		},
-		fcppt::options::optional_help_text{}
-	};
+  int_arg_type const int_arg{
+      fcppt::options::long_name{FCPPT_TEXT("arg1")}, fcppt::options::optional_help_text{}};
 
-	CHECK(
-		fcppt::options::parse(
-			int_arg,
-			fcppt::args_vector{
-				FCPPT_TEXT("123")
-			}
-		)
-		==
-		fcppt::options::make_success(
-			int_arg_type::result_type{
-				arg_label{}
-					= 123
-			}
-		)
-	);
+  CHECK(
+      fcppt::options::parse(int_arg, fcppt::args_vector{FCPPT_TEXT("123")}) ==
+      fcppt::options::make_success(int_arg_type::result_type{arg_label{} = 123}));
 
-	CHECK(
-		fcppt::options::parse(
-			int_arg,
-			fcppt::args_vector{
-				FCPPT_TEXT("test")
-			}
-		).has_failure()
-	);
+  CHECK(fcppt::options::parse(int_arg, fcppt::args_vector{FCPPT_TEXT("test")}).has_failure());
 
-	CHECK(
-		fcppt::options::parse(
-			int_arg,
-			fcppt::args_vector{}
-		).has_failure()
-	);
+  CHECK(fcppt::options::parse(int_arg, fcppt::args_vector{}).has_failure());
 }

@@ -3,24 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/type_traits/function_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
-{
-	static_assert(
-		std::is_same_v<
-			fcppt::type_traits::function_result<
-				int (
-					float
-				)
-			>,
-			int
-		>
-	);
-}
+int main() { static_assert(std::is_same_v<fcppt::type_traits::function_result<int(float)>, int>); }

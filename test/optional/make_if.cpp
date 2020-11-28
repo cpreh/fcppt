@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/const.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object.hpp>
@@ -12,40 +11,11 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::make_if",
-	"[optional]"
-)
+TEST_CASE("optional::make_if", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	CHECK(
-		fcppt::optional::make_if(
-			true,
-			fcppt::const_(
-				42
-			)
-		)
-		==
-		optional_int{
-			42
-		}
-	);
+  CHECK(fcppt::optional::make_if(true, fcppt::const_(42)) == optional_int{42});
 
-	CHECK(
-		fcppt::optional::make_if(
-			false,
-			fcppt::const_(
-				42
-			)
-		)
-		==
-		optional_int{}
-	);
+  CHECK(fcppt::optional::make_if(false, fcppt::const_(42)) == optional_int{});
 }

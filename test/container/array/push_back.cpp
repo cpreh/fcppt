@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/array/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -11,74 +10,19 @@
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"array::push_back",
-	"[container],[array]"
-)
+TEST_CASE("array::push_back", "[container],[array]")
 {
-	CHECK(
-		fcppt::container::array::push_back(
-			std::array<
-				int,
-				3
-			>{{
-				1,
-				2,
-				3
-			}},
-			4
-		)
-		==
-		std::array<
-			int,
-			4
-		>{{
-			1,
-			2,
-			3,
-			4
-		}}
-	);
+  CHECK(
+      fcppt::container::array::push_back(std::array<int, 3>{{1, 2, 3}}, 4) ==
+      std::array<int, 4>{{1, 2, 3, 4}});
 }
 
-TEST_CASE(
-	"array::push_back move",
-	"[container],[array]"
-)
+TEST_CASE("array::push_back move", "[container],[array]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	CHECK(
-		fcppt::container::array::push_back(
-			std::array<
-				int_movable,
-				1
-			>{{
-				int_movable{
-					1
-				}
-			}},
-			int_movable{
-				2
-			}
-		)
-		==
-		std::array<
-			int_movable,
-			2
-		>{{
-			int_movable{
-				1
-			},
-			int_movable{
-				2
-			}
-		}}
-	);
+  CHECK(
+      fcppt::container::array::push_back(
+          std::array<int_movable, 1>{{int_movable{1}}}, int_movable{2}) ==
+      std::array<int_movable, 2>{{int_movable{1}, int_movable{2}}});
 }

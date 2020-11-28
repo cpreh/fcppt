@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
@@ -16,47 +15,15 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::at_optional",
-	"[container]"
-)
+TEST_CASE("container::at_optional", "[container]")
 {
-	std::vector<
-		int
-	> const int_vector{
-		1,
-		2
-	};
+  std::vector<int> const int_vector{1, 2};
 
-	using
-	optional_int_ref
-	=
-	fcppt::optional::reference<
-		int const
-	>;
+  using optional_int_ref = fcppt::optional::reference<int const>;
 
-	CHECK(
-		fcppt::container::at_optional(
-			int_vector,
-			1
-		)
-		==
-		optional_int_ref{
-			fcppt::make_cref(
-				int_vector[
-					1
-				]
-			)
-		}
-	);
+  CHECK(
+      fcppt::container::at_optional(int_vector, 1) ==
+      optional_int_ref{fcppt::make_cref(int_vector[1])});
 
-	CHECK(
-		fcppt::container::at_optional(
-			int_vector,
-			2
-		)
-		==
-		optional_int_ref{}
-	);
+  CHECK(fcppt::container::at_optional(int_vector, 2) == optional_int_ref{});
 }

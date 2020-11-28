@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/pop_back.hpp>
@@ -15,99 +14,32 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"container::pop_back",
-	"[container]"
-)
+TEST_CASE("container::pop_back", "[container]")
 {
-	using
-	int_vector
-	=
-	std::vector<
-		int
-	>;
+  using int_vector = std::vector<int>;
 
-	int_vector empty{};
+  int_vector empty{};
 
-	CHECK(
-		fcppt::container::pop_back(
-			empty
-		)
-		==
-		fcppt::optional::object<
-			int
-		>{}
-	);
+  CHECK(fcppt::container::pop_back(empty) == fcppt::optional::object<int>{});
 
-	int_vector vec12{
-		1,
-		2
-	};
+  int_vector vec12{1, 2};
 
-	CHECK(
-		fcppt::container::pop_back(
-			vec12
-		)
-		==
-		fcppt::optional::make(
-			2
-		)
-	);
+  CHECK(fcppt::container::pop_back(vec12) == fcppt::optional::make(2));
 
-	int_vector const expected{
-		1
-	};
+  int_vector const expected{1};
 
-	CHECK(
-		vec12
-		==
-		expected
-	);
+  CHECK(vec12 == expected);
 }
 
-TEST_CASE(
-	"container::pop_back move",
-	"[container]"
-)
+TEST_CASE("container::pop_back move", "[container]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	int_movable_vector
-	=
-	std::vector<
-		int_movable
-	>;
+  using int_movable_vector = std::vector<int_movable>;
 
-	auto vector(
-		fcppt::container::make<
-			int_movable_vector
-		>(
-			int_movable{
-				1
-			}
-		)
-	);
+  auto vector(fcppt::container::make<int_movable_vector>(int_movable{1}));
 
-	CHECK(
-		fcppt::container::pop_back(
-			vector
-		)
-		==
-		fcppt::optional::make(
-			int_movable{
-				1
-			}
-		)
-	);
+  CHECK(fcppt::container::pop_back(vector) == fcppt::optional::make(int_movable{1}));
 
-	CHECK(
-		vector.empty()
-	);
+  CHECK(vector.empty());
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -18,129 +17,33 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"either::map",
-	"[either]"
-)
+TEST_CASE("either::map", "[either]")
 {
-	using
-	either_int
-	=
-	fcppt::either::object<
-		std::string,
-		int
-	>;
+  using either_int = fcppt::either::object<std::string, int>;
 
-	using
-	either_bool
-	=
-	fcppt::either::object<
-		std::string,
-		bool
-	>;
+  using either_bool = fcppt::either::object<std::string, bool>;
 
-	auto const map_function(
-		[](
-			int const _value
-		)
-		{
-			return
-				_value
-				>
-				10;
-		}
-	);
+  auto const map_function([](int const _value) { return _value > 10; });
 
-	CHECK(
-		fcppt::either::map(
-			either_int(
-				std::string(
-					"test"
-				)
-			),
-			map_function
-		)
-		==
-		either_bool(
-			std::string(
-				"test"
-			)
-		)
-	);
+  CHECK(
+      fcppt::either::map(either_int(std::string("test")), map_function) ==
+      either_bool(std::string("test")));
 
-	CHECK(
-		fcppt::either::map(
-			either_int(
-				20
-			),
-			map_function
-		)
-		==
-		either_bool(
-			true
-		)
-	);
+  CHECK(fcppt::either::map(either_int(20), map_function) == either_bool(true));
 }
 
-TEST_CASE(
-	"either::map move",
-	"[either]"
-)
+TEST_CASE("either::map move", "[either]")
 {
-	using
-	int_movable
-	=
-	fcppt::catch_::movable<
-		int
-	>;
+  using int_movable = fcppt::catch_::movable<int>;
 
-	using
-	either_int
-	=
-	fcppt::either::object<
-		std::string,
-		int_movable
-	>;
+  using either_int = fcppt::either::object<std::string, int_movable>;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		int_movable,
-		strong_int_movable
-	);
+  FCPPT_MAKE_STRONG_TYPEDEF(int_movable, strong_int_movable);
 
-	auto const map_function(
-		[](
-			int_movable &&_value
-		)
-		{
-			return
-				strong_int_movable{
-					std::move(
-						_value
-					)
-				};
-		}
-	);
+  auto const map_function(
+      [](int_movable &&_value) { return strong_int_movable{std::move(_value)}; });
 
-	CHECK(
-		fcppt::either::map(
-			either_int{
-				int_movable{
-					20
-				}
-			},
-			map_function
-		)
-		==
-		fcppt::either::object<
-			std::string,
-			strong_int_movable
-		>{
-			strong_int_movable{
-				int_movable{
-					20
-				}
-			}
-		}
-	);
+  CHECK(
+      fcppt::either::map(either_int{int_movable{20}}, map_function) ==
+      fcppt::either::object<std::string, strong_int_movable>{strong_int_movable{int_movable{20}}});
 }

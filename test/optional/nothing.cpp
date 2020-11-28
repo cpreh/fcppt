@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -11,26 +10,11 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-TEST_CASE(
-	"optional::nothing",
-	"[optional]"
-)
+TEST_CASE("optional::nothing", "[optional]")
 {
-	using
-	optional_int
-	=
-	fcppt::optional::object<
-		int
-	>;
+  using optional_int = fcppt::optional::object<int>;
 
-	optional_int const result{
-		fcppt::optional::nothing{}
-	};
+  optional_int const result{fcppt::optional::nothing{}};
 
-	CHECK(
-		result
-		==
-		optional_int{}
-	);
+  CHECK(result == optional_int{});
 }

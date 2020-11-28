@@ -3,22 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/not.hpp>
 
-
-int
-main()
+int main()
 {
-	static_assert(
-		!fcppt::not_(
-			true
-		)
-	);
+  static_assert(!fcppt::not_(true));
 
-	static_assert(
-		fcppt::not_(
-			false
-		)
-	);
+  static_assert(fcppt::not_(false));
 }
