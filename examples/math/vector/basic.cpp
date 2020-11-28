@@ -28,8 +28,8 @@ main()
 	// than N arguments (3 in this case) or you'll get a compiler error.
 	float3_vec obj{
 		1.F,
-		2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		3.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		2.F,
+		3.F
 	};
 
 	std::cout << obj << '\n'; // prints something close to (1, 2, 3)

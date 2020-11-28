@@ -152,10 +152,10 @@ main()
 		distribution(
 			distribution::param_type(
 				distribution::param_type::min(
-					10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					10U
 				),
 				distribution::param_type::max(
-					100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					100U
 				)
 			)
 		)

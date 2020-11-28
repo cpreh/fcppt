@@ -29,8 +29,8 @@ main()
 	>;
 
 	float2_vec const vecf2(
-		1.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		2.0F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1.5F,
+		2.0F
 	);
 
 	using
@@ -75,7 +75,7 @@ main()
 	unsigned3_vec const vecui3(
 		fcppt::math::vector::push_back(
 			vecui2,
-			42U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42U
 		)
 	);
 

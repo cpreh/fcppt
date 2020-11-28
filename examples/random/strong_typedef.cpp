@@ -62,14 +62,14 @@ main()
 		),
 		distribution(
 			distribution::param_type::min(my_type(0)),
-			distribution::param_type::max(my_type(10)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			distribution::param_type::max(my_type(10))
 		)
 	);
 //![random_strong_typedef_variate]
 
 //![random_strong_typedef_output]
 	fcppt::algorithm::repeat(
-		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10U,
 		[&rng]{
 			fcppt::io::cout()
 				// Outputs objects of type my_type

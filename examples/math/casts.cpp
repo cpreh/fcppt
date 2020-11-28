@@ -31,7 +31,7 @@ float_to_int()
 			vec_2i,
 			fcppt::cast::float_to_int_fun
 		>(
-			vec_2f(1.F, 2.F) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			vec_2f(1.F, 2.F)
 		)
 	);
 

@@ -33,7 +33,7 @@ main()
 	=
 	std::array<
 		vector3,
-		8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		8
 	>;
 
 	binary_vectors const vs(

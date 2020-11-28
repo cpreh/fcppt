@@ -16,17 +16,17 @@ namespace
 
 int first_callback()
 {
-	return 4; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	return 4;
 }
 
 int second_callback()
 {
-	return 8; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	return 8;
 }
 
 int third_callback()
 {
-	return 15; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	return 15;
 }
 
 int combiner(int const a, int const b)

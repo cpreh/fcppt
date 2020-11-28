@@ -52,8 +52,8 @@ pos_range()
 		:
 		fcppt::container::grid::make_pos_range(
 			dim2{
-				2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2U,
+				3U
 			}
 		)
 	)
@@ -79,8 +79,8 @@ pos_ref_range()
 
 	uint2_grid const grid(
 		uint2_grid::dim{
-			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U,
+			2U
 		},
 		[](
 			uint2_grid::pos const &_pos
@@ -140,10 +140,10 @@ pos_ref_sub_range(
 {
 	uint2_grid const grid(
 		uint2_grid::dim{
-			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U,
+			2U
 		},
-		42U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42U
 	);
 
 	using
@@ -189,12 +189,12 @@ main()
 
 	pos_ref_sub_range(
 		uint2_grid::pos(
-			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			1U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U,
+			1U
 		),
 		uint2_grid::pos(
-			3U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U,
+			3U
 		)
 	);
 
@@ -202,8 +202,8 @@ main()
 		<<
 		fcppt::container::grid::make_sup(
 			uint2_grid::pos{
-				1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				1U,
+				2U
 			}
 		)
 		<< '\n';

@@ -83,7 +83,7 @@ test_c_deleter()
 {
 	void_c_ptr ptr{
 		std::malloc( // NOLINT(cppcoreguidelines-no-malloc,hicpp-no-malloc)
-			100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			100
 		)
 	};
 

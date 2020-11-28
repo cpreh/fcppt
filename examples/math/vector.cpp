@@ -65,11 +65,11 @@ init()
 // ![init]
 	// v1 is not initialized
 	vector2f v1{fcppt::no_init{}};
-	v1.x() = 0.1F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	v1.y() = 0.2F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	v1.x() = 0.1F;
+	v1.y() = 0.2F;
 
 	// same as v1
-	vector2f const v2{0.1F, 0.2F}; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const v2{0.1F, 0.2F};
 // ![init]
 
 	std::cout << v1 << ' ' << v2 << '\n';
@@ -83,7 +83,7 @@ convert()
 		int,
 		1
 	> const i(
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	auto const f(
@@ -111,7 +111,7 @@ push_back_narrow()
 		int,
 		1
 	> const small(
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 	// Convert smaller to bigger. Only works for N and N+1 and we have to
 	// specify the additional element.
@@ -121,7 +121,7 @@ push_back_narrow()
 	> const bigger(
 		fcppt::math::vector::push_back(
 			small,
-			20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			20
 		)
 	);
 
@@ -158,9 +158,9 @@ void
 comparison()
 {
 // ![comparison]
-	vector2f const x(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const x(1.F,2.F);
 
-	vector2f const y(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const y(1.F,2.F);
 
 	std::cout << (x == y) << ',' << (x - y == vector2f{0.F,0.F}) << '\n';
 // ![comparison]
@@ -170,10 +170,10 @@ void
 comparison_length()
 {
 // ![comparison_length]
-	vector2f const x(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	vector2f const y(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const x(1.F,2.F);
+	vector2f const y(1.F,2.F);
 
-	float const epsilon(0.001F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	float const epsilon(0.001F);
 
 	std::cout << (fcppt::math::vector::length(x - y) < epsilon) << '\n';
 // ![comparison_length]
@@ -183,10 +183,10 @@ void
 comparison_range()
 {
 // ![comparison_range]
-	vector2f const x(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	vector2f const y(1.F,2.F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vector2f const x(1.F,2.F);
+	vector2f const y(1.F,2.F);
 
-	float const epsilon(0.001F); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	float const epsilon(0.001F);
 
 	std::cout << fcppt::math::vector::componentwise_equal(x,y,epsilon) << '\n';
 // ![comparison_range]

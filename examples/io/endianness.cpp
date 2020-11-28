@@ -25,7 +25,7 @@ main()
 	// Write 42u into the stream, using big endianness
 	fcppt::io::write(
 		stream,
-		42U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42U,
 		fcppt::endianness::format::big
 	);
 

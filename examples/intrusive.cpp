@@ -74,10 +74,10 @@ test_func()
 //! [intrusive_test]
 	element_list list{};
 
-	element e1{fcppt::make_ref(list), 5}; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	element e1{fcppt::make_ref(list), 5};
 
 	{
-		element e2{fcppt::make_ref(list), 10}; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		element e2{fcppt::make_ref(list), 10};
 
 		// Prints 5, 10
 		for(element const &e : list)

@@ -41,8 +41,8 @@ main()
 	>;
 
 	vec2f const vecf(
-		1.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1.F,
+		2.F
 	);
 
 	fcppt::math::vector::atan2(
@@ -52,7 +52,7 @@ main()
 	fcppt::math::vector::point_rotate(
 		vecf,
 		vecf,
-		3.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		3.F
 	);
 
 	fcppt::optional::maybe_void(

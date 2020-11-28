@@ -106,7 +106,7 @@ main()
 			),
 			distribution::param_type::max(
 				my_int_type(
-					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					10
 				)
 			)
 		)

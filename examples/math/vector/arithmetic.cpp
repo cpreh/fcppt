@@ -28,16 +28,16 @@ main()
 	>;
 
 	float3_vec vec2(
-		10.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		20.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		30.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10.F,
+		20.F,
+		30.F
 	);
 // ![vector_dim_decl]
 
 	float3_vec const vec1(
-		1.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		3.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1.F,
+		2.F,
+		3.F
 	);
 
 	// add two vectors
@@ -46,7 +46,7 @@ main()
 	std::cout << vec2 << '\n';
 
 	// multiply by a scalar
-	vec2 *= 0.5F; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	vec2 *= 0.5F;
 
 	std::cout << vec2 << '\n';
 
@@ -58,9 +58,9 @@ main()
 	>;
 
 	float3_dim const dim(
-		1.4F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		1.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		1.6F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1.4F,
+		1.5F,
+		1.6F
 	);
 
 	// dims can be added to or subtracted from vectors

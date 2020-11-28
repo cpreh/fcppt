@@ -28,7 +28,7 @@ void
 f()
 {
 	static unsigned i = 0;
-	if(++i % 10000 == 0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	if(++i % 10000 == 0)
 	{
 		std::cout << "|\n";
 	}

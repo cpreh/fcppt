@@ -25,7 +25,7 @@ template<typename Rng>
 void print_values(Rng &rng)
 {
 	fcppt::algorithm::repeat(
-		20U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		20U,
 		[&rng]{
 			fcppt::io::cout()
 				<< rng()

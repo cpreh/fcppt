@@ -32,9 +32,9 @@ use_grid()
 	// Create a 5 by 10 by 20 grid.
 	int3d_grid grid(
 		int3d_grid::dim(
-			5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			20U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			5U,
+			10U,
+			20U
 		),
 		0
 	);
@@ -42,18 +42,18 @@ use_grid()
 	// Set the value on position (1,2,3) to 42
 	grid.get_unsafe(
 		int3d_grid::pos(
-			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U,
+			2U,
+			3U
 		)
-	) = 42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	) = 42;
 
 	fcppt::io::cout()
 		<< grid.get_unsafe(
 			int3d_grid::pos(
-				1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				1U,
+				2U,
+				3U
 			)
 		)
 		<< FCPPT_TEXT('\n');
@@ -80,17 +80,17 @@ init()
 	// Initialize all cells to 42
 	int2d_grid const all_42(
 		int2d_grid::dim(
-			3U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U,
+			2U
 		),
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 
 	// Initialize using a function
 	int2d_grid const init_function(
 		int2d_grid::dim(
-			3U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3U,
+			2U
 		),
 		[](
 			int2d_grid::pos const &_pos
@@ -129,8 +129,8 @@ resize_grid()
 {
 	int2d_grid const grid(
 		int2d_grid::dim(
-			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U,
+			3U
 		),
 		// Initialize the grid with numbers 0 to 5
 		[](
@@ -155,15 +155,15 @@ resize_grid()
 		fcppt::container::grid::resize(
 			grid,
 			int2d_grid::dim(
-				3U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				4U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				3U,
+				4U
 			),
 			[](
 				int2d_grid::pos const &
 			)
 			{
 				return
-					42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					42;
 			}
 		)
 	);
@@ -200,8 +200,8 @@ interpolate_grid()
 {
 	float2d_grid const grid(
 		float2d_grid::dim(
-			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U,
+			2U
 		),
 		[](
 			float2d_grid::pos const &
@@ -224,8 +224,8 @@ interpolate_grid()
 		fcppt::container::grid::interpolate(
 			grid,
 			float2d_vector{
-				0.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				0.5F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				0.5F,
+				0.5F
 			},
 			[](
 				float const _f,

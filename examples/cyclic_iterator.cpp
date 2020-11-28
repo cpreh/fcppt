@@ -44,7 +44,7 @@ main()
 
 	// prints 1, 2, 1, 2, 1, 2,
 	fcppt::algorithm::repeat(
-		6, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		6,
 		[
 			&it
 		]{

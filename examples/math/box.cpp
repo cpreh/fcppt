@@ -26,12 +26,12 @@ main()
 
 	box2i const box(
 		box2i::vector(
-			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U,
+			2U
 		),
 		box2i::vector(
-			2U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2U,
+			3U
 		)
 	);
 // ![init_points]
@@ -39,12 +39,12 @@ main()
 // ![init_size]
 	box2i const box2(
 		box2i::vector(
-			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			2U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U,
+			2U
 		),
 		box2i::dim(
-			1U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			1U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1U,
+			1U
 		)
 	);
 // ![init_size]

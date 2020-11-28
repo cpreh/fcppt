@@ -50,13 +50,13 @@ void optional_copy()
   using optional_uint = fcppt::optional::object<unsigned>;
 
   unsigned int1{
-      5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+      5U
   };
 
   // opt takes a copy of int1
   optional_uint opt{int1};
 
-  int1 = 10U; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+  int1 = 10U;
 
   // The value of opt will still be 5u
   std::cout << (opt != optional_uint{int1}) << '\n';

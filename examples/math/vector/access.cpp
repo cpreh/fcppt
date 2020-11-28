@@ -22,10 +22,10 @@ main()
 
 	float2_vec obj{
 		1.F,
-		2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		2.F
 	};
 
-	obj.x() = 42.F;  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	obj.x() = 42.F;
 
 	fcppt::io::cout()
 		<< obj.x()

@@ -26,7 +26,7 @@ main()
 	>;
 
 	buffer_type raw_chars{
-		1024 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1024
 	};
 
 	std::ifstream file{

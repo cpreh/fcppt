@@ -35,13 +35,13 @@ int
 main()
 {
 	int1d_grid one_dimensional(
-		int1d_grid::dim(3U), // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		int1d_grid::dim(3U),
 		0
 	);
 
-	one_dimensional.get_unsafe(int1d_grid::pos(0U)) = 0; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	one_dimensional.get_unsafe(int1d_grid::pos(1U)) = 1; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	one_dimensional.get_unsafe(int1d_grid::pos(2U)) = 2; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	one_dimensional.get_unsafe(int1d_grid::pos(0U)) = 0;
+	one_dimensional.get_unsafe(int1d_grid::pos(1U)) = 1;
+	one_dimensional.get_unsafe(int1d_grid::pos(2U)) = 2;
 
 	// Outputs 0, 1, 2
 	for(
@@ -56,16 +56,16 @@ main()
 	fcppt::io::cout() << FCPPT_TEXT('\n');
 
 	int2d_grid two_dimensional(
-		int2d_grid::dim(3U,2U), // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		int2d_grid::dim(3U,2U),
 		0
 	);
 
-	two_dimensional.get_unsafe(int2d_grid::pos(0U,0U)) = 0; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	two_dimensional.get_unsafe(int2d_grid::pos(1U,0U)) = 1; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	two_dimensional.get_unsafe(int2d_grid::pos(2U,0U)) = 2; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	two_dimensional.get_unsafe(int2d_grid::pos(0U,1U)) = 3; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	two_dimensional.get_unsafe(int2d_grid::pos(1U,1U)) = 4; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-	two_dimensional.get_unsafe(int2d_grid::pos(2U,1U)) = 5; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	two_dimensional.get_unsafe(int2d_grid::pos(0U,0U)) = 0;
+	two_dimensional.get_unsafe(int2d_grid::pos(1U,0U)) = 1;
+	two_dimensional.get_unsafe(int2d_grid::pos(2U,0U)) = 2;
+	two_dimensional.get_unsafe(int2d_grid::pos(0U,1U)) = 3;
+	two_dimensional.get_unsafe(int2d_grid::pos(1U,1U)) = 4;
+	two_dimensional.get_unsafe(int2d_grid::pos(2U,1U)) = 5;
 
 	// Outputs 0, 1, 2, 3, 4, 5
 	for(
