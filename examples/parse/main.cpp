@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/copy.hpp>
 #include <fcppt/make_cref.hpp>
 #include <fcppt/either/match.hpp>
@@ -19,10 +18,8 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 // [digit]
 enum class digit
 {
@@ -39,9 +36,7 @@ enum class digit
 };
 // [digit]
 
-void print(std::vector<digit> const &)
-{
-}
+void print(std::vector<digit> const &) {}
 
 // [make_digit]
 auto make_digit(char const c, digit const d)
@@ -65,5 +60,8 @@ int main()
   fcppt::either::match(
       fcppt::parse::parse_string(p09_repeat, std::string{"12345"}),
       [](fcppt::parse::error<char> const &error) { std::cerr << error.get() << '\n'; },
-      [](std::vector<digit> const &result) { std::cout << "Success "; print(result); });
+      [](std::vector<digit> const &result) {
+        std::cout << "Success ";
+        print(result);
+      });
 }

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/literal.hpp>
 #include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/make_strong_typedef.hpp>
@@ -13,30 +12,23 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 // ![literal_motivation]
-template<typename T>
-T half(T const _value )
+template <typename T>
+T half(T const _value)
 {
-	return
-		_value / 2;
+  return _value / 2;
 }
 // ![literal_motivation]
 
 // ![literal_strong_typedef_1]
-FCPPT_MAKE_STRONG_TYPEDEF(
-	int,
-	strong_int
-);
+FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
-void
-try_strong()
+void try_strong()
 {
-	// Doesn't work
-	// half(strong_int(10));
+  // Doesn't work
+  // half(strong_int(10));
 }
 // ![literal_strong_typedef_1]
 }
@@ -45,46 +37,22 @@ try_strong()
 
 namespace mine
 {
-
 class custom_type
 {
 public:
-	static custom_type
-	make(int const _value)
-	{
-		return
-			custom_type{
-				_value
-			};
-	}
+  static custom_type make(int const _value) { return custom_type{_value}; }
 
-	[[nodiscard]]
-	int get() const
-	{
-		return
-			this->value_;
-	}
+  [[nodiscard]] int get() const { return this->value_; }
+
 private:
-	explicit
-	custom_type(int const _value)
-	:
-		value_{_value}
-	{
-	}
+  explicit custom_type(int const _value) : value_{_value} {}
 
-	int value_;
+  int value_;
 };
 
-inline custom_type
-operator/(
-	custom_type const _left,
-	custom_type const _right
-)
+inline custom_type operator/(custom_type const _left, custom_type const _right)
 {
-	return
-		custom_type::make(
-			_left.get() / _right.get()
-		);
+  return custom_type::make(_left.get() / _right.get());
 }
 
 }
@@ -93,27 +61,19 @@ operator/(
 // ![literal_specialize]
 namespace fcppt
 {
-
-template<>
+template <>
 struct make_literal<mine::custom_type>
 {
-	using decorated_type =
-	mine::custom_type;
+  using decorated_type = mine::custom_type;
 
-	template<typename Fundamental>
-	static mine::custom_type
-	get(Fundamental const _value)
-	{
-		static_assert(
-			std::is_same_v<Fundamental, int>,
-			"custom_types should be initialized by integers"
-		);
+  template <typename Fundamental>
+  static mine::custom_type get(Fundamental const _value)
+  {
+    static_assert(
+        std::is_same_v<Fundamental, int>, "custom_types should be initialized by integers");
 
-		return
-			mine::custom_type::make(
-				_value
-			);
-	}
+    return mine::custom_type::make(_value);
+  }
 };
 
 }
@@ -122,35 +82,28 @@ struct make_literal<mine::custom_type>
 namespace
 {
 // ![literal_half]
-template<typename T>
+template <typename T>
 T half_2(T const _value)
 {
-	return
-		_value / fcppt::literal<T>(2);
+  return _value / fcppt::literal<T>(2);
 }
 // ![literal_half]
 
 // ![literal_use]
-void
-literal_use()
+void literal_use()
 {
-	// Prints 2
-	std::cout
-		<< half_2(mine::custom_type::make(4)).get()
-		<< '\n';
+  // Prints 2
+  std::cout << half_2(mine::custom_type::make(4)).get() << '\n';
 }
 // ![literal_use]
 
 }
 
-int
-main()
+int main()
 {
-	half(
-		2
-	);
+  half(2);
 
-	try_strong();
+  try_strong();
 
-	literal_use();
+  literal_use();
 }

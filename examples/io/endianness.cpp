@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/text.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/cout.hpp>
@@ -14,37 +13,18 @@
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-//[io_endianness]
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	std::stringstream stream{};
+  //[io_endianness]
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  std::stringstream stream{};
 
-	// Write 42u into the stream, using big endianness
-	fcppt::io::write(
-		stream,
-		42U,
-		fcppt::endianness::format::big
-	);
+  // Write 42u into the stream, using big endianness
+  fcppt::io::write(stream, 42U, fcppt::endianness::format::big);
 
-	// Read the written unsigned int back
-	fcppt::optional::maybe_void(
-		fcppt::io::read<
-			unsigned
-		>(
-			stream,
-			fcppt::endianness::format::big
-		),
-		[](
-			unsigned const _result
-		)
-		{
-			fcppt::io::cout()
-				<< _result
-				<< FCPPT_TEXT('\n');
-		}
-	);
-//[io_endianness]
+  // Read the written unsigned int back
+  fcppt::optional::maybe_void(
+      fcppt::io::read<unsigned>(stream, fcppt::endianness::format::big),
+      [](unsigned const _result) { fcppt::io::cout() << _result << FCPPT_TEXT('\n'); });
+  //[io_endianness]
 }

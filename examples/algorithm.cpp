@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -12,29 +11,16 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
+  {
+    //! [join_strings]
+    std::vector<std::string> strings{"ab", "cd", "efg"};
 
-{
-//! [join_strings]
-std::vector<std::string> strings{
-	"ab",
-	"cd",
-	"efg"
-};
+    std::string const result{fcppt::algorithm::join_strings(strings, ",")};
 
-std::string const result{
-	fcppt::algorithm::join_strings(
-		strings,
-		","
-	)
-};
-
-// Outputs "ab,cd,efg"
-std::cout << result << "\n";
-//! [join_strings]
-}
-
+    // Outputs "ab,cd,efg"
+    std::cout << result << "\n";
+    //! [join_strings]
+  }
 }

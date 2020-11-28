@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/char_type.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_to_base.hpp>
@@ -16,39 +15,20 @@
 #include <streambuf>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 {
-	// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-	fcppt::io::ostringstream ostream{};
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  fcppt::io::ostringstream ostream{};
 
-	{
-		fcppt::io::scoped_rdbuf const scoped(
-			fcppt::reference_to_base<
-				std::basic_ios<
-					fcppt::char_type
-				>
-			>(
-				fcppt::make_ref(
-					fcppt::io::cout()
-				)
-			),
-			fcppt::reference_to_base<
-				std::basic_streambuf<
-					fcppt::char_type
-				>
-			>(
-				fcppt::make_ref(
-					*ostream.rdbuf()
-				)
-			)
-		);
+  {
+    fcppt::io::scoped_rdbuf const scoped(
+        fcppt::reference_to_base<std::basic_ios<fcppt::char_type>>(
+            fcppt::make_ref(fcppt::io::cout())),
+        fcppt::reference_to_base<std::basic_streambuf<fcppt::char_type>>(
+            fcppt::make_ref(*ostream.rdbuf())));
 
-		fcppt::io::cout()
-			<< FCPPT_TEXT("This is a test!\n");
-	}
+    fcppt::io::cout() << FCPPT_TEXT("This is a test!\n");
+  }
 
-	fcppt::io::cout()
-		<< ostream.str();
+  fcppt::io::cout() << ostream.str();
 }

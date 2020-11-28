@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 // ![include_external]
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -19,7 +18,4 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
 #endif
 // ![gcc_warning]
 
-int
-main()
-{
-}
+int main() {}

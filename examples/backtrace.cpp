@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/backtrace/current_stack_frame.hpp>
@@ -16,153 +15,77 @@
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 
-
 namespace
 {
-
-void
-print_trace(
-	unsigned const levels
-)
+void print_trace(unsigned const levels)
 {
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Descended ")
-		<< levels
-		<< FCPPT_TEXT(" levels, printing stack trace (manually) now...\n\n");
+  fcppt::io::cout() << FCPPT_TEXT("Descended ") << levels
+                    << FCPPT_TEXT(" levels, printing stack trace (manually) now...\n\n");
 
-	fcppt::backtrace::stack_frame const sf{
-		fcppt::backtrace::current_stack_frame(
-			fcppt::backtrace::stack_limit(
-				levels * 2U
-			)
-		)
-	};
+  fcppt::backtrace::stack_frame const sf{
+      fcppt::backtrace::current_stack_frame(fcppt::backtrace::stack_limit(levels * 2U))};
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Stacktrace begin...\n");
+  fcppt::io::cout() << FCPPT_TEXT("Stacktrace begin...\n");
 
-	for(
-		auto const &current_symbol
-		:
-		sf
-	)
-	{
-		fcppt::io::cout()
-			<< current_symbol
-			<< FCPPT_TEXT("\n");
-	}
+  for (auto const &current_symbol : sf)
+  {
+    fcppt::io::cout() << current_symbol << FCPPT_TEXT("\n");
+  }
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Stacktrace end.\n");
+  fcppt::io::cout() << FCPPT_TEXT("Stacktrace end.\n");
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("And the same, non-manually: \n\n");
+  fcppt::io::cout() << FCPPT_TEXT("And the same, non-manually: \n\n");
 
-	fcppt::backtrace::print_current_stack_frame();
+  fcppt::backtrace::print_current_stack_frame();
 }
 
-void
-recursive_function_1(
-	unsigned,
-	unsigned
-);
+void recursive_function_1(unsigned, unsigned);
 
-void
-recursive_function_0(
-	unsigned const current_depth,
-	unsigned const maximum_depth
-)
+void recursive_function_0(unsigned const current_depth, unsigned const maximum_depth)
 {
-	if(current_depth != maximum_depth)
-	{
-		recursive_function_1(
-			current_depth + 1U,
-			maximum_depth
-		);
-	}
-	else
-	{
-		print_trace(
-			maximum_depth
-		);
-	}
+  if (current_depth != maximum_depth)
+  {
+    recursive_function_1(current_depth + 1U, maximum_depth);
+  }
+  else
+  {
+    print_trace(maximum_depth);
+  }
 }
 
-void
-recursive_function_1(
-	unsigned const current_depth,
-	unsigned const maximum_depth
-)
+void recursive_function_1(unsigned const current_depth, unsigned const maximum_depth)
 {
-	if(current_depth != maximum_depth)
-	{
-		recursive_function_0(
-			current_depth + 1U,
-			maximum_depth
-		);
-	}
-	else
-	{
-		print_trace(
-			maximum_depth
-		);
-	}
+  if (current_depth != maximum_depth)
+  {
+    recursive_function_0(current_depth + 1U, maximum_depth);
+  }
+  else
+  {
+    print_trace(maximum_depth);
+  }
 }
 
 }
 
-int
-main()
+int main()
 {
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Printing the current stack frame to stderr now...\n");
+  fcppt::io::cout() << FCPPT_TEXT("Printing the current stack frame to stderr now...\n");
 
-	fcppt::backtrace::print_current_stack_frame();
+  fcppt::backtrace::print_current_stack_frame();
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Ok, done, descending into a recursive function...\n");
+  fcppt::io::cout() << FCPPT_TEXT("Ok, done, descending into a recursive function...\n");
 
-	using
-	generator_type
-	=
-	fcppt::random::generator::minstd_rand;
+  using generator_type = fcppt::random::generator::minstd_rand;
 
-	generator_type generator(
-		fcppt::random::generator::seed_from_chrono<
-			generator_type::seed
-		>()
-	);
+  generator_type generator(fcppt::random::generator::seed_from_chrono<generator_type::seed>());
 
-	using
-	distribution
-	=
-	fcppt::random::distribution::basic<
-		fcppt::random::distribution::parameters::uniform_int<
-			unsigned
-		>
-	>;
+  using distribution = fcppt::random::distribution::basic<
+      fcppt::random::distribution::parameters::uniform_int<unsigned>>;
 
-	fcppt::random::variate<
-		generator_type,
-		distribution
-	> random_depth(
-		fcppt::make_ref(
-			generator
-		),
-		distribution(
-			distribution::param_type(
-				distribution::param_type::min(
-					10U
-				),
-				distribution::param_type::max(
-					100U
-				)
-			)
-		)
-	);
+  fcppt::random::variate<generator_type, distribution> random_depth(
+      fcppt::make_ref(generator),
+      distribution(distribution::param_type(
+          distribution::param_type::min(10U), distribution::param_type::max(100U))));
 
-	recursive_function_0(
-		0U,
-		random_depth()
-	);
+  recursive_function_0(0U, random_depth());
 }

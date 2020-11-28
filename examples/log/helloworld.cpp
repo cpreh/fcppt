@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/context.hpp>
@@ -18,49 +17,29 @@
 #include <fcppt/log/verbose.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
-
-int
-main()
+int main()
 {
-//! [helloworld]
-	// Create a log context that has debug and every level above enabled
-	fcppt::log::context context{
-		fcppt::log::optional_level{
-			fcppt::log::level::debug
-		},
-		fcppt::log::default_level_streams()
-	};
+  //! [helloworld]
+  // Create a log context that has debug and every level above enabled
+  fcppt::log::context context{
+      fcppt::log::optional_level{fcppt::log::level::debug}, fcppt::log::default_level_streams()};
 
-	// Create a log object at location "{ fcppt }"
-	fcppt::log::object log{
-		fcppt::make_ref(
-			context
-		),
-		fcppt::log::parameters{
-			fcppt::log::name{FCPPT_TEXT("fcppt")},
-			fcppt::log::format::optional_function{}
-		}
-	};
+  // Create a log object at location "{ fcppt }"
+  fcppt::log::object log{
+      fcppt::make_ref(context),
+      fcppt::log::parameters{
+          fcppt::log::name{FCPPT_TEXT("fcppt")}, fcppt::log::format::optional_function{}}};
 
-	// Outputs "fcppt: debug: Hello World"
-	if(log.enabled(fcppt::log::level::debug))
-	{
-		log.log(
-			fcppt::log::level::debug,
-			fcppt::log::out << FCPPT_TEXT("Hello World")
-		);
-	}
+  // Outputs "fcppt: debug: Hello World"
+  if (log.enabled(fcppt::log::level::debug))
+  {
+    log.log(fcppt::log::level::debug, fcppt::log::out << FCPPT_TEXT("Hello World"));
+  }
 
-	// The same as above using a shorthand macro
-	FCPPT_LOG_DEBUG(
-		log,
-		fcppt::log::out << FCPPT_TEXT("Hello World")
-	)
+  // The same as above using a shorthand macro
+  FCPPT_LOG_DEBUG(log, fcppt::log::out << FCPPT_TEXT("Hello World"))
 
-	// This is not printed because the verbose level is not enabled
-	FCPPT_LOG_VERBOSE(
-		log,
-		fcppt::log::out << FCPPT_TEXT("Very verbose message")
-	)
-//! [helloworld]
+  // This is not printed because the verbose level is not enabled
+  FCPPT_LOG_VERBOSE(log, fcppt::log::out << FCPPT_TEXT("Very verbose message"))
+  //! [helloworld]
 }

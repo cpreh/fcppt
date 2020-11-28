@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/reference.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/from.hpp>
@@ -16,7 +15,6 @@
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
-
 
 namespace
 {
@@ -49,9 +47,7 @@ void optional_copy()
   //! [optional_copy]
   using optional_uint = fcppt::optional::object<unsigned>;
 
-  unsigned int1{
-      5U
-  };
+  unsigned int1{5U};
 
   // opt takes a copy of int1
   optional_uint opt{int1};

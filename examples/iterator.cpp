@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -13,111 +12,77 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 // ![iterator_types]
 class my_iterator;
 
-using iterator_types =
-fcppt::iterator::types<
-	my_iterator, // The derived type
-	int, // The value type
-	int &, // The reference type, which is non const so the iterator is also an output iterator
-	std::ptrdiff_t, // The difference type for pointers
-	std::random_access_iterator_tag // The iterator category
->;
+using iterator_types = fcppt::iterator::types<
+    my_iterator, // The derived type
+    int, // The value type
+    int &, // The reference type, which is non const so the iterator is also an output iterator
+    std::ptrdiff_t, // The difference type for pointers
+    std::random_access_iterator_tag // The iterator category
+    >;
 // ![iterator_types]
 
 // ![iterator_impl]
-class my_iterator
-:
-	public fcppt::iterator::base<iterator_types>
+class my_iterator : public fcppt::iterator::base<iterator_types>
 {
 public:
-	// Random access iterators require a default constructor.
-	my_iterator()
-	: ptr_{nullptr}
-	{}
+  // Random access iterators require a default constructor.
+  my_iterator() : ptr_{nullptr} {}
 
-	explicit
-	my_iterator(pointer const _ptr)
-	: ptr_{_ptr}
-	{}
+  explicit my_iterator(pointer const _ptr) : ptr_{_ptr} {}
 
-	[[nodiscard]]
-	reference
-	operator*() const
-	{
-		return *ptr_;
-	}
+  [[nodiscard]] reference operator*() const { return *ptr_; }
 
-	void
-	increment()
-	{
-		++ptr_;
-	}
+  void increment() { ++ptr_; }
 
-	[[nodiscard]]
-	bool
-	equal(my_iterator const &_other) const
-	{
-		return ptr_ == _other.ptr_;
-	}
+  [[nodiscard]] bool equal(my_iterator const &_other) const { return ptr_ == _other.ptr_; }
 
-	void
-	decrement()
-	{
-		--ptr_;
-	}
+  void decrement() { --ptr_; }
 
-	void
-	advance(difference_type const _distance)
-	{
-		ptr_ += _distance;
-	}
+  void advance(difference_type const _distance) { ptr_ += _distance; }
 
-	[[nodiscard]]
-	difference_type
-	distance_to(my_iterator const &_other) const
-	{
-		return _other.ptr_ - ptr_;
-	}
+  [[nodiscard]] difference_type distance_to(my_iterator const &_other) const
+  {
+    return _other.ptr_ - ptr_;
+  }
+
 private:
-	pointer ptr_;
+  pointer ptr_;
 };
 // ![iterator_impl]
 }
 
-int
-main()
+int main()
 {
-// ![iterator_example]
-	std::array<int,3> array{{1,2,3}};
+  // ![iterator_example]
+  std::array<int, 3> array{{1, 2, 3}};
 
-	my_iterator start(&*array.begin());
+  my_iterator start(&*array.begin());
 
-	my_iterator it{start};
+  my_iterator it{start};
 
-	++it;
+  ++it;
 
-	*it = 0;
+  *it = 0;
 
-	// Array is now {1,5,3}
+  // Array is now {1,5,3}
 
-	// Prints 5
-	std::cout << array[1] << '\n';
+  // Prints 5
+  std::cout << array[1] << '\n';
 
-	// Prints 1
-	std::cout << (it - start) << '\n';
-// ![iterator_example]
+  // Prints 1
+  std::cout << (it - start) << '\n';
+  // ![iterator_example]
 
-	my_iterator dummy{};
+  my_iterator dummy{};
 
-	std::cout << (start == it) << '\n';
+  std::cout << (start == it) << '\n';
 
-	--it;
+  --it;
 
-	it += 1;
+  it += 1;
 }

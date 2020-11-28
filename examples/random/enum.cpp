@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
@@ -16,73 +15,40 @@
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/type_iso/enum.hpp>
 
-
 namespace
 {
-
 // ![random_enum_definition]
 enum class my_enum
 {
-	value1,
-	value2,
-	value3,
-	fcppt_maximum = value3
+  value1,
+  value2,
+  value3,
+  fcppt_maximum = value3
 };
 // ![random_enum_definition]
 
 }
 
-int
-main()
+int main()
 {
-	using
-	generator_type
-	=
-	fcppt::random::generator::minstd_rand;
+  using generator_type = fcppt::random::generator::minstd_rand;
 
-	generator_type generator(
-		fcppt::random::generator::seed_from_chrono<
-			generator_type::seed
-		>()
-	);
+  generator_type generator(fcppt::random::generator::seed_from_chrono<generator_type::seed>());
 
-// ![random_enum_distribution]
-	using uniform_enum =
-	fcppt::random::distribution::basic<
-		fcppt::random::distribution::parameters::uniform_int<
-			my_enum
-		>
-	>;
-// ![random_enum_distribution]
+  // ![random_enum_distribution]
+  using uniform_enum = fcppt::random::distribution::basic<
+      fcppt::random::distribution::parameters::uniform_int<my_enum>>;
+  // ![random_enum_distribution]
 
-	using
-	variate
-	=
-	fcppt::random::variate<
-		generator_type,
-		uniform_enum
-	>;
+  using variate = fcppt::random::variate<generator_type, uniform_enum>;
 
-// ![random_enum_parameters]
-	variate rng(
-		fcppt::make_ref(generator),
-		uniform_enum(
-			fcppt::random::distribution::parameters::make_uniform_enum<
-				my_enum
-			>()
-		)
-	);
-// ![random_enum_parameters]
+  // ![random_enum_parameters]
+  variate rng(
+      fcppt::make_ref(generator),
+      uniform_enum(fcppt::random::distribution::parameters::make_uniform_enum<my_enum>()));
+  // ![random_enum_parameters]
 
-	my_enum const chosen(
-		rng()
-	);
+  my_enum const chosen(rng());
 
-	fcppt::io::cout()
-		<<
-		fcppt::cast::enum_to_underlying(
-			chosen
-		)
-		<<
-		FCPPT_TEXT('\n');
+  fcppt::io::cout() << fcppt::cast::enum_to_underlying(chosen) << FCPPT_TEXT('\n');
 }

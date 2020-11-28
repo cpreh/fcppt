@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
 #include <fcppt/signal/auto_connection_container.hpp>
 #include <fcppt/signal/object.hpp>
@@ -24,86 +23,56 @@
 
 namespace
 {
-void
-f()
+void f()
 {
-	static unsigned i = 0;
-	if(++i % 10000 == 0)
-	{
-		std::cout << "|\n";
-	}
+  static unsigned i = 0;
+  if (++i % 10000 == 0)
+  {
+    std::cout << "|\n";
+  }
 }
 
 std::size_t const max_iterations = 1000000;
 }
 
-int
-main()
+int main()
 try
 {
 #if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
-	using
-	signal_type
-	=
-	fcppt::signal::object<void()>;
+  using signal_type = fcppt::signal::object<void()>;
 
-	signal_type s;
+  signal_type s;
 
-	fcppt::signal::auto_connection_container manager;
+  fcppt::signal::auto_connection_container manager;
 
-	for(std::size_t i = 0; i < max_iterations; ++i)
-	{
-		manager.push_back(
-			s.connect(
-				signal_type::function(
-					&f
-				)
-			)
-		);
-	}
+  for (std::size_t i = 0; i < max_iterations; ++i)
+  {
+    manager.push_back(s.connect(signal_type::function(&f)));
+  }
 
-	s();
+  s();
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
-	using
-	signal_type
-	=
-	boost::signals2::signal<void()>;
+  using signal_type = boost::signals2::signal<void()>;
 
-	signal_type s;
+  signal_type s;
 
-	using
-	connection_manager
-	=
-	std::vector<boost::signals2::connection>;
+  using connection_manager = std::vector<boost::signals2::connection>;
 
-	connection_manager manager;
+  connection_manager manager;
 
-	manager.reserve(
-		max_iterations
-	);
+  manager.reserve(max_iterations);
 
-	for(std::size_t i = 0; i < max_iterations; ++i)
-	{
-		manager.push_back(
-			s.connect(
-				&f
-			)
-		);
-	}
+  for (std::size_t i = 0; i < max_iterations; ++i)
+  {
+    manager.push_back(s.connect(&f));
+  }
 
-	s();
+  s();
 #endif
 }
-catch(
-	std::exception const &_error
-)
+catch (std::exception const &_error)
 {
-	std::cerr
-		<<
-		_error.what()
-		<<
-		'\n';
+  std::cerr << _error.what() << '\n';
 
-	return
-		EXIT_FAILURE;
+  return EXIT_FAILURE;
 }

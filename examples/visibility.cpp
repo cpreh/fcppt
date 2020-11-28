@@ -3,11 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-macros)
@@ -71,11 +69,9 @@ FCPPT_PP_POP_WARNING
 //! [visibility_export_function]
 namespace mylib
 {
-
 // Conditionally export func
 MYLIB_SYMBOL
-void
-func();
+void func();
 
 }
 //! [visibility_export_function]
@@ -98,9 +94,9 @@ namespace mylib
 class FCPPT_SYMBOL_CLASS someclass
 {
 public:
-	// Also export its destructor
-	MYLIB_SYMBOL
-	virtual ~someclass();
+  // Also export its destructor
+  MYLIB_SYMBOL
+  virtual ~someclass();
 };
 
 }
@@ -109,7 +105,6 @@ public:
 //! [visibility_export_object]
 namespace mylib
 {
-
 MYLIB_SYMBOL
 extern const int some_constant;
 
@@ -119,15 +114,8 @@ extern const int some_constant;
 //! [visibility_export_template_function]
 namespace mylib
 {
-
-template<
-	typename T
->
-MYLIB_SYMBOL
-void
-template_function(
-	T const &
-);
+template <typename T>
+MYLIB_SYMBOL void template_function(T const &);
 
 }
 //! [visibility_export_template_function]
@@ -135,16 +123,12 @@ template_function(
 //! [visibility_export_template_class]
 namespace mylib
 {
-
-template<
-	typename T
->
+template <typename T>
 class template_class
 {
 public:
-	MYLIB_SYMBOL
-	void
-	some_function();
+  MYLIB_SYMBOL
+  void some_function();
 };
 
 }
@@ -153,14 +137,10 @@ public:
 // Define our functions
 
 //! [visibility_define_function]
-void
-mylib::func()
-{
-}
+void mylib::func() {}
 //! [visibility_define_function]
 
-mylib::someclass::~someclass()
-= default;
+mylib::someclass::~someclass() = default;
 
 //! [visibility_define_object]
 int const mylib::some_constant = 42;
@@ -169,50 +149,27 @@ int const mylib::some_constant = 42;
 //! [visibility_define_template_function]
 
 // Define our template function
-template<
-	typename T
->
-void
-mylib::template_function(
-	T const &
-)
+template <typename T>
+void mylib::template_function(T const &)
 {
 }
 
 // Explicitly instantiate the template function with int and export it
 #include <fcppt/symbol/export_function_instantiation.hpp>
 
-template
-FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION
-void
-mylib::template_function<
-	int
->(
-	int const &
-);
+template FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION void mylib::template_function<int>(int const &);
 //! [visibility_define_template_function]
 
 //! [visibility_define_template_class]
 // Define the member functions of the template class
-template<
-	typename T
->
-void
-mylib::template_class<
-	T
->::some_function()
+template <typename T>
+void mylib::template_class<T>::some_function()
 {
 }
 
 // Explicitly instantiate the template class with int and export it
 #include <fcppt/symbol/export_class_instantiation.hpp>
 
-template
-class
-FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION
-mylib::template_class<
-	int
->;
+template class FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION mylib::template_class<int>;
 //! [visibility_define_template_class]
-int main()
-{}
+int main() {}

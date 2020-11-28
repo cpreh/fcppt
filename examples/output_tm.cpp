@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 // ![output_tm]
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/text.hpp>
@@ -12,20 +11,11 @@
 #include <fcppt/time/output_tm.hpp>
 #include <fcppt/time/std_time.hpp>
 
-
-int
-main()
+int main()
 {
-	fcppt::io::cout().imbue(
-		fcppt::string_conv_locale()
-	);
+  fcppt::io::cout().imbue(fcppt::string_conv_locale());
 
-	fcppt::time::output_tm(
-		fcppt::io::cout(),
-		fcppt::time::gmtime(
-			fcppt::time::std_time()
-		)
-	)
-	<< FCPPT_TEXT('\n');
+  fcppt::time::output_tm(fcppt::io::cout(), fcppt::time::gmtime(fcppt::time::std_time()))
+      << FCPPT_TEXT('\n');
 }
 // ![output_tm]

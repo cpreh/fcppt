@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
@@ -14,55 +13,39 @@
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
 // ![conversion_to_vector]
-using dim3 =
-fcppt::math::dim::static_<
-	int,
-	3
->;
+using dim3 = fcppt::math::dim::static_<int, 3>;
 
-using vector3 =
-fcppt::math::vector::static_<
-	int,
-	3
->;
+using vector3 = fcppt::math::vector::static_<int, 3>;
 
-void
-f()
+void f()
 {
-	dim3 const d{1, 2, 3};
+  dim3 const d{1, 2, 3};
 
-	vector3 const v(
-		fcppt::math::dim::to_vector(d)
-	);
+  vector3 const v(fcppt::math::dim::to_vector(d));
 
-	std::cout << v << '\n';
+  std::cout << v << '\n';
 }
 // ![conversion_to_vector]
 
 // ![conversion_from_vector]
-void
-g()
+void g()
 {
-	vector3 const v{1,2,3};
+  vector3 const v{1, 2, 3};
 
-	dim3 const d(
-		fcppt::math::vector::to_dim(v)
-	);
+  dim3 const d(fcppt::math::vector::to_dim(v));
 
-	std::cout << d << '\n';
+  std::cout << d << '\n';
 }
 // ![conversion_from_vector]
 
 }
 
-int
-main()
+int main()
 {
-	f();
+  f();
 
-	g();
+  g();
 }

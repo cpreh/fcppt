@@ -3,27 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/unique_ptr.hpp>
 
-
-int
-main()
+int main()
 {
-//! [c_deleter]
-	using void_c_ptr =
-	fcppt::unique_ptr<
-		void,
-		fcppt::c_deleter
-	>;
+  //! [c_deleter]
+  using void_c_ptr = fcppt::unique_ptr<void, fcppt::c_deleter>;
 
-	void_c_ptr ptr(
-		// NOLINTNEXTLINE(cppcoreguidelines-no-malloc,hicpp-no-malloc)
-		std::malloc(
-			100
-		)
-	);
-//! [c_deleter]
+  void_c_ptr ptr(
+      // NOLINTNEXTLINE(cppcoreguidelines-no-malloc,hicpp-no-malloc)
+      std::malloc(100));
+  //! [c_deleter]
 }
 //]

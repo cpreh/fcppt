@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/text.hpp>
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
@@ -12,64 +11,46 @@
 //! [bitfield]
 namespace
 {
-
 enum class person_status
 {
-	hungry,
-	tired,
-	fcppt_maximum = tired // note the extra field here
+  hungry,
+  tired,
+  fcppt_maximum = tired // note the extra field here
 };
 
-using
-bitfield =
-fcppt::container::bitfield::enum_object<
-	person_status
->;
+using bitfield = fcppt::container::bitfield::enum_object<person_status>;
 
-void
-output(
-	bitfield const &_field
-)
+void output(bitfield const &_field)
 {
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Person status: hungry: ")
-		<< (_field & person_status::hungry)
-		<< FCPPT_TEXT('\n')
-		<< FCPPT_TEXT("Person status: tired: ")
-		<< (_field & person_status::tired)
-		<< FCPPT_TEXT('\n');
+  fcppt::io::cout() << FCPPT_TEXT("Person status: hungry: ") << (_field & person_status::hungry)
+                    << FCPPT_TEXT('\n') << FCPPT_TEXT("Person status: tired: ")
+                    << (_field & person_status::tired) << FCPPT_TEXT('\n');
 }
 }
 
 int main()
 {
-	// Initialize the bitfield to all zeros
-	bitfield field(
-		bitfield::null()
-	);
+  // Initialize the bitfield to all zeros
+  bitfield field(bitfield::null());
 
-	output(field);
+  output(field);
 
-	// Set a flag, the bitwise kind of way
-	field |= person_status::hungry;
+  // Set a flag, the bitwise kind of way
+  field |= person_status::hungry;
 
-	output(field);
+  output(field);
 
-	// And unset it again
-	field &= ~bitfield{person_status::hungry};
+  // And unset it again
+  field &= ~bitfield{person_status::hungry};
 
-	// You can access a single flag via operator[]
-	fcppt::io::cout()
-		<< FCPPT_TEXT("person is hungry: ")
-		<< field[person_status::hungry]
-		<< FCPPT_TEXT('\n');
+  // You can access a single flag via operator[]
+  fcppt::io::cout() << FCPPT_TEXT("person is hungry: ") << field[person_status::hungry]
+                    << FCPPT_TEXT('\n');
 
-	// You can also set a flag this way:
-	field[person_status::hungry] = false;
+  // You can also set a flag this way:
+  field[person_status::hungry] = false;
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("person is hungry: ")
-		<< field[person_status::hungry]
-		<< FCPPT_TEXT('\n');
+  fcppt::io::cout() << FCPPT_TEXT("person is hungry: ") << field[person_status::hungry]
+                    << FCPPT_TEXT('\n');
 }
 //! [bitfield]

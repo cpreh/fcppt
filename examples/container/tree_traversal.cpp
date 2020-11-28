@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -17,80 +16,43 @@
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 try
 {
-//! [main]
-	using
-	string_tree
-	=
-	fcppt::container::tree::object<
-		fcppt::string
-	>;
+  //! [main]
+  using string_tree = fcppt::container::tree::object<fcppt::string>;
 
-	// Create a tree, insert 5 elements below the root
-	string_tree tree(
-		FCPPT_TEXT("hello")
-	);
+  // Create a tree, insert 5 elements below the root
+  string_tree tree(FCPPT_TEXT("hello"));
 
-	tree.push_back(
-		FCPPT_TEXT("foo")
-	);
+  tree.push_back(FCPPT_TEXT("foo"));
 
-	tree.push_back(
-		FCPPT_TEXT("bar")
-	);
+  tree.push_back(FCPPT_TEXT("bar"));
 
-	tree.push_back(
-		FCPPT_TEXT("baz")
-	);
+  tree.push_back(FCPPT_TEXT("baz"));
 
-	tree.front().get_unsafe().get().push_back(
-		FCPPT_TEXT("qux")
-	);
+  tree.front().get_unsafe().get().push_back(FCPPT_TEXT("qux"));
 
-	// Create a traversal and "attach" it to the tree in the ctor
-	// Then use it like a forward-iterable container!
-	// This outputs:
-	//
-	// hello, foo, qux, bar, baz
-	for(
-		string_tree const &item
-		:
-		fcppt::container::tree::pre_order<
-			string_tree const
-		>(
-			tree
-		)
-	)
-	{
-		fcppt::io::cout()
-			<< item.value()
-			<< std::endl;
-	}
-//! [main]
+  // Create a traversal and "attach" it to the tree in the ctor
+  // Then use it like a forward-iterable container!
+  // This outputs:
+  //
+  // hello, foo, qux, bar, baz
+  for (string_tree const &item : fcppt::container::tree::pre_order<string_tree const>(tree))
+  {
+    fcppt::io::cout() << item.value() << std::endl;
+  }
+  //! [main]
 }
-catch(
-	fcppt::exception const &_error
-)
+catch (fcppt::exception const &_error)
 {
-	fcppt::io::cerr()
-		<< _error.string()
-		<< FCPPT_TEXT('\n');
+  fcppt::io::cerr() << _error.string() << FCPPT_TEXT('\n');
 
-	return
-		EXIT_FAILURE;
+  return EXIT_FAILURE;
 }
-catch(
-	std::exception const &_error
-)
+catch (std::exception const &_error)
 {
-	std::cerr
-		<< _error.what()
-		<< '\n';
+  std::cerr << _error.what() << '\n';
 
-	return
-		EXIT_FAILURE;
+  return EXIT_FAILURE;
 }

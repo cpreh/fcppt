@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 //! [metal_invoke_on]
 // In the following example, we are going to create a function that can
 // transform a color type given at runtime (defined via an enum) into a static
@@ -20,16 +19,14 @@
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
 {
-
 // Our color enum
 enum class color_enum
 {
-	bgr,
-	rgb
-	// + more color types
+  bgr,
+  rgb
+  // + more color types
 };
 
 // Our static color types
@@ -42,84 +39,37 @@ struct rgb
 };
 
 // Typedef the available static color types
-using
-static_color_types
-=
-metal::list<
-	bgr,
-	rgb
->;
+using static_color_types = metal::list<bgr, rgb>;
 
 // The variant type that can hold any of the static color types
-using
-color_variant
-=
-fcppt::variant::from_list<
-	static_color_types
->;
+using color_variant = fcppt::variant::from_list<static_color_types>;
 
 // Transforms a concrete color type into a color_variant. This function will be
 // used with invoke_on.
 struct create_function
 {
-	template<
-		typename ConcreteColor
-	>
-	color_variant
-	operator()(
-		fcppt::tag<
-			ConcreteColor
-		>
-	) const
-	{
-		return
-			color_variant(
-				ConcreteColor()
-			);
-	}
+  template <typename ConcreteColor>
+  color_variant operator()(fcppt::tag<ConcreteColor>) const
+  {
+    return color_variant(ConcreteColor());
+  }
 };
 
 // Transforms a color enum into a static color type using invoke_on
-color_variant
-make_color_variant(
-	color_enum const _value
-)
+color_variant make_color_variant(color_enum const _value)
 {
-	return
-		fcppt::metal::invoke_on<
-			static_color_types
-		>(
-			fcppt::cast::to_unsigned(
-				fcppt::cast::enum_to_underlying(
-					_value
-				)
-			),
-			create_function(),
-			[]()
-			-> color_variant
-			{
-				std::terminate();
-			}
-		);
+  return fcppt::metal::invoke_on<static_color_types>(
+      fcppt::cast::to_unsigned(fcppt::cast::enum_to_underlying(_value)),
+      create_function(),
+      []() -> color_variant { std::terminate(); });
 }
 
 }
 
-int
-main()
+int main()
 {
-	color_variant const variant(
-		make_color_variant(
-			color_enum::rgb
-		)
-	);
+  color_variant const variant(make_color_variant(color_enum::rgb));
 
-	FCPPT_ASSERT_ERROR(
-		fcppt::variant::holds_type<
-			rgb
-		>(
-			variant
-		)
-	);
+  FCPPT_ASSERT_ERROR(fcppt::variant::holds_type<rgb>(variant));
 }
 //! [metal_invoke_on]

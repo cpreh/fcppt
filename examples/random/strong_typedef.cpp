@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
@@ -18,67 +17,35 @@
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>
 
-
-int
-main()
+int main()
 {
-//![random_strong_typedef_distribution]
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		int,
-		my_type
-	);
+  //![random_strong_typedef_distribution]
+  FCPPT_MAKE_STRONG_TYPEDEF(int, my_type);
 
-	using distribution =
-	fcppt::random::distribution::basic<
-		fcppt::random::distribution::parameters::uniform_int<
-			my_type
-		>
-	>;
-//![random_strong_typedef_distribution]
+  using distribution = fcppt::random::distribution::basic<
+      fcppt::random::distribution::parameters::uniform_int<my_type>>;
+  //![random_strong_typedef_distribution]
 
-	using
-	generator_type
-	=
-	fcppt::random::generator::minstd_rand;
+  using generator_type = fcppt::random::generator::minstd_rand;
 
-	generator_type generator(
-		fcppt::random::generator::seed_from_chrono<
-			generator_type::seed
-		>()
-	);
+  generator_type generator(fcppt::random::generator::seed_from_chrono<generator_type::seed>());
 
-	using
-	variate
-	=
-	fcppt::random::variate<
-		generator_type,
-		distribution
-	>;
+  using variate = fcppt::random::variate<generator_type, distribution>;
 
-//![random_strong_typedef_variate]
-	variate rng(
-		fcppt::make_ref(
-			generator
-		),
-		distribution(
-			distribution::param_type::min(my_type(0)),
-			distribution::param_type::max(my_type(10))
-		)
-	);
-//![random_strong_typedef_variate]
+  //![random_strong_typedef_variate]
+  variate rng(
+      fcppt::make_ref(generator),
+      distribution(
+          distribution::param_type::min(my_type(0)), distribution::param_type::max(my_type(10))));
+  //![random_strong_typedef_variate]
 
-//![random_strong_typedef_output]
-	fcppt::algorithm::repeat(
-		10U,
-		[&rng]{
-			fcppt::io::cout()
-				// Outputs objects of type my_type
-				<< rng()
-				<< FCPPT_TEXT(' ');
-		}
-	);
-//![random_strong_typedef_output]
+  //![random_strong_typedef_output]
+  fcppt::algorithm::repeat(10U, [&rng] {
+    fcppt::io::cout()
+        // Outputs objects of type my_type
+        << rng() << FCPPT_TEXT(' ');
+  });
+  //![random_strong_typedef_output]
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT('\n');
+  fcppt::io::cout() << FCPPT_TEXT('\n');
 }

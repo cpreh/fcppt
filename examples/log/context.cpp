@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
 #include <fcppt/exception.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
@@ -22,113 +21,57 @@
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 
-
-int
-main()
+int main()
 try
 {
-// ![declare_context]
-	fcppt::log::context context{
-		fcppt::log::optional_level{
-			fcppt::log::level::debug
-		},
-		fcppt::log::default_level_streams()
-	};
-// ![declare_context]
+  // ![declare_context]
+  fcppt::log::context context{
+      fcppt::log::optional_level{fcppt::log::level::debug}, fcppt::log::default_level_streams()};
+  // ![declare_context]
 
-// ![declare_root_logger]
-	fcppt::log::name const root_name{
-		FCPPT_TEXT("root")
-	};
+  // ![declare_root_logger]
+  fcppt::log::name const root_name{FCPPT_TEXT("root")};
 
-	fcppt::log::object root_log{
-		fcppt::make_ref(
-			context
-		),
-		fcppt::log::parameters(
-			root_name,
-			fcppt::log::format::optional_function{}
-		)
-	};
-// ![declare_root_logger]
+  fcppt::log::object root_log{
+      fcppt::make_ref(context),
+      fcppt::log::parameters(root_name, fcppt::log::format::optional_function{})};
+  // ![declare_root_logger]
 
-// ![declare_child_logger]
-	fcppt::log::name const child_name{
-		FCPPT_TEXT("child")
-	};
+  // ![declare_child_logger]
+  fcppt::log::name const child_name{FCPPT_TEXT("child")};
 
-	fcppt::log::object child_log{
-		root_log,
-		fcppt::log::parameters(
-			child_name,
-			fcppt::log::format::optional_function{}
-		)
-	};
-// ![declare_child_logger]
+  fcppt::log::object child_log{
+      root_log, fcppt::log::parameters(child_name, fcppt::log::format::optional_function{})};
+  // ![declare_child_logger]
 
-// ![log_debug]
-	FCPPT_LOG_INFO(
-		root_log,
-		fcppt::log::out
-			<< FCPPT_TEXT("Print from root!")
-	)
+  // ![log_debug]
+  FCPPT_LOG_INFO(root_log, fcppt::log::out << FCPPT_TEXT("Print from root!"))
 
-	FCPPT_LOG_INFO(
-		child_log,
-		fcppt::log::out
-			<< FCPPT_TEXT("Print from child!")
-	)
-// ![log_debug]
+  FCPPT_LOG_INFO(child_log, fcppt::log::out << FCPPT_TEXT("Print from child!"))
+  // ![log_debug]
 
-// ![context_set]
-	context.set(
-		fcppt::log::location{
-			root_name
-		}
-		/
-		child_name,
-		fcppt::log::optional_level{
-			fcppt::log::level::warning
-		}
-	);
-// ![context_set]
+  // ![context_set]
+  context.set(
+      fcppt::log::location{root_name} / child_name,
+      fcppt::log::optional_level{fcppt::log::level::warning});
+  // ![context_set]
 
-// ![log_info]
-	FCPPT_LOG_INFO(
-		child_log,
-		fcppt::log::out
-			<< FCPPT_TEXT("shouldn't be shown!")
-	)
-// ![log_info]
+  // ![log_info]
+  FCPPT_LOG_INFO(child_log, fcppt::log::out << FCPPT_TEXT("shouldn't be shown!"))
+  // ![log_info]
 
-// ![context_set2]
-	context.set(
-		fcppt::log::location{
-			root_name
-		},
-		fcppt::log::optional_level{
-			fcppt::log::level::debug
-		}
-	);
+  // ![context_set2]
+  context.set(
+      fcppt::log::location{root_name}, fcppt::log::optional_level{fcppt::log::level::debug});
 
-	FCPPT_LOG_INFO(
-		child_log,
-		fcppt::log::out
-			<< FCPPT_TEXT("This is now shown!")
-	)
-// ![context_set2]
+  FCPPT_LOG_INFO(child_log, fcppt::log::out << FCPPT_TEXT("This is now shown!"))
+  // ![context_set2]
 
-	return
-		EXIT_SUCCESS;
+  return EXIT_SUCCESS;
 }
-catch(
-	fcppt::exception const &_error
-)
+catch (fcppt::exception const &_error)
 {
-	fcppt::io::cerr()
-		<< _error.string()
-		<< FCPPT_TEXT('\n');
+  fcppt::io::cerr() << _error.string() << FCPPT_TEXT('\n');
 
-	return
-		EXIT_FAILURE;
+  return EXIT_FAILURE;
 }
