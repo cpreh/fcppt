@@ -33,7 +33,7 @@ main()
 	static_assert(
 		fcppt::math::ceil_div_static<
 			unsigned,
-			5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			5U,
 			3U
 		>::value
 		==
@@ -43,7 +43,7 @@ main()
 	static_assert(
 		fcppt::math::ceil_div_static<
 			unsigned,
-			6U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			6U,
 			3U
 		>::value
 		==

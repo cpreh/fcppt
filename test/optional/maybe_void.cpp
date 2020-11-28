@@ -35,7 +35,7 @@ TEST_CASE(
 
 	fcppt::optional::maybe_void(
 		optional_int(
-			10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10
 		),
 		[
 			&result
@@ -51,7 +51,7 @@ TEST_CASE(
 	CHECK(
 		result
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	fcppt::optional::maybe_void(
@@ -70,7 +70,7 @@ TEST_CASE(
 	CHECK(
 		result
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	optional_int temp(
@@ -83,7 +83,7 @@ TEST_CASE(
 			int &_val
 		)
 		{
-			_val = 30; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			_val = 30;
 		}
 	);
 
@@ -91,7 +91,7 @@ TEST_CASE(
 		temp
 		==
 		optional_int(
-			30 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			30
 		)
 	);
 }

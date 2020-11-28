@@ -30,7 +30,7 @@ TEST_CASE(
 	>;
 
 	int_array array1{
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	};
 
 	CHECK(

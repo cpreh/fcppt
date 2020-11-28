@@ -52,11 +52,11 @@ TEST_CASE(
 	);
 
 	tree.push_back(
-		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5
 	);
 
 	tree.push_back(
-		6 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		6
 	);
 
 	using

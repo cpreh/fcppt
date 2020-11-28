@@ -42,14 +42,14 @@ TEST_CASE(
 	std::string &inserted(
 		fcppt::container::get_or_insert(
 			map,
-			42, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42,
 			inserter
 		)
 	);
 
 	int_string_map::iterator const it{
 		map.find(
-			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42
 		)
 	};
 
@@ -76,7 +76,7 @@ TEST_CASE(
 	CHECK(
 		&fcppt::container::get_or_insert(
 			map,
-			42, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42,
 			inserter
 		)
 		==

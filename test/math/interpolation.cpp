@@ -44,7 +44,7 @@ TEST_CASE(
 			fcppt::math::interpolation::linear(
 				0.0,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
@@ -58,11 +58,11 @@ TEST_CASE(
 			fcppt::math::interpolation::linear(
 				1.0,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
-			2.0, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2.0,
 			epsilon
 		)
 	);
@@ -70,13 +70,13 @@ TEST_CASE(
 	CHECK_THAT(
 		std::abs(
 			fcppt::math::interpolation::linear(
-				0.5, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				0.5,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
-			1.5, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1.5,
 			epsilon
 		)
 	);
@@ -84,13 +84,13 @@ TEST_CASE(
 	CHECK_THAT(
 		std::abs(
 			fcppt::math::interpolation::linear(
-				0.25, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				0.25,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
-			1.25, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1.25,
 			epsilon
 		)
 	);
@@ -98,20 +98,20 @@ TEST_CASE(
 	CHECK(
 		fcppt::math::vector::length(
 			fcppt::math::interpolation::linear(
-				0.25, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				0.25,
 				vector2{
 					1.0,
 					1.0
 				},
 				vector2{
-					2.0, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.0,
+					2.0
 				}
 			)
 			-
 			vector2{
-				1.25, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				1.25 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				1.25,
+				1.25
 			}
 		)
 		<
@@ -129,7 +129,7 @@ TEST_CASE(
 			fcppt::math::interpolation::trigonometric(
 				0.0,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
@@ -143,11 +143,11 @@ TEST_CASE(
 			fcppt::math::interpolation::trigonometric(
 				1.0,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
-			2.0, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2.0,
 			epsilon
 		)
 	);
@@ -155,13 +155,13 @@ TEST_CASE(
 	CHECK_THAT(
 		std::abs(
 			fcppt::math::interpolation::trigonometric(
-				0.5, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				0.5,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(
-			1.5, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1.5,
 			epsilon
 		)
 	);
@@ -175,14 +175,14 @@ TEST_CASE(
 					1.0
 				},
 				vector2{
-					2.0, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.0,
+					2.0
 				}
 			)
 			-
 			vector2{
-				2.0, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0,
+				2.0
 			}
 		)
 		<
@@ -200,7 +200,7 @@ TEST_CASE(
 			fcppt::math::interpolation::perlin_fifth_degree(
 				0.0,
 				1.0,
-				2.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.0
 			)
 		),
 		Catch::Matchers::WithinAbs(

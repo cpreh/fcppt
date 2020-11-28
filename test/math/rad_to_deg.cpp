@@ -27,9 +27,9 @@ TEST_CASE(
 
 	CHECK(
 		fcppt::math::rad_to_deg(
-			3.14159F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			3.14159F
 		)
 		==
-		180.0_a // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		180.0_a
 	);
 }

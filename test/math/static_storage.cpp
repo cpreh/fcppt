@@ -71,7 +71,7 @@ TEST_CASE(
 		storage[
 			0
 		] =
-			5; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			5;
 
 		CHECK(
 			storage[
@@ -84,14 +84,14 @@ TEST_CASE(
 		storage.data()[
 			1
 		] =
-			10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10;
 
 		CHECK(
 			storage.data()[
 				1
 			]
 			==
-			10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10
 		);
 	}
 }

@@ -20,7 +20,7 @@ main()
 	metal::numbers<
 		3,
 		4,
-		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5
 	>;
 
 	using
@@ -36,8 +36,8 @@ main()
 			metal::numbers<
 				0,
 				3,
-				7, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				12 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				7,
+				12
 			>
 		>
 	);

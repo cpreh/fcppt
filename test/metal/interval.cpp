@@ -20,7 +20,7 @@ main()
 	fcppt::metal::interval<
 		int,
 		3,
-		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5
 	>;
 
 	static_assert(

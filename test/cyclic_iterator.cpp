@@ -127,7 +127,7 @@ TEST_CASE(
 		3
 	);
 
-	test -= 300; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	test -= 300;
 
 	REQUIRE(
 		*test

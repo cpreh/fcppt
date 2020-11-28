@@ -27,7 +27,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::math::vector::normalize(
 			float2_vec{
-				2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F,
 				0.F
 			}
 		).has_value()

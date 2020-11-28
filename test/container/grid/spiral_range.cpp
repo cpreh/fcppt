@@ -40,7 +40,7 @@ TEST_CASE(
 	pos_vector positions{};
 
 	positions.reserve(
-		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100
 	);
 
 	auto const manhattan_distance(

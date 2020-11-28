@@ -58,7 +58,7 @@ TEST_CASE(
 		fcppt::literal<
 			real
 		>(
-			1.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			1.5
 		)
 	};
 
@@ -66,7 +66,7 @@ TEST_CASE(
 		fcppt::literal<
 			real
 		>(
-			0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			0.5
 		)
 	};
 

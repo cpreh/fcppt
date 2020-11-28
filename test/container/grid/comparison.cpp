@@ -27,15 +27,15 @@ TEST_CASE(
 
 	int2_grid const test1(
 		int2_grid::dim(
-			5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			5U,
+			10U
 		),
 		0
 	);
 
 	int2_grid test2(
 		int2_grid::dim(
-			10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10U,
 			2U
 		),
 		0

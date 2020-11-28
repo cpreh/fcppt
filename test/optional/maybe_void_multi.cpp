@@ -51,16 +51,16 @@ TEST_CASE(
 				);
 		},
 		optional_int(
-			10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10
 		),
 		optional_unsigned(
-			20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			20
 		)
 	);
 
 	CHECK(
 		result
 		==
-		30 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		30
 	);
 }

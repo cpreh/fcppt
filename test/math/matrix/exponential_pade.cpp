@@ -29,7 +29,7 @@ TEST_CASE(
 	>;
 
 	double const epsilon{
-		0.01 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		0.01
 	};
 
 	CHECK(
@@ -37,25 +37,25 @@ TEST_CASE(
 			fcppt::math::matrix::exponential_pade(
 				matrix_type{
 					fcppt::math::matrix::row(
-						2.0, -1.0, 1.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						2.0, -1.0, 1.0
 					),
 					fcppt::math::matrix::row(
-						0.0, 3.0, -1.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						0.0, 3.0, -1.0
 					),
 					fcppt::math::matrix::row(
-						2.0, 1.0, 3.0 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						2.0, 1.0, 3.0
 					)
 				}
 			),
 			matrix_type(
 				fcppt::math::matrix::row(
-					23.6045,-7.38906,23.6045 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					23.6045,-7.38906,23.6045
 				),
 				fcppt::math::matrix::row(
-					-16.2155,14.7781,-23.6045 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					-16.2155,14.7781,-23.6045
 				),
 				fcppt::math::matrix::row(
-					30.9936,7.38906,30.9936 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					30.9936,7.38906,30.9936
 				)
 			),
 			epsilon

@@ -39,8 +39,8 @@ TEST_CASE(
 		fcppt::container::grid::resize(
 			sz_pair_grid{
 				sz_pair_grid::dim(
-					5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					5U,
+					10U
 				),
 				[](
 					sz_pair_grid::pos const &_pos
@@ -62,8 +62,8 @@ TEST_CASE(
 				}
 			},
 			sz_pair_grid::dim(
-				10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				15U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10U,
+				15U
 			),
 			[](
 				sz_pair_grid::pos const &
@@ -71,8 +71,8 @@ TEST_CASE(
 			{
 				return
 					sz_pair_grid::value_type(
-						10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-						20U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						10U,
+						20U
 					);
 			}
 		)
@@ -82,8 +82,8 @@ TEST_CASE(
 		test.size()
 		==
 		sz_pair_grid::dim(
-			10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			15U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10U,
+			15U
 		)
 	);
 
@@ -104,7 +104,7 @@ TEST_CASE(
 		)
 		{
 			if(
-				x < 5 && y < 10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				x < 5 && y < 10
 			)
 			{
 				CHECK(
@@ -140,8 +140,8 @@ TEST_CASE(
 					)
 					==
 					sz_pair_grid::value_type(
-						10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-						20U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						10U,
+						20U
 					)
 				);
 			}
@@ -168,8 +168,8 @@ TEST_CASE(
 		fcppt::container::grid::resize(
 			unique_ptr_grid{
 				unique_ptr_grid::dim{
-					5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					5U,
+					10U
 				},
 				[](
 					unique_ptr_grid::pos const &_pos
@@ -190,8 +190,8 @@ TEST_CASE(
 				}
 			},
 			unique_ptr_grid::dim{
-				10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				15U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10U,
+				15U
 			},
 			[](
 				unique_ptr_grid::pos const &
@@ -201,7 +201,7 @@ TEST_CASE(
 					fcppt::make_unique_ptr<
 						fcppt::container::grid::size_type
 					>(
-						100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						100U
 					);
 			}
 		)
@@ -224,7 +224,7 @@ TEST_CASE(
 		)
 		{
 			if(
-				x < 5 && y < 10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				x < 5 && y < 10
 			)
 			{
 				CHECK(
@@ -248,7 +248,7 @@ TEST_CASE(
 						)
 					)
 					==
-					100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					100U
 				);
 			}
 		}

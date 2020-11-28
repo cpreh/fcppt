@@ -64,7 +64,7 @@ TEST_CASE(
 	dim2_grid grid(
 		dim2_grid::dim(
 			4U,
-			6U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			6U
 		),
 		fcppt::math::vector::null<
 			pos
@@ -103,7 +103,7 @@ TEST_CASE(
 		dim2_grid(
 			dim2_grid::dim(
 				4U,
-				6U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				6U
 			),
 			fcppt::math::vector::null<
 				element_type

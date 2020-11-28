@@ -20,7 +20,7 @@ TEST_CASE(
 	);
 
 	fcppt::algorithm::repeat(
-		10, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10,
 		[
 			&value
 		]()

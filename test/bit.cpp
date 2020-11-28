@@ -20,11 +20,11 @@ namespace
 static_assert(
 	fcppt::bit::shifted_mask_c<
 		unsigned,
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	>().get()
 	==
 	1U
-	<< 10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	<< 10U
 );
 
 }

@@ -186,11 +186,11 @@ FCPPT_PP_POP_WARNING
 			true,
 		copy_label{} =
 			copy(
-				42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				42
 			),
 		move_only_label{} =
 			move_only{
-				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10
 			}
 	};
 
@@ -219,7 +219,7 @@ FCPPT_PP_POP_WARNING
 			test
 		).value()
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 
 	CHECK(
@@ -229,7 +229,7 @@ FCPPT_PP_POP_WARNING
 			test
 		).value()
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	my_record test2(
@@ -263,7 +263,7 @@ FCPPT_PP_POP_WARNING
 			test2
 		).value()
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	fcppt::record::set<
@@ -286,7 +286,7 @@ FCPPT_PP_POP_WARNING
 	>(
 		test2,
 		move_only{
-			100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			100
 		}
 	);
 
@@ -297,7 +297,7 @@ FCPPT_PP_POP_WARNING
 			test2
 		).value()
 		==
-		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100
 	);
 
 	fcppt::record::get<
@@ -305,7 +305,7 @@ FCPPT_PP_POP_WARNING
 	>(
 		test2
 	) =
-		42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42;
 
 	CHECK(
 		fcppt::record::get<
@@ -314,6 +314,6 @@ FCPPT_PP_POP_WARNING
 			test2
 		)
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 }

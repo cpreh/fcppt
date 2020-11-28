@@ -41,18 +41,18 @@ main()
 			fcppt::metal::max_value<
 				metal::list<
 					static_size<
-						5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						5U
 					>,
 					static_size<
-						7U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						7U
 					>,
 					static_size<
-						3U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						3U
 					>
 				>
 			>,
 			static_size<
-				7U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				7U
 			>
 		>
 	);

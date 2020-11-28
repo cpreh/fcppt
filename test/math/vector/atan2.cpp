@@ -54,7 +54,7 @@ almost_equal(
 						fcppt::literal<
 							scalar
 						>(
-							0.01F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+							0.01F
 						);
 				},
 				_f1,
@@ -135,7 +135,7 @@ TEST_CASE(
 			fcppt::optional::make(
 				pi
 				/
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F
 			)
 		)
 	);
@@ -151,7 +151,7 @@ TEST_CASE(
 			fcppt::optional::make(
 				-pi
 				/
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F
 			)
 		)
 	);

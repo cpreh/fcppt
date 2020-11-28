@@ -25,18 +25,18 @@ TEST_CASE(
 	>;
 
 	float const epsilon(
-		0.00001F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		0.00001F
 	);
 
 	CHECK(
 		fcppt::math::dim::componentwise_equal(
 			f2_dim(
 				1.F,
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F
 			),
 			f2_dim(
 				1.F,
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F
 			),
 			epsilon
 		)
@@ -46,11 +46,11 @@ TEST_CASE(
 		fcppt::math::dim::componentwise_equal(
 			f2_dim(
 				1.F,
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				2.F
 			),
 			f2_dim(
-				1.1F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-				2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				1.1F,
+				2.F
 			),
 			epsilon
 		)

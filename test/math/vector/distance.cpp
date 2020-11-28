@@ -30,19 +30,19 @@ TEST_CASE(
 			fcppt::math::vector::distance(
 				float2_vector(
 					1.F,
-					2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.F
 				),
 				float2_vector(
-					3.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					4.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					3.F,
+					4.F
 				)
 			)
 			-
-			2.8F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2.8F
 		),
 		Catch::Matchers::WithinAbs(
 			0.,
-			0.1 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			0.1
 		)
 	);
 
@@ -69,11 +69,11 @@ TEST_CASE(
 				)
 			)
 			-
-			2.8F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2.8F
 		),
 		Catch::Matchers::WithinAbs(
 			0.,
-			0.1 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			0.1
 		)
 	);
 }

@@ -42,7 +42,7 @@ TEST_CASE(
 
 	CHECK_FALSE(
 		fcppt::math::div(
-			2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			2.F,
 			0.F
 		).has_value()
 	);

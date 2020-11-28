@@ -104,7 +104,7 @@ TEST_CASE(
 	{
 		test_class test1{
 			my_list,
-			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42
 		};
 
 		CHECK(
@@ -127,7 +127,7 @@ TEST_CASE(
 		{
 			test_class test2{
 				my_list,
-				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10
 			};
 
 			CHECK(
@@ -151,7 +151,7 @@ TEST_CASE(
 			CHECK(
 				my_list.begin()->value()
 				==
-				42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				42
 			);
 
 			CHECK(
@@ -159,7 +159,7 @@ TEST_CASE(
 					my_list.begin()
 				)->value()
 				==
-				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10
 			);
 
 			test_class test3{

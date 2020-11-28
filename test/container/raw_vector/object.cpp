@@ -41,18 +41,18 @@ TEST_CASE(
 	int_vector test{};
 
 	test.resize(
-		100U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U,
 		0
 	);
 
 	test.reserve(
-		1000U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1000U
 	);
 
 	CHECK(
 		test.capacity()
 		>=
-		1000U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		1000U
 	);
 
 	test.shrink_to_fit();
@@ -60,13 +60,13 @@ TEST_CASE(
 	CHECK(
 		test.capacity()
 		==
-		100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U
 	);
 
 	CHECK(
 		test.size()
 		==
-		100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U
 	);
 }
 
@@ -76,25 +76,25 @@ TEST_CASE(
 )
 {
 	int_vector test(
-		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10U,
 		0
 	);
 
 	CHECK(
 		test.size()
 		==
-		10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10U
 	);
 
 	test.resize(
-		5U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5U,
 		0
 	);
 
 	CHECK(
 		test.size()
 		==
-		5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5U
 	);
 }
 
@@ -106,11 +106,11 @@ TEST_CASE(
 	int_vector test{};
 
 	test.push_back(
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	test.push_back(
-		20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		20
 	);
 
 	REQUIRE(
@@ -121,34 +121,34 @@ TEST_CASE(
 
 	test.insert(
 		test.begin() + 1U,
-		30 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		30
 	);
 
 	REQUIRE(
 		test
 		==
 		int_vector{
-			10, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			30, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10,
+			30,
+			20
 		}
 	);
 
 	test.insert(
 		test.begin() + 2,
 		2U,
-		40 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		40
 	);
 
 	CHECK(
 		test
 		==
 		int_vector{
-			10, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			30, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			40, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			40, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10,
+			30,
+			40,
+			40,
+			20
 		}
 	);
 }
@@ -165,7 +165,7 @@ TEST_CASE(
 	=
 	std::array<
 		int,
-		5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5
 	>;
 
 	int_array const array{{
@@ -193,11 +193,11 @@ TEST_CASE(
 	std::stringstream stream{}; // NOLINT(fuchsia-default-arguments-calls)
 
 	stream
-		<< 10 << ' ' // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		<< 20 << ' ' // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		<< 30 << ' ' // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		<< 40 << ' ' // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-		<< 50; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		<< 10 << ' '
+		<< 20 << ' '
+		<< 30 << ' '
+		<< 40 << ' '
+		<< 50;
 
 	test.insert(
 		test.end(),
@@ -224,11 +224,11 @@ TEST_CASE(
 			2,
 			3,
 			4,
-			10, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			20, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			30, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			40, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-			50 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			10,
+			20,
+			30,
+			40,
+			50
 		}
 	);
 }
@@ -244,7 +244,7 @@ TEST_CASE(
 		int_vector::value_type i{
 			0
 		};
-		i < 50; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		i < 50;
 		++i
 	)
 	{
@@ -286,7 +286,7 @@ TEST_CASE(
 		int_vector::value_type i{
 			0
 		};
-		i < 5; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		i < 5;
 		++i
 	)
 	{
@@ -345,11 +345,11 @@ TEST_CASE(
 )
 {
 	int_vector test1(
-		100U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U,
 		0
 	);
 
-	test1[0] = 500; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	test1[0] = 500;
 
 	int_vector test2(
 		std::move(
@@ -360,13 +360,13 @@ TEST_CASE(
 	REQUIRE(
 		test2.size()
 		==
-		100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U
 	);
 
 	CHECK(
 		test2[0]
 		==
-		500 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		500
 	);
 
 	int_vector test3{};
@@ -379,13 +379,13 @@ TEST_CASE(
 	REQUIRE(
 		test3.size()
 		==
-		100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U
 	);
 
 	CHECK(
 		test3[0]
 		==
-		500 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		500
 	);
 }
 

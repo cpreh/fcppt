@@ -35,11 +35,11 @@ TEST_CASE(
 			{
 				_data[
 					0
-				] = 10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				] = 10;
 
 				_data[
 					1
-				] = 20; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				] = 20;
 
 				return
 					2U;
@@ -62,12 +62,12 @@ TEST_CASE(
 	CHECK(
 		result[0]
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 
 	CHECK(
 		result[1]
 		==
-		20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		20
 	);
 }

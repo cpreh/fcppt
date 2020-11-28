@@ -66,7 +66,7 @@ TEST_CASE(
 						&unregister
 					]{
 						unregister(
-							42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+							42
 						);
 					}
 				}
@@ -83,7 +83,7 @@ TEST_CASE(
 	CHECK(
 		values.back()
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 
 	{
@@ -97,7 +97,7 @@ TEST_CASE(
 						&unregister
 					]{
 						unregister(
-							100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+							100
 						);
 					}
 				}
@@ -114,7 +114,7 @@ TEST_CASE(
 	CHECK(
 		values.back()
 		==
-		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100
 	);
 }
 

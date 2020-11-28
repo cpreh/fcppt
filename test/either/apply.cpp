@@ -51,11 +51,11 @@ TEST_CASE(
 			return
 				_value1
 				>
-				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10
 				&&
 				_value2
 				<
-				100U; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				100U;
 		}
 	);
 
@@ -85,7 +85,7 @@ TEST_CASE(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
-				42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				42
 			),
 			either_uint(
 				std::string(
@@ -105,7 +105,7 @@ TEST_CASE(
 		fcppt::either::apply(
 			apply_function,
 			either_int(
-				20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				20
 			),
 			either_uint(
 				100U

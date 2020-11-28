@@ -42,10 +42,10 @@ TEST_CASE(
 		fcppt::math::matrix::binary_map(
 			ui2_matrix{
 				fcppt::math::matrix::row(
-					5U,10U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					5U,10U
 				),
 				fcppt::math::matrix::row(
-					15U,20U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					15U,20U
 				)
 			},
 			i2_matrix{
@@ -53,7 +53,7 @@ TEST_CASE(
 					1,2
 				),
 				fcppt::math::matrix::row(
-					3,4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					3,4
 				)
 			},
 			[](
@@ -72,10 +72,10 @@ TEST_CASE(
 		==
 		i2_matrix(
 			fcppt::math::matrix::row(
-				6,12 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				6,12
 			),
 			fcppt::math::matrix::row(
-				18,24 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				18,24
 			)
 		)
 	);

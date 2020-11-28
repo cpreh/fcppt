@@ -103,7 +103,7 @@ TEST_CASE(
 				either_bool(
 					_value
 					>
-					10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					10
 				);
 		}
 	);

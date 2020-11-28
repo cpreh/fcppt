@@ -37,7 +37,7 @@ struct test
 	value() const // NOLINT(readability-convert-member-functions-to-static)
 	{
 		return
-			42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42;
 	}
 };
 

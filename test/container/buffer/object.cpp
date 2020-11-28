@@ -35,7 +35,7 @@ TEST_CASE(
 )
 {
 	container_type test1{
-		5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5U
 	};
 
 	REQUIRE(
@@ -47,11 +47,11 @@ TEST_CASE(
 	REQUIRE(
 		test1.write_size()
 		==
-		5U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		5U
 	);
 
 	*test1.write_data() =
-		10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10;
 
 	test1.written(
 		1U
@@ -74,7 +74,7 @@ TEST_CASE(
 			0
 		]
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 }
 
@@ -84,11 +84,11 @@ TEST_CASE(
 )
 {
 	container_type test1{
-		100U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100U
 	};
 
 	*test1.write_data() =
-		42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42;
 
 	test1.written(
 		1U
@@ -103,7 +103,7 @@ TEST_CASE(
 	REQUIRE(
 		test2.write_size()
 		==
-		99U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		99U
 	);
 
 	CHECK(
@@ -111,7 +111,7 @@ TEST_CASE(
 			0
 		]
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 
 	container_type test3{
@@ -126,7 +126,7 @@ TEST_CASE(
 	REQUIRE(
 		test3.write_size()
 		==
-		99U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		99U
 	);
 
 	CHECK(
@@ -134,7 +134,7 @@ TEST_CASE(
 			0
 		]
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 }
 
@@ -147,7 +147,7 @@ TEST_CASE(
 		2U
 	};
 
-	container.write_data()[0] = 10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	container.write_data()[0] = 10;
 
 	container.written(
 		1U
@@ -184,6 +184,6 @@ TEST_CASE(
 	CHECK(
 		container[0]
 		==
-		10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10
 	);
 }

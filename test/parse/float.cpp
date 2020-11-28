@@ -79,7 +79,7 @@ TEST_CASE(
 			CHECK(
 				_value
 				==
-				1.5_a // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				1.5_a
 			);
 		}
 	);

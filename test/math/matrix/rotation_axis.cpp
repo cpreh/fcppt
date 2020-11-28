@@ -25,7 +25,7 @@ namespace
 {
 
 float const epsilon{
-	0.001F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	0.001F
 };
 
 template<

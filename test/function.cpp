@@ -42,7 +42,7 @@ TEST_CASE(
 			return
 				_val
 				+
-				10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10;
 		}
 	};
 
@@ -85,7 +85,7 @@ TEST_CASE(
 			return
 				*_val
 				+
-				10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10;
 		}
 	};
 

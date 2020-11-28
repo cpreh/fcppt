@@ -50,7 +50,7 @@ real const half_pi{
 	fcppt::literal<
 		real
 	>(
-		2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		2.F
 	)
 };
 
@@ -182,12 +182,12 @@ TEST_CASE(
 		::compare(
 			fcppt::math::vector::signed_angle_between(
 				fvector2{
-					2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.F,
 					1.F
 				},
 				fvector2{
-					2.F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					2.F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					2.F,
+					2.F
 				}
 			),
 			fcppt::optional::make(

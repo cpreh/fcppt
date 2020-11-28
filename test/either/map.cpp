@@ -48,7 +48,7 @@ TEST_CASE(
 			return
 				_value
 				>
-				10; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10;
 		}
 	);
 
@@ -72,7 +72,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::either::map(
 			either_int(
-				20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				20
 			),
 			map_function
 		)
@@ -126,7 +126,7 @@ TEST_CASE(
 		fcppt::either::map(
 			either_int{
 				int_movable{
-					20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					20
 				}
 			},
 			map_function
@@ -138,7 +138,7 @@ TEST_CASE(
 		>{
 			strong_int_movable{
 				int_movable{
-					20 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					20
 				}
 			}
 		}

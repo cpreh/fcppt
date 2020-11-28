@@ -42,12 +42,12 @@ TEST_CASE(
 		>(
 			box_f2{
 				box_f2::vector(
-					1.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					2.5F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					1.5F,
+					2.5F
 				),
 				box_f2::dim(
-					3.5F, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-					4.5F // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					3.5F,
+					4.5F
 				)
 			}
 		)
@@ -59,7 +59,7 @@ TEST_CASE(
 			),
 			box_i2::dim(
 				3,
-				4 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				4
 			)
 		)
 	);

@@ -40,30 +40,30 @@ TEST_CASE(
 			[]
 			{
 				return
-					42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					42;
 			}
 		)
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 
 	CHECK(
 		fcppt::optional::from(
 			optional_int(
-				100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				100
 			),
 			[]
 			{
 				return
-					42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					42;
 			}
 		)
 		==
-		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100
 	);
 
 	int x{
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	};
 
 	int y{
@@ -86,12 +86,12 @@ TEST_CASE(
 				);
 		}
 	).get() =
-		100; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100;
 
 	CHECK(
 		x
 		==
-		100 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		100
 	);
 }
 
@@ -111,19 +111,19 @@ TEST_CASE(
 		fcppt::optional::from(
 			fcppt::optional::make(
 				int_movable{
-					42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					42
 				}
 			),
 			[]{
 				return
 					int_movable{
-						10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						10
 					};
 			}
 		)
 		==
 		int_movable{
-			42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			42
 		}
 	);
 }

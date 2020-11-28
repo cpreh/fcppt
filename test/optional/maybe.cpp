@@ -30,7 +30,7 @@ TEST_CASE(
 	CHECK(
 		fcppt::optional::maybe(
 			optional_int(
-				10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10
 			),
 			[]
 			{
@@ -99,7 +99,7 @@ TEST_CASE(
 				fcppt::make_unique_ptr<
 					int
 				>(
-					42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					42
 				)
 			),
 			[]{
@@ -107,7 +107,7 @@ TEST_CASE(
 					fcppt::make_unique_ptr<
 						int
 					>(
-						10 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						10
 					);
 			},
 			[](
@@ -125,6 +125,6 @@ TEST_CASE(
 	CHECK(
 		*result
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 }

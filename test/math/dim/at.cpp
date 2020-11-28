@@ -60,7 +60,7 @@ TEST_CASE(
 	>(
 		dim_m
 	) =
-		42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42;
 
 	CHECK(
 		fcppt::math::dim::at<
@@ -69,6 +69,6 @@ TEST_CASE(
 			dim_m
 		)
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 }

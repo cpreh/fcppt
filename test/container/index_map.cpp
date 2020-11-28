@@ -26,7 +26,7 @@ TEST_CASE(
 
 	map[
 		2
-	] = 42; // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+	] = 42;
 
 	REQUIRE(
 		map.impl().size()
@@ -49,6 +49,6 @@ TEST_CASE(
 	CHECK(
 		map[2]
 		==
-		42 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		42
 	);
 }

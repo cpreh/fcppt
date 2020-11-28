@@ -19,11 +19,11 @@ main()
 			fcppt::metal::to_number<
 				std::integral_constant<
 					int,
-					5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					5
 				>
 			>,
 			metal::number<
-				5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				5
 			>
 		>
 	);

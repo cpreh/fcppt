@@ -33,25 +33,25 @@ TEST_CASE(
 			fcppt::math::matrix::inverse(
 				large_matrix_type(
 					fcppt::math::matrix::row(
-						0.,1.,2. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						0.,1.,2.
 					),
 					fcppt::math::matrix::row(
-						1.,0.,3. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						1.,0.,3.
 					),
 					fcppt::math::matrix::row(
-						4.,-3.,8. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+						4.,-3.,8.
 					)
 				)
 			),
 			large_matrix_type(
 				fcppt::math::matrix::row(
-					-9./2.,7.,-3./2. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					-9./2.,7.,-3./2.
 				),
 				fcppt::math::matrix::row(
-					-2.,4.,-1. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					-2.,4.,-1.
 				),
 				fcppt::math::matrix::row(
-					3./2.,-2.,1./2. // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+					3./2.,-2.,1./2.
 				)
 			),
 			std::numeric_limits<
