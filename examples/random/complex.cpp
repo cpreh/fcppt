@@ -69,7 +69,7 @@ main()
 				radius(0 * boost::units::si::meter)
 			),
 			distribution::param_type::max(
-				radius(10 * boost::units::si::meter) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				radius(10 * boost::units::si::meter)
 			)
 		)
 	);
@@ -77,7 +77,7 @@ main()
 
 //![random_complex_output]
 	fcppt::algorithm::repeat(
-		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10U,
 		[&rng]{
 			fcppt::io::cout()
 				<< rng().get().value()
@@ -113,13 +113,13 @@ main()
 				0 * boost::units::si::meter
 			),
 			meter_distribution::param_type::max(
-				10 * boost::units::si::meter // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+				10 * boost::units::si::meter
 			)
 		)
 	);
 
 	fcppt::algorithm::repeat(
-		10U, // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+		10U,
 		[
 			&meter_rng
 		]{

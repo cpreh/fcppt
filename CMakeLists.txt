@@ -20,6 +20,13 @@ list(
 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules"
 )
 
+list(
+	APPEND
+	FCPPT_UTILS_CLANG_TIDY_ADDITIONAL_CHECKS
+	"-cppcoreguidelines-avoid-magic-numbers"
+	"-readability-magic-numbers"
+)
+
 include(
 	FcpptCMakeUtils
 )
