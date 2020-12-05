@@ -42,7 +42,7 @@ set(
 
 set(
 	FCPPT_MINOR_VERSION
-	6
+	7
 )
 
 set(
