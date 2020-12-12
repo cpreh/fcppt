@@ -74,6 +74,7 @@ set(
 	libs/log/include/fcppt/log/out.hpp
 	libs/log/include/fcppt/log/parameters.hpp
 	libs/log/include/fcppt/log/parameters_fwd.hpp
+	libs/log/include/fcppt/log/parameters_no_function.hpp
 	libs/log/include/fcppt/log/verbose.hpp
 	libs/log/include/fcppt/log/warning.hpp
 	libs/log/src/log/context.cpp
@@ -96,6 +97,7 @@ set(
 	libs/log/src/log/object.cpp
 	libs/log/src/log/out.cpp
 	libs/log/src/log/parameters.cpp
+	libs/log/src/log/parameters_no_function.cpp
 )
 
 make_fcppt_library(

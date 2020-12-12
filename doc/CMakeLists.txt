@@ -1669,6 +1669,7 @@ set(
 	libs/log/include/fcppt/log/out.hpp
 	libs/log/include/fcppt/log/parameters.hpp
 	libs/log/include/fcppt/log/parameters_fwd.hpp
+	libs/log/include/fcppt/log/parameters_no_function.hpp
 	libs/log/include/fcppt/log/verbose.hpp
 	libs/log/include/fcppt/log/warning.hpp
 	libs/options/include/fcppt/options/active_value.hpp
