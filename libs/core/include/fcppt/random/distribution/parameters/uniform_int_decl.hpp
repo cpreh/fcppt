@@ -57,7 +57,7 @@ public:
   */
   uniform_int(min _min, max _max);
 
-  wrapped_param_type convert_from() const;
+  [[nodiscard]] wrapped_param_type convert_from() const;
 
   static uniform_int convert_to(distribution const &);
 
