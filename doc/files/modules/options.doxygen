@@ -366,7 +366,7 @@ while its active value is <code>std::ios_base::trunc</code>.
 The log level is an option parser of type #fcppt::log::level. It
 can be set using <code>"-l level"</code> or <code>"--loglevel level"</code>,
 where <code>level</code> has to be one of #fcppt::log::level's
-values. The parser also gets a default value of #fcppt::log::level::warning.
+values. The parser also gets a default value of <code>fcppt::log::level::warning</code>.
 
 \snippet options/complex.cpp options_log_level_option
 
