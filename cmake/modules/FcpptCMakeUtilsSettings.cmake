@@ -126,6 +126,7 @@ elseif(
 		/W4
 		/Wall
 		/EHa
+		/permissive-
 		/D_BIND_TO_CURRENT_VCLIBS_VERSION=1
 		/wd4435
 		/wd4996
