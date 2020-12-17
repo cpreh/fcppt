@@ -24,7 +24,7 @@ for serialization, and largely replaces <code>reinterpret_cast</code>.
 \tparam Dest Must be a pointer to (cv) unsigned char
 */
 template <typename Dest, typename Source>
-inline Dest to_char_ptr(Source *const _source) noexcept
+inline Dest to_char_ptr(Source *const _source) noexcept // NOLINT(readability-avoid-const-params-in-decls)
 {
   static_assert(
       fcppt::type_traits::is_raw_pointer<Dest>::value,
