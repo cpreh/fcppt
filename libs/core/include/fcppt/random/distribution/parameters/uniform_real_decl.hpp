@@ -59,9 +59,9 @@ public:
   */
   uniform_real(min _min, sup _sup);
 
-  wrapped_param_type convert_from() const;
+  [[nodiscard]] wrapped_param_type convert_from() const;
 
-  static uniform_real convert_to(distribution const &);
+  [[nodiscard]] static uniform_real convert_to(distribution const &);
 
 private:
   min min_;
