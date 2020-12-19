@@ -55,6 +55,7 @@ public:
 
   \param second The value for the second member
   */
+  // NOLINTNEXTLINE(modernize-pass-by-value)
   homogenous_pair(value_type const &first, value_type const &second);
 
   /**
