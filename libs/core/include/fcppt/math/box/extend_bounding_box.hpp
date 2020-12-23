@@ -7,13 +7,13 @@
 #ifndef FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
-#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/preprocessor/const.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -47,7 +47,7 @@ extend_bounding_box(
                                                                      &_box](auto const _index) {
     FCPPT_USE(_index);
 
-    return fcppt::make_homogenous_pair(
+    return fcppt::tuple::make(
         std::min(
             fcppt::math::vector::at<_index()>(_pos), fcppt::math::vector::at<_index()>(_box.pos())),
         std::max(
@@ -69,7 +69,7 @@ fcppt::math::box::object<T, N> extend_bounding_box(
       [&_box1, &_box2](auto const _index) {
         FCPPT_USE(_index);
 
-        return fcppt::make_homogenous_pair(
+        return fcppt::tuple::make(
             std::min(
                 fcppt::math::vector::at<_index()>(_box1.pos()),
                 fcppt::math::vector::at<_index()>(_box2.pos())),

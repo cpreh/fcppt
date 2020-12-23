@@ -9,5 +9,9 @@ function(
 endfunction()
 
 add_fcppt_tuple_test(
+	make
+)
+
+add_fcppt_tuple_test(
 	object
 )

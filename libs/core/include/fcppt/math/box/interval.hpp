@@ -6,11 +6,11 @@
 #ifndef FCPPT_MATH_BOX_INTERVAL_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERVAL_HPP_INCLUDED
 
-#include <fcppt/homogenous_pair.hpp>
-#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
+#include <fcppt/tuple/make.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 
 namespace fcppt
 {
@@ -24,9 +24,9 @@ namespace box
 \ingroup fcpptmathbox
 */
 template <fcppt::math::size_type Index, typename T, fcppt::math::size_type N>
-inline fcppt::homogenous_pair<T> interval(fcppt::math::box::object<T, N> const &_box)
+inline fcppt::tuple::object<T,T> interval(fcppt::math::box::object<T, N> const &_box)
 {
-  return fcppt::make_homogenous_pair(
+  return fcppt::tuple::make(
       fcppt::math::vector::at<Index>(_box.pos()), fcppt::math::vector::at<Index>(_box.max()));
 }
 

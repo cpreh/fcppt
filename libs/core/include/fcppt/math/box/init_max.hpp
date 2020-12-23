@@ -21,13 +21,13 @@ namespace box
 \ingroup fcpptmathbox
 
 Initializes an object of type \a Box by calling \a _function for every index.
-The result \a _function must be a homogenous pair where <code>first</code> is
-the min position and <code>second</code> is the max position.
+The result \a _function must be a fcppt::tuple::object where the first element
+is the min position and the second element is the max position.
 
 \tparam Box Must be a box
 
 \tparam Function A (polymorphic) function of type
-<code>fcppt::homogenous_pair<Box::value_type> (Index)</code>
+<code>fcppt::tuple::object<Box::value_type,Box::value_type> (Index)</code>
 */
 template <typename Box, typename Function>
 inline Box init_max(Function const &_function)

@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
-#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
@@ -15,6 +14,7 @@
 #include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -42,7 +42,7 @@ intersection(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<
              ? fcppt::math::box::init_max<result_type>([&_a, &_b](auto const _index) {
                  FCPPT_USE(_index);
 
-                 return fcppt::make_homogenous_pair(
+                 return fcppt::tuple::make(
                      std::max(
                          fcppt::math::vector::at<_index()>(_a.pos()),
                          fcppt::math::vector::at<_index()>(_b.pos())),

@@ -8,9 +8,9 @@
 #define FCPPT_CYCLIC_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_fwd.hpp>
-#include <fcppt/homogenous_pair_impl.hpp>
 #include <fcppt/detail/cyclic_iterator_base.hpp>
 #include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 
 namespace fcppt
 {
@@ -49,7 +49,7 @@ public:
 
   using iterator_category = typename base_type::iterator_category;
 
-  using boundary = fcppt::homogenous_pair<container_iterator_type>;
+  using boundary = fcppt::tuple::object<container_iterator_type, container_iterator_type>;
 
   cyclic_iterator();
 
@@ -108,6 +108,10 @@ public:
   [[nodiscard]] difference_type distance_to(cyclic_iterator const &) const;
 
 private:
+  [[nodiscard]] container_iterator_type boundary_first() const;
+
+  [[nodiscard]] container_iterator_type boundary_second() const;
+
   container_iterator_type it_;
 
   boundary boundary_;

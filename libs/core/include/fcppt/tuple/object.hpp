@@ -6,6 +6,7 @@
 #ifndef FCPPT_TUPLE_OBJECT_HPP_INCLUDED
 #define FCPPT_TUPLE_OBJECT_HPP_INCLUDED
 
+#include <fcppt/tuple/comparison.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 
 #endif

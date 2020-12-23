@@ -183,10 +183,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	homogenous_pair
-)
-
-add_fcppt_test(
 	insert_to_string
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

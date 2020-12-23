@@ -6,7 +6,6 @@
 		{
 			"files" : [
 				"libs/boost/include/fcppt/scoped_state_machine.*",
-				"libs/core/include/fcppt/homogenous_pair.*",
 				"libs/core/include/fcppt/cyclic_iterator.*",
 				"libs/core/include/fcppt/algorithm/join_strings.hpp",
 				"libs/core/include/fcppt/backtrace/.*",

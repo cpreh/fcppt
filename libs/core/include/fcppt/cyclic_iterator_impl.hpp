@@ -9,6 +9,7 @@
 
 #include <fcppt/cyclic_iterator_decl.hpp>
 #include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -63,30 +64,30 @@ fcppt::cyclic_iterator<ContainerIterator>::get() const
 template <typename ContainerIterator>
 void fcppt::cyclic_iterator<ContainerIterator>::advance(difference_type const _diff)
 {
-  difference_type const size{std::distance(this->boundary_.first, this->boundary_.second)};
+  difference_type const size{std::distance(this->boundary_first(), this->boundary_second())};
 
-  difference_type const diff{(std::distance(this->boundary_.first, this->it_) + _diff) % size};
+  difference_type const diff{(std::distance(this->boundary_first(), this->it_) + _diff) % size};
 
-  this->it_ = this->boundary_.first + (diff < 0 ? diff + size : diff);
+  this->it_ = this->boundary_first() + (diff < 0 ? diff + size : diff);
 }
 
 template <typename ContainerIterator>
 void fcppt::cyclic_iterator<ContainerIterator>::increment()
 {
-  if (++this->it_ == this->boundary_.second)
+  if (++this->it_ == this->boundary_second())
   {
-    this->it_ = this->boundary_.first;
+    this->it_ = this->boundary_first();
   }
 }
 
 template <typename ContainerIterator>
 void fcppt::cyclic_iterator<ContainerIterator>::decrement()
 {
-  if (this->it_ == this->boundary_.first)
+  if (this->it_ == this->boundary_first())
   {
     this->it_ =
         // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        std::prev(this->boundary_.second);
+        std::prev(this->boundary_second());
   }
   else
   {
@@ -112,6 +113,20 @@ typename fcppt::cyclic_iterator<ContainerIterator>::difference_type
 fcppt::cyclic_iterator<ContainerIterator>::distance_to(cyclic_iterator const &_other) const
 {
   return std::distance(this->it_, _other.it_);
+}
+
+template <typename ContainerIterator>
+typename fcppt::cyclic_iterator<ContainerIterator>::container_iterator_type
+fcppt::cyclic_iterator<ContainerIterator>::boundary_first() const
+{
+  return fcppt::tuple::get<0>(this->get_boundary());
+}
+
+template <typename ContainerIterator>
+typename fcppt::cyclic_iterator<ContainerIterator>::container_iterator_type
+fcppt::cyclic_iterator<ContainerIterator>::boundary_second() const
+{
+  return fcppt::tuple::get<1>(this->get_boundary());
 }
 
 #endif

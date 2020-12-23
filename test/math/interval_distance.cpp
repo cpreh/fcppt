@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_homogenous_pair.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/math/interval_distance.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -13,29 +13,29 @@ TEST_CASE("math::interval_distance", "[math]")
 {
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(0, 2), fcppt::make_homogenous_pair(3, 10)) == 1);
+          fcppt::tuple::make(0, 2), fcppt::tuple::make(3, 10)) == 1);
 
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(3, 10), fcppt::make_homogenous_pair(0, 2)) == 1);
+          fcppt::tuple::make(3, 10), fcppt::tuple::make(0, 2)) == 1);
 
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(2, 5), fcppt::make_homogenous_pair(4, 7)) == -1);
+          fcppt::tuple::make(2, 5), fcppt::tuple::make(4, 7)) == -1);
 
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(4, 7), fcppt::make_homogenous_pair(2, 5)) == -1);
+          fcppt::tuple::make(4, 7), fcppt::tuple::make(2, 5)) == -1);
 
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(4, 6), fcppt::make_homogenous_pair(6, 7)) == 0);
+          fcppt::tuple::make(4, 6), fcppt::tuple::make(6, 7)) == 0);
 
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(6, 7), fcppt::make_homogenous_pair(4, 6)) == 0);
+          fcppt::tuple::make(6, 7), fcppt::tuple::make(4, 6)) == 0);
 
   CHECK(
       fcppt::math::interval_distance(
-          fcppt::make_homogenous_pair(3, 4), fcppt::make_homogenous_pair(0, 10)) == -3);
+          fcppt::tuple::make(3, 4), fcppt::tuple::make(0, 10)) == -3);
 }

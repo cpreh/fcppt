@@ -94,6 +94,7 @@ set(
 	doc/files/modules/string.doxygen
 	doc/files/modules/strong_typedef.doxygen
 	doc/files/modules/time.doxygen
+	doc/files/modules/tuple.doxygen
 	doc/files/modules/type_iso.doxygen
 	doc/files/modules/type_traits.doxygen
 	doc/files/modules/variant.doxygen
@@ -133,7 +134,6 @@ set(
 	examples/either.cpp
 	examples/endianness.cpp
 	examples/enum.cpp
-	examples/homogenous_pair.cpp
 	examples/intrusive.cpp
 	examples/io/endianness.cpp
 	examples/io/scoped_rdbuf.cpp
@@ -766,12 +766,6 @@ set(
 	libs/core/include/fcppt/getenv.hpp
 	libs/core/include/fcppt/hash.hpp
 	libs/core/include/fcppt/hash_combine.hpp
-	libs/core/include/fcppt/homogenous_pair.hpp
-	libs/core/include/fcppt/homogenous_pair_comparison.hpp
-	libs/core/include/fcppt/homogenous_pair_decl.hpp
-	libs/core/include/fcppt/homogenous_pair_fwd.hpp
-	libs/core/include/fcppt/homogenous_pair_impl.hpp
-	libs/core/include/fcppt/homogenous_pair_output.hpp
 	libs/core/include/fcppt/identity.hpp
 	libs/core/include/fcppt/insert_extract_locale.hpp
 	libs/core/include/fcppt/int_iterator_decl.hpp
@@ -852,7 +846,6 @@ set(
 	libs/core/include/fcppt/major_version.hpp
 	libs/core/include/fcppt/make_cref.hpp
 	libs/core/include/fcppt/make_function.hpp
-	libs/core/include/fcppt/make_homogenous_pair.hpp
 	libs/core/include/fcppt/make_int_range.hpp
 	libs/core/include/fcppt/make_int_range_count.hpp
 	libs/core/include/fcppt/make_literal_fundamental.hpp
@@ -1492,10 +1485,12 @@ set(
 	libs/core/include/fcppt/to_std_string_locale.hpp
 	libs/core/include/fcppt/to_std_wstring.hpp
 	libs/core/include/fcppt/to_std_wstring_locale.hpp
+	libs/core/include/fcppt/tuple/comparison.hpp
 	libs/core/include/fcppt/tuple/detail/is_object.hpp
 	libs/core/include/fcppt/tuple/element.hpp
 	libs/core/include/fcppt/tuple/get.hpp
 	libs/core/include/fcppt/tuple/is_object.hpp
+	libs/core/include/fcppt/tuple/make.hpp
 	libs/core/include/fcppt/tuple/object.hpp
 	libs/core/include/fcppt/tuple/object_decl.hpp
 	libs/core/include/fcppt/tuple/object_fwd.hpp
