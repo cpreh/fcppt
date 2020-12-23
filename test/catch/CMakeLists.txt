@@ -47,6 +47,12 @@ add_fcppt_catch_test(
 )
 
 add_fcppt_catch_test(
+	tuple
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_catch_test(
 	variant
 	LINK_LIBS
 		fcppt_catch_interface

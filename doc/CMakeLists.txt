@@ -217,6 +217,7 @@ set(
 	libs/catch/include/fcppt/catch/record.hpp
 	libs/catch/include/fcppt/catch/recursive.hpp
 	libs/catch/include/fcppt/catch/strong_typedef.hpp
+	libs/catch/include/fcppt/catch/tuple.hpp
 	libs/catch/include/fcppt/catch/variant.hpp
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
