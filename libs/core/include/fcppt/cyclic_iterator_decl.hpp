@@ -70,7 +70,7 @@ public:
   Constructs a new cyclic iterator, starting at \a it, inside a range of
   \a boundary.
   */
-  cyclic_iterator(container_iterator_type const &pos, boundary const &boundary);
+  cyclic_iterator(container_iterator_type const &pos, boundary);
 
   /**
   \brief Assigns from another cyclic iterator

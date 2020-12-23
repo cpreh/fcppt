@@ -209,7 +209,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added #fcppt::make_homogenous_pair.</li>
+	<li>Added <code>fcppt::make_homogenous_pair</code>.</li>
 	<li>Added <code>%size</code> function to #fcppt::int_range.</li>
 	<li>Added #fcppt::tag.</li>
 	</ul>

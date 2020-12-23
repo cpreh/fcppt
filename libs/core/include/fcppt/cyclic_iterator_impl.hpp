@@ -12,6 +12,7 @@
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename ContainerIterator>
@@ -30,8 +31,8 @@ fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator(
 
 template <typename ContainerIterator>
 fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator(
-    container_iterator_type const &_it, boundary const &_boundary)
-    : it_(_it), boundary_(_boundary)
+    container_iterator_type const &_it, boundary _boundary)
+    : it_(_it), boundary_(std::move(_boundary))
 {
 }
 
