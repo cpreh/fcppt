@@ -1276,6 +1276,14 @@ set(
 	libs/core/include/fcppt/to_std_string_locale.hpp
 	libs/core/include/fcppt/to_std_wstring.hpp
 	libs/core/include/fcppt/to_std_wstring_locale.hpp
+	libs/core/include/fcppt/tuple/detail/is_object.hpp
+	libs/core/include/fcppt/tuple/element.hpp
+	libs/core/include/fcppt/tuple/get.hpp
+	libs/core/include/fcppt/tuple/is_object.hpp
+	libs/core/include/fcppt/tuple/object.hpp
+	libs/core/include/fcppt/tuple/object_decl.hpp
+	libs/core/include/fcppt/tuple/object_fwd.hpp
+	libs/core/include/fcppt/tuple/object_impl.hpp
 	libs/core/include/fcppt/type_iso/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/is_terminal.hpp

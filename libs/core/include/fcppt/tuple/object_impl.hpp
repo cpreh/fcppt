@@ -1,0 +1,37 @@
+//          Copyright Carl Philipp Reh 2009 - 2020.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+#ifndef FCPPT_TUPLE_OBJECT_IMPL_HPP_INCLUDED
+#define FCPPT_TUPLE_OBJECT_IMPL_HPP_INCLUDED
+
+#include <fcppt/tuple/object_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
+
+template <typename... Types>
+template <typename... Args, typename>
+constexpr fcppt::tuple::object<Types...>::object(Args &&..._args) noexcept(
+    std::conjunction_v<std::is_nothrow_constructible<Types, Args>...>)
+    : impl_{std::forward<Args>(_args)...}
+{
+}
+
+template <typename... Types>
+constexpr typename fcppt::tuple::object<Types...>::impl_type &
+fcppt::tuple::object<Types...>::impl() noexcept
+{
+  return this->impl_;
+}
+
+template <typename... Types>
+constexpr typename fcppt::tuple::object<Types...>::impl_type const &
+fcppt::tuple::object<Types...>::impl() const noexcept
+{
+  return this->impl_;
+}
+
+#endif
