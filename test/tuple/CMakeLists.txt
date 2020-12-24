@@ -9,11 +9,30 @@ function(
 endfunction()
 
 add_fcppt_tuple_test(
+	init
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
 	invoke
 )
 
 add_fcppt_tuple_test(
 	make
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
+	map
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
+	map_result
+	NO_CODE
 	LINK_LIBS
 		fcppt_catch_interface
 )
