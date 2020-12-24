@@ -912,6 +912,7 @@ set(
 	libs/core/include/fcppt/metal/index_of_if.hpp
 	libs/core/include/fcppt/metal/interval.hpp
 	libs/core/include/fcppt/metal/invoke_on.hpp
+	libs/core/include/fcppt/metal/is_invocable.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
 	libs/core/include/fcppt/metal/max_value.hpp
@@ -1271,14 +1272,17 @@ set(
 	libs/core/include/fcppt/to_std_wstring_locale.hpp
 	libs/core/include/fcppt/tuple/comparison.hpp
 	libs/core/include/fcppt/tuple/detail/is_object.hpp
+	libs/core/include/fcppt/tuple/detail/types_of.hpp
 	libs/core/include/fcppt/tuple/element.hpp
 	libs/core/include/fcppt/tuple/get.hpp
+	libs/core/include/fcppt/tuple/invoke.hpp
 	libs/core/include/fcppt/tuple/is_object.hpp
 	libs/core/include/fcppt/tuple/make.hpp
 	libs/core/include/fcppt/tuple/object.hpp
 	libs/core/include/fcppt/tuple/object_decl.hpp
 	libs/core/include/fcppt/tuple/object_fwd.hpp
 	libs/core/include/fcppt/tuple/object_impl.hpp
+	libs/core/include/fcppt/tuple/types_of.hpp
 	libs/core/include/fcppt/type_iso/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/is_terminal.hpp

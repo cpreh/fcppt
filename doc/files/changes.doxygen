@@ -6,6 +6,12 @@
 \subsection changes_added_functionality_to_370 Added functionality
 
 <ul>
+<li>\ref fcpptmetal
+	<ul>
+	<li>Added #fcppt::metal::is_invocable.</li>
+	</ul>
+</li>
+
 <li>\ref fcppttuple
 	<p>New library.
 	The difference between <code>std::tuple</code> is that

@@ -10,6 +10,10 @@
 
 namespace fcppt::tuple
 {
+/**
+\brief Compares two tuples for equality.
+\ingroup fcppttuple
+*/
 template <typename... Types>
 [[nodiscard]] bool inline
 operator==(fcppt::tuple::object<Types...> const &a, fcppt::tuple::object<Types...> const &b)
