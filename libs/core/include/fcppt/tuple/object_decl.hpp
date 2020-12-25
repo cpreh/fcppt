@@ -6,6 +6,9 @@
 #ifndef FCPPT_TUPLE_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_TUPLE_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -15,6 +18,11 @@
 
 namespace fcppt::tuple
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
+FCPPT_PP_DISABLE_VC_WARNING(5027)
+
 /**
 \brief Like std::tuple but with a proper constructor.
 \ingroup fcppttuple
@@ -39,6 +47,8 @@ public:
 private:
   impl_type impl_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 
