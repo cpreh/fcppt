@@ -8,20 +8,15 @@
 
 #include <fcppt/detail/char_types.hpp>
 #include <fcppt/metal/as_tuple.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <tuple>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/metal/index_of.hpp>
+#include <fcppt/tuple/get.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename Type>
 inline Type char_literal(fcppt::metal::as_tuple<fcppt::detail::char_types> const &_args)
 {
-  return std::get<Type>(_args);
-}
-
+  return fcppt::tuple::get<fcppt::metal::index_of<fcppt::detail::char_types, Type>::value>(_args);
 }
 }
 

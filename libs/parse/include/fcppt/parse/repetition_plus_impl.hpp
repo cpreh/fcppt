@@ -18,9 +18,9 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -44,7 +44,7 @@ fcppt::parse::repetition_plus<Parser>::parse(
       parser.parse(_state, _skipper), [](fcppt::parse::result_of<decltype(parser)> &&_result) {
         // TODO(philipp): Should we reverse this so that push_back works?
         return fcppt::container::join(
-            result_type{std::move(std::get<0>(_result))}, std::move(std::get<1>(_result)));
+            result_type{std::move(fcppt::tuple::get<0>(_result))}, std::move(fcppt::tuple::get<1>(_result)));
       });
 }
 

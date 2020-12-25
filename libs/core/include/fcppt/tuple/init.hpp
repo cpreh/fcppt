@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_CONTAINER_TUPLE_INIT_HPP_INCLUDED
-#define FCPPT_CONTAINER_TUPLE_INIT_HPP_INCLUDED
+#ifndef FCPPT_TUPLE_INIT_HPP_INCLUDED
+#define FCPPT_TUPLE_INIT_HPP_INCLUDED
 
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/size.hpp>
@@ -23,7 +23,7 @@ namespace fcppt::tuple
 Constructs a tuple of type \a Tuple by calling
 <code>_function(std::integral_constant<std::size_t, Index>)</code> for every index.
 
-\tparam Tuple Must be a <code>std::tuple</code>.
+\tparam Tuple Must be an <code>fcppt::tuple::object</code>.
 
 \tparam Function Must be a function callable as <code>T_i
 (std::integral_constant<std::size_t, i>)</code> for <code>1 <= i <= n</code>,
@@ -32,7 +32,7 @@ where <code>Tuple=(T_1,...,T_n)</code>.
 template <
     typename Tuple,
     typename Function,
-    typename = std::enable_if_t<fcppt::tuple::is_object<Tuple>::value>> // TODO(philipp)
+    typename = std::enable_if_t<fcppt::tuple::is_object<Tuple>::value>>
 [[nodiscard]] inline Tuple init(Function const &_function)
 {
   return fcppt::tuple::detail::init<Tuple>(

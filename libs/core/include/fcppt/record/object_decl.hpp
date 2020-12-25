@@ -60,7 +60,7 @@ public:
   using this_type = fcppt::record::object<Elements...>;
 
   /**
-  \brief The std::tuple type <code>(T_1,...,T_n)</code>.
+  \brief The fcppt::tuple::object type <code>(T_1,...,T_n)</code>.
   */
   using tuple = fcppt::metal::as_tuple<
       ::metal::transform<::metal::lambda<fcppt::record::element_to_type>, all_types>>;

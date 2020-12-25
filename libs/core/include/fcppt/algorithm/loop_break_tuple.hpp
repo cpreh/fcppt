@@ -8,7 +8,7 @@
 
 #include <fcppt/algorithm/loop_break_impl_fwd.hpp>
 #include <fcppt/algorithm/detail/tuple_loop_break.hpp>
-#include <fcppt/type_traits/is_std_tuple.hpp>
+#include <fcppt/tuple/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -19,7 +19,7 @@ namespace fcppt
 namespace algorithm
 {
 template <typename Range>
-struct loop_break_impl<Range, std::enable_if_t<fcppt::type_traits::is_std_tuple<Range>::value>>
+struct loop_break_impl<Range, std::enable_if_t<fcppt::tuple::is_object<Range>::value>>
 {
   template <typename Tuple, typename Body>
   inline static void execute(Tuple &&_range, Body const &_body)

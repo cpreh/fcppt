@@ -6,6 +6,7 @@
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/basic_char_set.hpp>
 #include <fcppt/parse/basic_literal.hpp>
@@ -19,10 +20,11 @@
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/comparison.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("parse::separator", "[parse]")
@@ -56,7 +58,7 @@ TEST_CASE("parse::separator sequence", "[parse]")
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X=1,Y=2"}) ==
       fcppt::parse::make_success<char>(
-          result_type{std::make_tuple(std::string{"X"}, 1), std::make_tuple(std::string{"Y"}, 2)}));
+          result_type{fcppt::tuple::make(std::string{"X"}, 1), fcppt::tuple::make(std::string{"Y"}, 2)}));
 }
 
 TEST_CASE("parse::separator wchar", "[parse]")

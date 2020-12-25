@@ -10,19 +10,20 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
+#include <fcppt/tuple/make.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::optional::object<std::tuple<fcppt::args_vector, fcppt::string, fcppt::args_vector>>
+fcppt::optional::object<fcppt::tuple::object<fcppt::args_vector, fcppt::string, fcppt::args_vector>>
 fcppt::options::detail::split_command(
     fcppt::args_vector const &_args, fcppt::options::option_name_set const &_option_names)
 {
   return fcppt::optional::map(
       fcppt::options::impl::next_arg(_args, _option_names),
       [&_args](fcppt::args_vector::const_iterator const _pos) {
-        return std::make_tuple(
+        return fcppt::tuple::make(
             fcppt::args_vector{_args.begin(), _pos},
             *_pos,
             fcppt::args_vector{// NOLINTNEXTLINE(fuchsia-default-arguments-calls)

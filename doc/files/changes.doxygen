@@ -93,7 +93,7 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Use #fcppt::algorithm::loop_break in #fcppt::algorithm::contains_if.</li>
-	<li>Added #fcppt::algorithm::map_impl specialization for #fcppt::container::tuple::map.</li>
+	<li>Added #fcppt::algorithm::map_impl specialization for <code>fcppt::container::tuple::map</code>.</li>
 	</ul>
 </li>
 
@@ -103,11 +103,11 @@
 	</ul>
 </li>
 
-<li>\ref fcpptcontainertuple
+<li>fcpptcontainertuple
 	<ul>
-	<li>Added #fcppt::container::tuple::apply.</li>
-	<li>Added #fcppt::container::tuple::from_array.</li>
-	<li>Added #fcppt::container::tuple::init.</li>
+	<li>Added <code>fcppt::container::tuple::apply</code>.</li>
+	<li>Added <code>fcppt::container::tuple::from_array</code>.</li>
+	<li>Added <code>fcppt::container::tuple::init</code>.</li>
 	</ul>
 </li>
 
@@ -220,7 +220,7 @@
 	</ul>
 </li>
 
-<li>\ref fcpptcontainertuple
+<li>fcpptcontainertuple
 	<ul>
 	<li>Removed <code>fcppt::container::tuple::type_at</code>. Use <code>std::tuple_element</code>.</li>
 	</ul>
@@ -488,7 +488,7 @@ fcppt now uses <code>std::filesystem</code>.
 	</ul>
 </li>
 
-<li>\ref fcpptcontainertuple
+<li>fcpptcontainertuple
 	<ul>
 	<li>Removed <code>fcppt::container::tuple::to_varargs</code>. Use <code>std::apply</code>.</li>
 	</ul>
@@ -623,12 +623,12 @@ fcppt now uses <code>C++-17</code>.
 	</ul>
 </li>
 
-<li>\ref fcpptcontainertuple
+<li>fcpptcontainertuple
 	<ul>
 	<li>Move rvalue references out of tuples regardless whether the tuples are rvalues themselves.</li>
-	<li>Added #fcppt::container::tuple::move_element.</li>
+	<li>Added <code>fcppt::container::tuple::move_element</code>.</li>
 	<li>Added <code>fcppt::container::tuple::type_at</code>.</li>
-	<li>Added #fcppt::container::tuple::types_of.</li>
+	<li>Added <code>fcppt::container::tuple::types_of</code>.</li>
 	</ul>
 </li>
 
@@ -785,9 +785,9 @@ Catch2 is now required.
 	</ul>
 </li>
 
-<li>\ref fcpptcontainertuple
+<li>fcpptcontainertuple
 	<ul>
-	<li>Added #fcppt::container::tuple::push_back.</li>
+	<li>Added <code>fcppt::container::tuple::push_back</code>.</li>
 	</ul>
 </li>
 
@@ -866,7 +866,7 @@ Catch2 is now required.
 	<code>fcppt::algorithm::array_init_move</code>, <code>fcppt::algorithm::array_push_back</code>
 	and <code>fcppt::container::make_array</code>
 	to \ref fcpptcontainerarray.</li>
-	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to #fcppt::container::tuple::vararg_map.</li>
+	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to <code>fcppt::container::tuple::vararg_map</code>.</li>
 	</ul>
 </li>
 

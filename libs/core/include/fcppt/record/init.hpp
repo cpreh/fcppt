@@ -8,10 +8,12 @@
 
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/is_object.hpp>
+#include <fcppt/record/detail/make_tag_tuple.hpp>
+#include <fcppt/tuple/invoke.hpp>
+#include <fcppt/tuple/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -39,18 +41,19 @@ inline Result init(Function const &_function)
 {
   static_assert(fcppt::record::is_object<Result>::value, "Result must be a record::object");
 
-  return fcppt::container::tuple::vararg_map(
-      fcppt::record::element_tag_tuple<Result>{},
+  return fcppt::tuple::invoke(
       [](auto &&..._fcppt_record_init_args) {
         return Result{std::forward<decltype(_fcppt_record_init_args)>(_fcppt_record_init_args)...};
       },
-      [&_function](auto const _fcppt_element) {
-        FCPPT_USE(_fcppt_element);
+      fcppt::tuple::map(
+          fcppt::record::detail::make_tag_tuple<fcppt::record::element_tag_tuple<Result>>(),
+          [&_function](auto const _fcppt_element) {
+            FCPPT_USE(_fcppt_element);
 
-        using fcppt_element = fcppt::tag_type<decltype(_fcppt_element)>;
+            using fcppt_element = fcppt::tag_type<decltype(_fcppt_element)>;
 
-        return fcppt::record::element_to_label<fcppt_element>{} = _function(fcppt_element{});
-      });
+            return fcppt::record::element_to_label<fcppt_element>{} = _function(fcppt_element{});
+          }));
 }
 
 }

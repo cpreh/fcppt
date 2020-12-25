@@ -7,9 +7,7 @@
 #define FCPPT_METAL_AS_TUPLE_HPP_INCLUDED
 
 #include <fcppt/metal/as.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <tuple>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/tuple/object_fwd.hpp>
 
 namespace fcppt
 {
@@ -21,12 +19,12 @@ namespace metal
 \ingroup fcpptmetal
 
 For <code>List=metal::list<t_1,...,t_n></code>
-the result type is <code>std::tuple<t_1,...,t_n></code>.
+the result type is <code>fcppt::tuple::object<t_1,...,t_n></code>.
 
 \tparam List Must be a metal::list.
 */
 template <typename List>
-using as_tuple = fcppt::metal::as<std::tuple, List>;
+using as_tuple = fcppt::metal::as<fcppt::tuple::object, List>;
 
 }
 }

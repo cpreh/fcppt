@@ -6,11 +6,8 @@
 #ifndef FCPPT_DETAIL_MAKE_CHAR_LITERALS_HPP_INCLUDED
 #define FCPPT_DETAIL_MAKE_CHAR_LITERALS_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <tuple>
-#include <fcppt/config/external_end.hpp>
 
-#define FCPPT_DETAIL_MAKE_CHAR_LITERALS(_literal) \
-  std::make_tuple(_literal, L##_literal, u##_literal, U##_literal)
+#define FCPPT_DETAIL_MAKE_CHAR_LITERALS(tuple_type,func,_literal) \
+  tuple_type{func(_literal), func(L##_literal), func(u##_literal), func(U##_literal)}
 
 #endif

@@ -11,9 +11,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/detail/symbol.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <tuple>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 
 namespace fcppt
 {
@@ -22,7 +20,7 @@ namespace options
 namespace detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::optional::object<std::tuple<fcppt::args_vector, fcppt::string, fcppt::args_vector>>
+fcppt::optional::object<fcppt::tuple::object<fcppt::args_vector, fcppt::string, fcppt::args_vector>>
 split_command(fcppt::args_vector const &, fcppt::options::option_name_set const &);
 
 }

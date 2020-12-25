@@ -8,8 +8,8 @@
 #include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
+#include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,5 +28,5 @@ int main()
   using tag_tuple = fcppt::record::element_tag_tuple<my_record>;
 
   static_assert(
-      std::is_same_v<tag_tuple, std::tuple<fcppt::tag<int_element>, fcppt::tag<bool_element>>>);
+      std::is_same_v<tag_tuple, fcppt::tuple::object<fcppt::tag<int_element>, fcppt::tag<bool_element>>>);
 }

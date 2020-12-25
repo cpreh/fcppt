@@ -37,3 +37,14 @@ TEST_CASE("variant::match move", "[variant]")
 
   CHECK(result == "42");
 }
+
+namespace
+{
+int test_func(int const _x) { return _x; }
+}
+
+TEST_CASE("variant::match free function", "[variant]")
+{
+  using variant = fcppt::variant::object<int>;
+  CHECK(fcppt::variant::match(variant{5},&test_func) == 5);
+}

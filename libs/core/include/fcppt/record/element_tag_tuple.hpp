@@ -18,8 +18,8 @@ namespace fcppt
 namespace record
 {
 /**
-\brief A metafunction returning the elements of record as a <code>std::tuple</code> of
-<code>fcppt::tag</code> types.
+\brief A metafunction returning the elements of record as a
+<code>fcppt::tuple::object</code> of <code>fcppt::tag</code> types.
 
 \ingroup fcpptrecord
 

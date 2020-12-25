@@ -155,10 +155,14 @@ add_fcppt_parse_test(
 
 add_fcppt_parse_test(
 	sequence
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_parse_test(
 	sequence_result
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_parse_test(

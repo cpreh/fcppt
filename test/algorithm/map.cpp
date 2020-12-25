@@ -14,13 +14,14 @@
 #include <fcppt/algorithm/map_array.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/catch/tuple.hpp>
 #include <fcppt/container/make.hpp>
+#include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <catch2/catch.hpp>
 #include <array>
 #include <string>
-#include <tuple>
 #include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -94,11 +95,11 @@ TEST_CASE("algorithm_map array move", "[algorithm_map]")
 
 TEST_CASE("algorithm_map tuple", "[algorithm_map]")
 {
-  using result_tuple = std::tuple<std::string, std::string>;
+  using result_tuple = fcppt::tuple::object<std::string, std::string>;
 
   CHECK(
       fcppt::algorithm::map<result_tuple>(
-          std::tuple<int, long>{1, 2L}, [](auto const _value) -> std::string {
+          fcppt::tuple::object<int, long>{1, 2L}, [](auto const _value) -> std::string {
             return fcppt::output_to_std_string(_value);
           }) == result_tuple{"1", "2"});
 }

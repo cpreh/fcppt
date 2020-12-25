@@ -13,6 +13,7 @@
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/recursive.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/tuple.hpp>
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/container/insert.hpp>
 #include <fcppt/container/make.hpp>
@@ -40,11 +41,12 @@
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/skipper/space.hpp>
+#include <fcppt/tuple/get.hpp>
+#include <fcppt/tuple/object.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <unordered_map>
 #include <utility>
 #include <vector>
@@ -102,7 +104,7 @@ class double_insert
 {
 };
 
-using entries = std::vector<std::tuple<std::string, fcppt::recursive<json::value>>>;
+using entries = std::vector<fcppt::tuple::object<std::string, fcppt::recursive<json::value>>>;
 
 json::object make_object_(json::entries &&);
 
@@ -113,11 +115,11 @@ json::object make_object_(json::entries &&_args)
   return fcppt::algorithm::fold(
       fcppt::container::make_move_range(std::move(_args)),
       object{},
-      [](std::tuple<std::string, fcppt::recursive<json::value>> &&_element, json::object &&_state) {
+      [](fcppt::tuple::object<std::string, fcppt::recursive<json::value>> &&_element, json::object &&_state) {
         if (fcppt::not_(fcppt::container::insert(
                 _state,
                 json::object::value_type{
-                    std::move(std::get<0>(_element)), std::move(std::get<1>(_element))})))
+                    std::move(fcppt::tuple::get<0>(_element)), std::move(fcppt::tuple::get<1>(_element))})))
         {
           throw
               // NOLINTNEXTLINE(hicpp-exception-baseclass)

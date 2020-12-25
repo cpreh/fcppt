@@ -23,8 +23,8 @@
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -55,8 +55,8 @@ fcppt::parse::separator<Inner, Sep>::parse(
             [] { return result_type{}; },
             [](fcppt::parse::result_of<decltype(inner_parser)> &&_inner_result) {
               return fcppt::container::join(
-                  fcppt::container::make<result_type>(std::move(std::get<0>(_inner_result).get())),
-                  std::move(std::get<1>(_inner_result)));
+                  fcppt::container::make<result_type>(std::move(fcppt::tuple::get<0>(_inner_result).get())),
+                  std::move(fcppt::tuple::get<1>(_inner_result)));
             });
       });
 }

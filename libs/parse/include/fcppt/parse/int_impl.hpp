@@ -22,9 +22,7 @@
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/skipper/run.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <tuple>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/tuple/get.hpp>
 
 template <typename Type>
 fcppt::parse::int_<Type>::int_() = default;
@@ -43,9 +41,9 @@ fcppt::parse::int_<Type>::parse(
       fcppt::parse::skipper::run(_skipper, _state),
       [&parser, &_state, &_skipper](fcppt::unit) { return parser.parse(_state, _skipper); },
       [](fcppt::parse::result_of<decltype(parser)> const &_result) {
-        Type const value{std::get<1>(_result)};
+        Type const value{fcppt::tuple::get<1>(_result)};
 
-        return fcppt::parse::make_success<Ch>(std::get<0>(_result).has_value() ? -value : value);
+        return fcppt::parse::make_success<Ch>(fcppt::tuple::get<0>(_result).has_value() ? -value : value);
       });
 }
 

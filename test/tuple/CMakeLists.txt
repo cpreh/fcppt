@@ -9,6 +9,24 @@ function(
 endfunction()
 
 add_fcppt_tuple_test(
+	apply
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
+	concat
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
+	from_array
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
 	init
 	LINK_LIBS
 		fcppt_catch_interface
@@ -39,6 +57,12 @@ add_fcppt_tuple_test(
 
 add_fcppt_tuple_test(
 	object
+)
+
+add_fcppt_tuple_test(
+	push_back
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_tuple_test(

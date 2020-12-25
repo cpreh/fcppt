@@ -23,9 +23,9 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 template <typename Type>
@@ -45,8 +45,8 @@ fcppt::parse::float_<Type>::parse(
   return fcppt::either::bind(
       parser.parse(_state, _skipper), [](fcppt::parse::result_of<decltype(parser)> const &_result) {
         std::basic_string<Ch> const float_string{
-            fcppt::output_to_string<std::basic_string<Ch>>(std::get<0>(_result)) +
-            std::basic_string<Ch>{'.'} + std::get<1>(_result)};
+            fcppt::output_to_string<std::basic_string<Ch>>(fcppt::tuple::get<0>(_result)) +
+            std::basic_string<Ch>{'.'} + fcppt::tuple::get<1>(_result)};
 
         return fcppt::either::from_optional(
             fcppt::extract_from_string<Type>(float_string), [&float_string] {

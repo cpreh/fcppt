@@ -27,7 +27,7 @@ namespace fcppt::tuple
 Let \a _tuple be <code>(v_1,...,v_n)</code>.
 The result of the function is the tuple <code>(_function(v_1),...,_function(v_n))</code>.
 
-\tparam Tuple Must be a <code>std::tuple</code>.
+\tparam Tuple Must be an <code>fcppt::tuple::object</code>.
 
 \tparam Function Must be callable with every type in \a Tuple.
 */

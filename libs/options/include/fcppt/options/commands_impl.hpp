@@ -45,10 +45,10 @@
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/object_impl.hpp>
+#include <fcppt/tuple/get.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -131,26 +131,26 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
                             })))}});
       },
       [this, parse_inner](
-          std::tuple<fcppt::args_vector, fcppt::string, fcppt::args_vector> &&_split_arguments) {
+          fcppt::tuple::object<fcppt::args_vector, fcppt::string, fcppt::args_vector> &&_split_arguments) {
         return fcppt::optional::from(
             fcppt::algorithm::fold_break(
                 this->sub_commands_,
                 optional_result_type{},
                 [&_split_arguments,
                  parse_inner](auto const &_parser, optional_result_type &&_result) {
-                  return std::get<1>(_split_arguments) == fcppt::options::deref(_parser).name()
+                  return fcppt::tuple::get<1>(_split_arguments) == fcppt::options::deref(_parser).name()
                              ? std::make_pair(
                                    fcppt::loop::break_,
                                    optional_result_type{parse_inner(
                                        _parser,
-                                       std::move(std::get<0>(_split_arguments)),
-                                       std::move(std::get<2>(_split_arguments)))})
+                                       std::move(fcppt::tuple::get<0>(_split_arguments)),
+                                       std::move(fcppt::tuple::get<2>(_split_arguments)))})
                              : std::make_pair(fcppt::loop::continue_, std::move(_result));
                 }),
             [&_split_arguments] {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
                   fcppt::options::parse_error{fcppt::options::other_error{
-                      FCPPT_TEXT("Invalid command ") + std::move(std::get<1>(_split_arguments))}});
+                      FCPPT_TEXT("Invalid command ") + std::move(fcppt::tuple::get<1>(_split_arguments))}});
             });
       });
 }

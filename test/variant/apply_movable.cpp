@@ -5,13 +5,14 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/tuple/get.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <stdexcept>
 #include <string>
-#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -45,7 +46,7 @@ struct function
   }
 };
 
-using move_result = std::tuple<int_unique_ptr, string_unique_ptr, bool_unique_ptr>;
+using move_result = fcppt::tuple::object<int_unique_ptr, string_unique_ptr, bool_unique_ptr>;
 
 struct move_function
 {
@@ -87,9 +88,9 @@ TEST_CASE("variant_apply move", "[variant]")
       variant{fcppt::make_unique_ptr<std::string>(std::string{"test"})},
       variant{fcppt::make_unique_ptr<bool>(true)})};
 
-  CHECK(*std::get<0>(result) == 1);
+  CHECK(*fcppt::tuple::get<0>(result) == 1);
 
-  CHECK(*std::get<1>(result) == "test");
+  CHECK(*fcppt::tuple::get<1>(result) == "test");
 
-  CHECK(*std::get<2>(result));
+  CHECK(*fcppt::tuple::get<2>(result));
 }

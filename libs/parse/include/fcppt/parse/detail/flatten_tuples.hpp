@@ -7,8 +7,8 @@
 #define FCPPT_PARSE_DETAIL_FLATTEN_TUPLES_HPP_INCLUDED
 
 #include <fcppt/parse/detail/make_tuple.hpp>
+#include <fcppt/tuple/concat.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,7 +21,7 @@ namespace detail
 template <typename... Types>
 auto flatten_tuples(Types &&..._values)
 {
-  return std::tuple_cat(fcppt::parse::detail::make_tuple(std::forward<Types>(_values))...);
+  return fcppt::tuple::concat(fcppt::parse::detail::make_tuple(std::forward<Types>(_values))...);
 }
 
 }

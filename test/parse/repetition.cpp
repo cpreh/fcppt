@@ -15,10 +15,11 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/comparison.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("parse::repetition", "[parse]")
@@ -42,7 +43,7 @@ TEST_CASE("parse::repetition backtrack", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XXXY"}) ==
-      fcppt::parse::make_success<char>(std::make_tuple(
+      fcppt::parse::make_success<char>(fcppt::tuple::make(
           std::vector<fcppt::unit>{fcppt::unit{}, fcppt::unit{}, fcppt::unit{}}, 'Y')));
 }
 

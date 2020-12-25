@@ -23,10 +23,10 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -103,7 +103,7 @@ public:
 private:
   OptionsParser options_parser_;
 
-  std::tuple<SubCommands...> sub_commands_;
+  fcppt::tuple::object<SubCommands...> sub_commands_;
 };
 
 FCPPT_PP_POP_WARNING

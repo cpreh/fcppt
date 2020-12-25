@@ -6,16 +6,16 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("algorithm_loop_break tuple"
           "[algorithm_loop_break]")
 {
-  auto const tuple(std::make_tuple(42, 10L));
+  auto const tuple(fcppt::tuple::make(42, 10L));
 
   std::string result{};
 

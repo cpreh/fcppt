@@ -12,11 +12,12 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/get.hpp>
+#include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <ostream>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -51,8 +52,8 @@ std::ostream &operator<<(std::ostream &_stream, my_struct const &_value)
 TEST_CASE("parse::convert", "[parse]")
 {
   auto const parser(fcppt::parse::make_convert(
-      fcppt::parse::char_{} >> fcppt::parse::char_{}, [](std::tuple<char, char> const &_value) {
-        return my_struct{std::get<0>(_value), std::get<1>(_value)};
+      fcppt::parse::char_{} >> fcppt::parse::char_{}, [](fcppt::tuple::object<char, char> const &_value) {
+        return my_struct{fcppt::tuple::get<0>(_value), fcppt::tuple::get<1>(_value)};
       }));
 
   CHECK(

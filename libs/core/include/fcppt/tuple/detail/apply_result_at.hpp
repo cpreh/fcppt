@@ -3,30 +3,21 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_CONTAINER_TUPLE_DETAIL_APPLY_RESULT_AT_HPP_INCLUDED
-#define FCPPT_CONTAINER_TUPLE_DETAIL_APPLY_RESULT_AT_HPP_INCLUDED
+#ifndef FCPPT_TUPLE_DETAIL_APPLY_RESULT_AT_HPP_INCLUDED
+#define FCPPT_TUPLE_DETAIL_APPLY_RESULT_AT_HPP_INCLUDED
 
+#include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
-#include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tuple
-{
-namespace detail
+namespace fcppt::tuple::detail
 {
 template <typename Function, std::size_t Index, typename... Tuples>
 using apply_result_at =
-    std::result_of_t<Function(decltype(std::get<Index>(std::declval<Tuples>()))...)>;
+    std::result_of_t<Function(decltype(fcppt::tuple::get<Index>(std::declval<Tuples>()))...)>;
 
-}
-}
-}
 }
 
 #endif

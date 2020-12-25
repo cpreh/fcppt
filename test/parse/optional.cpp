@@ -7,6 +7,7 @@
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/parse/char.hpp>
@@ -17,10 +18,11 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/tuple/comparison.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("parse::optional", "[parse]")
@@ -44,7 +46,7 @@ TEST_CASE("parse::optional backtrack", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(std::make_tuple(fcppt::optional::object<int>{}, 'X')));
+      fcppt::parse::make_success<char>(fcppt::tuple::make(fcppt::optional::object<int>{}, 'X')));
 }
 
 TEST_CASE("parse::optional fatal", "[parse]")

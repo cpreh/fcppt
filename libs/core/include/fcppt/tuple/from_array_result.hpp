@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_CONTAINER_TUPLE_FROM_ARRAY_RESULT_HPP_INCLUDED
-#define FCPPT_CONTAINER_TUPLE_FROM_ARRAY_RESULT_HPP_INCLUDED
+#ifndef FCPPT_TUPLE_FROM_ARRAY_RESULT_HPP_INCLUDED
+#define FCPPT_TUPLE_FROM_ARRAY_RESULT_HPP_INCLUDED
 
 #include <fcppt/container/array/size.hpp>
 #include <fcppt/metal/as_tuple.hpp>
@@ -15,16 +15,12 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tuple
+namespace fcppt::tuple
 {
 /**
-\brief Result of #fcppt::container::tuple::from_array
+\brief Result of #fcppt::tuple::from_array
 
-\ingroup fcpptcontainertuple
+\ingroup fcppttuple
 
 \tparam Array Must be a std::array.
 */
@@ -34,8 +30,6 @@ using from_array_result = fcppt::metal::as_tuple<::metal::repeat<
     fcppt::metal::to_number<
         fcppt::container::array::size<fcppt::type_traits::remove_cv_ref_t<Array>>>>>;
 
-}
-}
 }
 
 #endif

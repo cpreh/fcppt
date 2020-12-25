@@ -381,26 +381,6 @@ set(
 	libs/core/include/fcppt/container/tree/output.hpp
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
-	libs/core/include/fcppt/container/tuple/apply.hpp
-	libs/core/include/fcppt/container/tuple/apply_result.hpp
-	libs/core/include/fcppt/container/tuple/detail/apply_result_at.hpp
-	libs/core/include/fcppt/container/tuple/detail/apply_result_impl.hpp
-	libs/core/include/fcppt/container/tuple/detail/init.hpp
-	libs/core/include/fcppt/container/tuple/detail/map.hpp
-	libs/core/include/fcppt/container/tuple/detail/map_result.hpp
-	libs/core/include/fcppt/container/tuple/detail/push_back.hpp
-	libs/core/include/fcppt/container/tuple/detail/push_back_result.hpp
-	libs/core/include/fcppt/container/tuple/detail/types_of.hpp
-	libs/core/include/fcppt/container/tuple/from_array.hpp
-	libs/core/include/fcppt/container/tuple/from_array_result.hpp
-	libs/core/include/fcppt/container/tuple/init.hpp
-	libs/core/include/fcppt/container/tuple/map.hpp
-	libs/core/include/fcppt/container/tuple/map_result.hpp
-	libs/core/include/fcppt/container/tuple/move_element.hpp
-	libs/core/include/fcppt/container/tuple/push_back.hpp
-	libs/core/include/fcppt/container/tuple/push_back_result.hpp
-	libs/core/include/fcppt/container/tuple/types_of.hpp
-	libs/core/include/fcppt/container/tuple/vararg_map.hpp
 	libs/core/include/fcppt/copy.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp
@@ -1124,6 +1104,7 @@ set(
 	libs/core/include/fcppt/record/detail/label_is_same.hpp
 	libs/core/include/fcppt/record/detail/label_list.hpp
 	libs/core/include/fcppt/record/detail/make_tag.hpp
+	libs/core/include/fcppt/record/detail/make_tag_tuple.hpp
 	libs/core/include/fcppt/record/detail/map_result.hpp
 	libs/core/include/fcppt/record/detail/tag_base.hpp
 	libs/core/include/fcppt/record/detail/tag_name.hpp
@@ -1270,18 +1251,36 @@ set(
 	libs/core/include/fcppt/to_std_string_locale.hpp
 	libs/core/include/fcppt/to_std_wstring.hpp
 	libs/core/include/fcppt/to_std_wstring_locale.hpp
+	libs/core/include/fcppt/tuple/apply.hpp
+	libs/core/include/fcppt/tuple/apply_result.hpp
 	libs/core/include/fcppt/tuple/comparison.hpp
+	libs/core/include/fcppt/tuple/concat.hpp
+	libs/core/include/fcppt/tuple/detail/apply_result_at.hpp
+	libs/core/include/fcppt/tuple/detail/apply_result_impl.hpp
+	libs/core/include/fcppt/tuple/detail/init.hpp
 	libs/core/include/fcppt/tuple/detail/is_object.hpp
+	libs/core/include/fcppt/tuple/detail/map_result.hpp
+	libs/core/include/fcppt/tuple/detail/push_back.hpp
+	libs/core/include/fcppt/tuple/detail/push_back_result.hpp
 	libs/core/include/fcppt/tuple/detail/types_of.hpp
 	libs/core/include/fcppt/tuple/element.hpp
+	libs/core/include/fcppt/tuple/from_array.hpp
+	libs/core/include/fcppt/tuple/from_array_result.hpp
 	libs/core/include/fcppt/tuple/get.hpp
+	libs/core/include/fcppt/tuple/impl_type.hpp
+	libs/core/include/fcppt/tuple/init.hpp
 	libs/core/include/fcppt/tuple/invoke.hpp
 	libs/core/include/fcppt/tuple/is_object.hpp
 	libs/core/include/fcppt/tuple/make.hpp
+	libs/core/include/fcppt/tuple/map.hpp
+	libs/core/include/fcppt/tuple/map_result.hpp
 	libs/core/include/fcppt/tuple/object.hpp
 	libs/core/include/fcppt/tuple/object_decl.hpp
 	libs/core/include/fcppt/tuple/object_fwd.hpp
 	libs/core/include/fcppt/tuple/object_impl.hpp
+	libs/core/include/fcppt/tuple/push_back.hpp
+	libs/core/include/fcppt/tuple/push_back_result.hpp
+	libs/core/include/fcppt/tuple/size.hpp
 	libs/core/include/fcppt/tuple/types_of.hpp
 	libs/core/include/fcppt/type_iso/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/decorate.hpp

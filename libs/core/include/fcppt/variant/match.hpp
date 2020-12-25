@@ -10,12 +10,13 @@
 #include <fcppt/metal/from_number.hpp>
 #include <fcppt/metal/index_of.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/tuple/get.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
-#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,11 +38,11 @@ template <
     typename Enable = fcppt::variant::is_object<fcppt::type_traits::remove_cv_ref_t<Variant>>>
 inline decltype(auto) match(Variant &&_variant, Functions const &..._functions)
 {
-  auto const tuple(std::make_tuple(_functions...));
+  auto const tuple(fcppt::tuple::make(_functions...));
 
   return fcppt::variant::apply(
       [&tuple](auto &&_arg) -> decltype(auto) {
-        return std::get<fcppt::metal::from_number<
+        return fcppt::tuple::get<fcppt::metal::from_number<
             std::size_t,
             fcppt::metal::index_of<
                 fcppt::variant::types_of<fcppt::type_traits::remove_cv_ref_t<Variant>>,

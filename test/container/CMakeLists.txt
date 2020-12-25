@@ -135,7 +135,3 @@ add_fcppt_container_test(
 add_subdirectory(
 	tree
 )
-
-add_subdirectory(
-	tuple
-)

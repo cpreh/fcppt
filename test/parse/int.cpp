@@ -6,6 +6,7 @@
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
@@ -16,10 +17,11 @@
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/skipper/space.hpp>
+#include <fcppt/tuple/comparison.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("parse::int", "[parse]")
@@ -51,7 +53,7 @@ TEST_CASE("parse::int sequence", "[parse]")
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{"12, 3"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(std::make_tuple(12, 3)));
+      fcppt::parse::make_success<char>(fcppt::tuple::make(12, 3)));
 }
 
 TEST_CASE("parse::int vector", "[parse]")

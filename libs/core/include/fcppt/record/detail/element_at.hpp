@@ -8,9 +8,7 @@
 
 #include <fcppt/metal/index_of_if.hpp>
 #include <fcppt/record/detail/find_element_predicate.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <tuple>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/tuple/get.hpp>
 
 namespace fcppt
 {
@@ -21,7 +19,7 @@ namespace detail
 template <typename Types, typename Label, typename Tuple>
 inline decltype(auto) element_at(Tuple &_elements)
 {
-  return std::get<fcppt::metal::index_of_if<
+  return fcppt::tuple::get<fcppt::metal::index_of_if<
       Types,
       fcppt::record::detail::find_element_predicate<Label>>::value>(_elements);
 }
