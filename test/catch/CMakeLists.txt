@@ -9,6 +9,12 @@ function(
 endfunction()
 
 add_fcppt_catch_test(
+	array
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_catch_test(
 	either
 	LINK_LIBS
 		fcppt_catch_interface

@@ -3,17 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/catch/convert.hpp>
-#include <fcppt/catch/tuple.hpp>
-#include <fcppt/tuple/make.hpp>
+#include <fcppt/array/object_fwd.hpp>
+#include <fcppt/array/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
-#include <string>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-TEST_CASE("catch::tuple", "[catch]")
+int main()
 {
-  CHECK(
-      fcppt::catch_::convert(fcppt::tuple::make(10)) ==
-      std::string{"{ 10 }"});
+  using array = fcppt::array::object<int,2U>;
+  static_assert(std::is_same_v<fcppt::array::value_type<array>,int>);
 }

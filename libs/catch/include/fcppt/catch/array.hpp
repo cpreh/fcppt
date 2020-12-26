@@ -3,27 +3,28 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_CATCH_TUPLE_HPP_INCLUDED
-#define FCPPT_CATCH_TUPLE_HPP_INCLUDED
+#ifndef FCPPT_CATCH_ARRAY_HPP_INCLUDED
+#define FCPPT_CATCH_ARRAY_HPP_INCLUDED
 
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/catch/convert.hpp>
-#include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <cstddef>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 namespace Catch
 {
 /**
-\brief Output specialization for #fcppt::tuple::object.
+\brief Output specialization for #fcppt::array::object.
 
 \ingroup fcpptcatch
 */
-template <typename... Types>
-struct StringMaker<fcppt::tuple::object<Types...>>
+template <typename T, std::size_t Size>
+struct StringMaker<fcppt::array::object<T, Size>>
 {
-  static std::string convert(fcppt::tuple::object<Types...> const &_value)
+  static std::string convert(fcppt::array::object<T, Size> const &_value)
   {
     return fcppt::catch_::convert(_value.impl());
   }

@@ -93,6 +93,10 @@ add_subdirectory(
 )
 
 add_subdirectory(
+	array
+)
+
+add_subdirectory(
 	assert
 )
 

@@ -248,6 +248,7 @@ function(
 		IMPORTED_DEPS
 		TRANSITIVE_IMPORTED_DEPS
 		INCLUDE_DIRS
+		COMPILE_DEFINITIONS
 	)
 
 	cmake_parse_arguments(
@@ -332,6 +333,12 @@ function(
 			"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/impl/include>"
 		)
 
+		target_compile_definitions(
+			${TARGETNAME}
+			PRIVATE
+			${_COMPILE_DEFINITIONS}
+		)
+
 		fcppt_utils_link_imported_targets(
 			${TARGETNAME}
 			PRIVATE
@@ -354,6 +361,12 @@ function(
 		INTERFACE
 		${PUBLIC_INCLUDES}
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_FULL_INCLUDEDIR}>"
+	)
+
+	target_compile_definitions(
+		${TARGETNAME}
+		INTERFACE
+		${_COMPILE_DEFINITIONS}
 	)
 
 	fcppt_utils_link_imported_targets(
@@ -413,6 +426,7 @@ function(
 		IMPORTED_DEPS
 		TRANSITIVE_IMPORTED_DEPS
 		INCLUDE_DIRS
+		COMPILE_DEFINITIONS
 	)
 
 	set(
@@ -533,6 +547,8 @@ function(
 				${_TRANSITIVE_IMPORTED_DEPS}
 			INCLUDE_DIRS
 				${_INCLUDE_DIRS}
+			COMPILE_DEFINITIONS
+				${_COMPILE_DEFINITIONS}
 		)
 	endif()
 

@@ -28,6 +28,11 @@
 	<li>Removed <code>fcppt::homogenous_pair</code>.</li>
 	</ul>
 </li>
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Removed <code>fcppt::type_traits::is_std_tuple</code>.</li>
+	</ul>
+</li>
 </ul>
 
 \section changes_changes_to_360 3.6.0
@@ -1061,7 +1066,7 @@ C++11 library that has no dependencies itself.</li>
 	<ul>
 	<li>Added #fcppt::type_traits::function_result.</li>
 	<li>Added #fcppt::type_traits::is_value.</li>
-	<li>Added #fcppt::type_traits::is_std_tuple.</li>
+	<li>Added <code>fcppt::type_traits::is_std_tuple</code>.</li>
 	</ul>
 </li>
 

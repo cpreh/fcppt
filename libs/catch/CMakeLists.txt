@@ -25,4 +25,6 @@ make_fcppt_library(
 		fcppt_core_interface
 	TRANSITIVE_IMPORTED_DEPS
 		Catch2::Catch2
+	COMPILE_DEFINITIONS
+		CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER
 )

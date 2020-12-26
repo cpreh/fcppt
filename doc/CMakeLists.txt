@@ -48,6 +48,7 @@ set(
 	doc/files/logo.svg
 	doc/files/main.doxygen
 	doc/files/modules/algorithm.doxygen
+	doc/files/modules/array.doxygen
 	doc/files/modules/assert.doxygen
 	doc/files/modules/bit.doxygen
 	doc/files/modules/boost.doxygen
@@ -274,6 +275,17 @@ set(
 	libs/core/include/fcppt/args_range.hpp
 	libs/core/include/fcppt/args_range_fwd.hpp
 	libs/core/include/fcppt/args_vector.hpp
+	libs/core/include/fcppt/array/comparison.hpp
+	libs/core/include/fcppt/array/detail/init.hpp
+	libs/core/include/fcppt/array/detail/is_object.hpp
+	libs/core/include/fcppt/array/get.hpp
+	libs/core/include/fcppt/array/init.hpp
+	libs/core/include/fcppt/array/is_object.hpp
+	libs/core/include/fcppt/array/object.hpp
+	libs/core/include/fcppt/array/object_decl.hpp
+	libs/core/include/fcppt/array/object_fwd.hpp
+	libs/core/include/fcppt/array/object_impl.hpp
+	libs/core/include/fcppt/array/size.hpp
 	libs/core/include/fcppt/assert/basic/conditional.hpp
 	libs/core/include/fcppt/assert/basic/conditional_message.hpp
 	libs/core/include/fcppt/assert/basic/default_message.hpp
@@ -1525,7 +1537,6 @@ set(
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/is_std_array.hpp
-	libs/core/include/fcppt/type_traits/is_std_tuple.hpp
 	libs/core/include/fcppt/type_traits/is_string.hpp
 	libs/core/include/fcppt/type_traits/is_value.hpp
 	libs/core/include/fcppt/type_traits/numeric_max.hpp

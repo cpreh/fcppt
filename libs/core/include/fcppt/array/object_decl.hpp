@@ -3,42 +3,41 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_TUPLE_OBJECT_DECL_HPP_INCLUDED
-#define FCPPT_TUPLE_OBJECT_DECL_HPP_INCLUDED
+#ifndef FCPPT_ARRAY_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_ARRAY_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/array/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
+#include <array>
+#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt::tuple
+namespace fcppt::array
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 FCPPT_PP_DISABLE_VC_WARNING(5027)
 
-/**
-\brief Like std::tuple but with a proper constructor.
-\ingroup fcppttuple
-*/
-template <typename... Types>
+template <typename T, std::size_t Size>
 class object
 {
 public:
-  using impl_type = std::tuple<Types...>;
+  using value_type = T;
+
+  using impl_type = std::array<T, Size>;
 
   template <
       typename... Args,
       typename = std::enable_if_t<
-          sizeof...(Types) == sizeof...(Args) &&
-          std::conjunction_v<std::is_constructible<Types, Args>...>>>
+          Size == sizeof...(Args) &&
+          std::conjunction_v<std::is_constructible<T, Args>...>>>
   constexpr explicit object(Args &&...) noexcept(
-      std::conjunction_v<std::is_nothrow_constructible<Types, Args>...>);
+      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
 
   [[nodiscard]] constexpr impl_type &impl() noexcept;
 
