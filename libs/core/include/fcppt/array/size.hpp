@@ -6,10 +6,12 @@
 #ifndef FCPPT_ARRAY_SIZE_HPP_INCLUDED
 #define FCPPT_ARRAY_SIZE_HPP_INCLUDED
 
+#include <fcppt/array/impl_type.hpp>
 #include <fcppt/array/is_object.hpp>
-#include <fcppt/array/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
+#include <cstddef>
+#include <tuple>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,7 +23,7 @@ namespace fcppt::array
 \ingroup fcpptrarray
 */
 template <typename Array, typename = std::enable_if_t<fcppt::array::is_object<Array>::value>>
-using size = std::tuple_size<typename Array::impl_type>;
+using size = std::integral_constant<std::size_t,std::tuple_size_v<fcppt::array::impl_type<Array>>>;
 
 }
 

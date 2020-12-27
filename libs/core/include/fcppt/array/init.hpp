@@ -6,9 +6,9 @@
 #ifndef FCPPT_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ARRAY_INIT_HPP_INCLUDED
 
+#include <fcppt/array/is_object.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/detail/init.hpp>
-#include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

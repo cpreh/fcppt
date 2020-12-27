@@ -28,6 +28,8 @@ class object
 {
 public:
   using value_type = T;
+  using reference = T &;
+  using const_reference = T const &;
 
   using impl_type = std::array<T, Size>;
 

@@ -66,6 +66,11 @@ add_fcppt_tuple_test(
 )
 
 add_fcppt_tuple_test(
+	size
+	NO_CODE
+)
+
+add_fcppt_tuple_test(
 	types_of
 	NO_CODE
 )

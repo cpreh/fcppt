@@ -1,5 +1,6 @@
 set(
 	FCPPT_CATCH_FILES
+	libs/catch/include/fcppt/catch/array.hpp
 	libs/catch/include/fcppt/catch/convert.hpp
 	libs/catch/include/fcppt/catch/either.hpp
 	libs/catch/include/fcppt/catch/make_movable.hpp

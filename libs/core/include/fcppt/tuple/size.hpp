@@ -6,16 +6,19 @@
 #ifndef FCPPT_TUPLE_SIZE_HPP_INCLUDED
 #define FCPPT_TUPLE_SIZE_HPP_INCLUDED
 
+#include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/impl_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <tuple>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::tuple
 {
 
-template<typename Tuple>
-using size = std::tuple_size<fcppt::tuple::impl_type<Tuple>>;
+template<typename Tuple, typename = std::enable_if_t<fcppt::tuple::is_object<Tuple>::value>>
+using size = std::integral_constant<std::size_t,std::tuple_size_v<fcppt::tuple::impl_type<Tuple>>>;
 }
 
 #endif

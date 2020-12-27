@@ -8,6 +8,8 @@
 
 int main()
 {
-  using array = fcppt::array::object<int,2U>;
-  static_assert(fcppt::array::size<array>::value == 2U);
+  static_assert(fcppt::array::size<fcppt::array::object<int, 2U>>::value == 2U);
+  static_assert(std::is_same_v<
+                fcppt::array::size<fcppt::array::object<int, 2>>,
+                fcppt::array::size<fcppt::array::object<bool, 2>>>);
 }

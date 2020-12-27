@@ -58,17 +58,26 @@ set(
 	libs/core/include/fcppt/args_range.hpp
 	libs/core/include/fcppt/args_range_fwd.hpp
 	libs/core/include/fcppt/args_vector.hpp
+	libs/core/include/fcppt/array/append.hpp
+	libs/core/include/fcppt/array/apply.hpp
 	libs/core/include/fcppt/array/comparison.hpp
 	libs/core/include/fcppt/array/detail/init.hpp
 	libs/core/include/fcppt/array/detail/is_object.hpp
+	libs/core/include/fcppt/array/detail/join.hpp
+	libs/core/include/fcppt/array/from_range.hpp
 	libs/core/include/fcppt/array/get.hpp
+	libs/core/include/fcppt/array/impl_type.hpp
 	libs/core/include/fcppt/array/init.hpp
 	libs/core/include/fcppt/array/is_object.hpp
+	libs/core/include/fcppt/array/join.hpp
+	libs/core/include/fcppt/array/make.hpp
+	libs/core/include/fcppt/array/map.hpp
 	libs/core/include/fcppt/array/object.hpp
 	libs/core/include/fcppt/array/object_decl.hpp
 	libs/core/include/fcppt/array/object_fwd.hpp
 	libs/core/include/fcppt/array/object_impl.hpp
 	libs/core/include/fcppt/array/size.hpp
+	libs/core/include/fcppt/array/value_type.hpp
 	libs/core/include/fcppt/assert/basic/conditional.hpp
 	libs/core/include/fcppt/assert/basic/conditional_message.hpp
 	libs/core/include/fcppt/assert/basic/default_message.hpp
