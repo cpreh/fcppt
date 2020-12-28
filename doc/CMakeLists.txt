@@ -294,6 +294,7 @@ set(
 	libs/core/include/fcppt/array/object_decl.hpp
 	libs/core/include/fcppt/array/object_fwd.hpp
 	libs/core/include/fcppt/array/object_impl.hpp
+	libs/core/include/fcppt/array/push_back.hpp
 	libs/core/include/fcppt/array/size.hpp
 	libs/core/include/fcppt/array/value_type.hpp
 	libs/core/include/fcppt/assert/basic/conditional.hpp

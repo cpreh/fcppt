@@ -59,6 +59,12 @@ add_fcppt_array_test(
 )
 
 add_fcppt_array_test(
+	push_back
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_array_test(
 	size
 	NO_CODE
 )

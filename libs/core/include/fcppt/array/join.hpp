@@ -9,11 +9,11 @@
 #include <fcppt/array/is_object.hpp>
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/array/size.hpp>
+#include <fcppt/array/value_type.hpp>
 #include <fcppt/array/detail/join.hpp>
 #include <fcppt/metal/from_number.hpp>
 #include <fcppt/metal/to_number.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <cstddef>
@@ -42,10 +42,10 @@ template <
         fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Array1>>,
         fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Arrays>>...,
         std::is_same<
-            fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
-            fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Arrays>>>...>>>
+            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
+            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Arrays>>>...>>>
 fcppt::array::object<
-    fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
+    fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
     fcppt::metal::from_number<
         std::size_t,
         ::metal::accumulate<
