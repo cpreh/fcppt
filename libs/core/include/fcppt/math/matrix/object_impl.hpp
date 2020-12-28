@@ -7,6 +7,7 @@
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
@@ -20,14 +21,13 @@
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-fcppt::math::matrix::object<T, R, C, S>::object(fcppt::no_init const &)
-// Don't initialize storage_()
+fcppt::math::matrix::object<T, R, C, S>::object(fcppt::no_init const &_no_init)
+: storage_{_no_init}
 {
   FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
 }
@@ -36,7 +36,7 @@ template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typena
 template <typename... Args>
 fcppt::math::matrix::object<T, R, C, S>::object(Args const &..._args)
     : storage_(fcppt::math::matrix::detail::init_storage(
-          std::array<row_type, sizeof...(Args)>{{_args...}}))
+          fcppt::array::object<row_type, sizeof...(Args)>{_args...}))
 {
   FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
 

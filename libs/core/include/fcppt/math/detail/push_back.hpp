@@ -6,9 +6,8 @@
 #ifndef FCPPT_MATH_DETAIL_PUSH_BACK_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_PUSH_BACK_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
-#include <fcppt/container/array/init.hpp>
-#include <fcppt/container/array/push_back.hpp>
+#include <fcppt/array/init.hpp>
+#include <fcppt/array/push_back.hpp>
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
@@ -31,10 +30,8 @@ inline Dest push_back(Src const &_src, fcppt::type_traits::value_type<Src> const
   using src_storage = fcppt::math::detail::
       static_storage<fcppt::type_traits::value_type<Src>, Src::static_size::value>;
 
-  return fcppt::math::from_array<Dest>(fcppt::container::array::push_back(
-      fcppt::container::array::init<typename src_storage::array_type>([&_src](auto const _index) {
-        FCPPT_USE(_index);
-
+  return fcppt::math::from_array<Dest>(fcppt::array::push_back(
+      fcppt::array::init<typename src_storage::array_type>([&_src](auto const _index) {
         return fcppt::math::detail::checked_access<_index()>(_src);
       }),
       _value));

@@ -6,6 +6,13 @@
 \subsection changes_added_functionality_to_370 Added functionality
 
 <ul>
+<li>\ref fcpptarray
+	<p>New library.
+	The difference between <code>std::array</code> is that
+	#fcppt::array::object does not allow default construction.
+	</p>
+</li>
+
 <li>\ref fcpptmetal
 	<ul>
 	<li>Added #fcppt::metal::is_invocable.</li>
@@ -23,6 +30,16 @@
 \subsection changes_removed_functionality_to_370 Removed functionality
 
 <ul>
+<li>fcpptcontainerarray
+	<p>
+	This has been removed in favor of \ref fcpptarray.
+	</p>
+</li>
+<li>fcpptcontainertuple
+	<p>
+	This has been removed in favor of \ref fcppttuple.
+	</p>
+</li>
 <li>\ref fcpptvarious
 	<ul>
 	<li>Removed <code>fcppt::homogenous_pair</code>.</li>
@@ -30,6 +47,7 @@
 </li>
 <li>\ref fcppttypetraits
 	<ul>
+	<li>Removed <code>fcppt::type_traits::is_std_array</code>.</li>
 	<li>Removed <code>fcppt::type_traits::is_std_tuple</code>.</li>
 	</ul>
 </li>
@@ -102,9 +120,9 @@
 	</ul>
 </li>
 
-<li>\ref fcpptcontainerarray
+<li>fcpptcontainerarray
 	<ul>
-	<li>Added #fcppt::container::array::from_range.</li>
+	<li>Added <code>fcppt::container::array::from_range</code>.</li>
 	</ul>
 </li>
 
@@ -352,9 +370,9 @@ fcppt now uses <code>std::filesystem</code>.
 
 <ul>
 
-<li>\ref fcpptcontainerarray
+<li>fcpptcontainerarray
 	<ul>
-	<li>Added #fcppt::container::array::append and #fcppt::container::array::join.</li>
+	<li>Added <code>fcppt::container::array::append</code> and <code>fcppt::container::array::join</code>.</li>
 	</ul>
 </li>
 
@@ -777,10 +795,10 @@ Catch2 is now required.
 	</ul>
 </li>
 
-<li>\ref fcpptcontainerarray
+<li>fcpptcontainerarray
 	<ul>
-	<li>Allow rvalues in #fcppt::container::array::push_back.</li>
-	<li>Added #fcppt::container::array::apply.</li>
+	<li>Allow rvalues in <code>fcppt::container::array::push_back</code>.</li>
+	<li>Added <code>fcppt::container::array::apply</code>.</li>
 	</ul>
 </li>
 
@@ -870,7 +888,7 @@ Catch2 is now required.
 	<code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
 	<code>fcppt::algorithm::array_init_move</code>, <code>fcppt::algorithm::array_push_back</code>
 	and <code>fcppt::container::make_array</code>
-	to \ref fcpptcontainerarray.</li>
+	to fcpptcontainerarray.</li>
 	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to <code>fcppt::container::tuple::vararg_map</code>.</li>
 	</ul>
 </li>
@@ -887,9 +905,9 @@ Catch2 is now required.
 	</ul>
 </li>
 
-<li>\ref fcpptcontainerarray
+<li>fcpptcontainerarray
 	<ul>
-	<li>#fcppt::container::array::map no longer uses an explicit result type.</li>
+	<li><code>fcppt::container::array::map</code> no longer uses an explicit result type.</li>
 	</ul>
 </li>
 
@@ -930,7 +948,7 @@ Catch2 is now required.
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li> Removed <code>fcppt::algorithm::array_binary_map</code>. This has been replaced by #fcppt::container::array::apply.</li>
+	<li> Removed <code>fcppt::algorithm::array_binary_map</code>. This has been replaced by <code>fcppt::container::array::apply</code>.</li>
 	</ul>
 </li>
 

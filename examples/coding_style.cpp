@@ -5,9 +5,9 @@
 
 #include <fcppt/make_int_range.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/container/array/init.hpp>
+#include <fcppt/array/init.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -41,14 +41,14 @@ T from_index(std::size_t const _value)
 
 // ![coding_style_make_array]
 template <typename T, std::size_t N>
-std::array<T, N> make_array();
+fcppt::array::object<T, N> make_array();
 // ![coding_style_make_array]
 
 template <typename T, std::size_t N>
-std::array<T, N> make_array()
+fcppt::array::object<T, N> make_array()
 {
   // ![coding_style_array_init]
-  return fcppt::container::array::init<std::array<T, N>>(
+  return fcppt::array::init<fcppt::array::object<T, N>>(
       [](std::size_t i) { return from_index<T>(i); });
   // ![coding_style_array_init]
 }

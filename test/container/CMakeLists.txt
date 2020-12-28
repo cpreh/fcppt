@@ -8,10 +8,6 @@ function(
 	)
 endfunction()
 
-add_subdirectory(
-	array
-)
-
 add_fcppt_container_test(
 	at_optional
 )

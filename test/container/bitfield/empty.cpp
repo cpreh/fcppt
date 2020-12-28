@@ -16,7 +16,7 @@ TEST_CASE("container::bitfield empty", "[container],[bitfield]")
 
   using empty_bitfield = fcppt::container::bitfield::object<unsigned, static_size>;
 
-  CHECK(empty_bitfield{fcppt::no_init()}.array().empty());
+  CHECK(empty_bitfield{fcppt::no_init()}.array().impl().empty());
 
   static_assert(empty_bitfield::static_size::value == 0U);
 }

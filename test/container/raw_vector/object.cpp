@@ -3,11 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <array>
 #include <iterator>
 #include <sstream>
 #include <utility>
@@ -73,9 +73,9 @@ TEST_CASE("container::raw_vector insert iterator", "[container],[raw_vector]")
 {
   int_vector test{};
 
-  using int_array = std::array<int, 5>;
+  using int_array = fcppt::array::object<int, 5>;
 
-  int_array const array{{0, 1, 2, 3, 4}};
+  int_array const array{0, 1, 2, 3, 4};
 
   test.insert(test.begin(), array.begin(), array.end());
 

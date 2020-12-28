@@ -38,10 +38,8 @@ std::enable_if_t<N == 1U, fcppt::type_traits::value_type<Grid>> interpolate(
 {
   return _interpolator(
       _pos.x(),
-      _grid.get_unsafe(_indices[ // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
-          _value_index]),
-      _grid.get_unsafe(_indices[ // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
-          _value_index + 1U]));
+      _grid.get_unsafe(_indices.get_unsafe(_value_index)),
+      _grid.get_unsafe(_indices.get_unsafe(_value_index + 1U)));
 }
 
 template <

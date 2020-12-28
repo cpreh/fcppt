@@ -7,12 +7,12 @@
 #include <fcppt/reference.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/array/init.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/at_optional.hpp>
-#include <fcppt/container/array/init.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <iostream>
 #include <string>
@@ -52,9 +52,9 @@ struct make_value
 };
 
 template <std::size_t N>
-std::array<unsigned int, N> init_array()
+fcppt::array::object<unsigned int, N> init_array()
 {
-  return fcppt::container::array::init<std::array<unsigned int, N>>(
+  return fcppt::array::init<fcppt::array::object<unsigned int, N>>(
       [](auto const _index) { return make_value<_index>::value; });
 }
 // ![init_array]

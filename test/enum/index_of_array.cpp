@@ -27,7 +27,7 @@ TEST_CASE("enum::index_of_array", "[enum]")
 {
   using array = fcppt::enum_::array<test_enum, unsigned>;
 
-  array const test{{{1U, 2U}}};
+  array const test{1U, 2U};
 
   CHECK(fcppt::enum_::index_of_array(test, 2U) == fcppt::optional::make(test_enum::test2));
 

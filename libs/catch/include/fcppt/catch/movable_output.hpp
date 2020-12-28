@@ -6,8 +6,10 @@
 #ifndef FCPPT_CATCH_MOVABLE_OUTPUT_HPP_INCLUDED
 #define FCPPT_CATCH_MOVABLE_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/catch/convert.hpp>
 #include <fcppt/catch/movable_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <catch2/catch.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,6 +25,23 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::catch_::movable<Type>
 }
 
 }
+}
+
+namespace Catch
+{
+/**
+\brief Output specialization for #fcppt::catch_::movable.
+
+\ingroup fcpptcatch
+*/
+template <typename Type>
+struct StringMaker<fcppt::catch_::movable<Type>>
+{
+  static std::string convert(fcppt::catch_::movable<Type> const &_value)
+  {
+    return fcppt::catch_::convert(_value.value());
+  }
+};
 }
 
 #endif

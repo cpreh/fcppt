@@ -58,8 +58,7 @@ void enum_array()
   // ![enum_array]
   using array = fcppt::enum_::array<myenum, bool>;
 
-  // Requires three {} pairs because the array wraps std::array internally
-  array const val{{{true, false}}};
+  array const val{true, false};
 
   std::cout << val[myenum::val1] << '\n';
   // ![enum_array]
@@ -75,9 +74,9 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 namespace
 {
 // NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<myenum> const names{{{// NOLINT(cert-err58-cpp)
-                                                FCPPT_TEXT("val1"),
-                                                FCPPT_TEXT("val2")}}};
+fcppt::enum_::names_array<myenum> const names{// NOLINT(cert-err58-cpp)
+                                              fcppt::string{FCPPT_TEXT("val1")},
+                                              fcppt::string{FCPPT_TEXT("val2")}};
 
 }
 

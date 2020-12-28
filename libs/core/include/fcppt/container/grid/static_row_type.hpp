@@ -6,10 +6,8 @@
 #ifndef FCPPT_CONTAINER_GRID_STATIC_ROW_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_STATIC_ROW_TYPE_HPP_INCLUDED
 
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -23,7 +21,7 @@ namespace grid
 \ingroup fcpptcontainergrid
 */
 template <typename T, fcppt::container::grid::size_type N>
-using static_row_type = std::array<T, N>;
+using static_row_type = fcppt::array::object<T, N>;
 
 }
 }

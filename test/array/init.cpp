@@ -5,7 +5,6 @@
 
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/object.hpp>
-#include <fcppt/catch/array.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>

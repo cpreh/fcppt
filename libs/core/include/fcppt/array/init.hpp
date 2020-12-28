@@ -24,15 +24,13 @@ Constructs an array of type \a Array by calling
 <code>_function(std::integral_constant<std::size_t, Index>)</code> for every
 index.
 
-\tparam Array Must be a <code>std::array</code>.
-
 \tparam Function Must be a function callable as <code>Array::value_type
 (std::integral_constant<std::size_t, I>)</code>.
 */
 template <
     typename Array,
     typename Function,
-    typename = std::enable_if<fcppt::array::is_object<Array>::value>>
+    typename = std::enable_if_t<fcppt::array::is_object<Array>::value>>
 inline Array init(Function const &_function)
 {
   return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)

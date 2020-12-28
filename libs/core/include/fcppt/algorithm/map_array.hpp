@@ -7,8 +7,8 @@
 #define FCPPT_ALGORITHM_MAP_ARRAY_HPP_INCLUDED
 
 #include <fcppt/algorithm/map_impl_fwd.hpp>
-#include <fcppt/container/array/map.hpp>
-#include <fcppt/type_traits/is_std_array.hpp>
+#include <fcppt/array/is_object.hpp>
+#include <fcppt/array/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -23,16 +23,14 @@ struct map_impl<
     Source,
     Target,
     std::enable_if_t<
-        fcppt::type_traits::is_std_array<Target>::value &&
-        fcppt::type_traits::is_std_array<Source>::value>>
+        std::conjunction_v<fcppt::array::is_object<Target>, fcppt::array::is_object<Source>>>>
 {
   template <typename Arg, typename Function>
   static inline Target execute(Arg &&_arg, Function const &_function)
   {
-    return fcppt::container::array::map(std::forward<Arg>(_arg), _function);
+    return fcppt::array::map(std::forward<Arg>(_arg), _function);
   }
 };
-
 }
 }
 

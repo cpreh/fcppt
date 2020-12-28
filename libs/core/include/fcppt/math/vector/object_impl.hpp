@@ -25,8 +25,8 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S>::object(fcppt::no_init const &)
-// Don't initialize storage_
+fcppt::math::vector::object<T, N, S>::object(fcppt::no_init const &_no_init)
+: storage_{_no_init}
 {
   FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
 }

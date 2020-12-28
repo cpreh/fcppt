@@ -71,11 +71,11 @@ fcppt::container::bitfield::proxy<StoredType>::operator=(
 
   if (_value)
   {
-    array_.get()[index] |= mask.get();
+    array_->get_unsafe(index) |= mask.get();
   }
   else
   {
-    array_.get()[index] &= ~mask.get();
+    array_->get_unsafe(index) &= ~mask.get();
   }
 
   return *this;
@@ -86,7 +86,7 @@ fcppt::container::bitfield::proxy<StoredType>::operator fcppt::container::bitfie
     const
 {
   return fcppt::bit::test(
-      array_.get()[this->array_offset(pos_)], this->bit_mask(this->bit_offset(pos_)));
+      array_->get_unsafe(this->array_offset(pos_)), this->bit_mask(this->bit_offset(pos_)));
 }
 
 #endif

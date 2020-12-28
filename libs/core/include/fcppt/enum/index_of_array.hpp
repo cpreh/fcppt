@@ -29,8 +29,8 @@ inline fcppt::optional::object<Enum>
 index_of_array(fcppt::enum_::array<Enum, Value> const &_array, Value const &_value)
 {
   return fcppt::optional::map(
-      fcppt::algorithm::index_of(_array, _value),
-      [](typename fcppt::enum_::array<Enum, Value>::size_type const _index) {
+      fcppt::algorithm::index_of(_array.impl(), _value),
+      [](typename fcppt::enum_::array<Enum, Value>::internal::size_type const _index) {
         return fcppt::cast::int_to_enum<Enum>(_index);
       });
 }

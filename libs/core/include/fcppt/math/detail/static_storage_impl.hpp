@@ -6,6 +6,7 @@
 #ifndef FCPPT_MATH_DETAIL_STATIC_STORAGE_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STATIC_STORAGE_IMPL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -13,9 +14,15 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, fcppt::math::size_type N>
-template <typename... Args>
+template <typename... Args, typename>
 fcppt::math::detail::static_storage<T, N>::static_storage(Args &&..._args)
-    : impl_{{std::forward<Args>(_args)...}}
+    : impl_{std::forward<Args>(_args)...}
+{
+}
+
+template <typename T, fcppt::math::size_type N>
+fcppt::math::detail::static_storage<T, N>::static_storage(fcppt::no_init const &_no_init)
+    : impl_(_no_init)
 {
 }
 
@@ -29,14 +36,14 @@ template <typename T, fcppt::math::size_type N>
 typename fcppt::math::detail::static_storage<T, N>::reference
 fcppt::math::detail::static_storage<T, N>::operator[](fcppt::math::size_type const _index)
 {
-  return impl_[_index];
+  return impl_.get_unsafe(_index);
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::detail::static_storage<T, N>::const_reference
 fcppt::math::detail::static_storage<T, N>::operator[](fcppt::math::size_type const _index) const
 {
-  return impl_[_index];
+  return impl_.get_unsafe(_index);
 }
 
 template <typename T, fcppt::math::size_type N>

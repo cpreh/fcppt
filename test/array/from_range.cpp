@@ -5,7 +5,6 @@
 
 #include <fcppt/array/from_range.hpp>
 #include <fcppt/array/object.hpp>
-#include <fcppt/catch/array.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>

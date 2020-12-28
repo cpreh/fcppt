@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 
-#include <fcppt/container/array/map.hpp>
+#include <fcppt/array/map.hpp>
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
 
@@ -20,7 +20,7 @@ template <typename Dest, typename Source, typename Function>
 inline Dest map(Source const &_source, Function const &_function)
 {
   return fcppt::math::from_array<Dest>(
-      fcppt::container::array::map(fcppt::math::to_array(_source), _function));
+      fcppt::array::map(fcppt::math::to_array(_source), _function));
 }
 
 }

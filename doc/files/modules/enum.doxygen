@@ -61,9 +61,8 @@ range that iterates over an enum.
 \section fcpptenum_array Array indexed with an enum
 
 A contiguous enum is also a range of constant size, making it suitable as an
-index for a <code>std::array</code>. #fcppt::enum_::array
-is a class that wraps <code>std::array</code>, replacing all indices by Enums,
-for example:
+index for an #fcppt::array::object. #fcppt::enum_::array is a class that wraps
+#fcppt::array::object, replacing all indices by Enums, for example:
 
 \snippet enum.cpp enum_array
 

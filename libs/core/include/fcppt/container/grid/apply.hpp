@@ -8,6 +8,7 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
@@ -16,7 +17,6 @@
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <array>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -70,7 +70,7 @@ auto apply(Function const &_function, Grid1 &&_grid1, Grids &&..._grids)
   using dim_type = fcppt::container::grid::dim_type<grid1>;
 
   return fcppt::algorithm::all_of(
-             std::array<dim_type, sizeof...(Grids)>{{_grids.size()...}},
+             fcppt::array::object<dim_type, sizeof...(Grids)>{_grids.size()...},
              [&_grid1](dim_type const _dim) { return _dim == _grid1.size(); })
              ? result_type(
                    _grid1.size(),

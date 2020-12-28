@@ -11,7 +11,6 @@
 #include <fcppt/container/grid/static_row_type.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -27,24 +26,22 @@ namespace grid
 
 \ingroup fcpptcontainergrid
 */
-template <typename Arg1, typename... Args>
+template <
+    typename Arg1,
+    typename... Args,
+    typename = std::enable_if_t<std::conjunction_v<std::is_same<
+        fcppt::type_traits::remove_cv_ref_t<Args>,
+        fcppt::type_traits::remove_cv_ref_t<Arg1>>...>>>
 fcppt::container::grid::static_row_type<
     fcppt::type_traits::remove_cv_ref_t<Arg1>,
     fcppt::cast::size<fcppt::container::grid::size_type>(sizeof...(Args) + 1U)>
 static_row(Arg1 &&_arg1, Args &&..._args)
 {
-  using element_type = fcppt::type_traits::remove_cv_ref_t<Arg1>;
-
-  static_assert(
-      std::conjunction_v<std::is_same<fcppt::type_traits::remove_cv_ref_t<Args>, element_type>...>,
-      "All row elements must have the same type");
-
   return fcppt::container::grid::static_row_type<
-      element_type,
+      fcppt::type_traits::remove_cv_ref_t<Arg1>,
       fcppt::cast::size<fcppt::container::grid::size_type>(sizeof...(Args) + 1U)>{
-      {std::forward<Arg1>(_arg1), std::forward<Args>(_args)...}};
+      std::forward<Arg1>(_arg1), std::forward<Args>(_args)...};
 }
-
 }
 }
 }

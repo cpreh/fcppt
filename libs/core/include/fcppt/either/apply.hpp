@@ -11,6 +11,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
@@ -22,7 +23,6 @@
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <array>
 #include <cstddef>
 #include <type_traits>
 #include <utility>
@@ -83,13 +83,13 @@ auto apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers)
 
   constexpr std::size_t const num_eithers{sizeof...(Eithers) + 1U};
 
-  using failure_array = std::array<optional_failure, num_eithers>;
+  using failure_array = fcppt::array::object<optional_failure, num_eithers>;
 
   FCPPT_PP_PUSH_WARNING
   FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
   return fcppt::algorithm::all_of(
-             std::array<bool, num_eithers>{{_either1.has_success(), _eithers.has_success()...}},
+             fcppt::array::object<bool, num_eithers>{_either1.has_success(), _eithers.has_success()...},
              fcppt::identity{})
              ? result_type(_function(
                    fcppt::move_if_rvalue<Either1>(_either1.get_success_unsafe()),
@@ -109,8 +109,8 @@ auto apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers)
 
                  return std::move(failure_it->get_unsafe());
                }(failure_array{
-                               {fcppt::either::failure_opt(std::forward<Either1>(_either1)),
-                                fcppt::either::failure_opt(std::forward<Eithers>(_eithers))...}})};
+                               fcppt::either::failure_opt(std::forward<Either1>(_either1)),
+                               fcppt::either::failure_opt(std::forward<Eithers>(_eithers))...})};
 
   FCPPT_PP_POP_WARNING
 }

@@ -6,11 +6,9 @@
 #ifndef FCPPT_CONTAINER_GRID_MOORE_NEIGHBOR_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MOORE_NEIGHBOR_ARRAY_HPP_INCLUDED
 
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -26,7 +24,7 @@ namespace grid
 \tparam Pos Must be an fcppt::container::grid::pos
 */
 template <typename Pos>
-using moore_neighbor_array = std::array<
+using moore_neighbor_array = fcppt::array::object<
     Pos,
     8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
     >;

@@ -6,9 +6,8 @@
 #ifndef FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
+#include <fcppt/array/init.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/array/init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
@@ -27,10 +26,7 @@ inline Result copy(Arg const &_arg)
 {
   FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(Result);
 
-  return Result{fcppt::container::array::init<typename Result::array_type>([&_arg](
-                                                                               auto const _index) {
-    FCPPT_USE(_index);
-
+  return Result{fcppt::array::init<typename Result::array_type>([&_arg](auto const _index) {
     return fcppt::math::detail::linear_access<fcppt::cast::size<fcppt::math::size_type>(_index())>(
         _arg.storage());
   })};

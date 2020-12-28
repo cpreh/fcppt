@@ -186,21 +186,6 @@ set(
 	libs/core/include/fcppt/config/platform.hpp
 	libs/core/include/fcppt/const.hpp
 	libs/core/include/fcppt/const_pointer_cast.hpp
-	libs/core/include/fcppt/container/array/append.hpp
-	libs/core/include/fcppt/container/array/apply.hpp
-	libs/core/include/fcppt/container/array/detail/init.hpp
-	libs/core/include/fcppt/container/array/detail/join.hpp
-	libs/core/include/fcppt/container/array/detail/push_back.hpp
-	libs/core/include/fcppt/container/array/detail/size.hpp
-	libs/core/include/fcppt/container/array/from_range.hpp
-	libs/core/include/fcppt/container/array/init.hpp
-	libs/core/include/fcppt/container/array/init_const.hpp
-	libs/core/include/fcppt/container/array/init_move.hpp
-	libs/core/include/fcppt/container/array/join.hpp
-	libs/core/include/fcppt/container/array/make.hpp
-	libs/core/include/fcppt/container/array/map.hpp
-	libs/core/include/fcppt/container/array/push_back.hpp
-	libs/core/include/fcppt/container/array/size.hpp
 	libs/core/include/fcppt/container/at_optional.hpp
 	libs/core/include/fcppt/container/bitfield/array.hpp
 	libs/core/include/fcppt/container/bitfield/comparison.hpp
@@ -1329,7 +1314,6 @@ set(
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp
-	libs/core/include/fcppt/type_traits/is_std_array.hpp
 	libs/core/include/fcppt/type_traits/is_string.hpp
 	libs/core/include/fcppt/type_traits/is_value.hpp
 	libs/core/include/fcppt/type_traits/numeric_max.hpp

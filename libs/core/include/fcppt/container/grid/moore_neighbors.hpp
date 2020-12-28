@@ -34,17 +34,17 @@ moore_neighbors(fcppt::container::grid::pos<T, N> const _pos)
   using pos_type = fcppt::container::grid::pos<T, N>;
 
   return fcppt::container::grid::moore_neighbor_array<pos_type>{
-      {pos_type{_pos.x() - 1, _pos.y()},
-       pos_type{_pos.x() + 1, _pos.y()},
-       pos_type{
-           _pos.x(),
-           _pos.y() - 1,
-       },
-       pos_type{_pos.x(), _pos.y() + 1},
-       pos_type{_pos.x() - 1, _pos.y() - 1},
-       pos_type{_pos.x() - 1, _pos.y() + 1},
-       pos_type{_pos.x() + 1, _pos.y() - 1},
-       pos_type{_pos.x() + 1, _pos.y() + 1}}};
+      pos_type{_pos.x() - 1, _pos.y()},
+      pos_type{_pos.x() + 1, _pos.y()},
+      pos_type{
+          _pos.x(),
+          _pos.y() - 1,
+      },
+      pos_type{_pos.x(), _pos.y() + 1},
+      pos_type{_pos.x() - 1, _pos.y() - 1},
+      pos_type{_pos.x() - 1, _pos.y() + 1},
+      pos_type{_pos.x() + 1, _pos.y() - 1},
+      pos_type{_pos.x() + 1, _pos.y() + 1}};
 }
 
 }

@@ -8,9 +8,7 @@
 
 #include <fcppt/identity.hpp>
 #include <fcppt/algorithm/all_of.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/array/object_impl.hpp>
 
 namespace fcppt
 {
@@ -22,7 +20,7 @@ template <typename... Optionals>
 inline bool has_value_all(Optionals const &..._optionals)
 {
   return fcppt::algorithm::all_of(
-      std::array<bool, sizeof...(Optionals)>{{_optionals.has_value()...}}, fcppt::identity{});
+      fcppt::array::object<bool, sizeof...(Optionals)>{_optionals.has_value()...}, fcppt::identity{});
 }
 
 }

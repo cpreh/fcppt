@@ -7,15 +7,16 @@
 #define FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
+#include <fcppt/array/init.hpp>
+#include <fcppt/array/get.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/array/init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
 #include <fcppt/math/matrix/detail/static_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,19 +31,19 @@ namespace detail
 template <typename Type, fcppt::math::size_type C, std::size_t R>
 inline fcppt::math::matrix::detail::
     static_storage<Type, fcppt::cast::size<fcppt::math::size_type>(R), C>
-    init_storage(std::array<fcppt::math::matrix::row_type<Type, C>, R> const &_value)
+    init_storage(fcppt::array::object<fcppt::math::matrix::row_type<Type, C>, R> const &_value)
 {
   using result_type = fcppt::math::matrix::detail::
       static_storage<Type, fcppt::cast::size<fcppt::math::size_type>(R), C>;
 
   return result_type{
-      fcppt::container::array::init<typename result_type::array_type>([&_value](auto const _index) {
+      fcppt::array::init<typename result_type::array_type>([&_value](auto const _index) {
         FCPPT_USE(_index);
 
         using index = fcppt::math::matrix::detail::
             index_absolute<C, fcppt::cast::size<fcppt::math::size_type>(_index())>;
 
-        return fcppt::math::detail::checked_access<index::column()>(std::get<index::row()>(_value));
+        return fcppt::math::detail::checked_access<index::column()>(fcppt::array::get<index::row()>(_value));
       })};
 }
 

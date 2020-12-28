@@ -6,7 +6,6 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
-#include <fcppt/catch/array.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/array/apply.hpp>
 #include <fcppt/array/make.hpp>

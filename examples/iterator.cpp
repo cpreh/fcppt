@@ -3,10 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/array/get.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <iostream>
 #include <iterator>
@@ -59,7 +60,7 @@ private:
 int main()
 {
   // ![iterator_example]
-  std::array<int, 3> array{{1, 2, 3}};
+  fcppt::array::object<int, 3> array{1, 2, 3};
 
   my_iterator start(&*array.begin());
 
@@ -72,7 +73,7 @@ int main()
   // Array is now {1,5,3}
 
   // Prints 5
-  std::cout << array[1] << '\n';
+  std::cout << fcppt::array::get<1U>(array) << '\n';
 
   // Prints 1
   std::cout << (it - start) << '\n';

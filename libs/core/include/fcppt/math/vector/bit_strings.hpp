@@ -8,14 +8,14 @@
 #define FCPPT_MATH_VECTOR_BIT_STRINGS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/container/array/init_const.hpp>
+#include <fcppt/array/init.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/math/power_of_2.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/null.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/detail/bit_strings.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -61,7 +61,7 @@ Example:
 \snippet math/vector/bit_strings.cpp bit_strings
 */
 template <typename T, fcppt::math::size_type N>
-std::array<
+fcppt::array::object<
     fcppt::math::vector::static_<T, N>,
     fcppt::math::power_of_2<std::size_t>(
         // Workaround for VC++ a bug
@@ -70,14 +70,14 @@ bit_strings()
 {
   using vector_type = fcppt::math::vector::static_<T, N>;
 
-  using result_type = std::array<
+  using result_type = fcppt::array::object<
       vector_type,
       fcppt::math::power_of_2<std::size_t>(
           // Workaround for a VC++ bug
           fcppt::math::size_type{N})>;
 
-  auto result(
-      fcppt::container::array::init_const<result_type>(fcppt::math::vector::null<vector_type>()));
+  auto result(fcppt::array::init<result_type>(
+      [](auto) { return fcppt::math::vector::null<vector_type>(); }));
 
   auto it{result.begin()};
 

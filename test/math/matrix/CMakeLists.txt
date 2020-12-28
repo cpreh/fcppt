@@ -87,6 +87,10 @@ add_fcppt_math_matrix_test(
 )
 
 add_fcppt_math_matrix_test(
+	static
+)
+
+add_fcppt_math_matrix_test(
 	structure_cast
 )
 

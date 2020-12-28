@@ -7,8 +7,8 @@
 #define FCPPT_ENUM_ARRAY_INIT_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
+#include <fcppt/array/init.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
-#include <fcppt/container/array/init.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
 
 namespace fcppt
@@ -29,12 +29,12 @@ enumerator <code>E</code>.
 \tparam Function Must be a function callable as <code>Array::value_type
 (std::integral_constant<Array::enum_type,E>)</code>.
 
-\see fcppt::container::array::init
+\see fcppt::array::init
 */
 template <typename Array, typename Function>
 inline Array array_init(Function const &_function)
 {
-  return Array{fcppt::container::array::init<typename Array::internal>(
+  return Array{fcppt::array::init<typename Array::internal>(
       [&_function](auto const _fcppt_index) {
         FCPPT_USE(_fcppt_index);
 

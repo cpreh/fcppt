@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/from_string.hpp>
@@ -33,10 +34,10 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
 // NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<test_enum> const names{{{// NOLINT(cert-err58-cpp)
-                                                   FCPPT_TEXT("test1"),
-                                                   FCPPT_TEXT("test2"),
-                                                   FCPPT_TEXT("test3")}}};
+fcppt::enum_::names_array<test_enum> const names{// NOLINT(cert-err58-cpp)
+                                                 fcppt::string{FCPPT_TEXT("test1")},
+                                                 fcppt::string{FCPPT_TEXT("test2")},
+                                                 fcppt::string{FCPPT_TEXT("test3")}};
 
 FCPPT_PP_POP_WARNING
 

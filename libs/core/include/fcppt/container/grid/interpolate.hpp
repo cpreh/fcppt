@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
@@ -20,7 +21,6 @@
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -74,7 +74,7 @@ T interpolate(
   using integer_vector_type = fcppt::container::grid::pos_type<grid_type>;
 
   using binary_vector_array_type =
-      std::array<integer_vector_type, fcppt::math::power_of_2<std::size_t>(N)>;
+      fcppt::array::object<integer_vector_type, fcppt::math::power_of_2<std::size_t>(N)>;
 
   using binary_vector_array_type_size_type = typename binary_vector_array_type::size_type;
 

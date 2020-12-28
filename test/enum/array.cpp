@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_output.hpp>
@@ -30,10 +31,10 @@ FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
 // NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<my_enum> const names{{{// NOLINT(cert-err58-cpp)
-                                                 FCPPT_TEXT("val1"),
-                                                 FCPPT_TEXT("val2"),
-                                                 FCPPT_TEXT("val3")}}};
+fcppt::enum_::names_array<my_enum> const names{// NOLINT(cert-err58-cpp)
+                                               fcppt::string{FCPPT_TEXT("val1")},
+                                               fcppt::string{FCPPT_TEXT("val2")},
+                                               fcppt::string{FCPPT_TEXT("val3")}};
 
 FCPPT_PP_POP_WARNING
 
@@ -54,15 +55,17 @@ TEST_CASE("enum::array"
 {
   using int_array = fcppt::enum_::array<my_enum, int>;
 
-  int_array const test1{{{1, 2, 3}}};
+  int_array const test1{1, 2, 3};
+  CHECK(test1.begin() + 3U == test1.end());
+  CHECK(test1.data() == &*test1.begin());
 
   CHECK(test1[my_enum::val1] == 1);
 
-  int_array const test2{{{1, 2, 3}}};
+  int_array const test2{1, 2, 3};
 
   CHECK(test1 == test2);
 
-  int_array const test3{{{1, 2, 4}}};
+  int_array const test3{1, 2, 4};
 
   CHECK(test1 != test3);
 }

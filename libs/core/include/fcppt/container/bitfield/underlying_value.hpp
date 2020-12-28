@@ -6,9 +6,10 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_UNDERLYING_VALUE_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_UNDERLYING_VALUE_HPP_INCLUDED
 
+#include <fcppt/array/get.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -28,19 +29,19 @@ if the bitfield consists of exactly one underlying value (which means that
 
 \tparam NumElements Must fit into exactly one object of type \a InternalType.
 */
-template <typename ElementType, typename NumElements, typename InternalType>
+template <
+    typename ElementType,
+    typename NumElements,
+    typename InternalType,
+    typename = std::enable_if_t<
+        fcppt::container::bitfield::object<ElementType, NumElements, InternalType>::array_size::
+            value == 1U>>
 typename fcppt::container::bitfield::object<ElementType, NumElements, InternalType>::internal_type
 underlying_value(
     fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_bitfield)
 {
-  static_assert(
-      fcppt::container::bitfield::object<ElementType, NumElements, InternalType>::array_size::
-              value == 1U,
-      "underlying_type can only be used on bitfields with a size of 1");
-
-  return std::get<0>(_bitfield.array());
+  return fcppt::array::get<0>(_bitfield.array());
 }
-
 }
 }
 }

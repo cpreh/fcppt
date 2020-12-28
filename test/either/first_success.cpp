@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/array/make.hpp>
 #include <fcppt/function_impl.hpp>
-#include <fcppt/container/array/make.hpp>
 #include <fcppt/either/first_success.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -29,7 +29,7 @@ TEST_CASE("either::first_success", "[either]")
 
   SECTION("test success")
   {
-    result_type const result{fcppt::either::first_success(fcppt::container::array::make(f2, f1))};
+    result_type const result{fcppt::either::first_success(fcppt::array::make(f2, f1))};
 
     REQUIRE(result.has_success());
 
@@ -38,7 +38,7 @@ TEST_CASE("either::first_success", "[either]")
 
   SECTION("test failure")
   {
-    result_type const result{fcppt::either::first_success(fcppt::container::array::make(f2, f3))};
+    result_type const result{fcppt::either::first_success(fcppt::array::make(f2, f3))};
 
     REQUIRE(result.has_failure());
 

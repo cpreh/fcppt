@@ -13,14 +13,15 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/map_array.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
+#include <fcppt/array/object.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <catch2/catch.hpp>
-#include <array>
 #include <string>
 #include <type_traits>
 #include <vector>
@@ -69,28 +70,28 @@ TEST_CASE("algorithm_map metal", "[algorithm_map]")
 
 TEST_CASE("algorithm_map array", "[algorithm_map]")
 {
-  using string_2_array = std::array<std::string, 2>;
+  using string_2_array = fcppt::array::object<std::string, 2>;
 
   CHECK(
       fcppt::algorithm::map<string_2_array>(
-          std::array<int, 2>{{1, 2}}, [](int const _value) -> std::string {
+          fcppt::array::object<int, 2>{1, 2}, [](int const _value) -> std::string {
             return fcppt::output_to_std_string(_value);
-          }) == string_2_array{"1", "2"});
+          }) == string_2_array{std::string{"1"},std::string{ "2"}});
 }
 
 TEST_CASE("algorithm_map array move", "[algorithm_map]")
 {
   FCPPT_MAKE_STRONG_TYPEDEF(int_movable, strong_int_movable);
 
-  using strong_int_movable_array = std::array<strong_int_movable, 2>;
+  using strong_int_movable_array = fcppt::array::object<strong_int_movable, 2>;
 
   CHECK(
       fcppt::algorithm::map<strong_int_movable_array>(
-          std::array<int_movable, 2>{{int_movable{1}, int_movable{2}}},
+          fcppt::array::object<int_movable, 2>{int_movable{1}, int_movable{2}},
           [](int_movable &&_value) -> strong_int_movable {
             return strong_int_movable{std::move(_value)};
           }) == strong_int_movable_array{
-                    {strong_int_movable{int_movable{1}}, strong_int_movable{int_movable{2}}}});
+                    strong_int_movable{int_movable{1}}, strong_int_movable{int_movable{2}}});
 }
 
 TEST_CASE("algorithm_map tuple", "[algorithm_map]")

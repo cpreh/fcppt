@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_GRID_IS_STATIC_ROW_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_IS_STATIC_ROW_HPP_INCLUDED
 
-#include <fcppt/type_traits/is_std_array.hpp>
+#include <fcppt/array/is_object.hpp>
 
 namespace fcppt
 {
@@ -20,7 +20,7 @@ namespace grid
 \ingroup fcpptcontainergrid
 */
 template <typename Type>
-using is_static_row = fcppt::type_traits::is_std_array<Type>;
+using is_static_row = fcppt::array::is_object<Type>;
 
 }
 }

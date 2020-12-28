@@ -4,18 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cyclic_iterator.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <array>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("cyclic_iterator array", "[cyclic_iterator]")
 {
-  using int3_array = std::array<int, 3>;
+  using int3_array = fcppt::array::object<int, 3>;
 
-  int3_array const array{{1, 2, 3}};
+  int3_array const array{1, 2, 3};
 
   using iterator = fcppt::cyclic_iterator<int3_array::const_iterator>;
 

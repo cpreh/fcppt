@@ -6,11 +6,11 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/math/ceil_div_static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,7 +30,7 @@ This is currently just an array of as many <code>InternalTypes</code> values as
 are necessary to hold <code>NumElements</code> bits.
 */
 template <typename NumElements, typename InternalType>
-using array = std::array<
+using array = fcppt::array::object<
     InternalType,
     fcppt::math::ceil_div_static<
         std::size_t,

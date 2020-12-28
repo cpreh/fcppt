@@ -3,17 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/array/object.hpp>
-#include <fcppt/catch/array.hpp>
-#include <fcppt/catch/convert.hpp>
+#include <fcppt/no_init.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
-TEST_CASE("catch::array", "[catch]")
+TEST_CASE("math::matrix::static", "[math],[matrix]")
 {
-  CHECK(
-      fcppt::catch_::convert(fcppt::array::object<int,2>{1,2}) ==
-      std::string{"{ 1, 2 }"});
+  using matrix22 = fcppt::math::matrix::static_<int,2,2>;
+
+  matrix22 const no_init{fcppt::no_init{}};
+  CHECK(no_init.storage().data() != nullptr);
 }

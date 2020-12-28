@@ -8,9 +8,9 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,7 +29,7 @@ inline Container make(Args &&..._args)
   using reference_type = fcppt::reference<fcppt::type_traits::value_type<Container>>;
 
   return fcppt::algorithm::map<Container>(
-      std::array<reference_type, sizeof...(Args)>{{reference_type(_args)...}},
+      fcppt::array::object<reference_type, sizeof...(Args)>{reference_type(_args)...},
       [](reference_type const _ref) { return std::move(_ref.get()); });
 }
 

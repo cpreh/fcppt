@@ -6,6 +6,7 @@
 #ifndef FCPPT_ARRAY_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_ARRAY_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/array/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -27,11 +28,15 @@ template <typename T, std::size_t Size>
 class object
 {
 public:
-  using value_type = T;
-  using reference = T &;
-  using const_reference = T const &;
-
   using impl_type = std::array<T, Size>;
+  using value_type = typename impl_type::value_type;
+  using reference = typename impl_type::reference;
+  using const_reference = typename impl_type::const_reference;
+  using size_type = typename impl_type::size_type;
+  using iterator = typename impl_type::iterator;
+  using const_iterator = typename impl_type::const_iterator;
+  using pointer = typename impl_type::pointer;
+  using const_pointer = typename impl_type::const_pointer;
 
   template <
       typename... Args,
@@ -41,8 +46,24 @@ public:
   constexpr explicit object(Args &&...) noexcept(
       std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
 
-  [[nodiscard]] constexpr impl_type &impl() noexcept;
+  explicit object(fcppt::no_init const &);
+  explicit object(impl_type &&);
 
+  [[nodiscard]] reference get_unsafe(size_type) noexcept;
+  [[nodiscard]] const_reference get_unsafe(size_type) const noexcept;
+
+  [[nodiscard]] iterator begin();
+  [[nodiscard]] iterator end();
+
+  [[nodiscard]] const_iterator begin() const;
+  [[nodiscard]] const_iterator end() const;
+
+  [[nodiscard]] pointer data();
+  [[nodiscard]] const_pointer data() const;
+
+  [[nodiscard]] constexpr size_type size() const;
+
+  [[nodiscard]] constexpr impl_type &impl() noexcept;
   [[nodiscard]] constexpr impl_type const &impl() const noexcept;
 private:
   impl_type impl_;
