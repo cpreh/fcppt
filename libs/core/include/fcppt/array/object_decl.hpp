@@ -47,7 +47,6 @@ public:
       std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
 
   explicit object(fcppt::no_init const &);
-  explicit object(impl_type &&);
 
   [[nodiscard]] reference get_unsafe(size_type) noexcept;
   [[nodiscard]] const_reference get_unsafe(size_type) const noexcept;

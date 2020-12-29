@@ -7,7 +7,6 @@
 #include <fcppt/array/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <array>
 #include <fcppt/config/external_end.hpp>
 
 template class fcppt::array::object<int,2U>;
@@ -32,8 +31,5 @@ TEST_CASE("array::array", "[array]")
   CHECK(fcppt::array::get<0>(test2) == 10);
   CHECK(test2.begin() + 1U == test2.end());
   CHECK(test2.data() == &*test2.begin());
-
-  fcppt::array::object<int,2U> const test3{std::array<int,2U>{{10,20}}};
-  CHECK(test3 == fcppt::array::object<int,2U>{10,20});
-  CHECK(test3.size() == 2U);
+  CHECK(test2.size() == 1U);
 }

@@ -28,11 +28,6 @@ fcppt::array::object<T, Size>::object(fcppt::no_init const &)
 }
 
 template <typename T, std::size_t Size>
-fcppt::array::object<T, Size>::object(impl_type &&_impl) : impl_(std::move(_impl))
-{
-}
-
-template <typename T, std::size_t Size>
 typename fcppt::array::object<T, Size>::reference
 fcppt::array::object<T, Size>::get_unsafe(size_type const _index) noexcept
 {
