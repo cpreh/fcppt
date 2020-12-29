@@ -7,6 +7,7 @@
 #define FCPPT_CONTAINER_AT_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/make_ref.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/reference.hpp>
@@ -30,11 +31,9 @@ fcppt::optional::reference<fcppt::container::to_value_type<Container>>
 at_optional(Container &_container, typename Container::size_type const _index)
 {
   return fcppt::optional::make_if(_index < _container.size(), [&_container, _index] {
-    return fcppt::make_ref(_container[ // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
-        _index]);
+    return fcppt::make_ref(*(_container.begin() + fcppt::cast::to_signed(_index)));
   });
 }
-
 }
 }
 
