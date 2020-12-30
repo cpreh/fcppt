@@ -34,8 +34,9 @@ enumerator <code>E</code>.
 template <typename Array, typename Function>
 inline Array array_init(Function const &_function)
 {
-  return Array{fcppt::array::init<typename Array::internal>(
-      [&_function](auto const _fcppt_index) {
+  return Array{
+      typename Array::from_internal{},
+      fcppt::array::init<typename Array::internal>([&_function](auto const _fcppt_index) {
         FCPPT_USE(_fcppt_index);
 
         return _function(fcppt::type_traits::integral_cast<
@@ -44,7 +45,6 @@ inline Array array_init(Function const &_function)
                          decltype(_fcppt_index)>{});
       })};
 }
-
 }
 }
 

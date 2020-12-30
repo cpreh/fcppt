@@ -22,7 +22,7 @@ noexcept(std::conjunction_v<std::is_nothrow_constructible<Value, Args>...>)
 }
 
 template <typename Enum, typename Value>
-constexpr fcppt::enum_::array<Enum, Value>::array(internal &&_impl) noexcept(
+constexpr fcppt::enum_::array<Enum, Value>::array(from_internal, internal &&_impl) noexcept(
     std::is_nothrow_move_constructible_v<internal>)
     : impl_{std::move(_impl)}
 {

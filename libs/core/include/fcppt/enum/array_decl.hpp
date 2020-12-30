@@ -55,7 +55,9 @@ public:
   constexpr explicit array(Args &&...) noexcept(
       std::conjunction_v<std::is_nothrow_constructible<Value, Args>...>);
 
-  constexpr explicit array(internal &&) noexcept(std::is_nothrow_move_constructible_v<internal>);
+  struct from_internal {};
+
+  constexpr array(from_internal, internal &&) noexcept(std::is_nothrow_move_constructible_v<internal>);
 
   using value_type = typename internal::value_type;
 
