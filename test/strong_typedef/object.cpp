@@ -12,6 +12,15 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
+TEST_CASE("strong_typedef object", "[strongtypedef]")
+{
+	FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+
+	constexpr strong_int const v{1};
+	CHECK(v.get() == 1);
+	static_assert(v.get() == 1);
+}
+
 TEST_CASE("strong_typedef move", "[strongtypedef]")
 {
   using int_unique_ptr = fcppt::unique_ptr<int>;

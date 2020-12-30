@@ -28,7 +28,7 @@ add_fcppt_strong_typedef_test(
 )
 
 add_fcppt_strong_typedef_test(
-	move
+	object
 )
 
 add_fcppt_strong_typedef_test(

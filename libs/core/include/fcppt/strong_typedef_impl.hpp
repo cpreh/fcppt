@@ -9,11 +9,14 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/strong_typedef_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, typename Tag>
-fcppt::strong_typedef<T, Tag>::strong_typedef(T _value) : value_{std::move(_value)}
+constexpr fcppt::strong_typedef<T, Tag>::strong_typedef(T _value) noexcept(
+    std::is_nothrow_move_constructible_v<T>)
+    : value_{std::move(_value)}
 {
 }
 
@@ -23,29 +26,15 @@ fcppt::strong_typedef<T, Tag>::strong_typedef(fcppt::no_init const &)
 }
 
 template <typename T, typename Tag>
-T &fcppt::strong_typedef<T, Tag>::get()
+constexpr T &fcppt::strong_typedef<T, Tag>::get()
 {
   return this->value_;
 }
 
 template <typename T, typename Tag>
-T const &fcppt::strong_typedef<T, Tag>::get() const
+constexpr T const &fcppt::strong_typedef<T, Tag>::get() const
 {
   return this->value_;
-}
-
-template <typename T, typename Tag>
-void fcppt::strong_typedef<T, Tag>::swap(fcppt::strong_typedef<T, Tag> &_other)
-{
-  using std::swap;
-
-  swap(this->value_, _other.value_);
-}
-
-template <typename T, typename Tag>
-void fcppt::swap(fcppt::strong_typedef<T, Tag> &_a, fcppt::strong_typedef<T, Tag> &_b)
-{
-  _a.swap(_b);
 }
 
 #endif

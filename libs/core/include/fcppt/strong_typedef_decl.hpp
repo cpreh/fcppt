@@ -52,7 +52,7 @@ public:
   /**
   \brief Constructs a strong typedef by copying.
   */
-  explicit strong_typedef(T);
+  constexpr explicit strong_typedef(T) noexcept(std::is_nothrow_move_constructible_v<T>);
 
   /**
   \brief Creates an uninitialized strong typedef.
@@ -62,33 +62,17 @@ public:
   /**
   \brief Return the strong typedef's value.
   */
-  [[nodiscard]] T &get();
+  [[nodiscard]] constexpr T &get();
 
   /**
   \brief Return the strong typedef's value.
   */
-  [[nodiscard]] T const &get() const;
-
-  /**
-  \brief Swap the contents of another strong typedef
-  */
-  void swap(strong_typedef &);
-
+  [[nodiscard]] constexpr T const &get() const;
 private:
   T value_;
 };
 
 FCPPT_PP_POP_WARNING
-
-/**
-\brief Swap the contents of two strong typedefs
-
-\tparam T The underlying type to be wrapped.
-
-\tparam Tag A unique tag type
-*/
-template <typename T, typename Tag>
-void swap(fcppt::strong_typedef<T, Tag> &, fcppt::strong_typedef<T, Tag> &);
 
 }
 
