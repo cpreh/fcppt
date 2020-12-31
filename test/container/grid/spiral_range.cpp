@@ -32,7 +32,7 @@ TEST_CASE("container::grid spiral_range", "[container],[grid]")
   {
     pos_vector result{};
 
-    for (auto const &cur : fcppt::container::grid::make_spiral_range(pos(5, 5), 2))
+    for (auto const cur : fcppt::container::grid::make_spiral_range(pos(5, 5), 2))
     {
       result.push_back(cur);
     }

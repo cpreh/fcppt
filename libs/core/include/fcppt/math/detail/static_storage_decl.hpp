@@ -46,8 +46,11 @@ public:
 
   template <
       typename... Args,
-      typename = std::enable_if_t<std::conjunction_v<std::is_constructible<T, Args>...>>>
-  explicit static_storage(Args &&...);
+      typename = std::enable_if_t<std::conjunction_v<
+          std::bool_constant<sizeof...(Args) == N>,
+          std::is_constructible<T, Args>...>>>
+  constexpr explicit static_storage(Args &&...) noexcept(
+      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
 
   explicit static_storage(fcppt::no_init const &);
 

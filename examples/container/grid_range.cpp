@@ -31,7 +31,7 @@ void pos_range()
   using dim2 = fcppt::container::grid::dim<fcppt::container::grid::size_type, 2>;
 
   // Outputs: (0,0), (1,0), (0,1), (1,1), (0,2), (1,2)
-  for (pos2 const &pos : fcppt::container::grid::make_pos_range(dim2{2U, 3U}))
+  for (pos2 const pos : fcppt::container::grid::make_pos_range(dim2{2U, 3U}))
   {
     std::cout << pos << '\n';
   }
@@ -50,7 +50,7 @@ void pos_ref_range()
   using pos_ref = fcppt::container::grid::pos_reference<uint2_grid const>;
 
   // Outputs: (0,0): 0, (1,0): 1, (0,1): 1, (1,1): 2
-  for (pos_ref const &ref : fcppt::container::grid::make_pos_ref_crange(grid))
+  for (pos_ref const ref : fcppt::container::grid::make_pos_ref_crange(grid))
   {
     std::cout << ref.pos() << ": " << ref.value() << '\n';
   }
@@ -67,7 +67,7 @@ void pos_ref_sub_range(uint2_grid::pos const &_min, uint2_grid::pos const &_sup)
 
   using pos_ref = fcppt::container::grid::pos_reference<uint2_grid const>;
 
-  for (pos_ref const &ref : fcppt::container::grid::make_pos_ref_crange_start_end(
+  for (pos_ref const ref : fcppt::container::grid::make_pos_ref_crange_start_end(
            grid,
            // unsigned positions cannot underflow
            fcppt::container::grid::make_min(_min),

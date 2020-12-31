@@ -33,25 +33,25 @@ TEST_CASE("container::grid: pos refrange", "[container],[grid]")
 
   dim2_grid grid(dim2_grid::dim(4U, 6U), fcppt::math::vector::null<pos>());
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_range(grid))
+  for (auto const element : fcppt::container::grid::make_pos_ref_range(grid))
   {
     element.value() = element.pos();
   }
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_crange(grid))
+  for (auto const element : fcppt::container::grid::make_pos_ref_crange(grid))
   {
     CHECK(element.value() == element.pos());
   }
 
   grid = dim2_grid(dim2_grid::dim(4U, 6U), fcppt::math::vector::null<element_type>());
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_range_start_end(
+  for (auto const element : fcppt::container::grid::make_pos_ref_range_start_end(
            grid, min{pos(1U, 1U)}, sup{pos(3U, 3U)}))
   {
     element.value() = element.pos();
   }
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_crange_start_end(
+  for (auto const element : fcppt::container::grid::make_pos_ref_crange_start_end(
            grid, min{pos(1U, 1U)}, sup{pos(3U, 3U)}))
   {
     CHECK(element.value() == element.pos());
@@ -59,7 +59,7 @@ TEST_CASE("container::grid: pos refrange", "[container],[grid]")
 
   bool loop_empty(true);
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_range_start_end(
+  for (auto const element : fcppt::container::grid::make_pos_ref_range_start_end(
            grid, min{fcppt::math::vector::null<pos>()}, sup{fcppt::math::vector::null<pos>()}))
   {
     FCPPT_USE(element);
@@ -69,7 +69,7 @@ TEST_CASE("container::grid: pos refrange", "[container],[grid]")
 
   CHECK(loop_empty);
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_range_start_end(
+  for (auto const element : fcppt::container::grid::make_pos_ref_range_start_end(
            grid, min{fcppt::math::vector::null<pos>()}, sup{pos(0U, 1U)}))
   {
     FCPPT_USE(element);
@@ -79,7 +79,7 @@ TEST_CASE("container::grid: pos refrange", "[container],[grid]")
 
   CHECK(loop_empty);
 
-  for (auto const &element : fcppt::container::grid::make_pos_ref_range_start_end(
+  for (auto const element : fcppt::container::grid::make_pos_ref_range_start_end(
            grid, min{fcppt::math::vector::null<pos>()}, sup{pos(1U, 0U)}))
   {
     FCPPT_USE(element);

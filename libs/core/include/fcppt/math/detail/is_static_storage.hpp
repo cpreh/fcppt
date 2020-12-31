@@ -11,24 +11,20 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Type>
-struct is_static_storage : std::false_type
+struct is_static_storage
 {
+  using type = std::false_type;
 };
 
 template <typename T, fcppt::math::size_type N>
-struct is_static_storage<fcppt::math::detail::static_storage<T, N>> : std::true_type
+struct is_static_storage<fcppt::math::detail::static_storage<T, N>>
 {
+  using type = std::true_type;
 };
 
-}
-}
 }
 
 #endif

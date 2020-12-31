@@ -32,12 +32,11 @@ fcppt::math::vector::object<T, N, S>::object(fcppt::no_init const &_no_init)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-template <typename... Args>
-fcppt::math::vector::object<T, N, S>::object(Args const &..._args) : storage_(_args...)
+template <typename... Args, typename>
+constexpr fcppt::math::vector::object<T, N, S>::object(Args &&..._args) noexcept(
+    std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+    : storage_(std::forward<Args>(_args)...)
 {
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
-
-  static_assert(sizeof...(Args) == N, "Wrong number of parameters");
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
@@ -47,44 +46,11 @@ fcppt::math::vector::object<T, N, S>::object(storage_type &&_storage)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S>::object(object const &) = default;
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S>::object(object &&_other) noexcept(
-    std::is_nothrow_move_constructible_v<storage_type>)
-    : storage_{std::move(_other.storage_)}
-{
-}
-
-FCPPT_PP_POP_WARNING
-
-template <typename T, fcppt::math::size_type N, typename S>
 template <typename OtherStorage>
 fcppt::math::vector::object<T, N, S>::object(
     fcppt::math::vector::object<T, N, OtherStorage> const &_other)
     : storage_(fcppt::math::detail::copy<S>(_other))
 {
-}
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S> &
-fcppt::math::vector::object<T, N, S>::operator=(object const &) = default;
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S> &fcppt::math::vector::object<T, N, S>::operator=(
-    object &&_other) noexcept(std::is_nothrow_move_assignable_v<storage_type>)
-{
-  if (this == &_other)
-  {
-    return *this;
-  }
-
-  storage_ = std::move(_other.storage_);
-
-  return *this;
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
@@ -96,9 +62,6 @@ fcppt::math::vector::object<T, N, S> &fcppt::math::vector::object<T, N, S>::oper
 
   return *this;
 }
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S>::~object<T, N, S>() = default;
 
 template <typename T, fcppt::math::size_type N, typename S>
 template <typename S2>

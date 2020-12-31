@@ -10,12 +10,14 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, fcppt::math::size_type N>
 template <typename... Args, typename>
-fcppt::math::detail::static_storage<T, N>::static_storage(Args &&..._args)
+constexpr fcppt::math::detail::static_storage<T, N>::static_storage(Args &&..._args) noexcept(
+    std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
     : impl_{std::forward<Args>(_args)...}
 {
 }

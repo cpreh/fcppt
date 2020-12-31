@@ -959,6 +959,7 @@ set(
 	libs/core/include/fcppt/math/interpolation/trigonometric.hpp
 	libs/core/include/fcppt/math/interval_distance.hpp
 	libs/core/include/fcppt/math/is_power_of_2.hpp
+	libs/core/include/fcppt/math/is_static_storage.hpp
 	libs/core/include/fcppt/math/is_zero.hpp
 	libs/core/include/fcppt/math/is_zero_impl_fwd.hpp
 	libs/core/include/fcppt/math/is_zero_literal.hpp
