@@ -16,9 +16,6 @@
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -32,16 +29,16 @@ fcppt::math::vector::object<T, N, S>::object(fcppt::no_init const &_no_init)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-template <typename... Args, typename>
-constexpr fcppt::math::vector::object<T, N, S>::object(Args &&..._args) noexcept(
-    std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
-    : storage_(std::forward<Args>(_args)...)
+fcppt::math::vector::object<T, N, S>::object(storage_type &&_storage)
+    : storage_(std::move(_storage))
 {
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::vector::object<T, N, S>::object(storage_type &&_storage)
-    : storage_(std::move(_storage))
+template <typename... Args, typename>
+constexpr fcppt::math::vector::object<T, N, S>::object(Args &&..._args) noexcept(
+    std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+    : storage_(std::forward<Args>(_args)...)
 {
 }
 

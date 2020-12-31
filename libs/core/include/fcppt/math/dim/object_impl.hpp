@@ -29,26 +29,15 @@ fcppt::math::dim::object<T, N, S>::object(fcppt::no_init const &_no_init)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-template <typename... Args>
-fcppt::math::dim::object<T, N, S>::object(Args const &..._args) : storage_(_args...)
-{
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
-
-  static_assert(sizeof...(Args) == N, "Wrong number of parameters");
-}
-
-template <typename T, fcppt::math::size_type N, typename S>
 fcppt::math::dim::object<T, N, S>::object(storage_type &&_storage) : storage_(std::move(_storage))
 {
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::dim::object<T, N, S>::object(object const &) = default;
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::dim::object<T, N, S>::object(object &&_other) noexcept(
-    std::is_nothrow_move_constructible_v<storage_type>)
-    : storage_{std::move(_other.storage_)}
+template <typename... Args, typename>
+constexpr fcppt::math::dim::object<T, N, S>::object(Args &&..._args) noexcept(
+    std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+    : storage_(std::forward<Args>(_args)...)
 {
 }
 
@@ -61,24 +50,6 @@ fcppt::math::dim::object<T, N, S>::object(
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::dim::object<T, N, S> &
-fcppt::math::dim::object<T, N, S>::operator=(object const &) = default;
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::dim::object<T, N, S> &fcppt::math::dim::object<T, N, S>::operator=(
-    object &&_other) noexcept(std::is_nothrow_move_assignable_v<storage_type>)
-{
-  if (this == &_other)
-  {
-    return *this;
-  }
-
-  storage_ = std::move(_other.storage_);
-
-  return *this;
-}
-
-template <typename T, fcppt::math::size_type N, typename S>
 template <typename OtherStorage>
 fcppt::math::dim::object<T, N, S> &fcppt::math::dim::object<T, N, S>::operator=(
     fcppt::math::dim::object<T, N, OtherStorage> const &_other)
@@ -87,9 +58,6 @@ fcppt::math::dim::object<T, N, S> &fcppt::math::dim::object<T, N, S>::operator=(
 
   return *this;
 }
-
-template <typename T, fcppt::math::size_type N, typename S>
-fcppt::math::dim::object<T, N, S>::~object<T, N, S>() = default;
 
 template <typename T, fcppt::math::size_type N, typename S>
 template <typename S2>

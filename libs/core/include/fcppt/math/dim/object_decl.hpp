@@ -8,19 +8,24 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
+namespace fcppt::math::dim
 {
-namespace math
-{
-namespace dim
-{
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
+FCPPT_PP_DISABLE_VC_WARNING(5027)
+
 /**
 \brief A class representing a static n-dimensional dimension
 \tparam T The dim's <code>value_type</code>
@@ -86,18 +91,14 @@ public:
   */
   explicit object(storage_type &&);
 
-  template <typename... Args>
-  explicit object(Args const &...);
-
-  /**
-  \brief Copy-construct the dim from another dim
-  */
-  object(object const &);
-
-  /**
-  \brief Move-construct the dim from another dim
-  */
-  object(object &&) noexcept(std::is_nothrow_move_constructible_v<storage_type>);
+  template <
+      typename... Args,
+      typename = std::enable_if_t<std::conjunction_v<
+          fcppt::math::is_static_storage<S>,
+          std::bool_constant<sizeof...(Args) == N>,
+          std::is_constructible<T, Args>...>>>
+  constexpr explicit object(Args &&...) noexcept(
+      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
 
   /**
   \brief Create a dim from a dim with the same dimension and value type but different storage type
@@ -108,22 +109,10 @@ public:
 
   /**
   \brief Copy the values from a different dim
-  */
-  object &operator=(object const &);
-
-  /**
-  \brief Move the values from a different dim
-  */
-  object &operator=(object &&) noexcept(std::is_nothrow_move_assignable_v<storage_type>);
-
-  /**
-  \brief Copy the values from a different dim
   \tparam OtherStorage The other dim's storage type
   */
   template <typename OtherStorage>
   object &operator=(fcppt::math::dim::object<T, N, OtherStorage> const &);
-
-  ~object();
 
   /**
   \brief Add a dim.
@@ -202,8 +191,6 @@ private:
   S storage_;
 };
 
-}
-}
 }
 
 #endif
