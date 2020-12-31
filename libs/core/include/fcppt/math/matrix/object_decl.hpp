@@ -14,15 +14,12 @@
 #include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief A class representing a static matrix
@@ -121,18 +118,12 @@ public:
   Constructs a matrix by using <code>R</code> arguments of type
   #fcppt::math::matrix::object::row_type. You can use #fcppt::math::matrix::row to create them.
   */
-  template <typename... Args>
-  explicit object(Args const &...);
-
-  /**
-  \brief Copy-construct the matrix from another matrix
-  */
-  object(object const &);
-
-  /**
-  \brief Move-construct the matrix from another matrix
-  */
-  object(object &&) noexcept(std::is_nothrow_move_constructible_v<storage_type>);
+  template <
+      typename... Args,
+      typename = std::enable_if_t<std::conjunction_v<
+          std::bool_constant<sizeof...(Args) == R>,
+          std::is_same<row_type, fcppt::type_traits::remove_cv_ref_t<Args>>...>>>
+  explicit object(Args &&...);
 
   /**
   \brief Create a matrix from a matrix with the same dimension and value
@@ -144,16 +135,6 @@ public:
   explicit object(fcppt::math::matrix::object<T, R, C, OtherStorage> const &);
 
   /**
-  \brief Copy the values from a different matrix
-  */
-  object &operator=(object const &);
-
-  /**
-  \brief Move the values from a different matrix
-  */
-  object &operator=(object &&) noexcept(std::is_nothrow_move_assignable_v<storage_type>);
-
-  /**
   \brief Copy the values from a different matrix of the same size but
   different storage type
 
@@ -161,8 +142,6 @@ public:
   */
   template <typename OtherStorage>
   object &operator=(fcppt::math::matrix::object<T, R, C, OtherStorage> const &);
-
-  ~object();
 
   template <typename S2>
   object &operator+=(object<T, R, C, S2> const &);
@@ -273,8 +252,6 @@ private:
   S storage_;
 };
 
-}
-}
 }
 
 #endif

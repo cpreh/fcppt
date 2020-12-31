@@ -33,29 +33,16 @@ fcppt::math::matrix::object<T, R, C, S>::object(fcppt::no_init const &_no_init)
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-template <typename... Args>
-fcppt::math::matrix::object<T, R, C, S>::object(Args const &..._args)
-    : storage_(fcppt::math::matrix::detail::init_storage(
-          fcppt::array::object<row_type, sizeof...(Args)>{_args...}))
-{
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
-
-  static_assert(sizeof...(Args) == static_rows::value, "Wrong number of rows");
-}
-
-template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
 fcppt::math::matrix::object<T, R, C, S>::object(storage_type &&_storage)
     : storage_(std::move(_storage))
 {
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-fcppt::math::matrix::object<T, R, C, S>::object(object const &) = default;
-
-template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-fcppt::math::matrix::object<T, R, C, S>::object(object &&_other) noexcept(
-    std::is_nothrow_move_constructible_v<storage_type>)
-    : storage_{std::move(_other.storage_)}
+template <typename... Args, typename>
+fcppt::math::matrix::object<T, R, C, S>::object(Args &&..._args)
+    : storage_(fcppt::math::matrix::detail::init_storage(
+          fcppt::array::object<row_type, sizeof...(Args)>{std::forward<Args>(_args)...}))
 {
 }
 
@@ -68,24 +55,6 @@ fcppt::math::matrix::object<T, R, C, S>::object(
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-fcppt::math::matrix::object<T, R, C, S> &
-fcppt::math::matrix::object<T, R, C, S>::operator=(object const &) = default;
-
-template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-fcppt::math::matrix::object<T, R, C, S> &fcppt::math::matrix::object<T, R, C, S>::operator=(
-    object &&_other) noexcept(std::is_nothrow_move_assignable_v<storage_type>)
-{
-  if (this == &_other)
-  {
-    return *this;
-  }
-
-  storage_ = std::move(_other.storage_);
-
-  return *this;
-}
-
-template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
 template <typename OtherStorage>
 fcppt::math::matrix::object<T, R, C, S> &fcppt::math::matrix::object<T, R, C, S>::operator=(
     fcppt::math::matrix::object<T, R, C, OtherStorage> const &_other)
@@ -94,9 +63,6 @@ fcppt::math::matrix::object<T, R, C, S> &fcppt::math::matrix::object<T, R, C, S>
 
   return *this;
 }
-
-template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-fcppt::math::matrix::object<T, R, C, S>::~object<T, R, C, S>() = default;
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
 template <typename S2>
