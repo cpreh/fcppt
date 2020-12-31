@@ -14,6 +14,9 @@
 #include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -21,6 +24,12 @@
 
 namespace fcppt::math::matrix
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
+FCPPT_PP_DISABLE_VC_WARNING(5027)
+
+
 /**
 \brief A class representing a static matrix
 
@@ -252,6 +261,7 @@ private:
   S storage_;
 };
 
+FCPPT_PP_POP_WARNING
 }
 
 #endif

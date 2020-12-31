@@ -191,6 +191,7 @@ private:
   S storage_;
 };
 
+FCPPT_PP_POP_WARNING
 }
 
 #endif
