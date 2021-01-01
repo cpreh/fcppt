@@ -7,7 +7,6 @@
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/array/object_impl.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
@@ -21,6 +20,7 @@
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <tuple>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -41,8 +41,8 @@ fcppt::math::matrix::object<T, R, C, S>::object(storage_type &&_storage)
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
 template <typename... Args, typename>
 fcppt::math::matrix::object<T, R, C, S>::object(Args &&..._args)
-    : storage_(fcppt::math::matrix::detail::init_storage(
-          fcppt::array::object<row_type, sizeof...(Args)>{std::forward<Args>(_args)...}))
+    : storage_(fcppt::math::matrix::detail::init_storage<storage_type, C>(
+          std::forward_as_tuple(std::forward<Args>(_args)...)))
 {
 }
 

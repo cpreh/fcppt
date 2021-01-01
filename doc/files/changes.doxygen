@@ -13,6 +13,24 @@
 	</p>
 </li>
 
+<li>\ref fcpptmathdim
+	<ul>
+	<li>Allow movable types.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathmatrix
+	<ul>
+	<li>Allow movable types.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Allow movable types.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmetal
 	<ul>
 	<li>Added #fcppt::metal::is_invocable.</li>

@@ -23,7 +23,6 @@ TEST_CASE("math::matrix::static", "[math],[matrix]")
   CHECK(mat.m11() == 4);
 }
 
-#if 0
 TEST_CASE("math::matrix::static move", "[math],[matrix]")
 {
   using int_movable = fcppt::catch_::movable<int>;
@@ -38,7 +37,6 @@ TEST_CASE("math::matrix::static move", "[math],[matrix]")
   CHECK(mat.m10().value() == 3);
   CHECK(mat.m11().value() == 4);
 }
-#endif
 
 TEST_CASE("math::matrix::static no_init", "[math],[matrix]")
 {
