@@ -88,6 +88,8 @@ add_fcppt_math_matrix_test(
 
 add_fcppt_math_matrix_test(
 	static
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_math_matrix_test(

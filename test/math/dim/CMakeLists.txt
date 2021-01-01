@@ -62,6 +62,12 @@ add_fcppt_math_dim_test(
 )
 
 add_fcppt_math_dim_test(
+	static
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_math_dim_test(
 	to_signed
 )
 

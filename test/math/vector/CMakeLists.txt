@@ -94,6 +94,8 @@ add_fcppt_math_vector_test(
 
 add_fcppt_math_vector_test(
 	static
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_math_vector_test(
