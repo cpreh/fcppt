@@ -8,8 +8,8 @@
 
 #include <fcppt/tuple/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename... Types>

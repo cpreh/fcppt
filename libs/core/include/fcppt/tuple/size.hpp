@@ -6,8 +6,8 @@
 #ifndef FCPPT_TUPLE_SIZE_HPP_INCLUDED
 #define FCPPT_TUPLE_SIZE_HPP_INCLUDED
 
-#include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/impl_type.hpp>
+#include <fcppt/tuple/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <tuple>

@@ -9,9 +9,9 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/metal/from_number.hpp>
 #include <fcppt/metal/index_of.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/make.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>

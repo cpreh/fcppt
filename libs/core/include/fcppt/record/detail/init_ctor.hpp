@@ -12,11 +12,11 @@
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/record/detail/make_tag_tuple.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/tuple/invoke.hpp>
 #include <fcppt/tuple/get.hpp>
+#include <fcppt/tuple/invoke.hpp>
 #include <fcppt/tuple/map.hpp>
 #include <fcppt/tuple/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <utility>

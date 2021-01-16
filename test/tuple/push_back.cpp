@@ -5,8 +5,8 @@
 
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/catch/tuple.hpp>
-#include <fcppt/tuple/object.hpp>
 #include <fcppt/tuple/make.hpp>
+#include <fcppt/tuple/object.hpp>
 #include <fcppt/tuple/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>

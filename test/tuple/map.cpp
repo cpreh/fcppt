@@ -8,13 +8,13 @@
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/tuple/map.hpp>
 #include <fcppt/tuple/make.hpp>
+#include <fcppt/tuple/map.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
-#include <utility>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("tuple::map", "[tuple]")

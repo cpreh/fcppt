@@ -8,8 +8,8 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/array/get.hpp>
-#include <fcppt/array/is_object.hpp>
 #include <fcppt/array/init.hpp>
+#include <fcppt/array/is_object.hpp>
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/value_type.hpp>

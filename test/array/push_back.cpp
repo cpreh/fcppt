@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/array/push_back.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/array/push_back.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>

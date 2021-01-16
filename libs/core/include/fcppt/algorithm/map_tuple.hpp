@@ -7,8 +7,8 @@
 #define FCPPT_ALGORITHM_MAP_TUPLE_HPP_INCLUDED
 
 #include <fcppt/algorithm/map_impl_fwd.hpp>
-#include <fcppt/tuple/map.hpp>
 #include <fcppt/tuple/is_object.hpp>
+#include <fcppt/tuple/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

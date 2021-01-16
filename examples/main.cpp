@@ -6,9 +6,9 @@
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/cast/size.hpp>
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/container/at_optional.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/reference.hpp>

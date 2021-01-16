@@ -6,10 +6,10 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
-#include <fcppt/catch/movable.hpp>
 #include <fcppt/array/apply.hpp>
 #include <fcppt/array/make.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>

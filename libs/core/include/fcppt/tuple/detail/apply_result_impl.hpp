@@ -6,8 +6,8 @@
 #ifndef FCPPT_TUPLE_DETAIL_APPLY_RESULT_IMPL_HPP_INCLUDED
 #define FCPPT_TUPLE_DETAIL_APPLY_RESULT_IMPL_HPP_INCLUDED
 
-#include <fcppt/tuple/detail/apply_result_at.hpp>
 #include <fcppt/tuple/object_impl.hpp>
+#include <fcppt/tuple/detail/apply_result_at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <utility>

@@ -7,12 +7,12 @@
 #define FCPPT_ARRAY_APPLY_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/array/get.hpp>
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/is_object.hpp>
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/array/size.hpp>
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

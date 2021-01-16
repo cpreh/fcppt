@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONAL_DETAIL_CHECK_SEQUENCE_HPP_INCLUDED
 
 #include <fcppt/optional/is_object.hpp>
-#include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/tuple/is_object.hpp>
+#include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/tuple/types_of.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

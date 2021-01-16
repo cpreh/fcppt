@@ -7,12 +7,12 @@
 #define FCPPT_TUPLE_CONCAT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/is_object.hpp>
+#include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
 #include <tuple>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
