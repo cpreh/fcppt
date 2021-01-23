@@ -1144,6 +1144,8 @@ set(
 	libs/core/include/fcppt/monad/chain.hpp
 	libs/core/include/fcppt/monad/constructor.hpp
 	libs/core/include/fcppt/monad/detail/chain.hpp
+	libs/core/include/fcppt/monad/detail/do.hpp
+	libs/core/include/fcppt/monad/do.hpp
 	libs/core/include/fcppt/monad/inner_type.hpp
 	libs/core/include/fcppt/monad/instance_fwd.hpp
 	libs/core/include/fcppt/monad/return.hpp

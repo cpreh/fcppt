@@ -28,6 +28,10 @@ add_fcppt_monad_test(
 )
 
 add_fcppt_monad_test(
+	do
+)
+
+add_fcppt_monad_test(
 	inner_type
 	NO_CODE
 )
