@@ -19,7 +19,25 @@
 
 \section fcpptparse_introduction Introduction
 
-In a broad sense, a parser gets a string as input and if it belongs to a certain language, produces a specific output.
+A parser gets a string as input and if it belongs to a certain language it transforms this string into a specific output.
+Parsers are built up from basic parsers and combinating parsers.
+The most basic parsers are:
+<ul>
+<li>#fcppt::parse::epsilon, which recognizes the empty string and returns nothing.</li>
+<li>#fcppt::parse::char_, which recognizes any single character and returns it.</li>
+<li>#fcppt::parse::literal, which recognizes a specific single character and returns nothing.</li>
+</ul>
+From this, more complicated parsers can be built.
+The combinating parsers are:
+<ul>
+<li>#fcppt::parse::alternative, which gets two parsers. It first tries the left one and if that fails the right one.
+Its result is a variant of both results.</li>
+<li>#fcppt::parse::repetition, which gets a single parser and tries it until it fails.
+Its result is a vector of the inner parser's result.</li>
+<li>#fcppt::parse::sequence, which gets two parsers. It first tries the left one and if that succeeds also the right one.
+Its result is a tuple of both results.</li>
+</ul>
+
 For example, suppose we want to parse numbers of the form
 <code>[0-9]*</code>, where we allow multiple leading zeroes for simplicity.
 Each word that belongs to this language should produce a word over the alphabet
@@ -29,6 +47,18 @@ To encode this in C++, we start with an enum of the form
 Next, we create a function that given <code>char c</code> and <code>digit d</code>,
 it produces a parser that returns <code>d</code> if and only if it gets <code>c</code> as input:
 \snippet parse/main.cpp make_digit
+We can use this function to create a parser that recognizes any digit:
+\snippet parse/main.cpp parser_digit
+Here, the <code>operator|</code> constructs a #fcppt::parse::alternative out of its two arguments.
+The result type of <code>p09</code> is still <code>digit</code> because
+<code>variant<digit, ..., digit></code> is simplified to <code>digit</code>.
+To recognize an arbitrary string of digits, we define the following parser:
+\snippet parse/main.cpp parser_digit_string
+The <code>operator*</code> creates an #fcppt::parse::repetition out of its argument.
+Its result type is <code>vector<digit></code>.
+The #fcppt::parse::parse_string function takes a parser <code>P</code> and a string and returns an #fcppt::parse::result, which is an #fcppt::either::object of #fcppt::parse::error and P's result type.
+We can then inspect this either by using #fcppt::either::match.
+\snippet parse/main.cpp parser_example
 
 \section fcpptparse_definition Parser definition
 

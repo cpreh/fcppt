@@ -49,19 +49,25 @@ auto make_digit(char const c, digit const d)
 
 int main()
 {
+// [parser_digit]
   auto const p09{
       make_digit('0', digit::_0) | make_digit('1', digit::_1) | make_digit('2', digit::_2) |
       make_digit('3', digit::_3) | make_digit('4', digit::_4) | make_digit('5', digit::_5) |
       make_digit('6', digit::_6) | make_digit('7', digit::_7) | make_digit('8', digit::_8) |
       make_digit('9', digit::_9)};
+// [parser_digit]
 
+// [parser_digit_string]
   auto const p09_repeat{*fcppt::make_cref(p09)};
+// [parser_digit_string]
 
+// [parser_example]
   fcppt::either::match(
       fcppt::parse::parse_string(p09_repeat, std::string{"12345"}),
       [](fcppt::parse::error<char> const &error) { std::cerr << error.get() << '\n'; },
       [](std::vector<digit> const &result) {
-        std::cout << "Success ";
+        std::cout << "Success\n";
         print(result);
       });
+// [parser_example]
 }
