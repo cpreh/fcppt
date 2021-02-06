@@ -31,18 +31,16 @@ do_(Value &&_value,
     Lambda const &_lambda,
     Lambdas const &..._lambdas)
 {
-  return fcppt::tuple::invoke(
-      [&_value, &_lambda, &_lambdas..., &_values](auto &&..._args) {
-        return fcppt::monad::bind(
-            std::forward<Value>(_value),
-            [&_lambda, &_lambdas..., &_args..., &_values](auto const &_new_value) {
-              return fcppt::monad::detail::do_(
-                  _lambda(_args..., _new_value),
-                  fcppt::tuple::push_back(_values, _new_value),
-                  _lambdas...);
-            });
-      },
-      _values);
+  return fcppt::monad::bind(
+      std::forward<Value>(_value), [&_values, &_lambda, &_lambdas...](auto const &_new_value) {
+        auto const new_values(fcppt::tuple::push_back(std::move(_values), _new_value));
+
+        return fcppt::tuple::invoke(
+            [&_lambda, &new_values, &_lambdas...](auto &&..._args) {
+              return fcppt::monad::detail::do_(_lambda(_args...), new_values, _lambdas...);
+            },
+            new_values);
+      });
 }
 }
 
