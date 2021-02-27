@@ -18,6 +18,15 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses a specific character and returns nothing.
+
+\ingroup fcpptparse
+
+For a character c, this parser succeeds if the next input character is c.
+Otherwise, an error is returned.
+This parser returns fcppt::unit on success.
+*/
 template <typename Ch>
 class basic_literal : private fcppt::parse::tag
 {

@@ -17,6 +17,16 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Base class for a parser.
+
+\ingroup fcpptparse
+
+The type of a parser usually gets very complicated because it depends on all of its subparsers.
+In case we want to declare a parser as a member of a class for example, we want to use a simpler type.
+This is achieved by using #fcppt::parse::make_base to create a parser of type base.
+The employed technique is also known as type erasure.
+*/
 template <typename Result, typename Ch, typename Skipper>
 class base : private fcppt::parse::tag
 {

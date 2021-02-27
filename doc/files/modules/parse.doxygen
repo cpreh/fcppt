@@ -30,18 +30,18 @@ The most basic parsers are:
 From this, more complicated parsers can be built.
 The combinating parsers are:
 <ul>
-<li>#fcppt::parse::alternative, which gets two parsers. It first tries the left one and if that fails the right one.
-Its result is a variant of both results.</li>
-<li>#fcppt::parse::repetition, which gets a single parser and tries it until it fails.
-Its result is a vector of the inner parser's result.</li>
-<li>#fcppt::parse::sequence, which gets two parsers. It first tries the left one and if that succeeds also the right one.
-Its result is a tuple of both results.</li>
+<li>#fcppt::parse::alternative, which gets two parsers \em L and \em R. It first tries L and if that fails it tries R.
+Its result type is a variant of L's and R's result types.</li>
+<li>#fcppt::parse::repetition, which gets a single parser \em P and tries it until it fails.
+Its result type is a vector of P's result type.</li>
+<li>#fcppt::parse::sequence, which gets two parsers \em L and \em R. It first tries L and if that succeeds also R.
+Its result type is a tuple L's and R's result types.</li>
 </ul>
 
-For example, suppose we want to parse numbers of the form
-<code>[0-9]*</code>, where we allow multiple leading zeroes for simplicity.
-Each word that belongs to this language should produce a word over the alphabet
-<code>{0,...,9}</code>.
+Let us consider the following example.
+We want to parse numbers of the form <code>{0, ..., 9}*</code>,
+where we allow multiple leading zeroes for simplicity.
+Each word that belongs to this language should produce a word over the alphabet <code>{0,...,9}</code>.
 To encode this in C++, we start with an enum of the form
 \snippet parse/main.cpp digit
 Next, we create a function that given <code>char c</code> and <code>digit d</code>,

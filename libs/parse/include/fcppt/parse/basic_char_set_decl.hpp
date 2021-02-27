@@ -20,6 +20,19 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses a set of characters and returns which one has matched.
+
+\ingroup fcpptparse
+
+For the character set <code>S</code>, this parser returns <code>c</code> if c is the next input character and c is in S.
+Otherwise, an error is returned.
+
+Note that instead of using <code>basic_char_set{c_1,...,c_n}</code>,
+one could also use <code>P = basic_char{c_1} | ... | basic_char{c_n}</code>.
+However, basic_char_set is more efficient, since it looks up the next character in a hash map,
+whereas P would first try to match against c_1, then c_2, and so on.
+*/
 template <typename Ch>
 class basic_char_set : private fcppt::parse::tag
 {

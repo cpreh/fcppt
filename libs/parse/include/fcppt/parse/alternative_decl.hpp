@@ -31,10 +31,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 \ingroup fcpptparse
 
 This parser first saves the current position <code>p</code>.
-It then tries the parser \a Left.
-If it succeeds then its result is returned.
-Otherwise, the parser backtracks to position <code>p</code> and returns the result of \a Right
-(which might fail or not).
+Then, it tries the parser \a Left. If \a Left succeeds then its result is returned.
+If \a Left returns a fatal error then this error is returned.
+Otherwise, it backtracks to position <code>p</code> and returns the result of the parser \a Right.
 
 See #fcppt::parse::alternative_result on this parser's result type.
 */

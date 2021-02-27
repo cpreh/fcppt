@@ -25,6 +25,10 @@ namespace parse
 
 \ingroup fcpptparse
 
+If \a Parser returns an <code>fcppt::tuple::object<T_1,...,T_n>{t_1,...,t_n}</code>,
+then <code>Result{t_1,...,t_n}</code> is returned.
+This implies that <code>Result</code> must be constructible from <code>T_1,...,T_n</code>.
+
 \tparam Parser A parser whose result is an <code>fcppt::tuple::object</code>.
 */
 template <typename Result, typename Parser>

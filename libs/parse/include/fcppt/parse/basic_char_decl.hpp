@@ -17,6 +17,14 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses a single character and returns it.
+
+\ingroup fcpptparse
+
+In case the next input character is <code>c</code>, then <code>c</code> is returned.
+Otherwise, an error is returned.
+*/
 template <typename Ch>
 class basic_char : private fcppt::parse::tag
 {
