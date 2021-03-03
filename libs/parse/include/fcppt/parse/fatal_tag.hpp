@@ -12,6 +12,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Used to disambiguate constructors of #fcppt::parse::error.
+\ingroup fcpptparse
+*/
 struct fatal_tag
 {
 };

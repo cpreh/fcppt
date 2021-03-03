@@ -19,6 +19,16 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses signed integers.
+\ingroup fcpptparse
+
+A signed integer string optionally starts with the symbol '-'.
+It is then followed by a nonempty sequence of #fcppt::parse::digits.
+The string is converted into a signed integer using #fcppt::extract_from_string.
+
+\tparam Type Must be a signed integer type.
+*/
 template <typename Type>
 class int_ : private fcppt::parse::tag
 {

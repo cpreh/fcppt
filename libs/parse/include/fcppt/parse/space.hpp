@@ -13,6 +13,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The char set parser using <code>fcppt::parse::space_set<char></code>.
+\ingroup fcpptparse
+*/
 inline fcppt::parse::char_set space()
 {
   return fcppt::parse::char_set{fcppt::parse::space_set<char>()};

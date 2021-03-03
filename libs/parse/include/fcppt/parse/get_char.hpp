@@ -14,6 +14,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The next character in a stream.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 fcppt::optional::object<Ch> get_char(fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)
 {

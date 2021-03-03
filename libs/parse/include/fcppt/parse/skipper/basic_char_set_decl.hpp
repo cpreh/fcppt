@@ -22,6 +22,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Skips all characters from a set.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 class basic_char_set : private fcppt::parse::skipper::tag
 {

@@ -14,6 +14,9 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\ingroup fcpptparse
+*/
 using char_set = fcppt::parse::skipper::basic_char_set<char>;
 
 }

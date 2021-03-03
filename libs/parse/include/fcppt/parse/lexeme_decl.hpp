@@ -24,6 +24,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Disables the skipper.
+\ingroup fcpptparse
+
+For a parser p, <code>lexeme{p}</code> always calls p.parse with the skipper #fcppt::parse::skipper::epsilon,
+effectively disabling skipping.
+*/
 template <typename Parser>
 class lexeme : private fcppt::parse::tag
 {

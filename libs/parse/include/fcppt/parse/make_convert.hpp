@@ -19,6 +19,13 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::convert parser out of a lambda.
+\ingroup fcpptparse
+
+\param _parser The parser to convert from.
+\param _convert The lambda function to use as conversion.
+*/
 template <typename Parser, typename Convert>
 fcppt::parse::convert<
     fcppt::type_traits::remove_cv_ref_t<Parser>,

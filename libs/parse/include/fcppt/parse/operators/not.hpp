@@ -18,6 +18,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::not_ parser.
+\ingroup fcpptparse
+*/
 template <
     typename Parser,
     typename = std::enable_if_t<fcppt::parse::is_valid_argument<Parser>::value>>

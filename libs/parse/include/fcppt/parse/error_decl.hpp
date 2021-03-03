@@ -22,6 +22,14 @@ namespace parse
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
+/**
+\brief The error type.
+\ingroup fcpptparse
+
+An error consists of a string, containing the error message, and a bit telling if the error is fatal.
+Fatal error are used by parsers such as #fcppt::parse::alternative and #fcppt::parse::repetition to stop early.
+This can improve error messages and reduce backtracking time.
+*/
 template <typename Ch>
 class error
 {

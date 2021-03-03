@@ -14,6 +14,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The allowed char types, currently char and wchar_t.
+\ingroup fcpptparse
+*/
 template <typename Type>
 using is_char = std::disjunction<std::is_same<Type, char>, std::is_same<Type, wchar_t>>;
 

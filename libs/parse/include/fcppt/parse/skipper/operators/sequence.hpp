@@ -20,6 +20,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Creates an #fcppt::parse::skipper::sequence.
+\ingroup fcpptparse
+*/
 template <
     typename Left,
     typename Right,

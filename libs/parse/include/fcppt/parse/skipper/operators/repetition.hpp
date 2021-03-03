@@ -20,6 +20,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Creates an #fcppt::parse::skipper::repetition.
+\ingroup fcpptparse
+*/
 template <
     typename Parser,
     typename = std::enable_if_t<fcppt::parse::skipper::is_valid_argument<Parser>::value>>

@@ -21,9 +21,7 @@ TEST_CASE("parse::float", "[parse]")
 {
   using Catch::literals::operator""_a;
 
-  fcppt::parse::float_<
-
-      float> const parser{};
+  fcppt::parse::float_<float> const parser{};
 
   CHECK(fcppt::parse::parse_string(parser, std::string{}).has_failure());
 
@@ -35,4 +33,9 @@ TEST_CASE("parse::float", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"1.5"}),
       [](fcppt::parse::error<char> const &) { CHECK(false); },
       [](float const _value) { CHECK(_value == 1.5_a); });
+
+  fcppt::either::match(
+      fcppt::parse::parse_string(parser, std::string{"-1.5"}),
+      [](fcppt::parse::error<char> const &) { CHECK(false); },
+      [](float const _value) { CHECK(_value == -1.5_a); });
 }

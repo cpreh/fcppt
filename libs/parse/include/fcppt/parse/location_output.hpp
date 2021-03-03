@@ -17,6 +17,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Outputs a location to a stream.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 std::basic_ostream<Ch> &
 operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::location const &_loc)

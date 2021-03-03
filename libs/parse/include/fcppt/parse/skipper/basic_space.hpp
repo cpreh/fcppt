@@ -16,6 +16,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Skips all characters from #fcppt::parse::space_set.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 inline auto basic_space()
 {

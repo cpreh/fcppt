@@ -18,6 +18,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Skips nothing.
+\ingroup fcpptparse
+*/
 class epsilon : private fcppt::parse::skipper::tag
 {
 public:

@@ -16,6 +16,22 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Base class for grammars.
+
+\ingroup fcpptparse
+
+Usually, parsers are mutually recursive. For example, in JSON, the parser for
+objects depends on the parser for values, and the parser for values depends on
+the parser for objects. To implement this, it is necessary to have both parsers
+as elements of a struct, so that they can refer to each other in the
+constructor. We also refer to these parsers as nonterminals. A struct that
+"collects" nonterminals and "connects" them in its constructor, is called a
+"grammar", similar to what a context-free grammar does in computer science.
+
+The base class for grammars gets a special parser, called the start parser.
+It also gets a skipper, which is shared by all nonterminals.
+*/
 template <typename Result, typename Ch, typename Skipper>
 class grammar
 {

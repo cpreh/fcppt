@@ -13,6 +13,11 @@ namespace fcppt
 {
 namespace parse
 {
+
+/**
+\brief Parser that parses blank characters.
+\ingroup fcpptparse
+*/
 inline fcppt::parse::char_set blank()
 {
   return fcppt::parse::char_set{fcppt::parse::blank_set<char>()};

@@ -25,6 +25,14 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Tries a parser repeatedly, producing a vector of results. Must produce at least one element.
+\ingroup fcpptparse
+
+This is identical to #fcppt::parse::repetition, but it returns an error in case no results are produced.
+
+\see fcppt::parse::repetition
+*/
 template <typename Parser>
 class repetition_plus : private fcppt::parse::tag
 {

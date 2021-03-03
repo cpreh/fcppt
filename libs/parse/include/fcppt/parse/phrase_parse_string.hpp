@@ -21,6 +21,7 @@
 #include <istream>
 #include <sstream>
 #include <string>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,14 +29,22 @@ namespace fcppt
 {
 namespace parse
 {
-template <typename Ch, typename Parser, typename Skipper>
+/**
+\brief Parses a <code>std::basic_string</code>, using whitespace skipping.
+\ingroup fcpptparse
+
+\see fcppt::parse::phrase_parse
+*/
+template <
+    typename Ch,
+    typename Parser,
+    typename Skipper,
+    typename = std::enable_if_t<std::conjunction_v<
+        fcppt::parse::is_parser<Parser>,
+        fcppt::parse::skipper::is_skipper<Skipper>>>>
 [[nodiscard]] fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 phrase_parse_string(Parser const &_parser, std::basic_string<Ch> &&_string, Skipper const &_skipper)
 {
-  static_assert(fcppt::parse::is_parser<Parser>::value);
-
-  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
-
   std::basic_istringstream<Ch> stream{// NOLINT(fuchsia-default-arguments-calls)
                                       std::move(_string)};
 
@@ -45,7 +54,6 @@ phrase_parse_string(Parser const &_parser, std::basic_string<Ch> &&_string, Skip
       fcppt::reference_to_base<std::basic_istream<Ch>>(fcppt::make_ref(stream)),
       fcppt::parse::phrase_parse_stream(_parser, stream, _skipper));
 }
-
 }
 }
 

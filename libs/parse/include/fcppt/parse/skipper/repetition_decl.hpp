@@ -25,6 +25,18 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Skips characters repeatedly.
+\ingroup fcpptparse
+
+Let <code>p</code> be a skipper and <code>rep = repetition{p}</code>.
+A single skipper step consists of the following actions:
+First, the current position <code>pos</code> is saved.
+Then, the skipper <code>p</code> is run.
+These steps continue as long as <code>p</code> does not return an error.
+After this, <code>rep</code> backtracks to <code>pos</code>.
+If the error returned by <code>p</code> is fatal, then this error is returned.
+*/
 template <typename Parser>
 class repetition : private fcppt::parse::skipper::tag
 {

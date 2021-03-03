@@ -1890,6 +1890,9 @@ set(
 	libs/parse/include/fcppt/parse/char_set_fwd.hpp
 	libs/parse/include/fcppt/parse/char_set_impl.hpp
 	libs/parse/include/fcppt/parse/column.hpp
+	libs/parse/include/fcppt/parse/complement_decl.hpp
+	libs/parse/include/fcppt/parse/complement_fwd.hpp
+	libs/parse/include/fcppt/parse/complement_impl.hpp
 	libs/parse/include/fcppt/parse/construct.hpp
 	libs/parse/include/fcppt/parse/convert.hpp
 	libs/parse/include/fcppt/parse/convert_const.hpp
@@ -1908,14 +1911,8 @@ set(
 	libs/parse/include/fcppt/parse/detail/alternative_list.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_list_impl.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_result.hpp
-	libs/parse/include/fcppt/parse/detail/basic_int_decl.hpp
-	libs/parse/include/fcppt/parse/detail/basic_int_fwd.hpp
-	libs/parse/include/fcppt/parse/detail/basic_int_impl.hpp
 	libs/parse/include/fcppt/parse/detail/check_bad.hpp
 	libs/parse/include/fcppt/parse/detail/combine_tuples.hpp
-	libs/parse/include/fcppt/parse/detail/complement_decl.hpp
-	libs/parse/include/fcppt/parse/detail/complement_fwd.hpp
-	libs/parse/include/fcppt/parse/detail/complement_impl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_decl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp

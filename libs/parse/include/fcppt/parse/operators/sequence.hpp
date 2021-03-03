@@ -18,6 +18,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::sequence parser.
+\ingroup fcpptparse
+*/
 template <
     typename Left,
     typename Right,

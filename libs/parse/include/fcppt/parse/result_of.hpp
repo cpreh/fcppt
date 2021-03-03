@@ -12,6 +12,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The result type of a parser.
+\ingroup fcpptparse
+*/
 template <typename Parser>
 using result_of = typename fcppt::parse::deref_type<Parser>::result_type;
 

@@ -21,6 +21,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The next character in a stream. Returns the error message "EOF" on failure.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 fcppt::parse::result<Ch, Ch>
 get_char_error(fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)

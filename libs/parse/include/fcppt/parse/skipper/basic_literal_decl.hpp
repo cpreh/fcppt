@@ -19,6 +19,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Skips a specific character.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 class basic_literal : private fcppt::parse::skipper::tag
 {

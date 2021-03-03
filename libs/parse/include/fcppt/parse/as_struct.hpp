@@ -13,6 +13,7 @@
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,12 +32,13 @@ This implies that <code>Result</code> must be constructible from <code>T_1,...,T
 
 \tparam Parser A parser whose result is an <code>fcppt::tuple::object</code>.
 */
-template <typename Result, typename Parser>
+template <
+    typename Result,
+    typename Parser,
+    typename = std::enable_if_t<fcppt::tuple::is_object<fcppt::parse::result_of<Parser>>::value>>
 fcppt::parse::convert<fcppt::type_traits::remove_cv_ref_t<Parser>, Result>
 as_struct(Parser &&_parser)
 {
-  static_assert(fcppt::tuple::is_object<fcppt::parse::result_of<Parser>>::value);
-
   return fcppt::parse::make_convert(
       std::forward<Parser>(_parser), [](fcppt::parse::result_of<Parser> &&_tuple) {
         return fcppt::tuple::invoke(
@@ -44,7 +46,6 @@ as_struct(Parser &&_parser)
             std::move(_tuple));
       });
 }
-
 }
 }
 

@@ -15,6 +15,12 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Dereferences a parser.
+\ingroup fcpptparse
+
+\see fcppt::deref
+*/
 template <typename Parser>
 inline fcppt::parse::deref_type<Parser> const &deref(Parser const &_parser)
 {

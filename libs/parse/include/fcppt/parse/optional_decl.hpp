@@ -25,6 +25,18 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Makes a parser optional.
+\ingroup fcpptparse
+
+Let <code>p</code> be a parser and let <code>o = optional{p}</code>.
+First, <code>o</code> saves the current position <code>pos</code>
+and then tries <code>p</code>.
+If <code>p</code> succeeds, then its result is returned.
+Otherwise, <code>o</code> backtracks to <code>pos</code>.
+If the returned error is fatal, then <code>o</code> also returns it.
+Otherwise, <code>o</code> returns the empty optional.
+*/
 template <typename Parser>
 class optional : private fcppt::parse::tag
 {

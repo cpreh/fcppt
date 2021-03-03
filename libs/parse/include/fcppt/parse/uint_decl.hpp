@@ -19,6 +19,15 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses unsigned integers.
+\ingroup fcpptparse
+
+An unsigned integer string is a nonempty sequence of #fcppt::parse::digits.
+The string is converted into an unsigned integer using #fcppt::extract_from_string.
+
+\tparam Type Must be a unsigned integer type.
+*/
 template <typename Type>
 class uint : private fcppt::parse::tag
 {

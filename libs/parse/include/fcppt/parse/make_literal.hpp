@@ -12,6 +12,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::basic_literal parser.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 fcppt::parse::basic_literal<Ch> make_literal(Ch const _ch)
 {

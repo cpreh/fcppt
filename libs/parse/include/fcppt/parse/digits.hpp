@@ -13,6 +13,12 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The char set of digits.
+\ingroup fcpptparse
+
+Returns the char set of {0,...,9}.
+*/
 template <typename Ch>
 fcppt::parse::basic_char_set<Ch> digits()
 {

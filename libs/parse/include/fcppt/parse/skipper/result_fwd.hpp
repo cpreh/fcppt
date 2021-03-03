@@ -15,6 +15,11 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief The result type when skipping streams of \a Ch.
+\ingroup fcpptparse
+The result is an #fcppt::either::error of <code>fcppt::parse::error<Ch></code>.
+*/
 template <typename Ch>
 using result = fcppt::either::error<fcppt::parse::error<Ch>>;
 

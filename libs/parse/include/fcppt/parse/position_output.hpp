@@ -18,6 +18,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Outputs a position to a stream.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 std::basic_ostream<Ch> &
 operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::position<Ch> const &_pos)

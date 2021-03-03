@@ -13,6 +13,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief unique_ptr to #fcppt::parse::base
+\ingroup fcpptparse
+*/
 template <typename Result, typename Ch, typename Skipper>
 using base_unique_ptr = fcppt::unique_ptr<fcppt::parse::base<Result, Ch, Skipper>>;
 

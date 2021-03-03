@@ -16,6 +16,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Always fails.
+\ingroup fcpptparse
+*/
 template <typename Result>
 class fail : private fcppt::parse::tag
 {

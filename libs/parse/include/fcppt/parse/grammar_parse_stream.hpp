@@ -17,6 +17,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parse a stream using a grammar.
+\ingroup fcpptparse
+*/
 template <typename Result, typename Ch, typename Skipper>
 fcppt::parse::result<Ch, Result> grammar_parse_stream(
     std::basic_istream<Ch> &_stream, fcppt::parse::grammar<Result, Ch, Skipper> const &_grammar)

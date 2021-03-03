@@ -24,6 +24,15 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Makes all error fatal.
+\ingroup fcpptparse
+
+If the parser p returns an error, then fatal{p} returns a fatal error.
+Fatal errors make certain parses stop early.
+
+\see fcppt::parse::error
+*/
 template <typename Parser>
 class fatal : private fcppt::parse::tag
 {

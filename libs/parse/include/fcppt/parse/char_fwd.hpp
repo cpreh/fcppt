@@ -12,6 +12,10 @@ namespace fcppt
 {
 namespace parse
 {
+
+/**
+\ingroup fcpptparse
+*/
 using char_ = fcppt::parse::basic_char<char>;
 
 }

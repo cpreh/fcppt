@@ -16,6 +16,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::ignore parser.
+\ingroup fcpptparse
+*/
 template <typename Parser>
 fcppt::parse::ignore<fcppt::type_traits::remove_cv_ref_t<Parser>> make_ignore(Parser &&_parser)
 {

@@ -10,6 +10,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The tag parsers derive from.
+\ingroup fcpptparse
+*/
 struct tag
 {
 };

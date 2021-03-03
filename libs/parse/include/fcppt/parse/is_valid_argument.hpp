@@ -14,6 +14,12 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Checks if a parameter is a valid parser type.
+\ingroup fcpptparse
+
+Parsers can be passed as-is, by #fcppt::reference or by #fcppt::unique_ptr.
+*/
 template <typename Type>
 using is_valid_argument =
     fcppt::parse::is_parser<fcppt::parse::deref_type<fcppt::type_traits::remove_cv_ref_t<Type>>>;

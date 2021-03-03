@@ -30,6 +30,22 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Parses a list of elements, delimited by a separator, e.g., a_1,...,a_n.
+\ingroup fcpptparse
+
+\a Inner is tried first. If this suceeds, this provides the first element r_1 of the result.
+Then, \a Separator is tried, followed by \a Inner.
+This is done as long as possible, giving the remaining elements r_2, ..., r_n of the result,
+which are again taken from \a Inner.
+
+Equivalent to:
+\code
+Inner >> *(Sep >> Inner)
+\endcode
+
+\tparam Sep A parser with result type unit.
+*/
 template <typename Inner, typename Sep>
 class separator : private fcppt::parse::tag
 {

@@ -25,6 +25,15 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Wraps a type in #fcppt::recursive.
+\ingroup fcpptparse
+
+<code>recursive{p}</code> is equivalent to
+\code
+construct<recursive<result_of<decltype(p)>)>>
+\endcode
+*/
 template <typename Parser>
 class recursive : private fcppt::parse::tag
 {

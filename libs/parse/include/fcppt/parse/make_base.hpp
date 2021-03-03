@@ -21,6 +21,14 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Hides the type of a parser, turning it into an #fcppt::parse::base_unique_ptr.
+\ingroup fcpptparse
+
+Note that a parser is usually polymorphic over character types and skipper types.
+However, when converting a parser to a base type, the character type \a Ch and the skipper type \a Skipper have to be committed,
+e.g. <code>fcppt::parse::make_base<char,fcppt::parse::skipper::epsilon>(my_parser)</code>.
+*/
 template <typename Ch, typename Skipper, typename Parser>
 fcppt::parse::base_unique_ptr<fcppt::parse::result_of<Parser>, Ch, Skipper>
 make_base(Parser &&_parser)

@@ -25,6 +25,16 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Converts the success value of a parser into another success value.
+
+\ingroup fcpptparse
+
+If the parser p returns s, then <code>convert(p,f)</code> returns the success value <code>f(s)</code>.
+Errors returned by p remain unchanged.
+
+\tparam Result The success type of this parser.
+*/
 template <typename Parser, typename Result>
 class convert : private fcppt::parse::tag
 {

@@ -17,6 +17,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses the empty string, returns nothing.
+\ingroup fcpptparse
+*/
 class epsilon : private fcppt::parse::tag
 {
 public:

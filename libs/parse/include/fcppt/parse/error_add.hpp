@@ -17,6 +17,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Adds two errors.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 fcppt::parse::error<Ch> operator+(fcppt::parse::error<Ch> &&_left, fcppt::parse::error<Ch> &&_right)
 {

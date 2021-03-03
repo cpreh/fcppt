@@ -22,6 +22,13 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::convert_if parser out of a lambda.
+\ingroup fcpptparse
+
+\param _parser The parser to convert from.
+\param _convert The lambda function to use as conversion.
+*/
 template <typename Parser, typename Convert>
 fcppt::parse::convert_if<
     fcppt::type_traits::value_type<fcppt::type_traits::value_type<fcppt::either::failure_type<

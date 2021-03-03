@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_OPERATORS_COMPLEMENT_HPP_INCLUDED
 #define FCPPT_PARSE_OPERATORS_COMPLEMENT_HPP_INCLUDED
 
+#include <fcppt/parse/complement_impl.hpp>
 #include <fcppt/parse/deref_type.hpp>
-#include <fcppt/parse/detail/complement_impl.hpp>
 #include <fcppt/parse/detail/is_char_set.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,13 +19,19 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::complement parser.
+\ingroup fcpptparse
+
+\tparam Parser Must be an #fcppt::parse::basic_char_set
+*/
 template <
     typename Parser,
     typename = std::enable_if_t<
         fcppt::parse::detail::is_char_set<fcppt::parse::deref_type<Parser>>::value>>
 auto operator~(Parser &&_parser)
 {
-  return fcppt::parse::detail::complement<fcppt::type_traits::remove_cv_ref_t<Parser>>{
+  return fcppt::parse::complement<fcppt::type_traits::remove_cv_ref_t<Parser>>{
       std::forward<Parser>(_parser)};
 }
 

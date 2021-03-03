@@ -18,6 +18,13 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Applies a constructor to the result of a parser.
+\ingroup fcpptparse
+
+If the parser p returns s on success, then <code>construct(p)</code> returns <code>Result{s}</code> on success.
+Errors remain unchanged.
+*/
 template <typename Result, typename Parser>
 fcppt::parse::convert<fcppt::type_traits::remove_cv_ref_t<Parser>, Result>
 construct(Parser &&_parser)

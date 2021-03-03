@@ -19,6 +19,13 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses a <code>std::basic_string</code> without whitespace skipping.
+
+\ingroup fcpptparse
+
+Calls #fcppt::parse::phrase_parse_string with #fcppt::parse::skipper::epsilon.
+*/
 template <typename Ch, typename Parser>
 [[nodiscard]] inline fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 parse_string(Parser const &_parser, std::basic_string<Ch> &&_string)

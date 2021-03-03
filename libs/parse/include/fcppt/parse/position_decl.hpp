@@ -17,6 +17,12 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The position of an #fcppt::parse::basic_stream.
+\ingroup fcpptparse
+
+A position consists of an optional #fcppt::parse::location and a position into the stream.
+*/
 template <typename Ch>
 class position
 {

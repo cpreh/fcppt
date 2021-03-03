@@ -23,9 +23,9 @@ namespace parse
 
 \ingroup fcpptparse
 
-For a character c, this parser succeeds if the next input character is c.
+For a character c, the parser <code>basic_literal{c}</code> succeeds if the next input character is c.
 Otherwise, an error is returned.
-This parser returns fcppt::unit on success.
+This parser returns #fcppt::unit on success.
 */
 template <typename Ch>
 class basic_literal : private fcppt::parse::tag
@@ -40,7 +40,6 @@ public:
   template <typename Skipper>
   [[nodiscard]] fcppt::parse::result<Ch, result_type>
   parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
-
 private:
   Ch ch_;
 };

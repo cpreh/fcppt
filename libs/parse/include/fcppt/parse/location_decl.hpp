@@ -14,6 +14,11 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The location of a #fcppt::parse::basic_stream.
+
+A location consists of a line number and a column number.
+*/
 class location
 {
 public:

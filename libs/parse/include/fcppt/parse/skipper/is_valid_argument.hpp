@@ -16,6 +16,12 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief Checks if a parameter is a valid skipper type.
+\ingroup fcpptparse
+
+Skippers can be passed as-is, by #fcppt::reference or by #fcppt::unique_ptr.
+*/
 template <typename Type>
 using is_valid_argument = fcppt::parse::skipper::is_skipper<
     fcppt::parse::deref_type<fcppt::type_traits::remove_cv_ref_t<Type>>>;

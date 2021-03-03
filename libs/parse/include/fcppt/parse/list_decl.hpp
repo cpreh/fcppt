@@ -31,6 +31,36 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Parses lists, e.g., [a_1,...,a_n].
+\ingroup fcpptparse
+
+A list parser consists of a start parser \a Start, an end parser \a End,
+a separator parser \a Sep and an inner parser \a Inner.
+The purpose of this parser is to parse lists like [a_1,...,a_n],
+where Start recognizes '[', End recognizes ']', Sep recognizes ',' and Inner recognizes the a_i,
+producing the results r_1, ..., r_n. The result of the list parser is then vector{r_1,...,r_n}.
+
+This is implemented as follows:
+The start parser is tried first and parses the beginning of the list.
+Then, the end parser is tried, which parses the end of the list.
+If this succeeds, the list is empty and the result is the empty vector.
+Otherwise, the list is nonempty and the inner parser is tried.
+If this succeeds, this provides the first element r_1 of the result.
+Then, the separator parser is tried, followed by the inner parser.
+This is done as long as possible, giving the remaining elements r_2, ..., r_n of the result,
+which are again taken from the inner parser.
+Lastly, the end parser is tried and if it succeeds, the result is <code>vector{r_1,...,r_n}</code>.
+
+Equivalent to:
+\code
+Start >> (End | (fcppt::parse::separator{Inner,Sep} >> End))
+\endcode
+
+\tparam Start A parser with result type unit.
+\tparam End A parser with result type unit.
+\tparam Sep A parser with result type unit.
+*/
 template <typename Start, typename Inner, typename Sep, typename End>
 class list : private fcppt::parse::tag
 {

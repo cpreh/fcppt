@@ -16,6 +16,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::fatal parser.
+\ingroup fcpptparse
+*/
 template <typename Parser>
 fcppt::parse::fatal<fcppt::type_traits::remove_cv_ref_t<Parser>> make_fatal(Parser &&_parser)
 {

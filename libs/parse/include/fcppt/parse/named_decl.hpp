@@ -28,6 +28,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Gives a parser a name, improving error messages.
+\ingroup fcpptparse
+
+Note that this parser is not polymorphic over multiple character types,
+since the character type is chosen by the string used to name the parser.
+*/
 template <typename Ch, typename Parser>
 class named : private fcppt::parse::tag
 {

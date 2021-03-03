@@ -21,6 +21,15 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses a specific string and returns nothing.
+
+\ingroup fcpptparse
+
+For a string <code>c_1...c_n</code>, the parser <code>basic_string{c_1...c_n}</code> succeeds if the next inputs characters are c_1, ..., c_n.
+Otherwise, an error is returned.
+This parser returns #fcppt::unit on success.
+*/
 template <typename Ch>
 class basic_string : private fcppt::parse::tag
 {
@@ -34,7 +43,6 @@ public:
   template <typename Skipper>
   [[nodiscard]] fcppt::parse::result<Ch, result_type>
   parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
-
 private:
   std::basic_string<Ch> string_;
 };

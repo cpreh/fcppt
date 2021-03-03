@@ -13,6 +13,13 @@ namespace fcppt
 {
 namespace parse
 {
+
+/**
+\brief The set of blank characters.
+\ingroup fcpptparse
+
+Space and tab characters are considered to be blank characters.
+*/
 template <typename Ch>
 inline fcppt::parse::basic_char_set_container<Ch> blank_set()
 {

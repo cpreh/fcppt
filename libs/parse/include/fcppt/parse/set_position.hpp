@@ -14,6 +14,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Sets the current position of a stream.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 void set_position(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state,

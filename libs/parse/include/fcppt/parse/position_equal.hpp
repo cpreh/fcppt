@@ -14,6 +14,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Compares two positions for equality.
+\ingroup fcpptparse
+*/
 template <typename Ch>
 bool operator==(fcppt::parse::position<Ch> const &_left, fcppt::parse::position<Ch> const &_right)
 {

@@ -15,20 +15,26 @@
 #include <fcppt/parse/skipper/is_skipper.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 namespace parse
 {
-template <typename Ch, typename Parser, typename Skipper>
+/**
+\brief Parses a <code>std::basic_istream</code>, using whitespace skipping.
+\ingroup fcpptparse
+
+\see fcppt::parse::phrase_parse
+*/
+template <typename Ch, typename Parser, typename Skipper,
+    typename = std::enable_if_t<std::conjunction_v<
+        fcppt::parse::is_parser<Parser>,
+        fcppt::parse::skipper::is_skipper<Skipper>>>>
 [[nodiscard]] fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 phrase_parse_stream(Parser const &_parser, std::basic_istream<Ch> &_input, Skipper const &_skipper)
 {
-  static_assert(fcppt::parse::is_parser<Parser>::value);
-
-  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
-
   fcppt::parse::detail::stream<Ch> stream{fcppt::make_ref(_input)};
 
   return fcppt::parse::phrase_parse(_parser, stream, _skipper);

@@ -19,6 +19,17 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses floating-point numbers.
+\ingroup fcpptparse
+
+A float string optionally starts with the symbol '-'.
+It is then followed by a nonempty sequence of #fcppt::parse::digits, followed by a '.' (dot),
+followed by another nonempty sequence of #fcppt::parse::digits.
+The float string is converted into a floating point number using #fcppt::extract_from_string.
+
+\tparam Type Must be a floating-point type.
+*/
 template <typename Type>
 class float_ : private fcppt::parse::tag
 {

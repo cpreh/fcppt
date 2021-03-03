@@ -16,6 +16,13 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses without whitespace skipping.
+
+\ingroup fcpptparse
+
+Calls #fcppt::parse::phrase_parse with #fcppt::parse::skipper::epsilon.
+*/
 template <typename Ch, typename Parser>
 [[nodiscard]] inline fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 parse(Parser const &_parser, fcppt::parse::basic_stream<Ch> &_input)

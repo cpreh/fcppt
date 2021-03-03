@@ -24,6 +24,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Ignores the result of a parser.
+\ingroup fcpptparse
+
+If the parser p returns s on success, then <code>ignore{s}</code> returns fcppt::unit.
+Errors returned by p remain unchanged.
+*/
 template <typename Parser>
 class ignore : private fcppt::parse::tag
 {

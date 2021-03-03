@@ -15,6 +15,11 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Checks if a type is a parser.
+\ingroup fcpptparse
+A type is a parser if and only if it derives from #fcppt::parse::tag.
+*/
 template <typename Type>
 using is_parser = std::is_base_of<fcppt::parse::tag, Type>;
 

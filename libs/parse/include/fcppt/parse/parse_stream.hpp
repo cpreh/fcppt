@@ -18,6 +18,13 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parses a <code>std::basic_istream</code> without whitespace skipping.
+
+\ingroup fcpptparse
+
+Calls #fcppt::parse::phrase_parse_stream with #fcppt::parse::skipper::epsilon.
+*/
 template <typename Ch, typename Parser, typename Skipper>
 [[nodiscard]] inline fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 parse_stream(Parser const &_parser, std::basic_istream<Ch> &_input)

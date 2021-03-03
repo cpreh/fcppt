@@ -16,6 +16,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The line type of a position.
+\ingroup fcpptparse
+*/
 FCPPT_MAKE_STRONG_TYPEDEF(std::uint64_t, line);
 
 }

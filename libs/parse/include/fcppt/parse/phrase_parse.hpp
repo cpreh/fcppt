@@ -21,21 +21,32 @@
 #include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 namespace parse
 {
-template <typename Ch, typename Parser, typename Skipper>
+/**
+\brief The basic parse function.
+\ingroup fcpptparse
+
+First, the skipper \a _skipper is called.
+If this succeeds, then the result of parsing \a _input with \a _parser and \a _skipper is returned.
+This function also catches all exceptions produced by \a _input and returns them as an error.
+*/
+template <
+    typename Ch,
+    typename Parser,
+    typename Skipper,
+    typename = std::enable_if_t<std::conjunction_v<
+        fcppt::parse::is_parser<Parser>,
+        fcppt::parse::skipper::is_skipper<Skipper>>>>
 [[nodiscard]] inline fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 phrase_parse(Parser const &_parser, fcppt::parse::basic_stream<Ch> &_input, Skipper const &_skipper)
 try
 {
-  static_assert(fcppt::parse::is_parser<Parser>::value);
-
-  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
-
   return fcppt::either::bind(
       fcppt::parse::skipper::run(_skipper, fcppt::make_ref(_input)),
       [&_parser, &_input, &_skipper](fcppt::unit const &) {
@@ -47,7 +58,6 @@ catch (fcppt::parse::detail::exception<Ch> const &_error)
   return fcppt::either::make_failure<fcppt::parse::result_of<Parser>>(fcppt::parse::error<Ch>{
       std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Parsing failed: ")} + _error.what()});
 }
-
 }
 }
 

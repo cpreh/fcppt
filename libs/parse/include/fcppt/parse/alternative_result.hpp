@@ -30,7 +30,7 @@ if T is not a variant already, or more formally:
 <li>If T is not an #fcppt::variant::object, then <code>V<T> = fcppt::variant::object<T></code>.</li>
 </ul>
 Let <code>variant<L_1,...,L_n></code> and <code>variant<R_1,...,R_m></code>
-be the results of applying V to Left's and Right's result types.
+be the results of applying V to \a Left and \a Right.
 <ul>
 <li>If n+m=1 and m=0, then <code>alternative_result<Left,Right></code> is L_1.</li>
 <li>If n+m=1 and n=0, then <code>alternative_result<Left,Right></code> is R_1.</li>

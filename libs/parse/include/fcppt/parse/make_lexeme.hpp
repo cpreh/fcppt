@@ -16,6 +16,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::lexeme parser.
+\ingroup fcpptparse
+*/
 template <typename Parser>
 fcppt::parse::lexeme<fcppt::type_traits::remove_cv_ref_t<Parser>> make_lexeme(Parser &&_parser)
 {

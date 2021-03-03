@@ -14,6 +14,9 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\ingroup fcpptparse
+*/
 using literal = fcppt::parse::skipper::basic_literal<char>;
 
 }

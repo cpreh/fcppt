@@ -18,13 +18,17 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Creates an #fcppt::parse::alternative parser.
+\ingroup fcpptparse
+*/
 template <
     typename Left,
     typename Right,
     typename = std::enable_if_t<std::conjunction_v<
         fcppt::parse::is_valid_argument<Left>,
         fcppt::parse::is_valid_argument<Right>>>>
-fcppt::parse::alternative<
+inline fcppt::parse::alternative<
     fcppt::type_traits::remove_cv_ref_t<Left>,
     fcppt::type_traits::remove_cv_ref_t<Right>>
 operator|(Left &&_left, Right &&_right)
@@ -34,7 +38,6 @@ operator|(Left &&_left, Right &&_right)
       fcppt::type_traits::remove_cv_ref_t<Right>>{
       std::forward<Left>(_left), std::forward<Right>(_right)};
 }
-
 }
 }
 

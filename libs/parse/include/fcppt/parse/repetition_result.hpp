@@ -17,11 +17,20 @@ namespace fcppt
 {
 namespace parse
 {
-template <typename Result>
+/**
+\brief The result type of a repetition parser.
+
+\ingroup fcpptparse
+
+If \a Type is a character type (see #fcppt::parse::is_char),
+then the result is <code>std::basic_string<Type></code>.
+Otherwise, it is <code>std::vector<Type></code>.
+*/
+template <typename Type>
 using repetition_result = std::conditional_t<
-    fcppt::parse::is_char<Result>::value,
-    std::basic_string<Result>,
-    std::vector<Result>>;
+    fcppt::parse::is_char<Type>::value,
+    std::basic_string<Type>,
+    std::vector<Type>>;
 
 }
 }

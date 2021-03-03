@@ -26,16 +26,17 @@ FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
-\brief Tries two parsers in succession. Uses the result of the first one that does not fail.
+\brief Tries the left parser, and if that fails also the right parser. Uses the result of the first one that does not fail.
 
 \ingroup fcpptparse
 
-This parser first saves the current position <code>p</code>.
-Then, it tries the parser \a Left. If \a Left succeeds then its result is returned.
-If \a Left returns a fatal error then this error is returned.
-Otherwise, it backtracks to position <code>p</code> and returns the result of the parser \a Right.
+Let <code>l</code> and <code>r</code> be parsers and <code>al = alternative{l,r}</code>.
+First, <code>al</code> saves the current position <code>pos</code>.
+Then, <code>al</code> tries the parser <code>l</code>. If it succeeds, then its result is returned.
+If it returns a fatal error then this error is returned.
+Otherwise, <code>al</code> backtracks to <code>pos</code> and returns the result of <code>r</code>.
 
-See #fcppt::parse::alternative_result on this parser's result type.
+See #fcppt::parse::alternative_result for this parser's result type.
 */
 template <typename Left, typename Right>
 class alternative : private fcppt::parse::tag

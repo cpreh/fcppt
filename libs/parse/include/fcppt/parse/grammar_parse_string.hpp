@@ -18,6 +18,10 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief Parse a string using a grammar.
+\ingroup fcpptparse
+*/
 template <typename Result, typename Ch, typename Skipper>
 fcppt::parse::result<Ch, Result> grammar_parse_string(
     std::basic_string<Ch> &&_string, fcppt::parse::grammar<Result, Ch, Skipper> const &_grammar)

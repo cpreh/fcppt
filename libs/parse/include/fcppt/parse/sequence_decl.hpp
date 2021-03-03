@@ -25,6 +25,18 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Tries two parsers in succession. Produces a tuple of both results if both parsers do not fail.
+\ingroup fcpptparse
+
+Let <code>l</code> and <code>r</code> be parsers and <code>seq = sequence{l,r}</code>.
+First, the skipper is run. Then, <code>seq</code> tries the parser <code>l</code>.
+If it succeeds, then the skipper is run again. After that, <code>seq</code> also tries <code>r</code>.
+If <code>r</code> also succeeds, then the tuple of both results is returned.
+Otherwise, the first error is returned.
+
+See #fcppt::parse::sequence_result for this parser's result type.
+*/
 template <typename Left, typename Right>
 class sequence : private fcppt::parse::tag
 {

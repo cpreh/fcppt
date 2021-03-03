@@ -15,6 +15,12 @@ namespace fcppt
 {
 namespace parse
 {
+
+/**
+\brief The dereferenced type of a parser.
+\ingroup fcpptparse
+\see fcppt::deref_type
+*/
 template <typename Parser>
 using deref_type = fcppt::type_traits::remove_cv_ref_t<fcppt::deref_type<Parser const>>;
 

@@ -13,6 +13,11 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The char set of spaces.
+\ingroup fcpptparse
+Returns the set containing the whitespace, newline and tab characters.
+*/
 template <typename Ch>
 inline fcppt::parse::basic_char_set_container<Ch> space_set()
 {

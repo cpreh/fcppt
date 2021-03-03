@@ -14,6 +14,11 @@ namespace fcppt
 {
 namespace parse
 {
+/**
+\brief The character set type.
+
+\ingroup fcpptparse
+*/
 template <typename Ch>
 using basic_char_set_container = std::unordered_set<Ch>;
 

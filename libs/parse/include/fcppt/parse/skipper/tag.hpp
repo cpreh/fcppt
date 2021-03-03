@@ -12,6 +12,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief The tag skippers derive from.
+\ingroup fcpptparse
+*/
 struct tag
 {
 };

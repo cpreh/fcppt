@@ -25,6 +25,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
+/**
+\brief Tries two skippers in succession.
+\ingroup fcpptparse
+
+First runs the skipper \a Left. If that fails, its error is returned.
+Otherwise, runs the skipper \a Right and returns its result.
+*/
 template <typename Left, typename Right>
 class sequence : private fcppt::parse::skipper::tag
 {

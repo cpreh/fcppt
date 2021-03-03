@@ -14,6 +14,10 @@ namespace parse
 {
 namespace skipper
 {
+/**
+\brief The skipper <code>basic_space<char></code>.
+\ingroup fcpptparse
+*/
 inline auto space() { return fcppt::parse::skipper::basic_space<char>(); }
 
 }
