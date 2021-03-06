@@ -9,10 +9,8 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/unit.hpp>
+#include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
-#include <fcppt/either/monad.hpp>
-#include <fcppt/monad/chain.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/digits.hpp>
 #include <fcppt/parse/error.hpp>
@@ -21,7 +19,6 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/uint_decl.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
-#include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -37,16 +34,16 @@ fcppt::parse::uint<Type>::parse(
 {
   auto const parser{fcppt::parse::make_lexeme(+fcppt::parse::digits<Ch>())};
 
-  return fcppt::monad::chain(
-      fcppt::parse::skipper::run(_skipper, _state),
-      [&parser, &_state, &_skipper](fcppt::unit) { return parser.parse(_state, _skipper); },
+  return fcppt::either::bind(
+      parser.parse(_state, _skipper),
       [](fcppt::parse::result_of<decltype(parser)> const &_result) {
         return fcppt::either::from_optional(fcppt::extract_from_string<Type>(_result), [&_result] {
           return fcppt::parse::error<Ch>{
-              std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Failed to parse unsigned integer from ")} +
+              std::basic_string<Ch>{
+                  FCPPT_STRING_LITERAL(Ch, "Failed to parse unsigned integer from ")} +
               _result};
         });
-	  });
+      });
 }
 
 #endif

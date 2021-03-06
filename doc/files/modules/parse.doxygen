@@ -11,6 +11,10 @@
 
 <ul>
 	<li>\ref fcpptparse_introduction</li>
+	<li>\ref fcpptparse_skipping</li>
+	<li>\ref fcpptparse_recursive</li>
+	<li>\ref fcpptparse_overview</li>
+	<li>\ref fcpptparse_definition</li>
 </ul>
 
 </td>
@@ -35,7 +39,7 @@ Its result type is a variant of L's and R's result types.</li>
 <li>#fcppt::parse::repetition, which gets a single parser \em P and tries it until it fails.
 Its result type is a vector of P's result type.</li>
 <li>#fcppt::parse::sequence, which gets two parsers \em L and \em R. It first tries L and if that succeeds also R.
-Its result type is a tuple L's and R's result types.</li>
+Its result type is a tuple of L's and R's result types.</li>
 </ul>
 
 Let us consider the following example.
@@ -56,9 +60,439 @@ To recognize an arbitrary string of digits, we define the following parser:
 \snippet parse/main.cpp parser_digit_string
 The <code>operator*</code> creates an #fcppt::parse::repetition out of its argument.
 Its result type is <code>vector<digit></code>.
-The #fcppt::parse::parse_string function takes a parser <code>P</code> and a string and returns an #fcppt::parse::result, which is an #fcppt::either::object of #fcppt::parse::error and P's result type.
+The #fcppt::parse::parse_string function takes a parser <code>P</code> and a string and returns an #fcppt::parse::result, which is an #fcppt::either::object of #fcppt::parse::error and <code>P</code>'s result type.
 We can then inspect this either by using #fcppt::either::match.
 \snippet parse/main.cpp parser_example
+
+\section fcpptparse_skipping Whitespace Skipping
+
+A lot of languages are not whitespace-sensitive, which means that whitespaces can be added in a lot of places.
+For example, in JSON, we can write <code>[1,2]</code> or <code>[1, 2]</code>, which both result in an array with elements 1 and 2.
+Here, we use the notaiton of a \em Skipper to achieve this behaviour.
+A skipper is simpler than a parser in the sense that it never produces results, it only consumes input.
+Skippers are run in very specific places:
+<ul>
+<li>#fcppt::parse::phrase_parse (or the string or stream variant of this function) runs the skipper at the start.</li>
+<li><code>fcppt::parse::sequence{l,r}</code> runs the skipper after running <code>l</code> and before running <code>r</code>.</li>
+<li><code>fcppt::parse::repetition{p}</code> runs the skipper after reach successful parse of <code>p</code>.</li>
+</ul>
+Whitespace skipping can be disabled using #fcppt::parse::lexeme.
+Consider the following example:
+
+TODO
+
+\section fcpptparse_recursive Recursive Parsers
+
+Parsers that are (mutually) recursive require special care. TODO...
+
+\section fcpptparse_overview Parser and Skipper Overview
+
+\subsection fcpptparse_overview_parsers Parsers
+
+The following tables gives a quick overview over all available parsers.
+In the type column, we write that a parser P has type <code>(T_1,...,T_n) -> U</code>,
+which means that if P is constructed from parsers that produce <code>T_1, ..., T_n</code>,
+then P produces U.
+
+<table>
+<tr>
+<th>
+Parser
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::alternative
+</td>
+<td>
+<code>(L,R) -> fcppt::parse::alternative_result<L,R></code>
+</td>
+<td>
+Returns the result of the first matching parser.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::as_struct
+</td>
+<td>
+<code>fcppt::tuple::object<T_1,...,T_n> -> struct { T_1 t_1; ... ; T_n t_n }</code>
+</td>
+<td>
+Converts a tuple to a struct.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::basic_char, #fcppt::parse::char_
+</td>
+<td>
+<code>Char</code>
+</td>
+<td>
+Parses any character.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::basic_char_set, #fcppt::parse::char_set
+</td>
+<td>
+<code>Char</code>
+</td>
+<td>
+Parses a set of characters.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::basic_literal, #fcppt::parse::literal
+</td>
+<td>
+<code>fcppt::unit</code>
+</td>
+<td>
+Parses a specific character.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::basic_string, #fcppt::parse::string
+</td>
+<td>
+<code>fcppt::unit</code>
+</td>
+<td>
+Parses a specific string.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::complement
+</td>
+<td>
+<code>fcppt::unit -> fcppt::unit</code>
+</td>
+<td>
+Complements a #fcppt::parse::basic_char_set parser.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::construct
+</td>
+<td>
+<code>T -> U</code>
+</td>
+<td>
+Constructs <code>U</code> from <code>T</code>.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::convert
+</td>
+<td>
+<code>T -> U</code>
+</td>
+<td>
+Converts <code>T</code> to <code>U</code> using a function.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::convert_const
+</td>
+<td>
+<code>fcppt::unit -> U</code>
+</td>
+<td>
+Converts to <code>U</code>.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::convert_if
+</td>
+<td>
+<code>T -> U</code>
+</td>
+<td>
+Converts <code>T</code> to <code>U</code> using a function. Can fail.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::epsilon
+</td>
+<td>
+<code>fcppt::unit</code>
+</td>
+<td>
+Parses the empty string.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::fail
+</td>
+<td>
+<code>fcppt::unit</code>
+</td>
+<td>
+Always fails.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::float_
+</td>
+<td>
+<code>Float</code>
+</td>
+<td>
+Parses floats.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::ignore
+</td>
+<td>
+<code>T -> fcppt::unit</code>
+</td>
+<td>
+Ignores a result.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::int_
+</td>
+<td>
+<code>Signed Int</code>
+</td>
+<td>
+Parses signed integers.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::lexeme
+</td>
+<td>
+<code>T -> T</code>
+</td>
+<td>
+Disables skipping.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::list
+</td>
+<td>
+<code>(fcppt::unit, T, fcppt::unit, fcppt::unit) -> std::vector<T></code>
+</td>
+<td>
+Parses a list of delimited values with opening and closing parentheses.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::named
+</td>
+<td>
+<code>T -> T</code>
+</td>
+<td>
+Gives a parser a name, improving error messages.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::not_
+</td>
+<td>
+<code>fcppt::unit -> fcppt::unit</code>
+</td>
+<td>
+Reverses a parser.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::optional
+</td>
+<td>
+<code>T -> fcppt::optional::object<T></code>
+</td>
+<td>
+Creates a parser that may fail.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::recursive
+</td>
+<td>
+<code>T -> fcppt::recursive<T></code>
+</td>
+<td>
+Wraps a type in #fcppt::recursive.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::repetition
+</td>
+<td>
+<code>T -> fcppt::parse::repetition_result<T></code>
+</td>
+<td>
+Repeats a parser as long as possible.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::repetition_plus
+</td>
+<td>
+<code>T -> fcppt::parse::repetition_result<T></code>
+</td>
+<td>
+Repeats a parser as long as possible.
+Only accepts nonempty results.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::separator
+</td>
+<td>
+<code>(T,fcppt::unit) -> std::vector<T></code>
+</td>
+<td>
+Parses a list of delimited values.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::sequence
+</td>
+<td>
+<code>(L,R) -> fcppt::parse::sequence_result<L,R></code>
+</td>
+<td>
+Uses two parsers in succession.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::uint
+</td>
+<td>
+<code>Unsigned Int</code>
+</td>
+<td>
+Parses unsigned integers.
+</td>
+</tr>
+
+</table>
+
+\subsection fcpptparse_overview_skippers Skippers
+
+The following table shows a list of available skippers.
+<table>
+<tr>
+<th>
+Skipper
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::skipper::basic_char_set, #fcppt::parse::skipper::char_set
+</td>
+<td>
+Skips a set of characters.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::skipper::basic_literal, #fcppt::parse::skipper::literal
+</td>
+<td>
+Skips a specific character.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::skipper::epsilon
+</td>
+<td>
+Skips nothing.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::skipper::repetition
+</td>
+<td>
+Repeats a skipper as long as possible.
+</td>
+</tr>
+
+<tr>
+<td>
+#fcppt::parse::skipper::sequence
+</td>
+<td>
+Runs two skippers in succession.
+</td>
+</tr>
+
+</table>
 
 \section fcpptparse_definition Parser definition
 
@@ -81,6 +515,20 @@ parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const
 </li>
 </ul>
 
+A skipper is an object with the following properties:
+<ul>
+<li>
+It inherits from #fcppt::parse::skipper::tag.
+</li>
+<li>
+It has a member function
+\code
+template <typename Ch>
+fcppt::parse::skipper::result<Ch>
+skip(fcppt::reference<fcppt::parse::basic_stream<Ch>>) const;
+\endcode
+</li>
+</ul>
 */
 
 namespace fcppt

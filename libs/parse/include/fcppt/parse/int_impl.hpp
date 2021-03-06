@@ -10,11 +10,9 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/unit.hpp>
+#include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/either/monad.hpp>
-#include <fcppt/monad/chain.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/digits.hpp>
 #include <fcppt/parse/error.hpp>
@@ -26,7 +24,6 @@
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
-#include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -45,9 +42,8 @@ fcppt::parse::int_<Type>::parse(
       -fcppt::parse::make_literal(FCPPT_CHAR_LITERAL(Ch, '-')) >>
       +fcppt::parse::digits<Ch>())};
 
-  return fcppt::monad::chain(
-      fcppt::parse::skipper::run(_skipper, _state),
-      [&parser, &_state, &_skipper](fcppt::unit) { return parser.parse(_state, _skipper); },
+  return fcppt::either::bind(
+      parser.parse(_state, _skipper),
       [](fcppt::parse::result_of<decltype(parser)> const &_result) {
         return fcppt::either::map(
             fcppt::either::from_optional(
