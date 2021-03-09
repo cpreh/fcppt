@@ -78,8 +78,15 @@ Skippers are run in very specific places:
 </ul>
 Whitespace skipping can be disabled using #fcppt::parse::lexeme.
 Consider the following example:
-
-TODO
+We declare a parser that parses two unsigned ints in succession.
+\snippet parse/skip.cpp parse_uint
+Without whitespace skipping, this parser can never succeed, since the first uint parser will always consume as many digits as it can, leaving nothing for the second uint parser.
+In the following example, the first uint parser reads <code>10</code>, stops at the space character, and then the second parser fails.
+\snippet parse/skip.cpp parse_noskip
+However, if we use whitespace skipping, then the first uint parser reads <code>10</code>, stops at the first whitespace, then the sequence (<code>>></code>) parser runs the skipper,
+which consumes the space character, and then the second uint parser reads <code>20</code>.
+\snippet parse/skip.cpp parse_skip
+The skipper used here consumes as many space characters as possible.
 
 \section fcpptparse_recursive Recursive Parsers
 

@@ -18,3 +18,9 @@ add_fcppt_parse_example(
 	LINK_LIBS
 		${fcppt_core_TARGET}
 )
+
+add_fcppt_parse_example(
+	skip
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
