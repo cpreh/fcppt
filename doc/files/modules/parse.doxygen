@@ -83,14 +83,43 @@ We declare a parser that parses two unsigned ints in succession.
 Without whitespace skipping, this parser can never succeed, since the first uint parser will always consume as many digits as it can, leaving nothing for the second uint parser.
 In the following example, the first uint parser reads <code>10</code>, stops at the space character, and then the second parser fails.
 \snippet parse/skip.cpp parse_noskip
-However, if we use whitespace skipping, then the first uint parser reads <code>10</code>, stops at the first whitespace, then the sequence (<code>>></code>) parser runs the skipper,
+However, if we use whitespace skipping, then the first uint parser reads <code>10</code>, stops at the space character, then the sequence (<code>>></code>) parser runs the skipper,
 which consumes the space character, and then the second uint parser reads <code>20</code>.
+The skipper we use here consumes as many space characters as possible.
 \snippet parse/skip.cpp parse_skip
-The skipper used here consumes as many space characters as possible.
+Note that the implementation of #fcppt::parse::parse runs #fcppt::parse::phrase_parse internally, using the skipper #fcppt::parse::skipper::epsilon, which does nothing.
 
 \section fcpptparse_recursive Recursive Parsers
 
-Parsers that are (mutually) recursive require special care. TODO...
+Consider a language where we want to parse lists of the form <code>{E_1, ..., E_n}</code>,
+where <code>E_1, ..., E_n</code> are of the form <code>name = L</code> (where we allow names to consist of the characters a, b an c) and <code>L</code> is again a list.
+First, we need to create a C++ data type that represents such a list, which we declare as follows:
+\snippet parse/grammar.cpp list_decl
+We would like to create a parser for lists and a parser for entries.
+The parser for lists needs the parser for entries in its definition and vice versa.
+To deal with (mutually) recursive definitions, we do the following:
+<ul>
+<li>All parsers that mutually refer to each other must be elements of a class.
+In the constructor of the class, they can then use each other as references.
+This is similar to declaring nonterminals and their productions in a context-free grammar.
+</li>
+<li>The types of the parsers should not depend on their definitions, which would create an inifinitely large type.
+Therefore, we have to hide their exact types using #fcppt::parse::base.
+This in turn means that we have to commit to a specific character type and also a specific skipper type.
+</li>
+</ul>
+In our example, we declare the class as follows:
+\snippet parse/grammar.cpp grammar_decl
+First, #fcppt::parse::grammar is a helper class that the actual grammars derive from.
+It selects the result type produced by the start rule, the character type of the input and the skipper type that is being used.
+Here, we use #fcppt::parse::skipper::epsilon, which implies that no skipping is done.
+To actually implement the grammar, we have to define its constructor.
+Here, we have to pass a reference to one of our parsers to the base class, which defines the start nonterminal of the grammar.
+We also have to pass an implementation of the skipper type, which in this case simply is the epsilon skipper.
+\snippet parse/grammar.cpp grammar_impl
+To use the grammar for parsing, we call #fcppt::parse::grammar_parse_string.
+This internally uses #fcppt::parse::phrase_parse_string, passing the start symbol and the skipper of the grammar.
+\snippet parse/grammar.cpp parse
 
 \section fcpptparse_overview Parser and Skipper Overview
 

@@ -14,6 +14,12 @@ function(
 endfunction()
 
 add_fcppt_parse_example(
+	grammar
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_parse_example(
 	main
 	LINK_LIBS
 		${fcppt_core_TARGET}
