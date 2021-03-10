@@ -24,9 +24,8 @@ namespace fcppt
 template <typename Type>
 fcppt::optional::object<fcppt::unique_ptr<Type>> unique_ptr_from_std(std::unique_ptr<Type> &&_ptr)
 {
-  return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
-      fcppt::optional::make_if(
-          _ptr != nullptr, [&_ptr] { return fcppt::unique_ptr<Type>(std::move(_ptr)); });
+  return fcppt::optional::make_if(
+      _ptr != nullptr, [&_ptr] { return fcppt::unique_ptr<Type>(std::move(_ptr)); });
 }
 
 }

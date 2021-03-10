@@ -18,7 +18,7 @@ template <typename Array, typename Function, std::size_t... Ints>
 inline Array init(std::index_sequence<Ints...>, Function const &_function)
 {
   return Array{_function(std::integral_constant<std::size_t, Ints>{})...};
-} // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
+}
 
 }
 

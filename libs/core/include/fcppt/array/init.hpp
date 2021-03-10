@@ -33,9 +33,8 @@ template <
     typename = std::enable_if_t<fcppt::array::is_object<Array>::value>>
 inline Array init(Function const &_function)
 {
-  return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
-      fcppt::array::detail::init<Array>(
-          std::make_index_sequence<fcppt::array::size<Array>::value>{}, _function);
+  return fcppt::array::detail::init<Array>(
+      std::make_index_sequence<fcppt::array::size<Array>::value>{}, _function);
 }
 }
 

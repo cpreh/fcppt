@@ -29,12 +29,11 @@ fcppt::parse::result<Ch, typename fcppt::parse::convert<Parser, Result>::result_
 fcppt::parse::convert<Parser, Result>::parse(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-  return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
-      fcppt::either::map(
-          fcppt::parse::deref(this->parser_).parse(_state, _skipper),
-          [this](fcppt::parse::result_of<Parser> &&_result) {
-            return this->convert_(std::move(_result));
-          });
+  return fcppt::either::map(
+      fcppt::parse::deref(this->parser_).parse(_state, _skipper),
+      [this](fcppt::parse::result_of<Parser> &&_result) {
+        return this->convert_(std::move(_result));
+      });
 }
 
 #endif

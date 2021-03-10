@@ -39,10 +39,9 @@ inline auto map(Optional &&_source, Function const &_function) -> fcppt::optiona
   using result_type =
       fcppt::optional::object<std::remove_cv_t<std::result_of_t<Function(arg_type)>>>;
 
-  return // NOLINT(clang-analyzer-cplusplus.NewDeleteLeaks)
-      fcppt::optional::bind(std::forward<Optional>(_source), [&_function](arg_type _arg) {
-        return result_type(_function(std::forward<arg_type>(_arg)));
-      });
+  return fcppt::optional::bind(std::forward<Optional>(_source), [&_function](arg_type _arg) {
+    return result_type(_function(std::forward<arg_type>(_arg)));
+  });
 }
 
 }

@@ -15,12 +15,14 @@ if(
 	STREQUAL
 	""
 )
+	#"-clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
 	# "-fuchsia-trailing-return" complains about code like X<decltype(_param)>
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
 		"-bugprone-macro-parentheses"
 		"-cppcoreguidelines-macro-usage"
+		"-clang-analyzer-cplusplus.NewDeleteLeaks"
 		"-cert-dcl21-cpp"
 		"-fuchsia-overloaded-operator"
 		"-fuchsia-trailing-return"
