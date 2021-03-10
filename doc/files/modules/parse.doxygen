@@ -13,6 +13,7 @@
 	<li>\ref fcpptparse_introduction</li>
 	<li>\ref fcpptparse_skipping</li>
 	<li>\ref fcpptparse_recursive</li>
+	<li>\ref fcpptparse_fatal_errors</li>
 	<li>\ref fcpptparse_overview</li>
 	<li>\ref fcpptparse_definition</li>
 </ul>
@@ -120,6 +121,37 @@ We also have to pass an implementation of the skipper type, which in this case s
 To use the grammar for parsing, we call #fcppt::parse::grammar_parse_string.
 This internally uses #fcppt::parse::phrase_parse_string, passing the start symbol and the skipper of the grammar.
 \snippet parse/grammar.cpp parse
+
+\section fcpptparse_fatal_errors Fatal Errors
+
+The parser implementation makes use of so-called \em backtracking, which means that certain parsers are expected to fail,
+and if they do, the input stream is set to a previous position and another parser is tried instead.
+For example, the alternative parser <code>a | b</code> first tries <code>a</code> and then <code>b</code>.
+Suppose that <code>a</code> fails on the current input.
+Internally, the parser <code>a | b</code> first saves the current position <code>p</code>, runs <code>a</code> and after it fails,
+resets the position to <code>p</code> and runs <code>b</code>.
+However, depending on why <code>a</code> fails, we know that <code>b</code> cannot succeed.
+Consider the following example:
+\snippet parse/fatal.cpp parsers1
+The parser <code>a</code> fails if the input is <code>{]</code>, but still the parser <code>b</code> is tried
+even though it cannot succeed.
+This is fine in most cases, but in some this may lead to excessive backtracking.
+In addition, the parser <code>a | b</code> will produce an error message of the form
+<blockquote>
+{ Line 1:3: Expected }, got ] OR Line 1:2: Expected [, got { }.
+</blockquote>
+Since we know that <code>b</code> cannot succeed if <code>a</code> fails after reading <code>{</code>,
+we can make the part after <code>{</code> fatal.
+\snippet parse/fatal.cpp parsers2
+Then the parser <code>a | b</code> does not try <code>b</code>
+on input <code>{]</code>. Instead, it aborts immediately, and produces an error message of the form
+<blockquote>
+Line 1:3: Expected }, got ].
+</blockquote>
+\warning Consider fatal errors as an optimization both to parsing and to error messages.
+Be careful not to place fatal errors in the wrong place.
+For example, if we made the whole parser <code>a</code> fatal, then the parser <code>b</code> would never be tried!
+Using too many fatal errors can make parsers really hard to understand.
 
 \section fcpptparse_overview Parser and Skipper Overview
 
