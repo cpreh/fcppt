@@ -37,6 +37,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptparse
+	<p>
+	Added documentation.
+	</p>
+</li>
+
 <li>\ref fcpptstrongtypedef
 	<ul>
 	<li>Added <code>noexcept</code> and <code>constexpr</code>.</li>
