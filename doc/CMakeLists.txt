@@ -166,7 +166,10 @@ set(
 	examples/options/help.cpp
 	examples/options/simple.cpp
 	examples/output_tm.cpp
+	examples/parse/fatal.cpp
+	examples/parse/grammar.cpp
 	examples/parse/main.cpp
+	examples/parse/skip.cpp
 	examples/preprocessor/printing.cpp
 	examples/preprocessor/warning.cpp
 	examples/random/complex.cpp
@@ -1116,6 +1119,7 @@ set(
 	libs/core/include/fcppt/metal/interval.hpp
 	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_invocable.hpp
+	libs/core/include/fcppt/metal/is_last_index.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
 	libs/core/include/fcppt/metal/max_value.hpp

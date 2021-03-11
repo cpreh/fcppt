@@ -6,10 +6,12 @@
 #ifndef FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 #define FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/not.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/metal/is_last_index.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_vector.hpp>
@@ -17,6 +19,7 @@
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <metal.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -35,17 +38,20 @@ std::basic_ostream<Ch, Traits> &operator<<(
 {
   _stream << _stream.widen('{');
 
-  fcppt::algorithm::loop(
-      fcppt::record::element_vector<fcppt::record::object<Elements...>>{},
-      [&_stream, &_record](auto const _element) {
-        FCPPT_USE(_element);
+  using element_list = fcppt::record::element_vector<fcppt::record::object<Elements...>>;
+  fcppt::algorithm::loop(::metal::indices<element_list>{}, [&_stream, &_record](auto const _index) {
+    FCPPT_USE(_index);
+    using index = fcppt::tag_type<decltype(_index)>;
 
-        using label = fcppt::record::element_to_label<fcppt::tag_type<decltype(_element)>>;
+    using label = fcppt::record::element_to_label<::metal::at<element_list, index>>;
 
-        _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
-                << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record)
-                << fcppt::io::widen_string(", ");
-      });
+    _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
+            << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record);
+    if constexpr (fcppt::not_(fcppt::metal::is_last_index<element_list, index>::value))
+    {
+      _stream << fcppt::io::widen_string(", ");
+    }
+  });
 
   return _stream << _stream.widen('}');
 }

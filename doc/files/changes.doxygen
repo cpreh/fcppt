@@ -25,6 +25,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmetal
+	<ul>
+	<li>Added #fcppt::metal::is_last_index.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmathvector
 	<ul>
 	<li>Allow movable types.</li>
@@ -60,27 +66,32 @@
 \subsection changes_removed_functionality_to_370 Removed functionality
 
 <ul>
+
 <li>fcpptcontainerarray
 	<p>
 	This has been removed in favor of \ref fcpptarray.
 	</p>
 </li>
+
 <li>fcpptcontainertuple
 	<p>
 	This has been removed in favor of \ref fcppttuple.
 	</p>
 </li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Removed <code>fcppt::homogenous_pair</code>.</li>
 	</ul>
 </li>
+
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Removed <code>fcppt::type_traits::is_std_array</code>.</li>
 	<li>Removed <code>fcppt::type_traits::is_std_tuple</code>.</li>
 	</ul>
 </li>
+
 </ul>
 
 \section changes_changes_to_360 3.6.0

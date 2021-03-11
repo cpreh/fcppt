@@ -900,6 +900,7 @@ set(
 	libs/core/include/fcppt/metal/interval.hpp
 	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_invocable.hpp
+	libs/core/include/fcppt/metal/is_last_index.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
 	libs/core/include/fcppt/metal/max_value.hpp

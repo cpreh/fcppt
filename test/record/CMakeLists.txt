@@ -114,5 +114,11 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	output
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_record_test(
 	permute
 )
