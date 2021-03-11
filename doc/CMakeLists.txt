@@ -295,6 +295,7 @@ set(
 	libs/core/include/fcppt/array/object_decl.hpp
 	libs/core/include/fcppt/array/object_fwd.hpp
 	libs/core/include/fcppt/array/object_impl.hpp
+	libs/core/include/fcppt/array/output.hpp
 	libs/core/include/fcppt/array/push_back.hpp
 	libs/core/include/fcppt/array/size.hpp
 	libs/core/include/fcppt/array/value_type.hpp
@@ -1119,7 +1120,6 @@ set(
 	libs/core/include/fcppt/metal/interval.hpp
 	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_invocable.hpp
-	libs/core/include/fcppt/metal/is_last_index.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
 	libs/core/include/fcppt/metal/max_value.hpp

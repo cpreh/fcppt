@@ -59,6 +59,12 @@ add_fcppt_array_test(
 )
 
 add_fcppt_array_test(
+	output
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_array_test(
 	push_back
 	LINK_LIBS
 		fcppt_catch_interface

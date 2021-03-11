@@ -3,16 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/not.hpp>
-#include <fcppt/metal/is_last_index.hpp>
+#include <fcppt/output_to_std_string.hpp>
+#include <fcppt/array/object_impl.hpp>
+#include <fcppt/array/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
+#include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-int main()
+TEST_CASE("array output", "[array]")
 {
-  using list = metal::list<int, bool>;
-
-  static_assert(fcppt::not_(fcppt::metal::is_last_index<list,metal::number<0>>::value));
-  static_assert(fcppt::metal::is_last_index<list,metal::number<1>>::value);
+  CHECK(fcppt::output_to_std_string(fcppt::array::object<int, 2U>{5, 10}) == "[5,10]");
 }

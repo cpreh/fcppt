@@ -6,12 +6,10 @@
 #ifndef FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 #define FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/not.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
-#include <fcppt/metal/is_last_index.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_vector.hpp>
@@ -47,7 +45,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
 
     _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
             << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record);
-    if constexpr (fcppt::not_(fcppt::metal::is_last_index<element_list, index>::value))
+    if constexpr (index::value != ::metal::size<element_list>::value - ::metal::int_{1})
     {
       _stream << fcppt::io::widen_string(", ");
     }

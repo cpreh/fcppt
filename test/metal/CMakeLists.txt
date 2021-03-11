@@ -89,11 +89,6 @@ add_fcppt_metal_test(
 )
 
 add_fcppt_metal_test(
-	is_last_index
-	NO_CODE
-)
-
-add_fcppt_metal_test(
 	maps_equal
 	NO_CODE
 )
