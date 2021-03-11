@@ -25,12 +25,6 @@
 	</ul>
 </li>
 
-<li>\ref fcpptmetal
-	<ul>
-	<li>Added #fcppt::metal::is_last_index.</li>
-	</ul>
-</li>
-
 <li>\ref fcpptmathvector
 	<ul>
 	<li>Allow movable types.</li>

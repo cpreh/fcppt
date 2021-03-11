@@ -1507,6 +1507,7 @@ set(
 	libs/core/include/fcppt/tuple/object_decl.hpp
 	libs/core/include/fcppt/tuple/object_fwd.hpp
 	libs/core/include/fcppt/tuple/object_impl.hpp
+	libs/core/include/fcppt/tuple/output.hpp
 	libs/core/include/fcppt/tuple/push_back.hpp
 	libs/core/include/fcppt/tuple/push_back_result.hpp
 	libs/core/include/fcppt/tuple/size.hpp
