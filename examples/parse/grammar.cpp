@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_cref.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/recursive.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/parse/char_set.hpp>
@@ -35,8 +36,10 @@ struct list { std::vector<entry> elements; };
 using grammar_base = fcppt::parse::grammar<list, char, fcppt::parse::skipper::epsilon>;
 class grammar : public grammar_base
 {
+  FCPPT_NONMOVABLE(grammar);
 public:
   grammar();
+  ~grammar() = default;
 
 private:
   grammar_base::base_type<list> list_p;
