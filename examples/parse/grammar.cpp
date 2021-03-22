@@ -11,11 +11,11 @@
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/error_output.hpp>
+#include <fcppt/parse/grammar.hpp>
 #include <fcppt/parse/grammar_parse_string.hpp>
 #include <fcppt/parse/list.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_recursive.hpp>
-#include <fcppt/parse/grammar.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
