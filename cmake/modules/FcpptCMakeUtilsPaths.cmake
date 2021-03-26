@@ -42,6 +42,7 @@ foreach(
 	GNUInstallDirs_get_absolute_install_dir(
 		FCPPT_UTILS_INSTALL_FULL_${curdir}
 		FCPPT_UTILS_INSTALL_${curdir}
+		${curdir}
 	)
 endforeach()
 
