@@ -93,7 +93,7 @@ Note that the implementation of #fcppt::parse::parse runs #fcppt::parse::phrase_
 \section fcpptparse_recursive Recursive Parsers
 
 Consider a language where we want to parse lists of the form <code>{E_1, ..., E_n}</code>,
-where <code>E_1, ..., E_n</code> are of the form <code>name = L</code> (where we allow names to consist of the characters a, b an c) and <code>L</code> is again a list.
+where <code>E_1, ..., E_n</code> are of the form <code>name = L</code> (where we allow names to consist of the characters a, b and c) and <code>L</code> is again a list.
 First, we need to create a C++ data type that represents such a list, which we declare as follows:
 \snippet parse/grammar.cpp list_decl
 We would like to create a parser for lists and a parser for entries.
