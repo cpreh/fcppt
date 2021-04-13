@@ -21,8 +21,10 @@ struct apply_result_impl;
 template <typename Function, std::size_t... Indices, typename... Tuples>
 struct apply_result_impl<Function, std::index_sequence<Indices...>, Tuples...>
 {
-  using type =
-      fcppt::tuple::object<fcppt::tuple::detail::apply_result_at<Function, Indices, Tuples...>...>;
+  template<std::size_t Index>
+  using apply_one = fcppt::tuple::detail::apply_result_at<Function, Index, Tuples...>;
+
+  using type = fcppt::tuple::object<apply_one<Indices>...>;
 };
 
 }
