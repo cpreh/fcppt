@@ -20,6 +20,7 @@ if(
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
+		"-altera-struct-pack-align"
 		"-bugprone-macro-parentheses"
 		"-cppcoreguidelines-macro-usage"
 		"-clang-analyzer-cplusplus.NewDeleteLeaks"
