@@ -17,6 +17,7 @@ if(
 )
 	#"-clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
 	# "-fuchsia-trailing-return" complains about code like X<decltype(_param)>
+	# "-readability-function-cognitive-complexity" triggers for almost every Catch2 test case
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
@@ -38,6 +39,7 @@ if(
 		"-misc-no-recursion"
 		"-modernize-use-default-member-init"
 		"-modernize-use-trailing-return-type"
+		"-readability-function-cognitive-complexity"
 		"-readability-inconsistent-declaration-parameter-name"
 		"-readability-named-parameter"
 		"-readability-redundant-member-init"
