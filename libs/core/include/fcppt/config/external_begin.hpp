@@ -100,6 +100,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wweak-vtables)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-destructor-override)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
 #endif
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(12, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wcompound-token-split-by-space)
+#endif
 
 #else
 
