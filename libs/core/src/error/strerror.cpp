@@ -6,10 +6,10 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/error/strerror.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstring>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 fcppt::string fcppt::error::strerror(int const _errnum)
 {
-  return fcppt::from_std_string(std::strerror(_errnum));
+  return fcppt::from_std_string(std::error_code{_errnum, std::system_category()}.message());
 }
