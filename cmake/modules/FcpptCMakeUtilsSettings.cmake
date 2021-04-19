@@ -129,7 +129,6 @@ elseif(
 		/permissive-
 		/D_BIND_TO_CURRENT_VCLIBS_VERSION=1
 		/wd4435
-		/wd4996
 		/wd4061
 		/wd4350
 		/wd4371
@@ -145,9 +144,6 @@ elseif(
 		/wd4868
 		/wd5031
 	)
-
-	# /W4 warnings
-	#4996 - unsafe standard C++ functions
 
 	# /Wall warnings
 	#4061 - warning for not handled cases in switchs even with default
