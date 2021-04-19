@@ -8,8 +8,8 @@
 #include <fcppt/time/exception.hpp>
 #include <fcppt/time/localtime.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ctime>
 #include <time.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)
+#include <ctime>
 #include <fcppt/config/external_end.hpp>
 
 std::tm fcppt::time::localtime(std::time_t const _time)
