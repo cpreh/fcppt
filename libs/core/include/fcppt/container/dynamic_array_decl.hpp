@@ -9,6 +9,7 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/container/dynamic_array_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,11 +34,11 @@ class dynamic_array
   FCPPT_NONMOVABLE(dynamic_array);
 
 public:
-  using pointer = typename A::pointer;
+  using pointer = typename std::allocator_traits<A>::pointer;
 
-  using const_pointer = typename A::const_pointer;
+  using const_pointer = typename std::allocator_traits<A>::const_pointer;
 
-  using size_type = typename A::size_type;
+  using size_type = typename std::allocator_traits<A>::size_type;
 
   explicit dynamic_array(size_type);
 
