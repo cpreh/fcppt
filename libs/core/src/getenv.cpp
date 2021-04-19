@@ -18,7 +18,7 @@ fcppt::optional_std_string fcppt::getenv(std::string_view const &_val)
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4996)
-  char const *const ret{std::getenv(std::string{_val}.c_str())};
+  char const *const ret{std::getenv(std::string{_val}.c_str())}; // NOLINT(concurrency-mt-unsafe)
 FCPPT_PP_POP_WARNING
 
   return ret == nullptr ? fcppt::optional_std_string{}

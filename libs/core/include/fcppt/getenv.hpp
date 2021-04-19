@@ -15,9 +15,13 @@
 namespace fcppt
 {
 /**
-\brief Gets an optional value from the environment
+\brief Gets an optional value from the environment.
 
 \ingroup fcpptvarious
+
+\warning This function calls <code>std::getenv</code> which is not thread-safe.
+You must ensure that this function is not called concurrently with any function
+that modifies the environment.
 */
 FCPPT_DETAIL_SYMBOL
 fcppt::optional_std_string getenv(std::string_view const &);

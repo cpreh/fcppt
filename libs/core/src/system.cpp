@@ -31,7 +31,7 @@ fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)
 {
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
   int const result{
-      // NOLINTNEXTLINE(cert-env33-c)
+      // NOLINTNEXTLINE(cert-env33-c,concurrency-mt-unsafe)
       ::system(fcppt::optional::to_exception(fcppt::to_std_string(_command), [&_command] {
                  return fcppt::exception{
                      FCPPT_TEXT("Failed to convert command \"") + _command +

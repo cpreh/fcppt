@@ -13,9 +13,11 @@
 namespace fcppt
 {
 /**
-\brief Calls std::system.
+\brief Calls <code>std::system</code>.
 
 \ingroup fcpptstring
+
+\warning <code>std::system</code> may not be thread-safe because it may change signal settings.
 */
 FCPPT_DETAIL_SYMBOL
 fcppt::optional::object<int> system(fcppt::string const &);
