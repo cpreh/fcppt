@@ -1250,7 +1250,6 @@ set(
 	libs/core/include/fcppt/tag_fwd.hpp
 	libs/core/include/fcppt/tag_type.hpp
 	libs/core/include/fcppt/text.hpp
-	libs/core/include/fcppt/time/ctime.hpp
 	libs/core/include/fcppt/time/exception.hpp
 	libs/core/include/fcppt/time/exception_fwd.hpp
 	libs/core/include/fcppt/time/gmtime.hpp
@@ -1417,7 +1416,6 @@ set(
 	libs/core/src/narrow_locale.cpp
 	libs/core/src/string_conv_locale.cpp
 	libs/core/src/system.cpp
-	libs/core/src/time/ctime.cpp
 	libs/core/src/time/exception.cpp
 	libs/core/src/time/gmtime.cpp
 	libs/core/src/time/localtime.cpp
