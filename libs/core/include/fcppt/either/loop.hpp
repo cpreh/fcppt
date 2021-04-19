@@ -36,10 +36,10 @@ _loop.
 \tparam Loop A Function callable as void (success_type<R>), where R is the result of \a Next.
 */
 template <typename Next, typename Loop>
-[[nodiscard]] fcppt::either::failure_type<std::result_of_t<Next()>>
+[[nodiscard]] fcppt::either::failure_type<std::invoke_result_t<Next>>
 loop(Next const &_next, Loop const &_loop)
 {
-  using either_type = std::result_of_t<Next()>;
+  using either_type = std::invoke_result_t<Next>;
 
   using failure_type = fcppt::either::failure_type<either_type>;
 

@@ -35,7 +35,7 @@ moved iff \a _optional is an rvalue.
 \tparam Transform Must be a function of type <code>Ret (Optional::value_type)</code>
 */
 template <typename Optional, typename Default, typename Transform>
-std::result_of_t<Default()>
+std::invoke_result_t<Default>
 maybe(Optional &&_optional, Default const &_default, Transform const &_transform)
 {
   static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");

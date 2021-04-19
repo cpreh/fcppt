@@ -38,16 +38,16 @@ functions return failures <code>e_1,...,e_n</code> and the result is
 template <typename Functions>
 fcppt::either::object<
     std::vector<
-        fcppt::either::failure_type<std::result_of_t<fcppt::type_traits::value_type<Functions>()>>>,
-    fcppt::either::success_type<std::result_of_t<fcppt::type_traits::value_type<Functions>()>>>
+        fcppt::either::failure_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>,
+    fcppt::either::success_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>
 first_success(Functions const &_functions)
 {
   using failure_container = std::vector<
-      fcppt::either::failure_type<std::result_of_t<fcppt::type_traits::value_type<Functions>()>>>;
+      fcppt::either::failure_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>;
 
   using result_type = fcppt::either::object<
       failure_container,
-      fcppt::either::success_type<std::result_of_t<fcppt::type_traits::value_type<Functions>()>>>;
+      fcppt::either::success_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>;
 
   failure_container failures{};
 

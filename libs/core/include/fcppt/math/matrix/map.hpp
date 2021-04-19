@@ -31,11 +31,11 @@ template <
     fcppt::math::size_type C,
     typename S,
     typename Function>
-inline fcppt::math::matrix::static_<std::result_of_t<Function(T)>, R, C>
+inline fcppt::math::matrix::static_<std::invoke_result_t<Function,T>, R, C>
 map(fcppt::math::matrix::object<T, R, C, S> const &_value, Function const &_function)
 {
   return fcppt::math::detail::map<
-      fcppt::math::matrix::static_<std::result_of_t<Function(T)>, R, C>>(_value, _function);
+      fcppt::math::matrix::static_<std::invoke_result_t<Function,T>, R, C>>(_value, _function);
 }
 
 }

@@ -19,7 +19,7 @@
 namespace
 {
 template <typename Function, typename Param>
-using result_helper = std::result_of_t<Function(fcppt::record::element_to_type<Param>)>;
+using result_helper = std::invoke_result_t<Function,fcppt::record::element_to_type<Param>>;
 
 }
 

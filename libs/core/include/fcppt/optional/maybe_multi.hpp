@@ -26,14 +26,14 @@ A multi version of \ref fcppt::optional::maybe. Unfortunately, the variadic temp
 arguments must come last.
 */
 template <typename Default, typename Transform, typename... Optionals>
-std::result_of_t<Default()>
+std::invoke_result_t<Default>
 maybe_multi(Default const _default, Transform const _transform, Optionals &&..._optionals)
 {
   static_assert(
-      std::is_same<
+      std::is_same_v<
           decltype(_default()),
           decltype(
-              _transform(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>::value,
+              _transform(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>,
       "Default and Transform must return the same type");
 
   return fcppt::optional::detail::has_value_all(_optionals...)

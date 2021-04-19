@@ -30,13 +30,13 @@ template <
     typename S1,
     typename S2,
     typename Function>
-inline fcppt::math::vector::static_<std::result_of_t<Function(L, R)>, N> dim_map(
+inline fcppt::math::vector::static_<std::invoke_result_t<Function, L, R>, N> dim_map(
     fcppt::math::vector::object<L, N, S1> const &_left,
     fcppt::math::dim::object<R, N, S2> const &_right,
     Function const &_function)
 {
   return fcppt::math::detail::binary_map<
-      fcppt::math::vector::static_<std::result_of_t<Function(L, R)>, N>>(_left, _right, _function);
+      fcppt::math::vector::static_<std::invoke_result_t<Function, L, R>, N>>(_left, _right, _function);
 }
 
 }

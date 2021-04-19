@@ -32,12 +32,12 @@ namespace parse
 template <typename Parser, typename Convert>
 fcppt::parse::convert_if<
     fcppt::type_traits::value_type<fcppt::type_traits::value_type<fcppt::either::failure_type<
-        std::result_of_t<Convert(fcppt::parse::result_of<Parser> &&)>>>>,
+        std::invoke_result_t<Convert,fcppt::parse::result_of<Parser> &&>>>>,
     fcppt::type_traits::remove_cv_ref_t<Parser>,
-    fcppt::either::success_type<std::result_of_t<Convert(fcppt::parse::result_of<Parser> &&)>>>
+    fcppt::either::success_type<std::invoke_result_t<Convert,fcppt::parse::result_of<Parser> &&>>>
 make_convert_if(Parser &&_parser, Convert &&_convert)
 {
-  using result_type = std::result_of_t<Convert(fcppt::parse::result_of<Parser> &&)>;
+  using result_type = std::invoke_result_t<Convert,fcppt::parse::result_of<Parser> &&>;
 
   return fcppt::parse::convert_if<
       fcppt::type_traits::value_type<

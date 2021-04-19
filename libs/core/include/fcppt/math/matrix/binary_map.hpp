@@ -33,13 +33,13 @@ template <
     typename S1,
     typename S2,
     typename Function>
-inline fcppt::math::matrix::static_<std::result_of_t<Function(T1, T2)>, R, C> binary_map(
+inline fcppt::math::matrix::static_<std::invoke_result_t<Function,T1, T2>, R, C> binary_map(
     fcppt::math::matrix::object<T1, R, C, S1> const &_left,
     fcppt::math::matrix::object<T2, R, C, S2> const &_right,
     Function const &_function)
 {
   return fcppt::math::detail::binary_map<
-      fcppt::math::matrix::static_<std::result_of_t<Function(T1, T2)>, R, C>>(
+      fcppt::math::matrix::static_<std::invoke_result_t<Function, T1, T2>, R, C>>(
       _left, _right, _function);
 }
 

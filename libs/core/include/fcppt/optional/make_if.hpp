@@ -27,10 +27,10 @@ as an optional. Otherwise, the empty optional is returned.
 is the result type.
 */
 template <typename Function>
-inline fcppt::optional::object<std::result_of_t<Function()>>
+inline fcppt::optional::object<std::invoke_result_t<Function>>
 make_if(bool const _is_set, Function const &_function)
 {
-  using result_type = fcppt::optional::object<std::result_of_t<Function()>>;
+  using result_type = fcppt::optional::object<std::invoke_result_t<Function>>;
 
   return _is_set ? result_type{_function()} : result_type{};
 }

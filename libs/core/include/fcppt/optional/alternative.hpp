@@ -36,7 +36,7 @@ alternative(Optional &&_optional1, Function const &_optional2)
       "optional_alternative must return an optional");
 
   static_assert(
-      fcppt::optional::detail::check<std::result_of_t<Function()>>::value,
+      fcppt::optional::detail::check<std::invoke_result_t<Function>>::value,
       "Function must return an optional");
 
   return _optional1.has_value() ? std::forward<Optional>(_optional1) : _optional2();

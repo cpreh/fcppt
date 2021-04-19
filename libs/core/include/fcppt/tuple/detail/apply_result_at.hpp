@@ -16,7 +16,7 @@ namespace fcppt::tuple::detail
 {
 template <typename Function, std::size_t Index, typename... Tuples>
 using apply_result_at =
-    std::result_of_t<Function(decltype(fcppt::tuple::get<Index>(std::declval<Tuples>()))...)>;
+    std::invoke_result_t<Function,decltype(fcppt::tuple::get<Index>(std::declval<Tuples>()))...>;
 
 }
 

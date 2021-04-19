@@ -18,7 +18,7 @@ namespace record
 namespace detail
 {
 template <typename Function, typename Arg>
-using map_result = std::result_of_t<Function(fcppt::record::element_to_type<Arg>)>;
+using map_result = std::invoke_result_t<Function,fcppt::record::element_to_type<Arg>>;
 
 }
 }
