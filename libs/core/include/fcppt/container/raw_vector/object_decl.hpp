@@ -14,6 +14,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
 #include <iterator>
+#include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -46,17 +47,17 @@ public:
 
   using allocator_type = A;
 
-  using size_type = typename A::size_type;
+  using size_type = typename std::allocator_traits<A>::size_type;
 
-  using difference_type = typename A::difference_type;
+  using difference_type = typename std::allocator_traits<A>::difference_type;
 
-  using pointer = typename A::pointer;
+  using pointer = typename std::allocator_traits<A>::pointer;
 
-  using const_pointer = typename A::const_pointer;
+  using const_pointer = typename std::allocator_traits<A>::const_pointer;
 
-  using reference = typename A::reference;
+  using reference = T &;
 
-  using const_reference = typename A::const_reference;
+  using const_reference = T const &;
 
   using iterator = pointer;
 

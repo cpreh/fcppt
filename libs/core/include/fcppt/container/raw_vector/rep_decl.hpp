@@ -7,6 +7,9 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_DECL_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -27,7 +30,7 @@ template <typename A>
 class rep
 {
 public:
-  using pointer = typename A::pointer;
+  using pointer = typename std::allocator_traits<A>::pointer;
 
   rep(A const &, pointer first, pointer last, pointer cap) noexcept;
 

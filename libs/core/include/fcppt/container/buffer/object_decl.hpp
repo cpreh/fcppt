@@ -10,6 +10,7 @@
 #include <fcppt/container/buffer/object_fwd.hpp>
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,7 +34,7 @@ See \ref fcpptcontainerbuffer for more information.
 template <typename T, typename A>
 class object
 {
-  static_assert(std::is_pod<T>::value, "T must be a POD");
+  static_assert(std::is_pod_v<T>, "T must be a POD");
 
   FCPPT_NONCOPYABLE(object);
 
@@ -42,15 +43,15 @@ public:
 
   using allocator_type = A;
 
-  using size_type = typename A::size_type;
+  using size_type = typename std::allocator_traits<A>::size_type;
 
-  using pointer = typename A::pointer;
+  using pointer = typename std::allocator_traits<A>::pointer;
 
-  using const_pointer = typename A::const_pointer;
+  using const_pointer = typename std::allocator_traits<A>::const_pointer;
 
-  using const_reference = typename A::const_reference;
+  using const_reference = T const &;
 
-  using const_iterator = typename A::const_pointer;
+  using const_iterator = const_pointer;
 
   /**
   \brief Constructs an uninitialized buffer.
