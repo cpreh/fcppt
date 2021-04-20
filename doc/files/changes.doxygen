@@ -1610,7 +1610,7 @@ C++11 library that has no dependencies itself.</li>
 	<ul>
 	<li>Added #fcppt::variant::types_of and <code>fcppt::variant::types_of_tpl</code>.</li>
 	<li>Added move semantics to <code>fcppt::variant::apply_unary</code>, <code>fcppt::variant::apply_binary</code> and <code>fcppt::variant::apply_ternary</code>.</li>
-	<li>Improved the error message of #fcppt::variant::invalid_get.</li>
+	<li>Improved the error message of <code>fcppt::variant::invalid_get</code>.</li>
 	<li>Added #fcppt::variant::types_string.</li>
 	<li>Added #fcppt::variant::current_type_name.</li>
 	</ul>
@@ -2651,7 +2651,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptvariant
 	<ul>
 	<li>Removed <code>fcppt::variant::object::get_exn</code>. Use the free
-	function #fcppt::variant::get_exn instead.</li>
+	function <code>fcppt::variant::get_exn</code> instead.</li>
 	</ul>
 </li>
 
