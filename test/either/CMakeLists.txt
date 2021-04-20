@@ -63,15 +63,6 @@ add_fcppt_either_test(
 		fcppt_catch_interface
 )
 
-if(
-	CMAKE_COMPILER_IS_GNUCXX
-)
-	set(
-		IGNORE_NULL_DEREF
-		"-Wno-null-dereference"
-	)
-endif()
-
 add_fcppt_either_test(
 	map_failure
 	COMPILE_OPTIONS

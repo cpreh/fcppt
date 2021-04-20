@@ -560,6 +560,15 @@ function(
 	)
 endfunction()
 
+if(
+	CMAKE_COMPILER_IS_GNUCXX
+)
+	set(
+		IGNORE_NULL_DEREF
+		"-Wno-null-dereference"
+	)
+endif()
+
 add_subdirectory(
 	libs
 )

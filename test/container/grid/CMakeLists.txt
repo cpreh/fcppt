@@ -12,6 +12,8 @@ add_fcppt_container_grid_test(
 	apply
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
+	COMPILE_OPTIONS
+		${IGNORE_NULL_DEREF}
 )
 
 add_fcppt_container_grid_test(
