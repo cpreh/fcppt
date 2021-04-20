@@ -1,6 +1,42 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_380 3.8.0
+
+\subsection changes_changed_functionality_to_370 Changed functionality
+
+<ul>
+<li>The deprecated <code>std::result_of_t</code> has been replaced with <code>std::invoke_result_t</code>.</li>
+<li>Deprecated member typdefs of <code>std::allocator</code> have been replaced with <code>std::allocator_traits</code>.</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>#fcppt::error::strerror now uses <code>std::system_error</code> internally
+	instead of the potentially not thread-safe <code>std::strerror</code> function.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttime
+	<ul>
+	<li>#fcppt::time::gmtime and #fcppt::time::localtime now use thread-safe versions
+	of the corresponding standard C functions.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_380 Removed functionality
+
+<ul>
+
+<li>\ref fcppttime
+	<ul>
+	<li>Removed <code>fcppt::time::ctime</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_370 3.7.0
 
 \subsection changes_added_functionality_to_370 Added functionality
