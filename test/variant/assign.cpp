@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/variant/get_exn.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,11 +23,11 @@ TEST_CASE("variant assign", "[variant]")
 
   CHECK(fcppt::variant::holds_type<std::string>(test1));
 
-  CHECK(fcppt::variant::get_exn<std::string>(test1) == std::string("test"));
+  CHECK(fcppt::variant::get_unsafe<std::string>(test1) == std::string("test"));
 
   test1 = variant{1};
 
   CHECK(fcppt::variant::holds_type<int>(test1));
 
-  CHECK(fcppt::variant::get_exn<int>(test1) == 1);
+  CHECK(fcppt::variant::get_unsafe<int>(test1) == 1);
 }

@@ -5,7 +5,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/variant/get_exn.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -21,11 +21,11 @@ TEST_CASE("variant move", "[variant]")
 
   variant test(fcppt::make_unique_ptr<int>(1));
 
-  CHECK(*fcppt::variant::get_exn<int_unique_ptr>(test) == 1);
+  CHECK(*fcppt::variant::get_unsafe<int_unique_ptr>(test) == 1);
 
   variant test2(std::move(test));
 
-  CHECK(*fcppt::variant::get_exn<int_unique_ptr>(test2) == 1);
+  CHECK(*fcppt::variant::get_unsafe<int_unique_ptr>(test2) == 1);
 
   variant test3(std::string("test"));
 
@@ -33,11 +33,11 @@ TEST_CASE("variant move", "[variant]")
 
   test4 = std::move(test3);
 
-  CHECK(fcppt::variant::get_exn<std::string>(test4) == std::string("test"));
+  CHECK(fcppt::variant::get_unsafe<std::string>(test4) == std::string("test"));
 
   test4 = std::move(test2);
 
-  CHECK(*fcppt::variant::get_exn<int_unique_ptr>(test4) == 1);
+  CHECK(*fcppt::variant::get_unsafe<int_unique_ptr>(test4) == 1);
 }
 
 TEST_CASE("variant move nested", "[variant]")
@@ -49,14 +49,14 @@ TEST_CASE("variant move nested", "[variant]")
   nested test{variant_unique_ptr{fcppt::make_unique_ptr<int>(1)}};
 
   CHECK(
-      *fcppt::variant::get_exn<fcppt::unique_ptr<int>>(
-          fcppt::variant::get_exn<variant_unique_ptr>(test)) == 1);
+      *fcppt::variant::get_unsafe<fcppt::unique_ptr<int>>(
+          fcppt::variant::get_unsafe<variant_unique_ptr>(test)) == 1);
 
   nested test2{variant_unique_ptr{fcppt::make_unique_ptr<int>(2)}};
 
   test2 = std::move(test);
 
   CHECK(
-      *fcppt::variant::get_exn<fcppt::unique_ptr<int>>(
-          fcppt::variant::get_exn<variant_unique_ptr>(test2)) == 1);
+      *fcppt::variant::get_unsafe<fcppt::unique_ptr<int>>(
+          fcppt::variant::get_unsafe<variant_unique_ptr>(test2)) == 1);
 }

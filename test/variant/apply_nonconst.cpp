@@ -5,7 +5,7 @@
 
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/get_exn.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -25,7 +25,7 @@ TEST_CASE("variany::apply_unary nonconst", "[variant]")
   fcppt::variant::apply(
       [](auto &_val) { _val = fcppt::type_traits::remove_cv_ref_t<decltype(_val)>{}; }, v1);
 
-  CHECK(fcppt::variant::get_exn<std::string>(v1).empty());
+  CHECK(fcppt::variant::get_unsafe<std::string>(v1).empty());
 }
 
 TEST_CASE("variany::apply_binary nonconst", "[variant]")
@@ -43,9 +43,9 @@ TEST_CASE("variany::apply_binary nonconst", "[variant]")
       v1,
       v2);
 
-  CHECK(fcppt::variant::get_exn<std::string>(v1).empty());
+  CHECK(fcppt::variant::get_unsafe<std::string>(v1).empty());
 
-  CHECK(fcppt::variant::get_exn<int>(v2) == 0);
+  CHECK(fcppt::variant::get_unsafe<int>(v2) == 0);
 }
 
 TEST_CASE("variany::apply_ternary nonconst", "[variant]")
@@ -68,9 +68,9 @@ TEST_CASE("variany::apply_ternary nonconst", "[variant]")
       v2,
       v3);
 
-  CHECK(fcppt::variant::get_exn<std::string>(v1).empty());
+  CHECK(fcppt::variant::get_unsafe<std::string>(v1).empty());
 
-  CHECK(fcppt::variant::get_exn<int>(v2) == 0);
+  CHECK(fcppt::variant::get_unsafe<int>(v2) == 0);
 
-  CHECK_FALSE(fcppt::variant::get_exn<bool>(v3));
+  CHECK_FALSE(fcppt::variant::get_unsafe<bool>(v3));
 }

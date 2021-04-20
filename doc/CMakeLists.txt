@@ -1571,15 +1571,10 @@ set(
 	libs/core/include/fcppt/variant/detail/types_of.hpp
 	libs/core/include/fcppt/variant/dynamic_cast.hpp
 	libs/core/include/fcppt/variant/dynamic_cast_types.hpp
-	libs/core/include/fcppt/variant/exception.hpp
-	libs/core/include/fcppt/variant/exception_fwd.hpp
 	libs/core/include/fcppt/variant/from_list.hpp
 	libs/core/include/fcppt/variant/from_list_fwd.hpp
-	libs/core/include/fcppt/variant/get_exn.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
-	libs/core/include/fcppt/variant/invalid_get.hpp
-	libs/core/include/fcppt/variant/invalid_get_fwd.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
 	libs/core/include/fcppt/variant/match.hpp
 	libs/core/include/fcppt/variant/object.hpp

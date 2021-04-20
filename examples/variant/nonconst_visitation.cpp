@@ -6,8 +6,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/get_exn.hpp>
-#include <fcppt/variant/invalid_get.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
@@ -44,16 +43,10 @@ try
   fcppt::variant::apply(visitor(), v);
 
   // only prints a newline because the string contains nothing anymore
-  std::cout << fcppt::variant::get_exn<std::string>(v) << '\n';
+  std::cout << fcppt::variant::get_unsafe<std::string>(v) << '\n';
   //! [variant_nonconst_visitation]
 
-  fcppt::variant::get_exn<int>(v);
-
-  return EXIT_SUCCESS;
-}
-catch (fcppt::variant::invalid_get const &_error)
-{
-  fcppt::io::cerr() << _error.string() << FCPPT_TEXT('\n');
+  fcppt::variant::get_unsafe<int>(v);
 
   return EXIT_SUCCESS;
 }

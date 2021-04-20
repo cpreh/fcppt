@@ -52,12 +52,6 @@ add_fcppt_variant_test(
 )
 
 add_fcppt_variant_test(
-	get_exn
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_variant_test(
 	from_list
 	NO_CODE
 	LINK_LIBS

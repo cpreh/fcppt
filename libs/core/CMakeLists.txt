@@ -1352,15 +1352,10 @@ set(
 	libs/core/include/fcppt/variant/detail/types_of.hpp
 	libs/core/include/fcppt/variant/dynamic_cast.hpp
 	libs/core/include/fcppt/variant/dynamic_cast_types.hpp
-	libs/core/include/fcppt/variant/exception.hpp
-	libs/core/include/fcppt/variant/exception_fwd.hpp
 	libs/core/include/fcppt/variant/from_list.hpp
 	libs/core/include/fcppt/variant/from_list_fwd.hpp
-	libs/core/include/fcppt/variant/get_exn.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
-	libs/core/include/fcppt/variant/invalid_get.hpp
-	libs/core/include/fcppt/variant/invalid_get_fwd.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
 	libs/core/include/fcppt/variant/match.hpp
 	libs/core/include/fcppt/variant/object.hpp
@@ -1428,8 +1423,6 @@ set(
 	libs/core/src/type_name.cpp
 	libs/core/src/type_name_from_index.cpp
 	libs/core/src/type_name_from_info.cpp
-	libs/core/src/variant/exception.cpp
-	libs/core/src/variant/invalid_get.cpp
 	libs/core/src/version_string.cpp
 	libs/core/src/widen.cpp
 	libs/core/src/widen_locale.cpp
