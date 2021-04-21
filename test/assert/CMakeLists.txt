@@ -14,9 +14,3 @@ add_fcppt_assert_test(
 		fcppt_catch_interface
 		"${fcppt_core_TARGET}"
 )
-
-add_fcppt_assert_test(
-	throw_message
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
-)

@@ -89,23 +89,12 @@ variant that lets you specify an additional message for what went wrong.
 <dd>These should be used to check pre conditions for a function and they will
 terminate the program if they are violated.</dd>
 
-<dt>#FCPPT_ASSERT_POST  and #FCPPT_ASSERT_POST_MESSAGE
-</dt>
-
-<dd>These should be used to check for post conditions of functions. They will
-throw an exception on failure.</dd>
-
 <dt>#FCPPT_ASSERT_ERROR  and #FCPPT_ASSERT_ERROR_MESSAGE
 </dt>
 
 <dd>These should be used if something in the middle of a function goes wrong
 that could be considered a delayed pre condition. They will also terminate the
 program if they are violated.</dd>
-
-<dt>#FCPPT_ASSERT_THROW  and #FCPPT_ASSERT_THROW_MESSAGE
-</dt>
-
-<dd>These can generally be used as a replacement for throwing exceptions.</dd>
 
 <dt>#FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE <dt>
 
@@ -118,12 +107,7 @@ the program.</dd>
 <dd>These should be used to check for unreachable code, like reaching a default
 case in a switch that handles every possible enum value. They will
 terminate the program.</dd>
-
 </dl>
-
-Here is an example on how to use the pre and post condition macros:
-
-\snippet assert.cpp assert_pre_post
 
 The usual case where every enumerator is handled in a switch can be tested as
 follows:
@@ -136,14 +120,7 @@ Another important feature is that assertions should be as elaborate as
 possible. Therefore, every macro gathers information about the current file,
 line of the current file, the current function's name, the failed assertion and
 the optional message. If a macro terminates the program, the message will be
-printed to <code>cerr</code> before that happens. If a macro throws an
-exception, that exception will be constructed with an
-fcppt::assert_::information object that holds the information instead.
-
-An exception that is to receive such information must have a constructor that
-takes an fcppt::assert_::information object.
-
-\snippet assert.cpp assert_throw
+printed to <code>cerr</code> before that happens.
 
 \section assert_headers Header files
 
@@ -181,28 +158,12 @@ takes an fcppt::assert_::information object.
 <td>Contains #FCPPT_ASSERT_OPTIONAL_ERROR </td>
 </tr>
 <tr>
-<td><code>post.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_POST </td>
-</tr>
-<tr>
-<td><code>post_message.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_POST_MESSAGE </td>
-</tr>
-<tr>
 <td><code>pre.hpp</code></td>
 <td>Contains #FCPPT_ASSERT_PRE </td>
 </tr>
 <tr>
 <td><code>pre_message.hpp</code></td>
 <td>Contains #FCPPT_ASSERT_PRE_MESSAGE </td>
-</tr>
-<tr>
-<td><code>throw.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_THROW </td>
-</tr>
-<tr>
-<td><code>throw_message.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_THROW_MESSAGE </td>
 </tr>
 <tr>
 <td><code>unimplemented_message.hpp</code></td>
