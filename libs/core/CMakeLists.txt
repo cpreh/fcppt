@@ -94,8 +94,6 @@ set(
 	libs/core/include/fcppt/assert/condition.hpp
 	libs/core/include/fcppt/assert/error.hpp
 	libs/core/include/fcppt/assert/error_message.hpp
-	libs/core/include/fcppt/assert/exception.hpp
-	libs/core/include/fcppt/assert/exception_fwd.hpp
 	libs/core/include/fcppt/assert/file.hpp
 	libs/core/include/fcppt/assert/function.hpp
 	libs/core/include/fcppt/assert/information.hpp
@@ -1375,7 +1373,6 @@ set(
 	libs/core/include/fcppt/widen_locale.hpp
 	libs/core/src/args.cpp
 	libs/core/src/args_from_second.cpp
-	libs/core/src/assert/exception.cpp
 	libs/core/src/assert/information.cpp
 	libs/core/src/backtrace/current_stack_frame.cpp
 	libs/core/src/backtrace/print_current_stack_frame.cpp

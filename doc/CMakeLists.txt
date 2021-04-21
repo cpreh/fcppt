@@ -313,8 +313,6 @@ set(
 	libs/core/include/fcppt/assert/condition.hpp
 	libs/core/include/fcppt/assert/error.hpp
 	libs/core/include/fcppt/assert/error_message.hpp
-	libs/core/include/fcppt/assert/exception.hpp
-	libs/core/include/fcppt/assert/exception_fwd.hpp
 	libs/core/include/fcppt/assert/file.hpp
 	libs/core/include/fcppt/assert/function.hpp
 	libs/core/include/fcppt/assert/information.hpp
