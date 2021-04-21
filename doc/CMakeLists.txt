@@ -1553,7 +1553,6 @@ set(
 	libs/core/include/fcppt/variant/compare.hpp
 	libs/core/include/fcppt/variant/comparison.hpp
 	libs/core/include/fcppt/variant/current_type_name.hpp
-	libs/core/include/fcppt/variant/detail/get_exn_impl.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe_impl.hpp
 	libs/core/include/fcppt/variant/detail/has_type.hpp
