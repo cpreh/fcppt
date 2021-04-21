@@ -29,6 +29,12 @@
 
 <ul>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>#fcppt::cast::truncation_check now returns an optional.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptenum
 	<ul>
 	<li>Removed <code>fcppt::enum::from_int_exn</code>.</li>

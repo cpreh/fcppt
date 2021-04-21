@@ -126,8 +126,6 @@ set(
 	libs/core/include/fcppt/cast/apply.hpp
 	libs/core/include/fcppt/cast/bad_dynamic.hpp
 	libs/core/include/fcppt/cast/bad_dynamic_fwd.hpp
-	libs/core/include/fcppt/cast/bad_truncation_check.hpp
-	libs/core/include/fcppt/cast/bad_truncation_check_fwd.hpp
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
 	libs/core/include/fcppt/cast/detail/dynamic_exn.hpp
 	libs/core/include/fcppt/cast/detail/promote_int_type.hpp
@@ -1377,7 +1375,6 @@ set(
 	libs/core/src/backtrace/current_stack_frame.cpp
 	libs/core/src/backtrace/print_current_stack_frame.cpp
 	libs/core/src/cast/bad_dynamic.cpp
-	libs/core/src/cast/bad_truncation_check.cpp
 	libs/core/src/endianness/host_format.cpp
 	libs/core/src/endianness/is_big_endian.cpp
 	libs/core/src/endianness/is_little_endian.cpp

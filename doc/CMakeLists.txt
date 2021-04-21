@@ -345,8 +345,6 @@ set(
 	libs/core/include/fcppt/cast/apply.hpp
 	libs/core/include/fcppt/cast/bad_dynamic.hpp
 	libs/core/include/fcppt/cast/bad_dynamic_fwd.hpp
-	libs/core/include/fcppt/cast/bad_truncation_check.hpp
-	libs/core/include/fcppt/cast/bad_truncation_check_fwd.hpp
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
 	libs/core/include/fcppt/cast/detail/dynamic_exn.hpp
 	libs/core/include/fcppt/cast/detail/promote_int_type.hpp

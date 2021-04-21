@@ -3,8 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/truncation_check.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <climits>
@@ -14,29 +16,29 @@
 TEST_CASE("cast::truncation_check", "[cast]")
 {
 #if SHRT_MAX < LONG_MAX
-  CHECK_THROWS_AS(
-      fcppt::cast::truncation_check<short>(std::numeric_limits<long>::max()),
-      fcppt::cast::bad_truncation_check);
+  CHECK(
+      fcppt::cast::truncation_check<short>(std::numeric_limits<long>::max()) ==
+      fcppt::optional::object<short>{});
 
-  CHECK_THROWS_AS(
-      fcppt::cast::truncation_check<short>(std::numeric_limits<long>::min()),
-      fcppt::cast::bad_truncation_check);
+  CHECK(
+      fcppt::cast::truncation_check<short>(std::numeric_limits<long>::min()) ==
+      fcppt::optional::object<short>{});
 #endif
-  CHECK_THROWS_AS(
-      fcppt::cast::truncation_check<long>(std::numeric_limits<unsigned long>::max()),
-      fcppt::cast::bad_truncation_check);
+  CHECK(
+      fcppt::cast::truncation_check<long>(std::numeric_limits<unsigned long>::max()) ==
+      fcppt::optional::object<long>{});
 
-  CHECK_THROWS_AS(
-      fcppt::cast::truncation_check<unsigned long>(-1), fcppt::cast::bad_truncation_check);
+  CHECK(
+      fcppt::cast::truncation_check<unsigned long>(-1) == fcppt::optional::object<unsigned long>{});
 
 #if USHRT_MAX < ULONG_MAX
-  CHECK_THROWS_AS(
-      fcppt::cast::truncation_check<unsigned short>(std::numeric_limits<unsigned long>::max()),
-      fcppt::cast::bad_truncation_check);
+  CHECK(
+      fcppt::cast::truncation_check<unsigned short>(std::numeric_limits<unsigned long>::max()) ==
+      fcppt::optional::object<unsigned short>{});
 #endif
-  CHECK(fcppt::cast::truncation_check<unsigned>(10U) == 10U);
+  CHECK(fcppt::cast::truncation_check<unsigned>(10U) == fcppt::optional::make(10U));
 
-  CHECK(fcppt::cast::truncation_check<unsigned long>(42U) == 42UL);
+  CHECK(fcppt::cast::truncation_check<unsigned long>(42U) == fcppt::optional::make(42UL));
 
-  CHECK(fcppt::cast::truncation_check<long>(-1) == -1L);
+  CHECK(fcppt::cast::truncation_check<long>(-1) == fcppt::optional::make(-1L));
 }
