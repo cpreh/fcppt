@@ -29,6 +29,13 @@
 
 <ul>
 
+<li>\ref fcpptassert
+	<ul>
+	<li>Removed <code>FCPPT_ASSERT_THROW</code>, <code>FCPPT_ASSERT_THROW_MESSAGE</code>,
+	<code>FCPPT_ASSERT_POST</code> and <code>FCPPT_ASSERT_POST_MESSAGE</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcasts
 	<ul>
 	<li>#fcppt::cast::truncation_check now returns an optional.</li>
