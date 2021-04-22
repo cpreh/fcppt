@@ -48,6 +48,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>#fcppt::math::clamp now returns an optional.</li>
+	</ul>
+</li>
+
 <li>\ref fcppttime
 	<ul>
 	<li>Removed <code>fcppt::time::ctime</code>.</li>

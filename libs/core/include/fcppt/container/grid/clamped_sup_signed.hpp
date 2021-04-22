@@ -37,22 +37,24 @@ fcppt::container::grid::sup<Dest, Size> clamped_sup_signed(
     fcppt::container::grid::pos<Source, Size> const _pos,
     fcppt::container::grid::dim<Dest, Size> const _size)
 {
-  static_assert(std::is_signed<Source>::value, "Source must be signed");
+  static_assert(std::is_signed_v<Source>, "Source must be signed");
 
-  static_assert(std::is_unsigned<Dest>::value, "Dest must be unsigned");
+  static_assert(std::is_unsigned_v<Dest>, "Dest must be unsigned");
 
   return fcppt::container::grid::sup<Dest, Size>(
       fcppt::math::vector::init<fcppt::container::grid::pos<Dest, Size>>(
-          [&_pos, &_size](auto const _index) {
+          [&_pos, &_size](auto const _index)
+          {
             FCPPT_USE(_index);
 
-            return fcppt::cast::to_unsigned(fcppt::math::clamp(
-                fcppt::math::vector::at<_index>(_pos),
-                fcppt::literal<Source>(0),
-                fcppt::cast::to_signed(fcppt::math::dim::at<_index>(_size))));
+            return fcppt::cast::to_unsigned(
+                fcppt::math::clamp(
+                    fcppt::math::vector::at<_index>(_pos),
+                    fcppt::literal<Source>(0),
+                    fcppt::cast::to_signed(fcppt::math::dim::at<_index>(_size)))
+                    .get_unsafe());
           }));
 }
-
 }
 }
 }

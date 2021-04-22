@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_CLAMP_HPP_INCLUDED
 #define FCPPT_MATH_CLAMP_HPP_INCLUDED
 
-#include <fcppt/assert/pre.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -17,20 +18,17 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Clamps a value into a range
+\brief Clamps a value into a range.
 
 \ingroup fcpptmath
-
-\pre \p _vmin <= \p _vmax
 */
 template <typename T>
-T clamp(T const &_value, T const &_vmin, T const &_vmax)
+fcppt::optional::object<T> clamp(T const &_value, T const &_vmin, T const &_vmax)
 {
-  FCPPT_ASSERT_PRE(_vmin <= _vmax);
-
-  return std::max(std::min(_value, _vmax), _vmin);
+  return fcppt::optional::make_if(
+      _vmin <= _vmax,
+      [&_value, &_vmin, &_vmax] { return std::max(std::min(_value, _vmax), _vmin); });
 }
-
 }
 }
 

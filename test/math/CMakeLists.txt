@@ -22,6 +22,10 @@ add_fcppt_math_test(
 )
 
 add_fcppt_math_test(
+	clamp
+)
+
+add_fcppt_math_test(
 	deg_to_rad
 )
 
