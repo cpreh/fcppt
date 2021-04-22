@@ -90,12 +90,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	backtrace
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_example(
 	cast
 	LINK_LIBS
 		fcppt_core_interface

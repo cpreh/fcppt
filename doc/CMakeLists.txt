@@ -112,7 +112,6 @@ set(
 	examples/assert.cpp
 	examples/assert_complete.cpp
 	examples/assign.cpp
-	examples/backtrace.cpp
 	examples/cast.cpp
 	examples/cast/dynamic.cpp
 	examples/cast/dynamic_cross.cpp
@@ -327,10 +326,6 @@ set(
 	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp
-	libs/core/include/fcppt/backtrace/current_stack_frame.hpp
-	libs/core/include/fcppt/backtrace/print_current_stack_frame.hpp
-	libs/core/include/fcppt/backtrace/stack_frame.hpp
-	libs/core/include/fcppt/backtrace/stack_limit.hpp
 	libs/core/include/fcppt/bit/mask.hpp
 	libs/core/include/fcppt/bit/mask_c.hpp
 	libs/core/include/fcppt/bit/mask_decl.hpp

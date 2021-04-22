@@ -108,10 +108,6 @@ set(
 	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp
-	libs/core/include/fcppt/backtrace/current_stack_frame.hpp
-	libs/core/include/fcppt/backtrace/print_current_stack_frame.hpp
-	libs/core/include/fcppt/backtrace/stack_frame.hpp
-	libs/core/include/fcppt/backtrace/stack_limit.hpp
 	libs/core/include/fcppt/bit/mask.hpp
 	libs/core/include/fcppt/bit/mask_c.hpp
 	libs/core/include/fcppt/bit/mask_decl.hpp
@@ -1371,8 +1367,6 @@ set(
 	libs/core/src/args.cpp
 	libs/core/src/args_from_second.cpp
 	libs/core/src/assert/information.cpp
-	libs/core/src/backtrace/current_stack_frame.cpp
-	libs/core/src/backtrace/print_current_stack_frame.cpp
 	libs/core/src/cast/bad_dynamic.cpp
 	libs/core/src/endianness/host_format.cpp
 	libs/core/src/endianness/is_big_endian.cpp

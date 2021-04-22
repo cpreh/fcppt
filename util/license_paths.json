@@ -8,7 +8,6 @@
 				"libs/boost/include/fcppt/scoped_state_machine.*",
 				"libs/core/include/fcppt/cyclic_iterator.*",
 				"libs/core/include/fcppt/algorithm/join_strings.hpp",
-				"libs/core/include/fcppt/backtrace/.*",
 				"libs/core/include/fcppt/container/grid/interpolate.hpp",
 				"libs/core/include/fcppt/math/clamp.hpp",
 				"libs/core/include/fcppt/math/box/center.hpp",
