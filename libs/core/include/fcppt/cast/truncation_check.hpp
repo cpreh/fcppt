@@ -6,8 +6,8 @@
 #ifndef FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 #define FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/cast/detail/truncation_check.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
