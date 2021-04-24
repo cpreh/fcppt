@@ -115,7 +115,6 @@ set(
 	examples/cast.cpp
 	examples/cast/dynamic.cpp
 	examples/cast/dynamic_cross.cpp
-	examples/cast/dynamic_exn.cpp
 	examples/cast/safe_numeric.cpp
 	examples/cast/truncation_check.cpp
 	examples/coding_style.cpp
@@ -338,19 +337,14 @@ set(
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
 	libs/core/include/fcppt/cast/apply.hpp
-	libs/core/include/fcppt/cast/bad_dynamic.hpp
-	libs/core/include/fcppt/cast/bad_dynamic_fwd.hpp
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
-	libs/core/include/fcppt/cast/detail/dynamic_exn.hpp
 	libs/core/include/fcppt/cast/detail/promote_int_type.hpp
 	libs/core/include/fcppt/cast/detail/truncation_check.hpp
 	libs/core/include/fcppt/cast/dynamic.hpp
 	libs/core/include/fcppt/cast/dynamic_any.hpp
 	libs/core/include/fcppt/cast/dynamic_any_fun.hpp
 	libs/core/include/fcppt/cast/dynamic_cross.hpp
-	libs/core/include/fcppt/cast/dynamic_cross_exn.hpp
 	libs/core/include/fcppt/cast/dynamic_cross_fun.hpp
-	libs/core/include/fcppt/cast/dynamic_exn.hpp
 	libs/core/include/fcppt/cast/dynamic_fun.hpp
 	libs/core/include/fcppt/cast/enum_to_int.hpp
 	libs/core/include/fcppt/cast/enum_to_underlying.hpp

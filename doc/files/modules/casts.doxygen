@@ -80,7 +80,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between objects in a class hierarchy
 	</td>
 	<td>
-	#fcppt::cast::static_downcast, #fcppt::cast::dynamic, #fcppt::cast::dynamic_exn
+	#fcppt::cast::static_downcast, #fcppt::cast::dynamic
 	</td>
 </tr>
 <tr>
@@ -88,7 +88,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between unrelated types
 	</td>
 	<td>
-	#fcppt::cast::dynamic_cross, #fcppt::cast::dynamic_cross_exn
+	#fcppt::cast::dynamic_cross
 	</td>
 </tr>
 <tr>
@@ -159,15 +159,9 @@ is returned for pointers and <code>bad_cast</code> is thrown for references.
 
 \snippet cast/dynamic.cpp dynamic
 
-In case an exception is preferred, #fcppt::cast::dynamic_exn can
-be used. The exception thrown includes <code>std::type_index</code> objects of
-the source and destination types.
-
-\snippet cast/dynamic_exn.cpp dynamic_exn
-
-To catch more mistakes, #fcppt::cast::dynamic  and #fcppt::cast::dynamic_exn only work on related types: The type to cast
+To catch more mistakes, #fcppt::cast::dynamic only works on related types: The type to cast
 to must inherit from the source type. In case you need to cast between
-unrelated types, #fcppt::cast::dynamic_cross and #fcppt::cast::dynamic_cross_exn can be used:
+unrelated types, #fcppt::cast::dynamic_cross can be used:
 
 \snippet cast/dynamic_cross.cpp dynamic_cross
 

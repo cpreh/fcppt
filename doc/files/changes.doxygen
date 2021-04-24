@@ -9,6 +9,18 @@
 <li>The deprecated <code>std::result_of_t</code> has been replaced with <code>std::invoke_result_t</code>.</li>
 <li>Deprecated member typdefs of <code>std::allocator</code> have been replaced with <code>std::allocator_traits</code>.</li>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>#fcppt::cast::truncation_check now returns an optional.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>#fcppt::math::clamp now returns an optional.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstring
 	<ul>
 	<li>#fcppt::error::strerror now uses <code>std::system_error</code> internally
@@ -38,19 +50,13 @@
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>#fcppt::cast::truncation_check now returns an optional.</li>
+	<li>Removed <code>fcppt::cast::dynamic_cross_exn</code> and <code>fcppt::cast::dynamic_exn</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptenum
 	<ul>
 	<li>Removed <code>fcppt::enum::from_int_exn</code>.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptmath
-	<ul>
-	<li>#fcppt::math::clamp now returns an optional.</li>
 	</ul>
 </li>
 
@@ -2117,7 +2123,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Added #fcppt::cast::dynamic_cross and #fcppt::cast::dynamic_cross_exn.</li>
+	<li>Added #fcppt::cast::dynamic_cross and <code>fcppt::cast::dynamic_cross_exn</code>.</li>
 	</ul>
 </li>
 
@@ -2217,8 +2223,8 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptcasts
 	<ul>
 	<li>Renamed <code>fcppt::cast::try_dynamic</code> to #fcppt::cast::dynamic, and renamed
-	<code>%fcppt::cast::dynamic</code> to #fcppt::cast::dynamic_exn.</li>
-	<li>#fcppt::cast::dynamic and #fcppt::cast::dynamic_exn only work on related types now.</li>
+	<code>%fcppt::cast::dynamic</code> to <code>fcppt::cast::dynamic_exn</code>.</li>
+	<li>#fcppt::cast::dynamic and <code>fcppt::cast::dynamic_exn</code> only work on related types now.</li>
 	</ul>
 </li>
 

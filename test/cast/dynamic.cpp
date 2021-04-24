@@ -8,9 +8,7 @@
 #include <fcppt/reference.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/apply.hpp>
-#include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/cast/dynamic.hpp>
-#include <fcppt/cast/dynamic_exn.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -69,8 +67,4 @@ TEST_CASE("cast::dynamic"
 
   CHECK(
       fcppt::cast::dynamic<derived1>(b2) == fcppt::optional::object<fcppt::reference<derived1>>{});
-
-  CHECK(&fcppt::cast::dynamic_exn<derived1 &>(b1) == &d1);
-
-  CHECK_THROWS_AS(fcppt::cast::dynamic_exn<derived1 &>(b2), fcppt::cast::bad_dynamic);
 }

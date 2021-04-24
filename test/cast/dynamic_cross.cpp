@@ -8,7 +8,6 @@
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic_cross.hpp>
-#include <fcppt/cast/dynamic_cross_exn.hpp>
 #include <fcppt/cast/dynamic_cross_fun.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -49,6 +48,4 @@ TEST_CASE("cast::dynamic_cross", "[cast]")
   CHECK(
       fcppt::cast::apply<fcppt::cast::dynamic_cross_fun, derived2>(d1) ==
       fcppt::optional::object<fcppt::reference<derived2>>{});
-
-  CHECK_THROWS_AS(fcppt::cast::dynamic_cross_exn<derived2 &>(d1), fcppt::cast::bad_dynamic);
 }

@@ -21,12 +21,6 @@ add_fcppt_cast_example(
 )
 
 add_fcppt_cast_example(
-	dynamic_exn
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_cast_example(
 	safe_numeric
 	LINK_LIBS
 		fcppt_core_interface
