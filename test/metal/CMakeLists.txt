@@ -103,6 +103,12 @@ add_fcppt_metal_test(
 	NO_CODE
 )
 
+add_fcppt_metal_test(
+	print
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
 add_subdirectory(
 	set
 )

@@ -7,9 +7,9 @@
 #define FCPPT_METAL_DETAIL_PRINT_ONE_HPP_INCLUDED
 
 #include <fcppt/type_name_from_info.hpp>
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <iosfwd>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,8 +19,8 @@ namespace metal
 {
 namespace detail
 {
-template <typename Type>
-inline void print_one(fcppt::io::ostream &_stream)
+template <typename Type, typename Ch, typename Traits>
+inline void print_one(std::basic_ostream<Ch, Traits> &_stream)
 {
   _stream << fcppt::io::widen_string(fcppt::type_name_from_info(typeid(Type)));
 }

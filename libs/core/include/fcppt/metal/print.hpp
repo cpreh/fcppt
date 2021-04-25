@@ -6,9 +6,11 @@
 #ifndef FCPPT_METAL_PRINT_HPP_INCLUDED
 #define FCPPT_METAL_PRINT_HPP_INCLUDED
 
-#include <fcppt/text.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/char_literal.hpp>
 #include <fcppt/metal/detail/print.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -29,18 +31,17 @@ printed sequence will be <code>(name_1, ..., name_n)</code>.
 
 \return \a _stream
 */
-template <typename Sequence>
-fcppt::io::ostream &print(fcppt::io::ostream &_stream)
+template <typename Sequence, typename Ch, typename Traits>
+std::basic_ostream<Ch, Traits> &print(std::basic_ostream<Ch, Traits> &_stream)
 {
-  _stream << FCPPT_TEXT('(');
+  _stream << FCPPT_CHAR_LITERAL(Ch, '(');
 
   fcppt::metal::detail::print<Sequence>(_stream);
 
-  _stream << FCPPT_TEXT(')');
+  _stream << FCPPT_CHAR_LITERAL(Ch, ')');
 
   return _stream;
 }
-
 }
 }
 
