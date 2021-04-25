@@ -109,6 +109,12 @@ add_fcppt_metal_test(
 		${fcppt_core_TARGET}
 )
 
+add_fcppt_metal_test(
+	sequence_to_string
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
 add_subdirectory(
 	set
 )

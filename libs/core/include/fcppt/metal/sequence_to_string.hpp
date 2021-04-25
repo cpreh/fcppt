@@ -6,9 +6,11 @@
 #ifndef FCPPT_METAL_SEQUENCE_TO_STRING_HPP_INCLUDED
 #define FCPPT_METAL_SEQUENCE_TO_STRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/io/ostringstream.hpp>
 #include <fcppt/metal/print.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <sstream>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -22,10 +24,10 @@ namespace metal
 \tparam Sequence Must be a metal sequence.
 */
 template <typename Sequence>
-fcppt::string sequence_to_string()
+std::string sequence_to_string()
 {
   // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-  fcppt::io::ostringstream stream{};
+  std::ostringstream stream{};
 
   fcppt::metal::print<Sequence>(stream);
 
