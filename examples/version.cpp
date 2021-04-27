@@ -3,12 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/text.hpp>
 #include <fcppt/version_string.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
-int main()
-{
-  fcppt::io::cout() << FCPPT_TEXT("Current version is ") << fcppt::version_string()
-                    << FCPPT_TEXT('\n');
-}
+int main() { std::cout << "Current version is " << fcppt::version_string() << '\n'; }
