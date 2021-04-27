@@ -69,6 +69,7 @@
 <li>\ref fcpptvariant
 	<ul>
 	<li>Removed <code>fcppt::variant::get_exn</code>.</li>
+	<li>Removed <code>fcppt::variant::types_string</code>.</li>
 	</ul>
 </li>
 

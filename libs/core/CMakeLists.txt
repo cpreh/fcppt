@@ -1349,7 +1349,6 @@ set(
 	libs/core/include/fcppt/variant/to_optional_ref.hpp
 	libs/core/include/fcppt/variant/type_info.hpp
 	libs/core/include/fcppt/variant/types_of.hpp
-	libs/core/include/fcppt/variant/types_string.hpp
 	libs/core/include/fcppt/version_int.hpp
 	libs/core/include/fcppt/version_integral_c.hpp
 	libs/core/include/fcppt/version_string.hpp
