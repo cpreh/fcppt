@@ -6,14 +6,15 @@
 #include <fcppt/major_version.hpp>
 #include <fcppt/micro_version.hpp>
 #include <fcppt/minor_version.hpp>
-#include <fcppt/output_to_fcppt_string.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/output_to_std_string.hpp>
 #include <fcppt/version_string.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
-fcppt::string fcppt::version_string()
+std::string fcppt::version_string()
 {
-  return fcppt::output_to_fcppt_string(fcppt::major_version::value) + FCPPT_TEXT('.') +
-         fcppt::output_to_fcppt_string(fcppt::minor_version::value) + FCPPT_TEXT('.') +
-         fcppt::output_to_fcppt_string(fcppt::micro_version::value);
+  return fcppt::output_to_std_string(fcppt::major_version::value) + '.' +
+         fcppt::output_to_std_string(fcppt::minor_version::value) + '.' +
+         fcppt::output_to_std_string(fcppt::micro_version::value);
 }

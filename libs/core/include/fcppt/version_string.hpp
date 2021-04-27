@@ -6,8 +6,10 @@
 #ifndef FCPPT_VERSION_STRING_HPP_INCLUDED
 #define FCPPT_VERSION_STRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/detail/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -17,7 +19,7 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::string version_string();
+std::string version_string();
 
 }
 

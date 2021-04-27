@@ -35,6 +35,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>#fcppt::version_string now returns a <code>std::string</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_380 Removed functionality
