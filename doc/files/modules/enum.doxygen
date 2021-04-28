@@ -76,22 +76,19 @@ range. #fcppt::enum_::from_int returns an empty optional in this case.
 
 Converting enums from and to strings is also often needed. Unfortunately, because
 C++ offers no introspection of any kind for enums, we have to provide our own mapping
-from enums to strings. The function that does this is called #fcppt::enum_::names
-which returns an #fcppt::enum_::names_array. The implementation uses the
-customization point #fcppt::enum_::names_impl which needs to be provided for
-every enum you wish to use this function with, for example:
+from enums to strings.
+To implement this for a custom enum type <code>Enum</code>, we have to specialize the struct #fcppt::enum_::to_string_impl
+and implement a member function <code>std::string get(Enum)</code>. For example:
 
 \snippet enum.cpp enum_names
 
-The enum names can then be used to convert enums from and to strings. #fcppt::enum_::to_string
-uses #fcppt::enum_::to_string_impl, which by default makes use of #fcppt::enum_::names.
-Since we just provided the enum names for <code>myenum</code>, we can convert it to a string:
+We can now use #fcppt::enum_::to_string to convert <code>myenum</code> to a string:
 
 \snippet enum.cpp enum_to_string
 
 Similarly, we can also try to convert a string to an enum: #fcppt::enum_::from_string uses
-#fcppt::enum_::from_string_impl, which, again, makes use of #fcppt::enum_::names by default.
-In case the conversion fails, an empty optional is returned:
+#fcppt::enum_::from_string_impl, which by default simply goes through all possible enum names.
+If no enum name matches, an empty optional is returned:
 
 \snippet enum.cpp enum_from_string
 

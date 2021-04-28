@@ -3,20 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/from_string.hpp>
-#include <fcppt/enum/names_array.hpp>
-#include <fcppt/enum/names_impl_fwd.hpp>
 #include <fcppt/enum/to_string.hpp>
+#include <fcppt/enum/to_string_case.hpp>
+#include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/preprocessor/disable_clang_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <string>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -29,44 +27,43 @@ enum class test_enum
   fcppt_maximum = test3
 };
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
-
-// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<test_enum> const names{// NOLINT(cert-err58-cpp)
-                                                 fcppt::string{FCPPT_TEXT("test1")},
-                                                 fcppt::string{FCPPT_TEXT("test2")},
-                                                 fcppt::string{FCPPT_TEXT("test3")}};
-
-FCPPT_PP_POP_WARNING
-
 }
 
 namespace fcppt::enum_
 {
 template <>
-struct names_impl<test_enum>
+struct to_string_impl<test_enum>
 {
-  static fcppt::enum_::names_array<test_enum> const &get() { return ::names; }
+  static std::string_view get(test_enum const _val)
+  {
+#define NAME_CASE(val) FCPPT_ENUM_TO_STRING_CASE(test_enum, val)
+    switch (_val)
+    {
+      NAME_CASE(test1);
+      NAME_CASE(test2);
+      NAME_CASE(test3);
+    }
+	FCPPT_ASSERT_UNREACHABLE;
+#undef NAME_CASE
+  }
 };
 
 }
 
 TEST_CASE("enum::to_string", "[enum]")
 {
-  CHECK(fcppt::enum_::to_string(test_enum::test1) == FCPPT_TEXT("test1"));
+  CHECK(std::string{fcppt::enum_::to_string(test_enum::test1)} == "test1");
 
-  CHECK(fcppt::enum_::to_string(test_enum::test2) == FCPPT_TEXT("test2"));
+  CHECK(std::string{fcppt::enum_::to_string(test_enum::test2)} == "test2");
 }
 
 TEST_CASE("enum::from_string", "[enum]")
 {
   CHECK(
-      fcppt::enum_::from_string<test_enum>(FCPPT_TEXT("xy")) ==
+      fcppt::enum_::from_string<test_enum>("xy") ==
       fcppt::optional::object<test_enum>{});
 
   CHECK(
-      fcppt::enum_::from_string<test_enum>(FCPPT_TEXT("test2")) ==
+      fcppt::enum_::from_string<test_enum>("test2") ==
       fcppt::optional::make(test_enum::test2));
 }

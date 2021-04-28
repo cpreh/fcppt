@@ -6,7 +6,8 @@
 #ifndef FCPPT_OPTIONS_PRETTY_TYPE_ENUM_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRETTY_TYPE_ENUM_HPP_INCLUDED
 
-#include <fcppt/output_to_fcppt_string.hpp>
+#include <fcppt/from_std_string.hpp>
+#include <fcppt/output_to_std_string.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/enum/names.hpp>
 #include <fcppt/options/pretty_type_impl_fwd.hpp>
@@ -24,11 +25,12 @@ namespace options
 \ingroup fcpptoptions
 */
 template <typename Enum>
-struct pretty_type_impl<Enum, std::enable_if_t<std::is_enum<Enum>::value>>
+struct pretty_type_impl<Enum, std::enable_if_t<std::is_enum_v<Enum>>>
 {
   static fcppt::string get()
   {
-    return fcppt::output_to_fcppt_string(fcppt::container::output(fcppt::enum_::names<Enum>()));
+    return fcppt::from_std_string(
+        fcppt::output_to_std_string(fcppt::container::output(fcppt::enum_::names<Enum>())));
   }
 };
 

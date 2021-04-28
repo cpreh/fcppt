@@ -3,15 +3,21 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/enum/to_string.hpp>
-#include <fcppt/log/level.hpp>
-#include <fcppt/log/level_to_string.hpp>
-#include <fcppt/log/level_to_string_impl.hpp>
+#ifndef FCPPT_ENUM_IS_OBJECT_HPP_INCLUDED
+#define FCPPT_ENUM_IS_OBJECT_HPP_INCLUDED
+
 #include <fcppt/config/external_begin.hpp>
-#include <string_view>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-std::string_view fcppt::log::level_to_string(fcppt::log::level const _level)
+namespace fcppt::enum_
 {
-  return fcppt::enum_::to_string(_level);
+
+/**
+\brief Checks if a type is usable with fcppt.enum.
+*/
+template<typename Enum>
+using is_object = std::is_enum<Enum>;
 }
+
+#endif

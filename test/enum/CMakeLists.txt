@@ -10,6 +10,8 @@ endfunction()
 
 add_fcppt_enum_test(
 	array
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
 )
 
 add_fcppt_enum_test(

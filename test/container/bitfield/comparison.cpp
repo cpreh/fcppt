@@ -3,18 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/container/bitfield/comparison.hpp>
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/output.hpp>
-#include <fcppt/enum/names_array.hpp>
-#include <fcppt/enum/names_impl_fwd.hpp>
-#include <fcppt/preprocessor/disable_clang_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/enum/to_string_case.hpp>
+#include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <string_view>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,28 +25,26 @@ enum class test_enum
   fcppt_maximum = test3
 };
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
-FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
-
-// NOLINTNEXTLINE(fuchsia-statically-constructed-objects)
-fcppt::enum_::names_array<test_enum> const names{// NOLINT(cert-err58-cpp)
-                                                 fcppt::string{FCPPT_TEXT("test1")},
-                                                 fcppt::string{FCPPT_TEXT("test2")},
-                                                 fcppt::string{FCPPT_TEXT("test3")}};
-
-FCPPT_PP_POP_WARNING
-
 }
 
 namespace fcppt::enum_
 {
 template <>
-struct names_impl<test_enum>
+struct to_string_impl<test_enum>
 {
-  static fcppt::enum_::names_array<test_enum> const &get() { return ::names; }
+  static std::string_view get(test_enum const _val)
+  {
+#define NAME_CASE(val) FCPPT_ENUM_TO_STRING_CASE(test_enum, val)
+    switch (_val)
+    {
+      NAME_CASE(test1);
+      NAME_CASE(test2);
+      NAME_CASE(test3);
+    }
+    FCPPT_ASSERT_UNREACHABLE;
+#undef NAME_CASE
+  }
 };
-
 }
 
 TEST_CASE("container::bitfield comparison", "[container],[bitfield]")

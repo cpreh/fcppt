@@ -6,9 +6,10 @@
 #ifndef FCPPT_ENUM_TO_STRING_HPP_INCLUDED
 #define FCPPT_ENUM_TO_STRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/enum/to_string_impl.hpp>
+#include <fcppt/enum/is_object.hpp>
+#include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <string_view>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,11 +26,9 @@ Uses #fcppt::enum_::to_string_impl to convert an enum to a string.
 
 \tparam Enum Must be an enum type
 */
-template <typename Enum>
-inline fcppt::string to_string(Enum const _enum)
+template <typename Enum, typename = std::enable_if<fcppt::enum_::is_object<Enum>::value>>
+inline std::string_view to_string(Enum const _enum)
 {
-  static_assert(std::is_enum<Enum>::value, "Enum must be an enum type");
-
   return fcppt::enum_::to_string_impl<Enum>::get(_enum);
 }
 

@@ -3,23 +3,25 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
-#define FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
+#ifndef FCPPT_LOG_LEVEL_TO_STRING_IMPL_HPP_INCLUDED
+#define FCPPT_LOG_LEVEL_TO_STRING_IMPL_HPP_INCLUDED
 
-#include <fcppt/enum/names_array_fwd.hpp>
-#include <fcppt/enum/names_impl_fwd.hpp>
+#include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string_view>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 namespace enum_
 {
 template <>
-struct names_impl<fcppt::log::level>
+struct to_string_impl<fcppt::log::level>
 {
   FCPPT_LOG_DETAIL_SYMBOL
-  static fcppt::enum_::names_array<fcppt::log::level> const &get();
+  static std::string_view get(fcppt::log::level);
 };
 
 }

@@ -691,6 +691,7 @@ set(
 	libs/core/include/fcppt/enum/from_string_impl_fwd.hpp
 	libs/core/include/fcppt/enum/index_of_array.hpp
 	libs/core/include/fcppt/enum/input.hpp
+	libs/core/include/fcppt/enum/is_object.hpp
 	libs/core/include/fcppt/enum/iterator_decl.hpp
 	libs/core/include/fcppt/enum/iterator_fwd.hpp
 	libs/core/include/fcppt/enum/iterator_impl.hpp
@@ -704,7 +705,6 @@ set(
 	libs/core/include/fcppt/enum/names.hpp
 	libs/core/include/fcppt/enum/names_array.hpp
 	libs/core/include/fcppt/enum/names_array_fwd.hpp
-	libs/core/include/fcppt/enum/names_impl_fwd.hpp
 	libs/core/include/fcppt/enum/output.hpp
 	libs/core/include/fcppt/enum/range_decl.hpp
 	libs/core/include/fcppt/enum/range_fwd.hpp
@@ -716,7 +716,7 @@ set(
 	libs/core/include/fcppt/enum/size_type_impl_fwd.hpp
 	libs/core/include/fcppt/enum/to_static.hpp
 	libs/core/include/fcppt/enum/to_string.hpp
-	libs/core/include/fcppt/enum/to_string_impl.hpp
+	libs/core/include/fcppt/enum/to_string_case.hpp
 	libs/core/include/fcppt/enum/to_string_impl_fwd.hpp
 	libs/core/include/fcppt/error/strerrno.hpp
 	libs/core/include/fcppt/error/strerror.hpp
@@ -775,6 +775,8 @@ set(
 	libs/core/include/fcppt/io/istream_fwd.hpp
 	libs/core/include/fcppt/io/istringstream.hpp
 	libs/core/include/fcppt/io/istringstream_fwd.hpp
+	libs/core/include/fcppt/io/narrow_string.hpp
+	libs/core/include/fcppt/io/narrow_string_locale.hpp
 	libs/core/include/fcppt/io/optional_buffer.hpp
 	libs/core/include/fcppt/io/optional_buffer_fwd.hpp
 	libs/core/include/fcppt/io/ostream.hpp
@@ -1644,8 +1646,8 @@ set(
 	libs/log/include/fcppt/log/level_stream_array.hpp
 	libs/log/include/fcppt/log/level_stream_array_fwd.hpp
 	libs/log/include/fcppt/log/level_stream_fwd.hpp
-	libs/log/include/fcppt/log/level_strings.hpp
 	libs/log/include/fcppt/log/level_to_string.hpp
+	libs/log/include/fcppt/log/level_to_string_impl.hpp
 	libs/log/include/fcppt/log/location.hpp
 	libs/log/include/fcppt/log/location_fwd.hpp
 	libs/log/include/fcppt/log/name.hpp

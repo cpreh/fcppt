@@ -3,7 +3,19 @@
 
 \section changes_changes_to_380 3.8.0
 
-\subsection changes_changed_functionality_to_370 Changed functionality
+\subsection changes_added_functionality_to_380 Added functionality
+
+<ul>
+
+<li>\ref fcpptio
+	<ul>
+	<li>Added #fcppt::io::narrow_string and #fcppt::io::narrow_string_locale.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_380 Changed functionality
 
 <ul>
 <li>The deprecated <code>std::result_of_t</code> has been replaced with <code>std::invoke_result_t</code>.</li>
@@ -62,7 +74,8 @@
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Removed <code>fcppt::enum::from_int_exn</code>.</li>
+	<li>Removed <code>fcppt::enum_::from_int_exn</code>.</li>
+	<li>Removed customization point for #fcppt::enum_::names and default implementation of #fcppt::enum_::to_string_impl.</li>
 	</ul>
 </li>
 
@@ -1400,7 +1413,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Added #fcppt::enum_::names and #fcppt::enum_::names_impl.
+	<li>Added <code>fcppt::enum_::names</code> and <code>fcppt::enum_::names_impl</code>.
 	<li>Added #fcppt::enum_::from_string and #fcppt::enum_::from_string_impl.
 	<li>Added #fcppt::enum_::to_string and #fcppt::enum_::to_string_impl.
 	<li>Added #fcppt::enum_::input and #fcppt::enum_::output.

@@ -21,6 +21,14 @@ add_fcppt_io_test(
 )
 
 add_fcppt_io_test(
+	narrow_string
+)
+
+add_fcppt_io_test(
+	narrow_string_locale
+)
+
+add_fcppt_io_test(
 	peek
 )
 

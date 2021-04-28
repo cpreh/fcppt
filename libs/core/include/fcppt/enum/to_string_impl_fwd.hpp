@@ -10,6 +10,13 @@ namespace fcppt
 {
 namespace enum_
 {
+/**
+\brief Customization point for #fcppt::enum_::to_string.
+\ingroup fcpptenum
+
+A specialization of this class should contain a static member function
+<code>std::string_view get(Enum)</code>.
+*/
 template <typename Enum, typename Enable = void>
 struct to_string_impl;
 

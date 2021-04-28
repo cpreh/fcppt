@@ -6,8 +6,10 @@
 #ifndef FCPPT_ENUM_NAMES_ARRAY_FWD_HPP_INCLUDED
 #define FCPPT_ENUM_NAMES_ARRAY_FWD_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/enum/array_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string_view>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -18,10 +20,10 @@ namespace enum_
 
 \ingroup fcpptenum
 
-\tparam Enum Must be an enum type
+\tparam Enum Must be an enum type.
 */
 template <typename Enum>
-using names_array = fcppt::enum_::array<Enum, fcppt::string>;
+using names_array = fcppt::enum_::array<Enum, std::string_view>;
 
 }
 }

@@ -7,8 +7,10 @@
 #define FCPPT_ENUM_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/enum/to_string.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/io/widen_string.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <iosfwd>
+#include <string>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,14 +30,15 @@ This function is useful to implement <code>operator<<</code> for an enum type.
 
 \return \a _stream
 */
-template <typename Enum>
-fcppt::io::ostream &output(fcppt::io::ostream &_stream, Enum const _value)
+template <
+    typename Ch,
+    typename Traits,
+    typename Enum,
+    typename = std::enable_if<fcppt::enum_::is_object<Enum>::value>>
+std::basic_ostream<Ch, Traits> &output(std::basic_ostream<Ch, Traits> &_stream, Enum const _value)
 {
-  static_assert(std::is_enum<Enum>::value, "Enum must be an enum type");
-
-  return _stream << fcppt::enum_::to_string(_value);
+  return _stream << fcppt::io::widen_string(std::string{fcppt::enum_::to_string(_value)});
 }
-
 }
 }
 

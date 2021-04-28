@@ -6,14 +6,13 @@
 #ifndef FCPPT_ENUM_FROM_STRING_IMPL_HPP_INCLUDED
 #define FCPPT_ENUM_FROM_STRING_IMPL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/string_view.hpp>
 #include <fcppt/enum/from_string_impl_fwd.hpp>
 #include <fcppt/enum/index_of_array.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/names.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -25,18 +24,18 @@ namespace enum_
 
 \ingroup fcpptenum
 
-The default implementation uses #fcppt::enum_names.
+The default implementation iterates over all outputs of #fcppt::enum_::to_string.
 
 \tparam Enum Must be an enum type
 */
 template <typename Enum, typename Enable>
 struct from_string_impl
 {
-  static_assert(std::is_enum_v<Enum>, "Enum must be an enum type");
+  static_assert(fcppt::enum_::is_object<Enum>::value, "Enum must be an enum type");
 
-  static fcppt::optional::object<Enum> get(fcppt::string_view const &_string)
+  static fcppt::optional::object<Enum> get(std::string_view const &_string)
   {
-    return fcppt::enum_::index_of_array(fcppt::enum_::names<Enum>(), fcppt::string{_string});
+    return fcppt::enum_::index_of_array(fcppt::enum_::names<Enum>(), _string);
   }
 };
 

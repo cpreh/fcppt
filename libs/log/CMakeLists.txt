@@ -59,8 +59,8 @@ set(
 	libs/log/include/fcppt/log/level_stream_array.hpp
 	libs/log/include/fcppt/log/level_stream_array_fwd.hpp
 	libs/log/include/fcppt/log/level_stream_fwd.hpp
-	libs/log/include/fcppt/log/level_strings.hpp
 	libs/log/include/fcppt/log/level_to_string.hpp
+	libs/log/include/fcppt/log/level_to_string_impl.hpp
 	libs/log/include/fcppt/log/location.hpp
 	libs/log/include/fcppt/log/location_fwd.hpp
 	libs/log/include/fcppt/log/name.hpp
@@ -91,8 +91,8 @@ set(
 	libs/log/src/log/level_input.cpp
 	libs/log/src/log/level_output.cpp
 	libs/log/src/log/level_stream.cpp
-	libs/log/src/log/level_strings.cpp
 	libs/log/src/log/level_to_string.cpp
+	libs/log/src/log/level_to_string_impl.cpp
 	libs/log/src/log/location.cpp
 	libs/log/src/log/object.cpp
 	libs/log/src/log/out.cpp

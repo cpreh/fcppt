@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_LEVEL_FROM_STRING_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_FROM_STRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/string_view.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
@@ -25,7 +25,7 @@ enumerator. Accepts all strings as parameters that are listed in #fcppt::log::le
 \param name the name of the log level
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::log::optional_level level_from_string(fcppt::string const &name);
+fcppt::log::optional_level level_from_string(fcppt::string_view const &name);
 
 }
 }

@@ -6,14 +6,16 @@
 #ifndef FCPPT_ENUM_INPUT_HPP_INCLUDED
 #define FCPPT_ENUM_INPUT_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/enum/from_string.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/io/extract.hpp>
-#include <fcppt/io/istream.hpp>
+#include <fcppt/io/narrow_string.hpp>
+#include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
+#include <string>
+#include <string_view>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,23 +36,27 @@ This function is useful to implement <code>operator>></code> for an enum type.
 
 \return \a _stream
 */
-template <typename Enum>
-fcppt::io::istream &input(fcppt::io::istream &_stream, Enum &_result)
+template <
+    typename Ch,
+    typename Traits,
+    typename Enum,
+    typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+std::basic_istream<Ch, Traits> &input(std::basic_istream<Ch, Traits> &_stream, Enum &_result)
 {
-  static_assert(std::is_enum_v<Enum>, "Enum must be an enum type");
-
-  fcppt::optional::maybe_void(
-      fcppt::io::extract<fcppt::string>(_stream),
-      [&_result, &_stream](fcppt::string const &_value) {
-        fcppt::optional::maybe(
-            fcppt::enum_::from_string<Enum>(_value),
-            [&_stream] { _stream.setstate(std::ios_base::failbit); },
-            [&_result](Enum const _arg) { _result = _arg; });
-      });
+  fcppt::optional::maybe(
+      fcppt::optional::bind(
+          fcppt::io::extract<std::basic_string<Ch, Traits>>(_stream),
+          [&_stream](std::basic_string<Ch, Traits> const &_value)
+          {
+            return fcppt::optional::bind(
+                fcppt::io::narrow_string(_stream, std::basic_string_view<Ch, Traits>{_value}),
+                [](std::string const &_string) { return fcppt::enum_::from_string<Enum>(_string); });
+          }),
+      [&_stream] { _stream.setstate(std::ios_base::failbit); },
+      [&_result](Enum const _arg) { _result = _arg; });
 
   return _stream;
 }
-
 }
 }
 
