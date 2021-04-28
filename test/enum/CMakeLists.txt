@@ -39,6 +39,7 @@ add_fcppt_enum_test(
 	string
 	LINK_LIBS
 		fcppt_catch_interface
+		"${fcppt_core_TARGET}"
 )
 
 add_fcppt_enum_test(
