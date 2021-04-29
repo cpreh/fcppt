@@ -15,10 +15,6 @@ add_fcppt_container_bitfield_test(
 )
 
 add_fcppt_container_bitfield_test(
-	empty
-)
-
-add_fcppt_container_bitfield_test(
 	hash
 )
 
@@ -33,11 +29,21 @@ add_fcppt_container_bitfield_test(
 )
 
 add_fcppt_container_bitfield_test(
+	large
+)
+
+add_fcppt_container_bitfield_test(
 	object
 )
 
 add_fcppt_container_bitfield_test(
 	operators
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_container_bitfield_test(
+	output
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
 )

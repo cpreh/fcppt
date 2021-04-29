@@ -21,10 +21,10 @@ namespace bitfield
 
 Checks if all bits set in \a _left are also set in \a _right.
 */
-template <typename ElementType, typename NumElements, typename InternalType>
+template <typename ElementType, typename InternalType>
 bool is_subset_eq(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
+    fcppt::container::bitfield::object<ElementType, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
   return (_left & _right) == _left;
 }

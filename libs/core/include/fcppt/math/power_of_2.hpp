@@ -29,9 +29,9 @@ Returns <code>2 ^ _exponent</code>.
 template <typename Result, typename Exponent>
 inline constexpr Result power_of_2(Exponent const _exponent)
 {
-  static_assert(std::is_unsigned<Exponent>::value, "Exponent must be unsigned");
+  static_assert(std::is_unsigned_v<Exponent>, "Exponent must be unsigned");
 
-  return fcppt::literal<Result>(1) << _exponent;
+  return static_cast<Result>(fcppt::literal<Result>(1) << _exponent);
 }
 
 }

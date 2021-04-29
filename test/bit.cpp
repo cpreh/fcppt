@@ -10,10 +10,12 @@
 #include <fcppt/bit/test.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
+
 static_assert(fcppt::bit::shifted_mask_c<unsigned, 10>().get() == 1U << 10U);
 
 }
@@ -21,6 +23,8 @@ static_assert(fcppt::bit::shifted_mask_c<unsigned, 10>().get() == 1U << 10U);
 TEST_CASE("bit", "[bit]")
 {
   CHECK(fcppt::bit::shifted_mask<unsigned>(10).get() == 1U << 10U);
+
+  CHECK(fcppt::bit::shifted_mask<std::uint8_t>(3).get() == std::uint8_t{1U} << 3U);
 
   auto const mask_c(fcppt::bit::mask_c<unsigned, 0xFFU>());
 

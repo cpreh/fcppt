@@ -25,20 +25,15 @@ namespace bitfield
 
 Returns the underlying value of \a _bitfield. This function can only be called
 if the bitfield consists of exactly one underlying value (which means that
-<code>_bitfield::array_size::value == 1u</code>).
-
-\tparam NumElements Must fit into exactly one object of type \a InternalType.
+<code>_bitfield::array_size::value == 1U</code>).
 */
 template <
     typename ElementType,
-    typename NumElements,
     typename InternalType,
     typename = std::enable_if_t<
-        fcppt::container::bitfield::object<ElementType, NumElements, InternalType>::array_size::
-            value == 1U>>
-typename fcppt::container::bitfield::object<ElementType, NumElements, InternalType>::internal_type
-underlying_value(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_bitfield)
+        fcppt::container::bitfield::object<ElementType, InternalType>::array_size::value == 1U>>
+typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type
+underlying_value(fcppt::container::bitfield::object<ElementType, InternalType> const &_bitfield)
 {
   return fcppt::array::get<0>(_bitfield.array());
 }

@@ -24,7 +24,7 @@ template <typename Type>
 class mask
 {
 public:
-  static_assert(std::is_integral<Type>::value, "Type must be integral");
+  static_assert(std::is_integral_v<Type>, "Type must be integral");
 
   constexpr explicit mask(Type) noexcept;
 

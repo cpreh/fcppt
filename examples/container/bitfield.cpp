@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/text.hpp>
-#include <fcppt/container/bitfield/enum_object.hpp>
+#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/io/cout.hpp>
 
@@ -18,7 +18,7 @@ enum class person_status
   fcppt_maximum = tired // note the extra field here
 };
 
-using bitfield = fcppt::container::bitfield::enum_object<person_status>;
+using bitfield = fcppt::container::bitfield::object<person_status>;
 
 void output(bitfield const &_field)
 {

@@ -389,13 +389,12 @@ set(
 	libs/core/include/fcppt/const_pointer_cast.hpp
 	libs/core/include/fcppt/container/at_optional.hpp
 	libs/core/include/fcppt/container/bitfield/array.hpp
+	libs/core/include/fcppt/container/bitfield/array_fwd.hpp
 	libs/core/include/fcppt/container/bitfield/comparison.hpp
 	libs/core/include/fcppt/container/bitfield/default_internal_type.hpp
 	libs/core/include/fcppt/container/bitfield/detail/element_bits.hpp
 	libs/core/include/fcppt/container/bitfield/detail/make_range.hpp
 	libs/core/include/fcppt/container/bitfield/detail/null_array.hpp
-	libs/core/include/fcppt/container/bitfield/enum_object.hpp
-	libs/core/include/fcppt/container/bitfield/enum_object_fwd.hpp
 	libs/core/include/fcppt/container/bitfield/hash.hpp
 	libs/core/include/fcppt/container/bitfield/hash_decl.hpp
 	libs/core/include/fcppt/container/bitfield/hash_fwd.hpp

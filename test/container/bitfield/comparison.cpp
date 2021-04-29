@@ -4,15 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/assert/unreachable.hpp>
-#include <fcppt/container/bitfield/comparison.hpp>
-#include <fcppt/container/bitfield/enum_object.hpp>
+#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string_view>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -49,7 +47,7 @@ struct to_string_impl<test_enum>
 
 TEST_CASE("container::bitfield comparison", "[container],[bitfield]")
 {
-  using bitfield = fcppt::container::bitfield::enum_object<test_enum>;
+  using bitfield = fcppt::container::bitfield::object<test_enum>;
 
   bitfield field1(bitfield::null());
 
@@ -60,10 +58,4 @@ TEST_CASE("container::bitfield comparison", "[container],[bitfield]")
   field2[test_enum::test2] = true;
 
   CHECK(field1 != field2);
-
-  CHECK(field1 < field2);
-
-  std::swap(field1, field2);
-
-  CHECK(field2 < field1);
 }

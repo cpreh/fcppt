@@ -12,6 +12,8 @@
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/enum/is_object.hpp>
+#include <fcppt/enum/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
 #include <type_traits>
@@ -28,30 +30,19 @@ namespace bitfield
 
 \ingroup fcpptcontainerbitfield
 
-\tparam ElementType An integral or enumeration type.
-
-\tparam NumElements An integral constant wrapper specifying the number of bits.
+\tparam ElementType An enumeration type.
 
 \tparam InternalType The internal storage type. Must be unsigned. This is
 #fcppt::container::bitfield::default_internal_type by default.
 
 See \ref fcpptcontainerbitfield for more information.
 */
-template <typename ElementType, typename NumElements, typename InternalType>
+template <typename ElementType, typename InternalType>
 class object
 {
 public:
+  static_assert(fcppt::enum_::is_object<ElementType>::value, "ElementType must be an enum");
   static_assert(std::is_unsigned_v<InternalType>, "InternalType must be unsigned");
-
-  /**
-  \brief The internal array type.
-  */
-  using array_type = fcppt::container::bitfield::array<NumElements, InternalType>;
-
-  /**
-  \brief The size of the underlying array.
-  */
-  using array_size = fcppt::array::size<array_type>;
 
   /**
   \brief Typedef to <code>ElementType</code>.
@@ -59,24 +50,34 @@ public:
   using element_type = ElementType;
 
   /**
-  \brief The size type which is taken from <code>NumElements</code>.
+  \brief Typedef to the internal storage type (template parameter <code>InternalType</code>
   */
-  using size_type = typename NumElements::value_type;
+  using internal_type = InternalType;
+
+  /**
+  \brief The number of elements.
+  */
+  using static_size = fcppt::enum_::size<element_type>;
+
+  /**
+  \brief The internal array type.
+  */
+  using array_type = fcppt::container::bitfield::array<static_size, internal_type>;
+
+  /**
+  \brief The size of the underlying array.
+  */
+  using array_size = fcppt::array::size<array_type>;
+
+  /**
+  \brief The size type which is taken from <code>static_size</code>.
+  */
+  using size_type = typename static_size::value_type;
 
   /**
   \brief The value type, which is bool.
   */
   using value_type = fcppt::container::bitfield::value_type;
-
-  /**
-  \brief Typedef to <code>NumElements</code>.
-  */
-  using static_size = NumElements;
-
-  /**
-  \brief Typedef to the internal storage type (template parameter <code>InternalType</code>
-  */
-  using internal_type = InternalType;
 
   /**
   \brief A type denoting a reference to a mask value (a reference to a

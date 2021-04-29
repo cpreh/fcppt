@@ -21,10 +21,10 @@ namespace std
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wmismatched-tags)
 
-template <typename ElementType, typename NumElements, typename InternalType>
-struct hash<fcppt::container::bitfield::object<ElementType, NumElements, InternalType>>
+template <typename ElementType, typename InternalType>
+struct hash<fcppt::container::bitfield::object<ElementType, InternalType>>
 {
-  using type = fcppt::container::bitfield::object<ElementType, NumElements, InternalType>;
+  using type = fcppt::container::bitfield::object<ElementType, InternalType>;
 
   std::size_t operator()(type const &_value) const
   {

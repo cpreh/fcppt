@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/container/bitfield/enum_object.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -18,11 +18,12 @@ enum class test_enum
   fcppt_maximum = test3
 };
 
-using bitfield = fcppt::container::bitfield::enum_object<test_enum>;
+using bitfield = fcppt::container::bitfield::object<test_enum>;
 
+static_assert(bitfield::array_size::value == 1U);
 }
 
-TEST_CASE("container::bitfield initializer_list", "[container],[bitfield]")
+TEST_CASE("container::bitfield object", "[container],[bitfield]")
 {
   bitfield const field1{test_enum::test1, test_enum::test3};
 

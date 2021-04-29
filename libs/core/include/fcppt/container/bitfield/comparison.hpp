@@ -6,10 +6,8 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_COMPARISON_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/array/comparison.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -22,12 +20,12 @@ namespace bitfield
 
 \ingroup fcpptcontainerbitfield
 */
-template <typename ElementType, typename NumElements, typename InternalType>
+template <typename ElementType, typename InternalType>
 bool operator==(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
+    fcppt::container::bitfield::object<ElementType, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
-  return std::equal(_left.array().begin(), _left.array().end(), _right.array().begin());
+  return _left.array() == _right.array();
 }
 
 /**
@@ -35,65 +33,12 @@ bool operator==(
 
 \ingroup fcpptcontainerbitfield
 */
-template <typename ElementType, typename NumElements, typename InternalType>
+template <typename ElementType, typename InternalType>
 bool operator!=(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
+    fcppt::container::bitfield::object<ElementType, InternalType> const &_left,
+    fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
   return !(_left == _right);
-}
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-
-\ingroup fcpptcontainerbitfield
-*/
-template <typename ElementType, typename NumElements, typename InternalType>
-bool operator<(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
-{
-  return std::lexicographical_compare(
-      _left.array().begin(), _left.array().end(), _right.array().begin(), _right.array().end());
-}
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-
-\ingroup fcpptcontainerbitfield
-*/
-template <typename ElementType, typename NumElements, typename InternalType>
-bool operator<=(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
-{
-  return !(_left > _right);
-}
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-
-\ingroup fcpptcontainerbitfield
-*/
-template <typename ElementType, typename NumElements, typename InternalType>
-bool operator>(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
-{
-  return _right < _left;
-}
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-
-\ingroup fcpptcontainerbitfield
-*/
-template <typename ElementType, typename NumElements, typename InternalType>
-bool operator>=(
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_left,
-    fcppt::container::bitfield::object<ElementType, NumElements, InternalType> const &_right)
-{
-  return !(_left < _right);
 }
 
 }

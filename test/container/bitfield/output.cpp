@@ -3,14 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/output_to_std_string.hpp>
+#include <fcppt/output_to_std_wstring.hpp>
 #include <fcppt/assert/unreachable.hpp>
-#include <fcppt/container/bitfield/operators.hpp>
-#include <fcppt/container/bitfield/object.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <string>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
@@ -47,23 +49,16 @@ struct to_string_impl<test_enum>
 
 }
 
-TEST_CASE("container::bitfield operators", "[container],[bitfield]")
+
+TEST_CASE("container::bitfield output", "[container],[bitfield]")
 {
   using bitfield = fcppt::container::bitfield::object<test_enum>;
 
-  bitfield field1{bitfield::null()};
+  CHECK(fcppt::output_to_std_string(bitfield{test_enum::test3}) == std::string{"{test3}"});
+  CHECK(
+      fcppt::output_to_std_string(bitfield{test_enum::test1, test_enum::test2}) ==
+      std::string{"{test1,test2}"});
+  CHECK(fcppt::output_to_std_string(bitfield{}) == std::string{"{}"});
 
-  field1[test_enum::test1] = true;
-
-  bitfield field2(bitfield::null());
-
-  CHECK((field2 | test_enum::test2)[test_enum::test2]);
-
-  field2[test_enum::test3] = true;
-
-  CHECK((field1 | field2) == bitfield{test_enum::test1, test_enum::test3});
-
-  CHECK((field1 & field2) == bitfield::null());
-
-  CHECK((field1 ^ field2) == bitfield{test_enum::test1, test_enum::test3});
+  CHECK(fcppt::output_to_std_wstring(bitfield{test_enum::test3}) == std::wstring{L"{test3}"});
 }

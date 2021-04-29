@@ -7,7 +7,7 @@
 #include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/test.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
-#include <fcppt/container/bitfield/enum_object.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -23,7 +23,7 @@ TEST_CASE("container::bitfield::underlying_value", "[container],[bitfield]")
     fcppt_maximum = test3
   };
 
-  using bitfield = fcppt::container::bitfield::enum_object<test_enum>;
+  using bitfield = fcppt::container::bitfield::object<test_enum>;
 
   using internal_type = bitfield::internal_type;
 

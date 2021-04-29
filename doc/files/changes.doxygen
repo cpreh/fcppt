@@ -27,6 +27,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>#fcppt::container::bitfield::object can now only be used with enums.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>#fcppt::math::clamp now returns an optional.</li>
@@ -69,6 +75,12 @@
 <li>\ref fcpptcasts
 	<ul>
 	<li>Removed <code>fcppt::cast::dynamic_cross_exn</code> and <code>fcppt::cast::dynamic_exn</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Removed <code>fcppt::container::bitfield::enum_object</code>.</li>
 	</ul>
 </li>
 

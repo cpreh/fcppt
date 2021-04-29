@@ -47,7 +47,7 @@ class proxy
 
   size_type pos_;
 
-  template <typename, typename, typename>
+  template <typename, typename>
   friend class fcppt::container::bitfield::object;
 
   static size_type bit_offset(size_type);

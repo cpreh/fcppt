@@ -3,8 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/container/bitfield/comparison.hpp>
-#include <fcppt/container/bitfield/enum_object.hpp>
+#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -20,7 +19,7 @@ TEST_CASE("container::bitfield hash", "[container],[bitfield]")
     fcppt_maximum = test2
   };
 
-  using bitfield = fcppt::container::bitfield::enum_object<test_enum>;
+  using bitfield = fcppt::container::bitfield::object<test_enum>;
 
   using bitfield_set = std::unordered_set<bitfield>;
 
