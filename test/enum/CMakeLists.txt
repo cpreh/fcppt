@@ -19,6 +19,12 @@ add_fcppt_enum_test(
 )
 
 add_fcppt_enum_test(
+	array_output
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_enum_test(
 	from_int
 	LINK_LIBS
 		fcppt_catch_interface
