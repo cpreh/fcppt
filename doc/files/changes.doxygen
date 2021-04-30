@@ -2112,7 +2112,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptcontainerbitfield
 	<ul>
 	<li>Renamed <code>fcppt::container::bitfield::object_from_enum</code>
-	to #fcppt::container::bitfield::enum_object and introduced
+	to <code>fcppt::container::bitfield::enum_object</code> and introduced
 	an <code>_fwd</code> header.</li>
 	</ul>
 </li>

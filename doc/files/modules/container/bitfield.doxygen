@@ -14,7 +14,7 @@ namespace bitfield
 \ingroup fcpptcontainer
 \brief A statically sized bitfield
 
-\section bitfield_motivation Motivation
+\section bitfield_main Bitfields
 
 Consider the states "a person can be hungry and tired, not hungry and tired,
 hungry and not tired or not hungry and not tired". Being hungry and being tired
@@ -35,30 +35,7 @@ it is limited by the number of bits the biggest integer type can hold. To fix
 this, a bitfield is indexed by natural numbers instead of powers of two and can
 hold an arbitrary (but fixed) number of bits.
 
-\section bitfield_requirements Requirements
-
-<code>fcppt::container::bitfield::object<ElementType, NumElements,
-InternalType></code> has the following requirements:
-
-<ul>
-<li>
-	<code>ElementType</code> is the element type of the bitfield which is
-	used to get or set a single bit. This can be an enum or an integral
-	type.
-</li>
-<li>
-	<code>NumElements</code> is an integral constant specifying the total
-	number of bits.
-</li>
-<li>
-	An array of <code>InternalType</code> is used to hold
-	<code>NumElements</code> of bits. This must be an unsigned type.
-</li>
-</ul>
-
-\section bitfield_example Example
-
-Bitfields are mostly used with enums, see \ref fcpptenum and #fcppt::container::bitfield::enum_object.
+A bitfield is used together with an enum type that fulfils the requirements of \ref fcpptenum.
 
 Here's a small example:
 

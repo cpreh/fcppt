@@ -22,7 +22,9 @@ enum class test_enum
   test7,
   test8,
   test9,
-  fcppt_maximum = test9
+  test10,
+  test11,
+  fcppt_maximum = test11
 };
 
 using bitfield = fcppt::container::bitfield::object<test_enum,std::uint8_t>;
@@ -32,7 +34,7 @@ static_assert(bitfield::array_size::value == 2U);
 
 TEST_CASE("container::bitfield large", "[container],[bitfield]")
 {
-  bitfield const field{test_enum::test7,test_enum::test9};
+  bitfield field{test_enum::test7,test_enum::test9};
 
   CHECK_FALSE(field.get(test_enum::test1));
   CHECK_FALSE(field.get(test_enum::test2));
@@ -41,7 +43,16 @@ TEST_CASE("container::bitfield large", "[container],[bitfield]")
   CHECK_FALSE(field.get(test_enum::test5));
   CHECK_FALSE(field.get(test_enum::test6));
   CHECK_FALSE(field.get(test_enum::test8));
+  CHECK_FALSE(field.get(test_enum::test10));
+  CHECK_FALSE(field.get(test_enum::test11));
 
   CHECK(field.get(test_enum::test7));
   CHECK(field.get(test_enum::test9));
+
+  field.set(test_enum::test8, true);
+
+  CHECK(field.get(test_enum::test8));
+  CHECK(field.get(test_enum::test9));
+  CHECK_FALSE(field.get(test_enum::test10));
+  CHECK_FALSE(field.get(test_enum::test11));
 }

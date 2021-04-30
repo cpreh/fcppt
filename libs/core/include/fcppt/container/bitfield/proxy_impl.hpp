@@ -75,7 +75,7 @@ fcppt::container::bitfield::proxy<StoredType>::operator=(
   }
   else
   {
-    array_->get_unsafe(index) &= ~mask.get();
+    array_->get_unsafe(index) &= static_cast<internal_type>(~mask.get());
   }
 
   return *this;
