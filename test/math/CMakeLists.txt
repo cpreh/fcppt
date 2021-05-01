@@ -70,6 +70,10 @@ add_fcppt_math_test(
 )
 
 add_fcppt_math_test(
+	power_of_2
+)
+
+add_fcppt_math_test(
 	rad_to_deg
 )
 
