@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_BITFIELD_INIT_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/object_impl.hpp>
-#include <fcppt/container/bitfield/detail/make_range.hpp>
+#include <fcppt/enum/make_range.hpp>
 
 namespace fcppt
 {
@@ -34,8 +34,7 @@ Result init(Function const &_function)
 
   using element_type = typename Result::element_type;
 
-  for (element_type const value :
-       fcppt::container::bitfield::detail::make_range<element_type, typename Result::static_size>())
+  for (element_type const value : fcppt::enum_::make_range<element_type>())
   {
     result.set(value, _function(value));
   }

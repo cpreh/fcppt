@@ -11,6 +11,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/static_cast_fun.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
@@ -28,11 +29,12 @@ function
 
 \ingroup fcpptenum
 */
-template <typename Enum, typename Function>
+template <
+    typename Enum,
+    typename Function,
+    typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
 inline decltype(auto) to_static(Enum const _enum, Function const &_function)
 {
-  static_assert(std::is_enum_v<Enum>, "runtime_enum can only be used on enumeration types");
-
   using int_type = fcppt::enum_::size_type<Enum>;
 
   return fcppt::runtime_index<fcppt::enum_::size<Enum>>(

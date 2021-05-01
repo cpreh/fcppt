@@ -6,6 +6,7 @@
 #ifndef FCPPT_ENUM_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_ENUM_RANGE_DECL_HPP_INCLUDED
 
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/iterator_fwd.hpp>
 #include <fcppt/enum/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -31,7 +32,7 @@ public:
 
   using const_iterator = iterator;
 
-  static_assert(std::is_enum_v<Enum>, "Enum must be an enumeration type");
+  static_assert(fcppt::enum_::is_object<Enum>::value, "Enum must be an fcppt.enum type");
 
   using size_type = fcppt::enum_::size_type<Enum>;
 

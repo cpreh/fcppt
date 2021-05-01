@@ -176,7 +176,6 @@ set(
 	libs/core/include/fcppt/container/bitfield/comparison.hpp
 	libs/core/include/fcppt/container/bitfield/default_internal_type.hpp
 	libs/core/include/fcppt/container/bitfield/detail/element_bits.hpp
-	libs/core/include/fcppt/container/bitfield/detail/make_range.hpp
 	libs/core/include/fcppt/container/bitfield/detail/null_array.hpp
 	libs/core/include/fcppt/container/bitfield/hash.hpp
 	libs/core/include/fcppt/container/bitfield/hash_decl.hpp
@@ -483,9 +482,7 @@ set(
 	libs/core/include/fcppt/enum/make_range_start.hpp
 	libs/core/include/fcppt/enum/make_range_start_end.hpp
 	libs/core/include/fcppt/enum/max_value.hpp
-	libs/core/include/fcppt/enum/max_value_fwd.hpp
 	libs/core/include/fcppt/enum/min_value.hpp
-	libs/core/include/fcppt/enum/min_value_fwd.hpp
 	libs/core/include/fcppt/enum/names.hpp
 	libs/core/include/fcppt/enum/names_array.hpp
 	libs/core/include/fcppt/enum/names_array_fwd.hpp
@@ -494,7 +491,6 @@ set(
 	libs/core/include/fcppt/enum/range_fwd.hpp
 	libs/core/include/fcppt/enum/range_impl.hpp
 	libs/core/include/fcppt/enum/size.hpp
-	libs/core/include/fcppt/enum/size_fwd.hpp
 	libs/core/include/fcppt/enum/size_type.hpp
 	libs/core/include/fcppt/enum/size_type_impl.hpp
 	libs/core/include/fcppt/enum/size_type_impl_fwd.hpp

@@ -7,7 +7,7 @@
 #define FCPPT_ENUM_MIN_VALUE_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_enum.hpp>
-#include <fcppt/enum/min_value_fwd.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,11 +23,8 @@ namespace enum_
 
 \tparam Type Must be an enum type
 */
-template <typename Type>
-struct min_value : std::integral_constant<Type, fcppt::cast::int_to_enum<Type>(0)>
-{
-  static_assert(std::is_enum<Type>::value, "Type must be an enum type");
-};
+template <typename Type, typename = std::enable_if_t<fcppt::enum_::is_object<Type>::value>>
+using min_value = std::integral_constant<Type, fcppt::cast::int_to_enum<Type>(0)>;
 
 }
 }

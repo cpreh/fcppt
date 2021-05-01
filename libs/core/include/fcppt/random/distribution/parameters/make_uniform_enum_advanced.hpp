@@ -7,6 +7,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_ENUM_ADVANCED_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_enum.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
@@ -23,13 +24,11 @@ namespace distribution
 {
 namespace parameters
 {
-template <typename Distribution, typename Enum>
+template <typename Distribution, typename Enum,
+typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
 fcppt::random::distribution::parameters::uniform_int<Enum, Distribution>
 make_uniform_enum_advanced()
 {
-  static_assert(
-      std::is_enum_v<Enum>, "make_uniform_enum_advanced can only be used for enumeration types");
-
   using param_type = fcppt::random::distribution::parameters::uniform_int<Enum, Distribution>;
 
   return param_type(

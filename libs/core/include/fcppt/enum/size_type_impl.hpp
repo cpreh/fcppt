@@ -6,6 +6,7 @@
 #ifndef FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 #define FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/size_type_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -25,7 +26,7 @@ namespace enum_
 template <typename Type>
 struct size_type_impl
 {
-  static_assert(std::is_enum_v<Type>, "Type must be an enum type");
+  static_assert(fcppt::enum_::is_object<Type>::value, "Type must be an fcppt.enum type");
 
   using type = std::make_unsigned_t<std::underlying_type_t<Type>>;
 };

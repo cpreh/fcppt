@@ -27,16 +27,14 @@ integer value. Consider using fcppt::cast_to_enum instead.
 
 \tparam Enum Must be an enumeration type
 */
-template <typename Enum, typename Source>
+template <
+    typename Enum,
+    typename Source,
+    typename = std::enable_if_t<std::conjunction_v<std::is_enum<Enum>, std::is_integral<Source>>>>
 inline constexpr Enum int_to_enum(Source const _source) noexcept
 {
-  static_assert(
-      std::is_enum_v<Enum> && std::is_integral_v<Source>,
-      "int_to_enum can only cast from integral types to enumerations");
-
   return static_cast<Enum>(_source);
 }
-
 }
 }
 

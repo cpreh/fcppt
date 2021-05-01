@@ -8,6 +8,7 @@
 
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/size.hpp>
 #include <fcppt/enum/size_type.hpp>
 #include <fcppt/optional/make_if.hpp>
@@ -34,18 +35,17 @@ cast fails.
 
 \tparam Value Must be an unsigned type
 */
-template <typename Enum, typename Value>
+template <
+    typename Enum,
+    typename Value,
+    typename = std::enable_if_t<
+        std::conjunction_v<std::is_unsigned<Value>, fcppt::enum_::is_object<Enum>>>>
 fcppt::optional::object<Enum> from_int(Value const &_value) noexcept
 {
-  static_assert(
-      std::is_unsigned<Value>::value && std::is_enum<Enum>::value,
-      "cast_to_enum can only cast from unsigned types to enumeration types");
-
   return fcppt::optional::make_if(
       fcppt::cast::size<fcppt::enum_::size_type<Enum>>(_value) < fcppt::enum_::size<Enum>::value,
       [&_value] { return fcppt::cast::int_to_enum<Enum>(_value); });
 }
-
 }
 }
 

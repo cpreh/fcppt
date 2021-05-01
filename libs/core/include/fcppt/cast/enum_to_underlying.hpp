@@ -23,11 +23,9 @@ Converts \a _enum to its underlying integer type. This cast is safe.
 
 \tparam Enum Must be an enumeration type
 */
-template <typename Enum>
+template <typename Enum, typename = std::enable_if<std::is_enum_v<Enum>>>
 inline constexpr std::underlying_type_t<Enum> enum_to_underlying(Enum const _enum) noexcept
 {
-  static_assert(std::is_enum<Enum>::value, "Enum must be an enumeration type");
-
   return static_cast<std::underlying_type_t<Enum>>(_enum);
 }
 
