@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/assert/unreachable.hpp>
-#include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/container/bitfield/object.hpp>
+#include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/container/bitfield/output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>

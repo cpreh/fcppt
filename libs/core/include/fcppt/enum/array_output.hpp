@@ -8,9 +8,9 @@
 
 #include <fcppt/char_literal.hpp>
 #include <fcppt/enum/array_impl.hpp>
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/make_range.hpp>
 #include <fcppt/enum/max_value.hpp>
-#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/config/external_begin.hpp>

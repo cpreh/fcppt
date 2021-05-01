@@ -5,8 +5,8 @@
 
 #include <fcppt/math/power_of_2.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstdint>
 #include <catch2/catch.hpp>
+#include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("math::power_of_2", "[math]")

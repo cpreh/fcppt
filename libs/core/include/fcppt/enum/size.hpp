@@ -7,8 +7,8 @@
 #define FCPPT_ENUM_SIZE_HPP_INCLUDED
 
 #include <fcppt/cast/enum_to_int.hpp>
-#include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/is_object.hpp>
+#include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
