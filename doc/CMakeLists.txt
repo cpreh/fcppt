@@ -684,10 +684,12 @@ set(
 	libs/core/include/fcppt/enum/array_impl.hpp
 	libs/core/include/fcppt/enum/array_init.hpp
 	libs/core/include/fcppt/enum/array_output.hpp
+	libs/core/include/fcppt/enum/detail/has_maximum.hpp
 	libs/core/include/fcppt/enum/from_int.hpp
 	libs/core/include/fcppt/enum/from_string.hpp
 	libs/core/include/fcppt/enum/from_string_impl.hpp
 	libs/core/include/fcppt/enum/from_string_impl_fwd.hpp
+	libs/core/include/fcppt/enum/has_maximum.hpp
 	libs/core/include/fcppt/enum/index_of_array.hpp
 	libs/core/include/fcppt/enum/input.hpp
 	libs/core/include/fcppt/enum/is_object.hpp

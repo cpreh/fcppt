@@ -32,6 +32,11 @@ add_fcppt_enum_test(
 )
 
 add_fcppt_enum_test(
+	has_maximum
+	NO_CODE
+)
+
+add_fcppt_enum_test(
 	index_of_array
 	LINK_LIBS
 		fcppt_catch_interface
