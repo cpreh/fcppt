@@ -20,7 +20,7 @@ struct has_maximum
 };
 
 template<typename Enum>
-struct has_maximum<Enum, std::enable_if_t<Enum::fcppt_maximum == Enum::fcppt_maximum>>
+struct has_maximum<Enum, std::enable_if_t<Enum::fcppt_maximum == Enum::fcppt_maximum>> // NOLINT(misc-redundant-expression)
 {
   using type = std::true_type;
 };
