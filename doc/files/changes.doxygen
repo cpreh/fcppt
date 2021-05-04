@@ -7,6 +7,24 @@
 
 <ul>
 
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>The output operator of #fcppt::container::bitfield::object now works on arbitrary char types.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>#fcppt::enum_::input, #fcppt::enum_::output and the output operator of #fcppt::enum_::array now work on arbitrary char types.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmetal
+	<ul>
+	<li>#fcppt::metal::print now works on arbitrary char types.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptio
 	<ul>
 	<li>Added #fcppt::io::narrow_string and #fcppt::io::narrow_string_locale.</li>
@@ -33,9 +51,21 @@
 	</ul>
 </li>
 
+<li>\ref fcpptenum
+	<ul>
+	<li>Enum names now use <code>std::string</code>. The function #fcppt::enum_::to_string in particular returns a <code>std::string_view</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>#fcppt::math::clamp now returns an optional.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmetal
+	<ul>
+	<li>#fcppt::metal::sequence_to_string now returns a <code>std::string</code></li>.
 	</ul>
 </li>
 
@@ -104,6 +134,14 @@
 	</ul>
 </li>
 
+</ul>
+
+\subsection changes_bugfixes_to_380 Bugfixes
+
+<ul>
+<li>
+Fixed a gcc-11 issue regarding parameter expansion.
+</li>
 </ul>
 
 \section changes_changes_to_370 3.7.0
