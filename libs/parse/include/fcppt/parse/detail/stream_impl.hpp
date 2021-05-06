@@ -31,8 +31,11 @@ fcppt::parse::detail::stream<Ch>::stream(impl_ref const _impl)
 {
 }
 
+namespace fcppt::parse::detail
+{
 template <typename Ch>
-fcppt::parse::detail::stream<Ch>::~stream<Ch>() = default;
+stream<Ch>::~stream() = default;
+}
 
 template <typename Ch>
 fcppt::optional::object<Ch> fcppt::parse::detail::stream<Ch>::get_char()

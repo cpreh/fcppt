@@ -46,8 +46,11 @@ fcppt::intrusive::list<Type> &fcppt::intrusive::list<Type>::operator=(list &&_ot
   return *this;
 }
 
+namespace fcppt::intrusive
+{
 template <typename Type>
-fcppt::intrusive::list<Type>::~list<Type>() = default;
+list<Type>::~list() = default;
+}
 
 template <typename Type>
 typename fcppt::intrusive::list<Type>::iterator fcppt::intrusive::list<Type>::begin()

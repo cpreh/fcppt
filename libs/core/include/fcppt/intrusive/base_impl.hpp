@@ -66,12 +66,15 @@ inline fcppt::intrusive::base<Type> &fcppt::intrusive::base<Type>::operator=(bas
   return *this;
 }
 
+namespace fcppt::intrusive
+{
 template <typename Type>
-inline fcppt::intrusive::base<Type>::~base<Type>()
+inline base<Type>::~base()
 {
   next_->prev_ = prev_;
 
   prev_->next_ = next_;
+}
 }
 
 template <typename Type>

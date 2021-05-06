@@ -26,8 +26,10 @@ fcppt::signal::unregister::detail::concrete_connection<Function>::concrete_conne
 {
 }
 
+namespace fcppt::signal::unregister::detail
+{
 template <typename Function>
-fcppt::signal::unregister::detail::concrete_connection<Function>::~concrete_connection<Function>()
+concrete_connection<Function>::~concrete_connection()
 {
   this->unlink();
 
@@ -39,6 +41,7 @@ fcppt::signal::unregister::detail::concrete_connection<Function>::~concrete_conn
   {
     std::terminate();
   }
+}
 }
 
 template <typename Function>

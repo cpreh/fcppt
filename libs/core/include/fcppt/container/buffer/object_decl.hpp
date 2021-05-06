@@ -25,7 +25,7 @@ namespace buffer
 
 \ingroup fcpptcontainerbuffer
 
-\tparam T Must be a POD type.
+\tparam T Must be a trivial type.
 
 \tparam A The allocator type.
 
@@ -34,7 +34,7 @@ See \ref fcpptcontainerbuffer for more information.
 template <typename T, typename A>
 class object
 {
-  static_assert(std::is_pod_v<T>, "T must be a POD");
+  static_assert(std::is_trivial_v<T>, "T must be a trivial type");
 
   FCPPT_NONCOPYABLE(object);
 

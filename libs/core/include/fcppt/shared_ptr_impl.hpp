@@ -109,8 +109,11 @@ fcppt::shared_ptr<Type, Deleter>::operator=(fcppt::unique_ptr<Other, Deleter> &&
   return *this;
 }
 
+namespace fcppt
+{
 template <typename Type, typename Deleter>
-fcppt::shared_ptr<Type, Deleter>::~shared_ptr<Type, Deleter>() noexcept = default;
+shared_ptr<Type, Deleter>::~shared_ptr() noexcept = default;
+}
 
 template <typename Type, typename Deleter>
 typename fcppt::shared_ptr<Type, Deleter>::reference

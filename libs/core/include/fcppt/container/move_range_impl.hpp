@@ -25,8 +25,11 @@ template <typename Container>
 fcppt::container::move_range<Container> &
 fcppt::container::move_range<Container>::operator=(move_range &&) noexcept = default;
 
+namespace fcppt::container
+{
 template <typename Container>
-fcppt::container::move_range<Container>::~move_range<Container>() = default;
+move_range<Container>::~move_range() = default;
+}
 
 template <typename Container>
 typename fcppt::container::move_range<Container>::iterator

@@ -29,8 +29,11 @@ template <typename Type, typename Deleter>
 inline fcppt::unique_ptr<Type, Deleter> &
 fcppt::unique_ptr<Type, Deleter>::operator=(unique_ptr &&) noexcept = default;
 
+namespace fcppt
+{
 template <typename Type, typename Deleter>
-inline fcppt::unique_ptr<Type, Deleter>::~unique_ptr<Type, Deleter>() = default;
+inline unique_ptr<Type, Deleter>::~unique_ptr() = default;
+}
 
 template <typename Type, typename Deleter>
 inline std::add_lvalue_reference_t<Type>

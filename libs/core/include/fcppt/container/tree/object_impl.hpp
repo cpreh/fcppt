@@ -98,8 +98,11 @@ fcppt::container::tree::object<T> &fcppt::container::tree::object<T>::operator=(
   return *this;
 }
 
+namespace fcppt::container::tree
+{
 template <typename T>
-fcppt::container::tree::object<T>::~object<T>() = default;
+object<T>::~object() = default;
+}
 
 template <typename T>
 typename fcppt::container::tree::object<T>::child_list const &

@@ -21,8 +21,11 @@ fcppt::parse::detail::concrete<Parser, Ch, Skipper>::concrete(Parser &&_parser)
 {
 }
 
+namespace fcppt::parse::detail
+{
 template <typename Parser, typename Ch, typename Skipper>
-fcppt::parse::detail::concrete<Parser, Ch, Skipper>::~concrete<Parser, Ch, Skipper>() = default;
+concrete<Parser, Ch, Skipper>::~concrete() = default;
+}
 
 template <typename Parser, typename Ch, typename Skipper>
 fcppt::parse::result<Ch, typename fcppt::parse::detail::concrete<Parser, Ch, Skipper>::result_type>

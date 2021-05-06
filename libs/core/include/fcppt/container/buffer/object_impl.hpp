@@ -44,10 +44,13 @@ fcppt::container::buffer::object<T, A>::operator=(object &&_other) noexcept
   return *this;
 }
 
+namespace fcppt::container::buffer
+{
 template <typename T, typename A>
-fcppt::container::buffer::object<T, A>::~object<T, A>() noexcept
+object<T, A>::~object() noexcept
 {
   impl_.deallocate();
+}
 }
 
 template <typename T, typename A>

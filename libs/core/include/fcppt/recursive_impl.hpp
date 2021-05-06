@@ -47,8 +47,11 @@ fcppt::recursive<Type> &fcppt::recursive<Type>::operator=( // NOLINT(cert-oop54-
 template <typename Type>
 fcppt::recursive<Type> &fcppt::recursive<Type>::operator=(recursive &&) noexcept = default;
 
+namespace fcppt
+{
 template <typename Type>
-fcppt::recursive<Type>::~recursive<Type>() = default;
+recursive<Type>::~recursive() = default;
+}
 
 template <typename Type>
 Type &fcppt::recursive<Type>::get()

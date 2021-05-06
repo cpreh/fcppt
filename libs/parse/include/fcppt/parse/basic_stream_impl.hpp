@@ -11,7 +11,10 @@
 template <typename Ch>
 fcppt::parse::basic_stream<Ch>::basic_stream() = default;
 
+namespace fcppt::parse
+{
 template <typename Ch>
-fcppt::parse::basic_stream<Ch>::~basic_stream<Ch>() = default;
+basic_stream<Ch>::~basic_stream() = default;
+}
 
 #endif

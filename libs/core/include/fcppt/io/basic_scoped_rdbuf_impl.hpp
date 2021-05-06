@@ -19,10 +19,13 @@ fcppt::io::basic_scoped_rdbuf<Ch, Traits>::basic_scoped_rdbuf(
 {
 }
 
+namespace fcppt::io
+{
 template <typename Ch, typename Traits>
-fcppt::io::basic_scoped_rdbuf<Ch, Traits>::~basic_scoped_rdbuf<Ch, Traits>()
+basic_scoped_rdbuf<Ch, Traits>::~basic_scoped_rdbuf()
 {
   this->stream_.get().rdbuf(this->old_);
+}
 }
 
 #endif

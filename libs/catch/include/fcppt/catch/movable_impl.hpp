@@ -48,8 +48,11 @@ fcppt::catch_::movable<Type> &fcppt::catch_::movable<Type>::operator=(movable &&
   return *this;
 }
 
+namespace fcppt::catch_
+{
 template <typename Type>
-fcppt::catch_::movable<Type>::~movable<Type>() = default;
+movable<Type>::~movable() = default;
+}
 
 template <typename Type>
 Type &fcppt::catch_::movable<Type>::value()

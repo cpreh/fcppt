@@ -101,8 +101,11 @@ fcppt::container::grid::object<T, N, A> &fcppt::container::grid::object<T, N, A>
   return *this;
 }
 
+namespace fcppt::container::grid
+{
 template <typename T, fcppt::container::grid::size_type N, typename A>
-fcppt::container::grid::object<T, N, A>::~object<T, N, A>() = default;
+object<T, N, A>::~object() = default;
+}
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
 typename fcppt::container::grid::object<T, N, A>::reference

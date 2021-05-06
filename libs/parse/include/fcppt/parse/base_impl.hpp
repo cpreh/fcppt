@@ -11,7 +11,10 @@
 template <typename Result, typename Ch, typename Skipper>
 fcppt::parse::base<Result, Ch, Skipper>::base() = default;
 
+namespace fcppt::parse
+{
 template <typename Result, typename Ch, typename Skipper>
-fcppt::parse::base<Result, Ch, Skipper>::~base<Result, Ch, Skipper>() = default;
+base<Result, Ch, Skipper>::~base() = default;
+}
 
 #endif

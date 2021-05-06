@@ -42,8 +42,11 @@ fcppt::signal::base<T>::base(base &&) noexcept = default;
 template <typename T>
 fcppt::signal::base<T> &fcppt::signal::base<T>::operator=(base &&) noexcept = default;
 
+namespace fcppt::signal
+{
 template <typename T>
-fcppt::signal::base<T>::~base<T>() = default;
+base<T>::~base() = default;
+}
 
 template <typename T>
 typename fcppt::signal::base<T>::connection_list &fcppt::signal::base<T>::connections() const

@@ -21,8 +21,11 @@ fcppt::parse::grammar<Result, Ch, Skipper>::grammar(
 {
 }
 
+namespace fcppt::parse
+{
 template <typename Result, typename Ch, typename Skipper>
-fcppt::parse::grammar<Result, Ch, Skipper>::~grammar<Result, Ch, Skipper>() = default;
+grammar<Result, Ch, Skipper>::~grammar() = default;
+}
 
 template <typename Result, typename Ch, typename Skipper>
 typename fcppt::parse::grammar<Result, Ch, Skipper>::template base_type<Result> const &

@@ -55,8 +55,11 @@ template <typename StoredType>
 fcppt::container::bitfield::proxy<StoredType> &
 fcppt::container::bitfield::proxy<StoredType>::operator=(proxy &&) noexcept = default;
 
+namespace fcppt::container::bitfield
+{
 template <typename StoredType>
-fcppt::container::bitfield::proxy<StoredType>::~proxy<StoredType>() = default;
+proxy<StoredType>::~proxy() = default;
+}
 
 template <typename StoredType>
 fcppt::container::bitfield::proxy<StoredType> &

@@ -22,14 +22,14 @@ namespace container
 
 \ingroup fcpptcontainer
 
-\tparam T Must be a POD type.
+\tparam T Must be a trivial type.
 
 \tparam A The allocator type.
 */
 template <typename T, typename A>
 class dynamic_array
 {
-  static_assert(std::is_pod_v<T>, "T must be a POD");
+  static_assert(std::is_trivial_v<T>, "T must be a trivial type");
 
   FCPPT_NONMOVABLE(dynamic_array);
 

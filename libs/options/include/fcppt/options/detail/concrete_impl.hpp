@@ -28,8 +28,11 @@ fcppt::options::detail::concrete<Result, Parser>::concrete(Parser &&_parser)
 {
 }
 
+namespace fcppt::options::detail
+{
 template <typename Result, typename Parser>
-fcppt::options::detail::concrete<Result, Parser>::~concrete<Result, Parser>() = default;
+concrete<Result, Parser>::~concrete() = default;
+}
 
 template <typename Result, typename Parser>
 fcppt::options::parse_result<typename fcppt::options::detail::concrete<Result, Parser>::result_type>

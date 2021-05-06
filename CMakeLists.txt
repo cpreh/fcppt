@@ -37,12 +37,12 @@ include(
 
 set(
 	FCPPT_MAJOR_VERSION
-	3
+	4
 )
 
 set(
 	FCPPT_MINOR_VERSION
-	8
+	0
 )
 
 set(

@@ -28,8 +28,11 @@ template <typename T, template <typename> class Base, typename Enable>
 fcppt::signal::object<T, Base, Enable> &
 fcppt::signal::object<T, Base, Enable>::operator=(object &&) noexcept = default;
 
+namespace fcppt::signal
+{
 template <typename T, template <typename> class Base, typename Enable>
-fcppt::signal::object<T, Base, Enable>::~object<T, Base, Enable>() = default;
+object<T, Base, Enable>::~object() = default;
+}
 
 template <typename T, template <typename> class Base, typename Enable>
 template <typename... Args>
@@ -56,9 +59,11 @@ fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>> &
 fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::operator=(
     object &&) noexcept = default;
 
+namespace fcppt::signal
+{
 template <typename T, template <typename> class Base>
-fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::
-    ~object<T, Base, fcppt::signal::detail::enable_if_void<T>>() = default;
+object<T, Base, fcppt::signal::detail::enable_if_void<T>>::~object() = default;
+}
 
 template <typename T, template <typename> class Base>
 template <typename... Args>

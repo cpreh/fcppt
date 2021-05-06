@@ -21,8 +21,11 @@ fcppt::signal::detail::concrete_connection<Function>::concrete_connection(
 {
 }
 
+namespace fcppt::signal::detail
+{
 template <typename Function>
-fcppt::signal::detail::concrete_connection<Function>::~concrete_connection<Function>() = default;
+concrete_connection<Function>::~concrete_connection() = default;
+}
 
 template <typename Function>
 typename fcppt::signal::detail::concrete_connection<Function>::function_type const &

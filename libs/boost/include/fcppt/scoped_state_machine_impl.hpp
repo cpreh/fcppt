@@ -15,10 +15,13 @@ fcppt::scoped_state_machine<Machine>::scoped_state_machine(Machine &_machine) : 
   machine_.initiate();
 }
 
+namespace fcppt
+{
 template <typename Machine>
-fcppt::scoped_state_machine<Machine>::~scoped_state_machine<Machine>()
+scoped_state_machine<Machine>::~scoped_state_machine()
 {
   machine_.terminate();
+}
 }
 
 #endif

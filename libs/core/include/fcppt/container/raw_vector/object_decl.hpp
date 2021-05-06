@@ -29,7 +29,7 @@ namespace raw_vector
 
 \ingroup fcpptcontainerraw_vector
 
-\tparam T A POD type.
+\tparam T A trivial type.
 
 \tparam A The allocator type.
 
@@ -38,7 +38,7 @@ See \ref fcpptcontainerraw_vector for more information.
 template <typename T, typename A>
 class object
 {
-  static_assert(std::is_pod_v<T>, "T must be a POD type");
+  static_assert(std::is_trivial_v<T>, "T must be a trivial type");
 
   FCPPT_NONCOPYABLE(object);
 

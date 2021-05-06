@@ -24,10 +24,13 @@ fcppt::container::dynamic_array<T, A>::dynamic_array(size_type const _size, A co
 {
 }
 
+namespace fcppt::container
+{
 template <typename T, typename A>
-fcppt::container::dynamic_array<T, A>::~dynamic_array<T, A>() noexcept
+dynamic_array<T, A>::~dynamic_array() noexcept
 {
   alloc_.deallocate(data_, size_);
+}
 }
 
 template <typename T, typename A>

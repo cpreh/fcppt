@@ -186,10 +186,13 @@ fcppt::container::raw_vector::object<T, A>::object(object &&_other) noexcept
 {
 }
 
+namespace fcppt::container::raw_vector
+{
 template <typename T, typename A>
-fcppt::container::raw_vector::object<T, A>::~object<T, A>() noexcept
+object<T, A>::~object() noexcept
 {
   this->deallocate();
+}
 }
 
 template <typename T, typename A>

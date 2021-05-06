@@ -31,8 +31,11 @@ template <typename Type>
 fcppt::enable_shared_from_this<Type> &
 fcppt::enable_shared_from_this<Type>::operator=(enable_shared_from_this &&) noexcept = default;
 
+namespace fcppt
+{
 template <typename Type>
-fcppt::enable_shared_from_this<Type>::~enable_shared_from_this<Type>() = default;
+enable_shared_from_this<Type>::~enable_shared_from_this() = default;
+}
 
 template <typename Type>
 fcppt::shared_ptr<Type> fcppt::enable_shared_from_this<Type>::fcppt_shared_from_this()

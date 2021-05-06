@@ -21,8 +21,11 @@ inline fcppt::random::generator::basic_pseudo<Generator>::basic_pseudo(SeedSeq &
 {
 }
 
+namespace fcppt::random::generator
+{
 template <typename Generator>
-inline fcppt::random::generator::basic_pseudo<Generator>::~basic_pseudo<Generator>() = default;
+inline basic_pseudo<Generator>::~basic_pseudo() = default;
+}
 
 template <typename Generator>
 inline typename fcppt::random::generator::basic_pseudo<Generator>::result_type

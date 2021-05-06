@@ -46,8 +46,11 @@ template <typename T>
 fcppt::signal::unregister::base<T> &
 fcppt::signal::unregister::base<T>::operator=(base &&) noexcept = default;
 
+namespace fcppt::signal::unregister
+{
 template <typename T>
-fcppt::signal::unregister::base<T>::~base<T>() = default;
+base<T>::~base() = default;
+}
 
 template <typename T>
 typename fcppt::signal::unregister::base<T>::connection_list &

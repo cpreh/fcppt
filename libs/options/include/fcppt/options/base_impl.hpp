@@ -11,7 +11,10 @@
 template <typename Result>
 fcppt::options::base<Result>::base() = default;
 
+namespace fcppt::options
+{
 template <typename Result>
-fcppt::options::base<Result>::~base<Result>() = default;
+base<Result>::~base() = default;
+}
 
 #endif
