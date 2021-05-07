@@ -12,7 +12,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -44,7 +43,7 @@ auto match(
     -> decltype(_success_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))
 {
   static_assert(
-      fcppt::either::is_object<fcppt::type_traits::remove_cv_ref_t<Either>>::value,
+      fcppt::either::is_object<std::remove_cvref_t<Either>>::value,
       "Either must be an either");
 
   static_assert(

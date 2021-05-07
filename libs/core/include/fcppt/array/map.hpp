@@ -13,7 +13,6 @@
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/to_reference_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -40,16 +39,16 @@ template <
     typename Array,
     typename Function,
     typename = std::enable_if_t<
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Array>>::value>>
+        fcppt::array::is_object<std::remove_cvref_t<Array>>::value>>
 inline auto map(Array &&_source, Function const &_function) -> fcppt::array::object<
     decltype(_function(fcppt::move_if_rvalue<Array>(
         std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
-    fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Array>>::value>
+    fcppt::array::size<std::remove_cvref_t<Array>>::value>
 {
   using result_array = fcppt::array::object<
       decltype(_function(fcppt::move_if_rvalue<Array>(
           std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
-      fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Array>>::value>;
+      fcppt::array::size<std::remove_cvref_t<Array>>::value>;
 
   return fcppt::array::init<result_array>([&_source, &_function](auto const _index) {
     return _function(fcppt::move_if_rvalue<Array>(fcppt::array::get<_index()>(_source)));

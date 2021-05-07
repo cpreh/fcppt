@@ -7,8 +7,8 @@
 #define FCPPT_MONAD_DETAIL_CHAIN_HPP_INCLUDED
 
 #include <fcppt/monad/bind.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,7 +19,7 @@ namespace monad
 namespace detail
 {
 template <typename Value>
-inline fcppt::type_traits::remove_cv_ref_t<Value> chain(Value &&_value)
+inline std::remove_cvref_t<Value> chain(Value &&_value)
 {
   return std::forward<Value>(_value);
 }

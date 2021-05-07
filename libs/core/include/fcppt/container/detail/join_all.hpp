@@ -8,8 +8,8 @@
 
 #include <fcppt/move_iterator_if_rvalue.hpp>
 #include <fcppt/container/detail/join_insert.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,13 +20,13 @@ namespace container
 namespace detail
 {
 template <typename Result, typename... Args>
-inline fcppt::type_traits::remove_cv_ref_t<Result> join_all(Result &&_first)
+inline std::remove_cvref_t<Result> join_all(Result &&_first)
 {
   return std::forward<Result>(_first);
 }
 
 template <typename Result, typename Container, typename... Args>
-inline fcppt::type_traits::remove_cv_ref_t<Result>
+inline std::remove_cvref_t<Result>
 join_all(Result &&_result, Container &&_container, Args &&..._args)
 {
   fcppt::container::detail::join_insert(

@@ -9,7 +9,6 @@
 #include <fcppt/function_impl.hpp>
 #include <fcppt/parse/convert_impl.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -28,13 +27,13 @@ namespace parse
 */
 template <typename Parser, typename Convert>
 fcppt::parse::convert<
-    fcppt::type_traits::remove_cv_ref_t<Parser>,
+    std::remove_cvref_t<Parser>,
     std::invoke_result_t<Convert,fcppt::parse::result_of<Parser> &&>>
 make_convert(Parser &&_parser, Convert &&_convert)
 {
   using result_type = std::invoke_result_t<Convert,fcppt::parse::result_of<Parser> &&>;
 
-  return fcppt::parse::convert<fcppt::type_traits::remove_cv_ref_t<Parser>, result_type>{
+  return fcppt::parse::convert<std::remove_cvref_t<Parser>, result_type>{
       std::forward<Parser>(_parser),
       fcppt::function<result_type(fcppt::parse::result_of<Parser> &&)>{
           std::forward<Convert>(_convert)}};

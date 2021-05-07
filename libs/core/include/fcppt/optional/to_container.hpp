@@ -11,7 +11,6 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -40,7 +39,7 @@ Container to_container(Optional &&_source)
   static_assert(
       std::is_same<
           fcppt::type_traits::value_type<Container>,
-          fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>::value,
+          fcppt::optional::value_type<std::remove_cvref_t<Optional>>>::value,
       "Container must have the same value_type as Optional");
 
   return fcppt::optional::maybe(

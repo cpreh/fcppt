@@ -15,7 +15,6 @@
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -43,12 +42,12 @@ position <code>p</code> in <code>g</code> we have that:
 \tparam Function A function callable as <code>Grid::value_type (Grid::pos)</code>.
 */
 template <typename Grid, typename Function>
-fcppt::type_traits::remove_cv_ref_t<Grid> resize(
+std::remove_cvref_t<Grid> resize(
     Grid &&_grid,
-    fcppt::container::grid::dim_type<fcppt::type_traits::remove_cv_ref_t<Grid>> const &_new_size,
+    fcppt::container::grid::dim_type<std::remove_cvref_t<Grid>> const &_new_size,
     Function const &_init)
 {
-  using result_type = fcppt::type_traits::remove_cv_ref_t<Grid>;
+  using result_type = std::remove_cvref_t<Grid>;
 
   static_assert(fcppt::container::grid::is_object<result_type>::value, "Grid must be a grid");
 

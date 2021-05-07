@@ -23,7 +23,6 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/tuple/object_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
@@ -80,8 +79,8 @@ public:
       typename OptionsParserArg,
       typename... SubCommandsArgs,
       typename = std::enable_if_t<std::conjunction_v<
-          std::is_same<OptionsParser, fcppt::type_traits::remove_cv_ref_t<OptionsParserArg>>,
-          std::is_same<SubCommands, fcppt::type_traits::remove_cv_ref_t<SubCommandsArgs>>...>>>
+          std::is_same<OptionsParser, std::remove_cvref_t<OptionsParserArg>>,
+          std::is_same<SubCommands, std::remove_cvref_t<SubCommandsArgs>>...>>>
   explicit commands(OptionsParserArg &&, SubCommandsArgs &&...);
 
   using variant_result = fcppt::variant::object<fcppt::options::result_of<SubCommands>...>;

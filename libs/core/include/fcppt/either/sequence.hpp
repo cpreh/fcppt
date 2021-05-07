@@ -18,7 +18,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -50,7 +49,7 @@ returned.
 template <typename ResultContainer, typename Source>
 fcppt::either::object<
     fcppt::either::failure_type<
-        fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Source>>>,
+        fcppt::type_traits::value_type<std::remove_cvref_t<Source>>>,
     ResultContainer>
 sequence(Source &&_source)
 {

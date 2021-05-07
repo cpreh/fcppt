@@ -46,9 +46,9 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/tuple/get.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -90,7 +90,7 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
              &_second_args](fcppt::options::result_of<OptionsParser> &&_options_result)
                 -> fcppt::options::parse_result<result_type> {
               using sub_command_type = fcppt::options::deref_type<
-                  fcppt::type_traits::remove_cv_ref_t<decltype(_sub_command)>>;
+                  std::remove_cvref_t<decltype(_sub_command)>>;
 
               return fcppt::either::map(
                   fcppt::options::deref(fcppt::options::deref(_sub_command).parser())

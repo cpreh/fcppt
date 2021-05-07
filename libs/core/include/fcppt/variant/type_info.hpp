@@ -7,10 +7,10 @@
 #define FCPPT_VARIANT_TYPE_INFO_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,10 +27,11 @@ template <typename... Types>
 std::type_info const &type_info(fcppt::variant::object<Types...> const &_variant)
 {
   return fcppt::variant::apply(
-      [](auto const &_value) -> std::type_info const & {
+      [](auto const &_value) -> std::type_info const &
+      {
         FCPPT_USE(_value);
 
-        return typeid(fcppt::type_traits::remove_cv_ref_t<decltype(_value)>);
+        return typeid(std::remove_cvref_t<decltype(_value)>);
       },
       _variant);
 }

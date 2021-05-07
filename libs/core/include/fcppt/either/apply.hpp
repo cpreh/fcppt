@@ -20,7 +20,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <cstddef>
@@ -47,16 +46,16 @@ set to successes <code>s_1,...,s_n</code> and the result is
 template <typename Function, typename Either1, typename... Eithers>
 auto apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers)
     -> fcppt::either::object<
-        fcppt::either::failure_type<fcppt::type_traits::remove_cv_ref_t<Either1>>,
+        fcppt::either::failure_type<std::remove_cvref_t<Either1>>,
         decltype(_function(
             fcppt::move_if_rvalue<Either1>(_either1.get_success_unsafe()),
             fcppt::move_if_rvalue<Eithers>(_eithers.get_success_unsafe())...))>
 {
-  using either1 = fcppt::type_traits::remove_cv_ref_t<Either1>;
+  using either1 = std::remove_cvref_t<Either1>;
 
   static_assert(fcppt::either::is_object<either1>::value, "Either1 must be an either");
 
-  using eithers = ::metal::list<fcppt::type_traits::remove_cv_ref_t<Eithers>...>;
+  using eithers = ::metal::list<std::remove_cvref_t<Eithers>...>;
 
   static_assert(
       ::metal::all_of<eithers, ::metal::trait<fcppt::either::is_object>>::value,
@@ -89,32 +88,35 @@ auto apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers)
   FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
   return fcppt::algorithm::all_of(
-             fcppt::array::object<bool, num_eithers>{_either1.has_success(), _eithers.has_success()...},
+             fcppt::array::object<bool, num_eithers>{
+                 _either1.has_success(), _eithers.has_success()...},
              fcppt::identity{})
              ? result_type(_function(
                    fcppt::move_if_rvalue<Either1>(_either1.get_success_unsafe()),
                    fcppt::move_if_rvalue<Eithers>(_eithers.get_success_unsafe())...))
-             : result_type{[](failure_array &&_failures) {
-                 fcppt::optional::object<typename failure_array::iterator> const failure_opt{
-                     fcppt::algorithm::find_if_opt(_failures, [](optional_failure const &_failure) {
-                       return _failure.has_value();
-                     })};
+             : result_type{
+                   [](failure_array &&_failures)
+                   {
+                     fcppt::optional::object<typename failure_array::iterator> const failure_opt{
+                         fcppt::algorithm::find_if_opt(
+                             _failures,
+                             [](optional_failure const &_failure)
+                             { return _failure.has_value(); })};
 
-                 using iterator = typename failure_array::iterator;
+                     using iterator = typename failure_array::iterator;
 
-                 // Silence -Wnull-dereference warning
-                 iterator const failure_it{
-                     failure_opt.has_value() ? failure_opt.get_unsafe()
-                                             : fcppt::absurd<iterator>()};
+                     // Silence -Wnull-dereference warning
+                     iterator const failure_it{
+                         failure_opt.has_value() ? failure_opt.get_unsafe()
+                                                 : fcppt::absurd<iterator>()};
 
-                 return std::move(failure_it->get_unsafe());
-               }(failure_array{
-                               fcppt::either::failure_opt(std::forward<Either1>(_either1)),
-                               fcppt::either::failure_opt(std::forward<Eithers>(_eithers))...})};
+                     return std::move(failure_it->get_unsafe());
+                   }(failure_array{
+                       fcppt::either::failure_opt(std::forward<Either1>(_either1)),
+                       fcppt::either::failure_opt(std::forward<Eithers>(_eithers))...})};
 
   FCPPT_PP_POP_WARNING
 }
-
 }
 }
 

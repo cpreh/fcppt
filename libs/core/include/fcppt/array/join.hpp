@@ -13,7 +13,6 @@
 #include <fcppt/array/detail/join.hpp>
 #include <fcppt/metal/from_number.hpp>
 #include <fcppt/metal/to_number.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <cstddef>
@@ -39,13 +38,13 @@ template <
     typename Array1,
     typename... Arrays,
     typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Array1>>,
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Arrays>>...,
+        fcppt::array::is_object<std::remove_cvref_t<Array1>>,
+        fcppt::array::is_object<std::remove_cvref_t<Arrays>>...,
         std::is_same<
-            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
-            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Arrays>>>...>>>
+            fcppt::array::value_type<std::remove_cvref_t<Array1>>,
+            fcppt::array::value_type<std::remove_cvref_t<Arrays>>>...>>>
 fcppt::array::object<
-    fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
+    fcppt::array::value_type<std::remove_cvref_t<Array1>>,
     fcppt::metal::from_number<
         std::size_t,
         ::metal::accumulate<
@@ -55,9 +54,8 @@ fcppt::array::object<
                     ::metal::lambda<fcppt::metal::to_number>,
                     ::metal::bind<::metal::lambda<fcppt::array::size>, ::metal::_2>>,
                 ::metal::_1>,
-            fcppt::metal::to_number<
-                fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Array1>>>,
-            ::metal::list<fcppt::type_traits::remove_cv_ref_t<Arrays>...>>>::value>
+            fcppt::metal::to_number<fcppt::array::size<std::remove_cvref_t<Array1>>>,
+            ::metal::list<std::remove_cvref_t<Arrays>...>>>::value>
 join(Array1 &&_array1, Arrays &&..._arrays)
 {
   return fcppt::array::detail::join(

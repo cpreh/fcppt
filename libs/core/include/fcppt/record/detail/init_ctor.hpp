@@ -16,9 +16,9 @@
 #include <fcppt/tuple/invoke.hpp>
 #include <fcppt/tuple/map.hpp>
 #include <fcppt/tuple/object_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,9 +31,9 @@ namespace detail
 template <typename Result, typename TagTuple, typename... Args>
 Result init_ctor(Args &&..._args)
 {
-  fcppt::tuple::object<fcppt::type_traits::remove_cv_ref_t<Args>...> arguments(std::move(_args)...);
+  fcppt::tuple::object<std::remove_cvref_t<Args>...> arguments(std::move(_args)...);
 
-  using args_list = ::metal::list<fcppt::type_traits::remove_cv_ref_t<Args>...>;
+  using args_list = ::metal::list<std::remove_cvref_t<Args>...>;
 
   return fcppt::tuple::invoke(
       [](auto &&..._args_inner) -> Result {

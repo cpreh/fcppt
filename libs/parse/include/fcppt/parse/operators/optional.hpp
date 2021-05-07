@@ -8,7 +8,6 @@
 
 #include <fcppt/parse/is_valid_argument.hpp>
 #include <fcppt/parse/optional_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -25,9 +24,9 @@ namespace parse
 template <
     typename Parser,
     typename = std::enable_if_t<fcppt::parse::is_valid_argument<Parser>::value>>
-fcppt::parse::optional<fcppt::type_traits::remove_cv_ref_t<Parser>> operator-(Parser &&_parser)
+fcppt::parse::optional<std::remove_cvref_t<Parser>> operator-(Parser &&_parser)
 {
-  return fcppt::parse::optional<fcppt::type_traits::remove_cv_ref_t<Parser>>{
+  return fcppt::parse::optional<std::remove_cvref_t<Parser>>{
       std::forward<Parser>(_parser)};
 }
 

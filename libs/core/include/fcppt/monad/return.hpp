@@ -8,8 +8,8 @@
 
 #include <fcppt/monad/constructor.hpp>
 #include <fcppt/monad/instance_fwd.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,7 +23,7 @@ namespace monad
 \ingroup fcpptmonad
 */
 template <typename Type, typename Value>
-fcppt::monad::constructor<Type, fcppt::type_traits::remove_cv_ref_t<Value>> return_(Value &&_value)
+fcppt::monad::constructor<Type, std::remove_cvref_t<Value>> return_(Value &&_value)
 {
   return fcppt::monad::instance<Type>::return_(std::forward<Value>(_value));
 }

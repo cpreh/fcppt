@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,13 +27,13 @@ true, \a _source is returned. Otherwise, the empty optional is returned.
 \tparam Function A function callable as <code>bool (Optional::value_type)</code>.
 */
 template <typename Optional, typename Function>
-fcppt::type_traits::remove_cv_ref_t<Optional> filter(Optional &&_source, Function const &_function)
+std::remove_cvref_t<Optional> filter(Optional &&_source, Function const &_function)
 {
   static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
   return _source.has_value() && _function(_source.get_unsafe())
              ? std::forward<Optional>(_source)
-             : fcppt::type_traits::remove_cv_ref_t<Optional>{};
+             : std::remove_cvref_t<Optional>{};
 }
 
 }

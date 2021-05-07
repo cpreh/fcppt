@@ -8,7 +8,6 @@
 
 #include <fcppt/parse/skipper/is_valid_argument.hpp>
 #include <fcppt/parse/skipper/repetition_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -27,10 +26,10 @@ namespace skipper
 template <
     typename Parser,
     typename = std::enable_if_t<fcppt::parse::skipper::is_valid_argument<Parser>::value>>
-fcppt::parse::skipper::repetition<fcppt::type_traits::remove_cv_ref_t<Parser>>
+fcppt::parse::skipper::repetition<std::remove_cvref_t<Parser>>
 operator*(Parser &&_parser)
 {
-  return fcppt::parse::skipper::repetition<fcppt::type_traits::remove_cv_ref_t<Parser>>{
+  return fcppt::parse::skipper::repetition<std::remove_cvref_t<Parser>>{
       std::forward<Parser>(_parser)};
 }
 

@@ -8,7 +8,9 @@
 
 #include <fcppt/parse/deref_type.hpp>
 #include <fcppt/parse/is_parser.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -22,7 +24,7 @@ Parsers can be passed as-is, by #fcppt::reference or by #fcppt::unique_ptr.
 */
 template <typename Type>
 using is_valid_argument =
-    fcppt::parse::is_parser<fcppt::parse::deref_type<fcppt::type_traits::remove_cv_ref_t<Type>>>;
+    fcppt::parse::is_parser<fcppt::parse::deref_type<std::remove_cvref_t<Type>>>;
 
 }
 }

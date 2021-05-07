@@ -6,9 +6,9 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/detail/all_initializers.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -26,7 +26,7 @@ void test(Args &&...)
 {
   using elements = metal::list<bool_element, int_element>;
 
-  using args_type = metal::list<fcppt::type_traits::remove_cv_ref_t<Args>...>;
+  using args_type = metal::list<std::remove_cvref_t<Args>...>;
 
   static_assert(
       fcppt::record::detail::all_initializers<elements, args_type>::value == Expected,

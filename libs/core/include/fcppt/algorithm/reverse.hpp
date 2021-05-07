@@ -7,8 +7,8 @@
 #define FCPPT_ALGORITHM_REVERSE_HPP_INCLUDED
 
 #include <fcppt/algorithm/detail/reverse.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,7 +24,7 @@ namespace algorithm
 \tparam Container Must be a bidirectional container
 */
 template <typename Container>
-inline fcppt::type_traits::remove_cv_ref_t<Container> reverse(Container &&_container)
+inline std::remove_cvref_t<Container> reverse(Container &&_container)
 {
   return fcppt::algorithm::detail::reverse(std::forward<Container>(_container));
 }

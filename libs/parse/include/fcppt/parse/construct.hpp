@@ -9,8 +9,8 @@
 #include <fcppt/parse/convert_impl.hpp>
 #include <fcppt/parse/make_convert.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,7 +26,7 @@ If the parser p returns s on success, then <code>construct(p)</code> returns <co
 Errors remain unchanged.
 */
 template <typename Result, typename Parser>
-fcppt::parse::convert<fcppt::type_traits::remove_cv_ref_t<Parser>, Result>
+fcppt::parse::convert<std::remove_cvref_t<Parser>, Result>
 construct(Parser &&_parser)
 {
   return fcppt::parse::make_convert(

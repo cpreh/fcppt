@@ -7,10 +7,10 @@
 #define FCPPT_VARIANT_APPLY_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
+#include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,7 +23,7 @@ decltype(auto) apply(Function const &_function, Variants &&..._variants)
 {
   static_assert(
       ::metal::all_of<
-          ::metal::list<fcppt::type_traits::remove_cv_ref_t<Variants>...>,
+          ::metal::list<std::remove_cvref_t<Variants>...>,
           ::metal::trait<fcppt::variant::is_object>>::value,
       "Variants must all be variants");
 

@@ -13,7 +13,6 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check_sequence.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -44,7 +43,7 @@ template <typename ResultContainer, typename Source>
 fcppt::optional::object<ResultContainer> sequence(Source &&_source)
 {
   fcppt::optional::detail::
-      check_sequence<ResultContainer, fcppt::type_traits::remove_cv_ref_t<Source>> const test{};
+      check_sequence<ResultContainer, std::remove_cvref_t<Source>> const test{};
 
   FCPPT_USE(test);
 

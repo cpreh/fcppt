@@ -10,7 +10,6 @@
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/has_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -30,10 +29,10 @@ struct get_either<
     Record1,
     Record2,
     std::enable_if_t<
-        fcppt::record::has_label<fcppt::type_traits::remove_cv_ref_t<Record1>, Label>::value>>
+        fcppt::record::has_label<std::remove_cvref_t<Record1>, Label>::value>>
 {
   template <typename LeftRef, typename RightRef>
-  static fcppt::record::label_value_type<fcppt::type_traits::remove_cv_ref_t<Record1>, Label>
+  static fcppt::record::label_value_type<std::remove_cvref_t<Record1>, Label>
   get(Record1 &_record1, Record2 &)
   {
     return fcppt::move_if<!LeftRef::value>(fcppt::record::get<Label>(_record1));
@@ -46,10 +45,10 @@ struct get_either<
     Record1,
     Record2,
     std::enable_if_t<
-        fcppt::record::has_label<fcppt::type_traits::remove_cv_ref_t<Record2>, Label>::value>>
+        fcppt::record::has_label<std::remove_cvref_t<Record2>, Label>::value>>
 {
   template <typename LeftRef, typename RightRef>
-  static fcppt::record::label_value_type<fcppt::type_traits::remove_cv_ref_t<Record2>, Label>
+  static fcppt::record::label_value_type<std::remove_cvref_t<Record2>, Label>
   get(Record1 &, Record2 &_record2)
   {
     return fcppt::move_if<!RightRef::value>(fcppt::record::get<Label>(_record2));

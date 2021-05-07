@@ -13,7 +13,6 @@
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/is_object.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -35,7 +34,7 @@ inline Result permute(Arg &&_arg)
 {
   static_assert(fcppt::record::is_object<Result>::value, "Result must be an fcppt::record::object");
 
-  using arg_type = fcppt::type_traits::remove_cv_ref_t<Arg>;
+  using arg_type = std::remove_cvref_t<Arg>;
 
   static_assert(fcppt::record::is_object<arg_type>::value, "Arg must be an fcppt::record::object");
 

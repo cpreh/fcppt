@@ -17,7 +17,6 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -131,7 +130,7 @@ public:
       typename... Args,
       typename = std::enable_if_t<std::conjunction_v<
           std::bool_constant<sizeof...(Args) == R>,
-          std::is_same<row_type, fcppt::type_traits::remove_cv_ref_t<Args>>...>>>
+          std::is_same<row_type, std::remove_cvref_t<Args>>...>>>
   explicit object(Args &&...);
 
   /**

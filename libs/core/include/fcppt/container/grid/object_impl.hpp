@@ -17,7 +17,6 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/null.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -52,22 +51,22 @@ fcppt::container::grid::object<T, N, A>::object(Arg1 &&_arg1, Args &&..._args)
           fcppt::array::join(std::forward<Arg1>(_arg1), std::forward<Args>(_args)...),
           [](auto &&_value) { return std::forward<decltype(_value)>(_value); })),
       size_(
-          fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Arg1>>::value,
+          fcppt::array::size<std::remove_cvref_t<Arg1>>::value,
           sizeof...(Args) + 1U)
 {
   static_assert(
       std::conjunction_v<std::is_same<
-          fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Arg1>>,
-          fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Args>>>...>,
+          fcppt::array::size<std::remove_cvref_t<Arg1>>,
+          fcppt::array::size<std::remove_cvref_t<Args>>>...>,
       "All rows must have the size size");
 
   static_assert(
       std::conjunction_v<
           std::
-              is_same<T, fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Arg1>>>,
+              is_same<T, fcppt::type_traits::value_type<std::remove_cvref_t<Arg1>>>,
           std::is_same<
               T,
-              fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Args>>>...>,
+              fcppt::type_traits::value_type<std::remove_cvref_t<Args>>>...>,
       "All rows must have value_type T");
 }
 

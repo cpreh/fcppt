@@ -8,8 +8,8 @@
 
 #include <fcppt/record/label_decl.hpp>
 #include <fcppt/record/detail/element_init_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,10 +17,10 @@
 template <typename Tag>
 template <typename Arg>
 // NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
-fcppt::record::detail::element_init<Tag, fcppt::type_traits::remove_cv_ref_t<Arg>>
+fcppt::record::detail::element_init<Tag, std::remove_cvref_t<Arg>>
 fcppt::record::label<Tag>::operator=(Arg &&_arg)
 {
-  return fcppt::record::detail::element_init<Tag, fcppt::type_traits::remove_cv_ref_t<Arg>>(
+  return fcppt::record::detail::element_init<Tag, std::remove_cvref_t<Arg>>(
       std::forward<Arg>(_arg));
 }
 

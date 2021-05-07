@@ -7,8 +7,8 @@
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
 #include <fcppt/algorithm/map_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,9 +39,8 @@ default uses #fcppt::algorithm::loop.
 template <typename TargetContainer, typename SourceRange, typename Function>
 TargetContainer map(SourceRange &&_source, Function const &_function)
 {
-  return fcppt::algorithm::
-      map_impl<fcppt::type_traits::remove_cv_ref_t<SourceRange>, TargetContainer>::execute(
-          std::forward<SourceRange>(_source), _function);
+  return fcppt::algorithm::map_impl<std::remove_cvref_t<SourceRange>, TargetContainer>::execute(
+      std::forward<SourceRange>(_source), _function);
 }
 
 }

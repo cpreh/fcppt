@@ -12,10 +12,10 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/range/size.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::array
@@ -29,12 +29,12 @@ namespace fcppt::array
 */
 template <std::size_t Size, typename Source>
 fcppt::optional::object<
-    fcppt::array::object<fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Source>>, Size>>
+    fcppt::array::object<fcppt::type_traits::value_type<std::remove_cvref_t<Source>>, Size>>
 from_range(Source &&_source)
 {
   return fcppt::optional::make_if(fcppt::range::size(_source) == Size, [&_source] {
     return fcppt::array::init<fcppt::array::object<
-        fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Source>>,
+        fcppt::type_traits::value_type<std::remove_cvref_t<Source>>,
         Size>>(
         [&_source](auto const _index) { return fcppt::move_if_rvalue<Source>(_source[_index]); });
   });

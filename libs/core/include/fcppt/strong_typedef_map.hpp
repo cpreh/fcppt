@@ -10,7 +10,9 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -30,9 +32,9 @@ template <typename StrongTypedef, typename Function>
 inline auto strong_typedef_map(StrongTypedef &&_input, Function const &_function)
     -> fcppt::strong_typedef<
         decltype(_function(fcppt::move_if_rvalue<StrongTypedef>(_input.get()))),
-        fcppt::strong_typedef_tag<fcppt::type_traits::remove_cv_ref_t<StrongTypedef>>>
+        fcppt::strong_typedef_tag<std::remove_cvref_t<StrongTypedef>>>
 {
-  using input_type = fcppt::type_traits::remove_cv_ref_t<StrongTypedef>;
+  using input_type = std::remove_cvref_t<StrongTypedef>;
 
   static_assert(
       fcppt::is_strong_typedef<input_type>::value, "StrongTypedef must be a strong typedef");

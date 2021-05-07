@@ -10,7 +10,6 @@
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -34,7 +33,7 @@ template <typename Either, typename Function>
 auto bind(Either &&_either, Function const &_function)
     -> decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))
 {
-  using either = fcppt::type_traits::remove_cv_ref_t<Either>;
+  using either = std::remove_cvref_t<Either>;
 
   static_assert(fcppt::either::is_object<either>::value, "Either must be an either");
 

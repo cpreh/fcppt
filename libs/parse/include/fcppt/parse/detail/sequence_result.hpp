@@ -8,9 +8,9 @@
 
 #include <fcppt/unit.hpp>
 #include <fcppt/parse/detail/combine_tuples.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,13 +23,13 @@ namespace detail
 inline fcppt::unit sequence_result(fcppt::unit, fcppt::unit) { return fcppt::unit{}; }
 
 template <typename Left>
-fcppt::type_traits::remove_cv_ref_t<Left> sequence_result(Left &&_left, fcppt::unit)
+std::remove_cvref_t<Left> sequence_result(Left &&_left, fcppt::unit)
 {
   return std::forward<Left>(_left);
 }
 
 template <typename Right>
-fcppt::type_traits::remove_cv_ref_t<Right> sequence_result(fcppt::unit, Right &&_right)
+std::remove_cvref_t<Right> sequence_result(fcppt::unit, Right &&_right)
 {
   return std::forward<Right>(_right);
 }

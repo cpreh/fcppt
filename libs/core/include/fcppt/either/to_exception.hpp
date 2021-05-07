@@ -9,7 +9,9 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -32,7 +34,7 @@ inline auto to_exception(Either &&_either, MakeException const _make_exception)
     -> decltype(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe()))
 {
   static_assert(
-      fcppt::either::is_object<fcppt::type_traits::remove_cv_ref_t<Either>>::value,
+      fcppt::either::is_object<std::remove_cvref_t<Either>>::value,
       "Either must be an either");
 
   if (_either.has_success())

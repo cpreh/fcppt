@@ -11,7 +11,6 @@
 #include <fcppt/array/is_object.hpp>
 #include <fcppt/tuple/from_array_result.hpp>
 #include <fcppt/tuple/init.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,12 +25,12 @@ namespace fcppt::tuple
 template <
     typename Array,
     typename = std::enable_if_t<
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Array>>::value>>
-[[nodiscard]] fcppt::tuple::from_array_result<fcppt::type_traits::remove_cv_ref_t<Array>>
+        fcppt::array::is_object<std::remove_cvref_t<Array>>::value>>
+[[nodiscard]] fcppt::tuple::from_array_result<std::remove_cvref_t<Array>>
 from_array(Array &&_source)
 {
   return fcppt::tuple::init<
-      fcppt::tuple::from_array_result<fcppt::type_traits::remove_cv_ref_t<Array>>>(
+      fcppt::tuple::from_array_result<std::remove_cvref_t<Array>>>(
       [&_source](auto const _index) {
         return fcppt::move_if_rvalue<Array>(fcppt::array::get<_index()>(_source));
       });

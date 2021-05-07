@@ -7,7 +7,6 @@
 #define FCPPT_CAST_STATIC_DOWNCAST_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_base_of.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -33,11 +32,11 @@ Derived must be a reference to a class type derived from Base.
 \tparam Base A cv-qualified non-reference type.
 */
 template <typename Derived, typename Base>
-std::enable_if_t<std::is_reference<Derived>::value, Derived> static_downcast(Base &_source) noexcept
+std::enable_if_t<std::is_reference_v<Derived>, Derived> static_downcast(Base &_source) noexcept
 {
   static_assert(
       fcppt::type_traits::
-          is_base_of<std::remove_cv_t<Base>, fcppt::type_traits::remove_cv_ref_t<Derived>>::value,
+          is_base_of<std::remove_cv_t<Base>, std::remove_cvref_t<Derived>>::value,
       "static_downcast can only cast from references to base classes to references to derived "
       "classes");
 

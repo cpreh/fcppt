@@ -15,8 +15,8 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -57,7 +57,7 @@ FCPPT_PP_POP_WARNING
 
 template <typename Ch, typename Parser>
 named(Parser &&, std::basic_string<Ch> &&)
-    -> named<Ch, fcppt::type_traits::remove_cv_ref_t<Parser>>;
+    -> named<Ch, std::remove_cvref_t<Parser>>;
 
 }
 }

@@ -11,7 +11,6 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/tuple/invoke.hpp>
 #include <fcppt/tuple/is_object.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -36,7 +35,7 @@ template <
     typename Result,
     typename Parser,
     typename = std::enable_if_t<fcppt::tuple::is_object<fcppt::parse::result_of<Parser>>::value>>
-fcppt::parse::convert<fcppt::type_traits::remove_cv_ref_t<Parser>, Result>
+fcppt::parse::convert<std::remove_cvref_t<Parser>, Result>
 as_struct(Parser &&_parser)
 {
   return fcppt::parse::make_convert(

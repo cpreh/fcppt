@@ -9,7 +9,6 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -36,7 +35,7 @@ template <typename Optional, typename Function>
 inline auto bind(Optional &&_source, Function const &_function) -> std::remove_reference_t<
     decltype(_function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>
 {
-  using result_type = fcppt::type_traits::remove_cv_ref_t<decltype(
+  using result_type = std::remove_cvref_t<decltype(
       _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>;
 
   static_assert(

@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONS_MAKE_ACTIVE_VALUE_HPP_INCLUDED
 
 #include <fcppt/options/active_value.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,10 +22,10 @@ namespace options
 \ingroup fcpptoptions
 */
 template <typename Type>
-inline fcppt::options::active_value<fcppt::type_traits::remove_cv_ref_t<Type>>
+inline fcppt::options::active_value<std::remove_cvref_t<Type>>
 make_active_value(Type &&_value)
 {
-  return fcppt::options::active_value<fcppt::type_traits::remove_cv_ref_t<Type>>{
+  return fcppt::options::active_value<std::remove_cvref_t<Type>>{
       std::forward<Type>(_value)};
 }
 

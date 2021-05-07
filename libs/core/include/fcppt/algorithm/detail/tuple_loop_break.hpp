@@ -9,7 +9,6 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/size.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>
@@ -23,13 +22,13 @@ namespace algorithm
 namespace detail
 {
 template <std::size_t Index, typename Tuple, typename Body>
-inline std::enable_if_t<Index == fcppt::tuple::size<fcppt::type_traits::remove_cv_ref_t<Tuple>>::value>
+inline std::enable_if_t<Index == fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>
 tuple_loop_break(Tuple &&, Body const &)
 {
 }
 
 template <std::size_t Index, typename Tuple, typename Body>
-inline std::enable_if_t<Index != fcppt::tuple::size<fcppt::type_traits::remove_cv_ref_t<Tuple>>::value>
+inline std::enable_if_t<Index != fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>
 tuple_loop_break(Tuple &&_tuple, Body const &_body)
 {
   switch (_body(fcppt::tuple::get<Index>(_tuple)))

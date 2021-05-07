@@ -10,7 +10,9 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -26,10 +28,10 @@ Extracts the optional in \a _source or returns an empty optional.
 \tparam Optional Must be an optional of optional
 */
 template <typename Optional>
-inline fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>
+inline fcppt::optional::value_type<std::remove_cvref_t<Optional>>
 join(Optional &&_source)
 {
-  using result_type = fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>;
+  using result_type = fcppt::optional::value_type<std::remove_cvref_t<Optional>>;
 
   static_assert(
       fcppt::optional::detail::check<Optional>::value &&

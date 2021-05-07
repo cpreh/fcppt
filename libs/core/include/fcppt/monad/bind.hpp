@@ -9,7 +9,6 @@
 #include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/monad/inner_type.hpp>
 #include <fcppt/monad/instance_fwd.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -27,15 +26,11 @@ namespace monad
 template <typename Arg, typename Function>
 inline std::invoke_result_t<
     Function,
-    fcppt::move_if_rvalue_type<
-        Arg,
-        fcppt::monad::inner_type<fcppt::type_traits::remove_cv_ref_t<Arg>>>>
+    fcppt::move_if_rvalue_type<Arg, fcppt::monad::inner_type<std::remove_cvref_t<Arg>>>>
 bind(Arg &&_arg, Function const &_function)
 {
-  return fcppt::monad::instance<fcppt::type_traits::remove_cv_ref_t<Arg>>::bind(
-      std::forward<Arg>(_arg), _function);
+  return fcppt::monad::instance<std::remove_cvref_t<Arg>>::bind(std::forward<Arg>(_arg), _function);
 }
-
 }
 }
 

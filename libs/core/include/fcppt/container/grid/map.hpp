@@ -10,7 +10,6 @@
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -37,10 +36,10 @@ template <typename Source, typename Function>
 auto map(Source &&_source, Function const &_function) -> fcppt::container::grid::object<
     decltype(_function(fcppt::move_if_rvalue<Source>(_source.get_unsafe(
         std::declval<
-            fcppt::container::grid::pos_type<fcppt::type_traits::remove_cv_ref_t<Source>>>())))),
-    fcppt::type_traits::remove_cv_ref_t<Source>::static_size::value>
+            fcppt::container::grid::pos_type<std::remove_cvref_t<Source>>>())))),
+    std::remove_cvref_t<Source>::static_size::value>
 {
-  using source_type = fcppt::type_traits::remove_cv_ref_t<Source>;
+  using source_type = std::remove_cvref_t<Source>;
 
   static_assert(fcppt::container::grid::is_object<source_type>::value, "Source must be a grid");
 

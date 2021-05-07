@@ -11,8 +11,8 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,20 +36,19 @@ template <typename Optional, typename FailureFunction>
 auto from_optional(Optional &&_optional, FailureFunction const &_failure_function)
     -> fcppt::either::object<
         decltype(_failure_function()),
-        fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>
+        fcppt::optional::value_type<std::remove_cvref_t<Optional>>>
 {
   static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
   using result_type = fcppt::either::object<
       decltype(_failure_function()),
-      fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>;
+      fcppt::optional::value_type<std::remove_cvref_t<Optional>>>;
 
   return fcppt::optional::maybe(
       std::forward<Optional>(_optional),
       [&_failure_function] { return result_type(_failure_function()); },
       [](auto &&_value) { return result_type(fcppt::move_if_rvalue<Optional>(_value)); });
 }
-
 }
 }
 

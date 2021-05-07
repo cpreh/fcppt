@@ -11,12 +11,12 @@
 #include <fcppt/metal/index_of.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/make.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -35,7 +35,7 @@ order the types appear in the variant.
 template <
     typename Variant,
     typename... Functions,
-    typename Enable = fcppt::variant::is_object<fcppt::type_traits::remove_cv_ref_t<Variant>>>
+    typename Enable = fcppt::variant::is_object<std::remove_cvref_t<Variant>>>
 inline decltype(auto) match(Variant &&_variant, Functions const &..._functions)
 {
   auto const tuple(fcppt::tuple::make(_functions...));
@@ -45,8 +45,8 @@ inline decltype(auto) match(Variant &&_variant, Functions const &..._functions)
         return fcppt::tuple::get<fcppt::metal::from_number<
             std::size_t,
             fcppt::metal::index_of<
-                fcppt::variant::types_of<fcppt::type_traits::remove_cv_ref_t<Variant>>,
-                fcppt::type_traits::remove_cv_ref_t<decltype(_arg)>>>::value>(tuple)(
+                fcppt::variant::types_of<std::remove_cvref_t<Variant>>,
+                std::remove_cvref_t<decltype(_arg)>>>::value>(tuple)(
             fcppt::move_if_rvalue<Variant>(_arg));
       },
       std::forward<Variant>(_variant));

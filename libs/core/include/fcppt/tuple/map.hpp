@@ -12,7 +12,6 @@
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/map_result.hpp>
 #include <fcppt/tuple/size.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -35,10 +34,10 @@ template <
     typename Tuple,
     typename Function,
     typename = std::enable_if_t<
-        fcppt::tuple::is_object<fcppt::type_traits::remove_cv_ref_t<Tuple>>::value>>
+        fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value>>
 fcppt::tuple::map_result<Tuple, Function> map(Tuple &&_tuple, Function const &_function)
 {
-  using source_type = fcppt::type_traits::remove_cv_ref_t<Tuple>;
+  using source_type = std::remove_cvref_t<Tuple>;
   using result_type = fcppt::tuple::map_result<Tuple, Function>;
   static_assert(fcppt::tuple::size<source_type>::value == fcppt::tuple::size<result_type>::value);
 

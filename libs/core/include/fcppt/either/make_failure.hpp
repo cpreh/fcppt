@@ -7,8 +7,8 @@
 #define FCPPT_EITHER_MAKE_FAILURE_HPP_INCLUDED
 
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,10 +24,10 @@ namespace either
 \tparam Success The success type of the either.
 */
 template <typename Success, typename Failure>
-inline fcppt::either::object<fcppt::type_traits::remove_cv_ref_t<Failure>, Success>
+inline fcppt::either::object<std::remove_cvref_t<Failure>, Success>
 make_failure(Failure &&_failure)
 {
-  return fcppt::either::object<fcppt::type_traits::remove_cv_ref_t<Failure>, Success>{
+  return fcppt::either::object<std::remove_cvref_t<Failure>, Success>{
       std::forward<Failure>(_failure)};
 }
 

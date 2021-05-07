@@ -12,8 +12,8 @@
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/detail/concrete_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,7 +36,7 @@ make_base(Parser &&_parser)
   return fcppt::unique_ptr_to_base<
       fcppt::parse::base<fcppt::parse::result_of<Parser>, Ch, Skipper>>(
       fcppt::make_unique_ptr<
-          fcppt::parse::detail::concrete<fcppt::type_traits::remove_cv_ref_t<Parser>, Ch, Skipper>>(
+          fcppt::parse::detail::concrete<std::remove_cvref_t<Parser>, Ch, Skipper>>(
           std::forward<Parser>(_parser)));
 }
 

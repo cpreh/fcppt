@@ -7,7 +7,6 @@
 #define FCPPT_ARRAY_MAKE_HPP_INCLUDED
 
 #include <fcppt/array/object_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -31,13 +30,13 @@ template <
     typename Arg1,
     typename... Args,
     typename = std::enable_if_t<std::conjunction_v<std::is_same<
-        fcppt::type_traits::remove_cv_ref_t<Arg1>,
-        fcppt::type_traits::remove_cv_ref_t<Args>>...>>>
-inline fcppt::array::object<fcppt::type_traits::remove_cv_ref_t<Arg1>, sizeof...(Args) + 1U>
+        std::remove_cvref_t<Arg1>,
+        std::remove_cvref_t<Args>>...>>>
+inline fcppt::array::object<std::remove_cvref_t<Arg1>, sizeof...(Args) + 1U>
 make(Arg1 &&_arg1, Args &&..._args)
 {
   using result_type =
-      fcppt::array::object<fcppt::type_traits::remove_cv_ref_t<Arg1>, sizeof...(Args) + 1U>;
+      fcppt::array::object<std::remove_cvref_t<Arg1>, sizeof...(Args) + 1U>;
 
   return result_type{std::forward<Arg1>(_arg1), std::forward<Args>(_args)...};
 }

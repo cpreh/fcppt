@@ -10,15 +10,15 @@
 #include <fcppt/tuple/invoke.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/tuple/push_back.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::monad::detail
 {
 template <typename Value, typename... Values>
-inline fcppt::type_traits::remove_cv_ref_t<Value>
+inline std::remove_cvref_t<Value>
 do_(Value &&_value, fcppt::tuple::object<Values...> const &)
 {
   return std::forward<Value>(_value);

@@ -9,7 +9,6 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -29,16 +28,15 @@ namespace matrix
 template <
     typename Type,
     typename... Args,
-    typename = std::enable_if_t<std::conjunction_v<std::is_same<
-        fcppt::type_traits::remove_cv_ref_t<Args>,
-        fcppt::type_traits::remove_cv_ref_t<Type>>...>>>
+    typename = std::enable_if_t<
+        std::conjunction_v<std::is_same<std::remove_cvref_t<Args>, std::remove_cvref_t<Type>>...>>>
 inline fcppt::math::matrix::row_type<
-    fcppt::type_traits::remove_cv_ref_t<Type>,
+    std::remove_cvref_t<Type>,
     fcppt::cast::size<fcppt::math::size_type>(sizeof...(Args) + 1U)>
 row(Type &&_value, Args &&..._args)
 {
   return fcppt::math::matrix::row_type<
-      fcppt::type_traits::remove_cv_ref_t<Type>,
+      std::remove_cvref_t<Type>,
       fcppt::cast::size<fcppt::math::size_type>(sizeof...(Args) + 1U)>{
       std::forward<Type>(_value), std::forward<Args>(_args)...};
 }

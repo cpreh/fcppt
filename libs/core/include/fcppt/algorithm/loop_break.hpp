@@ -7,8 +7,8 @@
 #define FCPPT_ALGORITHM_LOOP_BREAK_HPP_INCLUDED
 
 #include <fcppt/algorithm/loop_break_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,7 +31,7 @@ implementation for a specific range type is handled by #fcppt::algorithm::loop_b
 template <typename Range, typename Body>
 inline void loop_break(Range &&_range, Body const &_body)
 {
-  fcppt::algorithm::loop_break_impl<fcppt::type_traits::remove_cv_ref_t<Range>>::execute(
+  fcppt::algorithm::loop_break_impl<std::remove_cvref_t<Range>>::execute(
       std::forward<Range>(_range), _body);
 }
 

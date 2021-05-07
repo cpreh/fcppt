@@ -9,7 +9,6 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/static_row_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -29,16 +28,15 @@ namespace grid
 template <
     typename Arg1,
     typename... Args,
-    typename = std::enable_if_t<std::conjunction_v<std::is_same<
-        fcppt::type_traits::remove_cv_ref_t<Args>,
-        fcppt::type_traits::remove_cv_ref_t<Arg1>>...>>>
+    typename = std::enable_if_t<
+        std::conjunction_v<std::is_same<std::remove_cvref_t<Args>, std::remove_cvref_t<Arg1>>...>>>
 fcppt::container::grid::static_row_type<
-    fcppt::type_traits::remove_cv_ref_t<Arg1>,
+    std::remove_cvref_t<Arg1>,
     fcppt::cast::size<fcppt::container::grid::size_type>(sizeof...(Args) + 1U)>
 static_row(Arg1 &&_arg1, Args &&..._args)
 {
   return fcppt::container::grid::static_row_type<
-      fcppt::type_traits::remove_cv_ref_t<Arg1>,
+      std::remove_cvref_t<Arg1>,
       fcppt::cast::size<fcppt::container::grid::size_type>(sizeof...(Args) + 1U)>{
       std::forward<Arg1>(_arg1), std::forward<Args>(_args)...};
 }

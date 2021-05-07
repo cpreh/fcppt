@@ -7,8 +7,8 @@
 #define FCPPT_CATCH_MAKE_MOVABLE_HPP_INCLUDED
 
 #include <fcppt/catch/movable_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,9 +17,9 @@ namespace fcppt
 namespace catch_
 {
 template <typename Type>
-inline fcppt::catch_::movable<fcppt::type_traits::remove_cv_ref_t<Type>> make_movable(Type &&_value)
+inline fcppt::catch_::movable<std::remove_cvref_t<Type>> make_movable(Type &&_value)
 {
-  return fcppt::catch_::movable<fcppt::type_traits::remove_cv_ref_t<Type>>{
+  return fcppt::catch_::movable<std::remove_cvref_t<Type>>{
       std::forward<Type>(_value)};
 }
 

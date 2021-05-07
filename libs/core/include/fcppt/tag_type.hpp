@@ -7,7 +7,9 @@
 #define FCPPT_TAG_TYPE_HPP_INCLUDED
 
 #include <fcppt/detail/tag_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -17,7 +19,7 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 template <typename Type>
-using tag_type = typename fcppt::detail::tag_type<fcppt::type_traits::remove_cv_ref_t<Type>>::type;
+using tag_type = typename fcppt::detail::tag_type<std::remove_cvref_t<Type>>::type;
 
 }
 

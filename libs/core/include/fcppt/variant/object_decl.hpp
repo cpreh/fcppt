@@ -10,7 +10,6 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/has_type.hpp>
@@ -61,9 +60,8 @@ public:
   */
   template <
       typename U,
-      typename =
-          std::enable_if_t<fcppt::variant::detail::
-                               has_type<this_type, fcppt::type_traits::remove_cv_ref_t<U>>::value>>
+      typename = std::enable_if_t<
+          fcppt::variant::detail::has_type<this_type, std::remove_cvref_t<U>>::value>>
   explicit object(U &&);
 
   /**

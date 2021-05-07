@@ -9,7 +9,6 @@
 #include <fcppt/parse/complement_impl.hpp>
 #include <fcppt/parse/deref_type.hpp>
 #include <fcppt/parse/detail/is_char_set.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -31,7 +30,7 @@ template <
         fcppt::parse::detail::is_char_set<fcppt::parse::deref_type<Parser>>::value>>
 auto operator~(Parser &&_parser)
 {
-  return fcppt::parse::complement<fcppt::type_traits::remove_cv_ref_t<Parser>>{
+  return fcppt::parse::complement<std::remove_cvref_t<Parser>>{
       std::forward<Parser>(_parser)};
 }
 

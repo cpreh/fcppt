@@ -13,7 +13,6 @@
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/value_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -35,20 +34,20 @@ template <
     typename Array1,
     typename Array2,
     typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Array1>>,
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Array2>>,
+        fcppt::array::is_object<std::remove_cvref_t<Array1>>,
+        fcppt::array::is_object<std::remove_cvref_t<Array2>>,
         std::is_same<
-            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
-            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array2>>>>>>
+            fcppt::array::value_type<std::remove_cvref_t<Array1>>,
+            fcppt::array::value_type<std::remove_cvref_t<Array2>>>>>>
 fcppt::array::object<
-    fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Array1>>,
-    fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Array1>>::value +
-        fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Array2>>::value>
+    fcppt::array::value_type<std::remove_cvref_t<Array1>>,
+    fcppt::array::size<std::remove_cvref_t<Array1>>::value +
+        fcppt::array::size<std::remove_cvref_t<Array2>>::value>
 append(Array1 &&_array1, Array2 &&_array2)
 {
-  using array1 = fcppt::type_traits::remove_cv_ref_t<Array1>;
+  using array1 = std::remove_cvref_t<Array1>;
 
-  using array2 = fcppt::type_traits::remove_cv_ref_t<Array2>;
+  using array2 = std::remove_cvref_t<Array2>;
 
   using element_type = fcppt::array::value_type<array1>;
 
@@ -56,7 +55,8 @@ append(Array1 &&_array1, Array2 &&_array2)
 
   return fcppt::array::init<
       fcppt::array::object<element_type, array1_size::value + fcppt::array::size<array2>::value>>(
-      [&_array1, &_array2](auto const _index) {
+      [&_array1, &_array2](auto const _index)
+      {
         if constexpr (_index() < array1_size::value)
         {
           return fcppt::move_if_rvalue<Array1>(fcppt::array::get<_index()>(_array1));

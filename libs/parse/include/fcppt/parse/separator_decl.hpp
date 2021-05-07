@@ -16,7 +16,6 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <vector>
@@ -70,8 +69,8 @@ FCPPT_PP_POP_WARNING
 
 template <typename Inner, typename Sep>
 separator(Inner &&, Sep &&) -> separator<
-    fcppt::type_traits::remove_cv_ref_t<Inner>,
-    fcppt::type_traits::remove_cv_ref_t<Sep>>;
+    std::remove_cvref_t<Inner>,
+    std::remove_cvref_t<Sep>>;
 
 }
 }

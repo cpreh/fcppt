@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONS_MAKE_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/options/optional_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,13 +26,10 @@ specified. This function turns a parser into a parser that instead of failing
 returns optional results.
 */
 template <typename Parser>
-inline fcppt::options::optional<fcppt::type_traits::remove_cv_ref_t<Parser>>
-make_optional(Parser &&_parser)
+inline fcppt::options::optional<std::remove_cvref_t<Parser>> make_optional(Parser &&_parser)
 {
-  return fcppt::options::optional<fcppt::type_traits::remove_cv_ref_t<Parser>>{
-      std::forward<Parser>(_parser)};
+  return fcppt::options::optional<std::remove_cvref_t<Parser>>{std::forward<Parser>(_parser)};
 }
-
 }
 }
 

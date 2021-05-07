@@ -7,7 +7,6 @@
 #define FCPPT_RECORD_ENABLE_VARARG_CTOR_HPP_INCLUDED
 
 #include <fcppt/record/detail/is_element_init.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,7 +22,7 @@ namespace record
 */
 template <typename... Args>
 using enable_vararg_ctor = std::enable_if_t<std::conjunction_v<
-    fcppt::record::detail::is_element_init<fcppt::type_traits::remove_cv_ref_t<Args>>...>>;
+    fcppt::record::detail::is_element_init<std::remove_cvref_t<Args>>...>>;
 
 }
 }

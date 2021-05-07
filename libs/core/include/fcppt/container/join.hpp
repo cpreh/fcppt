@@ -7,8 +7,8 @@
 #define FCPPT_CONTAINER_JOIN_HPP_INCLUDED
 
 #include <fcppt/container/detail/join_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,7 +32,7 @@ container.
 \tparam Container A container class that supports insert of iterator ranges.
 */
 template <typename Container, typename... Args>
-inline fcppt::type_traits::remove_cv_ref_t<Container> join(Container &&_first, Args &&..._args)
+inline std::remove_cvref_t<Container> join(Container &&_first, Args &&..._args)
 {
   return fcppt::container::detail::join_impl(
       std::forward<Container>(_first), std::forward<Args>(_args)...);

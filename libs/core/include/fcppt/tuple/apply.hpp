@@ -12,7 +12,6 @@
 #include <fcppt/tuple/init.hpp>
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/size.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>
@@ -39,13 +38,13 @@ apply(Function const &_function, Tuples &&..._tuples)
 {
   static_assert(
       std::conjunction_v<
-          fcppt::tuple::is_object<fcppt::type_traits::remove_cv_ref_t<Tuples>>...>,
+          fcppt::tuple::is_object<std::remove_cvref_t<Tuples>>...>,
       "Tuples must all be fcppt::tuple::objects");
 
   static_assert(
       std::is_same_v<std::integral_constant<
           std::size_t,
-          fcppt::tuple::size<fcppt::type_traits::remove_cv_ref_t<Tuples>>::value>...>,
+          fcppt::tuple::size<std::remove_cvref_t<Tuples>>::value>...>,
       "All tuples must have the same size");
 
   return fcppt::tuple::init<fcppt::tuple::apply_result<Function, Tuples...>>(

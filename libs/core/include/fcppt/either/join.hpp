@@ -12,7 +12,6 @@
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -35,12 +34,11 @@ Otherwise, the success value of the inner either is returned.
 */
 template <typename Either>
 fcppt::either::object<
-    fcppt::either::failure_type<fcppt::type_traits::remove_cv_ref_t<Either>>,
-    fcppt::either::success_type<
-        fcppt::either::success_type<fcppt::type_traits::remove_cv_ref_t<Either>>>>
+    fcppt::either::failure_type<std::remove_cvref_t<Either>>,
+    fcppt::either::success_type<fcppt::either::success_type<std::remove_cvref_t<Either>>>>
 join(Either &&_either)
 {
-  using either = fcppt::type_traits::remove_cv_ref_t<Either>;
+  using either = std::remove_cvref_t<Either>;
 
   static_assert(fcppt::either::is_object<either>::value, "Either must be an either");
 
@@ -50,11 +48,10 @@ join(Either &&_either)
           fcppt::either::failure_type<fcppt::either::success_type<either>>>::value,
       "Both eithers must have the same failure type");
 
-  return fcppt::either::bind(std::forward<Either>(_either), [](auto &&_value) {
-    return fcppt::move_if_rvalue<Either>(_value);
-  });
+  return fcppt::either::bind(
+      std::forward<Either>(_either),
+      [](auto &&_value) { return fcppt::move_if_rvalue<Either>(_value); });
 }
-
 }
 }
 

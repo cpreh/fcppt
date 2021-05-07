@@ -10,8 +10,8 @@
 #include <fcppt/tuple/push_back_result.hpp>
 #include <fcppt/tuple/size.hpp>
 #include <fcppt/tuple/detail/push_back.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,25 +28,20 @@ The result of the function is <code>(v_1,...,v_n,_new_element)</code>.
 \tparam Tuple Must be a <code>fcppt::tuple::object</code>.
 */
 template <typename Tuple, typename NewElement>
-fcppt::tuple::push_back_result<
-    fcppt::type_traits::remove_cv_ref_t<Tuple>,
-    fcppt::type_traits::remove_cv_ref_t<NewElement>>
+fcppt::tuple::push_back_result<std::remove_cvref_t<Tuple>, std::remove_cvref_t<NewElement>>
 push_back(Tuple &&_tuple, NewElement &&_new_element)
 {
-  using source_type = fcppt::type_traits::remove_cv_ref_t<Tuple>;
+  using source_type = std::remove_cvref_t<Tuple>;
 
   static_assert(
-      fcppt::tuple::is_object<source_type>::value,
-      "Tuple must be an fcppt::tuple::object");
+      fcppt::tuple::is_object<source_type>::value, "Tuple must be an fcppt::tuple::object");
 
-  return fcppt::tuple::detail::push_back<fcppt::tuple::push_back_result<
-      source_type,
-      fcppt::type_traits::remove_cv_ref_t<NewElement>>>(
+  return fcppt::tuple::detail::push_back<
+      fcppt::tuple::push_back_result<source_type, std::remove_cvref_t<NewElement>>>(
       std::make_index_sequence<fcppt::tuple::size<source_type>::value>{},
       std::forward<Tuple>(_tuple),
       std::forward<NewElement>(_new_element));
 }
-
 }
 
 #endif

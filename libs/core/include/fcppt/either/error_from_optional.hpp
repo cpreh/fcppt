@@ -12,8 +12,8 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,13 +30,13 @@ If \a _optional is set to <code>x</code>, then <code>x</code> is returned as
 the failure value.
 */
 template <typename Optional>
-fcppt::either::error<fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>
+fcppt::either::error<fcppt::optional::value_type<std::remove_cvref_t<Optional>>>
 error_from_optional(Optional &&_optional)
 {
   static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
 
   using result_type = fcppt::either::error<
-      fcppt::optional::value_type<fcppt::type_traits::remove_cv_ref_t<Optional>>>;
+      fcppt::optional::value_type<std::remove_cvref_t<Optional>>>;
 
   return fcppt::optional::maybe(
       std::forward<Optional>(_optional),

@@ -7,7 +7,6 @@
 #define FCPPT_OPTIONAL_ALTERNATIVE_HPP_INCLUDED
 
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -28,7 +27,7 @@ the result of \a _optional2 is returned.
 \tparam Function A function callable as <code>Optional ()</code>.
 */
 template <typename Optional, typename Function>
-fcppt::type_traits::remove_cv_ref_t<Optional>
+std::remove_cvref_t<Optional>
 alternative(Optional &&_optional1, Function const &_optional2)
 {
   static_assert(

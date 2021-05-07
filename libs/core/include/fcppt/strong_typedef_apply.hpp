@@ -10,7 +10,6 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
@@ -43,14 +42,14 @@ inline auto strong_typedef_apply(
         decltype(_function(
             fcppt::move_if_rvalue<StrongTypedef1>(_strong_typedef1.get()),
             fcppt::move_if_rvalue<StrongTypedefs>(_strong_typedefs.get())...)),
-        fcppt::strong_typedef_tag<fcppt::type_traits::remove_cv_ref_t<StrongTypedef1>>>
+        fcppt::strong_typedef_tag<std::remove_cvref_t<StrongTypedef1>>>
 {
-  using strong_typedef1 = fcppt::type_traits::remove_cv_ref_t<StrongTypedef1>;
+  using strong_typedef1 = std::remove_cvref_t<StrongTypedef1>;
 
   static_assert(
       fcppt::is_strong_typedef<strong_typedef1>::value, "StrongTypedef1 must be a strong typedef");
 
-  using strong_typedefs = ::metal::list<fcppt::type_traits::remove_cv_ref_t<StrongTypedefs>...>;
+  using strong_typedefs = ::metal::list<std::remove_cvref_t<StrongTypedefs>...>;
 
   using input_tag = fcppt::strong_typedef_tag<strong_typedef1>;
 

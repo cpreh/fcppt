@@ -7,8 +7,8 @@
 #define FCPPT_OVERLOAD_HPP_INCLUDED
 
 #include <fcppt/overloaded_impl.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,9 +20,9 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 template <typename... Args>
-fcppt::overloaded<fcppt::type_traits::remove_cv_ref_t<Args>...> overload(Args &&..._args)
+fcppt::overloaded<std::remove_cvref_t<Args>...> overload(Args &&..._args)
 {
-  return fcppt::overloaded<fcppt::type_traits::remove_cv_ref_t<Args>...>{
+  return fcppt::overloaded<std::remove_cvref_t<Args>...>{
       std::forward<Args>(_args)...};
 }
 

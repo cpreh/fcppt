@@ -11,7 +11,6 @@
 #include <fcppt/array/make.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/value_type.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -32,13 +31,13 @@ template <
     typename Source,
     typename NewElement,
     typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<fcppt::type_traits::remove_cv_ref_t<Source>>,
+        fcppt::array::is_object<std::remove_cvref_t<Source>>,
         std::is_same<
-            fcppt::type_traits::remove_cv_ref_t<NewElement>,
-            fcppt::array::value_type<fcppt::type_traits::remove_cv_ref_t<Source>>>>>>
+            std::remove_cvref_t<NewElement>,
+            fcppt::array::value_type<std::remove_cvref_t<Source>>>>>>
 [[nodiscard]] fcppt::array::object<
-    fcppt::type_traits::value_type<fcppt::type_traits::remove_cv_ref_t<Source>>,
-    fcppt::array::size<fcppt::type_traits::remove_cv_ref_t<Source>>::value + 1U>
+    fcppt::type_traits::value_type<std::remove_cvref_t<Source>>,
+    fcppt::array::size<std::remove_cvref_t<Source>>::value + 1U>
 push_back(Source &&_source, NewElement &&_new_element)
 {
   return fcppt::array::append(

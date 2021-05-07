@@ -9,8 +9,8 @@
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,7 +25,7 @@ namespace parse
 The character type \a Ch of the error value has to be specified explicitly.
 */
 template <typename Ch, typename Success>
-inline fcppt::parse::result<Ch, fcppt::type_traits::remove_cv_ref_t<Success>>
+inline fcppt::parse::result<Ch, std::remove_cvref_t<Success>>
 make_success(Success &&_success)
 {
   return fcppt::either::make_success<fcppt::parse::error<Ch>>(std::forward<Success>(_success));
