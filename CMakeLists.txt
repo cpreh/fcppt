@@ -182,16 +182,6 @@ if(
 	)
 endif()
 
-CHECK_CXX_SOURCE_COMPILES(
-	"#include <execinfo.h>
-	int main()
-	{
-		static_cast<void>(static_cast<int (*)(void**,int)>(::backtrace));
-		static_cast<void>(static_cast<char **(*)(void* const *,int)>(::backtrace_symbols));
-	}"
-	FCPPT_HAVE_BACKTRACE
-)
-
 include(
 	TestBigEndian
 )
