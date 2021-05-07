@@ -1006,7 +1006,6 @@ set(
 	libs/core/include/fcppt/math/matrix/vector.hpp
 	libs/core/include/fcppt/math/mod.hpp
 	libs/core/include/fcppt/math/next_power_of_2.hpp
-	libs/core/include/fcppt/math/pi.hpp
 	libs/core/include/fcppt/math/power_of_2.hpp
 	libs/core/include/fcppt/math/rad_to_deg.hpp
 	libs/core/include/fcppt/math/size_type.hpp
@@ -1022,7 +1021,6 @@ set(
 	libs/core/include/fcppt/math/static_size.hpp
 	libs/core/include/fcppt/math/to_array.hpp
 	libs/core/include/fcppt/math/to_array_type.hpp
-	libs/core/include/fcppt/math/twopi.hpp
 	libs/core/include/fcppt/math/vector/angle_between.hpp
 	libs/core/include/fcppt/math/vector/angle_between_cast.hpp
 	libs/core/include/fcppt/math/vector/arithmetic.hpp

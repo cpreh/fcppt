@@ -8,10 +8,10 @@
 #define FCPPT_MATH_INTERPOLATION_TRIGONOMETRIC_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/pi.hpp>
 #include <fcppt/math/interpolation/linear.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
+#include <numbers>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -40,7 +40,7 @@ Value trigonometric(Float const &_f, Value const &_v1, Value const &_v2)
       fcppt::literal<Float>(
           0.5 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
           ) *
-          (fcppt::literal<Float>(1) - std::cos(fcppt::math::pi<Float>() * _f)),
+          (fcppt::literal<Float>(1) - std::cos(std::numbers::pi_v<Float> * _f)),
       _v1,
       _v2);
 }

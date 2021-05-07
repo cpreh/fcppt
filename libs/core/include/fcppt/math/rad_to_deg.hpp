@@ -7,8 +7,8 @@
 #define FCPPT_MATH_RAD_TO_DEG_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/pi.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <numbers>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,7 +29,7 @@ inline T rad_to_deg(T const _rad)
   return _rad *
          fcppt::literal<T>(
              180) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-         / fcppt::math::pi<T>();
+         / std::numbers::pi_v<T>;
 }
 
 }

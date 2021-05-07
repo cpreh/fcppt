@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/math/pi.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -17,6 +16,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <numbers>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -38,7 +38,7 @@ TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
   using vector_rotation_type = fcppt::math::vector::static_<float, 3>;
 
   matrix_type const trans(fcppt::math::matrix::rotation_axis(
-      fcppt::math::pi<float>(), vector_rotation_type(1.F, 0.F, 0.F)));
+      std::numbers::pi_v<float>, vector_rotation_type(1.F, 0.F, 0.F)));
 
   using vector_type = fcppt::math::vector::static_<float, 4>;
 
@@ -51,7 +51,7 @@ TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
       fcppt::math::matrix::rotation_axis(0.F, vector_rotation_type(0.F, 0.F, 0.F)),
       fcppt::math::matrix::identity<matrix_type>()));
 
-  float const angle{fcppt::math::pi<float>() / 2.F};
+  float const angle{std::numbers::pi_v<float> / 2.F};
 
   CHECK(::compare_matrices(
       fcppt::math::matrix::rotation_axis(angle, vector_rotation_type(1.F, 0.F, 0.F)),

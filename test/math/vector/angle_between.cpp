@@ -6,7 +6,6 @@
 #include <fcppt/const.hpp>
 #include <fcppt/literal.hpp>
 #include <fcppt/math/diff.hpp>
-#include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/signed_angle_between.hpp>
@@ -21,6 +20,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <limits>
+#include <numbers>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -32,7 +32,7 @@ real const epsilon{std::numeric_limits<real>::epsilon()};
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 
-real const half_pi{fcppt::math::pi<real>() / fcppt::literal<real>(2.F)};
+real const half_pi{std::numbers::pi_v<real> / fcppt::literal<real>(2.F)};
 
 FCPPT_PP_POP_WARNING
 

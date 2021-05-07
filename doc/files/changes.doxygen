@@ -9,6 +9,16 @@ fcppt now uses <code>C++-20</code>.
 
 \subsection changes_removed_functionality_to_400 Removed functionality
 
+<ul>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Removed <code>fcppt::math::pi</code> and <code>fcppt::math::twopi</code>. Use <code>std::numbers::pi_v</code> instead.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_380 3.8.0
 
 \subsection changes_added_functionality_to_380 Added functionality

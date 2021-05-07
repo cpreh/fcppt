@@ -6,7 +6,6 @@
 #include <fcppt/const.hpp>
 #include <fcppt/literal.hpp>
 #include <fcppt/math/diff.hpp>
-#include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/apply.hpp>
@@ -15,6 +14,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <numbers>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -40,7 +40,7 @@ TEST_CASE("math::vector::atan2", "[math],[vector]")
 {
   using float2_vec = fcppt::math::vector::static_<scalar, 2>;
 
-  scalar const pi{fcppt::math::pi<scalar>()};
+  scalar const pi{std::numbers::pi_v<scalar>};
 
   CHECK_FALSE(fcppt::math::vector::atan2(float2_vec{0.F, 0.F}).has_value());
 

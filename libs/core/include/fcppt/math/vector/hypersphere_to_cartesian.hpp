@@ -72,7 +72,7 @@ vector2f;
 vector3f point =
     fcppt::math::vector::hypersphere_to_cartesian(
         vector2f(
-            fcppt::math::pi<float>(),
+            std::numbers::pi_v<float>,
             0.0f));
 \endcode
 
