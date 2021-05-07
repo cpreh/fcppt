@@ -1512,8 +1512,6 @@ set(
 	libs/core/include/fcppt/type_traits/is_string.hpp
 	libs/core/include/fcppt/type_traits/is_value.hpp
 	libs/core/include/fcppt/type_traits/numeric_max.hpp
-	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
-	libs/core/include/fcppt/type_traits/remove_cv_ref_t.hpp
 	libs/core/include/fcppt/type_traits/safe_integral_cast.hpp
 	libs/core/include/fcppt/type_traits/to_bool.hpp
 	libs/core/include/fcppt/type_traits/value_type.hpp
