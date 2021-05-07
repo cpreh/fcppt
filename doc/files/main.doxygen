@@ -104,6 +104,7 @@ The documentation is split into the following parts:
 	<li>
 		\subpage changes
 		<ul>
+			<li>\ref changes_changes_to_400</li>
 			<li>\ref changes_changes_to_380</li>
 			<li>\ref changes_changes_to_370</li>
 			<li>\ref changes_changes_to_360</li>

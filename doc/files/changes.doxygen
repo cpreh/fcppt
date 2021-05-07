@@ -1,6 +1,14 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_400 4.0.0
+
+<p>
+fcppt now uses <code>C++-20</code>.
+</p>
+
+\subsection changes_removed_functionality_to_400 Removed functionality
+
 \section changes_changes_to_380 3.8.0
 
 \subsection changes_added_functionality_to_380 Added functionality
