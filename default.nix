@@ -1,5 +1,5 @@
 let pkgs = import <nixpkgs> {};
-    stdenv = pkgs.gcc9Stdenv;
+    stdenv = pkgs.gcc10Stdenv;
 in stdenv.mkDerivation rec {
   name = "fcppt-master";
 
