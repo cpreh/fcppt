@@ -10,9 +10,9 @@
 #include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/endianness/convert.hpp>
-#include <fcppt/endianness/format.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <bit>
 #include <ios>
 #include <istream>
 #include <type_traits>
@@ -41,7 +41,7 @@ returned.
 be returned. Otherwise an empty optional will be returned.
 */
 template <typename Type>
-fcppt::optional::object<Type> read(std::istream &_stream, fcppt::endianness::format const _format)
+fcppt::optional::object<Type> read(std::istream &_stream, std::endian const _format)
 {
   static_assert(std::is_arithmetic_v<Type>, "io::read must return an arithmetic type");
 

@@ -666,11 +666,6 @@ set(
 	libs/core/include/fcppt/enable_shared_from_this_fwd.hpp
 	libs/core/include/fcppt/enable_shared_from_this_impl.hpp
 	libs/core/include/fcppt/endianness/convert.hpp
-	libs/core/include/fcppt/endianness/format.hpp
-	libs/core/include/fcppt/endianness/format_fwd.hpp
-	libs/core/include/fcppt/endianness/host_format.hpp
-	libs/core/include/fcppt/endianness/is_big_endian.hpp
-	libs/core/include/fcppt/endianness/is_little_endian.hpp
 	libs/core/include/fcppt/endianness/raw_pointer.hpp
 	libs/core/include/fcppt/endianness/raw_value.hpp
 	libs/core/include/fcppt/endianness/reverse_mem.hpp

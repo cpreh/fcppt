@@ -55,18 +55,9 @@ the byte containing the least significant bits comes first.
 The most used endianness is little, because the x86 and amd64 architectures use
 it. For example, PowerPC uses big endianness.
 
-fcppt provides simple means to query the endianness of the machine and to
-convert endianness of objects of fundamental types.
-
 \section endianness_example Example
 
-To query the endianness of the host, the functions fcppt::endianness::host_format
-can be used. There are also shorthand functions called fcppt::endianness::is_little_endian
-and fcppt::endianness::is_big_endian.
-
-\snippet endianness.cpp endianness_query
-
-To convert endianness, the template function fcppt::endianness::convert can be
+To convert endianness, the template function #fcppt::endianness::convert can be
 used. Because endianness conversion is symmetrical, it can not only convert
 from the host endianness to a given endianness, but it can also convert from a
 given endianness to the host endianness.

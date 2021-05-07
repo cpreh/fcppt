@@ -6,9 +6,9 @@
 #ifndef FCPPT_ENDIANNESS_CONVERT_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_CONVERT_HPP_INCLUDED
 
-#include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/swap.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <bit>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,7 +21,7 @@ namespace endianness
 
 \ingroup fcpptendianness
 
-If \a _format does not match the fcppt::endianness::host_format, then \a _value
+If \a _format does not match <code>std::endian::native</code>, then \a _value
 will have its endianness converted, otherwise it will be returned as-is. This
 function can be used to convert from the host format to \a _format, or from \a
 _format to the host format.
@@ -35,12 +35,12 @@ _format to the host format.
 \return The converted value
 */
 template <typename Type>
-Type convert(Type const &_value, fcppt::endianness::format const _format)
+Type convert(Type const &_value, std::endian const _format)
 {
   static_assert(
-      std::is_arithmetic<Type>::value, "endianness::convert can only be used on arithmetic types");
+      std::is_arithmetic_v<Type>, "endianness::convert can only be used on arithmetic types");
 
-  return _format == fcppt::endianness::host_format() ? _value : fcppt::endianness::swap(_value);
+  return _format == std::endian::native ? _value : fcppt::endianness::swap(_value);
 }
 
 }

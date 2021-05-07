@@ -10,8 +10,8 @@
 #include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/endianness/convert.hpp>
-#include <fcppt/endianness/format.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <bit>
 #include <ios>
 #include <ostream>
 #include <type_traits>
@@ -38,9 +38,9 @@ will be done binary.
 \param _format The endianness to use
 */
 template <typename Type>
-void write(std::ostream &_stream, Type const &_value, fcppt::endianness::format const _format)
+void write(std::ostream &_stream, Type const &_value, std::endian const _format)
 {
-  static_assert(std::is_arithmetic<Type>::value, "io::write can only be used on arithmetic types");
+  static_assert(std::is_arithmetic_v<Type>, "io::write can only be used on arithmetic types");
 
   Type const tmp(fcppt::endianness::convert(_value, _format));
 

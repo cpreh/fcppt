@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/text.hpp>
-#include <fcppt/endianness/format.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/write.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <bit>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,11 +20,11 @@ int main()
   std::stringstream stream{};
 
   // Write 42u into the stream, using big endianness
-  fcppt::io::write(stream, 42U, fcppt::endianness::format::big);
+  fcppt::io::write(stream, 42U, std::endian::big);
 
   // Read the written unsigned int back
   fcppt::optional::maybe_void(
-      fcppt::io::read<unsigned>(stream, fcppt::endianness::format::big),
+      fcppt::io::read<unsigned>(stream, std::endian::big),
       [](unsigned const _result) { fcppt::io::cout() << _result << FCPPT_TEXT('\n'); });
   //[io_endianness]
 }

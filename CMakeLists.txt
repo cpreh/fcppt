@@ -182,14 +182,6 @@ if(
 	)
 endif()
 
-include(
-	TestBigEndian
-)
-
-test_big_endian(
-	FCPPT_IS_BIG_ENDIAN
-)
-
 configure_file(
 	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/cmake/version.hpp.in
 	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include/fcppt/version.hpp
