@@ -1072,7 +1072,7 @@ Catch2 is now required.
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added #fcppt::type_traits::remove_cv_ref_t.</li>
+	<li>Added <code>fcppt::type_traits::remove_cv_ref_t</code>.</li>
 	<li>Added #fcppt::type_traits::value_type.</li>
 	</ul>
 </li>
