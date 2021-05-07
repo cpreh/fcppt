@@ -24,6 +24,12 @@ fcppt now uses <code>C++-20</code>.
 	</ul>
 </li>
 
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Removed <code>fcppt::type_traits::remove_cv_ref_t</code>. Use <code>std::remove_cvref_t</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_380 3.8.0
