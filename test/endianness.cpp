@@ -6,8 +6,8 @@
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/swap.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <bit>
 #include <catch2/catch.hpp>
+#include <bit>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("endianness", "[endianness]")
