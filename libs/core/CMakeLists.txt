@@ -1174,7 +1174,6 @@ set(
 	libs/core/include/fcppt/signal/detail/concrete_connection_decl.hpp
 	libs/core/include/fcppt/signal/detail/concrete_connection_fwd.hpp
 	libs/core/include/fcppt/signal/detail/concrete_connection_impl.hpp
-	libs/core/include/fcppt/signal/detail/enable_if_void.hpp
 	libs/core/include/fcppt/signal/object.hpp
 	libs/core/include/fcppt/signal/object_decl.hpp
 	libs/core/include/fcppt/signal/object_fwd.hpp
@@ -1285,7 +1284,6 @@ set(
 	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp
-	libs/core/include/fcppt/type_traits/function_result.hpp
 	libs/core/include/fcppt/type_traits/implication.hpp
 	libs/core/include/fcppt/type_traits/integral_cast.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp

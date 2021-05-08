@@ -13,7 +13,7 @@ namespace fcppt
 {
 namespace signal
 {
-template <typename T, template <typename> class Base = fcppt::signal::base, typename Enable = void>
+template <typename T, template <typename> class Base = fcppt::signal::base>
 class object;
 
 }

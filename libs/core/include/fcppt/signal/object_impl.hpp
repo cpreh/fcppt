@@ -10,66 +10,58 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/signal/base_impl.hpp>
 #include <fcppt/signal/object_decl.hpp>
-#include <fcppt/signal/detail/enable_if_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-template <typename T, template <typename> class Base, typename Enable>
-fcppt::signal::object<T, Base, Enable>::object(combiner_function &&_combiner)
+template <typename Result, typename... Args, template <typename> class Base>
+fcppt::signal::object<Result(Args...), Base>::object(combiner_function &&_combiner)
     : combiner_(std::move(_combiner))
 {
 }
 
-template <typename T, template <typename> class Base, typename Enable>
-fcppt::signal::object<T, Base, Enable>::object(object &&) noexcept = default;
+template <typename Result, typename... Args, template <typename> class Base>
+fcppt::signal::object<Result(Args...), Base>::object(object &&) noexcept = default;
 
-template <typename T, template <typename> class Base, typename Enable>
-fcppt::signal::object<T, Base, Enable> &
-fcppt::signal::object<T, Base, Enable>::operator=(object &&) noexcept = default;
+template <typename Result, typename... Args, template <typename> class Base>
+fcppt::signal::object<Result(Args...), Base> &
+fcppt::signal::object<Result(Args...), Base>::operator=(object &&) noexcept = default;
 
 namespace fcppt::signal
 {
-template <typename T, template <typename> class Base, typename Enable>
-object<T, Base, Enable>::~object() = default;
+template <typename Result, typename... Args, template <typename> class Base>
+object<Result(Args...), Base>::~object() = default;
 }
 
-template <typename T, template <typename> class Base, typename Enable>
-template <typename... Args>
-typename fcppt::signal::object<T, Base, Enable>::result_type
-fcppt::signal::object<T, Base, Enable>::operator()(initial_value &&_initial, Args &&..._args)
+template <typename Result, typename... Args, template <typename> class Base>
+Result
+fcppt::signal::object<Result(Args...), Base>::operator()(initial_value &&_initial, Args... _args)
 {
   return fcppt::algorithm::fold(
       base::connections(),
       std::move(_initial.get()),
-      [this, &_args...](auto &_fcppt_item, result_type &&_fcppt_state) {
-        return combiner_(std::move(_fcppt_state), _fcppt_item.function()(_args...));
-      });
+      [this, &_args...](auto &_fcppt_item, result_type &&_fcppt_state)
+      { return combiner_(std::move(_fcppt_state), _fcppt_item.function()(_args...)); });
 }
 
-template <typename T, template <typename> class Base>
-fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::object() = default;
+template <typename... Args, template <typename> class Base>
+fcppt::signal::object<void(Args...), Base>::object() = default;
 
-template <typename T, template <typename> class Base>
-fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::object(
-    object &&) noexcept = default;
+template <typename... Args, template <typename> class Base>
+fcppt::signal::object<void(Args...), Base>::object(object &&) noexcept = default;
 
-template <typename T, template <typename> class Base>
-fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>> &
-fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::operator=(
-    object &&) noexcept = default;
+template <typename... Args, template <typename> class Base>
+fcppt::signal::object<void(Args...), Base> &
+fcppt::signal::object<void(Args...), Base>::operator=(object &&) noexcept = default;
 
 namespace fcppt::signal
 {
-template <typename T, template <typename> class Base>
-object<T, Base, fcppt::signal::detail::enable_if_void<T>>::~object() = default;
+template <typename... Args, template <typename> class Base>
+object<void(Args...), Base>::~object() = default;
 }
 
-template <typename T, template <typename> class Base>
-template <typename... Args>
-typename fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::result_type
-fcppt::signal::object<T, Base, fcppt::signal::detail::enable_if_void<T>>::operator()(
-    Args &&..._args)
+template <typename... Args, template <typename> class Base>
+void fcppt::signal::object<void(Args...), Base>::operator()(Args ..._args)
 {
   for (auto &item : base::connections())
   {

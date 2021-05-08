@@ -13,8 +13,6 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
-#include <fcppt/signal/detail/enable_if_void.hpp>
-#include <fcppt/type_traits/function_result.hpp>
 
 namespace fcppt
 {
@@ -22,28 +20,24 @@ namespace signal
 {
 /**
 \brief Represents a signal with a non-void return value
-\tparam T The signal's function type
 \tparam Base The signal's base class (determines the existence of unregister functions)
-\tparam Enable Dummy for SFINAE operations
 \ingroup fcpptsignal
-
-See \ref fcpptsignal for more information.
 */
-template <typename T, template <typename> class Base, typename Enable>
-class object : private Base<T>
+template <typename Result, typename... Args, template <typename> class Base>
+class object<Result(Args...),Base> : private Base<Result(Args...)>
 {
   FCPPT_NONCOPYABLE(object);
 
 public:
   /**
-  \brief A typedef for the signal's base class
-  */
-  using base = Base<T>;
-
-  /**
   \brief A typedef for the function's return type
   */
-  using result_type = fcppt::type_traits::function_result<T>;
+  using result_type = Result;
+
+  /**
+  \brief A typedef for the signal's base class
+  */
+  using base = Base<Result(Args...)>;
 
   using function = typename base::function;
 
@@ -68,8 +62,7 @@ public:
   /**
   \brief Call the signal
   */
-  template <typename... Args>
-  result_type operator()(initial_value &&, Args &&...);
+  Result operator()(initial_value &&, Args...);
 
   using base::connect;
 
@@ -83,14 +76,11 @@ private:
 
 /**
 \brief Represents a signal without a return value
-\tparam T The signal's function type
 \tparam Base The signal's base class (determines the existence of unregister functions)
 \ingroup fcpptsignal
-
-See the #fcpptsignal module documentation  for more information.
 */
-template <typename T, template <typename> class Base>
-class object<T, Base, fcppt::signal::detail::enable_if_void<T>> : private Base<T>
+template <typename... Args, template <typename> class Base>
+class object<void(Args...), Base> : private Base<void(Args...)>
 {
   FCPPT_NONCOPYABLE(object);
 
@@ -98,7 +88,7 @@ public:
   /**
   \brief A typedef for the signal's base class
   */
-  using base = Base<T>;
+  using base = Base<void(Args...)>;
 
   using function = typename base::function;
 
@@ -121,8 +111,7 @@ public:
   /**
   \brief Call the signal
   */
-  template <typename... Args>
-  result_type operator()(Args &&...);
+  void operator()(Args ...);
 
   using base::connect;
 

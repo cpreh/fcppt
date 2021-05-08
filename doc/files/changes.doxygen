@@ -27,6 +27,7 @@ fcppt now uses <code>C++-20</code>.
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Removed <code>fcppt::type_traits::remove_cv_ref_t</code>. Use <code>std::remove_cvref_t</code>.</li>
+	<li>Removed <code>fcppt::type_traits::function_result</code>.</li>
 	</ul>
 </li>
 
@@ -436,7 +437,7 @@ Fixed a gcc-11 issue regarding parameter expansion.
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Removed nested <code>type</code> from #fcppt::type_traits::function_result.</li>
+	<li>Removed nested <code>type</code> from <code>fcppt::type_traits::function_result</code>.</li>
 	</ul>
 </li>
 
@@ -1291,7 +1292,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added #fcppt::type_traits::function_result.</li>
+	<li>Added <code>fcppt::type_traits::function_result</code>.</li>
 	<li>Added #fcppt::type_traits::is_value.</li>
 	<li>Added <code>fcppt::type_traits::is_std_tuple</code>.</li>
 	</ul>
