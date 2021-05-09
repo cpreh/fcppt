@@ -16,6 +16,7 @@
 #include <cstddef>
 #include <iostream>
 #include <string>
+#include <type_traits>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -55,7 +56,8 @@ template <std::size_t N>
 fcppt::array::object<unsigned int, N> init_array()
 {
   return fcppt::array::init<fcppt::array::object<unsigned int, N>>(
-      [](auto const _index) { return make_value<_index>::value; });
+      []<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+      { return make_value<Index>::value; });
 }
 // ![init_array]
 }
