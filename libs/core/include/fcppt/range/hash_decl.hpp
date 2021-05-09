@@ -20,7 +20,7 @@ namespace range
 
 \ingroup fcpptrange
 
-This is a naive implementation for hashing a range that combines invidiual
+This is a naive implementation for hashing a range that combines individual
 hashes of the elements in the range.
 
 \tparam Type Must be supported by std::hash.
