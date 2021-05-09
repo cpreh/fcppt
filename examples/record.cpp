@@ -3,15 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/element_to_label.hpp>
-#include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
@@ -104,16 +101,8 @@ void print(std::ostream &_stream, fcppt::record::object<Elements...> const &_rec
   // Loop over all types in the record
   fcppt::algorithm::loop(
       fcppt::record::element_vector<fcppt::record::object<Elements...>>{},
-      [&_stream, &_record](
-          // _element is fcppt::tag<fcppt::record::element<L,T>>
-          auto const _element) {
-        // _element is only used for its type
-        FCPPT_USE(_element);
-
-        print_label<
-            // Extract the label of _element
-            fcppt::record::element_to_label<fcppt::tag_type<decltype(_element)>>>(_stream, _record);
-      });
+      [&_stream, &_record]<typename L, typename T>(fcppt::tag<fcppt::record::element<L, T>>)
+      { print_label<L>(_stream, _record); });
 }
 //! [record_output]
 
@@ -125,22 +114,18 @@ void init_stream()
   // ![record_init_stream]
 
   // ![record_init_generic]
-  person const result{fcppt::record::init<person>([&stream](
-                                                      // _element is fcppt::record::element<L,T>
-                                                      auto const _element) {
-    // _element is only used for its type
-    FCPPT_USE(_element);
+  person const result{fcppt::record::init<person>(
+      [&stream]<typename L, typename T>(fcppt::record::element<L, T>)
+      {
+        T input;
 
-    // Extract the type of _element
-    fcppt::record::element_to_type<decltype(_element)> input;
+        if (!(stream >> input))
+        {
+          throw std::runtime_error{"failure"};
+        }
 
-    if (!(stream >> input))
-    {
-      throw std::runtime_error{"failure"};
-    }
-
-    return input;
-  })};
+        return input;
+      })};
   // ![record_init_generic]
 
   print(std::cout, result);

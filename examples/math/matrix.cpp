@@ -3,10 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
+#include <fcppt/math/integral_constant.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/at_r.hpp>
 #include <fcppt/math/matrix/identity.hpp>
@@ -52,13 +53,9 @@ void row_iterate()
 
   // Will output: (1,0,0),(0,1,0),(0,0,1),
   fcppt::algorithm::loop(
-      fcppt::math::int_range_count<int_matrix_3x3::rows()>{}, [&m](auto const _row) {
-        FCPPT_USE(_row);
-
-        using row = fcppt::tag_type<decltype(_row)>;
-
-        std::cout << fcppt::math::matrix::at_r<row::value>(m) << ",";
-      });
+      fcppt::math::int_range_count<int_matrix_3x3::rows()>{},
+      [&m]<fcppt::math::size_type Row>(fcppt::tag<fcppt::math::integral_constant<Row>>)
+      { std::cout << fcppt::math::matrix::at_r<Row>(m) << ','; });
 }
 // ![row_iterate]
 

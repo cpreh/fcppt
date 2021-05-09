@@ -932,6 +932,7 @@ set(
 	libs/core/include/fcppt/math/from_array.hpp
 	libs/core/include/fcppt/math/int_range.hpp
 	libs/core/include/fcppt/math/int_range_count.hpp
+	libs/core/include/fcppt/math/integral_constant.hpp
 	libs/core/include/fcppt/math/interpolation/linear.hpp
 	libs/core/include/fcppt/math/interpolation/perlin_fifth_degree.hpp
 	libs/core/include/fcppt/math/interpolation/trigonometric.hpp
