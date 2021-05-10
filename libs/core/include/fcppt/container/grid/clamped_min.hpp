@@ -7,11 +7,12 @@
 #define FCPPT_CONTAINER_GRID_CLAMPED_MIN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/use.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -40,11 +41,9 @@ clamped_min(fcppt::container::grid::pos<Source, Size> const _pos)
 
   return fcppt::container::grid::min<dest_type, Size>(
       fcppt::math::vector::init<fcppt::container::grid::pos<dest_type, Size>>(
-          [&_pos](auto const _index) {
-            FCPPT_USE(_index);
-
+          [&_pos]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>) {
             return fcppt::cast::to_unsigned(
-                std::max(fcppt::math::vector::at<_index>(_pos), fcppt::literal<Source>(0)));
+                std::max(fcppt::math::vector::at<Index>(_pos), fcppt::literal<Source>(0)));
           }));
 }
 

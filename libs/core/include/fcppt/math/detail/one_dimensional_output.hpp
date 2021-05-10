@@ -6,10 +6,11 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/if_not_last_index.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,15 +31,15 @@ one_dimensional_output(std::basic_ostream<Ch, Traits> &_stream, Type const &_val
 
   fcppt::algorithm::loop(
       fcppt::math::int_range_count<Type::static_size::value>{},
-      [&_stream, &_value](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        _stream << fcppt::math::detail::checked_access<index::value>(_value);
+      [&_stream,
+       &_value]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
+        _stream << fcppt::math::detail::checked_access<Index>(_value);
 
         fcppt::math::detail::if_not_last_index(
-            index{}, typename Type::static_size{}, [&_stream] { _stream << _stream.widen(','); });
+            fcppt::math::size_constant<Index>{},
+            typename Type::static_size{},
+            [&_stream] { _stream << _stream.widen(','); });
       });
 
   return _stream << _stream.widen(')');

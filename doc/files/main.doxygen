@@ -55,7 +55,7 @@ each element with its index:
 
 \snippet main.cpp init_array
 
-Notice that the parameter <em>_index</em> is actually an integral constant, which we
+Notice that the parameter is actually an integral constant, which we
 use to access the <code>make_value</code> template.
 
 To force initialization, fcppt also replaces certain standard types with types that have no

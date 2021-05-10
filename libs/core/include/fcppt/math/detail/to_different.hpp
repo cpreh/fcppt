@@ -6,7 +6,8 @@
 #ifndef FCPPT_MATH_DETAIL_TO_DIFFERENT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_TO_DIFFERENT_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/init.hpp>
 
@@ -21,11 +22,9 @@ inline Dest to_different(Source const &_source)
 {
   static_assert(Dest::dim_wrapper::value == Source::dim_wrapper::value, "dim_wrappers must match");
 
-  return fcppt::math::detail::init<Dest>([&_source](auto const _index) {
-    FCPPT_USE(_index);
-
-    return fcppt::math::detail::checked_access<_index>(_source);
-  });
+  return fcppt::math::detail::init<Dest>(
+      [&_source]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+      { return fcppt::math::detail::checked_access<Index>(_source); });
 }
 
 }

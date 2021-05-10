@@ -6,12 +6,13 @@
 #ifndef FCPPT_CONTAINER_GRID_END_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_END_POSITION_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/min_less_sup.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 
@@ -36,11 +37,10 @@ fcppt::container::grid::pos<SizeType, Size> end_position(
 {
   return fcppt::container::grid::min_less_sup(_min, _sup)
              ? fcppt::math::vector::init<fcppt::container::grid::pos<SizeType, Size>>(
-                   [_min, _sup](auto const _index) {
-                     FCPPT_USE(_index);
-
-                     return _index < Size - 1 ? fcppt::math::vector::at<_index>(_min.get())
-                                              : fcppt::math::vector::at<_index>(_sup.get());
+                   [_min, _sup]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+                   {
+                     return Index < Size - 1 ? fcppt::math::vector::at<Index>(_min.get())
+                                             : fcppt::math::vector::at<Index>(_sup.get());
                    })
              : _min.get();
 }

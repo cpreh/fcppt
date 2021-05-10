@@ -6,14 +6,15 @@
 #ifndef FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 
 namespace fcppt
@@ -45,18 +46,14 @@ fcppt::container::grid::pos<SizeType, Size> next_position(
   return fcppt::algorithm::fold(
       fcppt::math::int_range_count<Size - 1U>{},
       result,
-      [&_min, &_sup](auto const _index, result_type _result) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        if (fcppt::math::vector::at<index::value>(_result) ==
-            fcppt::math::vector::at<index::value>(_sup.get()))
+      [&_min, &_sup]<fcppt::math::size_type Index>(
+          fcppt::tag<fcppt::math::size_constant<Index>>, result_type _result)
+      {
+        if (fcppt::math::vector::at<Index>(_result) == fcppt::math::vector::at<Index>(_sup.get()))
         {
-          fcppt::math::vector::at<index::value>(_result) =
-              fcppt::math::vector::at<index::value>(_min.get());
+          fcppt::math::vector::at<Index>(_result) = fcppt::math::vector::at<Index>(_min.get());
 
-          ++fcppt::math::vector::at<index::value + 1U>(_result);
+          ++fcppt::math::vector::at<Index + 1U>(_result);
         }
 
         return _result;

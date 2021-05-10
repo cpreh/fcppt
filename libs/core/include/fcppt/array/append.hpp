@@ -14,6 +14,7 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -55,16 +56,16 @@ append(Array1 &&_array1, Array2 &&_array2)
 
   return fcppt::array::init<
       fcppt::array::object<element_type, array1_size::value + fcppt::array::size<array2>::value>>(
-      [&_array1, &_array2](auto const _index)
+      [&_array1, &_array2]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
       {
-        if constexpr (_index() < array1_size::value)
+        if constexpr (Index < array1_size::value)
         {
-          return fcppt::move_if_rvalue<Array1>(fcppt::array::get<_index()>(_array1));
+          return fcppt::move_if_rvalue<Array1>(fcppt::array::get<Index>(_array1));
         }
         else
         {
           return fcppt::move_if_rvalue<Array2>(
-              fcppt::array::get<_index() - array1_size::value>(_array2));
+              fcppt::array::get<Index - array1_size::value>(_array2));
         }
       });
 }

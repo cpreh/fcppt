@@ -10,6 +10,8 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
@@ -37,12 +39,11 @@ fcppt::container::grid::sup<Source, Size> clamped_sup(
   static_assert(std::is_unsigned<Source>::value, "Source must be unsigned");
 
   return fcppt::container::grid::sup<Source, Size>(
-      fcppt::math::vector::init<fcppt::container::grid::pos<Source, Size>>([&_pos, &_size](
-                                                                               auto const _index) {
-        FCPPT_USE(_index);
-
-        return std::min(fcppt::math::vector::at<_index>(_pos), fcppt::math::dim::at<_index>(_size));
-      }));
+      fcppt::math::vector::init<fcppt::container::grid::pos<Source, Size>>(
+          [&_pos, &_size]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>) {
+            return std::min(
+                fcppt::math::vector::at<Index>(_pos), fcppt::math::dim::at<Index>(_size));
+          }));
 }
 
 }

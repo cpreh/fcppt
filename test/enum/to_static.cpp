@@ -6,6 +6,7 @@
 #include <fcppt/enum/to_static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -22,11 +23,8 @@ enum class my_enum
 
 TEST_CASE("enum::to_static", "[enum]")
 {
-  fcppt::enum_::to_static(my_enum::test3, [](auto const _value) {
-    FCPPT_USE(_value);
-
-    using val = decltype(_value);
-
-    CHECK(val::value == my_enum::test3);
-  });
+  fcppt::enum_::to_static(
+      my_enum::test3,
+      []<my_enum Value>(std::integral_constant<my_enum, Value>)
+      { CHECK(Value == my_enum::test3); });
 }

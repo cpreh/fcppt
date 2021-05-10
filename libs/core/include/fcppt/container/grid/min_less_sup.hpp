@@ -6,13 +6,14 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 
 namespace fcppt
@@ -35,13 +36,11 @@ bool min_less_sup(
     fcppt::container::grid::sup<SizeType, Size> const _sup)
 {
   return fcppt::algorithm::all_of(
-      fcppt::math::int_range_count<Size>{}, [&_min, &_sup](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        return fcppt::math::vector::at<index::value>(_min.get()) <
-               fcppt::math::vector::at<index::value>(_sup.get());
+      fcppt::math::int_range_count<Size>{},
+      [&_min, &_sup]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
+        return fcppt::math::vector::at<Index>(_min.get()) <
+               fcppt::math::vector::at<Index>(_sup.get());
       });
 }
 

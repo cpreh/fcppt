@@ -29,7 +29,8 @@ template <typename Enum, typename = std::enable_if_t<fcppt::enum_::is_object<Enu
 inline fcppt::enum_::names_array<Enum> names()
 {
   return fcppt::enum_::array_init<fcppt::enum_::names_array<Enum>>(
-      [](auto const _index) { return fcppt::enum_::to_string(_index()); });
+      []<Enum Index>(std::integral_constant<Enum, Index>)
+      { return fcppt::enum_::to_string(Index); });
 }
 
 }

@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_MATH_INTEGRAL_CONSTANT_HPP_INCLUDED
-#define FCPPT_MATH_INTEGRAL_CONSTANT_HPP_INCLUDED
+#ifndef FCPPT_MATH_SIZE_CONSTANT_HPP_INCLUDED
+#define FCPPT_MATH_SIZE_CONSTANT_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,7 +17,7 @@ namespace math
 {
 
 template<fcppt::math::size_type N>
-using integral_constant = std::integral_constant<fcppt::math::size_type, N>;
+using size_constant = std::integral_constant<fcppt::math::size_type, N>;
 
 }
 }

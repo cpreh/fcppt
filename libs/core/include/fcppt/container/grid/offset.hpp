@@ -9,13 +9,14 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/int_range.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -45,21 +46,17 @@ SizeType offset(
   return fcppt::algorithm::fold(
              fcppt::math::int_range<1U, Size>{},
              std::make_pair(result{_pos.x()}, stacked_dim{fcppt::literal<SizeType>(1)}),
-             [&_pos, &_size](auto const _index, std::pair<result, stacked_dim> _sum) {
-               FCPPT_USE(_index);
+             [&_pos, &_size]<fcppt::math::size_type Index>(
+                 fcppt::tag<fcppt::math::size_constant<Index>>, std::pair<result, stacked_dim> _sum)
+             {
+               _sum.second *= stacked_dim{fcppt::math::dim::at<Index - 1U>(_size)};
 
-               using index = fcppt::tag_type<decltype(_index)>;
-
-               _sum.second *= stacked_dim{fcppt::math::dim::at<index::value - 1U>(_size)};
-
-               _sum.first +=
-                   result{fcppt::math::vector::at<index::value>(_pos) * _sum.second.get()};
+               _sum.first += result{fcppt::math::vector::at<Index>(_pos) * _sum.second.get()};
 
                return _sum;
              })
       .first.get();
 }
-
 }
 }
 }

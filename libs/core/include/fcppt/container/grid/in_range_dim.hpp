@@ -6,13 +6,14 @@
 #ifndef FCPPT_CONTAINER_GRID_IN_RANGE_DIM_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_IN_RANGE_DIM_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
 
@@ -34,14 +35,9 @@ inline bool in_range_dim(
     fcppt::container::grid::dim<T, N> const _dim, fcppt::container::grid::pos<T, N> const _pos)
 {
   return fcppt::algorithm::all_of(
-      fcppt::math::int_range_count<N>{}, [&_dim, &_pos](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        return fcppt::math::vector::at<index::value>(_pos) <
-               fcppt::math::dim::at<index::value>(_dim);
-      });
+      fcppt::math::int_range_count<N>{},
+      [&_dim, &_pos]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      { return fcppt::math::vector::at<Index>(_pos) < fcppt::math::dim::at<Index>(_dim); });
 }
 
 }

@@ -19,6 +19,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -42,9 +43,12 @@ corner_points(fcppt::math::box::object<T, N> const &_box)
 
   result_type const corners(fcppt::math::vector::bit_strings<T, N>());
 
-  return fcppt::array::init<result_type>([&_box, &corners](auto const _index) {
-    return _box.pos() + fcppt::array::get<_index()>(corners) * fcppt::math::dim::to_vector(_box.size());
-  });
+  return fcppt::array::init<result_type>(
+      [&_box, &corners]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+      {
+        return _box.pos() +
+               fcppt::array::get<Index>(corners) * fcppt::math::dim::to_vector(_box.size());
+      });
 }
 
 }

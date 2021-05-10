@@ -14,6 +14,7 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -60,11 +61,11 @@ auto apply(Function const &_function, Array1 &&_array1, Arrays &&..._arrays)
       fcppt::array::size<std::remove_cvref_t<Array1>>::value>;
 
   return fcppt::array::init<result_type>(
-      [&_function, &_array1, &_arrays...](auto const _index)
+      [&_function, &_array1, &_arrays...]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
       {
         return _function(
-            fcppt::move_if_rvalue<Array1>(fcppt::array::get<_index()>(_array1)),
-            fcppt::move_if_rvalue<Arrays>(fcppt::array::get<_index()>(_arrays))...);
+            fcppt::move_if_rvalue<Array1>(fcppt::array::get<Index>(_array1)),
+            fcppt::move_if_rvalue<Arrays>(fcppt::array::get<Index>(_arrays))...);
       });
 }
 }

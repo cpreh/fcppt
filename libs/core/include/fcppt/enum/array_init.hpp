@@ -6,10 +6,13 @@
 #ifndef FCPPT_ENUM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ENUM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/array/init.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -36,14 +39,14 @@ inline Array array_init(Function const &_function)
 {
   return Array{
       typename Array::from_internal{},
-      fcppt::array::init<typename Array::internal>([&_function](auto const _fcppt_index) {
-        FCPPT_USE(_fcppt_index);
-
-        return _function(fcppt::type_traits::integral_cast<
-                         typename Array::enum_type,
-                         fcppt::cast::int_to_enum_fun,
-                         decltype(_fcppt_index)>{});
-      })};
+      fcppt::array::init<typename Array::internal>(
+          [&_function]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+          {
+            return _function(fcppt::type_traits::integral_cast<
+                             typename Array::enum_type,
+                             fcppt::cast::int_to_enum_fun,
+                             std::integral_constant<std::size_t, Index>>{});
+          })};
 }
 }
 }

@@ -13,6 +13,10 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/static_storage_impl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -31,9 +35,9 @@ inline Dest push_back(Src const &_src, fcppt::type_traits::value_type<Src> const
       static_storage<fcppt::type_traits::value_type<Src>, Src::static_size::value>;
 
   return fcppt::math::from_array<Dest>(fcppt::array::push_back(
-      fcppt::array::init<typename src_storage::array_type>([&_src](auto const _index) {
-        return fcppt::math::detail::checked_access<_index()>(_src);
-      }),
+      fcppt::array::init<typename src_storage::array_type>(
+          [&_src]<std::size_t Index>(std::integral_constant<std::size_t,Index>)
+          { return fcppt::math::detail::checked_access<Index>(_src); }),
       _value));
 }
 

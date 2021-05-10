@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
@@ -35,15 +35,14 @@ inline bool
 contains(fcppt::math::box::object<T, N> const &_outer, fcppt::math::box::object<T, N> const &_inner)
 {
   return fcppt::algorithm::all_of(
-      fcppt::math::int_range_count<N>{}, [&_outer, &_inner](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        return fcppt::math::vector::at<index::value>(_inner.pos()) >=
-                   fcppt::math::vector::at<index::value>(_outer.pos()) &&
-               fcppt::math::vector::at<index::value>(_inner.max()) <=
-                   fcppt::math::vector::at<index::value>(_outer.max());
+      fcppt::math::int_range_count<N>{},
+      [&_outer,
+       &_inner]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
+        return fcppt::math::vector::at<Index>(_inner.pos()) >=
+                   fcppt::math::vector::at<Index>(_outer.pos()) &&
+               fcppt::math::vector::at<Index>(_inner.max()) <=
+                   fcppt::math::vector::at<Index>(_outer.max());
       });
 }
 

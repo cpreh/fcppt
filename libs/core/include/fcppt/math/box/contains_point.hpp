@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
@@ -32,15 +32,12 @@ inline bool contains_point(
     fcppt::math::box::object<T, N> const &_box, fcppt::math::vector::object<T, N, S> const &_point)
 {
   return fcppt::algorithm::all_of(
-      fcppt::math::int_range_count<N>{}, [&_box, &_point](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        return fcppt::math::vector::at<index::value>(_point) >=
-                   fcppt::math::vector::at<index::value>(_box.pos()) &&
-               fcppt::math::vector::at<index::value>(_point) <
-                   fcppt::math::vector::at<index::value>(_box.max());
+      fcppt::math::int_range_count<N>{},
+      [&_box, &_point]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
+        return fcppt::math::vector::at<Index>(_point) >=
+                   fcppt::math::vector::at<Index>(_box.pos()) &&
+               fcppt::math::vector::at<Index>(_point) < fcppt::math::vector::at<Index>(_box.max());
       });
 }
 

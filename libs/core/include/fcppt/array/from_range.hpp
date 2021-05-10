@@ -32,12 +32,15 @@ fcppt::optional::object<
     fcppt::array::object<fcppt::type_traits::value_type<std::remove_cvref_t<Source>>, Size>>
 from_range(Source &&_source)
 {
-  return fcppt::optional::make_if(fcppt::range::size(_source) == Size, [&_source] {
-    return fcppt::array::init<fcppt::array::object<
-        fcppt::type_traits::value_type<std::remove_cvref_t<Source>>,
-        Size>>(
-        [&_source](auto const _index) { return fcppt::move_if_rvalue<Source>(_source[_index]); });
-  });
+  return fcppt::optional::make_if(
+      fcppt::range::size(_source) == Size,
+      [&_source]
+      {
+        return fcppt::array::init<fcppt::array::object<
+            fcppt::type_traits::value_type<std::remove_cvref_t<Source>>,
+            Size>>([&_source]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+                   { return fcppt::move_if_rvalue<Source>(_source[Index]); });
+      });
 }
 
 }

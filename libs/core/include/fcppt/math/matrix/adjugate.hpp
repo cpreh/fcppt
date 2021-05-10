@@ -11,6 +11,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -38,19 +39,21 @@ adjugate(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
 {
   using result_type = fcppt::math::matrix::static_<T, N, N>;
 
-  return fcppt::math::matrix::init<result_type>([&_matrix](auto const _index) {
-    T const coeff{
-        (_index.row() + _index.column()) % fcppt::literal<fcppt::math::size_type>(2) ==
-                fcppt::literal<fcppt::math::size_type>(0)
-            ? fcppt::literal<T>(1)
-            : fcppt::literal<T>(-1)};
+  return fcppt::math::matrix::init<result_type>(
+      [&_matrix]<fcppt::math::size_type R, fcppt::math::size_type C>(
+          fcppt::math::matrix::index<R, C>)
+      {
+        T const coeff{
+            (R + C) % fcppt::literal<fcppt::math::size_type>(2) ==
+                    fcppt::literal<fcppt::math::size_type>(0)
+                ? fcppt::literal<T>(1)
+                : fcppt::literal<T>(-1)};
 
-    // Note: We transpose here because we want the adjugate, not the cofactor
-    // matrix
-    return coeff *
-           fcppt::math::matrix::determinant(
-               fcppt::math::matrix::delete_row_and_column<_index.column(), _index.row()>(_matrix));
-  });
+        // Note: We transpose here because we want the adjugate, not the cofactor
+        // matrix
+        return coeff * fcppt::math::matrix::determinant(
+                           fcppt::math::matrix::delete_row_and_column<C, R>(_matrix));
+      });
 }
 
 }

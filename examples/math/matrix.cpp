@@ -5,8 +5,8 @@
 
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/math/integral_constant.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/at_r.hpp>
@@ -54,7 +54,7 @@ void row_iterate()
   // Will output: (1,0,0),(0,1,0),(0,0,1),
   fcppt::algorithm::loop(
       fcppt::math::int_range_count<int_matrix_3x3::rows()>{},
-      [&m]<fcppt::math::size_type Row>(fcppt::tag<fcppt::math::integral_constant<Row>>)
+      [&m]<fcppt::math::size_type Row>(fcppt::tag<fcppt::math::size_constant<Row>>)
       { std::cout << fcppt::math::matrix::at_r<Row>(m) << ','; });
 }
 // ![row_iterate]

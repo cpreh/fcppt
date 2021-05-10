@@ -6,11 +6,10 @@
 #ifndef FCPPT_CATCH_RECORD_HPP_INCLUDED
 #define FCPPT_CATCH_RECORD_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/convert.hpp>
-#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/label_name.hpp>
@@ -37,13 +36,9 @@ struct StringMaker<fcppt::record::object<Elements...>>
            fcppt::algorithm::fold(
                fcppt::record::element_vector<fcppt::record::object<Elements...>>{},
                std::string{},
-               [&_record](auto const _element, std::string &&_output) {
-                 FCPPT_USE(_element);
-
-                 using label = fcppt::record::element_to_label<fcppt::tag_type<decltype(_element)>>;
-
-                 return std::move(_output) + fcppt::record::label_name<label>() + " = " +
-                        fcppt::catch_::convert(fcppt::record::get<label>(_record)) + ", ";
+               [&_record]<typename L, typename T>(fcppt::tag<fcppt::record::element<L,T>>, std::string &&_output) {
+                 return std::move(_output) + fcppt::record::label_name<L>() + " = " +
+                        fcppt::catch_::convert(fcppt::record::get<L>(_record)) + ", ";
                }) +
            '}';
   }

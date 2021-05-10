@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
@@ -30,16 +30,15 @@ template <typename T, fcppt::math::size_type N>
 inline bool
 intersects(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, N> const &_b)
 {
-  return fcppt::algorithm::all_of(fcppt::math::int_range_count<N>{}, [&_a, &_b](auto const _index) {
-    FCPPT_USE(_index);
-
-    using index = fcppt::tag_type<decltype(_index)>;
-
-    return fcppt::math::vector::at<index::value>(_b.pos()) <
-               fcppt::math::vector::at<index::value>(_a.max()) &&
-           fcppt::math::vector::at<index::value>(_a.pos()) <
-               fcppt::math::vector::at<index::value>(_b.max());
-  });
+  return fcppt::algorithm::all_of(
+      fcppt::math::int_range_count<N>{},
+      [&_a, &_b]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
+        return fcppt::math::vector::at<Index>(_b.pos()) <
+                   fcppt::math::vector::at<Index>(_a.max()) &&
+               fcppt::math::vector::at<Index>(_a.pos()) <
+                   fcppt::math::vector::at<Index>(_b.max());
+      });
 }
 
 }

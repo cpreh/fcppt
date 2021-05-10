@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
 #include <fcppt/math/box/intersects.hpp>
@@ -39,17 +39,17 @@ intersection(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<
   using result_type = fcppt::math::box::object<T, N>;
 
   return fcppt::math::box::intersects(_a, _b)
-             ? fcppt::math::box::init_max<result_type>([&_a, &_b](auto const _index) {
-                 FCPPT_USE(_index);
-
-                 return fcppt::tuple::make(
-                     std::max(
-                         fcppt::math::vector::at<_index()>(_a.pos()),
-                         fcppt::math::vector::at<_index()>(_b.pos())),
-                     std::min(
-                         fcppt::math::vector::at<_index()>(_a.max()),
-                         fcppt::math::vector::at<_index()>(_b.max())));
-               })
+             ? fcppt::math::box::init_max<result_type>(
+                   [&_a, &_b]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+                   {
+                     return fcppt::tuple::make(
+                         std::max(
+                             fcppt::math::vector::at<Index>(_a.pos()),
+                             fcppt::math::vector::at<Index>(_b.pos())),
+                         std::min(
+                             fcppt::math::vector::at<Index>(_a.max()),
+                             fcppt::math::vector::at<Index>(_b.max())));
+                   })
              : fcppt::math::box::null<result_type>();
 }
 

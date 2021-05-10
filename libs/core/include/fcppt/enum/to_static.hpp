@@ -8,7 +8,6 @@
 
 #include <fcppt/absurd.hpp>
 #include <fcppt/runtime_index.hpp>
-#include <fcppt/use.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/enum/is_object.hpp>
@@ -28,6 +27,9 @@ namespace enum_
 function
 
 \ingroup fcpptenum
+
+\tparam Function A function callable as <code>R (std::integal_constant<Enum,E>)</code>,
+where <code>R</code> is the result type.
 */
 template <
     typename Enum,
@@ -39,12 +41,12 @@ inline decltype(auto) to_static(Enum const _enum, Function const &_function)
 
   return fcppt::runtime_index<fcppt::enum_::size<Enum>>(
       fcppt::cast::enum_to_int<int_type>(_enum),
-      [&_function](auto const _fcppt_index) -> decltype(auto) {
-        FCPPT_USE(_fcppt_index);
-
-        return _function(
-            fcppt::type_traits::
-                integral_cast<Enum, fcppt::cast::static_cast_fun, decltype(_fcppt_index)>{});
+      [&_function]<int_type Index>(std::integral_constant<int_type, Index>) -> decltype(auto)
+      {
+        return _function(fcppt::type_traits::integral_cast<
+                         Enum,
+                         fcppt::cast::static_cast_fun,
+                         std::integral_constant<int_type, Index>>{});
       },
       &fcppt::absurd<decltype(_function(fcppt::enum_::max_value<Enum>{}))>);
 }

@@ -9,6 +9,8 @@
 #include <fcppt/array/get.hpp>
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 #include <fcppt/math/vector/init.hpp>
@@ -37,13 +39,12 @@ Box init(InitSecond const &_init_second, Function const &_function)
   auto const results(fcppt::array::init<result_array>(
       fcppt::math::detail::init_function<Function>(_function)));
 
-  return Box(
-      fcppt::math::vector::init<typename Box::vector>([&results](auto const _index) {
-        return fcppt::tuple::get<0>(fcppt::array::get<_index()>(results));
-      }),
-      _init_second([&results](auto const _index) {
-        return fcppt::tuple::get<1>(fcppt::array::get<_index()>(results));
-      }));
+  return Box{
+      fcppt::math::vector::init<typename Box::vector>(
+          [&results]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+          { return fcppt::tuple::get<0>(fcppt::array::get<Index>(results)); }),
+      _init_second([&results]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+                   { return fcppt::tuple::get<1>(fcppt::array::get<Index>(results)); })};
 }
 
 }

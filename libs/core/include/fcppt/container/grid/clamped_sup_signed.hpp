@@ -6,7 +6,6 @@
 #ifndef FCPPT_CONTAINER_GRID_CLAMPED_SUP_SIGNED_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_CLAMPED_SUP_SIGNED_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/dim.hpp>
@@ -14,6 +13,8 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/clamp.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
@@ -43,15 +44,13 @@ fcppt::container::grid::sup<Dest, Size> clamped_sup_signed(
 
   return fcppt::container::grid::sup<Dest, Size>(
       fcppt::math::vector::init<fcppt::container::grid::pos<Dest, Size>>(
-          [&_pos, &_size](auto const _index)
+          [&_pos, &_size]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
           {
-            FCPPT_USE(_index);
-
             return fcppt::cast::to_unsigned(
                 fcppt::math::clamp(
-                    fcppt::math::vector::at<_index>(_pos),
+                    fcppt::math::vector::at<Index>(_pos),
                     fcppt::literal<Source>(0),
-                    fcppt::cast::to_signed(fcppt::math::dim::at<_index>(_size)))
+                    fcppt::cast::to_signed(fcppt::math::dim::at<Index>(_size)))
                     .get_unsafe());
           }));
 }

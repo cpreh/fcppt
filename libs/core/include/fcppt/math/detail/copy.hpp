@@ -13,6 +13,7 @@
 #include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -26,10 +27,12 @@ inline Result copy(Arg const &_arg)
 {
   FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(Result);
 
-  return Result{fcppt::array::init<typename Result::array_type>([&_arg](auto const _index) {
-    return fcppt::math::detail::linear_access<fcppt::cast::size<fcppt::math::size_type>(_index())>(
-        _arg.storage());
-  })};
+  return Result{fcppt::array::init<typename Result::array_type>(
+      [&_arg]<std::size_t Index>(std::integral_constant<std::size_t,Index>)
+      {
+        return fcppt::math::detail::linear_access<fcppt::cast::size<fcppt::math::size_type>(Index)>(
+            _arg.storage());
+      })};
 }
 
 }

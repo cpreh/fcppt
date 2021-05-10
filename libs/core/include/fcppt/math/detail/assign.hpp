@@ -6,11 +6,12 @@
 #ifndef FCPPT_MATH_DETAIL_ASSIGN_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ASSIGN_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/storage_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -32,12 +33,8 @@ inline void assign(Dest &_dest, Src const &_src)
   fcppt::algorithm::loop(
       fcppt::math::int_range_count<
           fcppt::math::detail::storage_size<typename Src::storage_type>::value>{},
-      [&_dest, &_src](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        _dest.storage()[index::value] = _src.storage()[index::value];
+      [&_dest, &_src]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>) {
+        _dest.storage()[Index] = _src.storage()[Index];
       });
 }
 

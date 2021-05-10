@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -43,17 +43,15 @@ extend_bounding_box(
     typename // NOLINT(readability-avoid-const-params-in-decls)
     fcppt::math::box::object<T, N>::vector const _pos)
 {
-  return fcppt::math::box::init_max<fcppt::math::box::object<T, N>>([&_pos,
-                                                                     &_box](auto const _index) {
-    FCPPT_USE(_index);
-
-    return fcppt::tuple::make(
-        std::min(
-            fcppt::math::vector::at<_index()>(_pos), fcppt::math::vector::at<_index()>(_box.pos())),
-        std::max(
-            fcppt::math::vector::at<_index()>(_pos),
-            fcppt::math::vector::at<_index()>(_box.max())));
-  });
+  return fcppt::math::box::init_max<fcppt::math::box::object<T, N>>(
+      [&_pos, &_box]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+      {
+        return fcppt::tuple::make(
+            std::min(
+                fcppt::math::vector::at<Index>(_pos), fcppt::math::vector::at<Index>(_box.pos())),
+            std::max(
+                fcppt::math::vector::at<Index>(_pos), fcppt::math::vector::at<Index>(_box.max())));
+      });
 }
 
 /**
@@ -66,16 +64,14 @@ fcppt::math::box::object<T, N> extend_bounding_box(
     fcppt::math::box::object<T, N> const &_box1, fcppt::math::box::object<T, N> const &_box2)
 {
   return fcppt::math::box::init_max<fcppt::math::box::object<T, N>>(
-      [&_box1, &_box2](auto const _index) {
-        FCPPT_USE(_index);
-
+      [&_box1, &_box2]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>) {
         return fcppt::tuple::make(
             std::min(
-                fcppt::math::vector::at<_index()>(_box1.pos()),
-                fcppt::math::vector::at<_index()>(_box2.pos())),
+                fcppt::math::vector::at<Index>(_box1.pos()),
+                fcppt::math::vector::at<Index>(_box2.pos())),
             std::max(
-                fcppt::math::vector::at<_index()>(_box1.max()),
-                fcppt::math::vector::at<_index()>(_box2.max())));
+                fcppt::math::vector::at<Index>(_box1.max()),
+                fcppt::math::vector::at<Index>(_box2.max())));
       });
 }
 

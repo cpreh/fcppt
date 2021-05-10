@@ -14,6 +14,7 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -50,9 +51,9 @@ inline auto map(Array &&_source, Function const &_function) -> fcppt::array::obj
           std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
       fcppt::array::size<std::remove_cvref_t<Array>>::value>;
 
-  return fcppt::array::init<result_array>([&_source, &_function](auto const _index) {
-    return _function(fcppt::move_if_rvalue<Array>(fcppt::array::get<_index()>(_source)));
-  });
+  return fcppt::array::init<result_array>(
+      [&_source, &_function]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+      { return _function(fcppt::move_if_rvalue<Array>(fcppt::array::get<Index>(_source))); });
 }
 }
 

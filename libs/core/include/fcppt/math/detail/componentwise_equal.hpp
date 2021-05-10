@@ -6,11 +6,12 @@
 #ifndef FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -37,14 +38,12 @@ inline bool componentwise_equal(Range1 const &_r1, Range2 const &_r2, T const &_
 
   return fcppt::algorithm::all_of(
       fcppt::math::int_range_count<Range1::dim_wrapper::value>{},
-      [&_r1, &_r2, _epsilon](auto const _index) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
+      [&_r1, &_r2, _epsilon]<fcppt::math::size_type Index>(
+          fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
         return fcppt::math::diff(
-                   fcppt::math::detail::linear_access<index::value>(_r1.storage()),
-                   fcppt::math::detail::linear_access<index::value>(_r2.storage())) < _epsilon;
+                   fcppt::math::detail::linear_access<Index>(_r1.storage()),
+                   fcppt::math::detail::linear_access<Index>(_r2.storage())) < _epsilon;
       });
 }
 

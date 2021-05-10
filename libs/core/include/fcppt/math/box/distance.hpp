@@ -6,8 +6,8 @@
 #ifndef FCPPT_MATH_BOX_DISTANCE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_DISTANCE_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/math/interval_distance.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/interval.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -29,13 +29,12 @@ template <typename T, fcppt::math::size_type N>
 fcppt::math::vector::static_<T, N>
 distance(fcppt::math::box::object<T, N> const &_box1, fcppt::math::box::object<T, N> const &_box2)
 {
-  return fcppt::math::vector::init<fcppt::math::vector::static_<T, N>>([&_box1,
-                                                                        &_box2](auto const _index) {
-    FCPPT_USE(_index);
-
-    return fcppt::math::interval_distance(
-        fcppt::math::box::interval<_index()>(_box1), fcppt::math::box::interval<_index()>(_box2));
-  });
+  return fcppt::math::vector::init<fcppt::math::vector::static_<T, N>>(
+      [&_box1, &_box2]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+      {
+        return fcppt::math::interval_distance(
+            fcppt::math::box::interval<Index>(_box1), fcppt::math::box::interval<Index>(_box2));
+      });
 }
 
 }
