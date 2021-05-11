@@ -13,6 +13,7 @@
 #include <fcppt/tuple/map_result.hpp>
 #include <fcppt/tuple/size.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -41,9 +42,9 @@ fcppt::tuple::map_result<Tuple, Function> map(Tuple &&_tuple, Function const &_f
   using result_type = fcppt::tuple::map_result<Tuple, Function>;
   static_assert(fcppt::tuple::size<source_type>::value == fcppt::tuple::size<result_type>::value);
 
-  return fcppt::tuple::init<result_type>([&_function,&_tuple](auto const _index) {
-    return _function(fcppt::move_if_rvalue<Tuple>(fcppt::tuple::get<_index()>(_tuple)));
-  });
+  return fcppt::tuple::init<result_type>(
+      [&_function, &_tuple]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+      { return _function(fcppt::move_if_rvalue<Tuple>(fcppt::tuple::get<Index>(_tuple))); });
 }
 }
 

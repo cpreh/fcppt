@@ -7,10 +7,10 @@
 #define FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
@@ -42,23 +42,19 @@ determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
   return fcppt::algorithm::fold(
       fcppt::math::int_range_count<N>{},
       fcppt::literal<T>(0),
-      [&_matrix](auto const _row, T const _sum) {
-        FCPPT_USE(_row);
-
-        using row = fcppt::tag_type<decltype(_row)>;
-
+      [&_matrix]<fcppt::math::size_type Row>(fcppt::tag<fcppt::math::size_constant<Row>>, T const _sum) {
         T const coeff{
-            row::value % fcppt::literal<fcppt::math::size_type>(2) ==
+            Row % fcppt::literal<fcppt::math::size_type>(2) ==
                     fcppt::literal<fcppt::math::size_type>(0)
                 ? fcppt::literal<T>(1)
                 : fcppt::literal<T>(-1)};
 
-        constexpr fcppt::math::size_type const column{0u};
+        constexpr fcppt::math::size_type const column{0U};
 
         return _sum +
-               coeff * fcppt::math::matrix::at_r_c<row::value, column>(_matrix) *
+               coeff * fcppt::math::matrix::at_r_c<Row, column>(_matrix) *
                    fcppt::math::matrix::detail::determinant(
-                       fcppt::math::matrix::delete_row_and_column<row::value, column>(_matrix));
+                       fcppt::math::matrix::delete_row_and_column<Row, column>(_matrix));
       });
 }
 

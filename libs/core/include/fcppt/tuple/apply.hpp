@@ -48,8 +48,8 @@ apply(Function const &_function, Tuples &&..._tuples)
       "All tuples must have the same size");
 
   return fcppt::tuple::init<fcppt::tuple::apply_result<Function, Tuples...>>(
-      [&_function, &_tuples...](auto const _index) {
-        return _function(fcppt::tuple::get<_index()>(fcppt::move_if_rvalue<Tuples>(_tuples))...);
+      [&_function, &_tuples...]<std::size_t Index>(std::integral_constant<std::size_t, Index>) {
+        return _function(fcppt::tuple::get<Index>(fcppt::move_if_rvalue<Tuples>(_tuples))...);
       });
 }
 

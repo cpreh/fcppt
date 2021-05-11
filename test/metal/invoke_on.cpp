@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/const.hpp>
-#include <fcppt/tag_type.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/metal/invoke_on.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
@@ -21,19 +21,15 @@ TEST_CASE("metal::invoke_on", "[metal]")
 
   CHECK(fcppt::metal::invoke_on<list_type>(
       1U,
-      [](auto const _type) -> bool {
-        FCPPT_USE(_type);
-
-        return std::is_same<fcppt::tag_type<decltype(_type)>, long>::value;
+      []<typename Type>(fcppt::tag<Type>) -> bool {
+        return std::is_same_v<Type, long>;
       },
       fcppt::const_(false)));
 
   CHECK(fcppt::metal::invoke_on<list_type>(
       0U,
-      [](auto const _type) -> bool {
-        FCPPT_USE(_type);
-
-        return std::is_same<fcppt::tag_type<decltype(_type)>, int>::value;
+      []<typename Type>(fcppt::tag<Type>) -> bool {
+        return std::is_same_v<Type, int>;
       },
       fcppt::const_(false)));
 

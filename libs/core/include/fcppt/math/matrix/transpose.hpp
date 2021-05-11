@@ -8,6 +8,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -28,9 +29,9 @@ fcppt::math::matrix::static_<T, C, R>
 transpose(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
 {
   return fcppt::math::matrix::init<fcppt::math::matrix::static_<T, C, R>>(
-      [&_matrix](auto const _index) {
-        return fcppt::math::matrix::at_r_c<_index.column(), _index.row()>(_matrix);
-      });
+      [&_matrix]<fcppt::math::size_type Row, fcppt::math::size_type Col>(
+          fcppt::math::matrix::index<Row, Col>)
+      { return fcppt::math::matrix::at_r_c<Col, Row>(_matrix); });
 }
 
 }

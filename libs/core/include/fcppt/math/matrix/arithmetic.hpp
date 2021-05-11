@@ -7,14 +7,15 @@
 #define FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/binary_map.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/map.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -92,19 +93,20 @@ inline fcppt::math::matrix::static_<FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R), M1, 
 
   using value_type = fcppt::type_traits::value_type<result_type>;
 
-  return fcppt::math::matrix::init<result_type>([&_left, &_right](auto const _index) {
-    return fcppt::algorithm::fold(
-        fcppt::math::int_range_count<N>{},
-        fcppt::literal<value_type>(0),
-        [_index, &_left, &_right](auto const _pos, value_type const _sum) {
-          FCPPT_USE(_pos);
-
-          using pos = fcppt::tag_type<decltype(_pos)>;
-
-          return _sum + fcppt::math::matrix::at_r_c<_index.row(), pos::value>(_left) *
-                            fcppt::math::matrix::at_r_c<pos::value, _index.column()>(_right);
-        });
-  });
+  return fcppt::math::matrix::init<result_type>(
+      [&_left, &_right]<fcppt::math::size_type Row, fcppt::math::size_type Col>(
+          fcppt::math::matrix::index<Row, Col>)
+      {
+        return fcppt::algorithm::fold(
+            fcppt::math::int_range_count<N>{},
+            fcppt::literal<value_type>(0),
+            [&_left, &_right]<fcppt::math::size_type Pos>(
+                fcppt::tag<fcppt::math::size_constant<Pos>>, value_type const _sum)
+            {
+              return _sum + fcppt::math::matrix::at_r_c<Row, Pos>(_left) *
+                                fcppt::math::matrix::at_r_c<Pos, Col>(_right);
+            });
+      });
 }
 
 /**

@@ -8,7 +8,6 @@
 
 #include <fcppt/runtime_index.hpp>
 #include <fcppt/tag.hpp>
-#include <fcppt/use.hpp>
 #include <fcppt/metal/to_number.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -59,11 +58,11 @@ invoke_on(Index const &_index, Function const &_function, FailFunction const &_f
 
   return fcppt::runtime_index<::metal::size<Sequence>>(
       _index,
-      [&_function](auto const _cur_index) -> decltype(auto) {
-        FCPPT_USE(_cur_index);
-
-        return _function(
-            fcppt::tag<::metal::at<Sequence, fcppt::metal::to_number<decltype(_cur_index)>>>());
+      [&_function]<Index Cur>(std::integral_constant<Index, Cur>) -> decltype(auto)
+      {
+        return _function(fcppt::tag<::metal::at<
+                             Sequence,
+                             fcppt::metal::to_number<std::integral_constant<Index, Cur>>>>());
       },
       _fail_function);
 }

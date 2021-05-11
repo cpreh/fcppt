@@ -7,8 +7,7 @@
 #define FCPPT_RECORD_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/use.hpp>
-#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/map_result.hpp>
@@ -37,14 +36,9 @@ For every <code>fcppt::record::element<L,T></code> in \a Record,
 template <typename Record, typename Function>
 inline fcppt::record::map_result<Record, Function> map(Record &&_record, Function const &_function)
 {
-  return fcppt::record::init<fcppt::record::map_result<Record, Function>>([&_record, &_function](
-                                                                              auto const _element) {
-    FCPPT_USE(_element);
-
-    return _function(fcppt::move_if_rvalue<Record>(
-        fcppt::record::get<
-            fcppt::record::element_to_label<std::remove_const_t<decltype(_element)>>>(_record)));
-  });
+  return fcppt::record::init<fcppt::record::map_result<Record, Function>>(
+      [&_record, &_function]<typename Label, typename Type>(fcppt::record::element<Label, Type>)
+      { return _function(fcppt::move_if_rvalue<Record>(fcppt::record::get<Label>(_record))); });
 }
 
 }

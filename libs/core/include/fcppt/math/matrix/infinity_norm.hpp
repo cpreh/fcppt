@@ -8,10 +8,10 @@
 #define FCPPT_MATH_MATRIX_INFINITY_NORM_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/index.hpp>
@@ -40,23 +40,18 @@ T infinity_norm(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
   return fcppt::algorithm::fold(
       fcppt::math::int_range_count<R>{},
       std::numeric_limits<T>::min(),
-      [&_matrix](auto const _row, T const _maximum_row) {
-        FCPPT_USE(_row);
-
-        using row = fcppt::tag_type<decltype(_row)>;
-
+      [&_matrix]<fcppt::math::size_type Row>(
+          fcppt::tag<fcppt::math::size_constant<Row>>, T const _maximum_row)
+      {
         return std::max(
             _maximum_row,
             fcppt::algorithm::fold(
                 fcppt::math::int_range_count<C>{},
                 fcppt::literal<T>(0),
-                [&_matrix](auto const _column, T const _current_row_sum) {
-                  FCPPT_USE(_column);
-
-                  using column = fcppt::tag_type<decltype(_column)>;
-
+                [&_matrix]<fcppt::math::size_type Col>(
+                    fcppt::tag<fcppt::math::size_constant<Col>>, T const _current_row_sum) {
                   return _current_row_sum +
-                         std::abs(fcppt::math::matrix::at_r_c<row::value, column::value>(_matrix));
+                         std::abs(fcppt::math::matrix::at_r_c<Row, Col>(_matrix));
                 }));
       });
 }

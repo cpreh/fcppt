@@ -28,6 +28,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/map.hpp>
 #include <fcppt/record/permute.hpp>
@@ -54,17 +55,17 @@ fcppt::options::optional<Parser>::parse(
 
         return fcppt::variant::match(
             std::move(_error),
-            [](fcppt::options::missing_error &&_missing_error) {
+            [](fcppt::options::missing_error &&_missing_error)
+            {
               return fcppt::options::parse_result<result_type>{
                   fcppt::options::state_with_value<result_type>{
                       std::move(_missing_error.state()),
-                      fcppt::record::init<result_type>([](auto const _element) {
-                        FCPPT_USE(_element);
-
-                        return fcppt::optional::nothing{};
-                      })}};
+                      fcppt::record::init<result_type>(
+                          []<typename L, typename T>(fcppt::record::element<L, T>)
+                          { return fcppt::optional::nothing{}; })}};
             },
-            [](fcppt::options::other_error &&_other_error) {
+            [](fcppt::options::other_error &&_other_error)
+            {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
                   fcppt::options::parse_error{std::move(_other_error)});
             });

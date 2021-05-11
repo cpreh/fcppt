@@ -8,7 +8,6 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/use.hpp>
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/deref.hpp>
@@ -23,13 +22,11 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
-#include <fcppt/record/element_to_label.hpp>
-#include <fcppt/record/element_to_type.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -44,12 +41,8 @@ fcppt::options::many<Parser>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &_context) const
 {
   // TODO(philipp): This is super ugly
-  result_type result{fcppt::record::init<result_type>([](auto const _fcppt_options_many_element) {
-    FCPPT_USE(_fcppt_options_many_element);
-
-    return fcppt::record::element_to_type<
-        std::remove_const_t<decltype(_fcppt_options_many_element)>>{};
-  })};
+  result_type result{fcppt::record::init<result_type>(
+      []<typename L, typename T>(fcppt::record::element<L, T>) { return T{}; })};
 
   fcppt::options::state state{std::move(_state)};
 
@@ -65,17 +58,10 @@ fcppt::options::many<Parser>::parse(
         fcppt::options::result_of<Parser> &inner_value{_inner.value()};
 
         result = fcppt::record::init<result_type>(
-            [&result, &inner_value](auto const _fcppt_inner_element) {
-              FCPPT_USE(_fcppt_inner_element);
+            [&result, &inner_value]<typename L, typename T>(fcppt::record::element<L,T>) {
+              T new_result{std::move(fcppt::record::get<L>(result))};
 
-              using element = std::remove_const_t<decltype(_fcppt_inner_element)>;
-
-              using label = fcppt::record::element_to_label<element>;
-
-              fcppt::record::element_to_type<element> new_result{
-                  std::move(fcppt::record::get<label>(result))};
-
-              new_result.push_back(std::move(fcppt::record::get<label>(inner_value)));
+              new_result.push_back(std::move(fcppt::record::get<L>(inner_value)));
 
               return new_result;
             });

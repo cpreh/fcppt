@@ -6,9 +6,8 @@
 #ifndef FCPPT_RECORD_MULTIPLY_DISJOINT_HPP_INCLUDED
 #define FCPPT_RECORD_MULTIPLY_DISJOINT_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/record/disjoint_product.hpp>
-#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/detail/get_either.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,22 +32,15 @@ fcppt::record::disjoint_product<
     std::remove_cvref_t<Record2>>
 multiply_disjoint(Record1 &&_record1, Record2 &&_record2)
 {
-  using result_type = fcppt::record::disjoint_product<
-      std::remove_cvref_t<Record1>,
-      std::remove_cvref_t<Record2>>;
+  using result_type =
+      fcppt::record::disjoint_product<std::remove_cvref_t<Record1>, std::remove_cvref_t<Record2>>;
 
   return fcppt::record::init<result_type>(
-      [&_record1, &_record2](auto const _fcppt_multiply_disjoint_element) {
-        FCPPT_USE(_fcppt_multiply_disjoint_element);
-
-        return fcppt::record::detail::get_either<
-            fcppt::record::element_to_label<
-                std::remove_const_t<decltype(_fcppt_multiply_disjoint_element)>>,
-            Record1,
-            Record2>::
-            template get<
-                typename std::is_lvalue_reference<Record1>::type,
-                typename std::is_lvalue_reference<Record2>::type>(_record1, _record2);
+      [&_record1, &_record2]<typename Label, typename Type>(fcppt::record::element<Label, Type>)
+      {
+        return fcppt::record::detail::get_either<Label, Record1, Record2>::
+            template get<std::is_lvalue_reference<Record1>, std::is_lvalue_reference<Record2>>(
+                _record1, _record2);
       });
 }
 

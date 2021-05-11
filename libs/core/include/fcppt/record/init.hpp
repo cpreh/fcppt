@@ -6,10 +6,9 @@
 #ifndef FCPPT_RECORD_INIT_HPP_INCLUDED
 #define FCPPT_RECORD_INIT_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
-#include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/record/detail/make_tag_tuple.hpp>
 #include <fcppt/tuple/invoke.hpp>
@@ -47,13 +46,9 @@ inline Result init(Function const &_function)
       },
       fcppt::tuple::map(
           fcppt::record::detail::make_tag_tuple<fcppt::record::element_tag_tuple<Result>>(),
-          [&_function](auto const _fcppt_element) {
-            FCPPT_USE(_fcppt_element);
-
-            using fcppt_element = fcppt::tag_type<decltype(_fcppt_element)>;
-
-            return fcppt::record::element_to_label<fcppt_element>{} = _function(fcppt_element{});
-          }));
+          [&_function]<typename Label, typename Type>(
+              fcppt::tag<fcppt::record::element<Label, Type>>)
+          { return Label{} = _function(fcppt::record::element<Label, Type>{}); }));
 }
 
 }

@@ -7,8 +7,7 @@
 #define FCPPT_METAL_DETAIL_PRINT_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/metal/detail/print_one.hpp>
@@ -35,11 +34,9 @@ print(std::basic_ostream<Ch, Traits> &_stream)
 {
   fcppt::algorithm::loop(
       ::metal::range<Sequence, ::metal::number<0>, ::metal::dec<::metal::size<Sequence>>>{},
-      [&_stream](auto const _type)
+      [&_stream]<typename Type>(fcppt::tag<Type>)
       {
-        FCPPT_USE(_type);
-
-        fcppt::metal::detail::print_one<fcppt::tag_type<decltype(_type)>>(_stream);
+        fcppt::metal::detail::print_one<Type>(_stream);
 
         _stream << FCPPT_CHAR_LITERAL(Ch, ',');
       });

@@ -9,6 +9,10 @@
 #include <fcppt/array/init.hpp>
 #include <fcppt/math/to_array_type.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -23,8 +27,8 @@ template <typename Type>
 inline fcppt::math::to_array_type<Type> to_array(Type const &_value)
 {
   return fcppt::array::init<fcppt::math::to_array_type<Type>>(
-      [&_value](auto const _index) {
-        return fcppt::math::detail::linear_access<_index()>(_value.storage());
+      [&_value]<std::size_t Index>(std::integral_constant<std::size_t, Index>) {
+        return fcppt::math::detail::linear_access<Index>(_value.storage());
       });
 }
 

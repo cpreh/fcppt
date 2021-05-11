@@ -6,8 +6,8 @@
 #ifndef FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/math/mod.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/sequence.hpp>
 #include <fcppt/math/vector/at.hpp>
@@ -33,11 +33,8 @@ mod(fcppt::math::vector::object<T, N, S> const &_arg, T const _div)
 {
   return fcppt::math::detail::sequence<fcppt::math::vector::static_<T, N>>(
       fcppt::math::vector::init<fcppt::math::vector::static_<fcppt::optional::object<T>, N>>(
-          [&_arg, _div](auto const _index) {
-            FCPPT_USE(_index);
-
-            return fcppt::math::mod(fcppt::math::vector::at<_index>(_arg), _div);
-          }));
+          [&_arg, _div]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+          { return fcppt::math::mod(fcppt::math::vector::at<Index>(_arg), _div); }));
 }
 
 /**
@@ -52,11 +49,10 @@ mod(fcppt::math::vector::object<T, N, S1> const &_v0,
 {
   return fcppt::math::detail::sequence<fcppt::math::vector::static_<T, N>>(
       fcppt::math::vector::init<fcppt::math::vector::static_<fcppt::optional::object<T>, N>>(
-          [&_v0, &_v1](auto const _index) {
-            FCPPT_USE(_index);
-
+          [&_v0, &_v1]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+          {
             return fcppt::math::mod(
-                fcppt::math::vector::at<_index>(_v0), fcppt::math::vector::at<_index>(_v1));
+                fcppt::math::vector::at<Index>(_v0), fcppt::math::vector::at<Index>(_v1));
           }));
 }
 

@@ -7,8 +7,7 @@
 #define FCPPT_TUPLE_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/metal/interval.hpp>
@@ -18,6 +17,7 @@
 #include <metal.hpp>
 #include <cstddef>
 #include <ostream>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::tuple
@@ -35,12 +35,10 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::tuple::object<Types..
 
   fcppt::algorithm::loop(
       fcppt::metal::interval<std::size_t, 0U, sizeof...(Types)>{},
-      [&_stream, &_tuple](auto const _index) {
-        FCPPT_USE(_index);
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        _stream << fcppt::tuple::get<index::value>(_tuple);
-        if constexpr (index::value != sizeof...(Types) - 1U)
+      [&_stream, &_tuple]<std::size_t Index>(fcppt::tag<std::integral_constant<std::size_t, Index>>)
+      {
+        _stream << fcppt::tuple::get<Index>(_tuple);
+        if constexpr (Index != sizeof...(Types) - 1U)
         {
           _stream << _stream.widen(',');
         }

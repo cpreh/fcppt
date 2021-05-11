@@ -6,7 +6,8 @@
 #ifndef FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
+#include <fcppt/math/size_constant.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
@@ -34,13 +35,12 @@ inline Matrix init(Function const &_function)
 {
   static_assert(fcppt::math::matrix::is_matrix<Matrix>::value, "Matrix must be a matrix");
 
-  return fcppt::math::detail::init<Matrix>([&_function](auto const _absolute) {
-    FCPPT_USE(_absolute);
-
-    return _function(
-        fcppt::math::matrix::detail::
-            index_absolute<Matrix::static_columns::value, decltype(_absolute)::value>{});
-  });
+  return fcppt::math::detail::init<Matrix>(
+      [&_function]<fcppt::math::size_type Abs>(fcppt::math::size_constant<Abs>)
+      {
+        return _function(
+            fcppt::math::matrix::detail::index_absolute<Matrix::static_columns::value, Abs>{});
+      });
 }
 
 }

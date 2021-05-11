@@ -7,10 +7,10 @@
 #define FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -38,13 +38,10 @@ dot(fcppt::math::vector::object<T, N, S1> const &_left,
   return fcppt::algorithm::fold(
       fcppt::math::int_range_count<N>{},
       fcppt::literal<T>(0),
-      [&_left, &_right](auto const _index, T const _sum) {
-        FCPPT_USE(_index);
-
-        using index = fcppt::tag_type<decltype(_index)>;
-
-        return _sum + fcppt::math::vector::at<index::value>(_left) *
-                          fcppt::math::vector::at<index::value>(_right);
+      [&_left, &_right]<fcppt::math::size_type Index>(
+          fcppt::tag<fcppt::math::size_constant<Index>>, T const _sum) {
+        return _sum +
+               fcppt::math::vector::at<Index>(_left) * fcppt::math::vector::at<Index>(_right);
       });
 }
 

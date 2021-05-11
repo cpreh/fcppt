@@ -12,6 +12,7 @@
 #include <fcppt/tuple/from_array_result.hpp>
 #include <fcppt/tuple/init.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,8 +32,8 @@ from_array(Array &&_source)
 {
   return fcppt::tuple::init<
       fcppt::tuple::from_array_result<std::remove_cvref_t<Array>>>(
-      [&_source](auto const _index) {
-        return fcppt::move_if_rvalue<Array>(fcppt::array::get<_index()>(_source));
+      [&_source]<std::size_t Index>(std::integral_constant<std::size_t, Index>) {
+        return fcppt::move_if_rvalue<Array>(fcppt::array::get<Index>(_source));
       });
 }
 }

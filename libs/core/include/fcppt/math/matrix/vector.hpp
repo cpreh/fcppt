@@ -7,10 +7,10 @@
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
@@ -49,28 +49,24 @@ fcppt::math::vector::static_<FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right), R> o
   using result_type =
       fcppt::math::vector::static_<FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right), R>;
 
-  return fcppt::math::vector::init<result_type>([&_left, &_right](auto const _row) {
-    using value_type = fcppt::type_traits::value_type<result_type>;
+  return fcppt::math::vector::init<result_type>(
+      [&_left, &_right]<fcppt::math::size_type Row>(fcppt::math::size_constant<Row>)
+      {
+        using value_type = fcppt::type_traits::value_type<result_type>;
 
-    FCPPT_PP_PUSH_WARNING
-    FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
-    return fcppt::algorithm::fold(
-        fcppt::math::int_range_count<C>{},
-        fcppt::literal<value_type>(0),
-        [&_left, &_right, _row](auto const _column, value_type const _sum) {
-          FCPPT_USE(_column);
-
-          FCPPT_USE(_row);
-
-          using column = fcppt::tag_type<decltype(_column)>;
-
-          using row = decltype(_row);
-
-          return _sum + fcppt::math::matrix::at_r_c<row::value, column::value>(_left) *
-                            fcppt::math::vector::at<column::value>(_right);
-        });
-    FCPPT_PP_POP_WARNING
-  });
+        FCPPT_PP_PUSH_WARNING
+        FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+        return fcppt::algorithm::fold(
+            fcppt::math::int_range_count<C>{},
+            fcppt::literal<value_type>(0),
+            [&_left, &_right]<fcppt::math::size_type Col>(
+                fcppt::tag<fcppt::math::size_constant<Col>>, value_type const _sum)
+            {
+              return _sum + fcppt::math::matrix::at_r_c<Row, Col>(_left) *
+                                fcppt::math::vector::at<Col>(_right);
+            });
+        FCPPT_PP_POP_WARNING
+      });
 }
 
 }

@@ -6,10 +6,9 @@
 #ifndef FCPPT_RECORD_DETAIL_INIT_CTOR_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_INIT_CTOR_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/metal/index_of_if.hpp>
-#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/record/detail/make_tag_tuple.hpp>
 #include <fcppt/tuple/get.hpp>
@@ -41,15 +40,12 @@ Result init_ctor(Args &&..._args)
       },
       fcppt::tuple::map(
           fcppt::record::detail::make_tag_tuple<TagTuple>(),
-          [&arguments](auto const _fcppt_element) {
-            FCPPT_USE(_fcppt_element);
-
+          [&arguments]<typename Label, typename Type>(fcppt::tag<fcppt::record::element<Label, Type>>) {
             using index_type = fcppt::metal::index_of_if<
                 args_list,
                 ::metal::bind<
                     ::metal::trait<fcppt::record::detail::label_is_same>,
-                    ::metal::always<
-                        fcppt::record::element_to_label<fcppt::tag_type<decltype(_fcppt_element)>>>,
+                    ::metal::always<Label>,
                     ::metal::_1>>;
 
             return std::move(fcppt::tuple::get<index_type::value>(arguments).value());

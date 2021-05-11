@@ -6,12 +6,12 @@
 #ifndef FCPPT_RECORD_COMPARISON_HPP_INCLUDED
 #define FCPPT_RECORD_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/record/are_equivalent.hpp>
-#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/object_impl.hpp>
@@ -40,13 +40,9 @@ bool operator==(
 
   return fcppt::algorithm::all_of(
       fcppt::record::element_vector<fcppt::record::object<Types1...>>{},
-      [&_record1, &_record2](auto const _tag) {
-        FCPPT_USE(_tag);
-
-        using label = fcppt::record::element_to_label<fcppt::tag_type<decltype(_tag)>>;
-
-        return fcppt::record::get<label>(_record1) == fcppt::record::get<label>(_record2);
-      });
+      [&_record1,
+       &_record2]<typename Label, typename Type>(fcppt::tag<fcppt::record::element<Label, Type>>)
+      { return fcppt::record::get<Label>(_record1) == fcppt::record::get<Label>(_record2); });
 }
 
 /**

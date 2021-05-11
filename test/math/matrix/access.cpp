@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -18,9 +19,9 @@ TEST_CASE("math::matrix access", "[math],[matrix]")
   using matrix_type = fcppt::math::matrix::
       static_<fcppt::tuple::object<fcppt::math::size_type, fcppt::math::size_type>, 4, 4>;
 
-  auto const mat(fcppt::math::matrix::init<matrix_type>([](auto const _index) {
-    return fcppt::tuple::make(_index.row(), _index.column());
-  }));
+  auto const mat(fcppt::math::matrix::init<matrix_type>(
+      []<fcppt::math::size_type Row, fcppt::math::size_type Col>(
+          fcppt::math::matrix::index<Row, Col>) { return fcppt::tuple::make(Row, Col); }));
 
   matrix_type mat_nc{mat};
 

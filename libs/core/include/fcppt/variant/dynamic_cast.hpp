@@ -7,8 +7,7 @@
 #define FCPPT_VARIANT_DYNAMIC_CAST_HPP_INCLUDED
 
 #include <fcppt/loop.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/cast/apply.hpp>
@@ -53,16 +52,16 @@ dynamic_cast_(Base &_base)
   using result_type = fcppt::optional::object<variant_type>;
 
   return fcppt::algorithm::fold_break(
-      Types{}, result_type{}, [&_base](auto const _type, result_type const &_result) {
-        FCPPT_USE(_type);
-
-        return _result.has_value()
-                   ? std::make_pair(fcppt::loop::break_, _result)
-                   : std::make_pair(
-                         fcppt::loop::continue_,
-                         fcppt::optional::map(
-                             fcppt::cast::apply<Cast, fcppt::tag_type<decltype(_type)>>(_base),
-                             [](auto const _ref) { return variant_type{_ref}; }));
+      Types{},
+      result_type{},
+      [&_base]<typename Type>(fcppt::tag<Type>, result_type const &_result)
+      {
+        return _result.has_value() ? std::make_pair(fcppt::loop::break_, _result)
+                                   : std::make_pair(
+                                         fcppt::loop::continue_,
+                                         fcppt::optional::map(
+                                             fcppt::cast::apply<Cast, Type>(_base),
+                                             [](auto const _ref) { return variant_type{_ref}; }));
       });
 }
 

@@ -5,7 +5,6 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/runtime_index.hpp>
-#include <fcppt/use.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
@@ -26,19 +25,15 @@ TEST_CASE("runtime_index", "[various]")
 
   CHECK(fcppt::runtime_index<max_index>(
       0U,
-      [](auto const _type) -> bool {
-        FCPPT_USE(_type);
-
-        return std::is_same_v<int_c<decltype(_type)::value>, int_c<0U>>;
+      []<int_type Index>(int_c<Index>) -> bool {
+        return Index == 0U;
       },
       fcppt::const_(false)));
 
   CHECK(fcppt::runtime_index<max_index>(
       1U,
-      [](auto const _type) -> bool {
-        FCPPT_USE(_type);
-
-        return std::is_same_v<int_c<decltype(_type)::value>, int_c<1U>>;
+      []<int_type Index>(int_c<Index>) -> bool {
+        return Index == 1U;
       },
       fcppt::const_(false)));
 

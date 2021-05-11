@@ -6,8 +6,7 @@
 #ifndef FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 #define FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/io/widen_string.hpp>
@@ -37,19 +36,19 @@ std::basic_ostream<Ch, Traits> &operator<<(
   _stream << _stream.widen('{');
 
   using element_list = fcppt::record::element_vector<fcppt::record::object<Elements...>>;
-  fcppt::algorithm::loop(::metal::indices<element_list>{}, [&_stream, &_record](auto const _index) {
-    FCPPT_USE(_index);
-    using index = fcppt::tag_type<decltype(_index)>;
+  fcppt::algorithm::loop(
+      ::metal::indices<element_list>{},
+      [&_stream, &_record]<::metal::int_ Index>(fcppt::tag<::metal::number<Index>>)
+      {
+        using label = fcppt::record::element_to_label<::metal::at<element_list, ::metal::number<Index>>>;
 
-    using label = fcppt::record::element_to_label<::metal::at<element_list, index>>;
-
-    _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
-            << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record);
-    if constexpr (index::value != ::metal::size<element_list>::value - ::metal::int_{1})
-    {
-      _stream << fcppt::io::widen_string(", ");
-    }
-  });
+        _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
+                << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record);
+        if constexpr (Index != ::metal::size<element_list>::value - ::metal::int_{1})
+        {
+          _stream << fcppt::io::widen_string(", ");
+        }
+      });
 
   return _stream << _stream.widen('}');
 }

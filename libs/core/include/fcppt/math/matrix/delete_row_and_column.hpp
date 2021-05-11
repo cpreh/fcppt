@@ -7,9 +7,9 @@
 #ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -43,13 +43,14 @@ delete_row_and_column(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
 {
   using result_type = fcppt::math::matrix::static_<T, R - 1U, C - 1U>;
 
-  return fcppt::math::matrix::init<result_type>([&_matrix](auto const _index) {
-    FCPPT_USE(_index);
-
-    return fcppt::math::matrix::at_r_c<
-        fcppt::math::matrix::detail::deleted_index(_index.row(), DR),
-        fcppt::math::matrix::detail::deleted_index(_index.column(), DC)>(_matrix);
-  });
+  return fcppt::math::matrix::init<result_type>(
+      [&_matrix]<fcppt::math::size_type Row, fcppt::math::size_type Col>(
+          fcppt::math::matrix::index<Row, Col>)
+      {
+        return fcppt::math::matrix::at_r_c<
+            fcppt::math::matrix::detail::deleted_index(Row, DR),
+            fcppt::math::matrix::detail::deleted_index(Col, DC)>(_matrix);
+      });
 }
 
 }
