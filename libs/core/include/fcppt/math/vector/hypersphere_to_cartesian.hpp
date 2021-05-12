@@ -128,15 +128,15 @@ hypersphere_to_cartesian(fcppt::math::vector::object<T, N, S> const &_angles)
         value_type const sins(fcppt::algorithm::fold(
             fcppt::math::int_range_count<Index>{},
             fcppt::literal<value_type>(1),
-            [&_angles]<fcppt::math::size_type InnerIndex>(
-                fcppt::tag<fcppt::math::size_constant<InnerIndex>>, value_type const _prod)
-            { return _prod * std::sin(fcppt::math::vector::at<InnerIndex>(_angles)); }));
+            [&_angles]<fcppt::math::size_type InnerIndexSin>(
+                fcppt::tag<fcppt::math::size_constant<InnerIndexSin>>, value_type const _prod)
+            { return _prod * std::sin(fcppt::math::vector::at<InnerIndexSin>(_angles)); }));
 
         result_type const cos_angles(fcppt::math::vector::push_back(
             fcppt::math::vector::init<fcppt::math::vector::static_<T, N>>(
-                [&_angles]<fcppt::math::size_type InnerIndex>(
-                    fcppt::math::size_constant<InnerIndex>)
-                { return std::cos(fcppt::math::vector::at<InnerIndex>(_angles)); }),
+                [&_angles]<fcppt::math::size_type InnerIndexCos>(
+                    fcppt::math::size_constant<InnerIndexCos>)
+                { return std::cos(fcppt::math::vector::at<InnerIndexCos>(_angles)); }),
             fcppt::literal<value_type>(1)));
         FCPPT_PP_POP_WARNING
 
