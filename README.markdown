@@ -54,14 +54,3 @@ void print_at_2(std::vector<int> const &_vec)
   );
 }
 ```
-
-Contact
--------
-
-You can contact us via our IRC channel
-
-`#sge-sanguis`
-
-at
-
-`irc.freenode.net`
