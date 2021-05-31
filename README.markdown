@@ -36,7 +36,7 @@ Build
 -----
 
 The build uses <a href="https://cmake.org/">CMake</a>.
-See our <a href="https://fcppt.org/d3/d36/requirements_download_installation.html#requirements_download_installation_building_and_installation">Build Guide</a>.
+See our <a href="https://fcppt.org/d8/dcf/installation_usage.html#installation_usage_building_and_installation">Build Guide</a>.
 
 Code example
 ------------
