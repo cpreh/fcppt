@@ -1,5 +1,5 @@
 /**
 \defgroup fcppttuple fcppt.tuple
 \ingroup fcpptmain
-\brief Like std::tuple but with proper constructor.
+\brief Like std::tuple but with a proper constructor.
 */

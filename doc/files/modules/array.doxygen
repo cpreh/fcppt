@@ -1,5 +1,5 @@
 /**
 \defgroup fcpptarray fcppt.array
 \ingroup fcpptmain
-\brief Like std::array but with proper constructor.
+\brief Like std::array but with a proper constructor.
 */

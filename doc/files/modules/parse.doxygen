@@ -75,7 +75,7 @@ Skippers are run in very specific places:
 <ul>
 <li>#fcppt::parse::phrase_parse (or the string or stream variant of this function) runs the skipper at the start.</li>
 <li><code>fcppt::parse::sequence{l,r}</code> runs the skipper after running <code>l</code> and before running <code>r</code>.</li>
-<li><code>fcppt::parse::repetition{p}</code> runs the skipper after reach successful parse of <code>p</code>.</li>
+<li><code>fcppt::parse::repetition{p}</code> runs the skipper after each successful parse of <code>p</code>.</li>
 </ul>
 Whitespace skipping can be disabled using #fcppt::parse::lexeme.
 Consider the following example:

@@ -139,6 +139,10 @@ add_fcppt_test(
 )
 
 add_subdirectory(
+	concepts
+)
+
+add_subdirectory(
 	container
 )
 

@@ -159,6 +159,9 @@ set(
 	libs/core/include/fcppt/check_literal_conversion.hpp
 	libs/core/include/fcppt/com_deleter.hpp
 	libs/core/include/fcppt/com_deleter_fwd.hpp
+	libs/core/include/fcppt/concepts/invocable.hpp
+	libs/core/include/fcppt/concepts/invocable_move.hpp
+	libs/core/include/fcppt/concepts/move_constructible.hpp
 	libs/core/include/fcppt/cond.hpp
 	libs/core/include/fcppt/config/clang_version_at_least.hpp
 	libs/core/include/fcppt/config/compiler.hpp
@@ -935,7 +938,6 @@ set(
 	libs/core/include/fcppt/optional/detail/check.hpp
 	libs/core/include/fcppt/optional/detail/check_sequence.hpp
 	libs/core/include/fcppt/optional/detail/has_value_all.hpp
-	libs/core/include/fcppt/optional/detail/value_type.hpp
 	libs/core/include/fcppt/optional/dynamic_cast.hpp
 	libs/core/include/fcppt/optional/filter.hpp
 	libs/core/include/fcppt/optional/from.hpp
@@ -955,6 +957,7 @@ set(
 	libs/core/include/fcppt/optional/nothing_fwd.hpp
 	libs/core/include/fcppt/optional/nothing_impl.hpp
 	libs/core/include/fcppt/optional/object.hpp
+	libs/core/include/fcppt/optional/object_concept.hpp
 	libs/core/include/fcppt/optional/object_decl.hpp
 	libs/core/include/fcppt/optional/object_fwd.hpp
 	libs/core/include/fcppt/optional/object_impl.hpp

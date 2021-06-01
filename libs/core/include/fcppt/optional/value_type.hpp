@@ -6,7 +6,11 @@
 #ifndef FCPPT_OPTIONAL_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_VALUE_TYPE_HPP_INCLUDED
 
-#include <fcppt/optional/detail/value_type.hpp>
+#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/type_traits/value_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -19,8 +23,8 @@ namespace optional
 
 \tparam Optional Must be an #fcppt::optional::object.
 */
-template <typename Optional>
-using value_type = typename fcppt::optional::detail::value_type<Optional>::type;
+template <fcppt::optional::object_concept Optional>
+using value_type = fcppt::type_traits::value_type<std::remove_cvref_t<Optional>>;
 
 }
 }

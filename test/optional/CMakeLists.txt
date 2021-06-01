@@ -121,6 +121,11 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	object_concept
+	NO_CODE
+)
+
+add_fcppt_optional_test(
 	reference
 )
 

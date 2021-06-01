@@ -12,6 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
+
 TEST_CASE("optional move", "[optional]")
 {
   using movable = fcppt::catch_::movable<std::string>;
