@@ -68,6 +68,9 @@ FCPPT_PP_DISABLE_VC_WARNING(5045) // Spectre mitigation for memory load
 #if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1925)
 FCPPT_PP_DISABLE_VC_WARNING(5204) // Class with virtual functions but without virtual destrutor
 #endif
+#if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1929)
+FCPPT_PP_DISABLE_VC_WARNING(5243) // Incomplete class causing ABI violation
+#endif
 
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
