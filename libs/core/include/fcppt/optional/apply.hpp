@@ -12,7 +12,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/value_type.hpp>
+#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/optional/detail/has_value_all.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -34,10 +34,10 @@ optional is returned.
 template <
     fcppt::optional::object_concept... Optionals,
     fcppt::concepts::invocable_move<
-        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::value_type<Optionals>>...> Function>
+        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...> Function>
 inline fcppt::optional::object<std::invoke_result_t<
     Function,
-    fcppt::move_if_rvalue_type<Optionals, fcppt::optional::value_type<Optionals>>...>>
+    fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>>
 apply(Function const &_function, Optionals &&..._optionals)
 {
   return fcppt::optional::make_if(

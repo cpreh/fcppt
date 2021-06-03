@@ -13,7 +13,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/value_type.hpp>
+#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -35,10 +35,10 @@ empty optional is returned.
 template <
     fcppt::optional::object_concept Optional,
     fcppt::concepts::invocable_move<
-        fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>> Function>
+        fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Function>
 inline fcppt::optional::object<std::invoke_result_t<
     Function,
-    fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>>
+    fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>>
 map(Optional &&_source, Function const &_function)
 {
   return fcppt::optional::bind(

@@ -11,7 +11,7 @@
 #include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/value_type.hpp>
+#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -31,18 +31,18 @@ Otherwise, the empty optional is returned.
 template <
     fcppt::optional::object_concept Optional,
     fcppt::concepts::invocable_move<
-        fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>> Function>
+        fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Function>
 inline std::invoke_result_t<
     Function,
-    fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>
+    fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>
 bind(Optional &&_source, Function const &_function) requires
     fcppt::optional::object_concept<std::invoke_result_t<
         Function,
-        fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>>
+        fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>>
 {
   using result_type = std::invoke_result_t<
       Function,
-      fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>;
+      fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>;
   return _source.has_value() ? _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())) : result_type{};
 }
 }

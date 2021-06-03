@@ -130,6 +130,11 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	reference_type
+	NO_CODE
+)
+
+add_fcppt_optional_test(
 	sequence
 	LINK_LIBS
 		fcppt_catch_interface

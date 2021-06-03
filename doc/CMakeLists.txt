@@ -1182,6 +1182,7 @@ set(
 	libs/core/include/fcppt/optional/output.hpp
 	libs/core/include/fcppt/optional/reference.hpp
 	libs/core/include/fcppt/optional/reference_fwd.hpp
+	libs/core/include/fcppt/optional/reference_type.hpp
 	libs/core/include/fcppt/optional/sequence.hpp
 	libs/core/include/fcppt/optional/static_cast.hpp
 	libs/core/include/fcppt/optional/to_container.hpp

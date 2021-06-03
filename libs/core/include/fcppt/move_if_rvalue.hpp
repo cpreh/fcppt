@@ -27,7 +27,7 @@ move a member if the surrounding object is an rvalue.
 template <typename Type, typename Arg>
 inline decltype(auto) move_if_rvalue(Arg &&_arg)
 {
-  return fcppt::move_if<!std::is_lvalue_reference<Type>::value>(std::forward<Arg>(_arg));
+  return fcppt::move_if<!std::is_lvalue_reference_v<Type>>(std::forward<Arg>(_arg));
 }
 
 }
