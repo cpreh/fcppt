@@ -7,8 +7,11 @@
 #define FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if_rvalue_type.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/detail/check.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -18,33 +21,30 @@ namespace fcppt
 namespace optional
 {
 /**
-\brief Converts an optional of one type to another
+\brief Converts an optional of one type to another.
 
 \ingroup fcpptoptional
 
-Converts \a _source into the optional type returned by \a _function. If \a
-_source is empty, the empty optional is returned. Otherwise, \a _source is
-dereferenced and the result from applying \a _function is returned.
-
-\param _source The optional to convert
-
-\param _function The function to apply to the value inside \a _source. It must
-accept a type of \a Source.
+If \a _source is set to <code>x</code>, then <code>_function(x)</code> is returned.
+Otherwise, the empty optional is returned.
 */
-template <typename Optional, typename Function>
-inline auto bind(Optional &&_source, Function const &_function) -> std::remove_reference_t<
-    decltype(_function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>
+template <
+    fcppt::optional::object_concept Optional,
+    fcppt::concepts::invocable_move<
+        fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>> Function>
+inline std::invoke_result_t<
+    Function,
+    fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>
+bind(Optional &&_source, Function const &_function) requires
+    fcppt::optional::object_concept<std::invoke_result_t<
+        Function,
+        fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>>
 {
-  using result_type = std::remove_cvref_t<decltype(
-      _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())))>;
-
-  static_assert(
-      fcppt::optional::detail::check<result_type>::value, "optional_bind must return an optional");
-
-  return _source.has_value() ? _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe()))
-                             : result_type{};
+  using result_type = std::invoke_result_t<
+      Function,
+      fcppt::move_if_rvalue_type<Optional, fcppt::optional::value_type<Optional>>>;
+  return _source.has_value() ? _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())) : result_type{};
 }
-
 }
 }
 

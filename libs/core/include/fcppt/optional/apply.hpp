@@ -7,7 +7,12 @@
 #define FCPPT_OPTIONAL_APPLY_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if_rvalue_type.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/has_value_all.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -18,31 +23,28 @@ namespace fcppt
 namespace optional
 {
 /**
-\brief Applies a function to multiple optionals or returns nothing
+\brief Applies a function to multiple optionals if each of them contains a value.
 
 \ingroup fcpptoptional
 
 If \a _optionals, <code>o_1,...,o_n</code> are set to <code>x_1,...,x_n</code>,
-then <code>_function(x_1,...,x_n)</code> is returned. Otherwise, the empty
+then <code>optional::object{_function(x_1,...,x_n)}</code> is returned. Otherwise, the empty
 optional is returned.
-
-\tparam Function A function callable as <code>R (Optionals::value_type...)</code>
-where <code>R</code> is the result type
-
-\tparam Optionals A parameter pack of optionals
 */
-template <typename Function, typename... Optionals>
-inline auto apply(Function const &_function, Optionals &&..._optionals) -> fcppt::optional::object<
-    decltype(_function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>
+template <
+    fcppt::optional::object_concept... Optionals,
+    fcppt::concepts::invocable_move<
+        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::value_type<Optionals>>...> Function>
+inline fcppt::optional::object<std::invoke_result_t<
+    Function,
+    fcppt::move_if_rvalue_type<Optionals, fcppt::optional::value_type<Optionals>>...>>
+apply(Function const &_function, Optionals &&..._optionals)
 {
-  using result_type = fcppt::optional::object<decltype(
-      _function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>;
-
-  return fcppt::optional::detail::has_value_all(_optionals...)
-             ? result_type(_function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))
-             : result_type{};
+  return fcppt::optional::make_if(
+      fcppt::optional::detail::has_value_all(_optionals...),
+      [&_function, &_optionals...]
+      { return _function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...); });
 }
-
 }
 }
 

@@ -12,3 +12,13 @@ add_fcppt_concepts_test(
 	invocable
 	NO_CODE
 )
+
+add_fcppt_concepts_test(
+	invocable_move
+	NO_CODE
+)
+
+add_fcppt_concepts_test(
+	move_constructible
+	NO_CODE
+)

@@ -6,7 +6,8 @@
 #ifndef FCPPT_OPTIONAL_ALTERNATIVE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_ALTERNATIVE_HPP_INCLUDED
 
-#include <fcppt/optional/detail/check.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -17,30 +18,22 @@ namespace fcppt
 namespace optional
 {
 /**
-\brief Returns the first optional if it is not nothing
+\brief Returns the first optional if it is not nothing.
 
 \ingroup fcpptoptional
 
 If \a _optional1 is not nothing, the result is \a _optional1, otherwise
 the result of \a _optional2 is returned.
-
-\tparam Function A function callable as <code>Optional ()</code>.
 */
-template <typename Optional, typename Function>
-std::remove_cvref_t<Optional>
-alternative(Optional &&_optional1, Function const &_optional2)
+template <
+    fcppt::optional::object_concept Optional,
+    fcppt::concepts::invocable_move<> Function>
+std::remove_cvref_t<Optional> alternative(Optional &&_optional1, Function const &_optional2)
+requires std::is_same_v<
+  std::remove_cvref_t<Optional>, std::invoke_result_t<Function>>
 {
-  static_assert(
-      fcppt::optional::detail::check<Optional>::value,
-      "optional_alternative must return an optional");
-
-  static_assert(
-      fcppt::optional::detail::check<std::invoke_result_t<Function>>::value,
-      "Function must return an optional");
-
   return _optional1.has_value() ? std::forward<Optional>(_optional1) : _optional2();
 }
-
 }
 }
 
