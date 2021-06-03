@@ -66,10 +66,10 @@ TEST_CASE("optional::map ref", "[optional]")
 
 TEST_CASE("optional::map to_ref", "[optional]")
 {
-  fcppt::optional::object<long> opt{0L};
+  fcppt::optional::object<int> opt{0};
 
   CHECK(
       fcppt::optional::map(
-          opt, [](long &_val) -> fcppt::reference<long> { return fcppt::make_ref(_val); }) ==
-      fcppt::optional::reference<long>{fcppt::make_ref(opt.get_unsafe())});
+          opt, [](int &_val) -> fcppt::reference<int> { return fcppt::make_ref(_val); }) ==
+      fcppt::optional::reference<int>{fcppt::make_ref(opt.get_unsafe())});
 }
