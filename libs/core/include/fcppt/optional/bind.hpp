@@ -16,9 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Converts an optional of one type to another.
@@ -32,7 +30,7 @@ template <
     fcppt::optional::object_concept Optional,
     fcppt::concepts::invocable_move<
         fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Function>
-inline std::invoke_result_t<
+[[nodiscard]] inline std::invoke_result_t<
     Function,
     fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>
 bind(Optional &&_source, Function const &_function) requires
@@ -43,8 +41,8 @@ bind(Optional &&_source, Function const &_function) requires
   using result_type = std::invoke_result_t<
       Function,
       fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>;
-  return _source.has_value() ? _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe())) : result_type{};
-}
+  return _source.has_value() ? _function(fcppt::move_if_rvalue<Optional>(_source.get_unsafe()))
+                             : result_type{};
 }
 }
 

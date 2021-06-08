@@ -9,27 +9,27 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
-\brief Removes empty optionals from a range
+\brief Removes empty optionals from a range.
 
 \ingroup fcpptoptional
 
 For every element \em e in \a _source, if \em e is set to <code>x</code>, then
 <code>x</code> is inserted into the target container.
 
-\tparam Source Must be a container of optionals
+\tparam Source Must be a range of optionals.
 
 \tparam TargetContainer Must be a container whose value type matches that of
 the optionals from \a Source
+
+TODO(concepts)
 */
 template <typename TargetContainer, typename Source>
-TargetContainer cat(Source &&_source)
+[[nodiscard]] TargetContainer cat(Source &&_source)
 {
-  TargetContainer result;
+  TargetContainer result{};
 
   for (auto &&element : _source)
   {
@@ -43,7 +43,6 @@ TargetContainer cat(Source &&_source)
   return result;
 }
 
-}
 }
 
 #endif

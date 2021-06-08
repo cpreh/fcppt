@@ -7,52 +7,58 @@
 #define FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if_rvalue_type.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/detail/check.hpp>
+#include <fcppt/optional/reference_type.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Combines two optionals
 
 \ingroup fcpptoptional
 
-If \a _optional1 is set to x1 and \a _optional2 is set to x2, then
+If \a _optional1 is set to x1 and \a _optional2 is set to x2, then the result is
 <code>Optional(_function(x1, x2))</code>. Otherwise, if at least one optional
 is set, that optional is returned.
 */
-template <typename Optional, typename Function>
-auto combine(Optional &&_optional1, Optional &&_optional2, Function const &_function)
-    -> fcppt::optional::object<decltype(_function(
-        fcppt::move_if_rvalue<Optional>(_optional1.get_unsafe()),
-        fcppt::move_if_rvalue<Optional>(_optional2.get_unsafe())))>
+template <
+    fcppt::optional::object_concept Optional1,
+    fcppt::optional::object_concept Optional2,
+    fcppt::concepts::invocable_move<
+        fcppt::move_if_rvalue_type<Optional1, fcppt::optional::reference_type<Optional1>>,
+        fcppt::move_if_rvalue_type<Optional2, fcppt::optional::reference_type<Optional2>>> Function>
+[[nodiscard]] fcppt::optional::object<fcppt::optional::value_type<Optional1>>
+combine(Optional1 &&_optional1, Optional2 &&_optional2, Function const &_function)
+requires std::is_same_v<fcppt::optional::value_type<Optional1>, fcppt::optional::value_type<Optional2>> &&
+    std::is_same_v<
+        fcppt::optional::value_type<Optional1>,
+        std::invoke_result_t<
+            Function,
+            fcppt::move_if_rvalue_type<Optional1, fcppt::optional::reference_type<Optional1>>,
+            fcppt::move_if_rvalue_type<Optional2, fcppt::optional::reference_type<Optional2>>>>
 {
-  using result_type = fcppt::optional::object<decltype(_function(
-      fcppt::move_if_rvalue<Optional>(_optional1.get_unsafe()),
-      fcppt::move_if_rvalue<Optional>(_optional2.get_unsafe())))>;
-
-  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
-
   if (!_optional1.has_value())
   {
-    return result_type{std::forward<Optional>(_optional2)};
+    return std::forward<Optional2>(_optional2);
   }
 
   if (!_optional2.has_value())
   {
-    return result_type{std::forward<Optional>(_optional1)};
+    return std::forward<Optional1>(_optional1);
   }
 
-  return result_type{_function(
-      fcppt::move_if_rvalue<Optional>(_optional1.get_unsafe()),
-      fcppt::move_if_rvalue<Optional>(_optional2.get_unsafe()))};
-}
-
+  return fcppt::optional::make(_function(
+      fcppt::move_if_rvalue<Optional1>(_optional1.get_unsafe()),
+      fcppt::move_if_rvalue<Optional2>(_optional2.get_unsafe())));
 }
 }
 

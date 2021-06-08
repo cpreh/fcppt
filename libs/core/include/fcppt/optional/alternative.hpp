@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Returns the first optional if it is not nothing.
@@ -25,15 +23,12 @@ namespace optional
 If \a _optional1 is not nothing, the result is \a _optional1, otherwise
 the result of \a _optional2 is returned.
 */
-template <
-    fcppt::optional::object_concept Optional,
-    fcppt::concepts::invocable_move<> Function>
-std::remove_cvref_t<Optional> alternative(Optional &&_optional1, Function const &_optional2)
-requires std::is_same_v<
-  std::remove_cvref_t<Optional>, std::invoke_result_t<Function>>
+template <fcppt::optional::object_concept Optional, fcppt::concepts::invocable_move<> Function>
+[[nodiscard]] std::remove_cvref_t<Optional>
+alternative(Optional &&_optional1, Function const &_optional2) requires
+    std::is_same_v<std::remove_cvref_t<Optional>, std::invoke_result_t<Function>>
 {
   return _optional1.has_value() ? std::forward<Optional>(_optional1) : _optional2();
-}
 }
 }
 

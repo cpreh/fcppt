@@ -18,9 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Applies a function to multiple optionals if each of them contains a value.
@@ -34,8 +32,9 @@ optional is returned.
 template <
     fcppt::optional::object_concept... Optionals,
     fcppt::concepts::invocable_move<
-        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...> Function>
-inline fcppt::optional::object<std::invoke_result_t<
+        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>
+        Function>
+[[nodiscard]] inline fcppt::optional::object<std::invoke_result_t<
     Function,
     fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>>
 apply(Function const &_function, Optionals &&..._optionals)
@@ -44,7 +43,6 @@ apply(Function const &_function, Optionals &&..._optionals)
       fcppt::optional::detail::has_value_all(_optionals...),
       [&_function, &_optionals...]
       { return _function(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...); });
-}
 }
 }
 

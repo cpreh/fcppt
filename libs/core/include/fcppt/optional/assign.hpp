@@ -12,30 +12,24 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
-\brief Assigns an optional and returns a reference to the optional's contents
+\brief Assigns an optional and returns a reference to the optional's contents.
 
 \ingroup fcpptoptional
 
-Assign \a _arg to \a _optional and returns a reference to \a _arg.
+Assigns \a _arg to \a _optional and returns a reference to \a _arg.
 */
 template <typename Element, typename Arg>
 [[nodiscard]] inline Element &assign(fcppt::optional::object<Element> &_optional, Arg &&_arg)
+requires std::is_same_v<Element, std::remove_cv_t<Arg>>
 {
-  static_assert(
-      std::is_same<Element, std::remove_cv_t<Arg>>::value,
-      "Argument type must be the same as the optional's element type");
-
   _optional = fcppt::optional::object<Element>(std::forward<Arg>(_arg));
 
   return _optional.get_unsafe();
 }
 
-}
 }
 
 #endif
