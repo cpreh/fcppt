@@ -14,7 +14,7 @@ in stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  meta = with pkgs.stdenv.lib; {
+  meta = with pkgs.lib; {
     description = "Freundlich's C++ toolkit";
     longDescription = ''
       Freundlich's C++ Toolkit (fcppt) is a collection of libraries that aim to improve general C++ code through better typing and functional programming.
