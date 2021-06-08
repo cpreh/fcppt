@@ -931,14 +931,11 @@ set(
 	libs/core/include/fcppt/optional/cat.hpp
 	libs/core/include/fcppt/optional/combine.hpp
 	libs/core/include/fcppt/optional/comparison.hpp
-	libs/core/include/fcppt/optional/const_cast.hpp
 	libs/core/include/fcppt/optional/copy_value.hpp
 	libs/core/include/fcppt/optional/deref.hpp
-	libs/core/include/fcppt/optional/detail/cast.hpp
 	libs/core/include/fcppt/optional/detail/check.hpp
 	libs/core/include/fcppt/optional/detail/check_sequence.hpp
 	libs/core/include/fcppt/optional/detail/has_value_all.hpp
-	libs/core/include/fcppt/optional/dynamic_cast.hpp
 	libs/core/include/fcppt/optional/filter.hpp
 	libs/core/include/fcppt/optional/from.hpp
 	libs/core/include/fcppt/optional/from_pointer.hpp
@@ -966,7 +963,6 @@ set(
 	libs/core/include/fcppt/optional/reference_fwd.hpp
 	libs/core/include/fcppt/optional/reference_type.hpp
 	libs/core/include/fcppt/optional/sequence.hpp
-	libs/core/include/fcppt/optional/static_cast.hpp
 	libs/core/include/fcppt/optional/to_container.hpp
 	libs/core/include/fcppt/optional/to_exception.hpp
 	libs/core/include/fcppt/optional/to_pointer.hpp

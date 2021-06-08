@@ -148,20 +148,12 @@ Another commonly used function is #fcppt::optional::from:
 <td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code>.</td>
 </tr>
 <tr>
-<td><code>const_cast.hpp</code></td>
-<td>Contains #fcppt::optional::const_cast_ .</td>
-</tr>
-<tr>
 <td><code>copy_value.hpp</code></td>
 <td>Contains #fcppt::optional::copy_value .</td>
 </tr>
 <tr>
 <td><code>deref.hpp</code></td>
 <td>Contains #fcppt::optional::deref .</td>
-</tr>
-<tr>
-<td><code>dynamic_cast.hpp</code></td>
-<td>Contains #fcppt::optional::dynamic_cast_ .</td>
 </tr>
 <tr>
 <td><code>filter.hpp</code></td>
@@ -218,10 +210,6 @@ Another commonly used function is #fcppt::optional::from:
 <tr>
 <td><code>sequence.hpp</code></td>
 <td>Contains #fcppt::optional::sequence .</td>
-</tr>
-<tr>
-<td><code>static_cast.hpp</code></td>
-<td>Contains #fcppt::optional::static_cast_ .</td>
 </tr>
 <tr>
 <td><code>to_exception.hpp</code></td>

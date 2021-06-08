@@ -27,10 +27,6 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
-	casts
-)
-
-add_fcppt_optional_test(
 	cat
 	LINK_LIBS
 		fcppt_catch_interface
