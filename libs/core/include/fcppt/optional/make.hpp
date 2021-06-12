@@ -15,27 +15,22 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
-\brief Wraps a value into an optional
+\brief Wraps a value into an optional.
 
 \ingroup fcpptoptional
 */
 template <typename Type>
-inline fcppt::optional::object<std::remove_cvref_t<Type>> make(Type &&_value)
+[[nodiscard]] inline fcppt::optional::object<std::remove_cvref_t<Type>> make(Type &&_value)
 {
   FCPPT_PP_PUSH_WARNING
   FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
-  return fcppt::optional::object<std::remove_cvref_t<Type>>{
-      std::forward<Type>(_value)};
+  return fcppt::optional::object<std::remove_cvref_t<Type>>{std::forward<Type>(_value)};
 
   FCPPT_PP_POP_WARNING
-}
-
 }
 }
 

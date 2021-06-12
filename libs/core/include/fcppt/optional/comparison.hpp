@@ -8,9 +8,7 @@
 
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Compares two optionals for equality
@@ -25,7 +23,8 @@ equal. This function requires \a T to be equality comparable.
 \param _b The second optional
 */
 template <typename T>
-bool operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
+[[nodiscard]] bool
+operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
   return _a.has_value() && _b.has_value() ? _a.get_unsafe() == _b.get_unsafe()
                                           : _a.has_value() == _b.has_value();
@@ -43,7 +42,8 @@ This function requires \a T to be equality comparable.
 \param _b The second optional
 */
 template <typename T>
-bool operator!=(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
+[[nodiscard]] bool
+operator!=(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
   return !(_a == _b);
 }
@@ -60,13 +60,12 @@ returns <code>_a.has_value() < _b.has_value()</code>, otherwise returns
 \param _b The second optional
 */
 template <typename T>
-bool operator<(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
+[[nodiscard]] bool operator<(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
   return _a.has_value() && _b.has_value() ? _a.get_unsafe() < _b.get_unsafe()
                                           : _a.has_value() < _b.has_value();
 }
 
-}
 }
 
 #endif

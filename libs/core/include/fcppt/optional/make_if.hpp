@@ -6,17 +6,16 @@
 #ifndef FCPPT_OPTIONAL_MAKE_IF_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAKE_IF_HPP_INCLUDED
 
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
-\brief Creates an optional depending on a boolean
+\brief Creates an optional depending on a boolean.
 
 \ingroup fcpptoptional
 
@@ -26,8 +25,8 @@ as an optional. Otherwise, the empty optional is returned.
 \tparam Function A function callable as <code>R ()</code> where <code>R</code>
 is the result type.
 */
-template <typename Function>
-inline fcppt::optional::object<std::invoke_result_t<Function>>
+template <fcppt::concepts::invocable_move Function>
+[[nodiscard]] inline fcppt::optional::object<std::invoke_result_t<Function>>
 make_if(bool const _is_set, Function const &_function)
 {
   using result_type = fcppt::optional::object<std::invoke_result_t<Function>>;
@@ -35,7 +34,6 @@ make_if(bool const _is_set, Function const &_function)
   return _is_set ? result_type{_function()} : result_type{};
 }
 
-}
 }
 
 #endif

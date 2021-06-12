@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Copies the value of an optional reference
@@ -24,12 +22,10 @@ namespace optional
 \ingroup fcpptoptional
 */
 template <typename Type>
-fcppt::optional::object<std::remove_cv_t<Type>>
+[[nodiscard]] fcppt::optional::object<std::remove_cv_t<Type>>
 copy_value(fcppt::optional::reference<Type> const &_opt)
 {
   return fcppt::optional::map(_opt, [](fcppt::reference<Type> const _ref) { return _ref.get(); });
-}
-
 }
 }
 

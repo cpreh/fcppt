@@ -19,9 +19,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Maps over an optional using a function.
@@ -36,7 +34,7 @@ template <
     fcppt::optional::object_concept Optional,
     fcppt::concepts::invocable_move<
         fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Function>
-inline fcppt::optional::object<std::invoke_result_t<
+[[nodiscard]] inline fcppt::optional::object<std::invoke_result_t<
     Function,
     fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>>
 map(Optional &&_source, Function const &_function)
@@ -45,7 +43,6 @@ map(Optional &&_source, Function const &_function)
       std::forward<Optional>(_source),
       [&_function](auto &&_arg)
       { return fcppt::optional::make(_function(std::forward<decltype(_arg)>(_arg))); });
-}
 }
 }
 

@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Checks if a given type is an #fcppt::optional::object.
@@ -30,7 +28,6 @@ struct is_object<fcppt::optional::object<Type>> : std::true_type
 {
 };
 
-}
 }
 
 #endif

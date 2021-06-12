@@ -26,7 +26,7 @@ fcppt now uses <code>C++-20</code>.
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Removed <code>fcppt::optional::const_cast_</code>, <code>fcppt::optional::const_cast_</code> and <code>fcppt::optional::dynamic_cast_</code>.</li>
+	<li>Removed <code>fcppt::optional::const_cast_</code>, <code>fcppt::optional::dynamic_cast_</code> and <code>fcppt::optional::static_cast_</code>.</li>
 	</ul>
 </li>
 
