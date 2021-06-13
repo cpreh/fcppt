@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONAL_NOTHING_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_NOTHING_IMPL_HPP_INCLUDED
 
+#include <fcppt/concepts/move_constructible.hpp>
 #include <fcppt/optional/nothing_decl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
@@ -15,7 +16,7 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
-template <typename T>
+template <fcppt::concepts::move_constructible T>
 fcppt::optional::nothing::operator fcppt::optional::object<T>() const
 {
   return fcppt::optional::object<T>{};

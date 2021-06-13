@@ -10,16 +10,13 @@
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/value_type.hpp>
-#include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Converts an optional error to an either.
@@ -29,21 +26,16 @@ namespace either
 If \a _optional is set to <code>x</code>, then <code>x</code> is returned as
 the failure value.
 */
-template <typename Optional>
-fcppt::either::error<fcppt::optional::value_type<std::remove_cvref_t<Optional>>>
+template <fcppt::optional::object_concept Optional>
+[[nodiscard]] fcppt::either::error<fcppt::optional::value_type<Optional>>
 error_from_optional(Optional &&_optional)
 {
-  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
-
-  using result_type = fcppt::either::error<
-      fcppt::optional::value_type<std::remove_cvref_t<Optional>>>;
+  using result_type = fcppt::either::error<fcppt::optional::value_type<Optional>>;
 
   return fcppt::optional::maybe(
       std::forward<Optional>(_optional),
       [] { return result_type{fcppt::either::no_error{}}; },
       [](auto &&_value) { return result_type(fcppt::move_if_rvalue<Optional>(_value)); });
-}
-
 }
 }
 

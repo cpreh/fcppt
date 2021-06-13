@@ -18,12 +18,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
-\brief Sequences a container of optionals
+\brief Turns a container of optionals into an optional container.
 
 \ingroup fcpptoptional
 
@@ -38,6 +36,8 @@ returned.
 \tparam ResultContainer Must be a container of type <code>T</code>
 
 \tparam Source Must be an optional type
+
+// TODO(concepts)
 */
 template <typename ResultContainer, typename Source>
 fcppt::optional::object<ResultContainer> sequence(Source &&_source)
@@ -57,7 +57,6 @@ fcppt::optional::object<ResultContainer> sequence(Source &&_source)
       });
 }
 
-}
 }
 
 #endif

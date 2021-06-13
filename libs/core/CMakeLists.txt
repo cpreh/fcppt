@@ -933,7 +933,6 @@ set(
 	libs/core/include/fcppt/optional/comparison.hpp
 	libs/core/include/fcppt/optional/copy_value.hpp
 	libs/core/include/fcppt/optional/deref.hpp
-	libs/core/include/fcppt/optional/detail/check.hpp
 	libs/core/include/fcppt/optional/detail/check_sequence.hpp
 	libs/core/include/fcppt/optional/detail/has_value_all.hpp
 	libs/core/include/fcppt/optional/filter.hpp

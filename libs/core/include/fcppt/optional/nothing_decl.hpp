@@ -6,12 +6,11 @@
 #ifndef FCPPT_OPTIONAL_NOTHING_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_NOTHING_DECL_HPP_INCLUDED
 
+#include <fcppt/concepts/move_constructible.hpp>
 #include <fcppt/optional/nothing_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief A polymorphic empty optional
@@ -25,12 +24,11 @@ struct nothing
   /**
   \brief Returns an empty optional.
   */
-  template <typename T>
+  template <fcppt::concepts::move_constructible T>
   // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
   operator fcppt::optional::object<T>() const;
 };
 
-}
 }
 
 #endif

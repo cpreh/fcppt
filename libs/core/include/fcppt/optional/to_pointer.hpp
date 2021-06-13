@@ -10,9 +10,7 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Converts an optional reference to a pointer
@@ -23,7 +21,7 @@ If \a _optional is empty, returns <code>nullptr</code>. Otherwise, returns the
 address of the referenced object of \a _optional.
 */
 template <typename T>
-inline T *to_pointer(fcppt::optional::reference<T> const _optional)
+[[nodiscard]] inline T *to_pointer(fcppt::optional::reference<T> const _optional)
 {
   return fcppt::optional::maybe(
       _optional,
@@ -31,7 +29,6 @@ inline T *to_pointer(fcppt::optional::reference<T> const _optional)
       [](fcppt::reference<T> const _ref) { return &_ref.get(); });
 }
 
-}
 }
 
 #endif

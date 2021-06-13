@@ -7,18 +7,17 @@
 #define FCPPT_EITHER_FROM_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/value_type.hpp>
-#include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Converts an optional to an either
@@ -32,23 +31,18 @@ the failure value.
 \tparam FailureFunction Must be a function callable as <code>R ()</code> where
 <code>R</code> is the failure type
 */
-template <typename Optional, typename FailureFunction>
-auto from_optional(Optional &&_optional, FailureFunction const &_failure_function)
-    -> fcppt::either::object<
-        decltype(_failure_function()),
-        fcppt::optional::value_type<std::remove_cvref_t<Optional>>>
+template <fcppt::optional::object_concept Optional, fcppt::concepts::invocable_move FailureFunction>
+[[nodiscard]] fcppt::either::
+    object<std::invoke_result_t<FailureFunction>, fcppt::optional::value_type<Optional>>
+    from_optional(Optional &&_optional, FailureFunction const &_failure_function)
 {
-  static_assert(fcppt::optional::detail::check<Optional>::value, "Optional must be an optional");
-
-  using result_type = fcppt::either::object<
-      decltype(_failure_function()),
-      fcppt::optional::value_type<std::remove_cvref_t<Optional>>>;
+  using result_type = fcppt::either::
+      object<std::invoke_result_t<FailureFunction>, fcppt::optional::value_type<Optional>>;
 
   return fcppt::optional::maybe(
       std::forward<Optional>(_optional),
       [&_failure_function] { return result_type(_failure_function()); },
       [](auto &&_value) { return result_type(fcppt::move_if_rvalue<Optional>(_value)); });
-}
 }
 }
 

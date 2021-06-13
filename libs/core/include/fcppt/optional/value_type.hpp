@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief The value type of an optional.
@@ -24,7 +22,6 @@ namespace optional
 template <fcppt::optional::object_concept Optional>
 using value_type = fcppt::type_traits::value_type<std::remove_cvref_t<Optional>>;
 
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Outputs an optional to a basic_ostream
@@ -43,7 +41,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::optional::object<Type
       });
 }
 
-}
 }
 
 #endif

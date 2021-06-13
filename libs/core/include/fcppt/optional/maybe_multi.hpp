@@ -7,40 +7,44 @@
 #define FCPPT_OPTIONAL_MAYBE_MULTI_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/move_if_rvalue_type.hpp>
+#include <fcppt/concepts/invocable.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/optional/detail/has_value_all.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
-\brief Transforms multiple optional values or returns a default value
+\brief Transforms multiple optional values or returns a default value.
 
 \ingroup fcpptoptional
 
-A multi version of \ref fcppt::optional::maybe. Unfortunately, the variadic template
-arguments must come last.
+A multi version of \ref fcppt::optional::maybe.
+If \a _optionals are set to <code>x_1, ..., x_n</code>, then <code>_transform(x_1, ..., x_n)</code> is returned.
+Otherwise, the result of \a _default is returned.
 */
-template <typename Default, typename Transform, typename... Optionals>
-std::invoke_result_t<Default>
-maybe_multi(Default const _default, Transform const _transform, Optionals &&..._optionals)
+template <
+    fcppt::optional::object_concept... Optionals,
+    fcppt::concepts::invocable Default,
+    fcppt::concepts::invocable<
+        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>
+        Transform>
+[[nodiscard]] std::invoke_result_t<Default>
+maybe_multi(Default const _default, Transform const _transform, Optionals &&..._optionals) requires
+    std::is_same_v<
+        std::invoke_result_t<Default>,
+        std::invoke_result_t<
+            Transform,
+            fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>>
 {
-  static_assert(
-      std::is_same_v<
-          decltype(_default()),
-          decltype(
-              _transform(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...))>,
-      "Default and Transform must return the same type");
-
   return fcppt::optional::detail::has_value_all(_optionals...)
              ? _transform(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...)
              : _default();
-}
-
 }
 }
 
