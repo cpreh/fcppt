@@ -9,6 +9,7 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
@@ -20,9 +21,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Folds over a range, breaking out on the first error.
@@ -31,7 +30,7 @@ namespace either
 
 This function is similar to #fcppt::either::sequence, except it
 does not produce an output sequence. Instead, \a _function returns #fcppt::either::error,
-which on success contains an #fcppt::unit on success.
+which on success contains an #fcppt::unit.
 Let <code>_sequence = [x_1, ..., x_n]</code>.
 The algorithms calls <code>_function(x_1), ..., _function(x_i)</code>,
 where <code>_function(x_i)</code> is either the first call that returns a failure, in
@@ -40,37 +39,40 @@ success is returned.
 
 \tparam Sequence Must be a range.
 
-\tparam Function Must be a function callable as
-<code>fcppt::either::error<T>(Sequence::value_type)</code> for some type <code>T</code>.
+TODO(concepts)
 */
-template <typename Sequence, typename Function>
-auto sequence_error(Sequence &&_sequence, Function const &_function) -> decltype(
-    _function(std::declval<fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>()))
+template <
+    typename Sequence,
+    fcppt::concepts::invocable_move<
+        fcppt::container::to_value_type<std::remove_reference_t<Sequence>>> Function>
+[[nodiscard]] std::
+    invoke_result_t<Function, fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>
+    sequence_error(Sequence &&_sequence, Function const &_function) requires
+    fcppt::either::is_object_v<std::invoke_result_t<
+        Function,
+        fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>> &&
+    std::is_same_v<
+        fcppt::either::success_type<std::invoke_result_t<
+            Function,
+            fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>>,
+        fcppt::either::no_error>
 {
-  using either_type = decltype(_function(
-      std::declval<fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>()));
-
-  static_assert(fcppt::either::is_object<either_type>::value, "Function must return an either");
-
-  static_assert(
-      std::is_same<fcppt::either::success_type<either_type>, fcppt::either::no_error>::value,
-      "Function must return an either::error");
+  using either_type = std::
+      invoke_result_t<Function, fcppt::container::to_value_type<std::remove_reference_t<Sequence>>>;
 
   return fcppt::algorithm::fold_break(
       std::forward<Sequence>(_sequence),
       either_type{fcppt::either::no_error{}},
-      [&_function](auto &&_element, either_type) {
+      [&_function](auto &&_element, either_type)
+      {
         return fcppt::either::match(
             _function(fcppt::move_if_rvalue<Sequence>(_element)),
-            [](fcppt::either::failure_type<either_type> &&_error) {
-              return std::make_pair(fcppt::loop::break_, either_type{std::move(_error)});
-            },
+            [](fcppt::either::failure_type<either_type> &&_error)
+            { return std::make_pair(fcppt::loop::break_, either_type{std::move(_error)}); },
             [](fcppt::either::no_error) {
               return std::make_pair(fcppt::loop::continue_, either_type{fcppt::either::no_error{}});
             });
       });
-}
-
 }
 }
 

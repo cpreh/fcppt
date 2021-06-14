@@ -12,9 +12,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 template <typename Failure, typename Success, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &operator<<(
@@ -27,7 +25,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
   return _stream;
 }
 
-}
 }
 
 #endif

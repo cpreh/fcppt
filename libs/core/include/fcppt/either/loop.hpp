@@ -7,8 +7,11 @@
 #define FCPPT_EITHER_LOOP_HPP_INCLUDED
 
 #include <fcppt/either/failure_type.hpp>
+#include <fcppt/either/is_object_v.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/success_type.hpp>
+#include <fcppt/concepts/invocable.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -18,9 +21,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Loops a function returning an either.
@@ -30,14 +31,13 @@ namespace either
 Calls \a _next repeatedly until it returns a failure, which is then returned as
 the result. Each success value that is returned until then is passed to \a
 _loop.
-
-\tparam Next A function callable as R (), where R is an either.
-
-\tparam Loop A Function callable as void (success_type<R>), where R is the result of \a Next.
 */
-template <typename Next, typename Loop>
-[[nodiscard]] fcppt::either::failure_type<std::invoke_result_t<Next>>
-loop(Next const &_next, Loop const &_loop)
+template <
+    fcppt::concepts::invocable_move Next,
+    fcppt::concepts::invocable<fcppt::either::success_type<std::invoke_result_t<Next>>> Loop>
+[[nodiscard]] fcppt::either::failure_type<std::invoke_result_t<Next>> loop(
+    Next const &_next,
+    Loop const &_loop) requires fcppt::either::is_object_v<std::invoke_result_t<Next>>
 {
   using either_type = std::invoke_result_t<Next>;
 
@@ -63,8 +63,6 @@ loop(Next const &_next, Loop const &_loop)
   }
 
   return std::move(error.get_unsafe());
-}
-
 }
 }
 

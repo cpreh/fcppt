@@ -21,9 +21,6 @@ namespace fcppt::optional
 
 If \a _is_set is true, then <code>_function()</code> is returned
 as an optional. Otherwise, the empty optional is returned.
-
-\tparam Function A function callable as <code>R ()</code> where <code>R</code>
-is the result type.
 */
 template <fcppt::concepts::invocable_move Function>
 [[nodiscard]] inline fcppt::optional::object<std::invoke_result_t<Function>>

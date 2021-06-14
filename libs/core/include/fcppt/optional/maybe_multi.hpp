@@ -7,11 +7,10 @@
 #define FCPPT_OPTIONAL_MAYBE_MULTI_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/concepts/invocable.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/optional/detail/has_value_all.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -31,16 +30,12 @@ Otherwise, the result of \a _default is returned.
 template <
     fcppt::optional::object_concept... Optionals,
     fcppt::concepts::invocable Default,
-    fcppt::concepts::invocable<
-        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>
-        Transform>
+    fcppt::concepts::invocable<fcppt::optional::move_type<Optionals>...> Transform>
 [[nodiscard]] std::invoke_result_t<Default>
 maybe_multi(Default const _default, Transform const _transform, Optionals &&..._optionals) requires
     std::is_same_v<
         std::invoke_result_t<Default>,
-        std::invoke_result_t<
-            Transform,
-            fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>>
+        std::invoke_result_t<Transform, fcppt::optional::move_type<Optionals>...>>
 {
   return fcppt::optional::detail::has_value_all(_optionals...)
              ? _transform(fcppt::move_if_rvalue<Optionals>(_optionals.get_unsafe())...)

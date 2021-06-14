@@ -24,12 +24,10 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
-\brief Sequences a container of eithers
+\brief Sequences a container of eithers.
 
 \ingroup fcppteither
 
@@ -42,32 +40,29 @@ returned. Otherwise, all eithers have success values,
 <code>%fcppt::either::object<F,ResultContainer>{s_1,...,s_n}</code> is
 returned.
 
-\tparam ResultContainer Must be a container of type <code>S</code>
+\tparam ResultContainer Must be a container of type <code>S</code>.
 
-\tparam Source Must be an either type
+\tparam Source Must be a range of an either type.
+
+TODO(concepts)
 */
 template <typename ResultContainer, typename Source>
-fcppt::either::object<
-    fcppt::either::failure_type<
-        fcppt::type_traits::value_type<std::remove_cvref_t<Source>>>,
+[[nodiscard]] fcppt::either::object<
+    fcppt::either::failure_type<fcppt::type_traits::value_type<std::remove_cvref_t<Source>>>,
     ResultContainer>
-sequence(Source &&_source)
+sequence(Source &&_source) requires
+    fcppt::either::is_object_v<fcppt::type_traits::value_type<std::remove_const_t<Source>>> &&
+    std::is_same_v<
+        fcppt::type_traits::value_type<ResultContainer>,
+        fcppt::either::success_type<
+            fcppt::type_traits::value_type<std::remove_const_t<Source>>>>
 {
   using source_type = std::remove_reference_t<Source>;
 
   using source_either = fcppt::type_traits::value_type<std::remove_const_t<source_type>>;
 
-  static_assert(
-      fcppt::either::is_object<source_either>::value, "The source must be a container of eithers");
-
   using result_type =
       fcppt::either::object<fcppt::either::failure_type<source_either>, ResultContainer>;
-
-  static_assert(
-      std::is_same_v<
-          fcppt::type_traits::value_type<ResultContainer>,
-          fcppt::either::success_type<source_either>>,
-      "ResultContainer must be a container of the source's success type");
 
   return fcppt::optional::maybe(
       fcppt::algorithm::find_if_opt(
@@ -84,8 +79,6 @@ sequence(Source &&_source)
       [](fcppt::container::to_iterator_type<source_type> const &_iterator) {
         return result_type{fcppt::move_if_rvalue<Source>(_iterator->get_failure_unsafe())};
       });
-}
-
 }
 }
 

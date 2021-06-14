@@ -6,6 +6,7 @@
 #ifndef FCPPT_EITHER_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_EITHER_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/concepts/move_constructible.hpp>
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -15,9 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -34,6 +33,8 @@ public:
 
   using success = Success;
 
+  static_assert(fcppt::concepts::move_constructible<Failure>);
+  static_assert(fcppt::concepts::move_constructible<Success>);
   static_assert(!std::is_same_v<Failure, Success>, "Success and Failure must be distinct");
 
   explicit object(Success &&);
@@ -64,7 +65,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

@@ -8,17 +8,15 @@
 
 #include <fcppt/either/object_impl.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
-\brief Compares two eithers for equality
+\brief Compares two eithers for equality.
 
 \ingroup fcppteither
 */
 template <typename Failure, typename Success>
-bool operator==(
+[[nodiscard]] bool operator==(
     fcppt::either::object<Failure, Success> const &_a,
     fcppt::either::object<Failure, Success> const &_b)
 {
@@ -29,18 +27,16 @@ bool operator==(
 }
 
 /**
-\brief Compares two eithers for inequality
+\brief Compares two eithers for inequality.
 
 \ingroup fcppteither
 */
 template <typename Failure, typename Success>
-bool operator!=(
+[[nodiscard]] bool operator!=(
     fcppt::either::object<Failure, Success> const &_a,
     fcppt::either::object<Failure, Success> const &_b)
 {
   return !(_a == _b);
-}
-
 }
 }
 

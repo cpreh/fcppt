@@ -634,16 +634,17 @@ set(
 	libs/core/include/fcppt/either/bind.hpp
 	libs/core/include/fcppt/either/comparison.hpp
 	libs/core/include/fcppt/either/construct.hpp
-	libs/core/include/fcppt/either/detail/failure_type.hpp
-	libs/core/include/fcppt/either/detail/success_type.hpp
 	libs/core/include/fcppt/either/error.hpp
 	libs/core/include/fcppt/either/error_from_optional.hpp
 	libs/core/include/fcppt/either/error_fwd.hpp
+	libs/core/include/fcppt/either/failure_move_type.hpp
 	libs/core/include/fcppt/either/failure_opt.hpp
+	libs/core/include/fcppt/either/failure_reference_type.hpp
 	libs/core/include/fcppt/either/failure_type.hpp
 	libs/core/include/fcppt/either/first_success.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
 	libs/core/include/fcppt/either/is_object.hpp
+	libs/core/include/fcppt/either/is_object_v.hpp
 	libs/core/include/fcppt/either/join.hpp
 	libs/core/include/fcppt/either/loop.hpp
 	libs/core/include/fcppt/either/make_failure.hpp
@@ -655,13 +656,16 @@ set(
 	libs/core/include/fcppt/either/no_error.hpp
 	libs/core/include/fcppt/either/no_error_fwd.hpp
 	libs/core/include/fcppt/either/object.hpp
+	libs/core/include/fcppt/either/object_concept.hpp
 	libs/core/include/fcppt/either/object_decl.hpp
 	libs/core/include/fcppt/either/object_fwd.hpp
 	libs/core/include/fcppt/either/object_impl.hpp
 	libs/core/include/fcppt/either/output.hpp
 	libs/core/include/fcppt/either/sequence.hpp
 	libs/core/include/fcppt/either/sequence_error.hpp
+	libs/core/include/fcppt/either/success_move_type.hpp
 	libs/core/include/fcppt/either/success_opt.hpp
+	libs/core/include/fcppt/either/success_reference_type.hpp
 	libs/core/include/fcppt/either/success_type.hpp
 	libs/core/include/fcppt/either/to_exception.hpp
 	libs/core/include/fcppt/either/try_call.hpp
@@ -1157,6 +1161,7 @@ set(
 	libs/core/include/fcppt/optional/from.hpp
 	libs/core/include/fcppt/optional/from_pointer.hpp
 	libs/core/include/fcppt/optional/is_object.hpp
+	libs/core/include/fcppt/optional/is_object_v.hpp
 	libs/core/include/fcppt/optional/join.hpp
 	libs/core/include/fcppt/optional/make.hpp
 	libs/core/include/fcppt/optional/make_if.hpp
@@ -1166,6 +1171,7 @@ set(
 	libs/core/include/fcppt/optional/maybe_void.hpp
 	libs/core/include/fcppt/optional/maybe_void_multi.hpp
 	libs/core/include/fcppt/optional/monad.hpp
+	libs/core/include/fcppt/optional/move_type.hpp
 	libs/core/include/fcppt/optional/nothing.hpp
 	libs/core/include/fcppt/optional/nothing_decl.hpp
 	libs/core/include/fcppt/optional/nothing_fwd.hpp

@@ -6,11 +6,10 @@
 #ifndef FCPPT_OPTIONAL_MAYBE_VOID_MULTI_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAYBE_VOID_MULTI_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/concepts/invocable.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/maybe_multi.hpp>
-#include <fcppt/optional/reference_type.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -27,9 +26,7 @@ If \a _optionals are set to <code>x_1, ..., x_n</code>, then <code>_transform(x_
 */
 template <
     fcppt::optional::object_concept... Optionals,
-    fcppt::concepts::invocable<
-        fcppt::move_if_rvalue_type<Optionals, fcppt::optional::reference_type<Optionals>>...>
-        Transform>
+    fcppt::concepts::invocable<fcppt::optional::move_type<Optionals>...> Transform>
 inline void maybe_void_multi(Transform const _transform, Optionals &&..._optionals)
 {
   fcppt::optional::maybe_multi([] {}, _transform, std::forward<Optionals>(_optionals)...);

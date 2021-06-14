@@ -6,15 +6,14 @@
 #ifndef FCPPT_EITHER_MAKE_SUCCESS_HPP_INCLUDED
 #define FCPPT_EITHER_MAKE_SUCCESS_HPP_INCLUDED
 
+#include <fcppt/concepts/move_constructible.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Create an either with a success.
@@ -23,14 +22,12 @@ namespace either
 
 \tparam Failure The failure type of the either.
 */
-template <typename Failure, typename Success>
-inline fcppt::either::object<Failure, std::remove_cvref_t<Success>>
+template <fcppt::concepts::move_constructible Failure, typename Success>
+[[nodiscard]] inline fcppt::either::object<Failure, std::remove_cvref_t<Success>>
 make_success(Success &&_success)
 {
   return fcppt::either::object<Failure, std::remove_cvref_t<Success>>{
       std::forward<Success>(_success)};
-}
-
 }
 }
 

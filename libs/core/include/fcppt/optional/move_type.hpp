@@ -3,24 +3,22 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONAL_REFERENCE_TYPE_HPP_INCLUDED
-#define FCPPT_OPTIONAL_REFERENCE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_OPTIONAL_MOVE_TYPE_HPP_INCLUDED
+#define FCPPT_OPTIONAL_MOVE_TYPE_HPP_INCLUDED
 
+#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/optional/reference_type.hpp>
 
 namespace fcppt::optional
 {
 /**
-\brief The reference type of an optional.
+\brief The moved inner type of an optional.
 
 \ingroup fcpptoptional
 */
 template <fcppt::optional::object_concept Optional>
-using reference_type = decltype(std::declval<Optional>().get_unsafe());
-
+using move_type = fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>;
 }
 
 #endif

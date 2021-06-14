@@ -3,25 +3,23 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_EITHER_IS_OBJECT_HPP_INCLUDED
-#define FCPPT_EITHER_IS_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_EITHER_SUCCESS_REFERENCE_TYPE_HPP_INCLUDED
+#define FCPPT_EITHER_SUCCESS_REFERENCE_TYPE_HPP_INCLUDED
 
-#include <fcppt/either/object_fwd.hpp>
+#include <fcppt/either/object_concept.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::either
 {
-template <typename Type>
-struct is_object : std::false_type
-{
-};
+/**
+\brief The success reference type of an either.
 
-template <typename Failure, typename Success>
-struct is_object<fcppt::either::object<Failure, Success>> : std::true_type
-{
-};
+\ingroup fcppteither
+*/
+template <fcppt::either::object_concept Either>
+using success_reference_type = decltype(std::declval<Either>().get_success_unsafe());
 
 }
 

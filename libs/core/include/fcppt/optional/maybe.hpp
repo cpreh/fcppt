@@ -8,11 +8,10 @@
 
 #include <fcppt/cond.hpp>
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/concepts/invocable.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -31,15 +30,12 @@ Otherwise, the result of \a _default is returned.
 template <
     fcppt::optional::object_concept Optional,
     fcppt::concepts::invocable Default,
-    fcppt::concepts::invocable<
-        fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Transform>
+    fcppt::concepts::invocable<fcppt::optional::move_type<Optional>> Transform>
 [[nodiscard]] std::invoke_result_t<Default>
 maybe(Optional &&_optional, Default const &_default, Transform const &_transform) requires
     std::is_same_v<
         std::invoke_result_t<Default>,
-        std::invoke_result_t<
-            Transform,
-            fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>>
+        std::invoke_result_t<Transform, fcppt::optional::move_type<Optional>>>
 {
   return fcppt::cond(
       _optional.has_value(),

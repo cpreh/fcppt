@@ -6,7 +6,9 @@
 #ifndef FCPPT_EITHER_FIRST_SUCCESS_HPP_INCLUDED
 #define FCPPT_EITHER_FIRST_SUCCESS_HPP_INCLUDED
 
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/either/failure_type.hpp>
+#include <fcppt/either/is_object_v.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/type_traits/value_type.hpp>
@@ -16,13 +18,11 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Call a container of functions, returning their first success or a
-container of failures
+container of failures.
 
 \ingroup fcppteither
 
@@ -34,13 +34,17 @@ functions return failures <code>e_1,...,e_n</code> and the result is
 
 \tparam Functions A container of functions callable as
 <code>fcppt::either::object<F,S> ()</code>
+
+TODO(concepts)
 */
 template <typename Functions>
-fcppt::either::object<
-    std::vector<
-        fcppt::either::failure_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>,
+[[nodiscard]] fcppt::either::object<
+    std::vector<fcppt::either::failure_type<
+        std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>,
     fcppt::either::success_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>
-first_success(Functions const &_functions)
+first_success(Functions const &_functions) requires
+    fcppt::concepts::invocable_move<fcppt::type_traits::value_type<Functions>> &&
+    fcppt::either::is_object_v<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>
 {
   using failure_container = std::vector<
       fcppt::either::failure_type<std::invoke_result_t<fcppt::type_traits::value_type<Functions>>>>;
@@ -64,8 +68,6 @@ first_success(Functions const &_functions)
   }
 
   return result_type{std::move(failures)};
-}
-
 }
 }
 

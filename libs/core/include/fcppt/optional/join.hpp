@@ -7,6 +7,7 @@
 #define FCPPT_OPTIONAL_JOIN_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/optional/is_object_v.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/value_type.hpp>
@@ -20,12 +21,10 @@ namespace fcppt::optional
 
 If \a _source is set to <code>optional{x}</code>, then <code>optional{x}</code> is returned.
 Otherwise, the empty optional is returned.
-
-\tparam Optional Must be an optional of optional
 */
 template <fcppt::optional::object_concept Optional>
 [[nodiscard]] inline fcppt::optional::value_type<Optional> join(Optional &&_source) requires
-    fcppt::optional::object_concept<fcppt::optional::value_type<Optional>>
+    fcppt::optional::is_object_v<fcppt::optional::value_type<Optional>>
 {
   using result_type = fcppt::optional::value_type<Optional>;
 

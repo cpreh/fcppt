@@ -12,71 +12,60 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/failure_type.hpp>
-#include <fcppt/either/is_object.hpp>
+#include <fcppt/either/object_concept.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/success_move_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
-\brief Applies a function to several eithers
+\brief Applies a function to several eithers.
 
 \ingroup fcppteither
 
 For eithers <code>e_1 = _either1</code> and <code>e_2, ..., e_n =
-_eithers</code>, let <code>i</code> be the smallest number such that
-<code>e_i</code> is set to failure <code>f</code>. If such an <code>i</code>
-exists, <code>f</code> is returned. Otherwise, <code>e_1, ...., e_n</code> are
+_eithers</code>. If there is a smallest <code>i</code> such that
+<code>e_i</code> is set to failure <code>f</code>, then
+<code>f</code> is returned. Otherwise, <code>e_1, ...., e_n</code> are
 set to successes <code>s_1,...,s_n</code> and the result is
 <code>_function(s_1,...,s_n)</code>.
 */
-template <typename Function, typename Either1, typename... Eithers>
-auto apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers)
-    -> fcppt::either::object<
-        fcppt::either::failure_type<std::remove_cvref_t<Either1>>,
-        decltype(_function(
-            fcppt::move_if_rvalue<Either1>(_either1.get_success_unsafe()),
-            fcppt::move_if_rvalue<Eithers>(_eithers.get_success_unsafe())...))>
+template <
+    fcppt::either::object_concept Either1,
+    fcppt::either::object_concept... Eithers,
+    fcppt::concepts::invocable_move<
+        fcppt::either::success_move_type<Either1>,
+        fcppt::either::success_move_type<Eithers>...> Function>
+[[nodiscard]] fcppt::either::object<
+    fcppt::either::failure_type<Either1>,
+    std::invoke_result_t<
+        Function,
+        fcppt::either::success_move_type<Either1>,
+        fcppt::either::success_move_type<Eithers>...>>
+apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers) requires(
+    std::is_same_v<fcppt::either::failure_type<Either1>, fcppt::either::failure_type<Eithers>>
+        &&...)
 {
-  using either1 = std::remove_cvref_t<Either1>;
-
-  static_assert(fcppt::either::is_object<either1>::value, "Either1 must be an either");
-
-  using eithers = ::metal::list<std::remove_cvref_t<Eithers>...>;
-
-  static_assert(
-      ::metal::all_of<eithers, ::metal::trait<fcppt::either::is_object>>::value,
-      "Eithers must all be eithers");
-
-  using failure = fcppt::either::failure_type<either1>;
-
-  static_assert(
-      ::metal::all_of<
-          eithers,
-          ::metal::bind<
-              ::metal::trait<std::is_same>,
-              ::metal::always<failure>,
-              ::metal::lambda<fcppt::either::failure_type>>>::value,
-      "All eithers must have the same failure type");
+  using failure = fcppt::either::failure_type<Either1>;
 
   using result_type = fcppt::either::object<
       failure,
-      decltype(_function(
-          fcppt::move_if_rvalue<Either1>(_either1.get_success_unsafe()),
-          fcppt::move_if_rvalue<Eithers>(_eithers.get_success_unsafe())...))>;
+      std::invoke_result_t<
+          Function,
+          fcppt::either::success_move_type<Either1>,
+          fcppt::either::success_move_type<Eithers>...>>;
 
   using optional_failure = fcppt::optional::object<failure>;
 
@@ -116,7 +105,6 @@ auto apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers)
                        fcppt::either::failure_opt(std::forward<Eithers>(_eithers))...})};
 
   FCPPT_PP_POP_WARNING
-}
 }
 }
 

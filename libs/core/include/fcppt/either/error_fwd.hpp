@@ -9,9 +9,7 @@
 #include <fcppt/either/no_error_fwd.hpp>
 #include <fcppt/either/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief An either without a success value.
@@ -24,7 +22,6 @@ are returned as optionals.
 template <typename Failure>
 using error = fcppt::either::object<Failure, fcppt::either::no_error>;
 
-}
 }
 
 #endif

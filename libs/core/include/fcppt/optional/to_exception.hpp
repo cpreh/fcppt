@@ -7,11 +7,10 @@
 #define FCPPT_OPTIONAL_TO_EXCEPTION_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/reference_type.hpp>
 
 namespace fcppt::optional
 {
@@ -24,7 +23,7 @@ If \a _optional is set to x, then x is returned. Otherwise, the result of \a
 _make_exception is thrown as an exception.
 */
 template <fcppt::optional::object_concept Optional, fcppt::concepts::invocable_move MakeException>
-[[nodiscard]] inline fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>
+[[nodiscard]] inline fcppt::optional::move_type<Optional>
 to_exception(Optional &&_optional, MakeException const _make_exception)
 {
   if (_optional.has_value())

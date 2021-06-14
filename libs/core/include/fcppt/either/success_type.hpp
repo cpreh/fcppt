@@ -6,23 +6,21 @@
 #ifndef FCPPT_EITHER_SUCCESS_TYPE_HPP_INCLUDED
 #define FCPPT_EITHER_SUCCESS_TYPE_HPP_INCLUDED
 
-#include <fcppt/either/detail/success_type.hpp>
+#include <fcppt/either/object_concept.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief The success type of an either.
 
 \ingroup fcppteither
-
-\tparam Either Must be an #fcppt::either::object.
 */
-template <typename Either>
-using success_type = typename fcppt::either::detail::success_type<Either>::type;
+template <fcppt::either::object_concept Either>
+using success_type = typename std::remove_cvref_t<Either>::success;
 
-}
 }
 
 #endif

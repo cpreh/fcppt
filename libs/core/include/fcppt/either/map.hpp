@@ -7,16 +7,16 @@
 #define FCPPT_EITHER_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/either/failure_type.hpp>
-#include <fcppt/either/is_object.hpp>
+#include <fcppt/either/object_concept.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/success_move_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
 \brief Maps over the success type of an either.
@@ -27,28 +27,22 @@ If \a _either is set to success <code>s</code>, <code>r = _function(s)</code>
 is called and the result is
 <code>either<Either::failure,decltype(r)>(r)</code>. Otherwise, the failure in
 \a _either is returned.
-
-\tparam Function A function callable as <code>R (Either::success)</code> where
-<code>R</code> is the result type
 */
-template <typename Either, typename Function>
-auto map(Either &&_either, Function const &_function) -> fcppt::either::object<
-    fcppt::either::failure_type<std::remove_cvref_t<Either>>,
-    decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))>
+template <
+    fcppt::either::object_concept Either,
+    fcppt::concepts::invocable_move<fcppt::either::success_move_type<Either>> Function>
+[[nodiscard]] fcppt::either::object<
+    fcppt::either::failure_type<Either>,
+    std::invoke_result_t<Function, fcppt::either::success_move_type<Either>>>
+map(Either &&_either, Function const &_function)
 {
-  using either = std::remove_cvref_t<Either>;
-
-  static_assert(fcppt::either::is_object<either>::value, "Either must be an either");
-
   using result_type = fcppt::either::object<
-      fcppt::either::failure_type<std::remove_cvref_t<Either>>,
-      decltype(_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))>;
+      fcppt::either::failure_type<Either>,
+      std::invoke_result_t<Function, fcppt::either::success_move_type<Either>>>;
 
   return _either.has_success()
              ? result_type(_function(fcppt::move_if_rvalue<Either>(_either.get_success_unsafe())))
              : result_type(fcppt::move_if_rvalue<Either>(_either.get_failure_unsafe()));
-}
-
 }
 }
 

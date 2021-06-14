@@ -6,6 +6,8 @@
 #ifndef FCPPT_EITHER_TRY_CALL_HPP_INCLUDED
 #define FCPPT_EITHER_TRY_CALL_HPP_INCLUDED
 
+#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/move_constructible.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -14,15 +16,13 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4702)
 
 /**
-\brief Catches exceptions of a function call and puts the result in an either
+\brief Catches exceptions of a function call and puts the result in an either.
 
 \ingroup fcppteither
 
@@ -31,18 +31,18 @@ then the result is success <code>s</code>.  If the function throws an
 exception <code>e</code> of type \a Exception, then the result is the failure
 <code>_to_exception(e)</code>.
 
-\tparam Function A function callable as <code>S ()</code> where <code>S</code>
-is the success result type
-
-\tparam ToException A function callable as <code>E (Exception)</code> where
-<code>E</code> is the failure result type
+\tparam Exception The exception type to be caught.
 */
-template <typename Exception, typename Function, typename ToException>
-auto try_call(Function const &_function, ToException const &_to_exception) -> fcppt::either::
-    object<decltype(_to_exception(std::declval<Exception>())), decltype(_function())>
+template <
+    fcppt::concepts::move_constructible Exception,
+    fcppt::concepts::invocable_move Function,
+    fcppt::concepts::invocable_move<Exception> ToException>
+[[nodiscard]] fcppt::either::
+    object<std::invoke_result_t<ToException, Exception>, std::invoke_result_t<Function>>
+    try_call(Function const &_function, ToException const &_to_exception)
 {
   using result_type = fcppt::either::
-      object<decltype(_to_exception(std::declval<Exception>())), decltype(_function())>;
+      object<std::invoke_result_t<ToException, Exception>, std::invoke_result_t<Function>>;
 
   try
   {
@@ -56,7 +56,6 @@ auto try_call(Function const &_function, ToException const &_to_exception) -> fc
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

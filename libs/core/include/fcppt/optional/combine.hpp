@@ -7,12 +7,11 @@
 #define FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -34,17 +33,17 @@ template <
     fcppt::optional::object_concept Optional1,
     fcppt::optional::object_concept Optional2,
     fcppt::concepts::invocable_move<
-        fcppt::move_if_rvalue_type<Optional1, fcppt::optional::reference_type<Optional1>>,
-        fcppt::move_if_rvalue_type<Optional2, fcppt::optional::reference_type<Optional2>>> Function>
+        fcppt::optional::move_type<Optional1>,
+        fcppt::optional::move_type<Optional2>> Function>
 [[nodiscard]] fcppt::optional::object<fcppt::optional::value_type<Optional1>>
-combine(Optional1 &&_optional1, Optional2 &&_optional2, Function const &_function)
-requires std::is_same_v<fcppt::optional::value_type<Optional1>, fcppt::optional::value_type<Optional2>> &&
+combine(Optional1 &&_optional1, Optional2 &&_optional2, Function const &_function) requires std::
+    is_same_v<fcppt::optional::value_type<Optional1>, fcppt::optional::value_type<Optional2>> &&
     std::is_same_v<
         fcppt::optional::value_type<Optional1>,
         std::invoke_result_t<
             Function,
-            fcppt::move_if_rvalue_type<Optional1, fcppt::optional::reference_type<Optional1>>,
-            fcppt::move_if_rvalue_type<Optional2, fcppt::optional::reference_type<Optional2>>>>
+            fcppt::optional::move_type<Optional1>,
+            fcppt::optional::move_type<Optional2>>>
 {
   if (!_optional1.has_value())
   {

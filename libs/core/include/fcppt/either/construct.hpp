@@ -6,25 +6,24 @@
 #ifndef FCPPT_EITHER_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_EITHER_CONSTRUCT_HPP_INCLUDED
 
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 /**
-\brief Constructs an either by calling one of two functions
+\brief Constructs an either by calling one of two functions.
 
 \ingroup fcppteither
 
 If \a _value is true then <code>_success()</code> is returned.
 Otherwise, <code>_failure()</code> is returned.
 */
-template <typename Failure, typename Success>
-fcppt::either::object<std::invoke_result_t<Failure>, std::invoke_result_t<Success>>
+template <fcppt::concepts::invocable_move Failure, fcppt::concepts::invocable_move Success>
+[[nodiscard]] fcppt::either::object<std::invoke_result_t<Failure>, std::invoke_result_t<Success>>
 construct(bool const _value, Success const &_success, Failure const &_failure)
 {
   using result_type =
@@ -33,7 +32,6 @@ construct(bool const _value, Success const &_success, Failure const &_failure)
   return _value ? result_type{_success()} : result_type{_failure()};
 }
 
-}
 }
 
 #endif

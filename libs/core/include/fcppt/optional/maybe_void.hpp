@@ -7,10 +7,9 @@
 #define FCPPT_OPTIONAL_MAYBE_VOID_HPP_INCLUDED
 
 #include <fcppt/concepts/invocable.hpp>
-#include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/optional/reference_type.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -26,14 +25,12 @@ If \a _optional is set to x, then <code>_transform(x)</code> is called.
 */
 template <
     fcppt::optional::object_concept Optional,
-    fcppt::concepts::invocable<
-        fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Transform>
+    fcppt::concepts::invocable<fcppt::optional::move_type<Optional>> Transform>
 inline void maybe_void(Optional &&_optional, Transform const &_transform)
 {
   fcppt::optional::maybe(
       std::forward<Optional>(_optional), [] {}, _transform);
 }
-
 }
 
 #endif

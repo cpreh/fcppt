@@ -3,20 +3,20 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_EITHER_NO_ERROR_FWD_HPP_INCLUDED
-#define FCPPT_EITHER_NO_ERROR_FWD_HPP_INCLUDED
+#ifndef FCPPT_EITHER_IS_OBJECT_V_HPP_INCLUDED
+#define FCPPT_EITHER_IS_OBJECT_V_HPP_INCLUDED
 
-#include <fcppt/unit_fwd.hpp>
+#include <fcppt/either/is_object.hpp>
 
 namespace fcppt::either
 {
 /**
-\brief The type that represents no error in an #fcppt::either::error.
+\brief Checks if a given type is an #fcppt::either::object.
 
 \ingroup fcppteither
 */
-using no_error = fcppt::unit;
-
+template<typename T>
+inline constexpr bool is_object_v = fcppt::either::is_object<T>::value;
 }
 
 #endif

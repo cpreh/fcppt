@@ -6,14 +6,14 @@
 #ifndef FCPPT_OPTIONAL_MONAD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MONAD_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue_type.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/concepts/move_constructible.hpp>
 #include <fcppt/monad/instance_fwd.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/move_type.hpp>
 #include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/reference_type.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -45,12 +45,10 @@ struct instance<fcppt::optional::object<Arg>>
 
   template <
       fcppt::optional::object_concept Optional,
-      fcppt::concepts::invocable_move<
-          fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>> Function>
-  [[nodiscard]] static auto bind(Optional &&_optional, Function const &_function) requires
-      fcppt::optional::object_concept<std::invoke_result_t<
-          Function,
-          fcppt::move_if_rvalue_type<Optional, fcppt::optional::reference_type<Optional>>>>
+      fcppt::concepts::invocable_move<fcppt::optional::move_type<Optional>> Function>
+  [[nodiscard]] static auto
+  bind(Optional &&_optional, Function const &_function) requires fcppt::optional::object_concept<
+      std::invoke_result_t<Function, fcppt::optional::move_type<Optional>>>
 
   {
     return fcppt::optional::bind(std::forward<Optional>(_optional), _function);
