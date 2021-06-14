@@ -7,8 +7,8 @@
 #define FCPPT_EITHER_FAILURE_MOVE_TYPE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue_type.hpp>
-#include <fcppt/either/object_concept.hpp>
 #include <fcppt/either/failure_reference_type.hpp>
+#include <fcppt/either/object_concept.hpp>
 
 namespace fcppt::either
 {

@@ -6,7 +6,6 @@
 #ifndef FCPPT_RECORD_COMPARISON_HPP_INCLUDED
 #define FCPPT_RECORD_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>

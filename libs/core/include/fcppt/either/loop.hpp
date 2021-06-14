@@ -6,12 +6,12 @@
 #ifndef FCPPT_EITHER_LOOP_HPP_INCLUDED
 #define FCPPT_EITHER_LOOP_HPP_INCLUDED
 
+#include <fcppt/concepts/invocable.hpp>
+#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object_v.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/success_type.hpp>
-#include <fcppt/concepts/invocable.hpp>
-#include <fcppt/concepts/invocable_move.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

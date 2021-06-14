@@ -7,9 +7,9 @@
 #define FCPPT_OPTIONAL_MAYBE_VOID_HPP_INCLUDED
 
 #include <fcppt/concepts/invocable.hpp>
-#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/move_type.hpp>
+#include <fcppt/optional/object_concept.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
