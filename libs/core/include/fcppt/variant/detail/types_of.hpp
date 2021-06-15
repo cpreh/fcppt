@@ -11,11 +11,7 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
-{
-namespace detail
+namespace fcppt::variant::detail
 {
 template <typename Type>
 struct types_of;
@@ -26,8 +22,6 @@ struct types_of<fcppt::variant::object<Types...>>
   using type = ::metal::list<Types...>;
 };
 
-}
-}
 }
 
 #endif

@@ -10,18 +10,16 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/has_type.hpp>
 #include <fcppt/variant/detail/std_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -61,7 +59,7 @@ public:
   template <
       typename U,
       typename = std::enable_if_t<
-          fcppt::variant::detail::has_type<this_type, std::remove_cvref_t<U>>::value>>
+          fcppt::variant::has_type_v<this_type, std::remove_cvref_t<U>>>>
   explicit object(U &&);
 
   /**
@@ -111,7 +109,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

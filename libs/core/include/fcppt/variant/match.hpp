@@ -12,7 +12,7 @@
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/is_object.hpp>
+#include <fcppt/variant/object_concept.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -20,22 +20,21 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Matches a variant with a function for each element type
+\brief Matches a variant with a function for each element type.
 
 \ingroup fcpptvariant
 
 Matches \a _variant with \a _functions. The functions must be listed in the
 order the types appear in the variant.
+
+TODO(concepts)
 */
 template <
-    typename Variant,
-    typename... Functions,
-    typename Enable = fcppt::variant::is_object<std::remove_cvref_t<Variant>>>
+    fcppt::variant::object_concept Variant,
+    typename... Functions>
 inline decltype(auto) match(Variant &&_variant, Functions const &..._functions)
 {
   auto const tuple(fcppt::tuple::make(_functions...));
@@ -52,7 +51,6 @@ inline decltype(auto) match(Variant &&_variant, Functions const &..._functions)
       std::forward<Variant>(_variant));
 }
 
-}
 }
 
 #endif

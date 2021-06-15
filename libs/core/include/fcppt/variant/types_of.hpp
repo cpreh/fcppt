@@ -6,21 +6,22 @@
 #ifndef FCPPT_VARIANT_TYPES_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_TYPES_OF_HPP_INCLUDED
 
+#include <fcppt/variant/object_concept.hpp>
 #include <fcppt/variant/detail/types_of.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief The types of a variant
+\brief The types of a variant.
 
 \ingroup fcpptvariant
 */
-template <typename Variant>
-using types_of = typename fcppt::variant::detail::types_of<Variant>::type;
+template <fcppt::variant::object_concept Variant>
+using types_of = typename fcppt::variant::detail::types_of<std::remove_cvref_t<Variant>>::type;
 
-}
 }
 
 #endif

@@ -10,12 +10,10 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief An integer type used to describe a type index
+\brief An integer type used to describe a type index.
 
 \ingroup fcpptvariant
 
@@ -23,7 +21,6 @@ namespace variant
 */
 using size_type = std::size_t;
 
-}
 }
 
 #endif

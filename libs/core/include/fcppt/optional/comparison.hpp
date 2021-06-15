@@ -11,7 +11,7 @@
 namespace fcppt::optional
 {
 /**
-\brief Compares two optionals for equality
+\brief Compares two optionals for equality.
 
 \ingroup fcpptoptional
 
@@ -19,8 +19,7 @@ Compares \a _a and \a _b for equality. Two optionals are equal if they are
 either both empty or if they are both not empty and their elements compare
 equal. This function requires \a T to be equality comparable.
 
-\param _a The first optional
-\param _b The second optional
+TODO(concepts)
 */
 template <typename T>
 [[nodiscard]] bool
@@ -31,15 +30,14 @@ operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> cons
 }
 
 /**
-\brief Compares two optionals for inequality
+\brief Compares two optionals for inequality.
 
 \ingroup fcpptoptional
 
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 This function requires \a T to be equality comparable.
 
-\param _a The first optional
-\param _b The second optional
+TODO(concepts)
 */
 template <typename T>
 [[nodiscard]] bool
@@ -49,15 +47,15 @@ operator!=(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> cons
 }
 
 /**
-\brief Compares two optionals lexicographically
+\brief Compares two optionals lexicographically.
 
 \ingroup fcpptoptional
 
 Compares \a _a and \a _b lexicographically. If one or both of them are empty,
 returns <code>_a.has_value() < _b.has_value()</code>, otherwise returns
 <code>_a.get_unsafe() < _b.get_unsafe()</code>.
-\param _a The first optional
-\param _b The second optional
+
+TODO(concepts)
 */
 template <typename T>
 [[nodiscard]] bool operator<(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)

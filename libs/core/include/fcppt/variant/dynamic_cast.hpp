@@ -11,21 +11,20 @@
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/algorithm/loop_break_metal.hpp>
 #include <fcppt/cast/apply.hpp>
+#include <fcppt/cast/dynamic_fun_concept.hpp>
+#include <fcppt/metal/list_concept.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
 #include <fcppt/variant/from_list.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Tries several dynamic casts
+\brief Tries several dynamic casts, returning a variant of their types.
 
 \ingroup fcpptvariant
 
@@ -35,18 +34,15 @@ The result of the first cast that succeeds is returned.
 
 \return An optional variant of types <code>fcppt::reference<T_1>,...,fcppt::reference<T_n></code>.
 
-\tparam Types A metal::list.
-
-\tparam Cast A dynamic cast function from \ref fcpptcasts, e.g. #fcppt::cast::dynamic_fun.
-
 \tparam Base The base class type to cast from.
+
+TODO(concepts)
 */
-template <typename Types, typename Cast, typename Base>
+template <fcppt::metal::list_concept Types, fcppt::cast::dynamic_fun_concept Cast, typename Base>
+[[nodiscard]]
 fcppt::optional::object<fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<Types>>>
 dynamic_cast_(Base &_base)
 {
-  static_assert(::metal::is_list<Types>::value, "Types must be a metal::list");
-
   using variant_type = fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<Types>>;
 
   using result_type = fcppt::optional::object<variant_type>;
@@ -65,7 +61,6 @@ dynamic_cast_(Base &_base)
       });
 }
 
-}
 }
 
 #endif

@@ -3,25 +3,23 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_VARIANT_IS_OBJECT_HPP_INCLUDED
-#define FCPPT_VARIANT_IS_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_OBJECT_CONCEPT_HPP_INCLUDED
+#define FCPPT_VARIANT_OBJECT_CONCEPT_HPP_INCLUDED
 
-#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/is_object_v.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::variant
 {
-template <typename Type>
-struct is_object : std::false_type
-{
-};
 
-template <typename... Types>
-struct is_object<fcppt::variant::object<Types...>> : std::true_type
-{
-};
+/**
+\brief Checks if a type is a cv-ref variant.
+\ingroup fcpptoptional
+*/
+template<typename Type>
+concept object_concept = fcppt::variant::is_object_v<std::remove_cvref_t<Type>>;
 
 }
 

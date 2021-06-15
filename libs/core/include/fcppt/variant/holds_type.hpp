@@ -6,19 +6,17 @@
 #ifndef FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/variant/detail/has_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Checks if a type is held by a variant
+\brief Checks if a type is held by a variant.
 
 \ingroup fcpptvariant
 
@@ -28,26 +26,15 @@ constructor or assignment operator. A type T <em>can be held</em> by a
 
 This function checks if \a Type is held by \a _variant.
 
-\tparam Type The type to check for which must be a possible type for the
-variant
-
-\tparam Elements The types of the variant
-
-\param _variant The variant to check
-
-\return If the type is held by the variant
+\tparam Type The type to check for which must be a possible type for the variant.
 */
 template <typename Type, typename... Elements>
-inline bool holds_type(fcppt::variant::object<Elements...> const &_variant)
+[[nodiscard]] inline bool holds_type(fcppt::variant::object<Elements...> const &_variant)
+requires fcppt::variant::has_type_v<fcppt::variant::object<Elements...>, Type>
 {
-  static_assert(
-      fcppt::variant::detail::has_type<fcppt::variant::object<Elements...>, Type>::value,
-      "Invalid Type in variant::holds_type");
-
   return std::holds_alternative<Type>(_variant.impl());
 }
 
-}
 }
 
 #endif

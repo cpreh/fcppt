@@ -14,6 +14,10 @@
 namespace fcppt::optional
 {
 
+/**
+\brief Checks if a type is a cv-ref optional.
+\ingroup fcpptoptional
+*/
 template<typename Type>
 concept object_concept = fcppt::optional::is_object_v<std::remove_cvref_t<Type>>;
 

@@ -14,12 +14,10 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Returns an <code>std::%type_info</code> of the held type
+\brief Returns an <code>std::%type_info</code> of the held type.
 
 \ingroup fcpptvariant
 */
@@ -36,7 +34,6 @@ std::type_info const &type_info(fcppt::variant::object<Types...> const &_variant
       _variant);
 }
 
-}
 }
 
 #endif

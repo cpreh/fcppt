@@ -9,23 +9,24 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/holds_type.hpp>
+#include <fcppt/variant/object_concept.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Converts a variant and a type to an optional reference
+\brief Converts a variant and a type to an optional reference.
 
 \ingroup fcpptvariant
 */
-template <typename Type, typename Variant>
-fcppt::optional::reference<Type> to_optional_ref(Variant &_variant)
+template <typename Type, fcppt::variant::object_concept Variant>
+[[nodiscard]] fcppt::optional::reference<Type> to_optional_ref(Variant &_variant)
+requires fcppt::variant::has_type_v<Variant,std::remove_const_t<Type>>
 {
   using result_type = fcppt::optional::reference<Type>;
 
@@ -36,7 +37,6 @@ fcppt::optional::reference<Type> to_optional_ref(Variant &_variant)
              : result_type{};
 }
 
-}
 }
 
 #endif

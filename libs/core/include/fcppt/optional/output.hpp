@@ -15,17 +15,11 @@
 namespace fcppt::optional
 {
 /**
-\brief Outputs an optional to a basic_ostream
+\brief Outputs an optional to a basic_ostream.
 
 \ingroup fcpptoptional
 
-Outputs the value held by \a _opt_value to \a _stream, or nothing.
-
-\param _stream The stream to output to
-
-\param _opt_value The optional to output
-
-\return \a _stream
+TODO(concepts)
 */
 template <typename Type, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &

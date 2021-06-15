@@ -7,6 +7,7 @@
 #define FCPPT_CAST_DYNAMIC_FUN_HPP_INCLUDED
 
 #include <fcppt/cast/dynamic.hpp>
+#include <fcppt/cast/dynamic_fun_fwd.hpp>
 #include <fcppt/optional/reference.hpp>
 
 namespace fcppt

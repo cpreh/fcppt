@@ -3,23 +3,24 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_EITHER_OBJECT_CONCEPT_HPP_INCLUDED
-#define FCPPT_EITHER_OBJECT_CONCEPT_HPP_INCLUDED
+#ifndef FCPPT_METAL_LIST_CONCEPT_HPP_INCLUDED
+#define FCPPT_METAL_LIST_CONCEPT_HPP_INCLUDED
 
-#include <fcppt/either/is_object_v.hpp>
+#include <fcppt/metal/from_number.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt::either
+namespace fcppt::metal
 {
 
 /**
-\brief Checks if a type is a cv-ref either.
-\ingroup fcpptoptional
+\brief Concept for ::metal::list.
+
+\ingroup fcpptmetal
 */
 template<typename Type>
-concept object_concept = fcppt::either::is_object_v<std::remove_cvref_t<Type>>;
+concept list_concept = fcppt::metal::from_number<bool,::metal::is_list<Type>>::value;
 
 }
 

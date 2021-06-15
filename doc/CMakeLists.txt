@@ -344,9 +344,13 @@ set(
 	libs/core/include/fcppt/cast/dynamic.hpp
 	libs/core/include/fcppt/cast/dynamic_any.hpp
 	libs/core/include/fcppt/cast/dynamic_any_fun.hpp
+	libs/core/include/fcppt/cast/dynamic_any_fun_fwd.hpp
 	libs/core/include/fcppt/cast/dynamic_cross.hpp
 	libs/core/include/fcppt/cast/dynamic_cross_fun.hpp
+	libs/core/include/fcppt/cast/dynamic_cross_fun_fwd.hpp
 	libs/core/include/fcppt/cast/dynamic_fun.hpp
+	libs/core/include/fcppt/cast/dynamic_fun_concept.hpp
+	libs/core/include/fcppt/cast/dynamic_fun_fwd.hpp
 	libs/core/include/fcppt/cast/enum_to_int.hpp
 	libs/core/include/fcppt/cast/enum_to_underlying.hpp
 	libs/core/include/fcppt/cast/float_to_int.hpp
@@ -1102,6 +1106,7 @@ set(
 	libs/core/include/fcppt/metal/invoke_on.hpp
 	libs/core/include/fcppt/metal/is_invocable.hpp
 	libs/core/include/fcppt/metal/is_set.hpp
+	libs/core/include/fcppt/metal/list_concept.hpp
 	libs/core/include/fcppt/metal/maps_equal.hpp
 	libs/core/include/fcppt/metal/max_value.hpp
 	libs/core/include/fcppt/metal/partial_sums.hpp
@@ -1539,7 +1544,6 @@ set(
 	libs/core/include/fcppt/variant/current_type_name.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe_impl.hpp
-	libs/core/include/fcppt/variant/detail/has_type.hpp
 	libs/core/include/fcppt/variant/detail/std_type.hpp
 	libs/core/include/fcppt/variant/detail/std_type_impl.hpp
 	libs/core/include/fcppt/variant/detail/types_of.hpp
@@ -1548,10 +1552,14 @@ set(
 	libs/core/include/fcppt/variant/from_list.hpp
 	libs/core/include/fcppt/variant/from_list_fwd.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
+	libs/core/include/fcppt/variant/has_type.hpp
+	libs/core/include/fcppt/variant/has_type_v.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
+	libs/core/include/fcppt/variant/is_object_v.hpp
 	libs/core/include/fcppt/variant/match.hpp
 	libs/core/include/fcppt/variant/object.hpp
+	libs/core/include/fcppt/variant/object_concept.hpp
 	libs/core/include/fcppt/variant/object_decl.hpp
 	libs/core/include/fcppt/variant/object_fwd.hpp
 	libs/core/include/fcppt/variant/object_impl.hpp

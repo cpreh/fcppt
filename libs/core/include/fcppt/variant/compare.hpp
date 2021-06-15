@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
 \brief Compares two variants using a Compare function
@@ -33,7 +31,7 @@ _right.get<T>())</code> holds.
 \param _compare The function to use for comparison
 */
 template <typename... Types, typename Compare>
-inline bool compare(
+[[nodiscard]] inline bool compare(
     fcppt::variant::object<Types...> const &_left,
     fcppt::variant::object<Types...> const &_right,
     Compare const &_compare)
@@ -50,7 +48,6 @@ inline bool compare(
       _right);
 }
 
-}
 }
 
 #endif

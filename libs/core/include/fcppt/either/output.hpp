@@ -14,6 +14,14 @@
 
 namespace fcppt::either
 {
+
+/**
+\brief Outputs an either to a basic_ostream.
+
+\ingroup fcppteither
+
+TODO(concepts)
+*/
 template <typename Failure, typename Success, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &operator<<(
     std::basic_ostream<Ch, Traits> &_stream, fcppt::either::object<Failure, Success> const &_either)

@@ -11,19 +11,20 @@
 #include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
 \brief The variant element types used for #fcppt::variant::dynamic_cast_.
 
 \ingroup fcpptvariant
+
+\tparam Types A metal::list.
+
+TODO(concepts)
 */
 template <typename Types>
 using dynamic_cast_types = ::metal::transform<::metal::lambda<fcppt::reference>, Types>;
 
-}
 }
 
 #endif

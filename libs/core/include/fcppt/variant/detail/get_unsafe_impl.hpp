@@ -6,7 +6,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_GET_UNSAFE_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_GET_UNSAFE_IMPL_HPP_INCLUDED
 
-#include <fcppt/variant/detail/has_type.hpp>
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <variant>
@@ -23,7 +23,7 @@ std::conditional_t<std::is_const_v<StdVariant>, U const &, U &>
 get_unsafe_impl(StdVariant &_variant)
 {
   static_assert(
-      fcppt::variant::detail::has_type<std::remove_const_t<Variant>, U>::value,
+      fcppt::variant::has_type_v<std::remove_const_t<Variant>, U>,
       "Invalid variant type");
 
   return *std::get_if<U>(&_variant);

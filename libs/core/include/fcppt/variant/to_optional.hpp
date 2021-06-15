@@ -9,20 +9,21 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/holds_type.hpp>
+#include <fcppt/variant/object_concept.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Converts a variant and a type to an optional
+\brief Converts a variant and a type to an optional.
 
 \ingroup fcpptvariant
 */
-template <typename Type, typename Variant>
-fcppt::optional::object<Type> to_optional(Variant &&_variant)
+template <typename Type, fcppt::variant::object_concept Variant>
+[[nodiscard]] fcppt::optional::object<Type> to_optional(Variant &&_variant)
+requires fcppt::variant::has_type_v<Variant,Type>
 {
   using result_type = fcppt::optional::object<Type>;
 
@@ -32,7 +33,6 @@ fcppt::optional::object<Type> to_optional(Variant &&_variant)
              : result_type{};
 }
 
-}
 }
 
 #endif

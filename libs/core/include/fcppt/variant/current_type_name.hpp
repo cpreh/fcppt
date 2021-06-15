@@ -13,9 +13,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
 \brief Returns the type name of the current type.
@@ -23,12 +21,11 @@ namespace variant
 \ingroup fcpptvariant
 */
 template <typename... Elements>
-std::string current_type_name(fcppt::variant::object<Elements...> const &_variant)
+[[nodiscard]] std::string current_type_name(fcppt::variant::object<Elements...> const &_variant)
 {
   return fcppt::type_name_from_index(fcppt::variant::type_info(_variant));
 }
 
-}
 }
 
 #endif

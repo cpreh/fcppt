@@ -8,44 +8,46 @@
 
 #include <fcppt/variant/object_impl.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Compares two variants for equality
+\brief Compares two variants for equality.
 
 \ingroup fcpptvariant
 
 Compares \a _left and \a _right for equality. The two variants are equal if they hold
 the same type and the values compare equal. This function requires all possible
 types of the variant to be equality comparable.
+
+TODO(concepts)
 */
 template <typename... Types>
-bool operator==(
+[[nodiscard]] bool operator==(
     fcppt::variant::object<Types...> const &_left, fcppt::variant::object<Types...> const &_right)
 {
   return _left.impl() == _right.impl();
 }
 
 /**
-\brief Compares two variants for inequality
+\brief Compares two variants for inequality.
 
 \ingroup fcpptvariant
 
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 This function requires all possible types of the variant to be equality
 comparable.
+
+TODO(concepts)
 */
 template <typename... Types>
-bool operator!=(
+[[nodiscard]] bool operator!=(
     fcppt::variant::object<Types...> const &_a, fcppt::variant::object<Types...> const &_b)
 {
   return !(_a == _b);
 }
 
 /**
-\brief Tests if one variant is less than another
+\brief Tests if one variant is less than another.
 
 \ingroup fcpptvariant
 
@@ -54,15 +56,16 @@ Tests if \a _left is less than \a _right. Let val_left be the value stored in
 _right iff <code>(_left.type_index(), val_left)</code> is lexicographically
 before <code>(_right.type_index(), val_right)</code>. This also implies that
 every type of the variant must be less comparable.
+
+TODO(concepts)
 */
 template <typename... Types>
-bool operator<(
+[[nodiscard]] bool operator<(
     fcppt::variant::object<Types...> const &_left, fcppt::variant::object<Types...> const &_right)
 {
   return _left.impl() < _right.impl();
 }
 
-}
 }
 
 #endif

@@ -6,15 +6,14 @@
 #ifndef FCPPT_VARIANT_GET_UNSAFE_HPP_INCLUDED
 #define FCPPT_VARIANT_GET_UNSAFE_HPP_INCLUDED
 
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/detail/get_unsafe.hpp>
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 /**
-\brief Free get function.
+\brief Free get_unsafe function.
 
 \ingroup fcpptvariant
 
@@ -24,12 +23,13 @@ Equal to <code>%_object.get&lt;Type&gt;()</code>.
 */
 template <typename Type, typename... Elements>
 inline Type &get_unsafe(fcppt::variant::object<Elements...> &_object)
+requires fcppt::variant::has_type_v<fcppt::variant::object<Elements...>,Type>
 {
   return fcppt::variant::detail::get_unsafe<Type>(_object);
 }
 
 /**
-\brief Free get function.
+\brief Free get_unsafe function.
 
 \ingroup fcpptvariant
 
@@ -39,11 +39,11 @@ Equal to <code>%_object.get&lt;Type&gt;()</code>.
 */
 template <typename Type, typename... Elements>
 inline Type const &get_unsafe(fcppt::variant::object<Elements...> const &_object)
+requires fcppt::variant::has_type_v<fcppt::variant::object<Elements...>,Type>
 {
   return fcppt::variant::detail::get_unsafe<Type>(_object);
 }
 
-}
 }
 
 #endif

@@ -14,6 +14,8 @@ namespace fcppt::either
 \brief Compares two eithers for equality.
 
 \ingroup fcppteither
+
+TODO(concepts)
 */
 template <typename Failure, typename Success>
 [[nodiscard]] bool operator==(
@@ -30,6 +32,8 @@ template <typename Failure, typename Success>
 \brief Compares two eithers for inequality.
 
 \ingroup fcppteither
+
+TODO(concepts)
 */
 template <typename Failure, typename Success>
 [[nodiscard]] bool operator!=(

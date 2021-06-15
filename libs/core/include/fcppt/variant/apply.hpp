@@ -7,30 +7,26 @@
 #define FCPPT_VARIANT_APPLY_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/variant/is_object.hpp>
+#include <fcppt/variant/object_concept.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
+namespace fcppt::variant
 {
-namespace variant
-{
-template <typename Function, typename... Variants>
-decltype(auto) apply(Function const &_function, Variants &&..._variants)
-{
-  static_assert(
-      ::metal::all_of<
-          ::metal::list<std::remove_cvref_t<Variants>...>,
-          ::metal::trait<fcppt::variant::is_object>>::value,
-      "Variants must all be variants");
+/**
+\brief Applies a function to the elements of several variants.
+\ingroup fcpptvariant
 
+TODO(concepts)
+*/
+template <typename Function, fcppt::variant::object_concept... Variants>
+[[nodiscard]] inline decltype(auto) apply(Function const &_function, Variants &&..._variants)
+{
   return std::visit(_function, fcppt::move_if_rvalue<Variants>(_variants.impl())...);
 }
 
-}
 }
 
 #endif
