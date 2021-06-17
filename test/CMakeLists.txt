@@ -256,6 +256,10 @@ add_subdirectory(
 	monad
 )
 
+add_subdirectory(
+	mpl
+)
+
 add_fcppt_test(
 	move_clear
 )

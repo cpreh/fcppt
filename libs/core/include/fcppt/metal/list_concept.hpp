@@ -15,7 +15,7 @@ namespace fcppt::metal
 {
 
 /**
-\brief Concept for ::metal::list.
+\brief Concept for a metal list.
 
 \ingroup fcpptmetal
 */
