@@ -1162,6 +1162,8 @@ set(
 	libs/core/include/fcppt/mpl/list.hpp
 	libs/core/include/fcppt/mpl/list_concept.hpp
 	libs/core/include/fcppt/mpl/list_fwd.hpp
+	libs/core/include/fcppt/mpl/push_back.hpp
+	libs/core/include/fcppt/mpl/transform.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/narrow_locale.hpp
 	libs/core/include/fcppt/no_init.hpp

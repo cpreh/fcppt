@@ -42,3 +42,13 @@ add_fcppt_mpl_test(
 	fold
 	NO_CODE
 )
+
+add_fcppt_mpl_test(
+	push_back
+	NO_CODE
+)
+
+add_fcppt_mpl_test(
+	transform
+	NO_CODE
+)
