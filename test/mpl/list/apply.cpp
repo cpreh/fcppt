@@ -4,22 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/list.hpp>
-#include <fcppt/mpl/transform.hpp>
+#include <fcppt/mpl/list/apply.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace
-{
-// TODO(philipp): Implement a helper type for this?
-template<typename T>
-using is_integral_t = typename std::is_integral<T>::type;
-}
 int main()
 {
   static_assert(
-      std::is_same_v<
-          fcppt::mpl::transform<fcppt::mpl::list<int, float>, fcppt::mpl::lambda<is_integral_t>>,
-          fcppt::mpl::list<std::true_type, std::false_type>>);
+      fcppt::mpl::list::apply<fcppt::mpl::lambda<std::is_integral>, fcppt::mpl::list::object<int>>::
+          value);
+  static_assert(
+      fcppt::mpl::list::
+          apply<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::list::object<int, int>>::value);
 }

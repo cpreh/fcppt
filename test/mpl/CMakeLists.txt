@@ -14,17 +14,7 @@ add_fcppt_mpl_test(
 )
 
 add_fcppt_mpl_test(
-	apply_list
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
 	arg
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	at
 	NO_CODE
 )
 
@@ -38,17 +28,6 @@ add_fcppt_mpl_test(
 	NO_CODE
 )
 
-add_fcppt_mpl_test(
-	fold
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	push_back
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	transform
-	NO_CODE
+add_subdirectory(
+	list
 )

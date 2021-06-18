@@ -3,9 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/mpl/at.hpp>
-#include <fcppt/mpl/index.hpp>
-#include <fcppt/mpl/list.hpp>
+#include <fcppt/mpl/size_type.hpp>
+#include <fcppt/mpl/list/at.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -13,7 +13,11 @@
 int main()
 {
   static_assert(
-      std::is_same_v<fcppt::mpl::at<fcppt::mpl::list<bool, int>, fcppt::mpl::index<0U>>, bool>);
+      std::is_same_v<
+          fcppt::mpl::list::at<fcppt::mpl::list::object<bool, int>, fcppt::mpl::size_type<0U>>,
+          bool>);
   static_assert(
-      std::is_same_v<fcppt::mpl::at<fcppt::mpl::list<bool, int>, fcppt::mpl::index<1U>>, int>);
+      std::is_same_v<
+          fcppt::mpl::list::at<fcppt::mpl::list::object<bool, int>, fcppt::mpl::size_type<1U>>,
+          int>);
 }

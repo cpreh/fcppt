@@ -3,16 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_MPL_LIST_CONCEPT_HPP_INCLUDED
-#define FCPPT_MPL_LIST_CONCEPT_HPP_INCLUDED
+#ifndef FCPPT_MPL_LIST_OBJECT_CONCEPT_HPP_INCLUDED
+#define FCPPT_MPL_LIST_OBJECT_CONCEPT_HPP_INCLUDED
 
-#include <fcppt/mpl/is_list.hpp>
+#include <fcppt/mpl/list/is_object.hpp>
 
-namespace fcppt::mpl
+namespace fcppt::mpl::list
 {
 
 template<typename T>
-concept list_concept = fcppt::mpl::is_list<T>::value;
+concept object_concept = fcppt::mpl::list::is_object<T>::value;
 
 }
 

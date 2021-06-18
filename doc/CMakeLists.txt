@@ -1145,25 +1145,25 @@ set(
 	libs/core/include/fcppt/move_if_rvalue_type.hpp
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/mpl/apply.hpp
-	libs/core/include/fcppt/mpl/apply_list.hpp
 	libs/core/include/fcppt/mpl/arg.hpp
-	libs/core/include/fcppt/mpl/at.hpp
 	libs/core/include/fcppt/mpl/bind.hpp
 	libs/core/include/fcppt/mpl/constant.hpp
-	libs/core/include/fcppt/mpl/fold.hpp
-	libs/core/include/fcppt/mpl/index.hpp
-	libs/core/include/fcppt/mpl/index_concept.hpp
-	libs/core/include/fcppt/mpl/is_index.hpp
 	libs/core/include/fcppt/mpl/is_lambda.hpp
-	libs/core/include/fcppt/mpl/is_list.hpp
+	libs/core/include/fcppt/mpl/is_size_type.hpp
 	libs/core/include/fcppt/mpl/lambda.hpp
 	libs/core/include/fcppt/mpl/lambda_concept.hpp
 	libs/core/include/fcppt/mpl/lambda_fwd.hpp
-	libs/core/include/fcppt/mpl/list.hpp
-	libs/core/include/fcppt/mpl/list_concept.hpp
-	libs/core/include/fcppt/mpl/list_fwd.hpp
-	libs/core/include/fcppt/mpl/push_back.hpp
-	libs/core/include/fcppt/mpl/transform.hpp
+	libs/core/include/fcppt/mpl/list/apply.hpp
+	libs/core/include/fcppt/mpl/list/at.hpp
+	libs/core/include/fcppt/mpl/list/fold.hpp
+	libs/core/include/fcppt/mpl/list/is_object.hpp
+	libs/core/include/fcppt/mpl/list/object.hpp
+	libs/core/include/fcppt/mpl/list/object_concept.hpp
+	libs/core/include/fcppt/mpl/list/object_fwd.hpp
+	libs/core/include/fcppt/mpl/list/push_back.hpp
+	libs/core/include/fcppt/mpl/list/transform.hpp
+	libs/core/include/fcppt/mpl/size_type.hpp
+	libs/core/include/fcppt/mpl/size_type_concept.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/narrow_locale.hpp
 	libs/core/include/fcppt/no_init.hpp

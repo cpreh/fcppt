@@ -3,9 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/mpl/fold.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/list.hpp>
+#include <fcppt/mpl/list/fold.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -31,8 +31,8 @@ using add =  typename add_impl<T,U>::type;
 int main()
 {
   static_assert(std::is_same_v<
-                fcppt::mpl::fold<
-                    fcppt::mpl::list<integral<1U>, integral<2U>>,
+                fcppt::mpl::list::fold<
+                    fcppt::mpl::list::object<integral<1U>, integral<2U>>,
                     fcppt::mpl::lambda<add>,
                     integral<0U>>,
                 integral<3U>>);

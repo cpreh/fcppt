@@ -3,20 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_MPL_INDEX_HPP_INCLUDED
-#define FCPPT_MPL_INDEX_HPP_INCLUDED
-
+#include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/list/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt::mpl
+int main()
 {
-
-template<std::size_t I>
-using index = std::integral_constant<std::size_t,I>;
-
+  static_assert(std::is_same_v<
+                fcppt::mpl::list::push_back<fcppt::mpl::list::object<int>, bool>,
+                fcppt::mpl::list::object<int, bool>>);
 }
-
-#endif

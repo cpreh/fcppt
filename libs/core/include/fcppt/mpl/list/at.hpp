@@ -3,18 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_MPL_AT_HPP_INCLUDED
-#define FCPPT_MPL_AT_HPP_INCLUDED
+#ifndef FCPPT_MPL_LIST_AT_HPP_INCLUDED
+#define FCPPT_MPL_LIST_AT_HPP_INCLUDED
 
-#include <fcppt/mpl/list_fwd.hpp>
-#include <fcppt/mpl/list_concept.hpp>
-#include <fcppt/mpl/index.hpp>
-#include <fcppt/mpl/index_concept.hpp>
+#include <fcppt/mpl/size_type.hpp>
+#include <fcppt/mpl/size_type_concept.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt::mpl
+namespace fcppt::mpl::list
 {
 namespace detail
 {
@@ -22,14 +22,14 @@ template<typename List, typename I>
 struct at;
 
 template<typename... E, std::size_t I>
-struct at<fcppt::mpl::list<E...>,fcppt::mpl::index<I>>
+struct at<fcppt::mpl::list::object<E...>,fcppt::mpl::size_type<I>>
 {
   using type = std::tuple_element_t<I,std::tuple<E...>>;
 };
 }
 
-template<fcppt::mpl::list_concept List, fcppt::mpl::index_concept I>
-using at = typename fcppt::mpl::detail::at<List,I>::type;
+template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept I>
+using at = typename fcppt::mpl::list::detail::at<List,I>::type;
 
 }
 

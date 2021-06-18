@@ -6,10 +6,10 @@
 #ifndef FCPPT_MPL_ARG_HPP_INCLUDED
 #define FCPPT_MPL_ARG_HPP_INCLUDED
 
-#include <fcppt/mpl/at.hpp>
-#include <fcppt/mpl/index.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/list.hpp>
+#include <fcppt/mpl/size_type.hpp>
+#include <fcppt/mpl/list/at.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -21,8 +21,9 @@ namespace detail
 template<std::size_t Arg>
 struct arg
 {
-  template<typename... Args>
-  using arg_apply = fcppt::mpl::at<fcppt::mpl::list<Args...>,fcppt::mpl::index<Arg>>;
+  template <typename... Args>
+  using arg_apply =
+      fcppt::mpl::list::at<fcppt::mpl::list::object<Args...>, fcppt::mpl::size_type<Arg>>;
 
   using type = fcppt::mpl::lambda<arg_apply>;
 };
