@@ -19,6 +19,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	distinct
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	fold
 	NO_CODE
 )
