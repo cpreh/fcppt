@@ -9,6 +9,7 @@
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,6 +34,7 @@ struct derived<>
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Winaccessible-base)
+FCPPT_PP_DISABLE_VC_WARNING(4584)
 template<typename T, typename... Ts>
 struct derived<T,Ts...> : base<T>, derived<Ts...>
 {
