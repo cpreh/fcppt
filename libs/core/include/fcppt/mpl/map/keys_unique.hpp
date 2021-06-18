@@ -7,15 +7,15 @@
 #define FCPPT_MPL_MAP_KEYS_UNIQUE_HPP_INCLUDED
 
 #include <fcppt/mpl/map/element_concept.hpp>
-#include <fcppt/mpl/map/element_to_key.hpp>
+#include <fcppt/mpl/map/element_key.hpp>
 #include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/object.hpp>
 
 namespace fcppt::mpl::map
 {
 template <fcppt::mpl::map::element_concept... Args>
-concept keys_unique =
-    fcppt::mpl::list::distinct<fcppt::mpl::list::object<fcppt::mpl::map::element_to_key<Args>...>>::value;
+using keys_unique =
+    fcppt::mpl::list::distinct<fcppt::mpl::list::object<fcppt::mpl::map::element_key<Args>...>>;
 }
 
 #endif

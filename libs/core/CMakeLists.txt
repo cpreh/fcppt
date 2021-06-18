@@ -937,6 +937,7 @@ set(
 	libs/core/include/fcppt/mpl/lambda_fwd.hpp
 	libs/core/include/fcppt/mpl/list/apply.hpp
 	libs/core/include/fcppt/mpl/list/at.hpp
+	libs/core/include/fcppt/mpl/list/distinct.hpp
 	libs/core/include/fcppt/mpl/list/fold.hpp
 	libs/core/include/fcppt/mpl/list/is_object.hpp
 	libs/core/include/fcppt/mpl/list/object.hpp
@@ -944,6 +945,18 @@ set(
 	libs/core/include/fcppt/mpl/list/object_fwd.hpp
 	libs/core/include/fcppt/mpl/list/push_back.hpp
 	libs/core/include/fcppt/mpl/list/transform.hpp
+	libs/core/include/fcppt/mpl/map/at.hpp
+	libs/core/include/fcppt/mpl/map/element.hpp
+	libs/core/include/fcppt/mpl/map/element_concept.hpp
+	libs/core/include/fcppt/mpl/map/element_fwd.hpp
+	libs/core/include/fcppt/mpl/map/element_key.hpp
+	libs/core/include/fcppt/mpl/map/insert.hpp
+	libs/core/include/fcppt/mpl/map/is_element.hpp
+	libs/core/include/fcppt/mpl/map/is_object.hpp
+	libs/core/include/fcppt/mpl/map/keys_unique.hpp
+	libs/core/include/fcppt/mpl/map/object.hpp
+	libs/core/include/fcppt/mpl/map/object_concept.hpp
+	libs/core/include/fcppt/mpl/map/object_fwd.hpp
 	libs/core/include/fcppt/mpl/size_type.hpp
 	libs/core/include/fcppt/mpl/size_type_concept.hpp
 	libs/core/include/fcppt/narrow.hpp

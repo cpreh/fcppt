@@ -31,3 +31,7 @@ add_fcppt_mpl_test(
 add_subdirectory(
 	list
 )
+
+add_subdirectory(
+	map
+)

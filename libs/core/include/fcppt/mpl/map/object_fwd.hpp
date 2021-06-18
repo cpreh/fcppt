@@ -12,7 +12,7 @@
 namespace fcppt::mpl::map
 {
 template <fcppt::mpl::map::element_concept... Args>
-requires fcppt::mpl::map::keys_unique<Args...>;
+requires fcppt::mpl::map::keys_unique<Args...>::value
 struct object;
 }
 
