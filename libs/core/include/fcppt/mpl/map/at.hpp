@@ -7,6 +7,7 @@
 #define FCPPT_MPL_MAP_AT_HPP_INCLUDED
 
 #include <fcppt/mpl/map/element.hpp>
+#include <fcppt/mpl/map/has_key.hpp>
 #include <fcppt/mpl/map/object_concept.hpp>
 #include <fcppt/mpl/map/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,13 +20,8 @@ namespace detail
 {
 namespace at_impl
 {
-template <typename Map>
-struct table
-{
-};
-
 template <typename... Elements>
-struct table<fcppt::mpl::map::object<Elements...>> : Elements...
+struct table : Elements...
 {
 };
 
@@ -35,10 +31,17 @@ template <typename>
 void lookup(...);
 }
 template <typename Map, typename Key>
-using at = decltype(at_impl::lookup<Key>(std::declval<at_impl::table<Map>>()));
+struct at;
+
+template<typename... Elements, typename Key>
+struct at<fcppt::mpl::map::object<Elements...>,Key>
+{
+  using type = decltype(at_impl::lookup<Key>(std::declval<at_impl::table<Elements...>>()));
+};
 }
 template<fcppt::mpl::map::object_concept Map, typename Key>
-using at = fcppt::mpl::map::detail::at<Map,Key>;
+requires fcppt::mpl::map::has_key<Map,Key>::value
+using at = typename fcppt::mpl::map::detail::at<Map,Key>::type;
 
 }
 

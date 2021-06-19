@@ -48,9 +48,8 @@ struct distinct;
 template <typename... Types>
 struct distinct<fcppt::mpl::list::object<Types...>>
 {
-  using derived_type = distinct_impl::derived<Types...>;
-
-  using type = std::conjunction<std::is_convertible<derived_type, distinct_impl::base<Types>>...>;
+  using type = std::conjunction<
+      std::is_convertible<distinct_impl::derived<Types...>, distinct_impl::base<Types>>...>;
 };
 }
 

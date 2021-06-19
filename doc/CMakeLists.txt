@@ -1168,6 +1168,7 @@ set(
 	libs/core/include/fcppt/mpl/map/element_concept.hpp
 	libs/core/include/fcppt/mpl/map/element_fwd.hpp
 	libs/core/include/fcppt/mpl/map/element_key.hpp
+	libs/core/include/fcppt/mpl/map/has_key.hpp
 	libs/core/include/fcppt/mpl/map/insert.hpp
 	libs/core/include/fcppt/mpl/map/is_element.hpp
 	libs/core/include/fcppt/mpl/map/is_object.hpp

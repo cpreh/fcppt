@@ -7,6 +7,7 @@
 #define FCPPT_MPL_MAP_INSERT_HPP_INCLUDED
 
 #include <fcppt/mpl/map/element.hpp>
+#include <fcppt/mpl/map/has_key.hpp>
 #include <fcppt/mpl/map/object_concept.hpp>
 #include <fcppt/mpl/map/object.hpp>
 
@@ -24,6 +25,7 @@ struct insert<fcppt::mpl::map::object<Elements...>,Key,Value>
 };
 }
 template<fcppt::mpl::map::object_concept Map, typename Key, typename Value>
+requires (!fcppt::mpl::map::has_key<Map,Key>::value)
 using insert = typename fcppt::mpl::map::detail::insert<Map,Key,Value>::type;
 }
 
