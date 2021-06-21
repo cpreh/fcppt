@@ -5,7 +5,7 @@
 
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/transform.hpp>
+#include <fcppt/mpl/list/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -21,6 +21,6 @@ int main()
   static_assert(
       std::is_same_v<
           fcppt::mpl::list::
-              transform<fcppt::mpl::list::object<int, float>, fcppt::mpl::lambda<is_integral_t>>,
+              map<fcppt::mpl::list::object<int, float>, fcppt::mpl::lambda<is_integral_t>>,
           fcppt::mpl::list::object<std::true_type, std::false_type>>);
 }

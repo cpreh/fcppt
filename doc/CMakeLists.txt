@@ -1147,22 +1147,32 @@ set(
 	libs/core/include/fcppt/mpl/apply.hpp
 	libs/core/include/fcppt/mpl/arg.hpp
 	libs/core/include/fcppt/mpl/bind.hpp
+	libs/core/include/fcppt/mpl/bool_concept.hpp
 	libs/core/include/fcppt/mpl/constant.hpp
+	libs/core/include/fcppt/mpl/if.hpp
 	libs/core/include/fcppt/mpl/is_lambda.hpp
 	libs/core/include/fcppt/mpl/is_size_type.hpp
 	libs/core/include/fcppt/mpl/lambda.hpp
 	libs/core/include/fcppt/mpl/lambda_concept.hpp
 	libs/core/include/fcppt/mpl/lambda_fwd.hpp
+	libs/core/include/fcppt/mpl/list/all_of.hpp
+	libs/core/include/fcppt/mpl/list/any_of.hpp
 	libs/core/include/fcppt/mpl/list/apply.hpp
+	libs/core/include/fcppt/mpl/list/as.hpp
 	libs/core/include/fcppt/mpl/list/at.hpp
+	libs/core/include/fcppt/mpl/list/contains.hpp
 	libs/core/include/fcppt/mpl/list/distinct.hpp
 	libs/core/include/fcppt/mpl/list/fold.hpp
+	libs/core/include/fcppt/mpl/list/index_of.hpp
+	libs/core/include/fcppt/mpl/list/index_of_if.hpp
 	libs/core/include/fcppt/mpl/list/is_object.hpp
+	libs/core/include/fcppt/mpl/list/is_set.hpp
+	libs/core/include/fcppt/mpl/list/map.hpp
 	libs/core/include/fcppt/mpl/list/object.hpp
 	libs/core/include/fcppt/mpl/list/object_concept.hpp
 	libs/core/include/fcppt/mpl/list/object_fwd.hpp
 	libs/core/include/fcppt/mpl/list/push_back.hpp
-	libs/core/include/fcppt/mpl/list/transform.hpp
+	libs/core/include/fcppt/mpl/list/size.hpp
 	libs/core/include/fcppt/mpl/map/at.hpp
 	libs/core/include/fcppt/mpl/map/element.hpp
 	libs/core/include/fcppt/mpl/map/element_concept.hpp
@@ -1176,6 +1186,18 @@ set(
 	libs/core/include/fcppt/mpl/map/object.hpp
 	libs/core/include/fcppt/mpl/map/object_concept.hpp
 	libs/core/include/fcppt/mpl/map/object_fwd.hpp
+	libs/core/include/fcppt/mpl/set/contains.hpp
+	libs/core/include/fcppt/mpl/set/from_list.hpp
+	libs/core/include/fcppt/mpl/set/from_list_relaxed.hpp
+	libs/core/include/fcppt/mpl/set/insert.hpp
+	libs/core/include/fcppt/mpl/set/insert_relaxed.hpp
+	libs/core/include/fcppt/mpl/set/is_object.hpp
+	libs/core/include/fcppt/mpl/set/object.hpp
+	libs/core/include/fcppt/mpl/set/object_concept.hpp
+	libs/core/include/fcppt/mpl/set/object_fwd.hpp
+	libs/core/include/fcppt/mpl/set/size.hpp
+	libs/core/include/fcppt/mpl/set/to_list.hpp
+	libs/core/include/fcppt/mpl/set/unique.hpp
 	libs/core/include/fcppt/mpl/size_type.hpp
 	libs/core/include/fcppt/mpl/size_type_concept.hpp
 	libs/core/include/fcppt/narrow.hpp

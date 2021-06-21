@@ -28,10 +28,19 @@ add_fcppt_mpl_test(
 	NO_CODE
 )
 
+add_fcppt_mpl_test(
+	if
+	NO_CODE
+)
+
 add_subdirectory(
 	list
 )
 
 add_subdirectory(
 	map
+)
+
+add_subdirectory(
+	set
 )

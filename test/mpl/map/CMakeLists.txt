@@ -19,6 +19,11 @@ add_fcppt_mpl_map_test(
 )
 
 add_fcppt_mpl_map_test(
+	has_key
+	NO_CODE
+)
+
+add_fcppt_mpl_map_test(
 	insert
 	NO_CODE
 )
