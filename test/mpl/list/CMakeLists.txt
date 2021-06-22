@@ -29,6 +29,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	as_tuple
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	at
 	NO_CODE
 )
@@ -46,6 +51,10 @@ add_fcppt_mpl_list_test(
 add_fcppt_mpl_list_test(
 	fold
 	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	for_each_break
 )
 
 add_fcppt_mpl_list_test(
