@@ -12,8 +12,7 @@
 
 namespace fcppt::mpl::set
 {
-
-template<fcppt::mpl::set::object_concept Set>
+template <fcppt::mpl::set::object_concept Set>
 using size = fcppt::mpl::list::size<fcppt::mpl::set::to_list<Set>>;
 
 }

@@ -14,6 +14,16 @@ add_fcppt_mpl_set_test(
 )
 
 add_fcppt_mpl_set_test(
+	difference
+	NO_CODE
+)
+
+add_fcppt_mpl_set_test(
+	equal
+	NO_CODE
+)
+
+add_fcppt_mpl_set_test(
 	from_list
 	NO_CODE
 )
@@ -34,11 +44,26 @@ add_fcppt_mpl_set_test(
 )
 
 add_fcppt_mpl_set_test(
+	intersection
+	NO_CODE
+)
+
+add_fcppt_mpl_set_test(
 	size
 	NO_CODE
 )
 
 add_fcppt_mpl_set_test(
+	symmetric_difference
+	NO_CODE
+)
+
+add_fcppt_mpl_set_test(
 	to_list
+	NO_CODE
+)
+
+add_fcppt_mpl_set_test(
+	union
 	NO_CODE
 )

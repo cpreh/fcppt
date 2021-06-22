@@ -19,6 +19,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	append
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	apply
 	NO_CODE
 )
@@ -58,6 +63,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	front
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	index_of
 	NO_CODE
 )
@@ -84,5 +94,10 @@ add_fcppt_mpl_list_test(
 
 add_fcppt_mpl_list_test(
 	size
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	unique
 	NO_CODE
 )
