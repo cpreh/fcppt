@@ -12,4 +12,6 @@ int main()
   static_assert(fcppt::mpl::list::distinct<fcppt::mpl::list::object<int>>::value);
   static_assert(fcppt::mpl::list::distinct<fcppt::mpl::list::object<int,float>>::value);
   static_assert(!fcppt::mpl::list::distinct<fcppt::mpl::list::object<int,int>>::value);
+  static_assert(!fcppt::mpl::list::distinct<fcppt::mpl::list::object<int,int,float>>::value);
+  static_assert(fcppt::mpl::list::distinct<fcppt::mpl::list::object<int,float,bool>>::value);
 }

@@ -9,10 +9,18 @@
 #include <fcppt/config/compiler.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/object_concept.hpp>
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/all_of.hpp>
+#else
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#endif
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -22,36 +30,26 @@ namespace fcppt::mpl::list
 namespace detail
 {
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
-namespace distinct_impl
-{
-template <typename... Types>
-struct distinct;
-
-template <>
-struct distinct<>
-{
-  using type = std::true_type;
-};
-
-template <typename T>
-struct distinct<T>
-{
-  using type = std::true_type;
-};
-
-template <typename T, typename... Types>
-struct distinct<T, Types...>
-{
-  using type = std::conjunction<std::negation<std::is_same<T, Types...>>>;
-};
-}
 template<typename T>
 struct distinct;
 
-template <typename... Types>
-struct distinct<fcppt::mpl::list::object<Types...>>
+template<>
+struct distinct<fcppt::mpl::list::object<>>
 {
-  using type = typename distinct_impl::distinct<Types...>::type;
+  using type = std::true_type;
+};
+
+template<typename T, typename... Ts>
+struct distinct<fcppt::mpl::list::object<T,Ts...>>
+{
+  using rest = fcppt::mpl::list::object<Ts...>;
+  using type = std::conjunction<
+    typename fcppt::mpl::list::detail::distinct<rest>::type,
+    fcppt::mpl::list::all_of<
+      rest,
+      fcppt::mpl::bind<
+        fcppt::mpl::lambda<std::negation>,
+        fcppt::mpl::bind<fcppt::mpl::lambda<std::is_same>,fcppt::mpl::arg<0>,fcppt::mpl::constant<T>>>>>;
 };
 #else
 namespace distinct_impl
