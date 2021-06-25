@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/mpl/list/front.hpp>
+#include <fcppt/mpl/list/back.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -12,5 +12,5 @@
 
 int main()
 {
-  static_assert(std::is_same_v<fcppt::mpl::list::front<fcppt::mpl::list::object<int, float, bool>>, int>);
+  static_assert(std::is_same_v<fcppt::mpl::list::back<fcppt::mpl::list::object<int, float, bool>>, bool>);
 }

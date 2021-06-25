@@ -19,11 +19,31 @@ add_fcppt_mpl_map_test(
 )
 
 add_fcppt_mpl_map_test(
+	element_value
+	NO_CODE
+)
+
+add_fcppt_mpl_map_test(
+	equal
+	NO_CODE
+)
+
+add_fcppt_mpl_map_test(
+	flip
+	NO_CODE
+)
+
+add_fcppt_mpl_map_test(
 	has_key
 	NO_CODE
 )
 
 add_fcppt_mpl_map_test(
 	insert
+	NO_CODE
+)
+
+add_fcppt_mpl_map_test(
+	keys
 	NO_CODE
 )

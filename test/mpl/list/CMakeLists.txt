@@ -44,12 +44,27 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	back
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	contains
 	NO_CODE
 )
 
 add_fcppt_mpl_list_test(
 	distinct
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	enum_range
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	enum_range_start_end
 	NO_CODE
 )
 
@@ -78,7 +93,22 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	indices
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	interval
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	is_set
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	join
 	NO_CODE
 )
 
@@ -89,6 +119,11 @@ add_fcppt_mpl_list_test(
 
 add_fcppt_mpl_list_test(
 	push_back
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	remove_if
 	NO_CODE
 )
 

@@ -926,17 +926,24 @@ set(
 	libs/core/include/fcppt/move_if_rvalue.hpp
 	libs/core/include/fcppt/move_if_rvalue_type.hpp
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
+	libs/core/include/fcppt/mpl/add.hpp
 	libs/core/include/fcppt/mpl/apply.hpp
 	libs/core/include/fcppt/mpl/arg.hpp
 	libs/core/include/fcppt/mpl/bind.hpp
 	libs/core/include/fcppt/mpl/bool_concept.hpp
 	libs/core/include/fcppt/mpl/constant.hpp
+	libs/core/include/fcppt/mpl/dec.hpp
+	libs/core/include/fcppt/mpl/function_args.hpp
+	libs/core/include/fcppt/mpl/greater.hpp
 	libs/core/include/fcppt/mpl/if.hpp
+	libs/core/include/fcppt/mpl/integral_concept.hpp
+	libs/core/include/fcppt/mpl/integrals_compatible.hpp
 	libs/core/include/fcppt/mpl/is_lambda.hpp
 	libs/core/include/fcppt/mpl/is_size_type.hpp
 	libs/core/include/fcppt/mpl/lambda.hpp
 	libs/core/include/fcppt/mpl/lambda_concept.hpp
 	libs/core/include/fcppt/mpl/lambda_fwd.hpp
+	libs/core/include/fcppt/mpl/less.hpp
 	libs/core/include/fcppt/mpl/list/all_of.hpp
 	libs/core/include/fcppt/mpl/list/any_of.hpp
 	libs/core/include/fcppt/mpl/list/append.hpp
@@ -944,20 +951,27 @@ set(
 	libs/core/include/fcppt/mpl/list/as.hpp
 	libs/core/include/fcppt/mpl/list/as_tuple.hpp
 	libs/core/include/fcppt/mpl/list/at.hpp
+	libs/core/include/fcppt/mpl/list/back.hpp
 	libs/core/include/fcppt/mpl/list/contains.hpp
 	libs/core/include/fcppt/mpl/list/distinct.hpp
+	libs/core/include/fcppt/mpl/list/enum_range.hpp
+	libs/core/include/fcppt/mpl/list/enum_range_start_end.hpp
 	libs/core/include/fcppt/mpl/list/fold.hpp
 	libs/core/include/fcppt/mpl/list/for_each_break.hpp
 	libs/core/include/fcppt/mpl/list/front.hpp
 	libs/core/include/fcppt/mpl/list/index_of.hpp
 	libs/core/include/fcppt/mpl/list/index_of_if.hpp
+	libs/core/include/fcppt/mpl/list/indices.hpp
+	libs/core/include/fcppt/mpl/list/interval.hpp
 	libs/core/include/fcppt/mpl/list/is_object.hpp
 	libs/core/include/fcppt/mpl/list/is_set.hpp
+	libs/core/include/fcppt/mpl/list/join.hpp
 	libs/core/include/fcppt/mpl/list/map.hpp
 	libs/core/include/fcppt/mpl/list/object.hpp
 	libs/core/include/fcppt/mpl/list/object_concept.hpp
 	libs/core/include/fcppt/mpl/list/object_fwd.hpp
 	libs/core/include/fcppt/mpl/list/push_back.hpp
+	libs/core/include/fcppt/mpl/list/remove_if.hpp
 	libs/core/include/fcppt/mpl/list/size.hpp
 	libs/core/include/fcppt/mpl/list/unique.hpp
 	libs/core/include/fcppt/mpl/map/at.hpp
@@ -965,16 +979,22 @@ set(
 	libs/core/include/fcppt/mpl/map/element_concept.hpp
 	libs/core/include/fcppt/mpl/map/element_fwd.hpp
 	libs/core/include/fcppt/mpl/map/element_key.hpp
+	libs/core/include/fcppt/mpl/map/element_value.hpp
+	libs/core/include/fcppt/mpl/map/equal.hpp
+	libs/core/include/fcppt/mpl/map/flip.hpp
 	libs/core/include/fcppt/mpl/map/has_key.hpp
 	libs/core/include/fcppt/mpl/map/insert.hpp
 	libs/core/include/fcppt/mpl/map/is_element.hpp
 	libs/core/include/fcppt/mpl/map/is_object.hpp
+	libs/core/include/fcppt/mpl/map/keys.hpp
 	libs/core/include/fcppt/mpl/map/keys_unique.hpp
 	libs/core/include/fcppt/mpl/map/object.hpp
 	libs/core/include/fcppt/mpl/map/object_concept.hpp
 	libs/core/include/fcppt/mpl/map/object_fwd.hpp
+	libs/core/include/fcppt/mpl/mul.hpp
 	libs/core/include/fcppt/mpl/set/contains.hpp
 	libs/core/include/fcppt/mpl/set/difference.hpp
+	libs/core/include/fcppt/mpl/set/equal.hpp
 	libs/core/include/fcppt/mpl/set/from_list.hpp
 	libs/core/include/fcppt/mpl/set/from_list_relaxed.hpp
 	libs/core/include/fcppt/mpl/set/insert.hpp
@@ -1364,6 +1384,7 @@ set(
 	libs/core/include/fcppt/type_traits/integral_cast.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
+	libs/core/include/fcppt/type_traits/is_integral_constant.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/is_string.hpp

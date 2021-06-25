@@ -29,6 +29,11 @@ add_fcppt_type_traits_test(
 )
 
 add_fcppt_type_traits_test(
+	is_integral_constant
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
 	is_raw_pointer
 	NO_CODE
 )

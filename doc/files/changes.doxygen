@@ -7,6 +7,18 @@
 fcppt now uses <code>C++-20</code>.
 </p>
 
+\subsection changes_added_functionality_to_400 Added functionality
+
+<ul>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added #fcppt::type_traits::is_integral_constant.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_400 Removed functionality
 
 <ul>
