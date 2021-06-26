@@ -8,6 +8,7 @@
 
 #include <fcppt/char_literal.hpp>
 #include <fcppt/tag.hpp>
+#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/io/widen_string.hpp>
@@ -17,6 +18,7 @@
 #include <fcppt/mpl/list/pop_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::mpl::list
