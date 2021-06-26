@@ -406,7 +406,7 @@ the output filename has been specified. If not, we use the default of
 
 \snippet options/complex.cpp options_output_filename
 
-Second, the openmode needs to be passed as well.
+Secondly, the openmode needs to be passed as well.
 
 \snippet options/complex.cpp options_open_output
 

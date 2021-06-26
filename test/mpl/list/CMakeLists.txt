@@ -59,6 +59,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	empty
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	enum_range
 	NO_CODE
 )
@@ -114,6 +119,11 @@ add_fcppt_mpl_list_test(
 
 add_fcppt_mpl_list_test(
 	map
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	maximum
 	NO_CODE
 )
 
