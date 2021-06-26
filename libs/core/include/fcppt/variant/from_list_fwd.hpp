@@ -6,19 +6,19 @@
 #ifndef FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
 #define FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
 
-#include <fcppt/metal/as.hpp>
-#include <fcppt/metal/list_concept.hpp>
+#include <fcppt/mpl/list/as.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
 namespace fcppt::variant
 {
 /**
-\brief Declares a variant using a metal::list.
+\brief Declares a variant using an mpl::list.
 
 \ingroup fcpptvariant
 */
-template <fcppt::metal::list_concept Types>
-using from_list = fcppt::metal::as<fcppt::variant::object, Types>;
+template <fcppt::mpl::list::object_concept Types>
+using from_list = fcppt::mpl::list::as<fcppt::variant::object, Types>;
 
 }
 

@@ -8,15 +8,19 @@
 
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/io/widen_string.hpp>
+#include <fcppt/mpl/size_type.hpp>
+#include <fcppt/mpl/list/at.hpp>
+#include <fcppt/mpl/list/indices.hpp>
+#include <fcppt/mpl/list/size.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
+#include <cstddef>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,14 +41,15 @@ std::basic_ostream<Ch, Traits> &operator<<(
 
   using element_list = fcppt::record::element_vector<fcppt::record::object<Elements...>>;
   fcppt::algorithm::loop(
-      ::metal::indices<element_list>{},
-      [&_stream, &_record]<::metal::int_ Index>(fcppt::tag<::metal::number<Index>>)
+      fcppt::mpl::list::indices<element_list>{},
+      [&_stream, &_record]<std::size_t Index>(fcppt::tag<fcppt::mpl::size_type<Index>>)
       {
-        using label = fcppt::record::element_to_label<::metal::at<element_list, ::metal::number<Index>>>;
+        using label = fcppt::record::element_to_label<
+            fcppt::mpl::list::at<element_list, fcppt::mpl::size_type<Index>>>;
 
         _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
                 << fcppt::io::widen_string(" = ") << fcppt::record::get<label>(_record);
-        if constexpr (Index != ::metal::size<element_list>::value - ::metal::int_{1})
+        if constexpr (Index != fcppt::mpl::list::size<element_list>::value - 1U)
         {
           _stream << fcppt::io::widen_string(", ");
         }

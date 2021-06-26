@@ -8,7 +8,7 @@
 
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>

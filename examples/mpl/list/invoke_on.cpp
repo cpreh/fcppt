@@ -19,9 +19,6 @@
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
-// TODO
-int main() {}
-#if 0
 namespace
 {
 // Our color enum
@@ -76,4 +73,3 @@ int main()
   FCPPT_ASSERT_ERROR(fcppt::variant::holds_type<rgb>(variant));
 }
 //! [mpl_invoke_on]
-#endif

@@ -1,0 +1,10 @@
+/**
+\defgroup fcpptmpl fcppt.mpl
+\ingroup fcpptmain
+\brief A metaprogramming library
+*/
+
+namespace fcppt
+{
+namespace mpl {}
+}

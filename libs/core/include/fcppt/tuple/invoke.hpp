@@ -7,7 +7,7 @@
 #define FCPPT_TUPLE_INVOKE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/metal/is_invocable.hpp>
+#include <fcppt/mpl/is_invocable.hpp>
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -29,8 +29,7 @@ template <
     typename Tuple,
     typename = std::enable_if_t<std::conjunction_v<
         fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>,
-        fcppt::metal::
-            is_invocable<F, fcppt::tuple::types_of<std::remove_cvref_t<Tuple>>>>>>
+        fcppt::mpl::is_invocable<F, fcppt::tuple::types_of<std::remove_cvref_t<Tuple>>>>>>
 [[nodiscard]] inline constexpr decltype(auto) invoke(F const &_f, Tuple &&_tuple)
 {
   return std::apply(_f, fcppt::move_if_rvalue<Tuple>(_tuple.impl()));

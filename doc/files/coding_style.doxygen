@@ -135,7 +135,7 @@ Algorithms can only be used with ranges, not with iterators.
 In case you need to encapsulate iterators, use #fcppt::iterator::range.
 There are also special ranges like
 #fcppt::int_range or #fcppt::enum_::range.
-Some algorithms also accept a <code>metal::list</code> as a range
+Some algorithms also accept an #fcppt::mpl::list::object as a range
 in case you need to iterate over types.
 
 \section coding_initialization Initialization

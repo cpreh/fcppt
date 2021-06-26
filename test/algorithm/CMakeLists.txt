@@ -70,8 +70,6 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	loop
-	LINK_LIBS
-		Metal
 )
 
 add_fcppt_algorithm_test(
@@ -83,7 +81,6 @@ add_fcppt_algorithm_test(
 	LINK_LIBS
 		${fcppt_core_TARGET}
 		fcppt_catch_interface
-		Metal
 )
 
 add_fcppt_algorithm_test(
@@ -109,8 +106,6 @@ add_fcppt_algorithm_test(
 add_fcppt_algorithm_test(
 	optimize_map
 	NO_CODE
-	LINK_LIBS
-		Metal
 )
 
 add_fcppt_algorithm_test(

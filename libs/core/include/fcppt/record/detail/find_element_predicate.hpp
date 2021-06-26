@@ -6,9 +6,12 @@
 #ifndef FCPPT_RECORD_DETAIL_FIND_ELEMENT_PREDICATE_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_FIND_ELEMENT_PREDICATE_HPP_INCLUDED
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,11 +22,10 @@ namespace record
 namespace detail
 {
 template <typename Label>
-using find_element_predicate = ::metal::bind<
-    ::metal::trait<std::is_same>,
-    ::metal::bind<::metal::lambda<fcppt::record::element_to_label>, ::metal::_1>,
-    ::metal::always<Label>>;
-
+using find_element_predicate = fcppt::mpl::bind<
+    fcppt::mpl::lambda<std::is_same>,
+    fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_label>, fcppt::mpl::arg<1>>,
+    fcppt::mpl::constant<Label>>;
 }
 }
 }

@@ -4,8 +4,6 @@ function(
 )
 	add_fcppt_test(
 		monad/${TEST_NAME}
-		LINK_LIBS
-			Metal
 		${ARGN}
 	)
 endfunction()

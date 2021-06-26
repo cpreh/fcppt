@@ -6,10 +6,8 @@
 #ifndef FCPPT_VARIANT_DETAIL_TYPES_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_TYPES_OF_HPP_INCLUDED
 
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::variant::detail
 {
@@ -19,7 +17,7 @@ struct types_of;
 template <typename... Types>
 struct types_of<fcppt::variant::object<Types...>>
 {
-  using type = ::metal::list<Types...>;
+  using type = fcppt::mpl::list::object<Types...>;
 };
 
 }

@@ -10,8 +10,11 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/all_of.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -49,21 +52,21 @@ inline auto strong_typedef_apply(
   static_assert(
       fcppt::is_strong_typedef<strong_typedef1>::value, "StrongTypedef1 must be a strong typedef");
 
-  using strong_typedefs = ::metal::list<std::remove_cvref_t<StrongTypedefs>...>;
+  using strong_typedefs = fcppt::mpl::list::object<std::remove_cvref_t<StrongTypedefs>...>;
 
   using input_tag = fcppt::strong_typedef_tag<strong_typedef1>;
 
   static_assert(
-      ::metal::all_of<strong_typedefs, ::metal::trait<fcppt::is_strong_typedef>>::value,
+      fcppt::mpl::list::all_of<strong_typedefs, fcppt::mpl::lambda<fcppt::is_strong_typedef>>::value,
       "StrongTypedefs must all be strong typedefs");
 
   static_assert(
-      ::metal::all_of<
+      fcppt::mpl::list::all_of<
           strong_typedefs,
-          ::metal::bind<
-              ::metal::trait<std::is_same>,
-              ::metal::always<input_tag>,
-              ::metal::lambda<fcppt::strong_typedef_tag>>>::value,
+          fcppt::mpl::bind<
+              fcppt::mpl::lambda<std::is_same>,
+              fcppt::mpl::constant<input_tag>,
+              fcppt::mpl::lambda<fcppt::strong_typedef_tag>>>::value,
       "All strong typedefs must have the same tag type");
 
   return fcppt::strong_typedef<

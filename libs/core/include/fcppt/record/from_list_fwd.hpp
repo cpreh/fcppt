@@ -6,7 +6,8 @@
 #ifndef FCPPT_RECORD_FROM_LIST_FWD_HPP_INCLUDED
 #define FCPPT_RECORD_FROM_LIST_FWD_HPP_INCLUDED
 
-#include <fcppt/metal/as.hpp>
+#include <fcppt/mpl/list/as.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
 namespace fcppt
@@ -14,14 +15,12 @@ namespace fcppt
 namespace record
 {
 /**
-\brief Declares a record using a metal::list.
+\brief Declares a record using an mpl::list.
 
 \ingroup fcpptrecord
-
-\tparam List Must be a metal::list.
 */
-template <typename List>
-using from_list = fcppt::metal::as<fcppt::record::object, List>;
+template <fcppt::mpl::list::object_concept List>
+using from_list = fcppt::mpl::list::as<fcppt::record::object, List>;
 
 }
 }

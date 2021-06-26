@@ -6,13 +6,13 @@
 #ifndef FCPPT_OPTIONAL_DETAIL_CHECK_SEQUENCE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DETAIL_CHECK_SEQUENCE_HPP_INCLUDED
 
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/tuple/types_of.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -49,7 +49,7 @@ struct check_sequence<Result, fcppt::tuple::object<Types...>>
 
   static_assert(
       std::is_same_v<
-          ::metal::list<fcppt::type_traits::value_type<Types>...>,
+          fcppt::mpl::list::object<fcppt::type_traits::value_type<Types>...>,
           fcppt::tuple::types_of<Result>>,
       "The tuple types must match");
 };

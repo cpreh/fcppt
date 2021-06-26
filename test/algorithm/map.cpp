@@ -9,7 +9,7 @@
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/map_array.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
@@ -18,9 +18,9 @@
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/container/make.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <type_traits>
@@ -54,11 +54,11 @@ TEST_CASE("algorithm_map move"
         }) == fcppt::container::make<int_movable_vector>(int_movable{1}, int_movable{2}));
 }
 
-TEST_CASE("algorithm_map metal", "[algorithm_map]")
+TEST_CASE("algorithm_map mpl", "[algorithm_map]")
 {
   CHECK(
       fcppt::algorithm::map<int_vector>(
-          metal::list<std::integral_constant<int, 1>, std::integral_constant<int, 2>>{},
+          fcppt::mpl::list::object<std::integral_constant<int, 1>, std::integral_constant<int, 2>>{},
           [](auto const _value) {
             FCPPT_USE(_value);
 

@@ -6,11 +6,12 @@
 #ifndef FCPPT_RECORD_MAP_RESULT_HPP_INCLUDED
 #define FCPPT_RECORD_MAP_RESULT_HPP_INCLUDED
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/record/detail/map_result.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -24,10 +25,10 @@ namespace record
 template <typename Record, typename Function>
 using map_result = fcppt::record::map_elements<
     Record,
-    ::metal::bind<
-        ::metal::lambda<fcppt::record::detail::map_result>,
-        ::metal::always<Function>,
-        ::metal::_1>>;
+    fcppt::mpl::bind<
+        fcppt::mpl::lambda<fcppt::record::detail::map_result>,
+        fcppt::mpl::constant<Function>,
+        fcppt::mpl::arg<1>>>;
 
 }
 }

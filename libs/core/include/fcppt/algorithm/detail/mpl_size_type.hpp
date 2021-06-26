@@ -6,8 +6,9 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 
+#include <fcppt/mpl/list/is_object.hpp>
+#include <fcppt/mpl/list/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,9 +25,9 @@ struct mpl_size_type
 };
 
 template <typename Type>
-struct mpl_size_type<Type, std::enable_if_t<::metal::is_list<Type>::value>>
+struct mpl_size_type<Type, std::enable_if_t<fcppt::mpl::list::is_object<Type>::value>>
 {
-  using type = typename ::metal::size<Type>::value_type;
+  using type = typename fcppt::mpl::list::size<Type>::value_type;
 };
 
 }

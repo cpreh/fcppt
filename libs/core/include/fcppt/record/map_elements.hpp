@@ -6,12 +6,13 @@
 #ifndef FCPPT_RECORD_MAP_ELEMENTS_HPP_INCLUDED
 #define FCPPT_RECORD_MAP_ELEMENTS_HPP_INCLUDED
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/map.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/from_list.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -28,13 +29,12 @@ namespace record
 as parameter and returning the new mapped type.
 */
 template <typename Record, typename Function>
-using map_elements = fcppt::record::from_list<::metal::transform<
-    ::metal::bind<
-        ::metal::lambda<fcppt::record::element>,
-        ::metal::bind<::metal::lambda<fcppt::record::element_to_label>, ::metal::_1>,
-        Function>,
-    fcppt::record::element_vector<Record>>>;
-
+using map_elements = fcppt::record::from_list<fcppt::mpl::list::map<
+    fcppt::record::element_vector<Record>,
+    fcppt::mpl::bind<
+        fcppt::mpl::lambda<fcppt::record::element>,
+        fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_label>, fcppt::mpl::arg<1>>,
+        Function>>>;
 }
 }
 

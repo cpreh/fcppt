@@ -6,8 +6,8 @@
 #ifndef FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
 #define FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
 
-#include <fcppt/metal/set/intersection.hpp>
-#include <fcppt/metal/set/make.hpp>
+#include <fcppt/mpl/set/intersection.hpp>
+#include <fcppt/mpl/set/object_fwd.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -24,9 +24,9 @@ namespace record
 */
 template <typename RecordL, typename RecordR>
 using are_disjoint = std::is_same<
-    fcppt::metal::set::
+    fcppt::mpl::set::
         intersection<fcppt::record::label_set<RecordL>, fcppt::record::label_set<RecordR>>,
-    fcppt::metal::set::make<>>;
+    fcppt::mpl::set::object<>>;
 
 }
 }

@@ -7,6 +7,9 @@
 #define FCPPT_RECORD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/mpl/list/empty.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
+#include <fcppt/mpl/list/size.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_decl.hpp>
@@ -14,14 +17,13 @@
 #include <fcppt/record/detail/element_at.hpp>
 #include <fcppt/record/detail/init_ctor.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename... Elements>
 fcppt::record::object<Elements...>::object() : elements_{}
 {
-  static_assert(::metal::empty<all_types>::value, "record not empty");
+  static_assert(fcppt::mpl::list::empty<all_types>::value, "record not empty");
 }
 
 template <typename... Elements>
@@ -37,11 +39,11 @@ fcppt::record::object<Elements...>::object(Args &&..._args)
                         std::forward<Args>(_args)...)}
 {
   static_assert(
-      ::metal::size<all_types>::value == sizeof...(Args),
+      fcppt::mpl::list::size<all_types>::value == sizeof...(Args),
       "You have to provide the right amount of parameters");
 
   static_assert(
-      fcppt::record::detail::all_initializers<all_types, ::metal::list<Args...>>::value,
+      fcppt::record::detail::all_initializers<all_types, fcppt::mpl::list::object<Args...>>::value,
       "You have to initialize every element");
 }
 

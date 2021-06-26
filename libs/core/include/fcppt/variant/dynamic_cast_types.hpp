@@ -7,9 +7,9 @@
 #define FCPPT_VARIANT_DYNAMIC_CAST_TYPES_HPP_INCLUDED
 
 #include <fcppt/reference.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/map.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 
 namespace fcppt::variant
 {
@@ -17,13 +17,9 @@ namespace fcppt::variant
 \brief The variant element types used for #fcppt::variant::dynamic_cast_.
 
 \ingroup fcpptvariant
-
-\tparam Types A metal::list.
-
-TODO(concepts)
 */
-template <typename Types>
-using dynamic_cast_types = ::metal::transform<::metal::lambda<fcppt::reference>, Types>;
+template <fcppt::mpl::list::object_concept Types>
+using dynamic_cast_types = fcppt::mpl::list::map<Types, fcppt::mpl::lambda<fcppt::reference>>;
 
 }
 

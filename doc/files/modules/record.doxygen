@@ -60,8 +60,8 @@ element for the given label to a stream:
 
 \snippet record.cpp record_output_label
 
-The function #fcppt::record::element_vector returns a <code>metal::list</code> of the elements of a record.
-Such a <code>metal::list</code> can be used by #fcppt::algorithm::loop, which will
+The function #fcppt::record::element_vector returns an #fcppt::mpl::list::object of the elements of a record.
+Such a list can be used by #fcppt::algorithm::loop, which will
 call a function for every type in the sequence. We use this to call <code>print_label</code>
 for every element of the record:
 

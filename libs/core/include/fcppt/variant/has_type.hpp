@@ -6,7 +6,7 @@
 #ifndef FCPPT_VARIANT_HAS_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_HAS_TYPE_HPP_INCLUDED
 
-#include <fcppt/metal/contains.hpp>
+#include <fcppt/mpl/list/contains.hpp>
 #include <fcppt/variant/object_concept.hpp>
 #include <fcppt/variant/types_of.hpp>
 
@@ -17,7 +17,7 @@ namespace fcppt::variant
 \ingroup fcpptvariant
 */
 template <fcppt::variant::object_concept Variant, typename Element>
-using has_type = fcppt::metal::contains<fcppt::variant::types_of<Variant>, Element>;
+using has_type = fcppt::mpl::list::contains<fcppt::variant::types_of<Variant>, Element>;
 }
 
 #endif

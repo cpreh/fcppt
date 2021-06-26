@@ -9,8 +9,9 @@
 #include <fcppt/algorithm/detail/mpl_size_type.hpp>
 #include <fcppt/container/size.hpp>
 #include <fcppt/container/size_result_type.hpp>
+#include <fcppt/mpl/list/is_object.hpp>
+#include <fcppt/mpl/list/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,11 +31,11 @@ struct source_size
 };
 
 template <typename Source>
-struct source_size<Source, std::enable_if_t<::metal::is_list<Source>::value>>
+struct source_size<Source, std::enable_if_t<fcppt::mpl::list::is_object<Source>::value>>
 {
   static typename fcppt::algorithm::detail::mpl_size_type<Source>::type get(Source const &)
   {
-    return ::metal::size<Source>::value;
+    return fcppt::mpl::list::size<Source>::value;
   }
 };
 

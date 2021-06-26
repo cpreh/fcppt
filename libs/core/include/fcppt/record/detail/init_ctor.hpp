@@ -7,7 +7,12 @@
 #define FCPPT_RECORD_DETAIL_INIT_CTOR_HPP_INCLUDED
 
 #include <fcppt/tag.hpp>
-#include <fcppt/metal/index_of_if.hpp>
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/index_of_if.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/record/detail/make_tag_tuple.hpp>
@@ -16,7 +21,6 @@
 #include <fcppt/tuple/map.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -32,7 +36,7 @@ Result init_ctor(Args &&..._args)
 {
   fcppt::tuple::object<std::remove_cvref_t<Args>...> arguments(std::move(_args)...);
 
-  using args_list = ::metal::list<std::remove_cvref_t<Args>...>;
+  using args_list = fcppt::mpl::list::object<std::remove_cvref_t<Args>...>;
 
   return fcppt::tuple::invoke(
       [](auto &&..._args_inner) -> Result {
@@ -41,12 +45,12 @@ Result init_ctor(Args &&..._args)
       fcppt::tuple::map(
           fcppt::record::detail::make_tag_tuple<TagTuple>(),
           [&arguments]<typename Label, typename Type>(fcppt::tag<fcppt::record::element<Label, Type>>) {
-            using index_type = fcppt::metal::index_of_if<
+            using index_type = fcppt::mpl::list::index_of_if<
                 args_list,
-                ::metal::bind<
-                    ::metal::trait<fcppt::record::detail::label_is_same>,
-                    ::metal::always<Label>,
-                    ::metal::_1>>;
+                fcppt::mpl::bind<
+                    fcppt::mpl::lambda<fcppt::record::detail::label_is_same>,
+                    fcppt::mpl::constant<Label>,
+                    fcppt::mpl::arg<1>>>;
 
             return std::move(fcppt::tuple::get<index_type::value>(arguments).value());
           }));

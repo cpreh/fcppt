@@ -6,8 +6,8 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
-#include <fcppt/metal/interval.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/mpl/list/interval.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
@@ -19,7 +19,7 @@ TEST_CASE("algorithm_loop mpl"
   int value{0};
 
   fcppt::algorithm::loop(
-      fcppt::metal::interval<int, 0, 5>{},
+      fcppt::mpl::list::interval<std::integral_constant<int, 0>, std::integral_constant<int, 5>>{},
       [&value]<int Index>(fcppt::tag<std::integral_constant<int, Index>>)
       {
         static_assert(Index < 5);

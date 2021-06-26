@@ -10,7 +10,7 @@
 #include <fcppt/detail/char_literal.hpp>
 #include <fcppt/detail/char_types.hpp>
 #include <fcppt/detail/make_char_literals.hpp>
-#include <fcppt/metal/as_tuple.hpp>
+#include <fcppt/mpl/list/as_tuple.hpp>
 
 /**
 \brief A char or wchar_t literal depending on a type.
@@ -25,6 +25,6 @@ If \a _type is wchar_t, then the literal will be of type <code>wchar_t</code>.
 */
 #define FCPPT_CHAR_LITERAL(_type, _literal) \
   fcppt::detail::char_literal<_type>(FCPPT_DETAIL_MAKE_CHAR_LITERALS( \
-      fcppt::metal::as_tuple<fcppt::detail::char_types>, fcppt::identity{}, _literal))
+      fcppt::mpl::list::as_tuple<fcppt::detail::char_types>, fcppt::identity{}, _literal))
 
 #endif

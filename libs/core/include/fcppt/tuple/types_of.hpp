@@ -16,7 +16,7 @@ namespace fcppt::tuple
 {
 
 /**
-\brief The types of a tuple as a <code>metal::list</code>.
+\brief The types of a tuple as an <code>mpl::list</code>.
 \ingroup fcppttuple
 */
 template<typename T, typename = std::enable_if_t<fcppt::tuple::is_object<T>::value>>

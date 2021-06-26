@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_ARE_EQUIVALENT_HPP_INCLUDED
 #define FCPPT_RECORD_ARE_EQUIVALENT_HPP_INCLUDED
 
-#include <fcppt/metal/maps_equal.hpp>
+#include <fcppt/mpl/map/equal.hpp>
 #include <fcppt/record/element_map.hpp>
 
 namespace fcppt
@@ -19,8 +19,8 @@ namespace record
 \ingroup fcpptrecord
 */
 template <typename Record1, typename Record2>
-using are_equivalent = fcppt::metal::
-    maps_equal<fcppt::record::element_map<Record1>, fcppt::record::element_map<Record2>>;
+using are_equivalent = fcppt::mpl::
+    map::equal<fcppt::record::element_map<Record1>, fcppt::record::element_map<Record2>>;
 
 }
 }

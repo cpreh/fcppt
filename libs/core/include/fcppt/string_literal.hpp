@@ -9,7 +9,7 @@
 #include <fcppt/detail/make_char_literals.hpp>
 #include <fcppt/detail/string_literal.hpp>
 #include <fcppt/detail/string_types.hpp>
-#include <fcppt/metal/as_tuple.hpp>
+#include <fcppt/mpl/list/as_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
@@ -27,6 +27,6 @@ If \a _type is wchar_t, then the literal will be of type <code>wchar_t const *</
 */
 #define FCPPT_STRING_LITERAL(_type, _literal) \
   fcppt::detail::string_literal<_type>(FCPPT_DETAIL_MAKE_CHAR_LITERALS( \
-      fcppt::metal::as_tuple<fcppt::detail::string_types>, std::data, _literal))
+      fcppt::mpl::list::as_tuple<fcppt::detail::string_types>, std::data, _literal))
 
 #endif

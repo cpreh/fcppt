@@ -7,17 +7,17 @@
 #define FCPPT_DETAIL_STRING_LITERAL_HPP_INCLUDED
 
 #include <fcppt/detail/string_types.hpp>
-#include <fcppt/metal/as_tuple.hpp>
-#include <fcppt/metal/index_of.hpp>
+#include <fcppt/mpl/list/as_tuple.hpp>
+#include <fcppt/mpl/list/index_of.hpp>
 #include <fcppt/tuple/get.hpp>
 
 namespace fcppt::detail
 {
 template <typename Type>
-inline Type const *string_literal(fcppt::metal::as_tuple<fcppt::detail::string_types> const &_args)
+inline Type const *string_literal(fcppt::mpl::list::as_tuple<fcppt::detail::string_types> const &_args)
 {
   return fcppt::tuple::get<
-      fcppt::metal::index_of<fcppt::detail::string_types, Type const *>::value>(_args);
+      fcppt::mpl::list::index_of<fcppt::detail::string_types, Type const *>::value>(_args);
 }
 }
 

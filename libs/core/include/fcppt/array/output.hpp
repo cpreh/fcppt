@@ -9,12 +9,12 @@
 #include <fcppt/not.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/array/get.hpp>
 #include <fcppt/array/object_impl.hpp>
-#include <fcppt/metal/interval.hpp>
+#include <fcppt/mpl/size_type.hpp>
+#include <fcppt/mpl/list/interval.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <cstddef>
 #include <ostream>
 #include <type_traits>
@@ -23,7 +23,7 @@
 namespace fcppt::array
 {
 /**
-\brief Outputs an array to a stream
+\brief Outputs an array to a stream.
 
 \ingroup fcpptarray
 */
@@ -34,7 +34,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
   _stream << _stream.widen('[');
 
   fcppt::algorithm::loop(
-      fcppt::metal::interval<std::size_t, 0U, Size>{},
+      fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>, fcppt::mpl::size_type<Size>>{},
       [&_stream, &_array]<std::size_t Index>(fcppt::tag<std::integral_constant<std::size_t, Index>>)
       {
         _stream << fcppt::array::get<Index>(_array);

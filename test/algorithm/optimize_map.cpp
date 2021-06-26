@@ -13,12 +13,12 @@
 #include <fcppt/container/grid/pos_range.hpp>
 #include <fcppt/container/grid/pos_ref_range.hpp>
 #include <fcppt/enum/range_impl.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <list>
 #include <map>
 #include <vector>
@@ -113,5 +113,5 @@ int main()
           fcppt::container::grid::object<unsigned, 2>>>::value,
       "grid::pos_ref_range not optimized");
 
-  static_assert(source_optimized<metal::list<int>>::value, "mpl vector not optimized");
+  static_assert(source_optimized<fcppt::mpl::list::object<int>>::value, "mpl vector not optimized");
 }

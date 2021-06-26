@@ -19,6 +19,4 @@ make_fcppt_library(
 		${Boost_INCLUDE_DIRS}
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
-	TRANSITIVE_IMPORTED_DEPS
-		Metal
 )

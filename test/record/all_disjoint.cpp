@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/record/all_disjoint.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 int main()
 {
@@ -25,12 +23,12 @@ int main()
 
   using element_3 = fcppt::record::element<label_3, int>;
 
-  static_assert(fcppt::record::all_disjoint<::metal::list<
+  static_assert(fcppt::record::all_disjoint<fcppt::mpl::list::object<
                     fcppt::record::object<element_1>,
                     fcppt::record::object<element_2>,
                     fcppt::record::object<element_3>>>::value);
 
-  static_assert(!fcppt::record::all_disjoint<::metal::list<
+  static_assert(!fcppt::record::all_disjoint<fcppt::mpl::list::object<
                     fcppt::record::object<element_1>,
                     fcppt::record::object<element_1, element_2>,
                     fcppt::record::object<element_3>>>::value);

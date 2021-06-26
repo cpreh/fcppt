@@ -11,10 +11,13 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/value_type.hpp>
 #include <fcppt/array/detail/join.hpp>
-#include <fcppt/metal/from_number.hpp>
-#include <fcppt/metal/to_number.hpp>
+#include <fcppt/mpl/add.hpp>
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/fold.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <utility>
@@ -45,17 +48,13 @@ template <
             fcppt::array::value_type<std::remove_cvref_t<Arrays>>>...>>>
 fcppt::array::object<
     fcppt::array::value_type<std::remove_cvref_t<Array1>>,
-    fcppt::metal::from_number<
-        std::size_t,
-        ::metal::accumulate<
-            ::metal::bind<
-                ::metal::lambda<::metal::add>,
-                ::metal::bind<
-                    ::metal::lambda<fcppt::metal::to_number>,
-                    ::metal::bind<::metal::lambda<fcppt::array::size>, ::metal::_2>>,
-                ::metal::_1>,
-            fcppt::metal::to_number<fcppt::array::size<std::remove_cvref_t<Array1>>>,
-            ::metal::list<std::remove_cvref_t<Arrays>...>>>::value>
+    fcppt::mpl::list::fold<
+        fcppt::mpl::list::object<std::remove_cvref_t<Arrays>...>,
+        fcppt::mpl::bind<
+            fcppt::mpl::lambda<fcppt::mpl::add>,
+            fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::array::size>, fcppt::mpl::arg<1>>,
+            fcppt::mpl::arg<2>>,
+        fcppt::array::size<std::remove_cvref_t<Array1>>>::value>
 join(Array1 &&_array1, Arrays &&..._arrays)
 {
   return fcppt::array::detail::join(

@@ -4,17 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 int main()
 {
-  using types = fcppt::variant::dynamic_cast_types<metal::list<int, char const>>;
-
-  static_assert(std::is_same_v<metal::at<types, metal::number<0>>, fcppt::reference<int>>);
-
-  static_assert(std::is_same_v<metal::at<types, metal::number<1>>, fcppt::reference<char const>>);
+  static_assert(std::is_same_v<
+                fcppt::variant::dynamic_cast_types<fcppt::mpl::list::object<int, char const>>,
+                fcppt::mpl::list::object<fcppt::reference<int>, fcppt::reference<char const>>>);
 }

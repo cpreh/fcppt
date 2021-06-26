@@ -7,8 +7,7 @@
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/metal/from_number.hpp>
-#include <fcppt/metal/index_of.hpp>
+#include <fcppt/mpl/list/index_of.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/variant/apply.hpp>
@@ -41,11 +40,10 @@ inline decltype(auto) match(Variant &&_variant, Functions const &..._functions)
 
   return fcppt::variant::apply(
       [&tuple](auto &&_arg) -> decltype(auto) {
-        return fcppt::tuple::get<fcppt::metal::from_number<
-            std::size_t,
-            fcppt::metal::index_of<
+        return fcppt::tuple::get<
+            fcppt::mpl::list::index_of<
                 fcppt::variant::types_of<std::remove_cvref_t<Variant>>,
-                std::remove_cvref_t<decltype(_arg)>>>::value>(tuple)(
+                std::remove_cvref_t<decltype(_arg)>>::value>(tuple)(
             fcppt::move_if_rvalue<Variant>(_arg));
       },
       std::forward<Variant>(_variant));

@@ -42,8 +42,6 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	dynamic_cast
-	LINK_LIBS
-		Metal
 )
 
 add_fcppt_variant_test(
@@ -54,14 +52,10 @@ add_fcppt_variant_test(
 add_fcppt_variant_test(
 	from_list
 	NO_CODE
-	LINK_LIBS
-		Metal
 )
 
 add_fcppt_variant_test(
 	holds_type
-	LINK_LIBS
-		Metal
 )
 
 add_fcppt_variant_test(

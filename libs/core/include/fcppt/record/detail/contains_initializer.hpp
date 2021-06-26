@@ -6,11 +6,13 @@
 #ifndef FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/any_of.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -19,12 +21,12 @@ namespace record
 namespace detail
 {
 template <typename Args, typename Element>
-using contains_initializer = ::metal::any_of<
+using contains_initializer = fcppt::mpl::list::any_of<
     Args,
-    ::metal::partial<
-        ::metal::trait<fcppt::record::detail::label_is_same>,
-        fcppt::record::element_to_label<Element>>>;
-
+    fcppt::mpl::bind<
+        fcppt::mpl::lambda<fcppt::record::detail::label_is_same>,
+        fcppt::mpl::constant<fcppt::record::element_to_label<Element>>,
+        fcppt::mpl::arg<1>>>;
 }
 }
 }

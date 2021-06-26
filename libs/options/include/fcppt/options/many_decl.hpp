@@ -6,6 +6,9 @@
 #ifndef FCPPT_OPTIONS_MANY_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_MANY_DECL_HPP_INCLUDED
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/lambda.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/many_fwd.hpp>
@@ -20,7 +23,6 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,9 +53,9 @@ public:
 
   using result_type = fcppt::record::map_elements<
       fcppt::options::result_of<Parser>,
-      ::metal::bind<
-          ::metal::lambda<std::vector>,
-          ::metal::bind<::metal::lambda<fcppt::record::element_to_type>, ::metal::_1>>>;
+      fcppt::mpl::bind<
+          fcppt::mpl::lambda<std::vector>,
+          fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_type>, fcppt::mpl::arg<1>>>>;
 
   [[nodiscard]] fcppt::options::parse_result<result_type>
   parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;

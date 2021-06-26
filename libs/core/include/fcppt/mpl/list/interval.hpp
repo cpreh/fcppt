@@ -6,7 +6,7 @@
 #ifndef FCPPT_MPL_LIST_INTERVAL_HPP_INCLUDED
 #define FCPPT_MPL_LIST_INTERVAL_HPP_INCLUDED
 
-#include <fcppt/mpl/list/object_fwd.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/type_traits/integral_constant_concept.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

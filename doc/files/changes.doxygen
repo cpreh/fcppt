@@ -7,9 +7,19 @@
 fcppt now uses <code>C++-20</code>.
 </p>
 
+<p>
+Metal is no longer required.
+</p>
+
 \subsection changes_added_functionality_to_400 Added functionality
 
 <ul>
+
+<li>\ref fcpptmpl
+	<p>
+	New library that replaces Metal.
+	</p>
+</li>
 
 <li>\ref fcppttypetraits
 	<ul>
@@ -34,6 +44,12 @@ fcppt now uses <code>C++-20</code>.
 	<ul>
 	<li>Removed <code>fcppt::math::pi</code> and <code>fcppt::math::twopi</code>. Use <code>std::numbers::pi_v</code> instead.</li>
 	</ul>
+</li>
+
+<li>fcpptmetal
+	<p>
+	This has been removed in favor of \ref fcpptmetal.
+	</p>
 </li>
 
 <li>\ref fcpptoptional
@@ -70,9 +86,9 @@ fcppt now uses <code>C++-20</code>.
 	</ul>
 </li>
 
-<li>\ref fcpptmetal
+<li>fcpptmetal
 	<ul>
-	<li>#fcppt::metal::print now works on arbitrary char types.</li>
+	<li><code>fcppt::metal::print</code> now works on arbitrary char types.</li>
 	</ul>
 </li>
 
@@ -114,9 +130,9 @@ fcppt now uses <code>C++-20</code>.
 	</ul>
 </li>
 
-<li>\ref fcpptmetal
+<li>fcpptmetal
 	<ul>
-	<li>#fcppt::metal::sequence_to_string now returns a <code>std::string</code></li>.
+	<li><code>fcppt::metal::sequence_to_string</code> now returns a <code>std::string</code></li>.
 	</ul>
 </li>
 
@@ -225,9 +241,9 @@ Fixed a gcc-11 issue regarding parameter expansion.
 	</ul>
 </li>
 
-<li>\ref fcpptmetal
+<li>fcpptmetal
 	<ul>
-	<li>Added #fcppt::metal::is_invocable.</li>
+	<li>Added <code>fcppt::metal::is_invocable</code>.</li>
 	</ul>
 </li>
 
@@ -370,10 +386,10 @@ Fixed a gcc-11 issue regarding parameter expansion.
 	</ul>
 </li>
 
-<li>\ref fcpptmetal
+<li>fcpptmetal
 	<ul>
-	<li>Added #fcppt::metal::function_args.</li>
-	<li>Added #fcppt::metal::contains, which returns a boolean instead of a <code>metal::number</code>.</li>
+	<li>Added <code>fcppt::metal::function_args</code>.</li>
+	<li>Added <code>fcppt::metal::contains</codxe>, which returns a boolean instead of a <code>metal::number</code>.</li>
 	</ul>
 </li>
 
@@ -426,9 +442,9 @@ Fixed a gcc-11 issue regarding parameter expansion.
 	</ul>
 </li>
 
-<li>\ref fcpptmetal
+<li>fcpptmetal
 	<ul>
-	<li>#fcppt::metal::set::contains now returns a boolean instead of a <code>metal::number</code>.</li>
+	<li><code>fcppt::metal::set::contains</code> now returns a boolean instead of a <code>metal::number</code>.</li>
 	</ul>
 </li>
 

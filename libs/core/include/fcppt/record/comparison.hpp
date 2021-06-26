@@ -8,7 +8,7 @@
 
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/all_of.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/record/are_equivalent.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_vector.hpp>

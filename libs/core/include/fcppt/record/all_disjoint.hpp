@@ -6,42 +6,44 @@
 #ifndef FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
 #define FCPPT_RECORD_ALL_DISJOINT_HPP_INCLUDED
 
-#include <fcppt/metal/set/make.hpp>
-#include <fcppt/metal/set/to_list.hpp>
-#include <fcppt/metal/set/union.hpp>
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/fold.hpp>
+#include <fcppt/mpl/list/join.hpp>
+#include <fcppt/mpl/list/map.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/size.hpp>
+#include <fcppt/mpl/set/object_fwd.hpp>
+#include <fcppt/mpl/set/size.hpp>
+#include <fcppt/mpl/set/to_list.hpp>
+#include <fcppt/mpl/set/union.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Tests if multiple records have disjoint label sets
 
 \ingroup fcpptrecord
-
-\tparam Records A metal list.
 */
-template <typename Records>
+template <fcppt::mpl::list::object_concept Records>
 using all_disjoint = std::is_same<
-    ::metal::size<::metal::accumulate<
-        ::metal::bind<
-            ::metal::lambda<fcppt::metal::set::union_>,
-            ::metal::bind<::metal::lambda<fcppt::record::label_set>, ::metal::_2>,
-            ::metal::_1>,
-        ::fcppt::metal::set::make<>,
-        Records>>,
-    ::metal::size<::metal::flatten<::metal::transform<
-        ::metal::bind<
-            ::metal::lambda<fcppt::metal::set::to_list>,
-            ::metal::bind<::metal::lambda<fcppt::record::label_set>, ::metal::_1>>,
-        Records>>>>;
-
-}
+    fcppt::mpl::set::size<fcppt::mpl::list::fold<
+        Records,
+        fcppt::mpl::bind<
+            fcppt::mpl::lambda<fcppt::mpl::set::union_>,
+            fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::label_set>, fcppt::mpl::arg<1>>,
+            fcppt::mpl::arg<2>>,
+        fcppt::mpl::set::object<>>>,
+    fcppt::mpl::list::size<fcppt::mpl::list::join<fcppt::mpl::list::map<
+        Records,
+        fcppt::mpl::bind<
+            fcppt::mpl::lambda<fcppt::mpl::set::to_list>,
+            fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::label_set>, fcppt::mpl::arg<1>>>>>>>;
 }
 
 #endif

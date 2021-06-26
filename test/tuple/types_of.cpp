@@ -3,10 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/tuple/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -14,5 +14,5 @@ int main()
 {
   static_assert(std::is_same_v<
                 fcppt::tuple::types_of<fcppt::tuple::object<int, float>>,
-                ::metal::list<int, float>>);
+                fcppt::mpl::list::object<int, float>>);
 }

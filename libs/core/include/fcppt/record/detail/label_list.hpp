@@ -6,10 +6,9 @@
 #ifndef FCPPT_RECORD_DETAIL_LABEL_LIST_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_LABEL_LIST_HPP_INCLUDED
 
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/map.hpp>
 #include <fcppt/record/element_to_label.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -19,7 +18,7 @@ namespace detail
 {
 template <typename ElementList>
 using label_list =
-    ::metal::transform<::metal::lambda<fcppt::record::element_to_label>, ElementList>;
+    fcppt::mpl::list::map<ElementList, fcppt::mpl::lambda<fcppt::record::element_to_label>>;
 
 }
 }

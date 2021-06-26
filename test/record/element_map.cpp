@@ -3,13 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/mpl/map/at.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_map.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 int main()
 {
@@ -22,7 +20,7 @@ int main()
 
   using element_map = fcppt::record::element_map<my_record>;
 
-  static_assert(std::is_same_v<metal::at_key<element_map, int_label>, int>);
+  static_assert(std::is_same_v<fcppt::mpl::map::at<element_map, int_label>, int>);
 
-  static_assert(std::is_same_v<metal::at_key<element_map, bool_label>, bool>);
+  static_assert(std::is_same_v<fcppt::mpl::map::at<element_map, bool_label>, bool>);
 }

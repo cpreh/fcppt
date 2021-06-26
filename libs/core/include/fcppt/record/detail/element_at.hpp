@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_DETAIL_ELEMENT_AT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ELEMENT_AT_HPP_INCLUDED
 
-#include <fcppt/metal/index_of_if.hpp>
+#include <fcppt/mpl/list/index_of_if.hpp>
 #include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/tuple/get.hpp>
 
@@ -19,7 +19,7 @@ namespace detail
 template <typename Types, typename Label, typename Tuple>
 inline decltype(auto) element_at(Tuple &_elements)
 {
-  return fcppt::tuple::get<fcppt::metal::index_of_if<
+  return fcppt::tuple::get<fcppt::mpl::list::index_of_if<
       Types,
       fcppt::record::detail::find_element_predicate<Label>>::value>(_elements);
 }

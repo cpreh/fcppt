@@ -249,10 +249,6 @@ add_subdirectory(
 )
 
 add_subdirectory(
-	metal
-)
-
-add_subdirectory(
 	monad
 )
 

@@ -6,10 +6,8 @@
 #ifndef FCPPT_RECORD_DETAIL_ELEMENT_VECTOR_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ELEMENT_VECTOR_HPP_INCLUDED
 
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -23,7 +21,7 @@ struct element_vector;
 template <typename... Types>
 struct element_vector<fcppt::record::object<Types...>>
 {
-  using type = ::metal::list<Types...>;
+  using type = fcppt::mpl::list::object<Types...>;
 };
 
 }

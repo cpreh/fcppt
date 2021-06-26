@@ -9,10 +9,10 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
-#include <fcppt/algorithm/loop_break_metal.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic_fun_concept.hpp>
-#include <fcppt/metal/list_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
@@ -38,7 +38,7 @@ The result of the first cast that succeeds is returned.
 
 TODO(concepts)
 */
-template <fcppt::metal::list_concept Types, fcppt::cast::dynamic_fun_concept Cast, typename Base>
+template <fcppt::mpl::list::object_concept Types, fcppt::cast::dynamic_fun_concept Cast, typename Base>
 [[nodiscard]]
 fcppt::optional::object<fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<Types>>>
 dynamic_cast_(Base &_base)

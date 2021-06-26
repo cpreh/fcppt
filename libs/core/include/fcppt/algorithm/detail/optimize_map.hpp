@@ -9,9 +9,8 @@
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/container/detail/has_size.hpp>
-#include <fcppt/type_traits/to_bool.hpp>
+#include <fcppt/mpl/list/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,7 +26,7 @@ using optimize_map = std::conjunction<
     std::disjunction<
         fcppt::algorithm::detail::has_random_access_iterator<Source>,
         fcppt::container::detail::has_size<Source>,
-        fcppt::type_traits::to_bool<::metal::is_list<Source>>>>;
+        fcppt::mpl::list::is_object<Source>>>;
 
 }
 }

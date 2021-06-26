@@ -6,17 +6,18 @@
 #ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/metal/is_set.hpp>
+#include <fcppt/mpl/list/as.hpp>
+#include <fcppt/mpl/list/is_set.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/std_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
+#include <variant>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::variant
@@ -41,13 +42,13 @@ public:
   using this_type = fcppt::variant::object<Types...>;
 
   /**
-  \brief The metal::list of the possible types
+  \brief The mpl::list of the possible types
   */
-  using types = ::metal::list<Types...>;
+  using types = fcppt::mpl::list::object<Types...>;
 
-  static_assert(fcppt::metal::is_set<types>::value, "Variant types must form a set");
+  static_assert(fcppt::mpl::list::is_set<types>::value, "Variant types must form a set");
 
-  using std_type = fcppt::variant::detail::std_type<types>;
+  using std_type = fcppt::mpl::list::as<std::variant,types>;
 
   /**
   \brief Constructs the variant from a value.

@@ -5,18 +5,18 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/metal/print.hpp>
+#include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/list/print.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 int main()
 {
-  //! [metal_print}
-  using vec = metal::list<int, float, double>;
+  //! [mpl_print}
+  using vec = fcppt::mpl::list::object<int, float, double>;
 
   // prints (int, float, double) to cout
-  fcppt::metal::print<vec>(fcppt::io::cout()) << FCPPT_TEXT('\n');
-  //! [metal_print}
+  fcppt::mpl::list::print<vec>(fcppt::io::cout()) << FCPPT_TEXT('\n');
+  //! [mpl_print}
 }

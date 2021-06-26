@@ -79,8 +79,8 @@ set(
 	doc/files/modules/math/matrix.doxygen
 	doc/files/modules/math/sphere.doxygen
 	doc/files/modules/math/vector.doxygen
-	doc/files/modules/metal.doxygen
 	doc/files/modules/monad.doxygen
+	doc/files/modules/mpl.doxygen
 	doc/files/modules/optional.doxygen
 	doc/files/modules/options.doxygen
 	doc/files/modules/parse.doxygen
@@ -153,10 +153,8 @@ set(
 	examples/math/vector/bit_strings.cpp
 	examples/math/vector/convert.cpp
 	examples/math/vector/various.cpp
-	examples/metal/invoke_on.cpp
-	examples/metal/max_value.cpp
-	examples/metal/print.cpp
 	examples/mpl/list/invoke_on.cpp
+	examples/mpl/list/print.cpp
 	examples/noncopyable.cpp
 	examples/nonmovable.cpp
 	examples/optional.cpp
@@ -249,7 +247,6 @@ set(
 	libs/core/include/fcppt/algorithm/loop_break.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl_fwd.hpp
-	libs/core/include/fcppt/algorithm/loop_break_metal.hpp
 	libs/core/include/fcppt/algorithm/loop_break_mpl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_tuple.hpp
 	libs/core/include/fcppt/algorithm/map.hpp
@@ -500,6 +497,7 @@ set(
 	libs/core/include/fcppt/container/grid/neumann_neighbors.hpp
 	libs/core/include/fcppt/container/grid/next_position.hpp
 	libs/core/include/fcppt/container/grid/object.hpp
+	libs/core/include/fcppt/container/grid/object_concept.hpp
 	libs/core/include/fcppt/container/grid/object_decl.hpp
 	libs/core/include/fcppt/container/grid/object_fwd.hpp
 	libs/core/include/fcppt/container/grid/object_impl.hpp
@@ -1080,56 +1078,6 @@ set(
 	libs/core/include/fcppt/math/vector/to_signed.hpp
 	libs/core/include/fcppt/math/vector/to_unsigned.hpp
 	libs/core/include/fcppt/math/vector/unit.hpp
-	libs/core/include/fcppt/metal/as.hpp
-	libs/core/include/fcppt/metal/as_tuple.hpp
-	libs/core/include/fcppt/metal/contains.hpp
-	libs/core/include/fcppt/metal/detail/as.hpp
-	libs/core/include/fcppt/metal/detail/flip_map.hpp
-	libs/core/include/fcppt/metal/detail/for_each_break.hpp
-	libs/core/include/fcppt/metal/detail/from_number.hpp
-	libs/core/include/fcppt/metal/detail/function_args.hpp
-	libs/core/include/fcppt/metal/detail/index_of.hpp
-	libs/core/include/fcppt/metal/detail/index_of_if.hpp
-	libs/core/include/fcppt/metal/detail/interval.hpp
-	libs/core/include/fcppt/metal/detail/map_same_values.hpp
-	libs/core/include/fcppt/metal/detail/print.hpp
-	libs/core/include/fcppt/metal/detail/print_one.hpp
-	libs/core/include/fcppt/metal/enum_range.hpp
-	libs/core/include/fcppt/metal/enum_range_start_end.hpp
-	libs/core/include/fcppt/metal/flip_map.hpp
-	libs/core/include/fcppt/metal/flip_pair.hpp
-	libs/core/include/fcppt/metal/for_each_break.hpp
-	libs/core/include/fcppt/metal/from_number.hpp
-	libs/core/include/fcppt/metal/from_number_list.hpp
-	libs/core/include/fcppt/metal/function_args.hpp
-	libs/core/include/fcppt/metal/index_of.hpp
-	libs/core/include/fcppt/metal/index_of_if.hpp
-	libs/core/include/fcppt/metal/interval.hpp
-	libs/core/include/fcppt/metal/invoke_on.hpp
-	libs/core/include/fcppt/metal/is_invocable.hpp
-	libs/core/include/fcppt/metal/is_set.hpp
-	libs/core/include/fcppt/metal/list_concept.hpp
-	libs/core/include/fcppt/metal/maps_equal.hpp
-	libs/core/include/fcppt/metal/max_value.hpp
-	libs/core/include/fcppt/metal/partial_sums.hpp
-	libs/core/include/fcppt/metal/print.hpp
-	libs/core/include/fcppt/metal/sequence_to_string.hpp
-	libs/core/include/fcppt/metal/set/contains.hpp
-	libs/core/include/fcppt/metal/set/difference.hpp
-	libs/core/include/fcppt/metal/set/empty.hpp
-	libs/core/include/fcppt/metal/set/from_list_relaxed.hpp
-	libs/core/include/fcppt/metal/set/insert.hpp
-	libs/core/include/fcppt/metal/set/insert_relaxed.hpp
-	libs/core/include/fcppt/metal/set/intersection.hpp
-	libs/core/include/fcppt/metal/set/make.hpp
-	libs/core/include/fcppt/metal/set/make_relaxed.hpp
-	libs/core/include/fcppt/metal/set/size.hpp
-	libs/core/include/fcppt/metal/set/symmetric_difference.hpp
-	libs/core/include/fcppt/metal/set/to_list.hpp
-	libs/core/include/fcppt/metal/set/union.hpp
-	libs/core/include/fcppt/metal/to_number.hpp
-	libs/core/include/fcppt/metal/to_number_list.hpp
-	libs/core/include/fcppt/metal/unique.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
 	libs/core/include/fcppt/monad/bind.hpp
@@ -1646,8 +1594,6 @@ set(
 	libs/core/include/fcppt/variant/current_type_name.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe.hpp
 	libs/core/include/fcppt/variant/detail/get_unsafe_impl.hpp
-	libs/core/include/fcppt/variant/detail/std_type.hpp
-	libs/core/include/fcppt/variant/detail/std_type_impl.hpp
 	libs/core/include/fcppt/variant/detail/types_of.hpp
 	libs/core/include/fcppt/variant/dynamic_cast.hpp
 	libs/core/include/fcppt/variant/dynamic_cast_types.hpp

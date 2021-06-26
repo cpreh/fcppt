@@ -6,15 +6,13 @@
 #ifndef FCPPT_DETAIL_CHAR_TYPES_HPP_INCLUDED
 #define FCPPT_DETAIL_CHAR_TYPES_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 
 namespace fcppt
 {
 namespace detail
 {
-using char_types = ::metal::list<char, wchar_t, char16_t, char32_t>;
+using char_types = fcppt::mpl::list::object<char, wchar_t, char16_t, char32_t>;
 
 }
 }

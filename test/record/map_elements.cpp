@@ -3,6 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/record/element.hpp>
@@ -12,7 +16,6 @@
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,15 +37,18 @@ int main()
 
   using result1 = fcppt::record::map_elements<
       my_record,
-      metal::bind<
-          ::metal::lambda<fcppt::optional::object>,
-          metal::bind<metal::lambda<fcppt::record::element_to_type>, metal::_1>>>;
+      fcppt::mpl::bind<
+          fcppt::mpl::lambda<fcppt::optional::object>,
+          fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_type>, fcppt::mpl::arg<1>>>>;
 
   auto const transform([](auto const &_value) { return fcppt::optional::make(_value); });
 
   using result2 = fcppt::record::map_elements<
       my_record,
-      metal::bind<metal::lambda<result_helper>, metal::always<decltype(transform)>, metal::_1>>;
+      fcppt::mpl::bind<
+          fcppt::mpl::lambda<result_helper>,
+          fcppt::mpl::constant<decltype(transform)>,
+          fcppt::mpl::arg<1>>>;
 
   static_assert(
       std::is_same_v<

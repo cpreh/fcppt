@@ -92,11 +92,6 @@ option(
 )
 
 find_package(
-	Metal
-	REQUIRED
-)
-
-find_package(
 	Boost
 	1.47.0
 )

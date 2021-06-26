@@ -9,6 +9,7 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
@@ -17,7 +18,6 @@
 #include <fcppt/variant/from_list.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -67,7 +67,7 @@ public:
 
 TEST_CASE("variant::dynamic_cast", "[variant]")
 {
-  using derived_types = metal::list<derived1, derived2>;
+  using derived_types = fcppt::mpl::list::object<derived1, derived2>;
 
   using result_variant =
       fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<derived_types>>;
@@ -99,7 +99,7 @@ TEST_CASE("variant::dynamic_cast", "[variant]")
 
 TEST_CASE("variant::dynamic_cast const", "[variant]")
 {
-  using derived_types = metal::list<derived1 const, derived2 const>;
+  using derived_types = fcppt::mpl::list::object<derived1 const, derived2 const>;
 
   using result_variant =
       fcppt::variant::from_list<fcppt::variant::dynamic_cast_types<derived_types>>;

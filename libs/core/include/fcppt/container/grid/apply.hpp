@@ -10,12 +10,12 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
-#include <fcppt/container/grid/is_object.hpp>
+#include <fcppt/container/grid/object_concept.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
+#include <utility>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,7 +36,7 @@ is a grid of size <code>s</code> such that for every position <code>p <
 s</code>, <code>r[p] = _function(g_1[p],...,g_n[p])</code>. If g_1,...g_n are
 not of the same size, the result is an empty grid.
 */
-template <typename Function, typename Grid1, typename... Grids>
+template <typename Function, fcppt::container::grid::object_concept Grid1, fcppt::container::grid::object_concept... Grids>
 auto apply(Function const &_function, Grid1 &&_grid1, Grids &&..._grids)
     -> fcppt::container::grid::object<
         decltype(_function(
@@ -47,14 +47,6 @@ auto apply(Function const &_function, Grid1 &&_grid1, Grids &&..._grids)
         std::remove_cvref_t<Grid1>::static_size::value>
 {
   using grid1 = std::remove_cvref_t<Grid1>;
-
-  static_assert(fcppt::container::grid::is_object<grid1>::value, "Grid1 must be a grid");
-
-  static_assert(
-      ::metal::all_of<
-          ::metal::list<std::remove_cvref_t<Grids>...>,
-          ::metal::trait<fcppt::container::grid::is_object>>::value,
-      "Grids must all be grids");
 
   using pos_type = fcppt::container::grid::pos_type<grid1>;
 

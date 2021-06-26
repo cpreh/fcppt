@@ -11,3 +11,9 @@ endfunction()
 add_fcppt_mpl_list_example(
 	invoke_on
 )
+
+add_fcppt_mpl_list_example(
+	print
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)

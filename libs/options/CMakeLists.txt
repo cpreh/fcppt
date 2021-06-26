@@ -200,8 +200,4 @@ make_fcppt_library(
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
-	IMPORTED_DEPS
-		Metal
-	TRANSITIVE_IMPORTED_DEPS
-		Metal
 )

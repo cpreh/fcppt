@@ -6,7 +6,7 @@ in stdenv.mkDerivation rec {
   src = ./.;
 
   nativeBuildInputs = [ pkgs.cmake ];
-  buildInputs = [ pkgs.boost pkgs.catch2 pkgs.metal ];
+  buildInputs = [ pkgs.boost pkgs.catch2 ];
 
   cmakeFlags = [ "-DCMAKE_SKIP_BUILD_RPATH=false" "-DENABLE_BOOST=true" "-DENABLE_EXAMPLES=true" "-DENABLE_CATCH=true" "-DENABLE_TEST=true" ];
 

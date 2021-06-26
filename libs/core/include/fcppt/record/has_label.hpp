@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_HAS_LABEL_HPP_INCLUDED
 #define FCPPT_RECORD_HAS_LABEL_HPP_INCLUDED
 
-#include <fcppt/metal/set/contains.hpp>
+#include <fcppt/mpl/set/contains.hpp>
 #include <fcppt/record/label_set.hpp>
 
 namespace fcppt
@@ -19,7 +19,7 @@ namespace record
 \ingroup fcpptrecord
 */
 template <typename Record, typename Label>
-using has_label = fcppt::metal::set::contains<fcppt::record::label_set<Record>, Label>;
+using has_label = fcppt::mpl::set::contains<fcppt::record::label_set<Record>, Label>;
 
 }
 }

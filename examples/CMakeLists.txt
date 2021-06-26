@@ -196,7 +196,6 @@ add_fcppt_example(
 	record
 	LINK_LIBS
 		${fcppt_core_TARGET}
-		Metal
 )
 
 add_fcppt_example(
@@ -277,10 +276,6 @@ add_subdirectory(
 
 add_subdirectory(
 	math
-)
-
-add_subdirectory(
-	metal
 )
 
 add_subdirectory(

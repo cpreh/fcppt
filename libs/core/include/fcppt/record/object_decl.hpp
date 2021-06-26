@@ -7,8 +7,12 @@
 #define FCPPT_RECORD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/metal/as_tuple.hpp>
-#include <fcppt/metal/is_set.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/all_of.hpp>
+#include <fcppt/mpl/list/as_tuple.hpp>
+#include <fcppt/mpl/list/is_set.hpp>
+#include <fcppt/mpl/list/map.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -18,9 +22,6 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/detail/label_list.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -47,14 +48,14 @@ template <typename... Elements>
 class object
 {
 public:
-  using all_types = ::metal::list<Elements...>;
+  using all_types = fcppt::mpl::list::object<Elements...>;
 
   static_assert(
-      ::metal::all_of<all_types, ::metal::trait<fcppt::record::is_element>>::value,
+      fcppt::mpl::list::all_of<all_types, fcppt::mpl::lambda<fcppt::record::is_element>>::value,
       "Types of a record::object must all be fcppt::record::element<>");
 
   static_assert(
-      fcppt::metal::is_set<fcppt::record::detail::label_list<all_types>>::value,
+      fcppt::mpl::list::is_set<fcppt::record::detail::label_list<all_types>>::value,
       "Labels of record::object must form a set");
 
   using this_type = fcppt::record::object<Elements...>;
@@ -62,8 +63,8 @@ public:
   /**
   \brief The fcppt::tuple::object type <code>(T_1,...,T_n)</code>.
   */
-  using tuple = fcppt::metal::as_tuple<
-      ::metal::transform<::metal::lambda<fcppt::record::element_to_type>, all_types>>;
+  using tuple = fcppt::mpl::list::as_tuple<
+      fcppt::mpl::list::map<all_types, fcppt::mpl::lambda<fcppt::record::element_to_type>>>;
 
   /**
   \brief Constructor for empty records

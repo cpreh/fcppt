@@ -8,25 +8,23 @@
 
 #include <fcppt/array/is_object.hpp>
 #include <fcppt/array/size.hpp>
-#include <fcppt/metal/as_tuple.hpp>
-#include <fcppt/metal/to_number.hpp>
+#include <fcppt/mpl/list/as_tuple.hpp>
+#include <fcppt/mpl/list/repeat.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::tuple
 {
 /**
-\brief Result of #fcppt::tuple::from_array
+\brief Result of #fcppt::tuple::from_array.
 
 \ingroup fcppttuple
 */
 template <typename Array, typename = std::enable_if_t<fcppt::array::is_object<Array>::value>>
-using from_array_result = fcppt::metal::as_tuple<::metal::repeat<
-    fcppt::type_traits::value_type<Array>,
-    fcppt::metal::to_number<fcppt::array::size<Array>>>>;
+using from_array_result = fcppt::mpl::list::as_tuple<
+    fcppt::mpl::list::repeat<fcppt::type_traits::value_type<Array>, fcppt::array::size<Array>>>;
 }
 
 #endif

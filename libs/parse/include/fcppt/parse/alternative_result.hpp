@@ -6,13 +6,11 @@
 #ifndef FCPPT_PARSE_ALTERNATIVE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_RESULT_HPP_INCLUDED
 
-#include <fcppt/metal/unique.hpp>
+#include <fcppt/mpl/list/append.hpp>
+#include <fcppt/mpl/list/unique.hpp>
 #include <fcppt/parse/detail/alternative_list.hpp>
 #include <fcppt/parse/detail/alternative_result.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -39,10 +37,9 @@ be the results of applying V to \a Left and \a Right.
 */
 template <typename Left, typename Right>
 using alternative_result =
-    fcppt::parse::detail::alternative_result<fcppt::metal::unique<::metal::join<
+    fcppt::parse::detail::alternative_result<fcppt::mpl::list::unique<fcppt::mpl::list::append<
         fcppt::parse::detail::alternative_list<Left>,
         fcppt::parse::detail::alternative_list<Right>>>>;
-
 }
 }
 

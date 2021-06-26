@@ -3,11 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/detail/contains_initializer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,7 +28,7 @@ using float_element = fcppt::record::element<float_label, float>;
 template <typename... Args>
 void test(Args &&...)
 {
-  using args_type = metal::list<std::remove_cvref_t<Args>...>;
+  using args_type = fcppt::mpl::list::object<std::remove_cvref_t<Args>...>;
 
   static_assert(
       fcppt::record::detail::contains_initializer<args_type, int_element>::value,

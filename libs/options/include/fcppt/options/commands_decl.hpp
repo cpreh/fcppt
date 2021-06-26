@@ -7,6 +7,11 @@
 #define FCPPT_OPTIONS_COMMANDS_DECL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/map.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/options/commands_fwd.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
@@ -25,7 +30,6 @@
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -64,9 +68,10 @@ public:
   static_assert(sizeof...(SubCommands) >= 1U, "You must specify at least one subparser");
 
   static_assert(
-      fcppt::record::all_disjoint<::metal::transform<
-          ::metal::bind<::metal::lambda<fcppt::options::result_of>, ::metal::_1>,
-          ::metal::list<SubCommands...>>>::value,
+      fcppt::record::all_disjoint<fcppt::mpl::list::map<
+          fcppt::mpl::list::object<SubCommands...>,
+          fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::options::result_of>, fcppt::mpl::arg<1>>>>::
+          value,
       "All sub-command labels must be distinct");
 
   /**

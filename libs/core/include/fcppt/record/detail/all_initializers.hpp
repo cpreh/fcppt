@@ -6,24 +6,22 @@
 #ifndef FCPPT_RECORD_DETAIL_ALL_INITIALIZERS_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ALL_INITIALIZERS_HPP_INCLUDED
 
+#include <fcppt/mpl/arg.hpp>
+#include <fcppt/mpl/bind.hpp>
+#include <fcppt/mpl/constant.hpp>
+#include <fcppt/mpl/lambda.hpp>
+#include <fcppt/mpl/list/all_of.hpp>
 #include <fcppt/record/detail/contains_initializer.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Elements, typename Args>
-using all_initializers = ::metal::all_of<
+using all_initializers = fcppt::mpl::list::all_of<
     Elements,
-    ::metal::partial<::metal::trait<fcppt::record::detail::contains_initializer>, Args>>;
-
-}
-}
+    fcppt::mpl::bind<
+        fcppt::mpl::lambda<fcppt::record::detail::contains_initializer>,
+        fcppt::mpl::constant<Args>,
+        fcppt::mpl::arg<1>>>;
 }
 
 #endif
