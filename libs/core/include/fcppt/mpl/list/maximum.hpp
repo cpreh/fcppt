@@ -30,9 +30,9 @@ using maximum = fcppt::mpl::list::fold<
     fcppt::mpl::bind<
         fcppt::mpl::lambda<fcppt::mpl::if_>,
         fcppt::mpl::
-            bind<fcppt::mpl::lambda<fcppt::mpl::greater>, fcppt::mpl::arg<0>, fcppt::mpl::arg<1>>,
-        fcppt::mpl::arg<0>,
-        fcppt::mpl::arg<1>>,
+            bind<fcppt::mpl::lambda<fcppt::mpl::greater>, fcppt::mpl::arg<1>, fcppt::mpl::arg<2>>,
+        fcppt::mpl::arg<1>,
+        fcppt::mpl::arg<2>>,
     fcppt::mpl::list::front<Sequence>>;
 }
 

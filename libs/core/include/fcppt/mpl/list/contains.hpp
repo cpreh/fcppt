@@ -22,7 +22,7 @@ template <fcppt::mpl::list::object_concept List, typename E>
 using contains = fcppt::mpl::list::any_of<
     List,
     fcppt::mpl::
-        bind<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::arg<0>, fcppt::mpl::constant<E>>>;
+        bind<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::arg<1>, fcppt::mpl::constant<E>>>;
 }
 
 #endif

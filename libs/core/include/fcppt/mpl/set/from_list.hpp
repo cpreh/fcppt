@@ -21,7 +21,7 @@ template <fcppt::mpl::list::object_concept List>
 using from_list = fcppt::mpl::list::fold<
     List,
     fcppt::mpl::
-        bind<fcppt::mpl::lambda<fcppt::mpl::set::insert>, fcppt::mpl::arg<1>, fcppt::mpl::arg<0>>,
+        bind<fcppt::mpl::lambda<fcppt::mpl::set::insert>, fcppt::mpl::arg<2>, fcppt::mpl::arg<1>>,
     fcppt::mpl::set::object<>>;
 }
 

@@ -30,7 +30,8 @@ struct arg
 }
 
 template<std::size_t Arg>
-using arg = typename fcppt::mpl::detail::arg<Arg>::type;
+requires (Arg >= 1U)
+using arg = typename fcppt::mpl::detail::arg<Arg - 1U>::type;
 }
 
 #endif

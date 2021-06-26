@@ -28,8 +28,8 @@ using union_ = fcppt::mpl::list::fold<
     fcppt::mpl::set::to_list<Set1>,
     fcppt::mpl::bind<
         fcppt::mpl::lambda<fcppt::mpl::set::insert_relaxed>,
-        fcppt::mpl::arg<1>,
-        fcppt::mpl::arg<0>>,
+        fcppt::mpl::arg<2>,
+        fcppt::mpl::arg<1>>,
     Set2>;
 }
 

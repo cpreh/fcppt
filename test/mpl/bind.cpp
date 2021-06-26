@@ -18,7 +18,7 @@ int main()
                 fcppt::mpl::apply<
                     fcppt::mpl::bind<
                         fcppt::mpl::lambda<std::common_type_t>,
-                        fcppt::mpl::arg<0>,
+                        fcppt::mpl::arg<1>,
                         fcppt::mpl::constant<int>>,
                     bool>,
                 int>);

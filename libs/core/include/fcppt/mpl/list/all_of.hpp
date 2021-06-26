@@ -23,8 +23,8 @@ using all_of = fcppt::mpl::list::fold<
     List,
     fcppt::mpl::bind<
         fcppt::mpl::lambda<std::conjunction>,
-        fcppt::mpl::bind<L, fcppt::mpl::arg<0>>,
-        fcppt::mpl::arg<1>>,
+        fcppt::mpl::bind<L, fcppt::mpl::arg<1>>,
+        fcppt::mpl::arg<2>>,
     std::true_type>;
 }
 

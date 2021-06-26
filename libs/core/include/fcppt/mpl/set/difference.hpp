@@ -35,12 +35,12 @@ using difference = fcppt::mpl::list::fold<
         fcppt::mpl::bind<
             fcppt::mpl::lambda<fcppt::mpl::set::contains>,
             fcppt::mpl::constant<Set2>,
-            fcppt::mpl::arg<0>>,
-        fcppt::mpl::arg<1>,
+            fcppt::mpl::arg<1>>,
+        fcppt::mpl::arg<2>,
         fcppt::mpl::bind<
             fcppt::mpl::lambda<fcppt::mpl::set::insert>,
-            fcppt::mpl::arg<1>,
-            fcppt::mpl::arg<0>>>,
+            fcppt::mpl::arg<2>,
+            fcppt::mpl::arg<1>>>,
     fcppt::mpl::set::object<>>;
 }
 

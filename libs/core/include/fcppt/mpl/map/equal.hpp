@@ -34,11 +34,11 @@ using map_same_values = fcppt::mpl::list::all_of<
         fcppt::mpl::bind<
             fcppt::mpl::lambda<fcppt::mpl::map::at>,
             fcppt::mpl::constant<Map1>,
-            fcppt::mpl::arg<0>>,
+            fcppt::mpl::arg<1>>,
         fcppt::mpl::bind<
             fcppt::mpl::lambda<fcppt::mpl::map::at>,
             fcppt::mpl::constant<Map2>,
-            fcppt::mpl::arg<0>>>>;
+            fcppt::mpl::arg<1>>>>;
 }
 /**
 \brief Checks if two mpl maps are equal.

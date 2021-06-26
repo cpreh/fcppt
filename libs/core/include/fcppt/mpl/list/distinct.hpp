@@ -49,7 +49,7 @@ struct distinct<fcppt::mpl::list::object<T,Ts...>>
       rest,
       fcppt::mpl::bind<
         fcppt::mpl::lambda<std::negation>,
-        fcppt::mpl::bind<fcppt::mpl::lambda<std::is_same>,fcppt::mpl::arg<0>,fcppt::mpl::constant<T>>>>>;
+        fcppt::mpl::bind<fcppt::mpl::lambda<std::is_same>,fcppt::mpl::arg<1>,fcppt::mpl::constant<T>>>>>;
 };
 #else
 namespace distinct_impl

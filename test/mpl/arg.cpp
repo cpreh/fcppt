@@ -11,6 +11,6 @@
 
 int main()
 {
-  static_assert(std::is_same_v<fcppt::mpl::apply<fcppt::mpl::arg<0>, int>, int>);
-  static_assert(std::is_same_v<fcppt::mpl::apply<fcppt::mpl::arg<1>, int, bool>, bool>);
+  static_assert(std::is_same_v<fcppt::mpl::apply<fcppt::mpl::arg<1>, int>, int>);
+  static_assert(std::is_same_v<fcppt::mpl::apply<fcppt::mpl::arg<2>, int, bool>, bool>);
 }

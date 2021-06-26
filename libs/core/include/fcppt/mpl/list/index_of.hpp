@@ -22,7 +22,7 @@ template <fcppt::mpl::list::object_concept List, typename E>
 using index_of = fcppt::mpl::list::index_of_if<
     List,
     fcppt::mpl::
-        bind<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::constant<E>, fcppt::mpl::arg<0>>>;
+        bind<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::constant<E>, fcppt::mpl::arg<1>>>;
 }
 
 #endif

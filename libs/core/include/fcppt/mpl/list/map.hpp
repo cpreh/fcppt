@@ -22,8 +22,8 @@ using map = fcppt::mpl::list::fold<
     List,
     fcppt::mpl::bind<
         fcppt::mpl::lambda<fcppt::mpl::list::push_back>,
-        fcppt::mpl::arg<1>,
-        fcppt::mpl::bind<F, fcppt::mpl::arg<0>>>,
+        fcppt::mpl::arg<2>,
+        fcppt::mpl::bind<F, fcppt::mpl::arg<1>>>,
     fcppt::mpl::list::object<>>;
 }
 

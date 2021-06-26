@@ -23,12 +23,12 @@ using remove_if = fcppt::mpl::list::fold<
     List,
     fcppt::mpl::bind<
         fcppt::mpl::lambda<fcppt::mpl::if_>,
-        fcppt::mpl::bind<Pred, fcppt::mpl::arg<0>>,
-        fcppt::mpl::arg<1>,
+        fcppt::mpl::bind<Pred, fcppt::mpl::arg<1>>,
+        fcppt::mpl::arg<2>,
         fcppt::mpl::bind<
             fcppt::mpl::lambda<fcppt::mpl::list::push_back>,
-            fcppt::mpl::arg<1>,
-            fcppt::mpl::arg<0>>>,
+            fcppt::mpl::arg<2>,
+            fcppt::mpl::arg<1>>>,
     fcppt::mpl::list::object<>>;
 }
 

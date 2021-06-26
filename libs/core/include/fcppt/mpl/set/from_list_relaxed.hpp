@@ -22,8 +22,8 @@ using from_list_relaxed = fcppt::mpl::list::fold<
     List,
     fcppt::mpl::bind<
         fcppt::mpl::lambda<fcppt::mpl::set::insert_relaxed>,
-        fcppt::mpl::arg<1>,
-        fcppt::mpl::arg<0>>,
+        fcppt::mpl::arg<2>,
+        fcppt::mpl::arg<1>>,
     fcppt::mpl::set::object<>>;
 }
 

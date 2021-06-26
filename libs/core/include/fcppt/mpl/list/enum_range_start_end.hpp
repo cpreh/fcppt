@@ -39,7 +39,7 @@ using enum_range_start_end = fcppt::mpl::list::map<
         fcppt::mpl::lambda<fcppt::type_traits::integral_cast>,
         fcppt::mpl::constant<Enum>,
         fcppt::mpl::constant<fcppt::cast::int_to_enum_fun>,
-        fcppt::mpl::arg<0>>>;
+        fcppt::mpl::arg<1>>>;
 }
 
 #endif
