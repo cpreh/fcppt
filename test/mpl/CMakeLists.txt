@@ -54,6 +54,11 @@ add_fcppt_mpl_test(
 )
 
 add_fcppt_mpl_test(
+	is_invocable
+	NO_CODE
+)
+
+add_fcppt_mpl_test(
 	less
 	NO_CODE
 )

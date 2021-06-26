@@ -19,7 +19,7 @@ namespace fcppt::mpl::list
 /**
 \brief Calculates the maximum value in a sequence.
 
-\ingroup fcpptmetal
+\ingroup fcpptmpl
 
 \tparam Sequence A non empty mpl::list::object of std::integral_constants.
 TODO(concepts)

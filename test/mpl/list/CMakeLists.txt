@@ -108,12 +108,21 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	invoke_on
+)
+
+add_fcppt_mpl_list_test(
 	is_set
 	NO_CODE
 )
 
 add_fcppt_mpl_list_test(
 	join
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	keep_if
 	NO_CODE
 )
 
@@ -128,8 +137,24 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	pop_back
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	push_back
 	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	push_front
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	print
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_mpl_list_test(
@@ -140,6 +165,12 @@ add_fcppt_mpl_list_test(
 add_fcppt_mpl_list_test(
 	size
 	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
+	to_string
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_mpl_list_test(

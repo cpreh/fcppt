@@ -5,7 +5,9 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -26,4 +28,43 @@ TEST_CASE("algorithm_loop_break tuple"
   });
 
   CHECK(result == "4210");
+}
+
+namespace
+{
+class function1
+{
+public:
+  function1() : value_{0} {}
+
+  [[nodiscard]] fcppt::loop operator()(fcppt::tag<int>) const
+  {
+    value_ += 2;
+
+    return fcppt::loop::break_;
+  }
+
+  [[nodiscard]] fcppt::loop operator()(fcppt::tag<bool>) const
+  {
+    ++value_;
+
+    return fcppt::loop::continue_;
+  }
+
+  [[nodiscard]] int value() const { return value_; }
+
+private:
+  mutable int value_;
+};
+
+}
+
+TEST_CASE("algorithm_loop_break mpl"
+          "[algorithm_loop_break]")
+{
+  function1 const func{};
+
+  fcppt::algorithm::loop_break(fcppt::mpl::list::object<int, bool>{}, func);
+
+  CHECK(func.value() == 2);
 }

@@ -156,6 +156,7 @@ set(
 	examples/metal/invoke_on.cpp
 	examples/metal/max_value.cpp
 	examples/metal/print.cpp
+	examples/mpl/list/invoke_on.cpp
 	examples/noncopyable.cpp
 	examples/nonmovable.cpp
 	examples/optional.cpp
@@ -249,6 +250,7 @@ set(
 	libs/core/include/fcppt/algorithm/loop_break_impl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl_fwd.hpp
 	libs/core/include/fcppt/algorithm/loop_break_metal.hpp
+	libs/core/include/fcppt/algorithm/loop_break_mpl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_tuple.hpp
 	libs/core/include/fcppt/algorithm/map.hpp
 	libs/core/include/fcppt/algorithm/map_array.hpp
@@ -1156,6 +1158,7 @@ set(
 	libs/core/include/fcppt/mpl/if.hpp
 	libs/core/include/fcppt/mpl/integral_concept.hpp
 	libs/core/include/fcppt/mpl/integrals_compatible.hpp
+	libs/core/include/fcppt/mpl/is_invocable.hpp
 	libs/core/include/fcppt/mpl/is_lambda.hpp
 	libs/core/include/fcppt/mpl/is_size_type.hpp
 	libs/core/include/fcppt/mpl/lambda.hpp
@@ -1172,6 +1175,7 @@ set(
 	libs/core/include/fcppt/mpl/list/back.hpp
 	libs/core/include/fcppt/mpl/list/contains.hpp
 	libs/core/include/fcppt/mpl/list/distinct.hpp
+	libs/core/include/fcppt/mpl/list/empty.hpp
 	libs/core/include/fcppt/mpl/list/enum_range.hpp
 	libs/core/include/fcppt/mpl/list/enum_range_start_end.hpp
 	libs/core/include/fcppt/mpl/list/fold.hpp
@@ -1181,16 +1185,23 @@ set(
 	libs/core/include/fcppt/mpl/list/index_of_if.hpp
 	libs/core/include/fcppt/mpl/list/indices.hpp
 	libs/core/include/fcppt/mpl/list/interval.hpp
+	libs/core/include/fcppt/mpl/list/invoke_on.hpp
 	libs/core/include/fcppt/mpl/list/is_object.hpp
 	libs/core/include/fcppt/mpl/list/is_set.hpp
 	libs/core/include/fcppt/mpl/list/join.hpp
+	libs/core/include/fcppt/mpl/list/keep_if.hpp
 	libs/core/include/fcppt/mpl/list/map.hpp
+	libs/core/include/fcppt/mpl/list/maximum.hpp
 	libs/core/include/fcppt/mpl/list/object.hpp
 	libs/core/include/fcppt/mpl/list/object_concept.hpp
 	libs/core/include/fcppt/mpl/list/object_fwd.hpp
+	libs/core/include/fcppt/mpl/list/pop_back.hpp
+	libs/core/include/fcppt/mpl/list/print.hpp
 	libs/core/include/fcppt/mpl/list/push_back.hpp
+	libs/core/include/fcppt/mpl/list/push_front.hpp
 	libs/core/include/fcppt/mpl/list/remove_if.hpp
 	libs/core/include/fcppt/mpl/list/size.hpp
+	libs/core/include/fcppt/mpl/list/to_string.hpp
 	libs/core/include/fcppt/mpl/list/unique.hpp
 	libs/core/include/fcppt/mpl/map/at.hpp
 	libs/core/include/fcppt/mpl/map/element.hpp
