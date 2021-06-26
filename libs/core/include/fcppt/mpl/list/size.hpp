@@ -7,8 +7,8 @@
 #define FCPPT_MPL_LIST_SIZE_HPP_INCLUDED
 
 #include <fcppt/mpl/size_type.hpp>
-#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 
 namespace fcppt::mpl::list
 {

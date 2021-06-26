@@ -7,8 +7,8 @@
 #define FCPPT_MPL_SET_INSERT_HPP_INCLUDED
 
 #include <fcppt/mpl/set/contains.hpp>
-#include <fcppt/mpl/set/object_concept.hpp>
 #include <fcppt/mpl/set/object.hpp>
+#include <fcppt/mpl/set/object_concept.hpp>
 
 namespace fcppt::mpl::set
 {

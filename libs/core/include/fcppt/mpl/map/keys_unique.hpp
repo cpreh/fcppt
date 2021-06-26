@@ -6,10 +6,10 @@
 #ifndef FCPPT_MPL_MAP_KEYS_UNIQUE_HPP_INCLUDED
 #define FCPPT_MPL_MAP_KEYS_UNIQUE_HPP_INCLUDED
 
-#include <fcppt/mpl/map/element_concept.hpp>
-#include <fcppt/mpl/map/element_key.hpp>
 #include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/map/element_concept.hpp>
+#include <fcppt/mpl/map/element_key.hpp>
 
 namespace fcppt::mpl::map
 {

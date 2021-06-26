@@ -8,8 +8,8 @@
 
 #include <fcppt/mpl/arg.hpp>
 #include <fcppt/mpl/bind.hpp>
-#include <fcppt/mpl/if.hpp>
 #include <fcppt/mpl/greater.hpp>
+#include <fcppt/mpl/if.hpp>
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/fold.hpp>
 #include <fcppt/mpl/list/front.hpp>

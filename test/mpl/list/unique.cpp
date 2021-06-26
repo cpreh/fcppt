@@ -5,8 +5,8 @@
 
 #include <fcppt/mpl/list/contains.hpp>
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/unique.hpp>
 #include <fcppt/mpl/list/size.hpp>
+#include <fcppt/mpl/list/unique.hpp>
 
 int main()
 {

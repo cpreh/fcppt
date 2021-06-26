@@ -8,8 +8,8 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 
 namespace fcppt::mpl::list
 {

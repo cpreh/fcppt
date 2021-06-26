@@ -6,8 +6,8 @@
 #ifndef FCPPT_MPL_LIST_PUSH_FRONT_HPP_INCLUDED
 #define FCPPT_MPL_LIST_PUSH_FRONT_HPP_INCLUDED
 
-#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/list/object_concept.hpp>
 
 namespace fcppt::mpl::list
 {
