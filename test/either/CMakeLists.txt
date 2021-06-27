@@ -10,6 +10,8 @@ endfunction()
 
 add_fcppt_either_test(
 	apply
+	LINK_LIBS
+		fcppt_catch_interface
 )
 
 add_fcppt_either_test(
