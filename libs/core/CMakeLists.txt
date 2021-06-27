@@ -1393,7 +1393,6 @@ set(
 	libs/core/include/fcppt/type_traits/implication.hpp
 	libs/core/include/fcppt/type_traits/integral_cast.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
-	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
 	libs/core/include/fcppt/type_traits/is_integral_constant.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp

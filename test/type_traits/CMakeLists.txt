@@ -9,11 +9,6 @@ function(
 endfunction()
 
 add_fcppt_type_traits_test(
-	is_float_or_double
-	NO_CODE
-)
-
-add_fcppt_type_traits_test(
 	implication
 	NO_CODE
 )
