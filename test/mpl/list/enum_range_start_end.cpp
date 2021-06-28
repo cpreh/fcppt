@@ -25,7 +25,9 @@ enum class my_enum
 int main()
 {
   static_assert(std::is_same_v<
-                fcppt::mpl::list::enum_range_start_end<my_enum, my_enum::test2, my_enum::test3>,
+                fcppt::mpl::list::enum_range_start_end<
+                    std::integral_constant<my_enum, my_enum::test2>,
+                    std::integral_constant<my_enum, my_enum::test3>>,
                 fcppt::mpl::list::object<
                     std::integral_constant<my_enum, my_enum::test2>,
                     std::integral_constant<my_enum, my_enum::test3>>>);

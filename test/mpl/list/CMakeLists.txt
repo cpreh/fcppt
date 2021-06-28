@@ -158,6 +158,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	repeat
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	remove_if
 	NO_CODE
 )

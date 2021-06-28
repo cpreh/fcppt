@@ -1200,6 +1200,7 @@ set(
 	libs/core/include/fcppt/mpl/list/push_back.hpp
 	libs/core/include/fcppt/mpl/list/push_front.hpp
 	libs/core/include/fcppt/mpl/list/remove_if.hpp
+	libs/core/include/fcppt/mpl/list/repeat.hpp
 	libs/core/include/fcppt/mpl/list/size.hpp
 	libs/core/include/fcppt/mpl/list/to_string.hpp
 	libs/core/include/fcppt/mpl/list/unique.hpp
@@ -1609,8 +1610,10 @@ set(
 	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp
+	libs/core/include/fcppt/type_traits/enum_constant_concept.hpp
 	libs/core/include/fcppt/type_traits/implication.hpp
 	libs/core/include/fcppt/type_traits/integral_cast.hpp
+	libs/core/include/fcppt/type_traits/integral_constant_concept.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_integral_constant.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp

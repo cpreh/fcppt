@@ -19,11 +19,8 @@ namespace fcppt::mpl::list
 TODO(concepts)
 */
 template <typename Enum>
-using enum_range = fcppt::mpl::list::enum_range_start_end<
-    Enum,
-    fcppt::enum_::min_value<Enum>::value,
-    fcppt::enum_::max_value<Enum>::value>;
-
+using enum_range = fcppt::mpl::list::
+    enum_range_start_end<fcppt::enum_::min_value<Enum>, fcppt::enum_::max_value<Enum>>;
 }
 
 #endif

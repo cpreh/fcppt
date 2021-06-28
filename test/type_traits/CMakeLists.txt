@@ -9,6 +9,11 @@ function(
 endfunction()
 
 add_fcppt_type_traits_test(
+	enum_constant_concept
+	NO_CODE
+)
+
+add_fcppt_type_traits_test(
 	implication
 	NO_CODE
 )

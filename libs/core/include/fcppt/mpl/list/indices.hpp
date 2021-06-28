@@ -6,17 +6,15 @@
 #ifndef FCPPT_MPL_LIST_INDICES_HPP_INCLUDED
 #define FCPPT_MPL_LIST_INDICES_HPP_INCLUDED
 
+#include <fcppt/mpl/size_type.hpp>
 #include <fcppt/mpl/list/interval.hpp>
 #include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/mpl/list/size.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::mpl::list
 {
 template<fcppt::mpl::list::object_concept List>
-using indices = fcppt::mpl::list::interval<std::size_t,0U,fcppt::mpl::list::size<List>::value>;
+using indices = fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>,fcppt::mpl::list::size<List>>;
 }
 
 #endif
