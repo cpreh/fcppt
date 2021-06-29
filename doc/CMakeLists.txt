@@ -1200,6 +1200,7 @@ set(
 	libs/core/include/fcppt/mpl/list/print.hpp
 	libs/core/include/fcppt/mpl/list/push_back.hpp
 	libs/core/include/fcppt/mpl/list/push_front.hpp
+	libs/core/include/fcppt/mpl/list/remove.hpp
 	libs/core/include/fcppt/mpl/list/remove_if.hpp
 	libs/core/include/fcppt/mpl/list/repeat.hpp
 	libs/core/include/fcppt/mpl/list/size.hpp
