@@ -48,7 +48,7 @@ Metal is no longer required.
 
 <li>fcpptmetal
 	<p>
-	This has been removed in favor of \ref fcpptmetal.
+	This has been removed in favor of \ref fcpptmpl.
 	</p>
 </li>
 
@@ -389,7 +389,7 @@ Fixed a gcc-11 issue regarding parameter expansion.
 <li>fcpptmetal
 	<ul>
 	<li>Added <code>fcppt::metal::function_args</code>.</li>
-	<li>Added <code>fcppt::metal::contains</codxe>, which returns a boolean instead of a <code>metal::number</code>.</li>
+	<li>Added <code>fcppt::metal::contains</code>, which returns a boolean instead of a <code>metal::number</code>.</li>
 	</ul>
 </li>
 
