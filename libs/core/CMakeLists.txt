@@ -906,6 +906,7 @@ set(
 	libs/core/include/fcppt/mpl/list/back.hpp
 	libs/core/include/fcppt/mpl/list/contains.hpp
 	libs/core/include/fcppt/mpl/list/distinct.hpp
+	libs/core/include/fcppt/mpl/list/drop.hpp
 	libs/core/include/fcppt/mpl/list/empty.hpp
 	libs/core/include/fcppt/mpl/list/enum_range.hpp
 	libs/core/include/fcppt/mpl/list/enum_range_start_end.hpp
