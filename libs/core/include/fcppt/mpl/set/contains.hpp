@@ -23,7 +23,7 @@ struct base
 {
 };
 template <typename... Keys>
-struct table : base<Keys>...
+struct table : base<Keys>... // NOLINT(fuchsia-multiple-inheritance)
 {
 };
 }

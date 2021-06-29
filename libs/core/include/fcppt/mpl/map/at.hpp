@@ -21,7 +21,7 @@ namespace detail
 namespace at_impl
 {
 template <typename... Elements>
-struct table : Elements...
+struct table : Elements... // NOLINT(fuchsia-multiple-inheritance)
 {
 };
 
