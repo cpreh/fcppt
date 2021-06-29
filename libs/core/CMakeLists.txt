@@ -936,6 +936,7 @@ set(
 	libs/core/include/fcppt/mpl/list/remove_if.hpp
 	libs/core/include/fcppt/mpl/list/repeat.hpp
 	libs/core/include/fcppt/mpl/list/size.hpp
+	libs/core/include/fcppt/mpl/list/tail.hpp
 	libs/core/include/fcppt/mpl/list/take.hpp
 	libs/core/include/fcppt/mpl/list/to_string.hpp
 	libs/core/include/fcppt/mpl/list/unique.hpp

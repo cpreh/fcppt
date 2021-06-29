@@ -188,6 +188,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	tail
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	size
 	NO_CODE
 )
