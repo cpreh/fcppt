@@ -68,7 +68,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Winaccessible-base)
 FCPPT_PP_DISABLE_VC_WARNING(4584)
 template<typename T, typename... Ts>
-struct derived<T,Ts...> : base<T>, derived<Ts...>
+struct derived<T,Ts...> : base<T>, derived<Ts...> // NOLINT(fuchsia-multiple-inheritance)
 {
 };
 FCPPT_PP_POP_WARNING
