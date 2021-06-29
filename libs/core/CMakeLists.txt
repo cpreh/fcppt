@@ -961,6 +961,7 @@ set(
 	libs/core/include/fcppt/mpl/list/enum_range_start_end.hpp
 	libs/core/include/fcppt/mpl/list/fold.hpp
 	libs/core/include/fcppt/mpl/list/for_each_break.hpp
+	libs/core/include/fcppt/mpl/list/from.hpp
 	libs/core/include/fcppt/mpl/list/front.hpp
 	libs/core/include/fcppt/mpl/list/index_of.hpp
 	libs/core/include/fcppt/mpl/list/index_of_if.hpp

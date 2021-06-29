@@ -83,6 +83,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	from
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	front
 	NO_CODE
 )
