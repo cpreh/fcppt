@@ -11,6 +11,7 @@
 #include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <functional>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,7 +23,7 @@ template<typename List, typename I>
 struct at;
 
 template<typename... E, std::size_t I>
-requires (I < sizeof...(E))
+requires (std::less<>{}(I,sizeof...(E)))
 struct at<fcppt::mpl::list::object<E...>,fcppt::mpl::size_type<I>>
 {
   using type = std::tuple_element_t<I,std::tuple<E...>>;
