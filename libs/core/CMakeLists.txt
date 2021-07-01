@@ -924,6 +924,7 @@ set(
 	libs/core/include/fcppt/mpl/list/join.hpp
 	libs/core/include/fcppt/mpl/list/keep_if.hpp
 	libs/core/include/fcppt/mpl/list/map.hpp
+	libs/core/include/fcppt/mpl/list/map_multi.hpp
 	libs/core/include/fcppt/mpl/list/maximum.hpp
 	libs/core/include/fcppt/mpl/list/object.hpp
 	libs/core/include/fcppt/mpl/list/object_concept.hpp

@@ -142,6 +142,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	map_multi
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	maximum
 	NO_CODE
 )
