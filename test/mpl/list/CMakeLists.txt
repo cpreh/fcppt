@@ -198,6 +198,11 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
+	transpose
+	NO_CODE
+)
+
+add_fcppt_mpl_list_test(
 	to_string
 	LINK_LIBS
 		${fcppt_core_TARGET}

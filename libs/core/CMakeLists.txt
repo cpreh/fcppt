@@ -939,6 +939,7 @@ set(
 	libs/core/include/fcppt/mpl/list/tail.hpp
 	libs/core/include/fcppt/mpl/list/take.hpp
 	libs/core/include/fcppt/mpl/list/to_string.hpp
+	libs/core/include/fcppt/mpl/list/transpose.hpp
 	libs/core/include/fcppt/mpl/list/unique.hpp
 	libs/core/include/fcppt/mpl/map/at.hpp
 	libs/core/include/fcppt/mpl/map/element.hpp
