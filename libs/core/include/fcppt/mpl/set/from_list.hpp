@@ -6,23 +6,26 @@
 #ifndef FCPPT_MPL_SET_FROM_LIST_HPP_INCLUDED
 #define FCPPT_MPL_SET_FROM_LIST_HPP_INCLUDED
 
-#include <fcppt/mpl/arg.hpp>
-#include <fcppt/mpl/bind.hpp>
-#include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/list/fold.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/mpl/list/object_concept.hpp>
-#include <fcppt/mpl/set/insert.hpp>
 #include <fcppt/mpl/set/object.hpp>
-#include <fcppt/mpl/set/unique.hpp>
 
 namespace fcppt::mpl::set
 {
+namespace detail
+{
+template<typename List>
+struct from_list;
+
+template<typename... Types>
+struct from_list<fcppt::mpl::list::object<Types...>>
+{
+  using type = fcppt::mpl::set::object<Types...>;
+};
+}
+
 template <fcppt::mpl::list::object_concept List>
-using from_list = fcppt::mpl::list::fold<
-    List,
-    fcppt::mpl::
-        bind<fcppt::mpl::lambda<fcppt::mpl::set::insert>, fcppt::mpl::arg<2>, fcppt::mpl::arg<1>>,
-    fcppt::mpl::set::object<>>;
+using from_list = typename fcppt::mpl::set::detail::from_list<List>::type;
 }
 
 #endif
