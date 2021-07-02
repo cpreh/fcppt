@@ -6,10 +6,10 @@
 #ifndef FCPPT_OPTIONS_MANY_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_MANY_DECL_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/mpl/arg.hpp>
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/many_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>

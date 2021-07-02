@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/mpl/list/tail.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/list/tail.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

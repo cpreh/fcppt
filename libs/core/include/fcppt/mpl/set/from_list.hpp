@@ -6,8 +6,8 @@
 #ifndef FCPPT_MPL_SET_FROM_LIST_HPP_INCLUDED
 #define FCPPT_MPL_SET_FROM_LIST_HPP_INCLUDED
 
-#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/mpl/set/object.hpp>
 
 namespace fcppt::mpl::set
