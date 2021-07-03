@@ -10,6 +10,14 @@ function(
 	)
 endfunction()
 
+add_fcppt_mpl_example(
+	lambda
+)
+
 add_subdirectory(
 	list
+)
+
+add_fcppt_mpl_example(
+	variant
 )

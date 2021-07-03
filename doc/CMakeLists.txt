@@ -153,8 +153,10 @@ set(
 	examples/math/vector/bit_strings.cpp
 	examples/math/vector/convert.cpp
 	examples/math/vector/various.cpp
+	examples/mpl/lambda.cpp
 	examples/mpl/list/invoke_on.cpp
 	examples/mpl/list/print.cpp
+	examples/mpl/variant.cpp
 	examples/noncopyable.cpp
 	examples/nonmovable.cpp
 	examples/optional.cpp

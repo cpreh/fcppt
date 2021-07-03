@@ -2,9 +2,107 @@
 \defgroup fcpptmpl fcppt.mpl
 \ingroup fcpptmain
 \brief A metaprogramming library
-*/
 
-namespace fcppt
-{
-namespace mpl {}
-}
+<ul>
+	<li>\ref fcpptmpl_introduction</li>
+	<li>\ref fcpptmpl_lambdas</li>
+</ul>
+
+\section fcpptmpl_introduction Introduction
+
+MPL stands for meta programming library and refers to the fact that you can write "programs" using C++ templates.
+As an example, consider the following variant type:
+
+\snippet mpl/variant.cpp variant_decl
+
+First of all, an implementation would have to check if <code>Types...</code> are disjoint.
+Second of all, it would have to gather the sizes of all the types.
+This can all be written by hand, often using recursion on a template parameter pack, or it can be done using a MP library:
+
+\snippet mpl/variant.cpp variant_impl
+
+There are two key concepts here:
+
+<ul>
+<li>
+Instead of using a template parameter pack <code>Types...</code> directly,
+we use <code>fcppt::mpl::list::object<Types...></code>. This way,
+the parameter pack becomes a single type and can be handled more easily.
+</li>
+
+<li>
+Instead of using a template-template parameter <code>template<typename...> class F</code> directly,
+we use <code>fcppt::mpl::lambda<F></code>. Again, this way, we turn <code>F</code> into a single
+template parameter.
+</li>
+</ul>
+
+#fcppt::mpl::list::distinct expects an #fcppt::mpl::list::object and returns
+<code>std::true_type</code> if all types in the list are distinct and <code>std::false_type</code> otherwise.
+
+#fcppt::mpl::list::map applies an #fcppt::mpl::lambda to every element of a list.
+For example, if <code>type_list = fcppt::mpl::object::list<int, float></code>, then
+<code>sizes = fcppt::mpl::list::object<sizeof_<int>,sizeof_<float>></code>.
+
+\section fcpptmpl_lambdas Lambdas
+
+To understand how to write MP algorithms, it is important to understand lambdas
+and how they can be combined. The definition of #fcppt::mpl::lambda is
+\code
+template<template<typename...> class F> struct lambda;
+\endcode
+This way, it can take any template of arbitrary arity:
+
+\snippet mpl/lambda.cpp lambda_decl
+
+Here, <code>add_pointer</code> is a unary lambda and <code>common_type</code> is a binary lambda.
+Since #fcppt::mpl::list::object is a variadic template, <code>make_list</code> is a variadic lambda.
+
+To actually call a lambda, we use #fcppt::mpl::apply:
+
+\snippet mpl/lambda.cpp lambda_call
+
+Note that providing the wrong number of template parameters will lead to a compile error,
+for example <code>fcppt::mpl::apply<add_pointer,int,float></code> will not compile.
+
+As terminology, we say that a lambda <code>L</code> \em holds a function F of arity <code>n</code>,
+if <code>L = fcppt::mpl::lambda<F></code> and <code>F</code> is either
+an n-ary template or a variadic template.
+
+Now consider the following example: We would like to call the function #fcppt::mpl::list::map
+to turn every element into a boolean that is true if and only if the element is <code>int</code>.
+We can implement this writing an explicit function:
+\snippet mpl/lambda.cpp is_int
+To get a lambda that does this directly, we can also write the following code:
+\snippet mpl/lambda.cpp is_int2
+To understand why these are equivalent, we have to understand what <code>fcppt::mpl::arg</code>,
+<code>fcppt::mpl::constant</code> and <code>fcppt::mpl::bind</code> do.
+
+<ul>
+<li><code>fcppt::mpl::arg<i></code> is the i'th projection function.
+Formally, for every integer <code>m >= i</code> it is a lambda that holds a function
+<code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = T_i</code>.</li>
+
+<li><code>fcppt::mpl::constant<C></code> is the constant function.
+Formally, for every integer <code>m</code> it holds a function
+<code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = C</code>.</li>
+
+<li><code>fcppt::mpl::bind</code> is function composition.
+Let <code>L</code> be a lambda that holds a function <code>G</code> of arity <code>k</code>
+and let <code>L_1, ..., L_k</code> be lambdas that hold functions
+<code>G_1, ..., G_k</code> of arity <code>m</code>.
+Then <code>fcppt::mpl::bind<L,L_1,...,L_k></code> holds a function <code>F</code> of arity <code>m</code>,
+such that <code>F<T_1,...,T_m> = G<G_1<T_1,...,T_m>,...,G_k<T_1,...,T_m>></code>.</li>
+</ul>
+
+In our example, <code>fcppt::mpl::lambda<std::is_same></code> holds a function or arity 2,
+and both <code>fcppt::mpl::arg<1></code> and <code>fcppt::mpl::constant<int></code> hold
+functions or arity 1. Therefore, we have <code>k=2</code> and <code>m=1</code>
+and <code>is_int2</code> holds a function of arity 1.
+We have
+\code
+fcppt::mpl::apply<is_int2,T>
+= std::is_same<fcppt::mpl::apply<fcppt::mpl::arg<1>,T>,fcppt::mpl::apply<fcppt::mpl::constant<int>,T>>
+= std::is_same<T,int>
+\endcode
+*/
