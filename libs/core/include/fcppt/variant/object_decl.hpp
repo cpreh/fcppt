@@ -7,7 +7,7 @@
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/mpl/list/as.hpp>
-#include <fcppt/mpl/list/is_set.hpp>
+#include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -46,7 +46,7 @@ public:
   */
   using types = fcppt::mpl::list::object<Types...>;
 
-  static_assert(fcppt::mpl::list::is_set<types>::value, "Variant types must form a set");
+  static_assert(fcppt::mpl::list::distinct<types>::value, "Variant types must form a set");
 
   using std_type = fcppt::mpl::list::as<std::variant,types>;
 

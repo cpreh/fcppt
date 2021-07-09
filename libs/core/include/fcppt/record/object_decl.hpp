@@ -10,7 +10,7 @@
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/all_of.hpp>
 #include <fcppt/mpl/list/as_tuple.hpp>
-#include <fcppt/mpl/list/is_set.hpp>
+#include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
@@ -55,7 +55,7 @@ public:
       "Types of a record::object must all be fcppt::record::element<>");
 
   static_assert(
-      fcppt::mpl::list::is_set<fcppt::record::detail::label_list<all_types>>::value,
+      fcppt::mpl::list::distinct<fcppt::record::detail::label_list<all_types>>::value,
       "Labels of record::object must form a set");
 
   using this_type = fcppt::record::object<Elements...>;

@@ -920,7 +920,6 @@ set(
 	libs/core/include/fcppt/mpl/list/interval.hpp
 	libs/core/include/fcppt/mpl/list/invoke_on.hpp
 	libs/core/include/fcppt/mpl/list/is_object.hpp
-	libs/core/include/fcppt/mpl/list/is_set.hpp
 	libs/core/include/fcppt/mpl/list/join.hpp
 	libs/core/include/fcppt/mpl/list/keep_if.hpp
 	libs/core/include/fcppt/mpl/list/map.hpp

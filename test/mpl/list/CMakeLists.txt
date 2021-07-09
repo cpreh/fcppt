@@ -122,11 +122,6 @@ add_fcppt_mpl_list_test(
 )
 
 add_fcppt_mpl_list_test(
-	is_set
-	NO_CODE
-)
-
-add_fcppt_mpl_list_test(
 	join
 	NO_CODE
 )
