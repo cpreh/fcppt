@@ -87,6 +87,13 @@ struct distinct<fcppt::mpl::list::object<Types...>>
 
 }
 
+/**
+\brief Checks if all elements of a list are pairwise disjoint.
+\ingroup fcpptmpl
+Let <code>List = list::object<L_1,...,L_n></code>. If <code>L_i != L_j</code>
+for all <code>1 <= i != j <= n</code> then the result is <code>std::true_type</code>.
+Otherwise, it is <code>std::false_type</code>.
+*/
 template<fcppt::mpl::list::object_concept List>
 using distinct = typename fcppt::mpl::list::detail::distinct<List>::type;
 

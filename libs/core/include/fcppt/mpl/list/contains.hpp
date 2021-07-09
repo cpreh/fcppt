@@ -18,6 +18,13 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Checks if a list contains an element.
+\ingroup fcpptmpl
+Let <code>List = list::object<L_1,...,L_n></code>. The result is
+<code>std::true_type</code> if <code>E = L_i</code> for some <code>1 <= i <= n</code>.
+Otherwise, it is <code>std::false_type</code>.
+*/
 template <fcppt::mpl::list::object_concept List, typename E>
 using contains = fcppt::mpl::list::any_of<
     List,

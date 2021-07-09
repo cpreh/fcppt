@@ -16,6 +16,10 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Checks if a list forms a set.
+\ingroup fcpptmpl
+*/
 template <fcppt::mpl::list::object_concept List>
 using is_set = std::is_same<
     fcppt::mpl::list::size<List>,

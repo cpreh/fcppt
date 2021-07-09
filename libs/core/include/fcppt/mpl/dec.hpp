@@ -24,6 +24,12 @@ struct dec<std::integral_constant<T,V>>
   using type = std::integral_constant<T,V - fcppt::literal<T>(1)>;
 };
 }
+/**
+\brief Subtracts one from an integral constant.
+\ingroup fcpptmpl
+Let <code>T = std::integral_constant<U,V></code>.
+Then the result is <code>std::integral_constant<U,V--></code>.
+*/
 template <fcppt::mpl::integral_concept T>
 using dec = typename fcppt::mpl::detail::dec<T>::type;
 }

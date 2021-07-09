@@ -14,6 +14,10 @@
 namespace fcppt::mpl
 {
 
+/**
+\brief The size type used by this library.
+\ingroup fcpptmpl
+*/
 template<std::size_t I>
 using size_type = std::integral_constant<std::size_t,I>;
 

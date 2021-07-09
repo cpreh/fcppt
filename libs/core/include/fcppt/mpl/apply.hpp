@@ -23,6 +23,13 @@ struct apply<fcppt::mpl::lambda<T>,Args...>
 };
 }
 
+/**
+\brief Calls a lambda.
+\ingroup fcpptmpl
+
+If <code>L</code> holds a function <code>F</code> of arity n and <code>Args = A_1,...,A_n</code>,
+then <code>F<A_1,...,A_n></code> is returned.
+*/
 template<fcppt::mpl::lambda_concept L,typename... Args>
 using apply = typename fcppt::mpl::detail::apply<L,Args...>::type;
 

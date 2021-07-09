@@ -21,6 +21,11 @@ struct front<fcppt::mpl::list::object<Head,Tail...>>
   using type = Head;
 };
 }
+/**
+\brief The first element of a list.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code> then the result is <code>L_1</code>.
+*/
 template<fcppt::mpl::list::object_concept List>
 using front = typename fcppt::mpl::list::detail::front<List>::type;
 }

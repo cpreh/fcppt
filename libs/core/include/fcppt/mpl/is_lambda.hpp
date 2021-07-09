@@ -13,15 +13,29 @@
 
 namespace fcppt::mpl
 {
-template <typename T>
-struct is_lambda : std::false_type
+namespace detail
 {
+template <typename T>
+struct is_lambda
+{
+  using type = std::false_type;
 };
 
 template <template <typename...> class T>
-struct is_lambda<fcppt::mpl::lambda<T>> : std::true_type
+struct is_lambda<fcppt::mpl::lambda<T>>
 {
+  using type = std::true_type;
 };
+}
+/**
+Checks if a type is a lambda.
+\ingroup fcpptmpl
+
+<code>T</code> is a lambda if an only if it is of the form
+<code>fcppt::mpl::lambda<F></code> for some type <code>F</code>.
+*/
+template<typename T>
+using is_lambda = typename fcppt::mpl::detail::is_lambda<T>::type;
 }
 
 #endif

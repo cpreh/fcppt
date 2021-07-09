@@ -26,18 +26,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4702)
 
 /**
-\brief Applies a function to the nth element of an mpl::list with a runtime index.
+\brief Applies a function to the nth element of an mpl::list::object with a runtime index.
 
 \ingroup fcpptmpl
 
-Let \a List be the types <code>(t_0,...,t_{n-1})</code> and <code>i =
-_index</code>.
-If i is less than n,
-the result is \a _function called with <code>fcppt::tag<t_i></code>.
-Otherwise, the result of \a _fail_function is returned.
-
-\note The compile time and the runtime complexities of this function are linear
-in the size of the mpl list.
+Let <code>List = list::object<L_1,...,L_n></code>.
+If <code>_index < n</code> the result is <code>_function(fcppt::tag<L_i>{})</code>.
+Otherwise, the result is <code>_fail_function()</code>.
 
 \snippet mpl/list/invoke_on.cpp mpl_invoke_on
 

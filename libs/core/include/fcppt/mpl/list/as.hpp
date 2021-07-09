@@ -12,6 +12,11 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Converts a list to another type.
+If <code>List=list::object<L_1,...,L_n></code> then the result is
+<code>Type<L_1,...,L_n></code>.
+*/
 template<template<typename...> class Type, fcppt::mpl::list::object_concept List>
 using as = fcppt::mpl::list::apply<fcppt::mpl::lambda<Type>,List>;
 }

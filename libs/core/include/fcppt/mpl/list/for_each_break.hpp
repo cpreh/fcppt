@@ -34,7 +34,18 @@ void for_each_break(fcppt::mpl::list::object<Type,Types...>, Fun const &_func)
 }
 }
 
+/**
+\brief Calls a runtime function for each element of a listing, possibly breaking out early.
+\ingroup fcpptmpl
+
+Let <code>List = list::object<L_1,...,L_n></code>.
+Calls <code>r_1 = _function(fcppt::tag<L_1>{})</code>.
+If <code>r_1 == fcppt::loop::break_</code>, the algorithm stops.
+If <code>r_1 == fcppt::loop::continue_</code>, then <code>r_2 = _function(fcppt::tag<L_2>{})</code> and so on,
+up to <code>r_n = _function(fcppt::tag<L_n>{})</code>.
+
 // TODO(concepts)
+*/
 template <fcppt::mpl::list::object_concept List, typename Function>
 inline void for_each_break(Function const &_function)
 {

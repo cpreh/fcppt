@@ -18,6 +18,12 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief The first index of a given element inside a list.
+\ingroup fcpptmpl
+Let <code>List = list::object<L_1,...,L_n></code>.
+Returns <code>size_type<I></code> where <code>I</code> is the smallest number such that <code>L_I = E</code>.
+*/
 template <fcppt::mpl::list::object_concept List, typename E>
 using index_of = fcppt::mpl::list::index_of_if<
     List,

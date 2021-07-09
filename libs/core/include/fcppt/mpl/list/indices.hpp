@@ -13,6 +13,14 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Returns the positions of a list.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code> then the result is
+\code
+list::object<size_type<0>,...,size_type<n-1>>
+\endcode
+*/
 template<fcppt::mpl::list::object_concept List>
 using indices = fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>,fcppt::mpl::list::size<List>>;
 }

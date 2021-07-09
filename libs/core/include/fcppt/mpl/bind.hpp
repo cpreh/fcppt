@@ -34,6 +34,21 @@ struct bind<fcppt::mpl::lambda<L>,fcppt::mpl::lambda<Ls>...>
 };
 }
 
+/**
+\brief Function composition on multiple lambdas.
+\ingroup fcpptmpl
+
+Suppose that <code>L</code> holds a function <code>G</code> and
+<code>Ls...</code> hold functions <code>Gs...</code>,
+then <code>bind<L,Ls...></code> is a lambda that when called with arguments <code>Args...</code> it returns
+\code
+G<Gs<Args...>...>
+\endcode
+Formally, let <code>G</code> be of arity <code>k</code> and
+<code>Gs... = G_1, ..., G_k</code> be of arity <code>m</code>.
+Then <code>fcppt::mpl::bind<L,L_1,...,L_k></code> holds a function <code>F</code> of arity <code>m</code>,
+such that <code>F<T_1,...,T_m> = G<G_1<T_1,...,T_m>,...,G_k<T_1,...,T_m>></code>.
+*/
 template<fcppt::mpl::lambda_concept L, fcppt::mpl::lambda_concept ... Ls>
 using bind = typename fcppt::mpl::detail::bind<L,Ls...>::type;
 }

@@ -11,6 +11,11 @@
 namespace fcppt::mpl
 {
 
+/**
+\brief Concept for lambdas.
+\ingroup fcpptmpl
+\see fcppt::mpl::is_lambda
+*/
 template<typename T>
 concept lambda_concept = fcppt::mpl::is_lambda<T>::value;
 

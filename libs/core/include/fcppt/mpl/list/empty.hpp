@@ -16,6 +16,12 @@
 namespace fcppt::mpl::list
 {
 
+/**
+\brief Checks if a list is empty.
+\ingroup fcpptmpl
+Let <code>List = list::object<L_1,...,L_n></code>. If <code>n = 0</code> then <code>std::true_type</code> is returned.
+Otherwise, <code>std::false_type</code>is returned.
+*/
 template<fcppt::mpl::list::object_concept List>
 using empty = std::is_same<fcppt::mpl::list::size<List>,fcppt::mpl::size_type<0U>>;
 

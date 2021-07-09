@@ -13,15 +13,29 @@
 
 namespace fcppt::mpl
 {
-template <typename T>
-struct is_size_type : std::false_type
+namespace detail
 {
+template <typename T>
+struct is_size_type
+{
+  using type = std::false_type;
 };
 
 template <std::size_t I>
-struct is_size_type<fcppt::mpl::size_type<I>> : std::true_type
+struct is_size_type<fcppt::mpl::size_type<I>>
 {
+  using type = std::true_type;
 };
+}
+
+/**
+\brief Checks if a type is a size_type.
+\ingroup fcpptmpl
+<code>T</code> is a size type if and only if it is of the form
+<code>fcppt::mpl::size_type<N></code> for some <code>std::size_t N</code>.
+*/
+template<typename T>
+using is_size_type = typename fcppt::mpl::detail::is_size_type<T>::type;
 }
 
 #endif

@@ -18,6 +18,18 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Checks if a predicate holds for any type of a list.
+\ingroup fcpptmpl
+If <code>List=list::object<L_1,...,L_n></code> and
+<code>L</code> holds a function <code>F</code> of arity <code>1</code>,
+then the result is
+\code
+std::bool_constant<std::disjunction_v<F<L_1>, ..., F<L_n>>>
+\endcode
+
+TODO(concepts)
+*/
 template <fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept L>
 using any_of = fcppt::mpl::list::fold<
     List,

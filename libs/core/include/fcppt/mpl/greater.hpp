@@ -24,6 +24,13 @@ struct greater<std::integral_constant<T,V1>,std::integral_constant<T,V2>>
   using type = std::bool_constant<(V1 > V2)>;
 };
 }
+/**
+\brief Checks if one integral constant is greater than another.
+\ingroup fcpptmpl
+Let <code>T1 = std::integral_constant<T,V_1></code> and
+<code>T2 = std::integral_constant<T,V_2></code>.
+Then the result is <code>std::bool_constant<(V1 > V2)></code>.
+*/
 template <fcppt::mpl::integral_concept T1, fcppt::mpl::integral_concept T2>
 requires fcppt::mpl::integrals_compatible<T1,T2>
 using greater = typename fcppt::mpl::detail::greater<T1,T2>::type;

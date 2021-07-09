@@ -8,8 +8,14 @@
 
 namespace fcppt::mpl
 {
+/**
+\brief The lambda type.
+\ingroup fcpptmpl
 
-template<template<typename...> class T>
+Every function <code>F</code> that is used by this library must be wrapped
+inside a lambda.
+*/
+template<template<typename...> class F>
 struct lambda;
 
 }

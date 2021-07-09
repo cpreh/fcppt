@@ -11,6 +11,11 @@
 namespace fcppt::mpl
 {
 
+/**
+\brief Concept for size types.
+\ingroup fcpptmpl
+\see fcppt::mpl::is_size_type
+*/
 template<typename T>
 concept size_type_concept = fcppt::mpl::is_size_type<T>::value;
 

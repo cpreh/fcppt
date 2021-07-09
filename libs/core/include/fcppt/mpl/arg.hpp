@@ -29,6 +29,16 @@ struct arg
 };
 }
 
+/**
+\brief A lambda that returns an argument in a specific position.
+\ingroup fcpptmpl
+
+A lambda that returns the argument in position <code>Arg</code>.
+Formally, for every integer <code>m >= Arg</code> it is a lambda that holds a function
+<code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = T_Arg</code>.
+
+\note Argument counting starts at <code>1</code> instead of <code>0</code>.
+*/
 template<std::size_t Arg>
 requires (Arg >= 1U)
 using arg = typename fcppt::mpl::detail::arg<Arg - 1U>::type;

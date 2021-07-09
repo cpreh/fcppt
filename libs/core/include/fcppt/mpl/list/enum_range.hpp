@@ -13,9 +13,15 @@
 namespace fcppt::mpl::list
 {
 /**
-\brief An mpl list over an enum.
+\brief An mpl::list::object over an enum.
 
 \ingroup fcpptenum
+
+The result is
+\code
+mpl::list::object<fcppt::enum_::min_value<Enum>, ..., fcppt::enum_::max_value<Enum>>
+\endcode
+
 TODO(concepts)
 */
 template <typename Enum>

@@ -16,6 +16,15 @@
 
 namespace fcppt::mpl
 {
+/**
+\brief Checks if a function can be invoked with a given argument list.
+\ingroup fcpptmpl
+Checks if function <code>F</code> can be invoked with the types in <code>L</code>,
+i.e. if <code>L = list::object<L_1,...,L_n></code>, then the result is
+\code
+std::is_invocable<F,L_1,...,L_n>
+\endcode
+*/
 template <typename F, fcppt::mpl::list::object_concept L>
 using is_invocable = fcppt::mpl::list::
     apply<fcppt::mpl::lambda<std::is_invocable>, fcppt::mpl::list::push_front<L, F>>;

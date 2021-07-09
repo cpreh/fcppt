@@ -69,11 +69,11 @@ As terminology, we say that a lambda <code>L</code> \em holds a function F of ar
 if <code>L = fcppt::mpl::lambda<F></code> and <code>F</code> is either
 an n-ary template or a variadic template.
 
-Now consider the following example: We would like to call the function #fcppt::mpl::list::map
-to turn every element into a boolean that is true if and only if the element is <code>int</code>.
+Now consider the following example: We would like to create a lambda
+that evaluates to true if and only if the first parameter is <code>int</code>.
 We can implement this writing an explicit function:
 \snippet mpl/lambda.cpp is_int
-To get a lambda that does this directly, we can also write the following code:
+To do this more directly, we can also write the following code:
 \snippet mpl/lambda.cpp is_int2
 To understand why these are equivalent, we have to understand what <code>fcppt::mpl::arg</code>,
 <code>fcppt::mpl::constant</code> and <code>fcppt::mpl::bind</code> do.

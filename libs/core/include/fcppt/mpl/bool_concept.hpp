@@ -12,6 +12,13 @@
 
 namespace fcppt::mpl
 {
+/**
+\brief Concept for boolean constants.
+\ingroup fcpptmpl
+
+A type is a boolean constant if and only if it is of the form
+<code>std::bool_constant<V></code> for any <code>bool V</code>.
+*/
 template <typename T>
 concept bool_concept = std::is_same_v<typename T::type, std::true_type> ||
     std::is_same_v<typename T::type, std::false_type>;

@@ -14,6 +14,11 @@
 
 namespace fcppt::mpl
 {
+/**
+\brief Checks if two integral_constants are compatible.
+\ingroup fcpptmpl
+Two integral constants are compatible if and only if they have the same value type.
+*/
 template <typename T1, typename T2>
 concept integrals_compatible = fcppt::mpl::integral_concept<T1>
   && fcppt::type_traits::is_integral_constant<T2>::value

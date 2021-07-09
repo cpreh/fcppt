@@ -10,7 +10,13 @@
 
 namespace fcppt::mpl
 {
-
+/**
+\brief The if-then-else function.
+\ingroup fcpptmpl
+Similar to <code>std::conditional_t</code> but takes a
+<code>bool_concept</code>, i.e., a <code>std::bool_constant<V></code> for any
+<code>bool V</code> instead of <code>V</code> directly.
+*/
 template<fcppt::mpl::bool_concept B, typename T, typename F>
 using if_ = std::conditional_t<B::value, T, F>;
 

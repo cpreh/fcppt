@@ -30,8 +30,16 @@ struct take<List,std::index_sequence<Indices...>>
 };
 }
 
-template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept Size>
-using take = typename fcppt::mpl::list::detail::take<List,std::make_index_sequence<Size::value>>::type;
+/**
+\brief Keeps some elements of a list from the beginning.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code> then the result is
+\code
+list::object<L_1,...,L_S>
+\endcode
+*/
+template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept S>
+using take = typename fcppt::mpl::list::detail::take<List,std::make_index_sequence<S::value>>::type;
 
 }
 

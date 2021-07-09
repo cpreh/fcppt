@@ -26,8 +26,15 @@ struct apply<fcppt::mpl::lambda<L>,fcppt::mpl::list::object<Args...>>
 };
 }
 
-template<fcppt::mpl::lambda_concept Lambda, fcppt::mpl::list::object_concept Args>
-using apply = typename fcppt::mpl::list::detail::apply<Lambda,Args>::type;
+/**
+\brief Calls a lambda using a list of arguments.
+\ingroup fcpptmpl
+
+If <code>L</code> holds a function <code>F</code> of arity n and <code>Args = list::object<A_1,...,A_n></code>,
+then <code>F<A_1,...,A_n></code> is returned.
+*/
+template<fcppt::mpl::lambda_concept L, fcppt::mpl::list::object_concept Args>
+using apply = typename fcppt::mpl::list::detail::apply<L,Args>::type;
 }
 
 #endif

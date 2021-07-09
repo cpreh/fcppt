@@ -48,9 +48,15 @@ struct enum_range_start_end<std::integral_constant<Enum, Start>, std::integral_c
 };
 }
 /**
-\brief An mpl list over enums from a minimum to a maximum.
+\brief An mpl::list::object over enums from a minimum to a maximum.
 
 \ingroup fcpptenum
+
+Let <code>Start = std::integral_constant<Enum,S></code> and <code>Max = std::integral_constant<Enum,M></code>.
+Then the result is
+\code
+mpl::list::object<std::integral_constant<Enum,S>, std::integral_constant<Enum,S + 1>, ..., std::integral_constant<Enum,M>>
+\endcode
 */
 template <
     fcppt::type_traits::enum_constant_concept Start,

@@ -13,15 +13,29 @@
 
 namespace fcppt::mpl::list
 {
-template <typename T>
-struct is_object : std::false_type
+namespace detail
 {
+template <typename T>
+struct is_object
+{
+  using type = std::false_type;
 };
 
 template <typename... T>
-struct is_object<fcppt::mpl::list::object<T...>> : std::true_type
+struct is_object<fcppt::mpl::list::object<T...>>
 {
+  using type = std::true_type;
 };
+}
+/**
+Checks if a type is a list.
+\ingroup fcpptmpl
+
+<code>T</code> is a list if an only if it is of the form
+<code>fcppt::mpl::list::object<T_1, ..., T_n></code> for some types <code>T_1, ..., T_n</code>.
+*/
+template <typename T>
+using is_object = typename fcppt::mpl::list::detail::is_object<T>::type;
 }
 
 #endif

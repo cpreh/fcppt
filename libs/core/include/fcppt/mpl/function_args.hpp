@@ -22,6 +22,14 @@ struct function_args<Ret(Args...)>
 };
 }
 
+/**
+\brief The argument types of a function as a list.
+\ingroup fcpptmpl
+
+\tparam Function Must be a function type.
+
+TODO(concepts)
+*/
 template <typename Function>
 using function_args = typename fcppt::mpl::detail::function_args<Function>::type;
 

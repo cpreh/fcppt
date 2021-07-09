@@ -22,6 +22,15 @@ struct append<fcppt::mpl::list::object<Es1...>,fcppt::mpl::list::object<Es2...>>
   using type = fcppt::mpl::list::object<Es1..., Es2...>;
 };
 }
+/**
+\brief Appends two lists.
+\ingroup fcpptmpl
+If <code>List1 = list::object<L_1,...,L_n></code> and <code>List2 = list::object<R_1,...,R_m></code>
+then the result is
+\code
+list::object<L_1,...,L_n,R_1,...,R_m>
+\endcode
+*/
 template <fcppt::mpl::list::object_concept List1, fcppt::mpl::list::object_concept List2>
 using append = typename fcppt::mpl::list::detail::append<List1,List2>::type;
 }

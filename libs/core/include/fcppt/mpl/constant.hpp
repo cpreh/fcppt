@@ -22,6 +22,15 @@ struct constant
 };
 }
 
+/**
+\brief The constant lambda.
+\ingroup fcpptmpl
+
+This is a lambda that returns <code>T</code>.
+
+Formally, for every integer <code>m</code> it holds a function
+<code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = C</code>.
+*/
 template<typename T>
 using constant = typename fcppt::mpl::detail::constant<T>::type;
 }

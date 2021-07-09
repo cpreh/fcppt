@@ -19,9 +19,17 @@
 
 namespace fcppt::mpl::list
 {
-template <fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept Size>
+/**
+\brief Removes some elements of a list from the beginning.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code> then the result is
+\code
+list::object<L_{S+1},...,L_n>
+\endcode
+*/
+template <fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept S>
 using drop = fcppt::mpl::list::map<
-    fcppt::mpl::list::interval<Size, fcppt::mpl::list::size<List>>,
+    fcppt::mpl::list::interval<S, fcppt::mpl::list::size<List>>,
     fcppt::mpl::bind<
         fcppt::mpl::lambda<fcppt::mpl::list::at>,
         fcppt::mpl::constant<List>,

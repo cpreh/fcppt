@@ -27,6 +27,16 @@ struct interval<std::integer_sequence<Type,Values...>,std::integral_constant<Typ
   using type = fcppt::mpl::list::object<std::integral_constant<Type,Begin + Values>...>;
 };
 }
+/**
+\brief Return the interval between two numbers.
+\ingroup fcpptmpl
+If <code>Begin = std::integral_constant<Type,B></code> and
+<code>End = std::integral_constant<Type,E></code> then the result is
+\code
+list::object<std::integral_constant<Type,B>, std::integral_constant<Type,B+1>,...,std::integral_constant<Type,E-1>>
+\endcode
+\note <code>End</code> is not included in the range but <code>Begin</code> is.
+*/
 template <
     fcppt::type_traits::integral_constant_concept Begin,
     fcppt::type_traits::integral_constant_concept End>

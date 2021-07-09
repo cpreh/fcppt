@@ -12,6 +12,11 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Converts a list to a tuple.
+If <code>List=list::object<L_1,...,L_n></code> then the result is
+<code>fcppt::tuple::object<L_1,...,L_n></code>.
+*/
 template<fcppt::mpl::list::object_concept List>
 using as_tuple = fcppt::mpl::list::as<fcppt::tuple::object, List>;
 }

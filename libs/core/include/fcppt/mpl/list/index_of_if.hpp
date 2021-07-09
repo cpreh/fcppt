@@ -33,6 +33,14 @@ struct index_of_if<fcppt::mpl::list::object<E, Es...>, L, fcppt::mpl::size_type<
 {
 };
 }
+/**
+\brief The first index where an element matches a predicate inside a list.
+\ingroup fcpptmpl
+Let <code>List = list::object<L_1,...,L_n></code> and let <code>L</code> hold a
+function <code>F</code> of arity <code>1</code>.
+Returns <code>size_type<I></code> where <code>I</code> is the smallest number such that
+<code>F<L_i> = std::true_type</code>.
+*/
 template<fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept L>
 using index_of_if = typename fcppt::mpl::list::detail::index_of_if<List,L,fcppt::mpl::size_type<0U>>::type;
 }

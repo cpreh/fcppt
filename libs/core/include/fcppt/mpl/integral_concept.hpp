@@ -15,10 +15,16 @@
 namespace fcppt::mpl
 {
 
-// TODO(philipp): is_integer is too much.
-template <typename Type>
-concept integral_concept = fcppt::type_traits::is_integral_constant<Type>::value &&
-    std::is_integral_v<fcppt::type_traits::value_type<Type>>;
+/**
+\brief Checks if a type is an <code>integral_constant</code> with an integer type.
+\ingroup fcpptmpl
+<code>T</code> fullfils <code>integral_concept</code> if and only if it is of the form
+<code>std::integral_constant<U,V></code> for some integral type <code>U</code>
+and value <code>U V</code>.
+*/
+template <typename T>
+concept integral_concept = fcppt::type_traits::is_integral_constant<T>::value &&
+    std::is_integral_v<fcppt::type_traits::value_type<T>>;
 }
 
 #endif
