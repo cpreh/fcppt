@@ -41,11 +41,18 @@ using map_same_values = fcppt::mpl::list::all_of<
             fcppt::mpl::arg<1>>>>;
 }
 /**
-\brief Checks if two mpl maps are equal.
+\brief Checks if two maps are equal.
 
 \ingroup fcpptmpl
 
 Two maps are equal if and only if they contain the same key-value pairs.
+Let <code>Map1=map::object<element<K_1,V_1>,...,element<K_n,V_n>></code>
+and <code>Map2=map::object<element<K_1',V_1'>,...,element<K_m',V_m'>></code>.
+Then the result is <code>std::true_type</code> if
+\code
+{(K_1,V_1),...,(K_n,V_n)} = {(K_1',V_1'),...,(K_m',V_m')}
+\endcode
+Otherwise, the result is <code>std::false_type</code>.
 */
 template <fcppt::mpl::map::object_concept Map1, fcppt::mpl::map::object_concept Map2>
 using equal = fcppt::mpl::apply<fcppt::mpl::if_<

@@ -14,9 +14,19 @@
 
 namespace fcppt::mpl::list
 {
-template <typename Type, fcppt::mpl::size_type_concept Size>
+/**
+\brief Creates a list that consists of n elements that are all the same.
+\ingroup fcpptmpl
+Let <code>S = fcppt::mpl::size_type<n></code>.
+Then the result is
+\code
+list::object<T_1,...,T_n>
+\endcode
+where <code>T_1 = ... = T_n = T</code>.
+*/
+template <typename T, fcppt::mpl::size_type_concept S>
 using repeat = fcppt::mpl::list::
-    map<fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>, Size>, fcppt::mpl::constant<Type>>;
+    map<fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>, S>, fcppt::mpl::constant<T>>;
 }
 
 #endif

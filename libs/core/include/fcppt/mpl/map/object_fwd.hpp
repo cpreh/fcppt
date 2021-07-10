@@ -11,6 +11,13 @@
 
 namespace fcppt::mpl::map
 {
+/**
+\brief The map type used by this library.
+\ingroup fcpptmpl
+
+A map is constructed from a variadic list of #fcppt::mpl::map::element.
+All keys of the elements must be pairwise disjoint.
+*/
 template <fcppt::mpl::map::element_concept... Args>
 requires fcppt::mpl::map::keys_unique<Args...>::value
 struct object;

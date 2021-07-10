@@ -10,6 +10,11 @@
 
 namespace fcppt::mpl::set
 {
+/**
+\brief The set type used by this library.
+\ingroup fcpptmpl
+A map is constructed from a variadic list of types, which must be pairwise disjoint.
+*/
 template <typename... Args>
 requires fcppt::mpl::set::unique<Args...>::value
 struct object;

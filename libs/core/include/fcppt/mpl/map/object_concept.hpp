@@ -11,6 +11,11 @@
 namespace fcppt::mpl::map
 {
 
+/**
+\brief Concept for maps.
+\ingroup fcpptmpl
+\see fcppt::mpl::map::is_object
+*/
 template<typename T>
 concept object_concept = fcppt::mpl::map::is_object<T>::value;
 

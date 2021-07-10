@@ -23,6 +23,11 @@ struct element_key<fcppt::mpl::map::element<Key,Value>>
 };
 }
 
+/**
+\brief The key type of an element.
+\ingroup fcpptmpl
+Returns <code>K</code> if <code>Element=map::element<K,V></code>.
+*/
 template<fcppt::mpl::map::element_concept Element>
 using element_key = typename fcppt::mpl::map::detail::element_key<Element>::type;
 

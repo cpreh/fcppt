@@ -13,6 +13,13 @@
 
 namespace fcppt::mpl::map
 {
+/**
+\brief Checks if the keys of elements are pairwise disjoint.
+\ingroup fcpptmpl
+Let <code>Args=element<K_1,V_1>,...,element<K_n,V_n></code>.
+The result is <code>std::true_type</code> if all the keys <code>K_1,...,K_n</code> are pairwise disjoint.
+Otherwise, it is <code>std::false_type</code>.
+*/
 template <fcppt::mpl::map::element_concept... Args>
 using keys_unique =
     fcppt::mpl::list::distinct<fcppt::mpl::list::object<fcppt::mpl::map::element_key<Args>...>>;

@@ -12,6 +12,13 @@
 
 namespace fcppt::mpl::set
 {
+/**
+\brief The size of a set.
+\ingroup fcpptmpl
+If <code>Set = set::object<L_1,...,L_n></code>
+then the result is
+<code>fcppt::mpl::size_type<n></code>.
+*/
 template <fcppt::mpl::set::object_concept Set>
 using size = fcppt::mpl::list::size<fcppt::mpl::set::to_list<Set>>;
 

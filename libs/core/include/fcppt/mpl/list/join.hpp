@@ -16,7 +16,17 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Joins a list of lists.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code> and <code>L_1, ..., L_n</code> are lists, then the result is
+\code
+append<L_1,append<L_2,...,append<L_{n-1},L_n> ...>>
+\endcode
+
+\tparam List Must be a list of lists.
 //TODO(concepts)
+*/
 template <fcppt::mpl::list::object_concept List>
 using join = fcppt::mpl::list::fold<
     List,

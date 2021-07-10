@@ -24,6 +24,15 @@ struct keys<fcppt::mpl::map::object<Elements...>>
   using type = fcppt::mpl::set::object<fcppt::mpl::map::element_key<Elements>...>;
 };
 }
+/**
+\brief They keys of a map as a set.
+\ingroup fcpptmpl
+Let <code>Map = map::object<element<K_1,V_1>,...,element<K_n,V_n>></code>.
+Then the result is
+\code
+set::object<K_1,...,K_n>
+\endcode
+*/
 template<fcppt::mpl::map::object_concept Map>
 using keys = typename fcppt::mpl::map::detail::keys<Map>::type;
 }

@@ -14,9 +14,7 @@ namespace fcppt::mpl::set
 {
 /**
 \brief The symmetric difference of two sets.
-
 \ingroup fcpptmpl
-
 The result contains every element that is either in \a Set1 or in \a Set2, but
 not in both.
 */

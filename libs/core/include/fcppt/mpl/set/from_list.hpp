@@ -24,6 +24,16 @@ struct from_list<fcppt::mpl::list::object<Types...>>
 };
 }
 
+/**
+\brief Converts a list with no duplicates into a set.
+\ingroup fcpptmpl
+Let <code>List = list::object<L_1,...,L_n></code>,
+where <code>L_1,...,L_n</code> are pairwise disjoint.
+The result is
+\code
+set::object<L_1,...,L_n>
+\endcode
+*/
 template <fcppt::mpl::list::object_concept List>
 using from_list = typename fcppt::mpl::set::detail::from_list<List>::type;
 }

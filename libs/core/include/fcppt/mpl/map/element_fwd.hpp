@@ -8,7 +8,11 @@
 
 namespace fcppt::mpl::map
 {
-
+/**
+\brief The element type of a map.
+\ingroup fcpptmpl
+An element of a map is a key-value pair.
+*/
 template<typename Key, typename Value>
 struct element;
 

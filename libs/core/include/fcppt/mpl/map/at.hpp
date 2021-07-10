@@ -39,6 +39,13 @@ struct at<fcppt::mpl::map::object<Elements...>,Key>
   using type = decltype(at_impl::lookup<Key>(std::declval<at_impl::table<Elements...>>()));
 };
 }
+/**
+\brief The value type associated with a key in a map.
+\ingroup fcpptmpl
+Let <code>Map = map::object<element<K_1,V_1>,...,element<K_n,V_n>></code>,
+where <code>Key = K_i</code> for some <code>1 <= i <= n</code>.
+Then the result is <code>V_i</code>.
+*/
 template<fcppt::mpl::map::object_concept Map, typename Key>
 requires fcppt::mpl::map::has_key<Map,Key>::value
 using at = typename fcppt::mpl::map::detail::at<Map,Key>::type;

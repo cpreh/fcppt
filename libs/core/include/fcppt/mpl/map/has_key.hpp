@@ -40,6 +40,14 @@ struct has_key<fcppt::mpl::map::object<Elements...>,Key>
 };
 }
 
+/**
+\brief Checks if a map contains a key.
+\ingroup fcpptmpl
+Let <code>Map = map::object<element<K_1,V_1>,...,element<K_n,V_n>></code>.
+If <code>Key = K_i</code> for some <code>1 <= i <= n</code>,
+then the result is <code>std::true_type</code>.
+Otherwise, it is <code>std::false_type</code>.
+*/
 template<fcppt::mpl::map::object_concept Map, typename Key>
 using has_key = typename fcppt::mpl::map::detail::has_key<Map,Key>::type;
 

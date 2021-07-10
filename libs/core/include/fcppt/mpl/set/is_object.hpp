@@ -13,15 +13,29 @@
 
 namespace fcppt::mpl::set
 {
-template <typename T>
-struct is_object : std::false_type
+namespace detail
 {
+template <typename T>
+struct is_object
+{
+  using type = std::false_type;
 };
 
 template <typename... T>
-struct is_object<fcppt::mpl::set::object<T...>> : std::true_type
+struct is_object<fcppt::mpl::set::object<T...>>
 {
+  using type = std::true_type;
 };
+}
+/**
+\brief Checks if a type is a set.
+\ingroup fcpptmpl
+
+<code>T</code> is a set if an only if it is of the form
+<code>fcppt::mpl::set::object<T_1, ..., T_n></code> for some types <code>T_1, ..., T_n</code>.
+*/
+template<typename T>
+using is_object = typename fcppt::mpl::set::detail::is_object<T>::type;
 }
 
 #endif

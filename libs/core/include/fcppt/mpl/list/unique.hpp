@@ -12,8 +12,7 @@
 namespace fcppt::mpl::list
 {
 /**
-\brief Removes duplicates from an mpl::list.
-
+\brief Removes duplicates from a list.
 \ingroup fcpptrecord
 */
 template <fcppt::mpl::list::object_concept List>

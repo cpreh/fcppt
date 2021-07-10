@@ -24,6 +24,14 @@ struct to_list<fcppt::mpl::set::object<Es...>>
 };
 }
 
+/**
+\brief Converts a set to a list.
+\ingroup fcpptmpl
+Let <code>Set = set::object<E_1,...,E_n></code>. The result is
+\code
+list::object<E_1,...,E_n>
+\endcode
+*/
 template<fcppt::mpl::set::object_concept Set>
 using to_list = typename fcppt::mpl::set::detail::to_list<Set>::type;
 }

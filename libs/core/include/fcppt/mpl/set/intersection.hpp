@@ -22,9 +22,7 @@ namespace fcppt::mpl::set
 {
 /**
 \brief The intersection of two sets.
-
 \ingroup fcpptmpl
-
 The result contains every element that is both in \a Set1 and \a Set2.
 */
 template <fcppt::mpl::set::object_concept Set1, fcppt::mpl::set::object_concept Set2>

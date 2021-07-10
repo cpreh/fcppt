@@ -24,6 +24,16 @@ struct map<fcppt::mpl::list::object<Types...>,fcppt::mpl::lambda<F>>
   using type = fcppt::mpl::list::object<F<Types>...>;
 };
 }
+/**
+\brief Applies a lambda to every element of a list.
+\ingroup fcpptmpl
+If <code>List=list::object<L_1,...,L_n></code> and
+<code>L</code> holds a function <code>F</code> of arity <code>1</code>,
+then the result is
+\code
+list::object<F<L_1>,...,F<L_n>>
+\endcode
+*/
 template <fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept F>
 using map = typename fcppt::mpl::list::detail::map<List,F>::type;
 }

@@ -37,6 +37,13 @@ struct contains<fcppt::mpl::set::object<Elements...>,Key>
 };
 }
 
+/**
+\brief Checks if a set contains an element.
+\ingroup fcpptmpl
+Let <code>Set = set::object<E_1,...,E_n></code>. The result is
+<code>std::true_type</code> if <code>Key = E_i</code> for some <code>1 <= i <= n</code>.
+Otherwise, it is <code>std::false_type</code>.
+*/
 template<fcppt::mpl::set::object_concept Set, typename Key>
 using contains = typename fcppt::mpl::set::detail::contains<Set,Key>::type;
 

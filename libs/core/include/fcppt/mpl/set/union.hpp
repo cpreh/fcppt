@@ -18,9 +18,7 @@ namespace fcppt::mpl::set
 {
 /**
 \brief The union of two sets.
-
 \ingroup fcpptmpl
-
 The result contains every element that is in \a Set1 or in \a Set2.
 */
 template <fcppt::mpl::set::object_concept Set1, fcppt::mpl::set::object_concept Set2>

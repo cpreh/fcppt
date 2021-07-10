@@ -23,6 +23,15 @@ struct push_back<fcppt::mpl::list::object<E...>, T>
 };
 }
 
+/**
+\brief Adds an element to the back of a list.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code>,
+then the result is
+\code
+list::object<L_1,...,L_n,T>
+\endcode
+*/
 template<fcppt::mpl::list::object_concept List, typename T>
 using push_back = typename fcppt::mpl::list::detail::push_back<List,T>::type;
 }

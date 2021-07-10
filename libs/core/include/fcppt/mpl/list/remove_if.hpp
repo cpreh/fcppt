@@ -18,6 +18,12 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Removes the elements that satisfy a predicate.
+\ingroup fcpptmpl
+Removes the elements of \a List for which \a Pred is <code>std::true_type</code>.
+The order of the remaining elements stays the same.
+*/
 template <fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept Pred>
 using remove_if = fcppt::mpl::list::fold<
     List,

@@ -18,11 +18,17 @@
 
 namespace fcppt::mpl::list
 {
-template <fcppt::mpl::list::object_concept List, typename Type>
+/**
+\brief Removes a specific type from a list.
+\ingroup fcpptmpl
+Removes every occurrence of \a T from \a List.
+The order of the remaining elements stays the same.
+*/
+template <fcppt::mpl::list::object_concept List, typename T>
 using remove = fcppt::mpl::list::remove_if<
     List,
     fcppt::mpl::
-        bind<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::constant<Type>, fcppt::mpl::arg<1>>>;
+        bind<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::constant<T>, fcppt::mpl::arg<1>>>;
 }
 
 #endif

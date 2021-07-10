@@ -17,6 +17,11 @@
 
 namespace fcppt::mpl::set
 {
+/**
+\brief Converts a list with into a set, removing duplicates.
+\ingroup fcpptmpl
+Unlike #fcppt::mpl::set::from_list, this function allows duplicate elements.
+*/
 template <fcppt::mpl::list::object_concept List>
 using from_list_relaxed = fcppt::mpl::list::fold<
     List,

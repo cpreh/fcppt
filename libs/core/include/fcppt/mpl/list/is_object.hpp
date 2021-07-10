@@ -28,7 +28,7 @@ struct is_object<fcppt::mpl::list::object<T...>>
 };
 }
 /**
-Checks if a type is a list.
+\brief Checks if a type is a list.
 \ingroup fcpptmpl
 
 <code>T</code> is a list if an only if it is of the form

@@ -17,6 +17,12 @@
 
 namespace fcppt::mpl::list
 {
+/**
+\brief Only keeps elements that satisfy a predicate.
+\ingroup fcpptmpl
+Keeps the elements of \a List for which \a Pred is <code>std::true_type</code>.
+The order of the elements stays the same.
+*/
 template <fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept Pred>
 using keep_if =
     fcppt::mpl::list::remove_if<List, fcppt::mpl::bind<fcppt::mpl::lambda<std::negation>, Pred>>;

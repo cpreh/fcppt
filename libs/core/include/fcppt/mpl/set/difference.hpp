@@ -22,9 +22,7 @@ namespace fcppt::mpl::set
 {
 /**
 \brief The difference of two sets.
-
 \ingroup fcpptmpl
-
 The result contains every element that is in \a Set1, but not in \a Set2.
 */
 template <fcppt::mpl::set::object_concept Set1, fcppt::mpl::set::object_concept Set2>

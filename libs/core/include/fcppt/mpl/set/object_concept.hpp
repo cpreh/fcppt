@@ -11,6 +11,11 @@
 namespace fcppt::mpl::set
 {
 
+/**
+\brief Concept for sets.
+\ingroup fcpptmpl
+\see fcppt::mpl::set::is_object
+*/
 template<typename T>
 concept object_concept = fcppt::mpl::set::is_object<T>::value;
 

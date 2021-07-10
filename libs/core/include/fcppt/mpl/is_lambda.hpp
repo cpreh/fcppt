@@ -28,7 +28,7 @@ struct is_lambda<fcppt::mpl::lambda<T>>
 };
 }
 /**
-Checks if a type is a lambda.
+\brief Checks if a type is a lambda.
 \ingroup fcpptmpl
 
 <code>T</code> is a lambda if an only if it is of the form

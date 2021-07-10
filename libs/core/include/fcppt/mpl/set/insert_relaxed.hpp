@@ -15,6 +15,16 @@
 
 namespace fcppt::mpl::set
 {
+/**
+\brief Inserts an element into a set.
+\ingroup fcpptmpl
+Let <code>Set = set::object<E_1,...,E_n></code>.
+If <code>E</code> is not equal to any of the <code>E_1,...,E_n</code>, then the result is
+\code
+set::object<E_1,...,E_n,E>
+\endcode
+Otherwise, the result is <code>Set</code>.
+*/
 template <fcppt::mpl::set::object_concept Set, typename Value>
 using insert_relaxed = fcppt::mpl::apply<fcppt::mpl::if_<
     fcppt::mpl::set::contains<Set, Value>,

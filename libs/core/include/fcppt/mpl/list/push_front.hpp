@@ -23,6 +23,15 @@ struct push_front<fcppt::mpl::list::object<E...>, T>
 };
 }
 
+/**
+\brief Adds an element to the front of a list.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code>,
+then the result is
+\code
+list::object<T,L_1,...,L_n>
+\endcode
+*/
 template<fcppt::mpl::list::object_concept List, typename T>
 using push_front = typename fcppt::mpl::list::detail::push_front<List,T>::type;
 }

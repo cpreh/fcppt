@@ -11,6 +11,11 @@
 namespace fcppt::mpl::list
 {
 
+/**
+\brief Concept for lists.
+\ingroup fcpptmpl
+\see fcppt::mpl::list::is_object
+*/
 template<typename T>
 concept object_concept = fcppt::mpl::list::is_object<T>::value;
 

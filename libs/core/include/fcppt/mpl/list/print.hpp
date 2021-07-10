@@ -56,13 +56,10 @@ requires (!fcppt::mpl::list::empty<List>::value)
 
 }
 /**
-\brief Pretty prints an mpl list.
-
+\brief Pretty prints a list.
 \ingroup fcpptmpl
-
 Pretty prints \a List to \a _stream. Every type in \a List will be
-converted to a string using #fcppt::type_name. The resulting format of the
-printed sequence will be <code>(name_1, ..., name_n)</code>.
+converted to a string using #fcppt::type_name.
 */
 template <fcppt::mpl::list::object_concept List, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &print(std::basic_ostream<Ch, Traits> &_stream)

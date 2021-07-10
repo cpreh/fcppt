@@ -28,6 +28,16 @@ struct flip<fcppt::mpl::map::object<Elements...>>
       fcppt::mpl::map::element_key<Elements>>...>;
 };
 }
+/**
+\brief Flips the key-value pairs inside a map.
+\ingroup fcpptmpl
+Let <code>Map=map::object<element<K_1,V_1>,...,element<K_n,V_n>></code>.
+Then the result is
+\code
+map::object<element<V_1,K_1>,...,element<V_n,K_n>>
+\endcode
+This only works if all the values <code>V_1,...,V_n</code> are pairwise disjoint.
+*/
 template <fcppt::mpl::map::object_concept Map>
 using flip = typename fcppt::mpl::map::detail::flip<Map>::type;
 }

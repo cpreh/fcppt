@@ -23,9 +23,19 @@ struct insert<fcppt::mpl::set::object<Elements...>,Key>
   using type = fcppt::mpl::set::object<Elements...,Key>;
 };
 }
-template<fcppt::mpl::set::object_concept Set, typename Key>
-requires (!fcppt::mpl::set::contains<Set,Key>::value)
-using insert = typename fcppt::mpl::set::detail::insert<Set,Key>::type;
+/**
+\brief Inserts a new element into a set.
+\ingroup fcpptmpl
+Let <code>Set = set::object<E_1,...,E_n></code>.
+Then the result is
+\code
+set::object<E_1,...,E_n,E>
+\endcode
+This only works if <code>E</code> is not equal to any of the <code>E_1,...,E_n</code>.
+*/
+template<fcppt::mpl::set::object_concept Set, typename E>
+requires (!fcppt::mpl::set::contains<Set,E>::value)
+using insert = typename fcppt::mpl::set::detail::insert<Set,E>::type;
 }
 
 #endif

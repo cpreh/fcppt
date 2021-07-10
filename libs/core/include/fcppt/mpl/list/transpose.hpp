@@ -42,7 +42,19 @@ struct transpose<fcppt::mpl::list::object<List,Lists...>>
           fcppt::mpl::constant<Lists>...>>;
 };
 }
+/**
+\brief Transposes n lists of length k into k lists of length n.
+\ingroup fcpptmpl
+If
+\code
+List=list::object<list::object<L_{1,1},...,L_{1,k}>, ... list::object<L_{1,n},...,L_{n,k}>>
+\endcode
+then the result is
+\code
+list::object<list::object<L_{1,1},...,L_{1,n}>,...,list::object<L_{1,k},...,L_{n,k}>>
+\endcode
 // TODO(concepts)
+*/
 template <fcppt::mpl::list::object_concept List>
 using transpose = typename fcppt::mpl::list::detail::transpose<List>::type;
 }

@@ -16,9 +16,11 @@
 namespace fcppt::mpl::list
 {
 /**
-\brief Converts an mpl::list to a string.
+\brief Converts a list to a string.
 
 \ingroup fcpptmpl
+
+\see fcppt::mpl::list::print
 */
 template <fcppt::mpl::list::object_concept Sequence>
 std::string to_string()

@@ -11,6 +11,10 @@
 
 namespace fcppt::mpl::set
 {
+/**
+\brief Checks if a variadic list is pairwise disjoint.
+\ingroup fcpptmpl
+*/
 template <typename... Args>
 using unique = fcppt::mpl::list::distinct<fcppt::mpl::list::object<Args...>>;
 }

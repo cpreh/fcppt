@@ -21,6 +21,15 @@ struct tail<fcppt::mpl::list::object<Head,Tail...>>
   using type = fcppt::mpl::list::object<Tail...>;
 };
 }
+/**
+\brief Removes the first element of a list.
+\ingroup fcpptmpl
+If <code>List = list::object<L_1,...,L_n></code>,
+where <code>n >= 1</code>, then the result is
+\code
+list::object<L_2,...,L_n>
+\endcode
+*/
 template<fcppt::mpl::list::object_concept List>
 using tail = typename fcppt::mpl::list::detail::tail<List>::type;
 }

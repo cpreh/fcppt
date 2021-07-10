@@ -8,12 +8,11 @@
 
 namespace fcppt::mpl::list
 {
-
 /**
 \brief The list type used by this library.
 \ingroup fcpptmpl
 */
-template<typename... Args>
+template <typename... Args>
 struct object;
 
 }

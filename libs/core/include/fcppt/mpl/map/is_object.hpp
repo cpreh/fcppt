@@ -13,15 +13,29 @@
 
 namespace fcppt::mpl::map
 {
-template <typename T>
-struct is_object : std::false_type
+namespace detail
 {
+template <typename T>
+struct is_object
+{
+  using type = std::false_type;
 };
 
 template <typename... T>
-struct is_object<fcppt::mpl::map::object<T...>> : std::true_type
+struct is_object<fcppt::mpl::map::object<T...>>
 {
+  using type =  std::true_type;
 };
+}
+/**
+\brief Checks if a type is a map.
+\ingroup fcpptmpl
+
+<code>T</code> is a map if an only if it is of the form
+<code>fcppt::mpl::map::object<E_1, ..., E_n></code> for some elements <code>E_1, ..., E_n</code>.
+*/
+template <typename T>
+using is_object = typename fcppt::mpl::map::detail::is_object<T>::type;
 }
 
 #endif
