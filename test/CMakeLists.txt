@@ -58,13 +58,9 @@ fcppt_utils_link_target(
 	fcppt_core
 )
 
-if(
-	ENABLE_FILESYSTEM
+fcppt_utils_link_target(
+	fcppt_filesystem
 )
-	fcppt_utils_link_target(
-		fcppt_filesystem
-	)
-endif()
 
 fcppt_utils_link_target(
 	fcppt_log
@@ -178,13 +174,9 @@ add_fcppt_test(
 		"${fcppt_core_TARGET}"
 )
 
-if(
-	ENABLE_FILESYSTEM
+add_subdirectory(
+	filesystem
 )
-	add_subdirectory(
-		filesystem
-	)
-endif()
 
 add_fcppt_test(
 	function

@@ -1,12 +1,4 @@
 if(
-	ENABLE_FILESYSTEM
-)
-	add_subdirectory(
-		filesystem
-	)
-endif()
-
-if(
 	ENABLE_BOOST
 )
 	add_subdirectory(
@@ -25,6 +17,10 @@ endif()
 
 add_subdirectory(
 	core
+)
+
+add_subdirectory(
+	filesystem
 )
 
 add_subdirectory(

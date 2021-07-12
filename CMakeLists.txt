@@ -125,12 +125,6 @@ option(
 )
 
 option(
-	ENABLE_FILESYSTEM
-	"Build the filesystem library"
-	ON
-)
-
-option(
 	ENABLE_CATCH
 	"Build the Catch support library"
 	${Catch2_FOUND}
