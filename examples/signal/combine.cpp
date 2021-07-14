@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 //! [signal_combine]
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -39,6 +40,6 @@ int main()
       signal.connect(int_signal::function{&third_callback})};
 
   // Outputs ((1*4)*8)*15=480
-  fcppt::io::cout() << signal(int_signal::initial_value{1}) << FCPPT_TEXT('\n');
+  std::cout << signal(int_signal::initial_value{1}) << '\n';
 }
 //! [signal_combine]

@@ -4,9 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/algorithm/repeat.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/normal.hpp>
@@ -14,6 +12,9 @@
 #include <fcppt/random/distribution/parameters/uniform_real.hpp>
 #include <fcppt/random/generator/mt19937.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -21,9 +22,9 @@ namespace
 template <typename Rng>
 void print_values(Rng &rng)
 {
-  fcppt::algorithm::repeat(20U, [&rng] { fcppt::io::cout() << rng() << FCPPT_TEXT(' '); });
+  fcppt::algorithm::repeat(20U, [&rng] { std::cout << rng() << ' '; });
 
-  fcppt::io::cout() << FCPPT_TEXT('\n');
+  std::cout << '\n';
 }
 // ![random_print_values]
 

@@ -46,10 +46,11 @@ struct transform<mine::my_type<Type>>
 }
 //![random_transform_specialization]
 
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {
@@ -58,8 +59,8 @@ int main()
   using distribution = fcppt::random::distribution::basic<
       fcppt::random::distribution::parameters::uniform_int<my_int_type>>;
 
-  fcppt::io::cout() << distribution(
-                           distribution::param_type::min(my_int_type(0)),
-                           distribution::param_type::max(my_int_type(10)))
-                    << FCPPT_TEXT('\n');
+  std::cout << distribution(
+                   distribution::param_type::min(my_int_type(0)),
+                   distribution::param_type::max(my_int_type(10)))
+            << '\n';
 }

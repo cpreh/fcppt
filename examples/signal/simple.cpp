@@ -5,8 +5,6 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,12 +22,12 @@ struct test_struct
 
 void callback(int const _value)
 {
-  fcppt::io::cout() << FCPPT_TEXT("\"callback\" called with ") << _value << FCPPT_TEXT("!\n");
+  std::cout << "\"callback\" called with " << _value << "!\n";
 }
 
 void other_callback(fcppt::reference<test_struct>)
 {
-  fcppt::io::cout() << FCPPT_TEXT("\"other_callback\" called\n");
+  std::cout << "\"other_callback\" called\n";
 }
 
 void main_example()

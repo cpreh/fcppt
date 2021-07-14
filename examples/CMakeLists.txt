@@ -207,7 +207,7 @@ add_fcppt_example(
 add_fcppt_example(
 	shared_ptr
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -237,7 +237,7 @@ add_fcppt_example(
 add_fcppt_example(
 	unique_ptr
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -255,7 +255,7 @@ add_fcppt_example(
 add_fcppt_example(
 	weak_ptr
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_subdirectory(

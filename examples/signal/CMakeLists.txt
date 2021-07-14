@@ -33,23 +33,23 @@ endif()
 add_fcppt_signal_example(
 	combine
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_signal_example(
 	connection
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_signal_example(
 	simple
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_signal_example(
 	unregister
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )

@@ -6,12 +6,11 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
 #include <fcppt/unique_ptr_to_const.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <iostream>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,7 +29,7 @@ unique_int_ptr int_ptr_factory()
 //! [unique_ptr_factory]
 
 //! [unique_ptr_factory_use]
-void int_ptr_arg(unique_int_ptr &&ptr) { fcppt::io::cout() << *ptr << FCPPT_TEXT('\n'); }
+void int_ptr_arg(unique_int_ptr &&ptr) { std::cout << *ptr << '\n'; }
 
 void test() { int_ptr_arg(int_ptr_factory()); }
 //! [unique_ptr_factory_use]
@@ -60,9 +59,8 @@ void test3()
   int_ptr_arg(std::move(ptr));
 
   // ptr is now the null pointer
-  fcppt::io::cout()
-      << ptr.get_pointer() // NOLINT(bugprone-use-after-move,hicpp-invalid-access-moved)
-      << FCPPT_TEXT('\n');
+  std::cout << ptr.get_pointer() // NOLINT(bugprone-use-after-move,hicpp-invalid-access-moved)
+            << '\n';
 }
 //! [unique_ptr_move_dangerous]
 }

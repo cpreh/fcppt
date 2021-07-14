@@ -11,7 +11,7 @@ endfunction()
 add_fcppt_math_vector_example(
 	access
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_math_vector_example(
@@ -41,5 +41,5 @@ add_fcppt_math_vector_example(
 add_fcppt_math_vector_example(
 	various
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )

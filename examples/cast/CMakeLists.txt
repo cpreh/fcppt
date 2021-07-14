@@ -29,5 +29,5 @@ add_fcppt_cast_example(
 add_fcppt_cast_example(
 	truncation_check
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )

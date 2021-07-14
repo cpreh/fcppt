@@ -4,9 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/make_uniform_enum.hpp>
@@ -14,6 +12,9 @@
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/type_iso/enum.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -50,5 +51,5 @@ int main()
 
   my_enum const chosen(rng());
 
-  fcppt::io::cout() << fcppt::cast::enum_to_underlying(chosen) << FCPPT_TEXT('\n');
+  std::cout << fcppt::cast::enum_to_underlying(chosen) << '\n';
 }

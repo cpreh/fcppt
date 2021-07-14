@@ -3,10 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/text.hpp>
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 //! [bitfield]
 namespace
@@ -22,9 +23,8 @@ using bitfield = fcppt::container::bitfield::object<person_status>;
 
 void output(bitfield const &_field)
 {
-  fcppt::io::cout() << FCPPT_TEXT("Person status: hungry: ") << (_field & person_status::hungry)
-                    << FCPPT_TEXT('\n') << FCPPT_TEXT("Person status: tired: ")
-                    << (_field & person_status::tired) << FCPPT_TEXT('\n');
+  std::cout << "Person status: hungry: " << (_field & person_status::hungry) << '\n'
+            << "Person status: tired: " << (_field & person_status::tired) << '\n';
 }
 }
 
@@ -44,13 +44,11 @@ int main()
   field &= ~bitfield{person_status::hungry};
 
   // You can access a single flag via operator[]
-  fcppt::io::cout() << FCPPT_TEXT("person is hungry: ") << field[person_status::hungry]
-                    << FCPPT_TEXT('\n');
+  std::cout << "person is hungry: " << field[person_status::hungry] << '\n';
 
   // You can also set a flag this way:
   field[person_status::hungry] = false;
 
-  fcppt::io::cout() << FCPPT_TEXT("person is hungry: ") << field[person_status::hungry]
-                    << FCPPT_TEXT('\n');
+  std::cout << ("person is hungry: ") << field[person_status::hungry] << '\n';
 }
 //! [bitfield]

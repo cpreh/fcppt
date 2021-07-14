@@ -3,14 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/text.hpp>
 #include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/container/grid/interpolate.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/output.hpp>
 #include <fcppt/container/grid/resize.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/math/interpolation/linear.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -25,7 +26,7 @@ void use_grid()
   // Set the value on position (1,2,3) to 42
   grid.get_unsafe(int3d_grid::pos(1U, 2U, 3U)) = 42;
 
-  fcppt::io::cout() << grid.get_unsafe(int3d_grid::pos(1U, 2U, 3U)) << FCPPT_TEXT('\n');
+  std::cout << grid.get_unsafe(int3d_grid::pos(1U, 2U, 3U)) << '\n';
 }
 //! [grid_simple]
 
@@ -66,14 +67,14 @@ void resize_grid()
         return count++;
       });
 
-  fcppt::io::cout() << grid << FCPPT_TEXT('\n');
+  std::cout << grid << '\n';
 
   int2d_grid const new_grid(
       // Give the grid one more row and column and initialize those with 42.
       fcppt::container::grid::resize(
           grid, int2d_grid::dim(3U, 4U), [](int2d_grid::pos const &) { return 42; }));
 
-  fcppt::io::cout() << grid << FCPPT_TEXT('\n');
+  std::cout << grid << '\n';
 }
 
 }
@@ -101,7 +102,7 @@ void interpolate_grid()
 
   // Will bilinearly interpolate ALL the grid points and return something
   // inbetween (too lazy to calculate)
-  fcppt::io::cout() << result << FCPPT_TEXT('\n');
+  std::cout << result << '\n';
 }
 //! [grid_interpolate]
 }

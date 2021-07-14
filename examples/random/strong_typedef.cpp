@@ -7,15 +7,16 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/algorithm/repeat.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {
@@ -40,12 +41,8 @@ int main()
   //![random_strong_typedef_variate]
 
   //![random_strong_typedef_output]
-  fcppt::algorithm::repeat(10U, [&rng] {
-    fcppt::io::cout()
-        // Outputs objects of type my_type
-        << rng() << FCPPT_TEXT(' ');
-  });
+  fcppt::algorithm::repeat(10U, [&rng] { std::cout << rng() << ' '; });
   //![random_strong_typedef_output]
 
-  fcppt::io::cout() << FCPPT_TEXT('\n');
+  std::cout << '\n';
 }

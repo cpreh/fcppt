@@ -6,9 +6,8 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4702)
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <iostream>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -140,7 +139,7 @@ void cast()
 
   if (dptr.has_value())
   {
-    fcppt::io::cout() << FCPPT_TEXT("ptr points to a derived.\n");
+    std::cout << "ptr points to a derived.\n";
   }
 }
 // ![shared_ptr_cast]

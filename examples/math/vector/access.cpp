@@ -3,9 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {
@@ -15,5 +16,5 @@ int main()
 
   obj.x() = 42.F;
 
-  fcppt::io::cout() << obj.x() << ' ' << obj.y() << FCPPT_TEXT('\n');
+  std::cout << obj.x() << ' ' << obj.y() << '\n';
 }

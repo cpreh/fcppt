@@ -3,9 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/text.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 //! [grid_iteration]
 namespace
@@ -27,10 +28,10 @@ int main()
   // Outputs 0, 1, 2
   for (auto const &elem : one_dimensional)
   {
-    fcppt::io::cout() << elem << FCPPT_TEXT(' ');
+    std::cout << elem << ' ';
   }
 
-  fcppt::io::cout() << FCPPT_TEXT('\n');
+  std::cout << '\n';
 
   int2d_grid two_dimensional(int2d_grid::dim(3U, 2U), 0);
 
@@ -44,9 +45,9 @@ int main()
   // Outputs 0, 1, 2, 3, 4, 5
   for (auto const &elem : two_dimensional)
   {
-    fcppt::io::cout() << elem << FCPPT_TEXT(' ');
+    std::cout << elem << ' ';
   }
 
-  fcppt::io::cout() << FCPPT_TEXT('\n');
+  std::cout << '\n';
 }
 //! [grid_iteration]

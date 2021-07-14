@@ -5,11 +5,10 @@
 
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/weak_ptr_impl.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 int main()
@@ -30,7 +29,7 @@ try
 
     if (weak_p.lock().has_value())
     {
-      fcppt::io::cout() << FCPPT_TEXT("A shared ptr is still alive.\n");
+      std::cout << "A shared ptr is still alive.\n";
     }
   }
 
@@ -38,7 +37,7 @@ try
   // shared_ptr is alive.
   if (!weak_p.lock().has_value())
   {
-    fcppt::io::cout() << FCPPT_TEXT("No shared ptrs are alive.\n");
+    std::cout << "No shared ptrs are alive.\n";
   }
   //! [weak_ptr]
 }

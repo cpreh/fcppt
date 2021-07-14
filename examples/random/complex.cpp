@@ -6,9 +6,7 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/algorithm/repeat.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
@@ -19,6 +17,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 int main()
@@ -47,11 +46,10 @@ int main()
   //![random_complex_variate]
 
   //![random_complex_output]
-  fcppt::algorithm::repeat(
-      10U, [&rng] { fcppt::io::cout() << rng().get().value() << FCPPT_TEXT(' '); });
+  fcppt::algorithm::repeat(10U, [&rng] { std::cout << rng().get().value() << ' '; });
   //![random_complex_output]
 
-  fcppt::io::cout() << FCPPT_TEXT('\n');
+  std::cout << '\n';
 
   using meter_distribution = fcppt::random::distribution::basic<
       fcppt::random::distribution::parameters::uniform_int<meter>>;
@@ -64,8 +62,7 @@ int main()
           meter_distribution::param_type::min(0 * boost::units::si::meter),
           meter_distribution::param_type::max(10 * boost::units::si::meter)));
 
-  fcppt::algorithm::repeat(
-      10U, [&meter_rng] { fcppt::io::cout() << meter_rng().value() << FCPPT_TEXT(' '); });
+  fcppt::algorithm::repeat(10U, [&meter_rng] { std::cout << meter_rng().value() << ' '; });
 
-  fcppt::io::cout() << FCPPT_TEXT('\n');
+  std::cout << '\n';
 }

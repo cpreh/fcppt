@@ -3,35 +3,31 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/exception.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 int main()
 try
 {
   //! [main]
-  using string_tree = fcppt::container::tree::object<fcppt::string>;
+  using string_tree = fcppt::container::tree::object<std::string>;
 
   // Create a tree, insert 5 elements below the root
-  string_tree tree(FCPPT_TEXT("hello"));
+  string_tree tree{"hello"};
 
-  tree.push_back(FCPPT_TEXT("foo"));
+  tree.push_back("foo");
 
-  tree.push_back(FCPPT_TEXT("bar"));
+  tree.push_back("bar");
 
-  tree.push_back(FCPPT_TEXT("baz"));
+  tree.push_back("baz");
 
-  tree.front().get_unsafe().get().push_back(FCPPT_TEXT("qux"));
+  tree.front().get_unsafe().get().push_back("qux");
 
   // Create a traversal and "attach" it to the tree in the ctor
   // Then use it like a forward-iterable container!
@@ -40,19 +36,11 @@ try
   // hello, foo, qux, bar, baz
   for (string_tree const &item : fcppt::container::tree::pre_order<string_tree const>(tree))
   {
-    fcppt::io::cout() << item.value() << std::endl;
+    std::cout << item.value() << std::endl;
   }
   //! [main]
 }
-catch (fcppt::exception const &_error)
+catch(std::exception const &error)
 {
-  fcppt::io::cerr() << _error.string() << FCPPT_TEXT('\n');
-
-  return EXIT_FAILURE;
-}
-catch (std::exception const &_error)
-{
-  std::cerr << _error.what() << '\n';
-
-  return EXIT_FAILURE;
+  std::cerr << error.what() << '\n';
 }

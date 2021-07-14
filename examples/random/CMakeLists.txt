@@ -17,30 +17,30 @@ if(
 			${Boost_INCLUDE_DIRS}
 		LINK_LIBS
 			fcppt_boost_interface
-			${fcppt_core_TARGET}
+			fcppt_core_interface
 	)
 endif()
 
 add_fcppt_random_example(
 	enum
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_random_example(
 	simple
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_random_example(
 	strong_typedef
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
 
 add_fcppt_random_example(
 	transform
 	LINK_LIBS
-		${fcppt_core_TARGET}
+		fcppt_core_interface
 )
