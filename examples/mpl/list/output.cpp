@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/print.hpp>
+#include <fcppt/mpl/list/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
@@ -12,10 +12,7 @@
 
 int main()
 {
-  //! [mpl_print}
-  using vec = fcppt::mpl::list::object<int, float, double>;
-
   // prints (int, float, double) to cout
-  fcppt::mpl::list::print<vec>(std::cout) << '\n';
+  std::cout << fcppt::mpl::list::object<int, float, double>{} << '\n';
   //! [mpl_print}
 }

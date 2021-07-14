@@ -5,7 +5,7 @@
 
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/print.hpp>
+#include <fcppt/mpl/list/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
@@ -13,10 +13,10 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
-TEST_CASE("mpl::list::print", "[mpl]")
+TEST_CASE("mpl::list::output", "[mpl]")
 {
   std::ostringstream out{};
-  fcppt::mpl::list::print<fcppt::mpl::list::object<int, std::string>>(out);
+  out << fcppt::mpl::list::object<int, std::string>{};
   CHECK(
       out.str() == "(" + fcppt::type_name_from_info(typeid(int)) + "," +
                        fcppt::type_name_from_info(typeid(std::string)) + ")");

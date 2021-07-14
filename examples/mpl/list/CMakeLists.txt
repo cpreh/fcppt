@@ -15,7 +15,7 @@ add_fcppt_mpl_list_example(
 )
 
 add_fcppt_mpl_list_example(
-	print
+	output
 	LINK_LIBS
 		${fcppt_core_TARGET}
 )

@@ -928,8 +928,8 @@ set(
 	libs/core/include/fcppt/mpl/list/object.hpp
 	libs/core/include/fcppt/mpl/list/object_concept.hpp
 	libs/core/include/fcppt/mpl/list/object_fwd.hpp
+	libs/core/include/fcppt/mpl/list/output.hpp
 	libs/core/include/fcppt/mpl/list/pop_back.hpp
-	libs/core/include/fcppt/mpl/list/print.hpp
 	libs/core/include/fcppt/mpl/list/push_back.hpp
 	libs/core/include/fcppt/mpl/list/push_front.hpp
 	libs/core/include/fcppt/mpl/list/remove.hpp
@@ -938,7 +938,6 @@ set(
 	libs/core/include/fcppt/mpl/list/size.hpp
 	libs/core/include/fcppt/mpl/list/tail.hpp
 	libs/core/include/fcppt/mpl/list/take.hpp
-	libs/core/include/fcppt/mpl/list/to_string.hpp
 	libs/core/include/fcppt/mpl/list/transpose.hpp
 	libs/core/include/fcppt/mpl/list/unique.hpp
 	libs/core/include/fcppt/mpl/map/at.hpp

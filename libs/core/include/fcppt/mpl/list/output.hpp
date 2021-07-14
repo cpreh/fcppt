@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_MPL_LIST_PRINT_HPP_INCLUDED
-#define FCPPT_MPL_LIST_PRINT_HPP_INCLUDED
+#ifndef FCPPT_MPL_LIST_OUTPUT_HPP_INCLUDED
+#define FCPPT_MPL_LIST_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
 #include <fcppt/tag.hpp>
@@ -56,17 +56,18 @@ requires (!fcppt::mpl::list::empty<List>::value)
 
 }
 /**
-\brief Pretty prints a list.
+\brief Prints a list.
 \ingroup fcpptmpl
-Pretty prints \a List to \a _stream. Every type in \a List will be
-converted to a string using #fcppt::type_name.
+Prints \a List to \a _stream. Every type in \a List will be converted to a
+string using #fcppt::type_name.
 */
-template <fcppt::mpl::list::object_concept List, typename Ch, typename Traits>
-std::basic_ostream<Ch, Traits> &print(std::basic_ostream<Ch, Traits> &_stream)
+template <typename Ch, typename Traits, typename... Types>
+std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::mpl::list::object<Types...> const &)
 {
   _stream << FCPPT_CHAR_LITERAL(Ch, '(');
 
-  fcppt::mpl::list::detail::print<List>(_stream);
+  fcppt::mpl::list::detail::print<fcppt::mpl::list::object<Types...>>(_stream);
 
   _stream << FCPPT_CHAR_LITERAL(Ch, ')');
 
