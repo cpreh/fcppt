@@ -6,35 +6,39 @@
 #ifndef FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 #define FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 
-#include <fcppt/detail/symbol.hpp>
-#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
+#include <iterator>
+#include <locale>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace time
+namespace fcppt::time
 {
 /**
-\brief Outputs an <code>%std::tm</code> to a stream
+\brief Outputs a <code>%std::tm</code> to a stream.
 
 \ingroup fcppttime
 
 Outputs \a tm to \a stream using the <code>std::time_put</code> locale facet,
 obtained from the locale of \a stream. Example:
 \snippet output_tm.cpp output_tm
-
-\param stream The stream to output to
-
-\param tm The time struct to output
-
-\return \a stream
 */
-FCPPT_DETAIL_SYMBOL
-fcppt::io::ostream &output_tm(fcppt::io::ostream &stream, std::tm const &tm);
+template<typename Ch, typename Traits>
+void output_tm(std::basic_ostream<Ch, Traits> &_stream, std::tm const &_tm)
+{
+  typename std::basic_ostream<Ch, Traits>::sentry cerberos{_stream};
 
+  if (!cerberos)
+  {
+    return;
+  }
+
+  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
+  std::use_facet<std::time_put<Ch, std::ostreambuf_iterator<Ch, Traits>>>(_stream.getloc())
+      .put(_stream, _stream, _stream.fill(), &_tm, 'c');
 }
+
 }
 
 #endif

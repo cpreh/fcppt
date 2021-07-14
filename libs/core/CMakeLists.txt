@@ -1436,7 +1436,6 @@ set(
 	libs/core/src/system.cpp
 	libs/core/src/time/gmtime.cpp
 	libs/core/src/time/localtime.cpp
-	libs/core/src/time/output_tm.cpp
 	libs/core/src/time/std_time.cpp
 	libs/core/src/to_std_string.cpp
 	libs/core/src/to_std_string_locale.cpp
