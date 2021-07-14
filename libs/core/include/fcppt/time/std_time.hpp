@@ -11,23 +11,20 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace time
+namespace fcppt::time
 {
 /**
-\brief A wrapper around <code>%std::time</code>
+\brief A wrapper around <code>%std::time</code>.
 
 \ingroup fcppttime
 
 A wrapper around <code>%std::time</code>, returning the current time.
 
-\throw fcppt::time::exception if an error occurs
+\throw <code>std::runtime_error</code> on failure.
 */
 FCPPT_DETAIL_SYMBOL
 std::time_t std_time();
 
-}
 }
 
 #endif

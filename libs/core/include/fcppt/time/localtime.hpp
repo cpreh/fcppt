@@ -11,24 +11,21 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace time
+namespace fcppt::time
 {
 /**
-\brief A wrapper around <code>%std::localtime</code>
+\brief A wrapper around <code>%std::localtime</code>.
 
 \ingroup fcppttime
 
 Converts \a time to an <code>%std::tm</code> using
 <code>%std::localtime</code>.
 
-\param time The time to convert
+\throw <code>std::runtime_error</code> on failure.
 */
 FCPPT_DETAIL_SYMBOL
 std::tm localtime(std::time_t time);
 
-}
 }
 
 #endif

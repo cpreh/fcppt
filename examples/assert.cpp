@@ -3,17 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/exception.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/assert/information.hpp>
-#include <fcppt/assert/make_message.hpp>
-#include <fcppt/assert/pre.hpp>
 #include <fcppt/assert/unreachable.hpp>
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <exception>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -48,11 +38,6 @@ bool is_fruit(food const _value)
 }
 
 int main()
-try
 {
   is_fruit(food::apple);
-}
-catch (fcppt::exception const &_error)
-{
-  fcppt::io::cerr() << _error.string() << FCPPT_TEXT('\n');
 }

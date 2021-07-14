@@ -16,11 +16,13 @@
 namespace fcppt
 {
 /**
-\brief Converts a std::string to std::wstring, using a locale.
+\brief Converts a <code>std::string</code> to <code>std::wstring</code>, using a locale.
 
 \ingroup fcpptstring
 
-Converts \a _string to std::wstring using \a _locale.
+Converts \a _string to <code>std::wstring</code> using \a _locale.
+
+\throw std::runtime_error If the conversion fails (which should not happen).
 */
 FCPPT_DETAIL_SYMBOL
 std::wstring widen_locale(std::string_view const &, std::locale const &);

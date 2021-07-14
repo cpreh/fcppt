@@ -11,23 +11,20 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace time
+namespace fcppt::time
 {
 /**
-\brief A wrapper around <code>%std::gmtime</code>
+\brief A wrapper around <code>%std::gmtime</code>.
 
 \ingroup fcppttime
 
 Converts \a time to an <code>%std::tm</code> using <code>%std::gmtime</code>.
 
-\param time The time to convert
+\throw <code>std::runtime_error</code> on failure.
 */
 FCPPT_DETAIL_SYMBOL
 std::tm gmtime(std::time_t time);
 
-}
 }
 
 #endif
