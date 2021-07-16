@@ -6,7 +6,6 @@
 #ifndef FCPPT_IMPL_CODECVT_HPP_INCLUDED
 #define FCPPT_IMPL_CODECVT_HPP_INCLUDED
 
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/buffer/object.hpp>
@@ -88,7 +87,7 @@ fcppt::optional::object<std::basic_string<Out>> codecvt(
       return optional_return_type{return_type(buf.begin(), buf.end())};
     }
 
-    FCPPT_ASSERT_UNREACHABLE;
+    return optional_return_type{};
   }
 }
 
