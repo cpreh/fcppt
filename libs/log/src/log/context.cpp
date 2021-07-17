@@ -6,9 +6,12 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_to_const.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/container/tree/make_pre_order.hpp>
@@ -28,11 +31,35 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
+struct fcppt::log::context::impl
+{
+  FCPPT_NONMOVABLE(impl);
+public:
+  using lock_guard = std::lock_guard<std::mutex>;
+
+  impl(fcppt::log::optional_level const &, fcppt::log::level_stream_array &&);
+
+  ~impl();
+
+  [[nodiscard]] fcppt::reference<fcppt::log::detail::context_tree>
+  find_location_impl(fcppt::log::location const &, lock_guard const &);
+
+  [[nodiscard]] std::mutex &mutex();
+
+  [[nodiscard]] fcppt::reference<fcppt::log::detail::context_tree const> root() const;
+
+  [[nodiscard]] fcppt::log::const_level_stream_array_reference streams() const;
+private:
+  mutable std::mutex mutex_;
+
+  fcppt::log::detail::context_tree tree_;
+
+  fcppt::log::level_stream_array const streams_;
+};
+
 fcppt::log::context::context(
     fcppt::log::optional_level const &_root_level, fcppt::log::level_stream_array &&_streams)
-    : mutex_{},
-      tree_{fcppt::log::detail::context_tree_node(fcppt::log::name{fcppt::string()}, _root_level)},
-      streams_{std::move(_streams)}
+    : impl_{fcppt::make_unique_ptr<impl>(_root_level, std::move(_streams))}
 {
 }
 
@@ -41,10 +68,10 @@ fcppt::log::context::~context() = default;
 void fcppt::log::context::set(
     fcppt::log::location const &_location, fcppt::log::optional_level const &_level)
 {
-  std::lock_guard<std::mutex> const lock{this->mutex_};
+  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
 
   for (fcppt::log::detail::context_tree &node : fcppt::container::tree::make_pre_order(
-           fcppt::log::context::find_location_impl(_location, lock).get()))
+           this->impl_->find_location_impl(_location, lock).get()))
   {
     node.value().level(_level);
   }
@@ -52,11 +79,11 @@ void fcppt::log::context::set(
 
 fcppt::log::optional_level fcppt::log::context::get(fcppt::log::location const &_location) const
 {
-  std::lock_guard<std::mutex> const lock{this->mutex_};
+  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
 
   return fcppt::algorithm::fold_break(
              _location,
-             fcppt::make_cref(this->tree_),
+             this->root(),
              [](fcppt::string const &_item,
                 fcppt::reference<fcppt::log::detail::context_tree const> const _cur) {
                return fcppt::optional::maybe(
@@ -73,24 +100,47 @@ fcppt::log::optional_level fcppt::log::context::get(fcppt::log::location const &
 
 fcppt::log::const_level_stream_array_reference fcppt::log::context::level_streams() const
 {
-  return fcppt::make_cref(this->streams_);
+  return this->impl_->streams();
 }
 
 fcppt::reference<fcppt::log::detail::context_tree const> fcppt::log::context::root() const
 {
-  return fcppt::make_cref(this->tree_);
+  return this->impl_->root();
 }
 
 fcppt::reference<fcppt::log::detail::context_tree const>
 fcppt::log::context::find_location(fcppt::log::location const &_location)
 {
-  std::lock_guard<std::mutex> const lock{this->mutex_};
+  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
 
-  return fcppt::reference_to_const(this->find_location_impl(_location, lock));
+  return fcppt::reference_to_const(this->impl_->find_location_impl(_location, lock));
 }
 
+fcppt::reference<fcppt::log::detail::context_tree const> fcppt::log::context::find_child(
+    fcppt::reference<fcppt::log::detail::context_tree const> const _node,
+    fcppt::log::name const &_name)
+{
+  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
+
+  return fcppt::reference_to_const(fcppt::log::impl::find_or_create_child(
+      fcppt::make_ref(
+          // NOLINTNEXTLINE(cppcoreguidelines-pro-type-const-cast)
+          const_cast<fcppt::log::detail::context_tree &>(_node.get())),
+      _name));
+}
+
+fcppt::log::context::impl::impl(
+    fcppt::log::optional_level const &_root_level, fcppt::log::level_stream_array &&_streams)
+    : mutex_{},
+      tree_{fcppt::log::detail::context_tree_node(fcppt::log::name{fcppt::string()}, _root_level)},
+      streams_{std::move(_streams)}
+{
+}
+
+fcppt::log::context::impl::~impl() = default;
+
 fcppt::reference<fcppt::log::detail::context_tree>
-fcppt::log::context::find_location_impl(fcppt::log::location const &_location, lock_guard const &)
+fcppt::log::context::impl::find_location_impl(fcppt::log::location const &_location, lock_guard const &)
 {
   return fcppt::algorithm::fold(
       _location,
@@ -101,15 +151,17 @@ fcppt::log::context::find_location_impl(fcppt::log::location const &_location, l
       });
 }
 
-fcppt::reference<fcppt::log::detail::context_tree const> fcppt::log::context::find_child(
-    fcppt::reference<fcppt::log::detail::context_tree const> const _node,
-    fcppt::log::name const &_name)
+std::mutex &fcppt::log::context::impl::mutex()
 {
-  std::lock_guard<std::mutex> const lock{this->mutex_};
+  return this->mutex_;
+}
 
-  return fcppt::reference_to_const(fcppt::log::impl::find_or_create_child(
-      fcppt::make_ref(
-          // NOLINTNEXTLINE(cppcoreguidelines-pro-type-const-cast)
-          const_cast<fcppt::log::detail::context_tree &>(_node.get())),
-      _name));
+fcppt::reference<fcppt::log::detail::context_tree const> fcppt::log::context::impl::root() const
+{
+  return fcppt::make_cref(this->tree_);
+}
+
+fcppt::log::const_level_stream_array_reference fcppt::log::context::impl::streams() const
+{
+  return fcppt::make_cref(this->streams_);
 }
