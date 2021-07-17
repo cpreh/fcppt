@@ -4,10 +4,7 @@ function(
 )
 	add_fcppt_example(
 		parse/${EXAMPLE_NAME}
-		COMPILE_OPTIONS
-			${FCPPT_UTILS_MAIN_COMPILE_OPTIONS}
 		LINK_LIBS
-			${FCPPT_UTILS_MAIN_LINK_LIBS}
 			fcppt_parse_interface
 		${ARGN}
 	)
