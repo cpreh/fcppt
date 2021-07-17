@@ -27,7 +27,9 @@
 #include <fcppt/log/impl/find_or_create_child.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
+#if defined(ENABLE_THREADS)
 #include <mutex>
+#endif
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -35,7 +37,13 @@ struct fcppt::log::context::impl
 {
   FCPPT_NONMOVABLE(impl);
 public:
+#if defined(ENABLE_THREADS)
+  using mutex_type = std::mutex;
   using lock_guard = std::lock_guard<std::mutex>;
+#else
+  struct mutex_type {};
+  struct lock_guard { explicit lock_guard(mutex_type) {} };
+#endif
 
   impl(fcppt::log::optional_level const &, fcppt::log::level_stream_array &&);
 
@@ -44,13 +52,13 @@ public:
   [[nodiscard]] fcppt::reference<fcppt::log::detail::context_tree>
   find_location_impl(fcppt::log::location const &, lock_guard const &);
 
-  [[nodiscard]] std::mutex &mutex();
+  [[nodiscard]] mutex_type &mutex();
 
   [[nodiscard]] fcppt::reference<fcppt::log::detail::context_tree const> root() const;
 
   [[nodiscard]] fcppt::log::const_level_stream_array_reference streams() const;
 private:
-  mutable std::mutex mutex_;
+  mutable mutex_type mutex_;
 
   fcppt::log::detail::context_tree tree_;
 
@@ -68,7 +76,7 @@ fcppt::log::context::~context() = default;
 void fcppt::log::context::set(
     fcppt::log::location const &_location, fcppt::log::optional_level const &_level)
 {
-  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
+  impl::lock_guard const lock{this->impl_->mutex()};
 
   for (fcppt::log::detail::context_tree &node : fcppt::container::tree::make_pre_order(
            this->impl_->find_location_impl(_location, lock).get()))
@@ -79,7 +87,7 @@ void fcppt::log::context::set(
 
 fcppt::log::optional_level fcppt::log::context::get(fcppt::log::location const &_location) const
 {
-  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
+  impl::lock_guard const lock{this->impl_->mutex()};
 
   return fcppt::algorithm::fold_break(
              _location,
@@ -111,7 +119,7 @@ fcppt::reference<fcppt::log::detail::context_tree const> fcppt::log::context::ro
 fcppt::reference<fcppt::log::detail::context_tree const>
 fcppt::log::context::find_location(fcppt::log::location const &_location)
 {
-  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
+  impl::lock_guard const lock{this->impl_->mutex()};
 
   return fcppt::reference_to_const(this->impl_->find_location_impl(_location, lock));
 }
@@ -120,7 +128,7 @@ fcppt::reference<fcppt::log::detail::context_tree const> fcppt::log::context::fi
     fcppt::reference<fcppt::log::detail::context_tree const> const _node,
     fcppt::log::name const &_name)
 {
-  std::lock_guard<std::mutex> const lock{this->impl_->mutex()};
+  impl::lock_guard const lock{this->impl_->mutex()};
 
   return fcppt::reference_to_const(fcppt::log::impl::find_or_create_child(
       fcppt::make_ref(
@@ -151,7 +159,7 @@ fcppt::log::context::impl::find_location_impl(fcppt::log::location const &_locat
       });
 }
 
-std::mutex &fcppt::log::context::impl::mutex()
+fcppt::log::context::impl::mutex_type &fcppt::log::context::impl::mutex()
 {
   return this->mutex_;
 }

@@ -142,6 +142,12 @@ option(
 	OFF
 )
 
+option(
+	ENABLE_THREADS
+	"Use std::mutex in fcppt.log"
+	ON
+)
+
 set(
 	SIGNALS_BENCHMARK_BACKEND
 	"fcppt"
@@ -220,6 +226,7 @@ function(
 		TRANSITIVE_IMPORTED_DEPS
 		INCLUDE_DIRS
 		COMPILE_DEFINITIONS
+		TRANSITIVE_COMPILE_DEFINITIONS
 	)
 
 	cmake_parse_arguments(
@@ -337,7 +344,7 @@ function(
 	target_compile_definitions(
 		${TARGETNAME}
 		INTERFACE
-		${_COMPILE_DEFINITIONS}
+		${_TRANSITIVE_COMPILE_DEFINITIONS}
 	)
 
 	fcppt_utils_link_imported_targets(
@@ -398,6 +405,7 @@ function(
 		TRANSITIVE_IMPORTED_DEPS
 		INCLUDE_DIRS
 		COMPILE_DEFINITIONS
+		TRANSITIVE_COMPILE_DEFINITIONS
 	)
 
 	set(
@@ -520,6 +528,8 @@ function(
 				${_INCLUDE_DIRS}
 			COMPILE_DEFINITIONS
 				${_COMPILE_DEFINITIONS}
+			TRANSITIVE_COMPILE_DEFINITIONS
+				${_TRANSITIVE_COMPILE_DEFINITIONS}
 		)
 	endif()
 
