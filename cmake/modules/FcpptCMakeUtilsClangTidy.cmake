@@ -1,5 +1,6 @@
 # Set FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER to specify the header-filter option.
 # This defaults to .*
+# Use FCPPT_UTILS_CLANG_TIDY_EXTRA_ARGS to specify additional arguments.
 
 set(
 	FCPPT_UTILS_CLANG_TIDY
@@ -74,5 +75,6 @@ if(
 		${FCPPT_UTILS_CLANG_TIDY}
 		"-header-filter=${FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER}"
 		"-checks=${FCPPT_UTILS_CLANG_TIDY_CHECKS_ARG}"
+		${FCPPT_UTILS_CLANG_TIDY_EXTRA_ARGS}
 	)
 endif()
