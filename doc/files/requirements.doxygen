@@ -56,13 +56,12 @@ This is also needed to build \ref fcpptcatch.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-10.3 (Gentoo Linux)</li>
+	<li>gcc-11.1 (Gentoo Linux and MinGW)</li>
 	<li>clang-12 (Gentoo Linux)</li>
 	<li>VC++-14.29 (Visual Studio 2019)</li>
 </ul>
 
-fcppt needs a C++17-conforming compiler which probably excludes everything
-older than gcc-8 and clang-6.
+fcppt needs a C++20-conforming compiler.
 
 \section installation_usage_download Download
 
@@ -95,6 +94,7 @@ Catch2 and <code>ENABLE_CATCH</code> are required for this.</li>
 on how to specify which Doxygen installation to use.</li>
 <li><code>ENABLE_SHARED</code>: Build shared libraries. This defaults to on.</li>
 <li><code>ENABLE_STATIC</code>: Build static libraries. This defaults to off.</li>
+<li><code>ENABLE_THREADS</code>: Enables thread-support in \ref fcpptlog. This defaults to on.</li>
 </ul>
 You need at least one of <code>ENABLE_SHARED</code> or <code>ENABLE_STATIC</code>.
 
@@ -108,19 +108,12 @@ don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 
 fcppt comes with an exported CMake file that defines all of fcppt's targets, which currently
 are <code>boost</code>, <code>catch</code>, <code>core</code>, <code>filesystem</code>,
-<code>log</code> and <code>options</code>.
+<code>log</code>, <code>options</code> and <code>parse</code>.
 The following code provides a small example in which the target <code>mytarget</code>
 links to core and log:
 <pre>
-find_package(
-	fcppt
-	REQUIRED
-)
-
-add_executable(
-	mytarget
-	main.cpp
-)
+find_package(fcppt REQUIRED)
+add_executable(mytarget main.cpp)
 
 target_link_libraries(
 	mytarget
@@ -140,7 +133,7 @@ target_link_libraries(
 	fcppt_core_interface
 )
 </pre>
-\ref fcpptboost and \ref fcpptcatch only provide an interface target.
+\ref fcpptboost, \ref fcpptcatch and \ref fcpptparse only provide interface targets.
 
 Interfaces are CMake targets that do not include a library to link to but, as
 with regular targets, provide include directories and build flags.
