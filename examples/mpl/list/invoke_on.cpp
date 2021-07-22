@@ -8,7 +8,6 @@
 // transform a color type given at runtime (defined via an enum) into a static
 // color type (represented by variant over static color types).
 #include <fcppt/tag.hpp>
-#include <fcppt/assert/error.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/mpl/list/invoke_on.hpp>
@@ -17,6 +16,7 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -70,6 +70,7 @@ int main()
 {
   color_variant const variant(make_color_variant(color_enum::rgb));
 
-  FCPPT_ASSERT_ERROR(fcppt::variant::holds_type<rgb>(variant));
+  // variant now holds the type rgb
+  std::cout << fcppt::variant::holds_type<rgb>(variant) << '\n';
 }
 //! [mpl_invoke_on]
