@@ -323,7 +323,6 @@ set(
 	libs/core/include/fcppt/assert/optional_error.hpp
 	libs/core/include/fcppt/assert/pre.hpp
 	libs/core/include/fcppt/assert/pre_message.hpp
-	libs/core/include/fcppt/assert/unimplemented_message.hpp
 	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp

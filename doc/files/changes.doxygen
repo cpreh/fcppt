@@ -33,6 +33,12 @@ Metal is no longer required.
 
 <ul>
 
+<li>\ref fcpptassert
+	<ul>
+	<li>Removed <code>FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptendianness
 	<ul>
 	<li>Removed <code>fcppt::endianness::format</code>, <code>fcppt::endianness::is_big_endian</code>, <code>fcppt::endianness::is_little_endian</code> and <code>fcppt::endianness::host_format</code>.
