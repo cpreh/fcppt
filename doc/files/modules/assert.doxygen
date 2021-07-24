@@ -96,12 +96,6 @@ terminate the program if they are violated.</dd>
 that could be considered a delayed pre condition. They will also terminate the
 program if they are violated.</dd>
 
-<dt>#FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE <dt>
-
-<dd>This macro can be used as a placeholder for unimplemented features. It must
-be given a message describing what feature is missing, and it will terminate
-the program.</dd>
-
 <dt>#FCPPT_ASSERT_UNREACHABLE  and #FCPPT_ASSERT_UNREACHABLE_MESSAGE </dt>
 
 <dd>These should be used to check for unreachable code, like reaching a default
@@ -164,10 +158,6 @@ printed to <code>cerr</code> before that happens.
 <tr>
 <td><code>pre_message.hpp</code></td>
 <td>Contains #FCPPT_ASSERT_PRE_MESSAGE </td>
-</tr>
-<tr>
-<td><code>unimplemented_message.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE </td>
 </tr>
 <tr>
 <td><code>unreachable.hpp</code></td>
