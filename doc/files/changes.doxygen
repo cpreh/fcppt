@@ -36,6 +36,7 @@ Metal is no longer required.
 <li>\ref fcpptassert
 	<ul>
 	<li>Removed <code>FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE</code>.</li>
+	<li>Removed <code>FCPPT_ASSERT_PRE</code> and <code>FCPPT_ASSERT_PRE_MESSAGE</code>.</li>
 	</ul>
 </li>
 

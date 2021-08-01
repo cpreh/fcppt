@@ -83,12 +83,6 @@ to do that. For most of the macros, there also exists a <em>message</em>
 variant that lets you specify an additional message for what went wrong.
 
 <dl>
-<dt>#FCPPT_ASSERT_PRE  and #FCPPT_ASSERT_PRE_MESSAGE
-</dt>
-
-<dd>These should be used to check pre conditions for a function and they will
-terminate the program if they are violated.</dd>
-
 <dt>#FCPPT_ASSERT_ERROR  and #FCPPT_ASSERT_ERROR_MESSAGE
 </dt>
 
@@ -150,14 +144,6 @@ printed to <code>cerr</code> before that happens.
 <tr>
 <td><code>optional_error.hpp</code></td>
 <td>Contains #FCPPT_ASSERT_OPTIONAL_ERROR </td>
-</tr>
-<tr>
-<td><code>pre.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_PRE </td>
-</tr>
-<tr>
-<td><code>pre_message.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_PRE_MESSAGE </td>
 </tr>
 <tr>
 <td><code>unreachable.hpp</code></td>

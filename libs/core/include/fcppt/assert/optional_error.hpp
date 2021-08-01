@@ -8,7 +8,7 @@
 
 #include <fcppt/identity.hpp>
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/assert/pre.hpp>
+#include <fcppt/assert/basic/terminate_conditional.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
 /**
@@ -22,7 +22,7 @@ result of the macro is <code>opt.get_unsafe()</code>.
 #define FCPPT_ASSERT_OPTIONAL_ERROR(opt) \
   ([](decltype(fcppt::identity{}(opt)) _arg) \
        -> decltype(fcppt::move_if_rvalue<decltype(fcppt::identity{}(opt))>(_arg.get_unsafe())) { \
-    FCPPT_ASSERT_PRE(_arg.has_value()); \
+    FCPPT_ASSERT_BASIC_TERMINATE_CONDITIONAL(_arg.has_value()); \
 \
     return fcppt::move_if_rvalue<decltype(_arg)>(_arg.get_unsafe()); \
   }(opt))

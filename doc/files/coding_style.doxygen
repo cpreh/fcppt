@@ -98,8 +98,7 @@ In case they can return an error, use #fcppt::either::object.
 <li>Avoid cases where certain combinations of parameters are invalid.
 These cases can usually be avoided by using #fcppt::optional::object,
 #fcppt::variant::object, and so on.
-If it is very difficult to avoid this, use #FCPPT_ASSERT_PRE
-or throw an exception. Be sure to document this very carefully!
+If it is very difficult to avoid this, it is best to throw an exception.
 </li>
 <li>Do not use default parameters and do not use function overloading.
 It is better to provide a function with a different name or to
