@@ -12,13 +12,18 @@
 #include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/map_array.hpp>
+#include <fcppt/algorithm/map_record.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/array/object.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/record/element.hpp>
+#include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -100,7 +105,26 @@ TEST_CASE("algorithm_map tuple", "[algorithm_map]")
 
   CHECK(
       fcppt::algorithm::map<result_tuple>(
-          fcppt::tuple::object<int, long>{1, 2L}, [](auto const _value) -> std::string {
+          fcppt::tuple::object<int, unsigned>{1, 2U}, [](auto const _value) -> std::string {
             return fcppt::output_to_std_string(_value);
           }) == result_tuple{"1", "2"});
+}
+
+TEST_CASE("algorithm_map record", "[algorithm_map]")
+{
+  FCPPT_RECORD_MAKE_LABEL(label1);
+  FCPPT_RECORD_MAKE_LABEL(label2);
+
+  using arg_type = fcppt::record::
+      object<fcppt::record::element<label1, int>, fcppt::record::element<label2, unsigned>>;
+
+  using result_type = fcppt::record::object<
+      fcppt::record::element<label1, std::string>,
+      fcppt::record::element<label2, std::string>>;
+
+  CHECK(
+      fcppt::algorithm::map<result_type>(
+          arg_type{label1{} = 1, label2{} = 2U}, [](auto const _value) -> std::string {
+            return fcppt::output_to_std_string(_value);
+          }) == result_type{label1{} = std::string{"1"}, label2{} = std::string{"2"}});
 }

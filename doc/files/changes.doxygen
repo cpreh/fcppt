@@ -21,6 +21,12 @@ Metal is no longer required.
 	</p>
 </li>
 
+<li>\ref fcpptrecord
+	<ul>
+	<li>Added support for #fcppt::algorithm::loop_break and #fcppt::algorithm::map.</li>
+	</ul>
+</li>
+
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added #fcppt::type_traits::is_integral_constant.</li>

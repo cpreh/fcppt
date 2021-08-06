@@ -31,6 +31,7 @@ set(
 	libs/core/include/fcppt/algorithm/loop_break_impl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl_fwd.hpp
 	libs/core/include/fcppt/algorithm/loop_break_mpl.hpp
+	libs/core/include/fcppt/algorithm/loop_break_record.hpp
 	libs/core/include/fcppt/algorithm/loop_break_tuple.hpp
 	libs/core/include/fcppt/algorithm/map.hpp
 	libs/core/include/fcppt/algorithm/map_array.hpp
@@ -40,6 +41,7 @@ set(
 	libs/core/include/fcppt/algorithm/map_iteration.hpp
 	libs/core/include/fcppt/algorithm/map_iteration_second.hpp
 	libs/core/include/fcppt/algorithm/map_optional.hpp
+	libs/core/include/fcppt/algorithm/map_record.hpp
 	libs/core/include/fcppt/algorithm/map_tuple.hpp
 	libs/core/include/fcppt/algorithm/range_element_type.hpp
 	libs/core/include/fcppt/algorithm/remove.hpp

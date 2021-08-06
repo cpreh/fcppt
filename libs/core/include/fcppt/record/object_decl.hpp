@@ -128,6 +128,8 @@ public:
   template <typename Label>
   [[nodiscard]] fcppt::record::label_value_type<this_type, Label> &get();
 
+  [[nodiscard]] tuple &impl();
+
   [[nodiscard]] tuple const &impl() const;
 
 private:

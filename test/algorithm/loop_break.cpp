@@ -6,8 +6,12 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_record.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/record/element.hpp>
+#include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -65,6 +69,50 @@ TEST_CASE("algorithm_loop_break mpl"
   function1 const func{};
 
   fcppt::algorithm::loop_break(fcppt::mpl::list::object<int, bool>{}, func);
+
+  CHECK(func.value() == 2);
+}
+
+namespace
+{
+class function2
+{
+public:
+  function2() : value_{0} {}
+
+  [[nodiscard]] fcppt::loop operator()(int) const
+  {
+    value_ += 2;
+
+    return fcppt::loop::break_;
+  }
+
+  [[nodiscard]] fcppt::loop operator()(bool) const
+  {
+    ++value_;
+
+    return fcppt::loop::continue_;
+  }
+
+  [[nodiscard]] int value() const { return value_; }
+private:
+  mutable int value_;
+};
+
+}
+
+TEST_CASE("algorithm_loop_break record"
+          "[algorithm_loop_break]")
+{
+  FCPPT_RECORD_MAKE_LABEL(label1);
+  FCPPT_RECORD_MAKE_LABEL(label2);
+
+  using record = fcppt::record::
+      object<fcppt::record::element<label1, int>, fcppt::record::element<label2, bool>>;
+
+  function2 const func{};
+
+  fcppt::algorithm::loop_break(record{label1{} = 10, label2{} = false}, func);
 
   CHECK(func.value() == 2);
 }

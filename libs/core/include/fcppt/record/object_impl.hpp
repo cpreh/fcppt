@@ -80,6 +80,13 @@ fcppt::record::object<Elements...>::get()
 }
 
 template <typename... Elements>
+typename fcppt::record::object<Elements...>::tuple &
+fcppt::record::object<Elements...>::impl()
+{
+  return this->elements_;
+}
+
+template <typename... Elements>
 typename fcppt::record::object<Elements...>::tuple const &
 fcppt::record::object<Elements...>::impl() const
 {
