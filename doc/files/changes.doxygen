@@ -24,6 +24,7 @@ Metal is no longer required.
 <li>\ref fcpptrecord
 	<ul>
 	<li>Added support for #fcppt::algorithm::loop_break and #fcppt::algorithm::map.</li>
+	<li>Added #fcppt::record::make.</li>
 	</ul>
 </li>
 

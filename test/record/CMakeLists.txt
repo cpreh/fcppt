@@ -80,6 +80,13 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	make
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+		fcppt_catch_interface
+)
+
+add_fcppt_record_test(
 	map
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

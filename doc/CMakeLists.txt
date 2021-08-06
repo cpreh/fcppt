@@ -1356,6 +1356,8 @@ set(
 	libs/core/include/fcppt/record/detail/element_init_decl.hpp
 	libs/core/include/fcppt/record/detail/element_init_fwd.hpp
 	libs/core/include/fcppt/record/detail/element_init_impl.hpp
+	libs/core/include/fcppt/record/detail/element_init_tag.hpp
+	libs/core/include/fcppt/record/detail/element_init_type.hpp
 	libs/core/include/fcppt/record/detail/element_to_label.hpp
 	libs/core/include/fcppt/record/detail/element_to_type.hpp
 	libs/core/include/fcppt/record/detail/element_vector.hpp
@@ -1396,6 +1398,7 @@ set(
 	libs/core/include/fcppt/record/label_name.hpp
 	libs/core/include/fcppt/record/label_set.hpp
 	libs/core/include/fcppt/record/label_value_type.hpp
+	libs/core/include/fcppt/record/make.hpp
 	libs/core/include/fcppt/record/make_label.hpp
 	libs/core/include/fcppt/record/make_label_arg.hpp
 	libs/core/include/fcppt/record/make_label_arg_fwd.hpp

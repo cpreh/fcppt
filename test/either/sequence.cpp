@@ -16,6 +16,7 @@
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/sequence.hpp>
 #include <fcppt/record/element.hpp>
+#include <fcppt/record/make.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
 #include <fcppt/tuple/make.hpp>
@@ -81,16 +82,14 @@ TEST_CASE("either::sequence record", "[either]")
   FCPPT_RECORD_MAKE_LABEL(label1);
   FCPPT_RECORD_MAKE_LABEL(label2);
 
-  using arg_type = fcppt::record::object<
-      fcppt::record::element<label1, fcppt::either::object<std::string, int>>,
-      fcppt::record::element<label2, fcppt::either::object<std::string, bool>>>;
-
-  using result_type = fcppt::record::
-      object<fcppt::record::element<label1, int>, fcppt::record::element<label2, bool>>;
-
   CHECK(
-      fcppt::either::sequence<fcppt::either::object<std::string, result_type>>(arg_type{
-          label1{} = fcppt::either::make_success<std::string>(0),
-          label2{} = fcppt::either::make_success<std::string>(false)}) ==
-      fcppt::either::make_success<std::string>(result_type{label1{} = 0, label2{} = false}));
+      fcppt::either::sequence<fcppt::either::object<
+          std::string,
+          fcppt::record::
+              object<fcppt::record::element<label1, int>, fcppt::record::element<label2, bool>>>>(
+          fcppt::record::make(
+              label1{} = fcppt::either::make_success<std::string>(0),
+              label2{} = fcppt::either::make_success<std::string>(false))) ==
+      fcppt::either::make_success<std::string>(
+          fcppt::record::make(label1{} = 0, label2{} = false)));
 }
