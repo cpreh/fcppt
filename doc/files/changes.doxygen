@@ -29,6 +29,27 @@ Metal is no longer required.
 
 </ul>
 
+\subsection changes_changed_functionality_to_400 Changedfunctionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>The result type of #fcppt::algorithm::find_by_opt now has to be specified explicitly.
+	This makes the algorithm work on heterogenous ranges (like tuples) as well.
+	</li>
+	</ul>
+</li>
+
+<li>\ref fcppteither
+	<ul>
+	<li>The result type of #fcppt::either::sequence is now the full either type instead of its success type.
+	This makes the function work on heterogenous ranges (like tuples) as well.
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_400 Removed functionality
 
 <ul>

@@ -21,11 +21,11 @@ TEST_CASE("algorithm find_by_opt", "[algorithm_find_by_opt]", )
 
   using result_type = fcppt::optional::object<std::string>;
 
-  CHECK(fcppt::algorithm::find_by_opt(vec, [](int const _i) -> result_type {
+  CHECK(fcppt::algorithm::find_by_opt<std::string>(vec, [](int const _i) -> result_type {
           return (_i % 2 == 0) ? result_type(std::string("test")) : result_type();
         }) == result_type(std::string("test")));
 
-  CHECK(fcppt::algorithm::find_by_opt(vec, [](int const _i) -> result_type {
+  CHECK(fcppt::algorithm::find_by_opt<std::string>(vec, [](int const _i) -> result_type {
           return _i == 4 ? result_type(std::string("test")) : result_type();
         }) == result_type{});
 }

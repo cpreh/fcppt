@@ -6,21 +6,14 @@
 #ifndef FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 
-#include <fcppt/container/to_iterator_type.hpp>
-#include <fcppt/optional/is_object.hpp>
+#include <fcppt/loop.hpp>
+#include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Optionally finds an element and transforms it.
@@ -30,42 +23,22 @@ an empty optional, if there is any. Otherwise, returns the empty optional.
 
 \ingroup fcpptalgorithm
 
-\tparam Function A function callable as <code>fcppt::optional::object<R>
-(Range::value_type)</code>, where <code>R</code> is the result type.
+\tparam Function A function callable as <code>fcppt::optional::object<Result>
+(V)</code> for every type <code>V</code> in \a Range.
 */
-template <typename Range, typename Function>
-inline auto find_by_opt(Range &&_range, Function const &_function)
-    -> decltype(_function(*fcppt::range::begin(_range)))
+template <typename Result, typename Range, typename Function>
+inline fcppt::optional::object<Result> find_by_opt(Range &&_range, Function const &_function)
 {
-  using iterator_type = fcppt::container::to_iterator_type<std::remove_reference_t<Range>>;
-
-  using result_type = decltype(_function(*fcppt::range::begin(_range)));
-
-  static_assert(
-      fcppt::optional::is_object<std::remove_const_t<result_type>>::value,
-      "Function must return an optional");
-
-  iterator_type const end(fcppt::range::end(_range));
-
-  for (iterator_type cur(fcppt::range::begin(_range)); cur != end; ++cur)
-  {
-    result_type result(_function(*cur));
-
-    if (result.has_value())
-    {
-      return result;
-    }
-  }
-
-  FCPPT_PP_PUSH_WARNING
-  FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
-
-  return result_type();
-
-  FCPPT_PP_POP_WARNING
+  return fcppt::algorithm::fold_break(
+      _range,
+      fcppt::optional::object<Result>{},
+      [&_function](auto &&_element, fcppt::optional::object<Result> &&_state)
+      {
+        return _state.has_value() ? std::make_pair(fcppt::loop::break_, std::move(_state))
+                                  : std::make_pair(fcppt::loop::continue_, _function(_element));
+      });
 }
 
-}
 }
 
 #endif

@@ -3,11 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/catch/tuple.hpp>
 #include <fcppt/container/make.hpp>
+#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/sequence.hpp>
+#include <fcppt/tuple/make.hpp>
+#include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -25,14 +31,14 @@ TEST_CASE("either::sequence", "[either]")
   using result_type = fcppt::either::object<std::string, int_vector>;
 
   CHECK(
-      fcppt::either::sequence<int_vector>(either_int_vector{
+      fcppt::either::sequence<result_type>(either_int_vector{
           either_int{42},
           either_int{std::string("failure")},
           either_int{10},
           either_int{std::string("failure2")}}) == result_type{std::string{"failure"}});
 
   CHECK(
-      fcppt::either::sequence<int_vector>(either_int_vector{either_int{10}, either_int{20}}) ==
+      fcppt::either::sequence<result_type>(either_int_vector{either_int{10}, either_int{20}}) ==
       result_type{int_vector{10, 20}});
 }
 
@@ -49,7 +55,17 @@ TEST_CASE("either::sequence move", "[either]")
   using result_type = fcppt::either::object<std::string, int_vector>;
 
   CHECK(
-      fcppt::either::sequence<int_vector>(fcppt::container::make<either_int_vector>(
+      fcppt::either::sequence<result_type>(fcppt::container::make<either_int_vector>(
           either_int{int_movable{10}}, either_int{int_movable{20}})) ==
       result_type{fcppt::container::make<int_vector>(int_movable{10}, int_movable{20})});
+}
+
+TEST_CASE("either::sequence tuple", "[either]")
+{
+  CHECK(
+      fcppt::either::sequence<fcppt::either::object<std::string, fcppt::tuple::object<int, bool>>>(
+          fcppt::tuple::make(
+              fcppt::either::make_success<std::string>(0),
+              fcppt::either::make_success<std::string>(false))) ==
+      fcppt::either::make_success<std::string>(fcppt::tuple::make(0, false)));
 }
