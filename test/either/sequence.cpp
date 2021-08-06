@@ -3,15 +3,21 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/algorithm/loop_break_record.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/map_record.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/catch/either.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/catch/record.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/sequence.hpp>
+#include <fcppt/record/element.hpp>
+#include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -68,4 +74,23 @@ TEST_CASE("either::sequence tuple", "[either]")
               fcppt::either::make_success<std::string>(0),
               fcppt::either::make_success<std::string>(false))) ==
       fcppt::either::make_success<std::string>(fcppt::tuple::make(0, false)));
+}
+
+TEST_CASE("either::sequence record", "[either]")
+{
+  FCPPT_RECORD_MAKE_LABEL(label1);
+  FCPPT_RECORD_MAKE_LABEL(label2);
+
+  using arg_type = fcppt::record::object<
+      fcppt::record::element<label1, fcppt::either::object<std::string, int>>,
+      fcppt::record::element<label2, fcppt::either::object<std::string, bool>>>;
+
+  using result_type = fcppt::record::
+      object<fcppt::record::element<label1, int>, fcppt::record::element<label2, bool>>;
+
+  CHECK(
+      fcppt::either::sequence<fcppt::either::object<std::string, result_type>>(arg_type{
+          label1{} = fcppt::either::make_success<std::string>(0),
+          label2{} = fcppt::either::make_success<std::string>(false)}) ==
+      fcppt::either::make_success<std::string>(result_type{label1{} = 0, label2{} = false}));
 }

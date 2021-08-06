@@ -86,6 +86,7 @@ add_fcppt_either_test(
 add_fcppt_either_test(
 	sequence
 	LINK_LIBS
+		${fcppt_core_TARGET}
 		fcppt_catch_interface
 )
 
