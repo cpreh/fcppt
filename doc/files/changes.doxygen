@@ -743,7 +743,7 @@ fcppt now uses <code>std::filesystem</code>.
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added #fcppt::container::contains.</li>
+	<li>Added <code>fcppt::container::contains</code>.</li>
 	</ul>
 </li>
 
