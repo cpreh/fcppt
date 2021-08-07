@@ -8,7 +8,6 @@
 
 #include <fcppt/output_to_string.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/container/contains.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
@@ -41,15 +40,18 @@ template <typename Ch>
 fcppt::parse::skipper::result<Ch> fcppt::parse::skipper::basic_char_set<Ch>::skip(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state) const
 {
-  return fcppt::either::bind(fcppt::parse::get_char_error(_state), [_state, this](Ch const _ch) {
-    return fcppt::container::contains(this->chars_, _ch)
-               ? fcppt::parse::skipper::make_success<Ch>()
-               : fcppt::parse::skipper::make_failure(fcppt::parse::detail::expected(
-                     fcppt::parse::get_position(_state),
-                     fcppt::output_to_string<std::basic_string<Ch>>(
-                         fcppt::container::output(this->chars_)),
-                     _ch));
-  });
+  return fcppt::either::bind(
+      fcppt::parse::get_char_error(_state),
+      [_state, this](Ch const _ch)
+      {
+        return this->chars_.contains(_ch)
+                   ? fcppt::parse::skipper::make_success<Ch>()
+                   : fcppt::parse::skipper::make_failure(fcppt::parse::detail::expected(
+                         fcppt::parse::get_position(_state),
+                         fcppt::output_to_string<std::basic_string<Ch>>(
+                             fcppt::container::output(this->chars_)),
+                         _ch));
+      });
 }
 
 template <typename Ch>

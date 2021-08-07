@@ -21,10 +21,6 @@ add_subdirectory(
 )
 
 add_fcppt_container_test(
-	contains
-)
-
-add_fcppt_container_test(
 	data
 )
 

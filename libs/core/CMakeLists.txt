@@ -211,7 +211,6 @@ set(
 	libs/core/include/fcppt/container/buffer/read_from.hpp
 	libs/core/include/fcppt/container/buffer/read_from_opt.hpp
 	libs/core/include/fcppt/container/buffer/to_raw_vector.hpp
-	libs/core/include/fcppt/container/contains.hpp
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
 	libs/core/include/fcppt/container/detail/has_insert_range.hpp

@@ -6,7 +6,6 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/container/contains.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/option_name.hpp>
@@ -35,12 +34,10 @@ fcppt::optional::object<fcppt::args_vector::const_iterator> fcppt::options::impl
                 std::pair<fcppt::options::detail::flag_is_short, fcppt::string> const &_flag) {
               ++cur;
 
-              if (cur != end && fcppt::container::contains(
-                                    _option_names,
-                                    fcppt::options::option_name{
-                                        // TODO(philipp): Don't copy here.
-                                        fcppt::string{_flag.second},
-                                        fcppt::options::option_name::is_short{_flag.first.get()}}))
+              if (cur != end && _option_names.contains(fcppt::options::option_name{
+                                    // TODO(philipp): Don't copy here.
+                                    fcppt::string{_flag.second},
+                                    fcppt::options::option_name::is_short{_flag.first.get()}}))
               {
                 ++cur;
               }

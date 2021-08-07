@@ -36,7 +36,7 @@ Metal is no longer required.
 
 </ul>
 
-\subsection changes_changed_functionality_to_400 Changedfunctionality
+\subsection changes_changed_functionality_to_400 Changed functionality
 
 <ul>
 
@@ -65,6 +65,12 @@ Metal is no longer required.
 	<ul>
 	<li>Removed <code>FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE</code>.</li>
 	<li>Removed <code>FCPPT_ASSERT_PRE</code> and <code>FCPPT_ASSERT_PRE_MESSAGE</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Removed <code>fcppt::container::contains</code>. In C++20, maps have a <code>contains</code> member function.</li>
 	</ul>
 </li>
 
