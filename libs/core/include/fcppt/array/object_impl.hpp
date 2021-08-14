@@ -18,7 +18,7 @@ template <typename T, std::size_t Size>
 template <typename... Args, typename>
 constexpr fcppt::array::object<T, Size>::object(Args &&..._args) noexcept(
     std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
-    : impl_{std::forward<Args>(_args)...}
+    : impl_{{std::forward<Args>(_args)...}}
 {
 }
 
