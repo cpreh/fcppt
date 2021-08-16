@@ -190,3 +190,7 @@ add_fcppt_parse_test(
 	LINK_LIBS
 		fcppt_catch_interface
 )
+
+add_fcppt_parse_test(
+	with_location
+)

@@ -2031,6 +2031,7 @@ set(
 	libs/parse/include/fcppt/parse/make_literal.hpp
 	libs/parse/include/fcppt/parse/make_recursive.hpp
 	libs/parse/include/fcppt/parse/make_success.hpp
+	libs/parse/include/fcppt/parse/make_with_location.hpp
 	libs/parse/include/fcppt/parse/named.hpp
 	libs/parse/include/fcppt/parse/named_decl.hpp
 	libs/parse/include/fcppt/parse/named_fwd.hpp
@@ -2132,6 +2133,10 @@ set(
 	libs/parse/include/fcppt/parse/uint_decl.hpp
 	libs/parse/include/fcppt/parse/uint_fwd.hpp
 	libs/parse/include/fcppt/parse/uint_impl.hpp
+	libs/parse/include/fcppt/parse/with_location.hpp
+	libs/parse/include/fcppt/parse/with_location_decl.hpp
+	libs/parse/include/fcppt/parse/with_location_fwd.hpp
+	libs/parse/include/fcppt/parse/with_location_impl.hpp
 )
 
 list(

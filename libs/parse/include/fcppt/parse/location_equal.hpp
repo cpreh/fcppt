@@ -13,7 +13,7 @@ namespace fcppt
 {
 namespace parse
 {
-inline bool operator==(fcppt::parse::location const &_left, fcppt::parse::location const &_right)
+[[nodiscard]] inline bool operator==(fcppt::parse::location const &_left, fcppt::parse::location const &_right)
 {
   return _left.line() == _right.line() && _left.column() == _right.column();
 }
