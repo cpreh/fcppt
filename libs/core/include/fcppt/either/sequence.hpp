@@ -37,10 +37,6 @@ i</code> such that <code>e_j</code> has a failure, then <code>f</code> is
 returned. Otherwise, all eithers have success values,
 <code>[s_1,...,s_n]</code>, and <code>Result{s_1,...,s_n}</code> is returned.
 
-\tparam Result Must be a container of eithers.
-
-\tparam Source Must be an either with failure type F.
-
 TODO(concepts)
 */
 template <fcppt::either::object_concept Result, typename Source>
