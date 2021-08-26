@@ -4,10 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/deref.hpp>
+#include <fcppt/deref_recursive.hpp>
 #include <fcppt/deref_reference.hpp>
 #include <fcppt/deref_type.hpp>
 #include <fcppt/deref_unique_ptr.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/recursive_impl.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -108,4 +110,18 @@ TEST_CASE("deref unique_ptr", "[various]")
   CHECK(&fcppt::deref(cptr) == cptr.get_pointer());
 
   static_assert(std::is_same_v<fcppt::deref_type<fcppt::unique_ptr<int>>, int &>);
+}
+
+TEST_CASE("deref recursive", "[various]")
+{
+  fcppt::recursive<int> rec{10};
+
+  CHECK(&fcppt::deref(rec) == &rec.get());
+
+  fcppt::recursive<int> const crec{10};
+
+  CHECK(&fcppt::deref(crec) == &crec.get());
+
+  static_assert(std::is_same_v<fcppt::deref_type<fcppt::recursive<int>>, int &>);
+  static_assert(std::is_same_v<fcppt::deref_type<fcppt::recursive<int> const>, int const &>);
 }

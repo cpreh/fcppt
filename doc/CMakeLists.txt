@@ -604,6 +604,7 @@ set(
 	libs/core/include/fcppt/deref.hpp
 	libs/core/include/fcppt/deref_impl.hpp
 	libs/core/include/fcppt/deref_impl_fwd.hpp
+	libs/core/include/fcppt/deref_recursive.hpp
 	libs/core/include/fcppt/deref_reference.hpp
 	libs/core/include/fcppt/deref_type.hpp
 	libs/core/include/fcppt/deref_unique_ptr.hpp
@@ -798,6 +799,7 @@ set(
 	libs/core/include/fcppt/io/widen_string.hpp
 	libs/core/include/fcppt/io/write.hpp
 	libs/core/include/fcppt/io/write_chars.hpp
+	libs/core/include/fcppt/is_recursive.hpp
 	libs/core/include/fcppt/is_reference.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
 	libs/core/include/fcppt/is_unique_ptr.hpp
