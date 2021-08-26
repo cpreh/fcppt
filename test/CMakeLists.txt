@@ -287,6 +287,8 @@ add_subdirectory(
 
 add_fcppt_test(
 	output
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
 )
 
 add_fcppt_test(

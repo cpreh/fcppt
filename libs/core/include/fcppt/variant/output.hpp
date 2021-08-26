@@ -6,6 +6,7 @@
 #ifndef FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 #define FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,7 +31,8 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::variant::object<Types
 {
   return fcppt::variant::apply(
       [&_stream](auto const &_value) -> std::basic_ostream<Ch, Traits> & {
-        return _stream << _value;
+        fcppt::output(_stream,  _value);
+        return _stream;
       },
       _object);
 }

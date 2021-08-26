@@ -6,6 +6,7 @@
 #include <fcppt/output.hpp>
 #include <fcppt/output_pair.hpp>
 #include <fcppt/output_range.hpp>
+#include <fcppt/output_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
@@ -39,4 +40,22 @@ TEST_CASE("output pair", "[various]")
   fcppt::output(stream, std::make_pair(10, 20));
 
   CHECK(stream.str() == std::string{"(10,20)"});
+}
+
+TEST_CASE("output string", "[various]")
+{
+  std::ostringstream stream{};
+
+  fcppt::output(stream, std::string{"test"});
+
+  CHECK(stream.str() == std::string{"test"});
+}
+
+TEST_CASE("output wide string", "[various]")
+{
+  std::wostringstream stream{};
+
+  fcppt::output(stream, std::string{"test"});
+
+  CHECK(stream.str() == std::wstring{L"test"});
 }

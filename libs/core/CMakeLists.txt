@@ -1040,7 +1040,9 @@ set(
 	libs/core/include/fcppt/output.hpp
 	libs/core/include/fcppt/output_impl.hpp
 	libs/core/include/fcppt/output_impl_fwd.hpp
+	libs/core/include/fcppt/output_pair.hpp
 	libs/core/include/fcppt/output_range.hpp
+	libs/core/include/fcppt/output_string.hpp
 	libs/core/include/fcppt/output_to_fcppt_string.hpp
 	libs/core/include/fcppt/output_to_fcppt_string_locale.hpp
 	libs/core/include/fcppt/output_to_std_string.hpp

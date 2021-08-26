@@ -7,6 +7,7 @@
 #define FCPPT_TUPLE_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
+#include <fcppt/output.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
@@ -37,7 +38,7 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::tuple::object<Types..
       fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>, fcppt::mpl::size_type<sizeof...(Types)>>{},
       [&_stream, &_tuple]<std::size_t Index>(fcppt::tag<std::integral_constant<std::size_t, Index>>)
       {
-        _stream << fcppt::tuple::get<Index>(_tuple);
+        fcppt::output(_stream, fcppt::tuple::get<Index>(_tuple));
         if constexpr (Index != sizeof...(Types) - 1U)
         {
           _stream << _stream.widen(',');
