@@ -65,4 +65,16 @@ Type const &fcppt::recursive<Type>::get() const
   return *impl_;
 }
 
+template <typename Type>
+Type *fcppt::recursive<Type>::operator->()
+{
+  return this->impl_.get_pointere();
+}
+
+template <typename Type>
+Type const *fcppt::recursive<Type>::operator->() const
+{
+  return this->impl_.get_pointer();
+}
+
 #endif

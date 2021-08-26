@@ -50,6 +50,9 @@ public:
 
   [[nodiscard]] Type const &get() const;
 
+  [[nodiscard]] Type *operator->();
+
+  [[nodiscard]] Type const *operator->() const;
 private:
   fcppt::unique_ptr<Type> impl_;
 };

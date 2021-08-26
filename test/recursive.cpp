@@ -8,6 +8,7 @@
 #include <fcppt/recursive_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 TEST_CASE("recursive", "[various]") { CHECK(fcppt::make_recursive(1) == fcppt::make_recursive(1)); }
@@ -21,4 +22,7 @@ TEST_CASE("recursive copy", "[various]")
   value = fcppt::make_recursive(3);
 
   CHECK(value.get() == 3);
+
+  fcppt::recursive<std::string> const value2{std::string{"test"}};
+  CHECK(value2->size() == 4U);
 }
