@@ -6,17 +6,14 @@
 #ifndef FCPPT_CONTAINER_DETAIL_OUTPUT_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace detail
+namespace fcppt::container::detail
 {
 template <typename Container>
 class output
@@ -44,7 +41,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
 
   for (const_iterator it{_output.container().begin()}; it != end; ++it)
   {
-    _stream << *it;
+    fcppt::output(_stream, *it);
 
     if (
         // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
@@ -59,8 +56,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
   return _stream;
 }
 
-}
-}
 }
 
 #endif

@@ -286,6 +286,10 @@ add_subdirectory(
 )
 
 add_fcppt_test(
+	output
+)
+
+add_fcppt_test(
 	overload
 )
 

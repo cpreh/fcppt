@@ -6,6 +6,7 @@
 #ifndef FCPPT_OUTPUT_TO_STRING_LOCALE_HPP_INCLUDED
 #define FCPPT_OUTPUT_TO_STRING_LOCALE_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -43,7 +44,7 @@ Dest output_to_string_locale(Source const &_source, std::locale const &_locale)
 
   oss.imbue(_locale);
 
-  oss << _source;
+  fcppt::output(oss, _source);
 
   return oss.str();
 }

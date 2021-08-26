@@ -22,3 +22,8 @@ add_fcppt_concepts_test(
 	move_constructible
 	NO_CODE
 )
+
+add_fcppt_concepts_test(
+	range
+	NO_CODE
+)

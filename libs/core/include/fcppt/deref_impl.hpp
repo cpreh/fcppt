@@ -11,7 +11,7 @@
 namespace fcppt
 {
 /**
-\brief Customization point for #fcppt;:deref.
+\brief Customization point for #fcppt::deref.
 
 \ingroup fcpptvarious
 
