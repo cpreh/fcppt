@@ -25,8 +25,8 @@ template <typename Type, typename Ch, typename Traits>
 inline fcppt::optional::object<Type>
 extract_impl(std::basic_istream<Ch, Traits> &_stream, fcppt::reference<Type> const _result)
 {
-  return _stream >> _result.get() ? fcppt::optional::make(std::move(_result.get()))
-                                  : fcppt::optional::nothing{};
+  return (_stream >> _result.get()) ? fcppt::optional::make(std::move(_result.get()))
+                                    : fcppt::optional::nothing{};
 }
 
 }
