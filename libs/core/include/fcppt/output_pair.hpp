@@ -22,11 +22,8 @@ struct output_impl<std::pair<T1, T2>, void>
   static void
   execute(std::basic_ostream<Ch, Traits> &_stream, std::pair<T1, T2> const &_value)
   {
-    _stream << _stream.widen('(');
-    fcppt::output(_stream, _value.first);
-    _stream << _stream.widen(',');
-    fcppt::output(_stream, _value.second);
-    _stream << _stream.widen(')');
+    _stream << _stream.widen('(') << fcppt::output(_value.first) << _stream.widen(',')
+            << fcppt::output(_value.second) << _stream.widen(')');
   }
 };
 }

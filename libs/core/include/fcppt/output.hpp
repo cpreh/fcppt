@@ -6,10 +6,8 @@
 #ifndef FCPPT_OUTPUT_HPP_INCLUDED
 #define FCPPT_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/output_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/make_cref.hpp>
+#include <fcppt/detail/output.hpp>
 
 namespace fcppt
 {
@@ -21,10 +19,10 @@ namespace fcppt
 Calls fcppt::output_impl::execute to output \a _arg.
 The default implementation uses <code>operator<< </code>.
 */
-template <typename Ch, typename Traits, typename Arg>
-inline void output(std::basic_ostream<Ch, Traits> &_stream, Arg const &_arg)
+template <typename Arg>
+inline fcppt::detail::output<Arg> output(Arg const &_arg)
 {
-  fcppt::output_impl<Arg>::execute(_stream, _arg);
+  return fcppt::detail::output<Arg>{fcppt::make_cref(_arg)};
 }
 }
 

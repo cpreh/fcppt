@@ -44,7 +44,7 @@ Dest output_to_string_locale(Source const &_source, std::locale const &_locale)
 
   oss.imbue(_locale);
 
-  fcppt::output(oss, _source);
+  oss << fcppt::output(_source);
 
   return oss.str();
 }

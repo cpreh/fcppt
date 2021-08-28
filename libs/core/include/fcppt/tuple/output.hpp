@@ -38,7 +38,7 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::tuple::object<Types..
       fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>, fcppt::mpl::size_type<sizeof...(Types)>>{},
       [&_stream, &_tuple]<std::size_t Index>(fcppt::tag<std::integral_constant<std::size_t, Index>>)
       {
-        fcppt::output(_stream, fcppt::tuple::get<Index>(_tuple));
+        _stream << fcppt::output(fcppt::tuple::get<Index>(_tuple));
         if constexpr (Index != sizeof...(Types) - 1U)
         {
           _stream << _stream.widen(',');

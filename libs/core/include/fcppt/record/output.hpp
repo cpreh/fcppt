@@ -49,8 +49,8 @@ std::basic_ostream<Ch, Traits> &operator<<(
             fcppt::mpl::list::at<element_list, fcppt::mpl::size_type<Index>>>;
 
         _stream << fcppt::io::widen_string(fcppt::record::label_name<label>())
-                << fcppt::io::widen_string(" = ");
-        fcppt::output(_stream, fcppt::record::get<label>(_record));
+                << fcppt::io::widen_string(" = ")
+                << fcppt::output(fcppt::record::get<label>(_record));
         if constexpr (Index != fcppt::mpl::list::size<element_list>::value - 1U)
         {
           _stream << fcppt::io::widen_string(", ");

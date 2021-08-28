@@ -408,6 +408,7 @@ set(
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
 	libs/core/include/fcppt/detail/nonmovable.hpp
+	libs/core/include/fcppt/detail/output.hpp
 	libs/core/include/fcppt/detail/runtime_index.hpp
 	libs/core/include/fcppt/detail/string_literal.hpp
 	libs/core/include/fcppt/detail/string_types.hpp

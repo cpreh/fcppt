@@ -41,7 +41,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
 
   for (const_iterator it{_output.container().begin()}; it != end; ++it)
   {
-    fcppt::output(_stream, *it);
+    _stream << fcppt::output(*it);
 
     if (
         // NOLINTNEXTLINE(fuchsia-default-arguments-calls)

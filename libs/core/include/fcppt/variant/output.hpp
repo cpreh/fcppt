@@ -31,8 +31,7 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::variant::object<Types
 {
   return fcppt::variant::apply(
       [&_stream](auto const &_value) -> std::basic_ostream<Ch, Traits> & {
-        fcppt::output(_stream,  _value);
-        return _stream;
+        return _stream << fcppt::output(_value);
       },
       _object);
 }

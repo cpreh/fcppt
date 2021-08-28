@@ -19,7 +19,7 @@ TEST_CASE("output value", "[various]")
 {
   std::ostringstream stream{};
 
-  fcppt::output(stream, 10);
+  stream << fcppt::output(10);
 
   CHECK(stream.str() == std::string{"10"});
 }
@@ -28,7 +28,7 @@ TEST_CASE("output vector", "[various]")
 {
   std::ostringstream stream{};
 
-  fcppt::output(stream, std::vector<int>{10, 20});
+  stream << fcppt::output(std::vector<int>{10, 20});
 
   CHECK(stream.str() == std::string{"[10,20]"});
 }
@@ -37,7 +37,7 @@ TEST_CASE("output pair", "[various]")
 {
   std::ostringstream stream{};
 
-  fcppt::output(stream, std::make_pair(10, 20));
+  stream << fcppt::output(std::make_pair(10, 20));
 
   CHECK(stream.str() == std::string{"(10,20)"});
 }
@@ -46,7 +46,7 @@ TEST_CASE("output string", "[various]")
 {
   std::ostringstream stream{};
 
-  fcppt::output(stream, std::string{"test"});
+  stream << fcppt::output(std::string{"test"});
 
   CHECK(stream.str() == std::string{"test"});
 }
@@ -55,7 +55,7 @@ TEST_CASE("output wide string", "[various]")
 {
   std::wostringstream stream{};
 
-  fcppt::output(stream, std::string{"test"});
+  stream << fcppt::output(std::string{"test"});
 
   CHECK(stream.str() == std::wstring{L"test"});
 }
