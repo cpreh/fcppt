@@ -1405,6 +1405,9 @@ set(
 	libs/core/include/fcppt/variant/object_fwd.hpp
 	libs/core/include/fcppt/variant/object_impl.hpp
 	libs/core/include/fcppt/variant/output.hpp
+	libs/core/include/fcppt/variant/partition.hpp
+	libs/core/include/fcppt/variant/partition_result.hpp
+	libs/core/include/fcppt/variant/partition_result_fwd.hpp
 	libs/core/include/fcppt/variant/size_type.hpp
 	libs/core/include/fcppt/variant/to_optional.hpp
 	libs/core/include/fcppt/variant/to_optional_ref.hpp

@@ -46,7 +46,7 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	dynamic_cast_types
-        NO_CODE
+	NO_CODE
 )
 
 add_fcppt_variant_test(
@@ -70,6 +70,17 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	output
+)
+
+add_fcppt_variant_test(
+	partition
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_variant_test(
+	partition_result
+	NO_CODE
 )
 
 add_fcppt_variant_test(
