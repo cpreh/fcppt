@@ -2107,6 +2107,10 @@ set(
 	libs/parse/include/fcppt/parse/skipper/basic_literal_fwd.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_literal_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_space.hpp
+	libs/parse/include/fcppt/parse/skipper/basic_string.hpp
+	libs/parse/include/fcppt/parse/skipper/basic_string_decl.hpp
+	libs/parse/include/fcppt/parse/skipper/basic_string_fwd.hpp
+	libs/parse/include/fcppt/parse/skipper/basic_string_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set_fwd.hpp
@@ -2135,6 +2139,10 @@ set(
 	libs/parse/include/fcppt/parse/skipper/sequence_fwd.hpp
 	libs/parse/include/fcppt/parse/skipper/sequence_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/space.hpp
+	libs/parse/include/fcppt/parse/skipper/string.hpp
+	libs/parse/include/fcppt/parse/skipper/string_decl.hpp
+	libs/parse/include/fcppt/parse/skipper/string_fwd.hpp
+	libs/parse/include/fcppt/parse/skipper/string_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/tag.hpp
 	libs/parse/include/fcppt/parse/space.hpp
 	libs/parse/include/fcppt/parse/space_set.hpp
