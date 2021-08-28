@@ -15,7 +15,7 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/with_location_decl.hpp>
-#include <fcppt/tuple/make.hpp>
+#include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -37,7 +37,7 @@ fcppt::parse::with_location<Parser>::parse(
     fcppt::parse::deref(this->parser_).parse(_state,_skipper),
     [&location](fcppt::parse::result_of<Parser> &&_inner)
     {
-      return fcppt::tuple::make(location,std::move(_inner));
+      return fcppt::parse::detail::sequence_result(location,std::move(_inner));
     });
 }
 

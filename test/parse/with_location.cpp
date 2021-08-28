@@ -5,9 +5,6 @@
 
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -23,9 +20,6 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/make_with_location.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/tuple/comparison.hpp>
-#include <fcppt/tuple/make.hpp>
-#include <fcppt/tuple/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
@@ -39,10 +33,8 @@ TEST_CASE("parse::with_location", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(fcppt::tuple::make(
-          fcppt::optional::make(
-              fcppt::parse::location{fcppt::parse::line{1U}, fcppt::parse::column{1U}}),
-          fcppt::unit{})));
+      fcppt::parse::make_success<char>(fcppt::optional::make(
+          fcppt::parse::location{fcppt::parse::line{1U}, fcppt::parse::column{1U}})));
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());
 }

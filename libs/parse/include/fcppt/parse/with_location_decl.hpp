@@ -12,12 +12,12 @@
 #include <fcppt/parse/location_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/sequence_result.hpp>
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/with_location_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/tuple/object_fwd.hpp>
 
 
 namespace fcppt
@@ -34,8 +34,9 @@ class with_location : private fcppt::parse::tag
 public:
   explicit with_location(Parser &&);
 
-  using result_type = fcppt::tuple::
-      object<fcppt::optional::object<fcppt::parse::location>, fcppt::parse::result_of<Parser>>;
+  using result_type = fcppt::parse::sequence_result<
+      fcppt::optional::object<fcppt::parse::location>,
+      fcppt::parse::result_of<Parser>>;
 
   template <typename Ch, typename Skipper>
   [[nodiscard]] fcppt::parse::result<Ch, result_type>
