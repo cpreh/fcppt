@@ -14,6 +14,10 @@ function(
 endfunction()
 
 add_fcppt_parse_skipper_test(
+	alternative
+)
+
+add_fcppt_parse_skipper_test(
 	char_set
 )
 
