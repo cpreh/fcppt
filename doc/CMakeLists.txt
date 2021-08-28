@@ -731,6 +731,7 @@ set(
 	libs/core/include/fcppt/exception.hpp
 	libs/core/include/fcppt/exception_fwd.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
+	libs/core/include/fcppt/extract_from_string_fmt.hpp
 	libs/core/include/fcppt/extract_from_string_locale.hpp
 	libs/core/include/fcppt/from_std_string.hpp
 	libs/core/include/fcppt/from_std_string_locale.hpp

@@ -174,6 +174,12 @@ add_fcppt_test(
 		"${fcppt_core_TARGET}"
 )
 
+add_fcppt_test(
+	extract_from_string_fmt
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
 add_subdirectory(
 	filesystem
 )
