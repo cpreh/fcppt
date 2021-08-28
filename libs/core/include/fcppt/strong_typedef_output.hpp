@@ -6,6 +6,7 @@
 #ifndef FCPPT_STRONG_TYPEDEF_OUTPUT_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
@@ -19,12 +20,12 @@ namespace fcppt
 \ingroup fcpptstrongtypedef
 */
 template <typename Ch, typename Traits, typename T, typename Tag>
-std::basic_ostream<Ch, Traits> &
+inline std::basic_ostream<Ch, Traits> &
 operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::strong_typedef<T, Tag> const &_value)
 {
-  return _stream << _value.get();
+  fcppt::output(_stream, _value.get());
+  return _stream;
 }
-
 }
 
 #endif
