@@ -21,9 +21,9 @@ namespace parse
 \brief Outputs a location to a stream.
 \ingroup fcpptparse
 */
-template <typename Ch>
-std::basic_ostream<Ch> &
-operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::location const &_loc)
+template <typename Ch, typename Traits>
+std::basic_ostream<Ch, Traits> &
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::parse::location const &_loc)
 {
   return _stream << _loc.line() << FCPPT_CHAR_LITERAL(Ch, ':') << _loc.column();
 }
