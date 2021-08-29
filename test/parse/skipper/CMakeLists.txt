@@ -18,7 +18,15 @@ add_fcppt_parse_skipper_test(
 )
 
 add_fcppt_parse_skipper_test(
+	any
+)
+
+add_fcppt_parse_skipper_test(
 	char_set
+)
+
+add_fcppt_parse_skipper_test(
+	comment
 )
 
 add_fcppt_parse_skipper_test(
@@ -32,6 +40,10 @@ add_fcppt_parse_skipper_test(
 
 add_fcppt_parse_skipper_test(
 	literal
+)
+
+add_fcppt_parse_skipper_test(
+	not
 )
 
 add_fcppt_parse_skipper_test(

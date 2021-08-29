@@ -2102,6 +2102,10 @@ set(
 	libs/parse/include/fcppt/parse/skipper/alternative_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/alternative_fwd.hpp
 	libs/parse/include/fcppt/parse/skipper/alternative_impl.hpp
+	libs/parse/include/fcppt/parse/skipper/any.hpp
+	libs/parse/include/fcppt/parse/skipper/any_decl.hpp
+	libs/parse/include/fcppt/parse/skipper/any_fwd.hpp
+	libs/parse/include/fcppt/parse/skipper/any_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_char_set.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_char_set_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/basic_char_set_fwd.hpp
@@ -2119,6 +2123,10 @@ set(
 	libs/parse/include/fcppt/parse/skipper/char_set_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set_fwd.hpp
 	libs/parse/include/fcppt/parse/skipper/char_set_impl.hpp
+	libs/parse/include/fcppt/parse/skipper/comment.hpp
+	libs/parse/include/fcppt/parse/skipper/comment_decl.hpp
+	libs/parse/include/fcppt/parse/skipper/comment_fwd.hpp
+	libs/parse/include/fcppt/parse/skipper/comment_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/epsilon.hpp
 	libs/parse/include/fcppt/parse/skipper/epsilon_decl.hpp
 	libs/parse/include/fcppt/parse/skipper/epsilon_fwd.hpp
@@ -2131,7 +2139,11 @@ set(
 	libs/parse/include/fcppt/parse/skipper/literal_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/make_failure.hpp
 	libs/parse/include/fcppt/parse/skipper/make_success.hpp
+	libs/parse/include/fcppt/parse/skipper/not_decl.hpp
+	libs/parse/include/fcppt/parse/skipper/not_fwd.hpp
+	libs/parse/include/fcppt/parse/skipper/not_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/operators/alternative.hpp
+	libs/parse/include/fcppt/parse/skipper/operators/not.hpp
 	libs/parse/include/fcppt/parse/skipper/operators/repetition.hpp
 	libs/parse/include/fcppt/parse/skipper/operators/sequence.hpp
 	libs/parse/include/fcppt/parse/skipper/repetition_decl.hpp
