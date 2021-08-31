@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_SKIPPER_BASIC_STRING_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_BASIC_STRING_IMPL_HPP_INCLUDED
 
-#include <fcppt/string_literal.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error_impl.hpp>

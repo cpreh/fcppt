@@ -6,8 +6,8 @@
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/tuple/comparison.hpp>
 #include <fcppt/tuple/make.hpp>
-#include <fcppt/variant/partition.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/partition.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <vector>

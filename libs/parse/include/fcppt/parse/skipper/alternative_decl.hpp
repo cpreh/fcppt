@@ -9,8 +9,8 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/skipper/alternative_fwd.hpp>
-#include <fcppt/parse/skipper/tag.hpp>
 #include <fcppt/parse/skipper/result_fwd.hpp>
+#include <fcppt/parse/skipper/tag.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
