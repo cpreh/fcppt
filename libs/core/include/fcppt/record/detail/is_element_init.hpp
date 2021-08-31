@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_DETAIL_IS_ELEMENT_INIT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_IS_ELEMENT_INIT_HPP_INCLUDED
 
-#include <fcppt/record/detail/element_init_fwd.hpp>
+#include <fcppt/record/element_init_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,7 +23,7 @@ struct is_element_init : std::false_type
 };
 
 template <typename Tag, typename Type>
-struct is_element_init<fcppt::record::detail::element_init<Tag, Type>> : std::true_type
+struct is_element_init<fcppt::record::element_init<Tag, Type>> : std::true_type
 {
 };
 

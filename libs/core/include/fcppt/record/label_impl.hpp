@@ -6,8 +6,8 @@
 #ifndef FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 
+#include <fcppt/record/element_init_impl.hpp>
 #include <fcppt/record/label_decl.hpp>
-#include <fcppt/record/detail/element_init_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -17,10 +17,10 @@
 template <typename Tag>
 template <typename Arg>
 // NOLINTNEXTLINE(cppcoreguidelines-c-copy-assignment-signature,misc-unconventional-assign-operator)
-fcppt::record::detail::element_init<Tag, std::remove_cvref_t<Arg>>
+fcppt::record::element_init<Tag, std::remove_cvref_t<Arg>>
 fcppt::record::label<Tag>::operator=(Arg &&_arg)
 {
-  return fcppt::record::detail::element_init<Tag, std::remove_cvref_t<Arg>>(
+  return fcppt::record::element_init<Tag, std::remove_cvref_t<Arg>>(
       std::forward<Arg>(_arg));
 }
 

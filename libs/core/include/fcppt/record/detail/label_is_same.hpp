@@ -6,8 +6,8 @@
 #ifndef FCPPT_RECORD_DETAIL_LABEL_IS_SAME_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_LABEL_IS_SAME_HPP_INCLUDED
 
+#include <fcppt/record/element_init_fwd.hpp>
 #include <fcppt/record/label_fwd.hpp>
-#include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -22,7 +22,7 @@ template <typename Tag, typename Type>
 struct label_is_same;
 
 template <typename Tag1, typename Tag2, typename Type>
-struct label_is_same<fcppt::record::label<Tag1>, fcppt::record::detail::element_init<Tag2, Type>>
+struct label_is_same<fcppt::record::label<Tag1>, fcppt::record::element_init<Tag2, Type>>
     : std::is_same<Tag1, Tag2>
 {
 };

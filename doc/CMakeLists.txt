@@ -1363,11 +1363,6 @@ set(
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
 	libs/core/include/fcppt/record/detail/disjoint_product.hpp
 	libs/core/include/fcppt/record/detail/element_at.hpp
-	libs/core/include/fcppt/record/detail/element_init_decl.hpp
-	libs/core/include/fcppt/record/detail/element_init_fwd.hpp
-	libs/core/include/fcppt/record/detail/element_init_impl.hpp
-	libs/core/include/fcppt/record/detail/element_init_tag.hpp
-	libs/core/include/fcppt/record/detail/element_init_type.hpp
 	libs/core/include/fcppt/record/detail/element_to_label.hpp
 	libs/core/include/fcppt/record/detail/element_to_type.hpp
 	libs/core/include/fcppt/record/detail/element_vector.hpp
@@ -1387,6 +1382,11 @@ set(
 	libs/core/include/fcppt/record/disjoint_product.hpp
 	libs/core/include/fcppt/record/element.hpp
 	libs/core/include/fcppt/record/element_fwd.hpp
+	libs/core/include/fcppt/record/element_init_decl.hpp
+	libs/core/include/fcppt/record/element_init_fwd.hpp
+	libs/core/include/fcppt/record/element_init_impl.hpp
+	libs/core/include/fcppt/record/element_init_tag.hpp
+	libs/core/include/fcppt/record/element_init_type.hpp
 	libs/core/include/fcppt/record/element_map.hpp
 	libs/core/include/fcppt/record/element_tag_tuple.hpp
 	libs/core/include/fcppt/record/element_to_label.hpp
