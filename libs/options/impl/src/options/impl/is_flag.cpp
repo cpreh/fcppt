@@ -16,7 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>
-fcppt::options::impl::is_flag(fcppt::string_view const &_value)
+fcppt::options::impl::is_flag(fcppt::string_view const _value)
 {
   // TODO(philipp): This is terrible
   fcppt::string_view::const_iterator pos{_value.begin()};

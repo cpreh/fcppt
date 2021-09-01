@@ -15,7 +15,7 @@ namespace options
 {
 namespace impl
 {
-fcppt::string flag_name(fcppt::string_view const &, fcppt::options::detail::flag_is_short);
+fcppt::string flag_name(fcppt::string_view, fcppt::options::detail::flag_is_short);
 
 }
 }

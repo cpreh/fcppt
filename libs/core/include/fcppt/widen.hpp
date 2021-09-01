@@ -22,7 +22,7 @@ namespace fcppt
 Converts \a _string to std::wstring using \a _locale.
 */
 FCPPT_DETAIL_SYMBOL
-std::wstring widen(std::string_view const &);
+std::wstring widen(std::string_view);
 
 }
 

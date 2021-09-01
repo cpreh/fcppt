@@ -23,7 +23,7 @@ namespace detail
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::detail::use_option_result use_option(
     fcppt::reference<fcppt::options::state>,
-    fcppt::string_view const &,
+    fcppt::string_view,
     fcppt::options::detail::flag_is_short);
 
 }

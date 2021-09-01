@@ -21,7 +21,7 @@ namespace fcppt
 See \ref fcpptstring for more information about this function.
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::string from_std_string(std::string_view const &);
+fcppt::string from_std_string(std::string_view);
 
 }
 

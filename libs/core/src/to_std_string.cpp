@@ -15,7 +15,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::optional_std_string fcppt::to_std_string(fcppt::string_view const &_input)
+fcppt::optional_std_string fcppt::to_std_string(fcppt::string_view const _input)
 {
   return
 #if !defined(FCPPT_NARROW_STRING)

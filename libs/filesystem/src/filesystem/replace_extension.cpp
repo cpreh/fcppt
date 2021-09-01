@@ -12,7 +12,7 @@
 #include <fcppt/config/external_end.hpp>
 
 std::filesystem::path fcppt::filesystem::replace_extension(
-    std::filesystem::path const &_path, fcppt::string_view const &_ext)
+    std::filesystem::path const &_path, fcppt::string_view const _ext)
 {
   return std::filesystem::path(_path).replace_extension(
       // NOLINTNEXTLINE(fuchsia-default-arguments-calls)

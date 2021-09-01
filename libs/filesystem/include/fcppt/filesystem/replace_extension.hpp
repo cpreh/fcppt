@@ -31,7 +31,7 @@ Replaces the extension of \a path with \a new_extension.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::filesystem::path
-replace_extension(std::filesystem::path const &path, fcppt::string_view const &new_extension);
+replace_extension(std::filesystem::path const &path, fcppt::string_view new_extension);
 
 }
 }

@@ -25,7 +25,7 @@ Converts \a _string to std::string using \a _locale.
 */
 FCPPT_DETAIL_SYMBOL
 fcppt::optional_std_string
-narrow_locale(std::wstring_view const &_string, std::locale const &_locale);
+narrow_locale(std::wstring_view _string, std::locale const &_locale);
 
 }
 

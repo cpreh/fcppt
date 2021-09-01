@@ -22,7 +22,7 @@ namespace fcppt
 See \ref fcpptstring for more information about this function.
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::optional_string from_std_wstring_locale(std::wstring_view const &, std::locale const &);
+fcppt::optional_string from_std_wstring_locale(std::wstring_view, std::locale const &);
 
 }
 

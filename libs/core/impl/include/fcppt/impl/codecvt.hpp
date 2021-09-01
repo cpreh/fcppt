@@ -24,7 +24,7 @@ namespace impl
 {
 template <typename Out, typename In, typename Function>
 fcppt::optional::object<std::basic_string<Out>> codecvt(
-    std::basic_string_view<In> const &_string,
+    std::basic_string_view<In> const _string,
     std::locale const &_locale,
     Function const &_function)
 {

@@ -28,7 +28,7 @@ Then this function returns the string <code>d_1, ..., d_n</code> if and only if 
 */
 template <typename Ch, typename Traits>
 fcppt::optional::object<std::string>
-narrow_string_locale(std::basic_string_view<Ch, Traits> const &_string, std::locale const &_locale)
+narrow_string_locale(std::basic_string_view<Ch, Traits> const _string, std::locale const &_locale)
 {
   auto const &facet{std::use_facet<std::ctype<Ch>>(_locale)};
 

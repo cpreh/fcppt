@@ -14,7 +14,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::optional_std_string fcppt::getenv(std::string_view const &_val)
+fcppt::optional_std_string fcppt::getenv(std::string_view const _val)
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4996)

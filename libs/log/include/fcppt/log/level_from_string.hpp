@@ -25,7 +25,7 @@ enumerator. Accepts all strings as parameters that are listed in #fcppt::log::le
 \param name the name of the log level
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::log::optional_level level_from_string(fcppt::string_view const &name);
+fcppt::log::optional_level level_from_string(fcppt::string_view name);
 
 }
 }

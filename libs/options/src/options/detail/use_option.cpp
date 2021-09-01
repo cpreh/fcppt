@@ -22,7 +22,7 @@
 
 fcppt::options::detail::use_option_result fcppt::options::detail::use_option(
     fcppt::reference<fcppt::options::state> const _state,
-    fcppt::string_view const &_name,
+    fcppt::string_view const _name,
     fcppt::options::detail::flag_is_short const _is_short)
 {
   fcppt::string const flag_name{fcppt::options::impl::flag_name(_name, _is_short)};

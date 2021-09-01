@@ -11,7 +11,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::optional_std_string fcppt::narrow(std::wstring_view const &_string)
+fcppt::optional_std_string fcppt::narrow(std::wstring_view const _string)
 {
   return fcppt::narrow_locale(_string, fcppt::string_conv_locale());
 }

@@ -22,7 +22,7 @@ namespace fcppt
 Converts \a _string to std::string.
 */
 FCPPT_DETAIL_SYMBOL
-fcppt::optional_std_string narrow(std::wstring_view const &_string);
+fcppt::optional_std_string narrow(std::wstring_view _string);
 
 }
 

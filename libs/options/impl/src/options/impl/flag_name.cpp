@@ -10,7 +10,7 @@
 #include <fcppt/options/impl/flag_name.hpp>
 
 fcppt::string fcppt::options::impl::flag_name(
-    fcppt::string_view const &_name, fcppt::options::detail::flag_is_short const _is_short)
+    fcppt::string_view const _name, fcppt::options::detail::flag_is_short const _is_short)
 {
   return (_is_short.get() ? FCPPT_TEXT("-") : FCPPT_TEXT("--")) + fcppt::string{_name};
 }

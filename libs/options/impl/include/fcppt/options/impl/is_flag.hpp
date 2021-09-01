@@ -21,7 +21,7 @@ namespace options
 namespace impl
 {
 fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>
-is_flag(fcppt::string_view const &);
+is_flag(fcppt::string_view);
 
 }
 }

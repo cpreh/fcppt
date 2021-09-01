@@ -13,7 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 fcppt::optional_std_string
-fcppt::narrow_locale(std::wstring_view const &_string, std::locale const &_locale)
+fcppt::narrow_locale(std::wstring_view const _string, std::locale const &_locale)
 {
   return fcppt::impl::codecvt<char>(_string, _locale, &fcppt::impl::codecvt_type::out);
 }

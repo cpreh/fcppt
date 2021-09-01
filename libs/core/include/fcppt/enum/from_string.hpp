@@ -28,7 +28,7 @@ Uses #fcppt::enum_::from_string_impl to convert a string to an enum.
 \tparam Enum Must be an enum type
 */
 template <typename Enum, typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
-inline fcppt::optional::object<Enum> from_string(std::string_view const &_string)
+inline fcppt::optional::object<Enum> from_string(std::string_view const _string)
 {
   return fcppt::enum_::from_string_impl<Enum>::get(_string);
 }

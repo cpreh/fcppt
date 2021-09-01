@@ -14,7 +14,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::log::optional_level fcppt::log::level_from_string(fcppt::string_view const &_name)
+fcppt::log::optional_level fcppt::log::level_from_string(fcppt::string_view const _name)
 {
   return fcppt::optional::bind(
       fcppt::to_std_string(_name),

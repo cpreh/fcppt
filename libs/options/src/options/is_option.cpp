@@ -11,7 +11,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/options/is_option.hpp>
 
-bool fcppt::options::is_option(fcppt::string_view const &_value)
+bool fcppt::options::is_option(fcppt::string_view const _value)
 {
   return fcppt::optional::copy_value(fcppt::container::maybe_front(_value)) ==
          fcppt::optional::make(FCPPT_TEXT('-'));

@@ -14,7 +14,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-std::wstring fcppt::to_std_wstring(fcppt::string_view const &_input)
+std::wstring fcppt::to_std_wstring(fcppt::string_view const _input)
 {
   return
 #if defined(FCPPT_NARROW_STRING)

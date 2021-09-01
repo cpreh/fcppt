@@ -20,7 +20,7 @@ namespace detail
 {
 [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool use_flag(
     fcppt::reference<fcppt::options::state>,
-    fcppt::string_view const &,
+    fcppt::string_view,
     fcppt::options::detail::flag_is_short);
 
 }

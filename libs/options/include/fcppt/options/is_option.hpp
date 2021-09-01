@@ -21,7 +21,7 @@ namespace options
 Options are strings that with a '-'.
 */
 FCPPT_OPTIONS_DETAIL_SYMBOL
-bool is_option(fcppt::string_view const &);
+bool is_option(fcppt::string_view);
 
 }
 }

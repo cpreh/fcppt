@@ -33,7 +33,7 @@ struct from_string_impl
 {
   static_assert(fcppt::enum_::is_object<Enum>::value, "Enum must be an enum type");
 
-  static fcppt::optional::object<Enum> get(std::string_view const &_string)
+  static fcppt::optional::object<Enum> get(std::string_view const _string)
   {
     return fcppt::enum_::index_of_array(fcppt::enum_::names<Enum>(), _string);
   }

@@ -15,7 +15,7 @@
 #include <fcppt/config/external_end.hpp>
 
 std::wstring fcppt::to_std_wstring_locale(
-    fcppt::string_view const &_input,
+    fcppt::string_view const _input,
 #if defined(FCPPT_NARROW_STRING)
     std::locale const &_locale
 #else

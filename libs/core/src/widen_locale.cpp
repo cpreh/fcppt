@@ -14,7 +14,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-std::wstring fcppt::widen_locale(std::string_view const &_string, std::locale const &_locale)
+std::wstring fcppt::widen_locale(std::string_view const _string, std::locale const &_locale)
 {
   return fcppt::optional::to_exception(
       fcppt::impl::codecvt<wchar_t>(_string, _locale, &fcppt::impl::codecvt_type::in), [] {
