@@ -595,6 +595,9 @@ set(
 	libs/core/include/fcppt/container/tree/output.hpp
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
+	libs/core/include/fcppt/container/uncons.hpp
+	libs/core/include/fcppt/container/uncons_result.hpp
+	libs/core/include/fcppt/container/uncons_result_fwd.hpp
 	libs/core/include/fcppt/copy.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp

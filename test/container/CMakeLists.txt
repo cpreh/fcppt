@@ -124,6 +124,10 @@ add_fcppt_container_test(
 	set_union
 )
 
+add_fcppt_container_test(
+	uncons
+)
+
 add_subdirectory(
 	tree
 )
