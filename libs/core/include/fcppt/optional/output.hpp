@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,11 +31,9 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::optional::object<Type
   return fcppt::optional::maybe(
       _opt_value,
       [&_stream]() -> result_type { return _stream << _stream.widen('N'); },
-      [&_stream](Type const &_value) -> result_type {
-        return _stream << _stream.widen('J') << _stream.widen(' ') << _value;
-      });
+      [&_stream](Type const &_value) -> result_type
+      { return _stream << _stream.widen('J') << _stream.widen(' ') << fcppt::output(_value); });
 }
-
 }
 
 #endif
