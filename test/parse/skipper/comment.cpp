@@ -3,9 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/either/no_error_comparison.hpp>
+#include <fcppt/either/no_error_output.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/error_equal.hpp>
 #include <fcppt/parse/error_output.hpp>
@@ -31,4 +31,3 @@ TEST_CASE("parse::skipper::comment", "[parse]")
       fcppt::test::parse::skipper::skip_string(parser, std::string{"/* XY */"}) ==
       fcppt::parse::skipper::make_success<char>());
 }
-

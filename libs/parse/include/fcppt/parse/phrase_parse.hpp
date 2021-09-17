@@ -8,9 +8,9 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
+#include <fcppt/either/no_error.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/is_parser.hpp>
@@ -49,7 +49,7 @@ try
 {
   return fcppt::either::bind(
       fcppt::parse::skipper::run(_skipper, fcppt::make_ref(_input)),
-      [&_parser, &_input, &_skipper](fcppt::unit const &) {
+      [&_parser, &_input, &_skipper](fcppt::either::no_error const &) {
         return _parser.parse(fcppt::make_ref(_input), _skipper);
       });
 }

@@ -445,7 +445,9 @@ set(
 	libs/core/include/fcppt/either/match.hpp
 	libs/core/include/fcppt/either/monad.hpp
 	libs/core/include/fcppt/either/no_error.hpp
+	libs/core/include/fcppt/either/no_error_comparison.hpp
 	libs/core/include/fcppt/either/no_error_fwd.hpp
+	libs/core/include/fcppt/either/no_error_output.hpp
 	libs/core/include/fcppt/either/object.hpp
 	libs/core/include/fcppt/either/object_concept.hpp
 	libs/core/include/fcppt/either/object_decl.hpp

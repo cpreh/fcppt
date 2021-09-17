@@ -5,12 +5,12 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/no_error.hpp>
+#include <fcppt/either/no_error_comparison.hpp>
+#include <fcppt/either/no_error_output.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/either/sequence_error.hpp>
 #include <fcppt/config/external_begin.hpp>

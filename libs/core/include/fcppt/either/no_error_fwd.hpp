@@ -6,8 +6,6 @@
 #ifndef FCPPT_EITHER_NO_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_EITHER_NO_ERROR_FWD_HPP_INCLUDED
 
-#include <fcppt/unit_fwd.hpp>
-
 namespace fcppt::either
 {
 /**
@@ -15,7 +13,7 @@ namespace fcppt::either
 
 \ingroup fcppteither
 */
-using no_error = fcppt::unit;
+struct no_error;
 
 }
 

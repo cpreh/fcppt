@@ -5,24 +5,19 @@
 
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
-#include <fcppt/either/error_from_optional.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/either/no_error_comparison.hpp>
 #include <fcppt/either/no_error_output.hpp>
 #include <fcppt/either/output.hpp>
-#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
-TEST_CASE("either::error_from_optional", "[either]")
-{
-  using optional_int = fcppt::optional::object<int>;
 
+TEST_CASE("either::error", "[either]")
+{
   using either_int = fcppt::either::error<int>;
 
-  CHECK(fcppt::either::error_from_optional(optional_int{42}) == either_int{42});
-
-  CHECK(
-      fcppt::either::error_from_optional(optional_int()) == either_int{fcppt::either::no_error{}});
+  CHECK(either_int{42} == fcppt::either::make_failure<fcppt::either::no_error>(42));
 }

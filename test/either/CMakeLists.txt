@@ -23,6 +23,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	error
+)
+
+add_fcppt_either_test(
 	error_from_optional
 )
 

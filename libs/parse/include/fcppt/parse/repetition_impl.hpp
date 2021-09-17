@@ -7,11 +7,11 @@
 #define FCPPT_PARSE_REPETITION_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/either/no_error.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
@@ -49,7 +49,7 @@ fcppt::parse::repetition<Parser>::parse(
             [_state, &_skipper](fcppt::parse::result_of<Parser> &&_element) {
               return fcppt::either::map(
                   fcppt::parse::skipper::run(_skipper, _state),
-                  [&_element](fcppt::unit const &) { return std::move(_element); });
+                  [&_element](fcppt::either::no_error const &) { return std::move(_element); });
             });
       },
       [_state, &result, &pos](fcppt::parse::result_of<Parser> &&_element) {

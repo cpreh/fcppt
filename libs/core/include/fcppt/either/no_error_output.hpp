@@ -3,26 +3,27 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_UNIT_OUTPUT_HPP_INCLUDED
-#define FCPPT_UNIT_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_EITHER_NO_ERROR_OUTPUT_HPP_INCLUDED
+#define FCPPT_EITHER_NO_ERROR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/unit_fwd.hpp>
+#include <fcppt/string_literal.hpp>
+#include <fcppt/either/no_error_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
+namespace fcppt::either
 {
 /**
-\brief Outputs a unit to a basic_ostream.
+\brief Outputs #fcppt::either::no_error.
 
-\ingroup fcpptvarious
+\ingroup fcppteither
 */
 template <typename Ch, typename Traits>
 inline std::basic_ostream<Ch, Traits> &
-operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::unit const &)
+operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::either::no_error const &)
 {
-  return _stream << _stream.widen('(') << _stream.widen(')');
+  return _stream << FCPPT_STRING_LITERAL(Ch, "No error");
 }
 
 }

@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/either/no_error_comparison.hpp>
 #include <fcppt/parse/skipper/literal.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/operators/repetition.hpp>

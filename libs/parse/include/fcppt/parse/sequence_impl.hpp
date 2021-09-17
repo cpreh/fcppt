@@ -7,9 +7,9 @@
 #define FCPPT_PARSE_SEQUENCE_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/either/no_error.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
@@ -38,7 +38,7 @@ fcppt::parse::sequence<Left, Right>::parse(
       [&_state, &_skipper, this](fcppt::parse::result_of<Left> &&_left_result) {
         return fcppt::either::bind(
             fcppt::parse::skipper::run(_skipper, _state),
-            [&_left_result, _state, &_skipper, this](fcppt::unit const &) {
+            [&_left_result, _state, &_skipper, this](fcppt::either::no_error const &) {
               return fcppt::either::map(
                   fcppt::parse::deref(this->right_).parse(_state, _skipper),
                   [&_left_result](fcppt::parse::result_of<Right> &&_right_result) {

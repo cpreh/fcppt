@@ -6,7 +6,14 @@
 #ifndef FCPPT_EITHER_NO_ERROR_HPP_INCLUDED
 #define FCPPT_EITHER_NO_ERROR_HPP_INCLUDED
 
-#include <fcppt/unit.hpp>
 #include <fcppt/either/no_error_fwd.hpp>
+
+namespace fcppt::either
+{
+struct no_error
+{
+};
+
+}
 
 #endif
