@@ -7,6 +7,7 @@
 #define FCPPT_ARRAY_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
+#include <fcppt/output.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
@@ -37,7 +38,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
       fcppt::mpl::list::interval<fcppt::mpl::size_type<0U>, fcppt::mpl::size_type<Size>>{},
       [&_stream, &_array]<std::size_t Index>(fcppt::tag<std::integral_constant<std::size_t, Index>>)
       {
-        _stream << fcppt::array::get<Index>(_array);
+        _stream << fcppt::output(fcppt::array::get<Index>(_array));
         if constexpr (Index != Size - 1U)
         {
           _stream << _stream.widen(',');

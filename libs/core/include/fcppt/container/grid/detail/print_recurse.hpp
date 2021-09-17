@@ -7,6 +7,7 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/output.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
@@ -39,7 +40,7 @@ std::enable_if_t<Level == 0, void> print_recurse(
     fcppt::container::grid::object<Type, Size, Alloc> const &_object,
     fcppt::container::grid::pos_type<fcppt::container::grid::object<Type, Size, Alloc>> const _pos)
 {
-  _stream << _object.get_unsafe(_pos);
+  _stream << fcppt::output(_object.get_unsafe(_pos));
 }
 
 template <

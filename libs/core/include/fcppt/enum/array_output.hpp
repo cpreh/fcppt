@@ -7,6 +7,7 @@
 #define FCPPT_ENUM_ARRAY_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
+#include <fcppt/output.hpp>
 #include <fcppt/enum/array_impl.hpp>
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/make_range.hpp>
@@ -42,7 +43,7 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::enum_::array<Enum, Va
   for (Enum const value : fcppt::enum_::make_range<Enum>())
   {
     _stream << fcppt::io::widen_string(std::string{fcppt::enum_::to_string(value)})
-            << FCPPT_CHAR_LITERAL(Ch, '=') << _array[value];
+            << FCPPT_CHAR_LITERAL(Ch, '=') << fcppt::output(_array[value]);
     if (value != fcppt::enum_::max_value<Enum>::value)
     {
       _stream << FCPPT_CHAR_LITERAL(Ch, ',');

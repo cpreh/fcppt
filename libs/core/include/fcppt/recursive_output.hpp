@@ -6,6 +6,7 @@
 #ifndef FCPPT_RECURSIVE_OUTPUT_HPP_INCLUDED
 #define FCPPT_RECURSIVE_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
@@ -17,7 +18,7 @@ template <typename Ch, typename Traits, typename Type>
 std::basic_ostream<Ch, Traits> &
 operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::recursive<Type> const &_value)
 {
-  return _stream << _value.get();
+  return _stream << fcppt::output(_value.get());
 }
 
 }

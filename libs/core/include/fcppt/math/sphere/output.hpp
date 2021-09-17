@@ -6,6 +6,7 @@
 #ifndef FCPPT_MATH_SPHERE_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/sphere/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -28,10 +29,9 @@ template <typename T, fcppt::math::size_type Size, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &operator<<(
     std::basic_ostream<Ch, Traits> &_stream, fcppt::math::sphere::object<T, Size> const &_sphere)
 {
-  return _stream << _stream.widen('(') << _sphere.origin() << _stream.widen(')') << _sphere.radius()
-                 << _stream.widen(')');
+  return _stream << _stream.widen('(') << _sphere.origin() << _stream.widen(')')
+                 << fcppt::output(_sphere.radius()) << _stream.widen(')');
 }
-
 }
 }
 }

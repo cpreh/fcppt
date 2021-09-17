@@ -6,6 +6,7 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_PRINT_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_PRINT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -28,7 +29,7 @@ void print(
 {
   fcppt::algorithm::repeat(_indent, [&_stream] { _stream << _stream.widen('\t'); });
 
-  _stream << _tree.value() << _stream.widen('\n');
+  _stream << fcppt::output(_tree.value()) << _stream.widen('\n');
 
   for (auto const &child : _tree)
   {

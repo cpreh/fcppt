@@ -6,6 +6,7 @@
 #ifndef FCPPT_EITHER_OUTPUT_HPP_INCLUDED
 #define FCPPT_EITHER_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,7 +27,7 @@ template <typename Failure, typename Success, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &operator<<(
     std::basic_ostream<Ch, Traits> &_stream, fcppt::either::object<Failure, Success> const &_either)
 {
-  auto const output([&_stream](auto const &_value) { _stream << _value; });
+  auto const output([&_stream](auto const &_value) { _stream << fcppt::output(_value); });
 
   fcppt::either::match(_either, output, output);
 

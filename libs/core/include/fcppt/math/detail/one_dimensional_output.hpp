@@ -6,6 +6,7 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -34,7 +35,7 @@ one_dimensional_output(std::basic_ostream<Ch, Traits> &_stream, Type const &_val
       [&_stream,
        &_value]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
       {
-        _stream << fcppt::math::detail::checked_access<Index>(_value);
+        _stream << fcppt::output(fcppt::math::detail::checked_access<Index>(_value));
 
         fcppt::math::detail::if_not_last_index(
             fcppt::math::size_constant<Index>{},
