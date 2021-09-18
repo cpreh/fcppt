@@ -166,6 +166,7 @@ set(
 	libs/core/include/fcppt/concepts/invocable_move.hpp
 	libs/core/include/fcppt/concepts/move_constructible.hpp
 	libs/core/include/fcppt/concepts/range.hpp
+	libs/core/include/fcppt/concepts/string.hpp
 	libs/core/include/fcppt/cond.hpp
 	libs/core/include/fcppt/config/clang_version_at_least.hpp
 	libs/core/include/fcppt/config/compiler.hpp
@@ -518,7 +519,7 @@ set(
 	libs/core/include/fcppt/exception_fwd.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
 	libs/core/include/fcppt/extract_from_string_fmt.hpp
-	libs/core/include/fcppt/extract_from_string_locale.hpp
+	libs/core/include/fcppt/extract_from_string_locale_fmt.hpp
 	libs/core/include/fcppt/from_std_string.hpp
 	libs/core/include/fcppt/from_std_string_locale.hpp
 	libs/core/include/fcppt/from_std_wstring.hpp

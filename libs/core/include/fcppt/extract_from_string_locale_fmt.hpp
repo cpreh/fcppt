@@ -3,9 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_EXTRACT_FROM_STRING_LOCALE_HPP_INCLUDED
-#define FCPPT_EXTRACT_FROM_STRING_LOCALE_HPP_INCLUDED
+#ifndef FCPPT_EXTRACT_FROM_STRING_LOCALE_FMT_HPP_INCLUDED
+#define FCPPT_EXTRACT_FROM_STRING_LOCALE_FMT_HPP_INCLUDED
 
+#include <fcppt/concepts/string.hpp>
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/nothing.hpp>
@@ -13,12 +14,12 @@
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
 #include <locale>
 #include <sstream>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,22 +37,20 @@ have either a default constructor or must be constructible from #fcppt::no_init.
 
 \note The string has to be consumed completely.
 */
-template <typename Dest, typename Source>
-fcppt::optional::object<Dest> extract_from_string_locale(
-    Source const &_source,
+template <typename Dest, fcppt::concepts::string Source>
+fcppt::optional::object<Dest> extract_from_string_locale_fmt(
+    Source &&_source,
     std::locale const &_locale,
     fcppt::optional::object<std::ios_base::fmtflags> const _flags)
 {
-  static_assert(
-      fcppt::type_traits::is_string<Source>::value,
-      "extract_from_string can only be used on strings");
+  using source = std::remove_cvref_t<Source>;
 
-  using traits = typename Source::traits_type;
+  using traits = typename source::traits_type;
 
-  using istringstream = std::basic_istringstream<fcppt::type_traits::value_type<Source>, traits>;
+  using istringstream = std::basic_istringstream<fcppt::type_traits::value_type<source>, traits>;
 
   // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-  istringstream iss{_source};
+  istringstream iss{std::forward<Source>(_source)};
 
   iss.imbue(_locale);
 
