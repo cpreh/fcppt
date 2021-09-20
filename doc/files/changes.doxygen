@@ -4,7 +4,7 @@
 \section changes_changes_to_400 4.0.0
 
 <p>
-fcppt now uses <code>C++-20</code>.
+fcppt now uses <code>C++-20</code>. Some functions were updated to use concepts, but this is still a work in progress.
 </p>
 
 <p>
@@ -15,22 +15,65 @@ Metal is no longer required.
 
 <ul>
 
+<li>\ref fcpptconcepts
+    <p>
+    New library with various C++20 concepts.
+    </p>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added #fcppt::container::uncons.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmpl
 	<p>
 	New library that replaces Metal.
 	</p>
 </li>
 
+<li>\ref fcpptparse
+	<ul>
+	<li>Added #fcppt::parse::skipper::alternative, #fcppt::parse::skipper::any, #fcppt::parse::skipper::comment, #fcppt::parse::skipper::not_
+	and #fcppt::parse::skipper::string.</li>
+	<li>Added #fcppt::parse::with_location.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptrecord
 	<ul>
 	<li>Added support for #fcppt::algorithm::loop_break and #fcppt::algorithm::map.</li>
 	<li>Added #fcppt::record::make.</li>
+	<li>Exposed #fcppt::record::element_init, which was previously a member of <code>detail::</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Added #fcppt::extract_from_string_fmt that allows to pass format flags.</li>
+	<li>#fcppt::extract_from_string now also accepts rvalue strings.</li>
 	</ul>
 </li>
 
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added #fcppt::type_traits::is_integral_constant.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added #fcppt::variant::partition.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>#fcppt::output has been added. Its behaviour can be specialized via #fcppt::output_impl.
+	The default implementation uses <code>operator<<</code>.</li>
+	<li>Added support for #fcppt::deref to #fcppt::recursive.</li>
+	<li>Added <code>operator-></code> to #fcppt::recursive.</li>
 	</ul>
 </li>
 
@@ -43,7 +86,7 @@ Metal is no longer required.
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>The result type of #fcppt::algorithm::find_by_opt now has to be specified explicitly.
-	This makes the algorithm work on heterogenous ranges (like tuples) as well.
+	This makes the algorithm work on heterogeneous ranges (like tuples) as well.
 	</li>
 	</ul>
 </li>
@@ -51,7 +94,22 @@ Metal is no longer required.
 <li>\ref fcppteither
 	<ul>
 	<li>The result type of #fcppt::either::sequence is now the full either type instead of its success type.
-	This makes the function work on heterogenous ranges (like tuples) as well.
+	This makes the function work on heterogeneous ranges (like tuples) as well.
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li><code>fcppt::extract_from_string_locale</code> has been renamed
+	to #fcppt::extract_from_string_locale_fmt and has gained an additional
+	format flags parameter.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttime
+	<ul>
+	<li>#fcppt::time::gmtime, #fcppt::time::localtime and #fcppt::time::std_time now use <code>std::exception</code> instead of #fcppt::exception.</li>
+	<li>#fcppt::time::output_tm is now a template over the char and traits types.</li>
 	</ul>
 </li>
 
@@ -99,18 +157,25 @@ Metal is no longer required.
 	</ul>
 </li>
 
-<li>\ref fcppttime
-	<ul>
-	<li>#fcppt::time::gmtime, #fcppt::time::localtime and #fcppt::time::std_time now use <code>std::exception</code> instead of #fcppt::exception.</li>
-	<li>#fcppt::time::output_tm is now a template over the char and traits types.</li>
-	</ul>
-</li>
-
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Removed <code>fcppt::type_traits::remove_cv_ref_t</code>. Use <code>std::remove_cvref_t</code>.</li>
 	<li>Removed <code>fcppt::type_traits::function_result</code>.</li>
 	<li>Removed <code>fcppt::type_traits::is_float_or_double</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_400 Bugfixes
+
+<ul>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Fixed failure condition of #fcppt::extract_from_string, #fcppt::extract_from_string_fmt and #fcppt::extract_from_string_locale_fmt.
+	It was previously possible that every character of the string has been consumed but EOF has not been reached either.
+	</li>
 	</ul>
 </li>
 
@@ -458,7 +523,7 @@ Fixed a gcc-11 issue regarding parameter expansion.
 	<li>Added #fcppt::system.</li>
 	<li>Added #fcppt::insert_extract_locale as a replacement for the <code>=std::locale()</code> parameters.</li>
 	<li>Added variants of various functions taking a locale:
-	This includes #fcppt::extract_from_string_locale, #fcppt::from_std_string_locale, #fcppt::from_std_wstring_locale
+	This includes <code>fcppt::extract_from_string_locale</code>, #fcppt::from_std_string_locale, #fcppt::from_std_wstring_locale
 	#fcppt::narrow_locale, #fcppt::output_to_string_locale, #fcppt::output_to_std_string_locale,
 	#fcppt::output_to_std_wstring_locale, #fcppt::to_std_string_locale, #fcppt::to_std_wstring_locale and #fcppt::widen_locale.</li>
 	</li>
