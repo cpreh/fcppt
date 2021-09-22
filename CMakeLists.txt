@@ -618,7 +618,6 @@ set(
 
 install(
 	FILES
-	${FCPPT_CMAKE_MODULES_DIR}/FindFcpptThreads.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtils.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtilsPaths.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtilsSettings.cmake
