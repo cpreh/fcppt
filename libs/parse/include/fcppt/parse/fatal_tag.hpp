@@ -8,9 +8,7 @@
 
 #include <fcppt/parse/fatal_tag_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Used to disambiguate constructors of #fcppt::parse::error.
@@ -20,7 +18,6 @@ struct fatal_tag
 {
 };
 
-}
 }
 
 #endif

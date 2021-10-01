@@ -14,13 +14,7 @@
 #include <random>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
-{
-namespace parameters
+namespace fcppt::random::distribution::parameters
 {
 /**
 \brief Parameters class for normal distributions
@@ -69,9 +63,6 @@ private:
   stddev stddev_;
 };
 
-}
-}
-}
 }
 
 #endif

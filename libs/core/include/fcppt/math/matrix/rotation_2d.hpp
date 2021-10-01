@@ -12,11 +12,7 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates a two dimensional rotation matrix
@@ -37,8 +33,6 @@ fcppt::math::matrix::static_<T, 2, 2> rotation_2d(T const _angle)
       fcppt::math::matrix::row(cosx, -sinx), fcppt::math::matrix::row(sinx, cosx)};
 }
 
-}
-}
 }
 
 #endif

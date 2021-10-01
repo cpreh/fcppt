@@ -9,13 +9,10 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, flag_name);
 
-}
 }
 
 #endif

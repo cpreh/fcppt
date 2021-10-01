@@ -6,14 +6,11 @@
 #ifndef FCPPT_MATH_IS_ZERO_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_MATH_IS_ZERO_IMPL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 template <typename T, typename Enable = void>
 struct is_zero_impl;
 
-}
 }
 
 #endif

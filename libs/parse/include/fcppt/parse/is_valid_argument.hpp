@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Checks if a parameter is a valid parser type.
@@ -26,7 +24,6 @@ template <typename Type>
 using is_valid_argument =
     fcppt::parse::is_parser<fcppt::parse::deref_type<std::remove_cvref_t<Type>>>;
 
-}
 }
 
 #endif

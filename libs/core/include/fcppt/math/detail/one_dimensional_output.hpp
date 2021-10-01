@@ -18,11 +18,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Ch, typename Traits, typename Type>
 std::basic_ostream<Ch, Traits> &
@@ -46,8 +42,6 @@ one_dimensional_output(std::basic_ostream<Ch, Traits> &_stream, Type const &_val
   return _stream << _stream.widen(')');
 }
 
-}
-}
 }
 
 #endif

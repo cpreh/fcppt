@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts an int to an enum
@@ -34,7 +32,6 @@ template <
 inline constexpr Enum int_to_enum(Source const _source) noexcept
 {
   return static_cast<Enum>(_source);
-}
 }
 }
 

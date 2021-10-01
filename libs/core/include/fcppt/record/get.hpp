@@ -9,9 +9,7 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_impl.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Gets an element from a record
@@ -41,7 +39,6 @@ get(fcppt::record::object<Elements...> &_arg)
   return _arg.template get<Label>();
 }
 
-}
 }
 
 #endif

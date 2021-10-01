@@ -10,9 +10,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/basic_stream_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The next character in a stream.
@@ -24,7 +22,6 @@ fcppt::optional::object<Ch> get_char(fcppt::reference<fcppt::parse::basic_stream
   return _state.get().get_char();
 }
 
-}
 }
 
 #endif

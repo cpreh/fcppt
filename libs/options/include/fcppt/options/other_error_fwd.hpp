@@ -9,9 +9,7 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A string type representing other errors.
@@ -23,7 +21,6 @@ failed conversion. Such errors make even #fcppt::options::optional parsers fail.
 */
 FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, other_error);
 
-}
 }
 
 #endif

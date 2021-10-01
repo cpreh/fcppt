@@ -6,9 +6,7 @@
 #ifndef FCPPT_ENUM_TO_STRING_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_ENUM_TO_STRING_IMPL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Customization point for #fcppt::enum_::to_string.
@@ -20,7 +18,6 @@ A specialization of this class should contain a static member function
 template <typename Enum, typename Enable = void>
 struct to_string_impl;
 
-}
 }
 
 #endif

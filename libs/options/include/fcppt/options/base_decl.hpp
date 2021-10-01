@@ -16,9 +16,7 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/is_object.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The base class for parsers with a given result type.
@@ -56,7 +54,6 @@ public:
   [[nodiscard]] virtual fcppt::string usage() const = 0;
 };
 
-}
 }
 
 #endif

@@ -6,13 +6,10 @@
 #ifndef FCPPT_OPTIONS_STATE_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_STATE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 class state;
 
-}
 }
 
 #endif

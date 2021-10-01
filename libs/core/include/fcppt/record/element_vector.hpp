@@ -8,9 +8,7 @@
 
 #include <fcppt/record/detail/element_vector.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief A metafunction returning the elements of record as an MPL vector.
@@ -22,7 +20,6 @@ namespace record
 template <typename Record>
 using element_vector = typename fcppt::record::detail::element_vector<Record>::type;
 
-}
 }
 
 #endif

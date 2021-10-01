@@ -10,11 +10,7 @@
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/types_of.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename T>
 struct alternative_list_impl
@@ -28,8 +24,6 @@ struct alternative_list_impl<fcppt::variant::object<List...>>
   using type = fcppt::variant::types_of<fcppt::variant::object<List...>>;
 };
 
-}
-}
 }
 
 #endif

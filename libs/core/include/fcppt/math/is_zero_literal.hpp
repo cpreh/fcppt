@@ -12,9 +12,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 template <typename T, typename Enable>
 struct is_zero_impl
@@ -28,7 +26,6 @@ struct is_zero_impl
   }
 };
 
-}
 }
 
 #endif

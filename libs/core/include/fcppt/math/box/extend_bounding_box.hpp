@@ -18,11 +18,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Extend a box to fit a point in it
@@ -75,8 +71,6 @@ fcppt::math::box::object<T, N> extend_bounding_box(
       });
 }
 
-}
-}
 }
 
 #endif

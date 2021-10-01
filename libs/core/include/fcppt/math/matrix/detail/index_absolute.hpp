@@ -9,20 +9,11 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 template <fcppt::math::size_type C, fcppt::math::size_type Absolute>
 using index_absolute = fcppt::math::matrix::index<Absolute / C, Absolute % C>;
 
-}
-}
-}
 }
 
 #endif

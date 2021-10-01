@@ -10,9 +10,7 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief An array used to save log level streams for every level
@@ -24,7 +22,6 @@ Each entry corresponds to an enumerator from #fcppt::log::level.
 */
 using level_stream_array = fcppt::enum_::array<fcppt::log::level, fcppt::log::level_stream>;
 
-}
 }
 
 #endif

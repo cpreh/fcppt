@@ -9,9 +9,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace error
+namespace fcppt::error
 {
 /**
 \brief A wrapper around <code>std::strerror(strerrno)</code>
@@ -24,7 +22,6 @@ the current global error number.
 FCPPT_DETAIL_SYMBOL
 fcppt::string strerrno();
 
-}
 }
 
 #endif

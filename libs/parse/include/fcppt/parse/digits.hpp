@@ -9,9 +9,7 @@
 #include <fcppt/char_literal.hpp>
 #include <fcppt/parse/basic_char_set_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The char set of digits.
@@ -35,7 +33,6 @@ fcppt::parse::basic_char_set<Ch> digits()
       FCPPT_CHAR_LITERAL(Ch, '9')};
 }
 
-}
 }
 
 #endif

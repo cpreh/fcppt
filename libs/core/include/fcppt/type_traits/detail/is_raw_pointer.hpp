@@ -10,11 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
-{
-namespace detail
+namespace fcppt::type_traits::detail
 {
 template <typename Type>
 struct is_raw_pointer
@@ -28,8 +24,6 @@ struct is_raw_pointer
       std::disjunction_v<std::is_same<base_type, char>, std::is_same<base_type, unsigned char>>>;
 };
 
-}
-}
 }
 
 #endif

@@ -11,11 +11,7 @@
 #include <fcppt/log/format/prefix_string.hpp>
 #include <fcppt/log/format/suffix_string.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \brief Creates a formatter from a prefix and a suffix.
@@ -26,8 +22,6 @@ FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 inserter(fcppt::log::format::prefix_string const &, fcppt::log::format::suffix_string const &);
 
-}
-}
 }
 
 #endif

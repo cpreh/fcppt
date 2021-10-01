@@ -18,11 +18,7 @@
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
-{
-namespace impl
+namespace fcppt::filesystem::impl
 {
 template <typename Range>
 fcppt::either::object<std::error_code, Range>
@@ -37,8 +33,6 @@ make_range(std::filesystem::path const &_path, std::filesystem::directory_option
       [&result](fcppt::either::no_error const &) { return result; });
 }
 
-}
-}
 }
 
 #endif

@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Monadic bind.
@@ -30,7 +28,6 @@ inline std::invoke_result_t<
 bind(Arg &&_arg, Function const &_function)
 {
   return fcppt::monad::instance<std::remove_cvref_t<Arg>>::bind(std::forward<Arg>(_arg), _function);
-}
 }
 }
 

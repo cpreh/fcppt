@@ -6,9 +6,7 @@
 #ifndef FCPPT_TYPE_ISO_TRANSFORM_FWD_HPP_INCLUDED
 #define FCPPT_TYPE_ISO_TRANSFORM_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 /**
 \brief Customization point for decorate/undecorate
@@ -18,7 +16,6 @@ namespace type_iso
 template <typename Type, typename Enable = void>
 struct transform;
 
-}
 }
 
 #endif

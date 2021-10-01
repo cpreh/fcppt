@@ -19,9 +19,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/disjoint_product.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -68,7 +66,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

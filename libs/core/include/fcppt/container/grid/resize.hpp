@@ -19,11 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Returns a resized grid with potentially new elements
@@ -63,8 +59,6 @@ std::remove_cvref_t<Grid> resize(
       }};
 }
 
-}
-}
 }
 
 #endif

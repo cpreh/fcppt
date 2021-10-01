@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Returns how many sub-paths a path has
@@ -28,7 +26,6 @@ Returns how many sub-path \a path has
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::size_t num_subpaths(std::filesystem::path const &path);
 
-}
 }
 
 #endif

@@ -10,11 +10,7 @@
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \brief Composes two formatters
@@ -31,8 +27,6 @@ fcppt::log::format::optional_function chain(
     fcppt::log::format::optional_function const &parent,
     fcppt::log::format::optional_function const &child);
 
-}
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Returns the extension of a path as string without the dot
@@ -31,7 +29,6 @@ the string will be empty.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string extension_without_dot(std::filesystem::path const &path);
 
-}
 }
 
 #endif

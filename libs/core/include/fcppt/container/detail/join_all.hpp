@@ -13,11 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace detail
+namespace fcppt::container::detail
 {
 template <typename Result, typename... Args>
 inline std::remove_cvref_t<Result> join_all(Result &&_first)
@@ -38,8 +34,6 @@ join_all(Result &&_result, Container &&_container, Args &&..._args)
       std::forward<Result>(_result), std::forward<Args>(_args)...);
 }
 
-}
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Tells if a type is a string
@@ -35,7 +33,6 @@ struct is_string<std::basic_string<Ch, Traits, Alloc>> : std::true_type
 {
 };
 
-}
 }
 
 #endif

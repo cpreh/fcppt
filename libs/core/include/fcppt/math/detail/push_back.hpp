@@ -18,11 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Dest, typename Src>
 inline Dest push_back(Src const &_src, fcppt::type_traits::value_type<Src> const &_value)
@@ -41,8 +37,6 @@ inline Dest push_back(Src const &_src, fcppt::type_traits::value_type<Src> const
       _value));
 }
 
-}
-}
 }
 
 #endif

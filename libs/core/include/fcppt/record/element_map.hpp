@@ -16,9 +16,7 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/element_vector.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief A metafunction computing the element map of a record.
@@ -37,7 +35,6 @@ using element_map = fcppt::mpl::list::fold<
         fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_type>, fcppt::mpl::arg<1>>>,
     fcppt::mpl::map::object<>>;
 
-}
 }
 
 #endif

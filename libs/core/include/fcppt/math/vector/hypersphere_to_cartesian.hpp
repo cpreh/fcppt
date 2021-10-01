@@ -26,11 +26,7 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
@@ -144,8 +140,6 @@ hypersphere_to_cartesian(fcppt::math::vector::object<T, N, S> const &_angles)
       });
 }
 
-}
-}
 }
 
 #endif

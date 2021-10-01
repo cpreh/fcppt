@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename Type, typename Test = void>
 struct mpl_size_type
@@ -30,8 +26,6 @@ struct mpl_size_type<Type, std::enable_if_t<fcppt::mpl::list::is_object<Type>::v
   using type = typename fcppt::mpl::list::size<Type>::value_type;
 };
 
-}
-}
 }
 
 #endif

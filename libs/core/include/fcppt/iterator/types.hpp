@@ -6,9 +6,7 @@
 #ifndef FCPPT_ITERATOR_TYPES_HPP_INCLUDED
 #define FCPPT_ITERATOR_TYPES_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 /**
 \brief The types passed to #fcppt::iterator::base.
@@ -50,7 +48,6 @@ struct types
   using iterator_category = IteratorCategory;
 };
 
-}
 }
 
 #endif

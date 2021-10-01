@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename T>
 inline std::enable_if_t<std::is_floating_point<T>::value, T> mod(T const &_a, T const &_b)
@@ -29,8 +25,6 @@ inline std::enable_if_t<std::is_unsigned<T>::value, T> mod(T const &_a, T const 
   return _a % _b;
 }
 
-}
-}
 }
 
 #endif

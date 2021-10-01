@@ -13,9 +13,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Reads a number of chars
@@ -27,7 +25,6 @@ Tries to read \a count chars from \a stream.
 FCPPT_DETAIL_SYMBOL
 fcppt::io::optional_buffer read_chars(std::istream &stream, std::size_t count);
 
-}
 }
 
 #endif

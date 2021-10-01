@@ -8,19 +8,13 @@
 
 #include <fcppt/parse/skipper/basic_literal_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \ingroup fcpptparse
 */
 using literal = fcppt::parse::skipper::basic_literal<char>;
 
-}
-}
 }
 
 #endif

@@ -27,11 +27,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Parser>
 fcppt::options::result<fcppt::options::result_of<Parser>> parse_to_empty(
@@ -68,8 +64,6 @@ fcppt::options::result<fcppt::options::result_of<Parser>> parse_to_empty(
       });
 }
 
-}
-}
 }
 
 #endif

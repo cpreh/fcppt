@@ -11,9 +11,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Wraps the integral modulo operator and the floating point modulo functions.
@@ -33,7 +31,6 @@ inline fcppt::optional::object<T> mod(T const &_dividend, T const &_divisor)
   });
 }
 
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Calls a function a number of times
@@ -37,7 +35,6 @@ void repeat(Count const _count, Function const &_function)
   }
 }
 
-}
 }
 
 #endif

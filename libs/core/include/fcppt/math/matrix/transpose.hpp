@@ -13,11 +13,7 @@
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates a transposed matrix
@@ -34,8 +30,6 @@ transpose(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
       { return fcppt::math::matrix::at_r_c<Col, Row>(_matrix); });
 }
 
-}
-}
 }
 
 #endif

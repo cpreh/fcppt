@@ -8,9 +8,7 @@
 
 #include <fcppt/parse/deref_type.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The result type of a parser.
@@ -19,7 +17,6 @@ namespace parse
 template <typename Parser>
 using result_of = typename fcppt::parse::deref_type<Parser>::result_type;
 
-}
 }
 
 #endif

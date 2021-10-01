@@ -13,9 +13,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace catch_
+namespace fcppt::catch_
 {
 template <typename Type, typename Ch, typename Traits>
 std::basic_ostream<Ch, Traits> &
@@ -24,7 +22,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::catch_::movable<Type>
   return _stream << _movable.value();
 }
 
-}
 }
 
 namespace Catch

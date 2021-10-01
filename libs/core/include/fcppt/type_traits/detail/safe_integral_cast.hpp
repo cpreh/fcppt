@@ -9,11 +9,7 @@
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
 
-namespace fcppt
-{
-namespace type_traits
-{
-namespace detail
+namespace fcppt::type_traits::detail
 {
 template <typename Dest, typename Src>
 struct safe_integral_cast
@@ -23,8 +19,6 @@ struct safe_integral_cast
   static_assert(static_cast<typename Src::value_type>(type::value) == Src::value);
 };
 
-}
-}
 }
 
 #endif

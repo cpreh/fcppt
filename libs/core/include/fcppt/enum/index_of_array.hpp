@@ -12,9 +12,7 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Returns the enum of the first element found in an enum array.
@@ -35,7 +33,6 @@ index_of_array(fcppt::enum_::array<Enum, Value> const &_array, Value const &_val
       });
 }
 
-}
 }
 
 #endif

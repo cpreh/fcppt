@@ -14,11 +14,7 @@
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief The proxy class referencing a single bit in a bitfield.
@@ -85,8 +81,6 @@ public:
   operator fcppt::container::bitfield::value_type() const;
 };
 
-}
-}
 }
 
 #endif

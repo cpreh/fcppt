@@ -14,9 +14,7 @@
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses a specific character and returns nothing.
@@ -44,7 +42,6 @@ private:
   Ch ch_;
 };
 
-}
 }
 
 #endif

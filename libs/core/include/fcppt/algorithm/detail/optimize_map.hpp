@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename Dest, typename Source>
 using optimize_map = std::conjunction<
@@ -28,8 +24,6 @@ using optimize_map = std::conjunction<
         fcppt::container::detail::has_size<Source>,
         fcppt::mpl::list::is_object<Source>>>;
 
-}
-}
 }
 
 #endif

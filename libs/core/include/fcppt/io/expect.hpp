@@ -13,9 +13,7 @@
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Fails a stream if it does not read the expected value.
@@ -42,7 +40,6 @@ expect(std::basic_istream<Ch, Traits> &_stream, Type const &_value)
   return _stream;
 }
 
-}
 }
 
 #endif

@@ -19,13 +19,7 @@
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 template <typename T, typename S>
 T determinant(fcppt::math::matrix::object<T, 1, 1, S> const &_matrix)
@@ -58,9 +52,6 @@ determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
       });
 }
 
-}
-}
-}
 }
 
 #endif

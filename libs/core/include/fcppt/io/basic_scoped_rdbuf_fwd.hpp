@@ -10,14 +10,11 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 template <typename Ch, typename Traits = std::char_traits<Ch>>
 class basic_scoped_rdbuf;
 
-}
 }
 
 #endif

@@ -16,11 +16,7 @@
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Test if a box contains a point
@@ -41,8 +37,6 @@ inline bool contains_point(
       });
 }
 
-}
-}
 }
 
 #endif

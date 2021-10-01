@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Monadic return.
@@ -28,7 +26,6 @@ fcppt::monad::constructor<Type, std::remove_cvref_t<Value>> return_(Value &&_val
   return fcppt::monad::instance<Type>::return_(std::forward<Value>(_value));
 }
 
-}
 }
 
 #endif

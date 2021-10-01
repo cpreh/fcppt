@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates an inactive value
@@ -29,7 +27,6 @@ make_inactive_value(Type &&_value)
       std::forward<Type>(_value)};
 }
 
-}
 }
 
 #endif

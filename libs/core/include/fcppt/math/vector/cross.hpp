@@ -9,11 +9,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculates the cross product of two three-dimensional vectors
@@ -32,8 +28,6 @@ fcppt::math::vector::static_<T, 3> cross(
       l.y() * r.z() - l.z() * r.y(), l.z() * r.x() - l.x() * r.z(), l.x() * r.y() - l.y() * r.x());
 }
 
-}
-}
 }
 
 #endif

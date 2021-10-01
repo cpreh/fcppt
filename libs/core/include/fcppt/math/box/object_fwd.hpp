@@ -8,17 +8,11 @@
 
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 template <typename T, fcppt::math::size_type N>
 class object;
 
-}
-}
 }
 
 #endif

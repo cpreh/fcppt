@@ -13,11 +13,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Reads a vector from \p s, expecting it in the format
@@ -35,8 +31,6 @@ operator>>(std::basic_istream<Ch, Traits> &_stream, fcppt::math::vector::object<
   return fcppt::math::detail::one_dimensional_input(_stream, _vector);
 }
 
-}
-}
 }
 
 #endif

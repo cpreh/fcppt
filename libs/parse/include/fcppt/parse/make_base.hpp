@@ -17,9 +17,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Hides the type of a parser, turning it into an #fcppt::parse::base_unique_ptr.
@@ -40,7 +38,6 @@ make_base(Parser &&_parser)
           std::forward<Parser>(_parser)));
 }
 
-}
 }
 
 #endif

@@ -9,11 +9,7 @@
 #include <fcppt/random/distribution/base_type.hpp>
 #include <fcppt/type_iso/undecorate.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
+namespace fcppt::random::distribution
 {
 /**
 \brief Calculates the base value
@@ -26,8 +22,6 @@ inline fcppt::random::distribution::base_type<Type> base_value(Type const &_valu
   return fcppt::type_iso::undecorate(_value);
 }
 
-}
-}
 }
 
 #endif

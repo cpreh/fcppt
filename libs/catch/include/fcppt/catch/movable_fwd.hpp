@@ -6,14 +6,11 @@
 #ifndef FCPPT_CATCH_MOVABLE_FWD_HPP_INCLUDED
 #define FCPPT_CATCH_MOVABLE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace catch_
+namespace fcppt::catch_
 {
 template <typename Type>
 class movable;
 
-}
 }
 
 #endif

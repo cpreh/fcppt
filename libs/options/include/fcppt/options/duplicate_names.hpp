@@ -12,9 +12,7 @@
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/symbol/class.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 class FCPPT_SYMBOL_CLASS duplicate_names : public fcppt::options::exception
 {
@@ -38,7 +36,6 @@ public:
   ~duplicate_names() noexcept override;
 };
 
-}
 }
 
 #endif

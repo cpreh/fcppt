@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Applies a constructor to the result of a parser.
@@ -34,7 +32,6 @@ construct(Parser &&_parser)
       [](fcppt::parse::result_of<Parser> &&_value) { return Result{std::move(_value)}; });
 }
 
-}
 }
 
 #endif

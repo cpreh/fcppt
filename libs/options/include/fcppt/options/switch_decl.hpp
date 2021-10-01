@@ -18,9 +18,7 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/switch_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A switch parser.
@@ -70,7 +68,6 @@ private:
   impl impl_;
 };
 
-}
 }
 
 #endif

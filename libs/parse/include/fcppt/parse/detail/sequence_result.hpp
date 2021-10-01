@@ -14,11 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 inline fcppt::unit sequence_result(fcppt::unit, fcppt::unit) { return fcppt::unit{}; }
 
@@ -42,8 +38,6 @@ auto sequence_result(Left &&_left, Right &&_right) -> decltype(
       std::forward<Left>(_left), std::forward<Right>(_right));
 }
 
-}
-}
 }
 
 #endif

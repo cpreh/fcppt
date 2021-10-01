@@ -14,9 +14,7 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/from_list.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Maps the elements of a vector using a metafunction.
@@ -35,7 +33,6 @@ using map_elements = fcppt::record::from_list<fcppt::mpl::list::map<
         fcppt::mpl::lambda<fcppt::record::element>,
         fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_label>, fcppt::mpl::arg<1>>,
         Function>>>;
-}
 }
 
 #endif

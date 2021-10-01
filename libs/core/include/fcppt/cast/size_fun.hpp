@@ -8,9 +8,7 @@
 
 #include <fcppt/cast/size.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object of fcppt::cast::size
@@ -26,7 +24,6 @@ struct size_fun
   }
 };
 
-}
 }
 
 #endif

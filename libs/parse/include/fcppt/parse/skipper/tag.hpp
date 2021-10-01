@@ -6,11 +6,7 @@
 #ifndef FCPPT_PARSE_SKIPPER_TAG_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_TAG_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief The tag skippers derive from.
@@ -20,8 +16,6 @@ struct tag
 {
 };
 
-}
-}
 }
 
 #endif

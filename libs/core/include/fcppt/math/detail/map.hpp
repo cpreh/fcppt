@@ -10,11 +10,7 @@
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Dest, typename Source, typename Function>
 inline Dest map(Source const &_source, Function const &_function)
@@ -23,8 +19,6 @@ inline Dest map(Source const &_source, Function const &_function)
       fcppt::array::map(fcppt::math::to_array(_source), _function));
 }
 
-}
-}
 }
 
 #endif

@@ -9,9 +9,7 @@
 #include <fcppt/parse/blank_set.hpp>
 #include <fcppt/parse/char_set.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 
 /**
@@ -23,7 +21,6 @@ inline fcppt::parse::char_set blank()
   return fcppt::parse::char_set{fcppt::parse::blank_set<char>()};
 }
 
-}
 }
 
 #endif

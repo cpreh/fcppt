@@ -9,9 +9,7 @@
 #include <fcppt/algorithm/map_iteration.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Iterates over a map with the possibility of erasing elements, passing
@@ -38,7 +36,6 @@ void map_iteration_second(Map &_map, UpdateAction const &_update_action)
   fcppt::algorithm::map_iteration(_map, wrapper);
 }
 
-}
 }
 
 #endif

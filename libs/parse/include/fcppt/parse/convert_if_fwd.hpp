@@ -6,14 +6,11 @@
 #ifndef FCPPT_PARSE_CONVERT_IF_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_CONVERT_IF_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Ch, typename Parser, typename Result>
 class convert_if;
 
-}
 }
 
 #endif

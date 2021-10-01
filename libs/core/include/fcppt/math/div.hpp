@@ -11,9 +11,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates dividend / divisor.
@@ -32,7 +30,6 @@ div(L const &_dividend, R const &_divisor)
       !fcppt::math::is_zero(_divisor), [_dividend, _divisor] { return _dividend / _divisor; });
 }
 
-}
 }
 
 #endif

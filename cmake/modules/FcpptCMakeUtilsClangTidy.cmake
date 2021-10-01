@@ -22,7 +22,9 @@ if(
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
+		"-altera-id-dependent-backward-branch"
 		"-altera-struct-pack-align"
+		"-altera-unroll-loops"
 		"-bugprone-macro-parentheses"
 		"-cppcoreguidelines-macro-usage"
 		"-clang-analyzer-cplusplus.NewDeleteLeaks"

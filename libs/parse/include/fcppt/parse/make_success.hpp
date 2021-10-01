@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an fcppt::parse::result from a success value.
@@ -29,7 +27,6 @@ inline fcppt::parse::result<Ch, std::remove_cvref_t<Success>>
 make_success(Success &&_success)
 {
   return fcppt::either::make_success<fcppt::parse::error<Ch>>(std::forward<Success>(_success));
-}
 }
 }
 

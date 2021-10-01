@@ -8,9 +8,7 @@
 
 #include <fcppt/record/detail/disjoint_product.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief The product of two disjoint records
@@ -20,7 +18,6 @@ namespace record
 template <typename RecordL, typename RecordR>
 using disjoint_product = typename fcppt::record::detail::disjoint_product<RecordL, RecordR>::type;
 
-}
 }
 
 #endif

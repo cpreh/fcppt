@@ -24,11 +24,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Multiplies a matrix by a vector
@@ -69,8 +65,6 @@ fcppt::math::vector::static_<FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right), R> o
       });
 }
 
-}
-}
 }
 
 #endif

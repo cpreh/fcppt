@@ -17,9 +17,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Joins a range of strings, using a delimiter
@@ -60,7 +58,6 @@ join_strings(Range const &_range, fcppt::type_traits::value_type<Range> const &_
   FCPPT_PP_POP_WARNING
 
   return result;
-}
 }
 }
 

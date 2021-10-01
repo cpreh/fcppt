@@ -9,9 +9,7 @@
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/math/detail/storage_size.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Returns the array type of an object with static storage
@@ -23,7 +21,6 @@ using to_array_type = fcppt::array::object<
     typename Type::value_type,
     fcppt::math::detail::storage_size<typename Type::storage_type>::value>;
 
-}
 }
 
 #endif

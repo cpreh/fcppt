@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace endianness
+namespace fcppt::endianness
 {
 /**
 \brief Swaps the endianness of an object
@@ -42,7 +40,6 @@ Type swap(Type _value)
   return _value;
 }
 
-}
 }
 
 #endif

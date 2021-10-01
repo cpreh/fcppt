@@ -10,9 +10,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Removes duplicate elements from a container. Compares using a predicate.
@@ -36,7 +34,6 @@ void unique_if(Container &_container, BinaryPredicate const &_predicate)
   );
 }
 
-}
 }
 
 #endif

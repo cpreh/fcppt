@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Result>
 inline Result init_storage(fcppt::type_traits::value_type<Result> const &_value)
@@ -24,8 +20,6 @@ inline Result init_storage(fcppt::type_traits::value_type<Result> const &_value)
   return Result{fcppt::array::init<typename Result::array_type>([_value](auto) { return _value; })};
 }
 
-}
-}
 }
 
 #endif

@@ -14,11 +14,7 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/detail/concrete_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Parser, typename Ch, typename Skipper>
 class concrete : public fcppt::parse::base<fcppt::parse::result_of<Parser>, Ch, Skipper>
@@ -41,8 +37,6 @@ private:
   Parser const parser_;
 };
 
-}
-}
 }
 
 #endif

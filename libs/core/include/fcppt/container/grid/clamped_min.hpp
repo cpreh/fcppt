@@ -20,11 +20,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Clamps a signed position to min
@@ -47,8 +43,6 @@ clamped_min(fcppt::container::grid::pos<Source, Size> const _pos)
           }));
 }
 
-}
-}
 }
 
 #endif

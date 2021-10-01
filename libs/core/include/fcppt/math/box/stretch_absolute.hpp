@@ -12,11 +12,7 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Stretch a box around its center using an absolute value
@@ -32,8 +28,6 @@ fcppt::math::box::object<T, N> stretch_absolute(
       _box.pos() - _absolute_values, _box.max() + _absolute_values);
 }
 
-}
-}
 }
 
 #endif

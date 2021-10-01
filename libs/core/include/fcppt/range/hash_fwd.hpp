@@ -6,14 +6,11 @@
 #ifndef FCPPT_RANGE_HASH_FWD_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace range
+namespace fcppt::range
 {
 template <typename Type>
 struct hash;
 
-}
 }
 
 #endif

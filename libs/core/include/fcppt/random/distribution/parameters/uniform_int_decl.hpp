@@ -12,13 +12,7 @@
 #include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
-{
-namespace parameters
+namespace fcppt::random::distribution::parameters
 {
 /**
 \brief Parameters class for uniform int distributions
@@ -67,9 +61,6 @@ private:
   max max_;
 };
 
-}
-}
-}
 }
 
 #endif

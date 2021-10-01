@@ -9,9 +9,7 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 /**
 \brief Optional of a reference
@@ -21,7 +19,6 @@ namespace optional
 template <typename T>
 using reference = fcppt::optional::object<fcppt::reference<T>>;
 
-}
 }
 
 #endif

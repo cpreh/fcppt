@@ -18,11 +18,7 @@
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Ch, typename Traits, typename Type>
 std::basic_istream<Ch, Traits> &
@@ -47,8 +43,6 @@ one_dimensional_input(std::basic_istream<Ch, Traits> &_stream, Type &_value)
   return _stream;
 }
 
-}
-}
 }
 
 #endif

@@ -8,9 +8,7 @@
 
 #include <fcppt/type_traits/is_raw_pointer.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts a pointer to a pointer to characters
@@ -35,7 +33,6 @@ inline Dest to_char_ptr(Source *const _source) noexcept // NOLINT(readability-av
       reinterpret_cast<Dest>(_source);
 }
 
-}
 }
 
 #endif

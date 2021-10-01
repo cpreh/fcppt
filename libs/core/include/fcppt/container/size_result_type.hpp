@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief The size type of a range.
@@ -26,7 +24,6 @@ template <typename Range>
 using size_result_type =
     std::make_unsigned_t<decltype(fcppt::container::detail::size(std::declval<Range>()))>;
 
-}
 }
 
 #endif

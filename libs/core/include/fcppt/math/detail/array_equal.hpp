@@ -17,11 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename T1, typename T2>
 inline bool array_equal(T1 const &_v1, T2 const &_v2)
@@ -38,8 +34,6 @@ inline bool array_equal(T1 const &_v1, T2 const &_v2)
       });
 }
 
-}
-}
 }
 
 #endif

@@ -16,9 +16,7 @@
 #include <ios>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Opens a file, throwing an exception on failure.
@@ -39,7 +37,6 @@ Stream open_exn(std::filesystem::path const &_path, std::ios_base::openmode cons
   });
 }
 
-}
 }
 
 #endif

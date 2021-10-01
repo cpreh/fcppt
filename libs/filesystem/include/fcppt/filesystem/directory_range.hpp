@@ -14,9 +14,7 @@
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief A range for directory iterators.
@@ -40,7 +38,6 @@ private:
   std::filesystem::directory_iterator begin_;
 };
 
-}
 }
 
 #endif

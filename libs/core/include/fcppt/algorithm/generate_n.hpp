@@ -12,9 +12,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Generates a container by calling a function a number of times.
@@ -32,7 +30,6 @@ TargetContainer generate_n(std::size_t const _count, Function const &_function)
       fcppt::make_int_range_count(_count), [&_function](std::size_t) { return _function(); });
 }
 
-}
 }
 
 #endif

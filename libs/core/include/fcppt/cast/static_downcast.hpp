@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Statically converts a reference to a base class to a reference to a
@@ -43,7 +41,6 @@ std::enable_if_t<std::is_reference_v<Derived>, Derived> static_downcast(Base &_s
   return static_cast<Derived>(_source);
 }
 
-}
 }
 
 #endif

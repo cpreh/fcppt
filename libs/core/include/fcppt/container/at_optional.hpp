@@ -12,9 +12,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns an element as an optional at a given position.
@@ -33,7 +31,6 @@ at_optional(Container &_container, typename Container::size_type const _index)
   return fcppt::optional::make_if(_index < _container.size(), [&_container, _index] {
     return fcppt::make_ref(*(_container.begin() + fcppt::cast::to_signed(_index)));
   });
-}
 }
 }
 

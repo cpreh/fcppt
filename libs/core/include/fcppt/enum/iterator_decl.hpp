@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \ingroup fcpptenum
@@ -45,7 +43,6 @@ private:
   size_type value_;
 };
 
-}
 }
 
 #endif

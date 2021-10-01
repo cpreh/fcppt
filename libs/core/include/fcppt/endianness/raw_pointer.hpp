@@ -8,9 +8,7 @@
 
 #include <fcppt/endianness/raw_value.hpp>
 
-namespace fcppt
-{
-namespace endianness
+namespace fcppt::endianness
 {
 /**
 \brief A pointer to raw memory, used to swap bytes
@@ -19,7 +17,6 @@ namespace endianness
 */
 using raw_pointer = fcppt::endianness::raw_value *;
 
-}
 }
 
 #endif

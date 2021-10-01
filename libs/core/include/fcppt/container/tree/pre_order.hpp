@@ -21,11 +21,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Wraps a tree to make it iterable in a pre-order fashion.
@@ -148,8 +144,6 @@ private:
   tree_ref tree_;
 };
 
-}
-}
 }
 
 #endif

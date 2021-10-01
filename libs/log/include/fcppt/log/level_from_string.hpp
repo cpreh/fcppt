@@ -10,9 +10,7 @@
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief Converts the name of a log level to its enum
@@ -27,7 +25,6 @@ enumerator. Accepts all strings as parameters that are listed in #fcppt::log::le
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::optional_level level_from_string(fcppt::string_view name);
 
-}
 }
 
 #endif

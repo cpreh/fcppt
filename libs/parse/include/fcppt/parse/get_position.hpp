@@ -10,9 +10,7 @@
 #include <fcppt/parse/basic_stream_impl.hpp>
 #include <fcppt/parse/position.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The current position of a stream.
@@ -25,7 +23,6 @@ get_position(fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)
   return _state.get().get_position();
 }
 
-}
 }
 
 #endif

@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Adds two errors.
@@ -31,7 +29,6 @@ fcppt::parse::error<Ch> operator+(fcppt::parse::error<Ch> &&_left, fcppt::parse:
              : fcppt::parse::error<Ch>{std::move(value)};
 }
 
-}
 }
 
 #endif

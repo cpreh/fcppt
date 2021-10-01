@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief A tree data structure
@@ -247,8 +243,6 @@ private:
 template <typename T>
 void swap(fcppt::container::tree::object<T> &, fcppt::container::tree::object<T> &);
 
-}
-}
 }
 
 #endif

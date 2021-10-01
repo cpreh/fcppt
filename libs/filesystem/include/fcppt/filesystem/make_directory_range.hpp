@@ -14,9 +14,7 @@
 #include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Creates a directory range.
@@ -27,7 +25,6 @@ FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::either::object<std::error_code, fcppt::filesystem::directory_range>
 make_directory_range(std::filesystem::path const &, std::filesystem::directory_options);
 
-}
 }
 
 #endif

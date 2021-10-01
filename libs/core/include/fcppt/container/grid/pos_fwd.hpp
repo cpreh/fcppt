@@ -9,11 +9,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The type used to index a grid
@@ -23,8 +19,6 @@ namespace grid
 template <typename SizeType, fcppt::container::grid::size_type N>
 using pos = fcppt::math::vector::static_<SizeType, N>;
 
-}
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Array type for The names of an enum.
@@ -25,7 +23,6 @@ namespace enum_
 template <typename Enum>
 using names_array = fcppt::enum_::array<Enum, std::string_view>;
 
-}
 }
 
 #endif

@@ -8,11 +8,7 @@
 
 #include <fcppt/container/to_reference_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Storage, typename SizeType>
 inline fcppt::container::to_reference_type<Storage>
@@ -21,8 +17,6 @@ index_at(Storage &_storage, SizeType const _size)
   return _storage[_size];
 }
 
-}
-}
 }
 
 #endif

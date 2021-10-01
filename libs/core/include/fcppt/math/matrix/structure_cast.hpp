@@ -11,11 +11,7 @@
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Converts a matrix into a different matrix of the same dimension using Conv
@@ -38,8 +34,6 @@ inline Dest structure_cast(fcppt::math::matrix::object<T, R, C, S> const &src)
   return fcppt::math::detail::structure_cast<Dest, Conv>(src);
 }
 
-}
-}
 }
 
 #endif

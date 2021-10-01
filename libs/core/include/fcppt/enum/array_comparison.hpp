@@ -11,9 +11,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Compares two enum arrays for equality.
@@ -43,7 +41,6 @@ operator!=(fcppt::enum_::array<Enum, Value> const &_a, fcppt::enum_::array<Enum,
   return !(_a == _b);
 }
 
-}
 }
 
 #endif

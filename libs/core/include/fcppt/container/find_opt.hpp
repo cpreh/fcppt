@@ -11,9 +11,7 @@
 #include <fcppt/optional/deref.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns an element from a find operation or an empty optional.
@@ -35,7 +33,6 @@ find_opt(Container &_container, Key const &_key)
   return fcppt::optional::deref(fcppt::container::find_opt_iterator(_container, _key));
 }
 
-}
 }
 
 #endif

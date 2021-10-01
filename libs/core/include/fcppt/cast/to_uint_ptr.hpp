@@ -10,9 +10,7 @@
 #include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts a pointer to a <code>std::uintptr_t</code>.
@@ -27,7 +25,6 @@ inline std::uintptr_t to_uint_ptr(Source *const _ptr) noexcept
       reinterpret_cast<std::uintptr_t>(_ptr);
 }
 
-}
 }
 
 #endif

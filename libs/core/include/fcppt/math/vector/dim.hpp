@@ -16,11 +16,7 @@
 #include <fcppt/math/vector/detail/dim_map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Adds a dim to a vector.
@@ -88,8 +84,6 @@ operator/(
       }));
 }
 
-}
-}
 }
 
 #endif

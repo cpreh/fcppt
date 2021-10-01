@@ -7,17 +7,11 @@
 #ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace signal
-{
-namespace detail
+namespace fcppt::signal::detail
 {
 template <typename Function>
 class concrete_connection;
 
-}
-}
 }
 
 #endif

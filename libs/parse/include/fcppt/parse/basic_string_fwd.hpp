@@ -6,14 +6,11 @@
 #ifndef FCPPT_PARSE_BASIC_STRING_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_STRING_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Ch>
 class basic_string;
 
-}
 }
 
 #endif

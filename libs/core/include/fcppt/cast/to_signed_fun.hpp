@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object of fcppt::cast::to_signed
@@ -33,7 +31,6 @@ struct to_signed_fun
   }
 };
 
-}
 }
 
 #endif

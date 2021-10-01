@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Turns a parser into a many parser.
@@ -28,7 +26,6 @@ template <typename Parser>
 inline fcppt::options::many<std::remove_cvref_t<Parser>> make_many(Parser &&_parser)
 {
   return fcppt::options::many<std::remove_cvref_t<Parser>>{std::forward<Parser>(_parser)};
-}
 }
 }
 

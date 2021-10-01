@@ -20,11 +20,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Ch, typename Type>
 [[nodiscard]] fcppt::parse::result<Ch, Type> consume_remaining(
@@ -64,8 +60,6 @@ template <typename Ch, typename Type>
       });
 }
 
-}
-}
 }
 
 #endif

@@ -6,17 +6,11 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_REP_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
-{
-namespace raw_vector
+namespace fcppt::container::raw_vector
 {
 template <typename A>
 class rep;
 
-}
-}
 }
 
 #endif

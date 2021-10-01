@@ -10,17 +10,11 @@
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/options/detail/missing_option_argument_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 using use_option_result =
     fcppt::either::object<fcppt::options::detail::missing_option_argument, fcppt::optional_string>;
 
-}
-}
 }
 
 #endif

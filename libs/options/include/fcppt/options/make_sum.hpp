@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates the sum of two parsers.
@@ -27,7 +25,6 @@ make_sum(Left &&_left, Right &&_right)
 {
   return fcppt::options::sum<Label, std::remove_cvref_t<Left>, std::remove_cvref_t<Right>>(
       std::forward<Left>(_left), std::forward<Right>(_right));
-}
 }
 }
 

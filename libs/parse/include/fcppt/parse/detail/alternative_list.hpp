@@ -8,17 +8,11 @@
 
 #include <fcppt/parse/detail/alternative_list_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename T>
 using alternative_list = typename fcppt::parse::detail::alternative_list_impl<T>::type;
 
-}
-}
 }
 
 #endif

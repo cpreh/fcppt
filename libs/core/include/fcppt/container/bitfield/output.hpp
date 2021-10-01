@@ -16,11 +16,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Outputs a bitfield.
@@ -56,8 +52,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
   _stream << FCPPT_CHAR_LITERAL(Ch, '}');
 
   return _stream;
-}
-}
 }
 }
 

@@ -11,11 +11,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Function>
 class init_function
@@ -34,8 +30,6 @@ private:
   fcppt::reference<Function const> function_;
 };
 
-}
-}
 }
 
 #endif

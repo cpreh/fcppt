@@ -11,11 +11,7 @@
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Checks if the given position \p _pos is out of bounds.
@@ -33,8 +29,6 @@ inline bool in_range(
   return fcppt::container::grid::in_range_dim(_grid.size(), _pos);
 }
 
-}
-}
 }
 
 #endif

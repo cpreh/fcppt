@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Replaces the extension of a path
@@ -33,7 +31,6 @@ FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::filesystem::path
 replace_extension(std::filesystem::path const &path, fcppt::string_view new_extension);
 
-}
 }
 
 #endif

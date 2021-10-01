@@ -17,11 +17,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Ch>
 class stream : public fcppt::parse::basic_stream<Ch>
@@ -47,8 +43,6 @@ private:
   fcppt::parse::location location_;
 };
 
-}
-}
 }
 
 #endif

@@ -12,18 +12,12 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::optional_string
 pop_arg(fcppt::reference<fcppt::options::state>, fcppt::options::parse_context const &);
 
-}
-}
 }
 
 #endif

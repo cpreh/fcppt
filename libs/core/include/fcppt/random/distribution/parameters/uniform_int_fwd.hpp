@@ -8,22 +8,13 @@
 
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
-{
-namespace parameters
+namespace fcppt::random::distribution::parameters
 {
 template <
     typename IntType,
     typename Distribution = fcppt::random::distribution::parameters::uniform_int_wrapper>
 class uniform_int;
 
-}
-}
-}
 }
 
 #endif

@@ -16,9 +16,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates an #fcppt::options::base.
@@ -40,7 +38,6 @@ fcppt::options::base_unique_ptr<Result> make_base(Parser &&_parser)
           std::forward<Parser>(_parser)));
 }
 
-}
 }
 
 #endif

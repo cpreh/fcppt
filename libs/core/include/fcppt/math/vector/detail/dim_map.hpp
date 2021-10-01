@@ -15,13 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
-{
-namespace detail
+namespace fcppt::math::vector::detail
 {
 template <
     typename L,
@@ -39,9 +33,6 @@ inline fcppt::math::vector::static_<std::invoke_result_t<Function, L, R>, N> dim
       fcppt::math::vector::static_<std::invoke_result_t<Function, L, R>, N>>(_left, _right, _function);
 }
 
-}
-}
-}
 }
 
 #endif

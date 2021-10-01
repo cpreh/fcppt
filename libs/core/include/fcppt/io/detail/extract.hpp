@@ -19,11 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
-{
-namespace detail
+namespace fcppt::io::detail
 {
 template <typename Type, typename Ch, typename Traits>
 inline std::
@@ -51,8 +47,6 @@ extract(std::basic_istream<Ch, Traits> &_stream)
   return fcppt::io::detail::extract_impl(_stream, fcppt::make_ref(result));
 }
 
-}
-}
 }
 
 #endif

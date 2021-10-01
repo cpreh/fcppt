@@ -8,9 +8,7 @@
 
 #include <fcppt/record/make_label.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The sub-command label name in #fcppt::options::commands.
@@ -19,7 +17,6 @@ namespace options
 */
 FCPPT_RECORD_MAKE_LABEL(sub_command_label);
 
-}
 }
 
 #endif

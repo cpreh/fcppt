@@ -11,9 +11,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Typedef to either std::ostringstream or std::wostringstream, depending on #fcppt::char_type.
@@ -23,7 +21,6 @@ See \ref fcpptstring for a motivation for this.
 */
 using ostringstream = std::basic_ostringstream<fcppt::char_type>;
 
-}
 }
 
 #endif

@@ -9,11 +9,7 @@
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename T>
 struct element_vector;
@@ -24,8 +20,6 @@ struct element_vector<fcppt::record::object<Types...>>
   using type = fcppt::mpl::list::object<Types...>;
 };
 
-}
-}
 }
 
 #endif

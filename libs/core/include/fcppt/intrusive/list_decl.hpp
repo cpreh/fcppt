@@ -11,9 +11,7 @@
 #include <fcppt/intrusive/iterator_fwd.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
 
-namespace fcppt
-{
-namespace intrusive
+namespace fcppt::intrusive
 {
 /**
 \brief An intrusive list.
@@ -62,7 +60,6 @@ private:
   base_type head_;
 };
 
-}
 }
 
 #endif

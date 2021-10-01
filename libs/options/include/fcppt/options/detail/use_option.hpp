@@ -14,11 +14,7 @@
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::detail::use_option_result use_option(
@@ -26,8 +22,6 @@ fcppt::options::detail::use_option_result use_option(
     fcppt::string_view,
     fcppt::options::detail::flag_is_short);
 
-}
-}
 }
 
 #endif

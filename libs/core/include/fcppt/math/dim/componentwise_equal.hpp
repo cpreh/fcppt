@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/componentwise_equal.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Compares two dims for equality using an epsilon
@@ -30,8 +26,6 @@ inline bool componentwise_equal(
   return fcppt::math::detail::componentwise_equal(_v1, _v2, _epsilon);
 }
 
-}
-}
 }
 
 #endif

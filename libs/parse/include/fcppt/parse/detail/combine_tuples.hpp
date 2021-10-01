@@ -11,11 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Left, typename Right>
 auto combine_tuples(Left &&_left, Right &&_right)
@@ -24,8 +20,6 @@ auto combine_tuples(Left &&_left, Right &&_right)
       std::forward<Left>(_left), std::forward<Right>(_right));
 }
 
-}
-}
 }
 
 #endif

@@ -8,9 +8,7 @@
 
 #include <fcppt/algorithm/map.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Creates a set of keys from a map.
@@ -30,7 +28,6 @@ inline Set key_set(Map const &_map)
       _map, [](typename Map::const_reference _item) { return _item.first; });
 }
 
-}
 }
 
 #endif

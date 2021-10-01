@@ -6,14 +6,11 @@
 #ifndef FCPPT_CONTAINER_GET_OR_INSERT_RESULT_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_GET_OR_INSERT_RESULT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 template <typename Reference>
 class get_or_insert_result;
 
-}
 }
 
 #endif

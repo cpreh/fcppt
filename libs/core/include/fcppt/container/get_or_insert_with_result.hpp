@@ -10,9 +10,7 @@
 #include <fcppt/container/get_or_insert_result.hpp>
 #include <fcppt/optional/maybe.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Gets from or inserts an element into a map and returns if it was inserted.
@@ -46,7 +44,6 @@ fcppt::container::get_or_insert_result<typename Container::mapped_type &> get_or
       });
 }
 
-}
 }
 
 #endif

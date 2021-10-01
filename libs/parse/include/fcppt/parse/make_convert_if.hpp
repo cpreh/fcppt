@@ -17,9 +17,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::convert_if parser out of a lambda.
@@ -46,7 +44,6 @@ make_convert_if(Parser &&_parser, Convert &&_convert)
       std::forward<Parser>(_parser),
       fcppt::function<result_type(fcppt::parse::result_of<Parser> &&)>{
           std::forward<Convert>(_convert)}};
-}
 }
 }
 

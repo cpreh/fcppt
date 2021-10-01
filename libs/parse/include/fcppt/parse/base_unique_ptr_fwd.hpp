@@ -9,9 +9,7 @@
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/parse/base_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief unique_ptr to #fcppt::parse::base
@@ -20,7 +18,6 @@ namespace parse
 template <typename Result, typename Ch, typename Skipper>
 using base_unique_ptr = fcppt::unique_ptr<fcppt::parse::base<Result, Ch, Skipper>>;
 
-}
 }
 
 #endif

@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <fcppt::math::size_type Index, typename Storage>
 inline fcppt::container::to_value_type<Storage> &linear_access(Storage &_storage)
@@ -29,8 +25,6 @@ inline fcppt::container::to_value_type<Storage> &linear_access(Storage &_storage
   return _storage[Index];
 }
 
-}
-}
 }
 
 #endif

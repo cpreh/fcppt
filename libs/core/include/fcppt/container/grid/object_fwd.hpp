@@ -11,17 +11,11 @@
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 template <typename T, fcppt::container::grid::size_type N, typename A = std::allocator<T>>
 class object;
 
-}
-}
 }
 
 #endif

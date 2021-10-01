@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Gets the iterator type of a container.
@@ -31,7 +29,6 @@ using to_iterator_type = std::conditional_t<
     typename Container::const_iterator,
     typename Container::iterator>;
 
-}
 }
 
 #endif

@@ -9,9 +9,7 @@
 #include <fcppt/string_view.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Checks if a string is an option
@@ -23,7 +21,6 @@ Options are strings that with a '-'.
 FCPPT_OPTIONS_DETAIL_SYMBOL
 bool is_option(fcppt::string_view);
 
-}
 }
 
 #endif

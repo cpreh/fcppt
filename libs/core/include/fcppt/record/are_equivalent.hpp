@@ -9,9 +9,7 @@
 #include <fcppt/mpl/map/equal.hpp>
 #include <fcppt/record/element_map.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Tests if two records have the same element maps.
@@ -22,7 +20,6 @@ template <typename Record1, typename Record2>
 using are_equivalent = fcppt::mpl::
     map::equal<fcppt::record::element_map<Record1>, fcppt::record::element_map<Record2>>;
 
-}
 }
 
 #endif

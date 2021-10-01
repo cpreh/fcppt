@@ -9,9 +9,7 @@
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/options/short_name_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief An optional short name.
@@ -20,7 +18,6 @@ namespace options
 */
 using optional_short_name = fcppt::optional::object<fcppt::options::short_name>;
 
-}
 }
 
 #endif

@@ -14,11 +14,7 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/dim.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Returns the center of the box
@@ -39,8 +35,6 @@ typename fcppt::math::box::object<T, N>::vector center(fcppt::math::box::object<
          (fcppt::math::dim::to_vector(_box.size()) / fcppt::literal<T>(2)).get_unsafe();
 }
 
-}
-}
 }
 
 #endif

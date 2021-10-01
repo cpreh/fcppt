@@ -9,9 +9,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace error
+namespace fcppt::error
 {
 /**
 \brief A wrapper around <code>std::strerror</code>
@@ -26,7 +24,6 @@ code given by \a errnum.
 FCPPT_DETAIL_SYMBOL
 fcppt::string strerror(int errnum);
 
-}
 }
 
 #endif

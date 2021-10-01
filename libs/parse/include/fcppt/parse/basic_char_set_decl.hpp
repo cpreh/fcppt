@@ -16,9 +16,7 @@
 #include <initializer_list>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses a set of characters and returns which one has matched.
@@ -55,7 +53,6 @@ private:
   char_set_type chars_;
 };
 
-}
 }
 
 #endif

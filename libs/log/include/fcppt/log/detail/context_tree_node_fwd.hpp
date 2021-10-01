@@ -6,16 +6,10 @@
 #ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_FWD_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 class context_tree_node;
 
-}
-}
 }
 
 #endif

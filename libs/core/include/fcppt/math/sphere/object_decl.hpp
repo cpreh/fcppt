@@ -11,11 +11,7 @@
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace sphere
+namespace fcppt::math::sphere
 {
 /**
 \brief The object sphere class
@@ -55,8 +51,6 @@ private:
   value_type radius_;
 };
 
-}
-}
 }
 
 #endif

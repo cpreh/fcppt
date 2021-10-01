@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/pos_range_impl.hpp>
 #include <fcppt/container/grid/sup.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A sub range over positions
@@ -31,8 +27,6 @@ inline fcppt::container::grid::pos_range<SizeType, Size> make_pos_range_start_en
   return fcppt::container::grid::pos_range<SizeType, Size>(_min, _sup);
 }
 
-}
-}
 }
 
 #endif

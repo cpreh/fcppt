@@ -6,14 +6,11 @@
 #ifndef FCPPT_CONTAINER_MOVE_RANGE_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_MOVE_RANGE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 template <typename Range>
 class move_range;
 
-}
 }
 
 #endif

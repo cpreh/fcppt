@@ -10,9 +10,7 @@
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The character set type.
@@ -22,7 +20,6 @@ namespace parse
 template <typename Ch>
 using basic_char_set_container = std::unordered_set<Ch>;
 
-}
 }
 
 #endif

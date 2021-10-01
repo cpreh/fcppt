@@ -9,19 +9,13 @@
 #include <fcppt/log/format/function_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \ingroup fcpptlog
 */
 using optional_function = fcppt::optional::object<fcppt::log::format::function>;
 
-}
-}
 }
 
 #endif

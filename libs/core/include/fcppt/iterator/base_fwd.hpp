@@ -6,14 +6,11 @@
 #ifndef FCPPT_ITERATOR_BASE_FWD_HPP_INCLUDED
 #define FCPPT_ITERATOR_BASE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 template <typename Types>
 class base;
 
-}
 }
 
 #endif

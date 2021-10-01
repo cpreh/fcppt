@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace endianness
+namespace fcppt::endianness
 {
 /**
 \brief Converts the endianness of an object
@@ -43,7 +41,6 @@ Type convert(Type const &_value, std::endian const _format)
   return _format == std::endian::native ? _value : fcppt::endianness::swap(_value);
 }
 
-}
 }
 
 #endif

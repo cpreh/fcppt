@@ -6,9 +6,7 @@
 #ifndef FCPPT_CAST_STATIC_CAST_FUN_HPP_INCLUDED
 #define FCPPT_CAST_STATIC_CAST_FUN_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object that does a static_cast
@@ -24,7 +22,6 @@ struct static_cast_fun
   }
 };
 
-}
 }
 
 #endif

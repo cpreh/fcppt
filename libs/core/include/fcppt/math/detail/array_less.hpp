@@ -12,11 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename T>
 inline bool array_less(T const &_a, T const &_b)
@@ -29,8 +25,6 @@ inline bool array_less(T const &_a, T const &_b)
       array_a.begin(), array_a.end(), array_b.begin(), array_b.end());
 }
 
-}
-}
 }
 
 #endif

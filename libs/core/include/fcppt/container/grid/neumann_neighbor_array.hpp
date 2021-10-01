@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \ingroup fcpptcontainergrid
@@ -26,8 +22,6 @@ namespace grid
 template <typename Pos>
 using neumann_neighbor_array = fcppt::array::object<Pos, 4>;
 
-}
-}
 }
 
 #endif

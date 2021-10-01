@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The allowed char types, currently char and wchar_t.
@@ -21,7 +19,6 @@ namespace parse
 template <typename Type>
 using is_char = std::disjunction<std::is_same<Type, char>, std::is_same<Type, wchar_t>>;
 
-}
 }
 
 #endif

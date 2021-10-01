@@ -12,9 +12,7 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses without whitespace skipping.
@@ -30,7 +28,6 @@ parse(Parser const &_parser, fcppt::parse::basic_stream<Ch> &_input)
   return fcppt::parse::phrase_parse(_parser, _input, fcppt::parse::skipper::epsilon());
 }
 
-}
 }
 
 #endif

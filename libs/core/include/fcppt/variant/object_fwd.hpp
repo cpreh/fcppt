@@ -6,14 +6,11 @@
 #ifndef FCPPT_VARIANT_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace variant
+namespace fcppt::variant
 {
 template <typename... Types>
 class object;
 
-}
 }
 
 #endif

@@ -9,11 +9,7 @@
 #include <fcppt/container/buffer/object_impl.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace buffer
+namespace fcppt::container::buffer
 {
 /**
 \brief Convert a buffer into a raw_vector.
@@ -27,8 +23,6 @@ to_raw_vector(fcppt::container::buffer::object<T, A> &&_buffer) noexcept
   return fcppt::container::raw_vector::object<T, A>{_buffer.release()};
 }
 
-}
-}
 }
 
 #endif

@@ -12,11 +12,7 @@
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
-{
-namespace detail
+namespace fcppt::variant::detail
 {
 template <typename Variant, typename U, typename StdVariant>
 std::conditional_t<std::is_const_v<StdVariant>, U const &, U &>
@@ -29,8 +25,6 @@ get_unsafe_impl(StdVariant &_variant)
   return *std::get_if<U>(&_variant);
 }
 
-}
-}
 }
 
 #endif

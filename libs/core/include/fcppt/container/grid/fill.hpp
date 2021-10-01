@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Fills a grid using a function
@@ -32,8 +28,6 @@ void fill(fcppt::container::grid::object<T, N, A> &_grid, Function const &_funct
   }
 }
 
-}
-}
 }
 
 #endif

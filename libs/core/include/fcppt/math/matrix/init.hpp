@@ -12,11 +12,7 @@
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Initializes a matrix
@@ -43,8 +39,6 @@ inline Matrix init(Function const &_function)
       });
 }
 
-}
-}
 }
 
 #endif

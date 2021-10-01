@@ -9,16 +9,10 @@
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/optional/reference_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace impl
+namespace fcppt::log::impl
 {
 using optional_context_tree_ref = fcppt::optional::reference<fcppt::log::detail::context_tree>;
 
-}
-}
 }
 
 #endif

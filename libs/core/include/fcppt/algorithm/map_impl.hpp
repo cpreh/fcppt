@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 template <typename Source, typename Target, typename Enable>
 struct map_impl
@@ -39,7 +37,6 @@ struct map_impl
   }
 };
 
-}
 }
 
 #endif

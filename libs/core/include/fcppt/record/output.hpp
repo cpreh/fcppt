@@ -25,9 +25,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Outputs a record to a stream
@@ -60,7 +58,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
   return _stream << _stream.widen('}');
 }
 
-}
 }
 
 #endif

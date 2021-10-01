@@ -8,13 +8,10 @@
 
 #include <fcppt/version_int.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 constexpr fcppt::version_int const version_power = 1000U;
 
-}
 }
 
 #endif

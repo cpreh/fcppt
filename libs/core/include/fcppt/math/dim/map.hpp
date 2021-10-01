@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Maps over the elements of a dim
@@ -33,8 +29,6 @@ map(fcppt::math::dim::object<T, N, S> const &_value, Function const &_function)
       _value, _function);
 }
 
-}
-}
 }
 
 #endif

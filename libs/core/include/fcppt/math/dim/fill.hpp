@@ -10,11 +10,7 @@
 #include <fcppt/math/dim/is_dim.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Constructs a static dim with all components set to a given value
@@ -30,8 +26,6 @@ Dim fill(fcppt::type_traits::value_type<Dim> const &_value)
   return fcppt::math::detail::fill<Dim>(_value);
 }
 
-}
-}
 }
 
 #endif

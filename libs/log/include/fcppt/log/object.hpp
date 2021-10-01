@@ -21,9 +21,7 @@
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief The main log class
@@ -122,7 +120,6 @@ private:
   fcppt::log::format::optional_function const formatter_;
 };
 
-}
 }
 
 #endif

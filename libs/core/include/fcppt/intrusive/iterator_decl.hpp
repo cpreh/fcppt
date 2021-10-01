@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace intrusive
+namespace fcppt::intrusive
 {
 /**
 \brief The iterator type of an intrusive list.
@@ -53,7 +51,6 @@ private:
   pointer_type cur_;
 };
 
-}
 }
 
 #endif

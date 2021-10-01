@@ -9,9 +9,7 @@
 #include <fcppt/algorithm/unique_if.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Removes duplicate elements from a container.
@@ -29,7 +27,6 @@ inline void unique(Container &_container)
       _container, [](value_type const &_v1, value_type const &_v2) { return _v1 == _v2; });
 }
 
-}
 }
 
 #endif

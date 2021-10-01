@@ -21,9 +21,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -72,7 +70,6 @@ separator(Inner &&, Sep &&) -> separator<
     std::remove_cvref_t<Inner>,
     std::remove_cvref_t<Sep>>;
 
-}
 }
 
 #endif

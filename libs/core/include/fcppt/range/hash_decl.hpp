@@ -11,9 +11,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace range
+namespace fcppt::range
 {
 /**
 \brief Hashes a range.
@@ -31,7 +29,6 @@ struct hash
   std::size_t operator()(Type const &) const;
 };
 
-}
 }
 
 #endif

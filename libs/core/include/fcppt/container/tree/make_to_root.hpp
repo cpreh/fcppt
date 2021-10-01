@@ -8,11 +8,7 @@
 
 #include <fcppt/container/tree/to_root.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Creates a to_root object
@@ -25,8 +21,6 @@ inline fcppt::container::tree::to_root<Tree> make_to_root(Tree &_tree)
   return fcppt::container::tree::to_root<Tree>{_tree};
 }
 
-}
-}
 }
 
 #endif

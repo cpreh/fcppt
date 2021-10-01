@@ -8,9 +8,7 @@
 
 #include <fcppt/options/deref_type.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The result of a parser type.
@@ -20,7 +18,6 @@ namespace options
 template <typename Parser>
 using result_of = typename fcppt::options::deref_type<Parser>::result_type;
 
-}
 }
 
 #endif

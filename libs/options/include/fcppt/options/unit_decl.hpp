@@ -17,9 +17,7 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A parser that succeeds when provided with no arguments.
@@ -48,7 +46,6 @@ public:
   [[nodiscard]] fcppt::string usage() const;
 };
 
-}
 }
 
 #endif

@@ -14,13 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
-{
-namespace detail
+namespace fcppt::container::bitfield::detail
 {
 template <typename SizeType, typename Type>
 using element_bits = fcppt::type_traits::integral_cast<
@@ -31,9 +25,6 @@ using element_bits = fcppt::type_traits::integral_cast<
         fcppt::cast::to_unsigned_fun,
         std::integral_constant<int, std::numeric_limits<Type>::digits>>>;
 
-}
-}
-}
 }
 
 #endif

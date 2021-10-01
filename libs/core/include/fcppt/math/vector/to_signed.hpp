@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Converts a vector into a corresponding signed vector
@@ -35,8 +31,6 @@ to_signed(fcppt::math::vector::object<T, N, S> const &_src)
       fcppt::cast::to_signed_fun>(_src);
 }
 
-}
-}
 }
 
 #endif

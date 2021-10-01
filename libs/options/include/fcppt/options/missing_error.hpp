@@ -11,9 +11,7 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A string type representing a missing error.
@@ -44,7 +42,6 @@ private:
   fcppt::string error_;
 };
 
-}
 }
 
 #endif

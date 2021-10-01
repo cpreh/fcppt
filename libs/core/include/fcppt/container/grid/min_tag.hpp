@@ -6,18 +6,12 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_TAG_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_TAG_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 struct min_tag
 {
 };
 
-}
-}
 }
 
 #endif

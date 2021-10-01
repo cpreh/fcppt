@@ -8,20 +8,11 @@
 
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 template <typename T, fcppt::math::size_type C, typename S>
 class row_view;
 
-}
-}
-}
 }
 
 #endif

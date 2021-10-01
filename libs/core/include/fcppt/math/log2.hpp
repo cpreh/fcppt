@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
@@ -35,7 +33,6 @@ inline T log2(T const x)
   return --r;
 }
 
-}
 }
 
 #endif

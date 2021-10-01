@@ -14,11 +14,7 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates a 4x4 rotation matrix around an arbitrary axis given as a
@@ -76,8 +72,6 @@ rotation_axis(T const _angle, fcppt::math::vector::object<T, 3, S> const &_vecto
       fcppt::math::matrix::row(zero, zero, zero, one));
 }
 
-}
-}
 }
 
 #endif

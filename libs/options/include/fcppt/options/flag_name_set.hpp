@@ -12,9 +12,7 @@
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The set of flag names.
@@ -26,7 +24,6 @@ e.g. "--foo".
 */
 using flag_name_set = std::set<fcppt::options::flag_name>;
 
-}
 }
 
 #endif

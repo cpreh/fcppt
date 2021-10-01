@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Tries a <code>dynamic_cast</code> on unrelated types, returning an empty
@@ -46,7 +44,6 @@ inline fcppt::optional::reference<Dest> dynamic_cross(Src &_src) noexcept
   return fcppt::cast::detail::dynamic<Dest>(_src);
 }
 
-}
 }
 
 #endif

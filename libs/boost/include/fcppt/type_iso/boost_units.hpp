@@ -11,9 +11,7 @@
 #include <boost/units/quantity.hpp>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 /**
 \brief Integrates boost.units with fcppt.type_iso
@@ -35,7 +33,6 @@ struct transform<boost::units::quantity<Unit, Type>>
   static inline undecorated_type undecorate(decorated_type const &_value) { return _value.value(); }
 };
 
-}
 }
 
 #endif

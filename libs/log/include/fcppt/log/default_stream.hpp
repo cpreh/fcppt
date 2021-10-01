@@ -10,9 +10,7 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief The default stream to use a log level
@@ -23,7 +21,6 @@ and log levels <code>error</code> and <code>fatal</code> log to #fcppt::io::cerr
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::io::ostream &default_stream(fcppt::log::level);
 
-}
 }
 
 #endif

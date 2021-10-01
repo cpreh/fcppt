@@ -8,9 +8,7 @@
 
 #include <fcppt/container/get_or_insert_with_result.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Gets from or inserts an element into a map.
@@ -32,7 +30,6 @@ inline typename Container::mapped_type &get_or_insert(
   return fcppt::container::get_or_insert_with_result(_container, _key, _create).element();
 }
 
-}
 }
 
 #endif

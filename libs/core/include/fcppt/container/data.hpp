@@ -11,9 +11,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns a pointer to the beginning of a random access container.
@@ -31,7 +29,6 @@ fcppt::container::to_pointer_type<Container> data(Container &_container)
   return _container.empty() ? nullptr : std::data(_container);
 }
 
-}
 }
 
 #endif

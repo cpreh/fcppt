@@ -10,11 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace variant
-{
-namespace detail
+namespace fcppt::variant::detail
 {
 template <typename Type, typename Variant>
 inline std::conditional_t<std::is_const_v<Variant>, Type const &, Type &>
@@ -23,8 +19,6 @@ get_unsafe(Variant &_object)
   return _object.template get_unsafe<Type>();
 }
 
-}
-}
 }
 
 #endif

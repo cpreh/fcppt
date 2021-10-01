@@ -16,11 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace optional
-{
-namespace detail
+namespace fcppt::optional::detail
 {
 template <typename Result, typename Source>
 struct check_sequence
@@ -54,8 +50,6 @@ struct check_sequence<Result, fcppt::tuple::object<Types...>>
       "The tuple types must match");
 };
 
-}
-}
 }
 
 #endif

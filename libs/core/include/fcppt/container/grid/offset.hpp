@@ -23,11 +23,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Returns the absolute offset of a position
@@ -56,8 +52,6 @@ SizeType offset(
                return _sum;
              })
       .first.get();
-}
-}
 }
 }
 

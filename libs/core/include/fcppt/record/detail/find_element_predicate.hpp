@@ -15,19 +15,13 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Label>
 using find_element_predicate = fcppt::mpl::bind<
     fcppt::mpl::lambda<std::is_same>,
     fcppt::mpl::bind<fcppt::mpl::lambda<fcppt::record::element_to_label>, fcppt::mpl::arg<1>>,
     fcppt::mpl::constant<Label>>;
-}
-}
 }
 
 #endif

@@ -15,9 +15,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses a <code>std::basic_string</code> without whitespace skipping.
@@ -34,7 +32,6 @@ parse_string(Parser const &_parser, std::basic_string<Ch> &&_string)
       _parser, std::move(_string), fcppt::parse::skipper::epsilon());
 }
 
-}
 }
 
 #endif

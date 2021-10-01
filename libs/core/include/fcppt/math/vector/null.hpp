@@ -11,11 +11,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Returns the null vector
@@ -34,8 +30,6 @@ null()
   return result_type(fcppt::math::detail::null_storage<typename result_type::storage_type>());
 }
 
-}
-}
 }
 
 #endif

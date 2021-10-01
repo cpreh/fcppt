@@ -6,14 +6,11 @@
 #ifndef FCPPT_PARSE_SEPARATOR_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_SEPARATOR_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Inner, typename Ch>
 class separator;
 
-}
 }
 
 #endif

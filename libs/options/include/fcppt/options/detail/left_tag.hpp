@@ -6,18 +6,12 @@
 #ifndef FCPPT_OPTIONS_DETAIL_LEFT_TAG_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_LEFT_TAG_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 struct left_tag
 {
 };
 
-}
-}
 }
 
 #endif

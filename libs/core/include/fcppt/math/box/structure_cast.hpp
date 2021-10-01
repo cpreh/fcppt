@@ -12,11 +12,7 @@
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Converts a box into a different box of the same dimension using Conv
@@ -35,8 +31,6 @@ Dest structure_cast(fcppt::math::box::object<T, N> const &_src)
       fcppt::math::dim::structure_cast<typename Dest::dim, Conv>(_src.size()));
 }
 
-}
-}
 }
 
 #endif

@@ -6,17 +6,11 @@
 #ifndef FCPPT_PARSE_DETAIL_STREAM_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_STREAM_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Ch>
 class stream;
 
-}
-}
 }
 
 #endif

@@ -6,9 +6,7 @@
 #ifndef FCPPT_MATH_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_MATH_SIZE_TYPE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief The size type used for structure sizes
@@ -16,7 +14,6 @@ namespace math
 */
 using size_type = unsigned;
 
-}
 }
 
 #endif

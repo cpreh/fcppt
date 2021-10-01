@@ -9,9 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/random/variate_fwd.hpp>
 
-namespace fcppt
-{
-namespace random
+namespace fcppt::random
 {
 /**
 \brief Combines a generator and a distribution
@@ -85,7 +83,6 @@ private:
   distribution distribution_;
 };
 
-}
 }
 
 #endif

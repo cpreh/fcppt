@@ -9,9 +9,7 @@
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/options/base_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A unique pointer for #fcppt::options::base.
@@ -23,7 +21,6 @@ namespace options
 template <typename Result>
 using base_unique_ptr = fcppt::unique_ptr<fcppt::options::base<Result>>;
 
-}
 }
 
 #endif

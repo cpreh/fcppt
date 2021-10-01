@@ -10,9 +10,7 @@
 #include <fcppt/options/parse_error_fwd.hpp>
 #include <fcppt/options/state_with_value_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The result of a parser.
@@ -25,7 +23,6 @@ template <typename T>
 using parse_result =
     fcppt::either::object<fcppt::options::parse_error, fcppt::options::state_with_value<T>>;
 
-}
 }
 
 #endif

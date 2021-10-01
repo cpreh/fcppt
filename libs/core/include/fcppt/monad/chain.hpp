@@ -11,9 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Chains multiple bind calls.
@@ -29,7 +27,6 @@ auto chain(Value &&_value, Lambdas const &..._lambdas)
   return fcppt::monad::detail::chain(std::forward<Value>(_value), _lambdas...);
 }
 
-}
 }
 
 #endif

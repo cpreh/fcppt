@@ -16,11 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Result, typename Arg>
 inline Result copy(Arg const &_arg)
@@ -35,8 +31,6 @@ inline Result copy(Arg const &_arg)
       })};
 }
 
-}
-}
 }
 
 #endif

@@ -10,9 +10,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename Type>
 class const_
@@ -26,7 +24,6 @@ private:
   Type value_;
 };
 
-}
 }
 
 #endif

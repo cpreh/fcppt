@@ -13,18 +13,12 @@
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::optional::object<fcppt::tuple::object<fcppt::args_vector, fcppt::string, fcppt::args_vector>>
 split_command(fcppt::args_vector const &, fcppt::options::option_name_set const &);
 
-}
-}
 }
 
 #endif

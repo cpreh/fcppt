@@ -22,11 +22,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Clamps a signed position to a grid's size
@@ -53,8 +49,6 @@ fcppt::container::grid::sup<Dest, Size> clamped_sup_signed(
                     fcppt::cast::to_signed(fcppt::math::dim::at<Index>(_size)))
                     .get_unsafe());
           }));
-}
-}
 }
 }
 

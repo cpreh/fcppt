@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Runs a skipper on a stream.
@@ -31,8 +27,6 @@ run(Skipper const &_skipper, fcppt::reference<fcppt::parse::basic_stream<Ch>> co
   return _skipper.skip(_state);
 }
 
-}
-}
 }
 
 #endif

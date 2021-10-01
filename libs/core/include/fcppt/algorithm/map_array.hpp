@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 template <typename Source, typename Target>
 struct map_impl<
@@ -31,7 +29,6 @@ struct map_impl<
     return fcppt::array::map(std::forward<Arg>(_arg), _function);
   }
 };
-}
 }
 
 #endif

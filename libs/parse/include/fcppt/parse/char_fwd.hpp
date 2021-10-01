@@ -8,9 +8,7 @@
 
 #include <fcppt/parse/basic_char_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 
 /**
@@ -18,7 +16,6 @@ namespace parse
 */
 using char_ = fcppt::parse::basic_char<char>;
 
-}
 }
 
 #endif

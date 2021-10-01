@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_int_range.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/object_impl.hpp>
@@ -22,6 +23,7 @@ void coding_style_loop(int const n)
     result += i;
   }
   // ![coding_style_loop]
+  FCPPT_USE(result);
 }
 
 void coding_style_fold(int const n)

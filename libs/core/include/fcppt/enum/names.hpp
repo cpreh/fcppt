@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief The names of an enum type.
@@ -33,7 +31,6 @@ inline fcppt::enum_::names_array<Enum> names()
       { return fcppt::enum_::to_string(Index); });
 }
 
-}
 }
 
 #endif

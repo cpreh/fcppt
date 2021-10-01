@@ -13,9 +13,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/connection_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wweak-vtables)
@@ -41,7 +39,6 @@ public:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

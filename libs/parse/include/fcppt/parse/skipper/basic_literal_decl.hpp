@@ -13,11 +13,7 @@
 #include <fcppt/parse/skipper/result_fwd.hpp>
 #include <fcppt/parse/skipper/tag.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Skips a specific character.
@@ -38,8 +34,6 @@ private:
   Ch ch_;
 };
 
-}
-}
 }
 
 #endif

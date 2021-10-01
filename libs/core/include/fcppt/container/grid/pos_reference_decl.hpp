@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A reference to a grid cell and its position
@@ -46,8 +42,6 @@ private:
   fcppt::reference<std::remove_reference_t<reference>> value_;
 };
 
-}
-}
 }
 
 #endif

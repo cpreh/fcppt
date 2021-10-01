@@ -23,9 +23,7 @@
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -81,7 +79,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

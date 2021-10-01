@@ -17,9 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 /**
 \brief A template for implementing iterators.
@@ -161,7 +159,6 @@ bool operator<=(fcppt::iterator::base<Types> const &, fcppt::iterator::base<Type
 template <typename Types>
 bool operator>=(fcppt::iterator::base<Types> const &, fcppt::iterator::base<Types> const &);
 
-}
 }
 
 #endif

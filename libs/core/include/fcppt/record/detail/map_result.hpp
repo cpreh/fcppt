@@ -11,17 +11,11 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Function, typename Arg>
 using map_result = std::invoke_result_t<Function,fcppt::record::element_to_type<Arg>>;
 
-}
-}
 }
 
 #endif

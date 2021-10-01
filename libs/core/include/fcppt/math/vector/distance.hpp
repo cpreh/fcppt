@@ -17,11 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Computes the distance between two floating-point vectors
@@ -55,8 +51,6 @@ std::enable_if_t<!std::is_floating_point<T>::value, Dest> distance(
       fcppt::math::vector::structure_cast<result_vector, fcppt::cast::int_to_float_fun>(_v2));
 }
 
-}
-}
 }
 
 #endif

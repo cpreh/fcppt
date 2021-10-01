@@ -18,13 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 template <typename Result, fcppt::math::size_type C, typename... Types>
 inline Result init_storage(std::tuple<Types...> &&_values)
@@ -38,9 +32,6 @@ inline Result init_storage(std::tuple<Types...> &&_values)
         return fcppt::move_if_rvalue<std::tuple_element_t<mat_index::row(), std::tuple<Types...>>>(
             fcppt::math::detail::checked_access<mat_index::column()>(std::get<mat_index::row()>(_values)));
       })};
-}
-}
-}
 }
 }
 

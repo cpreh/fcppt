@@ -13,11 +13,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Rotates a two dimensional point around another point
@@ -39,8 +35,6 @@ fcppt::math::vector::static_<T, N> point_rotate(
   return (fcppt::math::matrix::rotation_2d(_rot) * (_point - _around)) + _around;
 }
 
-}
-}
 }
 
 #endif

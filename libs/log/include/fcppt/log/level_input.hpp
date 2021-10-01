@@ -10,9 +10,7 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief Reads a level from a stream.
@@ -22,7 +20,6 @@ namespace log
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::io::istream &operator>>(fcppt::io::istream &, fcppt::log::level &);
 
-}
 }
 
 #endif

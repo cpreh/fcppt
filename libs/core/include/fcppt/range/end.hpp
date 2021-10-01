@@ -10,9 +10,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace range
+namespace fcppt::range
 {
 /**
 \brief Calls end via ADL.
@@ -27,7 +25,6 @@ auto end(Range &_range)
   return end(_range);
 }
 
-}
 }
 
 #endif

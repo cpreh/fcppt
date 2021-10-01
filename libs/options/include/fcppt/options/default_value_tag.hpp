@@ -6,9 +6,7 @@
 #ifndef FCPPT_OPTIONS_DEFAULT_VALUE_TAG_HPP_INCLUDED
 #define FCPPT_OPTIONS_DEFAULT_VALUE_TAG_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The tag of strong typedefs for default values
@@ -19,7 +17,6 @@ struct default_value_tag
 {
 };
 
-}
 }
 
 #endif

@@ -10,9 +10,7 @@
 #include <fcppt/math/int_range.hpp>
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief A static int range starting at 0
@@ -22,7 +20,6 @@ namespace math
 template <fcppt::math::size_type Count>
 using int_range_count = fcppt::math::int_range<fcppt::literal<fcppt::math::size_type>(0U), Count>;
 
-}
 }
 
 #endif

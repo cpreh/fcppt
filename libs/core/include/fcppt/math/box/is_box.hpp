@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Metafunction to test if a type is a box type
@@ -33,8 +29,6 @@ struct is_box<fcppt::math::box::object<T, N>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

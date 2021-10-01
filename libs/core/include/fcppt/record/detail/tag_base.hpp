@@ -6,18 +6,12 @@
 #ifndef FCPPT_RECORD_DETAIL_TAG_BASE_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_TAG_BASE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 struct tag_base
 {
 };
 
-}
-}
 }
 
 #endif

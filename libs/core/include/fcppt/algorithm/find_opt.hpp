@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Like <code>std::find</code> but returns an empty optional on failure.
@@ -41,7 +39,6 @@ find_opt(Range &&_range, T const &_value)
   return ret == end ? result_type() : result_type(ret);
 }
 
-}
 }
 
 #endif

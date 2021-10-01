@@ -13,11 +13,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Outputs a dim to \p s, in the format
@@ -34,8 +30,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::math::dim::object<T, 
   return fcppt::math::detail::one_dimensional_output(_stream, _dim);
 }
 
-}
-}
 }
 
 #endif

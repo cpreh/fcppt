@@ -23,9 +23,7 @@
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/detail/label_list.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4521)
@@ -138,7 +136,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

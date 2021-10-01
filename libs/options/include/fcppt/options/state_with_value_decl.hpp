@@ -9,9 +9,7 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A parse state together with a value.
@@ -38,7 +36,6 @@ private:
   T value_;
 };
 
-}
 }
 
 #endif

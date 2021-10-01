@@ -9,9 +9,7 @@
 #include <fcppt/container/size_result_type.hpp>
 #include <fcppt/container/detail/size.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief The size of a range.
@@ -30,7 +28,6 @@ inline fcppt::container::size_result_type<Range> size(Range const &_range)
       fcppt::container::detail::size(_range));
 }
 
-}
 }
 
 #endif

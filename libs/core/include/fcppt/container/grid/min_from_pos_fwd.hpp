@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Creates the min from a pos type
@@ -25,8 +21,6 @@ template <typename Pos>
 using min_from_pos =
     fcppt::container::grid::min<fcppt::type_traits::value_type<Pos>, Pos::static_size::value>;
 
-}
-}
 }
 
 #endif

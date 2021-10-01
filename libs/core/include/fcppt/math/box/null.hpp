@@ -10,11 +10,7 @@
 #include <fcppt/math/dim/null.hpp>
 #include <fcppt/math/vector/null.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Returns the null box
@@ -31,8 +27,6 @@ inline Box null()
       fcppt::math::dim::null<typename Box::dim>());
 }
 
-}
-}
 }
 
 #endif

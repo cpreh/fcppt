@@ -11,11 +11,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Type>
 struct hash
@@ -23,8 +19,6 @@ struct hash
   std::size_t operator()(Type const &) const;
 };
 
-}
-}
 }
 
 #endif

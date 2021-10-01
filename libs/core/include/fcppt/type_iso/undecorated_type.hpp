@@ -8,9 +8,7 @@
 
 #include <fcppt/type_iso/detail/undecorated_type.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 /**
 \brief The undecorated type
@@ -22,7 +20,6 @@ Undecorates \a Type by removing all (nested) type constructors.
 template <typename Type>
 using undecorated_type = typename fcppt::type_iso::detail::undecorated_type<Type>::type;
 
-}
 }
 
 #endif

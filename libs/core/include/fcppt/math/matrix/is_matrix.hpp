@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Metafunction to test if a type is a matrix type
@@ -33,8 +29,6 @@ struct is_matrix<fcppt::math::matrix::object<T, R, C, S>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

@@ -10,17 +10,11 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/option_name_set.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace impl
+namespace fcppt::options::impl
 {
 fcppt::optional::object<fcppt::args_vector::const_iterator>
 next_arg(fcppt::args_vector const &, fcppt::options::option_name_set const &);
 
-}
-}
 }
 
 #endif

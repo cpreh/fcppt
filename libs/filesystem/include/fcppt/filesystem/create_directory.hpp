@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Tries to create a directory
@@ -26,7 +24,6 @@ Tries to create the last component of \a path as a directory.
 [[nodiscard]] FCPPT_FILESYSTEM_DETAIL_SYMBOL fcppt::optional_error_code
 create_directory(std::filesystem::path const &path);
 
-}
 }
 
 #endif

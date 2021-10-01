@@ -17,9 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Writes an object of arithmetic type to a stream
@@ -49,7 +47,6 @@ void write(std::ostream &_stream, Type const &_value, std::endian const _format)
       fcppt::cast::size<std::streamsize>(fcppt::cast::to_signed(sizeof(Type))));
 }
 
-}
 }
 
 #endif

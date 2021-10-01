@@ -9,9 +9,7 @@
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The default help switch.
@@ -23,7 +21,6 @@ The default help switch that use "-h" or "--help".
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::help_switch default_help_switch();
 
-}
 }
 
 #endif

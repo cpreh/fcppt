@@ -6,17 +6,11 @@
 #ifndef FCPPT_PARSE_SKIPPER_BASIC_LITERAL_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_BASIC_LITERAL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 template <typename Ch>
 class basic_literal;
 
-}
-}
 }
 
 #endif

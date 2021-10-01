@@ -6,17 +6,11 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 template <typename T>
 class object;
 
-}
-}
 }
 
 #endif

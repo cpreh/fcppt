@@ -8,11 +8,7 @@
 
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace wrapper
+namespace fcppt::random::wrapper
 {
 template <
     typename Container,
@@ -21,8 +17,6 @@ template <
     >
 class uniform_container;
 
-}
-}
 }
 
 #endif

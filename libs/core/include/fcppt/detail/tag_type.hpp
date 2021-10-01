@@ -8,9 +8,7 @@
 
 #include <fcppt/tag_fwd.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename Type>
 struct tag_type;
@@ -21,7 +19,6 @@ struct tag_type<fcppt::tag<Type>>
   using type = Type;
 };
 
-}
 }
 
 #endif

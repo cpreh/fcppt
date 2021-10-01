@@ -9,11 +9,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/static.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The type of a grid's size
@@ -23,8 +19,6 @@ namespace grid
 template <typename SizeType, fcppt::container::grid::size_type N>
 using dim = fcppt::math::dim::static_<SizeType, N>;
 
-}
-}
 }
 
 #endif

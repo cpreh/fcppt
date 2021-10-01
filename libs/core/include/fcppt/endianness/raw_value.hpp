@@ -6,9 +6,7 @@
 #ifndef FCPPT_ENDIANNESS_RAW_VALUE_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_RAW_VALUE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace endianness
+namespace fcppt::endianness
 {
 /**
 \brief The raw memory type used to swap bytes
@@ -17,7 +15,6 @@ namespace endianness
 */
 using raw_value = unsigned char;
 
-}
 }
 
 #endif

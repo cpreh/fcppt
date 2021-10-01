@@ -15,11 +15,7 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Tests if two boxes intersect
@@ -41,8 +37,6 @@ intersects(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T,
       });
 }
 
-}
-}
 }
 
 #endif

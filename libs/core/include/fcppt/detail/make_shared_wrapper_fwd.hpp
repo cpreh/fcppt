@@ -6,14 +6,11 @@
 #ifndef FCPPT_DETAIL_MAKE_SHARED_WRAPPER_FWD_HPP_INCLUDED
 #define FCPPT_DETAIL_MAKE_SHARED_WRAPPER_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename T>
 class make_shared_wrapper;
 
-}
 }
 
 #endif

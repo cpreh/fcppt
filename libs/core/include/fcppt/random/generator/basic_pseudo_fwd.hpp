@@ -6,17 +6,11 @@
 #ifndef FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_FWD_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace random
-{
-namespace generator
+namespace fcppt::random::generator
 {
 template <typename Generator>
 class basic_pseudo;
 
-}
-}
 }
 
 #endif

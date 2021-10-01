@@ -12,11 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 template <typename Value>
 typename fcppt::container::tree::object<Value>::size_type
@@ -35,8 +31,6 @@ depth(fcppt::container::tree::object<Value> const &_tree)
          1U;
 }
 
-}
-}
 }
 
 #endif

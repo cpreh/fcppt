@@ -17,11 +17,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Storage>
 void multiply_scalar(Storage &_value, typename Storage::value_type const _mult)
@@ -39,8 +35,6 @@ void multiply_scalar(Storage &_value, typename Storage::value_type const _mult)
       });
 }
 
-}
-}
 }
 
 #endif

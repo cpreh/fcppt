@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Joins two containers.
@@ -38,7 +36,6 @@ inline std::remove_cvref_t<Container> join(Container &&_first, Args &&..._args)
       std::forward<Container>(_first), std::forward<Args>(_args)...);
 }
 
-}
 }
 
 #endif

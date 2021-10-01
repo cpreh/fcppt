@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief A range over a contiguous enum
@@ -50,7 +48,6 @@ private:
   size_type end_;
 };
 
-}
 }
 
 #endif

@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename>
 struct is_char_set : std::false_type
@@ -27,8 +23,6 @@ struct is_char_set<fcppt::parse::basic_char_set<Ch>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

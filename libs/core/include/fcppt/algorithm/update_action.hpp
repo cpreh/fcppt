@@ -8,9 +8,7 @@
 
 #include <fcppt/algorithm/update_action_fwd.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Update action for container iteration
@@ -29,7 +27,6 @@ enum class update_action
   remove
 };
 
-}
 }
 
 #endif

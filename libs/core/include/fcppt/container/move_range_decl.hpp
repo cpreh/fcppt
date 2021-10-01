@@ -12,9 +12,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief A range that moves its elements
@@ -53,7 +51,6 @@ private:
   Container container_;
 };
 
-}
 }
 
 #endif

@@ -9,16 +9,10 @@
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/options/error_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 using optional_error = fcppt::optional::object<fcppt::options::error>;
 
-}
-}
 }
 
 #endif

@@ -14,11 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Creates an #fcppt::container::grid::static_row_type.
@@ -39,8 +35,6 @@ static_row(Arg1 &&_arg1, Args &&..._args)
       std::remove_cvref_t<Arg1>,
       fcppt::cast::size<fcppt::container::grid::size_type>(sizeof...(Args) + 1U)>{
       std::forward<Arg1>(_arg1), std::forward<Args>(_args)...};
-}
-}
 }
 }
 

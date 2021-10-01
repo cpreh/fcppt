@@ -11,9 +11,7 @@
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Peeks at a character from a stream
@@ -32,7 +30,6 @@ fcppt::optional::object<Ch> peek(std::basic_istream<Ch, Traits> &_stream)
   return result == Traits::eof() ? result_type{} : result_type{Traits::to_char_type(result)};
 }
 
-}
 }
 
 #endif

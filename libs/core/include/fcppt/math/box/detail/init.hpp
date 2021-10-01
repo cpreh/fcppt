@@ -18,13 +18,7 @@
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
-{
-namespace detail
+namespace fcppt::math::box::detail
 {
 template <typename Box, typename InitSecond, typename Function>
 Box init(InitSecond const &_init_second, Function const &_function)
@@ -47,9 +41,6 @@ Box init(InitSecond const &_init_second, Function const &_function)
                    { return fcppt::tuple::get<1>(fcppt::array::get<Index>(results)); })};
 }
 
-}
-}
-}
 }
 
 #endif

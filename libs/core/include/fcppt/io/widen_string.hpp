@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Creates a string that outputs each character by widening
@@ -26,7 +24,6 @@ inline fcppt::io::detail::widen_string widen_string(std::string _string)
   return fcppt::io::detail::widen_string(std::move(_string));
 }
 
-}
 }
 
 #endif

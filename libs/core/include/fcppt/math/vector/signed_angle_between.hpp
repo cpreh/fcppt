@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculates the signed angle between two 2D vectors.
@@ -53,8 +49,6 @@ fcppt::optional::object<T> signed_angle_between(
   return fcppt::math::vector::atan2(_to - _from);
 }
 
-}
-}
 }
 
 #endif

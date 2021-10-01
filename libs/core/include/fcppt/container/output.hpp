@@ -12,9 +12,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Creates a class that has an output operator to print a container.
@@ -35,7 +33,6 @@ inline fcppt::container::detail::output<Container> output(Container const &_cont
   return fcppt::container::detail::output<Container>{_container};
 }
 
-}
 }
 
 #endif

@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Outputs an enum value to a stream.
@@ -38,7 +36,6 @@ template <
 std::basic_ostream<Ch, Traits> &output(std::basic_ostream<Ch, Traits> &_stream, Enum const _value)
 {
   return _stream << fcppt::io::widen_string(std::string{fcppt::enum_::to_string(_value)});
-}
 }
 }
 

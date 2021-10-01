@@ -8,11 +8,7 @@
 
 #include <fcppt/container/grid/detail/dim_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The dim type of a grid.
@@ -24,8 +20,6 @@ namespace grid
 template <typename Grid>
 using dim_type = typename fcppt::container::grid::detail::dim_type<Grid>::type;
 
-}
-}
 }
 
 #endif

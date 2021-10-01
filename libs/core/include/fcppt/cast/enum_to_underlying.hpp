@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts an enum to its underlying type
@@ -29,7 +27,6 @@ inline constexpr std::underlying_type_t<Enum> enum_to_underlying(Enum const _enu
   return static_cast<std::underlying_type_t<Enum>>(_enum);
 }
 
-}
 }
 
 #endif

@@ -12,11 +12,7 @@
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Ch>
 inline void check_bad(std::basic_istream<Ch> &_stream)
@@ -29,8 +25,6 @@ inline void check_bad(std::basic_istream<Ch> &_stream)
   }
 }
 
-}
-}
 }
 
 #endif

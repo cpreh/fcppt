@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Folds a range into a value, can break out early.
@@ -47,7 +45,6 @@ inline State fold_break(Range &&_range, State _state, Function _function)
   return _state;
 }
 
-}
 }
 
 #endif

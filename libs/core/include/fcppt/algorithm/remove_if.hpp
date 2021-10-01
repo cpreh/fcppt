@@ -10,9 +10,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Removes all elements from a container matching a predicate.
@@ -48,7 +46,6 @@ bool remove_if(Container &_container, Predicate const &_predicate)
   return true;
 }
 
-}
 }
 
 #endif

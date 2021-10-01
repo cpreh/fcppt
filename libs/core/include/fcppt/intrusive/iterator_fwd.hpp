@@ -6,14 +6,11 @@
 #ifndef FCPPT_INTRUSIVE_ITERATOR_FWD_HPP_INCLUDED
 #define FCPPT_INTRUSIVE_ITERATOR_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace intrusive
+namespace fcppt::intrusive
 {
 template <typename Type>
 class iterator;
 
-}
 }
 
 #endif

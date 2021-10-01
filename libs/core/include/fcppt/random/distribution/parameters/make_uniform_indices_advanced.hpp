@@ -10,13 +10,7 @@
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
-{
-namespace parameters
+namespace fcppt::random::distribution::parameters
 {
 template <typename Distribution, typename Container>
 fcppt::optional::object<fcppt::random::distribution::parameters::
@@ -34,9 +28,6 @@ make_uniform_indices_advanced(Container const &_container)
                    typename param_type::min(0U), typename param_type::max(_container.size() - 1U)));
 }
 
-}
-}
-}
 }
 
 #endif

@@ -9,9 +9,7 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/type_iso/transform_fwd.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 template <typename Type, typename Alias>
 struct transform<fcppt::strong_typedef<Type, Alias>>
@@ -28,7 +26,6 @@ struct transform<fcppt::strong_typedef<Type, Alias>>
   static inline undecorated_type undecorate(decorated_type const &_value) { return _value.get(); }
 };
 
-}
 }
 
 #endif

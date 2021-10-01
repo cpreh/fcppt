@@ -6,14 +6,11 @@
 #ifndef FCPPT_OPTIONS_PRETTY_TYPE_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRETTY_TYPE_IMPL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 template <typename Type, typename Enable = void>
 struct pretty_type_impl;
 
-}
 }
 
 #endif

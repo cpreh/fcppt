@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Converts a string to an enum.
@@ -33,7 +31,6 @@ inline fcppt::optional::object<Enum> from_string(std::string_view const _string)
   return fcppt::enum_::from_string_impl<Enum>::get(_string);
 }
 
-}
 }
 
 #endif

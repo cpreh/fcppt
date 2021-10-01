@@ -6,14 +6,11 @@
 #ifndef FCPPT_PARSE_CONVERT_CONST_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_CONVERT_CONST_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Parser, typename Result>
 class convert_const;
 
-}
 }
 
 #endif

@@ -10,17 +10,11 @@
 #include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::string help_text(fcppt::options::optional_help_text const &);
 
-}
-}
 }
 
 #endif

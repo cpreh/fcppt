@@ -14,9 +14,7 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns an element from a find operation or an empty optional.
@@ -42,7 +40,6 @@ find_opt_mapped(Container &_container, Key const &_key)
       });
 }
 
-}
 }
 
 #endif

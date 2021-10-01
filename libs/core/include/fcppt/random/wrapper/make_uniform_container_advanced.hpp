@@ -12,11 +12,7 @@
 #include <fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp>
 #include <fcppt/random/wrapper/uniform_container_impl.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace wrapper
+namespace fcppt::random::wrapper
 {
 template <typename IntDistribution, typename Container>
 inline fcppt::optional::object<
@@ -33,8 +29,6 @@ make_uniform_container_advanced(fcppt::reference<Container> const _container)
       });
 }
 
-}
-}
 }
 
 #endif

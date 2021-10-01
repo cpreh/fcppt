@@ -17,9 +17,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The next character in a stream. Returns the error message "EOF" on failure.
@@ -34,7 +32,6 @@ get_char_error(fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)
   });
 }
 
-}
 }
 
 #endif

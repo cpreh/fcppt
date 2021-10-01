@@ -11,11 +11,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
+namespace fcppt::random::distribution
 {
 /**
 \brief A wrapper for distributions
@@ -209,8 +205,6 @@ template <typename Ch, typename Traits, typename Parameters>
 std::basic_istream<Ch, Traits> &operator>>(
     std::basic_istream<Ch, Traits> &stream, fcppt::random::distribution::basic<Parameters> &dist);
 
-}
-}
 }
 
 #endif

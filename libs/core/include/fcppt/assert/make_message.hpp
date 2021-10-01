@@ -11,9 +11,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/assert/information.hpp>
 
-namespace fcppt
-{
-namespace assert_
+namespace fcppt::assert_
 {
 /**
 \brief Generates a message string from assert information
@@ -39,7 +37,6 @@ inline fcppt::string make_message(fcppt::assert_::information const &_info)
                                         : fcppt::string(FCPPT_TEXT(": ")) + _info.message().get());
 }
 
-}
 }
 
 #endif

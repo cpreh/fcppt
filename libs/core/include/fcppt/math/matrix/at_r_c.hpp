@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Access an element using compile-time constants for both row and column
@@ -44,8 +40,6 @@ at_r_c(Matrix &_value)
   return fcppt::math::vector::at<C>(view);
 }
 
-}
-}
 }
 
 #endif

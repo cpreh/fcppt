@@ -8,17 +8,11 @@
 
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename T, fcppt::math::size_type N>
 class static_storage;
 
-}
-}
 }
 
 #endif

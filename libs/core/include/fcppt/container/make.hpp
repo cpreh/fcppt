@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Creates a container from variadic arguments by moving.
@@ -33,7 +31,6 @@ inline Container make(Args &&..._args)
       [](reference_type const _ref) { return std::move(_ref.get()); });
 }
 
-}
 }
 
 #endif

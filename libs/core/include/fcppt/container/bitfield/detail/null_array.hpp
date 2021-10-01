@@ -10,13 +10,7 @@
 #include <fcppt/array/init.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
-{
-namespace detail
+namespace fcppt::container::bitfield::detail
 {
 template <typename Array>
 inline Array null_array()
@@ -25,9 +19,6 @@ inline Array null_array()
       [](auto) { return fcppt::literal<fcppt::type_traits::value_type<Array>>(0); });
 }
 
-}
-}
-}
 }
 
 #endif

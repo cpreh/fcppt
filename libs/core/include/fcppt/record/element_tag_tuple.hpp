@@ -12,9 +12,7 @@
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/record/element_vector.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief A metafunction returning the elements of record as a
@@ -28,7 +26,6 @@ template <typename Record>
 using element_tag_tuple = fcppt::mpl::list::as_tuple<
     fcppt::mpl::list::map<fcppt::record::element_vector<Record>, fcppt::mpl::lambda<fcppt::tag>>>;
 
-}
 }
 
 #endif

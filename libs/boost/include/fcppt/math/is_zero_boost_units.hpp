@@ -12,9 +12,7 @@
 #include <boost/units/unit.hpp>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Integrates boost.units with #fcppt::math::is_zero.
@@ -30,7 +28,6 @@ struct is_zero_impl<boost::units::quantity<Unit, Type>>
   }
 };
 
-}
 }
 
 #endif

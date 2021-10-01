@@ -14,14 +14,11 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 using string_types = fcppt::mpl::list::map<
     fcppt::detail::char_types,
     fcppt::mpl::bind<fcppt::mpl::lambda<std::add_pointer_t>, fcppt::mpl::lambda<std::add_const_t>>>;
-}
 }
 
 #endif

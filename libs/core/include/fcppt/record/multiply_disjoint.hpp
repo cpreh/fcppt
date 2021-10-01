@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Creates the disjoint product of two records
@@ -44,7 +42,6 @@ multiply_disjoint(Record1 &&_record1, Record2 &&_record2)
       });
 }
 
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief The result type of #fcppt::container::get_or_insert_with_result
@@ -50,7 +48,6 @@ private:
   bool inserted_;
 };
 
-}
 }
 
 #endif

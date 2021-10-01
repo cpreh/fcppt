@@ -8,11 +8,7 @@
 
 #include <fcppt/container/tree/pre_order.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Creates a pre_order object
@@ -25,8 +21,6 @@ inline fcppt::container::tree::pre_order<Tree> make_pre_order(Tree &_tree)
   return fcppt::container::tree::pre_order<Tree>{_tree};
 }
 
-}
-}
 }
 
 #endif

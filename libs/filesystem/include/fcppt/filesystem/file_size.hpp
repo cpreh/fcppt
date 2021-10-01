@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Returns the size of a file.
@@ -27,7 +25,6 @@ otherwise returns the empty optional.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::filesystem::optional_size file_size(std::filesystem::path const &path);
 
-}
 }
 
 #endif

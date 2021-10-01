@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Returns an iterator pointing to the position in the parent's child
@@ -39,8 +35,6 @@ fcppt::optional::object<fcppt::container::to_iterator_type<T>> child_position(T 
   return fcppt::algorithm::find_if_opt(_parent, [&_child](T &_tree) { return &_child == &_tree; });
 }
 
-}
-}
 }
 
 #endif

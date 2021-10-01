@@ -15,11 +15,7 @@
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculates the dot product of two vectors
@@ -45,8 +41,6 @@ dot(fcppt::math::vector::object<T, N, S1> const &_left,
       });
 }
 
-}
-}
 }
 
 #endif

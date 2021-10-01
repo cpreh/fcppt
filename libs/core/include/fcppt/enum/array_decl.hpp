@@ -16,9 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4623)
@@ -89,7 +87,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

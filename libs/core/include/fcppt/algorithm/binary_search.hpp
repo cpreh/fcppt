@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Finds an element by binary search.
@@ -41,7 +39,6 @@ binary_search(Range &&_range, T const &_value)
   return fcppt::range::singular(result) ? result_type{fcppt::range::begin(result)} : result_type{};
 }
 
-}
 }
 
 #endif

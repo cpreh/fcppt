@@ -13,9 +13,7 @@
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief The stream for a logger level
@@ -85,7 +83,6 @@ private:
   fcppt::log::format::optional_function formatter_;
 };
 
-}
 }
 
 #endif

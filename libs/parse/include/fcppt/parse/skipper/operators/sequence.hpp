@@ -13,11 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Creates an #fcppt::parse::skipper::sequence.
@@ -39,8 +35,6 @@ fcppt::parse::skipper::
       std::forward<Left>(_left), std::forward<Right>(_right)};
 }
 
-}
-}
 }
 
 #endif

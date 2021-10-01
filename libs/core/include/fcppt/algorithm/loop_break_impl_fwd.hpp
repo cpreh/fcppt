@@ -6,9 +6,7 @@
 #ifndef FCPPT_ALGORITHM_LOOP_BREAK_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_LOOP_BREAK_IMPL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Customization point for ranges.
@@ -18,7 +16,6 @@ namespace algorithm
 template <typename Range, typename Enable = void>
 struct loop_break_impl;
 
-}
 }
 
 #endif

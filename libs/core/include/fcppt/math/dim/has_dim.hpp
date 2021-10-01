@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Metafunction to check the dimension of a static dim
@@ -29,8 +25,6 @@ struct has_dim<fcppt::math::dim::object<T, N, S>, Size> : fcppt::math::detail::d
 {
 };
 
-}
-}
 }
 
 #endif

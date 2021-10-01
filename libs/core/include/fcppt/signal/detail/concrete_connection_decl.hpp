@@ -12,11 +12,7 @@
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/signal/connection_decl.hpp>
 
-namespace fcppt
-{
-namespace signal
-{
-namespace detail
+namespace fcppt::signal::detail
 {
 template <typename Function>
 class concrete_connection // NOLINT(fuchsia-multiple-inheritance)
@@ -42,8 +38,6 @@ private:
   function_type const function_;
 };
 
-}
-}
 }
 
 #endif

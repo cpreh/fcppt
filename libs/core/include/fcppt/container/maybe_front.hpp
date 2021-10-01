@@ -10,9 +10,7 @@
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns the front of a container as an optional.
@@ -28,7 +26,6 @@ maybe_front(Container &_container)
   return _container.empty() ? result_type{} : result_type{fcppt::make_ref(_container.front())};
 }
 
-}
 }
 
 #endif

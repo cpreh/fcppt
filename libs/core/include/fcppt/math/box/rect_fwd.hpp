@@ -8,11 +8,7 @@
 
 #include <fcppt/math/box/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Typedefs a two dimensional box (a rect)
@@ -22,8 +18,6 @@ namespace box
 template <typename T>
 using rect = fcppt::math::box::object<T, 2>;
 
-}
-}
 }
 
 #endif

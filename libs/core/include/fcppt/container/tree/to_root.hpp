@@ -19,11 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 template <typename Tree>
 class to_root
@@ -98,8 +94,6 @@ private:
   tree_ref tree_;
 };
 
-}
-}
 }
 
 #endif

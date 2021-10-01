@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace interpolation
+namespace fcppt::math::interpolation
 {
 /**
 \brief Interpolates between two values using perlin fifth degree
@@ -51,8 +47,6 @@ Value perlin_fifth_degree(Float const &_f, Value const &_v1, Value const &_v2)
       _v2);
 }
 
-}
-}
 }
 
 #endif

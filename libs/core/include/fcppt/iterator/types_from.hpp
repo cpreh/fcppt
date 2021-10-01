@@ -11,9 +11,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 template <typename Derived, typename Adapted>
 using types_from = fcppt::iterator::types<
@@ -23,7 +21,6 @@ using types_from = fcppt::iterator::types<
     typename std::iterator_traits<Adapted>::difference_type,
     typename std::iterator_traits<Adapted>::iterator_category>;
 
-}
 }
 
 #endif

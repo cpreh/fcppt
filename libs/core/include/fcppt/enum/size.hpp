@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief The number of enumerators in an enum
@@ -37,7 +35,6 @@ using size = std::integral_constant<
     fcppt::enum_::size_type<Type>,
     fcppt::cast::enum_to_int<fcppt::enum_::size_type<Type>>(fcppt::enum_::max_value<Type>::value) +
         1U>;
-}
 }
 
 #endif

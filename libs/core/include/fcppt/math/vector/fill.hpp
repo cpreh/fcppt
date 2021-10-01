@@ -10,11 +10,7 @@
 #include <fcppt/math/vector/is_vector.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Constructs a static vector with all components set to a given value
@@ -33,8 +29,6 @@ Vector fill(fcppt::type_traits::value_type<Vector> const &_value)
   return fcppt::math::detail::fill<Vector>(_value);
 }
 
-}
-}
 }
 
 #endif

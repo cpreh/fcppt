@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Tries to creates directories recursively.
@@ -26,7 +24,6 @@ Tries to create each nonexistant sub directory of \a path.
 [[nodiscard]] FCPPT_FILESYSTEM_DETAIL_SYMBOL fcppt::optional_error_code
 create_directories_recursive(std::filesystem::path const &path);
 
-}
 }
 
 #endif

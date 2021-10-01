@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A range over grid position
@@ -62,8 +58,6 @@ private:
   sup_type sup_;
 };
 
-}
-}
 }
 
 #endif

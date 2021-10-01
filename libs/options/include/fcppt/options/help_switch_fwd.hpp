@@ -9,9 +9,7 @@
 #include <fcppt/options/unit_switch_fwd.hpp>
 #include <fcppt/options/detail/help_label.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The type of a help parser.
@@ -22,7 +20,6 @@ A help parser is a switch used to display a help message.
 */
 using help_switch = fcppt::options::unit_switch<fcppt::options::detail::help_label>;
 
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/range/begin.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Returns the index of the first element found in a sequence.
@@ -40,7 +38,6 @@ index_of(Range const &_range, T const &_value)
   });
 }
 
-}
 }
 
 #endif

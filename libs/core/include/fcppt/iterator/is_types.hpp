@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 template <typename Type>
 struct is_types : std::false_type
@@ -32,7 +30,6 @@ struct is_types<
 {
 };
 
-}
 }
 
 #endif

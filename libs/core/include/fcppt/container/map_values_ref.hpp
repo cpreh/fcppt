@@ -10,9 +10,7 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Maps the mapped values of an associative container to a container of references.
@@ -36,7 +34,6 @@ Result map_values_ref(Map &_map)
   });
 }
 
-}
 }
 
 #endif

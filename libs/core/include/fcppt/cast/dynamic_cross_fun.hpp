@@ -10,9 +10,7 @@
 #include <fcppt/cast/dynamic_cross_fun_fwd.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object that uses #fcppt::cast::dynamic_cross
@@ -28,7 +26,6 @@ struct dynamic_cross_fun
   }
 };
 
-}
 }
 
 #endif

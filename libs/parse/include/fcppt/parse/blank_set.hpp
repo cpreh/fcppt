@@ -9,9 +9,7 @@
 #include <fcppt/char_literal.hpp>
 #include <fcppt/parse/basic_char_set_container.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 
 /**
@@ -27,7 +25,6 @@ inline fcppt::parse::basic_char_set_container<Ch> blank_set()
       FCPPT_CHAR_LITERAL(Ch, ' '), FCPPT_CHAR_LITERAL(Ch, '\t')};
 }
 
-}
 }
 
 #endif

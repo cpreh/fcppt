@@ -15,11 +15,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Type>
 std::enable_if_t<
@@ -39,8 +35,6 @@ make_tuple(Type &&_value)
   return fcppt::tuple::make(std::forward<Type>(_value));
 }
 
-}
-}
 }
 
 #endif

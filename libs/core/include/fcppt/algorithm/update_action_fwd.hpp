@@ -6,13 +6,10 @@
 #ifndef FCPPT_ALGORITHM_UPDATE_ACTION_FWD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_UPDATE_ACTION_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 enum class update_action;
 
-}
 }
 
 #endif

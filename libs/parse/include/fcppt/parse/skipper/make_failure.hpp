@@ -14,11 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Creates a skipper result from an #fcppt::parse::error.
@@ -30,8 +26,6 @@ fcppt::parse::skipper::result<Ch> make_failure(fcppt::parse::error<Ch> &&_error)
   return fcppt::either::make_failure<fcppt::either::no_error>(std::move(_error));
 }
 
-}
-}
 }
 
 #endif

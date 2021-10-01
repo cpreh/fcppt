@@ -9,9 +9,7 @@
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/options/default_value_tag.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A strong typedef used as a parser's default value
@@ -21,7 +19,6 @@ namespace options
 template <typename Type>
 using default_value = fcppt::strong_typedef<Type, fcppt::options::default_value_tag>;
 
-}
 }
 
 #endif

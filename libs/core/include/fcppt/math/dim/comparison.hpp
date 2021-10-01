@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Compares two dims for equality
@@ -88,8 +84,6 @@ inline bool operator>=(
   return !(_v1 < _v2);
 }
 
-}
-}
 }
 
 #endif

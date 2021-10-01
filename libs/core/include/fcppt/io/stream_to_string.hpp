@@ -15,9 +15,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Reads the contents of a stream into a string.
@@ -39,7 +37,6 @@ stream_to_string(std::basic_istream<Ch, Traits> &_input)
       [&output] { return std::move(output.str()); });
 }
 
-}
 }
 
 #endif

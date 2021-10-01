@@ -10,17 +10,11 @@
 #include <fcppt/options/detail/optional_error.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::detail::optional_error leftover_error(fcppt::options::state const &);
 
-}
-}
 }
 
 #endif

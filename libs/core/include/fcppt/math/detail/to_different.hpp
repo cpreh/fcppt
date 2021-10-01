@@ -11,11 +11,7 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/init.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Dest, typename Source>
 inline Dest to_different(Source const &_source)
@@ -27,8 +23,6 @@ inline Dest to_different(Source const &_source)
       { return fcppt::math::detail::checked_access<Index>(_source); });
 }
 
-}
-}
 }
 
 #endif

@@ -13,9 +13,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parse a stream using a grammar.
@@ -28,7 +26,6 @@ fcppt::parse::result<Ch, Result> grammar_parse_stream(
   return fcppt::parse::phrase_parse_stream(*_grammar.start(), _stream, _grammar.skipper());
 }
 
-}
 }
 
 #endif

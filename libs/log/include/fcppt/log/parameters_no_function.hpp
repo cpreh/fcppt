@@ -10,13 +10,10 @@
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::parameters parameters_no_function(fcppt::log::name &&);
-}
 }
 
 #endif

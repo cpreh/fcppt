@@ -20,11 +20,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /*
 \ingroup fcpptmathmatrix
@@ -71,8 +67,6 @@ logarithm(fcppt::math::matrix::object<T, N, N, S> A, T const e1, T const e2, T c
   return X;
 }
 
-}
-}
 }
 
 #endif

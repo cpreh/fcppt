@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <fcppt::math::size_type N, typename T>
 inline fcppt::container::to_reference_type<std::remove_reference_t<T>> checked_access(T &&_value)
@@ -28,8 +24,6 @@ inline fcppt::container::to_reference_type<std::remove_reference_t<T>> checked_a
   return _value.get_unsafe(N);
 }
 
-}
-}
 }
 
 #endif

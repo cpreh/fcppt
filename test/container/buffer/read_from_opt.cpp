@@ -26,7 +26,7 @@ TEST_CASE("container::buffer::read_from_opt", "[container],[buffer]")
   CHECK(fcppt::container::buffer::read_from_opt<buffer_type>(
             10U,
             [](buffer_type::pointer, buffer_type::size_type) {
-              return fcppt::optional::make(fcppt::literal<buffer_type::size_type>(0u));
+              return fcppt::optional::make(fcppt::literal<buffer_type::size_type>(0U));
             })
             .has_value());
 }

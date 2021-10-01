@@ -20,9 +20,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A required switch.
@@ -67,7 +65,6 @@ private:
   impl impl_;
 };
 
-}
 }
 
 #endif

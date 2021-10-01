@@ -6,9 +6,7 @@
 #ifndef FCPPT_BIT_SHIFT_COUNT_HPP_INCLUDED
 #define FCPPT_BIT_SHIFT_COUNT_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace bit
+namespace fcppt::bit
 {
 /**
 \brief The unsigned type representing a shift count
@@ -17,7 +15,6 @@ namespace bit
 */
 using shift_count = unsigned;
 
-}
 }
 
 #endif

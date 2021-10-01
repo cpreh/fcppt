@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Creates min from a pos value
@@ -28,8 +24,6 @@ make_min(fcppt::container::grid::pos<SizeType, N> const _pos)
   return fcppt::container::grid::min_from_pos<fcppt::container::grid::pos<SizeType, N>>{_pos};
 }
 
-}
-}
 }
 
 #endif

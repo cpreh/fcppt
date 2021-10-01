@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief A type identifying an element of a record.
@@ -40,7 +38,6 @@ struct label
   operator=(Arg &&);
 };
 
-}
 }
 
 #endif

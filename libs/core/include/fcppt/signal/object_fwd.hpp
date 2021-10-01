@@ -9,14 +9,11 @@
 
 #include <fcppt/signal/base_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 template <typename T, template <typename> class Base = fcppt::signal::base>
 class object;
 
-}
 }
 
 #endif

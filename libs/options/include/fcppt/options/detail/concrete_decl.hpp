@@ -16,11 +16,7 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/concrete_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Result, typename Parser>
 class concrete : public fcppt::options::base<Result>
@@ -49,8 +45,6 @@ private:
   Parser const parser_;
 };
 
-}
-}
 }
 
 #endif

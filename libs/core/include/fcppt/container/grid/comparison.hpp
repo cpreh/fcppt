@@ -13,11 +13,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Compares two grids for equality
@@ -102,8 +98,6 @@ inline bool operator>=(
   return !(_a < _b);
 }
 
-}
-}
 }
 
 #endif

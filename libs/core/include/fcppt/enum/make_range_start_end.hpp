@@ -10,9 +10,7 @@
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/enum/range_impl.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Creates a closed enum range
@@ -37,7 +35,6 @@ inline fcppt::enum_::range<Enum> make_range_start_end(Enum const _start, Enum co
           fcppt::literal<typename result_type::size_type>(1));
 }
 
-}
 }
 
 #endif

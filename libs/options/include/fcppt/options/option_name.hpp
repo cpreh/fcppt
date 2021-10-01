@@ -12,9 +12,7 @@
 #include <fcppt/options/option_name_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief An option name that may be for a short or long option
@@ -39,7 +37,6 @@ private:
   is_short is_short_;
 };
 
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Folds a range into a value.
@@ -39,7 +37,6 @@ inline State fold(Range &&_range, State _state, Function _function)
   return _state;
 }
 
-}
 }
 
 #endif

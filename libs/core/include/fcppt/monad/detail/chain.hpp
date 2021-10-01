@@ -12,11 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace monad
-{
-namespace detail
+namespace fcppt::monad::detail
 {
 template <typename Value>
 inline std::remove_cvref_t<Value> chain(Value &&_value)
@@ -31,8 +27,6 @@ inline auto chain(Value &&_value, Lambda const &_lambda, Lambdas const &..._lamb
       fcppt::monad::bind(std::forward<Value>(_value), _lambda), _lambdas...);
 }
 
-}
-}
 }
 
 #endif

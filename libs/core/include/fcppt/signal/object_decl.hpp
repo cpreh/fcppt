@@ -14,9 +14,7 @@
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 /**
 \brief Represents a signal with a non-void return value
@@ -120,7 +118,6 @@ public:
   using base::connections;
 };
 
-}
 }
 
 #endif

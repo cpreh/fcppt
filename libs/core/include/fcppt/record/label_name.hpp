@@ -13,9 +13,7 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Returns the name of a label as a string
@@ -30,7 +28,6 @@ inline std::string label_name()
   return fcppt::type_name_from_info(typeid(typename Label::tag));
 }
 
-}
 }
 
 #endif

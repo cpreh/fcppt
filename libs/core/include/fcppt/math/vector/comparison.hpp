@@ -11,11 +11,7 @@
 #include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Compares two vectors for equality
@@ -95,8 +91,6 @@ inline bool operator>=(
   return !(_v1 < _v2);
 }
 
-}
-}
 }
 
 #endif

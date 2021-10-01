@@ -17,11 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A pos ref range over a grid
@@ -39,8 +35,6 @@ inline fcppt::container::grid::pos_ref_range<Grid> make_pos_ref_range(Grid &_gri
       fcppt::container::grid::sup_from_pos<pos>(fcppt::math::dim::to_vector(_grid.size())));
 }
 
-}
-}
 }
 
 #endif

@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Makes a sub command.
@@ -29,7 +27,6 @@ inline fcppt::options::sub_command<Tag, std::remove_cvref_t<Parser>> make_sub_co
 {
   return fcppt::options::sub_command<Tag, std::remove_cvref_t<Parser>>(
       std::move(_name), std::forward<Parser>(_parser), std::move(_help_text));
-}
 }
 }
 

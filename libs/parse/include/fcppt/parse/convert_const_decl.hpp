@@ -20,9 +20,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -64,7 +62,6 @@ FCPPT_PP_POP_WARNING
 template <typename Parser, typename Result>
 convert_const(Parser &&, Result &&)
     -> convert_const<std::remove_cvref_t<Parser>, std::remove_cvref_t<Result>>;
-}
 }
 
 #endif

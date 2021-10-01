@@ -8,11 +8,7 @@
 
 #include <fcppt/array/is_object.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Checks if a type is an #fcppt::container::grid::static_row.
@@ -22,8 +18,6 @@ namespace grid
 template <typename Type>
 using is_static_row = fcppt::array::is_object<Type>;
 
-}
-}
 }
 
 #endif

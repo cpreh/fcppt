@@ -14,9 +14,7 @@
 #include <fcppt/assert/message.hpp>
 #include <fcppt/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace assert_
+namespace fcppt::assert_
 {
 /**
 \brief Represents information gathered at the assertion side
@@ -89,7 +87,6 @@ private:
   fcppt::assert_::message message_;
 };
 
-}
 }
 
 #endif

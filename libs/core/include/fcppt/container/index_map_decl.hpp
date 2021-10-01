@@ -12,9 +12,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief An index-based container that grows on demand.
@@ -66,7 +64,6 @@ private:
   internal_type impl_;
 };
 
-}
 }
 
 #endif

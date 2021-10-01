@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief The type of a range element
@@ -25,7 +23,6 @@ type.
 template <typename Range>
 using range_element_type = decltype(*std::declval<Range>().begin());
 
-}
 }
 
 #endif

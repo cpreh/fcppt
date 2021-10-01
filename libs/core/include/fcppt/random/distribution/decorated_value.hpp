@@ -8,11 +8,7 @@
 
 #include <fcppt/type_iso/decorate.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
+namespace fcppt::random::distribution
 {
 /**
 \brief Calculates the decorated value
@@ -25,8 +21,6 @@ inline Result decorated_value(Type const &_value)
   return fcppt::type_iso::decorate<Result>(_value);
 }
 
-}
-}
 }
 
 #endif

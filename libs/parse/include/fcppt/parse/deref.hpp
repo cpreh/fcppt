@@ -11,9 +11,7 @@
 #include <fcppt/deref_unique_ptr.hpp>
 #include <fcppt/parse/deref_type.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Dereferences a parser.
@@ -27,7 +25,6 @@ inline fcppt::parse::deref_type<Parser> const &deref(Parser const &_parser)
   return fcppt::deref(_parser);
 }
 
-}
 }
 
 #endif

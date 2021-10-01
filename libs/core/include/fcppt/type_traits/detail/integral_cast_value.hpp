@@ -8,11 +8,7 @@
 
 #include <fcppt/cast/apply.hpp>
 
-namespace fcppt
-{
-namespace type_traits
-{
-namespace detail
+namespace fcppt::type_traits::detail
 {
 template <typename IntegralType, typename Conv, typename Integral>
 struct integral_cast_value
@@ -21,8 +17,6 @@ struct integral_cast_value
       fcppt::cast::apply<Conv, IntegralType>(Integral::value)};
 };
 
-}
-}
 }
 
 #endif

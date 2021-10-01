@@ -11,11 +11,7 @@
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Pushes an element to the back of a dim.
@@ -29,8 +25,6 @@ push_back(fcppt::math::dim::object<T, N, S> const &_dim, T const &_value)
   return fcppt::math::detail::push_back<fcppt::math::dim::static_<T, N + 1U>>(_dim, _value);
 }
 
-}
-}
 }
 
 #endif

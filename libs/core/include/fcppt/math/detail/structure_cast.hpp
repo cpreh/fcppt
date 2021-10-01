@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename T, typename Conv, typename U>
 inline T structure_cast(U const &_other)
@@ -34,8 +30,6 @@ inline T structure_cast(U const &_other)
   });
 }
 
-}
-}
 }
 
 #endif

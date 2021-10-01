@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The result of a sequence parser.
@@ -40,7 +38,6 @@ template <typename Left, typename Right>
 using sequence_result =
     decltype(fcppt::parse::detail::sequence_result(std::declval<Left>(), std::declval<Right>()));
 
-}
 }
 
 #endif

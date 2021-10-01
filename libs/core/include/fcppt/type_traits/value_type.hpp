@@ -6,9 +6,7 @@
 #ifndef FCPPT_TYPE_TRAITS_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_VALUE_TYPE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief The value type of a container.
@@ -18,7 +16,6 @@ namespace type_traits
 template <typename Container>
 using value_type = typename Container::value_type;
 
-}
 }
 
 #endif

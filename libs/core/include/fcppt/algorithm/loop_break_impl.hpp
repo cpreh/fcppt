@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 template <typename Range, typename Enable>
 struct loop_break_impl
@@ -35,7 +33,6 @@ struct loop_break_impl
   }
 };
 
-}
 }
 
 #endif

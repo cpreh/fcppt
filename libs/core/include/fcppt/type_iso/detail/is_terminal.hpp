@@ -12,18 +12,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_iso
-{
-namespace detail
+namespace fcppt::type_iso::detail
 {
 template <typename Type>
 using is_terminal =
     std::is_base_of<fcppt::type_iso::detail::terminal_tag, fcppt::type_iso::transform<Type>>;
 
-}
-}
 }
 
 #endif

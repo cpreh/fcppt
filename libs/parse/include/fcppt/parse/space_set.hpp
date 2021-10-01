@@ -9,9 +9,7 @@
 #include <fcppt/char_literal.hpp>
 #include <fcppt/parse/basic_char_set_container.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The char set of spaces.
@@ -25,7 +23,6 @@ inline fcppt::parse::basic_char_set_container<Ch> space_set()
       FCPPT_CHAR_LITERAL(Ch, ' '), FCPPT_CHAR_LITERAL(Ch, '\n'), FCPPT_CHAR_LITERAL(Ch, '\t')};
 }
 
-}
 }
 
 #endif

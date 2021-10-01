@@ -13,9 +13,7 @@
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses a single character and returns it.
@@ -40,7 +38,6 @@ public:
   parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
 };
 
-}
 }
 
 #endif

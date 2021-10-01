@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename List>
 using alternative_result = std::conditional_t<
@@ -25,8 +21,6 @@ using alternative_result = std::conditional_t<
     fcppt::mpl::list::front<List>,
     fcppt::variant::from_list<List>>;
 
-}
-}
 }
 
 #endif

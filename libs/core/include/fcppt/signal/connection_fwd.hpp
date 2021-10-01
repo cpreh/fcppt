@@ -7,13 +7,10 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 class connection;
 
-}
 }
 
 #endif

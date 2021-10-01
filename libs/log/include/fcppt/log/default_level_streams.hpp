@@ -9,9 +9,7 @@
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief Constructs the default level streams
@@ -24,7 +22,6 @@ formatter and #fcppt::log::default_stream  as its stream.
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::level_stream_array default_level_streams();
 
-}
 }
 
 #endif

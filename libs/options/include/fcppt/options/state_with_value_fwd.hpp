@@ -6,14 +6,11 @@
 #ifndef FCPPT_OPTIONS_STATE_WITH_VALUE_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_STATE_WITH_VALUE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 template <typename T>
 class state_with_value;
 
-}
 }
 
 #endif

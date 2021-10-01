@@ -11,11 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace buffer
+namespace fcppt::container::buffer
 {
 /**
 \brief Appends to a buffer using a function.
@@ -41,8 +37,6 @@ fcppt::container::buffer::object<T, A> append_from(
   return std::move(_buffer);
 }
 
-}
-}
 }
 
 #endif

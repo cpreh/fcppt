@@ -9,13 +9,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 constexpr inline fcppt::math::size_type
 deleted_index(fcppt::math::size_type const _cur, fcppt::math::size_type const _rem)
@@ -23,9 +17,6 @@ deleted_index(fcppt::math::size_type const _cur, fcppt::math::size_type const _r
   return _cur >= _rem ? _cur + fcppt::literal<fcppt::math::size_type>(1) : _cur;
 }
 
-}
-}
-}
 }
 
 #endif

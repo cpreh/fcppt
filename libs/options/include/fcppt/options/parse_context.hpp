@@ -10,9 +10,7 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 class parse_context
 {
@@ -27,7 +25,6 @@ private:
   fcppt::options::option_name_set option_names_;
 };
 
-}
 }
 
 #endif

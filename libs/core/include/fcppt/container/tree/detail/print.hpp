@@ -13,13 +13,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
-{
-namespace detail
+namespace fcppt::container::tree::detail
 {
 template <typename Ch, typename Traits, typename Value>
 void print(
@@ -37,9 +31,6 @@ void print(
   }
 }
 
-}
-}
-}
 }
 
 #endif

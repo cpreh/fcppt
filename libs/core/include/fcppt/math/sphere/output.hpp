@@ -14,11 +14,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace sphere
+namespace fcppt::math::sphere
 {
 /**
 \brief Outputs a sphere to a stream
@@ -31,8 +27,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
 {
   return _stream << _stream.widen('(') << _sphere.origin() << _stream.widen(')')
                  << fcppt::output(_sphere.radius()) << _stream.widen(')');
-}
-}
 }
 }
 

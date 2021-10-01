@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace catch_
+namespace fcppt::catch_
 {
 template <typename Type>
 inline fcppt::catch_::movable<std::remove_cvref_t<Type>> make_movable(Type &&_value)
@@ -23,7 +21,6 @@ inline fcppt::catch_::movable<std::remove_cvref_t<Type>> make_movable(Type &&_va
       std::forward<Type>(_value)};
 }
 
-}
 }
 
 #endif

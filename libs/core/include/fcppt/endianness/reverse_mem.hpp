@@ -10,9 +10,7 @@
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/size_type.hpp>
 
-namespace fcppt
-{
-namespace endianness
+namespace fcppt::endianness
 {
 /**
 \brief Reverses the byte order of a given memory block
@@ -29,7 +27,6 @@ size.
 FCPPT_DETAIL_SYMBOL
 void reverse_mem(fcppt::endianness::raw_pointer data, fcppt::endianness::size_type size);
 
-}
 }
 
 #endif

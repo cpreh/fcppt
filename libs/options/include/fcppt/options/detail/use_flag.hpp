@@ -12,19 +12,13 @@
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool use_flag(
     fcppt::reference<fcppt::options::state>,
     fcppt::string_view,
     fcppt::options::detail::flag_is_short);
 
-}
-}
 }
 
 #endif

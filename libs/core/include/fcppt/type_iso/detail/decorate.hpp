@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_iso
-{
-namespace detail
+namespace fcppt::type_iso::detail
 {
 template <typename Result, typename Type>
 inline std::enable_if_t<std::is_same<Result, Type>::value, Result> decorate(Type const &_value)
@@ -32,8 +28,6 @@ inline std::enable_if_t<!std::is_same<Result, Type>::value, Result> decorate(Typ
       fcppt::type_iso::detail::decorate<typename transform_type::undecorated_type>(_value));
 }
 
-}
-}
 }
 
 #endif

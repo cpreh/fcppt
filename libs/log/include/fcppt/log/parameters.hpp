@@ -11,9 +11,7 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief The parameters class for an #fcppt::log::object
@@ -36,7 +34,6 @@ private:
   fcppt::log::format::optional_function formatter_;
 };
 
-}
 }
 
 #endif

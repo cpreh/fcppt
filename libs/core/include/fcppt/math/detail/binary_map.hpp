@@ -10,11 +10,7 @@
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Dest, typename Source1, typename Source2, typename Function>
 inline Dest binary_map(Source1 const &_source1, Source2 const &_source2, Function const &_function)
@@ -23,8 +19,6 @@ inline Dest binary_map(Source1 const &_source1, Source2 const &_source2, Functio
       _function, fcppt::math::to_array(_source1), fcppt::math::to_array(_source2)));
 }
 
-}
-}
 }
 
 #endif

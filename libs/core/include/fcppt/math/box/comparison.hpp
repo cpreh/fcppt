@@ -13,11 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Compare two boxes componentwise using <code>value_type</code>'s <code>operator==</code>
@@ -55,8 +51,6 @@ operator<(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, 
   return std::make_pair(_a.pos(), _a.size()) < std::make_pair(_b.pos(), _b.size());
 }
 
-}
-}
 }
 
 #endif

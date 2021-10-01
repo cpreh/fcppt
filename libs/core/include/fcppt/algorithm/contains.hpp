@@ -12,9 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Checks if a given value is inside a range.
@@ -32,7 +30,6 @@ inline bool contains(Range const &_range, T const &_value)
   return ::std::find(fcppt::range::begin(_range), range_end, _value) != range_end;
 }
 
-}
 }
 
 #endif

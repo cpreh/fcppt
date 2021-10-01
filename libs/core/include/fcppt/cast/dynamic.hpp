@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts between references of related types using
@@ -45,7 +43,6 @@ template <
 inline fcppt::optional::reference<Derived> dynamic(Base &_base) noexcept
 {
   return fcppt::cast::detail::dynamic<Derived>(_base);
-}
 }
 }
 

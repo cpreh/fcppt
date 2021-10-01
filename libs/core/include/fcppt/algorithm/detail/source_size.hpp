@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename Source, typename Enable = void>
 struct source_size
@@ -39,8 +35,6 @@ struct source_size<Source, std::enable_if_t<fcppt::mpl::list::is_object<Source>:
   }
 };
 
-}
-}
 }
 
 #endif

@@ -8,9 +8,7 @@
 
 #include <fcppt/iterator/range_impl.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 /**
 \brief Makes an iterator range.
@@ -23,7 +21,6 @@ inline fcppt::iterator::range<Iterator> make_range(Iterator const _begin, Iterat
   return fcppt::iterator::range<Iterator>(_begin, _end);
 }
 
-}
 }
 
 #endif

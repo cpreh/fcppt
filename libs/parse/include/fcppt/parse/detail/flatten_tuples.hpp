@@ -12,11 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename... Types>
 auto flatten_tuples(Types &&..._values)
@@ -24,8 +20,6 @@ auto flatten_tuples(Types &&..._values)
   return fcppt::tuple::concat(fcppt::parse::detail::make_tuple(std::forward<Types>(_values))...);
 }
 
-}
-}
 }
 
 #endif

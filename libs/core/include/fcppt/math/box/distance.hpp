@@ -14,11 +14,7 @@
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Calculates the interval distance between all box dimensions
@@ -37,8 +33,6 @@ distance(fcppt::math::box::object<T, N> const &_box1, fcppt::math::box::object<T
       });
 }
 
-}
-}
 }
 
 #endif

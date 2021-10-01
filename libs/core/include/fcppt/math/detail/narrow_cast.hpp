@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename T, typename U>
 inline T narrow_cast(U const &_other)
@@ -37,8 +33,6 @@ inline T narrow_cast(U const &_other)
       { return fcppt::math::detail::checked_access<Index>(_other); });
 }
 
-}
-}
 }
 
 #endif

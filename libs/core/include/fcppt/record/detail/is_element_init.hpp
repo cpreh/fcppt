@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Type>
 struct is_element_init : std::false_type
@@ -27,8 +23,6 @@ struct is_element_init<fcppt::record::element_init<Tag, Type>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

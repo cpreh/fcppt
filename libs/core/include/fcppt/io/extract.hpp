@@ -12,9 +12,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Reads a value from a stream, returning an optional.
@@ -32,7 +30,6 @@ inline fcppt::optional::object<Type> extract(std::basic_istream<Ch, Traits> &_st
   return fcppt::io::detail::extract<Type>(_stream);
 }
 
-}
 }
 
 #endif

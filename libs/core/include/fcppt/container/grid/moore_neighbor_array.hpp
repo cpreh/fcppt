@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \ingroup fcpptcontainergrid
@@ -29,8 +25,6 @@ using moore_neighbor_array = fcppt::array::object<
     8 // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
     >;
 
-}
-}
 }
 
 #endif

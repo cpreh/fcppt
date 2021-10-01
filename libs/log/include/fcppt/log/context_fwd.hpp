@@ -6,13 +6,10 @@
 #ifndef FCPPT_LOG_CONTEXT_FWD_HPP_INCLUDED
 #define FCPPT_LOG_CONTEXT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 class context;
 
-}
 }
 
 #endif

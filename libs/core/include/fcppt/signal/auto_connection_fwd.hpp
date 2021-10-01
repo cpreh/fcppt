@@ -10,9 +10,7 @@
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/signal/connection_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 /**
 \brief A unique pointer to a connection
@@ -20,7 +18,6 @@ namespace signal
 */
 using auto_connection = fcppt::unique_ptr<fcppt::signal::connection>;
 
-}
 }
 
 #endif

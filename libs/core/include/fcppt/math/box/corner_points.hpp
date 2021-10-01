@@ -22,11 +22,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Returns the 2^N corner points (vertices) of the given box.
@@ -51,8 +47,6 @@ corner_points(fcppt::math::box::object<T, N> const &_box)
       });
 }
 
-}
-}
 }
 
 #endif

@@ -32,9 +32,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Parse a command-line with a help parser.
@@ -90,7 +88,6 @@ fcppt::options::help_result<fcppt::options::result_of<Parser>> parse_help(
       });
 }
 
-}
 }
 
 #endif

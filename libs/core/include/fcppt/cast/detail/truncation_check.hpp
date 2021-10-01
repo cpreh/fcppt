@@ -17,11 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
-{
-namespace detail
+namespace fcppt::cast::detail
 {
 template <typename Dest, typename Source>
 std::enable_if_t<
@@ -91,8 +87,6 @@ std::
   });
 }
 
-}
-}
 }
 
 #endif

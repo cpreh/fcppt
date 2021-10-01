@@ -14,11 +14,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Outputs a box to a basic_ostream
@@ -40,8 +36,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::math::box::object<T, 
                  << _stream.widen(')');
 }
 
-}
-}
 }
 
 #endif

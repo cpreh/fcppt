@@ -8,9 +8,7 @@
 
 #include <fcppt/math/detail/diff.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates the absolute distance between \p a and \p b
@@ -31,7 +29,6 @@ inline T diff(T const &_a, T const &_b)
   return fcppt::math::detail::diff(_a, _b);
 }
 
-}
 }
 
 #endif

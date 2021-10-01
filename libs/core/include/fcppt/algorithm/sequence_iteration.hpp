@@ -8,9 +8,7 @@
 
 #include <fcppt/algorithm/update_action.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Iterates over a sequence with the possibility of erasing elements.
@@ -44,7 +42,6 @@ void sequence_iteration(Sequence &_sequence, UpdateAction const &_update_action)
   }
 }
 
-}
 }
 
 #endif

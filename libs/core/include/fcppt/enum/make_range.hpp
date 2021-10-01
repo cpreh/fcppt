@@ -10,9 +10,7 @@
 #include <fcppt/enum/min_value.hpp>
 #include <fcppt/enum/range_impl.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Creates an enum range over the whole enum
@@ -28,7 +26,6 @@ inline fcppt::enum_::range<Enum> make_range() noexcept
   return fcppt::enum_::make_range_start(fcppt::enum_::min_value<Enum>::value);
 }
 
-}
 }
 
 #endif

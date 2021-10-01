@@ -13,9 +13,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Changes the streambuf of a stream temporarily.
@@ -42,7 +40,6 @@ private:
   streambuf_type *const old_;
 };
 
-}
 }
 
 #endif

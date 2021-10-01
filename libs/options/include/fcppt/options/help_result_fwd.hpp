@@ -10,9 +10,7 @@
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The result of invoking a regular parser and a help parser.
@@ -25,7 +23,6 @@ template <typename Result>
 using help_result =
     fcppt::variant::object<fcppt::options::result<Result>, fcppt::options::help_text>;
 
-}
 }
 
 #endif

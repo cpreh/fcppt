@@ -13,9 +13,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The result type of a repetition parser.
@@ -32,7 +30,6 @@ using repetition_result = std::conditional_t<
     std::basic_string<Type>,
     std::vector<Type>>;
 
-}
 }
 
 #endif

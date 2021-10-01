@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates two to the power of n
@@ -34,7 +32,6 @@ inline constexpr Result power_of_2(Exponent const _exponent)
   return static_cast<Result>(fcppt::literal<Result>(1) << _exponent);
 }
 
-}
 }
 
 #endif

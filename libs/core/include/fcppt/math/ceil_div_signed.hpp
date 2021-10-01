@@ -17,9 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates dividend / divisor rounded towards infinity.
@@ -49,7 +47,6 @@ fcppt::optional::object<T> ceil_div_signed(T const &_dividend, T const &_divisor
                    });
 }
 
-}
 }
 
 #endif

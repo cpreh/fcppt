@@ -6,9 +6,7 @@
 #ifndef FCPPT_CAST_TO_VOID_HPP_INCLUDED
 #define FCPPT_CAST_TO_VOID_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Casts an expression to void
@@ -29,7 +27,6 @@ inline void to_void(Type const &_value) noexcept
   static_cast<void>(_value);
 }
 
-}
 }
 
 #endif

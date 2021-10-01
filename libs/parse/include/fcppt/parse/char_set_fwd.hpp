@@ -8,16 +8,13 @@
 
 #include <fcppt/parse/basic_char_set_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \ingroup fcpptparse
 */
 using char_set = fcppt::parse::basic_char_set<char>;
 
-}
 }
 
 #endif

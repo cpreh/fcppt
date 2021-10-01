@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Extracts the label of an element
@@ -26,7 +24,6 @@ template <typename Element>
 using element_to_type =
     typename fcppt::record::detail::element_to_type<std::remove_cv_t<Element>>::type;
 
-}
 }
 
 #endif

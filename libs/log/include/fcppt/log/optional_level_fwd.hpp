@@ -9,9 +9,7 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief An optional level
@@ -20,7 +18,6 @@ namespace log
 */
 using optional_level = fcppt::optional::object<fcppt::log::level>;
 
-}
 }
 
 #endif

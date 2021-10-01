@@ -15,11 +15,7 @@
 #include <fcppt/math/dim/to_vector.hpp>
 #include <fcppt/math/vector/null.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A range over all positions
@@ -38,8 +34,6 @@ make_pos_range(fcppt::container::grid::dim<SizeType, Size> const _size)
       fcppt::container::grid::sup<SizeType, Size>(fcppt::math::dim::to_vector(_size)));
 }
 
-}
-}
 }
 
 #endif

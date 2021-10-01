@@ -14,9 +14,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Outputs a position to a stream.
@@ -29,7 +27,6 @@ operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::position<Ch> const &_p
   return _stream << _pos.pos() << FCPPT_STRING_LITERAL(Ch, ", ") << _pos.location();
 }
 
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace bit
+namespace fcppt::bit
 {
 /**
 \brief A bit mask
@@ -34,7 +32,6 @@ private:
   Type value_;
 };
 
-}
 }
 
 #endif

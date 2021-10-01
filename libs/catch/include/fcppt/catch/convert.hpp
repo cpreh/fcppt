@@ -11,9 +11,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace catch_
+namespace fcppt::catch_
 {
 /**
 \brief Calls Catch's StringMaker
@@ -26,7 +24,6 @@ std::string convert(Type const &_value)
   return Catch::StringMaker<Type>::convert(_value);
 }
 
-}
 }
 
 #endif

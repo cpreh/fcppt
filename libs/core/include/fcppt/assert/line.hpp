@@ -9,13 +9,10 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 
-namespace fcppt
-{
-namespace assert_
+namespace fcppt::assert_
 {
 FCPPT_MAKE_STRONG_TYPEDEF(int, line);
 
-}
 }
 
 #endif

@@ -17,11 +17,7 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Negates a dim.
@@ -136,8 +132,6 @@ operator/(fcppt::math::dim::object<L, N, S> const &_left, R const &_right)
       _left, [&_right](L const &_left_elem) { return fcppt::math::div(_left_elem, _right); }));
 }
 
-}
-}
 }
 
 #endif

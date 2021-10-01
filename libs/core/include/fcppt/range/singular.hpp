@@ -11,9 +11,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace range
+namespace fcppt::range
 {
 /**
 \brief Tests if a range consists of a single element.
@@ -28,7 +26,6 @@ bool singular(Range const &_range)
          std::next(_range.begin()) == _range.end();
 }
 
-}
 }
 
 #endif

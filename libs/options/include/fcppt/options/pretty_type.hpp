@@ -9,9 +9,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/pretty_type_impl.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Returns a pretty type used for help texts.
@@ -29,7 +27,6 @@ inline fcppt::string pretty_type()
   return fcppt::options::pretty_type_impl<Type>::get();
 }
 
-}
 }
 
 #endif

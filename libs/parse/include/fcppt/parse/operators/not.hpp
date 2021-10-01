@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::not_ parser.
@@ -30,7 +28,6 @@ fcppt::parse::not_<std::remove_cvref_t<Parser>> operator!(Parser &&_parser)
       std::forward<Parser>(_parser)};
 }
 
-}
 }
 
 #endif

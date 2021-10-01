@@ -12,11 +12,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Sequence for a vector.
@@ -32,8 +28,6 @@ sequence(fcppt::math::vector::object<fcppt::optional::object<T>, N, S> const &_v
   return fcppt::math::detail::sequence<fcppt::math::vector::static_<T, N>>(_value);
 }
 
-}
-}
 }
 
 #endif

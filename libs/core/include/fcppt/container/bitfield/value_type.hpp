@@ -6,11 +6,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_VALUE_TYPE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief The type denoting a single bit
@@ -19,8 +15,6 @@ This is currently a boolean, but might be subject to change.
 */
 using value_type = bool;
 
-}
-}
 }
 
 #endif

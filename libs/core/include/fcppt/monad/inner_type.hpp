@@ -8,9 +8,7 @@
 
 #include <fcppt/monad/instance_fwd.hpp>
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Extracts the type a monadic constructor was used with.
@@ -23,7 +21,6 @@ Becaused C++ lacks type inference, we need a special function to get
 template <typename Type>
 using inner_type = typename fcppt::monad::instance<Type>::template inner_type<Type>::type;
 
-}
 }
 
 #endif

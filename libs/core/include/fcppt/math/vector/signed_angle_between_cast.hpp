@@ -16,11 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculates the signed angle between two arbitrary 2D vector types.
@@ -51,8 +47,6 @@ fcppt::optional::object<Dest> signed_angle_between_cast(
       fcppt::math::vector::structure_cast<intermediate_type, fcppt::cast::int_to_float_fun>(_to));
 }
 
-}
-}
 }
 
 #endif

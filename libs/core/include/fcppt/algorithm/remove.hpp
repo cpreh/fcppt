@@ -8,9 +8,7 @@
 
 #include <fcppt/algorithm/remove_if.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Removes all occurrences of a value from a container
@@ -30,7 +28,6 @@ inline bool remove(Container &_container, typename Container::const_reference _e
       [_element](typename Container::const_reference _ref) { return _element == _ref; });
 }
 
-}
 }
 
 #endif

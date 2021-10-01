@@ -19,11 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /*
 \ingroup fcpptmathmatrix
@@ -61,8 +57,6 @@ sqrt(fcppt::math::matrix::object<T, N, N, S> const &_matrix, T const _epsilon)
   }
 
   return X;
-}
-}
 }
 }
 

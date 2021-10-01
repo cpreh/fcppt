@@ -12,9 +12,7 @@
 #include <fcppt/parse/detail/alternative_result.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The result type of an alternative parser.
@@ -40,7 +38,6 @@ using alternative_result =
     fcppt::parse::detail::alternative_result<fcppt::mpl::list::unique<fcppt::mpl::list::append<
         fcppt::parse::detail::alternative_list<Left>,
         fcppt::parse::detail::alternative_list<Right>>>>;
-}
 }
 
 #endif

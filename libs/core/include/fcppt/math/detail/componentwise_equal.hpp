@@ -18,11 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Range1, typename Range2, typename T>
 inline bool componentwise_equal(Range1 const &_r1, Range2 const &_r2, T const &_epsilon)
@@ -47,8 +43,6 @@ inline bool componentwise_equal(Range1 const &_r1, Range2 const &_r2, T const &_
       });
 }
 
-}
-}
 }
 
 #endif

@@ -6,16 +6,10 @@
 #ifndef FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_FWD_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 class temporary_output;
 
-}
-}
 }
 
 #endif

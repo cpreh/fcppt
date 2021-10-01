@@ -9,11 +9,7 @@
 #include <fcppt/math/matrix/static_fwd.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief The static type of a matrix
@@ -26,8 +22,6 @@ using to_static = fcppt::math::matrix::static_<
     Matrix::static_rows::value,
     Matrix::static_columns::value>;
 
-}
-}
 }
 
 #endif

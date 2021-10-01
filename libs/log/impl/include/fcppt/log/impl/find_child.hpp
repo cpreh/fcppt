@@ -11,17 +11,11 @@
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/impl/optional_context_tree_ref.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace impl
+namespace fcppt::log::impl
 {
 fcppt::log::impl::optional_context_tree_ref
 find_child(fcppt::reference<fcppt::log::detail::context_tree>, fcppt::log::name const &);
 
-}
-}
 }
 
 #endif

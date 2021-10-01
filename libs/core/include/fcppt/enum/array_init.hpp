@@ -14,9 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Constructs an array by calling a function with static enumerators.
@@ -47,7 +45,6 @@ inline Array array_init(Function const &_function)
                              fcppt::cast::int_to_enum_fun,
                              std::integral_constant<std::size_t, Index>>{});
           })};
-}
 }
 }
 

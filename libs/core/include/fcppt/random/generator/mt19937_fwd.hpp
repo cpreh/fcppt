@@ -11,16 +11,10 @@
 #include <random>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace generator
+namespace fcppt::random::generator
 {
 using mt19937 = fcppt::random::generator::basic_pseudo<std::mt19937>;
 
-}
-}
 }
 
 #endif

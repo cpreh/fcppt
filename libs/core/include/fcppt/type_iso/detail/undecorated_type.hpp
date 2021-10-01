@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_iso
-{
-namespace detail
+namespace fcppt::type_iso::detail
 {
 template <typename Type, typename Enable = void>
 struct undecorated_type;
@@ -37,8 +33,6 @@ struct undecorated_type<
 {
 };
 
-}
-}
 }
 
 #endif

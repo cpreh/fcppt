@@ -11,11 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename TargetContainer, typename SourceContainer, typename Function, typename BinOp>
 inline TargetContainer
@@ -29,8 +25,6 @@ map_concat(SourceContainer &&_source, Function const &_function, BinOp const &_b
       });
 }
 
-}
-}
 }
 
 #endif

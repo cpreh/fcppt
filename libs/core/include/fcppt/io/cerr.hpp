@@ -9,9 +9,7 @@
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Returns either std::cerr or std::wcerr, depending on #fcppt::char_type.
@@ -22,7 +20,6 @@ See \ref fcpptstring for a motivation for this.
 FCPPT_DETAIL_SYMBOL
 fcppt::io::ostream &cerr();
 
-}
 }
 
 #endif

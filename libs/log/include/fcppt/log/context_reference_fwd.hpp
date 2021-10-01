@@ -9,13 +9,10 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/log/context_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 using context_reference = fcppt::reference<fcppt::log::context>;
 
-}
 }
 
 #endif

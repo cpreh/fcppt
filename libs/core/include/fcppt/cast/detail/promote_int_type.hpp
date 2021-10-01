@@ -10,11 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
-{
-namespace detail
+namespace fcppt::cast::detail
 {
 template <typename Type>
 struct promote_int_type
@@ -24,8 +20,6 @@ struct promote_int_type
   using type = decltype(+std::declval<Type>());
 };
 
-}
-}
 }
 
 #endif

@@ -9,16 +9,13 @@
 #include <fcppt/type_iso/transform_fwd.hpp>
 #include <fcppt/type_iso/detail/terminal_tag.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 template <typename Type, typename Enable>
 struct transform : fcppt::type_iso::detail::terminal_tag
 {
 };
 
-}
 }
 
 #endif

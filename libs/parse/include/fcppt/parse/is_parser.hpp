@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Checks if a type is a parser.
@@ -23,7 +21,6 @@ A type is a parser if and only if it derives from #fcppt::parse::tag.
 template <typename Type>
 using is_parser = std::is_base_of<fcppt::parse::tag, Type>;
 
-}
 }
 
 #endif

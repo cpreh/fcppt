@@ -10,9 +10,7 @@
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/range_impl.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Creates an enum range with a custom start value
@@ -29,7 +27,6 @@ inline fcppt::enum_::range<Enum> make_range_start(Enum const _start) noexcept
   return fcppt::enum_::make_range_start_end(_start, fcppt::enum_::max_value<Enum>::value);
 }
 
-}
 }
 
 #endif

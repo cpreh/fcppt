@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Checks if a type is a vector type
@@ -35,8 +31,6 @@ struct is_vector<fcppt::math::vector::object<T, N, S>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

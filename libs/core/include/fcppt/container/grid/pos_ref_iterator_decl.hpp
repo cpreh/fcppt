@@ -20,11 +20,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief An iterator over grid references
@@ -72,8 +68,6 @@ private:
   dim size_;
 };
 
-}
-}
 }
 
 #endif

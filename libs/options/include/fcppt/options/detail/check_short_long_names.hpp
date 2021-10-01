@@ -10,18 +10,12 @@
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 void check_short_long_names(
     fcppt::options::optional_short_name const &, fcppt::options::long_name const &);
 
-}
-}
 }
 
 #endif

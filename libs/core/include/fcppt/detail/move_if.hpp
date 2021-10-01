@@ -10,9 +10,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <bool Cond>
 struct move_if;
@@ -37,7 +35,6 @@ struct move_if<true>
   }
 };
 
-}
 }
 
 #endif

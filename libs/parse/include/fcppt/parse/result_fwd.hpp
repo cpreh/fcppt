@@ -9,9 +9,7 @@
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/parse/error_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The result type when parsing streams of \a Ch, producing values of \a Type.
@@ -21,7 +19,6 @@ The result is an #fcppt::either::object of <code>fcppt::parse::error<Ch></code> 
 template <typename Ch, typename Type>
 using result = fcppt::either::object<fcppt::parse::error<Ch>, Type>;
 
-}
 }
 
 #endif

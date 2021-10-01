@@ -11,9 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace range
+namespace fcppt::range
 {
 /**
 \brief Creates a range from a std::pair.
@@ -26,7 +24,6 @@ fcppt::iterator::range<Iterator> from_pair(std::pair<Iterator, Iterator> const &
   return fcppt::iterator::range<Iterator>{_range.first, _range.second};
 }
 
-}
 }
 
 #endif

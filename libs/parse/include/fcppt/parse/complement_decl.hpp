@@ -15,9 +15,7 @@
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/parse/detail/is_char_set.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Builds the complement of a #fcppt::parse::basic_char_set parser.
@@ -47,7 +45,6 @@ private:
   Parser parser_;
 };
 
-}
 }
 
 #endif

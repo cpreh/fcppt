@@ -16,11 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Computes atan2 of a vector.
@@ -56,8 +52,6 @@ inline fcppt::optional::object<T> atan2(fcppt::math::vector::object<T, 2, S> con
       [&_vector] { return std::atan2(_vector.y(), _vector.x()); });
 }
 
-}
-}
 }
 
 #endif

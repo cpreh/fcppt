@@ -15,11 +15,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
-{
-namespace detail
+namespace fcppt::io::detail
 {
 template <typename Type, typename Ch, typename Traits>
 inline fcppt::optional::object<Type>
@@ -29,8 +25,6 @@ extract_impl(std::basic_istream<Ch, Traits> &_stream, fcppt::reference<Type> con
                                     : fcppt::optional::nothing{};
 }
 
-}
-}
 }
 
 #endif

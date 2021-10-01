@@ -6,13 +6,10 @@
 #ifndef FCPPT_ASSERT_INFORMATION_FWD_HPP_INCLUDED
 #define FCPPT_ASSERT_INFORMATION_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace assert_
+namespace fcppt::assert_
 {
 class information;
 
-}
 }
 
 #endif

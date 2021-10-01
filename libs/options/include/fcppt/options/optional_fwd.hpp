@@ -6,14 +6,11 @@
 #ifndef FCPPT_OPTIONS_OPTIONAL_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTIONAL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 template <typename Parser>
 class optional;
 
-}
 }
 
 #endif

@@ -6,14 +6,11 @@
 #ifndef FCPPT_PARSE_FAIL_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_FAIL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Result>
 class fail;
 
-}
 }
 
 #endif

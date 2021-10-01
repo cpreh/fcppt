@@ -6,14 +6,11 @@
 #ifndef FCPPT_OPTIONS_SUB_COMMAND_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_SUB_COMMAND_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 template <typename Tag, typename Parser>
 class sub_command;
 
-}
 }
 
 #endif

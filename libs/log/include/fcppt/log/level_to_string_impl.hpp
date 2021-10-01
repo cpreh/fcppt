@@ -13,9 +13,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 template <>
 struct to_string_impl<fcppt::log::level>
@@ -24,7 +22,6 @@ struct to_string_impl<fcppt::log::level>
   static std::string_view get(fcppt::log::level);
 };
 
-}
 }
 
 #endif

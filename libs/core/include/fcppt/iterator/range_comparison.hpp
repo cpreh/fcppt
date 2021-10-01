@@ -8,9 +8,7 @@
 
 #include <fcppt/iterator/range_impl.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 template <typename Iterator>
 inline bool operator==(
@@ -26,7 +24,6 @@ inline bool operator!=(
   return !(_left == _right);
 }
 
-}
 }
 
 #endif

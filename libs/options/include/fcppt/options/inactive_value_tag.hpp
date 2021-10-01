@@ -6,9 +6,7 @@
 #ifndef FCPPT_OPTIONS_INACTIVE_VALUE_TAG_HPP_INCLUDED
 #define FCPPT_OPTIONS_INACTIVE_VALUE_TAG_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The tag of strong typedefs for inactive values
@@ -19,7 +17,6 @@ struct inactive_value_tag
 {
 };
 
-}
 }
 
 #endif

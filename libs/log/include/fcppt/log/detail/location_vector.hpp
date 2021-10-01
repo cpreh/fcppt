@@ -11,16 +11,10 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 using location_vector = std::vector<fcppt::string>;
 
-}
-}
 }
 
 #endif

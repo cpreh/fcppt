@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/static_storage_fwd.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Typedef helper for static dims
@@ -25,8 +21,6 @@ static dims (and on this class).
 template <typename T, fcppt::math::size_type N>
 using static_ = fcppt::math::dim::object<T, N, fcppt::math::detail::static_storage<T, N>>;
 
-}
-}
 }
 
 #endif

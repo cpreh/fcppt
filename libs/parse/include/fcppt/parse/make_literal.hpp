@@ -8,9 +8,7 @@
 
 #include <fcppt/parse/basic_literal_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::basic_literal parser.
@@ -22,7 +20,6 @@ fcppt::parse::basic_literal<Ch> make_literal(Ch const _ch)
   return fcppt::parse::basic_literal<Ch>{_ch};
 }
 
-}
 }
 
 #endif

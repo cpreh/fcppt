@@ -6,14 +6,11 @@
 #ifndef FCPPT_ENUM_ITERATOR_FWD_HPP_INCLUDED
 #define FCPPT_ENUM_ITERATOR_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 template <typename Enum>
 class iterator;
 
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Turns a parser into an optional parser.
@@ -29,7 +27,6 @@ template <typename Parser>
 inline fcppt::options::optional<std::remove_cvref_t<Parser>> make_optional(Parser &&_parser)
 {
   return fcppt::options::optional<std::remove_cvref_t<Parser>>{std::forward<Parser>(_parser)};
-}
 }
 }
 

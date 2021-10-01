@@ -9,11 +9,7 @@
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/enum/make_range.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Initialize a bitfield using a function
@@ -42,8 +38,6 @@ Result init(Function const &_function)
   return result;
 }
 
-}
-}
 }
 
 #endif

@@ -10,9 +10,7 @@
 #include <fcppt/parse/location_equal.hpp>
 #include <fcppt/parse/position_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Compares two positions for equality.
@@ -24,7 +22,6 @@ bool operator==(fcppt::parse::position<Ch> const &_left, fcppt::parse::position<
   return _left.pos() == _right.pos() && _left.location() == _right.location();
 }
 
-}
 }
 
 #endif

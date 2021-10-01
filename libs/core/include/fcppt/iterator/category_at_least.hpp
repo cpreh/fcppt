@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 /**
 \brief Checks if an iterator category includes another.
@@ -31,7 +29,6 @@ the value is true.
 template <typename Category, typename CategoryRef>
 using category_at_least = std::is_base_of<CategoryRef, Category>;
 
-}
 }
 
 #endif

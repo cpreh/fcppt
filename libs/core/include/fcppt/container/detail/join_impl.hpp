@@ -12,11 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace detail
+namespace fcppt::container::detail
 {
 template <typename Container, typename... Args>
 inline Container join_impl(Container const &_first, Args &&..._args)
@@ -32,8 +28,6 @@ join_impl(Container &&_first, Args &&..._args)
       std::forward<Container>(_first), std::forward<Args>(_args)...);
 }
 
-}
-}
 }
 
 #endif

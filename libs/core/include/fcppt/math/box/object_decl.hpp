@@ -13,11 +13,7 @@
 #include <fcppt/math/dim/static_fwd.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief A class representing axis aligned boxes, cubes, hypercubes, ...
@@ -119,8 +115,6 @@ private:
   vector max_;
 };
 
-}
-}
 }
 
 #endif

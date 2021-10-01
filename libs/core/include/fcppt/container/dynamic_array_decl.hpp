@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief An array of dynamic size that does not initialize.
@@ -64,7 +62,6 @@ private:
   size_type size_;
 };
 
-}
 }
 
 #endif

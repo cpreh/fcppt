@@ -7,17 +7,11 @@
 #ifndef FCPPT_SIGNAL_UNREGISTER_BASE_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_BASE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace signal
-{
-namespace unregister
+namespace fcppt::signal::unregister
 {
 template <typename T>
 class base;
 
-}
-}
 }
 
 #endif

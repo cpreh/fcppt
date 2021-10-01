@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/array_equal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Compares two matrices component-wise
@@ -50,8 +46,6 @@ inline bool operator!=(
   return !(_m1 == _m2);
 }
 
-}
-}
 }
 
 #endif

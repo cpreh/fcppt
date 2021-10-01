@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates a success value.
@@ -29,7 +27,6 @@ inline fcppt::options::result<std::remove_cvref_t<Type>> make_success(Type &&_va
   return fcppt::either::make_success<fcppt::options::error>(std::forward<Type>(_value));
 }
 
-}
 }
 
 #endif

@@ -8,9 +8,7 @@
 
 #include <fcppt/detail/main_wchar.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 using args_char =
 #if defined(FCPPT_DETAIL_MAIN_WCHAR)
@@ -20,7 +18,6 @@ using args_char =
 #endif
     ;
 
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Metafunction to compute the maximum value of a type.
@@ -25,7 +23,6 @@ namespace type_traits
 template <typename Type>
 using numeric_max = std::integral_constant<Type, std::numeric_limits<Type>::max()>;
 
-}
 }
 
 #endif

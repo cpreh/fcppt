@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/init_storage.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Result>
 inline Result null_storage()
@@ -23,8 +19,6 @@ inline Result null_storage()
       fcppt::literal<fcppt::type_traits::value_type<Result>>(0));
 }
 
-}
-}
 }
 
 #endif

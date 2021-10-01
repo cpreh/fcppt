@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Do-notation for monads.
@@ -27,7 +25,6 @@ auto do_(Value &&_value, Lambdas const &..._lambdas)
   return fcppt::monad::detail::do_(std::forward<Value>(_value), fcppt::tuple::object<>{}, _lambdas...);
 }
 
-}
 }
 
 #endif

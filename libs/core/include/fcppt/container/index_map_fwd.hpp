@@ -10,14 +10,11 @@
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 template <typename T, typename A = std::allocator<T>>
 class index_map;
 
-}
 }
 
 #endif

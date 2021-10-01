@@ -15,11 +15,7 @@
 #include <atomic>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 class context_tree_node
 {
@@ -46,8 +42,6 @@ private:
   std::atomic<fcppt::log::detail::active_level_int> atomic_level_;
 };
 
-}
-}
 }
 
 #endif

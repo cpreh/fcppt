@@ -8,11 +8,7 @@
 
 #include <fcppt/container/buffer/append_from.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace buffer
+namespace fcppt::container::buffer
 {
 /**
 \brief Reads into a buffer using a function.
@@ -33,8 +29,6 @@ inline Buffer read_from(typename Buffer::size_type const _size, Function const &
   return fcppt::container::buffer::append_from(Buffer{0U}, _size, _function);
 }
 
-}
-}
 }
 
 #endif

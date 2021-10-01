@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Maps over grids
@@ -55,8 +51,6 @@ auto map(Source &&_source, Function const &_function) -> fcppt::container::grid:
       });
 }
 
-}
-}
 }
 
 #endif

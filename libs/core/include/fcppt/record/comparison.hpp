@@ -15,9 +15,7 @@
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/object_impl.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Compares two records for equality
@@ -60,7 +58,6 @@ inline bool operator!=(
   return !(_record1 == _record2);
 }
 
-}
 }
 
 #endif

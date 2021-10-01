@@ -8,11 +8,7 @@
 
 #include <fcppt/record/element_fwd.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Element>
 struct element_to_type;
@@ -23,8 +19,6 @@ struct element_to_type<fcppt::record::element<Label, Type>>
   using type = Type;
 };
 
-}
-}
 }
 
 #endif

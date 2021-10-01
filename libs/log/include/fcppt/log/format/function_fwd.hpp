@@ -9,11 +9,7 @@
 #include <fcppt/function_fwd.hpp>
 #include <fcppt/string.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \brief A formatter function object
@@ -24,8 +20,6 @@ This object gets a string from which it returns a new string
 */
 using function = fcppt::function<fcppt::string(fcppt::string)>;
 
-}
-}
 }
 
 #endif

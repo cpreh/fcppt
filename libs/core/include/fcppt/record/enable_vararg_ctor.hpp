@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Checks if a parameter pack is suitable for record initialization.
@@ -24,7 +22,6 @@ template <typename... Args>
 using enable_vararg_ctor = std::enable_if_t<std::conjunction_v<
     fcppt::record::detail::is_element_init<std::remove_cvref_t<Args>>...>>;
 
-}
 }
 
 #endif

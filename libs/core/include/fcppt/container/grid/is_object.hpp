@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 template <typename Type>
 struct is_object : std::false_type
@@ -28,8 +24,6 @@ struct is_object<fcppt::container::grid::object<T, N, A>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

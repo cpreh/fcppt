@@ -17,9 +17,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Initializes a record using a function
@@ -51,7 +49,6 @@ inline Result init(Function const &_function)
           { return Label{} = _function(fcppt::record::element<Label, Type>{}); }));
 }
 
-}
 }
 
 #endif

@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace intrusive
-{
-namespace detail
+namespace fcppt::intrusive::detail
 {
 template <typename Type>
 using iterator_base = fcppt::iterator::base<fcppt::iterator::types<
@@ -29,8 +25,6 @@ using iterator_base = fcppt::iterator::base<fcppt::iterator::types<
     std::ptrdiff_t,
     std::bidirectional_iterator_tag>>;
 
-}
-}
 }
 
 #endif

@@ -14,11 +14,7 @@
 #include <fcppt/math/matrix/to_static.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Returns the identity matrix;
@@ -38,8 +34,6 @@ fcppt::math::matrix::to_static<Matrix> identity()
       []<fcppt::math::size_type Row, fcppt::math::size_type Col>(
           fcppt::math::matrix::index<Row, Col>)
       { return Row == Col ? fcppt::literal<value_type>(1) : fcppt::literal<value_type>(0); });
-}
-}
 }
 }
 

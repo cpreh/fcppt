@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \ingroup fcpptcontainergrid
@@ -47,8 +43,6 @@ moore_neighbors(fcppt::container::grid::pos<T, N> const _pos)
       pos_type{_pos.x() + 1, _pos.y() + 1}};
 }
 
-}
-}
 }
 
 #endif

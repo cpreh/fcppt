@@ -10,11 +10,7 @@
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculate the square of the vector's length
@@ -35,8 +31,6 @@ inline T length_square(fcppt::math::vector::object<T, N, S> const &_vector)
   return fcppt::math::vector::dot(_vector, _vector);
 }
 
-}
-}
 }
 
 #endif

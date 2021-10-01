@@ -15,11 +15,7 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/to_dim.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The dimension of a grid range
@@ -38,8 +34,6 @@ fcppt::container::grid::dim<SizeType, Size> range_dim(
              : fcppt::math::dim::null<fcppt::container::grid::dim<SizeType, Size>>();
 }
 
-}
-}
 }
 
 #endif

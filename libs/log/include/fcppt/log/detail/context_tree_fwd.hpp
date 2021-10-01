@@ -9,16 +9,10 @@
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 using context_tree = fcppt::container::tree::object<fcppt::log::detail::context_tree_node>;
 
-}
-}
 }
 
 #endif

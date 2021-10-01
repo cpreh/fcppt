@@ -6,9 +6,7 @@
 #ifndef FCPPT_PARSE_TAG_HPP_INCLUDED
 #define FCPPT_PARSE_TAG_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The tag parsers derive from.
@@ -18,7 +16,6 @@ struct tag
 {
 };
 
-}
 }
 
 #endif

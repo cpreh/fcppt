@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/componentwise_equal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Compares two floating point matrices componentwise using an epsilon
@@ -36,8 +32,6 @@ inline bool componentwise_equal(
   return fcppt::math::detail::componentwise_equal(_m1, _m2, _epsilon);
 }
 
-}
-}
 }
 
 #endif

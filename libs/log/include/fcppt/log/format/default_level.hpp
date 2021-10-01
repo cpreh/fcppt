@@ -10,11 +10,7 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \brief Creates a default formatter for a level stream.
@@ -28,8 +24,6 @@ also appends a newline at the end.
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function default_level(fcppt::log::level level);
 
-}
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Iterates through a range with the ability to break out of the loop.
@@ -35,7 +33,6 @@ inline void loop_break(Range &&_range, Body const &_body)
       std::forward<Range>(_range), _body);
 }
 
-}
 }
 
 #endif

@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_iso
-{
-namespace detail
+namespace fcppt::type_iso::detail
 {
 template <typename Type>
 inline std::enable_if_t<fcppt::type_iso::detail::is_terminal<Type>::value, Type>
@@ -35,8 +31,6 @@ undecorate(Type const &_value)
   return fcppt::type_iso::detail::undecorate(fcppt::type_iso::transform<Type>::undecorate(_value));
 }
 
-}
-}
 }
 
 #endif

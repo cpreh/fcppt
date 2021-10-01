@@ -6,9 +6,7 @@
 #ifndef FCPPT_ITERATOR_TYPES_FWD_HPP_INCLUDED
 #define FCPPT_ITERATOR_TYPES_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 template <
     typename Derived,
@@ -18,7 +16,6 @@ template <
     typename IteratorCategory>
 struct types;
 
-}
 }
 
 #endif

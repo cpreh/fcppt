@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename Dest, typename Source>
 inline std::enable_if_t<fcppt::algorithm::detail::optimize_map<Dest, Source>::value, void>
@@ -35,8 +31,6 @@ map_reserve(Dest &, Source const &)
 {
 }
 
-}
-}
 }
 
 #endif

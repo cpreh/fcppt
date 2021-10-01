@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts a type to a similar type of different size
@@ -44,7 +42,6 @@ inline constexpr Dest size(Source const _source) noexcept
   return static_cast<Dest>(_source);
 }
 
-}
 }
 
 #endif

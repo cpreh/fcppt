@@ -8,9 +8,7 @@
 
 #include <fcppt/math/detail/ceil_div_static.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates a division of integral contants rounded towards infinity.
@@ -32,7 +30,6 @@ template <typename Type, Type Dividend, Type Divisor>
 using ceil_div_static =
     typename fcppt::math::detail::ceil_div_static<Type, Dividend, Divisor>::type;
 
-}
 }
 
 #endif

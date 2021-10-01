@@ -10,11 +10,7 @@
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Checks if one bitfield has all the bits of another bitfield set.
@@ -29,8 +25,6 @@ bool is_subset_eq(
   return (_left & _right) == _left;
 }
 
-}
-}
 }
 
 #endif

@@ -13,11 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Creates an #fcppt::parse::skipper::repetition.
@@ -33,8 +29,6 @@ operator*(Parser &&_parser)
       std::forward<Parser>(_parser)};
 }
 
-}
-}
 }
 
 #endif

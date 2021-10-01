@@ -9,11 +9,7 @@
 #include <fcppt/math/box/detail/init.hpp>
 #include <fcppt/math/dim/init.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Initializes a box from pairs of positions and sizes
@@ -37,8 +33,6 @@ inline Box init_dim(Function const &_function)
       _function);
 }
 
-}
-}
 }
 
 #endif

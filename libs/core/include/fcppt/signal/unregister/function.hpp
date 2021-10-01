@@ -9,11 +9,7 @@
 
 #include <fcppt/function.hpp>
 
-namespace fcppt
-{
-namespace signal
-{
-namespace unregister
+namespace fcppt::signal::unregister
 {
 /**
 \brief The unregister function object
@@ -21,8 +17,6 @@ namespace unregister
 */
 using function = fcppt::function<void()>;
 
-}
-}
 }
 
 #endif

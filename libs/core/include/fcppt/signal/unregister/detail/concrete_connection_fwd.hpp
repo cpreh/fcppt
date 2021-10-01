@@ -7,20 +7,11 @@
 #ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace signal
-{
-namespace unregister
-{
-namespace detail
+namespace fcppt::signal::unregister::detail
 {
 template <typename Function>
 class concrete_connection;
 
-}
-}
-}
 }
 
 #endif

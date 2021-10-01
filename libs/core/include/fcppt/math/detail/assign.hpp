@@ -17,11 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Dest, typename Src>
 inline void assign(Dest &_dest, Src const &_src)
@@ -38,8 +34,6 @@ inline void assign(Dest &_dest, Src const &_src)
       });
 }
 
-}
-}
 }
 
 #endif

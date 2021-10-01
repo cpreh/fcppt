@@ -10,15 +10,12 @@
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/types_from.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename ContainerIterator>
 using cyclic_iterator_base = fcppt::iterator::base<
     fcppt::iterator::types_from<fcppt::cyclic_iterator<ContainerIterator>, ContainerIterator>>;
 
-}
 }
 
 #endif

@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 
 /**
@@ -26,7 +24,6 @@ namespace parse
 template <typename Parser>
 using deref_type = std::remove_cvref_t<fcppt::deref_type<Parser const>>;
 
-}
 }
 
 #endif

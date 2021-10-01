@@ -9,9 +9,7 @@
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/istream.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Returns either std::cin or std::wcin, depending on #fcppt::char_type
@@ -22,7 +20,6 @@ See \ref fcpptstring for a motivation for this.
 FCPPT_DETAIL_SYMBOL
 fcppt::io::istream &cin();
 
-}
 }
 
 #endif

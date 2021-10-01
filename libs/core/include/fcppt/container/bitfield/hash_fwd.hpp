@@ -6,17 +6,11 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_HASH_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_HASH_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 template <typename Bitfield>
 struct hash;
 
-}
-}
 }
 
 #endif

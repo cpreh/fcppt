@@ -8,9 +8,7 @@
 
 #include <fcppt/cast/float_to_int.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object of fcppt::cast::float_to_int
@@ -26,7 +24,6 @@ struct float_to_int_fun
   }
 };
 
-}
 }
 
 #endif

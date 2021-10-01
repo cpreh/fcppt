@@ -19,11 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculates the angle between two floating point vectors
@@ -62,8 +58,6 @@ fcppt::optional::object<T> angle_between(
       [](T const _angle) { return std::acos(_angle); });
 }
 
-}
-}
 }
 
 #endif

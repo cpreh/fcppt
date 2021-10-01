@@ -8,9 +8,7 @@
 
 #include <fcppt/record/detail/element_to_label.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Extracts the type of an #fcppt::record::element.
@@ -22,7 +20,6 @@ namespace record
 template <typename Element>
 using element_to_label = typename fcppt::record::detail::element_to_label<Element>::type;
 
-}
 }
 
 #endif

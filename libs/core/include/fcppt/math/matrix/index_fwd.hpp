@@ -8,17 +8,11 @@
 
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 template <fcppt::math::size_type Row, fcppt::math::size_type Column>
 struct index;
 
-}
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <fcppt/parse/grammar_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Base class for grammars.
@@ -64,7 +62,6 @@ private:
   Skipper const skipper_;
 };
 
-}
 }
 
 #endif

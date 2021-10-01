@@ -8,9 +8,7 @@
 
 #include <fcppt/is_strong_typedef.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename StrongTypedef>
 struct strong_typedef_tag
@@ -22,7 +20,6 @@ struct strong_typedef_tag
   using type = typename StrongTypedef::tag_type;
 };
 
-}
 }
 
 #endif

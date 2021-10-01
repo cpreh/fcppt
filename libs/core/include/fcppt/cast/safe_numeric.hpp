@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Safe numeric cast is a safer <code>static_cast</code> that forbids lossy conversions
@@ -53,7 +51,6 @@ constexpr Dest safe_numeric(Source const &_source) noexcept
   return _source;
 }
 
-}
 }
 
 #endif

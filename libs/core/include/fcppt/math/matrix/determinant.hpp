@@ -11,11 +11,7 @@
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/detail/determinant.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates the determinant of a matrix
@@ -34,8 +30,6 @@ inline T determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
   return fcppt::math::matrix::detail::determinant(_matrix);
 }
 
-}
-}
 }
 
 #endif

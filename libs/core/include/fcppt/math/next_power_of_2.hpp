@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates the next power of 2 for an unsigned value.
@@ -55,7 +53,6 @@ T next_power_of_2(T const _value)
   return ret * two;
 }
 
-}
 }
 
 #endif

@@ -8,16 +8,10 @@
 
 #include <fcppt/record/make_label.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_RECORD_MAKE_LABEL(help_label);
 
-}
-}
 }
 
 #endif

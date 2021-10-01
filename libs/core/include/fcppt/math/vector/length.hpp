@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculates the length of a vector
@@ -121,8 +117,6 @@ length(fcppt::math::vector::object<T, N, S> const &_vec)
   return std::sqrt(fcppt::cast::int_to_float<Dest>(fcppt::math::vector::length_square(_vec)));
 }
 
-}
-}
 }
 
 #endif

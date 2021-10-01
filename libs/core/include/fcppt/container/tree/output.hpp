@@ -12,11 +12,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Outputs a tree.
@@ -32,8 +28,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
   return _stream;
 }
 
-}
-}
 }
 
 #endif

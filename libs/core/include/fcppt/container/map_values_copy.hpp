@@ -8,9 +8,7 @@
 
 #include <fcppt/algorithm/map.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Copies the mapped values of an associative container into a container.
@@ -27,7 +25,6 @@ Result map_values_copy(Map const &_map)
   return fcppt::algorithm::map<Result>(_map, [](auto const &_element) { return _element.second; });
 }
 
-}
 }
 
 #endif

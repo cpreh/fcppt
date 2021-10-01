@@ -11,11 +11,7 @@
 #include <fcppt/container/grid/pos_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The start type of a pos range
@@ -26,8 +22,6 @@ template <typename SizeType, fcppt::container::grid::size_type Size>
 using min = fcppt::
     strong_typedef<fcppt::container::grid::pos<SizeType, Size>, fcppt::container::grid::min_tag>;
 
-}
-}
 }
 
 #endif

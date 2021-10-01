@@ -9,11 +9,7 @@
 #include <fcppt/container/grid/spiral_range_impl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 template <typename Pos>
 inline fcppt::container::grid::spiral_range<Pos>
@@ -22,8 +18,6 @@ make_spiral_range(Pos const _start, fcppt::type_traits::value_type<Pos> const _m
   return fcppt::container::grid::spiral_range<Pos>(_start, _max_dist);
 }
 
-}
-}
 }
 
 #endif

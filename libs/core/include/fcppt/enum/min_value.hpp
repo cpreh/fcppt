@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief The minimum enumerator in an enum
@@ -26,7 +24,6 @@ namespace enum_
 template <typename Type, typename = std::enable_if_t<fcppt::enum_::is_object<Type>::value>>
 using min_value = std::integral_constant<Type, fcppt::cast::int_to_enum<Type>(0)>;
 
-}
 }
 
 #endif

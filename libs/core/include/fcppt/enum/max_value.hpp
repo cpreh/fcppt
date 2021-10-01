@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief The maximum enumerator in an enum
@@ -32,7 +30,6 @@ enumerator in an enum in C++.
 template <typename Type, typename = std::enable_if_t<fcppt::enum_::is_object<Type>::value>>
 using max_value = std::integral_constant<Type, Type::fcppt_maximum>;
 
-}
 }
 
 #endif

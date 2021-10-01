@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses unsigned integers.
@@ -45,7 +43,6 @@ public:
   parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const;
 };
 
-}
 }
 
 #endif

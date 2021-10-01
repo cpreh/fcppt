@@ -15,11 +15,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/detail/deleted_index.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Deletes a specific row and rolumn (a cross) from the matrix
@@ -53,8 +49,6 @@ delete_row_and_column(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
       });
 }
 
-}
-}
 }
 
 #endif

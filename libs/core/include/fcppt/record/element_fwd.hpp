@@ -6,14 +6,11 @@
 #ifndef FCPPT_RECORD_ELEMENT_FWD_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 template <typename Label, typename Type>
 struct element;
 
-}
 }
 
 #endif

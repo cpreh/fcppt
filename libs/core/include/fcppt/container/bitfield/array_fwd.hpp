@@ -14,11 +14,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Meta function to retrieve the internal storage type used by
@@ -37,8 +33,6 @@ using array = fcppt::array::object<
         fcppt::cast::size<std::size_t>(NumElements::value),
         fcppt::container::bitfield::detail::element_bits<std::size_t, InternalType>::value>::value>;
 
-}
-}
 }
 
 #endif

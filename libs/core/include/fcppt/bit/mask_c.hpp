@@ -8,9 +8,7 @@
 
 #include <fcppt/bit/mask.hpp>
 
-namespace fcppt
-{
-namespace bit
+namespace fcppt::bit
 {
 /**
 \brief A bit mask from an integral constant
@@ -23,7 +21,6 @@ constexpr inline fcppt::bit::mask<Type> mask_c() noexcept
   return fcppt::bit::mask<Type>(Mask);
 }
 
-}
 }
 
 #endif

@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Opens a file, returning an optional.
@@ -39,7 +37,6 @@ open(std::filesystem::path const &_path, std::ios_base::openmode const _openmode
   return fcppt::optional::make_if(result.is_open(), [&result] { return std::move(result); });
 }
 
-}
 }
 
 #endif

@@ -6,17 +6,11 @@
 #ifndef FCPPT_OPTIONS_DETAIL_CONCRETE_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_CONCRETE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Result, typename Parser>
 class concrete;
 
-}
-}
 }
 
 #endif

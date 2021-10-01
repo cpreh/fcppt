@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Type, Type Dividend, Type Divisor>
 struct ceil_div_static
@@ -27,8 +23,6 @@ struct ceil_div_static
   using type = std::integral_constant<Type, Dividend / Divisor + (Dividend % Divisor ? 1U : 0U)>;
 };
 
-}
-}
 }
 
 #endif

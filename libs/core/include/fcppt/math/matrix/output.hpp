@@ -14,11 +14,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Outputs the matrix to a <code>basic_ostream</code>
@@ -51,8 +47,6 @@ inline std::basic_ostream<Ch, Traits> &operator<<(
   return fcppt::math::detail::one_dimensional_output(_stream, _matrix);
 }
 
-}
-}
 }
 
 #endif

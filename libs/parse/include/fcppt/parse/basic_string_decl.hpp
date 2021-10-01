@@ -17,9 +17,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses a specific string and returns nothing.
@@ -47,7 +45,6 @@ private:
   std::basic_string<Ch> string_;
 };
 
-}
 }
 
 #endif

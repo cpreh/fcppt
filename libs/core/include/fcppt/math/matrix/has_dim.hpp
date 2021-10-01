@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Metafunction to check if a static matrix has the specified dimensions
@@ -47,8 +43,6 @@ struct has_dim<fcppt::math::matrix::object<T, R, C, S>, DR, DC>
 {
 };
 
-}
-}
 }
 
 #endif

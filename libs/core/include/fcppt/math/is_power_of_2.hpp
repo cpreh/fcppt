@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Checks if a number is a power of two
@@ -30,7 +28,6 @@ inline constexpr bool is_power_of_2(T const x) noexcept
   return x && !(x & (x - 1));
 }
 
-}
 }
 
 #endif

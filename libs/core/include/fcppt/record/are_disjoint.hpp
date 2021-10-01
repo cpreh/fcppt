@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Tests if two records have disjoint label sets
@@ -28,7 +26,6 @@ using are_disjoint = std::is_same<
         intersection<fcppt::record::label_set<RecordL>, fcppt::record::label_set<RecordR>>,
     fcppt::mpl::set::object<>>;
 
-}
 }
 
 #endif

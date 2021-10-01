@@ -12,11 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Function>
 inline fcppt::options::missing_error combine_errors_impl(
@@ -58,8 +54,6 @@ inline fcppt::options::other_error combine_errors_impl(
   return fcppt::options::other_error{_function(std::move(_error1.get()), std::move(_error2.get()))};
 }
 
-}
-}
 }
 
 #endif

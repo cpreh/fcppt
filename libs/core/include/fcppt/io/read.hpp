@@ -18,9 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Reads an object of arithmetic type from a stream
@@ -56,7 +54,6 @@ fcppt::optional::object<Type> read(std::istream &_stream, std::endian const _for
              : result_type();
 }
 
-}
 }
 
 #endif

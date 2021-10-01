@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::lexeme parser.
@@ -27,7 +25,6 @@ fcppt::parse::lexeme<std::remove_cvref_t<Parser>> make_lexeme(Parser &&_parser)
       std::forward<Parser>(_parser)};
 }
 
-}
 }
 
 #endif

@@ -13,9 +13,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Clamps a value into a range.
@@ -28,7 +26,6 @@ fcppt::optional::object<T> clamp(T const &_value, T const &_vmin, T const &_vmax
   return fcppt::optional::make_if(
       _vmin <= _vmax,
       [&_value, &_vmin, &_vmax] { return std::max(std::min(_value, _vmax), _vmin); });
-}
 }
 }
 

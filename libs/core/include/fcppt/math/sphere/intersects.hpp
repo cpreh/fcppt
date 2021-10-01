@@ -12,11 +12,7 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace sphere
+namespace fcppt::math::sphere
 {
 /**
 \brief Checks if two spheres intersect
@@ -30,8 +26,6 @@ bool intersects(
   return fcppt::math::vector::length(_a.origin() - _b.origin()) < _a.radius() + _b.radius();
 }
 
-}
-}
 }
 
 #endif

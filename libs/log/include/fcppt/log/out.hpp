@@ -10,9 +10,7 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief Trampoline to create logger output
@@ -24,7 +22,6 @@ Use this object to output to a log stream.
 FCPPT_LOG_DETAIL_SYMBOL
 extern fcppt::log::detail::output_helper const out;
 
-}
 }
 
 #endif

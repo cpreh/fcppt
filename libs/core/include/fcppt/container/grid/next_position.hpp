@@ -17,11 +17,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Returns the next position in a grid range
@@ -60,8 +56,6 @@ fcppt::container::grid::pos<SizeType, Size> next_position(
       });
 }
 
-}
-}
 }
 
 #endif

@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Maps over the elements of a matrix.
@@ -38,8 +34,6 @@ map(fcppt::math::matrix::object<T, R, C, S> const &_value, Function const &_func
       fcppt::math::matrix::static_<std::invoke_result_t<Function,T>, R, C>>(_value, _function);
 }
 
-}
-}
 }
 
 #endif

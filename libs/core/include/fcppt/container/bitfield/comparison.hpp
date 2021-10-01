@@ -9,11 +9,7 @@
 #include <fcppt/array/comparison.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Compares two bitfields for equality.
@@ -41,8 +37,6 @@ bool operator!=(
   return !(_left == _right);
 }
 
-}
-}
 }
 
 #endif

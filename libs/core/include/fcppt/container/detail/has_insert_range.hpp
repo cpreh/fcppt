@@ -10,11 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace detail
+namespace fcppt::container::detail
 {
 template <typename Type, typename Test = void>
 struct has_insert_range : std::false_type
@@ -30,8 +26,6 @@ struct has_insert_range<
 {
 };
 
-}
-}
 }
 
 #endif

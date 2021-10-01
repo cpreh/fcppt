@@ -8,11 +8,7 @@
 
 #include <fcppt/container/tree/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Compares the values and recursively the values of the children
@@ -34,8 +30,6 @@ bool operator!=(
   return !(_a == _b);
 }
 
-}
-}
 }
 
 #endif

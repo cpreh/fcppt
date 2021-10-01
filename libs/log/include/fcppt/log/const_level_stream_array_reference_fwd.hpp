@@ -9,13 +9,10 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/log/level_stream_array_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 using const_level_stream_array_reference = fcppt::reference<fcppt::log::level_stream_array const>;
 
-}
 }
 
 #endif

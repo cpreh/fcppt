@@ -6,9 +6,7 @@
 #ifndef FCPPT_CAST_APPLY_HPP_INCLUDED
 #define FCPPT_CAST_APPLY_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Applies a cast to a source
@@ -21,7 +19,6 @@ constexpr decltype(auto) apply(Src &&_src)
   return Fun ::template execute<Res>(_src);
 }
 
-}
 }
 
 #endif

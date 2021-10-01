@@ -12,11 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Parser1>
 inline std::remove_cvref_t<Parser1> apply(Parser1 &&_parser1)
@@ -34,8 +30,6 @@ inline auto apply(Parser1 &&_parser1, Parsers &&..._parsers)
       fcppt::options::detail::apply(std::forward<Parsers>(_parsers)...));
 }
 
-}
-}
 }
 
 #endif

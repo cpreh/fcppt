@@ -9,16 +9,13 @@
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/parse/location_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 [[nodiscard]] inline bool operator==(fcppt::parse::location const &_left, fcppt::parse::location const &_right)
 {
   return _left.line() == _right.line() && _left.column() == _right.column();
 }
 
-}
 }
 
 #endif

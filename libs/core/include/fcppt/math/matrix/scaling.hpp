@@ -11,11 +11,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates a 4x4 scaling matrix
@@ -58,8 +54,6 @@ scaling(fcppt::math::vector::object<T, 3, S> const &_vec)
   return fcppt::math::matrix::scaling(_vec.x(), _vec.y(), _vec.z());
 }
 
-}
-}
 }
 
 #endif

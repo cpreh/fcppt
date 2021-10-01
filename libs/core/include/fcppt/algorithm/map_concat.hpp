@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Maps a range to other sequences and joins them.
@@ -40,7 +38,6 @@ TargetContainer map_concat(Range &&_range, Function const &_function)
       });
 }
 
-}
 }
 
 #endif

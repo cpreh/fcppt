@@ -11,11 +11,7 @@
 #include <fcppt/math/to_array_type.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Result, typename Function>
 inline Result init(Function const &_function)
@@ -25,8 +21,6 @@ inline Result init(Function const &_function)
           fcppt::math::detail::init_function<Function>(_function)));
 }
 
-}
-}
 }
 
 #endif

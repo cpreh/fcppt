@@ -8,13 +8,7 @@
 
 #include <fcppt/container/grid/is_object.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
-{
-namespace detail
+namespace fcppt::container::grid::detail
 {
 template <typename Grid>
 struct pos_type
@@ -24,9 +18,6 @@ struct pos_type
   using type = typename Grid::pos;
 };
 
-}
-}
-}
 }
 
 #endif

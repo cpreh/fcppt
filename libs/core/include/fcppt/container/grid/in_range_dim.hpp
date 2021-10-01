@@ -17,11 +17,7 @@
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Checks if the given position \p _pos is out of bounds.
@@ -40,8 +36,6 @@ inline bool in_range_dim(
       { return fcppt::math::vector::at<Index>(_pos) < fcppt::math::dim::at<Index>(_dim); });
 }
 
-}
-}
 }
 
 #endif

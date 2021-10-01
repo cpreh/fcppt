@@ -12,13 +12,7 @@
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 template <typename T, fcppt::math::size_type C, typename S>
 class row_view
@@ -44,9 +38,6 @@ private:
   size_type offset_;
 };
 
-}
-}
-}
 }
 
 #endif

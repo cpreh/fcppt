@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Returns the underlying value of a bitfield.
@@ -36,8 +32,6 @@ typename fcppt::container::bitfield::object<ElementType, InternalType>::internal
 underlying_value(fcppt::container::bitfield::object<ElementType, InternalType> const &_bitfield)
 {
   return fcppt::array::get<0>(_bitfield.array());
-}
-}
 }
 }
 

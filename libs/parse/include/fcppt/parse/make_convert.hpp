@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::convert parser out of a lambda.
@@ -39,7 +37,6 @@ make_convert(Parser &&_parser, Convert &&_convert)
           std::forward<Convert>(_convert)}};
 }
 
-}
 }
 
 #endif

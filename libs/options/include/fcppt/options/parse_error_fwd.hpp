@@ -10,9 +10,7 @@
 #include <fcppt/options/other_error_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The error type returned by parsers.
@@ -25,7 +23,6 @@ else like a failed conversion.
 using parse_error =
     fcppt::variant::object<fcppt::options::missing_error, fcppt::options::other_error>;
 
-}
 }
 
 #endif

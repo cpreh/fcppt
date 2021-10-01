@@ -12,11 +12,7 @@
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Creates an interval from a box
@@ -30,8 +26,6 @@ inline fcppt::tuple::object<T,T> interval(fcppt::math::box::object<T, N> const &
       fcppt::math::vector::at<Index>(_box.pos()), fcppt::math::vector::at<Index>(_box.max()));
 }
 
-}
-}
 }
 
 #endif

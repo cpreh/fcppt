@@ -23,11 +23,7 @@
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates the infinity norm
@@ -56,8 +52,6 @@ T infinity_norm(fcppt::math::matrix::object<T, R, C, S> const &_matrix)
       });
 }
 
-}
-}
 }
 
 #endif

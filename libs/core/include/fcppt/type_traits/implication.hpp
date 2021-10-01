@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief The implication function: \a Left -> \a Right
@@ -29,7 +27,6 @@ Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
 template <typename Left, typename Right>
 using implication = std::disjunction<std::negation<Left>, Right>;
 
-}
 }
 
 #endif

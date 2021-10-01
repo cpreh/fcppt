@@ -15,11 +15,7 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Test if one box is completely inside another box
@@ -46,8 +42,6 @@ contains(fcppt::math::box::object<T, N> const &_outer, fcppt::math::box::object<
       });
 }
 
-}
-}
 }
 
 #endif

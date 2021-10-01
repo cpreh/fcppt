@@ -9,13 +9,10 @@
 #include <fcppt/char_type.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 using scoped_rdbuf = fcppt::io::basic_scoped_rdbuf<fcppt::char_type>;
 
-}
 }
 
 #endif

@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Pops the back of a container as an optional.
@@ -36,7 +34,6 @@ fcppt::optional::object<fcppt::container::to_value_type<Container>> pop_back(Con
   });
 }
 
-}
 }
 
 #endif

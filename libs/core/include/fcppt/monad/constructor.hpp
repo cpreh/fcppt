@@ -8,9 +8,7 @@
 
 #include <fcppt/monad/instance_fwd.hpp>
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Applies the constructor of a monad.
@@ -25,7 +23,6 @@ result is <code>optional<int></code>.
 template <typename Type, typename Value>
 using constructor = typename fcppt::monad::instance<Type>::template constructor<Value>::type;
 
-}
 }
 
 #endif

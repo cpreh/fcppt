@@ -13,9 +13,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Outputs a location to a stream.
@@ -28,7 +26,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::parse::location const
   return _stream << _loc.line() << FCPPT_CHAR_LITERAL(Ch, ':') << _loc.column();
 }
 
-}
 }
 
 #endif

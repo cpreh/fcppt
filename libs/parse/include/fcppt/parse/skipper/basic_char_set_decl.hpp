@@ -16,11 +16,7 @@
 #include <initializer_list>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Skips all characters from a set.
@@ -45,8 +41,6 @@ private:
   char_set_type chars_;
 };
 
-}
-}
 }
 
 #endif

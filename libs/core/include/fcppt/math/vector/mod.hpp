@@ -16,11 +16,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Calculate vector modulo a scalar
@@ -56,8 +52,6 @@ mod(fcppt::math::vector::object<T, N, S1> const &_v0,
           }));
 }
 
-}
-}
 }
 
 #endif

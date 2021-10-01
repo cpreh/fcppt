@@ -9,11 +9,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/static_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief The type of matrix row
@@ -23,8 +19,6 @@ namespace matrix
 template <typename T, fcppt::math::size_type C>
 using row_type = fcppt::math::vector::static_<T, C>;
 
-}
-}
 }
 
 #endif

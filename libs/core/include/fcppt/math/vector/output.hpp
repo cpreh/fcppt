@@ -13,11 +13,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Outputs a vector to a stream
@@ -34,8 +30,6 @@ inline std::basic_ostream<Ch, Traits> &operator<<(
   return fcppt::math::detail::one_dimensional_output(_stream, _vector);
 }
 
-}
-}
 }
 
 #endif

@@ -11,11 +11,7 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Returns the null dim
@@ -33,8 +29,6 @@ fcppt::math::dim::static_<fcppt::type_traits::value_type<Dim>, Dim::static_size:
   return result_type(fcppt::math::detail::null_storage<typename result_type::storage_type>());
 }
 
-}
-}
 }
 
 #endif

@@ -6,14 +6,11 @@
 #ifndef FCPPT_EITHER_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_EITHER_OBJECT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace either
+namespace fcppt::either
 {
 template <typename Failure, typename Success>
 class object;
 
-}
 }
 
 #endif

@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Maps over two dims.
@@ -41,8 +37,6 @@ inline fcppt::math::dim::static_<std::invoke_result_t<Function, T1, T2>, N> bina
       fcppt::math::dim::static_<std::invoke_result_t<Function, T1, T2>, N>>(_left, _right, _function);
 }
 
-}
-}
 }
 
 #endif

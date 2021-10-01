@@ -16,11 +16,7 @@
 #include <fcppt/math/detail/storage_size.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Returns the area/volume of the dimension
@@ -40,8 +36,6 @@ T contents(fcppt::math::dim::object<T, N, S> const &_dim)
       { return _value * fcppt::math::detail::linear_access<Index>(_dim.storage()); });
 }
 
-}
-}
 }
 
 #endif

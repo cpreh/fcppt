@@ -11,9 +11,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/mpl/list/interval.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief A static int range
@@ -23,7 +21,6 @@ namespace math
 template <fcppt::math::size_type Start, fcppt::math::size_type End>
 using int_range =
     fcppt::mpl::list::interval<fcppt::math::size_constant<Start>, fcppt::math::size_constant<End>>;
-}
 }
 
 #endif

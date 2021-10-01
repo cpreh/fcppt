@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Transforms a range to another container by applying a function to
@@ -50,7 +48,6 @@ TargetContainer map_optional(Source &&_source, Function const &_function)
   return result;
 }
 
-}
 }
 
 #endif

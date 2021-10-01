@@ -13,9 +13,7 @@
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/record/detail/map_result.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief The result of mapping a record.
@@ -30,7 +28,6 @@ using map_result = fcppt::record::map_elements<
         fcppt::mpl::constant<Function>,
         fcppt::mpl::arg<1>>>;
 
-}
 }
 
 #endif

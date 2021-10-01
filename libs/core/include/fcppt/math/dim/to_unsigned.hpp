@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Converts a dim into a corresponding unsigned dim
@@ -35,8 +31,6 @@ to_unsigned(fcppt::math::dim::object<T, N, S> const &_src)
       fcppt::cast::to_unsigned_fun>(_src);
 }
 
-}
-}
 }
 
 #endif

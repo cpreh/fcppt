@@ -8,17 +8,11 @@
 
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 template <typename SizeType, fcppt::container::grid::size_type>
 class pos_range;
 
-}
-}
 }
 
 #endif

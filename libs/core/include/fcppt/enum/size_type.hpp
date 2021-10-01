@@ -8,9 +8,7 @@
 
 #include <fcppt/enum/size_type_impl.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief The size type used to count the number of enumerators in an enum
@@ -24,7 +22,6 @@ The size type used to count the number of enumerators in \a Type.
 template <typename Type>
 using size_type = typename fcppt::enum_::size_type_impl<Type>::type;
 
-}
 }
 
 #endif

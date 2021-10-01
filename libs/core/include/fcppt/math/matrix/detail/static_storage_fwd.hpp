@@ -9,20 +9,11 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-namespace detail
+namespace fcppt::math::matrix::detail
 {
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C>
 using static_storage = fcppt::math::detail::static_storage<T, R * C>;
 
-}
-}
-}
 }
 
 #endif

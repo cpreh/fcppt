@@ -13,11 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Result, typename Arg>
 std::enable_if_t<std::negation_v<fcppt::variant::is_object<Result>>, Result>
@@ -52,8 +48,6 @@ make_alternative(Arg &&_arg)
       std::forward<Arg>(_arg));
 }
 
-}
-}
 }
 
 #endif

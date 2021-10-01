@@ -15,11 +15,7 @@
 #include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief An iterator over grid position
@@ -66,8 +62,6 @@ private:
   sup sup_;
 };
 
-}
-}
 }
 
 #endif

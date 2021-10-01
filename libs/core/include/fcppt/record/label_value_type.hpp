@@ -10,9 +10,7 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/detail/find_element.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Metafunction that computes the value type of a label inside a record
@@ -25,7 +23,6 @@ template <typename Record, typename Label>
 using label_value_type = fcppt::record::element_to_type<
     fcppt::record::detail::find_element<fcppt::record::element_vector<Record>, Label>>;
 
-}
 }
 
 #endif

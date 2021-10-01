@@ -13,11 +13,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Normalizes a vector.
@@ -35,8 +31,6 @@ normalize(fcppt::math::vector::object<T, N, S> const &_vec)
   return _vec / fcppt::math::vector::length(_vec);
 }
 
-}
-}
 }
 
 #endif

@@ -8,9 +8,7 @@
 
 #include <fcppt/cast/int_to_enum.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object of fcppt::cast::int_to_enum
@@ -26,7 +24,6 @@ struct int_to_enum_fun
   }
 };
 
-}
 }
 
 #endif

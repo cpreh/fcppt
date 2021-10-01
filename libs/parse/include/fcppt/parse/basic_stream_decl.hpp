@@ -11,9 +11,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/position_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The stream class used while parsing.
@@ -65,7 +63,6 @@ public:
   virtual void set_position(fcppt::parse::position<Ch> const &) = 0;
 };
 
-}
 }
 
 #endif

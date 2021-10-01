@@ -10,17 +10,11 @@
 #include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace impl
+namespace fcppt::log::impl
 {
 fcppt::reference<fcppt::log::detail::context_tree>
 find_or_create_child(fcppt::reference<fcppt::log::detail::context_tree>, fcppt::log::name const &);
 
-}
-}
 }
 
 #endif

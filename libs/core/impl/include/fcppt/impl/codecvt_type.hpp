@@ -10,13 +10,10 @@
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace impl
+namespace fcppt::impl
 {
 using codecvt_type = std::codecvt<wchar_t, char, std::mbstate_t>;
 
-}
 }
 
 #endif

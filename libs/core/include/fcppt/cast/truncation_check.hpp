@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Cast between integral types, checking for truncation
@@ -36,7 +34,6 @@ template <
 fcppt::optional::object<Dest> truncation_check(Source const _source)
 {
   return fcppt::cast::detail::truncation_check<Dest>(_source);
-}
 }
 }
 

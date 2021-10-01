@@ -10,9 +10,7 @@
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A parse state.
@@ -37,7 +35,6 @@ private:
   fcppt::args_vector args_;
 };
 
-}
 }
 
 #endif

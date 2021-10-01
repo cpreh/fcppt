@@ -8,9 +8,7 @@
 
 #include <fcppt/cast/promote_int_type.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Promotes an integral type to int or unsigned int.
@@ -25,7 +23,6 @@ inline constexpr fcppt::cast::promote_int_type<Type> promote_int(Type const &_va
   return static_cast<fcppt::cast::promote_int_type<Type>>(_value);
 }
 
-}
 }
 
 #endif

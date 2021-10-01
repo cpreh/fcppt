@@ -11,9 +11,7 @@
 #include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Optional size.
@@ -22,7 +20,6 @@ namespace filesystem
 */
 using optional_size = fcppt::optional::object<std::uintmax_t>;
 
-}
 }
 
 #endif

@@ -20,7 +20,7 @@ fcppt::string fcppt::options::indent(fcppt::string &&_value)
       fcppt::algorithm::map<std::vector<fcppt::string>>(
           fcppt::algorithm::split_string(_value, FCPPT_TEXT('\n')),
           [](fcppt::string &&_element) {
-            return fcppt::string(2u, FCPPT_TEXT(' ')) + std::move(_element);
+            return fcppt::string(2U, FCPPT_TEXT(' ')) + std::move(_element);
           }),
       FCPPT_TEXT("\n"));
 }

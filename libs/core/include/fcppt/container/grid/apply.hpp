@@ -19,11 +19,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Applies a function to multiple grids of the same size
@@ -70,8 +66,6 @@ auto apply(Function const &_function, Grid1 &&_grid1, Grids &&..._grids)
                          fcppt::move_if_rvalue<Grids>(_grids.get_unsafe(_pos))...);
                    })
              : result_type();
-}
-}
 }
 }
 

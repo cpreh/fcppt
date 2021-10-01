@@ -18,9 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parses a <code>std::basic_istream</code>, using whitespace skipping.
@@ -40,7 +38,6 @@ phrase_parse_stream(Parser const &_parser, std::basic_istream<Ch> &_input, Skipp
   return fcppt::parse::phrase_parse(_parser, stream, _skipper);
 }
 
-}
 }
 
 #endif

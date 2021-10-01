@@ -9,9 +9,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/catch/movable_impl.hpp>
 
-namespace fcppt
-{
-namespace catch_
+namespace fcppt::catch_
 {
 template <typename Type>
 bool operator==(
@@ -20,7 +18,6 @@ bool operator==(
   return _left.value() == _right.value();
 }
 
-}
 }
 
 #endif

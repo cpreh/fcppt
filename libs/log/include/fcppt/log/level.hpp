@@ -8,9 +8,7 @@
 
 #include <fcppt/log/level_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief An enumeration for the available log levels.
@@ -76,7 +74,6 @@ enum class level
   fcppt_maximum = fatal
 };
 
-}
 }
 
 #endif

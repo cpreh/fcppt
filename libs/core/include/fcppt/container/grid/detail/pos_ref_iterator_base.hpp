@@ -15,13 +15,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
-{
-namespace detail
+namespace fcppt::container::grid::detail
 {
 template <typename Grid>
 using pos_ref_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
@@ -31,9 +25,6 @@ using pos_ref_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
     typename Grid::difference_type,
     std::input_iterator_tag>>;
 
-}
-}
-}
 }
 
 #endif

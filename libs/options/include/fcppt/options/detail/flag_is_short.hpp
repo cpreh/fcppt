@@ -9,16 +9,10 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_MAKE_STRONG_TYPEDEF(bool, flag_is_short);
 
-}
-}
 }
 
 #endif

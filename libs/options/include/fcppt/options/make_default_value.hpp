@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates a default value
@@ -36,7 +34,6 @@ make_default_value(Type &&_value)
   return fcppt::options::default_value<value_type>{std::forward<Type>(_value)};
 }
 
-}
 }
 
 #endif

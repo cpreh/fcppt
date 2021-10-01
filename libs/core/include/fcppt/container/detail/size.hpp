@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace detail
+namespace fcppt::container::detail
 {
 template <typename Source>
 inline std::enable_if_t<
@@ -35,8 +31,6 @@ inline std::
   return _source.size();
 }
 
-}
-}
 }
 
 #endif

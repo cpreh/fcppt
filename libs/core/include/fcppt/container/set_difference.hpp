@@ -11,9 +11,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns the difference of two sets
@@ -33,7 +31,6 @@ Set set_difference(Set const &_a, Set const &_b)
   return result;
 }
 
-}
 }
 
 #endif

@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Tag, typename Type>
 struct label_is_same;
@@ -27,8 +23,6 @@ struct label_is_same<fcppt::record::label<Tag1>, fcppt::record::element_init<Tag
 {
 };
 
-}
-}
 }
 
 #endif

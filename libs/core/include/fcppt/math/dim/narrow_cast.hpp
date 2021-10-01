@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/narrow_cast.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Shortens a dim to a smaller dimension
@@ -27,8 +23,6 @@ inline Dest narrow_cast(fcppt::math::dim::object<T, N, S> const &_src)
   return fcppt::math::detail::narrow_cast<Dest>(_src);
 }
 
-}
-}
 }
 
 #endif

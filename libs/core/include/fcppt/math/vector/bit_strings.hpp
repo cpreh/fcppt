@@ -19,11 +19,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Generates vectors consisting of zeros and ones
@@ -89,8 +85,6 @@ bit_strings()
   return result;
 }
 
-}
-}
 }
 
 #endif

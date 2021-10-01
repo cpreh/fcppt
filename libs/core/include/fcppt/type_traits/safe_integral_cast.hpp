@@ -8,9 +8,7 @@
 
 #include <fcppt/type_traits/detail/safe_integral_cast.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Casts std::integral_constants and checks for truncation.
@@ -25,7 +23,6 @@ template <typename DestType, typename Src>
 using safe_integral_cast =
     typename fcppt::type_traits::detail::safe_integral_cast<DestType, Src>::type;
 
-}
 }
 
 #endif

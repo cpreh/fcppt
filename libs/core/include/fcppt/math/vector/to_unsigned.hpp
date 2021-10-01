@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Converts a vector into a corresponding unsigned vector
@@ -35,8 +31,6 @@ to_unsigned(fcppt::math::vector::object<T, N, S> const &_src)
       fcppt::cast::to_unsigned_fun>(_src);
 }
 
-}
-}
 }
 
 #endif

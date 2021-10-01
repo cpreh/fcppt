@@ -9,11 +9,7 @@
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The type of a static row (an array).
@@ -23,8 +19,6 @@ namespace grid
 template <typename T, fcppt::container::grid::size_type N>
 using static_row_type = fcppt::array::object<T, N>;
 
-}
-}
 }
 
 #endif

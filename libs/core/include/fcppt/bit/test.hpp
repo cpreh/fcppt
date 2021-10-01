@@ -9,9 +9,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/bit/mask.hpp>
 
-namespace fcppt
-{
-namespace bit
+namespace fcppt::bit
 {
 /**
 \brief Tests a value against a bit mask
@@ -24,7 +22,6 @@ inline bool test(Type const _value, fcppt::bit::mask<Type> const _mask) noexcept
   return (_value & _mask.get()) != fcppt::literal<Type>(0);
 }
 
-}
 }
 
 #endif

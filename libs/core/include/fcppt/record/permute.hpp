@@ -16,9 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Permutes one record into another
@@ -45,7 +43,6 @@ inline Result permute(Arg &&_arg)
       { return fcppt::move_if_rvalue<Arg>(fcppt::record::get<Label>(_arg)); });
 }
 
-}
 }
 
 #endif

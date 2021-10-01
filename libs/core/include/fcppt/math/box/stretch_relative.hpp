@@ -15,11 +15,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/to_dim.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Stretch a box around its center by a given factor
@@ -39,8 +35,6 @@ fcppt::math::box::object<T, N> stretch_relative(
       dim);
 }
 
-}
-}
 }
 
 #endif

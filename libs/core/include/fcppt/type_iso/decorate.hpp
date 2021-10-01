@@ -9,9 +9,7 @@
 #include <fcppt/type_iso/undecorated_type.hpp>
 #include <fcppt/type_iso/detail/decorate.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 /**
 \brief Decorates a value
@@ -26,7 +24,6 @@ inline Result decorate(fcppt::type_iso::undecorated_type<Result> const &_value)
   return fcppt::type_iso::detail::decorate<Result>(_value);
 }
 
-}
 }
 
 #endif

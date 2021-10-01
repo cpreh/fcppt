@@ -9,9 +9,7 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Checks if a given predicate is true for all elements of a range.
@@ -39,7 +37,6 @@ inline bool all_of(Range const &_range, Pred const &_pred)
   return result;
 }
 
-}
 }
 
 #endif

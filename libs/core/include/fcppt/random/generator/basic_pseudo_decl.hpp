@@ -11,11 +11,7 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace generator
+namespace fcppt::random::generator
 {
 /**
 \brief A wrapper around pseudo random number generators
@@ -87,8 +83,6 @@ private:
   wrapped wrapped_;
 };
 
-}
-}
 }
 
 #endif

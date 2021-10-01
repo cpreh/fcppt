@@ -7,14 +7,11 @@
 #ifndef FCPPT_SIGNAL_BASE_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_BASE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 template <typename T>
 class base;
 
-}
 }
 
 #endif

@@ -9,11 +9,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief A static matrix index
@@ -28,8 +24,6 @@ struct index
   static constexpr fcppt::math::size_type column() { return Column; }
 };
 
-}
-}
 }
 
 #endif

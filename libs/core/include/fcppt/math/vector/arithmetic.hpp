@@ -17,11 +17,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Negates a vector.
@@ -141,8 +137,6 @@ operator/(fcppt::math::vector::object<L, N, S> const &_left, R const &_right)
       _left, [&_right](L const &_left_elem) { return fcppt::math::div(_left_elem, _right); }));
 }
 
-}
-}
 }
 
 #endif

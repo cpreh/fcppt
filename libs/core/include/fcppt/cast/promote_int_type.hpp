@@ -8,9 +8,7 @@
 
 #include <fcppt/cast/detail/promote_int_type.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief The promoted type of an integral  type.
@@ -22,7 +20,6 @@ namespace cast
 template <typename Type>
 using promote_int_type = typename fcppt::cast::detail::promote_int_type<Type>::type;
 
-}
 }
 
 #endif

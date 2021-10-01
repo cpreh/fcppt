@@ -14,11 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Creates a matrix row for initialization
@@ -39,8 +35,6 @@ row(Type &&_value, Args &&..._args)
       std::remove_cvref_t<Type>,
       fcppt::cast::size<fcppt::math::size_type>(sizeof...(Args) + 1U)>{
       std::forward<Type>(_value), std::forward<Args>(_args)...};
-}
-}
 }
 }
 

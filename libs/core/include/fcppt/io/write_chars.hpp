@@ -12,9 +12,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 /**
 \brief Writes a number of chars
@@ -28,7 +26,6 @@ Tries to write \a count chars from \a data to \a stream.
 [[nodiscard]] FCPPT_DETAIL_SYMBOL bool
 write_chars(std::ostream &stream, char const *data, std::size_t count);
 
-}
 }
 
 #endif

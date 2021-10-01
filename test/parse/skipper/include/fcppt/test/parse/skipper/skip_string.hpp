@@ -27,13 +27,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
-{
-namespace test
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::test::parse::skipper
 {
 
 template<
@@ -135,9 +129,6 @@ catch(
 }
 
 
-}
-}
-}
 }
 
 #endif

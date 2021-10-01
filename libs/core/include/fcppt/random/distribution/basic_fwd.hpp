@@ -6,17 +6,11 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_BASIC_FWD_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_BASIC_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
+namespace fcppt::random::distribution
 {
 template <typename Parameters>
 class basic;
 
-}
-}
 }
 
 #endif

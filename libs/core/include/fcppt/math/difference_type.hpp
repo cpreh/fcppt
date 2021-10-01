@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief The difference type used for structure sizes
@@ -21,7 +19,6 @@ namespace math
 */
 using difference_type = std::make_signed_t<fcppt::math::size_type>;
 
-}
 }
 
 #endif

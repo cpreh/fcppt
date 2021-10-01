@@ -8,11 +8,7 @@
 
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief An unsigned type used to count grid dimensions
@@ -21,8 +17,6 @@ namespace grid
 */
 using size_type = fcppt::math::size_type;
 
-}
-}
 }
 
 #endif

@@ -6,13 +6,10 @@
 #ifndef FCPPT_FILESYSTEM_RECURSIVE_DIRECTORY_RANGE_FWD_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_RECURSIVE_DIRECTORY_RANGE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 class recursive_directory_range;
 
-}
 }
 
 #endif

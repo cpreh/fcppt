@@ -9,9 +9,7 @@
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/space_set.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The char set parser using <code>fcppt::parse::space_set<char></code>.
@@ -22,7 +20,6 @@ inline fcppt::parse::char_set space()
   return fcppt::parse::char_set{fcppt::parse::space_set<char>()};
 }
 
-}
 }
 
 #endif

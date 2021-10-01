@@ -10,17 +10,11 @@
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace raw_vector
+namespace fcppt::container::raw_vector
 {
 template <typename T, typename A = std::allocator<T>>
 class object;
 
-}
-}
 }
 
 #endif

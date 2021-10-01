@@ -11,11 +11,7 @@
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Returns the n-th basis vector of the canonical basis.
@@ -41,8 +37,6 @@ Vec unit(typename Vec::size_type const _axis)
   });
 }
 
-}
-}
 }
 
 #endif

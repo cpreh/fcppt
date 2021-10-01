@@ -6,13 +6,10 @@
 #ifndef FCPPT_FILESYSTEM_DIRECTORY_RANGE_FWD_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_DIRECTORY_RANGE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 class directory_range;
 
-}
 }
 
 #endif

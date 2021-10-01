@@ -15,9 +15,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Customization point to convert a string to an enum.
@@ -39,7 +37,6 @@ struct from_string_impl
   }
 };
 
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Iterates through a range.
@@ -37,7 +35,6 @@ inline void loop(Range &&_range, Body const &_body)
   });
 }
 
-}
 }
 
 #endif

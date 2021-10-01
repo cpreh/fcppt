@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief A meta function testing if the given type is really a tree object
@@ -35,8 +31,6 @@ struct is_object<fcppt::container::tree::object<T>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

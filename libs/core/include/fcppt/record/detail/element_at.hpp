@@ -10,11 +10,7 @@
 #include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/tuple/get.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Types, typename Label, typename Tuple>
 inline decltype(auto) element_at(Tuple &_elements)
@@ -24,8 +20,6 @@ inline decltype(auto) element_at(Tuple &_elements)
       fcppt::record::detail::find_element_predicate<Label>>::value>(_elements);
 }
 
-}
-}
 }
 
 #endif

@@ -6,13 +6,10 @@
 #ifndef FCPPT_OPTIONAL_NOTHING_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_NOTHING_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace optional
+namespace fcppt::optional
 {
 struct nothing;
 
-}
 }
 
 #endif

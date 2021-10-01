@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Tests if a type is an #fcppt::record::object.
@@ -30,7 +28,6 @@ struct is_object<fcppt::record::object<Elements...>> : std::true_type
 {
 };
 
-}
 }
 
 #endif

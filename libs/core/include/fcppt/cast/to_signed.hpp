@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts an unsigned int to its signed type
@@ -32,7 +30,6 @@ inline constexpr std::make_signed_t<Type> to_signed(Type const _value) noexcept
   return static_cast<std::make_signed_t<Type>>(_value);
 }
 
-}
 }
 
 #endif

@@ -8,19 +8,13 @@
 
 #include <fcppt/parse/skipper/basic_char_set_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \ingroup fcpptparse
 */
 using char_set = fcppt::parse::skipper::basic_char_set<char>;
 
-}
-}
 }
 
 #endif

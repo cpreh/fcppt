@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief The value type of a container depending on its constness.
@@ -32,7 +30,6 @@ using to_value_type = std::conditional_t<
     fcppt::type_traits::value_type<Container> const,
     fcppt::type_traits::value_type<Container>>;
 
-}
 }
 
 #endif

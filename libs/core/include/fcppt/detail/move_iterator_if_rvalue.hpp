@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename Type, typename Iterator>
 inline std::enable_if_t<std::is_lvalue_reference<Type>::value, Iterator>
@@ -31,7 +29,6 @@ move_iterator_if_rvalue(Iterator const &_iterator)
   return std::make_move_iterator(_iterator);
 }
 
-}
 }
 
 #endif

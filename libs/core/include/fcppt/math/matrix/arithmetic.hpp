@@ -22,11 +22,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Adds two matrices.
@@ -145,8 +141,6 @@ operator*(Left const &_left, fcppt::math::matrix::object<Right, R, C, S> const &
       _right, [&_left](Right const &_right_element) { return _left * _right_element; });
 }
 
-}
-}
 }
 
 #endif

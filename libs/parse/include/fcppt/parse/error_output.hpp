@@ -11,9 +11,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Ch>
 std::basic_ostream<Ch> &
@@ -22,7 +20,6 @@ operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::error<Ch> const &_erro
   return _stream << _error.get();
 }
 
-}
 }
 
 #endif

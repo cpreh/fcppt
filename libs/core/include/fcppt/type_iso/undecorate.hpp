@@ -9,9 +9,7 @@
 #include <fcppt/type_iso/undecorated_type.hpp>
 #include <fcppt/type_iso/detail/undecorate.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 /**
 \brief Undecorates a value
@@ -26,7 +24,6 @@ inline fcppt::type_iso::undecorated_type<Type> undecorate(Type const &_value)
   return fcppt::type_iso::detail::undecorate(_value);
 }
 
-}
 }
 
 #endif

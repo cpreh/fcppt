@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace generator
+namespace fcppt::random::generator
 {
 /**
 \brief Creates a seed from a chrono clock
@@ -43,8 +39,6 @@ Seed seed_from_chrono()
       std::chrono::high_resolution_clock::now().time_since_epoch().count()));
 }
 
-}
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The column type of a position.
@@ -22,7 +20,6 @@ namespace parse
 */
 FCPPT_MAKE_STRONG_TYPEDEF(std::uint64_t, column);
 
-}
 }
 
 #endif

@@ -9,9 +9,7 @@
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Casts a std::integral_constant to bool.
@@ -23,7 +21,6 @@ namespace type_traits
 template <typename Type>
 using to_bool = fcppt::type_traits::integral_cast<bool, fcppt::cast::static_cast_fun, Type>;
 
-}
 }
 
 #endif

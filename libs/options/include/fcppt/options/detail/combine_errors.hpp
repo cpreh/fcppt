@@ -13,11 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Function>
 inline fcppt::options::parse_error combine_errors(
@@ -34,8 +30,6 @@ inline fcppt::options::parse_error combine_errors(
       std::move(_error2));
 }
 
-}
-}
 }
 
 #endif

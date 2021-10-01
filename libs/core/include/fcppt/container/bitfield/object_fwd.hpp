@@ -8,19 +8,13 @@
 
 #include <fcppt/container/bitfield/default_internal_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 template <
     typename ElementType,
     typename InternalType = fcppt::container::bitfield::default_internal_type>
 class object;
 
-}
-}
 }
 
 #endif

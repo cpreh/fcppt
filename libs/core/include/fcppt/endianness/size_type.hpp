@@ -10,9 +10,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace endianness
+namespace fcppt::endianness
 {
 /**
 \brief The size of raw memory, used to swap bytes
@@ -21,7 +19,6 @@ namespace endianness
 */
 using size_type = std::size_t;
 
-}
 }
 
 #endif

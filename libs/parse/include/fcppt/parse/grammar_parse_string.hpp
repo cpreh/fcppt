@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Parse a string using a grammar.
@@ -30,7 +28,6 @@ fcppt::parse::result<Ch, Result> grammar_parse_string(
       *_grammar.start(), std::move(_string), _grammar.skipper());
 }
 
-}
 }
 
 #endif

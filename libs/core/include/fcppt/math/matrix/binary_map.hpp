@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Maps over two matrixs.
@@ -43,8 +39,6 @@ inline fcppt::math::matrix::static_<std::invoke_result_t<Function,T1, T2>, R, C>
       _left, _right, _function);
 }
 
-}
-}
 }
 
 #endif

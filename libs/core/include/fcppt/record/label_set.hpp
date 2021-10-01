@@ -10,9 +10,7 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/detail/label_list.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief The set of labels of a record.
@@ -25,7 +23,6 @@ template <typename Record>
 using label_set = fcppt::mpl::set::from_list_relaxed<
     fcppt::record::detail::label_list<fcppt::record::element_vector<Record>>>;
 
-}
 }
 
 #endif

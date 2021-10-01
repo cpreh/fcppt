@@ -9,9 +9,7 @@
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/options/detail/right_tag.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The right result type of a sum parser.
@@ -21,7 +19,6 @@ namespace options
 template <typename Type>
 using right = fcppt::strong_typedef<Type, fcppt::options::detail::right_tag>;
 
-}
 }
 
 #endif

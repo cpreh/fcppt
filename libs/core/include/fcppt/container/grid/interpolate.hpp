@@ -24,11 +24,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Interpolates a value inside the grid cells
@@ -102,8 +98,6 @@ T interpolate(
       _interpolator);
 }
 
-}
-}
 }
 
 #endif

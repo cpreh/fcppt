@@ -9,9 +9,7 @@
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/options/error_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The result of a parse operation.
@@ -23,7 +21,6 @@ The result of a parse is either \a T or an #fcppt::options::error.
 template <typename T>
 using result = fcppt::either::object<fcppt::options::error, T>;
 
-}
 }
 
 #endif

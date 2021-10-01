@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename T>
 class make_shared_wrapper
@@ -30,7 +28,6 @@ private:
   ptr_type ptr_;
 };
 
-}
 }
 
 #endif

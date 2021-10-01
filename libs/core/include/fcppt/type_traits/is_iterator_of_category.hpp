@@ -11,9 +11,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Checks if an iterator models a given category
@@ -31,7 +29,6 @@ template <typename Iterator, typename Category>
 using is_iterator_of_category = fcppt::iterator::
     category_at_least<typename std::iterator_traits<Iterator>::iterator_category, Category>;
 
-}
 }
 
 #endif

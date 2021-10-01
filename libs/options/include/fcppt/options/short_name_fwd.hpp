@@ -9,9 +9,7 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief A string type representing a short name.
@@ -22,7 +20,6 @@ A short name is the short name of an option or flag, e.g. "-f".
 */
 FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, short_name);
 
-}
 }
 
 #endif

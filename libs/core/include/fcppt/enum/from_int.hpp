@@ -17,9 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Cast an unsigned value to an enum
@@ -45,7 +43,6 @@ fcppt::optional::object<Enum> from_int(Value const &_value) noexcept
   return fcppt::optional::make_if(
       fcppt::cast::size<fcppt::enum_::size_type<Enum>>(_value) < fcppt::enum_::size<Enum>::value,
       [&_value] { return fcppt::cast::int_to_enum<Enum>(_value); });
-}
 }
 }
 

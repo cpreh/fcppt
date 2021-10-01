@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Does an integral cast on an integral constant
@@ -34,7 +32,6 @@ using integral_cast = std::integral_constant<
     Dest,
     fcppt::type_traits::detail::integral_cast_value<Dest, Conv, Integral>::value>;
 
-}
 }
 
 #endif

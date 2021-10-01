@@ -13,9 +13,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::sequence parser.
@@ -32,7 +30,6 @@ operator>>(Left &&_left, Right &&_right)
 {
   return fcppt::parse::sequence<std::remove_cvref_t<Left>, std::remove_cvref_t<Right>>{
       std::forward<Left>(_left), std::forward<Right>(_right)};
-}
 }
 }
 

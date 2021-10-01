@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief An mpl integral_c for math::size_type
@@ -23,7 +21,6 @@ namespace math
 template <fcppt::math::size_type N>
 using static_size = std::integral_constant<fcppt::math::size_type, N>;
 
-}
 }
 
 #endif

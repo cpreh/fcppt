@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace catch_
+namespace fcppt::catch_
 {
 /**
 \brief A movable-only type.
@@ -48,7 +46,6 @@ private:
   Type value_;
 };
 
-}
 }
 
 #endif

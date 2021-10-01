@@ -15,11 +15,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <std::size_t Index, typename Tuple, typename Body>
 inline std::enable_if_t<Index == fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>
@@ -39,8 +35,6 @@ tuple_loop_break(Tuple &&_tuple, Body const &_body)
   case fcppt::loop::break_:
     break;
   }
-}
-}
 }
 }
 

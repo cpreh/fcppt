@@ -16,13 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
-{
-namespace detail
+namespace fcppt::container::grid::detail
 {
 template <typename SizeType, fcppt::container::grid::size_type Size>
 using pos_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
@@ -32,9 +26,6 @@ using pos_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
     std::make_signed_t<SizeType>,
     std::input_iterator_tag>>;
 
-}
-}
-}
 }
 
 #endif

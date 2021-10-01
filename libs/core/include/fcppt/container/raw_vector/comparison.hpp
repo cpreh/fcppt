@@ -12,11 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace raw_vector
+namespace fcppt::container::raw_vector
 {
 /**
 \ingroup fcpptcontainerraw_vector
@@ -85,8 +81,6 @@ bool operator<=(
   return !(_left > _right);
 }
 
-}
-}
 }
 
 #endif

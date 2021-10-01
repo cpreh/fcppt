@@ -11,9 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Like <code>std::is_base_of</code>, but only works on complete types
@@ -36,7 +34,6 @@ struct is_base_of : std::is_base_of<Base, Derived>
   FCPPT_ASSERT_COMPLETE(Derived);
 };
 
-}
 }
 
 #endif

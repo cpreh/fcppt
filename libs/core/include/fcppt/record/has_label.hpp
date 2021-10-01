@@ -9,9 +9,7 @@
 #include <fcppt/mpl/set/contains.hpp>
 #include <fcppt/record/label_set.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Tests if a record has an #fcppt::record::label.
@@ -21,7 +19,6 @@ namespace record
 template <typename Record, typename Label>
 using has_label = fcppt::mpl::set::contains<fcppt::record::label_set<Record>, Label>;
 
-}
 }
 
 #endif

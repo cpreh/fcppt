@@ -6,17 +6,11 @@
 #ifndef FCPPT_PARSE_DETAIL_CONCRETE_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_CONCRETE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Result, typename Ch, typename Skipper>
 class concrete;
 
-}
-}
 }
 
 #endif

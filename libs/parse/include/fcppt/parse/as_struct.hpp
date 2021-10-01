@@ -16,9 +16,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates a parser that converts a tuple into a struct.
@@ -44,7 +42,6 @@ as_struct(Parser &&_parser)
             [](auto &&..._args) { return Result{std::forward<decltype(_args)>(_args)...}; },
             std::move(_tuple));
       });
-}
 }
 }
 

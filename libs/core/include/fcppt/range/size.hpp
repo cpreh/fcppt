@@ -11,9 +11,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace range
+namespace fcppt::range
 {
 /**
 \brief Returns the size of a range.
@@ -26,7 +24,6 @@ inline auto size(Range const &_range)
   return fcppt::cast::to_unsigned(std::distance(_range.begin(), _range.end()));
 }
 
-}
 }
 
 #endif

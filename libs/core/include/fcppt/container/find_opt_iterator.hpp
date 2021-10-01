@@ -9,9 +9,7 @@
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns an iterator from a find operation or an empty optional.
@@ -36,7 +34,6 @@ find_opt_iterator(Container &_container, Key const &_key)
   return it != _container.end() ? result_type(it) : result_type();
 }
 
-}
 }
 
 #endif

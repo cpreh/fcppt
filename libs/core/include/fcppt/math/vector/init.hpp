@@ -9,11 +9,7 @@
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/math/vector/is_vector.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Initializes a vector
@@ -35,8 +31,6 @@ inline Vector init(Function const &_function)
   return fcppt::math::detail::init<Vector>(_function);
 }
 
-}
-}
 }
 
 #endif

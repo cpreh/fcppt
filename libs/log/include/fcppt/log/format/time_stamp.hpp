@@ -9,11 +9,7 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \brief Creates a formatter that prints a time stamp.
@@ -25,8 +21,6 @@ Creates a formatter that prints a time stamp in front like #fcppt::log::format::
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function time_stamp();
 
-}
-}
 }
 
 #endif

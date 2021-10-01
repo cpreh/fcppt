@@ -12,9 +12,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief Converts a log level to its string representation
@@ -26,7 +24,6 @@ Converts a log level given by \a level to its enumerator name as a string.
 FCPPT_LOG_DETAIL_SYMBOL
 std::string_view level_to_string(fcppt::log::level);
 
-}
 }
 
 #endif

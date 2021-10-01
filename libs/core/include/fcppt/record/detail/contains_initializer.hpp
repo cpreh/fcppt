@@ -14,11 +14,7 @@
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Args, typename Element>
 using contains_initializer = fcppt::mpl::list::any_of<
@@ -27,8 +23,6 @@ using contains_initializer = fcppt::mpl::list::any_of<
         fcppt::mpl::lambda<fcppt::record::detail::label_is_same>,
         fcppt::mpl::constant<fcppt::record::element_to_label<Element>>,
         fcppt::mpl::arg<1>>>;
-}
-}
 }
 
 #endif

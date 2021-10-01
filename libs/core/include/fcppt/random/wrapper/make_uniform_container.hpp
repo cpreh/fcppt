@@ -12,11 +12,7 @@
 #include <fcppt/random/wrapper/make_uniform_container_advanced.hpp>
 #include <fcppt/random/wrapper/uniform_container_impl.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace wrapper
+namespace fcppt::random::wrapper
 {
 template <typename Container>
 inline fcppt::optional::object<fcppt::random::wrapper::uniform_container<
@@ -29,8 +25,6 @@ make_uniform_container(fcppt::reference<Container> const _container)
       Container>(_container);
 }
 
-}
-}
 }
 
 #endif

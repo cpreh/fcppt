@@ -10,11 +10,7 @@
 #include <fcppt/parse/skipper/char_set.hpp>
 #include <fcppt/parse/skipper/operators/repetition.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Skips all characters from #fcppt::parse::space_set.
@@ -26,8 +22,6 @@ inline auto basic_space()
   return *fcppt::parse::skipper::char_set{fcppt::parse::space_set<Ch>()};
 }
 
-}
-}
 }
 
 #endif

@@ -11,9 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Combines two or more parsers.
@@ -33,7 +31,6 @@ inline auto apply(Parsers &&..._parsers)
   return fcppt::options::detail::apply(std::forward<Parsers>(_parsers)...);
 }
 
-}
 }
 
 #endif

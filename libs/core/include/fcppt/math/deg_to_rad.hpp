@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Transforms degrees into radians
@@ -31,7 +29,6 @@ inline T deg_to_rad(T const _deg)
              180); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
 
-}
 }
 
 #endif

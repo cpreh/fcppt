@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Maps a record using a function.
@@ -41,7 +39,6 @@ inline fcppt::record::map_result<Record, Function> map(Record &&_record, Functio
       { return _function(fcppt::move_if_rvalue<Record>(fcppt::record::get<Label>(_record))); });
 }
 
-}
 }
 
 #endif

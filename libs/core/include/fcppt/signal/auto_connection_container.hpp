@@ -12,13 +12,10 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 using auto_connection_container = std::vector<fcppt::signal::auto_connection>;
 
-}
 }
 
 #endif

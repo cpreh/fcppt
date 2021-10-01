@@ -23,11 +23,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates the matrix exponential e^A using a Pade approximation
@@ -96,8 +92,6 @@ exponential_pade(fcppt::math::matrix::object<T, DN, DN, S> const &_matrix)
   return result;
 }
 
-}
-}
 }
 
 #endif

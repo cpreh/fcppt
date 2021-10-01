@@ -11,11 +11,7 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief A hash function for bitfields.
@@ -28,8 +24,6 @@ struct hash
   std::size_t operator()(Bitfield const &) const;
 };
 
-}
-}
 }
 
 #endif

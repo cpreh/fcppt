@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Checks if a parameter is a valid skipper type.
@@ -28,8 +24,6 @@ template <typename Type>
 using is_valid_argument = fcppt::parse::skipper::is_skipper<
     fcppt::parse::deref_type<std::remove_cvref_t<Type>>>;
 
-}
-}
 }
 
 #endif

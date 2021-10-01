@@ -10,9 +10,7 @@
 #include <fcppt/cast/dynamic_any_fun_fwd.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Function object that uses #fcppt::cast::dynamic_any
@@ -28,7 +26,6 @@ struct dynamic_any_fun
   }
 };
 
-}
 }
 
 #endif

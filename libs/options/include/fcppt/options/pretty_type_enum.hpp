@@ -15,9 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Specialization for enums that uses #fcppt::enum_::names.
@@ -34,7 +32,6 @@ struct pretty_type_impl<Enum, std::enable_if_t<std::is_enum_v<Enum>>>
   }
 };
 
-}
 }
 
 #endif

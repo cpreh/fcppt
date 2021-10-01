@@ -14,11 +14,7 @@
 #include <fcppt/math/vector/push_back.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Multiplies a 4x4 matrix by a 3D vector, adding 1 for w, returns a 3D vector
@@ -40,8 +36,6 @@ fcppt::math::vector::static_<T, 3> transform_point(
       _matrix * fcppt::math::vector::push_back(_vector, fcppt::literal<T>(1)));
 }
 
-}
-}
 }
 
 #endif

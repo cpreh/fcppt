@@ -11,17 +11,11 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <fcppt::math::size_type Desired, fcppt::math::size_type Current>
 using dim_matches = std::integral_constant<bool, Desired == Current>;
 
-}
-}
 }
 
 #endif

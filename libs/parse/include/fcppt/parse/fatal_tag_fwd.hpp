@@ -6,13 +6,10 @@
 #ifndef FCPPT_PARSE_FATAL_TAG_FWD_HPP_INCLUDED
 #define FCPPT_PARSE_FATAL_TAG_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 struct fatal_tag;
 
-}
 }
 
 #endif

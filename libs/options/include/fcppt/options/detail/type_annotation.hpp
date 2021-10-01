@@ -10,11 +10,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/options/pretty_type.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 template <typename Type>
 inline fcppt::string type_annotation()
@@ -22,8 +18,6 @@ inline fcppt::string type_annotation()
   return FCPPT_TEXT(" : ") + fcppt::options::pretty_type<Type>();
 }
 
-}
-}
 }
 
 #endif

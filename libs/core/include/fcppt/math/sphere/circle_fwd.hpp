@@ -8,11 +8,7 @@
 
 #include <fcppt/math/sphere/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace sphere
+namespace fcppt::math::sphere
 {
 /**
 \brief Typedefs a sphere with a dimension of 2 (a circle)
@@ -22,8 +18,6 @@ namespace sphere
 template <typename T>
 using circle = fcppt::math::sphere::object<T, 2>;
 
-}
-}
 }
 
 #endif

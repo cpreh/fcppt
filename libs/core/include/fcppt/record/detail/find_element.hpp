@@ -10,18 +10,12 @@
 #include <fcppt/mpl/list/index_of_if.hpp>
 #include <fcppt/record/detail/find_element_predicate.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Elements, typename Label>
 using find_element = fcppt::mpl::list::at<
     Elements,
     fcppt::mpl::list::index_of_if<Elements, fcppt::record::detail::find_element_predicate<Label>>>;
-}
-}
 }
 
 #endif

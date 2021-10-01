@@ -10,11 +10,7 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/to_root.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Calculates the level of a tree
@@ -33,8 +29,6 @@ level(fcppt::container::tree::object<Value> const &_tree)
          1U;
 }
 
-}
-}
 }
 
 #endif

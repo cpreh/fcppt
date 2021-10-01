@@ -9,13 +9,10 @@
 #include <fcppt/io/buffer_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 using optional_buffer = fcppt::optional::object<fcppt::io::buffer>;
 
-}
 }
 
 #endif

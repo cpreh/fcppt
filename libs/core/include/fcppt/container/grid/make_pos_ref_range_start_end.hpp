@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A pos ref range over a sub-grid
@@ -38,8 +34,6 @@ inline fcppt::container::grid::pos_ref_range<Grid> make_pos_ref_range_start_end(
   return fcppt::container::grid::pos_ref_range<Grid>(_grid, _min, _sup);
 }
 
-}
-}
 }
 
 #endif

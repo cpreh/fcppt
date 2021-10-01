@@ -15,11 +15,7 @@
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Checks if all elements of the dim are the same
@@ -38,8 +34,6 @@ bool is_quadratic(fcppt::math::dim::object<T, N, S> const &_dim)
       { return fcppt::math::dim::at<Index>(_dim) == _first; });
 }
 
-}
-}
 }
 
 #endif

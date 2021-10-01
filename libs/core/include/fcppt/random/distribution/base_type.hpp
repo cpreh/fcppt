@@ -8,11 +8,7 @@
 
 #include <fcppt/type_iso/undecorated_type.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
+namespace fcppt::random::distribution
 {
 /**
 \brief Calculates the base type
@@ -22,8 +18,6 @@ namespace distribution
 template <typename Type>
 using base_type = fcppt::type_iso::undecorated_type<Type>;
 
-}
-}
 }
 
 #endif

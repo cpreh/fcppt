@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Access an element using a compile-time constant
@@ -35,8 +31,6 @@ inline fcppt::container::to_reference_type<std::remove_reference_t<Dim>> at(Dim 
   return fcppt::math::detail::checked_access<Index>(_value);
 }
 
-}
-}
 }
 
 #endif

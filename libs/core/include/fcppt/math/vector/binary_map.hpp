@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Maps over two vectors.
@@ -42,8 +38,6 @@ inline fcppt::math::vector::static_<std::invoke_result_t<Function, T1, T2>, N> b
       _left, _right, _function);
 }
 
-}
-}
 }
 
 #endif

@@ -15,11 +15,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename Container>
 inline std::enable_if_t<fcppt::not_(std::is_lvalue_reference_v<Container>), Container>
@@ -36,8 +32,6 @@ inline Container reverse(Container const &_container)
   return fcppt::algorithm::detail::reverse(Container(_container));
 }
 
-}
-}
 }
 
 #endif

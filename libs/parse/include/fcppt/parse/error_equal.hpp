@@ -8,9 +8,7 @@
 
 #include <fcppt/parse/error_impl.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 template <typename Ch>
 bool operator==(fcppt::parse::error<Ch> const &_left, fcppt::parse::error<Ch> const &_right)
@@ -18,7 +16,6 @@ bool operator==(fcppt::parse::error<Ch> const &_left, fcppt::parse::error<Ch> co
   return _left.get() == _right.get();
 }
 
-}
 }
 
 #endif

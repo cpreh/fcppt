@@ -8,9 +8,7 @@
 
 #include <fcppt/public_config.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 using char_type =
 #if defined(FCPPT_NARROW_STRING)
@@ -20,7 +18,6 @@ using char_type =
 #endif
     ;
 
-}
 }
 
 #endif

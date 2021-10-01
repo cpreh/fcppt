@@ -16,11 +16,7 @@
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The end position of a range
@@ -45,8 +41,6 @@ fcppt::container::grid::pos<SizeType, Size> end_position(
              : _min.get();
 }
 
-}
-}
 }
 
 #endif

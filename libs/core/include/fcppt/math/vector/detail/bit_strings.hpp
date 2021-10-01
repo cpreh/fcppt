@@ -14,13 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
-{
-namespace detail
+namespace fcppt::math::vector::detail
 {
 template <fcppt::math::size_type N, typename ForwardIterator, typename Vector>
 std::enable_if_t<N == 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
@@ -46,9 +40,6 @@ std::enable_if_t<N != 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
   fcppt::math::vector::detail::bit_strings<N - 1U>(it, _vector);
 }
 
-}
-}
-}
 }
 
 #endif

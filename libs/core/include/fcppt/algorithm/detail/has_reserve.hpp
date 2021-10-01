@@ -10,11 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
+namespace fcppt::algorithm::detail
 {
 template <typename Type, typename Test = void>
 struct has_reserve : std::false_type
@@ -26,8 +22,6 @@ struct has_reserve<Type, decltype(std::declval<Type>().reserve(0U))> : std::true
 {
 };
 
-}
-}
 }
 
 #endif

@@ -10,11 +10,7 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/array/object_impl.hpp>
 
-namespace fcppt
-{
-namespace optional
-{
-namespace detail
+namespace fcppt::optional::detail
 {
 template <typename... Optionals>
 inline bool has_value_all(Optionals const &..._optionals)
@@ -23,8 +19,6 @@ inline bool has_value_all(Optionals const &..._optionals)
       fcppt::array::object<bool, sizeof...(Optionals)>{_optionals.has_value()...}, fcppt::identity{});
 }
 
-}
-}
 }
 
 #endif

@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Gets the mapped type of an associative container.
@@ -31,7 +29,6 @@ using to_mapped_type = std::conditional_t<
     typename Container::mapped_type const,
     typename Container::mapped_type>;
 
-}
 }
 
 #endif

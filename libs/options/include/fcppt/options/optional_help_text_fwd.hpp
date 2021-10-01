@@ -9,9 +9,7 @@
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/options/help_text_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief An optional help text.
@@ -20,7 +18,6 @@ namespace options
 */
 using optional_help_text = fcppt::optional::object<fcppt::options::help_text>;
 
-}
 }
 
 #endif

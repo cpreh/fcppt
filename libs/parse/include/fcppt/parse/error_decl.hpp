@@ -15,9 +15,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
@@ -54,7 +52,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

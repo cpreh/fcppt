@@ -15,11 +15,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Outputs a grid
@@ -51,8 +47,6 @@ std::basic_ostream<Ch, Traits> &operator<<(
   return _stream;
 }
 
-}
-}
 }
 
 #endif

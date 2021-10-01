@@ -20,11 +20,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Clamps a position to a grid's size
@@ -46,8 +42,6 @@ fcppt::container::grid::sup<Source, Size> clamped_sup(
           }));
 }
 
-}
-}
 }
 
 #endif

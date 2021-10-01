@@ -8,11 +8,7 @@
 
 #include <fcppt/random/distribution/basic_impl.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
+namespace fcppt::random::distribution
 {
 template <typename Parameters>
 fcppt::random::distribution::basic<Parameters> make_basic(Parameters const &_parameters)
@@ -20,8 +16,6 @@ fcppt::random::distribution::basic<Parameters> make_basic(Parameters const &_par
   return fcppt::random::distribution::basic<Parameters>(_parameters);
 }
 
-}
-}
 }
 
 #endif

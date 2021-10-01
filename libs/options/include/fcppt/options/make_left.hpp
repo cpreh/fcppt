@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates an #fcppt::options::left.
@@ -25,7 +23,6 @@ template <typename Type>
 inline fcppt::options::left<std::remove_cvref_t<Type>> make_left(Type &&_value)
 {
   return fcppt::options::left<std::remove_cvref_t<Type>>(std::forward<Type>(_value));
-}
 }
 }
 

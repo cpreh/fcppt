@@ -16,9 +16,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -49,7 +47,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

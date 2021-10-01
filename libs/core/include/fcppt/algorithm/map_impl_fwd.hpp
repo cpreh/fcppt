@@ -6,14 +6,11 @@
 #ifndef FCPPT_ALGORITHM_MAP_IMPL_FWD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_IMPL_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 template <typename Source, typename Target, typename Enable = void>
 struct map_impl;
 
-}
 }
 
 #endif

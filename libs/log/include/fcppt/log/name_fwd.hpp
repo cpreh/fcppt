@@ -9,9 +9,7 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief The name of a logger
@@ -20,7 +18,6 @@ namespace log
 */
 FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, name);
 
-}
 }
 
 #endif

@@ -16,11 +16,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 class temporary_output
 {
@@ -67,8 +63,6 @@ operator<<(fcppt::log::detail::temporary_output &&_temp, T const &_arg)
   return std::move(_temp);
 }
 
-}
-}
 }
 
 #endif

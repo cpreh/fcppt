@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Creates a move range from a container
@@ -36,7 +34,6 @@ make_move_range(Container &&_container)
       std::forward<Container>(_container));
 }
 
-}
 }
 
 #endif

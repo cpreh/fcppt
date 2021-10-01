@@ -10,19 +10,13 @@
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \ingroup fcpptlog
 */
 FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, prefix_string);
 
-}
-}
 }
 
 #endif

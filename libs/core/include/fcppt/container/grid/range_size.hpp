@@ -12,11 +12,7 @@
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/dim/contents.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The number of elements in a grid range
@@ -33,8 +29,6 @@ inline SizeType range_size(
   return fcppt::math::dim::contents(fcppt::container::grid::range_dim(_min, _sup));
 }
 
-}
-}
 }
 
 #endif

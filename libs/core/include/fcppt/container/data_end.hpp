@@ -10,9 +10,7 @@
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/to_pointer_type.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Returns a pointer one past the end of a random-access container>
@@ -30,7 +28,6 @@ fcppt::container::to_pointer_type<Container> data_end(Container &_container)
   return fcppt::container::data(_container) + fcppt::cast::to_signed(_container.size());
 }
 
-}
 }
 
 #endif

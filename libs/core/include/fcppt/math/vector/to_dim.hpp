@@ -12,11 +12,7 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Converts a vector into a corresponding dim
@@ -29,8 +25,6 @@ inline fcppt::math::dim::static_<T, N> to_dim(fcppt::math::vector::object<T, N, 
   return fcppt::math::detail::to_different<fcppt::math::dim::static_<T, N>>(_src);
 }
 
-}
-}
 }
 
 #endif

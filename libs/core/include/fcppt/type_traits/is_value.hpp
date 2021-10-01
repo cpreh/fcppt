@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Checks if the type behaves like a value type.
@@ -30,7 +28,6 @@ using is_value = std::integral_constant<
         !std::is_reference<Type>::value && !std::is_const<Type>::value &&
         !std::is_volatile<Type>::value>;
 
-}
 }
 
 #endif

@@ -6,9 +6,7 @@
 #ifndef FCPPT_MONAD_INSTANCE_FWD_HPP_INCLUDED
 #define FCPPT_MONAD_INSTANCE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace monad
+namespace fcppt::monad
 {
 /**
 \brief Used to implement a monad instance.
@@ -26,7 +24,6 @@ This class needs the following:
 template <typename Type>
 struct instance;
 
-}
 }
 
 #endif

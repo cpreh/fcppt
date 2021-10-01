@@ -11,15 +11,12 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 
 template<fcppt::math::size_type N>
 using size_constant = std::integral_constant<fcppt::math::size_type, N>;
 
-}
 }
 
 #endif

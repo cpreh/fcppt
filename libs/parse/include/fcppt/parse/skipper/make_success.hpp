@@ -11,11 +11,7 @@
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief Creates a skipper success result.
@@ -27,8 +23,6 @@ fcppt::parse::skipper::result<Ch> make_success()
   return fcppt::either::make_success<fcppt::parse::error<Ch>>(fcppt::either::no_error{});
 }
 
-}
-}
 }
 
 #endif

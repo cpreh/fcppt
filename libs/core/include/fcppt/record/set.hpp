@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Sets an element in a record by copy
@@ -46,7 +44,6 @@ set(fcppt::record::object<Elements...> &_arg,
   _arg.template set<Label>(std::move(_value));
 }
 
-}
 }
 
 #endif

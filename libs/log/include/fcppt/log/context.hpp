@@ -19,9 +19,7 @@
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief A logger context manages log levels
@@ -81,7 +79,6 @@ private:
   find_child(fcppt::reference<fcppt::log::detail::context_tree const>, fcppt::log::name const &);
 };
 
-}
 }
 
 #endif

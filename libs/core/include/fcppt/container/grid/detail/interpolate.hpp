@@ -15,13 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
-{
-namespace detail
+namespace fcppt::container::grid::detail
 {
 template <
     std::size_t N,
@@ -74,9 +68,6 @@ std::enable_if_t<N != 1U, fcppt::type_traits::value_type<Grid>> interpolate(
           _interpolator));
 }
 
-}
-}
-}
 }
 
 #endif

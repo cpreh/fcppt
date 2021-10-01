@@ -12,11 +12,7 @@
 #include <fcppt/optional/deref.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace impl
+namespace fcppt::log::impl
 {
 template <typename Tree>
 fcppt::optional::reference<Tree>
@@ -26,8 +22,6 @@ find_child_tpl(fcppt::reference<Tree> const _tree, fcppt::log::name const &_name
       _tree.get(), [&_name](Tree &_child) { return _child.value().name() == _name; }));
 }
 
-}
-}
 }
 
 #endif

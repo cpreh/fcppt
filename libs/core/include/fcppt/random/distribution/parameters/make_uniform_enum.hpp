@@ -14,13 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace distribution
-{
-namespace parameters
+namespace fcppt::random::distribution::parameters
 {
 template <typename Enum, typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
 inline fcppt::random::distribution::parameters::uniform_int<Enum> make_uniform_enum()
@@ -28,9 +22,6 @@ inline fcppt::random::distribution::parameters::uniform_int<Enum> make_uniform_e
   return fcppt::random::distribution::parameters::make_uniform_enum_advanced<
       fcppt::random::distribution::parameters::uniform_int_wrapper,
       Enum>();
-}
-}
-}
 }
 }
 

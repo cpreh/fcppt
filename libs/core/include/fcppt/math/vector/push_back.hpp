@@ -11,11 +11,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Pushes an element to the back of a vector.
@@ -29,8 +25,6 @@ push_back(fcppt::math::vector::object<T, N, S> const &_vector, T const &_value)
   return fcppt::math::detail::push_back<fcppt::math::vector::static_<T, N + 1>>(_vector, _value);
 }
 
-}
-}
 }
 
 #endif

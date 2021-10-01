@@ -8,11 +8,7 @@
 
 #include <fcppt/parse/skipper/basic_space.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace skipper
+namespace fcppt::parse::skipper
 {
 /**
 \brief The skipper <code>basic_space<char></code>.
@@ -20,8 +16,6 @@ namespace skipper
 */
 inline auto space() { return fcppt::parse::skipper::basic_space<char>(); }
 
-}
-}
 }
 
 #endif

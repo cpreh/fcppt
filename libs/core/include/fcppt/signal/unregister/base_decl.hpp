@@ -15,11 +15,7 @@
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
-{
-namespace unregister
+namespace fcppt::signal::unregister
 {
 /**
 \brief A base class for signals providing unlinking.
@@ -74,8 +70,6 @@ private:
   mutable connection_list connections_;
 };
 
-}
-}
 }
 
 #endif

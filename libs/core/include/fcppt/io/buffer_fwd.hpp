@@ -8,13 +8,10 @@
 
 #include <fcppt/container/raw_vector/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace io
+namespace fcppt::io
 {
 using buffer = fcppt::container::raw_vector::object<char>;
 
-}
 }
 
 #endif

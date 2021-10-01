@@ -6,14 +6,11 @@
 #ifndef FCPPT_ITERATOR_RANGE_FWD_HPP_INCLUDED
 #define FCPPT_ITERATOR_RANGE_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 template <typename Iterator>
 class range;
 
-}
 }
 
 #endif

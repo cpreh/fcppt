@@ -12,11 +12,7 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Sequence for a dim.
@@ -32,8 +28,6 @@ sequence(fcppt::math::dim::object<fcppt::optional::object<T>, N, S> const &_valu
   return fcppt::math::detail::sequence<fcppt::math::dim::static_<T, N>>(_value);
 }
 
-}
-}
 }
 
 #endif

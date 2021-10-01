@@ -6,14 +6,11 @@
 #ifndef FCPPT_RECORD_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_RECORD_OBJECT_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 template <typename... Elements>
 class object;
 
-}
 }
 
 #endif

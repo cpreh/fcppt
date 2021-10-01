@@ -10,11 +10,7 @@
 #include <fcppt/container/grid/spiral_range_fwd.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 template <typename Pos>
 class spiral_range
@@ -39,8 +35,6 @@ private:
   value_type dist_;
 };
 
-}
-}
 }
 
 #endif

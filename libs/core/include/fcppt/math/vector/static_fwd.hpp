@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/static_storage_fwd.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Typedef helper for static vectors
@@ -29,8 +25,6 @@ static vectors (and on this class).
 template <typename T, fcppt::math::size_type N>
 using static_ = fcppt::math::vector::object<T, N, fcppt::math::detail::static_storage<T, N>>;
 
-}
-}
 }
 
 #endif

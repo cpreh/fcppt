@@ -17,9 +17,7 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief The specialization point for pretty type names.
@@ -58,7 +56,6 @@ struct pretty_type_impl<fcppt::strong_typedef<Type, Tag>>
   static fcppt::string get() { return fcppt::options::pretty_type_impl<Type>::get(); }
 };
 
-}
 }
 
 #endif

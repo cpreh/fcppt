@@ -25,11 +25,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Result, typename TagTuple, typename... Args>
 Result init_ctor(Args &&..._args)
@@ -56,8 +52,6 @@ Result init_ctor(Args &&..._args)
           }));
 }
 
-}
-}
 }
 
 #endif

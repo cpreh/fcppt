@@ -12,9 +12,7 @@
 #include <fcppt/log/detail/location_vector.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 /**
 \brief A location of a logger in a context.
@@ -89,7 +87,6 @@ Forms a new location from \a location and \a name.
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::location operator/(fcppt::log::location location, fcppt::log::name element);
 
-}
 }
 
 #endif

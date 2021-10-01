@@ -9,11 +9,7 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace cast
-{
-namespace detail
+namespace fcppt::cast::detail
 {
 template <typename Derived, typename Base>
 fcppt::optional::reference<Derived> dynamic(Base &_base) noexcept
@@ -25,8 +21,6 @@ fcppt::optional::reference<Derived> dynamic(Base &_base) noexcept
   return derived_ptr != nullptr ? result_type{fcppt::make_ref(*derived_ptr)} : result_type{};
 }
 
-}
-}
 }
 
 #endif

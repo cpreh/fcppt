@@ -10,11 +10,7 @@
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
+namespace fcppt::container::tree
 {
 /**
 \brief Maps a tree to another tree
@@ -37,8 +33,6 @@ Result map(fcppt::container::tree::object<Value> const &_tree, Function const &_
           })};
 }
 
-}
-}
 }
 
 #endif

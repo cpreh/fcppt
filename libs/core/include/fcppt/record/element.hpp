@@ -9,9 +9,7 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/is_label.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief An element of a record
@@ -36,7 +34,6 @@ struct element
       "Label of element<> must be an fcppt::record::label<>");
 };
 
-}
 }
 
 #endif

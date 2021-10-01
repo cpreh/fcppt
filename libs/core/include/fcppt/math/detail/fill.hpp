@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Ret>
 Ret fill(fcppt::type_traits::value_type<Ret> const &_value)
@@ -22,8 +18,6 @@ Ret fill(fcppt::type_traits::value_type<Ret> const &_value)
   return fcppt::math::detail::init<Ret>([&_value](fcppt::math::size_type) { return _value; });
 }
 
-}
-}
 }
 
 #endif

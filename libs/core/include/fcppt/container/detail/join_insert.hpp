@@ -11,11 +11,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace detail
+namespace fcppt::container::detail
 {
 template <typename Result, typename Iterator>
 inline std::enable_if_t<!fcppt::container::detail::has_insert_range<Result>::value, void>
@@ -34,8 +30,6 @@ join_insert(Result &_result, Iterator const _begin, Iterator const _end)
   _result.insert(_begin, _end);
 }
 
-}
-}
 }
 
 #endif

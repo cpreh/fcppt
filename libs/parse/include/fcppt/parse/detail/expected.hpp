@@ -18,11 +18,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Ch>
 fcppt::parse::error<Ch>
@@ -41,8 +37,6 @@ expected(fcppt::parse::position<Ch> const _pos, std::basic_string<Ch> &&_expecte
       FCPPT_STRING_LITERAL(Ch, ", got ") + _got};
 }
 
-}
-}
 }
 
 #endif

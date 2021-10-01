@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 template <typename Pos>
 class spiral_iterator final : public fcppt::container::grid::detail::spiral_iterator_base<Pos>
@@ -64,8 +60,6 @@ private:
   static pos const start_dir;
 };
 
-}
-}
 }
 
 #endif

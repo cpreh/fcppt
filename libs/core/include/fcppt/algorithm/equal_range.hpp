@@ -16,9 +16,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Returns the equal range of a given range and a value.
@@ -35,7 +33,6 @@ equal_range(Range &&_range, T const &_value)
       ::std::equal_range(fcppt::range::begin(_range), fcppt::range::end(_range), _value));
 }
 
-}
 }
 
 #endif

@@ -11,11 +11,7 @@
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/from_list.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename RecordL, typename RecordR>
 struct disjoint_product
@@ -29,8 +25,6 @@ struct disjoint_product
       fcppt::record::element_vector<RecordR>>>;
 };
 
-}
-}
 }
 
 #endif

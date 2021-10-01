@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 template <typename Range>
 struct loop_break_impl<Range, std::enable_if_t<fcppt::tuple::is_object<Range>::value>>
@@ -28,7 +26,6 @@ struct loop_break_impl<Range, std::enable_if_t<fcppt::tuple::is_object<Range>::v
   }
 };
 
-}
 }
 
 #endif

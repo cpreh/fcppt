@@ -14,9 +14,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Calculates the distance of two intervals
@@ -56,7 +54,6 @@ Type interval_distance(fcppt::tuple::object<Type, Type> _i1, fcppt::tuple::objec
              :
              // one completely contains the other, so return the smaller of the two parts
              std::max(i2_second - i1_second, i1_first - i2_first);
-}
 }
 }
 

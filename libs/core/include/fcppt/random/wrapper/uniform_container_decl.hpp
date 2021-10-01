@@ -12,11 +12,7 @@
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/wrapper/uniform_container_fwd.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-namespace wrapper
+namespace fcppt::random::wrapper
 {
 template <typename Container, typename IntDistribution>
 class uniform_container
@@ -40,8 +36,6 @@ private:
   fcppt::random::distribution::basic<param_type> distribution_;
 };
 
-}
-}
 }
 
 #endif

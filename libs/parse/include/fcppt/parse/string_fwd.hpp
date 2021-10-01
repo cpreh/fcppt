@@ -8,16 +8,13 @@
 
 #include <fcppt/parse/basic_string_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \ingroup fcpptparse
 */
 using string = fcppt::parse::basic_string<char>;
 
-}
 }
 
 #endif

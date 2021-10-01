@@ -11,11 +11,7 @@
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/static_storage_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Typedef helper for static matrices
@@ -28,8 +24,6 @@ template <typename T, fcppt::math::size_type R, fcppt::math::size_type C>
 using static_ =
     fcppt::math::matrix::object<T, R, C, fcppt::math::matrix::detail::static_storage<T, R, C>>;
 
-}
-}
 }
 
 #endif

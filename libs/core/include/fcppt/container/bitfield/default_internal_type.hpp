@@ -6,11 +6,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_DEFAULT_INTERNAL_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_DEFAULT_INTERNAL_TYPE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief The default (unsigned) type to hold the bitfield's bits.
@@ -19,8 +15,6 @@ namespace bitfield
 */
 using default_internal_type = unsigned;
 
-}
-}
 }
 
 #endif

@@ -9,9 +9,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Indents every line of a string once.
@@ -21,7 +19,6 @@ namespace options
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::string indent(fcppt::string &&);
 
-}
 }
 
 #endif

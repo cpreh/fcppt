@@ -10,9 +10,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
+namespace fcppt::container
 {
 /**
 \brief Inserts into an associative container.
@@ -31,7 +29,6 @@ template <typename Container, typename Value>
   return _container.insert(std::forward<Value>(_value)).second;
 }
 
-}
 }
 
 #endif

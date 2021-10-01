@@ -12,17 +12,11 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 void check_sub_command_names(std::vector<fcppt::string> const &);
 
-}
-}
 }
 
 #endif

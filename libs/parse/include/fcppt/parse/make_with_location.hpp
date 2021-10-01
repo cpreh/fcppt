@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief Creates an #fcppt::parse::with_location parser.
@@ -28,7 +26,6 @@ make_with_location(Parser &&_parser)
       std::forward<Parser>(_parser)};
 }
 
-}
 }
 
 #endif

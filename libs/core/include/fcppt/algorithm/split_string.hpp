@@ -12,9 +12,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Splits a string, using a delimiter.
@@ -59,7 +57,6 @@ split_string(String const &_string, fcppt::type_traits::value_type<String> const
   return result;
 }
 
-}
 }
 
 #endif

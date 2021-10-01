@@ -18,9 +18,7 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace impl
+namespace fcppt::impl
 {
 template <typename Out, typename In, typename Function>
 fcppt::optional::object<std::basic_string<Out>> codecvt(
@@ -91,7 +89,6 @@ fcppt::optional::object<std::basic_string<Out>> codecvt(
   }
 }
 
-}
 }
 
 #endif

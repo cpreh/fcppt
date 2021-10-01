@@ -12,11 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Metafunction to test if a type is a dim type
@@ -33,8 +29,6 @@ struct is_dim<fcppt::math::dim::object<T, N, S>> : std::true_type
 {
 };
 
-}
-}
 }
 
 #endif

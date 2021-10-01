@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Turns a path into an fcppt::string
@@ -26,7 +24,6 @@ Turns \a path into an fcppt::string.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string path_to_string(std::filesystem::path const &path);
 
-}
 }
 
 #endif

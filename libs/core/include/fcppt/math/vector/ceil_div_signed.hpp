@@ -17,11 +17,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Division rounded up for signed vectors.
@@ -43,8 +39,6 @@ ceil_div_signed(fcppt::math::vector::object<T, N, S> const _vector, T const _div
       }));
 }
 
-}
-}
 }
 
 #endif

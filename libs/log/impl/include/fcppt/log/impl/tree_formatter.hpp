@@ -9,16 +9,10 @@
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace impl
+namespace fcppt::log::impl
 {
 fcppt::log::format::optional_function tree_formatter(fcppt::log::detail::context_tree const &);
 
-}
-}
 }
 
 #endif

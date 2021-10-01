@@ -8,17 +8,11 @@
 
 #include <fcppt/math/size_type.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 template <typename T, fcppt::math::size_type N, typename S>
 class object;
 
-}
-}
 }
 
 #endif

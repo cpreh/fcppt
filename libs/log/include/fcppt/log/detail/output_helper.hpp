@@ -6,18 +6,12 @@
 #ifndef FCPPT_LOG_DETAIL_OUTPUT_HELPER_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_OUTPUT_HELPER_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
+namespace fcppt::log::detail
 {
 class output_helper
 {
 };
 
-}
-}
 }
 
 #endif

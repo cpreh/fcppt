@@ -8,9 +8,7 @@
 
 #include <fcppt/iterator/range_fwd.hpp>
 
-namespace fcppt
-{
-namespace iterator
+namespace fcppt::iterator
 {
 /**
 \brief A range formed from two iterators.
@@ -39,7 +37,6 @@ private:
   Iterator end_;
 };
 
-}
 }
 
 #endif

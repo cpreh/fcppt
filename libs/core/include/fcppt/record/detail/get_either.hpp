@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Label, typename Record1, typename Record2, typename Enable = void>
 struct get_either;
@@ -55,8 +51,6 @@ struct get_either<
   }
 };
 
-}
-}
 }
 
 #endif

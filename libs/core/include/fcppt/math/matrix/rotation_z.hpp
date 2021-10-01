@@ -13,11 +13,7 @@
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates a 4x4 rotation matrix around the z axis
@@ -60,8 +56,6 @@ fcppt::math::matrix::static_<T, 4, 4> rotation_z(T const _angle)
       fcppt::math::matrix::row(zero, zero, zero, one));
 }
 
-}
-}
 }
 
 #endif

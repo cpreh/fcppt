@@ -11,11 +11,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup_tag.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief The one-past-the-end type of a pos range
@@ -26,8 +22,6 @@ template <typename SizeType, fcppt::container::grid::size_type Size>
 using sup = fcppt::
     strong_typedef<fcppt::container::grid::pos<SizeType, Size>, fcppt::container::grid::sup_tag>;
 
-}
-}
 }
 
 #endif

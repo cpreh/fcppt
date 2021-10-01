@@ -10,9 +10,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename Iterator1, typename Iterator2>
 inline bool equal(Iterator1 const _beg1, Iterator1 const _end1, Iterator2 const _beg2)
@@ -21,7 +19,6 @@ inline bool equal(Iterator1 const _beg1, Iterator1 const _end1, Iterator2 const 
       _beg1, _end1, _beg2, [](auto const &_t1, auto const &_t2) { return _t1 == _t2; });
 }
 
-}
 }
 
 #endif

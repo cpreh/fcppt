@@ -18,9 +18,7 @@
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief An argument parser
@@ -69,7 +67,6 @@ private:
   fcppt::options::optional_help_text help_text_;
 };
 
-}
 }
 
 #endif

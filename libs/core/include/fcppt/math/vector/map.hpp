@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Maps over the elements of a vector.
@@ -33,8 +29,6 @@ map(fcppt::math::vector::object<T, N, S> const &_value, Function const &_functio
       fcppt::math::vector::static_<std::invoke_result_t<Function, T>, N>>(_value, _function);
 }
 
-}
-}
 }
 
 #endif

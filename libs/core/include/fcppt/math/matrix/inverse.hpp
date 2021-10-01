@@ -15,11 +15,7 @@
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
+namespace fcppt::math::matrix
 {
 /**
 \brief Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and
@@ -39,8 +35,6 @@ inverse(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
   return (fcppt::literal<T>(1) / det) * fcppt::math::matrix::adjugate(_matrix);
 }
 
-}
-}
 }
 
 #endif

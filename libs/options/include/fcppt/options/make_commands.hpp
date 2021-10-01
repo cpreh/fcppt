@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Makes a commands parser.
@@ -32,7 +30,6 @@ inline fcppt::options::
       commands<std::remove_cvref_t<OptionsParser>, std::remove_cvref_t<SubCommands>...>{
           std::forward<OptionsParser>(_options_parser),
           std::forward<SubCommands>(_sub_commands)...};
-}
 }
 }
 

@@ -14,13 +14,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
-{
-namespace detail
+namespace fcppt::container::grid::detail
 {
 template <typename Pos>
 using spiral_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
@@ -30,9 +24,6 @@ using spiral_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
     fcppt::type_traits::value_type<Pos>,
     std::input_iterator_tag>>;
 
-}
-}
-}
 }
 
 #endif

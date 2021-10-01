@@ -14,13 +14,7 @@
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
-{
-namespace unregister
-{
-namespace detail
+namespace fcppt::signal::unregister::detail
 {
 template <typename Function>
 class concrete_connection // NOLINT(fuchsia-multiple-inheritance)
@@ -52,9 +46,6 @@ private:
   fcppt::signal::unregister::function const unregister_;
 };
 
-}
-}
-}
 }
 
 #endif

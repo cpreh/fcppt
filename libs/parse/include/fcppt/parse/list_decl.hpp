@@ -22,9 +22,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -95,7 +93,6 @@ list(Start &&, Inner &&, Sep &&, End &&) -> list<
     std::remove_cvref_t<Sep>,
     std::remove_cvref_t<End>>;
 
-}
 }
 
 #endif

@@ -16,11 +16,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Checks if min is strictly less than sup
@@ -44,8 +40,6 @@ bool min_less_sup(
       });
 }
 
-}
-}
 }
 
 #endif

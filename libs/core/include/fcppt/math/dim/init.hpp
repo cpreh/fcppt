@@ -9,11 +9,7 @@
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/math/dim/is_dim.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Initializes a dim
@@ -35,8 +31,6 @@ inline Dim init(Function const &_function)
   return fcppt::math::detail::init<Dim>(_function);
 }
 
-}
-}
 }
 
 #endif

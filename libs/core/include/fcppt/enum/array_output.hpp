@@ -20,9 +20,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Outputs an enum array.
@@ -53,7 +51,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::enum_::array<Enum, Va
   _stream << FCPPT_CHAR_LITERAL(Ch, ']');
 
   return _stream;
-}
 }
 }
 

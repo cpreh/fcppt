@@ -11,11 +11,7 @@
 #include <fcppt/math/dim/is_dim.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace dim
+namespace fcppt::math::dim
 {
 /**
 \brief Converts a dim into a different dim of the same dimension
@@ -45,8 +41,6 @@ inline Dest structure_cast(fcppt::math::dim::object<T, N, S> const &_src)
   return fcppt::math::detail::structure_cast<Dest, Conv>(_src);
 }
 
-}
-}
 }
 
 #endif

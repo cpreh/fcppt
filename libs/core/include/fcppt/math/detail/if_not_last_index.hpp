@@ -10,11 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Index, typename Size, typename Function>
 inline std::enable_if_t<Index::value != Size::value - 1U, void>
@@ -29,8 +25,6 @@ if_not_last_index(Index, Size, Function const &)
 {
 }
 
-}
-}
 }
 
 #endif

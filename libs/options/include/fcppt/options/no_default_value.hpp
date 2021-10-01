@@ -9,9 +9,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/default_value.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Creates an empty default value
@@ -25,7 +23,6 @@ inline fcppt::options::default_value<fcppt::optional::object<Type>> no_default_v
       fcppt::optional::object<Type>{}};
 }
 
-}
 }
 
 #endif

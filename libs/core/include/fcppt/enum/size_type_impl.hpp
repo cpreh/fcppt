@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Implementation of #fcppt::enum_::size_type.
@@ -31,7 +29,6 @@ struct size_type_impl
   using type = std::make_unsigned_t<std::underlying_type_t<Type>>;
 };
 
-}
 }
 
 #endif

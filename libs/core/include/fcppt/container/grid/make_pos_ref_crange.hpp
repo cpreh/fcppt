@@ -9,11 +9,7 @@
 #include <fcppt/container/grid/make_pos_ref_range.hpp>
 #include <fcppt/container/grid/pos_ref_range_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief A const pos ref range over a grid
@@ -26,8 +22,6 @@ inline fcppt::container::grid::pos_ref_range<Grid const> make_pos_ref_crange(Gri
   return fcppt::container::grid::make_pos_ref_range(_grid);
 }
 
-}
-}
 }
 
 #endif

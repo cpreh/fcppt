@@ -15,11 +15,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief Returns a grid element as an optional
@@ -40,8 +36,6 @@ at_optional(Grid &_grid, fcppt::container::grid::pos_type<std::remove_cv_t<Grid>
              : result_type{};
 }
 
-}
-}
 }
 
 #endif

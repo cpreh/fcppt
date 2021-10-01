@@ -24,9 +24,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The basic parse function.
@@ -57,7 +55,6 @@ catch (fcppt::parse::detail::exception<Ch> const &_error)
 {
   return fcppt::either::make_failure<fcppt::parse::result_of<Parser>>(fcppt::parse::error<Ch>{
       std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Parsing failed: ")} + _error.what()});
-}
 }
 }
 

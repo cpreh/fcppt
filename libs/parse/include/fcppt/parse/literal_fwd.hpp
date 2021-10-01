@@ -8,9 +8,7 @@
 
 #include <fcppt/parse/basic_literal_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 
 /**
@@ -18,7 +16,6 @@ namespace parse
 */
 using literal = fcppt::parse::basic_literal<char>;
 
-}
 }
 
 #endif

@@ -12,9 +12,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Transforms radians into degrees
@@ -32,7 +30,6 @@ inline T rad_to_deg(T const _rad)
          / std::numbers::pi_v<T>;
 }
 
-}
 }
 
 #endif

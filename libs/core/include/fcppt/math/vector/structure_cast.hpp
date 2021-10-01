@@ -11,11 +11,7 @@
 #include <fcppt/math/vector/is_vector.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Converts a vector into a different vector of the same dimension
@@ -45,8 +41,6 @@ inline Dest structure_cast(fcppt::math::vector::object<T, N, S> const &_src)
   return fcppt::math::detail::structure_cast<Dest, Conv>(_src);
 }
 
-}
-}
 }
 
 #endif

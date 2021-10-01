@@ -9,9 +9,7 @@
 #include <fcppt/math/is_zero_impl_fwd.hpp>
 #include <fcppt/math/is_zero_literal.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Compares a value against zero.
@@ -30,7 +28,6 @@ inline bool is_zero(T const &_value)
   return fcppt::math::is_zero_impl<T>::get(_value);
 }
 
-}
 }
 
 #endif

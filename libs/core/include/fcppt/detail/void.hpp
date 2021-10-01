@@ -6,16 +6,13 @@
 #ifndef FCPPT_DETAIL_VOID_HPP_INCLUDED
 #define FCPPT_DETAIL_VOID_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename Type>
 inline void void_(Type const &)
 {
 }
 
-}
 }
 
 #endif

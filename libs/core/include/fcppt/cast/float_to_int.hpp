@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts a float to a signed int
@@ -38,7 +36,6 @@ inline constexpr Dest float_to_int(Source const _source) noexcept
   return static_cast<Dest>(_source);
 }
 
-}
 }
 
 #endif

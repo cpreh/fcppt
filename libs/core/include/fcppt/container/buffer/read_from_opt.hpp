@@ -9,11 +9,7 @@
 #include <fcppt/container/buffer/append_from_opt.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace buffer
+namespace fcppt::container::buffer
 {
 /**
 \brief Reads into a buffer using a function which may fail.
@@ -37,8 +33,6 @@ read_from_opt(typename Buffer::size_type const _size, Function const &_function)
   return fcppt::container::buffer::append_from_opt(Buffer{0U}, _size, _function);
 }
 
-}
-}
 }
 
 #endif

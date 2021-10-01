@@ -17,11 +17,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
+namespace fcppt::container::grid
 {
 /**
 \brief An n-dimensional array.
@@ -177,8 +173,6 @@ private:
 template <typename T, fcppt::container::grid::size_type N, typename A>
 void swap(fcppt::container::grid::object<T, N, A> &, fcppt::container::grid::object<T, N, A> &);
 
-}
-}
 }
 
 #endif

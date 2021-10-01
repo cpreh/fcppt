@@ -19,11 +19,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Calculates the intersection of two boxes (which is, again, a box)
@@ -53,8 +49,6 @@ intersection(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<
              : fcppt::math::box::null<result_type>();
 }
 
-}
-}
 }
 
 #endif

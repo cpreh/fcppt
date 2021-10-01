@@ -13,11 +13,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Type1, typename Type2, typename Function>
 Type1 &member_operator(Type1 &_left, Type2 const &_right, Function const &_function)
@@ -37,8 +33,6 @@ Type1 &member_operator(Type1 &_left, Type2 const &_right, Function const &_funct
   return _left;
 }
 
-}
-}
 }
 
 #endif

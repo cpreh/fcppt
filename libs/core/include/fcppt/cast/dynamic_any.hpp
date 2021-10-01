@@ -9,9 +9,7 @@
 #include <fcppt/cast/detail/dynamic.hpp>
 #include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts between references using <code>dynamic_cast</code>, returning an empty optional on
@@ -32,7 +30,6 @@ inline fcppt::optional::reference<Derived> dynamic_any(Base &_base) noexcept
   return fcppt::cast::detail::dynamic<Derived>(_base);
 }
 
-}
 }
 
 #endif

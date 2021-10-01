@@ -14,9 +14,7 @@
 #include <fcppt/signal/base_fwd.hpp>
 #include <fcppt/signal/detail/concrete_connection_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 /**
 \brief Default base class for signals. Provides no unlinking capabilities.
@@ -70,7 +68,6 @@ private:
   mutable connection_list connections_;
 };
 
-}
 }
 
 #endif

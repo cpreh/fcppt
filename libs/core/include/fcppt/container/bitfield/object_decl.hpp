@@ -19,11 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief A statically sized bitfield.
@@ -163,8 +159,6 @@ private:
   array_type array_;
 };
 
-}
-}
 }
 
 #endif

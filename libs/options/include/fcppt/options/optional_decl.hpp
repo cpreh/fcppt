@@ -24,9 +24,7 @@
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
@@ -71,7 +69,6 @@ private:
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 
 #endif

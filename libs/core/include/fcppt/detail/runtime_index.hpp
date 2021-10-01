@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 template <typename MaxIndex, typename CurrentIndex, typename Enable = void>
 struct runtime_index;
@@ -57,7 +55,6 @@ struct runtime_index<
   }
 };
 
-}
 }
 
 #endif

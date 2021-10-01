@@ -18,9 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Converts a runtime enum value into a compile time one, passing it to a
@@ -51,7 +49,6 @@ inline decltype(auto) to_static(Enum const _enum, Function const &_function)
       &fcppt::absurd<decltype(_function(fcppt::enum_::max_value<Enum>{}))>);
 }
 
-}
 }
 
 #endif

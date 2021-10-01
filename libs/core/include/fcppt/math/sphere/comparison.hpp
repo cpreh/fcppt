@@ -9,11 +9,7 @@
 #include <fcppt/math/sphere/object_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace sphere
+namespace fcppt::math::sphere
 {
 /**
 \brief Compares two spheres for equality
@@ -39,8 +35,6 @@ bool operator!=(
   return !(_a == _b);
 }
 
-}
-}
 }
 
 #endif

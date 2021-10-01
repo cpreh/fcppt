@@ -12,9 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Reverses a container
@@ -29,7 +27,6 @@ inline std::remove_cvref_t<Container> reverse(Container &&_container)
   return fcppt::algorithm::detail::reverse(std::forward<Container>(_container));
 }
 
-}
 }
 
 #endif

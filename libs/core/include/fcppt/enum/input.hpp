@@ -19,9 +19,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace enum_
+namespace fcppt::enum_
 {
 /**
 \brief Reads an enum value from a stream.
@@ -56,7 +54,6 @@ std::basic_istream<Ch, Traits> &input(std::basic_istream<Ch, Traits> &_stream, E
       [&_result](Enum const _arg) { _result = _arg; });
 
   return _stream;
-}
 }
 }
 

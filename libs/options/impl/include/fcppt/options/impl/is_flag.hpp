@@ -14,17 +14,11 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace impl
+namespace fcppt::options::impl
 {
 fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>
 is_flag(fcppt::string_view);
 
-}
-}
 }
 
 #endif

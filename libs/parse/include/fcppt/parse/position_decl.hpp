@@ -13,9 +13,7 @@
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The position of an #fcppt::parse::basic_stream.
@@ -43,7 +41,6 @@ private:
   optional_location location_;
 };
 
-}
 }
 
 #endif

@@ -9,16 +9,10 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-namespace detail
+namespace fcppt::options::detail
 {
 FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, missing_option_argument);
 
-}
-}
 }
 
 #endif

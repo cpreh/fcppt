@@ -10,18 +10,12 @@
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/record/element_to_label.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename ElementList>
 using label_list =
     fcppt::mpl::list::map<ElementList, fcppt::mpl::lambda<fcppt::record::element_to_label>>;
 
-}
-}
 }
 
 #endif

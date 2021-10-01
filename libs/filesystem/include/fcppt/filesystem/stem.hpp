@@ -12,9 +12,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Returns the stem of a path as a string
@@ -32,7 +30,6 @@ no filename
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string stem(std::filesystem::path const &path);
 
-}
 }
 
 #endif

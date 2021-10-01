@@ -10,9 +10,7 @@
 #include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace record
+namespace fcppt::record
 {
 /**
 \brief Declares a record using an mpl::list.
@@ -22,7 +20,6 @@ namespace record
 template <fcppt::mpl::list::object_concept List>
 using from_list = fcppt::mpl::list::as<fcppt::record::object, List>;
 
-}
 }
 
 #endif

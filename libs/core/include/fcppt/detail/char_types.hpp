@@ -8,13 +8,10 @@
 
 #include <fcppt/mpl/list/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace detail
+namespace fcppt::detail
 {
 using char_types = fcppt::mpl::list::object<char, wchar_t, char16_t, char32_t>;
 
-}
 }
 
 #endif

@@ -11,11 +11,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
+namespace fcppt::container::bitfield
 {
 /**
 \brief Set a bit to true.
@@ -175,8 +171,6 @@ fcppt::container::bitfield::object<ElementType, InternalType> operator^(
   return _left ^= _right;
 }
 
-}
-}
 }
 
 #endif

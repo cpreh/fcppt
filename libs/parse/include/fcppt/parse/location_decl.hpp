@@ -10,9 +10,7 @@
 #include <fcppt/parse/line.hpp>
 #include <fcppt/parse/location_fwd.hpp>
 
-namespace fcppt
-{
-namespace parse
+namespace fcppt::parse
 {
 /**
 \brief The location of a #fcppt::parse::basic_stream.
@@ -38,7 +36,6 @@ private:
   fcppt::parse::column column_;
 };
 
-}
 }
 
 #endif

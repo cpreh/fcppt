@@ -18,11 +18,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace raw_vector
+namespace fcppt::container::raw_vector
 {
 /**
 \brief A special vector class that can handle uninitialized memory.
@@ -228,8 +224,6 @@ void swap(
     fcppt::container::raw_vector::object<T, A> &,
     fcppt::container::raw_vector::object<T, A> &) noexcept;
 
-}
-}
 }
 
 #endif

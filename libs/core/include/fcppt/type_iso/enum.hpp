@@ -13,9 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace type_iso
+namespace fcppt::type_iso
 {
 template <typename Enum>
 struct transform<Enum, std::enable_if_t<std::is_enum_v<Enum>>>
@@ -33,7 +31,6 @@ struct transform<Enum, std::enable_if_t<std::is_enum_v<Enum>>>
   }
 };
 
-}
 }
 
 #endif

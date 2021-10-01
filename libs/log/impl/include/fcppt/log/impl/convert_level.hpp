@@ -9,16 +9,10 @@
 #include <fcppt/log/optional_level_fwd.hpp>
 #include <fcppt/log/detail/active_level_int.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace impl
+namespace fcppt::log::impl
 {
 fcppt::log::detail::active_level_int convert_level(fcppt::log::optional_level const &);
 
-}
-}
 }
 
 #endif

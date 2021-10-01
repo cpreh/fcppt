@@ -6,17 +6,11 @@
 #ifndef FCPPT_MATH_DETAIL_HASH_FWD_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_HASH_FWD_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace math
-{
-namespace detail
+namespace fcppt::math::detail
 {
 template <typename Type>
 struct hash;
 
-}
-}
 }
 
 #endif

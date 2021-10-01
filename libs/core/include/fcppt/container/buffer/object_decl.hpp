@@ -14,11 +14,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace buffer
+namespace fcppt::container::buffer
 {
 /**
 \brief A contiguous container for uninitialized data that contains a write and a read area.
@@ -177,8 +173,6 @@ template <typename T, typename A>
 void swap(
     fcppt::container::buffer::object<T, A> &, fcppt::container::buffer::object<T, A> &) noexcept;
 
-}
-}
 }
 
 #endif

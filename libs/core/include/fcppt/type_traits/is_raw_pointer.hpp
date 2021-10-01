@@ -8,9 +8,7 @@
 
 #include <fcppt/type_traits/detail/is_raw_pointer.hpp>
 
-namespace fcppt
-{
-namespace type_traits
+namespace fcppt::type_traits
 {
 /**
 \brief Checks if a pointer is a raw pointer type.
@@ -25,7 +23,6 @@ A raw pointer is a (cv qualified) pointer to <code>char</code> or to
 template <typename Type>
 using is_raw_pointer = typename fcppt::type_traits::detail::is_raw_pointer<Type>::type;
 
-}
 }
 
 #endif

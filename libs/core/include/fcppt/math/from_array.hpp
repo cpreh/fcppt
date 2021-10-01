@@ -11,9 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
+namespace fcppt::math
 {
 /**
 \brief Constructs an object with static storage from an array rvalue
@@ -37,7 +35,6 @@ inline Type from_array(fcppt::math::to_array_type<Type> const &_value)
   return Type{typename Type::storage_type{_value}};
 }
 
-}
 }
 
 #endif

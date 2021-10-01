@@ -13,9 +13,7 @@
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace bit
+namespace fcppt::bit
 {
 /**
 \brief A constant shifted mask
@@ -30,7 +28,6 @@ constexpr inline fcppt::bit::mask<Type> shifted_mask_c() noexcept
   return fcppt::bit::shifted_mask<Type>(Bits);
 }
 
-}
 }
 
 #endif

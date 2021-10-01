@@ -14,9 +14,7 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 
-namespace fcppt
-{
-namespace options
+namespace fcppt::options
 {
 /**
 \brief Parse a command-line.
@@ -35,7 +33,6 @@ parse(Parser const &_parser, fcppt::args_vector const &_args)
       fcppt::options::parse_context{fcppt::options::deref(_parser).option_names()});
 }
 
-}
 }
 
 #endif

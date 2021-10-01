@@ -10,9 +10,7 @@
 #include <fcppt/bit/shift_count.hpp>
 #include <fcppt/math/power_of_2.hpp>
 
-namespace fcppt
-{
-namespace bit
+namespace fcppt::bit
 {
 /**
 \brief A shifted mask
@@ -25,7 +23,6 @@ constexpr inline fcppt::bit::mask<Type> shifted_mask(fcppt::bit::shift_count con
   return fcppt::bit::mask<Type>(fcppt::math::power_of_2<Type>(_bits));
 }
 
-}
 }
 
 #endif

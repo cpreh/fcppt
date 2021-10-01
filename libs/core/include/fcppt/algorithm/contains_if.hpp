@@ -9,9 +9,7 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Checks if a given value is inside a range, using a predicate.
@@ -39,7 +37,6 @@ inline bool contains_if(Range const &_range, Pred const &_pred)
   return result;
 }
 
-}
 }
 
 #endif

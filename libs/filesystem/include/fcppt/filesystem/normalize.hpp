@@ -11,9 +11,7 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Normalizes a path by removing trailing slashes
@@ -27,7 +25,6 @@ Returns a copy of \a path with trailing slashes removed.
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::filesystem::path normalize(std::filesystem::path const &path);
 
-}
 }
 
 #endif

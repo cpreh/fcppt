@@ -11,11 +11,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace parse
-{
-namespace detail
+namespace fcppt::parse::detail
 {
 template <typename Ch>
 class exception
@@ -29,8 +25,6 @@ private:
   std::basic_string<Ch> what_;
 };
 
-}
-}
 }
 
 #endif

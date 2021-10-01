@@ -12,11 +12,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace io
-{
-namespace detail
+namespace fcppt::io::detail
 {
 class widen_string
 {
@@ -41,8 +37,6 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::io::detail::widen_str
   return _stream;
 }
 
-}
-}
 }
 
 #endif

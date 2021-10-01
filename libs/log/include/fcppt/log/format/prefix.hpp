@@ -10,11 +10,7 @@
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/prefix_string.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace format
+namespace fcppt::log::format
 {
 /**
 \brief Creates a prefix formatter.
@@ -26,8 +22,6 @@ Creates a formatter that outputs \a prefix in front.
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function prefix(fcppt::log::format::prefix_string const &prefix);
 
-}
-}
 }
 
 #endif

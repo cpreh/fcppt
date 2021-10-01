@@ -9,17 +9,11 @@
 #include <fcppt/record/detail/tag_base.hpp>
 #include <fcppt/type_traits/is_base_of.hpp>
 
-namespace fcppt
-{
-namespace record
-{
-namespace detail
+namespace fcppt::record::detail
 {
 template <typename Type>
 using is_tag = fcppt::type_traits::is_base_of<fcppt::record::detail::tag_base, Type>;
 
-}
-}
 }
 
 #endif

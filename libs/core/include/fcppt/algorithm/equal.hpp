@@ -12,9 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace algorithm
+namespace fcppt::algorithm
 {
 /**
 \brief Compares two ranges for equality.
@@ -31,7 +29,6 @@ inline bool equal(Range1 const &_range1, Range2 const &_range2)
       fcppt::range::end(_range2));
 }
 
-}
 }
 
 #endif
