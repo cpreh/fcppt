@@ -5,10 +5,14 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("unique_ptr object", "[smartptr]")
 {
@@ -30,3 +34,5 @@ TEST_CASE("unique_ptr object", "[smartptr]")
 
   CHECK(*ptr3 == 2);
 }
+
+FCPPT_CATCH_END

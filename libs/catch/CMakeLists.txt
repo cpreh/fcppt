@@ -1,7 +1,10 @@
 set(
 	FCPPT_CATCH_FILES
+	libs/catch/include/fcppt/catch/begin.hpp
 	libs/catch/include/fcppt/catch/convert.hpp
+	libs/catch/include/fcppt/catch/detail/ignore_reserved_identifiers.hpp
 	libs/catch/include/fcppt/catch/either.hpp
+	libs/catch/include/fcppt/catch/end.hpp
 	libs/catch/include/fcppt/catch/make_movable.hpp
 	libs/catch/include/fcppt/catch/movable.hpp
 	libs/catch/include/fcppt/catch/movable_comparison.hpp

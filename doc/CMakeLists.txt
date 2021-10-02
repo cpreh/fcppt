@@ -206,8 +206,11 @@ set(
 	libs/boost/include/fcppt/scoped_state_machine_fwd.hpp
 	libs/boost/include/fcppt/scoped_state_machine_impl.hpp
 	libs/boost/include/fcppt/type_iso/boost_units.hpp
+	libs/catch/include/fcppt/catch/begin.hpp
 	libs/catch/include/fcppt/catch/convert.hpp
+	libs/catch/include/fcppt/catch/detail/ignore_reserved_identifiers.hpp
 	libs/catch/include/fcppt/catch/either.hpp
+	libs/catch/include/fcppt/catch/end.hpp
 	libs/catch/include/fcppt/catch/make_movable.hpp
 	libs/catch/include/fcppt/catch/movable.hpp
 	libs/catch/include/fcppt/catch/movable_comparison.hpp
