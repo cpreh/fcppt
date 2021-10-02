@@ -163,8 +163,16 @@ void fcppt::container::buffer::object<T, A>::swap(object &_other) noexcept
 template <typename T, typename A>
 fcppt::container::raw_vector::rep<A> fcppt::container::buffer::object<T, A>::release() noexcept
 {
+  using rep_t = fcppt::container::raw_vector::rep<A>;
+  using first_t = typename rep_t::first_t;
+  using last_t = typename rep_t::last_t;
+  using cap_t = typename rep_t::cap_t;
+
   fcppt::container::raw_vector::rep<A> const result{
-      this->get_allocator(), this->impl_.first_, this->impl_.read_end_, this->impl_.cap_};
+      this->get_allocator(),
+      first_t{this->impl_.first_},
+      last_t{this->impl_.read_end_},
+      cap_t{this->impl_.cap_}};
 
   this->release_internal();
 

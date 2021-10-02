@@ -6,12 +6,13 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_REP_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_IMPL_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/container/raw_vector/rep_decl.hpp>
 
 template <typename A>
 fcppt::container::raw_vector::rep<A>::rep(
-    A const &_alloc, pointer const _first, pointer const _last, pointer const _cap) noexcept
-    : alloc_{_alloc}, first_{_first}, last_{_last}, cap_{_cap}
+    A const &_alloc, first_t const _first, last_t const _last, cap_t const _cap) noexcept
+    : alloc_{_alloc}, first_{_first.get()}, last_{_last.get()}, cap_{_cap.get()}
 {
 }
 
