@@ -57,7 +57,7 @@ extend_bounding_box(
 */
 template <typename T, fcppt::math::size_type N>
 fcppt::math::box::object<T, N> extend_bounding_box(
-    fcppt::math::box::object<T, N> const &_box1, fcppt::math::box::object<T, N> const &_box2)
+    fcppt::math::box::object<T, N> const &_box1, fcppt::math::box::object<T, N> const &_box2) //NOLINT(readability-suspicious-call-argument)
 {
   return fcppt::math::box::init_max<fcppt::math::box::object<T, N>>(
       [&_box1, &_box2]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>) {

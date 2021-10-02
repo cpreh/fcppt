@@ -43,5 +43,6 @@ TEST_CASE("math::box::extend_bounding_box box", "[math],[box]")
 
   CHECK(fcppt::math::box::extend_bounding_box(box1, box2) == expected);
 
+  // NOLINTNEXTLINE(readability-suspicious-call-argument)
   CHECK(fcppt::math::box::extend_bounding_box(box2, box1) == expected);
 }

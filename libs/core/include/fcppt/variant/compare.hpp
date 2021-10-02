@@ -32,7 +32,7 @@ _right.get<T>())</code> holds.
 */
 template <typename... Types, typename Compare>
 [[nodiscard]] inline bool compare(
-    fcppt::variant::object<Types...> const &_left,
+    fcppt::variant::object<Types...> const &_left, // NOLINT(bugprone-easily-swappable-parameters)
     fcppt::variant::object<Types...> const &_right,
     Compare const &_compare)
 {
