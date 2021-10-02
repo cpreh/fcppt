@@ -10,7 +10,9 @@
 #include <fcppt/enum/range_decl.hpp>
 
 template <typename Enum>
-constexpr fcppt::enum_::range<Enum>::range(size_type const _begin, size_type const _end) noexcept
+constexpr fcppt::enum_::range<Enum>::range(
+    size_type const _begin, // NOLINT(bugprone-easily-swappable-parameters)
+    size_type const _end) noexcept // NOLINT(bugprone-easily-swappable-parameters)
     : begin_{_begin}, end_{_end}
 {
 }
