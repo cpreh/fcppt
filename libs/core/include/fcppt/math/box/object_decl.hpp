@@ -6,6 +6,7 @@
 #ifndef FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
@@ -68,21 +69,16 @@ public:
 
   /**
   \brief Construct a box from position and size
-
-  \param pos The box's position
-
-  \param size The box's size
   */
   object(vector pos, dim size);
 
+  FCPPT_MAKE_STRONG_TYPEDEF(vector, min_t);
+  FCPPT_MAKE_STRONG_TYPEDEF(vector, max_t);
+
   /**
-  \brief Construct a box from position and size
-
-  \param min The box's min position
-
-  \param max The box's max position
+  \brief Construct a box from two positions
   */
-  object(vector min, vector max);
+  object(min_t, max_t);
 
   /**
   \brief Return the box's position
@@ -90,6 +86,10 @@ public:
   [[nodiscard]] vector &pos();
 
   [[nodiscard]] vector const &pos() const;
+
+  [[nodiscard]] vector &min();
+
+  [[nodiscard]] vector const &min() const;
 
   [[nodiscard]] vector &max();
 

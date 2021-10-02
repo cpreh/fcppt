@@ -29,7 +29,11 @@ template <typename Box, typename Function>
 inline Box init_max(Function const &_function)
 {
   return fcppt::math::box::detail::init<Box>(
-      [](auto const &_init) { return fcppt::math::vector::init<typename Box::vector>(_init); },
+      [](auto const &_init_first)
+      { return typename Box::min_t{fcppt::math::vector::init<typename Box::vector>(_init_first)}; },
+      [](auto const &_init_second) {
+        return typename Box::max_t{fcppt::math::vector::init<typename Box::vector>(_init_second)};
+      },
       _function);
 }
 

@@ -51,6 +51,10 @@ add_fcppt_math_box_test(
 )
 
 add_fcppt_math_box_test(
+	object
+)
+
+add_fcppt_math_box_test(
 	shrink
 )
 

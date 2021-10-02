@@ -16,11 +16,11 @@ int main()
   // ![init_points]
   using box2i = fcppt::math::box::object<unsigned, 2>;
 
-  box2i const box(box2i::vector(1U, 2U), box2i::vector(2U, 3U));
+  box2i const box{box2i::min_t{box2i::vector{1U, 2U}}, box2i::max_t{box2i::vector{2U, 3U}}};
   // ![init_points]
 
   // ![init_size]
-  box2i const box2(box2i::vector(1U, 2U), box2i::dim(1U, 1U));
+  box2i const box2{box2i::vector{1U, 2U}, box2i::dim{1U, 1U}};
   // ![init_size]
 
   std::cout << box << '\n';

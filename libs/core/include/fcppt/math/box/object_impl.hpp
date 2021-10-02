@@ -7,6 +7,7 @@
 #define FCPPT_MATH_BOX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
@@ -19,86 +20,98 @@
 
 template <typename T, fcppt::math::size_type N>
 fcppt::math::box::object<T, N>::object(fcppt::no_init const &_no_init)
-    : min_(_no_init), max_(_no_init)
+    : min_{_no_init}, max_{_no_init}
 {
 }
 
 template <typename T, fcppt::math::size_type N>
 fcppt::math::box::object<T, N>::object(vector const _pos, dim const _size)
-    : min_(_pos), max_(_pos + _size)
+    : min_{_pos}, max_{_pos + _size}
 {
 }
 
 template <typename T, fcppt::math::size_type N>
-fcppt::math::box::object<T, N>::object(vector _min, vector _max)
-    : min_(std::move(_min)), max_(std::move(_max))
+fcppt::math::box::object<T, N>::object(min_t _min, max_t _max)
+    : min_{std::move(_min.get())}, max_{std::move(_max.get())}
 {
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::vector &fcppt::math::box::object<T, N>::pos()
 {
-  return min_;
+  return this->min_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::vector const &fcppt::math::box::object<T, N>::pos() const
 {
-  return min_;
+  return this->min_;
+}
+
+template <typename T, fcppt::math::size_type N>
+typename fcppt::math::box::object<T, N>::vector &fcppt::math::box::object<T, N>::min()
+{
+  return this->min_;
+}
+
+template <typename T, fcppt::math::size_type N>
+typename fcppt::math::box::object<T, N>::vector const &fcppt::math::box::object<T, N>::min() const
+{
+  return this->min_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::vector &fcppt::math::box::object<T, N>::max()
 {
-  return max_;
+  return this->max_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::vector const &fcppt::math::box::object<T, N>::max() const
 {
-  return max_;
+  return this->max_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::dim fcppt::math::box::object<T, N>::size() const
 {
-  return fcppt::math::vector::to_dim(max_ - min_);
+  return fcppt::math::vector::to_dim(this->max_ - this->min_);
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::value_type fcppt::math::box::object<T, N>::left() const
 {
-  return min_.x();
+  return this->min_.x();
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::value_type fcppt::math::box::object<T, N>::right() const
 {
-  return max_.x();
+  return this->max_.x();
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::value_type fcppt::math::box::object<T, N>::top() const
 {
-  return min_.y();
+  return this->min_.y();
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::value_type fcppt::math::box::object<T, N>::bottom() const
 {
-  return max_.y();
+  return this->max_.y();
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::value_type fcppt::math::box::object<T, N>::front() const
 {
-  return min_.z();
+  return this->min_.z();
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::box::object<T, N>::value_type fcppt::math::box::object<T, N>::back() const
 {
-  return max_.z();
+  return this->max_.z();
 }
 
 #endif

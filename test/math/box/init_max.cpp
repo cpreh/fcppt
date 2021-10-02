@@ -22,5 +22,5 @@ TEST_CASE("math::box::init_max", "[math],[box]")
       fcppt::math::box::init_max<box2>(
           []<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>) {
             return fcppt::tuple::make(Index, Index);
-          }) == box2(box2::vector(0U, 1U), box2::vector(0U, 1U)));
+          }) == box2{box2::min_t{box2::vector{0U, 1U}}, box2::max_t{box2::vector{0U, 1U}}});
 }

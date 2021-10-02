@@ -24,8 +24,11 @@ fcppt::math::box::object<T, N> shrink(
     fcppt::math::box::object<T, N> const &_box,
     typename fcppt::math::box::object<T, N>::vector const &_absolute_values)
 {
-  return fcppt::math::box::object<T, N>(
-      _box.pos() + _absolute_values, _box.max() - _absolute_values);
+  using box = fcppt::math::box::object<T, N>;
+
+  return box{
+    typename box::min_t{_box.min() + _absolute_values},
+    typename box::max_t{_box.max() - _absolute_values}};
 }
 
 }

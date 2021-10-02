@@ -8,6 +8,7 @@
 
 #include <fcppt/math/box/detail/init.hpp>
 #include <fcppt/math/dim/init.hpp>
+#include <fcppt/math/vector/init.hpp>
 
 namespace fcppt::math::box
 {
@@ -29,7 +30,8 @@ template <typename Box, typename Function>
 inline Box init_dim(Function const &_function)
 {
   return fcppt::math::box::detail::init<Box>(
-      [](auto const &_init) { return fcppt::math::dim::init<typename Box::dim>(_init); },
+      [](auto const &_init_first) { return fcppt::math::vector::init<typename Box::vector>(_init_first); },
+      [](auto const &_init_second) { return fcppt::math::dim::init<typename Box::dim>(_init_second); },
       _function);
 }
 

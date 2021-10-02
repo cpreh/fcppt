@@ -13,15 +13,14 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
-#include <fcppt/math/vector/init.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
 namespace fcppt::math::box::detail
 {
-template <typename Box, typename InitSecond, typename Function>
-Box init(InitSecond const &_init_second, Function const &_function)
+template <typename Box, typename InitFirst, typename InitSecond, typename Function>
+Box init(InitFirst const &_init_first, InitSecond const &_init_second, Function const &_function)
 {
   static_assert(fcppt::math::box::is_box<Box>::value, "Box must be a box::object");
 
@@ -30,13 +29,12 @@ Box init(InitSecond const &_init_second, Function const &_function)
   using result_array =
       fcppt::array::object<fcppt::tuple::object<value_type, value_type>, Box::dim_wrapper::value>;
 
-  auto const results(fcppt::array::init<result_array>(
-      fcppt::math::detail::init_function<Function>(_function)));
+  auto const results{fcppt::array::init<result_array>(
+      fcppt::math::detail::init_function<Function>(_function))};
 
   return Box{
-      fcppt::math::vector::init<typename Box::vector>(
-          [&results]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
-          { return fcppt::tuple::get<0>(fcppt::array::get<Index>(results)); }),
+      _init_first([&results]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
+                  { return fcppt::tuple::get<0>(fcppt::array::get<Index>(results)); }),
       _init_second([&results]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
                    { return fcppt::tuple::get<1>(fcppt::array::get<Index>(results)); })};
 }
