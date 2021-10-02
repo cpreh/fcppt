@@ -7,6 +7,7 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
@@ -274,7 +275,7 @@ void fcppt::container::raw_vector::object<T, A>::reserve(size_type const _size)
     return;
   }
 
-  this->reallocate(this->new_capacity(_size));
+  this->reallocate(this->new_capacity(new_size_t{_size}));
 }
 
 template <typename T, typename A>
@@ -288,15 +289,15 @@ template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::insert(iterator const _position, T const &_value)
 {
-  size_type const new_size(this->size() + 1U);
+  new_size_t const new_size{this->size() + 1U};
 
-  if (new_size > this->capacity())
+  if (new_size.get() > this->capacity())
   {
     difference_type const insert_sz(_position - this->begin());
 
-    size_type const new_cap(this->new_capacity(new_size));
+    new_cap_t const new_cap{this->new_capacity(new_size)};
 
-    pointer const new_memory(this->impl_.alloc_.allocate(new_cap));
+    pointer const new_memory{this->allocate(new_cap)};
 
     if (!this->empty())
     {
@@ -340,15 +341,15 @@ template <typename T, typename A>
 void fcppt::container::raw_vector::object<T, A>::insert(
     iterator const _position, size_type const _size, T const &_value)
 {
-  size_type const new_size(this->size() + _size);
+  new_size_t const new_size{this->size() + _size};
 
-  if (new_size > this->capacity())
+  if (new_size.get() > this->capacity())
   {
     difference_type const insert_sz(_position - this->begin());
 
-    size_type const new_cap(this->new_capacity(new_size));
+    new_cap_t const new_cap{this->new_capacity(new_size)};
 
-    pointer const new_memory(this->impl_.alloc_.allocate(new_cap));
+    pointer const new_memory(this->allocate(new_cap));
 
     if (!this->empty())
     {
@@ -419,7 +420,7 @@ fcppt::container::raw_vector::object<T, A>::erase(
 template <typename T, typename A>
 void fcppt::container::raw_vector::object<T, A>::shrink_to_fit()
 {
-  this->reallocate(this->size());
+  this->reallocate(new_cap_t{this->size()});
 }
 
 template <typename T, typename A>
@@ -448,17 +449,15 @@ fcppt::container::raw_vector::object<T, A>::insert_impl(
 {
   difference_type const distance(std::distance(_left, _right));
 
-  size_type const new_size(this->size() + fcppt::cast::to_unsigned(distance));
+  new_size_t const new_size{this->size() + fcppt::cast::to_unsigned(distance)};
 
-  if (new_size > this->capacity())
+  if (new_size.get() > this->capacity())
   {
     difference_type const insert_sz(_position - this->begin());
 
-    size_type const new_cap(this->new_capacity(new_size));
+    new_cap_t const new_cap{this->new_capacity(new_size)};
 
-    pointer const new_memory(
-        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        this->impl_.alloc_.allocate(new_cap));
+    pointer const new_memory(this->allocate(new_cap));
 
     if (!this->empty())
     {
@@ -490,18 +489,18 @@ fcppt::container::raw_vector::object<T, A>::insert_impl(
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::size_type
-fcppt::container::raw_vector::object<T, A>::new_capacity(size_type const _new_size) const noexcept
+typename fcppt::container::raw_vector::object<T, A>::new_cap_t
+fcppt::container::raw_vector::object<T, A>::new_capacity(new_size_t const _new_size) const noexcept
 {
-  return std::max(_new_size, this->capacity() * 2U);
+  return new_cap_t{std::max(_new_size.get(), this->capacity() * 2U)};
 }
 
 template <typename T, typename A>
-void fcppt::container::raw_vector::object<T, A>::reallocate(size_type const _new_cap)
+void fcppt::container::raw_vector::object<T, A>::reallocate(new_cap_t const _new_cap)
 {
-  size_type const old_size(this->size());
+  new_size_t const old_size{this->size()};
 
-  pointer const new_memory(this->impl_.alloc_.allocate(_new_cap));
+  pointer const new_memory{this->allocate(_new_cap)};
 
   if (!this->empty())
   {
@@ -515,13 +514,20 @@ void fcppt::container::raw_vector::object<T, A>::reallocate(size_type const _new
 
 template <typename T, typename A>
 void fcppt::container::raw_vector::object<T, A>::set_pointers(
-    pointer const _first, size_type const _size, size_type const _cap) noexcept
+    pointer const _first, new_size_t const _size, new_cap_t const _cap) noexcept
 {
   this->impl_.first_ = _first;
 
-  this->impl_.last_ = impl_.first_ + _size;
+  this->impl_.last_ = impl_.first_ + _size.get();
 
-  this->impl_.cap_ = impl_.first_ + _cap;
+  this->impl_.cap_ = impl_.first_ + _cap.get();
+}
+
+template <typename T, typename A>
+typename fcppt::container::raw_vector::object<T, A>::pointer
+fcppt::container::raw_vector::object<T, A>::allocate(new_cap_t const _new_cap)
+{
+  return this->impl_.alloc_.allocate(_new_cap.get());
 }
 
 template <typename T, typename A>
