@@ -33,6 +33,12 @@ function(
 			NO_CODE
 			NO_CODE
 		)
+	else()
+		list(
+			APPEND
+			_LINK_LIBS
+			fcppt_catch_interface
+		)
 	endif()
 
 	set(
@@ -46,7 +52,6 @@ function(
 		${NO_CODE}
 		LINK_LIBS
 			${_LINK_LIBS}
-			fcppt_catch_interface
 			fcppt_core_interface
 		INCLUDE_DIRS
 			${_INCLUDE_DIRS}
