@@ -5,11 +5,15 @@
 
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/unique_ptr_from_std.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("unique_ptr_from_std", "[smartptr]")
 {
@@ -20,3 +24,5 @@ TEST_CASE("unique_ptr_from_std", "[smartptr]")
 
   CHECK_FALSE(fcppt::unique_ptr_from_std(std::unique_ptr<int>{}).has_value());
 }
+
+FCPPT_CATCH_END

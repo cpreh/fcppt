@@ -9,6 +9,8 @@
 #include <fcppt/unique_ptr_dynamic_cast.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -38,6 +40,8 @@ public:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("unique_ptr_dynamic_cast", "[smartptr]")
 {
   using base_unique_ptr = fcppt::unique_ptr<base>;
@@ -52,3 +56,5 @@ TEST_CASE("unique_ptr_dynamic_cast", "[smartptr]")
       fcppt::unique_ptr_dynamic_cast<fcppt::cast::dynamic_fun, derived>(
           fcppt::unique_ptr_to_base<base>(fcppt::make_unique_ptr<derived>()))));
 }
+
+FCPPT_CATCH_END

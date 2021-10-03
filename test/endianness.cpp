@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/swap.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <bit>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("endianness", "[endianness]")
 {
@@ -32,3 +36,5 @@ TEST_CASE("endianness", "[endianness]")
           fcppt::endianness::convert(foo, std::endian::little),
           std::endian::little) == 108);
 }
+
+FCPPT_CATCH_END

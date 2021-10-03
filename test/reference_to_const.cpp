@@ -7,9 +7,13 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_to_const.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("reference_to_const", "[ref]")
 {
@@ -17,3 +21,5 @@ TEST_CASE("reference_to_const", "[ref]")
 
   CHECK(fcppt::reference_to_const(fcppt::make_ref(value)) == fcppt::make_cref(value));
 }
+
+FCPPT_CATCH_END

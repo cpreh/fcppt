@@ -7,6 +7,8 @@
 #include <fcppt/output_pair.hpp>
 #include <fcppt/output_range.hpp>
 #include <fcppt/output_string.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
@@ -14,6 +16,8 @@
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("output value", "[various]")
 {
@@ -59,3 +63,5 @@ TEST_CASE("output wide string", "[various]")
 
   CHECK(stream.str() == std::wstring{L"test"});
 }
+
+FCPPT_CATCH_END

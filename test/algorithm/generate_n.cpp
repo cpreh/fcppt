@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/generate_n.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm generate_n", "[algorithm_generate_n]")
 {
@@ -19,3 +23,5 @@ TEST_CASE("algorithm generate_n", "[algorithm_generate_n]")
           return index++;
         }) == int_vector{0, 1, 2});
 }
+
+FCPPT_CATCH_END

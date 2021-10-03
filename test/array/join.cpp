@@ -5,10 +5,14 @@
 
 #include <fcppt/array/join.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("array::join", "[array]")
 {
@@ -37,3 +41,5 @@ TEST_CASE("array::join move", "[array]")
           int_movable{6},
           int_movable{7}});
 }
+
+FCPPT_CATCH_END

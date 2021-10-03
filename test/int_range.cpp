@@ -13,6 +13,8 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -43,6 +45,8 @@ FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("make_int_range", "[various]")
 {
   CHECK(copy_range(fcppt::make_int_range(0, 3)) == std::vector<int>{0, 1, 2});
@@ -64,3 +68,5 @@ TEST_CASE("int_range empty", "[various]")
 {
   CHECK(copy_range(fcppt::make_int_range(3, 2)).empty());
 }
+
+FCPPT_CATCH_END

@@ -5,11 +5,15 @@
 
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("cyclic_iterator array", "[cyclic_iterator]")
 {
@@ -67,3 +71,5 @@ TEST_CASE("cyclic_iterator array", "[cyclic_iterator]")
 
   REQUIRE(test == start);
 }
+
+FCPPT_CATCH_END

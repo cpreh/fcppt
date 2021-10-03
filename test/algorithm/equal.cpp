@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/equal.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <list>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm equal"
           "[algorithm]")
@@ -19,3 +23,5 @@ TEST_CASE("algorithm equal"
 
   CHECK_FALSE(fcppt::algorithm::equal(std::vector<int>{1, 3}, std::list<int>{1, 2}));
 }
+
+FCPPT_CATCH_END

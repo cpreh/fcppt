@@ -8,6 +8,8 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_to_base.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -36,6 +38,8 @@ public:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("reference_to_base", "[ref]")
 {
   {
@@ -56,3 +60,5 @@ TEST_CASE("reference_to_base", "[ref]")
     CHECK(&const_derived == &const_base.get());
   }
 }
+
+FCPPT_CATCH_END

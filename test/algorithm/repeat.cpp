@@ -4,9 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/repeat.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm::repeat", "[algorithm]")
 {
@@ -16,3 +20,5 @@ TEST_CASE("algorithm::repeat", "[algorithm]")
 
   CHECK(value == 10);
 }
+
+FCPPT_CATCH_END

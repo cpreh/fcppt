@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/copy.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("copy", "[various]")
 {
@@ -17,3 +21,5 @@ TEST_CASE("copy", "[various]")
 
   CHECK(function(fcppt::copy(value)) == value);
 }
+
+FCPPT_CATCH_END

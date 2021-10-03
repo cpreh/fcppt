@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/split_string.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm_split_string"
           "[algorithm]")
@@ -36,3 +40,5 @@ TEST_CASE("algorithm_split_string"
       fcppt::algorithm::split_string(std::string{"aaxbbxc"}, 'x') ==
       std::vector<std::string>{std::string{"aa"}, std::string{"bb"}, std::string{"c"}});
 }
+
+FCPPT_CATCH_END

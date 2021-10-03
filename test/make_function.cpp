@@ -5,6 +5,8 @@
 
 #include <fcppt/function.hpp>
 #include <fcppt/make_function.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -15,6 +17,8 @@ int function(int const _value) { return _value + 1; }
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("make_function", "[various]")
 {
   using int_function = fcppt::function<int(int)>;
@@ -23,3 +27,5 @@ TEST_CASE("make_function", "[various]")
 
   CHECK(func(10) == 11);
 }
+
+FCPPT_CATCH_END

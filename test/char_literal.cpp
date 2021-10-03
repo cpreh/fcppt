@@ -4,9 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/char_literal.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("char_literal", "[various]")
 {
@@ -18,3 +22,5 @@ TEST_CASE("char_literal", "[various]")
 
   CHECK(FCPPT_CHAR_LITERAL(char32_t, 't') == U't');
 }
+
+FCPPT_CATCH_END

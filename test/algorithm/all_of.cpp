@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm::all_of", "[algorithm]")
 {
@@ -19,3 +23,5 @@ TEST_CASE("algorithm::all_of", "[algorithm]")
   CHECK_FALSE(fcppt::algorithm::all_of(
       int_vector{2, 3, 4, 6}, [](int const _val) { return _val % 2 == 0; }));
 }
+
+FCPPT_CATCH_END

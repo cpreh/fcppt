@@ -8,6 +8,8 @@
 #include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/shifted_mask_c.hpp>
 #include <fcppt/bit/test.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <cstdint>
@@ -19,6 +21,8 @@ namespace
 static_assert(fcppt::bit::shifted_mask_c<unsigned, 10>().get() == 1U << 10U);
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("bit", "[bit]")
 {
@@ -34,3 +38,5 @@ TEST_CASE("bit", "[bit]")
 
   CHECK(fcppt::bit::test(0xF0U, fcppt::bit::mask<unsigned>(0x1FU)));
 }
+
+FCPPT_CATCH_END

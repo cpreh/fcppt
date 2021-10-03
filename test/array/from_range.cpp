@@ -5,6 +5,8 @@
 
 #include <fcppt/array/from_range.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -12,6 +14,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("array::from_range", "[array]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("array::from_range", "[array]")
       fcppt::array::from_range<2>(std::vector<int>{1, 2, 3}) ==
       fcppt::optional::object<fcppt::array::object<int, 2>>());
 }
+
+FCPPT_CATCH_END

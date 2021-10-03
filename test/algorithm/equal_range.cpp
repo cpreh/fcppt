@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/equal_range.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/iterator/range_comparison.hpp>
 #include <fcppt/range/empty.hpp>
@@ -12,6 +14,8 @@
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm equal_range"
           "[algorithm_equal_range]")
@@ -26,3 +30,5 @@ TEST_CASE("algorithm equal_range"
       fcppt::algorithm::equal_range(vec, 5) ==
       fcppt::iterator::make_range(std::next(vec.begin(), 1), std::next(vec.begin(), 3)));
 }
+
+FCPPT_CATCH_END

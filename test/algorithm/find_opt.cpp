@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/find_opt.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -12,6 +14,8 @@
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm find_opt"
           "[algorithm_find_opt]")
@@ -25,3 +29,5 @@ TEST_CASE("algorithm find_opt"
   CHECK(
       fcppt::algorithm::find_opt(vec, 4) == fcppt::optional::object<int_vector::const_iterator>{});
 }
+
+FCPPT_CATCH_END

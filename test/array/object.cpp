@@ -5,11 +5,15 @@
 
 #include <fcppt/array/get.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 template class fcppt::array::object<int,2U>;
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("array::array", "[array]")
 {
@@ -33,3 +37,5 @@ TEST_CASE("array::array", "[array]")
   CHECK(test2.data() == &*test2.begin());
   CHECK(test2.size() == 1U);
 }
+
+FCPPT_CATCH_END

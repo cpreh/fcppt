@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/map_optional.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -11,6 +13,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm map_optional", "[algorithm_map_optional]", )
 {
@@ -27,3 +31,5 @@ TEST_CASE("algorithm map_optional", "[algorithm_map_optional]", )
         return _value == 1 ? optional_int_movable{int_movable{_value}} : optional_int_movable{};
       }) == fcppt::container::make<int_movable_vector>(int_movable{1}));
 }
+
+FCPPT_CATCH_END

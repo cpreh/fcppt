@@ -5,12 +5,16 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm fold_break"
           "[algorithm_fold_break]")
@@ -48,3 +52,5 @@ TEST_CASE("algorithm fold_break move"
           })
           .value() == 6);
 }
+
+FCPPT_CATCH_END

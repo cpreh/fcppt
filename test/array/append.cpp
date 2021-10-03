@@ -5,10 +5,14 @@
 
 #include <fcppt/array/append.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("array::append", "[array]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("array::append move", "[array]")
       fcppt::array::object<int_movable, 5>{
           int_movable{1}, int_movable{2}, int_movable{3}, int_movable{4}, int_movable{5}});
 }
+
+FCPPT_CATCH_END

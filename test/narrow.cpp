@@ -5,6 +5,8 @@
 
 #include <fcppt/narrow.hpp>
 #include <fcppt/optional_std_string.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,9 +14,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("narrow", "[string]")
 {
   std::wstring const test{};
 
   CHECK(fcppt::narrow(test) == fcppt::optional_std_string{std::string{}});
 }
+
+FCPPT_CATCH_END

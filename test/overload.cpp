@@ -4,9 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/overload.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("overload", "[various]")
 {
@@ -16,3 +20,5 @@ TEST_CASE("overload", "[various]")
 
   CHECK(function(0) == 1);
 }
+
+FCPPT_CATCH_END

@@ -5,6 +5,8 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/scoped_state_machine.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/clang_version_at_least.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
@@ -52,6 +54,8 @@ FCPPT_PP_POP_WARNING
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("scoped_state_machine", "[various]")
 {
   machine test{};
@@ -68,3 +72,5 @@ TEST_CASE("scoped_state_machine", "[various]")
 
   REQUIRE(test.terminated());
 }
+
+FCPPT_CATCH_END

@@ -15,6 +15,8 @@
 #include <fcppt/algorithm/map_record.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
@@ -41,6 +43,8 @@ using int_movable = fcppt::catch_::movable<int>;
 using int_movable_vector = std::vector<int_movable>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm_map"
           "[algorithm_map]")
@@ -128,3 +132,5 @@ TEST_CASE("algorithm_map record", "[algorithm_map]")
             return fcppt::output_to_std_string(_value);
           }) == result_type{label1{} = std::string{"1"}, label2{} = std::string{"2"}});
 }
+
+FCPPT_CATCH_END

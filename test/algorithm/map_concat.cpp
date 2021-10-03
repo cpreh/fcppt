@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/map_concat.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,6 +22,8 @@ using int_movable = fcppt::catch_::movable<int>;
 using int_movable_vector = std::vector<int_movable>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm map_concat"
           "[algorithm_map_concat]")
@@ -46,3 +50,5 @@ TEST_CASE("algorithm_map_concat move", "[algorithm_map_concat]")
       fcppt::container::make<int_movable_vector>(
           int_movable{1}, int_movable{6}, int_movable{2}, int_movable{7}));
 }
+
+FCPPT_CATCH_END

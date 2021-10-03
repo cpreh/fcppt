@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/index_of.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -11,6 +13,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm find_opt"
           "[algorithm_find_opt]")
@@ -25,3 +29,5 @@ TEST_CASE("algorithm find_opt"
 
   CHECK(fcppt::algorithm::index_of(vec, 4) == fcppt::optional::object<int_vector::size_type>{});
 }
+
+FCPPT_CATCH_END

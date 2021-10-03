@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/reverse.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm::reverse", "[algorithm]")
 {
@@ -25,3 +29,5 @@ TEST_CASE("algorithm::reverse", "[algorithm]")
     CHECK(fcppt::algorithm::reverse(int_vector{1, 2, 3}) == expected);
   }
 }
+
+FCPPT_CATCH_END

@@ -5,12 +5,16 @@
 
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("array::init", "[array]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("array::init", "[array]")
           []<std::size_t Index>(std::integral_constant<std::size_t, Index>)
           { return movable{Index}; }) == movable_2_array{movable{0U}, movable{1U}});
 }
+
+FCPPT_CATCH_END

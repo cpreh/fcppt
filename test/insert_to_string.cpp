@@ -8,10 +8,14 @@
 #include <fcppt/output_to_std_wstring.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("output_to_string", "[string]")
 {
@@ -21,3 +25,5 @@ TEST_CASE("output_to_string", "[string]")
 
   CHECK(fcppt::output_to_std_wstring(42) == std::wstring{L"42"});
 }
+
+FCPPT_CATCH_END

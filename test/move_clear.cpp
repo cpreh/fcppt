@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/move_clear.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("move_clear", "[various]")
 {
@@ -21,3 +25,5 @@ TEST_CASE("move_clear", "[various]")
 
   CHECK(ints.empty());
 }
+
+FCPPT_CATCH_END

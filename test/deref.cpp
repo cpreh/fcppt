@@ -11,9 +11,13 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("deref value", "[various]")
 {
@@ -125,3 +129,5 @@ TEST_CASE("deref recursive", "[various]")
   static_assert(std::is_same_v<fcppt::deref_type<fcppt::recursive<int>>, int &>);
   static_assert(std::is_same_v<fcppt::deref_type<fcppt::recursive<int> const>, int const &>);
 }
+
+FCPPT_CATCH_END

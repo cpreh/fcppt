@@ -8,12 +8,16 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/array/map.hpp>
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("array::map", "array]")
 {
@@ -35,3 +39,5 @@ TEST_CASE("array::map move", "array]")
       fcppt::array::object<strong_int_movable, 2>{
           strong_int_movable{int_movable{1}}, strong_int_movable{int_movable{2}}});
 }
+
+FCPPT_CATCH_END

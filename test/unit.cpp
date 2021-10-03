@@ -6,9 +6,13 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("unit", "[various]")
 {
@@ -18,3 +22,5 @@ TEST_CASE("unit", "[various]")
 
   CHECK_FALSE(fcppt::unit{} != fcppt::unit{});
 }
+
+FCPPT_CATCH_END

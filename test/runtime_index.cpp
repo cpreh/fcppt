@@ -5,6 +5,8 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/runtime_index.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
@@ -18,6 +20,8 @@ template <int_type Value>
 using int_c = std::integral_constant<int_type, Value>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("runtime_index", "[various]")
 {
@@ -40,3 +44,5 @@ TEST_CASE("runtime_index", "[various]")
   CHECK(fcppt::runtime_index<max_index>(
       2U, [](auto) -> bool { return false; }, fcppt::const_(true)));
 }
+
+FCPPT_CATCH_END

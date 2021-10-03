@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/binary_search.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -12,6 +14,8 @@
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm binary search"
           "[algorithm]")
@@ -27,3 +31,5 @@ TEST_CASE("algorithm binary search"
   CHECK(
       fcppt::algorithm::binary_search(vec, 5) == fcppt::optional::make(std::next(vec.begin(), 1)));
 }
+
+FCPPT_CATCH_END

@@ -5,12 +5,16 @@
 
 #include <fcppt/algorithm/map_iteration.hpp>
 #include <fcppt/algorithm/update_action.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <map>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm map_iteration", "[algorithm_map_iteration]")
 {
@@ -33,3 +37,5 @@ TEST_CASE("algorithm map_iteration", "[algorithm_map_iteration]")
                       std::make_pair(2, "2"),
                       std::make_pair(4, "4")});
 }
+
+FCPPT_CATCH_END

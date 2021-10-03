@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
@@ -11,6 +13,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm::fold"
           "[algorithm]")
@@ -42,3 +46,5 @@ TEST_CASE("algorithm::fold move"
           0,
           [](int_movable &&_element, int const _sum) { return _element.value() + _sum; }) == 1);
 }
+
+FCPPT_CATCH_END

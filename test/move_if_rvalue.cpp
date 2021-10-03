@@ -7,6 +7,8 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>
@@ -41,6 +43,8 @@ int_unique_ptr take_arg(int_unique_ptr &&_arg) { return std::move(_arg); }
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("move_if_rvalue", "[various]")
 {
   {
@@ -55,3 +59,5 @@ TEST_CASE("move_if_rvalue", "[various]")
     CHECK(*foo == 1);
   }
 }
+
+FCPPT_CATCH_END

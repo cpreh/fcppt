@@ -5,11 +5,15 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/make_literal_boost_units.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("literal boost_units", "[literal]")
 {
@@ -17,3 +21,5 @@ TEST_CASE("literal boost_units", "[literal]")
 
   CHECK(fcppt::literal<length>(2).value() == 2);
 }
+
+FCPPT_CATCH_END

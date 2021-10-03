@@ -7,11 +7,15 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/interval.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm_loop mpl"
           "[algorithm_loop]")
@@ -39,3 +43,5 @@ TEST_CASE("algorithm_loop_range", "[algorithm_loop]")
 
   CHECK(value == 10);
 }
+
+FCPPT_CATCH_END

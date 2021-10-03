@@ -5,10 +5,14 @@
 
 #include <fcppt/widen.hpp>
 #include <fcppt/algorithm/repeat.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("widen", "[codecvt]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("widen", "[codecvt]")
     CHECK(output.size() == 6U);
   });
 }
+
+FCPPT_CATCH_END

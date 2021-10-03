@@ -6,6 +6,8 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <unordered_set>
@@ -26,6 +28,8 @@ struct test
 };
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("reference", "[ref]")
 {
@@ -93,3 +97,5 @@ TEST_CASE("reference call", "[ref]")
 
   CHECK(ref->value() == 42);
 }
+
+FCPPT_CATCH_END
