@@ -36,6 +36,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
 #if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(8, 0)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi-stmt)
 #endif
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(13, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wreserved-identifier)
+#endif
 
 #else
 
