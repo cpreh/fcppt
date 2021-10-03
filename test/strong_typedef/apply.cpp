@@ -9,6 +9,8 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <utility>
@@ -23,6 +25,8 @@ using int_unique_ptr = fcppt::unique_ptr<int>;
 FCPPT_MAKE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("strong_typedef_apply", "[strongtypedef]")
 {
@@ -51,3 +55,5 @@ TEST_CASE("strong_typedef_apply move", "[strongtypedef]")
 
   CHECK(*result.get().second == 42);
 }
+
+FCPPT_CATCH_END

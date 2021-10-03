@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/sphere/circle.hpp>
 #include <fcppt/math/sphere/comparison.hpp>
 #include <fcppt/math/sphere/intersects.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::sphere::intersects", "[math],[sphere]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("math::sphere comparison", "[math],[sphere]")
       circle_type(circle_type::point_type(1, 3), 2) ==
       circle_type(circle_type::point_type(1, 3), 2));
 }
+
+FCPPT_CATCH_END

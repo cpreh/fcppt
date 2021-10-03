@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/literal.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/read_from_opt.hpp>
 #include <fcppt/optional/make.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::buffer::read_from_opt", "[container],[buffer]")
 {
@@ -30,3 +34,5 @@ TEST_CASE("container::buffer::read_from_opt", "[container],[buffer]")
             })
             .has_value());
 }
+
+FCPPT_CATCH_END

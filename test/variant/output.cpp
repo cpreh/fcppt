@@ -5,12 +5,16 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variant output", "[variant]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("variant output", "[variant]")
 
   CHECK(stream.str() == fcppt::string{FCPPT_TEXT("1")});
 }
+
+FCPPT_CATCH_END

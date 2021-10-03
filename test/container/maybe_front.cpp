@@ -6,6 +6,8 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/maybe_front.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
@@ -14,6 +16,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::maybe_front", "[container]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("container::maybe_front", "[container]")
 
   CHECK(fcppt::container::maybe_front(vec12) == optional_int_ref(fcppt::make_cref(vec12.front())));
 }
+
+FCPPT_CATCH_END

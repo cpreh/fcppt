@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/level.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree::level", "[container],[tree]")
 {
@@ -24,3 +28,5 @@ TEST_CASE("container::tree::level", "[container],[tree]")
 
   CHECK(fcppt::container::tree::level(back.get()) == 1U);
 }
+
+FCPPT_CATCH_END

@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/truncation_check.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -12,6 +14,8 @@
 #include <climits>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("cast::truncation_check", "[cast]")
 {
@@ -42,3 +46,5 @@ TEST_CASE("cast::truncation_check", "[cast]")
 
   CHECK(fcppt::cast::truncation_check<long>(-1) == fcppt::optional::make(-1L));
 }
+
+FCPPT_CATCH_END

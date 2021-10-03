@@ -6,6 +6,8 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
@@ -13,6 +15,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::map_failure", "[either]")
 {
@@ -34,3 +38,5 @@ TEST_CASE("either::map_failure", "[either]")
       fcppt::either::map_failure(either_char(int_strong{10}), map_function) ==
       either_string(int_strong{10}));
 }
+
+FCPPT_CATCH_END

@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/is_zero_boost_units.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -16,6 +18,8 @@
 #include <boost/units/systems/si/velocity.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math units", "[math]")
 {
@@ -42,3 +46,5 @@ TEST_CASE("math units", "[math]")
                      -25 * boost::units::si::meter / boost::units::si::second,
                      100 * boost::units::si::meter / boost::units::si::second}));
 }
+
+FCPPT_CATCH_END

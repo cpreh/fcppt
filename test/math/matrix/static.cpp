@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/no_init.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::static", "[math],[matrix]")
 {
@@ -45,3 +49,5 @@ TEST_CASE("math::matrix::static no_init", "[math],[matrix]")
   matrix22 const no_init{fcppt::no_init{}};
   CHECK(no_init.storage().data() != nullptr);
 }
+
+FCPPT_CATCH_END

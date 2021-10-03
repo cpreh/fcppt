@@ -9,6 +9,8 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -65,6 +67,8 @@ public:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("variant::dynamic_cast", "[variant]")
 {
   using derived_types = fcppt::mpl::list::object<derived1, derived2>;
@@ -117,3 +121,5 @@ TEST_CASE("variant::dynamic_cast const", "[variant]")
     CHECK(result == result_type{result_variant{fcppt::make_cref(d2)}});
   }
 }
+
+FCPPT_CATCH_END

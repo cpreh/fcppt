@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree swap", "[container],[tree]")
 {
@@ -33,3 +37,5 @@ TEST_CASE("container::tree swap", "[container],[tree]")
       [] { CHECK(false); },
       [](fcppt::reference<i_tree> const _tree) { CHECK(_tree.get().value() == 2); });
 }
+
+FCPPT_CATCH_END

@@ -5,6 +5,8 @@
 
 #include <fcppt/identity.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/enum/make_range.hpp>
 #include <fcppt/enum/make_range_start.hpp>
 #include <fcppt/enum/make_range_start_end.hpp>
@@ -33,6 +35,8 @@ enum_vector copy_range(fcppt::enum_::range<test_enum> const _range)
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::make_range", "[enum]")
 {
   CHECK(
@@ -53,3 +57,5 @@ TEST_CASE("enum::make_range_start_end", "[enum]")
       copy_range(fcppt::enum_::make_range_start_end(test_enum::test2, test_enum::test2)) ==
       enum_vector{test_enum::test2});
 }
+
+FCPPT_CATCH_END

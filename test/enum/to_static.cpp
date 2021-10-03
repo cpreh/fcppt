@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/enum/to_static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -21,6 +23,8 @@ enum class my_enum
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::to_static", "[enum]")
 {
   fcppt::enum_::to_static(
@@ -28,3 +32,5 @@ TEST_CASE("enum::to_static", "[enum]")
       []<my_enum Value>(std::integral_constant<my_enum, Value>)
       { CHECK(Value == my_enum::test3); });
 }
+
+FCPPT_CATCH_END

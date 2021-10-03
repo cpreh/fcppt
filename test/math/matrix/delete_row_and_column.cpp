@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/literal.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::delete_row_and_column", "[math],[matrix]")
 {
@@ -39,3 +43,5 @@ TEST_CASE("math::matrix::delete_row_and_column", "[math],[matrix]")
           fcppt::math::matrix::row(8, 9),
           fcppt::math::matrix::row(11, 12)));
 }
+
+FCPPT_CATCH_END

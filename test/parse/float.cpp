@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/output.hpp>
@@ -16,6 +18,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::float", "[parse]")
 {
@@ -39,3 +43,5 @@ TEST_CASE("parse::float", "[parse]")
       [](fcppt::parse::error<char> const &) { CHECK(false); },
       [](float const _value) { CHECK(_value == -1.5_a); });
 }
+
+FCPPT_CATCH_END

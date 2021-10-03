@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/center.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -10,6 +12,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::box::center", "[math],[box]")
 {
@@ -19,3 +23,5 @@ TEST_CASE("math::box::center", "[math],[box]")
       fcppt::math::box::center(box_type{box_type::vector{10, 12, 14}, box_type::dim{24, 26, 4}}) ==
       box_type::vector{22, 25, 16});
 }
+
+FCPPT_CATCH_END

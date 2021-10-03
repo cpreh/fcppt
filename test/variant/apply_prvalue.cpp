@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -32,6 +34,8 @@ struct function
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("variant::apply prvalue", "[variant]")
 {
   using variant = fcppt::variant::object<bool, int, std::string>;
@@ -40,3 +44,5 @@ TEST_CASE("variant::apply prvalue", "[variant]")
 
   fcppt::variant::apply(function(), variant(false), variant(1), variant(string));
 }
+
+FCPPT_CATCH_END

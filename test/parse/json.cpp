@@ -9,8 +9,10 @@
 #include <fcppt/recursive.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/convert.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/recursive.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/tuple.hpp>
@@ -243,6 +245,8 @@ struct StringMaker<json::value>
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::json base", "[parse]")
 {
   parser const parser_{};
@@ -320,3 +324,5 @@ TEST_CASE("parse::json object", "[parse]")
                   json::object::value_type{std::string{"A"}, json::make_value(std::string{"test"})},
                   json::object::value_type{std::string{"B"}, json::make_value(20)}))})}));
 }
+
+FCPPT_CATCH_END

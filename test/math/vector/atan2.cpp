@@ -5,6 +5,8 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/literal.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -36,6 +38,8 @@ bool almost_equal(
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("math::vector::atan2", "[math],[vector]")
 {
   using float2_vec = fcppt::math::vector::static_<scalar, 2>;
@@ -54,3 +58,5 @@ TEST_CASE("math::vector::atan2", "[math],[vector]")
   CHECK(almost_equal(
       fcppt::math::vector::atan2(float2_vec{0.F, -1.F}), fcppt::optional::make(-pi / 2.F)));
 }
+
+FCPPT_CATCH_END

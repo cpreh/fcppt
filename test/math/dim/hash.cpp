@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/std_hash.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim::hash", "[math],[dim]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("math::dim::hash", "[math],[dim]")
 
   CHECK(set.count(int3_dim(4, 2, 3)) == 0U);
 }
+
+FCPPT_CATCH_END

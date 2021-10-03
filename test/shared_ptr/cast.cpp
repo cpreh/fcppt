@@ -9,6 +9,8 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/static_pointer_cast.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -42,6 +44,8 @@ using base_ptr = fcppt::shared_ptr<base>;
 using derived_ptr = fcppt::shared_ptr<derived>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("dynamic_pointer_cast", "[smartptr]")
 {
@@ -88,3 +92,5 @@ TEST_CASE("const_pointer_cast", "[smartptr]")
 
   CHECK(ptr.use_count() == 1L);
 }
+
+FCPPT_CATCH_END

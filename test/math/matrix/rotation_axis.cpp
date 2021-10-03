@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -30,6 +32,8 @@ bool compare_matrices(Matrix const &_m1, Matrix const &_m2)
 }
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
 {
@@ -65,3 +69,5 @@ TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
       fcppt::math::matrix::rotation_axis(angle, vector_rotation_type(0.F, 0.F, 1.F)),
       fcppt::math::matrix::rotation_z(angle)));
 }
+
+FCPPT_CATCH_END

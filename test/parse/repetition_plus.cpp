@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
@@ -17,6 +19,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::repetition_plus", "[parse]")
 {
   auto const parser{+fcppt::parse::char_{}};
@@ -29,3 +33,5 @@ TEST_CASE("parse::repetition_plus", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"XYZ"}) ==
       fcppt::parse::make_success<char>(result_type{'X', 'Y', 'Z'}));
 }
+
+FCPPT_CATCH_END

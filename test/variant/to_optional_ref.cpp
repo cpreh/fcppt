@@ -7,6 +7,8 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
@@ -15,6 +17,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variant::to_optional_ref", "[variant]")
 {
@@ -44,3 +48,5 @@ TEST_CASE("variant::to_optional_ref", "[variant]")
         fcppt::optional::reference<std::string const>());
   }
 }
+
+FCPPT_CATCH_END

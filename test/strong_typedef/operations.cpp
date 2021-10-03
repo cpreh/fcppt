@@ -7,6 +7,8 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_operators.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -18,6 +20,8 @@ FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 FCPPT_MAKE_STRONG_TYPEDEF(unsigned, strong_uint);
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("strong_typedef arithmetic", "[strongtypedef]")
 {
@@ -115,3 +119,5 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
 
   CHECK(test3 > test1);
 }
+
+FCPPT_CATCH_END

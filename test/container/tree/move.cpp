@@ -7,6 +7,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,6 +17,8 @@
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree move", "[container],[tree]")
 {
@@ -90,3 +94,5 @@ TEST_CASE("container::tree move map", "[container],[tree]")
 
   CHECK(*result.at(1).value() == std::string("bar"));
 }
+
+FCPPT_CATCH_END

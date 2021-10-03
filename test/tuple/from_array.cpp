@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/tuple/comparison.hpp>
 #include <fcppt/tuple/from_array.hpp>
@@ -12,6 +14,8 @@
 #include <catch2/catch.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("tuple::from_array", "[tuple]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("tuple::from_array", "[tuple]")
           3,
       }) == fcppt::tuple::make(1, 2, 3));
 }
+
+FCPPT_CATCH_END

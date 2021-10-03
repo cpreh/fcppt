@@ -3,7 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/list.hpp>
@@ -16,6 +18,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::list", "[parse]")
 {
@@ -35,3 +39,5 @@ TEST_CASE("parse::list", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"[a,b]"}) ==
       fcppt::parse::make_success<char>(result_type{'a', 'b'}));
 }
+
+FCPPT_CATCH_END

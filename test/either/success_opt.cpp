@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/success_opt.hpp>
 #include <fcppt/optional/object.hpp>
@@ -11,6 +13,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::success_opt", "[either]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("either::success_opt", "[either]")
 
   CHECK(fcppt::either::success_opt(either_int(42)) == optional_int(42));
 }
+
+FCPPT_CATCH_END

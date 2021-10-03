@@ -6,6 +6,8 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/tuple/comparison.hpp>
@@ -13,6 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::detail::sequence_result", "[parse]")
 {
@@ -38,3 +42,5 @@ TEST_CASE("parse::detail::sequence_result", "[parse]")
           'Y', fcppt::parse::detail::sequence_result(fcppt::unit{}, 42)) ==
       fcppt::tuple::make('Y', 42));
 }
+
+FCPPT_CATCH_END

@@ -10,6 +10,8 @@
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic_any.hpp>
 #include <fcppt/cast/dynamic_any_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -48,6 +50,8 @@ struct other
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("cast::dynamic_any", "[cast]")
 {
   derived1 d1{};
@@ -64,3 +68,5 @@ TEST_CASE("cast::dynamic_any", "[cast]")
 
   CHECK(fcppt::cast::dynamic_any<other>(b1) == fcppt::optional::object<fcppt::reference<other>>{});
 }
+
+FCPPT_CATCH_END

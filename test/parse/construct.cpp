@@ -6,6 +6,8 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
@@ -19,6 +21,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::construct", "[parse]")
 {
   FCPPT_MAKE_STRONG_TYPEDEF(char, strong_char);
@@ -29,3 +33,5 @@ TEST_CASE("parse::construct", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
       fcppt::parse::make_success<char>(strong_char{'X'}));
 }
+
+FCPPT_CATCH_END

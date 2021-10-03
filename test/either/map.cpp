@@ -6,6 +6,8 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
@@ -16,6 +18,8 @@
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::map", "[either]")
 {
@@ -47,3 +51,5 @@ TEST_CASE("either::map move", "[either]")
       fcppt::either::map(either_int{int_movable{20}}, map_function) ==
       fcppt::either::object<std::string, strong_int_movable>{strong_int_movable{int_movable{20}}});
 }
+
+FCPPT_CATCH_END

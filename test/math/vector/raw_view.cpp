@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -92,6 +94,8 @@ private:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("math::vector raw_view", "[math],[vector]")
 {
   using value_type = unsigned;
@@ -124,3 +128,5 @@ TEST_CASE("math::vector raw_view", "[math],[vector]")
 
   CHECK(copy.y() == 2U);
 }
+
+FCPPT_CATCH_END

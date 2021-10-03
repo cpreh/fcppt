@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -26,6 +28,8 @@ void test_iterator(fcppt::iterator::range<Iterator> const _range)
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("iterator::make_range", "[iterator]")
 {
   using int_vector = std::vector<int>;
@@ -38,3 +42,5 @@ TEST_CASE("iterator::make_range", "[iterator]")
 
   test_iterator(fcppt::iterator::make_range(vec2.begin(), vec2.end()));
 }
+
+FCPPT_CATCH_END

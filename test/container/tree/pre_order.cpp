@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_end.hpp>
 
 template class fcppt::container::tree::object<int>;
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree::pre_order", "[container],[tree]")
 {
@@ -63,3 +67,5 @@ TEST_CASE("container::tree::pre_order", "[container],[tree]")
 
   CHECK(it == trav.end());
 }
+
+FCPPT_CATCH_END

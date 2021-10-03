@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/combine.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <functional>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::combine", "[optional]")
 {
@@ -25,3 +29,5 @@ TEST_CASE("optional::combine", "[optional]")
 
   CHECK(fcppt::optional::combine(optional_int(), optional_int(), add) == optional_int());
 }
+
+FCPPT_CATCH_END

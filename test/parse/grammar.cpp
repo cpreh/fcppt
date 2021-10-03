@@ -5,6 +5,8 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/nonmovable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/error_equal.hpp>
@@ -56,6 +58,8 @@ grammar::~grammar() = default;
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::grammar string", "[parse]")
 {
   CHECK(
@@ -72,3 +76,5 @@ TEST_CASE("parse::grammar stream", "[parse]")
       fcppt::parse::grammar_parse_stream(stream, grammar{}) ==
       fcppt::parse::make_success<char>(42));
 }
+
+FCPPT_CATCH_END

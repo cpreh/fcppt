@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -17,6 +19,8 @@ namespace
 using mat2 = fcppt::math::matrix::static_<int, 2, 2>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix arithmetic self", "[math],[matrix]")
 {
@@ -65,3 +69,5 @@ TEST_CASE("math::matrix arithmetic free", "[math],[matrix]")
       2 * mat2(fcppt::math::matrix::row(1, 2), fcppt::math::matrix::row(3, 4)) ==
       mat2(fcppt::math::matrix::row(2, 4), fcppt::math::matrix::row(6, 8)));
 }
+
+FCPPT_CATCH_END

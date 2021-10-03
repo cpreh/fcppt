@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/either/monad.hpp>
@@ -26,6 +28,8 @@ static_assert(std::is_same_v<
 static_assert(std::is_same_v<fcppt::monad::inner_type<fcppt::either::object<bool, int>>, int>);
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either monad return", "[either]")
 {
@@ -52,3 +56,5 @@ TEST_CASE("either monad bind", "[either]")
           return either_bool(std::string("failure"));
         }) == either_bool(std::string("failure")));
 }
+
+FCPPT_CATCH_END

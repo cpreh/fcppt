@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
@@ -12,6 +14,8 @@
 #include <sstream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::stream_to_string", "[io]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("io::stream_to_string", "[io]")
     CHECK(fcppt::io::stream_to_string(istream) == fcppt::optional::make(std::string{}));
   }
 }
+
+FCPPT_CATCH_END

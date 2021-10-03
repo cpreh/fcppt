@@ -5,6 +5,8 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/literal.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/angle_between_cast.hpp>
@@ -53,6 +55,8 @@ using fvector2 = fcppt::math::vector::static_<real, 2>;
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("math::vector::angle_between", "[math],[vector]")
 {
   CHECK(::compare(
@@ -87,3 +91,5 @@ TEST_CASE("math::vector::signed_angle_between_cast", "[math],[vector]")
       fcppt::math::vector::signed_angle_between_cast<real>(uivector2{2U, 2U}, uivector2{2U, 2U})
           .has_value());
 }
+
+FCPPT_CATCH_END

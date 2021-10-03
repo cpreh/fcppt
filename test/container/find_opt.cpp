@@ -8,6 +8,8 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
@@ -19,6 +21,8 @@
 #include <catch2/catch.hpp>
 #include <set>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::find_opt", "[container]")
 {
@@ -53,3 +57,5 @@ TEST_CASE("container::find_opt", "[container]")
 
   CHECK(fcppt::container::find_opt(set, strong_int(4)) == optional_int_ref{});
 }
+
+FCPPT_CATCH_END

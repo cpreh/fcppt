@@ -5,6 +5,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
@@ -13,9 +15,13 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("catch::variant", "[catch]")
 {
   using variant = fcppt::variant::object<fcppt::string>;
 
   CHECK(variant{fcppt::string{FCPPT_TEXT("test")}} == variant{fcppt::string{FCPPT_TEXT("test")}});
 }
+
+FCPPT_CATCH_END

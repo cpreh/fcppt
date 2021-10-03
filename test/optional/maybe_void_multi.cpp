@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/maybe_void_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::maybe_void_multi", "[optional]")
 {
@@ -27,3 +31,5 @@ TEST_CASE("optional::maybe_void_multi", "[optional]")
 
   CHECK(result == 30);
 }
+
+FCPPT_CATCH_END

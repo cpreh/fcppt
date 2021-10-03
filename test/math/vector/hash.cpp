@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -11,6 +13,8 @@
 #include <catch2/catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector::hash", "[math],[vector]")
 {
@@ -24,3 +28,5 @@ TEST_CASE("math::vector::hash", "[math],[vector]")
 
   CHECK(set.count(int3_vector(4, 2, 3)) == 0U);
 }
+
+FCPPT_CATCH_END

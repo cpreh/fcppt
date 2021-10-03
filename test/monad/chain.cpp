@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/extract_from_string.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/monad/chain.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
@@ -14,9 +16,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("monad::chain", "[monad]")
 {
   CHECK(fcppt::monad::chain(fcppt::optional::make(std::string{"1"}), [](std::string const &_value) {
           return fcppt::extract_from_string<int>(_value);
         }) == fcppt::optional::make(1));
 }
+
+FCPPT_CATCH_END

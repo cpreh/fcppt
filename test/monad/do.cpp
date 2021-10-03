@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/monad/do.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
@@ -24,6 +26,8 @@ auto lift_a2(F const &_f, T1 const &_t1, T2 const &_t2)
 }
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("monad::do", "[monad]")
 {
   CHECK(
@@ -34,3 +38,5 @@ TEST_CASE("monad::do", "[monad]")
           fcppt::optional::make(10),
           fcppt::optional::make(std::string{"x"})) == fcppt::optional::make(true));
 }
+
+FCPPT_CATCH_END

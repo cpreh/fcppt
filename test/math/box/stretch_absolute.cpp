@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
@@ -10,6 +12,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::box::stretch_absolute", "[math],[box]")
 {
@@ -21,3 +25,5 @@ TEST_CASE("math::box::stretch_absolute", "[math],[box]")
           signed_box_type::vector(2, 5)) ==
       signed_box_type(signed_box_type::vector(8, 7), signed_box_type::dim(28, 36)));
 }
+
+FCPPT_CATCH_END

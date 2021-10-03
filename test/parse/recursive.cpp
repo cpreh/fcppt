@@ -6,6 +6,8 @@
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
@@ -19,6 +21,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::recursive", "[parse]")
 {
   auto const parser{fcppt::parse::make_recursive(fcppt::parse::char_{})};
@@ -29,3 +33,5 @@ TEST_CASE("parse::recursive", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"Y"}) ==
       fcppt::parse::make_success<char>(fcppt::make_recursive('Y')));
 }
+
+FCPPT_CATCH_END

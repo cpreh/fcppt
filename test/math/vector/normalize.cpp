@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector::normalize", "[math],[vector]")
 {
@@ -17,3 +21,5 @@ TEST_CASE("math::vector::normalize", "[math],[vector]")
 
   CHECK_FALSE(fcppt::math::vector::normalize(float2_vec{0.F, 0.F}).has_value());
 }
+
+FCPPT_CATCH_END

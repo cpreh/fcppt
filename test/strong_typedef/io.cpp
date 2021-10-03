@@ -8,6 +8,8 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -25,6 +27,8 @@ namespace
 FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("strong_typedef output", "[strongtypedef]")
 {
@@ -58,3 +62,5 @@ TEST_CASE("strong_typedef input", "[strongtypedef]")
 
   CHECK(fcppt::optional::make(strong_int{1}) == result2);
 }
+
+FCPPT_CATCH_END

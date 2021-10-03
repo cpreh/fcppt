@@ -5,6 +5,8 @@
 
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/output.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::fill", "[container],[grid]")
 {
@@ -30,3 +34,5 @@ TEST_CASE("container::grid::fill", "[container],[grid]")
       int2_grid{
           fcppt::container::grid::static_row(0, 1), fcppt::container::grid::static_row(1, 2)});
 }
+
+FCPPT_CATCH_END

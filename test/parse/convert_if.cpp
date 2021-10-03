@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/output.hpp>
@@ -41,6 +43,8 @@ std::ostream &operator<<(std::ostream &_stream, my_struct const &_value)
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::convert_if", "[parse]")
 {
   auto const parser(fcppt::parse::make_convert_if(fcppt::parse::char_{}, [](char const _value) {
@@ -56,3 +60,5 @@ TEST_CASE("parse::convert_if", "[parse]")
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());
 }
+
+FCPPT_CATCH_END

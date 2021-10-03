@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/const.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/alternative.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::alternative", "[optional]")
 {
@@ -44,3 +48,5 @@ TEST_CASE("optional::alternative move", "[optional]")
           return optional_int_movable{};
         }) == optional_int_movable{int_movable{42}});
 }
+
+FCPPT_CATCH_END

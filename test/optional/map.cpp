@@ -7,6 +7,8 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/reference_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object.hpp>
@@ -19,6 +21,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::map", "[optional]")
 {
@@ -73,3 +77,5 @@ TEST_CASE("optional::map to_ref", "[optional]")
           opt, [](int &_val) -> fcppt::reference<int> { return fcppt::make_ref(_val); }) ==
       fcppt::optional::reference<int>{fcppt::make_ref(opt.get_unsafe())});
 }
+
+FCPPT_CATCH_END

@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/float_to_int_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::box::structure_cast", "[math],[box]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("math::box::structure_cast", "[math],[box]")
           box_f2{box_f2::vector(1.5F, 2.5F), box_f2::dim(3.5F, 4.5F)}) ==
       box_i2(box_i2::vector(1, 2), box_i2::dim(3, 4)));
 }
+
+FCPPT_CATCH_END

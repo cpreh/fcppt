@@ -5,6 +5,8 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
@@ -18,6 +20,8 @@
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::sequence_error", "[either]")
 {
@@ -37,3 +41,5 @@ TEST_CASE("either::sequence_error", "[either]")
                                     : either_error{std::string{"test"}};
           }) == either_error{fcppt::either::no_error{}});
 }
+
+FCPPT_CATCH_END

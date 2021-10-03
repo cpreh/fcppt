@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::infinity_norm", "[math],[matrix]")
 {
@@ -20,3 +24,5 @@ TEST_CASE("math::matrix::infinity_norm", "[math],[matrix]")
           fcppt::math::matrix::row(2, 6, 4),
           fcppt::math::matrix::row(0, 2, 8)}) == 15);
 }
+
+FCPPT_CATCH_END

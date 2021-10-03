@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -10,6 +12,8 @@
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::data", "[container]")
 {
@@ -28,3 +32,5 @@ TEST_CASE("container::data", "[container]")
   CHECK(
       std::distance(fcppt::container::data(container), fcppt::container::data_end(container)) == 2);
 }
+
+FCPPT_CATCH_END

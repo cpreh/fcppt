@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label_arg.hpp>
@@ -18,6 +20,8 @@ FCPPT_RECORD_MAKE_LABEL_ARG(texture, unsigned);
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("record arg label", "[record]")
 {
   using record_type = fcppt::record::object<
@@ -31,3 +35,5 @@ TEST_CASE("record arg label", "[record]")
 
   CHECK(fcppt::record::get<texture<1>>(test_sprite) == std::string("clouds"));
 }
+
+FCPPT_CATCH_END

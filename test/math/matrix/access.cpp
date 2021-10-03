@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
@@ -13,6 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix access", "[math],[matrix]")
 {
@@ -93,3 +97,5 @@ TEST_CASE("math::matrix access", "[math],[matrix]")
 
   CHECK(mat_nc.m33() == fcppt::tuple::make(3U, 3U));
 }
+
+FCPPT_CATCH_END

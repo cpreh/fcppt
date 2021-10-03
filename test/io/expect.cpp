@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/expect.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::expect", "[io]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("io::expect", "[io]")
 
   CHECK_FALSE(stream);
 }
+
+FCPPT_CATCH_END

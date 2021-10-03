@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/convert_const.hpp>
@@ -16,6 +18,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::convert_const", "[parse]")
 {
   auto const parser(fcppt::parse::convert_const(fcppt::parse::string{"true"}, true));
@@ -26,3 +30,5 @@ TEST_CASE("parse::convert_const", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"true"}) ==
       fcppt::parse::make_success<char>(true));
 }
+
+FCPPT_CATCH_END

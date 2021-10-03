@@ -6,6 +6,8 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_to_base.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/column.hpp>
@@ -21,6 +23,8 @@
 #include <istream>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::stream", "[parse]")
 {
@@ -70,3 +74,5 @@ TEST_CASE("parse::stream", "[parse]")
           fcppt::optional::make(
               fcppt::parse::location{fcppt::parse::line{2U}, fcppt::parse::column{1U}})});
 }
+
+FCPPT_CATCH_END

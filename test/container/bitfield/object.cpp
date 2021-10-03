@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -23,6 +25,8 @@ using bitfield = fcppt::container::bitfield::object<test_enum>;
 static_assert(bitfield::array_size::value == 1U);
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("container::bitfield object", "[container],[bitfield]")
 {
   bitfield const field1{test_enum::test1, test_enum::test3};
@@ -33,3 +37,5 @@ TEST_CASE("container::bitfield object", "[container],[bitfield]")
 
   CHECK(field1.get(test_enum::test3));
 }
+
+FCPPT_CATCH_END

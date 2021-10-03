@@ -5,6 +5,8 @@
 
 #include <fcppt/string_view.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/narrow_string_locale.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
@@ -15,9 +17,13 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("io::narrow_string_locale", "[io]")
 {
   CHECK(
       fcppt::io::narrow_string_locale(fcppt::string_view{FCPPT_TEXT("test")}, std::locale{}) ==
       fcppt::optional::make(std::string{"test"}));
 }
+
+FCPPT_CATCH_END

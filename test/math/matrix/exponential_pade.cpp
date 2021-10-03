@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/exponential_pade.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::exponential_pade", "[math[,[matrix]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("math::matrix::exponential_pade", "[math[,[matrix]")
           fcppt::math::matrix::row(30.9936, 7.38906, 30.9936)),
       epsilon));
 }
+
+FCPPT_CATCH_END

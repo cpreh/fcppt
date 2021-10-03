@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/intersection.hpp>
 #include <fcppt/math/box/null.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::box::intersection", "[math],[box]")
 {
@@ -38,3 +42,5 @@ TEST_CASE("math::box::intersection", "[math],[box]")
 
   CHECK(intersection3 == fcppt::math::box::null<box_i2>());
 }
+
+FCPPT_CATCH_END

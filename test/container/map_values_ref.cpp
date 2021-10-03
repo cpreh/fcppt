@@ -7,6 +7,8 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
 #include <fcppt/reference_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/map_values_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -15,6 +17,8 @@
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::map_values_ref", "[container]")
 {
@@ -36,3 +40,5 @@ TEST_CASE("container::map_values_ref", "[container]")
       fcppt::container::map_values_ref<string_vector_cref>(map) ==
       string_vector_cref{fcppt::make_cref(map[1]), fcppt::make_cref(map[2])});
 }
+
+FCPPT_CATCH_END

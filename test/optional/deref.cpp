@@ -9,6 +9,8 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/deref.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -18,6 +20,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::deref unique_ptr", "[optional]")
 {
@@ -48,3 +52,5 @@ TEST_CASE("optional::deref vector", "[optional]")
       fcppt::optional::deref(fcppt::optional::object<int_vector::const_iterator>(ints.cbegin())) ==
       fcppt::optional::reference<int const>(fcppt::make_cref(const_front)));
 }
+
+FCPPT_CATCH_END

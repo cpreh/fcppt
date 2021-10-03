@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/to_uint_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <cstdint>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("cast::to_uint_ptr"
           "[cast]")
@@ -22,3 +26,5 @@ TEST_CASE("cast::to_uint_ptr"
 
   CHECK(ptr1 != ptr2);
 }
+
+FCPPT_CATCH_END

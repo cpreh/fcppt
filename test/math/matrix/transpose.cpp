@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/row.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::transpose", "[math],[matrix]")
 {
@@ -26,3 +30,5 @@ TEST_CASE("math::matrix::transpose", "[math],[matrix]")
           fcppt::math::matrix::row(2, 5),
           fcppt::math::matrix::row(3, 6)));
 }
+
+FCPPT_CATCH_END

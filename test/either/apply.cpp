@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/make_movable.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/either/apply.hpp>
@@ -12,6 +14,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::apply", "[either]")
 {
@@ -68,3 +72,5 @@ TEST_CASE("either::apply move", "[either]")
           either_int(fcppt::catch_::make_movable(20)),
           either_uint(fcppt::catch_::make_movable(100U))) == either_bool(false));
 }
+
+FCPPT_CATCH_END

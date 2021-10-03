@@ -5,7 +5,9 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/variant.hpp>
@@ -27,6 +29,8 @@
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("options::parse_help", "[options]")
 {
   FCPPT_RECORD_MAKE_LABEL(arg_label);
@@ -45,3 +49,5 @@ TEST_CASE("options::parse_help", "[options]")
       fcppt::options::help_result<fcppt::options::result_of<int_arg_type>>{
           fcppt::options::make_success(int_arg_type::result_type{arg_label{} = 1})});
 }
+
+FCPPT_CATCH_END

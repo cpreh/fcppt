@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/to_raw_vector.hpp>
 #include <fcppt/container/raw_vector/comparison.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::buffer::to_raw_vector", "[container],[buffer]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("container::buffer::to_raw_vector", "[container],[buffer]")
 
   CHECK(raw_vector == raw_vector_type{10});
 }
+
+FCPPT_CATCH_END

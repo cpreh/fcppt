@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/overload.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/tuple/init.hpp>
@@ -13,6 +15,8 @@
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("tuple::init", "[tuple]")
 {
@@ -26,3 +30,5 @@ TEST_CASE("tuple::init", "[tuple]")
           [](std::integral_constant<std::size_t, 1>) { return std::size_t{1U}; })) ==
       tuple{movable{0U}, std::size_t{1U}});
 }
+
+FCPPT_CATCH_END

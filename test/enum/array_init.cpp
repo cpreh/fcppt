@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/enum_to_int.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_init.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,6 +25,8 @@ enum class my_enum
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::array_init", "[enum]")
 {
   using my_array = fcppt::enum_::array<my_enum, int>;
@@ -37,3 +41,5 @@ TEST_CASE("enum::array_init", "[enum]")
 
   CHECK(array[my_enum::test3] == 2);
 }
+
+FCPPT_CATCH_END

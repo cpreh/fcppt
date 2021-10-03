@@ -5,6 +5,8 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,6 +14,8 @@
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variant move", "[variant]")
 {
@@ -60,3 +64,5 @@ TEST_CASE("variant move nested", "[variant]")
       *fcppt::variant::get_unsafe<fcppt::unique_ptr<int>>(
           fcppt::variant::get_unsafe<variant_unique_ptr>(test2)) == 1);
 }
+
+FCPPT_CATCH_END

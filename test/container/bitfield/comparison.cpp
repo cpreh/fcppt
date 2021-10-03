@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
@@ -45,6 +47,8 @@ struct to_string_impl<test_enum>
 };
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("container::bitfield comparison", "[container],[bitfield]")
 {
   using bitfield = fcppt::container::bitfield::object<test_enum>;
@@ -59,3 +63,5 @@ TEST_CASE("container::bitfield comparison", "[container],[bitfield]")
 
   CHECK(field1 != field2);
 }
+
+FCPPT_CATCH_END

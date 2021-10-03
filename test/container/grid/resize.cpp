@@ -7,6 +7,8 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/resize.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -16,6 +18,8 @@
 #include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::resize", "[container],[grid]")
 {
@@ -87,3 +91,5 @@ TEST_CASE("container::grid::resize move", "[container],[grid]")
     }
   }
 }
+
+FCPPT_CATCH_END

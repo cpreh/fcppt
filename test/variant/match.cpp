@@ -5,12 +5,16 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variant::match", "[variant]")
 {
@@ -48,3 +52,5 @@ TEST_CASE("variant::match free function", "[variant]")
   using variant = fcppt::variant::object<int>;
   CHECK(fcppt::variant::match(variant{5},&test_func) == 5);
 }
+
+FCPPT_CATCH_END

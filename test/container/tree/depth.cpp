@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/depth.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree::depth", "[container],[tree]")
 {
@@ -31,3 +35,5 @@ TEST_CASE("container::tree::depth", "[container],[tree]")
 
   CHECK(fcppt::container::tree::depth(tree) == 3U);
 }
+
+FCPPT_CATCH_END

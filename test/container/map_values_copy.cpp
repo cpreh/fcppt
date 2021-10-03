@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/map_values_copy.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -11,6 +13,8 @@
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::map_values_copy", "[container]")
 {
@@ -25,3 +29,5 @@ TEST_CASE("container::map_values_copy", "[container]")
                          std::make_pair(2, "test2")}) ==
       string_vector{std::string{"test1"}, std::string{"test2"}});
 }
+
+FCPPT_CATCH_END

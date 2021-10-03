@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/to_signed_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/row.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::structure_cast", "[math],[matrix]")
 {
@@ -24,3 +28,5 @@ TEST_CASE("math::matrix::structure_cast", "[math],[matrix]")
       fcppt::math::matrix::structure_cast<i2_matrix, fcppt::cast::to_signed_fun>(
           ui2_matrix(fcppt::math::matrix::row(1U, 2U), fcppt::math::matrix::row(3U, 4U))));
 }
+
+FCPPT_CATCH_END

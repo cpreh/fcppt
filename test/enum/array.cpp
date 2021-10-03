@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
@@ -46,6 +48,8 @@ struct to_string_impl<my_enum>
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::array", "[enum]")
 {
   using int_array = fcppt::enum_::array<my_enum, int>;
@@ -64,3 +68,5 @@ TEST_CASE("enum::array", "[enum]")
 
   CHECK(test1 != test3);
 }
+
+FCPPT_CATCH_END

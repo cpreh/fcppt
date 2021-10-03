@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree copy", "[container],[tree]")
 {
@@ -54,3 +58,5 @@ TEST_CASE("container::tree copy", "[container],[tree]")
             });
       });
 }
+
+FCPPT_CATCH_END

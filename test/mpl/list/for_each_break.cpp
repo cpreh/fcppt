@@ -5,6 +5,8 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -64,6 +66,8 @@ private:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("mpl::for_each_break", "[mpl]")
 {
   {
@@ -82,3 +86,5 @@ TEST_CASE("mpl::for_each_break", "[mpl]")
     CHECK(func.value() == 3);
   }
 }
+
+FCPPT_CATCH_END

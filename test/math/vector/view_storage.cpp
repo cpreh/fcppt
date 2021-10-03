@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -48,6 +50,8 @@ private:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("math::vector view storage", "[math],[vector]")
 {
   using unsigned_view_storage = view_storage<unsigned, 2>;
@@ -64,3 +68,5 @@ TEST_CASE("math::vector view storage", "[math],[vector]")
 
   CHECK(vec == view);
 }
+
+FCPPT_CATCH_END

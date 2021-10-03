@@ -6,6 +6,8 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/from_pointer.hpp>
 #include <fcppt/optional/output.hpp>
@@ -13,6 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::from_pointer", "[optional]")
 {
@@ -26,3 +30,5 @@ TEST_CASE("optional::from_pointer", "[optional]")
 
   CHECK(fcppt::optional::from_pointer(ptr) == optional_ref{});
 }
+
+FCPPT_CATCH_END

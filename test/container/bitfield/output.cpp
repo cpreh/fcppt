@@ -6,6 +6,8 @@
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/output_to_std_wstring.hpp>
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
@@ -50,6 +52,8 @@ struct to_string_impl<test_enum>
 }
 
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("container::bitfield output", "[container],[bitfield]")
 {
   using bitfield = fcppt::container::bitfield::object<test_enum>;
@@ -62,3 +66,5 @@ TEST_CASE("container::bitfield output", "[container],[bitfield]")
 
   CHECK(fcppt::output_to_std_wstring(bitfield{test_enum::test3}) == std::wstring{L"{test3}"});
 }
+
+FCPPT_CATCH_END

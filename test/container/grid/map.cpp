@@ -7,6 +7,8 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/grid/map.hpp>
 #include <fcppt/container/grid/object.hpp>
@@ -18,6 +20,8 @@
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::map", "[container],[grid]")
 {
@@ -70,3 +74,5 @@ TEST_CASE("container::grid::map move", "[container],[grid]")
                         strong_result{uint_movable{2U}},
                         strong_result{uint_movable{3U}})});
 }
+
+FCPPT_CATCH_END

@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/map.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector::map", "[math],[vector]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("math::vector::map", "[math],[vector]")
           return fcppt::cast::to_signed(_val);
         }) == i2_vector(10, 20));
 }
+
+FCPPT_CATCH_END

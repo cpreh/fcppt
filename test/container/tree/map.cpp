@@ -6,12 +6,16 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree::map", "[container],[tree]")
 {
@@ -37,3 +41,5 @@ TEST_CASE("container::tree::map", "[container],[tree]")
         CHECK(2 == *_ref.get().value());
       });
 }
+
+FCPPT_CATCH_END

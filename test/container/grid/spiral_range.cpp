@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/make_spiral_range.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid spiral_range", "[container],[grid]")
 {
@@ -57,3 +61,5 @@ TEST_CASE("container::grid spiral_range", "[container],[grid]")
     }
   }
 }
+
+FCPPT_CATCH_END

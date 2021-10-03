@@ -5,6 +5,8 @@
 
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -25,6 +27,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::with_location", "[parse]")
 {
   auto const parser{fcppt::parse::make_with_location(fcppt::parse::literal{'X'})};
@@ -38,3 +42,5 @@ TEST_CASE("parse::with_location", "[parse]")
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());
 }
+
+FCPPT_CATCH_END

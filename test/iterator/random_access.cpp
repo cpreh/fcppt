@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/types_from.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
@@ -78,6 +80,8 @@ string_vector const vec_c{"1", "2", "3"};
 FCPPT_PP_POP_WARNING
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("iterator random access def_ctor", "[iterator]")
 {
@@ -185,3 +189,5 @@ TEST_CASE("iterator random access comparison", "[iterator]")
 
   CHECK(it1 != it2);
 }
+
+FCPPT_CATCH_END

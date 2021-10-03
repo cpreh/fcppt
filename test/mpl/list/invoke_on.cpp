@@ -5,12 +5,16 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/tag.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/invoke_on.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("mpl::list::invoke_on", "[mpl]")
 {
@@ -33,3 +37,5 @@ TEST_CASE("mpl::list::invoke_on", "[mpl]")
   CHECK(fcppt::mpl::list::invoke_on<list_type>(
       2U, [](auto) -> bool { return false; }, fcppt::const_(true)));
 }
+
+FCPPT_CATCH_END

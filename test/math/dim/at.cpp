@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim::at", "[math],[dim]")
 {
@@ -25,3 +29,5 @@ TEST_CASE("math::dim::at", "[math],[dim]")
 
   CHECK(fcppt::math::dim::at<1>(dim_m) == 42);
 }
+
+FCPPT_CATCH_END

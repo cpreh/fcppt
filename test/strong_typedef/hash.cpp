@@ -8,6 +8,8 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/strong_typedef_std_hash.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <unordered_set>
@@ -18,6 +20,8 @@ namespace
 FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("strong_typedef_hash", "[strongtypedef]")
 {
@@ -31,3 +35,5 @@ TEST_CASE("strong_typedef_hash", "[strongtypedef]")
 
   CHECK(elements.count(strong_int(3)) == 0U);
 }
+
+FCPPT_CATCH_END

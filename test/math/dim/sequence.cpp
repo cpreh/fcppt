@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/dim/sequence.hpp>
@@ -13,6 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dimx::sequence", "[math],[dim]")
 {
@@ -30,3 +34,5 @@ TEST_CASE("math::dimx::sequence", "[math],[dim]")
           ui2_dim_opt{fcppt::optional::object<unsigned>{}, fcppt::optional::make(20U)}) ==
       fcppt::optional::object<ui2_dim>{});
 }
+
+FCPPT_CATCH_END

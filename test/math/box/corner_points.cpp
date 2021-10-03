@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/corner_points.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::box::corner_points", "[math],[box]")
 {
@@ -24,3 +28,5 @@ TEST_CASE("math::box::corner_points", "[math],[box]")
           box_type::vector(10, 38),
           box_type::vector(34, 38)});
 }
+
+FCPPT_CATCH_END

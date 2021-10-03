@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/map.hpp>
 #include <fcppt/math/dim/output.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim::map", "[math],[dim]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("math::dim::map", "[math],[dim]")
           return fcppt::cast::to_signed(_val);
         }) == i2_dim(10, 20));
 }
+
+FCPPT_CATCH_END

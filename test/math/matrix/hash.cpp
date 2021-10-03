@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
@@ -12,6 +14,8 @@
 #include <catch2/catch.hpp>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::matrix::hash", "[math],[matrix]")
 {
@@ -30,3 +34,5 @@ TEST_CASE("math::matrix::hash", "[math],[matrix]")
       set.count(int22_matrix(fcppt::math::matrix::row(4, 2), fcppt::math::matrix::row(3, 4))) ==
       0U);
 }
+
+FCPPT_CATCH_END

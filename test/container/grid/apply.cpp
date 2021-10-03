@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/size.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/apply.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/output.hpp>
@@ -13,6 +15,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::apply", "[container],[grid]")
 {
@@ -43,3 +47,5 @@ TEST_CASE("container::grid::apply", "[container],[grid]")
 
   CHECK(fcppt::container::grid::apply(function, grid1, string_grid()) == string_grid{});
 }
+
+FCPPT_CATCH_END

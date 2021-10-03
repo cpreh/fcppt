@@ -5,10 +5,14 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::reference", "[optional]")
 {
@@ -60,3 +64,5 @@ TEST_CASE("optional::reference const"
 
   CHECK_FALSE(test3.has_value());
 }
+
+FCPPT_CATCH_END

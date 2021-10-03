@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_cref.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/deref.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::base", "[parse]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("parse::base", "[parse]")
 
   CHECK(parser.get_pointer() == &fcppt::parse::deref(fcppt::make_cref(parser)));
 }
+
+FCPPT_CATCH_END

@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/comparison.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree equal", "[container],[tree]")
 {
@@ -27,3 +31,5 @@ TEST_CASE("container::tree equal", "[container],[tree]")
 
   CHECK(tree1 != tree2);
 }
+
+FCPPT_CATCH_END

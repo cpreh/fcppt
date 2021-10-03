@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::bitfield::is_subset_eq", "[container],[bitfield]")
 {
@@ -37,3 +41,5 @@ TEST_CASE("container::bitfield::is_subset_eq", "[container],[bitfield]")
 
   CHECK_FALSE(fcppt::container::bitfield::is_subset_eq(field1, field2));
 }
+
+FCPPT_CATCH_END

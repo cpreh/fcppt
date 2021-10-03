@@ -5,6 +5,8 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/variant/apply.hpp>
@@ -67,6 +69,8 @@ using variant = fcppt::variant::object<int_unique_ptr, string_unique_ptr, bool_u
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("variant::apply ref", "[variant]")
 {
   variant int_variant(fcppt::make_unique_ptr<int>(1));
@@ -94,3 +98,5 @@ TEST_CASE("variant_apply move", "[variant]")
 
   CHECK(*fcppt::tuple::get<2>(result));
 }
+
+FCPPT_CATCH_END

@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/intrusive/base.hpp>
 #include <fcppt/intrusive/list.hpp>
 #include <fcppt/range/size.hpp>
@@ -44,6 +46,8 @@ private:
 };
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("intrusive::list"
           "[intrusive]")
@@ -95,6 +99,8 @@ TEST_CASE("intrusive::list"
   }
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("intrusive::list size"
           "[intrusive]")
 {
@@ -132,6 +138,8 @@ TEST_CASE("intrusive::list size"
     REQUIRE(fcppt::range::size(my_list) == 1U);
   }
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("intrusive::list move assign"
           "[intrusive]")
@@ -182,3 +190,5 @@ TEST_CASE("intrusive::list move assign"
 
   CHECK(list.empty());
 }
+
+FCPPT_CATCH_END

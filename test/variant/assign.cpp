@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variant assign", "[variant]")
 {
@@ -31,3 +35,5 @@ TEST_CASE("variant assign", "[variant]")
 
   CHECK(fcppt::variant::get_unsafe<int>(test1) == 1);
 }
+
+FCPPT_CATCH_END

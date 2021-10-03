@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/no_error_comparison.hpp>
 #include <fcppt/parse/skipper/literal.hpp>
@@ -15,6 +17,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::skipper::repetition", "[parse]")
 {
@@ -37,3 +41,5 @@ TEST_CASE("parse::skipper::repetition backtrack", "[parse]")
       fcppt::test::parse::skipper::skip_string(parser, std::string{"XXXY"}) ==
       fcppt::parse::skipper::make_success<char>());
 }
+
+FCPPT_CATCH_END

@@ -5,6 +5,8 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("record::permute", "[record]")
 {
@@ -34,3 +38,5 @@ TEST_CASE("record::permute", "[record]")
 
   CHECK(*fcppt::record::get<move_label>(result) == 100);
 }
+
+FCPPT_CATCH_END

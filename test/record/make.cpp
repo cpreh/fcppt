@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("record::make", "[record]")
 {
@@ -21,3 +25,5 @@ TEST_CASE("record::make", "[record]")
       my_record{int_label{} = 5, bool_label{} = true} ==
       fcppt::record::make(int_label{} = 5, bool_label{} = true));
 }
+
+FCPPT_CATCH_END

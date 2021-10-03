@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -10,6 +12,8 @@
 #include <fcppt/config/external_end.hpp>
 
 template class fcppt::optional::object<int>;
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional general", "[optional]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("optional general", "[optional]")
 
   CHECK_FALSE(test.has_value());
 }
+
+FCPPT_CATCH_END

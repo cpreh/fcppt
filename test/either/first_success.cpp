@@ -5,6 +5,8 @@
 
 #include <fcppt/function_impl.hpp>
 #include <fcppt/array/make.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/first_success.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,6 +14,8 @@
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::first_success", "[either]")
 {
@@ -47,3 +51,5 @@ TEST_CASE("either::first_success", "[either]")
         std::vector<std::string>{std::string{"f1"}, std::string{"f2"}});
   }
 }
+
+FCPPT_CATCH_END

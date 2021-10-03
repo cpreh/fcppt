@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_cref.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/to_pointer.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::to_pointer", "[optional]")
 {
@@ -20,3 +24,5 @@ TEST_CASE("optional::to_pointer", "[optional]")
 
   CHECK(fcppt::optional::to_pointer(optional_int_cref{fcppt::make_cref(val)}) == &val);
 }
+
+FCPPT_CATCH_END

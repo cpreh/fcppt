@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -23,6 +25,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::uint", "[parse]")
 {
@@ -64,3 +68,5 @@ TEST_CASE("parse::uint vector", "[parse]")
           parser, std::string{"10 20"}, fcppt::parse::skipper::space()) ==
       fcppt::parse::make_success<char>(result_type{10U, 20U}));
 }
+
+FCPPT_CATCH_END

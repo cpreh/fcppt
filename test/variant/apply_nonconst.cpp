@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_impl.hpp>
@@ -17,6 +19,8 @@ namespace
 using variant = fcppt::variant::object<bool, int, std::string>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variany::apply_unary nonconst", "[variant]")
 {
@@ -74,3 +78,5 @@ TEST_CASE("variany::apply_ternary nonconst", "[variant]")
 
   CHECK_FALSE(fcppt::variant::get_unsafe<bool>(v3));
 }
+
+FCPPT_CATCH_END

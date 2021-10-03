@@ -5,11 +5,15 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/assign.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::assign", "[optional]")
 {
@@ -34,3 +38,5 @@ TEST_CASE("optional::assign move", "[optional]")
 
   CHECK(*result == 1);
 }
+
+FCPPT_CATCH_END

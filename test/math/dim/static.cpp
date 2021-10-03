@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/no_init.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim::static", "[math],[dim]")
 {
@@ -41,3 +45,5 @@ TEST_CASE("math::dim::static move", "[math],[dim]")
   CHECK(dim.w().value() == 0);
   CHECK(dim.h().value() == 1);
 }
+
+FCPPT_CATCH_END

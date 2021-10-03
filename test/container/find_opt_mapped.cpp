@@ -7,6 +7,8 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -17,6 +19,8 @@
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::find_opt_mapped", "[container]")
 {
@@ -34,3 +38,5 @@ TEST_CASE("container::find_opt_mapped", "[container]")
 
   CHECK(fcppt::container::find_opt_mapped(values, 50) == optional_string{});
 }
+
+FCPPT_CATCH_END

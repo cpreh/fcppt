@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/write.hpp>
 #include <fcppt/optional/object.hpp>
@@ -33,6 +35,8 @@ void test_read_write(std::endian const _endianness)
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("io read_write", "[io]")
 {
   test_read_write(std::endian::big);
@@ -46,3 +50,5 @@ TEST_CASE("io read_write", "[io]")
     CHECK(fcppt::io::read<int>(stream, std::endian::little) == optional_int{});
   }
 }
+
+FCPPT_CATCH_END

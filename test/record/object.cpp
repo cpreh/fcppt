@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -16,6 +18,8 @@
 #include <catch2/catch.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("record::object", "[record]")
 {
@@ -126,3 +130,5 @@ TEST_CASE("record::object", "[record]")
 
   CHECK(fcppt::record::get<int_label>(test2) == 42);
 }
+
+FCPPT_CATCH_END

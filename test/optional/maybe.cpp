@@ -5,6 +5,8 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,6 +14,8 @@
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::maybe", "[optional]")
 {
@@ -42,3 +46,5 @@ TEST_CASE("optional::maybe move", "[optional]")
 
   CHECK(*result == 42);
 }
+
+FCPPT_CATCH_END

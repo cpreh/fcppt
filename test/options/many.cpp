@@ -5,7 +5,9 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -21,6 +23,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("options::many", "[options]")
 {
@@ -43,3 +47,5 @@ TEST_CASE("options::many", "[options]")
       fcppt::options::parse(parser, fcppt::args_vector{}) ==
       fcppt::options::make_success(parser_type::result_type{arg_label{} = std::vector<int>{}}));
 }
+
+FCPPT_CATCH_END

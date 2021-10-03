@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/tuple/invoke.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("tuple::invoke", "[tuple]")
 {
@@ -21,3 +25,5 @@ TEST_CASE("tuple::invoke", "[tuple]")
   };
   CHECK(fcppt::tuple::invoke(F{},fcppt::tuple::make(10,std::string{"test"})));
 }
+
+FCPPT_CATCH_END

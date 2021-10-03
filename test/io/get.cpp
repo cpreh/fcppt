@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/get.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::get", "[io]")
 {
@@ -22,3 +26,5 @@ TEST_CASE("io::get", "[io]")
 
   CHECK(fcppt::io::get(stream) == optional_char{});
 }
+
+FCPPT_CATCH_END

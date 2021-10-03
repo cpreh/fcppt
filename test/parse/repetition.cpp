@@ -6,6 +6,8 @@
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/literal.hpp>
@@ -21,6 +23,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::repetition", "[parse]")
 {
@@ -53,3 +57,5 @@ TEST_CASE("parse::repetition fatal", "[parse]")
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"XXYX"}).has_failure());
 }
+
+FCPPT_CATCH_END

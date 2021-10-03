@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/at_optional.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::at_optional", "[container],[grid]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("container::grid::at_optional", "[container],[grid]")
 
   CHECK(fcppt::container::grid::at_optional(const_grid, int2_grid::pos(1U, 2U)).has_value());
 }
+
+FCPPT_CATCH_END

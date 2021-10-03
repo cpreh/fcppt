@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/dim.hpp>
@@ -14,6 +16,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector dim", "[math],[vector]")
 {
@@ -31,3 +35,5 @@ TEST_CASE("math::vector dim", "[math],[vector]")
 
   CHECK((i2_vector(6, 6) / i2_dim(2, 0)) == fcppt::optional::object<i2_vector>{});
 }
+
+FCPPT_CATCH_END

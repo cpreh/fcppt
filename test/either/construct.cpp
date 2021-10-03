@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/const.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::construct", "[either]")
 {
@@ -21,3 +25,5 @@ TEST_CASE("either::construct", "[either]")
       fcppt::either::construct(false, fcppt::const_(42), fcppt::const_('x')) ==
       fcppt::either::object<char, int>{'x'});
 }
+
+FCPPT_CATCH_END

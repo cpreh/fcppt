@@ -6,6 +6,8 @@
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/output_to_std_wstring.hpp>
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
@@ -47,6 +49,8 @@ struct to_string_impl<my_enum>
 };
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::array output", "[enum]")
 {
   using int_array = fcppt::enum_::array<my_enum, int>;
@@ -55,3 +59,5 @@ TEST_CASE("enum::array output", "[enum]")
 
   CHECK(fcppt::output_to_std_wstring(int_array{1,2,3}) == std::wstring{L"[val1=1,val2=2,val3=3]"});
 }
+
+FCPPT_CATCH_END

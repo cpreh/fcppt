@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/from_string.hpp>
 #include <fcppt/enum/to_string.hpp>
@@ -50,6 +52,8 @@ struct to_string_impl<test_enum>
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::to_string", "[enum]")
 {
   CHECK(std::string{fcppt::enum_::to_string(test_enum::test1)} == "test1");
@@ -67,3 +71,5 @@ TEST_CASE("enum::from_string", "[enum]")
       fcppt::enum_::from_string<test_enum>("test2") ==
       fcppt::optional::make(test_enum::test2));
 }
+
+FCPPT_CATCH_END

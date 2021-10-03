@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/unit_fwd.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/monad/bind.hpp>
 #include <fcppt/monad/constructor.hpp>
 #include <fcppt/monad/inner_type.hpp>
@@ -28,6 +30,8 @@ static_assert(std::is_same_v<fcppt::monad::inner_type<fcppt::optional::object<in
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("optional monad return", "[optional]")
 {
   CHECK(fcppt::monad::return_<fcppt::optional::object<fcppt::unit>>(5) == fcppt::optional::make(5));
@@ -45,3 +49,5 @@ TEST_CASE("optional monad bind", "[optional]")
           return optional_string{};
         }) == optional_string{});
 }
+
+FCPPT_CATCH_END

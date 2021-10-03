@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("tuple::object", "[tuple]")
 {
@@ -24,3 +28,5 @@ TEST_CASE("tuple::object", "[tuple]")
   fcppt::tuple::get<0>(test2) = 10;
   CHECK(fcppt::tuple::get<0>(test2) == 10);
 }
+
+FCPPT_CATCH_END

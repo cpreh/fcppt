@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/either/try_call.hpp>
@@ -12,6 +14,8 @@
 #include <stdexcept>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::try_call", "[either]")
 {
@@ -28,3 +32,5 @@ TEST_CASE("either::try_call", "[either]")
             []() -> int { throw std::runtime_error{"test"}; }, translate_exception)
             .has_failure());
 }
+
+FCPPT_CATCH_END

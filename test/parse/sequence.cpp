@@ -7,7 +7,9 @@
 #include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_output.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/recursive.hpp>
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -22,6 +24,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::sequence", "[parse]")
 {
@@ -47,3 +51,5 @@ TEST_CASE("parse::sequence move", "[parse]")
       fcppt::parse::make_success<char>(
           fcppt::tuple::make(fcppt::make_recursive('X'), fcppt::make_recursive('Y'))));
 }
+
+FCPPT_CATCH_END

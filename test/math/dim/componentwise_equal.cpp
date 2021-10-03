@@ -3,11 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/componentwise_equal.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim::componentwise_equal", "[math],[dim]")
 {
@@ -19,3 +23,5 @@ TEST_CASE("math::dim::componentwise_equal", "[math],[dim]")
 
   CHECK_FALSE(fcppt::math::dim::componentwise_equal(f2_dim(1.F, 2.F), f2_dim(1.1F, 2.F), epsilon));
 }
+
+FCPPT_CATCH_END

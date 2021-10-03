@@ -9,6 +9,8 @@
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic_cross.hpp>
 #include <fcppt/cast/dynamic_cross_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -37,6 +39,8 @@ public:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("cast::dynamic_cross", "[cast]")
 {
   derived1 d1{};
@@ -49,3 +53,5 @@ TEST_CASE("cast::dynamic_cross", "[cast]")
       fcppt::cast::apply<fcppt::cast::dynamic_cross_fun, derived2>(d1) ==
       fcppt::optional::object<fcppt::reference<derived2>>{});
 }
+
+FCPPT_CATCH_END

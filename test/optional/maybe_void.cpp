@@ -7,6 +7,8 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -14,6 +16,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::maybe_void", "[optional]")
 {
@@ -59,3 +63,5 @@ TEST_CASE("optional::maybe_void move", "[optional]")
       optional_int_unique_ptr(fcppt::make_unique_ptr<int>(1)),
       [](int_unique_ptr &&_ptr) { CHECK(*_ptr == 1); });
 }
+
+FCPPT_CATCH_END

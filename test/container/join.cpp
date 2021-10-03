@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/container/make.hpp>
@@ -12,6 +14,8 @@
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container_join std::vector"
           "[container_join]")
@@ -63,3 +67,5 @@ TEST_CASE("container_join std::map"
                                                       std::make_pair(2, 'b'),
                                                       std::make_pair(3, 'd')});
 }
+
+FCPPT_CATCH_END

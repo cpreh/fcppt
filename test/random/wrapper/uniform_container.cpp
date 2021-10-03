@@ -7,6 +7,8 @@
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/assert/optional_error.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/random/wrapper/make_uniform_container.hpp>
@@ -16,6 +18,8 @@
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("random::wrapper::uniform_container", "[random]")
 {
@@ -32,3 +36,5 @@ TEST_CASE("random::wrapper::uniform_container", "[random]")
 
   CHECK(fcppt::algorithm::contains(strings, dist_inner(generator)));
 }
+
+FCPPT_CATCH_END

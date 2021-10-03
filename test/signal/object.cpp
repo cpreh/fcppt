@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/range/size.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base.hpp>
@@ -17,6 +19,8 @@ namespace
 using signal_type = fcppt::signal::object<void()>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("signal::object", "[signal]")
 {
@@ -91,3 +95,5 @@ TEST_CASE("signal::object move", "[signal]")
 
   CHECK(counter == 2);
 }
+
+FCPPT_CATCH_END

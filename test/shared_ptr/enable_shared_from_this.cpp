@@ -7,6 +7,8 @@
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/shared_ptr_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -29,6 +31,8 @@ public:
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enable_shared_from_this", "[smartptr]")
 {
   test_shared_ptr const ptr{fcppt::make_shared_ptr<test_class>()};
@@ -43,3 +47,5 @@ TEST_CASE("enable_shared_from_this", "[smartptr]")
 
   CHECK(ptr3 == ptr4);
 }
+
+FCPPT_CATCH_END

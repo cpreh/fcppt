@@ -5,6 +5,8 @@
 
 #include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/istringstream.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/input.hpp>
@@ -13,6 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim input", "[math],[dim]")
 {
@@ -40,3 +44,5 @@ TEST_CASE("math::dim input", "[math],[dim]")
     CHECK_FALSE(stream >> result);
   }
 }
+
+FCPPT_CATCH_END

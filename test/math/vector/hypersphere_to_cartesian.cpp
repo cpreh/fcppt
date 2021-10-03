@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -11,6 +13,8 @@
 #include <cmath>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector::hypersphere_to_cartesian", "[math],[vector]")
 {
@@ -38,3 +42,5 @@ TEST_CASE("math::vector::hypersphere_to_cartesian", "[math],[vector]")
       fvector3(std::cos(phi1), std::sin(phi1) * std::cos(phi2), std::sin(phi1) * std::sin(phi2)),
       epsilon));
 }
+
+FCPPT_CATCH_END

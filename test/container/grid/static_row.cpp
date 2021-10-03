@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::static_row", "[container],[grid]")
 {
@@ -44,3 +48,5 @@ TEST_CASE("container::grid::static_row move", "[container],[grid]")
 
   CHECK(grid.get_unsafe(int2_grid::pos(1U, 1U)) == int_movable(4));
 }
+
+FCPPT_CATCH_END

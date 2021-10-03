@@ -7,6 +7,8 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/map.hpp>
@@ -16,6 +18,8 @@
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("tuple::map", "[tuple]")
 {
@@ -39,3 +43,5 @@ TEST_CASE("tuple::map move", "[tuple]")
           return strong_int_movable{std::move(_value)};
         }) == fcppt::tuple::make(strong_int_movable{int_movable{1}}));
 }
+
+FCPPT_CATCH_END

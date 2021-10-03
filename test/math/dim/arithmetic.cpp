@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
@@ -13,6 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::dim arithmetic_self", "[math],[dim]")
 {
@@ -59,3 +63,5 @@ TEST_CASE("math::dim arithmetic free", "[math],[dim]")
 
   CHECK((i2_dim(6, 6) / i2_dim(2, 0)) == fcppt::optional::object<i2_dim>{});
 }
+
+FCPPT_CATCH_END

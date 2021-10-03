@@ -5,7 +5,9 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/variant.hpp>
@@ -24,6 +26,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("options::base"
           "[options]")
@@ -44,3 +48,5 @@ TEST_CASE("options::base"
 
   CHECK(fcppt::options::parse(*base, fcppt::args_vector{}).has_failure());
 }
+
+FCPPT_CATCH_END

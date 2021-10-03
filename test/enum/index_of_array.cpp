@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/optional.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/index_of_array.hpp>
@@ -23,6 +25,8 @@ enum class test_enum
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("enum::index_of_array", "[enum]")
 {
   using array = fcppt::enum_::array<test_enum, unsigned>;
@@ -33,3 +37,5 @@ TEST_CASE("enum::index_of_array", "[enum]")
 
   CHECK(fcppt::enum_::index_of_array(test, 3U) == fcppt::optional::object<test_enum>{});
 }
+
+FCPPT_CATCH_END

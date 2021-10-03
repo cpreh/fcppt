@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
@@ -20,6 +22,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::base", "[parse]")
 {
   fcppt::parse::base_unique_ptr<std::string, char, fcppt::parse::skipper::epsilon> const parser{
@@ -34,3 +38,5 @@ TEST_CASE("parse::base", "[parse]")
           *parser, std::string{"XY"}, fcppt::parse::skipper::epsilon()) ==
       fcppt::parse::make_success<char>(std::string{"XY"}));
 }
+
+FCPPT_CATCH_END

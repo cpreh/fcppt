@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/contains.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/neumann_neighbor_array.hpp>
 #include <fcppt/container/grid/neumann_neighbors.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -25,6 +27,8 @@ bool contains_element(array const &_result, pos const &_pos)
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("container::grid::neumann_neighbors", "[container],[grid]")
 {
   array const result(fcppt::container::grid::neumann_neighbors(pos(5U, 7U)));
@@ -37,3 +41,5 @@ TEST_CASE("container::grid::neumann_neighbors", "[container],[grid]")
 
   CHECK(contains_element(result, pos(5U, 8U)));
 }
+
+FCPPT_CATCH_END

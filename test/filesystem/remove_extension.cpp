@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("filesystem::remove_extension", "[filesystem]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("filesystem::remove_extension", "[filesystem]")
       path1 / FCPPT_TEXT("baz") // NOLINT(fuchsia-default-arguments-calls)
   );
 }
+
+FCPPT_CATCH_END

@@ -10,6 +10,8 @@
 #include <fcppt/strong_typedef_map.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
@@ -29,6 +31,8 @@ using move_test = fcppt::catch_::movable<int_unique_ptr>;
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("strong_typedef_map", "[strongtypedef]")
 {
   fcppt::strong_typedef<std::string, fcppt::strong_typedef_tag<strong_int>> const result{
@@ -47,3 +51,5 @@ TEST_CASE("strong_typedef_map move", "[strongtypedef]")
 
   CHECK(*result.get().value() == 5);
 }
+
+FCPPT_CATCH_END

@@ -7,11 +7,15 @@
 #include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/test.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::bitfield::underlying_value", "[container],[bitfield]")
 {
@@ -46,3 +50,5 @@ TEST_CASE("container::bitfield::underlying_value", "[container],[bitfield]")
 
   CHECK_FALSE(check_bit(value, test_enum::test3));
 }
+
+FCPPT_CATCH_END

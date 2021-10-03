@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/type_info.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("variant equal", "[variant]")
 {
@@ -48,3 +52,5 @@ TEST_CASE("variant less", "[variant]")
 
   CHECK_FALSE(v3 < v1);
 }
+
+FCPPT_CATCH_END

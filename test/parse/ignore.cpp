@@ -5,6 +5,8 @@
 
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
@@ -18,6 +20,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("parse::ignore", "[parse]")
 {
   auto const parser{fcppt::parse::make_ignore(fcppt::parse::char_{})};
@@ -28,3 +32,5 @@ TEST_CASE("parse::ignore", "[parse]")
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
       fcppt::parse::make_success<char>(fcppt::unit{}));
 }
+
+FCPPT_CATCH_END

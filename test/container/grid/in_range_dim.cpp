@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/in_range_dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -10,6 +12,8 @@
 #include <catch2/catch.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid::in_range_dim", "[container],[grid]")
 {
@@ -25,3 +29,5 @@ TEST_CASE("container::grid::in_range_dim", "[container],[grid]")
 
   CHECK_FALSE(fcppt::container::grid::in_range_dim(test, int2_pos(2U, 4U)));
 }
+
+FCPPT_CATCH_END

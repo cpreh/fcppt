@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/extend_bounding_box.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -10,6 +12,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::box::extend_bounding_box vector", "[math],[box]")
 {
@@ -46,3 +50,5 @@ TEST_CASE("math::box::extend_bounding_box box", "[math],[box]")
   // NOLINTNEXTLINE(readability-suspicious-call-argument)
   CHECK(fcppt::math::box::extend_bounding_box(box2, box1) == expected);
 }
+
+FCPPT_CATCH_END

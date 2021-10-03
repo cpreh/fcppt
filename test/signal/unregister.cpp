@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/unregister/base.hpp>
@@ -17,6 +19,8 @@ namespace
 using signal_type = fcppt::signal::object<void(), fcppt::signal::unregister::base>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("signal unregister", "[signal]")
 {
@@ -71,3 +75,5 @@ TEST_CASE("signal unregister move", "[signals]")
 
   CHECK(unregistered);
 }
+
+FCPPT_CATCH_END

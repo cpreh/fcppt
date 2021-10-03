@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -11,6 +13,8 @@
 #include <sstream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree output", "[container],[tree]")
 {
@@ -37,3 +41,5 @@ TEST_CASE("container::tree output", "[container],[tree]")
                    "\td\n"
                    "\te\n");
 }
+
+FCPPT_CATCH_END

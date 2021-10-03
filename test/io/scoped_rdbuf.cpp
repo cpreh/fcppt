@@ -5,6 +5,8 @@
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/make_ref.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/io/scoped_rdbuf.hpp>
@@ -14,6 +16,8 @@
 #include <sstream>
 #include <streambuf>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::scoped_rdbuf", "[io]")
 {
@@ -36,3 +40,5 @@ TEST_CASE("io::scoped_rdbuf", "[io]")
 
   CHECK(stream.rdbuf() == &old_buffer);
 }
+
+FCPPT_CATCH_END

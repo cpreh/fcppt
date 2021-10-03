@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/tree/child_position.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/bind.hpp>
@@ -11,6 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::tree::child_position", "[container],[tree]")
 {
@@ -27,3 +31,5 @@ TEST_CASE("container::tree::child_position", "[container],[tree]")
       [] { CHECK(false); },
       [&test](int_tree::iterator const _pos) { CHECK(_pos == test.begin()); });
 }
+
+FCPPT_CATCH_END

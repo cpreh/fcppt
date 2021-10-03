@@ -10,6 +10,8 @@
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/dynamic.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
@@ -48,6 +50,8 @@ struct derived2 : base
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("cast::dynamic"
           "[cast]")
 {
@@ -68,3 +72,5 @@ TEST_CASE("cast::dynamic"
   CHECK(
       fcppt::cast::dynamic<derived1>(b2) == fcppt::optional::object<fcppt::reference<derived1>>{});
 }
+
+FCPPT_CATCH_END

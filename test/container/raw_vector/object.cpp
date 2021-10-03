@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,6 +22,8 @@ using int_vector = fcppt::container::raw_vector::object<int>;
 }
 
 template class fcppt::container::raw_vector::object<int>;
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::raw_vector::shrink_to_fit", "[container],[raw_vector]")
 {
@@ -164,3 +168,5 @@ TEST_CASE("container::raw_vector initializer_list", "[container],[raw_vector]")
 
   CHECK(test1[2] == 3);
 }
+
+FCPPT_CATCH_END

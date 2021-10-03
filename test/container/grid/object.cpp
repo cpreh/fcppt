@@ -6,6 +6,8 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
@@ -23,6 +25,8 @@ namespace
 using int2_grid = fcppt::container::grid::object<int, 2>;
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid init reference", "[container],[grid]")
 {
@@ -130,3 +134,5 @@ TEST_CASE("container::grid init", "[container],[grid]")
 
   CHECK(grid.get_unsafe(pos(1U, 2U)) == 2);
 }
+
+FCPPT_CATCH_END

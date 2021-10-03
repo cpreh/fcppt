@@ -7,7 +7,9 @@
 #include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -19,6 +21,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("options::unit", "[options]")
 {
@@ -34,3 +38,5 @@ TEST_CASE("options::unit", "[options]")
 
   CHECK(fcppt::options::parse(unit, fcppt::args_vector{FCPPT_TEXT("")}).has_failure());
 }
+
+FCPPT_CATCH_END

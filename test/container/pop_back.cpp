@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/pop_back.hpp>
@@ -13,6 +15,8 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::pop_back", "[container]")
 {
@@ -43,3 +47,5 @@ TEST_CASE("container::pop_back move", "[container]")
 
   CHECK(vector.empty());
 }
+
+FCPPT_CATCH_END

@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/interpolation/linear.hpp>
 #include <fcppt/math/interpolation/perlin_fifth_degree.hpp>
 #include <fcppt/math/interpolation/trigonometric.hpp>
@@ -22,6 +24,8 @@ using vector2 = fcppt::math::vector::static_<double, 2>;
 constexpr double const epsilon{0.001};
 
 }
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::interpolation::linear", "[math],[interpolation]")
 {
@@ -73,3 +77,5 @@ TEST_CASE("math::interpolation::perlin_fifth_degree", "[math],[interpolation]")
       std::abs(fcppt::math::interpolation::perlin_fifth_degree(0.0, 1.0, 2.0)),
       Catch::Matchers::WithinAbs(1.0, epsilon));
 }
+
+FCPPT_CATCH_END

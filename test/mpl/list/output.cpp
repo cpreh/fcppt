@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/type_name_from_info.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -13,6 +15,8 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("mpl::list::output", "[mpl]")
 {
   std::ostringstream out{};
@@ -21,3 +25,5 @@ TEST_CASE("mpl::list::output", "[mpl]")
       out.str() == "(" + fcppt::type_name_from_info(typeid(int)) + "," +
                        fcppt::type_name_from_info(typeid(std::string)) + ")");
 }
+
+FCPPT_CATCH_END

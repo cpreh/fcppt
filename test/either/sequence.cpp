@@ -7,7 +7,9 @@
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/algorithm/map_record.hpp>
 #include <fcppt/algorithm/map_tuple.hpp>
+#include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/tuple.hpp>
@@ -26,6 +28,8 @@
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::sequence", "[either]")
 {
@@ -93,3 +97,5 @@ TEST_CASE("either::sequence record", "[either]")
       fcppt::either::make_success<std::string>(
           fcppt::record::make(label1{} = 0, label2{} = false)));
 }
+
+FCPPT_CATCH_END

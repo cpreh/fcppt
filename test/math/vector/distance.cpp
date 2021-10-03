@@ -3,12 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/distance.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector::distance", "[math],[vector]")
 {
@@ -26,3 +30,5 @@ TEST_CASE("math::vector::distance", "[math],[vector]")
           fcppt::math::vector::distance<float>(uint2_vector(1U, 2U), uint2_vector(3U, 4U)) - 2.8F),
       Catch::Matchers::WithinAbs(0., 0.1));
 }
+
+FCPPT_CATCH_END

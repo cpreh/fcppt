@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/array/object.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/bit_strings.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -13,6 +15,8 @@
 #include <catch2/catch.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("math::vector::bit_strings", "[math],[vector]")
 {
@@ -35,3 +39,5 @@ TEST_CASE("math::vector::bit_strings", "[math],[vector]")
                                                         vector3(0, 1, 1),
                                                         vector3(1, 1, 1)});
 }
+
+FCPPT_CATCH_END

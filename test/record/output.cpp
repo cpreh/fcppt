@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/output_to_std_string.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -15,6 +17,8 @@
 
 FCPPT_RECORD_MAKE_LABEL(int1_label);
 FCPPT_RECORD_MAKE_LABEL(int2_label);
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("record output", "[record]")
 {
@@ -29,3 +33,5 @@ TEST_CASE("record output", "[record]")
 	"{" + fcppt::record::label_name<int1_label>() + " = 5, "
 	+ fcppt::record::label_name<int2_label>() + " = 10}");
 }
+
+FCPPT_CATCH_END

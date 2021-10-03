@@ -5,6 +5,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -12,6 +14,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("catch::record", "[catch]")
 {
@@ -23,3 +27,5 @@ TEST_CASE("catch::record", "[catch]")
       record{string_label{} = fcppt::string{FCPPT_TEXT("test")}} ==
       record{string_label{} = fcppt::string{FCPPT_TEXT("test")}});
 }
+
+FCPPT_CATCH_END

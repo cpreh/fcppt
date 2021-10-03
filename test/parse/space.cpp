@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/error_equal.hpp>
@@ -15,7 +17,9 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-TEST_CASE("parse::char_set", "[parse]")
+FCPPT_CATCH_BEGIN
+
+TEST_CASE("parse::space", "[parse]")
 {
   auto const parser{fcppt::parse::space()};
 
@@ -25,3 +29,5 @@ TEST_CASE("parse::char_set", "[parse]")
       fcppt::parse::parse_string(parser, std::string{' '}) ==
       fcppt::parse::make_success<char>(' '));
 }
+
+FCPPT_CATCH_END

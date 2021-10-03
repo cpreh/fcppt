@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_to_type.hpp>
@@ -43,9 +45,13 @@ void init_test()
 
 }
 
+FCPPT_CATCH_BEGIN
+
 TEST_CASE("record::init", "[record]")
 {
   using my_record = fcppt::record::object<fcppt::record::element<int_label, int>>;
 
   init_test<my_record>();
 }
+
+FCPPT_CATCH_END

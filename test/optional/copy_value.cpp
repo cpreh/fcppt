@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_cref.hpp>
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -13,6 +15,8 @@
 #include <catch2/catch.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_CATCH_BEGIN
 
 TEST_CASE("optional::copy_value", "[optional]")
 {
@@ -24,3 +28,5 @@ TEST_CASE("optional::copy_value", "[optional]")
       fcppt::optional::copy_value(optional_string_ref{fcppt::make_cref(test)}) ==
       fcppt::optional::object<std::string>(std::string("test1")));
 }
+
+FCPPT_CATCH_END
