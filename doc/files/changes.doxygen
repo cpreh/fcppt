@@ -1,6 +1,30 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_410 4.1.0
+
+<p>
+This release fixes some warnings related to <code>clang-13</code>.
+</p>
+
+\subsection changes_changed_functionality_to_410 Changed functionality
+
+<ul>
+
+<li>\ref fcpptcontainerraw_vector
+    <ul>
+    <li>Changed constructor of #fcppt::container::raw_vector::rep to use strong typedefs.</li>
+    </ul>
+</li>
+
+<li>\ref fcpptmathbox
+    <ul>
+    <li>Changed constructor of #fcppt::math::box::object that took two points to use strong typedefs.</li>
+    </ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_400 4.0.0
 
 <p>
