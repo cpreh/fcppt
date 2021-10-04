@@ -19,6 +19,7 @@ if(
 	#"-clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
 	# "-fuchsia-trailing-return" complains about code like X<decltype(_param)>
 	# "-readability-function-cognitive-complexity" triggers for almost every Catch2 test case
+	# "-modernize-return-braced-init-list" also triggers on ()-initialization, breaking code
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
 		"*"
@@ -40,6 +41,7 @@ if(
 		"-llvmlibc-implementation-in-namespace"
 		"-llvmlibc-restrict-system-libc-headers"
 		"-misc-no-recursion"
+		"-modernize-return-braced-init-list"
 		"-modernize-use-default-member-init"
 		"-modernize-use-trailing-return-type"
 		"-readability-function-cognitive-complexity"
