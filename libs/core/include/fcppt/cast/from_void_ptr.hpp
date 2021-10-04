@@ -10,9 +10,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts a void pointer to a different pointer
@@ -36,7 +34,6 @@ inline Dest from_void_ptr(Source *const _ptr) noexcept
   return static_cast<Dest>(_ptr);
 }
 
-}
 }
 
 #endif

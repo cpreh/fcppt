@@ -6,9 +6,7 @@
 #ifndef FCPPT_CAST_TO_VOID_PTR_HPP_INCLUDED
 #define FCPPT_CAST_TO_VOID_PTR_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace cast
+namespace fcppt::cast
 {
 /**
 \brief Converts a pointer to const to a pointer to const void
@@ -35,7 +33,6 @@ inline void *to_void_ptr(Source *const _ptr // NOLINT(readability-avoid-const-pa
   return _ptr;
 }
 
-}
 }
 
 #endif

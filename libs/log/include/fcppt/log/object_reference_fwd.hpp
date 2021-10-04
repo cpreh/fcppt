@@ -9,13 +9,10 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace log
+namespace fcppt::log
 {
 using object_reference = fcppt::reference<fcppt::log::object>;
 
-}
 }
 
 #endif

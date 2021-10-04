@@ -9,9 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/random/variate_impl.hpp>
 
-namespace fcppt
-{
-namespace random
+namespace fcppt::random
 {
 template <typename Generator, typename Distribution>
 fcppt::random::variate<Generator, Distribution>
@@ -20,7 +18,6 @@ make_variate(fcppt::reference<Generator> const _generator, Distribution const &_
   return fcppt::random::variate<Generator, Distribution>(_generator, _distribution);
 }
 
-}
 }
 
 #endif
