@@ -8,6 +8,6 @@
 
 #include <fcppt/record/detail/tag_base.hpp>
 
-#define FCPPT_RECORD_DETAIL_TAG_NAME(name) name##_tag
+#define FCPPT_RECORD_DETAIL_TAG_NAME(name) name##X_tag
 
 #endif
