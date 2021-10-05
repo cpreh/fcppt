@@ -7,8 +7,8 @@
 #ifndef FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/function.hpp>
 #include <fcppt/declare_strong_typedef.hpp>
+#include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/signal/base_decl.hpp>

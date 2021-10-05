@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_SEPARATOR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_SEPARATOR_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_cref.hpp>
 #include <fcppt/declare_strong_typedef.hpp>
+#include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/container/join.hpp>

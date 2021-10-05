@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/identity.hpp>
 #include <fcppt/int_iterator_impl.hpp>
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/make_int_range.hpp>
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/make_literal_strong_typedef.hpp>
-#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/map.hpp>

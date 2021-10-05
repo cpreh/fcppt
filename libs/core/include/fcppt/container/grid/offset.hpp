@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
 #include <fcppt/declare_strong_typedef.hpp>
+#include <fcppt/literal.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
