@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/cast/size.hpp>
@@ -48,7 +48,7 @@ TEST_CASE("container::grid::map move", "[container],[grid]")
 {
   using uint_movable = fcppt::catch_::movable<unsigned>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(uint_movable, strong_result);
+  FCPPT_DECLARE_STRONG_TYPEDEF(uint_movable, strong_result);
 
   using movable_grid = fcppt::container::grid::object<uint_movable, 2>;
 

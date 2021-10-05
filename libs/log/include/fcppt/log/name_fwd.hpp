@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_NAME_FWD_HPP_INCLUDED
 #define FCPPT_LOG_NAME_FWD_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt::log
@@ -16,7 +16,7 @@ namespace fcppt::log
 
 \ingroup fcpptlog
 */
-FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, name);
+FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, name);
 
 }
 

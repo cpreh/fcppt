@@ -6,21 +6,24 @@
 #ifndef FCPPT_MAKE_STRONG_TYPEDEF_HPP_INCLUDED
 #define FCPPT_MAKE_STRONG_TYPEDEF_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
+namespace fcppt
+{
 /**
-\brief Creates a new strong typedef using strong_typedef.
+\brief Creates a new strong typedef given a tag and a value.
 \ingroup fcpptstrongtypedef
-\param type The type to be wrapped.
-\param name The name of the new typedef.
-
-Read \ref fcpptstrongtypedef for more information.
 */
-#define FCPPT_MAKE_STRONG_TYPEDEF(type, name) \
-  struct fcppt_strong_typedef_##name##_tag \
-  { \
-  }; \
-\
-  using name = fcppt::strong_typedef<type, fcppt_strong_typedef_##name##_tag>
+template <typename Tag, typename Type>
+[[nodiscard]] inline fcppt::strong_typedef<std::remove_cvref_t<Type>, Tag>
+make_strong_typedef(Type &&_value)
+{
+  return fcppt::strong_typedef<std::remove_cvref_t<Type>, Tag>{std::forward<Type>(_value)};
+}
+}
 
 #endif

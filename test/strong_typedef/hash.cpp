@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -17,7 +17,7 @@
 
 namespace
 {
-FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
 }
 

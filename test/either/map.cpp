@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/catch/begin.hpp>
@@ -42,7 +42,7 @@ TEST_CASE("either::map move", "[either]")
 
   using either_int = fcppt::either::object<std::string, int_movable>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(int_movable, strong_int_movable);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int_movable, strong_int_movable);
 
   auto const map_function(
       [](int_movable &&_value) { return strong_int_movable{std::move(_value)}; });

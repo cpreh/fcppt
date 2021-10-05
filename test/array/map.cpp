@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/array/map.hpp>
@@ -30,7 +30,7 @@ TEST_CASE("array::map move", "array]")
 {
   using int_movable = fcppt::catch_::movable<int>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(int_movable, strong_int_movable);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int_movable, strong_int_movable);
 
   CHECK(
       fcppt::array::map(

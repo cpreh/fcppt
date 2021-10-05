@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_REP_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
@@ -29,9 +29,9 @@ class rep
 public:
   using pointer = typename std::allocator_traits<A>::pointer;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(pointer, first_t);
-  FCPPT_MAKE_STRONG_TYPEDEF(pointer, last_t);
-  FCPPT_MAKE_STRONG_TYPEDEF(pointer, cap_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(pointer, first_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(pointer, last_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(pointer, cap_t);
 
   rep(A const &,first_t,last_t,cap_t) noexcept;
 

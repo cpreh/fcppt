@@ -6,12 +6,12 @@
 #ifndef FCPPT_ASSERT_LINE_HPP_INCLUDED
 #define FCPPT_ASSERT_LINE_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 
 namespace fcppt::assert_
 {
-FCPPT_MAKE_STRONG_TYPEDEF(int, line);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, line);
 
 }
 

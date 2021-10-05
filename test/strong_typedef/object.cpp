@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
@@ -18,7 +18,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("strong_typedef object", "[strongtypedef]")
 {
-	FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+	FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
 	constexpr strong_int const v{1};
 	CHECK(v.get() == 1);
@@ -29,7 +29,7 @@ TEST_CASE("strong_typedef move", "[strongtypedef]")
 {
   using int_unique_ptr = fcppt::unique_ptr<int>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
 
   strong_int_ptr val(fcppt::make_unique_ptr<int>(1));
 

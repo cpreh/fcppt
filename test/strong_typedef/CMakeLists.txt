@@ -21,6 +21,10 @@ add_fcppt_strong_typedef_test(
 )
 
 add_fcppt_strong_typedef_test(
+	make
+)
+
+add_fcppt_strong_typedef_test(
 	map
 	LINK_LIBS
 		${fcppt_core_TARGET}

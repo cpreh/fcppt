@@ -6,12 +6,12 @@
 #ifndef FCPPT_OPTIONS_DETAIL_MISSING_OPTION_ARGUMENT_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_MISSING_OPTION_ARGUMENT_FWD_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt::options::detail
 {
-FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, missing_option_argument);
+FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, missing_option_argument);
 
 }
 

@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_COLUMN_HPP_INCLUDED
 #define FCPPT_PARSE_COLUMN_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdint>
@@ -18,7 +18,7 @@ namespace fcppt::parse
 \brief The column type of a position.
 \ingroup fcpptparse
 */
-FCPPT_MAKE_STRONG_TYPEDEF(std::uint64_t, column);
+FCPPT_DECLARE_STRONG_TYPEDEF(std::uint64_t, column);
 
 }
 

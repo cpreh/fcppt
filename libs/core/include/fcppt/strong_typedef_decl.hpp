@@ -28,7 +28,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 \tparam T The underlying type to be wrapped.
 
-\tparam Tag A unique tag type
+\tparam Tag Some unique type.
 
 A strong typedef is a wrapper around a type. It has an explicit constructor and
 a get member function.

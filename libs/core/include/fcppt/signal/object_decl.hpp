@@ -8,7 +8,7 @@
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/function.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/signal/base_decl.hpp>
@@ -44,7 +44,7 @@ public:
   */
   using combiner_function = fcppt::function<result_type(result_type, result_type)>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(result_type, initial_value);
+  FCPPT_DECLARE_STRONG_TYPEDEF(result_type, initial_value);
 
   /**
   \brief Construct a signal with a combiner

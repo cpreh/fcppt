@@ -6,12 +6,12 @@
 #ifndef FCPPT_OPTIONS_DETAIL_FLAG_IS_SHORT_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_FLAG_IS_SHORT_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 
 namespace fcppt::options::detail
 {
-FCPPT_MAKE_STRONG_TYPEDEF(bool, flag_is_short);
+FCPPT_DECLARE_STRONG_TYPEDEF(bool, flag_is_short);
 
 }
 

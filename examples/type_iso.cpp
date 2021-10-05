@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 // ![decorate_simple_include]
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/type_iso/decorate.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>
@@ -21,7 +21,7 @@ namespace
 void f()
 {
   // ![decorate_simple]
-  FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
   auto const var(fcppt::type_iso::decorate<strong_int>(42));
 

@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
@@ -38,9 +38,9 @@ void f(std::string const &) {}
 namespace motivation2
 {
 //![motivation_string_2]
-FCPPT_MAKE_STRONG_TYPEDEF(std::string, first_name);
+FCPPT_DECLARE_STRONG_TYPEDEF(std::string, first_name);
 
-FCPPT_MAKE_STRONG_TYPEDEF(std::string, email_address);
+FCPPT_DECLARE_STRONG_TYPEDEF(std::string, email_address);
 
 void f(first_name const &);
 
@@ -78,11 +78,11 @@ FCPPT_PP_POP_WARNING
 namespace with_strong_typedef
 {
 //! [parameters_strong_typedefs]
-FCPPT_MAKE_STRONG_TYPEDEF(int, vertex_count);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, vertex_count);
 
-FCPPT_MAKE_STRONG_TYPEDEF(bool, enable_culling);
+FCPPT_DECLARE_STRONG_TYPEDEF(bool, enable_culling);
 
-FCPPT_MAKE_STRONG_TYPEDEF(char, draw_char);
+FCPPT_DECLARE_STRONG_TYPEDEF(char, draw_char);
 
 void f(vertex_count, enable_culling, draw_char);
 //! [parameters_strong_typedefs]
@@ -101,9 +101,9 @@ void named_parameters_call_test()
 }
 
 //! [strong_typedef_is_same]
-FCPPT_MAKE_STRONG_TYPEDEF(int, first);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, first);
 
-FCPPT_MAKE_STRONG_TYPEDEF(int, second);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, second);
 
 static_assert(!std::is_same_v<first, second>, "Both types must be different");
 //! [strong_typedef_is_same]
@@ -120,7 +120,7 @@ void f(first_name const &_name) { std::cout << _name.get() << '\n'; }
 namespace distance_example
 {
 //![operators]
-FCPPT_MAKE_STRONG_TYPEDEF(int, distance);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, distance);
 
 void f(distance const _d1, distance const _d2) { std::cout << (_d1 - _d2) << '\n'; }
 //![operators]

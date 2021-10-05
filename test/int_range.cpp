@@ -9,7 +9,7 @@
 #include <fcppt/make_int_range.hpp>
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/make_literal_strong_typedef.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/map.hpp>
@@ -41,7 +41,7 @@ std::vector<Int> copy_range(fcppt::int_range<Int> const _range)
   return fcppt::algorithm::map<std::vector<Int>>(_range, fcppt::identity{});
 }
 
-FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
 }
 

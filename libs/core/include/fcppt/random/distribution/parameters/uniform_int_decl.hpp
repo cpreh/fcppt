@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/random/distribution/base_type.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp>
@@ -35,9 +35,9 @@ public:
 
   using wrapped_param_type = typename distribution::param_type;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(IntType, min);
+  FCPPT_DECLARE_STRONG_TYPEDEF(IntType, min);
 
-  FCPPT_MAKE_STRONG_TYPEDEF(IntType, max);
+  FCPPT_DECLARE_STRONG_TYPEDEF(IntType, max);
 
   /**
   \brief Constructs parameters for a uniform int distribution

@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_REAL_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_REAL_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/random/distribution/base_type.hpp>
 #include <fcppt/random/distribution/parameters/uniform_real_fwd.hpp>
@@ -37,9 +37,9 @@ public:
 
   using wrapped_param_type = typename distribution::param_type;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(FloatType, min);
+  FCPPT_DECLARE_STRONG_TYPEDEF(FloatType, min);
 
-  FCPPT_MAKE_STRONG_TYPEDEF(FloatType, sup);
+  FCPPT_DECLARE_STRONG_TYPEDEF(FloatType, sup);
 
   /**
   \brief Constructs parameters for a uniform real distribution

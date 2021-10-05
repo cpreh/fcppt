@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_LONG_NAME_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_LONG_NAME_FWD_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt::options
@@ -19,7 +19,7 @@ namespace fcppt::options
 A long name is the name of an argument, e.g. "arg", or the long name of an
 option or flag, e.g. "--foo".
 */
-FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, long_name);
+FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, long_name);
 
 }
 

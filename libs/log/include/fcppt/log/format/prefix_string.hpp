@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_FORMAT_PREFIX_STRING_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_PREFIX_STRING_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
 
@@ -15,7 +15,7 @@ namespace fcppt::log::format
 /**
 \ingroup fcpptlog
 */
-FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, prefix_string);
+FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, prefix_string);
 
 }
 

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/repeat.hpp>
@@ -21,7 +21,7 @@
 int main()
 {
   //![random_strong_typedef_distribution]
-  FCPPT_MAKE_STRONG_TYPEDEF(int, my_type);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int, my_type);
 
   using distribution = fcppt::random::distribution::basic<
       fcppt::random::distribution::parameters::uniform_int<my_type>>;

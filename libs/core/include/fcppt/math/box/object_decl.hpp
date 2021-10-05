@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
@@ -72,8 +72,8 @@ public:
   */
   object(vector pos, dim size);
 
-  FCPPT_MAKE_STRONG_TYPEDEF(vector, min_t);
-  FCPPT_MAKE_STRONG_TYPEDEF(vector, max_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(vector, min_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(vector, max_t);
 
   /**
   \brief Construct a box from two positions

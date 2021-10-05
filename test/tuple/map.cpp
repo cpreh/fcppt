@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/use.hpp>
@@ -37,7 +37,7 @@ TEST_CASE("tuple::map move", "[tuple]")
 {
   using int_movable = fcppt::catch_::movable<int>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(int_movable, strong_int_movable);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int_movable, strong_int_movable);
 
   CHECK(fcppt::tuple::map(fcppt::tuple::make(int_movable{1}), [](int_movable &&_value) {
           return strong_int_movable{std::move(_value)};

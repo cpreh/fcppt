@@ -109,8 +109,8 @@ Use #fcppt::strong_typedef to disambiguate which parameter is
 used for which purpose. For example, instead of
 <code>void f(std::string const &name, std::string const &email);</code> use
 \code
-FCPPT_MAKE_STRONG_TYPEDEF(std::string, name);
-FCPPT_MAKE_STRONG_TYPEDEF(std::string, email);
+FCPPT_DECLARE_STRONG_TYPEDEF(std::string, name);
+FCPPT_DECLARE_STRONG_TYPEDEF(std::string, email);
 void f(name const &, email const &);
 \endcode
 In some cases, merging multiple parameters into one can also help,

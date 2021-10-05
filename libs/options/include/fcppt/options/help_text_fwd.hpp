@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_HELP_TEXT_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_HELP_TEXT_FWD_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt::options
@@ -16,7 +16,7 @@ namespace fcppt::options
 
 \ingroup fcpptoptions
 */
-FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, help_text);
+FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, help_text);
 
 }
 

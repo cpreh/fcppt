@@ -385,6 +385,7 @@ set(
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp
 	libs/core/include/fcppt/cyclic_iterator_fwd.hpp
 	libs/core/include/fcppt/cyclic_iterator_impl.hpp
+	libs/core/include/fcppt/declare_strong_typedef.hpp
 	libs/core/include/fcppt/default_deleter.hpp
 	libs/core/include/fcppt/default_deleter_fwd.hpp
 	libs/core/include/fcppt/deref.hpp

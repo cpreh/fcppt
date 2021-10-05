@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/catch/begin.hpp>
@@ -20,7 +20,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("either::map_failure", "[either]")
 {
-  FCPPT_MAKE_STRONG_TYPEDEF(int, int_strong);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int, int_strong);
 
   using either_string = fcppt::either::object<std::string, int_strong>;
 

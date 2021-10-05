@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_OPTION_NAME_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTION_NAME_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/options/option_name_fwd.hpp>
@@ -22,7 +22,7 @@ namespace fcppt::options
 class option_name
 {
 public:
-  FCPPT_MAKE_STRONG_TYPEDEF(bool, is_short);
+  FCPPT_DECLARE_STRONG_TYPEDEF(bool, is_short);
 
   FCPPT_OPTIONS_DETAIL_SYMBOL
   option_name(fcppt::string &&, is_short);

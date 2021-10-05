@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef_apply.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
@@ -18,11 +18,11 @@
 
 namespace
 {
-FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
 using int_unique_ptr = fcppt::unique_ptr<int>;
 
-FCPPT_MAKE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
+FCPPT_DECLARE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
 
 }
 

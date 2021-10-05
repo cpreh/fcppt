@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_OTHER_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_OTHER_ERROR_FWD_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt::options
@@ -19,7 +19,7 @@ namespace fcppt::options
 Errors that are not #fcppt::options::missing_error, for example
 failed conversion. Such errors make even #fcppt::options::optional parsers fail.
 */
-FCPPT_MAKE_STRONG_TYPEDEF(fcppt::string, other_error);
+FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, other_error);
 
 }
 

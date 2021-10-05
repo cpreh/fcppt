@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/random/variate.hpp>
@@ -25,7 +25,7 @@ int main()
   //![random_complex_distribution]
   using meter = boost::units::quantity<boost::units::si::length, int>;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(meter, radius);
+  FCPPT_DECLARE_STRONG_TYPEDEF(meter, radius);
 
   using distribution = fcppt::random::distribution::basic<
       fcppt::random::distribution::parameters::uniform_int<radius>>;

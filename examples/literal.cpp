@@ -5,7 +5,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/make_literal_fwd.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -23,7 +23,7 @@ T half(T const _value)
 // ![literal_motivation]
 
 // ![literal_strong_typedef_1]
-FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
 void try_strong()
 {

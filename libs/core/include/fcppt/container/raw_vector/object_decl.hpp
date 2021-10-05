@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/container/raw_vector/object_fwd.hpp>
@@ -180,8 +180,8 @@ private:
       void>
   insert_impl(iterator position, In begin, In end);
 
-  FCPPT_MAKE_STRONG_TYPEDEF(size_type, new_size_t);
-  FCPPT_MAKE_STRONG_TYPEDEF(size_type, new_cap_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(size_type, new_size_t);
+  FCPPT_DECLARE_STRONG_TYPEDEF(size_type, new_cap_t);
 
   [[nodiscard]] new_cap_t new_capacity(new_size_t) const noexcept;
 

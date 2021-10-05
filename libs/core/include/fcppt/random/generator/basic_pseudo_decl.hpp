@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>
@@ -38,7 +38,7 @@ public:
   */
   using result_type = typename wrapped::result_type;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(result_type, seed);
+  FCPPT_DECLARE_STRONG_TYPEDEF(result_type, seed);
 
   /**
   \brief Constructs the generator using a seed

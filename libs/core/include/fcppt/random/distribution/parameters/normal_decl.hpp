@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/random/distribution/base_type.hpp>
 #include <fcppt/random/distribution/parameters/normal_fwd.hpp>
@@ -37,9 +37,9 @@ public:
 
   using wrapped_param_type = typename distribution::param_type;
 
-  FCPPT_MAKE_STRONG_TYPEDEF(FloatType, mean);
+  FCPPT_DECLARE_STRONG_TYPEDEF(FloatType, mean);
 
-  FCPPT_MAKE_STRONG_TYPEDEF(FloatType, stddev);
+  FCPPT_DECLARE_STRONG_TYPEDEF(FloatType, stddev);
 
   /**
   \brief Constructs parameters for a normal distribution

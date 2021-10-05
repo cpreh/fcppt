@@ -7,20 +7,38 @@
 This release fixes some warnings related to <code>clang-13</code>.
 </p>
 
+\subsection changes_added_functionality_to_410 Added functionality
+
+<ul>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Added #fcppt::make_strong_typedef.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_changed_functionality_to_410 Changed functionality
 
 <ul>
 
 <li>\ref fcpptcontainerraw_vector
-    <ul>
-    <li>Changed constructor of #fcppt::container::raw_vector::rep to use strong typedefs.</li>
-    </ul>
+	<ul>
+	<li>Changed constructor of #fcppt::container::raw_vector::rep to use strong typedefs.</li>
+	</ul>
 </li>
 
 <li>\ref fcpptmathbox
-    <ul>
-    <li>Changed constructor of #fcppt::math::box::object that took two points to use strong typedefs.</li>
-    </ul>
+	<ul>
+	<li>Changed constructor of #fcppt::math::box::object that took two points to use strong typedefs.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Renamed <code>FCPPT_MAKE_STRONG_TYPEDEF</code> to #FCPPT_DECLARE_STRONG_TYPEDEF.</li>
+	</ul>
 </li>
 
 </ul>
@@ -40,9 +58,9 @@ Metal is no longer required.
 <ul>
 
 <li>\ref fcpptconcepts
-    <p>
-    New library with various C++20 concepts.
-    </p>
+	<p>
+	New library with various C++20 concepts.
+	</p>
 </li>
 
 <li>\ref fcpptcontainer

@@ -7,7 +7,7 @@
 #define FCPPT_PARSE_SEPARATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/container/join.hpp>
@@ -40,7 +40,7 @@ fcppt::parse::result<Ch, typename fcppt::parse::separator<Inner, Sep>::result_ty
 fcppt::parse::separator<Inner, Sep>::parse(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-  FCPPT_MAKE_STRONG_TYPEDEF(fcppt::parse::result_of<Inner>, first_type);
+  FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::parse::result_of<Inner>, first_type);
 
   auto const inner_parser(
       fcppt::parse::construct<first_type>(fcppt::make_cref(fcppt::parse::deref(this->inner_))) >>

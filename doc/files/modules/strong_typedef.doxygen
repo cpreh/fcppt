@@ -75,7 +75,7 @@ types need to be created:
 
 \snippet strong_typedef.cpp strong_typedef_is_same
 
-To achieve that, the #FCPPT_MAKE_STRONG_TYPEDEF macro first
+To achieve that, the #FCPPT_DECLARE_STRONG_TYPEDEF macro first
 creates an empty struct containing the name you specify as the first parameter.
 This is then used as the second parameter to #fcppt::strong_typedef to make it a distinct type.
 
@@ -117,8 +117,8 @@ This is then used as the second parameter to #fcppt::strong_typedef to make it a
 <td>Contains <code>operator<<</code>.</td>
 </tr>
 <tr>
-<td><code>make_strong_typedef.hpp</code></td>
-<td>Contains #FCPPT_MAKE_STRONG_TYPEDEF.</td>
+<td><code>declare_strong_typedef.hpp</code></td>
+<td>Contains #FCPPT_DECLARE_STRONG_TYPEDEF.</td>
 </tr>
 </table>
 */

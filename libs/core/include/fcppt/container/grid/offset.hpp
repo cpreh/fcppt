@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>
@@ -35,9 +35,9 @@ SizeType offset(
     fcppt::container::grid::pos<SizeType, Size> const &_pos,
     fcppt::container::grid::dim<SizeType, Size> const &_size)
 {
-  FCPPT_MAKE_STRONG_TYPEDEF(SizeType, result);
+  FCPPT_DECLARE_STRONG_TYPEDEF(SizeType, result);
 
-  FCPPT_MAKE_STRONG_TYPEDEF(SizeType, stacked_dim);
+  FCPPT_DECLARE_STRONG_TYPEDEF(SizeType, stacked_dim);
 
   return fcppt::algorithm::fold(
              fcppt::math::int_range<1U, Size>{},

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/strong_typedef.hpp>
@@ -26,7 +26,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::find_opt", "[container]")
 {
-  FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int);
+  FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
   struct comp
   {

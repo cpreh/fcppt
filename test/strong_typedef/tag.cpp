@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -12,7 +12,7 @@
 
 int main()
 {
-  FCPPT_MAKE_STRONG_TYPEDEF(unsigned, strong_uint);
+  FCPPT_DECLARE_STRONG_TYPEDEF(unsigned, strong_uint);
 
   static_assert(std::is_same_v<fcppt::strong_typedef_tag<strong_uint>, strong_uint::tag_type>);
 }
