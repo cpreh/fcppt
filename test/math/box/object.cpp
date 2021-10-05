@@ -27,7 +27,7 @@ TEST_CASE("math::box::sobject", "[math],[box]")
   box_type const box1{vector{10, 12, 14}, dim{24, 26, 28}};
 
   CHECK(box1.pos() == vector{10, 12, 14});
-  CHECK(box1.size() == dim{24, 28, 28});
+  CHECK(box1.size() == dim{24, 26, 28});
   CHECK(box1.min() == vector{10, 12, 14});
   CHECK(box1.max() == vector{34, 38, 42});
   CHECK(box1.left() == 10);
@@ -35,7 +35,7 @@ TEST_CASE("math::box::sobject", "[math],[box]")
   CHECK(box1.top() == 12);
   CHECK(box1.bottom() == 38);
   CHECK(box1.front() == 14);
-  CHECK(box1.back() == 48);
+  CHECK(box1.back() == 42);
 
   CHECK(box1 == box_type{box_type::min_t{vector{10, 12, 14}}, box_type::max_t{vector{34, 38, 42}}});
 }
