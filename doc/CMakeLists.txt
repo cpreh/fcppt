@@ -570,6 +570,7 @@ set(
 	libs/core/include/fcppt/container/raw_vector/object_decl.hpp
 	libs/core/include/fcppt/container/raw_vector/object_fwd.hpp
 	libs/core/include/fcppt/container/raw_vector/object_impl.hpp
+	libs/core/include/fcppt/container/raw_vector/output.hpp
 	libs/core/include/fcppt/container/raw_vector/rep_decl.hpp
 	libs/core/include/fcppt/container/raw_vector/rep_fwd.hpp
 	libs/core/include/fcppt/container/raw_vector/rep_impl.hpp

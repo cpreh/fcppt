@@ -11,6 +11,12 @@ This release fixes some warnings related to <code>clang-13</code>.
 
 <ul>
 
+<li>\ref fcpptcontainerraw_vector
+	<ul>
+	<li>Added output operator for #fcppt::container::raw_vector::object.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstrongtypedef
 	<ul>
 	<li>Added #fcppt::make_strong_typedef.</li>
