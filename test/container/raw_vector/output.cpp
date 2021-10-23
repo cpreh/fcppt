@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/output_to_std_string.hpp>
-#include <fcppt/container/raw_vector/object_impl.hpp>
-#include <fcppt/container/raw_vector/output.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
+#include <fcppt/container/raw_vector/object_impl.hpp>
+#include <fcppt/container/raw_vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch.hpp>
 #include <fcppt/config/external_end.hpp>
