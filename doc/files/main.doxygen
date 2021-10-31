@@ -49,7 +49,7 @@ This also brings us to the next point, which is initialization. It is important 
 initialize objects and declare them as <code>const</code> whenever possible.
 Obviously you cannot do that with loops that change their result in each iteration, like by
 calling <code>push_back</code>. There are, however, even more complicated cases in which
-direct initialization becomes hard to express: Consider a <code>std::array</code> that
+direct initialization becomes hard to express: Consider an array that
 should be initialized <em>depending on its size</em>. For simplicity, let us initialize
 each element with its index:
 
