@@ -99,8 +99,6 @@ TEST_CASE("intrusive::list"
   }
 }
 
-FCPPT_CATCH_BEGIN
-
 TEST_CASE("intrusive::list size"
           "[intrusive]")
 {
@@ -138,8 +136,6 @@ TEST_CASE("intrusive::list size"
     REQUIRE(fcppt::range::size(my_list) == 1U);
   }
 }
-
-FCPPT_CATCH_BEGIN
 
 TEST_CASE("intrusive::list move assign"
           "[intrusive]")
