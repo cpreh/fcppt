@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_420 4.2.0
+
+\subsection changes_removed_functionality_to_420 Removed functionality
+
+<ul>
+
+<li>\ref fcpptfilesystem
+	<ul>
+	<li>Removed <code>fcppt::filesystem::replace_extension</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_410 4.1.0
 
 <p>
