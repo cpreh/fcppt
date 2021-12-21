@@ -23,7 +23,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/recursive_directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/recursive_directory_range_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
-	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
 	libs/filesystem/src/filesystem/create_directories_recursive.cpp
@@ -39,7 +38,6 @@ set(
 	libs/filesystem/src/filesystem/path_to_string.cpp
 	libs/filesystem/src/filesystem/recursive_directory_range.cpp
 	libs/filesystem/src/filesystem/remove_extension.cpp
-	libs/filesystem/src/filesystem/replace_extension.cpp
 	libs/filesystem/src/filesystem/stem.cpp
 	libs/filesystem/src/filesystem/strip_prefix.cpp
 )

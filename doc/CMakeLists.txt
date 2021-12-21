@@ -1677,7 +1677,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/recursive_directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/recursive_directory_range_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
-	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
 	libs/log/include/fcppt/log/const_level_stream_array_reference.hpp
