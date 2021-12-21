@@ -4,14 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/filesystem/remove_extension.hpp>
-#include <fcppt/filesystem/stem.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-std::filesystem::path fcppt::filesystem::remove_extension(std::filesystem::path const &_path)
+std::filesystem::path fcppt::filesystem::remove_extension(std::filesystem::path _path)
 {
-  return _path.parent_path() /
-         // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-         fcppt::filesystem::stem(_path);
+  return _path.replace_extension(std::filesystem::path{});
 }
