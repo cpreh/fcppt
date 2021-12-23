@@ -9,7 +9,11 @@
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li>Removed <code>fcppt::filesystem::replace_extension</code>.</li>
+	<li>Removed <code>fcppt::filesystem::replace_extension</code>. Use <code>std::filesystem::path::replace_extension</code>.</li>
+	<li>Removed <code>fcppt::filesystem::strip_prefix</code>. Use <code>std::filesystem::relative</code>.</li>
+	<li>Removed <code>fcppt::filesystem::num_subpaths</code>.</li>
+	<li>Removed <code>fcppt::filesystem::normalize</code>.</li>
+	<li>Removed <code>fcppt::filesystem::stem</code>. Use <code>std::filesystem::path::stem</code>.</li>
 	</ul>
 </li>
 

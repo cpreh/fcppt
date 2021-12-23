@@ -12,8 +12,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/make_directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/make_recursive_directory_range.hpp
-	libs/filesystem/include/fcppt/filesystem/normalize.hpp
-	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
 	libs/filesystem/include/fcppt/filesystem/open.hpp
 	libs/filesystem/include/fcppt/filesystem/open_exn.hpp
@@ -23,8 +21,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/recursive_directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/recursive_directory_range_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
-	libs/filesystem/include/fcppt/filesystem/stem.hpp
-	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
 	libs/filesystem/src/filesystem/create_directories_recursive.cpp
 	libs/filesystem/src/filesystem/create_directory.cpp
 	libs/filesystem/src/filesystem/directory_range.cpp
@@ -33,13 +29,9 @@ set(
 	libs/filesystem/src/filesystem/file_size.cpp
 	libs/filesystem/src/filesystem/make_directory_range.cpp
 	libs/filesystem/src/filesystem/make_recursive_directory_range.cpp
-	libs/filesystem/src/filesystem/normalize.cpp
-	libs/filesystem/src/filesystem/num_subpaths.cpp
 	libs/filesystem/src/filesystem/path_to_string.cpp
 	libs/filesystem/src/filesystem/recursive_directory_range.cpp
 	libs/filesystem/src/filesystem/remove_extension.cpp
-	libs/filesystem/src/filesystem/stem.cpp
-	libs/filesystem/src/filesystem/strip_prefix.cpp
 )
 
 make_fcppt_library(

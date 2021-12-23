@@ -15,17 +15,14 @@
 namespace fcppt::filesystem
 {
 /**
-\brief Returns the extension of a path as string
+\brief Returns the extension of a path as an #fcppt::string.
 
 \ingroup fcpptfilesystem
-
-Returns the extension of \a path as a string instead of a path.
-
-\param path The path to return the extension from
 
 \return The extension as a string. If there is no extension, the string will be
 empty.
 */
+[[nodiscard]]
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string extension(std::filesystem::path const &path);
 
