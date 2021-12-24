@@ -19,7 +19,7 @@ namespace fcppt::filesystem
 
 \ingroup fcpptfilesystem
 
-\return The extension as a string. If there is no extension, the string will be
+\return The extension as an #fcppt::string. If there is no extension, the string will be
 empty.
 */
 [[nodiscard]]

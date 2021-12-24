@@ -15,17 +15,14 @@
 namespace fcppt::filesystem
 {
 /**
-\brief Returns the extension of a path as string without the dot
+\brief Returns the extension of a path as an #fcppt::string without the dot.
 
 \ingroup fcpptfilesystem
 
-Returns the extension of \a path without the dot as a string instead of a path.
-
-\param path The path to return the extension from
-
-\return The extension as a string without the dot. If there is no extension,
+\return The extension as an #fcppt::string without the dot. If there is no extension,
 the string will be empty.
 */
+[[nodiscard]]
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string extension_without_dot(std::filesystem::path const &path);
 

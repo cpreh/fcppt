@@ -24,6 +24,7 @@ Removes the extension (inluding the dot) from \a path if it has any.
 
 \return A new path with the extension removed
 */
+[[nodiscard]]
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::filesystem::path remove_extension(std::filesystem::path path);
 
