@@ -1316,6 +1316,7 @@ set(
 	libs/core/include/fcppt/to_std_wstring_locale.hpp
 	libs/core/include/fcppt/tuple/apply.hpp
 	libs/core/include/fcppt/tuple/apply_result.hpp
+	libs/core/include/fcppt/tuple/as_struct.hpp
 	libs/core/include/fcppt/tuple/comparison.hpp
 	libs/core/include/fcppt/tuple/concat.hpp
 	libs/core/include/fcppt/tuple/detail/apply_result_at.hpp

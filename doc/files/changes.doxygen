@@ -3,6 +3,18 @@
 
 \section changes_changes_to_420 4.2.0
 
+\subsection changes_added_functionality_to_420 Added functionality
+
+<ul>
+
+<li>\ref fcppttuple
+    <ul>
+    <li>Added #fcppt::tuple::as_struct.</li>
+    </ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_420 Removed functionality
 
 <ul>

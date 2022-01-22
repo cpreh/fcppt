@@ -15,6 +15,12 @@ add_fcppt_tuple_test(
 )
 
 add_fcppt_tuple_test(
+	as_struct
+	LINK_LIBS
+		fcppt_catch_interface
+)
+
+add_fcppt_tuple_test(
 	concat
 	LINK_LIBS
 		fcppt_catch_interface

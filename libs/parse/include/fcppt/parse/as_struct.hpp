@@ -9,7 +9,7 @@
 #include <fcppt/parse/convert_impl.hpp>
 #include <fcppt/parse/make_convert.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/tuple/invoke.hpp>
+#include <fcppt/tuple/as_struct.hpp>
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -38,9 +38,7 @@ as_struct(Parser &&_parser)
 {
   return fcppt::parse::make_convert(
       std::forward<Parser>(_parser), [](fcppt::parse::result_of<Parser> &&_tuple) {
-        return fcppt::tuple::invoke(
-            [](auto &&..._args) { return Result{std::forward<decltype(_args)>(_args)...}; },
-            std::move(_tuple));
+        return fcppt::tuple::as_struct<Result>(std::move(_tuple));
       });
 }
 }
