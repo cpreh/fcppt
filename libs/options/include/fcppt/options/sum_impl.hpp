@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONS_SUM_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_SUM_IMPL_HPP_INCLUDED
 
+#include <fcppt/copy.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/set_union.hpp>
@@ -47,25 +48,29 @@ fcppt::options::sum<Label, Left, Right>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &_context) const
 {
   return fcppt::either::match(
-      fcppt::options::deref(left_).parse(fcppt::options::state{_state}, _context),
-      [&_context, &_state, this](fcppt::options::parse_error &&_error1) {
+      fcppt::options::deref(this->left_).parse(fcppt::copy(_state), _context),
+      [&_context, &_state, this](fcppt::options::parse_error &&_error1)
+      {
         FCPPT_PP_PUSH_WARNING
         FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 
         return fcppt::either::match(
             fcppt::options::deref(this->right_).parse(std::move(_state), _context),
-            [&_error1](fcppt::options::parse_error &&_error2) {
+            [&_error1](fcppt::options::parse_error &&_error2)
+            {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
                   fcppt::options::detail::combine_errors(
                       std::move(_error1),
                       std::move(_error2),
-                      [](fcppt::string &&_string1, fcppt::string &&_string2) {
+                      [](fcppt::string &&_string1, fcppt::string &&_string2)
+                      {
                         // TODO(philipp): Format this better
                         return fcppt::options::indent(std::move(_string1)) + FCPPT_TEXT("\n|\n") +
                                fcppt::options::indent(std::move(_string2));
                       }));
             },
-            [](fcppt::options::state_with_value<fcppt::options::result_of<Right>> &&_right_result) {
+            [](fcppt::options::state_with_value<fcppt::options::result_of<Right>> &&_right_result)
+            {
               return fcppt::options::parse_result<result_type>{
                   fcppt::options::state_with_value<result_type>{
                       std::move(_right_result.state()),
@@ -76,7 +81,8 @@ fcppt::options::sum<Label, Left, Right>::parse(
 
         FCPPT_PP_POP_WARNING
       },
-      [](fcppt::options::state_with_value<fcppt::options::result_of<Left>> &&_left_result) {
+      [](fcppt::options::state_with_value<fcppt::options::result_of<Left>> &&_left_result)
+      {
         return fcppt::options::parse_result<result_type>{
             fcppt::options::state_with_value<result_type>{
                 std::move(_left_result.state()),
@@ -90,21 +96,23 @@ template <typename Label, typename Left, typename Right>
 fcppt::options::flag_name_set fcppt::options::sum<Label, Left, Right>::flag_names() const
 {
   return fcppt::container::set_union(
-      fcppt::options::deref(left_).flag_names(), fcppt::options::deref(right_).flag_names());
+      fcppt::options::deref(this->left_).flag_names(),
+      fcppt::options::deref(this->right_).flag_names());
 }
 
 template <typename Label, typename Left, typename Right>
 fcppt::options::option_name_set fcppt::options::sum<Label, Left, Right>::option_names() const
 {
   return fcppt::container::set_union(
-      fcppt::options::deref(left_).option_names(), fcppt::options::deref(right_).option_names());
+      fcppt::options::deref(this->left_).option_names(),
+      fcppt::options::deref(this->right_).option_names());
 }
 
 template <typename Label, typename Left, typename Right>
 fcppt::string fcppt::options::sum<Label, Left, Right>::usage() const
 {
-  return FCPPT_TEXT("(\n") + fcppt::options::indent(fcppt::options::deref(left_).usage()) +
-         FCPPT_TEXT("\n|\n") + fcppt::options::indent(fcppt::options::deref(right_).usage()) +
+  return FCPPT_TEXT("(\n") + fcppt::options::indent(fcppt::options::deref(this->left_).usage()) +
+         FCPPT_TEXT("\n|\n") + fcppt::options::indent(fcppt::options::deref(this->right_).usage()) +
          FCPPT_TEXT("\n)");
 }
 
