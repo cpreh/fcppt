@@ -17,10 +17,7 @@ template <typename Result, typename Iterator>
 inline std::enable_if_t<!fcppt::container::detail::has_insert_range<Result>::value, void>
 join_insert(Result &_result, Iterator const _begin, Iterator const _end)
 {
-  _result.insert(
-      _result.end(), // NOLINT(fuchsia-default-arguments-calls)
-      _begin,
-      _end);
+  _result.insert(_result.end(), _begin, _end);
 }
 
 template <typename Result, typename Iterator>

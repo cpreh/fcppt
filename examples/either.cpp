@@ -191,21 +191,18 @@ int main()
 try
 {
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream("42 test");
 
     std::cout << read_stream_raw(stream).first << '\n';
   }
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream("42 test");
 
     std::cout << read_stream_either(stream).has_success() << '\n';
   }
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream("42 test");
 
     either_to_exception(stream);

@@ -57,15 +57,9 @@ TEST_CASE("container_join std::map"
 
   CHECK(
       fcppt::container::join(
-          int_map{// NOLINT(fuchsia-default-arguments-calls)
-                  std::make_pair(1, 'a'),
-                  std::make_pair(2, 'b')},
-          int_map{// NOLINT(fuchsia-default-arguments-calls)
-                  std::make_pair(2, 'c'),
-                  std::make_pair(3, 'd')}) == int_map{// NOLINT(fuchsia-default-arguments-calls)
-                                                      std::make_pair(1, 'a'),
-                                                      std::make_pair(2, 'b'),
-                                                      std::make_pair(3, 'd')});
+          int_map{std::make_pair(1, 'a'), std::make_pair(2, 'b')},
+          int_map{std::make_pair(2, 'c'), std::make_pair(3, 'd')}) ==
+      int_map{std::make_pair(1, 'a'), std::make_pair(2, 'b'), std::make_pair(3, 'd')});
 }
 
 FCPPT_CATCH_END

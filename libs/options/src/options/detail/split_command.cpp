@@ -22,12 +22,11 @@ fcppt::options::detail::split_command(
 {
   return fcppt::optional::map(
       fcppt::options::impl::next_arg(_args, _option_names),
-      [&_args](fcppt::args_vector::const_iterator const _pos) {
+      [&_args](fcppt::args_vector::const_iterator const _pos)
+      {
         return fcppt::tuple::make(
             fcppt::args_vector{_args.begin(), _pos},
             *_pos,
-            fcppt::args_vector{// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-                               std::next(_pos),
-                               _args.end()});
+            fcppt::args_vector{std::next(_pos), _args.end()});
       });
 }

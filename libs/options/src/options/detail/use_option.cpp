@@ -39,22 +39,15 @@ fcppt::options::detail::use_option_result fcppt::options::detail::use_option(
     return fcppt::options::detail::use_option_result{fcppt::optional_string{}};
   }
 
-  if (
-      // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      std::next(pos) == end)
+  if (std::next(pos) == end)
   {
     return fcppt::options::detail::use_option_result{
         fcppt::options::detail::missing_option_argument{flag_name}};
   }
 
-  fcppt::string result{// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-                       *std::next(pos)};
+  fcppt::string result{*std::next(pos)};
 
-  args.erase(
-      // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      pos,
-      // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      std::next(pos, 2));
+  args.erase(pos, std::next(pos, 2));
 
   return fcppt::options::detail::use_option_result{fcppt::optional_string{std::move(result)}};
 }

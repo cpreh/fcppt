@@ -17,17 +17,7 @@ TEST_CASE("container::set_difference", "[container]")
 {
   using int_set = std::set<int>;
 
-  CHECK(
-      fcppt::container::set_difference(
-          int_set{// NOLINT(fuchsia-default-arguments-calls)
-                  1,
-                  2,
-                  3},
-          int_set{// NOLINT(fuchsia-default-arguments-calls)
-                  2,
-                  3,
-                  4}) == int_set{// NOLINT(fuchsia-default-arguments-calls)
-                                 1});
+  CHECK(fcppt::container::set_difference(int_set{1, 2, 3}, int_set{2, 3, 4}) == int_set{1});
 }
 
 FCPPT_CATCH_END

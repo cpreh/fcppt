@@ -103,7 +103,6 @@ fcppt::options::flag<Label, Type>::parse(
 template <typename Label, typename Type>
 fcppt::options::flag_name_set fcppt::options::flag<Label, Type>::flag_names() const
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   fcppt::options::flag_name_set result{fcppt::options::flag_name{this->long_name_.get()}};
 
   fcppt::optional::maybe_void(

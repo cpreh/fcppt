@@ -186,7 +186,6 @@ fcppt::options::flag_name_set fcppt::options::option<Label, Type>::flag_names() 
 template <typename Label, typename Type>
 fcppt::options::option_name_set fcppt::options::option<Label, Type>::option_names() const
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   fcppt::options::option_name_set result{fcppt::options::option_name{
       fcppt::string{this->long_name_.get()}, fcppt::options::option_name::is_short{false}}};
 

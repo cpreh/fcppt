@@ -109,7 +109,6 @@ void print(std::ostream &_stream, fcppt::record::object<Elements...> const &_rec
 void init_stream()
 {
   // ![record_init_stream]
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::istringstream stream{"42 test"};
   // ![record_init_stream]
 

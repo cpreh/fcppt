@@ -15,7 +15,6 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::expect", "[io]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::istringstream stream{"xy"};
 
   fcppt::io::expect(stream, 'x');

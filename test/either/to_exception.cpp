@@ -28,9 +28,8 @@ TEST_CASE("either::to_exception", "[either]")
   CHECK_THROWS_MATCHES(
       fcppt::either::to_exception(either_int{std::string{"Invalid"}}, make_exception),
       std::exception,
-      Catch::Matchers::Predicate< // NOLINT(fuchsia-default-arguments-calls)
-          std::exception>([](std::exception const &_exn)
-                          { return _exn.what() == std::string{"Invalid"}; }));
+      Catch::Matchers::Predicate<std::exception>(
+          [](std::exception const &_exn) { return _exn.what() == std::string{"Invalid"}; }));
 }
 
 FCPPT_CATCH_END

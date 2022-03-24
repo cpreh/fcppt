@@ -28,7 +28,6 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::stream", "[parse]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::istringstream string_stream{"xy\nz\n"};
 
   fcppt::parse::detail::stream<char> stream{
@@ -43,7 +42,7 @@ TEST_CASE("parse::stream", "[parse]")
 
   CHECK(
       stream.get_position() == position{
-                                   offset{}, // NOLINT(fuchsia-default-arguments-calls)
+                                   offset{},
                                    fcppt::optional::make(fcppt::parse::location{
                                        fcppt::parse::line{1U}, fcppt::parse::column{1U}})});
 
@@ -52,7 +51,7 @@ TEST_CASE("parse::stream", "[parse]")
   CHECK(
       stream.get_position() ==
       position{
-          offset{} + std::streamoff{1}, // NOLINT(fuchsia-default-arguments-calls)
+          offset{} + std::streamoff{1},
           fcppt::optional::make(
               fcppt::parse::location{fcppt::parse::line{1U}, fcppt::parse::column{2U}})});
 
@@ -61,7 +60,7 @@ TEST_CASE("parse::stream", "[parse]")
   CHECK(
       stream.get_position() ==
       position{
-          offset{} + std::streamoff{2}, // NOLINT(fuchsia-default-arguments-calls)
+          offset{} + std::streamoff{2},
           fcppt::optional::make(
               fcppt::parse::location{fcppt::parse::line{1U}, fcppt::parse::column{3U}})});
 
@@ -70,7 +69,7 @@ TEST_CASE("parse::stream", "[parse]")
   CHECK(
       stream.get_position() ==
       position{
-          offset{} + std::streamoff{3}, // NOLINT(fuchsia-default-arguments-calls)
+          offset{} + std::streamoff{3},
           fcppt::optional::make(
               fcppt::parse::location{fcppt::parse::line{2U}, fcppt::parse::column{1U}})});
 }

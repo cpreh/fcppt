@@ -17,7 +17,6 @@
 
 int main()
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   fcppt::io::ostringstream ostream{};
 
   {

@@ -46,9 +46,7 @@ split_string(String const &_string, fcppt::type_traits::value_type<String> const
     {
       result.push_back(String{last, cur});
 
-      last =
-          // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-          std::next(cur);
+      last = std::next(cur);
     }
   }
 

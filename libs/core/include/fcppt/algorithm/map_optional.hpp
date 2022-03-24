@@ -38,11 +38,10 @@ TargetContainer map_optional(Source &&_source, Function const &_function)
         fcppt::optional::is_object<decltype(_function(element))>::value,
         "map_optional requires a function that returns an optional");
 
-    fcppt::optional::maybe_void(_function(element), [&result](auto &&_inner) {
-      result.insert(
-          result.end(), // NOLINT(fuchsia-default-arguments-calls)
-          std::forward<decltype(_inner)>(_inner));
-    });
+    fcppt::optional::maybe_void(
+        _function(element),
+        [&result](auto &&_inner)
+        { result.insert(result.end(), std::forward<decltype(_inner)>(_inner)); });
   }
 
   return result;

@@ -24,7 +24,6 @@ TEST_CASE("math::dim input", "[math],[dim]")
 
   SECTION("input success")
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     fcppt::io::istringstream stream{FCPPT_TEXT("(42, 3)")};
 
     ui2_dim result(fcppt::no_init{});
@@ -36,7 +35,6 @@ TEST_CASE("math::dim input", "[math],[dim]")
 
   SECTION("input failure")
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     fcppt::io::istringstream stream{FCPPT_TEXT("(42, 3")};
 
     ui2_dim result(fcppt::no_init{});

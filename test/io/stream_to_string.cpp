@@ -20,14 +20,12 @@ FCPPT_CATCH_BEGIN
 TEST_CASE("io::stream_to_string", "[io]")
 {
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream istream{"TEST abcd"};
 
     CHECK(fcppt::io::stream_to_string(istream) == fcppt::optional::make(std::string{"TEST abcd"}));
   }
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream istream{};
 
     CHECK(fcppt::io::stream_to_string(istream) == fcppt::optional::make(std::string{}));

@@ -19,14 +19,12 @@ FCPPT_CATCH_BEGIN
 TEST_CASE("io::extract", "[io]")
 {
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream{"xy"};
 
     CHECK(fcppt::io::extract<int>(stream) == fcppt::optional::object<int>{});
   }
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream{"42"};
 
     CHECK(fcppt::io::extract<int>(stream) == fcppt::optional::make(42));

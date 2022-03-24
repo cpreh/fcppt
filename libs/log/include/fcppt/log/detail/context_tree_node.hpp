@@ -30,9 +30,9 @@ public:
 
   ~context_tree_node() noexcept;
 
-  fcppt::log::name const &name() const;
+  [[nodiscard]] fcppt::log::name const &name() const;
 
-  fcppt::log::optional_level level() const;
+  [[nodiscard]] fcppt::log::optional_level level() const;
 
   void level(fcppt::log::optional_level const &);
 

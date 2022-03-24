@@ -23,13 +23,9 @@ TEST_CASE("container key_set"
   using int_string_map = std::map<int, std::string>;
 
   CHECK(
-      fcppt::container::key_set<int_set>(
-          int_string_map{// NOLINT(fuchsia-default-arguments-calls)
-                         std::make_pair(42, std::string("test")),
-                         std::make_pair(10, std::string("test2"))}) ==
-      int_set{// NOLINT(fuchsia-default-arguments-calls)
-              10,
-              42});
+      fcppt::container::key_set<int_set>(int_string_map{
+          std::make_pair(42, std::string("test")), std::make_pair(10, std::string("test2"))}) ==
+      int_set{10, 42});
 }
 
 FCPPT_CATCH_END

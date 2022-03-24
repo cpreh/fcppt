@@ -30,8 +30,7 @@ void sequence_iteration(Sequence &_sequence, UpdateAction const &_update_action)
     switch (_update_action(*it))
     {
     case fcppt::algorithm::update_action::remove:
-      it = _sequence.erase(it // NOLINT(fuchsia-default-arguments-calls)
-      );
+      it = _sequence.erase(it);
 
       break;
     case fcppt::algorithm::update_action::keep:

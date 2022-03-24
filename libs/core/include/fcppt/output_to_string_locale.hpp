@@ -39,7 +39,6 @@ Dest output_to_string_locale(Source const &_source, std::locale const &_locale)
   using ostringstream =
       std::basic_ostringstream<fcppt::type_traits::value_type<Dest>, typename Dest::traits_type>;
 
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   ostringstream oss{};
 
   oss.imbue(_locale);

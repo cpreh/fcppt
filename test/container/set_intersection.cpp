@@ -17,18 +17,7 @@ TEST_CASE("container::set_intersection", "[container]")
 {
   using int_set = std::set<int>;
 
-  CHECK(
-      fcppt::container::set_intersection(
-          int_set{// NOLINT(fuchsia-default-arguments-calls)
-                  1,
-                  2,
-                  3},
-          int_set{// NOLINT(fuchsia-default-arguments-calls)
-                  2,
-                  3,
-                  4}) == int_set{// NOLINT(fuchsia-default-arguments-calls)
-                                 2,
-                                 3});
+  CHECK(fcppt::container::set_intersection(int_set{1, 2, 3}, int_set{2, 3, 4}) == int_set{2, 3});
 }
 
 FCPPT_CATCH_END

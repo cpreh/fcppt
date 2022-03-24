@@ -47,9 +47,7 @@ TEST_CASE("cyclic_iterator array", "[cyclic_iterator]")
 
   REQUIRE(*test == 3);
 
-  REQUIRE(
-      test.get() == std::prev( // NOLINT(fuchsia-default-arguments-calls)
-                        array.end()));
+  REQUIRE(test.get() == std::prev(array.end()));
 
   --test;
 

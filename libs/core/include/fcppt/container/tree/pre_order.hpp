@@ -93,10 +93,8 @@ public:
 
       if (!cur_deref.empty())
       {
-        for (reference element : fcppt::iterator::make_range(
-                 cur_deref.rbegin(),
-                 // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-                 std::prev(cur_deref.rend())))
+        for (reference element :
+             fcppt::iterator::make_range(cur_deref.rbegin(), std::prev(cur_deref.rend())))
         {
           this->positions_.push(tree_ref(element));
         }

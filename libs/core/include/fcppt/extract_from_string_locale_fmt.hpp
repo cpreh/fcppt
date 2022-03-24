@@ -49,7 +49,6 @@ fcppt::optional::object<Dest> extract_from_string_locale_fmt(
 
   using istringstream = std::basic_istringstream<fcppt::type_traits::value_type<source>, traits>;
 
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   istringstream iss{std::forward<Source>(_source)};
 
   iss.imbue(_locale);

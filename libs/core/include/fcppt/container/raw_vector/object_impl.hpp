@@ -81,16 +81,14 @@ template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::reference
 fcppt::container::raw_vector::object<T, A>::back() noexcept
 {
-  return *(std::prev( // NOLINT(fuchsia-default-arguments-calls)
-      this->end()));
+  return *(std::prev(this->end()));
 }
 
 template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::const_reference
 fcppt::container::raw_vector::object<T, A>::back() const noexcept
 {
-  return *(std::prev( // NOLINT(fuchsia-default-arguments-calls)
-      this->end()));
+  return *(std::prev(this->end()));
 }
 
 template <typename T, typename A>
@@ -214,8 +212,7 @@ void fcppt::container::raw_vector::object<T, A>::push_back(T const &_value)
 template <typename T, typename A>
 void fcppt::container::raw_vector::object<T, A>::pop_back() noexcept
 {
-  this->erase(std::prev( // NOLINT(fuchsia-default-arguments-calls)
-      this->end()));
+  this->erase(std::prev(this->end()));
 }
 
 template <typename T, typename A>
@@ -322,11 +319,7 @@ fcppt::container::raw_vector::object<T, A>::insert(iterator const _position, T c
   {
     if (!this->empty())
     {
-      std::copy_backward(
-          _position,
-          this->end(),
-          // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-          std::next(this->data_end()));
+      std::copy_backward(_position, this->end(), std::next(this->data_end()));
     }
 
     *_position = _value;
@@ -433,9 +426,7 @@ fcppt::container::raw_vector::object<T, A>::insert_impl(
 {
   for (; _left != _right; ++_left)
   {
-    _position =
-        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        std::next(this->insert(_position, *_left));
+    _position = std::next(this->insert(_position, *_left));
   }
 }
 

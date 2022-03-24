@@ -61,41 +61,29 @@ TEST_CASE("intrusive::list"
 
     CHECK(std::distance(my_list.begin(), my_list.end()) == 1);
 
-    CHECK(
-        std::next( // NOLINT(fuchsia-default-arguments-calls)
-            my_list.begin()) == my_list.end());
+    CHECK(std::next(my_list.begin()) == my_list.end());
 
     {
       test_class test2{my_list, 10};
 
-      CHECK(
-          std::next( // NOLINT(fuchsia-default-arguments-calls)
-              my_list.begin(),
-              2) == my_list.end());
+      CHECK(std::next(my_list.begin(), 2) == my_list.end());
 
       CHECK(std::distance(my_list.begin(), my_list.end()) == 2);
 
       CHECK(my_list.begin()->value() == 42);
 
-      CHECK(
-          std::next( // NOLINT(fuchsia-default-arguments-calls)
-              my_list.begin())
-              ->value() == 10);
+      CHECK(std::next(my_list.begin())->value() == 10);
 
       test_class test3{std::move(test2)};
 
       CHECK(std::distance(my_list.begin(), my_list.end()) == 2);
     }
 
-    CHECK(
-        std::next( // NOLINT(fuchsia-default-arguments-calls)
-            my_list.begin()) == my_list.end());
+    CHECK(std::next(my_list.begin()) == my_list.end());
 
     test_list my_list2{std::move(my_list)};
 
-    CHECK(
-        std::next( // NOLINT(fuchsia-default-arguments-calls)
-            my_list2.begin()) == my_list2.end());
+    CHECK(std::next(my_list2.begin()) == my_list2.end());
   }
 }
 

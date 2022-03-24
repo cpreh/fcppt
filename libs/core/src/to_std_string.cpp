@@ -21,10 +21,7 @@ fcppt::optional_std_string fcppt::to_std_string(fcppt::string_view const _input)
 #if !defined(FCPPT_NARROW_STRING)
       fcppt::to_std_string_locale(_input, fcppt::string_conv_locale())
 #else
-      fcppt::optional_std_string
-  {
-    std::string { _input }
-  }
+      fcppt::optional_std_string{std::string {_input}}
 #endif
-          ;
+      ;
 }

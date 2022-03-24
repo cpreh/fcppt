@@ -32,7 +32,6 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("strong_typedef output", "[strongtypedef]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::stringstream stream{};
 
   strong_int const test(1);
@@ -48,7 +47,6 @@ TEST_CASE("strong_typedef output", "[strongtypedef]")
 
 TEST_CASE("strong_typedef input", "[strongtypedef]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::stringstream stream{};
 
   stream << 1;

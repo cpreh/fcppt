@@ -20,7 +20,6 @@ TEST_CASE("algorithm map_iteration", "[algorithm_map_iteration]")
 {
   using sequence = std::map<int, std::string>;
 
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   sequence seq{
       std::make_pair(1, std::string("1")),
       std::make_pair(2, std::string("2")),
@@ -32,10 +31,7 @@ TEST_CASE("algorithm map_iteration", "[algorithm_map_iteration]")
                                  : fcppt::algorithm::update_action::remove;
   });
 
-  CHECK(
-      seq == sequence{// NOLINT(fuchsia-default-arguments-calls)
-                      std::make_pair(2, "2"),
-                      std::make_pair(4, "4")});
+  CHECK(seq == sequence{std::make_pair(2, "2"), std::make_pair(4, "4")});
 }
 
 FCPPT_CATCH_END

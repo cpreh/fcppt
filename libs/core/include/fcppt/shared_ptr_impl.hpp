@@ -19,9 +19,7 @@
 
 template <typename Type, typename Deleter>
 template <typename Other>
-fcppt::shared_ptr<Type, Deleter>::shared_ptr(Other *const _ptr)
-    : // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      impl_{_ptr, Deleter()}
+fcppt::shared_ptr<Type, Deleter>::shared_ptr(Other *const _ptr) : impl_{_ptr, Deleter()}
 {
 }
 
@@ -48,8 +46,7 @@ fcppt::shared_ptr<Type, Deleter>::shared_ptr(shared_ptr &&) noexcept = default;
 template <typename Type, typename Deleter>
 template <typename Other>
 fcppt::shared_ptr<Type, Deleter>::shared_ptr(fcppt::shared_ptr<Other, Deleter> const &_other)
-    : // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      impl_(_other.std_ptr())
+    : impl_(_other.std_ptr())
 {
 }
 
@@ -76,8 +73,7 @@ fcppt::shared_ptr<Type, Deleter>::shared_ptr(std::unique_ptr<Other, Deleter> &&_
 template <typename Type, typename Deleter>
 template <typename Other>
 fcppt::shared_ptr<Type, Deleter>::shared_ptr(fcppt::unique_ptr<Other, Deleter> &&_other)
-    : // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      impl_{_other.release_ownership()}
+    : impl_{_other.release_ownership()}
 {
 }
 

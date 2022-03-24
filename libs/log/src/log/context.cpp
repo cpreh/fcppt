@@ -26,12 +26,10 @@
 #include <fcppt/log/impl/find_child_const.hpp>
 #include <fcppt/log/impl/find_or_create_child.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/config/external_begin.hpp>
 #if defined(ENABLE_THREADS)
-#include <fcppt/config/external_begin.hpp>
 #include <mutex>
-#include <fcppt/config/external_end.hpp>
 #endif
-#include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

@@ -33,11 +33,10 @@ template <typename TargetContainer, typename Source>
 
   for (auto &&element : _source)
   {
-    fcppt::optional::maybe_void(element, [&result](auto &&_element) {
-      result.insert(
-          result.end(), // NOLINT(fuchsia-default-arguments-calls)
-          fcppt::move_if_rvalue<Source>(_element));
-    });
+    fcppt::optional::maybe_void(
+        element,
+        [&result](auto &&_element)
+        { result.insert(result.end(), fcppt::move_if_rvalue<Source>(_element)); });
   }
 
   return result;

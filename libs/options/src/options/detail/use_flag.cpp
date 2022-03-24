@@ -28,9 +28,7 @@ bool fcppt::options::detail::use_flag(
 
   if (pos != args.end())
   {
-    args.erase(
-        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        pos);
+    args.erase(pos);
 
     return true;
   }

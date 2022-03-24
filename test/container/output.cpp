@@ -22,7 +22,6 @@ TEST_CASE("container::output", "[container]")
   int_vector const input{1, 2};
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::ostringstream stream{};
 
     stream << fcppt::container::output(input);
@@ -31,7 +30,6 @@ TEST_CASE("container::output", "[container]")
   }
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::wostringstream stream{};
 
     stream << fcppt::container::output(input);

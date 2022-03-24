@@ -43,8 +43,7 @@ template <
 [[nodiscard]] fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
 phrase_parse_string(Parser const &_parser, std::basic_string<Ch> &&_string, Skipper const &_skipper)
 {
-  std::basic_istringstream<Ch> stream{// NOLINT(fuchsia-default-arguments-calls)
-                                      std::move(_string)};
+  std::basic_istringstream<Ch> stream{std::move(_string)};
 
   stream.unsetf(std::ios_base::skipws);
 

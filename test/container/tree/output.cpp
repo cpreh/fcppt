@@ -30,7 +30,7 @@ TEST_CASE("container::tree output", "[container],[tree]")
 
   tree.push_back(std::string("e"));
 
-  std::ostringstream oss{}; // NOLINT(fuchsia-default-arguments-calls)
+  std::ostringstream oss{};
 
   oss << tree;
 

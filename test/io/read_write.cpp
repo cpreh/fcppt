@@ -23,7 +23,6 @@ void test_read_write(std::endian const _endianness)
 {
   int const foo{42};
 
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::stringstream stream{};
 
   fcppt::io::write(stream, foo, _endianness);
@@ -44,7 +43,6 @@ TEST_CASE("io read_write", "[io]")
   test_read_write(std::endian::little);
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::stringstream stream{};
 
     CHECK(fcppt::io::read<int>(stream, std::endian::little) == optional_int{});

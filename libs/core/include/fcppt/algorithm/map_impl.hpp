@@ -26,12 +26,10 @@ struct map_impl
 
     fcppt::algorithm::detail::map_reserve(result, _arg);
 
-    fcppt::algorithm::loop(std::forward<Arg>(_arg), [&_function, &result](auto &&_map_element) {
-      result.insert(
-          // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-          result.end(),
-          _function(fcppt::move_if_rvalue<Arg>(_map_element)));
-    });
+    fcppt::algorithm::loop(
+        std::forward<Arg>(_arg),
+        [&_function, &result](auto &&_map_element)
+        { result.insert(result.end(), _function(fcppt::move_if_rvalue<Arg>(_map_element))); });
 
     return result;
   }

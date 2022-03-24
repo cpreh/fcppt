@@ -39,7 +39,7 @@ TEST_CASE("container::uncons", "[container]")
         fcppt::container::uncons(vec) ==
         result_type{fcppt::tuple::make(
             fcppt::make_ref(vec[0]),
-            fcppt::iterator::make_range(std::next(vec.begin()), vec.end()))}); // NOLINT(fuchsia-default-arguments-calls)
+            fcppt::iterator::make_range(std::next(vec.begin()), vec.end()))});
   }
 }
 

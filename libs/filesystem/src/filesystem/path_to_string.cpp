@@ -12,7 +12,5 @@
 
 fcppt::string fcppt::filesystem::path_to_string(std::filesystem::path const &_path)
 {
-  return
-      // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      _path.string<fcppt::char_type>();
+  return _path.string<fcppt::char_type>();
 }

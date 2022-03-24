@@ -30,105 +30,31 @@
 namespace fcppt::test::parse::skipper
 {
 
-template<
-	typename Ch,
-	typename Skipper
->
-[[nodiscard]]
-fcppt::parse::skipper::result<
-	Ch
->
-skip_string(
-	Skipper const &_skipper,
-	std::basic_string<
-		Ch
-	> &&_string
-)
+template <typename Ch, typename Skipper>
+[[nodiscard]] fcppt::parse::skipper::result<Ch>
+skip_string(Skipper const &_skipper, std::basic_string<Ch> &&_string)
 try
 {
-	static_assert(
-		fcppt::parse::skipper::is_skipper<
-			Skipper
-		>::value
-	);
+  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
 
-	std::basic_istringstream<
-		Ch
-	> string_stream{ // NOLINT(fuchsia-default-arguments-calls)
-		std::move(
-			_string
-		)
-	};
+  std::basic_istringstream<Ch> string_stream{std::move(_string)};
 
-	string_stream.unsetf(
-		std::ios_base::skipws
-	);
+  string_stream.unsetf(std::ios_base::skipws);
 
-	fcppt::parse::detail::stream<
-		Ch
-	> stream{
-		fcppt::reference_to_base<
-			std::basic_istream<
-				Ch
-			>
-		>(
-			fcppt::make_ref(
-				string_stream
-			)
-		)
-	};
+  fcppt::parse::detail::stream<Ch> stream{
+      fcppt::reference_to_base<std::basic_istream<Ch>>(fcppt::make_ref(string_stream))};
 
-	return
-		fcppt::parse::detail::consume_remaining(
-			fcppt::reference_to_base<
-				std::basic_istream<
-					Ch
-				>
-			>(
-				fcppt::make_ref(
-					string_stream
-				)
-			),
-			fcppt::parse::skipper::run(
-				_skipper,
-				fcppt::reference_to_base<
-					fcppt::parse::basic_stream<
-						Ch
-					>
-				>(
-					fcppt::make_ref(
-						stream
-					)
-				)
-			)
-		);
+  return fcppt::parse::detail::consume_remaining(
+      fcppt::reference_to_base<std::basic_istream<Ch>>(fcppt::make_ref(string_stream)),
+      fcppt::parse::skipper::run(
+          _skipper,
+          fcppt::reference_to_base<fcppt::parse::basic_stream<Ch>>(fcppt::make_ref(stream))));
 }
-catch(
-	fcppt::parse::detail::exception<
-		Ch
-	> const &_error
-)
+catch (fcppt::parse::detail::exception<Ch> const &_error)
 {
-	return
-		fcppt::parse::skipper::make_failure(
-			fcppt::parse::error<
-				Ch
-			>{
-				std::basic_string<
-					Ch
-				>{
-					FCPPT_STRING_LITERAL(
-						Ch,
-						"Parsing failed: "
-					)
-				}
-				+
-				_error.what()
-			}
-		);
+  return fcppt::parse::skipper::make_failure(fcppt::parse::error<Ch>{
+      std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "Parsing failed: ")} + _error.what()});
 }
-
-
 }
 
 #endif

@@ -28,8 +28,7 @@ fcppt::weak_ptr<Type, Deleter>::weak_ptr(fcppt::weak_ptr<Other, Deleter> const &
 template <typename Type, typename Deleter>
 template <typename Other>
 fcppt::weak_ptr<Type, Deleter>::weak_ptr(fcppt::shared_ptr<Other, Deleter> const &_other)
-    : // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      impl_(_other.std_ptr())
+    : impl_(_other.std_ptr())
 {
 }
 

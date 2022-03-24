@@ -28,9 +28,7 @@ TEST_CASE("container::map_values_ref", "[container]")
 
   using int_string_map = std::map<int, std::string>;
 
-  int_string_map map{// NOLINT(fuchsia-default-arguments-calls)
-                     std::make_pair(1, "test1"),
-                     std::make_pair(2, "test2")};
+  int_string_map map{std::make_pair(1, "test1"), std::make_pair(2, "test2")};
 
   CHECK(
       fcppt::container::map_values_ref<string_vector_ref>(map) ==

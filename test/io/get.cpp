@@ -17,7 +17,6 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::get", "[io]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::istringstream stream{"x"};
 
   using optional_char = fcppt::optional::object<char>;

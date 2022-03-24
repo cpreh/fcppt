@@ -8,12 +8,12 @@
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cxxabi.h>
-#include <fcppt/config/external_end.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#if defined(FCPPT_HAVE_GCC_DEMANGLE)
+#include <cxxabi.h>
+#endif
 #include <fcppt/config/external_end.hpp>
 
 std::string fcppt::type_name(char const *const _name)

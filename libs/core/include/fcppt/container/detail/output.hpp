@@ -43,9 +43,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
   {
     _stream << fcppt::output(*it);
 
-    if (
-        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        std::next(it) != end)
+    if (std::next(it) != end)
     {
       _stream << _stream.widen(',');
     }

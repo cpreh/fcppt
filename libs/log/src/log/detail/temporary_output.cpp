@@ -9,11 +9,7 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::log::detail::temporary_output::temporary_output()
-    : // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      stream_{}
-{
-}
+fcppt::log::detail::temporary_output::temporary_output() : stream_{} {}
 
 fcppt::log::detail::temporary_output::temporary_output(
     fcppt::log::detail::temporary_output &&) noexcept(false) = default;

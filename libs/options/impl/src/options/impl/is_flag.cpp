@@ -37,9 +37,7 @@ fcppt::options::impl::is_flag(fcppt::string_view const _value)
       is_dash(*pos)
           ? std::make_pair(
                 fcppt::options::detail::flag_is_short{false},
-                fcppt::string{// NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-                              std::next(pos),
-                              _value.end()})
+                fcppt::string{std::next(pos), _value.end()})
           : std::make_pair(
                 fcppt::options::detail::flag_is_short{true}, fcppt::string{pos, _value.end()})};
 }

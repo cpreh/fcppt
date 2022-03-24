@@ -17,21 +17,13 @@ FCPPT_CATCH_BEGIN
 TEST_CASE("filesystem::remove_extension", "[filesystem]")
 {
   std::filesystem::path const path1(
-      std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
-          FCPPT_TEXT("foo")) /
-      std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
-          FCPPT_TEXT("bar")));
+      std::filesystem::path(FCPPT_TEXT("foo")) / std::filesystem::path(FCPPT_TEXT("bar")));
 
   CHECK(path1 == fcppt::filesystem::remove_extension(path1));
 
-  std::filesystem::path const path2(
-      path1 / FCPPT_TEXT("baz.txt") // NOLINT(fuchsia-default-arguments-calls)
-  );
+  std::filesystem::path const path2(path1 / FCPPT_TEXT("baz.txt"));
 
-  CHECK(
-      fcppt::filesystem::remove_extension(path2) ==
-      path1 / FCPPT_TEXT("baz") // NOLINT(fuchsia-default-arguments-calls)
-  );
+  CHECK(fcppt::filesystem::remove_extension(path2) == path1 / FCPPT_TEXT("baz"));
 }
 
 FCPPT_CATCH_END

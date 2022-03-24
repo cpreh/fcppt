@@ -85,7 +85,7 @@ TEST_CASE("container::raw_vector insert iterator", "[container],[raw_vector]")
 
   CHECK(test == int_vector{0, 1, 2, 3, 4});
 
-  std::stringstream stream{}; // NOLINT(fuchsia-default-arguments-calls)
+  std::stringstream stream{};
 
   stream << 10 << ' ' << 20 << ' ' << 30 << ' ' << 40 << ' ' << 50;
 

@@ -20,14 +20,12 @@ TEST_CASE("io::peek", "[io]")
   using optional_char = fcppt::optional::object<char>;
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream{"x"};
 
     CHECK(fcppt::io::peek(stream) == optional_char{'x'});
   }
 
   {
-    // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
     std::istringstream stream{};
 
     CHECK(fcppt::io::peek(stream) == optional_char{});

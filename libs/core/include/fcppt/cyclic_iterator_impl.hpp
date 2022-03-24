@@ -86,9 +86,7 @@ void fcppt::cyclic_iterator<ContainerIterator>::decrement()
 {
   if (this->it_ == this->boundary_first())
   {
-    this->it_ =
-        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        std::prev(this->boundary_second());
+    this->it_ = std::prev(this->boundary_second());
   }
   else
   {

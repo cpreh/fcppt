@@ -32,7 +32,7 @@ template <typename Container>
       {
         return fcppt::tuple::make(
             fcppt::make_ref(*_container.begin()),
-            fcppt::iterator::make_range(std::next(_container.begin()), _container.end())); // NOLINT(fuchsia-default-arguments-calls)
+            fcppt::iterator::make_range(std::next(_container.begin()), _container.end()));
       });
 }
 }

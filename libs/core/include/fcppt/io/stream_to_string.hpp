@@ -26,7 +26,7 @@ template <typename Ch, typename Traits>
 fcppt::optional::object<std::basic_string<Ch, Traits>>
 stream_to_string(std::basic_istream<Ch, Traits> &_input)
 {
-  std::basic_ostringstream<Ch, Traits> output{}; // NOLINT(fuchsia-default-arguments-calls)
+  std::basic_ostringstream<Ch, Traits> output{};
 
   output << _input.rdbuf();
 

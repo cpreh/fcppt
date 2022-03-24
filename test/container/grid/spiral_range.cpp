@@ -43,8 +43,7 @@ TEST_CASE("container::grid spiral_range", "[container],[grid]")
 
     REQUIRE_FALSE(result.empty());
 
-    pos_vector::const_iterator it( // NOLINT(fuchsia-default-arguments-calls)
-        result.begin());
+    pos_vector::const_iterator it{result.begin()};
 
     CHECK(manhattan_distance(*it, start) == 0);
 

@@ -23,10 +23,7 @@ TEST_CASE("range::size", "[range]")
   CHECK(fcppt::range::size(fcppt::iterator::make_range(vec1.begin(), vec1.begin())) == 0U);
 
   CHECK(
-      fcppt::range::size(fcppt::iterator::make_range(
-          vec1.begin(),
-          std::next( // NOLINT(fuchsia-default-arguments-calls)
-              vec1.begin()))) == 1U);
+      fcppt::range::size(fcppt::iterator::make_range(vec1.begin(), std::next(vec1.begin()))) == 1U);
 
   CHECK(fcppt::range::size(fcppt::iterator::make_range(vec1.begin(), vec1.end())) == 2U);
 }

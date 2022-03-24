@@ -26,9 +26,8 @@ TEST_CASE("container::find_opt_mapped", "[container]")
 {
   using int_string_map = std::map<int, std::string>;
 
-  int_string_map const values{// NOLINT(fuchsia-default-arguments-calls)
-                              std::make_pair(42, std::string("test")),
-                              std::make_pair(100, std::string("test2"))};
+  int_string_map const values{
+      std::make_pair(42, std::string("test")), std::make_pair(100, std::string("test2"))};
 
   using optional_string = fcppt::optional::object<fcppt::reference<std::string const>>;
 

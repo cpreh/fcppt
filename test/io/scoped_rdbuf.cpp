@@ -25,7 +25,7 @@ TEST_CASE("io::scoped_rdbuf", "[io]")
 
   std::basic_streambuf<fcppt::char_type> &old_buffer{*stream.rdbuf()};
 
-  std::basic_stringbuf<fcppt::char_type> buffer{}; // NOLINT(fuchsia-default-arguments-calls)
+  std::basic_stringbuf<fcppt::char_type> buffer{};
 
   {
     std::basic_ios<fcppt::char_type> &stream_base{stream};

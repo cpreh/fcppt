@@ -22,5 +22,5 @@ FCPPT_PP_DISABLE_VC_WARNING(4996)
 FCPPT_PP_POP_WARNING
 
   return ret == nullptr ? fcppt::optional_std_string{}
-                        : fcppt::optional_std_string{std::string(ret)};
+                        : fcppt::optional_std_string{std::string{ret}};
 }

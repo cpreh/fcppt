@@ -137,11 +137,7 @@ void fcppt::container::buffer::object<T, A>::resize_write_area(size_type const _
           fcppt::cast::to_unsigned(this->impl_.cap_ - this->impl_.first_) * 2U),
       _sz + this->read_size())};
 
-  impl new_impl{
-      this->impl_.alloc_,
-      // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-      this->impl_.alloc_.allocate(new_size),
-      new_size};
+  impl new_impl{this->impl_.alloc_, this->impl_.alloc_.allocate(new_size), new_size};
 
   std::uninitialized_copy(this->read_data(), this->read_data_end(), new_impl.first_);
 
@@ -168,7 +164,7 @@ fcppt::container::raw_vector::rep<A> fcppt::container::buffer::object<T, A>::rel
   using last_t = typename rep_t::last_t;
   using cap_t = typename rep_t::cap_t;
 
-  fcppt::container::raw_vector::rep<A> const result{
+  fcppt::container::raw_vector::rep<A> result{
       this->get_allocator(),
       first_t{this->impl_.first_},
       last_t{this->impl_.read_end_},

@@ -47,9 +47,7 @@ join_strings(Range const &_range, fcppt::type_traits::value_type<Range> const &_
   {
     result += *it;
 
-    if (
-        // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-        std::next(it) != end)
+    if (std::next(it) != end)
     {
       result += _delim;
     }

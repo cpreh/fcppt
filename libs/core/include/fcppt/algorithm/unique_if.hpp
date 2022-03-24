@@ -25,13 +25,7 @@ Container::value_type)</code>.
 template <typename Container, typename BinaryPredicate>
 void unique_if(Container &_container, BinaryPredicate const &_predicate)
 {
-  _container.erase(
-      std::unique( // NOLINT(fuchsia-default-arguments-calls)
-          _container.begin(),
-          _container.end(),
-          _predicate),
-      _container.end() // NOLINT(fuchsia-default-arguments-calls)
-  );
+  _container.erase(std::unique(_container.begin(), _container.end(), _predicate), _container.end());
 }
 
 }

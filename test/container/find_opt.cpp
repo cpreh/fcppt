@@ -44,10 +44,7 @@ TEST_CASE("container::find_opt", "[container]")
 
   using int_set = std::set<int, comp>;
 
-  int_set const set{// NOLINT(fuchsia-default-arguments-calls)
-                    1,
-                    2,
-                    3};
+  int_set const set{1, 2, 3};
 
   using optional_int_ref = fcppt::optional::reference<int const>;
 

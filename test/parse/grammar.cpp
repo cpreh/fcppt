@@ -69,7 +69,6 @@ TEST_CASE("parse::grammar string", "[parse]")
 
 TEST_CASE("parse::grammar stream", "[parse]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::istringstream stream{std::string{" 42"}};
 
   CHECK(

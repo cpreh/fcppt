@@ -21,11 +21,8 @@ namespace fcppt::range
 template <typename Range>
 bool singular(Range const &_range)
 {
-  return !fcppt::range::empty(_range) &&
-         // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
-         std::next(_range.begin()) == _range.end();
+  return !fcppt::range::empty(_range) && std::next(_range.begin()) == _range.end();
 }
-
 }
 
 #endif

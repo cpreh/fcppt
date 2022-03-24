@@ -20,7 +20,6 @@ TEST_CASE("variant output", "[variant]")
 {
   using variant = fcppt::variant::object<int>;
 
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   fcppt::io::ostringstream stream{};
 
   stream << variant{1};

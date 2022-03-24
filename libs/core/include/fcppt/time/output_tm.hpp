@@ -34,7 +34,6 @@ void output_tm(std::basic_ostream<Ch, Traits> &_stream, std::tm const &_tm)
     return;
   }
 
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::use_facet<std::time_put<Ch, std::ostreambuf_iterator<Ch, Traits>>>(_stream.getloc())
       .put(_stream, _stream, _stream.fill(), &_tm, 'c');
 }

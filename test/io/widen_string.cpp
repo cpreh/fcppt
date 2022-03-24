@@ -16,7 +16,6 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::widen_string", "[io]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   fcppt::io::ostringstream stream{};
 
   stream << fcppt::io::widen_string("test");

@@ -17,8 +17,7 @@ fcppt::string fcppt::filesystem::extension_without_dot(std::filesystem::path con
 
   if (!ret.empty() && ret[0] == FCPPT_TEXT('.'))
   {
-    ret.erase(ret.begin() // NOLINT(fuchsia-default-arguments-calls)
-    );
+    ret.erase(ret.begin());
   }
 
   return ret;

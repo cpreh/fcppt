@@ -27,9 +27,7 @@ otherwise.
 template <typename Container, typename Predicate>
 bool remove_if(Container &_container, Predicate const &_predicate)
 {
-  auto const end{
-      _container.end() // NOLINT(fuchsia-default-arguments-calls)
-  };
+  auto const end{_container.end()};
 
   auto const position(std::remove_if(_container.begin(), end, _predicate));
 
@@ -38,10 +36,7 @@ bool remove_if(Container &_container, Predicate const &_predicate)
     return false;
   }
 
-  _container.erase(
-      position, // NOLINT(fuchsia-default-arguments-calls)
-      end // NOLINT(fuchsia-default-arguments-calls)
-  );
+  _container.erase(position, end);
 
   return true;
 }

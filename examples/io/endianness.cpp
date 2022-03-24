@@ -15,7 +15,6 @@
 int main()
 {
   //[io_endianness]
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   std::stringstream stream{};
 
   // Write 42u into the stream, using big endianness

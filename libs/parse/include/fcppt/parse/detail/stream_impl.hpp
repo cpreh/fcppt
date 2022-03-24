@@ -73,7 +73,7 @@ fcppt::parse::position<Ch> fcppt::parse::detail::stream<Ch>::get_position() cons
 
   if (std_stream.eof())
   {
-    std_stream.clear(); // NOLINT(fuchsia-default-arguments-calls)
+    std_stream.clear();
   }
 
   pos_type const pos{std_stream.tellg()};
@@ -95,7 +95,7 @@ void fcppt::parse::detail::stream<Ch>::set_position(fcppt::parse::position<Ch> c
 
   fcppt::parse::detail::check_bad(std_stream);
 
-  std_stream.clear(); // NOLINT(fuchsia-default-arguments-calls)
+  std_stream.clear();
 
   std_stream.seekg(_position.pos());
 

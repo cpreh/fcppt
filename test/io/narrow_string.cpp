@@ -22,7 +22,6 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("io::narrow_string", "[io]")
 {
-  // NOLINTNEXTLINE(fuchsia-default-arguments-calls)
   fcppt::io::istringstream stream{FCPPT_TEXT("test")};
   fcppt::string result{};
   stream >> result;
