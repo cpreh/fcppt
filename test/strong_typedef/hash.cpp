@@ -29,11 +29,11 @@ TEST_CASE("strong_typedef_hash", "[strongtypedef]")
 
   hash_set const elements{strong_int(1), strong_int(2)};
 
-  CHECK(elements.count(strong_int(1)) == 1U);
+  CHECK(elements.contains(strong_int(1)));
 
-  CHECK(elements.count(strong_int(2)) == 1U);
+  CHECK(elements.contains(strong_int(2)));
 
-  CHECK(elements.count(strong_int(3)) == 0U);
+  CHECK_FALSE(elements.contains(strong_int(3)));
 }
 
 FCPPT_CATCH_END
