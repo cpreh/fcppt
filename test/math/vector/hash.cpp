@@ -24,9 +24,9 @@ TEST_CASE("math::vector::hash", "[math],[vector]")
 
   vector_set const set{int3_vector(1, 2, 3)};
 
-  CHECK(set.count(int3_vector(1, 2, 3)) == 1U);
+  CHECK(set.contains(int3_vector(1, 2, 3)));
 
-  CHECK(set.count(int3_vector(4, 2, 3)) == 0U);
+  CHECK_FALSE(set.contains(int3_vector(4, 2, 3)));
 }
 
 FCPPT_CATCH_END

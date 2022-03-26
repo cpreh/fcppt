@@ -45,7 +45,7 @@ class state : public boost::statechart::simple_state<state, machine>
 public:
   state() = default;
 
-  ~state() // NOLINT(hicpp-use-override,modernize-use-override)
+  ~state() // NOLINT(hicpp-use-override,modernize-use-override,cppcoreguidelines-explicit-virtual-functions)
       // override TODO(philipp)
       = default;
 };

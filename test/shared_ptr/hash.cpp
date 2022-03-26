@@ -22,13 +22,13 @@ TEST_CASE("shared_ptr hash", "[smartptr]")
 
   using int_shared_ptr_set = std::unordered_set<int_shared_ptr>;
 
-  int_shared_ptr const x(fcppt::make_shared_ptr<int>(1));
+  int_shared_ptr const x{fcppt::make_shared_ptr<int>(1)};
 
   int_shared_ptr_set const set{x};
 
   SECTION("found")
   {
-    auto const it(set.find(x));
+    auto const it{set.find(x)};
 
     REQUIRE(it != set.end());
 
@@ -37,9 +37,9 @@ TEST_CASE("shared_ptr hash", "[smartptr]")
 
   SECTION("not found")
   {
-    int_shared_ptr const y(fcppt::make_shared_ptr<int>(1));
+    int_shared_ptr const y{fcppt::make_shared_ptr<int>(1)};
 
-    CHECK(set.count(y) == 0U);
+    CHECK_FALSE(set.contains(y));
   }
 }
 

@@ -37,9 +37,9 @@ TEST_CASE("math units", "[math]")
 
   using velocity2 = fcppt::math::vector::static_<velocity, 2>;
 
-  length2 const l1(length(-100 * boost::units::si::meter), length(200 * boost::units::si::meter));
+  length2 const l1{length{-100 * boost::units::si::meter}, length{200 * boost::units::si::meter}};
 
-  time2 const t1(time(4 * boost::units::si::second), time(2 * boost::units::si::second));
+  time2 const t1{time{4 * boost::units::si::second}, time{2 * boost::units::si::second}};
 
   CHECK(
       l1 / t1 == fcppt::optional::make(velocity2{

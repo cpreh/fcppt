@@ -54,11 +54,11 @@ fcppt::options::flag<Label, Type>::flag(
 {
   fcppt::options::detail::check_short_long_names(this->short_name_, this->long_name_);
 
-  if (_active_value.get() == _inactive_value.get())
+  if (this->active_value_.get() == this->inactive_value_.get())
   {
     throw fcppt::options::exception{
         FCPPT_TEXT("The active and the inactive value must be different: ") +
-        fcppt::output_to_fcppt_string(_active_value.get())};
+        fcppt::output_to_fcppt_string(this->active_value_.get())};
   }
 }
 

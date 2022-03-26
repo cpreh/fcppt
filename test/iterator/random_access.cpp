@@ -107,15 +107,15 @@ TEST_CASE("iterator random access increment_decrement"
 
   CHECK(*it == "1");
 
-  CHECK(&*it == &vec_c[0]);
+  CHECK(&*it == vec_c.data());
 
-  CHECK(&*it++ == &vec_c[0]);
+  CHECK(&*it++ == vec_c.data());
 
   CHECK(&*it == &vec_c[1]);
 
   CHECK(&*it-- == &vec_c[1]);
 
-  CHECK(&*it == &vec_c[0]);
+  CHECK(&*it == vec_c.data());
 }
 
 TEST_CASE("iterator_range swap", "[iterator]")

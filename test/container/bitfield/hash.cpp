@@ -30,11 +30,11 @@ TEST_CASE("container::bitfield hash", "[container],[bitfield]")
   bitfield_set const values{
       bitfield{test_enum::test1}, bitfield{test_enum::test1, test_enum::test2}};
 
-  CHECK(values.count(bitfield{test_enum::test1, test_enum::test2}) == 1U);
+  CHECK(values.contains(bitfield{test_enum::test1, test_enum::test2}));
 
-  CHECK(values.count(bitfield{test_enum::test1}) == 1U);
+  CHECK(values.contains(bitfield{test_enum::test1}));
 
-  CHECK(values.count(bitfield{test_enum::test2}) == 0U);
+  CHECK_FALSE(values.contains(bitfield{test_enum::test2}));
 }
 
 FCPPT_CATCH_END

@@ -28,10 +28,9 @@ inline fcppt::string make_message(fcppt::assert_::information const &_info)
 {
   return _info.file().get() + FCPPT_TEXT(':') + fcppt::output_to_fcppt_string(_info.line().get()) +
          FCPPT_TEXT(": ") +
-         (_info.function().get().empty()
-              ? fcppt::string()
-              : fcppt::string(
-                    FCPPT_TEXT("In function \"") + _info.function().get() + FCPPT_TEXT("\": "))) +
+         (_info.function().get().empty() ? fcppt::string()
+                                         : fcppt::string{FCPPT_TEXT("In function \"")} +
+                                               _info.function().get() + FCPPT_TEXT("\": ")) +
          FCPPT_TEXT("Assertion \"") + _info.condition().get() + FCPPT_TEXT("\" failed") +
          (_info.message().get().empty() ? fcppt::string()
                                         : fcppt::string(FCPPT_TEXT(": ")) + _info.message().get());

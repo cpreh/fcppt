@@ -5,9 +5,16 @@
 
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4702)
+#include <fcppt/c_deleter.hpp>
+#include <fcppt/dynamic_pointer_cast.hpp>
+#include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/nonmovable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
 #include <iostream>
+#include <stdexcept>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,12 +50,6 @@ void shared_ptr_example()
 //! [shared_ptr_example]
 
 }
-
-#include <fcppt/c_deleter.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstdlib>
-#include <stdexcept>
-#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -92,8 +93,6 @@ void wrong()
 //! [shared_ptr_make_shared_wrong]
 }
 
-#include <fcppt/make_shared_ptr.hpp>
-
 namespace
 {
 //! [shared_ptr_make_shared_right]
@@ -101,10 +100,6 @@ void right() { take_pointer(fcppt::make_shared_ptr<int>(1), throw_something()); 
 //! [shared_ptr_make_shared_right]
 
 }
-
-#include <fcppt/dynamic_pointer_cast.hpp>
-#include <fcppt/nonmovable.hpp>
-#include <fcppt/optional/object_impl.hpp>
 
 namespace
 {

@@ -26,13 +26,10 @@ TEST_CASE("math::matrix::hash", "[math],[matrix]")
   matrix_set const set{
       int22_matrix(fcppt::math::matrix::row(1, 2), fcppt::math::matrix::row(3, 4))};
 
-  CHECK(
-      set.count(int22_matrix(fcppt::math::matrix::row(1, 2), fcppt::math::matrix::row(3, 4))) ==
-      1U);
+  CHECK(set.contains(int22_matrix(fcppt::math::matrix::row(1, 2), fcppt::math::matrix::row(3, 4))));
 
-  CHECK(
-      set.count(int22_matrix(fcppt::math::matrix::row(4, 2), fcppt::math::matrix::row(3, 4))) ==
-      0U);
+  CHECK_FALSE(
+      set.contains(int22_matrix(fcppt::math::matrix::row(4, 2), fcppt::math::matrix::row(3, 4))));
 }
 
 FCPPT_CATCH_END
