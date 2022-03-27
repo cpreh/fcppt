@@ -57,8 +57,8 @@ The following platforms are tested by us:
 
 <ul>
 	<li>gcc-11.2 (Gentoo Linux and MinGW)</li>
-	<li>clang-13 (Gentoo Linux)</li>
-	<li>VC++-14.29 (Visual Studio 2019)</li>
+	<li>clang-14 (Gentoo Linux)</li>
+	<li>VC++-14.31 (Visual Studio 2019)</li>
 </ul>
 
 fcppt needs a C++20-conforming compiler.
