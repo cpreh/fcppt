@@ -5,6 +5,10 @@
 
 \subsection changes_added_functionality_to_420 Added functionality
 
+<p>
+This release fixes some warnings related to <code>clang-14</code>.
+</p>
+
 <ul>
 
 <li>\ref fcppttuple
