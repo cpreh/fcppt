@@ -65,12 +65,13 @@ template <
       either_type{fcppt::either::no_error{}},
       [&_function](auto &&_element, either_type)
       {
+        using inner_type = either_type;
         return fcppt::either::match(
             _function(fcppt::move_if_rvalue<Sequence>(_element)),
-            [](fcppt::either::failure_type<either_type> &&_error)
-            { return std::make_pair(fcppt::loop::break_, either_type{std::move(_error)}); },
+            [](fcppt::either::failure_type<inner_type> &&_error)
+            { return std::make_pair(fcppt::loop::break_, inner_type{std::move(_error)}); },
             [](fcppt::either::no_error) {
-              return std::make_pair(fcppt::loop::continue_, either_type{fcppt::either::no_error{}});
+              return std::make_pair(fcppt::loop::continue_, inner_type{fcppt::either::no_error{}});
             });
       });
 }
