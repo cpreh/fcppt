@@ -47,7 +47,7 @@ set(
 
 set(
 	FCPPT_MICRO_VERSION
-	0
+	1
 )
 
 set(

@@ -1,6 +1,12 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_421 4.2.1
+
+<p>
+Support for <code>VC++-14.32</code> (Visual Studio 2022 Version 17.2).
+</p>
+
 \section changes_changes_to_420 4.2.0
 
 \subsection changes_added_functionality_to_420 Added functionality
