@@ -15,7 +15,7 @@ make_fcppt_library(
 	boost
 	"${FCPPT_BOOST_FILES}"
 	IS_INTERFACE
-	INCLUDE_DIRS
+	SYSTEM_INCLUDE_DIRS
 		${Boost_INCLUDE_DIRS}
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
