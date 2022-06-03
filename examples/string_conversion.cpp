@@ -13,12 +13,15 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   fcppt::string const string(FCPPT_TEXT("test"));
 
@@ -34,5 +37,10 @@ int main()
       });
 
   std::wcout << fcppt::to_std_wstring(string) << L'\n';
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }
 // ![string_conversion]

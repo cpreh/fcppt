@@ -7,11 +7,14 @@
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   // ![assign]
   using int_unique_ptr_vector = std::vector<fcppt::unique_ptr<int>>;
@@ -25,4 +28,9 @@ int main()
     std::cout << *elem << '\n';
   }
   // ![assign]
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

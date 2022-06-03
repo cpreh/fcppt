@@ -8,6 +8,11 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -16,10 +21,11 @@ void something() {}
 }
 
 int main()
+try
 {
   {
     //![text_literal]
-    fcppt::string s(FCPPT_TEXT("foo"));
+    fcppt::string s{FCPPT_TEXT("foo")};
     //![text_literal]
 
     fcppt::io::cout() << s << FCPPT_TEXT('\n');
@@ -35,4 +41,9 @@ int main()
     fcppt::io::cerr() << _error.string() << FCPPT_TEXT('\n');
   }
   //[exception]
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

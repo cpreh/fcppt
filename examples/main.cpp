@@ -13,7 +13,9 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
 #include <cstddef>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <type_traits>
@@ -63,10 +65,16 @@ fcppt::array::object<unsigned int, N> init_array()
 }
 
 int main()
+try
 {
   print_at_2(std::vector<int>{});
 
   int_vec_to_string_vec(std::vector<int>{});
 
   init_array<4U>();
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

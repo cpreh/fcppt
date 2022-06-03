@@ -6,12 +6,15 @@
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   //! [cyclic_iterator]
   using int_vector = std::vector<int>;
@@ -32,4 +35,9 @@ int main()
 
   std::cout << '\n';
   //! [cyclic_iterator]
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

@@ -5,6 +5,8 @@
 
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,6 +20,7 @@ using int2d_grid = fcppt::container::grid::object<int, 2>;
 }
 
 int main()
+try
 {
   int1d_grid one_dimensional(int1d_grid::dim(3U), 0);
 
@@ -49,5 +52,10 @@ int main()
   }
 
   std::cout << '\n';
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }
 //! [grid_iteration]

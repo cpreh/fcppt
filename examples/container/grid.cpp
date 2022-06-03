@@ -10,6 +10,8 @@
 #include <fcppt/container/grid/resize.hpp>
 #include <fcppt/math/interpolation/linear.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -108,6 +110,7 @@ void interpolate_grid()
 }
 
 int main()
+try
 {
   init();
 
@@ -116,4 +119,9 @@ int main()
   resize_grid();
 
   interpolate_grid();
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

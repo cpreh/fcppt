@@ -13,6 +13,8 @@
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <string_view>
@@ -113,6 +115,7 @@ void enum_from_string()
 }
 
 int main()
+try
 {
   print();
 
@@ -123,4 +126,9 @@ int main()
   enum_to_string();
 
   enum_from_string();
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

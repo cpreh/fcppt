@@ -9,6 +9,9 @@
 #include <fcppt/signal/auto_connection_container.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
+#include <iostream>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,6 +35,7 @@ void take_connection(fcppt::signal::auto_connection)
 }
 
 int main()
+try
 {
   using void_signal = fcppt::signal::object<void()>;
 
@@ -46,5 +50,10 @@ int main()
   fcppt::signal::auto_connection connection4(signal.connect(void_signal::function{::function3}));
 
   ::take_connection(std::move(connection4));
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }
 //! [signal_connection]

@@ -11,6 +11,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <type_traits>
@@ -131,6 +133,7 @@ void f(distance const _d1, distance const _d2) { std::cout << (_d1 - _d2) << '\n
 FCPPT_PP_POP_WARNING
 
 int main()
+try
 {
   strong_typedef_example::g();
 
@@ -145,4 +148,9 @@ int main()
   motivation2::f(motivation2::first_name(std::string{}));
 
   distance_example::f(distance_example::distance(1), distance_example::distance(2));
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

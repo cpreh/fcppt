@@ -19,6 +19,8 @@
 #include <fcppt/record/output.hpp>
 #include <fcppt/record/set.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <sstream>
@@ -177,6 +179,7 @@ void test()
 FCPPT_PP_POP_WARNING
 
 int main()
+try
 {
   person const test{42, "test"};
 
@@ -193,4 +196,9 @@ int main()
   std::cout << '\n';
 
   sprite_ns::test();
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

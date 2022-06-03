@@ -18,6 +18,8 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -81,6 +83,7 @@ void pos_ref_sub_range(uint2_grid::pos const &_min, uint2_grid::pos const &_sup)
 }
 
 int main()
+try
 {
   pos_range();
 
@@ -89,4 +92,9 @@ int main()
   pos_ref_sub_range(uint2_grid::pos(1U, 1U), uint2_grid::pos(3U, 3U));
 
   std::cout << fcppt::container::grid::make_sup(uint2_grid::pos{1U, 2U}) << '\n';
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

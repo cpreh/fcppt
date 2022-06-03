@@ -5,6 +5,8 @@
 
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -12,6 +14,7 @@
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   {
     //! [join_strings]
@@ -23,4 +26,9 @@ int main()
     std::cout << result << "\n";
     //! [join_strings]
   }
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }
