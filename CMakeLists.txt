@@ -315,7 +315,7 @@ function(
 		target_include_directories(
 			${TARGETNAME}
 			SYSTEM
-			PUBLIC
+			PRIVATE
 			${_SYSTEM_INCLUDE_DIRS}
 		)
 
