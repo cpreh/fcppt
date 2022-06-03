@@ -32,13 +32,15 @@ do_(Value &&_value,
     Lambdas const &..._lambdas)
 {
   return fcppt::monad::bind(
-      std::forward<Value>(_value), [&](auto const &_new_value) {
-        auto const new_values(fcppt::tuple::push_back(std::move(_values), _new_value));
+      std::forward<Value>(_value),
+      [&](auto const &_new_value)
+      {
+        auto const new_values{
+            fcppt::tuple::push_back(std::forward<decltype(_values)>(_values), _new_value)};
 
         return fcppt::tuple::invoke(
-            [&](auto &&..._args) {
-              return fcppt::monad::detail::do_(_lambda(_args...), new_values, _lambdas...);
-            },
+            [&](auto &&..._args)
+            { return fcppt::monad::detail::do_(_lambda(_args...), new_values, _lambdas...); },
             new_values);
       });
 }
