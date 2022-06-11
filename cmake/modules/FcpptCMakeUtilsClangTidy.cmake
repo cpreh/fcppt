@@ -1,5 +1,7 @@
 # Set FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER to specify the header-filter option.
-# This defaults to .*
+# This defaults to .* if FCPPT_UTILS_CLANG_TIDY_WHITELIST is not set.
+# Set FCPPT_UTILS_CLANG_TIDY_WHITELIST to specify a list of libraries to include in clang-tidy's header filter.
+# If this list is a_1, ..., a_m, where m >= 0, then FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER is set to <a_1|...|a_m/.*>.
 # Use FCPPT_UTILS_CLANG_TIDY_EXTRA_ARGS to specify additional arguments.
 
 set(
@@ -70,9 +72,33 @@ if(
 		STREQUAL
 		""
 	)
-		set(
-			FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER
-			".*"
+		if(
+			"${FCPPT_UTILS_CLANG_TIDY_WHITELIST}"
+			STREQUAL
+			""
+		)
+			set(
+				FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER
+				".*"
+			)
+		else()
+			string(
+				JOIN
+				"|"
+				FCPPT_UTILS_CLANG_TIDY_WHITELIST_ARGS
+				${FCPPT_UTILS_CLANG_TIDY_WHITELIST}
+			)
+
+			set(
+				FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER
+				"<${FCPPT_UTILS_CLANG_TIDY_WHITELIST_ARGS}/.*>"
+			)
+
+		endif()
+
+		message(
+			STATUS
+			"clang-tidy header filter set to ${FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER}"
 		)
 	endif()
 

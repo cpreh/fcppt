@@ -27,6 +27,11 @@ list(
 	"-readability-magic-numbers"
 )
 
+set(
+	FCPPT_UTILS_CLANG_TIDY_WHITELIST
+	"fcppt"
+)
+
 include(
 	FcpptCMakeUtils
 )
