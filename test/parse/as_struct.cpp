@@ -15,7 +15,7 @@
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <ostream>
 #include <string>
 #include <tuple>

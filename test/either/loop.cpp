@@ -10,7 +10,7 @@
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

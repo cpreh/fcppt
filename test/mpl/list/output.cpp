@@ -9,7 +9,7 @@
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <sstream>
 #include <string>
 #include <typeinfo>

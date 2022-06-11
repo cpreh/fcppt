@@ -10,7 +10,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

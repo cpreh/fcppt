@@ -18,7 +18,7 @@
 #include <fcppt/parse/position_output.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <ios>
 #include <istream>
 #include <sstream>

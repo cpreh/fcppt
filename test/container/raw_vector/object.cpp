@@ -9,7 +9,7 @@
 #include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <iterator>
 #include <sstream>
 #include <utility>

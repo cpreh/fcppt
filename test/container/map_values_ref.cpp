@@ -11,7 +11,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/map_values_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <map>
 #include <string>
 #include <utility>

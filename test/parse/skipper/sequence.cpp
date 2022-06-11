@@ -16,7 +16,7 @@
 #include <fcppt/parse/skipper/operators/sequence.hpp>
 #include <fcppt/test/parse/skipper/skip_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

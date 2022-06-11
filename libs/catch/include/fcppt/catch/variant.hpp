@@ -10,7 +10,7 @@
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_tostring.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

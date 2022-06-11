@@ -7,7 +7,8 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/deg_to_rad.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_approx.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

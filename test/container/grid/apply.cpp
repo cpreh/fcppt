@@ -12,7 +12,7 @@
 #include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

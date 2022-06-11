@@ -12,7 +12,7 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

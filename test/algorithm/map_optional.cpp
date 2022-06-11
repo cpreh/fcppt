@@ -10,7 +10,7 @@
 #include <fcppt/container/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 

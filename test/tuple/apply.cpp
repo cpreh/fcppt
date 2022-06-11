@@ -10,7 +10,7 @@
 #include <fcppt/tuple/comparison.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

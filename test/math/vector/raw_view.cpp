@@ -10,7 +10,7 @@
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <array>
 #include <cstring>
 #include <fcppt/config/external_end.hpp>

@@ -10,7 +10,7 @@
 #include <fcppt/mpl/list/invoke_on.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

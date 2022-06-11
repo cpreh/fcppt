@@ -7,7 +7,7 @@
 #define FCPPT_CATCH_CONVERT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_tostring.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

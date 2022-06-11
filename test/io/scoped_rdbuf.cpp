@@ -11,7 +11,7 @@
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/io/scoped_rdbuf.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <ios>
 #include <sstream>
 #include <streambuf>

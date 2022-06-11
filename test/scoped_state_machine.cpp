@@ -15,7 +15,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/state_machine.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 namespace

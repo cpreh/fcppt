@@ -10,7 +10,7 @@
 #include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <catch2/catch.hpp>
+#include <catch2/catch_test_macros.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
