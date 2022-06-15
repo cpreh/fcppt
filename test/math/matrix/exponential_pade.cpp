@@ -16,7 +16,7 @@
 
 FCPPT_CATCH_BEGIN
 
-TEST_CASE("math::matrix::exponential_pade", "[math[,[matrix]")
+TEST_CASE("math::matrix::exponential_pade", "[math],[matrix]")
 {
   using matrix_type = fcppt::math::matrix::static_<double, 3, 3>;
 

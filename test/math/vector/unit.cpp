@@ -15,7 +15,7 @@
 
 FCPPT_CATCH_BEGIN
 
-TEST_CASE("math::vector::unit", "[math[,[vector]")
+TEST_CASE("math::vector::unit", "[math],[vector]")
 {
   using int3_vector = fcppt::math::vector::static_<int, 3>;
 

@@ -19,14 +19,14 @@
 
 FCPPT_CATCH_BEGIN
 
-TEST_CASE("array::map", "array]")
+TEST_CASE("array::map", "[array]")
 {
   CHECK(fcppt::array::map(fcppt::array::object<int, 2>{1, 2}, [](int const _value) -> std::string {
           return fcppt::output_to_std_string(_value);
         }) == fcppt::array::object<std::string, 2>{std::string{"1"}, std::string{"2"}});
 }
 
-TEST_CASE("array::map move", "array]")
+TEST_CASE("array::map move", "[array]")
 {
   using int_movable = fcppt::catch_::movable<int>;
 
