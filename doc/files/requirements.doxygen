@@ -46,7 +46,7 @@ To build the documentation you need
 </li>
 <li>
 To build and run the tests you need
-<a href="https://github.com/catchorg/Catch2">Catch2</a>.
+<a href="https://github.com/catchorg/Catch2">Catch-3</a>.
 This is also needed to build \ref fcpptcatch.
 </li>
 </ul>
@@ -84,11 +84,11 @@ Several CMake options are available:
 <li><code>ENABLE_BOOST</code>: Whether to build \ref fcpptboost. Boost is required for this.
 Take a look at CMake's <code>FindBoost.cmake</code> to see how to specify
 where to find Boost.</li>
-<li><code>ENABLE_CATCH</code>: Whether to build \ref fcpptcatch. Catch2 is required for this.</li>
+<li><code>ENABLE_CATCH</code>: Whether to build \ref fcpptcatch. Catch-3 is required for this.</li>
 <li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
 This is probably something you want to turn off when you install fcppt only.</li>
 <li><code>ENABLE_TEST</code>: Whether to build fcppt's tests.
-Catch2 and <code>ENABLE_CATCH</code> are required for this.</li>
+Catch-3 and <code>ENABLE_CATCH</code> are required for this.</li>
 <li><code>ENABLE_DOC</code>: Whether to build fcppt's documentation.
 <code>Doxygen</code> is required for this. Take a look at CMake's <code>FindDoxygen.cmake</code>
 on how to specify which Doxygen installation to use.</li>
