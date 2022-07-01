@@ -56,7 +56,7 @@ This is also needed to build \ref fcpptcatch.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-11.2 (Gentoo Linux and MinGW)</li>
+	<li>gcc-12.1 (Gentoo Linux and MinGW)</li>
 	<li>clang-14 (Gentoo Linux)</li>
 	<li>VC++-14.32 (Visual Studio 2022)</li>
 </ul>
