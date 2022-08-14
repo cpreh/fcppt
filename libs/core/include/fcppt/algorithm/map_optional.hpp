@@ -6,7 +6,6 @@
 #ifndef FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/optional/is_object.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -26,18 +25,16 @@ the result is not an empty optional, it is inserted into the result container.
 \tparam Function A function callable as
 <code>fcppt::optional::object<TargetContainer::value_type>
 (Source::value_type)</code>.
+
+TODO(philipp): concepts
 */
 template <typename TargetContainer, typename Source, typename Function>
 TargetContainer map_optional(Source &&_source, Function const &_function)
 {
-  TargetContainer result;
+  TargetContainer result{};
 
   for (auto &&element : _source)
   {
-    static_assert(
-        fcppt::optional::is_object<decltype(_function(element))>::value,
-        "map_optional requires a function that returns an optional");
-
     fcppt::optional::maybe_void(
         _function(element),
         [&result](auto &&_inner)
