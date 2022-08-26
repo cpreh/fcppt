@@ -49,6 +49,10 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	get_or_assign
+)
+
+add_fcppt_optional_test(
 	filter
 	LINK_LIBS
 		fcppt_catch_interface
