@@ -29,13 +29,13 @@ fcppt::optional::object<T>::object(T &&_other) : impl_{std::move(_other)}
 template <typename T>
 T &fcppt::optional::object<T>::get_unsafe()
 {
-  return *this->impl_;
+  return *this->impl_; //NOLINT(bugprone-unchecked-optional-access)
 }
 
 template <typename T>
 T const &fcppt::optional::object<T>::get_unsafe() const
 {
-  return *this->impl_;
+  return *this->impl_; //NOLINT(bugprone-unchecked-optional-access)
 }
 
 template <typename T>
