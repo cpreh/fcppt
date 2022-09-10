@@ -36,4 +36,11 @@ TEST_CASE("parse::skipper::space", "[parse]")
   CHECK(fcppt::test::parse::skipper::skip_string(parser, std::string{" X "}).has_failure());
 }
 
+TEST_CASE("parse::skipper::space wchar", "[parse]")
+{
+  auto const parser{fcppt::parse::skipper::basic_space<wchar_t>()};
+
+  CHECK(fcppt::test::parse::skipper::skip_string(parser, std::wstring{L" X "}).has_failure());
+}
+
 FCPPT_CATCH_END
