@@ -1010,6 +1010,7 @@ set(
 	libs/core/include/fcppt/optional/filter.hpp
 	libs/core/include/fcppt/optional/from.hpp
 	libs/core/include/fcppt/optional/from_pointer.hpp
+	libs/core/include/fcppt/optional/get_or_assign.hpp
 	libs/core/include/fcppt/optional/is_object.hpp
 	libs/core/include/fcppt/optional/is_object_v.hpp
 	libs/core/include/fcppt/optional/join.hpp

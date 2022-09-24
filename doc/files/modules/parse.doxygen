@@ -321,6 +321,18 @@ Parses the empty string.
 
 <tr>
 <td>
+#fcppt::parse::exclude
+</td>
+<td>
+<code>(T,fcppt::unit) -> T</code>
+</td>
+<td>
+Matches only if another parser fails.
+</td>
+</tr>
+
+<tr>
+<td>
 #fcppt::parse::fail
 </td>
 <td>

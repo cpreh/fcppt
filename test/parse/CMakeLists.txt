@@ -71,6 +71,10 @@ add_fcppt_parse_test(
 )
 
 add_fcppt_parse_test(
+	exclude
+)
+
+add_fcppt_parse_test(
 	fail
 )
 

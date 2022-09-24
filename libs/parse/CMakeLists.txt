@@ -92,6 +92,9 @@ set(
 	libs/parse/include/fcppt/parse/error_fwd.hpp
 	libs/parse/include/fcppt/parse/error_impl.hpp
 	libs/parse/include/fcppt/parse/error_output.hpp
+	libs/parse/include/fcppt/parse/exclude_decl.hpp
+	libs/parse/include/fcppt/parse/exclude_fwd.hpp
+	libs/parse/include/fcppt/parse/exclude_impl.hpp
 	libs/parse/include/fcppt/parse/fail.hpp
 	libs/parse/include/fcppt/parse/fail_decl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
@@ -163,6 +166,7 @@ set(
 	libs/parse/include/fcppt/parse/not_impl.hpp
 	libs/parse/include/fcppt/parse/operators/alternative.hpp
 	libs/parse/include/fcppt/parse/operators/complement.hpp
+	libs/parse/include/fcppt/parse/operators/exclude.hpp
 	libs/parse/include/fcppt/parse/operators/not.hpp
 	libs/parse/include/fcppt/parse/operators/optional.hpp
 	libs/parse/include/fcppt/parse/operators/repetition.hpp
