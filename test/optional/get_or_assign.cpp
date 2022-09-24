@@ -28,3 +28,5 @@ TEST_CASE("optional::get_or_assign", "[optional]")
 
   CHECK(result2 == 1);
 }
+
+FCPPT_CATCH_END
