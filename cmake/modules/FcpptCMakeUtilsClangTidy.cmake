@@ -18,7 +18,9 @@ if(
 	STREQUAL
 	""
 )
-	#"-clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
+	# "-bugprone-exception-escape" triggers on every move constructor/assignment operator for classes containing a std::string.
+	#                              Might be a problem with libc++. TODO: Investigate this again with clang-16.
+	# "-clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
 	# "-fuchsia-trailing-return" complains about code like X<decltype(_param)>
 	# "-readability-function-cognitive-complexity" triggers for almost every Catch2 test case
 	# "-modernize-return-braced-init-list" also triggers on ()-initialization, breaking code
@@ -29,6 +31,7 @@ if(
 		"-altera-struct-pack-align"
 		"-altera-unroll-loops"
 		"-bugprone-macro-parentheses"
+		"-bugprone-exception-escape"
 		"-cppcoreguidelines-macro-usage"
 		"-clang-analyzer-cplusplus.NewDeleteLeaks"
 		"-cert-dcl21-cpp"
