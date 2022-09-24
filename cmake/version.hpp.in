@@ -7,10 +7,15 @@
 #ifndef FCPPT_VERSION_HPP_INCLUDED
 #define FCPPT_VERSION_HPP_INCLUDED
 
+#include <fcppt/version_integral_c.hpp>
+
+namespace fcppt
+{
 // The version consists of three digits for every version "part"
-// FCPPT_VERSION / 100000 is the major version,
-// FCPPT_VERSION / 1000 % 1000 is the minor version
-// FCPPT_VERSION % 1000 is the micro version
-#define FCPPT_VERSION @FCPPT_INT_VERSION@UL
+// version / 100000 is the major version,
+// version / 1000 % 1000 is the minor version
+// version % 1000 is the micro version
+using version = fcppt::version_integral_c<@FCPPT_INT_VERSION@UL>;
+}
 
 #endif

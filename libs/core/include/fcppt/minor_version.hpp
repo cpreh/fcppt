@@ -17,8 +17,7 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 using minor_version = fcppt::version_integral_c<
-    (FCPPT_VERSION / fcppt::detail::version_power) % fcppt::detail::version_power>;
-
+    (fcppt::version::value / fcppt::detail::version_power) % fcppt::detail::version_power>;
 }
 
 #endif

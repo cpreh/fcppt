@@ -16,8 +16,8 @@ namespace fcppt
 \brief fcppt's micro version
 \ingroup fcpptvarious
 */
-using micro_version = fcppt::version_integral_c<FCPPT_VERSION % fcppt::detail::version_power>;
-
+using micro_version =
+    fcppt::version_integral_c<fcppt::version::value % fcppt::detail::version_power>;
 }
 
 #endif
