@@ -20,7 +20,7 @@ TEST_CASE("variant::holds_type", "[variant]")
 
   std::string const string("hello world");
 
-  variant test(string);
+  variant const test(string);
 
   CHECK(fcppt::variant::holds_type<std::string>(test));
 

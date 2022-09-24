@@ -104,7 +104,7 @@ void test4()
 {
   using base_ptr = fcppt::unique_ptr<base>;
 
-  base_ptr foo(fcppt::unique_ptr_to_base<base>(fcppt::make_unique_ptr<derived>()));
+  base_ptr const foo{fcppt::unique_ptr_to_base<base>(fcppt::make_unique_ptr<derived>())};
 }
 //! [unique_ptr_to_base]
 
@@ -117,7 +117,7 @@ void test5()
   //! [unique_ptr_to_const]
   using const_int_ptr = fcppt::unique_ptr<int const>;
 
-  const_int_ptr foo(fcppt::unique_ptr_to_const(fcppt::make_unique_ptr<int>(1)));
+  const_int_ptr const foo{fcppt::unique_ptr_to_const(fcppt::make_unique_ptr<int>(1))};
   //! [unique_ptr_to_const]
 }
 
@@ -185,5 +185,5 @@ int main()
 
   ::test6();
 
-  foo f;
+  foo const f{};
 }

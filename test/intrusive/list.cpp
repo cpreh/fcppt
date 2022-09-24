@@ -57,7 +57,7 @@ TEST_CASE("intrusive::list"
   CHECK(std::distance(my_list.begin(), my_list.end()) == 0);
 
   {
-    test_class test1{my_list, 42};
+    test_class const test1{my_list, 42};
 
     CHECK(std::distance(my_list.begin(), my_list.end()) == 1);
 
@@ -74,7 +74,7 @@ TEST_CASE("intrusive::list"
 
       CHECK(std::next(my_list.begin())->value() == 10);
 
-      test_class test3{std::move(test2)};
+      test_class const test3{std::move(test2)};
 
       CHECK(std::distance(my_list.begin(), my_list.end()) == 2);
     }
@@ -95,12 +95,12 @@ TEST_CASE("intrusive::list size"
   REQUIRE(fcppt::range::size(my_list) == 0U);
 
   {
-    test_class test1{my_list, 0};
+    test_class const test1{my_list, 0};
 
     REQUIRE(fcppt::range::size(my_list) == 1U);
 
     {
-      test_class test2{my_list, 0};
+      test_class const test2{my_list, 0};
 
       REQUIRE(fcppt::range::size(my_list) == 2U);
     }
@@ -111,12 +111,12 @@ TEST_CASE("intrusive::list size"
   REQUIRE(fcppt::range::size(my_list) == 0U);
 
   {
-    test_class test1{my_list, 0};
+    test_class const test1{my_list, 0};
 
     REQUIRE(fcppt::range::size(my_list) == 1U);
 
     {
-      test_class test2{my_list, 0};
+      test_class const test2{my_list, 0};
 
       REQUIRE(fcppt::range::size(my_list) == 2U);
     }

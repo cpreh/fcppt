@@ -179,13 +179,13 @@ try
         fcppt::log::default_level_streams()};
     // ![options_log_context]
 
-    fcppt::log::object logger{
+    fcppt::log::object const logger{
         fcppt::make_ref(log_context),
         fcppt::log::parameters{
             fcppt::log::name{FCPPT_TEXT("options")}, fcppt::log::format::optional_function{}}};
 
     // ![options_open_input]
-    fcppt::filesystem::ifstream input{fcppt::filesystem::open_exn<fcppt::filesystem::ifstream>(
+    fcppt::filesystem::ifstream const input{fcppt::filesystem::open_exn<fcppt::filesystem::ifstream>(
         fcppt::record::get<input_file_label>(_result),
         std::ios_base::openmode{})};
     // ![options_open_input]
@@ -198,7 +198,7 @@ try
     // ![options_output_filename]
 
     // ![options_open_output]
-    fcppt::filesystem::ofstream output{fcppt::filesystem::open_exn<fcppt::filesystem::ofstream>(
+    fcppt::filesystem::ofstream const output{fcppt::filesystem::open_exn<fcppt::filesystem::ofstream>(
         output_filename,
         fcppt::record::get<openmode_label>(_result))};
     // ![options_open_output]

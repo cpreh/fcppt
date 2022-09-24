@@ -20,11 +20,11 @@
 
 int main()
 {
-  fcppt::math::vector::static_<int, 2> vec(1, 2);
+  fcppt::math::vector::static_<int, 2> const vec{1, 2};
 
   using vec2f = fcppt::math::vector::static_<float, 2>;
 
-  vec2f const vecf(1.F, 2.F);
+  vec2f const vecf{1.F, 2.F};
 
   fcppt::math::vector::atan2(vecf);
 
@@ -41,16 +41,16 @@ int main()
   using vec3d = fcppt::math::vector::static_<double, 3>;
 
   {
-    vec3d const a(1.0, 0.0, 0.0);
+    vec3d const a{1.0, 0.0, 0.0};
 
-    vec3d const b(0.0, 1.0, 0.0);
+    vec3d const b{0.0, 1.0, 0.0};
 
     std::cout << fcppt::math::vector::cross(a, b) << '\n';
   }
 
   using int_rect = fcppt::math::box::rect<int>;
 
-  int_rect test_rect(int_rect::vector(1, 2), int_rect::dim(3, 2));
+  int_rect const test_rect{int_rect::vector{1, 2}, int_rect::dim{3, 2}};
 
   std::cout << test_rect << '\n';
 }

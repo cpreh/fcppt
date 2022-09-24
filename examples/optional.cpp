@@ -50,7 +50,7 @@ void optional_copy()
   unsigned int1{5U};
 
   // opt takes a copy of int1
-  optional_uint opt{int1};
+  optional_uint const opt{int1};
 
   int1 = 10U;
 

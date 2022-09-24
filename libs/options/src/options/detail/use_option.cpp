@@ -32,7 +32,7 @@ fcppt::options::detail::use_option_result fcppt::options::detail::use_option(
 
   fcppt::args_vector::iterator const end{args.end()};
 
-  fcppt::args_vector::iterator pos{std::find(args.begin(), end, flag_name)};
+  fcppt::args_vector::iterator const pos{std::find(args.begin(), end, flag_name)};
 
   if (pos == end)
   {

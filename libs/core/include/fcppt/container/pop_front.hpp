@@ -26,6 +26,7 @@ fcppt::optional::object<fcppt::container::to_value_type<Container>> pop_front(Co
   using value_type = fcppt::container::to_value_type<Container>;
 
   return fcppt::optional::make_if(!_container.empty(), [&_container] {
+    // NOLINTNEXTLINE(misc-const-correctness)
     value_type result{std::move(_container.front())};
 
     _container.pop_front();

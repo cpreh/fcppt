@@ -17,14 +17,14 @@
 
 int main()
 {
-  fcppt::io::ostringstream ostream{};
+  fcppt::io::ostringstream const ostream{};
 
   {
-    fcppt::io::scoped_rdbuf const scoped(
+    fcppt::io::scoped_rdbuf const scoped{
         fcppt::reference_to_base<std::basic_ios<fcppt::char_type>>(
             fcppt::make_ref(fcppt::io::cout())),
         fcppt::reference_to_base<std::basic_streambuf<fcppt::char_type>>(
-            fcppt::make_ref(*ostream.rdbuf())));
+            fcppt::make_ref(*ostream.rdbuf()))};
 
     fcppt::io::cout() << FCPPT_TEXT("This is a test!\n");
   }

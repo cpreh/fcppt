@@ -56,7 +56,7 @@ TEST_CASE("cast::dynamic_any", "[cast]")
 {
   derived1 d1{};
 
-  other d2{};
+  other const d2{};
 
   base &b1{d1};
 

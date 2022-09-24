@@ -110,7 +110,7 @@ TEST_CASE("variant::dynamic_cast const", "[variant]")
 
   using result_type = fcppt::optional::object<result_variant>;
 
-  derived2 d2{};
+  derived2 const d2{};
 
   base const &base_ref{d2};
 

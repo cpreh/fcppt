@@ -52,7 +52,7 @@ int main()
 {
   test();
 
-  outer foo;
+  outer foo{};
 
-  inner bar(&foo);
+  inner const bar{&foo};
 }

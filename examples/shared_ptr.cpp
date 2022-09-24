@@ -39,10 +39,10 @@ void shared_ptr_example()
   int_ptr const ptr{new int(42)};
 
   // Copies the ownership to owner1, increasing the shared count to 2
-  owner owner1{ptr};
+  owner const owner1{ptr};
 
   // Copies from owner1 to owner2, increasing the shared count to 3
-  owner owner2{// NOLINT(performance-unnecessary-copy-initialization)
+  owner const owner2{// NOLINT(performance-unnecessary-copy-initialization)
                owner1};
 
   // The destruction of owner2, owner1 and ptr will free the int
@@ -57,7 +57,7 @@ using void_c_ptr = fcppt::shared_ptr<void, fcppt::c_deleter>;
 
 void test_c_deleter()
 {
-  void_c_ptr ptr{std::malloc( // NOLINT(cppcoreguidelines-no-malloc,hicpp-no-malloc)
+  void_c_ptr const ptr{std::malloc( // NOLINT(cppcoreguidelines-no-malloc,hicpp-no-malloc)
       100)};
 
   // calls std::free
@@ -126,11 +126,11 @@ void cast()
 {
   using base_ptr = fcppt::shared_ptr<base>;
 
-  base_ptr ptr(new derived());
+  base_ptr const ptr{new derived()};
 
   using derived_ptr = fcppt::shared_ptr<derived>;
 
-  fcppt::optional::object<derived_ptr> dptr(fcppt::dynamic_pointer_cast<derived>(ptr));
+  fcppt::optional::object<derived_ptr> const dptr{fcppt::dynamic_pointer_cast<derived>(ptr)};
 
   if (dptr.has_value())
   {

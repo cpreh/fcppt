@@ -53,7 +53,7 @@ void test_func()
   element e1{fcppt::make_ref(list), 5};
 
   {
-    element e2{fcppt::make_ref(list), 10};
+    element const e2{fcppt::make_ref(list), 10};
 
     // Prints 5, 10
     for (element const &e : list)

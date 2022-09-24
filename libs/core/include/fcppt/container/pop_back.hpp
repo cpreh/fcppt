@@ -26,7 +26,7 @@ fcppt::optional::object<fcppt::container::to_value_type<Container>> pop_back(Con
   using value_type = fcppt::container::to_value_type<Container>;
 
   return fcppt::optional::make_if(!_container.empty(), [&_container] {
-    value_type result{std::move(_container.back())};
+    value_type result{std::move(_container.back())}; // NOLINT(misc-const-correctness)
 
     _container.pop_back();
 

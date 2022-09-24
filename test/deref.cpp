@@ -93,7 +93,7 @@ TEST_CASE("deref reference nested 2", "[various]")
 
 TEST_CASE("deref reference nested 3", "[various]")
 {
-  fcppt::unique_ptr<int> ptr{fcppt::make_unique_ptr<int>(0)};
+  fcppt::unique_ptr<int> const ptr{fcppt::make_unique_ptr<int>(0)};
 
   fcppt::reference<fcppt::unique_ptr<int> const> ref{ptr};
 

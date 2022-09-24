@@ -35,6 +35,7 @@ inline State fold_break(Range &&_range, State _state, Function _function)
 {
   fcppt::algorithm::loop_break(
       std::forward<Range>(_range), [&_state, &_function](auto &&_fcppt_element) {
+        // NOLINTNEXTLINE(misc-const-correctness)
         std::pair<fcppt::loop, State> result{_function(_fcppt_element, std::move(_state))};
 
         _state = std::move(result.second);

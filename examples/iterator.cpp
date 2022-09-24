@@ -62,7 +62,7 @@ int main()
   // ![iterator_example]
   fcppt::array::object<int, 3> array{1, 2, 3};
 
-  my_iterator start(&*array.begin());
+  my_iterator const start(&*array.begin());
 
   my_iterator it{start};
 
@@ -79,7 +79,7 @@ int main()
   std::cout << (it - start) << '\n';
   // ![iterator_example]
 
-  my_iterator dummy{};
+  my_iterator const dummy{};
 
   std::cout << (start == it) << '\n';
 

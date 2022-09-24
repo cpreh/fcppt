@@ -162,7 +162,7 @@ TEST_CASE("iterator random access write", "[iterator]")
 {
   string_vector vec{"1", "2", "3"};
 
-  iterator it{vec.begin()};
+  iterator const it{vec.begin()};
 
   it->push_back('1');
 

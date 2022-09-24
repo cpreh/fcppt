@@ -52,7 +52,7 @@ TEST_CASE("optional::reference const"
 
   CHECK(test2.get_unsafe().get() == 1);
 
-  int val2{2};
+  int const val2{2};
 
   optional_int_ref_const test3(fcppt::make_cref(val2));
 

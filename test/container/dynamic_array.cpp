@@ -25,7 +25,7 @@ TEST_CASE("container::dynamic_array", "[container]")
 
   CHECK(array1.size() == 10U);
 
-  int_array array2{0};
+  int_array const array2{0};
 
   CHECK(array2.size() == 0U);
 }

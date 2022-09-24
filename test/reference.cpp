@@ -33,7 +33,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("reference", "[ref]")
 {
-  int x(1);
+  int x{1};
 
   int_ref ref(x);
 
@@ -47,7 +47,7 @@ TEST_CASE("reference", "[ref]")
 
   CHECK(&fcppt::make_cref(x).get() == &x);
 
-  int_ref other_ref(ref);
+  int_ref const other_ref{ref};
 
   CHECK(&other_ref.get() == &ref.get());
 

@@ -27,7 +27,7 @@ TEST_CASE("strong_typedef arithmetic", "[strongtypedef]")
 {
   strong_int test1(2);
 
-  strong_int test2(4);
+  strong_int const test2(4);
 
   CHECK(test1 + test2 == strong_int(6));
 

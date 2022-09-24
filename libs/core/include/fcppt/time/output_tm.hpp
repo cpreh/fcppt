@@ -27,7 +27,7 @@ obtained from the locale of \a stream. Example:
 template<typename Ch, typename Traits>
 void output_tm(std::basic_ostream<Ch, Traits> &_stream, std::tm const &_tm)
 {
-  typename std::basic_ostream<Ch, Traits>::sentry cerberos{_stream};
+  typename std::basic_ostream<Ch, Traits>::sentry const cerberos{_stream};
 
   if (!cerberos)
   {

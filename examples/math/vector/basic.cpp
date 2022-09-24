@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-//[vectorbasic
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,8 +16,7 @@ int main()
 
   // vectors can be constructed directly. Note that you cannot specify less
   // than N arguments (3 in this case) or you'll get a compiler error.
-  float3_vec obj{1.F, 2.F, 3.F};
+  float3_vec const obj{1.F, 2.F, 3.F};
 
   std::cout << obj << '\n'; // prints something close to (1, 2, 3)
 }
-//]

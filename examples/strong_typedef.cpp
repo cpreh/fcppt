@@ -30,7 +30,7 @@ void f(std::string const &first_name);
 
 void g()
 {
-  std::string email_address = "a@b.com";
+  std::string const email_address{"a@b.com"};
   f(email_address);
 }
 //![motivation_string]
@@ -48,7 +48,7 @@ void f(first_name const &);
 
 void g()
 {
-  email_address address(std::string{"a@b.com"});
+  email_address const address{std::string{"a@b.com"}};
 
   // f(address); error
 }

@@ -43,7 +43,7 @@ fcppt::optional::object<std::basic_string<Out>> codecvt(
 
   using state_type = fcppt::impl::codecvt_type::state_type;
 
-  state_type state{};
+  state_type state{}; // NOLINT(misc-const-correctness)
 
   for (In const *from = _string.data(),
                 *from_next = nullptr;

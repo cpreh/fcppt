@@ -16,7 +16,7 @@ int main()
 
   using i_tree = fcppt::container::tree::object<int>;
 
-  i_tree tree{1};
+  i_tree tree{1}; // NOLINT(misc-const-correctness)
 
   static_assert(std::is_same_v<
                 decltype(fcppt::container::tree::make_pre_order(tree)),

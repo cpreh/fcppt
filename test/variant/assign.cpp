@@ -21,7 +21,7 @@ TEST_CASE("variant assign", "[variant]")
 
   variant test1(0);
 
-  variant test2(std::string("test"));
+  variant const test2(std::string("test"));
 
   test1 = test2;
 

@@ -28,4 +28,4 @@ private:
 
 }
 
-int main() { test_nonmovable test1{}; }
+int main() { test_nonmovable const test1{}; }

@@ -52,4 +52,4 @@ FCPPT_PP_POP_WARNING
 
 }
 
-int main() { test_noncopyable test1{}; }
+int main() { test_noncopyable const test1{}; }
