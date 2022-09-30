@@ -325,7 +325,6 @@ set(
 	libs/core/include/fcppt/assert/line.hpp
 	libs/core/include/fcppt/assert/make_message.hpp
 	libs/core/include/fcppt/assert/message.hpp
-	libs/core/include/fcppt/assert/optional_error.hpp
 	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp

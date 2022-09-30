@@ -7,6 +7,14 @@
 Switched from <code>Catch-2</code> to <code>Catch-3</code> for unit tests.
 </p>
 
+\subsection changes_removed_functionality_to_430 Removed functionality
+
+<li>\ref fcpptassert
+	<ul>
+	<li>Removed <code>FCPPT_ASSERT_OPTIONAL_ERROR</code>.</li>
+	</ul>
+</li>
+
 \section changes_changes_to_421 4.2.1
 
 <p>

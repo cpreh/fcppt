@@ -98,10 +98,6 @@ add_subdirectory(
 	array
 )
 
-add_subdirectory(
-	assert
-)
-
 add_fcppt_test(
 	bit
 )

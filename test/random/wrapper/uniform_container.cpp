@@ -6,15 +6,16 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/contains.hpp>
-#include <fcppt/assert/optional_error.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/random/wrapper/make_uniform_container.hpp>
 #include <fcppt/random/wrapper/uniform_container.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <stdexcept>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -27,9 +28,10 @@ TEST_CASE("random::wrapper::uniform_container", "[random]")
 
   string_vector const strings{std::string("test1"), std::string("test2")};
 
-  auto dist(fcppt::random::wrapper::make_uniform_container(fcppt::make_cref(strings)));
+  auto dist{fcppt::random::wrapper::make_uniform_container(fcppt::make_cref(strings))};
 
-  auto &dist_inner(FCPPT_ASSERT_OPTIONAL_ERROR(dist));
+  auto &dist_inner{
+      fcppt::optional::to_exception(dist, [] { return std::runtime_error{"Invalid range!"}; })};
 
   fcppt::random::generator::minstd_rand generator(
       fcppt::random::generator::seed_from_chrono<fcppt::random::generator::minstd_rand::seed>());
