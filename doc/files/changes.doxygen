@@ -3,17 +3,56 @@
 
 \section changes_changes_to_430 4.3.0
 
-<p>
-Switched from <code>Catch-2</code> to <code>Catch-3</code> for unit tests.
-</p>
+<ul>
+
+<li>Switched from <code>Catch-2</code> to <code>Catch-3</code> for unit tests.</li>
+<li>Fixed some warnings related to <code>clang-15</code>.</li>
+<li>Support for <code>VC++-14.34</code> (Visual Studio 2022 Version 17.4).</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_430 Added functionality
+
+<ul>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added #fcppt::optional::get_or_assign.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptparse
+	<ul>
+	<li>Added #fcppt::parse::exclude.</li>
+	</ul>
+</li>
+
+</ul>
 
 \subsection changes_removed_functionality_to_430 Removed functionality
+
+<ul>
 
 <li>\ref fcpptassert
 	<ul>
 	<li>Removed <code>FCPPT_ASSERT_OPTIONAL_ERROR</code>.</li>
 	</ul>
 </li>
+
+</ul>
+
+\subsection changes_bugfixes_to_430 Bugfixes
+
+<ul>
+
+<li>\ref fcpptparse
+	<ul>
+	<li>Fixed #fcppt::parse::parse_stream.</li>
+	<li>Fixed #fcppt::parse::skipper::basic_space char type.</li>
+	</ul>
+</li>
+
+</ul>
 
 \section changes_changes_to_421 4.2.1
 
@@ -32,9 +71,9 @@ This release fixes some warnings related to <code>clang-14</code>.
 <ul>
 
 <li>\ref fcppttuple
-    <ul>
-    <li>Added #fcppt::tuple::as_struct.</li>
-    </ul>
+	<ul>
+	<li>Added #fcppt::tuple::as_struct.</li>
+	</ul>
 </li>
 
 </ul>

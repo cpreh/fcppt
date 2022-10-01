@@ -142,10 +142,6 @@ printed to <code>cerr</code> before that happens.
 <td>Contains the fcppt::assert_::make_message function</td>
 </tr>
 <tr>
-<td><code>optional_error.hpp</code></td>
-<td>Contains #FCPPT_ASSERT_OPTIONAL_ERROR </td>
-</tr>
-<tr>
 <td><code>unreachable.hpp</code></td>
 <td>Contains #FCPPT_ASSERT_UNREACHABLE </td>
 </tr>

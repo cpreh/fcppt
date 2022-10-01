@@ -335,7 +335,7 @@ for them.</li>
 
 <li>\ref fcpptassert
 	<ul>
-	<li>Added #FCPPT_ASSERT_OPTIONAL_ERROR  which first
+	<li>Added <code>FCPPT_ASSERT_OPTIONAL_ERROR</code>  which first
 	asserts that an optional is set and then evaluates to its
 	contents.</li>
 	</ul>
