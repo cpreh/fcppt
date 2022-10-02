@@ -19,7 +19,7 @@ namespace fcppt::optional
 
 \ingroup fcpptoptional
 
-Assigns the result of \a _function to \a _optional and returns a reference to the contents of \a _optional.
+Assigns the result of \a _function to \a _optional if \a _optional is empty and returns a reference to the contents of \a _optional.
 */
 template <typename Element, fcppt::concepts::invocable_move<> Function>
 [[nodiscard]] inline Element &get_or_assign(
