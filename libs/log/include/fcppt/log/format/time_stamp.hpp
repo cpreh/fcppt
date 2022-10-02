@@ -16,7 +16,7 @@ namespace fcppt::log::format
 
 \ingroup fcpptlog
 
-Creates a formatter that prints a time stamp in front like #fcppt::log::format::time_stamp does.
+Creates a formatter that prints a time stamp in front.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function time_stamp();

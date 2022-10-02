@@ -91,7 +91,7 @@ Each level stream uses an <code>std::basic_ostream</code> as its log
 destination. Where output actually ends up is decided by its streambuf.
 </li>
 <li>
-Formatting is done through #fcppt::log::format::function  objects
+Formatting is done through #fcppt::log::format::function objects
 which can be naturally chained together. Every log object and every level stream
 can have their own formatters.
 </ul>
@@ -305,11 +305,11 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>default_level_streams.hpp</code></td>
-<td>Contains #fcppt::log::default_level_streams  for construction of all level stream defaults.</td>
+<td>Contains #fcppt::log::default_level_streams for construction of all level stream defaults.</td>
 </tr>
 <tr>
 <td><code>default_stream.hpp</code></td>
-<td>Contains the #fcppt::log::default_stream  function.</td>
+<td>Contains the #fcppt::log::default_stream function.</td>
 </tr>
 <tr>
 <td><code>level_from_string.hpp</code></td>
@@ -317,7 +317,7 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>level_stream_array.hpp</code></td>
-<td>Contains the #fcppt::log::level_stream_array  typedef.</td>
+<td>Contains the #fcppt::log::level_stream_array typedef.</td>
 </tr>
 <tr>
 <td><code>level_stream_fwd.hpp</code></td>
@@ -333,7 +333,7 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>optional_level_fwd.hpp</code></td>
-<td>Contains the #fcppt::log::optional_level  typedef.</td>
+<td>Contains the #fcppt::log::optional_level typedef.</td>
 </tr>
 <tr>
 <td><code>optional_level.hpp</code></td>
@@ -341,11 +341,11 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>format/chain.hpp</code></td>
-<td>Contains the #fcppt::log::format::chain  function.</td>
+<td>Contains the #fcppt::log::format::chain function.</td>
 </tr>
 <tr>
 <td><code>format/default_level.hpp</code></td>
-<td>Contains the #fcppt::log::format::default_level  function.</td>
+<td>Contains the #fcppt::log::format::default_level function.</td>
 </tr>
 <tr>
 <td><code>format/format.hpp</code></td>
@@ -353,7 +353,7 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>format/function_fwd.hpp</code></td>
-<td>Contains the #fcppt::log::format::function  typedef.</td>
+<td>Contains the #fcppt::log::format::function typedef.</td>
 </tr>
 <tr>
 <td><code>format/function.hpp</code></td>
@@ -361,15 +361,15 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>format/inserter.hpp</code></td>
-<td>Contains the #fcppt::log::format::inserter  typedef.</td>
+<td>Contains the #fcppt::log::format::inserter typedef.</td>
 </tr>
 <tr>
 <td><code>format/prefix.hpp</code></td>
-<td>Contains the #fcppt::log::format::prefix  function.</td>
+<td>Contains the #fcppt::log::format::prefix function.</td>
 </tr>
 <tr>
 <td><code>format/time_stamp.hpp</code></td>
-<td>Contains the #fcppt::log::format::time_stamp  typedef.</td>
+<td>Contains the #fcppt::log::format::time_stamp typedef.</td>
 </tr>
 </table>
 
