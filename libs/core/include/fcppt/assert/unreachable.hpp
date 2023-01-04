@@ -6,17 +6,13 @@
 #ifndef FCPPT_ASSERT_UNREACHABLE_HPP_INCLUDED
 #define FCPPT_ASSERT_UNREACHABLE_HPP_INCLUDED
 
-#include <fcppt/assert/unreachable_message.hpp>
-#include <fcppt/assert/basic/default_message.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <exception>
+#include <fcppt/config/external_end.hpp>
 
 /**
-\brief Terminates the program
-
-\ingroup fcpptassert
-
-This macro should be used when an unreachable code part is executed.
+\brief TODO: Remove this.
 */
-#define FCPPT_ASSERT_UNREACHABLE \
-  FCPPT_ASSERT_UNREACHABLE_MESSAGE(FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE)
+#define FCPPT_ASSERT_UNREACHABLE std::terminate()
 
 #endif

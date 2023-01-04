@@ -82,29 +82,7 @@ set(
 	libs/core/include/fcppt/array/push_back.hpp
 	libs/core/include/fcppt/array/size.hpp
 	libs/core/include/fcppt/array/value_type.hpp
-	libs/core/include/fcppt/assert/basic/conditional.hpp
-	libs/core/include/fcppt/assert/basic/conditional_message.hpp
-	libs/core/include/fcppt/assert/basic/default_message.hpp
-	libs/core/include/fcppt/assert/basic/gather_information.hpp
-	libs/core/include/fcppt/assert/basic/message_and_action.hpp
-	libs/core/include/fcppt/assert/basic/print_message.hpp
-	libs/core/include/fcppt/assert/basic/terminate_conditional.hpp
-	libs/core/include/fcppt/assert/basic/terminate_message.hpp
-	libs/core/include/fcppt/assert/basic/terminate_message_conditional.hpp
-	libs/core/include/fcppt/assert/basic/unconditional.hpp
-	libs/core/include/fcppt/assert/basic/unconditional_message.hpp
-	libs/core/include/fcppt/assert/condition.hpp
-	libs/core/include/fcppt/assert/error.hpp
-	libs/core/include/fcppt/assert/error_message.hpp
-	libs/core/include/fcppt/assert/file.hpp
-	libs/core/include/fcppt/assert/function.hpp
-	libs/core/include/fcppt/assert/information.hpp
-	libs/core/include/fcppt/assert/information_fwd.hpp
-	libs/core/include/fcppt/assert/line.hpp
-	libs/core/include/fcppt/assert/make_message.hpp
-	libs/core/include/fcppt/assert/message.hpp
 	libs/core/include/fcppt/assert/unreachable.hpp
-	libs/core/include/fcppt/assert/unreachable_message.hpp
 	libs/core/include/fcppt/assert_complete.hpp
 	libs/core/include/fcppt/bit/mask.hpp
 	libs/core/include/fcppt/bit/mask_c.hpp
@@ -1436,7 +1414,6 @@ set(
 	libs/core/include/fcppt/widen_locale.hpp
 	libs/core/src/args.cpp
 	libs/core/src/args_from_second.cpp
-	libs/core/src/assert/information.cpp
 	libs/core/src/endianness/reverse_mem.cpp
 	libs/core/src/error/strerrno.cpp
 	libs/core/src/error/strerror.cpp

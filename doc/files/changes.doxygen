@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_440 4.4.0
+
+\subsection changes_removed_functionality_to_440 Removed functionality
+
+<ul>
+
+<li>fcpptassert
+	<ul>
+	<li>Removed most of the library.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_430 4.3.0
 
 <ul>
