@@ -8,9 +8,8 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
@@ -30,17 +29,17 @@ TEST_CASE("parse::space_skipper", "[parse]")
 
   CHECK(
       fcppt::parse::phrase_parse_string(parser, std::string{}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(result_type{}));
+      fcppt::parse::make_parse_string_success<char>(result_type{}));
 
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{" \t"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(result_type{}));
+      fcppt::parse::make_parse_string_success<char>(result_type{}));
 
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{" \t\nab"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(result_type{'a', 'b'}));
+      fcppt::parse::make_parse_string_success<char>(result_type{'a', 'b'}));
 }
 
 FCPPT_CATCH_END

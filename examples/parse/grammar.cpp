@@ -9,13 +9,13 @@
 #include <fcppt/either/match.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/construct.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/grammar.hpp>
 #include <fcppt/parse/grammar_parse_string.hpp>
 #include <fcppt/parse/list.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_recursive.hpp>
+#include <fcppt/parse/parse_string_error.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
@@ -65,7 +65,7 @@ grammar::grammar()
 int main()
 {
   auto const on_failure{
-      [](fcppt::parse::error<char> const &_error) { std::cerr << _error << '\n'; }};
+      [](fcppt::parse::parse_string_error<char> const &_error) { std::cerr << _error << '\n'; }};
   auto const on_success{[](list const &_result) { std::cout << _result.elements.size() << '\n'; }};
 
 //![parse]

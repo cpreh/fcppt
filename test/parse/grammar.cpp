@@ -9,13 +9,14 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/grammar.hpp>
 #include <fcppt/parse/grammar_parse_stream.hpp>
 #include <fcppt/parse/grammar_parse_string.hpp>
 #include <fcppt/parse/int.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_stream_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
+#include <fcppt/parse/parse_stream_error_output.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -64,7 +65,7 @@ TEST_CASE("parse::grammar string", "[parse]")
 {
   CHECK(
       fcppt::parse::grammar_parse_string(std::string{" 42"}, grammar{}) ==
-      fcppt::parse::make_success<char>(42));
+      fcppt::parse::make_parse_string_success<char>(42));
 }
 
 TEST_CASE("parse::grammar stream", "[parse]")
@@ -73,7 +74,7 @@ TEST_CASE("parse::grammar stream", "[parse]")
 
   CHECK(
       fcppt::parse::grammar_parse_stream(stream, grammar{}) ==
-      fcppt::parse::make_success<char>(42));
+      fcppt::parse::make_parse_stream_success<char>(42));
 }
 
 FCPPT_CATCH_END

@@ -12,8 +12,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
@@ -40,11 +41,11 @@ TEST_CASE("parse::int", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"42"}) ==
-      fcppt::parse::make_success<char>(42));
+      fcppt::parse::make_parse_string_success<char>(42));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"-42"}) ==
-      fcppt::parse::make_success<char>(-42));
+      fcppt::parse::make_parse_string_success<char>(-42));
 }
 
 TEST_CASE("parse::int sequence", "[parse]")
@@ -57,7 +58,7 @@ TEST_CASE("parse::int sequence", "[parse]")
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{"12, 3"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(fcppt::tuple::make(12, 3)));
+      fcppt::parse::make_parse_string_success<char>(fcppt::tuple::make(12, 3)));
 }
 
 TEST_CASE("parse::int vector", "[parse]")
@@ -69,7 +70,7 @@ TEST_CASE("parse::int vector", "[parse]")
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{"10 20"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(result_type{10, 20}));
+      fcppt::parse::make_parse_string_success<char>(result_type{10, 20}));
 }
 
 FCPPT_CATCH_END

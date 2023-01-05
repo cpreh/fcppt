@@ -7,20 +7,27 @@
 #define FCPPT_PARSE_UINT_IMPL_HPP_INCLUDED
 
 #include <fcppt/extract_from_string.hpp>
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string_literal.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/digits.hpp>
-#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/error_impl.hpp>
+#include <fcppt/parse/error_variant_impl.hpp>
+#include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
+#include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/result_of.hpp>
+#include <fcppt/parse/type_name_tag_fwd.hpp>
+#include <fcppt/parse/typed_error_impl.hpp>
 #include <fcppt/parse/uint_decl.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename Type>
@@ -34,15 +41,25 @@ fcppt::parse::uint<Type>::parse(
 {
   auto const parser{fcppt::parse::make_lexeme(+fcppt::parse::digits<Ch>())};
 
+  fcppt::parse::position<Ch> const pos{fcppt::parse::get_position(_state)};
+
   return fcppt::either::bind(
       parser.parse(_state, _skipper),
-      [](fcppt::parse::result_of<decltype(parser)> const &_result) {
-        return fcppt::either::from_optional(fcppt::extract_from_string<Type>(_result), [&_result] {
-          return fcppt::parse::error<Ch>{
-              std::basic_string<Ch>{
-                  FCPPT_STRING_LITERAL(Ch, "Failed to parse unsigned integer from ")} +
-              _result};
-        });
+      [pos](std::basic_string<Ch> &&_result)
+      {
+        return fcppt::either::from_optional(
+            fcppt::extract_from_string<Type>(_result),
+            [&_result, pos]
+            {
+              return fcppt::parse::error<Ch>{
+                  fcppt::parse::error_variant<Ch>{fcppt::parse::typed_error<Ch>{
+                      pos,
+                      // TODO(philipp): Take the type into account here!
+                      fcppt::make_strong_typedef<fcppt::parse::type_name_tag>(
+                          std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "uint")}),
+                      fcppt::make_strong_typedef<fcppt::parse::got_tag>(std::move(_result))}},
+                  fcppt::parse::is_fatal{false}};
+            });
       });
 }
 

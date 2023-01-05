@@ -2,6 +2,9 @@
 set(
 	FCPPT_PARSE_FILES
 	libs/parse/include/fcppt/parse/alternative_decl.hpp
+	libs/parse/include/fcppt/parse/alternative_error_decl.hpp
+	libs/parse/include/fcppt/parse/alternative_error_fwd.hpp
+	libs/parse/include/fcppt/parse/alternative_error_impl.hpp
 	libs/parse/include/fcppt/parse/alternative_fwd.hpp
 	libs/parse/include/fcppt/parse/alternative_impl.hpp
 	libs/parse/include/fcppt/parse/alternative_result.hpp
@@ -13,15 +16,24 @@ set(
 	libs/parse/include/fcppt/parse/base_unique_ptr_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_char.hpp
 	libs/parse/include/fcppt/parse/basic_char_decl.hpp
+	libs/parse/include/fcppt/parse/basic_char_error_decl.hpp
+	libs/parse/include/fcppt/parse/basic_char_error_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_char_error_impl.hpp
 	libs/parse/include/fcppt/parse/basic_char_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_char_impl.hpp
 	libs/parse/include/fcppt/parse/basic_char_set.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_container.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_decl.hpp
+	libs/parse/include/fcppt/parse/basic_char_set_error_decl.hpp
+	libs/parse/include/fcppt/parse/basic_char_set_error_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_char_set_error_impl.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_char_set_impl.hpp
 	libs/parse/include/fcppt/parse/basic_literal.hpp
 	libs/parse/include/fcppt/parse/basic_literal_decl.hpp
+	libs/parse/include/fcppt/parse/basic_literal_error_decl.hpp
+	libs/parse/include/fcppt/parse/basic_literal_error_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_literal_error_impl.hpp
 	libs/parse/include/fcppt/parse/basic_literal_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_literal_impl.hpp
 	libs/parse/include/fcppt/parse/basic_stream_decl.hpp
@@ -29,6 +41,9 @@ set(
 	libs/parse/include/fcppt/parse/basic_stream_impl.hpp
 	libs/parse/include/fcppt/parse/basic_string.hpp
 	libs/parse/include/fcppt/parse/basic_string_decl.hpp
+	libs/parse/include/fcppt/parse/basic_string_error_decl.hpp
+	libs/parse/include/fcppt/parse/basic_string_error_fwd.hpp
+	libs/parse/include/fcppt/parse/basic_string_error_impl.hpp
 	libs/parse/include/fcppt/parse/basic_string_fwd.hpp
 	libs/parse/include/fcppt/parse/basic_string_impl.hpp
 	libs/parse/include/fcppt/parse/blank.hpp
@@ -43,6 +58,9 @@ set(
 	libs/parse/include/fcppt/parse/char_set_impl.hpp
 	libs/parse/include/fcppt/parse/column.hpp
 	libs/parse/include/fcppt/parse/complement_decl.hpp
+	libs/parse/include/fcppt/parse/complement_error_decl.hpp
+	libs/parse/include/fcppt/parse/complement_error_fwd.hpp
+	libs/parse/include/fcppt/parse/complement_error_impl.hpp
 	libs/parse/include/fcppt/parse/complement_fwd.hpp
 	libs/parse/include/fcppt/parse/complement_impl.hpp
 	libs/parse/include/fcppt/parse/construct.hpp
@@ -58,6 +76,10 @@ set(
 	libs/parse/include/fcppt/parse/convert_if_fwd.hpp
 	libs/parse/include/fcppt/parse/convert_if_impl.hpp
 	libs/parse/include/fcppt/parse/convert_impl.hpp
+	libs/parse/include/fcppt/parse/custom_error.hpp
+	libs/parse/include/fcppt/parse/custom_error_decl.hpp
+	libs/parse/include/fcppt/parse/custom_error_fwd.hpp
+	libs/parse/include/fcppt/parse/custom_error_impl.hpp
 	libs/parse/include/fcppt/parse/deref.hpp
 	libs/parse/include/fcppt/parse/deref_type.hpp
 	libs/parse/include/fcppt/parse/detail/alternative_list.hpp
@@ -69,13 +91,13 @@ set(
 	libs/parse/include/fcppt/parse/detail/concrete_decl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp
-	libs/parse/include/fcppt/parse/detail/consume_remaining.hpp
 	libs/parse/include/fcppt/parse/detail/exception.hpp
-	libs/parse/include/fcppt/parse/detail/expected.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp
 	libs/parse/include/fcppt/parse/detail/make_alternative.hpp
 	libs/parse/include/fcppt/parse/detail/make_tuple.hpp
+	libs/parse/include/fcppt/parse/detail/print_char.hpp
+	libs/parse/include/fcppt/parse/detail/print_error.hpp
 	libs/parse/include/fcppt/parse/detail/sequence_result.hpp
 	libs/parse/include/fcppt/parse/detail/stream_decl.hpp
 	libs/parse/include/fcppt/parse/detail/stream_fwd.hpp
@@ -86,31 +108,34 @@ set(
 	libs/parse/include/fcppt/parse/epsilon_fwd.hpp
 	libs/parse/include/fcppt/parse/epsilon_impl.hpp
 	libs/parse/include/fcppt/parse/error.hpp
-	libs/parse/include/fcppt/parse/error_add.hpp
 	libs/parse/include/fcppt/parse/error_decl.hpp
-	libs/parse/include/fcppt/parse/error_equal.hpp
 	libs/parse/include/fcppt/parse/error_fwd.hpp
 	libs/parse/include/fcppt/parse/error_impl.hpp
 	libs/parse/include/fcppt/parse/error_output.hpp
+	libs/parse/include/fcppt/parse/error_variant_decl.hpp
+	libs/parse/include/fcppt/parse/error_variant_fwd.hpp
+	libs/parse/include/fcppt/parse/error_variant_impl.hpp
 	libs/parse/include/fcppt/parse/exclude_decl.hpp
 	libs/parse/include/fcppt/parse/exclude_fwd.hpp
 	libs/parse/include/fcppt/parse/exclude_impl.hpp
+	libs/parse/include/fcppt/parse/expected_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/fail.hpp
 	libs/parse/include/fcppt/parse/fail_decl.hpp
+	libs/parse/include/fcppt/parse/fail_error_decl.hpp
+	libs/parse/include/fcppt/parse/fail_error_fwd.hpp
+	libs/parse/include/fcppt/parse/fail_error_impl.hpp
 	libs/parse/include/fcppt/parse/fail_fwd.hpp
 	libs/parse/include/fcppt/parse/fail_impl.hpp
 	libs/parse/include/fcppt/parse/fatal_decl.hpp
 	libs/parse/include/fcppt/parse/fatal_fwd.hpp
 	libs/parse/include/fcppt/parse/fatal_impl.hpp
-	libs/parse/include/fcppt/parse/fatal_tag.hpp
-	libs/parse/include/fcppt/parse/fatal_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/float.hpp
 	libs/parse/include/fcppt/parse/float_decl.hpp
 	libs/parse/include/fcppt/parse/float_fwd.hpp
 	libs/parse/include/fcppt/parse/float_impl.hpp
 	libs/parse/include/fcppt/parse/get_char.hpp
-	libs/parse/include/fcppt/parse/get_char_error.hpp
 	libs/parse/include/fcppt/parse/get_position.hpp
+	libs/parse/include/fcppt/parse/got_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/grammar.hpp
 	libs/parse/include/fcppt/parse/grammar_decl.hpp
 	libs/parse/include/fcppt/parse/grammar_fwd.hpp
@@ -126,6 +151,8 @@ set(
 	libs/parse/include/fcppt/parse/int_fwd.hpp
 	libs/parse/include/fcppt/parse/int_impl.hpp
 	libs/parse/include/fcppt/parse/is_char.hpp
+	libs/parse/include/fcppt/parse/is_fatal.hpp
+	libs/parse/include/fcppt/parse/is_fatal_fwd.hpp
 	libs/parse/include/fcppt/parse/is_parser.hpp
 	libs/parse/include/fcppt/parse/is_valid_argument.hpp
 	libs/parse/include/fcppt/parse/lexeme.hpp
@@ -154,11 +181,16 @@ set(
 	libs/parse/include/fcppt/parse/make_ignore.hpp
 	libs/parse/include/fcppt/parse/make_lexeme.hpp
 	libs/parse/include/fcppt/parse/make_literal.hpp
+	libs/parse/include/fcppt/parse/make_parse_stream_success.hpp
+	libs/parse/include/fcppt/parse/make_parse_string_success.hpp
 	libs/parse/include/fcppt/parse/make_recursive.hpp
 	libs/parse/include/fcppt/parse/make_success.hpp
 	libs/parse/include/fcppt/parse/make_with_location.hpp
 	libs/parse/include/fcppt/parse/named.hpp
 	libs/parse/include/fcppt/parse/named_decl.hpp
+	libs/parse/include/fcppt/parse/named_error_decl.hpp
+	libs/parse/include/fcppt/parse/named_error_fwd.hpp
+	libs/parse/include/fcppt/parse/named_error_impl.hpp
 	libs/parse/include/fcppt/parse/named_fwd.hpp
 	libs/parse/include/fcppt/parse/named_impl.hpp
 	libs/parse/include/fcppt/parse/not_decl.hpp
@@ -177,7 +209,17 @@ set(
 	libs/parse/include/fcppt/parse/optional_impl.hpp
 	libs/parse/include/fcppt/parse/parse.hpp
 	libs/parse/include/fcppt/parse/parse_stream.hpp
+	libs/parse/include/fcppt/parse/parse_stream_error.hpp
+	libs/parse/include/fcppt/parse/parse_stream_error_decl.hpp
+	libs/parse/include/fcppt/parse/parse_stream_error_fwd.hpp
+	libs/parse/include/fcppt/parse/parse_stream_error_impl.hpp
+	libs/parse/include/fcppt/parse/parse_stream_error_output.hpp
 	libs/parse/include/fcppt/parse/parse_string.hpp
+	libs/parse/include/fcppt/parse/parse_string_error.hpp
+	libs/parse/include/fcppt/parse/parse_string_error_decl.hpp
+	libs/parse/include/fcppt/parse/parse_string_error_fwd.hpp
+	libs/parse/include/fcppt/parse/parse_string_error_impl.hpp
+	libs/parse/include/fcppt/parse/parse_string_error_output.hpp
 	libs/parse/include/fcppt/parse/phrase_parse.hpp
 	libs/parse/include/fcppt/parse/phrase_parse_stream.hpp
 	libs/parse/include/fcppt/parse/phrase_parse_string.hpp
@@ -279,6 +321,10 @@ set(
 	libs/parse/include/fcppt/parse/string_fwd.hpp
 	libs/parse/include/fcppt/parse/string_impl.hpp
 	libs/parse/include/fcppt/parse/tag.hpp
+	libs/parse/include/fcppt/parse/type_name_tag_fwd.hpp
+	libs/parse/include/fcppt/parse/typed_error_decl.hpp
+	libs/parse/include/fcppt/parse/typed_error_fwd.hpp
+	libs/parse/include/fcppt/parse/typed_error_impl.hpp
 	libs/parse/include/fcppt/parse/uint.hpp
 	libs/parse/include/fcppt/parse/uint_decl.hpp
 	libs/parse/include/fcppt/parse/uint_fwd.hpp

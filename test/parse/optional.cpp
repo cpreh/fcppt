@@ -15,8 +15,9 @@
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/make_fatal.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
@@ -37,11 +38,11 @@ TEST_CASE("parse::optional", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{}) ==
-      fcppt::parse::make_success<char>(result_type{}));
+      fcppt::parse::make_parse_string_success<char>(result_type{}));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{'X'}) ==
-      fcppt::parse::make_success<char>(result_type{'X'}));
+      fcppt::parse::make_parse_string_success<char>(result_type{'X'}));
 }
 
 TEST_CASE("parse::optional backtrack", "[parse]")
@@ -50,7 +51,8 @@ TEST_CASE("parse::optional backtrack", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(fcppt::tuple::make(fcppt::optional::object<int>{}, 'X')));
+      fcppt::parse::make_parse_string_success<char>(
+          fcppt::tuple::make(fcppt::optional::object<int>{}, 'X')));
 }
 
 TEST_CASE("parse::optional fatal", "[parse]")

@@ -9,12 +9,13 @@
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
+#include <fcppt/parse/custom_error.hpp>
 #include <fcppt/parse/error.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_convert_if.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/parse/position.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <ostream>
@@ -47,16 +48,21 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("parse::convert_if", "[parse]")
 {
-  auto const parser(fcppt::parse::make_convert_if(fcppt::parse::char_{}, [](char const _value) {
-    return fcppt::either::construct(
-        _value == 'X',
-        [_value] { return my_struct{_value}; },
-        [] { return fcppt::parse::error<char>{"Invalid value"}; });
-  }));
+  auto const parser{fcppt::parse::make_convert_if<char>(
+      fcppt::parse::char_{},
+      [](fcppt::parse::position<char> const _pos, char const _value)
+      {
+        return fcppt::either::construct(
+            _value == 'X',
+            [_value] { return my_struct{_value}; },
+            [_pos] {
+              return fcppt::parse::custom_error<char>{_pos, "Invalid value!"};
+            });
+      })};
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(my_struct{'X'}));
+      fcppt::parse::make_parse_string_success<char>(my_struct{'X'}));
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());
 }

@@ -8,8 +8,11 @@
 
 #include <fcppt/function_impl.hpp>
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/either/object_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/convert_if_fwd.hpp>
+#include <fcppt/parse/custom_error_fwd.hpp>
+#include <fcppt/parse/position_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/tag.hpp>
@@ -41,7 +44,8 @@ public:
   using result_type = Result;
 
   using function_type =
-      fcppt::function<fcppt::parse::result<Ch, result_type>(fcppt::parse::result_of<Parser> &&)>;
+      fcppt::function<fcppt::either::object<fcppt::parse::custom_error<Ch>, result_type>(
+          fcppt::parse::position<Ch>, fcppt::parse::result_of<Parser> &&)>;
 
   convert_if(Parser &&, function_type &&);
 

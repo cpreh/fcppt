@@ -3,10 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_INDENTATION_HPP_INCLUDED
-#define FCPPT_OPTIONS_INDENTATION_HPP_INCLUDED
+#ifndef FCPPT_PARSE_PARSE_STREAM_ERROR_HPP_INCLUDED
+#define FCPPT_PARSE_PARSE_STREAM_ERROR_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/options/indentation_fwd.hpp>
+#include <fcppt/parse/parse_stream_error_impl.hpp>
 
 #endif

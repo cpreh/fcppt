@@ -12,7 +12,7 @@
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/fatal_decl.hpp>
-#include <fcppt/parse/fatal_tag.hpp>
+#include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -32,7 +32,7 @@ fcppt::parse::fatal<Parser>::parse(
   return fcppt::either::map_failure(
       fcppt::parse::deref(this->parser_).parse(_state, _skipper),
       [](fcppt::parse::error<Ch> &&_error) {
-        return fcppt::parse::error<Ch>{std::move(_error.get()), fcppt::parse::fatal_tag{}};
+        return fcppt::parse::error<Ch>{std::move(_error.get()), fcppt::parse::is_fatal{true}};
       });
 }
 

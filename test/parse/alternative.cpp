@@ -11,12 +11,12 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_fatal.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/alternative.hpp>
 #include <fcppt/variant/comparison.hpp>
@@ -38,7 +38,7 @@ TEST_CASE("parse::alternative", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"42"}) ==
-      fcppt::parse::make_success<char>(result_type{42}));
+      fcppt::parse::make_parse_string_success<char>(result_type{42}));
 }
 
 TEST_CASE("parse::alternative backtrack", "[parse]")
@@ -51,11 +51,11 @@ TEST_CASE("parse::alternative backtrack", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(result_type{fcppt::unit()}));
+      fcppt::parse::make_parse_string_success<char>(result_type{fcppt::unit()}));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"Y"}) ==
-      fcppt::parse::make_success<char>(result_type{'Y'}));
+      fcppt::parse::make_parse_string_success<char>(result_type{'Y'}));
 }
 
 TEST_CASE("parse::alternative fatal", "[parse]")

@@ -6,8 +6,9 @@
 #ifndef FCPPT_PARSE_PARSE_STREAM_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_STREAM_HPP_INCLUDED
 
+#include <fcppt/either/object_impl.hpp>
+#include <fcppt/parse/parse_stream_error.hpp>
 #include <fcppt/parse/phrase_parse_stream.hpp>
-#include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,7 +25,8 @@ namespace fcppt::parse
 Calls #fcppt::parse::phrase_parse_stream with #fcppt::parse::skipper::epsilon.
 */
 template <typename Ch, typename Parser>
-[[nodiscard]] inline fcppt::parse::result<Ch, fcppt::parse::result_of<Parser>>
+[[nodiscard]] inline
+fcppt::either::object<fcppt::parse::parse_stream_error<Ch>, fcppt::parse::result_of<Parser>>
 parse_stream(Parser const &_parser, std::basic_istream<Ch> &_input)
 {
   return fcppt::parse::phrase_parse_stream(_parser, _input, fcppt::parse::skipper::epsilon());

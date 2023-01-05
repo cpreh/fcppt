@@ -15,8 +15,9 @@
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/operators/complement.hpp>
@@ -39,15 +40,15 @@ TEST_CASE("parse::separator", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{}) ==
-      fcppt::parse::make_success<char>(result_type{}));
+      fcppt::parse::make_parse_string_success<char>(result_type{}));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"test"}) ==
-      fcppt::parse::make_success<char>(result_type{std::string{"test"}}));
+      fcppt::parse::make_parse_string_success<char>(result_type{std::string{"test"}}));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"test1,test2,test3"}) ==
-      fcppt::parse::make_success<char>(
+      fcppt::parse::make_parse_string_success<char>(
           result_type{std::string{"test1"}, std::string{"test2"}, std::string{"test3"}}));
 }
 
@@ -61,7 +62,7 @@ TEST_CASE("parse::separator sequence", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X=1,Y=2"}) ==
-      fcppt::parse::make_success<char>(
+      fcppt::parse::make_parse_string_success<char>(
           result_type{fcppt::tuple::make(std::string{"X"}, 1), fcppt::tuple::make(std::string{"Y"}, 2)}));
 }
 
@@ -74,7 +75,7 @@ TEST_CASE("parse::separator wchar", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::wstring{L"test1,test2"}) ==
-      fcppt::parse::make_success<wchar_t>(
+      fcppt::parse::make_parse_string_success<wchar_t>(
           result_type{std::wstring{L"test1"}, std::wstring{L"test2"}}));
 }
 

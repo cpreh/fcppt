@@ -3,20 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_PARSE_FATAL_TAG_HPP_INCLUDED
-#define FCPPT_PARSE_FATAL_TAG_HPP_INCLUDED
-
-#include <fcppt/parse/fatal_tag_fwd.hpp>
+#ifndef FCPPT_PARSE_BASIC_CHAR_SET_ERROR_FWD_HPP_INCLUDED
+#define FCPPT_PARSE_BASIC_CHAR_SET_ERROR_FWD_HPP_INCLUDED
 
 namespace fcppt::parse
 {
-/**
-\brief Used to disambiguate constructors of #fcppt::parse::error.
-\ingroup fcpptparse
-*/
-struct fatal_tag
-{
-};
+template <typename Ch>
+class basic_char_set_error;
 
 }
 

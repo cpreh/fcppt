@@ -26,15 +26,18 @@
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/convert_const.hpp>
+#include <fcppt/parse/custom_error.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_base.hpp>
 #include <fcppt/parse/make_convert_if.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/make_recursive.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/position.hpp>
+#include <fcppt/parse/parse_string_error.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/string.hpp>
@@ -110,7 +113,8 @@ using entries = std::vector<fcppt::tuple::object<std::string, fcppt::recursive<j
 
 json::object make_object_(json::entries &&);
 
-fcppt::parse::result<char, json::object> make_object(json::entries &&);
+fcppt::either::object<fcppt::parse::custom_error<char>, json::object>
+make_object(fcppt::parse::position<char> const _pos, json::entries &&);
 
 json::object make_object_(json::entries &&_args)
 {
@@ -132,12 +136,13 @@ json::object make_object_(json::entries &&_args)
       });
 }
 
-fcppt::parse::result<char, json::object> make_object(json::entries &&_args)
+fcppt::either::object<fcppt::parse::custom_error<char>, json::object>
+make_object(fcppt::parse::position<char> const _pos, json::entries &&_args)
 {
   return fcppt::either::try_call<json::double_insert>(
       [&_args] { return make_object_(std::move(_args)); },
-      [](json::double_insert const &) {
-        return fcppt::parse::error<char>{std::string{"Double insert"}};
+      [_pos](json::double_insert const &) {
+        return fcppt::parse::custom_error<char>{_pos, std::string{"Double insert"}};
       });
 }
 
@@ -187,13 +192,14 @@ parser::parser()
            parse::convert_const(parse::string("false"), false)) |
           parse::int_<int>{} | fcppt::make_cref(string_) | fcppt::make_cref(array_) |
           fcppt::make_cref(object_)))},
-      object_{parse::make_base<char_type, skipper>(parse::make_convert_if(
+      object_{parse::make_base<char_type, skipper>(parse::make_convert_if<char>(
           parse::literal('{') >> parse::separator(
                                      fcppt::make_cref(string_) >> parse::literal(':') >>
                                          parse::make_recursive(fcppt::make_cref(value_)),
                                      parse::literal{','}) >>
               parse::literal('}'),
-          [](json::entries &&_entries) { return json::make_object(std::move(_entries)); }))},
+          [](fcppt::parse::position<char> const _pos, json::entries &&_entries)
+          { return json::make_object(_pos, std::move(_entries)); }))},
       array_{parse::make_base<char_type, skipper>(
           parse::literal('[') >>
           parse::separator(parse::make_recursive(fcppt::make_cref(value_)), parse::literal{','}) >>
@@ -205,23 +211,24 @@ parser::parser()
 
 namespace json
 {
-fcppt::either::object<fcppt::parse::error<char>, json::start>
+fcppt::either::object<fcppt::parse::parse_string_error<char>, json::start>
 parse_string(parser const &, std::string &&);
 
-fcppt::either::object<fcppt::parse::error<char>, json::start>
+fcppt::either::object<fcppt::parse::parse_string_error<char>, json::start>
 parse_string(parser const &_parser, std::string &&_input)
 {
   return fcppt::parse::phrase_parse_string(
       fcppt::parse::deref(_parser.get()), std::move(_input), fcppt::parse::skipper::space());
 }
 
-fcppt::either::object<fcppt::parse::error<char>, json::start> make_success(json::start &&);
+fcppt::either::object<fcppt::parse::parse_string_error<char>, json::start>
+make_success(json::start &&);
 
-fcppt::either::object<fcppt::parse::error<char>, json::start> make_success(json::start &&_value)
+fcppt::either::object<fcppt::parse::parse_string_error<char>, json::start>
+make_success(json::start &&_value)
 {
-  return fcppt::parse::make_success<char>(std::move(_value));
+  return fcppt::parse::make_parse_string_success<char>(std::move(_value));
 }
-
 }
 
 }

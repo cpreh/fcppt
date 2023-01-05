@@ -6,9 +6,10 @@
 #ifndef FCPPT_PARSE_GRAMMAR_PARSE_STRING_HPP_INCLUDED
 #define FCPPT_PARSE_GRAMMAR_PARSE_STRING_HPP_INCLUDED
 
+#include <fcppt/either/object_impl.hpp>
 #include <fcppt/parse/grammar.hpp>
+#include <fcppt/parse/parse_string_error_impl.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
-#include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <utility>
@@ -21,7 +22,7 @@ namespace fcppt::parse
 \ingroup fcpptparse
 */
 template <typename Result, typename Ch, typename Skipper>
-fcppt::parse::result<Ch, Result> grammar_parse_string(
+fcppt::either::object<fcppt::parse::parse_string_error<Ch>, Result> grammar_parse_string(
     std::basic_string<Ch> &&_string, fcppt::parse::grammar<Result, Ch, Skipper> const &_grammar)
 {
   return fcppt::parse::phrase_parse_string(

@@ -8,10 +8,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -31,7 +30,7 @@ TEST_CASE("parse::repetition_plus", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XYZ"}) ==
-      fcppt::parse::make_success<char>(result_type{'X', 'Y', 'Z'}));
+      fcppt::parse::make_parse_string_success<char>(result_type{'X', 'Y', 'Z'}));
 }
 
 FCPPT_CATCH_END

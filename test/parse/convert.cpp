@@ -8,11 +8,10 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_convert.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object.hpp>
@@ -62,7 +61,7 @@ TEST_CASE("parse::convert", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XY"}) ==
-      fcppt::parse::make_success<char>(my_struct{'X', 'Y'}));
+      fcppt::parse::make_parse_string_success<char>(my_struct{'X', 'Y'}));
 }
 
 FCPPT_CATCH_END

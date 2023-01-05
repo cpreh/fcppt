@@ -10,10 +10,9 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/string.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -31,7 +30,7 @@ TEST_CASE("parse::string", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"test"}) ==
-      fcppt::parse::make_success<char>(fcppt::unit{}));
+      fcppt::parse::make_parse_string_success<char>(fcppt::unit{}));
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"te"}).has_failure());
 }
@@ -43,7 +42,7 @@ TEST_CASE("parse::string sequence", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"test1test2"}) ==
-      fcppt::parse::make_success<char>(fcppt::unit{}));
+      fcppt::parse::make_parse_string_success<char>(fcppt::unit{}));
 }
 
 FCPPT_CATCH_END

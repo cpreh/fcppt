@@ -14,8 +14,9 @@
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/recursive.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/tuple/comparison.hpp>
@@ -37,7 +38,7 @@ TEST_CASE("parse::sequence", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XYZ"}) ==
-      fcppt::parse::make_success<char>(fcppt::tuple::make('X', 'Y', 'Z')));
+      fcppt::parse::make_parse_string_success<char>(fcppt::tuple::make('X', 'Y', 'Z')));
 }
 
 TEST_CASE("parse::sequence move", "[parse]")
@@ -48,7 +49,7 @@ TEST_CASE("parse::sequence move", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XY"}) ==
-      fcppt::parse::make_success<char>(
+      fcppt::parse::make_parse_string_success<char>(
           fcppt::tuple::make(fcppt::make_recursive('X'), fcppt::make_recursive('Y'))));
 }
 

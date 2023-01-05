@@ -11,8 +11,9 @@
 #include <fcppt/parse/list.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_fatal.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,11 +34,11 @@ TEST_CASE("parse::list", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"[]"}) ==
-      fcppt::parse::make_success<char>(result_type{}));
+      fcppt::parse::make_parse_string_success<char>(result_type{}));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"[a,b]"}) ==
-      fcppt::parse::make_success<char>(result_type{'a', 'b'}));
+      fcppt::parse::make_parse_string_success<char>(result_type{'a', 'b'}));
 }
 
 FCPPT_CATCH_END

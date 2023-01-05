@@ -12,10 +12,9 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/construct.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
@@ -27,11 +26,11 @@ TEST_CASE("parse::construct", "[parse]")
 {
   FCPPT_DECLARE_STRONG_TYPEDEF(char, strong_char);
 
-  auto const parser(fcppt::parse::construct<strong_char>(fcppt::parse::char_{}));
+  auto const parser{fcppt::parse::construct<strong_char>(fcppt::parse::char_{})};
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(strong_char{'X'}));
+      fcppt::parse::make_parse_string_success<char>(strong_char{'X'}));
 }
 
 FCPPT_CATCH_END

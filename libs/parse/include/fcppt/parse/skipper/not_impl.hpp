@@ -7,11 +7,13 @@
 #define FCPPT_PARSE_SKIPPER_NOT_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/error_impl.hpp>
+#include <fcppt/parse/error_variant_impl.hpp>
+#include <fcppt/parse/fail_error_impl.hpp>
 #include <fcppt/parse/get_position.hpp>
+#include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
@@ -40,7 +42,8 @@ fcppt::parse::skipper::result<Ch> fcppt::parse::skipper::not_<Skipper>::skip(
   fcppt::parse::set_position(_state, pos);
 
   return has_value ? fcppt::parse::skipper::make_failure(fcppt::parse::error<Ch>{
-                         std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "NOT")}})
+                         fcppt::parse::error_variant<Ch>{fcppt::parse::fail_error<Ch>{pos}},
+                         fcppt::parse::is_fatal{false}})
                    : fcppt::parse::skipper::make_success<Ch>();
 }
 

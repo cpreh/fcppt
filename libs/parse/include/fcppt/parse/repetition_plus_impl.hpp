@@ -8,7 +8,6 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>

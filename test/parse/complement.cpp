@@ -8,9 +8,8 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char_set.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,7 +29,7 @@ TEST_CASE("parse::complement", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{'Y'}) ==
-      fcppt::parse::make_success<char>('Y'));
+      fcppt::parse::make_parse_string_success<char>('Y'));
 }
 
 FCPPT_CATCH_END

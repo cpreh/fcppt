@@ -13,15 +13,14 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/parse/column.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/line.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/location.hpp>
 #include <fcppt/parse/location_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/make_with_location.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
@@ -37,7 +36,7 @@ TEST_CASE("parse::with_location", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>(fcppt::optional::make(
+      fcppt::parse::make_parse_string_success<char>(fcppt::optional::make(
           fcppt::parse::location{fcppt::parse::line{1U}, fcppt::parse::column{1U}})));
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"Y"}).has_failure());

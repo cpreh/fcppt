@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/either/match.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/uint.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
@@ -31,7 +31,7 @@ int main()
               << ".\n";
   });
 
-  auto const on_failure([](fcppt::parse::error<char> const &e) { std::cerr << e << '\n'; });
+  auto const on_failure([](fcppt::parse::parse_string_error<char> const &e) { std::cerr << e << '\n'; });
 
 //![parse_noskip]
   fcppt::either::match(

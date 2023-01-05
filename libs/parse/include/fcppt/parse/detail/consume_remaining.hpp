@@ -7,13 +7,14 @@
 #define FCPPT_PARSE_DETAIL_CONSUME_REMAINING_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
-#include <fcppt/either/match.hpp>
+#include <fcppt/either/bind.hpp>
+#include <fcppt/either/construct.hpp>
+#include <fcppt/either/make_failure.hpp>
+#include <fcppt/either/map_failure.hpp>
 #include <fcppt/io/stream_to_string.hpp>
-#include <fcppt/optional/from.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/result.hpp>
+#include <fcppt/parse/parse_stream_error_impl.hpp>
+#include <fcppt/parse/parse_string_error_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <string>
@@ -22,44 +23,35 @@
 
 namespace fcppt::parse::detail
 {
-template <typename Ch, typename Type>
-[[nodiscard]] fcppt::parse::result<Ch, Type> consume_remaining(
-    fcppt::reference<std::basic_istream<Ch>> const _stream,
-    fcppt::parse::result<Ch, Type> &&_result)
-{
-  using result_type = fcppt::parse::result<Ch, Type>;
 
-  return fcppt::either::match(
-      std::move(_result),
-      [&_stream](fcppt::parse::error<Ch> &&_failure) {
-        return result_type{
-            std::move(_failure) + fcppt::parse::error<Ch>{
-                                      FCPPT_STRING_LITERAL(Ch, ". Remaining input: \"") +
-                                      fcppt::optional::from(
-                                          fcppt::io::stream_to_string(_stream.get()),
-                                          [] {
-                                            return std::basic_string<Ch>{FCPPT_STRING_LITERAL(
-                                                Ch, "Failed to read remaining input!")};
-                                          }) +
-                                      FCPPT_STRING_LITERAL(Ch, "\"")}};
-      },
-      [&_stream](Type &&_success) {
+template <typename Ch, typename Result>
+[[nodiscard]] fcppt::either::object<fcppt::parse::parse_string_error<Ch>, Result> consume_remaining(
+    fcppt::reference<std::basic_istream<Ch>> const _stream,
+    fcppt::either::object<fcppt::parse::parse_stream_error<Ch>, Result> &&_result)
+{
+  return fcppt::either::bind(
+      fcppt::either::map_failure(
+          std::move(_result),
+          [&_stream](fcppt::parse::parse_stream_error<Ch> &&_failure)
+          {
+            return fcppt::parse::parse_string_error<Ch>{
+                std::move(_failure), fcppt::io::stream_to_string(_stream.get())};
+          }),
+      [&_stream](Result &&_success)
+      {
         return fcppt::optional::maybe(
             fcppt::io::stream_to_string(_stream.get()),
-            [] {
-              return result_type{fcppt::parse::error<Ch>{
-                  FCPPT_STRING_LITERAL(Ch, "Failed to read remaining input.")}};
-            },
-            [&_success](std::basic_string<Ch> &&_rest) {
-              return _rest.empty()
-                         ? result_type{std::move(_success)}
-                         : result_type{fcppt::parse::error<Ch>{
-                               FCPPT_STRING_LITERAL(Ch, "Failed to consume remaining input: \"") +
-                               std::move(_rest) + FCPPT_STRING_LITERAL(Ch, "\"")}};
+            []
+            { return fcppt::either::make_failure<Result>(fcppt::parse::parse_string_error<Ch>{}); },
+            [&_success](std::basic_string<Ch> &&_rest)
+            {
+              return fcppt::either::construct(
+                  _rest.empty(),
+                  [&_success] { return std::move(_success); },
+                  [&_rest] { return fcppt::parse::parse_string_error<Ch>{std::move(_rest)}; });
             });
       });
 }
-
 }
 
 #endif

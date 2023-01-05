@@ -6,8 +6,6 @@
 #ifndef FCPPT_PARSE_ERROR_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_HPP_INCLUDED
 
-#include <fcppt/parse/error_add.hpp>
-#include <fcppt/parse/error_equal.hpp>
 #include <fcppt/parse/error_impl.hpp>
 
 #endif

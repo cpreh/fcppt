@@ -9,11 +9,10 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/make_base.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
@@ -31,12 +30,12 @@ TEST_CASE("parse::base", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(*parser, std::string{"XY"}) ==
-      fcppt::parse::make_success<char>(std::string{"XY"}));
+      fcppt::parse::make_parse_string_success<char>(std::string{"XY"}));
 
   CHECK(
       fcppt::parse::phrase_parse_string(
           *parser, std::string{"XY"}, fcppt::parse::skipper::epsilon()) ==
-      fcppt::parse::make_success<char>(std::string{"XY"}));
+      fcppt::parse::make_parse_string_success<char>(std::string{"XY"}));
 }
 
 FCPPT_CATCH_END

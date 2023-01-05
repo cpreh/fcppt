@@ -7,11 +7,10 @@
 #define FCPPT_PARSE_NOT_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
+#include <fcppt/parse/fail_impl.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
@@ -20,7 +19,6 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -41,8 +39,7 @@ fcppt::parse::not_<Parser>::parse(
 
   fcppt::parse::set_position(_state, pos);
 
-  return has_value ? fcppt::either::make_failure<result_type>(fcppt::parse::error<Ch>{
-                         std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "NOT")}})
+  return has_value ? fcppt::parse::fail<result_type>{}.parse(_state, _skipper)
                    : fcppt::parse::make_success<Ch>(fcppt::unit{});
 }
 

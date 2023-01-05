@@ -9,10 +9,9 @@
 #include <fcppt/either/no_error_comparison.hpp>
 #include <fcppt/either/no_error_output.hpp>
 #include <fcppt/either/output.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/skipper/any.hpp>
-#include <fcppt/parse/skipper/make_success.hpp>
+#include <fcppt/test/parse/skipper/make_success.hpp>
 #include <fcppt/test/parse/skipper/skip_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -27,7 +26,7 @@ TEST_CASE("parse::skipper::any", "[parse]")
 
   CHECK(
       fcppt::test::parse::skipper::skip_string(parser, std::string{"X"}) ==
-      fcppt::parse::skipper::make_success<char>());
+      fcppt::test::parse::skipper::make_success<char>());
 
   CHECK(fcppt::test::parse::skipper::skip_string(parser, std::string{}).has_failure());
 }

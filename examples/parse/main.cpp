@@ -7,9 +7,10 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/parse/convert_const.hpp>
-#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/operators/alternative.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -64,7 +65,7 @@ int main()
 // [parser_example]
   fcppt::either::match(
       fcppt::parse::parse_string(p09_repeat, std::string{"12345"}),
-      [](fcppt::parse::error<char> const &error) { std::cerr << error.get() << '\n'; },
+      [](fcppt::parse::parse_string_error<char> const &error) { std::cerr << error << '\n'; },
       [](std::vector<digit> const &result) {
         std::cout << "Success\n";
         print(result);

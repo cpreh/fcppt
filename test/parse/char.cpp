@@ -11,8 +11,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
@@ -28,7 +29,7 @@ TEST_CASE("parse::char", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"X"}) ==
-      fcppt::parse::make_success<char>('X'));
+      fcppt::parse::make_parse_string_success<char>('X'));
 }
 
 TEST_CASE("parse::wchar", "[parse]")
@@ -39,7 +40,7 @@ TEST_CASE("parse::wchar", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::wstring{L"X"}) ==
-      fcppt::parse::make_success<wchar_t>(L'X'));
+      fcppt::parse::make_parse_string_success<wchar_t>(L'X'));
 }
 
 FCPPT_CATCH_END

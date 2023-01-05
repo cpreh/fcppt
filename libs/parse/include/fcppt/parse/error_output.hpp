@@ -6,9 +6,10 @@
 #ifndef FCPPT_PARSE_ERROR_OUTPUT_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/parse/error_impl.hpp>
+#include <fcppt/parse/error_fwd.hpp>
+#include <fcppt/parse/detail/print_error.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
+#include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::parse
@@ -17,7 +18,8 @@ template <typename Ch>
 std::basic_ostream<Ch> &
 operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::error<Ch> const &_error)
 {
-  return _stream << _error.get();
+  fcppt::parse::detail::print_error(_stream, _error, 0U);
+  return _stream;
 }
 
 }

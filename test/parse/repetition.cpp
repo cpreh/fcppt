@@ -12,8 +12,9 @@
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_fatal.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
@@ -34,11 +35,11 @@ TEST_CASE("parse::repetition", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{}) ==
-      fcppt::parse::make_success<char>(result_type{}));
+      fcppt::parse::make_parse_string_success<char>(result_type{}));
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XYZ"}) ==
-      fcppt::parse::make_success<char>(result_type{'X', 'Y', 'Z'}));
+      fcppt::parse::make_parse_string_success<char>(result_type{'X', 'Y', 'Z'}));
 }
 
 TEST_CASE("parse::repetition backtrack", "[parse]")
@@ -47,7 +48,7 @@ TEST_CASE("parse::repetition backtrack", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XXXY"}) ==
-      fcppt::parse::make_success<char>(fcppt::tuple::make(
+      fcppt::parse::make_parse_string_success<char>(fcppt::tuple::make(
           std::vector<fcppt::unit>{fcppt::unit{}, fcppt::unit{}, fcppt::unit{}}, 'Y')));
 }
 

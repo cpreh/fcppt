@@ -3,18 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_PARSE_ERROR_EQUAL_HPP_INCLUDED
-#define FCPPT_PARSE_ERROR_EQUAL_HPP_INCLUDED
-
-#include <fcppt/parse/error_impl.hpp>
+#ifndef FCPPT_PARSE_FAIL_ERROR_FWD_HPP_INCLUDED
+#define FCPPT_PARSE_FAIL_ERROR_FWD_HPP_INCLUDED
 
 namespace fcppt::parse
 {
 template <typename Ch>
-bool operator==(fcppt::parse::error<Ch> const &_left, fcppt::parse::error<Ch> const &_right)
-{
-  return _left.get() == _right.get();
-}
+class fail_error;
 
 }
 

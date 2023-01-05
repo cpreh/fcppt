@@ -9,10 +9,9 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/as_struct.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -59,7 +58,7 @@ TEST_CASE("parse::as_struct", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"XY"}) ==
-      fcppt::parse::make_success<char>(my_struct{'X', 'Y'}));
+      fcppt::parse::make_parse_string_success<char>(my_struct{'X', 'Y'}));
 }
 
 FCPPT_CATCH_END

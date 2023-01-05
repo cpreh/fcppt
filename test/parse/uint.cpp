@@ -11,8 +11,9 @@
 #include <fcppt/catch/tuple.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/literal.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/uint.hpp>
@@ -40,7 +41,7 @@ TEST_CASE("parse::uint", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{"42"}) ==
-      fcppt::parse::make_success<char>(42U));
+      fcppt::parse::make_parse_string_success<char>(42U));
 }
 
 TEST_CASE("parse::uint sequence", "[parse]")
@@ -54,7 +55,7 @@ TEST_CASE("parse::uint sequence", "[parse]")
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{"12, 3"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(fcppt::tuple::make(12U, 3U)));
+      fcppt::parse::make_parse_string_success<char>(fcppt::tuple::make(12U, 3U)));
 }
 
 TEST_CASE("parse::uint vector", "[parse]")
@@ -66,7 +67,7 @@ TEST_CASE("parse::uint vector", "[parse]")
   CHECK(
       fcppt::parse::phrase_parse_string(
           parser, std::string{"10 20"}, fcppt::parse::skipper::space()) ==
-      fcppt::parse::make_success<char>(result_type{10U, 20U}));
+      fcppt::parse::make_parse_string_success<char>(result_type{10U, 20U}));
 }
 
 FCPPT_CATCH_END

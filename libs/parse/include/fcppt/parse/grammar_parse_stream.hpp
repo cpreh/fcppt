@@ -6,9 +6,10 @@
 #ifndef FCPPT_PARSE_GRAMMAR_PARSE_STREAM_HPP_INCLUDED
 #define FCPPT_PARSE_GRAMMAR_PARSE_STREAM_HPP_INCLUDED
 
+#include <fcppt/either/object_impl.hpp>
 #include <fcppt/parse/grammar.hpp>
+#include <fcppt/parse/parse_stream_error.hpp>
 #include <fcppt/parse/phrase_parse_stream.hpp>
-#include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
@@ -20,12 +21,12 @@ namespace fcppt::parse
 \ingroup fcpptparse
 */
 template <typename Result, typename Ch, typename Skipper>
-fcppt::parse::result<Ch, Result> grammar_parse_stream(
+[[nodiscard]] fcppt::either::object<fcppt::parse::parse_stream_error<Ch>, Result>
+grammar_parse_stream(
     std::basic_istream<Ch> &_stream, fcppt::parse::grammar<Result, Ch, Skipper> const &_grammar)
 {
   return fcppt::parse::phrase_parse_stream(*_grammar.start(), _stream, _grammar.skipper());
 }
-
 }
 
 #endif

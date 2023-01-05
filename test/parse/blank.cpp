@@ -8,10 +8,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/blank.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
-#include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
@@ -27,7 +26,7 @@ TEST_CASE("parse::char_set", "[parse]")
 
   CHECK(
       fcppt::parse::parse_string(parser, std::string{' '}) ==
-      fcppt::parse::make_success<char>(' '));
+      fcppt::parse::make_parse_string_success<char>(' '));
 }
 
 FCPPT_CATCH_END

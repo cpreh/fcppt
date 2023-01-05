@@ -6,11 +6,11 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/operators/alternative.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,7 +20,7 @@
 
 namespace
 {
-void on_failure(fcppt::parse::error<char> const &e){ std::cerr << e << '\n'; }
+void on_failure(fcppt::parse::parse_string_error<char> const &e){ std::cerr << e << '\n'; }
 void on_success(fcppt::unit) { std::cout << "Success\n"; }
 
 void f()

@@ -6,13 +6,17 @@
 #ifndef FCPPT_PARSE_NAMED_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_NAMED_IMPL_HPP_INCLUDED
 
+#include <fcppt/copy.hpp>
+#include <fcppt/make_recursive.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/error.hpp>
+#include <fcppt/parse/error_impl.hpp>
+#include <fcppt/parse/error_variant_impl.hpp>
+#include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/named_decl.hpp>
+#include <fcppt/parse/named_error_impl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -33,8 +37,13 @@ fcppt::parse::named<Ch, Parser>::parse(
 {
   return fcppt::either::map_failure(
       fcppt::parse::deref(this->parser_).parse(_state, _skipper),
-      [this](fcppt::parse::error<Ch> && // TODO(philipp)
-      ) { return fcppt::parse::error<Ch>{FCPPT_STRING_LITERAL(Ch, "Expected ") + this->name_}; });
+      [this](fcppt::parse::error<Ch> &&_error)
+      {
+        return fcppt::parse::error<Ch>{
+            fcppt::parse::error_variant<Ch>{fcppt::parse::named_error<Ch>{
+                fcppt::copy(this->name_), fcppt::make_recursive(std::move(_error))}},
+            fcppt::parse::is_fatal{false}};
+      });
 }
 
 #endif

@@ -8,12 +8,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/output.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/error_equal.hpp>
-#include <fcppt/parse/error_output.hpp>
 #include <fcppt/parse/float.hpp>
-#include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_approx.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -36,12 +33,12 @@ TEST_CASE("parse::float", "[parse]")
 
   fcppt::either::match(
       fcppt::parse::parse_string(parser, std::string{"1.5"}),
-      [](fcppt::parse::error<char> const &) { CHECK(false); },
+      [](fcppt::parse::parse_string_error<char> const &) { CHECK(false); },
       [](float const _value) { CHECK(_value == 1.5_a); });
 
   fcppt::either::match(
       fcppt::parse::parse_string(parser, std::string{"-1.5"}),
-      [](fcppt::parse::error<char> const &) { CHECK(false); },
+      [](fcppt::parse::parse_string_error<char> const &) { CHECK(false); },
       [](float const _value) { CHECK(_value == -1.5_a); });
 }
 
