@@ -7,11 +7,14 @@
 #define FCPPT_PARSE_DETAIL_COMBINE_ERRORS_HPP_INCLUDED
 
 #include <fcppt/make_recursive.hpp>
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string_literal.hpp>
 #include <fcppt/parse/alternative_error_impl.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
 #include <fcppt/parse/is_fatal.hpp>
+#include <fcppt/parse/left_error_tag_fwd.hpp>
+#include <fcppt/parse/right_error_tag_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -26,8 +29,10 @@ combine_errors(fcppt::parse::error<Ch> &&_left_error, fcppt::parse::error<Ch> &&
 
   return fcppt::parse::error<Ch>{
       fcppt::parse::error_variant<Ch>{fcppt::parse::alternative_error<Ch>{
-          fcppt::make_recursive(std::move(_left_error)),
-          fcppt::make_recursive(std::move(_right_error))}},
+          fcppt::make_strong_typedef<fcppt::parse::left_error_tag>(
+              fcppt::make_recursive(std::move(_left_error))),
+          fcppt::make_strong_typedef<fcppt::parse::right_error_tag>(
+              fcppt::make_recursive(std::move(_right_error)))}},
       is_fatal};
 }
 }

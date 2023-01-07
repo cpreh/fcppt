@@ -1968,6 +1968,7 @@ set(
 	libs/parse/include/fcppt/parse/detail/concrete_decl.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/concrete_impl.hpp
+	libs/parse/include/fcppt/parse/detail/consume_remaining.hpp
 	libs/parse/include/fcppt/parse/detail/exception.hpp
 	libs/parse/include/fcppt/parse/detail/flatten_tuples.hpp
 	libs/parse/include/fcppt/parse/detail/is_char_set.hpp
@@ -1979,6 +1980,7 @@ set(
 	libs/parse/include/fcppt/parse/detail/stream_decl.hpp
 	libs/parse/include/fcppt/parse/detail/stream_fwd.hpp
 	libs/parse/include/fcppt/parse/detail/stream_impl.hpp
+	libs/parse/include/fcppt/parse/detail/translate_exception.hpp
 	libs/parse/include/fcppt/parse/digits.hpp
 	libs/parse/include/fcppt/parse/epsilon.hpp
 	libs/parse/include/fcppt/parse/epsilon_decl.hpp
@@ -2032,6 +2034,7 @@ set(
 	libs/parse/include/fcppt/parse/is_fatal_fwd.hpp
 	libs/parse/include/fcppt/parse/is_parser.hpp
 	libs/parse/include/fcppt/parse/is_valid_argument.hpp
+	libs/parse/include/fcppt/parse/left_error_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/lexeme.hpp
 	libs/parse/include/fcppt/parse/lexeme_decl.hpp
 	libs/parse/include/fcppt/parse/lexeme_fwd.hpp
@@ -2120,6 +2123,7 @@ set(
 	libs/parse/include/fcppt/parse/result.hpp
 	libs/parse/include/fcppt/parse/result_fwd.hpp
 	libs/parse/include/fcppt/parse/result_of.hpp
+	libs/parse/include/fcppt/parse/right_error_tag_fwd.hpp
 	libs/parse/include/fcppt/parse/separator.hpp
 	libs/parse/include/fcppt/parse/separator_decl.hpp
 	libs/parse/include/fcppt/parse/separator_fwd.hpp

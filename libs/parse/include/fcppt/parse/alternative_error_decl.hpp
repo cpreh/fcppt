@@ -6,9 +6,12 @@
 #ifndef FCPPT_PARSE_ALTERNATIVE_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_ERROR_DECL_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/parse/alternative_error_fwd.hpp>
 #include <fcppt/parse/error_fwd.hpp>
+#include <fcppt/parse/left_error_tag_fwd.hpp>
+#include <fcppt/parse/right_error_tag_fwd.hpp>
 
 namespace fcppt::parse
 {
@@ -18,7 +21,10 @@ class alternative_error
 public:
   using error_base = fcppt::recursive<fcppt::parse::error<Ch>>;
 
-  alternative_error(error_base &&, error_base &&);
+  using left_type = fcppt::strong_typedef<error_base, fcppt::parse::left_error_tag>;
+  using right_type = fcppt::strong_typedef<error_base, fcppt::parse::right_error_tag>;
+
+  alternative_error(left_type &&, right_type &&);
 
   [[nodiscard]] error_base const &left() const;
 

@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_PARSE_GOT_TAG_FWD_HPP_INCLUDED
-#define FCPPT_PARSE_GOT_TAG_FWD_HPP_INCLUDED
+#ifndef FCPPT_PARSE_LEFT_ERROR_TAG_FWD_HPP_INCLUDED
+#define FCPPT_PARSE_LEFT_ERROR_TAG_FWD_HPP_INCLUDED
 
 namespace fcppt::parse
 {
-struct got_tag;
+struct left_error_tag;
 }
 
 #endif

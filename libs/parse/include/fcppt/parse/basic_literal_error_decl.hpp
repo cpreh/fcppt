@@ -27,7 +27,7 @@ public:
 
   basic_literal_error(pos_type, expected_type, got_type);
 
-  [[nodiscard]] pos_type const pos() const;
+  [[nodiscard]] pos_type pos() const;
 
   [[nodiscard]] Ch expected() const;
 

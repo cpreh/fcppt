@@ -19,7 +19,7 @@ public:
 
   explicit basic_char_error(pos_type);
 
-  [[nodiscard]] pos_type const pos() const;
+  [[nodiscard]] pos_type pos() const;
 
   [[nodiscard]] bool operator==(basic_char_error const &) const;
 private:
