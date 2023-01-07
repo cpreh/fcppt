@@ -61,7 +61,7 @@ To recognize an arbitrary string of digits, we define the following parser:
 \snippet parse/main.cpp parser_digit_string
 The <code>operator*</code> creates an #fcppt::parse::repetition out of its argument.
 Its result type is <code>vector<digit></code>.
-The #fcppt::parse::parse_string function takes a parser <code>P</code> and a string and returns an #fcppt::parse::result, which is an #fcppt::either::object of #fcppt::parse::error and <code>P</code>'s result type.
+The #fcppt::parse::parse_string function takes a parser <code>P</code> and a string and returns an #fcppt::either::object of #fcppt::parse::parse_string_error and <code>P</code>'s result type.
 We can then inspect this either by using #fcppt::either::match.
 \snippet parse/main.cpp parser_example
 
