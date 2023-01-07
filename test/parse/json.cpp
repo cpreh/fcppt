@@ -114,7 +114,7 @@ using entries = std::vector<fcppt::tuple::object<std::string, fcppt::recursive<j
 json::object make_object_(json::entries &&);
 
 fcppt::either::object<fcppt::parse::custom_error<char>, json::object>
-make_object(fcppt::parse::position<char> const _pos, json::entries &&);
+make_object(fcppt::parse::position<char>, json::entries &&);
 
 json::object make_object_(json::entries &&_args)
 {
