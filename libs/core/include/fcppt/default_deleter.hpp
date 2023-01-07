@@ -8,6 +8,9 @@
 
 #include <fcppt/assert_complete.hpp>
 #include <fcppt/default_deleter_fwd.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 namespace fcppt
 {
@@ -28,8 +31,11 @@ struct default_deleter
   {
     FCPPT_ASSERT_COMPLETE(T);
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wfree-nonheap-object)
     // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
     delete _ptr;
+FCPPT_PP_POP_WARNING
   }
 };
 
