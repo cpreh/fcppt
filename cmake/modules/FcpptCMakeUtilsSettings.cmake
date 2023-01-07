@@ -93,6 +93,8 @@ if(
 			"-Wmissing-include-dirs"
 			"-Wsuggest-override"
 			"-Wunused-local-typedefs"
+			# Seems to be broken with std::variant/std::unique_ptr combinations
+			"-Wno-free-nonheap-object"
 		)
 
 		#"-Wzero-as-null-pointer-constant" - too many warnings from boost that cannot be disabled
