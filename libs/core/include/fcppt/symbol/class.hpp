@@ -12,6 +12,7 @@
 #define FCPPT_SYMBOL_CLASS_IMPL
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/symbol/export.hpp>
+
 #define FCPPT_SYMBOL_CLASS_IMPL FCPPT_SYMBOL_EXPORT
 #else
 #error "Don't know what FCPPT_DETAIL_SYMBOL_CLASS should be"

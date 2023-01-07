@@ -10,6 +10,7 @@
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #include <fcppt/preprocessor/pragma.hpp>
+
 #define FCPPT_PP_DETAIL_DISABLE_VC_WARNING(number) FCPPT_PP_PRAGMA(warning(disable : number))
 #else
 #define FCPPT_PP_DETAIL_DISABLE_VC_WARNING(number)

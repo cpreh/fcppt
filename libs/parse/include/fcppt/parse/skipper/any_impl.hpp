@@ -9,8 +9,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/no_error.hpp>
-#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
 #include <fcppt/parse/get_char.hpp>

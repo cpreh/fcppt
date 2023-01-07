@@ -9,8 +9,8 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/parse/basic_string_error_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
+#include <fcppt/parse/basic_string_error_impl.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
 #include <fcppt/parse/expected_tag_fwd.hpp>

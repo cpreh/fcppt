@@ -25,6 +25,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
+
 #endif
 
 fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)

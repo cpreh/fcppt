@@ -11,8 +11,8 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char.hpp>
-#include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
+#include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/config/external_begin.hpp>

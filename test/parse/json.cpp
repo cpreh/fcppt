@@ -35,10 +35,10 @@
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/make_recursive.hpp>
-#include <fcppt/parse/position.hpp>
 #include <fcppt/parse/parse_string_error.hpp>
 #include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/phrase_parse_string.hpp>
+#include <fcppt/parse/position.hpp>
 #include <fcppt/parse/separator.hpp>
 #include <fcppt/parse/string.hpp>
 #include <fcppt/parse/operators/alternative.hpp>

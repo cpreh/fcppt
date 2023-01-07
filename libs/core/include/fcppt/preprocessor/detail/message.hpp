@@ -10,6 +10,7 @@
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/preprocessor/pragma.hpp>
+
 #define FCPPT_PP_DETAIL_MESSAGE(x) FCPPT_PP_PRAGMA(message(x))
 #else
 #define FCPPT_PP_DETAIL_MESSAGE(x)

@@ -9,8 +9,8 @@
 #include <fcppt/either/output.hpp>
 #include <fcppt/parse/char_set.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/parse_string.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp>
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

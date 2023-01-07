@@ -23,6 +23,7 @@
 #define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(std::string_view{__FUNCSIG__})
 #else
 #include <fcppt/string.hpp>
+
 #define FCPPT_PP_DETAIL_FUNCTION \
   fcppt::string {}
 #endif

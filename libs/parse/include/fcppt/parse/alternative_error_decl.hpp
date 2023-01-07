@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_ALTERNATIVE_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_ERROR_DECL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/recursive_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/parse/alternative_error_fwd.hpp>
 #include <fcppt/parse/error_fwd.hpp>
 #include <fcppt/parse/left_error_tag_fwd.hpp>

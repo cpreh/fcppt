@@ -9,8 +9,8 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/parse/is_parser.hpp>
-#include <fcppt/parse/phrase_parse.hpp>
 #include <fcppt/parse/parse_stream_error_impl.hpp>
+#include <fcppt/parse/phrase_parse.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
 #include <fcppt/parse/skipper/is_skipper.hpp>

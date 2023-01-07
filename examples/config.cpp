@@ -14,6 +14,7 @@
 
 #if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(4, 9) && !FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+
 FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
 #endif
 // ![gcc_warning]
