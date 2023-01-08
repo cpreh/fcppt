@@ -43,7 +43,7 @@ void print_error(std::basic_ostream<Ch> &_stream, fcppt::parse::error<Ch> const 
       {
         fcppt::parse::detail::print_error(_stream, _inner.left().get(), extra_indent);
         indent();
-        _stream << FCPPT_STRING_LITERAL(Ch, "\nor\n");
+        _stream << FCPPT_STRING_LITERAL(Ch, "or\n");
         fcppt::parse::detail::print_error(_stream, _inner.right().get(), extra_indent);
       },
       [&_stream, indent](fcppt::parse::basic_char_error<Ch> const &_inner)
@@ -56,8 +56,8 @@ void print_error(std::basic_ostream<Ch> &_stream, fcppt::parse::error<Ch> const 
       {
         indent();
         _stream << FCPPT_STRING_LITERAL(Ch, "At ") << _inner.pos()
-                << FCPPT_STRING_LITERAL(Ch, ": Expected {")
-                << fcppt::container::output(_inner.chars()) << FCPPT_STRING_LITERAL(Ch, "}, got ");
+                << FCPPT_STRING_LITERAL(Ch, ": Expected ")
+                << fcppt::container::output(_inner.chars()) << FCPPT_STRING_LITERAL(Ch, ", got ");
         fcppt::parse::detail::print_char(_stream, _inner.got());
         _stream << FCPPT_STRING_LITERAL(Ch, ".\n");
       },
@@ -81,8 +81,8 @@ void print_error(std::basic_ostream<Ch> &_stream, fcppt::parse::error<Ch> const 
       {
         indent();
         _stream << FCPPT_STRING_LITERAL(Ch, "At ") << _inner.pos()
-                << FCPPT_STRING_LITERAL(Ch, ": Expected any but {")
-                << fcppt::container::output(_inner.chars()) << FCPPT_STRING_LITERAL(Ch, "}, got ");
+                << FCPPT_STRING_LITERAL(Ch, ": Expected any but ")
+                << fcppt::container::output(_inner.chars()) << FCPPT_STRING_LITERAL(Ch, ", got ");
         fcppt::parse::detail::print_char(_stream, _inner.got());
         _stream << FCPPT_STRING_LITERAL(Ch, ".\n");
       },
