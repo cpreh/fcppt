@@ -12,6 +12,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/variant/comparison.hpp>
 
 namespace fcppt::parse
 {
@@ -40,7 +41,7 @@ public:
 
   [[nodiscard]] variant_type const &get() const;
 
-  [[nodiscard]] bool operator==(error const &) const;
+  [[nodiscard]] bool operator==(error const &) const = default;
 private:
   variant_type value_;
 

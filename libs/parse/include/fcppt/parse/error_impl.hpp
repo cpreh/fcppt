@@ -11,7 +11,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -44,8 +43,5 @@ typename fcppt::parse::error<Ch>::variant_type const &fcppt::parse::error<Ch>::g
 {
   return this->value_;
 }
-
-template <typename Ch>
-bool fcppt::parse::error<Ch>::operator==(error const &) const = default;
 
 #endif

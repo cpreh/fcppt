@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_PARSE_STRING_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_STRING_ERROR_DECL_HPP_INCLUDED
 
+#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/parse_stream_error_impl.hpp>
 #include <fcppt/parse/parse_string_error_fwd.hpp>
@@ -32,7 +33,7 @@ public:
 
   [[nodiscard]] optional_string const &rest() const;
 
-  [[nodiscard]] bool operator==(parse_string_error const &) const;
+  [[nodiscard]] bool operator==(parse_string_error const &) const = default;
 private:
   optional_stream_error stream_error_;
 

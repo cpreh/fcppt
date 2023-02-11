@@ -38,7 +38,4 @@ fcppt::parse::typed_error<Ch>::got() const
   return this->got_;
 }
 
-template <typename Ch>
-bool fcppt::parse::typed_error<Ch>::operator==(typed_error const &) const = default;
-
 #endif

@@ -29,7 +29,7 @@ public:
 
   [[nodiscard]] string_type const &message() const;
 
-  [[nodiscard]] bool operator==(custom_error const &) const;
+  [[nodiscard]] bool operator==(custom_error const &) const = default;
 private:
   pos_type pos_;
 

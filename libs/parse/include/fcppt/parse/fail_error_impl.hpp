@@ -19,7 +19,4 @@ typename fcppt::parse::fail_error<Ch>::pos_type fcppt::parse::fail_error<Ch>::po
   return this->pos_;
 }
 
-template <typename Ch>
-bool fcppt::parse::fail_error<Ch>::operator==(fail_error const &) const = default;
-
 #endif

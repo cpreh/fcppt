@@ -38,7 +38,4 @@ fcppt::optional::object<Ch> const &fcppt::parse::complement_error<Ch>::got() con
   return this->got_;
 }
 
-template <typename Ch>
-bool fcppt::parse::complement_error<Ch>::operator==(complement_error const &) const = default;
-
 #endif

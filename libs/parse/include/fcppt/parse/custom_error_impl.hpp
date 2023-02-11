@@ -31,7 +31,4 @@ fcppt::parse::custom_error<Ch>::message() const
   return this->message_;
 }
 
-template <typename Ch>
-bool fcppt::parse::custom_error<Ch>::operator==(custom_error const &) const = default;
-
 #endif

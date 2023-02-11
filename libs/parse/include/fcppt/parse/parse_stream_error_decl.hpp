@@ -8,6 +8,7 @@
 
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/parse_stream_error_fwd.hpp>
+#include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -28,7 +29,7 @@ public:
 
   [[nodiscard]] variant const &get() const;
 
-  [[nodiscard]] bool operator==(parse_stream_error const &) const;
+  [[nodiscard]] bool operator==(parse_stream_error const &) const = default;
 private:
   variant variant_;
 };

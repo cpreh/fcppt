@@ -33,7 +33,7 @@ public:
 
   [[nodiscard]] fcppt::optional::object<Ch> const &got() const;
 
-  [[nodiscard]] bool operator==(complement_error const &) const;
+  [[nodiscard]] bool operator==(complement_error const &) const = default;
 private:
   pos_type pos_;
 

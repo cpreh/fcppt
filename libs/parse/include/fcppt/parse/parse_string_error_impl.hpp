@@ -6,7 +6,6 @@
 #ifndef FCPPT_PARSE_PARSE_STRING_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_STRING_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/parse/parse_stream_error_impl.hpp>
 #include <fcppt/parse/parse_string_error_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -45,8 +44,5 @@ fcppt::parse::parse_string_error<Ch>::rest() const
 {
   return this->rest_;
 }
-
-template <typename Ch>
-bool fcppt::parse::parse_string_error<Ch>::operator==(parse_string_error const &) const = default;
 
 #endif

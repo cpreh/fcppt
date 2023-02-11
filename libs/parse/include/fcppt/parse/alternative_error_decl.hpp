@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_ALTERNATIVE_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_ERROR_DECL_HPP_INCLUDED
 
+#include <fcppt/recursive_comparison.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/parse/alternative_error_fwd.hpp>
@@ -30,7 +31,7 @@ public:
 
   [[nodiscard]] error_base const &right() const;
 
-  [[nodiscard]] bool operator==(alternative_error const &) const;
+  [[nodiscard]] bool operator==(alternative_error const &) const = default;
 private:
   error_base left_;
 

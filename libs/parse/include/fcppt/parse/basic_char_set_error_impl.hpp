@@ -6,7 +6,6 @@
 #ifndef FCPPT_PARSE_BASIC_CHAR_SET_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_CHAR_SET_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/parse/basic_char_set_error_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -38,9 +37,5 @@ fcppt::optional::object<Ch> const &fcppt::parse::basic_char_set_error<Ch>::got()
 {
   return this->got_;
 }
-
-template <typename Ch>
-bool fcppt::parse::basic_char_set_error<Ch>::operator==(basic_char_set_error const &) const =
-    default;
 
 #endif

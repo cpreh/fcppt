@@ -29,7 +29,7 @@ public:
 
   [[nodiscard]] error_base const &error() const;
 
-  [[nodiscard]] bool operator==(named_error const &) const;
+  [[nodiscard]] bool operator==(named_error const &) const = default;
 private:
   string_type name_;
 

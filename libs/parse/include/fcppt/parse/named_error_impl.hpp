@@ -31,7 +31,4 @@ fcppt::parse::named_error<Ch>::error() const
   return this->error_;
 }
 
-template <typename Ch>
-bool fcppt::parse::named_error<Ch>::operator==(named_error const &) const = default;
-
 #endif

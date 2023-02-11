@@ -37,7 +37,7 @@ public:
 
   [[nodiscard]] string_type const &got() const;
 
-  [[nodiscard]] bool operator==(typed_error const &) const;
+  [[nodiscard]] bool operator==(typed_error const &) const = default;
 private:
   pos_type pos_;
 

@@ -32,7 +32,4 @@ fcppt::parse::basic_string_error<Ch>::expected() const
   return this->expected_;
 }
 
-template <typename Ch>
-bool fcppt::parse::basic_string_error<Ch>::operator==(basic_string_error const &) const = default;
-
 #endif

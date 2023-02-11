@@ -20,7 +20,4 @@ fcppt::parse::basic_char_error<Ch>::pos() const
   return this->pos_;
 }
 
-template <typename Ch>
-bool fcppt::parse::basic_char_error<Ch>::operator==(basic_char_error const &) const = default;
-
 #endif

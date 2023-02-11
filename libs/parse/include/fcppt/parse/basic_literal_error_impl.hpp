@@ -6,7 +6,6 @@
 #ifndef FCPPT_PARSE_BASIC_LITERAL_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_LITERAL_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/parse/basic_literal_error_decl.hpp>
 
 template <typename Ch>
@@ -34,8 +33,5 @@ fcppt::optional::object<Ch> const &fcppt::parse::basic_literal_error<Ch>::got() 
 {
   return this->got_;
 }
-
-template <typename Ch>
-bool fcppt::parse::basic_literal_error<Ch>::operator==(basic_literal_error const &) const = default;
 
 #endif

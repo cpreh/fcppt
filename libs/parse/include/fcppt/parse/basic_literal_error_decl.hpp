@@ -7,6 +7,7 @@
 #define FCPPT_PARSE_BASIC_LITERAL_ERROR_DECL_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/basic_literal_error_fwd.hpp>
 #include <fcppt/parse/expected_tag_fwd.hpp>
@@ -33,7 +34,7 @@ public:
 
   [[nodiscard]] fcppt::optional::object<Ch> const &got() const;
 
-  [[nodiscard]] bool operator==(basic_literal_error const &) const;
+  [[nodiscard]] bool operator==(basic_literal_error const &) const = default;
 private:
   pos_type pos_;
 

@@ -8,7 +8,6 @@
 
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/parse_stream_error_decl.hpp>
-#include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <utility>
@@ -32,8 +31,5 @@ fcppt::parse::parse_stream_error<Ch>::get() const
 {
   return this->variant_;
 }
-
-template<typename Ch>
-bool fcppt::parse::parse_stream_error<Ch>::operator==(parse_stream_error const &) const = default;
 
 #endif

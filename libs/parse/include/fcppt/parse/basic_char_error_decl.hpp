@@ -21,7 +21,7 @@ public:
 
   [[nodiscard]] pos_type pos() const;
 
-  [[nodiscard]] bool operator==(basic_char_error const &) const;
+  [[nodiscard]] bool operator==(basic_char_error const &) const = default;
 private:
   pos_type pos_;
 };

@@ -6,7 +6,6 @@
 #ifndef FCPPT_PARSE_ALTERNATIVE_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_ALTERNATIVE_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/recursive_comparison.hpp>
 #include <fcppt/parse/alternative_error_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -32,8 +31,5 @@ fcppt::parse::alternative_error<Ch>::right() const
 {
   return this->right_;
 }
-
-template <typename Ch>
-bool fcppt::parse::alternative_error<Ch>::operator==(alternative_error const &) const = default;
 
 #endif
