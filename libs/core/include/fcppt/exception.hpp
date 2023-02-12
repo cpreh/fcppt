@@ -56,7 +56,7 @@ public:
   Use this function to print the error message instead of
   <code>what()</code>
   */
-  [[nodiscard]] fcppt::string const &string() const;
+  [[nodiscard]] FCPPT_DETAIL_SYMBOL fcppt::string const &string() const;
 
   /**
   \brief Returns a generic error
