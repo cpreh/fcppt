@@ -101,23 +101,6 @@ find_package(
 	1.47.0
 )
 
-if(
-	NOT
-	"${Boost_INCLUDE_DIRS}"
-	STREQUAL
-	""
-)
-	set(
-		ENABLE_BOOST_DEFAULT
-		ON
-	)
-else()
-	set(
-		ENABLE_BOOST_DEFAULT
-		OFF
-	)
-endif()
-
 find_package(
 	Catch2
 	CONFIG
@@ -126,7 +109,7 @@ find_package(
 option(
 	ENABLE_BOOST
 	"Build the boost support library"
-	${ENABLE_BOOST_DEFAULT}
+	${Boost_FOUND}
 )
 
 option(
