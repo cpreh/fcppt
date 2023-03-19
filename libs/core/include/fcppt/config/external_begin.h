@@ -40,6 +40,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi-stmt)
 #if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(13, 0)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wreserved-identifier)
 #endif
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(16, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunsafe-buffer-usage)
+#endif
 
 #else
 
