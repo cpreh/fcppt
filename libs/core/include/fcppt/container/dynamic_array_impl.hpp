@@ -8,6 +8,9 @@
 
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/dynamic_array_decl.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 template <typename T, typename A>
 fcppt::container::dynamic_array<T, A>::dynamic_array(size_type const _size)
@@ -44,6 +47,9 @@ fcppt::container::dynamic_array<T, A>::data() const noexcept
   return data_;
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
+
 template <typename T, typename A>
 typename fcppt::container::dynamic_array<T, A>::pointer
 fcppt::container::dynamic_array<T, A>::data_end() noexcept
@@ -57,6 +63,8 @@ fcppt::container::dynamic_array<T, A>::data_end() const noexcept
 {
   return this->data() + fcppt::cast::to_signed(size_);
 }
+
+FCPPT_PP_POP_WARNING
 
 template <typename T, typename A>
 typename fcppt::container::dynamic_array<T, A>::size_type

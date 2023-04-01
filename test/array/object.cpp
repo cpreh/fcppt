@@ -7,6 +7,9 @@
 #include <fcppt/array/object.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -14,6 +17,9 @@
 template class fcppt::array::object<int,2U>;
 
 FCPPT_CATCH_BEGIN
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 TEST_CASE("array::array", "[array]")
 {
@@ -37,5 +43,7 @@ TEST_CASE("array::array", "[array]")
   CHECK(test2.data() == &*test2.begin());
   CHECK(test2.size() == 1U);
 }
+
+FCPPT_PP_POP_WARNING
 
 FCPPT_CATCH_END

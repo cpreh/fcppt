@@ -1056,6 +1056,7 @@ set(
 	libs/core/include/fcppt/preprocessor/file.hpp
 	libs/core/include/fcppt/preprocessor/fixme.hpp
 	libs/core/include/fcppt/preprocessor/function.hpp
+	libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp
 	libs/core/include/fcppt/preprocessor/message.hpp
 	libs/core/include/fcppt/preprocessor/pop_warning.hpp
 	libs/core/include/fcppt/preprocessor/pragma.hpp

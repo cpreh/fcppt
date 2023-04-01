@@ -7,11 +7,17 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/read_from.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 TEST_CASE("container::buffer::read_from", "[container],[buffer]")
 {
@@ -34,5 +40,7 @@ TEST_CASE("container::buffer::read_from", "[container],[buffer]")
 
   CHECK(result[1] == 20);
 }
+
+FCPPT_PP_POP_WARNING
 
 FCPPT_CATCH_END

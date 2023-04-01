@@ -9,6 +9,9 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/detail/main_wchar.hpp>
 #include <fcppt/iterator/make_range.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #if !defined(FCPPT_DETAIL_MAIN_WCHAR)
 #include <fcppt/from_std_string.hpp>
 #endif
@@ -19,6 +22,9 @@
 #endif
 #include <fcppt/config/external_end.hpp>
 
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 fcppt::args_vector fcppt::args(int const _argc, fcppt::args_char const *const *const _argv)
 {
@@ -37,3 +43,5 @@ fcppt::args_vector fcppt::args(int const _argc, fcppt::args_char const *const *c
 #endif
       });
 }
+
+FCPPT_PP_POP_WARNING

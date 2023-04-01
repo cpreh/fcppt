@@ -7,6 +7,12 @@
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/args_vector.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 fcppt::args_vector
 fcppt::args_from_second(int const _argc, fcppt::args_char const *const *const _argv)
@@ -18,3 +24,5 @@ fcppt::args_from_second(int const _argc, fcppt::args_char const *const *const _a
                               // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
                               + 1);
 }
+
+FCPPT_PP_POP_WARNING

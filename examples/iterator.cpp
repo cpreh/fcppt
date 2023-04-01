@@ -7,11 +7,17 @@
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <iostream>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 namespace
 {
@@ -87,3 +93,5 @@ int main()
 
   it += 1;
 }
+
+FCPPT_PP_POP_WARNING

@@ -11,9 +11,15 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/impl/is_flag.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>
 fcppt::options::impl::is_flag(fcppt::string_view const _value)
@@ -41,3 +47,5 @@ fcppt::options::impl::is_flag(fcppt::string_view const _value)
           : std::make_pair(
                 fcppt::options::detail::flag_is_short{true}, fcppt::string{pos, _value.end()})};
 }
+
+FCPPT_PP_POP_WARNING

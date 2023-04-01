@@ -8,6 +8,9 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/raw_vector/comparison.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <iterator>
@@ -24,6 +27,9 @@ using int_vector = fcppt::container::raw_vector::object<int>;
 template class fcppt::container::raw_vector::object<int>;
 
 FCPPT_CATCH_BEGIN
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 TEST_CASE("container::raw_vector::shrink_to_fit", "[container],[raw_vector]")
 {
@@ -168,5 +174,7 @@ TEST_CASE("container::raw_vector initializer_list", "[container],[raw_vector]")
 
   CHECK(test1[2] == 3);
 }
+
+FCPPT_PP_POP_WARNING
 
 FCPPT_CATCH_END

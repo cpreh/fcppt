@@ -9,11 +9,17 @@
 
 #include <fcppt/cyclic_iterator_decl.hpp>
 #include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 template <typename ContainerIterator>
 fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator()
@@ -127,5 +133,7 @@ fcppt::cyclic_iterator<ContainerIterator>::boundary_second() const
 {
   return fcppt::tuple::get<1>(this->get_boundary());
 }
+
+FCPPT_PP_POP_WARNING
 
 #endif

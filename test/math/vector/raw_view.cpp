@@ -9,11 +9,17 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <array>
 #include <cstring>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 namespace
 {
@@ -130,3 +136,5 @@ TEST_CASE("math::vector raw_view", "[math],[vector]")
 }
 
 FCPPT_CATCH_END
+
+FCPPT_PP_POP_WARNING

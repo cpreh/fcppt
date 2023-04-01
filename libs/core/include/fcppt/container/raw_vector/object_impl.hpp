@@ -11,6 +11,9 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -20,6 +23,9 @@
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::iterator
@@ -587,5 +593,7 @@ void fcppt::container::raw_vector::swap(
 {
   _x.swap(_y);
 }
+
+FCPPT_PP_POP_WARNING
 
 #endif

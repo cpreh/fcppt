@@ -11,11 +11,17 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/buffer/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <memory>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 template <typename T, typename A>
 fcppt::container::buffer::object<T, A>::object(size_type const _size) : object(_size, A{})
@@ -230,5 +236,7 @@ void fcppt::container::buffer::swap(
 {
   _x.swap(_y);
 }
+
+FCPPT_PP_POP_WARNING
 
 #endif

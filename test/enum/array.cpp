@@ -10,6 +10,9 @@
 #include <fcppt/enum/array_output.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string_view>
@@ -50,6 +53,9 @@ struct to_string_impl<my_enum>
 
 FCPPT_CATCH_BEGIN
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
+
 TEST_CASE("enum::array", "[enum]")
 {
   using int_array = fcppt::enum_::array<my_enum, int>;
@@ -68,5 +74,7 @@ TEST_CASE("enum::array", "[enum]")
 
   CHECK(test1 != test3);
 }
+
+FCPPT_PP_POP_WARNING
 
 FCPPT_CATCH_END

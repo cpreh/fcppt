@@ -9,6 +9,9 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -16,6 +19,10 @@
 
 namespace fcppt::math::vector::detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
+
 template <fcppt::math::size_type N, typename ForwardIterator, typename Vector>
 std::enable_if_t<N == 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
 {
@@ -27,6 +34,8 @@ std::enable_if_t<N == 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
 
   *it++ = _vector;
 }
+
+FCPPT_PP_POP_WARNING
 
 template <fcppt::math::size_type N, typename ForwardIterator, typename Vector>
 std::enable_if_t<N != 0U, void> bit_strings(ForwardIterator &it, Vector _vector)

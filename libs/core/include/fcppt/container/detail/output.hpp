@@ -8,6 +8,9 @@
 
 #include <fcppt/output.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <ostream>
@@ -39,6 +42,9 @@ std::basic_ostream<Ch, Traits> &operator<<(
   // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
   auto const end(_output.container().end());
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
+
   for (const_iterator it{_output.container().begin()}; it != end; ++it)
   {
     _stream << fcppt::output(*it);
@@ -48,6 +54,8 @@ std::basic_ostream<Ch, Traits> &operator<<(
       _stream << _stream.widen(',');
     }
   }
+
+FCPPT_PP_POP_WARNING
 
   _stream << _stream.widen(']');
 
