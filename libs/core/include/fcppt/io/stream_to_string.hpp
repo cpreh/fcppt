@@ -12,7 +12,6 @@
 #include <istream>
 #include <sstream>
 #include <string>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::io
@@ -34,7 +33,7 @@ stream_to_string(std::basic_istream<Ch, Traits> &_input)
       // TODO(philipp): What should we check here?
       //_input.eof()
       !_input.fail() && (output.str().empty() || output.good()),
-      [&output] { return std::move(output.str()); });
+      [&output] { return output.str(); });
 }
 
 }
