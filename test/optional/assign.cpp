@@ -9,11 +9,17 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/assign.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/ignore_dangling_reference.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_DANGLING_REFERENCE
 
 TEST_CASE("optional::assign", "[optional]")
 {
@@ -21,7 +27,7 @@ TEST_CASE("optional::assign", "[optional]")
 
   optional_int test;
 
-  int const &result(fcppt::optional::assign(test, 1));
+  int const &result{fcppt::optional::assign(test, 1)};
 
   CHECK(result == 1);
 }
@@ -34,9 +40,11 @@ TEST_CASE("optional::assign move", "[optional]")
 
   optional_int_unique_ptr test;
 
-  int_unique_ptr const &result(fcppt::optional::assign(test, fcppt::make_unique_ptr<int>(1)));
+  int_unique_ptr const &result{fcppt::optional::assign(test, fcppt::make_unique_ptr<int>(1))};
 
   CHECK(*result == 1);
 }
+
+FCPPT_PP_POP_WARNING
 
 FCPPT_CATCH_END

@@ -8,11 +8,17 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/get_or_assign.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/ignore_dangling_reference.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_DANGLING_REFERENCE
 
 TEST_CASE("optional::get_or_assign", "[optional]")
 {
@@ -28,5 +34,7 @@ TEST_CASE("optional::get_or_assign", "[optional]")
 
   CHECK(result2 == 1);
 }
+
+FCPPT_PP_POP_WARNING
 
 FCPPT_CATCH_END
