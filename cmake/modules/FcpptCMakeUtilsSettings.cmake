@@ -57,6 +57,7 @@ if(
 			"-Wno-c++98-compat"
 			"-Wno-c++98-compat-pedantic"
 			"-Wno-padded"
+			"-Wno-poison-system-directories"
 			"-fcomment-block-commands=snippet"
 		)
 	else()
