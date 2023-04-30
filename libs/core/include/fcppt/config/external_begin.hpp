@@ -71,6 +71,10 @@ FCPPT_PP_DISABLE_VC_WARNING(5204) // Class with virtual functions but without vi
 #if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1929)
 FCPPT_PP_DISABLE_VC_WARNING(5243) // Incomplete class causing ABI violation
 #endif
+#if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1934)
+FCPPT_PP_DISABLE_VC_WARNING(5262) // implicit fall-through
+FCPPT_PP_DISABLE_VC_WARNING(5264) // 'const' variable is not used
+#endif
 
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
