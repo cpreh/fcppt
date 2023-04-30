@@ -3,6 +3,13 @@
 
 \section changes_changes_to_440 4.4.0
 
+<ul>
+
+<li>Added a workaround for Apple Clang.</li>
+<li>Cleaned up <code>clang-16</code> and <code>gcc-13</code> warnings.</li>
+
+</ul>
+
 \subsection changes_changed_functionality_to_440 Changed functionality
 
 <ul>
@@ -22,6 +29,18 @@
 <li>fcpptassert
 	<ul>
 	<li>Removed most of the library.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_440 Bugfixes
+
+<ul>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Added missing <code>FCPPT_DETAIL_SYMBOL</code> on <code>fcppt::exception::string</code>.</li>
 	</ul>
 </li>
 
