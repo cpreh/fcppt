@@ -39,6 +39,8 @@ struct derived2 : base
 {
   FCPPT_NONMOVABLE(derived2);
 
+  derived2() = default;
+
   ~derived2() override = default;
 };
 
@@ -59,4 +61,8 @@ int main()
   derived1 d1{};
 
   f(fcppt::reference_to_base<base>(fcppt::make_ref(d1)));
+
+  derived2 d2{};
+
+  f(fcppt::reference_to_base<base>(fcppt::make_ref(d2)));
 }

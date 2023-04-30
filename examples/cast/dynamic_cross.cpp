@@ -37,16 +37,25 @@ struct derived2 : base
 {
   FCPPT_NONMOVABLE(derived2);
 
+  derived2() = default;
+
   ~derived2() override = default;
 };
 
 void f(fcppt::reference<derived1> const _d1)
 {
-  fcppt::optional::reference<derived2> const to_d2(fcppt::cast::dynamic_cross<derived2>(_d1.get()));
+  fcppt::optional::reference<derived2> const to_d2{fcppt::cast::dynamic_cross<derived2>(_d1.get())};
 
   std::cout << to_d2.has_value() << '\n';
 }
 //! [dynamic_cross]
+
+void g(fcppt::reference<derived2> const _d2)
+{
+  fcppt::optional::reference<derived1> const to_d1{fcppt::cast::dynamic_cross<derived1>(_d2.get())};
+
+  std::cout << to_d1.has_value() << '\n';
+}
 
 }
 
@@ -55,4 +64,8 @@ int main()
   derived1 d1{};
 
   f(fcppt::make_ref(d1));
+
+  derived2 d2{};
+
+  g(fcppt::make_ref(d2));
 }
