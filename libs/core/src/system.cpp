@@ -13,6 +13,9 @@
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/to_exception.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -39,6 +42,8 @@ fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)
                      FCPPT_TEXT("\" for fcppt::system!")};
                }).c_str())};
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
   return fcppt::optional::make_if(
       // NOLINTNEXTLINE(hicpp-signed-bitwise)
       WIFEXITED(result),
@@ -47,6 +52,7 @@ fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)
             // NOLINTNEXTLINE(hicpp-signed-bitwise)
             WEXITSTATUS(result);
       });
+FCPPT_PP_POP_WARNING
 #elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
   int const result
   {
