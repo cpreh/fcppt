@@ -42,6 +42,7 @@ public:
   [[nodiscard]] fcppt::string usage() const override;
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   Parser const parser_;
 };
 

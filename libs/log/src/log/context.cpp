@@ -62,6 +62,7 @@ private:
 
   fcppt::log::detail::context_tree tree_;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::log::level_stream_array const streams_;
 };
 

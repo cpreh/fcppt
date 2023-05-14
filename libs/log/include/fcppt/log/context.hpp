@@ -66,6 +66,7 @@ public:
 private:
   struct impl;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::unique_ptr<impl> const impl_;
 
   friend class fcppt::log::object;

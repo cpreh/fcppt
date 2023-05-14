@@ -35,6 +35,7 @@ public:
   [[nodiscard]] function_type const &function() const;
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   function_type const function_;
 };
 

@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/scoped_state_machine.hpp>
 #include <fcppt/catch/begin.hpp>
@@ -65,7 +66,7 @@ TEST_CASE("scoped_state_machine", "[various]")
   {
     using scoped_machine = fcppt::scoped_state_machine<machine>;
 
-    scoped_machine const scoped(test);
+    scoped_machine const scoped{fcppt::make_ref(test)};
 
     REQUIRE_FALSE(test.terminated());
   }

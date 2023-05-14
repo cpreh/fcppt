@@ -7,12 +7,14 @@
 #ifndef FCPPT_SCOPED_STATE_MACHINE_IMPL_HPP_INCLUDED
 #define FCPPT_SCOPED_STATE_MACHINE_IMPL_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/scoped_state_machine_decl.hpp>
 
 template <typename Machine>
-fcppt::scoped_state_machine<Machine>::scoped_state_machine(Machine &_machine) : machine_(_machine)
+fcppt::scoped_state_machine<Machine>::scoped_state_machine(machine_ref const _machine)
+    : machine_{_machine}
 {
-  machine_.initiate();
+  this->machine_->initiate();
 }
 
 namespace fcppt
@@ -20,7 +22,7 @@ namespace fcppt
 template <typename Machine>
 scoped_state_machine<Machine>::~scoped_state_machine()
 {
-  machine_.terminate();
+  this->machine_->terminate();
 }
 }
 

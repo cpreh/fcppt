@@ -38,6 +38,7 @@ public:
   void set_position(fcppt::parse::position<Ch> const &) override;
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   impl_ref const impl_;
 
   fcppt::parse::location location_;

@@ -57,8 +57,10 @@ public:
   [[nodiscard]] static base_type<fcppt::parse::result_of<Parser>> make_base(Parser &&);
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::reference<base_type<Result> const> const start_;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   Skipper const skipper_;
 };
 

@@ -14,6 +14,12 @@
 
 <ul>
 
+<li>\ref fcpptboost
+	<ul>
+	<li>Use <code>fcppt::ref</code> in the constructor of #fcppt::scoped_state_machine.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptparse
 	<ul>
 	<li>Improved error types from just being strings to having actual structure.</li>

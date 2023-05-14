@@ -41,8 +41,10 @@ public:
   [[nodiscard]] function_type const &function() const;
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   function_type const function_;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::signal::unregister::function const unregister_;
 };
 

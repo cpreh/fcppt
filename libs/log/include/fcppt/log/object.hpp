@@ -113,10 +113,13 @@ private:
 
   object(fcppt::log::context_reference, context_tree_ref, fcppt::log::parameters const &);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::log::context_reference const context_;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   context_tree_ref const node_;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::log::format::optional_function const formatter_;
 };
 

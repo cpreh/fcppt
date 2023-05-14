@@ -152,7 +152,7 @@ public:
   ~foo();
 
 private:
-  // const to disable move
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::unique_ptr<foo_impl> const impl_;
 };
 //! [unique_ptr_pimpl_header]

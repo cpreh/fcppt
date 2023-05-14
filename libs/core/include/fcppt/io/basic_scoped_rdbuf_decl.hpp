@@ -35,8 +35,10 @@ public:
   ~basic_scoped_rdbuf();
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::reference<stream_type> const stream_;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   streambuf_type *const old_;
 };
 

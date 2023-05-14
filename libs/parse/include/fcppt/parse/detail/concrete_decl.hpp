@@ -34,6 +34,7 @@ public:
   parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const override;
 
 private:
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   Parser const parser_;
 };
 

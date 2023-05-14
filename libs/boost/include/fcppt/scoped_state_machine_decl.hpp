@@ -8,6 +8,7 @@
 #define FCPPT_SCOPED_STATE_MACHINE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
+#include <fcppt/reference_decl.hpp>
 #include <fcppt/scoped_state_machine_fwd.hpp>
 
 namespace fcppt
@@ -27,12 +28,15 @@ class scoped_state_machine
   FCPPT_NONMOVABLE(scoped_state_machine);
 
 public:
-  explicit scoped_state_machine(Machine &);
+  using machine_ref = fcppt::reference<Machine>;
+
+  explicit scoped_state_machine(machine_ref);
 
   ~scoped_state_machine();
 
 private:
-  Machine &machine_;
+  // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
+  machine_ref const machine_;
 };
 
 }
