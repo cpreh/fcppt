@@ -39,37 +39,37 @@ fcppt::options::parse_result<typename fcppt::options::switch_<Label>::result_typ
 fcppt::options::switch_<Label>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &_context) const
 {
-  return impl_.parse(std::move(_state), _context);
+  return this->impl_.parse(std::move(_state), _context);
 }
 
 template <typename Label>
 fcppt::options::flag_name_set fcppt::options::switch_<Label>::flag_names() const
 {
-  return impl_.flag_names();
+  return this->impl_.flag_names();
 }
 
 template <typename Label>
 fcppt::options::option_name_set fcppt::options::switch_<Label>::option_names() const
 {
-  return impl_.option_names();
+  return this->impl_.option_names();
 }
 
 template <typename Label>
 fcppt::string fcppt::options::switch_<Label>::usage() const
 {
-  return impl_.usage();
+  return this->impl_.usage();
 }
 
 template <typename Label>
 fcppt::options::optional_short_name const &fcppt::options::switch_<Label>::short_name() const
 {
-  return impl_.short_name();
+  return this->impl_.short_name();
 }
 
 template <typename Label>
 fcppt::options::long_name const &fcppt::options::switch_<Label>::long_name() const
 {
-  return impl_.long_name();
+  return this->impl_.long_name();
 }
 
 #endif

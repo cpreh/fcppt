@@ -7,6 +7,7 @@
 #define FCPPT_OPTIONS_PARSE_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/copy.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/parse_context.hpp>
 #include <fcppt/options/result.hpp>
@@ -29,7 +30,7 @@ parse(Parser const &_parser, fcppt::args_vector const &_args)
 {
   return fcppt::options::detail::parse_to_empty(
       _parser,
-      fcppt::options::state{fcppt::args_vector{_args}},
+      fcppt::options::state{fcppt::copy(_args)},
       fcppt::options::parse_context{fcppt::options::deref(_parser).option_names()});
 }
 

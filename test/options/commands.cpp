@@ -30,6 +30,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
+#include <fcppt/test/options/catch_output.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

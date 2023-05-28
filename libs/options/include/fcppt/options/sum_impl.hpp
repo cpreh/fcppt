@@ -14,7 +14,6 @@
 #include <fcppt/either/match.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/indent.hpp>
 #include <fcppt/options/make_left.hpp>
 #include <fcppt/options/make_right.hpp>
 #include <fcppt/options/option_name_set.hpp>
@@ -26,6 +25,7 @@
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/sum_decl.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
+#include <fcppt/options/detail/indent.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -59,15 +59,7 @@ fcppt::options::sum<Label, Left, Right>::parse(
             [&_error1](fcppt::options::parse_error &&_error2)
             {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-                  fcppt::options::detail::combine_errors(
-                      std::move(_error1),
-                      std::move(_error2),
-                      [](fcppt::string &&_string1, fcppt::string &&_string2)
-                      {
-                        // TODO(philipp): Format this better
-                        return fcppt::options::indent(std::move(_string1)) + FCPPT_TEXT("\n|\n") +
-                               fcppt::options::indent(std::move(_string2));
-                      }));
+                  fcppt::options::detail::combine_errors(std::move(_error1), std::move(_error2)));
             },
             [](fcppt::options::state_with_value<fcppt::options::result_of<Right>> &&_right_result)
             {
@@ -111,8 +103,10 @@ fcppt::options::option_name_set fcppt::options::sum<Label, Left, Right>::option_
 template <typename Label, typename Left, typename Right>
 fcppt::string fcppt::options::sum<Label, Left, Right>::usage() const
 {
-  return FCPPT_TEXT("(\n") + fcppt::options::indent(fcppt::options::deref(this->left_).usage()) +
-         FCPPT_TEXT("\n|\n") + fcppt::options::indent(fcppt::options::deref(this->right_).usage()) +
+  return FCPPT_TEXT("(\n") +
+         fcppt::options::detail::indent(fcppt::options::deref(this->left_).usage()) +
+         FCPPT_TEXT("\n|\n") +
+         fcppt::options::detail::indent(fcppt::options::deref(this->right_).usage()) +
          FCPPT_TEXT("\n)");
 }
 

@@ -6,19 +6,19 @@
 #ifndef FCPPT_OPTIONS_MISSING_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_ERROR_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/options/missing_error_fwd.hpp>
+#include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options
 {
 /**
-\brief A string type representing a missing error.
+\brief Occurs if an argument/flag/option is missing.
 
 \ingroup fcpptoptions
 
-A missing error is an error that occurs if a required argument or option has
+A missing error is an error that occurs if a required argument, flag or option has
 not been specified. Such an error makes #fcppt::options::optional
 parsers return an empty optional.
 */
@@ -26,20 +26,20 @@ class missing_error
 {
 public:
   FCPPT_OPTIONS_DETAIL_SYMBOL
-  missing_error(fcppt::options::state &&, fcppt::string &&);
+  missing_error(fcppt::options::state &&, fcppt::options::missing_error_variant &&);
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::state &state();
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::state const &state() const;
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::string &error();
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant &error();
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::string const &error() const;
-
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant const &
+  error() const;
 private:
   fcppt::options::state state_;
 
-  fcppt::string error_;
+  fcppt::options::missing_error_variant error_;
 };
 
 }

@@ -13,9 +13,11 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
+#include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_success.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result_of.hpp>
@@ -23,6 +25,8 @@
 #include <fcppt/options/unit_switch.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +43,8 @@ TEST_CASE("options::unit_switch", "[options]")
 
   switch_type const switch_{
       fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
-      fcppt::options::long_name{FCPPT_TEXT("flag")}};
+      fcppt::options::long_name{FCPPT_TEXT("flag")},
+      fcppt::options::optional_help_text{}};
 
   CHECK(
       fcppt::options::parse(switch_, fcppt::args_vector{FCPPT_TEXT("-f")}) ==

@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONS_PARSE_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_ERROR_FWD_HPP_INCLUDED
 
+#include <fcppt/options/error_fwd.hpp>
 #include <fcppt/options/missing_error_fwd.hpp>
-#include <fcppt/options/other_error_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
 namespace fcppt::options
@@ -20,9 +20,7 @@ namespace fcppt::options
 An error can either be caused by a missing argument or option, or by something
 else like a failed conversion.
 */
-using parse_error =
-    fcppt::variant::object<fcppt::options::missing_error, fcppt::options::other_error>;
-
+using parse_error = fcppt::variant::object<fcppt::options::missing_error, fcppt::options::error>;
 }
 
 #endif

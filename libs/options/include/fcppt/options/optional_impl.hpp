@@ -13,12 +13,12 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_decl.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -64,7 +64,7 @@ fcppt::options::optional<Parser>::parse(
                           []<typename L, typename T>(fcppt::record::element<L, T>)
                           { return fcppt::optional::nothing{}; })}};
             },
-            [](fcppt::options::other_error &&_other_error)
+            [](fcppt::options::error &&_other_error)
             {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
                   fcppt::options::parse_error{std::move(_other_error)});

@@ -12,6 +12,7 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
+#include <fcppt/options/error_output.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -25,7 +26,6 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/variant/match.hpp>
-#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <exception>

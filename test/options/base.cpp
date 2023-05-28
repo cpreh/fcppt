@@ -22,6 +22,7 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
+#include <fcppt/test/options/catch_output.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -29,8 +30,7 @@
 
 FCPPT_CATCH_BEGIN
 
-TEST_CASE("options::base"
-          "[options]")
+TEST_CASE("options::base", "[options]")
 {
   FCPPT_RECORD_MAKE_LABEL(arg_label);
 

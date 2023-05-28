@@ -3,10 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_DETAIL_MISSING_OPTION_ARGUMENT_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_MISSING_OPTION_ARGUMENT_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_TYPE_NAME_HPP_INCLUDED
+#define FCPPT_OPTIONS_TYPE_NAME_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/options/detail/missing_option_argument_fwd.hpp>
+#include <fcppt/options/type_name_fwd.hpp>
 
 #endif

@@ -23,6 +23,7 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/test/options/catch_output.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>

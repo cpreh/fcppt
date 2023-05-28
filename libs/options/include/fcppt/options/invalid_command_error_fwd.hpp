@@ -3,10 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_OTHER_ERROR_HPP_INCLUDED
-#define FCPPT_OPTIONS_OTHER_ERROR_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_INVALID_COMMAND_ERROR_FWD_HPP_INCLUDED
+#define FCPPT_OPTIONS_INVALID_COMMAND_ERROR_FWD_HPP_INCLUDED
 
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/options/other_error_fwd.hpp>
+namespace fcppt::options
+{
+class invalid_command_error;
+}
 
 #endif

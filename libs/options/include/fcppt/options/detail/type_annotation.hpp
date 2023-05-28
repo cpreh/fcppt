@@ -15,7 +15,7 @@ namespace fcppt::options::detail
 template <typename Type>
 inline fcppt::string type_annotation()
 {
-  return FCPPT_TEXT(" : ") + fcppt::options::pretty_type<Type>();
+  return FCPPT_TEXT(" : ") + fcppt::options::pretty_type<Type>().get();
 }
 
 }

@@ -8,6 +8,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/options/pretty_type_impl.hpp>
+#include <fcppt/options/type_name.hpp>
 
 namespace fcppt::options
 {
@@ -22,9 +23,9 @@ type name is represented as a string. For example, the pretty name of
 <code>std::basic_string<char,std::char_traits<char>,std::allocator<char>></code>.
 */
 template <typename Type>
-inline fcppt::string pretty_type()
+inline fcppt::options::type_name pretty_type()
 {
-  return fcppt::options::pretty_type_impl<Type>::get();
+  return fcppt::options::type_name{fcppt::options::pretty_type_impl<Type>::get()};
 }
 
 }

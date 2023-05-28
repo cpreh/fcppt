@@ -30,7 +30,6 @@ public:
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::args_vector &args();
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::args_vector const &args() const;
-
 private:
   fcppt::args_vector args_;
 };

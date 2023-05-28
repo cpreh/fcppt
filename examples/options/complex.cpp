@@ -18,6 +18,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/filesystem/ifstream.hpp>

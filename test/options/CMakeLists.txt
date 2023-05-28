@@ -7,6 +7,8 @@ function(
 		LINK_LIBS
 			"${fcppt_core_TARGET}"
 			"${fcppt_options_TARGET}"
+		INCLUDE_DIRS
+			${CMAKE_CURRENT_SOURCE_DIR}/include
 		${ARGN}
 	)
 endfunction()

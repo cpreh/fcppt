@@ -14,6 +14,7 @@
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/base.hpp>
 #include <fcppt/options/base_unique_ptr.hpp>
+#include <fcppt/options/error_output.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_base.hpp>
 #include <fcppt/options/make_many.hpp>

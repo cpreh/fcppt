@@ -11,6 +11,7 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
@@ -27,8 +28,8 @@ namespace fcppt::options
 
 \ingroup fcpptoptions
 
-This parser is similar to #fcppt::options::switch_ but it
-requires its switch to be specified.
+This parser is similar to #fcppt::options::switch_ but
+instead of returning true or false, it only succeeds if its flag is given.
 */
 template <typename Label>
 class unit_switch
@@ -37,14 +38,18 @@ class unit_switch
 
 public:
   /**
-  \brief Constructs a switch parser.
+  \brief Constructs a unit switch parser.
 
   \param short_name An optional short name ("-f") this parser will match.
 
   \param long_name The long name ("--flag") this parser will match.
+
+  \param help_text Optional help text for this flag.
   */
   unit_switch(
-      fcppt::options::optional_short_name &&short_name, fcppt::options::long_name &&long_name);
+      fcppt::options::optional_short_name &&short_name,
+      fcppt::options::long_name &&long_name,
+      fcppt::options::optional_help_text &&help_text);
 
   using result_type = fcppt::record::object<fcppt::record::element<Label, fcppt::unit>>;
 

@@ -8,14 +8,12 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
-#include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/container/output.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
@@ -28,11 +26,12 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/help_text.hpp>
-#include <fcppt/options/indent.hpp>
+#include <fcppt/options/invalid_command_error.hpp>
+#include <fcppt/options/missing_command_error.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -40,6 +39,7 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/detail/check_sub_command_names.hpp>
+#include <fcppt/options/detail/indent.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
@@ -70,24 +70,27 @@ fcppt::options::parse_result<
 fcppt::options::commands<OptionsParser, SubCommands...>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &) const
 {
-  auto const parse_inner(
+  auto const parse_inner{
       [this](
           auto const &_sub_command,
           fcppt::args_vector &&_first_args,
-          fcppt::args_vector &&_second_args) -> fcppt::options::parse_result<result_type> {
+          fcppt::args_vector &&_second_args) -> fcppt::options::parse_result<result_type>
+      {
         return fcppt::either::match(
             fcppt::options::detail::parse_to_empty(
                 this->options_parser_,
                 fcppt::options::state{std::move(_first_args)},
                 fcppt::options::parse_context{
                     fcppt::options::deref(this->options_parser_).option_names()}),
-            [](fcppt::options::error &&_error) -> fcppt::options::parse_result<result_type> {
-              return fcppt::options::parse_result<result_type>{fcppt::options::parse_error{
-                  fcppt::options::other_error{std::move(_error.get())}}};
+            [](fcppt::options::error &&_error) -> fcppt::options::parse_result<result_type>
+            {
+              return fcppt::options::parse_result<result_type>{
+                  fcppt::options::parse_error{std::move(_error)}};
             },
             [&_sub_command,
              &_second_args](fcppt::options::result_of<OptionsParser> &&_options_result)
-                -> fcppt::options::parse_result<result_type> {
+                -> fcppt::options::parse_result<result_type>
+            {
               using sub_command_type = fcppt::options::deref_type<
                   std::remove_cvref_t<decltype(_sub_command)>>;
 
@@ -111,7 +114,7 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
                                         std::move(_parser_result.value())}}}};
                   });
             });
-      });
+      }};
 
   return fcppt::optional::maybe(
       fcppt::options::detail::split_command(
@@ -121,12 +124,11 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
         return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
             fcppt::options::parse_error{fcppt::options::missing_error{
                 std::move(_state),
-                FCPPT_TEXT("No command specified from ") +
-                    fcppt::output_to_fcppt_string(
-                        fcppt::container::output(fcppt::algorithm::map<std::vector<fcppt::string>>(
-                            this->sub_commands_,
-                            [](auto const &_parser) -> fcppt::string
-                            { return fcppt::options::deref(_parser).name(); })))}});
+                fcppt::options::missing_error_variant{fcppt::options::missing_command_error{
+                    fcppt::algorithm::map<std::vector<fcppt::string>>(
+                        this->sub_commands_,
+                        [](auto const &_parser) -> fcppt::string
+                        { return fcppt::options::deref(_parser).name(); })}}}});
       },
       [this,
        parse_inner](fcppt::tuple::object<fcppt::args_vector, fcppt::string, fcppt::args_vector>
@@ -151,9 +153,9 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
             [&_split_arguments]
             {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-                  fcppt::options::parse_error{fcppt::options::other_error{
-                      FCPPT_TEXT("Invalid command ") +
-                      std::move(fcppt::tuple::get<1>(_split_arguments))}});
+                  fcppt::options::parse_error{
+                      fcppt::options::error{fcppt::options::invalid_command_error{
+                          std::move(fcppt::tuple::get<1>(_split_arguments))}}});
             });
       });
 }
@@ -176,7 +178,7 @@ template <typename OptionsParser, typename... SubCommands>
 fcppt::string fcppt::options::commands<OptionsParser, SubCommands...>::usage() const
 {
   return fcppt::options::deref(options_parser_).usage() + FCPPT_TEXT("\n") +
-         fcppt::options::indent(fcppt::algorithm::fold(
+         fcppt::options::detail::indent(fcppt::algorithm::fold(
              sub_commands_,
              fcppt::string{},
              [](auto const &_sub_command, fcppt::string &&_state) -> fcppt::string {
@@ -188,7 +190,7 @@ fcppt::string fcppt::options::commands<OptionsParser, SubCommands...>::usage() c
                           [](fcppt::options::help_text const &_help_text) {
                             return FCPPT_TEXT(" (") + _help_text.get() + FCPPT_TEXT(")");
                           }) +
-                      fcppt::options::indent([&_sub_command] {
+                      fcppt::options::detail::indent([&_sub_command] {
                         fcppt::string inner_usage{
                             fcppt::options::deref(fcppt::options::deref(_sub_command).parser())
                                 .usage()};

@@ -965,7 +965,7 @@ fcppt now uses <code>std::filesystem</code>.
 <li>\ref fcpptoptions
 	<ul>
 	<li>Changed #fcppt::options::error to a string.
-	#fcppt::options::missing_error and #fcppt::options::other_error were moved to #fcppt::options::parse_error.</li>
+	#fcppt::options::missing_error and <code>fcppt::options::other_error</code> were moved to #fcppt::options::parse_error.</li>
 	<li>Moved <code>fcppt::options::combine_errors</code> to detail.</li>
 	<li>#fcppt::options::missing_error can now return a state, making optional parsers more efficient.</li>
 	</ul>
@@ -1213,7 +1213,7 @@ fcppt now uses <code>C++-17</code>.
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Added #fcppt::options::indent and added indentation to various parser outputs.</li>
+	<li>Added <code>fcppt::options::indent</code> and added indentation to various parser outputs.</li>
 	<li>Added <code>fcppt::options::combine_errors</code> and use it in #fcppt::options::sum.</li>
 	</ul>
 </li>

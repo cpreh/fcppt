@@ -3,22 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_INDENT_HPP_INCLUDED
-#define FCPPT_OPTIONS_INDENT_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_ERROR_PAIR_OUTPUT_HPP_INCLUDED
+#define FCPPT_OPTIONS_ERROR_PAIR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
+#include <fcppt/options/error_pair_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options
 {
-/**
-\brief Indents every line of a string once.
-
-\ingroup fcpptvarious
-*/
 FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::string indent(fcppt::string &&);
-
+fcppt::io::ostream &
+operator<<(fcppt::io::ostream &, fcppt::options::error_pair const &);
 }
 
 #endif

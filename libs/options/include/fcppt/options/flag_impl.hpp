@@ -13,6 +13,8 @@
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
+#include <fcppt/options/dual_flag_error.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag_decl.hpp>
 #include <fcppt/options/flag_name.hpp>
@@ -21,7 +23,6 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -57,8 +58,8 @@ fcppt::options::flag<Label, Type>::flag(
   if (this->active_value_.get() == this->inactive_value_.get())
   {
     throw fcppt::options::exception{
-        FCPPT_TEXT("The active and the inactive value must be different: ") +
-        fcppt::output_to_fcppt_string(this->active_value_.get())};
+        FCPPT_TEXT("The active and the inactive value must be different. The value is \"") +
+        fcppt::output_to_fcppt_string(this->active_value_.get()) + FCPPT_TEXT("\".")};
   }
 }
 
@@ -72,19 +73,20 @@ fcppt::options::flag<Label, Type>::parse(
       this->long_name_.get(),
       fcppt::options::detail::flag_is_short{false})};
 
-  auto const make_success(
+  auto const make_success{
       [&_state, this](bool const _value) -> fcppt::options::parse_result<result_type> {
         return fcppt::options::parse_result<result_type>{
             fcppt::options::state_with_value<result_type>{
                 std::move(_state),
                 result_type{
                     Label{} = _value ? this->active_value_.get() : this->inactive_value_.get()}}};
-      });
+      }};
 
   return fcppt::optional::maybe(
       short_name_,
       [make_success, long_found] { return make_success(long_found); },
-      [this, make_success, long_found, &_state](fcppt::options::short_name const &_short_name) {
+      [this, make_success, long_found, &_state](fcppt::options::short_name const &_short_name)
+      {
         bool const short_found{fcppt::options::detail::use_flag(
             fcppt::make_ref(_state),
             _short_name.get(),
@@ -92,10 +94,8 @@ fcppt::options::flag<Label, Type>::parse(
 
         return long_found && short_found
                    ? fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-                         fcppt::options::parse_error{fcppt::options::other_error{
-                             FCPPT_TEXT("Both the short flag name ") + _short_name.get() +
-                             FCPPT_TEXT(" and the long flag name ") + this->long_name_.get() +
-                             FCPPT_TEXT(" were specified at the same time")}})
+                         fcppt::options::parse_error{fcppt::options::error{
+                             fcppt::options::dual_flag_error{_short_name, this->long_name_}}})
                    : make_success(short_found || long_found);
       });
 }

@@ -11,11 +11,11 @@
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/deref.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/many_decl.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -46,26 +46,29 @@ fcppt::options::many<Parser>::parse(
 
   fcppt::options::state state{std::move(_state)};
 
-  auto const next([this, &state, &_context] {
+  auto const next{[this, &state, &_context] {
+    // NOLINTNEXTLINE(clang-analyzer-core.NonNullParamChecker)
     return fcppt::options::deref(this->parser_).parse(std::move(state), _context);
-  });
+  }};
 
-  auto const loop(
+  auto const loop{
       [&state,
-       &result](fcppt::options::state_with_value<fcppt::options::result_of<Parser>> &&_inner) {
+       &result](fcppt::options::state_with_value<fcppt::options::result_of<Parser>> &&_inner)
+      {
         state = std::move(_inner.state());
 
         fcppt::options::result_of<Parser> &inner_value{_inner.value()};
 
         result = fcppt::record::init<result_type>(
-            [&result, &inner_value]<typename L, typename T>(fcppt::record::element<L,T>) {
+            [&result, &inner_value]<typename L, typename T>(fcppt::record::element<L, T>)
+            {
               T new_result{std::move(fcppt::record::get<L>(result))};
 
               new_result.push_back(std::move(fcppt::record::get<L>(inner_value)));
 
               return new_result;
             });
-      });
+      }};
 
   return fcppt::variant::match(
       fcppt::either::loop(next, loop),
@@ -74,28 +77,28 @@ fcppt::options::many<Parser>::parse(
             fcppt::options::state_with_value<result_type>(
                 std::move(_missing_error.state()), std::move(result))};
       },
-      [](fcppt::options::other_error &&_other_error) {
+      [](fcppt::options::error &&_error) {
         return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-            fcppt::options::parse_error{std::move(_other_error)});
+            fcppt::options::parse_error{std::move(_error)});
       });
 }
 
 template <typename Parser>
 fcppt::options::flag_name_set fcppt::options::many<Parser>::flag_names() const
 {
-  return fcppt::options::deref(parser_).flag_names();
+  return fcppt::options::deref(this->parser_).flag_names();
 }
 
 template <typename Parser>
 fcppt::options::option_name_set fcppt::options::many<Parser>::option_names() const
 {
-  return fcppt::options::deref(parser_).option_names();
+  return fcppt::options::deref(this->parser_).option_names();
 }
 
 template <typename Parser>
 fcppt::string fcppt::options::many<Parser>::usage() const
 {
-  return FCPPT_TEXT("[ ") + fcppt::options::deref(parser_).usage() + FCPPT_TEXT(" ]*");
+  return FCPPT_TEXT("[ ") + fcppt::options::deref(this->parser_).usage() + FCPPT_TEXT(" ]*");
 }
 
 #endif

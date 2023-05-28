@@ -20,12 +20,14 @@
 #include <fcppt/options/make_right.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/make_sum.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/unit_switch.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/test/options/catch_output.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -41,11 +43,15 @@ TEST_CASE("options::sum", "[options]")
 
   using unit_parser = fcppt::options::unit_switch<unit_label>;
 
-  auto const sum(fcppt::options::make_sum<label>(
+  auto const sum{fcppt::options::make_sum<label>(
       unit_parser{
-          fcppt::options::optional_short_name{}, fcppt::options::long_name{FCPPT_TEXT("left")}},
+          fcppt::options::optional_short_name{},
+          fcppt::options::long_name{FCPPT_TEXT("left")},
+          fcppt::options::optional_help_text{}},
       unit_parser{
-          fcppt::options::optional_short_name{}, fcppt::options::long_name{FCPPT_TEXT("right")}}));
+          fcppt::options::optional_short_name{},
+          fcppt::options::long_name{FCPPT_TEXT("right")},
+          fcppt::options::optional_help_text{}})};
 
   using parser_type = decltype(sum);
 

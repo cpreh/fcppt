@@ -7,14 +7,16 @@
 #define FCPPT_OPTIONS_UNIT_SWITCH_IMPL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/missing_error_variant.hpp>
+#include <fcppt/options/missing_flag_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
@@ -32,8 +34,10 @@
 
 template <typename Label>
 fcppt::options::unit_switch<Label>::unit_switch(
-    fcppt::options::optional_short_name &&_short_name, fcppt::options::long_name &&_long_name)
-    : impl_{std::move(_short_name), std::move(_long_name), fcppt::options::optional_help_text{}}
+    fcppt::options::optional_short_name &&_short_name,
+    fcppt::options::long_name &&_long_name,
+    fcppt::options::optional_help_text &&_help_text)
+    : impl_{std::move(_short_name), std::move(_long_name), std::move(_help_text)}
 {
 }
 
@@ -44,7 +48,8 @@ fcppt::options::unit_switch<Label>::parse(
 {
   return fcppt::either::bind(
       this->impl_.parse(std::move(_state), _context),
-      [this](fcppt::options::state_with_value<fcppt::options::result_of<impl>> &&_result) {
+      [this](fcppt::options::state_with_value<fcppt::options::result_of<impl>> &&_result)
+      {
         return fcppt::record::get<Label>(_result.value())
                    ? fcppt::options::parse_result<
                          result_type>{fcppt::options::state_with_value<result_type>{
@@ -52,10 +57,9 @@ fcppt::options::unit_switch<Label>::parse(
                    : fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
                          fcppt::options::parse_error{fcppt::options::missing_error{
                              std::move(_result.state()),
-                             FCPPT_TEXT("Missing flag ") +
-                                 fcppt::options::detail::long_or_short_name(
-                                     this->impl_.long_name(), this->impl_.short_name()) +
-                                 FCPPT_TEXT(".")}});
+                             fcppt::options::missing_error_variant{
+                                 fcppt::options::missing_flag_error{
+                                     this->short_name(), this->long_name()}}}});
       });
 }
 
@@ -74,8 +78,7 @@ fcppt::options::option_name_set fcppt::options::unit_switch<Label>::option_names
 template <typename Label>
 fcppt::string fcppt::options::unit_switch<Label>::usage() const
 {
-  return fcppt::options::detail::long_or_short_name(
-      this->impl_.long_name(), this->impl_.short_name());
+  return fcppt::options::detail::long_or_short_name(this->long_name(), this->short_name());
 }
 
 template <typename Label>

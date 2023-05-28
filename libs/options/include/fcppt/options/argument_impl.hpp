@@ -9,17 +9,19 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/optional/map.hpp>
+#include <fcppt/options/argument_conversion_error.hpp>
 #include <fcppt/options/argument_decl.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/missing_argument_error.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
@@ -53,27 +55,31 @@ fcppt::options::argument<Label, Type>::parse(
   return fcppt::either::bind(
       fcppt::either::from_optional(
           fcppt::options::detail::pop_arg(fcppt::make_ref(_state), _context),
-          [&_state, this] {
+          [&_state, this]
+          {
             return fcppt::options::parse_error{fcppt::options::missing_error{
                 std::move(_state),
-                FCPPT_TEXT("Missing argument \"") + this->long_name_.get() + FCPPT_TEXT("\".")}};
+                fcppt::options::missing_error_variant{
+                    fcppt::options::missing_argument_error{this->long_name_}}}};
           }),
-      [&_state, this](fcppt::string const &_arg) {
+      [&_state, this](fcppt::string const &_arg)
+      {
         FCPPT_PP_PUSH_WARNING
         FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 
         return fcppt::either::from_optional(
             fcppt::optional::map(
                 fcppt::extract_from_string<Type>(_arg),
-                [&_state](Type &&_value) {
+                [&_state](Type &&_value)
+                {
                   return fcppt::options::state_with_value<result_type>{
                       std::move(_state), result_type{Label{} = std::move(_value)}};
                 }),
-            [this, &_arg] {
-              return fcppt::options::parse_error{fcppt::options::other_error{
-                  FCPPT_TEXT("Failed to convert \"") + _arg + FCPPT_TEXT("\" to ") +
-                  fcppt::options::pretty_type<Type>() + FCPPT_TEXT(" for argument \"") +
-                  this->long_name_.get() + FCPPT_TEXT("\".")}};
+            [this, &_arg]
+            {
+              return fcppt::options::parse_error{
+                  fcppt::options::error{fcppt::options::argument_conversion_error{
+                      _arg, fcppt::options::pretty_type<Type>(), this->long_name_}}};
             });
 
         FCPPT_PP_POP_WARNING

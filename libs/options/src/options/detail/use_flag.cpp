@@ -4,9 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/string_view.hpp>
+#include <fcppt/algorithm/find_opt.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
@@ -24,14 +27,12 @@ bool fcppt::options::detail::use_flag(
 
   fcppt::args_vector &args{_state.get().args()};
 
-  fcppt::args_vector::iterator const pos{std::find(args.begin(), args.end(), flag_name)};
-
-  if (pos != args.end())
-  {
-    args.erase(pos);
-
-    return true;
-  }
-
-  return false;
+  return fcppt::optional::maybe(
+      fcppt::algorithm::find_opt(args, flag_name),
+      fcppt::const_(false),
+      [&args](fcppt::args_vector::iterator const _pos)
+      {
+        args.erase(_pos);
+        return true;
+      });
 }

@@ -6,8 +6,19 @@
 #ifndef FCPPT_OPTIONS_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_FWD_HPP_INCLUDED
 
-#include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/string.hpp>
+#include <fcppt/options/argument_conversion_error_fwd.hpp>
+#include <fcppt/options/dual_flag_error_fwd.hpp>
+#include <fcppt/options/dual_option_error_fwd.hpp>
+#include <fcppt/options/error_pair_fwd.hpp>
+#include <fcppt/options/leftover_error_fwd.hpp>
+#include <fcppt/options/invalid_command_error_fwd.hpp>
+#include <fcppt/options/missing_argument_error_fwd.hpp>
+#include <fcppt/options/missing_command_error_fwd.hpp>
+#include <fcppt/options/missing_flag_error_fwd.hpp>
+#include <fcppt/options/missing_option_argument_error_fwd.hpp>
+#include <fcppt/options/missing_option_error_fwd.hpp>
+#include <fcppt/options/option_conversion_error_fwd.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 
 namespace fcppt::options
 {
@@ -16,8 +27,19 @@ namespace fcppt::options
 
 \ingroup fcpptoptions
 */
-FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, error);
-
+using error = fcppt::variant::object<
+    fcppt::options::argument_conversion_error,
+    fcppt::options::dual_flag_error,
+    fcppt::options::dual_option_error,
+    fcppt::options::error_pair,
+    fcppt::options::leftover_error,
+    fcppt::options::invalid_command_error,
+    fcppt::options::missing_argument_error,
+    fcppt::options::missing_command_error,
+    fcppt::options::missing_flag_error,
+    fcppt::options::missing_option_argument_error,
+    fcppt::options::missing_option_error,
+    fcppt::options::option_conversion_error>;
 }
 
 #endif

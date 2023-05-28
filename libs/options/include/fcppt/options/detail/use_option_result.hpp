@@ -6,9 +6,10 @@
 #ifndef FCPPT_OPTIONS_DETAIL_USE_OPTION_RESULT_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_USE_OPTION_RESULT_HPP_INCLUDED
 
-#include <fcppt/optional_string.hpp>
 #include <fcppt/either/object.hpp>
-#include <fcppt/options/detail/missing_option_argument.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/options/missing_option_argument_error.hpp>
+#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/options/detail/use_option_result_fwd.hpp>
 
 #endif
