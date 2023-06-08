@@ -6,19 +6,14 @@
 #ifndef FCPPT_OPTIONS_ERROR_OUTPUT_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/options/argument_conversion_error_output.hpp>
-#include <fcppt/options/dual_flag_error_output.hpp>
-#include <fcppt/options/dual_option_error_output.hpp>
-#include <fcppt/options/error.hpp>
-#include <fcppt/options/error_pair_output.hpp>
-#include <fcppt/options/leftover_error_output.hpp>
-#include <fcppt/options/invalid_command_error_output.hpp>
-#include <fcppt/options/missing_argument_error_output.hpp>
-#include <fcppt/options/missing_command_error_output.hpp>
-#include <fcppt/options/missing_flag_error_output.hpp>
-#include <fcppt/options/missing_option_argument_error_output.hpp>
-#include <fcppt/options/missing_option_error_output.hpp>
-#include <fcppt/options/option_conversion_error_output.hpp>
-#include <fcppt/variant/output.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
+#include <fcppt/options/error_fwd.hpp>
+#include <fcppt/options/detail/symbol.hpp>
+
+namespace fcppt::options
+{
+FCPPT_OPTIONS_DETAIL_SYMBOL
+fcppt::io::ostream &operator<<(fcppt::io::ostream &, fcppt::options::error const &);
+}
 
 #endif

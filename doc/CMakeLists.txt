@@ -1783,6 +1783,8 @@ set(
 	libs/options/include/fcppt/options/error_pair.hpp
 	libs/options/include/fcppt/options/error_pair_fwd.hpp
 	libs/options/include/fcppt/options/error_pair_output.hpp
+	libs/options/include/fcppt/options/error_variant.hpp
+	libs/options/include/fcppt/options/error_variant_fwd.hpp
 	libs/options/include/fcppt/options/exception.hpp
 	libs/options/include/fcppt/options/exception_fwd.hpp
 	libs/options/include/fcppt/options/flag.hpp

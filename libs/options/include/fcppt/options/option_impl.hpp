@@ -25,6 +25,7 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/dual_option_error.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
@@ -89,8 +90,10 @@ fcppt::options::option<Label, Type>::parse(
       {
         return fcppt::either::map_failure(
             std::move(_result),
-            [](fcppt::options::missing_option_argument_error &&_error) {
-              return fcppt::options::parse_error{fcppt::options::error{std::move(_error)}};
+            [](fcppt::options::missing_option_argument_error &&_error)
+            {
+              return fcppt::options::parse_error{
+                  fcppt::options::error{fcppt::options::error_variant{std::move(_error)}}};
             });
       }};
 
@@ -125,11 +128,11 @@ fcppt::options::option<Label, Type>::parse(
                 [](Type &&_value) { return result_type{Label{} = std::move(_value)}; }),
             [&_success]
             {
-              return fcppt::options::parse_error{
-                  fcppt::options::error{fcppt::options::option_conversion_error{
+              return fcppt::options::parse_error{fcppt::options::error{
+                  fcppt::options::error_variant{fcppt::options::option_conversion_error{
                       fcppt::copy(_success.value()),
                       fcppt::options::pretty_type<Type>(),
-                      fcppt::copy(_success.name())}}};
+                      fcppt::copy(_success.name())}}}};
             });
 
         FCPPT_PP_POP_WARNING
@@ -160,7 +163,8 @@ fcppt::options::option<Label, Type>::parse(
             {
               return _short_value_opt.has_value()
                          ? inner_result{fcppt::options::parse_error{fcppt::options::error{
-                               fcppt::options::dual_option_error{_short_name, this->long_name_}}}}
+                               fcppt::options::error_variant{fcppt::options::dual_option_error{
+                                   _short_name, this->long_name_}}}}}
                          : make_value(_long_value);
             });
 

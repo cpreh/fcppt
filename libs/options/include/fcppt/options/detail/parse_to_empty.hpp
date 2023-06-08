@@ -12,6 +12,7 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/leftover_error.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
@@ -61,8 +62,8 @@ fcppt::options::result<fcppt::options::result_of<Parser>> parse_to_empty(
             fcppt::optional::make_if(
                 fcppt::not_(_result.state().empty()),
                 [&_result] {
-                  return fcppt::options::error{
-                      fcppt::options::leftover_error{std::move(_result.state().args())}};
+                  return fcppt::options::error{fcppt::options::error_variant{
+                      fcppt::options::leftover_error{std::move(_result.state().args())}}};
                 }),
             [&_result] { return return_type{std::move(_result.value())}; },
             [](fcppt::options::error &&_error) { return return_type{std::move(_error)}; });

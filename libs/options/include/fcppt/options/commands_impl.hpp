@@ -24,6 +24,7 @@
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/deref_type.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/invalid_command_error.hpp>
@@ -153,9 +154,9 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
             [&_split_arguments]
             {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-                  fcppt::options::parse_error{
-                      fcppt::options::error{fcppt::options::invalid_command_error{
-                          std::move(fcppt::tuple::get<1>(_split_arguments))}}});
+                  fcppt::options::parse_error{fcppt::options::error{
+                      fcppt::options::error_variant{fcppt::options::invalid_command_error{
+                          std::move(fcppt::tuple::get<1>(_split_arguments))}}}});
             });
       });
 }

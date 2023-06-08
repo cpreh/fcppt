@@ -15,6 +15,7 @@
 #include <fcppt/options/argument_conversion_error.hpp>
 #include <fcppt/options/argument_decl.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_argument_error.hpp>
@@ -77,9 +78,9 @@ fcppt::options::argument<Label, Type>::parse(
                 }),
             [this, &_arg]
             {
-              return fcppt::options::parse_error{
-                  fcppt::options::error{fcppt::options::argument_conversion_error{
-                      _arg, fcppt::options::pretty_type<Type>(), this->long_name_}}};
+              return fcppt::options::parse_error{fcppt::options::error{
+                  fcppt::options::error_variant{fcppt::options::argument_conversion_error{
+                      _arg, fcppt::options::pretty_type<Type>(), this->long_name_}}}};
             });
 
         FCPPT_PP_POP_WARNING

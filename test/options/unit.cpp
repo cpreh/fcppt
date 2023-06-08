@@ -17,6 +17,7 @@
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_output.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/leftover_error.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/parse.hpp>
@@ -46,8 +47,9 @@ TEST_CASE("options::unit", "[options]")
 
   CHECK(
       fcppt::options::parse(unit, fcppt::args_vector{FCPPT_TEXT("")}) ==
-      fcppt::either::make_failure<fcppt::options::result_of<unit_type>>(fcppt::options::error{
-          fcppt::options::leftover_error{fcppt::args_vector{FCPPT_TEXT("")}}}));
+      fcppt::either::make_failure<fcppt::options::result_of<unit_type>>(
+          fcppt::options::error{fcppt::options::error_variant{
+              fcppt::options::leftover_error{fcppt::args_vector{FCPPT_TEXT("")}}}}));
 }
 
 FCPPT_CATCH_END

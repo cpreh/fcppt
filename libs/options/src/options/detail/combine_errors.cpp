@@ -6,6 +6,7 @@
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_pair.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/missing_error_pair.hpp>
 #include <fcppt/options/missing_error_variant.hpp>
@@ -32,8 +33,8 @@ inline fcppt::options::missing_error combine_errors_impl(
 inline fcppt::options::error
 combine_errors_impl(fcppt::options::error &&_error1, fcppt::options::error &&_error2)
 {
-  return fcppt::options::error{fcppt::options::error_pair{
-      fcppt::make_recursive(std::move(_error1)), fcppt::make_recursive(std::move(_error2))}};
+  return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_pair{
+      fcppt::make_recursive(std::move(_error1)), fcppt::make_recursive(std::move(_error2))}}};
 }
 
 inline fcppt::options::error combine_errors_impl(

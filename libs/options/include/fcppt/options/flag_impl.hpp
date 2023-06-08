@@ -15,6 +15,7 @@
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/options/dual_flag_error.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag_decl.hpp>
 #include <fcppt/options/flag_name.hpp>
@@ -94,8 +95,9 @@ fcppt::options::flag<Label, Type>::parse(
 
         return long_found && short_found
                    ? fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-                         fcppt::options::parse_error{fcppt::options::error{
-                             fcppt::options::dual_flag_error{_short_name, this->long_name_}}})
+                         fcppt::options::parse_error{
+                             fcppt::options::error{fcppt::options::error_variant{
+                                 fcppt::options::dual_flag_error{_short_name, this->long_name_}}}})
                    : make_success(short_found || long_found);
       });
 }

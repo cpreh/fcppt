@@ -71,6 +71,8 @@ set(
 	libs/options/include/fcppt/options/error_pair.hpp
 	libs/options/include/fcppt/options/error_pair_fwd.hpp
 	libs/options/include/fcppt/options/error_pair_output.hpp
+	libs/options/include/fcppt/options/error_variant.hpp
+	libs/options/include/fcppt/options/error_variant_fwd.hpp
 	libs/options/include/fcppt/options/exception.hpp
 	libs/options/include/fcppt/options/exception_fwd.hpp
 	libs/options/include/fcppt/options/flag.hpp
@@ -227,6 +229,8 @@ set(
 	libs/options/src/options/dual_option_error.cpp
 	libs/options/src/options/dual_option_error_output.cpp
 	libs/options/src/options/duplicate_names.cpp
+	libs/options/src/options/error.cpp
+	libs/options/src/options/error_output.cpp
 	libs/options/src/options/error_pair.cpp
 	libs/options/src/options/error_pair_output.cpp
 	libs/options/src/options/exception.cpp

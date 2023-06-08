@@ -6,19 +6,30 @@
 #ifndef FCPPT_OPTIONS_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_HPP_INCLUDED
 
-#include <fcppt/options/argument_conversion_error.hpp>
-#include <fcppt/options/dual_flag_error.hpp>
-#include <fcppt/options/dual_option_error.hpp>
 #include <fcppt/options/error_fwd.hpp>
-#include <fcppt/options/error_pair.hpp>
-#include <fcppt/options/leftover_error.hpp>
-#include <fcppt/options/invalid_command_error.hpp>
-#include <fcppt/options/missing_argument_error.hpp>
-#include <fcppt/options/missing_command_error.hpp>
-#include <fcppt/options/missing_flag_error.hpp>
-#include <fcppt/options/missing_option_argument_error.hpp>
-#include <fcppt/options/missing_option_error.hpp>
-#include <fcppt/options/option_conversion_error.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/options/error_variant.hpp>
+#include <fcppt/options/detail/symbol.hpp>
+
+namespace fcppt::options
+{
+/**
+\brief The error type retuned.
+
+\ingroup fcpptoptions
+*/
+class error
+{
+public:
+  FCPPT_OPTIONS_DETAIL_SYMBOL explicit error(fcppt::options::error_variant &&);
+
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::error_variant const &get() const;
+private:
+  fcppt::options::error_variant impl_;
+};
+
+[[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool
+operator==(fcppt::options::error const &, fcppt::options::error const &);
+
+}
 
 #endif
