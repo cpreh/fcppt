@@ -16,10 +16,12 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 class flag_usage
 {
 public:
-  // TODO(philipp): Show active and inactive value
   FCPPT_OPTIONS_DETAIL_SYMBOL
   flag_usage(
       fcppt::options::long_name,

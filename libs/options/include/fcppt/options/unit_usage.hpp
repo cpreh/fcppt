@@ -10,6 +10,9 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 class unit_usage
 {
 public:

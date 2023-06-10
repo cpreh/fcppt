@@ -1806,7 +1806,6 @@ set(
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
 	libs/options/include/fcppt/options/invalid_command_error.hpp
 	libs/options/include/fcppt/options/invalid_command_error_fwd.hpp
-	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/left.hpp
 	libs/options/include/fcppt/options/left_fwd.hpp
 	libs/options/include/fcppt/options/leftover_error.hpp

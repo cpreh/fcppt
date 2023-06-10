@@ -17,6 +17,9 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 class sub_command_usage
 {
 public:

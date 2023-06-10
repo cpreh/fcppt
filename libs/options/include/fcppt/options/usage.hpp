@@ -14,6 +14,11 @@
 namespace fcppt::options
 {
 
+/**
+\brief The usage type of a parser.
+\ingroup fcpptoptions
+This shows to a user how a parser is supposed to be used.
+*/
 class usage
 {
 public:

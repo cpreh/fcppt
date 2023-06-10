@@ -96,7 +96,6 @@ set(
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
 	libs/options/include/fcppt/options/invalid_command_error.hpp
 	libs/options/include/fcppt/options/invalid_command_error_fwd.hpp
-	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/left.hpp
 	libs/options/include/fcppt/options/left_fwd.hpp
 	libs/options/include/fcppt/options/leftover_error.hpp
@@ -245,7 +244,6 @@ set(
 	libs/options/src/options/exception.cpp
 	libs/options/src/options/flag_usage.cpp
 	libs/options/src/options/invalid_command_error.cpp
-	libs/options/src/options/is_option.cpp
 	libs/options/src/options/leftover_error.cpp
 	libs/options/src/options/many_usage.cpp
 	libs/options/src/options/missing_argument_error.cpp

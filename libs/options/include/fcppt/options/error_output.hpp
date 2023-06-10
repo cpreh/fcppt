@@ -12,6 +12,9 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::io::ostream &operator<<(fcppt::io::ostream &, fcppt::options::error const &);
 }

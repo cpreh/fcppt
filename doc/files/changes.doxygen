@@ -20,9 +20,18 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>Changed error types from just being strings to having actual structure.</li>
+	<li>Changed the return type of <code>usage</code> from a string to #fcppt::options::usage.
+	In addition, #fcppt::options::help_result now also uses #fcppt::options::usage instead
+	of #fcppt::options::help_text.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptparse
 	<ul>
-	<li>Improved error types from just being strings to having actual structure.</li>
+	<li>Changed error types from just being strings to having actual structure.</li>
 	</ul>
 </li>
 

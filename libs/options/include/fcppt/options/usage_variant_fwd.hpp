@@ -21,6 +21,9 @@
 namespace fcppt::options
 {
 
+/**
+\ingroup fcpptoptions
+*/
 using usage_variant = fcppt::variant::object<
     fcppt::options::argument_usage,
     fcppt::options::commands_usage,

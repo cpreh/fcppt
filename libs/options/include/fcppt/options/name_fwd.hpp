@@ -11,6 +11,9 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 FCPPT_DECLARE_STRONG_TYPEDEF(fcppt::string, name);
 
 }

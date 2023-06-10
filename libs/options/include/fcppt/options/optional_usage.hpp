@@ -14,6 +14,9 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 class optional_usage
 {
 public:

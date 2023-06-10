@@ -20,6 +20,9 @@
 
 namespace fcppt::options
 {
+/**
+\ingroup fcpptoptions
+*/
 class option_usage
 {
 public:
