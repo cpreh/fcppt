@@ -526,7 +526,7 @@ a switch that accepts <code>"--help"</code>:
 
 \snippet options/help.cpp options_parse_help
 
-If the help switch matches, the function returns an #fcppt::options::help_text,
+If the help switch matches, the function returns an #fcppt::options::usage,
 otherwise it returns a regular #fcppt::options::result.
 
 \snippet options/help.cpp options_help_match
@@ -615,7 +615,7 @@ A set of option names (parameters with an argument) this parser recognizes.
 
 <tr>
 <td>
-<code>fcppt::string usage() const</code>
+<code>fcppt::options::usage usage() const</code>
 </td>
 <td>
 A description on how to use this parser.
