@@ -9,7 +9,7 @@
 #include <fcppt/either/object.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/missing_option_argument_error.hpp>
-#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/options/detail/use_option_result_fwd.hpp>
+#include <fcppt/options/detail/use_option_success.hpp>
 
 #endif

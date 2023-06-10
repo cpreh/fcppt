@@ -6,8 +6,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/missing_command_error.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <vector>
 #include <utility>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 fcppt::options::missing_command_error::missing_command_error(std::vector<fcppt::string> &&_commands)

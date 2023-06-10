@@ -6,8 +6,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/option_usage.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/option_usage.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/type_name.hpp>

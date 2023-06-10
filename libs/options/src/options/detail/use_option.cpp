@@ -14,8 +14,8 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_option.hpp>
-#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
+#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/options/impl/flag_name.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>

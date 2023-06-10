@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONS_ERROR_PAIR_HPP_INCLUDED
 
 #include <fcppt/recursive_impl.hpp>
-#include <fcppt/options/error_pair_fwd.hpp>
 #include <fcppt/options/error_fwd.hpp>
+#include <fcppt/options/error_pair_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options

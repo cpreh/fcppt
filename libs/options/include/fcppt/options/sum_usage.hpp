@@ -8,8 +8,8 @@
 
 #include <fcppt/recursive.hpp>
 #include <fcppt/recursive_comparison.hpp>
-#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/options/sum_usage_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options

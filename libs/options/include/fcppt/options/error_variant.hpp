@@ -11,8 +11,8 @@
 #include <fcppt/options/dual_option_error.hpp>
 #include <fcppt/options/error_pair.hpp>
 #include <fcppt/options/error_variant_fwd.hpp>
-#include <fcppt/options/leftover_error.hpp>
 #include <fcppt/options/invalid_command_error.hpp>
+#include <fcppt/options/leftover_error.hpp>
 #include <fcppt/options/missing_argument_error.hpp>
 #include <fcppt/options/missing_command_error.hpp>
 #include <fcppt/options/missing_flag_error.hpp>

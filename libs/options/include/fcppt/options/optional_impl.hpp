@@ -12,8 +12,8 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/deref.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>

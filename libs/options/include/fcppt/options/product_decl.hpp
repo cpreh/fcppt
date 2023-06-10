@@ -12,8 +12,8 @@
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/product_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

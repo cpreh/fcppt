@@ -10,8 +10,8 @@
 #include <fcppt/options/dual_flag_error_fwd.hpp>
 #include <fcppt/options/dual_option_error_fwd.hpp>
 #include <fcppt/options/error_pair_fwd.hpp>
-#include <fcppt/options/leftover_error_fwd.hpp>
 #include <fcppt/options/invalid_command_error_fwd.hpp>
+#include <fcppt/options/leftover_error_fwd.hpp>
 #include <fcppt/options/missing_argument_error_fwd.hpp>
 #include <fcppt/options/missing_command_error_fwd.hpp>
 #include <fcppt/options/missing_flag_error_fwd.hpp>

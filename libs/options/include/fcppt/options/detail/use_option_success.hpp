@@ -8,8 +8,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/options/name.hpp>
-#include <fcppt/options/detail/use_option_success_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
+#include <fcppt/options/detail/use_option_success_fwd.hpp>
 
 namespace fcppt::options::detail
 {

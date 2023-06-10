@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/recursive_comparison.hpp>
-#include <fcppt/options/error_pair.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_pair.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

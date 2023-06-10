@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONS_MISSING_ARGUMENT_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_ARGUMENT_ERROR_HPP_INCLUDED
 
-#include <fcppt/options/missing_argument_error_fwd.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/missing_argument_error_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options
