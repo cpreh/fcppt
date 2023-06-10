@@ -603,6 +603,9 @@ set(
 	libs/core/include/fcppt/detail/const.hpp
 	libs/core/include/fcppt/detail/cyclic_iterator_base.hpp
 	libs/core/include/fcppt/detail/equal.hpp
+	libs/core/include/fcppt/detail/indent/extra.hpp
+	libs/core/include/fcppt/detail/indent/level.hpp
+	libs/core/include/fcppt/detail/indent/print.hpp
 	libs/core/include/fcppt/detail/main.hpp
 	libs/core/include/fcppt/detail/main_wchar.hpp
 	libs/core/include/fcppt/detail/make_char_literals.hpp
