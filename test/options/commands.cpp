@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/make_recursive.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
@@ -11,8 +14,12 @@
 #include <fcppt/catch/record.hpp>
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/variant.hpp>
+#include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/argument_usage.hpp>
+#include <fcppt/options/commands_usage.hpp>
 #include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_commands.hpp>
@@ -20,21 +27,28 @@
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/no_default_value.hpp>
 #include <fcppt/options/option.hpp>
+#include <fcppt/options/option_usage.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/options_label.hpp>
 #include <fcppt/options/parse.hpp>
+#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_label.hpp>
+#include <fcppt/options/sub_command_usage.hpp>
 #include <fcppt/options/unit.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
@@ -71,9 +85,7 @@ TEST_CASE("options::commands", "[options]")
               fcppt::options::long_name{FCPPT_TEXT("option")},
               fcppt::options::no_default_value<int>(),
               fcppt::options::optional_help_text{}},
-          fcppt::options::optional_help_text{})
-
-          )};
+          fcppt::options::optional_help_text{}))};
 
   using result_type = fcppt::options::result_of<decltype(commands)>;
 
@@ -133,6 +145,38 @@ TEST_CASE("options::commands", "[options]")
                 FCPPT_TEXT("foo"),
             })
             .has_failure());
+
+  CHECK(
+      commands.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::commands_usage{
+          fcppt::make_recursive(
+              fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::option_usage{
+                  fcppt::options::option_usage::default_value_type{
+                      fcppt::optional::object<fcppt::string>{}},
+                  fcppt::options::long_name{FCPPT_TEXT("option")},
+                  fcppt::options::optional_short_name{},
+                  fcppt::options::pretty_type<int>(),
+                  fcppt::options::optional_help_text{}}}}),
+          fcppt::container::make<std::vector<fcppt::options::sub_command_usage>>(
+              fcppt::options::sub_command_usage{
+                  FCPPT_TEXT("foo"),
+                  fcppt::make_recursive(fcppt::options::usage{
+                      fcppt::options::usage_variant{fcppt::options::argument_usage{
+                          fcppt::options::long_name{FCPPT_TEXT("arg1")},
+                          fcppt::options::pretty_type<int>(),
+                          fcppt::options::optional_help_text{}}}}),
+                  fcppt::options::optional_help_text{}},
+              fcppt::options::sub_command_usage{
+                  FCPPT_TEXT("bar"),
+                  fcppt::make_recursive(fcppt::options::usage{
+                      fcppt::options::usage_variant{fcppt::options::option_usage{
+                          fcppt::options::option_usage::default_value_type{
+                              fcppt::optional::object<fcppt::string>{}},
+                          fcppt::options::long_name{FCPPT_TEXT("option")},
+                          fcppt::options::optional_short_name{},
+                          fcppt::options::pretty_type<int>(),
+                          fcppt::options::optional_help_text{}}}}),
+                  fcppt::options::optional_help_text{}})}}});
 }
 
 TEST_CASE("options::commands duplicate names", "[options]")
@@ -154,7 +198,6 @@ TEST_CASE("options::commands duplicate names", "[options]")
               FCPPT_TEXT("foo"),
               fcppt::options::unit<unit_label>{},
               fcppt::options::optional_help_text{})
-
               ),
       fcppt::options::duplicate_names);
 }

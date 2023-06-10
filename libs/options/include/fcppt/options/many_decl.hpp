@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_MANY_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_MANY_DECL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/mpl/arg.hpp>
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/lambda.hpp>
@@ -17,6 +16,7 @@
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -62,7 +62,7 @@ public:
 
   [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-  [[nodiscard]] fcppt::string usage() const;
+  [[nodiscard]] fcppt::options::usage usage() const;
 
 private:
   Parser parser_;

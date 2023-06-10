@@ -14,6 +14,7 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/options/argument_conversion_error.hpp>
 #include <fcppt/options/argument_decl.hpp>
+#include <fcppt/options/argument_usage.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -29,9 +30,9 @@
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
-#include <fcppt/options/detail/help_text.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
-#include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -100,10 +101,10 @@ fcppt::options::option_name_set fcppt::options::argument<Label, Type>::option_na
 }
 
 template <typename Label, typename Type>
-fcppt::string fcppt::options::argument<Label, Type>::usage() const
+fcppt::options::usage fcppt::options::argument<Label, Type>::usage() const
 {
-  return this->long_name_.get() + fcppt::options::detail::type_annotation<Type>() +
-         fcppt::options::detail::help_text(this->help_text_);
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::argument_usage{
+      this->long_name_, fcppt::options::pretty_type<Type>(), this->help_text_}}};
 }
 
 #endif

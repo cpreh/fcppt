@@ -15,6 +15,7 @@
 #include <fcppt/catch/strong_typedef.hpp>
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/options/flag_usage.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -23,9 +24,12 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/unit_switch.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -55,6 +59,13 @@ TEST_CASE("options::unit_switch", "[options]")
       fcppt::options::make_success(result_type{dummy_label{} = fcppt::unit{}}));
 
   CHECK(fcppt::options::parse(switch_, fcppt::args_vector{}).has_failure());
+
+  CHECK(
+      switch_.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::flag_usage{
+          fcppt::options::long_name{FCPPT_TEXT("flag")},
+          fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
+          fcppt::options::optional_help_text{}}}});
 }
 
 FCPPT_CATCH_END

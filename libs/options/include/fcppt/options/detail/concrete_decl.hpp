@@ -7,13 +7,13 @@
 #define FCPPT_OPTIONS_DETAIL_CONCRETE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/options/base_decl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/options/detail/concrete_fwd.hpp>
 
 namespace fcppt::options::detail
@@ -39,7 +39,7 @@ public:
 
   [[nodiscard]] fcppt::options::option_name_set option_names() const override;
 
-  [[nodiscard]] fcppt::string usage() const override;
+  [[nodiscard]] fcppt::options::usage usage() const override;
 
 private:
   // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)

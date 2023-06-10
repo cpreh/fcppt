@@ -23,9 +23,13 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/unit.hpp>
+#include <fcppt/options/unit_usage.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -50,6 +54,10 @@ TEST_CASE("options::unit", "[options]")
       fcppt::either::make_failure<fcppt::options::result_of<unit_type>>(
           fcppt::options::error{fcppt::options::error_variant{
               fcppt::options::leftover_error{fcppt::args_vector{FCPPT_TEXT("")}}}}));
+
+  CHECK(
+      unit.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::unit_usage{}}});
 }
 
 FCPPT_CATCH_END

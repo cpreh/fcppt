@@ -20,6 +20,8 @@
 #include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -61,8 +63,8 @@ try
       [](fcppt::options::result<fcppt::options::result_of<parser_type>> const &_result) {
         fcppt::io::cout() << _result << FCPPT_TEXT('\n');
       },
-      [](fcppt::options::help_text const &_help_text) {
-        fcppt::io::cout() << _help_text << FCPPT_TEXT('\n');
+      [](fcppt::options::usage const &_usage) {
+        fcppt::io::cout() << _usage << FCPPT_TEXT('\n');
       });
   // ![options_help_match]
 

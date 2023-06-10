@@ -13,7 +13,6 @@
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_switch.hpp>
-#include <fcppt/options/help_text.hpp>
 #include <fcppt/options/left.hpp>
 #include <fcppt/options/make_sum.hpp>
 #include <fcppt/options/parse_context.hpp>
@@ -77,7 +76,7 @@ fcppt::options::help_result<fcppt::options::result_of<Parser>> parse_help(
             std::move(fcppt::record::get<label>(_result)),
             [&_parser](
                 fcppt::options::left<fcppt::options::result_of<typename sum_type::left>> &&) {
-              return return_type{fcppt::options::help_text{fcppt::options::deref(_parser).usage()}};
+              return return_type{fcppt::options::deref(_parser).usage()};
             },
             [](fcppt::options::right<fcppt::options::result_of<typename sum_type::right>>
                    &&_inner_result) {

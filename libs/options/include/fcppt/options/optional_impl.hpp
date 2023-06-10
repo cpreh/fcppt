@@ -6,8 +6,7 @@
 #ifndef FCPPT_OPTIONS_OPTIONAL_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTIONAL_IMPL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/make_recursive.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/make.hpp>
@@ -19,12 +18,15 @@
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_decl.hpp>
+#include <fcppt/options/optional_usage.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -48,7 +50,7 @@ fcppt::options::optional<Parser>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &_context) const
 {
   return fcppt::either::match(
-      fcppt::options::deref(parser_).parse(fcppt::options::state{_state}, _context),
+      fcppt::options::deref(this->parser_).parse(fcppt::options::state{_state}, _context),
       [](fcppt::options::parse_error &&_error) {
         FCPPT_PP_PUSH_WARNING
         FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -86,19 +88,20 @@ fcppt::options::optional<Parser>::parse(
 template <typename Parser>
 fcppt::options::flag_name_set fcppt::options::optional<Parser>::flag_names() const
 {
-  return fcppt::options::deref(parser_).flag_names();
+  return fcppt::options::deref(this->parser_).flag_names();
 }
 
 template <typename Parser>
 fcppt::options::option_name_set fcppt::options::optional<Parser>::option_names() const
 {
-  return fcppt::options::deref(parser_).option_names();
+  return fcppt::options::deref(this->parser_).option_names();
 }
 
 template <typename Parser>
-fcppt::string fcppt::options::optional<Parser>::usage() const
+fcppt::options::usage fcppt::options::optional<Parser>::usage() const
 {
-  return FCPPT_TEXT("[ ") + fcppt::options::deref(parser_).usage() + FCPPT_TEXT(" ]");
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::optional_usage{
+      fcppt::make_recursive(fcppt::options::deref(this->parser_).usage())}}};
 }
 
 #endif

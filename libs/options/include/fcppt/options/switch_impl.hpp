@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_SWITCH_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_SWITCH_IMPL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>
@@ -16,6 +15,7 @@
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/switch_decl.hpp>
+#include <fcppt/options/usage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -55,7 +55,7 @@ fcppt::options::option_name_set fcppt::options::switch_<Label>::option_names() c
 }
 
 template <typename Label>
-fcppt::string fcppt::options::switch_<Label>::usage() const
+fcppt::options::usage fcppt::options::switch_<Label>::usage() const
 {
   return this->impl_.usage();
 }
@@ -70,6 +70,12 @@ template <typename Label>
 fcppt::options::long_name const &fcppt::options::switch_<Label>::long_name() const
 {
   return this->impl_.long_name();
+}
+
+template <typename Label>
+fcppt::options::optional_help_text const &fcppt::options::switch_<Label>::help_text() const
+{
+  return this->impl_.help_text();
 }
 
 #endif

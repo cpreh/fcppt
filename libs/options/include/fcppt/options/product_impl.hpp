@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
+#include <fcppt/make_recursive.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -25,9 +26,12 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/product_decl.hpp>
+#include <fcppt/options/product_usage.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -86,10 +90,11 @@ fcppt::options::option_name_set fcppt::options::product<Left, Right>::option_nam
 }
 
 template <typename Left, typename Right>
-fcppt::string fcppt::options::product<Left, Right>::usage() const
+fcppt::options::usage fcppt::options::product<Left, Right>::usage() const
 {
-  return fcppt::options::deref(left_).usage() + FCPPT_TEXT('\n') +
-         fcppt::options::deref(right_).usage();
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::product_usage{
+      fcppt::make_recursive(fcppt::options::deref(this->left_).usage()),
+      fcppt::make_recursive(fcppt::options::deref(this->right_).usage())}}};
 }
 
 template <typename Left, typename Right>

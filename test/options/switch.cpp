@@ -22,7 +22,7 @@
 #include <fcppt/options/switch.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

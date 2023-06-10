@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_SUM_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_SUM_DECL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/left_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>
@@ -16,6 +15,7 @@
 #include <fcppt/options/right_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/sum_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -69,7 +69,7 @@ public:
 
   [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-  [[nodiscard]] fcppt::string usage() const;
+  [[nodiscard]] fcppt::options::usage usage() const;
 
 private:
   Left left_;

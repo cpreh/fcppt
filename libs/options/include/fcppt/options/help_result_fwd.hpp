@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONS_HELP_RESULT_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_HELP_RESULT_FWD_HPP_INCLUDED
 
-#include <fcppt/options/help_text_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 
 namespace fcppt::options
@@ -17,11 +17,11 @@ namespace fcppt::options
 
 \ingroup fcpptoption
 
-A help result is either a regular result or a help text.
+A help result is either a regular result or the usage of the parser.
 */
 template <typename Result>
 using help_result =
-    fcppt::variant::object<fcppt::options::result<Result>, fcppt::options::help_text>;
+    fcppt::variant::object<fcppt::options::result<Result>, fcppt::options::usage>;
 
 }
 

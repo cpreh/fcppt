@@ -59,6 +59,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/switch.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_output.hpp>
 #include <fcppt/record/are_equivalent.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
@@ -229,8 +231,8 @@ try
               return EXIT_SUCCESS;
             });
       },
-      [](fcppt::options::help_text const &_help_text) {
-        fcppt::io::cout() << _help_text << FCPPT_TEXT('\n');
+      [](fcppt::options::usage const &_usage) {
+        fcppt::io::cout() << _usage << FCPPT_TEXT('\n');
 
         return EXIT_SUCCESS;
       });

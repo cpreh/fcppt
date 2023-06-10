@@ -7,8 +7,7 @@
 #define FCPPT_OPTIONS_SUM_IMPL_HPP_INCLUDED
 
 #include <fcppt/copy.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/make_recursive.hpp>
 #include <fcppt/container/set_union.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
@@ -24,8 +23,10 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/sum_decl.hpp>
+#include <fcppt/options/sum_usage.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
-#include <fcppt/options/detail/indent.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -101,13 +102,11 @@ fcppt::options::option_name_set fcppt::options::sum<Label, Left, Right>::option_
 }
 
 template <typename Label, typename Left, typename Right>
-fcppt::string fcppt::options::sum<Label, Left, Right>::usage() const
+fcppt::options::usage fcppt::options::sum<Label, Left, Right>::usage() const
 {
-  return FCPPT_TEXT("(\n") +
-         fcppt::options::detail::indent(fcppt::options::deref(this->left_).usage()) +
-         FCPPT_TEXT("\n|\n") +
-         fcppt::options::detail::indent(fcppt::options::deref(this->right_).usage()) +
-         FCPPT_TEXT("\n)");
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::sum_usage{
+      fcppt::make_recursive(fcppt::options::deref(this->left_).usage()),
+      fcppt::make_recursive(fcppt::options::deref(this->right_).usage())}}};
 }
 
 #endif

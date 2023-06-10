@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
@@ -13,19 +15,25 @@
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_default_value.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/no_default_value.hpp>
 #include <fcppt/options/option.hpp>
+#include <fcppt/options/option_usage.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
+#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/short_name.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -62,6 +70,16 @@ TEST_CASE("options::option", "[options]")
       fcppt::options::parse(int_option, fcppt::args_vector{FCPPT_TEXT("--option")}).has_failure());
 
   CHECK(fcppt::options::parse(int_option, fcppt::args_vector{FCPPT_TEXT("--flag")}).has_failure());
+
+  CHECK(
+      int_option.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::option_usage{
+          fcppt::options::option_usage::default_value_type{
+              fcppt::optional::object<fcppt::string>{}},
+          fcppt::options::long_name{FCPPT_TEXT("option")},
+          fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
+          fcppt::options::pretty_type<int>(),
+          fcppt::options::optional_help_text{}}}});
 
   int_option_type const int_option_with_default{
       fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},

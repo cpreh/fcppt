@@ -6,14 +6,14 @@
 #ifndef FCPPT_OPTIONS_MANY_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_MANY_IMPL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/make_recursive.hpp>
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/many_decl.hpp>
+#include <fcppt/options/many_usage.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
@@ -22,6 +22,8 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
@@ -96,9 +98,10 @@ fcppt::options::option_name_set fcppt::options::many<Parser>::option_names() con
 }
 
 template <typename Parser>
-fcppt::string fcppt::options::many<Parser>::usage() const
+fcppt::options::usage fcppt::options::many<Parser>::usage() const
 {
-  return FCPPT_TEXT("[ ") + fcppt::options::deref(this->parser_).usage() + FCPPT_TEXT(" ]*");
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::many_usage{
+      fcppt::make_recursive(fcppt::options::deref(this->parser_).usage())}}};
 }
 
 #endif

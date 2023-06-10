@@ -1728,10 +1728,11 @@ set(
 	libs/options/include/fcppt/options/argument.hpp
 	libs/options/include/fcppt/options/argument_conversion_error.hpp
 	libs/options/include/fcppt/options/argument_conversion_error_fwd.hpp
-	libs/options/include/fcppt/options/argument_conversion_error_output.hpp
 	libs/options/include/fcppt/options/argument_decl.hpp
 	libs/options/include/fcppt/options/argument_fwd.hpp
 	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/argument_usage.hpp
+	libs/options/include/fcppt/options/argument_usage_fwd.hpp
 	libs/options/include/fcppt/options/base.hpp
 	libs/options/include/fcppt/options/base_decl.hpp
 	libs/options/include/fcppt/options/base_fwd.hpp
@@ -1741,6 +1742,8 @@ set(
 	libs/options/include/fcppt/options/commands_decl.hpp
 	libs/options/include/fcppt/options/commands_fwd.hpp
 	libs/options/include/fcppt/options/commands_impl.hpp
+	libs/options/include/fcppt/options/commands_usage.hpp
+	libs/options/include/fcppt/options/commands_usage_fwd.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/default_value.hpp
 	libs/options/include/fcppt/options/default_value_fwd.hpp
@@ -1756,16 +1759,12 @@ set(
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
 	libs/options/include/fcppt/options/detail/flag_is_short.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
-	libs/options/include/fcppt/options/detail/help_text.hpp
-	libs/options/include/fcppt/options/detail/indent.hpp
 	libs/options/include/fcppt/options/detail/left_tag.hpp
-	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
 	libs/options/include/fcppt/options/detail/missing_error_to_error.hpp
 	libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 	libs/options/include/fcppt/options/detail/pop_arg.hpp
 	libs/options/include/fcppt/options/detail/right_tag.hpp
 	libs/options/include/fcppt/options/detail/split_command.hpp
-	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/detail/use_flag.hpp
 	libs/options/include/fcppt/options/detail/use_option.hpp
 	libs/options/include/fcppt/options/detail/use_option_result.hpp
@@ -1774,10 +1773,8 @@ set(
 	libs/options/include/fcppt/options/detail/use_option_success_fwd.hpp
 	libs/options/include/fcppt/options/dual_flag_error.hpp
 	libs/options/include/fcppt/options/dual_flag_error_fwd.hpp
-	libs/options/include/fcppt/options/dual_flag_error_output.hpp
 	libs/options/include/fcppt/options/dual_option_error.hpp
 	libs/options/include/fcppt/options/dual_option_error_fwd.hpp
-	libs/options/include/fcppt/options/dual_option_error_output.hpp
 	libs/options/include/fcppt/options/duplicate_names.hpp
 	libs/options/include/fcppt/options/duplicate_names_fwd.hpp
 	libs/options/include/fcppt/options/error.hpp
@@ -1785,7 +1782,6 @@ set(
 	libs/options/include/fcppt/options/error_output.hpp
 	libs/options/include/fcppt/options/error_pair.hpp
 	libs/options/include/fcppt/options/error_pair_fwd.hpp
-	libs/options/include/fcppt/options/error_pair_output.hpp
 	libs/options/include/fcppt/options/error_variant.hpp
 	libs/options/include/fcppt/options/error_variant_fwd.hpp
 	libs/options/include/fcppt/options/exception.hpp
@@ -1797,6 +1793,8 @@ set(
 	libs/options/include/fcppt/options/flag_name.hpp
 	libs/options/include/fcppt/options/flag_name_fwd.hpp
 	libs/options/include/fcppt/options/flag_name_set.hpp
+	libs/options/include/fcppt/options/flag_usage.hpp
+	libs/options/include/fcppt/options/flag_usage_fwd.hpp
 	libs/options/include/fcppt/options/help_result.hpp
 	libs/options/include/fcppt/options/help_result_fwd.hpp
 	libs/options/include/fcppt/options/help_switch.hpp
@@ -1808,13 +1806,11 @@ set(
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
 	libs/options/include/fcppt/options/invalid_command_error.hpp
 	libs/options/include/fcppt/options/invalid_command_error_fwd.hpp
-	libs/options/include/fcppt/options/invalid_command_error_output.hpp
 	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/left.hpp
 	libs/options/include/fcppt/options/left_fwd.hpp
 	libs/options/include/fcppt/options/leftover_error.hpp
 	libs/options/include/fcppt/options/leftover_error_fwd.hpp
-	libs/options/include/fcppt/options/leftover_error_output.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_active_value.hpp
@@ -1832,12 +1828,12 @@ set(
 	libs/options/include/fcppt/options/many_decl.hpp
 	libs/options/include/fcppt/options/many_fwd.hpp
 	libs/options/include/fcppt/options/many_impl.hpp
+	libs/options/include/fcppt/options/many_usage.hpp
+	libs/options/include/fcppt/options/many_usage_fwd.hpp
 	libs/options/include/fcppt/options/missing_argument_error.hpp
 	libs/options/include/fcppt/options/missing_argument_error_fwd.hpp
-	libs/options/include/fcppt/options/missing_argument_error_output.hpp
 	libs/options/include/fcppt/options/missing_command_error.hpp
 	libs/options/include/fcppt/options/missing_command_error_fwd.hpp
-	libs/options/include/fcppt/options/missing_command_error_output.hpp
 	libs/options/include/fcppt/options/missing_error.hpp
 	libs/options/include/fcppt/options/missing_error_fwd.hpp
 	libs/options/include/fcppt/options/missing_error_pair.hpp
@@ -1846,20 +1842,16 @@ set(
 	libs/options/include/fcppt/options/missing_error_variant_fwd.hpp
 	libs/options/include/fcppt/options/missing_flag_error.hpp
 	libs/options/include/fcppt/options/missing_flag_error_fwd.hpp
-	libs/options/include/fcppt/options/missing_flag_error_output.hpp
 	libs/options/include/fcppt/options/missing_option_argument_error.hpp
 	libs/options/include/fcppt/options/missing_option_argument_error_fwd.hpp
-	libs/options/include/fcppt/options/missing_option_argument_error_output.hpp
 	libs/options/include/fcppt/options/missing_option_error.hpp
 	libs/options/include/fcppt/options/missing_option_error_fwd.hpp
-	libs/options/include/fcppt/options/missing_option_error_output.hpp
 	libs/options/include/fcppt/options/name.hpp
 	libs/options/include/fcppt/options/name_fwd.hpp
 	libs/options/include/fcppt/options/no_default_value.hpp
 	libs/options/include/fcppt/options/option.hpp
 	libs/options/include/fcppt/options/option_conversion_error.hpp
 	libs/options/include/fcppt/options/option_conversion_error_fwd.hpp
-	libs/options/include/fcppt/options/option_conversion_error_output.hpp
 	libs/options/include/fcppt/options/option_decl.hpp
 	libs/options/include/fcppt/options/option_fwd.hpp
 	libs/options/include/fcppt/options/option_impl.hpp
@@ -1867,6 +1859,8 @@ set(
 	libs/options/include/fcppt/options/option_name_comparison.hpp
 	libs/options/include/fcppt/options/option_name_fwd.hpp
 	libs/options/include/fcppt/options/option_name_set.hpp
+	libs/options/include/fcppt/options/option_usage.hpp
+	libs/options/include/fcppt/options/option_usage_fwd.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
 	libs/options/include/fcppt/options/optional_help_text.hpp
@@ -1874,6 +1868,8 @@ set(
 	libs/options/include/fcppt/options/optional_impl.hpp
 	libs/options/include/fcppt/options/optional_short_name.hpp
 	libs/options/include/fcppt/options/optional_short_name_fwd.hpp
+	libs/options/include/fcppt/options/optional_usage.hpp
+	libs/options/include/fcppt/options/optional_usage_fwd.hpp
 	libs/options/include/fcppt/options/options_label.hpp
 	libs/options/include/fcppt/options/parse.hpp
 	libs/options/include/fcppt/options/parse_context.hpp
@@ -1890,6 +1886,8 @@ set(
 	libs/options/include/fcppt/options/product_decl.hpp
 	libs/options/include/fcppt/options/product_fwd.hpp
 	libs/options/include/fcppt/options/product_impl.hpp
+	libs/options/include/fcppt/options/product_usage.hpp
+	libs/options/include/fcppt/options/product_usage_fwd.hpp
 	libs/options/include/fcppt/options/result.hpp
 	libs/options/include/fcppt/options/result_fwd.hpp
 	libs/options/include/fcppt/options/result_of.hpp
@@ -1907,9 +1905,13 @@ set(
 	libs/options/include/fcppt/options/sub_command_fwd.hpp
 	libs/options/include/fcppt/options/sub_command_impl.hpp
 	libs/options/include/fcppt/options/sub_command_label.hpp
+	libs/options/include/fcppt/options/sub_command_usage.hpp
+	libs/options/include/fcppt/options/sub_command_usage_fwd.hpp
 	libs/options/include/fcppt/options/sum_decl.hpp
 	libs/options/include/fcppt/options/sum_fwd.hpp
 	libs/options/include/fcppt/options/sum_impl.hpp
+	libs/options/include/fcppt/options/sum_usage.hpp
+	libs/options/include/fcppt/options/sum_usage_fwd.hpp
 	libs/options/include/fcppt/options/switch.hpp
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
@@ -1924,6 +1926,13 @@ set(
 	libs/options/include/fcppt/options/unit_switch_decl.hpp
 	libs/options/include/fcppt/options/unit_switch_fwd.hpp
 	libs/options/include/fcppt/options/unit_switch_impl.hpp
+	libs/options/include/fcppt/options/unit_usage.hpp
+	libs/options/include/fcppt/options/unit_usage_fwd.hpp
+	libs/options/include/fcppt/options/usage.hpp
+	libs/options/include/fcppt/options/usage_fwd.hpp
+	libs/options/include/fcppt/options/usage_output.hpp
+	libs/options/include/fcppt/options/usage_variant.hpp
+	libs/options/include/fcppt/options/usage_variant_fwd.hpp
 	libs/parse/include/fcppt/parse/alternative_decl.hpp
 	libs/parse/include/fcppt/parse/alternative_error_decl.hpp
 	libs/parse/include/fcppt/parse/alternative_error_fwd.hpp

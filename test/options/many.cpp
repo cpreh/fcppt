@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/make_recursive.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp>
@@ -13,15 +14,21 @@
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/argument_usage.hpp>
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_many.hpp>
 #include <fcppt/options/make_success.hpp>
+#include <fcppt/options/many_usage.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
+#include <fcppt/options/pretty_type.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -50,6 +57,14 @@ TEST_CASE("options::many", "[options]")
   CHECK(
       fcppt::options::parse(parser, fcppt::args_vector{}) ==
       fcppt::options::make_success(parser_type::result_type{arg_label{} = std::vector<int>{}}));
+
+  CHECK(
+      parser.usage() == fcppt::options::usage{fcppt::options::usage_variant{
+                            fcppt::options::many_usage{fcppt::make_recursive(fcppt::options::usage{
+                                fcppt::options::usage_variant{fcppt::options::argument_usage{
+                                    fcppt::options::long_name{FCPPT_TEXT("arg1")},
+                                    fcppt::options::pretty_type<int>(),
+                                    fcppt::options::optional_help_text{}}}})}}});
 }
 
 FCPPT_CATCH_END

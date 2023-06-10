@@ -8,7 +8,6 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/optional/maybe.hpp>
@@ -20,6 +19,7 @@
 #include <fcppt/options/flag_decl.hpp>
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/flag_usage.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -30,10 +30,10 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
-#include <fcppt/options/detail/help_text.hpp>
-#include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/object_impl.hpp>
@@ -122,11 +122,10 @@ fcppt::options::option_name_set fcppt::options::flag<Label, Type>::option_names(
 }
 
 template <typename Label, typename Type>
-fcppt::string fcppt::options::flag<Label, Type>::usage() const
+fcppt::options::usage fcppt::options::flag<Label, Type>::usage() const
 {
-  return FCPPT_TEXT("[ ") +
-         fcppt::options::detail::long_or_short_name(this->long_name_, this->short_name_) +
-         FCPPT_TEXT(" ]") + fcppt::options::detail::help_text(this->help_text_);
+  return fcppt::options::usage{fcppt::options::usage_variant{
+      fcppt::options::flag_usage{this->long_name_, this->short_name_, this->help_text_}}};
 }
 
 template <typename Label, typename Type>
@@ -139,6 +138,12 @@ template <typename Label, typename Type>
 fcppt::options::long_name const &fcppt::options::flag<Label, Type>::long_name() const
 {
   return this->long_name_;
+}
+
+template <typename Label, typename Type>
+fcppt::options::optional_help_text const &fcppt::options::flag<Label, Type>::help_text() const
+{
+  return this->help_text_;
 }
 
 #endif

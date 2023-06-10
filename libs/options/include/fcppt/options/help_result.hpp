@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONS_HELP_RESULT_HPP_INCLUDED
 
 #include <fcppt/options/help_result_fwd.hpp>
-#include <fcppt/options/help_text.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/usage.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
 #endif

@@ -16,6 +16,7 @@
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
+#include <fcppt/options/flag_usage.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_active_value.hpp>
 #include <fcppt/options/make_inactive_value.hpp>
@@ -24,9 +25,12 @@
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/short_name.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -58,6 +62,13 @@ TEST_CASE("options::flag", "[options]")
   CHECK(
       fcppt::options::parse(int_flag, fcppt::args_vector{}) ==
       fcppt::options::make_success(int_flag_type::result_type{arg_label{} = 10}));
+
+  CHECK(
+      int_flag.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::flag_usage{
+          fcppt::options::long_name{FCPPT_TEXT("flag")},
+          fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
+          fcppt::options::optional_help_text{}}}});
 
   CHECK_THROWS_AS(
       int_flag_type(

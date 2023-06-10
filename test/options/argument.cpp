@@ -13,14 +13,19 @@
 #include <fcppt/catch/variant.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/argument_usage.hpp>
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
+#include <fcppt/options/pretty_type.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_output.hpp>
+#include <fcppt/test/options/catch_error.hpp>
+#include <fcppt/test/options/catch_usage.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -44,6 +49,13 @@ TEST_CASE("options::argument", "[options]")
   CHECK(fcppt::options::parse(int_arg, fcppt::args_vector{FCPPT_TEXT("test")}).has_failure());
 
   CHECK(fcppt::options::parse(int_arg, fcppt::args_vector{}).has_failure());
+
+  CHECK(
+      int_arg.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::argument_usage{
+          fcppt::options::long_name{FCPPT_TEXT("arg1")},
+          fcppt::options::pretty_type<int>(),
+          fcppt::options::optional_help_text{}}}});
 }
 
 FCPPT_CATCH_END

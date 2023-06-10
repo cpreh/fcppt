@@ -11,6 +11,7 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/apply.hpp>
 #include <fcppt/either/bind.hpp>
@@ -37,6 +38,7 @@
 #include <fcppt/options/option_decl.hpp>
 #include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/option_usage.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
@@ -46,10 +48,9 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
-#include <fcppt/options/detail/help_text.hpp>
-#include <fcppt/options/detail/long_or_short_name.hpp>
-#include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/options/detail/use_option.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -218,19 +219,16 @@ fcppt::options::option_name_set fcppt::options::option<Label, Type>::option_name
 }
 
 template <typename Label, typename Type>
-fcppt::string fcppt::options::option<Label, Type>::usage() const
+fcppt::options::usage fcppt::options::option<Label, Type>::usage() const
 {
-  return (default_value_.get().has_value() ? FCPPT_TEXT("[ ") : FCPPT_TEXT("")) +
-         fcppt::options::detail::long_or_short_name(long_name_, short_name_) +
-         fcppt::options::detail::type_annotation<Type>() +
-         (fcppt::optional::maybe(
-             default_value_.get(),
-             [] { return fcppt::string{}; },
-             [](Type const &_value) {
-               return FCPPT_TEXT(" / ") + fcppt::output_to_fcppt_string(_value);
-             })) +
-         (default_value_.get().has_value() ? FCPPT_TEXT(" ]") : FCPPT_TEXT("")) +
-         fcppt::options::detail::help_text(help_text_);
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::option_usage{
+      fcppt::options::option_usage::default_value_type{fcppt::optional::map(
+          this->default_value_.get(),
+          [](Type const &_value) { return fcppt::output_to_fcppt_string(_value); })},
+      this->long_name_,
+      this->short_name_,
+      fcppt::options::pretty_type<Type>(),
+      this->help_text_}}};
 }
 
 #endif

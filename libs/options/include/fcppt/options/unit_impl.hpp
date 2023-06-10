@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_UNIT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_UNIT_IMPL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
@@ -14,6 +13,9 @@
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/unit_decl.hpp>
+#include <fcppt/options/unit_usage.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/object_impl.hpp>
 
@@ -42,9 +44,9 @@ fcppt::options::option_name_set fcppt::options::unit<Label>::option_names() cons
 }
 
 template <typename Label>
-fcppt::string fcppt::options::unit<Label>::usage() const
+fcppt::options::usage fcppt::options::unit<Label>::usage() const
 {
-  return fcppt::string{};
+  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::unit_usage{}}};
 }
 
 #endif

@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_FLAG_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_DECL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/options/active_value.hpp>
 #include <fcppt/options/flag_fwd.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -18,6 +17,7 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>
 
@@ -80,12 +80,13 @@ public:
 
   [[nodiscard]] fcppt::options::option_name_set option_names() const;
 
-  [[nodiscard]] fcppt::string usage() const;
+  [[nodiscard]] fcppt::options::usage usage() const;
 
   [[nodiscard]] fcppt::options::optional_short_name const &short_name() const;
 
   [[nodiscard]] fcppt::options::long_name const &long_name() const;
 
+  [[nodiscard]] fcppt::options::optional_help_text const &help_text() const;
 private:
   fcppt::options::optional_short_name short_name_;
 

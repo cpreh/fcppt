@@ -6,11 +6,11 @@
 #ifndef FCPPT_OPTIONS_UNIT_SWITCH_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_UNIT_SWITCH_IMPL_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/flag_usage.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/missing_error_variant.hpp>
@@ -25,7 +25,8 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/unit_switch_decl.hpp>
-#include <fcppt/options/detail/long_or_short_name.hpp>
+#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -76,9 +77,10 @@ fcppt::options::option_name_set fcppt::options::unit_switch<Label>::option_names
 }
 
 template <typename Label>
-fcppt::string fcppt::options::unit_switch<Label>::usage() const
+fcppt::options::usage fcppt::options::unit_switch<Label>::usage() const
 {
-  return fcppt::options::detail::long_or_short_name(this->long_name(), this->short_name());
+  return fcppt::options::usage{fcppt::options::usage_variant{
+      fcppt::options::flag_usage{this->long_name(), this->short_name(), this->impl_.help_text()}}};
 }
 
 template <typename Label>
