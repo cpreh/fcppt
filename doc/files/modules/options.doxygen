@@ -95,8 +95,8 @@ define a function called <code>on_success</code> that receives <code>result_type
 
 \snippet options/simple.cpp options_on_success
 
-In case of failure we get an #fcppt::options::error, containing a message
-of what went wrong. In addition to that, we also print <code>parser.usage()</code> which
+In case of failure we get an #fcppt::options::error, telling the user what went wrong.
+In addition to that, we also print <code>parser.usage()</code> which
 tells the user what the expected format is:
 
 \snippet options/simple.cpp options_on_failure
@@ -185,7 +185,7 @@ the parser's result type, an error occurs.
 #fcppt::options::unit
 </td>
 <td>
-A parser that parses the empty command-line. This is useful, for example, when you want a
+A parser that parses nothing. This is useful, for example, when you want a
 sub-command that takes no arguments or options.
 </td>
 </tr>
