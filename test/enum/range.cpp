@@ -36,6 +36,7 @@ enum_vector copy_range(fcppt::enum_::range<test_enum> const _range)
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("enum::make_range", "[enum]")
 {
@@ -58,4 +59,5 @@ TEST_CASE("enum::make_range_start_end", "[enum]")
       enum_vector{test_enum::test2});
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

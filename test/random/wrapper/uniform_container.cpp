@@ -21,6 +21,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("random::wrapper::uniform_container", "[random]")
 {
@@ -39,4 +40,5 @@ TEST_CASE("random::wrapper::uniform_container", "[random]")
   CHECK(fcppt::algorithm::contains(strings, dist_inner(generator)));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

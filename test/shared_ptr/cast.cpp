@@ -46,6 +46,7 @@ using derived_ptr = fcppt::shared_ptr<derived>;
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("dynamic_pointer_cast", "[smartptr]")
 {
@@ -93,4 +94,5 @@ TEST_CASE("const_pointer_cast", "[smartptr]")
   CHECK(ptr.use_count() == 1L);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

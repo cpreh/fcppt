@@ -13,6 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("container::get_or_insert", "[container]")
 {
@@ -35,4 +36,5 @@ TEST_CASE("container::get_or_insert", "[container]")
   CHECK(&fcppt::container::get_or_insert(map, 42, inserter) == &it->second);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

@@ -21,6 +21,7 @@ using signal_type = fcppt::signal::object<void(), fcppt::signal::unregister::bas
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("signal unregister", "[signal]")
 {
@@ -76,4 +77,5 @@ TEST_CASE("signal unregister move", "[signals]")
   CHECK(unregistered);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

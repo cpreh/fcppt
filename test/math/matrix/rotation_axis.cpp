@@ -34,6 +34,7 @@ bool compare_matrices(Matrix const &_m1, Matrix const &_m2)
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
 {
@@ -70,4 +71,5 @@ TEST_CASE("math::matrix rotation_axis", "[math],[matrix]")
       fcppt::math::matrix::rotation_z(angle)));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

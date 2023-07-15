@@ -16,6 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::matrix::structure_cast", "[math],[matrix]")
 {
@@ -29,4 +30,5 @@ TEST_CASE("math::matrix::structure_cast", "[math],[matrix]")
           ui2_matrix(fcppt::math::matrix::row(1U, 2U), fcppt::math::matrix::row(3U, 4U))));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

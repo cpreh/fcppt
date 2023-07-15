@@ -14,6 +14,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("reference_to_const", "[ref]")
 {
@@ -22,4 +23,5 @@ TEST_CASE("reference_to_const", "[ref]")
   CHECK(fcppt::reference_to_const(fcppt::make_ref(value)) == fcppt::make_cref(value));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

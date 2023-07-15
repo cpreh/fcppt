@@ -18,6 +18,9 @@
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+
 namespace
 {
 FCPPT_RECORD_MAKE_LABEL(int_label);
@@ -45,8 +48,6 @@ void init_test()
 
 }
 
-FCPPT_CATCH_BEGIN
-
 TEST_CASE("record::init", "[record]")
 {
   using my_record = fcppt::record::object<fcppt::record::element<int_label, int>>;
@@ -54,4 +55,5 @@ TEST_CASE("record::init", "[record]")
   init_test<my_record>();
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

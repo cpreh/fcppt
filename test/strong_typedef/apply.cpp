@@ -27,6 +27,7 @@ FCPPT_DECLARE_STRONG_TYPEDEF(int_unique_ptr, strong_int_ptr);
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("strong_typedef_apply", "[strongtypedef]")
 {
@@ -56,4 +57,5 @@ TEST_CASE("strong_typedef_apply move", "[strongtypedef]")
   CHECK(*result.get().second == 42);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

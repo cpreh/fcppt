@@ -18,6 +18,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("container::maybe_back", "[container]")
 {
@@ -34,4 +35,5 @@ TEST_CASE("container::maybe_back", "[container]")
   CHECK(fcppt::container::maybe_back(vec12) == optional_int_ref(fcppt::make_cref(vec12.back())));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

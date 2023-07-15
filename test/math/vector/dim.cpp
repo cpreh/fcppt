@@ -18,6 +18,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::vector dim", "[math],[vector]")
 {
@@ -36,4 +37,5 @@ TEST_CASE("math::vector dim", "[math],[vector]")
   CHECK((i2_vector(6, 6) / i2_dim(2, 0)) == fcppt::optional::object<i2_vector>{});
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

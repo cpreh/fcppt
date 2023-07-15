@@ -16,6 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::matrix::binary_map", "[math],[matrix]")
 {
@@ -32,4 +33,5 @@ TEST_CASE("math::matrix::binary_map", "[math],[matrix]")
           }) == i2_matrix(fcppt::math::matrix::row(6, 12), fcppt::math::matrix::row(18, 24)));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

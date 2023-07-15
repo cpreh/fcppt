@@ -27,6 +27,7 @@ constexpr double const epsilon{0.001};
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::interpolation::linear", "[math],[interpolation]")
 {
@@ -79,4 +80,5 @@ TEST_CASE("math::interpolation::perlin_fifth_degree", "[math],[interpolation]")
       Catch::Matchers::WithinAbs(1.0, epsilon));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

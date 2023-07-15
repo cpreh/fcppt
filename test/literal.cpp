@@ -14,6 +14,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("literal fundamental", "[literal]") { CHECK(fcppt::literal<unsigned>(2) == 2U); }
 
@@ -24,4 +25,5 @@ TEST_CASE("literal strong_typedef", "[literal]")
   CHECK(fcppt::literal<my_type>(1).get() == 1);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

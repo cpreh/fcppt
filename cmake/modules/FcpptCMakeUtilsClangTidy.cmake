@@ -24,8 +24,6 @@ if(
 	# "-fuchsia-trailing-return" complains about code like X<decltype(_param)>
 	# "-readability-function-cognitive-complexity" triggers for almost every Catch2 test case
 	# "-modernize-return-braced-init-list" also triggers on ()-initialization, breaking code
-	# "-misc-use-anonymous-namespace" Catch2 uses this in TEST_CASE. TODO: Find a way to only disable this there.
-	# "-cppcoreguidelines-avoid-do-while" Catch2 uses this everywhere. TODO: Find a way to only disable this in Catch2.
 
 	set(
 		FCPPT_UTILS_CLANG_TIDY_CHECKS
@@ -35,7 +33,6 @@ if(
 		"-altera-unroll-loops"
 		"-bugprone-macro-parentheses"
 		"-bugprone-exception-escape"
-		"-cppcoreguidelines-avoid-do-while"
 		"-cppcoreguidelines-macro-usage"
 		"-clang-analyzer-cplusplus.NewDeleteLeaks"
 		"-cert-dcl21-cpp"
@@ -51,7 +48,6 @@ if(
 		"-llvmlibc-implementation-in-namespace"
 		"-llvmlibc-restrict-system-libc-headers"
 		"-misc-no-recursion"
-		"-misc-use-anonymous-namespace"
 		"-modernize-return-braced-init-list"
 		"-modernize-use-default-member-init"
 		"-modernize-use-trailing-return-type"

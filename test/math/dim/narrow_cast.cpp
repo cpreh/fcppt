@@ -14,6 +14,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::dim::narrow_cast", "[math],[dim]")
 {
@@ -24,4 +25,5 @@ TEST_CASE("math::dim::narrow_cast", "[math],[dim]")
   CHECK(i2_dim(1, 2) == fcppt::math::dim::narrow_cast<i2_dim>(i3_dim(1, 2, 3)));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

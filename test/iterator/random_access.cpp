@@ -82,6 +82,7 @@ FCPPT_PP_POP_WARNING
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("iterator random access def_ctor", "[iterator]")
 {
@@ -190,4 +191,5 @@ TEST_CASE("iterator random access comparison", "[iterator]")
   CHECK(it1 != it2);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

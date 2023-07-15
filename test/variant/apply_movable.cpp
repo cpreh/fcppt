@@ -18,6 +18,9 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+
 namespace
 {
 using int_unique_ptr = fcppt::unique_ptr<int>;
@@ -69,8 +72,6 @@ using variant = fcppt::variant::object<int_unique_ptr, string_unique_ptr, bool_u
 
 }
 
-FCPPT_CATCH_BEGIN
-
 TEST_CASE("variant::apply ref", "[variant]")
 {
   variant int_variant(fcppt::make_unique_ptr<int>(1));
@@ -99,4 +100,5 @@ TEST_CASE("variant_apply move", "[variant]")
   CHECK(*fcppt::tuple::get<2>(result));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

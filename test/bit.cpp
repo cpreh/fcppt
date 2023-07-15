@@ -23,6 +23,7 @@ static_assert(fcppt::bit::shifted_mask_c<unsigned, 10>().get() == 1U << 10U);
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("bit", "[bit]")
 {
@@ -39,4 +40,5 @@ TEST_CASE("bit", "[bit]")
   CHECK(fcppt::bit::test(0xF0U, fcppt::bit::mask<unsigned>(0x1FU)));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

@@ -12,6 +12,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("cast::promote_int", "[cast]")
 {
@@ -20,4 +21,5 @@ TEST_CASE("cast::promote_int", "[cast]")
   static_assert(std::is_same_v<decltype(fcppt::cast::promote_int('c')), decltype(+'c')>);
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

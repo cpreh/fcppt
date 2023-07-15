@@ -51,6 +51,7 @@ struct derived2 : base
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("cast::dynamic"
           "[cast]")
@@ -73,4 +74,5 @@ TEST_CASE("cast::dynamic"
       fcppt::cast::dynamic<derived1>(b2) == fcppt::optional::object<fcppt::reference<derived1>>{});
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

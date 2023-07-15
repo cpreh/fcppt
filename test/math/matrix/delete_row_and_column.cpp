@@ -16,6 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::matrix::delete_row_and_column", "[math],[matrix]")
 {
@@ -44,4 +45,5 @@ TEST_CASE("math::matrix::delete_row_and_column", "[math],[matrix]")
           fcppt::math::matrix::row(11, 12)));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

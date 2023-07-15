@@ -19,6 +19,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::matrix::translation", "[math],[matrix]")
 {
@@ -40,4 +41,5 @@ TEST_CASE("math::matrix::translation", "[math],[matrix]")
   CHECK(trans * vec == vector_type(6, 5, 45, 1));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

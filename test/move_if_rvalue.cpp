@@ -44,6 +44,7 @@ int_unique_ptr take_arg(int_unique_ptr &&_arg) { return std::move(_arg); }
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("move_if_rvalue", "[various]")
 {
@@ -60,4 +61,5 @@ TEST_CASE("move_if_rvalue", "[various]")
   }
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

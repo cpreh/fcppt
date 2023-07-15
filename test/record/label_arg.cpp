@@ -21,6 +21,7 @@ FCPPT_RECORD_MAKE_LABEL_ARG(texture, unsigned);
 }
 
 FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("record arg label", "[record]")
 {
@@ -36,4 +37,5 @@ TEST_CASE("record arg label", "[record]")
   CHECK(fcppt::record::get<texture<1>>(test_sprite) == std::string("clouds"));
 }
 
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END
