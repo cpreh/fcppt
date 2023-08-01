@@ -11,6 +11,9 @@
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/reference.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 namespace fcppt::container
 {
@@ -28,9 +31,14 @@ template <typename Container>
 fcppt::optional::reference<fcppt::container::to_value_type<Container>>
 at_optional(Container &_container, typename Container::size_type const _index)
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
+
   return fcppt::optional::make_if(_index < _container.size(), [&_container, _index] {
     return fcppt::make_ref(*(_container.begin() + fcppt::cast::to_signed(_index)));
   });
+
+FCPPT_PP_POP_WARNING
 }
 }
 
