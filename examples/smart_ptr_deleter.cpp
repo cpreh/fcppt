@@ -5,6 +5,9 @@
 
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

@@ -7,7 +7,7 @@
 #define FCPPT_ARRAY_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/array/object_decl.hpp>
+#include <fcppt/array/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>

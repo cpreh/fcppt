@@ -7,7 +7,7 @@
 #ifndef FCPPT_CYCLIC_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CYCLIC_ITERATOR_IMPL_HPP_INCLUDED
 
-#include <fcppt/cyclic_iterator_decl.hpp>
+#include <fcppt/cyclic_iterator_decl.hpp> // IWYU pragma: export
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

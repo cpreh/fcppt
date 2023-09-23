@@ -8,6 +8,7 @@
 
 #include <fcppt/math/detail/static_storage_impl.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/dim/static_fwd.hpp> // IWYU pragma: export
 #include <fcppt/math/dim/static_decl.hpp>
 
 #endif

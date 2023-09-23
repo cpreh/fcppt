@@ -19,8 +19,8 @@ try
   // ![assign]
   using int_unique_ptr_vector = std::vector<fcppt::unique_ptr<int>>;
 
-  auto const int_ptrs(fcppt::container::make<int_unique_ptr_vector>(
-      fcppt::make_unique_ptr<int>(1), fcppt::make_unique_ptr<int>(2)));
+  auto const int_ptrs{fcppt::container::make<int_unique_ptr_vector>(
+      fcppt::make_unique_ptr<int>(1), fcppt::make_unique_ptr<int>(2))};
 
   // Prints 1 2
   for (auto const &elem : int_ptrs)

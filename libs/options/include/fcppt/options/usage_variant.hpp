@@ -16,7 +16,7 @@
 #include <fcppt/options/product_usage.hpp>
 #include <fcppt/options/sum_usage.hpp>
 #include <fcppt/options/unit_usage.hpp>
-#include <fcppt/options/usage_variant_fwd.hpp>
+#include <fcppt/options/usage_variant_fwd.hpp> // IWYU pragma: export
 #include <fcppt/variant/object_impl.hpp>
 
 #endif

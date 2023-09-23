@@ -6,8 +6,9 @@
 #include <fcppt/string_view.hpp>
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/enum/from_string.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/level_from_string.hpp>
-#include <fcppt/log/level_to_string_impl.hpp>
+#include <fcppt/log/level_to_string_impl.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -7,6 +7,6 @@
 #define FCPPT_LOG_CONTEXT_REFERENCE_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/log/context_reference_fwd.hpp>
+#include <fcppt/log/context_reference_fwd.hpp> // IWYU pragma: export
 
 #endif

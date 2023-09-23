@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_BASE_IMPL_HPP_INCLUDED
 
-#include <fcppt/options/base_decl.hpp>
+#include <fcppt/options/base_decl.hpp> // IWYU pragma: export
 
 template <typename Result>
 fcppt::options::base<Result>::base() = default;

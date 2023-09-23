@@ -14,7 +14,7 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/switch_decl.hpp>
+#include <fcppt/options/switch_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/usage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

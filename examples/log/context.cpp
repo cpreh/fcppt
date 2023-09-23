@@ -17,6 +17,7 @@
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/out.hpp>
 #include <fcppt/log/parameters.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>

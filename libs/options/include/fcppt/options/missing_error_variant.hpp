@@ -9,7 +9,7 @@
 #include <fcppt/options/missing_argument_error.hpp>
 #include <fcppt/options/missing_command_error.hpp>
 #include <fcppt/options/missing_error_pair.hpp>
-#include <fcppt/options/missing_error_variant_fwd.hpp>
+#include <fcppt/options/missing_error_variant_fwd.hpp> // IWYU pragma: export
 #include <fcppt/options/missing_flag_error.hpp>
 #include <fcppt/options/missing_option_error.hpp>
 #include <fcppt/variant/object_impl.hpp>

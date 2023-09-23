@@ -7,7 +7,7 @@
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/default_deleter_fwd.hpp>
-#include <fcppt/unique_ptr_decl.hpp>
+#include <fcppt/unique_ptr_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <type_traits>

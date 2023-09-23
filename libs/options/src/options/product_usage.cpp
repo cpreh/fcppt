@@ -3,9 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/recursive.hpp>
+#include <fcppt/recursive.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/options/product_usage.hpp>
-#include <fcppt/options/usage.hpp>
+#include <fcppt/options/usage.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

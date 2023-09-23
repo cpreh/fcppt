@@ -29,6 +29,7 @@ unique_int_ptr int_ptr_factory()
 //! [unique_ptr_factory]
 
 //! [unique_ptr_factory_use]
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 void int_ptr_arg(unique_int_ptr &&ptr) { std::cout << *ptr << '\n'; }
 
 void test() { int_ptr_arg(int_ptr_factory()); }

@@ -8,6 +8,6 @@
 
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/result_fwd.hpp> // IWYU pragma: export
 
 #endif

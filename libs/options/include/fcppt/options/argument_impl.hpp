@@ -13,7 +13,7 @@
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/options/argument_conversion_error.hpp>
-#include <fcppt/options/argument_decl.hpp>
+#include <fcppt/options/argument_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/argument_usage.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_variant.hpp>

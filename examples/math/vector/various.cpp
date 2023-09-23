@@ -11,10 +11,10 @@
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/point_rotate.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
-#include <istream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 

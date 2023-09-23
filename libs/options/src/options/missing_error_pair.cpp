@@ -5,8 +5,8 @@
 
 #include <fcppt/recursive_comparison.hpp>
 #include <fcppt/options/missing_error_pair.hpp>
-#include <fcppt/options/missing_error_variant.hpp>
-#include <fcppt/variant/comparison.hpp>
+#include <fcppt/options/missing_error_variant.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/variant/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

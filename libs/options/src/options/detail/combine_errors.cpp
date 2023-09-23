@@ -21,6 +21,7 @@
 namespace
 {
 inline fcppt::options::missing_error combine_errors_impl(
+    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     fcppt::options::missing_error &&_error1, fcppt::options::missing_error &&_error2)
 {
   return fcppt::options::missing_error{
@@ -39,6 +40,7 @@ combine_errors_impl(fcppt::options::error &&_error1, fcppt::options::error &&_er
 
 inline fcppt::options::error combine_errors_impl(
     fcppt::options::error &&_error1,
+    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     fcppt::options::missing_error &&_error2)
 {
   return combine_errors_impl(

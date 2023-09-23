@@ -7,6 +7,6 @@
 #define FCPPT_RECORD_MAKE_LABEL_ARG_HPP_INCLUDED
 
 #include <fcppt/record/label.hpp>
-#include <fcppt/record/make_label_arg_fwd.hpp>
+#include <fcppt/record/make_label_arg_fwd.hpp> // IWYU pragma: export
 
 #endif

@@ -8,7 +8,7 @@
 
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/missing_error.hpp>
-#include <fcppt/options/parse_error_fwd.hpp>
+#include <fcppt/options/parse_error_fwd.hpp> // IWYU pragma: export
 #include <fcppt/variant/object_impl.hpp>
 
 #endif

@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_VECTOR_OBJECT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_OBJECT_HPP_INCLUDED
 
-#include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/math/vector/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/math/vector/object_fwd.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 

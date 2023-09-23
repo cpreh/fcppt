@@ -6,7 +6,7 @@
 #ifndef FCPPT_FILESYSTEM_OPTIONAL_SIZE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_OPTIONAL_SIZE_HPP_INCLUDED
 
-#include <fcppt/filesystem/optional_size_fwd.hpp>
+#include <fcppt/filesystem/optional_size_fwd.hpp> // IWYU pragma: export
 #include <fcppt/optional/object_impl.hpp>
 
 #endif

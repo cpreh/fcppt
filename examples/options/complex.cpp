@@ -18,7 +18,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/filesystem/ifstream.hpp>
@@ -29,9 +29,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/log/level_input.hpp>
-#include <fcppt/log/level_output.hpp>
-#include <fcppt/log/level_to_string_impl.hpp>
+#include <fcppt/log/level_input.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/log/level_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/log/level_to_string_impl.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
@@ -40,7 +40,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/options/apply.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
@@ -51,17 +51,18 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_optional.hpp>
 #include <fcppt/options/option.hpp>
+#include <fcppt/options/optional.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_help.hpp>
-#include <fcppt/options/pretty_type_enum.hpp>
+#include <fcppt/options/pretty_type_enum.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/switch.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_output.hpp>
-#include <fcppt/record/are_equivalent.hpp>
+#include <fcppt/record/are_equivalent_v.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -155,14 +156,14 @@ try
   using result_type = fcppt::options::result_of<decltype(parser)>;
 
   static_assert(
-      fcppt::record::are_equivalent<
+      fcppt::record::are_equivalent_v<
           result_type,
           fcppt::record::object<
               fcppt::record::element<input_file_label, fcppt::string>,
               fcppt::record::element<output_file_label, fcppt::optional::object<fcppt::string>>,
               fcppt::record::element<execute_label, bool>,
               fcppt::record::element<openmode_label, std::ios_base::openmode>,
-              fcppt::record::element<log_level_label, fcppt::log::level>>>::value);
+              fcppt::record::element<log_level_label, fcppt::log::level>>>);
   // ![options_result_type]
 
   // ![options_main_program]

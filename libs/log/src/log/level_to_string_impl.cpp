@@ -5,7 +5,6 @@
 
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/enum/to_string_case.hpp>
-#include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

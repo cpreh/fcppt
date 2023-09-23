@@ -5,7 +5,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/system.hpp>
-#include <fcppt/config/platform.hpp>
+#include <fcppt/config/platform.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/object_impl.hpp>
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/exception.hpp>
@@ -17,8 +17,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include <sys/types.h> // NOLINT(misc-include-cleaner)
+#include <sys/wait.h> // NOLINT(misc-include-cleaner)
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 #elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
@@ -46,11 +46,11 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
   return fcppt::optional::make_if(
       // NOLINTNEXTLINE(hicpp-signed-bitwise)
-      WIFEXITED(result),
+      WIFEXITED(result), // NOLINT(misc-include-cleaner)
       [result] {
         return
             // NOLINTNEXTLINE(hicpp-signed-bitwise)
-            WEXITSTATUS(result);
+            WEXITSTATUS(result); // NOLINT(misc-include-cleaner)
       });
 FCPPT_PP_POP_WARNING
 #elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)

@@ -14,9 +14,6 @@
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/options/impl/flag_name.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
 
 bool fcppt::options::detail::use_flag(
     fcppt::reference<fcppt::options::state> const _state,

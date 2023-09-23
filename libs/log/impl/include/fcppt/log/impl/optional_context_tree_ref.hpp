@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_IMPL_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
 #define FCPPT_LOG_IMPL_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
 
-#include <fcppt/log/impl/optional_context_tree_ref_fwd.hpp>
+#include <fcppt/log/impl/optional_context_tree_ref_fwd.hpp> // IWYU pragma: export
 #include <fcppt/optional/reference.hpp>
 
 #endif

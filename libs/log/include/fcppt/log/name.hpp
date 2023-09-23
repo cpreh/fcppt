@@ -7,6 +7,6 @@
 #define FCPPT_LOG_NAME_HPP_INCLUDED
 
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/log/name_fwd.hpp>
+#include <fcppt/log/name_fwd.hpp> // IWYU pragma: export
 
 #endif

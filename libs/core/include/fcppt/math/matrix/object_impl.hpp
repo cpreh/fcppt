@@ -14,7 +14,7 @@
 #include <fcppt/math/detail/copy.hpp>
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/detail/multiply_scalar.hpp>
-#include <fcppt/math/matrix/object_decl.hpp>
+#include <fcppt/math/matrix/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/detail/init_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>

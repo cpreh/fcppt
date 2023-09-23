@@ -6,13 +6,13 @@
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/main.hpp>
-#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/text.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
-#include <fcppt/options/error_output.hpp>
+#include <fcppt/options/error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -26,7 +26,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/output.hpp>
+#include <fcppt/record/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_usage.hpp>
@@ -16,7 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 fcppt::options::option_usage::option_usage(
-    default_value_type &&_default_value,
+    default_value_type &&_default_value, // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
     fcppt::options::long_name _long_name,
     fcppt::options::optional_short_name _short_name,
     fcppt::options::type_name &&_type,

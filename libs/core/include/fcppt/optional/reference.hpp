@@ -8,6 +8,6 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/reference_fwd.hpp>
+#include <fcppt/optional/reference_fwd.hpp> // IWYU pragma: export
 
 #endif

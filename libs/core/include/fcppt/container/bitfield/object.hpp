@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/comparison.hpp>
-#include <fcppt/container/bitfield/object_decl.hpp>
+#include <fcppt/container/bitfield/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 

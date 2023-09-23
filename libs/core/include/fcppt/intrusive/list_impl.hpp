@@ -8,7 +8,7 @@
 
 #include <fcppt/intrusive/base_impl.hpp>
 #include <fcppt/intrusive/iterator_impl.hpp>
-#include <fcppt/intrusive/list_decl.hpp>
+#include <fcppt/intrusive/list_decl.hpp> // IWYU pragma: export
 
 template <typename Type>
 fcppt::intrusive::list<Type>::list() : head_{}

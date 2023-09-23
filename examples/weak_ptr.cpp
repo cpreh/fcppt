@@ -7,6 +7,7 @@
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/weak_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
@@ -41,6 +42,8 @@ try
   }
   //! [weak_ptr]
 }
-catch (std::exception const &)
+catch (std::exception const &e)
 {
+  std::cerr << e.what() << '\n';
+  return EXIT_FAILURE;
 }

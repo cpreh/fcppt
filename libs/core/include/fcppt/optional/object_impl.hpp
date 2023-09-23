@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONAL_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional/object_decl.hpp>
+#include <fcppt/optional/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

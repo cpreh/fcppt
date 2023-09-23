@@ -8,7 +8,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/static_downcast.hpp>
-#include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/iterator/base_decl.hpp> // IWYU pragma: export
 #include <fcppt/type_traits/implication.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>

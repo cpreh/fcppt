@@ -6,7 +6,7 @@
 #ifndef FCPPT_REFERENCE_IMPL_HPP_INCLUDED
 #define FCPPT_REFERENCE_IMPL_HPP_INCLUDED
 
-#include <fcppt/reference_decl.hpp>
+#include <fcppt/reference_decl.hpp> // IWYU pragma: export
 
 template <typename Type>
 inline fcppt::reference<Type>::reference(type &_ref) noexcept : impl_(&_ref)

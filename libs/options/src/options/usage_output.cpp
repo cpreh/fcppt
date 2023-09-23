@@ -21,6 +21,7 @@
 #include <fcppt/options/option_usage.hpp>
 #include <fcppt/options/optional_usage.hpp>
 #include <fcppt/options/product_usage.hpp>
+#include <fcppt/options/sub_command_usage.hpp>
 #include <fcppt/options/sum_usage.hpp>
 #include <fcppt/options/unit_usage.hpp>
 #include <fcppt/options/usage.hpp>

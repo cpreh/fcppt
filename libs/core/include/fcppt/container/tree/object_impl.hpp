@@ -14,7 +14,7 @@
 #include <fcppt/container/maybe_front.hpp>
 #include <fcppt/container/pop_back.hpp>
 #include <fcppt/container/pop_front.hpp>
-#include <fcppt/container/tree/object_decl.hpp>
+#include <fcppt/container/tree/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/optional/from_pointer.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>

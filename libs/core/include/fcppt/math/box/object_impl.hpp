@@ -9,7 +9,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/object_decl.hpp>
+#include <fcppt/math/box/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/dim.hpp>

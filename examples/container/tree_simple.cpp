@@ -7,7 +7,6 @@
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <utility>

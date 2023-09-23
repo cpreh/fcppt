@@ -7,9 +7,12 @@
 #include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::exception::exception(fcppt::string &&_string) : string_(std::move(_string)) {}
+fcppt::exception::exception(fcppt::string &&_string) : std::exception{}, string_{std::move(_string)}
+{
+}
 
 fcppt::exception::exception(exception const &) = default;
 

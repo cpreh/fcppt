@@ -5,7 +5,7 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/log/context.hpp>
+#include <fcppt/log/context.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/log/context_reference.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
@@ -14,7 +14,7 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/parameters.hpp>
-#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
@@ -87,6 +87,6 @@ fcppt::log::object::object(
     : context_{_context},
       node_{_context.get().find_child(_node, _parameters.name())},
       formatter_(fcppt::log::format::chain(
-          _parameters.formatter(), fcppt::log::impl::tree_formatter(node_.get())))
+          _parameters.formatter(), fcppt::log::impl::tree_formatter(this->node_.get())))
 {
 }

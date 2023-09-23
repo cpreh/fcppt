@@ -11,7 +11,7 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/make_pos_range.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/grid/offset.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>

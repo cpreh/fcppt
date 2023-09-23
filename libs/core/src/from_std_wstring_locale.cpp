@@ -6,9 +6,10 @@
 #include <fcppt/from_std_wstring_locale.hpp>
 #include <fcppt/optional_string.hpp>
 #include <fcppt/public_config.hpp>
-#include <fcppt/string.hpp>
 #if defined(FCPPT_NARROW_STRING)
 #include <fcppt/narrow_locale.hpp>
+#else
+#include <fcppt/string.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <locale>

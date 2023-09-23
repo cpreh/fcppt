@@ -71,7 +71,7 @@ namespace
 
 // Create a function that takes ownership of an int_ptr, but also takes another
 // argument.
-void take_pointer(int_ptr &&, bool)
+void take_pointer(int_ptr &&, bool) // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
 {
   //
 }

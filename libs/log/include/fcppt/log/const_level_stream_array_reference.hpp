@@ -7,6 +7,6 @@
 #define FCPPT_LOG_CONST_LEVEL_STREAM_ARRAY_REFERENCE_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/log/const_level_stream_array_reference_fwd.hpp>
+#include <fcppt/log/const_level_stream_array_reference_fwd.hpp> // IWYU pragma: export
 
 #endif

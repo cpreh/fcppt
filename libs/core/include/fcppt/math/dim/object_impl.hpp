@@ -15,7 +15,7 @@
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/detail/multiply_scalar.hpp>
-#include <fcppt/math/dim/object_decl.hpp>
+#include <fcppt/math/dim/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

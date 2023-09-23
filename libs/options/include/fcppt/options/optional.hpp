@@ -3,10 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_ARGUMENT_HPP_INCLUDED
-#define FCPPT_OPTIONS_ARGUMENT_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_OPTIONAL_HPP_INCLUDED
+#define FCPPT_OPTIONS_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/options/argument_decl.hpp> // IWYU pragma: export
-#include <fcppt/options/argument_impl.hpp>
+#include <fcppt/options/optional_decl.hpp> // IWYU pragma: export
+#include <fcppt/options/optional_impl.hpp>
 
 #endif

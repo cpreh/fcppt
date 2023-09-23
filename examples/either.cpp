@@ -15,6 +15,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <istream>
@@ -67,7 +68,7 @@ void caller()
 
     std::cout << "result is " << result << '\n';
   }
-  catch (std::runtime_error const &)
+  catch (std::runtime_error const &) // NOLINT(bugprone-empty-catch)
   {
     // do something else
   }
@@ -218,6 +219,8 @@ try
 
   get_two_strings();
 }
-catch (std::exception const &)
+catch (std::exception const &e)
 {
+  std::cerr << e.what() << '\n';
+  return EXIT_FAILURE;
 }

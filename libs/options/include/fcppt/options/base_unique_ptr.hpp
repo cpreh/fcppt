@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONS_BASE_UNIQUE_PTR_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/options/base_unique_ptr_fwd.hpp>
+#include <fcppt/options/base_unique_ptr_fwd.hpp> // IWYU pragma: export
 
 #endif

@@ -7,6 +7,6 @@
 #define FCPPT_MATH_BOX_RECT_HPP_INCLUDED
 
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/box/rect_fwd.hpp>
+#include <fcppt/math/box/rect_fwd.hpp> // IWYU pragma: export
 
 #endif

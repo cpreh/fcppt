@@ -9,6 +9,6 @@
 #include <fcppt/enum/array_impl.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
-#include <fcppt/log/level_stream_array_fwd.hpp>
+#include <fcppt/log/level_stream_array_fwd.hpp> // IWYU pragma: export
 
 #endif

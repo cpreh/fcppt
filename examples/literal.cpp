@@ -6,7 +6,7 @@
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/literal.hpp>
 #include <fcppt/make_literal_fwd.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <type_traits>

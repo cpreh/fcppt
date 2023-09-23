@@ -150,6 +150,7 @@ set(
 	libs/options/include/fcppt/options/option_name_set.hpp
 	libs/options/include/fcppt/options/option_usage.hpp
 	libs/options/include/fcppt/options/option_usage_fwd.hpp
+	libs/options/include/fcppt/options/optional.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
 	libs/options/include/fcppt/options/optional_help_text.hpp

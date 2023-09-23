@@ -108,12 +108,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	coding_style_asthetic
-	LINK_LIBS
-		fcppt_core_interface
-)
-
-add_fcppt_example(
 	cyclic_iterator
 	LINK_LIBS
 		fcppt_core_interface

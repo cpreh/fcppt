@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONS_HELP_TEXT_HPP_INCLUDED
 
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/options/help_text_fwd.hpp>
+#include <fcppt/options/help_text_fwd.hpp> // IWYU pragma: export
 
 #endif

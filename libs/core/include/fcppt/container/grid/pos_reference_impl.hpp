@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_REFERENCE_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REFERENCE_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/grid/pos_reference_decl.hpp>
+#include <fcppt/container/grid/pos_reference_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

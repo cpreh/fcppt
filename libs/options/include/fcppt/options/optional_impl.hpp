@@ -17,7 +17,7 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/optional_decl.hpp>
+#include <fcppt/options/optional_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/optional_usage.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>

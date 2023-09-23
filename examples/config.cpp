@@ -19,4 +19,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
 #endif
 // ![gcc_warning]
 
-int main() {}
+int main()
+{
+  static_assert(std::is_same_v<int,int>);
+}

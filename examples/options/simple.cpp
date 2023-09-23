@@ -5,6 +5,7 @@
 
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
+#include <fcppt/args_vector.hpp>
 #include <fcppt/main.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
@@ -54,7 +55,7 @@ try
   // ![options_arg_object]
 
   // ![options_args_from_second]
-  fcppt::args_vector const args(fcppt::args_from_second(argc, argv));
+  fcppt::args_vector const args{fcppt::args_from_second(argc, argv)};
   // ![options_args_from_second]
 
   // ![options_parse]

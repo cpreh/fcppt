@@ -7,7 +7,7 @@
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/default_deleter.hpp>
-#include <fcppt/shared_ptr_decl.hpp>
+#include <fcppt/shared_ptr_decl.hpp> // IWYU pragma: export
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>

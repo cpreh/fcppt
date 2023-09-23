@@ -7,7 +7,7 @@
 #define FCPPT_STRONG_TYPEDEF_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/strong_typedef_decl.hpp>
+#include <fcppt/strong_typedef_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

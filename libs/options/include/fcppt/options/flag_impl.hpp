@@ -16,7 +16,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/exception.hpp>
-#include <fcppt/options/flag_decl.hpp>
+#include <fcppt/options/flag_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/flag_usage.hpp>

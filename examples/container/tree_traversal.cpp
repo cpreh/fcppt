@@ -6,7 +6,6 @@
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <string>
@@ -36,7 +35,7 @@ try
   // hello, foo, qux, bar, baz
   for (string_tree const &item : fcppt::container::tree::pre_order<string_tree const>(tree))
   {
-    std::cout << item.value() << std::endl;
+    std::cout << item.value() << '\n';
   }
   //! [main]
 }

@@ -8,6 +8,7 @@
 
 #include <fcppt/math/detail/static_storage_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static_fwd.hpp> // IWYU pragma: export
 #include <fcppt/math/vector/static_decl.hpp>
 
 #endif

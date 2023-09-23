@@ -7,6 +7,6 @@
 #define FCPPT_PREPROCESSOR_PUSH_WARNING_HPP_INCLUDED
 
 #include <fcppt/detail/check_cpp.hpp>
-#include <fcppt/preprocessor/push_warning.h>
+#include <fcppt/preprocessor/push_warning.h> // IWYU pragma: export
 
 #endif

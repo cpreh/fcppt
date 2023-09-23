@@ -7,7 +7,7 @@
 #define FCPPT_ENUM_ARRAY_IMPL_HPP_INCLUDED
 
 #include <fcppt/cast/enum_to_int.hpp>
-#include <fcppt/enum/array_decl.hpp>
+#include <fcppt/enum/array_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

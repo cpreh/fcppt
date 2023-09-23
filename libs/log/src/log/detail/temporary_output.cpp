@@ -5,9 +5,6 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 fcppt::log::detail::temporary_output::temporary_output() : stream_{} {}
 

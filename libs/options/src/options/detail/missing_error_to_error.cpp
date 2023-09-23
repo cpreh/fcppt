@@ -7,7 +7,12 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_pair.hpp>
 #include <fcppt/options/error_variant.hpp>
+#include <fcppt/options/missing_argument_error.hpp>
+#include <fcppt/options/missing_command_error.hpp>
+#include <fcppt/options/missing_error_pair.hpp>
 #include <fcppt/options/missing_error_variant.hpp>
+#include <fcppt/options/missing_flag_error.hpp>
+#include <fcppt/options/missing_option_error.hpp>
 #include <fcppt/options/detail/missing_error_to_error.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,6 +28,7 @@ fcppt::options::detail::missing_error_to_error(fcppt::options::missing_error_var
       { return fcppt::options::error{fcppt::options::error_variant{std::move(_inner)}}; },
       [](fcppt::options::missing_command_error &&_inner)
       { return fcppt::options::error{fcppt::options::error_variant{std::move(_inner)}}; },
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::options::missing_error_pair &&_inner)
       {
         return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_pair{

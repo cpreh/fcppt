@@ -6,7 +6,7 @@
 #ifndef FCPPT_EITHER_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_EITHER_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/either/object_decl.hpp>
+#include <fcppt/either/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>

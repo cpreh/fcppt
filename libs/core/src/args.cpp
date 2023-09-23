@@ -7,7 +7,7 @@
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_vector.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/detail/main_wchar.hpp>
+#include <fcppt/detail/main_wchar.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -16,8 +16,9 @@
 #include <fcppt/from_std_string.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
+#if defined(FCPPT_DETAIL_MAIN_WCHAR)
 #include <string>
-#if !defined(FCPPT_DETAIL_MAIN_WCHAR)
+#else
 #include <string_view>
 #endif
 #include <fcppt/config/external_end.hpp>

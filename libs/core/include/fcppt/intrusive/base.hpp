@@ -6,7 +6,7 @@
 #ifndef FCPPT_INTRUSIVE_BASE_HPP_INCLUDED
 #define FCPPT_INTRUSIVE_BASE_HPP_INCLUDED
 
-#include <fcppt/intrusive/base_decl.hpp>
+#include <fcppt/intrusive/base_decl.hpp> // IWYU pragma: export
 #include <fcppt/intrusive/base_fwd.hpp>
 #include <fcppt/intrusive/base_impl.hpp>
 

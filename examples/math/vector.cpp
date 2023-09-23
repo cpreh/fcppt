@@ -7,7 +7,6 @@
 #include <fcppt/no_init.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/cast/int_to_float_fun.hpp>
-#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

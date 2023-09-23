@@ -9,6 +9,7 @@
 #include <fcppt/container/grid/output.hpp>
 #include <fcppt/container/grid/resize.hpp>
 #include <fcppt/math/interpolation/linear.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <exception>

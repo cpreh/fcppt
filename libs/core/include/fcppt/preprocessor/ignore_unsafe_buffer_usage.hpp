@@ -6,6 +6,6 @@
 #ifndef FCPPT_PREPROCESSOR_IGNORE_UNSAFE_BUFFER_USAGE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_IGNORE_UNSAFE_BUFFER_USAGE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.h>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.h> // IWYU pragma: export
 
 #endif

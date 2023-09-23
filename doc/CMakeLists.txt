@@ -119,7 +119,6 @@ set(
 	examples/cast/safe_numeric.cpp
 	examples/cast/truncation_check.cpp
 	examples/coding_style.cpp
-	examples/coding_style_asthetic.cpp
 	examples/config.cpp
 	examples/container/bitfield.cpp
 	examples/container/buffer.cpp
@@ -1353,6 +1352,7 @@ set(
 	libs/core/include/fcppt/record/all_disjoint.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
+	libs/core/include/fcppt/record/are_equivalent_v.hpp
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
@@ -1860,6 +1860,7 @@ set(
 	libs/options/include/fcppt/options/option_name_set.hpp
 	libs/options/include/fcppt/options/option_usage.hpp
 	libs/options/include/fcppt/options/option_usage_fwd.hpp
+	libs/options/include/fcppt/options/optional.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
 	libs/options/include/fcppt/options/optional_help_text.hpp

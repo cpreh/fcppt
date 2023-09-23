@@ -7,6 +7,6 @@
 #define FCPPT_LOG_FORMAT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/function_impl.hpp>
-#include <fcppt/log/format/function_fwd.hpp>
+#include <fcppt/log/format/function_fwd.hpp> // IWYU pragma: export
 
 #endif

@@ -6,6 +6,6 @@
 #ifndef FCPPT_MPL_LAMBDA_HPP_INCLUDED
 #define FCPPT_MPL_LAMBDA_HPP_INCLUDED
 
-#include <fcppt/mpl/lambda_fwd.hpp>
+#include <fcppt/mpl/lambda_fwd.hpp> // IWYU pragma: export
 
 #endif

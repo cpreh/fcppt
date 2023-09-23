@@ -7,6 +7,7 @@
 #define FCPPT_RECURSIVE_HPP_INCLUDED
 
 #include <fcppt/recursive_comparison.hpp>
+#include <fcppt/recursive_decl.hpp> // IWYU pragma: export
 #include <fcppt/recursive_impl.hpp>
 
 #endif

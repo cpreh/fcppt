@@ -8,6 +8,6 @@
 
 #include <fcppt/math/detail/static_storage_decl.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
-#include <fcppt/math/matrix/static_fwd.hpp>
+#include <fcppt/math/matrix/static_fwd.hpp> // IWYU pragma: export
 
 #endif

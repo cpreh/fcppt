@@ -10,6 +10,7 @@
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/log/format/chain.hpp>
+#include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/config/external_begin.hpp>

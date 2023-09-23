@@ -8,6 +8,7 @@
 #include <fcppt/filesystem/create_directories_recursive.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
 fcppt::optional_error_code

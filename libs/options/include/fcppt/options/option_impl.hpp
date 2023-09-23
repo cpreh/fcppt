@@ -35,7 +35,7 @@
 #include <fcppt/options/missing_option_error.hpp>
 #include <fcppt/options/name.hpp>
 #include <fcppt/options/option_conversion_error.hpp>
-#include <fcppt/options/option_decl.hpp>
+#include <fcppt/options/option_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/option_usage.hpp>

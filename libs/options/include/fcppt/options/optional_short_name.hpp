@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_OPTIONAL_SHORT_NAME_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/optional_short_name_fwd.hpp>
+#include <fcppt/options/optional_short_name_fwd.hpp> // IWYU pragma: export
 #include <fcppt/options/short_name.hpp>
 
 #endif

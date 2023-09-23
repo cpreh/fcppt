@@ -7,7 +7,7 @@
 #define FCPPT_RECURSIVE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/recursive_decl.hpp>
+#include <fcppt/recursive_decl.hpp> // IWYU pragma: export
 #include <fcppt/unique_ptr_impl.hpp>
 
 template <typename Type>

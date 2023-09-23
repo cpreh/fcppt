@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/type_name.hpp>
-#include <fcppt/impl/private_config.hpp>
+#include <fcppt/impl/private_config.hpp> // NOLINT(misc-include-cleaner)
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/unique_ptr.hpp>

@@ -8,6 +8,6 @@
 
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/help_text.hpp>
-#include <fcppt/options/optional_help_text_fwd.hpp>
+#include <fcppt/options/optional_help_text_fwd.hpp> // IWYU pragma: export
 
 #endif

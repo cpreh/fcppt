@@ -1131,6 +1131,7 @@ set(
 	libs/core/include/fcppt/record/all_disjoint.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
+	libs/core/include/fcppt/record/are_equivalent_v.hpp
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp

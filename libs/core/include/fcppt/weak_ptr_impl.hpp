@@ -7,7 +7,7 @@
 #define FCPPT_WEAK_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_fwd.hpp>
-#include <fcppt/weak_ptr_decl.hpp>
+#include <fcppt/weak_ptr_decl.hpp> // IWYU pragma: export
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

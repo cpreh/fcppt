@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/recursive_comparison.hpp>
-#include <fcppt/options/error.hpp>
+#include <fcppt/options/error.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/options/error_pair.hpp>
-#include <fcppt/variant/comparison.hpp>
+#include <fcppt/variant/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

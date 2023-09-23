@@ -7,6 +7,6 @@
 #define FCPPT_SYMBOL_EXPORT_HPP_INCLUDED
 
 #include <fcppt/detail/check_cpp.hpp>
-#include <fcppt/symbol/export.h>
+#include <fcppt/symbol/export.h> // IWYU pragma: export
 
 #endif

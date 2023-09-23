@@ -6,6 +6,6 @@
 #ifndef FCPPT_CONFIG_CLANG_VERSION_AT_LEAST_HPP_INCLUDED
 #define FCPPT_CONFIG_CLANG_VERSION_AT_LEAST_HPP_INCLUDED
 
-#include <fcppt/config/clang_version_at_least.h>
+#include <fcppt/config/clang_version_at_least.h> // IWYU pragma: export
 
 #endif

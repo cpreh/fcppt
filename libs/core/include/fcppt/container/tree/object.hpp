@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_HPP_INCLUDED
 
-#include <fcppt/container/tree/object_decl.hpp>
+#include <fcppt/container/tree/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/tree/object_impl.hpp>
 
 #endif
