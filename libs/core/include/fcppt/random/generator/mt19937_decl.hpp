@@ -7,6 +7,6 @@
 #define FCPPT_RANDOM_GENERATOR_MT19937_DECL_HPP_INCLUDED
 
 #include <fcppt/random/generator/basic_pseudo_decl.hpp>
-#include <fcppt/random/generator/mt19937_fwd.hpp>
+#include <fcppt/random/generator/mt19937_fwd.hpp> // IWYU pragma: export
 
 #endif

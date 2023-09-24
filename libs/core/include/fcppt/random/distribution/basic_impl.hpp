@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_BASIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/random/distribution/basic_decl.hpp>
+#include <fcppt/random/distribution/basic_decl.hpp> // IWYU pragma: export
 #include <fcppt/random/distribution/decorated_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>

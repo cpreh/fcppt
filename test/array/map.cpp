@@ -5,7 +5,7 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/output_to_std_string.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/array/map.hpp>
 #include <fcppt/array/object.hpp>
 #include <fcppt/catch/begin.hpp>

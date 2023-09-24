@@ -23,7 +23,7 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/type_name_tag_fwd.hpp>
 #include <fcppt/parse/typed_error_impl.hpp>
-#include <fcppt/parse/uint_decl.hpp>
+#include <fcppt/parse/uint_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>

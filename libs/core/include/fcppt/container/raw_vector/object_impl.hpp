@@ -9,7 +9,7 @@
 #include <fcppt/not.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
-#include <fcppt/container/raw_vector/object_decl.hpp>
+#include <fcppt/container/raw_vector/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/raw_vector/rep_impl.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

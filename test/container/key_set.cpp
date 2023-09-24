@@ -11,6 +11,7 @@
 #include <map>
 #include <set>
 #include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

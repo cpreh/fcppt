@@ -34,7 +34,7 @@ private:
 };
 
 template <typename Arg>
-int_unique_ptr test_move(Arg &&_arg)
+int_unique_ptr test_move(Arg &&_arg) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   return fcppt::move_if_rvalue<Arg>(_arg.get());
 }

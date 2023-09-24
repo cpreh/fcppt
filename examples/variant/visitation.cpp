@@ -27,7 +27,7 @@ struct print_visitor
   }
 
   template <typename T>
-  std::enable_if_t<std::is_integral<T>::value, void> operator()(T const _value) const
+  std::enable_if_t<std::is_integral_v<T>, void> operator()(T const _value) const
   {
     std::cout << "Integral: " << _value << '\n';
   }

@@ -7,7 +7,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/to_raw_vector.hpp>
-#include <fcppt/container/raw_vector/comparison.hpp>
+#include <fcppt/container/raw_vector/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <utility>

@@ -8,7 +8,7 @@
 
 #include <fcppt/random/distribution/base_value.hpp>
 #include <fcppt/random/distribution/decorated_value.hpp>
-#include <fcppt/random/distribution/parameters/uniform_int_decl.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

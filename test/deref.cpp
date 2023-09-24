@@ -4,17 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/deref.hpp>
-#include <fcppt/deref_recursive.hpp>
-#include <fcppt/deref_reference.hpp>
+#include <fcppt/deref_recursive.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/deref_reference.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/deref_type.hpp>
-#include <fcppt/deref_unique_ptr.hpp>
+#include <fcppt/deref_unique_ptr.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

@@ -7,6 +7,6 @@
 #define FCPPT_CONTAINER_GRID_SUP_FROM_POS_HPP_INCLUDED
 
 #include <fcppt/container/grid/sup.hpp>
-#include <fcppt/container/grid/sup_from_pos_fwd.hpp>
+#include <fcppt/container/grid/sup_from_pos_fwd.hpp> // IWYU pragma: export
 
 #endif

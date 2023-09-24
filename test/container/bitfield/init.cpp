@@ -8,7 +8,6 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/init.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
-#include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

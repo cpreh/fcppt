@@ -8,7 +8,7 @@
 
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
-#include <fcppt/container/grid/pos_ref_range_decl.hpp>
+#include <fcppt/container/grid/pos_ref_range_decl.hpp> // IWYU pragma: export
 
 template <typename Grid>
 fcppt::container::grid::pos_ref_range<Grid>::pos_ref_range(

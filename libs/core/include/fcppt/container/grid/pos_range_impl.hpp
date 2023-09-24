@@ -9,7 +9,7 @@
 #include <fcppt/container/grid/end_position.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_impl.hpp>
-#include <fcppt/container/grid/pos_range_decl.hpp>
+#include <fcppt/container/grid/pos_range_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/grid/range_size.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>

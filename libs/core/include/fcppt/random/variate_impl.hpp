@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_VARIATE_IMPL_HPP_INCLUDED
 #define FCPPT_RANDOM_VARIATE_IMPL_HPP_INCLUDED
 
-#include <fcppt/random/variate_decl.hpp>
+#include <fcppt/random/variate_decl.hpp> // IWYU pragma: export
 
 template <typename Generator, typename Distribution>
 fcppt::random::variate<Generator, Distribution>::variate(

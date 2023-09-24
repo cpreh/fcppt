@@ -6,7 +6,7 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/interval.hpp>

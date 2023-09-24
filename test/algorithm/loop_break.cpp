@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/loop.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
-#include <fcppt/algorithm/loop_break_record.hpp>
-#include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/loop_break_record.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/loop_break_tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/object.hpp>
@@ -63,7 +64,7 @@ public:
   [[nodiscard]] int value() const { return value_; }
 
 private:
-  mutable int value_;
+  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init)
 };
 
 }
@@ -101,7 +102,7 @@ public:
 
   [[nodiscard]] int value() const { return value_; }
 private:
-  mutable int value_;
+  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init)
 };
 
 }

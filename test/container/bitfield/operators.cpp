@@ -8,7 +8,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
-#include <fcppt/container/bitfield/output.hpp>
+#include <fcppt/container/bitfield/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>

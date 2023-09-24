@@ -8,7 +8,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/skipper/epsilon_decl.hpp>
+#include <fcppt/parse/skipper/epsilon_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 

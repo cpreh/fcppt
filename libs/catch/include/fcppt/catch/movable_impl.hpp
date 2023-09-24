@@ -6,7 +6,7 @@
 #ifndef FCPPT_CATCH_MOVABLE_IMPL_HPP_INCLUDED
 #define FCPPT_CATCH_MOVABLE_IMPL_HPP_INCLUDED
 
-#include <fcppt/catch/movable_decl.hpp>
+#include <fcppt/catch/movable_decl.hpp> // IWYU pragma: export
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

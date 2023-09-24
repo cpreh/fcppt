@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_GRAMMAR_HPP_INCLUDED
 #define FCPPT_PARSE_GRAMMAR_HPP_INCLUDED
 
+#include <fcppt/parse/grammar_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/grammar_impl.hpp>
 
 #endif

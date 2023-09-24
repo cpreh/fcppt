@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/algorithm/contains_if.hpp>
-#include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/loop_break_tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>

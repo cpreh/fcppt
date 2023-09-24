@@ -8,7 +8,7 @@
 
 #include <fcppt/random/distribution/base_value.hpp>
 #include <fcppt/random/distribution/decorated_value.hpp>
-#include <fcppt/random/distribution/parameters/uniform_real_decl.hpp>
+#include <fcppt/random/distribution/parameters/uniform_real_decl.hpp> // IWYU pragma: export
 
 template <typename FloatType>
 fcppt::random::distribution::parameters::uniform_real<FloatType>::uniform_real(

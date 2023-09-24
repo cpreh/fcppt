@@ -8,5 +8,6 @@
 
 #include <fcppt/parse/basic_char_set_impl.hpp>
 #include <fcppt/parse/char_set_decl.hpp>
+#include <fcppt/parse/char_set_fwd.hpp> // IWYU pragma: export
 
 #endif

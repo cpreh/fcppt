@@ -5,14 +5,14 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/make_cref.hpp>
-#include <fcppt/reference_comparison.hpp>
-#include <fcppt/reference_output.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/reference_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/reference_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

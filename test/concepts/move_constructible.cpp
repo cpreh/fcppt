@@ -5,7 +5,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/not.hpp>
-#include <fcppt/concepts/move_constructible.hpp>
+#include <fcppt/concepts/move_constructible.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>

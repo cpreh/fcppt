@@ -32,6 +32,7 @@ TEST_CASE("function move", "[various]")
 
   using function_type = fcppt::function<int(int_unique_ptr &&)>;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   function_type const fun{[](int_unique_ptr &&_val) { return *_val + 10; }};
 
   CHECK(fun(fcppt::make_unique_ptr<int>(5)) == 15);

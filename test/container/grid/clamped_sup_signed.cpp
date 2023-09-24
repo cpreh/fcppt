@@ -9,7 +9,7 @@
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

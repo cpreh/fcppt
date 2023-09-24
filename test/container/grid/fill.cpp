@@ -9,7 +9,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/container/grid/output.hpp>
+#include <fcppt/container/grid/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

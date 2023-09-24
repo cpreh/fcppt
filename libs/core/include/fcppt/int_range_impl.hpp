@@ -7,7 +7,7 @@
 #define FCPPT_INT_RANGE_IMPL_HPP_INCLUDED
 
 #include <fcppt/int_iterator_impl.hpp>
-#include <fcppt/int_range_decl.hpp>
+#include <fcppt/int_range_decl.hpp> // IWYU pragma: export
 #include <fcppt/type_iso/undecorate.hpp>
 
 template <typename Int>

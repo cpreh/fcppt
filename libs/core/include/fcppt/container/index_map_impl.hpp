@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_INDEX_MAP_IMPL_HPP_INCLUDED
 
 #include <fcppt/function_impl.hpp>
-#include <fcppt/container/index_map_decl.hpp>
+#include <fcppt/container/index_map_decl.hpp> // IWYU pragma: export
 
 template <typename T, typename A>
 fcppt::container::index_map<T, A>::index_map() : impl_()

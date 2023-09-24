@@ -9,13 +9,13 @@
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/make_int_range.hpp>
 #include <fcppt/make_int_range_count.hpp>
-#include <fcppt/make_literal_strong_typedef.hpp>
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/make_literal_strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/type_iso/strong_typedef.hpp>
+#include <fcppt/type_iso/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <iterator>

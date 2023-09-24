@@ -5,7 +5,7 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/random/variate.hpp>
@@ -13,7 +13,7 @@
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
-#include <fcppt/type_iso/strong_typedef.hpp>
+#include <fcppt/type_iso/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>

@@ -3,8 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/text.hpp>
-#include <fcppt/io/cerr.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_impl.hpp>
@@ -38,7 +36,7 @@ try
   using string_or_int = fcppt::variant::object<std::string, int>;
 
   //! [variant_nonconst_visitation]
-  string_or_int v(std::string("Hello World"));
+  string_or_int v{std::string("Hello World")};
 
   fcppt::variant::apply(visitor(), v);
 

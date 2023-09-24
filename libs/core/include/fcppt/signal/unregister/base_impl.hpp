@@ -12,7 +12,7 @@
 #include <fcppt/intrusive/list_impl.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/connection.hpp>
-#include <fcppt/signal/unregister/base_decl.hpp>
+#include <fcppt/signal/unregister/base_decl.hpp> // IWYU pragma: export
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

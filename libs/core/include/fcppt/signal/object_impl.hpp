@@ -9,7 +9,7 @@
 
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/signal/base_impl.hpp>
-#include <fcppt/signal/object_decl.hpp>
+#include <fcppt/signal/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

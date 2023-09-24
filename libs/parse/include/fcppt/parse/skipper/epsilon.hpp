@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_SKIPPER_EPSILON_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_EPSILON_HPP_INCLUDED
 
+#include <fcppt/parse/skipper/epsilon_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/epsilon_impl.hpp>
 
 #endif

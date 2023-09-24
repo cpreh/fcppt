@@ -7,7 +7,7 @@
 #define FCPPT_ENUM_RANGE_IMPL_HPP_INCLUDED
 
 #include <fcppt/enum/iterator_impl.hpp>
-#include <fcppt/enum/range_decl.hpp>
+#include <fcppt/enum/range_decl.hpp> // IWYU pragma: export
 
 template <typename Enum>
 constexpr fcppt::enum_::range<Enum>::range(

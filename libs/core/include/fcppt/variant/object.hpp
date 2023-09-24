@@ -7,7 +7,7 @@
 #define FCPPT_VARIANT_OBJECT_HPP_INCLUDED
 
 #include <fcppt/variant/comparison.hpp>
-#include <fcppt/variant/object_decl.hpp>
+#include <fcppt/variant/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/object_impl.hpp>
 

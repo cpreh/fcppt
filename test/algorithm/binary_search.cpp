@@ -6,7 +6,7 @@
 #include <fcppt/algorithm/binary_search.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/optional.hpp>
+#include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>

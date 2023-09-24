@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/uncons.hpp>
 #include <fcppt/container/uncons_result.hpp>
 #include <fcppt/iterator/make_range.hpp>
-#include <fcppt/iterator/range_comparison.hpp>
+#include <fcppt/iterator/range_comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/comparison.hpp>
-#include <fcppt/tuple/comparison.hpp>
+#include <fcppt/tuple/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

@@ -5,7 +5,7 @@
 
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/recursive.hpp>
-#include <fcppt/recursive_output.hpp>
+#include <fcppt/recursive_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>

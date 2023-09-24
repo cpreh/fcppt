@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_UNCONS_RESULT_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/container/uncons_result_fwd.hpp>
+#include <fcppt/container/uncons_result_fwd.hpp> // IWYU pragma: export
 #include <fcppt/iterator/range_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/tuple/object_impl.hpp>

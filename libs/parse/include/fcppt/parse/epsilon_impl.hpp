@@ -9,7 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/epsilon_decl.hpp>
+#include <fcppt/parse/epsilon_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 

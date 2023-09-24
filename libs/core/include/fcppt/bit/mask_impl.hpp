@@ -6,17 +6,17 @@
 #ifndef FCPPT_BIT_MASK_IMPL_HPP_INCLUDED
 #define FCPPT_BIT_MASK_IMPL_HPP_INCLUDED
 
-#include <fcppt/bit/mask_decl.hpp>
+#include <fcppt/bit/mask_decl.hpp> // IWYU pragma: export
 
 template <typename Type>
-inline constexpr fcppt::bit::mask<Type>::mask(Type const _value) noexcept : value_(_value)
+inline constexpr fcppt::bit::mask<Type>::mask(Type const _value) noexcept : value_{_value}
 {
 }
 
 template <typename Type>
 inline constexpr Type fcppt::bit::mask<Type>::get() const noexcept
 {
-  return value_;
+  return this->value_;
 }
 
 #endif

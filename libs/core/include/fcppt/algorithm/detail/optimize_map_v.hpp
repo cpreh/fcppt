@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_ALGORITHM_DETAIL_OPTIMIZE_MAP_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_OPTIMIZE_MAP_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_OPTIMIZE_MAP_V_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_OPTIMIZE_MAP_V_HPP_INCLUDED
 
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
@@ -17,7 +17,7 @@
 namespace fcppt::algorithm::detail
 {
 template <typename Dest, typename Source>
-using optimize_map = std::conjunction<
+inline constexpr bool optimize_map_v = std::conjunction_v<
     fcppt::algorithm::detail::has_reserve<Dest>,
     std::disjunction<
         fcppt::algorithm::detail::has_random_access_iterator<Source>,

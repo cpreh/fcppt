@@ -8,6 +8,6 @@
 
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/sup_fwd.hpp>
+#include <fcppt/container/grid/sup_fwd.hpp> // IWYU pragma: export
 
 #endif

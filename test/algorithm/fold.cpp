@@ -45,6 +45,7 @@ TEST_CASE("algorithm::fold move"
       fcppt::algorithm::fold(
           fcppt::container::make_move_range(fcppt::container::make<int_vector>(int_movable{1})),
           0,
+          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
           [](int_movable &&_element, int const _sum) { return _element.value() + _sum; }) == 1);
 }
 

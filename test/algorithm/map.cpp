@@ -5,22 +5,22 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/output_to_std_string.hpp>
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/algorithm/map_array.hpp>
-#include <fcppt/algorithm/map_record.hpp>
-#include <fcppt/algorithm/map_tuple.hpp>
+#include <fcppt/algorithm/map_array.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/map_record.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/map_tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/array/object.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/catch/record.hpp>
-#include <fcppt/catch/strong_typedef.hpp>
-#include <fcppt/catch/tuple.hpp>
+#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/container/make.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/record/element.hpp>
@@ -31,6 +31,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <type_traits>
+#include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 

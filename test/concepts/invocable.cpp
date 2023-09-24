@@ -5,7 +5,7 @@
 
 #include <fcppt/function_impl.hpp>
 #include <fcppt/not.hpp>
-#include <fcppt/concepts/invocable.hpp>
+#include <fcppt/concepts/invocable.hpp> // NOLINT(misc-include-cleaner)
 
 
 int main()

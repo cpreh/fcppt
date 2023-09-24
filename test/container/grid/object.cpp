@@ -9,10 +9,8 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/output.hpp>
-#include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/dim/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/dim/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <algorithm>

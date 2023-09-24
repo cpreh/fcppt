@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/cast/size.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/container/grid/map.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/container/grid/output.hpp>
+#include <fcppt/container/grid/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/container/grid/static_row.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -6,9 +6,9 @@
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/optional.hpp>
+#include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>

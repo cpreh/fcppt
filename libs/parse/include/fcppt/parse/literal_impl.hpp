@@ -8,5 +8,6 @@
 
 #include <fcppt/parse/basic_literal_impl.hpp>
 #include <fcppt/parse/literal_decl.hpp>
+#include <fcppt/parse/literal_fwd.hpp> // IWYU pragma: export
 
 #endif

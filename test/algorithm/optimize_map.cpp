@@ -6,15 +6,14 @@
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
-#include <fcppt/algorithm/detail/optimize_map.hpp>
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/algorithm/detail/optimize_map_v.hpp>
 #include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos_range.hpp>
 #include <fcppt/container/grid/pos_ref_range.hpp>
 #include <fcppt/enum/range_impl.hpp>
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -29,7 +28,7 @@ namespace
 using int_vector = std::vector<int>;
 
 template <typename Source>
-using source_optimized = fcppt::algorithm::detail::optimize_map<int_vector, Source>;
+inline constexpr bool source_optimized = fcppt::algorithm::detail::optimize_map_v<int_vector, Source>;
 
 }
 
@@ -38,7 +37,7 @@ int main()
   using int_int_map = std::map<int, int>;
 
   static_assert(
-      fcppt::algorithm::detail::optimize_map<int_vector, int_vector>::value,
+      fcppt::algorithm::detail::optimize_map_v<int_vector, int_vector>,
       "map from vector to vector not optimized");
 
   static_assert(
@@ -54,18 +53,16 @@ int main()
   static_assert(fcppt::container::detail::has_size<int_int_map>::value, "map::size() not detected");
 
   static_assert(
-      fcppt::algorithm::detail::optimize_map<int_vector, int_int_map>::value,
+      fcppt::algorithm::detail::optimize_map_v<int_vector, int_int_map>,
       "map from map to vector not optimized");
 
   static_assert(
-      fcppt::not_(fcppt::algorithm::detail::optimize_map<int_int_map, int_vector>::value),
+      fcppt::not_(fcppt::algorithm::detail::optimize_map_v<int_int_map, int_vector>),
       "map from vector to map cannot be optimized");
 
   FCPPT_PP_PUSH_WARNING
-#if defined(FCPPT_CONFIG_CLANG_COMPILER)
-  FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
-  FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
-#endif
+  FCPPT_PP_DISABLE_CLANG_WARNING(-Wunneeded-member-function)
+  FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
   FCPPT_PP_DISABLE_VC_WARNING(4822)
 
   struct ra_range
@@ -77,7 +74,7 @@ int main()
     [[nodiscard]] iterator end() const;
   };
 
-  static_assert(source_optimized<ra_range>::value, "random access iterator not detected");
+  static_assert(source_optimized<ra_range>, "random access iterator not detected");
 
   struct bi_range
   {
@@ -89,7 +86,7 @@ int main()
   };
 
   static_assert(
-      fcppt::not_(source_optimized<bi_range>::value), "random access iterator not detected");
+      fcppt::not_(source_optimized<bi_range>), "random access iterator not detected");
 
   FCPPT_PP_POP_WARNING
 
@@ -100,18 +97,18 @@ int main()
   };
 
   static_assert(
-      source_optimized<fcppt::enum_::range<test_enum>>::value, "enum range not optimized");
+      source_optimized<fcppt::enum_::range<test_enum>>, "enum range not optimized");
 
-  static_assert(source_optimized<fcppt::int_range<int>>::value, "int range not optimized");
+  static_assert(source_optimized<fcppt::int_range<int>>, "int range not optimized");
 
   static_assert(
-      source_optimized<fcppt::container::grid::pos_range<unsigned, 2>>::value,
+      source_optimized<fcppt::container::grid::pos_range<unsigned, 2>>,
       "grid::pos_range not optimized");
 
   static_assert(
       source_optimized<fcppt::container::grid::pos_ref_range<
-          fcppt::container::grid::object<unsigned, 2>>>::value,
+          fcppt::container::grid::object<unsigned, 2>>>,
       "grid::pos_ref_range not optimized");
 
-  static_assert(source_optimized<fcppt::mpl::list::object<int>>::value, "mpl vector not optimized");
+  static_assert(source_optimized<fcppt::mpl::list::object<int>>, "mpl vector not optimized");
 }

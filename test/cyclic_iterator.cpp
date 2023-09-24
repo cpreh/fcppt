@@ -10,7 +10,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <iterator>
-#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

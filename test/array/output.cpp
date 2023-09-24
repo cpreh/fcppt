@@ -5,7 +5,7 @@
 
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/array/object_impl.hpp>
-#include <fcppt/array/output.hpp>
+#include <fcppt/array/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -8,7 +8,7 @@
 #define FCPPT_SCOPED_STATE_MACHINE_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/scoped_state_machine_decl.hpp>
+#include <fcppt/scoped_state_machine_decl.hpp> // IWYU pragma: export
 
 template <typename Machine>
 fcppt::scoped_state_machine<Machine>::scoped_state_machine(machine_ref const _machine)

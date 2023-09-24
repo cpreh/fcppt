@@ -16,6 +16,7 @@
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <cstdlib>
 #include <exception>
 #include <iostream>
 #include <ostream>
