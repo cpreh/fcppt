@@ -8,7 +8,7 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/static_storage_decl.hpp>
+#include <fcppt/math/detail/static_storage_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

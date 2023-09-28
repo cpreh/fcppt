@@ -9,9 +9,9 @@
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/error_from_optional.hpp>
 #include <fcppt/either/no_error.hpp>
-#include <fcppt/either/no_error_comparison.hpp>
-#include <fcppt/either/no_error_output.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/either/no_error_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/no_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

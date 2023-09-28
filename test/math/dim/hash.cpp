@@ -5,9 +5,9 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/math/dim/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/dim/static.hpp>
-#include <fcppt/math/dim/std_hash.hpp>
+#include <fcppt/math/dim/std_hash.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <unordered_set>

@@ -12,6 +12,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <type_traits>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

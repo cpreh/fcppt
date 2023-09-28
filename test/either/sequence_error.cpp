@@ -11,9 +11,9 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/no_error.hpp>
-#include <fcppt/either/no_error_comparison.hpp>
-#include <fcppt/either/no_error_output.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/either/no_error_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/no_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/either/sequence_error.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -37,6 +37,7 @@ TEST_CASE("either::sequence_error", "[either]")
       fcppt::either::sequence_error(
           fcppt::container::make<std::vector<fcppt::unique_ptr<int>>>(
               fcppt::make_unique_ptr<int>(2), fcppt::make_unique_ptr<int>(4)),
+          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
           [](fcppt::unique_ptr<int> &&_value) {
             return *_value % 2 == 0 ? either_error{fcppt::either::no_error{}}
                                     : either_error{std::string{"test"}};

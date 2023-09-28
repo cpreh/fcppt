@@ -5,9 +5,9 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/math/is_zero_boost_units.hpp>
+#include <fcppt/math/is_zero_boost_units.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>

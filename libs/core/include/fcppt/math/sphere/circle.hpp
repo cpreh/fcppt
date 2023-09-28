@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 
-#include <fcppt/math/sphere/circle_fwd.hpp>
+#include <fcppt/math/sphere/circle_fwd.hpp> // IWYU pragma: export
 #include <fcppt/math/sphere/object_impl.hpp>
 
 #endif

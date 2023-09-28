@@ -9,7 +9,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/init_max.hpp>
-#include <fcppt/math/box/output.hpp>
+#include <fcppt/math/box/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>

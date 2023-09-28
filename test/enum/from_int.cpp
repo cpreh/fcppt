@@ -5,7 +5,7 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/optional.hpp>
+#include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>

@@ -6,6 +6,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/iterator/make_range.hpp>
+#include <fcppt/iterator/range.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <iterator>

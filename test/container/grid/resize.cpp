@@ -13,7 +13,7 @@
 #include <fcppt/container/grid/resize.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/dim/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <utility>

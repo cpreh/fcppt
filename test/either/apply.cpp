@@ -9,7 +9,7 @@
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/either/apply.hpp>
 #include <fcppt/either/object.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
@@ -52,9 +52,10 @@ TEST_CASE("either::apply move", "[either]")
 
   using either_bool = fcppt::either::object<std::string, bool>;
 
-  auto const apply_function(
+  auto const apply_function{
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::catch_::movable<int> &&_value1, fcppt::catch_::movable<unsigned> &&_value2) -> bool
-      { return _value1.value() > 10 && _value2.value() < 100U; });
+      { return _value1.value() > 10 && _value2.value() < 100U; }};
 
   CHECK(
       fcppt::either::apply(

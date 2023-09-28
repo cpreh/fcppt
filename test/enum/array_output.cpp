@@ -9,7 +9,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/enum/array.hpp>
-#include <fcppt/enum/array_output.hpp>
+#include <fcppt/enum/array_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>

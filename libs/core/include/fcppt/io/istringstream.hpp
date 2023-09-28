@@ -6,7 +6,7 @@
 #ifndef FCPPT_IO_ISTRINGSTREAM_HPP_INCLUDED
 #define FCPPT_IO_ISTRINGSTREAM_HPP_INCLUDED
 
-#include <fcppt/io/istringstream_fwd.hpp>
+#include <fcppt/io/istringstream_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
