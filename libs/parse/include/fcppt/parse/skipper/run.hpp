@@ -8,7 +8,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/skipper/is_skipper.hpp>
+#include <fcppt/parse/skipper/is_skipper_v.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -20,7 +20,7 @@ namespace fcppt::parse::skipper
 \brief Runs a skipper on a stream.
 \ingroup fcpptparse
 */
-template <typename Ch, typename Skipper, typename = std::enable_if_t<fcppt::parse::skipper::is_skipper<Skipper>::value>>
+template <typename Ch, typename Skipper, typename = std::enable_if_t<fcppt::parse::skipper::is_skipper_v<Skipper>>>
 [[nodiscard]] fcppt::parse::skipper::result<Ch>
 run(Skipper const &_skipper, fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state)
 {

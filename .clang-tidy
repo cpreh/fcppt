@@ -1,5 +1,4 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,*'
 WarningsAsErrors: ''
 HeaderFileExtensions:
   - ''
@@ -12,7 +11,6 @@ ImplementationFileExtensions:
   - cc
   - cpp
   - cxx
-HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
 User:            philipp

@@ -23,6 +23,7 @@ TEST_CASE("signal move", "[signal]")
   using signal_type = fcppt::signal::object<int_unique_ptr()>;
 
   signal_type signal{
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       signal_type::combiner_function{[](int_unique_ptr &&_ptr1, int_unique_ptr &&_ptr2) {
         return fcppt::make_unique_ptr<int>(*_ptr1 + *_ptr2);
       }}};

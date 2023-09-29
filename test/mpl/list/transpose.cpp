@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/mpl/list/contains.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/transpose.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

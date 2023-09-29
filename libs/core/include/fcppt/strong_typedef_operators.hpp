@@ -6,9 +6,9 @@
 #ifndef FCPPT_STRONG_TYPEDEF_OPERATORS_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_OPERATORS_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_arithmetic.hpp>
-#include <fcppt/strong_typedef_assignment.hpp>
-#include <fcppt/strong_typedef_bitwise.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_arithmetic.hpp> // IWYU pragma: export
+#include <fcppt/strong_typedef_assignment.hpp> // IWYU pragma: export
+#include <fcppt/strong_typedef_bitwise.hpp> // IWYU pragma: export
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: export
 
 #endif

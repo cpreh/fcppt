@@ -6,6 +6,9 @@
 #include <fcppt/mpl/list/as_tuple.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/tuple/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_FLOAT_HPP_INCLUDED
 #define FCPPT_PARSE_FLOAT_HPP_INCLUDED
 
+#include <fcppt/parse/float_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/float_impl.hpp>
 
 #endif

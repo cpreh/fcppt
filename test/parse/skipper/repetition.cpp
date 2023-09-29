@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/no_error_comparison.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/either/no_error_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/skipper/literal.hpp>
 #include <fcppt/parse/skipper/operators/repetition.hpp>
 #include <fcppt/parse/skipper/operators/sequence.hpp>

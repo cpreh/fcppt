@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_POSITION_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_POSITION_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/position_decl.hpp>
+#include <fcppt/parse/position_decl.hpp> // IWYU pragma: export
 
 template <typename Ch>
 fcppt::parse::position<Ch>::position(pos_type const _pos, optional_location const _location)

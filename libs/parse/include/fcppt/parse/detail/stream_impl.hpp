@@ -20,7 +20,7 @@
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/detail/check_bad.hpp>
 #include <fcppt/parse/detail/exception.hpp>
-#include <fcppt/parse/detail/stream_decl.hpp>
+#include <fcppt/parse/detail/stream_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <fcppt/config/external_end.hpp>

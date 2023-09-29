@@ -8,15 +8,15 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/grammar.hpp>
 #include <fcppt/parse/grammar_parse_stream.hpp>
 #include <fcppt/parse/grammar_parse_string.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/make_parse_stream_success.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
-#include <fcppt/parse/parse_stream_error_output.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/parse/parse_stream_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/skipper/space.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

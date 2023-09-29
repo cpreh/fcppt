@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/error_decl.hpp>
+#include <fcppt/parse/error_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

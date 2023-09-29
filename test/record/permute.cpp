@@ -8,6 +8,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/record/element.hpp>
+#include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/record/permute.hpp>

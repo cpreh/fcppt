@@ -13,7 +13,7 @@
 namespace fcppt::type_traits
 {
 /**
-\brief The implication function: \a Left -> \a Right
+\brief The implication function: \a Left -> \a Right.
 
 \ingroup fcppttype_traits
 

@@ -7,6 +7,7 @@
 #define FCPPT_PARSE_LOCATION_HPP_INCLUDED
 
 #include <fcppt/parse/location_equal.hpp>
+#include <fcppt/parse/location_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/location_impl.hpp>
 
 #endif

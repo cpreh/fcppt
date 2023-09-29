@@ -7,7 +7,6 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/range/size.hpp>
 #include <fcppt/signal/auto_connection.hpp>
-#include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

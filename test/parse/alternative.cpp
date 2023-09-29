@@ -4,23 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp>
+#include <fcppt/unit_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/unit_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/int.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/alternative.hpp>
-#include <fcppt/variant/comparison.hpp>
-#include <fcppt/variant/output.hpp>
+#include <fcppt/variant/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/variant/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>

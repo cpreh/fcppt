@@ -871,6 +871,7 @@ set(
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/mpl/add.hpp
 	libs/core/include/fcppt/mpl/apply.hpp
+	libs/core/include/fcppt/mpl/apply_v.hpp
 	libs/core/include/fcppt/mpl/arg.hpp
 	libs/core/include/fcppt/mpl/bind.hpp
 	libs/core/include/fcppt/mpl/bool_concept.hpp
@@ -882,6 +883,7 @@ set(
 	libs/core/include/fcppt/mpl/integral_concept.hpp
 	libs/core/include/fcppt/mpl/integrals_compatible.hpp
 	libs/core/include/fcppt/mpl/is_invocable.hpp
+	libs/core/include/fcppt/mpl/is_invocable_v.hpp
 	libs/core/include/fcppt/mpl/is_lambda.hpp
 	libs/core/include/fcppt/mpl/is_size_type.hpp
 	libs/core/include/fcppt/mpl/lambda.hpp
@@ -889,17 +891,23 @@ set(
 	libs/core/include/fcppt/mpl/lambda_fwd.hpp
 	libs/core/include/fcppt/mpl/less.hpp
 	libs/core/include/fcppt/mpl/list/all_of.hpp
+	libs/core/include/fcppt/mpl/list/all_of_v.hpp
 	libs/core/include/fcppt/mpl/list/any_of.hpp
+	libs/core/include/fcppt/mpl/list/any_of_v.hpp
 	libs/core/include/fcppt/mpl/list/append.hpp
 	libs/core/include/fcppt/mpl/list/apply.hpp
+	libs/core/include/fcppt/mpl/list/apply_v.hpp
 	libs/core/include/fcppt/mpl/list/as.hpp
 	libs/core/include/fcppt/mpl/list/as_tuple.hpp
 	libs/core/include/fcppt/mpl/list/at.hpp
 	libs/core/include/fcppt/mpl/list/back.hpp
 	libs/core/include/fcppt/mpl/list/contains.hpp
+	libs/core/include/fcppt/mpl/list/contains_v.hpp
 	libs/core/include/fcppt/mpl/list/distinct.hpp
+	libs/core/include/fcppt/mpl/list/distinct_v.hpp
 	libs/core/include/fcppt/mpl/list/drop.hpp
 	libs/core/include/fcppt/mpl/list/empty.hpp
+	libs/core/include/fcppt/mpl/list/empty_v.hpp
 	libs/core/include/fcppt/mpl/list/enum_range.hpp
 	libs/core/include/fcppt/mpl/list/enum_range_start_end.hpp
 	libs/core/include/fcppt/mpl/list/fold.hpp
@@ -939,8 +947,10 @@ set(
 	libs/core/include/fcppt/mpl/map/element_key.hpp
 	libs/core/include/fcppt/mpl/map/element_value.hpp
 	libs/core/include/fcppt/mpl/map/equal.hpp
+	libs/core/include/fcppt/mpl/map/equal_v.hpp
 	libs/core/include/fcppt/mpl/map/flip.hpp
 	libs/core/include/fcppt/mpl/map/has_key.hpp
+	libs/core/include/fcppt/mpl/map/has_key_v.hpp
 	libs/core/include/fcppt/mpl/map/insert.hpp
 	libs/core/include/fcppt/mpl/map/is_element.hpp
 	libs/core/include/fcppt/mpl/map/is_object.hpp
@@ -951,8 +961,10 @@ set(
 	libs/core/include/fcppt/mpl/map/object_fwd.hpp
 	libs/core/include/fcppt/mpl/mul.hpp
 	libs/core/include/fcppt/mpl/set/contains.hpp
+	libs/core/include/fcppt/mpl/set/contains_v.hpp
 	libs/core/include/fcppt/mpl/set/difference.hpp
 	libs/core/include/fcppt/mpl/set/equal.hpp
+	libs/core/include/fcppt/mpl/set/equal_v.hpp
 	libs/core/include/fcppt/mpl/set/from_list.hpp
 	libs/core/include/fcppt/mpl/set/from_list_relaxed.hpp
 	libs/core/include/fcppt/mpl/set/insert.hpp
@@ -1129,11 +1141,14 @@ set(
 	libs/core/include/fcppt/range/singular.hpp
 	libs/core/include/fcppt/range/size.hpp
 	libs/core/include/fcppt/record/all_disjoint.hpp
+	libs/core/include/fcppt/record/all_disjoint_v.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
+	libs/core/include/fcppt/record/are_disjoint_v.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
 	libs/core/include/fcppt/record/are_equivalent_v.hpp
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
+	libs/core/include/fcppt/record/detail/all_initializers_v.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
 	libs/core/include/fcppt/record/detail/disjoint_product.hpp
 	libs/core/include/fcppt/record/detail/element_at.hpp
@@ -1352,11 +1367,13 @@ set(
 	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp
 	libs/core/include/fcppt/type_traits/enum_constant_concept.hpp
 	libs/core/include/fcppt/type_traits/implication.hpp
+	libs/core/include/fcppt/type_traits/implication_v.hpp
 	libs/core/include/fcppt/type_traits/integral_cast.hpp
 	libs/core/include/fcppt/type_traits/integral_constant_concept.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_integral_constant.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
+	libs/core/include/fcppt/type_traits/is_iterator_of_category_v.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/is_string.hpp
 	libs/core/include/fcppt/type_traits/is_value.hpp

@@ -10,7 +10,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/skipper/any_impl.hpp>
-#include <fcppt/parse/skipper/comment_decl.hpp>
+#include <fcppt/parse/skipper/comment_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/parse/skipper/operators/not.hpp>
 #include <fcppt/parse/skipper/operators/repetition.hpp>

@@ -11,6 +11,7 @@
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 

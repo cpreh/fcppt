@@ -56,6 +56,7 @@ using move_result = fcppt::tuple::object<int_unique_ptr, string_unique_ptr, bool
 struct move_function
 {
   template <typename T1, typename T2, typename T3>
+  // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
   move_result operator()(T1 &&, T2 &&, T3 &&) const
   {
     throw std::runtime_error{"impossible"};

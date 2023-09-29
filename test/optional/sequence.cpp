@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/algorithm/loop_break_tuple.hpp>
-#include <fcppt/algorithm/map_tuple.hpp>
+#include <fcppt/algorithm/loop_break_tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/map_tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/catch/optional.hpp>
-#include <fcppt/catch/tuple.hpp>
+#include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/container/make.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>

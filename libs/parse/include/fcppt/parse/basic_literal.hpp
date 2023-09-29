@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_BASIC_LITERAL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_LITERAL_HPP_INCLUDED
 
+#include <fcppt/parse/basic_literal_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/basic_literal_impl.hpp>
 
 #endif

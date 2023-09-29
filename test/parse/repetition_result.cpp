@@ -6,6 +6,7 @@
 #include <fcppt/parse/repetition_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 

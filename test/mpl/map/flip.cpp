@@ -4,17 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/mpl/map/element.hpp>
-#include <fcppt/mpl/map/equal.hpp>
+#include <fcppt/mpl/map/equal_v.hpp>
 #include <fcppt/mpl/map/flip.hpp>
 #include <fcppt/mpl/map/object.hpp>
 
 int main()
 {
-  static_assert(fcppt::mpl::map::equal<
+  static_assert(fcppt::mpl::map::equal_v<
                 fcppt::mpl::map::flip<fcppt::mpl::map::object<
                     fcppt::mpl::map::element<int, float>,
                     fcppt::mpl::map::element<char, bool>>>,
                 fcppt::mpl::map::object<
                     fcppt::mpl::map::element<float, int>,
-                    fcppt::mpl::map::element<bool, char>>>::value);
+                    fcppt::mpl::map::element<bool, char>>>);
 }

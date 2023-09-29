@@ -8,7 +8,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/either/output.hpp>
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/char.hpp>
 #include <fcppt/parse/error.hpp>
@@ -17,7 +17,7 @@
 #include <fcppt/parse/parse_stream_error.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/parse_string_error.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

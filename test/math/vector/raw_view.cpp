@@ -8,7 +8,6 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object.hpp>
-#include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

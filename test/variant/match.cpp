@@ -37,7 +37,7 @@ TEST_CASE("variant::match move", "[variant]")
 
   std::string const result(fcppt::variant::match(
       variant(fcppt::make_unique_ptr<int>(42)),
-      [](int_unique_ptr &&_value) { return std::to_string(*_value); },
+      [](int_unique_ptr &&_value) { return std::to_string(*_value); }, // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](std::string const &_value) { return _value; }));
 
   CHECK(result == "42");

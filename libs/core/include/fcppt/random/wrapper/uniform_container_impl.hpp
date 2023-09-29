@@ -7,7 +7,7 @@
 #define FCPPT_RANDOM_WRAPPER_UNIFORM_CONTAINER_IMPL_HPP_INCLUDED
 
 #include <fcppt/random/distribution/make_basic.hpp>
-#include <fcppt/random/wrapper/uniform_container_decl.hpp>
+#include <fcppt/random/wrapper/uniform_container_decl.hpp> // IWYU pragma: export
 
 template <typename Container, typename IntDistribution>
 fcppt::random::wrapper::uniform_container<Container, IntDistribution>::uniform_container(

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/record/are_disjoint.hpp>
+#include <fcppt/record/are_disjoint_v.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
@@ -21,9 +22,18 @@ int main()
   using record3 = fcppt::record::
       object<fcppt::record::element<int_label, int>, fcppt::record::element<bool_label, bool>>;
 
+  // NOLINTNEXTLINE(modernize-type-traits)
   static_assert(fcppt::record::are_disjoint<record1, record2>::value);
 
+  // NOLINTNEXTLINE(modernize-type-traits)
   static_assert(!fcppt::record::are_disjoint<record1, record3>::value);
 
+  // NOLINTNEXTLINE(modernize-type-traits)
   static_assert(!fcppt::record::are_disjoint<record2, record3>::value);
+
+  static_assert(fcppt::record::are_disjoint_v<record1, record2>);
+
+  static_assert(!fcppt::record::are_disjoint_v<record1, record3>);
+
+  static_assert(!fcppt::record::are_disjoint_v<record2, record3>);
 }

@@ -7,16 +7,16 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/recursive.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/convert.hpp>
-#include <fcppt/catch/either.hpp>
+#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/recursive.hpp>
-#include <fcppt/catch/strong_typedef.hpp>
-#include <fcppt/catch/tuple.hpp>
-#include <fcppt/catch/variant.hpp>
+#include <fcppt/catch/recursive.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/container/insert.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
@@ -36,7 +36,7 @@
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/parse_string_error.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/separator.hpp>
@@ -51,6 +51,7 @@
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <catch2/catch_tostring.hpp>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -121,6 +122,7 @@ json::object make_object_(json::entries &&_args)
   return fcppt::algorithm::fold(
       fcppt::container::make_move_range(std::move(_args)),
       object{},
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::tuple::object<std::string, fcppt::recursive<json::value>> &&_element, json::object &&_state) {
         if (fcppt::not_(fcppt::container::insert(
                 _state,

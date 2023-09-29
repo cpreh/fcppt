@@ -11,7 +11,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -62,6 +62,7 @@ TEST_CASE("optional::maybe_void move", "[optional]")
 
   fcppt::optional::maybe_void(
       optional_int_unique_ptr(fcppt::make_unique_ptr<int>(1)),
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](int_unique_ptr &&_ptr) { CHECK(*_ptr == 1); });
 }
 

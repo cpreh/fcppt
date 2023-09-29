@@ -12,7 +12,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/construct.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/recursive_decl.hpp>
+#include <fcppt/parse/recursive_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>

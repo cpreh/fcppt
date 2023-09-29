@@ -7,7 +7,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/identity.hpp>
-#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/matrix/rotation_axis.hpp>
 #include <fcppt/math/matrix/rotation_x.hpp>
 #include <fcppt/math/matrix/rotation_y.hpp>

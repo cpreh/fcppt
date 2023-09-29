@@ -289,6 +289,7 @@ set(
 	libs/parse/include/fcppt/parse/skipper/epsilon_fwd.hpp
 	libs/parse/include/fcppt/parse/skipper/epsilon_impl.hpp
 	libs/parse/include/fcppt/parse/skipper/is_skipper.hpp
+	libs/parse/include/fcppt/parse/skipper/is_skipper_v.hpp
 	libs/parse/include/fcppt/parse/skipper/is_valid_argument.hpp
 	libs/parse/include/fcppt/parse/skipper/literal.hpp
 	libs/parse/include/fcppt/parse/skipper/literal_decl.hpp

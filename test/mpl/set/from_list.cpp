@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/set/contains.hpp>
+#include <fcppt/mpl/set/contains_v.hpp>
 #include <fcppt/mpl/set/from_list.hpp>
 
 int main()
 {
   using set = fcppt::mpl::set::from_list<fcppt::mpl::list::object<bool,int>>;
 
-  static_assert(fcppt::mpl::set::contains<set,bool>::value);
-  static_assert(fcppt::mpl::set::contains<set,int>::value);
+  static_assert(fcppt::mpl::set::contains_v<set,bool>);
+  static_assert(fcppt::mpl::set::contains_v<set,int>);
 }

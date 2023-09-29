@@ -9,13 +9,13 @@
 #include <fcppt/catch/movable.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/map.hpp>
 #include <fcppt/record/object_impl.hpp>
-#include <fcppt/record/output.hpp>
+#include <fcppt/record/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/record/permute.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/monad/inner_type.hpp>
-#include <fcppt/optional/monad.hpp>
+#include <fcppt/optional/monad.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

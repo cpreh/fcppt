@@ -5,11 +5,12 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_r.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -22,7 +23,7 @@ TEST_CASE("math::matrix view", "[math],[matrix]")
 {
   using value_type = int;
 
-  constexpr std::size_t const size{3U};
+  constexpr fcppt::math::size_type const size{3U};
 
   using matrix_type = fcppt::math::matrix::static_<value_type, size, size>;
 

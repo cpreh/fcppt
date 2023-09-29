@@ -5,15 +5,14 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/record/comparison.hpp>
+#include <fcppt/record/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object_impl.hpp>
-#include <fcppt/record/output.hpp>
+#include <fcppt/record/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

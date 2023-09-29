@@ -6,6 +6,6 @@
 #ifndef FCPPT_PREPROCESSOR_IGNORE_DANGLING_REFERENCE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_IGNORE_DANGLING_REFERENCE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/ignore_dangling_reference.h>
+#include <fcppt/preprocessor/ignore_dangling_reference.h> // IWYU pragma: export
 
 #endif

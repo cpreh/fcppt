@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_SKIPPER_STRING_DECL_HPP_INCLUDED
 
 #include <fcppt/parse/skipper/basic_string_decl.hpp>
-#include <fcppt/parse/skipper/string_fwd.hpp>
+#include <fcppt/parse/skipper/string_fwd.hpp> // IWYU pragma: export
 
 #endif

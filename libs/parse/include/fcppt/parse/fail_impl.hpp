@@ -11,7 +11,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
-#include <fcppt/parse/fail_decl.hpp>
+#include <fcppt/parse/fail_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/fail_error_impl.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/is_fatal.hpp>

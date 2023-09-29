@@ -5,6 +5,7 @@
 
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/any_of.hpp>
+#include <fcppt/mpl/list/any_of_v.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -13,14 +14,27 @@
 int main()
 {
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       !fcppt::mpl::list::any_of<fcppt::mpl::list::object<>, fcppt::mpl::lambda<std::is_integral>>::
           value);
 
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::list::
           any_of<fcppt::mpl::list::object<int, bool>, fcppt::mpl::lambda<std::is_integral>>::value);
 
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       !fcppt::mpl::list::
           any_of<fcppt::mpl::list::object<void>, fcppt::mpl::lambda<std::is_integral>>::value);
+
+  static_assert(!fcppt::mpl::list::
+                    any_of_v<fcppt::mpl::list::object<>, fcppt::mpl::lambda<std::is_integral>>);
+
+  static_assert(
+      fcppt::mpl::list::
+          any_of_v<fcppt::mpl::list::object<int, bool>, fcppt::mpl::lambda<std::is_integral>>);
+
+  static_assert(!fcppt::mpl::list::
+                    any_of_v<fcppt::mpl::list::object<void>, fcppt::mpl::lambda<std::is_integral>>);
 }

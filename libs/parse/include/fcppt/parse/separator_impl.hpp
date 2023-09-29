@@ -19,7 +19,7 @@
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/separator_decl.hpp>
+#include <fcppt/parse/separator_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/operators/optional.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>

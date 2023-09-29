@@ -26,7 +26,7 @@ using bool_element = fcppt::record::element<bool_label, bool>;
 using float_element = fcppt::record::element<float_label, float>;
 
 template <typename... Args>
-void test(Args &&...)
+void test(Args &&...) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   using args_type = fcppt::mpl::list::object<std::remove_cvref_t<Args>...>;
 

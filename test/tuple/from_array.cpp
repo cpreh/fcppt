@@ -6,13 +6,12 @@
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/tuple.hpp>
+#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/tuple/comparison.hpp>
 #include <fcppt/tuple/from_array.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
-#include <array>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

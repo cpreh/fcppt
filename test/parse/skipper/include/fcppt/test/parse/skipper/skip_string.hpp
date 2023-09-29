@@ -19,7 +19,7 @@
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/parse/detail/stream_impl.hpp>
 #include <fcppt/parse/detail/translate_exception.hpp>
-#include <fcppt/parse/skipper/is_skipper.hpp>
+#include <fcppt/parse/skipper/is_skipper_v.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -38,7 +38,7 @@ template <typename Ch, typename Skipper>
 [[nodiscard]] fcppt::either::error<fcppt::parse::parse_string_error<Ch>>
 skip_string(Skipper const &_skipper, std::basic_string<Ch> &&_string)
 {
-  static_assert(fcppt::parse::skipper::is_skipper<Skipper>::value);
+  static_assert(fcppt::parse::skipper::is_skipper_v<Skipper>);
 
   std::basic_istringstream<Ch> string_stream{std::move(_string)};
 

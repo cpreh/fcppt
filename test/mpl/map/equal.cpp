@@ -5,11 +5,13 @@
 
 #include <fcppt/mpl/map/element.hpp>
 #include <fcppt/mpl/map/equal.hpp>
+#include <fcppt/mpl/map/equal_v.hpp>
 #include <fcppt/mpl/map/object.hpp>
 
 int main()
 {
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::map::equal<
           fcppt::mpl::map::
               object<fcppt::mpl::map::element<int, float>, fcppt::mpl::map::element<bool, double>>,
@@ -18,6 +20,7 @@ int main()
               fcppt::mpl::map::element<int, float>>>::value);
 
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       !fcppt::mpl::map::equal<
           fcppt::mpl::map::
               object<fcppt::mpl::map::element<int, float>, fcppt::mpl::map::element<bool, double>>,
@@ -26,8 +29,31 @@ int main()
               fcppt::mpl::map::element<bool, float>>>::value);
 
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       !fcppt::mpl::map::equal<
           fcppt::mpl::map::
               object<fcppt::mpl::map::element<int, float>, fcppt::mpl::map::element<bool, double>>,
           fcppt::mpl::map::object<fcppt::mpl::map::element<int, float>>>::value);
+
+  static_assert(
+      fcppt::mpl::map::equal_v<
+          fcppt::mpl::map::
+              object<fcppt::mpl::map::element<int, float>, fcppt::mpl::map::element<bool, double>>,
+          fcppt::mpl::map::object<
+              fcppt::mpl::map::element<bool, double>,
+              fcppt::mpl::map::element<int, float>>>);
+
+  static_assert(
+      !fcppt::mpl::map::equal_v<
+          fcppt::mpl::map::
+              object<fcppt::mpl::map::element<int, float>, fcppt::mpl::map::element<bool, double>>,
+          fcppt::mpl::map::object<
+              fcppt::mpl::map::element<int, float>,
+              fcppt::mpl::map::element<bool, float>>>);
+
+  static_assert(
+      !fcppt::mpl::map::equal_v<
+          fcppt::mpl::map::
+              object<fcppt::mpl::map::element<int, float>, fcppt::mpl::map::element<bool, double>>,
+          fcppt::mpl::map::object<fcppt::mpl::map::element<int, float>>>);
 }

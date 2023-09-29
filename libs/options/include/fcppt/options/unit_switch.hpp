@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONS_UNIT_SWITCH_HPP_INCLUDED
 #define FCPPT_OPTIONS_UNIT_SWITCH_HPP_INCLUDED
 
+#include <fcppt/options/unit_switch_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/unit_switch_impl.hpp>
 
 #endif

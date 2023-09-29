@@ -8,6 +8,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/for_each_break.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -36,7 +37,7 @@ public:
   [[nodiscard]] int value() const { return value_; }
 
 private:
-  mutable int value_;
+  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init)
 };
 
 class function2
@@ -61,7 +62,7 @@ public:
   [[nodiscard]] int value() const { return value_; }
 
 private:
-  mutable int value_;
+  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init)
 };
 
 }

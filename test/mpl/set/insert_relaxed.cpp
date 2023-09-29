@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/mpl/set/contains.hpp>
+#include <fcppt/mpl/set/contains_v.hpp>
 #include <fcppt/mpl/set/insert_relaxed.hpp>
 #include <fcppt/mpl/set/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -16,6 +16,5 @@ int main()
 
   static_assert(std::is_same_v<fcppt::mpl::set::insert_relaxed<set, char>, set>);
 
-  static_assert(
-      fcppt::mpl::set::contains<fcppt::mpl::set::insert_relaxed<set, bool>, bool>::value);
+  static_assert(fcppt::mpl::set::contains_v<fcppt::mpl::set::insert_relaxed<set, bool>, bool>);
 }

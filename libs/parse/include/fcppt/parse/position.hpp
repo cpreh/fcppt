@@ -7,6 +7,7 @@
 #define FCPPT_PARSE_POSITION_HPP_INCLUDED
 
 #include <fcppt/parse/position_equal.hpp>
+#include <fcppt/parse/position_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/position_impl.hpp>
 
 #endif

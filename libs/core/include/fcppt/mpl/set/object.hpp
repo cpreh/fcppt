@@ -6,6 +6,6 @@
 #ifndef FCPPT_MPL_SET_OBJECT_HPP_INCLUDED
 #define FCPPT_MPL_SET_OBJECT_HPP_INCLUDED
 
-#include <fcppt/mpl/set/object_fwd.hpp>
+#include <fcppt/mpl/set/object_fwd.hpp> // IWYU pragma: export
 
 #endif

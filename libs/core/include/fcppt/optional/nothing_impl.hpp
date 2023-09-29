@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONAL_NOTHING_IMPL_HPP_INCLUDED
 
 #include <fcppt/concepts/move_constructible.hpp>
-#include <fcppt/optional/nothing_decl.hpp>
+#include <fcppt/optional/nothing_decl.hpp> // IWYU pragma: export
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

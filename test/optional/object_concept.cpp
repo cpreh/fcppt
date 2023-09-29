@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/not.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/object_fwd.hpp>
 
 int main()

@@ -8,6 +8,6 @@
 
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/parse/base_impl.hpp>
-#include <fcppt/parse/base_unique_ptr_fwd.hpp>
+#include <fcppt/parse/base_unique_ptr_fwd.hpp> // IWYU pragma: export
 
 #endif

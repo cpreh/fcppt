@@ -6,19 +6,20 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/reference_comparison.hpp>
-#include <fcppt/reference_output.hpp>
+#include <fcppt/reference_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/reference_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/cast/dynamic_fun.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/output.hpp>
-#include <fcppt/variant/comparison.hpp>
+#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/variant/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/variant/dynamic_cast.hpp>
+#include <fcppt/variant/dynamic_cast_types.hpp>
 #include <fcppt/variant/from_list.hpp>
-#include <fcppt/variant/output.hpp>
+#include <fcppt/variant/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

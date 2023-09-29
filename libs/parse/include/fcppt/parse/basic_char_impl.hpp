@@ -8,7 +8,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/from_optional.hpp>
-#include <fcppt/parse/basic_char_decl.hpp>
+#include <fcppt/parse/basic_char_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/basic_char_error_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error_impl.hpp>

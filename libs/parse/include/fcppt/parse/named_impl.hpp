@@ -15,7 +15,7 @@
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
 #include <fcppt/parse/is_fatal.hpp>
-#include <fcppt/parse/named_decl.hpp>
+#include <fcppt/parse/named_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/named_error_impl.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>

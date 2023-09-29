@@ -6,7 +6,6 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/at_r.hpp>
-#include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/at.hpp>

@@ -26,8 +26,7 @@
 namespace fcppt::record
 {
 /**
-\brief Tests if multiple records have disjoint label sets
-
+\brief Tests if multiple records have disjoint label sets.
 \ingroup fcpptrecord
 */
 template <fcppt::mpl::list::object_concept Records>

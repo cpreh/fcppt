@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/strong_typedef_std_hash.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_impl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_std_hash.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>

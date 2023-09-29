@@ -6,14 +6,13 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/catch/tuple.hpp>
+#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/tuple/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
-#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN

@@ -4,18 +4,33 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/mpl/set/equal.hpp>
+#include <fcppt/mpl/set/equal_v.hpp>
 #include <fcppt/mpl/set/object.hpp>
 
 int main()
 {
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::set::equal<fcppt::mpl::set::object<>, fcppt::mpl::set::object<>>::value);
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::set::equal<fcppt::mpl::set::object<int>, fcppt::mpl::set::object<int>>::value);
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::set::
           equal<fcppt::mpl::set::object<int, bool>, fcppt::mpl::set::object<bool, int>>::value);
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       !fcppt::mpl::set::
           equal<fcppt::mpl::set::object<int, float>, fcppt::mpl::set::object<bool, int>>::value);
+
+  static_assert(fcppt::mpl::set::equal_v<fcppt::mpl::set::object<>, fcppt::mpl::set::object<>>);
+  static_assert(
+      fcppt::mpl::set::equal_v<fcppt::mpl::set::object<int>, fcppt::mpl::set::object<int>>);
+  static_assert(
+      fcppt::mpl::set::
+          equal_v<fcppt::mpl::set::object<int, bool>, fcppt::mpl::set::object<bool, int>>);
+  static_assert(
+      !fcppt::mpl::set::
+          equal_v<fcppt::mpl::set::object<int, float>, fcppt::mpl::set::object<bool, int>>);
 }

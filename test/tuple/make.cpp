@@ -5,7 +5,7 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/tuple.hpp>
+#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -20,7 +20,7 @@
 #include <fcppt/parse/digits.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
-#include <fcppt/parse/float_decl.hpp>
+#include <fcppt/parse/float_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/is_fatal.hpp>

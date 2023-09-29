@@ -6,7 +6,7 @@
 #ifndef FCPPT_ENABLE_SHARED_FROM_THIS_IMPL_HPP_INCLUDED
 #define FCPPT_ENABLE_SHARED_FROM_THIS_IMPL_HPP_INCLUDED
 
-#include <fcppt/enable_shared_from_this_decl.hpp>
+#include <fcppt/enable_shared_from_this_decl.hpp> // IWYU pragma: export
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 

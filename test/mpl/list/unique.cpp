@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/mpl/list/contains.hpp>
+#include <fcppt/mpl/list/contains_v.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/size.hpp>
 #include <fcppt/mpl/list/unique.hpp>
@@ -15,7 +15,7 @@ int main()
 
     static_assert(fcppt::mpl::list::size<list>::value == 1U);
 
-    static_assert(fcppt::mpl::list::contains<list, int>::value);
+    static_assert(fcppt::mpl::list::contains_v<list, int>);
   }
 
   {
@@ -23,8 +23,8 @@ int main()
 
     static_assert(fcppt::mpl::list::size<list>::value == 2U);
 
-    static_assert(fcppt::mpl::list::contains<list, int>::value);
+    static_assert(fcppt::mpl::list::contains_v<list, int>);
 
-    static_assert(fcppt::mpl::list::contains<list, float>::value);
+    static_assert(fcppt::mpl::list::contains_v<list, float>);
   }
 }

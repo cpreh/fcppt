@@ -7,7 +7,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
-#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>

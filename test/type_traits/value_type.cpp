@@ -6,6 +6,7 @@
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
+#include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 

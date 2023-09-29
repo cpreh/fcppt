@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/mpl/is_invocable.hpp>
+#include <fcppt/mpl/is_invocable_v.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -16,9 +17,13 @@ int main()
     void operator()(int) const {}
   };
 
-//  static_assert(std::is_invocable<F,int>::value);
+  // NOLINTNEXTLINE(modernize-type-traits)
   static_assert(fcppt::mpl::is_invocable<F, fcppt::mpl::list::object<int>>::value);
+  // NOLINTNEXTLINE(modernize-type-traits)
   static_assert(!fcppt::mpl::is_invocable<F, fcppt::mpl::list::object<std::string>>::value);
+
+  static_assert(fcppt::mpl::is_invocable_v<F, fcppt::mpl::list::object<int>>);
+  static_assert(!fcppt::mpl::is_invocable_v<F, fcppt::mpl::list::object<std::string>>);
 
   F const f{};
   f(10);

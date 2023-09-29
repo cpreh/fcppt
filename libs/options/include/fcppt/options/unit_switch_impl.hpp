@@ -24,7 +24,7 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
-#include <fcppt/options/unit_switch_decl.hpp>
+#include <fcppt/options/unit_switch_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/get.hpp>

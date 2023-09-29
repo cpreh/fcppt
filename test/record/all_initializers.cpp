@@ -6,7 +6,7 @@
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/detail/all_initializers.hpp>
+#include <fcppt/record/detail/all_initializers_v.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -22,14 +22,14 @@ using int_element = fcppt::record::element<int_label, int>;
 using bool_element = fcppt::record::element<bool_label, bool>;
 
 template <bool Expected, typename... Args>
-void test(Args &&...)
+void test(Args &&...) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   using elements = fcppt::mpl::list::object<bool_element, int_element>;
 
   using args_type = fcppt::mpl::list::object<std::remove_cvref_t<Args>...>;
 
   static_assert(
-      fcppt::record::detail::all_initializers<elements, args_type>::value == Expected,
+      fcppt::record::detail::all_initializers_v<elements, args_type> == Expected,
       "Broken all_initializers");
 }
 

@@ -5,6 +5,7 @@
 
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/apply.hpp>
+#include <fcppt/mpl/list/apply_v.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -13,9 +14,16 @@
 int main()
 {
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::list::apply<fcppt::mpl::lambda<std::is_integral>, fcppt::mpl::list::object<int>>::
           value);
   static_assert(
+      // NOLINTNEXTLINE(modernize-type-traits)
       fcppt::mpl::list::
           apply<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::list::object<int, int>>::value);
+
+  static_assert(fcppt::mpl::list::
+                    apply_v<fcppt::mpl::lambda<std::is_integral>, fcppt::mpl::list::object<int>>);
+  static_assert(fcppt::mpl::list::
+                    apply_v<fcppt::mpl::lambda<std::is_same>, fcppt::mpl::list::object<int, int>>);
 }

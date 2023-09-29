@@ -6,10 +6,10 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/no_error_comparison.hpp>
-#include <fcppt/either/no_error_output.hpp>
-#include <fcppt/either/output.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp>
+#include <fcppt/either/no_error_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/no_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/parse/skipper/literal.hpp>
 #include <fcppt/parse/skipper/operators/sequence.hpp>
 #include <fcppt/test/parse/skipper/make_success.hpp>

@@ -17,7 +17,7 @@
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/position.hpp>
-#include <fcppt/parse/skipper/any_decl.hpp>
+#include <fcppt/parse/skipper/any_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 

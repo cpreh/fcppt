@@ -14,7 +14,7 @@
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/parse/basic_char_set_decl.hpp>
+#include <fcppt/parse/basic_char_set_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/basic_char_set_error_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error_impl.hpp>

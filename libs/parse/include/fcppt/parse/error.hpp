@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_ERROR_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_HPP_INCLUDED
 
+#include <fcppt/parse/error_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/error_impl.hpp>
 
 #endif

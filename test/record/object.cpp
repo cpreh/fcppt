@@ -78,7 +78,7 @@ TEST_CASE("record::object", "[record]")
   private:
     int value_;
 
-    bool valid_;
+    bool valid_; // NOLINT(cppcoreguidelines-use-default-member-init)
   };
 
   FCPPT_RECORD_MAKE_LABEL(int_label);

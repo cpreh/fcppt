@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/mpl/set/contains.hpp>
+#include <fcppt/mpl/set/contains_v.hpp>
 #include <fcppt/record/disjoint_product.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/label_set.hpp>
@@ -24,7 +24,7 @@ int main()
 
   using product_labels = fcppt::record::label_set<product_record>;
 
-  static_assert(fcppt::mpl::set::contains<product_labels, int_label>::value);
+  static_assert(fcppt::mpl::set::contains_v<product_labels, int_label>);
 
-  static_assert(fcppt::mpl::set::contains<product_labels, bool_label>::value);
+  static_assert(fcppt::mpl::set::contains_v<product_labels, bool_label>);
 }
