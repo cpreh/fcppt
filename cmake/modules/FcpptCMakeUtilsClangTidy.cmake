@@ -46,6 +46,7 @@ if(
 		"-llvm-namespace-comment"
 		"-llvmlibc-callee-namespace"
 		"-llvmlibc-implementation-in-namespace"
+		"-llvmlibc-inline-function-decl"
 		"-llvmlibc-restrict-system-libc-headers"
 		"-misc-no-recursion"
 		"-modernize-return-braced-init-list"
@@ -95,9 +96,8 @@ if(
 
 			set(
 				FCPPT_UTILS_CLANG_TIDY_HEADER_FILTER
-				"<${FCPPT_UTILS_CLANG_TIDY_WHITELIST_ARGS}/.*>"
+				"${FCPPT_UTILS_CLANG_TIDY_WHITELIST_ARGS}/.*"
 			)
-
 		endif()
 
 		message(
