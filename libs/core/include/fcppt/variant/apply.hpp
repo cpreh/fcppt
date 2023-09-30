@@ -22,6 +22,7 @@ namespace fcppt::variant
 TODO(concepts)
 */
 template <typename Function, fcppt::variant::object_concept... Variants>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 [[nodiscard]] inline decltype(auto) apply(Function const &_function, Variants &&..._variants)
 {
   return std::visit(_function, fcppt::move_if_rvalue<Variants>(_variants.impl())...);

@@ -16,6 +16,7 @@ namespace fcppt::parse::skipper
 \see fcppt::parse::skipper::is_skipper
 */
 template <typename Type>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool is_skipper_v = fcppt::parse::skipper::is_skipper<Type>::value;
 
 }

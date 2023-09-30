@@ -31,6 +31,7 @@ fcppt::parse::fatal<Parser>::parse(
 {
   return fcppt::either::map_failure(
       fcppt::parse::deref(this->parser_).parse(_state, _skipper),
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::parse::error<Ch> &&_error) {
         return fcppt::parse::error<Ch>{std::move(_error.get()), fcppt::parse::is_fatal{true}};
       });

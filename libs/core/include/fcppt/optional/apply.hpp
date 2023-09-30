@@ -33,6 +33,7 @@ template <
     fcppt::concepts::invocable_move<fcppt::optional::move_type<Optionals>...> Function>
 [[nodiscard]] inline fcppt::optional::object<
     std::invoke_result_t<Function, fcppt::optional::move_type<Optionals>...>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 apply(Function const &_function, Optionals &&..._optionals)
 {
   return fcppt::optional::make_if(

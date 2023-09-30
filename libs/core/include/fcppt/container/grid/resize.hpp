@@ -39,7 +39,7 @@ position <code>p</code> in <code>g</code> we have that:
 */
 template <typename Grid, typename Function>
 std::remove_cvref_t<Grid> resize(
-    Grid &&_grid,
+    Grid &&_grid, // NOLINT(cppcoreguidelines-missing-std-forward)
     fcppt::container::grid::dim_type<std::remove_cvref_t<Grid>> const &_new_size,
     Function const &_init)
 {

@@ -30,7 +30,7 @@ namespace fcppt::array
 template <std::size_t Size, typename Source>
 fcppt::optional::object<
     fcppt::array::object<fcppt::type_traits::value_type<std::remove_cvref_t<Source>>, Size>>
-from_range(Source &&_source)
+from_range(Source &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   return fcppt::optional::make_if(
       fcppt::range::size(_source) == Size,

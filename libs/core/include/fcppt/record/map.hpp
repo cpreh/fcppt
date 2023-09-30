@@ -32,6 +32,7 @@ For every <code>fcppt::record::element<L,T></code> in \a Record,
 \see fcppt::record::map_result
 */
 template <typename Record, typename Function>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 inline fcppt::record::map_result<Record, Function> map(Record &&_record, Function const &_function)
 {
   return fcppt::record::init<fcppt::record::map_result<Record, Function>>(

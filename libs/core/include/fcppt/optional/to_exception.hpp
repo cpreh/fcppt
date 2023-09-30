@@ -24,6 +24,7 @@ _make_exception is thrown as an exception.
 */
 template <fcppt::optional::object_concept Optional, fcppt::concepts::invocable_move MakeException>
 [[nodiscard]] inline fcppt::optional::move_type<Optional>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 to_exception(Optional &&_optional, MakeException const _make_exception)
 {
   if (_optional.has_value())

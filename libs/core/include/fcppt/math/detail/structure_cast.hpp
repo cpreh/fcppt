@@ -22,7 +22,7 @@ inline T structure_cast(U const &_other)
   FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(typename T::storage_type);
 
   static_assert(
-      std::is_same<typename T::dim_wrapper, typename U::dim_wrapper>::value,
+      std::is_same_v<typename T::dim_wrapper, typename U::dim_wrapper>,
       "structure_cast works only on types with the same dimensions");
 
   return fcppt::math::detail::init<T>([&_other](typename T::size_type const _index) {

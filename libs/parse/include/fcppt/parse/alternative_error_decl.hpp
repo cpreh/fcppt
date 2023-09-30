@@ -25,6 +25,7 @@ public:
   using left_type = fcppt::strong_typedef<error_base, fcppt::parse::left_error_tag>;
   using right_type = fcppt::strong_typedef<error_base, fcppt::parse::right_error_tag>;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   alternative_error(left_type &&, right_type &&);
 
   [[nodiscard]] error_base const &left() const;

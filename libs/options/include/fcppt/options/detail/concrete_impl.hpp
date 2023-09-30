@@ -41,6 +41,7 @@ fcppt::options::detail::concrete<Result, Parser>::parse(
 {
   return fcppt::either::map(
       fcppt::options::deref(this->parser_).parse(std::move(_state), _context),
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::options::state_with_value<fcppt::options::result_of<Parser>> &&_result)
       {
         return fcppt::options::state_with_value<result_type>{

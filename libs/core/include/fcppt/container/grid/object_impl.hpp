@@ -75,6 +75,7 @@ fcppt::container::grid::object<T, N, A>::object(object const &) = default;
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
 fcppt::container::grid::object<T, N, A>::object(object &&_other) noexcept(
+    // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
     std::is_nothrow_move_constructible_v<T>)
     : container_(std::move(_other.container_)), size_(std::move(_other.size_))
 {
@@ -86,6 +87,7 @@ fcppt::container::grid::object<T, N, A>::operator=(object const &) = default;
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
 fcppt::container::grid::object<T, N, A> &fcppt::container::grid::object<T, N, A>::operator=(
+    // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
     object &&_other) noexcept(std::is_nothrow_move_assignable_v<T>)
 {
   if (this == &_other)
@@ -169,7 +171,7 @@ fcppt::container::grid::object<T, N, A>::end() const
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-void fcppt::container::grid::object<T, N, A>::swap(object &_other)
+void fcppt::container::grid::object<T, N, A>::swap(object &_other) noexcept
 {
   container_.swap(_other.container_);
 
@@ -178,7 +180,7 @@ void fcppt::container::grid::object<T, N, A>::swap(object &_other)
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
 void fcppt::container::grid::swap(
-    fcppt::container::grid::object<T, N, A> &_a, fcppt::container::grid::object<T, N, A> &_b)
+    fcppt::container::grid::object<T, N, A> &_a, fcppt::container::grid::object<T, N, A> &_b) noexcept
 {
   _a.swap(_b);
 }

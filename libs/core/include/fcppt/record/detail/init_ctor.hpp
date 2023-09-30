@@ -30,7 +30,7 @@ namespace fcppt::record::detail
 template <typename Result, typename TagTuple, typename... Args>
 Result init_ctor(Args &&..._args)
 {
-  fcppt::tuple::object<std::remove_cvref_t<Args>...> arguments(std::move(_args)...);
+  fcppt::tuple::object<std::remove_cvref_t<Args>...> arguments{std::forward<Args>(_args)...};
 
   using args_list = fcppt::mpl::list::object<std::remove_cvref_t<Args>...>;
 

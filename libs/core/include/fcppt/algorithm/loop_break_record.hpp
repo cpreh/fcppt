@@ -21,6 +21,7 @@ template <typename Range>
 struct loop_break_impl<Range, std::enable_if_t<fcppt::record::is_object<Range>::value>>
 {
   template <typename Record, typename Body>
+  // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
   inline static void execute(Record &&_range, Body const &_body)
   {
     fcppt::algorithm::loop_break_impl<typename std::remove_cvref_t<Record>::tuple>:: template execute(

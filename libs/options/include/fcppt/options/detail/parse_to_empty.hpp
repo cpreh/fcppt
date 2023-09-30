@@ -48,11 +48,14 @@ fcppt::options::result<fcppt::options::result_of<Parser>> parse_to_empty(
       {
         return return_type{fcppt::variant::match(
             std::move(_parse_error),
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [](fcppt::options::missing_error &&_error) -> fcppt::options::error
             { return fcppt::options::detail::missing_error_to_error(std::move(_error.error())); },
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [](fcppt::options::error &&_error) -> fcppt::options::error
             { return std::move(_error); })};
       },
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::options::state_with_value<result_type> &&_result) -> return_type
       {
         FCPPT_PP_PUSH_WARNING

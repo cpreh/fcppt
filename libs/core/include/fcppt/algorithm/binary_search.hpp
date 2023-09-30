@@ -29,6 +29,7 @@ iterator to that element. Otherwise, returns the empty optional.
 */
 template <typename Range, typename T>
 fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 binary_search(Range &&_range, T const &_value)
 {
   auto const result(fcppt::algorithm::equal_range(_range, _value));

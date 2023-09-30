@@ -21,9 +21,9 @@ namespace fcppt
 Moves \a _arg if \a Cond is true or \a Arg is an rvalue.
 */
 template <bool Cond, typename Arg>
-inline decltype(auto) move_if(Arg &&_arg)
+inline decltype(auto) move_if(Arg &&_arg) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
-  return fcppt::detail::move_if < Cond || !std::is_lvalue_reference<Arg>::value > ::execute(_arg);
+  return fcppt::detail::move_if<Cond || !std::is_lvalue_reference_v<Arg>> ::execute(_arg);
 }
 
 }

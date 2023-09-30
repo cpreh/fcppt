@@ -34,9 +34,9 @@ template <typename Dest, typename Source>
 inline constexpr Dest size(Source const _source) noexcept
 {
   static_assert(
-      std::is_floating_point<Dest>::value == std::is_floating_point<Source>::value ||
-          std::is_signed<Dest>::value == std::is_signed<Source>::value ||
-          std::is_unsigned<Dest>::value == std::is_unsigned<Source>::value,
+      std::is_floating_point_v<Dest> == std::is_floating_point_v<Source> ||
+          std::is_signed_v<Dest> == std::is_signed_v<Source> ||
+          std::is_unsigned_v<Dest> == std::is_unsigned_v<Source>,
       "size cast can only convert between types of the same signedness");
 
   return static_cast<Dest>(_source);

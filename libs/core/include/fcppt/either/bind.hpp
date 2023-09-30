@@ -31,6 +31,7 @@ template <
     fcppt::either::object_concept Either,
     fcppt::concepts::invocable_move<fcppt::either::success_move_type<Either>> Function>
 [[nodiscard]] std::invoke_result_t<Function, fcppt::either::success_move_type<Either>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 bind(Either &&_either, Function const &_function) requires fcppt::either::is_object_v<
     std::invoke_result_t<Function, fcppt::either::success_move_type<Either>>> &&
     std::is_same_v<

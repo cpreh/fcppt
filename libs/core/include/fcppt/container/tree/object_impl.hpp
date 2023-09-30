@@ -8,7 +8,6 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/move_clear.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/maybe_back.hpp>
 #include <fcppt/container/maybe_front.hpp>
@@ -57,7 +56,7 @@ fcppt::container::tree::object<T>::object(object const &_other)
 
 template <typename T>
 fcppt::container::tree::object<T>::object(object &&_other) noexcept(
-    std::is_nothrow_move_constructible_v<T>)
+    std::is_nothrow_move_constructible_v<T>) // NOLINT(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
     : value_(std::move(_other.value())),
       parent_{nullptr},
       children_(this->move_children(std::move(_other.children_)))
@@ -87,7 +86,7 @@ fcppt::container::tree::object<T> &fcppt::container::tree::object<
 
 template <typename T>
 fcppt::container::tree::object<T> &fcppt::container::tree::object<T>::operator=(
-    object &&_other) noexcept(std::is_nothrow_move_assignable_v<T>)
+    object &&_other) noexcept(std::is_nothrow_move_assignable_v<T>) // NOLINT(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
 {
   value_ = std::move(_other.value_);
 
@@ -368,7 +367,7 @@ bool fcppt::container::tree::object<T>::empty() const
 }
 
 template <typename T>
-void fcppt::container::tree::object<T>::swap(object &_other)
+void fcppt::container::tree::object<T>::swap(object &_other) noexcept
 {
   using std::swap;
 
@@ -399,7 +398,7 @@ template <typename T>
 typename fcppt::container::tree::object<T>::child_list
 fcppt::container::tree::object<T>::copy_children(child_list const &_children)
 {
-  child_list result(_children);
+  child_list result{_children};
 
   for (auto &child : result)
   {
@@ -413,19 +412,17 @@ template <typename T>
 typename fcppt::container::tree::object<T>::child_list
 fcppt::container::tree::object<T>::move_children(child_list &&_children)
 {
-  child_list result(fcppt::move_clear(_children));
-
-  for (auto &child : result)
+  for (auto &child : _children)
   {
     child.parent_ = this;
   }
 
-  return result;
+  return std::move(_children);
 }
 
 template <typename T>
 void fcppt::container::tree::swap(
-    fcppt::container::tree::object<T> &_a, fcppt::container::tree::object<T> &_b)
+    fcppt::container::tree::object<T> &_a, fcppt::container::tree::object<T> &_b) noexcept
 {
   _a.swap(_b);
 }

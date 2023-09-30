@@ -22,7 +22,7 @@ namespace fcppt::container
 \ingroup fcpptcontainer
 */
 template <typename Container, typename... Args>
-inline Container make(Args &&..._args)
+inline Container make(Args &&..._args) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   using reference_type = fcppt::reference<fcppt::type_traits::value_type<Container>>;
 

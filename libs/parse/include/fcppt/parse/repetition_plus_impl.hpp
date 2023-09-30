@@ -40,6 +40,7 @@ fcppt::parse::repetition_plus<Parser>::parse(
       *fcppt::make_cref(fcppt::parse::deref(this->parser_))};
 
   return fcppt::either::map(
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       parser.parse(_state, _skipper), [](fcppt::parse::result_of<decltype(parser)> &&_result) {
         // TODO(philipp): Should we reverse this so that push_back works?
         return fcppt::container::join(

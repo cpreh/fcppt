@@ -64,6 +64,7 @@ fcppt::unique_ptr<Type, Deleter>::release_ownership() noexcept
 }
 
 template <typename Type, typename Deleter>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 inline fcppt::unique_ptr<Type, Deleter>::unique_ptr(std::unique_ptr<Type> &&_impl) noexcept
     : impl_{_impl.release()}
 {

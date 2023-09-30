@@ -30,6 +30,7 @@ template <
     typename = std::enable_if_t<std::conjunction_v<
         fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>,
         fcppt::mpl::is_invocable<F, fcppt::tuple::types_of<std::remove_cvref_t<Tuple>>>>>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 [[nodiscard]] inline constexpr decltype(auto) invoke(F const &_f, Tuple &&_tuple)
 {
   return std::apply(_f, fcppt::move_if_rvalue<Tuple>(_tuple.impl()));

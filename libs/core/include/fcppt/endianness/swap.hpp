@@ -29,7 +29,7 @@ Swaps the endiannness of \a _value.
 \return The converted value
 */
 template <typename Type>
-Type swap(Type _value)
+Type swap(Type _value) // NOLINT(cppcoreguidelines-noexcept-swap,performance-noexcept-swap)
 {
   static_assert(
       std::is_arithmetic_v<Type>, "endianness::swap can only be used on arithmetic types");

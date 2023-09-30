@@ -110,10 +110,13 @@ public:
 
   object(object const &);
 
+  // TODO(philipp)
+  // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
   object(object &&) noexcept(std::is_nothrow_move_constructible_v<T>);
 
   object &operator=(object const &);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
   object &operator=(object &&) noexcept(std::is_nothrow_move_assignable_v<T>);
 
   ~object();
@@ -162,7 +165,7 @@ public:
   /**
   \brief Exchanges the elements of two grids.
   */
-  void swap(object &);
+  void swap(object &) noexcept;
 
 private:
   container container_;
@@ -171,7 +174,7 @@ private:
 };
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-void swap(fcppt::container::grid::object<T, N, A> &, fcppt::container::grid::object<T, N, A> &);
+void swap(fcppt::container::grid::object<T, N, A> &, fcppt::container::grid::object<T, N, A> &) noexcept;
 
 }
 

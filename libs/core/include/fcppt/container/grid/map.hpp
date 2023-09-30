@@ -29,6 +29,7 @@ result.
 <code>R</code> is the result type
 */
 template <typename Source, typename Function>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 auto map(Source &&_source, Function const &_function) -> fcppt::container::grid::object<
     decltype(_function(fcppt::move_if_rvalue<Source>(_source.get_unsafe(
         std::declval<

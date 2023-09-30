@@ -23,6 +23,7 @@ inline std::remove_cvref_t<Result> join_all(Result &&_first)
 
 template <typename Result, typename Container, typename... Args>
 inline std::remove_cvref_t<Result>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 join_all(Result &&_result, Container &&_container, Args &&..._args)
 {
   fcppt::container::detail::join_insert(

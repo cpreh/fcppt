@@ -14,13 +14,13 @@
 namespace fcppt::math::detail
 {
 template <typename T>
-inline std::enable_if_t<std::is_floating_point<T>::value, T> mod(T const &_a, T const &_b)
+inline std::enable_if_t<std::is_floating_point_v<T>, T> mod(T const &_a, T const &_b)
 {
   return std::fmod(_a, _b);
 }
 
 template <typename T>
-inline std::enable_if_t<std::is_unsigned<T>::value, T> mod(T const &_a, T const &_b)
+inline std::enable_if_t<std::is_unsigned_v<T>, T> mod(T const &_a, T const &_b)
 {
   return _a % _b;
 }

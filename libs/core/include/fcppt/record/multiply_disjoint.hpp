@@ -28,6 +28,7 @@ template <typename Record1, typename Record2>
 fcppt::record::disjoint_product<
     std::remove_cvref_t<Record1>,
     std::remove_cvref_t<Record2>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 multiply_disjoint(Record1 &&_record1, Record2 &&_record2)
 {
   using result_type =

@@ -22,7 +22,7 @@ namespace fcppt::either
 */
 template <fcppt::either::object_concept Either>
 [[nodiscard]] fcppt::optional::object<fcppt::either::failure_type<Either>>
-failure_opt(Either &&_either)
+failure_opt(Either &&_either) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   return fcppt::optional::make_if(
       _either.has_failure(),

@@ -17,7 +17,7 @@ namespace fcppt::io::detail
 class widen_string
 {
 public:
-  explicit widen_string(std::string &&_string) : string_{_string} {}
+  explicit widen_string(std::string &&_string) : string_{std::move(_string)} {}
 
   [[nodiscard]] std::string const &get() const { return this->string_; }
 

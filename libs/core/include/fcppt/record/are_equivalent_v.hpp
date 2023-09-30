@@ -16,6 +16,7 @@ namespace fcppt::record
 \ingroup fcpptrecord
 */
 template <typename Record1, typename Record2>
+// NOLINTNEXTLINE(modernize-type-traits)
 inline constexpr bool are_equivalent_v = fcppt::record::are_equivalent<Record1, Record2>::value;
 }
 

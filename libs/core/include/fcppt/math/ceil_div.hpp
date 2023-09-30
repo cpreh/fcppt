@@ -29,7 +29,7 @@ dividend can not be divided by divisor.
 template <typename T>
 fcppt::optional::object<T> ceil_div(T const &_dividend, T const &_divisor)
 {
-  static_assert(std::is_unsigned<T>::value, "ceil_div can only be used on unsigned types");
+  static_assert(std::is_unsigned_v<T>, "ceil_div can only be used on unsigned types");
 
   T const zero{fcppt::literal<T>(0)};
 

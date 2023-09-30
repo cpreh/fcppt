@@ -53,6 +53,7 @@ fcppt::parse::separator<Inner, Sep>::parse(
         return fcppt::optional::maybe(
             std::move(_result),
             [] { return result_type{}; },
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [](fcppt::parse::result_of<decltype(inner_parser)> &&_inner_result) {
               return fcppt::container::join(
                   fcppt::container::make<result_type>(std::move(fcppt::tuple::get<0>(_inner_result).get())),

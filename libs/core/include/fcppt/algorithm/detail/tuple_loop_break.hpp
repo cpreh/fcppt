@@ -19,7 +19,7 @@ namespace fcppt::algorithm::detail
 {
 template <std::size_t Index, typename Tuple, typename Body>
 inline std::enable_if_t<Index == fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>
-tuple_loop_break(Tuple &&, Body const &)
+tuple_loop_break(Tuple &&, Body const &) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
 }
 

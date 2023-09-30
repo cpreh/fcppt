@@ -29,6 +29,7 @@ public:
 
   using got_type = fcppt::strong_typedef<string_type, fcppt::parse::got_tag>;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   typed_error(pos_type, type_name_type &&, got_type &&);
 
   [[nodiscard]] pos_type pos() const;

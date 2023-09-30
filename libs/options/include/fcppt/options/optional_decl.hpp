@@ -55,6 +55,7 @@ public:
               bind<fcppt::mpl::lambda<fcppt::record::element_to_type>, fcppt::mpl::arg<1>>>>;
 
   [[nodiscard]] fcppt::options::parse_result<result_type>
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;
 
   [[nodiscard]] fcppt::options::flag_name_set flag_names() const;

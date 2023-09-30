@@ -57,7 +57,7 @@ private:
   template <typename T>
   friend class fcppt::intrusive::base;
 
-  base_type head_;
+  base_type head_; // NOLINT(cppcoreguidelines-use-default-member-init)
 };
 
 }

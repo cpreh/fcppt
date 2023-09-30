@@ -47,6 +47,7 @@ fcppt::options::optional<Parser>::optional(Parser &&_parser) : parser_{std::move
 template <typename Parser>
 fcppt::options::parse_result<typename fcppt::options::optional<Parser>::result_type>
 fcppt::options::optional<Parser>::parse(
+    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     fcppt::options::state &&_state, fcppt::options::parse_context const &_context) const
 {
   return fcppt::either::match(
@@ -57,6 +58,7 @@ fcppt::options::optional<Parser>::parse(
 
         return fcppt::variant::match(
             std::move(_error),
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [](fcppt::options::missing_error &&_missing_error)
             {
               return fcppt::options::parse_result<result_type>{
@@ -74,6 +76,7 @@ fcppt::options::optional<Parser>::parse(
 
         FCPPT_PP_POP_WARNING
       },
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::options::state_with_value<fcppt::options::result_of<Parser>> &&_result) {
         return fcppt::options::parse_result<result_type>{
             fcppt::options::state_with_value<result_type>{

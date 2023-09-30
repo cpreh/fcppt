@@ -22,7 +22,7 @@ namespace fcppt
 template <typename Type>
 inline fcppt::detail::const_<Type> const_(Type _value)
 {
-  static_assert(!std::is_lvalue_reference<Type>::value, "Type must be a non-reference type");
+  static_assert(!std::is_lvalue_reference_v<Type>, "Type must be a non-reference type");
 
   return fcppt::detail::const_<Type>(std::move(_value));
 }

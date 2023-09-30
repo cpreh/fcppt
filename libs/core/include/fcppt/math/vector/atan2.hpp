@@ -45,7 +45,7 @@ template <typename T, typename S>
 inline fcppt::optional::object<T> atan2(fcppt::math::vector::object<T, 2, S> const &_vector)
 {
   static_assert(
-      std::is_floating_point<T>::value, "atan2 can only be used on vectors of floating point type");
+      std::is_floating_point_v<T>, "atan2 can only be used on vectors of floating point type");
 
   return fcppt::optional::make_if(
       !(fcppt::math::is_zero(_vector.x()) && fcppt::math::is_zero(_vector.y())),

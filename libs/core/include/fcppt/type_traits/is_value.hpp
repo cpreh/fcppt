@@ -24,9 +24,9 @@ normally regarding copying, moving and assignment.
 template <typename Type>
 using is_value = std::integral_constant<
     bool,
-    !std::is_void<Type>::value && !std::is_array<Type>::value && !std::is_function<Type>::value &&
-        !std::is_reference<Type>::value && !std::is_const<Type>::value &&
-        !std::is_volatile<Type>::value>;
+    !std::is_void_v<Type> && !std::is_array_v<Type> && !std::is_function_v<Type> &&
+        !std::is_reference_v<Type> && !std::is_const_v<Type> &&
+        !std::is_volatile_v<Type>>;
 
 }
 

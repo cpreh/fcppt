@@ -48,7 +48,7 @@ fcppt::optional::object<T> angle_between(
     fcppt::math::vector::object<T, N, S2> const &_to)
 {
   static_assert(
-      std::is_floating_point<T>::value,
+      std::is_floating_point_v<T>,
       "angle_between can only be used on vectors of floating-point type");
 
   return fcppt::optional::map(

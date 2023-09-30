@@ -32,7 +32,7 @@ template <typename Seed>
 Seed seed_from_chrono()
 {
   static_assert(
-      std::is_integral<fcppt::type_traits::value_type<Seed>>::value,
+      std::is_integral_v<fcppt::type_traits::value_type<Seed>>,
       "seed_from_chrono requires Seeds with integral type");
 
   return Seed(static_cast<fcppt::type_traits::value_type<Seed>>(

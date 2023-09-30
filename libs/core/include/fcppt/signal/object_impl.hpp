@@ -35,6 +35,7 @@ object<Result(Args...), Base>::~object() = default;
 
 template <typename Result, typename... Args, template <typename> class Base>
 Result
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 fcppt::signal::object<Result(Args...), Base>::operator()(initial_value &&_initial, Args... _args)
 {
   return fcppt::algorithm::fold(

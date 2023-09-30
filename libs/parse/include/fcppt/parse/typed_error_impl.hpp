@@ -13,6 +13,7 @@
 
 template <typename Ch>
 fcppt::parse::typed_error<Ch>::typed_error(
+    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     pos_type const _pos, type_name_type &&_type_name, got_type &&_got)
     : pos_{_pos}, type_name_{std::move(_type_name.get())}, got_{std::move(_got.get())}
 {

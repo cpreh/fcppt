@@ -73,7 +73,7 @@ typename fcppt::iterator::base<Types>::derived fcppt::iterator::base<Types>::ope
 }
 
 template <typename Types>
-void fcppt::iterator::base<Types>::swap(base &_other)
+void fcppt::iterator::base<Types>::swap(base &_other) noexcept
 {
   std::swap(this->get(), _other.get());
 }
@@ -170,7 +170,7 @@ typename fcppt::iterator::base<Types>::derived const &fcppt::iterator::base<Type
 
 template <typename Types>
 void fcppt::iterator::swap(
-    fcppt::iterator::base<Types> &_left, fcppt::iterator::base<Types> &_right)
+    fcppt::iterator::base<Types> &_left, fcppt::iterator::base<Types> &_right) noexcept
 {
   _left.swap(_right);
 }

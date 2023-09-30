@@ -165,6 +165,7 @@ public:
   \param ref The unique_ptr to take ownership from
   */
   template <typename Other>
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   explicit shared_ptr(fcppt::unique_ptr<Other, Deleter> &&ref);
 
   shared_ptr &operator=(shared_ptr const &);
@@ -268,7 +269,7 @@ public:
 
   \param other The shared_ptr to swap with
   */
-  void swap(shared_ptr &other);
+  void swap(shared_ptr &other) noexcept;
 
   /**
   \brief Returns the underlying <code>std::shared_ptr</code> object
@@ -276,6 +277,7 @@ public:
   [[nodiscard]] impl_type std_ptr() const;
 
   template <typename Other>
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   explicit shared_ptr(fcppt::detail::make_shared_wrapper<Other> &&);
 
 private:
@@ -354,7 +356,7 @@ Swaps \a left and \a right
 \param right The right argument
 */
 template <typename Type, typename Deleter>
-void swap(fcppt::shared_ptr<Type, Deleter> &left, fcppt::shared_ptr<Type, Deleter> &right);
+void swap(fcppt::shared_ptr<Type, Deleter> &left, fcppt::shared_ptr<Type, Deleter> &right) noexcept;
 
 }
 

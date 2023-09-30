@@ -40,6 +40,7 @@ returned.
 // TODO(concepts)
 */
 template <typename ResultContainer, typename Source>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 fcppt::optional::object<ResultContainer> sequence(Source &&_source)
 {
   fcppt::optional::detail::

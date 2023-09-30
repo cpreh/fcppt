@@ -44,6 +44,7 @@ fcppt::array::object<
     fcppt::array::value_type<std::remove_cvref_t<Array1>>,
     fcppt::array::size<std::remove_cvref_t<Array1>>::value +
         fcppt::array::size<std::remove_cvref_t<Array2>>::value>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 append(Array1 &&_array1, Array2 &&_array2)
 {
   using array1 = std::remove_cvref_t<Array1>;

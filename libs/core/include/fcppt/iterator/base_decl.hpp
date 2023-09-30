@@ -113,7 +113,7 @@ public:
 
   [[nodiscard]] derived operator++(int);
 
-  void swap(base &);
+  void swap(base &) noexcept;
 
   // Bidirectional iterator
   derived &operator--();
@@ -140,7 +140,7 @@ private:
 };
 
 template <typename Types>
-void swap(fcppt::iterator::base<Types> &, fcppt::iterator::base<Types> &);
+void swap(fcppt::iterator::base<Types> &, fcppt::iterator::base<Types> &) noexcept;
 
 // Random access iterator
 template <typename Types>

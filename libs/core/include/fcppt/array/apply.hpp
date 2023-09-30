@@ -43,6 +43,7 @@ template <
         std::is_same<
             fcppt::array::size<std::remove_cvref_t<Array1>>,
             fcppt::array::size<std::remove_cvref_t<Arrays>>>...>>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 auto apply(Function const &_function, Array1 &&_array1, Arrays &&..._arrays)
     -> fcppt::array::object<
         decltype(_function(

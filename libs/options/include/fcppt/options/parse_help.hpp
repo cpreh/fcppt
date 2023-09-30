@@ -68,6 +68,7 @@ fcppt::options::help_result<fcppt::options::result_of<Parser>> parse_help(
           fcppt::options::state{fcppt::args_vector{_args}},
           fcppt::options::parse_context{combined_parser.option_names()}),
       [](fcppt::options::error &&_error) { return return_type{result_type{std::move(_error)}}; },
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [&_parser](fcppt::options::result_of<sum_type> &&_result) {
         FCPPT_PP_PUSH_WARNING
         FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
@@ -75,10 +76,12 @@ fcppt::options::help_result<fcppt::options::result_of<Parser>> parse_help(
         return fcppt::variant::match(
             std::move(fcppt::record::get<label>(_result)),
             [&_parser](
+                // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                 fcppt::options::left<fcppt::options::result_of<typename sum_type::left>> &&) {
               return return_type{fcppt::options::deref(_parser).usage()};
             },
             [](fcppt::options::right<fcppt::options::result_of<typename sum_type::right>>
+                   // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                    &&_inner_result) {
               return return_type{result_type{std::move(_inner_result.get())}};
             });

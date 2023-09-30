@@ -34,6 +34,7 @@ template <
 [[nodiscard]] fcppt::either::object<
     fcppt::either::failure_type<Either>,
     std::invoke_result_t<Function, fcppt::either::success_move_type<Either>>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 map(Either &&_either, Function const &_function)
 {
   using result_type = fcppt::either::object<

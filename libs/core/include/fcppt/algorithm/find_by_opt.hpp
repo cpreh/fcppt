@@ -27,6 +27,7 @@ an empty optional, if there is any. Otherwise, returns the empty optional.
 (V)</code> for every type <code>V</code> in \a Range.
 */
 template <typename Result, typename Range, typename Function>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 inline fcppt::optional::object<Result> find_by_opt(Range &&_range, Function const &_function)
 {
   return fcppt::algorithm::fold_break(

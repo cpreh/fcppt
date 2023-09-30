@@ -32,7 +32,7 @@ fcppt::container::grid::sup<Source, Size> clamped_sup(
     fcppt::container::grid::pos<Source, Size> const _pos,
     fcppt::container::grid::dim<Source, Size> const _size)
 {
-  static_assert(std::is_unsigned<Source>::value, "Source must be unsigned");
+  static_assert(std::is_unsigned_v<Source>, "Source must be unsigned");
 
   return fcppt::container::grid::sup<Source, Size>(
       fcppt::math::vector::init<fcppt::container::grid::pos<Source, Size>>(

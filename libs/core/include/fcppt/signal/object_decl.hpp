@@ -60,7 +60,7 @@ public:
   /**
   \brief Call the signal
   */
-  Result operator()(initial_value &&, Args...);
+  Result operator()(initial_value &&, Args...); // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
 
   using base::connect;
 

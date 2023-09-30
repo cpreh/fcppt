@@ -23,7 +23,7 @@ it to its unsigned counterpart before checking.
 template <typename T>
 inline constexpr bool is_power_of_2(T const x) noexcept
 {
-  static_assert(std::is_unsigned<T>::value, "is_power_of_2 can only be used on unsigned types");
+  static_assert(std::is_unsigned_v<T>, "is_power_of_2 can only be used on unsigned types");
 
   return x && !(x & (x - 1));
 }

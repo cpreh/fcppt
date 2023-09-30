@@ -21,6 +21,7 @@
 namespace fcppt::math::matrix::detail
 {
 template <typename Result, fcppt::math::size_type C, typename... Types>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 inline Result init_storage(std::tuple<Types...> &&_values)
 {
   return Result{fcppt::array::init<typename Result::array_type>(

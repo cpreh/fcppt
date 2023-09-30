@@ -50,7 +50,6 @@ public:
 
   using reference = fcppt::reference<object>;
 
-  /// Constructs the object using the given value
   explicit object(T const &);
 
   explicit object(T &&);
@@ -67,6 +66,8 @@ public:
   */
   object(object const &);
 
+  // TODO(philipp): There is a problem with fcppt::log::detail::context_tree_node
+  // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
   object(object &&) noexcept(std::is_nothrow_move_constructible_v<T>);
 
   /**
@@ -76,6 +77,7 @@ public:
   */
   object &operator=(object const &);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
   object &operator=(object &&) noexcept(std::is_nothrow_move_assignable_v<T>);
 
   ~object();
@@ -212,7 +214,7 @@ public:
   /**
   \brief Swaps with another tree
   */
-  void swap(object &);
+  void swap(object &) noexcept;
 
   /**
   \brief Sorts the children using operator< on T
@@ -241,7 +243,7 @@ private:
 \brief Swaps two trees
 */
 template <typename T>
-void swap(fcppt::container::tree::object<T> &, fcppt::container::tree::object<T> &);
+void swap(fcppt::container::tree::object<T> &, fcppt::container::tree::object<T> &) noexcept;
 
 }
 

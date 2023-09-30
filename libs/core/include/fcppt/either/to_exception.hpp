@@ -31,6 +31,7 @@ template <
     fcppt::either::object_concept Either,
     fcppt::concepts::invocable_move<fcppt::either::failure_move_type<Either>> MakeException>
 [[nodiscard]] inline fcppt::either::success_move_type<Either>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 to_exception(Either &&_either, MakeException const _make_exception)
 {
   if (_either.has_success())

@@ -41,7 +41,7 @@ TODO(concepts)
 */
 template <fcppt::either::object_concept Result, typename Source>
 [[nodiscard]]
-Result sequence(Source &&_source)
+Result sequence(Source &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   return fcppt::optional::maybe(
       fcppt::algorithm::find_by_opt<fcppt::either::failure_type<Result>>(

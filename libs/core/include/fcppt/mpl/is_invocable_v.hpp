@@ -17,6 +17,7 @@ namespace fcppt::mpl
 \see fcppt::mpl::is_invocable
 */
 template <typename F, fcppt::mpl::list::object_concept L>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool is_invocable_v = fcppt::mpl::is_invocable<F,L>::value;
 }
 

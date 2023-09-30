@@ -16,6 +16,7 @@ namespace fcppt::variant
 \ingroup fcpptvariant
 */
 template <fcppt::variant::object_concept Variant, typename Element>
+// NOLINTNEXTLINE(modernize-type-traits)
 inline constexpr bool has_type_v = fcppt::variant::has_type<Variant,Element>::value;
 }
 

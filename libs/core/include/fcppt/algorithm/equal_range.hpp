@@ -27,6 +27,7 @@ namespace fcppt::algorithm
 */
 template <typename Range, typename T>
 inline fcppt::iterator::range<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 equal_range(Range &&_range, T const &_value)
 {
   return fcppt::range::from_pair(

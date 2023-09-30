@@ -25,7 +25,7 @@ namespace fcppt::math::vector
 \ingroup fcpptmathvector
 */
 template <typename T, fcppt::math::size_type N, typename S1, typename S2>
-std::enable_if_t<std::is_floating_point<T>::value, T> distance(
+std::enable_if_t<std::is_floating_point_v<T>, T> distance(
     fcppt::math::vector::object<T, N, S1> const &_v1,
     fcppt::math::vector::object<T, N, S2> const &_v2)
 {
@@ -38,7 +38,7 @@ std::enable_if_t<std::is_floating_point<T>::value, T> distance(
 \ingroup fcpptmathvector
 */
 template <typename Dest, typename T, fcppt::math::size_type N, typename S1, typename S2>
-std::enable_if_t<!std::is_floating_point<T>::value, Dest> distance(
+std::enable_if_t<!std::is_floating_point_v<T>, Dest> distance(
     fcppt::math::vector::object<T, N, S1> const &_v1,
     fcppt::math::vector::object<T, N, S2> const &_v2)
 {

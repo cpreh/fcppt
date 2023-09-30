@@ -30,6 +30,7 @@ template <
     fcppt::optional::object_concept Optional,
     fcppt::concepts::invocable_move<fcppt::optional::move_type<Optional>> Function>
 [[nodiscard]] inline std::invoke_result_t<Function, fcppt::optional::move_type<Optional>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 bind(Optional &&_source, Function const &_function) requires fcppt::optional::is_object_v<
     std::invoke_result_t<Function, fcppt::optional::move_type<Optional>>>
 {

@@ -16,13 +16,13 @@ namespace fcppt
 namespace detail
 {
 template <typename Type, typename Arg>
-inline std::enable_if_t<std::is_lvalue_reference<Type>::value, Arg &> move_if_rvalue(Arg &_arg)
+inline std::enable_if_t<std::is_lvalue_reference_v<Type>, Arg &> move_if_rvalue(Arg &_arg)
 {
   return _arg;
 }
 
 template <typename Type, typename Arg>
-inline std::enable_if_t<!std::is_lvalue_reference<Type>::value, Arg &&> move_if_rvalue(Arg &_arg)
+inline std::enable_if_t<!std::is_lvalue_reference_v<Type>, Arg &&> move_if_rvalue(Arg &_arg)
 {
   return std::move(_arg);
 }

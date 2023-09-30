@@ -32,7 +32,7 @@ is negative, dividend / divisor is returned.
 template <typename T>
 fcppt::optional::object<T> ceil_div_signed(T const &_dividend, T const &_divisor)
 {
-  static_assert(std::is_signed<T>::value, "ceil_div_signed can only be used on signed types");
+  static_assert(std::is_signed_v<T>, "ceil_div_signed can only be used on signed types");
 
   T const zero{fcppt::literal<T>(0)};
 

@@ -43,7 +43,7 @@ fcppt::optional::object<T> signed_angle_between(
     fcppt::math::vector::object<T, 2, S2> const &_to)
 {
   static_assert(
-      std::is_floating_point<T>::value,
+      std::is_floating_point_v<T>,
       "signed_angle_between can only be used on floating-point vector types");
 
   return fcppt::math::vector::atan2(_to - _from);

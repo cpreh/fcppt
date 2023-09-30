@@ -4,10 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iostream>
-#include <ostream>
-#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -17,7 +13,7 @@ class test_nonmovable
   FCPPT_NONMOVABLE(test_nonmovable);
 
 public:
-  test_nonmovable() : ptr_(new int(1)) {}
+  test_nonmovable() : ptr_{new int(1)} {}
 
   ~test_nonmovable() { delete ptr_; }
 

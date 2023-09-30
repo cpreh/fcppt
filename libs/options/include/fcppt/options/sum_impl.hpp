@@ -62,6 +62,7 @@ fcppt::options::sum<Label, Left, Right>::parse(
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
                   fcppt::options::detail::combine_errors(std::move(_error1), std::move(_error2)));
             },
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [](fcppt::options::state_with_value<fcppt::options::result_of<Right>> &&_right_result)
             {
               return fcppt::options::parse_result<result_type>{
@@ -74,6 +75,7 @@ fcppt::options::sum<Label, Left, Right>::parse(
 
         FCPPT_PP_POP_WARNING
       },
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::options::state_with_value<fcppt::options::result_of<Left>> &&_left_result)
       {
         return fcppt::options::parse_result<result_type>{

@@ -23,7 +23,7 @@ namespace fcppt
 template <typename Type>
 inline fcppt::reference<Type const> reference_to_const(fcppt::reference<Type> const _ref) noexcept
 {
-  static_assert(!std::is_const<Type>::value, "Type must not be const");
+  static_assert(!std::is_const_v<Type>, "Type must not be const");
 
   return fcppt::reference<Type const>(_ref.get());
 }

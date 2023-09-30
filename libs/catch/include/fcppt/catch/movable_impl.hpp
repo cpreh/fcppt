@@ -32,6 +32,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
 template <typename Type>
 fcppt::catch_::movable<Type>::movable(movable &&_other) noexcept(
+    // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
     std::is_nothrow_move_constructible_v<Type>)
     : value_{std::move(_other.value())}
 {
@@ -41,6 +42,7 @@ FCPPT_PP_POP_WARNING
 
 template <typename Type>
 fcppt::catch_::movable<Type> &fcppt::catch_::movable<Type>::operator=(movable &&_other) noexcept(
+    // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
     std::is_nothrow_move_assignable_v<Type>)
 {
   value_ = std::move(_other.value());

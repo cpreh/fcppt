@@ -26,6 +26,7 @@ namespace fcppt::algorithm
 */
 template <typename Range, typename Comp>
 inline fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 find_if_opt(Range &&_range, Comp const &_comp)
 {
   using iterator_type = fcppt::container::to_iterator_type<std::remove_reference_t<Range>>;

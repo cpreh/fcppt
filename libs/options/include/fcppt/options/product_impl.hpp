@@ -58,6 +58,7 @@ fcppt::options::product<Left, Right>::parse(
   return fcppt::either::bind(
       fcppt::options::deref(left_).parse(std::move(_state), _context),
       [&_context,
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
        this](fcppt::options::state_with_value<fcppt::options::result_of<Left>> &&_left_result)
           -> fcppt::options::parse_result<result_type> {
         fcppt::options::result_of<Left> &left_value{_left_result.value()};
@@ -65,6 +66,7 @@ fcppt::options::product<Left, Right>::parse(
         return fcppt::either::map(
             fcppt::options::deref(right_).parse(std::move(_left_result.state()), _context),
             [&left_value](fcppt::options::state_with_value<fcppt::options::result_of<Right>>
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                               &&_right_result) {
               return fcppt::options::state_with_value<result_type>{
                   std::move(_right_result.state()),

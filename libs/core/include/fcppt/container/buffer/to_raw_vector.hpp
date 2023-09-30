@@ -18,6 +18,7 @@ namespace fcppt::container::buffer
 */
 template <typename T, typename A>
 fcppt::container::raw_vector::object<T, A>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 to_raw_vector(fcppt::container::buffer::object<T, A> &&_buffer) noexcept
 {
   return fcppt::container::raw_vector::object<T, A>{_buffer.release()};

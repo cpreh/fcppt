@@ -35,7 +35,7 @@ template <
     fcppt::concepts::invocable<fcppt::either::failure_move_type<Either>> FailureFunction,
     fcppt::concepts::invocable<fcppt::either::success_move_type<Either>> SuccessFunction>
 [[nodiscard]] std::invoke_result_t<SuccessFunction, fcppt::either::success_move_type<Either>> match(
-    Either &&_either,
+    Either &&_either, // NOLINT(cppcoreguidelines-missing-std-forward)
     FailureFunction const &_failure_function,
     SuccessFunction const &_success_function) requires
     std::is_same_v<

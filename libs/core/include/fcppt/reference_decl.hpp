@@ -22,7 +22,7 @@ template <typename Type>
 class reference
 {
 public:
-  // Do not bind to temporary objects
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   reference(Type &&) = delete;
 
   using type = Type;

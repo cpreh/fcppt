@@ -55,6 +55,7 @@ fcppt::options::many<Parser>::parse(
 
   auto const loop{
       [&state,
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
        &result](fcppt::options::state_with_value<fcppt::options::result_of<Parser>> &&_inner)
       {
         state = std::move(_inner.state());
@@ -74,6 +75,7 @@ fcppt::options::many<Parser>::parse(
 
   return fcppt::variant::match(
       fcppt::either::loop(next, loop),
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [&result](fcppt::options::missing_error &&_missing_error) {
         return fcppt::options::parse_result<result_type>{
             fcppt::options::state_with_value<result_type>(

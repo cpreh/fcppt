@@ -18,6 +18,7 @@ namespace fcppt
 */
 template <typename Base, typename Derived, typename Deleter>
 inline fcppt::unique_ptr<Base, Deleter>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 unique_ptr_to_base(fcppt::unique_ptr<Derived, Deleter> &&_other) noexcept
 {
   static_assert(

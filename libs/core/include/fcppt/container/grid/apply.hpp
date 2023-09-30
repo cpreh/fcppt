@@ -33,6 +33,7 @@ s</code>, <code>r[p] = _function(g_1[p],...,g_n[p])</code>. If g_1,...g_n are
 not of the same size, the result is an empty grid.
 */
 template <typename Function, fcppt::container::grid::object_concept Grid1, fcppt::container::grid::object_concept... Grids>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 auto apply(Function const &_function, Grid1 &&_grid1, Grids &&..._grids)
     -> fcppt::container::grid::object<
         decltype(_function(

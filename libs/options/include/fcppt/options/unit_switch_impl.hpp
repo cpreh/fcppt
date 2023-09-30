@@ -49,6 +49,7 @@ fcppt::options::unit_switch<Label>::parse(
 {
   return fcppt::either::bind(
       this->impl_.parse(std::move(_state), _context),
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [this](fcppt::options::state_with_value<fcppt::options::result_of<impl>> &&_result)
       {
         return fcppt::record::get<Label>(_result.value())

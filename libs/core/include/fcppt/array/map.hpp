@@ -41,6 +41,7 @@ template <
     typename Function,
     typename = std::enable_if_t<
         fcppt::array::is_object<std::remove_cvref_t<Array>>::value>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 inline auto map(Array &&_source, Function const &_function) -> fcppt::array::object<
     decltype(_function(fcppt::move_if_rvalue<Array>(
         std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),

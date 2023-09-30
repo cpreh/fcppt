@@ -13,6 +13,7 @@
 
 template <typename Ch>
 fcppt::parse::alternative_error<Ch>::alternative_error(
+    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     left_type &&_left, right_type &&_right)
     : left_{std::move(_left.get())}, right_{std::move(_right.get())}
 {

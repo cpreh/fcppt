@@ -20,8 +20,8 @@ source must not be floating-point.
 */
 #define FCPPT_CHECK_LITERAL_CONVERSION(dest, source) \
   static_assert( \
-      !std::is_same<source, bool>::value && \
-          !(std::is_integral<dest>::value && std::is_floating_point<source>::value), \
+      !std::is_same_v<source, bool> && \
+          !(std::is_integral_v<dest> && std::is_floating_point_v<source>), \
       "A literal conversion from bool, or from floating point to int is not allowed!")
 
 #endif

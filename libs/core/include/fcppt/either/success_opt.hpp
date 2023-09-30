@@ -21,7 +21,7 @@ namespace fcppt::either
 */
 template <fcppt::either::object_concept Either>
 [[nodiscard]] fcppt::optional::object<fcppt::either::success_type<Either>>
-success_opt(Either &&_either)
+success_opt(Either &&_either) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   using result_type = fcppt::optional::object<fcppt::either::success_type<Either>>;
 

@@ -27,7 +27,7 @@ namespace fcppt::record
 \tparam Arg Must be equivalent to Result, and must be an #fcppt::record::object.
 */
 template <typename Result, typename Arg>
-inline Result permute(Arg &&_arg)
+inline Result permute(Arg &&_arg) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   static_assert(fcppt::record::is_object<Result>::value, "Result must be an fcppt::record::object");
 

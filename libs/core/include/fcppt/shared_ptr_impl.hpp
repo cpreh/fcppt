@@ -72,6 +72,7 @@ fcppt::shared_ptr<Type, Deleter>::shared_ptr(std::unique_ptr<Other, Deleter> &&_
 
 template <typename Type, typename Deleter>
 template <typename Other>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 fcppt::shared_ptr<Type, Deleter>::shared_ptr(fcppt::unique_ptr<Other, Deleter> &&_other)
     : impl_{_other.release_ownership()}
 {
@@ -98,6 +99,7 @@ fcppt::shared_ptr<Type, Deleter>::operator=(fcppt::shared_ptr<Other, Deleter> co
 template <typename Type, typename Deleter>
 template <typename Other>
 fcppt::shared_ptr<Type, Deleter> &
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 fcppt::shared_ptr<Type, Deleter>::operator=(fcppt::unique_ptr<Other, Deleter> &&_other)
 {
   this->impl_.reset(_other.release_ownership());
@@ -146,7 +148,7 @@ fcppt::shared_ptr<Type, Deleter>::use_count() const
 }
 
 template <typename Type, typename Deleter>
-void fcppt::shared_ptr<Type, Deleter>::swap(fcppt::shared_ptr<Type, Deleter> &_other)
+void fcppt::shared_ptr<Type, Deleter>::swap(fcppt::shared_ptr<Type, Deleter> &_other) noexcept
 {
   std::swap(this->impl_, _other.impl_);
 }
@@ -160,6 +162,7 @@ fcppt::shared_ptr<Type, Deleter>::std_ptr() const
 
 template <typename Type, typename Deleter>
 template <typename Other>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 fcppt::shared_ptr<Type, Deleter>::shared_ptr(fcppt::detail::make_shared_wrapper<Other> &&_other)
     : impl_(_other.release())
 {
@@ -197,7 +200,7 @@ bool fcppt::operator<(
 }
 
 template <typename Type, typename Deleter>
-void fcppt::swap(fcppt::shared_ptr<Type, Deleter> &_a, fcppt::shared_ptr<Type, Deleter> &_b)
+void fcppt::swap(fcppt::shared_ptr<Type, Deleter> &_a, fcppt::shared_ptr<Type, Deleter> &_b) noexcept
 {
   _a.swap(_b);
 }

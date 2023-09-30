@@ -17,6 +17,7 @@ namespace fcppt
 */
 template <typename Type, typename Deleter>
 inline fcppt::unique_ptr<Type const, Deleter>
+// NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 unique_ptr_to_const(fcppt::unique_ptr<Type, Deleter> &&_other) noexcept
 {
   return fcppt::unique_ptr<Type const, Deleter>(_other.release_ownership());

@@ -105,6 +105,7 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
                                   .option_names()}),
                   [&_options_result](
                       fcppt::options::state_with_value<fcppt::options::result_of<
+                          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                           typename sub_command_type::parser_type>> &&_parser_result) {
                     return fcppt::options::state_with_value<result_type>{
                         std::move(_parser_result.state()),
@@ -134,6 +135,7 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
       },
       [this,
        parse_inner](fcppt::tuple::object<fcppt::args_vector, fcppt::string, fcppt::args_vector>
+                   // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                         &&_split_arguments)
       {
         return fcppt::optional::from(

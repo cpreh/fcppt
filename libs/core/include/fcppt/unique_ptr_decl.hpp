@@ -67,7 +67,7 @@ public:
   /**
   \brief For implementation purposes only.
   */
-  explicit unique_ptr(std::unique_ptr<Type> &&) noexcept;
+  explicit unique_ptr(std::unique_ptr<Type> &&) noexcept; // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
 
 private:
   std::unique_ptr<Type, Deleter> impl_;

@@ -31,14 +31,14 @@ template <typename T, std::size_t Size>
 typename fcppt::array::object<T, Size>::reference
 fcppt::array::object<T, Size>::get_unsafe(size_type const _index) noexcept
 {
-  return this->impl()[_index];
+  return this->impl()[_index]; // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
 }
 
 template <typename T, std::size_t Size>
 typename fcppt::array::object<T, Size>::const_reference
 fcppt::array::object<T, Size>::get_unsafe(size_type const _index) const noexcept
 {
-  return this->impl()[_index];
+  return this->impl()[_index]; // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
 }
 
 template <typename T, std::size_t Size>

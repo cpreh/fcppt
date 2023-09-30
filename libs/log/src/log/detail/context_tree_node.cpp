@@ -10,6 +10,7 @@
 #include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/impl/convert_level.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -47,3 +48,6 @@ void fcppt::log::detail::context_tree_node::level(fcppt::log::optional_level con
 {
   this->atomic_level_ = fcppt::log::impl::convert_level(_level);
 }
+
+static_assert(std::is_nothrow_move_constructible_v<fcppt::log::detail::context_tree_node>);
+static_assert(std::is_nothrow_move_assignable_v<fcppt::log::detail::context_tree_node>);

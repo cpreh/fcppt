@@ -25,7 +25,7 @@ used if \a _value is positive.
 template <typename Type>
 inline constexpr std::make_unsigned_t<Type> to_unsigned(Type const _value) noexcept
 {
-  static_assert(std::is_signed<Type>::value, "to_unsigned can only cast from signed types");
+  static_assert(std::is_signed_v<Type>, "to_unsigned can only cast from signed types");
 
   return static_cast<std::make_unsigned_t<Type>>(_value);
 }

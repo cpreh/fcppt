@@ -29,7 +29,7 @@ template <typename Dest, typename Source>
 inline constexpr Dest int_to_float(Source const _source) noexcept
 {
   static_assert(
-      std::is_integral<Source>::value && std::is_floating_point<Dest>::value,
+      std::is_integral_v<Source> && std::is_floating_point_v<Dest>,
       "int_to_float can only cast from integral types to floating point types");
 
   return static_cast<Dest>(_source);

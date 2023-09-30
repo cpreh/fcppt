@@ -24,7 +24,7 @@ struct to_unsigned_fun
   static constexpr Dest execute(Source const &_source) noexcept
   {
     static_assert(
-        std::is_same<decltype(fcppt::cast::to_unsigned(std::declval<Source>())), Dest>::value,
+        std::is_same_v<decltype(fcppt::cast::to_unsigned(std::declval<Source>())), Dest>,
         "Mismatched types in to_unsigned_fun");
 
     return fcppt::cast::to_unsigned(_source);

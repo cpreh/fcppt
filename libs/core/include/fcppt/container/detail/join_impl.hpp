@@ -21,7 +21,7 @@ inline Container join_impl(Container const &_first, Args &&..._args)
 }
 
 template <typename Container, typename... Args>
-inline std::enable_if_t<!std::is_lvalue_reference<Container>::value, Container>
+inline std::enable_if_t<!std::is_lvalue_reference_v<Container>, Container>
 join_impl(Container &&_first, Args &&..._args)
 {
   return fcppt::container::detail::join_all(

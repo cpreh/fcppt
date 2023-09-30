@@ -84,7 +84,7 @@ apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers) requ
                    fcppt::move_if_rvalue<Either1>(_either1.get_success_unsafe()),
                    fcppt::move_if_rvalue<Eithers>(_eithers.get_success_unsafe())...))
              : result_type{
-                   [](failure_array &&_failures)
+                   [](failure_array &&_failures) // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
                    {
                      fcppt::optional::object<typename failure_array::iterator> const failure_opt{
                          fcppt::algorithm::find_if_opt(

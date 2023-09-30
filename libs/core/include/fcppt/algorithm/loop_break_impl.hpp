@@ -18,6 +18,7 @@ template <typename Range, typename Enable>
 struct loop_break_impl
 {
   template <typename Arg, typename Body>
+  // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
   inline static void execute(Arg &&_range, Body const &_body)
   {
     for (auto &&element : _range)

@@ -29,6 +29,7 @@ the result is not an empty optional, it is inserted into the result container.
 TODO(philipp): concepts
 */
 template <typename TargetContainer, typename Source, typename Function>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 TargetContainer map_optional(Source &&_source, Function const &_function)
 {
   TargetContainer result{};

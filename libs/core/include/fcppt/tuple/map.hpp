@@ -36,6 +36,7 @@ template <
     typename Function,
     typename = std::enable_if_t<
         fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value>>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 fcppt::tuple::map_result<Tuple, Function> map(Tuple &&_tuple, Function const &_function)
 {
   using source_type = std::remove_cvref_t<Tuple>;

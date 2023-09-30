@@ -15,6 +15,7 @@
 namespace fcppt::math::detail
 {
 template <fcppt::math::size_type N, typename T>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 inline fcppt::container::to_reference_type<std::remove_reference_t<T>> checked_access(T &&_value)
 {
   using static_size = typename std::remove_reference_t<T>::static_size;
