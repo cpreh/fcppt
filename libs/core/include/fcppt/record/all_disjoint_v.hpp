@@ -17,6 +17,7 @@ namespace fcppt::record
 \see fcppt::record::all_disjoint
 */
 template <fcppt::mpl::list::object_concept Records>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool all_disjoint_v = fcppt::record::all_disjoint<Records>::value;
 }
 

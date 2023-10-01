@@ -17,6 +17,7 @@ namespace fcppt::mpl::set
 \see fcppt::mpl::set::equal
 */
 template <fcppt::mpl::set::object_concept Set1, fcppt::mpl::set::object_concept Set2>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool equal_v = fcppt::mpl::set::equal<Set1,Set2>::value;
 }
 

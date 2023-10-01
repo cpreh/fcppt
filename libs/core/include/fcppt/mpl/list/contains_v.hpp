@@ -17,6 +17,7 @@ namespace fcppt::mpl::list
 \see fcppt::mpl::list::contains
 */
 template <fcppt::mpl::list::object_concept List, typename E>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool contains_v = fcppt::mpl::list::contains<List,E>::value;
 }
 

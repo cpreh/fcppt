@@ -12,6 +12,7 @@ namespace fcppt::record::detail
 {
 template <typename Elements, typename Args>
 constexpr inline bool all_initializers_v =
+// NOLINTNEXTLINE(modernize-type-traits)
     fcppt::record::detail::all_initializers<Elements, Args>::value;
 }
 

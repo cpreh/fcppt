@@ -27,7 +27,7 @@ the optionals from \a Source
 TODO(concepts)
 */
 template <typename TargetContainer, typename Source>
-[[nodiscard]] TargetContainer cat(Source &&_source)
+[[nodiscard]] TargetContainer cat(Source &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   TargetContainer result{};
 

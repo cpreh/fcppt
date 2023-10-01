@@ -29,6 +29,7 @@ Returns a strong typedef with the same tag type and value <code>_function(_input
 where <code>R</code> is the result type.
 */
 template <typename StrongTypedef, typename Function>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 inline auto strong_typedef_map(StrongTypedef &&_input, Function const &_function)
     -> fcppt::strong_typedef<
         decltype(_function(fcppt::move_if_rvalue<StrongTypedef>(_input.get()))),

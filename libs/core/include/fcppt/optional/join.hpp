@@ -23,6 +23,7 @@ If \a _source is set to <code>optional{x}</code>, then <code>optional{x}</code> 
 Otherwise, the empty optional is returned.
 */
 template <fcppt::optional::object_concept Optional>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 [[nodiscard]] inline fcppt::optional::value_type<Optional> join(Optional &&_source) requires
     fcppt::optional::is_object_v<fcppt::optional::value_type<Optional>>
 {

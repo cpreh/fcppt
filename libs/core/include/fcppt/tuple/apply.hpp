@@ -34,6 +34,7 @@ Calculates <code>r_j = _function(u_{1,j}, ..., u_{n,j})</code> for every
 **/
 template <typename Function, typename... Tuples>
 fcppt::tuple::apply_result<Function, Tuples...>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 apply(Function const &_function, Tuples &&..._tuples)
 {
   static_assert(

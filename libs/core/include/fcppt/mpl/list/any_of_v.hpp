@@ -18,6 +18,7 @@ namespace fcppt::mpl::list
 \see fcppt::mpl::list::any_of
 */
 template <fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept L>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool any_of_v = fcppt::mpl::list::any_of<List,L>::value;
 }
 

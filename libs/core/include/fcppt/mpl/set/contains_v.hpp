@@ -17,6 +17,7 @@ namespace fcppt::mpl::set
 \see fcppt::mpl::set::contains
 */
 template<fcppt::mpl::set::object_concept Set, typename Key>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool contains_v = fcppt::mpl::set::contains<Set,Key>::value;
 }
 

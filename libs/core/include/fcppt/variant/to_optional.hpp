@@ -22,6 +22,7 @@ namespace fcppt::variant
 \ingroup fcpptvariant
 */
 template <typename Type, fcppt::variant::object_concept Variant>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 [[nodiscard]] fcppt::optional::object<Type> to_optional(Variant &&_variant)
 requires fcppt::variant::has_type_v<Variant,Type>
 {

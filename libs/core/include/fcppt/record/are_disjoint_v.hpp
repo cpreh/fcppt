@@ -16,6 +16,7 @@ namespace fcppt::record
 \see fcppt::record::are_disjoint
 */
 template <typename RecordL, typename RecordR>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool are_disjoint_v = fcppt::record::are_disjoint<RecordL, RecordR>::value;
 }
 

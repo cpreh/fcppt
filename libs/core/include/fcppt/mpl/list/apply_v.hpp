@@ -18,6 +18,7 @@ namespace fcppt::mpl::list
 \see fcppt::mpl::list::apply
 */
 template<fcppt::mpl::lambda_concept L, fcppt::mpl::list::object_concept Args>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool apply_v = fcppt::mpl::list::apply<L,Args>::value;
 }
 

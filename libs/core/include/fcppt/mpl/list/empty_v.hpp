@@ -17,6 +17,7 @@ namespace fcppt::mpl::list
 \see fcppt::mpl::list::empty
 */
 template<fcppt::mpl::list::object_concept List>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool empty_v = fcppt::mpl::list::empty<List>::value;
 }
 

@@ -28,7 +28,7 @@ template <
     typename = std::enable_if_t<
         fcppt::array::is_object<std::remove_cvref_t<Array>>::value>>
 [[nodiscard]] fcppt::tuple::from_array_result<std::remove_cvref_t<Array>>
-from_array(Array &&_source)
+from_array(Array &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   return fcppt::tuple::init<
       fcppt::tuple::from_array_result<std::remove_cvref_t<Array>>>(

@@ -16,6 +16,7 @@ namespace fcppt::type_traits
 \see fcppt::type_traits::implication
 */
 template <typename Left, typename Right>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool implication_v = fcppt::type_traits::implication<Left, Right>::value;
 }
 

@@ -17,6 +17,7 @@ namespace fcppt::mpl::list
 \see fcppt::mpl::list::distinct
 */
 template<fcppt::mpl::list::object_concept List>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool distinct_v = fcppt::mpl::list::distinct<List>::value;
 }
 

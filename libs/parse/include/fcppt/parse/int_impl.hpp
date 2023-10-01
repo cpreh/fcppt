@@ -55,7 +55,7 @@ fcppt::parse::int_<Type>::parse(
   return fcppt::either::bind(
       parser.parse(_state, _skipper),
       [pos](fcppt::tuple::object<fcppt::optional::object<fcppt::unit>, std::basic_string<Ch>>
-                &&_result)
+                &&_result) // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
       {
         return fcppt::either::map(
             fcppt::either::from_optional(

@@ -29,6 +29,7 @@ namespace fcppt::variant
 \tparam Container A container of #fcppt::variant::object.
 */
 template <typename Container>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 [[nodiscard]] fcppt::variant::partition_result<Container> partition(Container &&_container)
 {
   using variant = fcppt::type_traits::value_type<Container>;

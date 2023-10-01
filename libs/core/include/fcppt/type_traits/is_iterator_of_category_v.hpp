@@ -17,6 +17,7 @@ namespace fcppt::type_traits
 */
 template <typename Iterator, typename Category>
 constexpr inline bool is_iterator_of_category_v =
+    // NOLINTNEXTLINE(modernize-type-traits)
     fcppt::type_traits::is_iterator_of_category<Iterator, Category>::value;
 }
 

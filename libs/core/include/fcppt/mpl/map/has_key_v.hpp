@@ -17,6 +17,7 @@ namespace fcppt::mpl::map
 \see fcppt::mpl::map::has_key
 */
 template<fcppt::mpl::map::object_concept Map, typename Key>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool has_key_v = fcppt::mpl::map::has_key<Map,Key>::value;
 }
 

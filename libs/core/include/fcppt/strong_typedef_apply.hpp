@@ -39,8 +39,8 @@ where <code>R</code> is the result type.
 template <typename StrongTypedef1, typename Function, typename... StrongTypedefs>
 inline auto strong_typedef_apply(
     Function const &_function,
-    StrongTypedef1 &&_strong_typedef1,
-    StrongTypedefs &&..._strong_typedefs)
+    StrongTypedef1 &&_strong_typedef1, // NOLINT(cppcoreguidelines-missing-std-forward)
+    StrongTypedefs &&..._strong_typedefs) // NOLINT(cppcoreguidelines-missing-std-forward)
     -> fcppt::strong_typedef<
         decltype(_function(
             fcppt::move_if_rvalue<StrongTypedef1>(_strong_typedef1.get()),

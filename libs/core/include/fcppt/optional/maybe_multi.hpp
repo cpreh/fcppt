@@ -32,6 +32,7 @@ template <
     fcppt::concepts::invocable Default,
     fcppt::concepts::invocable<fcppt::optional::move_type<Optionals>...> Transform>
 [[nodiscard]] std::invoke_result_t<Default>
+// NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 maybe_multi(Default const _default, Transform const _transform, Optionals &&..._optionals) requires
     std::is_same_v<
         std::invoke_result_t<Default>,

@@ -17,6 +17,7 @@ namespace fcppt::mpl::map
 \see fcppt::mpl::map::equal
 */
 template <fcppt::mpl::map::object_concept Map1, fcppt::mpl::map::object_concept Map2>
+// NOLINTNEXTLINE(modernize-type-traits)
 constexpr inline bool equal_v = fcppt::mpl::map::equal<Map1,Map2>::value;
 }
 

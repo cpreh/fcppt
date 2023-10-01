@@ -26,6 +26,7 @@ public:
 
   using expected_type = fcppt::strong_typedef<string_type, fcppt::parse::expected_tag>;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
   basic_string_error(pos_type, expected_type &&);
 
   [[nodiscard]] pos_type pos() const;

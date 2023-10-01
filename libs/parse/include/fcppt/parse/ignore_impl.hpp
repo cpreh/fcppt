@@ -31,6 +31,7 @@ fcppt::parse::ignore<Parser>::parse(
 {
   return fcppt::either::map(
       fcppt::parse::deref(this->parser_).parse(_state, _skipper),
+      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::parse::result_of<Parser> &&) { return fcppt::unit{}; });
 }
 
