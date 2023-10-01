@@ -25,6 +25,10 @@ add_fcppt_cast_test(
 )
 
 add_fcppt_cast_test(
+	from_void_ptr
+)
+
+add_fcppt_cast_test(
 	promote_int
 )
 

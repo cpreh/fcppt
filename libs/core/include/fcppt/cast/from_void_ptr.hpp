@@ -28,7 +28,7 @@ template <typename Dest, typename Source>
 inline Dest from_void_ptr(Source *const _ptr) noexcept
 {
   static_assert(
-      std::is_pointer<Dest>::value && std::is_void<std::remove_cv_t<Source>>::value,
+      std::is_pointer_v<Dest> && std::is_void_v<std::remove_cv_t<Source>>,
       "from_void_ptr can only cast from a pointer to (cv) void to a different pointer type");
 
   return static_cast<Dest>(_ptr);
