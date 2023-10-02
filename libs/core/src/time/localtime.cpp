@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/config/platform.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/config/platform.hpp>
 #include <fcppt/time/localtime.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <time.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)

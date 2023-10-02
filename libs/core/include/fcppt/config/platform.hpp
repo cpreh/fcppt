@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONFIG_PLATFORM_HPP_INCLUDED
 #define FCPPT_CONFIG_PLATFORM_HPP_INCLUDED
 
-#include <fcppt/config/platform.h>
+#include <fcppt/config/platform.h> // IWYU pragma: export
 #include <fcppt/detail/check_cpp.hpp>
 
 #endif

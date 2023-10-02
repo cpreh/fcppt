@@ -5,7 +5,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/system.hpp>
-#include <fcppt/config/platform.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/config/platform.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/exception.hpp>
