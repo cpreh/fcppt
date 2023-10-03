@@ -7,9 +7,11 @@
 #include <fcppt/unit_comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/unit_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/basic_string.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
@@ -34,6 +36,19 @@ TEST_CASE("parse::string", "[parse]")
       fcppt::parse::make_parse_string_success<char>(fcppt::unit{}));
 
   CHECK(fcppt::parse::parse_string(parser, std::string{"te"}).has_failure());
+}
+
+TEST_CASE("parse::wstring", "[parse]")
+{
+  fcppt::parse::basic_string<wchar_t> const parser{std::wstring{L"test"}};
+
+  CHECK(fcppt::parse::parse_string(parser, std::wstring{}).has_failure());
+
+  CHECK(
+      fcppt::parse::parse_string(parser, std::wstring{L"test"}) ==
+      fcppt::parse::make_parse_string_success<wchar_t>(fcppt::unit{}));
+
+  CHECK(fcppt::parse::parse_string(parser, std::wstring{L"te"}).has_failure());
 }
 
 TEST_CASE("parse::string sequence", "[parse]")
