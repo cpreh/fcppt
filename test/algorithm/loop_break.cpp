@@ -64,7 +64,7 @@ public:
   [[nodiscard]] int value() const { return value_; }
 
 private:
-  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init)
+  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init,modernize-use-default-member-init)
 };
 
 }
@@ -102,7 +102,7 @@ public:
 
   [[nodiscard]] int value() const { return value_; }
 private:
-  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init)
+  mutable int value_; // NOLINT(cppcoreguidelines-use-default-member-init,modernize-use-default-member-init)
 };
 
 }
