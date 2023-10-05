@@ -19,14 +19,14 @@ namespace fcppt::mpl::list
 {
 namespace detail
 {
-template<typename List, typename I>
+template<typename List, typename Index>
 struct at;
 
-template<typename... E, std::size_t I>
-requires (std::less<>{}(I,sizeof...(E)))
-struct at<fcppt::mpl::list::object<E...>,fcppt::mpl::size_type<I>>
+template<typename... Elems, std::size_t Index>
+requires (std::less<>{}(Index,sizeof...(Elems)))
+struct at<fcppt::mpl::list::object<Elems...>,fcppt::mpl::size_type<Index>>
 {
-  using type = std::tuple_element_t<I,std::tuple<E...>>;
+  using type = std::tuple_element_t<Index,std::tuple<Elems...>>;
 };
 }
 
@@ -34,10 +34,10 @@ struct at<fcppt::mpl::list::object<E...>,fcppt::mpl::size_type<I>>
 \brief The element of a list at a given position.
 \ingroup fcpptmpl
 If <code>List = list::object<L_1,...,L_n></code>
-and <code>I = fcppt::mpl::size_type<j></code> with <code>0 <= j < n</code> then the result is <code>L_{j-1}</code>.
+and <code>Index = fcppt::mpl::size_type<j></code> with <code>0 <= j < n</code> then the result is <code>L_{j-1}</code>.
 */
-template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept I>
-using at = typename fcppt::mpl::list::detail::at<List,I>::type;
+template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept Index>
+using at = typename fcppt::mpl::list::detail::at<List,Index>::type;
 
 }
 
