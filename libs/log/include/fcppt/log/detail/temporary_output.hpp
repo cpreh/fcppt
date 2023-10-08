@@ -35,9 +35,7 @@ public:
   FCPPT_LOG_DETAIL_SYMBOL
   ~temporary_output();
 
-  FCPPT_LOG_DETAIL_SYMBOL
-  fcppt::string result() const;
-
+  [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL fcppt::string result() const;
 private:
   fcppt::io::ostringstream stream_;
 
@@ -47,14 +45,14 @@ private:
 };
 
 template <typename T>
-fcppt::log::detail::temporary_output
+[[nodiscard]] fcppt::log::detail::temporary_output
 operator<<(fcppt::log::detail::output_helper const &, T const &_arg)
 {
   return fcppt::log::detail::temporary_output() << _arg;
 }
 
 template <typename T>
-fcppt::log::detail::temporary_output
+[[nodiscard]] fcppt::log::detail::temporary_output
 operator<<(fcppt::log::detail::temporary_output &&_temp, T const &_arg)
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-array-to-pointer-decay,hicpp-no-array-decay)
