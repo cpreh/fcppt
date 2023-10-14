@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_DYNAMIC_ARRAY_IMPL_HPP_INCLUDED
 
 #include <fcppt/cast/to_signed.hpp>
-#include <fcppt/container/dynamic_array_decl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/container/dynamic_array_decl.hpp> // IWYU pragma: export
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
