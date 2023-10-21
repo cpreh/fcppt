@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_GET_OR_INSERT_RESULT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GET_OR_INSERT_RESULT_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/get_or_insert_result_decl.hpp>
+#include <fcppt/container/get_or_insert_result_decl.hpp> // IWYU pragma: export
 
 template <typename Reference>
 fcppt::container::get_or_insert_result<Reference>::get_or_insert_result(
