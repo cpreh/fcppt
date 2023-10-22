@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONS_LEFT_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/options/left_fwd.hpp>
+#include <fcppt/options/left_fwd.hpp> // IWYU pragma: export
 
 #endif

@@ -6,7 +6,7 @@
 #ifndef FCPPT_IO_BASIC_SCOPED_RDBUF_IMPL_HPP_INCLUDED
 #define FCPPT_IO_BASIC_SCOPED_RDBUF_IMPL_HPP_INCLUDED
 
-#include <fcppt/io/basic_scoped_rdbuf_decl.hpp>
+#include <fcppt/io/basic_scoped_rdbuf_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
 #include <streambuf>
