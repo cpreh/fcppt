@@ -1,6 +1,58 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_441 4.4.1
+
+<ul>
+
+<li>Cleaned up <code>clang-17</code> warnings.</li>
+<li>Added Include-What-You-Use pragmas.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_441 Added functionality
+
+<ul>
+
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added #fcppt::mpl::apply_v.</li>
+	<li>Added #fcppt::mpl::is_invocable_v.</li>
+	<li>Added #fcppt::mpl::list::all_of_v.</li>
+	<li>Added #fcppt::mpl::list::any_of_v.</li>
+	<li>Added #fcppt::mpl::list::contains_v.</li>
+	<li>Added #fcppt::mpl::list::distinct_v.</li>
+	<li>Added #fcppt::mpl::list::empty_v.</li>
+	<li>Added #fcppt::mpl::map::equal_v.</li>
+	<li>Added #fcppt::mpl::map::has_key_v.</li>
+	<li>Added #fcppt::mpl::set::contains_v.</li>
+	<li>Added #fcppt::mpl::set::equal_v.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>Added #fcppt::record::all_disjoint_v.</li>
+	<li>Added #fcppt::record::are_disjoint_v.</li>
+	<li>Added #fcppt::record::are_equivalent_v.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added #fcppt::type_traits::implication_v.</li>
+	<li>Added #fcppt::type_traits::is_iterator_of_category_v.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptparse
+	<ul>
+	<li>Added #fcppt::parse::skipper::is_skipper_v.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_440 4.4.0
 
 <ul>
