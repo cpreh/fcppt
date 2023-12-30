@@ -20,7 +20,7 @@ namespace fcppt::container::tree
 \brief Returns an iterator pointing to the position in the parent's child
 container where this object resides.
 
-\ingroup fcpptcontaintertree
+\ingroup fcpptcontainertree
 
 \param _parent The parent tree to search
 

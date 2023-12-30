@@ -16,7 +16,7 @@ namespace fcppt::type_traits
 A raw pointer is a (cv qualified) pointer to <code>char</code> or to
 <code>unsigned char</code>. Both can be used to read and write bytes.
 
-\ingroup fcpptypetraits
+\ingroup fcppttypetraits
 
 \tparam Type Must be a pointer type.
 */

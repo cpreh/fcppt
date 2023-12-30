@@ -12,7 +12,7 @@ namespace fcppt::type_traits
 {
 /**
 \brief The implication function: \a Left -> \a Right.
-\ingroup fcppttype_traits
+\ingroup fcppttypetraits
 \see fcppt::type_traits::implication
 */
 template <typename Left, typename Right>

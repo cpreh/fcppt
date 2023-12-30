@@ -15,7 +15,7 @@ namespace fcppt::type_traits
 /**
 \brief The implication function: \a Left -> \a Right.
 
-\ingroup fcppttype_traits
+\ingroup fcppttypetraits
 
 Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
 \a Right)

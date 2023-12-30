@@ -15,7 +15,7 @@ namespace fcppt::options
 /**
 \brief The result of invoking a regular parser and a help parser.
 
-\ingroup fcpptoption
+\ingroup fcpptoptions
 
 A help result is either a regular result or the usage of the parser.
 */

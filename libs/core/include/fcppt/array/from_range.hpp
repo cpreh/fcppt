@@ -23,7 +23,7 @@ namespace fcppt::array
 /**
 \brief Creates an #fcppt::array::object out of a range.
 
-\ingroup fcpptrarray
+\ingroup fcpptarray
 
 \tparam Source Must be a random-access range.
 */

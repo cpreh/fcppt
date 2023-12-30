@@ -16,7 +16,7 @@ namespace fcppt::type_traits
 /**
 \brief Does an integral cast on an integral constant
 
-\ingroup fcppttype_traits
+\ingroup fcppttypetraits
 
 Casts \a Integral to an integral constant of type \a Dest. The cast is
 done using \a Conv from fcppt.casts.

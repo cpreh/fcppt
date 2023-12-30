@@ -13,7 +13,7 @@ namespace fcppt::type_traits
 /**
 \brief Casts std::integral_constants and checks for truncation.
 
-\ingroup fcppttype_traits
+\ingroup fcppttypetraits
 
 \tparam DestType An integral type.
 

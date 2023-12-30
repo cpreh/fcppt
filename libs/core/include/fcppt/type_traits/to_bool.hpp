@@ -14,7 +14,7 @@ namespace fcppt::type_traits
 /**
 \brief Casts a std::integral_constant to bool.
 
-\ingroup fcppttype_traits
+\ingroup fcppttypetraits
 
 \tparam Type A std::integral_constant.
 */

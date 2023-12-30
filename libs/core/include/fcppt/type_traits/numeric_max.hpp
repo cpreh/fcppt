@@ -16,7 +16,7 @@ namespace fcppt::type_traits
 /**
 \brief Metafunction to compute the maximum value of a type.
 
-\ingroup fcppttype_traits
+\ingroup fcppttypetraits
 
 \tparam Type Must be a type such that <code>std::numeric_limits<Type>::max()</code> is defined.
 */
