@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONS_MISSING_OPTION_ARGUMENT_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_OPTION_ARGUMENT_ERROR_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_option_argument_error_fwd.hpp>
 #include <fcppt/options/name.hpp>
 #include <fcppt/options/detail/symbol.hpp>

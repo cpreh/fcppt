@@ -7,6 +7,7 @@
 #define FCPPT_OPTIONS_OPTION_CONVERSION_ERROR_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/name.hpp>
 #include <fcppt/options/option_conversion_error_fwd.hpp>
 #include <fcppt/options/type_name.hpp>
