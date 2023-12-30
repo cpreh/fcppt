@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONAL_ERROR_CODE_HPP_INCLUDED
 
 #include <fcppt/optional_error_code_fwd.hpp> // IWYU pragma: export
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 
 #endif

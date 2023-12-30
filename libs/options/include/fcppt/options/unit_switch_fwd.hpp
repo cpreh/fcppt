@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Label>
-class unit_switch;
+class unit_switch; // IWYU pragma: export
 
 }
 

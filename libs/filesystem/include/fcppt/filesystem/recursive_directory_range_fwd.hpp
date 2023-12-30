@@ -8,7 +8,7 @@
 
 namespace fcppt::filesystem
 {
-class recursive_directory_range;
+class recursive_directory_range; // IWYU pragma: export
 
 }
 

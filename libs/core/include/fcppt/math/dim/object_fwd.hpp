@@ -11,7 +11,7 @@
 namespace fcppt::math::dim
 {
 template <typename T, fcppt::math::size_type N, typename S>
-class object;
+class object; // IWYU pragma: export
 
 }
 

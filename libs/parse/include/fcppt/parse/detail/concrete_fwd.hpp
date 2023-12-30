@@ -9,7 +9,7 @@
 namespace fcppt::parse::detail
 {
 template <typename Result, typename Ch, typename Skipper>
-class concrete;
+class concrete; // IWYU pragma: export
 
 }
 

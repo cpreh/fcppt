@@ -10,7 +10,7 @@ namespace fcppt::parse
 {
 
 template<typename Ch>
-class parse_stream_error;
+class parse_stream_error; // IWYU pragma: export
 
 }
 

@@ -9,12 +9,12 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
-#include <fcppt/intrusive/list_impl.hpp>
+#include <fcppt/intrusive/list_impl.hpp> // IWYU pragma: keep
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/connection.hpp>
 #include <fcppt/signal/unregister/base_decl.hpp> // IWYU pragma: export
 #include <fcppt/signal/unregister/function.hpp>
-#include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp>
+#include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

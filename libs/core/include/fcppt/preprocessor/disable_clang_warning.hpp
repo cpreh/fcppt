@@ -6,7 +6,7 @@
 #ifndef FCPPT_PREPROCESSOR_DISABLE_CLANG_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DISABLE_CLANG_WARNING_HPP_INCLUDED
 
-#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/detail/check_cpp.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_clang_warning.h> // IWYU pragma: export
 
 #endif

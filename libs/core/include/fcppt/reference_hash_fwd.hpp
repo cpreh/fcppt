@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Type>
-struct reference_hash;
+struct reference_hash; // IWYU pragma: export
 
 }
 

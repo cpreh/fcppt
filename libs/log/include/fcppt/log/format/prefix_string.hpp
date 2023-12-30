@@ -8,7 +8,7 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 
 namespace fcppt::log::format
 {

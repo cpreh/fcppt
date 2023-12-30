@@ -7,6 +7,7 @@
 #define FCPPT_LOG_IMPL_FIND_CHILD_TPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/optional/deref.hpp>

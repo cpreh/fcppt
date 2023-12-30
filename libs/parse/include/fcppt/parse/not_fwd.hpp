@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Parser>
-class not_;
+class not_; // IWYU pragma: export
 
 }
 

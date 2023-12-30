@@ -6,7 +6,8 @@
 #ifndef FCPPT_STRONG_TYPEDEF_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_HASH_IMPL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_hash_decl.hpp>
+#include <fcppt/strong_typedef_hash_decl.hpp> // IWYU pragma: export
+#include <fcppt/strong_typedef_hash_fwd.hpp> // IWYU pragma: export
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>

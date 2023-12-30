@@ -7,7 +7,7 @@
 #define FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/strong_typedef_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

@@ -7,12 +7,12 @@
 #define FCPPT_MATH_BOX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/math/dim/static.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/dim.hpp>
+#include <fcppt/math/dim/static.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/arithmetic.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/dim.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/to_dim.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

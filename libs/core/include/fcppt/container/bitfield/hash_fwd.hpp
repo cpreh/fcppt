@@ -9,7 +9,7 @@
 namespace fcppt::container::bitfield
 {
 template <typename Bitfield>
-struct hash;
+struct hash; // IWYU pragma: export
 
 }
 

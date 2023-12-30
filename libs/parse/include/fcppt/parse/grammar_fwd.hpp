@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Result, typename Ch, typename Skipper>
-class grammar;
+class grammar; // IWYU pragma: export
 
 }
 

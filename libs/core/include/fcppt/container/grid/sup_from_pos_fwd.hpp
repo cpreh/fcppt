@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_GRID_SUP_FROM_POS_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SUP_FROM_POS_FWD_HPP_INCLUDED
 
-#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/sup_fwd.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 

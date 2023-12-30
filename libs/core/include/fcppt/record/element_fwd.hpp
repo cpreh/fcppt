@@ -9,7 +9,7 @@
 namespace fcppt::record
 {
 template <typename Label, typename Type>
-struct element;
+struct element; // IWYU pragma: export
 
 }
 

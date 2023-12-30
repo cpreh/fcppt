@@ -8,8 +8,8 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/is_object_v.hpp>
-#include <fcppt/optional/object_concept.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/optional/value_type.hpp>
 
 namespace fcppt::optional

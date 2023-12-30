@@ -8,7 +8,7 @@
 
 #include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::parse

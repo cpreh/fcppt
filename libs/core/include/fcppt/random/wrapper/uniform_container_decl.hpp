@@ -10,7 +10,7 @@
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
-#include <fcppt/random/wrapper/uniform_container_fwd.hpp>
+#include <fcppt/random/wrapper/uniform_container_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::random::wrapper
 {

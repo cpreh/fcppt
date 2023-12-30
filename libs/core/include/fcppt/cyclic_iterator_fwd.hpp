@@ -10,7 +10,7 @@
 namespace fcppt
 {
 template <typename ContainerIterator>
-class cyclic_iterator;
+class cyclic_iterator; // IWYU pragma: export
 
 }
 

@@ -13,7 +13,7 @@
 namespace fcppt::io
 {
 template <typename Ch, typename Traits = std::char_traits<Ch>>
-class basic_scoped_rdbuf;
+class basic_scoped_rdbuf; // IWYU pragma: export
 
 }
 

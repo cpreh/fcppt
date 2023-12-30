@@ -6,6 +6,7 @@
 #ifndef FCPPT_ENUM_OUTPUT_HPP_INCLUDED
 #define FCPPT_ENUM_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/config/external_begin.hpp>

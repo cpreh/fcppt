@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename T>
-class state_with_value;
+class state_with_value; // IWYU pragma: export
 
 }
 

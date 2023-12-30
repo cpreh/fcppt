@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_CHAR_SET_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CHAR_SET_DECL_HPP_INCLUDED
 
-#include <fcppt/parse/basic_char_set_decl.hpp>
+#include <fcppt/parse/basic_char_set_decl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/char_set_fwd.hpp> // IWYU pragma: export
 
 #endif

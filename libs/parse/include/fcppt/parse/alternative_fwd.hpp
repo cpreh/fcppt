@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Left, typename Right>
-class alternative;
+class alternative; // IWYU pragma: export
 
 }
 

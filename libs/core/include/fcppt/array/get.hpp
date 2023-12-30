@@ -8,7 +8,7 @@
 
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
+#include <array> // IWYU pragma: keep
 #include <cstddef>
 #include <functional>
 #include <type_traits>

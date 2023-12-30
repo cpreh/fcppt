@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Ch>
-class basic_string_error;
+class basic_string_error; // IWYU pragma: export
 
 }
 

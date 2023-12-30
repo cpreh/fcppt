@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_FLAG_DECL_HPP_INCLUDED
 
 #include <fcppt/options/active_value.hpp>
-#include <fcppt/options/flag_fwd.hpp>
+#include <fcppt/options/flag_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/inactive_value.hpp>
 #include <fcppt/options/long_name.hpp>

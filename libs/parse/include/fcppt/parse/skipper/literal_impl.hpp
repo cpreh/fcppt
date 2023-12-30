@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_SKIPPER_LITERAL_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_LITERAL_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/skipper/basic_literal_impl.hpp>
+#include <fcppt/parse/skipper/basic_literal_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/skipper/literal_fwd.hpp> // IWYU pragma: export
-#include <fcppt/parse/skipper/literal_decl.hpp>
+#include <fcppt/parse/skipper/literal_decl.hpp> // IWYU pragma: keep
 
 #endif

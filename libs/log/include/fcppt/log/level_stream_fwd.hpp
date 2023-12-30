@@ -8,7 +8,7 @@
 
 namespace fcppt::log
 {
-class level_stream;
+class level_stream; // IWYU pragma: export
 
 }
 

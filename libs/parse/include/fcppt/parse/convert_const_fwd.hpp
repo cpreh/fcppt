@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Parser, typename Result>
-class convert_const;
+class convert_const; // IWYU pragma: export
 
 }
 

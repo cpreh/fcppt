@@ -12,7 +12,7 @@
 #include <fcppt/parse/basic_stream_decl.hpp>
 #include <fcppt/parse/location.hpp>
 #include <fcppt/parse/position_fwd.hpp>
-#include <fcppt/parse/detail/stream_fwd.hpp>
+#include <fcppt/parse/detail/stream_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>

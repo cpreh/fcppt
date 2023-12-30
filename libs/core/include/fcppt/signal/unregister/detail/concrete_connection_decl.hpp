@@ -12,7 +12,7 @@
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/signal/connection_decl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
-#include <fcppt/signal/unregister/detail/concrete_connection_fwd.hpp>
+#include <fcppt/signal/unregister/detail/concrete_connection_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::signal::unregister::detail
 {

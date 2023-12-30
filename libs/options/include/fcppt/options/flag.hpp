@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONS_FLAG_HPP_INCLUDED
 
 #include <fcppt/options/flag_decl.hpp> // IWYU pragma: export
-#include <fcppt/options/flag_impl.hpp>
+#include <fcppt/options/flag_impl.hpp> // IWYU pragma: keep
 
 #endif

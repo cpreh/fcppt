@@ -8,12 +8,12 @@
 
 #include <fcppt/char_literal.hpp>
 #include <fcppt/string_literal.hpp>
-#include <fcppt/strong_typedef_arithmetic.hpp>
+#include <fcppt/strong_typedef_arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/io/get.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/parse/basic_stream_impl.hpp>
+#include <fcppt/parse/basic_stream_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/column.hpp>
 #include <fcppt/parse/line.hpp>
 #include <fcppt/parse/location.hpp>

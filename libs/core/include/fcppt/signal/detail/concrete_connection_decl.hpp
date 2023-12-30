@@ -11,6 +11,7 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/signal/connection_decl.hpp>
+#include <fcppt/signal/detail/concrete_connection_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::signal::detail
 {

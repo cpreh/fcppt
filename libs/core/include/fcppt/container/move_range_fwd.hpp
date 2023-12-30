@@ -9,7 +9,7 @@
 namespace fcppt::container
 {
 template <typename Range>
-class move_range;
+class move_range; // IWYU pragma: export
 
 }
 

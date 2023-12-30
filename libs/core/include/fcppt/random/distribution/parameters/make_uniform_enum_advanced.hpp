@@ -10,8 +10,7 @@
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
-#include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
-#include <fcppt/type_iso/enum.hpp>
+#include <fcppt/type_iso/enum.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

@@ -7,7 +7,7 @@
 #define FCPPT_STRONG_TYPEDEF_CONSTRUCT_CAST_HPP_INCLUDED
 
 #include <fcppt/is_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 

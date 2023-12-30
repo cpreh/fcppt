@@ -15,7 +15,7 @@ template <
     typename IntDistribution = fcppt::random::distribution::parameters::uniform_int_wrapper
 
     >
-class uniform_container;
+class uniform_container; // IWYU pragma: export
 
 }
 

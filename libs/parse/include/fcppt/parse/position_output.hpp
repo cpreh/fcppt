@@ -7,8 +7,8 @@
 #define FCPPT_PARSE_POSITION_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/string_literal.hpp>
-#include <fcppt/optional/output.hpp>
-#include <fcppt/parse/location_output.hpp>
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
+#include <fcppt/parse/location_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/position_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>

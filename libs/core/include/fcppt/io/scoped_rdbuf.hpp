@@ -6,7 +6,7 @@
 #ifndef FCPPT_IO_SCOPED_RDBUF_HPP_INCLUDED
 #define FCPPT_IO_SCOPED_RDBUF_HPP_INCLUDED
 
-#include <fcppt/io/basic_scoped_rdbuf_impl.hpp>
+#include <fcppt/io/basic_scoped_rdbuf_impl.hpp> // IWYU pragma: keep
 #include <fcppt/io/scoped_rdbuf_fwd.hpp> // IWYU pragma: export
 
 #endif

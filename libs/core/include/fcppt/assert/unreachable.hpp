@@ -7,7 +7,7 @@
 #define FCPPT_ASSERT_UNREACHABLE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <exception>
+#include <exception> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 /**

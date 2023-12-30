@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
 
-#include <fcppt/log/object.hpp>
+#include <fcppt/log/object.hpp> // IWYU pragma: keep
 
 #define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, level, output) \
   { \

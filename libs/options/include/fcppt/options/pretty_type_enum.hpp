@@ -8,6 +8,7 @@
 
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/output_to_std_string.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/enum/names.hpp>
 #include <fcppt/options/pretty_type_impl_fwd.hpp>

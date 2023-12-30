@@ -7,7 +7,7 @@
 #define FCPPT_STRONG_TYPEDEF_HASH_DECL_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_fwd.hpp>
-#include <fcppt/strong_typedef_hash_fwd.hpp>
+#include <fcppt/strong_typedef_hash_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>

@@ -10,7 +10,7 @@
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

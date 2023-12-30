@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Parser>
-class recursive;
+class recursive; // IWYU pragma: export
 
 }
 

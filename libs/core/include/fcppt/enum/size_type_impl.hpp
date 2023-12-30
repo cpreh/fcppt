@@ -7,7 +7,7 @@
 #define FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 
 #include <fcppt/enum/is_object.hpp>
-#include <fcppt/enum/size_type_impl_fwd.hpp>
+#include <fcppt/enum/size_type_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

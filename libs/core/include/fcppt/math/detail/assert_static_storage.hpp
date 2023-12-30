@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/is_static_storage.hpp>
+#include <fcppt/math/is_static_storage.hpp> // IWYU pragma: keep
 
 #define FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(storage) \
   static_assert( \

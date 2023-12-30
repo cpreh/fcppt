@@ -6,9 +6,10 @@
 #ifndef FCPPT_OPTIONS_MISSING_FLAG_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_FLAG_ERROR_HPP_INCLUDED
 
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/long_name.hpp>
-#include <fcppt/options/missing_flag_error_fwd.hpp>
+#include <fcppt/options/missing_flag_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 

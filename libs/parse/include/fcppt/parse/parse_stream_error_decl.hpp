@@ -7,8 +7,8 @@
 #define FCPPT_PARSE_PARSE_STREAM_ERROR_DECL_HPP_INCLUDED
 
 #include <fcppt/parse/error_impl.hpp>
-#include <fcppt/parse/parse_stream_error_fwd.hpp>
-#include <fcppt/variant/comparison.hpp>
+#include <fcppt/parse/parse_stream_error_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/variant/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>

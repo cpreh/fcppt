@@ -9,7 +9,7 @@
 #include <fcppt/hash.hpp>
 #include <fcppt/hash_combine.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/range/hash_decl.hpp>
+#include <fcppt/range/hash_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>

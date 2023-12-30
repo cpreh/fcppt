@@ -6,10 +6,10 @@
 #ifndef FCPPT_PARSE_PARSE_STRING_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_PARSE_STRING_ERROR_DECL_HPP_INCLUDED
 
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/parse_stream_error_impl.hpp>
-#include <fcppt/parse/parse_string_error_fwd.hpp>
+#include <fcppt/parse/parse_string_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>

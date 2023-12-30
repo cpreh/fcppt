@@ -17,7 +17,7 @@
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
-#include <fcppt/parse/skipper/repetition_decl.hpp>
+#include <fcppt/parse/skipper/repetition_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

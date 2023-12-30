@@ -12,7 +12,7 @@
 #include <fcppt/container/grid/at_optional.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/is_object.hpp>
-#include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>

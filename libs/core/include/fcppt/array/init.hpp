@@ -10,6 +10,7 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

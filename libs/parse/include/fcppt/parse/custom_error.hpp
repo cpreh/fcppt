@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_CUSTOM_ERROR_HPP_INCLUDED
 
 #include <fcppt/parse/custom_error_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/custom_error_impl.hpp>
+#include <fcppt/parse/custom_error_impl.hpp> // IWYU pragma: keep
 
 #endif

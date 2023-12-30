@@ -8,7 +8,7 @@
 
 namespace fcppt::options
 {
-class sum_usage;
+class sum_usage; // IWYU pragma: export
 }
 
 #endif

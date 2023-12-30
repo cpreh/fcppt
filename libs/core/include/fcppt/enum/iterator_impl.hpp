@@ -7,8 +7,8 @@
 #define FCPPT_ENUM_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_enum.hpp>
-#include <fcppt/enum/iterator_decl.hpp>
-#include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/enum/iterator_decl.hpp> // IWYU pragma: export
+#include <fcppt/iterator/base_impl.hpp> // IWYU pragma: keep
 
 template <typename Enum>
 fcppt::enum_::iterator<Enum>::iterator(size_type const _value) noexcept : value_{_value}

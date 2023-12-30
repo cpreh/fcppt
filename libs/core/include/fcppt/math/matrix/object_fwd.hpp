@@ -11,7 +11,7 @@
 namespace fcppt::math::matrix
 {
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-class object;
+class object; // IWYU pragma: export
 
 }
 

@@ -6,9 +6,9 @@
 #ifndef FCPPT_MPL_LIST_DISTINCT_HPP_INCLUDED
 #define FCPPT_MPL_LIST_DISTINCT_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #include <fcppt/mpl/arg.hpp>
 #include <fcppt/mpl/bind.hpp>

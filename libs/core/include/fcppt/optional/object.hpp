@@ -6,9 +6,9 @@
 #ifndef FCPPT_OPTIONAL_OBJECT_HPP_INCLUDED
 #define FCPPT_OPTIONAL_OBJECT_HPP_INCLUDED
 
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: export
 #include <fcppt/optional/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 
 #endif

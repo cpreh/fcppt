@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_RESULT_HPP_INCLUDED
 
-#include <fcppt/either/object_impl.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/result_fwd.hpp>
+#include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/parse/error.hpp> // IWYU pragma: keep
+#include <fcppt/parse/result_fwd.hpp> // IWYU pragma: export
 
 #endif

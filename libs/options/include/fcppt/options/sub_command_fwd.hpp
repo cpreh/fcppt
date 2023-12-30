@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Tag, typename Parser>
-class sub_command;
+class sub_command; // IWYU pragma: export
 
 }
 

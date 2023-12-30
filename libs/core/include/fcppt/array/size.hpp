@@ -9,7 +9,7 @@
 #include <fcppt/array/impl_type.hpp>
 #include <fcppt/array/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
+#include <array> // IWYU pragma: keep
 #include <cstddef>
 #include <tuple>
 #include <type_traits>

@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename... Types>
-struct overloaded;
+struct overloaded; // IWYU pragma: export
 
 }
 

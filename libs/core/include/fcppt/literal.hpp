@@ -6,7 +6,8 @@
 #ifndef FCPPT_LITERAL_HPP_INCLUDED
 #define FCPPT_LITERAL_HPP_INCLUDED
 
-#include <fcppt/make_literal_fundamental.hpp>
+#include <fcppt/make_literal_fundamental.hpp> // IWYU pragma: keep
+#include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/type_traits/is_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

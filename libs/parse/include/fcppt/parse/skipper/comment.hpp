@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_SKIPPER_COMMENT_HPP_INCLUDED
 
 #include <fcppt/parse/skipper/comment_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/skipper/comment_impl.hpp>
+#include <fcppt/parse/skipper/comment_impl.hpp> // IWYU pragma: keep
 
 #endif

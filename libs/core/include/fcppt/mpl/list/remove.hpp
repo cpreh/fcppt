@@ -10,7 +10,7 @@
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/constant.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/remove_if.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

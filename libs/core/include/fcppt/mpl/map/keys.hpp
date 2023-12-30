@@ -6,9 +6,9 @@
 #ifndef FCPPT_MPL_MAP_KEYS_HPP_INCLUDED
 #define FCPPT_MPL_MAP_KEYS_HPP_INCLUDED
 
-#include <fcppt/mpl/map/element_concept.hpp>
+#include <fcppt/mpl/map/element_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/element_key.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/object_fwd.hpp>
 #include <fcppt/mpl/set/object_fwd.hpp>
 

@@ -6,7 +6,7 @@
 #ifndef FCPPT_MPL_APPLY_HPP_INCLUDED
 #define FCPPT_MPL_APPLY_HPP_INCLUDED
 
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/lambda_fwd.hpp>
 
 namespace fcppt::mpl

@@ -11,7 +11,7 @@
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/append.hpp>
 #include <fcppt/mpl/list/fold.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object_fwd.hpp>
 
 namespace fcppt::mpl::list

@@ -6,13 +6,13 @@
 #ifndef FCPPT_PARSE_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_DECL_HPP_INCLUDED
 
-#include <fcppt/parse/error_fwd.hpp>
+#include <fcppt/parse/error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/error_variant_impl.hpp>
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/comparison.hpp>
+#include <fcppt/variant/comparison.hpp> // IWYU pragma: keep
 
 namespace fcppt::parse
 {

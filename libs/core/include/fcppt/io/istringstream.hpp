@@ -8,7 +8,7 @@
 
 #include <fcppt/io/istringstream_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
-#include <sstream>
+#include <sstream> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 #endif

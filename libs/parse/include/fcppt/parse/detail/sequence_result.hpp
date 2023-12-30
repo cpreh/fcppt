@@ -9,7 +9,6 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/parse/detail/combine_tuples.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <tuple>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

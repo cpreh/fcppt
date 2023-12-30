@@ -9,7 +9,7 @@
 namespace fcppt::container::bitfield
 {
 template <typename StoredType>
-class proxy;
+class proxy; // IWYU pragma: export
 
 }
 

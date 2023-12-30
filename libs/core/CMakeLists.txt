@@ -145,13 +145,22 @@ set(
 	libs/core/include/fcppt/concepts/range.hpp
 	libs/core/include/fcppt/concepts/string.hpp
 	libs/core/include/fcppt/cond.hpp
+	libs/core/include/fcppt/config/clang_version_at_least.h
 	libs/core/include/fcppt/config/clang_version_at_least.hpp
+	libs/core/include/fcppt/config/compiler.h
 	libs/core/include/fcppt/config/compiler.hpp
+	libs/core/include/fcppt/config/detail/clang_version_at_least.h
+	libs/core/include/fcppt/config/detail/gcc_version_at_least.h
+	libs/core/include/fcppt/config/detail/major_minor_at_least.h
 	libs/core/include/fcppt/config/detail/msvc_version_at_least.hpp
+	libs/core/include/fcppt/config/external_begin.h
 	libs/core/include/fcppt/config/external_begin.hpp
+	libs/core/include/fcppt/config/external_end.h
 	libs/core/include/fcppt/config/external_end.hpp
+	libs/core/include/fcppt/config/gcc_version_at_least.h
 	libs/core/include/fcppt/config/gcc_version_at_least.hpp
 	libs/core/include/fcppt/config/msvc_version_at_least.hpp
+	libs/core/include/fcppt/config/platform.h
 	libs/core/include/fcppt/config/platform.hpp
 	libs/core/include/fcppt/const.hpp
 	libs/core/include/fcppt/const_pointer_cast.hpp
@@ -1035,8 +1044,6 @@ set(
 	libs/core/include/fcppt/optional/value_type.hpp
 	libs/core/include/fcppt/optional_error_code.hpp
 	libs/core/include/fcppt/optional_error_code_fwd.hpp
-	libs/core/include/fcppt/optional_size_t.hpp
-	libs/core/include/fcppt/optional_size_t_fwd.hpp
 	libs/core/include/fcppt/optional_std_string.hpp
 	libs/core/include/fcppt/optional_std_string_fwd.hpp
 	libs/core/include/fcppt/optional_string.hpp
@@ -1060,23 +1067,37 @@ set(
 	libs/core/include/fcppt/overloaded_fwd.hpp
 	libs/core/include/fcppt/overloaded_impl.hpp
 	libs/core/include/fcppt/preprocessor/const.hpp
+	libs/core/include/fcppt/preprocessor/detail/disable_clang_warning.h
+	libs/core/include/fcppt/preprocessor/detail/disable_gcc_warning.h
+	libs/core/include/fcppt/preprocessor/detail/disable_gnu_gcc_warning.h
 	libs/core/include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/detail/function.hpp
 	libs/core/include/fcppt/preprocessor/detail/message.hpp
+	libs/core/include/fcppt/preprocessor/detail/pop_warning.h
+	libs/core/include/fcppt/preprocessor/detail/pragma.h
+	libs/core/include/fcppt/preprocessor/detail/push_warning.h
 	libs/core/include/fcppt/preprocessor/detail/stringize.hpp
+	libs/core/include/fcppt/preprocessor/disable_clang_warning.h
 	libs/core/include/fcppt/preprocessor/disable_clang_warning.hpp
+	libs/core/include/fcppt/preprocessor/disable_gcc_warning.h
 	libs/core/include/fcppt/preprocessor/disable_gcc_warning.hpp
+	libs/core/include/fcppt/preprocessor/disable_gnu_gcc_warning.h
 	libs/core/include/fcppt/preprocessor/disable_gnu_gcc_warning.hpp
 	libs/core/include/fcppt/preprocessor/disable_vc_warning.hpp
 	libs/core/include/fcppt/preprocessor/file.hpp
 	libs/core/include/fcppt/preprocessor/fixme.hpp
 	libs/core/include/fcppt/preprocessor/function.hpp
+	libs/core/include/fcppt/preprocessor/ignore_dangling_reference.h
 	libs/core/include/fcppt/preprocessor/ignore_dangling_reference.hpp
+	libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.h
 	libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp
 	libs/core/include/fcppt/preprocessor/message.hpp
+	libs/core/include/fcppt/preprocessor/pop_warning.h
 	libs/core/include/fcppt/preprocessor/pop_warning.hpp
+	libs/core/include/fcppt/preprocessor/pragma.h
 	libs/core/include/fcppt/preprocessor/pragma.hpp
 	libs/core/include/fcppt/preprocessor/pure.hpp
+	libs/core/include/fcppt/preprocessor/push_warning.h
 	libs/core/include/fcppt/preprocessor/push_warning.hpp
 	libs/core/include/fcppt/preprocessor/stringize.hpp
 	libs/core/include/fcppt/preprocessor/todo.hpp
@@ -1296,9 +1317,11 @@ set(
 	libs/core/include/fcppt/strong_typedef_std_hash.hpp
 	libs/core/include/fcppt/strong_typedef_tag.hpp
 	libs/core/include/fcppt/symbol/class.hpp
+	libs/core/include/fcppt/symbol/export.h
 	libs/core/include/fcppt/symbol/export.hpp
 	libs/core/include/fcppt/symbol/export_class_instantiation.hpp
 	libs/core/include/fcppt/symbol/export_function_instantiation.hpp
+	libs/core/include/fcppt/symbol/import.h
 	libs/core/include/fcppt/symbol/import.hpp
 	libs/core/include/fcppt/system.hpp
 	libs/core/include/fcppt/tag.hpp
@@ -1482,4 +1505,32 @@ make_fcppt_library(
 		FCPPT
 	INCLUDE_DIRS
 		${CORE_INCLUDE_DIRS}
+	HEADER_ONLY_EXCEPTIONS
+		libs/core/include/fcppt/config/clang_version_at_least.h
+		libs/core/include/fcppt/config/compiler.h
+		libs/core/include/fcppt/config/external_begin.h
+		libs/core/include/fcppt/config/external_begin.hpp
+		libs/core/include/fcppt/config/external_end.hpp
+		libs/core/include/fcppt/config/external_end.h
+		libs/core/include/fcppt/config/detail/clang_version_at_least.h
+		libs/core/include/fcppt/config/detail/gcc_version_at_least.h
+		libs/core/include/fcppt/config/detail/major_minor_at_least.h
+		libs/core/include/fcppt/config/gcc_version_at_least.h
+		libs/core/include/fcppt/config/platform.h
+		libs/core/include/fcppt/preprocessor/detail/disable_clang_warning.h
+		libs/core/include/fcppt/preprocessor/detail/disable_gcc_warning.h
+		libs/core/include/fcppt/preprocessor/detail/disable_gnu_gcc_warning.h
+		libs/core/include/fcppt/preprocessor/detail/pop_warning.h
+		libs/core/include/fcppt/preprocessor/detail/pragma.h
+		libs/core/include/fcppt/preprocessor/detail/push_warning.h
+		libs/core/include/fcppt/preprocessor/disable_clang_warning.h
+		libs/core/include/fcppt/preprocessor/disable_gcc_warning.h
+		libs/core/include/fcppt/preprocessor/disable_gnu_gcc_warning.h
+		libs/core/include/fcppt/preprocessor/ignore_dangling_reference.h
+		libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.h
+		libs/core/include/fcppt/preprocessor/pop_warning.h
+		libs/core/include/fcppt/preprocessor/pragma.h
+		libs/core/include/fcppt/preprocessor/push_warning.h
+		libs/core/include/fcppt/symbol/export.h
+		libs/core/include/fcppt/symbol/import.h
 )

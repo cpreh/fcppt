@@ -15,13 +15,12 @@
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/detail/multiply_scalar.hpp>
 #include <fcppt/math/matrix/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/math/matrix/row_type.hpp>
+#include <fcppt/math/matrix/row_type.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/detail/init_storage.hpp>
-#include <fcppt/math/matrix/detail/row_view_impl.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/matrix/detail/row_view_impl.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

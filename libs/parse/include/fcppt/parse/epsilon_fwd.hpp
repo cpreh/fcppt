@@ -8,7 +8,7 @@
 
 namespace fcppt::parse
 {
-class epsilon;
+class epsilon; // IWYU pragma: export
 
 }
 

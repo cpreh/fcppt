@@ -7,7 +7,7 @@
 #define FCPPT_MPL_MAP_EQUAL_V_HPP_INCLUDED
 
 #include <fcppt/mpl/map/equal.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::map
 {

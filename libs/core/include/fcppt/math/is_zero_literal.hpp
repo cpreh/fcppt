@@ -7,7 +7,7 @@
 #define FCPPT_MATH_IS_ZERO_LITERAL_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/is_zero_impl_fwd.hpp>
+#include <fcppt/math/is_zero_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

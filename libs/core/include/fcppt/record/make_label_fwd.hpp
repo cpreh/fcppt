@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_MAKE_LABEL_FWD_HPP_INCLUDED
 #define FCPPT_RECORD_MAKE_LABEL_FWD_HPP_INCLUDED
 
-#include <fcppt/record/label_fwd.hpp>
+#include <fcppt/record/label_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/record/detail/make_tag.hpp>
 #include <fcppt/record/detail/tag_name.hpp>
 

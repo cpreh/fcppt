@@ -7,7 +7,7 @@
 #define FCPPT_MATH_MATRIX_INDEX_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/index_fwd.hpp>
+#include <fcppt/math/matrix/index_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::math::matrix
 {

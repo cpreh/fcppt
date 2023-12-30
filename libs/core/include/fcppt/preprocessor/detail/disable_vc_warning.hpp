@@ -6,7 +6,7 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_DISABLE_VC_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_DISABLE_VC_WARNING_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.hpp> // IWYU pragma: keep
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #include <fcppt/preprocessor/pragma.hpp>

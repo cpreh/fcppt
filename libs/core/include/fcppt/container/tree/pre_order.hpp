@@ -6,13 +6,13 @@
 #ifndef FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
-#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

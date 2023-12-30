@@ -8,7 +8,7 @@
 
 namespace fcppt::parse
 {
-class location;
+class location; // IWYU pragma: export
 
 }
 

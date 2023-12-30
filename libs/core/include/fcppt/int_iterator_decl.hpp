@@ -6,7 +6,7 @@
 #ifndef FCPPT_INT_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_INT_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/int_iterator_fwd.hpp>
+#include <fcppt/int_iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>

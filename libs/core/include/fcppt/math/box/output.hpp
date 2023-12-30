@@ -8,8 +8,8 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/dim/output.hpp>
-#include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/dim/output.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>

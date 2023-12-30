@@ -6,9 +6,9 @@
 #ifndef FCPPT_OPTIONS_DEREF_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONS_DEREF_TYPE_HPP_INCLUDED
 
-#include <fcppt/deref_reference.hpp>
+#include <fcppt/deref_reference.hpp> // IWYU pragma: keep
 #include <fcppt/deref_type.hpp>
-#include <fcppt/deref_unique_ptr.hpp>
+#include <fcppt/deref_unique_ptr.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

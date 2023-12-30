@@ -12,7 +12,7 @@
 namespace fcppt::signal
 {
 template <typename T, template <typename> class Base = fcppt::signal::base>
-class object;
+class object; // IWYU pragma: export
 
 }
 

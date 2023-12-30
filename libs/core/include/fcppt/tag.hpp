@@ -6,7 +6,7 @@
 #ifndef FCPPT_TAG_HPP_INCLUDED
 #define FCPPT_TAG_HPP_INCLUDED
 
-#include <fcppt/tag_fwd.hpp>
+#include <fcppt/tag_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {

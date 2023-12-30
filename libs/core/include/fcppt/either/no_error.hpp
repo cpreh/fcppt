@@ -6,7 +6,7 @@
 #ifndef FCPPT_EITHER_NO_ERROR_HPP_INCLUDED
 #define FCPPT_EITHER_NO_ERROR_HPP_INCLUDED
 
-#include <fcppt/either/no_error_fwd.hpp>
+#include <fcppt/either/no_error_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::either
 {

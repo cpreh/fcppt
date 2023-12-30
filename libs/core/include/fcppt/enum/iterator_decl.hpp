@@ -6,7 +6,7 @@
 #ifndef FCPPT_ENUM_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_ENUM_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/enum/iterator_fwd.hpp>
+#include <fcppt/enum/iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/enum/size_type.hpp>
 #include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/iterator/types_fwd.hpp>

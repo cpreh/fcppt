@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable_move.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

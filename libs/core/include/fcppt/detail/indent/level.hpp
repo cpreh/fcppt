@@ -7,7 +7,7 @@
 #define FCPPT_DETAIL_INDENT_LEVEL_HPP_INCLUDED
 
 #include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 
 namespace fcppt::detail::indent
 {

@@ -12,7 +12,7 @@
 #include <fcppt/mpl/list/as_tuple.hpp>
 #include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/map.hpp>
-#include <fcppt/mpl/list/object_fwd.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

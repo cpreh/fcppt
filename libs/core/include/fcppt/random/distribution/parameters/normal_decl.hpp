@@ -7,9 +7,9 @@
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_DECL_HPP_INCLUDED
 
 #include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/random/distribution/base_type.hpp>
-#include <fcppt/random/distribution/parameters/normal_fwd.hpp>
+#include <fcppt/random/distribution/parameters/normal_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <random>
 #include <fcppt/config/external_end.hpp>

@@ -16,7 +16,6 @@
 #include <fcppt/container/set_union.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/flag_name.hpp>
@@ -25,7 +24,7 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
-#include <fcppt/options/product_decl.hpp>
+#include <fcppt/options/product_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/product_usage.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANGE_HASH_DECL_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_DECL_HPP_INCLUDED
 
-#include <fcppt/range/hash_fwd.hpp>
+#include <fcppt/range/hash_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>

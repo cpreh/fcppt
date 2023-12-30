@@ -7,7 +7,7 @@
 #define FCPPT_MPL_DEC_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/mpl/integral_concept.hpp>
+#include <fcppt/mpl/integral_concept.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

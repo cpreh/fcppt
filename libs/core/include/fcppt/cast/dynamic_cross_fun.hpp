@@ -7,7 +7,7 @@
 #define FCPPT_CAST_DYNAMIC_CROSS_FUN_HPP_INCLUDED
 
 #include <fcppt/cast/dynamic_cross.hpp>
-#include <fcppt/cast/dynamic_cross_fun_fwd.hpp>
+#include <fcppt/cast/dynamic_cross_fun_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference.hpp>
 
 namespace fcppt::cast

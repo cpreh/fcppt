@@ -10,7 +10,7 @@
 #include <fcppt/options/default_value.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
-#include <fcppt/options/option_fwd.hpp>
+#include <fcppt/options/option_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>

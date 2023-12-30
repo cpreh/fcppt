@@ -6,11 +6,11 @@
 #ifndef FCPPT_REFERENCE_HPP_INCLUDED
 #define FCPPT_REFERENCE_HPP_INCLUDED
 
-#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_comparison.hpp> // IWYU pragma: export
 #include <fcppt/reference_decl.hpp> // IWYU pragma: export
-#include <fcppt/reference_fwd.hpp>
-#include <fcppt/reference_hash.hpp>
-#include <fcppt/reference_impl.hpp>
-#include <fcppt/reference_std_hash.hpp>
+#include <fcppt/reference_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/reference_hash.hpp> // IWYU pragma: export
+#include <fcppt/reference_impl.hpp> // IWYU pragma: keep
+#include <fcppt/reference_std_hash.hpp> // IWYU pragma: export
 
 #endif

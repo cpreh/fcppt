@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_IGNORE_HPP_INCLUDED
 #define FCPPT_PARSE_IGNORE_HPP_INCLUDED
 
-#include <fcppt/parse/ignore_impl.hpp>
+#include <fcppt/parse/ignore_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/ignore_impl.hpp> // IWYU pragma: keep
 
 #endif

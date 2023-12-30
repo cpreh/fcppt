@@ -7,7 +7,7 @@
 #define FCPPT_EITHER_SUCCESS_MOVE_TYPE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue_type.hpp>
-#include <fcppt/either/object_concept.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/either/success_reference_type.hpp>
 
 namespace fcppt::either

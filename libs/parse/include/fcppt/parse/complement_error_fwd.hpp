@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Ch>
-class complement_error;
+class complement_error; // IWYU pragma: export
 
 }
 

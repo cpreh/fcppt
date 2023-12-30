@@ -10,7 +10,7 @@
 namespace fcppt::signal::unregister::detail
 {
 template <typename Function>
-class concrete_connection;
+class concrete_connection; // IWYU pragma: export
 
 }
 

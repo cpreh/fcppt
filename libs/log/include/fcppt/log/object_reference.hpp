@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_OBJECT_REFERENCE_HPP_INCLUDED
 #define FCPPT_LOG_OBJECT_REFERENCE_HPP_INCLUDED
 
-#include <fcppt/reference_impl.hpp>
+#include <fcppt/reference_impl.hpp> // IWYU pragma: keep
 #include <fcppt/log/object_reference_fwd.hpp> // IWYU pragma: export
 
 #endif

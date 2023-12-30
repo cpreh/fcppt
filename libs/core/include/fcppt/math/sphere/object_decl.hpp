@@ -7,8 +7,8 @@
 #define FCPPT_MATH_SPHERE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/sphere/object_fwd.hpp>
-#include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/math/sphere/object_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/object_decl.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/static.hpp>
 
 namespace fcppt::math::sphere

@@ -9,7 +9,7 @@
 namespace fcppt::random::generator
 {
 template <typename Generator>
-class basic_pseudo;
+class basic_pseudo; // IWYU pragma: export
 
 }
 

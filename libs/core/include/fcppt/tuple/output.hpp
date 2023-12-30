@@ -6,11 +6,10 @@
 #ifndef FCPPT_TUPLE_OUTPUT_HPP_INCLUDED
 #define FCPPT_TUPLE_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/not.hpp>
 #include <fcppt/output.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/size_type.hpp>
 #include <fcppt/mpl/list/interval.hpp>
 #include <fcppt/tuple/get.hpp>

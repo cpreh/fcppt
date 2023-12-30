@@ -6,8 +6,8 @@
 #ifndef FCPPT_MATH_DIM_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_STATIC_HPP_INCLUDED
 
-#include <fcppt/math/dim/static_decl.hpp>
+#include <fcppt/math/dim/static_decl.hpp> // IWYU pragma: keep
 #include <fcppt/math/dim/static_fwd.hpp> // IWYU pragma: export
-#include <fcppt/math/dim/static_impl.hpp>
+#include <fcppt/math/dim/static_impl.hpp> // IWYU pragma: keep
 
 #endif

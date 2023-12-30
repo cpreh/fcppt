@@ -6,7 +6,10 @@
 #ifndef FCPPT_MPL_IF_HPP_INCLUDED
 #define FCPPT_MPL_IF_HPP_INCLUDED
 
-#include <fcppt/mpl/bool_concept.hpp>
+#include <fcppt/mpl/bool_concept.hpp> // IWYU pragma: keep
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::mpl
 {

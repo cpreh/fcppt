@@ -14,7 +14,7 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/right_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
-#include <fcppt/options/sum_fwd.hpp>
+#include <fcppt/options/sum_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

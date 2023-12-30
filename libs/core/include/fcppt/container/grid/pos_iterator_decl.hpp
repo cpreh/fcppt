@@ -7,12 +7,12 @@
 #define FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/container/grid/min.hpp>
-#include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/pos_iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/container/grid/detail/pos_iterator_base.hpp>
-#include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/iterator/base_decl.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/value_type.hpp>
 
 namespace fcppt::container::grid

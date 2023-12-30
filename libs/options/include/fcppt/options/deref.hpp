@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONS_DEREF_HPP_INCLUDED
 
 #include <fcppt/deref.hpp>
-#include <fcppt/deref_reference.hpp>
-#include <fcppt/deref_unique_ptr.hpp>
+#include <fcppt/deref_reference.hpp> // IWYU pragma: keep
+#include <fcppt/deref_unique_ptr.hpp> // IWYU pragma: keep
 
 namespace fcppt::options
 {

@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_CONVERT_CONST_HPP_INCLUDED
 
 #include <fcppt/parse/convert_const_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/convert_const_impl.hpp>
+#include <fcppt/parse/convert_const_impl.hpp> // IWYU pragma: keep
 
 #endif

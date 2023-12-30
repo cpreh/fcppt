@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONS_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/options/optional_decl.hpp> // IWYU pragma: export
-#include <fcppt/options/optional_impl.hpp>
+#include <fcppt/options/optional_impl.hpp> // IWYU pragma: keep
 
 #endif

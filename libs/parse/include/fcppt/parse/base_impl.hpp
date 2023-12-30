@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASE_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/base_decl.hpp>
+#include <fcppt/parse/base_decl.hpp> // IWYU pragma: export
 
 template <typename Result, typename Ch, typename Skipper>
 fcppt::parse::base<Result, Ch, Skipper>::base() = default;

@@ -9,7 +9,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

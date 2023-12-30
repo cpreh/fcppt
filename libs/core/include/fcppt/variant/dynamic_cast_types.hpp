@@ -9,7 +9,7 @@
 #include <fcppt/reference.hpp>
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/map.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::variant
 {

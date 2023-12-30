@@ -10,6 +10,7 @@
 #include <fcppt/tuple/size.hpp>
 #include <fcppt/tuple/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

@@ -16,7 +16,7 @@
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/detail/combine_errors.hpp>
-#include <fcppt/parse/skipper/alternative_decl.hpp>
+#include <fcppt/parse/skipper/alternative_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/result.hpp>

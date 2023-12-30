@@ -12,7 +12,7 @@ namespace fcppt
 \ingroup fcpptliteral
 */
 template <typename Type, typename Enable = void>
-struct make_literal;
+struct make_literal; // IWYU pragma: export
 
 }
 

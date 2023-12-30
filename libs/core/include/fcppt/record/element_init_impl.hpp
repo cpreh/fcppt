@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_ELEMENT_INIT_IMPL_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_INIT_IMPL_HPP_INCLUDED
 
-#include <fcppt/record/element_init_decl.hpp>
+#include <fcppt/record/element_init_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

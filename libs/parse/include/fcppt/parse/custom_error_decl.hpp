@@ -6,8 +6,7 @@
 #ifndef FCPPT_PARSE_CUSTOM_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_CUSTOM_ERROR_DECL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/parse/custom_error_fwd.hpp>
+#include <fcppt/parse/custom_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/position.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>

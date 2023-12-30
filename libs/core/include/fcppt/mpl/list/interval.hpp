@@ -7,7 +7,7 @@
 #define FCPPT_MPL_LIST_INTERVAL_HPP_INCLUDED
 
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/type_traits/integral_constant_concept.hpp>
+#include <fcppt/type_traits/integral_constant_concept.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

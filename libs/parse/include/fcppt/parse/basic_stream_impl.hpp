@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_BASIC_STREAM_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_STREAM_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/basic_stream_decl.hpp>
+#include <fcppt/parse/basic_stream_decl.hpp> // IWYU pragma: export
 
 template <typename Ch>
 fcppt::parse::basic_stream<Ch>::basic_stream() = default;

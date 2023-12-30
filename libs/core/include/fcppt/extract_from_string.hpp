@@ -8,7 +8,7 @@
 
 #include <fcppt/extract_from_string_locale_fmt.hpp>
 #include <fcppt/insert_extract_locale.hpp>
-#include <fcppt/concepts/string.hpp>
+#include <fcppt/concepts/string.hpp> // IWYU pragma: keep
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

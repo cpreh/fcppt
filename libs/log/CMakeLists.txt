@@ -31,8 +31,6 @@ set(
 	libs/log/include/fcppt/log/detail/context_tree_node_fwd.hpp
 	libs/log/include/fcppt/log/detail/level_if_enabled.hpp
 	libs/log/include/fcppt/log/detail/location_vector.hpp
-	libs/log/include/fcppt/log/detail/optional_object_ref.hpp
-	libs/log/include/fcppt/log/detail/optional_object_ref_fwd.hpp
 	libs/log/include/fcppt/log/detail/output_helper.hpp
 	libs/log/include/fcppt/log/detail/temporary_output.hpp
 	libs/log/include/fcppt/log/detail/temporary_output_fwd.hpp

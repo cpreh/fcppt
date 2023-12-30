@@ -6,7 +6,7 @@
 #ifndef FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 
-#include <fcppt/detail/check_cpp.hpp>
-#include <fcppt/preprocessor/pragma.h>
+#include <fcppt/detail/check_cpp.hpp> // IWYU pragma: keep
+#include <fcppt/preprocessor/pragma.h> // IWYU pragma: export
 
 #endif

@@ -9,7 +9,7 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/record/element_init_fwd.hpp>
+#include <fcppt/record/element_init_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/record/detail/is_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

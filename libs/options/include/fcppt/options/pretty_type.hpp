@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_PRETTY_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRETTY_TYPE_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/options/pretty_type_impl.hpp>
 #include <fcppt/options/type_name.hpp>
 

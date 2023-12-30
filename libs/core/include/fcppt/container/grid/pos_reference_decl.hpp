@@ -8,8 +8,8 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/to_reference_type.hpp>
-#include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_reference_fwd.hpp>
+#include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/pos_reference_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

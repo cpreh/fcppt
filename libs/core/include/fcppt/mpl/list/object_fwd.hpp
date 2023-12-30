@@ -13,7 +13,7 @@ namespace fcppt::mpl::list
 \ingroup fcpptmpl
 */
 template <typename... Args>
-struct object;
+struct object; // IWYU pragma: export
 
 }
 

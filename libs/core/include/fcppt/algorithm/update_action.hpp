@@ -6,7 +6,7 @@
 #ifndef FCPPT_ALGORITHM_UPDATE_ACTION_HPP_INCLUDED
 #define FCPPT_ALGORITHM_UPDATE_ACTION_HPP_INCLUDED
 
-#include <fcppt/algorithm/update_action_fwd.hpp>
+#include <fcppt/algorithm/update_action_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::algorithm
 {

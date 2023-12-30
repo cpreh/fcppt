@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Int>
-class int_range;
+class int_range; // IWYU pragma: export
 
 }
 

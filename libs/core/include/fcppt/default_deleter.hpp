@@ -7,7 +7,7 @@
 #define FCPPT_DEFAULT_DELETER_HPP_INCLUDED
 
 #include <fcppt/assert_complete.hpp>
-#include <fcppt/default_deleter_fwd.hpp>
+#include <fcppt/default_deleter_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

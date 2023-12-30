@@ -12,12 +12,16 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/unit_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/unit_usage.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/record/element.hpp>
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/element.hpp> // IWYU pragma: keep
+#include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 template <typename Label>
 fcppt::options::unit<Label>::unit() = default;

@@ -9,9 +9,8 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/algorithm/find_by_opt.hpp>
-#include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/loop_break_tuple.hpp> // IWYU pragma: keep
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
@@ -19,7 +18,7 @@
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/options/commands_decl.hpp>
+#include <fcppt/options/commands_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/commands_usage.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/deref_type.hpp>
@@ -39,15 +38,17 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/sub_command_usage.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/check_sub_command_names.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/options/detail/split_command.hpp>
-#include <fcppt/record/element.hpp>
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/element.hpp> // IWYU pragma: keep
+#include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/get.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/tuple/object_impl.hpp>
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

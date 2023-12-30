@@ -7,8 +7,6 @@
 #define FCPPT_CONTAINER_GRID_MOORE_NEIGHBOR_ARRAY_HPP_INCLUDED
 
 #include <fcppt/array/object_impl.hpp>
-#include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/size_type.hpp>
 
 namespace fcppt::container::grid
 {

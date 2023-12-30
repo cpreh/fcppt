@@ -8,7 +8,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/io/ostream_fwd.hpp>
-#include <fcppt/log/level_stream_fwd.hpp>
+#include <fcppt/log/level_stream_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/optional_function.hpp>

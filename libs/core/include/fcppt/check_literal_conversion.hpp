@@ -7,7 +7,7 @@
 #define FCPPT_CHECK_LITERAL_CONVERSION_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <type_traits> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 /**

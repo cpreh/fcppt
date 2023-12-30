@@ -7,6 +7,7 @@
 #define FCPPT_CONTAINER_BITFIELD_OPERATORS_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>

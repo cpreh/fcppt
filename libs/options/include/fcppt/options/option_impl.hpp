@@ -11,8 +11,7 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/either/apply.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
@@ -33,7 +32,6 @@
 #include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/options/missing_option_argument_error.hpp>
 #include <fcppt/options/missing_option_error.hpp>
-#include <fcppt/options/name.hpp>
 #include <fcppt/options/option_conversion_error.hpp>
 #include <fcppt/options/option_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/option_name.hpp>
@@ -51,13 +49,15 @@
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
+#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_option.hpp>
+#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/record/element.hpp>
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/element.hpp> // IWYU pragma: keep
+#include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

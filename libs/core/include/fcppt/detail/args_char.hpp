@@ -6,7 +6,7 @@
 #ifndef FCPPT_DETAIL_ARGS_CHAR_HPP_INCLUDED
 #define FCPPT_DETAIL_ARGS_CHAR_HPP_INCLUDED
 
-#include <fcppt/detail/main_wchar.hpp>
+#include <fcppt/detail/main_wchar.hpp> // IWYU pragma: keep
 
 namespace fcppt::detail
 {

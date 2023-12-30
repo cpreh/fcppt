@@ -9,9 +9,9 @@
 #include <fcppt/mpl/arg.hpp>
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/fold.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

@@ -6,11 +6,10 @@
 #ifndef FCPPT_ARRAY_OUTPUT_HPP_INCLUDED
 #define FCPPT_ARRAY_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/not.hpp>
 #include <fcppt/output.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/array/get.hpp>
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/mpl/size_type.hpp>

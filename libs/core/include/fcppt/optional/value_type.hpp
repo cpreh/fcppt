@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONAL_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_VALUE_TYPE_HPP_INCLUDED
 
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

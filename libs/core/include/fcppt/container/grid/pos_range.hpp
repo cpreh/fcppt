@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_GRID_POS_RANGE_HPP_INCLUDED
 
 #include <fcppt/container/grid/pos_range_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/grid/pos_range_fwd.hpp>
-#include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/pos_range_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/pos_range_impl.hpp> // IWYU pragma: keep
 
 #endif

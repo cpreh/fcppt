@@ -8,7 +8,7 @@
 
 #include <fcppt/math/to_array.hpp>
 #include <fcppt/math/to_array_type.hpp>
-#include <fcppt/math/detail/hash_decl.hpp>
+#include <fcppt/math/detail/hash_decl.hpp> // IWYU pragma: export
 #include <fcppt/range/hash_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>

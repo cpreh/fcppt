@@ -8,7 +8,7 @@
 
 #include <fcppt/parse/space_set.hpp>
 #include <fcppt/parse/skipper/basic_char_set.hpp>
-#include <fcppt/parse/skipper/operators/repetition.hpp>
+#include <fcppt/parse/skipper/operators/repetition.hpp> // IWYU pragma: keep
 
 namespace fcppt::parse::skipper
 {

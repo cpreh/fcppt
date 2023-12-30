@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_BASE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/options/base_fwd.hpp>
+#include <fcppt/options/base_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>

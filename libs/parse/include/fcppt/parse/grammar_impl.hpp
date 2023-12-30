@@ -7,9 +7,10 @@
 #define FCPPT_PARSE_GRAMMAR_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/base_unique_ptr.hpp>
+#include <fcppt/parse/base_unique_ptr.hpp> // IWYU pragma: keep
 #include <fcppt/parse/grammar_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/make_base.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

@@ -7,9 +7,8 @@
 #define FCPPT_VARIANT_APPLY_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/variant/object_concept.hpp>
+#include <fcppt/variant/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 

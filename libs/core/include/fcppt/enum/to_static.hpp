@@ -13,6 +13,7 @@
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size.hpp>
+#include <fcppt/enum/size_type.hpp>
 #include <fcppt/type_traits/integral_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

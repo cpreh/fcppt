@@ -7,8 +7,9 @@
 #define FCPPT_CONTAINER_GRID_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/detail/equal.hpp>
-#include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/math/dim/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>

@@ -8,7 +8,7 @@
 
 #include <fcppt/mpl/dec.hpp>
 #include <fcppt/mpl/list/at.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/size.hpp>
 
 namespace fcppt::mpl::list

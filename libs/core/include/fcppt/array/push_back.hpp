@@ -9,8 +9,10 @@
 #include <fcppt/array/append.hpp>
 #include <fcppt/array/is_object.hpp>
 #include <fcppt/array/make.hpp>
+#include <fcppt/array/object_impl.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/value_type.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

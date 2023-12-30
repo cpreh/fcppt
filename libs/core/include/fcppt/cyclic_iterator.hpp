@@ -8,7 +8,7 @@
 #define FCPPT_CYCLIC_ITERATOR_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_decl.hpp> // IWYU pragma: export
-#include <fcppt/cyclic_iterator_fwd.hpp>
-#include <fcppt/cyclic_iterator_impl.hpp>
+#include <fcppt/cyclic_iterator_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/cyclic_iterator_impl.hpp> // IWYU pragma: keep
 
 #endif

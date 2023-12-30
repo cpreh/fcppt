@@ -6,9 +6,9 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_IS_SUBSET_EQ_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_IS_SUBSET_EQ_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/comparison.hpp>
+#include <fcppt/container/bitfield/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/container/bitfield/object_impl.hpp>
-#include <fcppt/container/bitfield/operators.hpp>
+#include <fcppt/container/bitfield/operators.hpp> // IWYU pragma: keep
 
 namespace fcppt::container::bitfield
 {

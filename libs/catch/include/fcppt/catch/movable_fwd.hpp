@@ -9,7 +9,7 @@
 namespace fcppt::catch_
 {
 template <typename Type>
-class movable;
+class movable; // IWYU pragma: export
 
 }
 

@@ -1,6 +1,6 @@
 cmake_minimum_required(
 	VERSION
-	3.7.0
+	3.27.0
 )
 
 project(
@@ -216,6 +216,7 @@ function(
 		SYSTEM_INCLUDE_DIRS
 		COMPILE_DEFINITIONS
 		TRANSITIVE_COMPILE_DEFINITIONS
+		HEADER_ONLY_EXCEPTIONS
 	)
 
 	cmake_parse_arguments(
@@ -229,6 +230,8 @@ function(
 	fcppt_utils_append_source_dir_and_make_groups(
 		"${CUR_FILES}"
 		FCPPT_${TARGETNAME}_FILES
+		HEADER_ONLY_EXCEPTIONS
+			${_HEADER_ONLY_EXCEPTIONS}
 	)
 
 	if(
@@ -410,6 +413,7 @@ function(
 		SYSTEM_INCLUDE_DIRS
 		COMPILE_DEFINITIONS
 		TRANSITIVE_COMPILE_DEFINITIONS
+		HEADER_ONLY_EXCEPTIONS
 	)
 
 	set(
@@ -470,10 +474,14 @@ function(
 	)
 
 	if(
-		ENABLE_SHARED
-		AND
-		NOT
-		${_IS_INTERFACE}
+		(
+			ENABLE_SHARED
+			AND
+			NOT
+			${_IS_INTERFACE}
+		)
+		OR
+		${FCPPT_UTILS_BUILD_HEADERS}
 	)
 		make_fcppt_library_base(
 			"${FULL_NAME}"

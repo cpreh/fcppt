@@ -6,7 +6,7 @@
 #ifndef FCPPT_MPL_MAP_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_MPL_MAP_OBJECT_FWD_HPP_INCLUDED
 
-#include <fcppt/mpl/map/element_concept.hpp>
+#include <fcppt/mpl/map/element_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/keys_unique.hpp>
 
 namespace fcppt::mpl::map
@@ -20,7 +20,7 @@ All keys of the elements must be pairwise disjoint.
 */
 template <fcppt::mpl::map::element_concept... Args>
 requires fcppt::mpl::map::keys_unique<Args...>::value
-struct object;
+struct object; // IWYU pragma: export
 }
 
 #endif

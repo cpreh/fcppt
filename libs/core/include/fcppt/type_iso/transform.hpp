@@ -6,7 +6,7 @@
 #ifndef FCPPT_TYPE_ISO_TRANSFORM_HPP_INCLUDED
 #define FCPPT_TYPE_ISO_TRANSFORM_HPP_INCLUDED
 
-#include <fcppt/type_iso/transform_fwd.hpp>
+#include <fcppt/type_iso/transform_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/type_iso/detail/terminal_tag.hpp>
 
 namespace fcppt::type_iso

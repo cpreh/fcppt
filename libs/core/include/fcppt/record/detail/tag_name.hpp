@@ -6,8 +6,6 @@
 #ifndef FCPPT_RECORD_DETAIL_TAG_NAME_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_TAG_NAME_HPP_INCLUDED
 
-#include <fcppt/record/detail/tag_base.hpp>
-
 #define FCPPT_RECORD_DETAIL_TAG_NAME(name) name##X_tag
 
 #endif

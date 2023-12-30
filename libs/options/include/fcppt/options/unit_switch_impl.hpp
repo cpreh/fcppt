@@ -28,7 +28,7 @@
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
 #include <fcppt/record/get.hpp>
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

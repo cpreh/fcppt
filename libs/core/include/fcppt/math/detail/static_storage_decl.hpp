@@ -11,7 +11,7 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/static_storage_fwd.hpp>
+#include <fcppt/math/detail/static_storage_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/integral_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

@@ -7,7 +7,6 @@
 #define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
 #include <fcppt/log/detail/symbol.hpp>
-#include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function_fwd.hpp>
 
 namespace fcppt::log::format

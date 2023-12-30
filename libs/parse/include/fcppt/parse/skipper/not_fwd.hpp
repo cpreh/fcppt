@@ -9,7 +9,7 @@
 namespace fcppt::parse::skipper
 {
 template <typename Skipper>
-class not_;
+class not_; // IWYU pragma: export
 
 }
 

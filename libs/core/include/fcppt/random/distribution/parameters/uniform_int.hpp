@@ -7,7 +7,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_HPP_INCLUDED
 
 #include <fcppt/random/distribution/parameters/uniform_int_decl.hpp> // IWYU pragma: export
-#include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp>
-#include <fcppt/random/distribution/parameters/uniform_int_impl.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/random/distribution/parameters/uniform_int_impl.hpp> // IWYU pragma: keep
 
 #endif

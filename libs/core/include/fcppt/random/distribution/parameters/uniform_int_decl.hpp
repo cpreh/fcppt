@@ -7,10 +7,10 @@
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_DECL_HPP_INCLUDED
 
 #include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/random/distribution/base_type.hpp>
-#include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp>
-#include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp> // IWYU pragma: keep
 
 namespace fcppt::random::distribution::parameters
 {

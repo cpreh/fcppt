@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOOP_HPP_INCLUDED
 #define FCPPT_LOOP_HPP_INCLUDED
 
-#include <fcppt/loop_fwd.hpp>
+#include <fcppt/loop_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {

@@ -9,7 +9,7 @@
 namespace fcppt::math::detail
 {
 template <typename Type>
-struct hash;
+struct hash; // IWYU pragma: export
 
 }
 

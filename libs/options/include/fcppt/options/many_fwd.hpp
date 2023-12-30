@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Parser>
-class many;
+class many; // IWYU pragma: export
 
 }
 

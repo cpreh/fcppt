@@ -9,7 +9,7 @@
 namespace fcppt::enum_
 {
 template <typename Enum, typename Value>
-class array;
+class array; // IWYU pragma: export
 
 }
 

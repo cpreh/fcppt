@@ -7,10 +7,10 @@
 #define FCPPT_OPTIONAL_TO_EXCEPTION_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/optional/move_type.hpp>
-#include <fcppt/optional/object_concept.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 
 namespace fcppt::optional
 {

@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_COMPARISON_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/array/comparison.hpp>
+#include <fcppt/array/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/container/bitfield/object_impl.hpp>
 
 namespace fcppt::container::bitfield

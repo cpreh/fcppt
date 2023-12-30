@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_HPP_INCLUDED
 
-#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>

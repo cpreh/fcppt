@@ -7,10 +7,10 @@
 #ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 
-#include <fcppt/intrusive/base_impl.hpp>
+#include <fcppt/intrusive/base_impl.hpp> // IWYU pragma: keep
 #include <fcppt/signal/connection_impl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
-#include <fcppt/signal/unregister/detail/concrete_connection_decl.hpp>
+#include <fcppt/signal/unregister/detail/concrete_connection_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <utility>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_FAIL_ERROR_DECL_HPP_INCLUDED
 #define FCPPT_PARSE_FAIL_ERROR_DECL_HPP_INCLUDED
 
-#include <fcppt/parse/fail_error_fwd.hpp>
+#include <fcppt/parse/fail_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/position.hpp>
 
 namespace fcppt::parse

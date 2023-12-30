@@ -9,15 +9,16 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/optional_decl.hpp>
+#include <fcppt/parse/optional_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
+#include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

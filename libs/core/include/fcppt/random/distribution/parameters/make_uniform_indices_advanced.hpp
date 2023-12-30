@@ -8,7 +8,6 @@
 
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
-#include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
 
 namespace fcppt::random::distribution::parameters
 {

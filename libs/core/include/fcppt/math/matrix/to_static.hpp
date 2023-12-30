@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_MATRIX_TO_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TO_STATIC_HPP_INCLUDED
 
-#include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/to_static_fwd.hpp>
+#include <fcppt/math/matrix/static.hpp> // IWYU pragma: keep
+#include <fcppt/math/matrix/to_static_fwd.hpp> // IWYU pragma: export
 
 #endif

@@ -6,7 +6,7 @@
 #ifndef FCPPT_OUTPUT_IMPL_HPP_INCLUDED
 #define FCPPT_OUTPUT_IMPL_HPP_INCLUDED
 
-#include <fcppt/output_impl_fwd.hpp>
+#include <fcppt/output_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>

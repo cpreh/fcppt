@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Type, typename Enable = void>
-struct pretty_type_impl;
+struct pretty_type_impl; // IWYU pragma: export
 
 }
 

@@ -9,7 +9,7 @@
 namespace fcppt::container::raw_vector
 {
 template <typename A>
-class rep;
+class rep; // IWYU pragma: export
 
 }
 

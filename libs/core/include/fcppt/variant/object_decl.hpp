@@ -13,7 +13,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/has_type_v.hpp>
-#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

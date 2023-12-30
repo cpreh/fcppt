@@ -6,7 +6,7 @@
 #ifndef FCPPT_OVERLOADED_DECL_HPP_INCLUDED
 #define FCPPT_OVERLOADED_DECL_HPP_INCLUDED
 
-#include <fcppt/overloaded_fwd.hpp>
+#include <fcppt/overloaded_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

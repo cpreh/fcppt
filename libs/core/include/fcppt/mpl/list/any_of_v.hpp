@@ -6,9 +6,9 @@
 #ifndef FCPPT_MPL_LIST_ANY_OF_V_HPP_INCLUDED
 #define FCPPT_MPL_LIST_ANY_OF_V_HPP_INCLUDED
 
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/any_of.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::list
 {

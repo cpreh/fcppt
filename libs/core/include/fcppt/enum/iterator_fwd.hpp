@@ -9,7 +9,7 @@
 namespace fcppt::enum_
 {
 template <typename Enum>
-class iterator;
+class iterator; // IWYU pragma: export
 
 }
 

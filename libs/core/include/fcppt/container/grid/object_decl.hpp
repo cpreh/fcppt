@@ -8,10 +8,10 @@
 
 #include <fcppt/container/grid/dim_fwd.hpp>
 #include <fcppt/container/grid/is_static_row.hpp>
-#include <fcppt/container/grid/object_fwd.hpp>
+#include <fcppt/container/grid/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/dim/object_decl.hpp>
+#include <fcppt/math/dim/object_decl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <vector>

@@ -11,6 +11,7 @@
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
 #include <fcppt/math/vector/null.hpp>

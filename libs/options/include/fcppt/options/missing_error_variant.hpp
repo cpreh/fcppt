@@ -6,12 +6,12 @@
 #ifndef FCPPT_OPTIONS_MISSING_ERROR_VARIANT_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_ERROR_VARIANT_HPP_INCLUDED
 
-#include <fcppt/options/missing_argument_error.hpp>
-#include <fcppt/options/missing_command_error.hpp>
-#include <fcppt/options/missing_error_pair.hpp>
+#include <fcppt/options/missing_argument_error.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_command_error.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_error_pair.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_error_variant_fwd.hpp> // IWYU pragma: export
-#include <fcppt/options/missing_flag_error.hpp>
-#include <fcppt/options/missing_option_error.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/options/missing_flag_error.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_option_error.hpp> // IWYU pragma: keep
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 
 #endif

@@ -14,7 +14,7 @@ namespace fcppt::type_iso
 \ingroup fcppttypeiso
 */
 template <typename Type, typename Enable = void>
-struct transform;
+struct transform; // IWYU pragma: export
 
 }
 

@@ -12,7 +12,7 @@
 #include <fcppt/mpl/list/fold.hpp>
 #include <fcppt/mpl/list/join.hpp>
 #include <fcppt/mpl/list/map.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/size.hpp>
 #include <fcppt/mpl/set/object_fwd.hpp>
 #include <fcppt/mpl/set/size.hpp>

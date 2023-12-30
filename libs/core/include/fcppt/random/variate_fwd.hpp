@@ -9,7 +9,7 @@
 namespace fcppt::random
 {
 template <typename Generator, typename Distribution>
-class variate;
+class variate; // IWYU pragma: export
 
 }
 

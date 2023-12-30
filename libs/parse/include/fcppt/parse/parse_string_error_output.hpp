@@ -10,7 +10,8 @@
 #include <fcppt/string_literal.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
-#include <fcppt/parse/parse_stream_error_output.hpp>
+#include <fcppt/parse/parse_stream_error_fwd.hpp>
+#include <fcppt/parse/parse_stream_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/parse_string_error_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>

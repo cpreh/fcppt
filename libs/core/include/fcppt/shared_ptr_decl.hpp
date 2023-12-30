@@ -6,7 +6,7 @@
 #ifndef FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
-#include <fcppt/shared_ptr_fwd.hpp>
+#include <fcppt/shared_ptr_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>

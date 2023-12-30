@@ -8,7 +8,7 @@
 
 namespace fcppt::optional
 {
-struct nothing;
+struct nothing; // IWYU pragma: export
 
 }
 

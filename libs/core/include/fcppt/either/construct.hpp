@@ -6,7 +6,7 @@
 #ifndef FCPPT_EITHER_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_EITHER_CONSTRUCT_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONS_OPTIONAL_HELP_TEXT_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTIONAL_HELP_TEXT_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/help_text.hpp>
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/options/help_text.hpp> // IWYU pragma: keep
 #include <fcppt/options/optional_help_text_fwd.hpp> // IWYU pragma: export
 
 #endif

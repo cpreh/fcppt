@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_SEPARATOR_HPP_INCLUDED
 
 #include <fcppt/parse/separator_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/separator_impl.hpp>
+#include <fcppt/parse/separator_impl.hpp> // IWYU pragma: keep
 
 #endif

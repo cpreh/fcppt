@@ -8,7 +8,6 @@
 
 #include <fcppt/algorithm/detail/optimize_map_v.hpp>
 #include <fcppt/algorithm/detail/source_size.hpp>
-#include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

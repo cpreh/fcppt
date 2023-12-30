@@ -6,8 +6,8 @@
 #ifndef FCPPT_MPL_ADD_HPP_INCLUDED
 #define FCPPT_MPL_ADD_HPP_INCLUDED
 
-#include <fcppt/mpl/integral_concept.hpp>
-#include <fcppt/mpl/integrals_compatible.hpp>
+#include <fcppt/mpl/integral_concept.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/integrals_compatible.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONS_DUAL_FLAG_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_DUAL_FLAG_ERROR_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/dual_flag_error_fwd.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/short_name.hpp>

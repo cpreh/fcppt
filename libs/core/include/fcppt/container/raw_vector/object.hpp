@@ -8,6 +8,6 @@
 
 #include <fcppt/container/raw_vector/comparison.hpp> // IWYU pragma: export
 #include <fcppt/container/raw_vector/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/raw_vector/object_impl.hpp>
+#include <fcppt/container/raw_vector/object_impl.hpp> // IWYU pragma: keep
 
 #endif

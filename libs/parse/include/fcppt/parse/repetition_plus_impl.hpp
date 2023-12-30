@@ -12,14 +12,13 @@
 #include <fcppt/either/map.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/repetition_plus_decl.hpp>
+#include <fcppt/parse/repetition_plus_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/operators/repetition.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/operators/repetition.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/sequence.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

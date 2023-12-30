@@ -18,7 +18,6 @@
 #include <fcppt/mpl/list/fold.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

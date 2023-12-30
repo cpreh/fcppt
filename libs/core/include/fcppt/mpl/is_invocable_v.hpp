@@ -7,7 +7,7 @@
 #define FCPPT_MPL_IS_INVOCABLE_V_HPP_INCLUDED
 
 #include <fcppt/mpl/is_invocable.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl
 {

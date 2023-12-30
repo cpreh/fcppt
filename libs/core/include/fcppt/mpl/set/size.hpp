@@ -7,7 +7,7 @@
 #define FCPPT_MPL_SET_SIZE_HPP_INCLUDED
 
 #include <fcppt/mpl/list/size.hpp>
-#include <fcppt/mpl/set/object_concept.hpp>
+#include <fcppt/mpl/set/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/set/to_list.hpp>
 
 namespace fcppt::mpl::set

@@ -8,7 +8,7 @@
 
 namespace fcppt::options
 {
-class option_name;
+class option_name; // IWYU pragma: export
 
 }
 

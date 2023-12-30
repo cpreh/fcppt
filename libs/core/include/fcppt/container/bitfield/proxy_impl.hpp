@@ -6,12 +6,12 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 
-#include <fcppt/bit/mask_impl.hpp>
+#include <fcppt/bit/mask_impl.hpp> // IWYU pragma: keep
 #include <fcppt/bit/shift_count.hpp>
 #include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/test.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/bitfield/proxy_decl.hpp>
+#include <fcppt/container/bitfield/proxy_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/bitfield/value_type.hpp>
 
 template <typename StoredType>

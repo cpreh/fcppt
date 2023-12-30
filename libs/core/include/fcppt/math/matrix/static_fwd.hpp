@@ -7,7 +7,6 @@
 #define FCPPT_MATH_MATRIX_STATIC_FWD_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/static_storage_fwd.hpp>
 

@@ -8,7 +8,7 @@
 
 #include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/log/detail/symbol.hpp>
-#include <fcppt/log/detail/temporary_output.hpp>
+#include <fcppt/log/detail/temporary_output.hpp> // IWYU pragma: keep
 
 namespace fcppt::log
 {

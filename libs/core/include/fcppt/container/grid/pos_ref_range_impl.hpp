@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
+#include <fcppt/container/grid/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/pos_ref_iterator_impl.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_ref_range_decl.hpp> // IWYU pragma: export
 
 template <typename Grid>

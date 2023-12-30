@@ -6,8 +6,8 @@
 #ifndef FCPPT_ARRAY_OBJECT_HPP_INCLUDED
 #define FCPPT_ARRAY_OBJECT_HPP_INCLUDED
 
-#include <fcppt/array/comparison.hpp>
+#include <fcppt/array/comparison.hpp> // IWYU pragma: export
 #include <fcppt/array/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/array/object_impl.hpp>
+#include <fcppt/array/object_impl.hpp> // IWYU pragma: keep
 
 #endif

@@ -10,6 +10,7 @@
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/constant.hpp>
 #include <fcppt/mpl/if.hpp>
+#include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/set/contains.hpp>
 #include <fcppt/mpl/set/insert.hpp>
 

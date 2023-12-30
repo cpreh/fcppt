@@ -11,7 +11,7 @@
 namespace fcppt::math::detail
 {
 template <typename T, fcppt::math::size_type N>
-class static_storage;
+class static_storage; // IWYU pragma: export
 
 }
 

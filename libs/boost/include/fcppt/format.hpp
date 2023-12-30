@@ -8,7 +8,7 @@
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/format.hpp>
+#include <boost/format/format_class.hpp>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt

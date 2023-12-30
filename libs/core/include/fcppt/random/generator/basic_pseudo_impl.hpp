@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_IMPL_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_IMPL_HPP_INCLUDED
 
-#include <fcppt/random/generator/basic_pseudo_decl.hpp>
+#include <fcppt/random/generator/basic_pseudo_decl.hpp> // IWYU pragma: export
 
 template <typename Generator>
 inline fcppt::random::generator::basic_pseudo<Generator>::basic_pseudo(seed const _seed)

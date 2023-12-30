@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename T, typename Tag>
-class strong_typedef;
+class strong_typedef; // IWYU pragma: export
 
 }
 

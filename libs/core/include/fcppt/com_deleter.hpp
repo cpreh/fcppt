@@ -6,7 +6,7 @@
 #ifndef FCPPT_COM_DELETER_HPP_INCLUDED
 #define FCPPT_COM_DELETER_HPP_INCLUDED
 
-#include <fcppt/com_deleter_fwd.hpp>
+#include <fcppt/com_deleter_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {
@@ -35,7 +35,9 @@ struct com_deleter
   void operator()(T *const _ptr) const
   {
     if (_ptr)
+    {
       _ptr->Release();
+    }
   }
 };
 

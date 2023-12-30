@@ -6,11 +6,11 @@
 #ifndef FCPPT_MPL_MAP_FLIP_HPP_INCLUDED
 #define FCPPT_MPL_MAP_FLIP_HPP_INCLUDED
 
-#include <fcppt/mpl/map/element_concept.hpp>
+#include <fcppt/mpl/map/element_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/element_fwd.hpp>
 #include <fcppt/mpl/map/element_key.hpp>
 #include <fcppt/mpl/map/element_value.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/object_fwd.hpp>
 
 namespace fcppt::mpl::map

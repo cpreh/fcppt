@@ -9,7 +9,7 @@
 namespace fcppt::math
 {
 template <typename T, typename Enable = void>
-struct is_zero_impl;
+struct is_zero_impl; // IWYU pragma: export
 
 }
 

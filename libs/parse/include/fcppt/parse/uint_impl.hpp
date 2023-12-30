@@ -18,13 +18,14 @@
 #include <fcppt/parse/error_variant_impl.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/got_tag_fwd.hpp>
+#include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/make_lexeme.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/type_name_tag_fwd.hpp>
 #include <fcppt/parse/typed_error_impl.hpp>
 #include <fcppt/parse/uint_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/operators/repetition_plus.hpp>
+#include <fcppt/parse/operators/repetition_plus.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <utility>

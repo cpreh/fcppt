@@ -7,7 +7,7 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_IMPL_HPP_INCLUDED
 
-#include <fcppt/signal/connection_decl.hpp>
+#include <fcppt/signal/connection_decl.hpp> // IWYU pragma: export
 
 inline fcppt::signal::connection::connection() = default;
 

@@ -10,7 +10,7 @@
 namespace fcppt
 {
 template <typename Machine>
-class scoped_state_machine;
+class scoped_state_machine; // IWYU pragma: export
 
 }
 

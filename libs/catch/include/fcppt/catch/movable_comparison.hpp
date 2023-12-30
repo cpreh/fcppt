@@ -6,7 +6,6 @@
 #ifndef FCPPT_CATCH_MOVABLE_COMPARISON_HPP_INCLUDED
 #define FCPPT_CATCH_MOVABLE_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/catch/movable_impl.hpp>
 
 namespace fcppt::catch_

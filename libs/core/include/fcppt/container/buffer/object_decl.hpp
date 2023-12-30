@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_BUFFER_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/container/buffer/object_fwd.hpp>
+#include <fcppt/container/buffer/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>

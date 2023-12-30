@@ -8,10 +8,8 @@
 
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/iterator_fwd.hpp>
+#include <fcppt/enum/range_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/enum/size_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::enum_
 {

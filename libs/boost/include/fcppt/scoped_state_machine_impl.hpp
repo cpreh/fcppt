@@ -7,7 +7,7 @@
 #ifndef FCPPT_SCOPED_STATE_MACHINE_IMPL_HPP_INCLUDED
 #define FCPPT_SCOPED_STATE_MACHINE_IMPL_HPP_INCLUDED
 
-#include <fcppt/reference_impl.hpp>
+#include <fcppt/reference_impl.hpp> // IWYU pragma: keep
 #include <fcppt/scoped_state_machine_decl.hpp> // IWYU pragma: export
 
 template <typename Machine>

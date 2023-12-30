@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Type>
-class enable_shared_from_this;
+class enable_shared_from_this; // IWYU pragma: export
 
 }
 

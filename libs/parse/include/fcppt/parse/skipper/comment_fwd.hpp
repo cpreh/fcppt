@@ -9,7 +9,7 @@
 namespace fcppt::parse::skipper
 {
 template <typename Open, typename Close>
-class comment;
+class comment; // IWYU pragma: export
 }
 
 #endif

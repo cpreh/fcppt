@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Type>
-struct tag;
+struct tag; // IWYU pragma: export
 
 }
 

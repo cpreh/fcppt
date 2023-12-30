@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_INT_RANGE_HPP_INCLUDED
 #define FCPPT_MATH_INT_RANGE_HPP_INCLUDED
 
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/math/size_constant.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/mpl/list/interval.hpp>

@@ -11,7 +11,7 @@
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/signal/connection_fwd.hpp>
+#include <fcppt/signal/connection_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::signal
 {

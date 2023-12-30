@@ -22,7 +22,7 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
-#include <fcppt/options/sum_decl.hpp>
+#include <fcppt/options/sum_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/sum_usage.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
@@ -30,9 +30,9 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/record/element.hpp>
-#include <fcppt/record/object.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/record/element.hpp> // IWYU pragma: keep
+#include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

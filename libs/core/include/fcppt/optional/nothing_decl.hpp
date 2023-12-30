@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONAL_NOTHING_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_NOTHING_DECL_HPP_INCLUDED
 
-#include <fcppt/concepts/move_constructible.hpp>
-#include <fcppt/optional/nothing_fwd.hpp>
+#include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
+#include <fcppt/optional/nothing_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_fwd.hpp>
 
 namespace fcppt::optional

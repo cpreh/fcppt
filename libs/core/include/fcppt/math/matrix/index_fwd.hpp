@@ -11,7 +11,7 @@
 namespace fcppt::math::matrix
 {
 template <fcppt::math::size_type Row, fcppt::math::size_type Column>
-struct index;
+struct index; // IWYU pragma: export
 
 }
 

@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Int>
-class int_iterator;
+class int_iterator; // IWYU pragma: export
 
 }
 

@@ -13,9 +13,9 @@
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/list_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/separator_impl.hpp>
-#include <fcppt/parse/operators/alternative.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/separator_impl.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/alternative.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/sequence.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

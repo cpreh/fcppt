@@ -6,7 +6,7 @@
 #ifndef FCPPT_MPL_SET_EQUAL_HPP_INCLUDED
 #define FCPPT_MPL_SET_EQUAL_HPP_INCLUDED
 
-#include <fcppt/mpl/set/object_concept.hpp>
+#include <fcppt/mpl/set/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/set/object_fwd.hpp>
 #include <fcppt/mpl/set/symmetric_difference.hpp>
 #include <fcppt/config/external_begin.hpp>

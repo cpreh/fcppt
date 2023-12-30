@@ -7,7 +7,7 @@
 #define FCPPT_ALGORITHM_LOOP_BREAK_IMPL_HPP_INCLUDED
 
 #include <fcppt/loop.hpp>
-#include <fcppt/algorithm/loop_break_impl_fwd.hpp>
+#include <fcppt/algorithm/loop_break_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

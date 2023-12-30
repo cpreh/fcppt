@@ -8,7 +8,6 @@
 
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/parse/alternative_error_impl.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>

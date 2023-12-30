@@ -9,7 +9,7 @@
 namespace fcppt::parse::skipper
 {
 template <typename Ch>
-class basic_char_set;
+class basic_char_set; // IWYU pragma: export
 
 }
 

@@ -8,11 +8,13 @@
 #define FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/center.hpp>
-#include <fcppt/math/dim/arithmetic.hpp>
+#include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/dim/arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/math/dim/to_vector.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/arithmetic.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/to_dim.hpp>
 
 namespace fcppt::math::box

@@ -7,7 +7,7 @@
 #define FCPPT_PARSE_LOCATION_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
-#include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/location_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>

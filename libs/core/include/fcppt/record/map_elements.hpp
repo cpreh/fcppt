@@ -11,6 +11,7 @@
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/record/element.hpp>
+#include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/from_list.hpp>
 

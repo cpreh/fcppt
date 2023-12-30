@@ -7,7 +7,7 @@
 #define FCPPT_PARSE_PARSE_STREAM_ERROR_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/parse/error_impl.hpp>
-#include <fcppt/parse/error_output.hpp>
+#include <fcppt/parse/error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/parse_stream_error_impl.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>

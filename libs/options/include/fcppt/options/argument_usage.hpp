@@ -6,9 +6,9 @@
 #ifndef FCPPT_OPTIONS_ARGUMENT_USAGE_HPP_INCLUDED
 #define FCPPT_OPTIONS_ARGUMENT_USAGE_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/options/argument_usage_fwd.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
+#include <fcppt/options/argument_usage_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/type_name.hpp>

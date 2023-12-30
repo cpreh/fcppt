@@ -7,8 +7,8 @@
 #define FCPPT_INTRUSIVE_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/cast/static_downcast.hpp>
-#include <fcppt/intrusive/base_impl.hpp>
-#include <fcppt/intrusive/iterator_decl.hpp>
+#include <fcppt/intrusive/base_impl.hpp> // IWYU pragma: keep
+#include <fcppt/intrusive/iterator_decl.hpp> // IWYU pragma: export
 
 template <typename Type>
 fcppt::intrusive::iterator<Type>::iterator() : iterator_base{}, cur_{nullptr}

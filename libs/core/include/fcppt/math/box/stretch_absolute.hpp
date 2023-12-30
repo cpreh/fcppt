@@ -9,8 +9,8 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/arithmetic.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 
 namespace fcppt::math::box
 {

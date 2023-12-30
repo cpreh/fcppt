@@ -20,10 +20,10 @@
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/position.hpp>
-#include <fcppt/parse/result.hpp>
-#include <fcppt/parse/skipper/basic_literal_decl.hpp>
+#include <fcppt/parse/skipper/basic_literal_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
+#include <fcppt/parse/skipper/result.hpp>
 
 template <typename Ch>
 fcppt::parse::skipper::basic_literal<Ch>::basic_literal(Ch const _ch) : ch_{_ch}

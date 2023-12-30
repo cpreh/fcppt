@@ -9,9 +9,7 @@
 #include <fcppt/const.hpp>
 #include <fcppt/copy.hpp>
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/output_to_string.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/container/output.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/optional/bind.hpp>
@@ -25,9 +23,8 @@
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/is_fatal.hpp>
-#include <fcppt/parse/skipper/basic_char_set_decl.hpp>
-#include <fcppt/parse/skipper/make_failure.hpp>
-#include <fcppt/parse/skipper/make_success.hpp>
+#include <fcppt/parse/position.hpp>
+#include <fcppt/parse/skipper/basic_char_set_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>

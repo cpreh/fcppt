@@ -11,7 +11,7 @@
 namespace fcppt::container::grid
 {
 template <typename SizeType, fcppt::container::grid::size_type>
-class pos_range;
+class pos_range; // IWYU pragma: export
 
 }
 

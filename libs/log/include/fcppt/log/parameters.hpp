@@ -7,7 +7,7 @@
 #define FCPPT_LOG_PARAMETERS_HPP_INCLUDED
 
 #include <fcppt/log/name.hpp>
-#include <fcppt/log/parameters_fwd.hpp>
+#include <fcppt/log/parameters_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 

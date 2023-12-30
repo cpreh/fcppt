@@ -7,7 +7,7 @@
 #define FCPPT_ALGORITHM_RANGE_ELEMENT_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm

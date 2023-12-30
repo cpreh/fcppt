@@ -8,7 +8,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/parse/basic_stream_fwd.hpp>
+#include <fcppt/parse/basic_stream_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/position_fwd.hpp>
 
 namespace fcppt::parse

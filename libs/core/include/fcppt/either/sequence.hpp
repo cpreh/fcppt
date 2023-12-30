@@ -11,8 +11,8 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/failure_type.hpp>
-#include <fcppt/either/object_concept.hpp>
-#include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

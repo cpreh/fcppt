@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_WRAPPER_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_WRAPPER_HPP_INCLUDED
 
-#include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <random>
 #include <fcppt/config/external_end.hpp>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_ELEMENT_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_HPP_INCLUDED
 
-#include <fcppt/record/element_fwd.hpp>
+#include <fcppt/record/element_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/record/is_label.hpp>
 
 namespace fcppt::record

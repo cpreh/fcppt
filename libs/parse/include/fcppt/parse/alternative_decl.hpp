@@ -7,7 +7,7 @@
 #define FCPPT_PARSE_ALTERNATIVE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/parse/alternative_fwd.hpp>
+#include <fcppt/parse/alternative_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/alternative_result.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>

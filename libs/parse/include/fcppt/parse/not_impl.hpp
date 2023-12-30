@@ -10,11 +10,10 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/error.hpp>
 #include <fcppt/parse/fail_impl.hpp>
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
-#include <fcppt/parse/not_decl.hpp>
+#include <fcppt/parse/not_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/set_position.hpp>

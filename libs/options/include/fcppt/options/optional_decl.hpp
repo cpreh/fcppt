@@ -12,7 +12,7 @@
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/optional_fwd.hpp>
+#include <fcppt/options/optional_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>

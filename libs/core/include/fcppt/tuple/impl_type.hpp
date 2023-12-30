@@ -7,7 +7,7 @@
 #define FCPPT_TUPLE_IMPL_TYPE_HPP_INCLUDED
 
 #include <fcppt/tuple/is_object.hpp>
-#include <fcppt/tuple/object_decl.hpp>
+#include <fcppt/tuple/object_decl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

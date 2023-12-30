@@ -6,7 +6,8 @@
 #ifndef FCPPT_PARSE_BASIC_CHAR_SET_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_CHAR_SET_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/basic_char_set_error_decl.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/parse/basic_char_set_error_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

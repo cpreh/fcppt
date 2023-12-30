@@ -6,8 +6,8 @@
 #ifndef FCPPT_EITHER_TRY_CALL_HPP_INCLUDED
 #define FCPPT_EITHER_TRY_CALL_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable_move.hpp>
-#include <fcppt/concepts/move_constructible.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
+#include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

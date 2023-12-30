@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_SKIPPER_ANY_HPP_INCLUDED
 
 #include <fcppt/parse/skipper/any_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/skipper/any_impl.hpp>
+#include <fcppt/parse/skipper/any_impl.hpp> // IWYU pragma: keep
 
 #endif

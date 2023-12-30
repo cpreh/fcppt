@@ -6,9 +6,9 @@
 #ifndef FCPPT_CONTAINER_GRID_SPIRAL_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SPIRAL_ITERATOR_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/grid/spiral_iterator_decl.hpp>
-#include <fcppt/iterator/base_impl.hpp>
-#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/container/grid/spiral_iterator_decl.hpp> // IWYU pragma: export
+#include <fcppt/iterator/base_impl.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

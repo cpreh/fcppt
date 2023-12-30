@@ -12,10 +12,10 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/array/object_impl.hpp>
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/failure_type.hpp>
-#include <fcppt/either/object_concept.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_move_type.hpp>
 #include <fcppt/optional/object_impl.hpp>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_ALL_DISJOINT_V_HPP_INCLUDED
 #define FCPPT_RECORD_ALL_DISJOINT_V_HPP_INCLUDED
 
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/record/all_disjoint.hpp>
 
 namespace fcppt::record

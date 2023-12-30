@@ -9,7 +9,7 @@
 namespace fcppt::enum_
 {
 template <typename Enum, typename Enable = void>
-struct from_string_impl;
+struct from_string_impl; // IWYU pragma: export
 
 }
 

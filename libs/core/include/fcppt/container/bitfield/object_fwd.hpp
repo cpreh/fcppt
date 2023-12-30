@@ -13,7 +13,7 @@ namespace fcppt::container::bitfield
 template <
     typename ElementType,
     typename InternalType = fcppt::container::bitfield::default_internal_type>
-class object;
+class object; // IWYU pragma: export
 
 }
 

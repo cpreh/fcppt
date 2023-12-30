@@ -12,9 +12,9 @@
 #include <fcppt/parse/skipper/any_impl.hpp>
 #include <fcppt/parse/skipper/comment_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/result.hpp>
-#include <fcppt/parse/skipper/operators/not.hpp>
-#include <fcppt/parse/skipper/operators/repetition.hpp>
-#include <fcppt/parse/skipper/operators/sequence.hpp>
+#include <fcppt/parse/skipper/operators/not.hpp> // IWYU pragma: keep
+#include <fcppt/parse/skipper/operators/repetition.hpp> // IWYU pragma: keep
+#include <fcppt/parse/skipper/operators/sequence.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

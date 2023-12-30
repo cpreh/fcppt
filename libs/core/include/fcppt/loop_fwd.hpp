@@ -8,7 +8,7 @@
 
 namespace fcppt
 {
-enum class loop;
+enum class loop; // IWYU pragma: export
 
 }
 

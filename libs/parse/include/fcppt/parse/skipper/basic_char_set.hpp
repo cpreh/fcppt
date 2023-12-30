@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_SKIPPER_BASIC_CHAR_SET_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_BASIC_CHAR_SET_HPP_INCLUDED
 
-#include <fcppt/parse/skipper/basic_char_set_impl.hpp>
+#include <fcppt/parse/skipper/basic_char_set_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/skipper/basic_char_set_impl.hpp> // IWYU pragma: keep
 
 #endif

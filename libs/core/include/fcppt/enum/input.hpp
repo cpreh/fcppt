@@ -14,6 +14,7 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
+#include <istream>
 #include <string>
 #include <string_view>
 #include <type_traits>

@@ -6,7 +6,8 @@
 #ifndef FCPPT_MPL_INTEGRALS_COMPATIBLE_HPP_INCLUDED
 #define FCPPT_MPL_INTEGRALS_COMPATIBLE_HPP_INCLUDED
 
-#include <fcppt/mpl/integral_concept.hpp>
+#include <fcppt/mpl/integral_concept.hpp> // IWYU pragma: keep
+#include <fcppt/type_traits/is_integral_constant.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

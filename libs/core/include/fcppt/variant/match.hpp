@@ -11,10 +11,9 @@
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/variant/apply.hpp>
-#include <fcppt/variant/object_concept.hpp>
+#include <fcppt/variant/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

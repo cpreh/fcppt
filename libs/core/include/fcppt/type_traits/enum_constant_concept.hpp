@@ -6,7 +6,7 @@
 #ifndef FCPPT_TYPE_TRAITS_ENUM_CONSTANT_CONCEPT_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_ENUM_CONSTANT_CONCEPT_HPP_INCLUDED
 
-#include <fcppt/type_traits/integral_constant_concept.hpp>
+#include <fcppt/type_traits/integral_constant_concept.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

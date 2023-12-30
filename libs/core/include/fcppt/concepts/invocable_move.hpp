@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONCEPTS_INVOCABLE_MOVE_HPP_INCLUDED
 #define FCPPT_CONCEPTS_INVOCABLE_MOVE_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable.hpp>
-#include <fcppt/concepts/move_constructible.hpp>
+#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
+#include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

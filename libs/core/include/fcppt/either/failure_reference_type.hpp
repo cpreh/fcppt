@@ -6,9 +6,9 @@
 #ifndef FCPPT_EITHER_FAILURE_REFERENCE_TYPE_HPP_INCLUDED
 #define FCPPT_EITHER_FAILURE_REFERENCE_TYPE_HPP_INCLUDED
 
-#include <fcppt/either/object_concept.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::either

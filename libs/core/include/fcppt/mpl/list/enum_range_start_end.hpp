@@ -15,7 +15,7 @@
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/interval.hpp>
 #include <fcppt/mpl/list/map.hpp>
-#include <fcppt/type_traits/enum_constant_concept.hpp>
+#include <fcppt/type_traits/enum_constant_concept.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/integral_cast.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

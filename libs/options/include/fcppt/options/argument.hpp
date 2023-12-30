@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONS_ARGUMENT_HPP_INCLUDED
 
 #include <fcppt/options/argument_decl.hpp> // IWYU pragma: export
-#include <fcppt/options/argument_impl.hpp>
+#include <fcppt/options/argument_impl.hpp> // IWYU pragma: keep
 
 #endif

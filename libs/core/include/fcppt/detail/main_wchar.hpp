@@ -6,8 +6,8 @@
 #ifndef FCPPT_DETAIL_MAIN_WCHAR_HPP_INCLUDED
 #define FCPPT_DETAIL_MAIN_WCHAR_HPP_INCLUDED
 
-#include <fcppt/public_config.hpp>
-#include <fcppt/config/platform.hpp>
+#include <fcppt/public_config.hpp> // IWYU pragma: keep
+#include <fcppt/config/platform.hpp> // IWYU pragma: keep
 
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM) && !defined(FCPPT_NARROW_STRING)
 #define FCPPT_DETAIL_MAIN_WCHAR

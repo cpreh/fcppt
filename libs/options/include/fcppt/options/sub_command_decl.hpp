@@ -9,7 +9,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/sub_command_fwd.hpp>
+#include <fcppt/options/sub_command_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

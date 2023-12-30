@@ -11,7 +11,7 @@
 namespace fcppt
 {
 template <typename Type, typename Deleter = fcppt::default_deleter>
-class shared_ptr;
+class shared_ptr; // IWYU pragma: export
 
 }
 

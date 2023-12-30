@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_MISSING_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_ERROR_HPP_INCLUDED
 
-#include <fcppt/options/missing_error_fwd.hpp>
+#include <fcppt/options/missing_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/symbol.hpp>

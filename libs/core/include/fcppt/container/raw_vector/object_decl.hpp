@@ -9,7 +9,7 @@
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/not.hpp>
-#include <fcppt/container/raw_vector/object_fwd.hpp>
+#include <fcppt/container/raw_vector/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>

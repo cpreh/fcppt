@@ -11,7 +11,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/intrusive/list_decl.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
-#include <fcppt/signal/base_fwd.hpp>
+#include <fcppt/signal/base_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/signal/detail/concrete_connection_fwd.hpp>
 
 namespace fcppt::signal

@@ -6,6 +6,7 @@
 #ifndef FCPPT_OPTIONS_IMPL_FLAG_NAME_HPP_INCLUDED
 #define FCPPT_OPTIONS_IMPL_FLAG_NAME_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 

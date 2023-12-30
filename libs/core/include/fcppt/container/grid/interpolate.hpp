@@ -14,6 +14,7 @@
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/interpolate.hpp>
+#include <fcppt/math/power_of_2.hpp>
 #include <fcppt/math/vector/bit_strings.hpp>
 #include <fcppt/math/vector/mod.hpp>
 #include <fcppt/math/vector/static.hpp>

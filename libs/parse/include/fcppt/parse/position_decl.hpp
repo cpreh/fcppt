@@ -8,7 +8,7 @@
 
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/location.hpp>
-#include <fcppt/parse/position_fwd.hpp>
+#include <fcppt/parse/position_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <fcppt/config/external_end.hpp>

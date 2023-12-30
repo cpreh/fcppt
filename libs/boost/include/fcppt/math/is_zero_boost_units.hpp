@@ -7,9 +7,9 @@
 #define FCPPT_MATH_IS_ZERO_BOOST_UNITS_HPP_INCLUDED
 
 #include <fcppt/math/is_zero.hpp>
+#include <fcppt/math/is_zero_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
-#include <boost/units/unit.hpp>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::math

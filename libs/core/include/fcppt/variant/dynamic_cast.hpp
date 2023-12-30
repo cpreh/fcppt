@@ -9,10 +9,10 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/cast/apply.hpp>
-#include <fcppt/cast/dynamic_fun_concept.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/cast/dynamic_fun_concept.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>

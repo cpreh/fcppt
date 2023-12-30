@@ -6,14 +6,13 @@
 #ifndef FCPPT_MATH_DETAIL_SEQUENCE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_SEQUENCE_HPP_INCLUDED
 
-#include <fcppt/algorithm/map_array.hpp>
+#include <fcppt/algorithm/map_array.hpp> // IWYU pragma: keep
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
 #include <fcppt/math/to_array_type.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/sequence.hpp>
-#include <fcppt/optional/value_type.hpp>
 
 namespace fcppt::math::detail
 {

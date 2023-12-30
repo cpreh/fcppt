@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Type>
-class float_;
+class float_; // IWYU pragma: export
 
 }
 

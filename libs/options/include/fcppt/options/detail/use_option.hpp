@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_DETAIL_USE_OPTION_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_USE_OPTION_HPP_INCLUDED
 
-#include <fcppt/optional_string.hpp>
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/options/state_fwd.hpp>

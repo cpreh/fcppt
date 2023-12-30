@@ -9,7 +9,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/bitfield/array.hpp>
-#include <fcppt/container/bitfield/object_fwd.hpp>
+#include <fcppt/container/bitfield/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/enum/is_object.hpp>

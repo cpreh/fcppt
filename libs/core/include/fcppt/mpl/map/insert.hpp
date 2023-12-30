@@ -9,7 +9,7 @@
 #include <fcppt/mpl/map/element.hpp>
 #include <fcppt/mpl/map/has_key.hpp>
 #include <fcppt/mpl/map/object.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::map
 {

@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_FAIL_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_FAIL_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/fail_error_decl.hpp>
+#include <fcppt/parse/fail_error_decl.hpp> // IWYU pragma: export
 
 template <typename Ch>
 fcppt::parse::fail_error<Ch>::fail_error(pos_type const _pos) : pos_{_pos}

@@ -7,7 +7,7 @@
 #define FCPPT_CATCH_MOVABLE_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/catch/movable_fwd.hpp>
+#include <fcppt/catch/movable_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

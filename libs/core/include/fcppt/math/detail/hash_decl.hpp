@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_DETAIL_HASH_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_HASH_DECL_HPP_INCLUDED
 
-#include <fcppt/math/detail/hash_fwd.hpp>
+#include <fcppt/math/detail/hash_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>

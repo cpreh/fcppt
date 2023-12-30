@@ -6,7 +6,7 @@
 #ifndef FCPPT_DECLARE_STRONG_TYPEDEF_HPP_INCLUDED
 #define FCPPT_DECLARE_STRONG_TYPEDEF_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/strong_typedef_fwd.hpp> // IWYU pragma: keep
 
 /**
 \brief Creates a new strong typedef using #fcppt::strong_typedef.

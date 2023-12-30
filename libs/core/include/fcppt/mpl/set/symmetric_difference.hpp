@@ -7,7 +7,7 @@
 #define FCPPT_MPL_SET_SYMMETRIC_DIFFERENCE_HPP_INCLUDED
 
 #include <fcppt/mpl/set/difference.hpp>
-#include <fcppt/mpl/set/object_concept.hpp>
+#include <fcppt/mpl/set/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/set/union.hpp>
 
 namespace fcppt::mpl::set

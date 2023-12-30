@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_STATE_WITH_VALUE_DECL_HPP_INCLUDED
 
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/state_with_value_fwd.hpp>
+#include <fcppt/options/state_with_value_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::options
 {

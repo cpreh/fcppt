@@ -11,7 +11,7 @@
 namespace fcppt::math::matrix::detail
 {
 template <typename T, fcppt::math::size_type C, typename S>
-class row_view;
+class row_view; // IWYU pragma: export
 
 }
 

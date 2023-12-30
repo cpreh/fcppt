@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_STATE_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/state_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options

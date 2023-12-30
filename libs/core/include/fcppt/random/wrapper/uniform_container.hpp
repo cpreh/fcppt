@@ -7,7 +7,7 @@
 #define FCPPT_RANDOM_WRAPPER_UNIFORM_CONTAINER_HPP_INCLUDED
 
 #include <fcppt/random/wrapper/uniform_container_decl.hpp> // IWYU pragma: export
-#include <fcppt/random/wrapper/uniform_container_fwd.hpp>
-#include <fcppt/random/wrapper/uniform_container_impl.hpp>
+#include <fcppt/random/wrapper/uniform_container_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/random/wrapper/uniform_container_impl.hpp> // IWYU pragma: keep
 
 #endif

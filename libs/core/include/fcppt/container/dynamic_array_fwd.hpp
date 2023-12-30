@@ -13,7 +13,7 @@
 namespace fcppt::container
 {
 template <typename T, typename A = std::allocator<T>>
-class dynamic_array;
+class dynamic_array; // IWYU pragma: export
 
 }
 

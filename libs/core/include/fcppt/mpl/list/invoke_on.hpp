@@ -10,7 +10,7 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/mpl/size_type.hpp>
 #include <fcppt/mpl/list/at.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/size.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

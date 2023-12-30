@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_BASIC_STRING_HPP_INCLUDED
 
 #include <fcppt/parse/basic_string_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/basic_string_impl.hpp>
+#include <fcppt/parse/basic_string_impl.hpp> // IWYU pragma: keep
 
 #endif

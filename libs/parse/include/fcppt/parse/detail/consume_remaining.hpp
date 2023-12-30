@@ -11,6 +11,7 @@
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map_failure.hpp>
+#include <fcppt/either/object_impl.hpp>
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/parse/parse_stream_error_impl.hpp>

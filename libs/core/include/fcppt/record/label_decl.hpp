@@ -7,7 +7,7 @@
 #define FCPPT_RECORD_LABEL_DECL_HPP_INCLUDED
 
 #include <fcppt/record/element_init_fwd.hpp>
-#include <fcppt/record/label_fwd.hpp>
+#include <fcppt/record/label_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/record/detail/is_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

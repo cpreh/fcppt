@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Start, typename Inner, typename Sep, typename End>
-class list;
+class list; // IWYU pragma: export
 
 }
 

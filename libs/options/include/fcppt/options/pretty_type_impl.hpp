@@ -14,7 +14,7 @@
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <typeinfo>
+#include <typeinfo> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::options

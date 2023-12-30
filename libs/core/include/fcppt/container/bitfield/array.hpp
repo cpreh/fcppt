@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 
-#include <fcppt/array/object_impl.hpp>
-#include <fcppt/container/bitfield/array_fwd.hpp>
+#include <fcppt/array/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/container/bitfield/array_fwd.hpp> // IWYU pragma: export
 
 #endif

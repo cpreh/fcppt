@@ -8,11 +8,10 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/loop_break_impl_fwd.hpp>
-#include <fcppt/algorithm/loop_break_tuple.hpp>
+#include <fcppt/algorithm/loop_break_tuple.hpp> // IWYU pragma: keep
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm

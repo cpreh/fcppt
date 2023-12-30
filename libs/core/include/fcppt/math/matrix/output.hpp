@@ -9,7 +9,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/one_dimensional_output.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>

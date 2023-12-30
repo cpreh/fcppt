@@ -10,12 +10,12 @@
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/constant.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/size_type_concept.hpp>
+#include <fcppt/mpl/size_type_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/at.hpp>
 #include <fcppt/mpl/list/indices.hpp>
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::list
 {

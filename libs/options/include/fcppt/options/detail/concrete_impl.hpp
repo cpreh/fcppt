@@ -16,7 +16,7 @@
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
-#include <fcppt/options/detail/concrete_decl.hpp>
+#include <fcppt/options/detail/concrete_decl.hpp> // IWYU pragma: export
 #include <fcppt/record/permute.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

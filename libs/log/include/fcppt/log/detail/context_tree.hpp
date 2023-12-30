@@ -6,8 +6,8 @@
 #ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
 
-#include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/container/tree/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/log/detail/context_tree_fwd.hpp> // IWYU pragma: export
-#include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp> // IWYU pragma: keep
 
 #endif

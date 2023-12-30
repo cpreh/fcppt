@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Type>
-class uint;
+class uint; // IWYU pragma: export
 
 }
 

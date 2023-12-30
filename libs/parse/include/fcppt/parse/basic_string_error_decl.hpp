@@ -7,7 +7,7 @@
 #define FCPPT_PARSE_BASIC_STRING_ERROR_DECL_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/parse/basic_string_error_fwd.hpp>
+#include <fcppt/parse/basic_string_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/expected_tag_fwd.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/config/external_begin.hpp>

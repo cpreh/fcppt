@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename OptionsParser, typename... SubParsers>
-class commands;
+class commands; // IWYU pragma: export
 
 }
 

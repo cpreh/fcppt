@@ -7,9 +7,9 @@
 #define FCPPT_INTRUSIVE_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/intrusive/base_fwd.hpp>
-#include <fcppt/intrusive/iterator_fwd.hpp>
+#include <fcppt/intrusive/iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/intrusive/detail/iterator_base.hpp>
-#include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/iterator/base_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

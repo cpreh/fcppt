@@ -8,7 +8,7 @@
 
 namespace fcppt::random::distribution::parameters
 {
-struct uniform_int_wrapper;
+struct uniform_int_wrapper; // IWYU pragma: export
 
 }
 

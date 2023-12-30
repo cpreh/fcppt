@@ -8,10 +8,10 @@
 
 #include <fcppt/cond.hpp>
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable.hpp>
+#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
 #include <fcppt/optional/move_type.hpp>
-#include <fcppt/optional/object_concept.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

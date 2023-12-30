@@ -13,7 +13,7 @@ namespace fcppt::either
 
 \ingroup fcppteither
 */
-struct no_error;
+struct no_error; // IWYU pragma: export
 
 }
 

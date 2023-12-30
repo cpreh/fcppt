@@ -9,11 +9,11 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/array/join.hpp>
 #include <fcppt/array/size.hpp>
-#include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/dim.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/grid/offset.hpp>
-#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/null.hpp>

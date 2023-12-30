@@ -13,7 +13,7 @@
 namespace fcppt::container::buffer
 {
 template <typename T, typename A = std::allocator<T>>
-class object;
+class object; // IWYU pragma: export
 
 }
 

@@ -23,6 +23,7 @@
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/make_success.hpp>
+#include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
 
 template <typename Ch>

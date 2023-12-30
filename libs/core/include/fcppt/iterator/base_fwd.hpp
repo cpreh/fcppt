@@ -9,7 +9,7 @@
 namespace fcppt::iterator
 {
 template <typename Types>
-class base;
+class base; // IWYU pragma: export
 
 }
 

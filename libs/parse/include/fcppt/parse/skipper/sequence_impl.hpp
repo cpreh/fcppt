@@ -12,7 +12,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/skipper/result.hpp>
-#include <fcppt/parse/skipper/sequence_decl.hpp>
+#include <fcppt/parse/skipper/sequence_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

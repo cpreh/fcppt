@@ -30,15 +30,13 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/type_name_tag_fwd.hpp>
 #include <fcppt/parse/typed_error_impl.hpp>
-#include <fcppt/parse/operators/optional.hpp>
-#include <fcppt/parse/operators/repetition_plus.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/operators/optional.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/repetition_plus.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/sequence.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <typeindex>
-#include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 template <typename Type>

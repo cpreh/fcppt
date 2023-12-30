@@ -9,7 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
-#include <fcppt/parse/lexeme_decl.hpp>
+#include <fcppt/parse/lexeme_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/config/external_begin.hpp>

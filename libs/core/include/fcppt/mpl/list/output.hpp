@@ -10,15 +10,16 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/mpl/list/back.hpp>
 #include <fcppt/mpl/list/empty.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/pop_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
-#include <typeinfo>
+#include <typeinfo> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::mpl::list

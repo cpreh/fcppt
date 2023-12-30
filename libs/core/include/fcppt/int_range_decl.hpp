@@ -6,7 +6,7 @@
 #ifndef FCPPT_INT_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_INT_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/int_iterator_fwd.hpp>
+#include <fcppt/int_iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/type_iso/undecorated_type.hpp>
 
 namespace fcppt

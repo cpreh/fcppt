@@ -10,7 +10,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/uint_fwd.hpp>
+#include <fcppt/parse/uint_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

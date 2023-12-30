@@ -8,9 +8,9 @@
 
 #include <fcppt/mpl/apply.hpp>
 #include <fcppt/mpl/if.hpp>
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/size_type.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>

@@ -12,7 +12,6 @@
 #include <fcppt/math/box/init_max.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/at.hpp>
-#include <fcppt/preprocessor/const.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>

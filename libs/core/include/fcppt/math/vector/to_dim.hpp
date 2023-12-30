@@ -8,7 +8,6 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/to_different.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 

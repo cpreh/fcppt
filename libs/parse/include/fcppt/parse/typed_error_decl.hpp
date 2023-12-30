@@ -10,7 +10,7 @@
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/type_name_tag_fwd.hpp>
-#include <fcppt/parse/typed_error_fwd.hpp>
+#include <fcppt/parse/typed_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>

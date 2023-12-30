@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECURSIVE_DECL_HPP_INCLUDED
 #define FCPPT_RECURSIVE_DECL_HPP_INCLUDED
 
-#include <fcppt/recursive_fwd.hpp>
+#include <fcppt/recursive_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/unique_ptr_decl.hpp>
 
 namespace fcppt

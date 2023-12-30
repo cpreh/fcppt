@@ -10,7 +10,7 @@
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
-#include <fcppt/math/matrix/detail/row_view_fwd.hpp>
+#include <fcppt/math/matrix/detail/row_view_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::math::matrix::detail
 {

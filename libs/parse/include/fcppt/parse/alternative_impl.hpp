@@ -9,7 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/parse/alternative_decl.hpp>
+#include <fcppt/parse/alternative_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error_impl.hpp>
@@ -21,7 +21,7 @@
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/detail/combine_errors.hpp>
 #include <fcppt/parse/detail/make_alternative.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

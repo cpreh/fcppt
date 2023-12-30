@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONTAINER_GRID_SPIRAL_RANGE_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SPIRAL_RANGE_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/grid/spiral_iterator_impl.hpp>
-#include <fcppt/container/grid/spiral_range_decl.hpp>
+#include <fcppt/container/grid/spiral_iterator_impl.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/spiral_range_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

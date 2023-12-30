@@ -9,7 +9,7 @@
 namespace fcppt::enum_
 {
 template <typename Type>
-struct size_type_impl;
+struct size_type_impl; // IWYU pragma: export
 
 }
 

@@ -9,7 +9,6 @@
 #include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 

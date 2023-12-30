@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_STATE_WITH_VALUE_IMPL_HPP_INCLUDED
 
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/state_with_value_decl.hpp>
+#include <fcppt/options/state_with_value_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

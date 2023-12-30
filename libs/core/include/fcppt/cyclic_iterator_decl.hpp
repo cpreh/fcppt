@@ -7,9 +7,9 @@
 #ifndef FCPPT_CYCLIC_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CYCLIC_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/cyclic_iterator_fwd.hpp>
+#include <fcppt/cyclic_iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/detail/cyclic_iterator_base.hpp>
-#include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/iterator/base_decl.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/object_impl.hpp>
 
 namespace fcppt

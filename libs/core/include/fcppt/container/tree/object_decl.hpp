@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/container/tree/object_fwd.hpp>
+#include <fcppt/container/tree/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_decl.hpp>
 #include <fcppt/optional/reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>

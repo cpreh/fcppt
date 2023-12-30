@@ -8,8 +8,8 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/options/option_name_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/options/option_name_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options

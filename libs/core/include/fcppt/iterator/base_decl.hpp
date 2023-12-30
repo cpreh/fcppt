@@ -7,10 +7,10 @@
 #define FCPPT_ITERATOR_BASE_DECL_HPP_INCLUDED
 
 #include <fcppt/not.hpp>
-#include <fcppt/iterator/base_fwd.hpp>
+#include <fcppt/iterator/base_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/iterator/category_at_least.hpp>
 #include <fcppt/iterator/is_types.hpp>
-#include <fcppt/iterator/types.hpp>
+#include <fcppt/iterator/types.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/implication.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>

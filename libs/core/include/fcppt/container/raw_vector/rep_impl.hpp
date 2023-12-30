@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_REP_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_IMPL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/container/raw_vector/rep_decl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/container/raw_vector/rep_decl.hpp> // IWYU pragma: export
 
 template <typename A>
 fcppt::container::raw_vector::rep<A>::rep(

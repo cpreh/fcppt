@@ -7,7 +7,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_BASIC_HPP_INCLUDED
 
 #include <fcppt/random/distribution/basic_decl.hpp> // IWYU pragma: export
-#include <fcppt/random/distribution/basic_fwd.hpp>
-#include <fcppt/random/distribution/basic_impl.hpp>
+#include <fcppt/random/distribution/basic_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/random/distribution/basic_impl.hpp> // IWYU pragma: keep
 
 #endif

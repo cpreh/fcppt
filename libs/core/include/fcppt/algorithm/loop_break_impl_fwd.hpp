@@ -14,7 +14,7 @@ namespace fcppt::algorithm
 \ingroup fcpptalgorithm
 */
 template <typename Range, typename Enable = void>
-struct loop_break_impl;
+struct loop_break_impl; // IWYU pragma: export
 
 }
 

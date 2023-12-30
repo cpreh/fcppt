@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Parser>
-class lexeme;
+class lexeme; // IWYU pragma: export
 
 }
 

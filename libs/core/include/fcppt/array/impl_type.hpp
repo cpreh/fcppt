@@ -7,7 +7,7 @@
 #define FCPPT_ARRAY_IMPL_TYPE_HPP_INCLUDED
 
 #include <fcppt/array/is_object.hpp>
-#include <fcppt/array/object_decl.hpp>
+#include <fcppt/array/object_decl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

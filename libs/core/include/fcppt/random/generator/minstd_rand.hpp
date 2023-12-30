@@ -7,6 +7,6 @@
 #define FCPPT_RANDOM_GENERATOR_MINSTD_RAND_HPP_INCLUDED
 
 #include <fcppt/random/generator/minstd_rand_fwd.hpp> // IWYU pragma: export
-#include <fcppt/random/generator/minstd_rand_impl.hpp>
+#include <fcppt/random/generator/minstd_rand_impl.hpp> // IWYU pragma: keep
 
 #endif

@@ -6,9 +6,9 @@
 #ifndef FCPPT_MATH_MATRIX_STATIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STATIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/static_decl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/math/matrix/static_decl.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/static_fwd.hpp> // IWYU pragma: export
-#include <fcppt/math/matrix/detail/static_storage.hpp>
+#include <fcppt/math/matrix/detail/static_storage.hpp> // IWYU pragma: keep
 
 #endif

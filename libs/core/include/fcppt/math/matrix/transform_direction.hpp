@@ -8,7 +8,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/vector.hpp>
+#include <fcppt/math/matrix/vector.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/narrow_cast.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/push_back.hpp>

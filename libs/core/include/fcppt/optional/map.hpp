@@ -6,12 +6,11 @@
 #ifndef FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/move_type.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

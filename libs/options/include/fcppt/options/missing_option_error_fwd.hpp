@@ -8,7 +8,7 @@
 
 namespace fcppt::options
 {
-class missing_option_error;
+class missing_option_error; // IWYU pragma: export
 }
 
 #endif

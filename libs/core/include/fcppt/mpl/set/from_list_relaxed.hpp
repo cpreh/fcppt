@@ -10,10 +10,9 @@
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/fold.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/set/insert_relaxed.hpp>
 #include <fcppt/mpl/set/object.hpp>
-#include <fcppt/mpl/set/unique.hpp>
 
 namespace fcppt::mpl::set
 {

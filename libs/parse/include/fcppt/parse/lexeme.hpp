@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_LEXEME_HPP_INCLUDED
 #define FCPPT_PARSE_LEXEME_HPP_INCLUDED
 
-#include <fcppt/parse/lexeme_impl.hpp>
+#include <fcppt/parse/lexeme_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/lexeme_impl.hpp> // IWYU pragma: keep
 
 #endif

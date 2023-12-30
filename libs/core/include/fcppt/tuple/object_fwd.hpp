@@ -9,7 +9,7 @@
 namespace fcppt::tuple
 {
 template <typename... Types>
-class object;
+class object; // IWYU pragma: export
 }
 
 #endif

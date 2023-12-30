@@ -7,7 +7,7 @@
 #define FCPPT_INT_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/int_iterator_decl.hpp> // IWYU pragma: export
-#include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/iterator/base_impl.hpp> // IWYU pragma: keep
 
 template <typename Int>
 fcppt::int_iterator<Int>::int_iterator(Int const _value) noexcept : value_{_value}

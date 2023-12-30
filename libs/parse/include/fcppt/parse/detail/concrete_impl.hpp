@@ -7,10 +7,10 @@
 #define FCPPT_PARSE_DETAIL_CONCRETE_IMPL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/parse/base_impl.hpp>
+#include <fcppt/parse/base_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
-#include <fcppt/parse/detail/concrete_decl.hpp>
+#include <fcppt/parse/detail/concrete_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/proxy_decl.hpp>
-#include <fcppt/container/bitfield/proxy_fwd.hpp>
-#include <fcppt/container/bitfield/proxy_impl.hpp>
+#include <fcppt/container/bitfield/proxy_decl.hpp> // IWYU pragma: export
+#include <fcppt/container/bitfield/proxy_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/container/bitfield/proxy_impl.hpp> // IWYU pragma: keep
 
 #endif

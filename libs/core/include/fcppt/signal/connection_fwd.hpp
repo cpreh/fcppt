@@ -9,7 +9,7 @@
 
 namespace fcppt::signal
 {
-class connection;
+class connection; // IWYU pragma: export
 
 }
 

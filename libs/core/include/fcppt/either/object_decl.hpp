@@ -6,8 +6,8 @@
 #ifndef FCPPT_EITHER_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_EITHER_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/concepts/move_constructible.hpp>
-#include <fcppt/either/object_fwd.hpp>
+#include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
+#include <fcppt/either/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

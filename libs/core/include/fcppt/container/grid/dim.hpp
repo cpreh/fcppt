@@ -7,6 +7,6 @@
 #define FCPPT_CONTAINER_GRID_DIM_HPP_INCLUDED
 
 #include <fcppt/container/grid/dim_fwd.hpp> // IWYU pragma: export
-#include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp> // IWYU pragma: keep
 
 #endif

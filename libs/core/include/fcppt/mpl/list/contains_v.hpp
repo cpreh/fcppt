@@ -7,7 +7,7 @@
 #define FCPPT_MPL_LIST_CONTAINS_V_HPP_INCLUDED
 
 #include <fcppt/mpl/list/contains.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::list
 {

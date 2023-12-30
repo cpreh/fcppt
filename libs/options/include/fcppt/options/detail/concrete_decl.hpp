@@ -14,7 +14,7 @@
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/usage_fwd.hpp>
-#include <fcppt/options/detail/concrete_fwd.hpp>
+#include <fcppt/options/detail/concrete_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::options::detail
 {

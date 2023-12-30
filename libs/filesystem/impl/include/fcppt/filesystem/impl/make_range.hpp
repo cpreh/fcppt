@@ -12,7 +12,7 @@
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/filesystem/directory_range.hpp>
+#include <fcppt/filesystem/directory_range.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
 #include <system_error>

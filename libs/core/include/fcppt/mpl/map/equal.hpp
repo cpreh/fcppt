@@ -15,7 +15,7 @@
 #include <fcppt/mpl/list/all_of.hpp>
 #include <fcppt/mpl/map/at.hpp>
 #include <fcppt/mpl/map/keys.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/set/equal.hpp>
 #include <fcppt/mpl/set/to_list.hpp>
 #include <fcppt/config/external_begin.hpp>

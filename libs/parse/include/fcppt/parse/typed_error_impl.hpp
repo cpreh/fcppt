@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_TYPED_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_TYPED_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/typed_error_decl.hpp>
+#include <fcppt/parse/typed_error_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

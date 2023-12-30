@@ -6,6 +6,7 @@
 #ifndef FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

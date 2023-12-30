@@ -13,7 +13,7 @@
 namespace fcppt::container
 {
 template <typename T, typename A = std::allocator<T>>
-class index_map;
+class index_map; // IWYU pragma: export
 
 }
 

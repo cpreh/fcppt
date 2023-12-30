@@ -7,6 +7,6 @@
 #define FCPPT_CONTAINER_GRID_POS_HPP_INCLUDED
 
 #include <fcppt/container/grid/pos_fwd.hpp> // IWYU pragma: export
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 
 #endif

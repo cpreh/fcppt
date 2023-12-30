@@ -8,7 +8,7 @@
 
 #include <fcppt/move_if_rvalue_type.hpp>
 #include <fcppt/either/failure_reference_type.hpp>
-#include <fcppt/either/object_concept.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::either
 {

@@ -8,8 +8,9 @@
 #define FCPPT_SIGNAL_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/signal/base_impl.hpp>
+#include <fcppt/signal/base_impl.hpp> // IWYU pragma: keep
 #include <fcppt/signal/object_decl.hpp> // IWYU pragma: export
+#include <fcppt/signal/object_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

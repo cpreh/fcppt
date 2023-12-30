@@ -7,7 +7,7 @@
 #define FCPPT_MATH_BOX_OBJECT_HPP_INCLUDED
 
 #include <fcppt/math/box/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/math/box/object_fwd.hpp>
-#include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/box/object_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/math/box/object_impl.hpp> // IWYU pragma: keep
 
 #endif

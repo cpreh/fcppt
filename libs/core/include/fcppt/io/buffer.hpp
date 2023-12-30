@@ -6,7 +6,7 @@
 #ifndef FCPPT_IO_BUFFER_HPP_INCLUDED
 #define FCPPT_IO_BUFFER_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector/object_impl.hpp>
+#include <fcppt/container/raw_vector/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/io/buffer_fwd.hpp> // IWYU pragma: export
 
 #endif

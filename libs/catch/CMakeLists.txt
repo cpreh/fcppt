@@ -24,6 +24,10 @@ make_fcppt_library(
 	catch
 	"${FCPPT_CATCH_FILES}"
 	IS_INTERFACE
+	FCPPT_DEPS
+		fcppt_core_interface
+	IMPORTED_DEPS
+		Catch2::Catch2
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
 	TRANSITIVE_IMPORTED_DEPS

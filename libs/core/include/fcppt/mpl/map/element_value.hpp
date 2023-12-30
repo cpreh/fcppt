@@ -6,7 +6,7 @@
 #ifndef FCPPT_MPL_MAP_ELEMENT_VALUE_HPP_INCLUDED
 #define FCPPT_MPL_MAP_ELEMENT_VALUE_HPP_INCLUDED
 
-#include <fcppt/mpl/map/element_concept.hpp>
+#include <fcppt/mpl/map/element_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/element_fwd.hpp>
 
 namespace fcppt::mpl::map

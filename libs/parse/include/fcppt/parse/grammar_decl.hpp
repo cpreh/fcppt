@@ -9,7 +9,7 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/base_unique_ptr.hpp>
-#include <fcppt/parse/grammar_fwd.hpp>
+#include <fcppt/parse/grammar_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/result_of.hpp>
 
 namespace fcppt::parse

@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_MATRIX_ROW_TYPE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROW_TYPE_HPP_INCLUDED
 
-#include <fcppt/math/matrix/row_type_fwd.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/matrix/row_type_fwd.hpp> // IWYU pragma: export
+#include <fcppt/math/vector/static.hpp> // IWYU pragma: keep
 
 #endif

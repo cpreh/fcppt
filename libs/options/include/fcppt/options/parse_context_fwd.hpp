@@ -8,7 +8,7 @@
 
 namespace fcppt::options
 {
-class parse_context;
+class parse_context; // IWYU pragma: export
 
 }
 

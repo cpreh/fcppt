@@ -7,7 +7,7 @@
 #define FCPPT_MPL_LIST_AS_TUPLE_HPP_INCLUDED
 
 #include <fcppt/mpl/list/as.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/object_fwd.hpp>
 
 namespace fcppt::mpl::list

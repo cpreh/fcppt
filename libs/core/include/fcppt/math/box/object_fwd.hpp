@@ -11,7 +11,7 @@
 namespace fcppt::math::box
 {
 template <typename T, fcppt::math::size_type N>
-class object;
+class object; // IWYU pragma: export
 
 }
 

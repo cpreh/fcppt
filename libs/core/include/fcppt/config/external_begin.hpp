@@ -6,11 +6,11 @@
 #ifndef FCPPT_CONFIG_EXTERNAL_BEGIN_HPP_INCLUDED
 #define FCPPT_CONFIG_EXTERNAL_BEGIN_HPP_INCLUDED
 
-#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/detail/check_cpp.hpp> // IWYU pragma: keep
 
-#include <fcppt/config/external_begin.h>
+#include <fcppt/config/external_begin.h> // IWYU pragma: keep
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
 

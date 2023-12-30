@@ -6,8 +6,8 @@
 #ifndef FCPPT_OPTIONS_FLAG_USAGE_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_USAGE_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag_usage_fwd.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_help_text.hpp>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_IS_FATAL_HPP_INCLUDED
 #define FCPPT_PARSE_IS_FATAL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/parse/is_fatal_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/parse/is_fatal_fwd.hpp> // IWYU pragma: export
 
 #endif

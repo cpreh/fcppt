@@ -7,6 +7,7 @@
 #define FCPPT_IMPL_CODECVT_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
+#include <cwchar>
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 

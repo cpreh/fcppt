@@ -10,7 +10,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
-#include <fcppt/math/box/object_fwd.hpp>
+#include <fcppt/math/box/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/math/dim/static_fwd.hpp>
 #include <fcppt/math/vector/static.hpp>
 

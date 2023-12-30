@@ -6,13 +6,13 @@
 #ifndef FCPPT_OPTIONAL_MONAD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MONAD_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable_move.hpp>
-#include <fcppt/concepts/move_constructible.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
+#include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
 #include <fcppt/monad/instance_fwd.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/move_type.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

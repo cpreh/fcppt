@@ -7,7 +7,7 @@
 #define FCPPT_INTRUSIVE_LIST_HPP_INCLUDED
 
 #include <fcppt/intrusive/list_decl.hpp> // IWYU pragma: export
-#include <fcppt/intrusive/list_fwd.hpp>
-#include <fcppt/intrusive/list_impl.hpp>
+#include <fcppt/intrusive/list_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/intrusive/list_impl.hpp> // IWYU pragma: keep
 
 #endif

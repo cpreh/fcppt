@@ -7,8 +7,8 @@
 #define FCPPT_STRONG_TYPEDEF_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_decl.hpp> // IWYU pragma: export
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/strong_typedef_operators.hpp>
-#include <fcppt/strong_typedef_std_hash.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/strong_typedef_operators.hpp> // IWYU pragma: export
+#include <fcppt/strong_typedef_std_hash.hpp> // IWYU pragma: export
 
 #endif

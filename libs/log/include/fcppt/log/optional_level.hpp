@@ -6,8 +6,8 @@
 #ifndef FCPPT_LOG_OPTIONAL_LEVEL_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_LEVEL_HPP_INCLUDED
 
-#include <fcppt/log/level.hpp>
+#include <fcppt/log/level.hpp> // IWYU pragma: keep
 #include <fcppt/log/optional_level_fwd.hpp> // IWYU pragma: export
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 
 #endif

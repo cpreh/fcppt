@@ -14,7 +14,7 @@
 #include <fcppt/parse/location.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/with_location_decl.hpp>
+#include <fcppt/parse/with_location_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_EITHER_FIRST_SUCCESS_HPP_INCLUDED
 #define FCPPT_EITHER_FIRST_SUCCESS_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object_v.hpp>
 #include <fcppt/either/object_impl.hpp>

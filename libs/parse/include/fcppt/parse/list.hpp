@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_LIST_HPP_INCLUDED
 
 #include <fcppt/parse/list_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/list_impl.hpp>
+#include <fcppt/parse/list_impl.hpp> // IWYU pragma: keep
 
 #endif

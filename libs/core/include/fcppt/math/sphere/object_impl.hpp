@@ -7,8 +7,8 @@
 #define FCPPT_MATH_SPHERE_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/sphere/object_decl.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/sphere/object_decl.hpp> // IWYU pragma: export
+#include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_GRID_SPIRAL_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
-#include <fcppt/container/grid/spiral_range_fwd.hpp>
+#include <fcppt/container/grid/spiral_range_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/value_type.hpp>
 
 namespace fcppt::container::grid

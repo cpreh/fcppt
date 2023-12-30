@@ -8,7 +8,7 @@
 
 #include <fcppt/parse/column.hpp>
 #include <fcppt/parse/line.hpp>
-#include <fcppt/parse/location_fwd.hpp>
+#include <fcppt/parse/location_fwd.hpp> // IWYU pragma: export
 
 namespace fcppt::parse
 {

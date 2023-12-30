@@ -8,6 +8,7 @@
 
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 
 namespace fcppt::container::grid

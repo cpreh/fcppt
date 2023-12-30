@@ -8,10 +8,10 @@
 
 #include <fcppt/mpl/map/element.hpp>
 #include <fcppt/mpl/map/has_key.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::mpl::map

@@ -9,7 +9,7 @@
 namespace fcppt::range
 {
 template <typename Type>
-struct hash;
+struct hash; // IWYU pragma: export
 
 }
 

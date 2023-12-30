@@ -7,11 +7,12 @@
 #define FCPPT_MPL_LIST_AT_HPP_INCLUDED
 
 #include <fcppt/mpl/size_type.hpp>
-#include <fcppt/mpl/size_type_concept.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/size_type_concept.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <functional>
+#include <cstddef>
+#include <functional> // IWYU pragma: keep
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 

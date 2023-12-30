@@ -6,7 +6,7 @@
 #ifndef FCPPT_DETAIL_MAIN_HPP_INCLUDED
 #define FCPPT_DETAIL_MAIN_HPP_INCLUDED
 
-#include <fcppt/detail/main_wchar.hpp>
+#include <fcppt/detail/main_wchar.hpp> // IWYU pragma: keep
 
 #if defined(FCPPT_DETAIL_MAIN_WCHAR)
 #define FCPPT_DETAIL_MAIN wmain

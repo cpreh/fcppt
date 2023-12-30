@@ -6,7 +6,7 @@
 #ifndef FCPPT_ENUM_NAMES_ARRAY_HPP_INCLUDED
 #define FCPPT_ENUM_NAMES_ARRAY_HPP_INCLUDED
 
-#include <fcppt/enum/array_impl.hpp>
-#include <fcppt/enum/names_array_fwd.hpp>
+#include <fcppt/enum/array_impl.hpp> // IWYU pragma: keep
+#include <fcppt/enum/names_array_fwd.hpp> // IWYU pragma: export
 
 #endif

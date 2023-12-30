@@ -8,7 +8,7 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/skipper/comment_fwd.hpp>
+#include <fcppt/parse/skipper/comment_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/skipper/result_fwd.hpp>
 #include <fcppt/parse/skipper/tag.hpp>
 #include <fcppt/config/external_begin.hpp>

@@ -7,6 +7,6 @@
 #define FCPPT_CONFIG_PLATFORM_HPP_INCLUDED
 
 #include <fcppt/config/platform.h> // IWYU pragma: export
-#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/detail/check_cpp.hpp> // IWYU pragma: keep
 
 #endif

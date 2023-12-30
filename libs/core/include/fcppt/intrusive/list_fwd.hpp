@@ -9,7 +9,7 @@
 namespace fcppt::intrusive
 {
 template <typename Type>
-class list;
+class list; // IWYU pragma: export
 
 }
 

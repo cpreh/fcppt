@@ -9,7 +9,7 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/unit_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/ignore_fwd.hpp>
+#include <fcppt/parse/ignore_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>

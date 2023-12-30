@@ -21,7 +21,7 @@
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/fail_error_impl.hpp>
 #include <fcppt/parse/named_error_impl.hpp>
-#include <fcppt/parse/position_output.hpp>
+#include <fcppt/parse/position_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/typed_error_impl.hpp>
 #include <fcppt/parse/detail/print_char.hpp>
 #include <fcppt/variant/match.hpp>

@@ -7,7 +7,6 @@
 #define FCPPT_PARSE_PHRASE_PARSE_HPP_INCLUDED
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/either/no_error.hpp>

@@ -7,7 +7,7 @@
 #define FCPPT_REFERENCE_HASH_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/reference_hash_fwd.hpp>
+#include <fcppt/reference_hash_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>

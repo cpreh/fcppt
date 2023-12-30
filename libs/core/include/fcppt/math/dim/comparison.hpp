@@ -6,6 +6,7 @@
 #ifndef FCPPT_MATH_DIM_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_DIM_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/array_equal.hpp>
 #include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/dim/object_impl.hpp>

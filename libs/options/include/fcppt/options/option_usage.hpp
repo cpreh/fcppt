@@ -8,11 +8,11 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/long_name.hpp>
-#include <fcppt/options/option_usage_fwd.hpp>
+#include <fcppt/options/option_usage_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/type_name.hpp>

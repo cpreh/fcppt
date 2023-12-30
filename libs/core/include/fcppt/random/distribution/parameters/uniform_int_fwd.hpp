@@ -13,7 +13,7 @@ namespace fcppt::random::distribution::parameters
 template <
     typename IntType,
     typename Distribution = fcppt::random::distribution::parameters::uniform_int_wrapper>
-class uniform_int;
+class uniform_int; // IWYU pragma: export
 
 }
 

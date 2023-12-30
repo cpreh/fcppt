@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template<typename Parser>
-class with_location;
+class with_location; // IWYU pragma: export
 
 }
 

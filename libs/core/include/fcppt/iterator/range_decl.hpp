@@ -6,7 +6,7 @@
 #ifndef FCPPT_ITERATOR_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_ITERATOR_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/iterator/range_fwd.hpp>
+#include <fcppt/iterator/range_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::iterator
 {

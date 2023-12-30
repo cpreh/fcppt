@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_DYNAMIC_ARRAY_DECL_HPP_INCLUDED
 
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/container/dynamic_array_fwd.hpp>
+#include <fcppt/container/dynamic_array_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <type_traits>

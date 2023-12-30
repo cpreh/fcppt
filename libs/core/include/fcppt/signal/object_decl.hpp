@@ -10,9 +10,9 @@
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/signal/base_decl.hpp>
-#include <fcppt/signal/object_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/signal/base_decl.hpp> // IWYU pragma: keep
+#include <fcppt/signal/object_fwd.hpp> // IWYU pragma: export
 
 namespace fcppt::signal
 {

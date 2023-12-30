@@ -7,6 +7,6 @@
 #define FCPPT_RECORD_FROM_LIST_HPP_INCLUDED
 
 #include <fcppt/record/from_list_fwd.hpp> // IWYU pragma: export
-#include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
 
 #endif

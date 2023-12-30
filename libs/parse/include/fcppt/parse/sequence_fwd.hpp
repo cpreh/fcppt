@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Left, typename Right>
-class sequence;
+class sequence; // IWYU pragma: export
 
 }
 

@@ -6,9 +6,9 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 
-#include <fcppt/enum/array_impl.hpp>
-#include <fcppt/log/level.hpp>
-#include <fcppt/log/level_stream.hpp>
+#include <fcppt/enum/array_impl.hpp> // IWYU pragma: keep
+#include <fcppt/log/level.hpp> // IWYU pragma: keep
+#include <fcppt/log/level_stream.hpp> // IWYU pragma: keep
 #include <fcppt/log/level_stream_array_fwd.hpp> // IWYU pragma: export
 
 #endif

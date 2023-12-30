@@ -8,7 +8,7 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/map_impl_fwd.hpp>
+#include <fcppt/algorithm/map_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/algorithm/detail/map_reserve.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

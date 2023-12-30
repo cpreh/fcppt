@@ -10,10 +10,10 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/array/object_impl.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
-#include <fcppt/container/grid/object_concept.hpp>
+#include <fcppt/container/grid/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
-#include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/math/dim/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

@@ -14,7 +14,7 @@
 namespace fcppt::container::grid
 {
 template <typename T, fcppt::container::grid::size_type N, typename A = std::allocator<T>>
-class object;
+class object; // IWYU pragma: export
 
 }
 

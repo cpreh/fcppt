@@ -11,7 +11,7 @@
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp>
-#include <fcppt/options/commands_fwd.hpp>
+#include <fcppt/options/commands_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>

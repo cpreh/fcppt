@@ -10,7 +10,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
-#include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>

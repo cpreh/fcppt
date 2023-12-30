@@ -9,7 +9,7 @@
 namespace fcppt::bit
 {
 template <typename Type>
-class mask;
+class mask; // IWYU pragma: export
 
 }
 

@@ -7,7 +7,7 @@
 #define FCPPT_VARIANT_FROM_LIST_FWD_HPP_INCLUDED
 
 #include <fcppt/mpl/list/as.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/variant/object_fwd.hpp>
 
 namespace fcppt::variant

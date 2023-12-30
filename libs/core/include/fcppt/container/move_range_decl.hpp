@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_MOVE_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/container/move_range_fwd.hpp>
+#include <fcppt/container/move_range_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>

@@ -8,11 +8,14 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/bit/mask_fwd.hpp>
-#include <fcppt/container/bitfield/object_fwd.hpp>
-#include <fcppt/container/bitfield/proxy_fwd.hpp>
+#include <fcppt/container/bitfield/object_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/container/bitfield/proxy_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/type_traits/value_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::container::bitfield
 {

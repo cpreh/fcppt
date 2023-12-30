@@ -8,7 +8,7 @@
 
 namespace fcppt
 {
-struct no_init;
+struct no_init; // IWYU pragma: export
 
 }
 

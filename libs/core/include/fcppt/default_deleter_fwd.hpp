@@ -8,7 +8,7 @@
 
 namespace fcppt
 {
-struct default_deleter;
+struct default_deleter; // IWYU pragma: export
 
 }
 

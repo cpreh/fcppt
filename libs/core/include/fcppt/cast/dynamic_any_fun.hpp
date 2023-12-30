@@ -7,7 +7,7 @@
 #define FCPPT_CAST_DYNAMIC_ANY_FUN_HPP_INCLUDED
 
 #include <fcppt/cast/dynamic_any.hpp>
-#include <fcppt/cast/dynamic_any_fun_fwd.hpp>
+#include <fcppt/cast/dynamic_any_fun_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference.hpp>
 
 namespace fcppt::cast

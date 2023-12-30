@@ -9,7 +9,7 @@
 namespace fcppt::iterator
 {
 template <typename Iterator>
-class range;
+class range; // IWYU pragma: export
 
 }
 

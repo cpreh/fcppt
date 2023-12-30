@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_OPTION_NAME_SET_HPP_INCLUDED
 
 #include <fcppt/options/option_name.hpp>
-#include <fcppt/options/option_name_comparison.hpp>
+#include <fcppt/options/option_name_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <set>
 #include <fcppt/config/external_end.hpp>

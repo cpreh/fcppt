@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONFIG_COMPILER_HPP_INCLUDED
 #define FCPPT_CONFIG_COMPILER_HPP_INCLUDED
 
-#include <fcppt/config/compiler.h>
-#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/config/compiler.h> // IWYU pragma: export
+#include <fcppt/detail/check_cpp.hpp> // IWYU pragma: keep
 
 #endif

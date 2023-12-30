@@ -6,7 +6,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/detail/static_storage_impl.hpp>
-#include <fcppt/math/matrix/detail/static_storage_fwd.hpp>
+#include <fcppt/math/detail/static_storage_impl.hpp> // IWYU pragma: keep
+#include <fcppt/math/matrix/detail/static_storage_fwd.hpp> // IWYU pragma: export
 
 #endif

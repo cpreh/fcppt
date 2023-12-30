@@ -9,7 +9,7 @@
 namespace fcppt::parse::skipper
 {
 template <typename Left, typename Right>
-class alternative;
+class alternative; // IWYU pragma: export
 }
 
 #endif

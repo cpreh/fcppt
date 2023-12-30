@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Parser>
-class complement;
+class complement; // IWYU pragma: export
 
 }
 

@@ -8,7 +8,7 @@
 
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/parse/error_fwd.hpp>
-#include <fcppt/parse/named_error_fwd.hpp>
+#include <fcppt/parse/named_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>

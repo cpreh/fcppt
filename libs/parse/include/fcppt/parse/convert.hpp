@@ -6,6 +6,7 @@
 #ifndef FCPPT_PARSE_CONVERT_HPP_INCLUDED
 #define FCPPT_PARSE_CONVERT_HPP_INCLUDED
 
-#include <fcppt/parse/convert_impl.hpp>
+#include <fcppt/parse/convert_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/convert_impl.hpp> // IWYU pragma: keep
 
 #endif

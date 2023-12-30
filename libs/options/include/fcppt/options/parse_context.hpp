@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONS_PARSE_CONTEXT_HPP_INCLUDED
 
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_context_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options

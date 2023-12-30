@@ -10,7 +10,7 @@
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object_v.hpp>
-#include <fcppt/either/object_concept.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/config/external_begin.hpp>

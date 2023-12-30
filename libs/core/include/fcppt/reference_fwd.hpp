@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Type>
-class reference;
+class reference; // IWYU pragma: export
 
 }
 

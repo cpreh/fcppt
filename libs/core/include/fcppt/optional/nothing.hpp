@@ -7,6 +7,6 @@
 #define FCPPT_OPTIONAL_NOTHING_HPP_INCLUDED
 
 #include <fcppt/optional/nothing_decl.hpp> // IWYU pragma: export
-#include <fcppt/optional/nothing_impl.hpp>
+#include <fcppt/optional/nothing_impl.hpp> // IWYU pragma: keep
 
 #endif

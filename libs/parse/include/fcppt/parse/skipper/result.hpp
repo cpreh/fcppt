@@ -6,8 +6,8 @@
 #ifndef FCPPT_PARSE_SKIPPER_RESULT_HPP_INCLUDED
 #define FCPPT_PARSE_SKIPPER_RESULT_HPP_INCLUDED
 
-#include <fcppt/either/error.hpp>
-#include <fcppt/parse/error.hpp>
-#include <fcppt/parse/skipper/result_fwd.hpp>
+#include <fcppt/either/error.hpp> // IWYU pragma: keep
+#include <fcppt/parse/error.hpp> // IWYU pragma: keep
+#include <fcppt/parse/skipper/result_fwd.hpp> // IWYU pragma: export
 
 #endif

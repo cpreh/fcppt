@@ -9,7 +9,7 @@
 namespace fcppt::random::distribution
 {
 template <typename Parameters>
-class basic;
+class basic; // IWYU pragma: export
 
 }
 

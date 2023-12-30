@@ -7,10 +7,10 @@
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/object_decl.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_range_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
-#include <fcppt/container/grid/pos_ref_range_fwd.hpp>
+#include <fcppt/container/grid/pos_ref_range_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

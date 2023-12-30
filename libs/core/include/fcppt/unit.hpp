@@ -6,7 +6,7 @@
 #ifndef FCPPT_UNIT_HPP_INCLUDED
 #define FCPPT_UNIT_HPP_INCLUDED
 
-#include <fcppt/unit_fwd.hpp>
+#include <fcppt/unit_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {

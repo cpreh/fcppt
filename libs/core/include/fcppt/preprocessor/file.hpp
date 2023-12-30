@@ -6,7 +6,7 @@
 #ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 
-#include <fcppt/from_std_string.hpp>
+#include <fcppt/from_std_string.hpp> // IWYU pragma: keep
 
 /**
 \brief Prints the current file name

@@ -8,7 +8,7 @@
 
 #include <fcppt/mpl/apply.hpp>
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/apply.hpp>
 #include <fcppt/mpl/list/object.hpp>
 

@@ -9,7 +9,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/intrusive/iterator_fwd.hpp>
-#include <fcppt/intrusive/list_fwd.hpp>
+#include <fcppt/intrusive/list_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::intrusive
 {

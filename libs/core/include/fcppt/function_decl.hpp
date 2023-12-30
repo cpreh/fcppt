@@ -6,7 +6,7 @@
 #ifndef FCPPT_FUNCTION_DECL_HPP_INCLUDED
 #define FCPPT_FUNCTION_DECL_HPP_INCLUDED
 
-#include <fcppt/function_fwd.hpp>
+#include <fcppt/function_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <functional>
 #include <memory>

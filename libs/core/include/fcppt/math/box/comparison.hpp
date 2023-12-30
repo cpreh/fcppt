@@ -6,9 +6,10 @@
 #ifndef FCPPT_MATH_BOX_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_BOX_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/dim/comparison.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

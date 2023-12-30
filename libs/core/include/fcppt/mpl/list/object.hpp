@@ -6,7 +6,7 @@
 #ifndef FCPPT_MPL_LIST_OBJECT_HPP_INCLUDED
 #define FCPPT_MPL_LIST_OBJECT_HPP_INCLUDED
 
-#include <fcppt/mpl/list/object_fwd.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::list
 {

@@ -6,7 +6,8 @@
 #ifndef FCPPT_SHARED_PTR_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_HASH_IMPL_HPP_INCLUDED
 
-#include <fcppt/shared_ptr_hash_decl.hpp>
+#include <fcppt/shared_ptr_hash_decl.hpp> // IWYU pragma: export
+#include <fcppt/shared_ptr_hash_fwd.hpp> // IWYU pragma: export
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>

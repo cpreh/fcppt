@@ -9,7 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/either/construct.hpp>
 #include <fcppt/either/no_error.hpp>
-#include <fcppt/parse/basic_char_impl.hpp>
+#include <fcppt/parse/basic_char_error_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>
@@ -18,7 +18,6 @@
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/skipper/any_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/skipper/make_success.hpp>
 #include <fcppt/parse/skipper/result.hpp>
 
 inline fcppt::parse::skipper::any::any() = default;

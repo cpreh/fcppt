@@ -9,10 +9,10 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/exclude_decl.hpp>
+#include <fcppt/parse/exclude_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/operators/not.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/operators/not.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/sequence.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

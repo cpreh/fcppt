@@ -8,7 +8,7 @@
 
 namespace fcppt::parse::skipper
 {
-class any;
+class any; // IWYU pragma: export
 
 }
 

@@ -9,7 +9,7 @@
 namespace fcppt::container::grid
 {
 template <typename Pos>
-class spiral_iterator;
+class spiral_iterator; // IWYU pragma: export
 
 }
 

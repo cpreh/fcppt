@@ -9,7 +9,7 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/unit_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/basic_string_fwd.hpp>
+#include <fcppt/parse/basic_string_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/is_char.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/tag.hpp>

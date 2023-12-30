@@ -8,8 +8,8 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/nonmovable.hpp>
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/random/generator/basic_pseudo_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/random/generator/basic_pseudo_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::random::generator
 {

@@ -7,7 +7,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_HPP_INCLUDED
 
 #include <fcppt/random/distribution/parameters/normal_decl.hpp> // IWYU pragma: export
-#include <fcppt/random/distribution/parameters/normal_fwd.hpp>
-#include <fcppt/random/distribution/parameters/normal_impl.hpp>
+#include <fcppt/random/distribution/parameters/normal_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/random/distribution/parameters/normal_impl.hpp> // IWYU pragma: keep
 
 #endif

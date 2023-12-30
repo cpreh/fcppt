@@ -7,7 +7,7 @@
 #define FCPPT_OPTIONAL_MOVE_TYPE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue_type.hpp>
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference_type.hpp>
 
 namespace fcppt::optional

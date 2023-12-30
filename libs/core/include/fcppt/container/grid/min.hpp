@@ -6,8 +6,8 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_HPP_INCLUDED
 
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/min_fwd.hpp> // IWYU pragma: export
-#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
 
 #endif

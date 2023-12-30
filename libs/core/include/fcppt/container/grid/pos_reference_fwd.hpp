@@ -9,7 +9,7 @@
 namespace fcppt::container::grid
 {
 template <typename Grid>
-class pos_reference;
+class pos_reference; // IWYU pragma: export
 
 }
 

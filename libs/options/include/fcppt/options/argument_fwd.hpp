@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Label, typename Type>
-class argument;
+class argument; // IWYU pragma: export
 
 }
 

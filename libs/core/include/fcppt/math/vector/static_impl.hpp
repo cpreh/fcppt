@@ -6,9 +6,9 @@
 #ifndef FCPPT_MATH_VECTOR_STATIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_STATIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/detail/static_storage_impl.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/detail/static_storage_impl.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/static_fwd.hpp> // IWYU pragma: export
-#include <fcppt/math/vector/static_decl.hpp>
+#include <fcppt/math/vector/static_decl.hpp> // IWYU pragma: keep
 
 #endif

@@ -9,7 +9,7 @@
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/container/join.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/map.hpp>
@@ -20,9 +20,9 @@
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/separator_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/operators/optional.hpp>
-#include <fcppt/parse/operators/repetition.hpp>
-#include <fcppt/parse/operators/sequence.hpp>
+#include <fcppt/parse/operators/optional.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/repetition.hpp> // IWYU pragma: keep
+#include <fcppt/parse/operators/sequence.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

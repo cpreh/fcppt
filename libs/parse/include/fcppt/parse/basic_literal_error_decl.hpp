@@ -7,9 +7,9 @@
 #define FCPPT_PARSE_BASIC_LITERAL_ERROR_DECL_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/parse/basic_literal_error_fwd.hpp>
+#include <fcppt/parse/basic_literal_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/expected_tag_fwd.hpp>
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/position.hpp>

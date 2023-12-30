@@ -7,8 +7,8 @@
 #define FCPPT_EITHER_SUCCESS_OPT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/either/object_concept.hpp>
-#include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
 

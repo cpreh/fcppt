@@ -6,7 +6,7 @@
 #ifndef FCPPT_EXTRACT_FROM_STRING_LOCALE_FMT_HPP_INCLUDED
 #define FCPPT_EXTRACT_FROM_STRING_LOCALE_FMT_HPP_INCLUDED
 
-#include <fcppt/concepts/string.hpp>
+#include <fcppt/concepts/string.hpp> // IWYU pragma: keep
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/nothing.hpp>

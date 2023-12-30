@@ -18,10 +18,9 @@
 #include <fcppt/parse/set_position.hpp>
 #include <fcppt/parse/skipper/make_failure.hpp>
 #include <fcppt/parse/skipper/make_success.hpp>
-#include <fcppt/parse/skipper/not_decl.hpp>
+#include <fcppt/parse/skipper/not_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/result.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

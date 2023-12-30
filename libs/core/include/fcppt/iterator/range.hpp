@@ -6,8 +6,8 @@
 #ifndef FCPPT_ITERATOR_RANGE_HPP_INCLUDED
 #define FCPPT_ITERATOR_RANGE_HPP_INCLUDED
 
-#include <fcppt/iterator/range_comparison.hpp>
+#include <fcppt/iterator/range_comparison.hpp> // IWYU pragma: export
 #include <fcppt/iterator/range_decl.hpp> // IWYU pragma: export
-#include <fcppt/iterator/range_impl.hpp>
+#include <fcppt/iterator/range_impl.hpp> // IWYU pragma: keep
 
 #endif

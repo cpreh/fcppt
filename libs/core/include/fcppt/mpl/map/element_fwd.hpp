@@ -14,7 +14,7 @@ namespace fcppt::mpl::map
 An element of a map is a key-value pair.
 */
 template<typename Key, typename Value>
-struct element;
+struct element; // IWYU pragma: export
 
 }
 

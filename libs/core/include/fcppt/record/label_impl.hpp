@@ -7,7 +7,7 @@
 #define FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 
 #include <fcppt/record/element_init_impl.hpp>
-#include <fcppt/record/label_decl.hpp>
+#include <fcppt/record/label_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

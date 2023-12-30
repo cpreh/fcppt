@@ -7,7 +7,7 @@
 #define FCPPT_ENUM_ARRAY_DECL_HPP_INCLUDED
 
 #include <fcppt/array/object_impl.hpp>
-#include <fcppt/enum/array_fwd.hpp>
+#include <fcppt/enum/array_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/enum/size.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

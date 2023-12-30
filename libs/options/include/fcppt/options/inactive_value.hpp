@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_INACTIVE_VALUE_HPP_INCLUDED
 #define FCPPT_OPTIONS_INACTIVE_VALUE_HPP_INCLUDED
 
-#include <fcppt/strong_typedef.hpp>
-#include <fcppt/options/inactive_value_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/options/inactive_value_fwd.hpp> // IWYU pragma: export
 
 #endif

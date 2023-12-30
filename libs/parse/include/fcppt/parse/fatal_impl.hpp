@@ -11,7 +11,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error_impl.hpp>
-#include <fcppt/parse/fatal_decl.hpp>
+#include <fcppt/parse/fatal_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/is_fatal.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/config/external_begin.hpp>

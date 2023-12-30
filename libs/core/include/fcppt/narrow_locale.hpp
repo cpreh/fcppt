@@ -7,7 +7,6 @@
 #define FCPPT_NARROW_LOCALE_HPP_INCLUDED
 
 #include <fcppt/optional_std_string.hpp>
-#include <fcppt/string_conv_locale.hpp>
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>

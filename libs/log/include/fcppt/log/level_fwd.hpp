@@ -8,7 +8,7 @@
 
 namespace fcppt::log
 {
-enum class level;
+enum class level; // IWYU pragma: export
 
 }
 

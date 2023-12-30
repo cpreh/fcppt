@@ -7,7 +7,7 @@
 #define FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
+#include <fcppt/unique_ptr_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <type_traits>

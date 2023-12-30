@@ -7,7 +7,7 @@
 #define FCPPT_BIT_MASK_HPP_INCLUDED
 
 #include <fcppt/bit/mask_decl.hpp> // IWYU pragma: export
-#include <fcppt/bit/mask_fwd.hpp>
-#include <fcppt/bit/mask_impl.hpp>
+#include <fcppt/bit/mask_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/bit/mask_impl.hpp> // IWYU pragma: keep
 
 #endif

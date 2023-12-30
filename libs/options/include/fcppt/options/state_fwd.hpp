@@ -8,7 +8,7 @@
 
 namespace fcppt::options
 {
-class state;
+class state; // IWYU pragma: export
 
 }
 

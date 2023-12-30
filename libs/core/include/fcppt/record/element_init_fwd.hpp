@@ -9,7 +9,7 @@
 namespace fcppt::record
 {
 template <typename Tag, typename Type>
-class element_init;
+class element_init; // IWYU pragma: export
 
 }
 

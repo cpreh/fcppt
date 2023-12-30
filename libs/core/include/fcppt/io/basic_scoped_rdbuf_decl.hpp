@@ -8,7 +8,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
+#include <fcppt/io/basic_scoped_rdbuf_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>

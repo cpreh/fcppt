@@ -7,7 +7,7 @@
 #define FCPPT_MPL_MAP_HAS_KEY_V_HPP_INCLUDED
 
 #include <fcppt/mpl/map/has_key.hpp>
-#include <fcppt/mpl/map/object_concept.hpp>
+#include <fcppt/mpl/map/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::map
 {

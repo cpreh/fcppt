@@ -9,7 +9,7 @@
 namespace fcppt::container::tree
 {
 template <typename T>
-class object;
+class object; // IWYU pragma: export
 
 }
 

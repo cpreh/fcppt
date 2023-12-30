@@ -7,9 +7,9 @@
 #define FCPPT_MPL_LIST_MAP_HPP_INCLUDED
 
 #include <fcppt/mpl/lambda.hpp>
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::list
 {

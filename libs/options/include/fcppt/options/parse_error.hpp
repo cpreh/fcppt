@@ -6,9 +6,9 @@
 #ifndef FCPPT_OPTIONS_PARSE_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_ERROR_HPP_INCLUDED
 
-#include <fcppt/options/error.hpp>
-#include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/error.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_error.hpp> // IWYU pragma: keep
 #include <fcppt/options/parse_error_fwd.hpp> // IWYU pragma: export
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 
 #endif

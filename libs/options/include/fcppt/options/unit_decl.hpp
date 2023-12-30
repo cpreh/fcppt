@@ -12,7 +12,7 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
-#include <fcppt/options/unit_fwd.hpp>
+#include <fcppt/options/unit_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/object_fwd.hpp>

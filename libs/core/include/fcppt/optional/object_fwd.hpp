@@ -9,7 +9,7 @@
 namespace fcppt::optional
 {
 template <typename T>
-class object;
+class object; // IWYU pragma: export
 
 }
 

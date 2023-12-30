@@ -7,7 +7,7 @@
 #define FCPPT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/function_decl.hpp> // IWYU pragma: export
-#include <fcppt/function_fwd.hpp>
-#include <fcppt/function_impl.hpp>
+#include <fcppt/function_fwd.hpp> // IWYU pragma: export
+#include <fcppt/function_impl.hpp> // IWYU pragma: keep
 
 #endif

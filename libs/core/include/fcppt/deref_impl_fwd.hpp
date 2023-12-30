@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Arg, typename Enable = void>
-struct deref_impl;
+struct deref_impl; // IWYU pragma: export
 
 }
 

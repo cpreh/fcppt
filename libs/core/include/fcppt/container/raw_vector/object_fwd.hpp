@@ -13,7 +13,7 @@
 namespace fcppt::container::raw_vector
 {
 template <typename T, typename A = std::allocator<T>>
-class object;
+class object; // IWYU pragma: export
 
 }
 

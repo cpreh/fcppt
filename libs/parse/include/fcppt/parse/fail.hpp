@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_FAIL_HPP_INCLUDED
 
 #include <fcppt/parse/fail_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/fail_impl.hpp>
+#include <fcppt/parse/fail_impl.hpp> // IWYU pragma: keep
 
 #endif

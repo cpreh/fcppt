@@ -7,11 +7,11 @@
 #define FCPPT_EITHER_BIND_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object_v.hpp>
-#include <fcppt/either/object_concept.hpp>
-#include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/either/success_move_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

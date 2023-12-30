@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Label>
-class switch_;
+class switch_; // IWYU pragma: export
 
 }
 

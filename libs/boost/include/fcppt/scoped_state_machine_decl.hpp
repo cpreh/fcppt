@@ -9,7 +9,7 @@
 
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_decl.hpp>
-#include <fcppt/scoped_state_machine_fwd.hpp>
+#include <fcppt/scoped_state_machine_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {

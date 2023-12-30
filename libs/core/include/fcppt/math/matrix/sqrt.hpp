@@ -9,7 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/inverse.hpp>

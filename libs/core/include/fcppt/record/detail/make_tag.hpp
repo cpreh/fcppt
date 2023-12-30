@@ -6,7 +6,7 @@
 #ifndef FCPPT_RECORD_DETAIL_MAKE_TAG_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_MAKE_TAG_HPP_INCLUDED
 
-#include <fcppt/record/detail/tag_base.hpp>
+#include <fcppt/record/detail/tag_base.hpp> // IWYU pragma: keep
 #include <fcppt/record/detail/tag_name.hpp>
 
 #define FCPPT_RECORD_DETAIL_MAKE_TAG(name) \

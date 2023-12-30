@@ -6,7 +6,7 @@
 #ifndef FCPPT_REFERENCE_DECL_HPP_INCLUDED
 #define FCPPT_REFERENCE_DECL_HPP_INCLUDED
 
-#include <fcppt/reference_fwd.hpp>
+#include <fcppt/reference_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {

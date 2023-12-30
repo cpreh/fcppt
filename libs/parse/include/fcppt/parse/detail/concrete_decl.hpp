@@ -12,7 +12,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/detail/concrete_fwd.hpp>
+#include <fcppt/parse/detail/concrete_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::parse::detail
 {

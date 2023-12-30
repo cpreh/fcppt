@@ -8,6 +8,7 @@
 
 #include <fcppt/mpl/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

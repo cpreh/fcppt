@@ -7,7 +7,7 @@
 #define FCPPT_RANDOM_VARIATE_DECL_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/random/variate_fwd.hpp>
+#include <fcppt/random/variate_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::random
 {

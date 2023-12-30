@@ -6,7 +6,7 @@
 #ifndef FCPPT_ARGS_RANGE_HPP_INCLUDED
 #define FCPPT_ARGS_RANGE_HPP_INCLUDED
 
-#include <fcppt/args_range_fwd.hpp>
-#include <fcppt/iterator/range_impl.hpp>
+#include <fcppt/args_range_fwd.hpp> // IWYU pragma: export
+#include <fcppt/iterator/range_impl.hpp> // IWYU pragma: keep
 
 #endif

@@ -9,20 +9,20 @@
 #include <fcppt/config/compiler.hpp>
 
 #if defined(FCPPT_CONFIG_GCC_COMPILER)
-#include <fcppt/from_std_string.hpp>
+#include <fcppt/from_std_string.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
-#include <string_view>
+#include <string_view> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 #define FCPPT_PP_DETAIL_FUNCTION \
   fcppt::from_std_string(std::string_view{static_cast<char const *>(__PRETTY_FUNCTION__)})
 #elif defined(FCPPT_CONFIG_MSVC_COMPILER)
-#include <fcppt/from_std_string.hpp>
+#include <fcppt/from_std_string.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
-#include <string_view>
+#include <string_view> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 #define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(std::string_view{__FUNCSIG__})
 #else
-#include <fcppt/string.hpp>
+#include <fcppt/string.hpp> // IWYU pragma: keep
 
 #define FCPPT_PP_DETAIL_FUNCTION \
   fcppt::string {}

@@ -8,8 +8,8 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/rotation_2d.hpp>
-#include <fcppt/math/matrix/vector.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/matrix/vector.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 

@@ -8,9 +8,9 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/make_cref.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/options/deref.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/left.hpp>

@@ -8,7 +8,7 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/int_fwd.hpp>
+#include <fcppt/parse/int_fwd.hpp> // IWYU pragma: export
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/config/external_begin.hpp>

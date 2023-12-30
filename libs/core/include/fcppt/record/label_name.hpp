@@ -10,7 +10,7 @@
 #include <fcppt/record/is_label.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <typeinfo>
+#include <typeinfo> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::record

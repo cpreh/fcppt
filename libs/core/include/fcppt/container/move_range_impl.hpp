@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_MOVE_RANGE_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_MOVE_RANGE_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/move_range_decl.hpp>
+#include <fcppt/container/move_range_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <utility>

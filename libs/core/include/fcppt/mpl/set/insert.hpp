@@ -8,7 +8,7 @@
 
 #include <fcppt/mpl/set/contains.hpp>
 #include <fcppt/mpl/set/object.hpp>
-#include <fcppt/mpl/set/object_concept.hpp>
+#include <fcppt/mpl/set/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl::set
 {

@@ -15,7 +15,7 @@
 #include <fcppt/options/parse_context_fwd.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
-#include <fcppt/options/switch_fwd.hpp>
+#include <fcppt/options/switch_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/usage_fwd.hpp>
 
 namespace fcppt::options

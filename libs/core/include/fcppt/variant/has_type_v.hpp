@@ -7,7 +7,7 @@
 #define FCPPT_VARIANT_HAS_TYPE_V_HPP_INCLUDED
 
 #include <fcppt/variant/has_type.hpp>
-#include <fcppt/variant/object_concept.hpp>
+#include <fcppt/variant/object_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::variant
 {

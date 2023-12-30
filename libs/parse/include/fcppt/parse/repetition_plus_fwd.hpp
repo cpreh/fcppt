@@ -9,7 +9,7 @@
 namespace fcppt::parse
 {
 template <typename Parser>
-class repetition_plus;
+class repetition_plus; // IWYU pragma: export
 
 }
 

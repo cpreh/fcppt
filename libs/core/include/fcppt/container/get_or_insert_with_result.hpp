@@ -6,6 +6,7 @@
 #ifndef FCPPT_CONTAINER_GET_OR_INSERT_WITH_RESULT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GET_OR_INSERT_WITH_RESULT_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/container/get_or_insert_result.hpp>
 #include <fcppt/optional/maybe.hpp>

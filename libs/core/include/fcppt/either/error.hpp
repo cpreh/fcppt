@@ -7,7 +7,7 @@
 #define FCPPT_EITHER_ERROR_HPP_INCLUDED
 
 #include <fcppt/either/error_fwd.hpp> // IWYU pragma: export
-#include <fcppt/either/no_error.hpp>
-#include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/no_error.hpp> // IWYU pragma: keep
+#include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
 
 #endif

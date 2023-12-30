@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_INDEX_MAP_DECL_HPP_INCLUDED
 
 #include <fcppt/function_fwd.hpp>
-#include <fcppt/container/index_map_fwd.hpp>
+#include <fcppt/container/index_map_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

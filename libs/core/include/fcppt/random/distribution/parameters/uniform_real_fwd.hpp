@@ -9,7 +9,7 @@
 namespace fcppt::random::distribution::parameters
 {
 template <typename IntType>
-class uniform_real;
+class uniform_real; // IWYU pragma: export
 
 }
 

@@ -9,7 +9,7 @@
 namespace fcppt::either
 {
 template <typename Failure, typename Success>
-class object;
+class object; // IWYU pragma: export
 
 }
 

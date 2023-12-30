@@ -9,7 +9,7 @@
 namespace fcppt
 {
 template <typename Type>
-class recursive;
+class recursive; // IWYU pragma: export
 
 }
 

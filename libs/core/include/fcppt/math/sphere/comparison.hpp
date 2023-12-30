@@ -6,8 +6,9 @@
 #ifndef FCPPT_MATH_SPHERE_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/sphere/object_impl.hpp>
-#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
 
 namespace fcppt::math::sphere
 {

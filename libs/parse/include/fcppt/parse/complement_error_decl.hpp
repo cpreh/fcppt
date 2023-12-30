@@ -9,7 +9,7 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/parse/basic_char_set_container.hpp>
-#include <fcppt/parse/complement_error_fwd.hpp>
+#include <fcppt/parse/complement_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/position.hpp>
 

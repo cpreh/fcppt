@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_REP_DECL_HPP_INCLUDED
 
 #include <fcppt/declare_strong_typedef.hpp>
-#include <fcppt/container/raw_vector/rep_fwd.hpp>
+#include <fcppt/container/raw_vector/rep_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>

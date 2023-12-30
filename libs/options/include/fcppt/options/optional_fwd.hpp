@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Parser>
-class optional;
+class optional; // IWYU pragma: export
 
 }
 

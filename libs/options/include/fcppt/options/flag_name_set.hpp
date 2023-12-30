@@ -6,7 +6,7 @@
 #ifndef FCPPT_OPTIONS_FLAG_NAME_SET_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_NAME_SET_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_comparison.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <set>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_NO_INIT_HPP_INCLUDED
 #define FCPPT_NO_INIT_HPP_INCLUDED
 
-#include <fcppt/no_init_fwd.hpp>
+#include <fcppt/no_init_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt
 {

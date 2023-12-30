@@ -7,14 +7,14 @@
 #define FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/container/to_iterator_type.hpp>
-#include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/dim.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/dim_type.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/object_decl.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_iterator_impl.hpp>
-#include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos_ref_iterator_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
-#include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/iterator/base_decl.hpp> // IWYU pragma: keep
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

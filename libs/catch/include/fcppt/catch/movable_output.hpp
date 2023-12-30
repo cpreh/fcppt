@@ -11,6 +11,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_tostring.hpp>
 #include <ostream>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::catch_

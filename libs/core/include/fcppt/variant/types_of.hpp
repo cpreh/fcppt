@@ -6,7 +6,7 @@
 #ifndef FCPPT_VARIANT_TYPES_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_TYPES_OF_HPP_INCLUDED
 
-#include <fcppt/variant/object_concept.hpp>
+#include <fcppt/variant/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/variant/detail/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

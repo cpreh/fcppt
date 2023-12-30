@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_NAMED_HPP_INCLUDED
 
 #include <fcppt/parse/named_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/named_impl.hpp>
+#include <fcppt/parse/named_impl.hpp> // IWYU pragma: keep
 
 #endif

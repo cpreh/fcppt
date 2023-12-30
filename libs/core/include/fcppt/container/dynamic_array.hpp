@@ -7,6 +7,6 @@
 #define FCPPT_CONTAINER_DYNAMIC_ARRAY_HPP_INCLUDED
 
 #include <fcppt/container/dynamic_array_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/dynamic_array_impl.hpp>
+#include <fcppt/container/dynamic_array_impl.hpp> // IWYU pragma: keep
 
 #endif

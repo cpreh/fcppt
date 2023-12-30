@@ -6,7 +6,7 @@
 #ifndef FCPPT_LOG_LEVEL_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_HPP_INCLUDED
 
-#include <fcppt/log/level_fwd.hpp>
+#include <fcppt/log/level_fwd.hpp> // IWYU pragma: keep
 
 namespace fcppt::log
 {

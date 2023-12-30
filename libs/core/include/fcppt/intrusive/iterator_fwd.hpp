@@ -9,7 +9,7 @@
 namespace fcppt::intrusive
 {
 template <typename Type>
-class iterator;
+class iterator; // IWYU pragma: export
 
 }
 

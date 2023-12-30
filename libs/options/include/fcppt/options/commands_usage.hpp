@@ -7,8 +7,8 @@
 #define FCPPT_OPTIONS_COMMANDS_USAGE_HPP_INCLUDED
 
 #include <fcppt/recursive.hpp>
-#include <fcppt/recursive_comparison.hpp>
-#include <fcppt/options/commands_usage_fwd.hpp>
+#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/options/commands_usage_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/sub_command_usage.hpp>
 #include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>

@@ -10,7 +10,7 @@
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/sequence_fwd.hpp>
+#include <fcppt/parse/sequence_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/sequence_result.hpp>
 #include <fcppt/parse/tag.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>

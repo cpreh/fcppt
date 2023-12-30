@@ -11,8 +11,8 @@
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/holds_type.hpp>
-#include <fcppt/variant/object_concept.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

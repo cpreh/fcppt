@@ -6,10 +6,11 @@
 #ifndef FCPPT_IO_BASIC_SCOPED_RDBUF_IMPL_HPP_INCLUDED
 #define FCPPT_IO_BASIC_SCOPED_RDBUF_IMPL_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
-#include <ios>
-#include <streambuf>
+#include <ios> // IWYU pragma: keep
+#include <streambuf> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 template <typename Ch, typename Traits>

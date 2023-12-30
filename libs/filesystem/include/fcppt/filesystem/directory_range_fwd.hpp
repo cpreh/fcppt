@@ -8,7 +8,7 @@
 
 namespace fcppt::filesystem
 {
-class directory_range;
+class directory_range; // IWYU pragma: export
 
 }
 

@@ -8,7 +8,7 @@
 
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/list/apply.hpp>
-#include <fcppt/mpl/list/object_concept.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/push_front.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

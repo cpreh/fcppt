@@ -10,7 +10,8 @@
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/convert_if_decl.hpp>
+#include <fcppt/parse/convert_if_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/custom_error.hpp>
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_variant_impl.hpp>

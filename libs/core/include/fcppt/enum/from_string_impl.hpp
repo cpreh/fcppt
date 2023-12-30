@@ -6,7 +6,7 @@
 #ifndef FCPPT_ENUM_FROM_STRING_IMPL_HPP_INCLUDED
 #define FCPPT_ENUM_FROM_STRING_IMPL_HPP_INCLUDED
 
-#include <fcppt/enum/from_string_impl_fwd.hpp>
+#include <fcppt/enum/from_string_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/enum/index_of_array.hpp>
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/names.hpp>

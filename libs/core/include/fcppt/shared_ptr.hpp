@@ -7,7 +7,7 @@
 #define FCPPT_SHARED_PTR_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_decl.hpp> // IWYU pragma: export
-#include <fcppt/shared_ptr_fwd.hpp>
-#include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/shared_ptr_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/shared_ptr_impl.hpp> // IWYU pragma: keep
 
 #endif

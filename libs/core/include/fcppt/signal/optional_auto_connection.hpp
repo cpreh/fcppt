@@ -7,8 +7,8 @@
 #ifndef FCPPT_SIGNAL_OPTIONAL_AUTO_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_OPTIONAL_AUTO_CONNECTION_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
-#include <fcppt/signal/auto_connection.hpp>
-#include <fcppt/signal/optional_auto_connection_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/signal/auto_connection.hpp> // IWYU pragma: keep
+#include <fcppt/signal/optional_auto_connection_fwd.hpp> // IWYU pragma: export
 
 #endif

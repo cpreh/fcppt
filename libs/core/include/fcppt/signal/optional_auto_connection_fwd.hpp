@@ -10,9 +10,7 @@
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 
-namespace fcppt
-{
-namespace signal
+namespace fcppt::signal
 {
 /**
 \brief An optional auto connection
@@ -21,7 +19,6 @@ namespace signal
 */
 using optional_auto_connection = fcppt::optional::object<fcppt::signal::auto_connection>;
 
-}
 }
 
 #endif

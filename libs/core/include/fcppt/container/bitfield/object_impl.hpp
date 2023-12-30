@@ -8,7 +8,8 @@
 
 #include <fcppt/no_init.hpp>
 #include <fcppt/container/bitfield/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/bitfield/proxy_impl.hpp>
+#include <fcppt/container/bitfield/proxy_impl.hpp> // IWYU pragma: keep
+#include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/null_array.hpp>
 
 template <typename ElementType, typename InternalType>

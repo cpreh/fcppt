@@ -7,7 +7,7 @@
 #define FCPPT_MPL_SET_TO_LIST_HPP_INCLUDED
 
 #include <fcppt/mpl/list/object_fwd.hpp>
-#include <fcppt/mpl/set/object_concept.hpp>
+#include <fcppt/mpl/set/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/set/object_fwd.hpp>
 
 namespace fcppt::mpl::set

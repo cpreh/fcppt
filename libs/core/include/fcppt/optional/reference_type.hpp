@@ -6,9 +6,9 @@
 #ifndef FCPPT_OPTIONAL_REFERENCE_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_REFERENCE_TYPE_HPP_INCLUDED
 
-#include <fcppt/optional/object_concept.hpp>
+#include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::optional

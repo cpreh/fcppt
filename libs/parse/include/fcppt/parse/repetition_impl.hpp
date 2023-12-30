@@ -18,7 +18,7 @@
 #include <fcppt/parse/get_position.hpp>
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/position.hpp>
-#include <fcppt/parse/repetition_decl.hpp>
+#include <fcppt/parse/repetition_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/set_position.hpp>

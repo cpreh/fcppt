@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_EPSILON_HPP_INCLUDED
 
 #include <fcppt/parse/epsilon_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/epsilon_impl.hpp>
+#include <fcppt/parse/epsilon_impl.hpp> // IWYU pragma: keep
 
 #endif

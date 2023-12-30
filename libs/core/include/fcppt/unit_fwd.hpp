@@ -8,7 +8,7 @@
 
 namespace fcppt
 {
-struct unit;
+struct unit; // IWYU pragma: export
 
 }
 

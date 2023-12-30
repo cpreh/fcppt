@@ -7,7 +7,7 @@
 #define FCPPT_CONTAINER_GET_OR_INSERT_RESULT_HPP_INCLUDED
 
 #include <fcppt/container/get_or_insert_result_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/get_or_insert_result_fwd.hpp>
-#include <fcppt/container/get_or_insert_result_impl.hpp>
+#include <fcppt/container/get_or_insert_result_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/container/get_or_insert_result_impl.hpp> // IWYU pragma: keep
 
 #endif

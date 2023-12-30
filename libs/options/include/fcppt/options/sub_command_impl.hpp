@@ -8,7 +8,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/options/optional_help_text.hpp>
-#include <fcppt/options/sub_command_decl.hpp>
+#include <fcppt/options/sub_command_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

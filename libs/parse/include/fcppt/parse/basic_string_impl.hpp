@@ -10,7 +10,7 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/parse/basic_char_impl.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>

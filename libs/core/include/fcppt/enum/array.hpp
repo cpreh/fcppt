@@ -6,9 +6,9 @@
 #ifndef FCPPT_ENUM_ARRAY_HPP_INCLUDED
 #define FCPPT_ENUM_ARRAY_HPP_INCLUDED
 
-#include <fcppt/enum/array_comparison.hpp>
+#include <fcppt/enum/array_comparison.hpp> // IWYU pragma: export
 #include <fcppt/enum/array_decl.hpp> // IWYU pragma: export
-#include <fcppt/enum/array_fwd.hpp>
-#include <fcppt/enum/array_impl.hpp>
+#include <fcppt/enum/array_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/enum/array_impl.hpp> // IWYU pragma: keep
 
 #endif

@@ -9,7 +9,7 @@
 #include <fcppt/output.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/mpl/size_type.hpp>
 #include <fcppt/mpl/list/at.hpp>

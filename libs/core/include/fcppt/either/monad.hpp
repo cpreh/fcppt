@@ -6,11 +6,11 @@
 #ifndef FCPPT_EITHER_MONAD_HPP_INCLUDED
 #define FCPPT_EITHER_MONAD_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable_move.hpp>
-#include <fcppt/concepts/move_constructible.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
+#include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_success.hpp>
-#include <fcppt/either/object_concept.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_move_type.hpp>
 #include <fcppt/either/success_type.hpp>

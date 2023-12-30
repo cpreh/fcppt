@@ -7,7 +7,7 @@
 #define FCPPT_FILESYSTEM_DIRECTORY_RANGE_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/filesystem/directory_range_fwd.hpp>
+#include <fcppt/filesystem/directory_range_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>

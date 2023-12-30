@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_HASH_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_HASH_DECL_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/hash_fwd.hpp>
+#include <fcppt/container/bitfield/hash_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>

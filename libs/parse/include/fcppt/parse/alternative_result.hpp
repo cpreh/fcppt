@@ -10,7 +10,6 @@
 #include <fcppt/mpl/list/unique.hpp>
 #include <fcppt/parse/detail/alternative_list.hpp>
 #include <fcppt/parse/detail/alternative_result.hpp>
-#include <fcppt/variant/object_fwd.hpp>
 
 namespace fcppt::parse
 {

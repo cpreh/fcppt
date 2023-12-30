@@ -10,7 +10,7 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
-#include <fcppt/math/matrix/object_fwd.hpp>
+#include <fcppt/math/matrix/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>

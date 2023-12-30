@@ -9,10 +9,9 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
-#include <fcppt/concepts/invocable_move.hpp>
+#include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/either/failure_type.hpp>
-#include <fcppt/either/is_object.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/either/success_type.hpp>

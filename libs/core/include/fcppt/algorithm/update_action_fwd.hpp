@@ -8,7 +8,7 @@
 
 namespace fcppt::algorithm
 {
-enum class update_action;
+enum class update_action; // IWYU pragma: export
 
 }
 

@@ -6,8 +6,8 @@
 #ifndef FCPPT_INTRUSIVE_LIST_IMPL_HPP_INCLUDED
 #define FCPPT_INTRUSIVE_LIST_IMPL_HPP_INCLUDED
 
-#include <fcppt/intrusive/base_impl.hpp>
-#include <fcppt/intrusive/iterator_impl.hpp>
+#include <fcppt/intrusive/base_impl.hpp> // IWYU pragma: keep
+#include <fcppt/intrusive/iterator_impl.hpp> // IWYU pragma: keep
 #include <fcppt/intrusive/list_decl.hpp> // IWYU pragma: export
 
 template <typename Type>

@@ -6,7 +6,6 @@
 #ifndef FCPPT_MATH_INTERVAL_DISTANCE_HPP_INCLUDED
 #define FCPPT_MATH_INTERVAL_DISTANCE_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

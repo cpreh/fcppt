@@ -6,11 +6,11 @@
 #ifndef FCPPT_CHAR_LITERAL_HPP_INCLUDED
 #define FCPPT_CHAR_LITERAL_HPP_INCLUDED
 
-#include <fcppt/identity.hpp>
-#include <fcppt/detail/char_literal.hpp>
-#include <fcppt/detail/char_types.hpp>
-#include <fcppt/detail/make_char_literals.hpp>
-#include <fcppt/mpl/list/as_tuple.hpp>
+#include <fcppt/identity.hpp> // IWYU pragma: keep
+#include <fcppt/detail/char_literal.hpp> // IWYU pragma: keep
+#include <fcppt/detail/char_types.hpp> // IWYU pragma: keep
+#include <fcppt/detail/make_char_literals.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/list/as_tuple.hpp> // IWYU pragma: keep
 
 /**
 \brief A char or wchar_t literal depending on a type.

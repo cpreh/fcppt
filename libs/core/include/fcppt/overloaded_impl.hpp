@@ -6,7 +6,7 @@
 #ifndef FCPPT_OVERLOADED_IMPL_HPP_INCLUDED
 #define FCPPT_OVERLOADED_IMPL_HPP_INCLUDED
 
-#include <fcppt/overloaded_decl.hpp>
+#include <fcppt/overloaded_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

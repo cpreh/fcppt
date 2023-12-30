@@ -8,7 +8,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/recursive_decl.hpp> // IWYU pragma: export
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp> // IWYU pragma: keep
 
 template <typename Type>
 fcppt::recursive<Type>::recursive(Type const &_value) : impl_{fcppt::make_unique_ptr<Type>(_value)}

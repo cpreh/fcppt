@@ -10,7 +10,7 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
-#include <fcppt/parse/convert_if_fwd.hpp>
+#include <fcppt/parse/convert_if_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/custom_error_fwd.hpp>
 #include <fcppt/parse/position_fwd.hpp>
 #include <fcppt/parse/result_fwd.hpp>

@@ -6,7 +6,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_BASIC_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_BASIC_DECL_HPP_INCLUDED
 
-#include <fcppt/random/distribution/basic_fwd.hpp>
+#include <fcppt/random/distribution/basic_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>

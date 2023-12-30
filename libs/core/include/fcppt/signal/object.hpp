@@ -8,7 +8,7 @@
 #define FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 
 #include <fcppt/signal/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/signal/object_fwd.hpp>
-#include <fcppt/signal/object_impl.hpp>
+#include <fcppt/signal/object_fwd.hpp> // IWYU pragma: export
+#include <fcppt/signal/object_impl.hpp> // IWYU pragma: keep
 
 #endif

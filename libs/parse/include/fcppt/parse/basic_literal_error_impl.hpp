@@ -6,7 +6,8 @@
 #ifndef FCPPT_PARSE_BASIC_LITERAL_ERROR_IMPL_HPP_INCLUDED
 #define FCPPT_PARSE_BASIC_LITERAL_ERROR_IMPL_HPP_INCLUDED
 
-#include <fcppt/parse/basic_literal_error_decl.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/parse/basic_literal_error_decl.hpp> // IWYU pragma: export
 
 template <typename Ch>
 fcppt::parse::basic_literal_error<Ch>::basic_literal_error(

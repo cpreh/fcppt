@@ -9,7 +9,7 @@
 namespace fcppt::container
 {
 template <typename Reference>
-class get_or_insert_result;
+class get_or_insert_result; // IWYU pragma: export
 
 }
 

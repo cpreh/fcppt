@@ -14,7 +14,7 @@
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/sequence_result.hpp>
 #include <fcppt/parse/tag.hpp>
-#include <fcppt/parse/with_location_fwd.hpp>
+#include <fcppt/parse/with_location_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

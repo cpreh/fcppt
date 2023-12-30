@@ -11,7 +11,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <functional>
-#include <tuple>
+#include <tuple> // IWYU pragma: keep
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

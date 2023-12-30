@@ -6,9 +6,9 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_HPP_INCLUDED
 
-#include <fcppt/container/grid/comparison.hpp>
+#include <fcppt/container/grid/comparison.hpp> // IWYU pragma: export
 #include <fcppt/container/grid/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/grid/object_fwd.hpp>
-#include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/object_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/object_impl.hpp> // IWYU pragma: keep
 
 #endif

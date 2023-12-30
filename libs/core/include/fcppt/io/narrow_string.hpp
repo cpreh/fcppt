@@ -10,7 +10,6 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
-#include <locale>
 #include <string>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>

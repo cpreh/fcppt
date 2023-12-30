@@ -9,9 +9,12 @@
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/parse/basic_stream_fwd.hpp>
 #include <fcppt/parse/is_char.hpp>
-#include <fcppt/parse/skipper/basic_string_fwd.hpp>
+#include <fcppt/parse/skipper/basic_string_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/parse/skipper/result_fwd.hpp>
 #include <fcppt/parse/skipper/tag.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::parse::skipper
 {

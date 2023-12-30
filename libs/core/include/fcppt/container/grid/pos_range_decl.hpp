@@ -6,9 +6,9 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
-#include <fcppt/container/grid/pos_range_fwd.hpp>
+#include <fcppt/container/grid/pos_range_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>

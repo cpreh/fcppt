@@ -7,7 +7,7 @@
 #define FCPPT_MPL_APPLY_V_HPP_INCLUDED
 
 #include <fcppt/mpl/apply.hpp>
-#include <fcppt/mpl/lambda_concept.hpp>
+#include <fcppt/mpl/lambda_concept.hpp> // IWYU pragma: keep
 
 namespace fcppt::mpl
 {

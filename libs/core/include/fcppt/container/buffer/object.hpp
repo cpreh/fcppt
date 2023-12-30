@@ -7,6 +7,6 @@
 #define FCPPT_CONTAINER_BUFFER_OBJECT_HPP_INCLUDED
 
 #include <fcppt/container/buffer/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/container/buffer/object_impl.hpp>
+#include <fcppt/container/buffer/object_impl.hpp> // IWYU pragma: keep
 
 #endif

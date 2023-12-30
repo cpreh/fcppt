@@ -8,7 +8,7 @@
 
 #include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/object.hpp>
-#include <fcppt/mpl/map/element_concept.hpp>
+#include <fcppt/mpl/map/element_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/map/element_key.hpp>
 
 namespace fcppt::mpl::map

@@ -4,7 +4,7 @@ include(
 
 option(
 	FCPPT_UTILS_BUILD_HEADERS
-	"Build header files as well. This is useful for compile_commands.json. Don't use it to do an actual build."
+	"Build header files as well. This is useful for running misc-include-cleaner on your build."
 	FALSE
 )
 
@@ -12,6 +12,30 @@ function(
 	fcppt_utils_add_headers
 	ALL_FILES
 )
+	set(
+		MULTI_ARGS
+		HEADER_ONLY_EXCEPTIONS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
+	foreach(
+		EXCLUDE_FILE
+		${_HEADER_ONLY_EXCEPTIONS}
+	)
+		list(
+			REMOVE_ITEM
+			ALL_FILES
+			${CMAKE_SOURCE_DIR}/${EXCLUDE_FILE}
+		)
+	endforeach()
+
 	foreach(
 		CUR_FILE
 		${ALL_FILES}
@@ -50,6 +74,8 @@ function(
 				PROPERTIES
 				LANGUAGE
 				${LANGUAGE}
+				HEADER_FILE_ONLY
+				OFF
 			)
 		endif()
 	endforeach()
@@ -126,6 +152,19 @@ function(
 	FILES
 	RESULT
 )
+	set(
+		MULTI_ARGS
+		HEADER_ONLY_EXCEPTIONS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
 	foreach(
 		CUR_FILE
 		${FILES}
@@ -173,6 +212,8 @@ function(
 	)
 		fcppt_utils_add_headers(
 			"${TEMP_RESULT}"
+			HEADER_ONLY_EXCEPTIONS
+				${_HEADER_ONLY_EXCEPTIONS}
 		)
 	endif()
 endfunction()

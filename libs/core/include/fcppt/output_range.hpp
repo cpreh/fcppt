@@ -7,11 +7,10 @@
 #define FCPPT_OUTPUT_RANGE_HPP_INCLUDED
 
 #include <fcppt/output_impl_fwd.hpp>
-#include <fcppt/concepts/range.hpp>
+#include <fcppt/concepts/range.hpp> // IWYU pragma: keep
 #include <fcppt/container/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt

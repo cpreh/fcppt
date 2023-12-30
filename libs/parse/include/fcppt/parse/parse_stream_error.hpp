@@ -7,6 +7,6 @@
 #define FCPPT_PARSE_PARSE_STREAM_ERROR_HPP_INCLUDED
 
 #include <fcppt/parse/parse_stream_error_decl.hpp> // IWYU pragma: export
-#include <fcppt/parse/parse_stream_error_impl.hpp>
+#include <fcppt/parse/parse_stream_error_impl.hpp> // IWYU pragma: keep
 
 #endif

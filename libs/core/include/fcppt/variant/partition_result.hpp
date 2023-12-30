@@ -6,8 +6,8 @@
 #ifndef FCPPT_VARIANT_PARTITION_RESULT_HPP_INCLUDED
 #define FCPPT_VARIANT_PARTITION_RESULT_HPP_INCLUDED
 
-#include <fcppt/tuple/object_impl.hpp>
-#include <fcppt/variant/partition_result_fwd.hpp>
+#include <fcppt/tuple/object_impl.hpp> // IWYU pragma: keep
+#include <fcppt/variant/partition_result_fwd.hpp> // IWYU pragma: export
 
 
 #endif

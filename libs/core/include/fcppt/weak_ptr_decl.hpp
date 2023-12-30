@@ -8,7 +8,7 @@
 
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
-#include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>

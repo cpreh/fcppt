@@ -9,7 +9,7 @@
 #include <fcppt/deref.hpp>
 #include <fcppt/deref_impl_fwd.hpp>
 #include <fcppt/is_recursive.hpp>
-#include <fcppt/recursive_impl.hpp>
+#include <fcppt/recursive_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

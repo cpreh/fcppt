@@ -9,7 +9,7 @@
 namespace fcppt::algorithm
 {
 template <typename Source, typename Target, typename Enable = void>
-struct map_impl;
+struct map_impl; // IWYU pragma: export
 
 }
 

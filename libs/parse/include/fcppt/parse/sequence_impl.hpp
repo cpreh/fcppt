@@ -14,7 +14,7 @@
 #include <fcppt/parse/deref.hpp>
 #include <fcppt/parse/result.hpp>
 #include <fcppt/parse/result_of.hpp>
-#include <fcppt/parse/sequence_decl.hpp>
+#include <fcppt/parse/sequence_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/detail/sequence_result.hpp>
 #include <fcppt/parse/skipper/run.hpp>
 #include <fcppt/config/external_begin.hpp>

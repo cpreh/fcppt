@@ -11,7 +11,7 @@
 namespace fcppt::container::grid
 {
 template <typename SizeType, fcppt::container::grid::size_type Dim>
-class pos_iterator;
+class pos_iterator; // IWYU pragma: export
 
 }
 

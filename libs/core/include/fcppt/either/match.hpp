@@ -7,10 +7,10 @@
 #define FCPPT_EITHER_MATCH_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable.hpp>
+#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
 #include <fcppt/either/failure_move_type.hpp>
-#include <fcppt/either/object_concept.hpp>
-#include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/either/success_move_type.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

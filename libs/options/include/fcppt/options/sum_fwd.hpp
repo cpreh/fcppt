@@ -9,7 +9,7 @@
 namespace fcppt::options
 {
 template <typename Label, typename Left, typename Right>
-class sum;
+class sum; // IWYU pragma: export
 
 }
 
