@@ -120,6 +120,34 @@ function(
 endfunction()
 
 function(
+	fcppt_utils_append_source_dir
+	FILES
+	RESULT
+)
+	foreach(
+		CUR_FILE
+		${FILES}
+	)
+		set(
+			WHOLE_FILE
+			${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE}
+		)
+
+		list(
+			APPEND
+			${RESULT}
+			${WHOLE_FILE}
+		)
+	endforeach()
+
+	set(
+		${RESULT}
+		${${RESULT}}
+		PARENT_SCOPE
+	)
+endfunction()
+
+function(
 	fcppt_utils_append_source_dir_and_make_groups
 	FILES
 	RESULT
