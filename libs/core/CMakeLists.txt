@@ -399,7 +399,6 @@ set(
 	libs/core/include/fcppt/detail/make_shared_wrapper.hpp
 	libs/core/include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	libs/core/include/fcppt/detail/move_if.hpp
-	libs/core/include/fcppt/detail/move_if_rvalue.hpp
 	libs/core/include/fcppt/detail/move_iterator_if_rvalue.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
 	libs/core/include/fcppt/detail/nonmovable.hpp
@@ -663,7 +662,6 @@ set(
 	libs/core/include/fcppt/math/detail/diff.hpp
 	libs/core/include/fcppt/math/detail/dim_matches.hpp
 	libs/core/include/fcppt/math/detail/fill.hpp
-	libs/core/include/fcppt/math/detail/has_size.hpp
 	libs/core/include/fcppt/math/detail/hash_decl.hpp
 	libs/core/include/fcppt/math/detail/hash_fwd.hpp
 	libs/core/include/fcppt/math/detail/hash_impl.hpp
@@ -1384,7 +1382,6 @@ set(
 	libs/core/include/fcppt/type_name.hpp
 	libs/core/include/fcppt/type_name_from_index.hpp
 	libs/core/include/fcppt/type_name_from_info.hpp
-	libs/core/include/fcppt/type_traits/detail/function_result.hpp
 	libs/core/include/fcppt/type_traits/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/type_traits/detail/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/detail/safe_integral_cast.hpp

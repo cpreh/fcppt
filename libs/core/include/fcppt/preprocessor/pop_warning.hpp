@@ -6,7 +6,7 @@
 #ifndef FCPPT_PREPROCESSOR_POP_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_POP_WARNING_HPP_INCLUDED
 
-#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/detail/check_cpp.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/pop_warning.h> // IWYU pragma: export
 
 #endif
