@@ -46,13 +46,17 @@ function(
 			EXT
 		)
 
+		unset(
+			CUR_LANGUAGE
+		)
+
 		if(
 			"${CUR_EXT}"
 			STREQUAL
 			".hpp"
 		)
 			set(
-				LANGUAGE
+				CUR_LANGUAGE
 				"CXX"
 			)
 		elseif(
@@ -61,19 +65,19 @@ function(
 			".h"
 		)
 			set(
-				LANGUAGE
+				CUR_LANGUAGE
 				"C"
 			)
 		endif()
 
 		if(
-			DEFINED LANGUAGE
+			DEFINED CUR_LANGUAGE
 		)
 			set_source_files_properties(
 				"${CUR_FILE}"
 				PROPERTIES
 				LANGUAGE
-				${LANGUAGE}
+				${CUR_LANGUAGE}
 				HEADER_FILE_ONLY
 				OFF
 			)
