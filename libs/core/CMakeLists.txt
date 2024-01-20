@@ -1110,7 +1110,6 @@ set(
 	libs/core/include/fcppt/random/distribution/make_basic.hpp
 	libs/core/include/fcppt/random/distribution/parameters/make_uniform_enum.hpp
 	libs/core/include/fcppt/random/distribution/parameters/make_uniform_enum_advanced.hpp
-	libs/core/include/fcppt/random/distribution/parameters/make_uniform_indices.hpp
 	libs/core/include/fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp
 	libs/core/include/fcppt/random/distribution/parameters/normal.hpp
 	libs/core/include/fcppt/random/distribution/parameters/normal_decl.hpp
