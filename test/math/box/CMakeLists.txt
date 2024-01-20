@@ -17,6 +17,10 @@ add_fcppt_math_box_test(
 )
 
 add_fcppt_math_box_test(
+	componentwise_equal
+)
+
+add_fcppt_math_box_test(
 	contains
 )
 

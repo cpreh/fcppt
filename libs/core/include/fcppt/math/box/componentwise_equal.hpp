@@ -10,11 +10,7 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Compare two boxes component-wise using an epsilon
@@ -36,8 +32,6 @@ inline bool componentwise_equal(
          fcppt::math::vector::componentwise_equal(_v1.max(), _v2.max(), _epsilon);
 }
 
-}
-}
 }
 
 #endif

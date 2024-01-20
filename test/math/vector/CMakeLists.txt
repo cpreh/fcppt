@@ -41,6 +41,10 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	componentwise_equal
+)
+
+add_fcppt_math_vector_test(
 	dim
 )
 

@@ -11,9 +11,7 @@
 #include <fstream>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace filesystem
+namespace fcppt::filesystem
 {
 /**
 \brief Typedef to <code>basic_fstream</code>, depending on fcppt::char_type.
@@ -22,7 +20,6 @@ namespace filesystem
 */
 using fstream = std::basic_fstream<fcppt::char_type>;
 
-}
 }
 
 #endif

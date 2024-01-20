@@ -33,6 +33,10 @@ add_fcppt_math_matrix_test(
 )
 
 add_fcppt_math_matrix_test(
+	componentwise_equal
+)
+
+add_fcppt_math_matrix_test(
 	delete_row_and_column
 )
 
