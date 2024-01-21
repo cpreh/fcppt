@@ -8,6 +8,7 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/literal.hpp>
+#include <fcppt/strong_typedef_assignment.hpp> // IWYU pragma: keep
 #include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/fold.hpp>

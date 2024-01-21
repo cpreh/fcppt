@@ -6,7 +6,7 @@
 #ifndef FCPPT_CONTAINER_GRID_SUP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SUP_HPP_INCLUDED
 
-#include <fcppt/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/pos.hpp> // IWYU pragma: keep
 #include <fcppt/container/grid/sup_fwd.hpp> // IWYU pragma: export
 
