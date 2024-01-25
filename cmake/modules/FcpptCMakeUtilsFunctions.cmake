@@ -32,7 +32,7 @@ function(
 		list(
 			REMOVE_ITEM
 			ALL_FILES
-			${CMAKE_SOURCE_DIR}/${EXCLUDE_FILE}
+			${EXCLUDE_FILE}
 		)
 	endforeach()
 
@@ -214,10 +214,30 @@ function(
 	if(
 		FCPPT_UTILS_BUILD_HEADERS
 	)
+		set(
+			HEADER_ONLY_EXCEPTIONS_ABS
+		)
+
+		foreach(
+			CUR_FILE
+			${_HEADER_ONLY_EXCEPTIONS}
+		)
+			set(
+				WHOLE_FILE
+				${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE}
+			)
+
+			list(
+				APPEND
+				HEADER_ONLY_EXCEPTIONS_ABS
+				${WHOLE_FILE}
+			)
+		endforeach()
+
 		fcppt_utils_add_headers(
 			"${TEMP_RESULT}"
 			HEADER_ONLY_EXCEPTIONS
-				${_HEADER_ONLY_EXCEPTIONS}
+				${HEADER_ONLY_EXCEPTIONS_ABS}
 		)
 	endif()
 endfunction()
