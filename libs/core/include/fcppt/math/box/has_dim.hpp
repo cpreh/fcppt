@@ -13,11 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace box
+namespace fcppt::math::box
 {
 /**
 \brief Metafunction to check the dimension of a box
@@ -36,8 +32,6 @@ struct has_dim<fcppt::math::box::object<T, N>, Dim> : fcppt::math::detail::dim_m
 };
 /// \endcond
 
-}
-}
 }
 
 #endif

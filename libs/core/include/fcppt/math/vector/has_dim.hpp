@@ -10,11 +10,7 @@
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
+namespace fcppt::math::vector
 {
 /**
 \brief Checks the dimension of a vector
@@ -31,8 +27,6 @@ struct has_dim<fcppt::math::vector::object<T, N, S>, Dim> : fcppt::math::detail:
 };
 /// \endcond
 
-}
-}
 }
 
 #endif

@@ -57,6 +57,11 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	has_dim
+	NO_CODE
+)
+
+add_fcppt_math_vector_test(
 	hash
 )
 
