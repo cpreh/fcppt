@@ -583,7 +583,6 @@ set(
 	libs/core/include/fcppt/is_reference.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
 	libs/core/include/fcppt/is_unique_ptr.hpp
-	libs/core/include/fcppt/iterator/adapt_range.hpp
 	libs/core/include/fcppt/iterator/base_decl.hpp
 	libs/core/include/fcppt/iterator/base_fwd.hpp
 	libs/core/include/fcppt/iterator/base_impl.hpp
