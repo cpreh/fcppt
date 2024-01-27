@@ -19,16 +19,12 @@ namespace fcppt
 \ingroup fcpptstrongtypedef
 */
 template <typename StrongTypedef, typename Conv, typename Arg>
-StrongTypedef strong_typedef_construct_cast(Arg const &_arg)
+constexpr inline StrongTypedef strong_typedef_construct_cast(Arg const &_arg)
+  requires fcppt::is_strong_typedef<StrongTypedef>::value
 {
-  static_assert(
-      fcppt::is_strong_typedef<StrongTypedef>::value,
-      "strong_typedef_construct_cast must return a strong typedef");
-
   return StrongTypedef(
       fcppt::cast::apply<Conv, fcppt::type_traits::value_type<StrongTypedef>>(_arg));
 }
-
 }
 
 #endif
