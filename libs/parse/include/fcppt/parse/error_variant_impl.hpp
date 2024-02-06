@@ -13,8 +13,8 @@
 #include <fcppt/parse/basic_string_error_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/complement_error_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/custom_error_impl.hpp> // IWYU pragma: keep
-#include <fcppt/parse/error_variant_fwd.hpp> // IWYU pragma: export
 #include <fcppt/parse/error_variant_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/error_variant_fwd.hpp> // IWYU pragma: export
 #include <fcppt/parse/fail_error_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/named_error_impl.hpp> // IWYU pragma: keep
 #include <fcppt/parse/typed_error_impl.hpp> // IWYU pragma: keep

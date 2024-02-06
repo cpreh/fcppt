@@ -14,8 +14,8 @@
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/mpl/list/back.hpp>
 #include <fcppt/mpl/list/empty.hpp>
-#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/pop_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>

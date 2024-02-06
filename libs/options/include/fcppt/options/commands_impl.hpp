@@ -36,9 +36,9 @@
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/sub_command_usage.hpp>
-#include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/check_sub_command_names.hpp>

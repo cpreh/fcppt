@@ -51,8 +51,8 @@
 #include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_option.hpp>
-#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
+#include <fcppt/options/detail/use_option_success.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
