@@ -3,11 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
@@ -44,7 +44,7 @@ struct to_string_impl<my_enum>
       NAME_CASE(val2);
       NAME_CASE(val3);
     }
-	FCPPT_ASSERT_UNREACHABLE;
+    throw fcppt::enum_::make_invalid(_val);
 #undef NAME_CASE
   }
 };

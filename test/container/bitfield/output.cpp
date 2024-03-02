@@ -5,11 +5,11 @@
 
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/output_to_std_wstring.hpp>
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -44,7 +44,7 @@ struct to_string_impl<test_enum>
       NAME_CASE(test2);
       NAME_CASE(test3);
     }
-	FCPPT_ASSERT_UNREACHABLE;
+	throw fcppt::enum_::make_invalid(_val);
 #undef NAME_CASE
   }
 };

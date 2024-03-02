@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/assert/unreachable.hpp>
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string_impl.hpp>
@@ -24,5 +24,5 @@ fcppt::enum_::to_string_impl<fcppt::log::level>::get(fcppt::log::level const _le
     LEVEL_CASE(error);
     LEVEL_CASE(fatal);
   }
-  FCPPT_ASSERT_UNREACHABLE;
+  throw fcppt::enum_::make_invalid(_level);
 }

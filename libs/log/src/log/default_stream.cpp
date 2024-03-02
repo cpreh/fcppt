@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/assert/unreachable.hpp>
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/clog.hpp>
 #include <fcppt/io/ostream_fwd.hpp>
@@ -24,5 +24,5 @@ fcppt::io::ostream &fcppt::log::default_stream(fcppt::log::level const _level)
     return fcppt::io::cerr();
   }
 
-  FCPPT_ASSERT_UNREACHABLE;
+  throw fcppt::enum_::make_invalid(_level);
 }

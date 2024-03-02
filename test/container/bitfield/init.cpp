@@ -3,11 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/init.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -37,7 +37,7 @@ TEST_CASE("container::bitfield::init", "[container],[bitfield]")
       return false;
     }
 
-    FCPPT_ASSERT_UNREACHABLE;
+    throw fcppt::enum_::make_invalid(_value);
   }));
 
   CHECK(test[my_enum::test1]);

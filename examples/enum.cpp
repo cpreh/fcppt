@@ -3,10 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/from_string.hpp>
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/make_range.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/to_string.hpp>
@@ -79,7 +79,7 @@ struct to_string_impl<myenum>
     case myenum::val2:
       return "val2";
     }
-    FCPPT_ASSERT_UNREACHABLE;
+    throw fcppt::enum_::make_invalid(_value);
   }
 };
 }

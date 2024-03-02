@@ -478,10 +478,15 @@ set(
 	libs/core/include/fcppt/enum/has_maximum.hpp
 	libs/core/include/fcppt/enum/index_of_array.hpp
 	libs/core/include/fcppt/enum/input.hpp
+	libs/core/include/fcppt/enum/invalid.hpp
+	libs/core/include/fcppt/enum/invalid_decl.hpp
+	libs/core/include/fcppt/enum/invalid_fwd.hpp
+	libs/core/include/fcppt/enum/invalid_impl.hpp
 	libs/core/include/fcppt/enum/is_object.hpp
 	libs/core/include/fcppt/enum/iterator_decl.hpp
 	libs/core/include/fcppt/enum/iterator_fwd.hpp
 	libs/core/include/fcppt/enum/iterator_impl.hpp
+	libs/core/include/fcppt/enum/make_invalid.hpp
 	libs/core/include/fcppt/enum/make_range.hpp
 	libs/core/include/fcppt/enum/make_range_start.hpp
 	libs/core/include/fcppt/enum/make_range_start_end.hpp
