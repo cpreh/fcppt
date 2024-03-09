@@ -6,10 +6,13 @@
 #ifndef FCPPT_LOOP_FWD_HPP_INCLUDED
 #define FCPPT_LOOP_FWD_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
+
 namespace fcppt
 {
-enum class loop; // IWYU pragma: export
-
+enum class loop : std::uint8_t; // IWYU pragma: export
 }
 
 #endif

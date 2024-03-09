@@ -7,6 +7,9 @@
 #define FCPPT_LOOP_HPP_INCLUDED
 
 #include <fcppt/loop_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -17,7 +20,7 @@ namespace fcppt
 
 Used by various algorithms that need the ability to break out of a loop early.
 */
-enum class loop
+enum class loop : std::uint8_t
 {
   break_,
   continue_

@@ -19,7 +19,7 @@ template <>
 struct move_if<false>
 {
   template <typename Arg>
-  inline static Arg &execute(Arg &_arg)
+  static Arg &execute(Arg &_arg)
   {
     return _arg;
   }
@@ -29,7 +29,7 @@ template <>
 struct move_if<true>
 {
   template <typename Arg>
-  inline static Arg &&execute(Arg &_arg)
+  static Arg &&execute(Arg &_arg)
   {
     return std::move(_arg);
   }

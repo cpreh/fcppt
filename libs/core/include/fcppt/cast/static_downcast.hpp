@@ -30,17 +30,13 @@ Derived must be a reference to a class type derived from Base.
 \tparam Base A cv-qualified non-reference type.
 */
 template <typename Derived, typename Base>
-std::enable_if_t<std::is_reference_v<Derived>, Derived> static_downcast(Base &_source) noexcept
+inline Derived static_downcast(Base &_source) noexcept
+  requires(
+      std::is_reference_v<Derived> &&
+      fcppt::type_traits::is_base_of<std::remove_cv_t<Base>, std::remove_cvref_t<Derived>>::value)
 {
-  static_assert(
-      fcppt::type_traits::
-          is_base_of<std::remove_cv_t<Base>, std::remove_cvref_t<Derived>>::value,
-      "static_downcast can only cast from references to base classes to references to derived "
-      "classes");
-
   return static_cast<Derived>(_source);
 }
-
 }
 
 #endif

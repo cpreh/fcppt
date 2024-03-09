@@ -15,7 +15,7 @@ namespace fcppt
 
 This function is a replacement for <code>!</code>.
 */
-constexpr inline bool not_(bool const _value) { return !_value; }
+constexpr bool not_(bool const _value) { return !_value; }
 
 }
 

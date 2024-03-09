@@ -8,15 +8,12 @@
 
 #include <fcppt/algorithm/detail/optimize_map_v.hpp>
 #include <fcppt/algorithm/detail/source_size.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm::detail
 {
 template <typename Dest, typename Source>
-inline std::enable_if_t<fcppt::algorithm::detail::optimize_map_v<Dest, Source>, void>
-map_reserve(Dest &_dest, Source const &_src)
+inline void map_reserve(Dest &_dest, Source const &_src)
+  requires fcppt::algorithm::detail::optimize_map_v<Dest, Source>
 {
   _dest.reserve(
       // some ranges have signed sizes
@@ -25,11 +22,10 @@ map_reserve(Dest &_dest, Source const &_src)
 }
 
 template <typename Dest, typename Source>
-inline std::enable_if_t<!fcppt::algorithm::detail::optimize_map_v<Dest, Source>, void>
-map_reserve(Dest &, Source const &)
+inline void map_reserve(Dest &, Source const &)
+  requires (!fcppt::algorithm::detail::optimize_map_v<Dest, Source>)
 {
 }
-
 }
 
 #endif

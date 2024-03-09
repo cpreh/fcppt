@@ -16,21 +16,18 @@
 namespace fcppt::type_iso::detail
 {
 template <typename Type>
-inline std::enable_if_t<fcppt::type_iso::detail::is_terminal<Type>::value, Type>
-undecorate(Type const &_value)
+inline Type undecorate(Type const &_value)
+  requires fcppt::type_iso::detail::is_terminal<Type>::value
 {
   return _value;
 }
 
 template <typename Type>
-inline std::enable_if_t<
-    !fcppt::type_iso::detail::is_terminal<Type>::value,
-    fcppt::type_iso::undecorated_type<Type>>
-undecorate(Type const &_value)
+inline fcppt::type_iso::undecorated_type<Type> undecorate(Type const &_value)
+  requires(!fcppt::type_iso::detail::is_terminal<Type>::value)
 {
   return fcppt::type_iso::detail::undecorate(fcppt::type_iso::transform<Type>::undecorate(_value));
 }
-
 }
 
 #endif
