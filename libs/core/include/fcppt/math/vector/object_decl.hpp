@@ -101,14 +101,13 @@ public:
   */
   explicit object(storage_type &&);
 
-  template <
-      typename... Args,
-      typename = std::enable_if_t<std::conjunction_v<
-          fcppt::math::is_static_storage<S>,
-          std::bool_constant<sizeof...(Args) == N>,
-          std::is_constructible<T, Args>...>>>
+  template <typename... Args>
   constexpr explicit object(Args &&...) noexcept(
-      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
+      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+    requires(std::conjunction_v<
+             fcppt::math::is_static_storage<S>,
+             std::bool_constant<sizeof...(Args) == N>,
+             std::is_constructible<T, Args>...>);
 
   /**
   \brief Create a vector from a vector with the same dimension and value

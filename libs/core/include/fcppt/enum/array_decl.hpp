@@ -44,13 +44,12 @@ public:
 
   using internal = fcppt::array::object<Value, static_size::value>;
 
-  template <
-      typename... Args,
-      typename = std::enable_if_t<
-          static_size::value == sizeof...(Args) &&
-          std::conjunction_v<std::is_constructible<Value, Args>...>>>
+  template <typename... Args>
   constexpr explicit array(Args &&...) noexcept(
-      std::conjunction_v<std::is_nothrow_constructible<Value, Args>...>);
+      std::conjunction_v<std::is_nothrow_constructible<Value, Args>...>)
+    requires(
+        static_size::value == sizeof...(Args) &&
+        std::conjunction_v<std::is_constructible<Value, Args>...>);
 
   struct from_internal {};
 

@@ -15,6 +15,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
@@ -169,7 +170,7 @@ int_string_pair either_to_exception(std::istream &_stream)
 
 int do_something() { return 1; }
 
-enum class error_code
+enum class error_code : std::uint8_t
 {
   failure1
 };

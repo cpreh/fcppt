@@ -11,7 +11,6 @@
 #include <array> // IWYU pragma: keep
 #include <cstddef>
 #include <functional>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,12 +20,9 @@ namespace fcppt::array
 \brief Returns the I'th element of a nonconst array.
 \ingroup fcpptarray
 */
-template <
-    std::size_t I,
-    typename T,
-    std::size_t Size,
-    typename = std::enable_if_t<std::less<>{}(I, Size)>>
-[[nodiscard]] constexpr inline T &get(fcppt::array::object<T, Size> &_value) noexcept
+template <std::size_t I, typename T, std::size_t Size>
+[[nodiscard]] constexpr T &get(fcppt::array::object<T, Size> &_value) noexcept
+  requires(std::less<>{}(I, Size))
 {
   return std::get<I>(_value.impl());
 }
@@ -35,12 +31,9 @@ template <
 \brief Returns the I'th element of a const array.
 \ingroup fcpptarray
 */
-template <
-    std::size_t I,
-    typename T,
-    std::size_t Size,
-    typename = std::enable_if_t<std::less<>{}(I, Size)>>
-[[nodiscard]] constexpr inline T const &get(fcppt::array::object<T, Size> const &_value) noexcept
+template <std::size_t I, typename T, std::size_t Size>
+[[nodiscard]] constexpr T const &get(fcppt::array::object<T, Size> const &_value) noexcept
+  requires(std::less<>{}(I, Size))
 {
   return std::get<I>(_value.impl());
 }

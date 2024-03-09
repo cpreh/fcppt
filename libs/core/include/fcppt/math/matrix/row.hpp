@@ -21,15 +21,13 @@ namespace fcppt::math::matrix
 
 \ingroup fcpptmathmatrix
 */
-template <
-    typename Type,
-    typename... Args,
-    typename = std::enable_if_t<
-        std::conjunction_v<std::is_same<std::remove_cvref_t<Args>, std::remove_cvref_t<Type>>...>>>
+template <typename Type, typename... Args>
 inline fcppt::math::matrix::row_type<
     std::remove_cvref_t<Type>,
     fcppt::cast::size<fcppt::math::size_type>(sizeof...(Args) + 1U)>
 row(Type &&_value, Args &&..._args)
+  requires(
+      std::conjunction_v<std::is_same<std::remove_cvref_t<Args>, std::remove_cvref_t<Type>>...>)
 {
   return fcppt::math::matrix::row_type<
       std::remove_cvref_t<Type>,

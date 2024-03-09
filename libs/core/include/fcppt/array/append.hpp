@@ -31,21 +31,19 @@ The result is <code>[x_1, ..., x_n, y_1, ..., y_m]</code>.
 
 Both arrays must have the same value type.
 */
-template <
-    typename Array1,
-    typename Array2,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<std::remove_cvref_t<Array1>>,
-        fcppt::array::is_object<std::remove_cvref_t<Array2>>,
-        std::is_same<
-            fcppt::array::value_type<std::remove_cvref_t<Array1>>,
-            fcppt::array::value_type<std::remove_cvref_t<Array2>>>>>>
+template <typename Array1, typename Array2>
 fcppt::array::object<
     fcppt::array::value_type<std::remove_cvref_t<Array1>>,
     fcppt::array::size<std::remove_cvref_t<Array1>>::value +
         fcppt::array::size<std::remove_cvref_t<Array2>>::value>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 append(Array1 &&_array1, Array2 &&_array2)
+  requires(std::conjunction_v<
+           fcppt::array::is_object<std::remove_cvref_t<Array1>>,
+           fcppt::array::is_object<std::remove_cvref_t<Array2>>,
+           std::is_same<
+               fcppt::array::value_type<std::remove_cvref_t<Array1>>,
+               fcppt::array::value_type<std::remove_cvref_t<Array2>>>>)
 {
   using array1 = std::remove_cvref_t<Array1>;
 

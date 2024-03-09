@@ -10,7 +10,6 @@
 #include <fcppt/tuple/size.hpp>
 #include <fcppt/tuple/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,11 +29,9 @@ Constructs a tuple of type \a Tuple by calling
 (std::integral_constant<std::size_t, i>)</code> for <code>1 <= i <= n</code>,
 where <code>Tuple=(T_1,...,T_n)</code>.
 */
-template <
-    typename Tuple,
-    typename Function,
-    typename = std::enable_if_t<fcppt::tuple::is_object<Tuple>::value>>
+template <typename Tuple, typename Function>
 [[nodiscard]] inline Tuple init(Function const &_function)
+  requires(fcppt::tuple::is_object<Tuple>::value)
 {
   return fcppt::tuple::detail::init<Tuple>(
       std::make_index_sequence<fcppt::tuple::size<Tuple>::value>{}, _function);

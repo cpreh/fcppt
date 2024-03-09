@@ -27,15 +27,11 @@ unsafe and should be used with care.
 \tparam Dest Must be a signed integer type
 */
 template <typename Dest, typename Source>
-inline constexpr Dest float_to_int(Source const _source) noexcept
+constexpr Dest float_to_int(Source const _source) noexcept
+  requires(std::is_floating_point_v<Source> && std::is_signed_v<Dest>)
 {
-  static_assert(
-      std::is_floating_point_v<Source> && std::is_signed_v<Dest>,
-      "float_to_int can only cast from floating point types to signed integer types");
-
   return static_cast<Dest>(_source);
 }
-
 }
 
 #endif

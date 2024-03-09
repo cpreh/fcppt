@@ -21,6 +21,7 @@
 #include <fcppt/math/vector/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,8 +39,13 @@ fcppt::math::matrix::object<T, R, C, S>::object(storage_type &&_storage)
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-template <typename... Args, typename>
+template <typename... Args>
 fcppt::math::matrix::object<T, R, C, S>::object(Args &&..._args)
+  requires(std::conjunction_v<
+           std::bool_constant<sizeof...(Args) == R>,
+           std::is_same<
+               typename fcppt::math::matrix::object<T, R, C, S>::row_type,
+               std::remove_cvref_t<Args>>...>)
     : storage_(fcppt::math::matrix::detail::init_storage<storage_type, C>(
           std::forward_as_tuple(std::forward<Args>(_args)...)))
 {

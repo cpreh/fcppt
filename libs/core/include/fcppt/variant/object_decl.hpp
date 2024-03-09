@@ -57,11 +57,9 @@ public:
 
   \tparam U Must be a type among <code>types</code>
   */
-  template <
-      typename U,
-      typename = std::enable_if_t<
-          fcppt::variant::has_type_v<this_type, std::remove_cvref_t<U>>>>
-  explicit object(U &&);
+  template <typename U>
+  explicit object(U &&)
+    requires fcppt::variant::has_type_v<this_type, std::remove_cvref_t<U>>;
 
   /**
   \brief Returns a const reference to the held type without any checks.

@@ -21,12 +21,12 @@ Converts \a _enum to its underlying integer type. This cast is safe.
 
 \tparam Enum Must be an enumeration type
 */
-template <typename Enum, typename = std::enable_if<std::is_enum_v<Enum>>>
-inline constexpr std::underlying_type_t<Enum> enum_to_underlying(Enum const _enum) noexcept
+template <typename Enum>
+constexpr std::underlying_type_t<Enum> enum_to_underlying(Enum const _enum) noexcept
+  requires std::is_enum_v<Enum>
 {
   return static_cast<std::underlying_type_t<Enum>>(_enum);
 }
-
 }
 
 #endif

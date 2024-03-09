@@ -32,13 +32,12 @@ class object
 public:
   using impl_type = std::tuple<Types...>;
 
-  template <
-      typename... Args,
-      typename = std::enable_if_t<
-          sizeof...(Types) == sizeof...(Args) &&
-          std::conjunction_v<std::is_constructible<Types, Args>...>>>
+  template <typename... Args>
   constexpr explicit object(Args &&...) noexcept(
-      std::conjunction_v<std::is_nothrow_constructible<Types, Args>...>);
+      std::conjunction_v<std::is_nothrow_constructible<Types, Args>...>)
+    requires(
+        sizeof...(Types) == sizeof...(Args) &&
+        std::conjunction_v<std::is_constructible<Types, Args>...>);
 
   [[nodiscard]] constexpr impl_type &impl() noexcept;
 

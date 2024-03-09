@@ -14,20 +14,21 @@
 namespace fcppt::type_iso::detail
 {
 template <typename Result, typename Type>
-inline std::enable_if_t<std::is_same_v<Result, Type>, Result> decorate(Type const &_value)
+inline Result decorate(Type const &_value)
+  requires(std::is_same_v<Result, Type>)
 {
   return _value;
 }
 
 template <typename Result, typename Type>
-inline std::enable_if_t<!std::is_same_v<Result, Type>, Result> decorate(Type const &_value)
+inline Result decorate(Type const &_value)
+  requires(!std::is_same_v<Result, Type>)
 {
   using transform_type = fcppt::type_iso::transform<Result>;
 
   return transform_type::decorate(
       fcppt::type_iso::detail::decorate<typename transform_type::undecorated_type>(_value));
 }
-
 }
 
 #endif

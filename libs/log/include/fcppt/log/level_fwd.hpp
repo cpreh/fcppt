@@ -6,9 +6,13 @@
 #ifndef FCPPT_LOG_LEVEL_FWD_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_FWD_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
+
 namespace fcppt::log
 {
-enum class level; // IWYU pragma: export
+enum class level : std::uint8_t; // IWYU pragma: export
 
 }
 

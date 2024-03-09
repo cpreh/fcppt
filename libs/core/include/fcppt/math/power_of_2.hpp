@@ -25,10 +25,9 @@ Returns <code>2 ^ _exponent</code>.
 \tparam Result Must be a type constructible with \ref fcppt.literal.
 */
 template <typename Result, typename Exponent>
-inline constexpr Result power_of_2(Exponent const _exponent)
+constexpr Result power_of_2(Exponent const _exponent)
+requires(std::is_unsigned_v<Exponent>)
 {
-  static_assert(std::is_unsigned_v<Exponent>, "Exponent must be unsigned");
-
   return static_cast<Result>(fcppt::literal<Result>(1) << _exponent);
 }
 

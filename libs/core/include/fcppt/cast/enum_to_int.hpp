@@ -25,11 +25,9 @@ type. Consider #fcppt::cast::enum_to_underlying  instead.
 
 \tparam Enum Must be an enumeration type
 */
-template <
-    typename Dest,
-    typename Enum,
-    typename = std::enable_if_t<std::conjunction_v<std::is_integral<Dest>>, std::is_enum<Enum>>>
-inline constexpr Dest enum_to_int(Enum const _enum) noexcept
+template <typename Dest, typename Enum>
+constexpr Dest enum_to_int(Enum const _enum) noexcept
+  requires(std::is_integral_v<Dest> && std::is_enum_v<Enum>)
 {
   return static_cast<Dest>(_enum);
 }

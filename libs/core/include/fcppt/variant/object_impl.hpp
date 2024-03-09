@@ -6,17 +6,22 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/get_unsafe_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <variant>
 #include <fcppt/config/external_end.hpp>
 
 template <typename... Types>
-template <typename U, typename>
-fcppt::variant::object<Types...>::object(U &&_other) : impl_{std::forward<U>(_other)}
+template <typename U>
+fcppt::variant::object<Types...>::object(U &&_other)
+  requires fcppt::variant::
+      has_type_v<typename fcppt::variant::object<Types...>::this_type, std::remove_cvref_t<U>>
+    : impl_{std::forward<U>(_other)}
 {
 }
 

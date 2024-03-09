@@ -20,19 +20,15 @@
 namespace fcppt::cast::detail
 {
 template <typename Dest, typename Source>
-std::enable_if_t<
-    std::is_signed_v<Dest> == std::is_signed_v<Source> && sizeof(Dest) >= sizeof(Source),
-    fcppt::optional::object<Dest>>
-truncation_check(Source const _source)
+fcppt::optional::object<Dest> truncation_check(Source const _source)
+  requires(std::is_signed_v<Dest> == std::is_signed_v<Source> && sizeof(Dest) >= sizeof(Source))
 {
   return fcppt::optional::object<Dest>(_source);
 }
 
 template <typename Dest, typename Source>
-std::enable_if_t<
-    std::is_unsigned_v<Dest> && std::is_unsigned_v<Source> && sizeof(Dest) < sizeof(Source),
-    fcppt::optional::object<Dest>>
-truncation_check(Source const _source)
+fcppt::optional::object<Dest> truncation_check(Source const _source)
+  requires(std::is_unsigned_v<Dest> && std::is_unsigned_v<Source> && sizeof(Dest) < sizeof(Source))
 {
   using dest_type = fcppt::optional::object<Dest>;
 
@@ -42,10 +38,8 @@ truncation_check(Source const _source)
 }
 
 template <typename Dest, typename Source>
-std::enable_if_t<
-    std::is_signed_v<Dest> && std::is_signed_v<Source> && sizeof(Dest) < sizeof(Source),
-    fcppt::optional::object<Dest>>
-truncation_check(Source const _source)
+fcppt::optional::object<Dest> truncation_check(Source const _source)
+  requires(std::is_signed_v<Dest> && std::is_signed_v<Source> && sizeof(Dest) < sizeof(Source))
 {
   using dest_type = fcppt::optional::object<Dest>;
 
@@ -56,9 +50,8 @@ truncation_check(Source const _source)
 }
 
 template <typename Dest, typename Source>
-std::
-    enable_if_t<std::is_unsigned_v<Dest> && std::is_signed_v<Source>, fcppt::optional::object<Dest>>
-    truncation_check(Source const _source)
+fcppt::optional::object<Dest> truncation_check(Source const _source)
+  requires(std::is_unsigned_v<Dest> && std::is_signed_v<Source>)
 {
   using dest_type = fcppt::optional::object<Dest>;
 
@@ -68,9 +61,8 @@ std::
 }
 
 template <typename Dest, typename Source>
-std::
-    enable_if_t<std::is_signed_v<Dest> && std::is_unsigned_v<Source>, fcppt::optional::object<Dest>>
-    truncation_check(Source const _source)
+fcppt::optional::object<Dest> truncation_check(Source const _source)
+  requires(std::is_signed_v<Dest> && std::is_unsigned_v<Source>)
 {
   using dest_type = fcppt::optional::object<Dest>;
 

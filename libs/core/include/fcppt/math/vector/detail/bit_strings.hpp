@@ -13,9 +13,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/value_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::math::vector::detail
 {
@@ -24,7 +21,8 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 template <fcppt::math::size_type N, typename ForwardIterator, typename Vector>
-std::enable_if_t<N == 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
+void bit_strings(ForwardIterator &it, Vector _vector)
+  requires(N == 0U)
 {
   fcppt::math::vector::at<N>(_vector) = fcppt::literal<fcppt::type_traits::value_type<Vector>>(0);
 
@@ -38,7 +36,8 @@ std::enable_if_t<N == 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
 FCPPT_PP_POP_WARNING
 
 template <fcppt::math::size_type N, typename ForwardIterator, typename Vector>
-std::enable_if_t<N != 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
+void bit_strings(ForwardIterator &it, Vector _vector)
+  requires(N != 0U)
 {
   fcppt::math::vector::at<N>(_vector) = fcppt::literal<fcppt::type_traits::value_type<Vector>>(0);
 
@@ -48,7 +47,6 @@ std::enable_if_t<N != 0U, void> bit_strings(ForwardIterator &it, Vector _vector)
 
   fcppt::math::vector::detail::bit_strings<N - 1U>(it, _vector);
 }
-
 }
 
 #endif

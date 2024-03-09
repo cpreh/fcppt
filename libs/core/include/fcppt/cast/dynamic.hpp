@@ -35,12 +35,9 @@ Here is an example:
 
 \see #fcppt::cast::dynamic_cross
 */
-template <
-    typename Derived,
-    typename Base,
-    typename = std::enable_if_t<
-        fcppt::type_traits::is_base_of<std::remove_cv_t<Base>, std::remove_cv_t<Derived>>::value>>
+template <typename Derived, typename Base>
 inline fcppt::optional::reference<Derived> dynamic(Base &_base) noexcept
+  requires(fcppt::type_traits::is_base_of<std::remove_cv_t<Base>, std::remove_cv_t<Derived>>::value)
 {
   return fcppt::cast::detail::dynamic<Derived>(_base);
 }

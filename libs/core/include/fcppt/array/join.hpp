@@ -36,15 +36,7 @@ All arrays must have the same value type.
 
 \see fcppt::array::append
 */
-template <
-    typename Array1,
-    typename... Arrays,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<std::remove_cvref_t<Array1>>,
-        fcppt::array::is_object<std::remove_cvref_t<Arrays>>...,
-        std::is_same<
-            fcppt::array::value_type<std::remove_cvref_t<Array1>>,
-            fcppt::array::value_type<std::remove_cvref_t<Arrays>>>...>>>
+template <typename Array1, typename... Arrays>
 fcppt::array::object<
     fcppt::array::value_type<std::remove_cvref_t<Array1>>,
     fcppt::mpl::list::fold<
@@ -55,6 +47,12 @@ fcppt::array::object<
             fcppt::mpl::arg<2>>,
         fcppt::array::size<std::remove_cvref_t<Array1>>>::value>
 join(Array1 &&_array1, Arrays &&..._arrays)
+  requires(std::conjunction_v<
+           fcppt::array::is_object<std::remove_cvref_t<Array1>>,
+           fcppt::array::is_object<std::remove_cvref_t<Arrays>>...,
+           std::is_same<
+               fcppt::array::value_type<std::remove_cvref_t<Array1>>,
+               fcppt::array::value_type<std::remove_cvref_t<Arrays>>>...>)
 {
   return fcppt::array::detail::join(
       std::forward<Array1>(_array1), std::forward<Arrays>(_arrays)...);

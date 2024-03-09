@@ -12,7 +12,6 @@
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::container::grid::detail
@@ -23,12 +22,13 @@ template <
     typename IndexSequence,
     typename FloatVector,
     typename Interpolator>
-std::enable_if_t<N == 1U, fcppt::type_traits::value_type<Grid>> interpolate(
+fcppt::type_traits::value_type<Grid> interpolate(
     Grid const &_grid,
     IndexSequence const &_indices,
     typename IndexSequence::size_type const _value_index,
     FloatVector const &_pos,
     Interpolator const &_interpolator)
+  requires(N == 1U)
 {
   return _interpolator(
       _pos.x(),
@@ -42,12 +42,13 @@ template <
     typename IndexSequence,
     typename FloatVector,
     typename Interpolator>
-std::enable_if_t<N != 1U, fcppt::type_traits::value_type<Grid>> interpolate(
+fcppt::type_traits::value_type<Grid> interpolate(
     Grid const &_grid,
     IndexSequence const &_indices,
     typename IndexSequence::size_type const _value_index,
     FloatVector const &_pos,
     Interpolator const &_interpolator)
+  requires(N != 1U)
 {
   using float_vector_size_type = typename FloatVector::size_type;
 
@@ -67,7 +68,6 @@ std::enable_if_t<N != 1U, fcppt::type_traits::value_type<Grid>> interpolate(
           _pos,
           _interpolator));
 }
-
 }
 
 #endif

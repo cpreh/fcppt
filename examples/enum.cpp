@@ -12,7 +12,11 @@
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <cstdlib>
 #include <exception>
 #include <iostream>
@@ -23,7 +27,7 @@
 namespace
 {
 //! [enum_maximum]
-enum class myenum
+enum class myenum : std::uint8_t
 {
   val1,
   val2,
@@ -72,6 +76,8 @@ struct to_string_impl<myenum>
 {
   static std::string_view get(myenum const _value)
   {
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
     switch (_value)
     {
     case myenum::val1:
@@ -79,6 +85,7 @@ struct to_string_impl<myenum>
     case myenum::val2:
       return "val2";
     }
+    FCPPT_PP_POP_WARNING
     throw fcppt::enum_::make_invalid(_value);
   }
 };

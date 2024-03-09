@@ -23,14 +23,14 @@ namespace fcppt::enum_
 
 \tparam Enum Must be an enum type
 */
-template <typename Enum, typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+template <typename Enum>
 inline fcppt::enum_::names_array<Enum> names()
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   return fcppt::enum_::array_init<fcppt::enum_::names_array<Enum>>(
       []<Enum Index>(std::integral_constant<Enum, Index>)
       { return fcppt::enum_::to_string(Index); });
 }
-
 }
 
 #endif

@@ -18,7 +18,7 @@ namespace fcppt::cast
 \ingroup fcpptcasts
 */
 template <typename Fun, typename Res, typename Src>
-constexpr inline decltype(auto) apply(Src &&_src)
+constexpr decltype(auto) apply(Src &&_src)
 {
   return Fun ::template execute<Res>(std::forward<Src>(_src));
 }

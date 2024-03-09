@@ -26,12 +26,9 @@ converted value iff the conversion results in no truncation.
 
 \tparam Source Must be an integral type
 */
-template <
-    typename Dest,
-    typename Source,
-    typename =
-        std::enable_if_t<std::conjunction_v<std::is_integral<Source>, std::is_integral<Dest>>>>
-fcppt::optional::object<Dest> truncation_check(Source const _source)
+template <typename Dest, typename Source>
+inline fcppt::optional::object<Dest> truncation_check(Source const _source)
+  requires(std::conjunction_v<std::is_integral<Source>, std::is_integral<Dest>>)
 {
   return fcppt::cast::detail::truncation_check<Dest>(_source);
 }

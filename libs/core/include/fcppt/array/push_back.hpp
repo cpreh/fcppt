@@ -29,18 +29,16 @@ Pushes \a _new_element to the back of \a _source.
 
 \tparam NewElement Must be the same as <code>value_type<Source></code>
 */
-template <
-    typename Source,
-    typename NewElement,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<std::remove_cvref_t<Source>>,
-        std::is_same<
-            std::remove_cvref_t<NewElement>,
-            fcppt::array::value_type<std::remove_cvref_t<Source>>>>>>
+template <typename Source, typename NewElement>
 [[nodiscard]] fcppt::array::object<
     fcppt::type_traits::value_type<std::remove_cvref_t<Source>>,
     fcppt::array::size<std::remove_cvref_t<Source>>::value + 1U>
 push_back(Source &&_source, NewElement &&_new_element)
+  requires(std::conjunction_v<
+           fcppt::array::is_object<std::remove_cvref_t<Source>>,
+           std::is_same<
+               std::remove_cvref_t<NewElement>,
+               fcppt::array::value_type<std::remove_cvref_t<Source>>>>)
 {
   return fcppt::array::append(
       std::forward<Source>(_source), fcppt::array::make(std::forward<NewElement>(_new_element)));

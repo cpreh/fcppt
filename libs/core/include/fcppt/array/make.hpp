@@ -26,14 +26,11 @@ the same type <code>T</code>. The result is
 \tparam Args A parameter pack <code>t_1,...,t_n</code> such that
 <code>remove_cv_ref<t_1> = ... = remove_cv_ref<t_n></code>.
 */
-template <
-    typename Arg1,
-    typename... Args,
-    typename = std::enable_if_t<std::conjunction_v<std::is_same<
-        std::remove_cvref_t<Arg1>,
-        std::remove_cvref_t<Args>>...>>>
+template <typename Arg1, typename... Args>
 inline fcppt::array::object<std::remove_cvref_t<Arg1>, sizeof...(Args) + 1U>
 make(Arg1 &&_arg1, Args &&..._args)
+  requires(
+      std::conjunction_v<std::is_same<std::remove_cvref_t<Arg1>, std::remove_cvref_t<Args>>...>)
 {
   using result_type =
       fcppt::array::object<std::remove_cvref_t<Arg1>, sizeof...(Args) + 1U>;

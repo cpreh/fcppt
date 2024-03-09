@@ -9,12 +9,12 @@
 #include <fcppt/bit/mask_decl.hpp> // IWYU pragma: export
 
 template <typename Type>
-inline constexpr fcppt::bit::mask<Type>::mask(Type const _value) noexcept : value_{_value}
+constexpr fcppt::bit::mask<Type>::mask(Type const _value) noexcept : value_{_value}
 {
 }
 
 template <typename Type>
-inline constexpr Type fcppt::bit::mask<Type>::get() const noexcept
+constexpr Type fcppt::bit::mask<Type>::get() const noexcept
 {
   return this->value_;
 }

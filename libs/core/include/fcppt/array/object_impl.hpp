@@ -15,9 +15,10 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, std::size_t Size>
-template <typename... Args, typename>
+template <typename... Args>
 constexpr fcppt::array::object<T, Size>::object(Args &&..._args) noexcept(
     std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+  requires(Size == sizeof...(Args) && std::conjunction_v<std::is_constructible<T, Args>...>)
     : impl_{{std::forward<Args>(_args)...}}
 {
 }

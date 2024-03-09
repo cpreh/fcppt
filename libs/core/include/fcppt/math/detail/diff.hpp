@@ -16,17 +16,18 @@
 namespace fcppt::math::detail
 {
 template <typename T>
-inline std::enable_if_t<!std::is_unsigned_v<T>, T> diff(T const &a, T const &b)
+inline T diff(T const &a, T const &b)
+  requires(!std::is_unsigned_v<T>)
 {
   return std::abs(a - b);
 }
 
 template <typename T>
-inline std::enable_if_t<std::is_unsigned_v<T>, T> diff(T const &a, T const &b)
+inline T diff(T const &a, T const &b)
+  requires(std::is_unsigned_v<T>)
 {
   return std::min(a - b, b - a);
 }
-
 }
 
 #endif

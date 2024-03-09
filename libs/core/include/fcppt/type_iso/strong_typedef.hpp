@@ -18,12 +18,12 @@ struct transform<fcppt::strong_typedef<Type, Alias>>
 
   using decorated_type = fcppt::strong_typedef<Type, Alias>;
 
-  static inline decorated_type decorate(undecorated_type const &_value)
+  static decorated_type decorate(undecorated_type const &_value)
   {
     return decorated_type(_value);
   }
 
-  static inline undecorated_type undecorate(decorated_type const &_value) { return _value.get(); }
+  static undecorated_type undecorate(decorated_type const &_value) { return _value.get(); }
 };
 
 }

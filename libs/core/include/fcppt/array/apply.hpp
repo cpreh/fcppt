@@ -33,16 +33,7 @@ _array1 and <code>e_1, ..., e_n</code> of \a _arrays.
 \tparam Function Must be a function callable as <code>R (Array1::value_type,
 Arrays::value_type...)</code>, where <code>R</code> is the result type.
 **/
-template <
-    typename Function,
-    typename Array1,
-    typename... Arrays,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::array::is_object<std::remove_cvref_t<Array1>>,
-        fcppt::array::is_object<std::remove_cvref_t<Arrays>>...,
-        std::is_same<
-            fcppt::array::size<std::remove_cvref_t<Array1>>,
-            fcppt::array::size<std::remove_cvref_t<Arrays>>>...>>>
+template <typename Function, typename Array1, typename... Arrays>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 auto apply(Function const &_function, Array1 &&_array1, Arrays &&..._arrays)
     -> fcppt::array::object<
@@ -52,6 +43,12 @@ auto apply(Function const &_function, Array1 &&_array1, Arrays &&..._arrays)
             fcppt::move_if_rvalue<Arrays>(std::declval<fcppt::container::to_reference_type<
                                               std::remove_reference_t<Arrays>>>())...)),
         fcppt::array::size<std::remove_cvref_t<Array1>>::value>
+  requires(std::conjunction_v<
+           fcppt::array::is_object<std::remove_cvref_t<Array1>>,
+           fcppt::array::is_object<std::remove_cvref_t<Arrays>>...,
+           std::is_same<
+               fcppt::array::size<std::remove_cvref_t<Array1>>,
+               fcppt::array::size<std::remove_cvref_t<Arrays>>>...>)
 {
   using result_type = fcppt::array::object<
       std::remove_cvref_t<decltype(_function(

@@ -23,10 +23,9 @@ used if \a _value fits into the result.
 \tparam Type Must be an unsigned type
 */
 template <typename Type>
-inline constexpr std::make_signed_t<Type> to_signed(Type const _value) noexcept
+constexpr std::make_signed_t<Type> to_signed(Type const _value) noexcept
+requires std::is_unsigned_v<Type>
 {
-  static_assert(std::is_unsigned_v<Type>, "to_signed can only cast from unsigned types");
-
   return static_cast<std::make_signed_t<Type>>(_value);
 }
 

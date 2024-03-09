@@ -13,18 +13,17 @@
 namespace fcppt::math::detail
 {
 template <typename Index, typename Size, typename Function>
-inline std::enable_if_t<Index::value != Size::value - 1U, void>
-if_not_last_index(Index, Size, Function const &_function)
+inline void if_not_last_index(Index, Size, Function const &_function)
+  requires(Index::value != Size::value - 1U)
 {
   _function();
 }
 
 template <typename Index, typename Size, typename Function>
-inline std::enable_if_t<Index::value == Size::value - 1U, void>
-if_not_last_index(Index, Size, Function const &)
+inline void if_not_last_index(Index, Size, Function const &)
+  requires(Index::value == Size::value - 1U)
 {
 }
-
 }
 
 #endif

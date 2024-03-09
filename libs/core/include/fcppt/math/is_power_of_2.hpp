@@ -21,10 +21,9 @@ If you need to check whether a signed integral type is a power of two, convert
 it to its unsigned counterpart before checking.
 */
 template <typename T>
-inline constexpr bool is_power_of_2(T const x) noexcept
+constexpr bool is_power_of_2(T const x) noexcept
+requires(std::is_unsigned_v<T>)
 {
-  static_assert(std::is_unsigned_v<T>, "is_power_of_2 can only be used on unsigned types");
-
   return x && !(x & (x - 1));
 }
 

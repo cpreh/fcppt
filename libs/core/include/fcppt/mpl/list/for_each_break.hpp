@@ -10,19 +10,24 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 namespace fcppt::mpl::list
 {
 namespace detail
 {
 template <typename Fun>
-void for_each_break(fcppt::mpl::list::object<>, Fun const &)
+inline void for_each_break(fcppt::mpl::list::object<>, Fun const &)
 {
 }
 
 template <typename Type, typename... Types, typename Fun>
 void for_each_break(fcppt::mpl::list::object<Type,Types...>, Fun const &_func)
 {
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
   switch (_func(fcppt::tag<Type>{}))
   {
   case fcppt::loop::continue_:
@@ -31,6 +36,7 @@ void for_each_break(fcppt::mpl::list::object<Type,Types...>, Fun const &_func)
   case fcppt::loop::break_:
     return;
   }
+  FCPPT_PP_POP_WARNING
 }
 }
 

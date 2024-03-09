@@ -17,7 +17,6 @@
 #include <istream>
 #include <string>
 #include <string_view>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::enum_
@@ -35,12 +34,9 @@ This function is useful to implement <code>operator>></code> for an enum type.
 
 \return \a _stream
 */
-template <
-    typename Ch,
-    typename Traits,
-    typename Enum,
-    typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+template <typename Ch, typename Traits, typename Enum>
 std::basic_istream<Ch, Traits> &input(std::basic_istream<Ch, Traits> &_stream, Enum &_result)
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   fcppt::optional::maybe(
       fcppt::optional::bind(

@@ -11,7 +11,6 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string_view>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::enum_
@@ -25,12 +24,12 @@ Uses #fcppt::enum_::from_string_impl to convert a string to an enum.
 
 \tparam Enum Must be an enum type
 */
-template <typename Enum, typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+template <typename Enum>
 inline fcppt::optional::object<Enum> from_string(std::string_view const _string)
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   return fcppt::enum_::from_string_impl<Enum>::get(_string);
 }
-
 }
 
 #endif

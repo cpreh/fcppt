@@ -6,13 +6,14 @@
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 //! [bitfield]
 namespace
 {
-enum class person_status
+enum class person_status : std::uint8_t
 {
   hungry,
   tired,

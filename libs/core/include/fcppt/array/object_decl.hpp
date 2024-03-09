@@ -38,13 +38,10 @@ public:
   using pointer = typename impl_type::pointer;
   using const_pointer = typename impl_type::const_pointer;
 
-  template <
-      typename... Args,
-      typename = std::enable_if_t<
-          Size == sizeof...(Args) &&
-          std::conjunction_v<std::is_constructible<T, Args>...>>>
+  template <typename... Args>
   constexpr explicit object(Args &&...) noexcept(
-      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>);
+      std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+    requires(Size == sizeof...(Args) && std::conjunction_v<std::is_constructible<T, Args>...>);
 
   explicit object(fcppt::no_init const &);
 

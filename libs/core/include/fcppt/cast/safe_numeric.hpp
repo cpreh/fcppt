@@ -38,19 +38,16 @@ cases hold true:
 \tparam Source The source type of the conversion
 */
 template <typename Dest, typename Source>
-constexpr inline Dest safe_numeric(Source const &_source) noexcept
-{
-  static_assert(
+constexpr Dest safe_numeric(Source const &_source) noexcept
+  requires(
       sizeof(Dest) >= sizeof(Source) &&
-          (std::is_same_v<Dest, Source> ||
-           (std::is_floating_point_v<Dest> && std::is_floating_point_v<Source>) ||
-           (std::is_integral_v<Dest> && std::is_integral_v<Source> &&
-            std::is_signed_v<Dest> == std::is_signed_v<Source>)),
-      "safe_numeric requirements not met");
-
+      (std::is_same_v<Dest, Source> ||
+       (std::is_floating_point_v<Dest> && std::is_floating_point_v<Source>) ||
+       (std::is_integral_v<Dest> && std::is_integral_v<Source> &&
+        std::is_signed_v<Dest> == std::is_signed_v<Source>)))
+{
   return _source;
 }
-
 }
 
 #endif

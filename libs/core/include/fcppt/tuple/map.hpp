@@ -31,13 +31,10 @@ The result of the function is the tuple <code>(_function(v_1),...,_function(v_n)
 
 \tparam Function Must be callable with every type in \a Tuple.
 */
-template <
-    typename Tuple,
-    typename Function,
-    typename = std::enable_if_t<
-        fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value>>
+template <typename Tuple, typename Function>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 fcppt::tuple::map_result<Tuple, Function> map(Tuple &&_tuple, Function const &_function)
+  requires(fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value)
 {
   using source_type = std::remove_cvref_t<Tuple>;
   using result_type = fcppt::tuple::map_result<Tuple, Function>;

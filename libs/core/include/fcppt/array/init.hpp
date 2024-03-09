@@ -10,7 +10,6 @@
 #include <fcppt/array/size.hpp>
 #include <fcppt/array/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,11 +27,9 @@ index.
 \tparam Function Must be a function callable as <code>Array::value_type
 (std::integral_constant<std::size_t, I>)</code>.
 */
-template <
-    typename Array,
-    typename Function,
-    typename = std::enable_if_t<fcppt::array::is_object<Array>::value>>
+template <typename Array, typename Function>
 inline Array init(Function const &_function)
+  requires fcppt::array::is_object<Array>::value
 {
   return fcppt::array::detail::init<Array>(
       std::make_index_sequence<fcppt::array::size<Array>::value>{}, _function);

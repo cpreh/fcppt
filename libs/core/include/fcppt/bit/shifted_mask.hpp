@@ -18,7 +18,7 @@ namespace fcppt::bit
 \ingroup fcpptbit
 */
 template <typename Type>
-constexpr inline fcppt::bit::mask<Type> shifted_mask(fcppt::bit::shift_count const _bits) noexcept
+constexpr fcppt::bit::mask<Type> shifted_mask(fcppt::bit::shift_count const _bits) noexcept
 {
   return fcppt::bit::mask<Type>(fcppt::math::power_of_2<Type>(_bits));
 }

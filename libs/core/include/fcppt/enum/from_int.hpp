@@ -33,12 +33,9 @@ cast fails.
 
 \tparam Value Must be an unsigned type
 */
-template <
-    typename Enum,
-    typename Value,
-    typename = std::enable_if_t<
-        std::conjunction_v<std::is_unsigned<Value>, fcppt::enum_::is_object<Enum>>>>
+template <typename Enum, typename Value>
 fcppt::optional::object<Enum> from_int(Value const &_value) noexcept
+  requires(std::is_unsigned_v<Value> && fcppt::enum_::is_object<Enum>::value)
 {
   return fcppt::optional::make_if(
       fcppt::cast::size<fcppt::enum_::size_type<Enum>>(_value) < fcppt::enum_::size<Enum>::value,

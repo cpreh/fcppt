@@ -23,16 +23,16 @@ inline fcppt::unique_ptr<
 }
 
 template <typename Type, typename Deleter>
-inline fcppt::unique_ptr<Type, Deleter>::unique_ptr(unique_ptr &&) noexcept = default;
+fcppt::unique_ptr<Type, Deleter>::unique_ptr(unique_ptr &&) noexcept = default;
 
 template <typename Type, typename Deleter>
-inline fcppt::unique_ptr<Type, Deleter> &
+fcppt::unique_ptr<Type, Deleter> &
 fcppt::unique_ptr<Type, Deleter>::operator=(unique_ptr &&) noexcept = default;
 
 namespace fcppt
 {
 template <typename Type, typename Deleter>
-inline unique_ptr<Type, Deleter>::~unique_ptr() = default;
+unique_ptr<Type, Deleter>::~unique_ptr() = default;
 }
 
 template <typename Type, typename Deleter>

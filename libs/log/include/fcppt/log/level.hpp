@@ -7,6 +7,9 @@
 #define FCPPT_LOG_LEVEL_HPP_INCLUDED
 
 #include <fcppt/log/level_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::log
 {
@@ -21,7 +24,7 @@ valid log level.
 
 \ingroup fcpptlog
 */
-enum class level
+enum class level : std::uint8_t
 {
   /**
   \brief Used for verbose messages

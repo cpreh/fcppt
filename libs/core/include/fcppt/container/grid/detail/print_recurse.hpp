@@ -17,7 +17,6 @@
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::container::grid::detail
@@ -29,10 +28,11 @@ template <
     typename Type,
     fcppt::container::grid::size_type Size,
     typename Alloc>
-std::enable_if_t<Level == 0, void> print_recurse(
+void print_recurse(
     std::basic_ostream<Ch, Traits> &_stream,
     fcppt::container::grid::object<Type, Size, Alloc> const &_object,
     fcppt::container::grid::pos_type<fcppt::container::grid::object<Type, Size, Alloc>> const _pos)
+  requires(Level == 0)
 {
   _stream << fcppt::output(_object.get_unsafe(_pos));
 }
@@ -44,10 +44,11 @@ template <
     typename Type,
     fcppt::container::grid::size_type Size,
     typename Alloc>
-std::enable_if_t<Level != 0, void> print_recurse(
+void print_recurse(
     std::basic_ostream<Ch, Traits> &_stream,
     fcppt::container::grid::object<Type, Size, Alloc> const &_object,
     fcppt::container::grid::pos_type<fcppt::container::grid::object<Type, Size, Alloc>> _pos)
+requires(Level != 0)
 {
   constexpr size_type const index(Level - 1U);
 

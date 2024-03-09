@@ -126,12 +126,11 @@ public:
   Constructs a matrix by using <code>R</code> arguments of type
   #fcppt::math::matrix::object::row_type. You can use #fcppt::math::matrix::row to create them.
   */
-  template <
-      typename... Args,
-      typename = std::enable_if_t<std::conjunction_v<
-          std::bool_constant<sizeof...(Args) == R>,
-          std::is_same<row_type, std::remove_cvref_t<Args>>...>>>
-  explicit object(Args &&...);
+  template <typename... Args>
+  explicit object(Args &&...)
+    requires(std::conjunction_v<
+             std::bool_constant<sizeof...(Args) == R>,
+             std::is_same<row_type, std::remove_cvref_t<Args>>...>);
 
   /**
   \brief Create a matrix from a matrix with the same dimension and value

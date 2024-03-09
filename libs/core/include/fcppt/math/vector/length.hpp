@@ -61,8 +61,8 @@ std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 \endcode
 */
 template <typename T, fcppt::math::size_type N, typename S>
-inline std::enable_if_t<std::is_floating_point_v<T>, T>
-length(fcppt::math::vector::object<T, N, S> const &_vec)
+inline T length(fcppt::math::vector::object<T, N, S> const &_vec)
+  requires(std::is_floating_point_v<T>)
 {
   return std::sqrt(fcppt::math::vector::length_square(_vec));
 }
@@ -111,12 +111,11 @@ std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 \endcode
 */
 template <typename Dest, typename T, fcppt::math::size_type N, typename S>
-inline std::enable_if_t<!std::is_floating_point_v<T>, Dest>
-length(fcppt::math::vector::object<T, N, S> const &_vec)
+inline Dest length(fcppt::math::vector::object<T, N, S> const &_vec)
+  requires(!std::is_floating_point_v<T>)
 {
   return std::sqrt(fcppt::cast::int_to_float<Dest>(fcppt::math::vector::length_square(_vec)));
 }
-
 }
 
 #endif

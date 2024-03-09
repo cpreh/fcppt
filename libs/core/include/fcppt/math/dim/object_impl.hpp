@@ -7,6 +7,7 @@
 #define FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
@@ -34,9 +35,13 @@ fcppt::math::dim::object<T, N, S>::object(storage_type &&_storage) : storage_(st
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-template <typename... Args, typename>
+template <typename... Args>
 constexpr fcppt::math::dim::object<T, N, S>::object(Args &&..._args) noexcept(
     std::conjunction_v<std::is_nothrow_constructible<T, Args>...>)
+  requires(std::conjunction_v<
+           fcppt::math::is_static_storage<S>,
+           std::bool_constant<sizeof...(Args) == N>,
+           std::is_constructible<T, Args>...>)
     : storage_(std::forward<Args>(_args)...)
 {
 }

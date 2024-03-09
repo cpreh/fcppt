@@ -24,7 +24,7 @@ struct map_impl<
         std::conjunction_v<fcppt::array::is_object<Target>, fcppt::array::is_object<Source>>>>
 {
   template <typename Arg, typename Function>
-  static inline Target execute(Arg &&_arg, Function const &_function)
+  static Target execute(Arg &&_arg, Function const &_function)
   {
     return fcppt::array::map(std::forward<Arg>(_arg), _function);
   }

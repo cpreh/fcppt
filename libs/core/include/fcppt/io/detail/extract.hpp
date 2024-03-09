@@ -22,9 +22,8 @@
 namespace fcppt::io::detail
 {
 template <typename Type, typename Ch, typename Traits>
-inline std::
-    enable_if_t<std::is_constructible_v<Type, fcppt::no_init>, fcppt::optional::object<Type>>
-    extract(std::basic_istream<Ch, Traits> &_stream)
+inline fcppt::optional::object<Type> extract(std::basic_istream<Ch, Traits> &_stream)
+  requires(std::is_constructible_v<Type, fcppt::no_init>)
 {
   FCPPT_PP_PUSH_WARNING
   FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
@@ -37,16 +36,13 @@ inline std::
 }
 
 template <typename Type, typename Ch, typename Traits>
-inline std::enable_if_t<
-    fcppt::not_(std::is_constructible_v<Type, fcppt::no_init>),
-    fcppt::optional::object<Type>>
-extract(std::basic_istream<Ch, Traits> &_stream)
+inline fcppt::optional::object<Type> extract(std::basic_istream<Ch, Traits> &_stream)
+  requires(fcppt::not_(std::is_constructible_v<Type, fcppt::no_init>))
 {
   Type result;
 
   return fcppt::io::detail::extract_impl(_stream, fcppt::make_ref(result));
 }
-
 }
 
 #endif

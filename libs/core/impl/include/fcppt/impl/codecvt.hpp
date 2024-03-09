@@ -11,6 +11,9 @@
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <locale>
@@ -67,6 +70,9 @@ fcppt::optional::object<std::basic_string<Out>> codecvt(
 
     buf.written(written);
 
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
+
     switch (result)
     {
     case std::codecvt_base::noconv:
@@ -84,6 +90,8 @@ fcppt::optional::object<std::basic_string<Out>> codecvt(
     case std::codecvt_base::ok:
       return optional_return_type{return_type(buf.begin(), buf.end())};
     }
+
+    FCPPT_PP_POP_WARNING
 
     return optional_return_type{};
   }

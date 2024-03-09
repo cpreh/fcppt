@@ -19,7 +19,7 @@ template <typename Range>
 struct loop_break_impl<Range, std::enable_if_t<fcppt::mpl::list::is_object<Range>::value>>
 {
   template <typename Body>
-  inline static void execute(Range const &, Body const &_body)
+  static void execute(Range const &, Body const &_body)
   {
     fcppt::mpl::list::for_each_break<Range>(_body);
   }

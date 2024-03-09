@@ -36,16 +36,14 @@ Example:
 \tparam Function Must be a function callable as <code>R (Array::value_type)</code>,
 where <code>R</code> is the result type.
 **/
-template <
-    typename Array,
-    typename Function,
-    typename = std::enable_if_t<
-        fcppt::array::is_object<std::remove_cvref_t<Array>>::value>>
+template <typename Array, typename Function>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
-inline auto map(Array &&_source, Function const &_function) -> fcppt::array::object<
-    decltype(_function(fcppt::move_if_rvalue<Array>(
-        std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
-    fcppt::array::size<std::remove_cvref_t<Array>>::value>
+inline auto map(Array &&_source, Function const &_function)
+    -> fcppt::array::object<
+        decltype(_function(fcppt::move_if_rvalue<Array>(
+            std::declval<fcppt::container::to_reference_type<std::remove_reference_t<Array>>>()))),
+        fcppt::array::size<std::remove_cvref_t<Array>>::value>
+  requires(fcppt::array::is_object<std::remove_cvref_t<Array>>::value)
 {
   using result_array = fcppt::array::object<
       decltype(_function(fcppt::move_if_rvalue<Array>(
