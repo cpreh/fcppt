@@ -100,13 +100,11 @@ public:
   All arguments must have the same size (i.e. row length) and all rows must have value type
   <code>T</code>.
   */
-  template <
-      typename Arg1,
-      typename... Args,
-      typename = std::enable_if_t<std::conjunction_v<
-          fcppt::container::grid::is_static_row<Arg1>,
-          fcppt::container::grid::is_static_row<Args>...>>>
-  explicit object(Arg1 &&, Args &&...);
+  template <typename Arg1, typename... Args>
+  explicit object(Arg1 &&, Args &&...)
+    requires(std::conjunction_v<
+             fcppt::container::grid::is_static_row<Arg1>,
+             fcppt::container::grid::is_static_row<Args>...>);
 
   object(object const &);
 

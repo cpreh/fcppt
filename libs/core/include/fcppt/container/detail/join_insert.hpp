@@ -7,26 +7,22 @@
 #define FCPPT_CONTAINER_DETAIL_JOIN_INSERT_HPP_INCLUDED
 
 #include <fcppt/container/detail/has_insert_range.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::container::detail
 {
 template <typename Result, typename Iterator>
-inline std::enable_if_t<!fcppt::container::detail::has_insert_range<Result>::value, void>
-join_insert(Result &_result, Iterator const _begin, Iterator const _end)
+inline void join_insert(Result &_result, Iterator const _begin, Iterator const _end)
+  requires(!fcppt::container::detail::has_insert_range<Result>::value)
 {
   _result.insert(_result.end(), _begin, _end);
 }
 
 template <typename Result, typename Iterator>
-inline std::enable_if_t<fcppt::container::detail::has_insert_range<Result>::value, void>
-join_insert(Result &_result, Iterator const _begin, Iterator const _end)
+inline void join_insert(Result &_result, Iterator const _begin, Iterator const _end)
+  requires(fcppt::container::detail::has_insert_range<Result>::value)
 {
   _result.insert(_begin, _end);
 }
-
 }
 
 #endif

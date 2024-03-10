@@ -10,17 +10,19 @@
 #include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class my_enum
+enum class my_enum : std::uint8_t
 {
   val1,
   val2,
@@ -38,12 +40,15 @@ struct to_string_impl<my_enum>
   static std::string_view get(my_enum const _val)
   {
 #define NAME_CASE(val) FCPPT_ENUM_TO_STRING_CASE(my_enum, val)
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
     switch (_val)
     {
       NAME_CASE(val1);
       NAME_CASE(val2);
       NAME_CASE(val3);
     }
+    FCPPT_PP_POP_WARNING
     throw fcppt::enum_::make_invalid(_val);
 #undef NAME_CASE
   }

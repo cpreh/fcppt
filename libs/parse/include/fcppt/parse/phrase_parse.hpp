@@ -35,17 +35,14 @@ First, the skipper \a _skipper is called.
 If this succeeds, then the result of parsing \a _input with \a _parser and \a _skipper is returned.
 This function also catches all exceptions produced by \a _input and returns them as an error.
 */
-template <
-    typename Ch,
-    typename Parser,
-    typename Skipper,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::parse::is_parser<Parser>,
-        fcppt::parse::skipper::is_skipper<Skipper>>>>
+template <typename Ch, typename Parser, typename Skipper>
 [[nodiscard]] inline fcppt::either::object<
     fcppt::parse::parse_stream_error<Ch>,
     fcppt::parse::result_of<Parser>>
 phrase_parse(Parser const &_parser, fcppt::parse::basic_stream<Ch> &_input, Skipper const &_skipper)
+  requires(std::conjunction_v<
+           fcppt::parse::is_parser<Parser>,
+           fcppt::parse::skipper::is_skipper<Skipper>>)
 try
 {
   return fcppt::either::map_failure(

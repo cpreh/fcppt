@@ -25,12 +25,12 @@ struct transform<boost::units::quantity<Unit, Type>>
 
   using decorated_type = boost::units::quantity<Unit, Type>;
 
-  static inline decorated_type decorate(undecorated_type const &_value)
+  static decorated_type decorate(undecorated_type const &_value)
   {
     return decorated_type::from_value(_value);
   }
 
-  static inline undecorated_type undecorate(decorated_type const &_value) { return _value.value(); }
+  static undecorated_type undecorate(decorated_type const &_value) { return _value.value(); }
 };
 
 }

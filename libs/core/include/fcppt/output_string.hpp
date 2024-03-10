@@ -18,13 +18,13 @@ namespace fcppt
 template<>
 struct output_impl<std::string, void>
 {
-  inline static void
+  static void
   execute(std::ostream &_stream, std::string const &_value)
   {
     _stream << _value;
   }
 
-  inline static void
+  static void
   execute(std::wostream &_stream, std::string const &_value)
   {
     _stream << fcppt::widen(_value);

@@ -10,6 +10,7 @@
 #include <fcppt/array/join.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/grid/dim.hpp> // IWYU pragma: keep
+#include <fcppt/container/grid/is_static_row.hpp>
 #include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/grid/offset.hpp>
@@ -45,14 +46,15 @@ fcppt::container::grid::object<T, N, A>::object(dim const &_size, Function const
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-template <typename Arg1, typename... Args, typename>
+template <typename Arg1, typename... Args>
 fcppt::container::grid::object<T, N, A>::object(Arg1 &&_arg1, Args &&..._args)
+  requires(std::conjunction_v<
+              fcppt::container::grid::is_static_row<Arg1>,
+              fcppt::container::grid::is_static_row<Args>...>)
     : container_(fcppt::algorithm::map<container>(
           fcppt::array::join(std::forward<Arg1>(_arg1), std::forward<Args>(_args)...),
           [](auto &&_value) { return std::forward<decltype(_value)>(_value); })),
-      size_(
-          fcppt::array::size<std::remove_cvref_t<Arg1>>::value,
-          sizeof...(Args) + 1U)
+      size_(fcppt::array::size<std::remove_cvref_t<Arg1>>::value, sizeof...(Args) + 1U)
 {
   static_assert(
       std::conjunction_v<std::is_same<

@@ -10,14 +10,12 @@
 #include <fcppt/random/distribution/parameters/make_uniform_enum_advanced.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::random::distribution::parameters
 {
-template <typename Enum, typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+template <typename Enum>
 inline fcppt::random::distribution::parameters::uniform_int<Enum> make_uniform_enum()
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   return fcppt::random::distribution::parameters::make_uniform_enum_advanced<
       fcppt::random::distribution::parameters::uniform_int_wrapper,

@@ -19,8 +19,7 @@
 template <typename... Types>
 template <typename U>
 fcppt::variant::object<Types...>::object(U &&_other)
-  requires fcppt::variant::
-      has_type_v<typename fcppt::variant::object<Types...>::this_type, std::remove_cvref_t<U>>
+  requires fcppt::variant::has_type_v<fcppt::variant::object<Types...>, std::remove_cvref_t<U>>
     : impl_{std::forward<U>(_other)}
 {
 }

@@ -6,10 +6,13 @@
 #ifndef FCPPT_ALGORITHM_UPDATE_ACTION_FWD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_UPDATE_ACTION_FWD_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
+
 namespace fcppt::algorithm
 {
-enum class update_action; // IWYU pragma: export
-
+enum class update_action : std::uint8_t; // IWYU pragma: export
 }
 
 #endif

@@ -20,7 +20,7 @@ template <typename Range>
 struct loop_break_impl<Range, std::enable_if_t<fcppt::tuple::is_object<Range>::value>>
 {
   template <typename Tuple, typename Body>
-  inline static void execute(Tuple &&_range, Body const &_body)
+  static void execute(Tuple &&_range, Body const &_body)
   {
     fcppt::algorithm::detail::tuple_loop_break<0U>(std::forward<Tuple>(_range), _body);
   }

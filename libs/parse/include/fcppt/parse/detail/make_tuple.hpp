@@ -18,23 +18,18 @@
 namespace fcppt::parse::detail
 {
 template <typename Type>
-std::enable_if_t<
-    fcppt::tuple::is_object<std::remove_cvref_t<Type>>::value,
-    std::remove_cvref_t<Type>>
-make_tuple(Type &&_value)
+inline std::remove_cvref_t<Type> make_tuple(Type &&_value)
+  requires(fcppt::tuple::is_object<std::remove_cvref_t<Type>>::value)
 {
   return std::forward<Type>(_value);
 }
 
 template <typename Type>
-std::enable_if_t<
-    fcppt::not_(fcppt::tuple::is_object<std::remove_cvref_t<Type>>::value),
-    fcppt::tuple::object<std::remove_cvref_t<Type>>>
-make_tuple(Type &&_value)
+fcppt::tuple::object<std::remove_cvref_t<Type>> make_tuple(Type &&_value)
+  requires(fcppt::not_(fcppt::tuple::is_object<std::remove_cvref_t<Type>>::value))
 {
   return fcppt::tuple::make(std::forward<Type>(_value));
 }
-
 }
 
 #endif

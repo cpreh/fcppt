@@ -22,16 +22,12 @@ namespace fcppt::parse
 
 \tparam Parser Must be an #fcppt::parse::basic_char_set
 */
-template <
-    typename Parser,
-    typename = std::enable_if_t<
-        fcppt::parse::detail::is_char_set<fcppt::parse::deref_type<Parser>>::value>>
-auto operator~(Parser &&_parser)
+template <typename Parser>
+inline auto operator~(Parser &&_parser)
+  requires(fcppt::parse::detail::is_char_set<fcppt::parse::deref_type<Parser>>::value)
 {
-  return fcppt::parse::complement<std::remove_cvref_t<Parser>>{
-      std::forward<Parser>(_parser)};
+  return fcppt::parse::complement<std::remove_cvref_t<Parser>>{std::forward<Parser>(_parser)};
 }
-
 }
 
 #endif

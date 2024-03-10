@@ -18,6 +18,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <list>
 #include <map>
 #include <vector>
@@ -90,7 +91,7 @@ int main()
 
   FCPPT_PP_POP_WARNING
 
-  enum class test_enum
+  enum class test_enum : std::uint8_t
   {
     test1,
     fcppt_maximum = test1

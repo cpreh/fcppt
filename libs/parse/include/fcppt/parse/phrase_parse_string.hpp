@@ -32,15 +32,14 @@ namespace fcppt::parse
 
 \see fcppt::parse::phrase_parse
 */
-template <
-    typename Ch,
-    typename Parser,
-    typename Skipper,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::parse::is_parser<Parser>,
-        fcppt::parse::skipper::is_skipper<Skipper>>>>
-[[nodiscard]] fcppt::either::object<fcppt::parse::parse_string_error<Ch>, fcppt::parse::result_of<Parser>>
+template <typename Ch, typename Parser, typename Skipper>
+[[nodiscard]] fcppt::either::object<
+    fcppt::parse::parse_string_error<Ch>,
+    fcppt::parse::result_of<Parser>>
 phrase_parse_string(Parser const &_parser, std::basic_string<Ch> &&_string, Skipper const &_skipper)
+  requires(std::conjunction_v<
+           fcppt::parse::is_parser<Parser>,
+           fcppt::parse::skipper::is_skipper<Skipper>>)
 {
   std::basic_istringstream<Ch> stream{std::move(_string)};
 

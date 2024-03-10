@@ -9,12 +9,12 @@
 // color type (represented by variant over static color types).
 #include <fcppt/tag.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
-#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/mpl/list/invoke_on.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/variant/from_list.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <exception>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
@@ -22,7 +22,7 @@
 namespace
 {
 // Our color enum
-enum class color_enum
+enum class color_enum : std::uint8_t
 {
   bgr,
   rgb
@@ -59,7 +59,7 @@ struct create_function
 color_variant make_color_variant(color_enum const _value)
 {
   return fcppt::mpl::list::invoke_on<static_color_types>(
-      fcppt::cast::to_unsigned(fcppt::cast::enum_to_underlying(_value)),
+      fcppt::cast::enum_to_underlying(_value),
       create_function(),
       []() -> color_variant { std::terminate(); });
 }

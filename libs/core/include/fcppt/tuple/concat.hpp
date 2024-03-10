@@ -23,9 +23,9 @@ namespace fcppt::tuple
 \ingroup fcppttuple
 */
 template <
-    typename... Tuples,
-    typename = std::enable_if_t<std::conjunction_v<fcppt::tuple::is_object<Tuples>...>>>
+    typename... Tuples>
 decltype(auto) concat(Tuples &&..._tuples) // NOLINT(cppcoreguidelines-missing-std-forward)
+requires(std::conjunction_v<fcppt::tuple::is_object<Tuples>...>)
 {
   return std::apply(
       [](auto &&..._results) {

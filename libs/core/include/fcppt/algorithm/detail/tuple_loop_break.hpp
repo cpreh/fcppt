@@ -7,6 +7,9 @@
 #define FCPPT_ALGORITHM_DETAIL_TUPLE_LOOP_BREAK_HPP_INCLUDED
 
 #include <fcppt/loop.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/size.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,15 +21,18 @@
 namespace fcppt::algorithm::detail
 {
 template <std::size_t Index, typename Tuple, typename Body>
-inline std::enable_if_t<Index == fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>
+inline void
 tuple_loop_break(Tuple &&, Body const &) // NOLINT(cppcoreguidelines-missing-std-forward)
+  requires(Index == fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value)
 {
 }
 
 template <std::size_t Index, typename Tuple, typename Body>
-inline std::enable_if_t<Index != fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>
-tuple_loop_break(Tuple &&_tuple, Body const &_body)
+inline void tuple_loop_break(Tuple &&_tuple, Body const &_body)
+  requires(Index != fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value)
 {
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
   switch (_body(fcppt::tuple::get<Index>(_tuple)))
   {
   case fcppt::loop::continue_:
@@ -35,6 +41,7 @@ tuple_loop_break(Tuple &&_tuple, Body const &_body)
   case fcppt::loop::break_:
     break;
   }
+  FCPPT_PP_POP_WARNING
 }
 }
 

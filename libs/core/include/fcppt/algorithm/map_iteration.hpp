@@ -7,6 +7,9 @@
 #define FCPPT_ALGORITHM_MAP_ITERATION_HPP_INCLUDED
 
 #include <fcppt/algorithm/update_action.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 namespace fcppt::algorithm
 {
@@ -31,6 +34,8 @@ void map_iteration(Map &_map, UpdateAction const &_update_action)
   {
     ++next;
 
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
     switch (_update_action(*it))
     {
     case fcppt::algorithm::update_action::remove:
@@ -39,6 +44,7 @@ void map_iteration(Map &_map, UpdateAction const &_update_action)
     case fcppt::algorithm::update_action::keep:
       break;
     }
+    FCPPT_PP_POP_WARNING
   }
 }
 

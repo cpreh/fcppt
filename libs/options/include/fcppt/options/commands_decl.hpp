@@ -78,13 +78,11 @@ public:
   \tparam OptionsParserArg A cv-ref to \a OptionsParser
   \tparam SubCommandsArgs Cv-refs to \a SubCommands
   */
-  template <
-      typename OptionsParserArg,
-      typename... SubCommandsArgs,
-      typename = std::enable_if_t<std::conjunction_v<
-          std::is_same<OptionsParser, std::remove_cvref_t<OptionsParserArg>>,
-          std::is_same<SubCommands, std::remove_cvref_t<SubCommandsArgs>>...>>>
-  explicit commands(OptionsParserArg &&, SubCommandsArgs &&...);
+  template <typename OptionsParserArg, typename... SubCommandsArgs>
+  explicit commands(OptionsParserArg &&, SubCommandsArgs &&...)
+    requires(std::conjunction_v<
+             std::is_same<OptionsParser, std::remove_cvref_t<OptionsParserArg>>,
+             std::is_same<SubCommands, std::remove_cvref_t<SubCommandsArgs>>...>);
 
   using variant_result = fcppt::variant::object<fcppt::options::result_of<SubCommands>...>;
 

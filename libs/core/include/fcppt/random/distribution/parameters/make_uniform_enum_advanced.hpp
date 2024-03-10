@@ -11,16 +11,13 @@
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/type_iso/enum.hpp> // IWYU pragma: keep
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::random::distribution::parameters
 {
-template <typename Distribution, typename Enum,
-typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
-fcppt::random::distribution::parameters::uniform_int<Enum, Distribution>
+template <typename Distribution, typename Enum>
+inline fcppt::random::distribution::parameters::uniform_int<Enum, Distribution>
 make_uniform_enum_advanced()
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   using param_type = fcppt::random::distribution::parameters::uniform_int<Enum, Distribution>;
 
@@ -28,7 +25,6 @@ make_uniform_enum_advanced()
       typename param_type::min(fcppt::cast::int_to_enum<Enum>(0U)),
       typename param_type::max(fcppt::enum_::max_value<Enum>::value));
 }
-
 }
 
 #endif

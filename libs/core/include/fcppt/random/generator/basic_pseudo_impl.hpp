@@ -24,7 +24,7 @@ inline fcppt::random::generator::basic_pseudo<Generator>::basic_pseudo(SeedSeq &
 namespace fcppt::random::generator
 {
 template <typename Generator>
-inline basic_pseudo<Generator>::~basic_pseudo() = default;
+basic_pseudo<Generator>::~basic_pseudo() = default;
 }
 
 template <typename Generator>
@@ -35,14 +35,14 @@ fcppt::random::generator::basic_pseudo<Generator>::operator()()
 }
 
 template <typename Generator>
-inline constexpr typename fcppt::random::generator::basic_pseudo<Generator>::result_type
+constexpr typename fcppt::random::generator::basic_pseudo<Generator>::result_type
 fcppt::random::generator::basic_pseudo<Generator>::min()
 {
   return wrapped::min();
 }
 
 template <typename Generator>
-inline constexpr typename fcppt::random::generator::basic_pseudo<Generator>::result_type
+constexpr typename fcppt::random::generator::basic_pseudo<Generator>::result_type
 fcppt::random::generator::basic_pseudo<Generator>::max()
 {
   return wrapped::max();

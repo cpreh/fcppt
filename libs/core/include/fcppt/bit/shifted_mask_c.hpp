@@ -21,10 +21,9 @@ namespace fcppt::bit
 \ingroup fcpptbit
 */
 template <typename Type, fcppt::bit::shift_count Bits>
-constexpr inline fcppt::bit::mask<Type> shifted_mask_c() noexcept
+constexpr fcppt::bit::mask<Type> shifted_mask_c() noexcept
+  requires(Bits < std::numeric_limits<Type>::digits)
 {
-  static_assert(Bits < std::numeric_limits<Type>::digits, "Bits out of range");
-
   return fcppt::bit::shifted_mask<Type>(Bits);
 }
 

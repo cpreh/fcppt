@@ -16,7 +16,7 @@ namespace fcppt::bit
 \ingroup fcpptbit
 */
 template <typename Type, Type Mask>
-constexpr inline fcppt::bit::mask<Type> mask_c() noexcept
+constexpr fcppt::bit::mask<Type> mask_c() noexcept
 {
   return fcppt::bit::mask<Type>(Mask);
 }

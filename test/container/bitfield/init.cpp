@@ -8,7 +8,11 @@
 #include <fcppt/container/bitfield/init.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/enum/make_invalid.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,7 +21,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::bitfield::init", "[container],[bitfield]")
 {
-  enum class my_enum
+  enum class my_enum : std::uint8_t
   {
     test1,
     test2,
@@ -28,6 +32,8 @@ TEST_CASE("container::bitfield::init", "[container],[bitfield]")
   using bitfield = fcppt::container::bitfield::object<my_enum>;
 
   auto const test(fcppt::container::bitfield::init<bitfield>([](my_enum const _value) {
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
     switch (_value)
     {
     case my_enum::test1:
@@ -36,6 +42,7 @@ TEST_CASE("container::bitfield::init", "[container],[bitfield]")
     case my_enum::test2:
       return false;
     }
+    FCPPT_PP_POP_WARNING
 
     throw fcppt::enum_::make_invalid(_value);
   }));

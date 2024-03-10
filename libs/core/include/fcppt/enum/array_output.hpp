@@ -17,7 +17,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <string>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::enum_
@@ -27,14 +26,10 @@ namespace fcppt::enum_
 
 \ingroup fcpptenum
 */
-template <
-    typename Ch,
-    typename Traits,
-    typename Enum,
-    typename Value,
-    typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+template <typename Ch, typename Traits, typename Enum, typename Value>
 std::basic_ostream<Ch, Traits> &
 operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::enum_::array<Enum, Value> const &_array)
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   _stream << FCPPT_CHAR_LITERAL(Ch, '[');
 

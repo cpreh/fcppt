@@ -25,7 +25,7 @@ struct map_impl<
         fcppt::record::is_object<Source>>>>
 {
   template <typename Arg, typename Function>
-  static inline Target execute(Arg &&_arg, Function const &_function)
+  static Target execute(Arg &&_arg, Function const &_function)
   {
     return fcppt::record::map(std::forward<Arg>(_arg), _function);
   }

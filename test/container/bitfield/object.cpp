@@ -7,12 +7,13 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class test_enum
+enum class test_enum : std::uint8_t
 {
   test1,
   test2,

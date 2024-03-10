@@ -9,6 +9,7 @@
 #include <fcppt/container/bitfield/std_hash.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
@@ -17,7 +18,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::bitfield hash", "[container],[bitfield]")
 {
-  enum class test_enum
+  enum class test_enum : std::uint8_t
   {
     test1,
     test2,

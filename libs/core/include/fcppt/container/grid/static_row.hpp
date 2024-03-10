@@ -21,15 +21,13 @@ namespace fcppt::container::grid
 
 \ingroup fcpptcontainergrid
 */
-template <
-    typename Arg1,
-    typename... Args,
-    typename = std::enable_if_t<
-        std::conjunction_v<std::is_same<std::remove_cvref_t<Args>, std::remove_cvref_t<Arg1>>...>>>
+template <typename Arg1, typename... Args>
 fcppt::container::grid::static_row_type<
     std::remove_cvref_t<Arg1>,
     fcppt::cast::size<fcppt::container::grid::size_type>(sizeof...(Args) + 1U)>
 static_row(Arg1 &&_arg1, Args &&..._args)
+  requires(
+      std::conjunction_v<std::is_same<std::remove_cvref_t<Args>, std::remove_cvref_t<Arg1>>...>)
 {
   return fcppt::container::grid::static_row_type<
       std::remove_cvref_t<Arg1>,

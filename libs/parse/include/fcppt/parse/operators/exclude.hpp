@@ -19,14 +19,12 @@ namespace fcppt::parse
 \brief Creates an #fcppt::parse::exclude parser.
 \ingroup fcpptparse
 */
-template <
-    typename Left,
-    typename Right,
-    typename = std::enable_if_t<std::conjunction_v<
-        fcppt::parse::is_valid_argument<Left>,
-        fcppt::parse::is_valid_argument<Right>>>>
-fcppt::parse::exclude<std::remove_cvref_t<Left>, std::remove_cvref_t<Right>>
+template <typename Left, typename Right>
+inline fcppt::parse::exclude<std::remove_cvref_t<Left>, std::remove_cvref_t<Right>>
 operator-(Left &&_left, Right &&_right)
+  requires(std::conjunction_v<
+           fcppt::parse::is_valid_argument<Left>,
+           fcppt::parse::is_valid_argument<Right>>)
 {
   return fcppt::parse::exclude<std::remove_cvref_t<Left>, std::remove_cvref_t<Right>>{
       std::forward<Left>(_left), std::forward<Right>(_right)};

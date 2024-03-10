@@ -19,15 +19,12 @@ namespace fcppt::parse
 \brief Creates an #fcppt::parse::repetition parser.
 \ingroup fcpptparse
 */
-template <
-    typename Parser,
-    typename = std::enable_if_t<fcppt::parse::is_valid_argument<Parser>::value>>
-fcppt::parse::repetition<std::remove_cvref_t<Parser>> operator*(Parser &&_parser)
+template <typename Parser>
+inline fcppt::parse::repetition<std::remove_cvref_t<Parser>> operator*(Parser &&_parser)
+  requires(fcppt::parse::is_valid_argument<Parser>::value)
 {
-  return fcppt::parse::repetition<std::remove_cvref_t<Parser>>{
-      std::forward<Parser>(_parser)};
+  return fcppt::parse::repetition<std::remove_cvref_t<Parser>>{std::forward<Parser>(_parser)};
 }
-
 }
 
 #endif

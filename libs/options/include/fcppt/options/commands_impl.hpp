@@ -56,9 +56,12 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename OptionsParser, typename... SubCommands>
-template <typename OptionsParserArg, typename... SubCommandsArgs, typename>
+template <typename OptionsParserArg, typename... SubCommandsArgs>
 fcppt::options::commands<OptionsParser, SubCommands...>::commands(
     OptionsParserArg &&_options_parser, SubCommandsArgs &&..._sub_commands)
+  requires(std::conjunction_v<
+              std::is_same<OptionsParser, std::remove_cvref_t<OptionsParserArg>>,
+              std::is_same<SubCommands, std::remove_cvref_t<SubCommandsArgs>>...>)
     : options_parser_{std::forward<OptionsParserArg>(_options_parser)},
       sub_commands_{std::forward<SubCommandsArgs>(_sub_commands)...}
 {

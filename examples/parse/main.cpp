@@ -14,6 +14,7 @@
 #include <fcppt/parse/operators/alternative.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -22,7 +23,7 @@
 namespace
 {
 // [digit]
-enum class digit
+enum class digit : std::uint8_t
 {
   _0,
   _1,

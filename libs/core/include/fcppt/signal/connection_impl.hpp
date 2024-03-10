@@ -9,8 +9,10 @@
 
 #include <fcppt/signal/connection_decl.hpp> // IWYU pragma: export
 
+// NOLINTNEXTLINE(readability-redundant-inline-specifier)
 inline fcppt::signal::connection::connection() = default;
 
+// NOLINTNEXTLINE(readability-redundant-inline-specifier)
 inline fcppt::signal::connection::~connection() = default;
 
 #endif

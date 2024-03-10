@@ -59,7 +59,7 @@ public:
   */
   template <typename U>
   explicit object(U &&)
-    requires fcppt::variant::has_type_v<this_type, std::remove_cvref_t<U>>;
+    requires fcppt::variant::has_type_v<fcppt::variant::object<Types...>, std::remove_cvref_t<U>>;
 
   /**
   \brief Returns a const reference to the held type without any checks.

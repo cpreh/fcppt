@@ -21,13 +21,15 @@ using string_or_int = fcppt::variant::object<std::string, int>;
 struct print_visitor
 {
   template <typename T>
-  std::enable_if_t<!std::is_integral_v<T>, void> operator()(T const &_value) const
+  void operator()(T const &_value) const
+    requires(!std::is_integral_v<T>)
   {
     std::cout << "Not integral: " << _value << '\n';
   }
 
   template <typename T>
-  std::enable_if_t<std::is_integral_v<T>, void> operator()(T const _value) const
+  void operator()(T const _value) const
+    requires(std::is_integral_v<T>)
   {
     std::cout << "Integral: " << _value << '\n';
   }

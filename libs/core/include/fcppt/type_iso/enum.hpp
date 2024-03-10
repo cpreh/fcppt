@@ -20,12 +20,12 @@ struct transform<Enum, std::enable_if_t<std::is_enum_v<Enum>>>
 {
   using undecorated_type = std::underlying_type_t<Enum>;
 
-  static inline Enum decorate(undecorated_type const _value)
+  static Enum decorate(undecorated_type const _value)
   {
     return fcppt::cast::int_to_enum<Enum>(_value);
   }
 
-  static inline undecorated_type undecorate(Enum const _value)
+  static undecorated_type undecorate(Enum const _value)
   {
     return fcppt::cast::enum_to_int<undecorated_type>(_value);
   }

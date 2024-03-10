@@ -9,6 +9,7 @@
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
@@ -16,7 +17,7 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::bitfield::is_subset_eq", "[container],[bitfield]")
 {
-  enum class test_enum
+  enum class test_enum : std::uint8_t
   {
     test1,
     test2,

@@ -7,6 +7,9 @@
 #define FCPPT_ALGORITHM_UPDATE_ACTION_HPP_INCLUDED
 
 #include <fcppt/algorithm/update_action_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm
 {
@@ -15,7 +18,7 @@ namespace fcppt::algorithm
 
 \ingroup fcpptalgorithm
 */
-enum class update_action
+enum class update_action : std::uint8_t
 {
   /**
   \brief Keep the element
