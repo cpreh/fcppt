@@ -13,6 +13,7 @@
 #include <fcppt/mpl/lambda.hpp>
 #include <fcppt/mpl/set/contains.hpp>
 #include <fcppt/mpl/set/insert.hpp>
+#include <fcppt/mpl/set/object_concept.hpp>
 
 namespace fcppt::mpl::set
 {

@@ -6,6 +6,7 @@
 #ifndef FCPPT_MPL_LIST_UNIQUE_HPP_INCLUDED
 #define FCPPT_MPL_LIST_UNIQUE_HPP_INCLUDED
 
+#include <fcppt/mpl/list/object_concept.hpp>
 #include <fcppt/mpl/set/from_list_relaxed.hpp>
 #include <fcppt/mpl/set/to_list.hpp>
 

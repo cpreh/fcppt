@@ -16,9 +16,6 @@
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::math::matrix::detail
 {

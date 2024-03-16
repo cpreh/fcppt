@@ -6,10 +6,6 @@
 #ifndef FCPPT_MATH_DETAIL_IF_NOT_LAST_INDEX_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_IF_NOT_LAST_INDEX_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
-
 namespace fcppt::math::detail
 {
 template <typename Index, typename Size, typename Function>

@@ -9,7 +9,6 @@
 #include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::container::detail

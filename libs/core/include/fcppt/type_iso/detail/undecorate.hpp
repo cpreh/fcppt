@@ -9,9 +9,6 @@
 #include <fcppt/type_iso/transform.hpp>
 #include <fcppt/type_iso/undecorated_type.hpp>
 #include <fcppt/type_iso/detail/is_terminal.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::type_iso::detail
 {
