@@ -24,11 +24,9 @@ namespace fcppt::tuple
 constructible from <code>t_1, ..., t_n</code>.
 TODO(philipp): concepts
 */
-template <
-    typename Result,
-    typename Tuple,
-    typename = std::enable_if_t<fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value>>
-[[nodiscard]] inline constexpr Result as_struct(Tuple &&_tuple)
+template <typename Result, typename Tuple>
+[[nodiscard]] constexpr Result as_struct(Tuple &&_tuple)
+  requires(fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value)
 {
   return fcppt::tuple::invoke(
       [](auto &&..._values) { return Result{std::forward<decltype(_values)>(_values)...}; },

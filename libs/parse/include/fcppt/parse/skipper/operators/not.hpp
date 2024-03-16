@@ -19,11 +19,10 @@ namespace fcppt::parse::skipper
 \brief Creates an #fcppt::parse::skipper::not_ skipper.
 \ingroup fcpptparse
 */
-template <
-    typename Skipper,
-    typename = std::enable_if_t<fcppt::parse::skipper::is_valid_argument<Skipper>::value>>
+template <typename Skipper>
 [[nodiscard]] inline fcppt::parse::skipper::not_<std::remove_cvref_t<Skipper>>
 operator!(Skipper &&_skipper)
+  requires(fcppt::parse::skipper::is_valid_argument<Skipper>::value)
 {
   return fcppt::parse::skipper::not_<std::remove_cvref_t<Skipper>>{std::forward<Skipper>(_skipper)};
 }

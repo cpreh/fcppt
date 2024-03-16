@@ -30,11 +30,9 @@ function
 \tparam Function A function callable as <code>R (std::integal_constant<Enum,E>)</code>,
 where <code>R</code> is the result type.
 */
-template <
-    typename Enum,
-    typename Function,
-    typename = std::enable_if_t<fcppt::enum_::is_object<Enum>::value>>
+template <typename Enum, typename Function>
 inline decltype(auto) to_static(Enum const _enum, Function const &_function)
+  requires(fcppt::enum_::is_object<Enum>::value)
 {
   using int_type = fcppt::enum_::size_type<Enum>;
 
@@ -49,7 +47,6 @@ inline decltype(auto) to_static(Enum const _enum, Function const &_function)
       },
       &fcppt::absurd<decltype(_function(fcppt::enum_::max_value<Enum>{}))>);
 }
-
 }
 
 #endif

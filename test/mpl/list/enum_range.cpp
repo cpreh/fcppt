@@ -6,12 +6,13 @@
 #include <fcppt/mpl/list/enum_range.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class my_enum
+enum class my_enum : std::uint8_t
 {
   test1,
   test2,

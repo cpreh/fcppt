@@ -11,7 +11,7 @@
 
 namespace fcppt::math::matrix::detail
 {
-constexpr inline fcppt::math::size_type
+constexpr fcppt::math::size_type
 deleted_index(fcppt::math::size_type const _cur, fcppt::math::size_type const _rem)
 {
   return _cur >= _rem ? _cur + fcppt::literal<fcppt::math::size_type>(1) : _cur;

@@ -11,11 +11,12 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class test_enum
+enum class test_enum : std::uint8_t
 {
   enum1,
   enum2,

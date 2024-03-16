@@ -29,17 +29,14 @@ This implies that <code>Result</code> must be constructible from <code>T_1,...,T
 
 \tparam Parser A parser whose result is an <code>fcppt::tuple::object</code>.
 */
-template <
-    typename Result,
-    typename Parser,
-    typename = std::enable_if_t<fcppt::tuple::is_object<fcppt::parse::result_of<Parser>>::value>>
-fcppt::parse::convert<std::remove_cvref_t<Parser>, Result>
-as_struct(Parser &&_parser)
+template <typename Result, typename Parser>
+fcppt::parse::convert<std::remove_cvref_t<Parser>, Result> as_struct(Parser &&_parser)
+  requires(fcppt::tuple::is_object<fcppt::parse::result_of<Parser>>::value)
 {
   return fcppt::parse::make_convert(
-      std::forward<Parser>(_parser), [](fcppt::parse::result_of<Parser> &&_tuple) {
-        return fcppt::tuple::as_struct<Result>(std::move(_tuple));
-      });
+      std::forward<Parser>(_parser),
+      [](fcppt::parse::result_of<Parser> &&_tuple)
+      { return fcppt::tuple::as_struct<Result>(std::move(_tuple)); });
 }
 }
 

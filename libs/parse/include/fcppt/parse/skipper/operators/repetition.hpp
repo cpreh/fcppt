@@ -19,16 +19,13 @@ namespace fcppt::parse::skipper
 \brief Creates an #fcppt::parse::skipper::repetition.
 \ingroup fcpptparse
 */
-template <
-    typename Parser,
-    typename = std::enable_if_t<fcppt::parse::skipper::is_valid_argument<Parser>::value>>
-fcppt::parse::skipper::repetition<std::remove_cvref_t<Parser>>
-operator*(Parser &&_parser)
+template <typename Parser>
+fcppt::parse::skipper::repetition<std::remove_cvref_t<Parser>> operator*(Parser &&_parser)
+  requires(fcppt::parse::skipper::is_valid_argument<Parser>::value)
 {
   return fcppt::parse::skipper::repetition<std::remove_cvref_t<Parser>>{
       std::forward<Parser>(_parser)};
 }
-
 }
 
 #endif

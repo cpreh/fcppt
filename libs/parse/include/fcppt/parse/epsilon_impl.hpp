@@ -13,6 +13,7 @@
 #include <fcppt/parse/make_success.hpp>
 #include <fcppt/parse/result.hpp>
 
+// NOLINTNEXTLINE(readability-redundant-inline-specifier)
 inline fcppt::parse::epsilon::epsilon() = default;
 
 template <typename Ch, typename Skipper>

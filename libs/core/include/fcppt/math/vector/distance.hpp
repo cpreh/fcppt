@@ -25,9 +25,10 @@ namespace fcppt::math::vector
 \ingroup fcpptmathvector
 */
 template <typename T, fcppt::math::size_type N, typename S1, typename S2>
-std::enable_if_t<std::is_floating_point_v<T>, T> distance(
+T distance(
     fcppt::math::vector::object<T, N, S1> const &_v1,
     fcppt::math::vector::object<T, N, S2> const &_v2)
+  requires(std::is_floating_point_v<T>)
 {
   return fcppt::math::vector::length(_v1 - _v2);
 }
@@ -38,9 +39,10 @@ std::enable_if_t<std::is_floating_point_v<T>, T> distance(
 \ingroup fcpptmathvector
 */
 template <typename Dest, typename T, fcppt::math::size_type N, typename S1, typename S2>
-std::enable_if_t<!std::is_floating_point_v<T>, Dest> distance(
+Dest distance(
     fcppt::math::vector::object<T, N, S1> const &_v1,
     fcppt::math::vector::object<T, N, S2> const &_v2)
+  requires(!std::is_floating_point_v<T>)
 {
   using result_vector = fcppt::math::vector::static_<Dest, N>;
 
@@ -50,7 +52,6 @@ std::enable_if_t<!std::is_floating_point_v<T>, Dest> distance(
       fcppt::math::vector::structure_cast<result_vector, fcppt::cast::int_to_float_fun>(_v1),
       fcppt::math::vector::structure_cast<result_vector, fcppt::cast::int_to_float_fun>(_v2));
 }
-
 }
 
 #endif

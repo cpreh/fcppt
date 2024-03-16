@@ -5,16 +5,19 @@
 
 #include <fcppt/not.hpp>
 #include <fcppt/enum/has_maximum.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstdint>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class enum1
+enum class enum1 : std::uint8_t
 {
   a,
   b
 };
 
-enum class enum2
+enum class enum2 : std::uint8_t
 {
  a,
  b,

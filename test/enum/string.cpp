@@ -13,15 +13,19 @@
 #include <fcppt/enum/to_string_impl_fwd.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <string>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class test_enum
+enum class test_enum : std::uint8_t
 {
   test1,
   test2,
@@ -39,12 +43,15 @@ struct to_string_impl<test_enum>
   static std::string_view get(test_enum const _val)
   {
 #define NAME_CASE(val) FCPPT_ENUM_TO_STRING_CASE(test_enum, val)
+    FCPPT_PP_PUSH_WARNING
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
     switch (_val)
     {
       NAME_CASE(test1);
       NAME_CASE(test2);
       NAME_CASE(test3);
     }
+    FCPPT_PP_POP_WARNING
     throw fcppt::enum_::make_invalid(_val);
 #undef NAME_CASE
   }

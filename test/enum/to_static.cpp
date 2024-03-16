@@ -8,12 +8,13 @@
 #include <fcppt/enum/to_static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class my_enum
+enum class my_enum : std::uint8_t
 {
   test1,
   test2,

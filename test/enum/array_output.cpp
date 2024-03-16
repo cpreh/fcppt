@@ -17,13 +17,14 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <string>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class my_enum
+enum class my_enum : std::uint8_t
 {
   val1,
   val2,

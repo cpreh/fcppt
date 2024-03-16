@@ -29,15 +29,15 @@ T determinant(fcppt::math::matrix::object<T, 1, 1, S> const &_matrix)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-std::enable_if_t<
-    !fcppt::math::matrix::has_dim<fcppt::math::matrix::object<T, N, N, S>, 1, 1>::value,
-    T>
-determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
+T determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
+  requires(!fcppt::math::matrix::has_dim<fcppt::math::matrix::object<T, N, N, S>, 1, 1>::value)
 {
   return fcppt::algorithm::fold(
       fcppt::math::int_range_count<N>{},
       fcppt::literal<T>(0),
-      [&_matrix]<fcppt::math::size_type Row>(fcppt::tag<fcppt::math::size_constant<Row>>, T const _sum) {
+      [&_matrix]<fcppt::math::size_type Row>(
+          fcppt::tag<fcppt::math::size_constant<Row>>, T const _sum)
+      {
         T const coeff{
             Row % fcppt::literal<fcppt::math::size_type>(2) ==
                     fcppt::literal<fcppt::math::size_type>(0)
@@ -46,10 +46,9 @@ determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
 
         constexpr fcppt::math::size_type const column{0U};
 
-        return _sum +
-               coeff * fcppt::math::matrix::at_r_c<Row, column>(_matrix) *
-                   fcppt::math::matrix::detail::determinant(
-                       fcppt::math::matrix::delete_row_and_column<Row, column>(_matrix));
+        return _sum + coeff * fcppt::math::matrix::at_r_c<Row, column>(_matrix) *
+                          fcppt::math::matrix::detail::determinant(
+                              fcppt::math::matrix::delete_row_and_column<Row, column>(_matrix));
       });
 }
 

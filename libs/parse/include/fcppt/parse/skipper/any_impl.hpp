@@ -20,6 +20,7 @@
 #include <fcppt/parse/skipper/any_decl.hpp> // IWYU pragma: export
 #include <fcppt/parse/skipper/result.hpp>
 
+// NOLINTNEXTLINE(readability-redundant-inline-specifier)
 inline fcppt::parse::skipper::any::any() = default;
 
 template <typename Ch>

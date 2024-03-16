@@ -5,12 +5,13 @@
 
 #include <fcppt/type_traits/enum_constant_concept.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
+#include <cstdint>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
-enum class my_enum
+enum class my_enum : std::uint8_t
 {
   test
 };
