@@ -1497,6 +1497,12 @@ set(
 	libs/core/src/widen_locale.cpp
 )
 
+set_source_files_properties(
+	src/error/strerrno.cpp
+	PROPERTIES
+	SKIP_LINTING ON
+)
+
 make_fcppt_library(
 	core
 	"${FCPPT_CORE_FILES}"
