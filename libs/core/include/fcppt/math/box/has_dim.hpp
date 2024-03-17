@@ -25,12 +25,10 @@ struct has_dim : std::false_type
 {
 };
 
-/// \cond FCPPT_DOXYGEN_DEBUG
 template <typename T, fcppt::math::size_type N, fcppt::math::size_type Dim>
 struct has_dim<fcppt::math::box::object<T, N>, Dim> : fcppt::math::detail::dim_matches<Dim, N>
 {
 };
-/// \endcond
 
 }
 

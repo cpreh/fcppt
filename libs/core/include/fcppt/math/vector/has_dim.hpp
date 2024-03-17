@@ -20,12 +20,10 @@ namespace fcppt::math::vector
 template <typename Vector, fcppt::math::size_type Dim>
 struct has_dim;
 
-/// \cond FCPPT_DOXYGEN_DEBUG
 template <typename T, fcppt::math::size_type N, typename S, fcppt::math::size_type Dim>
 struct has_dim<fcppt::math::vector::object<T, N, S>, Dim> : fcppt::math::detail::dim_matches<Dim, N>
 {
 };
-/// \endcond
 
 }
 
