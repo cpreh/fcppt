@@ -20,6 +20,9 @@
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/log/impl/tree_formatter.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 fcppt::log::object::object(
     fcppt::log::context_reference const _context, fcppt::log::parameters const &_parameters)
@@ -80,13 +83,18 @@ fcppt::log::optional_level fcppt::log::object::level() const
   return this->node_.get().value().level();
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4355)
+
 fcppt::log::object::object(
     fcppt::log::context_reference const _context,
     context_tree_ref const _node,
     fcppt::log::parameters const &_parameters)
     : context_{_context},
       node_{_context.get().find_child(_node, _parameters.name())},
-      formatter_(fcppt::log::format::chain(
-          _parameters.formatter(), fcppt::log::impl::tree_formatter(this->node_.get())))
+      formatter_{fcppt::log::format::chain(
+          _parameters.formatter(), fcppt::log::impl::tree_formatter(this->node_.get()))}
 {
 }
+
+FCPPT_PP_POP_WARNING
