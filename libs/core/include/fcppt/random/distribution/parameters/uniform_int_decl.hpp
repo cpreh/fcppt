@@ -8,6 +8,8 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/set/contains_v.hpp>
+#include <fcppt/mpl/set/object.hpp>
 #include <fcppt/random/distribution/base_type.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp> // IWYU pragma: keep
@@ -30,6 +32,18 @@ public:
   using result_type = IntType;
 
   using base_type = fcppt::random::distribution::base_type<result_type>;
+
+  static_assert(fcppt::mpl::set::contains_v<
+                fcppt::mpl::set::object<
+                    short,
+                    int,
+                    long,
+                    long long,
+                    unsigned short,
+                    unsigned int,
+                    unsigned long,
+                    unsigned long long>,
+                base_type>);
 
   using distribution = typename Distribution::template apply<base_type>::type;
 

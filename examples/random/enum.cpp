@@ -13,14 +13,13 @@
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/type_iso/enum.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
-#include <cstdint>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
 // ![random_enum_definition]
-enum class my_enum : std::uint8_t
+enum class my_enum : unsigned short
 {
   value1,
   value2,
