@@ -6,6 +6,7 @@
 #ifndef FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 #define FCPPT_ENUM_SIZE_TYPE_IMPL_HPP_INCLUDED
 
+#include <fcppt/cast/promote_int_type.hpp>
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/size_type_impl_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
@@ -26,7 +27,7 @@ struct size_type_impl
 {
   static_assert(fcppt::enum_::is_object<Type>::value, "Type must be an fcppt.enum type");
 
-  using type = std::make_unsigned_t<std::underlying_type_t<Type>>;
+  using type = std::make_unsigned_t<fcppt::cast::promote_int_type<std::underlying_type_t<Type>>>;
 };
 
 }
