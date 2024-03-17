@@ -18,8 +18,9 @@
 
 namespace
 {
+// TODO(philipp): Make it possible to use std::uint8_t here.
 // ![random_enum_definition]
-enum class my_enum : unsigned short
+enum class my_enum // NOLINT(performance-enum-size)
 {
   value1,
   value2,
