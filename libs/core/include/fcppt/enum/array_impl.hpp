@@ -8,6 +8,7 @@
 
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/enum/array_decl.hpp> // IWYU pragma: export
+#include <fcppt/enum/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -18,7 +19,7 @@ template <typename... Args>
 constexpr fcppt::enum_::array<Enum, Value>::array(Args &&..._args) noexcept(
     std::conjunction_v<std::is_nothrow_constructible<Value, Args>...>)
   requires(
-      fcppt::enum_::array<Enum, Value>::static_size::value == sizeof...(Args) &&
+      fcppt::enum_::size<Enum>::value == sizeof...(Args) &&
       std::conjunction_v<std::is_constructible<Value, Args>...>)
     : impl_{std::forward<Args>(_args)...}
 {

@@ -48,7 +48,7 @@ public:
   constexpr explicit array(Args &&...) noexcept(
       std::conjunction_v<std::is_nothrow_constructible<Value, Args>...>)
     requires(
-        static_size::value == sizeof...(Args) &&
+        fcppt::enum_::size<Enum>::value == sizeof...(Args) &&
         std::conjunction_v<std::is_constructible<Value, Args>...>);
 
   struct from_internal {};
