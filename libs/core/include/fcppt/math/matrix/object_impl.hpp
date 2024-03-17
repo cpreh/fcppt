@@ -43,9 +43,7 @@ template <typename... Args>
 fcppt::math::matrix::object<T, R, C, S>::object(Args &&..._args)
   requires(std::conjunction_v<
            std::bool_constant<sizeof...(Args) == R>,
-           std::is_same<
-               typename fcppt::math::matrix::object<T, R, C, S>::row_type,
-               std::remove_cvref_t<Args>>...>)
+           std::is_same<fcppt::math::matrix::row_type<T, C>, std::remove_cvref_t<Args>>...>)
     : storage_(fcppt::math::matrix::detail::init_storage<storage_type, C>(
           std::forward_as_tuple(std::forward<Args>(_args)...)))
 {

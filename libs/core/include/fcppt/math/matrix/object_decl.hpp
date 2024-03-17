@@ -130,7 +130,7 @@ public:
   explicit object(Args &&...)
     requires(std::conjunction_v<
              std::bool_constant<sizeof...(Args) == R>,
-             std::is_same<row_type, std::remove_cvref_t<Args>>...>);
+             std::is_same<fcppt::math::matrix::row_type<T, C>, std::remove_cvref_t<Args>>...>);
 
   /**
   \brief Create a matrix from a matrix with the same dimension and value
