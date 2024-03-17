@@ -6,7 +6,8 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/variant/has_type_v.hpp>
+#include <fcppt/mpl/list/contains_v.hpp>
+#include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/variant/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/get_unsafe_impl.hpp>
@@ -19,7 +20,7 @@
 template <typename... Types>
 template <typename U>
 fcppt::variant::object<Types...>::object(U &&_other)
-  requires fcppt::variant::has_type_v<fcppt::variant::object<Types...>, std::remove_cvref_t<U>>
+  requires(fcppt::mpl::list::contains_v<fcppt::mpl::list::object<Types...>, std::remove_cvref_t<U>>)
     : impl_{std::forward<U>(_other)}
 {
 }

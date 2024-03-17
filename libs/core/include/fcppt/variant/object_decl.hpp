@@ -7,12 +7,12 @@
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/mpl/list/as.hpp>
+#include <fcppt/mpl/list/contains_v.hpp>
 #include <fcppt/mpl/list/distinct.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/has_type_v.hpp>
 #include <fcppt/variant/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -59,7 +59,8 @@ public:
   */
   template <typename U>
   explicit object(U &&)
-    requires fcppt::variant::has_type_v<fcppt::variant::object<Types...>, std::remove_cvref_t<U>>;
+    requires(
+        fcppt::mpl::list::contains_v<fcppt::mpl::list::object<Types...>, std::remove_cvref_t<U>>);
 
   /**
   \brief Returns a const reference to the held type without any checks.
