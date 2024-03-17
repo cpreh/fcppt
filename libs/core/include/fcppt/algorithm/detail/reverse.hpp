@@ -18,8 +18,8 @@
 namespace fcppt::algorithm::detail
 {
 template <typename Container>
-inline std::enable_if_t<fcppt::not_(std::is_lvalue_reference_v<Container>), Container>
-reverse(Container &&_container)
+inline Container reverse(Container &&_container)
+  requires(fcppt::not_(std::is_lvalue_reference_v<Container>))
 {
   std::reverse(fcppt::range::begin(_container), fcppt::range::end(_container));
 
