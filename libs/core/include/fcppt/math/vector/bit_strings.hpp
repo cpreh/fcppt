@@ -59,12 +59,18 @@ Example:
 template <typename T, fcppt::math::size_type N>
 fcppt::array::object<
     fcppt::math::vector::static_<T, N>,
-    fcppt::math::power_of_2<std::size_t>(N)>
+    fcppt::math::power_of_2<std::size_t>(
+        // Workaround for VC++ a bug
+        fcppt::math::size_type{N})> // NOLINT(readability-redundant-casting)
 bit_strings()
 {
   using vector_type = fcppt::math::vector::static_<T, N>;
 
-  using result_type = fcppt::array::object<vector_type, fcppt::math::power_of_2<std::size_t>(N)>;
+  using result_type = fcppt::array::object<
+      vector_type,
+      fcppt::math::power_of_2<std::size_t>(
+          // Workaround for a VC++ bug
+          fcppt::math::size_type{N})>; // NOLINT(readability-redundant-casting)
 
   auto result(fcppt::array::init<result_type>(
       [](auto) { return fcppt::math::vector::null<vector_type>(); }));
