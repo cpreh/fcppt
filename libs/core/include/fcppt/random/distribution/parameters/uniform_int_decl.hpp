@@ -35,14 +35,14 @@ public:
 
   static_assert(fcppt::mpl::set::contains_v<
                 fcppt::mpl::set::object<
-                    short,
+                    short, // NOLINT(google-runtime-int)
                     int,
-                    long,
-                    long long,
-                    unsigned short,
+                    long, // NOLINT(google-runtime-int)
+                    long long, // NOLINT(google-runtime-int)
+                    unsigned short, // NOLINT(google-runtime-int)
                     unsigned int,
-                    unsigned long,
-                    unsigned long long>,
+                    unsigned long, // NOLINT(google-runtime-int),
+                    unsigned long long>, // NOLINT(google-runtime-int)
                 base_type>);
 
   using distribution = typename Distribution::template apply<base_type>::type;
