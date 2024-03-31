@@ -303,7 +303,6 @@ set(
 	libs/core/include/fcppt/array/push_back.hpp
 	libs/core/include/fcppt/array/size.hpp
 	libs/core/include/fcppt/array/value_type.hpp
-	libs/core/include/fcppt/assert/unreachable.hpp
 	libs/core/include/fcppt/assert_complete.hpp
 	libs/core/include/fcppt/bit/mask.hpp
 	libs/core/include/fcppt/bit/mask_c.hpp
