@@ -13,10 +13,8 @@ update_sublibrary()
 	local upperpath=$(toupper "${sublibrary}")
 	local libdir=libs/"${sublibrary}"
 
-	update_cmake \
-		"${libdir}"/CMakeLists.txt \
-		FCPPT_"${upperpath}"_FILES \
-		"${@:2}" \
+	update_cmake.sh \
+		"${libdir}"/"${sublibrary}"_files.txt \
 		"${libdir}"
 }
 
@@ -34,9 +32,8 @@ for lib in ${LIBS[@]} ; do
 	update_sublibrary $lib
 done
 
-update_cmake \
-	doc/CMakeLists.txt \
-	FCPPT_DOC_FILES \
+update_cmake.sh \
+	doc/all_files.txt \
 	libs/boost/include \
 	libs/catch/include \
 	libs/core/include \
@@ -44,6 +41,6 @@ update_cmake \
 	libs/log/include \
 	libs/options/include \
 	libs/parse/include \
-	examples \
-	-e ".*" \
-	doc
+	examples
+
+FIND_PATTERN=".*" update_cmake.sh doc/doc_files.txt doc

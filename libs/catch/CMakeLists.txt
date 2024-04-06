@@ -1,39 +1,18 @@
-set(
-	FCPPT_CATCH_FILES
-	libs/catch/include/fcppt/catch/begin.hpp
-	libs/catch/include/fcppt/catch/convert.hpp
-	libs/catch/include/fcppt/catch/detail/ignore_reserved_identifiers.hpp
-	libs/catch/include/fcppt/catch/either.hpp
-	libs/catch/include/fcppt/catch/end.hpp
-	libs/catch/include/fcppt/catch/make_movable.hpp
-	libs/catch/include/fcppt/catch/movable.hpp
-	libs/catch/include/fcppt/catch/movable_comparison.hpp
-	libs/catch/include/fcppt/catch/movable_decl.hpp
-	libs/catch/include/fcppt/catch/movable_fwd.hpp
-	libs/catch/include/fcppt/catch/movable_impl.hpp
-	libs/catch/include/fcppt/catch/movable_output.hpp
-	libs/catch/include/fcppt/catch/optional.hpp
-	libs/catch/include/fcppt/catch/record.hpp
-	libs/catch/include/fcppt/catch/recursive.hpp
-	libs/catch/include/fcppt/catch/strong_typedef.hpp
-	libs/catch/include/fcppt/catch/tuple.hpp
-	libs/catch/include/fcppt/catch/variant.hpp
-)
+file(STRINGS catch_files.txt FCPPT_CATCH_FILES)
 
 make_fcppt_library(
-	catch
-	"${FCPPT_CATCH_FILES}"
-	IS_INTERFACE
-	FCPPT_DEPS
-		fcppt_core_interface
-	IMPORTED_DEPS
-		Catch2::Catch2
-	TRANSITIVE_FCPPT_DEPS
-		fcppt_core_interface
-	TRANSITIVE_IMPORTED_DEPS
-		Catch2::Catch2
-	COMPILE_DEFINITIONS
-		CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER
-	TRANSITIVE_COMPILE_DEFINITIONS
-		CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER
-)
+  catch
+  "${FCPPT_CATCH_FILES}"
+  IS_INTERFACE
+  FCPPT_DEPS
+  fcppt_core_interface
+  IMPORTED_DEPS
+  Catch2::Catch2
+  TRANSITIVE_FCPPT_DEPS
+  fcppt_core_interface
+  TRANSITIVE_IMPORTED_DEPS
+  Catch2::Catch2
+  COMPILE_DEFINITIONS
+  CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER
+  TRANSITIVE_COMPILE_DEFINITIONS
+  CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER)

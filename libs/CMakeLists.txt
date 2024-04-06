@@ -1,36 +1,17 @@
-if(
-	ENABLE_BOOST
-)
-	add_subdirectory(
-		boost
-	)
+if(ENABLE_BOOST)
+  add_subdirectory(boost)
 endif()
 
-
-if(
-	ENABLE_CATCH
-)
-	add_subdirectory(
-		catch
-	)
+if(ENABLE_CATCH)
+  add_subdirectory(catch)
 endif()
 
-add_subdirectory(
-	core
-)
+add_subdirectory(core)
 
-add_subdirectory(
-	filesystem
-)
+add_subdirectory(filesystem)
 
-add_subdirectory(
-	log
-)
+add_subdirectory(log)
 
-add_subdirectory(
-	options
-)
+add_subdirectory(options)
 
-add_subdirectory(
-	parse
-)
+add_subdirectory(parse)

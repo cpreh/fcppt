@@ -1,24 +1,12 @@
-set(
-	FCPPT_BOOST_FILES
-	libs/boost/include/fcppt/boost_units_value.hpp
-	libs/boost/include/fcppt/format.hpp
-	libs/boost/include/fcppt/make_literal_boost_units.hpp
-	libs/boost/include/fcppt/math/is_zero_boost_units.hpp
-	libs/boost/include/fcppt/scoped_state_machine.hpp
-	libs/boost/include/fcppt/scoped_state_machine_decl.hpp
-	libs/boost/include/fcppt/scoped_state_machine_fwd.hpp
-	libs/boost/include/fcppt/scoped_state_machine_impl.hpp
-	libs/boost/include/fcppt/type_iso/boost_units.hpp
-)
+file(STRINGS boost_files.txt FCPPT_BOOST_FILES)
 
 make_fcppt_library(
-	boost
-	"${FCPPT_BOOST_FILES}"
-	IS_INTERFACE
-	SYSTEM_INCLUDE_DIRS
-		${Boost_INCLUDE_DIRS}
-	FCPPT_DEPS
-		fcppt_core_interface
-	TRANSITIVE_FCPPT_DEPS
-		fcppt_core_interface
-)
+  boost
+  "${FCPPT_BOOST_FILES}"
+  IS_INTERFACE
+  SYSTEM_INCLUDE_DIRS
+  ${Boost_INCLUDE_DIRS}
+  FCPPT_DEPS
+  fcppt_core_interface
+  TRANSITIVE_FCPPT_DEPS
+  fcppt_core_interface)
