@@ -1,5 +1,6 @@
-function(add_fcppt_container_grid_test TEST_NAME)
-  add_fcppt_container_test(grid/${TEST_NAME} ${ARGN})
+# Create a container grid test.
+function(add_fcppt_container_grid_test test_name)
+  add_fcppt_container_test(grid/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_container_grid_test(apply LINK_LIBS "${fcppt_core_TARGET}"

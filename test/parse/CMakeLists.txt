@@ -1,5 +1,6 @@
-function(add_fcppt_parse_test TEST_NAME)
-  add_fcppt_test(parse/${TEST_NAME} LINK_LIBS "${fcppt_core_TARGET}"
+# Create a parse test.
+function(add_fcppt_parse_test test_name)
+  add_fcppt_test(parse/${test_name} LINK_LIBS "${fcppt_core_TARGET}"
                  fcppt_parse_interface ${ARGN})
 endfunction()
 

@@ -1,5 +1,6 @@
-function(add_fcppt_container_tree_test TEST_NAME)
-  add_fcppt_container_test(tree/${TEST_NAME} ${ARGN})
+# Create a container tree test.
+function(add_fcppt_container_tree_test test_name)
+  add_fcppt_container_test(tree/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_container_tree_test(child_position)

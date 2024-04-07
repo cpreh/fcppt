@@ -1,5 +1,6 @@
-function(add_fcppt_optional_test TEST_NAME)
-  add_fcppt_test(optional/${TEST_NAME} ${ARGN})
+# Create an optional test.
+function(add_fcppt_optional_test test_name)
+  add_fcppt_test(optional/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_optional_test(alternative LINK_LIBS fcppt_catch_interface)

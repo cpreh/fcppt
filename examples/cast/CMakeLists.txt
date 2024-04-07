@@ -1,5 +1,6 @@
-function(add_fcppt_cast_example EXAMPLE_NAME)
-  add_fcppt_example(cast/${EXAMPLE_NAME} ${ARGN})
+# Create a cast example.
+function(add_fcppt_cast_example example_name)
+  add_fcppt_example(cast/${example_name} ${ARGN})
 endfunction()
 
 add_fcppt_cast_example(dynamic LINK_LIBS fcppt_core_interface)

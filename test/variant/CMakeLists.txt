@@ -1,5 +1,6 @@
-function(add_fcppt_variant_test TEST_NAME)
-  add_fcppt_test(variant/${TEST_NAME} ${ARGN})
+# Create a variant test.
+function(add_fcppt_variant_test test_name)
+  add_fcppt_test(variant/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_variant_test(apply_movable LINK_LIBS ${fcppt_core_TARGET})

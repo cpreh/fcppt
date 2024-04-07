@@ -1,5 +1,6 @@
-function(add_fcppt_shared_ptr_test TEST_NAME)
-  add_fcppt_test(shared_ptr/${TEST_NAME} ${ARGN})
+# Create a shared_ptr test.
+function(add_fcppt_shared_ptr_test test_name)
+  add_fcppt_test(shared_ptr/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_shared_ptr_test(cast)

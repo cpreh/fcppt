@@ -1,5 +1,6 @@
-function(add_fcppt_math_test TEST_NAME)
-  add_fcppt_test(math/${TEST_NAME} ${ARGN})
+# Create a math test.
+function(add_fcppt_math_test test_name)
+  add_fcppt_test(math/${test_name} ${ARGN})
 endfunction()
 
 add_subdirectory(box)

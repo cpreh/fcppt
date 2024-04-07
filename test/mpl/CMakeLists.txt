@@ -1,5 +1,6 @@
-function(add_fcppt_mpl_test TEST_NAME)
-  add_fcppt_test(mpl/${TEST_NAME} ${ARGN})
+# Create an mpl test.
+function(add_fcppt_mpl_test test_name)
+  add_fcppt_test(mpl/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_mpl_test(add NO_CODE)

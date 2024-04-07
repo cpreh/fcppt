@@ -1,5 +1,6 @@
-function(add_fcppt_signal_test TEST_NAME)
-  add_fcppt_test(signal/${TEST_NAME} ${ARGN})
+# Create a signal test.
+function(add_fcppt_signal_test test_name)
+  add_fcppt_test(signal/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_signal_test(move LINK_LIBS "${fcppt_core_TARGET}")

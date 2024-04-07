@@ -1,6 +1,7 @@
-function(add_fcppt_options_test TEST_NAME)
+# Create an options test.
+function(add_fcppt_options_test test_name)
   add_fcppt_test(
-    options/${TEST_NAME}
+    options/${test_name}
     LINK_LIBS
     "${fcppt_core_TARGET}"
     "${fcppt_options_TARGET}"

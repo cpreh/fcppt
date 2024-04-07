@@ -73,9 +73,9 @@ set(FCPPT_NARROW_STRING ${ENABLE_NARROW_STRING})
 if(CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP)
   check_cxx_source_compiles(
     "#include <cxxabi.h>
-		 #include <cstdlib>
-		int main() { int status; char *name =
-		abi::__cxa_demangle(typeid(int).name(),0,0,&status); std::free(name); }"
+    #include <cstdlib>
+    int main() { int status; char *name =
+    abi::__cxa_demangle(typeid(int).name(),0,0,&status); std::free(name); }"
     FCPPT_HAVE_GCC_DEMANGLE)
 endif()
 
@@ -94,12 +94,13 @@ include(CMakeParseArguments)
 
 set(FCPPT_STATIC_LINK_FLAG FCPPT_STATIC_LINK)
 
-function(make_fcppt_library_base TARGETNAME CUR_FILES)
-  set(OPTION_ARGS HAS_IMPL_DIR)
+# Helper function to create an fcppt library.
+function(make_fcppt_library_base targetname cur_files)
+  set(option_args HAS_IMPL_DIR)
 
-  set(SINGLE_ARGS VARIANT)
+  set(single_args VARIANT)
 
-  set(MULTI_ARGS
+  set(multi_args
       FCPPT_DEPS
       TRANSITIVE_FCPPT_DEPS
       DEPS
@@ -112,87 +113,106 @@ function(make_fcppt_library_base TARGETNAME CUR_FILES)
       TRANSITIVE_COMPILE_DEFINITIONS
       HEADER_ONLY_EXCEPTIONS)
 
-  cmake_parse_arguments("" "${HAS_IMPL_DIR}" "${SINGLE_ARGS}" "${MULTI_ARGS}"
+  cmake_parse_arguments("" "${HAS_IMPL_DIR}" "${single_args}" "${multi_args}"
                         ${ARGN})
 
   fcppt_utils_append_source_dir_and_make_groups(
-    "${CUR_FILES}" FCPPT_${TARGETNAME}_FILES HEADER_ONLY_EXCEPTIONS
+    "${cur_files}" FCPPT_${targetname}_FILES HEADER_ONLY_EXCEPTIONS
     ${_HEADER_ONLY_EXCEPTIONS})
 
   if(${_VARIANT} STREQUAL INTERFACE)
-    add_library(${TARGETNAME} ${_VARIANT})
+    add_library(${targetname} ${_VARIANT})
   else()
-    add_library(${TARGETNAME} ${_VARIANT} ${FCPPT_${TARGETNAME}_FILES})
+    add_library(${targetname} ${_VARIANT} ${FCPPT_${targetname}_FILES})
   endif()
 
   if(NOT ${_VARIANT} STREQUAL INTERFACE)
-    set_target_properties(${TARGETNAME} PROPERTIES VERSION
+    set_target_properties(${targetname} PROPERTIES VERSION
                                                    ${FCPPT_USED_SO_VERSION})
 
-    fcppt_utils_set_target_compiler_flags(${TARGETNAME})
+    fcppt_utils_set_target_compiler_flags(${targetname})
 
-    set_target_properties(${TARGETNAME} PROPERTIES FOLDER fcppt)
+    set_target_properties(${targetname} PROPERTIES FOLDER fcppt)
   endif()
 
-  fcppt_utils_interface_static_link(${TARGETNAME} ${_VARIANT}
+  fcppt_utils_interface_static_link(${targetname} ${_VARIANT}
                                     ${FCPPT_STATIC_LINK_FLAG})
 
-  set(PUBLIC_INCLUDES
+  set(public_includes
       "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
       "$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
       ${_INCLUDE_DIRS})
 
   if(NOT ${_VARIANT} STREQUAL INTERFACE)
     target_include_directories(
-      ${TARGETNAME}
-      PUBLIC ${PUBLIC_INCLUDES}
+      ${targetname}
+      PUBLIC ${public_includes}
       PRIVATE
         "$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/impl/include>")
 
-    target_include_directories(${TARGETNAME} SYSTEM
+    target_include_directories(${targetname} SYSTEM
                                PRIVATE ${_SYSTEM_INCLUDE_DIRS})
 
-    target_compile_definitions(${TARGETNAME} PRIVATE ${_COMPILE_DEFINITIONS})
+    target_compile_definitions(${targetname} PRIVATE ${_COMPILE_DEFINITIONS})
 
-    fcppt_utils_link_imported_targets(${TARGETNAME} PRIVATE ${_IMPORTED_DEPS})
+    fcppt_utils_link_imported_targets(${targetname} PRIVATE ${_IMPORTED_DEPS})
 
     if(${_HAS_IMPL_DIR})
       target_include_directories(
-        ${TARGETNAME}
+        ${targetname}
         PRIVATE "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/impl/include>")
     endif()
   endif()
 
   target_include_directories(
-    ${TARGETNAME}
-    INTERFACE ${PUBLIC_INCLUDES}
+    ${targetname}
+    INTERFACE ${public_includes}
               "$<INSTALL_INTERFACE:${CMAKE_INSTALL_FULL_INCLUDEDIR}>")
 
-  target_include_directories(${TARGETNAME} SYSTEM
+  target_include_directories(${targetname} SYSTEM
                              INTERFACE ${_SYSTEM_INCLUDE_DIRS})
 
-  target_compile_definitions(${TARGETNAME}
+  target_compile_definitions(${targetname}
                              INTERFACE ${_TRANSITIVE_COMPILE_DEFINITIONS})
 
-  fcppt_utils_link_imported_targets(${TARGETNAME} INTERFACE
+  fcppt_utils_link_imported_targets(${targetname} INTERFACE
                                     ${_TRANSITIVE_IMPORTED_DEPS})
 
   if(NOT ${_VARIANT} STREQUAL INTERFACE)
-    target_link_libraries(${TARGETNAME} PRIVATE ${_FCPPT_DEPS} ${_DEPS})
+    target_link_libraries(${targetname} PRIVATE ${_FCPPT_DEPS} ${_DEPS})
   endif()
 
-  target_link_libraries(${TARGETNAME} INTERFACE ${_TRANSITIVE_DEPS}
+  target_link_libraries(${targetname} INTERFACE ${_TRANSITIVE_DEPS}
                                                 ${_TRANSITIVE_FCPPT_DEPS})
 
-  fcppt_utils_export_install_target(${TARGETNAME})
+  fcppt_utils_export_install_target(${targetname})
 endfunction()
 
-function(make_fcppt_library LIB_NAME CUR_FILES)
-  set(OPTION_ARGS IS_INTERFACE HAS_IMPL_DIR)
+# Add an fcppt library.
+#
+# lib_name: The name of the library.
+# cur_files: The files that are part of this library.
+# FCPPT_DEPS: A list of fcppt dependencies. The names are the same as used for
+#             lib_name.
+# TRANSITIVE_FCPPT_DEPS: A list of fcppt dependencies that are included by
+#                        everything that uses this library in its FCPPT_DEPS.
+# DEPS: A list of extra link targets.
+# TRANSITIVE_DEPS: A list of extra link targets that are included by.
+#                  everything that uses this library in its FCPPT_DEPS.
+# INCLUDE_DIRS: A list of extra include directories.
+# SYSTEM_INCLUDE_DIRS: A list of extra include directories included as
+#                      -isystem.
+# COMPILE_DEFINITIONS: A list of compile definitions.
+# TRANSITIVE_COMPILE_DEFINITIONS: A list of compile definitions that are
+#                                 included by everything that uses this
+#                                 library in its FCPPT_DEPS.
+# HEADER_ONLY_EXCEPTIONS: A list of headers to exclude from linting.
+function(make_fcppt_library lib_name cur_files)
+  set(option_args IS_INTERFACE HAS_IMPL_DIR)
 
-  set(SINGLE_ARGS SYMBOL_NAME)
+  set(single_args SYMBOL_NAME)
 
-  set(MULTI_ARGS
+  set(multi_args
       FCPPT_DEPS
       TRANSITIVE_FCPPT_DEPS
       DEPS
@@ -205,44 +225,46 @@ function(make_fcppt_library LIB_NAME CUR_FILES)
       TRANSITIVE_COMPILE_DEFINITIONS
       HEADER_ONLY_EXCEPTIONS)
 
-  set(FULL_NAME fcppt_${LIB_NAME})
+  set(full_name fcppt_${lib_name})
 
-  cmake_parse_arguments("" "${OPTION_ARGS}" "${SINGLE_ARGS}" "${MULTI_ARGS}"
+  cmake_parse_arguments("" "${option_args}" "${single_args}" "${multi_args}"
                         ${ARGN})
 
-  string(TOUPPER ${LIB_NAME} LIB_NAME_UPPER)
+  string(TOUPPER ${lib_name} lib_name_UPPER)
 
   if("${_SYMBOL_NAME}" STREQUAL "")
-    set(_SYMBOL_NAME FCPPT_${LIB_NAME_UPPER})
+    set(symbol_name FCPPT_${lib_name_UPPER})
+  else()
+    set(symbol_name ${_SYMBOL_NAME})
   endif()
 
   if(NOT ${_IS_INTERFACE})
     fcppt_generate_symbol_header(
-      EXPORTS_NAME "${FULL_NAME}" SYMBOL_NAME "${_SYMBOL_NAME}_DETAIL"
+      EXPORTS_NAME "${full_name}" SYMBOL_NAME "${symbol_name}_DETAIL"
       STATIC_LINK_FLAG "${FCPPT_STATIC_LINK_FLAG}")
   endif()
 
-  fcppt_utils_interface_link_name(${FULL_NAME} INTERFACE_NAME)
+  fcppt_utils_interface_link_name(${full_name} INTERFACE_NAME)
 
   make_fcppt_library_base("${INTERFACE_NAME}" "" VARIANT "INTERFACE" ${ARGN})
 
   if((ENABLE_SHARED AND NOT ${_IS_INTERFACE}) OR ${FCPPT_UTILS_BUILD_HEADERS})
-    make_fcppt_library_base("${FULL_NAME}" "${CUR_FILES}" VARIANT "SHARED"
+    make_fcppt_library_base("${full_name}" "${cur_files}" VARIANT "SHARED"
                             ${ARGN})
   endif()
 
   if(ENABLE_STATIC AND NOT ${_IS_INTERFACE})
-    foreach(FCPPTDEP ${_FCPPT_DEPS})
-      fcppt_utils_static_link_name(${FCPPTDEP} STATIC_NAME)
+    foreach(fcpptdep ${_FCPPT_DEPS})
+      fcppt_utils_static_link_name(${fcpptdep} STATIC_NAME)
 
       list(APPEND REAL_FCPPT_DEPS ${STATIC_NAME})
     endforeach()
 
-    fcppt_utils_static_link_name(${FULL_NAME} STATIC_NAME)
+    fcppt_utils_static_link_name(${full_name} STATIC_NAME)
 
     make_fcppt_library_base(
       "${STATIC_NAME}"
-      "${CUR_FILES}"
+      "${cur_files}"
       VARIANT
       "STATIC"
       FCPPT_DEPS

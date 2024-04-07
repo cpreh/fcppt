@@ -1,5 +1,6 @@
-function(add_fcppt_catch_test TEST_NAME)
-  add_fcppt_test(catch/${TEST_NAME} ${ARGN})
+# Create a catch test.
+function(add_fcppt_catch_test test_name)
+  add_fcppt_test(catch/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_catch_test(array LINK_LIBS fcppt_catch_interface)

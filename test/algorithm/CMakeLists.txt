@@ -1,5 +1,6 @@
-function(add_fcppt_algorithm_test TEST_NAME)
-  add_fcppt_test(algorithm/${TEST_NAME} ${ARGN})
+# Create an algorithm test.
+function(add_fcppt_algorithm_test test_name)
+  add_fcppt_test(algorithm/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_algorithm_test(all_of)

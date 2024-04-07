@@ -1,5 +1,6 @@
-function(add_fcppt_type_traits_test TEST_NAME)
-  add_fcppt_test(type_traits/${TEST_NAME} ${ARGN})
+# Create a type_traits test.
+function(add_fcppt_type_traits_test test_name)
+  add_fcppt_test(type_traits/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_type_traits_test(enum_constant_concept NO_CODE)

@@ -1,5 +1,6 @@
-function(add_fcppt_random_example EXAMPLE_NAME)
-  add_fcppt_example(random/${EXAMPLE_NAME} ${ARGN})
+# Create a random example.
+function(add_fcppt_random_example example_name)
+  add_fcppt_example(random/${example_name} ${ARGN})
 endfunction()
 
 if(ENABLE_BOOST)

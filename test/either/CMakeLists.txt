@@ -1,5 +1,6 @@
-function(add_fcppt_either_test TEST_NAME)
-  add_fcppt_test(either/${TEST_NAME} ${ARGN})
+# Create an either test.
+function(add_fcppt_either_test test_name)
+  add_fcppt_test(either/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_either_test(apply LINK_LIBS fcppt_catch_interface)

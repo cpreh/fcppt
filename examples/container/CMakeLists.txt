@@ -1,5 +1,6 @@
-function(add_fcppt_container_example EXAMPLE_NAME)
-  add_fcppt_example(container/${EXAMPLE_NAME} ${ARGN})
+# Create a container example.
+function(add_fcppt_container_example example_name)
+  add_fcppt_example(container/${example_name} ${ARGN})
 endfunction()
 
 add_fcppt_container_example(bitfield LINK_LIBS fcppt_core_interface)

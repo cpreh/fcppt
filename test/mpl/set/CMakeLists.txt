@@ -1,5 +1,6 @@
-function(add_fcppt_mpl_set_test TEST_NAME)
-  add_fcppt_mpl_test(set/${TEST_NAME} ${ARGN})
+# Create an mpl set test.
+function(add_fcppt_mpl_set_test test_name)
+  add_fcppt_mpl_test(set/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_mpl_set_test(contains NO_CODE)

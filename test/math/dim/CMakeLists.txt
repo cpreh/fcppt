@@ -1,5 +1,6 @@
-function(add_fcppt_math_dim_test TEST_NAME)
-  add_fcppt_math_test(dim/${TEST_NAME} ${ARGN})
+# Create a math dim test.
+function(add_fcppt_math_dim_test test_name)
+  add_fcppt_math_test(dim/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_math_dim_test(arithmetic)

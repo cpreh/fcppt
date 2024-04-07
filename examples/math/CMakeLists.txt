@@ -1,5 +1,6 @@
-function(add_fcppt_math_example PATH_NAME)
-  add_fcppt_example(math/${PATH_NAME} ${ARGN})
+# Create a math example.
+function(add_fcppt_math_example example_name)
+  add_fcppt_example(math/${example_name} ${ARGN})
 endfunction()
 
 add_subdirectory(vector)

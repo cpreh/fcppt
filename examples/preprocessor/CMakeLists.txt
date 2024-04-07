@@ -1,5 +1,6 @@
-function(add_fcppt_preprocessor_example EXAMPLE_NAME)
-  add_fcppt_example(preprocessor/${EXAMPLE_NAME} ${ARGN})
+# Create a preprocessor example.
+function(add_fcppt_preprocessor_example example_name)
+  add_fcppt_example(preprocessor/${example_name} ${ARGN})
 endfunction()
 
 add_fcppt_preprocessor_example(printing LINK_LIBS ${fcppt_core_TARGET})

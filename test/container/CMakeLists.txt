@@ -1,5 +1,6 @@
-function(add_fcppt_container_test TEST_NAME)
-  add_fcppt_test(container/${TEST_NAME} ${ARGN})
+# Create a container test.
+function(add_fcppt_container_test test_name)
+  add_fcppt_test(container/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_container_test(at_optional)

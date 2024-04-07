@@ -1,5 +1,6 @@
-function(add_fcppt_mpl_list_test TEST_NAME)
-  add_fcppt_mpl_test(list/${TEST_NAME} ${ARGN})
+# Create an mpl list test.
+function(add_fcppt_mpl_list_test test_name)
+  add_fcppt_mpl_test(list/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_mpl_list_test(all_of NO_CODE)

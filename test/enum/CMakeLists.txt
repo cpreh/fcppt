@@ -1,5 +1,6 @@
-function(add_fcppt_enum_test TEST_NAME)
-  add_fcppt_test(enum/${TEST_NAME} ${ARGN})
+# Create an enum test.
+function(add_fcppt_enum_test test_name)
+  add_fcppt_test(enum/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_enum_test(array LINK_LIBS "${fcppt_core_TARGET}")

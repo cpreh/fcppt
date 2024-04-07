@@ -1,5 +1,6 @@
-function(add_fcppt_math_vector_test TEST_NAME)
-  add_fcppt_math_test(vector/${TEST_NAME} ${ARGN})
+# Create a math vector test.
+function(add_fcppt_math_vector_test test_name)
+  add_fcppt_math_test(vector/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_math_vector_test(angle_between)

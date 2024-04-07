@@ -1,5 +1,6 @@
-function(add_fcppt_math_vector_example EXAMPLE_NAME)
-  add_fcppt_math_example(vector/${EXAMPLE_NAME} ${ARGN})
+# Create a math vector example.
+function(add_fcppt_math_vector_example example_name)
+  add_fcppt_math_example(vector/${example_name} ${ARGN})
 endfunction()
 
 add_fcppt_math_vector_example(access LINK_LIBS fcppt_core_interface)

@@ -1,5 +1,6 @@
-function(add_fcppt_strong_typedef_test TEST_NAME)
-  add_fcppt_test(strong_typedef/${TEST_NAME} ${ARGN})
+# Create a strong_typedef test.
+function(add_fcppt_strong_typedef_test test_name)
+  add_fcppt_test(strong_typedef/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_strong_typedef_test(apply)

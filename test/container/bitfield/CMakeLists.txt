@@ -1,5 +1,6 @@
-function(add_fcppt_container_bitfield_test TEST_NAME)
-  add_fcppt_container_test(bitfield/${TEST_NAME} ${ARGN})
+# Create a container bitfield test.
+function(add_fcppt_container_bitfield_test test_name)
+  add_fcppt_container_test(bitfield/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_container_bitfield_test(comparison LINK_LIBS "${fcppt_core_TARGET}")

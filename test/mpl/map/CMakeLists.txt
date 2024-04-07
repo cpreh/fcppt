@@ -1,5 +1,6 @@
-function(add_fcppt_mpl_map_test TEST_NAME)
-  add_fcppt_mpl_test(map/${TEST_NAME} ${ARGN})
+# Create an mpl map test.
+function(add_fcppt_mpl_map_test test_name)
+  add_fcppt_mpl_test(map/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_mpl_map_test(at NO_CODE)

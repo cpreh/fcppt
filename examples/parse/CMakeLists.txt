@@ -1,5 +1,6 @@
-function(add_fcppt_parse_example EXAMPLE_NAME)
-  add_fcppt_example(parse/${EXAMPLE_NAME} LINK_LIBS fcppt_parse_interface
+# Create a parse example.
+function(add_fcppt_parse_example example_name)
+  add_fcppt_example(parse/${example_name} LINK_LIBS fcppt_parse_interface
                     ${ARGN})
 endfunction()
 

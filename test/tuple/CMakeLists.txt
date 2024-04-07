@@ -1,5 +1,6 @@
-function(add_fcppt_tuple_test TEST_NAME)
-  add_fcppt_test(tuple/${TEST_NAME} ${ARGN})
+# Create a tuple test.
+function(add_fcppt_tuple_test test_name)
+  add_fcppt_test(tuple/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_tuple_test(apply LINK_LIBS fcppt_catch_interface)

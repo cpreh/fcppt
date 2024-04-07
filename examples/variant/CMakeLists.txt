@@ -1,5 +1,6 @@
-function(add_fcppt_variant_example EXAMPLE_NAME)
-  add_fcppt_example(variant/${EXAMPLE_NAME} ${ARGN})
+# Create a variant example.
+function(add_fcppt_variant_example example_name)
+  add_fcppt_example(variant/${example_name} ${ARGN})
 endfunction()
 
 add_fcppt_variant_example(binary_visitation LINK_LIBS fcppt_core_interface)

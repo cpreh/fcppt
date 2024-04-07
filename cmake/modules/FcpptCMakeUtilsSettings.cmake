@@ -131,10 +131,10 @@ if(UNIX)
   endif()
 
   # To check for linker flags, CMAKE_REQUIRED_FLAGS has to be expanded
-  function(fcppt_check_gcc_linker_flag FLAG VARIABLE)
-    set(CMAKE_REQUIRED_FLAGS "${CMAKE_REQUIRED_FLAGS_BASE} ${FLAG}")
+  function(fcppt_check_gcc_linker_flag flag variable)
+    set(CMAKE_REQUIRED_FLAGS "${CMAKE_REQUIRED_FLAGS_BASE} ${flag}")
 
-    check_cxx_compiler_flag("" ${VARIABLE})
+    check_cxx_compiler_flag("" ${variable})
   endfunction()
 
   fcppt_check_gcc_linker_flag("-Wl,--as-needed"

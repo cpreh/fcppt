@@ -1,5 +1,6 @@
-function(add_fcppt_log_example EXAMPLE_NAME)
-  add_fcppt_example(log/${EXAMPLE_NAME} LINK_LIBS ${fcppt_core_TARGET}
+# Create a log example.
+function(add_fcppt_log_example example_name)
+  add_fcppt_example(log/${example_name} LINK_LIBS ${fcppt_core_TARGET}
                     ${fcppt_log_TARGET})
 endfunction()
 

@@ -1,6 +1,7 @@
-function(add_fcppt_parse_skipper_test TEST_NAME)
+# Create a parse skipper test.
+function(add_fcppt_parse_skipper_test test_name)
   add_fcppt_test(
-    parse/skipper/${TEST_NAME}
+    parse/skipper/${test_name}
     LINK_LIBS
     "${fcppt_core_TARGET}"
     fcppt_parse_interface

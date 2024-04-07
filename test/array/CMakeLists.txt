@@ -1,5 +1,6 @@
-function(add_fcppt_array_test TEST_NAME)
-  add_fcppt_test(array/${TEST_NAME} ${ARGN})
+# Create an array test.
+function(add_fcppt_array_test test_name)
+  add_fcppt_test(array/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_array_test(append LINK_LIBS fcppt_catch_interface)

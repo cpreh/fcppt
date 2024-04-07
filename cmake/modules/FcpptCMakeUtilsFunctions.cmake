@@ -5,99 +5,99 @@ option(
   "Build header files as well. This is useful for running misc-include-cleaner on your build."
   FALSE)
 
-function(fcppt_utils_add_headers ALL_FILES)
-  set(MULTI_ARGS HEADER_ONLY_EXCEPTIONS)
+function(fcppt_utils_add_headers all_files)
+  set(multi_args HEADER_ONLY_EXCEPTIONS)
 
-  cmake_parse_arguments("" "" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "" "" "${multi_args}" ${ARGN})
 
-  foreach(EXCLUDE_FILE ${_HEADER_ONLY_EXCEPTIONS})
-    list(REMOVE_ITEM ALL_FILES ${EXCLUDE_FILE})
+  foreach(exclude_file ${_HEADER_ONLY_EXCEPTIONS})
+    list(REMOVE_ITEM all_files ${exclude_file})
   endforeach()
 
-  foreach(CUR_FILE ${ALL_FILES})
-    get_filename_component(CUR_EXT "${CUR_FILE}" EXT)
+  foreach(cur_file ${all_files})
+    get_filename_component(CUR_EXT "${cur_file}" EXT)
 
-    unset(CUR_LANGUAGE)
+    unset(cur_language)
 
     if("${CUR_EXT}" STREQUAL ".hpp")
-      set(CUR_LANGUAGE "CXX")
+      set(cur_language "CXX")
     elseif("${CUR_EXT}" STREQUAL ".h")
-      set(CUR_LANGUAGE "C")
+      set(cur_language "C")
     endif()
 
-    if(DEFINED CUR_LANGUAGE)
+    if(DEFINED cur_language)
       set_source_files_properties(
-        "${CUR_FILE}" PROPERTIES LANGUAGE ${CUR_LANGUAGE} HEADER_FILE_ONLY OFF)
+        "${cur_file}" PROPERTIES LANGUAGE ${cur_language} HEADER_FILE_ONLY OFF)
     endif()
   endforeach()
 endfunction()
 
-function(fcppt_utils_add_source_groups ALL_FILES)
-  foreach(CURFILE ${ALL_FILES})
-    get_filename_component(REL_PATH "${CURFILE}" PATH)
+function(fcppt_utils_add_source_groups all_files)
+  foreach(cur_file ${all_files})
+    get_filename_component(REL_PATH "${cur_file}" PATH)
 
     string(REPLACE "/" "\\" GROUPFOLDER "${REL_PATH}")
 
-    source_group(${GROUPFOLDER} FILES ${CURFILE})
+    source_group(${GROUPFOLDER} FILES ${cur_file})
   endforeach()
 
   if(FCPPT_UTILS_BUILD_HEADERS)
-    fcppt_utils_add_headers("${ALL_FILES}")
+    fcppt_utils_add_headers("${all_files}")
   endif()
 endfunction()
 
-function(fcppt_utils_append_source_dir FILES RESULT)
-  foreach(CUR_FILE ${FILES})
-    set(WHOLE_FILE ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE})
+function(fcppt_utils_append_source_dir files result)
+  foreach(cur_file ${files})
+    set(whole_file ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${cur_file})
 
-    list(APPEND ${RESULT} ${WHOLE_FILE})
+    list(APPEND ${result} ${whole_file})
   endforeach()
 
-  set(${RESULT}
-      ${${RESULT}}
+  set(${result}
+      ${${result}}
       PARENT_SCOPE)
 endfunction()
 
-function(fcppt_utils_append_source_dir_and_make_groups FILES RESULT)
-  set(MULTI_ARGS HEADER_ONLY_EXCEPTIONS)
+function(fcppt_utils_append_source_dir_and_make_groups files result)
+  set(multi_args HEADER_ONLY_EXCEPTIONS)
 
-  cmake_parse_arguments("" "" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "" "" "${multi_args}" ${ARGN})
 
-  foreach(CUR_FILE ${FILES})
-    set(WHOLE_FILE ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE})
+  foreach(cur_file ${files})
+    set(whole_file ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${cur_file})
 
-    get_filename_component(REL_PATH ${CUR_FILE} DIRECTORY)
+    get_filename_component(REL_PATH ${cur_file} DIRECTORY)
 
     string(REPLACE "/" "\\" GROUPFOLDER "${REL_PATH}")
 
-    source_group(${GROUPFOLDER} FILES ${WHOLE_FILE})
+    source_group(${GROUPFOLDER} FILES ${whole_file})
 
-    list(APPEND TEMP_RESULT ${WHOLE_FILE})
+    list(APPEND temp_result ${whole_file})
   endforeach()
 
-  set(${RESULT}
-      "${TEMP_RESULT}"
+  set(${result}
+      "${temp_result}"
       PARENT_SCOPE)
 
   if(FCPPT_UTILS_BUILD_HEADERS)
-    set(HEADER_ONLY_EXCEPTIONS_ABS)
+    set(header_only_exceptions_abs)
 
-    foreach(CUR_FILE ${_HEADER_ONLY_EXCEPTIONS})
-      set(WHOLE_FILE ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE})
+    foreach(cur_file ${_HEADER_ONLY_EXCEPTIONS})
+      set(whole_file ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${cur_file})
 
-      list(APPEND HEADER_ONLY_EXCEPTIONS_ABS ${WHOLE_FILE})
+      list(APPEND header_only_exceptions_abs ${whole_file})
     endforeach()
 
-    fcppt_utils_add_headers("${TEMP_RESULT}" HEADER_ONLY_EXCEPTIONS
-                            ${HEADER_ONLY_EXCEPTIONS_ABS})
+    fcppt_utils_add_headers("${temp_result}" HEADER_ONLY_EXCEPTIONS
+                            ${header_only_exceptions_abs})
   endif()
 endfunction()
 
 set(FCPPT_UTILS_EXPORT_NAME "${PROJECT_NAME}Export")
 
-function(fcppt_utils_export_install_target TARGETNAME)
+function(fcppt_utils_export_install_target target_name)
   install(
-    TARGETS ${TARGETNAME}
+    TARGETS ${target_name}
     DESTINATION "${CMAKE_INSTALL_LIBDIR}"
     EXPORT "${FCPPT_UTILS_EXPORT_NAME}")
 endfunction()
@@ -106,9 +106,9 @@ endfunction()
 # resides. [MODULES_PATH : PATH] - The path that is appended to
 # CMAKE_MODULE_PATH.
 function(fcppt_utils_generate_config)
-  set(SINGLE_ARGS CONFIG_PATH MODULES_PATH)
+  set(single_args CONFIG_PATH MODULES_PATH)
 
-  cmake_parse_arguments("" "" "${SINGLE_ARGS}" "" ${ARGN})
+  cmake_parse_arguments("" "" "${single_args}" "" ${ARGN})
 
   if(NOT "${_UNPARSED_ARGUMENTS}" STREQUAL "")
     message(FATAL_ERROR "Invalid parameters ${_UNPARSED_ARGUMENTS}")
@@ -118,100 +118,100 @@ function(fcppt_utils_generate_config)
     message(FATAL_ERROR "Missing CONFIG_PATH argument.")
   endif()
 
-  set(CONFIG_NAME "${PROJECT_NAME}-config.cmake")
+  set(config_name "${PROJECT_NAME}-config.cmake")
 
-  set(CONFIG_IN_FILE "${_CONFIG_PATH}/${CONFIG_NAME}.in")
+  set(config_in_file "${_CONFIG_PATH}/${config_name}.in")
 
-  set(BUILD_CONFIG_DIR "${FCPPT_UTILS_PROJECT_BINARY_DIR}/config")
+  set(build_config_dir "${FCPPT_UTILS_PROJECT_BINARY_DIR}/config")
 
-  set(TARGETS_FILE_NAME "${PROJECT_NAME}Targets.cmake")
+  set(targets_file_name "${PROJECT_NAME}Targets.cmake")
 
   # Build config
   set(ADDITIONAL_MODULE_PATH ${_MODULES_PATH})
 
-  configure_file(${CONFIG_IN_FILE} "${BUILD_CONFIG_DIR}/${CONFIG_NAME}" @ONLY)
+  configure_file(${config_in_file} "${build_config_dir}/${config_name}" @ONLY)
 
   export(EXPORT "${FCPPT_UTILS_EXPORT_NAME}"
-         FILE "${BUILD_CONFIG_DIR}/${TARGETS_FILE_NAME}")
+         FILE "${build_config_dir}/${targets_file_name}")
 
   # Install config
   set(ADDITIONAL_MODULE_PATH ${FCPPT_UTILS_INSTALL_FULL_CMAKEMODULES_DIR})
 
-  set(CONFIG_DEST_INSTALL "${BUILD_CONFIG_DIR}_install/${CONFIG_NAME}")
+  set(config_dest_install "${build_config_dir}_install/${config_name}")
 
-  configure_file(${CONFIG_IN_FILE} ${CONFIG_DEST_INSTALL} @ONLY)
+  configure_file(${config_in_file} ${config_dest_install} @ONLY)
 
-  install(FILES "${CONFIG_DEST_INSTALL}"
+  install(FILES "${config_dest_install}"
           DESTINATION "${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR}")
 
   install(
     EXPORT "${FCPPT_UTILS_EXPORT_NAME}"
-    FILE "${TARGETS_FILE_NAME}"
+    FILE "${targets_file_name}"
     DESTINATION "${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR}")
 endfunction()
 
-function(fcppt_utils_handle_so_version CACHE_VAR OUT_VAR DEFAULT_VERSION)
-  set("${CACHE_VAR}"
+function(fcppt_utils_handle_so_version cache_var out_var default_version)
+  set("${cache_var}"
       ""
       CACHE STRING
             "The custom .so version to use. If empty, the default will be used."
   )
 
-  if("${${CACHE_VAR}}" STREQUAL "")
-    set("${OUT_VAR}"
-        "${DEFAULT_VERSION}"
+  if("${${cache_var}}" STREQUAL "")
+    set("${out_var}"
+        "${default_version}"
         PARENT_SCOPE)
   else()
-    set("${OUT_VAR}"
-        "${${CACHE_VAR}}"
+    set("${out_var}"
+        "${${cache_var}}"
         PARENT_SCOPE)
   endif()
 endfunction()
 
-function(fcppt_utils_add_dummy_target TARGET_NAME TARGET_FILES)
-  set(MULTI_ARGS INCLUDE_DIRS LINK_LIBS)
+function(fcppt_utils_add_dummy_target target_name target_files)
+  set(multi_args INCLUDE_DIRS LINK_LIBS)
 
-  cmake_parse_arguments("" "" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "" "" "${multi_args}" ${ARGN})
 
   if(NOT "${_UNPARSED_ARGUMENTS}" STREQUAL "")
     message(FATAL_ERROR "Invalid parameters ${_UNPARSED_ARGUMENTS}")
   endif()
 
-  set(LIBNAME "${TARGET_NAME}_dummy")
+  set(libname "${target_name}_dummy")
 
-  add_library("${LIBNAME}" STATIC ${TARGET_FILES})
+  add_library("${libname}" STATIC ${target_files})
 
-  set_target_properties("${LIBNAME}" PROPERTIES LINKER_LANGUAGE "CXX")
+  set_target_properties("${libname}" PROPERTIES LINKER_LANGUAGE "CXX")
 
-  target_include_directories(${LIBNAME} PRIVATE ${_INCLUDE_DIRS})
+  target_include_directories(${libname} PRIVATE ${_INCLUDE_DIRS})
 
-  target_link_libraries(${LIBNAME} PRIVATE ${_LINK_LIBS})
+  target_link_libraries(${libname} PRIVATE ${_LINK_LIBS})
 endfunction()
 
-function(fcppt_utils_set_target_compiler_flags TARGET_NAME)
-  set(MULTI_ARGS ADDITIONAL_FLAGS)
+function(fcppt_utils_set_target_compiler_flags target_name)
+  set(multi_args ADDITIONAL_FLAGS)
 
-  cmake_parse_arguments("" "" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "" "" "${multi_args}" ${ARGN})
 
-  target_compile_options(${TARGET_NAME} PRIVATE ${FCPPT_UTILS_COMPILE_OPTIONS}
+  target_compile_options(${target_name} PRIVATE ${FCPPT_UTILS_COMPILE_OPTIONS}
                                                 ${_ADDITIONAL_FLAGS})
 
   set_target_properties(
-    ${TARGET_NAME}
+    ${target_name}
     PROPERTIES CXX_EXTENSIONS FALSE
                CXX_STANDARD 20
                CXX_STANDARD_REQUIRED 20
                NO_SYSTEM_FROM_IMPORTED TRUE)
 
-  get_target_property(TARGET_TYPE ${TARGET_NAME} TYPE)
+  get_target_property(TARGET_TYPE ${target_name} TYPE)
 
   if(${TARGET_TYPE} STREQUAL "SHARED_LIBRARY")
-    target_link_libraries(${TARGET_NAME}
+    target_link_libraries(${target_name}
                           PRIVATE ${FCPPT_UTILS_SHARED_LINKER_FLAGS})
   endif()
 
   if(${TARGET_TYPE} STREQUAL "EXECUTABLE")
-    target_link_libraries(${TARGET_NAME}
+    target_link_libraries(${target_name}
                           PRIVATE ${FCPPT_UTILS_EXE_LINKER_FLAGS})
   endif()
 endfunction()
@@ -239,173 +239,173 @@ function(fcppt_utils_static_shared)
   endif()
 endfunction()
 
-function(fcppt_utils_static_link_name LIBNAME RESULT)
-  set(${RESULT}
-      ${LIBNAME}_static
+function(fcppt_utils_static_link_name libname result)
+  set(${result}
+      ${libname}_static
       PARENT_SCOPE)
 endfunction()
 
-function(fcppt_utils_interface_link_name LIBNAME RESULT)
-  set(${RESULT}
-      ${LIBNAME}_interface
+function(fcppt_utils_interface_link_name libname result)
+  set(${result}
+      ${libname}_interface
       PARENT_SCOPE)
 endfunction()
 
-function(fcppt_utils_link_target LIBNAME)
-  set(TARGET_NAME ${LIBNAME}_TARGET)
+function(fcppt_utils_link_target libname)
+  set(target_name ${libname}_TARGET)
 
   if(FCPPT_UTILS_DEFAULT_LINK_STATIC)
-    fcppt_utils_static_link_name(${LIBNAME} STATIC_NAME)
+    fcppt_utils_static_link_name(${libname} STATIC_NAME)
 
-    set(${TARGET_NAME}
+    set(${target_name}
         ${STATIC_NAME}
         PARENT_SCOPE)
   else()
-    set(${TARGET_NAME}
-        ${LIBNAME}
+    set(${target_name}
+        ${libname}
         PARENT_SCOPE)
   endif()
 endfunction()
 
-function(fcppt_utils_interface_static_link TARGET_NAME VARIANT LINK_FLAG)
-  if(${VARIANT} STREQUAL "STATIC")
-    target_compile_definitions(${TARGET_NAME} PUBLIC ${LINK_FLAG})
+function(fcppt_utils_interface_static_link target_name variant link_flag)
+  if(${variant} STREQUAL "STATIC")
+    target_compile_definitions(${target_name} PUBLIC ${link_flag})
   endif()
 endfunction()
 
-function(fcppt_utils_set_target_folder TARGET_NAME PREFIX PATH_NAME)
-  string(FIND ${PATH_NAME} "/" LAST_PART REVERSE)
+function(fcppt_utils_set_target_folder target_name prefix path_name)
+  string(FIND ${path_name} "/" LAST_PART REVERSE)
 
   if(NOT LAST_PART EQUAL -1)
-    string(SUBSTRING ${PATH_NAME} 0 ${LAST_PART} FOLDER_NAME)
+    string(SUBSTRING ${path_name} 0 ${LAST_PART} folder_name)
 
-    set(FOLDER_NAME "/${FOLDER_NAME}")
+    set(folder_name "/${folder_name}")
   endif()
 
   set_target_properties(
-    ${TARGET_NAME} PROPERTIES FOLDER ${PROJECT_NAME}/${PREFIX}${FOLDER_NAME})
+    ${target_name} PROPERTIES FOLDER ${PROJECT_NAME}/${prefix}${folder_name})
 endfunction()
 
 function(fcppt_utils_setup_tests)
   find_package(Catch2 3.0 REQUIRED)
 endfunction()
 
-function(fcppt_utils_add_test TEST_DIR PATH_NAME)
-  set(OPTION_ARGS NO_CODE)
+function(fcppt_utils_add_test test_dir path_name)
+  set(option_args NO_CODE)
 
-  set(MULTI_ARGS LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS)
+  set(multi_args LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS)
 
-  cmake_parse_arguments("" "${OPTION_ARGS}" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
-  string(REPLACE "/" "_" TEST_NAME ${PATH_NAME})
+  string(REPLACE "/" "_" TEST_NAME ${path_name})
 
-  set(FULL_TEST_NAME ${PROJECT_NAME}_test_${TEST_NAME})
+  set(full_test_name ${PROJECT_NAME}_test_${TEST_NAME})
 
-  add_executable(${FULL_TEST_NAME} ${TEST_DIR}/${PATH_NAME}.cpp)
+  add_executable(${full_test_name} ${test_dir}/${path_name}.cpp)
 
-  fcppt_utils_set_target_folder(${FULL_TEST_NAME} tests ${PATH_NAME})
+  fcppt_utils_set_target_folder(${full_test_name} tests ${path_name})
 
-  fcppt_utils_set_target_compiler_flags(${FULL_TEST_NAME})
+  fcppt_utils_set_target_compiler_flags(${full_test_name})
 
-  target_include_directories(${FULL_TEST_NAME} PRIVATE ${_INCLUDE_DIRS})
+  target_include_directories(${full_test_name} PRIVATE ${_INCLUDE_DIRS})
 
-  target_compile_definitions(${FULL_TEST_NAME} PRIVATE ${_COMPILE_DEFINITIONS})
+  target_compile_definitions(${full_test_name} PRIVATE ${_COMPILE_DEFINITIONS})
 
-  target_compile_options(${FULL_TEST_NAME} PRIVATE ${_COMPILE_OPTIONS})
+  target_compile_options(${full_test_name} PRIVATE ${_COMPILE_OPTIONS})
 
-  target_link_libraries(${FULL_TEST_NAME} PRIVATE ${_LINK_LIBS})
+  target_link_libraries(${full_test_name} PRIVATE ${_LINK_LIBS})
 
   if(NOT ${_NO_CODE})
-    target_link_libraries(${FULL_TEST_NAME} PRIVATE Catch2::Catch2WithMain)
+    target_link_libraries(${full_test_name} PRIVATE Catch2::Catch2WithMain)
 
-    add_test(NAME ${TEST_NAME} COMMAND ${FULL_TEST_NAME})
+    add_test(NAME ${TEST_NAME} COMMAND ${full_test_name})
   endif()
 endfunction()
 
-function(fcppt_utils_add_example EXAMPLE_DIR PATH_NAME)
-  set(OPTION_ARGS IS_C)
+function(fcppt_utils_add_example example_dir path_name)
+  set(option_args IS_C)
 
-  set(SINGLE_ARGS INSTALL_DIR)
+  set(single_args INSTALL_DIR)
 
-  set(MULTI_ARGS LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS)
+  set(multi_args LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS)
 
-  cmake_parse_arguments("" "${OPTION_ARGS}" "${SINGLE_ARGS}" "${MULTI_ARGS}"
+  cmake_parse_arguments("" "${option_args}" "${single_args}" "${multi_args}"
                         ${ARGN})
 
-  string(REPLACE "/" "_" EXAMPLE_NAME ${PATH_NAME})
+  string(REPLACE "/" "_" EXAMPLE_NAME ${path_name})
 
-  set(FULL_EXAMPLE_NAME ${PROJECT_NAME}_example_${EXAMPLE_NAME})
+  set(full_example_name ${PROJECT_NAME}_example_${EXAMPLE_NAME})
 
   if(${_IS_C})
-    set(SUFFIX "c")
+    set(suffix "c")
   else()
-    set(SUFFIX "cpp")
+    set(suffix "cpp")
   endif()
 
-  add_executable(${FULL_EXAMPLE_NAME} ${EXAMPLE_DIR}/${PATH_NAME}.${SUFFIX})
+  add_executable(${full_example_name} ${example_dir}/${path_name}.${suffix})
 
-  fcppt_utils_set_target_folder(${FULL_EXAMPLE_NAME} examples ${PATH_NAME})
+  fcppt_utils_set_target_folder(${full_example_name} examples ${path_name})
 
-  target_compile_definitions(${FULL_EXAMPLE_NAME}
+  target_compile_definitions(${full_example_name}
                              PRIVATE ${_COMPILE_DEFINITIONS})
 
-  target_compile_options(${FULL_EXAMPLE_NAME} PRIVATE ${_COMPILE_OPTIONS})
+  target_compile_options(${full_example_name} PRIVATE ${_COMPILE_OPTIONS})
 
-  target_include_directories(${FULL_EXAMPLE_NAME} PRIVATE ${_INCLUDE_DIRS})
+  target_include_directories(${full_example_name} PRIVATE ${_INCLUDE_DIRS})
 
   if(NOT _IS_C)
-    fcppt_utils_set_target_compiler_flags(${FULL_EXAMPLE_NAME})
+    fcppt_utils_set_target_compiler_flags(${full_example_name})
   endif()
 
-  target_link_libraries(${FULL_EXAMPLE_NAME} PRIVATE ${_LINK_LIBS})
+  target_link_libraries(${full_example_name} PRIVATE ${_LINK_LIBS})
 
   if(NOT "${_INSTALL_DIR}" STREQUAL "")
-    install(TARGETS ${FULL_EXAMPLE_NAME} DESTINATION "${_INSTALL_DIR}")
+    install(TARGETS ${full_example_name} DESTINATION "${_INSTALL_DIR}")
   endif()
 endfunction()
 
-function(fcppt_utils_link_imported_target_single TARGET_NAME VISIBILITY
-         IMPORTED_NAME)
-  get_target_property(INCLUDE_DIRS ${IMPORTED_NAME}
+function(fcppt_utils_link_imported_target_single target_name visibility
+         imported_name)
+  get_target_property(INCLUDE_DIRS ${imported_name}
                       INTERFACE_INCLUDE_DIRECTORIES)
 
   if(NOT "${INCLUDE_DIRS}" STREQUAL "INCLUDE_DIRS-NOTFOUND")
-    target_include_directories(${TARGET_NAME} ${VISIBILITY} ${INCLUDE_DIRS})
+    target_include_directories(${target_name} ${visibility} ${INCLUDE_DIRS})
   endif()
 
-  get_target_property(SYSTEM_INCLUDE_DIRS ${IMPORTED_NAME}
+  get_target_property(SYSTEM_INCLUDE_DIRS ${imported_name}
                       INTERFACE_SYSTEM_INCLUDE_DIRECTORIES)
 
   if(NOT "${SYSTEM_INCLUDE_DIRS}" STREQUAL "SYSTEM_INCLUDE_DIRS-NOTFOUND")
-    target_include_directories(${TARGET_NAME} SYSTEM ${VISIBILITY}
+    target_include_directories(${target_name} SYSTEM ${visibility}
                                ${SYSTEM_INCLUDE_DIRS})
   endif()
 
-  get_target_property(LINK_LIBRARIES ${IMPORTED_NAME} INTERFACE_LINK_LIBRARIES)
+  get_target_property(LINK_LIBRARIES ${imported_name} INTERFACE_LINK_LIBRARIES)
 
   if(NOT "${LINK_LIBRARIES}" STREQUAL "LINK_LIBRARIES-NOTFOUND")
-    target_link_libraries(${TARGET_NAME} ${VISIBILITY} ${LINK_LIBRARIES})
+    target_link_libraries(${target_name} ${visibility} ${LINK_LIBRARIES})
   endif()
 
-  get_target_property(COMPILE_OPTIONS ${IMPORTED_NAME}
+  get_target_property(COMPILE_OPTIONS ${imported_name}
                       INTERFACE_COMPILE_OPTIONS)
 
   if(NOT "${COMPILE_OPTIONS}" STREQUAL "COMPILE_OPTIONS-NOTFOUND")
-    target_compile_options(${TARGET_NAME} ${VISIBILITY} ${COMPILE_OPTIONS})
+    target_compile_options(${target_name} ${visibility} ${COMPILE_OPTIONS})
   endif()
 
-  get_target_property(COMPILE_DEFINITIONS ${IMPORTED_NAME}
+  get_target_property(COMPILE_DEFINITIONS ${imported_name}
                       INTERFACE_COMPILE_DEFINITIONS)
 
   if(NOT "${COMPILE_DEFINITIONS}" STREQUAL "COMPILE_DEFINITIONS-NOTFOUND")
-    target_compile_definitions(${TARGET_NAME} ${VISIBILITY}
+    target_compile_definitions(${target_name} ${visibility}
                                               ${COMPILE_DEFINITIONS})
   endif()
 endfunction()
 
-function(fcppt_utils_link_imported_targets TARGET_NAME VISIBILITY)
-  foreach(CURNAME ${ARGN})
-    fcppt_utils_link_imported_target_single(${TARGET_NAME} ${VISIBILITY}
-                                            ${CURNAME})
+function(fcppt_utils_link_imported_targets target_name visibility)
+  foreach(cur_name ${ARGN})
+    fcppt_utils_link_imported_target_single(${target_name} ${visibility}
+                                            ${cur_name})
   endforeach()
 endfunction()

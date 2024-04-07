@@ -1,5 +1,6 @@
-function(add_fcppt_record_test TEST_NAME)
-  add_fcppt_test(record/${TEST_NAME} ${ARGN})
+# Create a record test.
+function(add_fcppt_record_test test_name)
+  add_fcppt_test(record/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_record_test(all_disjoint NO_CODE)

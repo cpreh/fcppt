@@ -1,5 +1,6 @@
-function(add_fcppt_range_test TEST_NAME)
-  add_fcppt_test(range/${TEST_NAME} ${ARGN})
+# Create a range test.
+function(add_fcppt_range_test test_name)
+  add_fcppt_test(range/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_range_test(begin)

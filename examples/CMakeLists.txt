@@ -6,21 +6,28 @@ fcppt_utils_link_target(fcppt_log)
 
 fcppt_utils_link_target(fcppt_options)
 
-function(add_fcppt_example PATH_NAME)
-  set(OPTION_ARGS IS_C)
+# Add an fcppt example.
+#
+# path_name: The name of the cpp file without the extension.
+#            For example path_name=array will refer to array.cpp.
+# IS_C: Optional argument. If set, the test will be a C test (not C++).
+# COMPILE_DEFINITIONS: A list of compile definitions.
+# LINK_LIBS: A list of extra link targets.
+function(add_fcppt_example path_name)
+  set(option_args IS_C)
 
-  set(MULTI_ARGS LINK_LIBS COMPILE_DEFINITIONS)
+  set(multi_args LINK_LIBS COMPILE_DEFINITIONS)
 
-  cmake_parse_arguments("" "${OPTION_ARGS}" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
   if(_IS_C)
-    set(IS_C IS_C)
+    set(is_c IS_C)
   endif()
 
   fcppt_utils_add_example(
     ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/examples
-    ${PATH_NAME}
-    ${IS_C}
+    ${path_name}
+    ${is_c}
     LINK_LIBS
     ${_LINK_LIBS}
     COMPILE_DEFINITIONS

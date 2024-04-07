@@ -1,6 +1,7 @@
-function(add_fcppt_options_example EXAMPLE_NAME)
+# Create an options example.
+function(add_fcppt_options_example example_name)
   add_fcppt_example(
-    options/${EXAMPLE_NAME} COMPILE_OPTIONS ${FCPPT_UTILS_MAIN_COMPILE_OPTIONS}
+    options/${example_name} COMPILE_OPTIONS ${FCPPT_UTILS_MAIN_COMPILE_OPTIONS}
     LINK_LIBS ${FCPPT_UTILS_MAIN_LINK_LIBS} ${ARGN})
 endfunction()
 

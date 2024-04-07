@@ -1,5 +1,6 @@
-function(add_fcppt_container_buffer_test TEST_NAME)
-  add_fcppt_container_test(buffer/${TEST_NAME} ${ARGN})
+# Create a container buffer test.
+function(add_fcppt_container_buffer_test test_name)
+  add_fcppt_container_test(buffer/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_container_buffer_test(object)

@@ -1,5 +1,6 @@
-function(add_fcppt_signal_example EXAMPLE_NAME)
-  add_fcppt_example(signal/${EXAMPLE_NAME} ${ARGN})
+# Create a signal example.
+function(add_fcppt_signal_example example_name)
+  add_fcppt_example(signal/${example_name} ${ARGN})
 endfunction()
 
 if(${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals2")

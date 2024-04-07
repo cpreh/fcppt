@@ -1,5 +1,6 @@
-function(add_fcppt_io_test TEST_NAME)
-  add_fcppt_test(io/${TEST_NAME} ${ARGN})
+# Create an io test.
+function(add_fcppt_io_test test_name)
+  add_fcppt_test(io/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_io_test(expect)

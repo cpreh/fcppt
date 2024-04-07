@@ -1,5 +1,6 @@
-function(add_fcppt_cast_test TEST_NAME)
-  add_fcppt_test(cast/${TEST_NAME} ${ARGN})
+# Create a cast test.
+function(add_fcppt_cast_test test_name)
+  add_fcppt_test(cast/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_cast_test(dynamic LINK_LIBS "${fcppt_core_TARGET}")

@@ -1,5 +1,6 @@
-function(add_fcppt_math_matrix_test TEST_NAME)
-  add_fcppt_math_test(matrix/${TEST_NAME} ${ARGN})
+# Create a math matrix test.
+function(add_fcppt_math_matrix_test test_name)
+  add_fcppt_math_test(matrix/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_math_matrix_test(access)

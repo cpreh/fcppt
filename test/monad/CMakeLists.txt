@@ -1,5 +1,6 @@
-function(add_fcppt_monad_test TEST_NAME)
-  add_fcppt_test(monad/${TEST_NAME} ${ARGN})
+# Create a monad test.
+function(add_fcppt_monad_test test_name)
+  add_fcppt_test(monad/${test_name} ${ARGN})
 endfunction()
 
 add_fcppt_monad_test(constructor NO_CODE)

@@ -1,24 +1,32 @@
 include(CMakeParseArguments)
 
-function(add_fcppt_test PATH_NAME)
-  set(OPTION_ARGS NO_CODE)
+# Add an fcppt test.
+#
+# path_name: The name of the cpp file without the extension.
+#            For example path_name=array will refer to array.cpp.
+# NO_CODE: Optional argument. If set, the test will not be run.
+#          This is useful for tests that contain static_asserts only.
+# INCLUDE_DIRS: A list of extra include directories.
+# LINK_LIBS: A list of extra link targets.
+function(add_fcppt_test path_name)
+  set(option_args NO_CODE)
 
-  set(MULTI_ARGS COMPILE_OPTIONS INCLUDE_DIRS LINK_LIBS)
+  set(multi_args COMPILE_OPTIONS INCLUDE_DIRS LINK_LIBS)
 
-  cmake_parse_arguments("" "${OPTION_ARGS}" "" "${MULTI_ARGS}" ${ARGN})
+  cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
   if(_NO_CODE)
-    set(NO_CODE NO_CODE)
+    set(no_code NO_CODE)
   else()
     list(APPEND _LINK_LIBS fcppt_catch_interface)
   endif()
 
-  set(TEST_DIR ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test)
+  set(test_dir ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test)
 
   fcppt_utils_add_test(
-    ${TEST_DIR}
-    "${PATH_NAME}"
-    ${NO_CODE}
+    ${test_dir}
+    "${path_name}"
+    ${no_code}
     LINK_LIBS
     ${_LINK_LIBS}
     fcppt_core_interface
