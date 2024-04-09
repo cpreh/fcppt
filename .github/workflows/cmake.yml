@@ -2,9 +2,12 @@ name: CMake
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - "master"
+    - "cicd"
   pull_request:
-    branches: [ "master" ]
+    branches:
+    - "master"
   workflow_dispatch:
 
 env:
@@ -18,13 +21,15 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - name: Install tools
-      run: brew install boost catch2
-
     - uses: actions/checkout@v4
 
+    - name: Install libs
+      run: brew install boost catch2
+
     - name: Configure CMake
-      run: CFLAGS=${{env.FLAGS}} CXXFLAGS=${{env.FLAGS}} cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DENABLE_TEST=ON
+      run: CFLAGS=${{env.FLAGS}} CXXFLAGS=${{env.FLAGS}} cmake -B ${{github.workspace}}/build
+        -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        -D ENABLE_TEST=ON
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
@@ -33,11 +38,21 @@ jobs:
     runs-on: windows-latest
 
     steps:
-
     - uses: actions/checkout@v4
 
+    - name: Setup vcpkg
+      uses: lukka/run-vcpkg@v11
+      with:
+        vcpkgGitCommitId: '5fa0f075ea51f305b627ecd5e050a363707353ff'
+
     - name: Configure CMake
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -D ENABLE_BOOST=OFF
+      run: cmake -B ${{github.workspace}}/build
+        -D "CMAKE_TOOLCHAIN_FILE=${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        -D CMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        -D "VCPKG_INSTALLED_DIR=${{runner.temp}}/vcpkg_installed"
+        -D ENABLE_BOOST=ON
+        -D ENABLE_CATCH=ON
+        -D ENABLE_TEST=ON
 
     - name: Build
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}

@@ -1,0 +1,10 @@
+{
+  "name": "main",
+  "dependencies": [
+    "boost-format",
+    "boost-signals2",
+    "boost-statechart",
+    "boost-units",
+    "catch2"
+  ]
+}
