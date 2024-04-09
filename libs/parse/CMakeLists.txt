@@ -1,4 +1,4 @@
-file(STRINGS parse_files.txt FCPPT_PARSE_FILES)
+fcppt_utils_load_source_files(libs/parse/files.txt FCPPT_PARSE_FILES)
 
 make_fcppt_library(
   parse

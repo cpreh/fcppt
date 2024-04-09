@@ -1,4 +1,4 @@
-file(STRINGS options_files.txt FCPPT_OPTIONS_FILES)
+fcppt_utils_load_source_files(libs/options/files.txt FCPPT_OPTIONS_FILES)
 
 make_fcppt_library(
   options

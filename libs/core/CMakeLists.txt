@@ -1,4 +1,4 @@
-file(STRINGS core_files.txt FCPPT_CORE_FILES)
+fcppt_utils_load_source_files(libs/core/files.txt FCPPT_CORE_FILES)
 
 # TODO: clang-tidy 18 crashes on this
 set_source_files_properties(src/error/strerrno.cpp PROPERTIES SKIP_LINTING ON)

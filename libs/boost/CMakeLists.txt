@@ -1,4 +1,4 @@
-file(STRINGS boost_files.txt FCPPT_BOOST_FILES)
+fcppt_utils_load_source_files(libs/boost/files.txt FCPPT_BOOST_FILES)
 
 make_fcppt_library(
   boost

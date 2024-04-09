@@ -409,3 +409,14 @@ function(fcppt_utils_link_imported_targets target_name visibility)
                                             ${cur_name})
   endforeach()
 endfunction()
+
+# Loads the contents of a text file into a variable, including the file name itself.
+
+# sources: A file relative to the project's source dir.
+# result: The name of the result variable.
+function(fcppt_utils_load_source_files sources result)
+  set(input_file ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${sources})
+  file(STRINGS ${input_file} temp_list)
+  list(APPEND temp_list ${sources})
+  set(${result} ${temp_list} PARENT_SCOPE)
+endfunction()

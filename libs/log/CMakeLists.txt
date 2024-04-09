@@ -1,4 +1,4 @@
-file(STRINGS log_files.txt FCPPT_LOG_FILES)
+fcppt_utils_load_source_files(libs/log/files.txt FCPPT_LOG_FILES)
 
 if(ENABLE_THREADS)
   set(FCPPT_LOG_COMPILE_DEFINITIONS "ENABLE_THREADS")

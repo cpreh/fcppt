@@ -1,4 +1,4 @@
-file(STRINGS catch_files.txt FCPPT_CATCH_FILES)
+fcppt_utils_load_source_files(libs/catch/files.txt FCPPT_CATCH_FILES)
 
 make_fcppt_library(
   catch

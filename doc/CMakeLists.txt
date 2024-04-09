@@ -12,8 +12,8 @@ configure_file(stylesheet.css "${DOC_OUTPUT}/stylesheet.css" COPYONLY)
 
 configure_file(layout.xml "${DOC_OUTPUT}/layout.xml" COPYONLY)
 
-file(STRINGS doc_files.txt FCPPT_DOC_FILES)
-file(STRINGS all_files.txt FCPPT_ALL_FILES)
+fcppt_utils_load_source_files(doc/doc_files.txt FCPPT_DOC_FILES)
+fcppt_utils_load_source_files(doc/all_files.txt FCPPT_ALL_FILES)
 list(APPEND FCPPT_DOC_FILES ${FCPPT_ALL_FILES})
 
 fcppt_utils_append_source_dir("${FCPPT_DOC_FILES}" FCPPT_DOC_FILES_ABS)

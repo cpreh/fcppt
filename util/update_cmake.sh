@@ -14,7 +14,7 @@ update_sublibrary()
 	local libdir=libs/"${sublibrary}"
 
 	update_cmake.sh \
-		"${libdir}"/"${sublibrary}"_files.txt \
+		"${libdir}"/files.txt \
 		"${libdir}"
 }
 
