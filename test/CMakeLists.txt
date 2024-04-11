@@ -6,6 +6,7 @@ include(CMakeParseArguments)
 #            For example path_name=array will refer to array.cpp.
 # NO_CODE: Optional argument. If set, the test will not be run.
 #          This is useful for tests that contain static_asserts only.
+# COMPILE_OPTIONS: A list of extra compile options.
 # INCLUDE_DIRS: A list of extra include directories.
 # LINK_LIBS: A list of extra link targets.
 function(add_fcppt_test path_name)

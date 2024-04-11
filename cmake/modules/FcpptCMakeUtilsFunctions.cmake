@@ -5,6 +5,11 @@ option(
   "Build header files as well. This is useful for running misc-include-cleaner on your build."
   FALSE)
 
+# Marks all header files from a list of files as files to compile.
+# This is mainly useful so they can be compiled via clang-tidy and misc-include-cleaner.
+#
+# all_files: The list of files.
+# HEADER_ONLY_EXCEPTIONS: Headers to be excluded from this process, e.g. if they are C headers.
 function(fcppt_utils_add_headers all_files)
   set(multi_args HEADER_ONLY_EXCEPTIONS)
 
@@ -32,6 +37,7 @@ function(fcppt_utils_add_headers all_files)
   endforeach()
 endfunction()
 
+# Adds source groups for a list of files.
 function(fcppt_utils_add_source_groups all_files)
   foreach(cur_file ${all_files})
     get_filename_component(REL_PATH "${cur_file}" PATH)
@@ -46,6 +52,10 @@ function(fcppt_utils_add_source_groups all_files)
   endif()
 endfunction()
 
+# Appends ${FCPPT_UTILS_PROJECT_SOURCE_DIR} to a list of files.
+#
+# files: The list of files.
+# result: The resulting variable name.
 function(fcppt_utils_append_source_dir files result)
   foreach(cur_file ${files})
     set(whole_file ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${cur_file})
@@ -58,6 +68,11 @@ function(fcppt_utils_append_source_dir files result)
       PARENT_SCOPE)
 endfunction()
 
+# Appends ${FCPPT_UTILS_PROJECT_SOURCE_DIR} to a list of files
+# and also adds source groups for them.
+#
+# files: The list of files.
+# result: The resulting variable name.
 function(fcppt_utils_append_source_dir_and_make_groups files result)
   set(multi_args HEADER_ONLY_EXCEPTIONS)
 
@@ -95,6 +110,10 @@ endfunction()
 
 set(FCPPT_UTILS_EXPORT_NAME "${PROJECT_NAME}Export")
 
+# Installs an exported target
+# and also puts it in the ${FCPPT_UTILS_EXPORT_NAME} file.
+#
+# target_name: The name of the target.
 function(fcppt_utils_export_install_target target_name)
   install(
     TARGETS ${target_name}
@@ -102,9 +121,9 @@ function(fcppt_utils_export_install_target target_name)
     EXPORT "${FCPPT_UTILS_EXPORT_NAME}")
 endfunction()
 
-# CONFIG_PATH : PATH - The path where the ${PROJECT_NAME}-config.cmake.in
-# resides. [MODULES_PATH : PATH] - The path that is appended to
-# CMAKE_MODULE_PATH.
+# Generates a config file for other projects to use via find_package.
+# CONFIG_PATH: The path where the ${PROJECT_NAME}-config.cmake.in is.
+# MODULES_PATH: Optional. A path that is appended to CMAKE_MODULE_PATH.
 function(fcppt_utils_generate_config)
   set(single_args CONFIG_PATH MODULES_PATH)
 
@@ -150,6 +169,11 @@ function(fcppt_utils_generate_config)
     DESTINATION "${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR}")
 endfunction()
 
+# Handles overriding .so versions.
+#
+# cache_var: The name of the cache variable to store the overriden .so version.
+# out_var: The name of the output variable.
+# default_version: The .so version to use if the cache var is empty.
 function(fcppt_utils_handle_so_version cache_var out_var default_version)
   set("${cache_var}"
       ""
@@ -168,6 +192,11 @@ function(fcppt_utils_handle_so_version cache_var out_var default_version)
   endif()
 endfunction()
 
+# Adds a dummy target, which is useful for header only libraries.
+#
+# target_name: The name of the target.
+# target_files: The files of the target.
+# INCLUDE_DIRS: Additional include directories.
 function(fcppt_utils_add_dummy_target target_name target_files)
   set(multi_args INCLUDE_DIRS LINK_LIBS)
 
@@ -188,6 +217,10 @@ function(fcppt_utils_add_dummy_target target_name target_files)
   target_link_libraries(${libname} PRIVATE ${_LINK_LIBS})
 endfunction()
 
+# Sets fcppt's target options.
+#
+# target_name: The name of the target.
+# ADDITIONAL_FLAGS: Additional compile flags to use.
 function(fcppt_utils_set_target_compiler_flags target_name)
   set(multi_args ADDITIONAL_FLAGS)
 
@@ -216,6 +249,7 @@ function(fcppt_utils_set_target_compiler_flags target_name)
   endif()
 endfunction()
 
+# Adds ENABLE_SHARED and ENABLE_STATIC options.
 function(fcppt_utils_static_shared)
   option(ENABLE_SHARED "Build shared libraries" ON)
 
@@ -239,18 +273,31 @@ function(fcppt_utils_static_shared)
   endif()
 endfunction()
 
+# The name to use for static libraries.
+#
+# libname: The name of the (shared) library.
+# result: The name of the result variable.
 function(fcppt_utils_static_link_name libname result)
   set(${result}
       ${libname}_static
       PARENT_SCOPE)
 endfunction()
 
+# The name to use for interface libraries.
+#
+# libname: The name of the (shared) library.
+# result: The name of the result variable.
 function(fcppt_utils_interface_link_name libname result)
   set(${result}
       ${libname}_interface
       PARENT_SCOPE)
 endfunction()
 
+# Gets the name of a static or shared library to link to,
+# depending on ENABLE_STATIC and ENABLE_SHARED.
+#
+# libname: The name of the (shared) library.
+# Sets ${libname}_TARGET as output.
 function(fcppt_utils_link_target libname)
   set(target_name ${libname}_TARGET)
 
@@ -267,12 +314,24 @@ function(fcppt_utils_link_target libname)
   endif()
 endfunction()
 
+# Sets the flag ${link_flag} for ${target_name} if ${variant} is equal to "STATIC".
+# This is useful in functions that handle
+# the creation of static and shared libraries simultaneously.
+#
+# target_name: The name of the library.
+# variant: If this is a static or shared library.
+# link_flag: The static link flag to use.
 function(fcppt_utils_interface_static_link target_name variant link_flag)
   if(${variant} STREQUAL "STATIC")
     target_compile_definitions(${target_name} PUBLIC ${link_flag})
   endif()
 endfunction()
 
+# Sets the target folder of a target.
+#
+# target_name: The name of the target.
+# prefix: A prefix for the folder name to use.
+# path_name: The path of the target.
 function(fcppt_utils_set_target_folder target_name prefix path_name)
   string(FIND ${path_name} "/" LAST_PART REVERSE)
 
@@ -286,10 +345,20 @@ function(fcppt_utils_set_target_folder target_name prefix path_name)
     ${target_name} PROPERTIES FOLDER ${PROJECT_NAME}/${prefix}${folder_name})
 endfunction()
 
+# Initializes the tests. Searches for Catch2.
 function(fcppt_utils_setup_tests)
   find_package(Catch2 3.0 REQUIRED)
 endfunction()
 
+# Adds a test case.
+#
+# test_dir: The top-level directory for test cases.
+# path_anme: The inner path of the test case, including the file name but without the .cpp extension.
+#            For example, "foo/bar" will result in "foo/bar.cpp".
+# LINK_LIBS: A list of extra link targets.
+# INCLUDE_DIRS: A list of extra include directories.
+# COMPILE_DEFINITIONS: A list of compile definitions.
+# COMPILE_OPTIONS: A list of extra compile options.
 function(fcppt_utils_add_test test_dir path_name)
   set(option_args NO_CODE)
 
@@ -322,6 +391,17 @@ function(fcppt_utils_add_test test_dir path_name)
   endif()
 endfunction()
 
+# Adds an example.
+#
+# test_dir: The top-level directory for test cases.
+# path_anme: The inner path of the example, including the file name but without the .cpp extension.
+#            For example, "foo/bar" will result in "foo/bar.cpp" if IS_C is not set.
+# IS_C: If this is a C (not C++) test case.
+# INSTALL_DIR: The directory to install this test into. If unset, the example will not be installed.
+# LINK_LIBS: A list of extra link targets.
+# INCLUDE_DIRS: A list of extra include directories.
+# COMPILE_DEFINITIONS: A list of compile definitions.
+# COMPILE_OPTIONS: A list of extra compile options.
 function(fcppt_utils_add_example example_dir path_name)
   set(option_args IS_C)
 
@@ -364,6 +444,18 @@ function(fcppt_utils_add_example example_dir path_name)
   endif()
 endfunction()
 
+# Uses an imported target indirectly.
+#
+# This is basically the same as
+#
+# target_link_libraries(${target_name} ${visibility} ${imported_name})
+#
+# but without mentioning ${imported_name} directly. thus CMake does
+# not see that the imported target is actually in use.
+#
+# target_name: The name of the target to modify.
+# visibility: PUBLIC, PRIVATE or INTERFACE
+# imported_name: The name of the imported target.
 function(fcppt_utils_link_imported_target_single target_name visibility
          imported_name)
   get_target_property(INCLUDE_DIRS ${imported_name}
@@ -403,6 +495,16 @@ function(fcppt_utils_link_imported_target_single target_name visibility
   endif()
 endfunction()
 
+# Uses multiple imported targets.
+#
+# This is basically the same as
+#
+# target_link_libraries(${target_name} ${visibility} ${ARGN})
+#
+# See fcppt_utils_link_imported_target_single.
+#
+# target_name: The name of the target to modify.
+# visibility: PUBLIC, PRIVATE or INTERFACE
 function(fcppt_utils_link_imported_targets target_name visibility)
   foreach(cur_name ${ARGN})
     fcppt_utils_link_imported_target_single(${target_name} ${visibility}
