@@ -1,6 +1,65 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_450 4.5.0
+
+<ul>
+
+<li>Cleaned up <code>clang-18</code> warnings.</li>
+<li>Added MSVC and MacOS CI/CD on Github.</li>
+<li>Overhaul and document CMake files, using <code>cmake-format</code> and <code>cmake-lint</code>.</li>
+<li>Added the ability to also compile header files using <code>misc-include-cleaner</code> from <code>clang-tidy</code> and cleaned up all includes in header files as a result.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_450 Added functionality
+
+<ul>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Added the #fcppt::enum_::invalid exception and #fcppt::enum_::make_invalid as a replacement for the remaining uses of <code>FCPPT_ASSERT_UNREACHABLE</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_450 Removed functionality
+
+<ul>
+
+<li>fcpptassert
+	<ul>
+	<li>Removed <code>FCPPT_ASSERT_UNREACHABLE</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptiterator
+	<ul>
+	<li>Removed <code>fcppt::iterator::adapt_range</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrandom <ul>
+	<li>Removed <code>fcppt::random::distribution::parameters::make_uniform_indices</code>.
+	The version #fcppt::random::distribution::parameters::make_uniform_indices_advanced still exists.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_450 Bugfixes
+
+<ul>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Fixed enum size types for small enums.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_441 4.4.1
 
 <ul>

@@ -43,4 +43,4 @@ update_cmake.sh \
 	libs/parse/include \
 	examples
 
-FIND_PATTERN=".*" update_cmake.sh doc/doc_files.txt doc
+FIND_PATTERN="*.*" update_cmake.sh doc/doc_files.txt doc
