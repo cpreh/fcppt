@@ -285,7 +285,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptrandom
 	<ul>
-	<li>#fcppt::random::distribution::parameters::make_uniform_indices
+	<li><code>fcppt::random::distribution::parameters::make_uniform_indices</code>
 	now returns an optional distribution. This covers the case in which the
 	container is empty.</li>
 	</ul>
