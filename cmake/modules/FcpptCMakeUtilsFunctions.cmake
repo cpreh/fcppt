@@ -518,6 +518,7 @@ endfunction()
 # result: The name of the result variable.
 function(fcppt_utils_load_source_files sources result)
   set(input_file ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${sources})
+  set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ${input_file})
   file(STRINGS ${input_file} temp_list)
   list(APPEND temp_list ${sources})
   set(${result} ${temp_list} PARENT_SCOPE)
