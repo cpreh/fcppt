@@ -11,6 +11,7 @@
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/mpl/list/size.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
+#include <fcppt/record/is_vararg_ctor.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_decl.hpp> // IWYU pragma: export
 #include <fcppt/record/detail/all_initializers.hpp>
@@ -32,8 +33,9 @@ fcppt::record::object<Elements...>::object(fcppt::no_init const &)
 }
 
 template <typename... Elements>
-template <typename... Args, typename>
+template <typename... Args>
 fcppt::record::object<Elements...>::object(Args &&..._args)
+  requires(fcppt::record::is_vararg_ctor<Args...>::value)
     : elements_{fcppt::record::detail::
                     init_ctor<tuple, fcppt::record::element_tag_tuple<this_type>, Args...>(
                         std::forward<Args>(_args)...)}

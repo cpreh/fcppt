@@ -1200,7 +1200,6 @@ libs/core/include/fcppt/record/element_tag_tuple.hpp
 libs/core/include/fcppt/record/element_to_label.hpp
 libs/core/include/fcppt/record/element_to_type.hpp
 libs/core/include/fcppt/record/element_vector.hpp
-libs/core/include/fcppt/record/enable_vararg_ctor.hpp
 libs/core/include/fcppt/record/from_list_fwd.hpp
 libs/core/include/fcppt/record/from_list.hpp
 libs/core/include/fcppt/record/get.hpp
@@ -1209,6 +1208,7 @@ libs/core/include/fcppt/record/init.hpp
 libs/core/include/fcppt/record/is_element.hpp
 libs/core/include/fcppt/record/is_label.hpp
 libs/core/include/fcppt/record/is_object.hpp
+libs/core/include/fcppt/record/is_vararg_ctor.hpp
 libs/core/include/fcppt/record/label_decl.hpp
 libs/core/include/fcppt/record/label_fwd.hpp
 libs/core/include/fcppt/record/label.hpp

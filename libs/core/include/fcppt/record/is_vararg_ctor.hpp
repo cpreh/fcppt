@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_RECORD_ENABLE_VARARG_CTOR_HPP_INCLUDED
-#define FCPPT_RECORD_ENABLE_VARARG_CTOR_HPP_INCLUDED
+#ifndef FCPPT_RECORD_IS_VARARG_CTOR_HPP_INCLUDED
+#define FCPPT_RECORD_IS_VARARG_CTOR_HPP_INCLUDED
 
 #include <fcppt/record/detail/is_element_init.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,9 +19,8 @@ namespace fcppt::record
 \ingroup fcpptrecord
 */
 template <typename... Args>
-using enable_vararg_ctor = std::enable_if_t<std::conjunction_v<
-    fcppt::record::detail::is_element_init<std::remove_cvref_t<Args>>...>>;
-
+using is_vararg_ctor =
+    std::conjunction<fcppt::record::detail::is_element_init<std::remove_cvref_t<Args>>...>;
 }
 
 #endif

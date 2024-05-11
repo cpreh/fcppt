@@ -17,8 +17,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_type.hpp>
-#include <fcppt/record/enable_vararg_ctor.hpp>
 #include <fcppt/record/is_element.hpp>
+#include <fcppt/record/is_vararg_ctor.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/detail/label_list.hpp>
@@ -91,8 +91,9 @@ public:
   \tparam Args Implementation-defined init types, obtained by assignment
   to #fcppt::record::label.
   */
-  template <typename... Args, typename = fcppt::record::enable_vararg_ctor<Args...>>
-  explicit object(Args &&..._args);
+  template <typename... Args>
+  explicit object(Args &&..._args)
+    requires(fcppt::record::is_vararg_ctor<Args...>::value);
 
   /**
   \brief Sets an element by copy.
