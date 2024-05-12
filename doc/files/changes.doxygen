@@ -24,6 +24,18 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_450 Changed functionality
+
+<ul>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>Changed <code>fcppt::record::enable_vararg_ctor</code> to #fcppt::record::is_vararg_ctor.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_450 Removed functionality
 
 <ul>
