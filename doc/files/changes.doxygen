@@ -28,6 +28,12 @@
 
 <ul>
 
+<li>\ref fcpptlog
+	<p>
+	Redesigned how log formatting works. The main class is now #fcppt::log::level_stream and the functions in <code>fcppt::log::format</code> have been removed.
+	</p>
+</li>
+
 <li>\ref fcpptrecord
 	<ul>
 	<li>Changed <code>fcppt::record::enable_vararg_ctor</code> to #fcppt::record::is_vararg_ctor.</li>
@@ -1791,7 +1797,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptlog
 	<ul>
-	<li>Removed <code>boost::format</code> from #fcppt::log::format::inserter.</li>
+	<li>Removed <code>boost::format</code> from <code>fcppt::log::format::inserter</code>.</li>
 	</ul>
 </li>
 

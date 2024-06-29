@@ -6,6 +6,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_ARRAY_FWD_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_ARRAY_FWD_HPP_INCLUDED
 
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/enum/array_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
@@ -20,8 +21,8 @@ namespace fcppt::log
 An array of #fcppt::log::level_stream with the size #fcppt::log::level.
 Each entry corresponds to an enumerator from #fcppt::log::level.
 */
-using level_stream_array = fcppt::enum_::array<fcppt::log::level, fcppt::log::level_stream>;
-
+using level_stream_array =
+    fcppt::enum_::array<fcppt::log::level, fcppt::unique_ptr<fcppt::log::level_stream>>;
 }
 
 #endif

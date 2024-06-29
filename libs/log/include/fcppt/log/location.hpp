@@ -8,8 +8,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/location_string_vector.hpp>
 #include <fcppt/log/name_fwd.hpp>
-#include <fcppt/log/detail/location_vector.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
 namespace fcppt::log
@@ -44,12 +44,15 @@ public:
   FCPPT_LOG_DETAIL_SYMBOL
   explicit location(fcppt::log::name root);
 
+  FCPPT_LOG_DETAIL_SYMBOL
+  explicit location(fcppt::log::location_string_vector &&);
+
   /**
   \brief The iterator type
 
   A typedef to an iterator type over #fcppt::string
   */
-  using const_iterator = fcppt::log::detail::location_vector::const_iterator;
+  using const_iterator = fcppt::log::location_string_vector::const_iterator;
 
   /**
   \brief Adds a new element to this location
@@ -76,7 +79,7 @@ public:
   [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL fcppt::string string() const;
 
 private:
-  fcppt::log::detail::location_vector entries_;
+  fcppt::log::location_string_vector entries_;
 };
 
 /**

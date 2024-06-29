@@ -16,10 +16,6 @@ or to <code>fcppt_log_interface</code> if you only need the headers.</b>
 			<li>\ref log_simple_example</li>
 		</ul>
 	<li>\ref log_formatting_and_sinks</li>
-		<ul>
-			<li>\ref log_formatting_design</li>
-			<li>\ref log_formatting_example</li>
-		</ul>
 	<li>\ref log_hierarchy</li>
 		<ul>
 			<li>\ref log_hierarchy_design</li>
@@ -75,64 +71,9 @@ instead, the log message might end up interleaved with other messages.
 
 \section log_formatting_and_sinks Formatting and sinks
 
-\subsection log_formatting_design Formatting design
-
-Here is a more detailed explanation of how log messages are formatted and where
-they are written to:
-
-<ul>
-<li>
 A log context contains an #fcppt::log::level_stream for every
 log level. Each of them controls where output is written to and how it is
 formatted.
-</li>
-<li>
-Each level stream uses an <code>std::basic_ostream</code> as its log
-destination. Where output actually ends up is decided by its streambuf.
-</li>
-<li>
-Formatting is done through #fcppt::log::format::function objects
-which can be naturally chained together. Every log object and every level stream
-can have their own formatters.
-</ul>
-
-\subsection log_formatting_example Formatting and sinks example
-
-In the following example, we are going to give our log object a special
-formatting function that prints <code>This is a formatting test: </code> in
-front of every log message.
-
-Such a formatting function takes a string and returns a string and can be
-implemented as follows:
-
-\snippet log/formatting.cpp logger_formatter_declaration
-
-We are also going to create another formatting function for the <em>error</em>
-level stream that logs to #fcppt::io::cerr.
-
-\snippet log/formatting.cpp error_formatter_declaration
-
-We then create the level streams, such that the <code>error</code> level logs
-to #fcppt::io::cerr using the error function we just created.
-Every other level logs to #fcppt::io::cout using the default
-formatting function.
-
-\snippet log/formatting.cpp logger_streams
-
-The log context we are going to use again has the debug level and every level
-above enabled. Instead of #fcppt::log::default_level_streams we
-give it the level streams we just created.
-
-\snippet log/formatting.cpp logger_context
-
-Finally, we create the log object that uses the aforementioned formatting
-function:
-
-\snippet log/formatting.cpp logger_declaration
-
-The following code shows what is printed:
-
-\snippet log/formatting.cpp log_print
 
 \section log_hierarchy Log hierarchy
 
@@ -279,14 +220,6 @@ All headers are relative to the log subdirectory.
 <td>Contains #fcppt::log::object 's defintiion.</td>
 </tr>
 <tr>
-<td><code>parameters_fwd.hpp</code></td>
-<td>Contains #fcppt::log::parameters 's declaration.</td>
-</tr>
-<tr>
-<td><code>parameters.hpp</code></td>
-<td>Contains #fcppt::log::parameters 's definition.</td>
-</tr>
-<tr>
 <td><code>verbose.hpp</code></td>
 <td>Contains the #FCPPT_LOG_VERBOSE macro.</td>
 </tr>
@@ -339,38 +272,6 @@ All headers are relative to the log subdirectory.
 <td><code>optional_level.hpp</code></td>
 <td>Includes <code>optional_level_fwd.hpp</code> and optional headers.</td>
 </tr>
-<tr>
-<td><code>format/chain.hpp</code></td>
-<td>Contains the #fcppt::log::format::chain function.</td>
-</tr>
-<tr>
-<td><code>format/default_level.hpp</code></td>
-<td>Contains the #fcppt::log::format::default_level function.</td>
-</tr>
-<tr>
-<td><code>format/format.hpp</code></td>
-<td>Includes all headers of <code>log/format</code>.</td>
-</tr>
-<tr>
-<td><code>format/function_fwd.hpp</code></td>
-<td>Contains the #fcppt::log::format::function typedef.</td>
-</tr>
-<tr>
-<td><code>format/function.hpp</code></td>
-<td>Includes <code>format/function_fwd.hpp</code> and function headers.</td>
-</tr>
-<tr>
-<td><code>format/inserter.hpp</code></td>
-<td>Contains the #fcppt::log::format::inserter typedef.</td>
-</tr>
-<tr>
-<td><code>format/prefix.hpp</code></td>
-<td>Contains the #fcppt::log::format::prefix function.</td>
-</tr>
-<tr>
-<td><code>format/time_stamp.hpp</code></td>
-<td>Contains the #fcppt::log::format::time_stamp typedef.</td>
-</tr>
 </table>
 
 */
@@ -382,12 +283,5 @@ namespace fcppt
 */
 namespace log
 {
-/**
-\brief Functions and classes related to log formatting
-*/
-namespace format
-{
-}
-
 }
 }

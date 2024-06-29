@@ -16,8 +16,6 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/out.hpp>
-#include <fcppt/log/parameters.hpp>
-#include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
@@ -33,16 +31,13 @@ try
   // ![declare_root_logger]
   fcppt::log::name const root_name{FCPPT_TEXT("root")};
 
-  fcppt::log::object root_log{
-      fcppt::make_ref(context),
-      fcppt::log::parameters(root_name, fcppt::log::format::optional_function{})};
+  fcppt::log::object root_log{fcppt::make_ref(context), root_name};
   // ![declare_root_logger]
 
   // ![declare_child_logger]
   fcppt::log::name const child_name{FCPPT_TEXT("child")};
 
-  fcppt::log::object child_log{
-      root_log, fcppt::log::parameters(child_name, fcppt::log::format::optional_function{})};
+  fcppt::log::object child_log{root_log, child_name};
   // ![declare_child_logger]
 
   // ![log_debug]

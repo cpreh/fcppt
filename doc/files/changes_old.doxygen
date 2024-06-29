@@ -47,10 +47,10 @@
 
 <li>\ref fcpptlog
 	<ul>
-	<li>Use #fcppt::function for #fcppt::log::format::function.</li>
-	<li>Introduced #fcppt::log::format::optional_function to
+	<li>Use #fcppt::function for <code>fcppt::log::format::function</code>.</li>
+	<li>Introduced <code>fcppt::log::format::optional_function</code> to
 	make it clear where a function can be missing.</li>
-	<li>Changed #fcppt::log::parameters to only consist of a
+	<li>Changed <code>fcppt::log::parameters</code> to only consist of a
 	single class.</li>
 	</ul>
 </li>

@@ -3,17 +3,20 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_LOG_DETAIL_LOCATION_VECTOR_HPP_INCLUDED
-#define FCPPT_LOG_DETAIL_LOCATION_VECTOR_HPP_INCLUDED
+#ifndef FCPPT_LOG_LOCATION_STRING_VECTOR_HPP_INCLUDED
+#define FCPPT_LOG_LOCATION_STRING_VECTOR_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-namespace fcppt::log::detail
+namespace fcppt::log
 {
-using location_vector = std::vector<fcppt::string>;
+/**
+\ingroup fcpptlog
+*/
+using location_string_vector = std::vector<fcppt::string>;
 
 }
 

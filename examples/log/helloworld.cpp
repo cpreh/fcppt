@@ -13,9 +13,7 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/out.hpp>
-#include <fcppt/log/parameters.hpp>
 #include <fcppt/log/verbose.hpp>
-#include <fcppt/log/format/optional_function.hpp>
 
 int main()
 {
@@ -25,10 +23,7 @@ int main()
       fcppt::log::optional_level{fcppt::log::level::debug}, fcppt::log::default_level_streams()};
 
   // Create a log object at location "{ fcppt }"
-  fcppt::log::object log{
-      fcppt::make_ref(context),
-      fcppt::log::parameters{
-          fcppt::log::name{FCPPT_TEXT("fcppt")}, fcppt::log::format::optional_function{}}};
+  fcppt::log::object const log{fcppt::make_ref(context), fcppt::log::name{FCPPT_TEXT("fcppt")}};
 
   // Outputs "fcppt: debug: Hello World"
   if (log.enabled(fcppt::log::level::debug))

@@ -12,14 +12,13 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array_fwd.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
-#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/location.hpp>
+#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_level_fwd.hpp>
-#include <fcppt/log/parameters_fwd.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/optional_function.hpp>
 
 namespace fcppt::log
 {
@@ -41,20 +40,20 @@ public:
   \brief Constructs a root logger object
   */
   FCPPT_LOG_DETAIL_SYMBOL
-  object(fcppt::log::context_reference, fcppt::log::parameters const &);
+  object(fcppt::log::context_reference, fcppt::log::name const &);
 
   /**
   \brief Constructs a child logger object
   */
   FCPPT_LOG_DETAIL_SYMBOL
-  object(fcppt::log::object const &parent, fcppt::log::parameters const &);
+  object(fcppt::log::object const &parent, fcppt::log::name const &);
 
   /**
   \brief Constructs a log at a specific location
   */
   FCPPT_LOG_DETAIL_SYMBOL
   object(
-      fcppt::log::context_reference, fcppt::log::location const &, fcppt::log::parameters const &);
+      fcppt::log::context_reference, fcppt::log::location const &, fcppt::log::name const &);
 
   FCPPT_LOG_DETAIL_SYMBOL
   ~object();
@@ -75,7 +74,7 @@ public:
   be significant overhead. Instead, use the macros #FCPPT_LOG_DEBUG and so on directly.
   */
   FCPPT_LOG_DETAIL_SYMBOL
-  void log(fcppt::log::level level, fcppt::log::detail::temporary_output const &output);
+  void log(fcppt::log::level level, fcppt::log::detail::temporary_output const &output) const;
 
   /**
   \brief The level stream corresponding to a log level
@@ -92,13 +91,7 @@ public:
   */
   [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL bool enabled(fcppt::log::level level) const;
 
-  /**
-  \brief Returns the associated formatter
-  */
-  [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL fcppt::log::format::optional_function const &
-  formatter() const;
-
-  /**
+ /**
   \brief Returns the associated level streams
   */
   [[nodiscard]] FCPPT_LOG_DETAIL_SYMBOL fcppt::log::level_stream_array const &level_streams() const;
@@ -111,7 +104,7 @@ public:
 private:
   using context_tree_ref = fcppt::reference<fcppt::log::detail::context_tree const>;
 
-  object(fcppt::log::context_reference, context_tree_ref, fcppt::log::parameters const &);
+  object(fcppt::log::context_reference, context_tree_ref, fcppt::log::name const &);
 
   // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
   fcppt::log::context_reference const context_;
@@ -120,7 +113,7 @@ private:
   context_tree_ref const node_;
 
   // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
-  fcppt::log::format::optional_function const formatter_;
+  fcppt::log::location const location_;
 };
 
 }

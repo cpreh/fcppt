@@ -117,6 +117,8 @@ if(ENABLE_BOOST)
   add_fcppt_test(literal_boost_units LINK_LIBS ${FCPPT_TEST_BOOST_INTERFACE})
 endif()
 
+add_subdirectory(log)
+
 add_fcppt_test(make_function)
 
 add_fcppt_test(make_unique_ptr)

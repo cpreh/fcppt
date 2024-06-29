@@ -35,8 +35,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
-#include <fcppt/log/parameters.hpp>
-#include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_fwd.hpp>
@@ -184,9 +182,7 @@ try
     // ![options_log_context]
 
     fcppt::log::object const logger{
-        fcppt::make_ref(log_context),
-        fcppt::log::parameters{
-            fcppt::log::name{FCPPT_TEXT("options")}, fcppt::log::format::optional_function{}}};
+        fcppt::make_ref(log_context), fcppt::log::name{FCPPT_TEXT("options")}};
 
     // ![options_open_input]
     fcppt::filesystem::ifstream const input{fcppt::filesystem::open_exn<fcppt::filesystem::ifstream>(

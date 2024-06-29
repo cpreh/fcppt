@@ -20,7 +20,7 @@
 namespace fcppt::algorithm
 {
 /**
-\brief Joins a range of strings, using a delimiter
+\brief Joins a range of strings, using a delimiter.
 
 \ingroup fcpptalgorithm
 
@@ -36,7 +36,7 @@ template <typename Range>
 fcppt::type_traits::value_type<Range>
 join_strings(Range const &_range, fcppt::type_traits::value_type<Range> const &_delim)
 {
-  fcppt::type_traits::value_type<Range> result;
+  fcppt::type_traits::value_type<Range> result{};
 
   FCPPT_PP_PUSH_WARNING
   FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
