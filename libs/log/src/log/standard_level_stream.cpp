@@ -25,9 +25,11 @@ void fcppt::log::standard_level_stream::log(
     fcppt::log::detail::temporary_output const &_output,
     fcppt::log::location const &_location) const
 {
-  dest_.get() << _location.string() << FCPPT_TEXT(": ")
-              << fcppt::from_std_string(fcppt::log::level_to_string(this->level_))
-              << FCPPT_TEXT(": ") << _output.result() << FCPPT_TEXT('\n');
+  this->dest() << _location.string() << FCPPT_TEXT(": ")
+               << fcppt::from_std_string(fcppt::log::level_to_string(this->level_))
+               << FCPPT_TEXT(": ") << _output.result() << FCPPT_TEXT('\n');
 
-  dest_.get().flush();
+  this->dest().flush();
 }
+
+fcppt::io::ostream &fcppt::log::standard_level_stream::dest() const { return this->dest_.get(); }

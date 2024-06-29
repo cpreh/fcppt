@@ -21,6 +21,7 @@ libs/log/include/fcppt/log/context_reference_fwd.hpp
 libs/log/include/fcppt/log/context_reference.hpp
 libs/log/include/fcppt/log/debug.hpp
 libs/log/include/fcppt/log/default_level_streams.hpp
+libs/log/include/fcppt/log/default_level_streams_impl.hpp
 libs/log/include/fcppt/log/default_stream.hpp
 libs/log/include/fcppt/log/detail/active_level_int.hpp
 libs/log/include/fcppt/log/detail/context_tree_fwd.hpp
@@ -57,12 +58,15 @@ libs/log/include/fcppt/log/object_reference.hpp
 libs/log/include/fcppt/log/optional_level_fwd.hpp
 libs/log/include/fcppt/log/optional_level.hpp
 libs/log/include/fcppt/log/out.hpp
+libs/log/include/fcppt/log/standard_level_stream_array_fwd.hpp
+libs/log/include/fcppt/log/standard_level_stream_array.hpp
 libs/log/include/fcppt/log/standard_level_stream_fwd.hpp
 libs/log/include/fcppt/log/standard_level_stream.hpp
 libs/log/include/fcppt/log/verbose.hpp
 libs/log/include/fcppt/log/warning.hpp
 libs/log/src/log/context.cpp
 libs/log/src/log/default_level_streams.cpp
+libs/log/src/log/default_level_streams_impl.cpp
 libs/log/src/log/default_stream.cpp
 libs/log/src/log/detail/context_tree_node.cpp
 libs/log/src/log/detail/temporary_output.cpp

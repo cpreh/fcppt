@@ -40,6 +40,8 @@ public:
   void
   log(fcppt::log::detail::temporary_output const &, fcppt::log::location const &) const override;
 
+  [[nodiscard]]
+  FCPPT_LOG_DETAIL_SYMBOL fcppt::io::ostream &dest() const;
 private:
   fcppt::reference<fcppt::io::ostream> const dest_;
 

@@ -466,6 +466,7 @@ libs/core/include/fcppt/enum/array_fwd.hpp
 libs/core/include/fcppt/enum/array.hpp
 libs/core/include/fcppt/enum/array_impl.hpp
 libs/core/include/fcppt/enum/array_init.hpp
+libs/core/include/fcppt/enum/array_map.hpp
 libs/core/include/fcppt/enum/array_output.hpp
 libs/core/include/fcppt/enum/detail/has_maximum.hpp
 libs/core/include/fcppt/enum/from_int.hpp

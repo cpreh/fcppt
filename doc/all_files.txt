@@ -578,6 +578,7 @@ libs/core/include/fcppt/enum/array_fwd.hpp
 libs/core/include/fcppt/enum/array.hpp
 libs/core/include/fcppt/enum/array_impl.hpp
 libs/core/include/fcppt/enum/array_init.hpp
+libs/core/include/fcppt/enum/array_map.hpp
 libs/core/include/fcppt/enum/array_output.hpp
 libs/core/include/fcppt/enum/detail/has_maximum.hpp
 libs/core/include/fcppt/enum/from_int.hpp
@@ -1595,6 +1596,7 @@ libs/log/include/fcppt/log/context_reference_fwd.hpp
 libs/log/include/fcppt/log/context_reference.hpp
 libs/log/include/fcppt/log/debug.hpp
 libs/log/include/fcppt/log/default_level_streams.hpp
+libs/log/include/fcppt/log/default_level_streams_impl.hpp
 libs/log/include/fcppt/log/default_stream.hpp
 libs/log/include/fcppt/log/detail/active_level_int.hpp
 libs/log/include/fcppt/log/detail/context_tree_fwd.hpp
@@ -1631,6 +1633,8 @@ libs/log/include/fcppt/log/object_reference.hpp
 libs/log/include/fcppt/log/optional_level_fwd.hpp
 libs/log/include/fcppt/log/optional_level.hpp
 libs/log/include/fcppt/log/out.hpp
+libs/log/include/fcppt/log/standard_level_stream_array_fwd.hpp
+libs/log/include/fcppt/log/standard_level_stream_array.hpp
 libs/log/include/fcppt/log/standard_level_stream_fwd.hpp
 libs/log/include/fcppt/log/standard_level_stream.hpp
 libs/log/include/fcppt/log/verbose.hpp

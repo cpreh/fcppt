@@ -14,7 +14,7 @@
 namespace fcppt::log
 {
 /**
-\brief An array used to save log level streams for every level
+\brief An array used to save log level streams for every level.
 
 \ingroup fcpptlog
 
