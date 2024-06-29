@@ -7,7 +7,7 @@
 
 <li>Cleaned up <code>clang-18</code> warnings.</li>
 <li>Added MSVC and MacOS CI/CD on Github.</li>
-<li>Overhaul and document CMake files, using <code>cmake-format</code> and <code>cmake-lint</code>.</li>
+<li>Overhauled and documented CMake files, using <code>cmake-format</code> and <code>cmake-lint</code>.</li>
 <li>Added the ability to also compile header files using <code>misc-include-cleaner</code> from <code>clang-tidy</code> and cleaned up all includes in header files as a result.</li>
 
 </ul>
