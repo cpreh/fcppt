@@ -56,9 +56,9 @@ This is also needed to build \ref fcpptcatch.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-13.2 (Gentoo Linux and MinGW)</li>
-	<li>clang-18 (Gentoo Linux)</li>
-	<li>VC++-14.39 (Visual Studio 2022)</li>
+	<li>gcc-14.1 (Gentoo Linux and MinGW)</li>
+	<li>clang-18.1.8 (Gentoo Linux)</li>
+	<li>VC++-14.40 (Visual Studio 2022)</li>
 </ul>
 
 fcppt needs a C++20-conforming compiler.
