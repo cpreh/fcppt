@@ -1145,7 +1145,7 @@ fcppt now uses <code>std::filesystem</code>.
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added #fcppt::record::enable_vararg_ctor.</li>
+	<li>Added <code>fcppt::record::enable_vararg_ctor</code>.</li>
 	</ul>
 </li>
 
