@@ -19,7 +19,7 @@
 <li>\ref fcpptenum
 	<ul>
 	<li>Added the #fcppt::enum_::invalid exception and #fcppt::enum_::make_invalid as a replacement for the remaining uses of <code>FCPPT_ASSERT_UNREACHABLE</code>.</li>
-    <li>Added #fcppt::enum_::array_map.</li>
+	<li>Added #fcppt::enum_::array_map.</li>
 	</ul>
 </li>
 
