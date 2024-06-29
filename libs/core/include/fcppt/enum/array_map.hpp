@@ -8,8 +8,8 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/array/map.hpp>
-#include <fcppt/enum/array_impl.hpp>
 #include <fcppt/container/to_reference_type.hpp>
+#include <fcppt/enum/array_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>

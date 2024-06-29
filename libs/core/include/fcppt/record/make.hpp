@@ -11,8 +11,8 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_init_tag.hpp>
 #include <fcppt/record/element_init_type.hpp>
-#include <fcppt/record/label_impl.hpp>
 #include <fcppt/record/is_vararg_ctor.hpp>
+#include <fcppt/record/label_impl.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

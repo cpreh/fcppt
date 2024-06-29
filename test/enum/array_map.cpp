@@ -6,11 +6,11 @@
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/output_to_std_string.hpp>
 #include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/enum/array.hpp>
-#include <fcppt/enum/array_map.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
+#include <fcppt/enum/array.hpp>
+#include <fcppt/enum/array_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <cstdint>

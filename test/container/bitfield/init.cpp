@@ -12,8 +12,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstdint>
 #include <catch2/catch_test_macros.hpp>
+#include <cstdint>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
