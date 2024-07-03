@@ -45,7 +45,7 @@ option(ENABLE_NARROW_STRING
        "Build fcppt with std::string instead of std::wstring"
        ${ENABLE_NARROW_STRING_DEFAULT})
 
-find_package(Boost 1.47.0)
+find_package(Boost 1.70.0 CONFIG)
 
 find_package(Catch2 CONFIG)
 
