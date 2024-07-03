@@ -357,12 +357,13 @@ endfunction()
 #            For example, "foo/bar" will result in "foo/bar.cpp".
 # LINK_LIBS: A list of extra link targets.
 # INCLUDE_DIRS: A list of extra include directories.
+# SYSTEM_INCLUDE_DIRS: A list of extra system include directories.
 # COMPILE_DEFINITIONS: A list of compile definitions.
 # COMPILE_OPTIONS: A list of extra compile options.
 function(fcppt_utils_add_test test_dir path_name)
   set(option_args NO_CODE)
 
-  set(multi_args LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS)
+  set(multi_args LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS SYSTEM_INCLUDE_DIRS)
 
   cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
@@ -377,6 +378,8 @@ function(fcppt_utils_add_test test_dir path_name)
   fcppt_utils_set_target_compiler_flags(${full_test_name})
 
   target_include_directories(${full_test_name} PRIVATE ${_INCLUDE_DIRS})
+
+  target_include_directories(${full_test_name} SYSTEM PRIVATE ${_SYSTEM_INCLUDE_DIRS})
 
   target_compile_definitions(${full_test_name} PRIVATE ${_COMPILE_DEFINITIONS})
 
@@ -400,6 +403,7 @@ endfunction()
 # INSTALL_DIR: The directory to install this test into. If unset, the example will not be installed.
 # LINK_LIBS: A list of extra link targets.
 # INCLUDE_DIRS: A list of extra include directories.
+# SYSTEM_INCLUDE_DIRS: A list of extra system include directories.
 # COMPILE_DEFINITIONS: A list of compile definitions.
 # COMPILE_OPTIONS: A list of extra compile options.
 function(fcppt_utils_add_example example_dir path_name)
@@ -407,7 +411,7 @@ function(fcppt_utils_add_example example_dir path_name)
 
   set(single_args INSTALL_DIR)
 
-  set(multi_args LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS)
+  set(multi_args LINK_LIBS INCLUDE_DIRS COMPILE_DEFINITIONS COMPILE_OPTIONS SYSTEM_INCLUDE_DIRS)
 
   cmake_parse_arguments("" "${option_args}" "${single_args}" "${multi_args}"
                         ${ARGN})
@@ -432,6 +436,8 @@ function(fcppt_utils_add_example example_dir path_name)
   target_compile_options(${full_example_name} PRIVATE ${_COMPILE_OPTIONS})
 
   target_include_directories(${full_example_name} PRIVATE ${_INCLUDE_DIRS})
+
+  target_include_directories(${full_example_name} SYSTEM PRIVATE ${_SYSTEM_INCLUDE_DIRS})
 
   if(NOT _IS_C)
     fcppt_utils_set_target_compiler_flags(${full_example_name})

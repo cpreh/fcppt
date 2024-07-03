@@ -13,16 +13,19 @@ fcppt_utils_link_target(fcppt_options)
 # IS_C: Optional argument. If set, the test will be a C test (not C++).
 # COMPILE_DEFINITIONS: A list of compile definitions.
 # LINK_LIBS: A list of extra link targets.
+# INCLUDE_DIRS: A list of extra include directories.
 function(add_fcppt_example path_name)
   set(option_args IS_C)
 
-  set(multi_args LINK_LIBS COMPILE_DEFINITIONS)
+  set(multi_args LINK_LIBS COMPILE_DEFINITIONS INCLUDE_DIRS SYSTEM_INCLUDE_DIRS)
 
   cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
   if(_IS_C)
     set(is_c IS_C)
   endif()
+
+  list(APPEND _INCLUDE_DIRS ${FCPPT_UTILS_PROJECT_BINARY_DIR}/include)
 
   fcppt_utils_add_example(
     ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/examples
@@ -33,7 +36,9 @@ function(add_fcppt_example path_name)
     COMPILE_DEFINITIONS
     ${_COMPILE_DEFINITIONS}
     INCLUDE_DIRS
-    ${FCPPT_UTILS_PROJECT_BINARY_DIR}/include)
+    ${_INCLUDE_DIRS}
+    SYSTEM_INCLUDE_DIRS
+    ${_SYSTEM_INCLUDE_DIRS})
 endfunction()
 
 add_fcppt_example(algorithm LINK_LIBS fcppt_core_interface)

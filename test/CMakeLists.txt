@@ -8,11 +8,12 @@ include(CMakeParseArguments)
 #          This is useful for tests that contain static_asserts only.
 # COMPILE_OPTIONS: A list of extra compile options.
 # INCLUDE_DIRS: A list of extra include directories.
+# INCLUDE_DIRS: A list of extra system include directories.
 # LINK_LIBS: A list of extra link targets.
 function(add_fcppt_test path_name)
   set(option_args NO_CODE)
 
-  set(multi_args COMPILE_OPTIONS INCLUDE_DIRS LINK_LIBS)
+  set(multi_args COMPILE_OPTIONS INCLUDE_DIRS LINK_LIBS SYSTEM_INCLUDE_DIRS)
 
   cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
@@ -22,10 +23,8 @@ function(add_fcppt_test path_name)
     list(APPEND _LINK_LIBS fcppt_catch_interface)
   endif()
 
-  set(test_dir ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test)
-
   fcppt_utils_add_test(
-    ${test_dir}
+    ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test
     "${path_name}"
     ${no_code}
     LINK_LIBS
@@ -33,6 +32,8 @@ function(add_fcppt_test path_name)
     fcppt_core_interface
     INCLUDE_DIRS
     ${_INCLUDE_DIRS}
+    SYSTEM_INCLUDE_DIRS
+    ${_SYSTEM_INCLUDE_DIRS}
     COMPILE_OPTIONS
     ${_COMPILE_OPTIONS})
 endfunction()
@@ -45,10 +46,6 @@ fcppt_utils_link_target(fcppt_log)
 
 fcppt_utils_link_target(fcppt_options)
 
-if(ENABLE_BOOST)
-  set(FCPPT_TEST_BOOST_INTERFACE fcppt_boost_interface)
-endif()
-
 add_fcppt_test(absurd NO_CODE)
 
 add_subdirectory(algorithm)
@@ -58,7 +55,7 @@ add_subdirectory(array)
 add_fcppt_test(bit)
 
 if(ENABLE_BOOST)
-  add_fcppt_test(boost_units_value LINK_LIBS fcppt_boost_interface)
+  add_fcppt_test(boost_units_value LINK_LIBS fcppt_boost_interface SYSTEM_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 endif()
 
 add_subdirectory(cast)
@@ -114,7 +111,7 @@ add_fcppt_test(is_unique_ptr NO_CODE)
 add_fcppt_test(literal)
 
 if(ENABLE_BOOST)
-  add_fcppt_test(literal_boost_units LINK_LIBS ${FCPPT_TEST_BOOST_INTERFACE})
+  add_fcppt_test(literal_boost_units LINK_LIBS fcppt_boost_interface SYSTEM_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 endif()
 
 add_subdirectory(log)
@@ -168,7 +165,7 @@ add_fcppt_test(reference_to_const)
 add_fcppt_test(runtime_index)
 
 if(ENABLE_BOOST)
-  add_fcppt_test(scoped_state_machine LINK_LIBS fcppt_boost_interface)
+  add_fcppt_test(scoped_state_machine LINK_LIBS fcppt_boost_interface SYSTEM_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 endif()
 
 add_subdirectory(shared_ptr)

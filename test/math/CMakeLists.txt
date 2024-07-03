@@ -44,5 +44,5 @@ add_fcppt_math_test(static_storage)
 add_subdirectory(vector)
 
 if(ENABLE_BOOST)
-  add_fcppt_math_test(units LINK_LIBS fcppt_boost_interface)
+  add_fcppt_math_test(units LINK_LIBS fcppt_boost_interface SYSTEM_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 endif()

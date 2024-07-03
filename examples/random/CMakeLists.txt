@@ -4,8 +4,7 @@ function(add_fcppt_random_example example_name)
 endfunction()
 
 if(ENABLE_BOOST)
-  add_fcppt_random_example(complex INCLUDE_DIRS ${Boost_INCLUDE_DIRS} LINK_LIBS
-                           fcppt_boost_interface fcppt_core_interface)
+  add_fcppt_random_example(complex LINK_LIBS fcppt_boost_interface fcppt_core_interface SYSTEM_INCLUDE_DIRS ${Boost_INCLUDE_DIRS})
 endif()
 
 add_fcppt_random_example(enum LINK_LIBS fcppt_core_interface)
