@@ -230,6 +230,10 @@ function(make_fcppt_library lib_name cur_files)
   cmake_parse_arguments("" "${option_args}" "${single_args}" "${multi_args}"
                         ${ARGN})
 
+  if(${_HAS_IMPL_DIR})
+    set(has_impl_dir HAS_IMPL_DIR)
+  endif()
+
   string(TOUPPER ${lib_name} lib_name_UPPER)
 
   if("${_SYMBOL_NAME}" STREQUAL "")
@@ -267,6 +271,7 @@ function(make_fcppt_library lib_name cur_files)
       "${cur_files}"
       VARIANT
       "STATIC"
+      ${has_impl_dir}
       FCPPT_DEPS
       ${REAL_FCPPT_DEPS}
       TRANSITIVE_FCPPT_DEPS
