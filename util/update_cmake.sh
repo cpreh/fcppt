@@ -9,9 +9,7 @@ toupper()
 
 update_sublibrary()
 {
-	local sublibrary="$1"
-	local upperpath=$(toupper "${sublibrary}")
-	local libdir=libs/"${sublibrary}"
+	local libdir=libs/"$1"
 
 	update_cmake.sh \
 		"${libdir}"/files.txt \
