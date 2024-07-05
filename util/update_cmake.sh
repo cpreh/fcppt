@@ -2,11 +2,6 @@
 
 set -e -u
 
-toupper()
-{
-	echo $(tr 'a-z' 'A-Z' <<< "$1")
-}
-
 update_sublibrary()
 {
 	local libdir=libs/"$1"
