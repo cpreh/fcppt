@@ -113,7 +113,7 @@ function(make_fcppt_library_base targetname cur_files)
       TRANSITIVE_COMPILE_DEFINITIONS
       HEADER_ONLY_EXCEPTIONS)
 
-  cmake_parse_arguments("" "${HAS_IMPL_DIR}" "${single_args}" "${multi_args}"
+  cmake_parse_arguments("" "${option_args}" "${single_args}" "${multi_args}"
                         ${ARGN})
 
   fcppt_utils_append_source_dir_and_make_groups(
