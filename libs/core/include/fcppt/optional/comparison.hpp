@@ -46,24 +46,6 @@ operator!=(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> cons
   return !(_a == _b);
 }
 
-/**
-\brief Compares two optionals lexicographically.
-
-\ingroup fcpptoptional
-
-Compares \a _a and \a _b lexicographically. If one or both of them are empty,
-returns <code>_a.has_value() < _b.has_value()</code>, otherwise returns
-<code>_a.get_unsafe() < _b.get_unsafe()</code>.
-
-TODO(concepts)
-*/
-template <typename T>
-[[nodiscard]] bool operator<(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
-{
-  return _a.has_value() && _b.has_value() ? _a.get_unsafe() < _b.get_unsafe()
-                                          : _a.has_value() < _b.has_value();
-}
-
 }
 
 #endif
