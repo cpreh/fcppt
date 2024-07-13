@@ -34,3 +34,6 @@ TEST_CASE("variant equal", "[variant]")
 
   CHECK(fcppt::variant::type_info(v1) == fcppt::variant::type_info(v2));
 }
+
+// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+FCPPT_CATCH_END
