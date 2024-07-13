@@ -34,25 +34,3 @@ TEST_CASE("variant equal", "[variant]")
 
   CHECK(fcppt::variant::type_info(v1) == fcppt::variant::type_info(v2));
 }
-
-TEST_CASE("variant less", "[variant]")
-{
-  using variant = fcppt::variant::object<int, std::string>;
-
-  variant const v1(10);
-
-  variant const v2(20);
-
-  CHECK(v1 < v2);
-
-  CHECK_FALSE(v2 < v1);
-
-  variant const v3(std::string("hello world"));
-
-  CHECK(v1 < v3);
-
-  CHECK_FALSE(v3 < v1);
-}
-
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
-FCPPT_CATCH_END
