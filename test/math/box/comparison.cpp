@@ -26,10 +26,6 @@ TEST_CASE("math::box comparison", "[math],[box]")
   CHECK(
       box_type(box_type::vector(1, 2), box_type::dim(3, 4)) !=
       box_type(box_type::vector(5, 2), box_type::dim(3, 4)));
-
-  CHECK(
-      box_type(box_type::vector(1, 2), box_type::dim(3, 4)) <
-      box_type(box_type::vector(5, 2), box_type::dim(3, 4)));
 }
 
 // NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

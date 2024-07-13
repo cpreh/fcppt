@@ -10,9 +10,6 @@
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::math::box
 {
@@ -38,18 +35,6 @@ inline bool
 operator!=(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, N> const &_b)
 {
   return !(_a == _b);
-}
-
-/**
-\brief Compare two boxes lexicographically
-
-\ingroup fcpptmathbox
-*/
-template <typename T, fcppt::math::size_type N>
-inline bool
-operator<(fcppt::math::box::object<T, N> const &_a, fcppt::math::box::object<T, N> const &_b)
-{
-  return std::make_pair(_a.pos(), _a.size()) < std::make_pair(_b.pos(), _b.size());
 }
 
 }
