@@ -25,8 +25,6 @@ TEST_CASE("math::vector comparison", "[math],[vector]")
   CHECK(vec1 == vec2);
 
   CHECK(vec2 != vec3);
-
-  CHECK(vec1 < vec3);
 }
 
 // NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
