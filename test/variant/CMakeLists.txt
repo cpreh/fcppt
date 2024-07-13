@@ -21,6 +21,8 @@ add_fcppt_variant_test(dynamic_cast_types NO_CODE)
 
 add_fcppt_variant_test(from_list NO_CODE)
 
+add_fcppt_variant_test(hash)
+
 add_fcppt_variant_test(holds_type)
 
 add_fcppt_variant_test(match)
