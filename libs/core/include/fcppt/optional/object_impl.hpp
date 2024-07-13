@@ -41,7 +41,19 @@ T const &fcppt::optional::object<T>::get_unsafe() const
 template <typename T>
 bool fcppt::optional::object<T>::has_value() const
 {
-  return impl_.has_value();
+  return this->impl_.has_value();
+}
+
+template <typename T>
+typename fcppt::optional::object<T>::std_type &fcppt::optional::object<T>::impl()
+{
+  return this->impl_;
+}
+
+template <typename T>
+typename fcppt::optional::object<T>::std_type const &fcppt::optional::object<T>::impl() const
+{
+  return this->impl_;
 }
 
 #endif

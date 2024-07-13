@@ -1151,6 +1151,7 @@ libs/core/include/fcppt/optional/reference_fwd.hpp
 libs/core/include/fcppt/optional/reference.hpp
 libs/core/include/fcppt/optional/reference_type.hpp
 libs/core/include/fcppt/optional/sequence.hpp
+libs/core/include/fcppt/optional/std_hash.hpp
 libs/core/include/fcppt/optional_std_string_fwd.hpp
 libs/core/include/fcppt/optional_std_string.hpp
 libs/core/include/fcppt/optional_string_fwd.hpp

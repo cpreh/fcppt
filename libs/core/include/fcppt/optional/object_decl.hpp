@@ -43,6 +43,8 @@ class object
 public:
   static_assert(fcppt::concepts::move_constructible<T>);
 
+  using std_type = std::optional<T>;
+
   /**
   \brief The value type.
   */
@@ -84,8 +86,11 @@ public:
   */
   [[nodiscard]] bool has_value() const;
 
+  [[nodiscard]] std_type &impl();
+
+  [[nodiscard]] std_type const &impl() const;
 private:
-  std::optional<T> impl_;
+  std_type impl_;
 };
 
 FCPPT_PP_POP_WARNING

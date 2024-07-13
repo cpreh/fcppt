@@ -29,6 +29,8 @@ add_fcppt_optional_test(from LINK_LIBS fcppt_catch_interface)
 
 add_fcppt_optional_test(from_pointer)
 
+add_fcppt_optional_test(hash)
+
 add_fcppt_optional_test(join LINK_LIBS fcppt_catch_interface)
 
 add_fcppt_optional_test(make)
