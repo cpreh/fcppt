@@ -9,6 +9,8 @@ add_fcppt_math_dim_test(at)
 
 add_fcppt_math_dim_test(binary_map)
 
+add_fcppt_math_dim_test(comparison)
+
 add_fcppt_math_dim_test(componentwise_equal)
 
 add_fcppt_math_dim_test(fill)
