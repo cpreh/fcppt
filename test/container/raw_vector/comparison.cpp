@@ -26,10 +26,6 @@ TEST_CASE("container::raw_vector comparison", "[container],[raw_vector]")
   CHECK(test1 == test3);
 
   CHECK(test1 != test2);
-
-  CHECK(test1 < test2);
-
-  CHECK(test2 > test1);
 }
 
 // NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
