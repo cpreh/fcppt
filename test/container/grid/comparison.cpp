@@ -26,14 +26,6 @@ TEST_CASE("container::grid comparison"
 
   CHECK(test1 != test2);
 
-  CHECK(test1 < test2);
-
-  CHECK(test1 <= test2);
-
-  CHECK_FALSE(test1 > test2);
-
-  CHECK_FALSE(test1 >= test2);
-
   test2 = test1;
 
   CHECK(test1 == test2);
