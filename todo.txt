@@ -1,0 +1,5 @@
+- Look for better codecvt implementation
+- Replace static_assert/enable_if by Concepts if possible
+- Use = default for operator==
+- Use C++20's ranges (not implemented in libc++)
+- Allow std::uint8_t enums in random distributions
