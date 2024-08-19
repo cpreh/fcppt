@@ -488,6 +488,7 @@ libs/core/include/fcppt/enum/make_range.hpp
 libs/core/include/fcppt/enum/make_range_start_end.hpp
 libs/core/include/fcppt/enum/make_range_start.hpp
 libs/core/include/fcppt/enum/max_value.hpp
+libs/core/include/fcppt/enum/max_value_impl.hpp
 libs/core/include/fcppt/enum/min_value.hpp
 libs/core/include/fcppt/enum/names_array_fwd.hpp
 libs/core/include/fcppt/enum/names_array.hpp

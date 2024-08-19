@@ -7,6 +7,7 @@
 #define FCPPT_ENUM_MAX_VALUE_HPP_INCLUDED
 
 #include <fcppt/enum/is_object.hpp>
+#include <fcppt/enum/max_value_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -14,21 +15,21 @@
 namespace fcppt::enum_
 {
 /**
-\brief The maximum enumerator in an enum
+\brief The maximum enumerator in an enum.
 
 This class defines the maximum enumerator (the enumerator with the biggest
 integral value) in the enum denoted by \a Type. The default behaviour is to use
-<code>Type::fcppt_maximum</code>. Specialize this class to change that.
+<code>Type::fcppt_maximum</code>. Specialize <code>fcppt::enum_::max_value_impl</code> to change that.
 
 \ingroup fcpptenum
 
 \note Unfortunately, there is no way to automatically retrieve the maximum
 enumerator in an enum in C++.
 
-\tparam Type Must be an enum type
+\tparam Type Must be an enum type.
 */
 template <typename Type, typename = std::enable_if_t<fcppt::enum_::is_object<Type>::value>>
-using max_value = std::integral_constant<Type, Type::fcppt_maximum>;
+using max_value = typename fcppt::enum_::max_value_impl<Type>::type;
 
 }
 
