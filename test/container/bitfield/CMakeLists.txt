@@ -13,6 +13,8 @@ add_fcppt_container_bitfield_test(is_subset_eq)
 
 add_fcppt_container_bitfield_test(large)
 
+add_fcppt_container_bitfield_test(make_internal_type NO_CODE)
+
 add_fcppt_container_bitfield_test(object)
 
 add_fcppt_container_bitfield_test(operators LINK_LIBS "${fcppt_core_TARGET}")

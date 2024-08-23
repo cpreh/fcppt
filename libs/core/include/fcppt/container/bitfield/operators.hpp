@@ -39,12 +39,15 @@ fcppt::container::bitfield::object<ElementType, InternalType> &operator|=(
     fcppt::container::bitfield::object<ElementType, InternalType> &_left,
     fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
+  using internal_type =
+      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+
   std::transform(
       _left.array().begin(),
       _left.array().end(),
       _right.array().begin(),
       _left.array().begin(),
-      [](InternalType const _arg1, InternalType const _arg2) { return _arg1 | _arg2; });
+      [](internal_type const _arg1, internal_type const _arg2) { return _arg1 | _arg2; });
 
   return _left;
 }
@@ -59,12 +62,15 @@ fcppt::container::bitfield::object<ElementType, InternalType> &operator&=(
     fcppt::container::bitfield::object<ElementType, InternalType> &_left,
     fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
+  using internal_type =
+      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+
   std::transform(
       _left.array().begin(),
       _left.array().end(),
       _right.array().begin(),
       _left.array().begin(),
-      [](InternalType const _arg1, InternalType const _arg2) { return _arg1 & _arg2; });
+      [](internal_type const _arg1, internal_type const _arg2) { return _arg1 & _arg2; });
 
   return _left;
 }
@@ -79,12 +85,15 @@ fcppt::container::bitfield::object<ElementType, InternalType> &operator^=(
     fcppt::container::bitfield::object<ElementType, InternalType> &_left,
     fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
+  using internal_type =
+      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+
   std::transform(
       _left.array().begin(),
       _left.array().end(),
       _right.array().begin(),
       _left.array().begin(),
-      [](InternalType const _arg1, InternalType const _arg2) { return _arg1 ^ _arg2; });
+      [](internal_type const _arg1, internal_type const _arg2) { return _arg1 ^ _arg2; });
 
   return _left;
 }
@@ -98,11 +107,14 @@ template <typename ElementType, typename InternalType>
 fcppt::container::bitfield::object<ElementType, InternalType>
 operator~(fcppt::container::bitfield::object<ElementType, InternalType> _field)
 {
+  using internal_type =
+      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+
   std::transform(
       _field.array().begin(),
       _field.array().end(),
       _field.array().begin(),
-      [](InternalType const _arg) { return ~_arg; });
+      [](internal_type const _arg) { return ~_arg; });
 
   return _field;
 }

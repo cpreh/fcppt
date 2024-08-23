@@ -9,11 +9,13 @@
 namespace fcppt::container::bitfield
 {
 /**
-\brief The default (unsigned) type to hold the bitfield's bits.
+\brief Tells a bitfield to choose an internal type.
+
+\ingroup fcpptcontainerbitfield
 
 \see fcppt::container::bitfield::array
 */
-using default_internal_type = unsigned;
+struct default_internal_type{};
 
 }
 

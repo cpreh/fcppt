@@ -9,9 +9,11 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/array/size.hpp>
 #include <fcppt/container/bitfield/array.hpp>
+#include <fcppt/container/bitfield/default_internal_type.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/container/bitfield/detail/make_internal_type.hpp>
 #include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/size.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -38,20 +40,21 @@ class object
 {
 public:
   static_assert(fcppt::enum_::is_object<ElementType>::value, "ElementType must be an enum");
-  static_assert(std::is_unsigned_v<InternalType>, "InternalType must be unsigned");
 
-  /**
-  \brief Typedef to <code>ElementType</code>.
-  */
   using element_type = ElementType;
 
   /**
-  \brief Typedef to the internal storage type (template parameter <code>InternalType</code>
+  \brief The value type of the underlying array.
   */
-  using internal_type = InternalType;
+  using internal_type = std::conditional_t<
+      std::is_same_v<fcppt::container::bitfield::default_internal_type, InternalType>,
+      fcppt::container::bitfield::detail::make_internal_type<ElementType>,
+      InternalType>;
+
+  static_assert(std::is_unsigned_v<internal_type>, "internal_type must be unsigned");
 
   /**
-  \brief The number of elements.
+  \brief The number of array elements.
   */
   using static_size = fcppt::enum_::size<element_type>;
 
@@ -126,10 +129,6 @@ public:
 
   /**
   \brief Sets the specified bit to true/false.
-
-  \param where Which bit to set.
-
-  \param value The value to set the bit to.
   */
   void set(ElementType where, value_type value);
 

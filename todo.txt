@@ -3,4 +3,3 @@
 - Use = default for operator==
 - Use C++20's ranges (not implemented in libc++)
 - Allow std::uint8_t enums in random distributions
-- Choose underlying types for container::bitfield by using std::underlying_type
