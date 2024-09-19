@@ -6,9 +6,15 @@
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-macros)
+
+namespace
+{
 
 //! [visibility_macros]
 #include <fcppt/symbol/export.hpp>
@@ -172,4 +178,13 @@ void mylib::template_class<T>::some_function()
 
 template class FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION mylib::template_class<int>;
 //! [visibility_define_template_class]
-int main() {}
+
+}
+
+int main()
+{
+  mylib::func();
+  std::cout << mylib::some_constant << '\n';
+  mylib::template_function(0);
+  mylib::template_class<int>{}.some_function();
+}

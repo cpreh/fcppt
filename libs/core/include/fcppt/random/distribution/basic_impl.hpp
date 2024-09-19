@@ -14,34 +14,34 @@
 
 template <typename Parameters>
 fcppt::random::distribution::basic<Parameters>::basic(param_type const &_parameters)
-    : distribution_(_parameters.convert_from())
+    : distribution_{_parameters.convert_from()}
 {
 }
 
 template <typename Parameters>
 template <typename T1, typename T2>
 fcppt::random::distribution::basic<Parameters>::basic(T1 const &_t1, T2 const &_t2)
-    : distribution_(param_type(_t1, _t2).convert_from())
+    : distribution_{param_type{_t1, _t2}.convert_from()}
 {
 }
 
 template <typename Parameters>
 void fcppt::random::distribution::basic<Parameters>::reset()
 {
-  distribution_.reset();
+  this->distribution_.reset();
 }
 
 template <typename Parameters>
 typename fcppt::random::distribution::basic<Parameters>::param_type
 fcppt::random::distribution::basic<Parameters>::param() const
 {
-  return Parameters::convert_to(distribution_.param());
+  return Parameters::convert_to(this->distribution_.param());
 }
 
 template <typename Parameters>
 void fcppt::random::distribution::basic<Parameters>::param(param_type const &_parameters)
 {
-  distribution_.param(_parameters.convert_from());
+  this->distribution_.param(_parameters.convert_from());
 }
 
 template <typename Parameters>
@@ -49,7 +49,7 @@ template <typename Rng>
 typename fcppt::random::distribution::basic<Parameters>::result_type
 fcppt::random::distribution::basic<Parameters>::operator()(Rng &_rng)
 {
-  return this->make_result(distribution_(_rng));
+  return basic::make_result(this->distribution_(_rng));
 }
 
 template <typename Parameters>
@@ -57,28 +57,28 @@ template <typename Rng>
 typename fcppt::random::distribution::basic<Parameters>::result_type
 fcppt::random::distribution::basic<Parameters>::operator()(Rng &_rng, param_type const &_parameters)
 {
-  return this->make_result(distribution_(_rng), _parameters.convert_from());
+  return basic::make_result(this->distribution_(_rng), _parameters.convert_from());
 }
 
 template <typename Parameters>
 typename fcppt::random::distribution::basic<Parameters>::result_type
 fcppt::random::distribution::basic<Parameters>::min() const
 {
-  return this->make_result(distribution_.min());
+  return basic::make_result(this->distribution_.min());
 }
 
 template <typename Parameters>
 typename fcppt::random::distribution::basic<Parameters>::result_type
 fcppt::random::distribution::basic<Parameters>::max() const
 {
-  return this->make_result(distribution_.max());
+  return basic::make_result(this->distribution_.max());
 }
 
 template <typename Parameters>
 typename fcppt::random::distribution::basic<Parameters>::wrapped_distribution const &
 fcppt::random::distribution::basic<Parameters>::distribution() const
 {
-  return distribution_;
+  return this->distribution_;
 }
 
 template <typename Parameters>

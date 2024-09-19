@@ -43,9 +43,9 @@ T determinant(fcppt::math::matrix::object<T, N, N, S> const &_matrix)
 
         constexpr fcppt::math::size_type const column{0U};
 
-        return _sum + coeff * fcppt::math::matrix::at_r_c<Row, column>(_matrix) *
+        return _sum + (coeff * fcppt::math::matrix::at_r_c<Row, column>(_matrix) *
                           fcppt::math::matrix::detail::determinant(
-                              fcppt::math::matrix::delete_row_and_column<Row, column>(_matrix));
+                              fcppt::math::matrix::delete_row_and_column<Row, column>(_matrix)));
       });
 }
 

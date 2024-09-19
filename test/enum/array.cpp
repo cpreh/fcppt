@@ -7,6 +7,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/array_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
@@ -26,11 +27,10 @@ enum class my_enum : std::uint8_t
 {
   val1,
   val2,
-  val3,
-  fcppt_maximum = val3
+  val3
 };
-
 }
+FCPPT_ENUM_DEFINE_MAX_VALUE(my_enum::val3)
 
 namespace fcppt::enum_
 {
@@ -57,7 +57,7 @@ struct to_string_impl<my_enum>
 }
 
 FCPPT_CATCH_BEGIN
-// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
@@ -83,5 +83,5 @@ TEST_CASE("enum::array", "[enum]")
 
 FCPPT_PP_POP_WARNING
 
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

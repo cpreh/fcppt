@@ -6,6 +6,7 @@
 #ifndef FCPPT_LOG_LEVEL_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_HPP_INCLUDED
 
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/log/level_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <cstdint>
@@ -70,13 +71,11 @@ enum class level : std::uint8_t
   The fatal log level should be used whenever an error occurs that cannot
   be handled.
   */
-  fatal,
-  /**
-  \brief The maximum value of the enumeration
-  */
-  fcppt_maximum = fatal
+  fatal
 };
 
 }
+
+FCPPT_ENUM_DEFINE_MAX_VALUE(fcppt::log::level::fatal)
 
 #endif

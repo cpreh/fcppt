@@ -6,6 +6,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/from_int.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
@@ -19,14 +20,13 @@ namespace
 enum class test_enum : std::uint8_t
 {
   enum1,
-  enum2,
-  fcppt_maximum = enum2
+  enum2
 };
-
 }
+FCPPT_ENUM_DEFINE_MAX_VALUE(test_enum::enum2)
 
 FCPPT_CATCH_BEGIN
-// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("enum::from_int", "[enum]")
 {
@@ -35,5 +35,5 @@ TEST_CASE("enum::from_int", "[enum]")
   CHECK(fcppt::enum_::from_int<test_enum>(2U) == fcppt::optional::object<test_enum>{});
 }
 
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

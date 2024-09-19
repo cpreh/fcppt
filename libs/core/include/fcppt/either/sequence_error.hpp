@@ -62,7 +62,7 @@ template <
   return fcppt::algorithm::fold_break(
       std::forward<Sequence>(_sequence),
       either_type{fcppt::either::no_error{}},
-      [&_function](auto &&_element, either_type)
+      [&_function](auto &&_element, either_type const &)
       {
         using inner_type = either_type;
         return fcppt::either::match(

@@ -21,17 +21,16 @@
 namespace
 {
 using int2_grid = fcppt::container::grid::object<int, 2>;
-
 }
 
 FCPPT_CATCH_BEGIN
-// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("container::grid init reference", "[container],[grid]")
 {
   int2_grid const test(int2_grid::dim(10U, 20U), 42);
 
-  CHECK(std::count(test.begin(), test.end(), 42) == 200);
+  CHECK(std::count(test.begin(), test.end(), 42) == 200); // NOLINT(boost-use-ranges)
 }
 
 TEST_CASE("container::grid index 2d", "[container],[grid]")
@@ -48,7 +47,7 @@ TEST_CASE("container::grid index 2d", "[container],[grid]")
     {
       CHECK(
           test.get_unsafe(int2_grid::pos(x, y)) ==
-          fcppt::cast::size<int2_grid::value_type>(fcppt::cast::to_signed(x + y * 5)));
+          fcppt::cast::size<int2_grid::value_type>(fcppt::cast::to_signed(x + (y * 5))));
     }
   }
 }
@@ -72,7 +71,7 @@ TEST_CASE("container::grid index 3d", "[container],[grid]")
         CHECK(
             test.get_unsafe(int3_grid::pos(x, y, z)) ==
             fcppt::cast::size<int3_grid::value_type>(
-                fcppt::cast::to_signed(x + y * 5 + z * 5 * 10)));
+                fcppt::cast::to_signed(x + (y * 5) + (z * 5 * 10))));
       }
     }
   }
@@ -82,7 +81,7 @@ TEST_CASE("container::grid const data", "[container],[grid]")
 {
   int2_grid const test(int2_grid::dim(5U, 2U), 42);
 
-  CHECK(std::count(test.begin(), test.end(), 42) == 10);
+  CHECK(std::count(test.begin(), test.end(), 42) == 10); // NOLINT(boost-use-ranges)
 }
 
 TEST_CASE("container::grid::contents", "[container],[grid]")
@@ -134,5 +133,5 @@ TEST_CASE("container::grid init", "[container],[grid]")
   CHECK(grid.get_unsafe(pos(1U, 2U)) == 2);
 }
 
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

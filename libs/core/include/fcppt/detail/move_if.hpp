@@ -21,7 +21,7 @@ struct move_if<false>
   template <typename Arg>
   static Arg &execute(Arg &_arg)
   {
-    return _arg;
+    return _arg; // NOLINT(bugprone-return-const-ref-from-parameter)
   }
 };
 

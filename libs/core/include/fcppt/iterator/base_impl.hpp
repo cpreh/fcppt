@@ -56,7 +56,7 @@ template <typename Types>
 typename fcppt::iterator::base<Types>::pointer fcppt::iterator::base<Types>::operator->() const
 {
   static_assert(
-      std::is_reference<reference>::value,
+      std::is_reference_v<reference>,
       "reference must be a real reference for operator-> to make sense");
 
   return &*(*this);

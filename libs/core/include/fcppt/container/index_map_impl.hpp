@@ -16,7 +16,7 @@ fcppt::container::index_map<T, A>::index_map() : impl_()
 
 template <typename T, typename A>
 typename fcppt::container::index_map<T, A>::reference
-fcppt::container::index_map<T, A>::get(size_type const _index, insert_function const _insert)
+fcppt::container::index_map<T, A>::get(size_type const _index, insert_function const &_insert)
 {
   if (_index >= impl_.size())
   {

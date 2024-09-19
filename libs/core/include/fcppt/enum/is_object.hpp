@@ -6,7 +6,6 @@
 #ifndef FCPPT_ENUM_IS_OBJECT_HPP_INCLUDED
 #define FCPPT_ENUM_IS_OBJECT_HPP_INCLUDED
 
-#include <fcppt/enum/has_maximum.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -18,7 +17,7 @@ namespace fcppt::enum_
 \brief Checks if a type is usable with fcppt.enum.
 */
 template<typename Enum>
-using is_object = std::conjunction<std::is_enum<Enum>,fcppt::enum_::has_maximum<Enum>>;
+using is_object = std::is_enum<Enum>;
 }
 
 #endif

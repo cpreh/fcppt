@@ -20,7 +20,7 @@ namespace fcppt
 struct boost_units_value
 {
   template <typename Unit, typename Type>
-  Type operator()(boost::units::quantity<Unit, Type> const _unit) const
+  Type operator()(boost::units::quantity<Unit, Type> const &_unit) const
   {
     return _unit.value();
   }

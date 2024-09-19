@@ -3,3 +3,7 @@
 - Use = default for operator==
 - Use C++20's ranges (not implemented in libc++)
 - Allow std::uint8_t enums in random distributions
+- Clean up fcppt::algorithm code to work with all ranges if possible
+- Remove fcppt::enum_::max_value_impl definition
+fcppt/test/container/grid/object.cpp:34:9: warning: use a boost version of this algorithm [boost-use-ranges]
+fcppt/test/container/grid/object.cpp:85:9: warning: use a boost version of this algorithm [boost-use-ranges]

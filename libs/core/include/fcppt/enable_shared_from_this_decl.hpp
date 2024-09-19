@@ -27,11 +27,11 @@ class enable_shared_from_this : public std::enable_shared_from_this<Type>
   using base = std::enable_shared_from_this<Type>;
 
 protected:
-  enable_shared_from_this();
+  enable_shared_from_this(); // NOLINT(bugprone-crtp-constructor-accessibility)
 
-  enable_shared_from_this(enable_shared_from_this const &);
+  enable_shared_from_this(enable_shared_from_this const &); // NOLINT(bugprone-crtp-constructor-accessibility)
 
-  enable_shared_from_this(enable_shared_from_this &&) noexcept;
+  enable_shared_from_this(enable_shared_from_this &&) noexcept; // NOLINT(bugprone-crtp-constructor-accessibility)
 
   enable_shared_from_this &operator=(enable_shared_from_this const &);
 

@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/mpl/list/enum_range_start_end.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,11 +18,10 @@ enum class my_enum : std::uint8_t
   test1,
   test2,
   test3,
-  test4,
-  fcppt_maximum = test4
+  test4
 };
-
 }
+FCPPT_ENUM_DEFINE_MAX_VALUE(my_enum::test4)
 
 int main()
 {

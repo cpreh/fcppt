@@ -23,7 +23,7 @@ struct loop_break_impl<Range, std::enable_if_t<fcppt::record::is_object<Range>::
   // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
   static void execute(Record &&_range, Body const &_body)
   {
-    fcppt::algorithm::loop_break_impl<typename std::remove_cvref_t<Record>::tuple>:: template execute(
+    fcppt::algorithm::loop_break_impl<typename std::remove_cvref_t<Record>::tuple>::execute(
         fcppt::move_if_rvalue<Record>(_range.impl()), _body);
   }
 };

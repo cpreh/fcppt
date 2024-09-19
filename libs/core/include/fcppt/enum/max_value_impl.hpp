@@ -6,6 +6,7 @@
 #ifndef FCPPT_ENUM_MAX_VALUE_IMPL_HPP_INCLUDED
 #define FCPPT_ENUM_MAX_VALUE_IMPL_HPP_INCLUDED
 
+#include <fcppt/enum/max_value_impl_fwd.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

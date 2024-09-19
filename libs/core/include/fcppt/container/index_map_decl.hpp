@@ -48,7 +48,7 @@ public:
   result of <code>insert()</code> is inserted. Note that \a insert might
   be called multiple times.
   */
-  [[nodiscard]] reference get(size_type index, insert_function insert);
+  [[nodiscard]] reference get(size_type index, insert_function const &insert);
 
   /**
   \brief Returns the element at an index or inserts new default-constructed one.

@@ -7,7 +7,6 @@
 #define FCPPT_ENUM_SIZE_HPP_INCLUDED
 
 #include <fcppt/cast/enum_to_int.hpp>
-#include <fcppt/enum/is_object.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,7 +29,7 @@ enumerators in an enum in C++.
 
 \tparam Type Must be an enum type
 */
-template <typename Type, typename = std::enable_if_t<fcppt::enum_::is_object<Type>::value>>
+template <typename Type>
 using size = std::integral_constant<
     fcppt::enum_::size_type<Type>,
     fcppt::cast::enum_to_int<fcppt::enum_::size_type<Type>>(fcppt::enum_::max_value<Type>::value) +

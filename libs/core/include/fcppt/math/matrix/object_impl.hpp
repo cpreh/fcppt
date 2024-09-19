@@ -98,14 +98,15 @@ template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typena
 typename fcppt::math::matrix::object<T, R, C, S>::reference
 fcppt::math::matrix::object<T, R, C, S>::get_unsafe(size_type const _j)
 {
-  return reference(typename reference::storage_type(storage_, _j, this->columns()));
+  return reference{typename reference::storage_type{this->storage_, _j, object::columns()}};
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
 typename fcppt::math::matrix::object<T, R, C, S>::const_reference
 fcppt::math::matrix::object<T, R, C, S>::get_unsafe(size_type const _j) const
 {
-  return const_reference(typename const_reference::storage_type(storage_, _j, this->columns()));
+  return const_reference{
+      typename const_reference::storage_type{this->storage_, _j, object::columns()}};
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>

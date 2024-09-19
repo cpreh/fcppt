@@ -20,7 +20,7 @@ using container_type = fcppt::container::buffer::object<int>;
 template class fcppt::container::buffer::object<int>;
 
 FCPPT_CATCH_BEGIN
-// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("container::buffer::object", "[container],[buffer]")
 {
@@ -85,5 +85,5 @@ TEST_CASE("container::buffer resize_write_area", "[container],[buffer]")
   CHECK(container[0] == 10);
 }
 
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

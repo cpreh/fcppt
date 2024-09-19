@@ -43,7 +43,7 @@ corner_points(fcppt::math::box::object<T, N> const &_box)
       [&_box, &corners]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
       {
         return _box.pos() +
-               fcppt::array::get<Index>(corners) * fcppt::math::dim::to_vector(_box.size());
+               (fcppt::array::get<Index>(corners) * fcppt::math::dim::to_vector(_box.size()));
       });
 }
 

@@ -16,7 +16,7 @@
 
 template <typename StoredType>
 fcppt::container::bitfield::proxy<StoredType>::proxy(StoredType &_array, size_type const _pos)
-    : array_(_array), pos_(_pos)
+    : array_{_array}, pos_{_pos}
 {
 }
 
@@ -66,11 +66,11 @@ fcppt::container::bitfield::proxy<StoredType> &
 fcppt::container::bitfield::proxy<StoredType>::operator=(
     fcppt::container::bitfield::value_type const _value)
 {
-  size_type const index(this->array_offset(pos_));
+  size_type const index{proxy::array_offset(this->pos_)};
 
-  size_type const bit(this->bit_offset(pos_));
+  size_type const bit{proxy::bit_offset(this->pos_)};
 
-  mask_type const mask(this->bit_mask(bit));
+  mask_type const mask{proxy::bit_mask(bit)};
 
   if (_value)
   {
@@ -89,7 +89,8 @@ fcppt::container::bitfield::proxy<StoredType>::operator fcppt::container::bitfie
     const
 {
   return fcppt::bit::test(
-      array_->get_unsafe(this->array_offset(pos_)), this->bit_mask(this->bit_offset(pos_)));
+      array_->get_unsafe(proxy::array_offset(this->pos_)),
+      proxy::bit_mask(proxy::bit_offset(this->pos_)));
 }
 
 #endif

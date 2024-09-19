@@ -23,7 +23,7 @@ Every type that is used as an element of an #fcppt::intrusive::list must derive 
 \tparam Type The derived type.
 */
 template <typename Type>
-class base
+class base // NOLINT(bugprone-crtp-constructor-accessibility)
 {
   FCPPT_NONCOPYABLE(base);
 
@@ -33,9 +33,9 @@ public:
   /**
   \brief Inserts the element at the back of a list.
   */
-  explicit base(list_type &);
+  explicit base(list_type &); // NOLINT(bugprone-crtp-constructor-accessibility)
 
-  base(base &&) noexcept;
+  base(base &&) noexcept; // NOLINT(bugprone-crtp-constructor-accessibility)
 
   base &operator=(base &&) noexcept;
 

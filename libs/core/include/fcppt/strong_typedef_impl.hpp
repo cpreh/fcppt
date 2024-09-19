@@ -14,7 +14,14 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, typename Tag>
-constexpr fcppt::strong_typedef<T, Tag>::strong_typedef(T _value) noexcept(
+constexpr fcppt::strong_typedef<T, Tag>::strong_typedef(T const &_value) noexcept(
+    std::is_nothrow_copy_constructible_v<T>)
+    : value_{_value}
+{
+}
+
+template <typename T, typename Tag>
+constexpr fcppt::strong_typedef<T, Tag>::strong_typedef(T &&_value) noexcept(
     std::is_nothrow_move_constructible_v<T>)
     : value_{std::move(_value)}
 {

@@ -14,7 +14,7 @@
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
-// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("math::vector::null", "[math],[vector]")
 {
@@ -23,5 +23,5 @@ TEST_CASE("math::vector::null", "[math],[vector]")
   CHECK(fcppt::math::vector::null<ui2_vector>() == ui2_vector(0U, 0U));
 }
 
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END

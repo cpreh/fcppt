@@ -5,6 +5,7 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/make_uniform_enum.hpp>
@@ -24,12 +25,12 @@ enum class my_enum // NOLINT(performance-enum-size)
 {
   value1,
   value2,
-  value3,
-  fcppt_maximum = value3
+  value3
 };
 // ![random_enum_definition]
 
 }
+FCPPT_ENUM_DEFINE_MAX_VALUE(my_enum::value3)
 
 int main()
 {

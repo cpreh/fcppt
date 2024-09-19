@@ -5,6 +5,7 @@
 
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/enum/array.hpp>
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/from_string.hpp>
 #include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/make_range.hpp>
@@ -24,17 +25,20 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-namespace
-{
 //! [enum_maximum]
+namespace {
 enum class myenum : std::uint8_t
 {
   val1,
-  val2,
-  fcppt_maximum = val2
+  val2
 };
+}
+
+FCPPT_ENUM_DEFINE_MAX_VALUE(myenum::val2)
 //! [enum_maximum]
 
+namespace
+{
 void print_enum(myenum const _value)
 {
   std::cout <<

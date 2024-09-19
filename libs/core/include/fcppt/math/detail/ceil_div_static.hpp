@@ -20,7 +20,7 @@ struct ceil_div_static
 
   static_assert(std::is_unsigned_v<Type>, "ceil_div only works on unsigned types");
 
-  using type = std::integral_constant<Type, Dividend / Divisor + (Dividend % Divisor ? 1U : 0U)>;
+  using type = std::integral_constant<Type, (Dividend / Divisor) + (Dividend % Divisor ? 1U : 0U)>;
 };
 
 }

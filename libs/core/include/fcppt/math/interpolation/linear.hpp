@@ -30,7 +30,7 @@ Value linear(Float const &_f, Value const &_v1, Value const &_v2)
       std::is_floating_point_v<Float>,
       "interpolation::linear can only be used on floating point types");
 
-  return (fcppt::literal<Float>(1) - _f) * _v1 + _f * _v2;
+  return ((fcppt::literal<Float>(1) - _f) * _v1) + (_f * _v2);
 }
 
 }

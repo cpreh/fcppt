@@ -31,7 +31,6 @@ void try_strong()
   // half(strong_int(10));
 }
 // ![literal_strong_typedef_1]
-}
 
 // ![literal_custom_type]
 
@@ -55,6 +54,7 @@ inline custom_type operator/(custom_type const _left, custom_type const _right)
   return custom_type::make(_left.get() / _right.get());
 }
 
+}
 }
 // ![literal_custom_type]
 

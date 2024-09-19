@@ -20,7 +20,7 @@ The default implementation is the identity on reference types.
 template <typename Arg, typename Enable>
 struct deref_impl
 {
-  static Arg &execute(Arg &_value) { return _value; }
+  static Arg &execute(Arg &_value) { return _value; } // NOLINT(bugprone-return-const-ref-from-parameter)
 };
 
 }

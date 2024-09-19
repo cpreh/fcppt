@@ -5,6 +5,7 @@
 
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdint>
 #include <iostream>
@@ -16,10 +17,13 @@ namespace
 enum class person_status : std::uint8_t
 {
   hungry,
-  tired,
-  fcppt_maximum = tired // note the extra field here
+  tired
 };
+}
+FCPPT_ENUM_DEFINE_MAX_VALUE(person_status::tired)
 
+namespace
+{
 using bitfield = fcppt::container::bitfield::object<person_status>;
 
 void output(bitfield const &_field)

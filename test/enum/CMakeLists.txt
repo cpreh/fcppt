@@ -14,8 +14,6 @@ add_fcppt_enum_test(array_output LINK_LIBS "${fcppt_core_TARGET}")
 add_fcppt_enum_test(from_int LINK_LIBS fcppt_catch_interface
                     "${fcppt_core_TARGET}")
 
-add_fcppt_enum_test(has_maximum NO_CODE)
-
 add_fcppt_enum_test(index_of_array LINK_LIBS fcppt_catch_interface)
 
 add_fcppt_enum_test(range)

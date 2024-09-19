@@ -8,7 +8,6 @@
 #include <cstdlib>
 #include <exception>
 #include <iostream>
-#include <ostream>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -18,7 +17,7 @@ try
 {
   {
     //! [join_strings]
-    std::vector<std::string> strings{"ab", "cd", "efg"};
+    std::vector<std::string> const strings{"ab", "cd", "efg"};
 
     std::string const result{fcppt::algorithm::join_strings(strings, ",")};
 

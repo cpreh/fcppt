@@ -34,7 +34,7 @@ fcppt::optional::object<T> ceil_div(T const &_dividend, T const &_divisor)
   T const zero{fcppt::literal<T>(0)};
 
   return fcppt::optional::make_if(_divisor != zero, [_dividend, _divisor] {
-    return _dividend / _divisor +
+    return (_dividend / _divisor) +
            (_dividend % _divisor ? fcppt::literal<T>(1) : fcppt::literal<T>(0));
   });
 }

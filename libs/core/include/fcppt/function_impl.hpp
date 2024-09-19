@@ -15,7 +15,7 @@
 
 template <typename Ret, typename... Args>
 template <typename F>
-fcppt::function<Ret(Args...)>::function(F _function) : impl_{_function}
+fcppt::function<Ret(Args...)>::function(F _function) : impl_{std::move(_function)}
 {
 }
 
@@ -23,7 +23,7 @@ template <typename Ret, typename... Args>
 template <typename F, typename Alloc>
 fcppt::function<Ret(Args...)>::function(
     std::allocator_arg_t const _allocator_arg, Alloc const &_alloc, F _function)
-    : impl_(_allocator_arg, _alloc, _function)
+    : impl_{_allocator_arg, _alloc, _function}
 {
 }
 

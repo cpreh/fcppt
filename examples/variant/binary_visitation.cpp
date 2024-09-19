@@ -9,7 +9,6 @@
 #include <cstdlib>
 #include <exception>
 #include <iostream>
-#include <ostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

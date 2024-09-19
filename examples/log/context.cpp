@@ -31,13 +31,13 @@ try
   // ![declare_root_logger]
   fcppt::log::name const root_name{FCPPT_TEXT("root")};
 
-  fcppt::log::object root_log{fcppt::make_ref(context), root_name};
+  fcppt::log::object const root_log{fcppt::make_ref(context), root_name};
   // ![declare_root_logger]
 
   // ![declare_child_logger]
   fcppt::log::name const child_name{FCPPT_TEXT("child")};
 
-  fcppt::log::object child_log{root_log, child_name};
+  fcppt::log::object const child_log{root_log, child_name};
   // ![declare_child_logger]
 
   // ![log_debug]

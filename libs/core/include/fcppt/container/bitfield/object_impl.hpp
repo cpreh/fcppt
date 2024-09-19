@@ -42,7 +42,7 @@ typename fcppt::container::bitfield::object<ElementType, InternalType>::const_re
 fcppt::container::bitfield::object<ElementType, InternalType>::operator[](
     ElementType const _index) const
 {
-  return const_reference(array_, this->to_index(_index));
+  return const_reference{this->array_, object::to_index(_index)};
 }
 
 template <typename ElementType, typename InternalType>
@@ -50,7 +50,7 @@ typename fcppt::container::bitfield::object<ElementType, InternalType>::referenc
 fcppt::container::bitfield::object<ElementType, InternalType>::operator[](
     ElementType const _index)
 {
-  return reference(array_, this->to_index(_index));
+  return reference{this->array_, object::to_index(_index)};
 }
 
 template <typename ElementType, typename InternalType>

@@ -64,11 +64,11 @@ rotation_axis(T const _angle, fcppt::math::vector::object<T, 3, S> const &_vecto
 
   return fcppt::math::matrix::static_<T, 4, 4>(
       fcppt::math::matrix::row(
-          cosx + x * x * cosxc, x * y * cosxc - z * sinx, x * z * cosxc + y * sinx, zero),
+          cosx + (x * x * cosxc), (x * y * cosxc) - (z * sinx), (x * z * cosxc) + (y * sinx), zero),
       fcppt::math::matrix::row(
-          x * y * cosxc + z * sinx, cosx + y * y * cosxc, y * z * cosxc - x * sinx, zero),
+          (x * y * cosxc) + (z * sinx), cosx + (y * y * cosxc), (y * z * cosxc) - (x * sinx), zero),
       fcppt::math::matrix::row(
-          x * z * cosxc - y * sinx, y * z * cosxc + x * sinx, cosx + z * z * cosxc, zero),
+          (x * z * cosxc) - (y * sinx), (y * z * cosxc) + (x * sinx), cosx + (z * z * cosxc), zero),
       fcppt::math::matrix::row(zero, zero, zero, one));
 }
 

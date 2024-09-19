@@ -11,6 +11,7 @@
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos_range.hpp>
 #include <fcppt/container/grid/pos_ref_range.hpp>
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/range_impl.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/preprocessor/disable_clang_warning.hpp>
@@ -31,7 +32,12 @@ using int_vector = std::vector<int>;
 template <typename Source>
 inline constexpr bool source_optimized = fcppt::algorithm::detail::optimize_map_v<int_vector, Source>;
 
+enum class test_enum : std::uint8_t
+{
+  test1
+};
 }
+FCPPT_ENUM_DEFINE_MAX_VALUE(test_enum::test1)
 
 int main()
 {
@@ -90,12 +96,6 @@ int main()
       fcppt::not_(source_optimized<bi_range>), "random access iterator not detected");
 
   FCPPT_PP_POP_WARNING
-
-  enum class test_enum : std::uint8_t
-  {
-    test1,
-    fcppt_maximum = test1
-  };
 
   static_assert(
       source_optimized<fcppt::enum_::range<test_enum>>, "enum range not optimized");

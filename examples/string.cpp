@@ -25,7 +25,7 @@ try
 {
   {
     //![text_literal]
-    fcppt::string s{FCPPT_TEXT("foo")};
+    fcppt::string const s{FCPPT_TEXT("foo")};
     //![text_literal]
 
     fcppt::io::cout() << s << FCPPT_TEXT('\n');

@@ -52,7 +52,12 @@ public:
   /**
   \brief Constructs a strong typedef by copying.
   */
-  constexpr explicit strong_typedef(T) noexcept(std::is_nothrow_move_constructible_v<T>);
+  constexpr explicit strong_typedef(T const &) noexcept(std::is_nothrow_copy_constructible_v<T>);
+
+  /**
+  \brief Constructs a strong typedef by moving.
+  */
+  constexpr explicit strong_typedef(T &&) noexcept(std::is_nothrow_move_constructible_v<T>);
 
   /**
   \brief Creates an uninitialized strong typedef.

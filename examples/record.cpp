@@ -181,7 +181,7 @@ FCPPT_PP_POP_WARNING
 int main()
 try
 {
-  person const test{42, "test"};
+  person const test{.age = 42, .name = "test"};
 
   print(std::cout, test);
 

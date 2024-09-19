@@ -9,6 +9,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/container/bitfield/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>
 #include <fcppt/enum/to_string_impl_fwd.hpp>
@@ -28,11 +29,10 @@ enum class test_enum : std::uint8_t
 {
   test1,
   test2,
-  test3,
-  fcppt_maximum = test3
+  test3
 };
-
 }
+FCPPT_ENUM_DEFINE_MAX_VALUE(test_enum::test3)
 
 namespace fcppt::enum_
 {
@@ -60,7 +60,7 @@ struct to_string_impl<test_enum>
 
 
 FCPPT_CATCH_BEGIN
-// NOLINTBEGIN(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
 TEST_CASE("container::bitfield output", "[container],[bitfield]")
 {
@@ -75,5 +75,5 @@ TEST_CASE("container::bitfield output", "[container],[bitfield]")
   CHECK(fcppt::output_to_std_wstring(bitfield{test_enum::test3}) == std::wstring{L"{test3}"});
 }
 
-// NOLINTEND(misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+// NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 FCPPT_CATCH_END
