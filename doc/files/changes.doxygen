@@ -1,6 +1,108 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_460 4.6.0
+
+<ul>
+
+<li>Cleaned up <code>clang-19</code> warnings.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_460 Added functionality
+
+<ul>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added <code>std::hash</code> specialization.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added <code>std::hash</code> specialization.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_460 Changed functionality
+
+<ul>
+
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>Changed the default internal type. It is now the smallest integer that all bits fit into.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Removed the default implementation of #fcppt::enum_::max_value to no longer use <code>fcppt_maximum</code>.
+	Instead, there is now a customization point using #fcppt::enum_::max_value_impl.
+	Also added #FCPPT_ENUM_DEFINE_MAX_VALUE to make defining this easier.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_460 Removed functionality
+
+<ul>
+
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainerraw_vector
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathbox
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathdim
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Removed ordering operators.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_460 Bugfixes
+
+<ul>
+
+<li>Fixed compilation with <code>clang-19</code>.</li>
+
+</ul>
+
 \section changes_changes_to_450 4.5.0
 
 <ul>
