@@ -25,7 +25,11 @@ public:
 
   using const_iterator = Iterator;
 
-  range(Iterator begin, Iterator end);
+  // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+  range(Iterator &&begin, Iterator &&end);
+
+  // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+  range(Iterator const &begin, Iterator const &end);
 
   [[nodiscard]] Iterator begin() const;
 

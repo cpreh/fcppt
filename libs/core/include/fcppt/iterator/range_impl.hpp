@@ -12,21 +12,29 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename Iterator>
-fcppt::iterator::range<Iterator>::range(Iterator _begin, Iterator _end)
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+fcppt::iterator::range<Iterator>::range(Iterator &&_begin, Iterator &&_end)
     : begin_{std::move(_begin)}, end_{std::move(_end)}
+{
+}
+
+template <typename Iterator>
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+fcppt::iterator::range<Iterator>::range(Iterator const &_begin, Iterator const &_end)
+    : begin_{_begin}, end_{_end}
 {
 }
 
 template <typename Iterator>
 Iterator fcppt::iterator::range<Iterator>::begin() const
 {
-  return begin_;
+  return this->begin_;
 }
 
 template <typename Iterator>
 Iterator fcppt::iterator::range<Iterator>::end() const
 {
-  return end_;
+  return this->end_;
 }
 
 #endif
