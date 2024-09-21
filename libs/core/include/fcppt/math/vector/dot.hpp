@@ -37,7 +37,7 @@ dot(fcppt::math::vector::object<T, N, S1> const &_left,
       [&_left, &_right]<fcppt::math::size_type Index>(
           fcppt::tag<fcppt::math::size_constant<Index>>, T const _sum) {
         return _sum +
-               fcppt::math::vector::at<Index>(_left) * fcppt::math::vector::at<Index>(_right);
+               (fcppt::math::vector::at<Index>(_left) * fcppt::math::vector::at<Index>(_right));
       });
 }
 
