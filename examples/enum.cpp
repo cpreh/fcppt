@@ -25,15 +25,18 @@
 #include <string_view>
 #include <fcppt/config/external_end.hpp>
 
-//! [enum_maximum]
-namespace {
+namespace
+{
+//! [enum_def]
 enum class myenum : std::uint8_t
 {
   val1,
   val2
 };
+//! [enum_def]
 }
 
+//! [enum_maximum]
 FCPPT_ENUM_DEFINE_MAX_VALUE(myenum::val2)
 //! [enum_maximum]
 

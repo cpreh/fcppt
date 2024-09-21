@@ -7,7 +7,7 @@
 #define FCPPT_ENUM_MAX_VALUE_HPP_INCLUDED
 
 #include <fcppt/enum/is_object.hpp>
-#include <fcppt/enum/max_value_impl.hpp>
+#include <fcppt/enum/max_value_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

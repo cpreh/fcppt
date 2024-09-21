@@ -25,26 +25,18 @@ Contiguous enums are enums whose enumerator values form a range of
 <code>0</code> to <code>max</code>, which means there is no gap in between the
 values. For example, if no enumerator values are specified, an enum is contiguous
 as in the following example:
-\code
-enum class myenum
-{
-  val1,
-  val2,
-  val3
-};
-\endcode
 
-It is often desirable to know the enum's maximum value, or its number of
+\snippet enum.cpp enum_def
+
+Most function of this library need to know the enum's maximum value, or its number of
 enumerators, for that matter. Unfortunately, C++ offers no introspection of any
 kind which makes it possible to query the maximum value. fcppt provides a trait
-class called #fcppt::enum_::max_value which has the default behavior of
-setting the maximum value to the special enumerator value
-<code>fcppt_maximum</code>, for example:
+class called #fcppt::enum_::max_value, which can be quickly specialized by
+using #FCPPT_ENUM_DEFINE_MAX_VALUE in the global namespace, for example:
 
 \snippet enum.cpp enum_maximum
 
-Additionally, #fcppt::enum_::max_value can also be specialized. Building on top of this,
-#fcppt::enum_::size calculates the number of enumerators in an enum, setting
+Building on top of this, #fcppt::enum_::size calculates the number of enumerators in an enum, setting
 it to <code>fcppt::enum_::max_value<Enum> + 1</code> by default.
 
 \section fcpptenum_range Enum Ranges

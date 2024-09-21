@@ -12,6 +12,12 @@ namespace fcppt::enum_
 \brief Specialization point for max_value.
 
 \ingroup fcpptenum
+
+Has to contain a type called <code>type</code> of the form
+<code>std::integral_constant<Type,max_value></code>, e.g.
+\code
+  using type = std::integral_constant<Type, max_value>;
+\endcode
 */
 template <typename Type>
 struct max_value_impl;
