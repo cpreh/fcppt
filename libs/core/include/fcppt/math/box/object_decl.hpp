@@ -70,7 +70,7 @@ public:
   /**
   \brief Construct a box from position and size
   */
-  object(vector pos, dim size);
+  object(vector const &pos, dim const &size);
 
   FCPPT_DECLARE_STRONG_TYPEDEF(vector, min_t);
   FCPPT_DECLARE_STRONG_TYPEDEF(vector, max_t);
@@ -78,7 +78,7 @@ public:
   /**
   \brief Construct a box from two positions
   */
-  object(min_t, max_t);
+  object(min_t &&, max_t &&); // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
 
   /**
   \brief Return the box's position

@@ -25,13 +25,13 @@ fcppt::math::box::object<T, N>::object(fcppt::no_init const &_no_init)
 }
 
 template <typename T, fcppt::math::size_type N>
-fcppt::math::box::object<T, N>::object(vector const _pos, dim const _size)
+fcppt::math::box::object<T, N>::object(vector const &_pos, dim const &_size)
     : min_{_pos}, max_{_pos + _size}
 {
 }
 
 template <typename T, fcppt::math::size_type N>
-fcppt::math::box::object<T, N>::object(min_t _min, max_t _max)
+fcppt::math::box::object<T, N>::object(min_t &&_min, max_t &&_max) // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
     : min_{std::move(_min.get())}, max_{std::move(_max.get())}
 {
 }

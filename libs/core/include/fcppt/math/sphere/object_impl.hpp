@@ -14,35 +14,41 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename T, fcppt::math::size_type N>
-fcppt::math::sphere::object<T, N>::object(point_type _origin, value_type _radius)
-    : origin_(std::move(_origin)), radius_(std::move(_radius))
+fcppt::math::sphere::object<T, N>::object(point_type const &_origin, value_type const &_radius)
+    : origin_{_origin}, radius_{_radius}
+{
+}
+
+template <typename T, fcppt::math::size_type N>
+fcppt::math::sphere::object<T, N>::object(point_type &&_origin, value_type &&_radius)
+    : origin_{std::move(_origin)}, radius_{std::move(_radius)}
 {
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::sphere::object<T, N>::point_type &fcppt::math::sphere::object<T, N>::origin()
 {
-  return origin_;
+  return this->origin_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::sphere::object<T, N>::point_type const &
 fcppt::math::sphere::object<T, N>::origin() const
 {
-  return origin_;
+  return this->origin_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::sphere::object<T, N>::reference fcppt::math::sphere::object<T, N>::radius()
 {
-  return radius_;
+  return this->radius_;
 }
 
 template <typename T, fcppt::math::size_type N>
 typename fcppt::math::sphere::object<T, N>::const_reference
 fcppt::math::sphere::object<T, N>::radius() const
 {
-  return radius_;
+  return this->radius_;
 }
 
 #endif

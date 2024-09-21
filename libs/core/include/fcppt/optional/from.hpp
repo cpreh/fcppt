@@ -28,7 +28,7 @@ _default is returned.
 */
 template <fcppt::optional::object_concept Optional, fcppt::concepts::invocable_move Default>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
-[[nodiscard]] std::invoke_result_t<Default> from(Optional &&_optional, Default const _default)
+[[nodiscard]] std::invoke_result_t<Default> from(Optional &&_optional, Default const &_default)
 requires std::is_same_v<std::invoke_result_t<Default>, fcppt::optional::value_type<Optional>>
 {
   return fcppt::cond(

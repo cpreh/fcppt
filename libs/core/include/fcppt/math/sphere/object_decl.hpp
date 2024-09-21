@@ -34,8 +34,9 @@ public:
 
   using point_type = fcppt::math::vector::static_<value_type, N>;
 
-  /// Constructs a sphere from @a origin and @a radius
-  object(point_type origin, value_type radius);
+  object(point_type const &origin, value_type const &radius);
+
+  object(point_type &&origin, value_type &&radius);
 
   [[nodiscard]] point_type &origin();
 
