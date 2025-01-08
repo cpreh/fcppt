@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{iftex}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\color{white}
+\pagecolor{black}
+\ifPDFTeX
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\fi
+\pagestyle{empty}
+\begin{document}
+$ \mathrm{\_string} = (c_1, \dots , c_n)$
+\pagebreak
+
+$ n \ge 0 $
+\pagebreak
+
+$ p_1 < \dots < p_m $
+\pagebreak
+
+$ m \ge 0 $
+\pagebreak
+
+$ p_{m+1} = \mathrm{\_string.size()}$
+\pagebreak
+
+\[
+ (\mathrm{\_string}[0,p_1-1], \mathrm{\_string}[p_1+1,p_2-1], \dots,
+\mathrm{\_string}[p_m+1,p_{m+1}-1). \]
+\pagebreak
+
+\[
+\min(a - b, b - a)
+\]
+\pagebreak
+
+$\log_2(x)$
+\pagebreak
+
+\[
+e_i = (0,\ldots,0,1,0,\ldots,0)
+\]
+\pagebreak
+
+\end{document}
