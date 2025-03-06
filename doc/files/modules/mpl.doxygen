@@ -79,7 +79,7 @@ To understand why these are equivalent, we have to understand what <code>fcppt::
 <code>fcppt::mpl::constant</code> and <code>fcppt::mpl::bind</code> do.
 
 <ul>
-<li><code>fcppt::mpl::arg<i></code> is the i'th projection function.
+<li><code>fcppt::mpl::arg`<i>`</code> is the i'th projection function.
 Formally, for every integer <code>m >= i</code> it is a lambda that holds a function
 <code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = T_i</code>.</li>
 

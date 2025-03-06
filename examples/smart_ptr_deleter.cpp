@@ -14,7 +14,7 @@ int main()
   //! [c_deleter]
   using void_c_ptr = fcppt::unique_ptr<void, fcppt::c_deleter>;
 
-  void_c_ptr const ptr{
+  void_c_ptr const ptr{ // NOLINT(clang-analyzer-unix.Malloc)
       // NOLINTNEXTLINE(cppcoreguidelines-no-malloc,hicpp-no-malloc)
       std::malloc(100)};
   //! [c_deleter]
