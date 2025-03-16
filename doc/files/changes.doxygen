@@ -1,6 +1,14 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_461 4.6.1
+
+<ul>
+
+<li>Cleaned up <code>clang-20</code> warnings.</li>
+
+</ul>
+
 \section changes_changes_to_460 4.6.0
 
 <ul>
