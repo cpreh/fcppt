@@ -23,8 +23,7 @@ Returns the size of \a path if it exists and its size can be obtained,
 otherwise returns the empty optional.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-fcppt::filesystem::optional_size file_size(std::filesystem::path const &path);
-
+fcppt::filesystem::optional_size file_size(std::filesystem::path const &path) noexcept;
 }
 
 #endif

@@ -9,6 +9,14 @@
 
 </ul>
 
+\subsection changes_bugfixes_to_461 Bugfixes
+
+<ul>
+
+<li>Fixed #fcppt::filesystem::file_size to actually not throw exceptions.</li>
+
+</ul>
+
 \section changes_changes_to_460 4.6.0
 
 <ul>

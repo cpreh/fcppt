@@ -10,11 +10,15 @@
 #include <fcppt/config/external_begin.hpp>
 #include <cstdint>
 #include <filesystem>
+#include <system_error>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::filesystem::optional_size fcppt::filesystem::file_size(std::filesystem::path const &_path)
+fcppt::filesystem::optional_size fcppt::filesystem::file_size(std::filesystem::path const &_path) noexcept
 {
-  std::uintmax_t const size{std::filesystem::file_size(_path)};
+  std::error_code res{};
 
+  std::uintmax_t const size{std::filesystem::file_size(_path, res)};
+
+  // NOLINTNEXTLINE(modernize-use-integer-sign-comparison)
   return fcppt::optional::make_if(size != static_cast<std::uintmax_t>(-1), fcppt::const_(size));
 }
