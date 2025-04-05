@@ -10,6 +10,8 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
+// NOLINTBEGIN(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
+
 namespace fcppt::type_traits
 {
 /**
@@ -29,5 +31,7 @@ using is_value = std::integral_constant<
         !std::is_volatile_v<Type>>;
 
 }
+
+// NOLINTEND(cppcoreguidelines-avoid-c-arrays,hicpp-avoid-c-arrays,modernize-avoid-c-arrays)
 
 #endif

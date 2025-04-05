@@ -114,7 +114,7 @@ TEST_CASE("container::raw_vector::push_back", "[container],[raw_vector]")
 
   for (int_vector::size_type i{0}; i < test.size(); ++i)
   {
-    CHECK(test[i] == static_cast<int_vector::value_type>(i));
+    CHECK(std::cmp_equal(test[i], i));
   }
 }
 

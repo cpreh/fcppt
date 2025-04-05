@@ -18,6 +18,7 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
   # X<decltype(_param)> "-readability-function-cognitive-complexity" triggers
   # for almost every Catch2 test case "-modernize-return-braced-init-list" also
   # triggers on ()-initialization, breaking code
+  # portability-template-virtual-member-function triggers on pure virtual functions.
 
   set(FCPPT_UTILS_CLANG_TIDY_CHECKS
       "*"
@@ -44,6 +45,7 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
       "-misc-no-recursion"
       "-modernize-return-braced-init-list"
       "-modernize-use-trailing-return-type"
+      "-portability-template-virtual-member-function"
       "-readability-function-cognitive-complexity"
       "-readability-identifier-length"
       "-readability-inconsistent-declaration-parameter-name"
