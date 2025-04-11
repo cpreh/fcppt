@@ -15,6 +15,13 @@
 
 namespace fcppt::either
 {
+/**
+\brief The result of #fcppt::either::partition.
+\ingroup fcppteither
+
+Partitioning a <code>Container<fcppt::either::object<F,S>></code>
+yields <code>fcppt::tuple::object<std::vector`<F`>,std::vector`<S`>></code>.
+*/
 template <typename Container>
 using partition_result = fcppt::variant::partition_result<
     std::vector<fcppt::either::variant_type<fcppt::type_traits::value_type<Container>>>>;

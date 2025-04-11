@@ -18,6 +18,12 @@
 
 namespace fcppt::either
 {
+/**
+\brief Partitions a container of variants into multiple containers.
+\ingroup fcppteither
+
+\tparam Source A container of #fcppt::either::object.
+*/
 template <typename Source>
 [[nodiscard]]
 fcppt::either::partition_result<Source>
