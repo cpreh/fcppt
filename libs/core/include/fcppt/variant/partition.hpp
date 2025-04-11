@@ -47,7 +47,7 @@ template <typename Container>
           using index = fcppt::mpl::list::
               index_of<fcppt::variant::types_of<variant>, std::remove_cvref_t<decltype(inner)>>;
           fcppt::tuple::get<index::value>(result).push_back(
-              fcppt::move_if_rvalue<decltype(element)>(inner));
+              fcppt::move_if_rvalue<Container>(inner));
         },
         element);
   }
