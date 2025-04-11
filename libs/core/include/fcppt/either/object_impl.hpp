@@ -69,4 +69,18 @@ Failure const &fcppt::either::object<Failure, Success>::get_failure_unsafe() con
   return fcppt::variant::get_unsafe<Failure>(impl_);
 }
 
+template <typename Failure, typename Success>
+typename fcppt::either::object<Failure, Success>::variant_type &
+fcppt::either::object<Failure, Success>::variant()
+{
+  return this->impl_;
+}
+
+template <typename Failure, typename Success>
+typename fcppt::either::object<Failure, Success>::variant_type const &
+fcppt::either::object<Failure, Success>::variant() const
+{
+  return this->impl_;
+}
+
 #endif

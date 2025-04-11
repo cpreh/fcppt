@@ -554,6 +554,9 @@ libs/core/include/fcppt/either/object_fwd.hpp
 libs/core/include/fcppt/either/object.hpp
 libs/core/include/fcppt/either/object_impl.hpp
 libs/core/include/fcppt/either/output.hpp
+libs/core/include/fcppt/either/partition.hpp
+libs/core/include/fcppt/either/partition_result_fwd.hpp
+libs/core/include/fcppt/either/partition_result.hpp
 libs/core/include/fcppt/either/sequence_error.hpp
 libs/core/include/fcppt/either/sequence.hpp
 libs/core/include/fcppt/either/success_move_type.hpp
@@ -562,6 +565,7 @@ libs/core/include/fcppt/either/success_reference_type.hpp
 libs/core/include/fcppt/either/success_type.hpp
 libs/core/include/fcppt/either/to_exception.hpp
 libs/core/include/fcppt/either/try_call.hpp
+libs/core/include/fcppt/either/variant_type.hpp
 libs/core/include/fcppt/enable_shared_from_this_decl.hpp
 libs/core/include/fcppt/enable_shared_from_this_fwd.hpp
 libs/core/include/fcppt/enable_shared_from_this.hpp

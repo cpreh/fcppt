@@ -33,6 +33,8 @@ public:
 
   using success = Success;
 
+  using variant_type = fcppt::variant::object<Failure, Success>;
+
   static_assert(fcppt::concepts::move_constructible<Failure>);
   static_assert(fcppt::concepts::move_constructible<Success>);
   static_assert(!std::is_same_v<Failure, Success>, "Success and Failure must be distinct");
@@ -57,9 +59,10 @@ public:
 
   [[nodiscard]] Failure const &get_failure_unsafe() const;
 
-private:
-  using variant_type = fcppt::variant::object<Failure, Success>;
+  [[nodiscard]] variant_type &variant();
 
+  [[nodiscard]] variant_type const &variant() const;
+private:
   variant_type impl_;
 };
 
