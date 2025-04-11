@@ -11,5 +11,6 @@ var searchData=
   ['4_204_200_8',['4.4.0',['../de/dbe/changes.html#changes_changes_to_440',1,'']]],
   ['4_204_201_9',['4.4.1',['../de/dbe/changes.html#changes_changes_to_441',1,'']]],
   ['4_205_200_10',['4.5.0',['../de/dbe/changes.html#changes_changes_to_450',1,'']]],
-  ['4_206_200_11',['4.6.0',['../de/dbe/changes.html#changes_changes_to_460',1,'']]]
+  ['4_206_200_11',['4.6.0',['../de/dbe/changes.html#changes_changes_to_460',1,'']]],
+  ['4_206_201_12',['4.6.1',['../de/dbe/changes.html#changes_changes_to_461',1,'']]]
 ];

@@ -8,5 +8,8 @@ var searchData=
   ['argument_5',['argument',['../d5/dab/classfcppt_1_1options_1_1argument.html',1,'fcppt::options']]],
   ['argument_5fconversion_5ferror_6',['argument_conversion_error',['../d7/d2c/classfcppt_1_1options_1_1argument__conversion__error.html',1,'fcppt::options']]],
   ['argument_5fusage_7',['argument_usage',['../d4/da8/classfcppt_1_1options_1_1argument__usage.html',1,'fcppt::options']]],
-  ['array_8',['array',['../d3/d27/classfcppt_1_1enum___1_1array.html',1,'fcppt::enum_']]]
+  ['array_8',['array',['../d3/d27/classfcppt_1_1enum___1_1array.html',1,'fcppt::enum_']]],
+  ['array_3c_20enum_2c_20std_3a_3astring_5fview_20_3e_9',['array&lt; Enum, std::string_view &gt;',['../d3/d27/classfcppt_1_1enum___1_1array.html',1,'fcppt::enum_']]],
+  ['array_3c_20fcppt_3a_3alog_3a_3alevel_2c_20fcppt_3a_3aunique_5fptr_3c_20fcppt_3a_3alog_3a_3alevel_5fstream_20_3e_20_3e_10',['array&lt; fcppt::log::level, fcppt::unique_ptr&lt; fcppt::log::level_stream &gt; &gt;',['../d3/d27/classfcppt_1_1enum___1_1array.html',1,'fcppt::enum_']]],
+  ['array_3c_20fcppt_3a_3alog_3a_3alevel_2c_20fcppt_3a_3aunique_5fptr_3c_20fcppt_3a_3alog_3a_3astandard_5flevel_5fstream_20_3e_20_3e_11',['array&lt; fcppt::log::level, fcppt::unique_ptr&lt; fcppt::log::standard_level_stream &gt; &gt;',['../d3/d27/classfcppt_1_1enum___1_1array.html',1,'fcppt::enum_']]]
 ];
