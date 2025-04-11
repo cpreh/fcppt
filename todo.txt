@@ -4,8 +4,5 @@
 - Use C++20's ranges (not implemented in libc++)
 - Allow std::uint8_t enums in random distributions
 - Clean up fcppt::algorithm code to work with all ranges if possible
-- Remove fcppt::enum_::max_value_impl definition
 test/container/grid/object.cpp:34:9: warning: use a boost version of this algorithm [boost-use-ranges]
 test/container/grid/object.cpp:85:9: warning: use a boost version of this algorithm [boost-use-ranges]
-
-libs/options/include/fcppt/options/base_decl.hpp:48:3: warning: unspecified virtual member function instantiation; the virtual member function is not instantiated but it might be with a different compiler [portability-template-virtual-member-function]
