@@ -9,28 +9,27 @@
 namespace fcppt::cast
 {
 /**
-\brief Converts a pointer to const to a pointer to const void
+\brief Converts a pointer to const to a pointer to const void.
 
 \ingroup fcpptcasts
 */
 template <typename Source>
-inline void const *
-to_void_ptr(Source const *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
-            ) noexcept
+// NOLINTNEXTLINE(readability-avoid-const-params-in-decls)
+[[nodiscard]] inline void const *to_void_ptr(Source const *const _ptr) noexcept
 {
-  return _ptr;
+  return _ptr; // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
 }
 
 /**
-\brief Converts a pointer to a pointer to void
+\brief Converts a pointer to a pointer to void.
 
 \ingroup fcpptcasts
 */
 template <typename Source>
-inline void *to_void_ptr(Source *const _ptr // NOLINT(readability-avoid-const-params-in-decls)
-                         ) noexcept
+// NOLINTNEXTLINE(readability-avoid-const-params-in-decls)
+[[nodiscard]] inline void *to_void_ptr(Source *const _ptr) noexcept
 {
-  return _ptr;
+  return _ptr; // NOLINT(bugprone-multi-level-implicit-pointer-conversion)
 }
 
 }
