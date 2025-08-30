@@ -8,9 +8,9 @@
 
 #include <fcppt/config/compiler.h>
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 #	define FCPPT_SYMBOL_IMPORT_IMPL __declspec(dllimport)
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
+#elifdef FCPPT_CONFIG_GCC_COMPILER
 #	define FCPPT_SYMBOL_IMPORT_IMPL
 #else
 #	error "Don't know what FCPPT_SYMBOL_IMPORT should be"

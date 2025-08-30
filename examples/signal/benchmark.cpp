@@ -3,10 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
+#ifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT
 #include <fcppt/signal/auto_connection_container.hpp>
 #include <fcppt/signal/object.hpp>
-#elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
+#elifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2
 #include <fcppt/config/external_begin.hpp>
 #include <boost/signals2.hpp>
 #include <vector>
@@ -38,7 +38,7 @@ std::size_t const max_iterations = 1000000;
 int main()
 try
 {
-#if defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT)
+#ifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT
   using signal_type = fcppt::signal::object<void()>;
 
   signal_type s;
@@ -51,7 +51,7 @@ try
   }
 
   s();
-#elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2)
+#elifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2
   using signal_type = boost::signals2::signal<void()>;
 
   signal_type s;

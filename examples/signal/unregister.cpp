@@ -58,7 +58,7 @@ FCPPT_PP_POP_WARNING
 
 // ![register]
 fcppt::signal::auto_connection
-register_named_signal(std::string const &_name, fcppt::signal::unregister::function &&_function)
+register_named_signal(std::string _name, fcppt::signal::unregister::function &&_function)
 {
   signal_type &signal{fcppt::container::get_or_insert(
       global_name_to_signal, _name, [](std::string const &) { return signal_type(); })};
@@ -66,7 +66,7 @@ register_named_signal(std::string const &_name, fcppt::signal::unregister::funct
   return signal.connect(
       std::move(_function),
       // Add our remove function as the disconnect handler (see above)
-      fcppt::signal::unregister::function{[_name] { remove_function(_name); }});
+      fcppt::signal::unregister::function{[name = std::move(_name)] { remove_function(name); }});
 }
 // ![register]
 

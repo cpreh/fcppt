@@ -77,6 +77,7 @@ template <typename T, typename A>
 typename fcppt::container::buffer::object<T, A>::const_reference
 fcppt::container::buffer::object<T, A>::operator[](size_type const _index) const noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   return *(this->begin() + _index);
 }
 
@@ -125,6 +126,7 @@ fcppt::container::buffer::object<T, A>::write_size() const noexcept
 template <typename T, typename A>
 void fcppt::container::buffer::object<T, A>::written(size_type const _sz) noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   this->impl_.read_end_ += _sz;
 }
 
@@ -133,6 +135,7 @@ void fcppt::container::buffer::object<T, A>::resize_write_area(size_type const _
 {
   if (fcppt::cast::to_unsigned(this->impl_.cap_ - this->impl_.read_end_) >= _sz)
   {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     this->impl_.write_end_ = this->impl_.read_end_ + fcppt::cast::to_signed(_sz);
 
     return;
@@ -147,8 +150,10 @@ void fcppt::container::buffer::object<T, A>::resize_write_area(size_type const _
 
   std::uninitialized_copy(this->read_data(), this->read_data_end(), new_impl.first_);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   new_impl.read_end_ = new_impl.first_ + fcppt::cast::to_signed(this->read_size());
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   new_impl.write_end_ = new_impl.read_end_ + fcppt::cast::to_signed(_sz);
 
   this->impl_.deallocate();
@@ -206,6 +211,7 @@ fcppt::container::buffer::object<T, A>::impl::impl(
     : alloc_{_alloc},
       first_{_first},
       read_end_{first_},
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
       write_end_{_first == nullptr ? _first : _first + _size},
       cap_{write_end_}
 {

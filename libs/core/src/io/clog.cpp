@@ -13,7 +13,7 @@
 fcppt::io::ostream &fcppt::io::clog()
 {
   return
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
       std::clog
 #else
       std::wclog

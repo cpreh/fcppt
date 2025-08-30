@@ -6,9 +6,9 @@
 #ifndef FCPPT_CONFIG_COMPILER_H_INCLUDED
 #define FCPPT_CONFIG_COMPILER_H_INCLUDED
 
-#if defined(_MSC_VER)
+#ifdef _MSC_VER
 #define FCPPT_CONFIG_MSVC_COMPILER
-#elif defined(__GNUC__)
+#elifdef __GNUC__
 #define FCPPT_CONFIG_GCC_COMPILER
 #if !defined(__clang__) && !defined(__APPLE_CC__)
 #define FCPPT_CONFIG_GNU_GCC_COMPILER
@@ -16,9 +16,9 @@
 #endif
 
 // clang emulates gcc, so FCPPT_CONFIG_GCC_COMPILER will also be defined
-#if defined(__clang__)
+#ifdef __clang__
 #define FCPPT_CONFIG_CLANG_COMPILER
-#if defined(__APPLE_CC__)
+#ifdef __APPLE_CC__
 #define FCPPT_CONFIG_APPLE_CLANG_COMPILER
 #endif
 #endif

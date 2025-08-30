@@ -8,7 +8,7 @@
 
 #include <fcppt/detail/main_wchar.hpp> // IWYU pragma: keep
 
-#if defined(FCPPT_DETAIL_MAIN_WCHAR)
+#ifdef FCPPT_DETAIL_MAIN_WCHAR
 #define FCPPT_DETAIL_MAIN wmain
 #else
 #define FCPPT_DETAIL_MAIN main

@@ -8,11 +8,14 @@
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <bit>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   //[io_endianness]
   std::stringstream stream{};
@@ -25,4 +28,9 @@ int main()
       fcppt::io::read<unsigned>(stream, std::endian::big),
       [](unsigned const _result) { std::cout << _result << '\n'; });
   //[io_endianness]
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

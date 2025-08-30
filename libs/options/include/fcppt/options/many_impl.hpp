@@ -69,7 +69,7 @@ fcppt::options::many<Parser>::parse(
 
               new_result.push_back(std::move(fcppt::record::get<L>(inner_value)));
 
-              return new_result;
+              return std::move(new_result);
             });
       }};
 

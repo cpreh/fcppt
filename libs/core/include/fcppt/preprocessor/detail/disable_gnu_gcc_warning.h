@@ -9,7 +9,7 @@
 #include <fcppt/config/compiler.h>
 
 
-#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
+#ifdef FCPPT_CONFIG_GNU_GCC_COMPILER
 #	include <fcppt/preprocessor/detail/disable_gcc_warning.h>
 #	define FCPPT_PP_DETAIL_DISABLE_GNU_GCC_WARNING(id) \
 	FCPPT_PP_DETAIL_DISABLE_GCC_WARNING(id)

@@ -11,11 +11,15 @@
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/io/scoped_rdbuf.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <ios>
+#include <iostream>
 #include <streambuf>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   fcppt::io::ostringstream const ostream{};
 
@@ -30,4 +34,9 @@ int main()
   }
 
   fcppt::io::cout() << ostream.str();
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

@@ -26,11 +26,11 @@ void bit_strings(ForwardIterator &it, Vector _vector)
 {
   fcppt::math::vector::at<N>(_vector) = fcppt::literal<fcppt::type_traits::value_type<Vector>>(0);
 
-  *it++ = _vector;
+  *it++ = _vector; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
   fcppt::math::vector::at<N>(_vector) = fcppt::literal<fcppt::type_traits::value_type<Vector>>(1);
 
-  *it++ = _vector;
+  *it++ = _vector; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 }
 
 FCPPT_PP_POP_WARNING

@@ -10,7 +10,7 @@ fcppt_utils_link_target(fcppt_options)
 #
 # path_name: The name of the cpp file without the extension.
 #            For example path_name=array will refer to array.cpp.
-# IS_C: Optional argument. If set, the test will be a C test (not C++).
+# IS_C: Optional argument. If set, the example will be a C example (not C++).
 # COMPILE_DEFINITIONS: A list of compile definitions.
 # LINK_LIBS: A list of extra link targets.
 # INCLUDE_DIRS: A list of extra include directories.

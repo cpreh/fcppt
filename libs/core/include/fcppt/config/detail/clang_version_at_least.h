@@ -9,7 +9,7 @@
 #include <fcppt/config/compiler.h>
 
 
-#if defined(FCPPT_CONFIG_CLANG_COMPILER)
+#ifdef FCPPT_CONFIG_CLANG_COMPILER
 
 #include <fcppt/config/detail/major_minor_at_least.h>
 

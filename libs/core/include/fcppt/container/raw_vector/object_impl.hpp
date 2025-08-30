@@ -59,6 +59,7 @@ template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::reference
 fcppt::container::raw_vector::object<T, A>::operator[](size_type const _index) noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   return *(this->begin() + _index);
 }
 
@@ -66,6 +67,7 @@ template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::const_reference
 fcppt::container::raw_vector::object<T, A>::operator[](size_type const _index) const noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   return *(this->begin() + _index);
 }
 
@@ -266,6 +268,7 @@ void fcppt::container::raw_vector::object<T, A>::resize(size_type const _size, T
   }
   else if (_size < this->size())
   {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     this->erase(this->begin() + _size, this->end());
   }
 }
@@ -307,10 +310,12 @@ fcppt::container::raw_vector::object<T, A>::insert(iterator const _position, T c
       std::uninitialized_copy(this->begin(), _position, new_memory);
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     *(new_memory + insert_sz) = _value;
 
     if (!this->empty())
     {
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
       std::uninitialized_copy(_position, this->end(), new_memory + insert_sz + 1U);
     }
 
@@ -318,6 +323,7 @@ fcppt::container::raw_vector::object<T, A>::insert(iterator const _position, T c
 
     this->set_pointers(new_memory, new_size, new_cap);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     return this->begin() + insert_sz;
   }
   // NOLINTNEXTLINE(readability-else-after-return,llvm-else-after-return)
@@ -330,6 +336,7 @@ fcppt::container::raw_vector::object<T, A>::insert(iterator const _position, T c
 
     *_position = _value;
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     ++this->impl_.last_;
 
     return _position;
@@ -355,10 +362,12 @@ void fcppt::container::raw_vector::object<T, A>::insert(
       std::uninitialized_copy(this->begin(), _position, new_memory);
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     std::uninitialized_fill(new_memory + insert_sz, new_memory + insert_sz + _size, _value);
 
     if (!this->empty())
     {
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
       std::uninitialized_copy(_position, this->end(), new_memory + insert_sz + _size);
     }
 
@@ -370,11 +379,14 @@ void fcppt::container::raw_vector::object<T, A>::insert(
   {
     if (!this->empty())
     {
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
       std::copy_backward(_position, this->end(), this->data_end() + _size);
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     std::uninitialized_fill(_position, _position + _size, _value);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     this->impl_.last_ += _size;
   }
 }
@@ -394,8 +406,10 @@ template <typename T, typename A>
 typename fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::erase(iterator const _position) noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   std::uninitialized_copy(_position + 1U, this->end(), _position);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   --this->impl_.last_;
 
   return _position;
@@ -410,6 +424,7 @@ fcppt::container::raw_vector::object<T, A>::erase(
   {
     std::uninitialized_copy(_right, this->end(), _left);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     this->impl_.last_ -= _right - _left;
   }
 
@@ -461,10 +476,12 @@ fcppt::container::raw_vector::object<T, A>::insert_impl(
       std::uninitialized_copy(this->begin(), _position, new_memory);
     }
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     std::uninitialized_copy(_left, _right, new_memory + insert_sz);
 
     if (!this->empty())
     {
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
       std::uninitialized_copy(_position, this->end(), new_memory + insert_sz + distance);
     }
 
@@ -476,11 +493,13 @@ fcppt::container::raw_vector::object<T, A>::insert_impl(
   {
     if (!this->empty())
     {
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
       std::copy_backward(_position, this->end(), this->data_end() + distance);
     }
 
     std::uninitialized_copy(_left, _right, _position);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     this->impl_.last_ += distance;
   }
 }
@@ -515,8 +534,10 @@ void fcppt::container::raw_vector::object<T, A>::set_pointers(
 {
   this->impl_.first_ = _first;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   this->impl_.last_ = impl_.first_ + _size.get();
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   this->impl_.cap_ = impl_.first_ + _cap.get();
 }
 

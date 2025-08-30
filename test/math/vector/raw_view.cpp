@@ -91,6 +91,7 @@ public:
 private:
   [[nodiscard]] pointer index_of(size_type const _index) const
   {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     return data_ + fcppt::cast::to_signed(_index * sizeof(Type));
   }
 

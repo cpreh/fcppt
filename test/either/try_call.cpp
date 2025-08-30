@@ -30,7 +30,7 @@ TEST_CASE("either::try_call", "[either]")
       either_int{42});
 
   CHECK(fcppt::either::try_call<std::exception>(
-            []() -> int { throw std::runtime_error{"test"}; }, translate_exception)
+            [] [[noreturn]] () -> int { throw std::runtime_error{"test"}; }, translate_exception)
             .has_failure());
 }
 

@@ -23,7 +23,7 @@ namespace
 // MYLIB_EXPORTS should be defined by the build system when the library is
 // beign built. If other code includes the library's header, the macro will not
 // be defined.
-#if defined(MYLIB_EXPORTS)
+#ifdef MYLIB_EXPORTS
 #define MYLIB_SYMBOL FCPPT_SYMBOL_EXPORT
 #else
 #define MYLIB_SYMBOL FCPPT_SYMBOL_IMPORT
@@ -36,9 +36,9 @@ namespace
 
 // If MYLIB_STATIC is defined, the library is being built or used as a static
 // library. In this case we can't use any special symbols.
-#if defined(MYLIB_STATIC)
+#ifdef MYLIB_STATIC
 #define MYLIB_SYMBOL
-#elif defined(MYLIB_EXPORTS)
+#elifdef MYLIB_EXPORTS
 #define MYLIB_SYMBOL FCPPT_SYMBOL_EXPORT
 #else
 #define MYLIB_SYMBOL FCPPT_SYMBOL_IMPORT
@@ -51,7 +51,7 @@ namespace
 
 // Also, we have to leave the macros for explicit instantiations empty, if
 // MYLIB_STATIC is defined.
-#if defined(MYLIB_STATIC)
+#ifdef MYLIB_STATIC
 #define MYLIB_EXPORT_CLASS_INSTANTIATION
 #define MYLIB_EXPORT_FUNCTION_INSTANTIATION
 #else
@@ -66,7 +66,7 @@ FCPPT_PP_POP_WARNING
 #undef MYLIB_SYMBOL
 #define MYLIB_SYMBOL
 
-#if !defined(FCPPT_SYMBOL_EXPORT)
+#ifndef FCPPT_SYMBOL_EXPORT
 #error "FCPPT_SYMBOL_EXPORT is not defined"
 #endif
 #undef FCPPT_SYMBOL_EXPORT
@@ -86,7 +86,7 @@ void func();
 #include <fcppt/symbol/class.hpp>
 //! [visibility_export_vtable1]
 
-#if !defined(FCPPT_SYMBOL_CLASS)
+#ifndef FCPPT_SYMBOL_CLASS
 #error "FCPPT_SYMBOL_CLASS is not defined"
 #endif
 #undef FCPPT_SYMBOL_CLASS

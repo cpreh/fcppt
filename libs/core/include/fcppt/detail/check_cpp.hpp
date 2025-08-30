@@ -6,7 +6,7 @@
 #ifndef FCPPT_DETAIL_CHECK_CPP_HPP_INCLUDED
 #define FCPPT_DETAIL_CHECK_CPP_HPP_INCLUDED
 
-#if !defined(__cplusplus)
+#ifndef __cplusplus
 #error "Don't include .hpp files from C"
 #endif
 

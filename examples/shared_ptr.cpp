@@ -11,12 +11,18 @@ FCPPT_PP_DISABLE_VC_WARNING(4702)
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
 
 namespace
 {
@@ -78,9 +84,9 @@ void take_pointer(int_ptr &&, bool) // NOLINT(cppcoreguidelines-rvalue-reference
 
 // This function will be used to provide a bool value for take_pointer, but it
 // throws when executed.
-bool throw_something() { throw std::runtime_error("test"); }
+[[noreturn]] bool throw_something() { throw std::runtime_error("test"); }
 
-void wrong()
+[[noreturn]] void wrong()
 {
   // The order in which function arguments and their sub-expressions are
   // evaluated is unspecified. So it might be possible that they are
@@ -96,7 +102,7 @@ void wrong()
 namespace
 {
 //! [shared_ptr_make_shared_right]
-void right() { take_pointer(fcppt::make_shared_ptr<int>(1), throw_something()); }
+[[noreturn]] void right() { take_pointer(fcppt::make_shared_ptr<int>(1), throw_something()); }
 //! [shared_ptr_make_shared_right]
 
 }
@@ -153,3 +159,5 @@ int main()
 
   cast();
 }
+
+FCPPT_PP_POP_WARNING

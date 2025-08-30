@@ -125,7 +125,7 @@ void init_stream()
           throw std::runtime_error{"failure"};
         }
 
-        return input;
+        return std::move(input);
       })};
   // ![record_init_generic]
 

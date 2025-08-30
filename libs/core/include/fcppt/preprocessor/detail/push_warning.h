@@ -9,11 +9,11 @@
 #include <fcppt/config/compiler.h>
 
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 #	include <fcppt/preprocessor/pragma.h>
 #	define FCPPT_PP_DETAIL_PUSH_WARNING \
 	FCPPT_PP_PRAGMA(warning(push))
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
+#elifdef FCPPT_CONFIG_GCC_COMPILER
 #	include <fcppt/preprocessor/pragma.h>
 #	define FCPPT_PP_DETAIL_PUSH_WARNING \
 	FCPPT_PP_PRAGMA(GCC diagnostic push)

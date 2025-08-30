@@ -31,14 +31,14 @@ fcppt::options::impl::is_flag(fcppt::string_view const _value)
   using result_type =
       fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>;
 
-  auto const is_dash([](fcppt::char_type const _ch) { return _ch == FCPPT_TEXT('-'); });
+  auto const is_dash{[](fcppt::char_type const _ch) { return _ch == FCPPT_TEXT('-'); }};
 
   if (pos == _value.end() || fcppt::not_(is_dash(*pos)))
   {
     return result_type{};
   }
 
-  ++pos;
+  ++pos; // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
   return result_type{
       is_dash(*pos)

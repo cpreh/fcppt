@@ -7,7 +7,7 @@
 #include <fcppt/system.hpp>
 #include <fcppt/config/platform.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#if defined(FCPPT_CONFIG_POSIX_PLATFORM)
+#ifdef FCPPT_CONFIG_POSIX_PLATFORM
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/to_std_string.hpp>
@@ -21,7 +21,7 @@
 #include <sys/wait.h> // NOLINT(misc-include-cleaner)
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
-#elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
+#elifdef FCPPT_CONFIG_WINDOWS_PLATFORM
 #include <fcppt/const.hpp>
 #include <fcppt/public_config.hpp>
 #include <fcppt/optional/make_if.hpp>
@@ -33,7 +33,7 @@
 
 fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)
 {
-#if defined(FCPPT_CONFIG_POSIX_PLATFORM)
+#ifdef FCPPT_CONFIG_POSIX_PLATFORM
   int const result{
       // NOLINTNEXTLINE(cert-env33-c,concurrency-mt-unsafe)
       ::system(fcppt::optional::to_exception(fcppt::to_std_string(_command), [&_command] {
@@ -53,10 +53,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
             WEXITSTATUS(result); // NOLINT(misc-include-cleaner)
       });
 FCPPT_PP_POP_WARNING
-#elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
+#elifdef FCPPT_CONFIG_WINDOWS_PLATFORM
   int const result
   {
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
     ::system(
 #else
     _wsystem(

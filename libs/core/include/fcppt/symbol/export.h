@@ -9,9 +9,9 @@
 #include <fcppt/config/compiler.h>
 
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 #	define FCPPT_SYMBOL_EXPORT_IMPL __declspec(dllexport)
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
+#elifdef FCPPT_CONFIG_GCC_COMPILER
 #	define FCPPT_SYMBOL_EXPORT_IMPL __attribute__ ((visibility("default")))
 #else
 #	error "Don't know what FCPPT_SYMBOL_EXPORT should be"

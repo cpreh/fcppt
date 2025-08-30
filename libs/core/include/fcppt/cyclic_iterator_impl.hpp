@@ -75,12 +75,14 @@ void fcppt::cyclic_iterator<ContainerIterator>::advance(difference_type const _d
 
   difference_type const diff{(std::distance(this->boundary_first(), this->it_) + _diff) % size};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   this->it_ = this->boundary_first() + (diff < 0 ? diff + size : diff);
 }
 
 template <typename ContainerIterator>
 void fcppt::cyclic_iterator<ContainerIterator>::increment()
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   if (++this->it_ == this->boundary_second())
   {
     this->it_ = this->boundary_first();
@@ -96,6 +98,7 @@ void fcppt::cyclic_iterator<ContainerIterator>::decrement()
   }
   else
   {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     --this->it_;
   }
 }

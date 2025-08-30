@@ -44,13 +44,13 @@ public:
 
   [[nodiscard]] reference operator*() const { return *ptr_; }
 
-  void increment() { ++ptr_; }
+  void increment() { ++ptr_; } // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
   [[nodiscard]] bool equal(my_iterator const &_other) const { return ptr_ == _other.ptr_; }
 
-  void decrement() { --ptr_; }
+  void decrement() { --ptr_; } // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
-  void advance(difference_type const _distance) { ptr_ += _distance; }
+  void advance(difference_type const _distance) { ptr_ += _distance; } // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 
   [[nodiscard]] difference_type distance_to(my_iterator const &_other) const
   {

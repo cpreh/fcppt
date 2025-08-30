@@ -26,8 +26,10 @@ TEST_CASE("container::buffer::read_from", "[container],[buffer]")
 
   buffer_type const result{fcppt::container::buffer::read_from<buffer_type>(
       10U, [](buffer_type::pointer const _data, buffer_type::size_type) {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
         _data[0] = 10;
 
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
         _data[1] = 20;
 
         return 2U;

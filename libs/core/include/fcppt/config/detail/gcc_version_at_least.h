@@ -9,7 +9,7 @@
 #include <fcppt/config/compiler.h>
 
 
-#if defined(FCPPT_CONFIG_GNU_GCC_COMPILER)
+#ifdef FCPPT_CONFIG_GNU_GCC_COMPILER
 
 #include <fcppt/config/detail/major_minor_at_least.h>
 

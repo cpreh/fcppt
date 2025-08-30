@@ -68,6 +68,7 @@ TEST_CASE("container::buffer resize_write_area", "[container],[buffer]")
 {
   container_type container{2U};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   container.write_data()[0] = 10;
 
   container.written(1U);

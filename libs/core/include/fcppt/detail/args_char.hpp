@@ -11,7 +11,7 @@
 namespace fcppt::detail
 {
 using args_char =
-#if defined(FCPPT_DETAIL_MAIN_WCHAR)
+#ifdef FCPPT_DETAIL_MAIN_WCHAR
     wchar_t
 #else
     char

@@ -9,7 +9,7 @@
 #include <fcppt/config/compiler.hpp> // IWYU pragma: keep
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/mpl/list/object_concept.hpp> // IWYU pragma: keep
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 #include <fcppt/mpl/arg.hpp>
 #include <fcppt/mpl/bind.hpp>
 #include <fcppt/mpl/constant.hpp>
@@ -29,7 +29,7 @@ namespace fcppt::mpl::list
 {
 namespace detail
 {
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 template<typename T>
 struct distinct;
 

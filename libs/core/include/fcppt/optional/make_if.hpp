@@ -28,6 +28,8 @@ make_if(bool const _is_set, Function const &_function)
 {
   using result_type = fcppt::optional::object<std::invoke_result_t<Function>>;
 
+  // TODO(philipp): This is technically a valid warning depending on the function.
+  // NOLINTNEXTLINE(clang-analyzer-core.StackAddressEscape)
   return _is_set ? result_type{_function()} : result_type{};
 }
 

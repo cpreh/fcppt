@@ -10,15 +10,13 @@ set(FCPPT_UTILS_CLANG_TIDY
     CACHE FILEPATH "Path to clang-tidy. If unset, clang-tidy will not be run.")
 
 if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
-  # "-bugprone-exception-escape" triggers on every move constructor/assignment
-  # operator for classes containing a std::string. Might be a problem with
-  # libc++. TODO: Investigate this again with clang-16.
-  # "-clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with
-  # std::make_unique "-fuchsia-trailing-return" complains about code like
-  # X<decltype(_param)> "-readability-function-cognitive-complexity" triggers
+  # "clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with
+  # std::make_unique "fuchsia-trailing-return" complains about code like
+  # X<decltype(_param)> "readability-function-cognitive-complexity" triggers
   # for almost every Catch2 test case "-modernize-return-braced-init-list" also
   # triggers on ()-initialization, breaking code
   # portability-template-virtual-member-function triggers on pure virtual functions.
+  # cert-err58-cpp triggers on std::invocable in libc++ TODO: Check again
 
   set(FCPPT_UTILS_CLANG_TIDY_CHECKS
       "*"
@@ -26,10 +24,10 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
       "-altera-struct-pack-align"
       "-altera-unroll-loops"
       "-bugprone-macro-parentheses"
-      "-bugprone-exception-escape"
       "-cppcoreguidelines-macro-usage"
       "-clang-analyzer-cplusplus.NewDeleteLeaks"
       "-cert-dcl21-cpp"
+      "-cert-err58-cpp"
       "-fuchsia-default-arguments-calls"
       "-fuchsia-overloaded-operator"
       "-fuchsia-trailing-return"
@@ -38,6 +36,7 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
       "-llvm-header-guard"
       "-llvm-include-order"
       "-llvm-namespace-comment"
+      "-llvm-prefer-static-over-anonymous-namespace"
       "-llvmlibc-callee-namespace"
       "-llvmlibc-implementation-in-namespace"
       "-llvmlibc-inline-function-decl"

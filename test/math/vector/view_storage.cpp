@@ -46,8 +46,10 @@ public:
   {
   }
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   reference operator[](size_type const _index) { return data_[_index]; }
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   const_reference operator[](size_type const _index) const { return data_[_index]; }
 
 private:

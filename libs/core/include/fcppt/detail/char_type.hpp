@@ -11,7 +11,7 @@
 namespace fcppt::detail
 {
 using char_type =
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
     char
 #else
     wchar_t

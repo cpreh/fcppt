@@ -30,8 +30,10 @@ TEST_CASE("math::detail::static_storage", "[math]")
 
     CHECK(const_storage[1] == 2);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     CHECK(const_storage.data()[0] == 1);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     CHECK(const_storage.data()[1] == 2);
   }
 
@@ -42,8 +44,10 @@ TEST_CASE("math::detail::static_storage", "[math]")
 
     CHECK(storage[0] == 5);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     storage.data()[1] = 10;
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     CHECK(storage.data()[1] == 10);
   }
 }

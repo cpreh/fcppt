@@ -13,7 +13,7 @@
 fcppt::io::istream &fcppt::io::cin()
 {
   return
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
       std::cin
 #else
       std::wcin

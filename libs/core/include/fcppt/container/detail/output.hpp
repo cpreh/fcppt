@@ -45,6 +45,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   for (const_iterator it{_output.container().begin()}; it != end; ++it)
   {
     _stream << fcppt::output(*it);

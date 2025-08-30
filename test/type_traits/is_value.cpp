@@ -11,7 +11,7 @@ int main()
   {
   };
 
-  enum test_enum
+  enum class test_enum
   {
   };
 

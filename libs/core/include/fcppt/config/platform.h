@@ -6,11 +6,11 @@
 #ifndef FCPPT_CONFIG_PLATFORM_H_INCLUDED
 #define FCPPT_CONFIG_PLATFORM_H_INCLUDED
 
-#if defined(_WIN32)
+#ifdef _WIN32
 #define FCPPT_CONFIG_WINDOWS_PLATFORM
-#elif defined(__unix__)
+#elifdef __unix__
 #define FCPPT_CONFIG_UNIX_PLATFORM
-#elif defined(__APPLE__)
+#elifdef __APPLE__
 #define FCPPT_CONFIG_DARWIN_PLATFORM
 #endif
 

@@ -4,5 +4,6 @@
 - Use C++20's ranges (not implemented in libc++)
 - Allow std::uint8_t enums in random distributions
 - Clean up fcppt::algorithm code to work with all ranges if possible
-test/container/grid/object.cpp:34:9: warning: use a boost version of this algorithm [boost-use-ranges]
-test/container/grid/object.cpp:85:9: warning: use a boost version of this algorithm [boost-use-ranges]
+- test/container/grid/object.cpp:34:9: warning: use a boost version of this algorithm [boost-use-ranges]
+- test/container/grid/object.cpp:85:9: warning: use a boost version of this algorithm [boost-use-ranges]
+- Replace fcppt::concepts::invocable with std::invocable

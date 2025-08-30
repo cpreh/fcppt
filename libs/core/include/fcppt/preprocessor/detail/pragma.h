@@ -9,9 +9,9 @@
 #include <fcppt/config/compiler.h>
 
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 #define FCPPT_PP_DETAIL_PRAGMA(x) __pragma(x)
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
+#elifdef FCPPT_CONFIG_GCC_COMPILER
 #define FCPPT_PP_DETAIL_PRAGMA(x) _Pragma(#x)
 #else
 #error "Don't know what pragma should be!"

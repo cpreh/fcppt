@@ -14,7 +14,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#ifdef FCPPT_CONFIG_MSVC_COMPILER
 
 #include <fcppt/config/msvc_version_at_least.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
@@ -76,11 +76,11 @@ FCPPT_PP_DISABLE_VC_WARNING(5262) // implicit fall-through
 FCPPT_PP_DISABLE_VC_WARNING(5264) // 'const' variable is not used
 #endif
 
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
+#elifdef FCPPT_CONFIG_GCC_COMPILER
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 
-#if defined(FCPPT_CONFIG_CLANG_COMPILER)
+#ifdef FCPPT_CONFIG_CLANG_COMPILER
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdeprecated-dynamic-exception-spec)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdisabled-macro-expansion)

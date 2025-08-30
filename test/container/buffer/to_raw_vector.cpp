@@ -22,6 +22,7 @@ TEST_CASE("container::buffer::to_raw_vector", "[container],[buffer]")
 
   buffer_type buffer{2U};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   buffer.write_data()[0] = 10;
 
   buffer.written(1U);

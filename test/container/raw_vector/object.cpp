@@ -71,10 +71,12 @@ TEST_CASE("container::raw_vector::insert", "[container],[raw_vector]")
 
   REQUIRE(test.size() == 2U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   test.insert(test.begin() + 1U, 30);
 
   REQUIRE(test == int_vector{10, 30, 20});
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   test.insert(test.begin() + 2, 2U, 40);
 
   CHECK(test == int_vector{10, 30, 40, 40, 20});
@@ -129,10 +131,12 @@ TEST_CASE("container::raw_vector::erase", "[container],[raw_vector]")
 
   REQUIRE(test.size() == 5U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   test.erase(test.begin() + 3);
 
   CHECK(test == int_vector{0, 1, 2, 4});
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   test.erase(test.begin() + 1, test.begin() + 3);
 
   CHECK(test == int_vector{0, 4});

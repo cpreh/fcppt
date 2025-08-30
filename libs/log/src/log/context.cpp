@@ -27,7 +27,7 @@
 #include <fcppt/log/impl/find_or_create_child.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#if defined(ENABLE_THREADS)
+#ifdef ENABLE_THREADS
 #include <mutex>
 #endif
 #include <utility>
@@ -37,9 +37,9 @@ struct fcppt::log::context::impl
 {
   FCPPT_NONMOVABLE(impl);
 public:
-#if defined(ENABLE_THREADS)
+#ifdef ENABLE_THREADS
   using mutex_type = std::mutex;
-  using lock_guard = std::lock_guard<std::mutex>;
+  using lock_guard = std::scoped_lock<mutex_type>;
 #else
   struct mutex_type {};
   struct lock_guard { explicit lock_guard(mutex_type) {} };

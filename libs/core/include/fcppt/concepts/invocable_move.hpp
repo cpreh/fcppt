@@ -6,9 +6,9 @@
 #ifndef FCPPT_CONCEPTS_INVOCABLE_MOVE_HPP_INCLUDED
 #define FCPPT_CONCEPTS_INVOCABLE_MOVE_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
 #include <fcppt/concepts/move_constructible.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
+#include <concepts>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,7 +20,7 @@ namespace fcppt::concepts
 \ingroup fcpptconcepts
 */
 template <typename Function, typename... Args>
-concept invocable_move = fcppt::concepts::invocable<Function, Args...> &&
+concept invocable_move = std::invocable<Function, Args...> &&
     fcppt::concepts::move_constructible<std::invoke_result_t<Function, Args...>>;
 }
 

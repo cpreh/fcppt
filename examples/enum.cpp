@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/cast/enum_to_underlying.hpp>
+#include <fcppt/cast/promote_int.hpp>
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/from_string.hpp>
@@ -46,7 +47,7 @@ void print_enum(myenum const _value)
 {
   std::cout <<
       // Convert to an integer
-      fcppt::cast::enum_to_underlying(_value) << '\n';
+      fcppt::cast::promote_int(fcppt::cast::enum_to_underlying(_value)) << '\n';
 }
 
 void print() { print_enum(fcppt::enum_::max_value<myenum>::value); }

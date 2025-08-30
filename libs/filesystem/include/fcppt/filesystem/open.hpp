@@ -34,7 +34,8 @@ open(std::filesystem::path const &_path, std::ios_base::openmode const _openmode
 
   result.open(_path, _openmode);
 
-  return fcppt::optional::make_if(result.is_open(), [&result] { return std::move(result); });
+  return fcppt::optional::make_if(
+      result.is_open(), [&result] -> Stream { return std::move(result); });
 }
 
 }

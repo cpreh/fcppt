@@ -232,8 +232,8 @@ function(fcppt_utils_set_target_compiler_flags target_name)
   set_target_properties(
     ${target_name}
     PROPERTIES CXX_EXTENSIONS FALSE
-               CXX_STANDARD 20
-               CXX_STANDARD_REQUIRED 20
+               CXX_STANDARD 23
+               CXX_STANDARD_REQUIRED 23
                NO_SYSTEM_FROM_IMPORTED TRUE)
 
   get_target_property(TARGET_TYPE ${target_name} TYPE)
@@ -439,7 +439,13 @@ function(fcppt_utils_add_example example_dir path_name)
 
   target_include_directories(${full_example_name} SYSTEM PRIVATE ${_SYSTEM_INCLUDE_DIRS})
 
-  if(NOT _IS_C)
+  if(${_IS_C})
+    set_target_properties(
+      ${full_example_name}
+      PROPERTIES
+      C_STANDARD 23
+      C_STANDARD_REQUIRED 23)
+  else()
     fcppt_utils_set_target_compiler_flags(${full_example_name})
   endif()
 

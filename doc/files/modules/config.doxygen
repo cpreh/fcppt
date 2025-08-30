@@ -39,7 +39,6 @@ identify the current compiler:
 <tr>
 <td>FCPPT_CONFIG_GCC_COMPILER</td>
 <td>Defined when the compiler is gcc or clang. clang emulates gcc to a large extent.</td>
-</td>
 </tr>
 <tr>
 <td>FCPPT_CONFIG_CLANG_COMPILER</td>

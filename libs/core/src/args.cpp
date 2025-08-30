@@ -12,11 +12,11 @@
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#if !defined(FCPPT_DETAIL_MAIN_WCHAR)
+#ifndef FCPPT_DETAIL_MAIN_WCHAR
 #include <fcppt/from_std_string.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
-#if defined(FCPPT_DETAIL_MAIN_WCHAR)
+#ifdef FCPPT_DETAIL_MAIN_WCHAR
 #include <string>
 #else
 #include <string_view>
@@ -36,7 +36,7 @@ fcppt::args_vector fcppt::args(int const _argc, fcppt::args_char const *const *c
           ),
       [](fcppt::args_char const *const _arg) {
         return
-#if defined(FCPPT_DETAIL_MAIN_WCHAR)
+#ifdef FCPPT_DETAIL_MAIN_WCHAR
             // fcppt::string is std::wstring in this case
             std::basic_string<fcppt::args_char>{_arg};
 #else

@@ -13,7 +13,7 @@
 fcppt::io::ostream &fcppt::io::cerr()
 {
   return
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
       std::cerr
 #else
       std::wcerr

@@ -13,14 +13,14 @@
 
 std::tm fcppt::time::localtime(std::time_t const _time)
 {
-#if defined(FCPPT_CONFIG_POSIX_PLATFORM)
+#ifdef FCPPT_CONFIG_POSIX_PLATFORM
   std::tm result{};
   if (localtime_r(&_time, &result) == nullptr)
   {
     throw std::runtime_error{"localtime_r failed"};
   }
   return result;
-#elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
+#elifdef FCPPT_CONFIG_WINDOWS_PLATFORM
   std::tm result{};
   if(localtime_s(&result, &_time) != 0)
   {

@@ -31,7 +31,7 @@ fcppt::optional::object<fcppt::container::to_value_type<Container>> pop_front(Co
 
     _container.pop_front();
 
-    return result;
+    return std::move(result);
   });
 }
 

@@ -31,7 +31,7 @@ TEST_CASE("array::array", "[array]")
   CHECK(test.get_unsafe(0) == 4);
   CHECK(fcppt::array::get<1>(test) == 8);
   CHECK(test.get_unsafe(1) == 8);
-  CHECK(test.begin() + 2U == test.end());
+  CHECK(test.begin() + 2U == test.end()); // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   CHECK(test.data() == &*test.begin());
 
   constexpr fcppt::array::object<int,1U> const c1{1};
@@ -40,7 +40,7 @@ TEST_CASE("array::array", "[array]")
   fcppt::array::object<int,1U> test2{c1};
   fcppt::array::get<0>(test2) = 10;
   CHECK(fcppt::array::get<0>(test2) == 10);
-  CHECK(test2.begin() + 1U == test2.end());
+  CHECK(test2.begin() + 1U == test2.end()); // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   CHECK(test2.data() == &*test2.begin());
   CHECK(test2.size() == 1U);
 }

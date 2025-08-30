@@ -10,12 +10,12 @@
 #include <fcppt/preprocessor/push_warning.h>
 FCPPT_PP_PUSH_WARNING
 
-#if defined(FCPPT_CONFIG_GCC_COMPILER)
+#ifdef FCPPT_CONFIG_GCC_COMPILER
 
 #include <fcppt/config/clang_version_at_least.h>
 #include <fcppt/preprocessor/disable_gcc_warning.h>
 
-#if defined(FCPPT_CONFIG_CLANG_COMPILER)
+#ifdef FCPPT_CONFIG_CLANG_COMPILER
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wcomma)

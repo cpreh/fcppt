@@ -58,9 +58,9 @@ function(fcppt_generate_symbol_header)
 #ifndef ${symbol_name_long}_${suffix_upper}_INCLUDED
 #define ${symbol_name_long}_${suffix_upper}_INCLUDED
 
-#if defined(${static_link_flag})
+#ifdef ${static_link_flag}
 #	define ${symbol_name_long}
-#elif defined(${_EXPORTS_NAME}_EXPORTS)
+#elifdef ${_EXPORTS_NAME}_EXPORTS
 #	include <fcppt/symbol/export.${suffix_lower}>
 #	define ${symbol_name_long} FCPPT_SYMBOL_EXPORT
 #else

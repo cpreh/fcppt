@@ -54,6 +54,7 @@ template <typename T, typename A>
 typename fcppt::container::dynamic_array<T, A>::pointer
 fcppt::container::dynamic_array<T, A>::data_end() noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   return this->data() + fcppt::cast::to_signed(size_);
 }
 
@@ -61,6 +62,7 @@ template <typename T, typename A>
 typename fcppt::container::dynamic_array<T, A>::const_pointer
 fcppt::container::dynamic_array<T, A>::data_end() const noexcept
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   return this->data() + fcppt::cast::to_signed(size_);
 }
 

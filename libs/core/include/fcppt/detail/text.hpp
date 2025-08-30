@@ -8,7 +8,7 @@
 
 #include <fcppt/public_config.hpp>
 
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
 #define FCPPT_DETAIL_TEXT(x) x
 #else
 #define FCPPT_DETAIL_TEXT(x) L##x

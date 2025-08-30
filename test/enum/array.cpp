@@ -67,6 +67,7 @@ TEST_CASE("enum::array", "[enum]")
   using int_array = fcppt::enum_::array<my_enum, int>;
 
   int_array const test1{1, 2, 3};
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   CHECK(test1.begin() + 3U == test1.end());
   CHECK(test1.data() == &*test1.begin());
 

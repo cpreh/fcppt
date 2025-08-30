@@ -30,6 +30,7 @@ fcppt::container::to_pointer_type<Container> data_end(Container &_container)
 {
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
   return fcppt::container::data(_container) + fcppt::cast::to_signed(_container.size());
 FCPPT_PP_POP_WARNING
 }

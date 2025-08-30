@@ -6,7 +6,7 @@
 #include <fcppt/public_config.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/to_std_wstring_locale.hpp>
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
 #include <fcppt/widen_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
@@ -16,14 +16,14 @@
 
 std::wstring fcppt::to_std_wstring_locale(
     fcppt::string_view const _input,
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
     std::locale const &_locale
 #else
     std::locale const &
 #endif
 )
 {
-#if defined(FCPPT_NARROW_STRING)
+#ifdef FCPPT_NARROW_STRING
   return fcppt::widen_locale(_input, _locale);
 #else
   return std::wstring{_input};
