@@ -220,21 +220,38 @@ endfunction()
 # Sets fcppt's target options.
 #
 # target_name: The name of the target.
+# IS_C: If this is a C (not C++) target.
 # ADDITIONAL_FLAGS: Additional compile flags to use.
 function(fcppt_utils_set_target_compiler_flags target_name)
+  set(option_args IS_C)
   set(multi_args ADDITIONAL_FLAGS)
 
-  cmake_parse_arguments("" "" "" "${multi_args}" ${ARGN})
+  cmake_parse_arguments("" "${option_args}" "" "${multi_args}" ${ARGN})
 
-  target_compile_options(${target_name} PRIVATE ${FCPPT_UTILS_COMPILE_OPTIONS}
-                                                ${_ADDITIONAL_FLAGS})
+  if(${_IS_C})
+    if(MSVC)
+      list(APPEND _ADDITIONAL_FLAGS /std:clatest)
+    endif()
 
-  set_target_properties(
-    ${target_name}
-    PROPERTIES CXX_EXTENSIONS FALSE
-               CXX_STANDARD 23
-               CXX_STANDARD_REQUIRED 23
-               NO_SYSTEM_FROM_IMPORTED TRUE)
+    target_compile_options(${target_name} PRIVATE ${_ADDITIONAL_FLAGS})
+
+    set_target_properties(
+      ${target_name}
+      PROPERTIES C_EXTENSIONS FALSE
+                 C_STANDARD 23
+                 C_STANDARD_REQUIRED 23
+                 NO_SYSTEM_FROM_IMPORTED TRUE)
+  else()
+    target_compile_options(${target_name} PRIVATE ${FCPPT_UTILS_COMPILE_OPTIONS}
+                                                  ${_ADDITIONAL_FLAGS})
+
+    set_target_properties(
+      ${target_name}
+      PROPERTIES CXX_EXTENSIONS FALSE
+                 CXX_STANDARD 23
+                 CXX_STANDARD_REQUIRED 23
+                 NO_SYSTEM_FROM_IMPORTED TRUE)
+  endif()
 
   get_target_property(TARGET_TYPE ${target_name} TYPE)
 
@@ -422,6 +439,8 @@ function(fcppt_utils_add_example example_dir path_name)
 
   if(${_IS_C})
     set(suffix "c")
+
+    set(is_c IS_C)
   else()
     set(suffix "cpp")
   endif()
@@ -439,15 +458,7 @@ function(fcppt_utils_add_example example_dir path_name)
 
   target_include_directories(${full_example_name} SYSTEM PRIVATE ${_SYSTEM_INCLUDE_DIRS})
 
-  if(${_IS_C})
-    set_target_properties(
-      ${full_example_name}
-      PROPERTIES
-      C_STANDARD 23
-      C_STANDARD_REQUIRED 23)
-  else()
-    fcppt_utils_set_target_compiler_flags(${full_example_name})
-  endif()
+  fcppt_utils_set_target_compiler_flags(${full_example_name} ${is_c})
 
   target_link_libraries(${full_example_name} PRIVATE ${_LINK_LIBS})
 
