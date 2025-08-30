@@ -7,7 +7,6 @@
 #define FCPPT_EITHER_MATCH_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
 #include <fcppt/either/failure_move_type.hpp>
 #include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/either/object_impl.hpp> // IWYU pragma: keep
@@ -16,6 +15,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <concepts>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,8 +32,8 @@ failure <code>f</code> and <code>_failure_function(f)</code> is returned.
 */
 template <
     fcppt::either::object_concept Either,
-    fcppt::concepts::invocable<fcppt::either::failure_move_type<Either>> FailureFunction,
-    fcppt::concepts::invocable<fcppt::either::success_move_type<Either>> SuccessFunction>
+    std::invocable<fcppt::either::failure_move_type<Either>> FailureFunction,
+    std::invocable<fcppt::either::success_move_type<Either>> SuccessFunction>
 [[nodiscard]] std::invoke_result_t<SuccessFunction, fcppt::either::success_move_type<Either>> match(
     Either &&_either, // NOLINT(cppcoreguidelines-missing-std-forward)
     FailureFunction const &_failure_function,

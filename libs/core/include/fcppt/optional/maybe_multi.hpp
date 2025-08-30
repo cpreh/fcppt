@@ -7,12 +7,12 @@
 #define FCPPT_OPTIONAL_MAYBE_MULTI_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
 #include <fcppt/optional/move_type.hpp>
 #include <fcppt/optional/object_concept.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/optional/detail/has_value_all.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <concepts>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,8 +29,8 @@ Otherwise, the result of \a _default is returned.
 */
 template <
     fcppt::optional::object_concept... Optionals,
-    fcppt::concepts::invocable Default,
-    fcppt::concepts::invocable<fcppt::optional::move_type<Optionals>...> Transform>
+    std::invocable Default,
+    std::invocable<fcppt::optional::move_type<Optionals>...> Transform>
 [[nodiscard]] std::invoke_result_t<Default>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 maybe_multi(Default const _default, Transform const _transform, Optionals &&..._optionals) requires

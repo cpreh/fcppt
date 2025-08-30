@@ -136,7 +136,6 @@ libs/core/include/fcppt/char_type.hpp
 libs/core/include/fcppt/check_literal_conversion.hpp
 libs/core/include/fcppt/com_deleter_fwd.hpp
 libs/core/include/fcppt/com_deleter.hpp
-libs/core/include/fcppt/concepts/invocable.hpp
 libs/core/include/fcppt/concepts/invocable_move.hpp
 libs/core/include/fcppt/concepts/move_constructible.hpp
 libs/core/include/fcppt/concepts/range.hpp

@@ -6,7 +6,6 @@
 #ifndef FCPPT_EITHER_LOOP_HPP_INCLUDED
 #define FCPPT_EITHER_LOOP_HPP_INCLUDED
 
-#include <fcppt/concepts/invocable.hpp> // IWYU pragma: keep
 #include <fcppt/concepts/invocable_move.hpp> // IWYU pragma: keep
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object_v.hpp>
@@ -17,6 +16,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <concepts>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -34,7 +34,7 @@ _loop.
 */
 template <
     fcppt::concepts::invocable_move Next,
-    fcppt::concepts::invocable<fcppt::either::success_type<std::invoke_result_t<Next>>> Loop>
+    std::invocable<fcppt::either::success_type<std::invoke_result_t<Next>>> Loop>
 [[nodiscard]] fcppt::either::failure_type<std::invoke_result_t<Next>> loop(
     Next const &_next,
     Loop const &_loop) requires fcppt::either::is_object_v<std::invoke_result_t<Next>>
