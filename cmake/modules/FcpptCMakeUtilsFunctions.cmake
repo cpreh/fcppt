@@ -234,24 +234,20 @@ function(fcppt_utils_set_target_compiler_flags target_name)
     endif()
 
     target_compile_options(${target_name} PRIVATE ${_ADDITIONAL_FLAGS})
-
-    set_target_properties(
-      ${target_name}
-      PROPERTIES C_EXTENSIONS FALSE
-                 C_STANDARD 23
-                 C_STANDARD_REQUIRED 23
-                 NO_SYSTEM_FROM_IMPORTED TRUE)
   else()
     target_compile_options(${target_name} PRIVATE ${FCPPT_UTILS_COMPILE_OPTIONS}
                                                   ${_ADDITIONAL_FLAGS})
-
-    set_target_properties(
-      ${target_name}
-      PROPERTIES CXX_EXTENSIONS FALSE
-                 CXX_STANDARD 23
-                 CXX_STANDARD_REQUIRED 23
-                 NO_SYSTEM_FROM_IMPORTED TRUE)
   endif()
+
+  set_target_properties(
+    ${target_name}
+    PROPERTIES CXX_EXTENSIONS FALSE
+               CXX_STANDARD 23
+               CXX_STANDARD_REQUIRED 23
+               C_EXTENSIONS FALSE
+               C_STANDARD 23
+               C_STANDARD_REQUIRED 23
+               NO_SYSTEM_FROM_IMPORTED TRUE)
 
   get_target_property(TARGET_TYPE ${target_name} TYPE)
 
