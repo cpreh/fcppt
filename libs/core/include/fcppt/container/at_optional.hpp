@@ -35,6 +35,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
   return fcppt::optional::make_if(_index < _container.size(), [&_container, _index] {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
     return fcppt::make_ref(*(_container.begin() + fcppt::cast::to_signed(_index)));
   });
 

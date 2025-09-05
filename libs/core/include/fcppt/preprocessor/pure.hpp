@@ -8,7 +8,7 @@
 
 #include <fcppt/config/compiler.hpp>
 
-#if defined(FCPPT_CONFIG_GCC_COMPILER)
+#ifdef FCPPT_CONFIG_GCC_COMPILER
 #define FCPPT_PP_PURE __attribute__((pure))
 #else
 #define FCPPT_PP_PURE
