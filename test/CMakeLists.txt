@@ -148,6 +148,8 @@ add_fcppt_test(overload)
 
 add_subdirectory(parse)
 
+add_subdirectory(preprocessor)
+
 add_subdirectory(random)
 
 add_subdirectory(range)
