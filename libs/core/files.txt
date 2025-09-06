@@ -1070,7 +1070,6 @@ libs/core/include/fcppt/overloaded_decl.hpp
 libs/core/include/fcppt/overloaded_fwd.hpp
 libs/core/include/fcppt/overloaded_impl.hpp
 libs/core/include/fcppt/overload.hpp
-libs/core/include/fcppt/preprocessor/const.hpp
 libs/core/include/fcppt/preprocessor/detail/disable_clang_warning.h
 libs/core/include/fcppt/preprocessor/detail/disable_gcc_warning.h
 libs/core/include/fcppt/preprocessor/detail/disable_gnu_gcc_warning.h
@@ -1102,7 +1101,6 @@ libs/core/include/fcppt/preprocessor/pop_warning.h
 libs/core/include/fcppt/preprocessor/pop_warning.hpp
 libs/core/include/fcppt/preprocessor/pragma.h
 libs/core/include/fcppt/preprocessor/pragma.hpp
-libs/core/include/fcppt/preprocessor/pure.hpp
 libs/core/include/fcppt/preprocessor/push_warning.h
 libs/core/include/fcppt/preprocessor/push_warning.hpp
 libs/core/include/fcppt/preprocessor/stringize.hpp

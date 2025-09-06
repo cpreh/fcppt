@@ -7,5 +7,3 @@
 - test/container/grid/object.cpp:34:9: warning: use a boost version of this algorithm [boost-use-ranges]
 - test/container/grid/object.cpp:85:9: warning: use a boost version of this algorithm [boost-use-ranges]
 - Test for FCPPT_PP_STRINGIZE
-- Test for FCPPT_PP_PURE
-- Test for FCPPT_PP_CONST
