@@ -9,8 +9,8 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/dim/comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/math/dim/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/dim/comparison.hpp> // IWYU pragma: keep
+#include <fcppt/math/dim/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <algorithm>
@@ -28,9 +28,9 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::grid init reference", "[container],[grid]")
 {
-  int2_grid const test(int2_grid::dim(10U, 20U), 42);
+  int2_grid const test{int2_grid::dim(10U, 20U), 42};
 
-  CHECK(std::count(test.begin(), test.end(), 42) == 200); // NOLINT(boost-use-ranges)
+  CHECK(std::ranges::count(test, 42) == 200);
 }
 
 TEST_CASE("container::grid index 2d", "[container],[grid]")
@@ -79,9 +79,9 @@ TEST_CASE("container::grid index 3d", "[container],[grid]")
 
 TEST_CASE("container::grid const data", "[container],[grid]")
 {
-  int2_grid const test(int2_grid::dim(5U, 2U), 42);
+  int2_grid const test{int2_grid::dim(5U, 2U), 42};
 
-  CHECK(std::count(test.begin(), test.end(), 42) == 10); // NOLINT(boost-use-ranges)
+  CHECK(std::ranges::count(test, 42) == 10);
 }
 
 TEST_CASE("container::grid::contents", "[container],[grid]")
