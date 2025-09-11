@@ -6,9 +6,9 @@
 #ifndef FCPPT_RANGE_SINGULAR_HPP_INCLUDED
 #define FCPPT_RANGE_SINGULAR_HPP_INCLUDED
 
-#include <fcppt/range/empty.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <ranges>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::range
@@ -21,7 +21,7 @@ namespace fcppt::range
 template <typename Range>
 bool singular(Range const &_range)
 {
-  return !fcppt::range::empty(_range) && std::next(_range.begin()) == _range.end();
+  return !std::ranges::empty(_range) && std::next(_range.begin()) == _range.end();
 }
 }
 
