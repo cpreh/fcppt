@@ -8,10 +8,11 @@
 
 #include <fcppt/algorithm/equal_range.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/range/begin.hpp>
 #include <fcppt/range/singular.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <ranges>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,12 +33,10 @@ fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 binary_search(Range &&_range, T const &_value)
 {
-  auto const result(fcppt::algorithm::equal_range(_range, _value));
+  auto const result{fcppt::algorithm::equal_range(_range, _value)};
 
-  using result_type =
-      fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>;
-
-  return fcppt::range::singular(result) ? result_type{fcppt::range::begin(result)} : result_type{};
+  return fcppt::optional::make_if(
+      fcppt::range::singular(result), [&result] { return std::ranges::begin(result); });
 }
 
 }
