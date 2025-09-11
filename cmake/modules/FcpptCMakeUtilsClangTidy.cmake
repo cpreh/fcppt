@@ -10,13 +10,12 @@ set(FCPPT_UTILS_CLANG_TIDY
     CACHE FILEPATH "Path to clang-tidy. If unset, clang-tidy will not be run.")
 
 if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
-  # "clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with
-  # std::make_unique "fuchsia-trailing-return" complains about code like
-  # X<decltype(_param)> "readability-function-cognitive-complexity" triggers
-  # for almost every Catch2 test case "-modernize-return-braced-init-list" also
-  # triggers on ()-initialization, breaking code
-  # portability-template-virtual-member-function triggers on pure virtual functions.
-  # cert-err58-cpp triggers on std::invocable in libc++ TODO: Check again
+  # - "clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
+  # - "fuchsia-trailing-return" complains about code like X<decltype(_param)>
+  # - "readability-function-cognitive-complexity" triggers for almost every Catch2 test case
+  # - "modernize-return-braced-init-list" also triggers on ()-initialization, breaking code
+  # - "portability-template-virtual-member-function" triggers on pure virtual functions.
+  # - "cert-err58-cpp" triggers on std::invocable in libc++ TODO: Check again
 
   set(FCPPT_UTILS_CLANG_TIDY_CHECKS
       "*"
