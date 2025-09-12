@@ -12,6 +12,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <ranges>
+#include <utility>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,7 +35,7 @@ requires(std::ranges::input_range<std::remove_cvref_t<Range>>)
 
   iterator_type const ret{::std::ranges::find_if(_range, _comp)};
 
-  return fcppt::optional::make_if(ret != std::ranges::end(_range), [&ret]{ return ret; });
+  return fcppt::optional::make_if(ret != std::ranges::end(_range), [&ret]{ return std::move(ret); });
 }
 
 }
