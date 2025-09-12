@@ -10,7 +10,6 @@
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
