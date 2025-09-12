@@ -131,7 +131,7 @@ you can use #fcppt::algorithm::fold
 \snippet coding_style.cpp coding_style_fold
 
 Algorithms can only be used with ranges, not with iterators.
-In case you need to encapsulate iterators, use #fcppt::iterator::range.
+In case you need to encapsulate iterators, use <code>std::ranges::subrange</code>.
 There are also special ranges like
 #fcppt::int_range or #fcppt::enum_::range.
 Some algorithms also accept an #fcppt::mpl::list::object as a range

@@ -499,7 +499,7 @@ fcppt now uses <code>std::filesystem</code>.
 
 <li>\ref fcpptrange
 	<ul>
-	<li>Added #fcppt::range::begin and #fcppt::range::end that call begin/end via ADL.</li>
+	<li>Added <code>fcppt::range::begin</code> and <code>fcppt::range::end</code> that call begin/end via ADL.</li>
 	<li>Added #fcppt::range::from_pair.</li>
 	</ul>
 </li>
@@ -1001,13 +1001,13 @@ Catch2 is now required.
 
 <li>\ref fcpptiterator
 	<ul>
-	<li>Added <code>operator==</code> to #fcppt::iterator::range.</li>
+	<li>Added <code>operator==</code> to <code>fcppt::iterator::range</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptrange
 	<ul>
-	<li>Added #fcppt::range::size.</li>
+	<li>Added <code>fcppt::range::size</code>.</li>
 	</ul>
 </li>
 
@@ -1427,7 +1427,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added #fcppt::algorithm::equal.</li>
+	<li>Added <code>fcppt::algorithm::equal</code>.</li>
 	<li><code>fcppt::algorithm::append</code> now also works on rvalues.</li>
 	<li>#fcppt::algorithm::map now uses #fcppt::algorithm::loop, so it works on different ranges.</li>
 	<li>Allow <code>fcppt::algorithm::join</code> to join maps and sets.</li>
@@ -2067,7 +2067,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added #fcppt::algorithm::fold_break.</li>
-	<li>Added #fcppt::algorithm::equal_range.</li>
+	<li>Added <code>fcppt::algorithm::equal_range</code>.</li>
 	<li>Added #fcppt::algorithm::binary_search.</li>
 	</ul>
 </li>
