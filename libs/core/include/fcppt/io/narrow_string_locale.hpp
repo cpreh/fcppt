@@ -6,7 +6,6 @@
 #ifndef FCPPT_IO_NARROW_STRING_LOCALE_HPP_INCLUDED
 #define FCPPT_IO_NARROW_STRING_LOCALE_HPP_INCLUDED
 
-#include <fcppt/algorithm/contains.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -35,8 +34,7 @@ narrow_string_locale(std::basic_string_view<Ch, Traits> const _string, std::loca
   std::string result{fcppt::algorithm::map<std::string>(
       _string, [&facet](Ch const _ch) { return facet.narrow(_ch, '\0'); })};
 
-  return fcppt::optional::make_if(
-      !fcppt::algorithm::contains(result, '\0'), [&result] { return std::move(result); });
+  return fcppt::optional::make_if(!result.contains('\0'), [&result] { return std::move(result); });
 }
 }
 

@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/algorithm/contains.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/moore_neighbor_array.hpp>
@@ -12,6 +11,7 @@
 #include <fcppt/math/vector/comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -22,7 +22,7 @@ using array = fcppt::container::grid::moore_neighbor_array<pos>;
 
 bool contains_element(array const &_result, pos const &_pos)
 {
-  return fcppt::algorithm::contains(_result, _pos);
+  return std::ranges::contains(_result, _pos);
 }
 
 }
