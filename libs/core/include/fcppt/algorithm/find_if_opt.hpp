@@ -7,11 +7,11 @@
 #define FCPPT_ALGORITHM_FIND_IF_OPT_HPP_INCLUDED
 
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <ranges>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,16 +28,13 @@ template <typename Range, typename Comp>
 inline fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 find_if_opt(Range &&_range, Comp const &_comp)
+requires(std::ranges::input_range<std::remove_cvref_t<Range>>)
 {
   using iterator_type = fcppt::container::to_iterator_type<std::remove_reference_t<Range>>;
 
-  using result_type = fcppt::optional::object<iterator_type>;
+  iterator_type const ret{::std::ranges::find_if(_range, _comp)};
 
-  iterator_type const end{fcppt::range::end(_range)};
-
-  iterator_type const ret(::std::find_if(fcppt::range::begin(_range), end, _comp));
-
-  return ret == end ? result_type() : result_type(ret);
+  return fcppt::optional::make_if(ret != std::ranges::end(_range), [&ret]{ return ret; });
 }
 
 }

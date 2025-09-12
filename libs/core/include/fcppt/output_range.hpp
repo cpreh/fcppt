@@ -7,16 +7,16 @@
 #define FCPPT_OUTPUT_RANGE_HPP_INCLUDED
 
 #include <fcppt/output_impl_fwd.hpp>
-#include <fcppt/concepts/range.hpp> // IWYU pragma: keep
 #include <fcppt/container/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <ranges>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 template <typename Arg>
-requires fcppt::concepts::range<Arg>
+requires std::ranges::input_range<Arg>
 struct output_impl<Arg, void>
 {
   template <typename Ch, typename Traits>

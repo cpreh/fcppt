@@ -8,6 +8,7 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
+#include <fcppt/algorithm/range.hpp>
 
 namespace fcppt::algorithm
 {
@@ -16,10 +17,11 @@ namespace fcppt::algorithm
 
 \ingroup fcpptalgorithm
 
-\tparam Pred A function callable as <code>bool (Range::value_type)</code>.
+\tparam Pred A function callable as <code>bool (T)</code> for every type <code>T</code> in the range.
 */
 template <typename Range, typename Pred>
 inline bool all_of(Range const &_range, Pred const &_pred)
+requires(fcppt::algorithm::range<Range>)
 {
   bool result{true};
 

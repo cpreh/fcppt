@@ -42,6 +42,7 @@ libs/core/include/fcppt/algorithm/map_optional.hpp
 libs/core/include/fcppt/algorithm/map_record.hpp
 libs/core/include/fcppt/algorithm/map_tuple.hpp
 libs/core/include/fcppt/algorithm/range_element_type.hpp
+libs/core/include/fcppt/algorithm/range.hpp
 libs/core/include/fcppt/algorithm/remove.hpp
 libs/core/include/fcppt/algorithm/remove_if.hpp
 libs/core/include/fcppt/algorithm/repeat.hpp
@@ -138,7 +139,6 @@ libs/core/include/fcppt/com_deleter_fwd.hpp
 libs/core/include/fcppt/com_deleter.hpp
 libs/core/include/fcppt/concepts/invocable_move.hpp
 libs/core/include/fcppt/concepts/move_constructible.hpp
-libs/core/include/fcppt/concepts/range.hpp
 libs/core/include/fcppt/concepts/string.hpp
 libs/core/include/fcppt/cond.hpp
 libs/core/include/fcppt/config/clang_version_at_least.h
