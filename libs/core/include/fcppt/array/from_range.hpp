@@ -9,12 +9,13 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/object_impl.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/range/size.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <ranges>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,7 +34,7 @@ fcppt::optional::object<
 from_range(Source &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
   return fcppt::optional::make_if(
-      fcppt::range::size(_source) == Size,
+      fcppt::cast::size<std::size_t>(std::ranges::size(_source)) == Size,
       [&_source]
       {
         return fcppt::array::init<fcppt::array::object<

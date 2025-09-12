@@ -1151,8 +1151,8 @@ libs/core/include/fcppt/range/hash_decl.hpp
 libs/core/include/fcppt/range/hash_fwd.hpp
 libs/core/include/fcppt/range/hash.hpp
 libs/core/include/fcppt/range/hash_impl.hpp
+libs/core/include/fcppt/range/nonconst_size.hpp
 libs/core/include/fcppt/range/singular.hpp
-libs/core/include/fcppt/range/size.hpp
 libs/core/include/fcppt/record/all_disjoint.hpp
 libs/core/include/fcppt/record/all_disjoint_v.hpp
 libs/core/include/fcppt/record/are_disjoint.hpp

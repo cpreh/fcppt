@@ -5,7 +5,7 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/range/size.hpp>
+#include <fcppt/range/nonconst_size.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,10 +26,10 @@ TEST_CASE("signal::object", "[signal]")
 {
   int counter{0};
 
-  auto const add([&counter](int const _value) { counter += _value; });
+  auto const add{[&counter](int const _value) { counter += _value; }};
 
-  auto const con_size(
-      [](signal_type const &_sig) { return fcppt::range::size(_sig.connections()); });
+  auto const con_size{
+      [](signal_type const &_sig) { return fcppt::range::nonconst_size(_sig.connections()); }};
 
   signal_type sig{};
 

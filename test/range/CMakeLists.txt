@@ -9,4 +9,6 @@ add_fcppt_range_test(end)
 
 add_fcppt_range_test(from_pair)
 
+add_fcppt_range_test(nonconst_size)
+
 add_fcppt_range_test(singular)

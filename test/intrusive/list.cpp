@@ -8,7 +8,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/intrusive/base.hpp>
 #include <fcppt/intrusive/list.hpp>
-#include <fcppt/range/size.hpp>
+#include <fcppt/range/nonconst_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <iterator>
@@ -55,12 +55,12 @@ TEST_CASE("intrusive::list"
 {
   test_list my_list{};
 
-  CHECK(std::distance(my_list.begin(), my_list.end()) == 0);
+  CHECK(fcppt::range::nonconst_size(my_list) == 0U);
 
   {
     test_class const test1{my_list, 42};
 
-    CHECK(std::distance(my_list.begin(), my_list.end()) == 1);
+    CHECK(fcppt::range::nonconst_size(my_list) == 1U);
 
     CHECK(std::next(my_list.begin()) == my_list.end());
 
@@ -69,7 +69,7 @@ TEST_CASE("intrusive::list"
 
       CHECK(std::next(my_list.begin(), 2) == my_list.end());
 
-      CHECK(std::distance(my_list.begin(), my_list.end()) == 2);
+      CHECK(fcppt::range::nonconst_size(my_list) == 2U);
 
       CHECK(my_list.begin()->value() == 42);
 
@@ -77,7 +77,7 @@ TEST_CASE("intrusive::list"
 
       test_class const test3{std::move(test2)};
 
-      CHECK(std::distance(my_list.begin(), my_list.end()) == 2);
+      CHECK(fcppt::range::nonconst_size(my_list) == 2U);
     }
 
     CHECK(std::next(my_list.begin()) == my_list.end());
@@ -93,36 +93,36 @@ TEST_CASE("intrusive::list size"
 {
   test_list my_list{};
 
-  REQUIRE(fcppt::range::size(my_list) == 0U);
+  REQUIRE(fcppt::range::nonconst_size(my_list) == 0U);
 
   {
     test_class const test1{my_list, 0};
 
-    REQUIRE(fcppt::range::size(my_list) == 1U);
+    REQUIRE(fcppt::range::nonconst_size(my_list) == 1U);
 
     {
       test_class const test2{my_list, 0};
 
-      REQUIRE(fcppt::range::size(my_list) == 2U);
+      REQUIRE(fcppt::range::nonconst_size(my_list) == 2U);
     }
 
-    REQUIRE(fcppt::range::size(my_list) == 1U);
+    REQUIRE(fcppt::range::nonconst_size(my_list) == 1U);
   }
 
-  REQUIRE(fcppt::range::size(my_list) == 0U);
+  REQUIRE(fcppt::range::nonconst_size(my_list) == 0U);
 
   {
     test_class const test1{my_list, 0};
 
-    REQUIRE(fcppt::range::size(my_list) == 1U);
+    REQUIRE(fcppt::range::nonconst_size(my_list) == 1U);
 
     {
       test_class const test2{my_list, 0};
 
-      REQUIRE(fcppt::range::size(my_list) == 2U);
+      REQUIRE(fcppt::range::nonconst_size(my_list) == 2U);
     }
 
-    REQUIRE(fcppt::range::size(my_list) == 1U);
+    REQUIRE(fcppt::range::nonconst_size(my_list) == 1U);
   }
 }
 
