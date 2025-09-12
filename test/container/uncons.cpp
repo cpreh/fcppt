@@ -8,7 +8,6 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/uncons.hpp>
-#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object_impl.hpp>
