@@ -126,7 +126,6 @@ libs/core/include/fcppt/algorithm/detail/optimize_map_v.hpp
 libs/core/include/fcppt/algorithm/detail/reverse.hpp
 libs/core/include/fcppt/algorithm/detail/source_size.hpp
 libs/core/include/fcppt/algorithm/detail/tuple_loop_break.hpp
-libs/core/include/fcppt/algorithm/equal.hpp
 libs/core/include/fcppt/algorithm/equal_range.hpp
 libs/core/include/fcppt/algorithm/find_by_opt.hpp
 libs/core/include/fcppt/algorithm/find_if_opt.hpp

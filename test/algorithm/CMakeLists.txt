@@ -9,8 +9,6 @@ add_fcppt_algorithm_test(binary_search LINK_LIBS fcppt_catch_interface)
 
 add_fcppt_algorithm_test(contains_if)
 
-add_fcppt_algorithm_test(equal)
-
 add_fcppt_algorithm_test(equal_range)
 
 add_fcppt_algorithm_test(find_by_opt LINK_LIBS fcppt_catch_interface)

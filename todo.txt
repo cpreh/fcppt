@@ -5,3 +5,4 @@
 - Allow std::uint8_t enums in random distributions
 - Clean up fcppt::algorithm code to work with all ranges if possible
 - Remove range::begin/end
+- Replace algorithm::contains with std::ranges::contains (C++23)
