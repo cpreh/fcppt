@@ -1,6 +1,14 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_500 5.0.0
+
+<p>
+fcppt now uses <code>C++-23</code>.
+</p>
+
+TODO
+
 \section changes_changes_to_461 4.6.1
 
 <ul>
