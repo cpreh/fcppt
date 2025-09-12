@@ -11,13 +11,22 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/iterator/base_impl.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename SizeType, fcppt::container::grid::size_type Size>
+fcppt::container::grid::pos_iterator<SizeType, Size>::pos_iterator()
+    : current_{fcppt::math::vector::null<pos>()},
+      min_{min{fcppt::math::vector::null<pos>()}},
+      sup_{sup{fcppt::math::vector::null<pos>()}}
+{
+}
+
+template <typename SizeType, fcppt::container::grid::size_type Size>
 fcppt::container::grid::pos_iterator<SizeType, Size>::pos_iterator(pos _current, min _min, sup _sup)
-    : current_(std::move(_current)), min_(std::move(_min)), sup_(std::move(_sup))
+    : current_{std::move(_current)}, min_{std::move(_min)}, sup_{std::move(_sup)}
 {
 }
 

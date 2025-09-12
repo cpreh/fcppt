@@ -46,6 +46,9 @@ public:
 
   using sup = fcppt::container::grid::sup<size_type, Size>;
 
+  // Required for std::input_iterator
+  pos_iterator();
+
   pos_iterator(pos, min, sup);
 
   void increment();

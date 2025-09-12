@@ -20,7 +20,7 @@ namespace fcppt::container::grid::detail
 template <typename Grid>
 using pos_ref_iterator_base = fcppt::iterator::base<fcppt::iterator::types<
     fcppt::container::grid::pos_ref_iterator<Grid>,
-    fcppt::type_traits::value_type<Grid>,
+    fcppt::container::grid::pos_reference<Grid>,
     fcppt::container::grid::pos_reference<Grid>,
     typename Grid::difference_type,
     std::input_iterator_tag>>;

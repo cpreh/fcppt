@@ -7,6 +7,7 @@
 #define FCPPT_ALGORITHM_RANGE_HPP_INCLUDED
 
 #include <fcppt/mpl/list/is_object.hpp>
+#include <fcppt/tuple/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ranges>
 #include <fcppt/config/external_end.hpp>
@@ -17,9 +18,9 @@ namespace fcppt::algorithm
 \brief Checks if a type is an input range or an mpl list.
 \ingroup fcpptalgorithm
 */
-template<typename Type>
-concept range = std::ranges::input_range<Type> || fcppt::mpl::list::is_object<Type>::value;
-
+template <typename Type>
+concept range = std::ranges::input_range<Type> || fcppt::mpl::list::is_object<Type>::value ||
+                fcppt::tuple::is_object<Type>::value;
 }
 
 #endif

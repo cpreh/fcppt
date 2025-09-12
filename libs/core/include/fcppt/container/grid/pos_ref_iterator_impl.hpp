@@ -14,17 +14,26 @@
 #include <fcppt/container/grid/pos_ref_iterator_decl.hpp> // IWYU pragma: export
 #include <fcppt/container/grid/pos_reference_impl.hpp> // IWYU pragma: keep
 #include <fcppt/iterator/base_impl.hpp> // IWYU pragma: keep
+#include <fcppt/math/dim/null.hpp>
 #include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename Grid>
+fcppt::container::grid::pos_ref_iterator<Grid>::pos_ref_iterator()
+    : iterator_{},
+      pos_iterator_{},
+      size_{fcppt::math::dim::null<dim>()}
+{
+}
+
+template <typename Grid>
 fcppt::container::grid::pos_ref_iterator<Grid>::pos_ref_iterator(
     iterator _iterator, pos_iterator _pos_iterator, dim _size)
-    : iterator_(std::move(_iterator)),
-      pos_iterator_(std::move(_pos_iterator)),
-      size_(std::move(_size))
+    : iterator_{std::move(_iterator)},
+      pos_iterator_{std::move(_pos_iterator)},
+      size_{std::move(_size)}
 {
 }
 

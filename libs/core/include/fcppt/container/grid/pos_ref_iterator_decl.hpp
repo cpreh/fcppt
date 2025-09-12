@@ -52,6 +52,9 @@ public:
   using pos_iterator = fcppt::container::grid::
       pos_iterator<fcppt::type_traits::value_type<pos>, pos::static_size::value>;
 
+  // Required for std::input_iterator
+  pos_ref_iterator();
+
   pos_ref_iterator(iterator, pos_iterator, dim);
 
   void increment();
