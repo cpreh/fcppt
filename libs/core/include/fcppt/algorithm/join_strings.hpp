@@ -10,11 +10,10 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <ranges>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm
@@ -41,9 +40,9 @@ join_strings(Range const &_range, fcppt::type_traits::value_type<Range> const &_
   FCPPT_PP_PUSH_WARNING
   FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 
-  auto const end{fcppt::range::end(_range)};
+  auto const end{std::ranges::end(_range)};
 
-  for (auto it(fcppt::range::begin(_range)); it != end; ++it)
+  for (auto it{std::ranges::begin(_range)}; it != end; ++it)
   {
     result += *it;
 

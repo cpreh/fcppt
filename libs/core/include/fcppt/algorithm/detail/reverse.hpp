@@ -6,9 +6,8 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_REVERSE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_REVERSE_HPP_INCLUDED
 
+#include <fcppt/copy.hpp>
 #include <fcppt/not.hpp>
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -21,7 +20,7 @@ template <typename Container>
 inline Container reverse(Container &&_container)
   requires(fcppt::not_(std::is_lvalue_reference_v<Container>))
 {
-  std::reverse(fcppt::range::begin(_container), fcppt::range::end(_container));
+  std::ranges::reverse(_container);
 
   return std::forward<Container>(_container);
 }
@@ -29,7 +28,7 @@ inline Container reverse(Container &&_container)
 template <typename Container>
 inline Container reverse(Container const &_container)
 {
-  return fcppt::algorithm::detail::reverse(Container(_container));
+  return fcppt::algorithm::detail::reverse(fcppt::copy(_container));
 }
 
 }

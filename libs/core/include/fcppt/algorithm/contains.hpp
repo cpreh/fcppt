@@ -6,10 +6,9 @@
 #ifndef FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <ranges>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm
@@ -25,9 +24,9 @@ template <typename Range, typename T>
 inline bool contains(Range const &_range, T const &_value)
 {
   // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
-  auto const range_end{fcppt::range::end(_range)};
+  auto const range_end{std::ranges::end(_range)};
 
-  return ::std::find(fcppt::range::begin(_range), range_end, _value) != range_end;
+  return ::std::find(std::ranges::begin(_range), range_end, _value) != range_end;
 }
 
 }

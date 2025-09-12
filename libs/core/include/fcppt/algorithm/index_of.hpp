@@ -10,7 +10,9 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/range/begin.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <ranges>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::algorithm
 {
@@ -31,7 +33,7 @@ inline fcppt::optional::object<typename Range::size_type>
 index_of(Range const &_range, T const &_value)
 {
   // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
-  auto const beg(fcppt::range::begin(_range));
+  auto const beg{std::ranges::begin(_range)};
 
   return fcppt::optional::map(fcppt::algorithm::find_opt(_range, _value), [beg](auto const _it) {
     return fcppt::cast::to_unsigned(_it - beg);

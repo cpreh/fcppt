@@ -8,10 +8,9 @@
 
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/range/begin.hpp>
-#include <fcppt/range/end.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <ranges>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,9 +32,9 @@ find_opt(Range &&_range, T const &_value)
 
   using result_type = fcppt::optional::object<iterator_type>;
 
-  iterator_type const end{fcppt::range::end(_range)};
+  iterator_type const end{std::ranges::end(_range)};
 
-  iterator_type const ret(::std::find(fcppt::range::begin(_range), end, _value));
+  iterator_type const ret(::std::find(std::ranges::begin(_range), end, _value));
 
   return ret == end ? result_type() : result_type(ret);
 }
