@@ -6,12 +6,12 @@
 #ifndef FCPPT_ALGORITHM_BINARY_SEARCH_HPP_INCLUDED
 #define FCPPT_ALGORITHM_BINARY_SEARCH_HPP_INCLUDED
 
-#include <fcppt/algorithm/equal_range.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/range/singular.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <algorithm>
 #include <ranges>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -34,7 +34,7 @@ fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference
 binary_search(Range &&_range, T const &_value)
 requires(std::ranges::input_range<std::remove_cvref_t<Range>>)
 {
-  auto const result{fcppt::algorithm::equal_range(_range, _value)};
+  auto const result{std::ranges::equal_range(_range, _value)};
 
   return fcppt::optional::make_if(
       fcppt::range::singular(result), [&result] { return std::ranges::begin(result); });

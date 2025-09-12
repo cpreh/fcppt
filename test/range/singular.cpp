@@ -5,10 +5,10 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/range/singular.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <ranges>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,11 +21,11 @@ TEST_CASE("range::singular", "[range]")
 
   int_vector const vec1{1, 2};
 
-  CHECK_FALSE(fcppt::range::singular(fcppt::iterator::make_range(vec1.begin(), vec1.begin())));
+  CHECK_FALSE(fcppt::range::singular(std::ranges::subrange{vec1.begin(), vec1.begin()}));
 
-  CHECK(fcppt::range::singular(fcppt::iterator::make_range(vec1.begin(), vec1.begin() + 1)));
+  CHECK(fcppt::range::singular(std::ranges::subrange{vec1.begin(), vec1.begin() + 1}));
 
-  CHECK_FALSE(fcppt::range::singular(fcppt::iterator::make_range(vec1.begin(), vec1.end())));
+  CHECK_FALSE(fcppt::range::singular(std::ranges::subrange{vec1.begin(), vec1.end()}));
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

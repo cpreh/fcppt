@@ -5,11 +5,12 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/iterator/range_impl.hpp>
 #include <fcppt/range/from_pair.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <ranges>
 #include <utility>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 FCPPT_CATCH_BEGIN
@@ -17,11 +18,14 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("range::from_pair", "[range]")
 {
-  fcppt::iterator::range<int> const range{fcppt::range::from_pair(std::make_pair(3, 5))};
+  std::vector<int> vec{1,2,3};
 
-  CHECK(range.begin() == 3);
+  std::ranges::subrange<std::vector<int>::iterator> const range{
+      fcppt::range::from_pair(std::make_pair(vec.begin(), vec.end()))};
 
-  CHECK(range.end() == 5);
+  CHECK(range.begin() == vec.begin());
+
+  CHECK(range.end() == vec.end());
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

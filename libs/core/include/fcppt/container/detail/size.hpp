@@ -22,7 +22,7 @@ size(Source const &_source)
 }
 
 template <typename Source>
-inline typename Source::size_type size(Source const &_source)
+inline auto size(Source const &_source)
   requires fcppt::container::detail::has_size<Source>::value
 {
   return _source.size();

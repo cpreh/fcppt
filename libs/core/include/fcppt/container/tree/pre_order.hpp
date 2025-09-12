@@ -10,13 +10,13 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/iterator/base_impl.hpp>
-#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <ranges>
 #include <stack>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -94,7 +94,7 @@ public:
       if (!cur_deref.empty())
       {
         for (reference element :
-             fcppt::iterator::make_range(cur_deref.rbegin(), std::prev(cur_deref.rend())))
+             std::ranges::subrange{cur_deref.rbegin(), std::prev(cur_deref.rend())})
         {
           this->positions_.push(tree_ref(element));
         }

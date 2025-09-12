@@ -8,7 +8,6 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/detail/main_wchar.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -16,6 +15,7 @@
 #include <fcppt/from_std_string.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
+#include <ranges>
 #ifdef FCPPT_DETAIL_MAIN_WCHAR
 #include <string>
 #else
@@ -30,10 +30,10 @@ FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 fcppt::args_vector fcppt::args(int const _argc, fcppt::args_char const *const *const _argv)
 {
   return fcppt::algorithm::map<fcppt::args_vector>(
-      fcppt::iterator::make_range(
+      std::ranges::subrange{
           _argv,
           _argv + _argc // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
-          ),
+          },
       [](fcppt::args_char const *const _arg) {
         return
 #ifdef FCPPT_DETAIL_MAIN_WCHAR

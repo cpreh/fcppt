@@ -6,8 +6,8 @@
 #ifndef FCPPT_RANGE_FROM_PAIR_HPP_INCLUDED
 #define FCPPT_RANGE_FROM_PAIR_HPP_INCLUDED
 
-#include <fcppt/iterator/range_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <ranges>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,11 +19,11 @@ namespace fcppt::range
 \ingroup fcpptrange
 */
 template <typename Iterator>
-fcppt::iterator::range<Iterator> from_pair(std::pair<Iterator, Iterator> const &_range)
+[[nodiscard]] inline std::ranges::subrange<Iterator>
+from_pair(std::pair<Iterator, Iterator> const &_range)
 {
-  return fcppt::iterator::range<Iterator>{_range.first, _range.second};
+  return std::ranges::subrange<Iterator>{_range.first, _range.second};
 }
-
 }
 
 #endif

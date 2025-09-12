@@ -8,7 +8,6 @@
 
 #include <fcppt/reference_impl.hpp> // IWYU pragma: keep
 #include <fcppt/container/uncons_result_fwd.hpp> // IWYU pragma: export
-#include <fcppt/iterator/range_impl.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/object_impl.hpp> // IWYU pragma: keep
 

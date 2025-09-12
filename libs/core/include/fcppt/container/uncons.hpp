@@ -9,11 +9,11 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/container/uncons_result.hpp>
-#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <ranges>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::container
@@ -32,7 +32,7 @@ template <typename Container>
       {
         return fcppt::tuple::make(
             fcppt::make_ref(*_container.begin()),
-            fcppt::iterator::make_range(std::next(_container.begin()), _container.end()));
+            std::ranges::subrange{std::next(_container.begin()), _container.end()});
       });
 }
 }

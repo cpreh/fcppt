@@ -4,19 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/reference.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/uncons.hpp>
-#include <fcppt/container/uncons_result.hpp>
-#include <fcppt/iterator/make_range.hpp>
-#include <fcppt/iterator/range_comparison.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/optional/comparison.hpp>
-#include <fcppt/tuple/comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/tuple/make.hpp>
+#include <fcppt/optional/maybe.hpp>
+#include <fcppt/tuple/get.hpp>
+#include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <algorithm>
 #include <iterator>
+#include <ranges>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,22 +25,29 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("container::uncons", "[container]")
 {
-  using result_type = fcppt::container::uncons_result<std::vector<int>>;
-
   {
     std::vector<int> empty{};
 
-    CHECK(fcppt::container::uncons(empty) == result_type{});
+    CHECK(!fcppt::container::uncons(empty).has_value());
   }
 
   {
     std::vector<int> vec{1, 2, 3};
 
-    CHECK(
-        fcppt::container::uncons(vec) ==
-        result_type{fcppt::tuple::make(
-            fcppt::make_ref(vec[0]),
-            fcppt::iterator::make_range(std::next(vec.begin()), vec.end()))});
+    fcppt::optional::maybe(
+        fcppt::container::uncons(vec),
+        [] { CHECK(false); },
+        [&vec](
+            fcppt::tuple::object<
+                fcppt::reference<int>,
+                std::ranges::subrange<std::vector<int>::iterator>> const &_value)
+        {
+          CHECK(fcppt::tuple::get<0U>(_value) == fcppt::make_ref(vec[0]));
+          CHECK(
+              std::ranges::equal(
+                  std::ranges::subrange{std::next(vec.begin()), vec.end()},
+                  fcppt::tuple::get<1U>(_value)));
+        });
   }
 }
 

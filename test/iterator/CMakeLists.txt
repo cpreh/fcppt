@@ -4,5 +4,3 @@ function(add_fcppt_iterator_test test_name)
 endfunction()
 
 add_fcppt_iterator_test(random_access)
-
-add_fcppt_iterator_test(range)
