@@ -39,7 +39,6 @@ libs/core/include/fcppt/algorithm/map_optional.hpp
 libs/core/include/fcppt/algorithm/map_record.hpp
 libs/core/include/fcppt/algorithm/map_tuple.hpp
 libs/core/include/fcppt/algorithm/range_element_type.hpp
-libs/core/include/fcppt/algorithm/range.hpp
 libs/core/include/fcppt/algorithm/remove.hpp
 libs/core/include/fcppt/algorithm/remove_if.hpp
 libs/core/include/fcppt/algorithm/repeat.hpp

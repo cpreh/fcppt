@@ -8,7 +8,6 @@
 
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
-#include <fcppt/algorithm/range.hpp>
 
 namespace fcppt::algorithm
 {
@@ -21,7 +20,6 @@ namespace fcppt::algorithm
 */
 template <typename Range, typename Pred>
 inline bool contains_if(Range const &_range, Pred const &_pred)
-requires(fcppt::algorithm::range<Range>)
 {
   bool result{false};
 
