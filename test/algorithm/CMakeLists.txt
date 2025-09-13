@@ -40,8 +40,6 @@ add_fcppt_algorithm_test(map_optional LINK_LIBS fcppt_catch_interface)
 
 add_fcppt_algorithm_test(optimize_map NO_CODE)
 
-add_fcppt_algorithm_test(range_element_type NO_CODE)
-
 add_fcppt_algorithm_test(remove)
 
 add_fcppt_algorithm_test(repeat)
