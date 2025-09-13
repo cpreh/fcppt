@@ -1,6 +1,4 @@
 - Look for better codecvt implementation
 - Replace static_assert/enable_if by Concepts if possible
 - Use = default for operator==
-- Use C++20's ranges
 - Allow std::uint8_t enums in random distributions
-- Clean up fcppt::algorithm code to work with all ranges if possible
