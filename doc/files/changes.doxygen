@@ -7,7 +7,101 @@
 fcppt now uses <code>C++-23</code>.
 </p>
 
-TODO
+<ul>
+
+<li>Cleaned up <code>clang-21</code> warnings.</li>
+<li>Replaced various components with <code>C++-20</code> ranges.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_500 Added functionality
+
+<ul>
+
+<li>\ref fcppteither
+	<ul>
+	<li>Added #fcppt::either::partition.</li>
+	<li>Added #fcppt::either::to_variant.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_500 Changed functionality
+
+<ul>
+
+<li>\ref fcppteither
+	<ul>
+	<li>Changed the implementation to use <code>std::expected</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrange
+	<ul>
+	<li>Renamed <code>fcppt::range::size</code> to #fcppt::range::nonconst_size.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_500 Removed functionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Removed <code>fcppt::algorithm::contains</code>. Use <code>std::ranges::contains</code>.</li>
+	<li>Removed <code>fcppt::algorithm::equal</code>. Use <code>std::ranges::equal</code>.</li>
+	<li>Removed <code>fcppt::algorithm::equal_range</code>. Use <code>std::ranges::equal_range</code>.</li>
+	<li>Removed <code>fcppt::algorithm::range_value_type</code>. Use <code>std::ranges::range_value_t</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptconcepts
+	<ul>
+	<li>Removed <code>fcppt::concepts::invocable</code>. Use <code>std::invocable</code>.</li>
+	<li>Removed <code>fcppt::concepts::range</code>. Use one of the range concepts from <code>std::ranges</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptiterator
+	<ul>
+	<li>Removed <code>fcppt::iterator::range</code>. Use <code>std::ranges::subrange</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptpreprocessor
+	<ul>
+	<li>Removed <code>FCPPT_PP_PURE</code> and <code>FCPPT_PP_CONST</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrange
+	<ul>
+	<li>Removed <code>fcppt::range::empty</code>. Use <code>std::ranges::empty</code>.</li>
+	<li>Removed <code>fcppt::range::begin</code>. Use <code>std::ranges::begin</code>.</li>
+	<li>Removed <code>fcppt::range::end</code>. Use <code>std::ranges::end</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Removed <code>fcppt::args_range</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_500 Bugfixes
+
+<ul>
+
+<li>Fixed moving of elements in #fcppt::variant::partition.</li>
+
+<li>Fixed #fcppt::container::grid::pos_iterator and #fcppt::container::grid::pos_ref_iterator to conform to <code>std::input_iterator</code>.</li>
+
+</ul>
 
 \section changes_changes_to_461 4.6.1
 
