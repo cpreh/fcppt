@@ -1206,7 +1206,6 @@ libs/core/include/fcppt/preprocessor/push_warning.h
 libs/core/include/fcppt/preprocessor/push_warning.hpp
 libs/core/include/fcppt/preprocessor/stringize.hpp
 libs/core/include/fcppt/preprocessor/todo.hpp
-libs/core/include/fcppt/preprocessor/warning.hpp
 libs/core/include/fcppt/random/distribution/base_type.hpp
 libs/core/include/fcppt/random/distribution/base_value.hpp
 libs/core/include/fcppt/random/distribution/basic_decl.hpp
