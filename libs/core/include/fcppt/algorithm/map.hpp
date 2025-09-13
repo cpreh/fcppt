@@ -31,8 +31,8 @@ container needs a <code>reserve</code> function, and the source range needs a
 The actual implementation of the algorithm is provided by #fcppt::algorithm::map_impl which by
 default uses #fcppt::algorithm::loop.
 
-\tparam Function A function callable as <code>TargetContainer::value_type
-(SourceRange::value_type)</code>.
+\tparam Function Let <code>T_1,...,T_n</code> be the types of \a SourceRange and <code>U_1,...,U_n</code> the types of \a TargetContainer.
+Then the function must be callable as <code>U_i(T_i)</code> for every <code>1 <= i <= n</code>.
 */
 template <typename TargetContainer, typename SourceRange, typename Function>
 TargetContainer map(SourceRange &&_source, Function const &_function)

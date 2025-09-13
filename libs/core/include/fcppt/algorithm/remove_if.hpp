@@ -29,7 +29,7 @@ bool remove_if(Container &_container, Predicate const &_predicate)
 {
   auto const end{_container.end()};
 
-  auto const position(std::remove_if(_container.begin(), end, _predicate));
+  auto const position{std::remove_if(_container.begin(), end, _predicate)};
 
   if (position == end)
   {

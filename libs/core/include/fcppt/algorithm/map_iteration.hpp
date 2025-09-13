@@ -30,7 +30,7 @@ the element is deleted from the map.
 template <typename Map, typename UpdateAction>
 void map_iteration(Map &_map, UpdateAction const &_update_action)
 {
-  for (auto it(_map.begin()), next(it); it != _map.end(); it = next)
+  for (auto it{_map.begin()}, next{it}; it != _map.end(); it = next)
   {
     ++next;
 

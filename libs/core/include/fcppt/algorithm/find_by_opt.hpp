@@ -24,7 +24,7 @@ an empty optional, if there is any. Otherwise, returns the empty optional.
 \ingroup fcpptalgorithm
 
 \tparam Function A function callable as <code>fcppt::optional::object<Result>
-(V)</code> for every type <code>V</code> in \a Range.
+(T)</code> for every type <code>T</code> in \a Range.
 */
 template <typename Result, typename Range, typename Function>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)

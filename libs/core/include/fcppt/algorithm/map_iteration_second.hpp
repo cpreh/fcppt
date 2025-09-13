@@ -29,9 +29,9 @@ removed from the map.
 template <typename Map, typename UpdateAction>
 void map_iteration_second(Map &_map, UpdateAction const &_update_action)
 {
-  auto const wrapper([&_update_action](fcppt::type_traits::value_type<Map> &_element) {
+  auto const wrapper{[&_update_action](fcppt::type_traits::value_type<Map> &_element) {
     return _update_action(_element.second);
-  });
+  }};
 
   fcppt::algorithm::map_iteration(_map, wrapper);
 }

@@ -9,6 +9,7 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <concepts>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,13 +26,12 @@ This function calls <code>(l_i, s_i) = _function(e_i,s_{i-1})</code> for <code>i
 where <code>x <= n</code> is the largest number such that <code>l_j = loop::continue_</code>
 for all <code>1 <= j < x</code>.
 
-\tparam State Has to be movable
-
 \tparam Function Must be callable as <code>std::pair<fcppt::loop, State>
-(Range::value_type,State)</code>.
+(T,State)</code> for every type <code>T</code> in \a Range.
 **/
 template <typename Range, typename State, typename Function>
 inline State fold_break(Range &&_range, State _state, Function _function)
+requires(std::movable<State>)
 {
   fcppt::algorithm::loop_break(
       std::forward<Range>(_range), [&_state, &_function](auto &&_fcppt_element) {

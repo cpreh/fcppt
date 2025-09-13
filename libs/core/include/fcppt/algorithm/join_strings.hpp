@@ -34,6 +34,7 @@ Example:
 template <typename Range>
 fcppt::type_traits::value_type<Range>
 join_strings(Range const &_range, fcppt::type_traits::value_type<Range> const &_delim)
+requires(std::ranges::input_range<Range>)
 {
   fcppt::type_traits::value_type<Range> result{};
 

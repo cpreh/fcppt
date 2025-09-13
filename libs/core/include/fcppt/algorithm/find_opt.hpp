@@ -7,10 +7,12 @@
 #define FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
 
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <ranges>
+#include <utility>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,16 +29,15 @@ template <typename Range, typename T>
 fcppt::optional::object<fcppt::container::to_iterator_type<std::remove_reference_t<Range>>>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 find_opt(Range &&_range, T const &_value)
+requires(std::ranges::input_range<Range>)
 {
   using iterator_type = fcppt::container::to_iterator_type<std::remove_reference_t<Range>>;
 
-  using result_type = fcppt::optional::object<iterator_type>;
-
   iterator_type const end{std::ranges::end(_range)};
 
-  iterator_type const ret(::std::find(std::ranges::begin(_range), end, _value));
+  iterator_type const ret{::std::find(std::ranges::begin(_range), end, _value)};
 
-  return ret == end ? result_type() : result_type(ret);
+  return fcppt::optional::make_if(ret != end, [&ret] { return std::move(ret); });
 }
 
 }

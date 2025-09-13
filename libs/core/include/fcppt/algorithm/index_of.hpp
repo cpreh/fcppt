@@ -29,7 +29,7 @@ occurrence if there is any, otherwise returns the empty optional.
 \tparam T A type equality-comparable to the ranges's value type.
 */
 template <typename Range, typename T>
-inline fcppt::optional::object<typename Range::size_type>
+inline fcppt::optional::object<std::ranges::range_size_t<Range>>
 index_of(Range const &_range, T const &_value)
 {
   // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
