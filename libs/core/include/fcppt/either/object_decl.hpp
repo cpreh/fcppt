@@ -21,6 +21,7 @@ namespace fcppt::either
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
+FCPPT_PP_DISABLE_VC_WARNING(5027)
 
 /**
 \brief A class that either holds a success or an error value.
