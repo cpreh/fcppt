@@ -556,7 +556,9 @@ libs/core/include/fcppt/either/success_opt.hpp
 libs/core/include/fcppt/either/success_reference_type.hpp
 libs/core/include/fcppt/either/success_type.hpp
 libs/core/include/fcppt/either/to_exception.hpp
+libs/core/include/fcppt/either/to_variant.hpp
 libs/core/include/fcppt/either/try_call.hpp
+libs/core/include/fcppt/either/variant_type_fwd.hpp
 libs/core/include/fcppt/either/variant_type.hpp
 libs/core/include/fcppt/enable_shared_from_this_decl.hpp
 libs/core/include/fcppt/enable_shared_from_this_fwd.hpp

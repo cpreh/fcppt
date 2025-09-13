@@ -6,21 +6,7 @@
 #ifndef FCPPT_EITHER_VARIANT_TYPE_HPP_INCLUDED
 #define FCPPT_EITHER_VARIANT_TYPE_HPP_INCLUDED
 
-#include <fcppt/either/object_concept.hpp> // IWYU pragma: keep
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
-
-namespace fcppt::either
-{
-/**
-\brief The variant type of an either.
-
-\ingroup fcppteither
-*/
-template <fcppt::either::object_concept Either>
-using variant_type = typename std::remove_cvref_t<Either>::variant_type;
-
-}
+#include <fcppt/either/variant_type_fwd.hpp> // IWYU pragma: export
+#include <fcppt/variant/object_impl.hpp> // IWYU pragma: keep
 
 #endif

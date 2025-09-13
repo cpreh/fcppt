@@ -11,8 +11,8 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <expected>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,7 +23,20 @@ FCPPT_PP_DISABLE_VC_WARNING(4625)
 FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
+\brief A class that either holds a success or an error value.
+
 \ingroup fcppteither
+
+This class is a wrapper around <code>std::expected</code>. The changes are:
+<ul>
+<li>No default constructor.</li>
+<li>No <code>operator-></code>, <code>operator*</code> or <code>value</code> function. This has been replaced <code>get_success_unsafe</code>.</li>
+<li>No <code>error</code> function. This has been replaced with <code>get_failure_unsafe</code>.</li>
+<li>No assignment from <code>Success</code>. Assign an either instead.</li>
+</ul>
+
+\tparam Failure Must be move constructible.
+\tparam Success Must be move constructible.
 */
 template <typename Failure, typename Success>
 class object
@@ -33,7 +46,7 @@ public:
 
   using success = Success;
 
-  using variant_type = fcppt::variant::object<Failure, Success>;
+  using std_type = std::expected<Success, Failure>;
 
   static_assert(fcppt::concepts::move_constructible<Failure>);
   static_assert(fcppt::concepts::move_constructible<Success>);
@@ -59,11 +72,11 @@ public:
 
   [[nodiscard]] Failure const &get_failure_unsafe() const;
 
-  [[nodiscard]] variant_type &variant();
+  [[nodiscard]] std_type &impl();
 
-  [[nodiscard]] variant_type const &variant() const;
+  [[nodiscard]] std_type const &impl() const;
 private:
-  variant_type impl_;
+  std_type impl_;
 };
 
 FCPPT_PP_POP_WARNING

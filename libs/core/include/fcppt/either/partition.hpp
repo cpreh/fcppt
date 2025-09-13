@@ -9,10 +9,11 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/either/partition_result.hpp>
+#include <fcppt/either/to_variant.hpp>
 #include <fcppt/either/variant_type.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/variant/partition.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <ranges>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,12 +30,13 @@ template <typename Source>
 fcppt::either::partition_result<Source>
 partition(Source &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
 {
-  using source_type = fcppt::type_traits::value_type<Source>;
+  using source_type = std::ranges::range_value_t<Source>;
 
   return fcppt::variant::partition(
       fcppt::algorithm::map<std::vector<fcppt::either::variant_type<source_type>>>(
           _source,
-          [](source_type &_value) { return fcppt::move_if_rvalue<Source>(_value.variant()); }));
+          [](source_type &_value)
+          { return fcppt::either::to_variant(fcppt::move_if_rvalue<Source>(_value)); }));
 }
 }
 

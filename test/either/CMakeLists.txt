@@ -52,4 +52,6 @@ add_fcppt_either_test(success_type NO_CODE)
 
 add_fcppt_either_test(to_exception LINK_LIBS ${fcppt_core_TARGET})
 
+add_fcppt_either_test(to_variant)
+
 add_fcppt_either_test(try_call)

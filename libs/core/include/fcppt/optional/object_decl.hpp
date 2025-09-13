@@ -28,9 +28,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 This class is a wrapper around <code>std::optional</code> that makes the following changes:
 <ul>
-<li>No <code>operator-></code> and <code>operator*</code>. This has been replaced
-<code>get_unsafe</code>.</li> <li>No <code>operator bool()</code>. This has been replaced by
-<code>has_value</code>.</li> <li>No assignment from <code>T</code>. Assign an optional instead.</li>
+<li>No <code>operator-></code> and <code>operator*</code>. This has been replaced <code>get_unsafe</code>.</li>
+<li>No <code>operator bool()</code>. This has been replaced by <code>has_value</code>.</li>
+<li>No assignment from <code>T</code>. Assign an optional instead.</li>
 </ul>
 
 \tparam T Must be move constructible.

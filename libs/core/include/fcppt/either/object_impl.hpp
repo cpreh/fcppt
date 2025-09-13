@@ -7,78 +7,79 @@
 #define FCPPT_EITHER_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/either/object_decl.hpp> // IWYU pragma: export
-#include <fcppt/variant/get_unsafe.hpp>
-#include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <expected>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 template <typename Failure, typename Success>
-fcppt::either::object<Failure, Success>::object(Success &&_object) : impl_(std::move(_object))
+fcppt::either::object<Failure, Success>::object(Success &&_object) : impl_{std::move(_object)}
 {
 }
 
 template <typename Failure, typename Success>
-fcppt::either::object<Failure, Success>::object(Success const &_object) : impl_(_object)
+fcppt::either::object<Failure, Success>::object(Success const &_object) : impl_{_object}
 {
 }
 
 template <typename Failure, typename Success>
-fcppt::either::object<Failure, Success>::object(Failure &&_object) : impl_(std::move(_object))
+fcppt::either::object<Failure, Success>::object(Failure &&_object)
+    : impl_{std::unexpected{std::move(_object)}}
 {
 }
 
 template <typename Failure, typename Success>
-fcppt::either::object<Failure, Success>::object(Failure const &_object) : impl_(_object)
+fcppt::either::object<Failure, Success>::object(Failure const &_object)
+    : impl_{std::unexpected{_object}}
 {
 }
 
 template <typename Failure, typename Success>
 bool fcppt::either::object<Failure, Success>::has_success() const
 {
-  return fcppt::variant::holds_type<Success>(impl_);
+  return this->impl_.has_value();
 }
 
 template <typename Failure, typename Success>
 bool fcppt::either::object<Failure, Success>::has_failure() const
 {
-  return fcppt::variant::holds_type<Failure>(impl_);
+  return !this->has_success();
 }
 
 template <typename Failure, typename Success>
 Success &fcppt::either::object<Failure, Success>::get_success_unsafe()
 {
-  return fcppt::variant::get_unsafe<Success>(impl_);
+  return this->impl_.value();
 }
 
 template <typename Failure, typename Success>
 Success const &fcppt::either::object<Failure, Success>::get_success_unsafe() const
 {
-  return fcppt::variant::get_unsafe<Success>(impl_);
+  return this->impl_.value();
 }
 
 template <typename Failure, typename Success>
 Failure &fcppt::either::object<Failure, Success>::get_failure_unsafe()
 {
-  return fcppt::variant::get_unsafe<Failure>(impl_);
+  return this->impl_.error();
 }
 
 template <typename Failure, typename Success>
 Failure const &fcppt::either::object<Failure, Success>::get_failure_unsafe() const
 {
-  return fcppt::variant::get_unsafe<Failure>(impl_);
+  return this->impl_.error();
 }
 
 template <typename Failure, typename Success>
-typename fcppt::either::object<Failure, Success>::variant_type &
-fcppt::either::object<Failure, Success>::variant()
+typename fcppt::either::object<Failure, Success>::std_type &
+fcppt::either::object<Failure, Success>::impl()
 {
   return this->impl_;
 }
 
 template <typename Failure, typename Success>
-typename fcppt::either::object<Failure, Success>::variant_type const &
-fcppt::either::object<Failure, Success>::variant() const
+typename fcppt::either::object<Failure, Success>::std_type const &
+fcppt::either::object<Failure, Success>::impl() const
 {
   return this->impl_;
 }
