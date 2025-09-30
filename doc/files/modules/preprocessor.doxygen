@@ -64,10 +64,9 @@ for gcc.
 Printing compiler messages can be useful to print general diagnostics, todo or
 fixme messages.
 
-fcppt provides #FCPPT_PP_MESSAGE  to do that. There are three more
-macros called #FCPPT_PP_TODO , #FCPPT_PP_FIXME  and
-#FCPPT_PP_WARNING , that print "TODO: ", "FIXME: " and "warning: "
-in front or their message, respectively.
+fcppt provides #FCPPT_PP_MESSAGE to do that. There are two more
+macros called #FCPPT_PP_TODO and #FCPPT_PP_FIXME,
+that print "TODO: " and "FIXME: " in front or their message, respectively.
 
 \section preprocessor_pragma Pragmas in macros
 
@@ -147,10 +146,6 @@ There is also #FCPPT_PP_FILE that expands to the current file compatible with #f
 <tr>
 <td><code>todo.hpp</code></td>
 <td>Contains #FCPPT_PP_TODO </td>
-</tr>
-<tr>
-<td><code>warning.hpp</code></td>
-<td>Contains #FCPPT_PP_WARNING </td>
 </tr>
 </table>
 */

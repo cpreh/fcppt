@@ -74,7 +74,7 @@ fcppt now uses <code>C++-23</code>.
 <li>\ref fcpptpreprocessor
 	<ul>
 	<li>Removed <code>FCPPT_PP_PURE</code> and <code>FCPPT_PP_CONST</code>.</li>
-	<li>Removed <code>FCPPT_PP_WARNING</code>. Use <code>#warning</code> from <code>C++-23</code>.</li>
+	<li>Removed <code>FCPPT_PP_WARNING</code>. Use <code>\#warning</code> from <code>C++-23</code>.</li>
 	</ul>
 </li>
 
