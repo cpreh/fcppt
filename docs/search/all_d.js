@@ -25,7 +25,7 @@ var searchData=
   ['delete_5frow_5fand_5fcolumn_22',['delete_row_and_column',['../d6/d19/group__fcpptmathmatrix.html#ga0a917faf053bf1a57dc7345e36b2880a',1,'fcppt::math::matrix']]],
   ['deleter_20example_23',['Deleter example',['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter_example',1,'']]],
   ['deleter_5ftype_24',['deleter_type',['../d3/dc8/classfcppt_1_1unique__ptr.html#ac60fc9d48c617313f068736e036da9c1',1,'fcppt::unique_ptr']]],
-  ['deleters_25',['Deleters',['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter',1,'Custom Deleters'],['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter_predef',1,'fcppt&apos;s Deleters']]],
+  ['deleters_25',['Deleters',['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter',1,'Custom Deleters'],['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter_predef',1,'fcppt's Deleters']]],
   ['depth_26',['depth',['../d8/d43/namespacefcppt_1_1container_1_1tree.html#a5c60a8bf1aa767e868e037f2690929d4',1,'fcppt::container::tree']]],
   ['deref_27',['deref',['../d7/d50/group__fcpptvarious.html#ga692c430771e056374ff62a1ad118ef3a',1,'fcppt::deref()'],['../da/d65/group__fcpptoptional.html#gacbc330723d1f384c75db8848e8ab5b46',1,'fcppt::optional::deref()'],['../da/df4/group__fcpptoptions.html#gaba1a79261a255d1a1aa915d8ed5a80c5',1,'fcppt::options::deref()'],['../de/d6e/group__fcpptparse.html#ga10afd42d27a2dcbda0f15b980fe8b674',1,'fcppt::parse::deref()']]],
   ['deref_5fimpl_28',['deref_impl',['../d9/ddc/structfcppt_1_1deref__impl.html',1,'fcppt']]],

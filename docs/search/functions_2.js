@@ -37,7 +37,7 @@ var searchData=
   ['const_5f_34',['const_',['../d7/d50/group__fcpptvarious.html#ga75e373c9d4acce0af00fd5a0474f3755',1,'fcppt']]],
   ['const_5fpointer_5fcast_35',['const_pointer_cast',['../d7/d04/group__fcpptsmartptr.html#gacb0b5a104286010972acb57f61f1bf64',1,'fcppt']]],
   ['construct_36',['construct',['../df/dc3/group__fcppteither.html#ga00a49fb860978842c4f26f90ce7acce9',1,'fcppt::either::construct()'],['../de/d6e/group__fcpptparse.html#ga3a33645cd4b54c7cbea6c2a31fe87abf',1,'fcppt::parse::construct()']]],
-  ['contains_37',['contains',['../de/d60/group__fcpptalgorithm.html#ga09f85aa5ccefde37a2e974016eb42707',1,'fcppt::algorithm::contains()'],['../d0/d4a/group__fcpptmathbox.html#ga79198a2765adc20649485a45ec1998d4',1,'fcppt::math::box::contains()']]],
+  ['contains_37',['contains',['../d0/d4a/group__fcpptmathbox.html#ga79198a2765adc20649485a45ec1998d4',1,'fcppt::math::box']]],
   ['contains_5fif_38',['contains_if',['../de/d60/group__fcpptalgorithm.html#ga4620dd4ad01d1c7392f3a6b7cd780d4f',1,'fcppt::algorithm']]],
   ['contains_5fpoint_39',['contains_point',['../d0/d4a/group__fcpptmathbox.html#ga87cc46ef50abfbb71678643bedaf53c5',1,'fcppt::math::box']]],
   ['content_40',['content',['../d6/de2/classfcppt_1_1container_1_1grid_1_1object.html#ab5eb64e405ba81b372a073a82833cd60',1,'fcppt::container::grid::object']]],

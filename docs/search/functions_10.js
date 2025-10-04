@@ -2,7 +2,7 @@ var searchData=
 [
   ['rad_5fto_5fdeg_0',['rad_to_deg',['../dc/d53/group__fcpptmath.html#ga3b05f450d3fd6b857f8af506c27db2de',1,'fcppt::math']]],
   ['radius_1',['radius',['../d2/d53/classfcppt_1_1math_1_1sphere_1_1object.html#a5742a9de4da4223d5a2941b8ed6a9793',1,'fcppt::math::sphere::object::radius()'],['../d2/d53/classfcppt_1_1math_1_1sphere_1_1object.html#a5067075b2141f2c23a15cb6f40e1d101',1,'fcppt::math::sphere::object::radius() const']]],
-  ['range_2',['range',['../da/d72/classfcppt_1_1enum___1_1range.html#a4c96f65601a5757a202fd51db45077a4',1,'fcppt::enum_::range::range()'],['../d3/d52/classfcppt_1_1iterator_1_1range.html#a2ed963e8728b47a29824668f75a4ab6f',1,'fcppt::iterator::range::range(Iterator &amp;&amp;begin, Iterator &amp;&amp;end)'],['../d3/d52/classfcppt_1_1iterator_1_1range.html#a4c70d09a74637e0411beb1588d61385b',1,'fcppt::iterator::range::range(Iterator const &amp;begin, Iterator const &amp;end)']]],
+  ['range_2',['range',['../da/d72/classfcppt_1_1enum___1_1range.html#a4c96f65601a5757a202fd51db45077a4',1,'fcppt::enum_::range']]],
   ['range_5fdim_3',['range_dim',['../d4/dfd/group__fcpptcontainergrid.html#gadd3dfc45e3b1990fa966c2fd19f795aa',1,'fcppt::container::grid']]],
   ['range_5fsize_4',['range_size',['../d4/dfd/group__fcpptcontainergrid.html#ga69bac9af71aef6baa6cca4338fabce76',1,'fcppt::container::grid']]],
   ['rbegin_5',['rbegin',['../d9/d7f/classfcppt_1_1container_1_1tree_1_1object.html#a513e72148b5b11e84d1e522c1a983500',1,'fcppt::container::tree::object::rbegin()'],['../d9/d7f/classfcppt_1_1container_1_1tree_1_1object.html#ae5b54ac6ccf3053e145e7988c7d777fe',1,'fcppt::container::tree::object::rbegin() const']]],
