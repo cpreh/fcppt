@@ -31,7 +31,7 @@ FCPPT_PP_DISABLE_VC_WARNING(5027)
 This class is a wrapper around <code>std::expected</code>. The changes are:
 <ul>
 <li>No default constructor.</li>
-<li>No <code>operator-></code>, <code>operator*</code> or <code>value</code> function. This has been replaced <code>get_success_unsafe</code>.</li>
+<li>No <code>operator-></code>, <code>operator*</code> or <code>value</code> function. This has been replaced with <code>get_success_unsafe</code>.</li>
 <li>No <code>error</code> function. This has been replaced with <code>get_failure_unsafe</code>.</li>
 <li>No assignment from <code>Success</code>. Assign an either instead.</li>
 </ul>
