@@ -6,6 +6,7 @@
 #ifndef FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -32,17 +33,17 @@ template <typename TargetContainer, typename Source, typename Function>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 TargetContainer map_optional(Source &&_source, Function const &_function)
 {
-  TargetContainer result{};
-
-  for (auto &&element : _source)
-  {
-    fcppt::optional::maybe_void(
-        _function(element),
-        [&result](auto &&_inner)
-        { result.insert(result.end(), std::forward<decltype(_inner)>(_inner)); });
-  }
-
-  return result;
+  return fcppt::algorithm::fold(
+      std::forward<Source>(_source),
+      TargetContainer{},
+      [&_function](auto &&_element, TargetContainer &&_result)
+      {
+        fcppt::optional::maybe_void(
+            _function(_element),
+            [&_result](auto &&_inner)
+            { _result.insert(_result.end(), std::forward<decltype(_inner)>(_inner)); });
+        return std::move(_result);
+      });
 }
 
 }
