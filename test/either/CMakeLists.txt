@@ -39,10 +39,13 @@ add_fcppt_either_test(monad)
 
 add_fcppt_either_test(object)
 
+add_fcppt_either_test(partition)
+
 add_fcppt_either_test(sequence LINK_LIBS ${fcppt_core_TARGET}
                       fcppt_catch_interface)
 
-add_fcppt_either_test(partition)
+add_fcppt_either_test(sequence_all LINK_LIBS ${fcppt_core_TARGET}
+                      fcppt_catch_interface)
 
 add_fcppt_either_test(sequence_error)
 

@@ -405,6 +405,7 @@ libs/core/include/fcppt/either/apply.hpp
 libs/core/include/fcppt/either/bind.hpp
 libs/core/include/fcppt/either/comparison.hpp
 libs/core/include/fcppt/either/construct.hpp
+libs/core/include/fcppt/either/detail/successes_unsafe.hpp
 libs/core/include/fcppt/either/error_from_optional.hpp
 libs/core/include/fcppt/either/error_fwd.hpp
 libs/core/include/fcppt/either/error.hpp
@@ -437,6 +438,7 @@ libs/core/include/fcppt/either/output.hpp
 libs/core/include/fcppt/either/partition.hpp
 libs/core/include/fcppt/either/partition_result_fwd.hpp
 libs/core/include/fcppt/either/partition_result.hpp
+libs/core/include/fcppt/either/sequence_all.hpp
 libs/core/include/fcppt/either/sequence_error.hpp
 libs/core/include/fcppt/either/sequence.hpp
 libs/core/include/fcppt/either/success_move_type.hpp
