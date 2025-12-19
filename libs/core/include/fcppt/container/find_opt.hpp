@@ -17,7 +17,7 @@ namespace fcppt::container
 \brief Returns an element from a find operation or an empty optional.
 
 Searches for \a _key in the associative container \a _container. If \a _key is
-found, the corresponding mapped type is returned. Otherwise, the empty optional
+found, the corresponding value type is returned. Otherwise, the empty optional
 is returned.
 
 \ingroup fcpptcontainer
