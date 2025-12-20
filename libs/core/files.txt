@@ -525,6 +525,7 @@ libs/core/include/fcppt/identity.hpp
 libs/core/include/fcppt/indent/extra.hpp
 libs/core/include/fcppt/indent/level.hpp
 libs/core/include/fcppt/indent/print.hpp
+libs/core/include/fcppt/indent/start.hpp
 libs/core/include/fcppt/insert_extract_locale.hpp
 libs/core/include/fcppt/int_iterator_decl.hpp
 libs/core/include/fcppt/int_iterator_fwd.hpp

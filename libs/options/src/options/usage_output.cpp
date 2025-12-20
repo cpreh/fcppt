@@ -10,6 +10,7 @@
 #include <fcppt/indent/extra.hpp>
 #include <fcppt/indent/level.hpp>
 #include <fcppt/indent/print.hpp>
+#include <fcppt/indent/start.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/optional/maybe_void.hpp>
@@ -146,6 +147,6 @@ void print_usage(
 fcppt::io::ostream &
 fcppt::options::operator<<(fcppt::io::ostream &_stream, fcppt::options::usage const &_usage)
 {
-  print_usage(_stream, _usage, fcppt::indent::level{0U});
+  print_usage(_stream, _usage, fcppt::indent::start());
   return _stream;
 }

@@ -9,6 +9,7 @@
 #include <fcppt/indent/extra.hpp>
 #include <fcppt/indent/level.hpp>
 #include <fcppt/indent/print.hpp>
+#include <fcppt/indent/start.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/options/argument_conversion_error.hpp>
 #include <fcppt/options/dual_flag_error.hpp>
@@ -114,6 +115,6 @@ void print_error(
 fcppt::io::ostream &
 fcppt::options::operator<<(fcppt::io::ostream &_stream, fcppt::options::error const &_error)
 {
-  print_error(_stream, _error, fcppt::indent::level{0U});
+  print_error(_stream, _error, fcppt::indent::start());
   return _stream;
 }
