@@ -491,9 +491,6 @@ libs/core/include/fcppt/detail/char_types.hpp
 libs/core/include/fcppt/detail/check_cpp.hpp
 libs/core/include/fcppt/detail/const.hpp
 libs/core/include/fcppt/detail/cyclic_iterator_base.hpp
-libs/core/include/fcppt/detail/indent/extra.hpp
-libs/core/include/fcppt/detail/indent/level.hpp
-libs/core/include/fcppt/detail/indent/print.hpp
 libs/core/include/fcppt/detail/main.hpp
 libs/core/include/fcppt/detail/main_wchar.hpp
 libs/core/include/fcppt/detail/make_char_literals.hpp
@@ -637,6 +634,9 @@ libs/core/include/fcppt/getenv.hpp
 libs/core/include/fcppt/hash_combine.hpp
 libs/core/include/fcppt/hash.hpp
 libs/core/include/fcppt/identity.hpp
+libs/core/include/fcppt/indent/extra.hpp
+libs/core/include/fcppt/indent/level.hpp
+libs/core/include/fcppt/indent/print.hpp
 libs/core/include/fcppt/insert_extract_locale.hpp
 libs/core/include/fcppt/int_iterator_decl.hpp
 libs/core/include/fcppt/int_iterator_fwd.hpp

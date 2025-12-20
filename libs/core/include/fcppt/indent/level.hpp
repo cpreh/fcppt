@@ -3,14 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_DETAIL_INDENT_LEVEL_HPP_INCLUDED
-#define FCPPT_DETAIL_INDENT_LEVEL_HPP_INCLUDED
+#ifndef FCPPT_INDENT_LEVEL_HPP_INCLUDED
+#define FCPPT_INDENT_LEVEL_HPP_INCLUDED
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 
-namespace fcppt::detail::indent
+namespace fcppt::indent
 {
+/**
+\brief The integer type for indents.
+
+\ingroup fcpptvarious
+*/
 FCPPT_DECLARE_STRONG_TYPEDEF(unsigned, level);
 }
 

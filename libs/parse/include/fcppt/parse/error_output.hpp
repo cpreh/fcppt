@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_ERROR_OUTPUT_HPP_INCLUDED
 #define FCPPT_PARSE_ERROR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/detail/indent/level.hpp>
+#include <fcppt/indent/level.hpp>
 #include <fcppt/parse/error_fwd.hpp>
 #include <fcppt/parse/detail/print_error.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,7 +19,7 @@ template <typename Ch>
 std::basic_ostream<Ch> &
 operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::error<Ch> const &_error)
 {
-  fcppt::parse::detail::print_error(_stream, _error, fcppt::detail::indent::level{0U});
+  fcppt::parse::detail::print_error(_stream, _error, fcppt::indent::level{0U});
   return _stream;
 }
 
