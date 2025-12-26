@@ -1,6 +1,38 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_510 5.1.0
+
+\subsection changes_added_functionality_to_510 Added functionality
+
+<ul>
+
+<li>\ref fcppteither
+	<ul>
+	<li>Added #fcppt::either::sequence_all, which collects all errors instead of the first one.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added #fcppt::indent::extra, #fcppt::indent::print and #fcppt::indent::start.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_510 Changed functionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Made #fcppt::algorithm::map_optional work on polymorphic sequences as well.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_500 5.0.0
 
 <p>

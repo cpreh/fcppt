@@ -2,3 +2,4 @@
 - Replace static_assert/enable_if by Concepts if possible
 - Use = default for operator==
 - Allow std::uint8_t enums in random distributions
+- Add example for fcppt::indent
