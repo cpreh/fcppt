@@ -23,8 +23,8 @@ every element, only inserting the results that are not empty optionals.
 For every element \em e in \a _source, <code>_function(e)</code> is called. If
 the result is not an empty optional, it is inserted into the result container.
 
-\tparam Function Let <code>T_1,...,T_n</code> be the types of \a SourceRange and <code>U_1,...,U_n</code> the types of \a TargetContainer.
-Then the function must be callable as <code>fcppt::optional::object<U_i>(T_i)</code> for every <code>1 <= i <= n</code>.
+\tparam Function Let <code>T_1,...,T_n</code> be the types of \a SourceRange and U the value type of \a TargetContainer.
+Then the function must be callable as <code>fcppt::optional::object<U>(T_i)</code> for every <code>1 <= i <= n</code>.
 
 TODO(philipp): concepts
 */
