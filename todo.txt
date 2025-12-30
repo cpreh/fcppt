@@ -4,3 +4,4 @@
 - Allow std::uint8_t enums in random distributions
 - Add example for fcppt::indent
 - Improve record label output
+- Check that short_names/long_names don't start with a -

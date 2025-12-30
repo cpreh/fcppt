@@ -12,7 +12,6 @@
 #include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/error_output.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
@@ -78,22 +77,6 @@ TEST_CASE("options::flag", "[options]")
           fcppt::options::make_inactive_value(0),
           fcppt::options::optional_help_text{}),
       fcppt::options::exception);
-}
-
-TEST_CASE("options::flag duplicate names", "[options]")
-{
-  FCPPT_RECORD_MAKE_LABEL(flag_label);
-
-  using flag_type = fcppt::options::flag<flag_label, int>;
-
-  CHECK_THROWS_AS(
-      flag_type(
-          fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("flag")}},
-          fcppt::options::long_name{FCPPT_TEXT("flag")},
-          fcppt::options::make_active_value(0),
-          fcppt::options::make_inactive_value(1),
-          fcppt::options::optional_help_text{}),
-      fcppt::options::duplicate_names);
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

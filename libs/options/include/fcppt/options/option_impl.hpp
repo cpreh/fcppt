@@ -48,7 +48,6 @@
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_option.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
@@ -73,7 +72,6 @@ fcppt::options::option<Label, Type>::option(
       default_value_(std::move(_default_value)),
       help_text_{std::move(_help_text)}
 {
-  fcppt::options::detail::check_short_long_names(this->short_name_, this->long_name_);
 }
 
 template <typename Label, typename Type>

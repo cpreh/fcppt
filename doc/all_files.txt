@@ -1663,7 +1663,6 @@ libs/options/include/fcppt/options/default_value_tag.hpp
 libs/options/include/fcppt/options/deref.hpp
 libs/options/include/fcppt/options/deref_type.hpp
 libs/options/include/fcppt/options/detail/apply.hpp
-libs/options/include/fcppt/options/detail/check_short_long_names.hpp
 libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
 libs/options/include/fcppt/options/detail/combine_errors_product.hpp
 libs/options/include/fcppt/options/detail/combine_errors_sum.hpp
