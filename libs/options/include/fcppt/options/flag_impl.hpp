@@ -7,15 +7,12 @@
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/output_to_fcppt_string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/options/dual_flag_error.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_variant.hpp>
-#include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -53,12 +50,6 @@ fcppt::options::flag<Label, Type>::flag(
       inactive_value_{std::move(_inactive_value)},
       help_text_(std::move(_help_text))
 {
-  if (this->active_value_.get() == this->inactive_value_.get())
-  {
-    throw fcppt::options::exception{
-        FCPPT_TEXT("The active and the inactive value must be different. The value is \"") +
-        fcppt::output_to_fcppt_string(this->active_value_.get()) + FCPPT_TEXT("\".")};
-  }
 }
 
 template <typename Label, typename Type>
