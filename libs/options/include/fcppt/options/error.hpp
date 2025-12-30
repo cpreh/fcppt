@@ -28,7 +28,7 @@ private:
 };
 
 [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool
-operator==(fcppt::options::error const &, fcppt::options::error const &);
+operator==(fcppt::options::error const &, fcppt::options::error const &) noexcept;
 
 }
 

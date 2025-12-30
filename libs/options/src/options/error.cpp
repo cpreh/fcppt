@@ -21,7 +21,7 @@ fcppt::options::error_variant const &fcppt::options::error::get() const
 }
 
 bool fcppt::options::operator==(
-    fcppt::options::error const &_left, fcppt::options::error const &_right)
+    fcppt::options::error const &_left, fcppt::options::error const &_right) noexcept
 {
   return _left.get() == _right.get();
 }

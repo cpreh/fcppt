@@ -40,6 +40,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant const &
   error() const;
+
 private:
   fcppt::options::state state_;
 

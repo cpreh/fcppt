@@ -12,6 +12,7 @@
 #include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/catch/variant.hpp> // IWYU pragma: keep
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/apply.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/argument_usage.hpp>
@@ -53,7 +54,7 @@ TEST_CASE("options::apply", "[options]")
 
   using int_flag_type = fcppt::options::flag<flag_label, int>;
 
-  auto const mult_parser(fcppt::options::apply(
+  auto const mult_parser{fcppt::options::apply(
       int_arg_type{
           fcppt::options::long_name{FCPPT_TEXT("arg1")}, fcppt::options::optional_help_text{}},
       int_flag_type{
@@ -61,7 +62,7 @@ TEST_CASE("options::apply", "[options]")
           fcppt::options::long_name{FCPPT_TEXT("flag")},
           fcppt::options::make_active_value(42),
           fcppt::options::make_inactive_value(10),
-          fcppt::options::optional_help_text{}}));
+          fcppt::options::optional_help_text{}})};
 
   using result_type = fcppt::options::result_of<decltype(mult_parser)>;
 
@@ -70,6 +71,11 @@ TEST_CASE("options::apply", "[options]")
           mult_parser, fcppt::args_vector{FCPPT_TEXT("--flag"), FCPPT_TEXT("123")}) ==
       fcppt::options::make_success(
           result_type{arg_label{} = 123, flag_label{} = 42}));
+
+  CHECK(
+      fcppt::options::parse(mult_parser, fcppt::args_vector{}) ==
+      fcppt::either::make_failure<result_type>(fcppt::options::error{fcppt::options::error_variant{
+          fcppt::options::missing_argument_error{fcppt::options::long_name{FCPPT_TEXT("arg1")}}}}));
 
   CHECK(
       mult_parser.usage() ==
@@ -82,6 +88,31 @@ TEST_CASE("options::apply", "[options]")
               fcppt::options::long_name{FCPPT_TEXT("flag")},
               fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
               fcppt::options::optional_help_text{}}}}}}});
+}
+
+TEST_CASE("options::apply missing multi", "[options]")
+{
+  FCPPT_RECORD_MAKE_LABEL(arg1_label);
+  FCPPT_RECORD_MAKE_LABEL(arg2_label);
+
+  auto const mult_parser{fcppt::options::apply(
+      fcppt::options::argument<arg1_label, int>{
+          fcppt::options::long_name{FCPPT_TEXT("arg1")}, fcppt::options::optional_help_text{}},
+      fcppt::options::argument<arg2_label, int>{
+          fcppt::options::long_name{FCPPT_TEXT("arg2")}, fcppt::options::optional_help_text{}})};
+
+  using result_type = fcppt::options::result_of<decltype(mult_parser)>;
+
+  CHECK(
+      fcppt::options::parse(mult_parser, fcppt::args_vector{}) ==
+      fcppt::either::make_failure<result_type>(
+          fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_product{
+              fcppt::options::error{
+                  fcppt::options::error_variant{fcppt::options::missing_argument_error{
+                      fcppt::options::long_name{FCPPT_TEXT("arg1")}}}},
+              fcppt::options::error{
+                  fcppt::options::error_variant{fcppt::options::missing_argument_error{
+                      fcppt::options::long_name{FCPPT_TEXT("arg2")}}}}}}}));
 }
 
 TEST_CASE("options::apply duplicate names", "[options]")
