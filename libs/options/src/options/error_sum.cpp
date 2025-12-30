@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/recursive_comparison.hpp>
+#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_sum.hpp>
 #include <fcppt/variant/comparison.hpp> // IWYU pragma: keep

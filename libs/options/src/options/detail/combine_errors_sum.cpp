@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_sum.hpp>
 #include <fcppt/options/error_variant.hpp>
