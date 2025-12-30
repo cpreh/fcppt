@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_OPTIONAL_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_OPTIONAL_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/make.hpp>
@@ -103,8 +102,8 @@ fcppt::options::option_name_set fcppt::options::optional<Parser>::option_names()
 template <typename Parser>
 fcppt::options::usage fcppt::options::optional<Parser>::usage() const
 {
-  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::optional_usage{
-      fcppt::make_recursive(fcppt::options::deref(this->parser_).usage())}}};
+  return fcppt::options::usage{fcppt::options::usage_variant{
+      fcppt::options::optional_usage{fcppt::options::deref(this->parser_).usage()}}};
 }
 
 #endif

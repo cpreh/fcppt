@@ -27,15 +27,14 @@ inline fcppt::options::missing_error combine_errors_sum_impl(
   return fcppt::options::missing_error{
       std::move(_error2.state()),
       fcppt::options::missing_error_variant{fcppt::options::missing_error_sum{
-          fcppt::make_recursive(std::move(_error1.error())),
-          fcppt::make_recursive(std::move(_error2.error()))}}};
+          std::move(_error1.error()), std::move(_error2.error())}}};
 }
 
 inline fcppt::options::error
 combine_errors_sum_impl(fcppt::options::error &&_error1, fcppt::options::error &&_error2)
 {
-  return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_sum{
-      fcppt::make_recursive(std::move(_error1)), fcppt::make_recursive(std::move(_error2))}}};
+  return fcppt::options::error{fcppt::options::error_variant{
+      fcppt::options::error_sum{std::move(_error1), std::move(_error2)}}};
 }
 
 inline fcppt::options::error combine_errors_sum_impl(

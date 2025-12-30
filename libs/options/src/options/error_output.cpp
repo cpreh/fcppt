@@ -59,17 +59,17 @@ void print_error(
       },
       [&_stream, _indent](fcppt::options::error_product const &_inner)
       {
-        print_error(_stream, _inner.left().get(), _indent);
+        print_error(_stream, _inner.left(), _indent);
         _stream << FCPPT_TEXT('\n');
-        print_error(_stream, _inner.right().get(), _indent);
+        print_error(_stream, _inner.right(), _indent);
       },
       [&_stream, _indent](fcppt::options::error_sum const &_inner)
       {
-        print_error(_stream, _inner.left().get(), fcppt::indent::extra(_indent));
+        print_error(_stream, _inner.left(), fcppt::indent::extra(_indent));
         _stream << FCPPT_TEXT('\n');
         _stream << fcppt::indent::print(_indent) << FCPPT_TEXT('|');
         _stream << FCPPT_TEXT('\n');
-        print_error(_stream, _inner.right().get(), fcppt::indent::extra(_indent));
+        print_error(_stream, _inner.right(), fcppt::indent::extra(_indent));
       },
       [&_stream, _indent](fcppt::options::leftover_error const &_inner)
       {

@@ -5,38 +5,36 @@
 
 #include <fcppt/recursive_comparison.hpp>
 #include <fcppt/options/missing_error_sum.hpp>
-#include <fcppt/options/missing_error_variant.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/variant/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::options::missing_error_sum::missing_error_sum(base &&_left, base &&_right)
+fcppt::options::missing_error_sum::missing_error_sum(
+    fcppt::options::missing_error_variant &&_left, fcppt::options::missing_error_variant &&_right)
     : left_{std::move(_left)}, right_{std::move(_right)}
 {
 }
 
-fcppt::options::missing_error_sum::base &fcppt::options::missing_error_sum::left()
+fcppt::options::missing_error_variant &fcppt::options::missing_error_sum::left()
 {
-  return this->left_;
+  return this->left_.get();
 }
 
-fcppt::options::missing_error_sum::base const &fcppt::options::missing_error_sum::left() const
+fcppt::options::missing_error_variant const &fcppt::options::missing_error_sum::left() const
 {
-  return this->left_;
+  return this->left_.get();
 }
 
-fcppt::options::missing_error_sum::base &fcppt::options::missing_error_sum::right()
+fcppt::options::missing_error_variant &fcppt::options::missing_error_sum::right()
 {
-  return this->right_;
+  return this->right_.get();
 }
 
-fcppt::options::missing_error_sum::base const &fcppt::options::missing_error_sum::right() const
+fcppt::options::missing_error_variant const &fcppt::options::missing_error_sum::right() const
 {
-  return this->right_;
+  return this->right_.get();
 }
 
-bool fcppt::options::missing_error_sum::operator==(missing_error_sum const &_other) const
-{
-  return this->left_ == _other.left_ && this->right_ == _other.right_;
-}
+bool fcppt::options::missing_error_sum::operator==(missing_error_sum const &_other) const = default;

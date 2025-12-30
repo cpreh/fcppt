@@ -24,14 +24,11 @@ class sub_command_usage
 {
 public:
   FCPPT_OPTIONS_DETAIL_SYMBOL
-  sub_command_usage(
-      fcppt::string,
-      fcppt::recursive<fcppt::options::usage> &&,
-      fcppt::options::optional_help_text);
+  sub_command_usage(fcppt::string, fcppt::options::usage &&, fcppt::options::optional_help_text);
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::string const &name() const;
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::recursive<fcppt::options::usage> const &
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage const &
   inner() const;
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::optional_help_text const &

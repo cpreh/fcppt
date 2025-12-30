@@ -3,20 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/recursive.hpp>
 #include <fcppt/options/many_usage.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::options::many_usage::many_usage(fcppt::recursive<fcppt::options::usage> &&_inner)
-    : inner_{std::move(_inner)}
+fcppt::options::many_usage::many_usage(fcppt::options::usage &&_inner) : inner_{std::move(_inner)}
 {
 }
 
-fcppt::recursive<fcppt::options::usage> const &
-fcppt::options::many_usage::inner() const
+fcppt::options::usage const &fcppt::options::many_usage::inner() const
 {
-  return this->inner_;
+  return this->inner_.get();
 }

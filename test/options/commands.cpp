@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
@@ -149,33 +148,31 @@ TEST_CASE("options::commands", "[options]")
   CHECK(
       commands.usage() ==
       fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::commands_usage{
-          fcppt::make_recursive(
-              fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::option_usage{
-                  fcppt::options::option_usage::default_value_type{
-                      fcppt::optional::object<fcppt::string>{}},
-                  fcppt::options::long_name{FCPPT_TEXT("option")},
-                  fcppt::options::optional_short_name{},
-                  fcppt::options::pretty_type<int>(),
-                  fcppt::options::optional_help_text{}}}}),
+          fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::option_usage{
+              fcppt::options::option_usage::default_value_type{
+                  fcppt::optional::object<fcppt::string>{}},
+              fcppt::options::long_name{FCPPT_TEXT("option")},
+              fcppt::options::optional_short_name{},
+              fcppt::options::pretty_type<int>(),
+              fcppt::options::optional_help_text{}}}},
           fcppt::container::make<std::vector<fcppt::options::sub_command_usage>>(
               fcppt::options::sub_command_usage{
                   FCPPT_TEXT("foo"),
-                  fcppt::make_recursive(fcppt::options::usage{
+                  fcppt::options::usage{
                       fcppt::options::usage_variant{fcppt::options::argument_usage{
                           fcppt::options::long_name{FCPPT_TEXT("arg1")},
                           fcppt::options::pretty_type<int>(),
-                          fcppt::options::optional_help_text{}}}}),
+                          fcppt::options::optional_help_text{}}}},
                   fcppt::options::optional_help_text{}},
               fcppt::options::sub_command_usage{
                   FCPPT_TEXT("bar"),
-                  fcppt::make_recursive(fcppt::options::usage{
-                      fcppt::options::usage_variant{fcppt::options::option_usage{
-                          fcppt::options::option_usage::default_value_type{
-                              fcppt::optional::object<fcppt::string>{}},
-                          fcppt::options::long_name{FCPPT_TEXT("option")},
-                          fcppt::options::optional_short_name{},
-                          fcppt::options::pretty_type<int>(),
-                          fcppt::options::optional_help_text{}}}}),
+                  fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::option_usage{
+                      fcppt::options::option_usage::default_value_type{
+                          fcppt::optional::object<fcppt::string>{}},
+                      fcppt::options::long_name{FCPPT_TEXT("option")},
+                      fcppt::options::optional_short_name{},
+                      fcppt::options::pretty_type<int>(),
+                      fcppt::options::optional_help_text{}}}},
                   fcppt::options::optional_help_text{}})}}});
 }
 

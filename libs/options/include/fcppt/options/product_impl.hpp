@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/output_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -134,8 +133,7 @@ template <typename Left, typename Right>
 fcppt::options::usage fcppt::options::product<Left, Right>::usage() const
 {
   return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::product_usage{
-      fcppt::make_recursive(fcppt::options::deref(this->left_).usage()),
-      fcppt::make_recursive(fcppt::options::deref(this->right_).usage())}}};
+      fcppt::options::deref(this->left_).usage(), fcppt::options::deref(this->right_).usage()}}};
 }
 
 template <typename Left, typename Right>

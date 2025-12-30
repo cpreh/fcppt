@@ -7,7 +7,6 @@
 #define FCPPT_OPTIONS_COMMANDS_IMPL_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp> // IWYU pragma: keep
@@ -186,15 +185,14 @@ template <typename OptionsParser, typename... SubCommands>
 fcppt::options::usage fcppt::options::commands<OptionsParser, SubCommands...>::usage() const
 {
   return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::commands_usage{
-      fcppt::make_recursive(fcppt::options::deref(this->options_parser_).usage()),
+      fcppt::options::deref(this->options_parser_).usage(),
       fcppt::algorithm::map<std::vector<fcppt::options::sub_command_usage>>(
           this->sub_commands_,
           [](auto const &_sub_command)
           {
             return fcppt::options::sub_command_usage{
                 fcppt::options::deref(_sub_command).name(),
-                fcppt::make_recursive(
-                    fcppt::options::deref(fcppt::options::deref(_sub_command).parser()).usage()),
+                fcppt::options::deref(fcppt::options::deref(_sub_command).parser()).usage(),
                 fcppt::options::deref(_sub_command).help_text()};
           })}}};
 }

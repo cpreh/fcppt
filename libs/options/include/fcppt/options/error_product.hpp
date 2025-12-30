@@ -16,16 +16,17 @@ namespace fcppt::options
 class error_product
 {
 public:
-  using base = fcppt::recursive<fcppt::options::error>;
+  FCPPT_OPTIONS_DETAIL_SYMBOL error_product(fcppt::options::error &&, fcppt::options::error &&);
 
-  FCPPT_OPTIONS_DETAIL_SYMBOL error_product(base &&, base &&);
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::error const &left() const;
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &left() const;
-
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &right() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::error const &right() const;
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(error_product const &) const;
+
 private:
+  using base = fcppt::recursive<fcppt::options::error>;
+
   base left_;
 
   base right_;

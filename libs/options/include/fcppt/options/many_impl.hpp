@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_MANY_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_MANY_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/either/loop.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/deref.hpp>
@@ -102,8 +101,8 @@ fcppt::options::option_name_set fcppt::options::many<Parser>::option_names() con
 template <typename Parser>
 fcppt::options::usage fcppt::options::many<Parser>::usage() const
 {
-  return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::many_usage{
-      fcppt::make_recursive(fcppt::options::deref(this->parser_).usage())}}};
+  return fcppt::options::usage{fcppt::options::usage_variant{
+      fcppt::options::many_usage{fcppt::options::deref(this->parser_).usage()}}};
 }
 
 #endif

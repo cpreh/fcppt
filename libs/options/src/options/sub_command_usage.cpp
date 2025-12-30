@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/recursive.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/sub_command_usage.hpp>
@@ -14,7 +13,7 @@
 
 fcppt::options::sub_command_usage::sub_command_usage(
     fcppt::string _name,
-    fcppt::recursive<fcppt::options::usage> &&_inner,
+    fcppt::options::usage &&_inner,
     fcppt::options::optional_help_text _help_text)
     : name_{std::move(_name)}, inner_{std::move(_inner)}, help_text_{std::move(_help_text)}
 {
@@ -22,9 +21,9 @@ fcppt::options::sub_command_usage::sub_command_usage(
 
 fcppt::string const &fcppt::options::sub_command_usage::name() const { return this->name_; }
 
-fcppt::recursive<fcppt::options::usage> const &fcppt::options::sub_command_usage::inner() const
+fcppt::options::usage const &fcppt::options::sub_command_usage::inner() const
 {
-  return this->inner_;
+  return this->inner_.get();
 }
 
 fcppt::options::optional_help_text const &fcppt::options::sub_command_usage::help_text() const

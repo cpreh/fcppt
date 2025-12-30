@@ -3,7 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_product.hpp>
 #include <fcppt/options/error_sum.hpp>
@@ -34,19 +33,15 @@ fcppt::options::detail::missing_error_to_error(fcppt::options::missing_error_var
       [](fcppt::options::missing_error_product &&_inner)
       {
         return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_product{
-            fcppt::make_recursive(
-                fcppt::options::detail::missing_error_to_error(std::move(_inner.left().get()))),
-            fcppt::make_recursive(
-                fcppt::options::detail::missing_error_to_error(std::move(_inner.right().get())))}}};
+            fcppt::options::detail::missing_error_to_error(std::move(_inner.left())),
+            fcppt::options::detail::missing_error_to_error(std::move(_inner.right()))}}};
       },
       // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       [](fcppt::options::missing_error_sum &&_inner)
       {
         return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_sum{
-            fcppt::make_recursive(
-                fcppt::options::detail::missing_error_to_error(std::move(_inner.left().get()))),
-            fcppt::make_recursive(
-                fcppt::options::detail::missing_error_to_error(std::move(_inner.right().get())))}}};
+            fcppt::options::detail::missing_error_to_error(std::move(_inner.left())),
+            fcppt::options::detail::missing_error_to_error(std::move(_inner.right()))}}};
       },
       [](fcppt::options::missing_flag_error &&_inner)
       { return fcppt::options::error{fcppt::options::error_variant{std::move(_inner)}}; },

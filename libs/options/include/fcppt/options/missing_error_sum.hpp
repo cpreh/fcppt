@@ -16,20 +16,23 @@ namespace fcppt::options
 class missing_error_sum
 {
 public:
-  using base = fcppt::recursive<fcppt::options::missing_error_variant>;
+  FCPPT_OPTIONS_DETAIL_SYMBOL missing_error_sum(
+      fcppt::options::missing_error_variant &&, fcppt::options::missing_error_variant &&);
 
-  FCPPT_OPTIONS_DETAIL_SYMBOL missing_error_sum(base &&, base &&);
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant &left();
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base &left();
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant const &
+  left() const;
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &left() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant &right();
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base &right();
-
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &right() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::missing_error_variant const &
+  right() const;
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(missing_error_sum const &) const;
 private:
+  using base = fcppt::recursive<fcppt::options::missing_error_variant>;
+
   base left_;
 
   base right_;

@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp> // NOLINT(misc-include-cleaner)
@@ -79,17 +78,16 @@ TEST_CASE("options::sum", "[options]")
   CHECK(fcppt::options::parse(sum, fcppt::args_vector{}).has_failure());
 
   CHECK(
-      sum.usage() == fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::sum_usage{
-                         fcppt::make_recursive(fcppt::options::usage{
-                             fcppt::options::usage_variant{fcppt::options::flag_usage{
-                                 fcppt::options::long_name{FCPPT_TEXT("left")},
-                                 fcppt::options::optional_short_name{},
-                                 fcppt::options::optional_help_text{}}}}),
-                         fcppt::make_recursive(fcppt::options::usage{
-                             fcppt::options::usage_variant{fcppt::options::flag_usage{
-                                 fcppt::options::long_name{FCPPT_TEXT("right")},
-                                 fcppt::options::optional_short_name{},
-                                 fcppt::options::optional_help_text{}}}})}}});
+      sum.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::sum_usage{
+          fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::flag_usage{
+              fcppt::options::long_name{FCPPT_TEXT("left")},
+              fcppt::options::optional_short_name{},
+              fcppt::options::optional_help_text{}}}},
+          fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::flag_usage{
+              fcppt::options::long_name{FCPPT_TEXT("right")},
+              fcppt::options::optional_short_name{},
+              fcppt::options::optional_help_text{}}}}}}});
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

@@ -20,16 +20,16 @@ namespace fcppt::options
 class sum_usage
 {
 public:
-  using base = fcppt::recursive<fcppt::options::usage>;
+  FCPPT_OPTIONS_DETAIL_SYMBOL sum_usage(fcppt::options::usage &&, fcppt::options::usage &&);
 
-  FCPPT_OPTIONS_DETAIL_SYMBOL sum_usage(base &&, base &&);
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage const &left() const;
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &left() const;
-
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &right() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage const &right() const;
 
   [[nodiscard]] bool operator==(sum_usage const &) const = default;
 private:
+  using base = fcppt::recursive<fcppt::options::usage>;
+
   base left_;
 
   base right_;

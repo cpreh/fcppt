@@ -49,7 +49,7 @@ void print_usage(
       },
       [&_stream, _indent](fcppt::options::commands_usage const &_inner)
       {
-        print_usage(_stream, _inner.options_usage().get(), _indent);
+        print_usage(_stream, _inner.options_usage(), _indent);
 
         _stream << FCPPT_TEXT('\n');
 
@@ -67,7 +67,7 @@ void print_usage(
 
           fcppt::io::ostringstream inner_output{};
 
-          print_usage(inner_output, sub_command.inner().get(), fcppt::indent::extra(extra_indent));
+          print_usage(inner_output, sub_command.inner(), fcppt::indent::extra(extra_indent));
 
           fcppt::string const inner_usage{inner_output.str()};
 
@@ -88,7 +88,7 @@ void print_usage(
       {
         _stream << fcppt::indent::print(_indent) << FCPPT_TEXT("[ ");
 
-        print_usage(_stream, _inner.inner().get(), _indent);
+        print_usage(_stream, _inner.inner(), _indent);
 
         _stream << fcppt::indent::print(_indent) << FCPPT_TEXT(" ]*");
       },
@@ -119,24 +119,24 @@ void print_usage(
       [&_stream, _indent](fcppt::options::optional_usage const &_inner)
       {
          _stream << fcppt::indent::print(_indent) << FCPPT_TEXT("[ ");
-         print_usage(_stream, _inner.inner().get(), _indent);
+         print_usage(_stream, _inner.inner(), _indent);
          _stream << fcppt::indent::print(_indent) << FCPPT_TEXT(" ]");
       },
       [&_stream, _indent](fcppt::options::product_usage const &_inner)
       {
-        print_usage(_stream, _inner.left().get(), _indent);
+        print_usage(_stream, _inner.left(), _indent);
         _stream << FCPPT_TEXT('\n');
-        print_usage(_stream, _inner.right().get(), _indent);
+        print_usage(_stream, _inner.right(), _indent);
       },
       [&_stream, _indent](fcppt::options::sum_usage const &_inner)
       {
         _stream << fcppt::indent::print(_indent) << FCPPT_TEXT("(\n");
 
-        print_usage(_stream, _inner.left().get(), fcppt::indent::extra(_indent));
+        print_usage(_stream, _inner.left(), fcppt::indent::extra(_indent));
 
         _stream << FCPPT_TEXT('\n') << fcppt::indent::print(_indent) << FCPPT_TEXT("|\n");
 
-        print_usage(_stream, _inner.right().get(), fcppt::indent::extra(_indent));
+        print_usage(_stream, _inner.right(), fcppt::indent::extra(_indent));
 
         _stream << FCPPT_TEXT("\n)");
       },

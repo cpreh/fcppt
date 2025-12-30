@@ -25,17 +25,15 @@ class commands_usage
 {
 public:
   FCPPT_OPTIONS_DETAIL_SYMBOL
-  commands_usage(
-      fcppt::recursive<fcppt::options::usage> &&,
-      std::vector<fcppt::options::sub_command_usage> &&);
+  commands_usage(fcppt::options::usage &&, std::vector<fcppt::options::sub_command_usage> &&);
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::recursive<fcppt::options::usage> const &
-  options_usage() const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage const &options_usage() const;
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL std::vector<fcppt::options::sub_command_usage> const &
   sub_commands() const;
 
   [[nodiscard]] bool operator==(commands_usage const &) const = default;
+
 private:
   fcppt::recursive<fcppt::options::usage> options_usage_;
 

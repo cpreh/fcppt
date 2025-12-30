@@ -4,20 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/record.hpp> // IWYU pragma: keep
+#include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/catch/variant.hpp> // IWYU pragma: keep
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/apply.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/argument_usage.hpp>
 #include <fcppt/options/duplicate_names.hpp>
-#include <fcppt/options/error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/options/error_output.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/flag_usage.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -29,13 +28,14 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/product_usage.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/record/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/record/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_error.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/test/options/catch_usage.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/test/options/catch_error.hpp> // IWYU pragma: keep
+#include <fcppt/test/options/catch_usage.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -63,25 +63,25 @@ TEST_CASE("options::apply", "[options]")
           fcppt::options::make_inactive_value(10),
           fcppt::options::optional_help_text{}}));
 
+  using result_type = fcppt::options::result_of<decltype(mult_parser)>;
+
   CHECK(
       fcppt::options::parse(
           mult_parser, fcppt::args_vector{FCPPT_TEXT("--flag"), FCPPT_TEXT("123")}) ==
       fcppt::options::make_success(
-          decltype(mult_parser)::result_type{arg_label{} = 123, flag_label{} = 42}));
+          result_type{arg_label{} = 123, flag_label{} = 42}));
 
   CHECK(
       mult_parser.usage() ==
       fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::product_usage{
-          fcppt::make_recursive(
-              fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::argument_usage{
-                  fcppt::options::long_name{FCPPT_TEXT("arg1")},
-                  fcppt::options::pretty_type<int>(),
-                  fcppt::options::optional_help_text{}}}}),
-          fcppt::make_recursive(
-              fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::flag_usage{
-                  fcppt::options::long_name{FCPPT_TEXT("flag")},
-                  fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
-                  fcppt::options::optional_help_text{}}}})}}});
+          fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::argument_usage{
+              fcppt::options::long_name{FCPPT_TEXT("arg1")},
+              fcppt::options::pretty_type<int>(),
+              fcppt::options::optional_help_text{}}}},
+          fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::flag_usage{
+              fcppt::options::long_name{FCPPT_TEXT("flag")},
+              fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
+              fcppt::options::optional_help_text{}}}}}}});
 }
 
 TEST_CASE("options::apply duplicate names", "[options]")

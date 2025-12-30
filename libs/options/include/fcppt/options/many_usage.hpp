@@ -20,9 +20,9 @@ namespace fcppt::options
 class many_usage
 {
 public:
-  FCPPT_OPTIONS_DETAIL_SYMBOL explicit many_usage(fcppt::recursive<fcppt::options::usage> &&);
+  FCPPT_OPTIONS_DETAIL_SYMBOL explicit many_usage(fcppt::options::usage &&);
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::recursive<fcppt::options::usage> const &
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage const &
   inner() const;
 
   [[nodiscard]] bool operator==(many_usage const &) const = default;

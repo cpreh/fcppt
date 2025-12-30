@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
@@ -59,12 +58,12 @@ TEST_CASE("options::many", "[options]")
       fcppt::options::make_success(parser_type::result_type{arg_label{} = std::vector<int>{}}));
 
   CHECK(
-      parser.usage() == fcppt::options::usage{fcppt::options::usage_variant{
-                            fcppt::options::many_usage{fcppt::make_recursive(fcppt::options::usage{
-                                fcppt::options::usage_variant{fcppt::options::argument_usage{
-                                    fcppt::options::long_name{FCPPT_TEXT("arg1")},
-                                    fcppt::options::pretty_type<int>(),
-                                    fcppt::options::optional_help_text{}}}})}}});
+      parser.usage() ==
+      fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::many_usage{
+          fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::argument_usage{
+              fcppt::options::long_name{FCPPT_TEXT("arg1")},
+              fcppt::options::pretty_type<int>(),
+              fcppt::options::optional_help_text{}}}}}}});
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

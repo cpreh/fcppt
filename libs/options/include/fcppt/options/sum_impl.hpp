@@ -7,7 +7,6 @@
 #define FCPPT_OPTIONS_SUM_IMPL_HPP_INCLUDED
 
 #include <fcppt/copy.hpp>
-#include <fcppt/make_recursive.hpp>
 #include <fcppt/container/set_union.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
@@ -108,8 +107,7 @@ template <typename Label, typename Left, typename Right>
 fcppt::options::usage fcppt::options::sum<Label, Left, Right>::usage() const
 {
   return fcppt::options::usage{fcppt::options::usage_variant{fcppt::options::sum_usage{
-      fcppt::make_recursive(fcppt::options::deref(this->left_).usage()),
-      fcppt::make_recursive(fcppt::options::deref(this->right_).usage())}}};
+      fcppt::options::deref(this->left_).usage(), fcppt::options::deref(this->right_).usage()}}};
 }
 
 #endif
