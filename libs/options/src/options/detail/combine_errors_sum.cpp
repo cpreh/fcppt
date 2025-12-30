@@ -5,13 +5,13 @@
 
 #include <fcppt/make_recursive.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/error_pair.hpp>
+#include <fcppt/options/error_sum.hpp>
 #include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/missing_error.hpp>
-#include <fcppt/options/missing_error_pair.hpp>
+#include <fcppt/options/missing_error_sum.hpp>
 #include <fcppt/options/missing_error_variant.hpp>
 #include <fcppt/options/parse_error.hpp>
-#include <fcppt/options/detail/combine_errors.hpp>
+#include <fcppt/options/detail/combine_errors_sum.hpp>
 #include <fcppt/options/detail/missing_error_to_error.hpp>
 #include <fcppt/variant/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,50 +20,50 @@
 
 namespace
 {
-inline fcppt::options::missing_error combine_errors_impl(
+inline fcppt::options::missing_error combine_errors_sum_impl(
     // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     fcppt::options::missing_error &&_error1, fcppt::options::missing_error &&_error2)
 {
   return fcppt::options::missing_error{
       std::move(_error2.state()),
-      fcppt::options::missing_error_variant{fcppt::options::missing_error_pair{
+      fcppt::options::missing_error_variant{fcppt::options::missing_error_sum{
           fcppt::make_recursive(std::move(_error1.error())),
           fcppt::make_recursive(std::move(_error2.error()))}}};
 }
 
 inline fcppt::options::error
-combine_errors_impl(fcppt::options::error &&_error1, fcppt::options::error &&_error2)
+combine_errors_sum_impl(fcppt::options::error &&_error1, fcppt::options::error &&_error2)
 {
-  return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_pair{
+  return fcppt::options::error{fcppt::options::error_variant{fcppt::options::error_sum{
       fcppt::make_recursive(std::move(_error1)), fcppt::make_recursive(std::move(_error2))}}};
 }
 
-inline fcppt::options::error combine_errors_impl(
+inline fcppt::options::error combine_errors_sum_impl(
     fcppt::options::error &&_error1,
     // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
     fcppt::options::missing_error &&_error2)
 {
-  return combine_errors_impl(
+  return combine_errors_sum_impl(
       std::move(_error1),
       fcppt::options::detail::missing_error_to_error(std::move(_error2.error())));
 }
 
-inline fcppt::options::error combine_errors_impl(
+inline fcppt::options::error combine_errors_sum_impl(
     fcppt::options::missing_error &&_error1,
     fcppt::options::error &&_error2)
 {
-  return combine_errors_impl(std::move(_error2), std::move(_error1));
+  return combine_errors_sum_impl(std::move(_error2), std::move(_error1));
 }
 
 }
 
-fcppt::options::parse_error fcppt::options::detail::combine_errors(
+fcppt::options::parse_error fcppt::options::detail::combine_errors_sum(
     fcppt::options::parse_error &&_error1, fcppt::options::parse_error &&_error2)
 {
   return fcppt::variant::apply(
       [](auto &&_val1, auto &&_val2)
       {
-        return fcppt::options::parse_error{combine_errors_impl(
+        return fcppt::options::parse_error{combine_errors_sum_impl(
             std::forward<decltype(_val1)>(_val1), std::forward<decltype(_val2)>(_val2))};
       },
       std::move(_error1),

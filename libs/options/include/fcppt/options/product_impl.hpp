@@ -14,15 +14,19 @@
 #include <fcppt/container/output.hpp>
 #include <fcppt/container/set_intersection.hpp>
 #include <fcppt/container/set_union.hpp>
-#include <fcppt/either/bind.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/either/match.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/deref.hpp>
 #include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_context_fwd.hpp>
+#include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/product_decl.hpp> // IWYU pragma: export
 #include <fcppt/options/product_usage.hpp>
@@ -31,10 +35,12 @@
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
+#include <fcppt/options/detail/combine_errors_product.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
+#include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <set>
 #include <utility>
@@ -42,7 +48,7 @@
 
 template <typename Left, typename Right>
 fcppt::options::product<Left, Right>::product(Left &&_left, Right &&_right)
-    : left_(std::move(_left)), right_(std::move(_right))
+    : left_{std::move(_left)}, right_{std::move(_right)}
 {
   this->check_disjoint();
 }
@@ -54,16 +60,48 @@ fcppt::options::product<Left, Right>::parse(
 {
   FCPPT_PP_PUSH_WARNING
   FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
-  return fcppt::either::bind(
-      fcppt::options::deref(left_).parse(std::move(_state), _context),
+  return fcppt::either::match(
+      fcppt::options::deref(this->left_).parse(std::move(_state), _context),
+      [this, &_context](
+          fcppt::options::parse_error &&_left_error) -> fcppt::options::parse_result<result_type>
+      {
+        return fcppt::either::make_failure<
+            fcppt::options::state_with_value<result_type>>(fcppt::variant::match(
+            std::move(_left_error),
+            [this, &_context](
+                // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+                fcppt::options::missing_error &&_missing_error) -> fcppt::options::parse_error
+            {
+              return fcppt::either::match(
+                  fcppt::options::deref(this->right_)
+                      .parse(std::move(_missing_error.state()), _context),
+                  [&_missing_error](
+                      fcppt::options::parse_error &&_right_error) -> fcppt::options::parse_error
+                  {
+                    return fcppt::options::detail::combine_errors_product(
+                        std::move(_missing_error.error()), std::move(_right_error));
+                  },
+                  [&_missing_error](
+                      fcppt::options::state_with_value<fcppt::options::result_of<Right>>
+                          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+                          &&_right_result) -> fcppt::options::parse_error
+                  {
+                    return fcppt::options::parse_error{fcppt::options::missing_error{
+                        std::move(_right_result.state()), std::move(_missing_error.error())}};
+                  });
+            },
+            [](fcppt::options::error &&_other_error)
+            { return fcppt::options::parse_error{std::move(_other_error)}; }));
+      },
       [&_context,
-      // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+       // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
        this](fcppt::options::state_with_value<fcppt::options::result_of<Left>> &&_left_result)
-          -> fcppt::options::parse_result<result_type> {
+          -> fcppt::options::parse_result<result_type>
+      {
         fcppt::options::result_of<Left> &left_value{_left_result.value()};
 
         return fcppt::either::map(
-            fcppt::options::deref(right_).parse(std::move(_left_result.state()), _context),
+            fcppt::options::deref(this->right_).parse(std::move(_left_result.state()), _context),
             [&left_value](fcppt::options::state_with_value<fcppt::options::result_of<Right>>
             // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                               &&_right_result) {
@@ -80,14 +118,16 @@ template <typename Left, typename Right>
 fcppt::options::flag_name_set fcppt::options::product<Left, Right>::flag_names() const
 {
   return fcppt::container::set_union(
-      fcppt::options::deref(left_).flag_names(), fcppt::options::deref(right_).flag_names());
+      fcppt::options::deref(this->left_).flag_names(),
+      fcppt::options::deref(this->right_).flag_names());
 }
 
 template <typename Left, typename Right>
 fcppt::options::option_name_set fcppt::options::product<Left, Right>::option_names() const
 {
   return fcppt::container::set_union(
-      fcppt::options::deref(left_).option_names(), fcppt::options::deref(right_).option_names());
+      fcppt::options::deref(this->left_).option_names(),
+      fcppt::options::deref(this->right_).option_names());
 }
 
 template <typename Left, typename Right>
@@ -103,7 +143,7 @@ void fcppt::options::product<Left, Right>::check_disjoint() const
 {
   using name_set = std::set<fcppt::string>;
 
-  auto const all_parameters([](auto const &_parser) -> name_set {
+  auto const all_parameters{[](auto const &_parser) -> name_set {
     return fcppt::container::set_union(
         fcppt::algorithm::map<name_set>(
             _parser.flag_names(),
@@ -111,13 +151,15 @@ void fcppt::options::product<Left, Right>::check_disjoint() const
         fcppt::algorithm::map<name_set>(
             _parser.option_names(),
             [](fcppt::options::option_name const &_option_name) { return _option_name.name(); }));
-  });
+  }};
 
   name_set const common_names{fcppt::container::set_intersection(
-      all_parameters(fcppt::options::deref(left_)), all_parameters(fcppt::options::deref(right_)))};
+      all_parameters(fcppt::options::deref(this->left_)),
+      all_parameters(fcppt::options::deref(this->right_)))};
 
   if (!common_names.empty())
   {
+    // TODO(philipp): Fix typing
     throw fcppt::options::duplicate_names{
         FCPPT_TEXT("The following names appear multiple times in a product parser: ") +
         fcppt::output_to_fcppt_string(fcppt::container::output(common_names))};

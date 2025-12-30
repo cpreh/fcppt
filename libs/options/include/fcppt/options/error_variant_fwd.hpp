@@ -9,7 +9,8 @@
 #include <fcppt/options/argument_conversion_error_fwd.hpp>
 #include <fcppt/options/dual_flag_error_fwd.hpp>
 #include <fcppt/options/dual_option_error_fwd.hpp>
-#include <fcppt/options/error_pair_fwd.hpp>
+#include <fcppt/options/error_product_fwd.hpp>
+#include <fcppt/options/error_sum_fwd.hpp>
 #include <fcppt/options/invalid_command_error_fwd.hpp>
 #include <fcppt/options/leftover_error_fwd.hpp>
 #include <fcppt/options/missing_argument_error_fwd.hpp>
@@ -29,7 +30,8 @@ using error_variant = fcppt::variant::object<
     fcppt::options::argument_conversion_error,
     fcppt::options::dual_flag_error,
     fcppt::options::dual_option_error,
-    fcppt::options::error_pair,
+    fcppt::options::error_product,
+    fcppt::options::error_sum,
     fcppt::options::leftover_error,
     fcppt::options::invalid_command_error,
     fcppt::options::missing_argument_error,

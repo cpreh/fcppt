@@ -8,7 +8,8 @@
 
 #include <fcppt/options/missing_argument_error_fwd.hpp>
 #include <fcppt/options/missing_command_error_fwd.hpp>
-#include <fcppt/options/missing_error_pair_fwd.hpp>
+#include <fcppt/options/missing_error_product_fwd.hpp>
+#include <fcppt/options/missing_error_sum_fwd.hpp>
 #include <fcppt/options/missing_flag_error_fwd.hpp>
 #include <fcppt/options/missing_option_error_fwd.hpp>
 #include <fcppt/variant/object_fwd.hpp>
@@ -18,7 +19,8 @@ namespace fcppt::options
 using missing_error_variant = fcppt::variant::object<
     fcppt::options::missing_argument_error,
     fcppt::options::missing_command_error,
-    fcppt::options::missing_error_pair,
+    fcppt::options::missing_error_product,
+    fcppt::options::missing_error_sum,
     fcppt::options::missing_flag_error,
     fcppt::options::missing_option_error>;
 }

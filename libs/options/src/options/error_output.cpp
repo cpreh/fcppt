@@ -16,7 +16,8 @@
 #include <fcppt/options/dual_option_error.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_output.hpp>
-#include <fcppt/options/error_pair.hpp>
+#include <fcppt/options/error_product.hpp>
+#include <fcppt/options/error_sum.hpp>
 #include <fcppt/options/invalid_command_error.hpp>
 #include <fcppt/options/leftover_error.hpp>
 #include <fcppt/options/missing_argument_error.hpp>
@@ -56,7 +57,13 @@ void print_error(
                 << FCPPT_TEXT(" and the long option name ") << _inner.long_name()
                 << FCPPT_TEXT(" were specified at the same time.");
       },
-      [&_stream, _indent](fcppt::options::error_pair const &_inner)
+      [&_stream, _indent](fcppt::options::error_product const &_inner)
+      {
+        print_error(_stream, _inner.left().get(), fcppt::indent::extra(_indent));
+        _stream << FCPPT_TEXT('\n');
+        print_error(_stream, _inner.right().get(), fcppt::indent::extra(_indent));
+      },
+      [&_stream, _indent](fcppt::options::error_sum const &_inner)
       {
         print_error(_stream, _inner.left().get(), fcppt::indent::extra(_indent));
         _stream << FCPPT_TEXT('\n');

@@ -3,9 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_DETAIL_COMBINE_ERRORS_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_COMBINE_ERRORS_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_COMBINE_ERRORS_PRODUCT_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_COMBINE_ERRORS_PRODUCT_HPP_INCLUDED
 
+#include <fcppt/options/missing_error_variant_fwd.hpp>
 #include <fcppt/options/parse_error.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
@@ -13,7 +14,7 @@ namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::parse_error
-combine_errors(fcppt::options::parse_error &&, fcppt::options::parse_error &&);
+combine_errors_product(fcppt::options::missing_error_variant &&, fcppt::options::parse_error &&);
 }
 
 #endif

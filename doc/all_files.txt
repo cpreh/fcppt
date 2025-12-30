@@ -1664,7 +1664,8 @@ libs/options/include/fcppt/options/deref_type.hpp
 libs/options/include/fcppt/options/detail/apply.hpp
 libs/options/include/fcppt/options/detail/check_short_long_names.hpp
 libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
-libs/options/include/fcppt/options/detail/combine_errors.hpp
+libs/options/include/fcppt/options/detail/combine_errors_product.hpp
+libs/options/include/fcppt/options/detail/combine_errors_sum.hpp
 libs/options/include/fcppt/options/detail/concrete_decl.hpp
 libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 libs/options/include/fcppt/options/detail/concrete_impl.hpp
@@ -1691,8 +1692,10 @@ libs/options/include/fcppt/options/duplicate_names.hpp
 libs/options/include/fcppt/options/error_fwd.hpp
 libs/options/include/fcppt/options/error.hpp
 libs/options/include/fcppt/options/error_output.hpp
-libs/options/include/fcppt/options/error_pair_fwd.hpp
-libs/options/include/fcppt/options/error_pair.hpp
+libs/options/include/fcppt/options/error_product_fwd.hpp
+libs/options/include/fcppt/options/error_product.hpp
+libs/options/include/fcppt/options/error_sum_fwd.hpp
+libs/options/include/fcppt/options/error_sum.hpp
 libs/options/include/fcppt/options/error_variant_fwd.hpp
 libs/options/include/fcppt/options/error_variant.hpp
 libs/options/include/fcppt/options/exception_fwd.hpp
@@ -1746,8 +1749,10 @@ libs/options/include/fcppt/options/missing_command_error_fwd.hpp
 libs/options/include/fcppt/options/missing_command_error.hpp
 libs/options/include/fcppt/options/missing_error_fwd.hpp
 libs/options/include/fcppt/options/missing_error.hpp
-libs/options/include/fcppt/options/missing_error_pair_fwd.hpp
-libs/options/include/fcppt/options/missing_error_pair.hpp
+libs/options/include/fcppt/options/missing_error_product_fwd.hpp
+libs/options/include/fcppt/options/missing_error_product.hpp
+libs/options/include/fcppt/options/missing_error_sum_fwd.hpp
+libs/options/include/fcppt/options/missing_error_sum.hpp
 libs/options/include/fcppt/options/missing_error_variant_fwd.hpp
 libs/options/include/fcppt/options/missing_error_variant.hpp
 libs/options/include/fcppt/options/missing_flag_error_fwd.hpp

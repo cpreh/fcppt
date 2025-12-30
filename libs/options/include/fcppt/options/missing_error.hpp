@@ -21,6 +21,10 @@ namespace fcppt::options
 A missing error is an error that occurs if a required argument, flag or option has
 not been specified. Such an error makes #fcppt::options::optional
 parsers return an empty optional.
+
+Usually, a single parse step is destructive, since parsers extract arguments, flags or options from the state.
+However, in case a missing error occurs, the state is left unchanged, and it is therefore preserved as part of the missing_error.
+This makes it possible, for example, for product parsers to continue parsing and potentially accumulate more errors.
 */
 class missing_error
 {

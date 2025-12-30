@@ -3,22 +3,22 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_MISSING_ERROR_PAIR_HPP_INCLUDED
-#define FCPPT_OPTIONS_MISSING_ERROR_PAIR_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_MISSING_ERROR_SUM_HPP_INCLUDED
+#define FCPPT_OPTIONS_MISSING_ERROR_SUM_HPP_INCLUDED
 
 #include <fcppt/recursive_impl.hpp>
-#include <fcppt/options/missing_error_pair_fwd.hpp>
+#include <fcppt/options/missing_error_sum_fwd.hpp>
 #include <fcppt/options/missing_error_variant_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 namespace fcppt::options
 {
-class missing_error_pair
+class missing_error_sum
 {
 public:
   using base = fcppt::recursive<fcppt::options::missing_error_variant>;
 
-  FCPPT_OPTIONS_DETAIL_SYMBOL missing_error_pair(base &&, base &&);
+  FCPPT_OPTIONS_DETAIL_SYMBOL missing_error_sum(base &&, base &&);
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base &left();
 
@@ -28,7 +28,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL base const &right() const;
 
-  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(missing_error_pair const &) const;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(missing_error_sum const &) const;
 private:
   base left_;
 

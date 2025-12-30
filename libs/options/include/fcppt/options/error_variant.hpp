@@ -9,7 +9,8 @@
 #include <fcppt/options/argument_conversion_error.hpp> // IWYU pragma: keep
 #include <fcppt/options/dual_flag_error.hpp> // IWYU pragma: keep
 #include <fcppt/options/dual_option_error.hpp> // IWYU pragma: keep
-#include <fcppt/options/error_pair.hpp> // IWYU pragma: keep
+#include <fcppt/options/error_product.hpp> // IWYU pragma: keep
+#include <fcppt/options/error_sum.hpp> // IWYU pragma: keep
 #include <fcppt/options/error_variant_fwd.hpp> // IWYU pragma: export
 #include <fcppt/options/invalid_command_error.hpp> // IWYU pragma: keep
 #include <fcppt/options/leftover_error.hpp> // IWYU pragma: keep

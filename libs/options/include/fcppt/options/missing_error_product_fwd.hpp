@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_ERROR_PAIR_FWD_HPP_INCLUDED
-#define FCPPT_OPTIONS_ERROR_PAIR_FWD_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_MISSING_ERROR_PRODUCT_FWD_HPP_INCLUDED
+#define FCPPT_OPTIONS_MISSING_ERROR_PRODUCT_FWD_HPP_INCLUDED
 
 namespace fcppt::options
 {
-class error_pair;
+class missing_error_product;
 }
 
 #endif

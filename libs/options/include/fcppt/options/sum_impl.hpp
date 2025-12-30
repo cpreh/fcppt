@@ -26,7 +26,7 @@
 #include <fcppt/options/sum_usage.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/options/detail/combine_errors.hpp>
+#include <fcppt/options/detail/combine_errors_sum.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -60,7 +60,8 @@ fcppt::options::sum<Label, Left, Right>::parse(
             [&_error1](fcppt::options::parse_error &&_error2)
             {
               return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
-                  fcppt::options::detail::combine_errors(std::move(_error1), std::move(_error2)));
+                  fcppt::options::detail::combine_errors_sum(
+                      std::move(_error1), std::move(_error2)));
             },
             // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [](fcppt::options::state_with_value<fcppt::options::result_of<Right>> &&_right_result)

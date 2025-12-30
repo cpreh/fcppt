@@ -8,7 +8,8 @@
 
 #include <fcppt/options/missing_argument_error.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_command_error.hpp> // IWYU pragma: keep
-#include <fcppt/options/missing_error_pair.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_error_product.hpp> // IWYU pragma: keep
+#include <fcppt/options/missing_error_sum.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_error_variant_fwd.hpp> // IWYU pragma: export
 #include <fcppt/options/missing_flag_error.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_option_error.hpp> // IWYU pragma: keep

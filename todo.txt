@@ -3,3 +3,4 @@
 - Use = default for operator==
 - Allow std::uint8_t enums in random distributions
 - Add example for fcppt::indent
+- Remove fcppt::recursive from contructors/getters?
