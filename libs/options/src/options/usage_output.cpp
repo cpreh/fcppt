@@ -67,7 +67,7 @@ void print_usage(
 
           fcppt::io::ostringstream inner_output{};
 
-          print_usage(inner_output, sub_command.inner().get(), extra_indent);
+          print_usage(inner_output, sub_command.inner().get(), fcppt::indent::extra(extra_indent));
 
           fcppt::string const inner_usage{inner_output.str()};
 
