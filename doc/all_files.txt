@@ -48,6 +48,7 @@ examples/no_cpp.c
 examples/noncopyable.cpp
 examples/nonmovable.cpp
 examples/optional.cpp
+examples/options/args.cpp
 examples/options/base.cpp
 examples/options/commands.cpp
 examples/options/complex.cpp

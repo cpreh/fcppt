@@ -59,9 +59,9 @@ void print_error(
       },
       [&_stream, _indent](fcppt::options::error_product const &_inner)
       {
-        print_error(_stream, _inner.left().get(), fcppt::indent::extra(_indent));
+        print_error(_stream, _inner.left().get(), _indent);
         _stream << FCPPT_TEXT('\n');
-        print_error(_stream, _inner.right().get(), fcppt::indent::extra(_indent));
+        print_error(_stream, _inner.right().get(), _indent);
       },
       [&_stream, _indent](fcppt::options::error_sum const &_inner)
       {

@@ -12,6 +12,7 @@
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/apply.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/help_text.hpp>
@@ -19,13 +20,14 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result.hpp>
-#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/usage_output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <exception>
@@ -38,51 +40,44 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
 int FCPPT_MAIN(int argc, fcppt::args_char **argv)
 try
 {
-  // ![options_label]
-  FCPPT_RECORD_MAKE_LABEL(age_label);
-  // ![options_label]
+  FCPPT_RECORD_MAKE_LABEL(arg1_label);
+  FCPPT_RECORD_MAKE_LABEL(arg2_label);
 
-  // ![options_arg_type]
-  using parser_type = fcppt::options::argument<age_label, int>;
+  using result_type = fcppt::record::
+      object<fcppt::record::element<arg1_label, int>, fcppt::record::element<arg2_label, int>>;
 
-  using result_type = fcppt::options::result_of<parser_type>;
-  // ![options_arg_type]
+  auto const parser{fcppt::options::apply(
+      fcppt::options::argument<arg1_label, int>{
+          fcppt::options::long_name{FCPPT_TEXT("int1")},
+          fcppt::options::optional_help_text{
+              fcppt::options::help_text{FCPPT_TEXT("First operand")}}},
+      fcppt::options::argument<arg2_label, int>{
+          fcppt::options::long_name{FCPPT_TEXT("int2")},
+          fcppt::options::optional_help_text{
+              fcppt::options::help_text{FCPPT_TEXT("Second operand")}}})};
 
-  // ![options_arg_object]
-  parser_type const parser{
-      fcppt::options::long_name{FCPPT_TEXT("age")},
-      fcppt::options::optional_help_text{fcppt::options::help_text{FCPPT_TEXT("Your age")}}};
-  // ![options_arg_object]
-
-  // ![options_args_from_second]
   fcppt::args_vector const args{fcppt::args_from_second(argc, argv)};
-  // ![options_args_from_second]
 
-  // ![options_parse]
   fcppt::options::result<result_type> const result{fcppt::options::parse(parser, args)};
-  // ![options_parse]
 
-  // ![options_on_success]
-  auto const on_success{[](result_type const &_result) {
-    fcppt::io::cout() << FCPPT_TEXT("Your age is ") << fcppt::record::get<age_label>(_result)
-                      << FCPPT_TEXT('\n');
+  return fcppt::either::match(
+      result,
+      [&parser](fcppt::options::error const &_error)
+      {
+        fcppt::io::cerr() << _error << FCPPT_TEXT('\n') << FCPPT_TEXT("Usage:\n") << parser.usage()
+                          << FCPPT_TEXT('\n');
 
-    return EXIT_SUCCESS;
-  }};
-  // ![options_on_success]
+        return EXIT_FAILURE;
+      },
+      [](result_type const &_result)
+      {
+        fcppt::io::cout() << FCPPT_TEXT("The result is ")
+                          << (fcppt::record::get<arg1_label>(_result) +
+                              fcppt::record::get<arg2_label>(_result))
+                          << FCPPT_TEXT('\n');
 
-  // ![options_on_failure]
-  auto const on_failure{[&parser](fcppt::options::error const &_error) {
-    fcppt::io::cerr() << _error << FCPPT_TEXT('\n') << FCPPT_TEXT("Usage: ") << parser.usage()
-                      << FCPPT_TEXT('\n');
-
-    return EXIT_FAILURE;
-  }};
-  // ![options_on_failure]
-
-  // ![options_match]
-  return fcppt::either::match(result, on_failure, on_success);
-  // ![options_match]
+        return EXIT_SUCCESS;
+      });
 }
 catch (std::exception const &_error)
 {

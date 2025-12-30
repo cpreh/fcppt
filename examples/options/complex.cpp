@@ -142,12 +142,12 @@ try
   // ![options_log_level_option]
 
   // ![options_parser]
-  auto const parser(fcppt::options::apply(
+  auto const parser{fcppt::options::apply(
       fcppt::make_cref(input_file),
       fcppt::make_cref(output_file),
       fcppt::make_cref(execute),
       fcppt::make_cref(openmode),
-      fcppt::make_cref(log_level)));
+      fcppt::make_cref(log_level))};
   // ![options_parser]
 
   // ![options_result_type]
