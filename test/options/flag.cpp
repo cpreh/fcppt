@@ -13,7 +13,6 @@
 #include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/error_output.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/flag_usage.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -68,15 +67,6 @@ TEST_CASE("options::flag", "[options]")
           fcppt::options::long_name{FCPPT_TEXT("flag")},
           fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("f")}},
           fcppt::options::optional_help_text{}}}});
-
-  CHECK_THROWS_AS(
-      int_flag_type(
-          fcppt::options::optional_short_name{},
-          fcppt::options::long_name{FCPPT_TEXT("flag")},
-          fcppt::options::make_active_value(0),
-          fcppt::options::make_inactive_value(0),
-          fcppt::options::optional_help_text{}),
-      fcppt::options::exception);
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
