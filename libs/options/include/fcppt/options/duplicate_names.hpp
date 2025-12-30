@@ -11,14 +11,19 @@
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/symbol/class.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <set>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::options
 {
 class FCPPT_SYMBOL_CLASS duplicate_names : public fcppt::options::exception
 {
 public:
+  using set = std::set<fcppt::string>;
+
   FCPPT_OPTIONS_DETAIL_SYMBOL
-  explicit duplicate_names(fcppt::string &&);
+  explicit duplicate_names(set &&);
 
   FCPPT_OPTIONS_DETAIL_SYMBOL
   duplicate_names(duplicate_names const &);
@@ -34,6 +39,12 @@ public:
 
   FCPPT_OPTIONS_DETAIL_SYMBOL
   ~duplicate_names() noexcept override;
+
+  [[nodiscard]]
+  FCPPT_OPTIONS_DETAIL_SYMBOL
+  set const &get() const;
+private:
+  set set_;
 };
 
 }

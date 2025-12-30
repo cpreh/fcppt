@@ -6,11 +6,7 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
-#include <fcppt/output_to_fcppt_string.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/container/output.hpp>
 #include <fcppt/container/set_intersection.hpp>
 #include <fcppt/container/set_union.hpp>
 #include <fcppt/either/make_failure.hpp>
@@ -41,7 +37,6 @@
 #include <fcppt/record/multiply_disjoint.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <set>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -139,28 +134,26 @@ fcppt::options::usage fcppt::options::product<Left, Right>::usage() const
 template <typename Left, typename Right>
 void fcppt::options::product<Left, Right>::check_disjoint() const
 {
-  using name_set = std::set<fcppt::string>;
+  auto const all_parameters{
+      [](auto const &_parser) -> fcppt::options::duplicate_names::set
+      {
+        return fcppt::container::set_union(
+            fcppt::algorithm::map<fcppt::options::duplicate_names::set>(
+                _parser.flag_names(),
+                [](fcppt::options::flag_name const &_flag_name) { return _flag_name.get(); }),
+            fcppt::algorithm::map<fcppt::options::duplicate_names::set>(
+                _parser.option_names(),
+                [](fcppt::options::option_name const &_option_name)
+                { return _option_name.name(); }));
+      }};
 
-  auto const all_parameters{[](auto const &_parser) -> name_set {
-    return fcppt::container::set_union(
-        fcppt::algorithm::map<name_set>(
-            _parser.flag_names(),
-            [](fcppt::options::flag_name const &_flag_name) { return _flag_name.get(); }),
-        fcppt::algorithm::map<name_set>(
-            _parser.option_names(),
-            [](fcppt::options::option_name const &_option_name) { return _option_name.name(); }));
-  }};
-
-  name_set const common_names{fcppt::container::set_intersection(
+  fcppt::options::duplicate_names::set common_names{fcppt::container::set_intersection(
       all_parameters(fcppt::options::deref(this->left_)),
       all_parameters(fcppt::options::deref(this->right_)))};
 
   if (!common_names.empty())
   {
-    // TODO(philipp): Fix typing
-    throw fcppt::options::duplicate_names{
-        FCPPT_TEXT("The following names appear multiple times in a product parser: ") +
-        fcppt::output_to_fcppt_string(fcppt::container::output(common_names))};
+    throw fcppt::options::duplicate_names{std::move(common_names)};
   }
 }
 
