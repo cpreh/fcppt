@@ -25,12 +25,12 @@ public:
   FCPPT_OPTIONS_DETAIL_SYMBOL explicit usage(fcppt::options::usage_variant &&);
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage_variant const &get() const;
+
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool
+  operator==(fcppt::options::usage const &) const noexcept;
 private:
   fcppt::options::usage_variant impl_;
 };
-
-[[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool
-operator==(fcppt::options::usage const &, fcppt::options::usage const &);
 
 }
 

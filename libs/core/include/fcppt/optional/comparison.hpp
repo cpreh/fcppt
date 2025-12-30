@@ -25,8 +25,7 @@ template <typename T>
 [[nodiscard]] bool
 operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
 {
-  return _a.has_value() && _b.has_value() ? _a.get_unsafe() == _b.get_unsafe()
-                                          : _a.has_value() == _b.has_value();
+  return _a.impl() == _b.impl();
 }
 
 /**

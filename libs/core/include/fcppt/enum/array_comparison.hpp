@@ -6,10 +6,8 @@
 #ifndef FCPPT_ENUM_ARRAY_COMPARISON_HPP_INCLUDED
 #define FCPPT_ENUM_ARRAY_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/array/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/enum/array_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::enum_
 {
@@ -24,7 +22,7 @@ template <typename Enum, typename Value>
 bool operator==(
     fcppt::enum_::array<Enum, Value> const &_a, fcppt::enum_::array<Enum, Value> const &_b)
 {
-  return std::equal(_a.begin(), _a.end(), _b.begin());
+  return _a.impl() == _b.impl();
 }
 
 /**

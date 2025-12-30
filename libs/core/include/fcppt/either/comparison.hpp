@@ -22,10 +22,7 @@ template <typename Failure, typename Success>
     fcppt::either::object<Failure, Success> const &_a,
     fcppt::either::object<Failure, Success> const &_b)
 {
-  return _a.has_success() && _b.has_success()
-             ? _a.get_success_unsafe() == _b.get_success_unsafe()
-             : _a.has_failure() && _b.has_failure() &&
-                   _a.get_failure_unsafe() == _b.get_failure_unsafe();
+  return _a.impl() == _b.impl();
 }
 
 /**

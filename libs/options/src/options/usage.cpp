@@ -5,7 +5,7 @@
 
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/variant/comparison.hpp>
+#include <fcppt/variant/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -20,8 +20,4 @@ fcppt::options::usage_variant const &fcppt::options::usage::get() const
   return this->impl_;
 }
 
-bool fcppt::options::operator==(
-    fcppt::options::usage const &_left, fcppt::options::usage const &_right)
-{
-  return _left.get() == _right.get();
-}
+bool fcppt::options::usage::operator==(usage const &) const noexcept = default;
