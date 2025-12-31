@@ -39,6 +39,7 @@ libs/options/include/fcppt/options/default_value_tag.hpp
 libs/options/include/fcppt/options/deref.hpp
 libs/options/include/fcppt/options/deref_type.hpp
 libs/options/include/fcppt/options/detail/apply.hpp
+libs/options/include/fcppt/options/detail/check_name.hpp
 libs/options/include/fcppt/options/detail/check_sub_command_names.hpp
 libs/options/include/fcppt/options/detail/combine_errors_product.hpp
 libs/options/include/fcppt/options/detail/combine_errors_sum.hpp
@@ -96,6 +97,8 @@ libs/options/include/fcppt/options/inactive_value.hpp
 libs/options/include/fcppt/options/inactive_value_tag.hpp
 libs/options/include/fcppt/options/invalid_command_error_fwd.hpp
 libs/options/include/fcppt/options/invalid_command_error.hpp
+libs/options/include/fcppt/options/invalid_name_fwd.hpp
+libs/options/include/fcppt/options/invalid_name.hpp
 libs/options/include/fcppt/options/left_fwd.hpp
 libs/options/include/fcppt/options/left.hpp
 libs/options/include/fcppt/options/leftover_error_fwd.hpp
@@ -229,6 +232,7 @@ libs/options/src/options/argument_conversion_error.cpp
 libs/options/src/options/argument_usage.cpp
 libs/options/src/options/commands_usage.cpp
 libs/options/src/options/default_help_switch.cpp
+libs/options/src/options/detail/check_name.cpp
 libs/options/src/options/detail/check_sub_command_names.cpp
 libs/options/src/options/detail/combine_errors_product.cpp
 libs/options/src/options/detail/combine_errors_sum.cpp
@@ -248,6 +252,7 @@ libs/options/src/options/error_sum.cpp
 libs/options/src/options/exception.cpp
 libs/options/src/options/flag_usage.cpp
 libs/options/src/options/invalid_command_error.cpp
+libs/options/src/options/invalid_name.cpp
 libs/options/src/options/leftover_error.cpp
 libs/options/src/options/many_usage.cpp
 libs/options/src/options/missing_argument_error.cpp

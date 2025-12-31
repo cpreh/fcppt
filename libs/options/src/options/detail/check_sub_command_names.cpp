@@ -9,6 +9,7 @@
 #include <fcppt/algorithm/map_optional.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/options/duplicate_names.hpp>
+#include <fcppt/options/detail/check_name.hpp>
 #include <fcppt/options/detail/check_sub_command_names.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -19,6 +20,11 @@
 
 void fcppt::options::detail::check_sub_command_names(std::vector<fcppt::string> const &_names)
 {
+  for(fcppt::string const &name : _names)
+  {
+    fcppt::options::detail::check_name(name);
+  }
+
   using count_map_type = std::unordered_map<fcppt::string, std::size_t>;
 
   count_map_type const count_map{fcppt::algorithm::fold(
