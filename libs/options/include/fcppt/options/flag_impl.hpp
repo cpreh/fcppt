@@ -29,6 +29,7 @@
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
+#include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/record/element.hpp> // IWYU pragma: keep
@@ -50,6 +51,7 @@ fcppt::options::flag<Label, Type>::flag(
       inactive_value_{std::move(_inactive_value)},
       help_text_(std::move(_help_text))
 {
+  fcppt::options::detail::check_short_long_names(this->short_name_, this->long_name_);
 }
 
 template <typename Label, typename Type>

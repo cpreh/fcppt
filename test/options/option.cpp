@@ -7,15 +7,16 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/record.hpp> // IWYU pragma: keep
+#include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/catch/variant.hpp> // IWYU pragma: keep
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/options/error_output.hpp> // IWYU pragma: keep
+#include <fcppt/options/invalid_name.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_default_value.hpp>
 #include <fcppt/options/make_success.hpp>
@@ -29,10 +30,10 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/record/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/record/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/test/options/catch_error.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/test/options/catch_usage.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/test/options/catch_error.hpp> // IWYU pragma: keep
+#include <fcppt/test/options/catch_usage.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -97,6 +98,29 @@ TEST_CASE("options::option", "[options]")
   CHECK(
       fcppt::options::parse(int_option_with_default, fcppt::args_vector{}) ==
       fcppt::options::make_success(int_option_type::result_type{arg_label{} = 100}));
+}
+
+TEST_CASE("options::option invalid names", "[options]")
+{
+  FCPPT_RECORD_MAKE_LABEL(arg_label);
+
+  using int_option_type = fcppt::options::option<arg_label, int>;
+
+  CHECK_THROWS_AS(
+      (int_option_type{
+          fcppt::options::optional_short_name{fcppt::options::short_name{FCPPT_TEXT("-opt")}},
+          fcppt::options::long_name{FCPPT_TEXT("opt")},
+          fcppt::options::no_default_value<int>(),
+          fcppt::options::optional_help_text{}}),
+      fcppt::options::invalid_name);
+
+  CHECK_THROWS_AS(
+      (int_option_type{
+          fcppt::options::optional_short_name{},
+          fcppt::options::long_name{FCPPT_TEXT("-opt")},
+          fcppt::options::no_default_value<int>(),
+          fcppt::options::optional_help_text{}}),
+      fcppt::options::invalid_name);
 }
 
 // NOLINTEND(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
