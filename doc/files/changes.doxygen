@@ -38,6 +38,17 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>Reject argument/flag/option names that start with a <code>-</code>.</li>
+	<li>Active/inactive flag values don't need to be different anymore.</li>
+	<li>Short/long flag/option names don't need to be different anymore.</li>
+	<li>Hide #fcppt::recursive types in structs/classes.</li>
+	<li>Continue parsing in #fcppt::options::product in case of #fcppt::options::missing_error.</li>
+	<li>Improved typing of #fcppt::options::duplicate_names.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptrecord
 	<ul>
 	<li>Improved #fcppt::record::label_name.</li>
@@ -48,7 +59,21 @@
 
 \subsection changes_bugfixes_to_510 Bugfixes
 
-<p>Fixed the demangle check on clang.</p>
+<ul>
+
+<li>\ref fcpptoptions
+	<ul>
+	<li>Fixed indentation in sub command usage output.<li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Fixed #fcppt::type_name on clang.</li>
+	</ul>
+</li>
+
+</ul>
 
 \section changes_changes_to_500 5.0.0
 

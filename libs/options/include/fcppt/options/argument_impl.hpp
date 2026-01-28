@@ -32,6 +32,7 @@
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
+#include <fcppt/options/detail/check_name.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -47,6 +48,7 @@ fcppt::options::argument<Label, Type>::argument(
     fcppt::options::long_name &&_long_name, fcppt::options::optional_help_text &&_help_text)
     : long_name_{std::move(_long_name)}, help_text_{std::move(_help_text)}
 {
+  fcppt::options::detail::check_name(this->long_name_.get());
 }
 
 template <typename Label, typename Type>
