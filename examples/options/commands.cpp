@@ -119,10 +119,10 @@ try
           fcppt::io::cout() << FCPPT_TEXT("Clone from ")
                             << fcppt::record::get<clone_path>(
                                    fcppt::record::get<clone_label>(_clone))
-                            << FCPPT_TEXT('\n');
+                            << FCPPT_TEXT(".\n");
         },
         [](fcppt::options::result_of<decltype(pull_command)> const &) {
-          fcppt::io::cout() << FCPPT_TEXT("pull\n");
+          fcppt::io::cout() << FCPPT_TEXT("Pull.\n");
         });
   });
   //![usage_sub_commands]

@@ -52,15 +52,17 @@ try
   // ![options_base_record]
 
   // ![options_create_base]
-  auto const create_base([]() -> fcppt::options::base_unique_ptr<result_type> {
-    return fcppt::options::make_base<result_type>(fcppt::options::apply(
-        fcppt::options::argument<int_arg_label, int>{
-            fcppt::options::long_name{FCPPT_TEXT("arg")}, fcppt::options::optional_help_text{}},
-        fcppt::options::switch_<switch_label>{
-            fcppt::options::optional_short_name{},
-            fcppt::options::long_name{FCPPT_TEXT("switch")},
-            fcppt::options::optional_help_text{}}));
-  });
+  auto const create_base{
+      []() -> fcppt::options::base_unique_ptr<result_type>
+      {
+        return fcppt::options::make_base<result_type>(fcppt::options::apply(
+            fcppt::options::argument<int_arg_label, int>{
+                fcppt::options::long_name{FCPPT_TEXT("arg")}, fcppt::options::optional_help_text{}},
+            fcppt::options::switch_<switch_label>{
+                fcppt::options::optional_short_name{},
+                fcppt::options::long_name{FCPPT_TEXT("switch")},
+                fcppt::options::optional_help_text{}}));
+      }};
   // ![options_create_base]
 
   // ![options_use_base]
@@ -77,6 +79,7 @@ try
   // ![options_base_combine]
 
   fcppt::io::cout()
+      << std::boolalpha
       << fcppt::options::parse(combined, fcppt::args_from_second(argc, argv)).has_success()
       << FCPPT_TEXT('\n');
 

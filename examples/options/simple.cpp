@@ -65,7 +65,7 @@ try
   // ![options_on_success]
   auto const on_success{[](result_type const &_result) {
     fcppt::io::cout() << FCPPT_TEXT("Your age is ") << fcppt::record::get<age_label>(_result)
-                      << FCPPT_TEXT('\n');
+                      << FCPPT_TEXT(".\n");
 
     return EXIT_SUCCESS;
   }};
