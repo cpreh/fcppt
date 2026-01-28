@@ -40,7 +40,7 @@
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Reject argument/flag/option names that start with a <code>-</code>.</li>
+	<li>Reject argument/flag/option/sub command names that start with a <code>-</code>.</li>
 	<li>Active/inactive flag values don't need to be different anymore.</li>
 	<li>Short/long flag/option names don't need to be different anymore.</li>
 	<li>Hide #fcppt::recursive types in structs/classes.</li>
@@ -63,7 +63,7 @@
 
 <li>\ref fcpptoptions
 	<ul>
-	<li>Fixed indentation in sub command usage output.<li>
+	<li>Fixed indentation in sub command usage output.</li>
 	</ul>
 </li>
 
