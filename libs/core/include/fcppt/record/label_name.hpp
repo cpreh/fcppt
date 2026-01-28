@@ -7,27 +7,32 @@
 #define FCPPT_RECORD_LABEL_NAME_HPP_INCLUDED
 
 #include <fcppt/type_name_from_info.hpp>
+#include <fcppt/preprocessor/stringize_narrow.hpp>
 #include <fcppt/record/is_label.hpp>
+#include <fcppt/record/detail/tag_suffix.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <string_view>
 #include <typeinfo> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::record
 {
 /**
-\brief Returns the name of a label as a string
+\brief Returns the name of a label as a string.
 
 \ingroup fcpptrecord
 */
 template <typename Label>
 inline std::string label_name()
+  requires(fcppt::record::is_label<Label>::value)
 {
-  static_assert(fcppt::record::is_label<Label>::value, "Label must be a label");
-
-  return fcppt::type_name_from_info(typeid(typename Label::tag));
+  std::string const ret{fcppt::type_name_from_info(typeid(typename Label::tag))};
+  std::string_view ret_view{ret};
+  std::string_view const suffix{FCPPT_PP_STRINGIZE_NARROW(FCPPT_RECORD_DETAIL_TAG_SUFFIX)};
+  ret_view.remove_suffix(suffix.size());
+  return std::string{ret_view};
 }
-
 }
 
 #endif

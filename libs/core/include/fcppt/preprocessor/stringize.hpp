@@ -9,13 +9,13 @@
 #include <fcppt/preprocessor/detail/stringize.hpp>
 
 /**
-\brief Creates a string from its macro argument
+\brief Creates an fcppt string from its macro argument.
 
 \ingroup fcpptpreprocessor
 
 Stringizes its macro argument so that it is suitable to use with fcppt::string.
 
-\param string The argument to stringize
+\param string The argument to stringize.
 */
 #define FCPPT_PP_STRINGIZE(string) FCPPT_PP_DETAIL_STRINGIZE(string)
 

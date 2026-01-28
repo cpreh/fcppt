@@ -1175,6 +1175,7 @@ libs/core/include/fcppt/overloaded_decl.hpp
 libs/core/include/fcppt/overloaded_fwd.hpp
 libs/core/include/fcppt/overloaded_impl.hpp
 libs/core/include/fcppt/overload.hpp
+libs/core/include/fcppt/preprocessor/cat.hpp
 libs/core/include/fcppt/preprocessor/detail/disable_clang_warning.h
 libs/core/include/fcppt/preprocessor/detail/disable_gcc_warning.h
 libs/core/include/fcppt/preprocessor/detail/disable_gnu_gcc_warning.h
@@ -1209,6 +1210,7 @@ libs/core/include/fcppt/preprocessor/pragma.hpp
 libs/core/include/fcppt/preprocessor/push_warning.h
 libs/core/include/fcppt/preprocessor/push_warning.hpp
 libs/core/include/fcppt/preprocessor/stringize.hpp
+libs/core/include/fcppt/preprocessor/stringize_narrow.hpp
 libs/core/include/fcppt/preprocessor/todo.hpp
 libs/core/include/fcppt/random/distribution/base_type.hpp
 libs/core/include/fcppt/random/distribution/base_value.hpp
@@ -1293,6 +1295,7 @@ libs/core/include/fcppt/record/detail/make_tag_tuple.hpp
 libs/core/include/fcppt/record/detail/map_result.hpp
 libs/core/include/fcppt/record/detail/tag_base.hpp
 libs/core/include/fcppt/record/detail/tag_name.hpp
+libs/core/include/fcppt/record/detail/tag_suffix.hpp
 libs/core/include/fcppt/record/disjoint_product.hpp
 libs/core/include/fcppt/record/element_fwd.hpp
 libs/core/include/fcppt/record/element.hpp

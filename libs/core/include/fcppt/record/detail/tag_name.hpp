@@ -6,6 +6,9 @@
 #ifndef FCPPT_RECORD_DETAIL_TAG_NAME_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_TAG_NAME_HPP_INCLUDED
 
-#define FCPPT_RECORD_DETAIL_TAG_NAME(name) name##X_tag
+#include <fcppt/preprocessor/cat.hpp>
+#include <fcppt/record/detail/tag_suffix.hpp>
+
+#define FCPPT_RECORD_DETAIL_TAG_NAME(name) FCPPT_PP_CAT(name, FCPPT_RECORD_DETAIL_TAG_SUFFIX)
 
 #endif
