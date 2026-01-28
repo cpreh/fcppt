@@ -13,6 +13,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptpreprocessor
+	<ul>
+	<li>Added #FCPPT_PP_CAT.</li>
+	<li>Added #FCPPT_PP_STRINGIZE_NARROW.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added #fcppt::indent::extra, #fcppt::indent::print and #fcppt::indent::start.</li>
@@ -31,7 +38,17 @@
 	</ul>
 </li>
 
+<li>\ref fcpptrecord
+	<ul>
+	<li>Improved #fcppt::record::label_name.</li>
+	</ul>
+</li>
+
 </ul>
+
+\subsection changes_bugfixes_to_510 Bugfixes
+
+<p>Fixed the demangle check on clang.</p>
 
 \section changes_changes_to_500 5.0.0
 
