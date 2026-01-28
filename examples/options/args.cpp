@@ -74,7 +74,7 @@ try
         fcppt::io::cout() << FCPPT_TEXT("The result is ")
                           << (fcppt::record::get<arg1_label>(_result) +
                               fcppt::record::get<arg2_label>(_result))
-                          << FCPPT_TEXT('\n');
+                          << FCPPT_TEXT(".\n");
 
         return EXIT_SUCCESS;
       });
