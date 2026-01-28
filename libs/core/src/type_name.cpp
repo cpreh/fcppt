@@ -21,8 +21,8 @@ std::string fcppt::type_name(char const *const _name)
 #ifdef FCPPT_HAVE_GCC_DEMANGLE
   int status{0};
 
-  fcppt::unique_ptr<char, fcppt::c_deleter> name(
-      abi::__cxa_demangle(_name, nullptr, nullptr, &status));
+  fcppt::unique_ptr<char, fcppt::c_deleter> const name{
+      abi::__cxa_demangle(_name, nullptr, nullptr, &status)};
 
   return status != 0 ? std::string{_name} : std::string{name.get_pointer()};
 #else

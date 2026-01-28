@@ -74,6 +74,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP)
   check_cxx_source_compiles(
     "#include <cxxabi.h>
     #include <cstdlib>
+    #include <typeinfo>
     int main() { int status; char *name =
     abi::__cxa_demangle(typeid(int).name(),0,0,&status); std::free(name); }"
     FCPPT_HAVE_GCC_DEMANGLE)
