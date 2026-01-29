@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added #fcppt::algorithm::remove_suffix.</li>
+	</ul>
+</li>
+
 <li>\ref fcppteither
 	<ul>
 	<li>Added #fcppt::either::sequence_all, which collects all errors instead of the first one.</li>
@@ -17,6 +23,12 @@
 	<ul>
 	<li>Added #FCPPT_PP_CAT.</li>
 	<li>Added #FCPPT_PP_STRINGIZE_NARROW.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added #fcppt::type_traits::size_type.</li>
 	</ul>
 </li>
 

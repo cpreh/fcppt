@@ -40,6 +40,7 @@ libs/core/include/fcppt/algorithm/map_record.hpp
 libs/core/include/fcppt/algorithm/map_tuple.hpp
 libs/core/include/fcppt/algorithm/remove.hpp
 libs/core/include/fcppt/algorithm/remove_if.hpp
+libs/core/include/fcppt/algorithm/remove_suffix.hpp
 libs/core/include/fcppt/algorithm/repeat.hpp
 libs/core/include/fcppt/algorithm/reverse.hpp
 libs/core/include/fcppt/algorithm/sequence_iteration.hpp
@@ -1395,6 +1396,7 @@ libs/core/include/fcppt/type_traits/is_string.hpp
 libs/core/include/fcppt/type_traits/is_value.hpp
 libs/core/include/fcppt/type_traits/numeric_max.hpp
 libs/core/include/fcppt/type_traits/safe_integral_cast.hpp
+libs/core/include/fcppt/type_traits/size_type.hpp
 libs/core/include/fcppt/type_traits/to_bool.hpp
 libs/core/include/fcppt/type_traits/value_type.hpp
 libs/core/include/fcppt/unique_ptr_decl.hpp

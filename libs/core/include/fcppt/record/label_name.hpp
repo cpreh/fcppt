@@ -6,7 +6,10 @@
 #ifndef FCPPT_RECORD_LABEL_NAME_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_NAME_HPP_INCLUDED
 
+#include <fcppt/const.hpp>
 #include <fcppt/type_name_from_info.hpp>
+#include <fcppt/algorithm/remove_suffix.hpp>
+#include <fcppt/optional/from.hpp>
 #include <fcppt/preprocessor/stringize_narrow.hpp>
 #include <fcppt/record/is_label.hpp>
 #include <fcppt/record/detail/tag_suffix.hpp>
@@ -27,11 +30,13 @@ template <typename Label>
 inline std::string label_name()
   requires(fcppt::record::is_label<Label>::value)
 {
-  std::string const ret{fcppt::type_name_from_info(typeid(typename Label::tag))};
-  std::string_view ret_view{ret};
-  std::string_view const suffix{FCPPT_PP_STRINGIZE_NARROW(FCPPT_RECORD_DETAIL_TAG_SUFFIX)};
-  ret_view.remove_suffix(suffix.size());
-  return std::string{ret_view};
+  std::string const result{fcppt::type_name_from_info(typeid(typename Label::tag))};
+
+  return fcppt::optional::from(
+      fcppt::algorithm::remove_suffix(
+          result,
+          std::string_view{FCPPT_PP_STRINGIZE_NARROW(FCPPT_RECORD_DETAIL_TAG_SUFFIX)}.size()),
+      fcppt::const_(result));
 }
 }
 

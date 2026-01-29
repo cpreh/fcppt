@@ -42,6 +42,8 @@ add_fcppt_algorithm_test(optimize_map NO_CODE)
 
 add_fcppt_algorithm_test(remove)
 
+add_fcppt_algorithm_test(remove_suffix)
+
 add_fcppt_algorithm_test(repeat)
 
 add_fcppt_algorithm_test(reverse)
