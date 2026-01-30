@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/math/dim/static.hpp>
-#include <fcppt/math/vector/arithmetic.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/output.hpp>

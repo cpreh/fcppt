@@ -3,9 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/strong_typedef_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/unit_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
@@ -14,11 +14,11 @@
 #include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
-#include <fcppt/tuple/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/tuple/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

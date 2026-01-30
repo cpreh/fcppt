@@ -5,11 +5,11 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

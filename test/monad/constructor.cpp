@@ -5,7 +5,7 @@
 
 #include <fcppt/unit_fwd.hpp>
 #include <fcppt/monad/constructor.hpp>
-#include <fcppt/optional/monad.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/monad.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

@@ -6,7 +6,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/config/external_begin.hpp>

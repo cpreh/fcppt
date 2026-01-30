@@ -8,7 +8,7 @@
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/write.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <bit>

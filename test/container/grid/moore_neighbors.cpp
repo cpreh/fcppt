@@ -8,7 +8,7 @@
 #include <fcppt/container/grid/moore_neighbor_array.hpp>
 #include <fcppt/container/grid/moore_neighbors.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/math/vector/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <algorithm>

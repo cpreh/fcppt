@@ -7,11 +7,11 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/record.hpp> // IWYU pragma: keep
+#include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/catch/variant.hpp> // IWYU pragma: keep
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -40,9 +40,9 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
-#include <fcppt/test/options/catch_error.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/test/options/catch_usage.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/variant/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/test/options/catch_error.hpp> // IWYU pragma: keep
+#include <fcppt/test/options/catch_usage.hpp> // IWYU pragma: keep
+#include <fcppt/variant/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

@@ -15,7 +15,7 @@
 #include <fcppt/parse/location.hpp>
 #include <fcppt/parse/parse.hpp>
 #include <fcppt/parse/position.hpp>
-#include <fcppt/parse/position_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/position_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/detail/stream_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

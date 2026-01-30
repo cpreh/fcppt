@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/type_traits/enum_constant_concept.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/type_traits/enum_constant_concept.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdint>
 #include <type_traits>

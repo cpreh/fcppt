@@ -5,7 +5,7 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/tuple.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/make.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>

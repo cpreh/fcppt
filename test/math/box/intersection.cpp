@@ -9,7 +9,7 @@
 #include <fcppt/math/box/intersection.hpp>
 #include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/box/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/box/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

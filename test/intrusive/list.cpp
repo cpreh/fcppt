@@ -50,8 +50,7 @@ private:
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("intrusive::list"
-          "[intrusive]")
+TEST_CASE("intrusive::list", "[intrusive]")
 {
   test_list my_list{};
 
@@ -88,8 +87,7 @@ TEST_CASE("intrusive::list"
   }
 }
 
-TEST_CASE("intrusive::list size"
-          "[intrusive]")
+TEST_CASE("intrusive::list size", "[intrusive]")
 {
   test_list my_list{};
 
@@ -126,8 +124,7 @@ TEST_CASE("intrusive::list size"
   }
 }
 
-TEST_CASE("intrusive::list move assign"
-          "[intrusive]")
+TEST_CASE("intrusive::list move assign", "[intrusive]")
 {
   test_list list{};
 

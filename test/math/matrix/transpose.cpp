@@ -6,7 +6,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
-#include <fcppt/math/matrix/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/matrix/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/transpose.hpp>

@@ -6,7 +6,7 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference.hpp>
-#include <fcppt/reference_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/reference_output.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/map_values_ref.hpp>

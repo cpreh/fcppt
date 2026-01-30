@@ -7,16 +7,16 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/recursive.hpp>
-#include <fcppt/strong_typedef_comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/convert.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/recursive.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/recursive.hpp> // IWYU pragma: keep
+#include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/catch/tuple.hpp> // IWYU pragma: keep
+#include <fcppt/catch/variant.hpp> // IWYU pragma: keep
 #include <fcppt/container/insert.hpp>
 #include <fcppt/container/make.hpp>
 #include <fcppt/container/make_move_range.hpp>
@@ -36,7 +36,7 @@
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/make_recursive.hpp>
 #include <fcppt/parse/parse_string_error.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/phrase_parse_string.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/separator.hpp>

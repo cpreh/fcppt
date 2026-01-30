@@ -6,7 +6,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/unit.hpp>
 #include <fcppt/config/external_begin.hpp>

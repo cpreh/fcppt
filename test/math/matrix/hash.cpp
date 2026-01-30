@@ -5,10 +5,10 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/math/matrix/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/matrix/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/std_hash.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/matrix/std_hash.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <unordered_set>

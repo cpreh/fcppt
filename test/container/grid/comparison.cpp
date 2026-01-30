@@ -7,7 +7,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/grid/comparison.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/container/grid/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/container/grid/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -15,8 +15,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("container::grid comparison"
-          "[container],[grid]")
+TEST_CASE("container::grid comparison", "[container],[grid]")
 {
   using int2_grid = fcppt::container::grid::object<int, 2>;
 

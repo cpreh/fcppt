@@ -18,8 +18,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("container_join std::vector"
-          "[container_join]")
+TEST_CASE("container_join std::vector", "[container_join]")
 {
   using int_vector = std::vector<int>;
 
@@ -30,8 +29,7 @@ TEST_CASE("container_join std::vector"
       int_vector{1, 2, 3, 4, 5, 6});
 }
 
-TEST_CASE("container_join move"
-          "[container_join]")
+TEST_CASE("container_join move", "[container_join]")
 {
   using int_movable = fcppt::catch_::movable<int>;
 
@@ -51,8 +49,7 @@ TEST_CASE("container_join move"
           int_movable{6}));
 }
 
-TEST_CASE("container_join std::map"
-          "[container_join]")
+TEST_CASE("container_join std::map", "[container_join]")
 {
   using int_map = std::map<int, char>;
 

@@ -26,15 +26,13 @@ using int_movable_vector = std::vector<int_movable>;
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm map_concat"
-          "[algorithm_map_concat]")
+TEST_CASE("algorithm map_concat", "[algorithm_map_concat]")
 {
   CHECK(
       fcppt::algorithm::map_concat<int_vector>(
           fcppt::container::make<int_movable_vector>(int_movable{1}, int_movable{2}),
-          [](int_movable const &_value) {
-            return int_vector{_value.value(), _value.value() + 5};
-          }) == int_vector{1, 6, 2, 7});
+          [](int_movable const &_value)
+          { return int_vector{_value.value(), _value.value() + 5}; }) == int_vector{1, 6, 2, 7});
 }
 
 TEST_CASE("algorithm_map_concat move", "[algorithm_map_concat]")

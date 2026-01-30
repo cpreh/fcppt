@@ -7,7 +7,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/box/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/box/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/box/stretch_relative.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

@@ -6,9 +6,9 @@
 #include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop_break.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/loop_break_record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/loop_break_tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/loop_break_record.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/loop_break_tuple.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/object.hpp>
@@ -24,8 +24,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm_loop_break tuple"
-          "[algorithm_loop_break]")
+TEST_CASE("algorithm_loop_break tuple", "[algorithm_loop_break]")
 {
   auto const tuple(fcppt::tuple::make(42, 10L));
 
@@ -69,8 +68,7 @@ private:
 
 }
 
-TEST_CASE("algorithm_loop_break mpl"
-          "[algorithm_loop_break]")
+TEST_CASE("algorithm_loop_break mpl", "[algorithm_loop_break]")
 {
   function1 const func{};
 
@@ -107,8 +105,7 @@ private:
 
 }
 
-TEST_CASE("algorithm_loop_break record"
-          "[algorithm_loop_break]")
+TEST_CASE("algorithm_loop_break record", "[algorithm_loop_break]")
 {
   FCPPT_RECORD_MAKE_LABEL(label1);
   FCPPT_RECORD_MAKE_LABEL(label2);

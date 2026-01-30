@@ -5,12 +5,12 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/either/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/either/match.hpp>
-#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/float.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/parse_string_error.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_approx.hpp>
 #include <catch2/catch_test_macros.hpp>

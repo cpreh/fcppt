@@ -3,24 +3,24 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/strong_typedef_comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/optional/comparison.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/output.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/column.hpp>
 #include <fcppt/parse/line.hpp>
 #include <fcppt/parse/literal.hpp>
 #include <fcppt/parse/location.hpp>
-#include <fcppt/parse/location_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/location_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/make_with_location.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>

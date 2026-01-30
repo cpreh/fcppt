@@ -6,14 +6,14 @@
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/main.hpp>
-#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
 #include <fcppt/text.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/options/apply.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/base_unique_ptr.hpp>
-#include <fcppt/options/error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/options/error_output.hpp> // IWYU pragma: keep
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_base.hpp>
 #include <fcppt/options/make_many.hpp>
@@ -28,8 +28,8 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>
-#include <fcppt/record/output.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/variant/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/record/output.hpp> // IWYU pragma: keep
+#include <fcppt/variant/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <exception>

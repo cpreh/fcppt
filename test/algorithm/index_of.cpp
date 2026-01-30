@@ -8,7 +8,7 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
@@ -17,8 +17,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm find_opt"
-          "[algorithm_find_opt]")
+TEST_CASE("algorithm find_opt", "[algorithm_find_opt]")
 {
   using int_vector = std::vector<int>;
 

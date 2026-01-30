@@ -7,7 +7,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/record.hpp> // IWYU pragma: keep
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/object.hpp>

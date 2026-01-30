@@ -7,7 +7,7 @@
 #include <fcppt/io/istream_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_input.hpp>
-#include <fcppt/log/level_to_string_impl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/log/level_to_string_impl.hpp> // IWYU pragma: keep
 
 fcppt::io::istream &fcppt::log::operator>>(fcppt::io::istream &_stream, fcppt::log::level &_level)
 {

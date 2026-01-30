@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/reference_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/reference_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/reference_output.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/from_pointer.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

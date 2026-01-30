@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/array/object.hpp>
-#include <fcppt/array/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/array/output.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/vector/bit_strings.hpp>
-#include <fcppt/math/vector/comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/comparison.hpp> // IWYU pragma: keep
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

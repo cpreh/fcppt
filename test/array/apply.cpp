@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/unit.hpp>
-#include <fcppt/unit_comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/unit_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/unit_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/unit_output.hpp> // IWYU pragma: keep
 #include <fcppt/array/apply.hpp>
 #include <fcppt/array/make.hpp>
 #include <fcppt/array/object.hpp>

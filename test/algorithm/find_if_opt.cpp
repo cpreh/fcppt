@@ -6,7 +6,7 @@
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/optional.hpp> // IWYU pragma: keep
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,8 +18,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm find_if_opt"
-          "[algorithm_find_if_opt]")
+TEST_CASE("algorithm find_if_opt", "[algorithm_find_if_opt]")
 {
   using int_vector = std::vector<int>;
 

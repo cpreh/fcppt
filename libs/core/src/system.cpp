@@ -17,8 +17,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <sys/types.h> // NOLINT(misc-include-cleaner)
-#include <sys/wait.h> // NOLINT(misc-include-cleaner)
+#include <sys/types.h> // IWYU pragma: keep
+#include <sys/wait.h> // IWYU pragma: keep
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 #elifdef FCPPT_CONFIG_WINDOWS_PLATFORM

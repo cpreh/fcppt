@@ -10,7 +10,7 @@
 #include <fcppt/io/istringstream.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/input.hpp>
-#include <fcppt/math/dim/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/dim/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

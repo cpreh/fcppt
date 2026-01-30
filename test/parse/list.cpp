@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/catch/begin.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/parse/char_set.hpp>
@@ -13,7 +13,7 @@
 #include <fcppt/parse/make_fatal.hpp>
 #include <fcppt/parse/make_parse_string_success.hpp>
 #include <fcppt/parse/parse_string.hpp>
-#include <fcppt/parse/parse_string_error_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/parse/parse_string_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/result_of.hpp>
 #include <fcppt/parse/operators/complement.hpp>
 #include <fcppt/config/external_begin.hpp>

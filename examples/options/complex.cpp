@@ -18,7 +18,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/filesystem/ifstream.hpp>
@@ -29,16 +29,16 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/log/level_input.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/log/level_output.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/log/level_to_string_impl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/log/level_input.hpp> // IWYU pragma: keep
+#include <fcppt/log/level_output.hpp> // IWYU pragma: keep
+#include <fcppt/log/level_to_string_impl.hpp> // IWYU pragma: keep
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/options/apply.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
@@ -53,7 +53,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_help.hpp>
-#include <fcppt/options/pretty_type_enum.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/options/pretty_type_enum.hpp> // IWYU pragma: keep
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>

@@ -5,7 +5,7 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_impl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/catch/begin.hpp>
@@ -13,7 +13,7 @@
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

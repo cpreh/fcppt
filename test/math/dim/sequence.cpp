@@ -5,13 +5,13 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/math/dim/comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/math/dim/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/dim/comparison.hpp> // IWYU pragma: keep
+#include <fcppt/math/dim/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/dim/sequence.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

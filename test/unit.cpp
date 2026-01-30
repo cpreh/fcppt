@@ -5,7 +5,7 @@
 
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
-#include <fcppt/unit_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/unit_output.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>

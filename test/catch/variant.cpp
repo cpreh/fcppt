@@ -7,10 +7,10 @@
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/variant.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/variant.hpp> // IWYU pragma: keep
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/variant/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/variant/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

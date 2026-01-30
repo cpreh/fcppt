@@ -6,7 +6,7 @@
 #include <fcppt/enable_shared_from_this.hpp>
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/shared_ptr_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/shared_ptr_output.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>

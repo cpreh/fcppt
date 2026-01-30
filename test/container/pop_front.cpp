@@ -10,7 +10,7 @@
 #include <fcppt/container/pop_front.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <deque>
@@ -36,8 +36,7 @@ TEST_CASE("container::pop_front", "[container]")
   CHECK(vec12 == expected);
 }
 
-TEST_CASE("container::pop_front move"
-          "[container]")
+TEST_CASE("container::pop_front move", "[container]")
 {
   using int_movable = fcppt::catch_::movable<int>;
 

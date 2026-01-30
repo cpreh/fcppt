@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/output.hpp>
-#include <fcppt/output_pair.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/output_range.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/output_string.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/output_pair.hpp> // IWYU pragma: keep
+#include <fcppt/output_range.hpp> // IWYU pragma: keep
+#include <fcppt/output_string.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>

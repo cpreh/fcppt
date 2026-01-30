@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_impl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_usage.hpp>

@@ -6,7 +6,7 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/mpl/list/interval.hpp>
@@ -18,8 +18,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm_loop mpl"
-          "[algorithm_loop]")
+TEST_CASE("algorithm_loop mpl", "[algorithm_loop]")
 {
   int value{0};
 

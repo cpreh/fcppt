@@ -6,7 +6,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/tuple.hpp> // IWYU pragma: keep
 #include <fcppt/tuple/comparison.hpp>
 #include <fcppt/tuple/concat.hpp>
 #include <fcppt/tuple/make.hpp>

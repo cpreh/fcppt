@@ -3,16 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/algorithm/loop_break_record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/loop_break_tuple.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/map_record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/map_tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/loop_break_record.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/loop_break_tuple.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/map_record.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/map_tuple.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
-#include <fcppt/catch/either.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/either.hpp> // IWYU pragma: keep
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/record.hpp> // IWYU pragma: keep
+#include <fcppt/catch/tuple.hpp> // IWYU pragma: keep
 #include <fcppt/container/make.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/either/object.hpp>

@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/deref.hpp>
-#include <fcppt/deref_recursive.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/deref_reference.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/deref_recursive.hpp> // IWYU pragma: keep
+#include <fcppt/deref_reference.hpp> // IWYU pragma: keep
 #include <fcppt/deref_type.hpp>
-#include <fcppt/deref_unique_ptr.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/deref_unique_ptr.hpp> // IWYU pragma: keep
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/recursive_impl.hpp>
 #include <fcppt/reference_impl.hpp>

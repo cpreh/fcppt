@@ -17,7 +17,7 @@
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/null.hpp>
-#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <cstddef>

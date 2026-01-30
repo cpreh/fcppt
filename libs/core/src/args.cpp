@@ -7,7 +7,7 @@
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_vector.hpp>
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/detail/main_wchar.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/detail/main_wchar.hpp> // IWYU pragma: keep
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

@@ -8,7 +8,7 @@
 #include <fcppt/math/sphere/circle.hpp>
 #include <fcppt/math/sphere/comparison.hpp>
 #include <fcppt/math/sphere/intersects.hpp>
-#include <fcppt/math/sphere/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/sphere/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

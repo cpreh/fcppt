@@ -7,7 +7,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/catch/optional.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/optional.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

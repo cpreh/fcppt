@@ -36,8 +36,7 @@ TEST_CASE("optional::reference", "[optional]")
   CHECK_FALSE(test2.has_value());
 }
 
-TEST_CASE("optional::reference const"
-          "[optional]")
+TEST_CASE("optional::reference const", "[optional]")
 {
   using optional_int_ref_const = fcppt::optional::reference<int const>;
 

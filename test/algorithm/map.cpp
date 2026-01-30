@@ -5,22 +5,22 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/output_to_std_string.hpp>
-#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/strong_typedef_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/loop_break_mpl.hpp> // IWYU pragma: keep
 #include <fcppt/algorithm/map.hpp>
-#include <fcppt/algorithm/map_array.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/map_record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/algorithm/map_tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/algorithm/map_array.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/map_record.hpp> // IWYU pragma: keep
+#include <fcppt/algorithm/map_tuple.hpp> // IWYU pragma: keep
 #include <fcppt/array/object.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>
-#include <fcppt/catch/record.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/catch/tuple.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/catch/record.hpp> // IWYU pragma: keep
+#include <fcppt/catch/strong_typedef.hpp> // IWYU pragma: keep
+#include <fcppt/catch/tuple.hpp> // IWYU pragma: keep
 #include <fcppt/container/make.hpp>
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/record/element.hpp>
@@ -48,8 +48,7 @@ using int_movable_vector = std::vector<int_movable>;
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm_map"
-          "[algorithm_map]")
+TEST_CASE("algorithm_map", "[algorithm_map]")
 {
   CHECK(
       fcppt::algorithm::map<int_vector>(

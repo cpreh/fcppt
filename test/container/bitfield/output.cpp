@@ -8,7 +8,7 @@
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
-#include <fcppt/container/bitfield/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/container/bitfield/output.hpp> // IWYU pragma: keep
 #include <fcppt/enum/define_max_value.hpp>
 #include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/enum/to_string_case.hpp>

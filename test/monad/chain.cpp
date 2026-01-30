@@ -9,8 +9,8 @@
 #include <fcppt/monad/chain.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/monad.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/monad.hpp> // IWYU pragma: keep
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>

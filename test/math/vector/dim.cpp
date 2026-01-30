@@ -8,11 +8,11 @@
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/dim.hpp>
-#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

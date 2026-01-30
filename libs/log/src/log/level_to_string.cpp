@@ -6,7 +6,7 @@
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string.hpp>
-#include <fcppt/log/level_to_string_impl.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/log/level_to_string_impl.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <string_view>
 #include <fcppt/config/external_end.hpp>

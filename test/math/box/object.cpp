@@ -7,11 +7,11 @@
 #include <fcppt/catch/end.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/box/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/box/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/dim/output.hpp> // IWYU pragma: keep
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/math/vector/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -19,7 +19,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("math::box::sobject", "[math],[box]")
+TEST_CASE("math::box::object", "[math],[box]")
 {
   using box_type = fcppt::math::box::object<int, 3>;
   using vector = box_type::vector;

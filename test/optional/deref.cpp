@@ -6,14 +6,14 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/reference_comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/reference_output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/reference_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/reference_output.hpp> // IWYU pragma: keep
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/optional/deref.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/optional/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/optional/output.hpp> // IWYU pragma: keep
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>

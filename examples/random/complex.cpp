@@ -5,15 +5,15 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
-#include <fcppt/type_iso/boost_units.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/type_iso/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/type_iso/boost_units.hpp> // IWYU pragma: keep
+#include <fcppt/type_iso/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>

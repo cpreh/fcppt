@@ -12,7 +12,7 @@
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
-#include <fcppt/type_iso/enum.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/type_iso/enum.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>

@@ -5,7 +5,7 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/output_to_std_string.hpp>
-#include <fcppt/strong_typedef.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/strong_typedef.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/catch/movable.hpp>

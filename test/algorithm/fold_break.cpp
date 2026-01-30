@@ -17,8 +17,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm fold_break"
-          "[algorithm_fold_break]")
+TEST_CASE("algorithm fold_break", "[algorithm_fold_break]")
 {
   using int_vector = std::vector<int>;
 
@@ -32,8 +31,7 @@ TEST_CASE("algorithm fold_break"
           }) == 6);
 }
 
-TEST_CASE("algorithm fold_break move"
-          "[algorithm_fold_break]")
+TEST_CASE("algorithm fold_break move", "[algorithm_fold_break]")
 {
   using int_vector = std::vector<int>;
 

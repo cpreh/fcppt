@@ -17,8 +17,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("algorithm::fold"
-          "[algorithm]")
+TEST_CASE("algorithm::fold", "[algorithm]")
 {
   using int_vector = std::vector<int>;
 
@@ -34,8 +33,7 @@ TEST_CASE("algorithm::fold"
           }) == 10);
 }
 
-TEST_CASE("algorithm::fold move"
-          "[algorithm]")
+TEST_CASE("algorithm::fold move", "[algorithm]")
 {
   using int_movable = fcppt::catch_::movable<int>;
 

@@ -9,9 +9,9 @@
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/no_error.hpp>
-#include <fcppt/either/no_error_comparison.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/either/no_error_output.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/either/output.hpp> // NOLINT(misc-include-cleaner)
+#include <fcppt/either/no_error_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/either/no_error_output.hpp> // IWYU pragma: keep
+#include <fcppt/either/output.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>

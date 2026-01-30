@@ -17,8 +17,7 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("container key_set"
-          "[container_key_set]")
+TEST_CASE("container key_set", "[container_key_set]")
 {
   using int_set = std::set<int>;
 
