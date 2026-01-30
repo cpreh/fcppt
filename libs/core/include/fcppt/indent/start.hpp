@@ -13,7 +13,7 @@ namespace fcppt::indent
 /**
 \brief The starting indent level.
 
-\ingroup fcpptvarious
+\ingroup fcpptindent
 */
 inline fcppt::indent::level start() { return fcppt::indent::level{0U}; }
 }

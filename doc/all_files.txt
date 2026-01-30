@@ -20,6 +20,7 @@ examples/cyclic_iterator.cpp
 examples/either.cpp
 examples/endianness.cpp
 examples/enum.cpp
+examples/indent.cpp
 examples/intrusive.cpp
 examples/io/endianness.cpp
 examples/io/scoped_rdbuf.cpp

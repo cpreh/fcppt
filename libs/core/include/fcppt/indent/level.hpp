@@ -14,7 +14,7 @@ namespace fcppt::indent
 /**
 \brief The integer type for indents.
 
-\ingroup fcpptvarious
+\ingroup fcpptindent
 */
 FCPPT_DECLARE_STRONG_TYPEDEF(unsigned, level);
 }

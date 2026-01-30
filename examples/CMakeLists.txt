@@ -63,6 +63,8 @@ add_fcppt_example(enum LINK_LIBS ${fcppt_core_TARGET})
 
 add_fcppt_example(either LINK_LIBS fcppt_core_interface)
 
+add_fcppt_example(indent LINK_LIBS fcppt_core_interface)
+
 add_fcppt_example(iterator LINK_LIBS fcppt_core_interface)
 
 add_fcppt_example(intrusive LINK_LIBS fcppt_core_interface)

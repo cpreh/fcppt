@@ -28,6 +28,7 @@ doc/files/modules/enum.doxygen
 doc/files/modules/export.doxygen
 doc/files/modules/fcppt.doxygen
 doc/files/modules/filesystem.doxygen
+doc/files/modules/indent.doxygen
 doc/files/modules/intrusive.doxygen
 doc/files/modules/io.doxygen
 doc/files/modules/iterator.doxygen

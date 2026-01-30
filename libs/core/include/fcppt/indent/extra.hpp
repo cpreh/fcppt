@@ -14,7 +14,7 @@ namespace fcppt::indent
 /**
 \brief Increases the indent level.
 
-\ingroup fcpptvarious
+\ingroup fcpptindent
 */
 [[nodiscard]] inline fcppt::indent::level
 extra(fcppt::indent::level const _level)

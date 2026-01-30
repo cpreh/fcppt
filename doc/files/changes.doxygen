@@ -19,6 +19,10 @@
 	</ul>
 </li>
 
+<li>\ref fcpptindent
+	<p>A new library for indented output.</p>
+</li>
+
 <li>\ref fcpptpreprocessor
 	<ul>
 	<li>Added #FCPPT_PP_CAT.</li>
@@ -29,12 +33,6 @@
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added #fcppt::type_traits::size_type.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvarious
-	<ul>
-	<li>Added #fcppt::indent::extra, #fcppt::indent::print and #fcppt::indent::start.</li>
 	</ul>
 </li>
 

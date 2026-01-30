@@ -1,0 +1,44 @@
+namespace fcppt
+{
+/**
+\brief Contains indent functions.
+*/
+namespace indent
+{
+}
+}
+
+/**
+\defgroup fcpptindent fcppt.indent
+\ingroup fcpptmain
+\brief Indent functions.
+
+\section indent_overview Indent
+
+This library provides a simple way to do indented output:
+
+<ul>
+<li>#fcppt::indent::start returns the starting indentation.</li>
+<li>#fcppt::indent::extra increases the indentation.</li>
+<li>#fcppt::indent::print outputs the current indentation level.</li>
+</ul>
+
+Consider a simple tree type:
+
+\snippet indent.cpp indent_tree
+
+An output function that indents each level of the tree can be written as follows:
+
+\snippet indent.cpp indent_output
+
+The following code
+
+\snippet indent.cpp indent_example
+
+will output
+\code
+1
+  2
+  3
+\endcode
+*/

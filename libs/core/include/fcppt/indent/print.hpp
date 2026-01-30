@@ -18,7 +18,7 @@ namespace fcppt::indent
 /**
 \brief Provides an output operator for indents.
 
-\ingroup fcpptvarious
+\ingroup fcpptindent
 */
 class print
 {
