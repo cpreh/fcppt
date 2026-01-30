@@ -15,7 +15,6 @@
 int main()
 try
 {
-  {
     //! [join_strings]
     std::vector<std::string> const strings{"ab", "cd", "efg"};
 
@@ -24,7 +23,6 @@ try
     // Outputs "ab,cd,efg"
     std::cout << result << "\n";
     //! [join_strings]
-  }
 }
 catch(std::exception const &_error)
 {
