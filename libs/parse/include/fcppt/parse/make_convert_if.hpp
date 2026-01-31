@@ -24,7 +24,6 @@ namespace fcppt::parse
 
 \param _parser The parser to convert from.
 \param _convert The lambda function to use as conversion.
-// TODO(philipp): Can we get rid of the Ch parameter?
 */
 template <typename Ch, typename Parser, typename Convert>
 fcppt::parse::convert_if<
