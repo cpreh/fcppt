@@ -6,7 +6,7 @@
 #ifndef FCPPT_PARSE_DETAIL_CHECK_BAD_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_CHECK_BAD_HPP_INCLUDED
 
-#include <fcppt/string_literal.hpp>
+#include <fcppt/parse/stream_error.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
@@ -21,7 +21,7 @@ inline void check_bad(std::basic_istream<Ch> &_stream)
   {
     throw
         // NOLINTNEXTLINE(hicpp-exception-baseclass)
-        fcppt::parse::detail::exception<Ch>{FCPPT_STRING_LITERAL(Ch, "stream failed.")};
+        fcppt::parse::detail::exception{fcppt::parse::stream_error::bad_stream};
   }
 }
 

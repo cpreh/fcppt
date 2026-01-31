@@ -2179,6 +2179,9 @@ libs/parse/include/fcppt/parse/skipper/string_impl.hpp
 libs/parse/include/fcppt/parse/skipper/tag.hpp
 libs/parse/include/fcppt/parse/space.hpp
 libs/parse/include/fcppt/parse/space_set.hpp
+libs/parse/include/fcppt/parse/stream_error_fwd.hpp
+libs/parse/include/fcppt/parse/stream_error.hpp
+libs/parse/include/fcppt/parse/stream_error_output.hpp
 libs/parse/include/fcppt/parse/string_decl.hpp
 libs/parse/include/fcppt/parse/string_fwd.hpp
 libs/parse/include/fcppt/parse/string.hpp

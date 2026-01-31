@@ -8,11 +8,9 @@
 
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/parse_stream_error_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/parse/stream_error.hpp>
 #include <fcppt/variant/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <string>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::parse
 {
@@ -21,11 +19,10 @@ template<typename Ch>
 class parse_stream_error
 {
 public:
-  // TODO(philipp): We could use something better than basic_string<Ch> here.
   explicit parse_stream_error(fcppt::parse::error<Ch> &&);
-  explicit parse_stream_error(std::basic_string<Ch> &&);
+  explicit parse_stream_error(fcppt::parse::stream_error);
 
-  using variant = fcppt::variant::object<fcppt::parse::error<Ch>,std::basic_string<Ch>>;
+  using variant = fcppt::variant::object<fcppt::parse::error<Ch>, fcppt::parse::stream_error>;
 
   [[nodiscard]] variant const &get() const;
 

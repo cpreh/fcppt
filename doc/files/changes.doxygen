@@ -59,6 +59,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptparse
+	<ul>
+	<li>Improved the typing of #fcppt::parse::parse_stream_error.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptrecord
 	<ul>
 	<li>Improved #fcppt::record::label_name.</li>

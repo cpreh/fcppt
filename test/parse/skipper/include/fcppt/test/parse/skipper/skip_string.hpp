@@ -61,9 +61,9 @@ skip_string(Skipper const &_skipper, std::basic_string<Ch> &&_string)
               [](fcppt::parse::error<Ch> &&_inner)
               { return fcppt::parse::parse_stream_error<Ch>{std::move(_inner)}; });
         }
-        catch (fcppt::parse::detail::exception<Ch> const &_error)
+        catch (fcppt::parse::detail::exception const &_error)
         {
-          return fcppt::parse::detail::translate_exception<fcppt::either::no_error>(_error);
+          return fcppt::parse::detail::translate_exception<fcppt::either::no_error, Ch>(_error);
         }
       }());
 }

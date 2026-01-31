@@ -8,8 +8,8 @@
 
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/parse_stream_error_decl.hpp> // IWYU pragma: export
+#include <fcppt/parse/stream_error.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,8 +20,8 @@ fcppt::parse::parse_stream_error<Ch>::parse_stream_error(fcppt::parse::error<Ch>
 }
 
 template<typename Ch>
-fcppt::parse::parse_stream_error<Ch>::parse_stream_error(std::basic_string<Ch> &&_error)
-: variant_{std::move(_error)}
+fcppt::parse::parse_stream_error<Ch>::parse_stream_error(fcppt::parse::stream_error const _error)
+: variant_{_error}
 {
 }
 

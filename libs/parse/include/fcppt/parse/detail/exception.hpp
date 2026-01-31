@@ -6,22 +6,18 @@
 #ifndef FCPPT_PARSE_DETAIL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <string>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/parse/stream_error.hpp>
 
 namespace fcppt::parse::detail
 {
-template <typename Ch>
 class exception
 {
 public:
-  explicit exception(std::basic_string<Ch> &&_what) : what_{std::move(_what)} {}
+  explicit exception(fcppt::parse::stream_error const _what) : what_{_what} {}
 
-  [[nodiscard]] std::basic_string<Ch> const &what() const { return this->what_; }
+  [[nodiscard]] fcppt::parse::stream_error what() const { return this->what_; }
 private:
-  std::basic_string<Ch> what_;
+  fcppt::parse::stream_error what_;
 };
 
 }

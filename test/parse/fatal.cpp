@@ -18,6 +18,7 @@
 #include <fcppt/parse/parse_string.hpp>
 #include <fcppt/parse/parse_string_error.hpp>
 #include <fcppt/parse/parse_string_error_output.hpp> // IWYU pragma: keep
+#include <fcppt/parse/stream_error.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -43,7 +44,7 @@ TEST_CASE("parse::fatal", "[parse]")
               return fcppt::variant::match(
                   _stream_error.get(),
                   [](fcppt::parse::error<char> const &_error) { return _error.is_fatal(); },
-                  [](std::string const &) { return false; });
+                  [](fcppt::parse::stream_error const &) { return false; });
             });
       },
       [](auto const &) { return false; }));

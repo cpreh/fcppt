@@ -53,9 +53,9 @@ try
       [](fcppt::parse::error<Ch> &&_error)
       { return fcppt::parse::parse_stream_error<Ch>{std::move(_error)}; });
 }
-catch (fcppt::parse::detail::exception<Ch> const &_error)
+catch (fcppt::parse::detail::exception const &_error)
 {
-  return fcppt::parse::detail::translate_exception<fcppt::parse::result_of<Parser>>(_error);
+  return fcppt::parse::detail::translate_exception<fcppt::parse::result_of<Parser>, Ch>(_error);
 }
 }
 

@@ -9,10 +9,11 @@
 #include <fcppt/parse/error_impl.hpp>
 #include <fcppt/parse/error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/parse_stream_error_impl.hpp>
+#include <fcppt/parse/stream_error.hpp>
+#include <fcppt/parse/stream_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::parse
@@ -27,7 +28,7 @@ operator<<(std::basic_ostream<Ch> &_stream, fcppt::parse::parse_stream_error<Ch>
     {
       _stream << _inner_error;
     },
-    [&_stream](std::basic_string<Ch> const &_stream_error)
+    [&_stream](fcppt::parse::stream_error const _stream_error)
     {
       _stream << _stream_error;
     });

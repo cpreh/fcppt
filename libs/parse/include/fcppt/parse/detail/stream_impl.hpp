@@ -7,7 +7,6 @@
 #define FCPPT_PARSE_DETAIL_STREAM_IMPL_HPP_INCLUDED
 
 #include <fcppt/char_literal.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/strong_typedef_arithmetic.hpp> // IWYU pragma: keep
 #include <fcppt/io/get.hpp>
 #include <fcppt/optional/make.hpp>
@@ -18,6 +17,7 @@
 #include <fcppt/parse/line.hpp>
 #include <fcppt/parse/location.hpp>
 #include <fcppt/parse/position.hpp>
+#include <fcppt/parse/stream_error.hpp>
 #include <fcppt/parse/detail/check_bad.hpp>
 #include <fcppt/parse/detail/exception.hpp>
 #include <fcppt/parse/detail/stream_decl.hpp> // IWYU pragma: export
@@ -82,7 +82,7 @@ fcppt::parse::position<Ch> fcppt::parse::detail::stream<Ch>::get_position() cons
   {
     throw
         // NOLINTNEXTLINE(hicpp-exception-baseclass)
-        fcppt::parse::detail::exception<Ch>{FCPPT_STRING_LITERAL(Ch, "tellg() failed.")};
+        fcppt::parse::detail::exception{fcppt::parse::stream_error::tellg_failed};
   }
 
   return fcppt::parse::position<Ch>{pos, fcppt::optional::make(this->location_)};
@@ -103,7 +103,7 @@ void fcppt::parse::detail::stream<Ch>::set_position(fcppt::parse::position<Ch> c
   {
     throw
         // NOLINTNEXTLINE(hicpp-exception-baseclass)
-        fcppt::parse::detail::exception<Ch>{FCPPT_STRING_LITERAL(Ch, "seekg() failed.")};
+        fcppt::parse::detail::exception{fcppt::parse::stream_error::seekg_failed};
   }
 
   fcppt::optional::maybe_void(
