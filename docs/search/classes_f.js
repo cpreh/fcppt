@@ -49,13 +49,14 @@ var searchData=
   ['strong_5ftypedef_3c_20type_2c_20fcppt_3a_3aoptions_3a_3adetail_3a_3aright_5ftag_20_3e_46',['strong_typedef&lt; Type, fcppt::options::detail::right_tag &gt;',['../df/d7e/classfcppt_1_1strong__typedef.html',1,'fcppt']]],
   ['strong_5ftypedef_3c_20type_2c_20fcppt_3a_3aoptions_3a_3ainactive_5fvalue_5ftag_20_3e_47',['strong_typedef&lt; Type, fcppt::options::inactive_value_tag &gt;',['../df/d7e/classfcppt_1_1strong__typedef.html',1,'fcppt']]],
   ['strong_5ftypedef_3c_20type_2c_20tag_20_3e_48',['strong_typedef&lt; Type, Tag &gt;',['../df/d7e/classfcppt_1_1strong__typedef.html',1,'fcppt']]],
-  ['strong_5ftypedef_3c_20vector_2c_20_5f_20_3e_49',['strong_typedef&lt; vector, _ &gt;',['../df/d7e/classfcppt_1_1strong__typedef.html',1,'fcppt']]],
-  ['strong_5ftypedef_5fhash_50',['strong_typedef_hash',['../d2/d3d/structfcppt_1_1strong__typedef__hash.html',1,'fcppt']]],
-  ['strong_5ftypedef_5fhash_3c_20fcppt_3a_3astrong_5ftypedef_3c_20type_2c_20alias_20_3e_20_3e_51',['strong_typedef_hash&lt; fcppt::strong_typedef&lt; Type, Alias &gt; &gt;',['../d4/d05/structfcppt_1_1strong__typedef__hash_3_01fcppt_1_1strong__typedef_3_01Type_00_01Alias_01_4_01_4.html',1,'fcppt']]],
-  ['sub_5fcommand_52',['sub_command',['../d9/d1d/classfcppt_1_1options_1_1sub__command.html',1,'fcppt::options']]],
-  ['sub_5fcommand_5fusage_53',['sub_command_usage',['../d6/d88/classfcppt_1_1options_1_1sub__command__usage.html',1,'fcppt::options']]],
-  ['sum_54',['sum',['../dd/d5e/classfcppt_1_1options_1_1sum.html',1,'fcppt::options']]],
-  ['sum_5fusage_55',['sum_usage',['../d2/d51/classfcppt_1_1options_1_1sum__usage.html',1,'fcppt::options']]],
-  ['sup_5ftag_56',['sup_tag',['../d7/d12/structfcppt_1_1container_1_1grid_1_1sup__tag.html',1,'fcppt::container::grid']]],
-  ['switch_5f_57',['switch_',['../dd/d67/classfcppt_1_1options_1_1switch__.html',1,'fcppt::options']]]
+  ['strong_5ftypedef_3c_20unsigned_2c_20_5f_20_3e_49',['strong_typedef&lt; unsigned, _ &gt;',['../df/d7e/classfcppt_1_1strong__typedef.html',1,'fcppt']]],
+  ['strong_5ftypedef_3c_20vector_2c_20_5f_20_3e_50',['strong_typedef&lt; vector, _ &gt;',['../df/d7e/classfcppt_1_1strong__typedef.html',1,'fcppt']]],
+  ['strong_5ftypedef_5fhash_51',['strong_typedef_hash',['../d2/d3d/structfcppt_1_1strong__typedef__hash.html',1,'fcppt']]],
+  ['strong_5ftypedef_5fhash_3c_20fcppt_3a_3astrong_5ftypedef_3c_20type_2c_20alias_20_3e_20_3e_52',['strong_typedef_hash&lt; fcppt::strong_typedef&lt; Type, Alias &gt; &gt;',['../d4/d05/structfcppt_1_1strong__typedef__hash_3_01fcppt_1_1strong__typedef_3_01Type_00_01Alias_01_4_01_4.html',1,'fcppt']]],
+  ['sub_5fcommand_53',['sub_command',['../d9/d1d/classfcppt_1_1options_1_1sub__command.html',1,'fcppt::options']]],
+  ['sub_5fcommand_5fusage_54',['sub_command_usage',['../d6/d88/classfcppt_1_1options_1_1sub__command__usage.html',1,'fcppt::options']]],
+  ['sum_55',['sum',['../dd/d5e/classfcppt_1_1options_1_1sum.html',1,'fcppt::options']]],
+  ['sum_5fusage_56',['sum_usage',['../d2/d51/classfcppt_1_1options_1_1sum__usage.html',1,'fcppt::options']]],
+  ['sup_5ftag_57',['sup_tag',['../d7/d12/structfcppt_1_1container_1_1grid_1_1sup__tag.html',1,'fcppt::container::grid']]],
+  ['switch_5f_58',['switch_',['../dd/d67/classfcppt_1_1options_1_1switch__.html',1,'fcppt::options']]]
 ];

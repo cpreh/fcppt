@@ -5,7 +5,7 @@ var searchData=
   ['defining_20library_20interfaces_2',['Defining library interfaces',['../d2/da1/group__fcpptexport.html#symbol_library',1,'']]],
   ['definition_3',['Parser definition',['../de/d6e/group__fcpptparse.html#fcpptparse_definition',1,'']]],
   ['deleter_20example_4',['Deleter example',['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter_example',1,'']]],
-  ['deleters_5',['Deleters',['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter',1,'Custom Deleters'],['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter_predef',1,'fcppt's Deleters']]],
+  ['deleters_5',['Deleters',['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter',1,'Custom Deleters'],['../d7/d04/group__fcpptsmartptr.html#smartptr_deleter_predef',1,'fcppt&apos;s Deleters']]],
   ['design_6',['Design',['../da/d65/group__fcpptoptional.html#optional_design',1,'Design'],['../d3/d68/group__fcppttypeiso.html#typeiso_design',1,'Design'],['../d0/d82/group__fcpptvariant.html#variant_design',1,'Design']]],
   ['design_7',['Log hierarchy design',['../df/de9/group__fcpptlog.html#log_hierarchy_design',1,'']]],
   ['detection_8',['Detection',['../da/d0b/group__fcpptconfig.html#fcpptconfig_compiler_detection',1,'Compiler Detection'],['../da/d0b/group__fcpptconfig.html#fcpptconfig_os_detection',1,'OS Detection']]],

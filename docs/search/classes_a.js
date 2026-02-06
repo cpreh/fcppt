@@ -12,10 +12,11 @@ var searchData=
   ['missing_5fargument_5ferror_9',['missing_argument_error',['../dd/d51/classfcppt_1_1options_1_1missing__argument__error.html',1,'fcppt::options']]],
   ['missing_5fcommand_5ferror_10',['missing_command_error',['../d0/d3b/classfcppt_1_1options_1_1missing__command__error.html',1,'fcppt::options']]],
   ['missing_5ferror_11',['missing_error',['../d6/d07/classfcppt_1_1options_1_1missing__error.html',1,'fcppt::options']]],
-  ['missing_5ferror_5fpair_12',['missing_error_pair',['../d9/d78/classfcppt_1_1options_1_1missing__error__pair.html',1,'fcppt::options']]],
-  ['missing_5fflag_5ferror_13',['missing_flag_error',['../da/d3f/classfcppt_1_1options_1_1missing__flag__error.html',1,'fcppt::options']]],
-  ['missing_5foption_5fargument_5ferror_14',['missing_option_argument_error',['../df/d09/classfcppt_1_1options_1_1missing__option__argument__error.html',1,'fcppt::options']]],
-  ['missing_5foption_5ferror_15',['missing_option_error',['../d6/dfc/classfcppt_1_1options_1_1missing__option__error.html',1,'fcppt::options']]],
-  ['movable_16',['movable',['../d1/d32/classfcppt_1_1catch___1_1movable.html',1,'fcppt::catch_']]],
-  ['move_5frange_17',['move_range',['../d4/d37/classfcppt_1_1container_1_1move__range.html',1,'fcppt::container']]]
+  ['missing_5ferror_5fproduct_12',['missing_error_product',['../d0/d71/classfcppt_1_1options_1_1missing__error__product.html',1,'fcppt::options']]],
+  ['missing_5ferror_5fsum_13',['missing_error_sum',['../dc/d98/classfcppt_1_1options_1_1missing__error__sum.html',1,'fcppt::options']]],
+  ['missing_5fflag_5ferror_14',['missing_flag_error',['../da/d3f/classfcppt_1_1options_1_1missing__flag__error.html',1,'fcppt::options']]],
+  ['missing_5foption_5fargument_5ferror_15',['missing_option_argument_error',['../df/d09/classfcppt_1_1options_1_1missing__option__argument__error.html',1,'fcppt::options']]],
+  ['missing_5foption_5ferror_16',['missing_option_error',['../d6/dfc/classfcppt_1_1options_1_1missing__option__error.html',1,'fcppt::options']]],
+  ['movable_17',['movable',['../d1/d32/classfcppt_1_1catch___1_1movable.html',1,'fcppt::catch_']]],
+  ['move_5frange_18',['move_range',['../d4/d37/classfcppt_1_1container_1_1move__range.html',1,'fcppt::container']]]
 ];

@@ -6,7 +6,8 @@ var searchData=
   ['enable_5fshared_5ffrom_5fthis_3',['enable_shared_from_this',['../d0/d5a/classfcppt_1_1enable__shared__from__this.html',1,'fcppt']]],
   ['epsilon_4',['epsilon',['../d2/d45/classfcppt_1_1parse_1_1epsilon.html',1,'fcppt::parse::epsilon'],['../dc/dc7/classfcppt_1_1parse_1_1skipper_1_1epsilon.html',1,'fcppt::parse::skipper::epsilon']]],
   ['error_5',['error',['../d8/da9/classfcppt_1_1options_1_1error.html',1,'fcppt::options::error'],['../d3/d06/classfcppt_1_1parse_1_1error.html',1,'fcppt::parse::error&lt; Ch &gt;']]],
-  ['error_5fpair_6',['error_pair',['../df/d28/classfcppt_1_1options_1_1error__pair.html',1,'fcppt::options']]],
-  ['exception_7',['exception',['../d8/d58/classfcppt_1_1exception.html',1,'fcppt::exception'],['../da/d20/classfcppt_1_1options_1_1exception.html',1,'fcppt::options::exception']]],
-  ['exclude_8',['exclude',['../d5/d37/classfcppt_1_1parse_1_1exclude.html',1,'fcppt::parse']]]
+  ['error_5fproduct_6',['error_product',['../db/d60/classfcppt_1_1options_1_1error__product.html',1,'fcppt::options']]],
+  ['error_5fsum_7',['error_sum',['../dd/d5e/classfcppt_1_1options_1_1error__sum.html',1,'fcppt::options']]],
+  ['exception_8',['exception',['../d8/d58/classfcppt_1_1exception.html',1,'fcppt::exception'],['../da/d20/classfcppt_1_1options_1_1exception.html',1,'fcppt::options::exception']]],
+  ['exclude_9',['exclude',['../d5/d37/classfcppt_1_1parse_1_1exclude.html',1,'fcppt::parse']]]
 ];
