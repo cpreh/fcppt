@@ -58,7 +58,7 @@ The following platforms are tested by us:
 
 <ul>
 	<li>gcc-15.2 (Gentoo Linux, NixOS and MinGW)</li>
-	<li>clang-21.1.2 (Gentoo Linux and NixOS)</li>
+	<li>clang-21.1.8 (Gentoo Linux and NixOS)</li>
 	<li>VC++-14.44</li>
 </ul>
 
