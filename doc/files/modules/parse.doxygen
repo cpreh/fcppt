@@ -69,7 +69,7 @@ We can then inspect this either by using #fcppt::either::match.
 
 A lot of languages are not whitespace-sensitive, which means that whitespaces can be added in a lot of places.
 For example, in JSON, we can write <code>[1,2]</code> or <code>[1, 2]</code>, which both result in an array with elements 1 and 2.
-Here, we use the notaiton of a \em Skipper to achieve this behaviour.
+Here, we use the notation of a \em Skipper to achieve this behaviour.
 A skipper is simpler than a parser in the sense that it never produces results, it only consumes input.
 Skippers are run in very specific places:
 <ul>
@@ -138,7 +138,9 @@ even though it cannot succeed.
 This is fine in most cases, but in some this may lead to excessive backtracking.
 In addition, the parser <code>a | b</code> will produce an error message of the form
 <blockquote>
-{ Line 1:3: Expected }, got ] OR Line 1:2: Expected [, got { }.
+&nbsp;&nbsp; At 1, J 1:2: Expected }, got ].<br>
+or<br>
+&nbsp;&nbsp; At 0, J 1:1: Expected [, got {.
 </blockquote>
 Since we know that <code>b</code> cannot succeed if <code>a</code> fails after reading <code>{</code>,
 we can make the part after <code>{</code> fatal.
@@ -146,7 +148,7 @@ we can make the part after <code>{</code> fatal.
 Then the parser <code>a | b</code> does not try <code>b</code>
 on input <code>{]</code>. Instead, it aborts immediately, and produces an error message of the form
 <blockquote>
-Line 1:3: Expected }, got ].
+At 1, J 1:2: Expected }, got ].
 </blockquote>
 \warning Consider fatal errors as an optimization both to parsing and to error messages.
 Be careful not to place fatal errors in the wrong place.
