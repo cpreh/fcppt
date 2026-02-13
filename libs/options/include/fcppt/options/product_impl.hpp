@@ -59,33 +59,33 @@ fcppt::options::product<Left, Right>::parse(
       [this, &_context](
           fcppt::options::parse_error &&_left_error) -> fcppt::options::parse_result<result_type>
       {
-        return fcppt::either::make_failure<
-            fcppt::options::state_with_value<result_type>>(fcppt::variant::match(
-            std::move(_left_error),
-            [this, &_context](
-                // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
-                fcppt::options::missing_error &&_missing_error) -> fcppt::options::parse_error
-            {
-              return fcppt::either::match(
-                  fcppt::options::deref(this->right_)
-                      .parse(std::move(_missing_error.state()), _context),
-                  [&_missing_error](
-                      fcppt::options::parse_error &&_right_error) -> fcppt::options::parse_error
-                  {
-                    return fcppt::options::detail::combine_errors_product(
-                        std::move(_missing_error.error()), std::move(_right_error));
-                  },
-                  [&_missing_error](
-                      fcppt::options::state_with_value<fcppt::options::result_of<Right>>
-                          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
-                          &&_right_result) -> fcppt::options::parse_error
-                  {
-                    return fcppt::options::parse_error{fcppt::options::missing_error{
-                        std::move(_right_result.state()), std::move(_missing_error.error())}};
-                  });
-            },
-            [](fcppt::options::error &&_other_error)
-            { return fcppt::options::parse_error{std::move(_other_error)}; }));
+        return fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(
+            fcppt::variant::match(
+                std::move(_left_error),
+                [this, &_context](
+                    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+                    fcppt::options::missing_error &&_missing_error) -> fcppt::options::parse_error
+                {
+                  return fcppt::either::match(
+                      fcppt::options::deref(this->right_)
+                          .parse(std::move(_missing_error.state()), _context),
+                      [&_missing_error](
+                          fcppt::options::parse_error &&_right_error) -> fcppt::options::parse_error
+                      {
+                        return fcppt::options::detail::combine_errors_product(
+                            std::move(_missing_error.error()), std::move(_right_error));
+                      },
+                      [&_missing_error](
+                          fcppt::options::state_with_value<fcppt::options::result_of<Right>>
+                              // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+                              &&_right_result) -> fcppt::options::parse_error
+                      {
+                        return fcppt::options::parse_error{fcppt::options::missing_error{
+                            std::move(_right_result.state()), std::move(_missing_error.error())}};
+                      });
+                },
+                [](fcppt::options::error &&_other_error)
+                { return fcppt::options::parse_error{std::move(_other_error)}; }));
       },
       [&_context,
        // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
@@ -96,9 +96,11 @@ fcppt::options::product<Left, Right>::parse(
 
         return fcppt::either::map(
             fcppt::options::deref(this->right_).parse(std::move(_left_result.state()), _context),
-            [&left_value](fcppt::options::state_with_value<fcppt::options::result_of<Right>>
-            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
-                              &&_right_result) {
+            [&left_value](
+                fcppt::options::state_with_value<fcppt::options::result_of<Right>>
+                    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+                    &&_right_result)
+            {
               return fcppt::options::state_with_value<result_type>{
                   std::move(_right_result.state()),
                   fcppt::record::multiply_disjoint(
