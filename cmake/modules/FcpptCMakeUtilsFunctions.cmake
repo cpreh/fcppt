@@ -405,6 +405,10 @@ function(fcppt_utils_add_test test_dir path_name)
 
     add_test(NAME ${TEST_NAME} COMMAND ${full_test_name})
   endif()
+
+  if(FCPPT_UTILS_COMPILER_IS_CLANGPP)
+    target_compile_options(${full_test_name} PRIVATE "-Wno-c2y-extensions")
+  endif()
 endfunction()
 
 # Adds an example.
