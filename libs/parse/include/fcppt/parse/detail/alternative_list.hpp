@@ -11,7 +11,7 @@
 namespace fcppt::parse::detail
 {
 template <typename T>
-using alternative_list = typename fcppt::parse::detail::alternative_list_impl<T>::type;
+using alternative_list = fcppt::parse::detail::alternative_list_impl<T>::type;
 
 }
 

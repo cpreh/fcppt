@@ -29,7 +29,7 @@ inline fcppt::enum_::range<Enum> make_range_start_end(Enum const _start, Enum co
 {
   using result_type = fcppt::enum_::range<Enum>;
 
-  using size_type = typename result_type::size_type;
+  using size_type = result_type::size_type;
 
   return result_type{
       fcppt::cast::enum_to_int<size_type>(_start),

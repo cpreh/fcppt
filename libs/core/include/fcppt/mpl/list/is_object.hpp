@@ -35,7 +35,7 @@ struct is_object<fcppt::mpl::list::object<T...>>
 <code>fcppt::mpl::list::object<T_1, ..., T_n></code> for some types <code>T_1, ..., T_n</code>.
 */
 template <typename T>
-using is_object = typename fcppt::mpl::list::detail::is_object<T>::type;
+using is_object = fcppt::mpl::list::detail::is_object<T>::type;
 }
 
 #endif

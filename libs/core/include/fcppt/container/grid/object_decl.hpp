@@ -41,17 +41,17 @@ public:
 
   using value_type = T;
 
-  using size_type = typename container::size_type;
+  using size_type = container::size_type;
 
-  using difference_type = typename container::difference_type;
+  using difference_type = container::difference_type;
 
-  using reference = typename container::reference;
+  using reference = container::reference;
 
-  using const_reference = typename container::const_reference;
+  using const_reference = container::const_reference;
 
-  using iterator = typename container::iterator;
+  using iterator = container::iterator;
 
-  using const_iterator = typename container::const_iterator;
+  using const_iterator = container::const_iterator;
 
   /**
   \brief A type representing the dimension of the grid

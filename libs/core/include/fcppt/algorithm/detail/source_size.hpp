@@ -29,7 +29,7 @@ struct source_size
 template <typename Source>
 struct source_size<Source, std::enable_if_t<fcppt::mpl::list::is_object<Source>::value>>
 {
-  static typename fcppt::algorithm::detail::mpl_size_type<Source>::type get(Source const &)
+  static fcppt::algorithm::detail::mpl_size_type<Source>::type get(Source const &)
   {
     return fcppt::mpl::list::size<Source>::value;
   }

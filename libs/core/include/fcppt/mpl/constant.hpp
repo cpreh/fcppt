@@ -32,7 +32,7 @@ Formally, for every integer <code>m</code> it holds a function
 <code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = C</code>.
 */
 template<typename T>
-using constant = typename fcppt::mpl::detail::constant<T>::type;
+using constant = fcppt::mpl::detail::constant<T>::type;
 }
 
 #endif

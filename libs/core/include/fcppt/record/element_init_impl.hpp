@@ -18,7 +18,7 @@ fcppt::record::element_init<Tag, Type>::element_init(value_type _value)
 }
 
 template <typename Tag, typename Type>
-typename fcppt::record::element_init<Tag, Type>::value_type &
+fcppt::record::element_init<Tag, Type>::value_type &
 fcppt::record::element_init<Tag, Type>::value()
 {
   return this->value_;

@@ -21,11 +21,10 @@ namespace fcppt::tuple
 \ingroup fcppttuple
 */
 template <typename Tuple, typename Function>
-using map_result = typename fcppt::tuple::detail::map_result<
+using map_result = fcppt::tuple::detail::map_result<
     std::make_index_sequence<fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value>,
     Tuple,
     std::remove_cvref_t<Function>>::type;
-
 }
 
 #endif

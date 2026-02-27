@@ -88,7 +88,7 @@ public:
   /**
   \brief A reference to an element of the matrix.
   */
-  using inner_reference = typename reference::reference;
+  using inner_reference = reference::reference;
 
   /**
   \brief A const reference to a row of the matrix.
@@ -99,7 +99,7 @@ public:
   /**
   \brief A const reference to an element of the matrix.
   */
-  using const_inner_reference = typename const_reference::const_reference;
+  using const_inner_reference = const_reference::const_reference;
 
   /**
   \brief The type of a row, which is a vector of <code>C</code> elements.

@@ -71,7 +71,7 @@ public:
   /**
   \brief The size type which is taken from <code>static_size</code>.
   */
-  using size_type = typename static_size::value_type;
+  using size_type = static_size::value_type;
 
   /**
   \brief The value type, which is bool.

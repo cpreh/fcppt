@@ -28,21 +28,21 @@ basic_pseudo<Generator>::~basic_pseudo() = default;
 }
 
 template <typename Generator>
-inline typename fcppt::random::generator::basic_pseudo<Generator>::result_type
+inline fcppt::random::generator::basic_pseudo<Generator>::result_type
 fcppt::random::generator::basic_pseudo<Generator>::operator()()
 {
   return this->wrapped_();
 }
 
 template <typename Generator>
-constexpr typename fcppt::random::generator::basic_pseudo<Generator>::result_type
+constexpr fcppt::random::generator::basic_pseudo<Generator>::result_type
 fcppt::random::generator::basic_pseudo<Generator>::min()
 {
   return wrapped::min();
 }
 
 template <typename Generator>
-constexpr typename fcppt::random::generator::basic_pseudo<Generator>::result_type
+constexpr fcppt::random::generator::basic_pseudo<Generator>::result_type
 fcppt::random::generator::basic_pseudo<Generator>::max()
 {
   return wrapped::max();

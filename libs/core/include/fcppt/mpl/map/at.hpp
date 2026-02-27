@@ -48,7 +48,7 @@ Then the result is <code>V_i</code>.
 */
 template<fcppt::mpl::map::object_concept Map, typename Key>
 requires fcppt::mpl::map::has_key<Map,Key>::value
-using at = typename fcppt::mpl::map::detail::at<Map,Key>::type;
+using at = fcppt::mpl::map::detail::at<Map,Key>::type;
 
 }
 

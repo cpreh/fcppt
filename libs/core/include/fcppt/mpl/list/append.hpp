@@ -32,7 +32,7 @@ list::object<L_1,...,L_n,R_1,...,R_m>
 \endcode
 */
 template <fcppt::mpl::list::object_concept List1, fcppt::mpl::list::object_concept List2>
-using append = typename fcppt::mpl::list::detail::append<List1,List2>::type;
+using append = fcppt::mpl::list::detail::append<List1,List2>::type;
 }
 
 #endif

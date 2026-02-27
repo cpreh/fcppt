@@ -55,14 +55,14 @@ public:
 
   constexpr array(from_internal, internal &&) noexcept(std::is_nothrow_move_constructible_v<internal>);
 
-  using value_type = typename internal::value_type;
+  using value_type = internal::value_type;
 
-  using reference = typename internal::reference;
-  using const_reference = typename internal::const_reference;
-  using iterator = typename internal::iterator;
-  using const_iterator = typename internal::const_iterator;
-  using pointer = typename internal::pointer;
-  using const_pointer = typename internal::const_pointer;
+  using reference = internal::reference;
+  using const_reference = internal::const_reference;
+  using iterator = internal::iterator;
+  using const_iterator = internal::const_iterator;
+  using pointer = internal::pointer;
+  using const_pointer = internal::const_pointer;
 
   [[nodiscard]] reference operator[](Enum) noexcept;
   [[nodiscard]] const_reference operator[](Enum) const noexcept;
@@ -79,7 +79,7 @@ public:
   [[nodiscard]] constexpr internal &impl() noexcept;
   [[nodiscard]] constexpr internal const &impl() const noexcept;
 private:
-  [[nodiscard]] static typename internal::size_type to_index(Enum) noexcept;
+  [[nodiscard]] static internal::size_type to_index(Enum) noexcept;
 
   internal impl_;
 };

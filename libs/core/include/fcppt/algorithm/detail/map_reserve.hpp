@@ -17,7 +17,7 @@ inline void map_reserve(Dest &_dest, Source const &_src)
 {
   _dest.reserve(
       // some ranges have signed sizes
-      static_cast<typename Dest::size_type>(
+      static_cast<Dest::size_type>(
           fcppt::algorithm::detail::source_size<Source>::get(_src)));
 }
 

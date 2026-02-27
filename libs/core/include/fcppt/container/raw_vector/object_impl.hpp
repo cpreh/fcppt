@@ -28,35 +28,35 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::iterator
+fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::begin() noexcept
 {
   return this->data();
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_iterator
+fcppt::container::raw_vector::object<T, A>::const_iterator
 fcppt::container::raw_vector::object<T, A>::begin() const noexcept
 {
   return this->data();
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::iterator
+fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::end() noexcept
 {
   return this->data_end();
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_iterator
+fcppt::container::raw_vector::object<T, A>::const_iterator
 fcppt::container::raw_vector::object<T, A>::end() const noexcept
 {
   return this->data_end();
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::reference
+fcppt::container::raw_vector::object<T, A>::reference
 fcppt::container::raw_vector::object<T, A>::operator[](size_type const _index) noexcept
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -64,7 +64,7 @@ fcppt::container::raw_vector::object<T, A>::operator[](size_type const _index) n
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_reference
+fcppt::container::raw_vector::object<T, A>::const_reference
 fcppt::container::raw_vector::object<T, A>::operator[](size_type const _index) const noexcept
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -72,56 +72,56 @@ fcppt::container::raw_vector::object<T, A>::operator[](size_type const _index) c
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::reference
+fcppt::container::raw_vector::object<T, A>::reference
 fcppt::container::raw_vector::object<T, A>::front() noexcept
 {
   return *this->begin();
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_reference
+fcppt::container::raw_vector::object<T, A>::const_reference
 fcppt::container::raw_vector::object<T, A>::front() const noexcept
 {
   return *this->begin();
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::reference
+fcppt::container::raw_vector::object<T, A>::reference
 fcppt::container::raw_vector::object<T, A>::back() noexcept
 {
   return *(std::prev(this->end()));
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_reference
+fcppt::container::raw_vector::object<T, A>::const_reference
 fcppt::container::raw_vector::object<T, A>::back() const noexcept
 {
   return *(std::prev(this->end()));
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::pointer
+fcppt::container::raw_vector::object<T, A>::pointer
 fcppt::container::raw_vector::object<T, A>::data() noexcept
 {
   return this->impl_.first_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_pointer
+fcppt::container::raw_vector::object<T, A>::const_pointer
 fcppt::container::raw_vector::object<T, A>::data() const noexcept
 {
   return this->impl_.first_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::pointer
+fcppt::container::raw_vector::object<T, A>::pointer
 fcppt::container::raw_vector::object<T, A>::data_end() noexcept
 {
   return this->impl_.last_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::const_pointer
+fcppt::container::raw_vector::object<T, A>::const_pointer
 fcppt::container::raw_vector::object<T, A>::data_end() const noexcept
 {
   return this->impl_.last_;
@@ -230,7 +230,7 @@ void fcppt::container::raw_vector::object<T, A>::clear() noexcept
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::size_type
+fcppt::container::raw_vector::object<T, A>::size_type
 fcppt::container::raw_vector::object<T, A>::size() const noexcept
 {
   return fcppt::cast::to_unsigned(std::distance(this->impl_.first_, this->impl_.last_));
@@ -243,7 +243,7 @@ bool fcppt::container::raw_vector::object<T, A>::empty() const noexcept
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::size_type
+fcppt::container::raw_vector::object<T, A>::size_type
 fcppt::container::raw_vector::object<T, A>::capacity() const noexcept
 {
   return fcppt::cast::to_unsigned(std::distance(this->impl_.first_, this->impl_.cap_));
@@ -285,14 +285,14 @@ void fcppt::container::raw_vector::object<T, A>::reserve(size_type const _size)
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::allocator_type
+fcppt::container::raw_vector::object<T, A>::allocator_type
 fcppt::container::raw_vector::object<T, A>::get_allocator() const
 {
   return this->impl_.alloc_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::iterator
+fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::insert(iterator const _position, T const &_value)
 {
   new_size_t const new_size{this->size() + 1U};
@@ -403,7 +403,7 @@ void fcppt::container::raw_vector::object<T, A>::insert(
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::iterator
+fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::erase(iterator const _position) noexcept
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -416,7 +416,7 @@ fcppt::container::raw_vector::object<T, A>::erase(iterator const _position) noex
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::iterator
+fcppt::container::raw_vector::object<T, A>::iterator
 fcppt::container::raw_vector::object<T, A>::erase(
     iterator const _left, iterator const _right) noexcept
 {
@@ -505,7 +505,7 @@ fcppt::container::raw_vector::object<T, A>::insert_impl(
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::new_cap_t
+fcppt::container::raw_vector::object<T, A>::new_cap_t
 fcppt::container::raw_vector::object<T, A>::new_capacity(new_size_t const _new_size) const noexcept
 {
   return new_cap_t{std::max(_new_size.get(), this->capacity() * 2U)};
@@ -542,7 +542,7 @@ void fcppt::container::raw_vector::object<T, A>::set_pointers(
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::pointer
+fcppt::container::raw_vector::object<T, A>::pointer
 fcppt::container::raw_vector::object<T, A>::allocate(new_cap_t const _new_cap)
 {
   return this->impl_.alloc_.allocate(_new_cap.get());
@@ -578,7 +578,7 @@ fcppt::container::raw_vector::object<T, A>::impl::impl(impl &&_other) noexcept
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector::object<T, A>::impl &
+fcppt::container::raw_vector::object<T, A>::impl &
 fcppt::container::raw_vector::object<T, A>::impl::operator=(impl &&_other) noexcept
 {
   this->alloc_ = _other.alloc_;

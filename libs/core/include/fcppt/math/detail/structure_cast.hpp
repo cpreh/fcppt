@@ -25,7 +25,8 @@ inline T structure_cast(U const &_other)
       std::is_same_v<typename T::dim_wrapper, typename U::dim_wrapper>,
       "structure_cast works only on types with the same dimensions");
 
-  return fcppt::math::detail::init<T>([&_other](typename T::size_type const _index) {
+  return fcppt::math::detail::init<T>([&_other](T::size_type const _index) {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     return fcppt::cast::apply<Conv, fcppt::type_traits::value_type<T>>(_other.storage()[_index]);
   });
 }

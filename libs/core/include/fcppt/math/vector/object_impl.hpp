@@ -102,66 +102,66 @@ fcppt::math::vector::object<T, N, S>::operator*=(value_type const &_value)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::const_reference
+fcppt::math::vector::object<T, N, S>::const_reference
 fcppt::math::vector::object<T, N, S>::get_unsafe(size_type const _index) const
 {
   return fcppt::math::detail::index_at(storage_, _index);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::reference
+fcppt::math::vector::object<T, N, S>::reference
 fcppt::math::vector::object<T, N, S>::get_unsafe(size_type const _index)
 {
   return fcppt::math::detail::index_at(storage_, _index);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::x()
+fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::x()
 {
   return fcppt::math::detail::checked_access<0>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::const_reference
+fcppt::math::vector::object<T, N, S>::const_reference
 fcppt::math::vector::object<T, N, S>::x() const
 {
   return fcppt::math::detail::checked_access<0>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::y()
+fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::y()
 {
   return fcppt::math::detail::checked_access<1>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::const_reference
+fcppt::math::vector::object<T, N, S>::const_reference
 fcppt::math::vector::object<T, N, S>::y() const
 {
   return fcppt::math::detail::checked_access<1>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::z()
+fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::z()
 {
   return fcppt::math::detail::checked_access<2>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::const_reference
+fcppt::math::vector::object<T, N, S>::const_reference
 fcppt::math::vector::object<T, N, S>::z() const
 {
   return fcppt::math::detail::checked_access<2>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::w()
+fcppt::math::vector::object<T, N, S>::reference fcppt::math::vector::object<T, N, S>::w()
 {
   return fcppt::math::detail::checked_access<3>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::vector::object<T, N, S>::const_reference
+fcppt::math::vector::object<T, N, S>::const_reference
 fcppt::math::vector::object<T, N, S>::w() const
 {
   return fcppt::math::detail::checked_access<3>(*this);

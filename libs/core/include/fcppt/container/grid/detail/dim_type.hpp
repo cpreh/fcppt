@@ -15,7 +15,7 @@ struct dim_type
 {
   static_assert(fcppt::container::grid::is_object<Grid>::value, "Grid must be a grid");
 
-  using type = typename Grid::dim;
+  using type = Grid::dim;
 };
 
 }

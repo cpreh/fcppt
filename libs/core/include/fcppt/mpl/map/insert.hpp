@@ -36,7 +36,7 @@ This only works if <code>Key</code> is not equal to any of the <code>K_1,...,K_n
 */
 template<fcppt::mpl::map::object_concept Map, typename Key, typename Value>
 requires (!fcppt::mpl::map::has_key<Map,Key>::value)
-using insert = typename fcppt::mpl::map::detail::insert<Map,Key,Value>::type;
+using insert = fcppt::mpl::map::detail::insert<Map,Key,Value>::type;
 }
 
 #endif

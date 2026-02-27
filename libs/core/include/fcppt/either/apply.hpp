@@ -92,7 +92,7 @@ apply(Function const &_function, Either1 &&_either1, Eithers &&..._eithers) requ
                              [](optional_failure const &_failure)
                              { return _failure.has_value(); })};
 
-                     using iterator = typename failure_array::iterator;
+                     using iterator = failure_array::iterator;
 
                      // Silence -Wnull-dereference warning
                      iterator const failure_it{

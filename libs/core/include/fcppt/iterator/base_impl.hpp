@@ -27,13 +27,13 @@ fcppt::iterator::base<Types>::base()
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::reference fcppt::iterator::base<Types>::operator*() const
+fcppt::iterator::base<Types>::reference fcppt::iterator::base<Types>::operator*() const
 {
   return this->get().dereference();
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::operator++()
+fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::operator++()
 {
   this->get().increment();
 
@@ -53,7 +53,7 @@ bool fcppt::iterator::base<Types>::operator!=(base const &_other) const
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::pointer fcppt::iterator::base<Types>::operator->() const
+fcppt::iterator::base<Types>::pointer fcppt::iterator::base<Types>::operator->() const
 {
   static_assert(
       std::is_reference_v<reference>,
@@ -63,7 +63,7 @@ typename fcppt::iterator::base<Types>::pointer fcppt::iterator::base<Types>::ope
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived fcppt::iterator::base<Types>::operator++(int)
+fcppt::iterator::base<Types>::derived fcppt::iterator::base<Types>::operator++(int)
 {
   derived temp{this->get()};
 
@@ -79,7 +79,7 @@ void fcppt::iterator::base<Types>::swap(base &_other) noexcept
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::operator--()
+fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::operator--()
 {
   static_assert(
       my_category_at_least<std::bidirectional_iterator_tag>::value,
@@ -91,7 +91,7 @@ typename fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::op
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived fcppt::iterator::base<Types>::operator--(int)
+fcppt::iterator::base<Types>::derived fcppt::iterator::base<Types>::operator--(int)
 {
   derived temp{this->get()};
 
@@ -101,7 +101,7 @@ typename fcppt::iterator::base<Types>::derived fcppt::iterator::base<Types>::ope
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived &
+fcppt::iterator::base<Types>::derived &
 fcppt::iterator::base<Types>::operator+=(difference_type const _diff)
 {
   static_assert(
@@ -114,7 +114,7 @@ fcppt::iterator::base<Types>::operator+=(difference_type const _diff)
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived
+fcppt::iterator::base<Types>::derived
 fcppt::iterator::base<Types>::operator+(difference_type const _diff) const
 {
   derived temp{this->get()};
@@ -123,14 +123,14 @@ fcppt::iterator::base<Types>::operator+(difference_type const _diff) const
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived &
+fcppt::iterator::base<Types>::derived &
 fcppt::iterator::base<Types>::operator-=(difference_type const _diff)
 {
   return *this += -_diff;
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived
+fcppt::iterator::base<Types>::derived
 fcppt::iterator::base<Types>::operator-(difference_type const _diff) const
 {
   derived temp{this->get()};
@@ -139,14 +139,14 @@ fcppt::iterator::base<Types>::operator-(difference_type const _diff) const
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::reference
+fcppt::iterator::base<Types>::reference
 fcppt::iterator::base<Types>::operator[](difference_type const _pos) const
 {
   return *(*this + _pos);
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::difference_type
+fcppt::iterator::base<Types>::difference_type
 fcppt::iterator::base<Types>::operator-(base const &_other) const
 {
   static_assert(
@@ -157,13 +157,13 @@ fcppt::iterator::base<Types>::operator-(base const &_other) const
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::get()
+fcppt::iterator::base<Types>::derived &fcppt::iterator::base<Types>::get()
 {
   return fcppt::cast::static_downcast<derived &>(*this);
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived const &fcppt::iterator::base<Types>::get() const
+fcppt::iterator::base<Types>::derived const &fcppt::iterator::base<Types>::get() const
 {
   return fcppt::cast::static_downcast<derived const &>(*this);
 }
@@ -176,8 +176,8 @@ void fcppt::iterator::swap(
 }
 
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived fcppt::iterator::operator+(
-    typename fcppt::iterator::base<Types>::difference_type const _diff,
+fcppt::iterator::base<Types>::derived fcppt::iterator::operator+(
+    fcppt::iterator::base<Types>::difference_type const _diff,
     fcppt::iterator::base<Types> const &_it)
 {
   return _it + _diff;

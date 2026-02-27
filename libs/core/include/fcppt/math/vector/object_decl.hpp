@@ -78,14 +78,14 @@ public:
   \brief A type that provides a reference to an element stored in a
   vector.
   */
-  using reference = typename storage_type::reference;
+  using reference = storage_type::reference;
 
   /**
   \brief A type that provides a reference to a <code>const</code> element
   stored in a vector for reading and performing <code>const</code>
   operations.
   */
-  using const_reference = typename storage_type::const_reference;
+  using const_reference = storage_type::const_reference;
 
   /**
   \brief Construct an uninitialized vector

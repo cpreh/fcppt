@@ -95,14 +95,14 @@ fcppt::math::matrix::object<T, R, C, S>::operator*=(value_type const &_value)
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::reference
+fcppt::math::matrix::object<T, R, C, S>::reference
 fcppt::math::matrix::object<T, R, C, S>::get_unsafe(size_type const _j)
 {
   return reference{typename reference::storage_type{this->storage_, _j, object::columns()}};
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_reference
+fcppt::math::matrix::object<T, R, C, S>::const_reference
 fcppt::math::matrix::object<T, R, C, S>::get_unsafe(size_type const _j) const
 {
   return const_reference{
@@ -110,14 +110,14 @@ fcppt::math::matrix::object<T, R, C, S>::get_unsafe(size_type const _j) const
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-constexpr typename fcppt::math::matrix::object<T, R, C, S>::size_type
+constexpr fcppt::math::matrix::object<T, R, C, S>::size_type
 fcppt::math::matrix::object<T, R, C, S>::rows()
 {
   return R;
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-constexpr typename fcppt::math::matrix::object<T, R, C, S>::size_type
+constexpr fcppt::math::matrix::object<T, R, C, S>::size_type
 fcppt::math::matrix::object<T, R, C, S>::columns()
 {
   return C;
@@ -136,224 +136,224 @@ S const &fcppt::math::matrix::object<T, R, C, S>::storage() const
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m00()
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m00() const
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m01()
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m01() const
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m02()
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m02() const
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m03()
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m03() const
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<0>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m10()
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m10() const
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m11()
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m11() const
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m12()
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m12() const
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m13()
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m13() const
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<1>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m20()
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m20() const
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m21()
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m21() const
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m22()
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m22() const
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m23()
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m23() const
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<2>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m30()
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m30() const
 {
   return fcppt::math::detail::checked_access<0>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m31()
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m31() const
 {
   return fcppt::math::detail::checked_access<1>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m32()
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m32() const
 {
   return fcppt::math::detail::checked_access<2>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::inner_reference
+fcppt::math::matrix::object<T, R, C, S>::inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m33()
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<3>(*this));
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
+fcppt::math::matrix::object<T, R, C, S>::const_inner_reference
 fcppt::math::matrix::object<T, R, C, S>::m33() const
 {
   return fcppt::math::detail::checked_access<3>(fcppt::math::detail::checked_access<3>(*this));

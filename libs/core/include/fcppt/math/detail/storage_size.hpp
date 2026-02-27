@@ -9,7 +9,7 @@
 namespace fcppt::math::detail
 {
 template <typename Type>
-using storage_size = typename Type::storage_size;
+using storage_size = Type::storage_size;
 
 }
 

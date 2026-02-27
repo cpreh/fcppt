@@ -29,6 +29,7 @@ void multiply_scalar(Storage &_value, typename Storage::value_type const _mult)
         FCPPT_PP_PUSH_WARNING
         FCPPT_PP_DISABLE_VC_WARNING(4709)
 
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
         _value[Index] *= _mult;
 
         FCPPT_PP_POP_WARNING

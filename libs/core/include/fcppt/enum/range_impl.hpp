@@ -18,21 +18,21 @@ constexpr fcppt::enum_::range<Enum>::range(
 }
 
 template <typename Enum>
-constexpr typename fcppt::enum_::range<Enum>::iterator
+constexpr fcppt::enum_::range<Enum>::iterator
 fcppt::enum_::range<Enum>::begin() const noexcept
 {
   return iterator(begin_);
 }
 
 template <typename Enum>
-constexpr typename fcppt::enum_::range<Enum>::iterator
+constexpr fcppt::enum_::range<Enum>::iterator
 fcppt::enum_::range<Enum>::end() const noexcept
 {
   return iterator(end_);
 }
 
 template <typename Enum>
-constexpr typename fcppt::enum_::range<Enum>::size_type
+constexpr fcppt::enum_::range<Enum>::size_type
 fcppt::enum_::range<Enum>::size() const noexcept
 {
   return end_ - begin_;

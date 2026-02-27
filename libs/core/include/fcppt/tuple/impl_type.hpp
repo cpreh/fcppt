@@ -15,7 +15,7 @@
 namespace fcppt::tuple
 {
 template <typename T, typename = std::enable_if_t<fcppt::tuple::is_object<T>::value>>
-using impl_type = typename T::impl_type;
+using impl_type = T::impl_type;
 }
 
 #endif

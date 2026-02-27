@@ -29,14 +29,14 @@ class object
 {
 public:
   using impl_type = std::array<T, Size>;
-  using value_type = typename impl_type::value_type;
-  using reference = typename impl_type::reference;
-  using const_reference = typename impl_type::const_reference;
-  using size_type = typename impl_type::size_type;
-  using iterator = typename impl_type::iterator;
-  using const_iterator = typename impl_type::const_iterator;
-  using pointer = typename impl_type::pointer;
-  using const_pointer = typename impl_type::const_pointer;
+  using value_type = impl_type::value_type;
+  using reference = impl_type::reference;
+  using const_reference = impl_type::const_reference;
+  using size_type = impl_type::size_type;
+  using iterator = impl_type::iterator;
+  using const_iterator = impl_type::const_iterator;
+  using pointer = impl_type::pointer;
+  using const_pointer = impl_type::const_pointer;
 
   template <typename... Args>
   constexpr explicit object(Args &&...) noexcept(

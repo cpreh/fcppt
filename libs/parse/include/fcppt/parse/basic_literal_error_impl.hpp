@@ -17,7 +17,7 @@ fcppt::parse::basic_literal_error<Ch>::basic_literal_error(
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_literal_error<Ch>::pos_type
+fcppt::parse::basic_literal_error<Ch>::pos_type
 fcppt::parse::basic_literal_error<Ch>::pos() const
 {
   return this->pos_;

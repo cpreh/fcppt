@@ -37,7 +37,7 @@ public:
   */
   using base = Base<Result(Args...)>;
 
-  using function = typename base::function;
+  using function = base::function;
 
   /**
   \brief Typedef to the combiner function
@@ -88,7 +88,7 @@ public:
   */
   using base = Base<void(Args...)>;
 
-  using function = typename base::function;
+  using function = base::function;
 
   /**
   \brief Construct an empty signal

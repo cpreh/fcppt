@@ -13,22 +13,22 @@
 
 template <typename Grid>
 fcppt::container::grid::pos_reference<Grid>::pos_reference(pos_type _pos, reference _value)
-    : pos_(std::move(_pos)), value_(_value)
+    : pos_{std::move(_pos)}, value_{_value}
 {
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_reference<Grid>::pos_type const &
+fcppt::container::grid::pos_reference<Grid>::pos_type const &
 fcppt::container::grid::pos_reference<Grid>::pos() const
 {
-  return pos_;
+  return this->pos_;
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_reference<Grid>::reference
+fcppt::container::grid::pos_reference<Grid>::reference
 fcppt::container::grid::pos_reference<Grid>::value() const
 {
-  return value_.get();
+  return this->value_.get();
 }
 
 #endif

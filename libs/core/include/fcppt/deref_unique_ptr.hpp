@@ -18,7 +18,7 @@ template <typename Arg>
 struct deref_impl<Arg, std::enable_if_t<fcppt::is_unique_ptr<std::remove_const_t<Arg>>::value>>
 {
   // \cond
-  static typename std::remove_const_t<Arg>::element_type &execute(Arg &_value) { return *_value; }
+  static std::remove_const_t<Arg>::element_type &execute(Arg &_value) { return *_value; }
   // \endcond
 };
 

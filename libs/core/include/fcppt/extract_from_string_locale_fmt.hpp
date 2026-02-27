@@ -45,7 +45,7 @@ fcppt::optional::object<Dest> extract_from_string_locale_fmt(
 {
   using source = std::remove_cvref_t<Source>;
 
-  using traits = typename source::traits_type;
+  using traits = source::traits_type;
 
   using istringstream = std::basic_istringstream<fcppt::type_traits::value_type<source>, traits>;
 

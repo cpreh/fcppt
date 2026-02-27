@@ -50,11 +50,11 @@ fcppt::type_traits::value_type<Grid> interpolate(
     Interpolator const &_interpolator)
   requires(N != 1U)
 {
-  using float_vector_size_type = typename FloatVector::size_type;
+  using float_vector_size_type = FloatVector::size_type;
 
-  using index_sequence_size_type = typename IndexSequence::size_type;
+  using index_sequence_size_type = IndexSequence::size_type;
 
-  constexpr std::size_t const next_n(N - fcppt::literal<std::size_t>(1));
+  constexpr std::size_t const next_n{N - fcppt::literal<std::size_t>(1)};
 
   return _interpolator(
       fcppt::math::vector::at<fcppt::cast::size<float_vector_size_type>(next_n)>(_pos),

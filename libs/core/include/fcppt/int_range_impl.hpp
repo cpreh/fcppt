@@ -17,22 +17,22 @@ constexpr fcppt::int_range<Int>::int_range(Int const _begin, Int const _end)
 }
 
 template <typename Int>
-constexpr typename fcppt::int_range<Int>::iterator fcppt::int_range<Int>::begin() const
+constexpr fcppt::int_range<Int>::iterator fcppt::int_range<Int>::begin() const
 {
-  return iterator(begin_);
+  return iterator{this->begin_};
 }
 
 template <typename Int>
-constexpr typename fcppt::int_range<Int>::iterator fcppt::int_range<Int>::end() const
+constexpr fcppt::int_range<Int>::iterator fcppt::int_range<Int>::end() const
 {
-  return iterator(end_);
+  return iterator{this->end_};
 }
 
 template <typename Int>
-constexpr typename fcppt::int_range<Int>::size_type fcppt::int_range<Int>::size() const
+constexpr fcppt::int_range<Int>::size_type fcppt::int_range<Int>::size() const
 {
   return static_cast<size_type>(
-      fcppt::type_iso::undecorate(end_) - fcppt::type_iso::undecorate(begin_));
+      fcppt::type_iso::undecorate(this->end_) - fcppt::type_iso::undecorate(this->begin_));
 }
 
 #endif

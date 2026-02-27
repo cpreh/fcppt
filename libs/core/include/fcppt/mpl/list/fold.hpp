@@ -28,7 +28,7 @@ struct fold<fcppt::mpl::list::object<>,fcppt::mpl::lambda<L>,V>
 template<typename E,typename... Es, template<typename...> class L, typename V>
 struct fold<fcppt::mpl::list::object<E,Es...>,fcppt::mpl::lambda<L>,V>
 {
-  using type = typename fcppt::mpl::list::detail::fold<
+  using type = fcppt::mpl::list::detail::fold<
       fcppt::mpl::list::object<Es...>,
       fcppt::mpl::lambda<L>,
       fcppt::mpl::apply<fcppt::mpl::lambda<L>, E, V>>::type;
@@ -55,7 +55,7 @@ V_n = V
 Notice that if <code>n=0</code> then V_0 = V.
 */
 template<fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept L, typename V>
-using fold = typename fcppt::mpl::list::detail::fold<List,L,V>::type;
+using fold = fcppt::mpl::list::detail::fold<List,L,V>::type;
 
 }
 

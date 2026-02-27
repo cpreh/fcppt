@@ -20,7 +20,7 @@ namespace fcppt::variant
 \ingroup fcpptvariant
 */
 template <fcppt::variant::object_concept Variant>
-using types_of = typename fcppt::variant::detail::types_of<std::remove_cvref_t<Variant>>::type;
+using types_of = fcppt::variant::detail::types_of<std::remove_cvref_t<Variant>>::type;
 
 }
 

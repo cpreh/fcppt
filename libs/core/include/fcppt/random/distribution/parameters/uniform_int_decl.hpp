@@ -45,9 +45,9 @@ public:
                     unsigned long long>, // NOLINT(google-runtime-int)
                 base_type>);
 
-  using distribution = typename Distribution::template apply<base_type>::type;
+  using distribution = Distribution::template apply<base_type>::type;
 
-  using wrapped_param_type = typename distribution::param_type;
+  using wrapped_param_type = distribution::param_type;
 
   FCPPT_DECLARE_STRONG_TYPEDEF(IntType, min);
 

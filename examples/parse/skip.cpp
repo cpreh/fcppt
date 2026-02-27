@@ -15,11 +15,14 @@
 #include <fcppt/tuple/get.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
 //![parse_uint]
   using uint_p = fcppt::parse::uint<unsigned>;
@@ -45,4 +48,11 @@ int main()
       on_failure,
       on_success);
 //![parse_skip]
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

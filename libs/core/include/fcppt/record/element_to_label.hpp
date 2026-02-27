@@ -18,7 +18,7 @@ namespace fcppt::record
 \tparam Element Must be an #fcppt::record::element.
 */
 template <typename Element>
-using element_to_label = typename fcppt::record::detail::element_to_label<Element>::type;
+using element_to_label = fcppt::record::detail::element_to_label<Element>::type;
 
 }
 

@@ -37,7 +37,7 @@ void fcppt::container::grid::pos_iterator<SizeType, Size>::increment()
 }
 
 template <typename SizeType, fcppt::container::grid::size_type Size>
-typename fcppt::container::grid::pos_iterator<SizeType, Size>::reference
+fcppt::container::grid::pos_iterator<SizeType, Size>::reference
 fcppt::container::grid::pos_iterator<SizeType, Size>::dereference() const
 {
   return current_;

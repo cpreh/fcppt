@@ -36,7 +36,7 @@ struct is_size_type<fcppt::mpl::size_type<I>>
 <code>fcppt::mpl::size_type<N></code> for some <code>std::size_t N</code>.
 */
 template<typename T>
-using is_size_type = typename fcppt::mpl::detail::is_size_type<T>::type;
+using is_size_type = fcppt::mpl::detail::is_size_type<T>::type;
 }
 
 #endif

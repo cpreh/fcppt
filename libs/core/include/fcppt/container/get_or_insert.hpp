@@ -24,7 +24,7 @@ object which is then inserted into \a _container and returned.
 \tparam Create A function of type <code>Container::mapped_type (Container::key_type)</code>.
 */
 template <typename Container, typename Create>
-inline typename Container::mapped_type &get_or_insert(
+inline Container::mapped_type &get_or_insert(
     Container &_container, typename Container::key_type const &_key, Create const &_create)
 {
   return fcppt::container::get_or_insert_with_result(_container, _key, _create).element();

@@ -49,7 +49,7 @@ public:
   /**
   \brief The element type, which is \a Type
   */
-  using element_type = typename impl_type::element_type;
+  using element_type = impl_type::element_type;
 
   /**
   \brief Same as element_type

@@ -32,9 +32,9 @@ public:
 
   using pos = fcppt::type_traits::value_type<iterator>;
 
-  using min_type = typename iterator::min;
+  using min_type = iterator::min;
 
-  using sup_type = typename iterator::sup;
+  using sup_type = iterator::sup;
 
   pos_range(min_type, sup_type);
 

@@ -17,9 +17,10 @@ fcppt::math::matrix::detail::row_view<T, C, S>::row_view(
 }
 
 template <typename T, fcppt::math::size_type C, typename S>
-typename fcppt::math::matrix::detail::row_view<T, C, S>::const_reference
+fcppt::math::matrix::detail::row_view<T, C, S>::const_reference
 fcppt::math::matrix::detail::row_view<T, C, S>::operator[](size_type const _index) const
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return impl_.get()[offset_ + _index];
 }
 

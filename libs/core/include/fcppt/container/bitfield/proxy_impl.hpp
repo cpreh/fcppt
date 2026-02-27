@@ -21,21 +21,21 @@ fcppt::container::bitfield::proxy<StoredType>::proxy(StoredType &_array, size_ty
 }
 
 template <typename StoredType>
-typename fcppt::container::bitfield::proxy<StoredType>::size_type
+fcppt::container::bitfield::proxy<StoredType>::size_type
 fcppt::container::bitfield::proxy<StoredType>::bit_offset(size_type const _pos)
 {
   return _pos % element_bits;
 }
 
 template <typename StoredType>
-typename fcppt::container::bitfield::proxy<StoredType>::size_type
+fcppt::container::bitfield::proxy<StoredType>::size_type
 fcppt::container::bitfield::proxy<StoredType>::array_offset(size_type const _pos)
 {
   return _pos / element_bits;
 }
 
 template <typename StoredType>
-typename fcppt::container::bitfield::proxy<StoredType>::mask_type
+fcppt::container::bitfield::proxy<StoredType>::mask_type
 fcppt::container::bitfield::proxy<StoredType>::bit_mask(size_type const _pos)
 {
   return fcppt::bit::shifted_mask<internal_type>(fcppt::cast::size<fcppt::bit::shift_count>(_pos));

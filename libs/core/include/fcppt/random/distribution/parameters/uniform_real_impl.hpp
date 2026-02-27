@@ -18,7 +18,7 @@ fcppt::random::distribution::parameters::uniform_real<FloatType>::uniform_real(
 }
 
 template <typename FloatType>
-typename fcppt::random::distribution::parameters::uniform_real<FloatType>::wrapped_param_type
+fcppt::random::distribution::parameters::uniform_real<FloatType>::wrapped_param_type
 fcppt::random::distribution::parameters::uniform_real<FloatType>::convert_from() const
 {
   return wrapped_param_type(

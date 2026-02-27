@@ -23,7 +23,7 @@ struct mpl_size_type
 template <typename Type>
 struct mpl_size_type<Type, std::enable_if_t<fcppt::mpl::list::is_object<Type>::value>>
 {
-  using type = typename fcppt::mpl::list::size<Type>::value_type;
+  using type = fcppt::mpl::list::size<Type>::value_type;
 };
 
 }

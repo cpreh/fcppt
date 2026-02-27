@@ -32,14 +32,14 @@ fcppt::parse::parse_string_error<Ch>::parse_string_error() : stream_error_{}, re
 }
 
 template <typename Ch>
-typename fcppt::parse::parse_string_error<Ch>::optional_stream_error const &
+fcppt::parse::parse_string_error<Ch>::optional_stream_error const &
 fcppt::parse::parse_string_error<Ch>::stream_error() const
 {
   return this->stream_error_;
 }
 
 template <typename Ch>
-typename fcppt::parse::parse_string_error<Ch>::optional_string const &
+fcppt::parse::parse_string_error<Ch>::optional_string const &
 fcppt::parse::parse_string_error<Ch>::rest() const
 {
   return this->rest_;

@@ -12,6 +12,8 @@
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -113,6 +115,7 @@ void set_ref2(optional_int_ref const _opt_ref)
 }
 
 int main()
+try
 {
   optional_example_bad(fcppt::optional::object<unsigned>(0));
 
@@ -127,4 +130,11 @@ int main()
   set_ref(optional_int{});
 
   set_ref2(optional_int_ref{});
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

@@ -28,7 +28,7 @@ where <code>V</code> is the calculated value.
 */
 template <typename Type, Type Dividend, Type Divisor>
 using ceil_div_static =
-    typename fcppt::math::detail::ceil_div_static<Type, Dividend, Divisor>::type;
+    fcppt::math::detail::ceil_div_static<Type, Dividend, Divisor>::type;
 
 }
 

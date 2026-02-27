@@ -40,12 +40,13 @@ list::object<std::integral_constant<Type,B>, std::integral_constant<Type,B+1>,..
 template <
     fcppt::type_traits::integral_constant_concept Begin,
     fcppt::type_traits::integral_constant_concept End>
-requires std::
-    is_same_v<fcppt::type_traits::value_type<Begin>, fcppt::type_traits::value_type<End>> &&
-    (Begin::value <= End::value)
-using interval = typename fcppt::mpl::list::detail::interval<
-        std::make_integer_sequence<fcppt::type_traits::value_type<Begin>, End::value - Begin::value>,
-        Begin>::type;
+  requires std::is_same_v<
+               fcppt::type_traits::value_type<Begin>,
+               fcppt::type_traits::value_type<End>> &&
+               (Begin::value <= End::value)
+using interval = fcppt::mpl::list::detail::interval<
+    std::make_integer_sequence<fcppt::type_traits::value_type<Begin>, End::value - Begin::value>,
+    Begin>::type;
 }
 
 #endif

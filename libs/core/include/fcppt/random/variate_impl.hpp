@@ -23,7 +23,7 @@ fcppt::random::variate<Generator, Distribution>::variate(
 }
 
 template <typename Generator, typename Distribution>
-typename fcppt::random::variate<Generator, Distribution>::result_type
+fcppt::random::variate<Generator, Distribution>::result_type
 fcppt::random::variate<Generator, Distribution>::operator()()
 {
   return distribution_(generator_.get());

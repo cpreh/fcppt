@@ -14,7 +14,7 @@ namespace fcppt::type_traits
 \ingroup fcppttypetraits
 */
 template <typename Container>
-using value_type = typename Container::value_type;
+using value_type = Container::value_type;
 
 }
 

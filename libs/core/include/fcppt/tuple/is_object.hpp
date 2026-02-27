@@ -15,7 +15,7 @@ namespace fcppt::tuple
 \ingroup fcppttuple
 */
 template <typename T>
-using is_object = typename fcppt::tuple::detail::is_object<T>::type;
+using is_object = fcppt::tuple::detail::is_object<T>::type;
 }
 
 #endif

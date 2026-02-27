@@ -29,7 +29,7 @@ enumerator in an enum in C++.
 \tparam Type Must be an enum type.
 */
 template <typename Type, typename = std::enable_if_t<fcppt::enum_::is_object<Type>::value>>
-using max_value = typename fcppt::enum_::max_value_impl<Type>::type;
+using max_value = fcppt::enum_::max_value_impl<Type>::type;
 
 }
 

@@ -35,7 +35,7 @@ struct is_lambda<fcppt::mpl::lambda<T>>
 <code>fcppt::mpl::lambda<F></code> for some type <code>F</code>.
 */
 template<typename T>
-using is_lambda = typename fcppt::mpl::detail::is_lambda<T>::type;
+using is_lambda = fcppt::mpl::detail::is_lambda<T>::type;
 }
 
 #endif

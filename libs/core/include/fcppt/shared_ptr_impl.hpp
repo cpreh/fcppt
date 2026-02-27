@@ -114,21 +114,21 @@ shared_ptr<Type, Deleter>::~shared_ptr() noexcept = default;
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::shared_ptr<Type, Deleter>::reference
+fcppt::shared_ptr<Type, Deleter>::reference
 fcppt::shared_ptr<Type, Deleter>::operator*() const
 {
   return *this->impl_;
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::shared_ptr<Type, Deleter>::pointer
+fcppt::shared_ptr<Type, Deleter>::pointer
 fcppt::shared_ptr<Type, Deleter>::operator->() const
 {
   return this->impl_.operator->();
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::shared_ptr<Type, Deleter>::pointer
+fcppt::shared_ptr<Type, Deleter>::pointer
 fcppt::shared_ptr<Type, Deleter>::get_pointer() const
 {
   return this->impl_.get();
@@ -141,7 +141,7 @@ bool fcppt::shared_ptr<Type, Deleter>::unique() const
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::shared_ptr<Type, Deleter>::count_type
+fcppt::shared_ptr<Type, Deleter>::count_type
 fcppt::shared_ptr<Type, Deleter>::use_count() const
 {
   return this->impl_.use_count();
@@ -154,7 +154,7 @@ void fcppt::shared_ptr<Type, Deleter>::swap(fcppt::shared_ptr<Type, Deleter> &_o
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::shared_ptr<Type, Deleter>::impl_type
+fcppt::shared_ptr<Type, Deleter>::impl_type
 fcppt::shared_ptr<Type, Deleter>::std_ptr() const
 {
   return this->impl_;

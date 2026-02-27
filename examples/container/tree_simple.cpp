@@ -7,12 +7,15 @@
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   //! [main]
   using string_tree = fcppt::container::tree::object<std::string>;
@@ -62,4 +65,11 @@ int main()
                   << '\n';
       });
   //! [main]
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what();
+  return EXIT_FAILURE;
 }

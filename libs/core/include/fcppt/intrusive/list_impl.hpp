@@ -53,25 +53,25 @@ list<Type>::~list() = default;
 }
 
 template <typename Type>
-typename fcppt::intrusive::list<Type>::iterator fcppt::intrusive::list<Type>::begin()
+fcppt::intrusive::list<Type>::iterator fcppt::intrusive::list<Type>::begin()
 {
   return iterator{this->head_.next_};
 }
 
 template <typename Type>
-typename fcppt::intrusive::list<Type>::iterator fcppt::intrusive::list<Type>::end()
+fcppt::intrusive::list<Type>::iterator fcppt::intrusive::list<Type>::end()
 {
   return iterator{&this->head_};
 }
 
 template <typename Type>
-typename fcppt::intrusive::list<Type>::const_iterator fcppt::intrusive::list<Type>::begin() const
+fcppt::intrusive::list<Type>::const_iterator fcppt::intrusive::list<Type>::begin() const
 {
   return const_iterator{this->head_.next_};
 }
 
 template <typename Type>
-typename fcppt::intrusive::list<Type>::const_iterator fcppt::intrusive::list<Type>::end() const
+fcppt::intrusive::list<Type>::const_iterator fcppt::intrusive::list<Type>::end() const
 {
   return const_iterator{&this->head_};
 }

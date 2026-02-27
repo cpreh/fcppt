@@ -18,7 +18,7 @@ namespace fcppt::container::grid
 \tparam Grid Must be an #fcppt::container::grid::object.
 */
 template <typename Grid>
-using dim_type = typename fcppt::container::grid::detail::dim_type<Grid>::type;
+using dim_type = fcppt::container::grid::detail::dim_type<Grid>::type;
 
 }
 

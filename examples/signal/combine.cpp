@@ -7,6 +7,8 @@
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,6 +25,7 @@ int combiner(int const a, int const b) { return a * b; }
 }
 
 int main()
+try
 {
   using function = int();
 
@@ -41,5 +44,12 @@ int main()
 
   // Outputs ((1*4)*8)*15=480
   std::cout << signal(int_signal::initial_value{1}) << '\n';
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }
 //! [signal_combine]

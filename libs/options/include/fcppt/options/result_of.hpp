@@ -16,7 +16,7 @@ namespace fcppt::options
 \ingroup fcpptoptions
 */
 template <typename Parser>
-using result_of = typename fcppt::options::deref_type<Parser>::result_type;
+using result_of = fcppt::options::deref_type<Parser>::result_type;
 
 }
 

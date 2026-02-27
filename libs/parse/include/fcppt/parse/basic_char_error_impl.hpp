@@ -14,7 +14,7 @@ fcppt::parse::basic_char_error<Ch>::basic_char_error(pos_type const _pos) : pos_
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_char_error<Ch>::pos_type
+fcppt::parse::basic_char_error<Ch>::pos_type
 fcppt::parse::basic_char_error<Ch>::pos() const
 {
   return this->pos_;

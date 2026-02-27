@@ -49,7 +49,7 @@ public:
       fcppt::options::long_name &&long_name,
       fcppt::options::optional_help_text &&help_text);
 
-  using result_type = typename impl::result_type;
+  using result_type = impl::result_type;
 
   [[nodiscard]] fcppt::options::parse_result<result_type>
   parse(fcppt::options::state &&, fcppt::options::parse_context const &) const;

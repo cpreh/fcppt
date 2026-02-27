@@ -65,19 +65,19 @@ class base
 public:
   static_assert(fcppt::iterator::is_types<Types>::value, "Types must be fcppt::iterator::types");
 
-  using derived = typename Types::derived;
+  using derived = Types::derived;
 
   static_assert(fcppt::not_(std::is_const_v<derived>), "Derived can not be const");
 
-  using value_type = typename Types::value_type;
+  using value_type = Types::value_type;
 
-  using reference = typename Types::reference;
+  using reference = Types::reference;
 
-  using difference_type = typename Types::difference_type;
+  using difference_type = Types::difference_type;
 
   using pointer = std::add_pointer_t<reference>;
 
-  using iterator_category = typename Types::iterator_category;
+  using iterator_category = Types::iterator_category;
 
 private:
   template <typename Category>
@@ -144,7 +144,7 @@ void swap(fcppt::iterator::base<Types> &, fcppt::iterator::base<Types> &) noexce
 
 // Random access iterator
 template <typename Types>
-typename fcppt::iterator::base<Types>::derived operator+(
+fcppt::iterator::base<Types>::derived operator+(
     typename fcppt::iterator::base<Types>::difference_type, fcppt::iterator::base<Types> const &);
 
 template <typename Types>

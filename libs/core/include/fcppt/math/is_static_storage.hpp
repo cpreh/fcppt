@@ -11,7 +11,7 @@
 namespace fcppt::math
 {
 template <typename T>
-using is_static_storage = typename fcppt::math::detail::is_static_storage<T>::type;
+using is_static_storage = fcppt::math::detail::is_static_storage<T>::type;
 }
 
 #endif

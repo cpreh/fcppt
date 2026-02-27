@@ -35,7 +35,7 @@ void fcppt::intrusive::iterator<Type>::decrement()
 }
 
 template <typename Type>
-typename fcppt::intrusive::iterator<Type>::reference
+fcppt::intrusive::iterator<Type>::reference
 fcppt::intrusive::iterator<Type>::dereference() const
 {
   return fcppt::cast::static_downcast<reference>(*cur_);

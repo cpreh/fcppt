@@ -101,53 +101,53 @@ fcppt::math::dim::object<T, N, S>::operator*=(value_type const &_value)
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::reference
+fcppt::math::dim::object<T, N, S>::reference
 fcppt::math::dim::object<T, N, S>::get_unsafe(size_type const _index)
 {
   return fcppt::math::detail::index_at(storage_, _index);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::const_reference
+fcppt::math::dim::object<T, N, S>::const_reference
 fcppt::math::dim::object<T, N, S>::get_unsafe(size_type const _index) const
 {
   return fcppt::math::detail::index_at(storage_, _index);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::reference fcppt::math::dim::object<T, N, S>::w()
+fcppt::math::dim::object<T, N, S>::reference fcppt::math::dim::object<T, N, S>::w()
 {
   return fcppt::math::detail::checked_access<0>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::const_reference
+fcppt::math::dim::object<T, N, S>::const_reference
 fcppt::math::dim::object<T, N, S>::w() const
 {
   return fcppt::math::detail::checked_access<0>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::reference fcppt::math::dim::object<T, N, S>::h()
+fcppt::math::dim::object<T, N, S>::reference fcppt::math::dim::object<T, N, S>::h()
 {
   return fcppt::math::detail::checked_access<1>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::const_reference
+fcppt::math::dim::object<T, N, S>::const_reference
 fcppt::math::dim::object<T, N, S>::h() const
 {
   return fcppt::math::detail::checked_access<1>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::reference fcppt::math::dim::object<T, N, S>::d()
+fcppt::math::dim::object<T, N, S>::reference fcppt::math::dim::object<T, N, S>::d()
 {
   return fcppt::math::detail::checked_access<2>(*this);
 }
 
 template <typename T, fcppt::math::size_type N, typename S>
-typename fcppt::math::dim::object<T, N, S>::const_reference
+fcppt::math::dim::object<T, N, S>::const_reference
 fcppt::math::dim::object<T, N, S>::d() const
 {
   return fcppt::math::detail::checked_access<2>(*this);

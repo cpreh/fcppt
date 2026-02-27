@@ -38,7 +38,7 @@ fcppt::container::bitfield::object<ElementType, InternalType>::object(
 }
 
 template <typename ElementType, typename InternalType>
-typename fcppt::container::bitfield::object<ElementType, InternalType>::const_reference
+fcppt::container::bitfield::object<ElementType, InternalType>::const_reference
 fcppt::container::bitfield::object<ElementType, InternalType>::operator[](
     ElementType const _index) const
 {
@@ -46,7 +46,7 @@ fcppt::container::bitfield::object<ElementType, InternalType>::operator[](
 }
 
 template <typename ElementType, typename InternalType>
-typename fcppt::container::bitfield::object<ElementType, InternalType>::reference
+fcppt::container::bitfield::object<ElementType, InternalType>::reference
 fcppt::container::bitfield::object<ElementType, InternalType>::operator[](
     ElementType const _index)
 {
@@ -57,6 +57,7 @@ template <typename ElementType, typename InternalType>
 void fcppt::container::bitfield::object<ElementType, InternalType>::set(
     ElementType const _index, value_type const _value)
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   (*this)[_index] = _value;
 }
 
@@ -65,20 +66,20 @@ fcppt::container::bitfield::value_type
 fcppt::container::bitfield::object<ElementType, InternalType>::get(
     ElementType const _index) const
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return (*this)[_index];
 }
 
 template <typename ElementType, typename InternalType>
-typename fcppt::container::bitfield::object<ElementType, InternalType>::array_type &
+fcppt::container::bitfield::object<ElementType, InternalType>::array_type &
 fcppt::container::bitfield::object<ElementType, InternalType>::array()
 {
   return array_;
 }
 
 template <typename ElementType, typename InternalType>
-typename fcppt::container::bitfield::object<ElementType, InternalType>::
-    array_type const &
-    fcppt::container::bitfield::object<ElementType, InternalType>::array() const
+fcppt::container::bitfield::object<ElementType, InternalType>::array_type const &
+fcppt::container::bitfield::object<ElementType, InternalType>::array() const
 {
   return array_;
 }
@@ -87,13 +88,12 @@ template <typename ElementType, typename InternalType>
 fcppt::container::bitfield::object<ElementType, InternalType>
 fcppt::container::bitfield::object<ElementType, InternalType>::null()
 {
-  return object(fcppt::container::bitfield::detail::null_array<array_type>());
+  return object{fcppt::container::bitfield::detail::null_array<array_type>()};
 }
 
 template <typename ElementType, typename InternalType>
-typename fcppt::container::bitfield::object<ElementType, InternalType>::size_type
-fcppt::container::bitfield::object<ElementType, InternalType>::to_index(
-    ElementType const _index)
+fcppt::container::bitfield::object<ElementType, InternalType>::size_type
+fcppt::container::bitfield::object<ElementType, InternalType>::to_index(ElementType const _index)
 {
   return static_cast<size_type>(_index);
 }

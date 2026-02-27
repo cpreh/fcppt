@@ -55,6 +55,7 @@ void fcppt::log::object::log(
 
 fcppt::log::level_stream const &fcppt::log::object::level_sink(fcppt::log::level const _level) const
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return *this->level_streams()[_level];
 }
 

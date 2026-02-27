@@ -16,6 +16,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4702)
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <stdexcept>
 #include <utility>
@@ -148,6 +149,7 @@ void cast()
 }
 
 int main()
+try
 {
   shared_ptr_example();
 
@@ -158,6 +160,13 @@ int main()
   right();
 
   cast();
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }
 
 FCPPT_PP_POP_WARNING

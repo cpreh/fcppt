@@ -40,7 +40,7 @@ public:
   /**
   \brief The result returned by drawing random numbers
   */
-  using result_type = typename distribution::result_type;
+  using result_type = distribution::result_type;
 
   using generator_reference = fcppt::reference<generator>;
 
@@ -55,7 +55,7 @@ public:
   */
   variate(generator_reference generator, Distribution const &distribution);
 
-  using param_type = typename Distribution::param_type;
+  using param_type = Distribution::param_type;
 
   /**
   \brief Constructs a variate object

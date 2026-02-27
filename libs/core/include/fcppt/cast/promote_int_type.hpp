@@ -18,7 +18,7 @@ namespace fcppt::cast
 \tparam Type Must be an integral type.
 */
 template <typename Type>
-using promote_int_type = typename fcppt::cast::detail::promote_int_type<Type>::type;
+using promote_int_type = fcppt::cast::detail::promote_int_type<Type>::type;
 
 }
 

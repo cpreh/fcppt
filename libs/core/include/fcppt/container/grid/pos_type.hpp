@@ -18,7 +18,7 @@ namespace fcppt::container::grid
 \tparam Grid Must be an #fcppt::container::grid::object.
 */
 template <typename Grid>
-using pos_type = typename fcppt::container::grid::detail::pos_type<Grid>::type;
+using pos_type = fcppt::container::grid::detail::pos_type<Grid>::type;
 
 }
 

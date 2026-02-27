@@ -44,7 +44,7 @@ fcppt::weak_ptr<Type, Deleter>::lock() const
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::weak_ptr<Type, Deleter>::count_type
+fcppt::weak_ptr<Type, Deleter>::count_type
 fcppt::weak_ptr<Type, Deleter>::use_count() const noexcept
 {
   return this->impl_.use_count();
@@ -63,7 +63,7 @@ void fcppt::weak_ptr<Type, Deleter>::swap(weak_ptr &_other) noexcept
 }
 
 template <typename Type, typename Deleter>
-typename fcppt::weak_ptr<Type, Deleter>::impl_type fcppt::weak_ptr<Type, Deleter>::std_ptr() const
+fcppt::weak_ptr<Type, Deleter>::impl_type fcppt::weak_ptr<Type, Deleter>::std_ptr() const
 {
   return this->impl_;
 }

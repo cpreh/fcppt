@@ -33,7 +33,7 @@ list::object<E_1,...,E_n>
 \endcode
 */
 template<fcppt::mpl::set::object_concept Set>
-using to_list = typename fcppt::mpl::set::detail::to_list<Set>::type;
+using to_list = fcppt::mpl::set::detail::to_list<Set>::type;
 }
 
 #endif

@@ -24,14 +24,14 @@ constexpr fcppt::tuple::object<Types...>::object(Args &&..._args) noexcept(
 }
 
 template <typename... Types>
-constexpr typename fcppt::tuple::object<Types...>::impl_type &
+constexpr fcppt::tuple::object<Types...>::impl_type &
 fcppt::tuple::object<Types...>::impl() noexcept
 {
   return this->impl_;
 }
 
 template <typename... Types>
-constexpr typename fcppt::tuple::object<Types...>::impl_type const &
+constexpr fcppt::tuple::object<Types...>::impl_type const &
 fcppt::tuple::object<Types...>::impl() const noexcept
 {
   return this->impl_;

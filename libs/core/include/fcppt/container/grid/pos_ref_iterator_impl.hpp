@@ -44,7 +44,7 @@ void fcppt::container::grid::pos_ref_iterator<Grid>::increment()
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_iterator<Grid>::reference
+fcppt::container::grid::pos_ref_iterator<Grid>::reference
 fcppt::container::grid::pos_ref_iterator<Grid>::dereference() const
 {
   pos const current(*pos_iterator_);

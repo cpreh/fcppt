@@ -14,7 +14,7 @@ namespace fcppt::type_traits
 \ingroup fcppttypetraits
 */
 template <typename Container>
-using size_type = typename Container::size_type;
+using size_type = Container::size_type;
 
 }
 

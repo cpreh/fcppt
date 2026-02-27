@@ -28,7 +28,7 @@ fcppt::make_literal to do any conversions if necessary.
 \tparam Arg An arithmetic type.
 */
 template <typename Type, typename Arg>
-constexpr typename fcppt::make_literal<Type>::decorated_type literal(Arg const &&_integral) noexcept
+constexpr fcppt::make_literal<Type>::decorated_type literal(Arg const &&_integral) noexcept
 {
   static_assert(fcppt::type_traits::is_value<Type>::value, "Type must be a value type");
 

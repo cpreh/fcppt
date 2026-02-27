@@ -35,7 +35,7 @@ This only works if <code>E</code> is not equal to any of the <code>E_1,...,E_n</
 */
 template<fcppt::mpl::set::object_concept Set, typename E>
 requires (!fcppt::mpl::set::contains<Set,E>::value)
-using insert = typename fcppt::mpl::set::detail::insert<Set,E>::type;
+using insert = fcppt::mpl::set::detail::insert<Set,E>::type;
 }
 
 #endif

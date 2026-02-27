@@ -38,7 +38,7 @@ fcppt::optional::object<fcppt::container::buffer::object<T, A>> append_from_opt(
 
   return fcppt::optional::map(
       _function(_buffer.write_data(), _size),
-      [&_buffer](typename fcppt::container::buffer::object<T, A>::size_type const _new_size) {
+      [&_buffer](fcppt::container::buffer::object<T, A>::size_type const _new_size) {
         _buffer.written(_new_size);
 
         return std::move(_buffer);

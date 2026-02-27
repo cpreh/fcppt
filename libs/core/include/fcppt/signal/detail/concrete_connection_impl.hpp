@@ -28,7 +28,7 @@ concrete_connection<Function>::~concrete_connection() = default;
 }
 
 template <typename Function>
-typename fcppt::signal::detail::concrete_connection<Function>::function_type const &
+fcppt::signal::detail::concrete_connection<Function>::function_type const &
 fcppt::signal::detail::concrete_connection<Function>::function() const
 {
   return function_;

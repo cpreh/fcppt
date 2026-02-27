@@ -23,9 +23,9 @@ void f()
   // ![decorate_simple]
   FCPPT_DECLARE_STRONG_TYPEDEF(int, strong_int);
 
-  auto const var(fcppt::type_iso::decorate<strong_int>(42));
+  auto const var{fcppt::type_iso::decorate<strong_int>(42)};
 
-  int const result(fcppt::type_iso::undecorate(var));
+  int const result{fcppt::type_iso::undecorate(var)};
 
   std::cout << result << '\n';
   // ![decorate_simple]
@@ -34,6 +34,8 @@ void f()
 }
 
 //![decorate_custom]
+namespace
+{
 namespace mine
 {
 class custom_int
@@ -53,6 +55,7 @@ private:
 };
 
 }
+}
 
 namespace fcppt::type_iso
 {
@@ -71,4 +74,11 @@ struct transform<mine::custom_int>
 }
 //![decorate_custom]
 
-int main() { f(); }
+int main()
+{
+  f();
+
+  auto const var{fcppt::type_iso::decorate<mine::custom_int>(42)};
+  int const result{fcppt::type_iso::undecorate(var)};
+  std::cout << result << '\n';
+}

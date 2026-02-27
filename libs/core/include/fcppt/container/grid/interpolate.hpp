@@ -73,7 +73,7 @@ T interpolate(
   using binary_vector_array_type =
       fcppt::array::object<integer_vector_type, fcppt::math::power_of_2<std::size_t>(N)>;
 
-  using binary_vector_array_type_size_type = typename binary_vector_array_type::size_type;
+  using binary_vector_array_type_size_type = binary_vector_array_type::size_type;
 
   using vector_value_type = F;
 

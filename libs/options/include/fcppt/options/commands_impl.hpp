@@ -108,7 +108,7 @@ fcppt::options::commands<OptionsParser, SubCommands...>::parse(
                                   .option_names()}),
                   [&_options_result](
                       fcppt::options::state_with_value<fcppt::options::result_of<
-                          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
+                          // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved,readability-redundant-typename)
                           typename sub_command_type::parser_type>> &&_parser_result) {
                     return fcppt::options::state_with_value<result_type>{
                         std::move(_parser_result.state()),

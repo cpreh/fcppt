@@ -20,14 +20,14 @@ fcppt::parse::alternative_error<Ch>::alternative_error(
 }
 
 template <typename Ch>
-typename fcppt::parse::alternative_error<Ch>::error_base const &
+fcppt::parse::alternative_error<Ch>::error_base const &
 fcppt::parse::alternative_error<Ch>::left() const
 {
   return this->left_;
 }
 
 template <typename Ch>
-typename fcppt::parse::alternative_error<Ch>::error_base const &
+fcppt::parse::alternative_error<Ch>::error_base const &
 fcppt::parse::alternative_error<Ch>::right() const
 {
   return this->right_;

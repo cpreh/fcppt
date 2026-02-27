@@ -32,7 +32,7 @@ then the result is
 <code>fcppt::mpl::size_type<n></code>.
 */
 template<fcppt::mpl::list::object_concept List>
-using size = typename fcppt::mpl::list::detail::size<List>::type;
+using size = fcppt::mpl::list::detail::size<List>::type;
 
 }
 

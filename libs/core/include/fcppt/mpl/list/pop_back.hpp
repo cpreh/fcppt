@@ -27,7 +27,7 @@ struct pop_back<List,fcppt::mpl::list::object<Rest>>
 template<typename List, typename R, typename... Rest>
 struct pop_back<List, fcppt::mpl::list::object<R, Rest...>>
 {
-  using type = typename fcppt::mpl::list::detail::
+  using type = fcppt::mpl::list::detail::
       pop_back<fcppt::mpl::list::push_back<List, R>, fcppt::mpl::list::object<Rest...>>::type;
 };
 
@@ -43,7 +43,7 @@ list::object<L_1,...,L_{n-1}>
 */
 template<fcppt::mpl::list::object_concept List>
 requires (!fcppt::mpl::list::empty<List>::value)
-using pop_back = typename fcppt::mpl::list::detail::pop_back<fcppt::mpl::list::object<>,List>::type;
+using pop_back = fcppt::mpl::list::detail::pop_back<fcppt::mpl::list::object<>,List>::type;
 
 }
 

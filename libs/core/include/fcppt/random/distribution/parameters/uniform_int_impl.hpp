@@ -21,7 +21,7 @@ fcppt::random::distribution::parameters::uniform_int<IntType, Distribution>::uni
 }
 
 template <typename IntType, typename Distribution>
-typename fcppt::random::distribution::parameters::uniform_int<
+fcppt::random::distribution::parameters::uniform_int<
     IntType,
     Distribution>::wrapped_param_type
 fcppt::random::distribution::parameters::uniform_int<IntType, Distribution>::convert_from() const

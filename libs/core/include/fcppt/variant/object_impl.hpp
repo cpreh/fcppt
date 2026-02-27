@@ -52,13 +52,13 @@ bool fcppt::variant::object<Types...>::is_invalid() const
 }
 
 template <typename... Types>
-typename fcppt::variant::object<Types...>::std_type &fcppt::variant::object<Types...>::impl()
+fcppt::variant::object<Types...>::std_type &fcppt::variant::object<Types...>::impl()
 {
   return this->impl_;
 }
 
 template <typename... Types>
-typename fcppt::variant::object<Types...>::std_type const &
+fcppt::variant::object<Types...>::std_type const &
 fcppt::variant::object<Types...>::impl() const
 {
   return this->impl_;

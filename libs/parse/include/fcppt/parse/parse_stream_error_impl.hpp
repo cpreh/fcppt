@@ -26,7 +26,7 @@ fcppt::parse::parse_stream_error<Ch>::parse_stream_error(fcppt::parse::stream_er
 }
 
 template <typename Ch>
-typename fcppt::parse::parse_stream_error<Ch>::variant const &
+fcppt::parse::parse_stream_error<Ch>::variant const &
 fcppt::parse::parse_stream_error<Ch>::get() const
 {
   return this->variant_;

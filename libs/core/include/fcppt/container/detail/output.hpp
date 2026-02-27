@@ -37,7 +37,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
 {
   _stream << _stream.widen('[');
 
-  using const_iterator = typename Container::const_iterator;
+  using const_iterator = Container::const_iterator;
 
   // NOLINTNEXTLINE(llvm-qualified-auto,readability-qualified-auto)
   auto const end(_output.container().end());

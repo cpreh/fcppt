@@ -35,7 +35,7 @@ list::object<F<L_1>,...,F<L_n>>
 \endcode
 */
 template <fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept F>
-using map = typename fcppt::mpl::list::detail::map<List,F>::type;
+using map = fcppt::mpl::list::detail::map<List,F>::type;
 }
 
 #endif

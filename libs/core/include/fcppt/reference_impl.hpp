@@ -14,13 +14,13 @@ inline fcppt::reference<Type>::reference(type &_ref) noexcept : impl_(&_ref)
 }
 
 template <typename Type>
-inline typename fcppt::reference<Type>::type &fcppt::reference<Type>::get() const noexcept
+inline fcppt::reference<Type>::type &fcppt::reference<Type>::get() const noexcept
 {
   return *this->impl_;
 }
 
 template <typename Type>
-inline typename fcppt::reference<Type>::type *fcppt::reference<Type>::operator->() const noexcept
+inline fcppt::reference<Type>::type *fcppt::reference<Type>::operator->() const noexcept
 {
   return this->impl_;
 }

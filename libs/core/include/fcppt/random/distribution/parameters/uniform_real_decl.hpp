@@ -35,7 +35,7 @@ public:
 
   using distribution = std::uniform_real_distribution<base_type>;
 
-  using wrapped_param_type = typename distribution::param_type;
+  using wrapped_param_type = distribution::param_type;
 
   FCPPT_DECLARE_STRONG_TYPEDEF(FloatType, min);
 

@@ -52,7 +52,7 @@ struct make_internal_type_impl
 
 template <typename Enum>
 using make_internal_type =
-    typename fcppt::container::bitfield::detail::make_internal_type_impl<Enum>::type;
+    fcppt::container::bitfield::detail::make_internal_type_impl<Enum>::type;
 }
 
 #endif

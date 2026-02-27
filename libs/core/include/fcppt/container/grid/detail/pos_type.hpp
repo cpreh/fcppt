@@ -15,7 +15,7 @@ struct pos_type
 {
   static_assert(fcppt::container::grid::is_object<Grid>::value, "Grid must be a grid");
 
-  using type = typename Grid::pos;
+  using type = Grid::pos;
 };
 
 }

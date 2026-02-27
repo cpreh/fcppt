@@ -50,7 +50,7 @@ Then <code>fcppt::mpl::bind<L,L_1,...,L_k></code> holds a function <code>F</code
 such that <code>F<T_1,...,T_m> = G<G_1<T_1,...,T_m>,...,G_k<T_1,...,T_m>></code>.
 */
 template<fcppt::mpl::lambda_concept L, fcppt::mpl::lambda_concept ... Ls>
-using bind = typename fcppt::mpl::detail::bind<L,Ls...>::type;
+using bind = fcppt::mpl::detail::bind<L,Ls...>::type;
 }
 
 #endif

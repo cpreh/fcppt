@@ -38,7 +38,7 @@ If <code>List = list::object<L_1,...,L_n></code>
 and <code>Index = fcppt::mpl::size_type<j></code> with <code>0 <= j < n</code> then the result is <code>L_{j-1}</code>.
 */
 template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept Index>
-using at = typename fcppt::mpl::list::detail::at<List,Index>::type;
+using at = fcppt::mpl::list::detail::at<List,Index>::type;
 
 }
 

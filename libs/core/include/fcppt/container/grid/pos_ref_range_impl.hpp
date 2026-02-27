@@ -13,47 +13,47 @@
 template <typename Grid>
 fcppt::container::grid::pos_ref_range<Grid>::pos_ref_range(
     Grid &_grid, min_type const _min, sup_type const _sup)
-    : grid_(_grid), pos_range_(_min, _sup)
+    : grid_{_grid}, pos_range_{_min, _sup}
 {
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_range<Grid>::iterator
+fcppt::container::grid::pos_ref_range<Grid>::iterator
 fcppt::container::grid::pos_ref_range<Grid>::begin() const
 {
   return this->make_iterator(pos_range_.begin());
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_range<Grid>::iterator
+fcppt::container::grid::pos_ref_range<Grid>::iterator
 fcppt::container::grid::pos_ref_range<Grid>::end() const
 {
   return this->make_iterator(pos_range_.end());
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_range<Grid>::size_type
+fcppt::container::grid::pos_ref_range<Grid>::size_type
 fcppt::container::grid::pos_ref_range<Grid>::size() const
 {
   return pos_range_.size();
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_range<Grid>::min_type const &
+fcppt::container::grid::pos_ref_range<Grid>::min_type const &
 fcppt::container::grid::pos_ref_range<Grid>::min() const
 {
   return pos_range_.min();
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_range<Grid>::sup_type const &
+fcppt::container::grid::pos_ref_range<Grid>::sup_type const &
 fcppt::container::grid::pos_ref_range<Grid>::sup() const
 {
   return pos_range_.sup();
 }
 
 template <typename Grid>
-typename fcppt::container::grid::pos_ref_range<Grid>::iterator
+fcppt::container::grid::pos_ref_range<Grid>::iterator
 fcppt::container::grid::pos_ref_range<Grid>::make_iterator(pos_iterator const _pos_iterator) const
 {
   return iterator(grid_.get().begin(), _pos_iterator, grid_.get().size());

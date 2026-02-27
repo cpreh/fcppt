@@ -9,12 +9,15 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <fstream>
 #include <ios>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   //! [buffer]
   using buffer_type = fcppt::container::buffer::object<int>;
@@ -45,4 +48,10 @@ int main()
 
   std::cout << '\n';
   //! [buffer]
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

@@ -20,20 +20,20 @@ fcppt::parse::typed_error<Ch>::typed_error(
 }
 
 template <typename Ch>
-typename fcppt::parse::typed_error<Ch>::pos_type fcppt::parse::typed_error<Ch>::pos() const
+fcppt::parse::typed_error<Ch>::pos_type fcppt::parse::typed_error<Ch>::pos() const
 {
   return this->pos_;
 }
 
 template <typename Ch>
-typename fcppt::parse::typed_error<Ch>::string_type const &
+fcppt::parse::typed_error<Ch>::string_type const &
 fcppt::parse::typed_error<Ch>::type_name() const
 {
   return this->type_name_;
 }
 
 template <typename Ch>
-typename fcppt::parse::typed_error<Ch>::string_type const &
+fcppt::parse::typed_error<Ch>::string_type const &
 fcppt::parse::typed_error<Ch>::got() const
 {
   return this->got_;

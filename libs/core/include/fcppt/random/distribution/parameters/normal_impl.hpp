@@ -18,7 +18,7 @@ fcppt::random::distribution::parameters::normal<FloatType>::normal(
 }
 
 template <typename FloatType>
-typename fcppt::random::distribution::parameters::normal<FloatType>::wrapped_param_type
+fcppt::random::distribution::parameters::normal<FloatType>::wrapped_param_type
 fcppt::random::distribution::parameters::normal<FloatType>::convert_from() const
 {
   return wrapped_param_type(

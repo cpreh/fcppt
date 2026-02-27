@@ -33,7 +33,7 @@ list::object<T,L_1,...,L_n>
 \endcode
 */
 template<fcppt::mpl::list::object_concept List, typename T>
-using push_front = typename fcppt::mpl::list::detail::push_front<List,T>::type;
+using push_front = fcppt::mpl::list::detail::push_front<List,T>::type;
 }
 
 #endif

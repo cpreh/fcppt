@@ -25,7 +25,7 @@ template <typename Ch>
 class position
 {
 public:
-  using pos_type = typename std::basic_istream<Ch>::pos_type;
+  using pos_type = std::basic_istream<Ch>::pos_type;
 
   using optional_location = fcppt::optional::object<fcppt::parse::location>;
 

@@ -39,11 +39,11 @@ public:
 
   using allocator_type = A;
 
-  using size_type = typename std::allocator_traits<A>::size_type;
+  using size_type = std::allocator_traits<A>::size_type;
 
-  using pointer = typename std::allocator_traits<A>::pointer;
+  using pointer = std::allocator_traits<A>::pointer;
 
-  using const_pointer = typename std::allocator_traits<A>::const_pointer;
+  using const_pointer = std::allocator_traits<A>::const_pointer;
 
   using const_reference = T const &;
 

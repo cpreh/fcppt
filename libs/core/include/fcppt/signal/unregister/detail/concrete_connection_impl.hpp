@@ -45,7 +45,7 @@ concrete_connection<Function>::~concrete_connection()
 }
 
 template <typename Function>
-typename fcppt::signal::unregister::detail::concrete_connection<Function>::function_type const &
+fcppt::signal::unregister::detail::concrete_connection<Function>::function_type const &
 fcppt::signal::unregister::detail::concrete_connection<Function>::function() const
 {
   return function_;

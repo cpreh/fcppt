@@ -20,7 +20,7 @@ namespace fcppt::tuple
 \ingroup fcppttuple
 */
 template<typename T, typename = std::enable_if_t<fcppt::tuple::is_object<T>::value>>
-using types_of = typename fcppt::tuple::detail::types_of<T>::type;
+using types_of = fcppt::tuple::detail::types_of<T>::type;
 }
 
 #endif

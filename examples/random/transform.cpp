@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+namespace
+{
 // ![random_transform_my_type]
 namespace mine
 {
@@ -20,6 +22,7 @@ private:
 
 }
 // ![random_transform_my_type]
+}
 
 //![random_transform_specialization]
 #include <fcppt/type_iso/transform.hpp>

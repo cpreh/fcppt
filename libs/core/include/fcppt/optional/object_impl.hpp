@@ -45,13 +45,13 @@ bool fcppt::optional::object<T>::has_value() const
 }
 
 template <typename T>
-typename fcppt::optional::object<T>::std_type &fcppt::optional::object<T>::impl()
+fcppt::optional::object<T>::std_type &fcppt::optional::object<T>::impl()
 {
   return this->impl_;
 }
 
 template <typename T>
-typename fcppt::optional::object<T>::std_type const &fcppt::optional::object<T>::impl() const
+fcppt::optional::object<T>::std_type const &fcppt::optional::object<T>::impl() const
 {
   return this->impl_;
 }

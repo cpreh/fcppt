@@ -20,14 +20,14 @@ fcppt::parse::complement_error<Ch>::complement_error(
 }
 
 template <typename Ch>
-typename fcppt::parse::complement_error<Ch>::pos_type
+fcppt::parse::complement_error<Ch>::pos_type
 fcppt::parse::complement_error<Ch>::pos() const
 {
   return this->pos_;
 }
 
 template <typename Ch>
-typename fcppt::parse::complement_error<Ch>::char_set_type const &
+fcppt::parse::complement_error<Ch>::char_set_type const &
 fcppt::parse::complement_error<Ch>::chars() const
 {
   return this->chars_;

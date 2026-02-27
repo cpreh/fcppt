@@ -14,7 +14,7 @@ fcppt::parse::fail_error<Ch>::fail_error(pos_type const _pos) : pos_{_pos}
 }
 
 template <typename Ch>
-typename fcppt::parse::fail_error<Ch>::pos_type fcppt::parse::fail_error<Ch>::pos() const
+fcppt::parse::fail_error<Ch>::pos_type fcppt::parse::fail_error<Ch>::pos() const
 {
   return this->pos_;
 }

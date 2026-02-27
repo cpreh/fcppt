@@ -15,13 +15,13 @@ fcppt::parse::position<Ch>::position(pos_type const _pos, optional_location cons
 }
 
 template <typename Ch>
-typename fcppt::parse::position<Ch>::pos_type const &fcppt::parse::position<Ch>::pos() const
+fcppt::parse::position<Ch>::pos_type const &fcppt::parse::position<Ch>::pos() const
 {
   return this->pos_;
 }
 
 template <typename Ch>
-typename fcppt::parse::position<Ch>::optional_location const &
+fcppt::parse::position<Ch>::optional_location const &
 fcppt::parse::position<Ch>::location() const
 {
   return this->location_;

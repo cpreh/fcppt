@@ -20,14 +20,14 @@ fcppt::parse::basic_char_set_error<Ch>::basic_char_set_error(
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_char_set_error<Ch>::pos_type const &
+fcppt::parse::basic_char_set_error<Ch>::pos_type const &
 fcppt::parse::basic_char_set_error<Ch>::pos() const
 {
   return this->pos_;
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_char_set_error<Ch>::char_set_type const &
+fcppt::parse::basic_char_set_error<Ch>::char_set_type const &
 fcppt::parse::basic_char_set_error<Ch>::chars() const
 {
   return this->chars_;

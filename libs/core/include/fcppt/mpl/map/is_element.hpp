@@ -34,7 +34,7 @@ struct is_element<fcppt::mpl::map::element<T...>>
 <code>fcppt::mpl::map::element<K,V></code> for some types <code>K, V</code>.
 */
 template<typename T>
-using is_element = typename fcppt::mpl::map::detail::is_element<T>::type;
+using is_element = fcppt::mpl::map::detail::is_element<T>::type;
 }
 
 #endif

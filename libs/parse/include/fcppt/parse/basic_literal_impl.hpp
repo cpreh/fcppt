@@ -33,6 +33,7 @@ fcppt::parse::basic_literal<Ch>::basic_literal(Ch const _ch) : ch_{_ch}
 
 template <typename Ch>
 template <typename Skipper>
+// NOLINTNEXTLINE(readability-redundant-typename)
 fcppt::parse::result<Ch, typename fcppt::parse::basic_literal<Ch>::result_type>
 fcppt::parse::basic_literal<Ch>::parse(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &) const

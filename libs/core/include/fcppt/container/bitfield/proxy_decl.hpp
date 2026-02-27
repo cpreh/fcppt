@@ -31,7 +31,7 @@ class proxy
 {
   using array_type = std::remove_const_t<StoredType>;
 
-  using size_type = typename array_type::size_type;
+  using size_type = array_type::size_type;
 
   using internal_type = fcppt::type_traits::value_type<array_type>;
 

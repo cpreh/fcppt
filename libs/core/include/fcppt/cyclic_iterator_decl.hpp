@@ -39,15 +39,15 @@ public:
 
   using container_iterator_type = ContainerIterator;
 
-  using value_type = typename base_type::value_type;
+  using value_type = base_type::value_type;
 
-  using reference = typename base_type::reference;
+  using reference = base_type::reference;
 
-  using pointer = typename base_type::pointer;
+  using pointer = base_type::pointer;
 
-  using difference_type = typename base_type::difference_type;
+  using difference_type = base_type::difference_type;
 
-  using iterator_category = typename base_type::iterator_category;
+  using iterator_category = base_type::iterator_category;
 
   using boundary = fcppt::tuple::object<container_iterator_type, container_iterator_type>;
 

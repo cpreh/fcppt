@@ -18,14 +18,14 @@ fcppt::parse::named_error<Ch>::named_error(string_type &&_name, error_base &&_er
 }
 
 template <typename Ch>
-typename fcppt::parse::named_error<Ch>::string_type const &
+fcppt::parse::named_error<Ch>::string_type const &
 fcppt::parse::named_error<Ch>::name() const
 {
   return this->name_;
 }
 
 template <typename Ch>
-typename fcppt::parse::named_error<Ch>::error_base const &
+fcppt::parse::named_error<Ch>::error_base const &
 fcppt::parse::named_error<Ch>::error() const
 {
   return this->error_;

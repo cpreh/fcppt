@@ -33,13 +33,13 @@ bool fcppt::parse::error<Ch>::is_fatal() const
 FCPPT_PP_POP_WARNING
 
 template <typename Ch>
-typename fcppt::parse::error<Ch>::variant_type &fcppt::parse::error<Ch>::get()
+fcppt::parse::error<Ch>::variant_type &fcppt::parse::error<Ch>::get()
 {
   return this->value_;
 }
 
 template <typename Ch>
-typename fcppt::parse::error<Ch>::variant_type const &fcppt::parse::error<Ch>::get() const
+fcppt::parse::error<Ch>::variant_type const &fcppt::parse::error<Ch>::get() const
 {
   return this->value_;
 }

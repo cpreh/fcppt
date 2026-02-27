@@ -19,7 +19,7 @@ namespace fcppt::either
 \ingroup fcppteither
 */
 template <fcppt::either::object_concept Either>
-using success_type = typename std::remove_cvref_t<Either>::success;
+using success_type = std::remove_cvref_t<Either>::success;
 
 }
 

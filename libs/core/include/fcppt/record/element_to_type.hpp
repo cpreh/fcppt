@@ -21,9 +21,7 @@ namespace fcppt::record
 \tparam Element Must be an #fcppt::record::element.
 */
 template <typename Element>
-using element_to_type =
-    typename fcppt::record::detail::element_to_type<std::remove_cv_t<Element>>::type;
-
+using element_to_type = fcppt::record::detail::element_to_type<std::remove_cv_t<Element>>::type;
 }
 
 #endif

@@ -29,7 +29,7 @@ class iterator : public fcppt::intrusive::detail::iterator_base<Type>
 public:
   using iterator_base = fcppt::intrusive::detail::iterator_base<Type>;
 
-  using reference = typename iterator_base::reference;
+  using reference = iterator_base::reference;
 
   using base_type = fcppt::intrusive::base<std::remove_const_t<Type>>;
 

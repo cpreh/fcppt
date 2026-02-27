@@ -23,21 +23,21 @@ A const &fcppt::container::raw_vector::rep<A>::alloc() const noexcept
 }
 
 template <typename A>
-typename fcppt::container::raw_vector::rep<A>::pointer
+fcppt::container::raw_vector::rep<A>::pointer
 fcppt::container::raw_vector::rep<A>::first() const noexcept
 {
   return this->first_;
 }
 
 template <typename A>
-typename fcppt::container::raw_vector::rep<A>::pointer
+fcppt::container::raw_vector::rep<A>::pointer
 fcppt::container::raw_vector::rep<A>::last() const noexcept
 {
   return this->last_;
 }
 
 template <typename A>
-typename fcppt::container::raw_vector::rep<A>::pointer
+fcppt::container::raw_vector::rep<A>::pointer
 fcppt::container::raw_vector::rep<A>::cap() const noexcept
 {
   return this->cap_;

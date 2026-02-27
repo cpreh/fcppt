@@ -65,7 +65,7 @@ fcppt::optional::object<Ch> fcppt::parse::detail::stream<Ch>::get_char()
 template <typename Ch>
 fcppt::parse::position<Ch> fcppt::parse::detail::stream<Ch>::get_position() const
 {
-  using pos_type = typename std::basic_istream<Ch>::pos_type;
+  using pos_type = std::basic_istream<Ch>::pos_type;
 
   std::basic_istream<Ch> &std_stream{this->impl_.get()};
 

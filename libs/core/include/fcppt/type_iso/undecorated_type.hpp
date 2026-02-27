@@ -18,7 +18,7 @@ Undecorates \a Type by removing all (nested) type constructors.
 \ingroup fcppttypeiso
 */
 template <typename Type>
-using undecorated_type = typename fcppt::type_iso::detail::undecorated_type<Type>::type;
+using undecorated_type = fcppt::type_iso::detail::undecorated_type<Type>::type;
 
 }
 

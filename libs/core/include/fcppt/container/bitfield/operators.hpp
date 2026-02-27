@@ -40,7 +40,7 @@ fcppt::container::bitfield::object<ElementType, InternalType> &operator|=(
     fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
   using internal_type =
-      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+      fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
 
   std::transform(
       _left.array().begin(),
@@ -63,7 +63,7 @@ fcppt::container::bitfield::object<ElementType, InternalType> &operator&=(
     fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
   using internal_type =
-      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+      fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
 
   std::transform(
       _left.array().begin(),
@@ -86,7 +86,7 @@ fcppt::container::bitfield::object<ElementType, InternalType> &operator^=(
     fcppt::container::bitfield::object<ElementType, InternalType> const &_right)
 {
   using internal_type =
-      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+      fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
 
   std::transform(
       _left.array().begin(),
@@ -108,7 +108,7 @@ fcppt::container::bitfield::object<ElementType, InternalType>
 operator~(fcppt::container::bitfield::object<ElementType, InternalType> _field)
 {
   using internal_type =
-      typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
+      fcppt::container::bitfield::object<ElementType, InternalType>::internal_type;
 
   std::transform(
       _field.array().begin(),

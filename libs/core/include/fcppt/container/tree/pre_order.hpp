@@ -79,13 +79,13 @@ public:
 
     using value_type = fcppt::type_traits::value_type<iterator_base>;
 
-    using reference = typename iterator_base::reference;
+    using reference = iterator_base::reference;
 
-    using pointer = typename iterator_base::pointer;
+    using pointer = iterator_base::pointer;
 
-    using difference_type = typename iterator_base::difference_type;
+    using difference_type = iterator_base::difference_type;
 
-    using iterator_category = typename iterator_base::iterator_category;
+    using iterator_category = iterator_base::iterator_category;
 
     void increment()
     {

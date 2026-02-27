@@ -16,7 +16,7 @@
 namespace fcppt::signal::detail
 {
 template <typename Function>
-class concrete_connection // NOLINT(fuchsia-multiple-inheritance)
+class concrete_connection // NOLINT(fuchsia-multiple-inheritance,misc-multiple-inheritance)
     : public fcppt::signal::connection,
       public fcppt::intrusive::base<fcppt::signal::detail::concrete_connection<Function>>
 {
@@ -27,7 +27,7 @@ public:
 
   using base_type = fcppt::intrusive::base<fcppt::signal::detail::concrete_connection<Function>>;
 
-  using list_type = typename base_type::list_type;
+  using list_type = base_type::list_type;
 
   concrete_connection(list_type &, function_type &&);
 

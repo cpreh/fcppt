@@ -15,7 +15,7 @@
 namespace fcppt::array
 {
 template <typename T, typename = std::enable_if_t<fcppt::array::is_object<T>::value>>
-using impl_type = typename T::impl_type;
+using impl_type = T::impl_type;
 }
 
 #endif

@@ -18,14 +18,14 @@ fcppt::parse::custom_error<Ch>::custom_error(pos_type const _pos, string_type &&
 }
 
 template <typename Ch>
-typename fcppt::parse::custom_error<Ch>::pos_type
+fcppt::parse::custom_error<Ch>::pos_type
 fcppt::parse::custom_error<Ch>::pos() const
 {
   return this->pos_;
 }
 
 template <typename Ch>
-typename fcppt::parse::custom_error<Ch>::string_type const &
+fcppt::parse::custom_error<Ch>::string_type const &
 fcppt::parse::custom_error<Ch>::message() const
 {
   return this->message_;

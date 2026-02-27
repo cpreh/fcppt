@@ -15,6 +15,8 @@
 #include <fcppt/parse/operators/repetition.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdint>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -50,6 +52,7 @@ auto make_digit(char const c, digit const d)
 }
 
 int main()
+try
 {
 // [parser_digit]
   auto const p09{
@@ -72,4 +75,11 @@ int main()
         print(result);
       });
 // [parser_example]
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

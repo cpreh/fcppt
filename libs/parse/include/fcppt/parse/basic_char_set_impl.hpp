@@ -68,7 +68,7 @@ fcppt::parse::basic_char_set<Ch>::parse(
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_char_set<Ch>::char_set_type const &
+fcppt::parse::basic_char_set<Ch>::char_set_type const &
 fcppt::parse::basic_char_set<Ch>::chars() const
 {
   return this->chars_;

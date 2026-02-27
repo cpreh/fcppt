@@ -55,26 +55,26 @@ namespace fcppt::container::buffer
 template <typename T, typename A>
 object<T, A>::~object() noexcept
 {
-  impl_.deallocate();
+  this->impl_.deallocate();
 }
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::const_iterator
+fcppt::container::buffer::object<T, A>::const_iterator
 fcppt::container::buffer::object<T, A>::begin() const noexcept
 {
   return this->read_data();
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::const_iterator
+fcppt::container::buffer::object<T, A>::const_iterator
 fcppt::container::buffer::object<T, A>::end() const noexcept
 {
   return this->read_data_end();
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::const_reference
+fcppt::container::buffer::object<T, A>::const_reference
 fcppt::container::buffer::object<T, A>::operator[](size_type const _index) const noexcept
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -82,42 +82,42 @@ fcppt::container::buffer::object<T, A>::operator[](size_type const _index) const
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::const_pointer
+fcppt::container::buffer::object<T, A>::const_pointer
 fcppt::container::buffer::object<T, A>::read_data() const noexcept
 {
   return this->impl_.first_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::const_pointer
+fcppt::container::buffer::object<T, A>::const_pointer
 fcppt::container::buffer::object<T, A>::read_data_end() const noexcept
 {
   return this->impl_.read_end_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::pointer
+fcppt::container::buffer::object<T, A>::pointer
 fcppt::container::buffer::object<T, A>::write_data() noexcept
 {
   return this->impl_.read_end_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::pointer
+fcppt::container::buffer::object<T, A>::pointer
 fcppt::container::buffer::object<T, A>::write_data_end() noexcept
 {
   return this->impl_.write_end_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::size_type
+fcppt::container::buffer::object<T, A>::size_type
 fcppt::container::buffer::object<T, A>::read_size() const noexcept
 {
   return fcppt::cast::to_unsigned(this->impl_.read_end_ - this->impl_.first_);
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::size_type
+fcppt::container::buffer::object<T, A>::size_type
 fcppt::container::buffer::object<T, A>::write_size() const noexcept
 {
   return fcppt::cast::to_unsigned(this->impl_.write_end_ - this->impl_.read_end_);
@@ -171,9 +171,9 @@ template <typename T, typename A>
 fcppt::container::raw_vector::rep<A> fcppt::container::buffer::object<T, A>::release() noexcept
 {
   using rep_t = fcppt::container::raw_vector::rep<A>;
-  using first_t = typename rep_t::first_t;
-  using last_t = typename rep_t::last_t;
-  using cap_t = typename rep_t::cap_t;
+  using first_t = rep_t::first_t;
+  using last_t = rep_t::last_t;
+  using cap_t = rep_t::cap_t;
 
   fcppt::container::raw_vector::rep<A> result{
       this->get_allocator(),
@@ -199,7 +199,7 @@ void fcppt::container::buffer::object<T, A>::release_internal() noexcept
 }
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::allocator_type
+fcppt::container::buffer::object<T, A>::allocator_type
 fcppt::container::buffer::object<T, A>::get_allocator() const
 {
   return this->impl_.alloc_;
@@ -221,7 +221,7 @@ template <typename T, typename A>
 fcppt::container::buffer::object<T, A>::impl::impl(impl &&) noexcept = default;
 
 template <typename T, typename A>
-typename fcppt::container::buffer::object<T, A>::impl &
+fcppt::container::buffer::object<T, A>::impl &
 fcppt::container::buffer::object<T, A>::impl::operator=(impl &&) noexcept = default;
 
 template <typename T, typename A>

@@ -31,7 +31,7 @@ Let <code>T = std::integral_constant<U,V></code>.
 Then the result is <code>std::integral_constant<U,V--></code>.
 */
 template <fcppt::mpl::integral_concept T>
-using dec = typename fcppt::mpl::detail::dec<T>::type;
+using dec = fcppt::mpl::detail::dec<T>::type;
 }
 
 #endif

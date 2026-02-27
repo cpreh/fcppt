@@ -45,7 +45,7 @@ Let <code>Set = set::object<E_1,...,E_n></code>. The result is
 Otherwise, it is <code>std::false_type</code>.
 */
 template<fcppt::mpl::set::object_concept Set, typename Key>
-using contains = typename fcppt::mpl::set::detail::contains<Set,Key>::type;
+using contains = fcppt::mpl::set::detail::contains<Set,Key>::type;
 
 }
 

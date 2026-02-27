@@ -42,7 +42,7 @@ public:
 
   explicit my_iterator(pointer const _ptr) : ptr_{_ptr} {}
 
-  [[nodiscard]] reference operator*() const { return *ptr_; }
+  [[nodiscard]] reference dereference() const { return *ptr_; }
 
   void increment() { ++ptr_; } // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 

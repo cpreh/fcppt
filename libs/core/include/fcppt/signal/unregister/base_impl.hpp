@@ -53,7 +53,7 @@ base<T>::~base() = default;
 }
 
 template <typename T>
-typename fcppt::signal::unregister::base<T>::connection_list &
+fcppt::signal::unregister::base<T>::connection_list &
 fcppt::signal::unregister::base<T>::connections() const
 {
   return connections_;

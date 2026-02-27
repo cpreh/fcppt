@@ -33,73 +33,73 @@ constexpr fcppt::enum_::array<Enum, Value>::array(from_internal, internal &&_imp
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::reference
+fcppt::enum_::array<Enum, Value>::reference
 fcppt::enum_::array<Enum, Value>::operator[](Enum const _index) noexcept
 {
   return this->impl().get_unsafe(array::to_index(_index));
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::const_reference
+fcppt::enum_::array<Enum, Value>::const_reference
 fcppt::enum_::array<Enum, Value>::operator[](Enum const _index) const noexcept
 {
   return this->impl().get_unsafe(array::to_index(_index));
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::iterator fcppt::enum_::array<Enum, Value>::begin()
+fcppt::enum_::array<Enum, Value>::iterator fcppt::enum_::array<Enum, Value>::begin()
 {
   return this->impl().begin();
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::iterator fcppt::enum_::array<Enum, Value>::end()
+fcppt::enum_::array<Enum, Value>::iterator fcppt::enum_::array<Enum, Value>::end()
 {
   return this->impl().end();
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::const_iterator
+fcppt::enum_::array<Enum, Value>::const_iterator
 fcppt::enum_::array<Enum, Value>::begin() const
 {
   return this->impl().begin();
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::const_iterator
+fcppt::enum_::array<Enum, Value>::const_iterator
 fcppt::enum_::array<Enum, Value>::end() const
 {
   return this->impl().end();
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::pointer fcppt::enum_::array<Enum, Value>::data()
+fcppt::enum_::array<Enum, Value>::pointer fcppt::enum_::array<Enum, Value>::data()
 {
   return this->impl().data();
 }
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::const_pointer
+fcppt::enum_::array<Enum, Value>::const_pointer
 fcppt::enum_::array<Enum, Value>::data() const
 {
   return this->impl().data();
 }
 
 template <typename Enum, typename Value>
-constexpr typename fcppt::enum_::array<Enum, Value>::internal &
+constexpr fcppt::enum_::array<Enum, Value>::internal &
 fcppt::enum_::array<Enum, Value>::impl() noexcept
 {
   return this->impl_;
 }
 
 template <typename Enum, typename Value>
-constexpr typename fcppt::enum_::array<Enum, Value>::internal const &
+constexpr fcppt::enum_::array<Enum, Value>::internal const &
 fcppt::enum_::array<Enum, Value>::impl() const noexcept
 {
   return this->impl_;
 }
 
 template <typename Enum, typename Value>
-typename fcppt::enum_::array<Enum, Value>::internal::size_type
+fcppt::enum_::array<Enum, Value>::internal::size_type
 fcppt::enum_::array<Enum, Value>::to_index(Enum const _index) noexcept
 {
   return fcppt::cast::enum_to_int<typename internal::size_type>(_index);

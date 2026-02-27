@@ -20,7 +20,7 @@ The size type used to count the number of enumerators in \a Type.
 \tparam Type Must be an enum type
 */
 template <typename Type>
-using size_type = typename fcppt::enum_::size_type_impl<Type>::type;
+using size_type = fcppt::enum_::size_type_impl<Type>::type;
 
 }
 

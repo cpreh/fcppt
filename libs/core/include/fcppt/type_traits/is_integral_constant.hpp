@@ -33,7 +33,7 @@ struct is_integral_constant<std::integral_constant<Type,Value>>
 \ingroup fcppttypetraits
 */
 template<typename Type>
-using is_integral_constant = typename fcppt::type_traits::detail::is_integral_constant<Type>::type;
+using is_integral_constant = fcppt::type_traits::detail::is_integral_constant<Type>::type;
 
 }
 

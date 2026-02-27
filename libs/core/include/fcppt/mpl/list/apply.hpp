@@ -34,7 +34,7 @@ If <code>L</code> holds a function <code>F</code> of arity n and <code>Args = li
 then <code>F<A_1,...,A_n></code> is returned.
 */
 template<fcppt::mpl::lambda_concept L, fcppt::mpl::list::object_concept Args>
-using apply = typename fcppt::mpl::list::detail::apply<L,Args>::type;
+using apply = fcppt::mpl::list::detail::apply<L,Args>::type;
 }
 
 #endif

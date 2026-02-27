@@ -42,7 +42,7 @@ Returns <code>size_type<Index></code> where <code>Index</code> is the smallest n
 <code>F<L_{Index}> = std::true_type</code>.
 */
 template<fcppt::mpl::list::object_concept List, fcppt::mpl::lambda_concept L>
-using index_of_if = typename fcppt::mpl::list::detail::index_of_if<List,L,fcppt::mpl::size_type<0U>>::type;
+using index_of_if = fcppt::mpl::list::detail::index_of_if<List,L,fcppt::mpl::size_type<0U>>::type;
 }
 
 #endif

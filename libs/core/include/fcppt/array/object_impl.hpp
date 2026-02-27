@@ -29,71 +29,73 @@ fcppt::array::object<T, Size>::object(fcppt::no_init const &)
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::reference
+fcppt::array::object<T, Size>::reference
 fcppt::array::object<T, Size>::get_unsafe(size_type const _index) noexcept
 {
-  return this->impl()[_index]; // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-constant-array-index,cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+  return this->impl()[_index];
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::const_reference
+fcppt::array::object<T, Size>::const_reference
 fcppt::array::object<T, Size>::get_unsafe(size_type const _index) const noexcept
 {
-  return this->impl()[_index]; // NOLINT(cppcoreguidelines-pro-bounds-constant-array-index)
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-constant-array-index,cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+  return this->impl()[_index];
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::iterator fcppt::array::object<T, Size>::begin()
+fcppt::array::object<T, Size>::iterator fcppt::array::object<T, Size>::begin()
 {
   return this->impl().begin();
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::iterator fcppt::array::object<T, Size>::end()
+fcppt::array::object<T, Size>::iterator fcppt::array::object<T, Size>::end()
 {
   return this->impl().end();
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::const_iterator fcppt::array::object<T, Size>::begin() const
+fcppt::array::object<T, Size>::const_iterator fcppt::array::object<T, Size>::begin() const
 {
   return this->impl().begin();
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::const_iterator fcppt::array::object<T, Size>::end() const
+fcppt::array::object<T, Size>::const_iterator fcppt::array::object<T, Size>::end() const
 {
   return this->impl().end();
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::pointer fcppt::array::object<T, Size>::data()
+fcppt::array::object<T, Size>::pointer fcppt::array::object<T, Size>::data()
 {
   return this->impl().data();
 }
 
 template <typename T, std::size_t Size>
-typename fcppt::array::object<T, Size>::const_pointer fcppt::array::object<T, Size>::data() const
+fcppt::array::object<T, Size>::const_pointer fcppt::array::object<T, Size>::data() const
 {
   return this->impl().data();
 }
 
 template <typename T, std::size_t Size>
-constexpr typename fcppt::array::object<T, Size>::size_type
+constexpr fcppt::array::object<T, Size>::size_type
 fcppt::array::object<T, Size>::size() const
 {
   return this->impl().size();
 }
 
 template <typename T, std::size_t Size>
-constexpr typename fcppt::array::object<T, Size>::impl_type &
+constexpr fcppt::array::object<T, Size>::impl_type &
 fcppt::array::object<T, Size>::impl() noexcept
 {
   return this->impl_;
 }
 
 template <typename T, std::size_t Size>
-constexpr typename fcppt::array::object<T, Size>::impl_type const &
+constexpr fcppt::array::object<T, Size>::impl_type const &
 fcppt::array::object<T, Size>::impl() const noexcept
 {
   return this->impl_;

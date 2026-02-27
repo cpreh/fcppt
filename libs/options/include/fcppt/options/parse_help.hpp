@@ -80,6 +80,7 @@ fcppt::options::help_result<fcppt::options::result_of<Parser>> parse_help(
                 fcppt::options::left<fcppt::options::result_of<typename sum_type::left>> &&) {
               return return_type{fcppt::options::deref(_parser).usage()};
             },
+            // NOLINTNEXTLINE(readability-redundant-typename)
             [](fcppt::options::right<fcppt::options::result_of<typename sum_type::right>>
                    // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
                    &&_inner_result) {

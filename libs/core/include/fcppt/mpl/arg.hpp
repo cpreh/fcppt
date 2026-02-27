@@ -41,7 +41,7 @@ Formally, for every integer <code>m >= Arg</code> it is a lambda that holds a fu
 */
 template<std::size_t Arg>
 requires (Arg >= 1U)
-using arg = typename fcppt::mpl::detail::arg<Arg - 1U>::type;
+using arg = fcppt::mpl::detail::arg<Arg - 1U>::type;
 }
 
 #endif

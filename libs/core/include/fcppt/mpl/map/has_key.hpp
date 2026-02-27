@@ -49,7 +49,7 @@ then the result is <code>std::true_type</code>.
 Otherwise, it is <code>std::false_type</code>.
 */
 template<fcppt::mpl::map::object_concept Map, typename Key>
-using has_key = typename fcppt::mpl::map::detail::has_key<Map,Key>::type;
+using has_key = fcppt::mpl::map::detail::has_key<Map,Key>::type;
 
 }
 

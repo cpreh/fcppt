@@ -21,7 +21,7 @@ A raw pointer is a (cv qualified) pointer to <code>char</code> or to
 \tparam Type Must be a pointer type.
 */
 template <typename Type>
-using is_raw_pointer = typename fcppt::type_traits::detail::is_raw_pointer<Type>::type;
+using is_raw_pointer = fcppt::type_traits::detail::is_raw_pointer<Type>::type;
 
 }
 

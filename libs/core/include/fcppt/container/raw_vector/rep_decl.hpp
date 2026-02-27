@@ -27,7 +27,7 @@ template <typename A>
 class rep
 {
 public:
-  using pointer = typename std::allocator_traits<A>::pointer;
+  using pointer = std::allocator_traits<A>::pointer;
 
   FCPPT_DECLARE_STRONG_TYPEDEF(pointer, first_t);
   FCPPT_DECLARE_STRONG_TYPEDEF(pointer, last_t);

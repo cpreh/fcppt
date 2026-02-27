@@ -16,7 +16,7 @@ namespace fcppt::record
 \ingroup fcpptrecord
 */
 template <typename RecordL, typename RecordR>
-using disjoint_product = typename fcppt::record::detail::disjoint_product<RecordL, RecordR>::type;
+using disjoint_product = fcppt::record::detail::disjoint_product<RecordL, RecordR>::type;
 
 }
 

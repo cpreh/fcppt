@@ -34,7 +34,7 @@ set::object<K_1,...,K_n>
 \endcode
 */
 template<fcppt::mpl::map::object_concept Map>
-using keys = typename fcppt::mpl::map::detail::keys<Map>::type;
+using keys = fcppt::mpl::map::detail::keys<Map>::type;
 }
 
 #endif

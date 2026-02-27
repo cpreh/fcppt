@@ -49,11 +49,14 @@ int main()
   field &= ~bitfield{person_status::hungry};
 
   // You can access a single flag via operator[]
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   std::cout << "person is hungry: " << field[person_status::hungry] << '\n';
 
   // You can also set a flag this way:
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field[person_status::hungry] = false;
 
-  std::cout << ("person is hungry: ") << field[person_status::hungry] << '\n';
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
+  std::cout << "person is hungry: " << field[person_status::hungry] << '\n';
 }
 //! [bitfield]

@@ -158,7 +158,7 @@ struct sprite_from_ints<std::integer_sequence<unsigned, Ints...>>
 };
 
 template <unsigned N>
-using sprite = typename sprite_from_ints<std::make_integer_sequence<unsigned, N>>::type;
+using sprite = sprite_from_ints<std::make_integer_sequence<unsigned, N>>::type;
 // ![sprite_generic]
 
 void test()

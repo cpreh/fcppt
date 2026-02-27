@@ -36,11 +36,11 @@ public:
       fcppt::type_traits::value_type<fcppt::container::grid::pos_type<std::remove_cv_t<Grid>>>,
       Grid::static_size::value>;
 
-  using min_type = typename pos_range::min_type;
+  using min_type = pos_range::min_type;
 
-  using sup_type = typename pos_range::sup_type;
+  using sup_type = pos_range::sup_type;
 
-  using size_type = typename pos_range::size_type;
+  using size_type = pos_range::size_type;
 
   pos_ref_range(Grid &, min_type, sup_type);
 
@@ -55,7 +55,7 @@ public:
   [[nodiscard]] sup_type const &sup() const;
 
 private:
-  using pos_iterator = typename pos_range::iterator;
+  using pos_iterator = pos_range::iterator;
 
   [[nodiscard]] iterator make_iterator(pos_iterator) const;
 

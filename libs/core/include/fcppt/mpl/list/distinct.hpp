@@ -95,7 +95,7 @@ for all <code>1 <= i != j <= n</code> then the result is <code>std::true_type</c
 Otherwise, it is <code>std::false_type</code>.
 */
 template<fcppt::mpl::list::object_concept List>
-using distinct = typename fcppt::mpl::list::detail::distinct<List>::type;
+using distinct = fcppt::mpl::list::detail::distinct<List>::type;
 
 }
 

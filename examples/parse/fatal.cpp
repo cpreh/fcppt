@@ -14,6 +14,8 @@
 #include <fcppt/parse/operators/alternative.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -47,7 +49,14 @@ fcppt::either::match(fcppt::parse::parse_string(p, std::string{"{]"}), on_failur
 }
 
 int main()
+try
 {
   f();
   g();
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

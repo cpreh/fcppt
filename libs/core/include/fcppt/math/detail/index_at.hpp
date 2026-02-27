@@ -14,6 +14,7 @@ template <typename Storage, typename SizeType>
 inline fcppt::container::to_reference_type<Storage>
 index_at(Storage &_storage, SizeType const _size)
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return _storage[_size];
 }
 

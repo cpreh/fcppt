@@ -14,8 +14,14 @@
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/out.hpp>
 #include <fcppt/log/verbose.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
+#include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 int main()
+try
 {
   //! [helloworld]
   // Create a log context that has debug and every level above enabled
@@ -37,4 +43,11 @@ int main()
   // This is not printed because the verbose level is not enabled
   FCPPT_LOG_VERBOSE(log, fcppt::log::out << FCPPT_TEXT("Very verbose message"))
   //! [helloworld]
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

@@ -38,28 +38,28 @@ fcppt::math::detail::static_storage<T, N>::static_storage(array_type _array)
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::detail::static_storage<T, N>::reference
+fcppt::math::detail::static_storage<T, N>::reference
 fcppt::math::detail::static_storage<T, N>::operator[](fcppt::math::size_type const _index)
 {
   return impl_.get_unsafe(_index);
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::detail::static_storage<T, N>::const_reference
+fcppt::math::detail::static_storage<T, N>::const_reference
 fcppt::math::detail::static_storage<T, N>::operator[](fcppt::math::size_type const _index) const
 {
   return impl_.get_unsafe(_index);
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::detail::static_storage<T, N>::pointer
+fcppt::math::detail::static_storage<T, N>::pointer
 fcppt::math::detail::static_storage<T, N>::data()
 {
   return impl_.data();
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::detail::static_storage<T, N>::const_pointer
+fcppt::math::detail::static_storage<T, N>::const_pointer
 fcppt::math::detail::static_storage<T, N>::data() const
 {
   return impl_.data();

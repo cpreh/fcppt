@@ -15,7 +15,7 @@ namespace fcppt::array
 \ingroup fcpptarray
 */
 template <typename T>
-using is_object = typename fcppt::array::detail::is_object<T>::type;
+using is_object = fcppt::array::detail::is_object<T>::type;
 }
 
 #endif

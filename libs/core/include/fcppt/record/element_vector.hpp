@@ -18,7 +18,7 @@ namespace fcppt::record
 \tparam Record Must be an #fcppt::record::object.
 */
 template <typename Record>
-using element_vector = typename fcppt::record::detail::element_vector<Record>::type;
+using element_vector = fcppt::record::detail::element_vector<Record>::type;
 
 }
 

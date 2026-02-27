@@ -30,15 +30,15 @@ public:
       fcppt::cast::size_fun,
       fcppt::array::size<array_type>>;
 
-  using value_type = typename array_type::value_type;
+  using value_type = array_type::value_type;
 
-  using reference = typename array_type::reference;
+  using reference = array_type::reference;
 
-  using const_reference = typename array_type::const_reference;
+  using const_reference = array_type::const_reference;
 
-  using pointer = typename array_type::pointer;
+  using pointer = array_type::pointer;
 
-  using const_pointer = typename array_type::const_pointer;
+  using const_pointer = array_type::const_pointer;
 
   template <typename... Args>
   constexpr explicit static_storage(Args &&...) noexcept(

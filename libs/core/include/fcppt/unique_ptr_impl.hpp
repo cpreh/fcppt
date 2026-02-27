@@ -43,21 +43,21 @@ fcppt::unique_ptr<Type, Deleter>::operator*() const noexcept
 }
 
 template <typename Type, typename Deleter>
-inline typename fcppt::unique_ptr<Type, Deleter>::pointer
+inline fcppt::unique_ptr<Type, Deleter>::pointer
 fcppt::unique_ptr<Type, Deleter>::operator->() const noexcept
 {
   return this->get_pointer();
 }
 
 template <typename Type, typename Deleter>
-inline typename fcppt::unique_ptr<Type, Deleter>::pointer
+inline fcppt::unique_ptr<Type, Deleter>::pointer
 fcppt::unique_ptr<Type, Deleter>::get_pointer() const noexcept
 {
   return this->impl_.get();
 }
 
 template <typename Type, typename Deleter>
-inline typename fcppt::unique_ptr<Type, Deleter>::pointer
+inline fcppt::unique_ptr<Type, Deleter>::pointer
 fcppt::unique_ptr<Type, Deleter>::release_ownership() noexcept
 {
   return this->impl_.release();

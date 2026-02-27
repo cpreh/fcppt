@@ -111,28 +111,30 @@ object<T, N, A>::~object() = default;
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::reference
+fcppt::container::grid::object<T, N, A>::reference
 fcppt::container::grid::object<T, N, A>::get_unsafe(pos const &_pos)
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return container_[fcppt::container::grid::offset(_pos, size_)];
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::const_reference
+fcppt::container::grid::object<T, N, A>::const_reference
 fcppt::container::grid::object<T, N, A>::get_unsafe(pos const &_pos) const
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return container_[fcppt::container::grid::offset(_pos, size_)];
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::dim const &
+fcppt::container::grid::object<T, N, A>::dim const &
 fcppt::container::grid::object<T, N, A>::size() const
 {
   return size_;
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::size_type
+fcppt::container::grid::object<T, N, A>::size_type
 fcppt::container::grid::object<T, N, A>::content() const
 {
   return fcppt::math::dim::contents(size_);
@@ -145,28 +147,28 @@ bool fcppt::container::grid::object<T, N, A>::empty() const
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::iterator
+fcppt::container::grid::object<T, N, A>::iterator
 fcppt::container::grid::object<T, N, A>::begin()
 {
   return container_.begin();
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::iterator
+fcppt::container::grid::object<T, N, A>::iterator
 fcppt::container::grid::object<T, N, A>::end()
 {
   return container_.end();
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::const_iterator
+fcppt::container::grid::object<T, N, A>::const_iterator
 fcppt::container::grid::object<T, N, A>::begin() const
 {
   return container_.begin();
 }
 
 template <typename T, fcppt::container::grid::size_type N, typename A>
-typename fcppt::container::grid::object<T, N, A>::const_iterator
+fcppt::container::grid::object<T, N, A>::const_iterator
 fcppt::container::grid::object<T, N, A>::end() const
 {
   return container_.end();

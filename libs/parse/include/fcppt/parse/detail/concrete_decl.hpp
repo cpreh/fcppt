@@ -28,7 +28,7 @@ public:
 
   ~concrete() override;
 
-  using result_type = typename base_type::result_type;
+  using result_type = base_type::result_type;
 
   [[nodiscard]] fcppt::parse::result<Ch, result_type>
   parse(fcppt::reference<fcppt::parse::basic_stream<Ch>>, Skipper const &) const override;

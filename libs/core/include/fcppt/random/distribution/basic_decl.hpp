@@ -37,12 +37,12 @@ public:
   /**
   \brief The underlying distribution used
   */
-  using wrapped_distribution = typename Parameters::distribution;
+  using wrapped_distribution = Parameters::distribution;
 
   /**
   \brief The result type of applying this distribution
   */
-  using result_type = typename Parameters::result_type;
+  using result_type = Parameters::result_type;
 
   /**
   \brief The parameters type, required by the standard
@@ -143,7 +143,7 @@ private:
   template <typename Ch, typename Traits>
   friend std::basic_istream<Ch, Traits> operator>>(std::basic_istream<Ch, Traits>, basic &);
 
-  static result_type make_result(typename wrapped_distribution::result_type);
+  static result_type make_result(wrapped_distribution::result_type);
 
   wrapped_distribution distribution_;
 };

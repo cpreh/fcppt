@@ -71,14 +71,14 @@ Failure const &fcppt::either::object<Failure, Success>::get_failure_unsafe() con
 }
 
 template <typename Failure, typename Success>
-typename fcppt::either::object<Failure, Success>::std_type &
+fcppt::either::object<Failure, Success>::std_type &
 fcppt::either::object<Failure, Success>::impl()
 {
   return this->impl_;
 }
 
 template <typename Failure, typename Success>
-typename fcppt::either::object<Failure, Success>::std_type const &
+fcppt::either::object<Failure, Success>::std_type const &
 fcppt::either::object<Failure, Success>::impl() const
 {
   return this->impl_;

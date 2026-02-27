@@ -30,17 +30,17 @@ public:
 
   using value_type = T;
 
-  using size_type = typename child_list::size_type;
+  using size_type = child_list::size_type;
 
-  using difference_type = typename child_list::difference_type;
+  using difference_type = child_list::difference_type;
 
-  using iterator = typename child_list::iterator;
+  using iterator = child_list::iterator;
 
-  using const_iterator = typename child_list::const_iterator;
+  using const_iterator = child_list::const_iterator;
 
-  using reverse_iterator = typename child_list::reverse_iterator;
+  using reverse_iterator = child_list::reverse_iterator;
 
-  using const_reverse_iterator = typename child_list::const_reverse_iterator;
+  using const_reverse_iterator = child_list::const_reverse_iterator;
 
   using optional_ref = fcppt::optional::reference<object>;
 

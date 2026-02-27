@@ -70,6 +70,7 @@ void enum_array()
 
   array const val{true, false};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   std::cout << val[myenum::val1] << '\n';
   // ![enum_array]
 }

@@ -20,14 +20,14 @@ fcppt::parse::basic_string_error<Ch>::basic_string_error(
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_string_error<Ch>::pos_type
+fcppt::parse::basic_string_error<Ch>::pos_type
 fcppt::parse::basic_string_error<Ch>::pos() const
 {
   return this->pos_;
 }
 
 template <typename Ch>
-typename fcppt::parse::basic_string_error<Ch>::string_type const &
+fcppt::parse::basic_string_error<Ch>::string_type const &
 fcppt::parse::basic_string_error<Ch>::expected() const
 {
   return this->expected_;

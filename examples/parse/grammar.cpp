@@ -21,11 +21,15 @@
 #include <fcppt/parse/skipper/epsilon.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+namespace
+{
 //![list_decl]
 struct list;
 using entry = fcppt::tuple::object<std::string, fcppt::recursive<list>>;
@@ -39,7 +43,7 @@ class grammar : public grammar_base
   FCPPT_NONMOVABLE(grammar);
 public:
   grammar();
-  ~grammar() = default;
+  ~grammar() = default; // NOLINT(bugprone-derived-method-shadowing-base-method)
 
 private:
   grammar_base::base_type<list> list_p;
@@ -61,8 +65,10 @@ grammar::grammar()
 {
 }
 //![grammar_impl]
+}
 
 int main()
+try
 {
   auto const on_failure{
       [](fcppt::parse::parse_string_error<char> const &_error) { std::cerr << _error << '\n'; }};
@@ -74,4 +80,11 @@ int main()
       on_failure,
       on_success);
 //![parse]
+
+  return EXIT_SUCCESS;
+}
+catch(std::exception const &_error)
+{
+  std::cerr << _error.what() << '\n';
+  return EXIT_FAILURE;
 }

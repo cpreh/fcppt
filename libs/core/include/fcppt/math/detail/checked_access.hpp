@@ -18,7 +18,7 @@ template <fcppt::math::size_type N, typename T>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 inline fcppt::container::to_reference_type<std::remove_reference_t<T>> checked_access(T &&_value)
 {
-  using static_size = typename std::remove_reference_t<T>::static_size;
+  using static_size = std::remove_reference_t<T>::static_size;
 
   static_assert(N < static_size::value, "Out of bounds access to a math type");
 

@@ -36,7 +36,7 @@ public:
   /**
   \brief The result type used for drawing random numbers
   */
-  using result_type = typename wrapped::result_type;
+  using result_type = wrapped::result_type;
 
   FCPPT_DECLARE_STRONG_TYPEDEF(result_type, seed);
 
