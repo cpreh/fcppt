@@ -22,7 +22,7 @@ namespace fcppt::tuple
 \ingroup fcppttuple
 */
 template <typename Function, typename... Tuples>
-using apply_result = typename fcppt::tuple::detail::apply_result_impl<
+using apply_result = fcppt::tuple::detail::apply_result_impl<
     Function,
     std::make_index_sequence<
         fcppt::tuple::size<fcppt::mpl::list::front<fcppt::mpl::list::object<Tuples...>>>::value>,

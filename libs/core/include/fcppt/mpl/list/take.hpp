@@ -39,7 +39,7 @@ list::object<L_1,...,L_S>
 \endcode
 */
 template<fcppt::mpl::list::object_concept List, fcppt::mpl::size_type_concept S>
-using take = typename fcppt::mpl::list::detail::take<List,std::make_index_sequence<S::value>>::type;
+using take = fcppt::mpl::list::detail::take<List,std::make_index_sequence<S::value>>::type;
 
 }
 

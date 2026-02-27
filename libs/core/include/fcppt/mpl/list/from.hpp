@@ -28,7 +28,7 @@ struct from<Arg<Types...>>
 If <code>Type = T<L_1, ..., L_n></code> then the result is <code>list::object<L_1,...,L_n></code>.
 */
 template<typename Type>
-using from = typename fcppt::mpl::list::detail::from<Type>::type;
+using from = fcppt::mpl::list::detail::from<Type>::type;
 
 }
 

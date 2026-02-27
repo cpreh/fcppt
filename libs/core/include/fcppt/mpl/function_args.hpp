@@ -31,7 +31,7 @@ struct function_args<Ret(Args...)>
 TODO(concepts)
 */
 template <typename Function>
-using function_args = typename fcppt::mpl::detail::function_args<Function>::type;
+using function_args = fcppt::mpl::detail::function_args<Function>::type;
 
 }
 

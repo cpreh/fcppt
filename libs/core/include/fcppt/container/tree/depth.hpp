@@ -15,12 +15,12 @@
 namespace fcppt::container::tree
 {
 template <typename Value>
-typename fcppt::container::tree::object<Value>::size_type
+fcppt::container::tree::object<Value>::size_type
 depth(fcppt::container::tree::object<Value> const &_tree)
 {
   using tree_type = fcppt::container::tree::object<Value>;
 
-  using size_type = typename tree_type::size_type;
+  using size_type = tree_type::size_type;
 
   return fcppt::algorithm::fold(
              _tree.children(),

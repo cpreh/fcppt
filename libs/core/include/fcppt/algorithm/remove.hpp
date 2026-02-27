@@ -25,7 +25,7 @@ inline bool remove(Container &_container, typename Container::const_reference _e
 {
   return fcppt::algorithm::remove_if(
       _container,
-      [_element](typename Container::const_reference _ref) { return _element == _ref; });
+      [_element](Container::const_reference _ref) { return _element == _ref; });
 }
 
 }

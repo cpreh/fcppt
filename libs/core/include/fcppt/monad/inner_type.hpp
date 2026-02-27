@@ -19,7 +19,7 @@ Becaused C++ lacks type inference, we need a special function to get
 <code>a</code> from <code>m a</code>.
 */
 template <typename Type>
-using inner_type = typename fcppt::monad::instance<Type>::template inner_type<Type>::type;
+using inner_type = fcppt::monad::instance<Type>::template inner_type<Type>::type;
 
 }
 

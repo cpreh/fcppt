@@ -30,6 +30,7 @@ inline void assign(Dest &_dest, Src const &_src)
       fcppt::math::int_range_count<
           fcppt::math::detail::storage_size<typename Src::storage_type>::value>{},
       [&_dest, &_src]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>) {
+        // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
         _dest.storage()[Index] = _src.storage()[Index];
       });
 }

@@ -29,7 +29,7 @@ struct element_value<fcppt::mpl::map::element<Key,Value>>
 Returns <code>V</code> if <code>Element=map::element<K,V></code>.
 */
 template<fcppt::mpl::map::element_concept Element>
-using element_value = typename fcppt::mpl::map::detail::element_value<Element>::type;
+using element_value = fcppt::mpl::map::detail::element_value<Element>::type;
 
 }
 

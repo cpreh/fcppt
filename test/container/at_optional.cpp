@@ -28,6 +28,7 @@ TEST_CASE("container::at_optional", "[container]")
 
   CHECK(
       fcppt::container::at_optional(int_vector, 1) ==
+      // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
       optional_int_ref{fcppt::make_cref(int_vector[1])});
 
   CHECK(fcppt::container::at_optional(int_vector, 2) == optional_int_ref{});

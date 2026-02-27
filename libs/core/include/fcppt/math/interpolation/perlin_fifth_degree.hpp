@@ -34,15 +34,15 @@ Value perlin_fifth_degree(Float const &_f, Value const &_v1, Value const &_v2)
   return fcppt::math::interpolation::linear(
       _f * _f * _f *
           (_f *
-               (fcppt::literal<Float>(6.0) *
-                    _f // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-                -
-                fcppt::literal<Float>(
-                    15.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-                ) +
-           fcppt::literal<Float>(
-               10.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
-           ),
+           (((fcppt::literal<Float>(6.0) *
+              _f // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+              ) -
+             fcppt::literal<Float>(
+                 15.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+             ) +
+            fcppt::literal<Float>(
+                10.0) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+            )),
       _v1,
       _v2);
 }

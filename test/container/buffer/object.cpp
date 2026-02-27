@@ -38,6 +38,7 @@ TEST_CASE("container::buffer::object", "[container],[buffer]")
 
   REQUIRE(test1.write_size() == 4U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test1[0] == 10);
 }
 
@@ -53,6 +54,7 @@ TEST_CASE("container::buffer move", "[container],[buffer]")
 
   REQUIRE(test2.write_size() == 99U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test2[0] == 42);
 
   container_type test3{0U};
@@ -61,6 +63,7 @@ TEST_CASE("container::buffer move", "[container],[buffer]")
 
   REQUIRE(test3.write_size() == 99U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test3[0] == 42);
 }
 
@@ -83,6 +86,7 @@ TEST_CASE("container::buffer resize_write_area", "[container],[buffer]")
 
   REQUIRE(container.read_size() == 1U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(container[0] == 10);
 }
 

@@ -40,10 +40,10 @@ from_range(Source &&_source) // NOLINT(cppcoreguidelines-missing-std-forward)
         return fcppt::array::init<fcppt::array::object<
             fcppt::type_traits::value_type<std::remove_cvref_t<Source>>,
             Size>>([&_source]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
+                   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
                    { return fcppt::move_if_rvalue<Source>(_source[Index]); });
       });
 }
-
 }
 
 #endif

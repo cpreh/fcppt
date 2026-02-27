@@ -83,7 +83,7 @@ exponential_pade(fcppt::math::matrix::object<T, DN, DN, S> const &_matrix)
   matrix_type result(X);
 
   for ( // NOLINT(clang-analyzer-security.FloatLoopCounter)
-      T count{fcppt::literal<T>(0)}; count < j; ++count // NOLINT(cert-flp30-c)
+      T count{fcppt::literal<T>(0)}; count < j; ++count // NOLINT(cert-flp30-c,bugprone-float-loop-counter)
   )
   {
     result = result * result;

@@ -19,14 +19,14 @@ fcppt::container::grid::spiral_range<Pos>::spiral_range(Pos _start, value_type c
 }
 
 template <typename Pos>
-typename fcppt::container::grid::spiral_range<Pos>::iterator
+fcppt::container::grid::spiral_range<Pos>::iterator
 fcppt::container::grid::spiral_range<Pos>::begin() const
 {
   return iterator(start_, dist_);
 }
 
 template <typename Pos>
-typename fcppt::container::grid::spiral_range<Pos>::iterator
+fcppt::container::grid::spiral_range<Pos>::iterator
 fcppt::container::grid::spiral_range<Pos>::end() const
 {
   return iterator(Pos(start_.x() - 1, start_.y() - dist_), dist_);

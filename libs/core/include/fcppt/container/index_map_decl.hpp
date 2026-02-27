@@ -33,9 +33,9 @@ class index_map
 public:
   using internal_type = std::vector<T, A>;
 
-  using size_type = typename internal_type::size_type;
+  using size_type = internal_type::size_type;
 
-  using reference = typename internal_type::reference;
+  using reference = internal_type::reference;
 
   index_map();
 

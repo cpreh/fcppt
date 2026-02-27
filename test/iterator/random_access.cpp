@@ -38,9 +38,9 @@ class iterator_tpl : public base_type<IsConst>
 public:
   using base = base_type<IsConst>;
 
-  using reference = typename base::reference;
+  using reference = base::reference;
 
-  using difference_type = typename base::difference_type;
+  using difference_type = base::difference_type;
 
   using impl_type = iterator_type<IsConst>;
 
@@ -75,7 +75,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wglobal-constructors)
 FCPPT_PP_DISABLE_CLANG_WARNING(-Wexit-time-destructors)
 
-// NOLINTNEXTLINE(fuchsia-statically-constructed-objects,cert-err58-cpp)
+// NOLINTNEXTLINE(fuchsia-statically-constructed-objects,cert-err58-cpp,bugprone-throwing-static-initialization)
 string_vector const vec_c{"1", "2", "3"};
 
 FCPPT_PP_POP_WARNING
@@ -103,6 +103,7 @@ TEST_CASE("iterator random access increment_decrement"
 
   CHECK(*it == "2");
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(&*it == &vec_c[1]);
 
   --it;
@@ -113,8 +114,10 @@ TEST_CASE("iterator random access increment_decrement"
 
   CHECK(&*it++ == vec_c.data());
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(&*it == &vec_c[1]);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(&*it-- == &vec_c[1]);
 
   CHECK(&*it == vec_c.data());
@@ -137,13 +140,16 @@ TEST_CASE("iterator random access advance", "[iterator]")
 {
   const_iterator it{vec_c.begin()};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   REQUIRE(&*(it += 2) == &vec_c[2]);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   REQUIRE(&*it == &vec_c[2]);
 
   {
     const_iterator const temp{const_iterator{vec_c.begin()} + 2};
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     CHECK(&*temp == &vec_c[2]);
 
     CHECK(temp == it);
@@ -155,8 +161,10 @@ TEST_CASE("iterator random access advance", "[iterator]")
 
   it -= 1;
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(&*it == &vec_c[1]);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(&vec_c.begin()[1] == &vec_c[1]);
 }
 

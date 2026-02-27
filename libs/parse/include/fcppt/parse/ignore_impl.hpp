@@ -25,6 +25,7 @@ fcppt::parse::ignore<Parser>::ignore(Parser &&_parser) : parser_{std::move(_pars
 
 template <typename Parser>
 template <typename Ch, typename Skipper>
+// NOLINTNEXTLINE(readability-redundant-typename)
 fcppt::parse::result<Ch, typename fcppt::parse::ignore<Parser>::result_type>
 fcppt::parse::ignore<Parser>::parse(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const

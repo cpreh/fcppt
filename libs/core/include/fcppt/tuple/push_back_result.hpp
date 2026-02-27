@@ -16,9 +16,7 @@ namespace fcppt::tuple
 \ingroup fcppttuple
 */
 template <typename Tuple, typename NewElement>
-using push_back_result =
-    typename fcppt::tuple::detail::push_back_result<Tuple, NewElement>::type;
-
+using push_back_result = fcppt::tuple::detail::push_back_result<Tuple, NewElement>::type;
 }
 
 #endif

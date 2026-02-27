@@ -39,10 +39,12 @@ TEST_CASE("container::bitfield::is_subset_eq", "[container],[bitfield]")
 
   CHECK(fcppt::container::bitfield::is_subset_eq(field2, field1));
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field2[test_enum::test1] = true;
 
   CHECK(fcppt::container::bitfield::is_subset_eq(field1, field2));
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field1[test_enum::test2] = true;
 
   CHECK_FALSE(fcppt::container::bitfield::is_subset_eq(field1, field2));

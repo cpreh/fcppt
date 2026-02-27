@@ -33,7 +33,7 @@ Then the result is <code>std::integral_constant<T,V_1 * V_2></code>.
 */
 template <fcppt::mpl::integral_concept T1, fcppt::mpl::integral_concept T2>
 requires fcppt::mpl::integrals_compatible<T1,T2>
-using mul = typename fcppt::mpl::detail::mul<T1,T2>::type;
+using mul = fcppt::mpl::detail::mul<T1,T2>::type;
 }
 
 

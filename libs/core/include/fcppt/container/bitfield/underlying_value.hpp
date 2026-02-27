@@ -21,7 +21,7 @@ if the bitfield consists of exactly one underlying value (which means that
 <code>_bitfield::array_size::value == 1U</code>).
 */
 template <typename ElementType, typename InternalType>
-typename fcppt::container::bitfield::object<ElementType, InternalType>::internal_type
+fcppt::container::bitfield::object<ElementType, InternalType>::internal_type
 underlying_value(fcppt::container::bitfield::object<ElementType, InternalType> const &_bitfield)
   requires(fcppt::container::bitfield::object<ElementType, InternalType>::array_size::value == 1U)
 {

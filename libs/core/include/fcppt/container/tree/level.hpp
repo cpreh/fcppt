@@ -21,7 +21,7 @@ node with a parent has the level of its parent plus one.
 \ingroup fcpptcontainertree
 */
 template <typename Value>
-typename fcppt::container::tree::object<Value>::size_type
+fcppt::container::tree::object<Value>::size_type
 level(fcppt::container::tree::object<Value> const &_tree)
 {
   return fcppt::container::size(

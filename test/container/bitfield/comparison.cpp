@@ -67,6 +67,7 @@ TEST_CASE("container::bitfield comparison", "[container],[bitfield]")
 
   CHECK(field1 == field2);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field2[test_enum::test2] = true;
 
   CHECK(field1 != field2);

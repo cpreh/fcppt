@@ -39,7 +39,7 @@ map::object<element<V_1,K_1>,...,element<V_n,K_n>>
 This only works if all the values <code>V_1,...,V_n</code> are pairwise disjoint.
 */
 template <fcppt::mpl::map::object_concept Map>
-using flip = typename fcppt::mpl::map::detail::flip<Map>::type;
+using flip = fcppt::mpl::map::detail::flip<Map>::type;
 }
 
 #endif

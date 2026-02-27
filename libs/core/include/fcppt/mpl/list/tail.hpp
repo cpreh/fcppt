@@ -31,7 +31,7 @@ list::object<L_2,...,L_n>
 \endcode
 */
 template<fcppt::mpl::list::object_concept List>
-using tail = typename fcppt::mpl::list::detail::tail<List>::type;
+using tail = fcppt::mpl::list::detail::tail<List>::type;
 }
 
 #endif

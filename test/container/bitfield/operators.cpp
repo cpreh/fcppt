@@ -65,12 +65,15 @@ TEST_CASE("container::bitfield operators", "[container],[bitfield]")
 
   bitfield field1{bitfield::null()};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field1[test_enum::test1] = true;
 
   bitfield field2(bitfield::null());
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK((field2 | test_enum::test2)[test_enum::test2]);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field2[test_enum::test3] = true;
 
   CHECK((field1 | field2) == bitfield{test_enum::test1, test_enum::test3});

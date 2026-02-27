@@ -15,8 +15,11 @@
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
 
+namespace
+{
 FCPPT_RECORD_MAKE_LABEL(int1_label);
 FCPPT_RECORD_MAKE_LABEL(int2_label);
+}
 
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

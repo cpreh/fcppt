@@ -28,7 +28,7 @@ struct element_init_tag<fcppt::record::element_init<Tag, Type>>
 \ingroup fcpptrecord
 */
 template <typename Type>
-using element_init_tag = typename fcppt::record::detail::element_init_tag<Type>::type;
+using element_init_tag = fcppt::record::detail::element_init_tag<Type>::type;
 }
 
 #endif

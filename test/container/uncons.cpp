@@ -41,6 +41,7 @@ TEST_CASE("container::uncons", "[container]")
                 fcppt::reference<int>,
                 std::ranges::subrange<std::vector<int>::iterator>> const &_value)
         {
+          // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
           CHECK(fcppt::tuple::get<0U>(_value) == fcppt::make_ref(vec[0]));
           CHECK(
               std::ranges::equal(

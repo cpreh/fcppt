@@ -51,10 +51,13 @@ TEST_CASE("container::bitfield::init", "[container],[bitfield]")
     throw fcppt::enum_::make_invalid(_value);
   }));
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test[test_enum::test1]);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK_FALSE(test[test_enum::test2]);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test[test_enum::test3]);
 }
 

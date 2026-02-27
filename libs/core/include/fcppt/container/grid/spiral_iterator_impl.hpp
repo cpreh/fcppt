@@ -45,7 +45,7 @@ void fcppt::container::grid::spiral_iterator<Pos>::increment()
 }
 
 template <typename Pos>
-typename fcppt::container::grid::spiral_iterator<Pos>::reference
+fcppt::container::grid::spiral_iterator<Pos>::reference
 fcppt::container::grid::spiral_iterator<Pos>::dereference() const
 {
   return cur_;

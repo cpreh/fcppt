@@ -34,14 +34,14 @@ dynamic_array<T, A>::~dynamic_array() noexcept
 }
 
 template <typename T, typename A>
-typename fcppt::container::dynamic_array<T, A>::pointer
+fcppt::container::dynamic_array<T, A>::pointer
 fcppt::container::dynamic_array<T, A>::data() noexcept
 {
   return data_;
 }
 
 template <typename T, typename A>
-typename fcppt::container::dynamic_array<T, A>::const_pointer
+fcppt::container::dynamic_array<T, A>::const_pointer
 fcppt::container::dynamic_array<T, A>::data() const noexcept
 {
   return data_;
@@ -51,7 +51,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 template <typename T, typename A>
-typename fcppt::container::dynamic_array<T, A>::pointer
+fcppt::container::dynamic_array<T, A>::pointer
 fcppt::container::dynamic_array<T, A>::data_end() noexcept
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -59,7 +59,7 @@ fcppt::container::dynamic_array<T, A>::data_end() noexcept
 }
 
 template <typename T, typename A>
-typename fcppt::container::dynamic_array<T, A>::const_pointer
+fcppt::container::dynamic_array<T, A>::const_pointer
 fcppt::container::dynamic_array<T, A>::data_end() const noexcept
 {
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -69,7 +69,7 @@ fcppt::container::dynamic_array<T, A>::data_end() const noexcept
 FCPPT_PP_POP_WARNING
 
 template <typename T, typename A>
-typename fcppt::container::dynamic_array<T, A>::size_type
+fcppt::container::dynamic_array<T, A>::size_type
 fcppt::container::dynamic_array<T, A>::size() const noexcept
 {
   return size_;

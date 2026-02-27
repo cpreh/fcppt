@@ -38,7 +38,7 @@ class grammar : public fcppt::parse::grammar<int, char, skipper>
 public:
   grammar();
 
-  ~grammar();
+  ~grammar(); // NOLINT(bugprone-derived-method-shadowing-base-method)
 
 private:
   grammar_base::base_type<int> start_;

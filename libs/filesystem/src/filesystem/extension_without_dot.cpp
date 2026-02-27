@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/char_type.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -22,7 +23,7 @@ fcppt::string fcppt::filesystem::extension_without_dot(std::filesystem::path con
 
   if (fcppt::optional::map(
           fcppt::container::maybe_front(ret),
-          [](fcppt::reference<char> const _ref)
+          [](fcppt::reference<fcppt::char_type> const _ref)
           { return _ref.get(); }) == fcppt::optional::make(FCPPT_TEXT('.')))
   {
     ret.erase(ret.begin());

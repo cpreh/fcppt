@@ -35,7 +35,7 @@ set::object<L_1,...,L_n>
 \endcode
 */
 template <fcppt::mpl::list::object_concept List>
-using from_list = typename fcppt::mpl::set::detail::from_list<List>::type;
+using from_list = fcppt::mpl::set::detail::from_list<List>::type;
 }
 
 #endif

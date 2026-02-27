@@ -18,10 +18,11 @@ fcppt::random::wrapper::uniform_container<Container, IntDistribution>::uniform_c
 
 template <typename Container, typename IntDistribution>
 template <typename Generator>
-typename fcppt::random::wrapper::uniform_container<Container, IntDistribution>::result_type
+fcppt::random::wrapper::uniform_container<Container, IntDistribution>::result_type
 fcppt::random::wrapper::uniform_container<Container, IntDistribution>::operator()(
     Generator &_generator)
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return container_.get()[distribution_(_generator)];
 }
 

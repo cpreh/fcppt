@@ -19,14 +19,18 @@ TEST_CASE("container::index_map", "[container]")
 
   int_index_map map{};
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   map[2] = 42;
 
   REQUIRE(map.impl().size() == 3U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(map[0] == 0);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(map[1] == 0);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(map[2] == 42);
 }
 

@@ -32,28 +32,28 @@ move_range<Container>::~move_range() = default;
 }
 
 template <typename Container>
-typename fcppt::container::move_range<Container>::iterator
+fcppt::container::move_range<Container>::iterator
 fcppt::container::move_range<Container>::begin()
 {
   return std::make_move_iterator(container_.begin());
 }
 
 template <typename Container>
-typename fcppt::container::move_range<Container>::iterator
+fcppt::container::move_range<Container>::iterator
 fcppt::container::move_range<Container>::end()
 {
   return std::make_move_iterator(container_.end());
 }
 
 template <typename Container>
-typename fcppt::container::move_range<Container>::const_iterator
+fcppt::container::move_range<Container>::const_iterator
 fcppt::container::move_range<Container>::begin() const
 {
   return container_.begin();
 }
 
 template <typename Container>
-typename fcppt::container::move_range<Container>::const_iterator
+fcppt::container::move_range<Container>::const_iterator
 fcppt::container::move_range<Container>::end() const
 {
   return container_.end();

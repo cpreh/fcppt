@@ -71,6 +71,7 @@ TEST_CASE("enum::array", "[enum]")
   CHECK(test1.begin() + 3U == test1.end());
   CHECK(test1.data() == &*test1.begin());
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test1[my_enum::val1] == 1);
 
   int_array const test2{1, 2, 3};

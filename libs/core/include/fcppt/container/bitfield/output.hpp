@@ -38,6 +38,7 @@ std::basic_ostream<Ch, Traits> &operator<<(
 
   for (ElementType const elem : fcppt::enum_::make_range<ElementType>())
   {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     if (_bitfield[elem])
     {
       if(!is_first)

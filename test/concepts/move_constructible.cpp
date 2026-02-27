@@ -6,10 +6,17 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/not.hpp>
 #include <fcppt/concepts/move_constructible.hpp>
+#include <fcppt/preprocessor/disable_clang_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_CLANG_WARNING(-Wunused-member-function)
+namespace
+{
 class test
 {
   FCPPT_NONMOVABLE(test);
@@ -17,6 +24,8 @@ public:
   test() = default;
   ~test() = default;
 };
+}
+FCPPT_PP_POP_WARNING
 
 int main()
 {

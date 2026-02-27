@@ -23,7 +23,7 @@ FCPPT_PP_DISABLE_VC_WARNING(5027)
 \ingroup fcpptvarious
 */
 template <typename... Types>
-struct overloaded // NOLINT(fuchsia-multiple-inheritance)
+struct overloaded // NOLINT(fuchsia-multiple-inheritance,misc-multiple-inheritance)
     : Types...
 {
   template <typename... Args>

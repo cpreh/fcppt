@@ -21,7 +21,7 @@ For example, if <code>Type=optional</code> and <code>Value=int</code> then the
 result is <code>optional<int></code>.
 */
 template <typename Type, typename Value>
-using constructor = typename fcppt::monad::instance<Type>::template constructor<Value>::type;
+using constructor = fcppt::monad::instance<Type>::template constructor<Value>::type;
 
 }
 

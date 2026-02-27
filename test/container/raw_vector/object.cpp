@@ -116,6 +116,7 @@ TEST_CASE("container::raw_vector::push_back", "[container],[raw_vector]")
 
   for (int_vector::size_type i{0}; i < test.size(); ++i)
   {
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     CHECK(std::cmp_equal(test[i], i));
   }
 }
@@ -150,12 +151,14 @@ TEST_CASE("container::raw_vector move", "[container],[raw_vector]")
 {
   int_vector test1(100U, 0);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   test1[0] = 500;
 
   int_vector test2(std::move(test1));
 
   REQUIRE(test2.size() == 100U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test2[0] == 500);
 
   int_vector test3{};
@@ -164,6 +167,7 @@ TEST_CASE("container::raw_vector move", "[container],[raw_vector]")
 
   REQUIRE(test3.size() == 100U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test3[0] == 500);
 }
 
@@ -173,10 +177,13 @@ TEST_CASE("container::raw_vector initializer_list", "[container],[raw_vector]")
 
   REQUIRE(test1.size() == 3U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test1[0] == 1);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test1[1] == 2);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(test1[2] == 3);
 }
 

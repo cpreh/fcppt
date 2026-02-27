@@ -56,7 +56,7 @@ list::object<list::object<L_{1,1},...,L_{1,n}>,...,list::object<L_{1,k},...,L_{n
 // TODO(concepts)
 */
 template <fcppt::mpl::list::object_concept List>
-using transpose = typename fcppt::mpl::list::detail::transpose<List>::type;
+using transpose = fcppt::mpl::list::detail::transpose<List>::type;
 }
 
 #endif

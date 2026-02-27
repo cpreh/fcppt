@@ -37,10 +37,13 @@ TEST_CASE("enum::array_init", "[enum]")
       fcppt::enum_::array_init<my_array>([]<my_enum Enum>(std::integral_constant<my_enum, Enum>)
                                          { return fcppt::cast::enum_to_int<int>(Enum); }));
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(array[my_enum::test1] == 0);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(array[my_enum::test2] == 1);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(array[my_enum::test3] == 2);
 }
 

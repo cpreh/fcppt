@@ -24,7 +24,7 @@ make_uniform_container_advanced(fcppt::reference<Container> const _container)
   return fcppt::optional::map(
       fcppt::random::distribution::parameters::make_uniform_indices_advanced<IntDistribution>(
           _container.get()),
-      [&_container](typename result_type_inner::param_type const &_parameters) {
+      [&_container](result_type_inner::param_type const &_parameters) {
         return result_type_inner(_container, _parameters);
       });
 }

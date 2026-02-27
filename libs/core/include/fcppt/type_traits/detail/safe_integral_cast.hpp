@@ -16,7 +16,7 @@ struct safe_integral_cast
 {
   using type = fcppt::type_traits::integral_cast<Dest, fcppt::cast::static_cast_fun, Src>;
 
-  static_assert(static_cast<typename Src::value_type>(type::value) == Src::value);
+  static_assert(static_cast<Src::value_type>(type::value) == Src::value);
 };
 
 }

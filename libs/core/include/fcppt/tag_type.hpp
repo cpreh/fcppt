@@ -19,7 +19,7 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 template <typename Type>
-using tag_type = typename fcppt::detail::tag_type<std::remove_cvref_t<Type>>::type;
+using tag_type = fcppt::detail::tag_type<std::remove_cvref_t<Type>>::type;
 
 }
 

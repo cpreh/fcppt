@@ -28,7 +28,7 @@ Result init(Function const &_function)
 {
   Result result(Result::null());
 
-  using element_type = typename Result::element_type;
+  using element_type = Result::element_type;
 
   for (element_type const value : fcppt::enum_::make_range<element_type>())
   {

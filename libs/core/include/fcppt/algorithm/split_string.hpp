@@ -32,7 +32,7 @@ template <typename String>
 std::vector<String>
 split_string(String const &_string, fcppt::type_traits::value_type<String> const _delim)
 {
-  using iterator = typename String::const_iterator;
+  using iterator = String::const_iterator;
 
   std::vector<String> result{};
 

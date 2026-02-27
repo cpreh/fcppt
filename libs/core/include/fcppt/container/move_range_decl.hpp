@@ -37,7 +37,7 @@ public:
 
   using iterator = std::move_iterator<typename Container::iterator>;
 
-  using const_iterator = typename Container::const_iterator;
+  using const_iterator = Container::const_iterator;
 
   [[nodiscard]] iterator begin();
 

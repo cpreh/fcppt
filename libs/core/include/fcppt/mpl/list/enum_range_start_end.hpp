@@ -63,7 +63,7 @@ template <
     fcppt::type_traits::enum_constant_concept Max>
 requires std::is_same_v<fcppt::type_traits::value_type<Start>, fcppt::type_traits::value_type<Max>>
 using enum_range_start_end =
-    typename fcppt::mpl::list::detail::enum_range_start_end<Start, Max>::type;
+    fcppt::mpl::list::detail::enum_range_start_end<Start, Max>::type;
 }
 
 #endif

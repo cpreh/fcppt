@@ -26,8 +26,10 @@ TEST_CASE("math::detail::static_storage", "[math]")
   {
     storage_type const const_storage{1, 2};
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     CHECK(const_storage[0] == 1);
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     CHECK(const_storage[1] == 2);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)
@@ -40,8 +42,10 @@ TEST_CASE("math::detail::static_storage", "[math]")
   {
     storage_type storage{1, 2};
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     storage[0] = 5;
 
+    // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     CHECK(storage[0] == 5);
 
     // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-pointer-arithmetic)

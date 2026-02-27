@@ -70,7 +70,7 @@ fcppt::parse::skipper::result<Ch> fcppt::parse::skipper::basic_char_set<Ch>::ski
 }
 
 template <typename Ch>
-typename fcppt::parse::skipper::basic_char_set<Ch>::char_set_type const &
+fcppt::parse::skipper::basic_char_set<Ch>::char_set_type const &
 fcppt::parse::skipper::basic_char_set<Ch>::chars() const
 {
   return this->chars_;

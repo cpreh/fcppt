@@ -20,9 +20,7 @@ namespace fcppt::type_traits
 \tparam Src A std::integral_constant.
 */
 template <typename DestType, typename Src>
-using safe_integral_cast =
-    typename fcppt::type_traits::detail::safe_integral_cast<DestType, Src>::type;
-
+using safe_integral_cast = fcppt::type_traits::detail::safe_integral_cast<DestType, Src>::type;
 }
 
 #endif

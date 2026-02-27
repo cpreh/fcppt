@@ -14,7 +14,7 @@ namespace
 {
 // TODO(philipp): Implement a helper type for this?
 template<typename T>
-using is_integral_t = typename std::is_integral<T>::type;
+using is_integral_t = std::is_integral<T>::type;
 }
 int main()
 {

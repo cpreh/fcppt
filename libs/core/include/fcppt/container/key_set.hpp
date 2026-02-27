@@ -25,7 +25,7 @@ template <typename Set, typename Map>
 inline Set key_set(Map const &_map)
 {
   return fcppt::algorithm::map<Set>(
-      _map, [](typename Map::const_reference _item) { return _item.first; });
+      _map, [](Map::const_reference _item) { return _item.first; });
 }
 
 }

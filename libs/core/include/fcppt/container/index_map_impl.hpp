@@ -15,7 +15,7 @@ fcppt::container::index_map<T, A>::index_map() : impl_()
 }
 
 template <typename T, typename A>
-typename fcppt::container::index_map<T, A>::reference
+fcppt::container::index_map<T, A>::reference
 fcppt::container::index_map<T, A>::get(size_type const _index, insert_function const &_insert)
 {
   if (_index >= impl_.size())
@@ -30,18 +30,19 @@ fcppt::container::index_map<T, A>::get(size_type const _index, insert_function c
     }
   }
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return impl_[_index];
 }
 
 template <typename T, typename A>
-typename fcppt::container::index_map<T, A>::reference
+fcppt::container::index_map<T, A>::reference
 fcppt::container::index_map<T, A>::operator[](size_type const _index)
 {
   return this->get(_index, insert_function{[] { return T(); }});
 }
 
 template <typename T, typename A>
-typename fcppt::container::index_map<T, A>::internal_type const &
+fcppt::container::index_map<T, A>::internal_type const &
 fcppt::container::index_map<T, A>::impl() const
 {
   return impl_;

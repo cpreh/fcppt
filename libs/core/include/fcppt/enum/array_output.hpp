@@ -36,6 +36,7 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::enum_::array<Enum, Va
   for (Enum const value : fcppt::enum_::make_range<Enum>())
   {
     _stream << fcppt::io::widen_string(std::string{fcppt::enum_::to_string(value)})
+            // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
             << FCPPT_CHAR_LITERAL(Ch, '=') << fcppt::output(_array[value]);
     if (value != fcppt::enum_::max_value<Enum>::value)
     {

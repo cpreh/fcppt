@@ -46,6 +46,7 @@ TEST_CASE("container::bitfield::underlying_value", "[container],[bitfield]")
 
   bitfield field1(bitfield::null());
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   field1[test_enum::test2] = true;
 
   bitfield::internal_type const value(fcppt::container::bitfield::underlying_value(field1));

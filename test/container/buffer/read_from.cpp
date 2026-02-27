@@ -39,8 +39,10 @@ TEST_CASE("container::buffer::read_from", "[container],[buffer]")
 
   REQUIRE(result.read_size() == 2U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(result[0] == 10);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(result[1] == 20);
 }
 

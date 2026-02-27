@@ -30,13 +30,13 @@ public:
       std::is_signed_v<fcppt::type_traits::value_type<Pos>>,
       "spiral_iterator only works with signed integers");
 
-  using reference = typename base_type::reference;
+  using reference = base_type::reference;
 
-  using pointer = typename base_type::pointer;
+  using pointer = base_type::pointer;
 
-  using iterator_category = typename base_type::iterator_category;
+  using iterator_category = base_type::iterator_category;
 
-  using difference_type = typename base_type::difference_type;
+  using difference_type = base_type::difference_type;
 
   spiral_iterator(pos current, difference_type max_dist);
 

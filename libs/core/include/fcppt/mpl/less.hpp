@@ -33,7 +33,7 @@ Then the result is <code>std::bool_constant<(V1 < V2)></code>.
 */
 template <fcppt::mpl::integral_concept T1, fcppt::mpl::integral_concept T2>
 requires fcppt::mpl::integrals_compatible<T1, T2>
-using less = typename fcppt::mpl::detail::less<T1, T2>::type;
+using less = fcppt::mpl::detail::less<T1, T2>::type;
 }
 
 #endif

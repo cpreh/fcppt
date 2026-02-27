@@ -26,26 +26,26 @@ fcppt::math::sphere::object<T, N>::object(point_type &&_origin, value_type &&_ra
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::sphere::object<T, N>::point_type &fcppt::math::sphere::object<T, N>::origin()
+fcppt::math::sphere::object<T, N>::point_type &fcppt::math::sphere::object<T, N>::origin()
 {
   return this->origin_;
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::sphere::object<T, N>::point_type const &
+fcppt::math::sphere::object<T, N>::point_type const &
 fcppt::math::sphere::object<T, N>::origin() const
 {
   return this->origin_;
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::sphere::object<T, N>::reference fcppt::math::sphere::object<T, N>::radius()
+fcppt::math::sphere::object<T, N>::reference fcppt::math::sphere::object<T, N>::radius()
 {
   return this->radius_;
 }
 
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::sphere::object<T, N>::const_reference
+fcppt::math::sphere::object<T, N>::const_reference
 fcppt::math::sphere::object<T, N>::radius() const
 {
   return this->radius_;

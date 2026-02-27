@@ -18,7 +18,7 @@ namespace fcppt
 \tparam StrongTypedef Must be an #fcppt::strong_typedef.
 */
 template <typename StrongTypedef>
-using strong_typedef_tag = typename fcppt::detail::strong_typedef_tag<StrongTypedef>::type;
+using strong_typedef_tag = fcppt::detail::strong_typedef_tag<StrongTypedef>::type;
 
 }
 

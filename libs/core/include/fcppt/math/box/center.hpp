@@ -29,7 +29,7 @@ Note that this might not calculate the box's "real" center, since the
 calculation is performed using <code>T</code>, which might be integral.
 */
 template <typename T, fcppt::math::size_type N>
-typename fcppt::math::box::object<T, N>::vector center(fcppt::math::box::object<T, N> const &_box)
+fcppt::math::box::object<T, N>::vector center(fcppt::math::box::object<T, N> const &_box)
 {
   return _box.pos() +
          (fcppt::math::dim::to_vector(_box.size()) / fcppt::literal<T>(2)).get_unsafe();
