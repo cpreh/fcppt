@@ -27,10 +27,13 @@ TEST_CASE("container::make", "[assign]")
 
   REQUIRE(result.size() == 3U);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(*result[0] == 3);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(*result[1] == 4);
 
+  // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   CHECK(*result[2] == 5);
 }
 
