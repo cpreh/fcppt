@@ -10,7 +10,6 @@ set(FCPPT_UTILS_CLANG_TIDY
     CACHE FILEPATH "Path to clang-tidy. If unset, clang-tidy will not be run.")
 
 if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
-  # - "clang-analyzer-cplusplus.NewDeleteLeaks" produces warnings with std::make_unique
   # - "fuchsia-trailing-return" complains about code like X<decltype(_param)>
   # - "readability-function-cognitive-complexity" triggers for almost every Catch2 test case
   # - "modernize-return-braced-init-list" also triggers on ()-initialization, breaking code
@@ -22,7 +21,6 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
       "-altera-unroll-loops"
       "-bugprone-macro-parentheses"
       "-cppcoreguidelines-macro-usage"
-      "-clang-analyzer-cplusplus.NewDeleteLeaks"
       "-cert-dcl21-cpp"
       "-fuchsia-default-arguments-calls"
       "-fuchsia-overloaded-operator"
