@@ -34,16 +34,30 @@ constexpr fcppt::enum_::array<Enum, Value>::array(from_internal, internal &&_imp
 
 template <typename Enum, typename Value>
 fcppt::enum_::array<Enum, Value>::reference
-fcppt::enum_::array<Enum, Value>::operator[](Enum const _index) noexcept
+fcppt::enum_::array<Enum, Value>::get(Enum const _index) noexcept
 {
   return this->impl().get_unsafe(array::to_index(_index));
 }
 
 template <typename Enum, typename Value>
 fcppt::enum_::array<Enum, Value>::const_reference
-fcppt::enum_::array<Enum, Value>::operator[](Enum const _index) const noexcept
+fcppt::enum_::array<Enum, Value>::get(Enum const _index) const noexcept
 {
   return this->impl().get_unsafe(array::to_index(_index));
+}
+
+template <typename Enum, typename Value>
+fcppt::enum_::array<Enum, Value>::reference
+fcppt::enum_::array<Enum, Value>::operator[](Enum const _index) noexcept
+{
+  return this->get(_index);
+}
+
+template <typename Enum, typename Value>
+fcppt::enum_::array<Enum, Value>::const_reference
+fcppt::enum_::array<Enum, Value>::operator[](Enum const _index) const noexcept
+{
+  return this->get(_index);
 }
 
 template <typename Enum, typename Value>

@@ -64,6 +64,8 @@ public:
   using pointer = internal::pointer;
   using const_pointer = internal::const_pointer;
 
+  [[nodiscard]] reference get(Enum) noexcept;
+  [[nodiscard]] const_reference get(Enum) const noexcept;
   [[nodiscard]] reference operator[](Enum) noexcept;
   [[nodiscard]] const_reference operator[](Enum) const noexcept;
 
