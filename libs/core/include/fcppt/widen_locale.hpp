@@ -22,7 +22,7 @@ namespace fcppt
 
 Converts \a _string to <code>std::wstring</code> using \a _locale.
 
-\throw std::runtime_error If the conversion fails (which should not happen).
+\throw fcppt::string_to_wstring_conversion_failed If the conversion fails (which should not happen).
 */
 FCPPT_DETAIL_SYMBOL
 std::wstring widen_locale(std::string_view, std::locale const &);
