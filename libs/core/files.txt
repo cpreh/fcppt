@@ -1290,6 +1290,7 @@ libs/core/include/fcppt/static_pointer_cast.hpp
 libs/core/include/fcppt/string_conv_locale.hpp
 libs/core/include/fcppt/string.hpp
 libs/core/include/fcppt/string_literal.hpp
+libs/core/include/fcppt/string_to_wstring_conversion_failed.hpp
 libs/core/include/fcppt/string_view.hpp
 libs/core/include/fcppt/strong_typedef_apply.hpp
 libs/core/include/fcppt/strong_typedef_arithmetic.hpp
@@ -1478,6 +1479,7 @@ libs/core/src/make_optional_error_code.cpp
 libs/core/src/narrow.cpp
 libs/core/src/narrow_locale.cpp
 libs/core/src/string_conv_locale.cpp
+libs/core/src/string_to_wstring_conversion_failed.cpp
 libs/core/src/system_conversion_failed.cpp
 libs/core/src/system.cpp
 libs/core/src/time/gmtime.cpp
