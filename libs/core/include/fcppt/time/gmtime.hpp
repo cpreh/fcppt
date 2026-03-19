@@ -7,6 +7,7 @@
 #define FCPPT_TIME_GMTIME_HPP_INCLUDED
 
 #include <fcppt/detail/symbol.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
@@ -19,11 +20,9 @@ namespace fcppt::time
 \ingroup fcppttime
 
 Converts \a time to an <code>%std::tm</code> using <code>%std::gmtime</code>.
-
-\throw <code>std::runtime_error</code> on failure.
 */
 FCPPT_DETAIL_SYMBOL
-std::tm gmtime(std::time_t time);
+fcppt::optional::object<std::tm> gmtime(std::time_t time);
 
 }
 

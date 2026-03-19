@@ -7,6 +7,7 @@
 #define FCPPT_TIME_STD_TIME_HPP_INCLUDED
 
 #include <fcppt/detail/symbol.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
@@ -19,11 +20,9 @@ namespace fcppt::time
 \ingroup fcppttime
 
 A wrapper around <code>%std::time</code>, returning the current time.
-
-\throw <code>std::runtime_error</code> on failure.
 */
 FCPPT_DETAIL_SYMBOL
-std::time_t std_time();
+fcppt::optional::object<std::time_t> std_time();
 
 }
 

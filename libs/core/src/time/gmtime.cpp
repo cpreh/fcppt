@@ -4,29 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/config/platform.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/time/gmtime.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <time.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)
 #include <ctime>
-#include <stdexcept>
 #include <fcppt/config/external_end.hpp>
 
-std::tm fcppt::time::gmtime(std::time_t const _time)
+fcppt::optional::object<std::tm> fcppt::time::gmtime(std::time_t const _time)
 {
 #ifdef FCPPT_CONFIG_POSIX_PLATFORM
   std::tm result{};
-  if (gmtime_r(&_time, &result) == nullptr)
-  {
-    throw std::runtime_error{"gmtime_r failed"};
-  }
-  return result;
+  return fcppt::optional::make_if(
+      gmtime_r(&_time, &result) != nullptr, [&result] { return result; });
 #elifdef FCPPT_CONFIG_WINDOWS_PLATFORM
   std::tm result{};
-  if(gmtime_s(&result, &_time) != 0)
-  {
-    throw std::runtime_error{"gmtime_s failed"};
-  }
-  return result;
+  return fcppt::optional::make_if(gmtime_s(&result, &_time) == 0, [&result] { return result; });
 #else
 #error "Implement me!"
 #endif

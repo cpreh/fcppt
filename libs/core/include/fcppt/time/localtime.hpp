@@ -7,6 +7,7 @@
 #define FCPPT_TIME_LOCALTIME_HPP_INCLUDED
 
 #include <fcppt/detail/symbol.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
@@ -20,11 +21,9 @@ namespace fcppt::time
 
 Converts \a time to an <code>%std::tm</code> using
 <code>%std::localtime</code>.
-
-\throw <code>std::runtime_error</code> on failure.
 */
 FCPPT_DETAIL_SYMBOL
-std::tm localtime(std::time_t time);
+fcppt::optional::object<std::tm> localtime(std::time_t time);
 
 }
 

@@ -3,21 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/const.hpp>
 #include <fcppt/literal.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/time/std_time.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
-#include <stdexcept>
 #include <fcppt/config/external_end.hpp>
 
-std::time_t fcppt::time::std_time()
+fcppt::optional::object<std::time_t> fcppt::time::std_time()
 {
-  std::time_t const ret(std::time(nullptr));
+  std::time_t const ret{std::time(nullptr)};
 
-  if (ret == fcppt::literal<std::time_t>(-1))
-  {
-    throw std::runtime_error{"std_time() failed!"};
-  }
-
-  return ret;
+  return fcppt::optional::make_if(ret != fcppt::literal<std::time_t>(-1), fcppt::const_(ret));
 }
