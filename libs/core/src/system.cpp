@@ -8,8 +8,8 @@
 #include <fcppt/config/platform.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #ifdef FCPPT_CONFIG_POSIX_PLATFORM
-#include <fcppt/exception.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/system_conversion_failed.hpp>
+#include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/to_exception.hpp>
@@ -34,16 +34,19 @@
 fcppt::optional::object<int> fcppt::system(fcppt::string const &_command)
 {
 #ifdef FCPPT_CONFIG_POSIX_PLATFORM
-  int const result{
-      // NOLINTNEXTLINE(cert-env33-c,concurrency-mt-unsafe,bugprone-command-processor)
-      ::system(fcppt::optional::to_exception(fcppt::to_std_string(_command), [&_command] {
-                 return fcppt::exception{
-                     FCPPT_TEXT("Failed to convert command \"") + _command +
-                     FCPPT_TEXT("\" for fcppt::system!")};
-               }).c_str())};
+  int const result{// NOLINTNEXTLINE(cert-env33-c,concurrency-mt-unsafe,bugprone-command-processor)
+                   ::system(
+                       fcppt::optional::to_exception(
+                           fcppt::to_std_string(_command),
+                           [&_command]
+                           {
+                             return fcppt::system_conversion_failed{
+                                 fcppt::system_conversion_failed::command_type{_command}};
+                           })
+                           .c_str())};
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
   return fcppt::optional::make_if(
       // NOLINTNEXTLINE(hicpp-signed-bitwise)
       WIFEXITED(result), // NOLINT(misc-include-cleaner)

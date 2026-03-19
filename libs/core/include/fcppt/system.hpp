@@ -18,6 +18,8 @@ namespace fcppt
 \ingroup fcpptstring
 
 \warning <code>std::system</code> may not be thread-safe because it may change signal settings.
+
+\throw fcppt::system_conversion_failed If the argument cannot be converted.
 */
 FCPPT_DETAIL_SYMBOL
 fcppt::optional::object<int> system(fcppt::string const &);
