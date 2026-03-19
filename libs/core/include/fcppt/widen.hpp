@@ -20,6 +20,8 @@ namespace fcppt
 \ingroup fcpptstring
 
 Converts \a _string to std::wstring using \a _locale.
+
+\throw fcppt::string_to_wstring_conversion_failed If the conversion fails (which should not happen).
 */
 FCPPT_DETAIL_SYMBOL
 std::wstring widen(std::string_view);

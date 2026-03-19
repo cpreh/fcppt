@@ -3,6 +3,43 @@
 
 \section changes_changes_to_520 5.2.0
 
+<ul>
+
+<li>Cleaned up <code>clang-22</code> warnings.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_520 Added functionality
+
+<ul>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Added #fcppt::enum_::array::get as an alternative to <code>operator[]</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_520 Changed functionality
+
+<ul>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>#fcppt::system now throws #fcppt::system_conversion_failed if the input string cannot be converted.</li>
+	<li>#fcppt::widen and #fcppt::widen_locale now throw #fcppt::string_to_wstring_conversion_failed in case of an error.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttime
+	<ul>
+	<li>#fcppt::time::gmtime, #fcppt::time::localtime and #fcppt::time::std_time now return optionals.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_510 5.1.0
 
 \subsection changes_added_functionality_to_510 Added functionality
