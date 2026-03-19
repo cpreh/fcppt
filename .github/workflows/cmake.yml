@@ -17,7 +17,7 @@ jobs:
   buildMac:
     name: Build macOS
     env:
-      FLAGS: -Wno-poison-system-directories -Wno-c++20-compat
+      FLAGS: "-Wno-poison-system-directories -Wno-c++20-compat"
     runs-on: macOS-latest
 
     steps:
