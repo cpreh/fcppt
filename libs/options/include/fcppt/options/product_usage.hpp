@@ -7,7 +7,6 @@
 #define FCPPT_OPTIONS_PRODUCT_USAGE_HPP_INCLUDED
 
 #include <fcppt/recursive.hpp>
-#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/product_usage_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/usage_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
@@ -26,7 +25,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::usage const &right() const;
 
-  [[nodiscard]] bool operator==(product_usage const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(product_usage const &) const;
 private:
   using base = fcppt::recursive<fcppt::options::usage>;
 

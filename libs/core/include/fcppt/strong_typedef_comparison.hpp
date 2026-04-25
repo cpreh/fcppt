@@ -7,6 +7,9 @@
 #define FCPPT_STRONG_TYPEDEF_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <concepts>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -66,6 +69,7 @@ operator>=(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, 
 template <typename T, typename Tag>
 inline bool
 operator==(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, Tag> const &_right)
+  requires std::equality_comparable<T>
 {
   return _left.get() == _right.get();
 }
@@ -78,6 +82,7 @@ operator==(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, 
 template <typename T, typename Tag>
 inline bool
 operator!=(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, Tag> const &_right)
+  requires std::equality_comparable<T>
 {
   return _left.get() != _right.get();
 }

@@ -7,6 +7,9 @@
 #define FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <concepts>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::optional
 {
@@ -18,12 +21,11 @@ namespace fcppt::optional
 Compares \a _a and \a _b for equality. Two optionals are equal if they are
 either both empty or if they are both not empty and their elements compare
 equal. This function requires \a T to be equality comparable.
-
-TODO(concepts)
 */
 template <typename T>
-[[nodiscard]] bool
+[[nodiscard]] inline bool
 operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
+  requires std::equality_comparable<T>
 {
   return _a.impl() == _b.impl();
 }
@@ -35,12 +37,11 @@ operator==(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> cons
 
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 This function requires \a T to be equality comparable.
-
-TODO(concepts)
 */
 template <typename T>
-[[nodiscard]] bool
+[[nodiscard]] inline bool
 operator!=(fcppt::optional::object<T> const &_a, fcppt::optional::object<T> const &_b)
+  requires std::equality_comparable<T>
 {
   return !(_a == _b);
 }

@@ -3,7 +3,9 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/string.hpp>
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/sub_command_usage.hpp>
 #include <fcppt/options/usage.hpp>
@@ -30,3 +32,5 @@ fcppt::options::optional_help_text const &fcppt::options::sub_command_usage::hel
 {
   return this->help_text_;
 }
+
+bool fcppt::options::sub_command_usage::operator==(sub_command_usage const &) const = default;

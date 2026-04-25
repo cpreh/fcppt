@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/product_usage.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,3 +25,5 @@ fcppt::options::usage const &fcppt::options::product_usage::right() const
 {
   return this->right_.get();
 }
+
+bool fcppt::options::product_usage::operator==(product_usage const &) const = default;

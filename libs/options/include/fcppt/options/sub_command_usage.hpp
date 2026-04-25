@@ -7,9 +7,7 @@
 #define FCPPT_OPTIONS_SUB_COMMAND_USAGE_HPP_INCLUDED
 
 #include <fcppt/recursive.hpp>
-#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/string.hpp>
-#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/sub_command_usage_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/options/usage_fwd.hpp>
@@ -34,7 +32,8 @@ public:
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::optional_help_text const &
   help_text() const;
 
-  [[nodiscard]] bool operator==(sub_command_usage const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(sub_command_usage const &) const;
+
 private:
   fcppt::string name_;
 
