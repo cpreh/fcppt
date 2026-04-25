@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_option_error.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -26,3 +28,5 @@ fcppt::options::long_name const &fcppt::options::missing_option_error::long_name
 {
   return this->long_name_;
 }
+
+bool fcppt::options::missing_option_error::operator==(missing_option_error const &) const = default;

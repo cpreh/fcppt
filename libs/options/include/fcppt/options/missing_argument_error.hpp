@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_MISSING_ARGUMENT_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_MISSING_ARGUMENT_ERROR_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_argument_error_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
@@ -23,7 +22,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::long_name const &long_name() const;
 
-  [[nodiscard]] bool operator==(missing_argument_error const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(missing_argument_error const &) const;
 private:
   fcppt::options::long_name long_name_;
 };

@@ -17,3 +17,5 @@ fcppt::args_vector const &fcppt::options::leftover_error::args() const
 {
   return this->args_;
 }
+
+bool fcppt::options::leftover_error::operator==(leftover_error const &) const = default;

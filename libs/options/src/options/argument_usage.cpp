@@ -3,6 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/argument_usage.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -33,3 +35,5 @@ fcppt::options::optional_help_text const &fcppt::options::argument_usage::help_t
 {
   return this->help_text_;
 }
+
+bool fcppt::options::argument_usage::operator==(argument_usage const &) const = default;

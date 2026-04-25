@@ -19,3 +19,5 @@ std::vector<fcppt::string> const &fcppt::options::missing_command_error::command
 {
   return this->commands_;
 }
+
+bool fcppt::options::missing_command_error::operator==(missing_command_error const &) const = default;

@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/dual_flag_error.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -25,3 +26,5 @@ fcppt::options::long_name const &fcppt::options::dual_flag_error::long_name() co
 {
   return this->long_name_;
 }
+
+bool fcppt::options::dual_flag_error::operator==(dual_flag_error const &) const = default;

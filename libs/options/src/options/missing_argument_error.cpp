@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_argument_error.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,3 +19,5 @@ fcppt::options::long_name const &fcppt::options::missing_argument_error::long_na
 {
   return this->long_name_;
 }
+
+bool fcppt::options::missing_argument_error::operator==(missing_argument_error const &) const = default;

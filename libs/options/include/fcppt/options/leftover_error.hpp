@@ -22,7 +22,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::args_vector const &args() const;
 
-  [[nodiscard]] bool operator==(leftover_error const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(leftover_error const &) const;
 private:
   fcppt::args_vector args_;
 };

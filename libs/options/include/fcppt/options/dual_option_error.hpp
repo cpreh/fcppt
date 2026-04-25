@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_DUAL_OPTION_ERROR_HPP_INCLUDED
 #define FCPPT_OPTIONS_DUAL_OPTION_ERROR_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/dual_option_error_fwd.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -27,7 +26,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::long_name const &long_name() const;
 
-  [[nodiscard]] bool operator==(dual_option_error const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(dual_option_error const &) const;
 private:
   fcppt::options::short_name short_name_;
 

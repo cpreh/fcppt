@@ -5,6 +5,7 @@
 
 #include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/sub_command_usage.hpp>

@@ -18,3 +18,5 @@ fcppt::string const &fcppt::options::invalid_command_error::command() const
 {
   return this->command_;
 }
+
+bool fcppt::options::invalid_command_error::operator==(invalid_command_error const &) const = default;

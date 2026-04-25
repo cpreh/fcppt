@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/recursive_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/commands_usage.hpp>
 #include <fcppt/options/sub_command_usage.hpp>
 #include <fcppt/options/usage.hpp>
@@ -28,3 +29,5 @@ fcppt::options::commands_usage::sub_commands() const
 {
   return this->sub_commands_;
 }
+
+bool fcppt::options::commands_usage::operator==(commands_usage const &) const = default;

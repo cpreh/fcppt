@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/argument_conversion_error.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/type_name.hpp>
@@ -30,3 +31,5 @@ fcppt::options::long_name const &fcppt::options::argument_conversion_error::long
 {
   return this->long_name_;
 }
+
+bool fcppt::options::argument_conversion_error::operator==(argument_conversion_error const &) const = default;

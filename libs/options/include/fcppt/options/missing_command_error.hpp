@@ -25,7 +25,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL std::vector<fcppt::string> const &commands() const;
 
-  [[nodiscard]] bool operator==(missing_command_error const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(missing_command_error const &) const;
 private:
   std::vector<fcppt::string> commands_;
 };

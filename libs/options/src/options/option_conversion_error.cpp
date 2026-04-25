@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/name.hpp>
 #include <fcppt/options/option_conversion_error.hpp>
 #include <fcppt/options/type_name.hpp>
@@ -31,3 +32,5 @@ fcppt::options::name const &fcppt::options::option_conversion_error::name() cons
 {
   return this->name_;
 }
+
+bool fcppt::options::option_conversion_error::operator==(option_conversion_error const &) const = default;

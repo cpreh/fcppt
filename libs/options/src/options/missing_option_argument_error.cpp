@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
 #include <fcppt/options/missing_option_argument_error.hpp>
 #include <fcppt/options/name.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,3 +20,5 @@ fcppt::options::name const &fcppt::options::missing_option_argument_error::name(
 {
   return this->option_;
 }
+
+bool fcppt::options::missing_option_argument_error::operator==(missing_option_argument_error const &) const = default;

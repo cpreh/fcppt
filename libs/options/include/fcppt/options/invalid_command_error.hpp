@@ -22,7 +22,7 @@ public:
 
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::string const &command() const;
 
-  [[nodiscard]] bool operator==(invalid_command_error const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(invalid_command_error const &) const;
 private:
   fcppt::string command_;
 };

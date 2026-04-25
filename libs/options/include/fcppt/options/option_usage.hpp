@@ -8,8 +8,6 @@
 
 #include <fcppt/declare_strong_typedef.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
-#include <fcppt/optional/comparison.hpp> // IWYU pragma: keep
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_usage_fwd.hpp> // IWYU pragma: keep
@@ -49,7 +47,7 @@ public:
   [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL fcppt::options::optional_help_text const &
   help_text() const;
 
-  [[nodiscard]] bool operator==(option_usage const &) const = default;
+  [[nodiscard]] FCPPT_OPTIONS_DETAIL_SYMBOL bool operator==(option_usage const &) const;
 private:
   fcppt::optional::object<fcppt::string> default_value_;
 
