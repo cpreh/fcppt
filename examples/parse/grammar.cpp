@@ -19,6 +19,9 @@
 #include <fcppt/parse/operators/repetition_plus.hpp>
 #include <fcppt/parse/operators/sequence.hpp>
 #include <fcppt/parse/skipper/epsilon.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/tuple/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
@@ -51,6 +54,9 @@ private:
 };
 //![grammar_decl]
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
+
 //![grammar_impl]
 grammar::grammar()
     : grammar_base{fcppt::make_cref(list_p), fcppt::parse::skipper::epsilon{}},
@@ -65,6 +71,7 @@ grammar::grammar()
 {
 }
 //![grammar_impl]
+FCPPT_PP_POP_WARNING
 }
 
 int main()

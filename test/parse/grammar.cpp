@@ -18,6 +18,7 @@
 #include <fcppt/parse/parse_stream_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/parse_string_error_output.hpp> // IWYU pragma: keep
 #include <fcppt/parse/skipper/space.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -46,6 +47,7 @@ private:
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wmaybe-uninitialized)
 
 grammar::grammar()
     : grammar_base{fcppt::make_cref(this->start_), fcppt::parse::skipper::space()},
