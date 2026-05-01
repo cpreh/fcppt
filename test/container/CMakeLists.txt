@@ -59,4 +59,6 @@ add_fcppt_container_test(set_union)
 
 add_fcppt_container_test(uncons)
 
+add_fcppt_container_test(uncons_string_view)
+
 add_subdirectory(tree)
