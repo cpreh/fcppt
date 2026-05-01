@@ -66,7 +66,6 @@ public:
   */
   object(object const &);
 
-  // TODO(philipp): There is a problem with fcppt::log::detail::context_tree_node
   // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
   object(object &&) noexcept(std::is_nothrow_move_constructible_v<T>);
 

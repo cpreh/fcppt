@@ -32,7 +32,6 @@ public:
 
   explicit movable(Type &&);
 
-  // TODO(philipp)
   // NOLINTNEXTLINE(cppcoreguidelines-noexcept-move-operations,hicpp-noexcept-move,performance-noexcept-move-constructor)
   movable(movable &&) noexcept(std::is_nothrow_move_constructible_v<Type>);
 
