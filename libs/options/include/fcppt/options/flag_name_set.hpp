@@ -7,9 +7,10 @@
 #define FCPPT_OPTIONS_FLAG_NAME_SET_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/strong_typedef_std_hash.hpp> // IWYU pragma: keep
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <set>
+#include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::options
@@ -22,7 +23,7 @@ namespace fcppt::options
 Each string in this set is expected not to be followed by a value,
 e.g. "--foo".
 */
-using flag_name_set = std::set<fcppt::options::flag_name>;
+using flag_name_set = std::unordered_set<fcppt::options::flag_name>;
 
 }
 
