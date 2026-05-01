@@ -6,7 +6,6 @@
 #ifndef FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
 #define FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/string_view.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
@@ -16,9 +15,9 @@
 
 namespace fcppt::options::impl
 {
-fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string>>
-is_flag(fcppt::string_view);
-
+[[nodiscard]]
+fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string_view>>
+    is_flag(fcppt::string_view);
 }
 
 #endif
