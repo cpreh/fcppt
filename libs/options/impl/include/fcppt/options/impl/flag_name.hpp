@@ -8,11 +8,11 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/string_view.hpp>
-#include <fcppt/options/detail/flag_is_short.hpp>
+#include <fcppt/options/is_short.hpp>
 
 namespace fcppt::options::impl
 {
-fcppt::string flag_name(fcppt::string_view, fcppt::options::detail::flag_is_short);
+fcppt::string flag_name(fcppt::string_view, fcppt::options::is_short);
 
 }
 

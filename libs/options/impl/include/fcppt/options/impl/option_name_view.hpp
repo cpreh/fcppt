@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
-#define FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_IMPL_OPTION_NAME_VIEW_HPP_INCLUDED
+#define FCPPT_OPTIONS_IMPL_OPTION_NAME_VIEW_HPP_INCLUDED
 
 #include <fcppt/string_view.hpp>
-#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/is_short.hpp>
+#include <fcppt/options/option_name_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -16,8 +16,8 @@
 namespace fcppt::options::impl
 {
 [[nodiscard]]
-fcppt::optional::object<std::pair<fcppt::options::is_short, fcppt::string_view>>
-    is_flag(fcppt::string_view);
+std::pair<fcppt::options::is_short, fcppt::string_view>
+option_name_view(fcppt::options::option_name const &);
 }
 
 #endif

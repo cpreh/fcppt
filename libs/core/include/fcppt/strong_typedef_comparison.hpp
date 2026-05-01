@@ -8,6 +8,7 @@
 
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <compare>
 #include <concepts>
 #include <fcppt/config/external_end.hpp>
 
@@ -85,6 +86,19 @@ operator!=(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, 
   requires std::equality_comparable<T>
 {
   return _left.get() != _right.get();
+}
+
+/**
+\brief Three-way comparison.
+
+\ingroup fcpptstrongtypedef
+*/
+template <typename T, typename Tag>
+inline auto
+operator<=>(fcppt::strong_typedef<T, Tag> const &_left, fcppt::strong_typedef<T, Tag> const &_right)
+  requires std::three_way_comparable<T>
+{
+  return _left.get() <=> _right.get();
 }
 
 }

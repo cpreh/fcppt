@@ -4,19 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_comparison.hpp> // IWYU pragma: keep
+#include <fcppt/options/is_short.hpp>
 #include <fcppt/options/option_name.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <compare>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-fcppt::options::option_name::option_name(fcppt::string &&_name, is_short const _is_short)
+fcppt::options::option_name::option_name(
+    fcppt::string &&_name, fcppt::options::is_short const _is_short)
     : name_{std::move(_name)}, is_short_{_is_short}
 {
 }
 
 fcppt::string const &fcppt::options::option_name::name() const { return this->name_; }
 
-fcppt::options::option_name::is_short fcppt::options::option_name::get_is_short() const
-{
-  return this->is_short_;
-}
+fcppt::options::is_short fcppt::options::option_name::is_short() const { return this->is_short_; }
+
+std::strong_ordering fcppt::options::option_name::operator<=>(option_name const &) const = default;

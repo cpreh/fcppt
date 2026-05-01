@@ -17,6 +17,7 @@
 #include <fcppt/options/flag_name.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/flag_usage.hpp>
+#include <fcppt/options/is_short.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -30,7 +31,6 @@
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
-#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/record/element.hpp> // IWYU pragma: keep
 #include <fcppt/record/object_impl.hpp> // IWYU pragma: keep
@@ -60,9 +60,7 @@ fcppt::options::flag<Label, Type>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &) const
 {
   bool const long_found{fcppt::options::detail::use_flag(
-      fcppt::make_ref(_state),
-      this->long_name_.get(),
-      fcppt::options::detail::flag_is_short{false})};
+      fcppt::make_ref(_state), this->long_name_.get(), fcppt::options::is_short{false})};
 
   auto const make_success{
       [&_state, this](bool const _value) -> fcppt::options::parse_result<result_type> {
@@ -79,9 +77,7 @@ fcppt::options::flag<Label, Type>::parse(
       [this, make_success, long_found, &_state](fcppt::options::short_name const &_short_name)
       {
         bool const short_found{fcppt::options::detail::use_flag(
-            fcppt::make_ref(_state),
-            _short_name.get(),
-            fcppt::options::detail::flag_is_short{true})};
+            fcppt::make_ref(_state), _short_name.get(), fcppt::options::is_short{true})};
 
         return long_found && short_found
                    ? fcppt::either::make_failure<fcppt::options::state_with_value<result_type>>(

@@ -11,7 +11,7 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/return_if.hpp>
-#include <fcppt/options/detail/flag_is_short.hpp>
+#include <fcppt/options/is_short.hpp>
 #include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -25,7 +25,7 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
-fcppt::optional::object<std::pair<fcppt::options::detail::flag_is_short, fcppt::string_view>>
+fcppt::optional::object<std::pair<fcppt::options::is_short, fcppt::string_view>>
 fcppt::options::impl::is_flag(fcppt::string_view const _value)
 {
   auto const is_dash{[](fcppt::char_type const _ch) { return _ch == FCPPT_TEXT('-'); }};
@@ -48,7 +48,7 @@ fcppt::options::impl::is_flag(fcppt::string_view const _value)
                     bool const dash_here{is_dash(fcppt::tuple::get<0>(_pos2))};
 
                     return std::make_pair(
-                        fcppt::options::detail::flag_is_short{!dash_here},
+                        fcppt::options::is_short{!dash_here},
                         dash_here ? fcppt::tuple::get<1>(_pos2) : rest_view);
                   });
             });

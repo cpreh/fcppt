@@ -31,6 +31,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Added <code>operator<=></code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_520 Changed functionality

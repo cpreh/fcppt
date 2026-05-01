@@ -27,6 +27,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_variant.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/is_short.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/missing_error_variant.hpp>
@@ -48,7 +49,6 @@
 #include <fcppt/options/state_with_value.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_variant.hpp>
-#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/use_option.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
@@ -144,7 +144,7 @@ fcppt::options::option<Label, Type>::parse(
       { return fcppt::optional::maybe(_opt_value, get_default_value, make_value); }};
 
   flag_result const long_found{map_result(fcppt::options::detail::use_option(
-      fcppt::make_ref(_state), long_name_.get(), fcppt::options::detail::flag_is_short{false}))};
+      fcppt::make_ref(_state), long_name_.get(), fcppt::options::is_short{false}))};
 
   auto const combine_results{
       [make_or_default_value, make_value, this](
@@ -180,10 +180,9 @@ fcppt::options::option<Label, Type>::parse(
           [combine_results, map_result, &long_found, &_state](
               fcppt::options::short_name const &_short_name) -> inner_result
           {
-            flag_result const short_found{map_result(fcppt::options::detail::use_option(
-                fcppt::make_ref(_state),
-                _short_name.get(),
-                fcppt::options::detail::flag_is_short{true}))};
+            flag_result const short_found{map_result(
+                fcppt::options::detail::use_option(
+                    fcppt::make_ref(_state), _short_name.get(), fcppt::options::is_short{true}))};
 
             return fcppt::either::join(fcppt::either::apply(
                 [&_short_name, combine_results](
@@ -192,7 +191,8 @@ fcppt::options::option<Label, Type>::parse(
                 long_found,
                 short_found));
           }),
-      [&_state](result_type &&_result) {
+      [&_state](result_type &&_result)
+      {
         return fcppt::options::state_with_value<result_type>{std::move(_state), std::move(_result)};
       });
 }
@@ -207,12 +207,12 @@ template <typename Label, typename Type>
 fcppt::options::option_name_set fcppt::options::option<Label, Type>::option_names() const
 {
   fcppt::options::option_name_set result{fcppt::options::option_name{
-      fcppt::string{this->long_name_.get()}, fcppt::options::option_name::is_short{false}}};
+      fcppt::string{this->long_name_.get()}, fcppt::options::is_short{false}}};
 
   fcppt::optional::maybe_void(
       this->short_name_, [&result](fcppt::options::short_name const &_short_name) {
         result.insert(fcppt::options::option_name{
-            fcppt::string{_short_name.get()}, fcppt::options::option_name::is_short{true}});
+            fcppt::string{_short_name.get()}, fcppt::options::is_short{true}});
       });
 
   return result;

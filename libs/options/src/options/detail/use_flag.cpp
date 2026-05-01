@@ -10,15 +10,15 @@
 #include <fcppt/string_view.hpp>
 #include <fcppt/algorithm/find_opt.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/options/is_short.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/options/impl/flag_name.hpp>
 
 bool fcppt::options::detail::use_flag(
     fcppt::reference<fcppt::options::state> const _state,
     fcppt::string_view const _name,
-    fcppt::options::detail::flag_is_short const _is_short)
+    fcppt::options::is_short const _is_short)
 {
   fcppt::string const flag_name{fcppt::options::impl::flag_name(_name, _is_short)};
 

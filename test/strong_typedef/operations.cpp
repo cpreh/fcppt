@@ -110,6 +110,8 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
 
   CHECK(test1 == test2);
 
+  CHECK((test1 <=> test2) == 0);
+
   CHECK(test1 != test3);
 
   CHECK(test1 <= test2);
@@ -118,7 +120,11 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
 
   CHECK(test1 < test3);
 
+  CHECK((test1 <=> test3) < 0);
+
   CHECK(test3 > test1);
+
+  CHECK((test3 <=> test1) > 0);
 }
 
 // NOLINTEND(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

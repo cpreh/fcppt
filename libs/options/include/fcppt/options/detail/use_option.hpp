@@ -8,8 +8,8 @@
 
 #include <fcppt/reference_fwd.hpp>
 #include <fcppt/string_view.hpp>
+#include <fcppt/options/is_short.hpp>
 #include <fcppt/options/state_fwd.hpp>
-#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
 
@@ -17,10 +17,7 @@ namespace fcppt::options::detail
 {
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::detail::use_option_result use_option(
-    fcppt::reference<fcppt::options::state>,
-    fcppt::string_view,
-    fcppt::options::detail::flag_is_short);
-
+    fcppt::reference<fcppt::options::state>, fcppt::string_view, fcppt::options::is_short);
 }
 
 #endif

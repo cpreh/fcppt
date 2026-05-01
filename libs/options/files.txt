@@ -3,12 +3,14 @@ libs/options/impl/include/fcppt/options/impl/help_text.hpp
 libs/options/impl/include/fcppt/options/impl/is_flag.hpp
 libs/options/impl/include/fcppt/options/impl/long_or_short_name.hpp
 libs/options/impl/include/fcppt/options/impl/next_arg.hpp
+libs/options/impl/include/fcppt/options/impl/option_name_view.hpp
 libs/options/impl/include/fcppt/options/impl/type_annotation.hpp
 libs/options/impl/src/options/impl/flag_name.cpp
 libs/options/impl/src/options/impl/help_text.cpp
 libs/options/impl/src/options/impl/is_flag.cpp
 libs/options/impl/src/options/impl/long_or_short_name.cpp
 libs/options/impl/src/options/impl/next_arg.cpp
+libs/options/impl/src/options/impl/option_name_view.cpp
 libs/options/include/fcppt/options/active_value_fwd.hpp
 libs/options/include/fcppt/options/active_value.hpp
 libs/options/include/fcppt/options/active_value_tag.hpp
@@ -47,10 +49,11 @@ libs/options/include/fcppt/options/detail/combine_errors_sum.hpp
 libs/options/include/fcppt/options/detail/concrete_decl.hpp
 libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 libs/options/include/fcppt/options/detail/concrete_impl.hpp
-libs/options/include/fcppt/options/detail/flag_is_short.hpp
 libs/options/include/fcppt/options/detail/help_label.hpp
 libs/options/include/fcppt/options/detail/left_tag.hpp
 libs/options/include/fcppt/options/detail/missing_error_to_error.hpp
+libs/options/include/fcppt/options/detail/option_name_equal.hpp
+libs/options/include/fcppt/options/detail/option_name_hash.hpp
 libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 libs/options/include/fcppt/options/detail/pop_arg.hpp
 libs/options/include/fcppt/options/detail/right_tag.hpp
@@ -100,6 +103,8 @@ libs/options/include/fcppt/options/invalid_command_error_fwd.hpp
 libs/options/include/fcppt/options/invalid_command_error.hpp
 libs/options/include/fcppt/options/invalid_name_fwd.hpp
 libs/options/include/fcppt/options/invalid_name.hpp
+libs/options/include/fcppt/options/is_short_fwd.hpp
+libs/options/include/fcppt/options/is_short.hpp
 libs/options/include/fcppt/options/left_fwd.hpp
 libs/options/include/fcppt/options/left.hpp
 libs/options/include/fcppt/options/leftover_error_fwd.hpp
@@ -160,7 +165,6 @@ libs/options/include/fcppt/options/option_decl.hpp
 libs/options/include/fcppt/options/option_fwd.hpp
 libs/options/include/fcppt/options/option.hpp
 libs/options/include/fcppt/options/option_impl.hpp
-libs/options/include/fcppt/options/option_name_comparison.hpp
 libs/options/include/fcppt/options/option_name_fwd.hpp
 libs/options/include/fcppt/options/option_name.hpp
 libs/options/include/fcppt/options/option_name_set.hpp
@@ -239,6 +243,8 @@ libs/options/src/options/detail/check_sub_command_names.cpp
 libs/options/src/options/detail/combine_errors_product.cpp
 libs/options/src/options/detail/combine_errors_sum.cpp
 libs/options/src/options/detail/missing_error_to_error.cpp
+libs/options/src/options/detail/option_name_equal.cpp
+libs/options/src/options/detail/option_name_hash.cpp
 libs/options/src/options/detail/pop_arg.cpp
 libs/options/src/options/detail/split_command.cpp
 libs/options/src/options/detail/use_flag.cpp
@@ -267,7 +273,6 @@ libs/options/src/options/missing_option_argument_error.cpp
 libs/options/src/options/missing_option_error.cpp
 libs/options/src/options/optional_usage.cpp
 libs/options/src/options/option_conversion_error.cpp
-libs/options/src/options/option_name_comparison.cpp
 libs/options/src/options/option_name.cpp
 libs/options/src/options/option_usage.cpp
 libs/options/src/options/parse_context.cpp
