@@ -7,6 +7,7 @@
 #include <fcppt/strong_typedef_impl.hpp> // IWYU pragma: keep
 #include <fcppt/strong_typedef_operators.hpp>
 #include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
+#include <fcppt/config/compiler.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -110,8 +111,6 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
 
   CHECK(test1 == test2);
 
-  CHECK((test1 <=> test2) == 0);
-
   CHECK(test1 != test3);
 
   CHECK(test1 <= test2);
@@ -120,11 +119,15 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
 
   CHECK(test1 < test3);
 
-  CHECK((test1 <=> test3) < 0);
-
   CHECK(test3 > test1);
 
+#ifndef FCPPT_CONFIG_MSVC_COMPILER
+  CHECK((test1 <=> test2) == 0);
+
+  CHECK((test1 <=> test3) < 0);
+
   CHECK((test3 <=> test1) > 0);
+#endif
 }
 
 // NOLINTEND(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
