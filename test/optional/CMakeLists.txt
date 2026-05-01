@@ -61,6 +61,8 @@ add_fcppt_optional_test(reference)
 
 add_fcppt_optional_test(reference_type NO_CODE)
 
+add_fcppt_optional_test(return_if)
+
 add_fcppt_optional_test(sequence LINK_LIBS fcppt_catch_interface)
 
 add_fcppt_optional_test(to_container LINK_LIBS fcppt_catch_interface)
