@@ -57,8 +57,10 @@ This is also needed to build \ref fcpptcatch.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-15.2 (Gentoo Linux, NixOS and MinGW)</li>
-	<li>clang-21.1.8 (Gentoo Linux and NixOS)</li>
+	<li>gcc-16.1 (Gentoo Linux and MinGW)</li>
+	<li>gcc-15.2 (NixOS)</li>
+	<li>clang-22.1.4 (Gentoo Linux)</li>
+	<li>clang-21.1.8 (NixOS)</li>
 	<li>VC++-14.44</li>
 </ul>
 
