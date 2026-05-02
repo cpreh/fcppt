@@ -41,7 +41,6 @@ fcppt::options::parse_result<typename fcppt::options::many<Parser>::result_type>
 fcppt::options::many<Parser>::parse(
     fcppt::options::state &&_state, fcppt::options::parse_context const &_context) const
 {
-  // TODO(philipp): This is super ugly
   result_type result{fcppt::record::init<result_type>(
       []<typename L, typename T>(fcppt::record::element<L, T>) { return T{}; })};
 

@@ -20,6 +20,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
+#include <ranges>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,28 +31,27 @@ fcppt::options::detail::use_option_result fcppt::options::detail::use_option(
 {
   fcppt::options::name flag_name{fcppt::options::impl::flag_name(_name, _is_short)};
 
-  // TODO(philipp): This is terrible
   fcppt::args_vector &args{_state.get().args()};
 
-  fcppt::args_vector::iterator const end{args.end()};
+  std::ranges::subrange const found{std::ranges::find(args, flag_name.get()), args.end()};
 
-  fcppt::args_vector::iterator const pos{std::find(args.begin(), end, flag_name.get())};
-
-  if (pos == end)
+  if (std::ranges::empty(found))
   {
     return fcppt::options::detail::use_option_result{
         fcppt::optional::object<fcppt::options::detail::use_option_success>{}};
   }
 
-  if (std::next(pos) == end)
+  if (std::ranges::size(found) == 1)
   {
     return fcppt::options::detail::use_option_result{
         fcppt::options::missing_option_argument_error{std::move(flag_name)}};
   }
 
-  fcppt::string result{*std::next(pos)};
+  std::ranges::subrange const pair{std::ranges::views::take(found, 2)};
 
-  args.erase(pos, std::next(pos, 2));
+  fcppt::string result{*std::ranges::begin(std::ranges::views::drop(pair, 1))};
+
+  args.erase(std::ranges::begin(pair), std::ranges::end(pair));
 
   return fcppt::options::detail::use_option_result{fcppt::optional::make(
       fcppt::options::detail::use_option_success{std::move(flag_name), std::move(result)})};
