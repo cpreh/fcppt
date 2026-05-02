@@ -32,3 +32,5 @@ add_subdirectory(map)
 add_fcppt_mpl_test(mul NO_CODE)
 
 add_subdirectory(set)
+
+add_fcppt_mpl_test(type NO_CODE)

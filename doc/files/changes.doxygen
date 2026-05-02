@@ -25,6 +25,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added #fcppt::mpl::type.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added #fcppt::optional::return_if.</li>

@@ -1101,6 +1101,7 @@ libs/core/include/fcppt/mpl/set/union.hpp
 libs/core/include/fcppt/mpl/set/unique.hpp
 libs/core/include/fcppt/mpl/size_type_concept.hpp
 libs/core/include/fcppt/mpl/size_type.hpp
+libs/core/include/fcppt/mpl/type.hpp
 libs/core/include/fcppt/narrow.hpp
 libs/core/include/fcppt/narrow_locale.hpp
 libs/core/include/fcppt/no_init_fwd.hpp
