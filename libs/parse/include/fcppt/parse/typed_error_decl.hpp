@@ -9,10 +9,10 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/parse/got_tag_fwd.hpp>
 #include <fcppt/parse/position.hpp>
-#include <fcppt/parse/type_name_tag_fwd.hpp>
 #include <fcppt/parse/typed_error_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <typeindex>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt::parse
@@ -25,16 +25,14 @@ public:
 
   using string_type = std::basic_string<Ch>;
 
-  using type_name_type = fcppt::strong_typedef<string_type, fcppt::parse::type_name_tag>;
-
   using got_type = fcppt::strong_typedef<string_type, fcppt::parse::got_tag>;
 
   // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
-  typed_error(pos_type, type_name_type &&, got_type &&);
+  typed_error(pos_type, std::type_index, got_type &&);
 
   [[nodiscard]] pos_type pos() const;
 
-  [[nodiscard]] string_type const &type_name() const;
+  [[nodiscard]] std::type_index const &type_name() const;
 
   [[nodiscard]] string_type const &got() const;
 
@@ -42,7 +40,7 @@ public:
 private:
   pos_type pos_;
 
-  string_type type_name_;
+  std::type_index type_name_;
 
   string_type got_;
 };

@@ -10,7 +10,6 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/reference_impl.hpp>
-#include <fcppt/string_literal.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
@@ -28,7 +27,6 @@
 #include <fcppt/parse/make_literal.hpp>
 #include <fcppt/parse/position.hpp>
 #include <fcppt/parse/result.hpp>
-#include <fcppt/parse/type_name_tag_fwd.hpp>
 #include <fcppt/parse/typed_error_impl.hpp>
 #include <fcppt/parse/operators/optional.hpp> // IWYU pragma: keep
 #include <fcppt/parse/operators/repetition_plus.hpp> // IWYU pragma: keep
@@ -37,6 +35,7 @@
 #include <fcppt/tuple/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <typeinfo> // IWYU pragma: keep
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -57,8 +56,9 @@ fcppt::parse::int_<Type>::parse(
 
   return fcppt::either::bind(
       parser.parse(_state, _skipper),
-      [pos](fcppt::tuple::object<fcppt::optional::object<fcppt::unit>, std::basic_string<Ch>>
-                &&_result) // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
+      [pos](
+          fcppt::tuple::object<fcppt::optional::object<fcppt::unit>, std::basic_string<Ch>>
+              &&_result) // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
       {
         return fcppt::either::map(
             fcppt::either::from_optional(
@@ -68,9 +68,7 @@ fcppt::parse::int_<Type>::parse(
                   return fcppt::parse::error<Ch>{
                       fcppt::parse::error_variant<Ch>{fcppt::parse::typed_error<Ch>{
                           pos,
-                          // TODO(philipp): Take the type into account here!
-                          fcppt::make_strong_typedef<fcppt::parse::type_name_tag>(
-                              std::basic_string<Ch>{FCPPT_STRING_LITERAL(Ch, "int")}),
+                          typeid(Type),
                           fcppt::make_strong_typedef<fcppt::parse::got_tag>(
                               std::move(fcppt::tuple::get<1>(_result)))}},
                       fcppt::parse::is_fatal{false}};

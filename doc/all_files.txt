@@ -2197,7 +2197,6 @@ libs/parse/include/fcppt/parse/tag.hpp
 libs/parse/include/fcppt/parse/typed_error_decl.hpp
 libs/parse/include/fcppt/parse/typed_error_fwd.hpp
 libs/parse/include/fcppt/parse/typed_error_impl.hpp
-libs/parse/include/fcppt/parse/type_name_tag_fwd.hpp
 libs/parse/include/fcppt/parse/uint_decl.hpp
 libs/parse/include/fcppt/parse/uint_fwd.hpp
 libs/parse/include/fcppt/parse/uint.hpp

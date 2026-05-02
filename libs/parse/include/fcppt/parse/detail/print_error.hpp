@@ -6,7 +6,9 @@
 #ifndef FCPPT_PARSE_DETAIL_PRINT_ERROR_HPP_INCLUDED
 #define FCPPT_PARSE_DETAIL_PRINT_ERROR_HPP_INCLUDED
 
+#include <fcppt/output.hpp>
 #include <fcppt/string_literal.hpp>
+#include <fcppt/type_name_from_index.hpp>
 #include <fcppt/container/output.hpp>
 #include <fcppt/indent/extra.hpp>
 #include <fcppt/indent/level.hpp>
@@ -105,9 +107,10 @@ void print_error(
       },
       [&_stream, _indent](fcppt::parse::typed_error<Ch> const &_inner)
       {
-        _stream << fcppt::indent::print(_indent) << FCPPT_STRING_LITERAL(Ch, "At ")
-                << _inner.pos() << FCPPT_STRING_LITERAL(Ch, ": Expected type ")
-                << _inner.type_name() << FCPPT_STRING_LITERAL(Ch, ", got ") << _inner.got()
+        _stream << fcppt::indent::print(_indent) << FCPPT_STRING_LITERAL(Ch, "At ") << _inner.pos()
+                << FCPPT_STRING_LITERAL(Ch, ": Expected type ")
+                << fcppt::output(fcppt::type_name_from_index(_inner.type_name()))
+                << FCPPT_STRING_LITERAL(Ch, ", got ") << _inner.got()
                 << FCPPT_STRING_LITERAL(Ch, ".\n");
       });
 }

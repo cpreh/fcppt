@@ -9,13 +9,14 @@
 #include <fcppt/parse/typed_error_decl.hpp> // IWYU pragma: export
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
+#include <typeindex>
 #include <fcppt/config/external_end.hpp>
 
 template <typename Ch>
 fcppt::parse::typed_error<Ch>::typed_error(
     // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
-    pos_type const _pos, type_name_type &&_type_name, got_type &&_got)
-    : pos_{_pos}, type_name_{std::move(_type_name.get())}, got_{std::move(_got.get())}
+    pos_type const _pos, std::type_index const _type_name, got_type &&_got)
+    : pos_{_pos}, type_name_{_type_name}, got_{std::move(_got.get())}
 {
 }
 
@@ -26,7 +27,7 @@ fcppt::parse::typed_error<Ch>::pos_type fcppt::parse::typed_error<Ch>::pos() con
 }
 
 template <typename Ch>
-fcppt::parse::typed_error<Ch>::string_type const &
+std::type_index const &
 fcppt::parse::typed_error<Ch>::type_name() const
 {
   return this->type_name_;
