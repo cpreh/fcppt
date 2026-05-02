@@ -13,6 +13,7 @@
 #include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <ranges>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,22 +22,19 @@ fcppt::optional::object<fcppt::args_vector::const_iterator> fcppt::options::impl
 {
   using result_type = fcppt::optional::object<fcppt::args_vector::const_iterator>;
 
-  fcppt::args_vector::const_iterator const end{_args.end()};
-
-  // TODO(philipp): This is terrible
-  for (fcppt::args_vector::const_iterator cur{_args.begin()}; cur != end;)
+  for(std::ranges::subrange range{_args.begin(), _args.end()}; !std::ranges::empty(range);)
   {
     if (fcppt::optional::maybe(
-            fcppt::options::impl::is_flag(*cur),
+            fcppt::options::impl::is_flag(*std::ranges::begin(range)),
             fcppt::const_(false),
-            [&_option_names, &cur, &end](
+            [&_option_names, &range](
                 std::pair<fcppt::options::is_short, fcppt::string_view> const &_flag)
             {
-              ++cur;
+              range = std::ranges::views::drop(range, 1);
 
-              if (cur != end && _option_names.contains(_flag))
+              if (!std::ranges::empty(range) && _option_names.contains(_flag))
               {
-                ++cur;
+                range = std::ranges::views::drop(range, 1);
               }
 
               return true;
@@ -45,7 +43,7 @@ fcppt::optional::object<fcppt::args_vector::const_iterator> fcppt::options::impl
       continue;
     }
 
-    return result_type{cur};
+    return result_type{std::ranges::begin(range)};
   }
 
   return result_type{};
