@@ -7,6 +7,7 @@
 #define FCPPT_PARSE_DETAIL_PRINT_ERROR_HPP_INCLUDED
 
 #include <fcppt/output.hpp>
+#include <fcppt/output_string.hpp> // IWYU pragma: keep
 #include <fcppt/string_literal.hpp>
 #include <fcppt/type_name_from_index.hpp>
 #include <fcppt/container/output.hpp>
