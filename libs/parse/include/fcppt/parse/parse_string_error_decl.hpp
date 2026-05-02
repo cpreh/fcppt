@@ -27,7 +27,7 @@ public:
 
   parse_string_error(fcppt::parse::parse_stream_error<Ch> &&, optional_string &&);
   explicit parse_string_error(std::basic_string<Ch> &&);
-  parse_string_error(); // TODO(philipp)
+  parse_string_error();
 
   [[nodiscard]] optional_stream_error const &stream_error() const;
 

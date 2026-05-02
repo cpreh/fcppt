@@ -30,8 +30,6 @@ stream_to_string(std::basic_istream<Ch, Traits> &_input)
   output << _input.rdbuf();
 
   return fcppt::optional::make_if(
-      // TODO(philipp): What should we check here?
-      //_input.eof()
       !_input.fail() && (output.str().empty() || output.good()),
       [&output] { return output.str(); });
 }
