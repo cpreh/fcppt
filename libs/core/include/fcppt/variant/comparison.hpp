@@ -7,6 +7,9 @@
 #define FCPPT_VARIANT_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <concepts>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::variant
 {
@@ -18,12 +21,11 @@ namespace fcppt::variant
 Compares \a _left and \a _right for equality. The two variants are equal if they hold
 the same type and the values compare equal. This function requires all possible
 types of the variant to be equality comparable.
-
-TODO(concepts)
 */
 template <typename... Types>
 [[nodiscard]] bool operator==(
     fcppt::variant::object<Types...> const &_left, fcppt::variant::object<Types...> const &_right)
+    requires (std::equality_comparable<Types> &&...)
 {
   return _left.impl() == _right.impl();
 }
@@ -36,12 +38,11 @@ template <typename... Types>
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 This function requires all possible types of the variant to be equality
 comparable.
-
-TODO(concepts)
 */
 template <typename... Types>
 [[nodiscard]] bool operator!=(
     fcppt::variant::object<Types...> const &_a, fcppt::variant::object<Types...> const &_b)
+    requires (std::equality_comparable<Types> &&...)
 {
   return !(_a == _b);
 }
