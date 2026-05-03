@@ -7,6 +7,9 @@
 #define FCPPT_EITHER_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <concepts>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt::either
 {
@@ -14,13 +17,12 @@ namespace fcppt::either
 \brief Compares two eithers for equality.
 
 \ingroup fcppteither
-
-TODO(concepts)
 */
 template <typename Failure, typename Success>
 [[nodiscard]] bool operator==(
     fcppt::either::object<Failure, Success> const &_a,
     fcppt::either::object<Failure, Success> const &_b)
+  requires (std::equality_comparable<Failure> && std::equality_comparable<Success>)
 {
   return _a.impl() == _b.impl();
 }
@@ -29,13 +31,12 @@ template <typename Failure, typename Success>
 \brief Compares two eithers for inequality.
 
 \ingroup fcppteither
-
-TODO(concepts)
 */
 template <typename Failure, typename Success>
 [[nodiscard]] bool operator!=(
     fcppt::either::object<Failure, Success> const &_a,
     fcppt::either::object<Failure, Success> const &_b)
+  requires (std::equality_comparable<Failure> && std::equality_comparable<Success>)
 {
   return !(_a == _b);
 }
