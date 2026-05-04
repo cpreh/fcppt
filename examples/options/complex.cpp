@@ -3,13 +3,6 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
-
-// TODO(philipp): Output openmode properly
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
@@ -17,7 +10,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/main.hpp>
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
+#include <fcppt/output_impl_fwd.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/string_literal.hpp>
 #include <fcppt/strong_typedef_output.hpp> // IWYU pragma: keep
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
@@ -60,6 +55,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/switch.hpp>
 #include <fcppt/options/usage.hpp>
 #include <fcppt/options/usage_output.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/are_equivalent_v.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
@@ -72,7 +70,28 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <exception>
 #include <ios>
 #include <iostream>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
+namespace fcppt
+{
+template <>
+struct output_impl<std::ios_base::openmode, void>
+{
+  template <typename Ch, typename Traits>
+  static void execute(std::basic_ostream<Ch, Traits> &_stream, std::ios_base::openmode const _mode)
+  {
+    if (_mode & std::ios_base::trunc)
+    {
+      _stream << FCPPT_STRING_LITERAL(Ch, "{trunc}");
+    }
+    else
+    {
+      _stream << FCPPT_STRING_LITERAL(Ch, "{}");
+    }
+  }
+};
+}
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
@@ -247,5 +266,4 @@ catch (std::exception const &_error)
   return EXIT_FAILURE;
 }
 
-FCPPT_PP_POP_WARNING
 FCPPT_PP_POP_WARNING
