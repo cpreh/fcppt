@@ -41,7 +41,6 @@ fcppt::parse::repetition_plus<Parser>::parse(
   return fcppt::either::map(
       // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
       parser.parse(_state, _skipper), [](fcppt::parse::result_of<decltype(parser)> &&_result) {
-        // TODO(philipp): Should we reverse this so that push_back works?
         return fcppt::container::join(
             result_type{std::move(fcppt::tuple::get<0>(_result))}, std::move(fcppt::tuple::get<1>(_result)));
       });
