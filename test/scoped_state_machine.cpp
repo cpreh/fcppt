@@ -47,7 +47,6 @@ public:
   state() = default;
 
   ~state() // NOLINT(hicpp-use-override,modernize-use-override,cppcoreguidelines-explicit-virtual-functions)
-      // override TODO(philipp)
       = default;
 };
 
