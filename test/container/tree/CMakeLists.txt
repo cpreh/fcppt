@@ -15,7 +15,7 @@ add_fcppt_container_tree_test(level)
 
 add_fcppt_container_tree_test(make_pre_order)
 
-add_fcppt_container_tree_test(make_to_root NO_CODE)
+add_fcppt_container_tree_test(make_to_root)
 
 add_fcppt_container_tree_test(map)
 
