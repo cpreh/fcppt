@@ -19,7 +19,7 @@ TEST_CASE("container::tree::level", "[container],[tree]")
 {
   using int_tree = fcppt::container::tree::object<int>;
 
-  int_tree tree(1);
+  int_tree tree{1};
 
   CHECK(fcppt::container::tree::level(tree) == 0U);
 

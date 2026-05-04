@@ -3,28 +3,33 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+#include <fcppt/catch/begin.hpp>
+#include <fcppt/catch/end.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/tree/make_pre_order.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <catch2/catch_test_macros.hpp>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
-int main()
-{
-  // TODO(philipp): Make a proper testcase
+FCPPT_CATCH_BEGIN
+// NOLINTBEGIN(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
+TEST_CASE("container::tree::make_pre_order", "[container],[tree]")
+{
   using i_tree = fcppt::container::tree::object<int>;
 
-  i_tree tree{1}; // NOLINT(misc-const-correctness)
+  i_tree const tree{
+      1,
+      i_tree::child_list{
+          i_tree{2, i_tree::child_list{i_tree{3}}}, i_tree{4, i_tree::child_list{i_tree{5}}}}};
 
-  static_assert(std::is_same_v<
-                decltype(fcppt::container::tree::make_pre_order(tree)),
-                fcppt::container::tree::pre_order<i_tree>>);
+  std::vector<int> const pre_order{fcppt::algorithm::map<std::vector<int>>(
+      fcppt::container::tree::make_pre_order(tree), [](i_tree const &_ref) -> int { return _ref.value(); })};
 
-  i_tree const c_tree{1};
-
-  static_assert(std::is_same_v<
-                decltype(fcppt::container::tree::make_pre_order(c_tree)),
-                fcppt::container::tree::pre_order<i_tree const>>);
+  CHECK(pre_order == std::vector<int>{1, 2, 3, 4, 5});
 }
+
+// NOLINTEND(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
+FCPPT_CATCH_END
