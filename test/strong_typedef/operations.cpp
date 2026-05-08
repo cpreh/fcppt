@@ -10,6 +10,9 @@
 #include <fcppt/config/compiler.hpp> // IWYU pragma: keep
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -122,7 +125,10 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
   CHECK(test3 > test1);
 
 #ifndef FCPPT_CONFIG_MSVC_COMPILER
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
   CHECK((test1 <=> test2) == 0);
+FCPPT_PP_POP_WARNING
 
   CHECK((test1 <=> test3) < 0);
 
