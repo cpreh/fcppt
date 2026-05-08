@@ -19,6 +19,12 @@
 	</ul>
 </li>
 
+<li>\ref fcppteither
+	<ul>
+	<li>Added #fcppt::either::from.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptenum
 	<ul>
 	<li>Added #fcppt::enum_::array::get as an alternative to <code>operator[]</code>.</li>

@@ -5,7 +5,7 @@
 
 #include <fcppt/catch/begin.hpp>
 #include <fcppt/catch/end.hpp>
-#include <fcppt/either/match.hpp>
+#include <fcppt/either/from.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -15,23 +15,15 @@
 FCPPT_CATCH_BEGIN
 // NOLINTBEGIN(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)
 
-TEST_CASE("either::match", "[either]")
+TEST_CASE("either::from", "[either]")
 {
   using either_int = fcppt::either::object<std::string, int>;
 
-  auto const success_function{
-      [](int const _value) { return std::string("success: ") + std::to_string(_value); }};
+  auto const failure_function{[](std::string const &) { return 42; }};
 
-  auto const failure_function{
-      [](std::string const &_value) { return std::string("failure: ") + _value; }};
+  CHECK(fcppt::either::from(either_int{std::string("test")}, failure_function) == 42);
 
-  CHECK(
-      fcppt::either::match(either_int{std::string("test")}, failure_function, success_function) ==
-      std::string("failure: test"));
-
-  CHECK(
-      fcppt::either::match(either_int{42}, failure_function, success_function) ==
-      std::string("success: 42"));
+  CHECK(fcppt::either::from(either_int{42}, failure_function) == 42);
 }
 
 // NOLINTEND(bugprone-throwing-static-initialization,clang-analyzer-optin.core.EnumCastOutOfRange,misc-const-correctness,cert-err58-cpp,fuchsia-statically-constructed-objects,misc-use-anonymous-namespace,cppcoreguidelines-avoid-do-while)

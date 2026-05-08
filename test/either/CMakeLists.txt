@@ -19,6 +19,8 @@ add_fcppt_either_test(failure_type NO_CODE)
 
 add_fcppt_either_test(first_success)
 
+add_fcppt_either_test(from)
+
 add_fcppt_either_test(from_optional)
 
 add_fcppt_either_test(join)
