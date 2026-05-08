@@ -128,11 +128,11 @@ TEST_CASE("strong_typedef comparison", "[strongtypedef]")
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
   CHECK((test1 <=> test2) == 0);
-FCPPT_PP_POP_WARNING
 
   CHECK((test1 <=> test3) < 0);
 
   CHECK((test3 <=> test1) > 0);
+FCPPT_PP_POP_WARNING
 #endif
 }
 
