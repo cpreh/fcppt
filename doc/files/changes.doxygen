@@ -55,6 +55,18 @@
 
 <ul>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>Changed #fcppt::options::flag_name_set and #fcppt::options::option_name_set to be unordered sets.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptparse
+	<ul>
+	<li>Changed #fcppt::parse::typed_error to use a <code>std::type_index</code> instead of a string.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstring
 	<ul>
 	<li>#fcppt::system now throws #fcppt::system_conversion_failed if the input string cannot be converted.</li>
