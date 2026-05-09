@@ -62,9 +62,15 @@
 	</ul>
 </li>
 
-<li>\ref fcppttime
+</ul>
+
+\subsection changes_removed_functionality_to_520 Removed functionality
+
+<ul>
+
+<li>fcppttime
 	<ul>
-	<li>#fcppt::time::gmtime, #fcppt::time::localtime and #fcppt::time::std_time now return optionals.</li>
+	<li>Removed the library, which only consisted of wrappers around <code>std::tm</code>-based functions.
 	</ul>
 </li>
 
@@ -817,10 +823,10 @@ Metal is no longer required.
 	</ul>
 </li>
 
-<li>\ref fcppttime
+<li><code>fcppttime</code>
 	<ul>
-	<li>#fcppt::time::gmtime, #fcppt::time::localtime and #fcppt::time::std_time now use <code>std::exception</code> instead of #fcppt::exception.</li>
-	<li>#fcppt::time::output_tm is now a template over the char and traits types.</li>
+	<li><code>fcppt::time::gmtime</code>, <code>fcppt::time::localtime</code> and <code>fcppt::time::std_time</code> now use <code>std::exception</code> instead of #fcppt::exception.</li>
+	<li><code>fcppt::time::output_tm</code> is now a template over the char and traits types.</li>
 	</ul>
 </li>
 

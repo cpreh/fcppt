@@ -81,8 +81,6 @@ add_fcppt_example(nonmovable LINK_LIBS fcppt_core_interface)
 
 add_fcppt_example(optional LINK_LIBS ${fcppt_core_TARGET})
 
-add_fcppt_example(output_tm LINK_LIBS ${fcppt_core_TARGET})
-
 add_fcppt_example(record LINK_LIBS ${fcppt_core_TARGET})
 
 add_fcppt_example(smart_ptr_deleter LINK_LIBS ${fcppt_core_TARGET})

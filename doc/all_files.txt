@@ -55,7 +55,6 @@ examples/options/commands.cpp
 examples/options/complex.cpp
 examples/options/help.cpp
 examples/options/simple.cpp
-examples/output_tm.cpp
 examples/parse/fatal.cpp
 examples/parse/grammar.cpp
 examples/parse/main.cpp
@@ -1443,10 +1442,6 @@ libs/core/include/fcppt/tag_fwd.hpp
 libs/core/include/fcppt/tag.hpp
 libs/core/include/fcppt/tag_type.hpp
 libs/core/include/fcppt/text.hpp
-libs/core/include/fcppt/time/gmtime.hpp
-libs/core/include/fcppt/time/localtime.hpp
-libs/core/include/fcppt/time/output_tm.hpp
-libs/core/include/fcppt/time/std_time.hpp
 libs/core/include/fcppt/to_std_string.hpp
 libs/core/include/fcppt/to_std_string_locale.hpp
 libs/core/include/fcppt/to_std_wstring.hpp
