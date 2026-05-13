@@ -115,7 +115,7 @@ Usage: age : int - Your age
 
 \code{.unparsed}
 ./fcppt_example_options_simple 10 20
-Too many arguments: 20.
+Leftover arguments [20].
 Usage: age : int - Your age
 \endcode
 
@@ -127,7 +127,7 @@ Usage: age : int - Your age
 
 \code{.unparsed}
 ./fcppt_example_options_simple 42
-Your age is 42
+Your age is 42.
 \endcode
 
 \section fcpptoptions_parsers Parser types
@@ -471,7 +471,7 @@ Here are some example invocations:
 
 \code{.unparsed}
 ./fcppt_example_options_commands
-No command specified from [clone, pull]
+No command specified from [clone,pull].
 Usage:
 [ --git-dir : string - The path to the repository ]
   clone:  (Clone from another repository)
@@ -481,7 +481,7 @@ Usage:
 
 \code{.unparsed}
 ./fcppt_example_options_commands bar
-Invalid command bar
+Invalid command "bar".
 Usage:
 [ --git-dir : string - The path to the repository ]
   clone:  (Clone from another repository)
@@ -501,18 +501,18 @@ Usage:
 
 \code{.unparsed}
 ./fcppt_example_options_commands clone dir
-Clone from dir
+Clone from dir.
 \endcode
 
 \code{.unparsed}
 ./fcppt_example_options_commands --git-dir x clone dir
-Git directory is x
-Clone from dir
+Git directory is x.
+Clone from dir.
 \endcode
 
 \code{.unparsed}
 ./fcppt_example_options_commands pull
-pull
+Pull.
 \endcode
 
 \section fcpptoptions_help Help option

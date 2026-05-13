@@ -108,7 +108,7 @@ try
         fcppt::record::get<git_directory>(
             fcppt::record::get<fcppt::options::options_label>(_result)),
         [](fcppt::string const &_dir) {
-          fcppt::io::cout() << FCPPT_TEXT("Git directory is ") << _dir << FCPPT_TEXT('\n');
+          fcppt::io::cout() << FCPPT_TEXT("Git directory is ") << _dir << FCPPT_TEXT(".\n");
         });
     //![usage_git_dir]
 
