@@ -7,6 +7,7 @@
 #define FCPPT_VARIANT_TO_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/has_type_v.hpp>
@@ -26,12 +27,10 @@ template <typename Type, fcppt::variant::object_concept Variant>
 [[nodiscard]] fcppt::optional::object<Type> to_optional(Variant &&_variant)
 requires fcppt::variant::has_type_v<Variant,Type>
 {
-  using result_type = fcppt::optional::object<Type>;
-
-  return fcppt::variant::holds_type<Type>(_variant)
-             ? result_type{fcppt::move_if_rvalue<Variant>(
-                   fcppt::variant::get_unsafe<Type>(_variant))}
-             : result_type{};
+  return fcppt::optional::make_if(
+      fcppt::variant::holds_type<Type>(_variant),
+      [&_variant]
+      { return fcppt::move_if_rvalue<Variant>(fcppt::variant::get_unsafe<Type>(_variant)); });
 }
 
 }
