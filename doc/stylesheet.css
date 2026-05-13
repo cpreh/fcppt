@@ -2489,9 +2489,13 @@ tt, code, kbd
 {
 	display: inline-block;
 }
-tt, code, kbd
+tt, kbd
 {
 	vertical-align: top;
+}
+code
+{
+	vertical-align: baseline;
 }
 /* @end */
 
