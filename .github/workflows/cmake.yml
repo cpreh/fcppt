@@ -35,7 +35,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
   buildWin:
     name: Build Windows
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
 
     steps:
     - uses: actions/checkout@v6
