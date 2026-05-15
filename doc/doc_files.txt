@@ -9,7 +9,6 @@ doc/files/logo.svg
 doc/files/main.doxygen
 doc/files/modules/algorithm.doxygen
 doc/files/modules/array.doxygen
-doc/files/modules/assert.doxygen
 doc/files/modules/bit.doxygen
 doc/files/modules/boost.doxygen
 doc/files/modules/casts.doxygen

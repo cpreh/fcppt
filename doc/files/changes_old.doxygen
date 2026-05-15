@@ -95,7 +95,7 @@
 
 <ul>
 
-<li>\ref fcpptassert
+<li>fcpptassert
 	<ul>
 	<li>Removed <code>FCPPT_ASSERT_THROW</code>, <code>FCPPT_ASSERT_THROW_MESSAGE</code>,
 	<code>FCPPT_ASSERT_POST</code> and <code>FCPPT_ASSERT_POST_MESSAGE</code>.</li>
@@ -3089,7 +3089,7 @@ for them.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptassert
+<li>fcpptassert
 	<ul>
 	<li>Added <code>FCPPT_ASSERT_OPTIONAL_ERROR</code>  which first
 	asserts that an optional is set and then evaluates to its
@@ -4004,7 +4004,7 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 
 <ul>
 
-<li>Added a new \ref fcpptassert "assert" framework</li>
+<li>Added a new fcpptassert "assert" framework</li>
 
 <li>Added fcppt::null_ptr which can be used for null pointers to objects.</li>
 
@@ -4326,7 +4326,7 @@ should be used.</li>
 <li>Removed fcppt::auto_ptr typedef</li>
 
 <li>Removed FCPPT_ASSERT and FCPPT_ASSERT_MESSAGE, which were replaced by the
-new \ref fcpptassert "assert" framework</li>
+new fcpptassert "assert" framework</li>
 
 <li>Removed FCPPT_STUB_FUNCTION</li>
 

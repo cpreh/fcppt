@@ -621,7 +621,7 @@ fcppt now uses <code>C++-23</code>.
 
 <ul>
 
-<li>\ref fcpptassert
+<li>fcpptassert
 	<ul>
 	<li>Removed <code>FCPPT_ASSERT_OPTIONAL_ERROR</code>.</li>
 	</ul>
@@ -848,7 +848,7 @@ Metal is no longer required.
 
 <ul>
 
-<li>\ref fcpptassert
+<li>fcpptassert
 	<ul>
 	<li>Removed <code>FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE</code>.</li>
 	<li>Removed <code>FCPPT_ASSERT_PRE</code> and <code>FCPPT_ASSERT_PRE_MESSAGE</code>.</li>
