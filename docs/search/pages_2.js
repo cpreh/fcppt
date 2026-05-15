@@ -1,7 +1,7 @@
 var searchData=
 [
   ['2_0',['3.2.2',['../d4/d15/older_changes.html#changes_changes_to_322',1,'']]],
-  ['2_200_1',['2 0',['../d4/d15/older_changes.html#changes_changes_to_220',1,'2.2.0'],['../d4/d15/older_changes.html#changes_changes_to_320',1,'3.2.0'],['../de/dbe/changes.html#changes_changes_to_420',1,'4.2.0'],['../d4/d15/older_changes.html#changes_changes_to_120',1,'Changes from 1.1.0 to 1.2.0']]],
+  ['2_200_1',['2 0',['../d4/d15/older_changes.html#changes_changes_to_220',1,'2.2.0'],['../d4/d15/older_changes.html#changes_changes_to_320',1,'3.2.0'],['../de/dbe/changes.html#changes_changes_to_420',1,'4.2.0'],['../de/dbe/changes.html#changes_changes_to_520',1,'5.2.0'],['../d4/d15/older_changes.html#changes_changes_to_120',1,'Changes from 1.1.0 to 1.2.0']]],
   ['2_200_200_2',['2.0.0',['../d4/d15/older_changes.html#changes_changes_to_200',1,'']]],
   ['2_200_20to_201_203_200_3',['Changes from 1.2.0 to 1.3.0',['../d4/d15/older_changes.html#changes_changes_to_130',1,'']]],
   ['2_201_4',['2 1',['../d4/d15/older_changes.html#changes_changes_to_321',1,'3.2.1'],['../de/dbe/changes.html#changes_changes_to_421',1,'4.2.1']]],

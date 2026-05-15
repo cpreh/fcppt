@@ -27,7 +27,7 @@ var searchData=
   ['fold_24',['fold',['../de/d60/group__fcpptalgorithm.html#ga2badaec70ff770f2b896935dfa1d750f',1,'fcppt::algorithm']]],
   ['fold_5fbreak_25',['fold_break',['../de/d60/group__fcpptalgorithm.html#ga77e015f0fa10b04ce0bb9234f0579822',1,'fcppt::algorithm']]],
   ['for_5feach_5fbreak_26',['for_each_break',['../d2/d83/group__fcpptmpl.html#ga9b0282cd1b5c26873d39482668ddc195',1,'fcppt::mpl::list']]],
-  ['from_27',['from',['../da/d65/group__fcpptoptional.html#ga3d0d01d81c968794f88c36038db4143f',1,'fcppt::optional']]],
+  ['from_27',['from',['../df/dc3/group__fcppteither.html#gadda747bdd7eec1ad1f63f63a0e5a51cf',1,'fcppt::either::from()'],['../da/d65/group__fcpptoptional.html#ga3d0d01d81c968794f88c36038db4143f',1,'fcppt::optional::from()']]],
   ['from_5farray_28',['from_array',['../dc/d53/group__fcpptmath.html#ga222dbd13ed8b17b71719a946bcb0e654',1,'fcppt::math::from_array(fcppt::math::to_array_type&lt; Type &gt; &amp;&amp;_value)'],['../dc/d53/group__fcpptmath.html#gae975673c7751ac1b1c1c08c7d3ca780f',1,'fcppt::math::from_array(fcppt::math::to_array_type&lt; Type &gt; const &amp;_value)'],['../d6/dc3/group__fcppttuple.html#ga30fb589c5c7cb7e1e5f3590093ab3de4',1,'fcppt::tuple::from_array()']]],
   ['from_5fint_29',['from_int',['../d6/ddd/group__fcpptenum.html#gaaae6d7855880c5eadae893c1922688d4',1,'fcppt::enum_']]],
   ['from_5foptional_30',['from_optional',['../df/dc3/group__fcppteither.html#ga0b3cd5992dd843ba1428a6fe37ed60f6',1,'fcppt::either']]],

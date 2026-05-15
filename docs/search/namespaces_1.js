@@ -49,9 +49,8 @@ var searchData=
   ['fcppt_3a_3arecord_46',['record',['../d2/d6a/namespacefcppt_1_1record.html',1,'fcppt']]],
   ['fcppt_3a_3asignal_47',['signal',['../db/d28/namespacefcppt_1_1signal.html',1,'fcppt']]],
   ['fcppt_3a_3asignal_3a_3aunregister_48',['unregister',['../d3/d98/namespacefcppt_1_1signal_1_1unregister.html',1,'fcppt::signal']]],
-  ['fcppt_3a_3atime_49',['time',['../d5/da2/namespacefcppt_1_1time.html',1,'fcppt']]],
-  ['fcppt_3a_3atuple_50',['tuple',['../d8/db9/namespacefcppt_1_1tuple.html',1,'fcppt']]],
-  ['fcppt_3a_3atype_5fiso_51',['type_iso',['../db/db3/namespacefcppt_1_1type__iso.html',1,'fcppt']]],
-  ['fcppt_3a_3atype_5ftraits_52',['type_traits',['../dc/d9a/namespacefcppt_1_1type__traits.html',1,'fcppt']]],
-  ['fcppt_3a_3avariant_53',['variant',['../d1/d84/namespacefcppt_1_1variant.html',1,'fcppt']]]
+  ['fcppt_3a_3atuple_49',['tuple',['../d8/db9/namespacefcppt_1_1tuple.html',1,'fcppt']]],
+  ['fcppt_3a_3atype_5fiso_50',['type_iso',['../db/db3/namespacefcppt_1_1type__iso.html',1,'fcppt']]],
+  ['fcppt_3a_3atype_5ftraits_51',['type_traits',['../dc/d9a/namespacefcppt_1_1type__traits.html',1,'fcppt']]],
+  ['fcppt_3a_3avariant_52',['variant',['../d1/d84/namespacefcppt_1_1variant.html',1,'fcppt']]]
 ];
