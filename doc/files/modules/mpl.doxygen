@@ -10,14 +10,14 @@
 
 \section fcpptmpl_introduction Introduction
 
-MPL stands for meta programming library and refers to the fact that you can write "programs" using C++ templates.
-As an example, consider the following variant type:
+\em MPL stands for <em>meta programming library</em> and refers to the fact that you can write "programs" using C++ templates.
+As an example, consider implementing a variant type:
 
 \snippet mpl/variant.cpp variant_decl
 
-First of all, an implementation would have to check if <code>Types...</code> are disjoint.
-Second of all, it would have to gather the sizes of all the types.
-This can all be written by hand, often using recursion on a template parameter pack, or it can be done using a MP library:
+For example, an implementation would have to check if <code>Types...</code> are disjoint.
+It would also have to gather the sizes of all the types to check how much space is needed in total.
+These checks can all be written by hand, often using recursion on a template parameter pack, or they can be implemented using a MPL:
 
 \snippet mpl/variant.cpp variant_impl
 
@@ -46,7 +46,7 @@ For example, if <code>type_list = fcppt::mpl::object::list<int, float></code>, t
 
 \section fcpptmpl_lambdas Lambdas
 
-To understand how to write MP algorithms, it is important to understand lambdas
+To understand how to write MPL algorithms, it is important to understand lambdas
 and how they can be combined. The definition of #fcppt::mpl::lambda is
 \code
 template<template<typename...> class F> struct lambda;
@@ -71,7 +71,7 @@ an n-ary template or a variadic template.
 
 Now consider the following example: We would like to create a lambda
 that evaluates to true if and only if the first parameter is <code>int</code>.
-We can implement this writing an explicit function:
+We could implement this writing an explicit function:
 \snippet mpl/lambda.cpp is_int
 To do this more directly, we can also write the following code:
 \snippet mpl/lambda.cpp is_int2
@@ -80,12 +80,12 @@ To understand why these are equivalent, we have to understand what <code>fcppt::
 
 <ul>
 <li><code>fcppt::mpl::arg`<i>`</code> is the i'th projection function.
-Formally, for every integer <code>m >= i</code> it is a lambda that holds a function
-<code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = T_i</code>.</li>
+Formally, it is a lambda that holds a variadic function <code>F</code>,
+such that <code>F<T_1,...,T_n> = T_i</code> for every <code>n >= i</code> and <code>i >= 1</code>.</li>
 
 <li><code>fcppt::mpl::constant<C></code> is the constant function.
-Formally, for every integer <code>m</code> it holds a function
-<code>F_m</code> of arity <code>m</code>, such that <code>F_m<T_1,...,T_m> = C</code>.</li>
+Formally, it is a lambda that holds a variadic function
+<code>F</code>, such that <code>F<T_1,...,T_n> = C</code> for every <code>n >= 0</code>.</li>
 
 <li><code>fcppt::mpl::bind</code> is function composition.
 Let <code>L</code> be a lambda that holds a function <code>G</code> of arity <code>k</code>
