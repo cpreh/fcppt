@@ -24,9 +24,8 @@ struct make_literal<Type, std::enable_if_t<std::is_arithmetic_v<Type>>>
 
   template <typename Arg>
   static constexpr decorated_type get(Arg const _value) noexcept
+  requires fcppt::check_literal_conversion<decorated_type, Arg>
   {
-    FCPPT_CHECK_LITERAL_CONVERSION(decorated_type, Arg);
-
     return static_cast<decorated_type>(_value);
   }
 };

@@ -10,6 +10,9 @@
 #include <type_traits> // IWYU pragma: keep
 #include <fcppt/config/external_end.hpp>
 
+namespace fcppt
+{
+
 /**
 \brief Checks if a literal conversion is safe
 
@@ -18,10 +21,9 @@
 \a source must not be a <code>bool</code> or if \a dest is integral, then \a
 source must not be floating-point.
 */
-#define FCPPT_CHECK_LITERAL_CONVERSION(dest, source) \
-  static_assert( \
-      !std::is_same_v<source, bool> && \
-          !(std::is_integral_v<dest> && std::is_floating_point_v<source>), \
-      "A literal conversion from bool, or from floating point to int is not allowed!")
+template <typename Dest, typename Source>
+concept check_literal_conversion = !std::is_same_v<Source, bool> &&
+                                   !(std::is_integral_v<Dest> && std::is_floating_point_v<Source>);
+}
 
 #endif

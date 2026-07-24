@@ -27,9 +27,8 @@ The functions \a If and \a Then must return the same type <code>R</code>.
 */
 template <typename If, typename Then>
 inline std::invoke_result_t<If> cond(bool const _conditional, If const &_if, Then const &_then)
+requires std::is_same_v<std::invoke_result_t<If>, std::invoke_result_t<Then>>
 {
-  static_assert(std::is_same_v<std::invoke_result_t<If>, std::invoke_result_t<Then>>);
-
   if (_conditional)
   {
     return _if();

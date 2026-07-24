@@ -24,9 +24,8 @@ struct make_literal<fcppt::strong_typedef<Type, Tag>>
 
   template <typename Fundamental>
   static decorated_type get(Fundamental const _fundamental) noexcept
+  requires fcppt::check_literal_conversion<Type, Fundamental>
   {
-    FCPPT_CHECK_LITERAL_CONVERSION(Type, Fundamental);
-
     return fcppt::strong_typedef_construct_cast<decorated_type, fcppt::cast::static_cast_fun>(
         _fundamental);
   }

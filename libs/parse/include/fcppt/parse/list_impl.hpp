@@ -35,10 +35,10 @@ fcppt::parse::result<Ch, typename fcppt::parse::list<Start, Inner, Sep, End>::re
 fcppt::parse::list<Start, Inner, Sep, End>::parse(
     fcppt::reference<fcppt::parse::basic_stream<Ch>> const _state, Skipper const &_skipper) const
 {
-  auto const inner_parser(
+  auto const inner_parser{
       fcppt::make_cref(fcppt::parse::deref(this->start_)) >>
       (fcppt::parse::convert_const{fcppt::make_cref(this->end_), result_type{}} |
-       (fcppt::make_cref(fcppt::parse::deref(this->separator_)) >> fcppt::make_cref(this->end_))));
+       (fcppt::make_cref(fcppt::parse::deref(this->separator_)) >> fcppt::make_cref(this->end_)))};
 
   return inner_parser.parse(_state, _skipper);
 }

@@ -30,9 +30,8 @@ struct make_literal<boost::units::quantity<Unit, Type>>
 
   template <typename Fundamental>
   static decorated_type get(Fundamental const _fundamental)
+  requires fcppt::check_literal_conversion<Type, Fundamental>
   {
-    FCPPT_CHECK_LITERAL_CONVERSION(Type, Fundamental);
-
     return decorated_type::from_value(static_cast<Type>(_fundamental));
   }
 };
