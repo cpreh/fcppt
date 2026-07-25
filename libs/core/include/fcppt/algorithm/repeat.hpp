@@ -8,6 +8,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <concepts>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,15 +27,13 @@ Calls \a _function \a _count times.
 */
 template <typename Count, typename Function>
 void repeat(Count const _count, Function const &_function)
+  requires(std::is_integral_v<Count> && std::invocable<Function>)
 {
-  static_assert(std::is_integral_v<Count>, "Count must be an integral type");
-
   for (Count index(fcppt::literal<Count>(0)); index < _count; ++index)
   {
     _function();
   }
 }
-
 }
 
 #endif

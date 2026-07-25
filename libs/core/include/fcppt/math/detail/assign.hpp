@@ -21,11 +21,10 @@ namespace fcppt::math::detail
 {
 template <typename Dest, typename Src>
 inline void assign(Dest &_dest, Src const &_src)
+  requires std::is_same_v<
+      fcppt::math::detail::storage_size<typename Dest::storage_type>,
+      fcppt::math::detail::storage_size<typename Src::storage_type>>
 {
-  static_assert(std::is_same_v<
-                fcppt::math::detail::storage_size<typename Dest::storage_type>,
-                fcppt::math::detail::storage_size<typename Src::storage_type>>);
-
   fcppt::algorithm::loop(
       fcppt::math::int_range_count<
           fcppt::math::detail::storage_size<typename Src::storage_type>::value>{},
@@ -34,7 +33,6 @@ inline void assign(Dest &_dest, Src const &_src)
         _dest.storage()[Index] = _src.storage()[Index];
       });
 }
-
 }
 
 #endif

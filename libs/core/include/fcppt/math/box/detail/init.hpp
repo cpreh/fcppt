@@ -21,9 +21,8 @@ namespace fcppt::math::box::detail
 {
 template <typename Box, typename InitFirst, typename InitSecond, typename Function>
 Box init(InitFirst const &_init_first, InitSecond const &_init_second, Function const &_function)
+  requires fcppt::math::box::is_box<Box>::value
 {
-  static_assert(fcppt::math::box::is_box<Box>::value, "Box must be a box::object");
-
   using value_type = fcppt::type_traits::value_type<Box>;
 
   using result_array =
@@ -38,7 +37,6 @@ Box init(InitFirst const &_init_first, InitSecond const &_init_second, Function 
       _init_second([&results]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
                    { return fcppt::tuple::get<1>(fcppt::array::get<Index>(results)); })};
 }
-
 }
 
 #endif

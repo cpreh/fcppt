@@ -25,13 +25,10 @@ namespace fcppt::math::vector
 */
 template <fcppt::math::size_type Index, typename Vector>
 inline fcppt::container::to_reference_type<std::remove_reference_t<Vector>> at(Vector &_value)
+  requires fcppt::math::vector::is_vector<std::remove_cv_t<Vector>>::value
 {
-  static_assert(
-      fcppt::math::vector::is_vector<std::remove_cv_t<Vector>>::value, "Vector must be a vector");
-
   return fcppt::math::detail::checked_access<Index>(_value);
 }
-
 }
 
 #endif

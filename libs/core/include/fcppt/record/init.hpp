@@ -35,11 +35,11 @@ for every <code>element<L,T></code> in \a Result.
 */
 template <typename Result, typename Function>
 inline Result init(Function const &_function)
+  requires fcppt::record::is_object<Result>::value
 {
-  static_assert(fcppt::record::is_object<Result>::value, "Result must be a record::object");
-
   return fcppt::tuple::invoke(
-      [](auto &&..._fcppt_record_init_args) {
+      [](auto &&..._fcppt_record_init_args)
+      {
         return Result{std::forward<decltype(_fcppt_record_init_args)>(_fcppt_record_init_args)...};
       },
       fcppt::tuple::map(
@@ -48,7 +48,6 @@ inline Result init(Function const &_function)
               fcppt::tag<fcppt::record::element<Label, Type>>)
           { return Label{} = _function(fcppt::record::element<Label, Type>{}); }));
 }
-
 }
 
 #endif

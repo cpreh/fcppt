@@ -25,12 +25,10 @@ namespace fcppt::math::dim
 */
 template <fcppt::math::size_type Index, typename Dim>
 inline fcppt::container::to_reference_type<std::remove_reference_t<Dim>> at(Dim &_value)
+  requires fcppt::math::dim::is_dim<std::remove_cv_t<Dim>>::value
 {
-  static_assert(fcppt::math::dim::is_dim<std::remove_cv_t<Dim>>::value, "Dim must be a dim");
-
   return fcppt::math::detail::checked_access<Index>(_value);
 }
-
 }
 
 #endif

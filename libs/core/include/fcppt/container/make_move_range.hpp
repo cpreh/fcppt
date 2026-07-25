@@ -26,14 +26,11 @@ namespace fcppt::container
 template <typename Container>
 inline fcppt::container::move_range<std::remove_reference_t<Container>>
 make_move_range(Container &&_container)
+  requires std::is_rvalue_reference_v<decltype(_container)>
 {
-  static_assert(
-      std::is_rvalue_reference_v<decltype(_container)>, "Container must be an rvalue reference");
-
   return fcppt::container::move_range<std::remove_reference_t<Container>>(
       std::forward<Container>(_container));
 }
-
 }
 
 #endif

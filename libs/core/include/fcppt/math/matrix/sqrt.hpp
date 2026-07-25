@@ -31,10 +31,8 @@ that "epsilon" is more meaningful to users.
 template <typename T, fcppt::math::size_type N, typename S>
 fcppt::math::matrix::static_<T, N, N>
 sqrt(fcppt::math::matrix::object<T, N, N, S> const &_matrix, T const _epsilon)
+  requires std::is_floating_point_v<T>
 {
-  static_assert(
-      std::is_floating_point_v<T>, "matrix::sqrt can only be used on floating point types");
-
   using matrix_type = fcppt::math::matrix::static_<T, N, N>;
 
   matrix_type X(_matrix);

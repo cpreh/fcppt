@@ -42,10 +42,9 @@ std::remove_cvref_t<Grid> resize(
     Grid &&_grid, // NOLINT(cppcoreguidelines-missing-std-forward)
     fcppt::container::grid::dim_type<std::remove_cvref_t<Grid>> const &_new_size,
     Function const &_init)
+  requires fcppt::container::grid::is_object<std::remove_cvref_t<std::remove_cvref_t<Grid>>>::value
 {
   using result_type = std::remove_cvref_t<Grid>;
-
-  static_assert(fcppt::container::grid::is_object<result_type>::value, "Grid must be a grid");
 
   return result_type{
       _new_size, [&_grid, &_init](fcppt::container::grid::pos_type<result_type> const _fcppt_pos) {
@@ -58,7 +57,6 @@ std::remove_cvref_t<Grid> resize(
             });
       }};
 }
-
 }
 
 #endif

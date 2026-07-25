@@ -21,9 +21,8 @@ Behaviour is undefined if \p x is 0.
 */
 template <typename T>
 inline T log2(T const x)
+  requires std::is_unsigned_v<T>
 {
-  static_assert(std::is_unsigned_v<T>, "log2 can only be used on unsigned types");
-
   T r(1);
 
   while ((x >> r) != 0)
@@ -32,7 +31,6 @@ inline T log2(T const x)
   }
   return --r;
 }
-
 }
 
 #endif

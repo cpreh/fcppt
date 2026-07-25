@@ -36,11 +36,8 @@ Here is an example:
 */
 template <typename Dest, typename Src>
 inline fcppt::optional::reference<Dest> dynamic_cross(Src &_src) noexcept
+  requires(!fcppt::type_traits::is_base_of<std::remove_cv_t<Src>, std::remove_cv_t<Dest>>::value)
 {
-  static_assert(
-      !fcppt::type_traits::is_base_of<std::remove_cv_t<Src>, std::remove_cv_t<Dest>>::value,
-      "dynamic_cross can only be used on unrelated types");
-
   return fcppt::cast::detail::dynamic<Dest>(_src);
 }
 

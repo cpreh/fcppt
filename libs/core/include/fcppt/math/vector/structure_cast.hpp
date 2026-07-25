@@ -35,12 +35,10 @@ function (and vector in general).
 */
 template <typename Dest, typename Conv, typename T, fcppt::math::size_type N, typename S>
 inline Dest structure_cast(fcppt::math::vector::object<T, N, S> const &_src)
+  requires fcppt::math::vector::is_vector<Dest>::value
 {
-  static_assert(fcppt::math::vector::is_vector<Dest>::value, "Dest must be a vector");
-
   return fcppt::math::detail::structure_cast<Dest, Conv>(_src);
 }
-
 }
 
 #endif

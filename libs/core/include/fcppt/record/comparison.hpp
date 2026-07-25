@@ -29,12 +29,9 @@ template <typename... Types1, typename... Types2>
 bool operator==(
     fcppt::record::object<Types1...> const &_record1,
     fcppt::record::object<Types2...> const &_record2)
+  requires fcppt::record::
+      are_equivalent<fcppt::record::object<Types1...>, fcppt::record::object<Types2...>>::value
 {
-  static_assert(
-      fcppt::record::
-          are_equivalent<fcppt::record::object<Types1...>, fcppt::record::object<Types2...>>::value,
-      "Both records must be equivalent");
-
   return fcppt::algorithm::all_of(
       fcppt::record::element_vector<fcppt::record::object<Types1...>>{},
       [&_record1,

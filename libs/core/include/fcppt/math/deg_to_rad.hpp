@@ -21,14 +21,12 @@ namespace fcppt::math
 */
 template <typename T>
 inline T deg_to_rad(T const _deg)
+  requires std::is_floating_point_v<T>
 {
-  static_assert(std::is_floating_point_v<T>, "deg_to_rad can only be used on floating point types");
-
   return _deg * std::numbers::pi_v<T> /
          fcppt::literal<T>(
              180); // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 }
-
 }
 
 #endif

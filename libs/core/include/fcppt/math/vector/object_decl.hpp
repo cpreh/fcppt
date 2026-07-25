@@ -94,7 +94,8 @@ public:
   The content of the vector will be undefined (not null) after
   initialization
   */
-  explicit object(fcppt::no_init const &);
+  explicit object(fcppt::no_init const &)
+    requires(fcppt::math::is_static_storage<S>::value);
 
   /**
   \brief Construct a vector from a storage source

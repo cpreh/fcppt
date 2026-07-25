@@ -21,18 +21,15 @@ Maps \a _tree to another tree using \a _function.
 */
 template <typename Result, typename Value, typename Function>
 Result map(fcppt::container::tree::object<Value> const &_tree, Function const &_function)
+  requires fcppt::container::tree::is_object<Result>::value
 {
-  static_assert(
-      fcppt::container::tree::is_object<Result>::value, "The result of tree::map must be a tree");
-
   return Result{
       _function(_tree.value()),
       fcppt::algorithm::map<typename Result::child_list>(
-          _tree.children(), [&_function](fcppt::container::tree::object<Value> const &_child) {
-            return fcppt::container::tree::map<Result>(_child, _function);
-          })};
+          _tree.children(),
+          [&_function](fcppt::container::tree::object<Value> const &_child)
+          { return fcppt::container::tree::map<Result>(_child, _function); })};
 }
-
 }
 
 #endif

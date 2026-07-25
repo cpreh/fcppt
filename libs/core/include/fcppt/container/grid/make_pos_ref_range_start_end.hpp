@@ -26,14 +26,10 @@ inline fcppt::container::grid::pos_ref_range<Grid> make_pos_ref_range_start_end(
     Grid &_grid,
     typename fcppt::container::grid::pos_ref_range<Grid>::min_type const _min,
     typename fcppt::container::grid::pos_ref_range<Grid>::sup_type const _sup)
+  requires(fcppt::container::grid::is_object<std::remove_const_t<Grid>>::value)
 {
-  static_assert(
-      fcppt::container::grid::is_object<std::remove_const_t<Grid>>::value,
-      "Grid must be a grid::object");
-
   return fcppt::container::grid::pos_ref_range<Grid>(_grid, _min, _sup);
 }
-
 }
 
 #endif

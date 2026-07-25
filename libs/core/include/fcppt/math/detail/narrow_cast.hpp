@@ -19,20 +19,14 @@ namespace fcppt::math::detail
 {
 template <typename T, typename U>
 inline T narrow_cast(U const &_other)
+  requires(
+      std::is_same_v<fcppt::type_traits::value_type<T>, fcppt::type_traits::value_type<U>> &&
+      T::dim_wrapper::value < U::dim_wrapper::value)
 {
-  static_assert(
-      std::is_same_v<fcppt::type_traits::value_type<T>, fcppt::type_traits::value_type<U>>,
-      "narrow_cast can only be used on the same value_types");
-
-  static_assert(
-      T::dim_wrapper::value < U::dim_wrapper::value,
-      "narrow_cast can only cast to types with lesser dimensions");
-
   return fcppt::math::detail::init<T>(
       [&_other]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
       { return fcppt::math::detail::checked_access<Index>(_other); });
 }
-
 }
 
 #endif

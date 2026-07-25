@@ -31,15 +31,12 @@ template <fcppt::math::size_type R, fcppt::math::size_type C, typename Matrix>
 inline fcppt::container::to_reference_type<
     fcppt::container::to_reference_type<std::remove_reference_t<Matrix>>>
 at_r_c(Matrix &_value)
+  requires fcppt::math::matrix::is_matrix<std::remove_cv_t<Matrix>>::value
 {
-  static_assert(
-      fcppt::math::matrix::is_matrix<std::remove_cv_t<Matrix>>::value, "Matrix must be a matrix");
-
   fcppt::container::to_reference_type<Matrix> const view{fcppt::math::matrix::at_r<R>(_value)};
 
   return fcppt::math::vector::at<C>(view);
 }
-
 }
 
 #endif

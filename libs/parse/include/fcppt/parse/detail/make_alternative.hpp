@@ -17,10 +17,10 @@ namespace fcppt::parse::detail
 {
 template <typename Result, typename Arg>
 inline Result make_alternative(Arg &&_arg)
-  requires(std::negation_v<fcppt::variant::is_object<Result>>)
+  requires(
+      std::negation_v<fcppt::variant::is_object<Result>> &&
+      std::is_same_v<std::remove_cvref_t<Arg>, Result>)
 {
-  static_assert(std::is_same_v<std::remove_cvref_t<Arg>, Result>);
-
   return std::forward<Arg>(_arg);
 }
 

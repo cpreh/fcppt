@@ -28,9 +28,8 @@ Calls <code>_function</code> for every index of the matrix.
 */
 template <typename Matrix, typename Function>
 inline Matrix init(Function const &_function)
+  requires fcppt::math::matrix::is_matrix<Matrix>::value
 {
-  static_assert(fcppt::math::matrix::is_matrix<Matrix>::value, "Matrix must be a matrix");
-
   return fcppt::math::detail::init<Matrix>(
       [&_function]<fcppt::math::size_type Abs>(fcppt::math::size_constant<Abs>)
       {
@@ -38,7 +37,6 @@ inline Matrix init(Function const &_function)
             fcppt::math::matrix::detail::index_absolute<Matrix::static_columns::value, Abs>{});
       });
 }
-
 }
 
 #endif

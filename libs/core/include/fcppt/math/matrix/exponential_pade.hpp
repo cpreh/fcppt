@@ -33,10 +33,8 @@ namespace fcppt::math::matrix
 template <typename T, fcppt::math::size_type DN, typename S>
 fcppt::math::matrix::static_<T, DN, DN>
 exponential_pade(fcppt::math::matrix::object<T, DN, DN, S> const &_matrix)
+  requires std::is_floating_point_v<T>
 {
-  static_assert(
-      std::is_floating_point_v<T>, "exponential_pade can only be used on floating point types");
-
   using matrix_type = fcppt::math::matrix::static_<T, DN, DN>;
 
   T const zero{fcppt::literal<T>(0)};
@@ -91,7 +89,6 @@ exponential_pade(fcppt::math::matrix::object<T, DN, DN, S> const &_matrix)
 
   return result;
 }
-
 }
 
 #endif

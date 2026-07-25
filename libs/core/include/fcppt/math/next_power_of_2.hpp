@@ -26,9 +26,8 @@ Otherwise, the least power of two that is greater than _value is returned.
 */
 template <typename T>
 T next_power_of_2(T const _value)
+  requires std::is_unsigned_v<T>
 {
-  static_assert(std::is_unsigned_v<T>, "next_power_of_2 can only be used on unsigned types");
-
   if (_value == fcppt::literal<T>(0))
   {
     return fcppt::literal<T>(1);
@@ -52,7 +51,6 @@ T next_power_of_2(T const _value)
 
   return ret * two;
 }
-
 }
 
 #endif

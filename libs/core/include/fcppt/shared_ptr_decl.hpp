@@ -6,6 +6,7 @@
 #ifndef FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
+#include <fcppt/default_deleter_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
@@ -147,7 +148,8 @@ public:
   \param data The pointer this shared_ptr will point to
   */
   template <typename Other>
-  shared_ptr(fcppt::shared_ptr<Other> const &ref, pointer data);
+  shared_ptr(fcppt::shared_ptr<Other> const &ref, pointer data)
+    requires std::is_same_v<Deleter, fcppt::default_deleter>;
 
   template <typename Other>
   explicit shared_ptr(std::unique_ptr<Other, Deleter> &&ref);
@@ -278,7 +280,8 @@ public:
 
   template <typename Other>
   // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
-  explicit shared_ptr(fcppt::detail::make_shared_wrapper<Other> &&);
+  explicit shared_ptr(fcppt::detail::make_shared_wrapper<Other> &&)
+    requires std::is_same_v<Deleter, fcppt::default_deleter>;
 
 private:
   impl_type impl_;

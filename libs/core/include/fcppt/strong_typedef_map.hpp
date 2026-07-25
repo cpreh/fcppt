@@ -34,15 +34,11 @@ inline auto strong_typedef_map(StrongTypedef &&_input, Function const &_function
     -> fcppt::strong_typedef<
         decltype(_function(fcppt::move_if_rvalue<StrongTypedef>(_input.get()))),
         fcppt::strong_typedef_tag<std::remove_cvref_t<StrongTypedef>>>
+  requires fcppt::is_strong_typedef<std::remove_cvref_t<StrongTypedef>>::value
 {
-  using input_type = std::remove_cvref_t<StrongTypedef>;
-
-  static_assert(
-      fcppt::is_strong_typedef<input_type>::value, "StrongTypedef must be a strong typedef");
-
   return fcppt::strong_typedef<
       decltype(_function(fcppt::move_if_rvalue<StrongTypedef>(_input.get()))),
-      fcppt::strong_typedef_tag<input_type>>(
+      fcppt::strong_typedef_tag<std::remove_cvref_t<StrongTypedef>>>(
       _function(fcppt::move_if_rvalue<StrongTypedef>(_input.get())));
 }
 

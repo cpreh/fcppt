@@ -6,6 +6,7 @@
 #ifndef FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 
+#include <fcppt/default_deleter_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr_fwd.hpp> // IWYU pragma: keep
 #include <fcppt/config/external_begin.hpp>
@@ -67,8 +68,8 @@ public:
   /**
   \brief For implementation purposes only.
   */
-  explicit unique_ptr(std::unique_ptr<Type> &&) noexcept; // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
-
+  explicit unique_ptr(std::unique_ptr<Type> &&) noexcept // NOLINT(cppcoreguidelines-rvalue-reference-param-not-moved)
+    requires std::is_same_v<Deleter, fcppt::default_deleter>;
 private:
   std::unique_ptr<Type, Deleter> impl_;
 };

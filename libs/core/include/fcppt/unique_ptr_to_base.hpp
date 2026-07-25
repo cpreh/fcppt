@@ -20,13 +20,10 @@ template <typename Base, typename Derived, typename Deleter>
 inline fcppt::unique_ptr<Base, Deleter>
 // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 unique_ptr_to_base(fcppt::unique_ptr<Derived, Deleter> &&_other) noexcept
+  requires fcppt::type_traits::is_base_of<Base, Derived>::value
 {
-  static_assert(
-      fcppt::type_traits::is_base_of<Base, Derived>::value, "Base must be a base class of Derived");
-
   return fcppt::unique_ptr<Base, Deleter>(_other.release_ownership());
 }
-
 }
 
 #endif

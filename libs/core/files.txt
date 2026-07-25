@@ -651,7 +651,6 @@ libs/core/include/fcppt/math/clamp.hpp
 libs/core/include/fcppt/math/deg_to_rad.hpp
 libs/core/include/fcppt/math/detail/array_equal.hpp
 libs/core/include/fcppt/math/detail/array_less.hpp
-libs/core/include/fcppt/math/detail/assert_static_storage.hpp
 libs/core/include/fcppt/math/detail/assign.hpp
 libs/core/include/fcppt/math/detail/binary_map.hpp
 libs/core/include/fcppt/math/detail/binary_type.hpp

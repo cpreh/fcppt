@@ -31,9 +31,8 @@ users.
 template <typename T, fcppt::math::size_type N, typename S>
 fcppt::math::matrix::static_<T, N, N>
 logarithm(fcppt::math::matrix::object<T, N, N, S> A, T const e1, T const e2, T const e3)
+  requires std::is_floating_point_v<T>
 {
-  static_assert(std::is_floating_point_v<T>, "logarithm can only be used on floating point types");
-
   using matrix_type = fcppt::math::matrix::static_<T, N, N>;
 
   fcppt::math::size_type k{0U};
@@ -66,7 +65,6 @@ logarithm(fcppt::math::matrix::object<T, N, N, S> A, T const e1, T const e2, T c
 
   return X;
 }
-
 }
 
 #endif

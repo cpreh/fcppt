@@ -23,9 +23,8 @@ namespace fcppt::math::matrix
 */
 template <typename Matrix>
 fcppt::math::matrix::to_static<Matrix> identity()
+  requires fcppt::math::matrix::is_matrix<Matrix>::value
 {
-  static_assert(fcppt::math::matrix::is_matrix<Matrix>::value, "Matrix must be a matrix");
-
   using result_type = fcppt::math::matrix::to_static<Matrix>;
 
   using value_type = fcppt::type_traits::value_type<result_type>;

@@ -23,14 +23,12 @@ namespace fcppt::math::box
 */
 template <typename Dest, typename Conv, typename T, fcppt::math::size_type N>
 Dest structure_cast(fcppt::math::box::object<T, N> const &_src)
+  requires fcppt::math::box::is_box<Dest>::value
 {
-  static_assert(fcppt::math::box::is_box<Dest>::value, "Dest must be a box");
-
   return Dest(
       fcppt::math::vector::structure_cast<typename Dest::vector, Conv>(_src.pos()),
       fcppt::math::dim::structure_cast<typename Dest::dim, Conv>(_src.size()));
 }
-
 }
 
 #endif

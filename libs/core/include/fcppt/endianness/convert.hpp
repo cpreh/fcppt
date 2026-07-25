@@ -34,13 +34,10 @@ _format to the host format.
 */
 template <typename Type>
 Type convert(Type const &_value, std::endian const _format)
+  requires std::is_arithmetic_v<Type>
 {
-  static_assert(
-      std::is_arithmetic_v<Type>, "endianness::convert can only be used on arithmetic types");
-
   return _format == std::endian::native ? _value : fcppt::endianness::swap(_value);
 }
-
 }
 
 #endif

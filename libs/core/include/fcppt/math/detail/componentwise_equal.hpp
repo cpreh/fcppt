@@ -22,16 +22,11 @@ namespace fcppt::math::detail
 {
 template <typename Range1, typename Range2, typename T>
 inline bool componentwise_equal(Range1 const &_r1, Range2 const &_r2, T const &_epsilon)
-{
-  static_assert(
+  requires(
       std::is_floating_point_v<fcppt::type_traits::value_type<Range1>> &&
-          std::is_floating_point_v<fcppt::type_traits::value_type<Range2>>,
-      "componentwise_equal can only be used on ranges of floating point type");
-
-  static_assert(
-      Range1::dim_wrapper::value == Range2::dim_wrapper::value,
-      "Ranges of different size in componentwise_equal");
-
+      std::is_floating_point_v<fcppt::type_traits::value_type<Range2>> &&
+      Range1::dim_wrapper::value == Range2::dim_wrapper::value)
+{
   return fcppt::algorithm::all_of(
       fcppt::math::int_range_count<Range1::dim_wrapper::value>{},
       [&_r1, &_r2, _epsilon]<fcppt::math::size_type Index>(
@@ -42,7 +37,6 @@ inline bool componentwise_equal(Range1 const &_r1, Range2 const &_r2, T const &_
                    fcppt::math::detail::linear_access<Index>(_r2.storage())) < _epsilon;
       });
 }
-
 }
 
 #endif

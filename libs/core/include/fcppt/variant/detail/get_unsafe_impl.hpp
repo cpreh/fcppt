@@ -17,11 +17,8 @@ namespace fcppt::variant::detail
 template <typename Variant, typename U, typename StdVariant>
 std::conditional_t<std::is_const_v<StdVariant>, U const &, U &>
 get_unsafe_impl(StdVariant &_variant)
+  requires fcppt::variant::has_type_v<std::remove_const_t<Variant>, U>
 {
-  static_assert(
-      fcppt::variant::has_type_v<std::remove_const_t<Variant>, U>,
-      "Invalid variant type");
-
   return *std::get_if<U>(&_variant);
 }
 

@@ -31,14 +31,13 @@ result.
 template <typename Source, typename Function>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 auto map(Source &&_source, Function const &_function) -> fcppt::container::grid::object<
-    decltype(_function(fcppt::move_if_rvalue<Source>(_source.get_unsafe(
-        std::declval<
-            fcppt::container::grid::pos_type<std::remove_cvref_t<Source>>>())))),
+    decltype(_function(
+        fcppt::move_if_rvalue<Source>(_source.get_unsafe(
+            std::declval<fcppt::container::grid::pos_type<std::remove_cvref_t<Source>>>())))),
     std::remove_cvref_t<Source>::static_size::value>
+  requires fcppt::container::grid::is_object<std::remove_cvref_t<Source>>::value
 {
   using source_type = std::remove_cvref_t<Source>;
-
-  static_assert(fcppt::container::grid::is_object<source_type>::value, "Source must be a grid");
 
   using result_type = fcppt::container::grid::object<
       decltype(_function(fcppt::move_if_rvalue<Source>(
@@ -51,7 +50,6 @@ auto map(Source &&_source, Function const &_function) -> fcppt::container::grid:
         return _function(fcppt::move_if_rvalue<Source>(_source.get_unsafe(_pos)));
       });
 }
-
 }
 
 #endif

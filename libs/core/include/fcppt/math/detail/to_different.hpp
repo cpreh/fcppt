@@ -15,9 +15,8 @@ namespace fcppt::math::detail
 {
 template <typename Dest, typename Source>
 inline Dest to_different(Source const &_source)
+  requires (Dest::dim_wrapper::value == Source::dim_wrapper::value)
 {
-  static_assert(Dest::dim_wrapper::value == Source::dim_wrapper::value, "dim_wrappers must match");
-
   return fcppt::math::detail::init<Dest>(
       [&_source]<fcppt::math::size_type Index>(fcppt::math::size_constant<Index>)
       { return fcppt::math::detail::checked_access<Index>(_source); });

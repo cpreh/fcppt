@@ -30,16 +30,13 @@ Swaps the endiannness of \a _value.
 */
 template <typename Type>
 Type swap(Type _value) // NOLINT(cppcoreguidelines-noexcept-swap,performance-noexcept-swap)
+  requires std::is_arithmetic_v<Type>
 {
-  static_assert(
-      std::is_arithmetic_v<Type>, "endianness::swap can only be used on arithmetic types");
-
   fcppt::endianness::reverse_mem(
       fcppt::cast::to_char_ptr<fcppt::endianness::raw_pointer>(&_value), sizeof(Type));
 
   return _value;
 }
-
 }
 
 #endif

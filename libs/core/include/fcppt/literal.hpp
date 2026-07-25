@@ -29,14 +29,10 @@ fcppt::make_literal to do any conversions if necessary.
 */
 template <typename Type, typename Arg>
 constexpr fcppt::make_literal<Type>::decorated_type literal(Arg const &&_integral) noexcept
+  requires(fcppt::type_traits::is_value<Type>::value && std::is_arithmetic_v<Arg>)
 {
-  static_assert(fcppt::type_traits::is_value<Type>::value, "Type must be a value type");
-
-  static_assert(std::is_arithmetic_v<Arg>, "literal can only be used on arithmetic types");
-
   return fcppt::make_literal<Type>::get(_integral);
 }
-
 }
 
 #endif

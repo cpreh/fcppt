@@ -35,18 +35,14 @@ template <typename Dest, typename T, typename S1, typename S2>
 fcppt::optional::object<Dest> signed_angle_between_cast(
     fcppt::math::vector::object<T, 2, S1> const &_from,
     fcppt::math::vector::object<T, 2, S2> const &_to)
+  requires std::is_floating_point_v<Dest>
 {
-  static_assert(
-      std::is_floating_point_v<Dest>,
-      "signed_angle_between_cast can only be used on vectors of floating-point type");
-
   using intermediate_type = fcppt::math::vector::static_<Dest, 2>;
 
   return fcppt::math::vector::signed_angle_between(
       fcppt::math::vector::structure_cast<intermediate_type, fcppt::cast::int_to_float_fun>(_from),
       fcppt::math::vector::structure_cast<intermediate_type, fcppt::cast::int_to_float_fun>(_to));
 }
-
 }
 
 #endif

@@ -33,12 +33,10 @@ fails) of type \a Base.
 template <typename Cast, typename Derived, typename Base, typename Deleter>
 inline fcppt::variant::object<fcppt::unique_ptr<Derived, Deleter>, fcppt::unique_ptr<Base, Deleter>>
 unique_ptr_dynamic_cast(fcppt::unique_ptr<Base, Deleter> &&_other) noexcept
+  requires fcppt::type_traits::is_base_of<Base, Derived>::value
 {
   using result_type =
       fcppt::variant::object<fcppt::unique_ptr<Derived, Deleter>, fcppt::unique_ptr<Base, Deleter>>;
-
-  static_assert(
-      fcppt::type_traits::is_base_of<Base, Derived>::value, "Base must be a base class of Derived");
 
   return fcppt::optional::maybe(
       fcppt::cast::apply<Cast, Derived>(*_other),
@@ -49,7 +47,6 @@ unique_ptr_dynamic_cast(fcppt::unique_ptr<Base, Deleter> &&_other) noexcept
         return result_type{fcppt::unique_ptr<Derived, Deleter>{&_derived.get()}};
       });
 }
-
 }
 
 #endif

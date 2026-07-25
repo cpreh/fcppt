@@ -8,6 +8,7 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp> // IWYU pragma: keep
@@ -113,7 +114,8 @@ public:
   The content of the matrix will be undefined (not null) after
   initialization
   */
-  explicit object(fcppt::no_init const &);
+  explicit object(fcppt::no_init const &)
+    requires(fcppt::math::is_static_storage<S>::value);
 
   /**
   \brief Construct a matrix from a storage source

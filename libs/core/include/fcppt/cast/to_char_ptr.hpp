@@ -23,11 +23,8 @@ for serialization, and largely replaces <code>reinterpret_cast</code>.
 */
 template <typename Dest, typename Source>
 inline Dest to_char_ptr(Source *const _source) noexcept // NOLINT(readability-avoid-const-params-in-decls)
+requires fcppt::type_traits::is_raw_pointer<Dest>::value
 {
-  static_assert(
-      fcppt::type_traits::is_raw_pointer<Dest>::value,
-      "to_char_ptr can only cast to pointers to (cv) unsigned char");
-
   return
       // NOLINTNEXTLINE(cppcoreguidelines-pro-type-reinterpret-cast)
       reinterpret_cast<Dest>(_source);

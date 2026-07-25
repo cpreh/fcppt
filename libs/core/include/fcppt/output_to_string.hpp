@@ -28,13 +28,10 @@ namespace fcppt
 */
 template <typename Dest, typename Source>
 inline Dest output_to_string(Source const &_source)
+  requires fcppt::type_traits::is_string<Dest>::value
 {
-  static_assert(
-      fcppt::type_traits::is_string<Dest>::value, "insert_ot_string must return a string");
-
   return fcppt::output_to_string_locale<Dest>(_source, fcppt::insert_extract_locale());
 }
-
 }
 
 #endif

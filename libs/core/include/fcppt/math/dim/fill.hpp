@@ -20,12 +20,10 @@ namespace fcppt::math::dim
 */
 template <typename Dim>
 Dim fill(fcppt::type_traits::value_type<Dim> const &_value)
+  requires fcppt::math::dim::is_dim<Dim>::value
 {
-  static_assert(fcppt::math::dim::is_dim<Dim>::value, "Dim must be a dim");
-
   return fcppt::math::detail::fill<Dim>(_value);
 }
-
 }
 
 #endif

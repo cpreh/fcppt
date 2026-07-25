@@ -7,19 +7,17 @@
 #define FCPPT_MATH_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
 #include <fcppt/array/init.hpp>
-#include <fcppt/math/detail/assert_static_storage.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
 namespace fcppt::math::detail
 {
 template <typename Result>
 inline Result init_storage(fcppt::type_traits::value_type<Result> const &_value)
+  requires fcppt::math::is_static_storage<Result>::value
 {
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(Result);
-
   return Result{fcppt::array::init<typename Result::array_type>([_value](auto) { return _value; })};
 }
-
 }
 
 #endif

@@ -20,15 +20,13 @@ namespace fcppt::math::dim
 */
 template <typename Dim>
 fcppt::math::dim::static_<fcppt::type_traits::value_type<Dim>, Dim::static_size::value> null()
+  requires fcppt::math::dim::is_dim<Dim>::value
 {
-  static_assert(fcppt::math::dim::is_dim<Dim>::value, "Dim must be a dim");
-
   using result_type =
       fcppt::math::dim::static_<fcppt::type_traits::value_type<Dim>, Dim::static_size::value>;
 
   return result_type(fcppt::math::detail::null_storage<typename result_type::storage_type>());
 }
-
 }
 
 #endif

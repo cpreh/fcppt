@@ -24,16 +24,12 @@ namespace fcppt::container
 */
 template <typename Result, typename Map>
 Result map_values_ref(Map &_map)
+  requires fcppt::is_reference<fcppt::type_traits::value_type<Result>>::value
 {
-  static_assert(
-      fcppt::is_reference<fcppt::type_traits::value_type<Result>>::value,
-      "Result::value_type must be an fcppt::reference");
-
-  return fcppt::algorithm::map<Result>(_map, [](auto &&_element) {
-    return fcppt::type_traits::value_type<Result>{_element.second};
-  });
+  return fcppt::algorithm::map<Result>(
+      _map,
+      [](auto &&_element) { return fcppt::type_traits::value_type<Result>{_element.second}; });
 }
-
 }
 
 #endif

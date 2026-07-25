@@ -28,21 +28,15 @@ namespace fcppt::record
 */
 template <typename Result, typename Arg>
 inline Result permute(Arg &&_arg) // NOLINT(cppcoreguidelines-missing-std-forward)
+  requires(
+      fcppt::record::is_object<Result>::value &&
+      fcppt::record::is_object<std::remove_cvref_t<Arg>>::value &&
+      fcppt::record::are_equivalent<Result, std::remove_cvref_t<Arg>>::value)
 {
-  static_assert(fcppt::record::is_object<Result>::value, "Result must be an fcppt::record::object");
-
-  using arg_type = std::remove_cvref_t<Arg>;
-
-  static_assert(fcppt::record::is_object<arg_type>::value, "Arg must be an fcppt::record::object");
-
-  static_assert(
-      fcppt::record::are_equivalent<Result, arg_type>::value, "Result and Arg must be equivalent");
-
   return fcppt::record::init<Result>(
       [&_arg]<typename Label, typename Type>(fcppt::record::element<Label, Type>)
       { return fcppt::move_if_rvalue<Arg>(fcppt::record::get<Label>(_arg)); });
 }
-
 }
 
 #endif

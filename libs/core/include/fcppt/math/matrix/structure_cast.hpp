@@ -28,12 +28,10 @@ template <
     fcppt::math::size_type C,
     typename S>
 inline Dest structure_cast(fcppt::math::matrix::object<T, R, C, S> const &src)
+  requires fcppt::math::matrix::is_matrix<Dest>::value
 {
-  static_assert(fcppt::math::matrix::is_matrix<Dest>::value, "Dest must be a matrix");
-
   return fcppt::math::detail::structure_cast<Dest, Conv>(src);
 }
-
 }
 
 #endif

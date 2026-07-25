@@ -22,15 +22,11 @@ struct to_signed_fun
 {
   template <typename Dest, typename Source>
   static constexpr Dest execute(Source const &_source) noexcept
+    requires std::is_same_v<decltype(fcppt::cast::to_signed(std::declval<Source>())), Dest>
   {
-    static_assert(
-        std::is_same_v<decltype(fcppt::cast::to_signed(std::declval<Source>())), Dest>,
-        "Mismatched types in to_signed_fun");
-
     return fcppt::cast::to_signed(_source);
   }
 };
-
 }
 
 #endif

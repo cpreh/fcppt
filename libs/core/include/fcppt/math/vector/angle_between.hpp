@@ -46,18 +46,14 @@ template <typename T, fcppt::math::size_type N, typename S1, typename S2>
 fcppt::optional::object<T> angle_between(
     fcppt::math::vector::object<T, N, S1> const &_from,
     fcppt::math::vector::object<T, N, S2> const &_to)
+  requires std::is_floating_point_v<T>
 {
-  static_assert(
-      std::is_floating_point_v<T>,
-      "angle_between can only be used on vectors of floating-point type");
-
   return fcppt::optional::map(
       fcppt::math::div(
           fcppt::math::vector::dot(_from, _to),
           fcppt::math::vector::length(_from) * fcppt::math::vector::length(_to)),
       [](T const _angle) { return std::acos(_angle); });
 }
-
 }
 
 #endif

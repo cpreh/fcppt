@@ -30,15 +30,13 @@ nothing in case _divisor is zero.
 template <typename T, fcppt::math::size_type N, typename S>
 fcppt::optional::object<fcppt::math::vector::static_<T, N>>
 ceil_div_signed(fcppt::math::vector::object<T, N, S> const _vector, T const _divisor)
+  requires std::is_signed_v<T>
 {
-  static_assert(std::is_signed_v<T>, "T must be signed");
-
   return fcppt::math::detail::sequence<fcppt::math::vector::static_<T, N>>(
       fcppt::math::vector::map(_vector, [_divisor](T const _value) {
         return fcppt::math::ceil_div_signed(_value, _divisor);
       }));
 }
-
 }
 
 #endif

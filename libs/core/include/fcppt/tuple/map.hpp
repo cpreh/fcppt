@@ -34,13 +34,12 @@ The result of the function is the tuple <code>(_function(v_1),...,_function(v_n)
 template <typename Tuple, typename Function>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 fcppt::tuple::map_result<Tuple, Function> map(Tuple &&_tuple, Function const &_function)
-  requires(fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value)
+  requires(
+      fcppt::tuple::is_object<std::remove_cvref_t<Tuple>>::value &&
+      fcppt::tuple::size<std::remove_cvref_t<Tuple>>::value ==
+          fcppt::tuple::size<fcppt::tuple::map_result<Tuple, Function>>::value)
 {
-  using source_type = std::remove_cvref_t<Tuple>;
-  using result_type = fcppt::tuple::map_result<Tuple, Function>;
-  static_assert(fcppt::tuple::size<source_type>::value == fcppt::tuple::size<result_type>::value);
-
-  return fcppt::tuple::init<result_type>(
+  return fcppt::tuple::init<fcppt::tuple::map_result<Tuple, Function>>(
       [&_function, &_tuple]<std::size_t Index>(std::integral_constant<std::size_t, Index>)
       { return _function(fcppt::move_if_rvalue<Tuple>(fcppt::tuple::get<Index>(_tuple))); });
 }

@@ -35,12 +35,10 @@ function (and dim/vector in general).
 */
 template <typename Dest, typename Conv, typename T, fcppt::math::size_type N, typename S>
 inline Dest structure_cast(fcppt::math::dim::object<T, N, S> const &_src)
+  requires fcppt::math::dim::is_dim<Dest>::value
 {
-  static_assert(fcppt::math::dim::is_dim<Dest>::value, "Dest must be a dim");
-
   return fcppt::math::detail::structure_cast<Dest, Conv>(_src);
 }
-
 }
 
 #endif

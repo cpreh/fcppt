@@ -17,11 +17,8 @@ namespace fcppt::math::detail
 {
 template <fcppt::math::size_type Index, typename Storage>
 inline fcppt::container::to_value_type<Storage> &linear_access(Storage &_storage)
+  requires(Index < fcppt::math::detail::storage_size<std::remove_const_t<Storage>>::value)
 {
-  static_assert(
-      Index < fcppt::math::detail::storage_size<std::remove_const_t<Storage>>::value,
-      "linear_access out of range");
-
   // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
   return _storage[Index];
 }

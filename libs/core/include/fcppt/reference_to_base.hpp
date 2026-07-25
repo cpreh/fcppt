@@ -23,14 +23,10 @@ namespace fcppt
 */
 template <typename Base, typename Type>
 inline fcppt::reference<Base> reference_to_base(fcppt::reference<Type> const _ref) noexcept
+  requires fcppt::type_traits::is_base_of<std::remove_cv_t<Base>, std::remove_cv_t<Type>>::value
 {
-  static_assert(
-      fcppt::type_traits::is_base_of<std::remove_cv_t<Base>, std::remove_cv_t<Type>>::value,
-      "Base must be a base of Type");
-
   return fcppt::reference<Base>(_ref.get());
 }
-
 }
 
 #endif

@@ -30,15 +30,11 @@ must be an integral type.
 */
 template <typename Seed>
 Seed seed_from_chrono()
+  requires std::is_integral_v<fcppt::type_traits::value_type<Seed>>
 {
-  static_assert(
-      std::is_integral_v<fcppt::type_traits::value_type<Seed>>,
-      "seed_from_chrono requires Seeds with integral type");
-
   return Seed(static_cast<fcppt::type_traits::value_type<Seed>>(
       std::chrono::high_resolution_clock::now().time_since_epoch().count()));
 }
-
 }
 
 #endif

@@ -23,12 +23,10 @@ namespace fcppt::math::vector
 */
 template <typename Vector>
 Vector fill(fcppt::type_traits::value_type<Vector> const &_value)
+  requires fcppt::math::vector::is_vector<Vector>::value
 {
-  static_assert(fcppt::math::vector::is_vector<Vector>::value, "Vector must be a vector");
-
   return fcppt::math::detail::fill<Vector>(_value);
 }
-
 }
 
 #endif

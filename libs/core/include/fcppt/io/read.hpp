@@ -40,9 +40,8 @@ be returned. Otherwise an empty optional will be returned.
 */
 template <typename Type>
 fcppt::optional::object<Type> read(std::istream &_stream, std::endian const _format)
+  requires std::is_arithmetic_v<Type>
 {
-  static_assert(std::is_arithmetic_v<Type>, "io::read must return an arithmetic type");
-
   using result_type = fcppt::optional::object<Type>;
 
   Type result;
@@ -53,7 +52,6 @@ fcppt::optional::object<Type> read(std::istream &_stream, std::endian const _for
              ? result_type(fcppt::endianness::convert(result, _format))
              : result_type();
 }
-
 }
 
 #endif

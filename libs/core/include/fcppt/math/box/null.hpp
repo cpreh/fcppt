@@ -19,14 +19,12 @@ namespace fcppt::math::box
 */
 template <typename Box>
 inline Box null()
+  requires fcppt::math::box::is_box<Box>::value
 {
-  static_assert(fcppt::math::box::is_box<Box>::value, "Box must be a box");
-
   return Box(
       fcppt::math::vector::null<typename Box::vector>(),
       fcppt::math::dim::null<typename Box::dim>());
 }
-
 }
 
 #endif

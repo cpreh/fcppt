@@ -23,16 +23,11 @@ namespace fcppt::container
 */
 template <typename Container>
 inline fcppt::container::detail::output<Container> output(Container const &_container) noexcept
+  requires fcppt::type_traits::
+      is_iterator_of_category<typename Container::const_iterator, std::forward_iterator_tag>::value
 {
-  static_assert(
-      fcppt::type_traits::is_iterator_of_category<
-          typename Container::const_iterator,
-          std::forward_iterator_tag>::value,
-      "Container must provide a forward iterator!");
-
   return fcppt::container::detail::output<Container>{_container};
 }
-
 }
 
 #endif

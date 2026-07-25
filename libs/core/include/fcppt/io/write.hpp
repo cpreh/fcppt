@@ -37,16 +37,14 @@ will be done binary.
 */
 template <typename Type>
 void write(std::ostream &_stream, Type const &_value, std::endian const _format)
+  requires std::is_arithmetic_v<Type>
 {
-  static_assert(std::is_arithmetic_v<Type>, "io::write can only be used on arithmetic types");
-
   Type const tmp(fcppt::endianness::convert(_value, _format));
 
   _stream.write(
       fcppt::cast::to_char_ptr<char const *>(&tmp),
       fcppt::cast::size<std::streamsize>(fcppt::cast::to_signed(sizeof(Type))));
 }
-
 }
 
 #endif

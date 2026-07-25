@@ -7,7 +7,7 @@
 #define FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/cast/apply.hpp>
-#include <fcppt/math/detail/assert_static_storage.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,19 +18,15 @@ namespace fcppt::math::detail
 {
 template <typename T, typename Conv, typename U>
 inline T structure_cast(U const &_other)
+  requires(
+      std::is_same_v<typename T::dim_wrapper, typename U::dim_wrapper> &&
+      fcppt::math::is_static_storage<typename T::storage_type>::value)
 {
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(typename T::storage_type);
-
-  static_assert(
-      std::is_same_v<typename T::dim_wrapper, typename U::dim_wrapper>,
-      "structure_cast works only on types with the same dimensions");
-
   return fcppt::math::detail::init<T>([&_other](T::size_type const _index) {
     // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
     return fcppt::cast::apply<Conv, fcppt::type_traits::value_type<T>>(_other.storage()[_index]);
   });
 }
-
 }
 
 #endif

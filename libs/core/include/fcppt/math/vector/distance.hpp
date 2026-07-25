@@ -42,11 +42,9 @@ template <typename Dest, typename T, fcppt::math::size_type N, typename S1, type
 Dest distance(
     fcppt::math::vector::object<T, N, S1> const &_v1,
     fcppt::math::vector::object<T, N, S2> const &_v2)
-  requires(!std::is_floating_point_v<T>)
+  requires(!std::is_floating_point_v<T> && std::is_floating_point_v<Dest>)
 {
   using result_vector = fcppt::math::vector::static_<Dest, N>;
-
-  static_assert(std::is_floating_point_v<Dest>, "Dest must be a floating point type");
 
   return fcppt::math::vector::distance(
       fcppt::math::vector::structure_cast<result_vector, fcppt::cast::int_to_float_fun>(_v1),

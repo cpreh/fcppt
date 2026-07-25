@@ -22,9 +22,10 @@
 #include <fcppt/config/external_end.hpp>
 
 template <typename... Elements>
-fcppt::record::object<Elements...>::object() : elements_{}
+fcppt::record::object<Elements...>::object()
+  requires(fcppt::mpl::list::empty<all_types>::value)
+    : elements_{}
 {
-  static_assert(fcppt::mpl::list::empty<all_types>::value, "record not empty");
 }
 
 template <typename... Elements>
@@ -35,18 +36,14 @@ fcppt::record::object<Elements...>::object(fcppt::no_init const &)
 template <typename... Elements>
 template <typename... Args>
 fcppt::record::object<Elements...>::object(Args &&..._args)
-  requires(fcppt::record::is_vararg_ctor<Args...>::value)
+  requires(
+      fcppt::record::is_vararg_ctor<Args...>::value &&
+      fcppt::mpl::list::size<all_types>::value == sizeof...(Args) &&
+      fcppt::record::detail::all_initializers<all_types, fcppt::mpl::list::object<Args...>>::value)
     : elements_{fcppt::record::detail::
                     init_ctor<tuple, fcppt::record::element_tag_tuple<this_type>, Args...>(
                         std::forward<Args>(_args)...)}
 {
-  static_assert(
-      fcppt::mpl::list::size<all_types>::value == sizeof...(Args),
-      "You have to provide the right amount of parameters");
-
-  static_assert(
-      fcppt::record::detail::all_initializers<all_types, fcppt::mpl::list::object<Args...>>::value,
-      "You have to initialize every element");
 }
 
 template <typename... Elements>

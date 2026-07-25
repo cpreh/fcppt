@@ -39,17 +39,14 @@ template <typename Dest, typename T, fcppt::math::size_type N, typename S1, type
 fcppt::optional::object<Dest> angle_between_cast(
     fcppt::math::vector::object<T, N, S1> const &_from,
     fcppt::math::vector::object<T, N, S2> const &_to)
+  requires std::is_floating_point_v<Dest>
 {
-  static_assert(
-      std::is_floating_point_v<Dest>, "angle_between_cast must return a floating-point type");
-
   using intermediate_type = fcppt::math::vector::static_<Dest, N>;
 
   return fcppt::math::vector::angle_between(
       fcppt::math::vector::structure_cast<intermediate_type, fcppt::cast::int_to_float_fun>(_from),
       fcppt::math::vector::structure_cast<intermediate_type, fcppt::cast::int_to_float_fun>(_to));
 }
-
 }
 
 #endif

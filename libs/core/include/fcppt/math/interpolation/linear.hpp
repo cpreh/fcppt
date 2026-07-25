@@ -25,14 +25,10 @@ namespace fcppt::math::interpolation
 */
 template <typename Float, typename Value>
 Value linear(Float const &_f, Value const &_v1, Value const &_v2)
+  requires std::is_floating_point_v<Float>
 {
-  static_assert(
-      std::is_floating_point_v<Float>,
-      "interpolation::linear can only be used on floating point types");
-
   return ((fcppt::literal<Float>(1) - _f) * _v1) + (_f * _v2);
 }
-
 }
 
 #endif

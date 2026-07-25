@@ -9,7 +9,7 @@
 #include <fcppt/array/init.hpp>
 #include <fcppt/array/push_back.hpp>
 #include <fcppt/math/from_array.hpp>
-#include <fcppt/math/detail/assert_static_storage.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/static_storage_impl.hpp>
 #include <fcppt/type_traits/value_type.hpp>
@@ -22,11 +22,10 @@ namespace fcppt::math::detail
 {
 template <typename Dest, typename Src>
 inline Dest push_back(Src const &_src, fcppt::type_traits::value_type<Src> const &_value)
+  requires(
+      (Dest::static_size::value == Src::static_size::value + 1U) &&
+      fcppt::math::is_static_storage<typename Dest::storage_type>::value)
 {
-  static_assert(Dest::static_size::value == Src::static_size::value + 1U);
-
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(typename Dest::storage_type);
-
   using src_storage = fcppt::math::detail::
       static_storage<fcppt::type_traits::value_type<Src>, Src::static_size::value>;
 
@@ -36,7 +35,6 @@ inline Dest push_back(Src const &_src, fcppt::type_traits::value_type<Src> const
           { return fcppt::math::detail::checked_access<Index>(_src); }),
       _value));
 }
-
 }
 
 #endif

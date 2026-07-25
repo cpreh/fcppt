@@ -26,11 +26,8 @@ This cast is unsafe.
 */
 template <typename Dest, typename Source>
 inline Dest from_void_ptr(Source *const _ptr) noexcept
+  requires(std::is_pointer_v<Dest> && std::is_void_v<std::remove_cv_t<Source>>)
 {
-  static_assert(
-      std::is_pointer_v<Dest> && std::is_void_v<std::remove_cv_t<Source>>,
-      "from_void_ptr can only cast from a pointer to (cv) void to a different pointer type");
-
   return static_cast<Dest>(_ptr);
 }
 

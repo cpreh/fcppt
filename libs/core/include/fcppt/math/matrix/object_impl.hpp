@@ -7,8 +7,8 @@
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/copy.hpp>
@@ -27,9 +27,9 @@
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>
 fcppt::math::matrix::object<T, R, C, S>::object(fcppt::no_init const &_no_init)
-: storage_{_no_init}
+  requires(fcppt::math::is_static_storage<S>::value)
+    : storage_{_no_init}
 {
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(S);
 }
 
 template <typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S>

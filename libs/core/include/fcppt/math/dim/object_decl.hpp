@@ -84,7 +84,8 @@ public:
   The content of the dim will be undefined (not null) after
   initialization
   */
-  explicit object(fcppt::no_init const &);
+  explicit object(fcppt::no_init const &)
+    requires(fcppt::math::is_static_storage<S>::value);
 
   /**
   \brief Construct a dim from a storage source

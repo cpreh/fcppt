@@ -25,12 +25,10 @@ Calls <code>_function</code> for every index of the vector.
 */
 template <typename Vector, typename Function>
 inline Vector init(Function const &_function)
+  requires fcppt::math::vector::is_vector<Vector>::value
 {
-  static_assert(fcppt::math::vector::is_vector<Vector>::value, "Vector must be a vector");
-
   return fcppt::math::detail::init<Vector>(_function);
 }
-
 }
 
 #endif

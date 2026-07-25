@@ -25,12 +25,10 @@ Calls <code>_function</code> for every index of the dim.
 */
 template <typename Dim, typename Function>
 inline Dim init(Function const &_function)
+  requires fcppt::math::dim::is_dim<Dim>::value
 {
-  static_assert(fcppt::math::dim::is_dim<Dim>::value, "Dim must be a dim");
-
   return fcppt::math::detail::init<Dim>(_function);
 }
-
 }
 
 #endif

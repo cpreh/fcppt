@@ -43,15 +43,12 @@ of (x,y). This is what happens in fcppt's atan2 function.
 */
 template <typename T, typename S>
 inline fcppt::optional::object<T> atan2(fcppt::math::vector::object<T, 2, S> const &_vector)
+  requires std::is_floating_point_v<T>
 {
-  static_assert(
-      std::is_floating_point_v<T>, "atan2 can only be used on vectors of floating point type");
-
   return fcppt::optional::make_if(
       !(fcppt::math::is_zero(_vector.x()) && fcppt::math::is_zero(_vector.y())),
       [&_vector] { return std::atan2(_vector.y(), _vector.x()); });
 }
-
 }
 
 #endif

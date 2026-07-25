@@ -56,11 +56,9 @@ fcppt::shared_ptr<Type, Deleter>::shared_ptr(
     fcppt::shared_ptr<Other> const &_other,
     pointer const _data // NOLINT(misc-misplaced-const)
     )
-    : impl_(_other.std_ptr(), _data)
+  requires std::is_same_v<Deleter, fcppt::default_deleter>
+    : impl_{_other.std_ptr(), _data}
 {
-  static_assert(
-      std::is_same_v<Deleter, fcppt::default_deleter>,
-      "storing a different pointer in a shared_ptr only works with default_deleter");
 }
 
 template <typename Type, typename Deleter>
@@ -164,11 +162,9 @@ template <typename Type, typename Deleter>
 template <typename Other>
 // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
 fcppt::shared_ptr<Type, Deleter>::shared_ptr(fcppt::detail::make_shared_wrapper<Other> &&_other)
-    : impl_(_other.release())
+  requires std::is_same_v<Deleter, fcppt::default_deleter>
+    : impl_{_other.release()}
 {
-  static_assert(
-      std::is_same_v<Deleter, fcppt::default_deleter>,
-      "make_shared_ptr only works with default_deleter");
 }
 
 template <typename Type, typename Deleter>

@@ -34,9 +34,8 @@ every N of type \a Index, where R is the result type.
 template <typename MaxIndex, typename Index, typename Function, typename FailFunction>
 inline decltype(auto)
 runtime_index(Index const _index, Function const &_function, FailFunction const &_fail_function)
+  requires std::is_unsigned_v<Index>
 {
-  static_assert(std::is_unsigned_v<Index>, "runtime_index can only be used with unsigned indices");
-
   return fcppt::detail::runtime_index<MaxIndex, std::integral_constant<Index, 0>>::execute(
       _index, _function, _fail_function);
 }

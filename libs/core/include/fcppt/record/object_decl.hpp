@@ -11,8 +11,10 @@
 #include <fcppt/mpl/list/all_of.hpp>
 #include <fcppt/mpl/list/as_tuple.hpp>
 #include <fcppt/mpl/list/distinct.hpp>
+#include <fcppt/mpl/list/empty.hpp>
 #include <fcppt/mpl/list/map.hpp>
 #include <fcppt/mpl/list/object_fwd.hpp> // IWYU pragma: keep
+#include <fcppt/mpl/list/size.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,6 +23,7 @@
 #include <fcppt/record/is_vararg_ctor.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
+#include <fcppt/record/detail/all_initializers.hpp>
 #include <fcppt/record/detail/label_list.hpp>
 
 namespace fcppt::record
@@ -69,7 +72,7 @@ public:
 
   Calling this if \a Elements is not empty, a compile-time error occurs.
   */
-  object();
+  object() requires(fcppt::mpl::list::empty<all_types>::value);
 
   /**
   \brief An uninitialized record
@@ -93,7 +96,11 @@ public:
   */
   template <typename... Args>
   explicit object(Args &&..._args)
-    requires(fcppt::record::is_vararg_ctor<Args...>::value);
+    requires(
+        fcppt::record::is_vararg_ctor<Args...>::value &&
+        fcppt::mpl::list::size<all_types>::value == sizeof...(Args) &&
+        fcppt::record::detail::all_initializers<all_types, fcppt::mpl::list::object<Args...>>::
+            value);
 
   /**
   \brief Sets an element by copy.

@@ -17,9 +17,8 @@ namespace fcppt::math::detail
 {
 template <typename Type1, typename Type2, typename Function>
 Type1 &member_operator(Type1 &_left, Type2 const &_right, Function const &_function)
+  requires(Type1::dim_wrapper::value == Type2::dim_wrapper::value)
 {
-  static_assert(Type1::dim_wrapper::value == Type2::dim_wrapper::value);
-
   fcppt::algorithm::loop(
       fcppt::math::int_range_count<Type1::dim_wrapper::value>{},
       [&_left, &_right, &_function]<fcppt::math::size_type Index>(
@@ -32,7 +31,6 @@ Type1 &member_operator(Type1 &_left, Type2 const &_right, Function const &_funct
 
   return _left;
 }
-
 }
 
 #endif

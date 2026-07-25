@@ -32,10 +32,8 @@ namespace fcppt
 */
 template <typename Dest, typename Source>
 Dest output_to_string_locale(Source const &_source, std::locale const &_locale)
+  requires fcppt::type_traits::is_string<Dest>::value
 {
-  static_assert(
-      fcppt::type_traits::is_string<Dest>::value, "insert_ot_string must return a string");
-
   using ostringstream =
       std::basic_ostringstream<fcppt::type_traits::value_type<Dest>, typename Dest::traits_type>;
 
@@ -47,7 +45,6 @@ Dest output_to_string_locale(Source const &_source, std::locale const &_locale)
 
   return oss.str();
 }
-
 }
 
 #endif

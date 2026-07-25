@@ -8,8 +8,8 @@
 
 #include <fcppt/array/init.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -20,9 +20,8 @@ namespace fcppt::math::detail
 {
 template <typename Result, typename Arg>
 inline Result copy(Arg const &_arg)
+  requires fcppt::math::is_static_storage<Result>::value
 {
-  FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(Result);
-
   return Result{fcppt::array::init<typename Result::array_type>(
       [&_arg]<std::size_t Index>(std::integral_constant<std::size_t,Index>)
       {
@@ -30,7 +29,6 @@ inline Result copy(Arg const &_arg)
             _arg.storage());
       })};
 }
-
 }
 
 #endif

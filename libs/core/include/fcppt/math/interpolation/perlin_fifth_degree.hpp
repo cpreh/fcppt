@@ -26,11 +26,8 @@ namespace fcppt::math::interpolation
 */
 template <typename Float, typename Value>
 Value perlin_fifth_degree(Float const &_f, Value const &_v1, Value const &_v2)
+  requires std::is_floating_point_v<Float>
 {
-  static_assert(
-      std::is_floating_point_v<Float>,
-      "perlin_fifth_degree can only be used on floating point types");
-
   return fcppt::math::interpolation::linear(
       _f * _f * _f *
           (_f *
@@ -46,7 +43,6 @@ Value perlin_fifth_degree(Float const &_f, Value const &_v1, Value const &_v2)
       _v1,
       _v2);
 }
-
 }
 
 #endif

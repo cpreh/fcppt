@@ -21,15 +21,15 @@ namespace fcppt::math::detail
 {
 template <typename T1, typename T2>
 inline bool array_equal(T1 const &_v1, T2 const &_v2)
+  requires std::is_same_v<
+      fcppt::math::detail::storage_size<typename T1::storage_type>,
+      fcppt::math::detail::storage_size<typename T2::storage_type>>
 {
-  static_assert(std::is_same_v<
-                fcppt::math::detail::storage_size<typename T1::storage_type>,
-                fcppt::math::detail::storage_size<typename T2::storage_type>>);
-
   return fcppt::algorithm::all_of(
       fcppt::math::int_range_count<
           fcppt::math::detail::storage_size<typename T1::storage_type>::value>{},
-      [&_v1, &_v2]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>) {
+      [&_v1, &_v2]<fcppt::math::size_type Index>(fcppt::tag<fcppt::math::size_constant<Index>>)
+      {
         // NOLINTNEXTLINE(cppcoreguidelines-pro-bounds-avoid-unchecked-container-access)
         return _v1.storage()[Index] == _v2.storage()[Index];
       });

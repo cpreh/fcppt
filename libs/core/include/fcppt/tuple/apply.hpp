@@ -35,18 +35,12 @@ template <typename Function, typename... Tuples>
 fcppt::tuple::apply_result<Function, Tuples...>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 apply(Function const &_function, Tuples &&..._tuples)
-{
-  static_assert(
-      std::conjunction_v<
-          fcppt::tuple::is_object<std::remove_cvref_t<Tuples>>...>,
-      "Tuples must all be fcppt::tuple::objects");
-
-  static_assert(
+  requires(
+      std::conjunction_v<fcppt::tuple::is_object<std::remove_cvref_t<Tuples>>...> &&
       std::is_same_v<std::integral_constant<
           std::size_t,
-          fcppt::tuple::size<std::remove_cvref_t<Tuples>>::value>...>,
-      "All tuples must have the same size");
-
+          fcppt::tuple::size<std::remove_cvref_t<Tuples>>::value>...>)
+{
   return fcppt::tuple::init<fcppt::tuple::apply_result<Function, Tuples...>>(
       [&_function, &_tuples...]<std::size_t Index>(std::integral_constant<std::size_t, Index>) {
         return _function(fcppt::tuple::get<Index>(fcppt::move_if_rvalue<Tuples>(_tuples))...);
