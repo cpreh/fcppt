@@ -81,7 +81,7 @@ fcppt::parse::position<Ch> fcppt::parse::detail::stream<Ch>::get_position() cons
   if (pos == pos_type{-1})
   {
     throw
-        // NOLINTNEXTLINE(hicpp-exception-baseclass)
+        // NOLINTNEXTLINE(hicpp-exception-baseclass,bugprone-std-exception-baseclass)
         fcppt::parse::detail::exception{fcppt::parse::stream_error::tellg_failed};
   }
 
@@ -102,7 +102,7 @@ void fcppt::parse::detail::stream<Ch>::set_position(fcppt::parse::position<Ch> c
   if (std_stream.fail())
   {
     throw
-        // NOLINTNEXTLINE(hicpp-exception-baseclass)
+        // NOLINTNEXTLINE(hicpp-exception-baseclass,bugprone-std-exception-baseclass)
         fcppt::parse::detail::exception{fcppt::parse::stream_error::seekg_failed};
   }
 

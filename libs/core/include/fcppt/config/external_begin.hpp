@@ -110,6 +110,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
 #if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(12, 0)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wcompound-token-split-by-space)
 #endif
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(23, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wlifetime-safety-lifetimebound-violation)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wpragma-clang-attribute)
+#endif
 
 #else
 

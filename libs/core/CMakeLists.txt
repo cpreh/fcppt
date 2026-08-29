@@ -30,6 +30,7 @@ make_fcppt_library(
   libs/core/include/fcppt/preprocessor/disable_gcc_warning.h
   libs/core/include/fcppt/preprocessor/disable_gnu_gcc_warning.h
   libs/core/include/fcppt/preprocessor/ignore_dangling_reference.h
+  libs/core/include/fcppt/preprocessor/ignore_lifetime_safety_invalidation.h
   libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.h
   libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage_in_libc_call.h
   libs/core/include/fcppt/preprocessor/pop_warning.h

@@ -34,13 +34,13 @@ public:
 
   using size_type = fcppt::type_traits::value_type<pos>;
 
-  using reference = base_type::reference;
+  using typename base_type::reference;
 
-  using pointer = base_type::pointer;
+  using typename base_type::pointer;
 
-  using iterator_category = base_type::iterator_category;
+  using typename base_type::iterator_category;
 
-  using difference_type = base_type::difference_type;
+  using typename base_type::difference_type;
 
   using min = fcppt::container::grid::min<size_type, Size>;
 

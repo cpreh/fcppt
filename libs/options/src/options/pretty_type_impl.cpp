@@ -10,6 +10,8 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+// NOLINTNEXTLINE(modernize-use-string-view)
 fcppt::string fcppt::options::pretty_type_impl<std::string>::get() { return FCPPT_TEXT("string"); }
 
+// NOLINTNEXTLINE(modernize-use-string-view)
 fcppt::string fcppt::options::pretty_type_impl<std::wstring>::get() { return FCPPT_TEXT("string"); }

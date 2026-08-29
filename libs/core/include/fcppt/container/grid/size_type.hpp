@@ -15,7 +15,7 @@ namespace fcppt::container::grid
 
 \ingroup fcpptcontainergrid
 */
-using size_type = fcppt::math::size_type;
+using fcppt::math::size_type;
 
 }
 

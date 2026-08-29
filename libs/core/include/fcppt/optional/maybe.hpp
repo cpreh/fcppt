@@ -40,7 +40,7 @@ maybe(Optional &&_optional, Default const &_default, Transform const &_transform
 {
   return fcppt::cond(
       _optional.has_value(),
-      [&_transform, &_optional]() -> std::invoke_result_t<Default> {
+      [&_transform, &_optional] -> std::invoke_result_t<Default> {
         return _transform(fcppt::move_if_rvalue<Optional>(_optional.get_unsafe()));
       },
       _default);

@@ -41,13 +41,13 @@ class pos_ref_iterator final : public fcppt::container::grid::detail::pos_ref_it
 public:
   using value_type = fcppt::type_traits::value_type<base_type>;
 
-  using reference = base_type::reference;
+  using typename base_type::reference;
 
-  using pointer = base_type::pointer;
+  using typename base_type::pointer;
 
-  using iterator_category = base_type::iterator_category;
+  using typename base_type::iterator_category;
 
-  using difference_type = base_type::difference_type;
+  using typename base_type::difference_type;
 
   using pos_iterator = fcppt::container::grid::
       pos_iterator<fcppt::type_traits::value_type<pos>, pos::static_size::value>;

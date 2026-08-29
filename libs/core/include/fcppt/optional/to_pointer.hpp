@@ -25,7 +25,7 @@ template <typename T>
 {
   return fcppt::optional::maybe(
       _optional,
-      []() -> T * { return nullptr; },
+      [] -> T * { return nullptr; },
       [](fcppt::reference<T> const _ref) { return &_ref.get(); });
 }
 

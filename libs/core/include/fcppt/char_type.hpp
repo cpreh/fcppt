@@ -16,7 +16,7 @@ namespace fcppt
 
 See \ref fcpptstring for more information.
 */
-using char_type = fcppt::detail::char_type;
+using char_type = fcppt::detail::char_type; // NOLINT(readability-redundant-qualified-alias)
 
 }
 

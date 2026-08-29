@@ -33,7 +33,7 @@ requires std::is_same_v<std::invoke_result_t<Default>, fcppt::optional::value_ty
 {
   return fcppt::cond(
       _optional.has_value(),
-      [&_optional]() -> std::invoke_result_t<Default> {
+      [&_optional] -> std::invoke_result_t<Default> {
         return fcppt::move_if_rvalue<Optional>(_optional.get_unsafe());
       },
       _default);

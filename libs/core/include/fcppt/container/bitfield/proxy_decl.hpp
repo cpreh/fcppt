@@ -80,7 +80,7 @@ public:
   by this proxy is set or not, the value will be <code>true</code> or
   <code>false</code>.
   */
-  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
+  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions,cppcoreguidelines-explicit-constructor,misc-explicit-constructor)
   operator fcppt::container::bitfield::value_type() const;
 };
 

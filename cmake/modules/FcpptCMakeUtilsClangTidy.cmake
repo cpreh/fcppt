@@ -13,6 +13,7 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
   # - "fuchsia-trailing-return" complains about code like X<decltype(_param)>
   # - "readability-function-cognitive-complexity" triggers for almost every Catch2 test case
   # - "modernize-return-braced-init-list" also triggers on ()-initialization, breaking code
+  # - "readability-redundant-parentheses" has false positives on requires. TODO: examine this again later.
 
   set(FCPPT_UTILS_CLANG_TIDY_CHECKS
       "*"
@@ -42,7 +43,9 @@ if(NOT "${FCPPT_UTILS_CLANG_TIDY}" STREQUAL "")
       "-readability-identifier-length"
       "-readability-inconsistent-declaration-parameter-name"
       "-readability-named-parameter"
-      "-readability-redundant-member-init")
+      "-readability-redundant-member-init"
+      "-readability-redundant-parentheses"
+      "-readability-trailing-comma")
 
   list(APPEND FCPPT_UTILS_CLANG_TIDY_CHECKS
        ${FCPPT_UTILS_CLANG_TIDY_ADDITIONAL_CHECKS})

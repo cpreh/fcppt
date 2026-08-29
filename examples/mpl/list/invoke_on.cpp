@@ -61,7 +61,7 @@ color_variant make_color_variant(color_enum const _value)
   return fcppt::mpl::list::invoke_on<static_color_types>(
       fcppt::cast::enum_to_underlying(_value),
       create_function(),
-      []() -> color_variant { std::terminate(); });
+      [] -> color_variant { std::terminate(); });
 }
 
 }

@@ -89,14 +89,14 @@ template <typename T, typename A>
 fcppt::container::raw_vector::object<T, A>::reference
 fcppt::container::raw_vector::object<T, A>::back() noexcept
 {
-  return *(std::prev(this->end()));
+  return *std::prev(this->end());
 }
 
 template <typename T, typename A>
 fcppt::container::raw_vector::object<T, A>::const_reference
 fcppt::container::raw_vector::object<T, A>::back() const noexcept
 {
-  return *(std::prev(this->end()));
+  return *std::prev(this->end());
 }
 
 template <typename T, typename A>

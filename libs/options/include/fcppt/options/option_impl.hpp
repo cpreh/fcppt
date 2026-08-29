@@ -98,7 +98,7 @@ fcppt::options::option<Label, Type>::parse(
             });
       }};
 
-  auto const get_default_value{[&_state, this]() -> inner_result {
+  auto const get_default_value{[&_state, this] -> inner_result {
     FCPPT_PP_PUSH_WARNING
     FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 
@@ -157,7 +157,7 @@ fcppt::options::option<Label, Type>::parse(
 
         return fcppt::optional::maybe(
             _long_value_opt,
-            [&_short_value_opt, make_or_default_value]() -> inner_result
+            [&_short_value_opt, make_or_default_value] -> inner_result
             { return make_or_default_value(_short_value_opt); },
             [make_value, &_short_value_opt, &_short_name, this](
                 fcppt::options::detail::use_option_success const &_long_value) -> inner_result
@@ -175,7 +175,7 @@ fcppt::options::option<Label, Type>::parse(
   return fcppt::either::map(
       fcppt::optional::maybe(
           this->short_name_,
-          [make_or_default_value, &long_found]() -> inner_result
+          [make_or_default_value, &long_found] -> inner_result
           { return fcppt::either::bind(long_found, make_or_default_value); },
           [combine_results, map_result, &long_found, &_state](
               fcppt::options::short_name const &_short_name) -> inner_result

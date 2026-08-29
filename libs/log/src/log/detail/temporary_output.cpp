@@ -8,9 +8,11 @@
 
 fcppt::log::detail::temporary_output::temporary_output() : stream_{} {}
 
+// NOLINTNEXTLINE(bugprone-unsafe-to-allow-exceptions)
 fcppt::log::detail::temporary_output::temporary_output(
     fcppt::log::detail::temporary_output &&) noexcept(false) = default;
 
+// NOLINTNEXTLINE(bugprone-unsafe-to-allow-exceptions)
 fcppt::log::detail::temporary_output &fcppt::log::detail::temporary_output::operator=(
     fcppt::log::detail::temporary_output &&) noexcept(false) = default;
 

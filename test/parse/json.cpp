@@ -130,7 +130,7 @@ json::object make_object_(json::entries &&_args)
                     std::move(fcppt::tuple::get<0>(_element)), std::move(fcppt::tuple::get<1>(_element))})))
         {
           throw
-              // NOLINTNEXTLINE(hicpp-exception-baseclass)
+              // NOLINTNEXTLINE(hicpp-exception-baseclass,bugprone-std-exception-baseclass)
               json::double_insert{};
         }
 

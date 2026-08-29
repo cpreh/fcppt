@@ -39,6 +39,7 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
 
+// NOLINTNEXTLINE(misc-const-correctness)
 int FCPPT_MAIN(int argc, fcppt::args_char **argv)
 try
 {
@@ -53,7 +54,7 @@ try
 
   // ![options_create_base]
   auto const create_base{
-      []() -> fcppt::options::base_unique_ptr<result_type>
+      [] -> fcppt::options::base_unique_ptr<result_type>
       {
         return fcppt::options::make_base<result_type>(fcppt::options::apply(
             fcppt::options::argument<int_arg_label, int>{

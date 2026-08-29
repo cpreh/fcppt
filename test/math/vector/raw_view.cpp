@@ -40,7 +40,7 @@ public:
 
   ~proxy() = default;
 
-  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
+  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions,cppcoreguidelines-explicit-constructor,misc-explicit-constructor)
   operator Type() const
   {
     Type result;

@@ -20,7 +20,7 @@ inline void check_bad(std::basic_istream<Ch> &_stream)
   if (_stream.bad())
   {
     throw
-        // NOLINTNEXTLINE(hicpp-exception-baseclass)
+        // NOLINTNEXTLINE(hicpp-exception-baseclass,bugprone-std-exception-baseclass)
         fcppt::parse::detail::exception{fcppt::parse::stream_error::bad_stream};
   }
 }

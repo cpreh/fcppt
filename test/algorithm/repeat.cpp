@@ -15,9 +15,9 @@ FCPPT_CATCH_BEGIN
 
 TEST_CASE("algorithm::repeat", "[algorithm]")
 {
-  int value(0);
+  int value{0};
 
-  fcppt::algorithm::repeat(10, [&value]() { ++value; });
+  fcppt::algorithm::repeat(10, [&value] { ++value; });
 
   CHECK(value == 10);
 }

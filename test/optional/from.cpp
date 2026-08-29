@@ -32,7 +32,7 @@ TEST_CASE("optional::from", "[optiona]")
 
   int y{0};
 
-  fcppt::optional::from(optional_int_ref{fcppt::make_ref(x)}, [&y]() {
+  fcppt::optional::from(optional_int_ref{fcppt::make_ref(x)}, [&y] {
     return fcppt::make_ref(y);
   }).get() = 100;
 

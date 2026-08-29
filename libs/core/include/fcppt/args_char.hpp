@@ -15,7 +15,7 @@ namespace fcppt
 
 \ingroup fcpptvarious
 */
-using args_char = fcppt::detail::args_char;
+using args_char = fcppt::detail::args_char; // NOLINT(readability-redundant-qualified-alias)
 
 }
 

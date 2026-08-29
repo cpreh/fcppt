@@ -30,7 +30,7 @@ operator<<(std::basic_ostream<Ch, Traits> &_stream, fcppt::optional::object<Type
 
   return fcppt::optional::maybe(
       _opt_value,
-      [&_stream]() -> result_type { return _stream << _stream.widen('N'); },
+      [&_stream] -> result_type { return _stream << _stream.widen('N'); },
       [&_stream](Type const &_value) -> result_type
       { return _stream << _stream.widen('J') << _stream.widen(' ') << fcppt::output(_value); });
 }

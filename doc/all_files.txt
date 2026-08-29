@@ -1202,6 +1202,8 @@ libs/core/include/fcppt/preprocessor/fixme.hpp
 libs/core/include/fcppt/preprocessor/function.hpp
 libs/core/include/fcppt/preprocessor/ignore_dangling_reference.h
 libs/core/include/fcppt/preprocessor/ignore_dangling_reference.hpp
+libs/core/include/fcppt/preprocessor/ignore_lifetime_safety_invalidation.h
+libs/core/include/fcppt/preprocessor/ignore_lifetime_safety_invalidation.hpp
 libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.h
 libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp
 libs/core/include/fcppt/preprocessor/ignore_unsafe_buffer_usage_in_libc_call.h

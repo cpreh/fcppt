@@ -65,7 +65,7 @@ object<void(Args...), Base>::~object() = default;
 template <typename... Args, template <typename> class Base>
 void fcppt::signal::object<void(Args...), Base>::operator()(Args ..._args)
 {
-  for (auto &item : base::connections())
+  for (auto const &item : base::connections())
   {
     item.function()(_args...);
   }

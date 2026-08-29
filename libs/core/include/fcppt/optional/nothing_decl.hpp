@@ -25,7 +25,7 @@ struct nothing
   \brief Returns an empty optional.
   */
   template <fcppt::concepts::move_constructible T>
-  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions)
+  // NOLINTNEXTLINE(google-explicit-constructor,hicpp-explicit-conversions,cppcoreguidelines-explicit-constructor,misc-explicit-constructor)
   operator fcppt::optional::object<T>() const;
 };
 

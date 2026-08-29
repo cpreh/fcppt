@@ -5,6 +5,7 @@ include(CheckCXXCompilerFlag)
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang" OR ${CMAKE_CXX_COMPILER_ID}
                                                 STREQUAL "AppleClang")
   set(FCPPT_UTILS_COMPILER_IS_CLANGPP ON)
+  string(COMPARE GREATER_EQUAL ${CMAKE_CXX_COMPILER_VERSION} "23" FCPPT_UTILS_CLANG_VERSION_23)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP)
@@ -26,7 +27,15 @@ if(CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP)
       "-Wno-c++98-compat"
       "-Wno-c++98-compat-pedantic"
       "-Wno-padded"
+      "-Wno-pre-c23-compat"
       "-fcomment-block-commands=snippet")
+    if(FCPPT_UTILS_CLANG_VERSION_23)
+      list(
+        APPEND
+        FCPPT_UTILS_COMPILE_OPTIONS
+        "-Wno-lifetime-safety-cross-tu-suggestions"
+        "-Wno-lifetime-safety-intra-tu-suggestions")
+    endif()
   else()
     list(
       APPEND

@@ -8,11 +8,14 @@
 
 #include <fcppt/algorithm/update_action.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/ignore_lifetime_safety_invalidation.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 
 namespace fcppt::algorithm
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_LIFETIME_SAFETY_INVALIDATION
 /**
 \brief Iterates over a sequence with the possibility of erasing elements.
 
@@ -28,7 +31,7 @@ the element is removed from the sequence.
 template <typename Sequence, typename UpdateAction>
 void sequence_iteration(Sequence &_sequence, UpdateAction const &_update_action)
 {
-  for (auto it(_sequence.begin()); it != _sequence.end();)
+  for (auto it{_sequence.begin()}; it != _sequence.end();)
   {
     FCPPT_PP_PUSH_WARNING
     FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
@@ -46,6 +49,7 @@ void sequence_iteration(Sequence &_sequence, UpdateAction const &_update_action)
     FCPPT_PP_POP_WARNING
   }
 }
+FCPPT_PP_POP_WARNING
 
 }
 
