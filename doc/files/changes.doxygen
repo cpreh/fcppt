@@ -1,6 +1,14 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_521 5.2.1
+
+<ul>
+
+<li>Cleaned up <code>clang-23</code> warnings.</li>
+
+</ul>
+
 \section changes_changes_to_520 5.2.0
 
 <ul>
