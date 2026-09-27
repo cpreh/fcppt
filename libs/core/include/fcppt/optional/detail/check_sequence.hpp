@@ -8,6 +8,7 @@
 
 #include <fcppt/mpl/list/object_fwd.hpp>
 #include <fcppt/optional/is_object.hpp>
+#include <fcppt/optional/is_object_v.hpp>
 #include <fcppt/tuple/is_object.hpp>
 #include <fcppt/tuple/object_fwd.hpp>
 #include <fcppt/tuple/types_of.hpp>
@@ -23,31 +24,25 @@ struct check_sequence
 {
   using source_optional = fcppt::type_traits::value_type<Source>;
 
-  static_assert(
-      fcppt::optional::is_object<source_optional>::value,
-      "The source must be a container of optionals");
-
-  static_assert(
+  static constexpr bool const value =
+      fcppt::optional::is_object_v<source_optional>
+      &&
       std::is_same_v<
           fcppt::type_traits::value_type<Result>,
-          fcppt::type_traits::value_type<source_optional>>,
-      "ResultContainer must be a container of the source's success type");
+          fcppt::type_traits::value_type<source_optional>>;
 };
 
 template <typename Result, typename... Types>
 struct check_sequence<Result, fcppt::tuple::object<Types...>>
 {
-  static_assert(
-      std::conjunction_v<fcppt::optional::is_object<Types>...>,
-      "Source must be an fcppt::tuple::object of optionals");
-
-  static_assert(fcppt::tuple::is_object<Result>::value, "Result must be an fcppt::tuple::object");
-
-  static_assert(
+  static constexpr bool const value =
+      std::conjunction_v<fcppt::optional::is_object<Types>...>
+      &&
+      fcppt::tuple::is_object<Result>::value
+      &&
       std::is_same_v<
           fcppt::mpl::list::object<fcppt::type_traits::value_type<Types>...>,
-          fcppt::tuple::types_of<Result>>,
-      "The tuple types must match");
+          fcppt::tuple::types_of<Result>>;
 };
 
 }

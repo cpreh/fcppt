@@ -7,7 +7,6 @@
 #define FCPPT_OPTIONAL_SEQUENCE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/use.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/optional/make_if.hpp>
@@ -33,21 +32,16 @@ returned. Otherwise, all optionals have a value,
 <code>%fcppt::optional::object\<ResultContainer\>{v_1,...,v_n}</code> is
 returned.
 
-\tparam ResultContainer Must be a container of type <code>T</code>
+\tparam ResultContainer Must be a container of type <code>T</code>.
 
-\tparam Source Must be an optional type
-
-// TODO(concepts)
+\tparam Source Must be an optional type.
 */
 template <typename ResultContainer, typename Source>
 // NOLINTNEXTLINE(cppcoreguidelines-missing-std-forward)
 fcppt::optional::object<ResultContainer> sequence(Source &&_source)
+  requires(
+      fcppt::optional::detail::check_sequence<ResultContainer, std::remove_cvref_t<Source>>::value)
 {
-  fcppt::optional::detail::
-      check_sequence<ResultContainer, std::remove_cvref_t<Source>> const test{};
-
-  FCPPT_USE(test);
-
   return fcppt::optional::make_if(
       !fcppt::algorithm::contains_if(
           _source, [](auto const &_optional) -> bool { return !_optional.has_value(); }),
@@ -57,7 +51,6 @@ fcppt::optional::object<ResultContainer> sequence(Source &&_source)
             [](auto &&_value) { return fcppt::move_if_rvalue<Source>(_value.get_unsafe()); });
       });
 }
-
 }
 
 #endif
