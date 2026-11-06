@@ -14,7 +14,7 @@ var searchData=
   ['neumann_5fneighbors_11',['neumann_neighbors',['../d4/dfd/group__fcpptcontainergrid.html#ga5a931837efb4000aa91013525267544b',1,'fcppt::container::grid']]],
   ['new_20libraries_12',['New Libraries',['../d4/d15/older_changes.html#changes_new_libraries_to_100',1,'New Libraries'],['../d4/d15/older_changes.html#changes_new_libraries_to_011',1,'New Libraries']]],
   ['next_5fposition_13',['next_position',['../d4/dfd/group__fcpptcontainergrid.html#ga0617a766d9a373ea38102b5cea114d1a',1,'fcppt::container::grid']]],
-  ['next_5fpower_5fof_5f2_14',['next_power_of_2',['../dc/d53/group__fcpptmath.html#ga2337c78288ba442bc8d3067db57b6062',1,'fcppt::math']]],
+  ['next_5fpower_5fof_5f2_14',['next_power_of_2',['../dc/d53/group__fcpptmath.html#ga52dd13009bd047c62f71ef83359759f3',1,'fcppt::math']]],
   ['nix_20builds_15',['Nix builds',['../d8/dcf/installation_usage.html#installation_nix_build',1,'']]],
   ['no_5fdefault_5fvalue_16',['no_default_value',['../da/df4/group__fcpptoptions.html#ga63aa63e6ef1eb8edb2e68d69faabf583',1,'fcppt::options']]],
   ['no_5ferror_17',['no_error',['../d2/d08/structfcppt_1_1either_1_1no__error.html',1,'fcppt::either']]],
@@ -25,6 +25,6 @@ var searchData=
   ['not_5f_22',['not_',['../d2/d38/classfcppt_1_1parse_1_1not__.html',1,'fcppt::parse::not_&lt; Parser &gt;'],['../d9/d12/classfcppt_1_1parse_1_1skipper_1_1not__.html',1,'fcppt::parse::skipper::not_&lt; Skipper &gt;'],['../d2/d38/classfcppt_1_1parse_1_1not__.html#a91e551b951edacfea9e3cc2056c84b19',1,'fcppt::parse::not_::not_()'],['../d9/d12/classfcppt_1_1parse_1_1skipper_1_1not__.html#a82c24dbc8a1106d4c7eaa1e5c5ef5316',1,'fcppt::parse::skipper::not_::not_()'],['../d7/d50/group__fcpptvarious.html#ga8d260441a931353ceacaa6105852c14f',1,'fcppt::not_()']]],
   ['nothing_23',['nothing',['../d7/d04/structfcppt_1_1optional_1_1nothing.html',1,'fcppt::optional']]],
   ['null_24',['Null',['../dc/d53/group__fcpptmath.html#fcpptmath_null',1,'']]],
-  ['null_25',['null',['../d4/d3f/classfcppt_1_1container_1_1bitfield_1_1object.html#a2b2f7ec7a3307da2ae6146de796569a8',1,'fcppt::container::bitfield::object::null()'],['../d0/d4a/group__fcpptmathbox.html#gae802438c2233fc1a690e6329ccb98a3d',1,'fcppt::math::box::null()'],['../db/d17/group__fcpptmathdim.html#ga5c4fb26c23fdb7ef093ece6c3d88a6d4',1,'fcppt::math::dim::null()'],['../d9/dfd/group__fcpptmathvector.html#gade389c7ef98ff335e2315041c2fa316e',1,'fcppt::math::vector::null()']]],
+  ['null_25',['null',['../d4/d3f/classfcppt_1_1container_1_1bitfield_1_1object.html#a2b2f7ec7a3307da2ae6146de796569a8',1,'fcppt::container::bitfield::object::null()'],['../d0/d4a/group__fcpptmathbox.html#ga3c424eaf521d6affc5dcc9c72098c5be',1,'fcppt::math::box::null()'],['../db/d17/group__fcpptmathdim.html#ga26457ba642c6f862f7438c44bc79545e',1,'fcppt::math::dim::null()'],['../d9/dfd/group__fcpptmathvector.html#gac9f788d9dd25d642e0b38da44de37f2b',1,'fcppt::math::vector::null()']]],
   ['numeric_5fmax_26',['numeric_max',['../d9/df1/group__fcppttypetraits.html#ga85beb1a98a13c51d69b732a030537af6',1,'fcppt::type_traits']]]
 ];
