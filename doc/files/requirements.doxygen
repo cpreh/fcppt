@@ -61,7 +61,7 @@ The following platforms are tested by us:
 	<li>gcc-15.3 (NixOS)</li>
 	<li>clang-23.1.5 (Gentoo Linux)</li>
 	<li>clang-21.1.8 (NixOS)</li>
-	<li>VC++-14.50</li>
+	<li>VC++-14.51</li>
 </ul>
 
 fcppt needs a C++23-conforming compiler.
